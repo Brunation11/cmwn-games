@@ -1,86 +1,3 @@
-<style type="text/css">
-
-    #close img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        #close img:first-child:hover {
-            opacity: 0;
-        }
-
-    .Yes-Btns img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        .Yes-Btns img:first-child:hover {
-            opacity: 0;
-        }
-
-    .No-Btns img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        .No-Btns img:first-child:hover {
-            opacity: 0;
-        }
-
-    #next img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        #next img:first-child:hover {
-            opacity: 0;
-        }
-
-    #next-button2 img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        #next-button2 img:first-child:hover {
-            opacity: 0;
-        }
-
-    #cocoon {
-        -webkit-transform-origin: center 20%;
-        -webkit-animation: shake 1s infinite alternate;
-        -moz-transform-origin: center 20%;
-        -moz-animation: shake 1s infinite alternate;
-        -ms-transform-origin: center 20%;
-        -ms-animation: shake 1s infinite alternate;
-        transform-origin: center 20%;
-        animation: shake 1s infinite alternate;
-    }
-
-    .modal-backdrop {
-        z-index:0;
-    }
-
-    #video-modal .modal-backdrop.in{
-        opacity:0;
-    }
-
-</style>
-
 <audio id="background" preload="auto">
     <source src="content/sound/TitleScreen_Background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -94,52 +11,7 @@
     Your browser does not support the audio element.
 </audio>
 
-<script type="text/javascript">
-
-    var bgMusic = $("#background")[0],
-    playing = true;
-
-    bgMusic.addEventListener('ended', function () {
-        this.currentTime = 0;
-        if (playing) {
-            this.play();
-        }
-    }, false);
-
-    background.play();
-
-    head.play();
-
-    $(document).ready(function () {
-
-        $("#close").hide();
-
-        $("#next-button2").hide();
-
-        $('#next').click(function () {
-            click.load();
-            click.play();
-            $("#title").fadeOut(1000);
-            $("#close").fadeIn(1000);
-            $("#video-modal").modal('show');
-            $("#next-button2").fadeIn(10000);
-        });
-
-        $('#close').click(function () {
-            $('#game-close').modal('show');
-        });
-
-        $('.No-Btns').click(function () {
-            $('#game-close').modal('hide');
-        });
-
-       $('#next-button2').click(function () {
-            $("#putcontenthere").load("/action_items/ai2.html");
-        });
-
-    });
-
-</script>
+<script type="text/javascript" src="javascript/action_items/ai1.js"></script>
 
 <div class="container body-content">
     <div class="col-md-12">
@@ -194,37 +66,5 @@
             <iframe id="viddler-8565f8d3" src="//www.viddler.com/embed/8565f8d3/?f=1&player=mini&secret=26175807&make_responsive=0" width="507" height="306" frameborder="0" scrolling="no" allowfullscreen></iframe>
         </div>
 
-    </div>
-</div>
-
-<!-- Game Close Modal -->
-
-<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11;">
-    <div class="modal-dialog" style="margin-top:129px; margin-left:48px;">
-        <div class="modal-content" style="width:523px; height:312px;">
-            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
-                <div class="modal-body custom-font modal-text">
-
-                    <div style="position:absolute; margin-top:-28px; margin-left:-7px;">
-                        <img src="content/images/frame_rectangle.png" style="width:546px; height:363px;" />
-                    </div>
-
-                    <div style="position:absolute;">
-                        <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:53px; margin-top:35px; margin-left:111px;">Are you sure you<br /> want to quit?</p>
-                    </div>
-
-                    <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:63px;">
-                        <img src="content/images/buttons/btn_yes.png" style="width:175px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_yes_on.png" style="width:175px; cursor:pointer;" />
-                    </div>
-
-                    <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:295px;">
-                        <img src="content/images/buttons/btn_no.png" style="width:165px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_no_on.png" style="width:165px; cursor:pointer;" />
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
