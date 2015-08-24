@@ -3,106 +3,114 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Transformers</title>
-    <meta name="description" content="CMWN - Air Transformers" />
-    <link rel="stylesheet" href="Content/site.css">
-    <link rel="stylesheet" href="Content/bootstrap/bootstrap.css">
+    <title>@ViewBag.Title - Change My World Now</title>
+    
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="content/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/main.css">
+    
     <script src="Scripts/modernizr-2.8.3.js"></script>
     <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/respond.js"></script>
     <script src="Scripts/jquery-ui.js"></script>
-    <link href="Content/animation.css" rel="stylesheet" />
-   <link rel="stylesheet" href="css/main.css">
-</head>
 
-<body>
-    <audio id="btn_click" preload="auto">
-        <source src="Content/sound/Button click.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <script type="text/javascript">
 
-    <audio id="vo_transform" preload="auto">
-        <source src="Content/sound/Transforms (mp3cut.net).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        $(document).ready(function () {
 
-    <audio id="vo_word" preload="auto">
-        <source src="Content/sound/New word1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+            $('#pop-up').modal('show');
 
-    <audio id="vo_times" preload="auto">
-        <source src="Content/sound/3 times fast.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+            //to use the close modal, use this function
 
-    <audio id="vo_photo" preload="auto">
-        <source src="Content/sound/Photo 2.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+            $('.close-Btn').click(function () {
+                $('#game-info').modal('show');
+            });
 
-    <audio id="title_screen" preload="auto">
-        <source src="Content/sound/Title Screen Load.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+            /* Exp: <div id="close">
+            <div class="col-sm-4 content-box">
+            <img src="content/images/btn_close.png" class="img-responsive" alt="Responsive image">
+            </div>*/
 
-    <audio id="other_screens" preload="auto">
-        <source src="Content/sound/All Other Screen loads.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
-     <script type="text/javascript">
-         var start = document.getElementById("title_screen");
-         var correct = document.getElementById("other_screens");
-         var complete = document.getElementById("btn_click");
-         var voice = document.getElementById("vo_transform");
-         var voice1 = document.getElementById("vo_word");
-         var voice2 = document.getElementById("vo_times");
-         var voice3 = document.getElementById("vo_photo");
+            $('.A').click(function () {
+                $("#level-complete").modal('show');
 
-         $('#bkg').hide();
+            });
+
+            $('.B').click(function () {
+                $("#retry-level").modal('show');
+
+            });
+
+            $('.purple-button').click(function () {
+                $('#retry-level').modal('hide')
+            });
+
+            $('.close-Btn').click(function () {
+                $("#retry-level").modal('show');
+
+            });
+
+            $('.close-Btn').click(function () {
+                $("#game-info").modal('hide');
+
+            });
+
+        });
 
     </script>
 
-    <div class="body-content">
-        <div class="col-md-12 ai_background">
-            <div class="row">
+</head>
+    <body>
 
-                <div class="col-md-12 custom-font game-title">
-                    <div class=" text-left">
-                        <img style="width:72px; height:72px;margin-bottom:3px;" src="Content/images/airtransformer_flip_white.png" />
-                        AIR TRANSFORMERS
-                    </div>
+        <div class="container body-content">
+            <div class="col-md-12 ai_background">
+                <div class="row">
+
+                    <div class="col-md-12 custom-font game-title">
+                        <div class=" text-left">
+                            <img style="width:72px; height:72px;" src="content/images/monarch_white.png" />
+                            MONARCH
+                        </div>
 
                         <div class="col-md-2 text-right">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <span style="font-size:18px;">@ViewBag.UserName</span>
+                                    <span style="font-size:18px;"></span>
+                                </div>
+                            </div><!--end row-->
+                        </div><!--end text-right-->
+
+                    </div>
+
+
+                    <div class="col-md-12 bkg-image">
+                        <img src="Content/images/BKG_1.png" />
+                    </div><!-- end bkg-image-->
+
+                    <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="position:absolute;">
+                        <div class="modal-dialog" style="margin-top: 131px;  margin-left: 85px;">
+                            <div class="modal-content" style="width:420px; height:315px;">
+                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                    <div class="modal-body custom-font modal-text">
+
+                                        <div class="second-slide">
+                                            <h1>Close Modal</h1>
+                                        </div>
+
+                                        <div class="purple-button text-center custom-font button-text button-padding">
+                                            <a href="#">Close</a>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <span id="putcontenthere" name="putcontenthere">
-                    </span>
+                    </div>
+            </div><!--end ai_background-->
+        </div><!--end container body-content-->
 
-                    <div class="col-md-12 bkg-image">
-                        <img src="Content/images/bkg.png" />
-                    </div><!-- end bkg-image-->
-
-
-                </div>
-
-        </div>
-    </div>
-
-</body>
-
-<script type="text/javascript">
-    $( document ).ready(function() {
-        $("#putcontenthere").load("/action_items/ai1.html");
-    });
-</script>
-
+    </body>
 </html>
