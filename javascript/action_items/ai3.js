@@ -39,4 +39,12 @@ $(document).ready(function () {
          $("#putcontenthere").load("/action_items/ai4.html");
      });
 
+    $('#no-app').click(function () {
+            $("#putcontenthere").load("/action_items/ai4_2.html");
+    });
+
+    $('#app').click(function () {
+            $("#putcontenthere").load("/action_items/ai4.html");
+    });
+
 });

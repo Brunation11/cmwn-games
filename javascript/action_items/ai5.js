@@ -33,4 +33,8 @@
             $('#game-close').modal('hide');
         });
 
+        $('#up-button').click(function () {
+            $("#putcontenthere").load("/action_items/ai6.html");
+        });
+
     });

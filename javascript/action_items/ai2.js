@@ -38,6 +38,11 @@ var bgMusic = $("#background")[0],
             $("#butterfly").show();
         });
 
+
+        $('#next-button2').click(function () {
+            $("#putcontenthere").load("/action_items/ai3.html");
+        });
+
         $('#close').click(function () {
             $('#game-close').modal('show');
         });

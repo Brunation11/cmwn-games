@@ -20,4 +20,8 @@ $(document).ready(function () {
         $('#game-close').modal('hide');
     });
 
+    $('#lets').click(function () {
+            $("#putcontenthere").load("/action_items/ai5.html");
+    });
+
 });
