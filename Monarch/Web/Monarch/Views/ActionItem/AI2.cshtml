@@ -323,61 +323,121 @@
         });
 
         $('#c1').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f1").hide();
         });
 
         $('#c2').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f2").hide();
         });
 
         $('#c3').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f3").hide();
         });
 
         $('#c4').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f4").hide();
         });
 
         $('#c5').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f5").hide();
         });
 
         $('#c6').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f6").hide();
         });
 
         $('#c7').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f7").hide();
         });
 
         $('#c8').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f8").hide();
         });
 
         $('#c9').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f9").hide();
         });
 
         $('#c10').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f10").hide();
         });
 
         $('#c11').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f11").hide();
         });
 
         $('#c12').click(function () {
+            $(".animate-flower").css("animation-play-state", "running");
+            $(".animate-flower2").css("animation-play-state", "running");
+            $(".animate-flower3").css("animation-play-state", "running");
+            $(".animate-flower4").css("animation-play-state", "running");
+            $(".animate-flower5").css("animation-play-state", "running");
             $('#butterfly').css({ top: 100, left: 150 });
             $("#f12").hide();
         });
@@ -507,80 +567,138 @@
 
                     goal_tracker.goal += 1;
 
-                        if (goal_tracker.goal === 1) {
-                            $("#f1").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 1) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f1").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 2) {
-                            $("#f2").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 2) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f2").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 3) {
-                            $("#f3").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 3) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f3").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 4) {
-                            $("#f4").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 4) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f4").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 5) {
-                            $("#f5").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 5) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f5").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 6) {
-                            $("#f6").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 6) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f6").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 7) {
-                            $("#f7").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 7) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f7").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 8) {
-                            $("#f8").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 8) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f8").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 9) {
-                            $("#f9").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 9) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f9").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 10) {
-                            $("#f10").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 10) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f10").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 11) {
-                            $("#f11").show();
-                            facts.load();
-                            facts.play();
-                        }
+                    if (goal_tracker.goal === 11) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f11").show();
+                        facts.load();
+                        facts.play();
+                    }
 
-                        if (goal_tracker.goal === 12) {
-                            $("#f12").show();
-                            facts.load();
-                            facts.play();
-                            $("#next-button2").show();
-                        }
-
-                        
+                    if (goal_tracker.goal === 12) {
+                        $(".animate-flower").css("animation-play-state", "paused");
+                        $(".animate-flower2").css("animation-play-state", "paused");
+                        $(".animate-flower3").css("animation-play-state", "paused");
+                        $(".animate-flower4").css("animation-play-state", "paused");
+                        $(".animate-flower5").css("animation-play-state", "paused");
+                        $("#f12").show();
+                        facts.load();
+                        facts.play();
+                        $("#next-button2").show();
+                    }                       
                 }
 
                 //RELEASE BUTTERFLY
@@ -610,10 +728,10 @@
                     <img src="~/Content/images/buttons/btn_exit_on.png" style="width:34px; cursor:pointer;" />
                 </div>
 
-                @*<div id="next-button" style="position:absolute; z-index:10; margin-left:538px; margin-top:337px;">
+                <div id="next-button" style="position:absolute; z-index:12; margin-left:538px; margin-top:337px;">
                     <img src="~/Content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
                     <img src="~/Content/images/buttons/btn_next_on.png" style="width:83px;" />
-                </div>*@
+                </div>
 
                 <div id="field">
                     <div id="title" class="background-intro">
@@ -770,17 +888,17 @@
 
 <!-- Game Info Modal -->
 
-<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11; overflow:hidden;">
+<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11; overflow:hidden; height:390px;">
     <div class="modal-dialog" style="margin-left:48px;">
 
         <div style="margin-top:209px; margin-left:-25px;">
             <img src="~/Content/images/headers/header_butterfly_facts.png" style="width:575px;" />
         </div>
 
-        <div id="next-button" style="position:absolute; z-index:10; margin-left:493px; margin-top:116px;">
+        @*<div id="next-button" style="position:absolute; z-index:10; margin-left:493px; margin-top:116px;">
             <img src="~/Content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
             <img src="~/Content/images/buttons/btn_next_on.png" style="width:83px;" />
-        </div>
+        </div>*@
 
     </div>
 </div>
