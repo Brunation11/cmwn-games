@@ -6326,192 +6326,102 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
   display: none;
 }
-@-webkit-keyframes shake {
+@keyframes small-bee {
   0% {
-    -webkit-transform: rotate(0);
+    left: 10%;
+    top: 10%;
   }
   10% {
-    -webkit-transform: rotate(10deg);
+    left: 80%;
+    top: 50%;
   }
   20% {
-    -webkit-transform: rotate(-10deg);
+    left: 0%;
+    top: 20%;
   }
   30% {
-    -webkit-transform: rotate(0);
+    left: 40%;
+    top: 90%;
+  }
+  33% {
+    transform: translate(0, -120px);
+  }
+  40% {
+    left: 30%;
+    top: -10%;
   }
   50% {
-    -webkit-transform: rotate(5deg);
+    left: 80%;
+    top: 50%;
+  }
+  60% {
+    left: 30%;
+    top: 70%;
   }
   70% {
-    -webkit-transform: rotate(-5deg);
+    left: 40%;
+    top: 60%;
+  }
+  80% {
+    left: 0%;
+    top: 70%;
+  }
+  90% {
+    left: 70%;
+    top: 50%;
   }
   100% {
-    -webkit-transform: rotate(0);
+    left: 40%;
+    top: 40%;
   }
 }
-@-moz-keyframes shake {
+@-webkit-keyframes small-bee {
   0% {
-    -moz-transform: rotate(0);
+    left: 10%;
+    top: 10%;
   }
   10% {
-    -moz-transform: rotate(10deg);
+    left: 80%;
+    top: 50%;
   }
   20% {
-    -moz-transform: rotate(-10deg);
+    left: 0%;
+    top: 20%;
   }
   30% {
-    -moz-transform: rotate(0);
+    left: 40%;
+    top: 90%;
+  }
+  33% {
+    transform: translate(0, -120px);
+  }
+  40% {
+    left: 30%;
+    top: -10%;
   }
   50% {
-    -moz-transform: rotate(5deg);
+    left: 80%;
+    top: 50%;
+  }
+  60% {
+    left: 30%;
+    top: 70%;
   }
   70% {
-    -moz-transformm: rotate(-5deg);
+    left: 40%;
+    top: 60%;
+  }
+  80% {
+    left: 0%;
+    top: 70%;
+  }
+  90% {
+    left: 70%;
+    top: 50%;
   }
   100% {
-    -moz-transform: rotate(0);
-  }
-}
-@-ms-keyframes shake {
-  0% {
-    -ms-transform: rotate(0);
-  }
-  10% {
-    -ms-transform: rotate(10deg);
-  }
-  20% {
-    -ms-transform: rotate(-10deg);
-  }
-  30% {
-    -ms-transform: rotate(0);
-  }
-  50% {
-    -ms-transform: rotate(5deg);
-  }
-  70% {
-    -ms-transform: rotate(-5deg);
-  }
-  100% {
-    -ms-transform: rotate(0);
-  }
-}
-@keyframes shake {
-  0% {
-    transform: rotate(0);
-  }
-  10% {
-    transform: rotate(10deg);
-  }
-  20% {
-    transform: rotate(-10deg);
-  }
-  30% {
-    transform: rotate(0);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  70% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-@-moz-keyframes moveLeftToRight {
-  0% {
-    left: -100px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-ms-keyframes moveLeftToRight {
-  0% {
-    left: -100px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@keyframes moveLeftToRight {
-  0% {
-    left: -100px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-webkit-keyframes moveLeftToRight {
-  0% {
-    left: -100px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-moz-keyframes moveLeftToRight2 {
-  0% {
-    left: -400px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-ms-keyframes moveLeftToRight2 {
-  0% {
-    left: -400px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@keyframes moveLeftToRight2 {
-  0% {
-    left: -400px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-webkit-keyframes moveLeftToRight2 {
-  0% {
-    left: -400px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-moz-keyframes moveLeftToRight3 {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-ms-keyframes moveLeftToRight3 {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@keyframes moveLeftToRight3 {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
-  }
-}
-@-webkit-keyframes moveLeftToRight3 {
-  0% {
-    left: -500px;
-  }
-  100% {
-    left: 100%;
+    left: 40%;
+    top: 40%;
   }
 }
 .ai_background {
@@ -6535,7 +6445,7 @@ input[type="checkbox"].input-validation-error {
   color: white;
 }
 .bkg-image img {
-  width: 616px;
+  width: 650px;
 }
 .text-left {
   margin: 5px;
@@ -6595,227 +6505,21 @@ input[type="checkbox"].input-validation-error {
 .button-padding {
   padding: 0px 50px 0px 50px;
 }
-#close img:first-child {
+.next img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#close img:first-child:hover {
+.next img:first-child:hover {
   opacity: 0;
 }
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+#button {
+  display: none;
 }
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#next img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next img:first-child:hover {
-  opacity: 0;
-}
-#next-button2 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button2 img:first-child:hover {
-  opacity: 0;
-}
-#cocoon {
-  -webkit-transform-origin: center 20%;
-  -webkit-animation: shake 1s infinite alternate;
-  -moz-transform-origin: center 20%;
-  -moz-animation: shake 1s infinite alternate;
-  -ms-transform-origin: center 20%;
-  -ms-animation: shake 1s infinite alternate;
-  transform-origin: center 20%;
-  animation: shake 1s infinite alternate;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#video-modal .modal-backdrop.in {
-  opacity: 0;
-}
-div.game {
-  width: 616px;
-  height: 411px;
-  position: absolute;
-  z-index: 5;
-}
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-#c1 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c1 img:first-child:hover {
-  opacity: 0;
-}
-#c2 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c2 img:first-child:hover {
-  opacity: 0;
-}
-#c3 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c3 img:first-child:hover {
-  opacity: 0;
-}
-#c4 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c4 img:first-child:hover {
-  opacity: 0;
-}
-#c5 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c5 img:first-child:hover {
-  opacity: 0;
-}
-#c6 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c6 img:first-child:hover {
-  opacity: 0;
-}
-#c7 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c7 img:first-child:hover {
-  opacity: 0;
-}
-#c8 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c8 img:first-child:hover {
-  opacity: 0;
-}
-#c9 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c9 img:first-child:hover {
-  opacity: 0;
-}
-#c10 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c10 img:first-child:hover {
-  opacity: 0;
-}
-#c11 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c11 img:first-child:hover {
-  opacity: 0;
-}
-#c12 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c12 img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
+#background {
+  display: none;
 }
 #next-button img:first-child {
   position: absolute;
@@ -6827,81 +6531,196 @@ div.game {
 #next-button img:first-child:hover {
   opacity: 0;
 }
-#next-button2 img:first-child {
+#next-ai img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#next-button2 img:first-child:hover {
+#next-ai img:first-child:hover {
   opacity: 0;
 }
-.animate-flower {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
+#close img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
 }
-.animate-flower2 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
+#close img:last-child:hover {
+  opacity: 0;
 }
-.animate-flower3 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
+#b-close img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
 }
-.animate-flower4 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
+#b-close img:last-child:hover {
+  opacity: 0;
 }
-.animate-flower5 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
+#b-close2 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#b-close2 img:last-child:hover {
+  opacity: 0;
+}
+#b-close3 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#b-close3 img:last-child:hover {
+  opacity: 0;
+}
+#b-close4 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#b-close4 img:last-child:hover {
+  opacity: 0;
+}
+.Yes-Btns img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.Yes-Btns img:last-child:hover {
+  opacity: 0;
+}
+.No-Btns img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.No-Btns img:last-child:hover {
+  opacity: 0;
+}
+#bee {
+  display: none;
+}
+#small-bee {
+  animation: small-bee 5.3s ease infinite;
+  -webkit-animation: small-bee 5.3s ease infinite;
 }
 .modal-backdrop {
-  z-index: 0;
+  display: none;
 }
-#game-info .modal-backdrop.in {
-  opacity: 0;
+.modal-content {
+  border: none;
 }
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+@keyframes small-bee {
+  0% {
+    left: 10%;
+    top: 10%;
+  }
+  10% {
+    left: 80%;
+    top: 50%;
+  }
+  20% {
+    left: 0%;
+    top: 20%;
+  }
+  30% {
+    left: 40%;
+    top: 90%;
+  }
+  33% {
+    transform: translate(0, -120px);
+  }
+  40% {
+    left: 30%;
+    top: -10%;
+  }
+  50% {
+    left: 80%;
+    top: 50%;
+  }
+  60% {
+    left: 30%;
+    top: 70%;
+  }
+  70% {
+    left: 40%;
+    top: 60%;
+  }
+  80% {
+    left: 0%;
+    top: 70%;
+  }
+  90% {
+    left: 70%;
+    top: 50%;
+  }
+  100% {
+    left: 40%;
+    top: 40%;
+  }
 }
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
+@-webkit-keyframes small-bee {
+  0% {
+    left: 10%;
+    top: 10%;
+  }
+  10% {
+    left: 80%;
+    top: 50%;
+  }
+  20% {
+    left: 0%;
+    top: 20%;
+  }
+  30% {
+    left: 40%;
+    top: 90%;
+  }
+  33% {
+    transform: translate(0, -120px);
+  }
+  40% {
+    left: 30%;
+    top: -10%;
+  }
+  50% {
+    left: 80%;
+    top: 50%;
+  }
+  60% {
+    left: 30%;
+    top: 70%;
+  }
+  70% {
+    left: 40%;
+    top: 60%;
+  }
+  80% {
+    left: 0%;
+    top: 70%;
+  }
+  90% {
+    left: 70%;
+    top: 50%;
+  }
+  100% {
+    left: 40%;
+    top: 40%;
+  }
 }
 #next-button img:first-child {
   position: absolute;
@@ -6913,89 +6732,130 @@ div.game {
 #next-button img:first-child:hover {
   opacity: 0;
 }
-#no-email img:first-child {
+#next-ai img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#no-email img:first-child:hover {
+#next-ai img:first-child:hover {
   opacity: 0;
 }
-#email img:first-child {
+#close img:last-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#email img:first-child:hover {
+#close img:last-child:hover {
   opacity: 0;
 }
-#no-app img:first-child {
+#m-close img:last-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#no-app img:first-child:hover {
+#m-close img:last-child:hover {
   opacity: 0;
 }
-#app img:first-child {
+#m-close2 img:last-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#app img:first-child:hover {
+#m-close2 img:last-child:hover {
   opacity: 0;
+}
+#m-close3 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#m-close3 img:last-child:hover {
+  opacity: 0;
+}
+#m-close4 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#m-close4 img:last-child:hover {
+  opacity: 0;
+}
+#m-close5 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#m-close5 img:last-child:hover {
+  opacity: 0;
+}
+#m-close6 img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+#m-close6 img:last-child:hover {
+  opacity: 0;
+}
+.Yes-Btns img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.Yes-Btns img:last-child:hover {
+  opacity: 0;
+}
+.No-Btns img:last-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.No-Btns img:last-child:hover {
+  opacity: 0;
+}
+#forest {
+  display: none;
+}
+#ants {
+  display: none;
+}
+#chipmunk {
+  display: none;
+}
+#millipede {
+  display: none;
+}
+#mouse {
+  display: none;
+}
+#snake {
+  display: none;
+}
+#toad {
+  display: none;
 }
 .modal-backdrop {
-  z-index: 0;
+  display: none;
 }
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#pledge img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#pledge img:first-child:hover {
-  opacity: 0;
-}
-.modal-backdrop {
-  z-index: 0;
+.modal-content {
+  border: none;
 }
