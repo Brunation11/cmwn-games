@@ -1,67 +1,14 @@
-#close img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
+.foo img:last-child{display:none}
+.foo:hover img:first-child{display:none}
+.foo:hover img:last-child{display:inline-block}
+#happy {position:absolute;opacity:0;}
+
+.net {
+        cursor:url('@Url.Content("~/Content/images/Scoop Game/net1.png")'), move;
+        z-index:110;
     }
 
-        #close img:first-child:hover {
-            opacity: 0;
-        }
-
-    .Yes-Btns img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        .Yes-Btns img:first-child:hover {
-            opacity: 0;
-        }
-
-    .No-Btns img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        .No-Btns img:first-child:hover {
-            opacity: 0;
-        }
-
-    #next-button img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        #next-button img:first-child:hover {
-            opacity: 0;
-        }
-
-    #up-button img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-    }
-
-        #up-button img:first-child:hover {
-            opacity: 0;
-        }
-
-    .modal-backdrop {
-        z-index: 0;
-    }
-
-    #video-modal .modal-backdrop.in {
-        opacity: 0;
+a {
+        cursor:url('@Url.Content("~/Content/images/Scoop Game/net1.png")'), move;
+        
     }

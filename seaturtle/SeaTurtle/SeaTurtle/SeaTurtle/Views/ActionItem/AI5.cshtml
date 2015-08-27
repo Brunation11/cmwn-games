@@ -1,0 +1,323 @@
+﻿
+@{
+    ViewBag.Title = "AI5";
+}
+
+
+<style type="text/css">
+
+    .foo img:last-child{display:none}
+.foo:hover img:first-child{display:none}
+.foo:hover img:last-child{display:inline-block}
+
+    #happy {
+    position:absolute;
+    opacity:0;
+    }
+
+
+.net {
+        cursor:url('@Url.Content("~/Content/images/Scoop Game/net1.png")'), move;
+        z-index:110;
+    }
+
+a {
+        cursor:url('@Url.Content("~/Content/images/Scoop Game/net1.png")'), move;
+        
+    }
+
+
+</style>
+
+
+
+
+<script type="text/javascript">
+
+
+    var full;
+    var correct_items = new Array();
+
+
+    $(document).ready(function () {
+
+
+        $(".body-content").addClass("net");
+
+        bkg_sg.load();
+        bkg_sg.play();
+
+        document.getElementById('bkg_sg').addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+
+        $('#btn').hide();
+        $('#btn').click(function () {
+            $('#btn').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI6")";
+            });
+            click.play();
+        });
+
+        $('#pb').click(function () {
+            $('#pb').css('display', 'none');
+            correct_scoop_game.play();
+            correct_items.push(1);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#bb').click(function () {
+            $('#bb').css('display', 'none');
+            correct_scoop_game1.play();
+            correct_items.push(2);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#cc').click(function () {
+            $('#cc').css('display', 'none');
+            correct_scoop_game2.play();
+            correct_items.push(3);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#wb').click(function () {
+            $('#wb').css('display', 'none');
+            correct_scoop_game3.play();
+            correct_items.push(4);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#cp').click(function () {
+            $('#cp').css('display', 'none');
+            correct_scoop_game4.play();
+            correct_items.push(5);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#cb').click(function () {
+            $('#cb').css('display', 'none');
+            correct_scoop_game5.play();
+            correct_items.push(6);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#pr').click(function () {
+            $('#pr').css('display', 'none');
+            correct_scoop_game6.play();
+            correct_items.push(7);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('.wrong').click(function () {
+            incorrect.play();
+        });
+
+        //$('#test-area').mouseout(function(){
+        //    $('#mycursor').hide();
+        //    return false;
+        //});
+        //$('#test-area').mouseenter(function(){
+        //    $('#mycursor').show();
+        //    return false;
+        //});
+        //$('#test-area').mousemove(function(e){
+        //    $('#mycursor').css('left', e.clientX - 80).css('top', e.clientY + 70);
+        //});
+       
+
+
+    })
+</script>
+
+
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="exit-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" class="img-responsive" alt="Responsive image" style="width: 50px; margin-left: 566px; position: absolute; z-index: 6; margin-top: 6px;"></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" class="img-responsive" alt="Responsive image" style=" width: 50px; position: absolute; margin-left: 566px; z-index: 6; margin-top: 6px;"></div>
+
+            </div>
+
+
+           
+            <div class="swim2">
+            <img src="~/Content/images/Scoop Game/sad_turtle.png" class="img-responsive" alt="Responsive image" style="width: 191px;margin-top: 43px;margin-left: -1px;" />
+              <div id="happy"><img src="~/Content/images/Scoop Game/happy_turtle.png" class="img-responsive" alt="Responsive image" style="width: 191px;margin-top: -317px;margin-left: -1px;" /></div>
+            </div>
+            
+            
+            
+            <div class="swim">
+                
+                   <div class="wrong">
+                      <a class="foo" href="#">
+                            <img src="~/Content/images/Scoop Game/jellyfish.png" class="img-responsive" alt="Responsive image" style="width: 40px;margin-top: 17px;margin-left: 30px;" />
+                            <img src="~/Content/images/Scoop Game/jellyfish_on.png" class="img-responsive" alt="Responsive image" style="width: 76px;margin-top: -2px;margin-left: 11px;" />
+                       </a>
+                   </div>
+
+                   <div class="wrong">
+                       <a class="foo" href="#">
+                           <img src="~/Content/images/Scoop Game/lobster.png" class="img-responsive" alt="Responsive image" style=" width: 182px; margin-top: -103px; margin-left: 368px;" />
+                           <img src="~/Content/images/Scoop Game/lobster_on.png" class="img-responsive" alt="Responsive image" style=" width: 182px; margin-top: -117px; margin-left: 368px;" />
+                        </a> 
+                   </div>
+
+                    <div class="wrong">
+                        <a class="foo" href="#" style="position: absolute;">
+                            <img src="~/Content/images/Scoop Game/seaweed.png" class="img-responsive" alt="Responsive image" style=" width: 108px; margin-top: -117px; margin-left: 280px;" />
+                            <img src="~/Content/images/Scoop Game/seaweed_on.png" class="img-responsive" alt="Responsive image" style=" width: 108px; margin-top: -145px; margin-left: 280px;" />
+                        </a>
+                    </div>
+
+
+
+
+
+                    <div id="pb">
+                        <a class="foo" href="#" style="position: absolute;">
+                            <img src="~/Content/images/Scoop Game/PlasticBag.png" class="img-responsive" alt="Responsive image" style=" width: 89px; margin-top: -77px; margin-left: 168px;" />
+                            <img src="~/Content/images/Scoop Game/plasticbag_on.png" class="img-responsive" alt="Responsive image" style=" width: 153px; margin-top: -96px; margin-left: 135px; transform: rotate(-47deg);" />
+                        </a>
+                    </div>
+
+
+
+                    <div id="bb">
+                        <a class="foo" href="#" style="position: absolute;z-index: 9;">
+                            <img src="~/Content/images/Scoop Game/BrokenBottle.png" class="img-responsive" alt="Responsive image" style="width: 36px;margin-top: 28px;margin-left: 246px;" />
+                            <img src="~/Content/images/Scoop Game/BrokenBottle_on.png" class="img-responsive" alt="Responsive image" style="width: 123px;margin-top: 10px;margin-left: 199px;transform: rotate(-37deg);" />
+                        </a>
+                    </div>
+
+
+
+                    <div id="cc">
+                        <a class="foo" href="#" style="position: absolute;z-index: 4;">
+                            <img src="~/Content/images/Scoop Game/CrushedCan.png" class="img-responsive" alt="Responsive image" style=" width: 58px; margin-top: 161px;margin-left: 201px;" />
+                            <img src="~/Content/images/Scoop Game/crushedcan_on.png" class="img-responsive" alt="Responsive image" style=" width: 107px; margin-top: 124px; margin-left: 177px; transform: rotate(-41deg);" />
+                        </a>
+                    </div>
+
+
+
+                <div id="wb">
+                    <a class="foo" href="#" style="position: absolute;z-index: 5;">
+                        <img src="~/Content/images/Scoop Game/WaterBottle.png" class="img-responsive" alt="Responsive image" style=" width: 30px; margin-top: 168px; margin-left: 115px;" />
+                        <img src="~/Content/images/Scoop Game/water_bottle_on.png" class="img-responsive" alt="Responsive image" style=" width: 143px; margin-top: 146px; margin-left: 58px; transform: rotate(49deg);" />
+                    </a>
+                </div>
+
+
+
+
+                    <div class="wrong">
+                        <a class="foo" href="#" style="position: absolute;z-index: 4;">
+                            <img src="~/Content/images/Scoop Game/ConchShell.png" class="img-responsive" alt="Responsive image" style=" width: 78px; margin-top: 2px;margin-left: 324px;" />
+                            <img src="~/Content/images/Scoop Game/ConchShell_on.png" class="img-responsive" alt="Responsive image" style=" width: 129px; margin-top: -24px; margin-left: 299px;" />
+                        </a>
+                    </div>
+
+
+
+
+
+                    <div id="cp">
+                        <a class="foo" href="#" style="position: absolute;z-index: 2;">
+                            <img src="~/Content/images/Scoop Game/CrumpledPaper.png" class="img-responsive" alt="Responsive image" style="width: 46px;margin-top: 128px;margin-left: 341px;" />
+                            <img src="~/Content/images/Scoop Game/CrumpledPaper_on.png" class="img-responsive" alt="Responsive image" style="width: 112px;margin-top: 94px;margin-left: 309px;transform: rotate(8deg);" />
+                        </a>
+                    </div>
+
+
+
+                    <div id="cb">
+                        <a class="foo" href="#" style="position: absolute;z-index: 1;">
+                            <img src="~/Content/images/Scoop Game/CrumpledBox.png" class="img-responsive" alt="Responsive image" style=" width: 82px; margin-top: 6px;margin-left: 512px;" />
+                            <img src="~/Content/images/Scoop Game/crumpledBox_on.png" class="img-responsive" alt="Responsive image" style=" width: 138px; margin-top: -21px; margin-left: 485px;" />
+                        </a>
+                    </div>
+
+
+
+                    <div id="pr">
+                        <a class="foo" href="#" style="position: absolute;z-index: 1;">
+                            <img src="~/Content/images/Scoop Game/Plastic_Rings.png" class="img-responsive" alt="Responsive image" style="width: 78px;margin-top: 104px;margin-left: 424px;" />
+                            <img src="~/Content/images/Scoop Game/plastic_rings_on.png" class="img-responsive" alt="Responsive image" style="width: 125px;margin-top: 79px;margin-left: 403px;" />
+                        </a>
+                    </div>
+
+                    
+                    <div class="wrong">
+                        <a class="foo" href="#" style="position: absolute;">
+                            <img src="~/Content/images/Scoop Game/Sea_Urchin.png" class="img-responsive" alt="Responsive image" style="width: 60px;margin-top: 150px;margin-left: 534px;" />
+                            <img src="~/Content/images/Scoop Game/sea_urchin_on.png" class="img-responsive" alt="Responsive image" style="width: 85px;margin-top: 138px;margin-left: 521px;" />
+                        </a>
+                    </div>
+
+
+                    <div class="wrong">
+                        <a class="foo" href="#" style="position: absolute;">
+                            <img src="~/Content/images/Scoop Game/Shrimp.png" class="img-responsive" alt="Responsive image" style="width: 60px;margin-top: 217px;margin-left: 433px;" />
+                            <img src="~/Content/images/Scoop Game/shrimp_on.png" class="img-responsive" alt="Responsive image" style="width: 109px;margin-top: 189px;margin-left: 412px;transform: rotate(9deg);" />
+                        </a>
+                    </div>
+
+
+                    </div>
+
+
+                <div id="btn" style="position:absolute; z-index:90;">
+                    <div class="flip-on" style="z-index:20;"><img src="~/Content/images/btn_next_on.png" class="img-responsive" alt="Responsive image" style="width: 60px; margin-left: 540px; margin-top: 327px;"></div>
+                    <div class="flip-off" style="z-index:19;"><img src="~/Content/images/btn_next.png" class="img-responsive" alt="Responsive image" style=" width: 60px;  margin-left: 540px; margin-top: -68px;"></div>
+
+                </div>
+
+
+
+            </div>
+    </div>
+</div><!--end container body-content-->
+

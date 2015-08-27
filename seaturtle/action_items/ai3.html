@@ -1,116 +1,121 @@
-<audio id="background" preload="auto">
-    <source src="content/sound/Slide_9-12_17-20.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<script type="text/javascript" src="javascript/action_items/ai3.js"></script>
-
 <div class="container body-content">
     <div class="col-md-12">
         <div class="row">
+            <div class="exit-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="content/images/btn_exit_on.png" class="img-responsive" alt="Responsive image" style="width: 50px; margin-left: 566px; position: absolute; z-index: 6; margin-top: 6px;"></div>
+                <div class="flip-off" style="z-index:9;"><img src="content/images/btn_exit.png" class="img-responsive" alt="Responsive image" style=" width: 50px; position: absolute; margin-left: 566px; z-index: 6; margin-top: 6px;"></div>
+            </div>
+            <div id="btn">
+                <div class="flip-on" style="z-index:112;"><img src="content/images/btn_next_on.png" class="img-responsive" alt="Responsive image" style="width: 36px; margin-left: 538px; position: absolute; z-index: 6; margin-top: 225px;"></div>
+                <div class="flip-off" style="z-index:111;"><img src="content/images/btn_next.png" class="img-responsive" alt="Responsive image" style=" width: 36px; position: absolute; margin-left: 538px; z-index: 6; margin-top: 225px;"></div>
+            </div>
+            <img src="content/images/window_1.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 274px;margin-top: 92px;margin-left: 318px;" />
 
-            <div id="title">
-                <div style="position:absolute; z-index:1; margin-top:25px; margin-left:37px;">
-                    <img src="content/images/headers/header_save_monarch.png" style="width:540px;" />
-                </div>
+            <img src="content/images/Globe Game/globe.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 320px;margin-top: -16px;margin-left: -1px;" />
 
-                <div style="position:absolute; z-index:10; margin-top:162px; margin-left:32px;">
-                    <img src="content/images/frame_rectangle.png" style="width:550px;"/>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bolder; text-align:center; line-height:28px; margin-top:-187px;">Join our partner organization,<br />National Wildlife Federation, and pledge<br />to start your own milkweed garden<br />to help the Monarchs.</p>
-                </div>
+            <img src="content/images/Globe Game/elements_bar.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 619px;margin-top: 329px;margin-left: -1px;" />
+            <!--elements in globe-->
+            <div class="swims">
+            
+                <div id="fish" style="position: absolute;z-index: 9;width: 59px;margin-top: 37px;margin-left: 56px;"><img src="content/images/Globe Game/small_elements_1.png" class="img-responsive" alt="Responsive image" /></div>
 
-                <!-- next and prev buttons-->
+                <div id="shrimp" style="position: absolute;z-index: 9;width: 56px;margin-top: 97px;margin-left: 38px;"><img src="content/images/Globe Game/small_elements_2.png" class="img-responsive" alt="Responsive image" /></div>
 
-                <div id="next-button" style="position:absolute; z-index:10; margin-left:538px; margin-top:337px;">
-                    <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
-                    <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
-                </div>
+                <div id="anchor" style="position: absolute;z-index: 8; width: 51px; margin-top: 86px; margin-left: 116px;"><img src="content/images/Globe Game/small_elements_3.png" class="img-responsive" alt="Responsive image" /></div>
+
+                <div id="fish2" style="position: absolute;z-index: 8;width: 63px;margin-top: 17px;margin-left: 128px;"><img src="content/images/Globe Game/small_elements_4.png" class="img-responsive" alt="Responsive image" /></div>
+
+                <!--hint animation-->
+                <div class="yellow animated flash" style="position: absolute;z-index: 11;width: 67px;margin-top: 16px;margin-left: 126px;"><img src="content/images/Globe Game/small_elements_4_glow.png" class="img-responsive" alt="Responsive image" /></div>
+                <!--end hint-->
+
+                 <div id="black" style="position: absolute;width: 60px; margin-top: 136px; margin-left: 144px;"><img src="content/images/Globe Game/small_elements_5.png" class="img-responsive" alt="Responsive image" /></div>
+
+                <div id="crab" style="position: absolute; z-index:7;width: 57px; margin-top: 161px; margin-left: 53px;"><img src="content/images/Globe Game/small_elements_6.png" class="img-responsive" alt="Responsive image" /></div>
+
+                <div id="fish4" style="position: absolute; z-index:6; width: 58px; margin-top: 196px; margin-left: 113px;"><img src="content/images/Globe Game/small_elements_7.png" class="img-responsive" alt="Responsive image" /></div>
+
+
+                <div id="safe" style="position: absolute;width: 62px;margin-top: 121px;margin-left: 212px;"><img src="content/images/Globe Game/small_elements_8.png" class="img-responsive" alt="Responsive image" /></div>
+
+                <div id="fish6" style="position: absolute;width: 60px;margin-top: 194px;margin-left: 187px;"><img src="content/images/Globe Game/small_elements_9.png" class="img-responsive" alt="Responsive image" /> </div>
+
+                <div id="dolphin" style="position: absolute; width: 63px; margin-top: 55px; margin-left: 193px;"><img src="content/images/Globe Game/small_elements_10.png" class="img-responsive" alt="Responsive image" /> </div>
+           
+             </div>
+            <!--elements in globe-->
+            <!--elements in click state-->
+            <div id="fish1">
+                <img src="content/images/Globe Game/elements_selected_1.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 58px;margin-top: 338px;margin-left: 9px;" />
             </div>
 
-            <div id="title2">
-                <div class="background-intro">
-                    <img src="content/images/BKG_3.png" style="width:616px; position:absolute; margin-top:1px; z-index:1;">
-                </div><!--end background-intro-->
-
-                <div id="email-info">
-                    <div style="position:absolute; z-index:10; margin-top:39px; margin-left:32px;">
-                        <p style="font-family:'Source Sans Pro'; font-size:1.7em; font-weight:800; text-align:center; line-height:28px; margin-bottom:38px;">To get started we need to let your parents<br />know how they can help you join!<br />You’ll get seeds, instructions, stickers and a poster.<br />Everything you need!</p>
-                        <p style="font-family:'Source Sans Pro'; font-size:1.7em; font-weight:800; text-align:center; line-height:28px;">We’ll get back to you as soon<br />as we hear back from them!</p>
-                    </div>
-
-                    <div id="no-email" style="position:absolute; z-index:10; margin-left:41px; margin-top:272px;">
-                        <a href="#">
-                            <img src="content/images/buttons/btn_do_not_email.png" style="width:230px; cursor:pointer; position:absolute;" />
-                            <img src="content/images/buttons/btn_do_not_email_on.png" style="width:230px;" />
-                        </a>
-                    </div>
-
-                    <div id="email" style="position:absolute; z-index:10; margin-left:344px; margin-top:272px;">
-                        <img src="content/images/buttons/btn_email.png" style="width:230px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_email_on.png" style="width:230px;" />
-                    </div>
-                </div>
-
-                <div id="approve">
-                    <div style="position:absolute; z-index:10; margin-left:27px; margin-top:12px;">
-                        <p style="font-family:'Source Sans Pro'; font-size:1.3em; font-weight:800; margin-bottom:20px;">Dear Parent or Guardian,</p>
-                        <p style="font-family:'Source Sans Pro'; font-size:1.3em; font-weight:800; line-height:22px; margin-bottom:20px;">Your child has begun “Monarch Butterfly” and has expressed<br />interest in becoming a Butterfly Hero by starting a milkweed garden<br />to help keep this important food source available for future<br />generations of this endangered species.</p>
-                        <p style="font-family:'Source Sans Pro'; font-size:1.3em; font-weight:800; line-height:22px;">Our partner organization, National Wildlife Federation, is sponsoring<br />this free program. If you are interested in allowing your child<br />to participate you will need to provide an email and address to receive<br />a Butterfly Garden Starter Packet with seeds and information, stickers<br />and poster. Everything your child will need.<br />After you approve go to <a style="color:#3142a9;" href="http://www.nwf.org/butterflyheroes" target="_blank">www.nwf.org/butterflyheroes</a></p>
-                    </div>
-
-                    <div id="no-app" style="position:absolute; z-index:10; margin-left:127px; margin-top:314px;">
-                        <a href="#">
-                            <img src="content/images/buttons/btn_do_not_approve.png" style="width:150px; cursor:pointer; position:absolute;" />
-                            <img src="content/images/buttons/btn_do_not_approve_on.png" style="width:150px;" />
-                        <a href="#">
-                    </div>
-
-                    <div id="app" style="position:absolute; z-index:9; margin-left:340px; margin-top:263px;">
-                        <a href="#">
-                            <img src="content/images/buttons/btn_approve.png" style="width:219px; cursor:pointer; position:absolute;" />
-                            <img src="content/images/buttons/btn_approve_on.png" style="width:219px;" />
-                        <a href="#">
-                    </div>
-                </div>
+            <div id="shrimp1">
+                <img src="content/images/Globe Game/elements_selected_2.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 72px;margin-top: 328px;margin-left: 66px;" />
             </div>
 
-            <div id="close" style="position:absolute; z-index:999; margin-left:583px;">
-                <img src="content/images/buttons/btn_exit.png" style="width:34px; cursor:pointer; position:absolute;" />
-                <img src="content/images/buttons/btn_exit_on.png" style="width:34px; cursor:pointer;" />
+            <div id="anchor1">
+                <img src="content/images/Globe Game/elements_selected_3.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 55px;margin-top: 334px;margin-left: 127px;" />
             </div>
 
-        </div><!--end row-->
-    </div><!--end col-md-12-->
-</div><!--end container body-content-->
-
-<!-- Game Close Modal -->
-
-<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11;">
-    <div class="modal-dialog" style="margin-top:129px; margin-left:48px;">
-        <div class="modal-content" style="width:523px; height:312px;">
-            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
-                <div class="modal-body custom-font modal-text">
-
-                    <div style="position:absolute; margin-top:-28px; margin-left:-7px;">
-                        <img src="content/images/frame_rectangle.png" style="width:546px; height:363px;" />
-                    </div>
-
-                    <div style="position:absolute;">
-                        <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:53px; margin-top:35px; margin-left:111px;">Are you sure you<br /> want to quit?</p>
-                    </div>
-
-                    <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:63px;">
-                        <img src="content/images/buttons/btn_yes.png" style="width:175px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_yes_on.png" style="width:175px; cursor:pointer;" />
-                    </div>
-
-                    <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:295px;">
-                        <img src="content/images/buttons/btn_no.png" style="width:165px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_no_on.png" style="width:165px; cursor:pointer;" />
-                    </div>
-
-                </div>
+            <div id="fish3">
+                <img src="content/images/Globe Game/elements_selected_4.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 71px;margin-top: 330px;margin-left: 173px;" />
             </div>
+
+            <!--hint animation-->
+            <div class="yellow-fish animated flash">
+                <img src="content/images/Globe Game/elements_4_glow.png" class="img-responsive" alt="Responsive image" style="width: 56px;margin-top: 343px;margin-left: 182px;" />
+            </div>
+            <!--end hint-->
+
+            <div id="black1">
+                <img src="content/images/Globe Game/elements_selected_5.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 63px;margin-top: 334px;margin-left: 244px;" />
+            </div>
+
+            <div id="crab1">
+                <img src="content/images/Globe Game/elements_selected_6.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 79px;margin-top: 334px;margin-left: 298px;" />
+            </div>
+
+            <div id="fish5">
+                <img src="content/images/Globe Game/elements_selected_7.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 75px;margin-top: 329px;margin-left: 370px;" />
+            </div>
+
+            <div id="safe1">
+                <img src="content/images/Globe Game/elements_selected_8.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 61px;margin-top: 335px;margin-left: 435px;" />
+            </div>
+
+            <div id="fish7">
+                <img src="content/images/Globe Game/elements_selected_9.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 82px;margin-top: 332px;margin-left: 479px;" />
+            </div>
+
+            <div id="dolphin1">
+                <img src="content/images/Globe Game/elements_selected_10.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 73px;margin-top: 343px;margin-left: 544px;" />
+            </div>
+            <!--elements in bar click state-->
+            <!--elements in bar-->
+            <img src="content/images/Globe Game/elements_1.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 58px;margin-top: 338px;margin-left: 9px;" />
+            <img src="content/images/Globe Game/elements_2.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 72px;margin-top: 328px;margin-left: 67px;" />
+            <img src="content/images/Globe Game/elements_3.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 55px;margin-top: 334px;margin-left: 127px;" />
+            <img src="content/images/Globe Game/elements_4.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 71px;margin-top: 330px;margin-left: 173px;" />
+            <img src="content/images/Globe Game/elements_5.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 63px;margin-top: 334px;margin-left: 244px;" />
+            <img src="content/images/Globe Game/elements_6.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 79px;margin-top: 334px;margin-left: 298px;" />
+            <img src="content/images/Globe Game/elements_7.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 75px;margin-top: 329px;margin-left: 370px;" />
+            <img src="content/images/Globe Game/elements_8.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 61px;margin-top: 335px;margin-left: 435px;" />
+            <img src="content/images/Globe Game/elements_9.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 82px;margin-top: 332px;margin-left: 479px;" />
+            <img src="content/images/Globe Game/elements_10.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 73px;margin-top: 343px;margin-left: 544px;" />
+            <!--elements in bar-->
+            <!--turtle facts-->
+            <div id="f1"><p>Green sea turtles<br /> can stay under water for up to five hours.</p></div>
+            <div id="f2"><p>Leatherback sea turtles <br />have been known to<br /> dive as deep as<br /> 1,000 feet!</p></div>
+            <div id="f3"><p>Sea turtles get their water from food so they<br /> can live in salt water.</p></div>
+            <div id="f4"><p>If a sea turtle looks<br /> like he’s crying, he’s<br /> shedding excess salt.</p></div>
+            <div id="f5"><p>Sea turtles have existed for over <br />150 million years.</p></div>
+            <div id="f6"><p>Sea turtles only come <br />to land to lay eggs.</p></div>
+            <div id="f7"><p>Sea turtles cannot pull<br /> their head and flippers into their shells.</p></div>
+            <div id="f8"><p>Sea turtles will return<br /> to the place of their<br /> birth to nest.</p></div>
+            <div id="f9"><p>Only one in 1,000 will make it to adulthood.</p></div>
+            <div id="f10"><p>Sea turtles are in every ocean except the<br /> Arctic Ocean.</p></div>
+
+            <!-- end turtle facts-->
         </div>
     </div>
-</div>
+</div><!--end container body-content-->
