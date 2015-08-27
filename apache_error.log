@@ -1,0 +1,66 @@
+[Thu Aug 27 12:09:03 2015] [notice] Digest: generating secret for digest authentication ...
+[Thu Aug 27 12:09:03 2015] [notice] Digest: done
+[Thu Aug 27 12:09:04 2015] [notice] Apache/2.2.27 (Win32) DAV/2 mod_ssl/2.2.27 OpenSSL/1.0.1g mod_fcgid/2.3.9 mod_wsgi/3.4 Python/2.7.6 PHP/5.6.8 mod_perl/2.0.8 Perl/v5.16.3 configured -- resuming normal operations
+[Thu Aug 27 12:09:04 2015] [notice] Server built: May  7 2014 11:02:58
+[Thu Aug 27 12:09:04 2015] [notice] Parent: Created child process 6056
+[Thu Aug 27 12:09:06 2015] [notice] Digest: generating secret for digest authentication ...
+[Thu Aug 27 12:09:06 2015] [notice] Digest: done
+[Thu Aug 27 12:09:07 2015] [notice] Child 6056: Child process is running
+[Thu Aug 27 12:09:07 2015] [notice] Child 6056: Acquired the start mutex.
+[Thu Aug 27 12:09:07 2015] [notice] Child 6056: Starting 64 worker threads.
+[Thu Aug 27 12:09:07 2015] [notice] Child 6056: Starting thread to listen on port 8888.
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/BKG_1.png, referer: http://host-3:8888/
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/BKG_1.png, referer: http://host-3:8888/
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:09:16 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/favicon.ico
+[Thu Aug 27 12:10:32 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:10:32 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:10:32 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:11:40 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:40 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:40 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:11:43 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:43 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:11:44 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:44 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:44 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:11:45 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:45 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:11:45 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:13:36 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:13:36 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:13:37 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:13:47 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:13:47 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:13:47 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:20:39 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:20:39 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:20:39 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/sound/Button click.mp3, referer: http://host-3:8888/
+[Thu Aug 27 12:22:27 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:22:28 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:22:37 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:22:37 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:23:58 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:23:58 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:24:05 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:24:05 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:24:57 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:24:57 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:25:02 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:25:46 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:25:46 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:26:01 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:29:32 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:29:32 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:29:54 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:29:54 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:40:14 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:40:14 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:40:28 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:40:28 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:44:26 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:44:26 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:47:44 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
+[Thu Aug 27 12:47:44 2015] [error] [client 127.0.0.1] File does not exist: C:/wip/CMWN/demo/wallywallwall/content/images/frame_rectangle.png, referer: http://host-3:8888/
