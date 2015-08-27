@@ -1,0 +1,70 @@
+<audio id="background" preload="auto">
+    <source src="content/sound/TitleScreen_Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="head" preload="auto">
+    <source src="content/sound/Title Screen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="click" preload="auto">
+    <source src="content/sound/ButtonClick.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai1.js"></script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div id="title">
+                <div style="position:absolute; z-index:1; margin-top:1px;">
+                    <img src="content/images/title_without_cocoon.png" style="width:616px;" />
+                </div>
+
+                <div id="cocoon" style="position:absolute; z-index:1; margin-top:225px; margin-left:218px;">
+                    <img src="content/images/cocoon_2x.png" style="width:59px;" />
+                </div>
+
+                <!-- next and prev buttons-->
+
+                <div id="next" style=" position:absolute; margin-left:459px; margin-top:277px; z-index:1">
+                    <img src="content/images/buttons/btn_play.png" style="width:160px; z-index:99; cursor:pointer; position:absolute;" />
+                    <img src="content/images/buttons/btn_play_on.png" style="width:160px;" />    
+                </div>
+            </div>
+
+            <div id="next-button2" style="position:absolute; z-index:10; margin-left:538px; margin-top:337px;">
+                <a href="#">
+                    <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
+                </a>
+            </div>
+
+            <div id="close" style="position:absolute; z-index:999; margin-left:583px;">
+                <img src="content/images/buttons/btn_exit.png" style="width:34px; cursor:pointer; position:absolute;" />
+                <img src="content/images/buttons/btn_exit_on.png" style="width:34px; cursor:pointer;" />
+            </div>
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
+<!-- Video Info Modal -->
+
+<div class="modal fade current" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:127px; margin-left:48px;">
+
+        <div class="Box-border">
+            <img src="content/images/frame_video.png" style="width:525px;" />
+        </div>
+
+        <div class="Video" style="position:absolute; margin-top:-316px; margin-left:9px;">
+
+        <!-- <iframe id="viddler-8565f8d3" src="//www.viddler.com/embed/8565f8d3/?f=1&autoplay=1&player=mini&secret=26175807&hideablecontrolbar=1&make_responsive=0&disablebranding=1&noControls=true&nologo=1" width="507" height="306" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
+
+            <iframe id="viddler-8565f8d3" src="//www.viddler.com/embed/8565f8d3/?f=1&player=mini&secret=26175807&make_responsive=0" width="507" height="306" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+    </div>
+</div>

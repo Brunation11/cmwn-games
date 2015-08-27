@@ -1,0 +1,87 @@
+<audio id="background" preload="auto">
+    <source src="content/sound/Slide_9-12_17-20.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai5.js"></script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div id="close" style="position:absolute; z-index:999; margin-left:583px;">
+                <img src="content/images/buttons/btn_exit.png" style="width:34px; cursor:pointer; position:absolute;" />
+                <img src="content/images/buttons/btn_exit_on.png" style="width:34px; cursor:pointer;" />
+            </div>
+
+            <!-- next and prev buttons-->
+
+            <div id="next-button" style="position:absolute; z-index:10; margin-left:538px; margin-top:337px;">
+                <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
+                <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
+            </div>
+
+            <div id="upload">
+                <div style="position:absolute; z-index:10; margin-left:57px; margin-top:52px;">
+                    <img src="content/images/headers/header_upload.png" style="width:500px;" />
+                </div>
+
+                <div id="up-button" style="position:absolute; z-index:10; margin-left:191px; margin-top:248px;">
+                    <a href="#">
+                        <img src="content/images/buttons/btn_upload.png" style="width:234px; cursor:pointer; position:absolute;" />
+                        <img src="content/images/buttons/btn_upload_on.png" style="width:234px; cursor:pointer;" />
+                    </a>
+                </div>
+            </div>
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
+<!-- Video Modal -->
+
+<div class="modal fade current" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:3; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:127px; margin-left:48px;">
+
+        <div style="margin-top:108px;">
+            <img src="content/images/frame_video.png" style="width:525px;" />
+        </div>
+
+        <!-- <div class="Video" style="position:absolute; margin-top:-316px; margin-left:9px;">
+            <iframe id="viddler-8565f8d3" src="//www.viddler.com/embed/8565f8d3/?f=1&autoplay=1&player=mini&secret=26175807&hideablecontrolbar=1&make_responsive=0&disablebranding=1&noControls=true&nologo=1" width="507" height="306" frameborder="0" scrolling="no" allowfullscreen></iframe>
+        </div> -->
+
+    </div>
+</div>
+
+<!-- Close Modal -->
+
+<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11;">
+    <div class="modal-dialog" style="margin-top:129px; margin-left:48px;">
+        <div class="modal-content" style="width:523px; height:312px;">
+            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
+                <div class="modal-body custom-font modal-text">
+
+                    <div style="position:absolute; margin-top:-28px; margin-left:-7px;">
+                        <img src="content/images/frame_rectangle.png" style="width:546px; height:363px;" />
+                    </div>
+
+                    <div style="position:absolute;">
+                        <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:53px; margin-top:35px; margin-left:111px;">Are you sure you<br /> want to quit?</p>
+                    </div>
+
+                    <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:63px;">
+                        <img src="content/images/buttons/btn_yes.png" style="width:175px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_yes_on.png" style="width:175px; cursor:pointer;" />
+                    </div>
+
+                    <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:295px;">
+                        <img src="content/images/buttons/btn_no.png" style="width:165px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_no_on.png" style="width:165px; cursor:pointer;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
