@@ -1,0 +1,1077 @@
+﻿
+@{
+    ViewBag.Title = "AI4";
+}
+
+<link rel="stylesheet" href="~/Content/Arrow.css" />
+<link rel="stylesheet" href="~/Content/blinkingCaptions.css" />
+<style type="text/css">
+    .scape-Btn {
+        margin-top: 10px;
+        position: absolute;
+        z-index: 1;
+        left: 563px;
+        position: absolute;
+        cursor: pointer;
+        z-index: 99;
+    }
+
+        .scape-Btn img {
+            width: 40px;
+        }
+
+            .scape-Btn img:first-child {
+                position: absolute;
+                -webkit-transition: opacity 0s ease-in-out;
+                -moz-transition: opacity 0s ease-in-out;
+                -o-transition: opacity 0s ease-in-out;
+                transition: opacity 0s ease-in-out;
+            }
+
+                .scape-Btn img:first-child:hover {
+                    opacity: 0;
+                }
+
+   
+    .carousel-control.right {
+        background-image: none;
+    }
+
+    .carousel-control.left {
+        background-image: none;
+    }
+
+
+    #slider {
+        margin-left: 47px;
+    }
+
+    .carousel-inner {
+        margin-left: 17px;
+        width: 334px;
+        height: 120px;
+        top: -43px;
+    }
+
+    .item {
+        margin-left: 45px;
+        cursor: pointer;
+        margin-top: 47px;
+    }
+
+    .carousel-control {
+        margin-top: 30px;
+    }
+
+    #slider_captions h2 {
+        font-size: 16px;
+        margin-top: 1px;
+        color: #FFF;
+    }
+
+
+    .dumpster {
+        position: absolute;
+        z-index: 10;
+        margin-left: 118px;
+        margin-top: -11px;
+    }
+
+    /* Second Carousel */
+
+    #carousel_ul {
+        list-style: none;
+    }
+
+        #carousel_ul li {
+            float: left;
+            width: 98px;
+            padding: 0px;
+            /*  height: 110px; */
+            margin-top: 194px;
+            margin-bottom: 10px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+    #carousel_inner {
+        overflow: hidden;
+        width: 616px;
+    }
+
+    #carousel_ul {
+        position: relative;
+        left: -210px;
+        list-style-type: none;
+        margin: 0 250px;
+        padding: 0px;
+        width: 9999px;
+        padding-bottom: 10px;
+    }
+
+    .Time {
+        position: absolute;
+        z-index: 1;
+        margin-top: 10px;
+    }
+
+    #score p {
+        position: absolute;
+        z-index: 1;
+        margin-left: 81px;
+        color: white;
+        font-size: 24px;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    #score h1 {
+        position: absolute;
+        z-index: 1;
+        margin-top: 4px;
+        color: white;
+        font-size: 24px;
+        font-family: 'cmwn', sans-serif;
+    }
+
+    .Time h1 {
+        color: white;
+        font-size: 24px;
+        font-family: 'cmwn', sans-serif;
+    }
+
+    #recycle-li #recycle img {
+        margin-left: -13px;
+    }
+
+    #trash-li #trash img {
+        margin-left: -13px;
+    }
+
+    #compost-li #compost img {
+        margin-left: -13px;
+    }
+
+    /*quit screen */
+    .background p {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 36px;
+        color: #000;
+    }
+
+    .append-score p {
+        font-family: 'Source Sans Pro', sans-serif;
+        position: absolute;
+        left: 114px;
+        top: 59px;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 36px;
+        color: #000;
+    }
+
+    /* Yes Button */
+    #yes-btn {
+        position: absolute;
+        top: 192px;
+        left: 104px;
+        cursor: pointer;
+    }
+
+        #yes-btn img {
+            width: 126px;
+        }
+
+            #yes-btn img:first-child {
+                position: absolute;
+                -webkit-transition: opacity 0s ease-in-out;
+                -moz-transition: opacity 0s ease-in-out;
+                -o-transition: opacity 0s ease-in-out;
+                transition: opacity 0s ease-in-out;
+            }
+
+                #yes-btn img:first-child:hover {
+                    opacity: 0;
+                }
+
+    /* No Button */
+    #no-btn {
+        position: absolute;
+        top: 192px;
+        left: 278px;
+        cursor: pointer;
+    }
+
+        #no-btn img:first-child {
+            position: absolute;
+            -webkit-transition: opacity 0s ease-in-out;
+            -moz-transition: opacity 0s ease-in-out;
+            -o-transition: opacity 0s ease-in-out;
+            transition: opacity 0s ease-in-out;
+        }
+
+            #no-btn img:first-child:hover {
+                opacity: 0;
+            }
+
+    /* Exit modal for quit screen */
+
+    .exit-Modal-Btn {
+        margin-top: 24px;
+        position: absolute;
+        z-index: 1;
+        left: 443px;
+        cursor: pointer;
+    }
+
+        .exit-Modal-Btn img {
+            width: 30px;
+        }
+
+            .exit-Modal-Btn img:first-child {
+                position: absolute;
+                -webkit-transition: opacity 0s ease-in-out;
+                -moz-transition: opacity 0s ease-in-out;
+                -o-transition: opacity 0s ease-in-out;
+                transition: opacity 0s ease-in-out;
+            }
+
+                .exit-Modal-Btn img:first-child:hover {
+                    opacity: 0;
+                }
+
+    .animated-points {
+        position: absolute;
+        z-index: 1;
+        top: 223px;
+        left: 249px;
+        width: 60px;
+    }
+
+        .animated-points h1 {
+            font-size: 24px;
+            font-family: 'cmwn', sans-serif;
+        }
+
+        .animated-points .win h1 {
+            color: #FFF;
+            position: absolute;
+        }
+
+        .animated-points .loose h1 {
+            color: #ff0000;
+            position: absolute;
+        }
+
+    /* next button for final modal */
+    #next-button2 {
+        position: absolute;
+        margin-top: -29px;
+        margin-left: 279px;
+        position: fixed;
+        cursor: pointer;
+    }
+
+        #next-button2 img {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            /*margin-top:-25px;
+        margin-left:-25px;*/
+            -webkit-animation: bounce 1s infinite;
+            -moz-animation: bounce 1s infinite;
+            -ms-animation: bounce 1s infinite;
+            -o-animation: bounce 1s infinite;
+        }
+
+            #next-button2 img:first-child {
+                -webkit-transition: opacity 0s ease-in-out;
+                -moz-transition: opacity 0s ease-in-out;
+                -o-transition: opacity 0s ease-in-out;
+                transition: opacity 0s ease-in-out;
+                position: absolute;
+                z-index: 10;
+            }
+
+                #next-button2 img:first-child:hover {
+                    opacity: 0;
+                }
+
+    /* last flip screen */
+
+    #next-button3 {
+        position: absolute;
+        margin-left: 395px;
+        margin-top: -34px;
+        position: fixed;
+        cursor: pointer;
+    }
+
+        #next-button3 img {
+            width: 62px;
+            position: absolute;
+            bottom: 0;
+            /*margin-top:-25px;
+        margin-left:-25px;*/
+            -webkit-animation: bounce 1s infinite;
+            -moz-animation: bounce 1s infinite;
+            -ms-animation: bounce 1s infinite;
+            -o-animation: bounce 1s infinite;
+        }
+
+            #next-button3 img:first-child {
+                -webkit-transition: opacity 0s ease-in-out;
+                -moz-transition: opacity 0s ease-in-out;
+                -o-transition: opacity 0s ease-in-out;
+                transition: opacity 0s ease-in-out;
+                position: absolute;
+                z-index: 10;
+            }
+
+                #next-button3 img:first-child:hover {
+                    opacity: 0;
+                }
+
+    /* replay button */
+
+    #re-try img {
+        position: absolute;
+    }
+
+        #re-try img:first-child {
+            -webkit-transition: opacity 0s ease-in-out;
+            -moz-transition: opacity 0s ease-in-out;
+            -o-transition: opacity 0s ease-in-out;
+            transition: opacity 0s ease-in-out;
+            position: absolute;
+            z-index: 10;
+        }
+
+            #re-try img:first-child:hover {
+                opacity: 0;
+            }
+
+    /* blink captions */
+    .item h2 {
+        -webkit-animation-name: blinker;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-name: blinker;
+        -moz-animation-duration: 1s;
+        -moz-animation-timing-function: linear;
+        -moz-animation-iteration-count: infinite;
+        animation-name: blinker;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .Button {
+        position: absolute;
+        z-index: 99;
+        margin-left: 409px;
+        margin-top: 70px;
+        cursor:pointer;
+    }
+
+    .Button img:first-child {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    .Button img:first-child:hover {
+        opacity: 0;
+    }
+
+    .Main-slides{
+        overflow:hidden;
+        position:absolute;
+        width:302px;
+        height:132px;
+        z-index:10;
+        margin-left: 232px;
+        margin-top: 3px;
+    }
+
+    .Main-slides ul{
+        list-style:none;
+        margin-left:-40px;
+        margin-bottom: 0px;
+        margin-top:46px;
+    }
+
+    .Main-slides ul li{
+        position:relative;
+        margin-top:0px;
+    }
+
+   
+
+   
+
+</style>
+
+
+<script type="text/javascript">
+    $(window).load(function () {
+
+        // set all li elements to 10px of separation 
+        $(".Main-slides ul li").css({"margin-top":"18px"});
+    });
+
+    var correct_items = new Array();
+    var completed_sets = new Array();
+
+    $(document).ready(function () {
+        
+        //this varible stores the correct matches for the item being shown
+        var item_correct_matches = new Array();
+
+        //this varible stores the data correct 
+        var matches_correctly = new Array();
+        var selected_item;
+        var match_set_1 = new Array();
+
+
+        //initalize game and find the selected item and it's matches
+        selectRandomListItem();
+        findSelectedMatches();
+
+        $(".Button").dblclick(function (event) {
+
+            // swap images
+            var backImg = $('.Main-slides li:first').css({ 'list-style': 'none' });
+            backImg.hide();
+            backImg.remove();
+            $('.Main-slides').append(backImg);
+            backImg.fadeIn();
+
+            //stop the main carousel
+            $('#carousel_ul').carousel().animate('pause', 1000);
+        });
+
+        $("#Btn-target").click(function (event) {
+           
+           
+
+            //reset items
+            resetMatchArrays();
+            selectRandomListItem();
+            findSelectedMatches();
+
+            //which item is showing in the selector?
+            var correct_items = $(this).attr('data-correct');
+
+            console.log('clicked home: ' + $(this).attr('id'));
+
+            //make sure the items_correct_matches has values
+            if (item_correct_matches.length > 0) {
+                console.log(item_correct_matches.length);
+
+                if (correct_items.indexOf(selected_item) >= 0) {
+                    //this is a correct item
+                    matches_correctly.push(1);
+
+                    console.log(matches_correctly);
+
+                    //check to see if you have the correct number of matches for the selected item
+                    if (matches_correctly.length === 1) {
+                        console.log('all done');
+                        //end of this set
+                        $("#apple-core1").animate({
+                            'marginTop': "+=220px"  //moves down
+                        }, 800).hide(1);
+                        // sound
+                    }
+                }
+                else {
+                    //this is an incorrect match - do incorrect actions
+                    
+                   //sound
+                }
+            }
+            return;
+
+           
+            
+           
+           
+        });
+
+        // find selected matches
+        function findSelectedMatches() {
+            match_set_1.push($('#Btn-target').attr('data-correct').split(","));
+
+            console.log(match_set_1);
+
+            console.log('in findSelectedMatches: ' + selected_item);
+
+            //find out how many correct items this should have
+            findMatch(match_set_1, selected_item);
+
+            console.log('number of correct items : ' + item_correct_matches.length);
+        }
+
+        // reset array
+        function resetMatchArrays() {
+            match_set_1.length = 0;
+
+            item_correct_matches.length = 0;
+            matches_correctly.length = 0;
+        }
+
+        // find match and push to array
+        function findMatch(myArray, match) {
+            console.log('array length: ' + myArray[0].length);
+
+            for (index = 0; index < myArray[0].length; ++index) {
+                console.log('array value: ' + myArray[0][index]);
+
+                if (myArray[0][index] === match) {
+                    item_correct_matches.push(1);
+                    console.log('found it');
+                }
+            }
+        }
+
+        // randomize function for li
+        function selectRandomListItem() {
+            // randomize list
+            $('ul').each(function () {
+                // get current ul
+                var $ul = $(this);
+                // get array of list items in current ul
+                var $liArr = $ul.children('li');
+                // sort array of list items in current ul randomly
+                $liArr.sort(function (a, b) {
+                    // Get a random number between 0 and 10
+                    var temp = parseInt(Math.random() * 10);
+                    // Get 1 or 0, whether temp is odd or even
+                    var isOddOrEven = temp % 2;
+                    // Get +1 or -1, whether temp greater or smaller than 5
+                    var isPosOrNeg = temp > 5 ? 1 : -1;
+                    // Return -1, 0, or +1
+                    return (isOddOrEven * isPosOrNeg);
+                })
+                // append list items to ul
+                .appendTo($ul);
+            });
+
+            selected_item = $("#match li")[0].id
+
+            console.log('randomly selected item: ' + selected_item);
+        }
+    });
+
+
+
+
+    //// trash cans slider
+
+    //options( 1 - ON , 0 - OFF)
+    var auto_slide = 1;
+
+
+    //speed of auto slide(
+    var auto_slide_seconds = 1300;
+ 
+    //move the last list item before the first item.
+    $('#carousel_ul li:first').before($('#carousel_ul li:last'));
+
+    //check if auto sliding is enabled
+    if (auto_slide == 1) {
+        /*set the interval (loop) to call function slide with option 'right'
+        and set the interval time to the variable we declared previously */
+        var timer = setInterval('slide("right")', auto_slide_seconds);
+
+        //and change the value of our hidden field that holds the interval info
+
+        $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
+
+    }
+
+    function slide(where) {
+
+        //get the item width
+        var item_width = $('#carousel_ul li').outerWidth() + 10;
+
+
+        if (where == 'left') {
+            //...calculating the new left indent of the unordered list (ul) for left sliding
+            var left_indent = parseInt($('#carousel_ul').css('left')) + item_width;
+        } else {
+            //...calculating the new left indent of the unordered list (ul) for right sliding
+            var left_indent = parseInt($('#carousel_ul').css('left')) - item_width;
+
+        }
+
+        ////make the sliding effect using jQuery's animate function... '
+        $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 450, function () {
+
+            if (where == 'left') {
+                //...and if it slided to left we put the last item before the first item
+                $('#carousel_ul li:first').before($('#carousel_ul li:last'));
+            } else {
+                //...and if it slided to right we put the first item after the last item
+                $('#carousel_ul li:last').after($('#carousel_ul li:first'));
+            }
+
+            //...and then just get back the default left indent
+            $('#carousel_ul').css({ 'left': '-210px' });
+        });
+
+    }
+</script>
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="container">
+
+                <div class="scape-Btn">
+                    <img src="~/Content/images/btn_exit_on.png" />
+                    <img src="~/Content/images/btn_exit.png" />
+
+                </div>
+
+
+                <!-- SORE -->
+                <div id="score">
+                    <h1>SCORE:</h1>
+                    <p>0</p>
+                </div>
+
+                @*<div class="animated-points">
+                    <div class="win"><h1>+ 15</h1></div>
+                    <div class="loose"><h1>- 30</h1></div>
+                </div>*@
+
+                <div id="Btn-target" class="Button" data-correct="apple-core, batteries">
+                    <img src="~/Content/images/btn_can_it.png" style="width:127px;height:108px;" />
+                    <img src="~/Content/images/btn_can_it_on.png" style="width:127px;height:108px;" />
+                </div>
+
+                <!-- timer -->
+                <div class="Time">
+                    <h1>TIME:</h1>
+                    <p style="margin-left:93px;margin-top:-39px;color: white;font-size: 1.6em;">:</p>
+                </div>
+
+                <div class="time-function">
+
+                    <div id="counter" class="text-right" style="position:absolute; font-size:1.5em; color:#FFF; margin-top:29px; margin-left:75px; letter-spacing:6px; z-index:1000;width: 60px;"></div>
+                </div>
+
+                <!-- dumpster img-->
+                <div class="dumpster">
+                    <img src="~/Content/images/dumpster-1.png" />
+                </div>
+
+                <!-- dumpster carousel starts here -->
+                <div id="match" class="Main-slides">
+                    <ul>
+                        <li id="apple-core">
+                            <img src="~/Content/images/Compost/big_apple_core.png" alt="applecore" class="img-responsive" />
+                        </li>
+                        <li id="batteries">
+                            <img src="~/Content/images/Trash/batteries.png" alt="batteries" class="img-responsive" />
+                        </li>
+                        <li id="computer">
+                            <img src="~/Content/images/Recycle/computer.png" alt="computer" class="img-responsive" />
+                        </li>
+
+                        <li id="carton-boxes">
+                            <img src="~/Content/images/Recycle/carton_boxes.png" alt="carton" class="img-responsive" />
+                        </li>
+
+                        <li id="banana-peel">
+                            <img src="~/Content/images/Compost/bannana_peal.png" alt="banana" class="img-responsive" />
+                        </li>
+
+                        <li id="bulb">
+                            <img src="~/Content/images/Trash/big_bulb.png" alt="bulb" class="img-responsive" />
+                        </li>
+
+                        <li id="carrot">
+                            <img src="~/Content/images/Compost/carrot.png" alt="carrot" class="img-responsive" />
+                        </li>
+
+                        <li id="diaper">
+                            <img src="~/Content/images/Trash/diaper.png" alt="diaper" class="img-responsive" />
+                        </li>
+
+                        <li id="metal-can">
+                            <img src="~/Content/images/Recycle/food_can.png" alt="mtalCan" class="img-responsive" />
+                        </li>
+
+                        <li id="oatmeal">
+                            <img src="~/Content/images/Compost/cereal_bowl.png" alt="oatmeal" class="img-responsive" />
+                        </li>
+
+                        <li id="paper-box">
+                            <img src="~/Content/images/Recycle/juice_carton.png" alt="Paper box" class="img-responsive" />
+                        </li>
+
+                        <li id="chicken">
+                            <img src="~/Content/images/Compost/chicken_drum.png" alt="chicken" class="img-responsive" />
+                        </li>
+
+                        <li id="milk-carton">
+                            <img src="~/Content/images/Recycle/milk_carton.png" alt="Milk carton" class="img-responsive" />
+                        </li>
+
+                        <li id="mirror">
+                            <img src="~/Content/images/Trash/mirror.png" alt="mirror" class="img-responsive" />
+                        </li>
+
+                        <li id="magazine">
+                            <img src="~/Content/images/Recycle/paper.png" alt="Newspaper" class="img-responsive" />
+                        </li>
+
+                        <li id="oil">
+                            <img src="~/Content/images/Trash/oil_can.png" alt="oil" class="img-responsive" />
+                        </li>
+
+                        <li id="styrofoam">
+                            <img src="~/Content/images/Trash/foam_tray.png" alt="styrofoam" class="img-responsive" />
+                        </li>
+
+                        <li id="egg">
+                            <img src="~/Content/images/Compost/egg_shell.png" alt="egg" class="img-responsive" />
+                        </li>
+
+                        <li id="phone">
+                            <img src="~/Content/images/Recycle/phone.png" alt="phone" class="img-responsive" />
+                        </li>
+
+                        <li id="cracker">
+                            <img src="~/Content/images/Compost/cracker.png" alt="cracker" class="img-responsive" />
+                        </li>
+
+                        <li id="feather">
+                            <img src="~/Content/images/Compost/feather.png" alt="feather" class="img-responsive" />
+                        </li>
+
+                        <li id="bag">
+                            <img src="~/Content/images/Recycle/plastic_bag.png" alt="bag" class="img-responsive" />
+                        </li>
+
+                        <li id="fish">
+                            <img src="~/Content/images/Compost/fish.png" alt="fish" class="img-responsive" />
+                        </li>
+
+                        <li id="plastic-bottle">
+                            <img src="~/Content/images/Recycle/plastic_bottle.png" alt="bottle" class="img-responsive" />
+                        </li>
+
+                        <li id="flower">
+                            <img src="~/Content/images/Compost/flower.png" alt="flower" class="img-responsive" />
+                        </li>
+
+                        <li id="plastic-package">
+                            <img src="~/Content/images/Recycle/sauce_container.png" alt="container" class="img-responsive" />
+                        </li>
+
+                        <li id="leaf">
+                            <img src="~/Content/images/Compost/leaf.png" alt="leaf" class="img-responsive" />
+                        </li>
+
+                        <li id="soap">
+                            <img src="~/Content/images/Recycle/soap_bottle.png" alt="bottle" class="img-responsive" />
+                        </li>
+
+                        <li id="toast">
+                            <img src="~/Content/images/Compost/toast.png" alt="toast" class="img-responsive" />
+                        </li>
+
+                        <li id="hay">
+                            <img src="~/Content/images/Compost/matt.png" alt="hay" class="img-responsive" />
+                        </li>
+
+                        <li id="socks">
+                            <img src="~/Content/images/Trash/socks.png" alt="socks" class="img-responsive" />
+                        </li>
+
+                        <li id="soda-bottle">
+                            <img src="~/Content/images/Recycle/soda_bottle.png" alt="soda bottle" class="img-responsive" />
+                        </li>
+
+                        <li id="peanut">
+                            <img src="~/Content/images/Compost/peanut.png" alt="peanut" class="img-responsive" />
+                        </li>
+
+                        <li id="soda-can">
+                            <img src="~/Content/images/Recycle/soda_can.png" alt="soda can" class="img-responsive" />
+                        </li>
+
+                        <li id="pizza">
+                            <img src="~/Content/images/Compost/pizza.png" alt="pizza" class="img-responsive" />
+                        </li>
+
+                        <li id="tv">
+                            <img src="~/Content/images/Recycle/T.V.png" alt="tv" class="img-responsive" />
+                        </li>
+
+                        <li id="tea">
+                            <img src="~/Content/images/Compost/tea_bag.png" alt="tea bag" class="img-responsive" />
+                        </li>
+
+                        <li id="tissue">
+                            <img src="~/Content/images/Recycle/tissue.png" alt="tissue" class="img-responsive" />
+                        </li>
+
+                        <li id="paint">
+                            <img src="~/Content/images/Trash/paint_bucket.png" alt="paint" class="img-responsive" />
+                        </li>
+
+                        <li id="tray">
+                            <img src="~/Content/images/Recycle/tray.png" alt="tray" class="img-responsive" />
+                        </li>
+
+                        
+
+
+                    </ul>
+                </div>
+
+                <!-- animate these items falling in to trash cans -->
+
+
+
+                <div id="apple-core1" class="Drop_1" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/big_apple_core.png" style=" width: 44px;" /></div>
+                <div id="carton-boxes2" class="Drop_2" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/carton_boxes.png" /></div>
+                <div id="batteries3" class="Drop_3" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/batteries.png" /></div>
+                <div id="banana-peel4" class="Drop_4" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/bannana_peal.png" /></div>
+                <div id="computer5" class="Drop_5" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/computer.png" /></div>
+                <div id="bulb6" class="Drop_6" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/big_bulb.png" /></div>
+                <div id="carrot7" class="Drop_7" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/carrot.png" /></div>
+                <div id="metal-can8" class="Drop_8" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/food_can.png" /></div>
+                <div id="diaper9" class="Drop_9" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/diaper.png" /></div>
+                <div id="oatmeal10" class="Drop_10" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/cereal_bowl.png" /></div>
+                <div id="paper-box11" class="Drop_11" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/juice_carton.png" /></div>
+                <div id="styrofoam12" class="Drop_12" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/foam_tray.png" /></div>
+                <div id="chicken13" class="Drop_13" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/chicken_drum.png" /></div>
+                <div id="milk-carton14" class="Drop_14" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/milk_carton.png" /></div>
+                <div id="mirror15" class="Drop_15" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/mirror.png" /></div>
+                <div id="cracker16" class="Drop_16" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/cracker.png" /></div>
+                <div id="magazine17" class="Drop_17" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/paper.png" /></div>
+                <div id="oil18" class="Drop_18" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/oil_can.png" /></div>
+                <div id="egg19" class="Drop_19" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/egg_shell.png" /></div>
+                <div id="phone20" class="Drop_20" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/phone.png" /></div>
+                <div id="paint21" class="Drop_21" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/paint_bucket.png" /></div>
+                <div id="feather22" class="Drop_22" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/feather.png" /></div>
+                <div id="bag23" class="Drop_23" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/plastic_bag.png" /></div>
+                <div id="socks24" class="Drop_24" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Trash/socks.png" /></div>
+                <div id="fish25" class="Drop_25" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/fish.png" /></div>
+                <div id="plastic-bottle26" class="Drop_26" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/plastic_bottle.png" /></div>
+                <div id="flower27" class="Drop_27" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/flower.png" /></div>
+                <div id="plastic-package28" class="Drop_28" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/sauce_container.png" /></div>
+                <div id="leaf29" class="Drop_29" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/leaf.png" /></div>
+                <div id="soap30" class="Drop_30" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/soap_bottle.png" /></div>
+                <div id="hay31" class="Drop_31" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/matt.png" /></div>
+                <div id="soda-bottle32" class="Drop_32" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/soda_bottle.png" /></div>
+                <div id="peanut33" class="Drop_33" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/peanut.png" /></div>
+                <div id="soda-can34" class="Drop_34" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/soda_can.png" /></div>
+                <div id="pizza35" class="Drop_35" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/pizza.png" /></div>
+                <div id="tv36" class="Drop_36" style="position:absolute;z-index:1;margin-top:40px;margin-left: 233px;cursor:pointer;"><img src="~/Content/images/Recycle/T.V.png" /></div>
+                <div id="tea37" class="Drop_37" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/tea_bag.png" /></div>
+                <div id="tissue38" class="Drop_38" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/tissue.png" /></div>
+                <div id="toast39" class="Drop_39" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Compost/toast.png" /></div>
+                <div id="tray40" class="Drop_40" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="~/Content/images/Recycle/tray.png" /></div>
+
+
+
+                <!--  carousel for trash cans -->
+
+                <div id='carousel_container' style="position:absolute; z-index:1; margin-top:71px; margin-left: -15px;">
+                    <div id='carousel_inner'>
+                        <ul id='carousel_ul'>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="~/Content/images/bin_trash.png" /></a>
+                            </li>
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="~/Content/images/bin_compost.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="~/Content/images/bin_recycle.png" /></a>
+                            </li>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="~/Content/images/bin_trash.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="~/Content/images/bin_compost.png" /></a>
+                            </li>
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="~/Content/images/bin_recycle.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="exit-Modal-Btn">
+                <img src="~/Content/images/btn_exit_on.png" />
+                <img src="~/Content/images/btn_exit.png" />
+
+            </div>
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 89px;left: 96px;text-align:center;font-size: 36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="yes-btn">
+
+                <img src="~/Content/images/btn_yes_on.png" />
+                <img src="~/Content/images/btn_yes.png" />
+
+            </div>
+
+            <div id="no-btn">
+
+                <img src="~/Content/images/btn_no_on.png" />
+                <img src="~/Content/images/btn_no.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="retry-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+
+                <img src="~/Content/images/header_5.png" style=" position: absolute;top:25px;left:77px;z-index: 1;width:346px;height:158px;" />
+                <img src="~/Content/images/Background/frame.png" />
+            </div>
+
+            <div id="re-try" style="position:absolute;top:203px;left:100px;cursor:pointer;">
+                <a href="~/ActionItem/AI2">
+                    <img src="~/Content/images/btn_replay_on.png" />
+                    <img src="~/Content/images/btn_replay.png" />
+                </a>
+            </div>
+
+            <div id="next-button2">
+
+                <img src="~/Content/images/Arrows/btn_next_on.png" />
+                <img src="~/Content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="fail-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 46px;left: 162px;text-align:center;font-size: 36px;"></p>
+
+                <div class="append-score">
+                    <p></p>
+                </div>
+                <img src="~/Content/images/header_7.png" style=" position: absolute;z-index: 1;top: 35px;left: 129px;width:230px;height:164px;" />
+                <img src="~/Content/images/Background/frame.png" />
+            </div>
+
+            <div id="re-try" style="position:absolute;top:203px;left:210px;cursor:pointer;">
+                <a href="~/ActionItem/AI2">
+                    <img src="~/Content/images/btn_replay_on.png" />
+                    <img src="~/Content/images/btn_replay.png" />
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="flip-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                @*<p style="position:absolute;top: 68px;left: 64px;text-align:center;">You have now unlocked<br />Junk Shooters!</p>*@
+                <p style="position:absolute;top: 136px;left: 128px;text-align:center;">It's <img src="~/Content/images/header_6.png" /> time!</p>
+
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="next-button3">
+                <a href="http://changemyworldnow.education/user" target="_parent">
+                    <img src="~/Content/images/Arrows/btn_next_on.png" />
+                    <img src="~/Content/images/Arrows/btn_next.png" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
