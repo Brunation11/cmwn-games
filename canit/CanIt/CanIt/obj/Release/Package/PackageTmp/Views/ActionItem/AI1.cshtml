@@ -1,0 +1,1075 @@
+﻿@{
+    ViewBag.Title = "AI1";
+}
+<link rel="stylesheet" href="~/Content/Arrow.css" />
+
+<audio id="Background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 2000)">
+    <source src="~/Content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="tittle" preload="auto">
+    <source src="~/Content/sound/Title Screen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="ButtonClick" preload="auto">
+    <source src="~/Content/sound/Button click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="slide" preload="auto">
+    <source src="~/Content/sound/Slide7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<style type="text/css">
+    .close-Button {
+        margin-top: 10px;
+        position: absolute;
+        z-index: 2;
+        left: 563px;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .close-Button img {
+        width: 40px;
+    }
+
+    .close-Button img:first-child {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    .close-Button img:first-child:hover {
+        opacity: 0;
+    }
+    /* Yes Button */
+    #yes-btn {
+        position:absolute;
+        top: 192px;
+        left: 104px;
+        cursor:pointer;
+    }
+
+    #yes-btn img{
+        width:126px;
+    }
+
+    #yes-btn img:first-child{
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    #yes-btn img:first-child:hover{
+        opacity: 0;
+    }
+
+    /* No Button */
+    #no-btn {
+        position:absolute;
+        top: 192px;
+        left: 278px;
+        cursor:pointer;
+    }
+    #no-btn img:first-child{
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    #no-btn img:first-child:hover{
+        opacity: 0;
+    }
+    
+
+    /* close modal btn */
+
+    .close-Modal-Btn {
+        margin-top: 24px;
+        position: absolute;
+        z-index: 1;
+        left: 443px;
+        cursor: pointer;
+    }
+
+    .close-Modal-Btn img {
+        width: 30px;
+    }
+
+    .close-Modal-Btn img:first-child {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    .close-Modal-Btn img:first-child:hover {
+        opacity: 0;
+    }
+
+    /* Exit modal for quit screen */
+
+    .exit-Modal-Btn {
+        margin-top: 24px;
+        position: absolute;
+        z-index: 1;
+        left: 443px;
+        cursor: pointer;
+    }
+
+    .exit-Modal-Btn img {
+        width: 30px;
+    }
+
+    .exit-Modal-Btn img:first-child {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+    .exit-Modal-Btn img:first-child:hover {
+        opacity: 0;
+    }
+
+    .background .title {
+        position:absolute;
+        top: 37px;
+        left: 46px;
+    }
+
+    #next-button2{
+        position: absolute;
+        margin-left:386px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button2 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button2 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button2 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 3 */
+
+    #next-button3{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button3 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button3 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button3 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 4*/
+
+    #next-button4{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button4 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button4 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button4 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 5*/
+
+    #next-button5{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button5 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button5 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button5 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 6*/
+
+    #next-button6{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button6 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button6 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button6 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 7*/
+
+    #next-button7{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button7 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button7 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button7 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 8*/
+
+    #next-button8{
+        position: absolute;
+        margin-left:395px;
+        margin-top:-34px;
+        position:fixed;
+        cursor:pointer;
+    }
+
+    #next-button8 img{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        width:50px;
+        /*margin-top:-25px;
+        margin-left:-25px;*/
+        -webkit-animation:bounce 1s infinite;
+        -moz-animation:bounce 1s infinite;
+        -ms-animation:bounce 1s infinite;
+        -o-animation:bounce 1s infinite;
+        animation:bounce 1s infinite;
+    }
+
+    #next-button8 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #next-button8 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    .background p{
+        font-family:'Source Sans Pro', sans-serif;
+        font-weight: 700;
+        font-size:36px;
+        line-height:36px;
+        color:#000;
+    }
+    /* back buttons */
+    #back-button1 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button1 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button1 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button1 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 2 */
+
+    #back-button2 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button2 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button2 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button2 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 3 */
+
+    #back-button3 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button3 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button3 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button3 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 4 */
+
+    #back-button4 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button4 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button4 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button4 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 5 */
+
+    #back-button5 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button5 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button5 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button5 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /* button 6 */
+
+    #back-button6 {
+        position:absolute;
+        top: 250px;
+        left: 29px;
+        cursor:pointer;
+    }
+
+    #back-button6 img{
+        position:absolute;
+        width: 54px;
+    }
+    
+    #back-button6 img:first-child{
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+        position: absolute;
+        z-index:10;
+        
+    }
+
+    #back-button6 img:first-child:hover{
+        opacity: 0;
+        
+    }
+
+    /*.A {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 100px;
+    }
+
+    .B {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 250px;
+    }*/
+</style>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    ////    $('#pop-up').hide().fadeIn(1000).delay(1000).fadeOut(4000);
+        
+    //});
+    $(document).ready(function () {
+        try
+        {
+            tittle.play();
+        }
+        catch(err)
+        {
+            //no sound - log error
+        }
+        
+        //Background.play();
+
+        //Quit game
+        $('.close-Button').click(function () {
+
+            $('#quit-game').modal('show');
+        });
+
+        $('#no-btn').click(function () {
+
+            $('#quit-game').modal('hide');
+        });
+        
+        $('.exit-Modal-Btn').click(function () {
+            $('#quit-game').modal('hide');
+
+        });
+        //quit modal window
+        $('.close-Modal-Btn').hide();
+        
+        $('.close-Modal-Btn').click(function () {
+            try
+            {
+                ButtonClick.load();
+                ButtonClick.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $('#game-info').modal('show');
+            $('#game-info2').modal('hide');
+            $('#game-info3').modal('hide');
+            $('#game-info4').modal('hide');
+            $('#game-info5').modal('hide');
+            $('#game-info6').modal('hide');
+            $('#game-info7').modal('hide');
+        });
+
+        $('#game-info').modal('show');
+        $('#game-info2').modal('hide');
+        $('#game-info3').modal('hide');
+        $('#game-info4').modal('hide');
+        $('#game-info5').modal('hide');
+        $('#game-info6').modal('hide');
+        $('#game-info7').modal('hide');
+
+
+        function playButtonSound()
+        {
+            try {
+                ButtonClick.load();
+                ButtonClick.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+        }
+        
+
+        $('#next-button2').click(function () {
+            playButtonSound();
+            $("#next-button3").hide().delay(3000).fadeIn(2000);
+            $('.close-Modal-Btn').show();
+            $('#game-info').modal('hide');
+            $('#game-info2').modal('show');
+        });
+
+        $('#next-button3').click(function () {
+            playButtonSound();
+            $("#next-button4").hide().delay(3000).fadeIn(2000);
+            //$('#next-button3').hide().delay(5000).fadeIn(800);
+            $('.close-Modal-Btn').show();
+            $('#game-info2').modal('hide');
+            $('#game-info3').modal('show');
+        });
+
+        $('#next-button4').click(function () {
+            playButtonSound();
+            $("#next-button5").hide().delay(3000).fadeIn(2000);
+            $('.close-Modal-Btn').show();
+            $('#game-info3').modal('hide');
+            $('#game-info4').modal('show');
+        });
+
+        $('#next-button5').click(function () {
+            playButtonSound();
+            $("#next-button6").hide().delay(3000).fadeIn(2000);
+            $('.close-Modal-Btn').show();
+            $('#game-info4').modal('hide');
+            $('#game-info5').modal('show');
+        });
+        
+        $('#next-button6').click(function () {
+            playButtonSound();
+            $('.close-Modal-Btn').show();
+            $('#game-info5').modal('hide');
+            $('#game-info6').modal('show');
+        });
+
+        $('#next-button7').click(function () {
+            try {
+                slide.load();
+                slide.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            
+            $('.close-Modal-Btn').show();
+            $('#game-info6').modal('hide');
+            $('#game-info7').modal('show');
+     
+        });
+
+        // back button functions
+
+        $('#back-button1').click(function () {
+            playButtonSound();
+            $('#game-info').modal('show');
+            $('#game-info2').modal('hide');
+        });
+
+        $('#back-button2').click(function () {
+            playButtonSound();
+            $('#game-info2').modal('show');
+            $('#game-info3').modal('hide');
+        });
+
+        $('#back-button3').click(function () {
+            playButtonSound();
+            $('#game-info3').modal('show');
+            $('#game-info4').modal('hide');
+        });
+        
+        $('#back-button4').click(function () {
+            playButtonSound();
+            $('#game-info4').modal('show');
+            $('#game-info5').modal('hide');
+        });
+
+        $('#back-button5').click(function () {
+            playButtonSound();
+            $('#game-info5').modal('show');
+            $('#game-info6').modal('hide');
+        });
+
+        $('#back-button6').click(function () {
+            playButtonSound();
+            $('#game-info6').modal('show');
+            $('#game-info7').modal('hide');
+        });
+    });
+</script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="container">
+
+                <div class="close-Button">
+                    <img src="~/Content/images/btn_exit_on.png" />
+                    <img src="~/Content/images/btn_exit.png" />
+
+                </div>
+
+                @*<div class="A"></div>
+                    <div class="B"></div>*@
+
+                <!-- dumpster carousel starts here -->
+              
+
+                
+
+                
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="title">
+                    <img src="~/Content/images/title.png"/>
+                </div>
+                <img src="~/Content/images/Background/bkg_1.png"/>
+            </div>
+
+            <div id="next-button2">
+                
+                    <img src="~/Content/images/Arrows/btn_next_on.png" />
+                    <img src="~/Content/images/Arrows/btn_next.png" />
+               
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info2" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 68px;left: 117px;text-align:center;">Ok...you need to<br />know three things<br />to complete Can It,<br />unlock a game,<br />and win a flip!</p>
+                <img src="~/Content/images/metal_can.png" style="position: absolute;  top: 73px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="back-button1">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+
+            </div>
+
+            <div id="next-button3">
+                
+                    <img src="~/Content/images/Arrows/btn_next_on.png" />
+                    <img src="~/Content/images/Arrows/btn_next.png" />
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info3" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+
+            
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 153px;left: 88px;text-align:center;font-size: 28px;">Stuff nobody wants.<br />Trash has little or no value<br />and can't be used<br />to make anything.</p>
+                <img src="~/Content/images/header_1.png" style=" position: absolute;top:66px;left:143px;z-index: 1;"/>
+                <img src="~/Content/images/big_bulb.png" style="position: absolute;top: 26px;left: 79px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="back-button2">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button4">
+
+                <img src="~/Content/images/Arrows/btn_next_on.png" />
+                <img src="~/Content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info4" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 118px;left: 52px;text-align:center;font-size: 28px;">Anything that can be used<br />again or deconstructed to make<br />something new.</p>
+                <img src="~/Content/images/header_2.png" style=" position: absolute;top: 52px;left: 90px;"/>
+                <img src="~/Content/images/big_tv.png" style="position: absolute;top: 196px;left: 26px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+
+            <div id="back-button3">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button5">
+
+                <img src="~/Content/images/Arrows/btn_next_on.png" />
+                <img src="~/Content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info5" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 118px;left: 52px;text-align:center;font-size: 28px;">Organic matter<br /><span style="font-weight:600;font-style:italic;">(which means it was once alive)</span><br />that has decayed and is used<br />as plant fertilizer.</p>
+                <img src="~/Content/images/big_apple_core.png" style="position: absolute;top: 28px;left: 370px;"/>
+                <img src="~/Content/images/header_3.png" style="position:absolute;left: 100px;top: 47px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="back-button4">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button6">
+
+                <img src="~/Content/images/Arrows/btn_next_on.png" />
+                <img src="~/Content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info6" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 118px;left: 52px;text-align:center;font-size: 28px;"></p>
+                <img src="~/Content/images/bin_3.png" style=" position: absolute;top: 106px;left: 55px;"/>
+                <img src="~/Content/images/header_4.png" style="position: absolute;top: 58px;left: 37px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="back-button5">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button7">
+
+                <img src="~/Content/images/Arrows/btn_next_on.png" />
+                <img src="~/Content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info7" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+           
+
+
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 118px;left: 37px;text-align:center;font-size: 28px;">Sort 10 to Win!<br/>Double tap/click to release an item<br />from the dumpster into the<br />correct bin below.</p>
+                <img src="~/Content/images/dumpster-1.png" style="position:absolute;top: 20px;left: 175px;width: 156px;"/>
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="back-button6">
+                <img src="~/Content/images/Arrows/btn_back_on.png" />
+                <img src="~/Content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button8">
+                <a href="~/ActionItem/AI2">
+                    <img src="~/Content/images/Arrows/btn_next_on.png" />
+                    <img src="~/Content/images/Arrows/btn_next.png" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            
+            <div class="background">
+                <div class="Metal-can">
+                    @*<img src="~/Content/images/title.png" />*@
+                </div>
+                <p style="position:absolute;top: 89px;left: 96px;text-align:center;font-size: 36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+                
+                <img src="~/Content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="yes-btn">
+
+                <img src="~/Content/images/btn_yes_on.png" />
+                <img src="~/Content/images/btn_yes.png" />
+
+            </div>
+
+            <div id="no-btn">
+                
+                <img src="~/Content/images/btn_no_on.png" />
+                <img src="~/Content/images/btn_no.png"/>
+                
+            </div>
+
+        </div>
+    </div>
+</div>

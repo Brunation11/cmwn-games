@@ -1,22 +1,22 @@
-var bgMusic = $("#background")[0],
-playing = true;
+var correct_items = new Array();
+var clicked_item = $(this).attr(".yes");
 
-bgMusic.addEventListener('ended', function () {
-    this.currentTime = 0;
-    if (playing) {
-        this.play();
-    }
-}, false);
-
-background.play();
+forest.play();
+forest.loop = true;
 
 $(document).ready(function () {
 
-    $('#title2').hide();
+    $('#next-ai').hide();
 
-    $('#approve').hide();
+    $('#game-info').modal('show');
 
-    $('#close').click(function () {
+    $("#next-button").hide().fadeIn(8000);
+
+    $('#next-button').click(function () {
+        $('#game-info').modal('hide');
+    });
+
+    $("#close").click(function () {
         $('#game-close').modal('show');
     });
 
@@ -24,27 +24,188 @@ $(document).ready(function () {
         $('#game-close').modal('hide');
     });
 
-    $('#next-button').click(function () {
-        background.play();
-        $('#title').fadeOut();
-        $('#title2').show();
+    $('#m-close').click(function () {
+        ants.pause();
+        $('#ants-modal').modal('hide');
     });
 
-    $('#email').click(function () {
-        $('#email-info').fadeOut();
-        $('#approve').show();
+    $('#m-close2').click(function () {
+        chipmunk.pause();
+        $('#chip-modal').modal('hide');
     });
 
-    $('#no-email').click(function () {
-         $("#putcontenthere").load("/action_items/ai4.html");
-     });
-
-    $('#no-app').click(function () {
-            $("#putcontenthere").load("/action_items/ai4_2.html");
+    $('#m-close3').click(function () {
+        millipede.pause();
+        $('#milli-modal').modal('hide');
     });
 
-    $('#app').click(function () {
-            $("#putcontenthere").load("/action_items/ai4.html");
+    $('#m-close4').click(function () {
+        toad.pause();
+        $('#toad-modal').modal('hide');
+    });
+
+    $('#m-close5').click(function () {
+        snake.pause();
+        $('#snake-modal').modal('hide');
+    });
+
+    $('#m-close6').click(function () {
+        mouse.pause();
+        $('#mouse-modal').modal('hide');
+    });
+
+});
+
+$(document).ready(function () {
+
+    $('#n1').click(function () {
+        $('#n1').hide();
+        $('#n1-active').show();
+        $('#ants-modal').modal('show');
+        ants.load();
+        ants.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close').click(function () {
+                $('#ants-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n1-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });               
+        }
+    });
+
+    $('#n2').click(function () {
+        $('#n2').hide();
+        $('#n2-active').show();
+        $('#chip-modal').modal('show');
+        chipmunk.load();
+        chipmunk.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close2').click(function () {
+                $('#chip-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n2-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });
+        }
+    });
+
+    $('#n3').click(function () {
+        $('#n3').hide();
+        $('#n3-active').show();
+        $('#milli-modal').modal('show');
+        millipede.load();
+        millipede.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close3').click(function () {
+                $('#milli-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n3-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });
+        }
+    });
+
+    $('#n4').click(function () {
+        $('#n4').hide();
+        $('#n4-active').show();
+        $('#toad-modal').modal('show');
+        toad.load();
+        toad.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close4').click(function () {
+                $('#toad-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n4-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });
+        }
+    });
+
+    $('#n5').click(function () {
+        $('#n5').hide();
+        $('#n5-active').show();
+        $('#snake-modal').modal('show');
+        snake.load();
+        snake.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close5').click(function () {
+                $('#snake-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n5-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });
+        }
+    });
+
+    $('#n6').click(function () {
+        $('#n6').hide();
+        $('#n6-active').show();
+        $('#mouse-modal').modal('show');
+        mouse.load();
+        mouse.play();
+
+        correct_items.push(clicked_item);
+
+        if (correct_items.length === 1) {
+
+            correct.load();
+            correct.play();
+        } else if (correct_items.length === 6) {
+            $('#m-close6').click(function () {
+                $('#mouse-modal').modal('hide');
+                $('#game-complete').modal('show');
+                $('#n6-active').show(function () {
+                    $('#next-ai').show();
+                });
+                //alert("You Won!!");
+            });
+        }
     });
 
 });
