@@ -1,6 +1,3 @@
-//$(document).ready(function () {
-////    $('#pop-up').hide().fadeIn(1000).delay(1000).fadeOut(4000);
-//});
 $(document).ready(function () {
 try
 {
