@@ -1,17 +1,9 @@
-$(document).ready(function () {
+ $(document).ready(function () {
 
-        $('#video-modal').modal('show');
-
-        $('#close').click(function () {
-            $('#game-close').modal('show');
+        $('#btn').click(function () {
+            $('#btn').delay(2000).delay(1000, function () {
+               $("#putcontenthere").load("/action_items/ai7.html");
+            });
+            click.play();
         });
-
-        $('.No-Btns').click(function () {
-            $('#game-close').modal('hide');
-        });
-
-        $('#post').click(function () {
-            $("#putcontenthere").load("/action_items/ai7.html");
-        });
-
-});
+    })

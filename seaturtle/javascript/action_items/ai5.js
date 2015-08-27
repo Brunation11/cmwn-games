@@ -1,40 +1,114 @@
-   var bgMusic = $("#background")[0],
-    playing = true;
+  var full;
+    var correct_items = new Array();
 
-    bgMusic.addEventListener('ended', function () {
-        this.currentTime = 0;
-        if (playing) {
-            this.play();
-        }
-    }, false);
-
-    background.play();
 
     $(document).ready(function () {
 
-        $("#upload").hide();
 
-        $('#video-modal').modal('show');
+        $(".body-content").addClass("net");
 
-        $('#next-button').hide().fadeIn(4000);
+        bkg_sg.load();
+        bkg_sg.play();
 
-        $('#next-button').click(function () {
-            background.pause();
-            $('#next-button').hide();
-            $('#video-modal').modal('hide');
-            $("#upload").fadeIn(2000);
+        document.getElementById('bkg_sg').addEventListener('ended', function () {
+            this.currentTime = 0;
+            this.play();
+        }, false);
+
+        $('#btn').hide();
+        $('#btn').click(function () {
+            $('#btn').delay(1000).delay(1000, function () {
+                $("#putcontenthere").load("/action_items/ai6.html");
+            });
+            click.play();
         });
 
-        $('#close').click(function () {
-            $('#game-close').modal('show');
+        $('#pb').click(function () {
+            $('#pb').css('display', 'none');
+            correct_scoop_game.play();
+            correct_items.push(1);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
         });
 
-        $('.No-Btns').click(function () {
-            $('#game-close').modal('hide');
+        $('#bb').click(function () {
+            $('#bb').css('display', 'none');
+            correct_scoop_game1.play();
+            correct_items.push(2);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
         });
 
-        $('#up-button').click(function () {
-            $("#putcontenthere").load("/action_items/ai6.html");
+        $('#cc').click(function () {
+            $('#cc').css('display', 'none');
+            correct_scoop_game2.play();
+            correct_items.push(3);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
         });
 
-    });
+        $('#wb').click(function () {
+            $('#wb').css('display', 'none');
+            correct_scoop_game3.play();
+            correct_items.push(4);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#cp').click(function () {
+            $('#cp').css('display', 'none');
+            correct_scoop_game4.play();
+            correct_items.push(5);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#cb').click(function () {
+            $('#cb').css('display', 'none');
+            correct_scoop_game5.play();
+            correct_items.push(6);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('#pr').click(function () {
+            $('#pr').css('display', 'none');
+            correct_scoop_game6.play();
+            correct_items.push(7);
+            if (correct_items.length === 7) {
+                //pop or redirect your game complete screen
+                $('#btn').show();
+                scoop_game.play();
+                $('#happy').css('opacity', '1');
+            }
+        });
+
+        $('.wrong').click(function () {
+            incorrect.play();
+        });
+
+    })
