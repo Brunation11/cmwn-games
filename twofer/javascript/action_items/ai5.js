@@ -59,7 +59,7 @@ var memory_array = ['fox', 'mouse', 'frog', 'lilypad', 'robin', 'worm', 'rhino',
 var memory_values = [];
 var memory_tile_ids = [];
 var tiles_flipped = 0;
-var file_prefix = 'content/images/squares/square_';
+var file_prefix = '/content/images/squares/square_';
 var file_suffix = '.png';
 var matched;
 
@@ -73,6 +73,7 @@ Array.prototype.memory_tile_shuffle = function () {
         this[i] = temp;
     }
 }
+
 function newBoard() {
     tiles_flipped = 0;
     var output = '';
@@ -80,9 +81,9 @@ function newBoard() {
     for (var i = 0; i < memory_array.length; i++) {
         output += '<div id="title_' + i + '" onclick="memoryFlipTile(this,\'' + memory_array[i] + '\')"></div>';
     }
-    document.getElementById('memory_board').innerHTML = output;
+    
+    $("#memory_board").html(output);
 
-    // alert("hello");
 }
 function memoryFlipTile(tile, val) {
     
@@ -118,7 +119,7 @@ function memoryFlipTile(tile, val) {
                     complete.load();
                     complete.play();
                    // document.getElementById('memory_board').innerHTML = "";
-                   // newBoard();
+                    //newBoard();
                 }
             } else {
                 setTimeout(flip2Back, 700);
@@ -383,3 +384,7 @@ function memoryFlipTile(tile, val) {
         
     }
 }
+
+$(document).ready(function () {
+    newBoard();
+});
