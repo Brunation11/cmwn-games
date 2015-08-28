@@ -122,6 +122,10 @@ $('#next-button7').click(function () {
 
 });
 
+$('#next-button8').click(function () {
+     $("#putcontenthere").load("action_items/ai2.html");
+});
+
 // back button functions
 
 $('#back-button1').click(function () {
