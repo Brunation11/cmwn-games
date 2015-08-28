@@ -1,228 +1,634 @@
-<audio id="background" preload="auto">
-    <source src="content/sound/Background_Slide4.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-<audio id="facts" preload="auto">
-    <source src="content/sound/FactReveal_Slides6-8.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
 <script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+<script src="thirdparties/jquery.timer.js"></script>
+<script type="text/javascript" src="thirdparties/jquery.touchSwipe.min.js"></script>
 
+<!--sound-->
+<audio id="Background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 2000)">
+    <source src="content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="ButtonClick" preload="auto">
+    <source src="content/sound/Button click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="slide" preload="auto">
+    <source src="content/sound/Slide7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
 <div class="container body-content">
     <div class="col-md-12">
         <div class="row">
-            <div class="game">
+            <div class="container">
 
-                <div id="close" style="position:absolute; z-index:999; margin-left:583px;">
-                    <img src="content/images/buttons/btn_exit.png" style="width:34px; cursor:pointer; position:absolute;" />
-                    <img src="content/images/buttons/btn_exit_on.png" style="width:34px; cursor:pointer;" />
+                <div class="scape-Btn">
+                    <img src="content/images/btn_exit_on.png" />
+                    <img src="content/images/btn_exit.png" />
+
                 </div>
 
-                <div id="next-button" style="position:absolute; z-index:12; margin-left:538px; margin-top:337px;">
-                    <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
-                    <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
+                <!-- SORE -->
+                <div id="score">
+                    <h1>SCORE:</h1>
+                    <p>0</p>
                 </div>
 
-                <div id="field">
-                    <div id="title" class="background-intro">
-                        <img src="content/images/BKG_2.png" style="width:616px; position:absolute; margin-top:1px; z-index:1;">
-                    </div><!--end background-intro-->
+                <div class="animated-points">
+                    <div class="win"><h1>+ 15</h1></div>
+                    <div class="loose"><h1>- 30</h1></div>
+                </div>
 
-                    <div style="position:absolute; height:97.5%; width:100%; overflow:hidden;">
-                        <div id="butterfly" style="position:absolute; z-index:9;">
-                            <img src="content/images/butterfly.gif" style="width:230px;" />
-                        </div>
+                <!-- dumpster carousel starts here -->
 
-                        <div id="yellow" class="animate-flower2" style="position:absolute; z-index:9; margin-left:-2px; margin-top:324px;">
-                            <img src="content/images/flower_yellow.png" style="width:140px;" />
-                        </div>
+                <div id="myCarousel" class="carousel slide" data-interval="false">
+                    <div class="row">
 
-                        <div id="orange" class="animate-flower3" style="position:absolute; z-index:9; margin-left:325px; margin-top:329px;">
-                            <img src="content/images/flower_orange.png" style="width:140px;" />
-                        </div>
 
-                        <div id="yellow2" class="animate-flower4" style="position:absolute; z-index:8; margin-left:214px; margin-top:329px;">
-                            <img src="content/images/flower_yellow.png" style="width:140px;" />
-                        </div>
+                            <div class="carousel-inner">
 
-                        <div id="red" class="animate-flower" style="position:absolute; z-index:8;">
-                            <img src="content/images/flower_red.png" style="width:140px;" />
-                        </div>
 
-                        <div id="yellow3" class="animate-flower5" style="position:absolute; z-index:8; margin-left:405px; margin-top:285px;">
-                            <img src="content/images/flower_yellow.png" style="width:140px;" />
-                        </div>
+                                <div class="item active">
+                                    <div id="apple-core" data-correct="compost" class="Hit_One">
+                                        <img src="content/images/Compost/big_apple_core.png" alt="applecore" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Apple Core</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+                                <div class="item">
+                                    <div id="batteries" data-correct="trash" class="Hit_three">
+                                        <img src="content/images/Trash/batteries.png" alt="batteries" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Batteries</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+
+
+                                <div class="item">
+                                    <div id="computer" data-correct="recycle" class="Hit_five">
+                                        <img src="content/images/Recycle/computer.png" alt="computer" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Computer</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="carton-boxes" data-correct="recycle" class="Hit_two">
+                                        <img src="content/images/Recycle/carton_boxes.png" alt="carton" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Cardboard</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="banana-peel" data-correct="compost" class="Hit_four">
+                                        <img src="content/images/Compost/bannana_peal.png" alt="banana" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Banana peel</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+                                <div class="item">
+                                    <div id="bulb" data-correct="trash" class="Hit_six">
+                                        <img src="content/images/Trash/big_bulb.png" alt="bulb" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Light Bulb</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+
+
+                                <div class="item">
+                                    <div id="carrot" data-correct="compost" class="Hit_seven">
+                                        <img src="content/images/Compost/carrot.png" alt="carrot" class="img-responsive" />
+                                        <h2 style="margin-left: 208px;margin-top: -104px;color:white;font-size:14px;">Carrot</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+                                <div class="item">
+                                    <div id="diaper" data-correct="trash" class="Hit_nine">
+                                        <img src="content/images/Trash/diaper.png" alt="diaper" class="img-responsive" />
+                                        <h2 style="margin-left: 205px;margin-top: -104px;color:white;font-size:14px;">Diapers</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+                                <div class="item">
+                                    <div id="metal-can" data-correct="recycle" class="Hit_eight">
+                                        <img src="content/images/Recycle/food_can.png" alt="mtalCan" class="img-responsive" />
+                                        <h2 style="margin-left: 196px;margin-top: -104px;color:white;font-size:14px;">Metal Can</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="oatmeal" data-correct="compost" class="Hit_ten">
+                                        <img src="content/images/Compost/cereal_bowl.png" alt="oatmeal" class="img-responsive" />
+                                        <h2 style="margin-left: 205px;margin-top: -104px;color:white;font-size:14px;">Oatmeal</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="paper-box" data-correct="recycle" class="Hit_eleven">
+                                        <img src="content/images/Recycle/juice_carton.png" alt="Paper box" class="img-responsive" />
+                                        <h2 style="margin-left:188px;margin-top: -104px;color:white;font-size:14px;">Paper Carton</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+                                <div class="item">
+                                    <div id="chicken" data-correct="trash" class="Hit_thirteen">
+                                        <img src="content/images/Compost/chicken_drum.png" alt="chicken" class="img-responsive" />
+                                        <h2 style="margin-left:203px;margin-top: -104px;color:white;font-size:14px;">Chicken</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+                                <div class="item">
+                                    <div id="milk-carton" data-correct="recycle" class="Hit_fourteen">
+                                        <img src="content/images/Recycle/milk_carton.png" alt="Milk carton" class="img-responsive" />
+                                        <h2 style="margin-left:196px;margin-top: -104px;color:white;font-size:14px;">Milk Carton</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="mirror" data-correct="trash" class="Hit_fifteen">
+                                        <img src="content/images/Trash/mirror.png" alt="mirror" class="img-responsive" />
+                                        <h2 style="margin-left:209px;margin-top: -104px;color:white;font-size:14px;">Mirror</h2>
+
+                                    </div>
+                                </div><!-- trash -->
+
+
+                                <div class="item">
+                                    <div id="magazine" data-correct="recycle" class="Hit_seventeen">
+                                        <img src="content/images/Recycle/paper.png" alt="Newspaper" class="img-responsive" />
+                                        <h2 style="margin-left:205px;margin-top: -104px;color:white;font-size:14px;">Newspaper</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="oil" data-correct="trash" class="Hit_eighteen">
+                                        <img src="content/images/Trash/oil_can.png" alt="oil" class="img-responsive" />
+                                        <h2 style="margin-left:205px;margin-top: -104px;color:white;font-size:14px;">Oil Can</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+                                <div class="item">
+                                    <div id="styrofoam" data-correct="trash" class="Hit_twelve">
+                                        <img src="content/images/Trash/foam_tray.png" alt="styrofoam" class="img-responsive" />
+                                        <h2 style="margin-left:196px;margin-top: -104px;color:white;font-size:14px;">Styrofoam</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+                                <div class="item">
+                                    <div id="egg" data-correct="compost" class="Hit_nineteen">
+                                        <img src="content/images/Compost/egg_shell.png" alt="egg" class="img-responsive" />
+                                        <h2 style="margin-left:205px;margin-top: -104px;color:white;font-size:14px;">Egg Shells</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="phone" data-correct="recycle" class="Hit_twenty">
+                                        <img src="content/images/Recycle/phone.png" alt="phone" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">Cell Phone</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="cracker" data-correct="compost" class="Hit_sixteen">
+                                        <img src="content/images/Compost/cracker.png" alt="cracker" class="img-responsive" />
+                                        <h2 style="margin-left:205px;margin-top: -104px;color:white;font-size:14px;">Cracker</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+                                <div class="item">
+                                    <div id="feather" data-correct="compost" class="Hit_twentytwo">
+                                        <img src="content/images/Compost/feather.png" alt="feather" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">A feather</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="bag" data-correct="recycle" class="Hit_twentythree">
+                                        <img src="content/images/Recycle/plastic_bag.png" alt="bag" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">Plastic Bag</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+                                <div class="item">
+                                    <div id="fish" data-correct="compost" class="Hit_twentyfive">
+                                        <img src="content/images/Compost/fish.png" alt="fish" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">Fish Bones</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="plastic-bottle" data-correct="recycle" class="Hit_twentysix">
+                                        <img src="content/images/Recycle/plastic_bottle.png" alt="bottle" class="img-responsive" />
+                                        <h2 style="margin-left:193px;margin-top: -104px;color:white;font-size:14px;">Water Bottle</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="flower" data-correct="compost" class="Hit_twentyseven">
+                                        <img src="content/images/Compost/flower.png" alt="flower" class="img-responsive" />
+                                        <h2 style="margin-left:204px;margin-top: -104px;color:white;font-size:14px;">Flowers</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="plastic-package" data-correct="recycle" class="Hit_twentyeight">
+                                        <img src="content/images/Recycle/sauce_container.png" alt="container" class="img-responsive" />
+                                        <h2 style="margin-left:209px;margin-top: -104px;color:white;font-size:14px;">Plastic</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="leaf" data-correct="compost" class="Hit_twentynine">
+                                        <img src="content/images/Compost/leaf.png" alt="leaf" class="img-responsive" />
+                                        <h2 style="margin-left:209px;margin-top: -104px;color:white;font-size:14px;">A Leaf</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="soap" data-correct="recycle" class="Hit_thirty">
+                                        <img src="content/images/Recycle/soap_bottle.png" alt="bottle" class="img-responsive" />
+                                        <h2 style="margin-left:196px;margin-top: -104px;color:white;font-size:14px;">Soap bottle</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="toast" data-correct="compost" class="Hit_thirtynine">
+                                        <img src="content/images/Compost/toast.png" alt="toast" class="img-responsive" />
+                                        <h2 style="margin-left:188px;margin-top: -104px;color:white;font-size:14px;">Piece of toast</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+                                <div class="item">
+                                    <div id="hay" data-correct="compost" class="Hit_thirtyone">
+                                        <img src="content/images/Compost/matt.png" alt="hay" class="img-responsive" />
+                                        <h2 style="margin-left:219px;margin-top: -104px;color:white;font-size:14px;">Hay</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+                                <div class="item">
+                                    <div id="socks" data-correct="trash" class="Hit_twentyfour">
+                                        <img src="content/images/Trash/socks.png" alt="socks" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">Old Sock</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+
+                                <div class="item">
+                                    <div id="soda-bottle" data-correct="recycle" class="Hit_thirtytwo">
+                                        <img src="content/images/Recycle/soda_bottle.png" alt="soda bottle" class="img-responsive" />
+                                        <h2 style="margin-left:196px;margin-top: -104px;color:white;font-size:14px;">Soda bottle</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="peanut" data-correct="compost" class="Hit_thirtythree">
+                                        <img src="content/images/Compost/peanut.png" alt="peanut" class="img-responsive" />
+                                        <h2 style="margin-left:191px;margin-top: -104px;color:white;font-size:14px;">Peanut Shell</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="soda-can" data-correct="recycle" class="Hit_thirtyfour">
+                                        <img src="content/images/Recycle/soda_can.png" alt="soda can" class="img-responsive" />
+                                        <h2 style="margin-left:199px;margin-top: -104px;color:white;font-size:14px;">Soda can</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="pizza" data-correct="compost" class="Hit_thirtyfive">
+                                        <img src="content/images/Compost/pizza.png" alt="pizza" class="img-responsive" />
+                                        <h2 style="margin-left:199px;margin-top: -104px;color:white;font-size:14px;">Pizza slice</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="tv" data-correct="recycle" class="Hit_thirtysix">
+                                        <img src="content/images/Recycle/T.V.png" alt="tv" class="img-responsive" />
+                                        <h2 style="margin-left:216px;margin-top: -104px;color:white;font-size:14px;">T.V.</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                                <div class="item">
+                                    <div id="tea" data-correct="compost" class="Hit_thirtyseven">
+                                        <img src="content/images/Compost/tea_bag.png" alt="tea bag" class="img-responsive" />
+                                        <h2 style="margin-left:204px;margin-top: -104px;color:white;font-size:14px;">Tea Bag</h2>
+                                    </div>
+                                </div><!-- composed -->
+
+
+
+                                <div class="item">
+                                    <div id="tissue" data-correct="recycle" class="Hit_thirtyeight">
+                                        <img src="content/images/Recycle/tissue.png" alt="tissue" class="img-responsive" />
+                                        <h2 style="margin-left:195px;margin-top: -104px;color:white;font-size:14px;">Tissue Box</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+                                <div class="item">
+                                    <div id="paint" data-correct="trash" class="Hit_twentyone">
+                                        <img src="content/images/Trash/paint_bucket.png" alt="paint" class="img-responsive" />
+                                        <h2 style="margin-left:197px;margin-top: -104px;color:white;font-size:14px;">Paint Can</h2>
+                                    </div>
+                                </div><!-- trash -->
+
+
+
+                                <div class="item">
+                                    <div id="tray" data-correct="recycle" class="Hit_forty">
+                                        <img src="content/images/Recycle/tray.png" alt="tray" class="img-responsive" />
+                                        <h2 style="margin-left:195px;margin-top: -104px;color:white;font-size:14px;">Plastic tray</h2>
+                                    </div>
+                                </div><!-- recycle -->
+
+
+
+                            </div>
+
+                    </div>
+                </div><!-- /.container -->
+                <!-- timer -->
+                <div class="Time">
+                    <h1>TIME:</h1>
+                    <p style="margin-left:93px;margin-top:-39px;color: white;font-size: 1.6em;">:</p>
+                </div>
+
+                <div class="time-function">
+
+                    <div id="counter" class="text-right" style="position:absolute; font-size:1.5em; color:#FFF; margin-top:29px; margin-left:75px; letter-spacing:6px; z-index:1000;width: 60px;"></div>
+                </div>
+
+                <!-- dumpster img-->
+                <div class="dumpster">
+                    <img src="content/images/dumpster-1.png" />
+                </div>
+
+
+                <!-- animate these items falling in to trash cans -->
+
+
+
+                <div id="apple-core1" class="Drop_1" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/big_apple_core.png" style=" width: 44px;" /></div>
+                <div id="carton-boxes2" class="Drop_2" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/carton_boxes.png" /></div>
+                <div id="batteries3" class="Drop_3" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/batteries.png" /></div>
+                <div id="banana-peel4" class="Drop_4" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/bannana_peal.png" /></div>
+                <div id="computer5" class="Drop_5" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/computer.png" /></div>
+                <div id="bulb6" class="Drop_6" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/big_bulb.png" /></div>
+                <div id="carrot7" class="Drop_7" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/carrot.png" /></div>
+                <div id="metal-can8" class="Drop_8" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/food_can.png" /></div>
+                <div id="diaper9" class="Drop_9" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/diaper.png" /></div>
+                <div id="oatmeal10" class="Drop_10" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/cereal_bowl.png" /></div>
+                <div id="paper-box11" class="Drop_11" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/juice_carton.png" /></div>
+                <div id="styrofoam12" class="Drop_12" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/foam_tray.png" /></div>
+                <div id="chicken13" class="Drop_13" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/chicken_drum.png" /></div>
+                <div id="milk-carton14" class="Drop_14" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/milk_carton.png" /></div>
+                <div id="mirror15" class="Drop_15" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/mirror.png" /></div>
+                <div id="cracker16" class="Drop_16" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/cracker.png" /></div>
+                <div id="magazine17" class="Drop_17" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/paper.png" /></div>
+                <div id="oil18" class="Drop_18" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/oil_can.png" /></div>
+                <div id="egg19" class="Drop_19" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/egg_shell.png" /></div>
+                <div id="phone20" class="Drop_20" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/phone.png" /></div>
+                <div id="paint21" class="Drop_21" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/paint_bucket.png" /></div>
+                <div id="feather22" class="Drop_22" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/feather.png" /></div>
+                <div id="bag23" class="Drop_23" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/plastic_bag.png" /></div>
+                <div id="socks24" class="Drop_24" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/socks.png" /></div>
+                <div id="fish25" class="Drop_25" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/fish.png" /></div>
+                <div id="plastic-bottle26" class="Drop_26" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/plastic_bottle.png" /></div>
+                <div id="flower27" class="Drop_27" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/flower.png" /></div>
+                <div id="plastic-package28" class="Drop_28" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/sauce_container.png" /></div>
+                <div id="leaf29" class="Drop_29" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/leaf.png" /></div>
+                <div id="soap30" class="Drop_30" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soap_bottle.png" /></div>
+                <div id="hay31" class="Drop_31" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/matt.png" /></div>
+                <div id="soda-bottle32" class="Drop_32" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soda_bottle.png" /></div>
+                <div id="peanut33" class="Drop_33" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/peanut.png" /></div>
+                <div id="soda-can34" class="Drop_34" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soda_can.png" /></div>
+                <div id="pizza35" class="Drop_35" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/pizza.png" /></div>
+                <div id="tv36" class="Drop_36" style="position:absolute;z-index:1;margin-top:40px;margin-left: 233px;cursor:pointer;"><img src="content/images/Recycle/T.V.png" /></div>
+                <div id="tea37" class="Drop_37" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/tea_bag.png" /></div>
+                <div id="tissue38" class="Drop_38" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/tissue.png" /></div>
+                <div id="toast39" class="Drop_39" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/toast.png" /></div>
+                <div id="tray40" class="Drop_40" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/tray.png" /></div>
+
+
+
+                <!-- second carousel for trash cans -->
+
+                <div id='carousel_container' style="position:absolute; z-index:1; margin-top:71px; margin-left: -15px;">
+                    <div id='carousel_inner'>
+                        <ul id='carousel_ul'>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
 
-                <div id="f1" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c1" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-205px;">Adult Monarchs feed on flower nectar<br />by sucking it through a tube<br />called the proboscis.</p>
-                </div>
 
-                <div id="f2" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c2" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-205px;">North American Monarchs are the<br />only butterflies that migrate such<br />a long distance – up to 3,000 miles!</p>
-                </div>
 
-                <div id="f3" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c3" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-228px;">Monarchs prefer warm climates.<br />If they are dry they can survive freezing<br />temperatures but if they get wet and<br />the temperature drops they will die.</p>
-                </div>
-
-                <div id="f4" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c4" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-205px;">Monarchs come from eggs<br />which hatch caterpillars who feed<br />on milkweed plants.</p>
-                </div>
-
-                <div id="f5" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c5" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-194px;">Monarchs fly between<br />12 and 25 miles per hour.</p>
-                </div>
-
-                <div id="f6" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c6" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-237px;">Monarchs who live west of the<br />Rocky Mountains migrate to<br />southern California in winter,<br />while those who live east of<br />the Rockies head to Mexico.</p>
-                </div>
-
-                <div id="f7" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c7" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-205px;">In Mexico they roost in trees in<br />HUGE groups that may have<br />MILLIONS of butterflies!</p>
-                </div>
-
-                <div id="f8" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c8" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-225px; margin-bottom:18px;">Monarchs smell with their antennas<br />and tasted with their feet!</p>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px;">The feet have receptors called tarsi<br />that taste the sweet nectar.</p>
-                </div>
-
-                <div id="f9" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c9" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-228px;">Monarchs use updrafts<br />of warm air (called thermals)<br />to allow them to glide<br />so they can conserve energy.</p>
-                </div>
-
-                <div id="f10" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c10" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-205px;">A large monarch caterpillar<br />can devour an entire milkweed plant<br />in less than four minutes.</p>
-                </div>
-
-                <div id="f11" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c11" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-194px;">Caterpillar poop is called frass.<br /><i>They make a lot of frass!</i></p>
-                </div>
-
-                <div id="f12" style="position:absolute; z-index:9; margin-top:9px; margin-left:40px;">
-                    <img src="content/images/frame_oval.png" style="width:533px;" />
-                    <div id="c12" style="position:absolute; z-index:999; margin-top:-291px; margin-left:401px;">
-                        <img src="content/images/buttons/btn_little_exit.png" style="width:60px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_little_exit_on.png" style="width:60px; cursor:pointer;" />
-                    </div>
-                    <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bolder; text-align:center; line-height:29px; margin-top:-237px;">Monarchs are poisonous<br />to many animals.<br />The poison comes from the<br />milkweed they eat which make<br />the Monarchs taste terrible!</p>
-                </div>
-
-                <div id="next-button2" style="position:absolute; z-index:10; margin-left:538px; margin-top:337px;">
-                    <a href="#">
-                        <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
-                        <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
-                    <a href="#">
-                </div>
 
             </div>
-        </div><!--end row-->
-    </div><!--end col-md-12-->
+        </div>
+    </div>
 </div><!--end container body-content-->
 
-<!-- Game Info Modal -->
 
-<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11; overflow:hidden; height:390px;">
-    <div class="modal-dialog" style="margin-left:48px;">
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
 
-        <div style="margin-top:209px; margin-left:-25px;">
-            <img src="content/images/headers/header_butterfly_facts.png" style="width:575px;" />
+            <div class="exit-Modal-Btn">
+                <img src="content/images/btn_exit_on.png" />
+                <img src="content/images/btn_exit.png" />
+
+            </div>
+
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <p style="position:absolute;top: 89px;left: 96px;text-align:center;font-size: 36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+
+                <img src="content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="yes-btn">
+
+                <img src="content/images/btn_yes_on.png" />
+                <img src="content/images/btn_yes.png" />
+
+            </div>
+
+            <div id="no-btn">
+
+                <img src="content/images/btn_no_on.png" />
+                <img src="content/images/btn_no.png" />
+
+            </div>
+
         </div>
-
-        <!-- <div id="next-button" style="position:absolute; z-index:10; margin-left:493px; margin-top:116px;">
-            <img src="content/images/buttons/btn_next.png" style="width:83px; cursor:pointer; position:absolute;" />
-            <img src="content/images/buttons/btn_next_on.png" style="width:83px;" />
-        </div> -->
-
     </div>
 </div>
 
-<!-- Game Close Modal -->
+<div class="modal fade current" id="retry-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
 
-<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11;">
-    <div class="modal-dialog" style="margin-top:129px; margin-left:48px;">
-        <div class="modal-content" style="width:523px; height:312px;">
-            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
-                <div class="modal-body custom-font modal-text">
 
-                    <div style="position:absolute; margin-top:-28px; margin-left:-7px;">
-                        <img src="content/images/frame_rectangle.png" style="width:546px; height:363px;" />
-                    </div>
 
-                    <div style="position:absolute;">
-                        <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:53px; margin-top:35px; margin-left:111px;">Are you sure you<br /> want to quit?</p>
-                    </div>
 
-                    <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:63px;">
-                        <img src="content/images/buttons/btn_yes.png" style="width:175px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_yes_on.png" style="width:175px; cursor:pointer;" />
-                    </div>
-
-                    <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:295px;">
-                        <img src="content/images/buttons/btn_no.png" style="width:165px; position:absolute; cursor:pointer;" />
-                        <img src="content/images/buttons/btn_no_on.png" style="width:165px; cursor:pointer;" />
-                    </div>
+            <div class="background">
+                <div class="Metal-can">
 
                 </div>
+
+                <img src="content/images/header_5.png" style=" position: absolute;top:25px;left:77px;z-index: 1;width:346px;height:158px;" />
+                <img src="content/images/Background/frame.png" />
             </div>
+
+            <div id="re-try" style="position:absolute;top:203px;left:100px;cursor:pointer;">
+                <a href="~/ActionItem/AI2"><!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                    <img src="content/images/btn_replay_on.png" />
+                    <img src="content/images/btn_replay.png" />
+                </a>
+            </div>
+
+            <div id="next-button2">
+
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="fail-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+                </div>
+                <p style="position:absolute;top: 46px;left: 162px;text-align:center;font-size: 36px;"></p>
+
+                <div class="append-score">
+                    <p></p>
+                </div>
+                <img src="content/images/header_7.png" style=" position: absolute;z-index: 1;top: 35px;left: 129px;width:230px;height:164px;" />
+                <img src="content/images/Background/frame.png" />
+            </div>
+
+            <div id="re-try" style="position:absolute;top:203px;left:210px;cursor:pointer;">
+                <a href="~/ActionItem/AI2"><!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                    <img src="content/images/btn_replay_on.png" />
+                    <img src="content/images/btn_replay.png" />
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="flip-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+
+                <p style="position:absolute;top: 136px;left: 128px;text-align:center;">It's <img src="content/images/header_6.png" /> time!</p>
+
+                <img src="content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="next-button3">
+                <a href="http://changemyworldnow.education/user" target="_parent">
+                    <img src="content/images/Arrows/btn_next_on.png" />
+                    <img src="content/images/Arrows/btn_next.png" />
+                </a>
+            </div>
+
         </div>
     </div>
 </div>

@@ -1,6 +1,3 @@
-//$(document).ready(function () {
-////    $('#pop-up').hide().fadeIn(1000).delay(1000).fadeOut(4000);
-//});
 $(document).ready(function () {
 try
 {
@@ -123,6 +120,10 @@ $('#next-button7').click(function () {
     $('#game-info6').modal('hide');
     $('#game-info7').modal('show');
 
+});
+
+$('#next-button8').click(function () {
+     $("#putcontenthere").load("action_items/ai2.html");
 });
 
 // back button functions
