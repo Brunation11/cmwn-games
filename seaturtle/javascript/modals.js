@@ -27,7 +27,6 @@ var csg = document.getElementById("correct_scoop_game6");
 $(document).ready(function () {
 
     $('.exit-Btn').click(function () {
-        alert('hi there');
         $('#game-info').modal('show');
     });
 
