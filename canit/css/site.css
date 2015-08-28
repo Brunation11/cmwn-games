@@ -5496,7 +5496,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0;
+  opacity: 0.5;
   filter: alpha(opacity=50);
 }
 .modal-header {
@@ -7059,360 +7059,330 @@ input[type="checkbox"].input-validation-error {
 #back-button6 img:first-child:hover {
   opacity: 0;
 }
-/*.A {
-    width: 100px;
-    height: 100px;
-    background: blue;
+.scape-Btn {
+  margin-top: 10px;
+  z-index: 1;
+  left: 563px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 99;
+}
+.scape-Btn img {
+  width: 40px;
+}
+.scape-Btn img:first-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.scape-Btn img:first-child:hover {
+  opacity: 0;
+}
+#myCarousel {
+  position: absolute;
+  z-index: 15;
+  margin-left: 190px;
+  margin-top: 48px;
+  width: 163px;
+}
+.carousel-control.right {
+  background-image: none;
+}
+.carousel-control.left {
+  background-image: none;
+}
+/*.carousel-caption {
     position: absolute;
-    z-index: 1;
-    top: 100px;
-    left: 100px;
+    top: 0px;
+    text-align: left;
+    left: inherit;
+    right: inherit;
+    width: 280px;
+    color: #000;
 }
 
-.B {
-    width: 100px;
-    height: 100px;
-    background: red;
-    position: absolute;
-    z-index: 1;
-    top: 100px;
-    left: 250px;
+.carousel-caption:not(#caption-0) {
+    display: none;
+}
+
+#slider_captions {
+    margin-left: 236px;
+    margin-top: -120px;
 }*/
-div.game {
+#slider {
+  margin-left: 47px;
+}
+.carousel-inner {
+  margin-left: 17px;
+  width: 334px;
+  height: 120px;
+  top: -43px;
+}
+.item {
+  margin-left: 45px;
+  cursor: pointer;
+  margin-top: 47px;
+}
+.carousel-control {
+  margin-top: 30px;
+}
+#slider_captions h2 {
+  font-size: 16px;
+  margin-top: 1px;
+  color: #FFF;
+}
+.dumpster {
+  position: absolute;
+  z-index: 10;
+  margin-left: 118px;
+  margin-top: -11px;
+}
+/* Second Carousel */
+#carousel_ul {
+  list-style: none;
+}
+#carousel_ul li {
+  float: left;
+  width: 98px;
+  padding: 0px;
+  /*  height: 110px; */
+  margin-top: 194px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#carousel_inner {
+  overflow: hidden;
   width: 616px;
-  height: 411px;
+}
+#carousel_ul {
+  position: relative;
+  left: -210px;
+  list-style-type: none;
+  margin: 0 250px;
+  padding: 0px;
+  width: 9999px;
+  padding-bottom: 10px;
+}
+.Time {
   position: absolute;
-  z-index: 5;
+  z-index: 1;
+  margin-top: 10px;
 }
-#close img:first-child {
+#score p {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  z-index: 1;
+  margin-left: 81px;
+  color: white;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-#close img:first-child:hover {
-  opacity: 0;
-}
-#c1 img:first-child {
+#score h1 {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  z-index: 1;
+  margin-top: 4px;
+  color: white;
+  font-size: 24px;
+  font-family: 'cmwn', sans-serif;
 }
-#c1 img:first-child:hover {
-  opacity: 0;
+.Time h1 {
+  color: white;
+  font-size: 24px;
+  font-family: 'cmwn', sans-serif;
 }
-#c2 img:first-child {
+#recycle-li #recycle img {
+  margin-left: -13px;
+}
+#trash-li #trash img {
+  margin-left: -13px;
+}
+#compost-li #compost img {
+  margin-left: -13px;
+}
+/*quit screen */
+.background p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  color: #000;
+}
+.append-score p {
+  font-family: 'Source Sans Pro', sans-serif;
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  left: 114px;
+  top: 59px;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 36px;
+  color: #000;
 }
-#c2 img:first-child:hover {
-  opacity: 0;
-}
-#c3 img:first-child {
+/* Yes Button */
+#yes-btn {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  top: 192px;
+  left: 104px;
+  cursor: pointer;
 }
-#c3 img:first-child:hover {
-  opacity: 0;
+#yes-btn img {
+  width: 126px;
 }
-#c4 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c4 img:first-child:hover {
-  opacity: 0;
-}
-#c5 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c5 img:first-child:hover {
-  opacity: 0;
-}
-#c6 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c6 img:first-child:hover {
-  opacity: 0;
-}
-#c7 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#c7 img:first-child:hover {
-  opacity: 0;
-}
-#c8 img:first-child {
+#yes-btn img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#c8 img:first-child:hover {
+#yes-btn img:first-child:hover {
   opacity: 0;
 }
-#c9 img:first-child {
+/* No Button */
+#no-btn {
+  position: absolute;
+  top: 192px;
+  left: 278px;
+  cursor: pointer;
+}
+#no-btn img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#c9 img:first-child:hover {
+#no-btn img:first-child:hover {
   opacity: 0;
 }
-#c10 img:first-child {
+/* Exit modal for quit screen */
+.exit-Modal-Btn {
+  margin-top: 24px;
+  position: absolute;
+  z-index: 1;
+  left: 443px;
+  cursor: pointer;
+}
+.exit-Modal-Btn img {
+  width: 30px;
+}
+.exit-Modal-Btn img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-#c10 img:first-child:hover {
+.exit-Modal-Btn img:first-child:hover {
   opacity: 0;
 }
-#c11 img:first-child {
+.animated-points {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  z-index: 1;
+  top: 223px;
+  left: 249px;
+  width: 60px;
 }
-#c11 img:first-child:hover {
-  opacity: 0;
+.animated-points h1 {
+  font-size: 24px;
+  font-family: 'cmwn', sans-serif;
 }
-#c12 img:first-child {
+.animated-points .win h1 {
+  color: #FFF;
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
 }
-#c12 img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
+.animated-points .loose h1 {
+  color: #ff0000;
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
 }
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
+/* next button for final modal */
+#next-button2 {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  margin-top: -29px;
+  margin-left: 279px;
+  position: fixed;
+  cursor: pointer;
 }
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#next-button img:first-child {
+#next-button2 img {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button img:first-child:hover {
-  opacity: 0;
+  left: 50%;
+  bottom: 0;
+  /*margin-top:-25px;
+    margin-left:-25px;*/
+  -webkit-animation: bounce 1s infinite;
+  -moz-animation: bounce 1s infinite;
+  -ms-animation: bounce 1s infinite;
+  -o-animation: bounce 1s infinite;
 }
 #next-button2 img:first-child {
-  position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
+  position: absolute;
+  z-index: 10;
 }
 #next-button2 img:first-child:hover {
   opacity: 0;
 }
-.animate-flower {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight 3.3s linear infinite;
-}
-.animate-flower2 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight 3s linear infinite;
-}
-.animate-flower3 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight2 4s linear infinite;
-}
-.animate-flower4 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight3 3.5s linear infinite;
-}
-.animate-flower5 {
-  -webkit-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-  animation: spin 1000ms linear infinite, moveLeftToRight3 5s linear infinite;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#game-info .modal-backdrop.in {
-  opacity: 0;
-}
-#close img:first-child {
+/* last flip screen */
+#next-button3 {
   position: absolute;
+  margin-left: 395px;
+  margin-top: -34px;
+  position: fixed;
+  cursor: pointer;
+}
+#next-button3 img {
+  width: 62px;
+  position: absolute;
+  bottom: 0;
+  /*margin-top:-25px;
+    margin-left:-25px;*/
+  -webkit-animation: bounce 1s infinite;
+  -moz-animation: bounce 1s infinite;
+  -ms-animation: bounce 1s infinite;
+  -o-animation: bounce 1s infinite;
+}
+#next-button3 img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
+  position: absolute;
+  z-index: 10;
 }
-#close img:first-child:hover {
+#next-button3 img:first-child:hover {
   opacity: 0;
 }
-.Yes-Btns img:first-child {
+/* replay button */
+#re-try img {
   position: absolute;
+}
+#re-try img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
+  z-index: 10;
 }
-.No-Btns img:first-child:hover {
+#re-try img:first-child:hover {
   opacity: 0;
 }
-#next-button img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button img:first-child:hover {
-  opacity: 0;
-}
-#no-email img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#no-email img:first-child:hover {
-  opacity: 0;
-}
-#email img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#email img:first-child:hover {
-  opacity: 0;
-}
-#no-app img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#no-app img:first-child:hover {
-  opacity: 0;
-}
-#app img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#app img:first-child:hover {
-  opacity: 0;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#pledge img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#pledge img:first-child:hover {
-  opacity: 0;
-}
-.modal-backdrop {
-  z-index: 0;
+/* blink captions */
+.item h2 {
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
