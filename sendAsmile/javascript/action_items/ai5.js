@@ -9,7 +9,7 @@ $(document).ready(function () {
             $('#slide_2 h2').fadeIn(2000);
             $('#slide_2 img').fadeOut(3000);
             $('#slide_2 h2').fadeOut(3000);
-            $('#sli de_3').show(4500);
+            $('#slide_3').show(4500);
         });
         $('.backBtn1').click(function () {
             $('.nextBtn2').delay(1000).delay(1000, function () {

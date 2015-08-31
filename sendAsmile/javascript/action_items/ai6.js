@@ -9,7 +9,7 @@
         });
         $('.nextBtn1').click(function () {
             $('.nextBtn1').delay(1000).delay(1000, function () {
-                document.location.href = "@Url.Content("~/ActionItem/AI1")";
+                $("#putcontenthere").load("/action_items/ai1.html");
             });
 
         });
