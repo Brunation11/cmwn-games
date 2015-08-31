@@ -1,0 +1,70 @@
+<audio id="correct" preload="auto">
+    <source src="content/sound/Polar Puck/Selected Polar Bear.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="wrong" preload="auto">
+    <source src="content/sound/Polar Puck/Select Incorrect Bear w_popup.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai9.js"></script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div id="close" style="position:absolute; z-index:999;">
+                <img style="width:32px; cursor:pointer; margin-top: 10px;margin-left: 577px;position:absolute;" src="content/images/buttons/btn_close_on.png" />
+                <img style="width:32px; cursor:pointer; margin-top: 10px;margin-left: 577px;position:absolute;" src="content/images/buttons/btn_close.png" />
+            </div>
+
+            <div class="header_Bkg" style="position:absolute; z-index:1;">
+                <img src="content/images/header_background2.png" style="width:502px; height:77px; margin-top:20px; margin-left:59px;" />
+                <p style="font-family:'Source Sans Pro'; color:#FFF; font-weight:bolder; font-size:2em; margin-top:-61px; margin-left:80px; position:absolute; z-index:1;">Why did the right hand stay warmer?</p>
+            </div>
+
+            <div class="Pop_up" style="position:absolute; z-index:1; margin-top:103px; margin-left:59px;">
+                <img src="content/images/popup2.png" style="width:500px; height:287px;" />
+            </div>
+
+            <div class="bowl" style="position:absolute; z-index:1; margin-top:165px; margin-left:80px;">
+                <img id="left" src="content/images/img_shortening_lg2.png" style="width:258px; height:172px; cursor:pointer;" />
+            </div>
+
+            <div class="bag" style="position:absolute; z-index:1; margin-top:148px; margin-left:315px;">
+                <img id="right" src="content/images/img_plasticbag_lg2.png" style="width:217px; height:208px; cursor:pointer;" />
+            </div>
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
+<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1;">
+    <div class="modal-dialog" style="margin-top:158px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                <div class="modal-body custom-font modal-text">
+
+
+                    <div class="Box-border" style="margin-top:-10px; margin-left:-10px;">
+                        <img src="content/images/popup2.png" style="width:500px;" />
+                    </div>
+                    <div class="Message" style="position:absolute; top:0; text-align:center;">
+                        <p style="width:221px; text-align:center; margin-top:83px; margin-left:128px;">Are you sure you<br /> want to quit?</p>
+                    </div>
+
+                    <div class="Yes-Btns" style="position:absolute; top:195px; left:81px;">
+                        <img src="content/images/buttons/btn_yes.png" style="width:135px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_yes_on.png" style="width:135px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                    <div class="No-Btns" style="position:absolute; top:195px; left:297px;">
+                        <img src="content/images/buttons/btn_no.png" style="width:135px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_no_on.png" style="width:135px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
