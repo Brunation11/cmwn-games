@@ -6773,3 +6773,64 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
+.close-Btn {
+  z-index: 1;
+  left: 567px;
+  position: absolute;
+  cursor: pointer;
+}
+.close-Btn img {
+  position: absolute;
+}
+.close-Btn img:last-child {
+  opacity: 0;
+}
+.close-Btn img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.Next {
+  position: absolute;
+  z-index: 1;
+  margin-top: 339px;
+  margin-left: 506px;
+  cursor: pointer;
+}
+.Next img {
+  position: absolute;
+}
+.Next img:last-child {
+  opacity: 0;
+}
+.Next img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
+}
+.border {
+  position: absolute;
+  z-index: 2;
+  margin-left: 228px;
+  margin-top: 27px;
+}
+.header-fruit {
+  position: absolute;
+  z-index: 1;
+  margin-left: 284px;
+  margin-top: 48px;
+}
+.header-text {
+  position: absolute;
+  z-index: 1;
+  margin-top: 134px;
+  margin-left: 260px;
+}
+.tomato {
+  position: absolute;
+  z-index: 1;
+  margin-left: 20px;
+  margin-top: 129px;
+}
