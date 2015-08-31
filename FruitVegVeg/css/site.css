@@ -5496,7 +5496,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0;
+  opacity: 0.5;
   filter: alpha(opacity=50);
 }
 .modal-header {
@@ -6594,470 +6594,135 @@ input[type="checkbox"].input-validation-error {
 .button-padding {
   padding: 0px 50px 0px 50px;
 }
-.close-Button {
-  margin-top: 10px;
+.second-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.border-white {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  margin: 20px;
+}
+.No {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  margin-top: 163px;
+  margin-left: 244px;
+  cursor: pointer;
+}
+.No img {
+  position: absolute;
+}
+.No img:last-child {
+  opacity: 0;
+}
+.No img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
+}
+/* Yes btn */
+.Yes {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  margin-top: 163px;
+  margin-left: 59px;
+  cursor: pointer;
+}
+.Yes img {
+  position: absolute;
+}
+.Yes img:last-child {
+  opacity: 0;
+}
+.Yes img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
+}
+.txt {
+  position: absolute;
+  margin-left: 97px;
+  margin-top: 41px;
+}
+.txt p {
+  color: white;
+  font-size: 39px;
+  text-align: center;
+  font-family: 'cmwn', sans-serif;
+  line-height: 47px;
+}
+.close-Btn {
   z-index: 2;
-  left: 563px;
+  left: 567px;
   position: absolute;
   cursor: pointer;
 }
-.close-Button img {
-  width: 40px;
-}
-.close-Button img:first-child {
+.close-Btn img {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
 }
-.close-Button img:first-child:hover {
+.close-Btn img:last-child {
   opacity: 0;
 }
-/* Yes Button */
-#yes-btn {
+.close-Btn img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.white-border {
   position: absolute;
-  top: 192px;
-  left: 104px;
-  cursor: pointer;
+  z-index: 2;
+  margin-left: 31px;
+  margin-top: 20px;
 }
-#yes-btn img {
-  width: 126px;
-}
-#yes-btn img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#yes-btn img:first-child:hover {
-  opacity: 0;
-}
-/* No Button */
-#no-btn {
-  position: absolute;
-  top: 192px;
-  left: 278px;
-  cursor: pointer;
-}
-#no-btn img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#no-btn img:first-child:hover {
-  opacity: 0;
-}
-/* close modal btn */
-.close-Modal-Btn {
-  margin-top: 24px;
+.banana {
   position: absolute;
   z-index: 1;
-  left: 443px;
-  cursor: pointer;
+  margin-left: 376px;
+  margin-top: 1px;
 }
-.close-Modal-Btn img {
-  width: 30px;
-}
-.close-Modal-Btn img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.close-Modal-Btn img:first-child:hover {
-  opacity: 0;
-}
-/* Exit modal for quit screen */
-.exit-Modal-Btn {
-  margin-top: 24px;
+.carrots {
   position: absolute;
   z-index: 1;
-  left: 443px;
+}
+.tomato {
+  position: absolute;
+  z-index: 1;
+  margin-top: 185px;
+}
+.celery {
+  position: absolute;
+  z-index: 1;
+  margin-left: 391px;
+  margin-top: 182px;
+}
+.title {
+  position: absolute;
+  z-index: 2;
+  margin-left: 155px;
+  margin-top: 60px;
+}
+.Play {
+  position: absolute;
+  z-index: 3;
+  margin-top: 297px;
+  margin-left: 249px;
   cursor: pointer;
 }
-.exit-Modal-Btn img {
-  width: 30px;
-}
-.exit-Modal-Btn img:first-child {
+.Play img {
   position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
 }
-.exit-Modal-Btn img:first-child:hover {
+.Play img:last-child {
   opacity: 0;
 }
-.background .title {
-  position: absolute;
-  top: 37px;
-  left: 46px;
-}
-#next-button2 {
-  position: absolute;
-  margin-left: 386px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button2 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button2 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button2 img:first-child:hover {
-  opacity: 0;
-}
-/* button 3 */
-#next-button3 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button3 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button3 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button3 img:first-child:hover {
-  opacity: 0;
-}
-/* button 4*/
-#next-button4 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button4 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button4 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button4 img:first-child:hover {
-  opacity: 0;
-}
-/* button 5*/
-#next-button5 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button5 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button5 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button5 img:first-child:hover {
-  opacity: 0;
-}
-/* button 6*/
-#next-button6 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button6 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button6 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button6 img:first-child:hover {
-  opacity: 0;
-}
-/* button 7*/
-#next-button7 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button7 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button7 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button7 img:first-child:hover {
-  opacity: 0;
-}
-/* button 8*/
-#next-button8 {
-  position: absolute;
-  margin-left: 395px;
-  margin-top: -34px;
-  position: fixed;
-  cursor: pointer;
-}
-#next-button8 img {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 50px;
-  /*margin-top:-25px;
-    margin-left:-25px;*/
-  -webkit-animation: bounce 1s infinite;
-  -moz-animation: bounce 1s infinite;
-  -ms-animation: bounce 1s infinite;
-  -o-animation: bounce 1s infinite;
-  animation: bounce 1s infinite;
-}
-#next-button8 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#next-button8 img:first-child:hover {
-  opacity: 0;
-}
-.background p {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 36px;
-  color: #000;
-}
-/* back buttons */
-#back-button1 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button1 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button1 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button1 img:first-child:hover {
-  opacity: 0;
-}
-/* button 2 */
-#back-button2 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button2 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button2 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button2 img:first-child:hover {
-  opacity: 0;
-}
-/* button 3 */
-#back-button3 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button3 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button3 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button3 img:first-child:hover {
-  opacity: 0;
-}
-/* button 4 */
-#back-button4 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button4 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button4 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button4 img:first-child:hover {
-  opacity: 0;
-}
-/* button 5 */
-#back-button5 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button5 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button5 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button5 img:first-child:hover {
-  opacity: 0;
-}
-/* button 6 */
-#back-button6 {
-  position: absolute;
-  top: 250px;
-  left: 29px;
-  cursor: pointer;
-}
-#back-button6 img {
-  position: absolute;
-  width: 54px;
-}
-#back-button6 img:first-child {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-  position: absolute;
-  z-index: 10;
-}
-#back-button6 img:first-child:hover {
-  opacity: 0;
+.Play img:last-child:hover {
+  opacity: 100;
+  z-index: 15;
 }
 .scape-Btn {
   margin-top: 10px;
