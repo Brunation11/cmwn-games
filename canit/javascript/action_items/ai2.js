@@ -611,6 +611,7 @@ $(document).ready(function () {
 
 });
 
+
 function playStart()
 {
     try
@@ -708,7 +709,7 @@ function updateTimer() {
     $countdown.html(displayTime(timeString));
 
     // If timer is complete, trigger alert
-    if (currentTime == 0) {
+    if (currentTime === 0) {
         timer1.Timer.stop();
         //alert('Times up!');
         try
@@ -817,8 +818,6 @@ var auto_slide = 1;
 
 //speed of auto slide(
 var auto_slide_seconds = 1300;
-/* IMPORTANT: i know the variable is called ...seconds but it's
-in milliseconds ( multiplied with 1000) '*/
 
 /*move the last list item before the first item. The purpose of this is
 if the user clicks to slide left he will be able to see the last item.*/
