@@ -1,32 +1,71 @@
 $(document).ready(function () {
-        $('#slide_2 img').hide();
-        $('#slide_2 h2').hide();
-        $('#slide_3').hide();
-        $('.nextBtn').click(function () {
-            $('#slide_1 img').fadeOut(2000);
-            $('#slide_1 h2').fadeOut(2000);
-            $('#slide_2 img').fadeIn(2000);
-            $('#slide_2 h2').fadeIn(2000);
-            $('#slide_2 img').fadeOut(3000);
-            $('#slide_2 h2').fadeOut(3000);
-            $('#slide_3').show(4500);
-        });
-        $('.backBtn1').click(function () {
-            $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
-            });
-
-        });
-        $('.backBtn').click(function () {
-            $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
-            });
-
-        });
-        $('.nextBtn2').click(function () {
-            $('.nextBtn2').delay(1000).delay(1000, function () {
+        $('.enter').click(function () {
+            $('.enter').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("/action_items/ai6.html");
             });
-
+            designBtn.play();
         });
+        function Resizer(element) {
+
+            var inputBox = element;
+            var cssRules = window.getComputedStyle(inputBox);
+            var maxFontSize = parseInt(cssRules.getPropertyValue("font-size"));
+            var minFontSize = 11; // 11 is pretty damn small!
+            var currentFontSize = maxFontSize;
+            var maxScrollWidth = parseInt(cssRules.getPropertyValue("width"))
+            var fontFamily = cssRules.getPropertyValue("font-family");
+            var currentText = inputBox.value;
+
+            // Canvas used to check text widths.
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+
+            var initialize = function () {
+
+                inputBox.oninput = onUpdate;
+            }
+
+            var onUpdate = function (event) {
+
+                var width;
+                // Some text has been deleted!
+                if (inputBox.value.length < currentText.length) {
+                    width = checkTextWidth(inputBox.value, currentFontSize + 1);
+
+                    while (width < maxScrollWidth && currentFontSize < maxFontSize) {
+                        currentFontSize += 1;
+                        inputBox.style.fontSize = currentFontSize + 'px';
+                        width = checkTextWidth(inputBox.value, currentFontSize + 1);
+                    }
+
+                    currentText = inputBox.value;
+                    return;
+
+                }
+
+                var width = checkTextWidth(inputBox.value, currentFontSize);
+
+                // Shrink
+                while (currentFontSize > minFontSize && width > maxScrollWidth) {
+                    currentFontSize -= 100;
+                    inputBox.style.fontSize = currentFontSize + 'px';
+                    width = checkTextWidth(inputBox.value, currentFontSize);
+                }
+
+                currentText = inputBox.value;
+            }
+            var checkTextWidth = function (text, size) {
+                context.font = size + "px " + fontFamily;
+
+                if (context.fillText) {
+                    return context.measureText(text).width;
+                } else if (context.mozDrawText) {
+                    return context.mozMeasureText(text);
+                }
+            }
+
+            // Initialize the auto adapt functionality.
+            initialize();
+        }
+        Resizer(document.getElementById('resizer'));
     });
