@@ -1,0 +1,636 @@
+<audio id="background" preload="auto">
+    <source src="content/sound/Slides_6-22.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="select" preload="auto">
+    <source src="content/sound/Selection of Bee on Slides_3-4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="video" preload="auto">
+    <source src="content/sound/Video Slide 5.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="correct" preload="auto">
+    <source src="content/sound/Correct_BeeJeopardy.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="incorrect" preload="auto">
+    <source src="content/sound/Incorrect_BeeJeopardy.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="complete" preload="auto">
+    <source src="content/sound/Slide 23.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div id="close" style="position:absolute; z-index:999; margin-top:-1px; margin-left:588px;">
+                <img style="width:26px; cursor:pointer; position:absolute;" src="content/images/buttons/btn_exit.png" />
+                <img style="width:26px; cursor:pointer;" src="content/images/buttons/btn_exiton.png" />
+            </div>
+
+            <div id="bee-game">
+                <div style="position:absolute; z-index:1; margin-top:14px; margin-left:24px;">
+                    <img src="content/images/frames/frame_question.png" style="width:565px;"/>
+                    <p id="head" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part holds the brain, ocelli, mandibles and eyes<br />as well as the glands that produce royal jelly.</p>
+                    <p id="compound" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">This is made up of thousands of small tubes called<br />omatidia. They each project an image through a lens.<br />All the images are combined in the bee's brain.</p>
+                    <p id="mand" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part is used to form wax into a comb and to groom<br />as well as to suck nectar from flowers.</p>
+                    <p id="pollen" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part of a bee's hind leg compresses the pollen<br />to make it easier to store while flying.</p>
+                    <p id="pollen2" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part of the hind leg is broad and concave and<br />provides a holder for the pollen they collect.</p>
+                    <p id="thorax" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part anchors the legs and the wings.<br />It is filled with muscles for flight and movement.</p>
+                    <p id="wing" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">There are four of these, although they look like two.<br />One hooks into the other for flight but separate<br />so the bee can get into tight spaces.</p>
+                    <p id="antennae" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">This part is covered with tiny hairs and allows the bee<br />to taste and smell as well as communicate and<br />sense air movement and temperature.</p>
+                    <p id="abdomen" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">This part can expand and contract and change<br />shape for aerodynamics and balance.<br />It contains most of the internal organs.</p>
+                    <p id="spiracles" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">These small openings on the sides allow air to enter<br />and, by expanding and contracting the abdomen,<br />feeds oxygen directly to the tissues.</p>
+                    <p id="ocelli" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">These each have a single lens that may affect<br />stability during flight and help with geographical<br />orientation as they register light intensity.</p>
+                    <p id="stingers" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This part, used only if the bee is threatened,<br />ends the bee's life.</p>
+                    <p id="wax-glands" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-93px;">This is where wax, used to make the<br />honeycombs, is produced.</p>
+                    <p id="legs" style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.5em; text-align:center; line-height:23px; margin-top:-107px;">These are what bees use to carry pollen and<br />comb it off their bodies. They're also used to clean<br />their antennae and for walking and landing.</p>
+                </div>
+
+                <div style="position:absolute; z-index:1; margin-top:171px; margin-left:9px;">
+                    <img src="content/images/frames/frame_small_video.png" style="width:329px;" />
+                </div>
+
+                <div class="Video" style="position:absolute; z-index:1; margin-top:180px; margin-left:18px;">
+                    <!--Video goes here-->
+                    <iframe id="viddler-43753755" src="//www.viddler.com/embed/43753755/?f=1&player=mini&secret=69888338&make_responsive=0" width="314" height="188" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+                    <!-- <iframe id="viddler-43753755" src="//www.viddler.com/embed/43753755/?f=1&autoplay=1&player=mini&secret=69888338&hideablecontrolbar=1&disablebranding=1&make_responsive=0&noControls=true&nologo=1" width="314" height="188" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
+                </div><!--end fourth-slide-->
+
+                <div style="position:absolute; z-index:1; margin-top:167px; margin-left:345px;">
+                    <img src="content/images/frames/frame_answers.png" style="width:250px;" />
+
+                    <!-- First Set -->
+
+                    <div id="bee-parts" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active2" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active3" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Second Set -->
+
+                    <div id="bee-parts2" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button2" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active4" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick12" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active5" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick13" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Legs</p>
+                        <img id="active6" src="content/images/headers/header_16.png" style="width:105px; position:absolute; z-index:1; margin-top:-61px; margin-left:4px;" />
+                        <div id="leg-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Third Set -->
+
+                    <div id="bee-parts3" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button3" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active7" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick7" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Abdomen</p>
+                        <img id="active9" src="content/images/headers/header_11.png" style="width:143px; position:absolute; z-index:1; margin-top:-61px; margin-left:8px;" />
+                        <div id="ab-pick" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active8" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick8" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Fourth Set -->
+
+                    <div id="bee-parts4" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button4" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active10" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick9" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active11" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick10" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Ocelli</p>
+                        <img id="active12" src="content/images/headers/header_13.png" style="width:115px; position:absolute; z-index:1; margin-top:-61px; margin-left:6px;" />
+                        <div id="ocel-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Fifth Set -->
+
+                    <div id="bee-parts5" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button5" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Wax Glands</p>
+                        <img id="active15" src="content/images/headers/header_15.png" style="width:156px; position:absolute; z-index:1; margin-top:-64px; margin-left:12px;" />
+                        <div id="wax-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Head</p>
+                        <img id="active13" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick11" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active14" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-67px; margin-left:9px;" />
+                        <div id="pollen-pick12" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Sixth Set -->
+
+                    <div id="bee-parts6" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button6" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active16" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick2" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Press</p>
+                        <img id="active17" src="content/images/headers/header_6.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick4" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active18" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick4" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Seventh Set -->
+
+                    <div id="bee-parts7" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button7" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active19" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick4" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Thorax</p>
+                        <img id="active20" src="content/images/headers/header_8.png" style="width:115px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="thor-pick" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active21" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick6" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Eighth Set -->
+
+                    <div id="bee-parts8" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button8" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active22" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick10" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active23" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick11" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Stingers</p>
+                        <img id="active24" src="content/images/headers/header_14.png" style="width:115px; position:absolute; z-index:1; margin-top:-57px; margin-left:13px;" />
+                        <div id="sting-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Ninth Set -->
+
+                    <div id="bee-parts9" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button9" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Antennae</p>
+                        <img id="active27" src="content/images/headers/header_10.png" style="width:143px; position:absolute; z-index:1; margin-top:-58px; margin-left:8px;" />
+                        <div id="ant-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Head</p>
+                        <img id="active25" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick6" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active26" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick7" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Tenth Set -->
+
+                    <div id="bee-parts10" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button10" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active28" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick8" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active29" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick9" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Spiracles</p>
+                        <img id="active30" src="content/images/headers/header_12.png" style="width:143px; position:absolute; z-index:1; margin-top:-61px; margin-left:8px;" />
+                        <div id="spi-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Eleventh Set -->
+
+                    <div id="bee-parts11" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button11" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Compound Eye</p>
+                        <img id="active31" src="content/images/headers/header_4.png" style="width:214px; position:absolute; z-index:1; margin-top:-62px;" />
+                        <div id="eye-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active32" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick2" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active33" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick2" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Twelfth Set -->
+
+                    <div id="bee-parts12" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button12" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active34" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick3" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active35" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick5" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active36" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick5" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Thirteenth Set -->
+
+                    <div id="bee-parts13" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button13" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Head</p>
+                        <img id="active37" src="content/images/headers/header_3.png" style="width:115px; position:absolute; z-index:1; margin-top:-59px;" />
+                        <div id="head-pick5" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active38" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick6" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active39" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick7" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                    <!-- Fourteenth Set -->
+
+                    <div id="bee-parts14" style="margin-top:-211px; margin-left:51px;">
+                        <div id="bee-button14" style="position:absolute; z-index:1; margin-left:117px; margin-top:-110px;">
+                            <img src="content/images/buttons/btn_little_next.png" style="width:82px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_little_nexton.png" style="width:82px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-top:23px; margin-left:33px;">Mandibles</p>
+                        <img id="active40" src="content/images/headers/header_5.png" style="width:159px; position:absolute; z-index:1; margin-top:-67px; margin-left:7px;" />
+                        <div id="mand-pick" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Pollen Basket</p>
+                        <img id="active41" src="content/images/headers/header_7.png" style="width:193px; position:absolute; z-index:1; margin-top:-65px; margin-left:9px;" />
+                        <div id="pollen-pick3" style="margin-top:-69px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+
+                        <p style="font-family:'Source Sans Pro'; font-size:1.5em; font-weight:bold; margin-left:33px;">Wings</p>
+                        <img id="active42" src="content/images/headers/header_9.png" style="width:98px; position:absolute; z-index:1; margin-top:-58px; margin-left:15px;" />
+                        <div id="wing-pick3" style="margin-top:-70px; margin-left:-47px;">
+                            <img src="content/images/buttons/btn_round.png" style="width:93px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_roundon.png" style="width:93px;" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
+<!-- Game Info Modal -->
+
+<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:117px; margin-left:26px;">
+
+        <div class="Box-border">
+            <img src="content/images/frames/frame_purple.png" style="width:570px;" />
+        </div>
+
+        <div style="position:absolute; margin-top:-328px; margin-left:54px;">
+            <img src="content/images/headers/header_1.png" style="width:460px;" />
+        </div>
+
+        <div id="queen" style="position:absolute; margin-left:24px; margin-top:-282px; z-index:1;">
+            <img src="content/images/buttons/btn_queen.png" style="width:162px; cursor:pointer; position:absolute;" />
+            <img src="content/images/buttons/btn_queenon.png" style="width:162px;" />
+        </div>
+
+        <div id="drone" style="position:absolute; margin-left:202px; margin-top:-282px; z-index:1;">
+            <img src="content/images/buttons/btn_drone.png" style="width:162px; cursor:pointer; position:absolute;" />
+            <img src="content/images/buttons/btn_droneon.png" style="width:162px;" />
+        </div>
+
+        <div id="work" style="position:absolute; margin-left:381px; margin-top:-282px; z-index:1;">
+            <img src="content/images/buttons/btn_worker.png" style="width:162px; cursor:pointer; position:absolute;" />
+            <img src="content/images/buttons/btn_workeron.png" style="width:162px;" />
+        </div>
+
+        <div id="info1" style="position:absolute; z-index:1; margin-top:-102px; margin-left:45px;">
+            <img src="content/images/frames/frame_text.png" style="width:475px; height:81px;" />
+            <p style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.4em; text-align:center; line-height:23px; margin-top:-76px;">There is only one Queen per hive.<br />The Queen produces all of the eggs as well as<br />chemicals that affect the behavior of other bees.</p>
+        </div>
+
+        <div id="info2" style="position:absolute; z-index:1; margin-top:-102px; margin-left:45px;">
+            <img src="content/images/frames/frame_text.png" style="width:475px; height:81px;" />
+            <p style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.4em; text-align:center; line-height:23px; margin-top:-76px;">Drones are the males and their only<br />purpose is to mate with the queen.<br />They don't have stingers.</p>
+        </div>
+
+        <div id="info3" style="position:absolute; z-index:1; margin-top:-102px; margin-left:45px;">
+            <img src="content/images/frames/frame_text.png" style="width:475px; height:81px;" />
+            <p style="font-family:'Source Sans Pro'; font-weight:600; font-size:1.4em; text-align:center; line-height:23px; margin-top:-76px;">All workers are females.<br />They build the hive, clean it and forage for food.<br />They are the ones you see outside the hive.</p>
+        </div>
+
+        <!-- next and prev buttons-->
+        <div id="next-button" style="position:absolute; margin-left:524px; margin-top:-36px;">
+            <img src="content/images/buttons/btn_big_next.png" style="width:67px; z-index:99; cursor:pointer; position:absolute;" />
+            <img src="content/images/buttons/btn_big_nexton.png" style="width:67px;" />
+        </div>
+
+    </div>
+</div>
+
+<!-- Video Info Modal -->
+
+<div class="modal fade current" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:137px; margin-left:46px;">
+
+        <div class="Box-border">
+            <img src="content/images/frames/frame_video.png" style="width:530px;" />
+        </div>
+
+        <div style="position:absolute; margin-top:-408px; margin-left:-32px;">
+            <img src="content/images/headers/header_2_2.png" style="width:600px;" />
+        </div>
+
+        <div class="Video" style="position:absolute; margin-top:-334px; margin-left:4px;">
+            <!--Video goes here-->
+            <iframe id="viddler-43753755" src="//www.viddler.com/embed/43753755/?f=1&player=mini&secret=69888338&make_responsive=0" width="522" height="324" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+            <!-- <iframe id="viddler-43753755" src="//www.viddler.com/embed/43753755/?f=1&autoplay=1&player=mini&secret=69888338&hideablecontrolbar=1&disablebranding=1&make_responsive=0&noControls=true&nologo=1" width="522" height="324" frameborder="0" scrolling="no" allowfullscreen></iframe> -->
+        </div><!--end fourth-slide-->
+
+        <!-- next and prev buttons-->
+        <div id="next-button2" style="position:absolute; margin-left:506px; margin-top:-53px;">
+            <img src="content/images/buttons/btn_big_next.png" style="width:67px; z-index:99; cursor:pointer; position:absolute;" />
+            <img src="content/images/buttons/btn_big_nexton.png" style="width:67px;" />
+        </div>
+
+    </div>
+</div>
+
+<!-- Game Complete Modal -->
+
+<div class="modal fade current" id="game-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:117px; margin-left:26px;">
+
+        <div class="Box-border">
+            <img src="content/images/frames/frame_purple.png" style="width:570px;" />
+        </div>
+
+        <div style="position:absolute; margin-top:-275px; margin-left:109px;">
+            <img src="content/images/headers/header_17.png" style="width:355px;" />
+        </div>
+
+        <div style="position:absolute; z-index:1; margin-top:-165px; margin-left:136px;">
+            <p style="font-family:'Source Sans Pro'; font-weight:600; font-size:2.9em; text-align:center; line-height:50px;">Now click on the<br />Bee for fun facts!</p>
+        </div>
+
+        <!-- next and prev buttons-->
+        <div id="next-button3" style="position:absolute; margin-left:524px; margin-top:-36px;">
+            <a href="#">
+                <img src="content/images/buttons/btn_big_next.png" style="width:67px; z-index:99; cursor:pointer; position:absolute;" />
+                <img src="content/images/buttons/btn_big_nexton.png" style="width:67px;" />
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Game Close Modal -->
+
+<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:3;">
+    <div class="modal-dialog" style="margin-top:121px; margin-left:31px;">
+        <div class="modal-content" style="width:556px; height:326px;">
+            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
+                <div class="modal-body custom-font modal-text">
+
+                    <div style="position:absolute; margin-top:-20px;">
+                        <img src="content/images/frames/frame_purple.png" style="width:570px;" />
+                    </div>
+
+                    <div style="position:absolute; margin-top:65px; margin-left:123px;">
+                        <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:43px;">Are you sure<br />you want to quit?</p>
+                    </div>
+
+                    <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:80px;">
+                        <img src="content/images/buttons/btn_yes.png" style="width:220px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_yeson.png" style="width:220px; cursor:pointer;" />
+                    </div>
+
+                    <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:266px;">
+                        <img src="content/images/buttons/btn_no.png" style="width:220px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_noon.png" style="width:220px; cursor:pointer;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
