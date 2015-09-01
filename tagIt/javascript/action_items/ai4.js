@@ -20,4 +20,6 @@ $(document).ready(function () {
             });
             nex.play();
         });
+            $('.bkg-image').css('background-image','url(/content/images/BKG_2.png)');
+
     });
