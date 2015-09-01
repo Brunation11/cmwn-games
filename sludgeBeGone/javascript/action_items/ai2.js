@@ -49,7 +49,7 @@ $(document).ready(function () {
         dirt.play();
     });
 
-    $('#clean').click(function () {
+    $('#cleans').click(function () {
         pure.load();
         pure.play();
         $("#next-button2").show();
