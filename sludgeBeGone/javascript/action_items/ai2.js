@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $("#next-button").hide();
     $("#next-button2").hide();
+    $("#next-button3").hide();
 
     // Quit screen function
 
@@ -18,10 +19,6 @@ $(document).ready(function () {
             $(this).show("display", "block");
         });
 
-    });
-
-    $('#next-button2').click(function () {
-         $("#putcontenthere").load("/action_items/ai3.html");
     });
 
     $('#happy').click(function () {
@@ -73,8 +70,13 @@ $(document).ready(function () {
     $('#next-button2').click(function () {
         $('#game-info2').modal('hide');
         $('#game-info3').modal('show');
+        $("#next-button3").show();
         background.play();
 
+    });
+
+    $('#next-button3').click(function () {
+         $("#putcontenthere").load("/action_items/ai3.html");
     });
 
 });
