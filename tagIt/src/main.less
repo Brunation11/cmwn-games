@@ -1,9 +1,18 @@
- .ai_background {
+.ai_background {
             background-color: #7829bb;
             width: 622px;
             padding: 3px;
             position:absolute;
         }
+
+            .close-Btn {
+            margin-top: 4px;
+            position: absolute;
+            z-index: 3;
+            left: 569px;
+        }
+
+
 
         .ai-margin {
             margin: 3px;
@@ -23,9 +32,14 @@
             color: white;
         }
 
-        .bkg-image img {
-            width: 616px;
-        }
+        .bkg-image {
+    background-image: url('/content/images/BKG_1.png');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
 
         .text-left {
             margin: 5px;
@@ -58,10 +72,11 @@
         }
 
 
-        .modal-open .modal {
+         .modal-open .modal {
             overflow-x: hidden;
             overflow-y: hidden;
         }
+
 
 
         .purple-button {
@@ -93,23 +108,3 @@
         .button-padding{
             padding: 0px 50px 0px 50px;
         }
-
-        .flip-off img {
-    position: absolute;
-    -webkit-transition: opacity 0s ease-in-out;
-    -moz-transition: opacity 0s ease-in-out;
-    -o-transition: opacity 0s ease-in-out;
-    transition: opacity 0s ease-in-out;
-   }
-
-  .flip-off img:hover {
-    position: absolute;
-    opacity: 0;
-   }
-
-  .close-Btn {
-    margin-top: 10px;
-    z-index: 10;
-    left: 580px;
-    position: absolute;
-}

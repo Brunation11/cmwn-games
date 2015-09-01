@@ -1,143 +1,41 @@
 
-    /* Let's get this party started */
-::-webkit-scrollbar {
-    width: 12px;
-}
- 
-/* Track */
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #01B6F9; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255,0,0,0.4); 
-}
+    .bkg-image {
+    background-image: url('/content/images/BKG_2.png');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
 
-   #box {
+
+  .flip-off img {
     position: absolute;
-    z-index: 1;
-    width: 527px;
-    margin-left: 44px;
-    height: 280px;
-    background-color: #FFFFFF;
-    margin-top: 61px;
-    border-radius: 20px;
-    border: solid #01b6f9 2px;
-    -webkit-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    -moz-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-}
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+   }
 
-      #box1 {
+  .flip-off img:hover {
+    position: absolute;
+    opacity: 0;
+   }
+
+
+h1 {
     position: absolute;
     z-index: 2;
-    width: 515px;
-    margin-left: 50px;
-    height: 268px;
-    background-color: #01b6f9;
-    margin-top: 67px;
-    border-radius: 15px;
-}
- 
-      
- #box2 {
-    position: absolute;
-    z-index: 1;
-    width: 527px;
-    margin-left: 44px;
-    height: 280px;
-    background-color: #FFFFFF;
-    margin-top: 61px;
-    border-radius: 20px;
-    border: solid #01b6f9 2px;
-    -webkit-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    -moz-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
+    color: black;
+    text-align: center;
+    font-size: 27px;
+    margin-left: 276px;
+    margin-top: 136px;
+    line-height: 37px;
+    font-weight: 700;
+    font-family: source sans pro;
 }
 
-      #box3 {
-    position: absolute;
-    z-index: 2;
-    width: 515px;
-    margin-left: 50px;
-    height: 268px;
-    background-color: #01b6f9;
-    margin-top: 67px;
-    border-radius: 15px;
-}   
+.step{position:absolute;z-index:2;}
 
- #box4 {
-    position: absolute;
-    z-index: 1;
-    width: 527px;
-    margin-left: 44px;
-    height: 280px;
-    background-color: #FFFFFF;
-    margin-top: 90px;
-    border-radius: 20px;
-    border: solid #01b6f9 2px;
-    -webkit-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    -moz-box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-    box-shadow: -2px 2px 16px 5px rgba(86,176,179,0.43);
-}
-
- #box5 {
-    position: absolute;
-    z-index: 2;
-    width: 515px;
-    margin-left: 50px;
-    height: 268px;
-    background-color: #01b6f9;
-    margin-top: 96px;
-    border-radius: 15px;
-}   
-
-
-
-.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
-    position: absolute;
-    margin-left: -28px;
-    margin-top: 7px;
-    margin-top: 4px \9;
-}
-
-
-
-
-input[type="checkbox"], input[type="radio"] {
-    box-sizing: border-box;
-    padding: 0;
-    width: 24px;
-    height: 27px;
-}
-
-
-
-
-.form-control {
-    display: block;
-    width: 143%;
-    height: 45px;
-    padding: 6px 10px;
-    font-size: 20px;
-    line-height: 1.42857143;
-    color: #000000;
-    background-color: #ffffff;
-    background-image: none;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
+.tagit {position:absolute;z-index:2;}
