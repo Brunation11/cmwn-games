@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    $('.Next').hide().delay(2000).fadeIn(2000);
 
-    $('.flip').hide();
-    setTimeout(function () {
-        $('.flip').hide().delay(10).fadeIn(2000);
-    },1000);
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
+
+     $('.Next').click(function(){
+       $("#putcontenthere").load("action_items/ai9.html");
+    });
+
 });

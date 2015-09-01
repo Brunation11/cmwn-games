@@ -136,4 +136,6 @@
             $('.forward5').hide();
             $('.back5').hide();
         });
+            $('.bkg-image').css('background-image','url(/content/images/BKG_3.png)');
+
     });

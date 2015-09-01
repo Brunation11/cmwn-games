@@ -1,73 +1,57 @@
-.close-Btn {
-        z-index: 1;
-        left: 567px;
-        position: absolute;
-        cursor: pointer;
+.Kid{
+    position:absolute;
+    z-index:1;
+    margin-top:21px;
+    overflow: hidden;
 }
 
-.close-Btn img {
-        position: absolute;
+.header{
+    position:absolute;
+    z-index:1;
+    margin-left:158px;
 }
 
-.close-Btn img:last-child {
-        opacity: 0;
+.No{
+    position:absolute;
+    z-index:1;
+    margin-left:282px;
+    margin-top:132px;
+    cursor:pointer;
 }
 
-.close-Btn img:last-child:hover {
-        opacity: 100;
-        z-index: 15;
+.No img:first-child {
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    z-index: 10;
+ }
+
+ .No img:first-child:hover {
+    opacity: 0;
+ }
+.shine {
+    position:absolute;
+}
+ .No .shine {
+     width: 209px;
+     height: 209px;
+     margin-left: 20px;
+     margin-top:7px;
+     border-radius:150px;
+     display: block;
+     background: url("http://i.imgur.com/n1CetrS.png") -200px 0 no-repeat;
+     -webkit-transition: background 0s linear;
+     -moz-transition: background 0s linear;
+     -ms-transition: background 0s linear;
+     -o-transition: background 0s linear;
 }
 
-.modal-open .modal {
-        overflow-x: hidden;
-        overflow-y: hidden;
-}
-
-.Next {
-        position:absolute;
-        z-index:1;
-        margin-top:339px;
-        margin-left:506px;
-        cursor:pointer;
-}
-
-.Next img {
-        position:absolute;
-}
-
-.Next img:last-child {
-        opacity:0;
-}
-
-.Next img:last-child:hover {
-        opacity:100;
-        z-index:15;
-}
-
-.border {
-        position:absolute;
-        z-index:2;
-        margin-left:15px;
-        margin-top:101px;
-}
-
-.vegetables {
-        position:absolute;
-        z-index:1;
-        margin-top:122px;
-        margin-left:41px;
-}
-
-.body-copy {
-        position:absolute;
-        z-index:1;
-        margin-top:193px;
-        margin-left:35px;
-}
-
-.Peas {
-        position:absolute;
-        z-index:1;
-        margin-left:283px;
-        margin-top:10px;
+.No:hover .shine {
+     background-position: 200px 0px;
+     -webkit-transition: background 1s ease-out;
+     -moz-transition: background 1s ease-out;
+     -ms-transition: background 1s ease-out;
+     -o-transition: background 1s ease-out;
 }

@@ -1,14 +1,99 @@
+var correct_items = new Array();
+
 $(document).ready(function () {
-    $('.header-fruit').hide().delay(500).fadeIn(2000);
 
-    $('.Next').hide().delay(2000).fadeIn(2000);
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_3.png)');
 
-    $('.Next').click(function(){
-        $("#putcontenthere").load("action_items/ai4.html");
+    $(".Sunshine").hide();
+
+    $(".Next").hide().delay(2000).fadeIn(1000);
+
+    $(".Next").click(function () {
+        $(".Message-window").addClass("bounceOut");
+
+        setTimeout(function () {
+            $(".Next").addClass("rotateOut");
+        },800);
+
+
+
+    $(".cardboard").click(function () {
+        $(this).hide();
     });
 
-    $(".header-text").hide();
-        setTimeout(function () {
-    $('.header-text').hide().delay(1000).fadeIn(600);
-},1000);
+    $(".coke-can").click(function () {
+        $(this).hide();
+    });
+
+    $(".broken-glass").click(function () {
+        $(this).hide();
+    });
+
+    $(".trash-paper-1").click(function () {
+        $(this).hide();
+    });
+
+    $(".trash-bag").click(function () {
+        $(this).hide();
+    });
+
+    $(".Batteries").click(function () {
+        $(this).hide();
+    });
+
+    $(".glass-bottle").click(function () {
+        $(this).hide();
+    });
+
+    $(".news-paper").click(function () {
+        $(this).hide();
+    });
+
+    $(".water-bottle").click(function () {
+        $(this).hide();
+    });
+
+    $(".tires").click(function () {
+        $(this).hide();
+    });
+
+    $(".can").click(function () {
+        $(this).hide();
+    });
+
+    $(".trash-paper-2").click(function () {
+        $(this).hide();
+    });
+
+    $(".tuna-can").click(function () {
+        $(this).hide();
+    });
+
+    $(".banana").click(function () {
+        $(this).hide();
+    });
+
+    $(".trash-paper-3").click(function () {
+        $(this).hide();
+    });
+
+    }); // end next btn click event
+    // After removing all items show arrow
+
+
+    $(".remove").one('click',function () {
+
+
+        correct_items.push(15);
+        if (correct_items.length === 15) {
+
+            $(".Next").removeClass("rotateOut");
+            $(".Next").addClass("rotateIn");
+            $(".Sunshine").fadeIn(3000);
+            $(".Next").click(function () {
+                $("#putcontenthere").load("action_items/ai4.html");
+            });
+        }
+
+    });
 });
