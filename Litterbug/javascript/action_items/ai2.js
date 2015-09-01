@@ -1,9 +1,11 @@
 $(document).ready(function () {
-    $('.Header-veg').hide().delay(1000).fadeIn(1000);
+    $(".Clean-up").hide().delay(700).fadeIn(600);
 
-    $('.Next').hide().delay(2000).fadeIn(2000);
+    $(".Next").hide().delay(2000).fadeIn(1000);
 
     $('.Next').click(function(){
-        $("#putcontenthere").load("action_items/ai3.html");
+       $("#putcontenthere").load("action_items/ai3.html");
     });
+
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_2.png)');
 });
