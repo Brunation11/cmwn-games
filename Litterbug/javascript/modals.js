@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('.close-Btn').click(function () {
+        $('#game-info').modal('show');
+    });
+
     $('.A').click(function () {
 
         $("#level-complete").modal('show');
@@ -12,18 +16,20 @@ $(document).ready(function () {
 
     });
 
-
-
-    // click quit button
-    $('.close-Btn').click(function () {
-
-        $("#retry-level").modal('show');
-    });
-
-   // dismiss quit screen
     $('.No').click(function () {
         $('#retry-level').modal('hide')
     });
 
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
+    $('.close-Btn').click(function () {
+
+        $("#game-info").modal('hide');
+
+    });
 
 });
