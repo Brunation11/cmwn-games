@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "AI11";
+}
+
+<style type="text/css">
+
+    .bkg-image {
+    background-image: url('@Url.Content("~/Content/images/BKG_4.png")');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
+
+
+  .flip-off img {
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+   }
+
+  .flip-off img:hover {
+    position: absolute;
+    opacity: 0;
+   }
+
+h1 {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    text-align: center;
+    font-size: 31px;
+    margin-left: 86px;
+    margin-top: 161px;
+    line-height: 37px;
+    font-weight: 900;
+    font-family: source sans pro;
+    }
+
+   
+.upl-btn{position:absolute;z-index:2;}
+
+ .picture {
+    width: 400px;
+    height: 220px;
+    background-color: black;
+    position: absolute;
+    z-index: 2;
+    margin-top: 21px;
+    margin-left: 102px;
+    border: #545EF2 solid 9px;
+    border-radius: 9px;
+}
+
+
+.picture1 {
+    width: 420px;
+    height: 238px;
+    background-color: #481AB0;
+    position: absolute;
+    z-index: 1;
+    margin-top: 12px;
+    margin-left: 92px;
+    border: #C8FF00 solid 4px;
+    border-radius: 19px;
+}
+
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.headline2 img').hide();
+        $('.picture').hide();
+        $('.picture1').hide();
+        $('.headline3 img').hide();
+        $('.headline3 h1').hide();
+        $('.forward2').hide();
+        $('.forward3').hide();
+        $('.back2').hide();
+        $('.back3').hide();
+
+        $('.upl-btn').click(function () {
+            $('.headline2 img').fadeIn(2000);
+            $('.headline2').fadeIn(2000);
+            $('.picture').fadeIn(2000);
+            $('.picture1').fadeIn(2000);
+            $('.forward2').fadeIn(2000);
+            $('.back2').fadeIn(2000);
+            $('.headline1 img').hide();
+            $('.headline1 h1').hide();
+            $('.forward').hide();
+            $('.back').hide();
+            designBtn.play();
+        });
+
+
+        $('.upload').click(function () {
+            $('.headline1 img').fadeIn(2000);
+            $('.headline1 h1').fadeIn(2000);
+            $('.forward').fadeIn(2000);
+            $('.back').fadeIn(2000);
+
+            $('.headline2 img').hide();
+            $('.picture').fadeOut(1000);
+            $('.picture1').fadeOut(1000);
+            $('.headline2').hide();
+            $('.forward2').hide();
+            $('.back2').hide();
+        });
+
+
+        $('.done').click(function () {
+            $('.headline3 img').fadeIn(2000);
+            $('.headline3 h1').fadeIn(2000);
+            $('.forward3').fadeIn(2000);
+            $('.back3').fadeIn(2000);
+
+            $('.headline2 img').hide();
+            $('.headline2').hide();
+            $('.headline2 h1').hide();
+            $('.forward2').hide();
+            $('.back2').hide();
+        });
+
+
+        $('.yes').click(function () {
+            $('.headline2 img').fadeIn(2000);
+            $('.headline2').fadeIn(2000);
+            $('.headline2 h1').fadeIn(2000);
+            $('.forward2').fadeIn(2000);
+            $('.back2').fadeIn(2000);
+
+            $('.headline3 img').hide();
+            $('.headline3 h1').hide();
+            $('.forward3').hide();
+            $('.back3').hide();
+        });
+
+
+
+
+
+
+        $('.no').click(function () {
+            $('.no').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI12")";
+            });
+            nex.play();
+        });
+
+
+       
+
+
+    });
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+
+            <div class="headline1">
+                <img src="~/Content/images/header_show_your_stuff.png" style="width: 571px;margin-top: 21px;margin-left: 19px;position:absolute;z-index: 1;" />
+
+                <h1 style="margin-left:121px;">Upload a picture of your<br /> water-saver tag on a faucet.</h1>
+                <div class="upl-btn animated shake">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_upload_on.png" style="width: 242px;margin-top: 251px;margin-left: 186px;position:absolute;z-index: 1;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_upload.png" style="width: 242px;margin-top: 251px;margin-left: 186px;position:absolute;z-index: 1;" /></div>
+               </div>
+                 </div>
+
+
+            <div class="headline2">
+                
+                <div class="picture"></div>
+                <div class="picture1"></div>
+
+
+                <div class="upload">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_upload_again_on.png" style="width: 242px; margin-top: 251px; margin-left: 58px; position: absolute; z-index: 1;" /></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_upload_again.png" style="width: 242px; margin-top: 251px; margin-left: 58px; position: absolute; z-index: 1;" /></div>
+                </div>
+                
+                
+                <div class="done">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_done_on.png" style="width: 242px; position: absolute; z-index: 2; margin-top: 251px; margin-left: 323px;" /></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_done.png" style="width: 242px; position: absolute; z-index: 2; margin-top: 251px; margin-left: 323px;" /></div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="headline3">
+                <img src="~/Content/images/header_thanks_for_uploading.png" style="width: 571px;margin-top: 21px;margin-left: 19px;position:absolute;z-index: 1;" />
+
+                <h1 style="margin-left:54px;">If you made multiple tags,<br /> do you want to upload more images?</h1>
+
+                <div class="yes">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_yes_on.png" style="width: 242px; margin-top: 251px; margin-left: 58px; position: absolute; z-index: 1;" /></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_yes.png" style="width: 242px; margin-top: 251px; margin-left: 58px; position: absolute; z-index: 1;" /></div>
+                </div>
+
+
+                <div class="no">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_no_on.png" style="width: 242px; position: absolute; z-index: 2; margin-top: 251px; margin-left: 323px;" /></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_no.png" style="width: 242px; position: absolute; z-index: 2; margin-top: 251px; margin-left: 323px;" /></div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
