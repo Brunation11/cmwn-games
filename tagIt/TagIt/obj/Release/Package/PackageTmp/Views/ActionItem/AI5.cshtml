@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "AI5";
+}
+
+
+<style type="text/css">
+
+    .bkg-image {
+    background-image: url('@Url.Content("~/Content/images/BKG_2.png")');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
+
+
+  .flip-off img {
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+   }
+
+  .flip-off img:hover {
+    position: absolute;
+    opacity: 0;
+   }
+
+
+h1 {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    text-align: center;
+    font-size: 27px;
+    margin-left: 276px;
+    margin-top: 136px;
+    line-height: 37px;
+    font-weight: 700;
+    font-family: source sans pro;
+}
+
+input[type='text'] {
+    color: #333;
+    width: 313px;
+    height: 85px;
+    margin-left: 173px;
+    margin-top: 186px;
+    position: absolute;
+    padding-left: 10px;
+    transition: box-shadow 320ms;
+    box-shadow: 0px 0px 8px 10px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    font-size: 35px;
+    border: 2px solid black;
+    z-index: 2;
+    }
+input[type='text']:focus {
+
+    outline: 0px;
+    outline-offset: 0px;
+    box-shadow: 0px 0px 1px 5px rgba(0,0,0,0.12);
+}
+
+input:-moz-placeholder {
+    color: #cccccc;
+}
+#resizer{width:500px;}
+
+.enter{
+    position:absolute;
+    z-index:2;
+    }
+
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('.enter').click(function () {
+            $('.enter').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI6")";
+            });
+            designBtn.play();
+        });
+       
+
+
+
+
+
+        function Resizer(element) {
+
+            var inputBox = element;
+            var cssRules = window.getComputedStyle(inputBox);
+            var maxFontSize = parseInt(cssRules.getPropertyValue("font-size"));
+            var minFontSize = 11; // 11 is pretty damn small!
+            var currentFontSize = maxFontSize;
+            var maxScrollWidth = parseInt(cssRules.getPropertyValue("width"))
+            var fontFamily = cssRules.getPropertyValue("font-family");
+            var currentText = inputBox.value;
+
+            // Canvas used to check text widths.
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+
+            var initialize = function () {
+
+                inputBox.oninput = onUpdate;
+            }
+
+            var onUpdate = function (event) {
+
+                var width;
+                // Some text has been deleted!
+                if (inputBox.value.length < currentText.length) {
+                    width = checkTextWidth(inputBox.value, currentFontSize + 1);
+
+                    while (width < maxScrollWidth && currentFontSize < maxFontSize) {
+                        currentFontSize += 1;
+                        inputBox.style.fontSize = currentFontSize + 'px';
+                        width = checkTextWidth(inputBox.value, currentFontSize + 1);
+                    }
+
+                    currentText = inputBox.value;
+                    return;
+
+                }
+
+                var width = checkTextWidth(inputBox.value, currentFontSize);
+
+                // Shrink
+                while (currentFontSize > minFontSize && width > maxScrollWidth) {
+                    currentFontSize -= 100;
+                    inputBox.style.fontSize = currentFontSize + 'px';
+                    width = checkTextWidth(inputBox.value, currentFontSize);
+                }
+
+                currentText = inputBox.value;
+            }
+
+            var checkTextWidth = function (text, size) {
+                context.font = size + "px " + fontFamily;
+
+                if (context.fillText) {
+                    return context.measureText(text).width;
+                } else if (context.mozDrawText) {
+                    return context.mozMeasureText(text);
+                }
+            }
+
+            // Initialize the auto adapt functionality.
+            initialize();
+        }
+
+        Resizer(document.getElementById('resizer'));
+
+
+
+
+    });
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+
+            <img src="~/Content/images/header_faucet_choose.png" style="width: 612px;margin-top:74px;margin-left: 3px;position:absolute;z-index: 1;"/>
+          
+            <input type='text' id='resizer' placeholder='Bathroom. . .'>
+
+
+            <div class="enter animated bounceIn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_enter_on.png" style="width: 119px;position:absolute;z-index: 2;margin-top: 284px;margin-left: 357px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_enter.png" style="width: 119px;margin-top: 284px;position:absolute;z-index: 2;margin-left: 357px;" /></div>
+            </div>
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+

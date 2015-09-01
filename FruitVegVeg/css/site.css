@@ -6945,7 +6945,7 @@ input[type="checkbox"].input-validation-error {
 }
 .bg .pointer {
   display: block;
-  background: url('@Url.Content("~/Content/images/background/blk-background.png")') center center no-repeat;
+  background: url("/content/images/background/blk-background.png") center center no-repeat;
   background-size: 100%;
   cursor: pointer;
   display: inline-block;
@@ -7067,7 +7067,7 @@ input[type="checkbox"].input-validation-error {
 /* image 1 Lettuce*/
 .img-hover-1 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_lettuce.png")');
+  background: url("/content/images/veg_lettuce.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 76px 121px;
@@ -7084,7 +7084,7 @@ input[type="checkbox"].input-validation-error {
 /* image 2 eggplant*/
 .img-hover-2 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_eggplant.png")');
+  background: url("/content/images/fruits_eggplant.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 80px 105px;
@@ -7101,7 +7101,7 @@ input[type="checkbox"].input-validation-error {
 /* image 3 cauliflower*/
 .img-hover-3 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_cauliflower.png")');
+  background: url("/content/images/veg_cauliflower.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 79px 120px;
@@ -7118,7 +7118,7 @@ input[type="checkbox"].input-validation-error {
 /* image 4 celery*/
 .img-hover-4 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_celery.png")');
+  background: url("/content/images/veg_celery.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 77px 104px;
@@ -7135,7 +7135,7 @@ input[type="checkbox"].input-validation-error {
 /* image 5 avocado*/
 .img-hover-5 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_avocado.png")');
+  background: url("/content/images/fruits_avocado.png");
   background-size: 202px;
   background-repeat: no-repeat;
   background-position: 84px 106px;
@@ -7152,7 +7152,7 @@ input[type="checkbox"].input-validation-error {
 /* image 6 cucumber*/
 .img-hover-6 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_cucumber.png")');
+  background: url("/content/images/fruits_cucumber.png");
   background-size: 239px;
   background-repeat: no-repeat;
   background-position: 56px 156px;
@@ -7169,7 +7169,7 @@ input[type="checkbox"].input-validation-error {
 /* image 7 carrot*/
 .img-hover-7 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_carrot.png")');
+  background: url("/content/images/veg_carrot.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 93px 134px;
@@ -7186,7 +7186,7 @@ input[type="checkbox"].input-validation-error {
 /* image 8 pumpkin*/
 .img-hover-8 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_pumpkin.png")');
+  background: url("/content/images/fruits_pumpkin.png");
   background-size: 176px;
   background-repeat: no-repeat;
   background-position: 99px 131px;
@@ -7203,7 +7203,7 @@ input[type="checkbox"].input-validation-error {
 /* image 9 potato*/
 .img-hover-9 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_potato.png")');
+  background: url("/content/images/veg_potato.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 82px 161px;
@@ -7220,7 +7220,7 @@ input[type="checkbox"].input-validation-error {
 /* image 10 pepper*/
 .img-hover-10 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_pepper.png")');
+  background: url("/content/images/fruits_pepper.png");
   background-size: 195px;
   background-repeat: no-repeat;
   background-position: 95px 120px;
@@ -7237,7 +7237,7 @@ input[type="checkbox"].input-validation-error {
 /* image 11 beet*/
 .img-hover-11 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/veg_beet.png")');
+  background: url("/content/images/veg_beet.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 86px 107px;
@@ -7254,7 +7254,7 @@ input[type="checkbox"].input-validation-error {
 /* image 12 zucchini*/
 .img-hover-12 {
   background-size: 100%;
-  background: url('@Url.Content("~/Content/images/fruits_zucchini.png")');
+  background: url("/content/images/fruits_zucchini.png");
   background-size: 221px;
   background-repeat: no-repeat;
   background-position: 71px 170px;

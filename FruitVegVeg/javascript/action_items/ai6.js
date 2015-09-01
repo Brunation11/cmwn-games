@@ -106,8 +106,7 @@
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
-                        correct.load();
-                        correct.play();
+
                         $(".pointer img").hide();
 
                         //On live
@@ -124,8 +123,7 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-                    wrong.load();
-                    wrong.play();
+
 
 
                 }
@@ -162,8 +160,7 @@
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
-                        correct.load();
-                        correct.play();
+
                         $(".pointer img").hide();
                         // On live
                         $(".Fruit-On").show();
@@ -177,8 +174,7 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-                    wrong.load();
-                    wrong.play();
+
                 }
             }
             return;

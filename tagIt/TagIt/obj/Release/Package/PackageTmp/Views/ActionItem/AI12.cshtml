@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "AI12";
+}
+
+
+
+<style type="text/css">
+
+    .bkg-image {
+    background-image: url('@Url.Content("~/Content/images/BKG_4.png")');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
+
+
+        .flip-off img {
+            position: absolute;
+            -webkit-transition: opacity 0s ease-in-out;
+            -moz-transition: opacity 0s ease-in-out;
+            -o-transition: opacity 0s ease-in-out;
+            transition: opacity 0s ease-in-out;
+        }
+
+            .flip-off img:hover {
+                position: absolute;
+                opacity: 0;
+            }
+
+
+h1 {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    text-align: center;
+    font-size: 34px;
+    margin-left: 69px;
+    margin-top: 136px;
+    line-height: 37px;
+    font-weight: 700;
+    font-family: source sans pro;
+}
+
+
+
+.flipper{position:absolute;z-index:2;}
+
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('.forward').click(function () {
+            $('.forward').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI1")";
+            });
+            click.play();
+        });
+
+
+        $('.back').click(function () {
+            $('.back').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI11")";
+            });
+            click.play();
+        });
+
+
+
+    });
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+
+            <img src="~/Content/images/image_drop.png" style="width: 297px;margin-top: 10px;margin-left: 149px;opacity: 0.4;position:absolute;z-index: 1; " />
+
+
+            <div id="header1">
+                <h1>Look at you!<br /> Tagging it for a brand new FLIP!</h1>
+                <div class="flipper animated wobble">
+                <img src="~/Content/images/header_flip.png" style="width: 273px;margin-top: 229px;margin-left: 163px;position:absolute;z-index: 1;"/>
+                </div>         
+            
+           </div>
+
+
+           
+
+
+            <div class="back">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_back_on.png" style="width: 73px;position:absolute;z-index: 2;margin-top: 321px;margin-left: -3px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_back.png" style="width: 73px;margin-top: 321px;position:absolute;z-index: 2;margin-left: -3px;" /></div>
+            </div>
+
+
+
+            <div class="forward">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_next_on.png" style="width: 73px;position:absolute;z-index: 2;margin-top: 321px;margin-left: 550px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_next.png" style="width: 73px;margin-top: 321px;position:absolute;z-index: 2;margin-left: 550px;" /></div>
+            </div>
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+
