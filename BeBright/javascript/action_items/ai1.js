@@ -2,8 +2,6 @@ var AI2 = new Array();
 
 $(document).ready(function () {
 
-    $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
-
     $(".Video-frame").hide();
 
     $(".Next").hide().delay(1000).fadeIn(600);

@@ -7232,11 +7232,15 @@ input[type="checkbox"].input-validation-error {
   margin-left: 35px;
 }
 /* shine */
-.upload-btn {
+.upload-btn img {
   display: block;
   width: 200px;
   height: 209px;
   background-size: 200px 209px;
+}
+.upload-btn img {
+  width: 200px;
+  height: 209px;
 }
 .upload-btn .shine {
   width: 176px;
@@ -7258,7 +7262,7 @@ input[type="checkbox"].input-validation-error {
   -o-transition: background 1s ease-out;
 }
 .upload-btn:hover {
-  background: url("content/images/buttons/btn_upload_on.png") 0 0 no-repeat;
+  background: url("/content/images/buttons/btn_upload_on.png") 0 0 no-repeat;
   background-size: 200px 209px;
 }
 .instruction {
