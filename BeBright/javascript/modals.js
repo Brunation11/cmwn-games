@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    $('#pop-up').modal('show');
+
+
     $('.close-Btn').click(function () {
         $('#game-info').modal('show');
     });
