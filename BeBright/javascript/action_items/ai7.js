@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     $(".Flip").show();
     $(".text_2").show();
     $(".Stamp").hide();

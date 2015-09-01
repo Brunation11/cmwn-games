@@ -2,6 +2,12 @@ var AI2 = new Array();
 var bulb_4 = new Array();
 $(document).ready(function () {
 
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     $ ('.cap_frame').css('background-image','url(/content/images/background/frame_2.png)');
 
     // hide arrow

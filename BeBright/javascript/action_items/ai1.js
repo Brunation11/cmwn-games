@@ -2,6 +2,12 @@ var AI2 = new Array();
 
 $(document).ready(function () {
 
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     $(".Video-frame").hide();
 
     $(".Next").hide().delay(1000).fadeIn(600);
