@@ -6594,891 +6594,101 @@ input[type="checkbox"].input-validation-error {
 .button-padding {
   padding: 0px 50px 0px 50px;
 }
-.second-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.border-white {
-  position: absolute;
+.close-Btn {
+  margin-top: 10px;
   z-index: 1;
-  top: 0;
-  margin: 20px;
+  left: 574px;
+  position: absolute;
+  cursor: pointer;
+}
+.close-Btn img:first-child {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+  z-index: 10;
+}
+.close-Btn img:first-child:hover {
+  opacity: 0;
+}
+.second-slide h1 {
+  position: absolute;
+  top: 58px;
+  text-align: center;
+  left: 82px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+}
+.bkg-image {
+  background-image: url("/content/images/background/BKG_1.png");
+  width: 616px;
+  height: 400px;
+  margin-left: 15px;
+  background-repeat: no-repeat;
+  background-size: 616px;
 }
 .No {
   position: absolute;
-  z-index: 1;
   top: 0;
-  margin-top: 163px;
-  margin-left: 244px;
+  margin-left: 220px;
+  margin-top: 197px;
   cursor: pointer;
 }
-.No img {
+.No img:first-child {
   position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+  z-index: 10;
 }
-.No img:last-child {
+.No img:first-child:hover {
   opacity: 0;
 }
-.No img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-/* Yes btn */
 .Yes {
   position: absolute;
-  z-index: 1;
   top: 0;
-  margin-top: 163px;
-  margin-left: 59px;
+  margin-left: 23px;
+  margin-top: 197px;
   cursor: pointer;
 }
-.Yes img {
+.Yes img:first-child {
   position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+  z-index: 10;
 }
-.Yes img:last-child {
+.Yes img:first-child:hover {
   opacity: 0;
-}
-.Yes img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.txt {
-  position: absolute;
-  margin-left: 97px;
-  margin-top: 41px;
-}
-.txt p {
-  color: white;
-  font-size: 39px;
-  text-align: center;
-  font-family: 'cmwn', sans-serif;
-  line-height: 47px;
-}
-.close-Btn {
-  z-index: 2;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.white-border {
-  position: absolute;
-  z-index: 2;
-  margin-left: 31px;
-  margin-top: 20px;
-}
-.banana {
-  position: absolute;
-  z-index: 1;
-  margin-left: 376px;
-  margin-top: 1px;
-}
-.carrots {
-  position: absolute;
-  z-index: 1;
-}
-.tomato {
-  position: absolute;
-  z-index: 1;
-  margin-top: 185px;
-}
-.celery {
-  position: absolute;
-  z-index: 1;
-  margin-left: 391px;
-  margin-top: 182px;
 }
 .title {
   position: absolute;
-  z-index: 2;
-  margin-left: 155px;
-  margin-top: 60px;
-}
-.Play {
-  position: absolute;
-  z-index: 3;
-  margin-top: 297px;
-  margin-left: 249px;
-  cursor: pointer;
-}
-.Play img {
-  position: absolute;
-}
-.Play img:last-child {
-  opacity: 0;
-}
-.Play img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.close-Btn {
   z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
+  margin-top: 47px;
+  margin-left: 47px;
 }
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.Header-veg {
+.eco-logo {
   position: absolute;
   z-index: 1;
-  margin-left: 23px;
-  margin-top: 251px;
-}
-.text {
-  position: absolute;
-  z-index: 1;
-  margin-left: 121px;
-  margin-top: 29px;
 }
 .Next {
   position: absolute;
   z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
+  margin-top: 325px;
+  margin-left: 535px;
   cursor: pointer;
 }
-.Next img {
+.Next img:first-child {
   position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+  z-index: 10;
 }
-.Next img:last-child {
+.Next img:first-child:hover {
   opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.border {
-  position: absolute;
-  z-index: 2;
-  margin-left: 228px;
-  margin-top: 27px;
-}
-.header-fruit {
-  position: absolute;
-  z-index: 1;
-  margin-left: 284px;
-  margin-top: 48px;
-}
-.header-text {
-  position: absolute;
-  z-index: 1;
-  margin-top: 134px;
-  margin-left: 260px;
-}
-.tomato {
-  position: absolute;
-  z-index: 1;
-  margin-left: 20px;
-  margin-top: 129px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.border {
-  position: absolute;
-  z-index: 2;
-  margin-left: 15px;
-  margin-top: 101px;
-}
-.vegetables {
-  position: absolute;
-  z-index: 1;
-  margin-top: 122px;
-  margin-left: 41px;
-}
-.body-copy {
-  position: absolute;
-  z-index: 1;
-  margin-top: 193px;
-  margin-left: 35px;
-}
-.Peas {
-  position: absolute;
-  z-index: 1;
-  margin-left: 283px;
-  margin-top: 10px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-/* mask effect */
-.img-box {
-  position: absolute;
-  margin-left: 101px;
-  margin-top: 103px;
-}
-.bg {
-  margin: 0 auto;
-  overflow: hidden;
-  width: 429px;
-  height: 256px;
-  border-radius: 1.9015544px;
-  position: relative;
-  border-right: 26px solid;
-  border-left: 16px solid;
-}
-.img-hover {
-  background-size: 100%;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-.bg .pointer {
-  display: block;
-  background: url("/content/images/background/blk-background.png") center center no-repeat;
-  background-size: 100%;
-  cursor: pointer;
-  display: inline-block;
-  height: 600px;
-  width: 800px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-  position: absolute;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-}
-.header-background {
-  position: absolute;
-  z-index: 1;
-  margin-top: 98px;
-  margin-left: 74px;
-}
-.main-header {
-  position: absolute;
-  z-index: 1;
-  margin-left: 29px;
-  margin-top: 16px;
-}
-.game-frame {
-  position: absolute;
-  z-index: 3;
-  margin-left: 75px;
-  margin-top: 97px;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.Veggies {
-  position: absolute;
-  z-index: 2;
-  margin-top: 170px;
-  margin-left: 480px;
-}
-.Fruit {
-  position: absolute;
-  z-index: 2;
-  margin-top: 170px;
-  margin-left: 13px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-/* mask effect */
-.img-box {
-  position: absolute;
-  margin-left: 101px;
-  margin-top: 103px;
-}
-.bg {
-  overflow: hidden;
-  width: 429px;
-  height: 256px;
-  position: relative;
-  border-right: 26px solid;
-  border-left: 16px solid;
-  border-radius: 1.9015544px;
-}
-.pointer {
-  position: absolute;
-  z-index: 3;
-  display: inline-block;
-  margin-top: 60px;
-  height: 600px;
-  width: 800px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-}
-/* image 1 Lettuce*/
-.img-hover-1 {
-  background-size: 100%;
-  background: url("/content/images/veg_lettuce.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 76px 121px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 2 eggplant*/
-.img-hover-2 {
-  background-size: 100%;
-  background: url("/content/images/fruits_eggplant.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 80px 105px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 3 cauliflower*/
-.img-hover-3 {
-  background-size: 100%;
-  background: url("/content/images/veg_cauliflower.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 79px 120px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 4 celery*/
-.img-hover-4 {
-  background-size: 100%;
-  background: url("/content/images/veg_celery.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 77px 104px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 5 avocado*/
-.img-hover-5 {
-  background-size: 100%;
-  background: url("/content/images/fruits_avocado.png");
-  background-size: 202px;
-  background-repeat: no-repeat;
-  background-position: 84px 106px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 6 cucumber*/
-.img-hover-6 {
-  background-size: 100%;
-  background: url("/content/images/fruits_cucumber.png");
-  background-size: 239px;
-  background-repeat: no-repeat;
-  background-position: 56px 156px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 7 carrot*/
-.img-hover-7 {
-  background-size: 100%;
-  background: url("/content/images/veg_carrot.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 93px 134px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 8 pumpkin*/
-.img-hover-8 {
-  background-size: 100%;
-  background: url("/content/images/fruits_pumpkin.png");
-  background-size: 176px;
-  background-repeat: no-repeat;
-  background-position: 99px 131px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 9 potato*/
-.img-hover-9 {
-  background-size: 100%;
-  background: url("/content/images/veg_potato.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 82px 161px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 10 pepper*/
-.img-hover-10 {
-  background-size: 100%;
-  background: url("/content/images/fruits_pepper.png");
-  background-size: 195px;
-  background-repeat: no-repeat;
-  background-position: 95px 120px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 11 beet*/
-.img-hover-11 {
-  background-size: 100%;
-  background: url("/content/images/veg_beet.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 86px 107px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-/* image 12 zucchini*/
-.img-hover-12 {
-  background-size: 100%;
-  background: url("/content/images/fruits_zucchini.png");
-  background-size: 221px;
-  background-repeat: no-repeat;
-  background-position: 71px 170px;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-.header-background {
-  position: absolute;
-  z-index: 1;
-  margin-top: 98px;
-  margin-left: 74px;
-}
-.game-frame {
-  position: absolute;
-  z-index: 4;
-  margin-left: 75px;
-  margin-top: 97px;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.Veggies {
-  position: absolute;
-  z-index: 4;
-  margin-top: 170px;
-  margin-left: 480px;
-  cursor: pointer;
-}
-.Fruit {
-  position: absolute;
-  z-index: 4;
-  margin-top: 170px;
-  margin-left: 13px;
-  cursor: pointer;
-}
-#match ul li {
-  height: 346px;
-}
-.Fruit-On {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.Veg-On {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.Veg-off {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.Fruit-off {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.left-arrow {
-  position: absolute;
-  z-index: 1;
-  margin-top: 62px;
-  margin-left: 55px;
-  height: 0px;
-  overflow: hidden;
-}
-.right-arrow {
-  position: absolute;
-  z-index: 1;
-  margin-top: 62px;
-  margin-left: 493px;
-  height: 0px;
-  overflow: hidden;
-}
-.sides {
-  position: absolute;
-  z-index: 1;
-  margin-left: 79px;
-  margin-top: 100px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.Well-done {
-  position: absolute;
-  z-index: 1;
-  margin-top: 100px;
-  margin-left: 144px;
-}
-.body-copy {
-  position: absolute;
-  z-index: 1;
-  margin-top: 200px;
-  margin-left: 165px;
-}
-.body-content p {
-  color: #fff;
-  text-align: center;
-  font-size: 30px;
-  font-family: 'cmwn', sans-serif;
-  line-height: 36px;
-}
-.txt p {
-  color: white;
-  font-size: 39px;
-  text-align: center;
-  font-family: 'cmwn', sans-serif;
-  line-height: 47px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.Next {
-  position: absolute;
-  z-index: 1;
-  margin-top: 339px;
-  margin-left: 506px;
-  cursor: pointer;
-}
-.Next img {
-  position: absolute;
-}
-.Next img:last-child {
-  opacity: 0;
-}
-.Next img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
-.flip {
-  position: absolute;
-  z-index: 1;
-  margin-top: 283px;
-  margin-left: 206px;
-  -webkit-animation: spin 1s linear;
-  -moz-animation: spin 1s linear;
-  animation: spin 1s linear;
-}
-.body-copy {
-  position: absolute;
-  z-index: 1;
-  margin-left: 58px;
-  margin-top: 30px;
-}
-.body-copy p {
-  color: #fff;
-  font-size: 39px;
-  font-family: 'cmwn', sans-serif;
-}
-.basket {
-  position: absolute;
-  z-index: 1;
-  margin-top: 75px;
-  margin-left: 179px;
 }
