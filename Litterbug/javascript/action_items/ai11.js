@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
+
     $(".info2").hide();
 
     $(".Accept").hide();

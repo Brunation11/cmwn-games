@@ -1,6 +1,9 @@
 var correct_items = new Array();
 
 $(document).ready(function () {
+
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_3.png)');
+
     $(".Sunshine").hide();
 
     $(".Next").hide().delay(2000).fadeIn(1000);

@@ -6,4 +6,6 @@ $(document).ready(function () {
     $('.Next').click(function(){
        $("#putcontenthere").load("action_items/ai3.html");
     });
+
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_2.png)');
 });
