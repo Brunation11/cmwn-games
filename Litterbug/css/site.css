@@ -7134,6 +7134,7 @@ input[type="checkbox"].input-validation-error {
 .No-1 img:nth-child(2) {
   position: absolute;
   left: 0;
+  z-index: 1;
 }
 .Kid-2 {
   position: absolute;
@@ -7194,6 +7195,7 @@ input[type="checkbox"].input-validation-error {
 .No-2 img:nth-child(2) {
   position: absolute;
   left: 0;
+  z-index: 1;
 }
 .ground {
   position: absolute;
@@ -7251,6 +7253,7 @@ input[type="checkbox"].input-validation-error {
 .No-3 img:nth-child(2) {
   position: absolute;
   left: 0;
+  z-index: 1;
 }
 .Sign {
   position: absolute;
