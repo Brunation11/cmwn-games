@@ -7131,6 +7131,10 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
 }
+.No-1 img:nth-child(2) {
+  position: absolute;
+  left: 0;
+}
 .Kid-2 {
   position: absolute;
   z-index: 1;
