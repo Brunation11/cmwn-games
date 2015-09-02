@@ -7191,6 +7191,10 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-top: 223px;
 }
+.No-2 img:nth-child(2) {
+  position: absolute;
+  left: 0;
+}
 .ground {
   position: absolute;
   z-index: 1;
@@ -7243,6 +7247,10 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 22px;
   margin-top: 10px;
+}
+.No-3 img:nth-child(2) {
+  position: absolute;
+  left: 0;
 }
 .Sign {
   position: absolute;
