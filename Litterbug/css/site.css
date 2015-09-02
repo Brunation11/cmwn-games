@@ -7147,6 +7147,11 @@ input[type="checkbox"].input-validation-error {
 .Img-school {
   margin-left: -2px;
 }
+.header {
+  position: absolute;
+  z-index: 1;
+  margin-top: 223px;
+}
 .No-2 {
   position: absolute;
   z-index: 1;
@@ -7188,11 +7193,6 @@ input[type="checkbox"].input-validation-error {
   -moz-transition: background 1s ease-out;
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
-}
-.header {
-  position: absolute;
-  z-index: 1;
-  margin-top: 223px;
 }
 .No-2 img:nth-child(2) {
   position: absolute;
