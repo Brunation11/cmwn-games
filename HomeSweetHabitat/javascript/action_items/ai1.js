@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    $ ('.bkg-image').css('background-image','url(/content/images/background/bkg_1.png)');
-
     background.load();
     background.play();
     $('.close-Btn').click(function () {
@@ -13,7 +11,7 @@ $(document).ready(function () {
 
     });
 
-    $(".play-Btn").click(functions (){
+    $(".play-Btn").click(function (){
         $("#putcontenthere").load("action_items/ai2.html");
     });
 });
