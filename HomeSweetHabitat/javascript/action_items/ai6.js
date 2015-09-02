@@ -16,7 +16,7 @@ $(document).ready(function () {
     Music.play();
 
     // hide next arrow
-    $('.Next').hide();
+    $('.Next-4').hide();
 
     // exit screen
     $('.close-Btn').click(function () {
@@ -33,7 +33,7 @@ $(document).ready(function () {
     findSelectedMatches();
 
     // click next to show next image
-    $('.Next').click(function () {
+    $('.Next-4').click(function () {
         var backImg = $('.Main-slides li:first').css({ 'list-style': 'none' });
         backImg.hide();
         backImg.remove();
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
         $('.Main-slides h2').css({ 'font-family': 'Source Sans Pro', 'font-size': '35px', 'font-weight': '700' });
 
-        $('.Next').hide();
+        $('.Next-4').hide();
 
         //reset items
         resetMatchArrays();
@@ -50,7 +50,7 @@ $(document).ready(function () {
         findSelectedMatches();
 
         // if next btn is clicked 10 times game is over.
-        var win_total = $(".Next");
+        var win_total = $(".Next-4");
 
         completed_sets.push(win_total);
 

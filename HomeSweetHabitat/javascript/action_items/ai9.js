@@ -16,7 +16,7 @@ $(document).ready(function () {
     Music.play();
 
     // hide next arrow
-    $('.Next').hide();
+    $('.Next-7').hide();
 
     // exit screen
     $('.close-Btn').click(function () {
@@ -33,7 +33,7 @@ $(document).ready(function () {
     findSelectedMatches();
 
     // click next to show next image
-    $('.Next').click(function () {
+    $('.Next-7').click(function () {
         var backImg = $('.Main-slides li:first').css({ 'list-style': 'none' });
         backImg.hide();
         backImg.remove();
@@ -42,14 +42,14 @@ $(document).ready(function () {
 
         $('.Main-slides h2').css({ 'font-family': 'Source Sans Pro', 'font-size': '35px', 'font-weight': '700' });
 
-        $('.Next').hide();
+        $('.Next-7').hide();
 
         //reset items
         resetMatchArrays();
         selectRandomListItem();
         findSelectedMatches();
 
-        var win_total = $(".Next");
+        var win_total = $(".Next-7");
 
         completed_sets.push(win_total);
 
@@ -79,7 +79,7 @@ $(document).ready(function () {
                 if (matches_correctly.length === 1) {
                     console.log('all done');
                     //end of this set
-                    $('.Next').show();
+                    $('.Next-7').show();
                     correct.load();
                     correct.play();
                 }

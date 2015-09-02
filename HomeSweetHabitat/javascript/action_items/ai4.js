@@ -16,7 +16,7 @@ $(document).ready(function () {
     Music.play();
 
     // hide next arrow
-    $('.Next').hide();
+    $('.Next-3').hide();
 
     // exit screen
     $('.close-Btn').click(function () {
@@ -33,7 +33,7 @@ $(document).ready(function () {
     findSelectedMatches();
 
     // click next to show next image
-    $('.Next').click(function () {
+    $('.Next-3').click(function () {
         var backImg = $('.Main-slides li:first').css({ 'list-style': 'none' });
         backImg.hide();
         backImg.remove();
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
         $('.Main-slides h2').css({ 'font-family': 'Source Sans Pro', 'font-size': '35px', 'font-weight': '700' });
 
-        $('.Next').hide();
+        $('.Next-3').hide();
 
         //reset items
         resetMatchArrays();
@@ -50,14 +50,14 @@ $(document).ready(function () {
         findSelectedMatches();
 
         // if next btn is clicked 10 times game is over.
-        var win_total = $(".Next");
+        var win_total = $(".Next-3");
 
         completed_sets.push(win_total);
 
 
         if (completed_sets.length === 10) {
             $("#match").hide();
-            document.location.href = "/homesweethabitat/ActionItem/AI5";
+            $("#putcontenthere").load("action_items/ai5.html");
         }
     });
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
                 if (matches_correctly.length === 1) {
                     console.log('all done');
                     //end of this set
-                    $('.Next').show();
+                    $('.Next-3').show();
                     correct.load();
                     correct.play();
                 }

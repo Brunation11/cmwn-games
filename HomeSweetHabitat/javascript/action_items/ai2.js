@@ -9,4 +9,8 @@ $(document).ready(function () {
         $('#quit-game').modal('hide');
 
     });
+
+    $('.Next-1').click(function (){
+        $("#putcontenthere").load("action_items/ai3.html");
+    });
 });
