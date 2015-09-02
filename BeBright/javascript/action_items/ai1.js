@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     });
 
-    $(".Video-frame").hide();
+    $(".Video-frame-1").hide();
 
     $(".Next").hide().delay(1000).fadeIn(600);
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
         if (AI2.length === 1) {
 
             $(".Title").hide();
-            $(".Video-frame").hide().delay(100).fadeIn(1000);
+            $(".Video-frame-1").hide().delay(100).fadeIn(1000);
         }
         if (AI2.length === 2) {
 

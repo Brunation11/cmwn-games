@@ -15,7 +15,7 @@ $(document).ready(function () {
     $(".Header_3").hide();
     $(".Switch").hide();
     $(".last-text").hide();
-    $(".Video-frame").hide();
+    $(".Video-frame-2").hide();
     $(".cap_frame").hide();
 
     $(".text_1").hide();
@@ -60,7 +60,7 @@ $(document).ready(function () {
         }
         if (AI3.length === 2) {
             $(".last-text").hide();
-            $(".Video-frame").show();
+            $(".Video-frame-2").show();
             //document.location.href = "/ActionItem/AI4";
         }
         if (AI3.length === 3) {
