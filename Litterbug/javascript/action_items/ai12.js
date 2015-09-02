@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-    $('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
+    $('.bkg-image').css('background-image','url(/content/images/background/BKG_5.png)');
 
     $(".text").hide().delay(1000).fadeIn(90);
 
