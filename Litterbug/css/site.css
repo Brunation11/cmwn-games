@@ -6673,14 +6673,14 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.Next {
+.Next-1 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-1 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6688,17 +6688,17 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-1 img:first-child:hover {
   opacity: 0;
 }
-.Next {
+.Next-2 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-2 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6706,7 +6706,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-2 img:first-child:hover {
   opacity: 0;
 }
 .bkg-image {
@@ -6743,14 +6743,14 @@ input[type="checkbox"].input-validation-error {
 .text p span {
   font-size: 26px;
 }
-.Next {
+.Next-3 {
   position: absolute;
   z-index: 2;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-3 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6758,7 +6758,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-3 img:first-child:hover {
   opacity: 0;
 }
 .bkg-image {
@@ -7264,14 +7264,14 @@ input[type="checkbox"].input-validation-error {
   margin-left: 148px;
   margin-top: 66px;
 }
-.Next {
+.Next-4 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-4 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7279,17 +7279,17 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-4 img:first-child:hover {
   opacity: 0;
 }
-.Next {
+.Next-5 {
   position: absolute;
   z-index: 2;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-5 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7297,7 +7297,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-5 img:first-child:hover {
   opacity: 0;
 }
 .Video-frame-1 {
@@ -7523,14 +7523,14 @@ input[type="checkbox"].input-validation-error {
   line-height: 33px;
   color: #000;
 }
-.Next {
+.Next-6 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next img:first-child {
+.Next-6 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7538,7 +7538,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next img:first-child:hover {
+.Next-6 img:first-child:hover {
   opacity: 0;
 }
 .Flip {
