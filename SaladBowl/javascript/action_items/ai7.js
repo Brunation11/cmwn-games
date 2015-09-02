@@ -1,8 +1,8 @@
          $(document).ready(function () {
 
 
-        $('.play').click(function () {
-            $('.play').delay(1000).delay(1000, function () {
+        $('.play6').click(function () {
+            $('.play6').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("/action_items/ai8.html");
             });
         });
@@ -13,8 +13,8 @@
             //no sound - log error
         }
 
-        $('.play1').click(function () {
-            $('.play1').delay(1000).delay(1000, function () {
+        $('.play7').click(function () {
+            $('.play7').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("/action_items/ai8.html");
             });
         });

@@ -20,9 +20,9 @@
             this.play();
         }, false);
 
-        $('.play').hide();
+        $('.play2').hide();
 
-        $('.play').click(function () {
+        $('.play2').click(function () {
             $('.play').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("/action_items/ai4.html");
             });
@@ -33,6 +33,7 @@
             catch (err) {
                 //no sound - log error
             }
+            title.pause();
         });
 
 
