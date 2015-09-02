@@ -6,6 +6,6 @@ $(document).ready(function () {
     $(".post").hide().delay(1000).fadeIn(100);
 
     $('.post').click(function(){
-        $("#putcontenthere").load("action_items/ai10.html");
+        $("#putcontenthere").load("action_items/ai11.html");
     });
 });
