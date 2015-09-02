@@ -7079,7 +7079,7 @@ input[type="checkbox"].input-validation-error {
   width: 616px;
   height: 400px;
 }
-.Kid {
+.Kid-1 {
   position: absolute;
   z-index: 1;
   margin-top: 21px;
@@ -7090,14 +7090,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 158px;
 }
-.No {
+.No-1 {
   position: absolute;
   z-index: 1;
   margin-left: 282px;
   margin-top: 132px;
   cursor: pointer;
 }
-.No img:first-child {
+.No-1 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7105,13 +7105,13 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No img:first-child:hover {
+.No-1 img:first-child:hover {
   opacity: 0;
 }
 .shine {
   position: absolute;
 }
-.No .shine {
+.No-1 .shine {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7124,14 +7124,14 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No:hover .shine {
+.No-1:hover .shine {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
 }
-.Kid {
+.Kid-2 {
   position: absolute;
   z-index: 1;
   width: 616px;
@@ -7141,14 +7141,14 @@ input[type="checkbox"].input-validation-error {
 .Img-school {
   margin-left: -2px;
 }
-.No {
+.No-2 {
   position: absolute;
   z-index: 1;
   margin-left: 373px;
   margin-top: 165px;
   cursor: pointer;
 }
-.No img:first-child {
+.No-2 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7156,13 +7156,13 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No img:first-child:hover {
+.No-2 img:first-child:hover {
   opacity: 0;
 }
 .shine {
   position: absolute;
 }
-.No .shine {
+.No-2 .shine {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7175,7 +7175,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No:hover .shine {
+.No-2:hover .shine {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
@@ -7193,14 +7193,14 @@ input[type="checkbox"].input-validation-error {
   margin-left: 158px;
   margin-top: 73px;
 }
-.No {
+.No-3 {
   position: absolute;
   z-index: 1;
   margin-left: 108px;
   margin-top: 165px;
   cursor: pointer;
 }
-.No img:first-child {
+.No-3 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7208,13 +7208,13 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No img:first-child:hover {
+.No-3 img:first-child:hover {
   opacity: 0;
 }
 .shine {
   position: absolute;
 }
-.No .shine {
+.No-3 .shine {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7227,7 +7227,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No:hover .shine {
+.No-3:hover .shine {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
