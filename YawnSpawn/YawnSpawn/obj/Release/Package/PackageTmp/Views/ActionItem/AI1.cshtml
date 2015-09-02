@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "AI1";
+}
+
+
+<style type="text/css">
+    .play {
+        position: absolute;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        try {
+            slide2.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+    $('.play').click(function () {
+        $('.play').delay(1000).delay(1000, function () {
+            document.location.href = "@Url.Content("~/ActionItem/AI2")";
+        });
+        click.play();
+    });
+    });
+</script>
+
+
+
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/Elements/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images//Elements/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+
+           
+            <img src="~/Content/images/title (1).png"    style="width: 424px;margin-left: 187px;position: absolute;margin-top: 57px;z-index: 2;" />
+
+
+            <div class="play">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/Elements/btn_play_on.png" style="width: 116px;position:absolute;z-index: 2;margin-top: 304px;margin-left: 515px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/Elements/btn_play.png" style="width: 116px;margin-top: 304px;position:absolute;z-index: 2;margin-left: 515px;" /></div>
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
