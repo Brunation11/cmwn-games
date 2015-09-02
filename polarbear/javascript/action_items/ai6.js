@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     });
 
-    $('#back-button').click(function () {
+    $('#back').click(function () {
         $('#game-info').modal('show');
         $('#game-info2').modal('hide');
     });

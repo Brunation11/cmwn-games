@@ -10,6 +10,10 @@ $(document).ready(function () {
         
     });
 
+    $('#back-button1').click(function () {
+        $("#putcontenthere").load("/action_items/ai6.html");
+    });
+
     $('.file-upload').click(function () {
         $("#putcontenthere").load("/action_items/ai7.html");
     });
