@@ -6,13 +6,13 @@ $(document).ready(function () {
 
     $(".Sunshine").hide();
 
-    $(".Next").hide().delay(2000).fadeIn(1000);
+    $(".Next-3").hide().delay(2000).fadeIn(1000);
 
-    $(".Next").click(function () {
+    $(".Next-3").click(function () {
         $(".Message-window").addClass("bounceOut");
 
         setTimeout(function () {
-            $(".Next").addClass("rotateOut");
+            $(".Next-3").addClass("rotateOut");
         },800);
 
 
@@ -87,10 +87,10 @@ $(document).ready(function () {
         correct_items.push(15);
         if (correct_items.length === 15) {
 
-            $(".Next").removeClass("rotateOut");
-            $(".Next").addClass("rotateIn");
+            $(".Next-3").removeClass("rotateOut");
+            $(".Next-3").addClass("rotateIn");
             $(".Sunshine").fadeIn(3000);
-            $(".Next").click(function () {
+            $(".Next-3").click(function () {
                 $("#putcontenthere").load("action_items/ai4.html");
             });
         }

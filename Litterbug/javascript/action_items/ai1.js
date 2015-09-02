@@ -4,9 +4,9 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_1.pn
 
     $(".eco-logo").hide().delay(1000).fadeIn(500);
 
-    $(".Next").hide().delay(2000).fadeIn(1000);
+    $(".Next-1").hide().delay(2000).fadeIn(1000);
 
-    $('.Next').click(function(){
+    $('.Next-1').click(function(){
        $("#putcontenthere").load("action_items/ai2.html");
     });
 });
