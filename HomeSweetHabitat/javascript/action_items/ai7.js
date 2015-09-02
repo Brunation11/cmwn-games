@@ -1,17 +1,12 @@
+
 $(document).ready(function () {
 
     $('.close-Btn').click(function () {
-
-        $("#retry-level").modal('show');
-
+        $('#quit-game').modal('show');
     });
 
-    $(".Flip").show();
-    $(".text_2_2").show();
-    $(".Stamp").hide();
+    $('.no').click(function () {
+        $('#quit-game').modal('hide');
 
-    setTimeout(function () {
-        $(".Stamp").show();
-    }, 2000);
-
+    });
 });

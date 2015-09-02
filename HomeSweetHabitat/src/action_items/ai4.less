@@ -1,100 +1,284 @@
 .close-Btn {
-    margin-top: 10px;
+    margin-top: 1px;
     position: absolute;
-    z-index: 1;
-    left: 570px;
+    z-index: 2;
+    left: 563px;
     position: absolute;
     cursor: pointer;
 }
 
+.close-Btn img {
+   position: absolute;
+}
+
 .close-Btn img:first-child {
+   position: absolute;
+   -webkit-transition: opacity 0s ease-in-out;
+   -moz-transition: opacity 0s ease-in-out;
+   -o-transition: opacity 0s ease-in-out;
+   transition: opacity 0s ease-in-out;
+   z-index: 10;
+}
+
+.close-Btn img:first-child:hover {
+    opacity: 0;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.quit-background {
+    margin-top: -8px;
+    margin-left: -10px;
+}
+
+.quit-message {
     position: absolute;
+    z-index: 1;
+    top: 79px;
+    left: 89px;
+}
+/* quit modal button*/
+.yes {
+    position: absolute;
+    z-index: 1;
+    top: 211px;
+    left: 68px;
+    cursor: pointer;
+}
+
+.yes img {
+    position: absolute;
+}
+
+.yes img:first-child {
     -webkit-transition: opacity 0s ease-in-out;
     -moz-transition: opacity 0s ease-in-out;
     -o-transition: opacity 0s ease-in-out;
     transition: opacity 0s ease-in-out;
-    z-index: 10;
- }
-
- .close-Btn img:first-child:hover {
-    opacity: 0;
- }
-
- .upload-btn {
-     position:absolute;
-     z-index:1;
-     margin-top: 173px;
-     margin-left: 208px;
-     cursor:pointer;
- }
-
- .upload-btn img:first-child {
     position: absolute;
+    z-index: 10;
+}
+
+.yes img:first-child:hover {
+    opacity: 0;
+}
+/* no button */
+.no {
+    position: absolute;
+    top: 209px;
+    left: 287px;
+    cursor: pointer;
+}
+
+.no img {
+    position: absolute;
+ }
+
+.no img:first-child {
     -webkit-transition: opacity 0s ease-in-out;
     -moz-transition: opacity 0s ease-in-out;
     -o-transition: opacity 0s ease-in-out;
     transition: opacity 0s ease-in-out;
+    position: absolute;
     z-index: 10;
- }
+}
 
- .upload-btn img:first-child:hover {
+.no img:first-child:hover {
     opacity: 0;
- }
-
- .Saver-text{
-     position:absolute;
-     z-index:1;
-     margin-top: 111px;
-     margin-left: 35px;
- }
-
- /* shine */
- .upload-btn img{
-    display: block;
-    width: 200px;
-    height: 209px;
-    background-size:200px 209px;
- }
-
- .upload-btn img {
-    width: 200px;
-    height: 209px;
- }
- .upload-btn .shine {
-     width: 176px;
-     height: 179px;
-     margin-left: 12px;
-     border-radius:100px;
-     display: block;
-     position: absolute;
-     top: 0;
-     background: url("http://i.imgur.com/n1CetrS.png") -200px 0 no-repeat;
-     -webkit-transition: background 0s linear;
-     -moz-transition: background 0s linear;
-     -ms-transition: background 0s linear;
-     -o-transition: background 0s linear;
 }
 
-.upload-btn:hover .shine {
-     background-position: 200px 0px;
-     -webkit-transition: background 1s ease-out;
-     -moz-transition: background 1s ease-out;
-     -ms-transition: background 1s ease-out;
-     -o-transition: background 1s ease-out;
+.intro-text {
+    position: absolute;
+    z-index: 1;
+    top: 101px;
+    left: 69px;
 }
 
-.upload-btn:hover{
-     background-size:200px 209px;
+.Next {
+    position: absolute;
+    z-index: 11;
+    left: 436px;
+    top: 175px;
+    cursor: pointer;
 }
 
-.instruction{
-     position: absolute;
-     z-index: 1;
-     text-align: center;
-     font-size: 30px;
-     font-family: 'Source Sans Pro',sans-serif;
-     font-weight: 700;
-     color: #fff;
-     margin-left: 128px;
-     margin-top: 20px;
+.Next img {
+    position: absolute;
+    width: 44px;
 }
+
+.Next img:first-child {
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    z-index: 10;
+}
+
+.Next img:first-child:hover {
+    opacity: 0;
+}
+
+.window {
+    position: absolute;
+    z-index: 3;
+    top: 23px;
+    left: 105px;
+}
+
+.window p {
+    position: absolute;
+    font-family: 'Source Sans Pro',sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    top: 65px;
+    left: 26px;
+}
+
+#homes {
+    position: absolute;
+    z-index: 5;
+    top: 235px;
+    left: 20px;
+}
+
+#homes .horizontal {
+    display: inline;
+    margin-left: 16px;
+    float: left;
+}
+
+.homes-captions {
+    position: absolute;
+    z-index: 5;
+    top: 363px;
+}
+
+.homes-captions #horizontal-captions {
+    display: inline;
+}
+
+.homes-captions #horizontal-captions:nth-child(1) {
+    margin-left: 43px;
+}
+
+.homes-captions #horizontal-captions:nth-child(2) {
+    margin-left: 45px;
+}
+
+.homes-captions #horizontal-captions:nth-child(3) {
+    margin-left: 39px;
+}
+
+.homes-captions #horizontal-captions:nth-child(4) {
+    margin-left: 20px;
+}
+
+.brush-pile img:last-child {
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    opacity: 0; /*temp*/
+    width: 150px;
+    top:-8px;
+    left:273px;
+}
+
+.brush-pile img:last-child:hover {
+    opacity: 100;
+    cursor: pointer;
+}
+
+.Wet img:last-child {
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    opacity: 0; /*temp*/
+    width: 150px;
+    top:-8px;
+    left:409px;
+}
+
+.Wet img:last-child:hover {
+    opacity: 100;
+    cursor: pointer;
+ }
+
+.Bird-nest img:last-child {
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    opacity: 0; /*temp*/
+    width: 150px;
+    top:-8px;
+    left:137px;
+}
+
+.Bird-nest img:last-child:hover {
+    opacity: 100;
+    cursor: pointer;
+ }
+
+.The-burrow img:last-child {
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    opacity: 0; /*temp*/
+    width: 150px;
+    top: -8px;
+    left: 1px;
+}
+
+.The-burrow img:last-child:hover {
+    opacity: 100;
+    cursor: pointer;
+}
+
+.Main-slides{
+    overflow:hidden;
+    position:absolute;
+    width:375px;
+    height:200px;
+    z-index:10;
+    margin-left: 118px;
+    margin-top: 28px;
+}
+.Main-slides ul{
+    list-style:none;
+    margin-left:-40px;
+    margin-bottom: 0px;
+}
+
+.Main-slides ul li{
+    position:relative;
+}
+
+.Main-slides ul li h2{
+    float:right;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight:700;
+    font-size:35px;
+}
+.bkg-image{
+        width:616px;
+        height:400px;
+        margin-left:15px;
+       background-image:url('@Url.Content("~/Content/images/background/bkg_3.png")');
+        background-repeat:no-repeat;
+ }

@@ -1,16 +1,11 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     $('.close-Btn').click(function () {
-
-        $("#retry-level").modal('show');
-
+        $('#quit-game').modal('show');
     });
 
-    $(".Upload-again").click(function() {
-            $("#putcontenthere").load("action_items/ai6.html");
-        });
+    $('.no').click(function () {
+        $('#quit-game').modal('hide');
 
-    $(".finished").click(function(){
-            $("#putcontenthere").load("action_items/ai6.html");
     });
 });

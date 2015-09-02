@@ -1,25 +1,39 @@
 $(document).ready(function () {
 
-    $('.A').click(function () {
+$('#pop-up').modal('show');
 
-        $("#level-complete").modal('show');
 
-    });
 
-    $('.B').click(function () {
+//to use the close modal, use this function
+$('.close-Btn').click(function () {
+    $('#game-info').modal('show');
+});
 
-        $("#retry-level").modal('show');
+$('.A').click(function () {
 
-    });
+    $("#level-complete").modal('show');
 
-    $('.No').click(function () {
-        $('#retry-level').modal('hide')
-    });
+});
 
-    $('.close-Btn').click(function () {
+$('.B').click(function () {
 
-        $("#retry-level").modal('show');
+    $("#retry-level").modal('show');
 
-    });
+});
+
+$('.purple-button').click(function () {
+    $('#retry-level').modal('hide')
+});
+
+$('.close-Btn').click(function () {
+
+    $("#retry-level").modal('show');
+
+});
+
+$('.close-Btn').click(function () {
+
+    $("#game-info").modal('hide');
+});
 
 });

@@ -93,37 +93,14 @@
     padding: 0px 50px 0px 50px;
 }
 
-.yes img:first-child {
-    position: absolute;
-    -webkit-transition: opacity 0s ease-in-out;
-    -moz-transition: opacity 0s ease-in-out;
-    -o-transition: opacity 0s ease-in-out;
-    transition: opacity 0s ease-in-out;
-    z-index: 10;
+.modal-backdrop fade in{
+    height: 552px;
+    width: 616px;
 }
-
-.yes img:first-child:hover {
-opacity: 0;
-}
-
-.No img:first-child {
-    position: absolute;
-    -webkit-transition: opacity 0s ease-in-out;
-    -moz-transition: opacity 0s ease-in-out;
-    -o-transition: opacity 0s ease-in-out;
-    transition: opacity 0s ease-in-out;
-    z-index: 10;
-}
-
-.No img:first-child:hover {
-    opacity: 0;
-}
-
-.modal-backdrop{
-    height:0;
-}
-.modal-open .modal{
-
-    overflow-x: hidden;
-    overflow-y: hidden;
+.bkg-image{
+    width:616px;
+    height:400px;
+    margin-left:15px;
+    background-image:url('@Url.Content("~/Content/images/background/bkg_1.png")');
+    background-repeat:no-repeat;
 }
