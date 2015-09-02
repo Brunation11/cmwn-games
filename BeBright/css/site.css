@@ -7157,7 +7157,7 @@ input[type="checkbox"].input-validation-error {
   margin-left: -9px;
   text-align: center;
 }
-.text_2 {
+.text_2_1 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 24px;
   font-weight: 700;
@@ -7461,4 +7461,8 @@ input[type="checkbox"].input-validation-error {
   -moz-animation: animate 1s linear;
   -o-animation: animate 1s linear;
   animation: animate 1s linear;
+}
+.text_2_2 {
+  margin-left: -79px;
+  margin-top: -26px;
 }
