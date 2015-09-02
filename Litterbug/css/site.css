@@ -7293,7 +7293,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 20px;
   margin-left: 22px;
 }
-.Message-window {
+.Good-job {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -7302,10 +7302,10 @@ input[type="checkbox"].input-validation-error {
   overflow: hidden;
   margin-top: 87px;
 }
-.Message-window .frame {
+.Good-job .frame {
   margin-left: -12px;
 }
-.Message-window p {
+.Good-job p {
   position: absolute;
   font-size: 24px;
   margin-left: 10px;
@@ -7381,7 +7381,7 @@ input[type="checkbox"].input-validation-error {
 .post img:first-child:hover {
   opacity: 0;
 }
-.Message-window {
+.In-window {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -7390,10 +7390,10 @@ input[type="checkbox"].input-validation-error {
   overflow: hidden;
   margin-top: 129px;
 }
-.Message-window .frame {
+.In-window .frame {
   margin-left: -12px;
 }
-.Message-window p {
+.In-window p {
   position: absolute;
   font-size: 24px;
   margin-left: 307px;
