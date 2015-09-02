@@ -9,12 +9,17 @@ var start = document.getElementById("title_screen");
 
     $(document).ready(function () {
 
-            $('.purple-button').click(function () {
-                $('#retry-level').modal('show')
+            $('#close-Btn').click(function () {
+                $('#pop-up').modal('show')
             });
 
-            $("#close-Btn").click(function () {
-                $('#pop-up').modal('show');
+            $("#Btn-hide").click(function () {
+                $('#pop-up').modal('hide');
+
+            });
+
+             $("#Btn-hide1").click(function () {
+                $('#pop-up').modal('hide');
 
             });
 

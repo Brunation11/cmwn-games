@@ -2,6 +2,14 @@
     $(document).ready(function () {
         other_screen.play();
 
+$('.nextBtn4').click(function () {
+            $('.nextBtn4').delay(1000).delay(1000, function () {
+                $("#putcontenthere").load("/action_items/ai5.html");
+            });
+            $('.modal-backdrop fade in').css('display','none');
+            other_screen.play();
+        });
+
 
         $('#next_btn').click(function () {
 
