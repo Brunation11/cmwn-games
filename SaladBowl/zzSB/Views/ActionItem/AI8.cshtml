@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "AI8";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.play img').hide();
+        $('.play img').fadeIn(4000);
+
+        $('.play').click(function () {
+            $('.play').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI9")";
+            });
+            try {
+                click.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+        });
+    });
+</script>
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <img src="~/Content/images/BKG_1.png" style="width: 616px;position: absolute;z-index: 1;" />
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+            <h3 style="position:absolute;z-index: 5;font-family: Source Sans Pro;margin-top: 93px;text-align: center;font-size: 29px;letter-spacing: 0px;margin-left: 153px;font-weight: 900;">Thanks for uploading!<br /> Enjoy your salad eating!</h3>
+             <img src="~/Content/images/frame_3.png" style="width: 469px;position: absolute;z-index: 2;margin-top: 39px;margin-left: 75px;" />
+            <img src="~/Content/images/salad_frame.png" style="width: 316px;position: absolute;z-index: 6;margin-top: 160px;margin-left: 156px;" />
+
+            <div class="play">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_next_on.png" style="width: 89px;position:absolute;z-index: 2;margin-top: 319px;margin-left: 524px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_next.png" style="width: 89px;margin-top: 319px;position:absolute;z-index: 2;margin-left: 524px;" /></div>
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
+

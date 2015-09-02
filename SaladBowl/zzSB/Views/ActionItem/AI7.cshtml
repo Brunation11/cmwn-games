@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "AI7";
+}
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('.play').click(function () {
+            $('.play').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI8")";
+            });
+        });
+        try {
+            click.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+        $('.play1').click(function () {
+            $('.play1').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI8")";
+            });
+        });
+        try {
+            click.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+    });
+</script>
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+           
+            <img src="~/Content/images/header_29.png" style="width: 451px;position: absolute;z-index: 1;margin-left: 85px;margin-top: 10px;" />
+            <img src="~/Content/images/frame_3.png" style="width: 469px;position: absolute;z-index: 2;margin-top: 73px;margin-left: 75px;" />
+
+
+            <div class="play">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_reupload_on.png" style="width: 200px;position:absolute;z-index: 2;margin-top: 262px;margin-left: 105px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_reupload.png" style="width: 200px;margin-top: 262px;position:absolute;z-index: 2;margin-left: 105px;" /></div>
+            </div>
+
+            <div class="play1">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_done_on.png" style="width: 200px;position:absolute;z-index: 2;margin-top: 262px;margin-left: 308px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_done.png" style="width: 200px;margin-top: 262px;position:absolute;z-index: 2;margin-left: 308px;" /></div>
+            </div>
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+
