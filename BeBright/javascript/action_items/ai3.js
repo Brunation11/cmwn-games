@@ -19,7 +19,7 @@ $(document).ready(function () {
     $(".cap_frame").hide();
 
     $(".text_1").hide();
-    $(".text_2").hide();
+    $(".text_2_1").hide();
     $(".text_3").hide();
     $(".text_4").hide();
     $(".text_5").hide();
@@ -78,7 +78,7 @@ $(document).ready(function () {
         $(".dismiss").hide().delay(1000).fadeIn(600);
 
         $(".text_1").show();
-        $(".text_2").hide();
+        $(".text_2_1").hide();
         $(".text_3").hide();
         $(".text_4").hide();
         $(".text_5").hide();
@@ -93,7 +93,7 @@ $(document).ready(function () {
             $(".dismiss").hide().delay(1000).fadeIn(600);
 
             $(".text_1").hide();
-            $(".text_2").show();
+            $(".text_2_1").show();
             $(".text_3").hide();
             $(".text_4").hide();
             $(".text_5").hide();
@@ -108,7 +108,7 @@ $(document).ready(function () {
                 $(".dismiss").hide().delay(1000).fadeIn(600);
 
                 $(".text_1").hide();
-                $(".text_2").hide();
+                $(".text_2_1").hide();
                 $(".text_3").show();
                 $(".text_4").hide();
                 $(".text_5").hide();
@@ -123,7 +123,7 @@ $(document).ready(function () {
                     $(".dismiss").hide().delay(1000).fadeIn(600);
 
                     $(".text_1").hide();
-                    $(".text_2").hide();
+                    $(".text_2_1").hide();
                     $(".text_3").hide();
                     $(".text_4").show();
                     $(".text_5").hide();
@@ -138,7 +138,7 @@ $(document).ready(function () {
                         $(".dismiss").hide().delay(1000).fadeIn(600);
 
                         $(".text_1").hide();
-                        $(".text_2").hide();
+                        $(".text_2_1").hide();
                         $(".text_3").hide();
                         $(".text_4").hide();
                         $(".text_5").show();
@@ -162,7 +162,7 @@ $(document).ready(function () {
 
                             $(".cap_frame").show();
                             $(".text_1").show();
-                            $(".text_2").hide();
+                            $(".text_2_1").hide();
                             $(".text_3").hide();
                             $(".text_4").hide();
                             $(".text_5").hide();
@@ -173,7 +173,7 @@ $(document).ready(function () {
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
-                            $(".text_2").show();
+                            $(".text_2_1").show();
                             $(".text_3").hide();
                             $(".text_4").hide();
                             $(".text_5").hide();
@@ -184,7 +184,7 @@ $(document).ready(function () {
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
-                            $(".text_2").hide();
+                            $(".text_2_1").hide();
                             $(".text_3").show();
                             $(".text_4").hide();
                             $(".text_5").hide();
@@ -195,7 +195,7 @@ $(document).ready(function () {
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
-                            $(".text_2").hide();
+                            $(".text_2_1").hide();
                             $(".text_3").hide();
                             $(".text_4").show();
                             $(".text_5").hide();
@@ -207,7 +207,7 @@ $(document).ready(function () {
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
-                            $(".text_2").hide();
+                            $(".text_2_1").hide();
                             $(".text_3").hide();
                             $(".text_4").hide();
                             $(".text_5").show();
