@@ -7110,7 +7110,7 @@ input[type="checkbox"].input-validation-error {
 }
 .shine-1 {
   position: absolute;
-  z-index: 15;
+  z-index: 1;
 }
 .No-1 .shine-1 {
   width: 209px;
