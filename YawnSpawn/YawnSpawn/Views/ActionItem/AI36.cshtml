@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "AI36";
+}
+
+
+
+<style type="text/css">
+     .bkg-image {
+    background-image: url('@Url.Content("~/Content/images/BKG_3.png")');
+    background-repeat:no-repeat;
+    background-size:616px 400px;
+        height:400px;
+        width:616px;
+       margin-left:15px;
+    }
+
+    
+   .head7{position:absolute;z-index:2;}
+
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        try {
+            yawn.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+
+        $('.last img').hide();
+        $('.head7 img').hide();
+
+        $('.last img').fadeIn(7000);
+        $('.head7 img').fadeIn(4000);
+
+
+
+
+        $('.last').click(function () {
+            $('.last').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI4")";
+            });
+            click.play();
+        });
+
+    });
+</script>
+
+
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/Elements/btn_exit_on.png" style="width:50px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images//Elements/btn_exit.png" style="width:50px;margin-top: -52px;" /></div>
+            </div>
+
+
+
+            <img src="~/Content/images/Elements/header_1.png" style="width: 569px;margin-left: 25px;position: absolute;margin-top: 6px;z-index: 2;" />
+
+            <div class="mouth">
+                <img src="~/Content/images/Elements/Yawn-Gif-Truly-final6.gif" style="width: 364px;margin-left: -58px;position: absolute;margin-top: 108px;z-index: 5;" />
+            </div>
+
+
+           
+
+
+            <div class="head7 animated wobble">
+                <img src="~/Content/images/Elements/header_8.png" style="width: 405px;margin-left: 198px;position: absolute;margin-top: 147px;z-index: 2;" />
+            </div>
+
+
+
+
+
+            <div class="last">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/Elements/btn_next_on.png" style="width: 73px;position:absolute;z-index: 2;margin-top: 321px;margin-left: 550px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/Elements/btn_next.png" style="width: 73px;margin-top: 321px;position:absolute;z-index: 2;margin-left: 550px;" /></div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
