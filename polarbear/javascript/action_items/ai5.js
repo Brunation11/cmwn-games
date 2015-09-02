@@ -6,8 +6,6 @@ var clicked_item = $(this).attr("#Salmon");
 //var Modals = new Array()
 
 
-
-
     //"I can reach speeds up to 25 mph on land and 6 mph on water.",
     //"I am the largest carnivore (meat-eater) that lives on land.",
     //"I use floating sea ice as a platform to hunt seals.",
@@ -132,7 +130,6 @@ $(document).ready(function () {
         //$(".body-content").removeClass("paw");
         $(this).hide();
         
-
         correct_items.push(clicked_item);
         if (correct_items.length === 1) {
             Captured.load();
