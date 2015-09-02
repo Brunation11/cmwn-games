@@ -6667,7 +6667,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 335px;
   cursor: pointer;
 }
-.Video-frame {
+.Video-frame-1 {
   position: absolute;
   z-index: 1;
   margin-left: 51px;
@@ -7106,7 +7106,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 92px;
   margin-left: 16px;
 }
-.Video-frame {
+.Video-frame-2 {
   position: absolute;
   z-index: 1;
   margin-left: 51px;
@@ -7295,7 +7295,7 @@ input[type="checkbox"].input-validation-error {
 .close-Btn img:first-child:hover {
   opacity: 0;
 }
-.Video-frame {
+.Video-frame-3 {
   position: absolute;
   z-index: 1;
   margin-left: 90px;
@@ -7356,7 +7356,7 @@ input[type="checkbox"].input-validation-error {
 .close-Btn img:first-child:hover {
   opacity: 0;
 }
-.Video-frame {
+.Video-frame-4 {
   position: absolute;
   z-index: 1;
   margin-left: 75px;
