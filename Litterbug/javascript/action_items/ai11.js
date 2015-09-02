@@ -5,7 +5,7 @@ $(document).ready(function () {
     $(".info2").hide();
 
     $(".Accept").hide();
-    $(".Message-window").hide().delay(900).fadeIn(80);
+    $(".In-window").hide().delay(900).fadeIn(80);
 
     $(".logo").hide().delay(1000).fadeIn(80);
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
         $(".info2").addClass("fadeInDown");
 
-        $('.Message-window').animate({
+        $('.In-window').animate({
             top: '-=60'
         }, 2000);
 
