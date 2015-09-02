@@ -12,4 +12,8 @@ $(document).ready(function () {
         $('#quit-game').modal('hide');
 
     });
+
+    $(".play-Btn").click(functions (){
+        $("#putcontenthere").load("action_items/ai2.html");
+    });
 });
