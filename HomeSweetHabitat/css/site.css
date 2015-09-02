@@ -6601,8 +6601,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_1.png")');
   background-repeat: no-repeat;
 }
 .close-Btn {
@@ -6992,8 +6990,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 /*.brush-pile img:last-child {
@@ -7312,8 +7308,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 .close-Btn {
@@ -7470,8 +7464,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 /*.brush-pile img:last-child {
@@ -7801,8 +7793,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 .close-Btn {
@@ -7959,8 +7949,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 /*.brush-pile img:last-child {
@@ -8199,8 +8187,6 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
 /*.brush-pile img:last-child {
@@ -8519,7 +8505,5 @@ input[type="checkbox"].input-validation-error {
 .bkg-image {
   width: 616px;
   height: 400px;
-  margin-left: 15px;
-  background-image: url('@Url.Content("~/Content/images/background/bkg_3.png")');
   background-repeat: no-repeat;
 }
