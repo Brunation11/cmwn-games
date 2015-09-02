@@ -7108,10 +7108,10 @@ input[type="checkbox"].input-validation-error {
 .No-1 img:first-child:hover {
   opacity: 0;
 }
-.shine {
+.shine-1 {
   position: absolute;
 }
-.No-1 .shine {
+.No-1 .shine-1 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7124,7 +7124,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-1:hover .shine {
+.No-1:hover .shine-1 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
@@ -7159,10 +7159,10 @@ input[type="checkbox"].input-validation-error {
 .No-2 img:first-child:hover {
   opacity: 0;
 }
-.shine {
+.shine-2 {
   position: absolute;
 }
-.No-2 .shine {
+.No-2 .shine-2 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7175,7 +7175,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-2:hover .shine {
+.No-2:hover .shine-2 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
@@ -7211,10 +7211,10 @@ input[type="checkbox"].input-validation-error {
 .No-3 img:first-child:hover {
   opacity: 0;
 }
-.shine {
+.shine-3 {
   position: absolute;
 }
-.No-3 .shine {
+.No-3 .shine-3 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7227,7 +7227,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-3:hover .shine {
+.No-3:hover .shine-3 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
