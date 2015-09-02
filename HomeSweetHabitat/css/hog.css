@@ -1,0 +1,37 @@
+﻿
+
+@-webkit-keyframes slideIn {
+    from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@-moz-keyframes slideIn {
+    from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@-ms-keyframes slideIn {
+    from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+@-o-keyframes slideIn {
+    from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
