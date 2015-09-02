@@ -25,7 +25,7 @@ $(document).ready(function () {
             top: '-=60'
         }, 2000);
 
-        $('.Eco-symbol').animate({
+        $('.Eco-symbol-1').animate({
             top: '-=60'
         }, 2000);
     }, 4000);
