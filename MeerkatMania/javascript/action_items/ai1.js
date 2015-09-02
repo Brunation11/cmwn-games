@@ -12,5 +12,6 @@ $(document).ready(function () {
                 $("#putcontenthere").load("/action_items/ai2.html");
             });
             btn_click.play();
+            title_screen.pause();
         });
     })

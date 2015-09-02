@@ -7332,6 +7332,12 @@ input[type="checkbox"].input-validation-error {
   padding: 3px;
   position: absolute;
 }
+.close-Btn {
+  margin-top: 97px;
+  z-index: 1;
+  left: 576px;
+  position: absolute;
+}
 .ai-margin {
   margin: 3px;
 }
@@ -7460,17 +7466,11 @@ input[type="checkbox"].input-validation-error {
   margin-left: 466px;
   position: absolute;
 }
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
-  position: absolute;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-p {
+.box p {
   margin: 0 0 10px;
   position: absolute;
   width: 392px;
@@ -7511,17 +7511,76 @@ p {
   margin-left: 466px;
   position: absolute;
 }
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
-  position: absolute;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-p {
+.box1 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 392px;
+  margin-left: 151px;
+  margin-top: 33px;
+  z-index: 4;
+  font-size: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-family: Source Sans Pro;
+  font-weight: 900;
+}
+.box2 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 392px;
+  margin-left: 151px;
+  margin-top: 33px;
+  z-index: 4;
+  font-size: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-family: Source Sans Pro;
+  font-weight: 900;
+}
+.box3 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 392px;
+  margin-left: 151px;
+  margin-top: 33px;
+  z-index: 4;
+  font-size: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-family: Source Sans Pro;
+  font-weight: 900;
+}
+.box4 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 392px;
+  margin-left: 151px;
+  margin-top: 33px;
+  z-index: 4;
+  font-size: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-family: Source Sans Pro;
+  font-weight: 900;
+}
+.box5 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 392px;
+  margin-left: 151px;
+  margin-top: 33px;
+  z-index: 4;
+  font-size: 25px;
+  text-align: center;
+  line-height: 24px;
+  font-family: Source Sans Pro;
+  font-weight: 900;
+}
+.box6 p {
   margin: 0 0 10px;
   position: absolute;
   width: 392px;
@@ -7650,17 +7709,11 @@ p {
   margin-left: 466px;
   position: absolute;
 }
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
-  position: absolute;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-p {
+.box7 p {
   margin: 0 0 10px;
   position: absolute;
   width: 302px;
@@ -7702,12 +7755,6 @@ p {
   float: right;
   margin-top: 384px;
   margin-left: 466px;
-  position: absolute;
-}
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
   position: absolute;
 }
 .modal-open .modal {
@@ -7754,17 +7801,24 @@ p {
   margin-left: 466px;
   position: absolute;
 }
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
-  position: absolute;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-p {
+.box8 p {
+  margin: 0 0 10px;
+  position: absolute;
+  width: 302px;
+  margin-left: 143px;
+  margin-top: 86px;
+  z-index: 4;
+  font-size: 32px;
+  text-align: center;
+  line-height: 39px;
+  font-weight: 600;
+  font-family: Source Sans Pro;
+}
+.box9 p {
   margin: 0 0 10px;
   position: absolute;
   width: 302px;
@@ -7808,12 +7862,6 @@ p {
   margin-left: 466px;
   position: absolute;
 }
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
-  position: absolute;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -7856,12 +7904,6 @@ p {
   float: right;
   margin-top: 384px;
   margin-left: 466px;
-  position: absolute;
-}
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
   position: absolute;
 }
 .modal-open .modal {
@@ -7906,12 +7948,6 @@ p {
   float: right;
   margin-top: 384px;
   margin-left: 466px;
-  position: absolute;
-}
-.close-Btn {
-  margin-top: 10px;
-  z-index: 1;
-  left: 576px;
   position: absolute;
 }
 .modal-open .modal {
