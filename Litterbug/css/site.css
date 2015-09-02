@@ -7085,7 +7085,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 21px;
   overflow: hidden;
 }
-.header {
+.header-1 {
   position: absolute;
   z-index: 1;
   margin-left: 158px;
@@ -7147,7 +7147,7 @@ input[type="checkbox"].input-validation-error {
 .Img-school {
   margin-left: -2px;
 }
-.header {
+.header-2 {
   position: absolute;
   z-index: 1;
   margin-top: 223px;
@@ -7247,7 +7247,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
 }
-.header {
+.header-3 {
   position: absolute;
   z-index: 1;
   margin-left: 22px;
