@@ -6,4 +6,4 @@
          var voice2 = document.getElementById("vo_times");
          var voice3 = document.getElementById("vo_photo");
 
-         $('#bkg').hide();
+         

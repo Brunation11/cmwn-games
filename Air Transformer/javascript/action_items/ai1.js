@@ -9,7 +9,7 @@
             //no sound - log error
         }
 
-        $('#bkg').css('visibility', 'visible').hide().fadeIn(4000);
+        $('#bkg1').css('visibility', 'visible').hide().fadeIn(4000);
 
 
         $('#next_btn').click(function () {
