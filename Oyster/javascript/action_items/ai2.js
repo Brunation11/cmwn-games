@@ -1,4 +1,3 @@
-<script type="text/javascript">
     var dropped_items = new Array();
     var correct_answers;
     var question;
