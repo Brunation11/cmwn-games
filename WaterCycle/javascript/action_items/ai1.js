@@ -2,6 +2,16 @@ $(document).ready(function () {
 
     $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
 
+    $('.No').click(function () {
+        $('#retry-level').modal('hide')
+    });
+
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     title.load();
     title.play();
     $(".title").hide().delay(800).fadeIn(5000);

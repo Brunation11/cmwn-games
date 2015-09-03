@@ -4,6 +4,16 @@ $(document).ready(function () {
 
     $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_4.png)');
 
+    $('.No').click(function () {
+        $('#retry-level').modal('hide')
+    });
+
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     $(".Intro").hide().delay(900).fadeIn(500);
     $(".last-text").hide();
     $(".next-Btn-2").hide();
