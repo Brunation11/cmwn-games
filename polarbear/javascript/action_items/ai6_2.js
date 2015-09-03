@@ -1,13 +1,21 @@
 $(document).ready(function () {
    
-    $('.No-Btns').click(function () {
-        $('#game-close').modal('hide');
+    // $('.No-Btns').click(function () {
+    //     $('#game-close').modal('hide');
                     
-        //$(".current").each(function () {
+    //     //$(".current").each(function () {
 
-        //    $(this).show("display", "block");
-        //});
+    //     //    $(this).show("display", "block");
+    //     //});
         
+    // });
+
+    $('#close').click(function () {
+        $('#game-close').modal('show');
+    });
+     
+    $('.No-Btns').click(function () {
+        $('#game-close').modal('hide');                      
     });
 
     $('#back-button1').click(function () {

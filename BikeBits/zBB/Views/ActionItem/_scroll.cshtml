@@ -1,0 +1,78 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        var count;
+
+        $('#scroll-up').click(function () {
+            count = 0;
+            handleScroll("up");
+        });
+
+        $('#scroll-down').click(function () {
+            count = 0;
+            handleScroll("down");
+        });
+
+
+        function handleScroll(direction) {
+            
+            switch (direction) {
+                case "up":
+                    handleUp();
+                    break;
+                case "down":
+                    handleDown();
+                    break;
+            }
+        }
+
+        function handleUp() {
+            var invisible_items = [];
+
+            //do this first so you know which one should be next
+            var unhide_item = $('#list-bikeparts li:hidden:last');
+
+            //figure out what items are visible
+            $('#list-bikeparts').each(function () {
+                
+                $(this).find('li').each(function () {
+                    
+                    //figure out which items are visible and move them up 100px
+                    if ($(this).is(':visible')) {
+                        //alert("count: " + count + " / " + $(this).data('value'));
+
+                        if (count == 0) {
+                            $(this).slideUp();
+                            $(this).addClass("hidden");
+                        }
+
+                        count += 1;
+                    }
+                
+                    
+                });
+
+                
+            });
+
+            //show the next item
+            //unhide_item.removeClass("hidden");
+            //unhide_item.slideUp();
+            //unhide_item.addClass("show");
+
+        }
+
+        function handleDown() {
+
+        }
+
+        
+
+        $('#list-bikeparts li').click(function (ui) {
+            var id = $(this).data('value');
+
+            
+
+            alert('line item:' + id);
+        })
+    })
+</script>

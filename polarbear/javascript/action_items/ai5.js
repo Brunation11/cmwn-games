@@ -47,7 +47,7 @@ $(function () {
 $(document).ready(function () {
     
     // Close Button
-    $('.close_x').click(function () {
+    $('#close').click(function () {
         $('#game-close').modal('show');
         //$('#facts').modal('hide');
         //$('#game-info').modal('hide');
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     $('.No-Btns').click(function () {
         $('#game-close').modal('hide');
-        $('.Next-arrow').show();
+        // $('.Next-arrow').show();
         
     });
 

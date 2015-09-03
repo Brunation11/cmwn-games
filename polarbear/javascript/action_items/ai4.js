@@ -3,6 +3,14 @@ var clicked_item = $(this).attr("#yes");
 
 $(document).ready(function () {
 
+    $('#close').click(function () {
+        $('#game-close').modal('show');
+    });
+     
+    $('.No-Btns').click(function () {
+        $('#game-close').modal('hide');                      
+    });
+
     // Hide Map
     $('.Map').hide();
 
