@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "AI1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    #bkg img {
+        margin-top: 158px;
+        margin-left: 92px;
+        margin-right: 0px;
+        position:absolute;
+    }
+
+    .content-box {
+        margin: 0px -5px 0;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#bkg').fadeIn(3000).fadeOut(6000, function () {
+            document.location.href = "/ActionItem/AI2";
+        });
+    })
+</script>
+
+
+<div class="container body-content">
+    
+        <div class="row">
+            <div class="col-md-12" style="padding-bottom: 424px;margin-top: 78px;background:no-repeat; position:absolute;  margin-left: 3px;width: 616px;background-size: cover;background-image:url('/content/images/background.jpg');">
+            </div>
+            <div class="col-md-12 content-box">
+
+                
+                <div id="bkg">
+                    <div class="col-sm-4 content-box">
+                        <img src="~/Content/images/title.png" class="img-responsive" alt="Responsive image">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>

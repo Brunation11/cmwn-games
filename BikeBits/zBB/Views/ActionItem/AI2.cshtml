@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "AI2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    #tree img {
+        margin-left:-7px;
+        margin-top: 129px;
+        position:absolute;
+    }
+
+    #sign img {
+        float: right;
+        margin-top: 392px;
+        margin-left: 466px;
+        position: absolute;
+    }
+
+    #close img {
+  /* float: right; */
+  margin-top: 95px;
+  margin-left: 572px;
+  position: absolute;
+}
+
+    .content-box {
+        margin: 0px -5px 0;
+    }
+
+    #bframe img {
+  align-content: center;
+  margin-top: 59px;
+  margin-left: 152px;
+  width: 301px;
+}
+
+    #bframe {
+        z-index: 1001;
+        position: inherit;
+        /* margin-bottom: -24px; */
+        margin-top: 85px;
+        height: 428px;
+        width: 331px;
+    }
+
+    #bframe{position:absolute}
+
+    #bframe-content {
+        background-color: #fff;
+        height: 195px;
+        width: 262px;
+        margin-top: 161px;
+        z-index: 1000;
+        margin-left: 184px;
+        position: absolute;
+        opacity: 0.9;
+        -webkit-box-shadow: 6px 1px 12px 0px rgba(50, 50, 50, 0.57);
+        -moz-box-shadow: 6px 1px 12px 0px rgba(50, 50, 50, 0.57);
+        box-shadow: 6px 1px 12px 0px rgba(50, 50, 50, 0.57);
+    }
+
+        #bframe-content p {
+            font-family: 'Source Sans Pro';
+            font-size: 24px;
+            line-height: 34px;
+            color: #252525;
+            width: 213px;
+            margin-left: 13px;
+            padding-top: 48px;
+            text-align: center;
+            /* margin-top: -280px; */
+            /* margin-bottom: 227px; */
+        }
+
+    .hint {
+        z-index: 80;
+    }
+
+    .flip-off img {
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+        .flip-off img:hover {
+            opacity: 0;
+        }
+
+
+
+
+
+</style>
+
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#game-complete').modal('hide');
+
+
+    });
+
+</script>
+
+
+
+<div class="col-md-12" style="padding-bottom: 424px;margin-top: 78px;background:no-repeat; position:absolute;  margin-left: 3px;width: 616px;background-size: cover;background-image:url('/content/images/background.jpg');">
+</div>
+
+    <div id="bframe">
+        <div class="col-sm-4 content-box">
+            <img src="~/Content/images/chain_frame.png" class="img-responsive" alt="Responsive image">
+        </div>
+    </div>
+
+    <div id="bframe-content">
+        <div class="col-sm-5">
+            <p><strong>Build the bike by dragging parts from the menu bar.</strong></p>
+        </div>
+    </div>
+
+
+    <div id="close" style="position:absolute;">
+        <div class="col-sm-4 content-box">
+            <img src="~/Content/images/btn_close.png" class="img-responsive" alt="Responsive image">
+        </div>
+
+    </div>
+
+    <div id="sign" style="position:absolute;">
+        <div class="col-sm-4 content-box">
+            <a href="/ActionItem/AI7">
+
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/arrow_next.png" class="img-responsive" alt="Responsive image"></div>
+
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/arrow_next_on.png" class="img-responsive" alt="Responsive image"></div>
+            </a>
+        </div>
+
+    </div>
+
+    <div id="tree" style="position:absolute;">
+        <div class="col-sm-4 content-box">
+            <img src="~/Content/images/tree.png" class="img-responsive" alt="Responsive image">
+        </div>
+    </div>
+
+
+
+
+
+
+
