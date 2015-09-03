@@ -11,9 +11,9 @@
 
     $(document).ready(function () {
 
-        $('#bkg img').hide();
+        $('#bkg2 img').hide();
 
-        $('#bkg img').fadeIn(6000);
+        $('#bkg2 img').fadeIn(6000);
 
         $('#next_btn').click(function () {
             $('#next_btn').delay(1000).delay(1000, function () {

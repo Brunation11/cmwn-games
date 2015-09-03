@@ -1,10 +1,10 @@
    $(document).ready(function () {
-        $('#next_btn').hide();
+        $('#next_btn11').hide();
 
-        $('#next_btn').delay(20000).fadeIn(9000);
+        $('#next_btn11').delay(20000).fadeIn(9000);
 
-        $('#next_btn').click(function () {
-            $('#next_btn').delay(1000).delay(100, function () {
+        $('#next_btn11').click(function () {
+            $('#next_btn11').delay(1000).delay(100, function () {
                 $("#putcontenthere").load("/action_items/ai2.html");
             });
             try {
