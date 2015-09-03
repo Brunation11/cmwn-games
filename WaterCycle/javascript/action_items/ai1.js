@@ -9,7 +9,7 @@ $(document).ready(function () {
         click.load();
         click.play();
         setTimeout(function () {
-            document.location.href = "/watercycle/ActionItem/AI2";
+                $("#putcontenthere").load("action_items/ai2.html");
         }, 2000);
 
     });
