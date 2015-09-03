@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+    $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_1.png)');
+
     title.load();
     title.play();
     $(".title").hide().delay(800).fadeIn(5000);
