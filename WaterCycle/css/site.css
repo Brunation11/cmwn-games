@@ -6992,26 +6992,26 @@ input[type="checkbox"].input-validation-error {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
   background-color: rgba(0, 105, 172, 0.1);
 }
-.background-oval p {
-  font-size: 20px;
-}
 .background-oval .one {
   position: absolute;
   top: 0;
   margin-top: 70px;
   margin-left: 67px;
+  font-size: 1.5em;
 }
 .background-oval .two {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 85px;
+  font-size: 1.5em;
 }
 .background-oval .three {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 94px;
+  font-size: 1.5em;
 }
 .background-oval .four {
   position: absolute;
@@ -7019,18 +7019,21 @@ input[type="checkbox"].input-validation-error {
   margin-top: 58px;
   margin-left: 113px;
   text-align: center;
+  font-size: 1.5em;
 }
 .background-oval .five {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 40px;
+  font-size: 1.5em;
 }
 .background-oval .six {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 64px;
+  font-size: 1.5em;
 }
 .background-oval .seven {
   position: absolute;
@@ -7038,24 +7041,28 @@ input[type="checkbox"].input-validation-error {
   margin-top: 64px;
   margin-left: 115px;
   text-align: center;
+  font-size: 1.5em;
 }
 .background-oval .eight {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 78px;
+  font-size: 1.5em;
 }
 .background-oval .nine {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 94px;
+  font-size: 1.5em;
 }
 .background-oval .ten {
   position: absolute;
   top: 0;
   margin-top: 68px;
   margin-left: 40px;
+  font-size: 1.5em;
 }
 .last-text {
   position: absolute;
