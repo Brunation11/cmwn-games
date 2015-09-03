@@ -6534,9 +6534,6 @@ input[type="checkbox"].input-validation-error {
   font-size: 28px;
   color: white;
 }
-.bkg-image img {
-  width: 616px;
-}
 .text-left {
   margin: 5px;
 }
@@ -6598,6 +6595,10 @@ input[type="checkbox"].input-validation-error {
   width: 616px;
   height: 400px;
   background-repeat: no-repeat;
+}
+.bkg-image img {
+  width: 616px;
+  height: 400px;
 }
 .modal-backdrop.in {
   opacity: 0;
