@@ -64,6 +64,7 @@ $(document).ready(function () {
 
     $('.Next-Ai').click(function () {
         $("#putcontenthere").load("/action_items/ai6.html");
+        $("div").removeClass("paw");
     });
 
     $('.Re-play').click(function () {
