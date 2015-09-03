@@ -16,9 +16,9 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
     $("#fact_11").modal('hide');
     $("#fact_12").modal('hide');
 
-    $(".next-Btn").hide().delay(1000).fadeIn(400);
+    $(".next-Btn-3").hide().delay(1000).fadeIn(400);
 
-    $(".next-Btn").click(function () {
+    $(".next-Btn-3").click(function () {
         click.load();
         click.play();
     });
@@ -31,7 +31,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_1").modal('hide');
         $("#fact_2").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -39,7 +39,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_2").modal('hide');
         $("#fact_3").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -47,7 +47,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_3").modal('hide');
         $("#fact_4").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -55,7 +55,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_4").modal('hide');
         $("#fact_5").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -63,7 +63,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_5").modal('hide');
         $("#fact_6").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -71,7 +71,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_6").modal('hide');
         $("#fact_7").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -79,7 +79,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_7").modal('hide');
         $("#fact_8").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -87,7 +87,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_8").modal('hide');
         $("#fact_9").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -95,7 +95,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_9").modal('hide');
         $("#fact_10").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -103,7 +103,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_10").modal('hide');
         $("#fact_11").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -111,7 +111,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_11").modal('hide');
         $("#fact_12").modal('show');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
 
     });
@@ -126,7 +126,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_1").modal('show');
         $("#fact_2").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -134,7 +134,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_2").modal('show');
         $("#fact_3").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -142,7 +142,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_3").modal('show');
         $("#fact_4").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -150,7 +150,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_4").modal('show');
         $("#fact_5").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -158,7 +158,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_5").modal('show');
         $("#fact_6").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -166,7 +166,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_6").modal('show');
         $("#fact_7").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -174,7 +174,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_7").modal('show');
         $("#fact_8").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -182,7 +182,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_8").modal('show');
         $("#fact_9").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -190,7 +190,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_9").modal('show');
         $("#fact_10").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -198,7 +198,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_10").modal('show');
         $("#fact_11").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
     });
 
@@ -206,7 +206,7 @@ $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.pn
         $("#fact_11").modal('show');
         $("#fact_12").modal('hide');
 
-        $(".next-Btn").hide().delay(1000).fadeIn(400);
+        $(".next-Btn-3").hide().delay(1000).fadeIn(400);
         $(".prev-Btn").hide().delay(1000).fadeIn(400);
 
 

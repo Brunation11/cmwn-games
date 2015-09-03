@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_2.png)');
 
-    var selected_item = $(".next");
+    var selected_item = $(".next-Btn-1");
 
     $(".text_2").hide();
     $(".text_3").hide();
@@ -13,7 +13,7 @@ $(document).ready(function () {
     Ocean.play();
 
 
-    $(".next-Btn").click(function () {
+    $(".next-Btn-1").click(function () {
         click.load();
         click.play();
         correct_items.push(selected_item);
@@ -26,27 +26,27 @@ $(document).ready(function () {
             Seconddino.load();
             Seconddino.play();
 
-            setInterval(function () {
-                Seconddino.load();
-                Seconddino.play();
-            },10000);
+           // setInterval(function () {
+           //     Seconddino.load();
+           //     Seconddino.play();
+           // },10000);
 
             $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_3.png)');
             $(".text_2").hide();
             $(".text_3").show();
         }
         if (correct_items.length === 3) {
-            setInterval(function () {
-                Seconddino.load();
-                Seconddino.pause();
-            });
+            //setInterval(function () {
+            //    Seconddino.load();
+            //    Seconddino.pause();
+            //});
             Firstdino.load();
             Firstdino.play();
 
-            setInterval(function () {
-                Firstdino.load();
-                Firstdino.play();
-            },8000);
+           // setInterval(function () {
+           //     Firstdino.load();
+            //    Firstdino.play();
+            //},8000);
 
             $(".text_3").hide();
             $(".text_4").show();

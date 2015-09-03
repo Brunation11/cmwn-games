@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $(".Intro").hide().delay(900).fadeIn(500);
     $(".last-text").hide();
-    $(".next-Btn").hide();
+    $(".next-Btn-2").hide();
 
     var favorites = [];
     var counter = 0;
@@ -24,14 +24,14 @@ $(document).ready(function () {
 
 
             //     //if the number of pushed items are equal to 10, reveal arrow
-            $(".next-Btn").hide().delay(300).fadeIn(500);
+            $(".next-Btn-2").hide().delay(300).fadeIn(500);
 
 
-            $(".next-Btn").click(function () {
+            $(".next-Btn-2").click(function () {
                 click.load();
                 click.play();
 
-                $(".next-Btn").show();
+                $(".next-Btn-2").show();
                 $(".last-text").hide().delay(700).fadeIn(500);
 
                 $("#pop_1,#pop_2,#pop_3,#pop_4,#pop_5,#pop_6,#pop_7,#pop_8,#pop_9,#pop_10").click(function () {
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 });
                 $(".modal").modal('hide');
 
-                $(".next-Btn").click(function () {
+                $(".next-Btn-2").click(function () {
                     $("#putcontenthere").load("action_items/ai4.html");
 
 

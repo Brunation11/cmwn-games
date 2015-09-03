@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     slide1.load();
     slide1.play();
-    var selected_item = $(".next");
+    var selected_item = $(".next-Btn-4");
 
     $(".text_2").hide();
     $(".text_3").hide();
@@ -16,8 +16,8 @@ $(document).ready(function () {
 
 
 
-    $(".next-Btn").click(function () {
-        $(".next-Btn").hide().delay(900).fadeIn(1000);
+    $(".next-Btn-4").click(function () {
+        $(".next-Btn-4").hide().delay(900).fadeIn(1000);
         click.load();
         click.play();
         correct_items.push(selected_item);
