@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         if (completed_sets.length === 10) {
             $("#match").hide();
-            document.location.href = "/homesweethabitat/ActionItem/AI7";
+            $("#putcontenthere").load("action_items/ai7.html");
         }
     });
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
                 if (matches_correctly.length === 1) {
                     console.log('all done');
                     //end of this set
-                    $('.Next').show();
+                    $('.Next-4').show();
                     correct.load();
                     correct.play();
                 }
