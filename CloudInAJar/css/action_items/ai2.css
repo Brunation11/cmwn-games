@@ -1,0 +1,62 @@
+#title img {
+  margin-top: 66px;
+  margin-left: 92px;
+  margin-right: 0px;
+  position: absolute;
+  z-index: 1;
+}
+#sign img {
+  float: right;
+  margin-top: 384px;
+  margin-left: 466px;
+  position: absolute;
+}
+.flip-off img {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.flip-off img:hover {
+  position: absolute;
+  opacity: 0;
+}
+.learn p,
+.p {
+  font-family: Source Sans Pro;
+  font-size: 32px;
+  position: absolute;
+  z-index: 2;
+  width: 578px;
+  text-align: center;
+  margin-top: 154px;
+  margin-left: 26px;
+  letter-spacing: -1px;
+}
+.learn p {
+  font-family: Source Sans Pro ;
+  font-size: 32px;
+  position: absolute;
+  z-index: 2;
+  width: 578px;
+  text-align: center;
+  margin-top: 154px;
+  margin-left: 26px;
+  letter-spacing: -1px;
+}
+.learn h2,
+.h2 {
+  font-family: Source Sans Pro ;
+  font-size: 27px;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  margin-top: 198px;
+  margin-left: 108px;
+}
+.learn b,
+strong {
+  font-weight: 900;
+  font-family: Source Sans Pro;
+}
