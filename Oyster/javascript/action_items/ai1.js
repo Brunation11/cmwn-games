@@ -72,6 +72,9 @@ $(document).ready(function () {
             }
 
             $('.easy-btn img').click(function () {
+
+                $("#putcontenthere").load("action_items/ai2.html?game_mode=1");
+
                 try
                 {
                     Btn_Click.load();
@@ -84,6 +87,9 @@ $(document).ready(function () {
 
             });
             $('.hard-btn img').click(function () {
+
+                $("#putcontenthere").load("action_items/ai2.html?game_mode=2");
+
                 try {
                     Btn_Click.load();
                     Btn_Click.play();
