@@ -6610,3 +6610,7 @@ input[type="checkbox"].input-validation-error {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
   background-color: rgba(255, 255, 255, 0.1);
 }
+.logo img {
+  width: 515px;
+  z-index: 1;
+}
