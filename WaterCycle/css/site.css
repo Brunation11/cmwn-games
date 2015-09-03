@@ -6718,14 +6718,14 @@ input[type="checkbox"].input-validation-error {
   margin-top: 18px;
   color: #000;
 }
-.next-Btn {
+.next-Btn-1 {
   position: absolute;
   z-index: 1;
   margin-left: 544px;
   margin-top: 316px;
   cursor: pointer;
 }
-.next-Btn img:first-child {
+.next-Btn-1 img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
@@ -6733,7 +6733,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 10;
 }
-.next-Btn img:first-child:hover {
+.next-Btn-1 img:first-child:hover {
   opacity: 0;
 }
 .close-Btn {
@@ -6761,14 +6761,14 @@ input[type="checkbox"].input-validation-error {
   background-repeat: no-repeat;
   background-size: 616px 400px;
 }
-.next-Btn {
+.next-Btn-2 {
   position: absolute;
   z-index: 2;
   margin-left: 544px;
   margin-top: 316px;
   cursor: pointer;
 }
-.next-Btn img:first-child {
+.next-Btn-2 img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
@@ -6776,7 +6776,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 10;
 }
-.next-Btn img:first-child:hover {
+.next-Btn-2 img:first-child:hover {
   opacity: 0;
 }
 /* bubble 1*/
@@ -7026,24 +7026,6 @@ input[type="checkbox"].input-validation-error {
 .close-Btn img:first-child:hover {
   opacity: 0;
 }
-.A {
-  width: 100px;
-  height: 100px;
-  background: blue;
-  position: absolute;
-  z-index: 1;
-  top: 100px;
-  left: 100px;
-}
-.B {
-  width: 100px;
-  height: 100px;
-  background: red;
-  position: absolute;
-  z-index: 1;
-  top: 100px;
-  left: 250px;
-}
 .bkg-image {
   width: 616px;
   height: 400px;
@@ -7051,13 +7033,13 @@ input[type="checkbox"].input-validation-error {
   background-repeat: no-repeat;
   background-size: 616px 400px;
 }
-.next-Btn {
+.next-Btn-3 {
   position: absolute;
   z-index: 2;
   margin-left: 492px;
   cursor: pointer;
 }
-.next-Btn img:first-child {
+.next-Btn-3 img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
@@ -7065,7 +7047,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 10;
 }
-.next-Btn img:first-child:hover {
+.next-Btn-3 img:first-child:hover {
   opacity: 0;
 }
 .prev-Btn {
@@ -7249,14 +7231,14 @@ input[type="checkbox"].input-validation-error {
   margin-top: 5px;
   color: #000;
 }
-.next-Btn {
+.next-Btn-4 {
   position: absolute;
   z-index: 1;
   margin-left: 544px;
   margin-top: 316px;
   cursor: pointer;
 }
-.next-Btn img:first-child {
+.next-Btn-4 img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
@@ -7264,6 +7246,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 10;
 }
-.next-Btn img:first-child:hover {
+.next-Btn-4 img:first-child:hover {
   opacity: 0;
 }
