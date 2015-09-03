@@ -3,6 +3,16 @@ $(document).ready(function () {
 
     $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_2.png)');
 
+    $('.No').click(function () {
+        $('#retry-level').modal('hide')
+    });
+
+    $('.close-Btn').click(function () {
+
+        $("#retry-level").modal('show');
+
+    });
+
     var selected_item = $(".next-Btn-1");
 
     $(".text_2").hide();
