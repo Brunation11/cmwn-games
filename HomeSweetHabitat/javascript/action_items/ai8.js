@@ -15,7 +15,4 @@ $(document).ready(function () {
 
     $('.flip').hide().delay(600).fadeIn(1000);
 
-    $('.Next-6').click(function(){
-        $("#putcontenthere").load("action_items/ai9.html");
-    });
 });
