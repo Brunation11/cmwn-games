@@ -22,40 +22,29 @@
   position: absolute;
   opacity: 0;
 }
-.learn p,
+p,
 .p {
   font-family: Source Sans Pro;
-  font-size: 32px;
+  font-size: 34px;
   position: absolute;
   z-index: 2;
   width: 578px;
   text-align: center;
   margin-top: 154px;
   margin-left: 26px;
-  letter-spacing: -1px;
 }
-.learn p {
-  font-family: Source Sans Pro ;
-  font-size: 32px;
-  position: absolute;
-  z-index: 2;
-  width: 578px;
-  text-align: center;
-  margin-top: 154px;
-  margin-left: 26px;
-  letter-spacing: -1px;
-}
-.learn h2,
+h2,
 .h2 {
-  font-family: Source Sans Pro ;
-  font-size: 27px;
+  font-family: Source Sans Pro;
+  font-weight: 600;
+  font-size: 30px;
   position: absolute;
   text-align: center;
   z-index: 2;
-  margin-top: 198px;
-  margin-left: 108px;
+  margin-top: 204px;
+  margin-left: 255px;
 }
-.learn b,
+b,
 strong {
   font-weight: 900;
   font-family: Source Sans Pro;

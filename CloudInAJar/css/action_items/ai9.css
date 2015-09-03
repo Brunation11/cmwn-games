@@ -30,21 +30,22 @@
         }
 
 
-    p, .p {
+   p, .p {
   font-family: Source Sans Pro;
-  font-size: 23px;
+  font-size: 30px;
   position: absolute;
   z-index: 2;
-  width: 385px;
+  width: 614px;
   text-align: center;
-  margin-top: 171px;
-  margin-left: 119px;
-  line-height: 30px;
+  margin-top: 124px;
+  margin-left: 6px;
+  letter-spacing: -1px;
 }
 
 
     h2, .h2 {
         font-family: Source Sans Pro;
+        font-weight:600;
         font-size: 28px;
         position: absolute;
         text-align: center;
@@ -54,7 +55,6 @@
     }
 
     b, strong {
-  font-weight: 900;
-  font-family: Source Sans Pro;
-  font-size: 27px;
-}
+        font-weight: 900;
+        font-family: Source Sans Pro;
+    }
