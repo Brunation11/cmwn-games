@@ -7,6 +7,8 @@
 
     $(document).ready(function () {
 
+
+
         //hide button first
         $('#check-answer').hide();
 
