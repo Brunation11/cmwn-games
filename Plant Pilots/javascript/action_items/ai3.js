@@ -14,22 +14,28 @@ var $form;
 var incrementTime = 1000;
 var currentTime;
 
-//show the popup before the game starts
+
+$('#button-replay').click(function () {
+    $("#putcontenthere").load("/action_items/ai3.html");
+});
+
+$('#button-start').click(function () {
+    $("#putcontenthere").load("/action_items/ai4.html");
+});
 
 //set the game functions up once the screen loads
 $(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
 
-    $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
-    //start the game functions
-    setTimeout(function () { 
+        //start the game functions
         startGame();
-    },5000);
+
         //initalize the drag and drop features for the game items
         init();
+    
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
-    
+
         findHint();
 
         //check to make sure that the hint item has not already been found
@@ -49,7 +55,6 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
          */
         $("#" + hint_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
         $("#" + rand_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
-
 
     });
 
@@ -97,7 +102,7 @@ function updateTimer() {
         start.currentTime = 0;
 
         runout.play();
-        background.pause();
+
         //end game modal with fail message
         setTimeout(function () {
 
@@ -107,17 +112,16 @@ function updateTimer() {
             $('.text-modal').append("<h3>Try again!</h3>");
             $("h3").css({ "font-size": "160%", "margin-left": "40px" });
             $(".popup-image").css({ "margin-top": "79px", "margin-left": "118px" });
-            $("#button-start").css({"margin-left":"105px"});
+            $("#button-start").css({ "margin-left": "100px" });
             runout.load();
             runout.play();
             background.load();
             background.pause();
             $("#button-start").click(function () {
                 $('#game-info').modal('hide');
-                document.location.href = "/ActionItem/FeedPollinators";
-                //setTimeout(function () { location.reload(); }, 10);
-                //startGame.load();
-                //startGame();
+                setTimeout(function () { location.reload(); }, 10);
+                startGame.load();
+                startGame();
 
             });
 
@@ -163,7 +167,7 @@ function findHint() {
 
     var available_drops = new Array();
     var potential_matches = $("#" + rand_item + "").attr('data-correct-drops');
-    
+
     //check to see if more than 1 match exists
     if (potential_matches.length === 1) {
         available_drops[0] = potential_matches;
@@ -177,23 +181,23 @@ function findHint() {
 
 //take a list of items and randomly find one of those items
 function findRandomItem(available_drags) {
-    //must move the array item over 1 place 
+    //must move the array item over 1 place
     rand_item = available_drags[Math.floor(Math.random() * available_drags.length)];
 }
 
 //initalize the drag and drop features for the game
-    function init() {
-        var dropped_item;
+function init() {
+    var dropped_item;
 
-        setDraggable();
-        setDroppable();
+    setDraggable();
+    setDroppable();
 
-        function setDraggable() {
-            $('.drag-item').draggable({
-                helper: 'clone',
-                greedy: true
-            });
-        }
+    function setDraggable() {
+        $('.drag-item').draggable({
+            helper: 'clone',
+            greedy: true
+        });
+    }
 
     function setDroppable() {
         $('.drop-zone').droppable({
@@ -201,13 +205,13 @@ function findRandomItem(available_drags) {
             greedy: true
         });
     }
-    
+
     function handleDrop(event, ui) {
         var draggable = ui.draggable;
         var dragged_item = draggable.attr('id');
         var dropped_zone = $(this).attr('id');
         var dragged_correct_drops = draggable.attr('data-correct-drops');
-        
+
         //take strings and build array
         var list_correct = new Array();
         list_correct = dragged_correct_drops.split(",");
@@ -230,7 +234,7 @@ function findRandomItem(available_drags) {
 
         //remove any potential duplicates
         correct_matches = eliminateDuplicates(correct_matches);
-           
+
         //test to see which sound should be played
         if (correct_matches.indexOf(dropped_zone) > -1) {
             correct.load();
@@ -242,26 +246,25 @@ function findRandomItem(available_drags) {
             //stop the sound
             start.pause();
             complete.play();
-            background.pause();
+
             //stop the timer
             timer1.Timer.pause();
-
+            background.load();
+            background.pause();
             //show the popup screen for game complete and send to bloom boom game
-            $('#game-complete').modal('show');
+            $('#game-success').modal('show');
             $('#game-info').modal('hide');
             $('.main-title').hide();
             $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
-            
             $("#button-next").click(function () {
-                $('#game-success').modal('hide');
-               
-                document.location.href = "/ActionItem/Game";
+                $('#game-complete').modal('hide');
+                //document.location.href = "/ActionItem/ImageQuiz";
             });
 
             $('#button-replay').click(function () {
                 $('#game-complete').modal('hide');
-                
-                document.location.href = "/ActionItem/AI3";
+
+                $("#putcontenthere").load("/action_items/ai3.html");
             })
         }
     }
@@ -287,71 +290,70 @@ function findRandomItem(available_drags) {
         switch (correct) {
             case ("bat-drop"):
                 {
-                    $("#bat-drop > img").attr('src', '/Content/images/findpollinators/bat_found.png');
+                    $("#bat-drop > img").attr('src', '/content/images/findpollinators/bat_found.png');
                     break;
                 }
             case ("monarch-drop"):
                 {
-                    $('#monarch-drop > img').attr('src', '/Content/images/findpollinators/monarch_butterfly_found.png');
+                    $('#monarch-drop > img').attr('src', '/content/images/findpollinators/monarch_butterfly_found.png');
                     break;
                 }
             case ("hummingbird-drop"):
                 {
-                    $("#hummingbird-drop > img").attr('src', '/Content/images/findpollinators/hummingbird_found.png');
+                    $("#hummingbird-drop > img").attr('src', '/content/images/findpollinators/hummingbird_found.png');
                     break;
                 }
             case ("soliderfly-drop"):
                 {
-                    $("#soliderfly-drop > img").attr('src', '/Content/images/findpollinators/soliderfly_found.png');
+                    $("#soliderfly-drop > img").attr('src', '/content/images/findpollinators/soliderfly_found.png');
                     break;
                 }
             case ("swallowtail-drop"):
                 {
-                    $("#swallowtail-drop > img").attr('src', '/Content/images/findpollinators/swallowtail_butterfly_found.png');
+                    $("#swallowtail-drop > img").attr('src', '/content/images/findpollinators/swallowtail_butterfly_found.png');
                     break;
                 }
             case ("honey-drop"):
                 {
-                    $("#honey-drop > img").attr('src', '/Content/images/findpollinators/honeybee_found.png');
+                    $("#honey-drop > img").attr('src', '/content/images/findpollinators/honeybee_found.png');
                     break;
                 }
             case ("bee-drop"):
                 {
-                    $("#bee-drop > img").attr('src', '/Content/images/findpollinators/bumblebee_found.png');
+                    $("#bee-drop > img").attr('src', '/content/images/findpollinators/bumblebee_found.png');
                     break;
                 }
             case ("moth-drop"):
                 {
-                    $("#moth-drop > img").attr('src', '/Content/images/findpollinators/moth_found.png');
+                    $("#moth-drop > img").attr('src', '/content/images/findpollinators/moth_found.png');
                     break;
                 }
             case ("ladybug-drop"):
                 {
-                    $("#ladybug-drop > img").attr('src', '/Content/images/findpollinators/ladybug_found.png');
+                    $("#ladybug-drop > img").attr('src', '/content/images/findpollinators/ladybug_found.png');
                     break;
                 }
             case ("golden-tortoise-drop"):
                 {
-                    $("#golden-tortoise-drop > img").attr('src', '/Content/images/findpollinators/golden_tortoise_beetle_found.png');
+                    $("#golden-tortoise-drop > img").attr('src', '/content/images/findpollinators/golden_tortoise_beetle_found.png');
                     break;
                 }
             case ("scarab-drop"):
                 {
-                    $("#scarab-drop > img").attr('src', '/Content/images/findpollinators/scarab_beetle_found.png');
+                    $("#scarab-drop > img").attr('src', '/content/images/findpollinators/scarab_beetle_found.png');
                     break;
                 }
             case ("ant-drop"):
                 {
-                    $("#ant-drop > img").attr('src', '/Content/images/findpollinators/ant_found.png');
+                    $("#ant-drop > img").attr('src', '/content/images/findpollinators/ant_found.png');
                     break;
                 }
             case ("white-dove-drop"):
                 {
-                    $("#white-dove-drop > img").attr('src', '/Content/images/findpollinators/dove_found.png');
+                    $("#white-dove-drop > img").attr('src', '/content/images/findpollinators/dove_found.png');
                     break;
                 }
 
-            
         }
-    }      
+    }
 }
