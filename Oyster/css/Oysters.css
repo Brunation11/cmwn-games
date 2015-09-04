@@ -1,137 +1,135 @@
-﻿
-
-.second-slide {
+﻿.second-slide {
     position: relative;
 }
 
-    .second-slide img {
-        left: 17px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.second-slide img {
+    left: 17px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .second-slide h1 {
-        left: 100px;
-        top: 50px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.second-slide h1 {
+    left: 100px;
+    top: 50px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
 .third-slide {
     position: relative;
 }
 
-    .third-slide img {
-        left: 47px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.third-slide img {
+    left: 47px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .third-slide h1 {
-        left: 140px;
-        top: 80px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.third-slide h1 {
+    left: 140px;
+    top: 80px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
 .fourth-slide {
     position: relative;
 }
 
-    .fourth-slide img {
-        left: 47px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.fourth-slide img {
+    left: 47px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .fourth-slide p {
-        left: 16px;
-        top: 27px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.fourth-slide p {
+    left: 16px;
+    top: 27px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
 .fiveth-slide {
     position: relative;
 }
 
-    .fiveth-slide img {
-        left: 47px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.fiveth-slide img {
+    left: 47px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .fiveth-slide p {
-        left: 40px;
-        top: 84px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.fiveth-slide p {
+    left: 40px;
+    top: 84px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
 .six-slide {
     position: relative;
 }
 
-    .six-slide img {
-        left: 47px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.six-slide img {
+    left: 47px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .six-slide p {
-        left: 40px;
-        top: -3px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.six-slide p {
+    left: 40px;
+    top: -3px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
-    .six-slide h1 {
-        left: 35px;
-        top: 235px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 34px;
-        line-height: 25px;
-        color: #FFF;
-    }
+.six-slide h1 {
+    left: 35px;
+    top: 235px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 25px;
+    color: #FFF;
+}
 
 .seven-slide .easy-btn img {
     top: 228px;
@@ -151,49 +149,49 @@
     position: relative;
 }
 
-    .seven-slide img {
-        left: 47px;
-        top: 30px;
-        width: 430px;
-        position: absolute;
-    }
+.seven-slide img {
+    left: 47px;
+    top: 30px;
+    width: 430px;
+    position: absolute;
+}
 
-    .seven-slide p {
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.seven-slide p {
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 
-    .seven-slide h1 {
-        left: 110px;
-        top: 300px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 34px;
-        line-height: 25px;
-        color: #FFF;
-    }
+.seven-slide h1 {
+    left: 110px;
+    top: 300px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 25px;
+    color: #FFF;
+}
 
-    .Message p {
-        left: 40px;
-        top: -3px;
-        text-align: center;
-        position: absolute;
-        z-index: 20;
-        font-family:'Source Sans Pro', sans-serif;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 25px;
-        color: #000000;
-    }
+.Message p {
+    left: 40px;
+    top: -3px;
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 25px;
+    color: #000000;
+}
 .tank img {
     top: 150px;
     left: 120px;
@@ -221,29 +219,29 @@
     top: 20px;
 }
 .easy-btn img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-        z-index:9;
-    }
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    z-index:9;
+}
 
-        .easy-btn img:first-child:hover {
-            opacity: 0;
-        }
+.easy-btn img:first-child:hover {
+    opacity: 0;
+}
 .hard-btn img:first-child {
-        position: absolute;
-        -webkit-transition: opacity 0s ease-in-out;
-        -moz-transition: opacity 0s ease-in-out;
-        -o-transition: opacity 0s ease-in-out;
-        transition: opacity 0s ease-in-out;
-        z-index:9;
-    }
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+    z-index:9;
+}
 
-        .hard-btn img:first-child:hover {
-            opacity: 0;
-        }
+.hard-btn img:first-child:hover {
+    opacity: 0;
+}
 .modal-backdrop {
 
     display:none;

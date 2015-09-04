@@ -3,11 +3,7 @@
     var question;
     var question_number;
 
-
-
     $(document).ready(function () {
-
-
 
         //hide button first
         $('#check-answer').hide();
