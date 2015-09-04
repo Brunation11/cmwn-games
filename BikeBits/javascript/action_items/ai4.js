@@ -1,4 +1,4 @@
-$("#putcontenthere").load("/action_items/ai5.html");
+
              var complete = document.getElementById("complete3");
 
     $(document).ready(function () {

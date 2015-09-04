@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "AI9";
+}
+
+
+
+
+
+
+<style>
+    #title img {
+        margin-top: 66px;
+        margin-left: 92px;
+        margin-right: 0px;
+        position: absolute;
+        z-index: 1;
+    }
+
+
+    #sign img {
+        float: right;
+        margin-top: 384px;
+        margin-left: 466px;
+        position: absolute;
+    }
+
+    p {
+        font-family: 'Source Sans Pro';
+        position: absolute;
+        z-index: 10;
+        color: white;
+        width: 333px;
+        font-size: 38px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .flip-off img {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+        .flip-off img:hover {
+            position: absolute;
+            opacity: 0;
+        }
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        try {
+            forest.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+        $('#btn').click(function () {
+            $('#btn').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI10")";
+            });
+            try {
+                click.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+        });
+
+
+        $('#btn1').click(function () {
+            $('#btn1').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI8")";
+            });
+            try {
+                click.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+        });
+    })
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12 content-box">
+        <div id="title-img">
+            <div class="col-md-12 content-box">
+
+                <img src="~/Content/images/meter_5.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; margin-left: -17px;margin-top: 55px;width: 16px;" />
+
+                <img src="~/Content/images/popup.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 484px;margin-left: 39px;margin-top: 34px;" />
+
+                <p style=" margin-top: 109px; width: 301px; line-height: 36px; margin-left: 131px; font-size: 37px; letter-spacing: 0px; font-weight: 600;">You have just a little more room! </p>
+                <p style=" margin-top: 217px; width: 476px; line-height: 32px; margin-left: 49px; font-size: 26px; letter-spacing: 0px; font-weight: 300;">Drag and drop your last few items.<br />Space is limited. Choose wisely!<br />You can't take it out <br />once you add it to the pack.</p>
+
+                <div id="btn">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_arcade_on.png" class="img-responsive" alt="Responsive image" style="width: 71px; margin-left: 471px; position: absolute; z-index: 6; margin-top: 174px;"></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_arcade.png" class="img-responsive" alt="Responsive image" style=" width: 71px; position: absolute; margin-left: 471px; z-index: 6; margin-top: 174px;"></div>
+
+                </div>
+
+                <div id="btn1">
+                    <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_back_on.png" class="img-responsive" alt="Responsive image" style="width: 71px; margin-left: 23px; position: absolute; z-index: 6; margin-top: 174px;"></div>
+                    <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_back.png" class="img-responsive" alt="Responsive image" style=" width: 71px; position: absolute; margin-left: 23px; z-index: 6; margin-top: 174px;"></div>
+
+                </div>
+
+                <img src="~/Content/images/backpack.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; margin-left: 13px;margin-top: 240px;width: 190px;" />
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
