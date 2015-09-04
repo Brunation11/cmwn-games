@@ -1,13 +1,11 @@
+var complete = document.getElementById("complete3");
 
-             var complete = document.getElementById("complete3");
+$(document).ready(function () {
+    //complete.play();
 
-    $(document).ready(function () {
-        complete.play();
-   
-        $('.next4').click(function () {
-            $('.next4').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai8.html");
-            });
-
-
+    $('.next4').click(function () {
+        $('.next4').delay(1000).delay(1000, function () {
+            $("#putcontenthere").load("/action_items/ai1.html");
+        });
     });
+ });
