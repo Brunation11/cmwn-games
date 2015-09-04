@@ -26,7 +26,9 @@
             $("#tfq2b").click(function () {
                 if ($("#tfq2b").val() == "Max Characters 11") {
                     $("#tfq2b").val("");
-                }
+                }else{
+                $("#putcontenthere").load("/action_items/ai16.html");
+            }
             });
         });
 
@@ -48,7 +50,9 @@
             if ($("#tfq2b").val() == "Max Characters 11") {
                 $("#tfq2b").val("");
             }
-            
+            else{
+                $("#putcontenthere").load("/action_items/ai16.html");
+            }
         });
 
         
