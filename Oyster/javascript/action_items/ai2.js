@@ -5,11 +5,34 @@
     var game_meter = 0;
 
     var current_question;
-    var questions = ["question 1", "question 2", "question 3"];
-    var answers   = [1, 2, 3];
+    var questions = [
+    "Filter 3 gallons in 2 hours ?",
+    "Filter 5 gallons in 2 hours ?",
+    "Filter 6 gallons in 1 hour ?",
+    "Filter 10 gallons in 1 hour ?",
+    "Filter 3 gallons in 1 hour ?",
+    "Filter 4 gallons in 1 hour ?",
+    "Filter 8 gallons in 1 hour ?",
+    "Filter 6 gallons in 3 hour ?",
+    "Filter 3 gallons in 3 hour ?",
+    "Filter 10 gallons in  3 hours ?",
+    "Filter 5 gallons in 1 hour ?",
+    "Filter 4 gallons in 2 hours ?",
+    "Filter 6 gallons in 2 hours ?",
+    "Filter 8 gallons in 2 hours ?",
+    "Filter 5 gallons in 3 hours ?"];
+    var answers   = [1, 2, 3, 5, 2, 2, 4, 1, 1, 2, 3, 1, 3, 2, 1];
 
     $(document).ready(function () {
 
+        $(".text-modal-start").css({
+            "color":"#000",
+            "font-size":"24px",
+            "font-family":"Source Sans Pro, sans serif",
+            "font-weight":"600",
+            "left":"88px",
+            "top":"33px"
+        });
         //hide button first
         $('#check-answer').hide();
 
