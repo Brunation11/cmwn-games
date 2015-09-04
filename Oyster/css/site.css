@@ -6657,6 +6657,7 @@ h1 {
   background: url('/content/images/elements/Meter_0.png') no-repeat;
   background-size: 20px;
   position: absolute;
+  z-index: 1;
 }
 .bubble_1 {
   width: 25px;
