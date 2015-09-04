@@ -1,796 +1,131 @@
+background.load();
+background.play();
+//global variables
 var start = document.getElementById("start1");
+var correct = document.getElementById("correct");
+var complete = document.getElementById("complete3");
 var runout = document.getElementById("runout4");
+var wrong = document.getElementById("wrong5");
+var rand_item;
+var correct_matches = new Array();
+var hint_item;
 var $countdown;
 var $form;
 var incrementTime = 1000;
 var currentTime;
-var correct_items = new Array();
-//var clicked_item = $(this).attr("#compost");
-//var currentSlide;
-//var rand;
 
 
+//set the game functions up once the screen loads
+$(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
 
+        //start the game functions
+        startGame();
 
-$(document).ready(function () {
-    try
-    {
-        Background.load();
-        Background.play();
-    }
-    catch (err)
-    {
-        //no sound - log error
-    }
-    $('.carousel-inner').parent().carousel({ pause: true, interval: false });
+        //initalize the drag and drop features for the game items
+        init();
+    
 
-    currentSlide = Math.floor((Math.random() * $('.item').length));
-    rand = currentSlide;
-    $('#myCarousel').carousel(currentSlide);
-    setInterval(function () {
-        while (rand == currentSlide) {
+    //Provide Hint when Clicked
+    $('.hint').click(function () {
 
-            rand = Math.floor((Math.random() * $('.item').length));
-        }
-        currentSlide = rand;
-        $('#myCarousel').carousel(rand);
+        findHint();
 
-    }, 900000);
-    // close window
-    $('.scape-Btn').click(function () {
+        //check to make sure that the hint item has not already been found
+        for (var i = 0; i < correct_matches.length; i++) {
+            var item = correct_matches[i];
 
-        $('#quit-game').modal('show');
-    });
-
-    $('#no-btn').click(function () {
-
-        $('#quit-game').modal('hide');
-    });
-
-    $('.exit-Modal-Btn').click(function () {
-        $('#quit-game').modal('hide');
-
-    });
-
-    // hide Good job sorting screen message
-    $('#retry-screen').modal('hide');
-    // hide points animation
-    $('.win').hide();
-    $('.loose').hide();
-    // Control dumpster carousel and captions
-
-    function playCorrect() {
-        try
-        {
-            correct.load();
-            correct.play();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
-    function playWrong() {
-        try
-        {
-            wrong.load();
-            wrong.play();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
-    $('.item').click(function () {
-        //stop the main carousel
-        $('#carousel_ul').carousel().animate('pause',1000);
-    });
-    ////// click and shoot item to trash cans
-    $(".Hit_One,.Hit_two,.Hit_three,.Hit_four,.Hit_five,.Hit_six,.Hit_seven,.Hit_eight,.Hit_nine,.Hit_ten,.Hit_eleven,.Hit_twelve,.Hit_thirteen,.Hit_fourteen,.Hit_fifteen,.Hit_sixteen,.Hit_seventeen,.Hit_eighteen,.Hit_nineteen,.Hit_twenty,.Hit_twentyone,.Hit_twentytwo,.Hit_twentythree,.Hit_twentyfour,.Hit_twentyfive,.Hit_twentysix,.Hit_twentyseven,.Hit_twentyeight,.Hit_twentynine,.Hit_thirty,.Hit_thirtyone,.Hit_thirtytwo,.Hit_thirtythree,.Hit_thirtyfour,.Hit_thirtyfive,.Hit_thirtysix,.Hit_thirtyseven,.Hit_thirtyeight,.Hit_thirtynine,.Hit_forty").dblclick(function (event) {
-
-        var click_item = $(this).attr('id');
-        var click_correct = $(this).attr('data-correct');
-        var item_animate = click_item + "#"
-        var current = $('.item');
-
-
-        //check to see where the carousel paused and find the selected item id
-
-            var selected_item = $("#carousel_ul li")[2].id;
-            selected_item = selected_item.replace("-li", "");
-
-
-
-            if (click_correct === selected_item) {
-                //remove the correct item so ite does not diplay again
-                $(this).remove();
-
-                //play correct sound
-                //alert('You hit Compost bin');
-
-                correct_items.push(selected_item);
-
-                if (correct_items.length === 1) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top : -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 10);
-
-                }
-
-                if (correct_items.length === 2) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 3) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 4) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 5) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15});
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 6) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-                    $('.carousel-inner').carousel({ pause: true, interval: false });
-                }
-
-                if (correct_items.length === 7) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 8) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 9) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 10) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 11) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 12) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 13) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 14) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 15) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 16) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 17) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 18) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 19) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 20) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 21) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 22) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 23) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 24) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 25) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 26) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 27) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 28) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 29) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 30) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 31) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 32) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 33) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 34) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 35) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 36) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 37) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 38) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 39) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_items.length === 40) {
-                    playCorrect();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
+            if (item === hint_item) {
+                findHint();
+                break;
             }
+        }
 
-            else {
-                //play incorrect sound
-                playWrong();
-                $('#score p').html(function (i, val) { return val * 1 - 30 });
-                $('.loose').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
+        //animation sequences
+        /**
+         * when button is clicked we fade to 10% opacity
+         * and after 100 ms we fade the box back to 100%
+         */
+        $("#" + hint_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
+        $("#" + rand_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
 
-            }
+    });
 
-        //});
+})
 
-        $("#" + click_item + "1").animate({
-                'marginTop': "+=220px"  //moves down
-            }, 800).hide(1);
-
-        $("#" + click_item + "2").animate({
-                'marginTop': "+=220px"  //moves down
-            }, 800).hide(1);
-
-        $("#" + click_item + "3").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "4").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "5").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "6").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "7").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "8").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "9").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "10").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "11").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "12").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "13").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "14").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "15").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "16").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "17").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "18").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "19").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "20").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "21").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "22").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "23").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "24").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "25").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "26").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "27").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "28").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "29").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "30").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "31").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "32").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "33").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "34").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "35").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "36").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "37").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "38").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "39").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "40").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $('#myCarousel').carousel().animate();
-
-        });
-
-        $('#carousel_ul').carousel().animate();
-
-    startGame();
-
+//initalize the backdrop for the modal windows
+$('#game-info').modal({
+    backdrop: true
 });
 
-
-function playStart()
-{
-    try
-    {
-        start.loop = true;
-        start.play();
-    }
-    catch (err)
-    {
-        //no sound - log error
-    }
-}
-function pauseStart()
-{
-    try {
-        start.pause();
-    }
-    catch (err) {
-        //no sound - log error
-    }
-}
-
+//start all of the game functions
 function startGame() {
     startTimer();
-
-    playStart();
+    start.loop = true;
+    start.play();
 
 }
 
-var $countdown;
-var $form;
-var incrementTime = 1000;
-var currentTime;
-
+//create a new time object
 var timer1 = new (function () {
-    currentTime = '90000'; // 24 hours (in milliseconds)
+    currentTime = '30000'; // 20 seconds (in milliseconds)
 });
 
-function delayTimerStart(delayLength) {
-
-
-    $('#counter').slideUp(300).delay(delayLength).queue(function () {
-
-    });
-}
-
-
-
+//start the timer and assign the counter location
 function startTimer() {
     $countdown = $('#counter');
     $countdown.show();
 
     timer1.Timer = $.timer(updateTimer, incrementTime, true);
 
-
 }
 
-function playWonGame()
-{
-    try {
-        wongame.load();
-        wongame.play();
-    }
-    catch (err) {
-        //no sound - log error
-    }
-}
-
-function playFlip()
-{
-    try {
-        flip.load();
-        flip.play();
-    }
-    catch (err) {
-        //no sound - log error
-    }
-}
-
-function playRunOut()
-{
-    try {
-        runout.load();
-        runout.play();
-    }
-    catch (err) {
-        //no sound - log error
-    }
-}
-
+//update the display of the counter in the proper interval
 function updateTimer() {
 
     // Output timer position
     var timeString = currentTime.toString();
     $countdown.html(displayTime(timeString));
 
-    // If timer is complete, trigger alert
-    if (currentTime === 0) {
+    // If timer is complete, trigger correct action
+    if (currentTime == 0) {
         timer1.Timer.stop();
         //alert('Times up!');
-        try
-        {
-            start.currentTime = 0;
-        }
-        catch(err)
-        {
-            //no sound - log error
-        }
+        start.pause();
+        start.currentTime = 0;
 
-        pauseStart();
+        runout.play();
 
-
-
+        //end game modal with fail message
         setTimeout(function () {
-            try
-            {
-                Background.pause();
-            }
-            catch(err)
-            {
-                //no sound - log error
-            }
 
-            $('#carousel_ul').carousel().animate('pause');
-            if (correct_items.length >= 10) {
-                //alert('You Win');
-                $('#retry-screen').modal('show');
-                playWonGame();
+            $('#game-info').modal('show');
+            $('.text-modal-start').hide();
+            $('.main-title').hide();
+            $('.text-modal').append("<h3>Try again!</h3>");
+            $("h3").css({ "font-size": "160%", "margin-left": "40px" });
+            $(".popup-image").css({ "margin-top": "79px", "margin-left": "118px" });
+            $("#button-start").css({ "margin-left": "100px" });
+            runout.load();
+            runout.play();
+            background.load();
+            background.pause();
+            $("#button-start").click(function () {
+                $('#game-info').modal('hide');
+                setTimeout(function () { location.reload(); }, 10);
+                startGame.load();
+                startGame();
 
-                $('#next-button2').click(function () {
-
-                    $('#flip-screen').modal('show');
-                    playFlip();
-
-                    //need to tell the system that is is time to award flip
-                    $.ajax({
-                        url: '@Url.Action("AI3", "ActionItem")',
-                        type: 'POST',
-                        success: function (data)
-                        {
-                            //alert('it worked');
-                        },
-                        error: function (result)
-                        {
-                            //alert('oopsy');
-                        }
-                    });
-
-                    $('#retry-screen').modal('hide');
-                });
-                $("#button-replay").click(function () {
-                    $('#retry-screen').modal('hide');
-                    setTimeout(function () { location.reload(); }, 1000);
-                    try
-                    {
-                        startGame.load();
-                    }
-                    catch (err) {
-                        //no sound - log error
-                    }
-                    startGame();
-                });
-
-            } else {
-                playRunOut();
-                $('#retry-screen').modal('hide');
-                $('#fail-screen').modal('show');
-            }
+            });
 
         });
-
-
-
     }
+
     // Increment timer position
     currentTime -= incrementTime;
     if (currentTime < 0) currentTime = 0;
 }
 
+//format the time so that is display correctly in the counter display
 function displayTime(timeString) {
     var seconds = ~~((timeString / 1000) % 60);
     var minutes = ~~((timeString / (1000 * 60)) % 60);
@@ -799,72 +134,218 @@ function displayTime(timeString) {
     //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
 
     if (seconds < 10) seconds = "0" + seconds;
-    if (minutes < 10) minutes = "" + minutes;
+    if (minutes < 10) minutes = "0" + minutes;
     if (hours < 10) hours = "0" + hours;
 
     //if (hours = 0) hours = "00";
     //if (minutes = 0) minutes = "00";
 
     return minutes.toString() + seconds.toString();
-
-
-
 }
 
-//options( 1 - ON , 0 - OFF)
-var auto_slide = 1;
+//finds the hint by randomizing the potential items available
+function findHint() {
+    //available correct items
+    var available_drags = new Array();
+    available_drags = "milkweed,passion-flower,morning-glory,sacred-datura,aphid,juniper,bergmot,cactus".split(",");
 
+    findRandomItem(available_drags);
 
-
-//speed of auto slide(
-var auto_slide_seconds = 1300;
-
-/*move the last list item before the first item. The purpose of this is
-if the user clicks to slide left he will be able to see the last item.*/
-$('#carousel_ul li:first').before($('#carousel_ul li:last'));
-
-//check if auto sliding is enabled
-if (auto_slide == 1) {
-    /*set the interval (loop) to call function slide with option 'right'
-    and set the interval time to the variable we declared previously */
-    var timer = setInterval('slide("right")', auto_slide_seconds);
-
-    /*and change the value of our hidden field that hold info about
-    the interval, setting it to the number of milliseconds we declared previously*/
-    $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
-
-}
-
-function slide(where) {
-
-    //get the item width
-    var item_width = $('#carousel_ul li').outerWidth() + 10;
-
-
-    if (where == 'left') {
-        //...calculating the new left indent of the unordered list (ul) for left sliding
-        var left_indent = parseInt($('#carousel_ul').css('left')) + item_width;
-    } else {
-        //...calculating the new left indent of the unordered list (ul) for right sliding
-        var left_indent = parseInt($('#carousel_ul').css('left')) - item_width;
-
+    //check to see if the value of the randomitem has any matches
+    if (rand_item === "cactus") {
+        //this is a dummy item with not matches find another
+        findRandomItem(available_drags);
     }
 
-    ////make the sliding effect using jQuery's animate function... '
-    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 450, function () {
+    var available_drops = new Array();
+    var potential_matches = $("#" + rand_item + "").attr('data-correct-drops');
 
-        /* when the animation finishes use the if statement again, and make an ilussion
-        of infinity by changing place of last or first item*/
-        if (where == 'left') {
-            //...and if it slided to left we put the last item before the first item
-            $('#carousel_ul li:first').before($('#carousel_ul li:last'));
-        } else {
-            //...and if it slided to right we put the first item after the last item
-            $('#carousel_ul li:last').after($('#carousel_ul li:first'));
+    //check to see if more than 1 match exists
+    if (potential_matches.length === 1) {
+        available_drops[0] = potential_matches;
+        hint_item = available_drops[0];
+    }
+    else {
+        available_drops = potential_matches.split(',');
+        hint_item = available_drops[Math.floor(Math.random() * available_drops.length)];
+    }
+}
+
+//take a list of items and randomly find one of those items
+function findRandomItem(available_drags) {
+    //must move the array item over 1 place
+    rand_item = available_drags[Math.floor(Math.random() * available_drags.length)];
+}
+
+//initalize the drag and drop features for the game
+function init() {
+    var dropped_item;
+
+    setDraggable();
+    setDroppable();
+
+    function setDraggable() {
+        $('.drag-item').draggable({
+            helper: 'clone',
+            greedy: true
+        });
+    }
+
+    function setDroppable() {
+        $('.drop-zone').droppable({
+            drop: handleDrop,
+            greedy: true
+        });
+    }
+
+    function handleDrop(event, ui) {
+        var draggable = ui.draggable;
+        var dragged_item = draggable.attr('id');
+        var dropped_zone = $(this).attr('id');
+        var dragged_correct_drops = draggable.attr('data-correct-drops');
+
+        //take strings and build array
+        var list_correct = new Array();
+        list_correct = dragged_correct_drops.split(",");
+
+        //loop through the correct items and see if works
+        for (var i = 0; i < list_correct.length; i++) {
+            var item = list_correct[i];
+
+            if (item === dropped_zone) {
+                displayItem(dropped_zone);
+
+                //add the correct items to the array
+                if (correct_matches.indexOf(dropped_zone) === -1) {
+                    correct_matches.push(dropped_zone);
+                }
+
+                break;
+            }
         }
 
-        //...and then just get back the default left indent
-        $('#carousel_ul').css({ 'left': '-210px' });
-    });
+        //remove any potential duplicates
+        correct_matches = eliminateDuplicates(correct_matches);
 
+        //test to see which sound should be played
+        if (correct_matches.indexOf(dropped_zone) > -1) {
+            correct.load();
+            correct.play();
+        }
+
+        //check to see if the game is over - all matches are found
+        if (correct_matches.length === 6) {
+            //stop the sound
+            start.pause();
+            complete.play();
+
+            //stop the timer
+            timer1.Timer.pause();
+            background.load();
+            background.pause();
+            //show the popup screen for game complete and send to bloom boom game
+            $('#game-success').modal('show');
+            $('#game-info').modal('hide');
+            $('.main-title').hide();
+            $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
+            $("#button-next").click(function () {
+                $('#game-complete').modal('hide');
+                //document.location.href = "/ActionItem/ImageQuiz";
+            });
+
+            $('#button-replay').click(function () {
+                $('#game-complete').modal('hide');
+
+                document.location.href = "/ActionItem/AI3";
+            })
+        }
+    }
+
+    function eliminateDuplicates(arr) {
+        var i,
+            len = arr.length,
+            out = [],
+            obj = {};
+
+        for (i = 0; i < len; i++) {
+            obj[arr[i]] = 0;
+        }
+        for (i in obj) {
+            out.push(i);
+        }
+        return out;
+    }
+
+    function displayItem(correct) {
+        correct_matches.push(correct);
+
+        switch (correct) {
+            case ("bat-drop"):
+                {
+                    $("#bat-drop > img").attr('src', 'content/images/findpollinators/bat_found.png');
+                    break;
+                }
+            case ("monarch-drop"):
+                {
+                    $('#monarch-drop > img').attr('src', 'content/images/findpollinators/monarch_butterfly_found.png');
+                    break;
+                }
+            case ("hummingbird-drop"):
+                {
+                    $("#hummingbird-drop > img").attr('src', 'content/images/findpollinators/hummingbird_found.png');
+                    break;
+                }
+            case ("soliderfly-drop"):
+                {
+                    $("#soliderfly-drop > img").attr('src', 'content/images/findpollinators/soliderfly_found.png');
+                    break;
+                }
+            case ("swallowtail-drop"):
+                {
+                    $("#swallowtail-drop > img").attr('src', 'content/images/findpollinators/swallowtail_butterfly_found.png');
+                    break;
+                }
+            case ("honey-drop"):
+                {
+                    $("#honey-drop > img").attr('src', 'content/images/findpollinators/honeybee_found.png');
+                    break;
+                }
+            case ("bee-drop"):
+                {
+                    $("#bee-drop > img").attr('src', 'content/images/findpollinators/bumblebee_found.png');
+                    break;
+                }
+            case ("moth-drop"):
+                {
+                    $("#moth-drop > img").attr('src', 'content/images/findpollinators/moth_found.png');
+                    break;
+                }
+            case ("ladybug-drop"):
+                {
+                    $("#ladybug-drop > img").attr('src', 'content/images/findpollinators/ladybug_found.png');
+                    break;
+                }
+            case ("golden-tortoise-drop"):
+                {
+                    $("#golden-tortoise-drop > img").attr('src', 'content/images/findpollinators/golden_tortoise_beetle_found.png');
+                    break;
+                }
+            case ("scarab-drop"):
+                {
+                    $("#scarab-drop > img").attr('src', 'content/images/findpollinators/scarab_beetle_found.png');
+                    break;
+                }
+            case ("ant-drop"):
+                {
+                    $("#ant-drop > img").attr('src', 'content/images/findpollinators/ant_found.png');
+                    break;
+                }
+            case ("white-dove-drop"):
+                {
+                    $("#white-dove-drop > img").attr('src', 'content/images/findpollinators/dove_found.png');
+                    break;
+                }
+
+        }
+    }
 }
