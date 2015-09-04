@@ -161,9 +161,6 @@ function init() {
             background.pause();
             //show the popup screen for game complete and send to bloom boom game
             $('#game-success').modal('show');
-            //$('#game-info').modal('hide');
-            $('.main-title').hide();
-            $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
 
             $("#button-next").click(function () {
                 $('#game-complete').modal('hide');
@@ -172,6 +169,7 @@ function init() {
 
             $('#button-replay').click(function () {
                 //$('#game-complete').modal('hide');
+                $('#game-success').modal('hide');
                 $('#game-info').modal('hide');
 
                 $("#putcontenthere").load("/action_items/ai3.html");

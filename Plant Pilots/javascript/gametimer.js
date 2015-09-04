@@ -39,7 +39,7 @@ function updateTimer() {
         //end game modal with fail message
         setTimeout(function () {
 
-            $('#game-info').modal('show');
+            $('#game-fail').modal('show');
             $('.text-modal-start').hide();
             $('.main-title').hide();
             $('.text-modal').append("<h3>Try again!</h3>");
@@ -51,8 +51,8 @@ function updateTimer() {
             background.load();
             background.pause();
             $("#button-start").click(function () {
-                $('#game-info').modal('hide');
-                setTimeout(function () { location.reload(); }, 10);
+                $('#game-fail').modal('hide');
+                //setTimeout(function () { location.reload(); }, 10);
                 startGame.load();
                 startGame();
 
