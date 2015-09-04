@@ -26,7 +26,8 @@
             $("#tfq2b").click(function () {
                 if ($("#tfq2b").val() == "Max Characters 11") {
                     $("#tfq2b").val("");
-                }
+                }else{
+            }
             });
         });
 
@@ -45,10 +46,15 @@
 
         
         $('.proceed').click(function () {
-            if ($("#tfq2b").val() == "Max Characters 11") {
-                $("#tfq2b").val("");
+
+            var camp_name = $("#tfq2b").val();
+
+            if(camp_name == null || camp_name == '' || camp_name == 'Max Characters 11') {
+                $("#tfq2b").val('');
+                alert('Your camp name cannot be empty!');
+            } else {
+                $("#putcontenthere").load("/action_items/ai16.html");
             }
-            
         });
 
         
