@@ -47,7 +47,7 @@
             //check to see of the answer is correct
             $.ajax({
                 type: "POST",
-                url: "@Url.Action("ProcessAnswer", "ActionItem")",
+                url: "",
                 data: { "question_number": question_number, "answer": "" + dropped_items.length + "" },
                 dataType: "json",
                 success: (function (data) {
@@ -81,7 +81,7 @@
                             if (return_values[1] === "10") {
                                 //this is where you will send it to the next screen
 
-                                window.location.href="@Url.Action("OystersAi9", "ActionItem")";
+                                window.location.href="";
 
                             }
                             else
@@ -194,32 +194,46 @@
         //hidewater state
         hideWaterState();
 
-        //reset game functions
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("SelectRandomJQuery", "ActionItem")",
-            dataType: "json",
-            success: (function (data) {
-                var new_question = data.split(",");
-                if (new_question != null)
-                {
-                    //rebind model data with new question
-                    question = new_question[1];
-                    question_number = new_question[3];
-
-                    //make sure no other modal is being displayed
-                    $('#game-info-incorrect').modal('hide');
-                    $('#game-info-correct').modal('hide');
+        question = 'here is a question';
+        question_number = 3;
 
 
-                    //display question modal
-                    $('#game-info-Question').modal('show');
-                    $('.text-modal-start').html("<p>" + question + "</p>");
+        //make sure no other modal is being displayed
+        $('#game-info-incorrect').modal('hide');
+        $('#game-info-correct').modal('hide');
 
-                    $('.dragOyster').draggable({ revert: true });
-                }
-            })
-        })
+        //display question modal
+        $('#game-info-Question').modal('show');
+        $('.text-modal-start').html("<p>" + question + "</p>");
+
+        $('.dragOyster').draggable({ revert: true });
+
+    //     //reset game functions
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "@Url.Action("SelectRandomJQuery", "ActionItem")",
+    //         dataType: "json",
+    //         success: (function (data) {
+    //             var new_question = data.split(",");
+    //             if (new_question != null)
+    //             {
+    //                 //rebind model data with new question
+    //                 question = new_question[1];
+    //                 question_number = new_question[3];
+
+    //                 //make sure no other modal is being displayed
+    //                 $('#game-info-incorrect').modal('hide');
+    //                 $('#game-info-correct').modal('hide');
+
+
+    //                 //display question modal
+    //                 $('#game-info-Question').modal('show');
+    //                 $('.text-modal-start').html("<p>" + question + "</p>");
+
+    //                 $('.dragOyster').draggable({ revert: true });
+    //             }
+    //         })
+    //     })
     }
 
     function init() {
