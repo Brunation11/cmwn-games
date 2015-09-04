@@ -580,7 +580,7 @@
                         if (correct_items.length === 10) {
                             //pop or redirect your game complete screen
                             setTimeout(function () {
-                                document.location.href = "@Url.Content("~/ActionItem/AI4")";
+                               $("#putcontenthere").load("/action_items/ai4.html");
                             }, 2000);
 
                         }

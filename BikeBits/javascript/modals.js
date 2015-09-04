@@ -8,12 +8,6 @@ $(document).ready(function () {
                
             });
 
-           
-          
-
-          
-
-
             $("#no").click(function () {
                 $('#game-complete').modal('hide');
             });

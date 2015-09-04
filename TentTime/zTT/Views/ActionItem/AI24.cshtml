@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "AI24";
+}
+
+
+
+<style>
+    #title img {
+        margin-top: 66px;
+        margin-left: 92px;
+        margin-right: 0px;
+        position: absolute;
+        z-index: 1;
+    }
+
+
+    #sign img {
+        float: right;
+        margin-top: 384px;
+        margin-left: 466px;
+        position: absolute;
+    }
+
+    p {
+        font-family: 'Source Sans Pro';
+        position: absolute;
+        z-index: 10;
+        color: white;
+        width: 333px;
+        font-size: 38px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .flip-off img {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+        .flip-off img:hover {
+            position: absolute;
+            opacity: 0;
+        }
+
+        
+           #tfheader {
+          position: absolute;
+          z-index: 15;
+          margin-top: 283px;
+          margin-left: 72px;
+        }
+
+         #tfnewsearch {
+            float: right;
+            padding: 20px;
+            display:flex;
+        }
+
+        .tftextinput2 {
+  margin: 0;
+  padding: 5px 7px;
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+  height: 42px;
+  color: #000;
+  opacity:0.4;
+  width: 231px;
+  border: 1px solid #000;
+  border-right: 0px;
+}
+
+        .tfbutton2 {
+            margin: 0;
+            padding: 5px 7px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            border: solid 1px #000;
+            border-right: 0px;
+            background: #000;
+            
+        }
+
+            .tfbutton2:hover {
+                text-decoration: none;
+                background: #007ead;
+                background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000000));
+                background: -moz-linear-gradient(top, #0095cc, #000000);
+            }
+            /* Fixes submit button height problem in Firefox */
+            .tfbutton2::-moz-focus-inner {
+                border: 0;
+            }
+
+        .tfclear {
+            clear: both;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        try {
+            wol.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+        $('#btn1').click(function () {
+            $('#btn1').delay(1000).delay(1000, function () {
+                document.location.href = "@Url.Content("~/ActionItem/AI23")";
+            });
+            try {
+                click.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+        });
+
+        $(function () {
+            $("#tfq2b").click(function () {
+                if ($("#tfq2b").val() == "Max Characters 11") {
+                    $("#tfq2b").val("");
+                }
+            });
+        });
+
+
+        $("#tfq2b").keypress(function (e) {
+            var tval = $("#tfq2b").val(),
+                tlength = tval.length,
+                set = 10,
+                remain = parseInt(set - tlength);
+            $("#tfq2b").text(remain);
+            if (remain <= 0 && e.which !== 0 && e.charCode !== 0) {
+                $("#tfq2b").val((tval).substring(0, tlength - 1))
+            }
+
+        })
+
+
+        $('.proceed').click(function () {
+            if ($("#tfq2b").val() == "Max Characters 11") {
+                $("#tfq2b").val("");
+            }
+
+        });
+
+
+    })
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12 content-box">
+        <div id="title-img">
+            <div class="col-md-12 content-box">
+                <img src="~/Content/images/popup_withrope.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 484px;margin-left: 39px;margin-top: 34px;" />
+                <p style="margin-left: 74px; margin-top: 73px;line-height: 43px;width: 422px;letter-spacing: -1px;font-size: 33px;">I Dedicate my Camp to Wolves</p>
+                <img src="~/Content/images/circle_wolf.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 2; width: 132px;margin-left: 216px;margin-top: 136px;" />
+                <img src="~/Content/images/coin.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; width: 163px;margin-left: 200px;margin-top: 123px;" />
+
+                <p style="margin-left: -26px; margin-top: 275px;width: 400px;font-size: 22px;letter-spacing: 0px;">Name your camp</p>
+
+                <div id="tfheader">
+                    <form id="tfnewsearch" method="get" action="@Url.Content("~/ActionItem/AI25")">
+                        <input type="text" id="tfq2b" class="tftextinput2" name="q" size="21" maxlength="120" value="Max Characters 11" required />
+                        <input class="proceed" type="image" src="~/Content/images/btn_save.png" alt="Submit Form" style="width: 157px;height: 43px;margin-left: 5px;" required />
+                    </form>
+                    <div class="tfclear"></div>
+                </div>
+
+                <div id="name" style="width: 232px; margin-top: 303px;position:absolute; background-color:white; height: 42px; z-index:1;margin-left: 92px;border: 1px solid black;"></div>
+            </div>
+
+
+            <div id="btn1">
+                <div class="flip-on" style="z-index:10;"><img src="~/Content/images/btn_back_on.png" class="img-responsive" alt="Responsive image" style="width: 71px; margin-left: 38px; position: absolute; z-index: 6; margin-top: 174px;"></div>
+                <div class="flip-off" style="z-index:9;"><img src="~/Content/images/btn_back.png" class="img-responsive" alt="Responsive image" style=" width: 71px; position: absolute; margin-left: 38px; z-index: 6; margin-top: 174px;"></div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+

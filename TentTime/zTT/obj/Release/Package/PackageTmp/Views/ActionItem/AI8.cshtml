@@ -1,0 +1,574 @@
+﻿
+@{
+    ViewBag.Title = "AI8";
+}
+
+
+
+
+<style>
+    #title img {
+        margin-top: 66px;
+        margin-left: 92px;
+        margin-right: 0px;
+        position: absolute;
+        z-index: 1;
+    }
+
+
+    #sign img {
+        float: right;
+        margin-top: 384px;
+        margin-left: 466px;
+        position: absolute;
+    }
+
+    p {
+        font-family: 'Source Sans Pro';
+        position: absolute;
+        z-index: 10;
+        color: white;
+        width: 333px;
+        font-size: 22px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .flip-off img {
+        position: absolute;
+        -webkit-transition: opacity 0s ease-in-out;
+        -moz-transition: opacity 0s ease-in-out;
+        -o-transition: opacity 0s ease-in-out;
+        transition: opacity 0s ease-in-out;
+    }
+
+        .flip-off img:hover {
+            position: absolute;
+            opacity: 0;
+        }
+
+
+    .draggable ui-draggable ui-draggable-handle {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        position: absolute;
+    }
+
+
+    .droppable {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+    .droppable2 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+
+    .droppable3 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+    .droppable4 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+    .droppable5 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+    .droppable6 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+    .droppable7 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+
+    .droppable8 {
+        height: 154px;
+        width: 180px;
+        z-index: 15;
+        position: absolute;
+        /*border: 1px solid #0f0;*/
+        margin-left: 23px;
+        margin-top: 212px;
+    }
+
+
+
+    .gone {
+        text-decoration: line-through;
+    }
+</style>
+
+
+
+
+
+<script type="text/javascript">
+    var meter;
+    var full;
+    var correct_items = new Array();
+
+
+
+    $(document).ready(function () {
+        
+
+        try {
+            backg.load();
+            backg.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+
+
+
+        //this is for object to be rejected
+        $(".leave").draggable({
+            revert: 'invalid',
+            drag: function () {
+                try {
+                    incorrect.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+            }
+        });
+
+
+        $(".draggable1").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable2").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable3").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable4").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable5").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable6").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable7").draggable({ cursor: 'move', revert: 'invalid' });
+        $(".draggable8").draggable({ cursor: 'move', revert: 'invalid' });
+
+        $(".droppable").droppable({
+            tolerance: "pointer",
+            accept: ".draggable1",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable1").fadeOut(4000);
+                $("#sleep p").css("text-decoration", "line-through");
+                correct_items.push(1);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable2").droppable({
+            tolerance: "pointer",
+            accept: ".draggable2",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable2").fadeOut(4000);
+                $("#tent p").css("text-decoration", "line-through");
+                correct_items.push(2);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable3").droppable({
+            tolerance: "pointer",
+            accept: ".draggable3",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable3").fadeOut(4000);
+                $("#bug p").css("text-decoration", "line-through");
+                correct_items.push(3);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable4").droppable({
+            tolerance: "pointer",
+            accept: ".draggable4",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable4").fadeOut(4000);
+                $("#flash p").css("text-decoration", "line-through");
+                correct_items.push(4);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable5").droppable({
+            tolerance: "pointer",
+            accept: ".draggable5",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable5").fadeOut(4000);
+                $("#aid p").css("text-decoration", "line-through");
+                correct_items.push(5);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable6").droppable({
+            tolerance: "pointer",
+            accept: ".draggable6",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable6").fadeOut(4000);
+                $("#batter p").css("text-decoration", "line-through");
+                correct_items.push(6);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+
+        $(".droppable7").droppable({
+            tolerance: "pointer",
+            accept: ".draggable7",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable7").fadeOut(4000);
+                $("#food p").css("text-decoration", "line-through");
+                correct_items.push(7);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+        $(".droppable8").droppable({
+            tolerance: "pointer",
+            accept: ".draggable8",
+            drop: function () {
+                try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".draggable8").fadeOut(4000);
+                $("#water p").css("text-decoration", "line-through");
+                correct_items.push(7);
+                var path = "@Url.Content("~/Content/images/meter_")";
+                var file_ext = ".png";
+                var image_src = path + correct_items.length + file_ext;
+
+                $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                if (correct_items.length === 8) {
+                    //pop or redirect your game complete screen
+                    setTimeout(function () {
+                        document.location.href = "@Url.Content("~/ActionItem/AI9")";
+                    }, 2000);
+                }
+            }
+        });
+
+
+
+
+    });
+</script>
+
+
+
+
+<div class="container body-content">
+    <div class="col-md-12 content-box">
+        <div id="title-img">
+            <div class="col-md-12 content-box">
+
+                <div id="meter" style="position: absolute; z-index: 1; margin-left: -17px;margin-top: 55px;width: 16px;">
+                    <img src="~/Content/images/meter_0.png" class="img-responsive" alt="Responsive image" />
+                </div>
+
+                <img src="~/Content/images/list_backdrop.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; margin-left: 15px;margin-top: 13px;width: 201px;" />
+
+                <!--Camping list-->
+                <p style="margin-top: 20px; margin-left: -57px; font-size: 28px;">Camping List</p>
+
+                <div id="tent"><p style="margin-top: 57px; margin-left: -108px;">Tent</p></div>
+
+                <div id="sleep"><p style="margin-left: -70px; margin-top: 79px;">Sleeping Bag</p></div>
+
+                <div id="flash"><p style="margin-left: -84px; margin-top: 102px;">Flashlight</p></div>
+
+                <div id="batter"><p style="margin-top: 124px; margin-left: -88px;">Batteries</p></div>
+
+                <div id="bug"><p style="margin-left: -84px; margin-top: 146px;">Bug Spray</p></div>
+
+                <div id="water"><p style="margin-top: 170px; margin-left: -100px;">Water</p></div>
+
+                <div id="food"><p style="margin-top: 192px; margin-left: -105px;">Food</p></div>
+
+                <div id="aid"><p style="margin-top: 213px; margin-left: -73px;">First-aid Kit</p></div>
+                <!-- End Camping list-->
+                <!--drop area HERE!-->
+                <div class="droppable"></div>
+                <div class="droppable2"></div>
+                <div class="droppable3"></div>
+                <div class="droppable4"></div>
+                <div class="droppable5"></div>
+                <div class="droppable6"></div>
+                <div class="droppable7"></div>
+                <div class="droppable8"></div>
+                <!--drop area HERE!-->
+
+                <img src="~/Content/images/backpack.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 1; margin-left: 13px;margin-top: 240px;width: 190px;" />
+
+                <div class="active item">
+
+                    <!--Camping list images-->
+                    <!-- this draggable object -->
+                    <div class="draggable1">
+                        <img src="~/Content/images/sleeping_bag.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 13; margin-left: 247px;margin-top: 6px;width: 103px;" />
+                    </div>
+                    <!--needs to be acceped-->
+
+
+                    <div class="leave">
+                        <img src="~/Content/images/rope.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 313px;margin-top: 77px;width: 103px;" />
+                    </div>
+
+                    <div class="draggable8">
+                        <img src="~/Content/images/WaterBottle-01.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 288px;margin-top: 104px;width: 25px;" />
+                    </div>
+
+                    <div class="draggable3">
+                        <img src="~/Content/images/bug_repellant.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 414px;margin-top: 11px;width: 41px;" />
+                    </div>
+
+                    <div class="draggable2">
+                        <img src="~/Content/images/tent.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 457px;margin-top: 30px;width: 125px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/compass.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 426px;margin-top: 115px;width: 52px;" />
+                    </div>
+
+                    <div class="draggable4">
+                        <img src="~/Content/images/flashlight.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 494px;margin-top: 117px;width: 73px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/vacuumcleaner.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 326px;margin-top: 117px;width: 96px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/dustpan.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 229px;margin-top: 145px;width: 55px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/hairdryer.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 235px;margin-top: 69px;width: 52px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/hat.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 286px;margin-top: 199px;width: 70px;" />
+                    </div>
+
+                    <div class="draggable5">
+                        <img src="~/Content/images/firstaidkit.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 366px;margin-top: 221px;width: 70px;" />
+                    </div>
+
+                    <div class="draggable6">
+                        <img src="~/Content/images/batteries.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 435px;margin-top: 171px;width: 59px;" />
+                    </div>
+
+                    <div class="draggable7">
+                        <img src="~/Content/images/groceries.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 493px;margin-top: 233px;width: 70px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/matches.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 303px;margin-top: 287px;width: 70px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/headphones.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 233px;margin-top: 258px;width: 51px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/shoe.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 248px;margin-top: 348px;width: 92px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/notebook.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 356px;margin-top: 326px;width: 51px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/binoculars.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 410px;margin-top: 283px;width: 70px;" />
+                    </div>
+
+                    <div class="leave">
+                        <img src="~/Content/images/skateboard.png" class="img-responsive" alt="Responsive image" style="position: absolute; z-index: 12; margin-left: 440px;margin-top: 336px;width: 133px;" />
+                    </div>
+
+                </div>
+                <!-- End Camping list images-->
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

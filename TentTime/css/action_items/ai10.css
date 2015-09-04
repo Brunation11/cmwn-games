@@ -1,0 +1,142 @@
+#title img {
+  margin-top: 66px;
+  margin-left: 92px;
+  margin-right: 0px;
+  position: absolute;
+  z-index: 1;
+}
+#sign img {
+  float: right;
+  margin-top: 384px;
+  margin-left: 466px;
+  position: absolute;
+}
+p {
+  font-family: 'Source Sans Pro';
+  position: absolute;
+  z-index: 10;
+  color: white;
+  width: 333px;
+  font-size: 38px;
+  text-align: center;
+  font-weight: 600;
+}
+.flip-off img {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.flip-off img:hover {
+  position: absolute;
+  opacity: 0;
+}
+.droppable {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable2 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable3 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable4 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable5 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable6 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable7 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable8 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable9 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable10 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable11 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
+.droppable12 {
+  height: 154px;
+  width: 180px;
+  z-index: 15;
+  position: absolute;
+  /*border: 1px solid #0f0;*/
+  margin-left: 23px;
+  margin-top: 212px;
+}
