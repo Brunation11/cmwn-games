@@ -302,7 +302,7 @@
 
 
             }).animate({
-                top: '+=116px',  rotate: -20
+                top: '+=130px',  rotate: -20
 
             }, {
 
