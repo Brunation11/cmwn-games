@@ -2,6 +2,11 @@
     var correct_answers;
     var question;
     var question_number;
+    var game_meter = 0;
+
+    var current_question;
+    var questions = ["question 1", "question 2", "question 3"];
+    var answers   = [1, 2, 3];
 
     $(document).ready(function () {
 
@@ -19,8 +24,6 @@
         {
             //no sound - log error
         }
-
-
 
         //get the question from the model
         resetQuestions();
@@ -43,84 +46,67 @@
 
             $('#check-answer').hide();
             //check to see of the answer is correct
-            $.ajax({
-                type: "POST",
-                url: "@Url.Action("ProcessAnswer", "action_items")",
-                data: { "question_number": question_number, "answer": "" + dropped_items.length + "" },
-                dataType: "json",
-                success: (function (data) {
-                    var return_values = data.split(",");
 
-                    if (return_values[0] == "True")
-                    {
-                        //add bubble to meter
-                        showGameMeter(return_values[1]);
+            if (dropped_items.length === answers[current_question])
+            {
+                //add bubble to meter
+                showGameMeter();
 
-                        //hide the question screen
-                        $('#game-info-Question').modal('hide');
+                //hide the question screen
+                $('#game-info-Question').modal('hide');
 
-                        //show the correct screen for 3 seconds
-                        $('#game-info-correct').modal('show');
+                //show the correct screen for 3 seconds
+                $('#game-info-correct').modal('show');
 
-                        // correct sound
-                        try
-                        {
-                            CorrectSound.volume = 0.5,
-                            CorrectSound.play();
-                        }
-                        catch(err)
-                        {
-                            //no sound - log error
-                        }
+                // correct sound
+                try
+                {
+                    CorrectSound.volume = 0.5,
+                    CorrectSound.play();
+                }
+                catch(err)
+                {
+                    //no sound - log error
+                }
 
-                        setTimeout(function () {
-                            //test to see if this is the end of the game - 10 correct answers
+                setTimeout(function () {
+                    //test to see if this is the end of the game - 10 correct answers
 
-                            if (return_values[1] === "10") {
-                                //this is where you will send it to the next screen
-
-                                window.location.href="@Url.Action("ai3.html", "action_items")";
-
-                            }
-                            else
-                            {
-                                //reset question
-                                resetQuestions();
-                            }
-                        }, 3000)
-
+                    if (game_meter === 10) {
+                        //this is where you will send it to the next screen
+                        window.location.href="";
                     }
                     else
                     {
-                        //hide the question screen
-                        $('#game-info-Question').modal('hide');
-
-                        //show the incorrect screen for 3 seconds
-                        $('#game-info-incorrect').modal('show');
-
-                        // incorrect sound
-                        try
-                        {
-                            Wrong.play();
-                        }
-                        catch(err)
-                        {
-                            //no sound - log error
-                        }
-
-                        setTimeout(function () {
-                            //reset question
-                            resetQuestions();
-                        }, 3000)
-
-
+                        //reset question
+                        resetQuestions();
                     }
+                }, 3000)
 
-                }),
-                error: (function (result) {
-                    alert(result);
-                })
-            })
+            }
+            else
+            {
+                //hide the question screen
+                $('#game-info-Question').modal('hide');
+
+                //show the incorrect screen for 3 seconds
+                $('#game-info-incorrect').modal('show');
+
+                // incorrect sound
+                try
+                {
+                    Wrong.play();
+                }
+                catch(err)
+                {
+                    //no sound - log error
+                }
+
+                setTimeout(function () {
+                    //reset question
+                    resetQuestions();
+                }, 3000)
+            }
 
             // Click sound;
             try
@@ -159,12 +145,12 @@
         $('.bubble_10').hide();
     }
 
-    function showGameMeter(correct)
+    function showGameMeter()
     {
-        $('.bubble_' + correct + '').show();
+        game_meter = game_meter + 1;
+
+        $('.bubble_' + game_meter + '').show();
     }
-
-
 
     function revertOysters() {
 
@@ -174,8 +160,6 @@
         $('#Oyster4').css({ 'left': '32px', 'top': '156px' });
         $('#Oyster5').css({ 'left': '2px', 'top': '157px' });
         $('#Oyster6').css({ 'left': '47px', 'top': '160px' });
-
-
     }
 
 
@@ -192,37 +176,51 @@
         //hidewater state
         hideWaterState();
 
-        //reset game functions
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("SelectRandomJQuery", "action_items")",
-            dataType: "json",
-            success: (function (data) {
-                var new_question = data.split(",");
-                if (new_question != null)
-                {
-                    //rebind model data with new question
-                    question = new_question[1];
-                    question_number = new_question[3];
+        current_question = Math.floor(Math.random()*questions.length);
+        question = questions[current_question];
 
-                    //make sure no other modal is being displayed
-                    $('#game-info-incorrect').modal('hide');
-                    $('#game-info-correct').modal('hide');
+        //question = 'here is a question';
+        question_number = 3;
+
+        //make sure no other modal is being displayed
+        $('#game-info-incorrect').modal('hide');
+        $('#game-info-correct').modal('hide');
+
+        //display question modal
+        $('#game-info-Question').modal('show');
+        $('.text-modal-start').html("<p>" + question + "</p>");
+
+        $('.dragOyster').draggable({ revert: true });
+
+    //     //reset game functions
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "@Url.Action("SelectRandomJQuery", "ActionItem")",
+    //         dataType: "json",
+    //         success: (function (data) {
+    //             var new_question = data.split(",");
+    //             if (new_question != null)
+    //             {
+    //                 //rebind model data with new question
+    //                 question = new_question[1];
+    //                 question_number = new_question[3];
+
+    //                 //make sure no other modal is being displayed
+    //                 $('#game-info-incorrect').modal('hide');
+    //                 $('#game-info-correct').modal('hide');
 
 
-                    //display question modal
-                    $('#game-info-Question').modal('show');
-                    $('.text-modal-start').html("<p>" + question + "</p>");
+    //                 //display question modal
+    //                 $('#game-info-Question').modal('show');
+    //                 $('.text-modal-start').html("<p>" + question + "</p>");
 
-                    $('.dragOyster').draggable({ revert: true });
-                }
-            })
-        })
+    //                 $('.dragOyster').draggable({ revert: true });
+    //             }
+    //         })
+    //     })
     }
 
     function init() {
-
-
 
         $('.dragOyster').draggable({
 
@@ -265,10 +263,7 @@
             $('.dragOyster').draggable({ revert: false });
             //produce the animation for the oyster dropping into the tank
 
-
-
             $(ui.draggable).css({
-
 
                 step: function (now, fx) {
 
