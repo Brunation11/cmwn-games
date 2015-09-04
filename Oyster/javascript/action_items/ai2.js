@@ -45,7 +45,7 @@
             //check to see of the answer is correct
             $.ajax({
                 type: "POST",
-                url: "@Url.Action("ProcessAnswer", "ActionItem")",
+                url: "@Url.Action("ProcessAnswer", "action_items")",
                 data: { "question_number": question_number, "answer": "" + dropped_items.length + "" },
                 dataType: "json",
                 success: (function (data) {
@@ -79,7 +79,7 @@
                             if (return_values[1] === "10") {
                                 //this is where you will send it to the next screen
 
-                                window.location.href="@Url.Action("OystersAi9", "ActionItem")";
+                                window.location.href="@Url.Action("ai3.html", "action_items")";
 
                             }
                             else
@@ -195,7 +195,7 @@
         //reset game functions
         $.ajax({
             type: "POST",
-            url: "@Url.Action("SelectRandomJQuery", "ActionItem")",
+            url: "@Url.Action("SelectRandomJQuery", "action_items")",
             dataType: "json",
             success: (function (data) {
                 var new_question = data.split(",");
