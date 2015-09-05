@@ -39,6 +39,10 @@ function updateTimer() {
         //end game modal with fail message
         $('#try-modal').modal("show");
 
+        $('.again-game').click( function (){
+            $("#putcontenthere").load("action_items/ai4.html");
+        });
+
     }
 
     // Increment timer position
