@@ -6626,6 +6626,10 @@ input[type="checkbox"].input-validation-error {
 .track-text {
   font-size: 10pt;
 }
+.modal-backdrop.fade {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
 body {
   background-color: #FFF;
   font-family: cmwn;
