@@ -7494,7 +7494,7 @@ p {
 #first-modal {
   z-index: 9999;
 }
-#first-modal .start-game {
+.start-game {
   width: 160px;
   height: 40px;
   background: #7829bb;
