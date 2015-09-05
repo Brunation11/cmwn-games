@@ -6626,9 +6626,14 @@ input[type="checkbox"].input-validation-error {
 .track-text {
   font-size: 10pt;
 }
-.modal-backdrop.fade {
-  opacity: 0.5;
-  filter: alpha(opacity=50);
+.modal-backdrop {
+  background-color: #7829bb;
+  opacity: .2;
+  filter: alpha(opacity=20);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 auto;
 }
 body {
   background-color: #FFF;
