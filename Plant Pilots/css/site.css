@@ -7206,11 +7206,6 @@ li {
   top: 9px;
   z-index: 20;
 }
-.modal-backdrop {
-  background-color: #000;
-  opacity: .5;
-  filter: alpha(opacity=10);
-}
 .Btns {
   position: absolute;
   float: left;
@@ -7444,11 +7439,6 @@ li {
 .grass {
   top: 9px;
   z-index: 20;
-}
-.modal-backdrop {
-  background-color: #000;
-  opacity: .5;
-  filter: alpha(opacity=10);
 }
 .Btns {
   position: absolute;

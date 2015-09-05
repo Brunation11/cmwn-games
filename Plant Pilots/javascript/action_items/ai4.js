@@ -18,6 +18,7 @@ var currentTime;
 //set the game functions up once the screen loads
 $(document).ready(function () {
         $('#second-modal').modal("hide");
+
          //start the game functions
             startGame();
            //initalize the drag and drop features for the game items
