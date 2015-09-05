@@ -7863,3 +7863,25 @@ p {
   margin-left: 136px;
   z-index: 2;
 }
+#second-modal .again-game p {
+  font-size: 44px;
+  font-family: 'cmwn', sans serif;
+  color: #fff;
+  padding: 16px 64px;
+}
+#second-modal .again-game p:hover {
+  color: #23527c;
+}
+.message-again p {
+  font-size: 30px;
+  font-family: 'cmwn', sans serif;
+  color: #000;
+  text-align: center;
+  line-height: 33px;
+}
+.message-again {
+  position: absolute;
+  margin-left: 114px;
+  margin-top: 22px;
+  z-index: 10;
+}
