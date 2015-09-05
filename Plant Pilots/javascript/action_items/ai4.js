@@ -17,7 +17,11 @@ var currentTime;
 
 //set the game functions up once the screen loads
 $(document).ready(function () {
+
         $('#second-modal').modal("hide");
+
+        $('.modal-backdrop').css({"display":"none"});
+
          $(".reply-game").click( function(){
                  $("#putcontenthere").load("action_items/ai4.html");
 
