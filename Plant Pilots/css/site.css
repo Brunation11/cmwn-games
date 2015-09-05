@@ -7797,11 +7797,17 @@ p {
   color: #fff;
   padding: 16px 52px;
 }
+#second-modal .reply-game p:hover {
+  color: #23527c;
+}
 #second-modal .next-game p {
   font-size: 24px;
   font-family: 'cmwn', sans serif;
   color: #fff;
   padding: 16px 64px;
+}
+#second-modal .next-game p:hover {
+  color: #23527c;
 }
 .modal-body .flip {
   position: absolute;
