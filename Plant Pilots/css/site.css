@@ -6579,6 +6579,10 @@ input[type="checkbox"].input-validation-error {
   font-size: 20px;
   color: white;
 }
+.modal-backdrop .fade .in {
+  opacity: 1;
+  background-color: #7829bb;
+}
 .modal-dialog {
   width: 490px;
 }
