@@ -7496,3 +7496,6 @@ p {
   height: 50px;
   background: #7829bb;
 }
+.fade {
+  z-index: 99;
+}
