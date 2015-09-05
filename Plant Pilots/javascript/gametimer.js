@@ -8,7 +8,7 @@ function startGame() {
 
 //create a new time object
 var timer1 = new (function () {
-    currentTime = '30000'; // 20 seconds (in milliseconds)
+    currentTime = '30000'; // 30 seconds (in milliseconds)
 });
 
 //start the timer and assign the counter location
