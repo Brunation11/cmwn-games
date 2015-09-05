@@ -263,17 +263,18 @@ p {
     height:40px;
     background:#7829bb;
     border-radius: 10px;
-    margin-top: 222px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 242px;
+    margin-left: 113;
     cursor:pointer;
+    z-index: 10;
+    position: absolute;
 }
 
 #first-modal .start-game p {
     font-size:24px;
     font-family:'cmwn', sans serif;
     color:#fff;
-    padding: 12px 52px;
+    padding: 16px 52px;
 }
 
 .fade {
@@ -283,17 +284,31 @@ p {
 .modal-body .bird {
     position:absolute;
     top:0;
-    margin-top: 24px;
+    margin-top: 33px;
+    margin-left: 10px;
+    z-index: 2;
+}
+
+.modal-body {
+    margin-left: -18px;
+    margin-top: -5px;
 }
 
 .message-one {
     position: absolute;
     margin-left: 51px;
-    margin-top: 10px;
+    margin-top: 18px;
+    z-index: 10;
 }
 
 .message-one p {
     font-size: 30px;
     font-family: 'cmwn';
     color: #000;
+}
+
+.border-image {
+    position: absolute;
+    top: 0;
+    z-index: 1;
 }
