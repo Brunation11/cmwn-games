@@ -163,6 +163,7 @@ function init() {
             $('#first-modal').modal("show");
 
             $(".start-game").click( function(){
+                $('#first-modal').modal("hide");
                 $("#putcontenthere").load("action_items/ai4.html");
 
             });

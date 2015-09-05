@@ -18,18 +18,18 @@ var currentTime;
 //set the game functions up once the screen loads
 $(document).ready(function () {
 
-    // blinkung arrow shows first
-    $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
-
      //initalize the backdrop for the modal windows
-    //$('#first-modal').modal("show");
-        setTimeout( function() {
-                //start the game functions
+    $('#second-modal').modal("show");
+
+    $(".reply-game").click( function(){
+         //start the game functions
             startGame();
+
 
             //initalize the drag and drop features for the game items
             init();
-        },4000);
+    });
+
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -160,12 +160,13 @@ function init() {
             timer1.Timer.pause();
             background.load();
             background.pause();
-            $('#first-modal').modal("show");
 
-            $(".start-game").click( function(){
-                $("#putcontenthere").load("action_items/ai4.html");
+            $('#second-modal').modal("show");
 
-            });
+            //$(".start-game").click( function(){
+             //   $("#putcontenthere").load("action_items/ai4.html");
+
+            //});
 
         }
     }
