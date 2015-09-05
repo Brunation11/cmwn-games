@@ -7501,6 +7501,9 @@ p {
   color: #fff;
   padding: 16px 52px;
 }
+#first-modal .start-game p:hover {
+  color: #23527c;
+}
 .fade {
   z-index: 999;
 }
