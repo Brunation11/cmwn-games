@@ -17,19 +17,11 @@ var currentTime;
 
 //set the game functions up once the screen loads
 $(document).ready(function () {
-
-     //initalize the backdrop for the modal windows
-    $('#second-modal').modal("show");
-
-    $(".reply-game").click( function(){
+        $('#second-modal').modal("hide");
          //start the game functions
             startGame();
-
-
-            //initalize the drag and drop features for the game items
+           //initalize the drag and drop features for the game items
             init();
-    });
-
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -163,10 +155,11 @@ function init() {
 
             $('#second-modal').modal("show");
 
-            //$(".start-game").click( function(){
-             //   $("#putcontenthere").load("action_items/ai4.html");
+            $(".reply-game").click( function(){
+                 $("#putcontenthere").load("action_items/ai4.html");
 
-            //});
+            });
+
 
         }
     }
