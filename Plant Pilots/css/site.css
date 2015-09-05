@@ -7765,7 +7765,7 @@ p {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-/* First modal */
+/* second modal */
 #second-modal {
   z-index: 9999;
 }
@@ -7840,4 +7840,26 @@ p {
   position: absolute;
   top: 0;
   z-index: 1;
+}
+/* Try again modal */
+#try-modal {
+  z-index: 9999;
+}
+.again-game {
+  width: 160px;
+  height: 40px;
+  background: #7829bb;
+  border-radius: 10px;
+  margin-top: 242px;
+  margin-left: 219px;
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+}
+.modal-body .again-img {
+  position: absolute;
+  top: 0;
+  margin-top: 132px;
+  margin-left: 136px;
+  z-index: 2;
 }

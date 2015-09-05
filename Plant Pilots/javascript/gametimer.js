@@ -37,7 +37,7 @@ function updateTimer() {
         runout.play();
         background.pause();
         //end game modal with fail message
-
+        $('#try-modal').modal("show");
 
     }
 
