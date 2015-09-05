@@ -6579,15 +6579,6 @@ input[type="checkbox"].input-validation-error {
   font-size: 20px;
   color: white;
 }
-.modal-backdrop {
-  background-color: #7829bb;
-  opacity: .2;
-  filter: alpha(opacity=20);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  margin: 0 auto;
-}
 .modal-dialog {
   width: 490px;
 }
@@ -7785,9 +7776,6 @@ p {
   font-family: 'cmwn', sans serif;
   color: #fff;
   padding: 16px 52px;
-}
-.fade {
-  z-index: 999;
 }
 .modal-body .flip {
   position: absolute;
