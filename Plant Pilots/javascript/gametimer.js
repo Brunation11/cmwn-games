@@ -35,30 +35,10 @@ function updateTimer() {
         start.currentTime = 0;
 
         runout.play();
-
+        background.pause();
         //end game modal with fail message
-        setTimeout(function () {
 
-            $('#game-fail').modal('show');
-            $('.text-modal-start').hide();
-            $('.main-title').hide();
-            $('.text-modal').append("<h3>Try again!</h3>");
-            $("h3").css({ "font-size": "160%", "margin-left": "40px" });
-            $(".popup-image").css({ "margin-top": "79px", "margin-left": "118px" });
-            $("#button-start").css({ "margin-left": "100px" });
-            runout.load();
-            runout.play();
-            background.load();
-            background.pause();
-            $("#button-start").click(function () {
-                $('#game-fail').modal('hide');
-                //setTimeout(function () { location.reload(); }, 10);
-                startGame.load();
-                startGame();
 
-            });
-
-        });
     }
 
     // Increment timer position

@@ -16,20 +16,22 @@ var currentTime;
 
 
 //set the game functions up once the screen loads
-$(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
+$(document).ready(function () {
 
      //initalize the backdrop for the modal windows
-    $('#game-info').modal("show");
+    $('#first-modal').modal("show");
 
-    $('#button-start').click(function () {
-        $('#game-info').modal("hide");
+
+    $('.start-game').click(function () {
+        $('#first-modal').modal("hide");
         //start the game functions
         startGame();
-    });
-
 
         //initalize the drag and drop features for the game items
         init();
+    });
+
+
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -163,15 +165,14 @@ function init() {
             $('#game-success').modal('show');
 
             $("#button-next").click(function () {
-                $('#game-complete').modal('hide');
-                //document.location.href = "/ActionItem/ImageQuiz";
+
+                // rederect elsewhere
             });
 
             $('#button-replay').click(function () {
                 //$('#game-complete').modal('hide');
                 $('#game-success').modal('hide');
                 $('#game-info').modal('hide');
-
                 $("#putcontenthere").load("/action_items/ai3.html");
             })
         }
