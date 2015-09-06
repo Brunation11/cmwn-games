@@ -19,11 +19,22 @@ $(document).ready(function () {
     background.load();
     background.play();
 
+    $('#second-modal').modal("hide");
+
+    $('.modal-backdrop').css({"display":"none"});
+
+     $(".reply-game").click( function(){
+                 $("#putcontenthere").load("action_items/ai3.html");
+
+            });
+
     // blinkung arrow shows first
     $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
 
-     //initalize the backdrop for the modal windows
-    //$('#first-modal').modal("show");
+    // hide try again modal
+
+    $('#try-modal').modal('hide');
+
         setTimeout( function() {
                 //start the game functions
             startGame();
