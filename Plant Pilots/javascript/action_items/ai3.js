@@ -1,5 +1,3 @@
-background.load();
-background.play();
 //global variables
 var start = document.getElementById("start1");
 var correct = document.getElementById("correct");
@@ -17,6 +15,9 @@ var currentTime;
 
 //set the game functions up once the screen loads
 $(document).ready(function () {
+
+    background.load();
+    background.play();
 
     // blinkung arrow shows first
     $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);

@@ -1,3 +1,4 @@
+
 //start all of the game functions
 function startGame() {
     startTimer();
