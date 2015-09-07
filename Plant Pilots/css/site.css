@@ -7464,7 +7464,7 @@ li {
   top: 5px;
   z-index: 10;
 }
-.hint {
+.hint-2 {
   top: 10px;
   left: 488px;
   z-index: 80;
@@ -7476,7 +7476,7 @@ li {
   -o-transition: opacity 0s ease-in-out;
   transition: opacity 0s ease-in-out;
 }
-.hint .Thehint .flip-off img:hover {
+.hint-2 .Thehint .flip-off img:hover {
   opacity: 0;
 }
 .dash-board {
