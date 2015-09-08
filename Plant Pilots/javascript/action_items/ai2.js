@@ -254,14 +254,15 @@ function findRandomItem(available_drags) {
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
                     //create a new time object
-                    start.play();
-                    background.play();
-                    startGame();
-                    var timer1 = new (function () {
-                        currentTime = '30000'; // 30 seconds (in milliseconds)
-                    });
+                    // start.play();
+                    // background.play();
+                    // startGame();
+                   // var timer1 = new (function () {
+                        //currentTime = '30000'; // 30 seconds (in milliseconds)
+                    //});
 
-                    timer1();
+                    //timer1();
+                    $("#putcontenthere").load("action_items/ai3.html");
             });
         }
     }
