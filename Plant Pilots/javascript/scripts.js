@@ -2,6 +2,22 @@ var Pollinator = function() {
     var instance = this;
 
     /**
+     * Helper to properly shuffle an array
+     */
+    Array.prototype.shufflePollinators = function() {
+        var i = this.length, j, temp;
+        if (i == 0) return this;
+        while (--i) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = this[i];
+            this[i] = this[j];
+            this[j] = temp;
+        }
+
+        return this;
+    }
+
+    /**
      * Set this to the path where the game images are located
      */
     this.imagePath = '/content/images/findpollinators/game/';
@@ -312,7 +328,7 @@ var Pollinator = function() {
             this.data[item].pollinator && pollinators.push(item);
         }
 
-        pollinators = pollinators.shuffle();
+        pollinators = pollinators.shufflePollinators();
 
         for (var i = 1; i <= 7; i++) {
             var elem = $('<td>', {
@@ -732,23 +748,6 @@ var Pollinator = function() {
 $(document).ready(function() {
     var pollinator = new Pollinator();
 });
-
-
-/**
- * Helper to properly shuffle an array
- */
-Array.prototype.shuffle = function() {
-    var i = this.length, j, temp;
-    if (i == 0) return this;
-    while (--i) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = this[i];
-        this[i] = this[j];
-        this[j] = temp;
-    }
-
-    return this;
-}
 
 /**
  * Helper to return a random entry from a jQuery selector
