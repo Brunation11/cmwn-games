@@ -14,12 +14,6 @@ var $form;
 var incrementTime = 1000;
 var currentTime;
 
-$('#button-replay').click(function () {
-    $("#putcontenthere").load("/action_items/ai2.html");
-});
-
-
-
 //show the popup before the game starts
 
 //set the game functions up once the screen loads
@@ -32,6 +26,7 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
     },5000);
         //initalize the drag and drop features for the game items
         init();
+
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -258,9 +253,17 @@ function findRandomItem(available_drags) {
 
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
+                    //create a new time object
+                    start.play();
+                    background.play();
+                    startGame();
+                    var timer1 = new (function () {
+                        currentTime = '30000'; // 20 seconds (in milliseconds)
+                    });
 
-                $("#putcontenthere").load("/action_items/ai3.html");
-            })
+                    timer1.Timer.play();
+
+            });
         }
     }
 

@@ -18,18 +18,9 @@ $('#button-replay').click(function () {
     $("#putcontenthere").load("/action_items/ai2.html");
 });
 
-
-
-//show the popup before the game starts
-
 //set the game functions up once the screen loads
 $(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
 
-    $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
-    //start the game functions
-    setTimeout(function () {
-        startGame();
-    },5000);
         //initalize the drag and drop features for the game items
         init();
 
