@@ -6773,6 +6773,12 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
+.fruit-and-veg {
+  width: 616px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 1px;
+}
 .close-Btn {
   z-index: 1;
   left: 567px;
