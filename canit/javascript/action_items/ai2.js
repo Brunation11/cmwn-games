@@ -10,11 +10,12 @@ var correct_items = new Array();
 //var rand;
 
 
-$(window).load(function(){
-    startGame();
-});
+
 
 $(document).ready(function () {
+    $(window).load(function(){
+        startGame();
+    });
     clock.play();
     try
     {
@@ -27,7 +28,8 @@ $(document).ready(function () {
     }
 
     $('#re-try').click( function() {
-        $("#putcontenthere").load("action_items/ai2.html");
+        //$("#putcontenthere").load("action_items/ai2.html");
+        location.reload();
 
     });
     $('.carousel-inner').parent().carousel({ pause: true, interval: false });
@@ -784,8 +786,8 @@ function updateTimer() {
                 $('#retry-screen').modal('hide');
                 $('#fail-screen').modal('show');
                 $('#re-try-2').click( function() {
-                    $("#putcontenthere").load("action_items/ai2.html");
-
+                    //$("#putcontenthere").load("action_items/ai2.html");
+                        location.reload();
                     });
             }
 
