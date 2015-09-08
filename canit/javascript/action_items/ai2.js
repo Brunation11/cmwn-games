@@ -10,9 +10,12 @@ var correct_items = new Array();
 //var rand;
 
 
-
+$(window).load(function(){
+    startGame();
+});
 
 $(document).ready(function () {
+    clock.play();
     try
     {
         Background.load();
@@ -22,6 +25,11 @@ $(document).ready(function () {
     {
         //no sound - log error
     }
+
+    $('#re-try').click( function() {
+        $("#putcontenthere").load("action_items/ai2.html");
+
+    });
     $('.carousel-inner').parent().carousel({ pause: true, interval: false });
 
     currentSlide = Math.floor((Math.random() * $('.item').length));
@@ -84,13 +92,13 @@ $(document).ready(function () {
         $('#carousel_ul').carousel().animate('pause',1000);
     });
     ////// click and shoot item to trash cans
+
     $(".Hit_One,.Hit_two,.Hit_three,.Hit_four,.Hit_five,.Hit_six,.Hit_seven,.Hit_eight,.Hit_nine,.Hit_ten,.Hit_eleven,.Hit_twelve,.Hit_thirteen,.Hit_fourteen,.Hit_fifteen,.Hit_sixteen,.Hit_seventeen,.Hit_eighteen,.Hit_nineteen,.Hit_twenty,.Hit_twentyone,.Hit_twentytwo,.Hit_twentythree,.Hit_twentyfour,.Hit_twentyfive,.Hit_twentysix,.Hit_twentyseven,.Hit_twentyeight,.Hit_twentynine,.Hit_thirty,.Hit_thirtyone,.Hit_thirtytwo,.Hit_thirtythree,.Hit_thirtyfour,.Hit_thirtyfive,.Hit_thirtysix,.Hit_thirtyseven,.Hit_thirtyeight,.Hit_thirtynine,.Hit_forty").dblclick(function (event) {
 
         var click_item = $(this).attr('id');
         var click_correct = $(this).attr('data-correct');
         var item_animate = click_item + "#"
         var current = $('.item');
-
 
         //check to see where the carousel paused and find the selected item id
 
@@ -109,7 +117,7 @@ $(document).ready(function () {
                 correct_items.push(selected_item);
 
                 if (correct_items.length === 1) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top : -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 10);
@@ -117,7 +125,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 2) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -125,7 +133,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 3) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -133,7 +141,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 4) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -141,7 +149,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 5) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15});
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -149,7 +157,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 6) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -157,7 +165,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 7) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -165,7 +173,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 8) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -173,7 +181,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 9) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -181,7 +189,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 10) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -189,7 +197,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 11) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -197,7 +205,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 12) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -205,7 +213,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 13) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -213,7 +221,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 14) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -221,7 +229,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 15) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -229,7 +237,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 16) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -237,7 +245,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 17) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -245,7 +253,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 18) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -253,7 +261,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 19) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -261,7 +269,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 20) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -269,7 +277,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 21) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -277,7 +285,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 22) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -285,7 +293,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 23) {
-                    playCorrect();
+                   Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -293,7 +301,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 24) {
-                    playCorrect();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -301,7 +309,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 25) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -309,7 +317,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 26) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -317,7 +325,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 27) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -325,7 +333,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 28) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -333,7 +341,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 29) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -341,7 +349,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 30) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -349,7 +357,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 31) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -357,7 +365,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 32) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -365,7 +373,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 33) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -373,7 +381,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 34) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -381,7 +389,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 35) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -389,7 +397,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 36) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -397,7 +405,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 37) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -405,7 +413,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 38) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -413,7 +421,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 39) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -421,7 +429,7 @@ $(document).ready(function () {
                 }
 
                 if (correct_items.length === 40) {
-                    playCorrect();
+                     Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -432,7 +440,7 @@ $(document).ready(function () {
 
             else {
                 //play incorrect sound
-                playWrong();
+                Wrong.play();
                 $('#score p').html(function (i, val) { return val * 1 - 30 });
                 $('.loose').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -606,9 +614,6 @@ $(document).ready(function () {
         });
 
         $('#carousel_ul').carousel().animate();
-
-    startGame();
-
 });
 
 
@@ -721,9 +726,8 @@ function updateTimer() {
             //no sound - log error
         }
 
-        pauseStart();
-
-
+        //pauseStart();
+        clock.pause();
 
         setTimeout(function () {
             try
@@ -739,12 +743,12 @@ function updateTimer() {
             if (correct_items.length >= 10) {
                 //alert('You Win');
                 $('#retry-screen').modal('show');
-                playWonGame();
+                Win.play();
 
                 $('#next-button2').click(function () {
 
                     $('#flip-screen').modal('show');
-                    playFlip();
+                    Flip.play();
 
                     //need to tell the system that is is time to award flip
                     $.ajax({
@@ -764,7 +768,7 @@ function updateTimer() {
                 });
                 $("#button-replay").click(function () {
                     $('#retry-screen').modal('hide');
-                    setTimeout(function () { location.reload(); }, 1000);
+                    //setTimeout(function () { location.reload(); }, 1000);
                     try
                     {
                         startGame.load();
@@ -776,9 +780,13 @@ function updateTimer() {
                 });
 
             } else {
-                playRunOut();
+                Timeout.play();
                 $('#retry-screen').modal('hide');
                 $('#fail-screen').modal('show');
+                $('#re-try-2').click( function() {
+                    $("#putcontenthere").load("action_items/ai2.html");
+
+                    });
             }
 
         });
