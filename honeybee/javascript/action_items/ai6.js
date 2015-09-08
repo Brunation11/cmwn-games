@@ -1,12 +1,15 @@
 $(document).ready(function () {
 
-    $('#game-info').modal('show');
+    // $('#game-info').modal('show');
 
-    $('#done').click(function () {
-        $('#game-info').modal('hide');
-        $('#flip-info').modal('show');
-        flip.play();
-    });
+    $('#flip-info').modal('show');
+    flip.play();
+
+    // $('#done').click(function () {
+    //     $('#game-info').modal('hide');
+    //     $('#flip-info').modal('show');
+    //     flip.play();
+    // });
 
     $('#close').click(function () {
         $('#game-close').modal('show');
@@ -18,28 +21,28 @@ $(document).ready(function () {
 
 });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
 
-        var reader = new FileReader();
+//         var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('.file-upload-image').attr('src', e.target.result);
-            $('.image-upload-wrap').show();
-            $('.image-title').html(input.files[0].name);
-        };
+//         reader.onload = function (e) {
+//             $('.file-upload-image').attr('src', e.target.result);
+//             $('.image-upload-wrap').show();
+//             $('.image-title').html(input.files[0].name);
+//         };
 
-        //create an AJAX call that writes the file to the file system then stored the file location in session to be read later
+//         //create an AJAX call that writes the file to the file system then stored the file location in session to be read later
 
 
-        reader.readAsDataURL(input.files[0]);
+//         reader.readAsDataURL(input.files[0]);
 
-    } else {
-        $('.image-upload-wrap').hide();
-    }
-}
+//     } else {
+//         $('.image-upload-wrap').hide();
+//     }
+// }
 
-function removeUpload() {
-    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-    $('.image-upload-wrap').hide();
-}
+// function removeUpload() {
+//     $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+//     $('.image-upload-wrap').hide();
+// }
