@@ -253,10 +253,10 @@ function findRandomItem(available_drags) {
             $("#button-next").click(function () {
                 $('#game-success').modal('hide');
 
-                document.location.href = "/ActionItem/Game";
+                //document.location.href = "/ActionItem/Game";
             });
 
-            $('#button-replay').click(function () {
+            $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
 
                 $("#putcontenthere").load("/action_items/ai3.html");
