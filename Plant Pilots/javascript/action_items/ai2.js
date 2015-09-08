@@ -18,9 +18,7 @@ $('#button-replay').click(function () {
     $("#putcontenthere").load("/action_items/ai2.html");
 });
 
-$('#button-start').click(function () {
-    $("#putcontenthere").load("/action_items/ai3.html");
-});
+
 
 //show the popup before the game starts
 
@@ -29,7 +27,7 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
 
     $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
     //start the game functions
-    setTimeout(function () { 
+    setTimeout(function () {
         startGame();
     },5000);
         //initalize the drag and drop features for the game items
@@ -37,7 +35,7 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
-    
+
         findHint();
 
         //check to make sure that the hint item has not already been found
@@ -108,14 +106,6 @@ function updateTimer() {
         background.pause();
         //end game modal with fail message
         setTimeout(function () {
-
-            $('#game-info').modal('show');
-            $('.text-modal-start').hide();
-            $('.main-title').hide();
-            $('.text-modal').append("<h3>Try again!</h3>");
-            $("h3").css({ "font-size": "160%", "margin-left": "40px" });
-            $(".popup-image").css({ "margin-top": "79px", "margin-left": "118px" });
-            $("#button-start").css({"margin-left":"105px"});
             runout.load();
             runout.play();
             background.load();
@@ -171,7 +161,7 @@ function findHint() {
 
     var available_drops = new Array();
     var potential_matches = $("#" + rand_item + "").attr('data-correct-drops');
-    
+
     //check to see if more than 1 match exists
     if (potential_matches.length === 1) {
         available_drops[0] = potential_matches;
@@ -185,7 +175,7 @@ function findHint() {
 
 //take a list of items and randomly find one of those items
 function findRandomItem(available_drags) {
-    //must move the array item over 1 place 
+    //must move the array item over 1 place
     rand_item = available_drags[Math.floor(Math.random() * available_drags.length)];
 }
 
@@ -209,13 +199,13 @@ function findRandomItem(available_drags) {
             greedy: true
         });
     }
-    
+
     function handleDrop(event, ui) {
         var draggable = ui.draggable;
         var dragged_item = draggable.attr('id');
         var dropped_zone = $(this).attr('id');
         var dragged_correct_drops = draggable.attr('data-correct-drops');
-        
+
         //take strings and build array
         var list_correct = new Array();
         list_correct = dragged_correct_drops.split(",");
@@ -238,7 +228,7 @@ function findRandomItem(available_drags) {
 
         //remove any potential duplicates
         correct_matches = eliminateDuplicates(correct_matches);
-           
+
         //test to see which sound should be played
         if (correct_matches.indexOf(dropped_zone) > -1) {
             correct.load();
@@ -259,16 +249,16 @@ function findRandomItem(available_drags) {
             $('#game-info').modal('hide');
             $('.main-title').hide();
             $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
-            
+
             $("#button-next").click(function () {
                 $('#game-success').modal('hide');
-               
+
                 document.location.href = "/ActionItem/Game";
             });
 
             $('#button-replay').click(function () {
                 $('#game-complete').modal('hide');
-                
+
                 $("#putcontenthere").load("/action_items/ai3.html");
             })
         }
@@ -359,7 +349,7 @@ function findRandomItem(available_drags) {
                     break;
                 }
 
-            
+
         }
-    }      
+    }
 }
