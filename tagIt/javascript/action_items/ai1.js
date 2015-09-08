@@ -10,4 +10,5 @@
     
         $('.bkg-image').css('background-image','url(/content/images/title_4.png)');
 
+
     });

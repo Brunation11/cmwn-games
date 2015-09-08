@@ -28,7 +28,7 @@ $(document).ready(function () {
         });
         $('.forward2').click(function () {
             $('.forward2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai11.html");
+                $("#putcontenthere").load("/action_items/ai12.html");
             });
             nex.play();
         });
