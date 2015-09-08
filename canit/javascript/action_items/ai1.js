@@ -67,7 +67,7 @@ function playButtonSound()
 }
 
 
-$('#next-button2').click(function () {
+$('#slide-1').click(function () {
     playButtonSound();
     $("#next-button3").hide().delay(3000).fadeIn(2000);
     $('.close-Modal-Btn').show();

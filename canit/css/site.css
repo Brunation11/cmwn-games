@@ -7256,27 +7256,6 @@ input[type="checkbox"].input-validation-error {
 #no-btn img:first-child:hover {
   opacity: 0;
 }
-/* Exit modal for quit screen */
-.exit-Modal-Btn {
-  margin-top: 24px;
-  position: absolute;
-  z-index: 1;
-  left: 443px;
-  cursor: pointer;
-}
-.exit-Modal-Btn img {
-  width: 30px;
-}
-.exit-Modal-Btn img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.exit-Modal-Btn img:first-child:hover {
-  opacity: 0;
-}
 .animated-points {
   position: absolute;
   z-index: 1;
