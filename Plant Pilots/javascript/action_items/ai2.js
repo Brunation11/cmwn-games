@@ -23,7 +23,7 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
     //start the game functions
     setTimeout(function () {
         startGame();
-    },5000);
+    },3000);
         //initalize the drag and drop features for the game items
         init();
 
@@ -258,11 +258,10 @@ function findRandomItem(available_drags) {
                     background.play();
                     startGame();
                     var timer1 = new (function () {
-                        currentTime = '30000'; // 20 seconds (in milliseconds)
+                        currentTime = '30000'; // 30 seconds (in milliseconds)
                     });
 
-                    timer1.Timer.play();
-
+                    timer1();
             });
         }
     }
