@@ -7373,9 +7373,9 @@ input[type="checkbox"].input-validation-error {
 }
 .White-bkg {
   position: absolute;
-  z-index: 3;
-  margin-left: 81px;
-  margin-top: 102px;
+  z-index: 1;
+  margin-left: -36px;
+  margin-top: 11px;
 }
 .close-Btn {
   z-index: 1;

@@ -166,7 +166,7 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".hole img").hide();
+
                         // On live
                         $(".Fruit-On").show();
 
@@ -274,6 +274,12 @@
 
             $(".left-arrow").css({ "height": "0px", "-webkit-transition": "0s" });
 
+             // Show facts background
+            $(".White-bkg").hide();
+
+             // Hide show image animation
+            $(".hole").show();
+
             // if next btn is clicked 10 times game is over.
             var win_total = $(".Next");
 
@@ -324,8 +330,8 @@
 
         // message popups here
         $("#food-Veggies").click(function () {
-
-
+            // Hide hole image animation
+            $(".hole").hide();
             // lettuce
             if ($('li:first').hasClass('img-hover-1')) {
                 $(".lettuce-header img").show();
@@ -432,8 +438,8 @@
 
         $("#food-Fruits").click(function () {
 
-
-
+            // Hide hole image animation
+            $(".hole").hide();
             // Eggplant
 
             if ($('#eggplant').hasClass('img-hover-2')) {
