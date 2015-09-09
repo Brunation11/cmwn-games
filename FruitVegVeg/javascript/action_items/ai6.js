@@ -22,6 +22,9 @@
         // hide next arrow
         $('.Next').hide();
 
+        // Facts background
+         $(".White-bkg").hide();
+
         // On
         $(".Fruit-On").hide();
         $(".Veg-On").hide();
@@ -118,6 +121,8 @@
                         // right arrow animation
                         $(".right-arrow").animate({ height: "93px" }, 1000);
 
+                        // Show facts background
+                        $(".White-bkg").show();
 
                     }
                 }
@@ -169,6 +174,9 @@
                         $(".Veg-off").show();
                         // left arrow animation
                         $(".left-arrow").animate({ height: "93px" }, 1000);
+
+                        // Show facts background
+                        $(".White-bkg").show();
 
                     }
                 }
