@@ -1,15 +1,10 @@
-    $(window).load(function () {
-        $("ul").css({ 'margin-left': '-37px' });
-        $("li").css({ 'margin-top': '11px' });
-
-    });
-
 
     // This variable goes inside $('.Next').click
     var completed_sets = new Array();
 
     $(document).ready(function () {
-
+        $("ul").css({ 'margin-left': '-37px' });
+        $("li").css({ 'margin-top': '11px' });
         //this varible stores the correct matches for the item being shown
         var item_correct_matches = new Array();
 
@@ -22,8 +17,8 @@
         // hide next arrow
         $('.Next').hide();
 
-        // Facts background
-         $(".White-bkg").hide();
+        // Hide hole image animation
+        $(".hole").show();
 
         // On
         $(".Fruit-On").hide();
@@ -74,13 +69,49 @@
         $("#pepper-fact").hide();
         $("#pepper-fact p").hide();
 
-        $(".beet-headerr img").hide();// hide header
+        $(".beet-header img").hide();// hide header
         $("#beet-fact").hide();
         $("#beet-fact p").hide();
 
         $(".zucchini-header img").hide();// hide header
         $("#zucchini-fact").hide();
         $("#zucchini-fact p").hide();
+
+
+
+        // random items function
+        function selectRandomListItem() {
+            // who's the seen object
+            var seen = {};
+            // randomize list
+            $('ul').each(function () {
+                // get current ul
+                var $ul = $(this);
+                // get array of list items in current ul
+                var $liArr = $ul.children('li');
+
+                // sort array of list items in current ul randomly
+                $liArr.sort(function (a, b) {
+                    // Get a random number between 0 and 10
+                    var temp = parseInt(Math.random() * 12);
+                    // Get 1 or 0, whether temp is odd or even
+                    var isOddOrEven = temp % 2;
+                    // Get +1 or -1, whether temp greater or smaller than 5
+                    var isPosOrNeg = temp > 5 ? 1 : -1;
+                    // Return -1, 0, or +1
+                    return (isOddOrEven * isPosOrNeg);
+
+
+                })
+                // append list items to ul
+                .appendTo($ul);
+            });
+
+            selected_item = $("#match li")[0].id
+
+            console.log('randomly selected item: ' + selected_item);
+
+        }
 
 
         // function for food vegies
@@ -110,7 +141,8 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".hole img").hide();
+                        // Hide hole image animation
+                        $(".hole").hide();
 
                         //On live
                         $(".Veg-On").show();
@@ -166,6 +198,8 @@
                         //end of this set
                         $('.Next').show();
 
+                         // Hide hole image animation
+                        $(".hole").hide();
 
                         // On live
                         $(".Fruit-On").show();
@@ -270,9 +304,9 @@
             $(".Veg-off").hide();
 
             //arrows
-            $(".right-arrow").css({ "height": "0px", "-webkit-transition": "0s" });
+            $(".right-arrow").animate({ height: "0px" }, 0);
 
-            $(".left-arrow").css({ "height": "0px", "-webkit-transition": "0s" });
+            $(".left-arrow").animate({ height: "0px" }, 0);
 
              // Show facts background
             $(".White-bkg").hide();
@@ -292,46 +326,10 @@
             }
         });
 
-        // random items function
-        function selectRandomListItem() {
-            // who's the seen object
-            var seen = {};
-            // randomize list
-            $('ul').each(function () {
-                // get current ul
-                var $ul = $(this);
-                // get array of list items in current ul
-                var $liArr = $ul.children('li');
-
-                // sort array of list items in current ul randomly
-                $liArr.sort(function (a, b) {
-                    // Get a random number between 0 and 10
-                    var temp = parseInt(Math.random() * 12);
-                    // Get 1 or 0, whether temp is odd or even
-                    var isOddOrEven = temp % 2;
-                    // Get +1 or -1, whether temp greater or smaller than 5
-                    var isPosOrNeg = temp > 5 ? 1 : -1;
-                    // Return -1, 0, or +1
-                    return (isOddOrEven * isPosOrNeg);
-
-
-                })
-                // append list items to ul
-                .appendTo($ul);
-            });
-
-            selected_item = $("#match li")[0].id
-
-            console.log('randomly selected item: ' + selected_item);
-
-        }
-
-
 
         // message popups here
         $("#food-Veggies").click(function () {
-            // Hide hole image animation
-            $(".hole").hide();
+
             // lettuce
             if ($('li:first').hasClass('img-hover-1')) {
                 $(".lettuce-header img").show();
@@ -419,7 +417,7 @@
 
             if ($('#beet').hasClass('img-hover-11')) {
 
-                $(".beet-headerr img").show();
+                $(".beet-header img").show();
                 $("#beet-fact").show();
                 $("#beet-fact p").show();
 
@@ -428,7 +426,7 @@
                     $(".hole img").show();
                     $("#beet-fact").hide();
                     $("#beet-fact p").hide();
-                    $(".beet-headerr img").hide();
+                    $(".beet-header img").hide();
                 });
             }
 
@@ -438,8 +436,6 @@
 
         $("#food-Fruits").click(function () {
 
-            // Hide hole image animation
-            $(".hole").hide();
             // Eggplant
 
             if ($('#eggplant').hasClass('img-hover-2')) {
