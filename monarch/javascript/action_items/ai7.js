@@ -48,6 +48,7 @@ $(document).ready(function () {
     $('#bar1').click(function () {
         facts.load();
         facts.play();
+        $('#p0').hide();
         $('#p1').fadeIn();
         $('#p2').hide();
         $('#p3').hide();
@@ -57,6 +58,7 @@ $(document).ready(function () {
     $('#bar2').click(function () {
         facts.load();
         facts.play();
+        $('#p0').hide();
         $('#p1').hide();
         $('#p2').fadeIn();
         $('#p3').hide();
@@ -66,6 +68,7 @@ $(document).ready(function () {
     $('#bar3').click(function () {
         facts.load();
         facts.play();
+        $('#p0').hide();
         $('#p1').hide();
         $('#p2').hide();
         $('#p3').fadeIn();
@@ -75,6 +78,7 @@ $(document).ready(function () {
     $('#bar4').click(function () {
         facts.load();
         facts.play();
+        $('#p0').hide();
         $('#p1').hide();
         $('#p2').hide();
         $('#p3').hide();

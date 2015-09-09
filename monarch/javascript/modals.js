@@ -32,6 +32,6 @@ $(document).ready(function () {
 
     });
 
-    $('.modal-backdrop').remove();
+    $('.modal-backdrop').css({'display' : 'none'});
 
 });
