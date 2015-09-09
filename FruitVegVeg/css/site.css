@@ -6816,7 +6816,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
-.border {
+.border-1 {
   position: absolute;
   z-index: 2;
   margin-left: 228px;
@@ -6889,7 +6889,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 122px;
   margin-left: 41px;
 }
-.body-copy {
+.body-copy-1 {
   position: absolute;
   z-index: 1;
   margin-top: 193px;

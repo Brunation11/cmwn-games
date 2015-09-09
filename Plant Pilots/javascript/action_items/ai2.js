@@ -79,6 +79,8 @@ function startTimer() {
     $countdown = $('#counter');
     $countdown.show();
 
+    incrementTime = 1000;
+
     timer1.Timer = $.timer(updateTimer, incrementTime, true);
 
 }
