@@ -1,16 +1,4 @@
-﻿.hole {
-        margin: -142px -205px;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        -o-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        box-sizing: border-box;
-        -webkit-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
-        -ms-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
-        -moz-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
-        -o-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
-        animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
-}
+﻿
  @-webkit-keyframes valueX {
             from {
                 left: -370px;
