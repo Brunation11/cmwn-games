@@ -22,8 +22,12 @@ $(document).ready(function () {
         $("#putcontenthere").load("/action_items/ai6.html");
     });
 
-    $('.file-uploads').click(function () {
-        $("#putcontenthere").load("/action_items/ai7.html");
+    // $('.file-uploads').click(function () {
+    //     $("#putcontenthere").load("/action_items/ai7.html");
+    // });
+
+    $('#next-button6').click(function () {
+        $("#putcontenthere").load("/action_items/ai8.html");
     });
            
     // First modal
@@ -86,15 +90,15 @@ $(document).ready(function () {
         $('#game-info7').modal('hide');
     });
 
-    $('#next-button6').click(function () {
-        $('#game-info7').modal('hide');
-        $('#game-info8').modal('show');
-    });
+    // $('#next-button6').click(function () {
+    //     $('#game-info7').modal('hide');
+    //     $('#game-info8').modal('show');
+    // });
 
-    $('#back-button6').click(function () {
-        $('#game-info7').modal('show');
-        $('#game-info8').modal('hide');
-    });      
+    // $('#back-button6').click(function () {
+    //     $('#game-info7').modal('show');
+    //     $('#game-info8').modal('hide');
+    // });      
 
 });
 
