@@ -1,5 +1,5 @@
 ﻿
- @-webkit-keyframes moveX {
+ @-webkit-keyframes valueX {
             from {
                 left: -370px;
             }
@@ -9,7 +9,7 @@
             }
         }
 
-        @-moz-keyframes moveX {
+        @-moz-keyframes valueX {
             from {
                 left: -370px;
             }
@@ -19,7 +19,7 @@
             }
         }
 
-        @-o-keyframes moveX {
+        @-o-keyframes valueX {
             from {
                 left: -370px;
             }
@@ -29,7 +29,7 @@
             }
         }
 
-        @keyframes moveX {
+        @keyframes valueX {
             0% {
                 left: -370px;
             }
@@ -39,7 +39,7 @@
             }
         }
 
-        @-webkit-keyframes moveY {
+        @-webkit-keyframes valueY {
             from {
                 top: -270px;
             }
@@ -49,7 +49,7 @@
             }
         }
 
-        @-moz-keyframes moveY {
+        @-moz-keyframes valueY {
             from {
                 top: -270px;
             }
@@ -59,7 +59,7 @@
             }
         }
 
-        @-o-keyframes moveY {
+        @-o-keyframes valueY {
             from {
                 top: -270px;
             }
@@ -69,7 +69,7 @@
             }
         }
 
-        @keyframes moveY {
+        @keyframes valueY {
             0% {
                 top: -270px;
             }
