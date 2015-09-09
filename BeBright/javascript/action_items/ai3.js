@@ -65,7 +65,7 @@ $(document).ready(function () {
         }
         if (AI3.length === 3) {
 
-            $("#putcontenthere").load("action_items/ai4.html");
+            $("#putcontenthere").load("action_items/ai6.html");
         }
     });
 
