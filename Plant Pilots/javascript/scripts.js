@@ -476,10 +476,10 @@ var Pollinator = function() {
         $('audio[name=' + instance.sounds['done'].elem + ']')[0].play();
 
         instance.showPopUp({
-            title: (instance.wins > 1) ? 'Yum! Time to feed<br/> the pollinators!' : 'You did it! Congratulations!',
-            description: (instance.wins > 1) ? '<p style="font-size:20px;font-weight: bold;margin-top: -15px;margin-left: -16px;line-height:23px;">Remember your hints from Level One.<br/> Drag your food choices up and<br/> feed each pollinator!</p>' : '<p style="font-size:20px;font-weight: bold;margin-top: -15px;margin-left: -16px;">Move on? Or replay to find even more pollinators?</p>',
-            backgroundImage: (instance.wins > 1) ? '/content/images/findpollinators/img_bee_daffodils.png' : '/content/images/findpollinators/img_butterfly_grass.png',
-            backgroundPos: (instance.wins > 1) ? '130px 144px' : '50% 100px',
+            title: 'You did it! Congratulations!',
+            description: '<p style="font-size:20px;font-weight: bold;margin-top: -15px;margin-left: -16px;">Move on? Or replay to find even more pollinators?</p>',
+            backgroundImage: '/content/images/findpollinators/img_butterfly_grass.png',
+            backgroundPos: '50% 100px',
             centered: true,
             buttons: {
                 replay: {
@@ -509,13 +509,12 @@ var Pollinator = function() {
                                     action: function () {
                                         $("#putcontenthere").load("/action_items/ai2.html");
                                     }
-                                }
+                                }//end next
                             }
                         });
-                        //document.location.href = "/ActionItem/FeedPollinators";
 
                     }
-                }
+                }//end next
             }
         });
     };

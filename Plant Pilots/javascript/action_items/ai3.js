@@ -1,3 +1,5 @@
+background.load();
+background.play();
 //global variables
 var start = document.getElementById("start1");
 var correct = document.getElementById("correct");
@@ -12,33 +14,15 @@ var $form;
 var incrementTime = 1000;
 var currentTime;
 
+$('#button-replay').click(function () {
+    $("#putcontenthere").load("/action_items/ai2.html");
+});
 
 //set the game functions up once the screen loads
-$(document).ready(function () {
+$(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
 
-    background.load();
-    background.play();
-
-    $('#second-modal').modal("hide");
-
-    $('.modal-backdrop').css({"display":"none"});
-
-
-
-    // blinkung arrow shows first
-    $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
-
-    // hide try again modal
-
-    $('#try-modal').modal('hide');
-
-        setTimeout( function() {
-                //start the game functions
-            startGame();
-
-            //initalize the drag and drop features for the game items
-            init();
-        },4000);
+        //initalize the drag and drop features for the game items
+        init();
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -63,11 +47,94 @@ $(document).ready(function () {
         $("#" + hint_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
         $("#" + rand_item + "").fadeTo(100, 0.1).fadeTo(200, 1.0).fadeTo(100, 0.1).fadeTo(200, 1.0);
 
+
     });
 
+})
+
+//initalize the backdrop for the modal windows
+$('#game-info').modal({
+    backdrop: true
 });
 
+//start all of the game functions
+function startGame() {
+    startTimer();
+    start.loop = true;
+    start.play();
 
+}
+
+//create a new time object
+var timer1 = new (function () {
+    currentTime = '30000'; // 20 seconds (in milliseconds)
+});
+
+//start the timer and assign the counter location
+function startTimer() {
+    $countdown = $('#counter');
+    $countdown.show();
+
+    timer1.Timer = $.timer(updateTimer, incrementTime, true);
+
+}
+
+//update the display of the counter in the proper interval
+function updateTimer() {
+
+    // Output timer position
+    var timeString = currentTime.toString();
+    $countdown.html(displayTime(timeString));
+
+    // If timer is complete, trigger correct action
+    if (currentTime == 0) {
+        timer1.Timer.stop();
+        //alert('Times up!');
+        start.pause();
+        start.currentTime = 0;
+
+        runout.play();
+        background.pause();
+        //end game modal with fail message
+        setTimeout(function () {
+            runout.load();
+            runout.play();
+            background.load();
+            background.pause();
+            $("#button-start").click(function () {
+                $('#game-info').modal('hide');
+                $("#putcontenthere").load("/action_items/ai3.html");
+                //setTimeout(function () { location.reload(); }, 10);
+                //startGame.load();
+                //startGame();
+
+            });
+
+        });
+    }
+
+    // Increment timer position
+    currentTime -= incrementTime;
+    if (currentTime < 0) currentTime = 0;
+}
+
+//format the time so that is display correctly in the counter display
+function displayTime(timeString) {
+    var seconds = ~~((timeString / 1000) % 60);
+    var minutes = ~~((timeString / (1000 * 60)) % 60);
+    var hours = ~~((timeString / (1000 * 60 * 60)) % 24);
+
+    //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
+
+    if (seconds < 10) seconds = "0" + seconds;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (hours < 10) hours = "0" + hours;
+
+    //if (hours = 0) hours = "00";
+    //if (minutes = 0) minutes = "00";
+
+    return minutes.toString() + seconds.toString();
+}
 
 //finds the hint by randomizing the potential items available
 function findHint() {
@@ -104,18 +171,18 @@ function findRandomItem(available_drags) {
 }
 
 //initalize the drag and drop features for the game
-function init() {
-    var dropped_item;
+    function init() {
+        var dropped_item;
 
-    setDraggable();
-    setDroppable();
+        setDraggable();
+        setDroppable();
 
-    function setDraggable() {
-        $('.drag-item').draggable({
-            helper: 'clone',
-            greedy: true
-        });
-    }
+        function setDraggable() {
+            $('.drag-item').draggable({
+                helper: 'clone',
+                greedy: true
+            });
+        }
 
     function setDroppable() {
         $('.drop-zone').droppable({
@@ -164,24 +231,27 @@ function init() {
             //stop the sound
             start.pause();
             complete.play();
-
+            background.pause();
             //stop the timer
             timer1.Timer.pause();
-            background.load();
-            background.pause();
-            $('#first-modal').modal("show");
 
-            $(".start-game").click( function(){
-                $('#first-modal').modal("hide");
-                //$("#putcontenthere").load("action_items/ai3.html");
+            //show the popup screen for game complete and send to bloom boom game
+            $('#game-complete').modal('show');
+            $('#game-info').modal('hide');
+            $('.main-title').hide();
+            $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
 
+            $("#button-next").click(function () {
+                $('#game-success').modal('hide');
+
+                //document.location.href = "/ActionItem/Game";
             });
 
-            $(".reply-game").click( function(){
-                 $("#putcontenthere").load("action_items/ai3.html");
+            $('.purple-button').click(function () {
+                $('#game-complete').modal('hide');
 
-            });
-
+                $("#putcontenthere").load("/action_items/ai3.html");
+            })
         }
     }
 
@@ -269,6 +339,7 @@ function init() {
                     $("#white-dove-drop > img").attr('src', '/content/images/findpollinators/dove_found.png');
                     break;
                 }
+
 
         }
     }

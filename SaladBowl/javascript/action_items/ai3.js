@@ -23,7 +23,7 @@
         $('.play2').hide();
 
         $('.play2').click(function () {
-            $('.play').delay(1000).delay(1000, function () {
+            $('.play2').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("/action_items/ai4.html");
             });
          
@@ -33,7 +33,7 @@
             catch (err) {
                 //no sound - log error
             }
-            title.pause();
+            slides4.pause();
         });
 
 
@@ -62,7 +62,7 @@
             correct_items.push(1);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -95,7 +95,7 @@
             correct_items.push(2);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -128,7 +128,7 @@
             correct_items.push(3);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -161,7 +161,7 @@
             correct_items.push(4);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -194,7 +194,7 @@
             correct_items.push(5);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -226,7 +226,7 @@
             correct_items.push(6);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -259,7 +259,7 @@
             correct_items.push(7);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -293,7 +293,7 @@
             correct_items.push(8);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -327,7 +327,7 @@
             correct_items.push(9);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -360,7 +360,7 @@
             correct_items.push(10);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -393,7 +393,7 @@
             correct_items.push(11);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -426,7 +426,7 @@
             correct_items.push(12);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -459,7 +459,7 @@
             correct_items.push(13);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -492,7 +492,7 @@
             correct_items.push(14);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -525,7 +525,7 @@
             correct_items.push(15);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -557,7 +557,7 @@
             correct_items.push(16);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -589,7 +589,7 @@
             correct_items.push(17);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -622,7 +622,7 @@
             correct_items.push(18);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -656,7 +656,7 @@
             correct_items.push(19);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -688,7 +688,7 @@
             correct_items.push(20);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -720,7 +720,7 @@
             correct_items.push(21);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -752,7 +752,7 @@
             correct_items.push(22);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -785,7 +785,7 @@
             correct_items.push(23);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });
@@ -818,7 +818,7 @@
             correct_items.push(23);
             if (correct_items.length === 24) {
                 //pop or redirect your game complete screen
-                $('.play').show();
+                $('.play2').show();
             }
 
         });

@@ -31,7 +31,7 @@ $(document).ready(function () {
     }, 4000);
 
     $(".Accept").click(function(){
-
         $("#putcontenthere").load("action_items/ai12.html");
     });
+
 });

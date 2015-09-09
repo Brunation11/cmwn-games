@@ -6690,10 +6690,10 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.tomato {
+.tomato-1 {
   position: absolute;
   z-index: 1;
-  margin-top: 185px;
+  margin-top: 186px;
 }
 .celery {
   position: absolute;
@@ -6773,6 +6773,12 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
+.fruit-and-veg {
+  width: 616px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 1px;
+}
 .close-Btn {
   z-index: 1;
   left: 567px;
@@ -6810,7 +6816,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
-.border {
+.border-1 {
   position: absolute;
   z-index: 2;
   margin-left: 228px;
@@ -6883,7 +6889,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 122px;
   margin-left: 41px;
 }
-.body-copy {
+.body-copy-1 {
   position: absolute;
   z-index: 1;
   margin-top: 193px;
@@ -7037,32 +7043,41 @@ input[type="checkbox"].input-validation-error {
   margin-left: 101px;
   margin-top: 103px;
 }
-.bg {
+.bg-background {
+  margin: 0 auto;
   overflow: hidden;
-  width: 429px;
-  height: 256px;
+  width: 354px;
+  height: 253px;
+  margin-left: 34px;
   position: relative;
   border-right: 26px solid;
   border-left: 16px solid;
-  border-radius: 1.9015544px;
+  border-bottom-left-radius: 320px;
+  border-bottom-right-radius: 320px;
+  border-top-left-radius: 320px;
+  border-top-right-radius: 320px;
 }
-.pointer {
-  position: absolute;
-  z-index: 3;
+.bg-background .hole {
+  display: block;
+  background: url("/content/images/background/blk-background.png") center center no-repeat;
+  background-size: 100%;
+  margin-top: 30px;
+  cursor: pointer;
   display: inline-block;
-  margin-top: 60px;
-  height: 600px;
+  height: 509px;
   width: 800px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  Z-INDEX: 3;
+  position: absolute;
+  -webkit-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -ms-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -moz-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -o-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
 }
 /* image 1 Lettuce*/
 .img-hover-1 {

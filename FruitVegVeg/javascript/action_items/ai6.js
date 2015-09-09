@@ -107,7 +107,7 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".pointer img").hide();
+                        $(".hole img").hide();
 
                         //On live
                         $(".Veg-On").show();
@@ -161,7 +161,7 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".pointer img").hide();
+                        $(".hole img").hide();
                         // On live
                         $(".Fruit-On").show();
 
@@ -242,7 +242,7 @@
             var backImg = $('.bg li:first').css({ 'list-style': 'none' });
             backImg.hide();
             backImg.remove();
-            $('.bg').append(backImg);
+            $('.bg-background').append(backImg);
             backImg.fadeIn();
 
             //reset items
@@ -326,7 +326,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#lettuce-fact").hide();
                     $("#lettuce-fact p").hide();
                     $(".lettuce-header img").hide();
@@ -345,7 +345,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#cauliflower-fact").hide();
                     $("#cauliflower-fact p").hide();
                     $(".cauliflower-header img").hide();
@@ -362,7 +362,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#celery-fact").hide();
                     $("#celery-fact p").hide();
                     $(".celery-header img").hide();
@@ -378,7 +378,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#carrot-fact").hide();
                     $("#carrot-fact p").hide();
                     $(".carrot-header img").hide();
@@ -394,7 +394,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#potato-fact").hide();
                     $("#potato-fact p").hide();
                     $(".potato-header img").hide();
@@ -411,7 +411,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#beet-fact").hide();
                     $("#beet-fact p").hide();
                     $(".beet-headerr img").hide();
@@ -437,7 +437,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#eggplant-fact").hide();
                     $("#eggplant-fact p").hide();
                     $(".eggplant-header img").hide();
@@ -453,7 +453,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#avocado-fact").hide();
                     $("#avocado-fact p").hide();
                     $(".avocado-header img").hide();
@@ -469,7 +469,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#cucumber-fact").hide();
                     $("#cucumber-fact p").hide();
                     $(".cucumber-header img").hide();
@@ -485,7 +485,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#pumpkin-fact").hide();
                     $("#pumpkin-fact p").hide();
                     $(".pumpkin-header img").hide();
@@ -502,7 +502,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#pepper-fact").hide();
                     $("#pepper-fact p").hide();
                     $(".peper-header img").hide();
@@ -518,7 +518,7 @@
 
 
                 $('.Next').click(function () {
-                    $(".pointer img").show();
+                    $(".hole img").show();
                     $("#zucchini-fact").hide();
                     $("#zucchini-fact p").hide();
                     $(".zucchini-header img").hide();
