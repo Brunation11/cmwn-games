@@ -7418,13 +7418,13 @@ input[type="checkbox"].input-validation-error {
   margin-top: 100px;
   margin-left: 144px;
 }
-.body-copy {
+.second-last {
   position: absolute;
   z-index: 1;
   margin-top: 200px;
   margin-left: 165px;
 }
-.body-content p {
+.second-last p {
   color: #fff;
   text-align: center;
   font-size: 30px;

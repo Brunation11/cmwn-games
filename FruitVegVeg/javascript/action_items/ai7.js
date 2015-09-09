@@ -5,9 +5,9 @@ $(document).ready(function () {
         $("#putcontenthere").load("action_items/ai8.html");
     });
 
-    $(".body-copy").hide();
+    $(".second-last").hide();
     setTimeout(function () {
-        $('.body-copy').hide().delay(100).fadeIn(600);
+        $('.second-last').hide().delay(100).fadeIn(600);
     }, 1000);
 
 });
