@@ -7048,10 +7048,14 @@ input[type="checkbox"].input-validation-error {
   overflow: hidden;
   position: absolute;
   z-index: 3;
-  width: 383px;
-  height: 254px;
-  border-radius: 1.34110787px;
-  margin-left: 20px;
+  width: 348px;
+  height: 239px;
+  margin-left: 34px;
+  margin-top: 8px;
+  border-bottom-left-radius: 349px;
+  border-top-left-radius: 349px;
+  border-top-right-radius: 349px;
+  border-bottom-right-radius: 349px;
 }
 .hole {
   margin: -142px -205px;
