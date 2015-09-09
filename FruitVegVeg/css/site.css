@@ -7037,24 +7037,6 @@ input[type="checkbox"].input-validation-error {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-.pointer {
-  position: absolute;
-  z-index: 3;
-  display: inline-block;
-  margin-top: 60px;
-  height: 509px;
-  width: 800px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-}
 /* image 1 Lettuce*/
 .img-hover-1 {
   background-size: 100%;
