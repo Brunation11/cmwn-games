@@ -7043,48 +7043,32 @@ input[type="checkbox"].input-validation-error {
   margin-left: 101px;
   margin-top: 103px;
 }
-.bg {
-  margin: 0 auto;
+.bg-background {
+  /*border: 1px solid red;*/
   overflow: hidden;
-  width: 429px;
-  height: 256px;
-  border-radius: 1.9015544px;
-  position: relative;
-  border-right: 26px solid;
-  border-left: 16px solid;
+  position: absolute;
+  z-index: 3;
+  width: 348px;
+  height: 239px;
+  margin-left: 34px;
+  margin-top: 8px;
+  border-bottom-left-radius: 349px;
+  border-top-left-radius: 349px;
+  border-top-right-radius: 349px;
+  border-bottom-right-radius: 349px;
 }
-.img-hover {
-  background-size: 100%;
-  position: relative;
-  Centerthemaskcursor: pointer;
-  display: inline-block;
-  height: 210px;
-  width: 353px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  Z-INDEX: 2;
-}
-.bg .pointer {
-  display: block;
-  background: url("/content/images/background/blk-background.png") center center no-repeat;
-  background-size: 100%;
-  cursor: pointer;
-  display: inline-block;
-  height: 509px;
-  width: 800px;
+.bg-background .hole {
+  margin: -142px -205px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -o-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  Z-INDEX: 2;
-  position: absolute;
-  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
-  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -webkit-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -ms-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -moz-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  -o-animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
+  animation: valueX 3.05s linear 0s infinite alternate, valueY 3.4s linear 0s infinite alternate;
 }
 /* image 1 Lettuce*/
 .img-hover-1 {
