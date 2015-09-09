@@ -7044,7 +7044,7 @@ input[type="checkbox"].input-validation-error {
   margin-top: 103px;
 }
 .bg-background {
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   overflow: hidden;
   position: absolute;
   z-index: 3;
@@ -7059,6 +7059,16 @@ input[type="checkbox"].input-validation-error {
 }
 .hole {
   margin: -142px -205px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -ms-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+  animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
 }
 /* image 1 Lettuce*/
 .img-hover-1 {
