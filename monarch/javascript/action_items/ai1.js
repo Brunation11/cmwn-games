@@ -14,11 +14,14 @@ head.play();
 
 $(document).ready(function () {
 
+    $('.modal-backdrop').remove();
+
     $("#close").hide();
 
     $("#next-button2").hide();
 
     $('#next').click(function () {
+        $('.modal-backdrop').remove();
         click.load();
         click.play();
         $("#title").fadeOut(1000);

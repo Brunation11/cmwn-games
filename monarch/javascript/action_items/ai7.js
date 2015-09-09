@@ -10,6 +10,8 @@ bgMusic.addEventListener('ended', function () {
 
 $(document).ready(function () {
 
+    $('.modal-backdrop').remove();
+
     $('#journey').hide();
     $('#p1').hide();
     $('#p2').hide();
@@ -81,6 +83,7 @@ $(document).ready(function () {
     });
 
     $('#next-button2').click(function () {
+        $('.modal-backdrop').remove();
         background.pause();
         flip.play();
         $('#next-button2').hide();

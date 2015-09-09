@@ -16,6 +16,8 @@ $(document).ready(function () {
 
     $('#approve').hide();
 
+    $('.modal-backdrop').remove();
+
     $('#close').click(function () {
         $('#game-close').modal('show');
     });
@@ -30,21 +32,21 @@ $(document).ready(function () {
         $('#title2').show();
     });
 
-    $('#email').click(function () {
-        $('#email-info').fadeOut();
-        $('#approve').show();
-    });
+    // $('#email').click(function () {
+    //     $('#email-info').fadeOut();
+    //     $('#approve').show();
+    // });
 
     $('#no-email').click(function () {
-         $("#putcontenthere").load("/action_items/ai4.html");
+         $("#putcontenthere").load("/action_items/ai7.html");
      });
 
-    $('#no-app').click(function () {
-            $("#putcontenthere").load("/action_items/ai4_2.html");
-    });
+    // $('#no-app').click(function () {
+    //         $("#putcontenthere").load("/action_items/ai4_2.html");
+    // });
 
-    $('#app').click(function () {
-            $("#putcontenthere").load("/action_items/ai4.html");
-    });
+    // $('#app').click(function () {
+    //         $("#putcontenthere").load("/action_items/ai4.html");
+    // });
 
 });

@@ -12,6 +12,8 @@ var bgMusic = $("#background")[0],
 
     $(document).ready(function () {
 
+        $('.modal-backdrop').remove();
+
         $("#f1").hide();
         $("#f2").hide();
         $("#f3").hide();
