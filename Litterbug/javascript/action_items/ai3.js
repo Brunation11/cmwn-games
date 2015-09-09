@@ -16,7 +16,6 @@ $(document).ready(function () {
         },800);
 
 
-
     $(".cardboard").click(function () {
         $(this).hide();
     });
@@ -82,7 +81,6 @@ $(document).ready(function () {
 
 
     $(".remove").one('click',function () {
-
 
         correct_items.push(15);
         if (correct_items.length === 15) {

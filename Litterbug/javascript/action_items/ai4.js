@@ -7,4 +7,5 @@ $(document).ready(function () {
     $('.No-1').click(function(){
        $("#putcontenthere").load("action_items/ai5.html");
     });
+    
 });
