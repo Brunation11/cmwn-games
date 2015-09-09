@@ -7037,6 +7037,15 @@ input[type="checkbox"].input-validation-error {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+/* mask effect */
+.img-box {
+  position: absolute;
+  margin-left: 101px;
+  margin-top: 103px;
+}
+.bg-background {
+  border: 1px solid red;
+}
 /* image 1 Lettuce*/
 .img-hover-1 {
   background-size: 100%;
