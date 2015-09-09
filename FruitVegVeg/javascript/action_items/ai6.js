@@ -107,7 +107,7 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".pointer img").hide();
+                        $(".hole img").hide();
 
                         //On live
                         $(".Veg-On").show();
@@ -161,7 +161,7 @@
                         //end of this set
                         $('.Next').show();
 
-                        $(".pointer img").hide();
+                        $(".hole img").hide();
                         // On live
                         $(".Fruit-On").show();
 
@@ -242,7 +242,7 @@
             var backImg = $('.bg li:first').css({ 'list-style': 'none' });
             backImg.hide();
             backImg.remove();
-            $('.bg').append(backImg);
+            $('.bg-background').append(backImg);
             backImg.fadeIn();
 
             //reset items
