@@ -239,6 +239,104 @@
 
                     </div>
                             <!--//////////////////////////////////////////////////-->
+
+                    <div id="knowledge" class="reminder" ng-controller="TodoCtrl">
+                        <button class="exit close-Btn"></button>
+
+                        
+                        <div class="notebook-wide-popup">
+                            <h1>
+                                Knowledge is power, so start listing!<br />
+                                Remember you want to count EVERYTHING!<br />
+                                There is no maximum but you MUST list<br />
+                                at least 15 items.
+                            </h1>
+                        </div>
+                       
+                        <div class="todo-wrapper">
+                            
+                        </div>
+
+                        <div class="clock">
+                            <div class="racoon"><img src="Content/_Assets/Elements/scout_1.png"></div>
+                        </div>
+
+                        <div class="arrows">
+                            <a href class="next arrow" ng-click="next()"></a>
+                        </div>
+                        
+
+
+                    </div>
+                    <!--//////////////////////////////////////////////////-->
+                     <div id="notebook" class="reminder" ng-controller="TodoCtrl">
+                        <button class="exit close-Btn"></button>
+
+                      
+
+                        <div class="clock">
+                            <div class="countdown">
+
+                            </div>
+
+                            <div class="hint-btn"></div>
+                            <div class="hint-popup">
+                                <h2>Scrap Scout Hints</h2>
+                                <p> Compost = Organic Matter</p>
+                                <p>Donate = Good for Somebody Else</p>
+                                <p>Trash = Useless Stuff</p>
+                                <p>Recycle = Reuse or Make New</p>
+                                <a href class="yougotit"></a>
+
+                            </div>
+                            <div class="hint-popup2">
+
+                                <p>
+                                    You haven't added the minimum<br />
+                                    of 15 items you must have to<br />
+                                    complete this action item.<br />
+                                    Back to the drawing board!
+                                </p>
+                                <a href class="yougotit"></a>
+
+                            </div>
+                        </div>
+                        <div class="timeout">
+                           
+                            <div class="heading"><img src="Content/_Assets/Elements/Headers/header_12.png" /></div>
+                            <div class="text"> <h1>Do you have anything <br /> else to add?</h1></div>
+
+                            <div class="buttons-quit clearfix">
+                                <a href="" class="yes"></a>
+                                <a href class="no"></a>
+
+                            </div>
+                        </div>
+
+                        <div class="todo-wrapper">
+                            <h2>Please add <span class="emphasis">{{15 - getTotalTodos()}}</span> items in list</h2>
+                            <ul>
+                                <li ng-repeat="todo in todos">
+                                    <input type="checkbox" ng-model="todo.done" />
+                                    <span class="done-{{todo.done}}">{{todo.text}}</span>
+                                </li>
+                            </ul>
+                            <form>
+                                <input class="add-input" placeholder="My trash item is..." type="text" ng-model="formTodoText" ng-model-instant />
+                                <button class="add-btn" ng-click="addTodo()"></button>
+                            </form>
+
+                            <button class="clear-btn" ng-click="clearCompleted()">Remove</button>
+                        </div>
+                        
+                        <div class="arrows">
+                            <a href class="next arrow" ng-click="next()"></a>
+                        </div>
+
+
+                    </div>
+
+                    <!--//////////////////////////////////////////////////-->
                             <div id="sort">
                                 <button class="exit close-Btn"></button>
 
@@ -347,7 +445,7 @@
 
                             </div>
                             <!--//////////////////////////////////////////////////-->
-                            <div id="choseTime">
+                            <!-- <div id="choseTime">
                                 <button class="exit close-Btn"></button>
 
 
@@ -376,9 +474,9 @@
                                 </div>
 
 
-                            </div>
+                            </div> -->
                     <!--//////////////////////////////////////////////////-->
-                    <div id="reminder1" class="reminder">
+                    <!-- <div id="reminder1" class="reminder">
                         <button class="exit close-Btn"></button>
 
                         <div class="remind-bg"></div>
@@ -402,12 +500,12 @@
                             <a href class="next arrow"></a>
                         </div>
                     </div>
-                    
+                     -->
 
 
 
                 <!--//////////////////////////////////////////////////-->
-                <div id="reminder2" class="reminder">
+                <!-- <div id="reminder2" class="reminder">
                     <button class="exit close-Btn"></button>
 
                     <div class="remind-bg"></div>
@@ -433,9 +531,9 @@
                 </div>
 
 
-            </div>
+            </div> -->
             <!--//////////////////////////////////////////////////-->
-            <div id="reminder3" class="reminder">
+           <!--  <div id="reminder3" class="reminder">
                 <button class="exit close-Btn"></button>
 
                 <div class="remind-bg"></div>
@@ -462,114 +560,10 @@
             </div>
 
 
-        </div>
+        </div> -->
         <!--//////////////////////////////////////////////////-->
-                    <div id="knowledge" class="reminder" ng-controller="TodoCtrl">
-                        <button class="exit close-Btn"></button>
+                   
 
-                        
-                        <div class="notebook-wide-popup">
-                            <h1>
-                                Knowledge is power, so start listing!<br />
-                                Remember you want to count EVERYTHING!<br />
-                                There is no maximum but you MUST list<br />
-                                at least 15 items.
-                            </h1>
-                        </div>
-                       
-                        <div class="todo-wrapper">
-                            
-                        </div>
-
-                        <div class="clock">
-                            <div class="racoon"><img src="Content/_Assets/Elements/scout_1.png"></div>
-                        </div>
-
-                        <div class="arrows">
-                            <a href class="next arrow" ng-click="next()"></a>
-                        </div>
-                        
-
-
-                    </div>
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="notebook" class="reminder" ng-controller="TodoCtrl">
-                        <button class="exit close-Btn"></button>
-
-                      
-
-                        <div class="clock">
-                            <div class="countdown">
-
-                            </div>
-
-                            <div class="hint-btn"></div>
-                            <div class="hint-popup">
-                                <h2>Scrap Scout Hints</h2>
-                                <p> Compost = Organic Matter</p>
-                                <p>Donate = Good for Somebody Else</p>
-                                <p>Trash = Useless Stuff</p>
-                                <p>Recycle = Reuse or Make New</p>
-                                <a href class="yougotit"></a>
-
-                            </div>
-                            <div class="hint-popup2">
-
-                                <p>
-                                    You haven't added the minimum<br />
-                                    of 15 items you must have to<br />
-                                    complete this action item.<br />
-                                    Back to the drawing board!
-                                </p>
-                                <a href class="yougotit"></a>
-
-                            </div>
-                        </div>
-                        <div class="timeout">
-                           
-                            <div class="heading"><img src="Content/_Assets/Elements/Headers/header_12.png" /></div>
-                            <div class="text"> <h1>Do you have anything <br /> else to add?</h1></div>
-
-                            <div class="buttons-quit clearfix">
-                                <a href="" class="yes"></a>
-                                <a href class="no"></a>
-
-                            </div>
-                        </div>
-
-                        <div class="todo-wrapper">
-                            <h2>Please add <span class="emphasis">{{15 - getTotalTodos()}}</span> items in list</h2>
-                            <ul>
-                                <li ng-repeat="todo in todos">
-                                    <input type="checkbox" ng-model="todo.done" />
-                                    <span class="done-{{todo.done}}">{{todo.text}}</span>
-                                </li>
-                            </ul>
-                            <form>
-                                <input class="add-input" placeholder="My trash item is..." type="text" ng-model="formTodoText" ng-model-instant />
-                                <button class="add-btn" ng-click="addTodo()"></button>
-                            </form>
-
-                            <button class="clear-btn" ng-click="clearCompleted()">Remove</button>
-                        </div>
-                        
-                        <div class="arrows">
-                            <a href class="next arrow" ng-click="next()"></a>
-                        </div>
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                        <!--//////////////////////////////////////////////////-->
                     <div id="howcouldyou" >
                         <button class="exit close-Btn"></button>
                         <div class="clearfix">

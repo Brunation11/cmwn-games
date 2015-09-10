@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        //change the background class
+        $("#main-background").removeClass('intro').addClass('page');
+        //remove the intro title
+        $("#main-title").removeClass('intro-title');
+    })
+</script>
+<div class="content-wrapper">
+    <div class="bframe">
+        <div class="bframe-center">
+            @Html.Partial("~/Views/ActionItem/_screen3.cshtml");
+
+        </div>
+    </div>
+</div>
+
+<!-- #close (BTN_CLOSE) -->
+<div id="close" style="position:absolute;">
+    <div class="col-sm-4 content-box">
+        <img src="~/Content/images/btn_close.png" class="img-responsive" alt="Responsive image">
+    </div>
+</div>
+
