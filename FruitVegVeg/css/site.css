@@ -6654,6 +6654,7 @@ input[type="checkbox"].input-validation-error {
   font-family: 'cmwn', sans-serif;
   line-height: 47px;
 }
+/* Close button */
 .close-Btn {
   z-index: 2;
   left: 567px;
@@ -6724,22 +6725,6 @@ input[type="checkbox"].input-validation-error {
   opacity: 100;
   z-index: 15;
 }
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -6778,22 +6763,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
   margin-top: 1px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -6840,22 +6809,6 @@ input[type="checkbox"].input-validation-error {
   margin-left: 20px;
   margin-top: 129px;
 }
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -6900,22 +6853,6 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 283px;
   margin-top: 10px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -7016,22 +6953,6 @@ input[type="checkbox"].input-validation-error {
   z-index: 2;
   margin-top: 170px;
   margin-left: 13px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -7375,22 +7296,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
-}
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -7437,22 +7342,6 @@ input[type="checkbox"].input-validation-error {
   text-align: center;
   font-family: 'cmwn', sans-serif;
   line-height: 47px;
-}
-.close-Btn {
-  z-index: 1;
-  left: 567px;
-  position: absolute;
-  cursor: pointer;
-}
-.close-Btn img {
-  position: absolute;
-}
-.close-Btn img:last-child {
-  opacity: 0;
-}
-.close-Btn img:last-child:hover {
-  opacity: 100;
-  z-index: 15;
 }
 .modal-open .modal {
   overflow-x: hidden;
