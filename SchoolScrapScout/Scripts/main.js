@@ -26,7 +26,7 @@
         $('#game').get(0).play();
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
-        $('#title').get(0).pause();
+        
 
         $('.shnose li').each(function (i) {
             var row = $(this);
@@ -61,8 +61,10 @@
 
     $('#startGame .yes-btn a').click(function () {
         $('#startGame').fadeOut(500);
-        $('#sort').fadeIn(500);
-        $('#sort a.next').fadeIn(500);
+        $('#knowledge').fadeIn(500);
+        $('#knowledge a.next').fadeIn(500);
+        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/Content/_assets/Background/BKG_3.png)');
+        $('.bkg-image').css('background-size', '104%');
     });
     $('#sort a.next').click(function () {
         $('#sort').fadeOut(500);
@@ -94,8 +96,9 @@
     });
     $('#donate a.next').click(function () {
         $('#donate').fadeOut(500);
-        $('#choseTime').fadeIn(500);
-        $('#choseTime a.next').fadeIn(500);
+        $('#betterway').fadeIn(500);
+        $('#betterway a.next').fadeIn(500);
+        
     });
     $('.remind-time label span').click(function () {
         $('#checkbox').get(0).currentTime = 0;
@@ -117,13 +120,6 @@
         $('#reminder3 a.next').fadeIn(500);
     });
 
-    $('#reminder3 a.next').click(function () {
-        $('#reminder3').fadeOut(500);
-        $('#knowledge').fadeIn(500);
-        $('#knowledge a.next').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/Content/_assets/Background/BKG_3.png)');
-        $('.bkg-image').css('background-size', '104%');
-    });
     $('#knowledge a.next').click(function () {
         $('#knowledge').fadeOut(500);
         $('#notebook').fadeIn(500);
@@ -142,8 +138,8 @@
         console.log($('#notebook span.emphasis').text());
        if ($('#notebook span.emphasis').text() <= 0) {
             $('#notebook').fadeOut(500);
-            $('#howcouldyou').fadeIn(500);
-            $('#howcouldyou a.next').fadeIn(500);
+            $('#sort').fadeIn(500);
+            $('#sort a.next').fadeIn(500);
             $('#game').get(0).pause();
             $('#slide17-18').get(0).currentTime = 0;
             $('#slide17-18').get(0).play();

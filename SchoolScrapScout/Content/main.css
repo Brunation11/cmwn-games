@@ -1142,12 +1142,12 @@ h1 {
     }
 
 .yes-btn {
-    width: 30%;
-    margin: 20px auto;
+    width: 39%;
+    margin: 98px auto;
 }
 
     .yes-btn a {
-        background: url(_assets/Elements/Buttons/btn_yes.png) 0 0 no-repeat;
+        background: url(_assets/Elements/Buttons/btn_Imready.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         padding-top: 66px;
@@ -1155,7 +1155,7 @@ h1 {
     }
 
         .yes-btn a:hover {
-            background-image: url(_assets/Elements/Buttons/btn_yes_on.png);
+            background-image: url(_assets/Elements/Buttons/btn_IMready_on.png);
         }
 /*----------------------------------------*/
 #definitely {
@@ -1583,7 +1583,7 @@ input[type="radio"] {
 .hint-btn {
     width: 150px;
     height: 150px;
-    margin: 130px auto 0;
+    margin: 101px 28px 0;
     background: url("_Assets/Elements/Buttons/btn_hint.png") 0 0 no-repeat;
     background-size: 100%;
 }

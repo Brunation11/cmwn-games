@@ -224,11 +224,11 @@
 
 
                         <div class="nose-helps">
-                            <div class="head" style="padding-top:35px">
-                              <h1>You will scout out and keep track of every <br /> single thing that is thrown away in your <br /> classroom for three whole days.</h1>
+                            <div class="head" style="padding-top:46px">
+                              <h1>At the end of the day, when the trash is full, <br /> you will list every item in that can!</h1>
                             </div>
-                            <div class="head" style="width: 96%; margin:0 auto;">
-                                <img src="Content/_assets/Elements/Headers/header_3.png" alt="Up to Us" />
+                            <div class="head" style="width: 96%; margin:0 auto;"><!-- 
+                                <img src="Content/_assets/Elements/Headers/header_3.png" alt="Up to Us" /> -->
                             </div>
                             <div class="yes-btn">
                                 <a href=""></a>
@@ -473,7 +473,7 @@
                                 Knowledge is power, so start listing!<br />
                                 Remember you want to count EVERYTHING!<br />
                                 There is no maximum but you MUST list<br />
-                                at least 20 items.
+                                at least 15 items.
                             </h1>
                         </div>
                        
@@ -517,7 +517,7 @@
 
                                 <p>
                                     You haven't added the minimum<br />
-                                    of 20 items you must have to<br />
+                                    of 15 items you must have to<br />
                                     complete this action item.<br />
                                     Back to the drawing board!
                                 </p>
@@ -538,7 +538,7 @@
                         </div>
 
                         <div class="todo-wrapper">
-                            <h2>Please add <span class="emphasis">{{20 - getTotalTodos()}}</span> items in list</h2>
+                            <h2>Please add <span class="emphasis">{{15 - getTotalTodos()}}</span> items in list</h2>
                             <ul>
                                 <li ng-repeat="todo in todos">
                                     <input type="checkbox" ng-model="todo.done" />
