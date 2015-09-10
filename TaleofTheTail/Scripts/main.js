@@ -5,6 +5,7 @@
     $('.btn-click, .next, .prev').click(function () {
         $('#btnClick').get(0).currentTime = 0;
         $('#btnClick').get(0).play();
+        // alert('Hello');
     });
     $('.incorrect').click(function () {
         $('#correct').get(0).pause();
@@ -42,7 +43,7 @@
     setTimeout(function () {
         $('#step .slider .slide').hide();
 
-       
+
         $('#step .slider .slide').first().addClass('openslide');
         $('#easy .slider .slide').first().addClass('openslide');
         $('#hard .slider .slide').first().addClass('openslide');
@@ -66,6 +67,7 @@
                             jQuery('#mainSound').get(0).pause();
                             jQuery('#slide13').get(0).play();
                             jQuery('#step').addClass('innactive');
+                            // alert('Hello');
                         }
                         /*else if (jQuery('#step').hasClass(".innactive") || (jQuery('#hard').is(":visible"))) {
                             jQuery('#hard').fadeOut(500);
@@ -77,13 +79,13 @@
                             jQuery('#showOff').fadeIn(500);
                             jQuery('#easy').addClass('innactive');
                         }*/
-                       
+
                     }
                 }
 
             }
         });
-        
+
     }, 2000);
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
@@ -100,13 +102,13 @@
         $('#googjob').fadeOut(500);
         $('#easy').fadeIn(500);
         $('#mainSound').get(0).play();
+        // alert('Hello');
     });
     $('#googjob .hard').click(function () {
         $('#googjob').fadeOut(500);
         $('#hard').fadeIn(500);
         $('#mainSound').get(0).play();
     });
-
 
     $('#file').change(function () {
         //$('#target').submit();
@@ -141,7 +143,7 @@
         $('#game-info').modal('show');
     });
 
-    
+
 
     $('.A').click(function () {
 
@@ -213,10 +215,10 @@
             // $(' #step .slider').height($(' #step .slider .film').height());
             $('#mainSound').get(0).play();
         showEvent('videoPlayer:ended');
-        
-      
-           
-      
+
+
+
+
 
     });
 
@@ -226,7 +228,7 @@
 
    /* $('#play-start').click(function () {
         embed.videoPlayer.ended();
-  
+
     });
     $('#play-20s').click(function () {
         embed.videoPlayer.ended();

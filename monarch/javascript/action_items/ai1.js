@@ -14,8 +14,6 @@ head.play();
 
 $(document).ready(function () {
 
-    $('.modal-backdrop').remove();
-
     $("#close").hide();
 
     $("#next-button2").hide();

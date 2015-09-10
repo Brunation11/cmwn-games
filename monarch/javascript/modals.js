@@ -32,6 +32,4 @@ $(document).ready(function () {
 
     });
 
-    $('.modal-backdrop').css({'display' : 'none'});
-
 });
