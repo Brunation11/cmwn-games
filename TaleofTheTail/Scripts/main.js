@@ -110,11 +110,11 @@
         $('#mainSound').get(0).play();
     });
 
-    $('#file').change(function () {
-        //$('#target').submit();
-        $('#showOff').fadeOut(500);
-        $('#wellcome').fadeIn(500);
-    });
+    // $('#file').change(function () {
+    //     //$('#target').submit();
+    //     $('#showOff').fadeOut(500);
+    //     $('#wellcome').fadeIn(500);
+    // });
     $('#wellcome .next.arrow').click(function () {
 
         $('#wellcome').fadeOut(500);

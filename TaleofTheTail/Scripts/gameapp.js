@@ -6,7 +6,7 @@ var content_path = "http://actionitems.changemyworldnow.com/taleofatail";
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
+
     $routeProvider
 
         // route for the home page
@@ -155,7 +155,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
     });
 
     console.log($scope.data);
-  
+
 });
 
 
@@ -235,7 +235,7 @@ moduleGame.controller('stepTailController', function ($scope, $http, $sce) {
         'divStyle': 'clear:both; width:80%; margin:0 auto; text-align:center; padding:20px 0 0 0; font-size:20px;height: 105px;'
 
     },
-    ] 
+    ]
 });
 moduleGame.controller('easyTailController', function ($scope, $http, $sce) {
     $scope.to_trusted = function (html_code) {
@@ -302,12 +302,14 @@ moduleGame.directive('slider', function ($timeout) {
                     }
                     else if (jQuery('#step').hasClass(".innactive") || (jQuery('#hard').is(":visible"))) {
                         jQuery('#hard').fadeOut(500);
-                        jQuery('#showOff').fadeIn(500);
+                        jQuery('#wellcome').fadeIn(500);
+                        //jQuery('#showOff').fadeIn(500);
                         jQuery('#hard').addClass('innactive');
                     }
                     else if (jQuery('#step').hasClass(".innactive") || (jQuery('#easy').is(":visible"))) {
                         jQuery('#easy').fadeOut(500);
-                        jQuery('#showOff').fadeIn(500);
+                        jQuery('#wellcome').fadeIn(500);
+                        //jQuery('#showOff').fadeIn(500);
                         jQuery('#easy').addClass('innactive');
                     }
                 };
@@ -317,7 +319,7 @@ moduleGame.directive('slider', function ($timeout) {
             $scope.prev = function () {
                 $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.data.length - 1;
             };
-            
+
             $scope.$watch('currentIndex', function () {
                 $scope.data.forEach(function (item) {
                     item.visible = false;
@@ -325,11 +327,11 @@ moduleGame.directive('slider', function ($timeout) {
                 $scope.data[$scope.currentIndex].visible = true;
             });
 
-          
+
         },
-       
+
     };
-    
+
 });
 
 /*-----------------------------------*/
