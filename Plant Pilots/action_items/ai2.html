@@ -28,8 +28,9 @@
     Your browser does not support the audio element.
 </audio>
 
-<script type="text/javascript" src="javascript/jquery.timer.js"></script>
+<!-- <script type="text/javascript" src="javascript/jquery.timer.js"></script> -->
 <script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+<script type="text/javascript" src="javascript/ai2timer.js"></script>
 
 <div class="container body-content">
     <div class="row">
@@ -120,9 +121,12 @@
                     <img src="content/images/findpollinators/timer_v.png" />
                 </div><!--end clock-->
 
-                <div class="time-function">
+                <!-- <div class="time-function">
                     <div id="counter" class="text-right" style="position:absolute; font-size:1.2em; color:black; margin-top:27px; margin-left:30px; letter-spacing:16px; z-index:1000;"></div>
-                </div>
+                </div> -->
+                <div id="timer"></div>
+                 <input type="button" id="knap" value="start" />
+                 <input type="button" id="reset" value="reset" />
 
                 <div class="dash-board">
                     <img src="content/images/findpollinators/container_v.png" style="width:603px; margin-left:5px;" />

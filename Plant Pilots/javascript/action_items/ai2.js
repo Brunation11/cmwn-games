@@ -20,13 +20,14 @@ var currentTime;
 $(document).ready(function () { //  Here is when "Next" button is clicked, timer starts to count down
 
     $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
+
     //start the game functions
-    setTimeout(function () {
-        startGame();
-    },3000);
+    // setTimeout(function () {
+    //     startGame();
+    // },3000);
+        myTimer(0030);
         //initalize the drag and drop features for the game items
         init();
-
 
     //Provide Hint when Clicked
     $('.hint').click(function () {
@@ -256,15 +257,15 @@ function findRandomItem(available_drags) {
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
                     //create a new time object
-                    // start.play();
-                    // background.play();
-                    // startGame();
-                   // var timer1 = new (function () {
-                        //currentTime = '30000'; // 30 seconds (in milliseconds)
-                    //});
+                    start.play();
+                    background.play();
+                    startGame();
+                   var timer1 = new (function () {
+                        currentTime = '30000'; // 30 seconds (in milliseconds)
+                    });
 
-                    //timer1();
-                    $("#putcontenthere").load("action_items/ai3.html");
+                    timer1();
+
             });
         }
     }
