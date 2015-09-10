@@ -22,10 +22,9 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
     $(".pointing-arrow").hide().fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600).fadeIn(600).fadeOut(600);
 
     //start the game functions
-    // setTimeout(function () {
-    //     startGame();
-    // },3000);
-        myTimer(0030);
+    setTimeout(function () {
+        startGame();
+    },3000);
         //initalize the drag and drop features for the game items
         init();
 
