@@ -1,11 +1,11 @@
 background.load();
 background.play();
 //global variables
-var start = document.getElementById("start1");
-var correct = document.getElementById("correct");
-var complete = document.getElementById("complete3");
-var runout = document.getElementById("runout4");
-var wrong = document.getElementById("wrong5");
+var start          = document.getElementById("start1");
+var correct      = document.getElementById("correct");
+var complete  = document.getElementById("complete3");
+var runout       = document.getElementById("runout4");
+var wrong       = document.getElementById("wrong5");
 var rand_item;
 var correct_matches = new Array();
 var hint_item;
@@ -70,9 +70,9 @@ function startGame() {
 }
 
 //create a new time object
-var timer1 = new (function () {
-    currentTime = '30000'; // 20 seconds (in milliseconds)
-});
+    var timer1 = new (function () {
+        currentTime = '30000'; // 20 seconds (in milliseconds)
+    });
 
 //start the timer and assign the counter location
 function startTimer() {
@@ -110,9 +110,10 @@ function updateTimer() {
             $("#button-start").click(function () {
                 $('#game-info').modal('hide');
                 $("#putcontenthere").load("/action_items/ai3.html");
-                //setTimeout(function () { location.reload(); }, 10);
-                //startGame.load();
-                //startGame();
+
+                // setTimeout(function () { location.reload(); }, 10);
+                // startGame.load();
+                // startGame();
 
             });
 
@@ -233,7 +234,7 @@ function findRandomItem(available_drags) {
         }
 
         //check to see if the game is over - all matches are found
-        if (correct_matches.length === 6) {
+        if (correct_matches.length === 1) {
             //stop the sound
             start.pause();
             complete.play();
@@ -255,15 +256,25 @@ function findRandomItem(available_drags) {
 
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
-                    //create a new time object
-                    start.play();
-                    background.play();
-                    startGame();
-                   var timer1 = new (function () {
-                        currentTime = '30000'; // 30 seconds (in milliseconds)
-                    });
 
-                    timer1();
+                   // RESET GAME FUNCTIONS HERE ///
+                   // create a new time object
+
+                    correct_matches = new Array();
+                    currentTime = 30000;
+                    timer1.Timer.play();
+
+                    background.play();
+                    start.loop = true;
+                    start.play();
+
+                    // reset animals
+                    if (correct_matches.length > -1) {
+                        // alert('is greater');
+                         item.length === 0
+                    }
+
+
 
             });
         }
