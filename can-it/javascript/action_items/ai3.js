@@ -1,5 +1,6 @@
 var correct_items = new Array();
 var completed_sets = new Array();
+var correct_stuff = new Array();
 $(document).ready(function () {
     //this varible stores the correct matches for the item being shown
     var item_correct_matches = new Array();
@@ -12,8 +13,6 @@ $(document).ready(function () {
    //initalize game and find the selected item and it's matches
     selectRandomListItem();
     findSelectedMatches();
-
-
 
 
 
