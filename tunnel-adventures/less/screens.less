@@ -1,0 +1,195 @@
+@import "fonts";
+@import "mixins";
+
+/*=== === === === === === === === ===  */
+.bframe {
+  position: absolute;
+
+  .bframe-center {
+    margin-top: 130px;
+    margin-left: 42px;
+    width: 530px;
+    height: 290px;
+
+    .center();
+    .col-radius();
+    .col-bg();
+  }
+
+  .bframe-left {
+
+    background-image: url("../images/col2/worm_frame.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    margin-top: 85px;
+    margin-left: 20px;
+    width: 200px;
+    height: 400px;
+  }
+
+  .bframe-right {
+    position: absolute;
+    margin-top: 145px;
+    left: 235px;
+    width: 365px;
+    height: 270px;
+
+    .center();
+    .col-radius();
+    .col-bg();
+  }
+
+}
+
+
+/*=== === === === === === === === ===  */
+.video-wrapper {
+  margin: 50px auto;
+}
+
+
+/*=== === === === === === === === ===  */
+.info-wrapper {
+  .custom-font();
+  font-size: 24px;
+
+  display: inline-block;
+  top: 25%;
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+
+  h1 {
+    margin: 0px 0px 10px 0px;
+  }
+  p {
+    line-height: 20px;
+  }
+  ul {
+    font-size: 18px;
+    .left();
+  }
+
+  .part-setae,          // WORM-PARTS
+  .part-dorsal-pores,   // WORM-PARTS
+  .title-worm-farm {
+    background-image: url("../images/col2/setae.png");
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+    background-size: contain;
+    width: auto;
+    height: 100px;
+    margin: auto;
+  }
+
+  .part-dorsal-pores {
+    background-image: url("../images/col2/dorsal_pores.png");
+    background-position: 50% 70%;
+    background-size: 50% 150%;
+  }
+
+  .title-worm-farm {
+    background-image: url("../images/title_worm_farm.png");
+    background-size: 92% 70%;
+  }
+
+  /*=== === === STEPS */
+  .steps-txt {
+    font-size: 17px;
+  }
+
+  .generate-step-titles (@n, @i: 1) when (@i =< @n) {
+    .title-step-@{i} {
+      background: url("../images/steps/@{i}.png") no-repeat 50% 0%;
+      background-size: 50% 100%;
+      width: auto;
+      height: 50px;
+    }
+    .generate-step-titles(@n, (@i + 1));
+  }
+  .generate-step-titles(8);
+
+}
+
+.info-wrapper.steps-wrapper {
+  top: 5%; width: 100%;
+}
+
+.jar-in-jar,
+.dirt-sand-jar
+{
+  background-image: url("../images/steps/jar_in_jar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 170px;
+}
+.dirt-sand-jar {
+  background-image: url("../images/steps/dirt_sand_jar.png");
+}
+
+.btn-upload,
+.btn-submit {
+  background-image: url("../images/steps/btn_upload.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: 100% 100%;
+  width: 50%;
+  height: 100px;
+  margin: auto;
+  cursor: pointer;
+}
+.btn-submit {
+  background-image: url("../images/steps/btn_submit.png");
+}
+.btn-upload:hover {
+  background-image: url("../images/steps/btn_upload_on.png");
+}
+.btn-submit:hover {
+  background-image: url("../images/steps/btn_submit_on.png");
+}
+
+/*=== === === === === === === === === GAME */
+.game-field-bg,
+.game-field-worms,
+.game-field-key
+{
+  background-image: url('../images/game/maze.png');
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+}
+
+.game-field-worms {
+  background-image: url('../images/game/maze_worms.png');
+  top: 400px;
+  right: 520px;
+}
+
+.game-field-key {
+  background-image: url('../images/game/maze_key.png');
+  bottom: 300px;
+  left: 500px;
+}
+
+.game-field-ball
+{
+  background-image: url('../images/game/maze_ball.png');
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+
+  position: absolute;
+  top: 457px;
+  left: 155px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
