@@ -372,7 +372,7 @@ display:none;
 .correct-ansver {
 background: url("_assets/elements/frame_2.png") 0 0 no-repeat;
 background-size: 100%;
-padding:44px 20px;
+padding:37px 20px;
 min-height: 230px;
 display:none;
 text-align:center;
@@ -385,6 +385,10 @@ width:auto !important;
 max-height:80px;
 margin-bottom: 6px;
 }
+
+span .tn{margin-top: -8px;}
+
+
 #start {
 display:block;
 color: #fff;
@@ -1224,7 +1228,7 @@ margin:auto;
 }
 #labyrinth .popup {
     padding: 150px 0 0 0;
-    font-size: 29px;
+    font-size: 27px;
     text-align:center;
     font-family: source_sans_probold;
 }
