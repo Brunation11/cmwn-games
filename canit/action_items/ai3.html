@@ -1,0 +1,323 @@
+<script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+<script type="text/javascript" src="javascript/jquery.timer.js"></script>
+<script type="text/javascript" src="javascript/thirdparties/jquery.touchSwipe.min.js"></script>
+
+<!--sound-->
+<audio id="Background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 2000)">
+    <source src="content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="ButtonClick" preload="auto">
+    <source src="content/sound/Button click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="slide" preload="auto">
+    <source src="content/sound/Slide7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="Correct" preload="auto">
+    <source src="content/sound/LandinCan.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="Wrong" preload="auto">
+    <source src="content/sound/Incorrect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="clock" preload="auto" loop>
+    <source src="content/sound/ClockTick2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="Timeout" preload="auto">
+    <source src="content/sound/TimerRunsout.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="Win" preload="auto">
+    <source src="content/sound/levelcompleted.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="Flip" preload="auto">
+    <source src="content/sound/FlipAwardScreen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="container">
+
+                <div class="scape-Btn">
+                    <img src="content/images/btn_exit_on.png" />
+                    <img src="content/images/btn_exit.png" />
+
+                </div>
+
+                <!-- SORE -->
+                <div id="score">
+                    <h1>SCORE:</h1>
+                    <p>0</p>
+                </div>
+
+                <div class="animated-points">
+                    <div class="win"><h1>+ 15</h1></div>
+                    <div class="loose"><h1>- 30</h1></div>
+                </div>
+
+                <!-- dumpster carousel starts here -->
+
+
+                <!-- timer -->
+                <div class="Time">
+                    <h1>TIME:</h1>
+                    <p style="margin-left:93px;margin-top:-39px;color: white;font-size: 1.6em;">:</p>
+                </div>
+
+                <div class="time-function">
+
+                    <div id="counter" class="text-right" style="position:absolute; font-size:1.5em; color:#FFF; margin-top:29px; margin-left:75px; letter-spacing:6px; z-index:1000;width: 60px;"></div>
+                </div>
+
+                <!-- dumpster img-->
+                <div class="dumpster">
+                    <img src="content/images/dumpster-1.png" />
+                </div>
+
+                <div id="Big-btn" class="Main-button" data-correct="trash, compost, recycle">
+                    <img src="content/images/btn_can_it.png" />
+                    <img src="content/images/btn_can_it_on.png" />
+                </div>
+
+
+                <!-- animate these items falling in to trash cans -->
+
+
+
+                <div id="apple-core1" class="Drop_1" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/big_apple_core.png" style=" width: 44px;" /></div>
+                <div id="carton-boxes2" class="Drop_2" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/carton_boxes.png" /></div>
+                <div id="batteries3" class="Drop_3" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/batteries.png" /></div>
+                <div id="banana-peel4" class="Drop_4" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/bannana_peal.png" /></div>
+                <div id="computer5" class="Drop_5" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/computer.png" /></div>
+                <div id="bulb6" class="Drop_6" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/big_bulb.png" /></div>
+                <div id="carrot7" class="Drop_7" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/carrot.png" /></div>
+                <div id="metal-can8" class="Drop_8" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/food_can.png" /></div>
+                <div id="diaper9" class="Drop_9" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/diaper.png" /></div>
+                <div id="oatmeal10" class="Drop_10" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/cereal_bowl.png" /></div>
+                <div id="paper-box11" class="Drop_11" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/juice_carton.png" /></div>
+                <div id="styrofoam12" class="Drop_12" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/foam_tray.png" /></div>
+                <div id="chicken13" class="Drop_13" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/chicken_drum.png" /></div>
+                <div id="milk-carton14" class="Drop_14" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/milk_carton.png" /></div>
+                <div id="mirror15" class="Drop_15" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/mirror.png" /></div>
+                <div id="cracker16" class="Drop_16" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/cracker.png" /></div>
+                <div id="magazine17" class="Drop_17" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/paper.png" /></div>
+                <div id="oil18" class="Drop_18" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/oil_can.png" /></div>
+                <div id="egg19" class="Drop_19" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/egg_shell.png" /></div>
+                <div id="phone20" class="Drop_20" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/phone.png" /></div>
+                <div id="paint21" class="Drop_21" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/paint_bucket.png" /></div>
+                <div id="feather22" class="Drop_22" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/feather.png" /></div>
+                <div id="bag23" class="Drop_23" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/plastic_bag.png" /></div>
+                <div id="socks24" class="Drop_24" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/socks.png" /></div>
+                <div id="fish25" class="Drop_25" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/fish.png" /></div>
+                <div id="plastic-bottle26" class="Drop_26" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/plastic_bottle.png" /></div>
+                <div id="flower27" class="Drop_27" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/flower.png" /></div>
+                <div id="plastic-package28" class="Drop_28" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/sauce_container.png" /></div>
+                <div id="leaf29" class="Drop_29" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/leaf.png" /></div>
+                <div id="soap30" class="Drop_30" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soap_bottle.png" /></div>
+                <div id="hay31" class="Drop_31" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/matt.png" /></div>
+                <div id="soda-bottle32" class="Drop_32" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soda_bottle.png" /></div>
+                <div id="peanut33" class="Drop_33" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/peanut.png" /></div>
+                <div id="soda-can34" class="Drop_34" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/soda_can.png" /></div>
+                <div id="pizza35" class="Drop_35" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/pizza.png" /></div>
+                <div id="tv36" class="Drop_36" style="position:absolute;z-index:1;margin-top:40px;margin-left: 233px;cursor:pointer;"><img src="content/images/Recycle/T.V.png" /></div>
+                <div id="tea37" class="Drop_37" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/tea_bag.png" /></div>
+                <div id="tissue38" class="Drop_38" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/tissue.png" /></div>
+                <div id="toast39" class="Drop_39" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/toast.png" /></div>
+                <div id="tray40" class="Drop_40" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/tray.png" /></div>
+
+
+
+                <!-- second carousel for trash cans -->
+
+                <div id='carousel_container' style="position:absolute; z-index:1; margin-top:71px; margin-left: -15px;">
+                    <div id='carousel_inner'>
+                        <ul id='carousel_ul'>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+                            <li id="trash-li">
+
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                            <li id="compost-li">
+
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+                            <li id="recycle-li">
+
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:100px;height:100px;"></div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <p style="position:absolute;top: 89px;left: 96px;text-align:center;font-size: 36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+
+                <img src="content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="yes-btn">
+
+                <img src="content/images/btn_yes_on.png" />
+                <img src="content/images/btn_yes.png" />
+
+            </div>
+
+            <div id="no-btn">
+
+                <img src="content/images/btn_no_on.png" />
+                <img src="content/images/btn_no.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="retry-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+
+                <img src="content/images/header_5.png" style=" position: absolute;top:25px;left:77px;z-index: 1;width:346px;height:158px;" />
+                <img src="content/images/Background/frame.png" />
+            </div>
+
+            <div id="re-try" style="position:absolute;top:203px;left:100px;cursor:pointer;">
+<!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                    <img src="content/images/btn_replay_on.png" />
+                    <img src="content/images/btn_replay.png" />
+
+            </div>
+
+            <div id="next-button2">
+
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="fail-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+
+
+
+            <div class="background">
+                <div class="Metal-can">
+                </div>
+                <p style="position:absolute;top: 46px;left: 162px;text-align:center;font-size: 36px;"></p>
+
+                <div class="append-score">
+                    <p></p>
+                </div>
+                <img src="content/images/header_7.png" style=" position: absolute;z-index: 1;top: 35px;left: 129px;width:230px;height:164px;" />
+                <img src="content/images/Background/frame.png" />
+            </div>
+
+            <div id="re-try-2" style="position:absolute;top:203px;left:210px;cursor:pointer;">
+<!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                    <img src="content/images/btn_replay_on.png" />
+                    <img src="content/images/btn_replay.png" />
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="flip-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+
+                <p style="position:absolute;top: 136px;left: 128px;text-align:center;">It's <img src="content/images/header_6.png" /> time!</p>
+
+                <img src="content/images/Background/bkg_1.png" />
+            </div>
+
+            <div id="next-button3">
+                <a href="http://changemyworldnow.education/user" target="_parent">
+                    <img src="content/images/Arrows/btn_next_on.png" />
+                    <img src="content/images/Arrows/btn_next.png" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
