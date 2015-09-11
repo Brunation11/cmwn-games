@@ -1,78 +1,15 @@
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        //change the background class
-        $("#main-background").removeClass('intro').addClass('page');
-        //remove the intro title
-        $("#main-title").removeClass('intro-title');
-
-
-        window.GameApp = {
-            "idBtnNext": $("#sign").find("a"),
-            "idBtnNextSound": $("#btn-next-sound"),
-            "idContentWrapper": $(".content-wrapper"),
-
-            screenID: 5
-        };
-
-        GameApp.loadContent = function(id) {
-            //if (id == 3 || id == 5 || id == 21) {//id == 3 //game
-            if (id == 5 || id == 21) {//id == 3 //game
-                
-                GameApp.idBtnNext.hide();
-            } else {
-                GameApp.idBtnNext.show();
-            }
-
-            var screen_location = "@Url.Content("~/Content/screens/")";
-                var screen_name = "_screen" + id;
-                var screen_ext = ".html";
-
-                console.log(screen_location + screen_name + screen_ext);
-
-                GameApp.idContentWrapper.load(screen_location + screen_name + screen_ext);
-            };
-            GameApp.loadContent(5);
-
-            GameApp.onClickBtnNext = function () {
-                //alert(GameApp.screenID);
-
-                GameApp.idBtnNextSound[0].play();
-                GameApp.screenID++;
-                GameApp.loadContent(GameApp.screenID);
-
-                return false;
-            };
-
-            GameApp.onWormPartsPassed = function () {
-
-                GameApp.idBtnNext.show();
-            };
-
-            GameApp.idBtnNext.click(GameApp.onClickBtnNext);
-
-            $('#game-complete').modal('hide');
-
-            $('.text-modal').append("<p>Are you sure you want to quit?</p>");
-
-
-            $("#close").click(function () {
-                $('#game-complete').modal('show');
-            });
-
-
-            $("#no").click(function () {
-                $('#game-complete').modal('hide');
-            });
-        })
-</script>
+<audio id="btn-next-sound" preload="auto">
+    <source src="content/audio/complete-maze.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
 
 <div class="content-wrapper"></div>
 <!-- /.content-wrapper -->
+
 <!-- #close (BTN_CLOSE) -->
 <div id="close" style="position:absolute;">
     <div class="col-sm-4 content-box">
-        <img src="~/Content/images/btn_close.png" class="img-responsive" alt="Responsive image">
+        <img src="content/images/btn_close.png" class="img-responsive" alt="Responsive image">
     </div>
 </div>
 
@@ -81,63 +18,53 @@
     <div class="col-sm-4 content-box">
         <a href="#">
             <!--/ActionItem/AI7-->
-
             <div class="flip-on" style="z-index:10;">
-                <img src="~/Content/images/btn_arrow_next.png" class="img-responsive" alt="Responsive image">
+                <img src="content/images/btn_arrow_next.png" class="img-responsive" alt="Responsive image">
             </div>
 
             <div class="flip-off" style="z-index:9;">
-                <img src="~/Content/images/btn_arrow_next_on.png" class="img-responsive" alt="Responsive image">
+                <img src="content/images/btn_arrow_next_on.png" class="img-responsive" alt="Responsive image">
             </div>
         </a>
     </div>
 </div>
 <!-- /#sign -->
+
 <!-- #GAME-COMPLETE -->
-<div class="modal fade" id="game-complete" tabindex="-1" role="dialog"
-     aria-labelledby="actionCompleteLabel" aria-hidden="false">
-    <div class="modal-dialog" style="margin-left: 118px; top:85px;">
+<div class="modal fade" id="game-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false">
+    <div class="modal-dialog" style="margin-left:118px; top:85px;">
         <div class="modal-content" style="width:393px; height:310px;">
             <h2><strong>Are you sure you want to quit?</strong></h2>
         </div>
+
         <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:405px; height:325px;">
             <div class="modal-body custom-font modal-text">
-
-                <div class="popup-image" style="margin-left: -49px; margin-top: -91px;">
-                    <img src="~/Content/images/actionitem/chain_frame.png"
-                         style="width:451px; margin-top:-259px; height:370px;" />
-
+                <div class="popup-image" style="margin-left:-49px; margin-top:-91px;">
+                    <img src="content/images/actionitem/chain_frame.png" style="width:451px; margin-top:-259px; height:370px;" />
 
                     <div id="yes">
-                        <a href="/ActionItem/AI1">
+                        <a href="#">
                             <div id="option1">
                                 <div class="flip-on">
-                                    <img src="~/Content/images/actionitem/yes1.png"
-                                         style="position: absolute; margin-top: -196px; margin-left: 237px; width: 126px;"
-                                         alt="yes" />
+                                    <img src="content/images/actionitem/yes1.png" style="position:absolute; margin-top:-196px; margin-left:237px; width:126px;" alt="yes" />
                                 </div>
-                                <div class="flip-off" style="margin-bottom: 150px;z-index:9;">
-                                    <img src="~/Content/images/actionitem/yes3.png"
-                                         style="position: absolute; margin-top: -196px; margin-left: 237px; width: 126px;"
-                                         alt="yes" />
+
+                                <div class="flip-off" style="margin-bottom:150px; z-index:9;">
+                                    <img src="content/images/actionitem/yes3.png" style="position:absolute; margin-top:-196px; margin-left:237px; width:126px;" alt="yes" />
                                 </div>
                             </div>
                         </a>
                     </div>
                     <!-- /#YES -->
 
-
                     <div id="no">
                         <div id="option2">
                             <div class="flip-on">
-                                <img src="~/Content/images/actionitem/no2.png"
-                                     style="position: absolute; margin-top: -219px; margin-left: 237px; width: 110px;"
-                                     alt="no" />
+                                <img src="content/images/actionitem/no2.png" style="position:absolute; margin-top:-219px; margin-left:237px; width:110px;" alt="no" />
                             </div>
+
                             <div class="flip-off">
-                                <img src="~/Content/images/actionitem/no3.png"
-                                     style="position: absolute; margin-top: -219px; margin-left: 237px; width: 110px;"
-                                     alt="no" />
+                                <img src="content/images/actionitem/no3.png" style="position:absolute; margin-top:-219px; margin-left:237px; width:110px;" alt="no" />
                             </div>
                         </div>
                     </div>
@@ -149,9 +76,3 @@
     </div>
 </div>
 <!-- /#GAME-COMPLETE -->
-
-<audio id="btn-next-sound" preload="auto">
-    <source src="~/Content/audio/complete-maze.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
-
