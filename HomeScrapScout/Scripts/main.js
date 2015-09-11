@@ -146,8 +146,10 @@
         console.log($('#notebook span.emphasis').text());
        if ($('#notebook span.emphasis').text() <= 0) {
             $('#notebook').fadeOut(500);
-            $('#howcouldyou').fadeIn(500);
-            $('#howcouldyou a.next').fadeIn(500);
+            $('#betterway').fadeIn(500);
+            $('#betterway a.next').fadeIn(500);
+            // $('#howcouldyou').fadeIn(500);
+            // $('#howcouldyou a.next').fadeIn(500);
             $('#game').get(0).pause();
             $('#slide17-18').get(0).currentTime = 0;
             $('#slide17-18').get(0).play();
@@ -156,13 +158,13 @@
            $('#notebook .hint-popup2').fadeIn(500);
         }
     });
-    $('#howcouldyou a.next').click(function () {
-        $('#howcouldyou').fadeOut(500);
-        $('#betterway').fadeIn(500);
-        $('#betterway a.next').fadeIn(500);
-        $('#slide17-18').get(0).currentTime = 0;
-        $('#slide17-18').get(0).play();
-    });
+    // $('#howcouldyou a.next').click(function () {
+    //     $('#howcouldyou').fadeOut(500);
+    //     $('#betterway').fadeIn(500);
+    //     $('#betterway a.next').fadeIn(500);
+    //     $('#slide17-18').get(0).currentTime = 0;
+    //     $('#slide17-18').get(0).play();
+    // });
     $('#betterway a.next').click(function () {
         $('#betterway').fadeOut(500);
         $('#letslook').fadeIn(500);
@@ -434,30 +436,30 @@
 
 
     $('#notebook a.prev').click(function () {
-
         $('#knowledge').fadeIn(500);
         $('#notebook').fadeOut(500);
 
 
     });
-    $('#howcouldyou a.prev').click(function () {
-        $('#howcouldyou').fadeOut(500);
-        $('#notebook').fadeIn(500);
+    // $('#howcouldyou a.prev').click(function () {
+    //     $('#howcouldyou').fadeOut(500);
+    //     $('#notebook').fadeIn(500);
 
 
-    });
+    // });
     $('#betterway a.prev').click(function () {
         $('#betterway').fadeOut(500);
-        $('#howcouldyou').fadeIn(500);
-        $('#slide17-18').get(0).currentTime = 0;
-        $('#slide17-18').get(0).play();
+        $('#notebook').fadeIn(500);
+        // $('#howcouldyou').fadeIn(500);
+        // $('#slide17-18').get(0).currentTime = 0;
+        // $('#slide17-18').get(0).play();
 
     });
     $('#letslook a.prev').click(function () {
         $('#letslook').fadeOut(500);
         $('#betterway').fadeIn(500);
-        $('#slide19').get(0).currentTime = 0;
-        $('#slide19').get(0).play();
+        $('#slide17-18').get(0).currentTime = 0;
+        $('#slide17-18').get(0).play();
 
 
 
@@ -466,6 +468,8 @@
     $('#sort a.prev').click(function () {
         $('#sort').fadeOut(500);
         $('#letslook').fadeIn(500);
+        $('#slide19').get(0).currentTime = 0;
+        $('#slide19').get(0).play();
         // $('#startGame').fadeIn(500);
 
     });
