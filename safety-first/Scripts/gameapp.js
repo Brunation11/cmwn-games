@@ -53,7 +53,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
         'mainImageUrl': content_path + "Content/_assets/elements/person_parent.png",
         'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
         'correct' : 1,
-        'text': "<span class=\"some-css-class\">Open for <br/> parents or guardians.</span>"
+        'text': "<p style='margin-top:10px;'>Open for <br/> parents or guardians.</p>"
     },
      {
          'name': "brother",
