@@ -7692,3 +7692,25 @@ input[type="checkbox"].input-validation-error {
 .Main-button img:first-child:hover {
   opacity: 0;
 }
+/* Main items list*/
+.Main-slides {
+  overflow: hidden;
+  position: absolute;
+  width: 375px;
+  height: 107px;
+  z-index: 11;
+  margin-left: 200px;
+  margin-top: 47px;
+}
+.Main-slides ul {
+  list-style: none;
+}
+.Main-slides ul li {
+  position: relative;
+}
+.Main-slides ul li h2 {
+  float: right;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
