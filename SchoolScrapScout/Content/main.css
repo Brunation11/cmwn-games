@@ -400,6 +400,12 @@ img {
     bottom: 0px;
 }
 
+.slider > .backarrows .nextb {
+    display: none;
+    left: 17%;
+    bottom: 0px;
+}
+
 .drag {
     opacity: 0;
 }
@@ -478,6 +484,32 @@ a.next {
         background-size: 100%;
     }
 
+
+a.nextb {
+    position: absolute;
+    bottom: -67px;
+    right: 5%;
+    background: url("_assets/elements/Buttons/btn_back.png") 0 0 no-repeat;
+    background-size: 100%;
+    width: 72px;
+    height: 100px;
+    z-index: 50;
+    display: none;
+}
+
+    a.nextb:hover {
+        background: url("_assets/elements/Buttons/btn_back_on.png") 0 0 no-repeat;
+        background-size: 100%;
+    }
+
+
+
+
+
+
+
+
+
 a.prev {
     position: absolute;
     bottom: 2%;
@@ -534,6 +566,31 @@ a.prev {
     .arrows img {
         height: 32px;
     }
+
+
+.backarrows {
+    position: absolute;
+    width: 0%;
+    left: 16%;
+    bottom: 6px;
+    z-index: 20;
+}
+
+    .backarrows .backarrows-inctive {
+        position: absolute;
+        width: 100%;
+        padding: 5%;
+        bottom: 0;
+        z-index: 10;
+    }
+
+    .backarrows img {
+        height: 32px;
+    }
+
+
+
+
 
 .slide.ng-hide-add,
 .slide.ng-hide-remove {
