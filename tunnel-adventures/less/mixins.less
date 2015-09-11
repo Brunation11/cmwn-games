@@ -1,0 +1,25 @@
+@import "vars";
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.col-radius {
+  border: solid 15px @col-border-color;
+  .border-radius(45px);
+}
+.col-bg {
+  background: @col-bg-color;
+}
+
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
