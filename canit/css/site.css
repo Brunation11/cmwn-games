@@ -7380,3 +7380,13 @@ input[type="checkbox"].input-validation-error {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+/* Main button */
+.Main-button {
+  position: absolute;
+  z-index: 99;
+  margin-left: 400px;
+  margin-top: 92px;
+}
+.Main-button img {
+  width: 150px;
+}
