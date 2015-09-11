@@ -53,11 +53,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
         'mainImageUrl': content_path + "Content/_assets/elements/person_parent.png",
         'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
         'correct' : 1,
-<<<<<<< HEAD
         'text': "<p style='margin-top:10px;'>Open for <br/> parents or guardians.</p>"
-=======
-        'text': "<span class=\"some-css-class\">Open for <br/> parents or guardians.</span>"
->>>>>>> adding .htpasswd file
     },
      {
          'name': "brother",
@@ -105,7 +101,11 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
           'mainImageUrl': content_path + "Content/_assets/elements/person_neighbor.png",
           'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
           'correct': 2,
+<<<<<<< HEAD
           'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
+=======
+          'text': "Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home."
+>>>>>>> small change to seaturtle initialize
       }, {
           'name': "gas_man",
           'mainImageUrl': content_path + "Content/_assets/elements/person_gas_man.png",
