@@ -21,9 +21,14 @@
         $('#btnClick').currentTime = 0;
         $('#btnClick').get(0).play();
     });
+
+    $('.btn-click, .nextb, .prev').click(function () {
+        $('#btnClick').currentTime = 0;
+        $('#btnClick').get(0).play();
+    });
     
     $('#home .play').click(function () {
-        $('#game').get(0).play();
+         $('#game').get(0).play();
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
         
@@ -45,19 +50,44 @@
         $('#cardFlip').get(0).play();
         if ($('#Draining > .card').hasClass('flipped') && $('#Destroing > .card').hasClass('flipped') && $('#Hunting > .card').hasClass('flipped')) {
             setTimeout(function () { $('#noseWords .next').fadeIn(500); }, 1000);
+            setTimeout(function () { $('#noseWords .nextb').fadeIn(500); }, 1000);  
         };
         
     });
     $('#noseWords .next').click(function () {
-        $('#game').get(0).play();
+         $('#game').get(0).play();
         $('#noseWords').fadeOut(500);
         $('#upToUs').fadeIn(500);
         $('#upToUs a.next').fadeIn(500);
+        $('#upToUs a.nextb').fadeIn(500);
     });
+    
+    $('#noseWords .nextb').click(function () {
+        $('#home').fadeIn(200);
+        $('#noseWords').fadeOut(500);
+        
+    });
+
+    $('#upToUs .nextb').click(function () {
+        $('#noseWords').fadeIn(500);
+        $('#upToUs').fadeOut(500);
+        $('#upToUs a.next').fadeOut(500);
+        $('#noseWords .next').fadeIn(500);
+    });
+
     $('#upToUs .next').click(function () {
         $('#upToUs').fadeOut(500);
         $('#startGame').fadeIn(500);
+        $('#startGame a.nextb').fadeIn(500);
     });
+
+   $('#startGame .nextb').click(function () {
+        $('#upToUs').fadeIn(500);
+        $('#startGame').fadeOut(500);
+        $('#upToUs a.next').fadeIn(500);
+    });
+
+
 
     $('#startGame .yes-btn a').click(function () {
         $('#startGame').fadeOut(500);
@@ -65,40 +95,102 @@
         $('#knowledge a.next').fadeIn(500);
         $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/Content/_assets/Background/BKG_3.png)');
         $('.bkg-image').css('background-size', '104%');
+        $('#knowledge a.nextb').fadeIn(500);
     });
+
+
+    $('#sort a.nextb').click(function () {
+            $('#notebook').fadeIn(500);
+            $('#notebook a.next').fadeIn(500);
+            $('#sort').fadeOut(500);
+            $('#sort a.next').fadeOut(500);
+            $('#game').get(0).pause();
+            $('#slide17-18').get(0).currentTime = 0;
+            $('#slide17-18').get(0).play();
+    });
+
+
+
+
+
     $('#sort a.next').click(function () {
         $('#sort').fadeOut(500);
         $('#definitely').fadeIn(500);
         $('#definitely a.next').fadeIn(500);
         $('#slide8').get(0).currentTime = 0;
         $('#slide8').get(0).play();
+        $('#definitely a.nextb').fadeIn(500);
     });
+    
+    $('#definitely a.nextb').click(function () {
+        $('#sort').fadeIn(500);
+        $('#definitely').fadeOut(500);
+        $('#definitely a.next').fadeOut(500);
+        $('#slide8').get(0).currentTime = 0;
+        $('#slide8').get(0).play();
+    });
+
     $('#definitely a.next').click(function () {
         $('#definitely').fadeOut(500);
         $('#recycle').fadeIn(500);
         $('#recycle a.next').fadeIn(500);
         $('#slide9').get(0).currentTime = 0;
         $('#slide9').get(0).play();
+        $('#recycle a.nextb').fadeIn(500);
     });
+    
+
+    $('#recycle a.nextb').click(function () {
+        $('#definitely').fadeIn(500);
+        $('#recycle').fadeOut(500);
+        $('#definitely a.next').fadeIn(500);
+        $('#recycle a.next').fadeOut(500);
+        $('#slide9').get(0).currentTime = 0;
+        $('#slide9').get(0).play();
+    });
+
     $('#recycle a.next').click(function () {
         $('#recycle').fadeOut(500);
         $('#compost').fadeIn(500);
+        $('#slide10').get(0).currentTime = 0;
+        $('#slide10').get(0).play();
+        $('#compost a.nextb').fadeIn(500);
         $('#compost a.next').fadeIn(500);
+    });
+   
+    $('#compost a.nextb').click(function () {
+        $('#recycle').fadeIn(500);
+        $('#recycle a.next').fadeIn(500);
+        $('#compost').fadeOut(500);
+        $('#compost a.next').fadeOut(500);
         $('#slide10').get(0).currentTime = 0;
         $('#slide10').get(0).play();
     });
+
     $('#compost a.next').click(function () {
         $('#compost').fadeOut(500);
         $('#donate').fadeIn(500);
         $('#donate a.next').fadeIn(500);
         $('#slide11').get(0).currentTime = 0;
         $('#slide11').get(0).play();
+        $('#donate a.nextb').fadeIn(500);
     });
+
+    $('#donate a.nextb').click(function () {
+        $('#compost').fadeIn(500);
+        $('#compost a.next').fadeIn(500);
+        $('#donate').fadeOut(500);
+        $('#donate a.next').fadeOut(500);
+        $('#slide11').get(0).currentTime = 0;
+        $('#slide11').get(0).play();
+
+    });
+
     $('#donate a.next').click(function () {
         $('#donate').fadeOut(500);
         $('#betterway').fadeIn(500);
         $('#betterway a.next').fadeIn(500);
-        
+        $('#betterway a.nextb').fadeIn(500);
     });
     $('.remind-time label span').click(function () {
         $('#checkbox').get(0).currentTime = 0;
@@ -120,10 +212,21 @@
         $('#reminder3 a.next').fadeIn(500);
     });
 
+
+    $('#knowledge a.nextb').click(function () {
+        $('#startGame').fadeIn(500);
+        $('#startGame a.next').fadeIn(500);
+        $('#knowledge').fadeOut(500);
+        $('#knowledge a.next').fadeOut(500);
+        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/Content/_assets/Background/BKG_2.png)');
+        $('.bkg-image').css('background-size', '100%');
+    });
+
     $('#knowledge a.next').click(function () {
         $('#knowledge').fadeOut(500);
         $('#notebook').fadeIn(500);
         $('#notebook a.next').fadeIn(500);
+         $('#notebook a.nextb').fadeIn(500);
     });
     $('.hint-btn').click(function () {
         $('.hint-popup').fadeIn(500);
@@ -133,6 +236,16 @@
     $('.yougotit').click(function () {
         $('.hint-popup, .hint-popup2').fadeOut(500);
     });
+   
+    $('#notebook a.nextb').click(function () {
+        $('#knowledge').fadeIn(500);
+        $('#knowledge a.next').fadeIn(500);
+        $('#notebook').fadeOut(500);
+        $('#notebook a.next').fadeOut(500);
+        $('#notebook a.nextb').fadeOut(500);
+    });
+
+
     $('#notebook a.next').fadeIn(500);
     $('#notebook a.next').click(function () {
         console.log($('#notebook span.emphasis').text());
@@ -143,11 +256,16 @@
             $('#game').get(0).pause();
             $('#slide17-18').get(0).currentTime = 0;
             $('#slide17-18').get(0).play();
+            $('#sort a.nextb').fadeIn(500);
         }
         else {
            $('#notebook .hint-popup2').fadeIn(500);
         }
     });
+    
+
+
+
     $('#howcouldyou a.next').click(function () {
         $('#howcouldyou').fadeOut(500);
         $('#betterway').fadeIn(500);
@@ -155,16 +273,30 @@
         $('#slide17-18').get(0).currentTime = 0;
         $('#slide17-18').get(0).play();
     });
+    $('#betterway a.nextb').click(function () {
+        $('#donate').fadeIn(500);
+        $('#betterway').fadeOut(500);
+        $('#betterway a.next').fadeOut(500);
+    });
     $('#betterway a.next').click(function () {
         $('#betterway').fadeOut(500);
         $('#letslook').fadeIn(500);
         $('#letslook a.next').fadeIn(500);
         $('#slide19').get(0).currentTime = 0;
         $('#slide19').get(0).play();
+        $('#letslook a.nextb').fadeIn(500);
+    });
+    $('#letslook a.nextb').click(function () {
+        $('#betterway').fadeIn(500);
+        $('#letslook').fadeOut(500);
+        $('#letslook a.next').fadeOut(500);
+        $('#slide19').get(0).currentTime = 0;
+        $('#slide19').get(0).play();
     });
     $('#letslook a.next').click(function () {
         $('#letslook').fadeOut(500);
         $('#Listbreak1').fadeIn(500);
+        $('#Listbreak1 a.nextb').fadeIn(500);
         $('#Listbreak1 a.next').fadeIn(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
@@ -197,6 +329,7 @@
                         if ((num - 1) == ($('#step .slider .slide').length)) {
                             $('#Listbreak1').fadeOut(500);
                             $('#Listbreak').fadeIn(500);
+                            $('#Listbreak a.nextb').fadeIn(500);
                             $('#Listbreak a.next').fadeIn(500);
                             $('#game').get(0).pause();
                             $('#slide21').get(0).currentTime = 0;
@@ -217,38 +350,83 @@
         /*---------------------------------------------------*/
         /*-------------------------------------*/
     });
+
+    $('#Listbreak1 a.nextb').click(function () {
+        $('#letslook').fadeIn(500);
+        $('#Listbreak1').fadeOut(500);
+        $('#Listbreak1 a.next').fadeOut(500);
+        $('#game').get(0).currentTime = 0;
+        $('#game').get(0).play();
+        $('#letslook a.next').fadeIn(500);
+    });
+
     $('#Listbreak1 a.next').click(function () {
         $('#Listbreak1').fadeOut(500);
         $('#Listbreak').fadeIn(500);
         $('#Listbreak a.next').fadeIn(500);
         $('#slide22').get(0).currentTime = 0;
         $('#slide22').get(0).play();
-
-        
-
+        $('#Listbreak a.nextb').fadeIn(500);
     });
+
+    $('#Listbreak a.nextb').click(function () {
+        $('#Listbreak1').fadeIn(500);
+        $('#Listbreak').fadeOut(500);
+        $('#Listbreak a.next').fadeOut(500);
+        $('#slide22').get(0).currentTime = 0;
+        $('#slide22').get(0).play();
+        $('#Listbreak1 a.next').fadeIn(500);
+    });
+
     $('#Listbreak a.next').click(function () {
         $('#Listbreak').fadeOut(500);
         $('#greenest').fadeIn(500);
         $('#greenest a.next').fadeIn(500);
+        $('#greenest a.nextb').fadeIn(500);
     });
+    
+    $('#greenest a.nextb').click(function () {
+        $('#Listbreak').fadeIn(500);
+        $('#greenest').fadeOut(500);
+        $('#greenest a.next').fadeOut(500);
+    });
+
     $('#greenest a.next').click(function () {
         $('#greenest').fadeOut(500);
         $('#learned').fadeIn(500);
         $('#learned a.next').fadeIn(500);
+        $('#learned a.nextb').fadeIn(500);
     });
     $('#learned textarea ').click(function () {
         $('#slide23reminders').get(0).currentTime = 0;
         $('#slide23reminders').get(0).play();
 
     });
+
+    $('#learned a.nextb').click(function () {
+        $('#greenest').fadeIn(500);
+        $('#learned').fadeOut(500);
+        $('#learned a.next').fadeOut(500);
+    });
+
     $('#learned a.next').click(function () {
         $('#learned').fadeOut(500);
         $('#solution').fadeIn(500);
         $('#solution a.next').fadeIn(500);
         $('#slide24').get(0).currentTime = 0;
         $('#slide24').get(0).play();
+        $('#solution a.nextb').fadeIn(500);
     });
+    
+    $('#solution a.nextb').click(function () {
+        $('#learned').fadeIn(500);
+        $('#solution').fadeOut(500);
+        $('#solution a.next').fadeOut(500);
+        $('#slide24').get(0).currentTime = 0;
+        $('#slide24').get(0).play();
+    });
+
+
     $('#solution a.next').click(function () {
         $('#solution').fadeOut(500);
         $('#flip').fadeIn(500);
