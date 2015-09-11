@@ -101,6 +101,7 @@
 
     $('#sort a.nextb').click(function () {
             $('#notebook').fadeIn(500);
+            $('#notebook a.next').fadeIn(500);
             $('#sort').fadeOut(500);
             $('#sort a.next').fadeOut(500);
             $('#game').get(0).pause();
@@ -142,6 +143,7 @@
     $('#recycle a.nextb').click(function () {
         $('#definitely').fadeIn(500);
         $('#recycle').fadeOut(500);
+        $('#definitely a.next').fadeIn(500);
         $('#recycle a.next').fadeOut(500);
         $('#slide9').get(0).currentTime = 0;
         $('#slide9').get(0).play();
@@ -150,14 +152,15 @@
     $('#recycle a.next').click(function () {
         $('#recycle').fadeOut(500);
         $('#compost').fadeIn(500);
-        $('#compost a.next').fadeIn(500);
         $('#slide10').get(0).currentTime = 0;
         $('#slide10').get(0).play();
         $('#compost a.nextb').fadeIn(500);
+        $('#compost a.next').fadeIn(500);
     });
    
     $('#compost a.nextb').click(function () {
         $('#recycle').fadeIn(500);
+        $('#recycle a.next').fadeIn(500);
         $('#compost').fadeOut(500);
         $('#compost a.next').fadeOut(500);
         $('#slide10').get(0).currentTime = 0;
@@ -175,6 +178,7 @@
 
     $('#donate a.nextb').click(function () {
         $('#compost').fadeIn(500);
+        $('#compost a.next').fadeIn(500);
         $('#donate').fadeOut(500);
         $('#donate a.next').fadeOut(500);
         $('#slide11').get(0).currentTime = 0;
@@ -235,7 +239,8 @@
    
     $('#notebook a.nextb').click(function () {
         $('#knowledge').fadeIn(500);
-        $('#notebook').fadeIn(500);
+        $('#knowledge a.next').fadeIn(500);
+        $('#notebook').fadeOut(500);
         $('#notebook a.next').fadeOut(500);
         $('#notebook a.nextb').fadeOut(500);
     });
@@ -324,7 +329,7 @@
                         if ((num - 1) == ($('#step .slider .slide').length)) {
                             $('#Listbreak1').fadeOut(500);
                             $('#Listbreak').fadeIn(500);
-                            $('#Listbreak1 a.nextb').fadeIn(500);
+                            $('#Listbreak a.nextb').fadeIn(500);
                             $('#Listbreak a.next').fadeIn(500);
                             $('#game').get(0).pause();
                             $('#slide21').get(0).currentTime = 0;
