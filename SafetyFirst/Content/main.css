@@ -383,6 +383,7 @@ margin:0 auto;
 visibility:hidden;
 width:auto !important;
 max-height:80px;
+margin-bottom: 6px;
 }
 #start {
 display:block;
@@ -979,7 +980,7 @@ min-height:400px;
 #letsSee1 .text-box,
 #goodjob .text-box {
 width: 60%;
-padding: 16% 0;
+padding: 25% 0;
 margin: 0;
 color: #000;
 font-size: 25px;
@@ -995,7 +996,7 @@ font-family:'akadylan_collageregular';
 text-shadow: 0 0 10px #5853b1, 2px 2px 2px #5853b1, -2px -2px 2px #5853b1
 }
     #letsSee1 .text-box {
-    width:75%}
+    width:84%}
 /*--------------------------------*/
 #noseWords {
 font-family:source_sans_prosemibold;
@@ -1015,12 +1016,12 @@ min-height:400px;
 }
 #noseWords .text-box, #flip .inner {
 width: 69%;
-padding: 27% 0;
+padding: 30% 0;
 margin: 0;
 background: url('_assets/elements/frame_1.png') center top no-repeat;
 background-size: 100%;
 color: #000;
-font-size: 25px;
+font-size: 23px;
 min-height: 320px;
 float: right;
 }
