@@ -1,7 +1,7 @@
 $(document).ready(function () {
         $('.enter').click(function () {
             $('.enter').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai6.html");
+                $("#putcontenthere").load("action_items/ai6.html");
             });
             designBtn.play();
         });

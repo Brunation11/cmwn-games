@@ -56,7 +56,7 @@
                 if (correct_items.length === 4) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -83,7 +83,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -109,7 +109,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -135,7 +135,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -162,7 +162,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -189,7 +189,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -215,7 +215,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -243,7 +243,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -270,7 +270,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -296,7 +296,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -322,7 +322,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }
@@ -348,7 +348,7 @@
                 if (correct_items.length === 3) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai11.html");
+                        $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
                 }
             }

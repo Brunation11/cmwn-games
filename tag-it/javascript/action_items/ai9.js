@@ -91,13 +91,13 @@ $(document).ready(function () {
         });
         $('.forward5').click(function () {
             $('.forward2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai10.html");
+                $("#putcontenthere").load("action_items/ai10.html");
             });
             nex.play();
         });
         $('.back').click(function () {
             $('.back').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai8.html");
+                $("#putcontenthere").load("action_items/ai8.html");
             });
             nex.play();
         });

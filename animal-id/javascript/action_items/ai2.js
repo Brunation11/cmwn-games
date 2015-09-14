@@ -4,7 +4,7 @@
 
 $('.nextBtn2').click(function () {
             $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai3.html");
+                $("#putcontenthere").load("action_items/ai3.html");
             });
             $('.modal-backdrop fade in').css('display','none');
             other_screen.play();

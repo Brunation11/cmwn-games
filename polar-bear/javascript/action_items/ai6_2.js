@@ -19,15 +19,15 @@ $(document).ready(function () {
     });
 
     $('#back-button1').click(function () {
-        $("#putcontenthere").load("/action_items/ai6.html");
+        $("#putcontenthere").load("action_items/ai6.html");
     });
 
     // $('.file-uploads').click(function () {
-    //     $("#putcontenthere").load("/action_items/ai7.html");
+    //     $("#putcontenthere").load("action_items/ai7.html");
     // });
 
     $('#next-button6').click(function () {
-        $("#putcontenthere").load("/action_items/ai8.html");
+        $("#putcontenthere").load("action_items/ai8.html");
     });
            
     // First modal

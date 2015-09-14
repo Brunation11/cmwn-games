@@ -23,13 +23,13 @@
         });
         $('.forward2').click(function () {
             $('.forward2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai7.html");
+                $("#putcontenthere").load("action_items/ai7.html");
             });
             click.play();
         });
         $('.back').click(function () {
             $('.back').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai5.html");
+                $("#putcontenthere").load("action_items/ai5.html");
             });
             click.play();
         });

@@ -14,7 +14,7 @@ $(document).ready(function () {
         });
         $('.forward1').click(function () {
             $('.forward1').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
+                $("#putcontenthere").load("action_items/ai4.html");
             });
             nex.play();
         });
@@ -28,7 +28,7 @@ $(document).ready(function () {
         });
         $('.back').click(function () {
             $('.back').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai2.html");
+                $("#putcontenthere").load("action_items/ai2.html");
             });
             nex.play();
         });

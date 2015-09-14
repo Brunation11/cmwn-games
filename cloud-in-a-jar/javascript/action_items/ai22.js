@@ -29,7 +29,7 @@
 
         $('#btn2').click(function () {
             $('#btn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai23.html");
+                $("#putcontenthere").load("action_items/ai23.html");
             });
             try {
                 btn_click.play();

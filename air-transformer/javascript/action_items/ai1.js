@@ -14,7 +14,7 @@
 
         $('#next_btn').click(function () {
             $('#next_btn').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai11.html");
+                $("#putcontenthere").load("action_items/ai11.html");
             });
             try
             {

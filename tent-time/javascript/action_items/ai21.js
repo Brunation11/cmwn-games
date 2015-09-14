@@ -8,7 +8,7 @@ $(document).ready(function () {
 
         $('#btn1').click(function () {
             $('#btn1').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai20.html");
+                $("#putcontenthere").load("action_items/ai20.html");
 
             });
             try {
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 $("#tfq2b").val('');
                 alert('Your camp name cannot be empty!');
             } else {
-                $("#putcontenthere").load("/action_items/ai22.html");
+                $("#putcontenthere").load("action_items/ai22.html");
             }
         });
 

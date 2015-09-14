@@ -3,7 +3,7 @@
         titles.play();
         $('.design').click(function () {
             $('.design').delay(3000).delay(2000, function () {
-                $("#putcontenthere").load("/action_items/ai2.html");
+                $("#putcontenthere").load("action_items/ai2.html");
             });
             designBtn.play();
         });

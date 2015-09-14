@@ -62,7 +62,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai9.html");
+                        $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -90,7 +90,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                         $("#putcontenthere").load("/action_items/ai9.html");
+                         $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -117,7 +117,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                         $("#putcontenthere").load("/action_items/ai9.html");
+                         $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -144,7 +144,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                         $("#putcontenthere").load("/action_items/ai9.html");
+                         $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -171,7 +171,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                        $("#putcontenthere").load("/action_items/ai9.html");
+                        $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -198,7 +198,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                         $("#putcontenthere").load("/action_items/ai9.html");
+                         $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -226,7 +226,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                       $("#putcontenthere").load("/action_items/ai9.html");
+                       $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }
@@ -253,7 +253,7 @@ var meter;
                 if (correct_items.length === 8) {
                     //pop or redirect your game complete screen
                     setTimeout(function () {
-                         $("#putcontenthere").load("/action_items/ai9.html");
+                         $("#putcontenthere").load("action_items/ai9.html");
                     }, 2000);
                 }
             }

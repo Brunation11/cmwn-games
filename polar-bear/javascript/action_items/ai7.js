@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     $('#post-button').click(function () {
-        $("#putcontenthere").load("/action_items/ai8.html");
+        $("#putcontenthere").load("action_items/ai8.html");
     });
 });
     

@@ -18,7 +18,7 @@ $('.bkg-image').css('background-image','url(/content/images/BKG_3.png)');
 
         $('.last3').click(function () {
             $('.last3').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai34.html");
+                $("#putcontenthere").load("action_items/ai34.html");
             });
             click.play();
         });

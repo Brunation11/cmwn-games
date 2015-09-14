@@ -18,7 +18,7 @@ $(document).ready(function () {
         });
         $('#btn1').click(function () {
             
-                $("#putcontenthere").load("/action_items/ai5.html");
+                $("#putcontenthere").load("action_items/ai5.html");
             
             btn_click.play();
         });

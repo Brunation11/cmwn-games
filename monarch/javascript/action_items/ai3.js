@@ -38,15 +38,15 @@ $(document).ready(function () {
     // });
 
     $('#no-email').click(function () {
-         $("#putcontenthere").load("/action_items/ai7.html");
+         $("#putcontenthere").load("action_items/ai7.html");
      });
 
     // $('#no-app').click(function () {
-    //         $("#putcontenthere").load("/action_items/ai4_2.html");
+    //         $("#putcontenthere").load("action_items/ai4_2.html");
     // });
 
     // $('#app').click(function () {
-    //         $("#putcontenthere").load("/action_items/ai4.html");
+    //         $("#putcontenthere").load("action_items/ai4.html");
     // });
 
 });

@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('.s4').hide().fadeIn(8000);
         $('#btn').click(function () {
             $('#btn').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai5.html");
+                $("#putcontenthere").load("action_items/ai5.html");
             });
             try {
                 btn_click.play();

@@ -1,4 +1,4 @@
-$("#putcontenthere").load("/action_items/ai1.html");
+$("#putcontenthere").load("action_items/ai1.html");
      $(document).ready(function () {
         startGame();
         $(".draggable").click (function(){

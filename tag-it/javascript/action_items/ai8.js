@@ -84,13 +84,13 @@
         });
         $('.forward5').click(function () {
             $('.back5').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai9.html");
+                $("#putcontenthere").load("action_items/ai9.html");
             });
             nex.play();
         });
         $('.back').click(function () {
             $('.back').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai7.html");
+                $("#putcontenthere").load("action_items/ai7.html");
             });
             nex.play();
         });

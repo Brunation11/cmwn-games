@@ -109,7 +109,7 @@ function updateTimer() {
             background.pause();
             $("#button-start").click(function () {
                 $('#game-info').modal('hide');
-                $("#putcontenthere").load("/action_items/ai3.html");
+                $("#putcontenthere").load("action_items/ai3.html");
 
                 // setTimeout(function () { location.reload(); }, 10);
                 // startGame.load();

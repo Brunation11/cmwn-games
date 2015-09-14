@@ -11,7 +11,7 @@
 
         $('#btn1').click(function () {
             $('#btn1').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai14.html");
+                $("#putcontenthere").load("action_items/ai14.html");
             });
             try {
                 click.play();
@@ -53,7 +53,7 @@
                 $("#tfq2b").val('');
                 alert('Your camp name cannot be empty!');
             } else {
-                $("#putcontenthere").load("/action_items/ai16.html");
+                $("#putcontenthere").load("action_items/ai16.html");
             }
         });
 

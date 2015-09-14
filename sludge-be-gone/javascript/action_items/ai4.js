@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
 
     $('#replay').click(function () {
-        $("#putcontenthere").load("/action_items/ai4.html");    
+        $("#putcontenthere").load("action_items/ai4.html");    
     });
 
 });

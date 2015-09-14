@@ -42,7 +42,7 @@ var bgMusic = $("#background")[0],
 
 
         $('#next-button2').click(function () {
-            $("#putcontenthere").load("/action_items/ai3.html");
+            $("#putcontenthere").load("action_items/ai3.html");
         });
 
         $('#close').click(function () {

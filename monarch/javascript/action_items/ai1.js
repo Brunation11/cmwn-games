@@ -37,7 +37,7 @@ $(document).ready(function () {
     });
 
    $('#next-button2').click(function () {
-        $("#putcontenthere").load("/action_items/ai2.html");
+        $("#putcontenthere").load("action_items/ai2.html");
     });
 
 });

@@ -16,7 +16,7 @@ $(document).ready(function () {
         //goin.play();
         $('#goin').get(0).play();
         window.setTimeout(function () {
-            $("#putcontenthere").load("/action_items/ai2.html");
+            $("#putcontenthere").load("action_items/ai2.html");
         }, 1500);
     });
 

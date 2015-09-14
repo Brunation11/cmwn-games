@@ -8,7 +8,7 @@
         });
 
         $('.back').click(function () {
-           $("#putcontenthere").load("/action_items/ai5.html");
+           $("#putcontenthere").load("action_items/ai5.html");
         });
 
         $('.back2').click(function () {
@@ -19,7 +19,7 @@
 
         $('.nextBtn1').click(function () {
             $('.nextBtn1').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai1.html");
+                $("#putcontenthere").load("action_items/ai1.html");
             });
 
         });

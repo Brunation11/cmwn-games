@@ -15,7 +15,7 @@ var incrementTime = 1000;
 var currentTime;
 
 $('#button-replay').click(function () {
-    $("#putcontenthere").load("/action_items/ai2.html");
+    $("#putcontenthere").load("action_items/ai2.html");
 });
 
 //set the game functions up once the screen loads
@@ -103,7 +103,7 @@ function updateTimer() {
             background.pause();
             $("#button-start").click(function () {
                 $('#game-info').modal('hide');
-                $("#putcontenthere").load("/action_items/ai3.html");
+                $("#putcontenthere").load("action_items/ai3.html");
                 //setTimeout(function () { location.reload(); }, 10);
                 //startGame.load();
                 //startGame();
@@ -250,7 +250,7 @@ function findRandomItem(available_drags) {
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
 
-                $("#putcontenthere").load("/action_items/ai3.html");
+                $("#putcontenthere").load("action_items/ai3.html");
             })
         }
     }

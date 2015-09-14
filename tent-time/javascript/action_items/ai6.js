@@ -10,7 +10,7 @@ $(document).ready(function () {
 
         $('#btn6').click(function () {
             $('#btn6').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai7.html");
+                $("#putcontenthere").load("action_items/ai7.html");
             });
             try {
                 click.play();
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
         $('#btn1').click(function () {
             $('#btn1').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai5.html");
+                $("#putcontenthere").load("action_items/ai5.html");
             });
             try {
                 click.play();

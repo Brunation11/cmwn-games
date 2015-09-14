@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     $('#next-button2').click(function () {
-        $("#putcontenthere").load("/action_items/ai6_2.html");
+        $("#putcontenthere").load("action_items/ai6_2.html");
     });
 
     // First modal

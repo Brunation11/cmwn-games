@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 
     $('#lets').click(function () {
-            $("#putcontenthere").load("/action_items/ai5.html");
+            $("#putcontenthere").load("action_items/ai5.html");
     });
 
 });

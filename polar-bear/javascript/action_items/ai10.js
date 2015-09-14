@@ -25,7 +25,7 @@ $(function () {
         correct.load();
         correct.play();
         window.setTimeout(function () {
-            $("#putcontenthere").load("/action_items/ai11.html");
+            $("#putcontenthere").load("action_items/ai11.html");
         }, 2500);
     });
 

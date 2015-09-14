@@ -13,19 +13,19 @@ $(document).ready(function () {
         });
         $('.backBtn1').click(function () {
             $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
+                $("#putcontenthere").load("action_items/ai4.html");
             });
 
         });
         $('.backBtn').click(function () {
             $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
+                $("#putcontenthere").load("action_items/ai4.html");
             });
 
         });
         $('.nextBtn2').click(function () {
             $('.nextBtn2').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai6.html");
+                $("#putcontenthere").load("action_items/ai6.html");
             });
 
         });

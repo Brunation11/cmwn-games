@@ -175,7 +175,7 @@ $(document).ready(function () {
     });
 
     $('#next-button5').click(function () {
-        $("#putcontenthere").load("/action_items/ai4.html");
+        $("#putcontenthere").load("action_items/ai4.html");
     });
 
     //Bounce Game Functions

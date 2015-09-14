@@ -34,7 +34,7 @@ var done;
         /*This is after all modal have been shown*/
         $('#btn').click(function () {
             $('#btn').delay(1000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai4.html");
+                $("#putcontenthere").load("action_items/ai4.html");
             });
             btn_click.play();
         });

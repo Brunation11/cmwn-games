@@ -3,7 +3,7 @@ $(document).ready(function () {
 
         $('#owl').click(function () {
             $('#owl').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai14.html");
+                $("#putcontenthere").load("action_items/ai14.html");
             });
             try {
                 ow.play();
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         $('#deer').click(function () {
             $('#deer').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai20.html");
+                $("#putcontenthere").load("action_items/ai20.html");
             });
             try {
                 dee.play();
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         $('#wolf').click(function () {
             $('#wolf').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai23.html");
+                $("#putcontenthere").load("action_items/ai23.html");
             });
             try {
                 wol.play();
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         $('#eagle').click(function () {
             $('#eagle').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai26.html");
+                $("#putcontenthere").load("action_items/ai26.html");
             });
             try {
                 eagl.play();
@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         $('#opossum').click(function () {
             $('#opossum').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai29.html");
+                $("#putcontenthere").load("action_items/ai29.html");
             });
             try {
                 oposs.play();
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
         $('#raccoon').click(function () {
             $('#raccoon').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai32.html");
+                $("#putcontenthere").load("action_items/ai32.html");
             });
             try {
                 rac.play();
@@ -83,7 +83,7 @@ $(document).ready(function () {
 
         $('#wildturkey').click(function () {
             $('#wildturkey').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai35.html");
+                $("#putcontenthere").load("action_items/ai35.html");
             });
             try {
                 tur.play();
@@ -95,7 +95,7 @@ $(document).ready(function () {
 
         $('#badger').click(function () {
             $('#badger').delay(2000).delay(1000, function () {
-                $("#putcontenthere").load("/action_items/ai38.html");
+                $("#putcontenthere").load("action_items/ai38.html");
             });
             try {
                 badg.play();

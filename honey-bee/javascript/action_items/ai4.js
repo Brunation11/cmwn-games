@@ -161,7 +161,7 @@ $(document).ready(function () {
     });
 
     $('#next-button2').click(function () {
-        $("#putcontenthere").load("/action_items/ai5.html");
+        $("#putcontenthere").load("action_items/ai5.html");
     });
 
     $('#close').click(function () {

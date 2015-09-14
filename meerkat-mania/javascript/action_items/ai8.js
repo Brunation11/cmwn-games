@@ -2,7 +2,7 @@ $(document).ready(function () {
         
         $('#btn2').click(function () {
             $('#btn2').delay(3000).delay(10000, function () {
-                $("#putcontenthere").load("/action_items/ai9.html");
+                $("#putcontenthere").load("action_items/ai9.html");
             });
             btn_click.play();
         });
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         $("#btn1").click(function () {
             $('#btn1').delay(3000).delay(10000, function () {
-                $("#putcontenthere").load("/action_items/ai7.html");
+                $("#putcontenthere").load("action_items/ai7.html");
             });
             btn_click.play();
         });

@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 
     $('#yes-button').click(function () {
-        $("#putcontenthere").load("/action_items/ai6.html");
+        $("#putcontenthere").load("action_items/ai6.html");
     });
 
     $("#next").click(function () {
@@ -113,7 +113,7 @@ function memoryFlipTile(tile, val) {
                     // alert("Board cleared... generating new board");
 
                 window.setTimeout(function () {
-                    $("#putcontenthere").load("/action_items/ai6.html");
+                    $("#putcontenthere").load("action_items/ai6.html");
                 }, 6000);
                     
                     complete.load();

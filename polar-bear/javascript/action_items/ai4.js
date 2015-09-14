@@ -191,7 +191,7 @@ $(document).ready(function () {
             Completed.load();
             Completed.play();
             $('.canada').delay(3000).delay(3000, function () {
-                 $("#putcontenthere").load("/action_items/ai5.html");
+                 $("#putcontenthere").load("action_items/ai5.html");
             });
 
             // alert("You Won!!");
@@ -236,7 +236,7 @@ $(document).ready(function () {
                 Completed.play();
 
                 $('.greenland').delay(3000).delay(3000, function () {
-                    $("#putcontenthere").load("/action_items/ai5.html");
+                    $("#putcontenthere").load("action_items/ai5.html");
                 });
                 //alert("You Won!!");
             }
@@ -270,7 +270,7 @@ $(document).ready(function () {
                 Completed.play();
 
                 $('.northpole').delay(3000).delay(3000, function () {
-                   $("#putcontenthere").load("/action_items/ai5.html");
+                   $("#putcontenthere").load("action_items/ai5.html");
                 });
                 //alert("You Won!!");
             }
@@ -295,7 +295,7 @@ $(document).ready(function () {
                 Completed.play();
 
                 $('.norway').delay(3000).delay(3000, function () {
-                    $("#putcontenthere").load("/action_items/ai5.html");
+                    $("#putcontenthere").load("action_items/ai5.html");
                 });
                 //alert("You Won!!");
             }
@@ -319,7 +319,7 @@ $(document).ready(function () {
                 Completed.play();
 
                 $('.russia').delay(3000).delay(3000, function () {
-                    $("#putcontenthere").load("/action_items/ai5.html");
+                    $("#putcontenthere").load("action_items/ai5.html");
                 });
                 //alert("You Won!!");
             }

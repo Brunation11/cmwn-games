@@ -12,7 +12,7 @@
 
         $('.play3').click(function () {
             $('.play3').delay(1000).delay(1000, function () {
-               $("#putcontenthere").load("/action_items/ai8.html");
+               $("#putcontenthere").load("action_items/ai8.html");
             });
             try {
                 click.play();

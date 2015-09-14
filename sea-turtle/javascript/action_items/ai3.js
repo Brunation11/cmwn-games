@@ -45,7 +45,7 @@ var full;
         $('#dolphin1').hide();
 
         $('#btn').click(function () {
-            $("#putcontenthere").load("/action_items/ai4.html");
+            $("#putcontenthere").load("action_items/ai4.html");
            click.play();
         });
 

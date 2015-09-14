@@ -26,7 +26,7 @@ $(function () { // DOM ready shorthand
         correct.load();
         correct.play();
         window.setTimeout(function () {
-            $("#putcontenthere").load("/action_items/ai10.html");
+            $("#putcontenthere").load("action_items/ai10.html");
         }, 2500);
     });
 

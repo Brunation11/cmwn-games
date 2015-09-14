@@ -30,7 +30,7 @@ $(document).ready(function () { // DOM ready shorthand
         correct.load();
         correct.play();
         window.setTimeout(function () {
-            $("#putcontenthere").load("/action_items/ai9.html");
+            $("#putcontenthere").load("action_items/ai9.html");
         }, 2500);
     });
 

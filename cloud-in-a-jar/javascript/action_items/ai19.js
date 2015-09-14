@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     $('#btn2').click(function () {
         $('#btn2').delay(1000).delay(1000, function () {
-            $("#putcontenthere").load("/action_items/ai20.html");
+            $("#putcontenthere").load("action_items/ai20.html");
         });
         try {
             btn_click.play();
