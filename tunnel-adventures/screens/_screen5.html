@@ -1,0 +1,87 @@
+<!--  -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        GameApp.arrWormPartsPassed = [];
+        GameApp.arrWormPartsCircles = [];
+
+        GameApp.idWormPartsImg = $(".worm-parts-img");
+        GameApp.idWormPartsInfo = $(".worm-parts-info");
+
+        //alert('got here');
+
+        GameApp.loadWormParts = function (id) {
+            for (var i = 0; i < 12; i++) {
+                $(GameApp.idWormPartsImg).removeClass("part"+i);
+            }
+
+            //alert('got here');
+            $(GameApp.idWormPartsImg).addClass("part" + id);
+
+            $(GameApp.idWormPartsInfo).load("/tunneladventures/Content/screens/wormparts/part" + id + ".html");
+        };
+        
+        GameApp.loadWormParts(0);
+
+        GameApp.onClickWormParts = function (evt) {
+            var id = $(this).data().id;
+            GameApp.loadWormParts(id);
+
+            //alert('got here');
+
+            GameApp.setActiveWormParts(id);
+            GameApp.arrWormPartsPassed[id - 1] = true;
+
+            //console.log($.inArray(false, GameApp.arrWormPartsPassed));
+            if ($.inArray(false, GameApp.arrWormPartsPassed) == -1) {
+                GameApp.onWormPartsPassed();
+            }
+        };
+
+        GameApp.initWormParts = function () {
+            for (var i = 1; i < 12; i++) {
+                GameApp.arrWormPartsPassed.push(false);
+                GameApp.arrWormPartsCircles.push($(".circle-"+i));
+                $(GameApp.arrWormPartsCircles[i-1]).data("id", i);
+
+                GameApp.arrWormPartsCircles[i-1].click(GameApp.onClickWormParts);
+            };
+            //
+        };
+        GameApp.initWormParts();
+
+        GameApp.setActiveWormParts = function (id) {
+            for (var i = 1; i < 12; i++) {
+                $(GameApp.arrWormPartsCircles[i-1]).removeClass("active");
+            }
+            $(GameApp.arrWormPartsCircles[id-1]).addClass("active");
+        };
+
+    });
+</script>
+
+<div class="bframe">
+    <div class="worm-parts-title"></div>
+
+    <div class="bframe-left">
+        <div class="worm-parts-img">
+            <div></div>
+        </div>
+
+        <div class="worm-parts">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="circle-3"></div>
+            <div class="circle-4"></div>
+            <div class="circle-5"></div>
+            <div class="circle-6"></div>
+            <div class="circle-7"></div>
+            <div class="circle-8"></div>
+            <div class="circle-9"></div>
+            <div class="circle-10"></div>
+            <div class="circle-11"></div>
+        </div>
+    </div>
+
+    <div class="bframe-right worm-parts-info"></div>
+
+</div>
