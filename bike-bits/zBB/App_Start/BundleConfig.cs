@@ -19,7 +19,7 @@ namespace BikeBits
             var nullOrderer = new NullOrderer();
 
             var cssBundle = new CustomStyleBundle("~/bundles/css");
-            cssBundle.Include("~/Content/Site.less", "~/Content/bootstrap/bootstrap.less");
+            cssBundle.Include("~content/Site.less", "~content/bootstrap/bootstrap.less");
             cssBundle.Transforms.Add(cssTransformer);
             cssBundle.Orderer = nullOrderer;
             bundles.Add(cssBundle);
@@ -38,9 +38,9 @@ namespace BikeBits
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/jquery-ui.js"));
     
-            bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
-              "~/Content/jqueryui/jquery-ui.css",                    
-              "~/Content/jqueryui/jquery-ui.theme.css"));
+            bundles.Add(new StyleBundle("~content/jqueryui").Include(
+              "~content/jqueryui/jquery-ui.css",                    
+              "~content/jqueryui/jquery-ui.theme.css"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

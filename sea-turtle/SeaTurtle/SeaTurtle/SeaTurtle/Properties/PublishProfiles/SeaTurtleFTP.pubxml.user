@@ -344,19 +344,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap/wells.less">
       <publishTime>06/12/2015 10:02:00</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.eot">
+    <File Include="../content/fonts/cmwn_ulc-webfont.eot">
       <publishTime>06/12/2015 10:02:01</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.svg">
+    <File Include="../content/fonts/cmwn_ulc-webfont.svg">
       <publishTime>06/12/2015 10:02:01</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.ttf">
+    <File Include="../content/fonts/cmwn_ulc-webfont.ttf">
       <publishTime>06/12/2015 10:02:01</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.woff">
+    <File Include="../content/fonts/cmwn_ulc-webfont.woff">
       <publishTime>06/12/2015 10:02:01</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.woff2">
+    <File Include="../content/fonts/cmwn_ulc-webfont.woff2">
       <publishTime>06/12/2015 10:02:01</publishTime>
     </File>
     <File Include="Content/fonts/glyphicons-halflings-regular.eot">

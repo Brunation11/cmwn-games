@@ -344,19 +344,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/bootstrap/wells.less">
       <publishTime>06/30/2015 15:12:04</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.eot">
+    <File Include="../content/fonts/cmwn_ulc-webfont.eot">
       <publishTime>05/07/2015 12:01:15</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.svg">
+    <File Include="../content/fonts/cmwn_ulc-webfont.svg">
       <publishTime>05/07/2015 12:01:15</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.ttf">
+    <File Include="../content/fonts/cmwn_ulc-webfont.ttf">
       <publishTime>05/07/2015 12:01:15</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.woff">
+    <File Include="../content/fonts/cmwn_ulc-webfont.woff">
       <publishTime>05/07/2015 12:01:15</publishTime>
     </File>
-    <File Include="Content/fonts/cmwn_ulc-webfont.woff2">
+    <File Include="../content/fonts/cmwn_ulc-webfont.woff2">
       <publishTime>05/07/2015 12:01:15</publishTime>
     </File>
     <File Include="Content/game/GreenHouseGases_Web.unity3d">
