@@ -6950,6 +6950,31 @@ input[type="checkbox"].input-validation-error {
   background-size: 20% 30%;
   background-position: 61px 69px;
 }
+/*=== === === === === === === === === FONTs */
+@font-face {
+  font-family: 'ssp';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Semibold.otf") format('opentype');
+}
+@font-face {
+  font-family: 'ssp';
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Bold.otf") format('opentype');
+}
+@font-face {
+  font-family: 'cmwn';
+  src: url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/cmwn_ulc-webfont.woff2") format('woff2'), url("../fonts/cmwn_ulc-webfont.woff") format('woff'), url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.custom-font {
+  font-family: 'cmwn';
+}
+.title-font {
+  font-family: 'cmwn';
+}
 #position {
   position: relative;
 }
@@ -7005,7 +7030,6 @@ body {
   line-height: 27px;
   margin-top: 71px;
   font-family: 'cmwn';
-  font-family: 'ssp';
 }
 #option1 {
   width: 100px;
@@ -7070,7 +7094,6 @@ body {
 /*=== === === === === === === === ===  */
 .info-wrapper {
   font-family: 'cmwn';
-  font-family: 'ssp';
   font-size: 24px;
   display: inline-block;
   top: 25%;
@@ -7230,31 +7253,6 @@ body {
   width: 30px;
   height: 30px;
   cursor: pointer;
-}
-/*=== === === === === === === === === FONTs */
-@font-face {
-  font-family: 'ssp';
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/SourceSansPro-Semibold.otf") format('opentype');
-}
-@font-face {
-  font-family: 'ssp';
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/SourceSansPro-Bold.otf") format('opentype');
-}
-@font-face {
-  font-family: 'cmwn';
-  src: url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/cmwn_ulc-webfont.woff2") format('woff2'), url("../fonts/cmwn_ulc-webfont.woff") format('woff'), url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-.custom-font {
-  font-family: 'ssp';
-}
-.title-font {
-  font-family: 'cmwn';
 }
 #close img:first-child {
   position: absolute;
