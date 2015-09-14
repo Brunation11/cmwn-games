@@ -9218,7 +9218,7 @@ Copyright (c) 2015 Daniel Eden
   color: white;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_1.png');
+  background-image: url('../content/images/BKG_1.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;
@@ -9462,7 +9462,7 @@ input:-moz-placeholder {
   z-index: 2;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_2.png');
+  background-image: url('../content/images/BKG_2.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;
@@ -9501,7 +9501,7 @@ h1 {
   z-index: 2;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_2.png');
+  background-image: url('../content/images/BKG_2.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;
@@ -9607,7 +9607,7 @@ h1 {
   z-index: 2;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_3.png');
+  background-image: url('../content/images/BKG_3.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;
@@ -9718,7 +9718,7 @@ ul {
   z-index: 2;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_4.png');
+  background-image: url('../content/images/BKG_4.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;
@@ -9775,7 +9775,7 @@ h1 {
   border-radius: 19px;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_4.png');
+  background-image: url('../content/images/BKG_4.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;

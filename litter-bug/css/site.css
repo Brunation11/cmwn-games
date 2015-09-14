@@ -6710,7 +6710,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 0;
 }
 .bkg-image {
-  /*background-image:url("/content/images/background/BKG_2.png");*/
+  /*background-image:url("../content/images/background/BKG_2.png");*/
   width: 616px;
   height: 400px;
   margin-left: 15px;
@@ -6762,7 +6762,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 0;
 }
 .bkg-image {
-  background-image: url("/content/images/background/BKG_3.png");
+  background-image: url("../content/images/background/BKG_3.png");
   width: 616px;
   height: 400px;
   margin-left: 15px;

@@ -1,5 +1,5 @@
 .worm-parts-title {
-  background-image:url("/content/images/col2/title_worm_parts.png");
+  background-image:url("../content/images/col2/title_worm_parts.png");
   background-size: 100% 100%;
 
   height: 60px;
@@ -14,7 +14,7 @@
 /*=== === === === === === === === === worm-parts-circles */
 .generate-worm-parts-circles (@n, @i: 1) when (@i =< @n) {
   .circle-@{i} {
-    background-image: url("/content/images/col2/circles/@{i}.png");
+    background-image: url("../content/images/col2/circles/@{i}.png");
     background-size: 100% 100%;
     position: absolute;
     /*top: @varX+"1";
@@ -25,7 +25,7 @@
     cursor: pointer;
   }
   .circle-@{i}:hover, .circle-@{i}.active {
-    background-image: url("/content/images/col2/circles/@{i}_on.png");
+    background-image: url("../content/images/col2/circles/@{i}_on.png");
   }
   .circle-@{i}.active {
     cursor: auto;
@@ -88,7 +88,7 @@
 
 .generate-worm-parts-img (@n, @i: 1) when (@i =< @n) {
   .worm-parts-img.part@{i} {
-    background: url("/content/images/col2/greyworm/@{i}.png") no-repeat;
+    background: url("../content/images/col2/greyworm/@{i}.png") no-repeat;
   }
   .generate-worm-parts-img(@n, (@i + 1));
 }
