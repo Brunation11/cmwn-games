@@ -1,12 +1,8 @@
 $(document).ready(function () {
-try
-{
+    tittle.load();
     tittle.play();
-}
-catch(err)
-{
-    //no sound - log error
-}
+
+
 
 //Background.play();
 
@@ -29,14 +25,11 @@ $('.exit-Modal-Btn').click(function () {
 $('.close-Modal-Btn').hide();
 
 $('.close-Modal-Btn').click(function () {
-    try
-    {
+
         ButtonClick.load();
         ButtonClick.play();
-    }
-    catch (err) {
-        //no sound - log error
-    }
+
+
     $('#game-info').modal('show');
     $('#game-info2').modal('hide');
     $('#game-info3').modal('hide');
