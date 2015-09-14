@@ -6601,7 +6601,7 @@ input[type="checkbox"].input-validation-error {
   background-size: cover;
 }
 .intro-title {
-  background-image: url('../content/images/intro_title.png');
+  background-image: url('/content/images/intro_title.png');
   background-size: 100% 100%;
   margin-top: 210px;
   padding-bottom: 285px;
@@ -6950,79 +6950,30 @@ input[type="checkbox"].input-validation-error {
   background-size: 20% 30%;
   background-position: 61px 69px;
 }
-#position {
-  position: relative;
+/*=== === === === === === === === === FONTs */
+@font-face {
+  font-family: 'ssp';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Semibold.otf") format('opentype');
 }
-body {
-  color: #000000;
+@font-face {
+  font-family: 'ssp';
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Bold.otf") format('opentype');
 }
-/*.container .body-content {*/
-.body-content {
-  width: 621px;
-  height: 515px;
-}
-.ai_background {
-  background-color: #7829bb;
-  padding-top: 10px;
-  width: 621px;
-  padding-bottom: 20px;
-  margin-left: -14px;
-  position: absolute;
-  height: 515px;
-}
-.game-title {
-  font-size: 42px;
-  color: white;
-  position: absolute;
-  margin-top: 5px;
-  margin-left: 80px;
-}
-#close img {
-  /* float: right; */
-  margin-top: 95px;
-  margin-left: 572px;
-  position: absolute;
-}
-/*=== === === === === === === === === MODAL */
-.modal {
-  overflow-y: hidden;
-}
-.modal-dialog {
-  width: 490px;
-}
-.modal-text {
-  font-size: 28px;
-  color: #7829bb;
-}
-.fade.in {
-  position: absolute;
-}
-.modal-content h2 {
-  font-size: 27px;
-  text-align: center;
-  width: 212px;
-  margin-left: 81px;
-  line-height: 27px;
-  margin-top: 71px;
+@font-face {
   font-family: 'cmwn';
+  src: url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/cmwn_ulc-webfont.woff2") format('woff2'), url("../fonts/cmwn_ulc-webfont.woff") format('woff'), url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.custom-font {
   font-family: 'ssp';
 }
-#option1 {
-  width: 100px;
-  height: 30px;
-}
-#option2 {
-  width: 100px;
-  height: 30px;
-}
-.flip-off img {
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.flip-off img:hover {
-  opacity: 0;
+.title-font {
+  font-family: 'cmwn';
 }
 /*=== === === === === === === === ===  */
 .bframe {
@@ -7230,31 +7181,6 @@ body {
   width: 30px;
   height: 30px;
   cursor: pointer;
-}
-/*=== === === === === === === === === FONTs */
-@font-face {
-  font-family: 'ssp';
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/SourceSansPro-Semibold.otf") format('opentype');
-}
-@font-face {
-  font-family: 'ssp';
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/SourceSansPro-Bold.otf") format('opentype');
-}
-@font-face {
-  font-family: 'cmwn';
-  src: url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/cmwn_ulc-webfont.woff2") format('woff2'), url("../fonts/cmwn_ulc-webfont.woff") format('woff'), url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-.custom-font {
-  font-family: 'ssp';
-}
-.title-font {
-  font-family: 'cmwn';
 }
 #close img:first-child {
   position: absolute;
