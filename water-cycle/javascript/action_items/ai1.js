@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     var img = document.getElementById("water");
     img.onload = waves;
-    //img.src = "/Content/images/title.png";
+    //img.src = "/content/images/title.png";
 
     function waves() {
 

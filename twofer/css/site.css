@@ -6717,7 +6717,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 0;
 }
 div#memory_board > div {
-  background: url('/Content/images/squares/square_green.png') no-repeat;
+  background: url('../content/images/squares/square_green.png') no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
   width: 117px;

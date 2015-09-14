@@ -7333,7 +7333,7 @@ input[type="checkbox"].input-validation-error {
   left: 572px;
 }
 .bkg-image {
-  background-image: url('/content/images/BKG_1.png');
+  background-image: url('../content/images/BKG_1.png');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;

@@ -17,8 +17,7 @@
   }
 
   .bframe-left {
-
-    background-image: url("/content/images/col2/worm_frame.png");
+    background-image: url("../content/images/col2/worm_frame.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: absolute;
@@ -74,7 +73,7 @@
   .part-setae,          // WORM-PARTS
   .part-dorsal-pores,   // WORM-PARTS
   .title-worm-farm {
-    background-image: url("/content/images/col2/setae.png");
+    background-image: url("../content/images/col2/setae.png");
     background-repeat: no-repeat;
     background-position: 50% 0%;
     background-size: contain;
@@ -84,13 +83,13 @@
   }
 
   .part-dorsal-pores {
-    background-image: url("/content/images/col2/dorsal_pores.png");
+    background-image: url("../content/images/col2/dorsal_pores.png");
     background-position: 50% 70%;
     background-size: 50% 150%;
   }
 
   .title-worm-farm {
-    background-image: url("/content/images/title_worm_farm.png");
+    background-image: url("../content/images/title_worm_farm.png");
     background-size: 92% 70%;
   }
 
@@ -101,7 +100,7 @@
 
   .generate-step-titles (@n, @i: 1) when (@i =< @n) {
     .title-step-@{i} {
-      background: url("/content/images/steps/@{i}.png") no-repeat 50% 0%;
+      background: url("../content/images/steps/@{i}.png") no-repeat 50% 0%;
       background-size: 50% 100%;
       width: auto;
       height: 50px;
@@ -119,19 +118,19 @@
 .jar-in-jar,
 .dirt-sand-jar
 {
-  background-image: url("/content/images/steps/jar_in_jar.png");
+  background-image: url("../content/images/steps/jar_in_jar.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 170px;
 }
 .dirt-sand-jar {
-  background-image: url("/content/images/steps/dirt_sand_jar.png");
+  background-image: url("../content/images/steps/dirt_sand_jar.png");
 }
 
 .btn-upload,
 .btn-submit {
-  background-image: url("/content/images/steps/btn_upload.png");
+  background-image: url("../content/images/steps/btn_upload.png");
   background-repeat: no-repeat;
   background-position: 50% 0%;
   background-size: 100% 100%;
@@ -141,13 +140,13 @@
   cursor: pointer;
 }
 .btn-submit {
-  background-image: url("/content/images/steps/btn_submit.png");
+  background-image: url("../content/images/steps/btn_submit.png");
 }
 .btn-upload:hover {
-  background-image: url("/content/images/steps/btn_upload_on.png");
+  background-image: url("../content/images/steps/btn_upload_on.png");
 }
 .btn-submit:hover {
-  background-image: url("/content/images/steps/btn_submit_on.png");
+  background-image: url("../content/images/steps/btn_submit_on.png");
 }
 
 /*=== === === === === === === === === GAME */
@@ -155,7 +154,7 @@
 .game-field-worms,
 .game-field-key
 {
-  background-image: url('/content/images/game/maze.png');
+  background-image: url('../content/images/game/maze.png');
   background-repeat: no-repeat;
   background-position: 0% 0%;
   background-size: 100% 100%;
@@ -168,20 +167,20 @@
 }
 
 .game-field-worms {
-  background-image: url('/content/images/game/maze_worms.png');
+  background-image: url('../content/images/game/maze_worms.png');
   top: 400px;
   right: 520px;
 }
 
 .game-field-key {
-  background-image: url('/content/images/game/maze_key.png');
+  background-image: url('../content/images/game/maze_key.png');
   bottom: 300px;
   left: 500px;
 }
 
 .game-field-ball
 {
-  background-image: url('/content/images/game/maze_ball.png');
+  background-image: url('../content/images/game/maze_ball.png');
   background-repeat: no-repeat;
   background-position: 0% 0%;
   background-size: 100% 100%;

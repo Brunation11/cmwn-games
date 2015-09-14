@@ -63,7 +63,7 @@
         $('#startGame').fadeOut(500);
         $('#knowledge').fadeIn(500);
         $('#knowledge a.next').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_3.png)');
+        $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_3.png)');
         $('.bkg-image').css('background-size', '104%');
         // $('#sort').fadeIn(500);
         // $('#sort a.next').fadeIn(500);
@@ -125,7 +125,7 @@
     //     $('#reminder3').fadeOut(500);
     //     $('#knowledge').fadeIn(500);
     //     $('#knowledge a.next').fadeIn(500);
-    //     $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_3.png)');
+    //     $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_3.png)');
     //     $('.bkg-image').css('background-size', '104%');
     // });
     $('#knowledge a.next').click(function () {
@@ -289,7 +289,7 @@
         $('#Listbreak1 a.next').fadeIn(500);
         // $('#knowledge').fadeIn(500);
         // $('#knowledge a.next').fadeIn(500);
-        // $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_3.png)');
+        // $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_3.png)');
         // $('.bkg-image').css('background-size', '104%');
     });
 
@@ -422,7 +422,7 @@
     //     $('#reminder3').fadeOut(500);
     //     $('#reminder2').fadeIn(500);
 
-    //     $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_2.png)');
+    //     $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_2.png)');
     //     $('.bkg-image').css('background-size', '104%');
     // });
     $('#knowledge a.prev').click(function () {
@@ -430,7 +430,7 @@
         $('#startGame').fadeIn(500);
         // $('#reminder3').fadeIn(500);
         $('#notebook a.next').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_2.png)');
+        $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_2.png)');
         $('.bkg-image').css('background-size', '104%');
     });
 
@@ -527,7 +527,7 @@
         $('#reminder3').fadeOut(500);
         $('#reminder2').fadeIn(500);
 
-        // $('.bkg-image').css('background-image', 'url(Content/_assets/Background/BKG_2.png)');
+        // $('.bkg-image').css('background-image', 'url(content/_assets/Background/BKG_2.png)');
         // $('.bkg-image').css('background-size', '104%');
     });
 
