@@ -9,13 +9,12 @@ var correct_items = new Array();
 //var currentSlide;
 //var rand;
 
-
-
-
 $(document).ready(function () {
-    $(window).load(function(){
+
+    $('#myCarousel').hide().delay(500).fadeIn(500);
+   setTimeout(function () {
         startGame();
-    });
+    },1000);
     clock.play();
     try
     {
