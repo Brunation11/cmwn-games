@@ -7391,7 +7391,7 @@ input[type="checkbox"].input-validation-error {
 #Big-btn img {
   width: 150px;
 }
-.Main-button img:first-child {
+#Big-btn img:first-child {
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
   -o-transition: opacity 0s ease-in-out;
