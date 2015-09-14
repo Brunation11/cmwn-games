@@ -101,7 +101,11 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
           'mainImageUrl': content_path + "Content/_assets/elements/person_neighbor.png",
           'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
           'correct': 2,
+<<<<<<< HEAD
           'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
+=======
+          'text': "<span class="tn">Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</span>"
+>>>>>>> fixing conflict
       }, {
           'name': "gas_man",
           'mainImageUrl': content_path + "Content/_assets/elements/person_gas_man.png",
