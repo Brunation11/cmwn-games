@@ -423,4 +423,3 @@ gamecatControllers.controller('gameDenoseCtrl', ['$scope', '$routeParams',
 
 
 /*-----------------------------*/
-
