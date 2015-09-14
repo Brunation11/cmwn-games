@@ -1,0 +1,41 @@
+.content-box {
+  width: 632px;
+  margin: 0px -5px 0;
+}
+/*=== === === === === === === === === INTRO */
+.game-bg,
+.intro-title {
+  padding-bottom: 416px;
+  margin-top: 78px;
+  background: no-repeat;
+  position: absolute;
+  margin-left: 10px;
+  width: 602px;
+  background-size: cover;
+}
+.intro-title {
+  background-image: url('../content/images/intro_title.png');
+  background-size: 100% 100%;
+  margin-top: 210px;
+  padding-bottom: 285px;
+}
+.intro .game-bg {
+  background-image: url('../content/images/intro_bg.png');
+}
+.page .game-bg {
+  background-image: url('../content/images/page_bg.png');
+}
+/*#sign img {*/
+.intro .btn-next img,
+.page .btn-next img {
+  float: right;
+  margin-top: 410px;
+  margin-left: 455px;
+  position: absolute;
+  width: 27%;
+}
+.page .btn-next img {
+  margin-top: 430px;
+  margin-left: 500px;
+  width: 14%;
+}
