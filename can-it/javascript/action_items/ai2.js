@@ -767,7 +767,7 @@ function updateTimer() {
 
                     $('#retry-screen').modal('hide');
                 });
-                $("#button-replay").click(function () {
+                $("#re-try").click(function () {
                     $('#retry-screen').modal('hide');
                     $("#putcontenthere").load("action_items/ai2.html");
                     // setTimeout(function () { location.reload(); }, 1000);
@@ -787,7 +787,7 @@ function updateTimer() {
                 $('#fail-screen').modal('show');
                 $('#re-try-2').click( function() {
                     $("#putcontenthere").load("action_items/ai2.html");
-                        location.reload();
+                        // location.reload();
                     });
             }
 
