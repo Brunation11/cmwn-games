@@ -1,511 +1,219 @@
-//////// these variables control the button, the current item and the dropping animation of the current item /////
-        var click_item = $(this).attr('id');
-        var click_correct = $(this).attr('data-correct');
-        var item_animate = click_item + "#"
-        var current = $('.item');
+var correct_objects = new Array();
+var cans_array = new Array();
+$(document).ready(function(){
+    //this varible stores the correct matches for the item being shown
+    var item_correct_matches = new Array();
+    //this varible stores the data correct
+    var matches_correctly = new Array();
+    var selected_item;
+    var match_set_1 = new Array();
 
-//////check to see where the carousel paused and find the selected item id /////
+    $('.win').hide();
+    $('.loose').hide();
 
-        var selected_item = $("#carousel_ul li")[2].id;
-        selected_item = selected_item.replace("-li", "");
+    //initalize game and find the selected item and it's matches
+    selectRandomListItem();
+    findSelectedMatches();
+
+    $('#Big-btn').dblclick(function(event) {
+        /////////// swap images ///////////////////////////////////////////////////////////////////
+        var backImg = $('.Main-slides li:first').css({ 'list-style': 'none' });
+        backImg.hide();
+        backImg.remove();
+        $('.Main-slides').append(backImg);
+        backImg.fadeIn();
+
+         //reset items
+        resetMatchArrays();
+        selectRandomListItem();
+        findSelectedMatches();
+
+        //which item is showing in the selector?
+        var correct_objects = $(this).attr('data-correct');
+        console.log('clicked object: ' + $(this).attr('id'));
+
+//////////////make sure the items_correct_matches has values///////////////////////////////////////////////
+        if (item_correct_matches.length > 0) {
+            console.log(item_correct_matches.length);
+
+            if (correct_objects.indexOf(selected_item) >= 0) {
+                //this is a correct item
+                matches_correctly.push(1);
+                console.log(matches_correctly);
+
+                //check to see if you have the correct number of matches for the selected item
+                if (matches_correctly.length === 1) {
+                    console.log('all done');
+                    //end of this set
+                    // alert('Working');
 
 
-         if (click_correct === selected_item) {
 
-            //remove the correct item so ite does not diplay again
-            // $(this).remove();
-            if (correct_stuff.length === 1) {
+
+                    Correct.load();
                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top : -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 10);
-
-                }
-
-                if (correct_stuff.length === 2) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 3) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 4) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 5) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15});
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 6) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-                    $('.carousel-inner').carousel({ pause: true, interval: false });
-                }
-
-                if (correct_stuff.length === 7) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 8) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 9) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 10) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 11) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 12) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 13) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 14) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 15) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 16) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 17) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 18) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 19) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 20) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 21) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 22) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 23) {
-                   Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 24) {
-                    Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 25) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 26) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 27) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 28) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 29) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 30) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 31) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 32) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 33) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 34) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 35) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 36) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 37) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 38) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 39) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
-                }
-
-                if (correct_stuff.length === 40) {
-                     Correct.play();
-                    $('#score p').html(function (i, val) { return val * 1 + 15 });
-                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
-
                 }
             }
+            else {
+                //this is an incorrect match - do incorrect actions
+                Wrong.load();
+                Wrong.play();
+            }
+        }
+        return;
 
-              else {
-                    //play incorrect sound
-                    Wrong.play();
-                    $('#score p').html(function (i, val) { return val * 1 - 30 });
-                    $('.loose').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
+    }); /// end click state////////////////////////////////////////////////////////////////////////
 
-                }
 
-        $("#" + click_item + "1").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
 
-        $("#" + click_item + "2").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+$("#click-me").dblclick(function(){
+    // alert("Helllloooooo");
+    var click_item = $(this).attr('id');
+     console.log('target object: ' + $(this).attr('id'));
+    var click_objects = $(this).attr('data-cans');
+    var item_animate = click_item  + "#"
+    var current = $('.object');
 
-        $("#" + click_item + "3").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+      var can_this = $("#carousel_ul a")[2].id;
+      can_this = can_this.replace("-li", "");
 
-        $("#" + click_item + "4").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+     if (correct_objects === can_this) {
 
-        $("#" + click_item + "5").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        cans_array.push(can_this);
 
-        $("#" + click_item + "6").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+         if (cans_array.length === 1) {
+            alert("Helloooo World");
+         }
+         else {
+            alert("Nooo");
+         }
+    }
+});
 
-        $("#" + click_item + "7").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        // find selected matches
+    function findSelectedMatches() {
+        match_set_1.push($('#Big-btn').attr('data-correct').split(","));
 
-        $("#" + click_item + "8").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        console.log(match_set_1);
 
-        $("#" + click_item + "9").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        console.log('in findSelectedMatches: ' + selected_item);
 
-        $("#" + click_item + "10").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        //find out how many correct items this should have
+        findMatch(match_set_1, selected_item);
 
-        $("#" + click_item + "11").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        console.log('number of correct items : ' + item_correct_matches.length);
+    }
 
-        $("#" + click_item + "12").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+     function resetMatchArrays() {
+        match_set_1.length = 0;
 
-        $("#" + click_item + "13").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        item_correct_matches.length = 0;
+        matches_correctly.length = 0;
+     }
 
-        $("#" + click_item + "14").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+     // find match and push to array
+    function findMatch(myArray, match) {
+        console.log('array length: ' + myArray[0].length);
 
-        $("#" + click_item + "15").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        for (index = 0; index < myArray[0].length; ++index) {
+            console.log('array value: ' + myArray[0][index]);
 
-        $("#" + click_item + "16").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+            if (myArray[0][index] === match) {
+                item_correct_matches.push(1);
+                console.log('found it');
+            }
+        }
+    }
 
-        $("#" + click_item + "17").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "18").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "19").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "20").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "21").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "22").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "23").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "24").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "25").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "26").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "27").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "28").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "29").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "30").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "31").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "32").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "33").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "34").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "35").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "36").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "37").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "38").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "39").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        $("#" + click_item + "40").animate({
-            'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
-
-        // $('#myCarousel').carousel().animate();
-
+        // randomize function for li
+    function selectRandomListItem() {
+        // randomize list
+        $('#match ul').each(function () {
+            // get current ul
+            var $ul = $(this);
+            // get array of list items in current ul
+            var $liArr = $ul.children('#match li');
+            // sort array of list items in current ul randomly
+            $liArr.sort(function (a, b) {
+                // Get a random number between 0 and 10
+                var temp = parseInt(Math.random() * 10);
+                // Get 1 or 0, whether temp is odd or even
+                var isOddOrEven = temp % 2;
+                // Get +1 or -1, whether temp greater or smaller than 5
+                var isPosOrNeg = temp > 5 ? 1 : -1;
+                // Return -1, 0, or +1
+                return (isOddOrEven * isPosOrNeg);
+            })
+            // append list items to ul
+            .appendTo($ul);
         });
 
-        $('#carousel_ul').carousel().animate();
+        selected_item = $("#match li")[0].id;
+
+        console.log('randomly selected item: ' + selected_item);
+    }
+}); //end document ready
+
+//options( 1 - ON , 0 - OFF)
+var auto_slide = 1;
+
+
+
+//speed of auto slide(
+var auto_slide_seconds = 1300;
+
+/*move the last list item before the first item. The purpose of this is
+if the user clicks to slide left he will be able to see the last item.*/
+$('#carousel_ul li:first').before($('#carousel_ul li:last'));
+
+//check if auto sliding is enabled
+if (auto_slide == 1) {
+    /*set the interval (loop) to call function slide with option 'right'
+    and set the interval time to the variable we declared previously */
+    var timer = setInterval('slide("right")', auto_slide_seconds);
+
+    /*and change the value of our hidden field that hold info about
+    the interval, setting it to the number of milliseconds we declared previously*/
+    $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
+
+}
+
+function slide(where) {
+
+    //get the item width
+    var item_width = $('#carousel_ul li').outerWidth() + 10;
+
+
+    if (where == 'left') {
+        //...calculating the new left indent of the unordered list (ul) for left sliding
+        var left_indent = parseInt($('#carousel_ul').css('left')) + item_width;
+    } else {
+        //...calculating the new left indent of the unordered list (ul) for right sliding
+        var left_indent = parseInt($('#carousel_ul').css('left')) - item_width;
+
+    }
+
+    ////make the sliding effect using jQuery's animate function... '
+    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 450, function () {
+
+        /* when the animation finishes use the if statement again, and make an ilussion
+        of infinity by changing place of last or first item*/
+        if (where == 'left') {
+            //...and if it slided to left we put the last item before the first item
+            $('#carousel_ul li:first').before($('#carousel_ul li:last'));
+        } else {
+            //...and if it slided to right we put the first item after the last item
+            $('#carousel_ul li:last').after($('#carousel_ul li:first'));
+        }
+
+        //...and then just get back the default left indent
+        $('#carousel_ul').css({ 'left': '-210px' });
+    });
+
+}
+
+
+
+
+
+

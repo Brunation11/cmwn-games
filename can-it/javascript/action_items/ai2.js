@@ -9,13 +9,12 @@ var correct_items = new Array();
 //var currentSlide;
 //var rand;
 
-
-
-
 $(document).ready(function () {
-    $(window).load(function(){
+
+    $('#myCarousel').hide().delay(500).fadeIn(500);
+   setTimeout(function () {
         startGame();
-    });
+    },1000);
     clock.play();
     try
     {
@@ -768,9 +767,10 @@ function updateTimer() {
 
                     $('#retry-screen').modal('hide');
                 });
-                $("#button-replay").click(function () {
+                $("#re-try").click(function () {
                     $('#retry-screen').modal('hide');
-                    //setTimeout(function () { location.reload(); }, 1000);
+                    $("#putcontenthere").load("action_items/ai2.html");
+                    // setTimeout(function () { location.reload(); }, 1000);
                     try
                     {
                         startGame.load();
@@ -786,8 +786,8 @@ function updateTimer() {
                 $('#retry-screen').modal('hide');
                 $('#fail-screen').modal('show');
                 $('#re-try-2').click( function() {
-                    //$("#putcontenthere").load("action_items/ai2.html");
-                        location.reload();
+                    $("#putcontenthere").load("action_items/ai2.html");
+                        // location.reload();
                     });
             }
 

@@ -50,74 +50,74 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
     $scope.data = [
     {
         'name': "parrent",
-        'mainImageUrl': content_path + "Content/_assets/elements/person_parent.png",
-        'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+        'mainImageUrl': content_path + "content/_assets/elements/person_parent.png",
+        'imgHeader': content_path + "content/_assets/elements/header_yes.png",
         'correct' : 1,
         'text': "<p style='margin-top:10px;'>Open for <br/> parents or guardians.</p>"
     },
      {
          'name': "brother",
-         'mainImageUrl': content_path + "Content/_assets/elements/person_brother.png",
-         'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+         'mainImageUrl': content_path + "content/_assets/elements/person_brother.png",
+         'imgHeader': content_path + "content/_assets/elements/header_yes.png",
          'correct': 1,
          'text': "<p style='margin-top:10px;'>You know your brother!</p>"
      },
       {
           'name': "sister",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_sister.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_sister.png",
+          'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
           'text': "<p style='margin-top:17px;'>That's right, you can <br/>let your sister in!</p>"
       },
       {
           'name': "friend",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_friend.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_friend.png",
+          'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
           'text': "<p style='margin-top:10px;'>A friend that you know <br/>well can come in!</p>"
       },
       {
           'name': "grandparent",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_grandparent.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_grandparent.png",
+          'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
           'text': "<p style='margin-top:10px;'>Grandparents who<br/>love you can come in!</p>"
       },
       {
           'name': "relative",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_relative.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_yes.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_relative.png",
+          'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
           'text': "A close relative that <br/>you see frequently who<br/>your parents approve<br/> of can come in."
       }, {
           'name': "cable_guy",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_cable_guy.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_cable_guy.png",
+          'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "You don't know them! <br/> They'll have to come <br/>back when your<br/>parents are home."
       },
       {
           'name': "neighbor",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_neighbor.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
+          'mainImageUrl': gitcontent_path + "content/_assets/elements/person_neighbor.png",
+          'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
       }, {
           'name': "gas_man",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_gas_man.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_gas_man.png",
+          'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "Not today. <br/>Even if the person is <br/>wearing a uniform,<br/>he/she is still a stranger."
       },{
           'name': "flat_tire",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_flat_tire.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_flat_tire.png",
+          'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "<p style='margin-top:10px;'>That person will <br/>have to call AAA.</p>"
       },{
           'name': "delivery",
-          'mainImageUrl': content_path + "Content/_assets/elements/person_delivery.png",
-          'imgHeader': content_path + "Content/_assets/elements/header_ding_dong.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_delivery.png",
+          'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "Your door is not opening! <br/>They can leave the <br/>package on the stoop!"
       },
@@ -144,60 +144,60 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
     $scope.data = [
     {
         'name': "A",
-        'mainImageUrl': content_path + "Content/_assets/elements/map_element_crosswalk.png",
-        'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_crosswalk_off.png",
-        'imgHeader': content_path + "Content/_assets/elements/info_window_1.png",
+        'mainImageUrl': content_path + "content/_assets/elements/map_element_crosswalk.png",
+        'mainImageUrlHover': content_path + "content/_assets/elements/map_element_crosswalk_off.png",
+        'imgHeader': content_path + "content/_assets/elements/info_window_1.png",
         'text': "<p style='color:#ffffff; padding: 170px 0 0 0;'>Always look both ways <br/> when crossing the street. <br/> Stop, look and listen!</p>"
     },
 
      {
          'name': "B",
-         'mainImageUrl': content_path + "Content/_assets/elements/map_element_bus_1.png",
-         'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_bus_1_off.png",
-         'imgHeader': content_path + "Content/_assets/elements/info_window_2.png",
+         'mainImageUrl': content_path + "content/_assets/elements/map_element_bus_1.png",
+         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_1_off.png",
+         'imgHeader': content_path + "content/_assets/elements/info_window_2.png", 
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>"
      },
       {
           'name': "C",
-          'mainImageUrl': content_path + "Content/_assets/elements/map_element_bus_2.png",
-          'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_bus_2_off.png",
-          'imgHeader': content_path + "Content/_assets/elements/info_window_3.png",
+          'mainImageUrl': content_path + "content/_assets/elements/map_element_bus_2.png",
+          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_2_off.png",
+          'imgHeader': content_path + "content/_assets/elements/info_window_3.png",
           'text': "<p style=' padding: 68px 0 0 0;'>If you drop <br/> something under <br/>or in front of the bus,<br/> tell the driver!<br/><br/>Don’t just reach for it.</p>"
       },
        {
            'name': "D",
-           'mainImageUrl': content_path + "Content/_assets/elements/map_element_playground.png",
-           'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_playground_off.png",
-           'imgHeader': content_path + "Content/_assets/elements/info_window_4.png",
+           'mainImageUrl': content_path + "content/_assets/elements/map_element_playground.png",
+           'mainImageUrlHover': content_path + "content/_assets/elements/map_element_playground_off.png",
+           'imgHeader': content_path + "content/_assets/elements/info_window_4.png",
            'text': "<p style=' padding: 105px 0 0 0;'>Play with others!<br/> There’s safety in numbers.</p>"
        },
         {
             'name': "E",
-            'mainImageUrl': content_path + "Content/_assets/elements/map_element_electronics.png",
-            'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_electronics_off.png",
-            'imgHeader': content_path + "Content/_assets/elements/info_window_5a.png",
+            'mainImageUrl': content_path + "content/_assets/elements/map_element_electronics.png",
+            'mainImageUrlHover': content_path + "content/_assets/elements/map_element_electronics_off.png",
+            'imgHeader': content_path + "content/_assets/elements/info_window_5a.png",
             'text': "<p style=' padding: 130px 0 0 0;'>If a stranger tries to take <br/>your belongings, let them!<br/>Your life is more important!</p>"
         },
          {
              'name': "F",
-             'mainImageUrl': content_path + "Content/_assets/elements/map_element_car.png",
-             'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_car_off.png",
-             'imgHeader': content_path + "Content/_assets/elements/info_window_6.png",
+             'mainImageUrl': content_path + "content/_assets/elements/map_element_car.png",
+             'mainImageUrlHover': content_path + "content/_assets/elements/map_element_car_off.png",
+             'imgHeader': content_path + "content/_assets/elements/info_window_6.png",
              'text': "<p style=' padding: 100px 0 0 0;'>Never get into a car<br/> with a stranger.<br/>It’s always okay to say no <br/>to an adult.</p>"
          },
           {
               'name': "G",
-              'mainImageUrl': content_path + "Content/_assets/elements/map_element_granny.png",
-              'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_granny_off.png",
-              'imgHeader': content_path + "Content/_assets/elements/info_window_7.png",
+              'mainImageUrl': content_path + "content/_assets/elements/map_element_granny.png",
+              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_granny_off.png",
+              'imgHeader': content_path + "content/_assets/elements/info_window_7.png",
               'text': "<p style=' padding: 170px 0 0 0;font-size:23px;'>If a stranger offers<br/> you a gift, get away<br/> as fast as you can<br/> and tell an adult!</p>"
           }, {
               'name': "X",
-              'slider-id': "last-close",
               'mainImageUrl': content_path + "",
               'mainImageUrlHover': content_path + "",
-              'imgHeader': content_path + "Content/_assets/elements/info_window_home.png",
-              'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/Content/_assets/elements/header_stay.png' class='safe'>safe!</p>"
+              'imgHeader': content_path + "content/_assets/elements/info_window_home.png",
+              'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/content/_assets/elements/header_stay.png' class='safe'>safe!</p>"
+
           },
 
     ];
@@ -273,59 +273,59 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
     $scope.data = [
     {
         'name': "J",
-        'mainImageUrl': content_path + "Content/_assets/elements/map_element_glass.png",
-        'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_glass_off.png",
-        'imgHeader': content_path + "Content/_assets/elements/info_window_8.png",
+        'mainImageUrl': content_path + "content/_assets/elements/map_element_glass.png",
+        'mainImageUrlHover': content_path + "content/_assets/elements/map_element_glass_off.png",
+        'imgHeader': content_path + "content/_assets/elements/info_window_8.png",
         'text': "<p style=' padding: 137px 0 0 0;'>If you see broken glass<br/> near a door or window, <br/> don't go inside. <br/> Find a trusted adult!</p>"
     },
 
      {
          'name': "K",
-         'mainImageUrl': content_path + "Content/_assets/elements/map_element_phone.png",
-         'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_phone_off.png",
-         'imgHeader': content_path + "Content/_assets/elements/info_window_9.png",
+         'mainImageUrl': content_path + "content/_assets/elements/map_element_phone.png",
+         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_phone_off.png",
+         'imgHeader': content_path + "content/_assets/elements/info_window_9.png",
          'text': "<p style=' padding: 108px 0 0 0;'>If the phone rings <br/> and you don't know <br/> the caller, don't tell them <br/> you're home alone.</p>"
      },
       {
           'name': "L",
-          'mainImageUrl': content_path + "Content/_assets/elements/map_element_sink.png",
-          'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_sink_off.png",
-          'imgHeader': content_path + "Content/_assets/elements/info_window_10.png",
+          'mainImageUrl': content_path + "content/_assets/elements/map_element_sink.png",
+          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_sink_off.png",
+          'imgHeader': content_path + "content/_assets/elements/info_window_10.png",
           'text': "<p style=' padding: 111px 0 0 4px;'>Never eat or drink<br/> from bottles under the sink.</p>"
       },
        {
            'name': "M",
-           'mainImageUrl': content_path + "Content/_assets/elements/map_element_name.png",
-           'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_name_off.png",
-           'imgHeader': content_path + "Content/_assets/elements/info_window_11.png",
+           'mainImageUrl': content_path + "content/_assets/elements/map_element_name.png",
+           'mainImageUrlHover': content_path + "content/_assets/elements/map_element_name_off.png",
+           'imgHeader': content_path + "content/_assets/elements/info_window_11.png",
            'text': "<p style=' padding: 95px 0 0 7px;'>Always know<br/> your name and address. <br/> Know who to call<br/> in case of emergency.</p>"
        },
         {
             'name': "N",
-            'mainImageUrl': content_path + "Content/_assets/elements/map_element_electric_plug.png",
-            'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_electric_plug_off.png",
-            'imgHeader': content_path + "Content/_assets/elements/info_window_12.png",
+            'mainImageUrl': content_path + "content/_assets/elements/map_element_electric_plug.png",
+            'mainImageUrlHover': content_path + "content/_assets/elements/map_element_electric_plug_off.png",
+            'imgHeader': content_path + "content/_assets/elements/info_window_12.png",
             'text': "<p style=' padding: 150px 0 0 0;'>Never have electrical wires<br/>near water.</p>"
         },
          {
              'name': "O",
-             'mainImageUrl': content_path + "Content/_assets/elements/map_element_pills.png",
-             'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_pills_off.png",
-             'imgHeader': content_path + "Content/_assets/elements/info_window_13.png",
+             'mainImageUrl': content_path + "content/_assets/elements/map_element_pills.png",
+             'mainImageUrlHover': content_path + "content/_assets/elements/map_element_pills_off.png",
+             'imgHeader': content_path + "content/_assets/elements/info_window_13.png",
              'text': "<p style=' padding: 100px 0 0 4px;'>Never, ever swallow <br/> pills you find.</p>"
          },
           {
               'name': "P",
-              'mainImageUrl': content_path + "Content/_assets/elements/map_element_911.png",
-              'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_911_off.png",
-              'imgHeader': content_path + "Content/_assets/elements/info_window_14.png",
+              'mainImageUrl': content_path + "content/_assets/elements/map_element_911.png",
+              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_911_off.png",
+              'imgHeader': content_path + "content/_assets/elements/info_window_14.png",
               'text': "<p style=' padding: 110px 0 0 0;'>If you're home alone<br/> and need help, dial 911.</p>"
           },
           {
               'name': "Q",
-              'mainImageUrl': content_path + "Content/_assets/elements/map_element_fire_alarm.png",
-              'mainImageUrlHover': content_path + "Content/_assets/elements/map_element_fire_alarm_off.png",
-              'imgHeader': content_path + "Content/_assets/elements/info_window_15.png",
+              'mainImageUrl': content_path + "content/_assets/elements/map_element_fire_alarm.png",
+              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_fire_alarm_off.png",
+              'imgHeader': content_path + "content/_assets/elements/info_window_15.png",
               'text': "<p style=' padding: 170px 0 0 0;'>If you're home alone<br/> and need help, dial 911.</p>"
           }, {
               'name': "R",
