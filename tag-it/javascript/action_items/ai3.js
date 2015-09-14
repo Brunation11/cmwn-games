@@ -32,6 +32,6 @@ $(document).ready(function () {
             });
             nex.play();
         });
-            $('.bkg-image').css('background-image','url(/content/images/BKG_3.png)');
+            $('.bkg-image').css('background-image','url(content/images/BKG_3.png)');
 
     });
