@@ -154,7 +154,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
          'name': "B",
          'mainImageUrl': content_path + "content/_assets/elements/map_element_bus_1.png",
          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_1_off.png",
-         'imgHeader': content_path + "content/_assets/elements/info_window_2.png",
+         'imgHeader': content_path + "content/_assets/elements/info_window_2.png", 
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>"
      },
       {
@@ -197,6 +197,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
               'mainImageUrlHover': content_path + "",
               'imgHeader': content_path + "content/_assets/elements/info_window_home.png",
               'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/content/_assets/elements/header_stay.png' class='safe'>safe!</p>"
+
           },
 
     ];
