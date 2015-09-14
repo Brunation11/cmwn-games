@@ -130,7 +130,7 @@ img {
     max-width: 67%;
     margin: 0 auto 0;
     text-align: center;
-    background: url("_assets/Elements/toilet_1.png") 0 0 no-repeat;
+    background: url("_assets/elements/toilet_1.png") 0 0 no-repeat;
     background-size: 100%;
     padding: 0;
 }
@@ -273,7 +273,7 @@ img {
     float: left;
     width: 57%;
     min-height: 72%;
-    background: url(_assets/Elements/trashbin.png) center top no-repeat;
+    background: url(_assets/elements/trashbin.png) center top no-repeat;
     background-size: 100%;
     z-index: 0;
 }
@@ -302,7 +302,7 @@ img {
 }
 
     .main-box .flush a {
-        background: url(_assets/Elements/Buttons/btn_flush.png) center center no-repeat;
+        background: url(_assets/elements/Buttons/btn_flush.png) center center no-repeat;
         background-size: 106%;
         width: 100%;
         padding-top: 100%;
@@ -310,7 +310,7 @@ img {
     }
 
         .main-box .flush a:hover {
-            background-image: url(_assets/Elements/Buttons/btn_flush_on.png);
+            background-image: url(_assets/elements/Buttons/btn_flush_on.png);
         }
 
 .content-box {
@@ -349,7 +349,7 @@ img {
 
 .correct-ansver {
     position: absolute;
-    background: url("_assets/Elements/trashbin_frame.png") 0 0 no-repeat;
+    background: url("_assets/elements/trashbin_frame.png") 0 0 no-repeat;
     background-size: 100%;
     width: 175px;
     height: 168px;
@@ -966,7 +966,7 @@ a.next, a.prev {
 }
 
     #quit .inner {
-        /*background: url(_assets/Elements/frame_3.png) center center no-repeat;*/
+        /*background: url(_assets/elements/frame_3.png) center center no-repeat;*/
         background-size: 100%;
         width: 100%;
         margin: 0 auto 0;
@@ -1010,7 +1010,7 @@ a.next, a.prev {
         left: 25px;
         width: 55%;
         padding: 29% 0% 20%;
-        background: url(_assets/Elements/frame_1.png) center top no-repeat;
+        background: url(_assets/elements/frame_1.png) center top no-repeat;
         background-size: 100%;
     }
 
@@ -1028,7 +1028,7 @@ a.next, a.prev {
         top: 2%;
         right: 2%;
         text-align: center;
-        background: url(_assets/Elements/frame_1.png) 0 0 no-repeat;
+        background: url(_assets/elements/frame_1.png) 0 0 no-repeat;
         background-size: 100%;
         color: #000000;
         width: 61%;
@@ -1057,7 +1057,7 @@ a.next, a.prev {
     font-family: source_sans_prosemibold;
     color: #fff;
     font-size: 38px;
-    background: url(_assets/Elements/treatmentplant.png) center center no-repeat;
+    background: url(_assets/elements/treatmentplant.png) center center no-repeat;
     background-size: 108%;
     position: relative;
     min-height: 400px;
@@ -1204,7 +1204,7 @@ h1 {
 }
 
     .yes-btn a {
-        background: url(_assets/Elements/Buttons/btn_Imready.png) 0 0 no-repeat;
+        background: url(_assets/elements/Buttons/btn_Imready.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         padding-top: 66px;
@@ -1212,7 +1212,7 @@ h1 {
     }
 
         .yes-btn a:hover {
-            background-image: url(_assets/Elements/Buttons/btn_IMready_on.png);
+            background-image: url(_assets/elements/Buttons/btn_IMready_on.png);
         }
 /*----------------------------------------*/
 #definitely {
@@ -1221,7 +1221,7 @@ h1 {
 }
 
     #definitely .racoon {
-        background: url(_assets/Elements/trash.png) 0 0 no-repeat;
+        background: url(_assets/elements/trash.png) 0 0 no-repeat;
         background-size: 100%;
         width: 230px;
         height: 322px;
@@ -1245,7 +1245,7 @@ h1 {
 }
 
     #recycle .racoon {
-        background: url(_assets/Elements/recycle.png) 0 0 no-repeat;
+        background: url(_assets/elements/recycle.png) 0 0 no-repeat;
         background-size: 100%;
         width: 230px;
         height: 222px;
@@ -1266,7 +1266,7 @@ h1 {
 }
 
     #compost .racoon {
-        background: url(_assets/Elements/compost.png) 0 0 no-repeat;
+        background: url(_assets/elements/compost.png) 0 0 no-repeat;
         background-size: 100%;
         width: 230px;
         height: 322px;
@@ -1287,7 +1287,7 @@ h1 {
 }
 
     #donate .racoon {
-        background: url(_assets/Elements/donate.png) 0 0 no-repeat;
+        background: url(_assets/elements/donate.png) 0 0 no-repeat;
         background-size: 100%;
         width: 230px;
         height: 196px;
@@ -1323,13 +1323,13 @@ input[type="radio"] {
             height: 32px;
             margin: -1px 4px 0 0;
             vertical-align: middle;
-            background: url(_assets/Elements/check.png) left top no-repeat;
+            background: url(_assets/elements/check.png) left top no-repeat;
             cursor: pointer;
             /*vertical-align: top*/
         }
 
     input[type="radio"]:checked + label span {
-        background: url(_assets/Elements/check.png) left -49px no-repeat;
+        background: url(_assets/elements/check.png) left -49px no-repeat;
     }
 /*---------------------------*/
 .reminder {
@@ -1339,7 +1339,7 @@ input[type="radio"] {
 }
 
 .remind-bg {
-    background: url(_Assets/Elements/reminder_1.png) 0 0 no-repeat;
+    background: url(_Assets/elements/reminder_1.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1350,7 +1350,7 @@ input[type="radio"] {
 }
 
 #reminder2 .remind-bg {
-    background: url(_Assets/Elements/reminder_2.png) 0 0 no-repeat;
+    background: url(_Assets/elements/reminder_2.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1366,7 +1366,7 @@ input[type="radio"] {
 }
 
 #reminder3 .remind-bg {
-    background: url(_Assets/Elements/reminder_3.png) 0 0 no-repeat;
+    background: url(_Assets/elements/reminder_3.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1398,7 +1398,7 @@ input[type="radio"] {
 }
 
     .reminder .remind-btn a {
-        background: url(_Assets/Elements/Buttons/btn_takemetomyai.png) 0 0 no-repeat;
+        background: url(_Assets/elements/Buttons/btn_takemetomyai.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         height: 100px;
@@ -1406,7 +1406,7 @@ input[type="radio"] {
     }
 
         .reminder .remind-btn a:hover {
-            background-image: url(_Assets/Elements/Buttons/btn_takemetomyai_on.png);
+            background-image: url(_Assets/elements/Buttons/btn_takemetomyai_on.png);
         }
 
 #Listbreak {
@@ -1566,7 +1566,7 @@ input[type="radio"] {
 
 /*------------------------*/
 .todo-wrapper {
-    background: url("_Assets/Elements/notepad_1.png") 0 0 no-repeat;
+    background: url("_Assets/elements/notepad_1.png") 0 0 no-repeat;
     background-size: 100%;
     width: 45%;
     float: left;
@@ -1609,7 +1609,7 @@ input[type="radio"] {
 
     .todo-wrapper .add-btn {
         border: none;
-        background: url("_Assets/Elements/Buttons/btn_post.png") 0 0 no-repeat;
+        background: url("_Assets/elements/Buttons/btn_post.png") 0 0 no-repeat;
         background-size: 100%;
         padding: 0;
         height: 46px;
@@ -1619,7 +1619,7 @@ input[type="radio"] {
     }
 
         .todo-wrapper .add-btn:hover {
-            background-image: url("_Assets/Elements/Buttons/btn_post_on.png");
+            background-image: url("_Assets/elements/Buttons/btn_post_on.png");
         }
 
 .clear-btn {
@@ -1641,12 +1641,12 @@ input[type="radio"] {
     width: 150px;
     height: 150px;
     margin: 101px 28px 0;
-    background: url("_Assets/Elements/Buttons/btn_hint.png") 0 0 no-repeat;
+    background: url("_Assets/elements/Buttons/btn_hint.png") 0 0 no-repeat;
     background-size: 100%;
 }
 
     .hint-btn:hover {
-        background-image: url("_Assets/Elements/Buttons/btn_hint_on.png");
+        background-image: url("_Assets/elements/Buttons/btn_hint_on.png");
     }
 
 #knowledge {
@@ -1659,7 +1659,7 @@ input[type="radio"] {
 
 .notebook-wide-popup {
     position: absolute;
-    background: url("_Assets/Elements/frame_1.png") 0 0 no-repeat;
+    background: url("_Assets/elements/frame_1.png") 0 0 no-repeat;
     background-size: 100%;
     width: 96%;
     padding: 20px;
@@ -1696,7 +1696,7 @@ input[type="radio"] {
 .hint-popup, .hint-popup2 {
     display:none;
      position: absolute;
-    background: url("_Assets/Elements/frame_2.png") 0 0 no-repeat;
+    background: url("_Assets/elements/frame_2.png") 0 0 no-repeat;
   background-size: 100%;
   width: 196%;
   padding: 20px 0;
@@ -1710,7 +1710,7 @@ input[type="radio"] {
 }
 .hint-popup a.yougotit ,
 .hint-popup2 a.yougotit {
-    background: url("_Assets/Elements/Buttons/btn_yougotit.png") 0 0 no-repeat;
+    background: url("_Assets/elements/Buttons/btn_yougotit.png") 0 0 no-repeat;
     background-size:100%;
 width: 190px;
   height: 82px;
@@ -1719,7 +1719,7 @@ width: 190px;
     }
 .hint-popup a.yougotit:hover,
 .hint-popup2 a.yougotit:hover {
-    background-image: url("_Assets/Elements/Buttons/btn_yougotit_on.png");
+    background-image: url("_Assets/elements/Buttons/btn_yougotit_on.png");
     }
 .hint-popup h2,
 .hint-popup2 h2{
@@ -1741,7 +1741,7 @@ font-size:24px;
 
 }
 #Listbreak1 .random-item {
-     background: url("_Assets/Elements/frame_3.png") 0 0 no-repeat;
+     background: url("_Assets/elements/frame_3.png") 0 0 no-repeat;
     background-size: 100%;
   width: 86%;
   margin: 10px auto 0;
@@ -1772,28 +1772,28 @@ background-repeat:no-repeat;
 background-size:100%;
 }
 .sorter .sorts a#trasher {
-background-image: url("_Assets/Elements/Buttons/btn_trash.png") 
+background-image: url("_Assets/elements/Buttons/btn_trash.png") 
 }
 .sorter .sorts a#trasher:hover {
-background-image: url("_Assets/Elements/Buttons/btn_trash_on.png") 
+background-image: url("_Assets/elements/Buttons/btn_trash_on.png") 
 }
 .sorter .sorts a#composter {
-background-image: url("_Assets/Elements/Buttons/btn_compost.png") 
+background-image: url("_Assets/elements/Buttons/btn_compost.png") 
 }
 .sorter .sorts a#composter:hover {
-background-image: url("_Assets/Elements/Buttons/btn_compost_on.png") 
+background-image: url("_Assets/elements/Buttons/btn_compost_on.png") 
 }
 .sorter .sorts a#donater {
-background-image: url("_Assets/Elements/Buttons/btn_donate.png") 
+background-image: url("_Assets/elements/Buttons/btn_donate.png") 
 }
 .sorter .sorts a#donater:hover {
-background-image: url("_Assets/Elements/Buttons/btn_donate_on.png") 
+background-image: url("_Assets/elements/Buttons/btn_donate_on.png") 
 }
 .sorter .sorts a#recycler {
-background-image: url("_Assets/Elements/Buttons/btn_recycle.png") 
+background-image: url("_Assets/elements/Buttons/btn_recycle.png") 
 }
 .sorter .sorts a#recycler:hover {
-background-image: url("_Assets/Elements/Buttons/btn_recycle_on.png") 
+background-image: url("_Assets/elements/Buttons/btn_recycle_on.png") 
 }
 .remind-time {
     padding-top:20px;
