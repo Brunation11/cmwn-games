@@ -28,7 +28,6 @@
     <script type="text/javascript" src="Scripts/angular-animate.min.js"></script>
     <script type="text/javascript" src="Scripts/txt_animator.js"></script>
     <script type="text/javascript" src="Scripts/binding.js"></script>
-
     <script type="text/javascript" src="Scripts/draganddrop.js"></script>
     <script type="text/javascript" src="Scripts/gameapp.js"></script>
     <script type="text/javascript" src="Scripts/main.js"></script>
@@ -257,7 +256,7 @@
                                         <div class="content-box">
                                             <div class="img-box">
                                                     <div class=" correct-ansver">
-                                                        <button class="sliderClose"></button>
+                                                        <button class="sliderClose" id="{{item.slider-id}}"></button>
                                                         <div class="bg" style="background-image:url({{item.imgHeader}})">
                                                             <div ng-bind-html="to_trusted(item.text)"></div>
                                                         </div>
