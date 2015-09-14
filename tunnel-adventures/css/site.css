@@ -6585,6 +6585,677 @@ input[type="checkbox"].input-validation-error {
 .button-padding {
   padding: 0px 50px 0px 50px;
 }
+.content-box {
+  width: 632px;
+  margin: 0px -5px 0;
+}
+/*=== === === === === === === === === INTRO */
+.game-bg,
+.intro-title {
+  padding-bottom: 416px;
+  margin-top: 78px;
+  background: no-repeat;
+  position: absolute;
+  margin-left: 10px;
+  width: 602px;
+  background-size: cover;
+}
+.intro-title {
+  background-image: url('/content/images/intro_title.png');
+  background-size: 100% 100%;
+  margin-top: 210px;
+  padding-bottom: 285px;
+}
+.intro .game-bg {
+  background-image: url('/content/images/intro_bg.png');
+}
+.page .game-bg {
+  background-image: url('/content/images/page_bg.png');
+}
+/*#sign img {*/
+.intro .btn-next img,
+.page .btn-next img {
+  float: right;
+  margin-top: 410px;
+  margin-left: 455px;
+  position: absolute;
+  width: 27%;
+}
+.page .btn-next img {
+  margin-top: 430px;
+  margin-left: 500px;
+  width: 14%;
+}
+.col-radius {
+  border: solid 15px rgba(209, 195, 164, 0.75);
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  border-radius: 45px;
+}
+.col-bg {
+  background: rgba(255, 255, 255, 0.75);
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.worm-parts-title {
+  background-image: url("/content/images/col2/title_worm_parts.png");
+  background-size: 100% 100%;
+  height: 60px;
+  position: absolute;
+  top: 85px;
+  width: 280px;
+  left: 270px;
+}
+/*=== === === === === === === === === worm-parts-circles */
+.circle-1 {
+  background-image: url("/content/images/col2/circles/1.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-1:hover,
+.circle-1.active {
+  background-image: url("/content/images/col2/circles/1_on.png");
+}
+.circle-1.active {
+  cursor: auto;
+}
+.circle-2 {
+  background-image: url("/content/images/col2/circles/2.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-2:hover,
+.circle-2.active {
+  background-image: url("/content/images/col2/circles/2_on.png");
+}
+.circle-2.active {
+  cursor: auto;
+}
+.circle-3 {
+  background-image: url("/content/images/col2/circles/3.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-3:hover,
+.circle-3.active {
+  background-image: url("/content/images/col2/circles/3_on.png");
+}
+.circle-3.active {
+  cursor: auto;
+}
+.circle-4 {
+  background-image: url("/content/images/col2/circles/4.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-4:hover,
+.circle-4.active {
+  background-image: url("/content/images/col2/circles/4_on.png");
+}
+.circle-4.active {
+  cursor: auto;
+}
+.circle-5 {
+  background-image: url("/content/images/col2/circles/5.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-5:hover,
+.circle-5.active {
+  background-image: url("/content/images/col2/circles/5_on.png");
+}
+.circle-5.active {
+  cursor: auto;
+}
+.circle-6 {
+  background-image: url("/content/images/col2/circles/6.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-6:hover,
+.circle-6.active {
+  background-image: url("/content/images/col2/circles/6_on.png");
+}
+.circle-6.active {
+  cursor: auto;
+}
+.circle-7 {
+  background-image: url("/content/images/col2/circles/7.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-7:hover,
+.circle-7.active {
+  background-image: url("/content/images/col2/circles/7_on.png");
+}
+.circle-7.active {
+  cursor: auto;
+}
+.circle-8 {
+  background-image: url("/content/images/col2/circles/8.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-8:hover,
+.circle-8.active {
+  background-image: url("/content/images/col2/circles/8_on.png");
+}
+.circle-8.active {
+  cursor: auto;
+}
+.circle-9 {
+  background-image: url("/content/images/col2/circles/9.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-9:hover,
+.circle-9.active {
+  background-image: url("/content/images/col2/circles/9_on.png");
+}
+.circle-9.active {
+  cursor: auto;
+}
+.circle-10 {
+  background-image: url("/content/images/col2/circles/10.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-10:hover,
+.circle-10.active {
+  background-image: url("/content/images/col2/circles/10_on.png");
+}
+.circle-10.active {
+  cursor: auto;
+}
+.circle-11 {
+  background-image: url("/content/images/col2/circles/11.png");
+  background-size: 100% 100%;
+  position: absolute;
+  /*top: @varX+"1";
+    left: @@varX;*/
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.circle-11:hover,
+.circle-11.active {
+  background-image: url("/content/images/col2/circles/11_on.png");
+}
+.circle-11.active {
+  cursor: auto;
+}
+.circle-1 {
+  top: 20px;
+  right: 20px;
+}
+.circle-2 {
+  top: 20px;
+  right: 110px;
+}
+.circle-3 {
+  top: 50px;
+  right: 135px;
+}
+.circle-4 {
+  top: 50px;
+  right: 50px;
+}
+.circle-5 {
+  top: 95px;
+  right: 135px;
+}
+.circle-6 {
+  top: 110px;
+  right: 50px;
+}
+.circle-7 {
+  top: 140px;
+  right: 145px;
+}
+.circle-8 {
+  top: 150px;
+  right: 50px;
+}
+.circle-9 {
+  top: 185px;
+  right: 70px;
+}
+.circle-10 {
+  top: 240px;
+  right: 40px;
+}
+.circle-11 {
+  top: 300px;
+  right: 70px;
+}
+/*=== === === === === === === === === worm-parts-img */
+.worm-parts-img {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+}
+.worm-parts-img.part1 {
+  background: url("/content/images/col2/greyworm/1.png") no-repeat;
+}
+.worm-parts-img.part2 {
+  background: url("/content/images/col2/greyworm/2.png") no-repeat;
+}
+.worm-parts-img.part3 {
+  background: url("/content/images/col2/greyworm/3.png") no-repeat;
+}
+.worm-parts-img.part4 {
+  background: url("/content/images/col2/greyworm/4.png") no-repeat;
+}
+.worm-parts-img.part5 {
+  background: url("/content/images/col2/greyworm/5.png") no-repeat;
+}
+.worm-parts-img.part6 {
+  background: url("/content/images/col2/greyworm/6.png") no-repeat;
+}
+.worm-parts-img.part7 {
+  background: url("/content/images/col2/greyworm/7.png") no-repeat;
+}
+.worm-parts-img.part8 {
+  background: url("/content/images/col2/greyworm/8.png") no-repeat;
+}
+.worm-parts-img.part9 {
+  background: url("/content/images/col2/greyworm/9.png") no-repeat;
+}
+.worm-parts-img.part10 {
+  background: url("/content/images/col2/greyworm/10.png") no-repeat;
+}
+.worm-parts-img.part11 {
+  background: url("/content/images/col2/greyworm/11.png") no-repeat;
+}
+.worm-parts-img.part1 {
+  background-size: 61% 58%;
+  background-position: 38px 146px;
+}
+.worm-parts-img.part2,
+.worm-parts-img.part4 {
+  background-size: 61% 76%;
+  background-position: 38px 74px;
+}
+.worm-parts-img.part3 {
+  background-size: 61% 78%;
+  background-position: 39px 68px;
+}
+.worm-parts-img.part5,
+.worm-parts-img.part6,
+.worm-parts-img.part7,
+.worm-parts-img.part8,
+.worm-parts-img.part9,
+.worm-parts-img.part10 {
+  background-size: 61% 78%;
+  background-position: 38px 68px;
+}
+.worm-parts-img.part11 {
+  background-size: 20% 30%;
+  background-position: 61px 69px;
+}
+#position {
+  position: relative;
+}
+body {
+  color: #000000;
+}
+/*.container .body-content {*/
+.body-content {
+  width: 621px;
+  height: 515px;
+}
+.ai_background {
+  background-color: #7829bb;
+  padding-top: 10px;
+  width: 621px;
+  padding-bottom: 20px;
+  margin-left: -14px;
+  position: absolute;
+  height: 515px;
+}
+.game-title {
+  font-size: 42px;
+  color: white;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 80px;
+}
+#close img {
+  /* float: right; */
+  margin-top: 95px;
+  margin-left: 572px;
+  position: absolute;
+}
+/*=== === === === === === === === === MODAL */
+.modal {
+  overflow-y: hidden;
+}
+.modal-dialog {
+  width: 490px;
+}
+.modal-text {
+  font-size: 28px;
+  color: #7829bb;
+}
+.fade.in {
+  position: absolute;
+}
+.modal-content h2 {
+  font-size: 27px;
+  text-align: center;
+  width: 212px;
+  margin-left: 81px;
+  line-height: 27px;
+  margin-top: 71px;
+  font-family: 'cmwn';
+  font-family: 'ssp';
+}
+#option1 {
+  width: 100px;
+  height: 30px;
+}
+#option2 {
+  width: 100px;
+  height: 30px;
+}
+.flip-off img {
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.flip-off img:hover {
+  opacity: 0;
+}
+/*=== === === === === === === === ===  */
+.bframe {
+  position: absolute;
+}
+.bframe .bframe-center {
+  margin-top: 130px;
+  margin-left: 42px;
+  width: 530px;
+  height: 290px;
+  text-align: center;
+  border: solid 15px rgba(209, 195, 164, 0.75);
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  border-radius: 45px;
+  background: rgba(255, 255, 255, 0.75);
+}
+.bframe .bframe-left {
+  background-image: url("/content/images/col2/worm_frame.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  margin-top: 85px;
+  margin-left: 20px;
+  width: 200px;
+  height: 400px;
+}
+.bframe .bframe-right {
+  position: absolute;
+  margin-top: 145px;
+  left: 235px;
+  width: 365px;
+  height: 270px;
+  text-align: center;
+  border: solid 15px rgba(209, 195, 164, 0.75);
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  border-radius: 45px;
+  background: rgba(255, 255, 255, 0.75);
+}
+/*=== === === === === === === === ===  */
+.video-wrapper {
+  margin: 50px auto;
+}
+/*=== === === === === === === === ===  */
+.info-wrapper {
+  font-family: 'cmwn';
+  font-family: 'ssp';
+  font-size: 24px;
+  display: inline-block;
+  top: 25%;
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+  /*=== === === STEPS */
+}
+.info-wrapper h1 {
+  margin: 0px 0px 10px 0px;
+}
+.info-wrapper p {
+  line-height: 20px;
+}
+.info-wrapper ul {
+  font-size: 18px;
+  text-align: left;
+}
+.info-wrapper .part-setae,
+.info-wrapper .part-dorsal-pores,
+.info-wrapper .title-worm-farm {
+  background-image: url("/content/images/col2/setae.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: contain;
+  width: auto;
+  height: 100px;
+  margin: auto;
+}
+.info-wrapper .part-dorsal-pores {
+  background-image: url("/content/images/col2/dorsal_pores.png");
+  background-position: 50% 70%;
+  background-size: 50% 150%;
+}
+.info-wrapper .title-worm-farm {
+  background-image: url("/content/images/title_worm_farm.png");
+  background-size: 92% 70%;
+}
+.info-wrapper .steps-txt {
+  font-size: 17px;
+}
+.info-wrapper .title-step-1 {
+  background: url("/content/images/steps/1.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-2 {
+  background: url("/content/images/steps/2.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-3 {
+  background: url("/content/images/steps/3.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-4 {
+  background: url("/content/images/steps/4.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-5 {
+  background: url("/content/images/steps/5.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-6 {
+  background: url("/content/images/steps/6.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-7 {
+  background: url("/content/images/steps/7.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper .title-step-8 {
+  background: url("/content/images/steps/8.png") no-repeat 50% 0%;
+  background-size: 50% 100%;
+  width: auto;
+  height: 50px;
+}
+.info-wrapper.steps-wrapper {
+  top: 5%;
+  width: 100%;
+}
+.jar-in-jar,
+.dirt-sand-jar {
+  background-image: url("/content/images/steps/jar_in_jar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 170px;
+}
+.dirt-sand-jar {
+  background-image: url("/content/images/steps/dirt_sand_jar.png");
+}
+.btn-upload,
+.btn-submit {
+  background-image: url("/content/images/steps/btn_upload.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: 100% 100%;
+  width: 50%;
+  height: 100px;
+  margin: auto;
+  cursor: pointer;
+}
+.btn-submit {
+  background-image: url("/content/images/steps/btn_submit.png");
+}
+.btn-upload:hover {
+  background-image: url("/content/images/steps/btn_upload_on.png");
+}
+.btn-submit:hover {
+  background-image: url("/content/images/steps/btn_submit_on.png");
+}
+/*=== === === === === === === === === GAME */
+.game-field-bg,
+.game-field-worms,
+.game-field-key {
+  background-image: url('/content/images/game/maze.png');
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+}
+.game-field-worms {
+  background-image: url('/content/images/game/maze_worms.png');
+  top: 400px;
+  right: 520px;
+}
+.game-field-key {
+  background-image: url('/content/images/game/maze_key.png');
+  bottom: 300px;
+  left: 500px;
+}
+.game-field-ball {
+  background-image: url('/content/images/game/maze_ball.png');
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 457px;
+  left: 155px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+/*=== === === === === === === === === FONTs */
+@font-face {
+  font-family: 'ssp';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Semibold.otf") format('opentype');
+}
+@font-face {
+  font-family: 'ssp';
+  font-weight: bold;
+  font-style: normal;
+  src: url("../fonts/SourceSansPro-Bold.otf") format('opentype');
+}
+@font-face {
+  font-family: 'cmwn';
+  src: url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/cmwn_ulc-webfont.woff2") format('woff2'), url("../fonts/cmwn_ulc-webfont.woff") format('woff'), url("../fonts/cmwn_ulc-webfont.ttf") format('truetype'), url("../fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.custom-font {
+  font-family: 'ssp';
+}
+.title-font {
+  font-family: 'cmwn';
+}
 #close img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
@@ -7019,49 +7690,6 @@ div.game {
 .No-Btns img:first-child:hover {
   opacity: 0;
 }
-#lets img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#lets img:first-child:hover {
-  opacity: 0;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
 #next-button img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
@@ -7086,190 +7714,5 @@ div.game {
   z-index: 0;
 }
 #video-modal .modal-backdrop.in {
-  opacity: 0;
-}
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#up-button img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#up-button img:first-child:hover {
-  opacity: 0;
-}
-#post img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#post img:first-child:hover {
-  opacity: 0;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#video-modal .modal-backdrop.in {
-  opacity: 0;
-}
-#close img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#close img:first-child:hover {
-  opacity: 0;
-}
-.Yes-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.Yes-Btns img:first-child:hover {
-  opacity: 0;
-}
-.No-Btns img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-.No-Btns img:first-child:hover {
-  opacity: 0;
-}
-#next img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next img:first-child:hover {
-  opacity: 0;
-}
-#next-button img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button img:first-child:hover {
-  opacity: 0;
-}
-#next-button2 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button2 img:first-child:hover {
-  opacity: 0;
-}
-#next-button3 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#next-button3 img:first-child:hover {
-  opacity: 0;
-}
-#bar1 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#bar1 img:first-child:hover {
-  opacity: 0;
-}
-#bar2 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#bar2 img:first-child:hover {
-  opacity: 0;
-}
-#bar3 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#bar3 img:first-child:hover {
-  opacity: 0;
-}
-#bar4 img:first-child {
-  position: absolute;
-  -webkit-transition: opacity 0s ease-in-out;
-  -moz-transition: opacity 0s ease-in-out;
-  -o-transition: opacity 0s ease-in-out;
-  transition: opacity 0s ease-in-out;
-}
-#bar4 img:first-child:hover {
-  opacity: 0;
-}
-#cocoon {
-  -webkit-transform-origin: center 20%;
-  -webkit-animation: shake 1s infinite alternate;
-  -moz-transform-origin: center 20%;
-  -moz-animation: shake 1s infinite alternate;
-  -ms-transform-origin: center 20%;
-  -ms-animation: shake 1s infinite alternate;
-  transform-origin: center 20%;
-  animation: shake 1s infinite alternate;
-}
-.modal-backdrop {
-  z-index: 0;
-}
-#video-modal .modal-backdrop.in {
-  opacity: 0;
-}
-#game-flip .modal-backdrop.in {
   opacity: 0;
 }
