@@ -3,8 +3,6 @@
 
 $(document).ready(function () {
 
-
-
     /**********************************************/
     /**********************************************/
     /**************MAZE********************/
@@ -78,8 +76,10 @@ $(document).ready(function () {
                     if (map[toY][toX] === val) {
                         console.log('win!', val);
                         if (val == 'X') {
-                            $('#labyrinth a.next').fadeIn(500);
-                            $('#labyrinth a.next').addClass('open');
+                            $('#mazepopup button.sliderClose').click(function () {
+                             $('#labyrinth a.next').fadeIn(500);
+                             $('#labyrinth a.next').addClass('open');
+                         });
 
                         }
                         document.onkeydown = function (e) {
@@ -111,7 +111,7 @@ $(document).ready(function () {
                         }, 50);*/
 
                         if ($('#maze .goal').length == $("#labyrinth #mazepopup .poped").length - 1) {
-                            $('#labyrinth a.next').fadeIn(500);
+                            $('#labyrinth a.next').fadeIn(5000);
                             $('#labyrinth a.next').addClass('open');
                             $('#BKG_slide20-27').get(0).currentTime=0;
                             $('#BKG_slide20-27').get(0).pause();
@@ -168,9 +168,11 @@ $(document).ready(function () {
             }
             mazestatic.innerHTML = mapToHTML(map);
             updateMap();
+            
             $('#mazepopup button.sliderClose').click(function () {
                 $('#mazepopup .slide').fadeOut(500);
                 $('#mazepopup ').fadeOut(500);
+                
 
                 document.onkeydown = function (e) {
                     switch (e.keyCode) {
@@ -301,8 +303,10 @@ $(document).ready(function () {
                                 $('#slide41').get(0).play();}
 
                                 , 500);
+                            $('.popup2 button.sliderClose').click(function () {
                             $('#labyrinthHome a.next').fadeIn(500);
                             $('#labyrinthHome a.next').addClass('open');
+                        });
 
                         }
 
@@ -484,7 +488,7 @@ $(document).ready(function () {
 
         $('#labyrinth .popup').fadeOut(500);
 
-        $('#BKG_slide20-27').get(0).play();
+        //$('#BKG_slide20-27').get(0).play();
         $('#maze').fadeIn(500);
        
 
@@ -571,8 +575,8 @@ $(document).ready(function () {
         $('.content-box .btn-hold  .correct-ansver').fadeIn(200);
         setTimeout(function () { $(' #step .slider .next').fadeIn(500); }, 500);
         setTimeout(function () {
-                 
-            $('.arrows > .next').fadeIn();
+             
+             $('.arrows > .next').fadeIn();
             $('.arrows > .next').addClass('open');
         }, 1000);
             
@@ -610,12 +614,12 @@ $(document).ready(function () {
         $('#labyrinth').fadeOut(500);
         $('#labyrinth').html('');
         $('.maze2-start').trigger('click');
-
+        
         $('#labyrinthHome').fadeIn(500);
         $('#BKG_slide20-27').get(0).currentTime=0;
         $('#BKG_slide20-27').get(0).pause();
-        $('#BKG_slide31-40').get(0).currentTime = 0;
-        $('#BKG_slide31-40').get(0).play();
+        // $('#BKG_slide31-40').get(0).currentTime = 0;
+        // $('#BKG_slide31-40').get(0).play();
         maze2();
     });
     $('#labyrinthHome a.next').click(function () {
