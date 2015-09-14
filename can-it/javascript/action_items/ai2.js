@@ -769,7 +769,8 @@ function updateTimer() {
                 });
                 $("#button-replay").click(function () {
                     $('#retry-screen').modal('hide');
-                    //setTimeout(function () { location.reload(); }, 1000);
+                    $("#putcontenthere").load("action_items/ai2.html");
+                    // setTimeout(function () { location.reload(); }, 1000);
                     try
                     {
                         startGame.load();
@@ -785,7 +786,7 @@ function updateTimer() {
                 $('#retry-screen').modal('hide');
                 $('#fail-screen').modal('show');
                 $('#re-try-2').click( function() {
-                    //$("#putcontenthere").load("action_items/ai2.html");
+                    $("#putcontenthere").load("action_items/ai2.html");
                         location.reload();
                     });
             }
