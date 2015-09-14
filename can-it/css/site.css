@@ -7381,14 +7381,14 @@ input[type="checkbox"].input-validation-error {
   animation-iteration-count: infinite;
 }
 /* Main button */
-.Main-button {
+#Big-btn {
   position: absolute;
   z-index: 99;
   margin-left: 157px;
   margin-top: 41px;
   cursor: pointer;
 }
-.Main-button img {
+#Big-btn img {
   width: 150px;
 }
 .Main-button img:first-child {
@@ -7399,7 +7399,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 10;
 }
-.Main-button img:first-child:hover {
+#Big-btn img:first-child:hover {
   opacity: 0;
 }
 .scape-Btn {
