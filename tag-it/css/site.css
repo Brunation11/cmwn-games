@@ -9401,7 +9401,7 @@ h1 {
   z-index: 2;
 }
 .bkg-image {
-  background-image: url('@Url.Content("~/Content/images/BKG_2.png")');
+  background-image: url('@Url.Content("~/content/images/BKG_2.png")');
   background-repeat: no-repeat;
   background-size: 616px 400px;
   height: 400px;

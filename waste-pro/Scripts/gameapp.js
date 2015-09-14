@@ -52,98 +52,98 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
     $scope.data = [
         {
             'name': "Aluminium_can",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_aluminum_can.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_aluminum_can.png",
             'text': "<h3>Aluminium can</h3> <p>80-200 years</p>"
         },
         {
             'name': "battery",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_battery.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_battery.png",
             'text': "<h3>Batteries</h3> <p>100 years</p>"
         },
         {
             'name': "Cardboard",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_cardboard.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_cardboard.png",
             'text': "<h3>Cardboard</h3> <p>2 months</p>"
         },
         {
             'name': "Canvas",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_canvas.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_canvas.png",
             'text': "<h3>Canvas</h3> <p>1 year</p>"
         },
         {
             'name': "Cotton",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_cotton.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_cotton.png",
             'text': "<h3>Cotton Clothing</h3> <p>6 months</p>"
         },
         {
             'name': "Glass",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_glass.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_glass.png",
             'text': "<h3>Glass</h3> <p>Million of years</p><p class='small'>(Some say never)</p>"
         },
         {
             'name': "Leather_shoe",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_leather_shoe.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_leather_shoe.png",
             'text': "<h3>Leather shoes</h3> <p>25-40 years</p>"
         },
         {
             'name': "Lumber",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_lumber.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_lumber.png",
             'text': "<h3>Lumber</h3> <p>10-15 years</p>"
         },
         {
             'name': "Milk_Carton",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_milk_carton.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_milk_carton.png",
             'text': "<h3>Milk Carton</h3> <p>5 years</p>"
         },
         {
             'name': "Orange_Peel",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_orange_peel.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_orange_peel.png",
             'text': "<h3>Orange Peel</h3> <p>6 months</p>"
         },
         {
             'name': "Paper",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_paper.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_paper.png",
             'text': "<h3>Paper</h3> <p>2-5 months</p>"
         },
         {
             'name': "Plastic_Bag",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_plastic_bag.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_plastic_bag.png",
             'text': "<h3>Plastic Bag</h3> <p>500 years</p>"
         },
         {
             'name': "Plastic_Bottle",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_plastic_bottle.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_plastic_bottle.png",
             'text': "<h3>Plastic Bottle</h3> <p>450 years</p>"
         },
          {
              'name': "Plastic_Cup",
-             'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_platic_cup.png",
+             'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_platic_cup.png",
              'text': "<h3>Plastic Cup</h3> <p> 50 years</p>"
          },
         {
             'name': "Rope",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_rope.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_rope.png",
             'text': "<h3>Rope</h3> <p>3-14 months</p>"
         },
         {
             'name': "Rubber_sole",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_rubber_sole.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_rubber_sole.png",
             'text': "<h3>Rubber sole</h3> <p>50-80 years</p>"
         },
 
         {
             'name': "Styrofoam",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_styrofoam.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_styrofoam.png",
             'text': "<h3>Styrofoam</h3> <p>It does not biodegrade</p>"
         },
         {
             'name': "Tin_can",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_tin_can.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_tin_can.png",
             'text': "<h3>Tin can</h3> <p>50 years</p>"
         },
         {
             'name': "Tin_Foil",
-            'mainImageUrl': content_path + "/Content/_assets/elements/Trash/Untitled-14_tin_foil.png",
+            'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_tin_foil.png",
             'text': "<h3>Tin Foil</h3> <p>It does not biodegrade</p>"
         },
 
@@ -254,32 +254,32 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
     $scope.data = [
           {
               'name': "Elephant",
-              'mainImageUrl': content_path + "/Content/_assets/elements/weight_elephants.png",
-              'headerImageUrl': content_path + "/Content/_assets/elements/header_elephant.png",
+              'mainImageUrl': content_path + "/content/_assets/elements/weight_elephants.png",
+              'headerImageUrl': content_path + "/content/_assets/elements/header_elephant.png",
               'text': "Yes. An elephant weighs 15,000 pounds.",
               'correct': 1
           }, {
               'name': "Car",
-              'mainImageUrl': content_path + "/Content/_assets/elements/weight_cars.png",
-              'headerImageUrl': content_path + "/Content/_assets/elements/header_car.png",
+              'mainImageUrl': content_path + "/content/_assets/elements/weight_cars.png",
+              'headerImageUrl': content_path + "/content/_assets/elements/header_car.png",
               'text': "Yes. A car weighs 4,000 pounds ",
               'correct': 1
           }, {
               'name': "Hippopotamus",
-              'mainImageUrl': content_path + "/Content/_assets/elements/weight_hippos.png",
-              'headerImageUrl': content_path + "/Content/_assets/elements/header_hippo.png",
+              'mainImageUrl': content_path + "/content/_assets/elements/weight_hippos.png",
+              'headerImageUrl': content_path + "/content/_assets/elements/header_hippo.png",
               'text': "Yes. A hippo weighs 3,000 pounds",
               'correct': 1
           }, {
               'name': "School_bus",
-              'mainImageUrl': content_path + "/Content/_assets/elements/weight_buses.png",
-              'headerImageUrl': content_path + "/Content/_assets/elements/header_bus.png",
+              'mainImageUrl': content_path + "/content/_assets/elements/weight_buses.png",
+              'headerImageUrl': content_path + "/content/_assets/elements/header_bus.png",
               'text': "No.  Not enough.  A school bus weighs 25,000 pounds.",
               'correct': 2
           }, {
               'name': "Kittens",
-              'mainImageUrl': content_path + "/Content/_assets/elements/weight_kittens.png",
-              'headerImageUrl': content_path + "/Content/_assets/elements/header_kitten.png",
+              'mainImageUrl': content_path + "/content/_assets/elements/weight_kittens.png",
+              'headerImageUrl': content_path + "/content/_assets/elements/header_kitten.png",
               'text': "Not even close.  A kitten weighs a pound.",
               'correct': 2
           },
@@ -398,26 +398,26 @@ moduleGame.controller('garbageController', function ($scope, $http, $sce, $windo
     $scope.data = [
     {
         'name': "Landfill",
-        'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_1.png",
-        'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_1_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_1.png",
+        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_1_on.png",
         'text': "A landfill is a place to <br/> bury solid waste.<br/>  It is lined and covered.<br/> It is not a dump."
     },
      {
          'name': "Recycling",
-         'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_2.png",
-         'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_2_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_2.png",
+         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_2_on.png",
          'text': "Recycling means to  convert <br/> the waste into usable material. <br/> 75% of waste is recyclable but <br/> in US we recycle only 30%."
      },
       {
           'name': "Composting",
-          'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_3.png",
-          'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_3_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_3.png",
+          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_3_on.png",
           'text': "Composting is how you <br/>  manage the decay of organic <br/> material to use to improve soil."
       },
        {
            'name': "Incineration",
-           'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_4.png",
-           'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_4_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_4.png",
+           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_4_on.png",
            'text': "Incineration is the burning <br/> of waste at high heat."
 
 
@@ -459,26 +459,26 @@ moduleGame.controller('landfillsController', function ($scope, $http, $sce, $win
     $scope.data = [
     {
         'name': "Contamination",
-        'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_1.png",
-        'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_1_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_1.png",
+        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_1_on.png",
         'text': "Waste changes the chemistry <br/> of the water. Hazardous  <br/> chemicals get into soil <br/> both harm plants, animals,<br/>  humans and  ecosystem."
     },
      {
          'name': "Pollution",
-         'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_2.png",
-         'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_2_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_2.png",
+         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_2_on.png",
          'text': "Bad waste management <br/> leads to land and air pollution <br/>  causing respiratory and other <br/> health problems."
      },
       {
           'name': "Leachate",
-          'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_3.png",
-          'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_3_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_3.png",
+          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_3_on.png",
           'text': "The water that trickles <br/> through contamination is <br/> called leachate. <br/> It is a harmful substance that <br/> enters water and soil."
       },
        {
            'name': "Methane Gas",
-           'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_4.png",
-           'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_4_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_4.png",
+           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_4_on.png",
            'text': "Food waste in a landfill <br/> produces 34% of ALL toxic <br/> methane emissions in US. <br/> Methane is is 21 times more <br/> environmentally damaging <br/> than carbon dioxide!"
 
        },
@@ -525,36 +525,36 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
     $scope.data = [
     {
         'name': "Paper_Towels",
-        'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_towels.png",
-        'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_towels_on.png",
-        'headerImages': content_path + "/Content/_assets/elements/header_towels.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_towels.png",
+        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_towels_on.png",
+        'headerImages': content_path + "/content/_assets/elements/header_towels.png",
        
     },
      {
          'name': "Plastic_Bottles",
-         'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_bottles.png",
-         'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_bottles_on.png",
-         'headerImages': content_path + "/Content/_assets/elements/header_bottles.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_bottles.png",
+         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_bottles_on.png",
+         'headerImages': content_path + "/content/_assets/elements/header_bottles.png",
        
      },
       {
           'name': "Plastic_Bags",
-          'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_bags.png",
-          'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_bags_on.png",
-          'headerImages': content_path + "/Content/_assets/elements/header_bags.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_bags.png",
+          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_bags_on.png",
+          'headerImages': content_path + "/content/_assets/elements/header_bags.png",
          
       },
        {
            'name': "Paper_Napkins",
-           'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_napkins.png",
-           'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_napkins_on.png",
-           'headerImages': content_path + "/Content/_assets/elements/header_napkins.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_napkins.png",
+           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_napkins_on.png",
+           'headerImages': content_path + "/content/_assets/elements/header_napkins.png",
        },
        {
            'name': "Paper_Utensils",
-           'mainImageUrl': content_path + "/Content/_assets/elements/Buttons/btn_utensils.png",
-           'noseImages': content_path + "/Content/_assets/elements/Buttons/btn_utensils_on.png",
-           'headerImages': content_path + "/Content/_assets/elements/header_utensils.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_utensils.png",
+           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_utensils_on.png",
+           'headerImages': content_path + "/content/_assets/elements/header_utensils.png",
        },
     ]
 

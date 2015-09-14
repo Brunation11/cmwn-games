@@ -50,96 +50,96 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
     $scope.data = [
     {
         'name': "Lion",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Lion/lion_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Lion/lion_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Lion/nose_1.png",
-                'nose2': content_path + "/Content/_assets/elements/_Lion/nose_2.png",
-                'nose3': content_path + "/Content/_assets/elements/_Lion/nose_3.png",
+                'nose1': content_path + "/content/_assets/elements/_Lion/nose_1.png",
+                'nose2': content_path + "/content/_assets/elements/_Lion/nose_2.png",
+                'nose3': content_path + "/content/_assets/elements/_Lion/nose_3.png",
                 'correct': "1"
             }
         ],
         'text': "Female lions are better at <br/> hunting than males!"
     }, {
         'name': "Sloth",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Three Toe Sloth/sloth_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Three Toe Sloth/sloth_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Three Toe Sloth/nose_6.png",
-                'nose2': content_path + "/Content/_assets/elements/_Three Toe Sloth/nose_7.png",
-                'nose3': content_path + "/Content/_assets/elements/_Three Toe Sloth/nose_8.png",
+                'nose1': content_path + "/content/_assets/elements/_Three Toe Sloth/nose_6.png",
+                'nose2': content_path + "/content/_assets/elements/_Three Toe Sloth/nose_7.png",
+                'nose3': content_path + "/content/_assets/elements/_Three Toe Sloth/nose_8.png",
                 'correct': "1"
             }
         ],
         'text': "<b>Say Cheese!</b><br/> The way the Three Toed Sloth’s <br/>  mouth is shaped makes it look <br/>  like it’s always smiling!"
     }, {
         'name': "Wolf",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Wolf/wolf_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Wolf/wolf_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Wolf/nose_10.png",
-                'nose2': content_path + "/Content/_assets/elements/_Wolf/nose_11.png",
-                'nose3': content_path + "/Content/_assets/elements/_Wolf/nose_9.png",
+                'nose1': content_path + "/content/_assets/elements/_Wolf/nose_10.png",
+                'nose2': content_path + "/content/_assets/elements/_Wolf/nose_11.png",
+                'nose3': content_path + "/content/_assets/elements/_Wolf/nose_9.png",
                 'correct': "2"
             }
         ],
         'text': "Wolves have been found in <br/> more places on earth than <br/> any other mammals <br/> except humans!"
     }, {
         'name': "Elephant",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Elephant/elephant_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Elephant/elephant_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Elephant/nose_12.png",
-                'nose2': content_path + "/Content/_assets/elements/_Elephant/nose_13.png",
-                'nose3': content_path + "/Content/_assets/elements/_Elephant/nose_14.png",
+                'nose1': content_path + "/content/_assets/elements/_Elephant/nose_12.png",
+                'nose2': content_path + "/content/_assets/elements/_Elephant/nose_13.png",
+                'nose3': content_path + "/content/_assets/elements/_Elephant/nose_14.png",
                 'correct': "2"
             }
         ],
         'text': "Elephants are the biggest <br/> land mammals on earth!"
     }, {
         'name': "Komodo",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Komodo Dragon/komodo_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Komodo Dragon/komodo_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Komodo Dragon/nose_15.png",
-                'nose2': content_path + "/Content/_assets/elements/_Komodo Dragon/nose_16.png",
-                'nose3': content_path + "/Content/_assets/elements/_Komodo Dragon/nose_17.png",
+                'nose1': content_path + "/content/_assets/elements/_Komodo Dragon/nose_15.png",
+                'nose2': content_path + "/content/_assets/elements/_Komodo Dragon/nose_16.png",
+                'nose3': content_path + "/content/_assets/elements/_Komodo Dragon/nose_17.png",
                 'correct': "1"
             }
         ],
         'text': "The Komodo Dragon <br/> is the largest living lizard <br/> in the world!"
     }, {
         'name': "Pig",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Pig/pig_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Pig/pig_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Pig/nose_19.png",
-                'nose2': content_path + "/Content/_assets/elements/_Pig/nose_18.png",
-                'nose3': content_path + "/Content/_assets/elements/_Pig/nose_20.png",
+                'nose1': content_path + "/content/_assets/elements/_Pig/nose_19.png",
+                'nose2': content_path + "/content/_assets/elements/_Pig/nose_18.png",
+                'nose3': content_path + "/content/_assets/elements/_Pig/nose_20.png",
                 'correct': "2"
             }
         ],
         'text': "Pigs are the fourth smartest <br/> animals on the planet!"
     }, {
         'name': "Gorilla",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Gorilla/gorilla_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Gorilla/gorilla_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Gorilla/nose_23.png",
-                'nose2': content_path + "/Content/_assets/elements/_Gorilla/nose_22.png",
-                'nose3': content_path + "/Content/_assets/elements/_Gorilla/nose_21.png",
+                'nose1': content_path + "/content/_assets/elements/_Gorilla/nose_23.png",
+                'nose2': content_path + "/content/_assets/elements/_Gorilla/nose_22.png",
+                'nose3': content_path + "/content/_assets/elements/_Gorilla/nose_21.png",
                 'correct': "3"
             }
         ],
         'text': "Gorillas are really smart. <br/> At least one gorilla learned <br/> human sign language!"
     }, {
         'name': "Mule",
-        'mainImageUrl': content_path + "/Content/_assets/elements/_Mule/mule_nose.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/_Mule/mule_nose.png",
         'noseImages': [
             {
-                'nose1': content_path + "/Content/_assets/elements/_Mule/nose_25.png",
-                'nose2': content_path + "/Content/_assets/elements/_Mule/nose_24.png",
-                'nose3': content_path + "/Content/_assets/elements/_Mule/nose_26.png",
+                'nose1': content_path + "/content/_assets/elements/_Mule/nose_25.png",
+                'nose2': content_path + "/content/_assets/elements/_Mule/nose_24.png",
+                'nose3': content_path + "/content/_assets/elements/_Mule/nose_26.png",
                 'correct': "2"
             }
         ],
