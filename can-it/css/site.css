@@ -7116,8 +7116,8 @@ input[type="checkbox"].input-validation-error {
 }
 .carousel-inner {
   margin-left: 17px;
-  width: 334px;
-  height: 120px;
+  width: 355px;
+  height: 206px;
   top: -43px;
 }
 .item {
@@ -7384,8 +7384,8 @@ input[type="checkbox"].input-validation-error {
 .Main-button {
   position: absolute;
   z-index: 99;
-  margin-left: 400px;
-  margin-top: 92px;
+  margin-left: 157px;
+  margin-top: 41px;
   cursor: pointer;
 }
 .Main-button img {
