@@ -81,7 +81,7 @@
             animateDiv();*/
            // alert($('#step .slider .openslide').length);
             /*var reloadCSS = function () {
-                $('#css').replaceWith('<link id="css" rel="stylesheet" href="/Content/main.css"></link>');
+                $('#css').replaceWith('<link id="css" rel="stylesheet" href="/content/main.css"></link>');
             };
             reloadCSS();*/
             $('#step .slider  .pointer').remove();

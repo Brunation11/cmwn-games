@@ -49,57 +49,57 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
     $scope.data = [
     {
         'name': "coal",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_coal.png",        
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_coal.png",        
         'correct': 2,
         'text': "coal",
     }, {
         'name': "oil",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_oil.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_oil.png",
         'correct': 2,
         'text': "oil",
     }, {
         'name': "natural_gas",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_natural_gas.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_natural_gas.png",
         'correct': 2,
         'text': "natural gas",
     }, {
         'name': "nuclear",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_nuclear.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_nuclear.png",
         'correct': 2,
         'text': "nuclear energy",
     }, {
         'name': "propane",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_propane.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_propane.png",
         'correct': 2,
         'text': "propane",
     }, {
         'name': "bioenergy",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_bioenergy.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_bioenergy.png",
         'correct': 1,
         'text': "bioenergy",
     }, {
         'name': "wind",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_wind.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_wind.png",
         'correct': 1,
         'text': "wind energy",
     }, {
         'name': "ethanol",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_ethenol.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_ethenol.png",
         'correct': 1,
         'text': "ethanol",
     }, {
         'name': "hydroelectric",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_hydroelectric.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_hydroelectric.png",
         'correct': 1,
         'text': "hydroelectric",
     }, {
         'name': "geothermal",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_geothermal.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_geothermal.png",
         'correct': 1,
         'text': "geothermal",
     }, , {
         'name': "solar",
-        'mainImageUrl': content_path + "/Content/_assets/elements/icon_solar.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_solar.png",
         'correct': 1,
         'text': "solar energy",
     },
