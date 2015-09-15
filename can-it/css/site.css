@@ -7117,7 +7117,7 @@ input[type="checkbox"].input-validation-error {
 .carousel-inner {
   margin-left: 17px;
   width: 355px;
-  height: 206px;
+  height: 227px;
   top: -43px;
 }
 .item {
@@ -7385,8 +7385,8 @@ input[type="checkbox"].input-validation-error {
   /* This gives the shape to the button*/
   position: absolute;
   z-index: 99;
-  top: 100px;
-  left: 200px;
+  top: 27px;
+  left: 168px;
   display: inline-block;
   margin: 0 auto;
   -webkit-border-radius: 93px;
@@ -7404,7 +7404,7 @@ input[type="checkbox"].input-validation-error {
   -webkit-border-radius: 93px;
   -webkit-transition: -webkit-transform 0.1s ease-in-out;
   display: inline-block;
-  padding: 50px 50px 50px 50px;
+  padding: 30px 30px 30px 30px;
   color: #3A474D;
   text-align: center;
   font-family: 'Nunito';
