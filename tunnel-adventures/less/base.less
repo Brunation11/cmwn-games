@@ -31,15 +31,21 @@
 }
 
 /*#sign img {*/
-.intro .btn-next img, .page .btn-next img {
-  float: right;
-  margin-top: 410px;
-  margin-left: 455px;
-  position: absolute;
-  width: 27%;
-}
+
 .page .btn-next img {
   margin-top: 430px;
   margin-left: 500px;
   width: 14%;
 }
+
+#sign img:first-child {
+    position: absolute;
+    -webkit-transition: opacity 0s ease-in-out;
+    -moz-transition: opacity 0s ease-in-out;
+    -o-transition: opacity 0s ease-in-out;
+    transition: opacity 0s ease-in-out;
+}
+
+    #sign img:first-child:hover {
+        opacity: 0;
+    }
