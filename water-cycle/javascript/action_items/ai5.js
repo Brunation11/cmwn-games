@@ -1,7 +1,7 @@
 var correct_items = new Array();
 $(document).ready(function () {
 
-    $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_6.png)');
+    $ ('.bkg-image').css('background-image','url(content/images/background/BKG_6.png)');
 
     $('.No').click(function () {
         $('#retry-level').modal('hide')
@@ -35,7 +35,7 @@ $(document).ready(function () {
             slide2.load();
             slide2.play();
             slide1.pause();
-            $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_7.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_7.png)');
             $(".banners").animate({ top: '-=120' }, 1000);
             $(".text_1").hide();
             $(".text_2").hide().delay(900).fadeIn(1000);
@@ -45,7 +45,7 @@ $(document).ready(function () {
             slide3.load();
             slide3.play();
             slide2.pause();
-            $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_8.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_8.png)');
             $(".banners").animate({ top: '+=120' }, 1000);
             $(".text_2").hide();
             $(".text_3").hide().delay(900).fadeIn(1000);
@@ -55,7 +55,7 @@ $(document).ready(function () {
             slide4.load();
             slide4.play();
             slide3.pause();
-            $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_9.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_9.png)');
             $(".text_3").hide();
             $(".text_4").show();
         }
@@ -64,7 +64,7 @@ $(document).ready(function () {
             slide5.load();
             slide5.play();
             slide4.pause();
-            $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_10.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_10.png)');
             $(".banners").animate({ top: '-=230' }, 1000);
             $(".text_4").hide();
             $(".text_5").hide().delay(900).fadeIn(1000);
@@ -75,7 +75,7 @@ $(document).ready(function () {
             slide5.pause();
             Flip.load();
             Flip.play();
-            $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_11.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_11.png)');
             $(".banners").animate({ top: '+=80', height: "200px" }, 1000);
             $(".Flip").hide().delay(1000).fadeIn(2000);
             $(".text_5").hide();
