@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     window.GameApp = {
-        "idBtnNext": $("#sign2").find("a"),
+        "idBtnNext": $("#sign").find("a"),
         "idBtnNextSound": $("#btn-next-sound"),
         "idContentWrapper": $(".content-wrapper"),
 
