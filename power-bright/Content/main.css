@@ -142,7 +142,7 @@ right: 3%;
 }
 
 .play-btn a {
-background: url("_assets/elements/Buttons/btn_play.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") 0 0 no-repeat;
 background-size: 100%;
 display: block;
 width: 70px;
@@ -150,7 +150,7 @@ height: 50px;
 }
 
 .play-btn a:hover {
-background: url("_assets/elements/Buttons/btn_play_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -161,7 +161,7 @@ right: 10%;
 }
 
 #home .play-btn a {
-background: url("_assets/elements/Buttons/btn_play.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") 0 0 no-repeat;
 background-size: 100%;
 display: block;
 width: 111px;
@@ -169,7 +169,7 @@ height: 118px;
 }
 
 #home .play-btn a:hover {
-background: url("_assets/elements/Buttons/btn_play_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -321,7 +321,7 @@ font-family:source_sans_probold;
 text-transform:uppercase;
 }
 .content-box .btn-hold a {
-background: url("_assets/elements/Buttons/btn_renewable.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_renewable.png") 0 0 no-repeat;
 
 position: absolute;
   background-size: 100%;
@@ -333,7 +333,7 @@ position: absolute;
   display:block;
 }
 .content-box .btn-hold a.not-real {
-background: url("_assets/elements/Buttons/btn_nonrenewable.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_nonrenewable.png") 0 0 no-repeat;
 background-size: 100%;
 right: 52px;
 left:auto;
@@ -341,11 +341,11 @@ left:auto;
 
 .content-box .btn-hold a.real:hover,
 .content-box .btn-hold a.real.Correct {
-background-image: url("_assets/elements/Buttons/btn_renewable_on.png");
+background-image: url("_assets/elements/buttons/btn_renewable_on.png");
 }
 .content-box .btn-hold a.not-real:hover, 
 .content-box .btn-hold a.not-real.Correct {
-background-image: url('_assets/elements/Buttons/btn_nonrenewable_on.png');
+background-image: url('_assets/elements/buttons/btn_nonrenewable_on.png');
 right: 50px;
 }
 /*.content-box .btn-hold a.real:active {
@@ -413,7 +413,7 @@ button.exit {
 position: absolute;
 top: 2%;
 right: 2%;
-background: url("_assets/elements/Buttons/btn_exit.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
 background-size: 100%;
 width: 47px;
 height: 47px;
@@ -422,7 +422,7 @@ outline:0 !important;
 }
 
 button.exit:hover {
-background: url("_assets/elements/Buttons/btn_exit_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -430,7 +430,7 @@ a.next {
 position: absolute;
 bottom: -52px;
 right: -100px;
-background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -444,7 +444,7 @@ right: 15px;
 }
 
 a.next:hover {
-background: url("_assets/elements/Buttons/btn_next_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -732,7 +732,7 @@ width:92%;
 
 }
 .buttons-quit .yes, .buttons-quit .no {
-background:url('_assets/elements/Buttons/btn_yes.png') 0 0 no-repeat;
+background:url('_assets/elements/buttons/btn_yes.png') 0 0 no-repeat;
 background-size:100%;
 float:left;
 width:40%;
@@ -740,17 +740,17 @@ padding-top:37%;
 
 }
 .buttons-quit .no {
-background:url('_assets/elements/Buttons/btn_no.png') 0 0 no-repeat;
+background:url('_assets/elements/buttons/btn_no.png') 0 0 no-repeat;
 background-size:92%;
 width:37%;
 float:right;
 }
 .buttons-quit .yes:hover {
-background-image:url('_assets/elements/Buttons/btn_yes_on.png');
+background-image:url('_assets/elements/buttons/btn_yes_on.png');
 
 }
 .buttons-quit .no:hover {
-background-image:url('_assets/elements/Buttons/btn_no_on.png');
+background-image:url('_assets/elements/buttons/btn_no_on.png');
 
  
 }
@@ -1082,7 +1082,7 @@ float:left;
 margin-right:0;
 }
 .farm-hold > div a {
-background: url("_assets/elements/Buttons/btn_lunchbox.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
 background-size: 100%;
 width:100%;
 padding-top:100%;
@@ -1090,39 +1090,39 @@ margin-top:65%;
 display:block;
 }
 .farm-hold > div a.lunchbox {
-background: url("_assets/elements/Buttons/btn_lunchbox.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
 background-size: 100%;
 
 }
 .farm-hold > div a.lunchbox:hover {
-background: url("_assets/elements/Buttons/btn_lunchbox_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.store {
-background: url("_assets/elements/Buttons/btn_store.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_store.png") center top no-repeat;
 background-size: 100%;
 margin-top:10%;
 }
 .farm-hold > div a.store:hover {
-background: url("_assets/elements/Buttons/btn_store_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_store_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.rabbit {
-background: url("_assets/elements/Buttons/btn_rabbit.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_rabbit.png") center top no-repeat;
 background-size: 100%;
 margin-top:10%;
 }
 .farm-hold > div a.rabbit:hover {
-background: url("_assets/elements/Buttons/btn_rabbit_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_rabbit_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.farm {
-background: url("_assets/elements/Buttons/btn_farm.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_farm.png") center top no-repeat;
 background-size: 100%;
 
 }
 .farm-hold > div a.farm:hover {
-background: url("_assets/elements/Buttons/btn_farm_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_farm_on.png") center top no-repeat;
 background-size: 100%;
 }
 /*--------------*/

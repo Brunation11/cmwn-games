@@ -141,7 +141,7 @@ right: 2%;
 }
 
 .play-btn a {
-background: url("_assets/elements/Buttons/btn_play.png") center center no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") center center no-repeat;
 background-size: 100%;
 display: block;
   width: 100px;
@@ -149,7 +149,7 @@ display: block;
 }
 
 .play-btn a:hover {
-background-image: url("_assets/elements/Buttons/btn_play_on.png");
+background-image: url("_assets/elements/buttons/btn_play_on.png");
 }
 .sidebar-hover {
 display: none;
@@ -273,7 +273,7 @@ width: 50%;
 }
 
 .main-box .flush a {
-background: url(_assets/elements/Buttons/btn_flush.png) center center no-repeat;
+background: url(_assets/elements/buttons/btn_flush.png) center center no-repeat;
 background-size: 106%;
 width: 100%;
 padding-top: 100%;
@@ -281,7 +281,7 @@ display: block;
 }
 
 .main-box .flush a:hover {
-background-image: url(_assets/elements/Buttons/btn_flush_on.png);
+background-image: url(_assets/elements/buttons/btn_flush_on.png);
 }
 
 .content-box {
@@ -352,7 +352,7 @@ position: relative;
 position: absolute;
 top: 23px;
 right: -5%;
-background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
 background-size: 100%;
 width:50px;
 height: 32px;
@@ -361,7 +361,7 @@ display:block;
 }
 .correct-ansver a.next:hover {
 
-background-image: url("_assets/elements/Buttons/btn_next_on.png");
+background-image: url("_assets/elements/buttons/btn_next_on.png");
 
 }
 .slider > .arrows .next {
@@ -415,7 +415,7 @@ button.exit {
 position: absolute;
   top: 1%;
   right: 2%;
-  background: url("_assets/elements/Buttons/btn_exit.png") 0 0 no-repeat;
+  background: url("_assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
   background-size: 100%;
   width: 23px;
   height: 30px;
@@ -424,7 +424,7 @@ position: absolute;
 }
 
 button.exit:hover {
-background-image: url("_assets/elements/Buttons/btn_exit_on.png");
+background-image: url("_assets/elements/buttons/btn_exit_on.png");
 
 }
 
@@ -432,7 +432,7 @@ a.next {
 position: absolute;
 bottom: -10px;
 right: 5%;
-background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -441,7 +441,7 @@ display:none;
 }
 
 a.next:hover {
-background: url("_assets/elements/Buttons/btn_next_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -449,7 +449,7 @@ a.prev {
 position: absolute;
 bottom: 2%;
 left: 2%;
-background: url("_assets/elements/Buttons/btn_back.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_back.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -457,7 +457,7 @@ z-index: 2;
 }
 
 a.prev:hover {
-background: url("_assets/elements/Buttons/btn_back_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_back_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 /*----------*/
@@ -556,7 +556,7 @@ margin: 0 auto;
 }
 
 #googjob .heading .buttons-box a {
-background: url('_assets/elements/Buttons/btn_play_again.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_play_again.png') 0 0 no-repeat;
 background-size: 100%;
 width: 150px;
 height: 150px;
@@ -564,18 +564,18 @@ float: left;
 }
 
 #googjob .heading .buttons-box a.again:hover {
-background: url('_assets/elements/Buttons/btn_play_again_on.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_play_again_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
 #googjob .heading .buttons-box a.fliptime {
-background: url('_assets/elements/Buttons/btn_flip_time.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_flip_time.png') 0 0 no-repeat;
 background-size: 100%;
 float: right;
 }
 
 #googjob .heading .buttons-box a.fliptime:hover {
-background: url('_assets/elements/Buttons/btn_flip_time_on.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_flip_time_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -695,14 +695,14 @@ position: absolute;
 
 div.upload {
 width: 20%;
-background: url("_assets/elements/Buttons/btn_upload.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_upload.png") 0 0 no-repeat;
 background-size: 100%;
 overflow: hidden;
 margin: 0 auto;
 }
 
 div.upload:hover {
-background: url("_assets/elements/Buttons/btn_upload_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_upload_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -728,7 +728,7 @@ padding: 50px 0 0 0;
 }
 
 .buttons-quit .yes, .buttons-quit .no {
-background: url('_assets/elements/Buttons/btn_yes.png') center center no-repeat;
+background: url('_assets/elements/buttons/btn_yes.png') center center no-repeat;
 background-size: 100%;
 float: left;
 width: 45%;
@@ -736,18 +736,18 @@ padding-top: 37%;
 }
 
 .buttons-quit .no {
-background-image: url('_assets/elements/Buttons/btn_no.png');
+background-image: url('_assets/elements/buttons/btn_no.png');
 float: right;
 width: 39%;
 }
 
 .buttons-quit .yes:hover {
-background-image: url('_assets/elements/Buttons/btn_yes_on.png');
+background-image: url('_assets/elements/buttons/btn_yes_on.png');
 
 }
 
 .buttons-quit .no:hover {
-background-image: url('_assets/elements/Buttons/btn_no_on.png');
+background-image: url('_assets/elements/buttons/btn_no_on.png');
 }
 /*-----------------------------------*/
 .ai_background {
@@ -1457,7 +1457,7 @@ font-size: 17px;
     position: absolute;
     bottom: 10px;
     right: 5%;
-    background: url("_assets/elements/Buttons/btn_blue_next.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_blue_next.png") 0 0 no-repeat;
     background-size: 100%;
     width:70px;
     height: 50px;
@@ -1465,7 +1465,7 @@ font-size: 17px;
     display:none;
 }
 .pledge a.next:hover, .final a.next:hover{
-    background-image: url("_assets/elements/Buttons/btn_blue_next_on.png");
+    background-image: url("_assets/elements/buttons/btn_blue_next_on.png");
 }
 .pledges {
 position:relative;
@@ -1538,12 +1538,12 @@ margin:70px auto 0;
 padding: 0;   
 }
 #iCommit .commit-btn a{
-background: url(_assets/elements/Buttons/btn_commit.png) 0 0 no-repeat;
+background: url(_assets/elements/buttons/btn_commit.png) 0 0 no-repeat;
 background-size: 100%;
 width:100%;
 padding-top:100px;
 display:block;
 }
 #iCommit .commit-btn a:hover{
-background-image: url(_assets/elements/Buttons/btn_commit_on.png);
+background-image: url(_assets/elements/buttons/btn_commit_on.png);
 }

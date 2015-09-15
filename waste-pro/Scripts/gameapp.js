@@ -398,26 +398,26 @@ moduleGame.controller('garbageController', function ($scope, $http, $sce, $windo
     $scope.data = [
     {
         'name': "Landfill",
-        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_1.png",
-        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_1_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_1.png",
+        'noseImages': content_path + "/content/_assets/elements/buttons/btn_1_on.png",
         'text': "A landfill is a place to <br/> bury solid waste.<br/>  It is lined and covered.<br/> It is not a dump."
     },
      {
          'name': "Recycling",
-         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_2.png",
-         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_2_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_2.png",
+         'noseImages': content_path + "/content/_assets/elements/buttons/btn_2_on.png",
          'text': "Recycling means to  convert <br/> the waste into usable material. <br/> 75% of waste is recyclable but <br/> in US we recycle only 30%."
      },
       {
           'name': "Composting",
-          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_3.png",
-          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_3_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_3.png",
+          'noseImages': content_path + "/content/_assets/elements/buttons/btn_3_on.png",
           'text': "Composting is how you <br/>  manage the decay of organic <br/> material to use to improve soil."
       },
        {
            'name': "Incineration",
-           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_4.png",
-           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_4_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_4.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_4_on.png",
            'text': "Incineration is the burning <br/> of waste at high heat."
 
 
@@ -459,26 +459,26 @@ moduleGame.controller('landfillsController', function ($scope, $http, $sce, $win
     $scope.data = [
     {
         'name': "Contamination",
-        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_1.png",
-        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_1_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_1.png",
+        'noseImages': content_path + "/content/_assets/elements/buttons/btn_1_on.png",
         'text': "Waste changes the chemistry <br/> of the water. Hazardous  <br/> chemicals get into soil <br/> both harm plants, animals,<br/>  humans and  ecosystem."
     },
      {
          'name': "Pollution",
-         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_2.png",
-         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_2_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_2.png",
+         'noseImages': content_path + "/content/_assets/elements/buttons/btn_2_on.png",
          'text': "Bad waste management <br/> leads to land and air pollution <br/>  causing respiratory and other <br/> health problems."
      },
       {
           'name': "Leachate",
-          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_3.png",
-          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_3_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_3.png",
+          'noseImages': content_path + "/content/_assets/elements/buttons/btn_3_on.png",
           'text': "The water that trickles <br/> through contamination is <br/> called leachate. <br/> It is a harmful substance that <br/> enters water and soil."
       },
        {
            'name': "Methane Gas",
-           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_4.png",
-           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_4_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_4.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_4_on.png",
            'text': "Food waste in a landfill <br/> produces 34% of ALL toxic <br/> methane emissions in US. <br/> Methane is is 21 times more <br/> environmentally damaging <br/> than carbon dioxide!"
 
        },
@@ -525,35 +525,35 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
     $scope.data = [
     {
         'name': "Paper_Towels",
-        'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_towels.png",
-        'noseImages': content_path + "/content/_assets/elements/Buttons/btn_towels_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_towels.png",
+        'noseImages': content_path + "/content/_assets/elements/buttons/btn_towels_on.png",
         'headerImages': content_path + "/content/_assets/elements/header_towels.png",
        
     },
      {
          'name': "Plastic_Bottles",
-         'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_bottles.png",
-         'noseImages': content_path + "/content/_assets/elements/Buttons/btn_bottles_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bottles.png",
+         'noseImages': content_path + "/content/_assets/elements/buttons/btn_bottles_on.png",
          'headerImages': content_path + "/content/_assets/elements/header_bottles.png",
        
      },
       {
           'name': "Plastic_Bags",
-          'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_bags.png",
-          'noseImages': content_path + "/content/_assets/elements/Buttons/btn_bags_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bags.png",
+          'noseImages': content_path + "/content/_assets/elements/buttons/btn_bags_on.png",
           'headerImages': content_path + "/content/_assets/elements/header_bags.png",
          
       },
        {
            'name': "Paper_Napkins",
-           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_napkins.png",
-           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_napkins_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_napkins.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_napkins_on.png",
            'headerImages': content_path + "/content/_assets/elements/header_napkins.png",
        },
        {
            'name': "Paper_Utensils",
-           'mainImageUrl': content_path + "/content/_assets/elements/Buttons/btn_utensils.png",
-           'noseImages': content_path + "/content/_assets/elements/Buttons/btn_utensils_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_utensils.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_utensils_on.png",
            'headerImages': content_path + "/content/_assets/elements/header_utensils.png",
        },
     ]

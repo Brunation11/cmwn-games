@@ -140,7 +140,7 @@ right: 2%;
 }
 
 .play-btn a {
-background: url("_assets/elements/Buttons/btn_play.png") center center no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") center center no-repeat;
 background-size: 100%;
 display: block;
 width: 130px;
@@ -148,7 +148,7 @@ height: 100px;
 }
 
 .play-btn a:hover {
-background-image: url("_assets/elements/Buttons/btn_play_on.png");
+background-image: url("_assets/elements/buttons/btn_play_on.png");
 background-size: 117%;
 }
 .sidebar-hover {
@@ -261,7 +261,7 @@ width: 50%;
 }
 
 .main-box .flush a {
-background: url(_assets/elements/Buttons/btn_flush.png) center center no-repeat;
+background: url(_assets/elements/buttons/btn_flush.png) center center no-repeat;
 background-size: 106%;
 width: 100%;
 padding-top: 100%;
@@ -269,7 +269,7 @@ display: block;
 }
 
 .main-box .flush a:hover {
-background-image: url(_assets/elements/Buttons/btn_flush_on.png);
+background-image: url(_assets/elements/buttons/btn_flush_on.png);
 }
 
 .content-box {
@@ -341,7 +341,7 @@ position: relative;
 position: absolute;
   top: -10px;
   right: -7%;
-  background: url("_assets/elements/Buttons/btn_back.png") 0 0 no-repeat;
+  background: url("_assets/elements/buttons/btn_back.png") 0 0 no-repeat;
   background-size: 110%;
   width: 80px;
   height: 63px;
@@ -350,7 +350,7 @@ position: absolute;
 }
 .correct-ansver a.next:hover {
 
-background-image: url("_assets/elements/Buttons/btn_back_on.png");
+background-image: url("_assets/elements/buttons/btn_back_on.png");
   background-size: 109%;
 }
 .slider > .arrows .next {
@@ -409,7 +409,7 @@ button.exit {
 position: absolute;
 top: 2%;
 right: -2%;
-background: url("_assets/elements/Buttons/btn_exit.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
 background-size: 100%;
 width: 47px;
 height: 47px;
@@ -417,7 +417,7 @@ z-index: 20;
 }
 
 button.exit:hover {
-background: url("_assets/elements/Buttons/btn_exit_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -425,7 +425,7 @@ a.next {
 position: absolute;
 bottom: 50px;
 right: 10%;
-background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -433,7 +433,7 @@ z-index: 50;
 }
 
 a.next:hover {
-background: url("_assets/elements/Buttons/btn_next_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -441,7 +441,7 @@ a.prev {
 position: absolute;
 bottom: 2%;
 left: 2%;
-background: url("_assets/elements/Buttons/btn_back.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_back.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -449,7 +449,7 @@ z-index: 2;
 }
 
 a.prev:hover {
-background: url("_assets/elements/Buttons/btn_back_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_back_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 /*----------*/
@@ -537,7 +537,7 @@ margin: 0 auto;
 }
 
 #googjob .heading .buttons-box a {
-background: url('_assets/elements/Buttons/btn_play_again.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_play_again.png') 0 0 no-repeat;
 background-size: 100%;
 width: 150px;
 height: 150px;
@@ -545,18 +545,18 @@ float: left;
 }
 
 #googjob .heading .buttons-box a.again:hover {
-background: url('_assets/elements/Buttons/btn_play_again_on.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_play_again_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
 #googjob .heading .buttons-box a.fliptime {
-background: url('_assets/elements/Buttons/btn_flip_time.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_flip_time.png') 0 0 no-repeat;
 background-size: 100%;
 float: right;
 }
 
 #googjob .heading .buttons-box a.fliptime:hover {
-background: url('_assets/elements/Buttons/btn_flip_time_on.png') 0 0 no-repeat;
+background: url('_assets/elements/buttons/btn_flip_time_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -676,14 +676,14 @@ position: absolute;
 
 div.upload {
 width: 20%;
-background: url("_assets/elements/Buttons/btn_upload.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_upload.png") 0 0 no-repeat;
 background-size: 100%;
 overflow: hidden;
 margin: 0 auto;
 }
 
 div.upload:hover {
-background: url("_assets/elements/Buttons/btn_upload_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_upload_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -709,7 +709,7 @@ padding: 50px 0 0 0;
 }
 
 .buttons-quit .yes, .buttons-quit .no {
-background: url('_assets/elements/Buttons/btn_yes.png') center center no-repeat;
+background: url('_assets/elements/buttons/btn_yes.png') center center no-repeat;
 background-size: 100%;
 float: left;
 width: 50%;
@@ -717,19 +717,19 @@ padding-top: 37%;
 }
 
 .buttons-quit .no {
-background: url('_assets/elements/Buttons/btn_no.png') center center no-repeat;
+background: url('_assets/elements/buttons/btn_no.png') center center no-repeat;
 background-size: 100%;
 float: right;
 width: 38%;
 }
 
 .buttons-quit .yes:hover {
-background: url('_assets/elements/Buttons/btn_yes_on.png') center center no-repeat;
+background: url('_assets/elements/buttons/btn_yes_on.png') center center no-repeat;
 background-size: 100%;
 }
 
 .buttons-quit .no:hover {
-background: url('_assets/elements/Buttons/btn_no_on.png') center center no-repeat;
+background: url('_assets/elements/buttons/btn_no_on.png') center center no-repeat;
 background-size: 100%;
 }
 /*-----------------------------------*/
@@ -959,7 +959,7 @@ display:block;
 width:55%;
 }
 #noseWords .next {
-background: url(_assets/elements/Buttons/btn_yes_btn.png) center center no-repeat;
+background: url(_assets/elements/buttons/btn_yes_btn.png) center center no-repeat;
 background-size: 100%;
 display: block;
 width: 150px;
@@ -968,7 +968,7 @@ bottom: 10px;
 }
 
 #noseWords .next:hover {
-background-image: url(_assets/elements/Buttons/btn_yes_btn_on.png);
+background-image: url(_assets/elements/buttons/btn_yes_btn_on.png);
 }
 /*----------------------------*/
 #feelings {

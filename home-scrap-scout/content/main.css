@@ -170,7 +170,7 @@ img {
 }
 
     .play-btn a {
-        background: url("_assets/elements/Buttons/btn_play.png") center center no-repeat;
+        background: url("_assets/elements/buttons/btn_play.png") center center no-repeat;
         background-size: 100%;
         display: block;
         width: 113px;
@@ -178,7 +178,7 @@ img {
     }
 
         .play-btn a:hover {
-            background-image: url("_assets/elements/Buttons/btn_play_on.png");
+            background-image: url("_assets/elements/buttons/btn_play_on.png");
         }
 
 .sidebar-hover {
@@ -305,7 +305,7 @@ img {
 }
 
     .main-box .flush a {
-        background: url(_assets/elements/Buttons/btn_flush.png) center center no-repeat;
+        background: url(_assets/elements/buttons/btn_flush.png) center center no-repeat;
         background-size: 106%;
         width: 100%;
         padding-top: 100%;
@@ -313,7 +313,7 @@ img {
     }
 
         .main-box .flush a:hover {
-            background-image: url(_assets/elements/Buttons/btn_flush_on.png);
+            background-image: url(_assets/elements/buttons/btn_flush_on.png);
         }
 
 .content-box {
@@ -385,7 +385,7 @@ img {
     position: absolute;
     top: 23px;
     right: -5%;
-    background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
     background-size: 100%;
     width: 50px;
     height: 30px;
@@ -394,7 +394,7 @@ img {
 }
 
     .correct-ansver a.next:hover {
-        background-image: url("_assets/elements/Buttons/btn_next_on.png");
+        background-image: url("_assets/elements/buttons/btn_next_on.png");
     }
 
 .slider > .arrows .next {
@@ -453,7 +453,7 @@ button.exit {
     position: absolute;
     top: 2%;
     right: 2%;
-    background: url("_assets/elements/Buttons/btn_exit.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
     background-size: 100%;
     width: 30px;
     height: 30px;
@@ -461,14 +461,14 @@ button.exit {
 }
 
     button.exit:hover {
-        background-image: url("_assets/elements/Buttons/btn_exit_on.png");
+        background-image: url("_assets/elements/buttons/btn_exit_on.png");
     }
 
 a.next {
     position: absolute;
     bottom: -5px;
     right: 5%;
-    background: url("_assets/elements/Buttons/btn_next.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
     background-size: 100%;
     width: 100px;
     height: 100px;
@@ -477,7 +477,7 @@ a.next {
 }
 
     a.next:hover {
-        background: url("_assets/elements/Buttons/btn_next_on.png") 0 0 no-repeat;
+        background: url("_assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
         background-size: 100%;
     }
 
@@ -485,7 +485,7 @@ a.prev {
     position: absolute;
     bottom: 2%;
     left: -5px;
-    background: url("_assets/elements/Buttons/btn_back.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_back.png") 0 0 no-repeat;
     background-size: 100%;
     width: 100px;
     height: 100px;
@@ -493,7 +493,7 @@ a.prev {
 }
 
     a.prev:hover {
-        background: url("_assets/elements/Buttons/btn_back_on.png") 0 0 no-repeat;
+        background: url("_assets/elements/buttons/btn_back_on.png") 0 0 no-repeat;
         background-size: 100%;
     }
 /*----------*/
@@ -586,7 +586,7 @@ a.prev {
     }
 
         #googjob .heading .buttons-box a {
-            background: url('_assets/elements/Buttons/btn_play_again.png') 0 0 no-repeat;
+            background: url('_assets/elements/buttons/btn_play_again.png') 0 0 no-repeat;
             background-size: 100%;
             width: 150px;
             height: 150px;
@@ -594,18 +594,18 @@ a.prev {
         }
 
             #googjob .heading .buttons-box a.again:hover {
-                background: url('_assets/elements/Buttons/btn_play_again_on.png') 0 0 no-repeat;
+                background: url('_assets/elements/buttons/btn_play_again_on.png') 0 0 no-repeat;
                 background-size: 100%;
             }
 
             #googjob .heading .buttons-box a.fliptime {
-                background: url('_assets/elements/Buttons/btn_flip_time.png') 0 0 no-repeat;
+                background: url('_assets/elements/buttons/btn_flip_time.png') 0 0 no-repeat;
                 background-size: 100%;
                 float: right;
             }
 
                 #googjob .heading .buttons-box a.fliptime:hover {
-                    background: url('_assets/elements/Buttons/btn_flip_time_on.png') 0 0 no-repeat;
+                    background: url('_assets/elements/buttons/btn_flip_time_on.png') 0 0 no-repeat;
                     background-size: 100%;
                 }
 
@@ -725,14 +725,14 @@ a.prev {
 
 div.upload {
     width: 20%;
-    background: url("_assets/elements/Buttons/btn_upload.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_upload.png") 0 0 no-repeat;
     background-size: 100%;
     overflow: hidden;
     margin: 0 auto;
 }
 
     div.upload:hover {
-        background: url("_assets/elements/Buttons/btn_upload_on.png") 0 0 no-repeat;
+        background: url("_assets/elements/buttons/btn_upload_on.png") 0 0 no-repeat;
         background-size: 100%;
     }
 
@@ -757,7 +757,7 @@ div.upload {
 }
 
     .buttons-quit .yes, .buttons-quit .no {
-        background: url('_assets/elements/Buttons/btn_yes.png') center center no-repeat;
+        background: url('_assets/elements/buttons/btn_yes.png') center center no-repeat;
         background-size: 100%;
         float: left;
         width: 42%;
@@ -765,17 +765,17 @@ div.upload {
     }
 
     .buttons-quit .no {
-        background-image: url('_assets/elements/Buttons/btn_no.png');
+        background-image: url('_assets/elements/buttons/btn_no.png');
         float: right;
         /*width: 39%;*/
     }
 
     .buttons-quit .yes:hover {
-        background-image: url('_assets/elements/Buttons/btn_yes_on.png');
+        background-image: url('_assets/elements/buttons/btn_yes_on.png');
     }
 
     .buttons-quit .no:hover {
-        background-image: url('_assets/elements/Buttons/btn_no_on.png');
+        background-image: url('_assets/elements/buttons/btn_no_on.png');
     }
 /*-----------------------------------*/
 .ai_background {
@@ -1150,7 +1150,7 @@ h1 {
 }
 
     .yes-btn a {
-        background: url(_assets/elements/Buttons/btn_yes.png) 0 0 no-repeat;
+        background: url(_assets/elements/buttons/btn_yes.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         padding-top: 94px;
@@ -1158,7 +1158,7 @@ h1 {
     }
 
         .yes-btn a:hover {
-            background-image: url(_assets/elements/Buttons/btn_yes_on.png);
+            background-image: url(_assets/elements/buttons/btn_yes_on.png);
         }
 /*----------------------------------------*/
 #sort h1{
@@ -1403,7 +1403,7 @@ input[type="radio"] {
 }
 
     .reminder .remind-btn a {
-        background: url(_assets/elements/Buttons/btn_reports.png) 0 0 no-repeat;
+        background: url(_assets/elements/buttons/btn_reports.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         height: 100px;
@@ -1411,7 +1411,7 @@ input[type="radio"] {
     }
 
         .reminder .remind-btn a:hover {
-            background-image: url(_assets/elements/Buttons/btn_reports_on.png);
+            background-image: url(_assets/elements/buttons/btn_reports_on.png);
         }
 
 #Listbreak {
@@ -1616,7 +1616,7 @@ input[type="radio"] {
 
     .todo-wrapper .add-btn {
         border: none;
-        background: url("_assets/elements/Buttons/btn_post.png") 0 0 no-repeat;
+        background: url("_assets/elements/buttons/btn_post.png") 0 0 no-repeat;
         background-size: 100%;
         padding: 0;
         height: 46px;
@@ -1626,7 +1626,7 @@ input[type="radio"] {
     }
 
         .todo-wrapper .add-btn:hover {
-            background-image: url("_assets/elements/Buttons/btn_post_on.png");
+            background-image: url("_assets/elements/buttons/btn_post_on.png");
         }
 
 .clear-btn {
@@ -1648,12 +1648,12 @@ input[type="radio"] {
     width: 150px;
     height: 193px;
     margin: 130px auto 0;
-    background: url("_assets/elements/Buttons/btn_hint.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_hint.png") 0 0 no-repeat;
     background-size: 100%;
 }
 
     .hint-btn:hover {
-        background-image: url("_assets/elements/Buttons/btn_hint_on.png");
+        background-image: url("_assets/elements/buttons/btn_hint_on.png");
     }
 
 #knowledge {
@@ -1666,7 +1666,7 @@ input[type="radio"] {
 
 .notebook-wide-popup {
     position: absolute;
-    background: url("_assets/elements/Headers/frame_2.png") 0 0 no-repeat;
+    background: url("_assets/elements/headers/frame_2.png") 0 0 no-repeat;
     background-size: 100%;
     width: 96%;
     padding: 20px;
@@ -1703,7 +1703,7 @@ input[type="radio"] {
 .hint-popup, .hint-popup2 {
     display:none;
      position: absolute;
-    background: url("_assets/elements/Headers/frame_3.png") 0 0 no-repeat;
+    background: url("_assets/elements/headers/frame_3.png") 0 0 no-repeat;
   background-size: 100%;
   width: 196%;
   padding: 20px 0;
@@ -1717,7 +1717,7 @@ input[type="radio"] {
 }
 .hint-popup a.yougotit,
 .hint-popup2 a.yougotit {
-    background: url("_assets/elements/Buttons/btn_got_it.png") 0 0 no-repeat;
+    background: url("_assets/elements/buttons/btn_got_it.png") 0 0 no-repeat;
     background-size:100%;
 width: 234px;
   height: 82px;
@@ -1726,7 +1726,7 @@ width: 234px;
     }
 .hint-popup a.yougotit:hover,
 .hint-popup2 a.yougotit:hover {
-    background-image: url("_assets/elements/Buttons/btn_got_it_on.png");
+    background-image: url("_assets/elements/buttons/btn_got_it_on.png");
     }
 .hint-popup h2,
 .hint-popup2 h2{
@@ -1748,7 +1748,7 @@ font-size:24px;
 
 }
 #Listbreak1 .random-item {
-     background: url("_assets/elements/Headers/frame_2.png") 0 0 no-repeat;
+     background: url("_assets/elements/headers/frame_2.png") 0 0 no-repeat;
     background-size: 100%;
   width: 86%;
   margin: 10px auto 0;
@@ -1779,28 +1779,28 @@ background-repeat:no-repeat;
 background-size:100%;
 }
 .sorter .sorts a#trasher {
-background-image: url("_assets/elements/Buttons/btn_trash.png") 
+background-image: url("_assets/elements/buttons/btn_trash.png") 
 }
 .sorter .sorts a#trasher:hover {
-background-image: url("_assets/elements/Buttons/btn_trash_on.png") 
+background-image: url("_assets/elements/buttons/btn_trash_on.png") 
 }
 .sorter .sorts a#composter {
-background-image: url("_assets/elements/Buttons/btn_compost.png") 
+background-image: url("_assets/elements/buttons/btn_compost.png") 
 }
 .sorter .sorts a#composter:hover {
-background-image: url("_assets/elements/Buttons/btn_compost_on.png") 
+background-image: url("_assets/elements/buttons/btn_compost_on.png") 
 }
 .sorter .sorts a#donater {
-background-image: url("_assets/elements/Buttons/btn_donate.png") 
+background-image: url("_assets/elements/buttons/btn_donate.png") 
 }
 .sorter .sorts a#donater:hover {
-background-image: url("_assets/elements/Buttons/btn_donate_on.png") 
+background-image: url("_assets/elements/buttons/btn_donate_on.png") 
 }
 .sorter .sorts a#recycler {
-background-image: url("_assets/elements/Buttons/btn_recycle.png") 
+background-image: url("_assets/elements/buttons/btn_recycle.png") 
 }
 .sorter .sorts a#recycler:hover {
-background-image: url("_assets/elements/Buttons/btn_recycle_on.png") 
+background-image: url("_assets/elements/buttons/btn_recycle_on.png") 
 }
 .remind-time {
     padding-top:20px;
