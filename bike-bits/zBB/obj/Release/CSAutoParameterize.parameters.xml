@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-CarbonCatcher-20140302121355.mdf;Initial Catalog=aspnet-CarbonCatcher-20140302121355;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\wip\\cmwn\\bike\ bits\\BikeBits\\BikeBits\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="dataString-Web.config Connection String" description="dataString Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:q1vkd1kfrw.database.windows.net,1433;Database=cmwn-waterwise_db;User ID=stylark_db@q1vkd1kfrw;Password=l3MBQVRCdW;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\wip\\cmwn\\bike\ bits\\BikeBits\\BikeBits\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dataString']/@connectionString" />
-  </parameter>
-</parameters>
