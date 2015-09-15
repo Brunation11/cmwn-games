@@ -5,22 +5,34 @@
 
 <script type="text/javascript" src="javascript/action_items/ai2.js"></script>
 
-<div class="content-wrapper"></div>
-<!-- /.content-wrapper -->
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
 
-<!-- #close (BTN_CLOSE) -->
-<div id="close" style="position:absolute;">
-    <div class="col-sm-4 content-box">
-        <img src="content/images/btn_close.png" class="img-responsive" alt="Responsive image">
-    </div>
-</div>
+            <div class="content-wrapper"></div>
+            <!-- /.content-wrapper -->
+
+            <!-- #close (BTN_CLOSE) -->
+            <div id="close" style="position:absolute; z-index:2; margin-top:8px; margin-left:585px;">
+                <img src="content/images/btn_close.png" alt="Responsive image">
+                <img src="content/images/btn_close.png" alt="Responsive image">
+            </div>
+
+            <!-- #sign (BTN_NEXT) -->
+            <div id="sign" class="btn-next" style="position:absolute; z-index:2; margin-top:337px; margin-left:452px;">
+                <a href="#">
+                    <img class="flip-off" src="content/images/btn_arrow_next_on.png" style="width:170px; z-index:99; cursor:pointer; position:absolute;" />
+                    <img class="flip-on" src="content/images/btn_arrow_next.png" style="width:170px;" />
+                </a>
+            </div>
+            <!-- /#sign -->
 
 <!-- #sign (BTN_NEXT) -->
-<div id="sign" class="btn-next" style="position:absolute;">
+<!-- <div id="sign" class="btn-next" style="position:absolute; z-index:2;">
     <div class="col-sm-4 content-box">
-        <a href="#">
+        <a href="#"> -->
             <!--/ActionItem/AI7-->
-            <div class="flip-on" style="z-index:10;">
+            <!-- <div class="flip-on" style="z-index:10;">
                 <img src="content/images/btn_arrow_next.png" class="img-responsive" alt="Responsive image">
             </div>
 
@@ -29,8 +41,13 @@
             </div>
         </a>
     </div>
-</div>
+</div> -->
 <!-- /#sign -->
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
 
 <!-- #GAME-COMPLETE -->
 <div class="modal fade" id="game-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false">
