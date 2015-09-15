@@ -738,7 +738,7 @@ function updateTimer() {
                 //no sound - log error
             }
 
-            $('#carousel_ul').carousel().animate('pause');
+            // $('#carousel_ul').carousel().animate('pause');
             if (correct_items.length >= 10) {
                 //alert('You Win');
                 $('#retry-screen').modal('show');
@@ -772,12 +772,12 @@ function updateTimer() {
 
             } else {
                 Timeout.play();
-                $('#retry-screen').modal('hide');
+                // $('#retry-screen').modal('hide');
                 $('#fail-screen').modal('show');
                 $('#re-try-2').click( function() {
                     $("#putcontenthere").load("action_items/ai2.html");
                         // location.reload();
-                    });
+                });
             }
 
         });
