@@ -59,7 +59,7 @@ var memory_array = ['fox', 'mouse', 'frog', 'lilypad', 'robin', 'worm', 'rhino',
 var memory_values = [];
 var memory_tile_ids = [];
 var tiles_flipped = 0;
-var file_prefix = '/content/images/squares/square_';
+var file_prefix = 'content/images/squares/square_';
 var file_suffix = '.png';
 var matched;
 
