@@ -6,22 +6,22 @@
 
     var current_question;
     var questions = [
-    "Filter 3 gallons in 2 hours ?",
-    "Filter 5 gallons in 2 hours ?",
-    "Filter 6 gallons in 1 hour ?",
-    "Filter 10 gallons in 1 hour ?",
-    "Filter 3 gallons in 1 hour ?",
+    "Filter 2 gallons in 1 hour ?",
     "Filter 4 gallons in 1 hour ?",
+    "Filter 6 gallons in 1 hour ?",
     "Filter 8 gallons in 1 hour ?",
-    "Filter 6 gallons in 3 hour ?",
-    "Filter 3 gallons in 3 hour ?",
-    "Filter 10 gallons in  3 hours ?",
-    "Filter 5 gallons in 1 hour ?",
+    "Filter 1 gallon in 1 hour ?",
     "Filter 4 gallons in 2 hours ?",
-    "Filter 6 gallons in 2 hours ?",
     "Filter 8 gallons in 2 hours ?",
-    "Filter 5 gallons in 3 hours ?"];
-    var answers   = [1, 2, 3, 5, 2, 2, 4, 1, 1, 2, 3, 1, 3, 2, 1];
+    "Filter 2 gallons in 2 hours ?",
+    "Filter 10 gallons in  1 hour ?",
+    "Filter 6 gallons in 2 hours ?",
+    "Filter 1 gallon in 3 hours ?",
+    "Filter 3 gallons in 2 hours ?",
+    "Filter 5 gallons in 1 hour ?",
+    "Filter 1 gallon in 5 hours ?",
+    "Filter 3 gallons in 3 hours ?"];
+    var answers   = [1, 2, 3, 4, 1, 1, 2, 1, 5, 2, 1, 1, 3, 1, 1];
 
     $(document).ready(function () {
 
@@ -97,7 +97,8 @@
 
                     if (game_meter === 10) {
                         //this is where you will send it to the next screen
-                        window.location.href="";
+                        // window.location.href="";
+                        $("#putcontenthere").load("action_items/ai4.html");
                     }
                     else
                     {

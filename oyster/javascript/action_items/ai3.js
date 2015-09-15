@@ -97,7 +97,8 @@
 
                     if (game_meter === 10) {
                         //this is where you will send it to the next screen
-                        window.location.href="";
+                        // window.location.href="";
+                        $("#putcontenthere").load("action_items/ai4.html");
                     }
                     else
                     {
