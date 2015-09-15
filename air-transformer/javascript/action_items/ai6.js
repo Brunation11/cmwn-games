@@ -21,6 +21,14 @@
             catch (err) {
                 //no sound - log error
             }
+
+             try {
+                vo_transform.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+
         });
 
 

@@ -21,6 +21,14 @@ $(document).ready(function () {
             catch (err) {
                 //no sound - log error
             }
+
+             try {
+                vo_word.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+
         });
 
 
