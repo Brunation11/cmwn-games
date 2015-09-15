@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     window.GameApp = {
-        "idBtnNext": $("#sign").find("a"),
+        "idBtnNext": $("#sign2").find("a"),
         "idBtnNextSound": $("#btn-next-sound"),
         "idContentWrapper": $(".content-wrapper"),
 
@@ -24,7 +24,7 @@ $(document).ready(function () {
             GameApp.idBtnNext.show();
         }
 
-        var screen_location = "@Url.Content("/content/ontent/screens/")";
+        var screen_location = "@Url.Content("screens/")";
             var screen_name = "_screen" + id;
             var screen_ext = ".html";
 
@@ -72,7 +72,7 @@ $(document).ready(function () {
             $('#game-complete').modal('hide');
         });
 
-        $('#sign').click(function () {
+        $('#sign3').click(function () {
             $("#putcontenthere").load("action_items/ai3.html");
         });
 

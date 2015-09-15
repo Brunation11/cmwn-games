@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     });
 
-    $ ('.cap_frame').css('background-image','url(../content/images/background/frame_2.png)');
+    $ ('.cap_frame').css('background-image','url(content/images/background/frame_2.png)');
 
     // hide arrow
     $(".Next").hide();
