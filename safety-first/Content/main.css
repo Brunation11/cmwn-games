@@ -94,7 +94,7 @@ font-family: 'source_sans_prosemibold';
 user-select: none;
 }
 .bkg-image {
-background: url(_assets/Background/BKG_3.png) 0 0 no-repeat #0A0808;
+background: url(_assets/background/BKG_3.png) 0 0 no-repeat #0A0808;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -248,7 +248,7 @@ width: 80%;
 position: relative;
 }
 #step {
-background: url(_assets/Background/BKG_5.png) 0 0 no-repeat;
+background: url(_assets/background/BKG_5.png) 0 0 no-repeat;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -600,7 +600,7 @@ opacity: 1;
 
 /*---------------------------------*/
  #googjob {
-background: url(_assets/Background/BKG_2.png) 0 0 no-repeat;
+background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -976,7 +976,7 @@ margin:0;
 font-family:source_sans_prosemibold;
 color:#fff;
 font-size:38px;
-background: url(_assets/Background/BKG_2.png) 0 0 no-repeat ;
+background: url(_assets/background/BKG_2.png) 0 0 no-repeat ;
 background-size: 100%;
 min-height:400px;
 }
@@ -1006,7 +1006,7 @@ text-shadow: 0 0 10px #5853b1, 2px 2px 2px #5853b1, -2px -2px 2px #5853b1
 font-family:source_sans_prosemibold;
 color:#fff;
 font-size:38px;
-background: url(_assets/Background/BKG_4.png) 0 0 no-repeat ;
+background: url(_assets/background/BKG_4.png) 0 0 no-repeat ;
 background-size: 100%;
 min-height:400px;
 }
@@ -1014,7 +1014,7 @@ min-height:400px;
 font-family:source_sans_prosemibold;
 color:#fff;
 font-size:38px;
-background: url(_assets/Background/BKG_7.png) 0 0 no-repeat ;
+background: url(_assets/background/BKG_7.png) 0 0 no-repeat ;
 background-size: 100%;
 min-height:400px;
 }
@@ -1085,7 +1085,7 @@ width:100% !important;
 height:100% !important;
 }
 .modal-content {
-background: url(_assets/Background/BKG.png) 0 0 no-repeat #0A0808;
+background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;
 background-size: 104%;
 }
 .triggerRelink {
@@ -1093,13 +1093,13 @@ display:none;
 }
 
 #labyrinth {
-background: url(_assets/Background/BKG_6.png) 0 0 no-repeat;
+background: url(_assets/background/BKG_6.png) 0 0 no-repeat;
 background-size:100%;
     
 min-height:400px;
 }
 #labyrinthHome {
-background: url(_assets/Background/BKG_8.png) 0 0 no-repeat;
+background: url(_assets/background/BKG_8.png) 0 0 no-repeat;
 background-size:100%;
     
 min-height:400px;

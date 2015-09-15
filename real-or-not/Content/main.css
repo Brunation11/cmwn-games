@@ -119,7 +119,7 @@ font-family: 'source_sans_prosemibold';
   user-select: none;
 }
 .bkg-image {
-background: url(_assets/Background/bkg.png) 0 0 no-repeat #0A0808;
+background: url(_assets/background/bkg.png) 0 0 no-repeat #0A0808;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -1013,7 +1013,7 @@ margin:auto;
     height:100% !important;
 }
 .modal-content {
-    background: url(_assets/Background/BKG.png) 0 0 no-repeat #0A0808;
+    background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;
     background-size: 104%;
 }
 .triggerRelink {

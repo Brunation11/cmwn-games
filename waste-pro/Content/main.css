@@ -93,7 +93,7 @@ font-family: 'source_sans_prosemibold';
 }
 
 .bkg-image {
-background: url(_assets/Background/BKG_1.png) 0 0 no-repeat #fff;
+background: url(_assets/background/BKG_1.png) 0 0 no-repeat #fff;
 background-size: 104%;
 height: 400px;
 overflow: hidden;
@@ -245,7 +245,7 @@ background: rgba(0,0,0,0.5);
   float: left;
   width: 57%;
   min-height: 72%;
-  background: url(_assets/Elements/trashbin.png) center top no-repeat;
+  background: url(_assets/elements/trashbin.png) center top no-repeat;
   background-size: 100%;
   z-index: 0;
 }
@@ -273,7 +273,7 @@ width: 50%;
 }
 
 .main-box .flush a {
-background: url(_assets/Elements/Buttons/btn_flush.png) center center no-repeat;
+background: url(_assets/elements/Buttons/btn_flush.png) center center no-repeat;
 background-size: 106%;
 width: 100%;
 padding-top: 100%;
@@ -281,7 +281,7 @@ display: block;
 }
 
 .main-box .flush a:hover {
-background-image: url(_assets/Elements/Buttons/btn_flush_on.png);
+background-image: url(_assets/elements/Buttons/btn_flush_on.png);
 }
 
 .content-box {
@@ -320,7 +320,7 @@ position: relative;
 
 .correct-ansver {
   position: absolute;
-  background: url("_assets/Elements/trashbin_frame.png") 0 0 no-repeat;
+  background: url("_assets/elements/trashbin_frame.png") 0 0 no-repeat;
   background-size: 100%;
   width: 175px;
   height: 168px;
@@ -875,14 +875,14 @@ width: 150px;
 height: 155px;
 }
 #quit {
-background: url(_assets/Background/BKG_1.png) 0 0 no-repeat #fff;
+background: url(_assets/background/BKG_1.png) 0 0 no-repeat #fff;
 background-size: 108%;
 position: relative;
 min-height: 400px;
 padding:10px 0 0 0;
 }
 #quit .inner {
-background: url(_assets/Elements/frame_3.png) center center no-repeat;
+background: url(_assets/elements/frame_3.png) center center no-repeat;
 background-size: 100%;
 width: 65%;
 margin: 0 auto 0;
@@ -929,7 +929,7 @@ min-height: 400px;
   left: 25px;
   width: 55%;
   padding: 29% 0% 20%;
-  background: url(_assets/Elements/frame_1.png) center top no-repeat;
+  background: url(_assets/elements/frame_1.png) center top no-repeat;
   background-size: 100%;
 
 }
@@ -948,7 +948,7 @@ position: absolute;
 top: 2%;
 right: 2%;
 text-align: center;
-background: url(_assets/Elements/frame_1.png) 0 0 no-repeat;
+background: url(_assets/elements/frame_1.png) 0 0 no-repeat;
 background-size: 100%;
 color: #000000;
 width: 61%;
@@ -976,7 +976,7 @@ line-height: 40px;
 font-family: source_sans_prosemibold;
 color: #fff;
 font-size: 38px;
-background: url(_assets/Elements/treatmentplant.png) center center no-repeat;
+background: url(_assets/elements/treatmentplant.png) center center no-repeat;
 background-size: 108%;
 position: relative;
 min-height: 400px;
@@ -1093,7 +1093,7 @@ height: 100% !important;
 }
 
 .modal-content {
-background: url(_assets/Background/BKG.png) 0 0 no-repeat #0A0808;
+background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;
 background-size: 100%;
 }
 
@@ -1128,7 +1128,7 @@ input {
     width: 300px;
 }
 #slot_wrapper {
-  background: url(_assets/Elements/slot_machine_frame.png) 0 0 no-repeat;
+  background: url(_assets/elements/slot_machine_frame.png) 0 0 no-repeat;
   background-size: 100%;
   padding: 15% 19%;
   position: relative;
@@ -1139,7 +1139,7 @@ input {
   left: 20px;
 }
 #random_location {
-    background: url(_assets/Elements/btn_spin.png) 0 0 no-repeat;
+    background: url(_assets/elements/btn_spin.png) 0 0 no-repeat;
   background-size: 100%;
   position: absolute;
   top: 331px;
@@ -1151,7 +1151,7 @@ input {
   text-indent: -99999px;
   right: 243px;
 }#random_location:hover {
-    background-image: url(_assets/Elements/btn_spin_on.png);
+    background-image: url(_assets/elements/btn_spin_on.png);
 }
 .slot-text, .jSlots-wrapper, #slot {
   background: #ffffff;
@@ -1245,7 +1245,7 @@ min-height: 400px;
   margin-top: 52px;
 }
 .balansir .balance{
-  background: url(_assets/Elements/scale_arm-l.png) top right no-repeat;
+  background: url(_assets/elements/scale_arm-l.png) top right no-repeat;
   background-size: 100%;
   width: 300px;
   height: 30px;
@@ -1265,7 +1265,7 @@ transform:         rotate(-18deg); /* CSS3 */
 }
 .balansir .balance-left-cup,
 .balansir .balance-right-cup{
-  background: url(_assets/Elements/scale_cup.png) center top no-repeat;
+  background: url(_assets/elements/scale_cup.png) center top no-repeat;
   background-size: 100%;
   width: 120px;
   height: 30px;
@@ -1296,7 +1296,7 @@ transform:         rotate(18deg); /* CSS3 */
     left:auto;
     }
 .balansir .balance-foot {
-  background: url(_assets/Elements/scale_foot.png) top center no-repeat;
+  background: url(_assets/elements/scale_foot.png) top center no-repeat;
   background-size: 100%;
   width: 90px;
   height: 100px;
@@ -1328,7 +1328,7 @@ transform:         rotate(0deg); /* CSS3 */
 
 }
 .balance-footer {
-    background: url(_assets/Elements/frame_2.png) top center no-repeat;
+    background: url(_assets/elements/frame_2.png) top center no-repeat;
     background-size: 100%;
     width: 100%;
     height: 100px;
@@ -1357,7 +1357,7 @@ transform:         rotate(0deg); /* CSS3 */
     visibility:hidden;
 }
 #balance .correct-ansver {
-    background: url(_assets/Elements/frame_2.png) top center no-repeat;
+    background: url(_assets/elements/frame_2.png) top center no-repeat;
     background-size: 100%;
     width: 100%;
     height: 100px;
@@ -1411,7 +1411,7 @@ font-size:20px;
 .garbage .main-box{
    width: 62%;
   float: left;
-  background: url(_assets/Elements/frame_1.png) top center no-repeat;
+  background: url(_assets/elements/frame_1.png) top center no-repeat;
   background-size: 100%;
   min-height: 394px;
   position: absolute;
@@ -1500,7 +1500,7 @@ padding-top:100%;
 
 }
 .final {
-background: url(_assets/Background/BKG_2.png) 0 0 no-repeat #fff;
+background: url(_assets/background/BKG_2.png) 0 0 no-repeat #fff;
 background-size: 100%;
 width:577px;
 margin:0 auto;
@@ -1538,12 +1538,12 @@ margin:70px auto 0;
 padding: 0;   
 }
 #iCommit .commit-btn a{
-background: url(_assets/Elements/Buttons/btn_commit.png) 0 0 no-repeat;
+background: url(_assets/elements/Buttons/btn_commit.png) 0 0 no-repeat;
 background-size: 100%;
 width:100%;
 padding-top:100px;
 display:block;
 }
 #iCommit .commit-btn a:hover{
-background-image: url(_assets/Elements/Buttons/btn_commit_on.png);
+background-image: url(_assets/elements/Buttons/btn_commit_on.png);
 }

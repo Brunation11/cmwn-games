@@ -94,7 +94,7 @@ body {
 }
 
 .bkg-image {
-    background: url(_assets/Background/BKG_2.png) center center no-repeat;
+    background: url(_assets/background/BKG_2.png) center center no-repeat;
     background-size: 100%;
     margin: 0 auto;
     height: 400px;
@@ -136,7 +136,7 @@ img {
 }
 
 #home {
-    background: url(_assets/Background/BKG_1.png) 0 0 no-repeat;
+    background: url(_assets/background/BKG_1.png) 0 0 no-repeat;
     background-size: 104%;
     height: 400px;
     overflow: hidden;
@@ -958,7 +958,7 @@ a.next, a.prev {
 }
 
 #quit {
-    background: url(_assets/Background/BKG_3.png) 0 0 no-repeat #fff;
+    background: url(_assets/background/BKG_3.png) 0 0 no-repeat #fff;
     background-size: 108%;
     position: relative;
     min-height: 400px;
@@ -1173,7 +1173,7 @@ a.next, a.prev {
 }
 
 .modal-content {
-    background: url(_assets/Background/BKG.png) 0 0 no-repeat #0A0808;
+    background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;
     background-size: 100%;
 }
 
@@ -1339,7 +1339,7 @@ input[type="radio"] {
 }
 
 .remind-bg {
-    background: url(_Assets/elements/reminder_1.png) 0 0 no-repeat;
+    background: url(_assets/elements/reminder_1.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1350,7 +1350,7 @@ input[type="radio"] {
 }
 
 #reminder2 .remind-bg {
-    background: url(_Assets/elements/reminder_2.png) 0 0 no-repeat;
+    background: url(_assets/elements/reminder_2.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1366,7 +1366,7 @@ input[type="radio"] {
 }
 
 #reminder3 .remind-bg {
-    background: url(_Assets/elements/reminder_3.png) 0 0 no-repeat;
+    background: url(_assets/elements/reminder_3.png) 0 0 no-repeat;
     background-size: 100%;
     z-index: 2;
     bottom: 10px;
@@ -1398,7 +1398,7 @@ input[type="radio"] {
 }
 
     .reminder .remind-btn a {
-        background: url(_Assets/elements/Buttons/btn_takemetomyai.png) 0 0 no-repeat;
+        background: url(_assets/elements/Buttons/btn_takemetomyai.png) 0 0 no-repeat;
         background-size: 100%;
         width: 100%;
         height: 100px;
@@ -1406,7 +1406,7 @@ input[type="radio"] {
     }
 
         .reminder .remind-btn a:hover {
-            background-image: url(_Assets/elements/Buttons/btn_takemetomyai_on.png);
+            background-image: url(_assets/elements/Buttons/btn_takemetomyai_on.png);
         }
 
 #Listbreak {
@@ -1566,7 +1566,7 @@ input[type="radio"] {
 
 /*------------------------*/
 .todo-wrapper {
-    background: url("_Assets/elements/notepad_1.png") 0 0 no-repeat;
+    background: url("_assets/elements/notepad_1.png") 0 0 no-repeat;
     background-size: 100%;
     width: 45%;
     float: left;
@@ -1609,7 +1609,7 @@ input[type="radio"] {
 
     .todo-wrapper .add-btn {
         border: none;
-        background: url("_Assets/elements/Buttons/btn_post.png") 0 0 no-repeat;
+        background: url("_assets/elements/Buttons/btn_post.png") 0 0 no-repeat;
         background-size: 100%;
         padding: 0;
         height: 46px;
@@ -1619,7 +1619,7 @@ input[type="radio"] {
     }
 
         .todo-wrapper .add-btn:hover {
-            background-image: url("_Assets/elements/Buttons/btn_post_on.png");
+            background-image: url("_assets/elements/Buttons/btn_post_on.png");
         }
 
 .clear-btn {
@@ -1641,12 +1641,12 @@ input[type="radio"] {
     width: 150px;
     height: 150px;
     margin: 101px 28px 0;
-    background: url("_Assets/elements/Buttons/btn_hint.png") 0 0 no-repeat;
+    background: url("_assets/elements/Buttons/btn_hint.png") 0 0 no-repeat;
     background-size: 100%;
 }
 
     .hint-btn:hover {
-        background-image: url("_Assets/elements/Buttons/btn_hint_on.png");
+        background-image: url("_assets/elements/Buttons/btn_hint_on.png");
     }
 
 #knowledge {
@@ -1659,7 +1659,7 @@ input[type="radio"] {
 
 .notebook-wide-popup {
     position: absolute;
-    background: url("_Assets/elements/frame_1.png") 0 0 no-repeat;
+    background: url("_assets/elements/frame_1.png") 0 0 no-repeat;
     background-size: 100%;
     width: 96%;
     padding: 20px;
@@ -1696,7 +1696,7 @@ input[type="radio"] {
 .hint-popup, .hint-popup2 {
     display:none;
      position: absolute;
-    background: url("_Assets/elements/frame_2.png") 0 0 no-repeat;
+    background: url("_assets/elements/frame_2.png") 0 0 no-repeat;
   background-size: 100%;
   width: 196%;
   padding: 20px 0;
@@ -1710,7 +1710,7 @@ input[type="radio"] {
 }
 .hint-popup a.yougotit ,
 .hint-popup2 a.yougotit {
-    background: url("_Assets/elements/Buttons/btn_yougotit.png") 0 0 no-repeat;
+    background: url("_assets/elements/Buttons/btn_yougotit.png") 0 0 no-repeat;
     background-size:100%;
 width: 190px;
   height: 82px;
@@ -1719,7 +1719,7 @@ width: 190px;
     }
 .hint-popup a.yougotit:hover,
 .hint-popup2 a.yougotit:hover {
-    background-image: url("_Assets/elements/Buttons/btn_yougotit_on.png");
+    background-image: url("_assets/elements/Buttons/btn_yougotit_on.png");
     }
 .hint-popup h2,
 .hint-popup2 h2{
@@ -1741,7 +1741,7 @@ font-size:24px;
 
 }
 #Listbreak1 .random-item {
-     background: url("_Assets/elements/frame_3.png") 0 0 no-repeat;
+     background: url("_assets/elements/frame_3.png") 0 0 no-repeat;
     background-size: 100%;
   width: 86%;
   margin: 10px auto 0;
@@ -1772,28 +1772,28 @@ background-repeat:no-repeat;
 background-size:100%;
 }
 .sorter .sorts a#trasher {
-background-image: url("_Assets/elements/Buttons/btn_trash.png") 
+background-image: url("_assets/elements/Buttons/btn_trash.png") 
 }
 .sorter .sorts a#trasher:hover {
-background-image: url("_Assets/elements/Buttons/btn_trash_on.png") 
+background-image: url("_assets/elements/Buttons/btn_trash_on.png") 
 }
 .sorter .sorts a#composter {
-background-image: url("_Assets/elements/Buttons/btn_compost.png") 
+background-image: url("_assets/elements/Buttons/btn_compost.png") 
 }
 .sorter .sorts a#composter:hover {
-background-image: url("_Assets/elements/Buttons/btn_compost_on.png") 
+background-image: url("_assets/elements/Buttons/btn_compost_on.png") 
 }
 .sorter .sorts a#donater {
-background-image: url("_Assets/elements/Buttons/btn_donate.png") 
+background-image: url("_assets/elements/Buttons/btn_donate.png") 
 }
 .sorter .sorts a#donater:hover {
-background-image: url("_Assets/elements/Buttons/btn_donate_on.png") 
+background-image: url("_assets/elements/Buttons/btn_donate_on.png") 
 }
 .sorter .sorts a#recycler {
-background-image: url("_Assets/elements/Buttons/btn_recycle.png") 
+background-image: url("_assets/elements/Buttons/btn_recycle.png") 
 }
 .sorter .sorts a#recycler:hover {
-background-image: url("_Assets/elements/Buttons/btn_recycle_on.png") 
+background-image: url("_assets/elements/Buttons/btn_recycle_on.png") 
 }
 .remind-time {
     padding-top:20px;

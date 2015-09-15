@@ -94,7 +94,7 @@ font-family: 'cmwn';
   user-select: none;*/
 }
 .bkg-image {
-background: url(_assets/Background/bkg_1.png) 0 0 no-repeat ;
+background: url(_assets/background/bkg_1.png) 0 0 no-repeat ;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -1007,7 +1007,7 @@ font-size:30px;
     height:100% !important;
 }
 .modal-content {
-    background: url(_assets/Background/BKG_4.png) 0 0 no-repeat;
+    background: url(_assets/background/BKG_4.png) 0 0 no-repeat;
     background-size: 104%;
 }
 .triggerRelink {
@@ -1026,7 +1026,7 @@ padding:0;
 
 }
 #reveal {
- background: url(_assets/Background/BKG_4.png) center top no-repeat;
+ background: url(_assets/background/BKG_4.png) center top no-repeat;
 background-size: 107%;
     height:400px;
 }
@@ -1047,46 +1047,46 @@ background-size: 107%;
     cursor:pointer;
 }
 .minutes-box .top-box {
-     background: url(_assets/Elements/btn_1_minute.png) center top no-repeat;
+     background: url(_assets/elements/btn_1_minute.png) center top no-repeat;
     background-size: 100%;
     width:100%;
     height:50px;
 }
 .minutes-box .top-box {
-     background: url(_assets/Elements/btn_1_minute.png) center top no-repeat;
+     background: url(_assets/elements/btn_1_minute.png) center top no-repeat;
     background-size: 100%;
     width:100%;
     height:60px;
 }     
 .minutes-box .min-box2 .top-box {
-     background-image: url(_assets/Elements/btn_2_minute.png);
+     background-image: url(_assets/elements/btn_2_minute.png);
 }      
 .minutes-box .min-box3 .top-box {
-     background-image: url(_assets/Elements/btn_3_minute.png);
+     background-image: url(_assets/elements/btn_3_minute.png);
 }      
 .minutes-box .top-box:hover {
-    background-image: url(_assets/Elements/btn_1_minute_hover.png);
+    background-image: url(_assets/elements/btn_1_minute_hover.png);
 }     
 .minutes-box .min-box2 .top-box:hover {
-     background-image: url(_assets/Elements/btn_2_minute_hover.png);
+     background-image: url(_assets/elements/btn_2_minute_hover.png);
 }      
 .minutes-box .min-box3 .top-box:hover {
-     background-image: url(_assets/Elements/btn_3_minute_hover.png);
+     background-image: url(_assets/elements/btn_3_minute_hover.png);
 }       
 .minutes-box .top-box.active {
-    background-image: url(_assets/Elements/btn_1_minute_off.png);
+    background-image: url(_assets/elements/btn_1_minute_off.png);
 }     
 .minutes-box .min-box2 .top-box.active {
-     background-image: url(_assets/Elements/btn_2_minute_off.png);
+     background-image: url(_assets/elements/btn_2_minute_off.png);
 }      
 .minutes-box .min-box3 .top-box.active {
-     background-image: url(_assets/Elements/btn_3_minute_off.png);
+     background-image: url(_assets/elements/btn_3_minute_off.png);
 }
 .cont-box {
     padding:10px 0;
 }    
 .cont-box .item{
-    background: url(_assets/Elements/card_blank.png) center top no-repeat;
+    background: url(_assets/elements/card_blank.png) center top no-repeat;
     background-size: 100%;
     width:100%;
     min-height:51px;
@@ -1100,16 +1100,16 @@ background-size: 107%;
     text-indent:-9999px;
 }      
 .cont-box .item.week{
-    background-image: url(_assets/Elements/card_week.png);
+    background-image: url(_assets/elements/card_week.png);
 }
 .cont-box .item.month{
-    background-image: url(_assets/Elements/card_month.png);
+    background-image: url(_assets/elements/card_month.png);
 }
 .cont-box .item.year{
-    background-image: url(_assets/Elements/card_year.png);
+    background-image: url(_assets/elements/card_year.png);
 }
 #esential, #flip {
-    background: url(_assets/Background/BKG_4.png) center top no-repeat;
+    background: url(_assets/background/BKG_4.png) center top no-repeat;
     background-size: 107%;
     height:400px;
 }
@@ -1180,7 +1180,7 @@ background-size: 107%;
 .list li,
 .lister li{
     float:left;
-    background: url(_assets/Elements/input_name.png) center top no-repeat;
+    background: url(_assets/elements/input_name.png) center top no-repeat;
     background-size: 100%;
     width:50%;
     padding:14px 0 10px 50px;
@@ -1216,12 +1216,12 @@ background-size: 107%;
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    background: url(_assets/Elements/btn_bg.png) center top no-repeat;
+    background: url(_assets/elements/btn_bg.png) center top no-repeat;
     background-size: 71%;
 }
 .click:hover {
 
-    background-image: url(_assets/Elements/btn_bg_on.png);
+    background-image: url(_assets/elements/btn_bg_on.png);
     text-decoration:none;
 }
 .lister span {
@@ -1233,7 +1233,7 @@ background-size: 107%;
 }
 .user-timer .user {
     position: relative;
-    background: url(_assets/Elements/input_name.png) center top no-repeat;
+    background: url(_assets/elements/input_name.png) center top no-repeat;
     background-size: 100%;
     width: 100%;
     outline: 0 !important;
@@ -1244,7 +1244,7 @@ background-size: 107%;
     font-size: 40px;
 }.user-timer .timer {
     position: relative;
-    background: url(_assets/Elements/frame_timer.png) center top no-repeat;
+    background: url(_assets/elements/frame_timer.png) center top no-repeat;
     background-size: 100%;
     
     outline: 0 !important;

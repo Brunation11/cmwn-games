@@ -93,7 +93,7 @@
         $('#startGame').fadeOut(500);
         $('#knowledge').fadeIn(500);
         $('#knowledge a.next').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/content/_assets/Background/BKG_3.png)');
+        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/content/_assets/background/BKG_3.png)');
         $('.bkg-image').css('background-size', '104%');
         $('#knowledge a.nextb').fadeIn(500);
     });
@@ -218,7 +218,7 @@
         $('#startGame a.next').fadeIn(500);
         $('#knowledge').fadeOut(500);
         $('#knowledge a.next').fadeOut(500);
-        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/content/_assets/Background/BKG_2.png)');
+        $('.bkg-image').css('background-image', 'url(http://actionitems.changemyworldnow.com/schoolscrapscout/content/_assets/background/BKG_2.png)');
         $('.bkg-image').css('background-size', '100%');
     });
 
