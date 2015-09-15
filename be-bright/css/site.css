@@ -6623,6 +6623,118 @@ input[type="checkbox"].input-validation-error {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+@-webkit-keyframes animate {
+  0% {
+    transform: scale(4);
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  /*85%{ transform: scaleX(.8) rotate(3deg);}*/
+  /*90%{ transform: scale(1.1);}*/
+  /*100%{ transform: scale(1) rotate(-3deg);}*/
+}
+@-moz-keyframes animate {
+  0% {
+    transform: scale(4);
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  /*85%{ transform: scaleX(.8) rotate(3deg);}*/
+  /*90%{ transform: scale(1.1);}*/
+  /*100%{ transform: scale(1) rotate(-3deg);}*/
+}
+@-o-keyframes animate {
+  0% {
+    transform: scale(4);
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  /*85%{ transform: scaleX(.8) rotate(3deg);}*/
+  /*90%{ transform: scale(1.1);}*/
+  /*100%{ transform: scale(1) rotate(-3deg);}*/
+}
+@keyframes animate {
+  0% {
+    transform: scale(4);
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  /*85%{ transform: scaleX(.8) rotate(3deg);}*/
+  /*90%{ transform: scale(1.1);}*/
+  /*100%{ transform: scale(1) rotate(-3deg);}*/
+}
+@-webkit-keyframes slideIn {
+  from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@-moz-keyframes slideIn {
+  from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@-ms-keyframes slideIn {
+  from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@-o-keyframes slideIn {
+  from {
+    margin-left: -376px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
 .close-Btn {
   margin-top: 10px;
   z-index: 1;
