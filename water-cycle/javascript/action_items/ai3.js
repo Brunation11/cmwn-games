@@ -2,7 +2,7 @@ var correct_items = new Array();
 
 $(document).ready(function () {
 
-    $ ('.bkg-image').css('background-image','url(/content/images/background/BKG_4.png)');
+    $ ('.bkg-image').css('background-image','url(content/images/background/BKG_4.png)');
 
     $('.No').click(function () {
         $('#retry-level').modal('hide')

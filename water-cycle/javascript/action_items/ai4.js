@@ -1,7 +1,7 @@
 var correct_items = new Array();
 $(document).ready(function () {
 
-$ ('.bkg-image').css('background-image','url(/content/images/background/BKG_5.png)');
+$ ('.bkg-image').css('background-image','url(content/images/background/BKG_5.png)');
 
     $('.No').click(function () {
         $('#retry-level').modal('hide')
