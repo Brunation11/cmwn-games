@@ -7,7 +7,7 @@ $(document).ready(function () {
             click.play();
         });
 
-$('.bkg-image').css('background-image','url(/content/images/BKG_6.png)');
+$('.bkg-image').css('background-image','url(content/images/BKG_6.png)');
         $('#zero').click(function () {
 
             try {

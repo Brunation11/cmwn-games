@@ -6,7 +6,7 @@
         catch (err) {
             //no sound - log error
         }
-$('.bkg-image').css('background-image','url(/content/images/BKG_5.png)');
+$('.bkg-image').css('background-image','url(content/images/BKG_5.png)');
 
         $('.play5').click(function () {
             $('.play5').delay(1000).delay(1000, function () {

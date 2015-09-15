@@ -6,6 +6,6 @@
             });
             click.play();
         });
-$('.bkg-image').css('background-image','url(/content/images/BKG_7.png)');
+$('.bkg-image').css('background-image','url(content/images/BKG_7.png)');
 
     });
