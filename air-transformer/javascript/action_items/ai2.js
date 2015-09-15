@@ -26,6 +26,14 @@
             catch (err) {
                 //no sound - log error
             }
+
+            try {
+                correct.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+
         });
 
 

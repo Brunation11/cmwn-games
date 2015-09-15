@@ -21,6 +21,15 @@
             catch (err) {
                 //no sound - log error
             }
+
+             try {
+                vo_times.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+
+
         });
 
 
