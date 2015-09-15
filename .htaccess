@@ -1,4 +1,4 @@
-<IfDefine APP_NAME>
+<IfDefine PROTECT>
 	AuthType Basic
 	AuthName "Password Protected Area"
 	AuthUserFile /var/www/.htpasswd
