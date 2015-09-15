@@ -119,6 +119,8 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top : -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 10);
+                     /// change color of active state //
+
 
                 }
 
@@ -442,7 +444,6 @@ $(document).ready(function () {
                 $('#score p').html(function (i, val) { return val * 1 - 30 });
                 $('.loose').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
-
             }
 
         //});
