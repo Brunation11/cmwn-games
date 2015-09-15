@@ -13,7 +13,7 @@
         $('.last img').fadeIn(7000);
         $('.head2 img').fadeIn(4000);
 
-$('.bkg-image').css('background-image','url(/content/images/BKG_3.png)');
+$('.bkg-image').css('background-image','url(content/images/BKG_3.png)');
 
         $('.last1').click(function () {
             $('.last1').delay(1000).delay(1000, function () {
