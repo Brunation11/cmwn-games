@@ -224,7 +224,7 @@ $(document).ready(function () {
         $('#key').hide();
         $('#key2').show(7000);
         $('#ches').hide();
-        $('#chest').show().css("background-image", "url('../content/images/chests/chest_open.gif" + "?a=" + Math.random() + "')");
+        $('#chest').show().css("background-image", "url('content/images/chests/chest_open.gif" + "?a=" + Math.random() + "')");
         $('#first').fadeIn(3000);
     });
 
@@ -234,7 +234,7 @@ $(document).ready(function () {
         $('#chest-c').show().delay(3000).hide();
         $('#first').hide();
         $('#chest').hide();
-        $('#chest2').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_2.gif" + "?a=" + Math.random() + "')");
+        $('#chest2').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_2.gif" + "?a=" + Math.random() + "')");
         $('#second').fadeIn(3000);
     });
 
@@ -244,7 +244,7 @@ $(document).ready(function () {
         $('#chest-c2').show().delay(3000).hide();
         $('#second').hide();
         $('#chest2').hide();
-        $('#chest3').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_3.gif" + "?a=" + Math.random() + "')");
+        $('#chest3').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_3.gif" + "?a=" + Math.random() + "')");
         $('#third').fadeIn(3000);
     });
 
@@ -254,7 +254,7 @@ $(document).ready(function () {
         $('#chest-c3').show().delay(3000).hide();
         $('#third').hide();
         $('#chest3').hide();
-        $('#chest4').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_4.gif" + "?a=" + Math.random() + "')");
+        $('#chest4').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_4.gif" + "?a=" + Math.random() + "')");
         $('#fourth').fadeIn(3000);
     });
 
@@ -264,7 +264,7 @@ $(document).ready(function () {
         $('#chest-c4').show().delay(3000).hide();
         $('#fourth').hide();
         $('#chest4').hide();
-        $('#chest5').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_5.gif" + "?a=" + Math.random() + "')");
+        $('#chest5').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_5.gif" + "?a=" + Math.random() + "')");
         $('#fifth').fadeIn(3000);
     });
 
@@ -274,7 +274,7 @@ $(document).ready(function () {
         $('#chest-c5').show().delay(3000).hide();
         $('#fifth').hide();
         $('#chest5').hide();
-        $('#chest6').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_6.gif" + "?a=" + Math.random() + "')");
+        $('#chest6').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_6.gif" + "?a=" + Math.random() + "')");
         $('#sixth').fadeIn(3000);
     });
 
@@ -284,7 +284,7 @@ $(document).ready(function () {
         $('#chest-c6').show().delay(3000).hide();
         $('#sixth').hide();
         $('#chest6').hide();
-        $('#chest7').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_7.gif" + "?a=" + Math.random() + "')");
+        $('#chest7').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_7.gif" + "?a=" + Math.random() + "')");
         $('#seventh').fadeIn(3000);
     });
 
@@ -294,7 +294,7 @@ $(document).ready(function () {
         $('#chest-c7').show().delay(3000).hide();
         $('#seventh').hide();
         $('#chest7').hide();
-        $('#chest8').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_8.gif" + "?a=" + Math.random() + "')");
+        $('#chest8').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_8.gif" + "?a=" + Math.random() + "')");
         $('#eighth').fadeIn(3000);
     });
 
@@ -304,7 +304,7 @@ $(document).ready(function () {
         $('#chest-c8').show().delay(3000).hide();
         $('#eighth').hide();
         $('#chest8').hide();
-        $('#chest9').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_9.gif" + "?a=" + Math.random() + "')");
+        $('#chest9').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_9.gif" + "?a=" + Math.random() + "')");
         $('#ninth').fadeIn(3000);
     });
 
@@ -314,7 +314,7 @@ $(document).ready(function () {
         $('#chest-c9').show().delay(3000).hide();
         $('#ninth').hide();
         $('#chest9').hide();
-        $('#chest10').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_10.gif" + "?a=" + Math.random() + "')");
+        $('#chest10').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_10.gif" + "?a=" + Math.random() + "')");
         $('#tenth').fadeIn(3000);
     });
 
@@ -324,7 +324,7 @@ $(document).ready(function () {
         $('#chest-c10').show().delay(3000).hide();
         $('#tenth').hide();
         $('#chest10').hide();
-        $('#chest11').delay(8000).show().css("background-image", "url('../content/images/chests/chest_open_11.gif" + "?a=" + Math.random() + "')");
+        $('#chest11').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_11.gif" + "?a=" + Math.random() + "')");
         $('#eleventh').fadeIn(3000);
     });
 
