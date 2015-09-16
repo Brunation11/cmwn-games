@@ -6594,6 +6594,12 @@ input[type="checkbox"].input-validation-error {
 .button-padding {
   padding: 0px 50px 0px 50px;
 }
+@font-face {
+  font-family: 'coop';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../content/fonts/COOPBL.ttf") format('truetype');
+}
 .close-Button {
   margin-top: 10px;
   z-index: 2;
@@ -7406,7 +7412,7 @@ input[type="checkbox"].input-validation-error {
   height: 130px;
   color: #009345;
   text-align: center;
-  font-family: 'Nunito';
+  font-family: 'coop', sans serif;
   font-weight: 700;
   font-size: 40px;
   line-height: 37px;
