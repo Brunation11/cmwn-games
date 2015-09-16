@@ -7161,7 +7161,7 @@ input[type="checkbox"].input-validation-error {
   position: relative;
   list-style-type: none;
   padding: 0px;
-  width: 999px;
+  width: 9999px;
   padding-bottom: 10px;
 }
 .Time {
@@ -7388,7 +7388,7 @@ input[type="checkbox"].input-validation-error {
   display: inline-block;
   margin: 0 auto;
   -webkit-border-radius: 93px;
-  -webkit-box-shadow: 0px 3px #808080, /* gradient effects */ 0px 4px #767676, 0px 5px #6c6c6c, 0px 6px #626262, 0px 7px #585858, 0px 8px #4e4e4e, 0px 14px 6px -1px #808080;
+  -webkit-box-shadow: 0px 3px #808080, /* gradient effects */ 0px 4px #767676, 0px 5px #6c6c6c, 0px 3px #626262, 0px 3px #585858, 0px 3px #4e4e4e, 0px 9px 6px -1px #808080;
   /* shadow */
   -webkit-transition: -webkit-box-shadow 0.1s ease-in-out;
 }
@@ -7402,14 +7402,18 @@ input[type="checkbox"].input-validation-error {
   -webkit-border-radius: 93px;
   -webkit-transition: -webkit-transform 0.1s ease-in-out;
   display: inline-block;
-  padding: 30px 30px 30px 30px;
-  color: #a8c399;
+  width: 130px;
+  height: 130px;
+  color: #009345;
   text-align: center;
   font-family: 'Nunito';
   font-weight: 700;
   font-size: 40px;
   line-height: 37px;
   text-shadow: 0px 1px #ffffff, 0px -1px #262f33;
+}
+#Big-btn span p {
+  margin-top: 45px;
 }
 #Big-btn span:hover {
   /* Hover state button */
