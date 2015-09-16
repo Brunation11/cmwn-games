@@ -6,7 +6,7 @@ $(document).ready(function () {
     var key_slide = 1;
 
     //speed of auto slide(
-    var auto_slide_seconds = 900;
+    var auto_slide_seconds = 10;
     /* IMPORTANT: i know the variable is called ...seconds but it's
     in milliseconds ( multiplied with 1000) '*/
 
@@ -79,7 +79,7 @@ function slide(where) {
     }
 
     //make the sliding effect using jQuery's animate function... '
-    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 450, function () {
+    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 2000, function () {
 
         $('ul').each(function () {
             // get current ul
