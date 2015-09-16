@@ -103,7 +103,7 @@ $(document).ready(function () {
 
             if (click_correct === selected_item) {
                 //remove the correct item so ite does not diplay again
-                $(this).remove();
+                // $(this).remove();
 
                 //play correct sound
                 //alert('You hit Compost bin');
