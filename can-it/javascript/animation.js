@@ -6,12 +6,8 @@ $(document).ready(function () {
     var key_slide = 1;
 
     //speed of auto slide(
-    var auto_slide_seconds = 1300;
-    /* IMPORTANT: i know the variable is called ...seconds but it's
-    in milliseconds ( multiplied with 1000) '*/
+    var auto_slide_seconds = 900;
 
-    /*move the last list item before the first item. The purpose of this is
-    if the user clicks to slide left he will be able to see the last item.*/
     $('#carousel_ul li:first').before($('#carousel_ul li:last'));
 
     //check if auto sliding is enabled
@@ -112,7 +108,7 @@ function slide(where) {
         }
 
         //...and then just get back the default left indent
-        $('#carousel_ul').css({ 'left': '-210px' });
+        $('#carousel_ul').css({ 'left': '0px' });
     });
 
 }

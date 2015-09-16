@@ -10,7 +10,7 @@ var correct_items = new Array();
 //var rand;
 
 $(document).ready(function () {
-    // $('#carousel_container').hide().delay(500).fadeIn(500);
+    $('#carousel_ul li').hide().delay(1900).fadeIn(500);
     $('#myCarousel').hide().delay(500).fadeIn(500);
    setTimeout(function () {
         startGame();
