@@ -6,7 +6,7 @@ $(document).ready(function () {
     var key_slide = 1;
 
     //speed of auto slide(
-    var auto_slide_seconds = 10;
+    var auto_slide_seconds = 1;
     /* IMPORTANT: i know the variable is called ...seconds but it's
     in milliseconds ( multiplied with 1000) '*/
 
@@ -65,7 +65,7 @@ function slide(where) {
 
 
     //get the item width
-    var item_width = $('#carousel_ul li').outerWidth() + 10;
+    var item_width = $('#carousel_ul li').outerWidth() + 0;
 
     /* using a if statement and the where variable check
     we will check where the user wants to slide (left or right)*/
