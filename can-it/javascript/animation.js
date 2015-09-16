@@ -6,7 +6,7 @@ $(document).ready(function () {
     var key_slide = 1;
 
     //speed of auto slide(
-    var auto_slide_seconds = 1000;
+    var auto_slide_seconds = 1300;
     /* IMPORTANT: i know the variable is called ...seconds but it's
     in milliseconds ( multiplied with 1000) '*/
 
