@@ -6680,7 +6680,7 @@ input[type="checkbox"].input-validation-error {
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-1 img:first-child {
+.next-1 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6688,17 +6688,17 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-1 img:first-child:hover {
+.next-1 img:first-child:hover {
   opacity: 0;
 }
-.Next-2 {
+.next-2 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-2 img:first-child {
+.next-2 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6706,11 +6706,11 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-2 img:first-child:hover {
+.next-2 img:first-child:hover {
   opacity: 0;
 }
 .bkg-image {
-  /*background-image:url("../content/images/background/BKG_2.png");*/
+  /*background-image:url("../content/images/background/bkg_2.png");*/
   width: 616px;
   height: 400px;
   margin-left: 15px;
@@ -6720,7 +6720,7 @@ input[type="checkbox"].input-validation-error {
   background-position-y: -1px;
   background-position: 0px -1px;
 }
-.Clean-up {
+.clean-up {
   position: absolute;
   z-index: 1;
   margin-top: 300px;
@@ -6743,14 +6743,14 @@ input[type="checkbox"].input-validation-error {
 .text p span {
   font-size: 26px;
 }
-.Next-3 {
+.next-3 {
   position: absolute;
   z-index: 2;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-3 img:first-child {
+.next-3 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6758,11 +6758,11 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-3 img:first-child:hover {
+.next-3 img:first-child:hover {
   opacity: 0;
 }
 .bkg-image {
-  background-image: url("../content/images/background/BKG_3.png");
+  background-image: url("../content/images/background/bkg_3.png");
   width: 616px;
   height: 400px;
   margin-left: 15px;
@@ -6863,14 +6863,14 @@ input[type="checkbox"].input-validation-error {
 .trash-bag img:first-child:hover {
   opacity: 0;
 }
-.Batteries {
+.batteries {
   position: absolute;
   top: 0;
   margin-top: 297px;
   margin-left: 120px;
   cursor: pointer;
 }
-.Batteries img:first-child {
+.batteries img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -6878,7 +6878,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Batteries img:first-child:hover {
+.batteries img:first-child:hover {
   opacity: 0;
 }
 .glass-bottle {
@@ -7043,7 +7043,7 @@ input[type="checkbox"].input-validation-error {
 .trash-paper-3 img:first-child:hover {
   opacity: 0;
 }
-.Message-window {
+.message-window {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -7052,10 +7052,10 @@ input[type="checkbox"].input-validation-error {
   overflow: hidden;
   margin-top: 110px;
 }
-.Message-window .frame {
+.message-window .frame {
   margin-left: -12px;
 }
-.Message-window h1 {
+.message-window h1 {
   position: absolute;
   font-size: 30px;
   margin-left: 28px;
@@ -7063,7 +7063,7 @@ input[type="checkbox"].input-validation-error {
   font-weight: 700;
   color: #000;
 }
-.Message-window p {
+.message-window p {
   position: absolute;
   font-size: 25px;
   margin-left: 147px;
@@ -7073,13 +7073,13 @@ input[type="checkbox"].input-validation-error {
   font-weight: 600;
   color: #000;
 }
-.Sunshine {
+.sunshine {
   position: absolute;
   z-index: 1;
   width: 616px;
   height: 400px;
 }
-.Kid-1 {
+.kid-1 {
   position: absolute;
   z-index: 1;
   margin-top: 21px;
@@ -7090,14 +7090,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 158px;
 }
-.No-1 {
+.no-1 {
   position: absolute;
   z-index: 1;
   margin-left: 282px;
   margin-top: 132px;
   cursor: pointer;
 }
-.No-1 img:first-child {
+.no-1 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7105,14 +7105,14 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No-1 img:first-child:hover {
+.no-1 img:first-child:hover {
   opacity: 0;
 }
 .shine-1 {
   position: absolute;
   z-index: 1;
 }
-.No-1 .shine-1 {
+.no-1 .shine-1 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7125,26 +7125,26 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-1:hover .shine-1 {
+.no-1:hover .shine-1 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
 }
-.No-1 img:nth-child(2) {
+.no-1 img:nth-child(2) {
   position: absolute;
   left: 0;
   z-index: 1;
 }
-.Kid-2 {
+.kid-2 {
   position: absolute;
   z-index: 1;
   width: 616px;
   height: 401px;
   overflow: hidden;
 }
-.Img-school {
+.img-school {
   margin-left: -2px;
 }
 .header-2 {
@@ -7152,14 +7152,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-top: 223px;
 }
-.No-2 {
+.no-2 {
   position: absolute;
   z-index: 1;
   margin-left: 373px;
   margin-top: 165px;
   cursor: pointer;
 }
-.No-2 img:first-child {
+.no-2 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7167,14 +7167,14 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No-2 img:first-child:hover {
+.no-2 img:first-child:hover {
   opacity: 0;
 }
 .shine-2 {
   position: absolute;
   z-index: 1;
 }
-.No-2 .shine-2 {
+.no-2 .shine-2 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7187,14 +7187,14 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-2:hover .shine-2 {
+.no-2:hover .shine-2 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
   -ms-transition: background 1s ease-out;
   -o-transition: background 1s ease-out;
 }
-.No-2 img:nth-child(2) {
+.no-2 img:nth-child(2) {
   position: absolute;
   left: 0;
   z-index: 1;
@@ -7205,14 +7205,14 @@ input[type="checkbox"].input-validation-error {
   margin-left: 158px;
   margin-top: 73px;
 }
-.No-3 {
+.no-3 {
   position: absolute;
   z-index: 1;
   margin-left: 108px;
   margin-top: 165px;
   cursor: pointer;
 }
-.No-3 img:first-child {
+.no-3 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7220,14 +7220,14 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.No-3 img:first-child:hover {
+.no-3 img:first-child:hover {
   opacity: 0;
 }
 .shine-3 {
   position: absolute;
   z-index: 1;
 }
-.No-3 .shine-3 {
+.no-3 .shine-3 {
   width: 209px;
   height: 209px;
   margin-left: 20px;
@@ -7240,7 +7240,7 @@ input[type="checkbox"].input-validation-error {
   -ms-transition: background 0s linear;
   -o-transition: background 0s linear;
 }
-.No-3:hover .shine-3 {
+.no-3:hover .shine-3 {
   background-position: 200px 0px;
   -webkit-transition: background 1s ease-out;
   -moz-transition: background 1s ease-out;
@@ -7253,25 +7253,25 @@ input[type="checkbox"].input-validation-error {
   margin-left: 22px;
   margin-top: 10px;
 }
-.No-3 img:nth-child(2) {
+.no-3 img:nth-child(2) {
   position: absolute;
   left: 0;
   z-index: 1;
 }
-.Sign {
+.sign {
   position: absolute;
   z-index: 1;
   margin-left: 148px;
   margin-top: 66px;
 }
-.Next-4 {
+.next-4 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-4 img:first-child {
+.next-4 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7279,17 +7279,17 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-4 img:first-child:hover {
+.next-4 img:first-child:hover {
   opacity: 0;
 }
-.Next-5 {
+.next-5 {
   position: absolute;
   z-index: 2;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-5 img:first-child {
+.next-5 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7297,16 +7297,16 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-5 img:first-child:hover {
+.next-5 img:first-child:hover {
   opacity: 0;
 }
-.Video-frame-1 {
+.video-frame-1 {
   position: absolute;
   z-index: 1;
   margin-left: 40px;
   margin-top: 40px;
 }
-.Video {
+.video {
   position: absolute;
   margin-top: 20px;
   margin-left: 22px;
@@ -7399,7 +7399,7 @@ input[type="checkbox"].input-validation-error {
 .post img:first-child:hover {
   opacity: 0;
 }
-.In-window {
+.in-window {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -7408,10 +7408,10 @@ input[type="checkbox"].input-validation-error {
   overflow: hidden;
   margin-top: 129px;
 }
-.In-window .frame {
+.in-window .frame {
   margin-left: -12px;
 }
-.In-window p {
+.in-window p {
   position: absolute;
   font-size: 24px;
   margin-left: 307px;
@@ -7423,26 +7423,26 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   color: #000;
 }
-.Wow {
+.wow {
   position: absolute;
   z-index: 2;
   margin-left: 279px;
   margin-top: 54px;
 }
-.Eco-symbol-1 {
+.eco-symbol-1 {
   position: absolute;
   z-index: 2;
   margin-top: 82px;
   margin-left: -9px;
 }
-.Accept {
+.accept {
   position: absolute;
   z-index: 1;
   margin-top: 264px;
   margin-left: 207px;
   cursor: pointer;
 }
-.Accept img:first-child {
+.accept img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7450,7 +7450,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Accept img:first-child:hover {
+.accept img:first-child:hover {
   opacity: 0;
 }
 .bkg-image {
@@ -7464,13 +7464,13 @@ input[type="checkbox"].input-validation-error {
   background-position-y: -1px;
   background-position: 0px -1px;
 }
-.Foggy-frame {
+.foggy-frame {
   position: absolute;
   z-index: 1;
   margin-left: 117px;
   margin-top: 27px;
 }
-.Eco-symbol-2 {
+.eco-symbol-2 {
   position: absolute;
   z-index: 2;
   margin-top: 23px;
@@ -7491,14 +7491,14 @@ input[type="checkbox"].input-validation-error {
   line-height: 33px;
   color: #000;
 }
-.Commit {
+.commit {
   position: absolute;
   z-index: 1;
   margin-top: 283px;
   margin-left: 206px;
   cursor: pointer;
 }
-.Commit img:first-child {
+.commit img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7506,7 +7506,7 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Commit img:first-child:hover {
+.commit img:first-child:hover {
   opacity: 0;
 }
 .text-flip {
@@ -7523,14 +7523,14 @@ input[type="checkbox"].input-validation-error {
   line-height: 33px;
   color: #000;
 }
-.Next-6 {
+.next-6 {
   position: absolute;
   z-index: 1;
   margin-top: 325px;
   margin-left: 535px;
   cursor: pointer;
 }
-.Next-6 img:first-child {
+.next-6 img:first-child {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
   -moz-transition: opacity 0s ease-in-out;
@@ -7538,10 +7538,10 @@ input[type="checkbox"].input-validation-error {
   transition: opacity 0s ease-in-out;
   z-index: 10;
 }
-.Next-6 img:first-child:hover {
+.next-6 img:first-child:hover {
   opacity: 0;
 }
-.Flip {
+.flip {
   position: absolute;
   z-index: 1;
   margin-left: 323px;

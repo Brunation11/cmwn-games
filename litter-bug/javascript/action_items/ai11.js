@@ -4,8 +4,8 @@ $(document).ready(function () {
 
     $(".info2").hide();
 
-    $(".Accept").hide();
-    $(".In-window").hide().delay(900).fadeIn(80);
+    $(".accept").hide();
+    $(".in-window").hide().delay(900).fadeIn(80);
 
     $(".logo").hide().delay(1000).fadeIn(80);
 
@@ -17,20 +17,20 @@ $(document).ready(function () {
 
         $(".info2").hide().delay(1000).fadeIn(500);
 
-        $(".Accept").hide().delay(1700).fadeIn(500);
+        $(".accept").hide().delay(1700).fadeIn(500);
 
         $(".info2").addClass("fadeInDown");
 
-        $('.In-window').animate({
+        $('.in-window').animate({
             top: '-=60'
         }, 2000);
 
-        $('.Eco-symbol-1').animate({
+        $('.eco-symbol-1').animate({
             top: '-=60'
         }, 2000);
     }, 4000);
 
-    $(".Accept").click(function(){
+    $(".accept").click(function(){
         $("#putcontenthere").load("action_items/ai12.html");
     });
 
