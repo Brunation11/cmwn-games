@@ -222,7 +222,7 @@ $(document).ready(function () {
 
     $('#key').click(function () {
         $('#key').hide();
-        $('#key2').show(7000);
+        $('#key2').show(6000);
         $('#ches').hide();
         $('#chest').show().css("background-image", "url('content/images/chests/chest_open.gif" + "?a=" + Math.random() + "')");
         $('#first').fadeIn(3000);
@@ -230,8 +230,8 @@ $(document).ready(function () {
 
     $('#key2').click(function () {
         $('#key2').hide();
-        $('#key3').show(7000);
-        $('#chest-c').show().delay(3000).hide();
+        $('#key3').show(6000);
+        $('#chest-c').show().css("background-image", "url('content/images/chests/chest_closed.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#first').hide();
         $('#chest').hide();
         $('#chest2').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_2.gif" + "?a=" + Math.random() + "')");
@@ -240,8 +240,8 @@ $(document).ready(function () {
 
     $('#key3').click(function () {
         $('#key3').hide();
-        $('#key4').show(7000);
-        $('#chest-c2').show().delay(3000).hide();
+        $('#key4').show(6000);
+        $('#chest-c2').show().css("background-image", "url('content/images/chests/chest_closed_2.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#second').hide();
         $('#chest2').hide();
         $('#chest3').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_3.gif" + "?a=" + Math.random() + "')");
@@ -250,8 +250,8 @@ $(document).ready(function () {
 
     $('#key4').click(function () {
         $('#key4').hide();
-        $('#key5').show(7000);
-        $('#chest-c3').show().delay(3000).hide();
+        $('#key5').show(6000);
+        $('#chest-c3').show().css("background-image", "url('content/images/chests/chest_closed_3.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#third').hide();
         $('#chest3').hide();
         $('#chest4').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_4.gif" + "?a=" + Math.random() + "')");
@@ -260,8 +260,8 @@ $(document).ready(function () {
 
     $('#key5').click(function () {
         $('#key5').hide();
-        $('#key6').show(7000);
-        $('#chest-c4').show().delay(3000).hide();
+        $('#key6').show(6000);
+        $('#chest-c4').show().css("background-image", "url('content/images/chests/chest_closed_4.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#fourth').hide();
         $('#chest4').hide();
         $('#chest5').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_5.gif" + "?a=" + Math.random() + "')");
@@ -270,8 +270,8 @@ $(document).ready(function () {
 
     $('#key6').click(function () {
         $('#key6').hide();
-        $('#key7').show(7000);
-        $('#chest-c5').show().delay(3000).hide();
+        $('#key7').show(6000);
+        $('#chest-c5').show().css("background-image", "url('content/images/chests/chest_closed_5.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#fifth').hide();
         $('#chest5').hide();
         $('#chest6').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_6.gif" + "?a=" + Math.random() + "')");
@@ -280,8 +280,8 @@ $(document).ready(function () {
 
     $('#key7').click(function () {
         $('#key7').hide();
-        $('#key8').show(7000);
-        $('#chest-c6').show().delay(3000).hide();
+        $('#key8').show(6000);
+        $('#chest-c6').show().css("background-image", "url('content/images/chests/chest_closed_6.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#sixth').hide();
         $('#chest6').hide();
         $('#chest7').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_7.gif" + "?a=" + Math.random() + "')");
@@ -290,8 +290,8 @@ $(document).ready(function () {
 
     $('#key8').click(function () {
         $('#key8').hide();
-        $('#key9').show(7000);
-        $('#chest-c7').show().delay(3000).hide();
+        $('#key9').show(6000);
+        $('#chest-c7').show().css("background-image", "url('content/images/chests/chest_closed_7.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#seventh').hide();
         $('#chest7').hide();
         $('#chest8').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_8.gif" + "?a=" + Math.random() + "')");
@@ -300,8 +300,8 @@ $(document).ready(function () {
 
     $('#key9').click(function () {
         $('#key9').hide();
-        $('#key10').show(7000);
-        $('#chest-c8').show().delay(3000).hide();
+        $('#key10').show(6000);
+        $('#chest-c8').show().css("background-image", "url('content/images/chests/chest_closed_8.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#eighth').hide();
         $('#chest8').hide();
         $('#chest9').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_9.gif" + "?a=" + Math.random() + "')");
@@ -310,8 +310,8 @@ $(document).ready(function () {
 
     $('#key10').click(function () {
         $('#key10').hide();
-        $('#key11').show(7000);
-        $('#chest-c9').show().delay(3000).hide();
+        $('#key11').show(6000);
+        $('#chest-c9').show().css("background-image", "url('content/images/chests/chest_closed_9.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#ninth').hide();
         $('#chest9').hide();
         $('#chest10').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_10.gif" + "?a=" + Math.random() + "')");
@@ -320,8 +320,8 @@ $(document).ready(function () {
 
     $('#key11').click(function () {
         $('#key11').hide();
-        $('#next-button9').show(7000);
-        $('#chest-c10').show().delay(3000).hide();
+        $('#next-button9').show(6000);
+        $('#chest-c10').show().css("background-image", "url('content/images/chests/chest_closed_10.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
         $('#tenth').hide();
         $('#chest10').hide();
         $('#chest11').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_11.gif" + "?a=" + Math.random() + "')");
