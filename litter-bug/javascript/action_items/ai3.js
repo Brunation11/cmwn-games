@@ -36,7 +36,7 @@ $(document).ready(function () {
         $(this).hide();
     });
 
-    $(".Batteries").click(function () {
+    $(".batteries").click(function () {
         $(this).hide();
     });
 
