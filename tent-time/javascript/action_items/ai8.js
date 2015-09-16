@@ -54,7 +54,7 @@ var meter;
                 $(".draggable1").fadeOut(4000);
                 $("#sleep p").css("text-decoration", "line-through");
                 correct_items.push(1);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -81,7 +81,7 @@ var meter;
                 $(".draggable2").fadeOut(4000);
                 $("#tent p").css("text-decoration", "line-through");
                 correct_items.push(2);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -109,7 +109,7 @@ var meter;
                 $(".draggable3").fadeOut(4000);
                 $("#bug p").css("text-decoration", "line-through");
                 correct_items.push(3);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -136,7 +136,7 @@ var meter;
                 $(".draggable4").fadeOut(4000);
                 $("#flash p").css("text-decoration", "line-through");
                 correct_items.push(4);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -163,7 +163,7 @@ var meter;
                 $(".draggable5").fadeOut(4000);
                 $("#aid p").css("text-decoration", "line-through");
                 correct_items.push(5);
-               var path = "/content/images/meter_";
+               var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -190,7 +190,7 @@ var meter;
                 $(".draggable6").fadeOut(4000);
                 $("#batter p").css("text-decoration", "line-through");
                 correct_items.push(6);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -218,7 +218,7 @@ var meter;
                 $(".draggable7").fadeOut(4000);
                 $("#food p").css("text-decoration", "line-through");
                 correct_items.push(7);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -245,7 +245,7 @@ var meter;
                 $(".draggable8").fadeOut(4000);
                 $("#water p").css("text-decoration", "line-through");
                 correct_items.push(7);
-                var path = "/content/images/meter_";
+                var path = "content/images/meter_";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
