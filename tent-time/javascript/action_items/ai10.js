@@ -48,7 +48,7 @@
                 }
                 $(".draggable").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -74,7 +74,7 @@
                 }
                 $(".draggable2").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -101,7 +101,7 @@
                 }
                 $(".draggable3").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -127,7 +127,7 @@
                 }
                 $(".draggable4").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -154,7 +154,7 @@
                 }
                 $(".draggable5").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -181,7 +181,7 @@
                 }
                 $(".draggable6").fadeOut(4000);
                 correct_items.push(0);
-               var path = "/content/images/meter_5";
+               var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -207,7 +207,7 @@
                 }
                 $(".draggable7").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -235,7 +235,7 @@
                 }
                 $(".draggable8").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -262,7 +262,7 @@
                 }
                 $(".draggable9").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -288,7 +288,7 @@
                 }
                 $(".draggable10").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -314,7 +314,7 @@
                 }
                 $(".draggable11").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
@@ -340,7 +340,7 @@
                 }
                 $(".draggable12").fadeOut(4000);
                 correct_items.push(0);
-                var path = "/content/images/meter_5";
+                var path = "content/images/meter_5";
                 var file_ext = ".png";
                 var image_src = path + correct_items.length + file_ext;
 
