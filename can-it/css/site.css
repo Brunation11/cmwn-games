@@ -7169,7 +7169,7 @@ input[type="checkbox"].input-validation-error {
   padding: 0px;
   width: 9999px;
   padding-bottom: 10px;
-  margin-left: -210px;
+  margin-left: 0px;
 }
 .Time {
   position: absolute;
