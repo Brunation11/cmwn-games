@@ -7152,6 +7152,7 @@ input[type="checkbox"].input-validation-error {
   margin-bottom: 10px;
   margin-left: 0px;
   margin-right: 0px;
+  border: 1px solid red;
 }
 #carousel_inner {
   overflow: hidden;
@@ -7162,7 +7163,7 @@ input[type="checkbox"].input-validation-error {
   list-style-type: none;
   margin: 0, 210px;
   padding: 0px;
-  width: 9999px;
+  width: 616px;
   padding-bottom: 10px;
 }
 .Time {

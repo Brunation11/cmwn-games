@@ -112,7 +112,7 @@ function slide(where) {
         }
 
         //...and then just get back the default left indent
-        $('#carousel_ul').css({ 'left': '-210px' });
+        $('#carousel_ul').css({ 'left': '0px' });
     });
 
 }
