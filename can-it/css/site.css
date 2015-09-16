@@ -7160,7 +7160,7 @@ input[type="checkbox"].input-validation-error {
 #carousel_ul {
   position: relative;
   list-style-type: none;
-  margin: 0 250px;
+  margin: 0 -10px;
   padding: 0px;
   width: 9999px;
   padding-bottom: 10px;
