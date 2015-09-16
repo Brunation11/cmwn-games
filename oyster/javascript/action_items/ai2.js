@@ -33,6 +33,7 @@
             "left":"88px",
             "top":"33px"
         });
+
         //hide button first
         $('#check-answer').hide();
 
@@ -278,7 +279,6 @@
             var dragged_item = draggable.attr('.makeMeDraggable');
             var dropped_zone = $(this).attr('#makeMeDroppable');
 
-
             //$(ui.draggable).detach().css({ top: 20, left: 100,}).appendTo(this);
 
             //add the dragged oyster to the dropped_items array to increase the count
@@ -340,7 +340,6 @@
                 {
                     //no sound - log error
                 }
-
             }
             else if (dropped_items.length === 2) {
                 //hideWaterState();
