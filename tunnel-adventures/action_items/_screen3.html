@@ -21,7 +21,9 @@
 
 			function GameCompleted( arg )
 			{
-			    document.location.href = "@Url.Action("AI4", "ActionItem")";
+			    // document.location.href = "@Url.Action("AI4", "ActionItem")";
+                $("#putcontenthere").load("action_items/ai4.html");
+                return false;
 			}
 
 			jQuery(function() {
