@@ -79,7 +79,7 @@ function slide(where) {
     }
 
     //make the sliding effect using jQuery's animate function... '
-    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 2000, function () {
+    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 1500, function () {
 
         $('ul').each(function () {
             // get current ul

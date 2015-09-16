@@ -7388,7 +7388,7 @@ input[type="checkbox"].input-validation-error {
   display: inline-block;
   margin: 0 auto;
   -webkit-border-radius: 93px;
-  -webkit-box-shadow: 0px 3px #808080, /* gradient effects */ 0px 4px #767676, 0px 5px #6c6c6c, 0px 6px #626262, 0px 7px #585858, 0px 8px #4e4e4e, 0px 14px 6px -1px #808080;
+  -webkit-box-shadow: 0px 3px #808080, /* gradient effects */ 0px 4px #767676, 0px 5px #6c6c6c, 0px 3px #626262, 0px 3px #585858, 0px 3px #4e4e4e, 0px 9px 6px -1px #808080;
   /* shadow */
   -webkit-transition: -webkit-box-shadow 0.1s ease-in-out;
 }
