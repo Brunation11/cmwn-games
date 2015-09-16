@@ -1,0 +1,4 @@
+build:
+  build_hook_timeout: 600
+  before_exec:
+    - "mv .htaccess-prod .htaccess"
