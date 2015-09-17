@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,6 @@
 <script src="Scripts/respond.js"></script>
 
     <script src="Scripts/jquery-ui.js"></script>
-
     
     <link rel="stylesheet" type="text/css" href="content/main.css">
     <script type="text/javascript" src="Scripts/angular.js"></script>
@@ -24,10 +22,8 @@
     <script type="text/javascript" src="Scripts/draganddrop.js"></script>
     <script type="text/javascript" src="Scripts/gameapp.js"></script>
     <script type="text/javascript" src="Scripts/main.js"></script>
-
-
-
 </head>
+
 <body ng-app="GameApp">
 
     <audio id="homeSound" src="content/_sounds/Title Screen.mp3"></audio>
@@ -41,14 +37,9 @@
     <audio id="slide4" src="content/_sounds/Slide 4 Reveal.mp3"></audio>
     <audio id="slide20" src="content/_sounds/Slide 20.mp3"></audio>
 
-
     <div class="">
 
         <span style="font-size:18px;"></span>
-
-        
-
-
 
 <style type="text/css">
     .close-Btn {
@@ -90,14 +81,6 @@
     <div class="col-md-12">
         <div class="row">
 
-
-
-
-
-
-
-
-
         </div>
     </div>
 </div><!--end container body-content-->
@@ -109,11 +92,9 @@
 
                 <div class="col-md-12 custom-font game-title">
                     <div class=" text-left">
-                        <img style="width:72px; height:72px;margin-bottom:3px; float:left; margin:10px 20px 0 20px" src="content/images/gameicon.png">
+                        <img style="width:72px; height:72px; margin-bottom:3px; float:left; margin:10px 20px 0 20px" src="content/images/gameicon.png">
                         <h2 style="line-height:75px; text-transform:uppercase">Power Bright</h2>
                     </div>
-
-
 
                     <div class="col-md-2 text-right">
                         <div class="row">
@@ -122,7 +103,6 @@
                             </div>
                         </div><!--end row-->
                     </div><!--end text-right-->
-
                 </div><!--end custom-font game title-->
                 <!--/**************************/-->
 
@@ -138,7 +118,6 @@
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
                         </div>
-
                     </div>
                     <!--//////////////////////////////////////////////////-->
                     <div id="whatIs">
@@ -151,9 +130,7 @@
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
                         </div>
-
                     </div>
-
                     <!--//////////////////////////////////////////////////-->
                     <div id="noseWords">
                         <div class="global-hold">
@@ -161,14 +138,11 @@
                             
                             <div class="inner">
                                 <img class="open" src="content/_assets/elements/sun_flare.png" alt="What Is Energy" />
-                                <img src="content/_assets/elements/header_2.png" alt="Energy" />
-                                
+                                <img src="content/_assets/elements/header_2.png" alt="Energy" />                              
                             </div>
                             <div class="play-btn">
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
-
-
                         </div>
                     </div>
                     <!--//////////////////////////////////////////////////-->
@@ -188,7 +162,6 @@
                                 <div class="stiker2">
                                     <div class="text">
                                         <img src="content/_assets/elements/sign_2.png" alt="source" />
-                                        
                                     </div>
                                     <div class="play-btn">
                                         <a href class="btn-click play" ng-click="" title="Play"></a>
@@ -203,11 +176,9 @@
                                         <a href class="btn-click play" ng-click="" title="Play"></a>
                                     </div>
                                     <div class="stiker-hover"></div>
-
                                 </div>
-
                             </div>
-                            
+
                         </div>
                     </div>
                     <!--//////////////////////////////////////////////////-->
@@ -226,8 +197,6 @@
                                 <div class="farm-box">
                                     <a href class="farm"></a>
                                 </div>
-                                
-
                             </div>
 
                         </div>
@@ -236,6 +205,7 @@
                     <div id="right">
                         <div class="global-hold">
                             <button class="exit close-Btn"></button>
+
                             <div class="inner">
                                 <img src="content/_assets/elements/header_3.png" alt="That's right'" />
                                 <div class="clearfix">
@@ -247,16 +217,15 @@
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
                         </div>
-
                     </div>
                     <!--//////////////////////////////////////////////////-->
                     <div id="sources" class="sunrize">
                         <div class="sun"></div>
+
                         <div class="global-hold">
                            
                             <button class="exit close-Btn"></button>
-                            <div class="inner">
-                             
+                            <div class="inner">     
                                 <div class="clearfix">
                                     <h1>Energy sources are<br/> Renewable or Non-Renewable</h1>
                                     <p>Renewable sources can be <br /> easily replaced.</br> Non-renewable sources take<br /> many years to renew. </br> Some can NEVER be recovered.</p>
@@ -266,9 +235,7 @@
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
                         </div>
-
                     </div>
-
                     <!--//////////////////////////////////////////////////-->
                     <div id="step">
                         <div ng-controller="stepController">
@@ -276,49 +243,35 @@
                             <div slider class="slider" data="data1">
                                 <div class="steps slide clearfix" ng-repeat="item in data1 | orderBy: 'rank'" id="{{item.item.name}}">
                                     <div class="main-box">
-                                        <div class="content-box">
-                                            
+                                        <div class="content-box">                                        
                                             <div class="img-box" >
-                                                
                                                 <div class="btn-hold">
                                                     <a href class="real" ng-class="{correct: item.item.correct==1, incorrect: item.item.correct!=1}"></a>
                                                     <a href class="not-real" ng-class="{correct: item.item.correct==2, incorrect: item.item.correct!=2}"></a>
                                                 </div>
                                                 <div class="img-hold">
                                                     <img src="{{item.item.mainImageUrl}}">
-                                                    
                                                 </div>
                                                 <div class="text-box">{{item.item.text}}</div>
-                                                
                                             </div>
-                                            
-
                                         </div>
                                     </div>
-                                    
-                                    </div>
-                                   
-                                </div>
-                                <div class="arrows">
-                                    <div class="arrows-inctive"></div>
-                                    <a href class="next arrow" ng-click="next()"></a>
-                                   
-                                </div>
-
+                                </div>   
+                            </div>
+                            <div class="arrows">
+                                <div class="arrows-inctive"></div>
+                                <a href class="next arrow" ng-click="next()"></a>
+                            </div>
                         </div>
                     </div>
-
                     <!--//////////////////////////////////////////////////-->
                     <div id="letsPlay" class="sunrize">
-
                         <div class="global-hold">
-
                             <button class="exit close-Btn"></button>
-                            <div class="inner">
 
+                            <div class="inner">
                                 <div class="clearfix">
                                     <img src="content/_assets/elements/header_4.png" alt="Solar Power" />
-
                                     <p>Solar power is what we get when we <br /> harness the energy of the sun.</p>
                                     <!--<h1>Let's Play!</h1>-->
                                 </div>
@@ -327,21 +280,14 @@
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
                             </div>
                         </div>
-
                     </div>
-
-
-             
                     <!--//////////////////////////////////////////////////-->
                     <div id="flip" class="sunrize">
                         <button class="exit close-Btn"></button>
+
                         <div class="inner">
-
-
                             <h1>Look at the sun shine on <br /> your brand new </h1>
-
                             <img src="content/_assets/elements/header_flip.png">
-
                         </div>
 
                         <!--<div class="play-btn">
@@ -353,36 +299,27 @@
                     <!--//////////////////////////////////////////////////-->
                     <div id="quit" class="sunrize">
                         <div class="inner">
-
                             <div class="text-box">
                                 <h1>Are you sure you<br /> want to quit?</h1>
-
                             </div>
                             <div class="buttons-quit clearfix">
                                 <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
                                 <a href class="no"></a>
-
                             </div>
                         </div>
-
-
                     </div>
                     <!--//////////////////////////////////////////////////-->
                     <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-top: 207px;  margin-left: 85px;">
+                        <div class="modal-dialog" style="margin-top:207px; margin-left:85px;">
                             <div class="modal-content" style="width:420px; height:315px;">
                                 <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
                                     <div class="modal-body custom-font modal-text">
 
                                         <div class="second-slide">
                                             <h1>Close Modal</h1>
-
-
                                         </div><!--end second-slide-->
                                         <div class="purple-button text-center custom-font button-text button-padding">
-
                                             <a href="#">Close</a>
-
                                         </div>
 
                                     </div>
@@ -391,16 +328,14 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
+                    <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                        <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
                             <div class="modal-content" style="width:420px; height:315px;">
                                 <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
                                     <div class="modal-body custom-font modal-text">
 
                                         <div class="second-slide">
                                             <h1>Load Modal</h1>
-
-
                                         </div><!--end second-slide-->
 
                                     </div>
@@ -410,15 +345,13 @@
                     </div>
 
                     <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
+                        <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
                             <div class="modal-content" style="width:420px; height:315px;">
                                 <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
                                     <div class="modal-body custom-font modal-text">
 
                                         <div class="second-slide">
                                             <h1>Game Complete</h1>
-
-
                                         </div><!--end second-slide-->
 
                                     </div>
@@ -427,8 +360,8 @@
                         </div>
                     </div>
 
-                    <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
+                    <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                        <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
                             <div class="modal-content" style="width:420px; height:315px;">
                                 <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
                                     <div class="modal-body custom-font modal-text">
@@ -437,15 +370,12 @@
 
                                                 <div class="text-box">
                                                     <h1>Are you sure you<br/> want to quit?</h1>
-
                                                 </div>
                                                 <div class="buttons-quit clearfix">
                                                     <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
                                                     <a href class="no"></a>
-
                                                 </div>
                                             </div>
-
 
                                         </div>
                                     </div>
@@ -453,9 +383,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
 
                     <!--//////////////////////////////////////////////////-->
 
