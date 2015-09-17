@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.bkg-image').css('background-image','url(content/images/background/bkg_5.png)');
+    $('.bkg-image').css('background-image','url(content/images/background/bakg_5.png)');
 
     $(".text").hide().delay(1000).fadeIn(90);
 

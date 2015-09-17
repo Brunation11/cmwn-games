@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('.bkg-image').css('background-image','url(content/images/background/bkg_1.png)');
+    $('.bkg-image').css('background-image','url(content/images/background/bakg_1.png)');
 
     $(".info2").hide();
 

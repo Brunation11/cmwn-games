@@ -2,7 +2,7 @@ var correct_items = new Array();
 
 $(document).ready(function () {
 
-    $('.bkg-image').css('background-image','url(content/images/background/bkg_3.png)');
+    $('.bkg-image').css('background-image','url(content/images/background/bakg_3.png)');
 
     $(".sunshine").hide();
 
