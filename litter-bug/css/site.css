@@ -6560,6 +6560,7 @@ input[type="checkbox"].input-validation-error {
   height: 100%;
   position: fixed;
   margin: 0 auto;
+  z-index: 10;
 }
 .fade .in {
   position: absolute;
@@ -7454,7 +7455,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 0;
 }
 .bkg-image {
-  background-image: url("../content/images/background/bkg_5.png");
+  background-image: url("../content/images/background/bakg_5.png");
   width: 616px;
   height: 400px;
   margin-left: 15px;
