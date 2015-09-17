@@ -91,7 +91,7 @@ font-family: 'source_sans_prosemibold';
 }
 
 .bkg-image {
-background: url(_assets/background/bkg_1.png) 0 0 no-repeat #fff;
+background: url(_assets/background/bakg_1.png) 0 0 no-repeat #fff;
 background-size: 104%;
 height: 400px;
 overflow: hidden;
@@ -861,7 +861,7 @@ width: 150px;
 height: 155px;
 }
 #quit {
-background: url(_assets/background/bkg_2.png) center center no-repeat;
+background: url(_assets/background/bakg_2.png) center center no-repeat;
 background-size: 108%;
 position: relative;
 min-height: 400px;
@@ -896,7 +896,7 @@ display: block;
 font-family: source_sans_prosemibold;
 color: #fff;
 font-size: 38px;
-background: url(_assets/background/bkg_2.png) center center no-repeat;
+background: url(_assets/background/bakg_2.png) center center no-repeat;
 background-size: 108%;
 position: relative;
 min-height: 400px;
