@@ -45,7 +45,7 @@ $(function () {
 });
 
 $(document).ready(function () {
-    
+
     // Close Button
     $('#close').click(function () {
         $('#game-close').modal('show');
@@ -53,13 +53,13 @@ $(document).ready(function () {
         //$('#game-info').modal('hide');
         //$('.Next-arrow').hide();
         //$('#game-complete').hide();
-        
+
     });
 
     $('.No-Btns').click(function () {
         $('#game-close').modal('hide');
         // $('.Next-arrow').show();
-        
+
     });
 
     $('.Next-Ai').click(function () {
@@ -78,10 +78,10 @@ $(document).ready(function () {
 
     //Hide fish
     $('.Fish').hide();
-    
+
     //When document loads show modal
     $('#game-info').modal('show');
-    
+
     // when next-arrow button is clicked, hide modal
     $('.Next-arrow').click(function () {
         //apply css to body-content - add paw class
@@ -92,7 +92,7 @@ $(document).ready(function () {
         $('.Fish').show();
 
         $('#facts').modal('hide');
-        
+
     });
 
     function buildFactModal() {
@@ -120,34 +120,34 @@ $(document).ready(function () {
             $('.Message').css('line-height', '41px');
             $('.Message').css('position', 'absolute');
             $('.Message').css('z-index', '2');
-       
-        });                  
+
+        });
     }
-    
-    
+
+
     // Push in to new array
     $('.Fish').click(function () {
         //remove the paw class
         //$(".body-content").removeClass("paw");
         $(this).hide();
-        
+
         correct_items.push(clicked_item);
         if (correct_items.length === 1) {
             Captured.load();
             Captured.play();
-            
+
         } else if (correct_items.length === 2) {
             Captured.load();
             Captured.play();
-            
+
         } else if (correct_items.length === 3) {
             Captured.load();
             Captured.play();
-            
+
         } else if (correct_items.length === 4) {
             Captured.load();
             Captured.play();
-           
+
         } else if (correct_items.length === 5) {
             Captured.load();
             Captured.play();
@@ -157,11 +157,11 @@ $(document).ready(function () {
         } else if (correct_items.length === 6) {
             Captured.load();
             Captured.play();
-            
+
         } else if (correct_items.length === 7) {
             Captured.load();
             Captured.play();
-            
+
         } else if (correct_items.length === 8) {
             Captured.load();
             Captured.play();
@@ -248,7 +248,7 @@ $(document).ready(function () {
                 $('#game-complete').modal('show');
                 $('#facts').modal('hide');
 
-                $('.Message').text(randno).hide();
+                $('.Message').text('randno').hide();
             });
 
         }
