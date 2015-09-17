@@ -6560,6 +6560,7 @@ input[type="checkbox"].input-validation-error {
   height: 100%;
   position: absolute;
   margin: 0 auto;
+  z-index: 4;
 }
 .fade .in {
   position: absolute;
