@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $('.bkg-image').css('background-image','url(content/images/background/bkg_3.png)');
 
-    $(".Sunshine").hide();
+    $(".sunshine").hide();
 
     $(".next-3").hide().delay(2000).fadeIn(1000);
 
