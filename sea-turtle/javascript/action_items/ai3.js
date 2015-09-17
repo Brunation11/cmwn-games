@@ -1,25 +1,20 @@
 var full;
     var correct_items = new Array();
 
-
-
     $(document).ready(function () {
         //globe_game.load();
         //globe_game.play();
         //correct_globe_game.load();
-
 
         document.getElementById('globe_game').addEventListener('ended', function () {
             this.currentTime = 0;
             this.play();
         }, false);
 
-
         $('.yellow img').fadeOut(3000);
         $('.yellow-fish img').fadeOut(3000);
 
         $('#btn').hide();
-
 
         $('#f1').hide();
         $('#f2').hide();
@@ -31,7 +26,6 @@ var full;
         $('#f8').hide();
         $('#f9').hide();
         $('#f10').hide();
-
 
         $('#fish1').hide();
         $('#shrimp1').hide();
@@ -259,7 +253,5 @@ var full;
                 $('#btn').show();
             }
         });
-
-
 
  });
