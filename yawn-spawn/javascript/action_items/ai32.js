@@ -20,7 +20,13 @@ $('.bkg-image').css('background-image','url(content/images/BKG_3.png)');
                 $("#putcontenthere").load("action_items/ai33.html");
 
             });
+             try {
             click.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+        
         });
 
     });
