@@ -98,7 +98,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
       },
       {
           'name': "neighbor",
-          'mainImageUrl': gitcontent_path + "content/_assets/elements/person_neighbor.png",
+          'mainImageUrl': content_path + "content/_assets/elements/person_neighbor.png",
           'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
           'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
