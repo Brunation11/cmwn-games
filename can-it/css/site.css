@@ -6598,7 +6598,7 @@ input[type="checkbox"].input-validation-error {
   font-family: 'coop';
   font-weight: normal;
   font-style: normal;
-  src: url("../content/fonts/COOPBL.ttf") format('truetype');
+  src: url("../content/fonts/COOPBL.TTF") format('truetype');
 }
 .close-Button {
   margin-top: 10px;
