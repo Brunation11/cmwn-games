@@ -2,6 +2,13 @@ var complete = document.getElementById("complete3");
 
 $(document).ready(function () {
     complete3.play();
+     try {
+            complete3.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+        
 
     $('#game-complete').modal('hide');
 
