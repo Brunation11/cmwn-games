@@ -88,7 +88,7 @@ margin: 0 auto;
 font-family: 'source_sans_prosemibold';
 }
 .bkg-image {
-background: url(assets/background/bkg_1.png) 0 0 no-repeat #0A0808;
+background: url(_assets/background/bkg_1.png) 0 0 no-repeat #0A0808;
 background-size: 100%;
 height:400px;
 overflow:hidden;
@@ -117,13 +117,13 @@ margin: 82px 0 0 3%;
 display: none;
 }
 #whatIs {
-background: url("assets/background/bkg_2.png") center top no-repeat;
+background: url("_assets/background/bkg_2.png") center top no-repeat;
 background-size: 100%;
 width:104%;
 height:600px;
 }
 #noseWords {
-background: url("assets/background/bkg_3.png") center top no-repeat;
+background: url("_assets/background/bkg_3.png") center top no-repeat;
 background-size: 100%;
 width:104%;
 height:600px;
@@ -142,7 +142,7 @@ right: 3%;
 }
 
 .play-btn a {
-background: url("assets/elements/buttons/btn_play.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") 0 0 no-repeat;
 background-size: 100%;
 display: block;
 width: 70px;
@@ -150,7 +150,7 @@ height: 50px;
 }
 
 .play-btn a:hover {
-background: url("assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -161,7 +161,7 @@ right: 10%;
 }
 
 #home .play-btn a {
-background: url("assets/elements/buttons/btn_play.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play.png") 0 0 no-repeat;
 background-size: 100%;
 display: block;
 width: 111px;
@@ -169,7 +169,7 @@ height: 118px;
 }
 
 #home .play-btn a:hover {
-background: url("assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_play_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -177,7 +177,7 @@ background-size: 100%;
 float: left;
 display: block;
 width: 20%;
-background: url("assets/elements/empty_splashes.png") 0 0 no-repeat;
+background: url("_assets/elements/empty_splashes.png") 0 0 no-repeat;
 background-size: 100%;
 position: relative;
 }
@@ -202,7 +202,7 @@ margin:0;
 
 
 .film {
-background: url("assets/elements/film_strip.png") 0 0 no-repeat;
+background: url("_assets/elements/film_strip.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100%;
 height: 100%;
@@ -214,7 +214,7 @@ z-index: 5;
 
 
 .img-hover {
-background:url("assets/elements/hover.png") center center no-repeat;
+background:url("_assets/elements/hover.png") center center no-repeat;
 background-size:100%;
 
 position:absolute; /* Center the mask */
@@ -255,7 +255,7 @@ width: 80%;
 position: relative;
 }
 #step {
-background: url("assets/background/bkg_4.png") center top no-repeat;
+background: url("_assets/background/bkg_4.png") center top no-repeat;
 background-size:100%;
 width: 104%;
   height: 600px;
@@ -280,7 +280,7 @@ max-width: 100%;
 
 .content-box .img-box {
 position: relative;
-background: url("assets/elements/sun_2.png") 0 0 no-repeat;
+background: url("_assets/elements/sun_2.png") 0 0 no-repeat;
 
 background-size: 100%;
   width: 68%;
@@ -313,7 +313,7 @@ background-size: 100%;
 
   width: 100%;
 
-background: url("assets/elements/window_2.png") 0 0 no-repeat;
+background: url("_assets/elements/window_2.png") 0 0 no-repeat;
 background-size: 100%;
 text-align:center;
 font-size:36px;
@@ -321,7 +321,7 @@ font-family:source_sans_probold;
 text-transform:uppercase;
 }
 .content-box .btn-hold a {
-background: url("assets/elements/buttons/btn_renewable.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_renewable.png") 0 0 no-repeat;
 
 position: absolute;
   background-size: 100%;
@@ -333,7 +333,7 @@ position: absolute;
   display:block;
 }
 .content-box .btn-hold a.not-real {
-background: url("assets/elements/buttons/btn_nonrenewable.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_nonrenewable.png") 0 0 no-repeat;
 background-size: 100%;
 right: 52px;
 left:auto;
@@ -341,26 +341,26 @@ left:auto;
 
 .content-box .btn-hold a.real:hover,
 .content-box .btn-hold a.real.Correct {
-background-image: url("assets/elements/buttons/btn_renewable_on.png");
+background-image: url("_assets/elements/buttons/btn_renewable_on.png");
 }
 .content-box .btn-hold a.not-real:hover, 
 .content-box .btn-hold a.not-real.Correct {
-background-image: url('assets/elements/buttons/btn_nonrenewable_on.png');
+background-image: url('_assets/elements/buttons/btn_nonrenewable_on.png');
 right: 50px;
 }
 /*.content-box .btn-hold a.real:active {
-background-image: url("assets/elements/btn_correct_real_color_on.png");
+background-image: url("_assets/elements/btn_correct_real_color_on.png");
 }
 .content-box .btn-hold a.not-real:active {
-background-image: url('assets/elements/btn_correct_not_on.png');
+background-image: url('_assets/elements/btn_correct_not_on.png');
 }
 
 .content-box .btn-hold a.real.Incorrect {
-background-image: url("assets/elements/btn_incorrect_real.png");
+background-image: url("_assets/elements/btn_incorrect_real.png");
 }
 
 .content-box .btn-hold a.not-real.Incorrect {
-background-image: url('assets/elements/btn_Incorrect Not_color.png');
+background-image: url('_assets/elements/btn_Incorrect Not_color.png');
 }
 */
 .slider + .arrows > .next {
@@ -378,7 +378,7 @@ max-height:80px;
 }
 /* {
 position: absolute;
-background: url("assets/elements/frame.png") 0 0 no-repeat;
+background: url("_assets/elements/frame.png") 0 0 no-repeat;
 background-size: 100%;
 width: 170%;
 height: 103%;
@@ -413,7 +413,7 @@ button.exit {
 position: absolute;
 top: 2%;
 right: 2%;
-background: url("assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit.png") 0 0 no-repeat;
 background-size: 100%;
 width: 47px;
 height: 47px;
@@ -422,7 +422,7 @@ outline:0 !important;
 }
 
 button.exit:hover {
-background: url("assets/elements/buttons/btn_exit_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_exit_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -430,7 +430,7 @@ a.next {
 position: absolute;
 bottom: -52px;
 right: -100px;
-background: url("assets/elements/buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -444,7 +444,7 @@ right: 15px;
 }
 
 a.next:hover {
-background: url("assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -452,7 +452,7 @@ a.prev {
 position: absolute;
 bottom: 2%;
 left: 2%;
-background: url("assets/elements/btn_back.png") 0 0 no-repeat;
+background: url("_assets/elements/btn_back.png") 0 0 no-repeat;
 background-size: 100%;
 width: 100px;
 height: 100px;
@@ -460,7 +460,7 @@ z-index:2;
 }
 
 a.prev:hover {
-background: url("assets/elements/btn_back_on.png") 0 0 no-repeat;
+background: url("_assets/elements/btn_back_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 /*----------*/
@@ -548,7 +548,7 @@ margin: 0 auto;
 }
 
 #googjob .heading .buttons-box a {
-background: url('assets/elements/btn_play_again.png') 0 0 no-repeat;
+background: url('_assets/elements/btn_play_again.png') 0 0 no-repeat;
 background-size: 100%;
 width: 150px;
 height: 150px;
@@ -556,18 +556,18 @@ float: left;
 }
 
 #googjob .heading .buttons-box a.again:hover {
-background: url('assets/elements/btn_play_again_on.png') 0 0 no-repeat;
+background: url('_assets/elements/btn_play_again_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
 #googjob .heading .buttons-box a.fliptime {
-background: url('assets/elements/btn_flip_time.png') 0 0 no-repeat;
+background: url('_assets/elements/btn_flip_time.png') 0 0 no-repeat;
 background-size: 100%;
 float: right;
 }
 
 #googjob .heading .buttons-box a.fliptime:hover {
-background: url('assets/elements/btn_flip_time_on.png') 0 0 no-repeat;
+background: url('_assets/elements/btn_flip_time_on.png') 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -603,7 +603,7 @@ max-width: 70%;
 }
 
 .tex-box {
-background: url("assets/elements/frame_2.png") 0 0 no-repeat;
+background: url("_assets/elements/frame_2.png") 0 0 no-repeat;
 background-size: 100%;
 margin: 0 auto;
 height: 100%;
@@ -621,7 +621,7 @@ display: block;
 }
 
 .border-box {
-background: url("assets/elements/frame_3.png") 0 0 no-repeat;
+background: url("_assets/elements/frame_3.png") 0 0 no-repeat;
 background-size: 100%;
 height: 100%;
 width: 100%;
@@ -667,7 +667,7 @@ text-align: center;
 width: 100%;
 padding: 14%;
 margin: 3% auto 0;
-background: url('assets/elements/frame_1.png') 0 0 no-repeat;
+background: url('_assets/elements/frame_1.png') 0 0 no-repeat;
 background-size: 100%;
 color: #000;
 font-size: 25px;
@@ -699,14 +699,14 @@ position:absolute;
 
 div.upload {
 width: 20%;
-background: url("assets/elements/btn_upload.png") 0 0 no-repeat;
+background: url("_assets/elements/btn_upload.png") 0 0 no-repeat;
 background-size: 100%;
 overflow: hidden;
 margin: 0 auto;
 }
 
 div.upload:hover {
-background: url("assets/elements/btn_upload_on.png") 0 0 no-repeat;
+background: url("_assets/elements/btn_upload_on.png") 0 0 no-repeat;
 background-size: 100%;
 }
 
@@ -732,7 +732,7 @@ width:92%;
 
 }
 .buttons-quit .yes, .buttons-quit .no {
-background:url('assets/elements/buttons/btn_yes.png') 0 0 no-repeat;
+background:url('_assets/elements/buttons/btn_yes.png') 0 0 no-repeat;
 background-size:100%;
 float:left;
 width:40%;
@@ -740,17 +740,17 @@ padding-top:37%;
 
 }
 .buttons-quit .no {
-background:url('assets/elements/buttons/btn_no.png') 0 0 no-repeat;
+background:url('_assets/elements/buttons/btn_no.png') 0 0 no-repeat;
 background-size:92%;
 width:37%;
 float:right;
 }
 .buttons-quit .yes:hover {
-background-image:url('assets/elements/buttons/btn_yes_on.png');
+background-image:url('_assets/elements/buttons/btn_yes_on.png');
 
 }
 .buttons-quit .no:hover {
-background-image:url('assets/elements/buttons/btn_no_on.png');
+background-image:url('_assets/elements/buttons/btn_no_on.png');
 
  
 }
@@ -901,7 +901,7 @@ right:10px}
 width: 100%;
 padding: 14%;
 margin: 0 auto 0;
-background:url('assets/elements/frame_1.png') 0 0 no-repeat;
+background:url('_assets/elements/frame_1.png') 0 0 no-repeat;
 background-size:100%;
 color:#000;
 font-size:25px;
@@ -988,7 +988,7 @@ margin-top:105px !important;
 }
 /*---------------------------*/
 #stikers {
-background: url("assets/background/bkg_2.png") center top no-repeat;
+background: url("_assets/background/bkg_2.png") center top no-repeat;
 background-size: 100%;
 width:104%;
 height:600px;
@@ -1062,7 +1062,7 @@ width: 191px;
 }
 /*--------------------------*/
 #farm, #right {
-background: url("assets/background/bkg_2.png") center top no-repeat;
+background: url("_assets/background/bkg_2.png") center top no-repeat;
 background-size: 100%;
 width:104%;
 height:600px;
@@ -1082,7 +1082,7 @@ float:left;
 margin-right:0;
 }
 .farm-hold > div a {
-background: url("assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
 background-size: 100%;
 width:100%;
 padding-top:100%;
@@ -1090,39 +1090,39 @@ margin-top:65%;
 display:block;
 }
 .farm-hold > div a.lunchbox {
-background: url("assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox.png") center top no-repeat;
 background-size: 100%;
 
 }
 .farm-hold > div a.lunchbox:hover {
-background: url("assets/elements/buttons/btn_lunchbox_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_lunchbox_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.store {
-background: url("assets/elements/buttons/btn_store.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_store.png") center top no-repeat;
 background-size: 100%;
 margin-top:10%;
 }
 .farm-hold > div a.store:hover {
-background: url("assets/elements/buttons/btn_store_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_store_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.rabbit {
-background: url("assets/elements/buttons/btn_rabbit.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_rabbit.png") center top no-repeat;
 background-size: 100%;
 margin-top:10%;
 }
 .farm-hold > div a.rabbit:hover {
-background: url("assets/elements/buttons/btn_rabbit_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_rabbit_on.png") center top no-repeat;
 background-size: 100%;
 }
 .farm-hold > div a.farm {
-background: url("assets/elements/buttons/btn_farm.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_farm.png") center top no-repeat;
 background-size: 100%;
 
 }
 .farm-hold > div a.farm:hover {
-background: url("assets/elements/buttons/btn_farm_on.png") center top no-repeat;
+background: url("_assets/elements/buttons/btn_farm_on.png") center top no-repeat;
 background-size: 100%;
 }
 /*--------------*/
@@ -1130,7 +1130,7 @@ background-size: 100%;
 padding:7% 0 0 0;
 }
 #right .inner{
-background: url("assets/elements/window_1.png") center top no-repeat;
+background: url("_assets/elements/window_1.png") center top no-repeat;
 background-size:100%;
 width:80%;
 padding:7% 10% 7% 10%;
@@ -1148,7 +1148,7 @@ margin:15px 0;
 /*-----------------------*/
 .sunrize {
 padding:7% 0 0 0;
-background: url("assets/background/bkg_4.png") center top no-repeat;
+background: url("_assets/background/bkg_4.png") center top no-repeat;
 background-size: 100%;
 width:104%;
 height:600px;
@@ -1157,7 +1157,7 @@ height:600px;
 }
 
 .sunrize .inner{
-background: url("assets/elements/window_1.png") center top no-repeat;
+background: url("_assets/elements/window_1.png") center top no-repeat;
 background-size:100%;
 width:80%;
 padding:7% 10% 7% 10%;
@@ -1183,7 +1183,7 @@ margin:0px 0 10px;
 padding:7% 10% 0% 10%;
 }
 .sunrize  .sun {
-background: url("assets/elements/sun_1.png") center top no-repeat;
+background: url("_assets/elements/sun_1.png") center top no-repeat;
 background-size:100%;
 width: 44%;
 height: 60%;
@@ -1202,7 +1202,7 @@ top:0;
     margin-left:-2% !important;
 }
 .modal-content {
-    background:  url("assets/background/bkg_4.png") center top no-repeat;
+    background:  url("_assets/background/bkg_4.png") center top no-repeat;
     background-size: 100%;
 }
 .modal.in .modal-dialog {

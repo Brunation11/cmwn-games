@@ -9,17 +9,16 @@
     $('#home .play').click(function () {
         $('#home').fadeOut(500);
         $('#whatIs').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url("content/assets/background/bkg_2.png")');
+        $('.bkg-image').css('background-image', 'url("content/_assets/background/bkg_2.png")');
 
         $('#homeSound').get(0).pause();
         $('#whatSound').get(0).play();
        
-
     });
     $('#whatIs .play').click(function () {
         $('#whatIs').fadeOut(500);
         $('#noseWords').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url("content/assets/background/bkg_2.png")');
+        $('.bkg-image').css('background-image', 'url("content/_assets/background/bkg_2.png")');
         $('#mainSound').get(0).pause();
         $('#slide4').get(0).play();
         setTimeout(function () {
@@ -38,7 +37,7 @@
         
         $('#noseWords').fadeOut(500);
         $('#stikers').fadeIn(500);
-        $('.bkg-image').css('background-image', 'url("content/assets/background/bkg_3.png")');
+        $('.bkg-image').css('background-image', 'url("content/_assets/background/bkg_3.png")');
     });
     $('#stikers .stiker-hold > div .play-btn a').click(function () {
         var box = $(this).parent().parent();
@@ -72,7 +71,7 @@
         $('#sources').fadeIn(500);
         $('#mainSound').get(0).currentTime = 0;
         $('#mainSound').get(0).play();
-        $('.bkg-image').css('background-image', 'url("content/assets/background/bkg_4.png")');
+        $('.bkg-image').css('background-image', 'url("content/_assets/background/bkg_4.png")');
     });
     $('#sources .play-btn a').click(function () {
         $('#sources').fadeOut(500);
@@ -108,8 +107,6 @@
                     }
                    
                 }
-                
-
                
             });
 
@@ -126,9 +123,7 @@
     });
 
     $(document).delegate('#step .btn-hold a', 'click', function () {
-
-     
-       
+      
         console.log($(this));
         var parrentSlideId = $(this).parents().eq(5).get(0).id;
         if ($(this).hasClass('correct')) {
@@ -167,33 +162,6 @@
     */
    
 
-        
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
    // $('#pop-up').modal('show');
@@ -210,20 +178,15 @@
     });
 
     
-
     $('.A').click(function () {
 
         $("#level-complete").modal('show');
-
-
 
     });
 
     $('.B').click(function () {
 
         $("#retry-level").modal('show');
-
-
 
     });
 
@@ -235,19 +198,12 @@
 
         $("#retry-level").modal('show');
 
-
-
     });
 
     $('.close-Btn').click(function () {
 
         $("#game-info").modal('hide');
 
-
-
     });
-
-
-
 
 });
