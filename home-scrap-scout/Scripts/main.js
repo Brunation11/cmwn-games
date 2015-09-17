@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    
+
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
     setTimeout(function () {
         $('#title1').get(0).currentTime = 0;
@@ -21,12 +21,13 @@
         $('#btnClick').currentTime = 0;
         $('#btnClick').get(0).play();
     });
-    
+
     $('#home .play').click(function () {
         $('#game').get(0).play();
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
-        $('#title').get(0).pause();
+        $('#title1').get(0).pause();
+        $('#title1').volume = 0,
 
         $('.shnose li').each(function (i) {
             var row = $(this);
@@ -37,7 +38,7 @@
                 }, 400);
             }, 400 * i);
         });
-       
+
     });
     $('#noseWords .card').click(function () {
         $(this).addClass('flipped');
@@ -46,7 +47,7 @@
         if ($('#Draining > .card').hasClass('flipped') && $('#Destroing > .card').hasClass('flipped') && $('#Hunting > .card').hasClass('flipped')) {
             setTimeout(function () { $('#noseWords .next').fadeIn(500); }, 1000);
         };
-        
+
     });
     $('#noseWords .next').click(function () {
         $('#game').get(0).play();
@@ -186,7 +187,7 @@
         /*---------------------------------------------------*/
 
         setTimeout(function () {
-            
+
             $('#step .slider .slide').hide();
 
             $('#step .slider .slide').first().show();
@@ -202,7 +203,7 @@
                         $('ul.' + $(this).attr("id")).append('<li>' + $(".openslide").text() + '</li>');
 
                         $('#step .slider .slide:nth-child(' + num + ')').removeClass('openslide').hide();
-                        $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show(); 
+                        $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show();
                         num++;
                         $('.arrows > .next').fadeOut();
                         $('.arrows > .next').removeClass('open');
@@ -300,7 +301,7 @@
         $('#slide22').get(0).currentTime = 0;
         $('#slide22').get(0).play();
 
-        
+
 
     });
     $('#Listbreak a.next').click(function () {
@@ -328,7 +329,7 @@
     $('#solution a.next').click(function () {
         $('#solution').fadeOut(500);
         $('#flip').fadeIn(500);
-        
+
         $('#slide25').get(0).currentTime = 0;
         $('#slide25').get(0).play();
     });
@@ -613,7 +614,7 @@
         $('#game-info').modal('show');
     });
 
-    
+
 
     $('.A').click(function () {
 
@@ -654,5 +655,5 @@
 
     /*----------------------------------------------------------*/
 
-  
+
 });
