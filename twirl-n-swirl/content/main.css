@@ -84,14 +84,14 @@ padding: 50px;
 width: 100%;
 margin: 0 auto;
 font-family: 'source_sans_prosemibold';
- -webkit-user-select: none;  
-  -moz-user-select: none;    
-  -ms-user-select: none;      
+ -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
 .bkg-image {
-background: url(_assets/background/BKG_1.png) 0 0 no-repeat #fff;
+background: url(_assets/background/bkg_1.png) 0 0 no-repeat #fff;
 background-size: 104%;
 height: 400px;
 overflow: hidden;
@@ -317,10 +317,10 @@ position: relative;
     left: -52%;
     z-index: 10;
     text-align: center;
-   /*display:none;*/ 
+   /*display:none;*/
     }
     .correct-ansver p {
-    
+
     font-size:20px}
 .correct-ansver-hover {
     background:rgba(0,0,0,0.5);
@@ -840,7 +840,7 @@ background-position: center top;
 width: 23%;
 }
 .main-box {
-width: 72.5%;   
+width: 72.5%;
 }
 .content-box {
 max-width: 75%;
@@ -861,7 +861,7 @@ width: 150px;
 height: 155px;
 }
 #quit {
-background: url(_assets/background/BKG_2.png) center center no-repeat;
+background: url(_assets/background/bkg_2.png) center center no-repeat;
 background-size: 108%;
 position: relative;
 min-height: 400px;
@@ -896,7 +896,7 @@ display: block;
 font-family: source_sans_prosemibold;
 color: #fff;
 font-size: 38px;
-background: url(_assets/background/BKG_2.png) center center no-repeat;
+background: url(_assets/background/bkg_2.png) center center no-repeat;
 background-size: 108%;
 position: relative;
 min-height: 400px;
@@ -1036,7 +1036,7 @@ transform: rotateY( 180deg );
 
 .card figure {
 display: block;
-     
+
 width: 100%;
 line-height: 260px;
 color: white;
