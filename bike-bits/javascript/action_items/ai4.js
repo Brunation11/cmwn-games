@@ -1,7 +1,7 @@
 var complete = document.getElementById("complete3");
 
 $(document).ready(function () {
-    complete3.play();
+   
      try {
             complete3.play();
         }
