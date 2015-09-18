@@ -92,8 +92,13 @@ $(document).ready(function () {
 
         if (correct_items.length === 1) {
 
-            correct.load();
-            correct.play();
+             try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+            
         } else if (correct_items.length === 6) {
             $('#m-close2').click(function () {
                 $('#chip-modal').modal('hide');
