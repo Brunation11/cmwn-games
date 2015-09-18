@@ -107,13 +107,11 @@ function updateTimer() {
             runout.play();
             background.load();
             background.pause();
+            $("#try-modal").modal("show");
             $("#button-start").click(function () {
                 $('#game-info').modal('hide');
-                $("#putcontenthere").load("action_items/ai3.html");
 
-                // setTimeout(function () { location.reload(); }, 10);
-                // startGame.load();
-                // startGame();
+
 
             });
 
@@ -234,7 +232,7 @@ function findRandomItem(available_drags) {
         }
 
         //check to see if the game is over - all matches are found
-        if (correct_matches.length === 1) {
+        if (correct_matches.length === 6) {
             //stop the sound
             start.pause();
             complete.play();
@@ -260,19 +258,54 @@ function findRandomItem(available_drags) {
                    // RESET GAME FUNCTIONS HERE ///
                    // create a new time object
 
-                    // correct_matches = new Array();
-                    // currentTime = 30000;
-                    // timer1.Timer.play();
+                    correct_matches = new Array();
+                    currentTime = 30000;
+                    timer1.Timer.play();
 
-                    // background.play();
-                    // start.loop = true;
-                    // start.play();
+                    background.play();
+                    start.loop = true;
+                    start.play();
 
+                    ////////////// hide glowing image and replace it for original image //////////////////////////////////
+                    $("#bat-drop > img").attr('src', 'content/images/findpollinators/bat_found.png').hide();
+                    $("#bat-drop > img").attr('src', 'content/images/findpollinators/bat.png').show();
 
-                    $("#putcontenthere").load("action_items/ai3.html");
-
-
-
+                    //-----------------------------------------------------------------------------------------------------------//
+                    $('#monarch-drop > img').attr('src', 'content/images/findpollinators/monarch_butterfly_found.png').hide();
+                    $('#monarch-drop > img').attr('src', 'content/images/findpollinators/monarch_butterfly.png').show();
+                    //-----------------------------------------------------------------------------------------------------------//
+                    $("#hummingbird-drop > img").attr('src', 'content/images/findpollinators/hummingbird_found.png').hide();
+                    $("#hummingbird-drop > img").attr('src', 'content/images/findpollinators/hummingbird.png').show();
+                     //-----------------------------------------------------------------------------------------------------------//
+                     $("#soliderfly-drop > img").attr('src', 'content/images/findpollinators/soliderfly_found.png').hide();
+                     $("#soliderfly-drop > img").attr('src', 'content/images/findpollinators/soliderfly.png').show();
+                     //-----------------------------------------------------------------------------------------------------------//
+                     $("#swallowtail-drop > img").attr('src', 'content/images/findpollinators/swallowtail_butterfly_found.png').hide();
+                     $("#swallowtail-drop > img").attr('src', 'content/images/findpollinators/swallowtail_butterfly.png').show();
+                     //-----------------------------------------------------------------------------------------------------------//
+                     $("#honey-drop > img").attr('src', 'content/images/findpollinators/honeybee_found.png').hide();
+                     $("#honey-drop > img").attr('src', 'content/images/findpollinators/honeybee.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#bee-drop > img").attr('src', 'content/images/findpollinators/bumblebee_found.png').hide();
+                      $("#bee-drop > img").attr('src', 'content/images/findpollinators/bumblebee.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#moth-drop > img").attr('src', 'content/images/findpollinators/moth_found.png').hide();
+                      $("#moth-drop > img").attr('src', 'content/images/findpollinators/moth.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#ladybug-drop > img").attr('src', 'content/images/findpollinators/ladybug_found.png').hide();
+                      $("#ladybug-drop > img").attr('src', 'content/images/findpollinators/ladybug.png').show();
+                       //-----------------------------------------------------------------------------------------------------------//
+                      $("#golden-tortoise-drop > img").attr('src', 'content/images/findpollinators/golden_tortoise_beetle_found.png').hide();
+                      $("#golden-tortoise-drop > img").attr('src', 'content/images/findpollinators/golden_tortoise_beetle.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#scarab-drop > img").attr('src', 'content/images/findpollinators/scarab_beetle_found.png').hide();
+                      $("#scarab-drop > img").attr('src', 'content/images/findpollinators/scarab_beetle.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#ant-drop > img").attr('src', 'content/images/findpollinators/ant_found.png').hide();
+                      $("#ant-drop > img").attr('src', 'content/images/findpollinators/ant.png').show();
+                      //-----------------------------------------------------------------------------------------------------------//
+                      $("#white-dove-drop > img").attr('src', 'content/images/findpollinators/dove_found.png').hide();
+                      $("#white-dove-drop > img").attr('src', 'content/images/findpollinators/dove.png').show();
             });
         }
     }
@@ -361,7 +394,6 @@ function findRandomItem(available_drags) {
                     $("#white-dove-drop > img").attr('src', 'content/images/findpollinators/dove_found.png');
                     break;
                 }
-
 
         }
     }
