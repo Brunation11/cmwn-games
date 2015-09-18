@@ -6738,7 +6738,7 @@ p {
   z-index: 1000;
 }
 #pollinator .timer {
-  background-image: url('content/images/findpollinators/timer.png');
+  background-image: url('../content/images/findpollinators/timer.png');
   height: 60px;
   width: 118px;
   position: absolute;
@@ -6766,7 +6766,7 @@ p {
   margin-left: 5px;
 }
 #pollinator .game {
-  background-image: url('content/images/findpollinators/pollinator_background.jpg');
+  background-image: url('../content/images/findpollinators/pollinator_background.jpg');
   height: 400px;
   width: 604px;
   margin-left: 15px;
@@ -6784,106 +6784,106 @@ p {
   z-index: 1000;
 }
 .pollinators div[data-name='honeybee'] {
-  background-image: url('content/images/findpollinators/honeybee.png');
+  background-image: url('../content/images/findpollinators/honeybee.png');
 }
 .pollinators div[data-name='honeybee'].glow {
-  background-image: url('content/images/findpollinators/honeybee_glow.png');
+  background-image: url('../content/images/findpollinators/honeybee_glow.png');
 }
 .pollinators div[data-name="ant"] {
-  background-image: url('content/images/findpollinators/ant.png');
+  background-image: url('../content/images/findpollinators/ant.png');
 }
 .pollinators div[data-name="ant"].glow {
-  background-image: url('content/images/findpollinators/ant_glow.png');
+  background-image: url('../content/images/findpollinators/ant_glow.png');
 }
 .pollinators div[data-name="balloon"] {
-  background-image: url('content/images/findpollinators/balloon.png');
+  background-image: url('c/ontent/images/findpollinators/balloon.png');
 }
 .pollinators div[data-name="balloon"].glow {
-  background-image: url('content/images/findpollinators/balloon_glow.png');
+  background-image: url('../content/images/findpollinators/balloon_glow.png');
 }
 .pollinators div[data-name="bat"] {
-  background-image: url('content/images/findpollinators/bat.png');
+  background-image: url('../content/images/findpollinators/bat.png');
 }
 .pollinators div[data-name="bat"].glow {
-  background-image: url('content/images/findpollinators/bat_glow.png');
+  background-image: url('../content/images/findpollinators/bat_glow.png');
 }
 .pollinators div[data-name="boot"] {
-  background-image: url('content/images/findpollinators/boot.png');
+  background-image: url('../content/images/findpollinators/boot.png');
 }
 .pollinators div[data-name="boot"].glow {
-  background-image: url('content/images/findpollinators/boot_glow.png');
+  background-image: url('../content/images/findpollinators/boot_glow.png');
 }
 .pollinators div[data-name="bumblebee"] {
-  background-image: url('content/images/findpollinators/bumblebee.png');
+  background-image: url('../content/images/findpollinators/bumblebee.png');
 }
 .pollinators div[data-name="bumblebee"].glow {
-  background-image: url('content/images/findpollinators/bumblebee_glow.png');
+  background-image: url('../content/images/findpollinators/bumblebee_glow.png');
 }
 .pollinators div[data-name="cat"] {
-  background-image: url('content/images/findpollinators/cat.png');
+  background-image: url('../content/images/findpollinators/cat.png');
 }
 .pollinators div[data-name="cat"].glow {
-  background-image: url('content/images/findpollinators/cat_glow.png');
+  background-image: url('../content/images/findpollinators/cat_glow.png');
 }
 .pollinators div[data-name="dove"] {
-  background-image: url('content/images/findpollinators/dove.png');
+  background-image: url('../content/images/findpollinators/dove.png');
 }
 .pollinators div[data-name="dove"].glow {
-  background-image: url('content/images/findpollinators/dove_glow.png');
+  background-image: url('../content/images/findpollinators/dove_glow.png');
 }
 .pollinators div[data-name="eagle"] {
-  background-image: url('content/images/findpollinators/eagle.png');
+  background-image: url('../content/images/findpollinators/eagle.png');
 }
 .pollinators div[data-name="eagle"].glow {
-  background-image: url('content/images/findpollinators/eagle_glow.png');
+  background-image: url('../content/images/findpollinators/eagle_glow.png');
 }
 .pollinators div[data-name="golden tortoise beetle"] {
-  background-image: url('content/images/findpollinators/golden_tortoise_beetle.png');
+  background-image: url('../content/images/findpollinators/golden_tortoise_beetle.png');
 }
 .pollinators div[data-name="golden tortoise beetle"].glow {
-  background-image: url('content/images/findpollinators/golden_tortoise_beetle_glow.png');
+  background-image: url('../content/images/findpollinators/golden_tortoise_beetle_glow.png');
 }
 .pollinators div[data-name="hummingbird"] {
-  background-image: url('content/images/findpollinators/hummingbird.png');
+  background-image: url('../content/images/findpollinators/hummingbird.png');
 }
 .pollinators div[data-name="hummingbird"].glow {
-  background-image: url('content/images/findpollinators/hummingbird_glow.png');
+  background-image: url('../content/images/findpollinators/hummingbird_glow.png');
 }
 .pollinators div[data-name="ladybug"] {
-  background-image: url('content/images/findpollinators/ladybug.png');
+  background-image: url('../content/images/findpollinators/ladybug.png');
 }
 .pollinators div[data-name="ladybug"].glow {
-  background-image: url('content/images/findpollinators/ladybug_glow.png');
+  background-image: url('../content/images/findpollinators/ladybug_glow.png');
 }
 .pollinators div[data-name="monarch butterfly"] {
-  background-image: url('content/images/findpollinators/monarch_butterfly.png');
+  background-image: url('../content/images/findpollinators/monarch_butterfly.png');
 }
 .pollinators div[data-name="monarch butterfly"].glow {
-  background-image: url('content/images/findpollinators/monarch_butterfly_glow.png');
+  background-image: url('../content/images/findpollinators/monarch_butterfly_glow.png');
 }
 .pollinators div[data-name="moth"] {
-  background-image: url('content/images/findpollinators/moth.png');
+  background-image: url('../content/images/findpollinators/moth.png');
 }
 .pollinators div[data-name="moth"].glow {
-  background-image: url('content/images/findpollinators/moth_glow.png');
+  background-image: url('../content/images/findpollinators/moth_glow.png');
 }
 .pollinators div[data-name="scarab beetle"] {
-  background-image: url('content/images/findpollinators/scarab_beetle.png');
+  background-image: url('../content/images/findpollinators/scarab_beetle.png');
 }
 .pollinators div[data-name="scarab beetle"].glow {
-  background-image: url('content/images/scarab_beetle_glow.png');
+  background-image: url('../content/images/scarab_beetle_glow.png');
 }
 .pollinators div[data-name="soldierfly"] {
-  background-image: url('content/images/findpollinators/soldierfly.png');
+  background-image: url('../content/images/findpollinators/soldierfly.png');
 }
 .pollinators div[data-name="soldierfly"].glow {
-  background-image: url('content/images/findpollinators/soldierfly_glow.png');
+  background-image: url('../content/images/findpollinators/soldierfly_glow.png');
 }
 .pollinators div[data-name="swallowtail butterfly"] {
-  background-image: url('content/images/findpollinators/swallowtail_butterfly.png');
+  background-image: url('../content/images/findpollinators/swallowtail_butterfly.png');
 }
 .pollinators div[data-name="swallowtail butterfly"].glow {
-  background-image: url('content/images/findpollinators/swallowtail_butterfly_glow.png');
+  background-image: url('../content/images/findpollinators/swallowtail_butterfly_glow.png');
 }
 #pollinator .border {
   position: absolute;
@@ -6891,7 +6891,7 @@ p {
   left: 0px;
 }
 #pollinator .dropzones {
-  background-image: url('content/images/findpollinators/pollinator_container.png');
+  background-image: url('../content/images/findpollinators/pollinator_container.png');
   height: 100px;
   width: 600px;
   position: absolute;
@@ -6903,25 +6903,25 @@ p {
   position: absolute;
 }
 #pollinator .dropzones div[data-name="dove"] {
-  background-image: url('content/images/findpollinators/drop_dove.png');
+  background-image: url('../content/images/findpollinators/drop_dove.png');
 }
 #pollinator .dropzones div[data-name="honeybee"] {
-  background-image: url('content/images/findpollinators/drop_honeybee.png');
+  background-image: url('../content/images/findpollinators/drop_honeybee.png');
 }
 #pollinator .dropzones div[data-name="golden tortoise beetle"] {
-  background-image: url('content/images/findpollinators/drop_golden_tortoise_beetle.png');
+  background-image: url('../content/images/findpollinators/drop_golden_tortoise_beetle.png');
 }
 #pollinator .dropzones div[data-name="ladybug"] {
-  background-image: url('content/images/findpollinators/drop_ladybug.png');
+  background-image: url('../content/images/findpollinators/drop_ladybug.png');
 }
 #pollinator .dropzones div[data-name="monarch butterfly"] {
-  background-image: url('content/images/findpollinators/drop_monarch_butterfly.png');
+  background-image: url('../content/images/findpollinators/drop_monarch_butterfly.png');
 }
 #pollinator .dropzones div[data-name="hummingbird"] {
-  background-image: url('content/images/findpollinators/drop_hummingbird.png');
+  background-image: url('../content/images/findpollinators/drop_hummingbird.png');
 }
 #pollinator .dropzones div[data-name="swallowtail butterfly"] {
-  background-image: url('content/images/findpollinators/drop_swallowtail_butterfly.png');
+  background-image: url('../content/images/findpollinators/drop_swallowtail_butterfly.png');
 }
 #popup_window {
   padding: 10px;
