@@ -198,7 +198,7 @@ var Pollinator = function() {
                             title: 'Birds and bugs, called pollinators, do the work!',
                             description: '<p style="font-weight:bold;font-size: 21px;line-height: 27px;margin-top: -15px;margin-left: -13px;">They spread the pollen from bloom to bloom and bing, boom, bang&mdash;there\'s your baby blooms!<br/>Want to find some<br/>pollinators and unlock<br/>a game?<p>',
 
-                            backgroundImage: '/content/images/findpollinators/monarch_with_flower.png',
+                            backgroundImage: 'content/images/findpollinators/monarch_with_flower.png',
                             backgroundPos: '215px 158px',
                             buttons: {
                                 confirm: {
@@ -206,7 +206,7 @@ var Pollinator = function() {
                                     action: function() {
                                         instance.showPopUp({
                                             description: '<span class="FindHeader">Find the pollinators</br>in the picture.</span><br/><br/><p style="font-weight:bold;font-size: 24px;line-height: 27px;margin-top: -30px;margin-left: -12px;">Drag them to match the outline<br/>below to unlock clues that will<br/>help you in level 2! Get all 7<br/> right to keep going.</p>',
-                                            backgroundImage: '/content/images/findpollinators/img_ladybug_leaf.png',
+                                            backgroundImage: 'content/images/findpollinators/img_ladybug_leaf.png',
                                             backgroundPos: '288px 180px',
                                             buttons: {
                                                 play: {
