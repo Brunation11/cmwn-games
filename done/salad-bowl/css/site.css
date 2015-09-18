@@ -5496,7 +5496,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0.5;
+  opacity: 0;
   filter: alpha(opacity=50);
 }
 .modal-header {
@@ -7373,7 +7373,7 @@ input[type="checkbox"].input-validation-error {
 }
 .modal-backdrop {
   background-color: #7829bb;
-  opacity: .2;
+  opacity: 0;
   filter: alpha(opacity=20);
   width: 100%;
   height: 100%;
