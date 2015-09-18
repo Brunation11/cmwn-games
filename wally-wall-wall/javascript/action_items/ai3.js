@@ -68,8 +68,6 @@ $(document).ready(function () {
         correct_items.push(clicked_item);
 
         if (correct_items.length === 1) {
-
-            correct.load();
             correct.play();
         } else if (correct_items.length === 6) {
             $('#m-close').click(function () {
