@@ -147,13 +147,13 @@
         console.log($('#notebook span.emphasis').text());
        if ($('#notebook span.emphasis').text() <= 0) {
             $('#notebook').fadeOut(500);
-            $('#betterway').fadeIn(500);
-            $('#betterway a.next').fadeIn(500);
+            $('#sort').fadeIn(500);
+            $('#sort a.next').fadeIn(500);
             // $('#howcouldyou').fadeIn(500);
             // $('#howcouldyou a.next').fadeIn(500);
             $('#game').get(0).pause();
-            $('#slide17-18').get(0).currentTime = 0;
-            $('#slide17-18').get(0).play();
+            // $('#slide17-18').get(0).currentTime = 0;
+            // $('#slide17-18').get(0).play();
         }
         else {
            $('#notebook .hint-popup2').fadeIn(500);
@@ -166,6 +166,112 @@
     //     $('#slide17-18').get(0).currentTime = 0;
     //     $('#slide17-18').get(0).play();
     // });
+    // $('#betterway a.next').click(function () {
+    //     $('#betterway').fadeOut(500);
+    //     $('#letslook').fadeIn(500);
+    //     $('#letslook a.next').fadeIn(500);
+    //     $('#slide19').get(0).currentTime = 0;
+    //     $('#slide19').get(0).play();
+    // });
+    // $('#letslook a.next').click(function () {
+    //     $('#letslook').fadeOut(500);
+    //     $('#sort').fadeIn(500);
+    //     $('#sort a.next').fadeIn(500);
+        // $('#Listbreak1').fadeIn(500);
+        // $('#Listbreak1 a.next').fadeIn(500);
+        // $('#game').get(0).currentTime = 0;
+        // $('#game').get(0).play();
+        /*slider*/
+        /*---------------------------------------------------*/
+        /*---------------------------------------------------*/
+        /*---------------------------------------------------*/
+
+        // setTimeout(function () {
+
+        //     $('#step .slider .slide').hide();
+
+        //     $('#step .slider .slide').first().show();
+        //     $('#step .slider .slide').first().addClass('openslide');
+        //     var num = $('#step .slider .slide').first().index() + 1;
+
+        //     $(document).delegate('.sorter .sorts a', 'click', function () {
+        //         console.log($(this).attr('id'));
+        //         console.log($('.openslide').text());
+                //$('#game').get(0).play();
+        //         if ($('#step .slider .slide').hasClass('openslide')) {
+        //             if (num <= $('#step .slider .slide').length) {
+        //                 $('ul.' + $(this).attr("id")).append('<li>' + $(".openslide").text() + '</li>');
+
+        //                 $('#step .slider .slide:nth-child(' + num + ')').removeClass('openslide').hide();
+        //                 $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show();
+        //                 num++;
+        //                 $('.arrows > .next').fadeOut();
+        //                 $('.arrows > .next').removeClass('open');
+        //                 if ((num - 1) == ($('#step .slider .slide').length)) {
+        //                     $('#Listbreak1').fadeOut(500);
+        //                     $('#Listbreak').fadeIn(500);
+        //                     $('#Listbreak a.next').fadeIn(500);
+        //                     $('#game').get(0).pause();
+        //                     $('#slide21').get(0).currentTime = 0;
+        //                     $('#slide21').get(0).play();
+
+        //                 }
+        //             }
+
+        //         }
+
+        //     });
+
+        // }, 200);
+        /*---------------------------------------------------*/
+        /*---------------------------------------------------*/
+        /*---------------------------------------------------*/
+        /*-------------------------------------*/
+    // });
+
+    $('#sort a.next').click(function () {
+        $('#sort').fadeOut(500);
+        $('#definitely').fadeIn(500);
+        $('#definitely a.next').fadeIn(500);
+        $('#slide8').get(0).currentTime = 0;
+        $('#slide8').get(0).play();
+    });
+    $('#definitely a.next').click(function () {
+        $('#definitely').fadeOut(500);
+        $('#recycle').fadeIn(500);
+        $('#recycle a.next').fadeIn(500);
+        $('#slide9').get(0).currentTime = 0;
+        $('#slide9').get(0).play();
+    });
+    $('#recycle a.next').click(function () {
+        $('#recycle').fadeOut(500);
+        $('#compost').fadeIn(500);
+        $('#compost a.next').fadeIn(500);
+        $('#slide10').get(0).currentTime = 0;
+        $('#slide10').get(0).play();
+    });
+    $('#compost a.next').click(function () {
+        $('#compost').fadeOut(500);
+        $('#donate').fadeIn(500);
+        $('#donate a.next').fadeIn(500);
+        $('#slide11').get(0).currentTime = 0;
+        $('#slide11').get(0).play();
+    });
+    $('#donate a.next').click(function () {
+        $('#donate').fadeOut(500);
+        $('#betterway').fadeIn(500);
+        $('#betterway a.next').fadeIn(500);
+        $('#slide17-18').get(0).currentTime = 0;
+        $('#slide17-18').get(0).play();
+        // $('#betterway a.nextb').fadeIn(500);
+    });
+    $('#howcouldyou a.next').click(function () {
+        $('#howcouldyou').fadeOut(500);
+        $('#betterway').fadeIn(500);
+        $('#betterway a.next').fadeIn(500);
+        $('#slide17-18').get(0).currentTime = 0;
+        $('#slide17-18').get(0).play();
+    });
     $('#betterway a.next').click(function () {
         $('#betterway').fadeOut(500);
         $('#letslook').fadeIn(500);
@@ -175,10 +281,9 @@
     });
     $('#letslook a.next').click(function () {
         $('#letslook').fadeOut(500);
-        $('#sort').fadeIn(500);
-        $('#sort a.next').fadeIn(500);
-        // $('#Listbreak1').fadeIn(500);
-        // $('#Listbreak1 a.next').fadeIn(500);
+        $('#Listbreak1').fadeIn(500);
+        $('#Listbreak1 a.nextb').fadeIn(500);
+        $('#Listbreak1 a.next').fadeIn(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
         /*slider*/
@@ -220,8 +325,6 @@
 
                 }
 
-
-
             });
 
         }, 200);
@@ -230,69 +333,35 @@
         /*---------------------------------------------------*/
         /*-------------------------------------*/
     });
+    // $('.remind-time label span').click(function () {
+    //     $('#checkbox').get(0).currentTime = 0;
+    //     $('#checkbox').get(0).play();
+    // });
+    // $('#choseTime a.next').click(function () {
+    //     $('#choseTime').fadeOut(500);
+    //     $('#reminder1').fadeIn(500);
+    //     $('#reminder1 a.next').fadeIn(500);
+    // });
+    // $('#reminder1 a.next').click(function () {
+    //     $('#reminder1').fadeOut(500);
+    //     $('#reminder2').fadeIn(500);
+    //     $('#reminder2 a.next').fadeIn(500);
+    // });
+    // $('#reminder2 a.next').click(function () {
+    //     $('#reminder2').fadeOut(500);
+    //     $('#reminder3').fadeIn(500);
+    //     $('#reminder3 a.next').fadeIn(500);
+    // });
 
-    $('#sort a.next').click(function () {
-        $('#sort').fadeOut(500);
-        $('#definitely').fadeIn(500);
-        $('#definitely a.next').fadeIn(500);
-        $('#slide8').get(0).currentTime = 0;
-        $('#slide8').get(0).play();
-    });
-    $('#definitely a.next').click(function () {
-        $('#definitely').fadeOut(500);
-        $('#recycle').fadeIn(500);
-        $('#recycle a.next').fadeIn(500);
-        $('#slide9').get(0).currentTime = 0;
-        $('#slide9').get(0).play();
-    });
-    $('#recycle a.next').click(function () {
-        $('#recycle').fadeOut(500);
-        $('#compost').fadeIn(500);
-        $('#compost a.next').fadeIn(500);
-        $('#slide10').get(0).currentTime = 0;
-        $('#slide10').get(0).play();
-    });
-    $('#compost a.next').click(function () {
-        $('#compost').fadeOut(500);
-        $('#donate').fadeIn(500);
-        $('#donate a.next').fadeIn(500);
-        $('#slide11').get(0).currentTime = 0;
-        $('#slide11').get(0).play();
-    });
-    $('#donate a.next').click(function () {
-        $('#donate').fadeOut(500);
-        $('#choseTime').fadeIn(500);
-        $('#choseTime a.next').fadeIn(500);
-    });
-    $('.remind-time label span').click(function () {
-        $('#checkbox').get(0).currentTime = 0;
-        $('#checkbox').get(0).play();
-    });
-    $('#choseTime a.next').click(function () {
-        $('#choseTime').fadeOut(500);
-        $('#reminder1').fadeIn(500);
-        $('#reminder1 a.next').fadeIn(500);
-    });
-    $('#reminder1 a.next').click(function () {
-        $('#reminder1').fadeOut(500);
-        $('#reminder2').fadeIn(500);
-        $('#reminder2 a.next').fadeIn(500);
-    });
-    $('#reminder2 a.next').click(function () {
-        $('#reminder2').fadeOut(500);
-        $('#reminder3').fadeIn(500);
-        $('#reminder3 a.next').fadeIn(500);
-    });
-
-    $('#reminder3 a.next').click(function () {
-        $('#reminder3').fadeOut(500);
-        $('#Listbreak1').fadeIn(500);
-        $('#Listbreak1 a.next').fadeIn(500);
+    // $('#reminder3 a.next').click(function () {
+    //     $('#reminder3').fadeOut(500);
+    //     $('#Listbreak1').fadeIn(500);
+    //     $('#Listbreak1 a.next').fadeIn(500);
         // $('#knowledge').fadeIn(500);
         // $('#knowledge a.next').fadeIn(500);
         // $('.bkg-image').css('background-image', 'url(content/_assets/background/BKG_3.png)');
         // $('.bkg-image').css('background-size', '104%');
-    });
+    // });
 
     $('#Listbreak1 a.next').click(function () {
         $('#Listbreak1').fadeOut(500);
@@ -300,8 +369,6 @@
         $('#Listbreak a.next').fadeIn(500);
         $('#slide22').get(0).currentTime = 0;
         $('#slide22').get(0).play();
-
-
 
     });
     $('#Listbreak a.next').click(function () {
@@ -450,7 +517,8 @@
     // });
     $('#betterway a.prev').click(function () {
         $('#betterway').fadeOut(500);
-        $('#notebook').fadeIn(500);
+        // $('#notebook').fadeIn(500);
+        $('#donate').fadeIn(500);
         // $('#howcouldyou').fadeIn(500);
         // $('#slide17-18').get(0).currentTime = 0;
         // $('#slide17-18').get(0).play();
@@ -467,10 +535,13 @@
     });
 
     $('#sort a.prev').click(function () {
+        $('#notebook').fadeIn(500);
+        $('#notebook a.next').fadeIn(500);
         $('#sort').fadeOut(500);
-        $('#letslook').fadeIn(500);
-        $('#slide19').get(0).currentTime = 0;
-        $('#slide19').get(0).play();
+        $('#sort a.next').fadeOut(500);
+        $('#game').get(0).pause();
+        // $('#slide17-18').get(0).currentTime = 0;
+        // $('#slide17-18').get(0).play();
         // $('#startGame').fadeIn(500);
 
     });
@@ -504,43 +575,43 @@
         $('#slide11').get(0).currentTime = 0;
         $('#slide11').get(0).play();
     });
-    $('.remind-time label span').click(function () {
-        $('#checkbox').get(0).currentTime = 0;
-        $('#checkbox').get(0).play();
-    });
-    $('#choseTime a.prev').click(function () {
-        $('#choseTime').fadeOut(500);
-        $('#donate').fadeIn(500);
-        $('#reminder1 a.next').fadeIn(500);
-    });
-    $('#reminder1 a.prev').click(function () {
-        $('#reminder1').fadeOut(500);
-        $('#choseTime').fadeIn(500);
-        $('#reminder2 a.next').fadeIn(500);
-    });
-    $('#reminder2 a.prev').click(function () {
-        $('#reminder2').fadeOut(500);
-        $('#reminder1').fadeIn(500);
-        $('#reminder3 a.next').fadeIn(500);
-    });
+    // $('.remind-time label span').click(function () {
+    //     $('#checkbox').get(0).currentTime = 0;
+    //     $('#checkbox').get(0).play();
+    // });
+    // $('#choseTime a.prev').click(function () {
+    //     $('#choseTime').fadeOut(500);
+    //     $('#donate').fadeIn(500);
+    //     $('#reminder1 a.next').fadeIn(500);
+    // });
+    // $('#reminder1 a.prev').click(function () {
+    //     $('#reminder1').fadeOut(500);
+    //     $('#choseTime').fadeIn(500);
+    //     $('#reminder2 a.next').fadeIn(500);
+    // });
+    // $('#reminder2 a.prev').click(function () {
+    //     $('#reminder2').fadeOut(500);
+    //     $('#reminder1').fadeIn(500);
+    //     $('#reminder3 a.next').fadeIn(500);
+    // });
 
-    $('#reminder3 a.prev').click(function () {
-        $('#reminder3').fadeOut(500);
-        $('#reminder2').fadeIn(500);
+    // $('#reminder3 a.prev').click(function () {
+    //     $('#reminder3').fadeOut(500);
+    //     $('#reminder2').fadeIn(500);
 
         // $('.bkg-image').css('background-image', 'url(content/_assets/background/BKG_2.png)');
         // $('.bkg-image').css('background-size', '104%');
-    });
+    // });
 
     $('#Listbreak1 a.prev').click(function () {
+        $('#letslook').fadeIn(500);
         $('#Listbreak1').fadeOut(500);
-        $('#reminder3').fadeIn(500);
-        // $('#letslook').fadeIn(500);
+        $('#Listbreak1 a.next').fadeOut(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
-
-
-
+        $('#letslook a.next').fadeIn(500);
+        $('#slide19').get(0).currentTime = 0;
+        $('#slide19').get(0).play();
     });
     $('#Listbreak a.prev').click(function () {
         $('#Listbreak').fadeOut(500);
@@ -567,8 +638,6 @@
         $('#slide24').get(0).play();
 
     });
-
-
 
 
     (function () {

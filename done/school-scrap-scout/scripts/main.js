@@ -261,6 +261,11 @@
         else {
            $('#notebook .hint-popup2').fadeIn(500);
         }
+
+        if ($('#notebook span.emphasis').text() >= 15) {
+            $('#notebook .hint-popup2').fadeIn(500);
+        }
+
     });
     
 
