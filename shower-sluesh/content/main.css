@@ -1007,7 +1007,7 @@ font-size:30px;
     height:100% !important;
 }
 .modal-content {
-    background: url(../_assets/background/bkg_4.png) 0 0 no-repeat;
+    /*background: url(../_assets/background/bkg_4.png) 0 0 no-repeat;*/
     background-size: 104%;
 }
 .triggerRelink {
@@ -1026,7 +1026,7 @@ padding:0;
 
 }
 #reveal {
- background: url(../_assets/background/bkg_4.png) center top no-repeat;
+ /*background: url(../_assets/background/bkg_4.png) center top no-repeat;*/
 background-size: 107%;
     height:400px;
 }
