@@ -260,19 +260,16 @@ function findRandomItem(available_drags) {
                    // RESET GAME FUNCTIONS HERE ///
                    // create a new time object
 
-                    correct_matches = new Array();
-                    currentTime = 30000;
-                    timer1.Timer.play();
+                    // correct_matches = new Array();
+                    // currentTime = 30000;
+                    // timer1.Timer.play();
 
-                    background.play();
-                    start.loop = true;
-                    start.play();
+                    // background.play();
+                    // start.loop = true;
+                    // start.play();
 
-                    // reset animals
-                    if (correct_matches.length > -1) {
-                        // alert('is greater');
-                         item.length === 0
-                    }
+
+                    $("#putcontenthere").load("action_items/ai3.html");
 
 
 
@@ -301,67 +298,67 @@ function findRandomItem(available_drags) {
         switch (correct) {
             case ("bat-drop"):
                 {
-                    $("#bat-drop > img").attr('src', '/content/images/findpollinators/bat_found.png');
+                    $("#bat-drop > img").attr('src', 'content/images/findpollinators/bat_found.png');
                     break;
                 }
             case ("monarch-drop"):
                 {
-                    $('#monarch-drop > img').attr('src', '/content/images/findpollinators/monarch_butterfly_found.png');
+                    $('#monarch-drop > img').attr('src', 'content/images/findpollinators/monarch_butterfly_found.png');
                     break;
                 }
             case ("hummingbird-drop"):
                 {
-                    $("#hummingbird-drop > img").attr('src', '/content/images/findpollinators/hummingbird_found.png');
+                    $("#hummingbird-drop > img").attr('src', 'content/images/findpollinators/hummingbird_found.png');
                     break;
                 }
             case ("soliderfly-drop"):
                 {
-                    $("#soliderfly-drop > img").attr('src', '/content/images/findpollinators/soliderfly_found.png');
+                    $("#soliderfly-drop > img").attr('src', 'content/images/findpollinators/soliderfly_found.png');
                     break;
                 }
             case ("swallowtail-drop"):
                 {
-                    $("#swallowtail-drop > img").attr('src', '/content/images/findpollinators/swallowtail_butterfly_found.png');
+                    $("#swallowtail-drop > img").attr('src', 'content/images/findpollinators/swallowtail_butterfly_found.png');
                     break;
                 }
             case ("honey-drop"):
                 {
-                    $("#honey-drop > img").attr('src', '/content/images/findpollinators/honeybee_found.png');
+                    $("#honey-drop > img").attr('src', 'content/images/findpollinators/honeybee_found.png');
                     break;
                 }
             case ("bee-drop"):
                 {
-                    $("#bee-drop > img").attr('src', '/content/images/findpollinators/bumblebee_found.png');
+                    $("#bee-drop > img").attr('src', 'content/images/findpollinators/bumblebee_found.png');
                     break;
                 }
             case ("moth-drop"):
                 {
-                    $("#moth-drop > img").attr('src', '/content/images/findpollinators/moth_found.png');
+                    $("#moth-drop > img").attr('src', 'content/images/findpollinators/moth_found.png');
                     break;
                 }
             case ("ladybug-drop"):
                 {
-                    $("#ladybug-drop > img").attr('src', '/content/images/findpollinators/ladybug_found.png');
+                    $("#ladybug-drop > img").attr('src', 'content/images/findpollinators/ladybug_found.png');
                     break;
                 }
             case ("golden-tortoise-drop"):
                 {
-                    $("#golden-tortoise-drop > img").attr('src', '/content/images/findpollinators/golden_tortoise_beetle_found.png');
+                    $("#golden-tortoise-drop > img").attr('src', 'content/images/findpollinators/golden_tortoise_beetle_found.png');
                     break;
                 }
             case ("scarab-drop"):
                 {
-                    $("#scarab-drop > img").attr('src', '/content/images/findpollinators/scarab_beetle_found.png');
+                    $("#scarab-drop > img").attr('src', 'content/images/findpollinators/scarab_beetle_found.png');
                     break;
                 }
             case ("ant-drop"):
                 {
-                    $("#ant-drop > img").attr('src', '/content/images/findpollinators/ant_found.png');
+                    $("#ant-drop > img").attr('src', 'content/images/findpollinators/ant_found.png');
                     break;
                 }
             case ("white-dove-drop"):
                 {
-                    $("#white-dove-drop > img").attr('src', '/content/images/findpollinators/dove_found.png');
+                    $("#white-dove-drop > img").attr('src', 'content/images/findpollinators/dove_found.png');
                     break;
                 }
 

@@ -20,7 +20,7 @@ var Pollinator = function() {
     /**
      * Set this to the path where the game images are located
      */
-    this.imagePath = '/content/images/findpollinators/game/';
+    this.imagePath = 'content/images/findpollinators/game/';
 
     this.score = 0;
     this.wins = 0;
@@ -149,20 +149,20 @@ var Pollinator = function() {
     this.paused = false;
     this.sounds = {
         tick: {
-            file: '/content/sound/clocktick.wav',
+            file: 'content/sound/clocktick.wav',
             elem: null,
             loop: true
         },
         correct: {
-            file: '/content/sound/correctselection.mp3',
+            file: 'content/sound/correctselection.mp3',
             elem: null,
         },
         wrong: {
-            file: '/content/sound/wronganswer.wav',
+            file: 'content/sound/wronganswer.wav',
             elem: null,
         },
         done: {
-            file: '/content/sound/levelcompleted.mp3',
+            file: 'content/sound/levelcompleted.mp3',
             elem: null,
         },
     };
@@ -189,7 +189,7 @@ var Pollinator = function() {
         this.showPopUp({
             title: 'Do you ever wonder where baby plants come from?',
             centered: true,
-            backgroundImage: '/content/images/findpollinators/img_sprout.png',
+            backgroundImage: 'content/images/findpollinators/img_sprout.png',
             buttons: {
                 confirm: {
                     text: 'YEP!',
@@ -258,9 +258,9 @@ var Pollinator = function() {
         $('.hint img').css( 'cursor', 'pointer' );
 
         $('.hint img').hover(function() {
-            $(this).attr('src', '/content/images/findpollinators/hint_on.png');
+            $(this).attr('src', 'content/images/findpollinators/hint_on.png');
         }, function() {
-            $(this).attr('src', '/content/images/findpollinators/hint.png');
+            $(this).attr('src', 'content/images/findpollinators/hint.png');
         });
 
         $('.hint img').click(function() {
@@ -478,7 +478,7 @@ var Pollinator = function() {
         instance.showPopUp({
             title: 'You did it! Congratulations!',
             description: '<p style="font-size:20px;font-weight: bold;margin-top: -15px;margin-left: -16px;">Move on? Or replay to find even more pollinators?</p>',
-            backgroundImage: '/content/images/findpollinators/img_butterfly_grass.png',
+            backgroundImage: 'content/images/findpollinators/img_butterfly_grass.png',
             backgroundPos: '50% 100px',
             centered: true,
             buttons: {
@@ -494,7 +494,7 @@ var Pollinator = function() {
                         instance.showPopUp({
                             title: 'Yum! Time to feed<br/> the pollinators!',
                             description: '<p style="font-size:20px;font-weight: bold;margin-top: -15px;margin-left: -16px;line-height:23px;">Remember your hints from Level One.<br/> Drag your food choices up and<br> feed each pollinator!</p>',
-                            backgroundImage: '/content/images/findpollinators/img_bee_daffodils.png',
+                            backgroundImage: 'content/images/findpollinators/img_bee_daffodils.png',
                             backgroundPos: '130px 144px',
                             centered: true,
                             buttons: {
@@ -590,7 +590,7 @@ var Pollinator = function() {
                 'html': $('<div>', {
                     'class': 'border',
                     'html': $('<img>', {
-                        'src': '/content/images/findpollinators/popup_border.png'
+                        'src': 'content/images/findpollinators/popup_border.png'
                     }),
                 }),
             }).add('<div>', {
@@ -602,7 +602,7 @@ var Pollinator = function() {
                     'href': 'javascript:void(0)',
                     'class': 'popup-exit',
                     'html': $('<img>', {
-                        'src': '/content/images/findpollinators/close.png'
+                        'src': 'content/images/findpollinators/close.png'
                     })
                 }).click(function() {
                     instance.hidePopUp();
@@ -634,7 +634,7 @@ var Pollinator = function() {
         }).add('<div>', {
             'class': 'border',
             'html': $('<img>', {
-                'src': '/content/images/findpollinators/popup_border_trans.png'
+                'src': 'content/images/findpollinators/popup_border_trans.png'
             })
         }).add('<div>', {
             'class': 'popup-content',
