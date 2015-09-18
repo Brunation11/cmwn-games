@@ -122,8 +122,12 @@ $(document).ready(function () {
 
         if (correct_items.length === 1) {
 
-            correct.load();
-            correct.play();
+            try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
         } else if (correct_items.length === 6) {
             $('#m-close3').click(function () {
                 $('#milli-modal').modal('hide');
@@ -147,8 +151,12 @@ $(document).ready(function () {
 
         if (correct_items.length === 1) {
 
-            correct.load();
-            correct.play();
+            try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
         } else if (correct_items.length === 6) {
             $('#m-close4').click(function () {
                 $('#toad-modal').modal('hide');
@@ -172,8 +180,12 @@ $(document).ready(function () {
 
         if (correct_items.length === 1) {
 
-            correct.load();
-            correct.play();
+            try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
         } else if (correct_items.length === 6) {
             $('#m-close5').click(function () {
                 $('#snake-modal').modal('hide');
@@ -197,8 +209,12 @@ $(document).ready(function () {
 
         if (correct_items.length === 1) {
 
-            correct.load();
-            correct.play();
+            try {
+                    correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
         } else if (correct_items.length === 6) {
             $('#m-close6').click(function () {
                 $('#mouse-modal').modal('hide');
