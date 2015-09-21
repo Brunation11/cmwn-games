@@ -62,6 +62,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -77,6 +79,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -107,6 +111,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -122,6 +128,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -137,6 +145,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -152,6 +162,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -167,6 +179,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -182,6 +196,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -197,6 +213,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -212,6 +230,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -227,6 +247,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -242,6 +264,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -257,6 +281,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
@@ -272,6 +298,8 @@ $(document).ready(function () {
         if (correct_items.length === 1) {
 
         } else if (correct_items.length === 15) {
+            yeah.load();
+            yeah.play();
             $('#next-button2').show();
         }
     });
