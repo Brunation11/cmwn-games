@@ -572,7 +572,7 @@ a.prev {
     position: absolute;
     width: 0%;
     left: 16%;
-    bottom: 6px;
+    bottom: 2px;
     z-index: 20;
 }
 
