@@ -1173,7 +1173,7 @@ a.next, a.prev {
 }
 
 .modal-content {
-    background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;
+    /*background: url(_assets/background/BKG.png) 0 0 no-repeat #0A0808;*/
     background-size: 100%;
 }
 
