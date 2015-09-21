@@ -54,11 +54,18 @@
         $('#noseWords').fadeOut(500);
         $('#upToUs').fadeIn(500);
         $('#upToUs a.next').fadeIn(500);
+        $('#upToUs a.prev').fadeIn(500);
     });
     $('#upToUs .next').click(function () {
         $('#upToUs').fadeOut(500);
         $('#startGame').fadeIn(500);
     });
+
+    $('#upToUs .prev').click(function () {
+        $('#upToUs').fadeIn(500);
+        $('#startGame').fadeOut(500);
+    });
+
 
     $('#startGame .yes-btn a').click(function () {
         $('#startGame').fadeOut(500);
