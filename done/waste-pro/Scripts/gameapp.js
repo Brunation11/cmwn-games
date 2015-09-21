@@ -525,35 +525,35 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
     $scope.data = [
     {
         'name': "Paper_Towels",
-        'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_towels.png",
-        'noseImages': content_path + "/content/_assets/elements/buttons/btn_towels_on.png",
+        'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_towels_on.png",
+        'noseImages': content_path + "/content/_assets/elements/buttons/btn_towels.png",
         'headerImages': content_path + "/content/_assets/elements/header_towels.png",
        
     },
      {
          'name': "Plastic_Bottles",
-         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bottles.png",
-         'noseImages': content_path + "/content/_assets/elements/buttons/btn_bottles_on.png",
+         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bottles_on.png",
+         'noseImages': content_path + "/content/_assets/elements/buttons/btn_bottles.png",
          'headerImages': content_path + "/content/_assets/elements/header_bottles.png",
        
      },
       {
           'name': "Plastic_Bags",
-          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bags.png",
-          'noseImages': content_path + "/content/_assets/elements/buttons/btn_bags_on.png",
+          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bags_on.png",
+          'noseImages': content_path + "/content/_assets/elements/buttons/btn_bags.png",
           'headerImages': content_path + "/content/_assets/elements/header_bags.png",
          
       },
        {
            'name': "Paper_Napkins",
-           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_napkins.png",
-           'noseImages': content_path + "/content/_assets/elements/buttons/btn_napkins_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_napkins_on.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_napkins.png",
            'headerImages': content_path + "/content/_assets/elements/header_napkins.png",
        },
        {
            'name': "Paper_Utensils",
-           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_utensils.png",
-           'noseImages': content_path + "/content/_assets/elements/buttons/btn_utensils_on.png",
+           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_utensils_on.png",
+           'noseImages': content_path + "/content/_assets/elements/buttons/btn_utensils.png",
            'headerImages': content_path + "/content/_assets/elements/header_utensils.png",
        },
     ]
