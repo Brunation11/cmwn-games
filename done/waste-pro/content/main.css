@@ -380,7 +380,7 @@ color: #000;
 text-align: center;
 }
 .correct-ansver p {
-margin: 0 auto;
+margin: 0 -2px;
 text-align: center;
 font-size:18px;
 color:#ffffff;
@@ -1546,4 +1546,8 @@ display:block;
 }
 #iCommit .commit-btn a:hover{
 background-image: url(_assets/elements/buttons/btn_commit_on.png);
+}
+
+.small {
+  margin:0px -2px;
 }
