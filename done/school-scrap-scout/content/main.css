@@ -572,7 +572,7 @@ a.prev {
     position: absolute;
     width: 0%;
     left: 16%;
-    bottom: 6px;
+    bottom: 2px;
     z-index: 20;
 }
 
@@ -1214,8 +1214,19 @@ h1 {
         .yes-btn a:hover {
             background-image: url(../content/_assets/elements/buttons/btn_Imready_on.png);
         }
+
+
+#sort {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
+    position: relative;
+    display: block;
+}
+
+
+
 /*----------------------------------------*/
 #definitely {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: block;
 }
@@ -1240,6 +1251,7 @@ h1 {
 }
 /*----------------------------------------*/
 #recycle {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
@@ -1261,6 +1273,7 @@ h1 {
 
 /*----------------------------------------*/
 #compost {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
@@ -1282,6 +1295,7 @@ h1 {
 
 /*----------------------------------------*/
 #donate {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
@@ -1570,7 +1584,7 @@ input[type="radio"] {
     background-size: 100%;
     width: 45%;
     float: left;
-    margin: 0 0 0 20px;
+    margin: -8px 0 0 20px;
     padding: 40px 10px 20px;
     min-height: 393px;
 }
