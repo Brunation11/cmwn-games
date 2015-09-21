@@ -1214,8 +1214,19 @@ h1 {
         .yes-btn a:hover {
             background-image: url(../content/_assets/elements/buttons/btn_Imready_on.png);
         }
+
+
+#sort {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
+    position: relative;
+    display: block;
+}
+
+
+
 /*----------------------------------------*/
 #definitely {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: block;
 }
@@ -1240,6 +1251,7 @@ h1 {
 }
 /*----------------------------------------*/
 #recycle {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
@@ -1261,6 +1273,7 @@ h1 {
 
 /*----------------------------------------*/
 #compost {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
@@ -1282,6 +1295,7 @@ h1 {
 
 /*----------------------------------------*/
 #donate {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
     display: none;
 }
