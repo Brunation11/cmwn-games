@@ -1,6 +1,5 @@
 <script type="text/javascript" src="javascript/action_items/ai3.js"></script>
 <script type="text/javascript" src="javascript/jquery.timer.js"></script>
-<script type="text/javascript" src="javascript/animation.js"></script>
 <script type="text/javascript" src="javascript/thirdparties/jquery.touchSwipe.min.js"></script>
 
 <!--sound-->
@@ -487,7 +486,7 @@
 
 
                 <!-- animate these items falling in to trash cans -->
-
+            <div id="field">
 
 
                 <div id="apple-core1" class="Drop_1" style="position:absolute;z-index:1;margin-top:40px;margin-left: 233px;cursor:pointer;"><img src="content/images/Compost/big_apple_core.png" style=" width: 44px;" /></div>
@@ -535,49 +534,18 @@
 
                 <!-- second carousel for trash cans -->
 
-                <div id='carousel_container' style="position:absolute; z-index:1; margin-top:71px; margin-left: 0px;left: 0;">
-                    <div id='carousel_inner'>
-                        <ul id='carousel_ul'>
-                            <li>
-                                <div class="blank" style="width:120px;height:100px;"></div>
-                            </li>
+                        <div id="compost-bin" class="animate-flower1" style="position:absolute; z-index:9; margin-left:-2px; margin-top:324px;">
+                            <img src="content/images/bin_compost.png" style="width:120px;" />
+                        </div>
 
-                            <li id="trash-li">
+                        <div id="recycle-bin" class="animate-flower2" style="position:absolute; z-index:9; margin-left:325px; margin-top:329px;">
+                            <img src="content/images/bin_recycle.png" style="width:120px;" />
+                        </div>
 
-                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
-                            </li>
-                            <li id="compost-li">
+                        <div id="trash-bin" class="animate-flower3" style="position:absolute; z-index:8; margin-left:214px; margin-top:329px;">
+                            <img src="content/images/bin_trash.png" style="width:120px;" />
+                        </div>
 
-                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
-                            </li>
-
-                            <li>
-                                <div class="blank" style="width:120px;height:100px;"></div>
-                            </li>
-
-                            <li id="recycle-li">
-
-                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
-                            </li>
-                            <li id="trash-li">
-
-                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
-                            </li>
-
-                            <li>
-                                <div class="blank" style="width:120px;height:100px;"></div>
-                            </li>
-
-                            <li id="compost-li">
-
-                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
-                            </li>
-                            <li id="recycle-li">
-
-                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
-                            </li>
-
-                        </ul>
                     </div>
                 </div>
 
