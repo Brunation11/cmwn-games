@@ -33,10 +33,10 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
 
         findHint();
 
+        var i;
         //check to make sure that the hint item has not already been found
-        for (var i = 0; i < correct_matches.length; i++) {
+        for ( i = 0; i < correct_matches.length; i++) {
             var item = correct_matches[i];
-
             if (item === hint_item) {
                 findHint();
                 break;
@@ -54,7 +54,7 @@ $(document).ready(function () { //  Here is when "Next" button is clicked, timer
 
     });
 
-})
+});
 
 //initalize the backdrop for the modal windows
 $('#game-info').modal({
@@ -109,10 +109,17 @@ function updateTimer() {
             background.pause();
             $("#try-modal").modal("show");
             $("#button-start").click(function () {
-                $('#game-info').modal('hide');
+                $('#game-info').modal('hide'); });
 
+            $(".again-game").click(function(){
+                $("#try-modal").modal("hide");
+                correct_matches = new Array();
+                currentTime = 30000;
+                timer1.Timer.play();
 
-
+                background.play();
+                start.loop = true;
+                start.play();
             });
 
         });
@@ -232,13 +239,15 @@ function findRandomItem(available_drags) {
         }
 
         //check to see if the game is over - all matches are found
-        if (correct_matches.length === 6) {
+        if (correct_matches.length  === 12 - 6) {
+
             //stop the sound
             start.pause();
             complete.play();
             background.pause();
             //stop the timer
             timer1.Timer.pause();
+
 
             //show the popup screen for game complete and send to bloom boom game
             $('#game-complete').modal('show');
@@ -249,7 +258,6 @@ function findRandomItem(available_drags) {
             $("#button-next").click(function () {
                 $('#game-success').modal('hide');
 
-                //document.location.href = "/ActionItem/Game";
             });
 
             $('.purple-button').click(function () {
@@ -258,7 +266,7 @@ function findRandomItem(available_drags) {
                    // RESET GAME FUNCTIONS HERE ///
                    // create a new time object
 
-                    correct_matches = new Array();
+                    // correct_matches = new Array();
                     currentTime = 30000;
                     timer1.Timer.play();
 
