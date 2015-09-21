@@ -342,6 +342,7 @@ $(document).ready(function () {
         $('#game-flip').modal('show');
         treasure.pause();
         flips.play();
+        end.play();
     });
 });
 
