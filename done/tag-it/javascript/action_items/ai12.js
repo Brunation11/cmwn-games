@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
     $('.back').click(function () {
         $('.back').delay(1000).delay(1000, function () {
-            $("#putcontenthere").load("action_items/ai11.html");
+            $("#putcontenthere").load("action_items/ai10.html");
         });
         try {
            click.play();
