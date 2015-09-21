@@ -13,7 +13,7 @@
 <script src="Scripts/respond.js"></script>
 
     <script src="Scripts/jquery-ui.js"></script>
-    
+
     <link rel="stylesheet" type="text/css" href="content/main.css">
     <script type="text/javascript" src="Scripts/angular.js"></script>
     <script type="text/javascript" src="Scripts/angular-route.min.js"></script>
@@ -135,10 +135,10 @@
                     <div id="noseWords">
                         <div class="global-hold">
                             <button class="exit close-Btn"></button>
-                            
+
                             <div class="inner">
                                 <img class="open" src="content/_assets/elements/sun_flare.png" alt="What Is Energy" />
-                                <img src="content/_assets/elements/header_2.png" alt="Energy" />                              
+                                <img src="content/_assets/elements/header_2.png" alt="Energy" />
                             </div>
                             <div class="play-btn">
                                 <a href class="btn-click play" ng-click="" title="Play"></a>
@@ -187,7 +187,7 @@
                             <button class="exit close-Btn"></button>
 
                             <div class="farm-hold">
-                                <div class="farm-box">                                    
+                                <div class="farm-box">
                                     <a href class="lunchbox"></a>
                                 </div>
                                 <div class="farm-box">
@@ -223,9 +223,9 @@
                         <div class="sun"></div>
 
                         <div class="global-hold">
-                           
+
                             <button class="exit close-Btn"></button>
-                            <div class="inner">     
+                            <div class="inner">
                                 <div class="clearfix">
                                     <h1>Energy sources are<br/> Renewable or Non-Renewable</h1>
                                     <p>Renewable sources can be <br /> easily replaced.</br> Non-renewable sources take<br /> many years to renew. </br> Some can NEVER be recovered.</p>
@@ -243,20 +243,20 @@
                             <div slider class="slider" data="data1">
                                 <div class="steps slide clearfix" ng-repeat="item in data1 | orderBy: 'rank'" id="{{item.item.name}}">
                                     <div class="main-box">
-                                        <div class="content-box">                                        
+                                        <div class="content-box">
                                             <div class="img-box" >
                                                 <div class="btn-hold">
                                                     <a href class="real" ng-class="{correct: item.item.correct==1, incorrect: item.item.correct!=1}"></a>
                                                     <a href class="not-real" ng-class="{correct: item.item.correct==2, incorrect: item.item.correct!=2}"></a>
                                                 </div>
                                                 <div class="img-hold">
-                                                    <img src="{{item.item.mainImageUrl}}">
+                                                    <img ng-src="{{item.item.mainImageUrl}}">
                                                 </div>
                                                 <div class="text-box">{{item.item.text}}</div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                             <div class="arrows">
                                 <div class="arrows-inctive"></div>

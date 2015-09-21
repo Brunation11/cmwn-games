@@ -6,7 +6,7 @@ var content_path = "http://actionitems.changemyworldnow.com/powerbright";
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
+
     $routeProvider
 
         // route for the home page
@@ -49,7 +49,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
     $scope.data = [
     {
         'name': "coal",
-        'mainImageUrl': content_path + "/content/_assets/elements/icon_coal.png",        
+        'mainImageUrl': content_path + "/content/_assets/elements/icon_coal.png",
         'correct': 2,
         'text': "coal",
     }, {
@@ -97,13 +97,13 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
         'mainImageUrl': content_path + "/content/_assets/elements/icon_geothermal.png",
         'correct': 1,
         'text': "geothermal",
-    }, , {
+    }, {
         'name': "solar",
         'mainImageUrl': content_path + "/content/_assets/elements/icon_solar.png",
         'correct': 1,
         'text': "solar energy",
     },
-    ]
+    ];
 
 
     setTimeout(function () {
@@ -119,7 +119,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
 
     }, 500);
 
-    
+
 });
 
 
