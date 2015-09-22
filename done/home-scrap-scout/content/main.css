@@ -1196,9 +1196,25 @@ h1 {
 .trash img {
     max-width: 100%;
 }
+
+#sort {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
+    position: relative;
+    display: block;
+    margin-left: 8px;
+}
+
+#definitely {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
+    position: relative;
+    display: block;
+     margin-left: 8px;
+}
 /*----------------------------------------*/
 #recycle {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
+    margin-left: 8px;
 }
 
     #recycle .racoon {
@@ -1219,7 +1235,9 @@ h1 {
 
 /*----------------------------------------*/
 #compost {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
+    margin-left: 8px;
 }
 
     #compost .racoon {
@@ -1240,7 +1258,9 @@ h1 {
 
 /*----------------------------------------*/
 #donate {
+    background: url(_assets/background/BKG_2.png) 0 0 no-repeat;
     position: relative;
+    margin-left: 8px;
 }
 #donate h1{
     font-weight: bold;
@@ -1577,7 +1597,7 @@ input[type="radio"] {
     background-size: 100%;
     width: 45%;
     float: left;
-    margin: 0 0 0 20px;
+    margin: -8px 0 0 20px;
     padding: 40px 10px 20px;
     min-height: 393px;
 }
@@ -1647,7 +1667,7 @@ input[type="radio"] {
 .hint-btn {
     width: 150px;
     height: 193px;
-    margin: 130px auto 0;
+    margin: 101px 39px 0;
     background: url("_assets/elements/buttons/btn_hint.png") 0 0 no-repeat;
     background-size: 100%;
 }
