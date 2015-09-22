@@ -7,6 +7,12 @@
                 $("#putcontenthere").load("action_items/ai19.html");
             });
             click.play();
+            try {
+                rac.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
         });
 
 

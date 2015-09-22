@@ -7,6 +7,12 @@ $(document).ready(function () {
                 $("#putcontenthere").load("action_items/ai19.html");
             });
             click.play();
+            try {
+                dee.pause();
+            }
+            catch (err) {
+                //no sound - log error
+            }
         });
 
 

@@ -58,6 +58,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -85,6 +91,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -111,6 +123,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -137,6 +155,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -164,6 +188,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -191,6 +221,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -217,6 +253,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -245,6 +287,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -272,6 +320,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -298,6 +352,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -324,6 +384,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
@@ -350,6 +416,12 @@
                     setTimeout(function () {
                         $("#putcontenthere").load("action_items/ai11.html");
                     }, 1000);
+                    try {
+                    backg.pause();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
                 }
             }
         });
