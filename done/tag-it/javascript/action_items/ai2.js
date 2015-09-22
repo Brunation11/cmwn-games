@@ -1,10 +1,10 @@
 $(document).ready(function () {
     sl3.load();
     sl3.play();
-    $('.header2').hide();
+    // $('.header2').hide();
     $('.forward1').hide();
     $('.forward').click(function () {
-        $('.header2').show();
+        $('.header2 h1').show();
         $('.header1').hide();
         $('.forward1').show();
 

@@ -1,11 +1,12 @@
 $(document).ready(function () {
     sl6.load();
     sl6.play();
-    $('#header2').hide();
+    // $('#header2').hide();
     $('.forward1').hide();
     $('.back1').hide();
     $('.forward').click(function () {
-        $('#header2').show();
+        $('#header2 h1').show();
+        $('#header2 img').show();
         $('#header1').hide();
         $('.forward1').show();
         $('.forward').hide();
