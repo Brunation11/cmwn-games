@@ -95,7 +95,7 @@
         /*---------------------------------------------------*/
     });
     $('#step .slider > .arrows  a.next').click(function () {
-        
+        $('#spin2').hide();
         $('#step').fadeOut(500);
         $('#SlotMachine').fadeIn(500);
         $(function () {
@@ -197,7 +197,7 @@
             //bind random button
             var q = 0;
             $('#random_location').on('click', function () {
-                
+                $('#spin2').show().fadeOut(5000);
                 $('#slotStart').get(0).currentTime = 0;
                 $('#slotStart').get(0).play();
                 
