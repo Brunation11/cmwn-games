@@ -7,7 +7,7 @@ var content_path = "http://actionitems.changemyworldnow.com/twirlnswirl";
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
+
     $routeProvider
 
         // route for the home page
@@ -149,8 +149,19 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         $('#flush').get(0).currentTime = 0;
         $('#flush').get(0).pause();
         $('#drop').get(0).play();
-        
-       
+        $(".block-btn").hide();
+         $('.flush a').click(function () {
+                $('#flush').get(0).currentTime = 0;
+                $('#flush').get(0).pause();
+                $('#flush').get(0).play();
+                $('.drag').addClass("dragstarted");
+                $('.correct-ansver').fadeIn(500).css('z-index', '10');
+                $('.correct-ansver-hover').fadeIn(500);
+                $('.sidebar-hover ').fadeOut();
+                 setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
+
+            });
+
        /* var parrentSlideId = parrentSlide.parents().eq(2).get(0).id
         if ($('#' + parrentSlideId + ' .dragstarted').hasClass('correct')) {
 
@@ -176,7 +187,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
     $rootScope.triggerRelink = function () {
         $rootScope.$broadcast('myEventName');
     };
-   
+
      /*   $scope.data1 = [];
         angular.forEach($scope.data, function (item) {
             $scope.data1.push({
@@ -195,7 +206,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         $('.correct-ansver').fadeOut(500).css('z-index', '10');
         $('.correct-ansver-hover').fadeOut(500);
         $scope.data2 = [];
-       
+ $(".block-btn").show();
         /*console.log($(".sidebar.left").children().length, '$(".sidebar.left").children().length');
         console.log($(".sidebar.left").children(".dragstarted").length, '$(".sidebar.left").children(".dragstarted").length');
         console.log($(".sidebar.right").children().length, '$(".sidebar.right").children().length');
@@ -204,9 +215,9 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         {
             $("#step .slider a.next").fadeIn(500);
         }
-        
+
     });
-    
+
 });
 
 

@@ -1092,3 +1092,11 @@ display: none;
 padding:0;
 
 }
+
+.block-btn {
+width: 113px;
+height: 113px;
+position: absolute;
+z-index: 1;
+margin-left: 55px;
+}

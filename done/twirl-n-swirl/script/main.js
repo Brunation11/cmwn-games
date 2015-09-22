@@ -1,11 +1,12 @@
 ﻿$(document).ready(function () {
 
+    $(".block-btn").show();
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
     $('#mainSound').get(0).play();
     $('.btn-click, .next, .prev').click(function () {
         $('#btnClick').get(0).play();
     });
-    
+
     $('#home .play').click(function () {
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
@@ -27,26 +28,26 @@
     $('#noseWords .next').click(function () {
         $('#mainSound').get(0).pause();
         $('#flush').get(0).play();
-        
+
         setTimeout(function () {
             $('#noseWords').fadeOut(500);
             $('#feelings').fadeIn(500);
             $('#feelings .next').fadeIn(500);
-          
+
         }, 1000);
     });
-    $('.flush a').click(function () {
-        $('#flush').get(0).currentTime = 0;
-        $('#flush').get(0).pause();
-        $('#flush').get(0).play();
-        $('.drag').addClass("dragstarted");
-        $('.correct-ansver').fadeIn(500).css('z-index', '10');
-        $('.correct-ansver-hover').fadeIn(500);
-        $('.sidebar-hover ').fadeOut();
-         setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
+    // $('.flush a').click(function () {
+    //     $('#flush').get(0).currentTime = 0;
+    //     $('#flush').get(0).pause();
+    //     $('#flush').get(0).play();
+    //     $('.drag').addClass("dragstarted");
+    //     $('.correct-ansver').fadeIn(500).css('z-index', '10');
+    //     $('.correct-ansver-hover').fadeIn(500);
+    //     $('.sidebar-hover ').fadeOut();
+    //      setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
 
-    });
-   
+    // });
+
     $('#feelings .next').click(function () {
 
         $('#feelings').fadeOut(500);
@@ -69,7 +70,7 @@
             var num = $('#step .slider .slide').first().index() + 1;
 
             $(document).delegate('.arrows > .next', 'click', function () {
-            
+
                 //$('#game').get(0).play();
                 if ($('#step .slider .slide').hasClass('openslide')) {
                     if (num <= $('#step .slider .slide').length) {
@@ -97,7 +98,7 @@
         /*---------------------------------------------------*/
     });
     $('#step .slider > .arrows  a.next').click(function () {
-        
+
         $('#step').fadeOut(500);
         $('#flip').fadeIn(500);
         $('#mainSound').get(0).pause();
@@ -115,11 +116,11 @@
         $('#game').get(0).pause();
         $('#showOff').fadeIn(500);
         $('#showOff .next').fadeIn(500);
-        
+
         $('#mainSound').get(0).play();
     });
 
-   
+
     $('#flip .next.arrow').click(function () {
 
         $('#flip').fadeOut(500);
@@ -151,7 +152,7 @@
         $('#game-info').modal('show');
     });
 
-    
+
 
     $('.A').click(function () {
 
