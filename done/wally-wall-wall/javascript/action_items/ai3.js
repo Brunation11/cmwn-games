@@ -8,12 +8,15 @@ $(document).ready(function () {
 
     $('#next-ai').hide();
 
+    $('#crannies').hide();
+
     $('#game-info').modal('show');
 
     $("#next-button").hide().fadeIn(8000);
 
     $('#next-button').click(function () {
         $('#game-info').modal('hide');
+        $('#crannies').show();
     });
 
     $("#close").click(function () {
