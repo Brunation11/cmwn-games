@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    try {
+           flipper.play();
+        }
+        catch (err) {
+           //no sound - log error
+        }
+
+
+
+
+
     $('.forward').click(function () {
         $('.forward').delay(1000).delay(1000, function () {
             $("#putcontenthere").load("action_items/ai1.html");

@@ -14,6 +14,10 @@
         var s7 = document.getElementById("sl6");
         var s8 = document.getElementById("steps");
         var s9 = document.getElementById("titles");
+        var end = document.getElementById("flipper");
+
+
+
         $(document).ready(function () {
             $('#Btn-hide1').click(function () {
                 $('#retry-level').modal('hide')
