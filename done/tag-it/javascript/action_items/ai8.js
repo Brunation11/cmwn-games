@@ -4,7 +4,7 @@
     $('#headline2 img').hide();
     $('#headline2 h1').hide();
     $('#headline3 img').hide();
-    $('#headline3 h1').hide();
+    // $('#headline3 h1').hide();
     $('#headline4 img').hide();
     $('#headline4 h1').hide();
     $('#headline5 img').hide();
