@@ -17,6 +17,8 @@ $(document).ready(function () {
 
     // dismiss arrow
     $(".dismiss").click(function () {
+        click.load();
+        click.play();
         $(".cap_frame").hide();
     });
 
@@ -40,6 +42,11 @@ $(document).ready(function () {
         $(".text_3").hide();
         $(".text_4").hide();
 
+        setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
+
         // arrow animation
         $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -54,6 +61,11 @@ $(document).ready(function () {
             $(".text_1").hide();
             $(".text_3").hide();
             $(".text_4").hide();
+
+             setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
 
             // arrow animation
             $(".dismiss").hide().delay(1000).fadeIn(600);
@@ -71,6 +83,11 @@ $(document).ready(function () {
                 $(".text_1").hide();
                 $(".text_4").hide();
 
+                 setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
+
                 // arrow animation
                 $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -85,30 +102,47 @@ $(document).ready(function () {
                     $(".text_1").hide();
                     $(".text_3").hide();
 
+                     setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
+
                     // arrow animation
                     $(".dismiss").hide().delay(1000).fadeIn(600);
 
                     // if bulb #4 is clicked once, then arrow will show up only once.
-                    var arrow = $(".bulb_4");
+                     $(".dismiss").click(function () {
+                        setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
+                          var arrow = $(".bulb_4");
 
-                    bulb_4.push(arrow);
-                    if (bulb_4.length === 1) {
-                        // show arrow
-                        $(".Next").hide().delay(1000).fadeIn(600);
-                        $(".Next").click(function () {
+                        bulb_4.push(arrow);
+                        if (bulb_4.length === 1) {
+                            // show arrow
+                            $(".Next").hide().delay(600).fadeIn(600);
 
-                            var Next = $(".Next");
+                            $(".Next").click(function () {
 
-                            AI2.push(Next);
+                                var Next = $(".Next");
 
-                            if (AI2.length === 1) {
+                                AI2.push(Next);
 
-                                $("#putcontenthere").load("action_items/ai3.html");
-                            }
+                                if (AI2.length === 1) {
+                                    click.load();
+                                    click.play();
+                                    setTimeout(function(){
+                                        $("#putcontenthere").load("action_items/ai3.html");
+                                    },1000);
+                                }
 
 
-                        });
-                    }
+                            });
+                        }
+
+                     });
+
 
                     // turn off light bulb # 4
                     $(".bulb_4 img:last").show();

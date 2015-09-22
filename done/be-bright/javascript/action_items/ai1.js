@@ -8,12 +8,18 @@ $(document).ready(function () {
 
     });
 
+setTimeout(function() {
+    arrows.load();
+    arrows.play();
+},1200);
+
     $(".Video-frame-1").hide();
 
     $(".Next").hide().delay(1000).fadeIn(600);
 
     $(".Next").click(function () {
-
+        click.load();
+        click.play();
         var Next = $(".Next");
 
         AI2.push(Next);
@@ -24,8 +30,14 @@ $(document).ready(function () {
             $(".Video-frame-1").hide().delay(100).fadeIn(1000);
         }
         if (AI2.length === 2) {
+            click.load();
+            click.play();
 
-            $("#putcontenthere").load("action_items/ai2.html");
+            setTimeout(function(){
+                $("#putcontenthere").load("action_items/ai2.html");
+            },1000);
+
+
         }
 
     });

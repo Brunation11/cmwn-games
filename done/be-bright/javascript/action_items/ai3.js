@@ -25,6 +25,8 @@ $(document).ready(function () {
     $(".text_5").hide();
     // dismiss arrow
     $(".dismiss").click(function () {
+        click.load();
+        click.play();
         $(".cap_frame").hide();
     });
 
@@ -48,7 +50,8 @@ $(document).ready(function () {
 
 
     $(".Next").click(function () {
-
+        click.load();
+        click.play();
         var Next = $(".Next");
 
         AI3.push(Next);
@@ -65,7 +68,9 @@ $(document).ready(function () {
         }
         if (AI3.length === 3) {
 
-            $("#putcontenthere").load("action_items/ai4.html");
+           setTimeout(function(){
+                $("#putcontenthere").load("action_items/ai4.html");
+            },1000);
         }
     });
 
@@ -74,6 +79,11 @@ $(document).ready(function () {
     $(".switch_1 img:first").click(function () {
 
         $(".cap_frame").show();
+
+        setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
         // arrow animation
         $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -89,6 +99,11 @@ $(document).ready(function () {
         $(".switch_2 img:first").click(function () {
 
             $(".cap_frame").show();
+
+            setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
             // arrow animation
             $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -104,6 +119,11 @@ $(document).ready(function () {
             $(".switch_3 img:first").click(function () {
 
                 $(".cap_frame").show();
+
+                setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
                 // arrow animation
                 $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -119,6 +139,11 @@ $(document).ready(function () {
                 $(".switch_4 img:first").click(function () {
 
                     $(".cap_frame").show();
+
+                    setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
                     // arrow animation
                     $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -134,6 +159,11 @@ $(document).ready(function () {
                     $(".switch_5 img:first").click(function () {
 
                         $(".cap_frame").show();
+
+                        setTimeout(function() {
+                            arrows.load();
+                            arrows.play();
+                        },1000);
                         // arrow animation
                         $(".dismiss").hide().delay(1000).fadeIn(600);
 
@@ -146,14 +176,22 @@ $(document).ready(function () {
                         $(".switch_5 img:last").show();
                         $(".switch_5 img:first").hide();
 
-                        var arrow = $(".switch_5");
+                        $(".dismiss").click(function () {
+                            setTimeout(function() {
+                                                        arrows.load();
+                                                        arrows.play();
+                                                    },1000);
 
-                        switch_5.push(arrow);
-                        if (switch_5.length === 1) {
+                            var arrow = $(".switch_5");
 
-                            // show arrow
-                            $(".Next").hide().delay(1000).fadeIn(600);
-                        }
+                            switch_5.push(arrow);
+                                if (switch_5.length === 1) {
+
+                                    // show arrow
+                                    $(".Next").hide().delay(1000).fadeIn(600);
+                                }
+                        });
+
 
 
                         // enable user to go back and click on light bulbs as many times they want.
