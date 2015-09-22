@@ -3,7 +3,7 @@ $(document).ready(function () {
     // $('#headline2 h1').hide();
     $('.forward2').hide();
     $('.back2').hide();
-    $('.hint img').hide();
+    // $('.hint img').hide();
     $('.forward').hide();
     $('.forward1').click(function () {
         $('.hint img').fadeIn(3000);
