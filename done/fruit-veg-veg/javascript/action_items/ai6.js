@@ -118,11 +118,14 @@
                 alert('go to the nex page');
             }
 
+            // testing if the the selected item is in the already_matched array
+            // if it is, then call selectRandomListItem again until we find a new selected item.
             if (already_matched.indexOf(selected_item) >= 0) {
                 //alert('already matched');
                 selectRandomListItem();
             }
 
+            // adding the selected item to the already_matched array
             already_matched.push(selected_item);
 
         }
