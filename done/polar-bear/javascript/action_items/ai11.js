@@ -53,9 +53,11 @@ $(function () { // DOM ready shorthand
         $("#select2").hide();
         $("#select3").show();
         $("#box3").hide();
-        $('.Next-Ai').show(function () {
 
-        }, 1000);
+        setTimeout(function() {
+            $('.Next-Ai').show();
+        },1000);
+
     });
 
 });
