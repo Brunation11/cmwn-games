@@ -5,7 +5,11 @@ $(document).ready(function () {
     $(".no-1").hide().delay(1000).fadeIn(100);
 
     $('.no-1').click(function(){
-       $("#putcontenthere").load("action_items/ai5.html");
+        click.load();
+        click.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai5.html");
+        },1000);
     });
 
 });

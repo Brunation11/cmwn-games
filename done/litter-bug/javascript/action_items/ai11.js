@@ -31,7 +31,11 @@ $(document).ready(function () {
     }, 4000);
 
     $(".accept").click(function(){
-        $("#putcontenthere").load("action_items/ai12.html");
+        click.load();
+        click.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai12.html");
+        },1000);
     });
 
 });

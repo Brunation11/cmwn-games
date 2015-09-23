@@ -7,7 +7,11 @@ $(document).ready(function () {
     $(".commit").hide().delay(1700).fadeIn(90);
 
     $('.commit').click(function(){
-        $("#putcontenthere").load("action_items/ai13.html");
+        click.load();
+        click.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai13.html");
+        },1000);
     });
 
 });

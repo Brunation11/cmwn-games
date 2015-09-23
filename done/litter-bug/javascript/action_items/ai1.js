@@ -7,6 +7,11 @@ $ ('.bkg-image').css('background-image','url(content/images/background/bakg_1.pn
     $(".next-1").hide().delay(2000).fadeIn(1000);
 
     $('.next-1').click(function(){
-       $("#putcontenthere").load("action_items/ai2.html");
+        click.load();
+        click.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai2.html");
+        },1000);
+
     });
 });
