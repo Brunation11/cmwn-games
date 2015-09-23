@@ -2,7 +2,8 @@ var AI3 = new Array();
 var switch_5 = new Array();
 
 $(document).ready(function () {
-
+    headtwo.load();
+    headtwo.play();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');
@@ -33,9 +34,14 @@ $(document).ready(function () {
     // bulb
 
     $(".light-saver img:first").click(function () {
+        lightsaver.load();
+        lightsaver.play();
         $(".light-saver img:last").show();
         $(".light-saver img:first").hide();
-
+        setTimeout(function () {
+            headthree.load();
+            headthree.play();
+        },2500);
         setTimeout(function () {
             $('.Header_2').hide();
             $('.Energy-hog').hide();
@@ -43,6 +49,7 @@ $(document).ready(function () {
 
             $(".Header_3").show();
             $(".Switch").show();
+
         }, 2000);
 
     });
@@ -60,6 +67,11 @@ $(document).ready(function () {
             $(".Header_3").hide();
             $(".Switch").hide();
             $(".last-text").show();
+             setTimeout(function() {
+                        headfour.load();
+                        headfour.play();
+            },1000);
+
         }
         if (AI3.length === 2) {
             $(".last-text").hide();
@@ -77,8 +89,17 @@ $(document).ready(function () {
     // turn on and off switch
 
     $(".switch_1 img:first").click(function () {
-
+        switchtrack.load();
+        switchtrack.play();
         $(".cap_frame").show();
+        setTimeout(function() {
+                        switchmessageone.load();
+                        switchmessageone.play();
+                        },1000);
+        switchmessagetwo.pause();
+        switchmessagethree.pause();
+        switchmessagefour.pause();
+        switchmessagefive.pause();
 
         setTimeout(function() {
                             arrows.load();
@@ -97,8 +118,18 @@ $(document).ready(function () {
         $(".switch_1 img:first").hide();
 
         $(".switch_2 img:first").click(function () {
-
+            switchtrack.load();
+            switchtrack.play();
             $(".cap_frame").show();
+             setTimeout(function() {
+                        switchmessagetwo.load();
+                        switchmessagetwo.play();
+
+                        },1000);
+            switchmessageone.pause();
+            switchmessagethree.pause();
+            switchmessagefour.pause();
+            switchmessagefive.pause();
 
             setTimeout(function() {
                             arrows.load();
@@ -117,9 +148,18 @@ $(document).ready(function () {
             $(".switch_2 img:first").hide();
 
             $(".switch_3 img:first").click(function () {
-
+                switchtrack.load();
+                switchtrack.play();
                 $(".cap_frame").show();
+                setTimeout(function() {
+                        switchmessagethree.load();
+                        switchmessagethree.play();
+                        },1000);
 
+                switchmessagetwo.pause();
+                switchmessageone.pause();
+                switchmessagefour.pause();
+                switchmessagefive.pause();
                 setTimeout(function() {
                             arrows.load();
                             arrows.play();
@@ -137,9 +177,17 @@ $(document).ready(function () {
                 $(".switch_3 img:first").hide();
 
                 $(".switch_4 img:first").click(function () {
-
+                    switchtrack.load();
+                    switchtrack.play();
                     $(".cap_frame").show();
-
+                    setTimeout(function() {
+                        switchmessagefour.load();
+                        switchmessagefour.play();
+                        },1000);
+                    switchmessagetwo.pause();
+                    switchmessagethree.pause();
+                    switchmessageone.pause();
+                    switchmessagefive.pause();
                     setTimeout(function() {
                             arrows.load();
                             arrows.play();
@@ -157,9 +205,17 @@ $(document).ready(function () {
                     $(".switch_4 img:first").hide();
 
                     $(".switch_5 img:first").click(function () {
-
+                        switchtrack.load();
+                        switchtrack.play();
                         $(".cap_frame").show();
-
+                        setTimeout(function() {
+                        switchmessagefive.load();
+                        switchmessagefive.play();
+                        },1000);
+                        switchmessagetwo.pause();
+                        switchmessagethree.pause();
+                        switchmessagefour.pause();
+                        switchmessageone.pause();
                         setTimeout(function() {
                             arrows.load();
                             arrows.play();
@@ -196,7 +252,17 @@ $(document).ready(function () {
 
                         // enable user to go back and click on light bulbs as many times they want.
                         $(".switch_1 img:last").click(function () {
+                            switchtrack.load();
+                            switchtrack.play();
 
+                             setTimeout(function() {
+                            switchmessageone.load();
+                            switchmessageone.play();
+                            },1000);
+                            switchmessagetwo.pause();
+                            switchmessagethree.pause();
+                            switchmessagefour.pause();
+                            switchmessagefive.pause();
 
                             $(".cap_frame").show();
                             $(".text_1").show();
@@ -207,7 +273,18 @@ $(document).ready(function () {
                         });
 
                         $(".switch_2 img:last").click(function () {
+                            switchtrack.load();
+                            switchtrack.play();
 
+
+                            setTimeout(function() {
+                            switchmessagetwo.load();
+                            switchmessagetwo.play();
+                            },1000);
+                            switchmessageone.pause();
+                            switchmessagethree.pause();
+                            switchmessagefour.pause();
+                            switchmessagefive.pause();
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
@@ -218,7 +295,18 @@ $(document).ready(function () {
                         });
 
                         $(".switch_3 img:last").click(function () {
+                            switchtrack.load();
+                            switchtrack.play();
 
+
+                            setTimeout(function() {
+                            switchmessagethree.load();
+                            switchmessagethree.play();
+                            },1000);
+                            switchmessagetwo.pause();
+                            switchmessageone.pause();
+                            switchmessagefour.pause();
+                            switchmessagefive.pause();
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
@@ -229,7 +317,17 @@ $(document).ready(function () {
                         });
 
                         $(".switch_4 img:last").click(function () {
+                            switchtrack.load();
+                            switchtrack.play();
 
+                            setTimeout(function() {
+                            switchmessagefour.load();
+                            switchmessagefour.play();
+                            },1000);
+                            switchmessagetwo.pause();
+                            switchmessagethree.pause();
+                            switchmessageone.pause();
+                            switchmessagefive.pause();
 
                             $(".cap_frame").show();
                             $(".text_1").hide();
@@ -240,8 +338,17 @@ $(document).ready(function () {
                         });
 
                         $(".switch_5 img:last").click(function () {
+                            switchtrack.load();
+                            switchtrack.play();
 
-
+                            setTimeout(function() {
+                            switchmessagefive.load();
+                            switchmessagefive.play();
+                            },1000);
+                            switchmessagetwo.pause();
+                            switchmessagethree.pause();
+                            switchmessagefour.pause();
+                            switchmessageone.pause();
 
                             $(".cap_frame").show();
                             $(".text_1").hide();

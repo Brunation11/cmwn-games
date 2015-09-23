@@ -1,7 +1,8 @@
 var AI2 = new Array();
 var bulb_4 = new Array();
 $(document).ready(function () {
-
+headerone.load();
+headerone.play();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');
@@ -32,6 +33,16 @@ $(document).ready(function () {
     // All click states are nested inside of eachother
     // bulb 1
     $(".bulb_1 img:first").click(function () {
+        messageone.load();
+        messageone.play();
+        bulbtrack.load();
+        bulbtrack.play();
+
+        messagetwo.pause();
+        messagethree.pause();
+        messagefour.pause();
+
+
         $(".bulb_1 img:last").show();
         $(".bulb_1 img:first").hide().fadeOut(10).fadeIn(20).fadeOut(20).fadeIn(10).fadeOut(20).fadeIn(20).fadeOut(10);
 
@@ -52,6 +63,9 @@ $(document).ready(function () {
 
         //bulb 2
         $(".bulb_2 img:first").click(function () {
+
+            bulbtrack.load();
+            bulbtrack.play();
             $(".bulb_2 img:last").show();
             $(".bulb_2 img:first").hide().fadeOut(10).fadeIn(20).fadeOut(20).fadeIn(10).fadeOut(20).fadeIn(20).fadeOut(10);
 
@@ -61,7 +75,13 @@ $(document).ready(function () {
             $(".text_1").hide();
             $(".text_3").hide();
             $(".text_4").hide();
-
+              setTimeout(function() {
+                        messagetwo.load();
+                        messagetwo.play();
+                        },1000);
+            messageone.pause();
+            messagethree.pause();
+            messagefour.pause();
              setTimeout(function() {
                             arrows.load();
                             arrows.play();
@@ -70,9 +90,11 @@ $(document).ready(function () {
             // arrow animation
             $(".dismiss").hide().delay(1000).fadeIn(600);
 
-            //bulb 3
+            //bulb 3messagethree
 
             $(".bulb_3 img:first").click(function () {
+                 bulbtrack.load();
+                 bulbtrack.play();
                 $(".bulb_3 img:last").show();
                 $(".bulb_3 img:first").hide().fadeOut(10).fadeIn(20).fadeOut(20).fadeIn(10).fadeOut(20).fadeIn(20).fadeOut(10);
 
@@ -82,18 +104,26 @@ $(document).ready(function () {
                 $(".text_2").hide();
                 $(".text_1").hide();
                 $(".text_4").hide();
-
+                setTimeout(function() {
+                        messagethree.load();
+                        messagethree.play();
+                        },1000);
+                messagetwo.pause();
+                messageone.pause();
+                messagefour.pause();
                  setTimeout(function() {
                             arrows.load();
                             arrows.play();
                         },1000);
 
-                // arrow animation
+                // arrow animationmessagefour
                 $(".dismiss").hide().delay(1000).fadeIn(600);
 
                 //bulb 4
 
                 $(".bulb_4 img:first").click(function () {
+                     bulbtrack.load();
+                     bulbtrack.play();
 
                     // caption bow shows up
                     $(".cap_frame").show();
@@ -101,7 +131,13 @@ $(document).ready(function () {
                     $(".text_2").hide();
                     $(".text_1").hide();
                     $(".text_3").hide();
-
+                    setTimeout(function() {
+                        messagefour.load();
+                        messagefour.play();
+                        },1000);
+                    messagetwo.pause();
+                    messagethree.pause();
+                    messageone.pause();
                      setTimeout(function() {
                             arrows.load();
                             arrows.play();
@@ -152,8 +188,16 @@ $(document).ready(function () {
 
                     // enable user to go back and click on light bulbs as many times they want.
                     $(".bulb_1 img:last").click(function () {
+                        bulbtrack.load();
+                        bulbtrack.play();
+                        setTimeout(function() {
+                        messageone.load();
+                        messageone.play();
 
-
+                        },600);
+                        messagetwo.pause();
+                        messagethree.pause();
+                        messagefour.pause();
                         // caption bow shows up
                         $(".cap_frame").show();
                         $(".text_1").show();
@@ -163,8 +207,15 @@ $(document).ready(function () {
                     });
 
                     $(".bulb_2 img:last").click(function () {
-
-
+                        bulbtrack.load();
+                        bulbtrack.play();
+                        setTimeout(function() {
+                        messagetwo.load();
+                        messagetwo.play();
+                        },1000);
+                        messageone.pause();
+                        messagethree.pause();
+                        messagefour.pause();
                         // caption bow shows up
                         $(".cap_frame").show();
                         $(".text_2").show();
@@ -174,8 +225,15 @@ $(document).ready(function () {
                     });
 
                     $(".bulb_3 img:last").click(function () {
-
-
+                        bulbtrack.load();
+                        bulbtrack.play();
+                        setTimeout(function() {
+                        messagethree.load();
+                        messagethree.play();
+                        },1000);
+                        messagetwo.pause();
+                        messageone.pause();
+                        messagefour.pause();
                         // caption bow shows up
                         $(".cap_frame").show();
                         $(".text_3").show();
@@ -185,8 +243,16 @@ $(document).ready(function () {
                     });
 
                     $(".bulb_4 img:last").click(function () {
+                        bulbtrack.load();
+                        bulbtrack.play();
 
-
+                        setTimeout(function() {
+                        messagefour.load();
+                        messagefour.play();
+                        },1000);
+                        messagetwo.pause();
+                        messagethree.pause();
+                        messageone.pause();
                         // caption bow shows up
                         $(".cap_frame").show();
                         $(".text_4").show();

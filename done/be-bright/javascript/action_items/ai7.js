@@ -1,5 +1,6 @@
 $(document).ready(function () {
-
+flip.load();
+flip.play();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');
@@ -18,10 +19,10 @@ $(document).ready(function () {
     setTimeout(function () {
         stamp.load();
         stamp.play();
-    },2200);
+    },4200);
     setTimeout(function () {
 
         $(".Stamp").show();
-    }, 2000);
+    }, 4000);
 
 });
