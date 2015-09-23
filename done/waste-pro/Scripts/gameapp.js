@@ -262,13 +262,13 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
               'name': "Car",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_cars.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_car.png",
-              'text': "Yes. A car weighs 4,000 pounds ",
+              'text': "Yes. A car weighs 4,000 pounds.",
               'correct': 1
           }, {
               'name': "Hippopotamus",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_hippos.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_hippo.png",
-              'text': "Yes. A hippo weighs 3,000 pounds",
+              'text': "Yes. A hippo weighs 3,000 pounds.",
               'correct': 1
           }, {
               'name': "School_bus",
