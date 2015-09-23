@@ -15,11 +15,12 @@
     <script src="scripts/respond.js"></script>
 
     <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery-ui.min.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="content/main.css">
     <script type="text/javascript" src="http://static.cdn-ec.viddler.com/js/arpeggio/v2/build/main-built.js"></script>
-	<script type="text/javascript" src="scripts/main-built.js"></script>
+    <script type="text/javascript" src="scripts/main-built.js"></script>
     <script type="text/javascript" src="scripts/angular.js"></script>
     <script type="text/javascript" src="scripts/angular-route.min.js"></script>
     <script type="text/javascript" src="scripts/angular-underscore-module.js"></script>
@@ -143,7 +144,7 @@
                 </div>
                 <!--//////////////////////////////////////////////////-->
                 <div id="video">
-                    <!--<iframe id="viddler-84963dec" src="/www.viddler.com/embed/84963dec/?f=1&autoplay=0&player=mini&secret=12020036&make_responsive=0&loop=1" width="565" height="400" frameborder="0" scrolling="no" allowfullscreen></iframe>-->
+
                    <div id="my-player"></div>
 
                 </div>
@@ -170,7 +171,7 @@
                                     <div class="content-box">
                                         <h1 class="heading"><img src="content/_assets/elements/header_1.png"></h1>
                                         <div class="img-box">
-                                            <img src="{{item.item.mainImageUrl}}">-
+                                            <img ng-src="{{item.item.mainImageUrl}}">-
                                             <div class="correct-ansver clearfix">
                                                 <p ng-bind-html="to_trusted(item.item.text)"></p>
                                             </div>
