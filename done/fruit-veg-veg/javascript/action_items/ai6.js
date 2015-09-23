@@ -10,9 +10,10 @@
 
         //this varible stores the data correct
         var matches_correctly = new Array();
+        var already_matched   = new Array();
         var selected_item;
-        var match_set_1 = new Array();
-        var match_set_2 = new Array();
+        var match_set_1       = new Array();
+        var match_set_2       = new Array();
 
         // hide next arrow
         $('.Next').hide();
@@ -109,18 +110,30 @@
 
             selected_item = $("#match li")[0].id
 
+            console.log('already_matched: ' + already_matched);
             console.log('randomly selected item: ' + selected_item);
 
-        }
+            if (already_matched.length > 10)
+            {
+                alert('go to the nex page');
+            }
 
+            if (already_matched.indexOf(selected_item) >= 0) {
+                //alert('already matched');
+                selectRandomListItem();
+            }
+
+            already_matched.push(selected_item);
+
+        }
 
         // function for food vegies
         $("#food-Veggies").click(function () {
 
-
             //which item is showing in the selector?
             var correct_items = $(this).attr('data-correct');
 
+            console.log(correct_items);
             console.log('clicked Food: ' + $(this).attr('id'));
 
             //make sure the items_correct_matches has values
@@ -132,8 +145,6 @@
                     matches_correctly.push(1);
 
                     console.log(matches_correctly);
-
-
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
@@ -188,9 +199,7 @@
                     //this is a correct item
                     matches_correctly.push(1);
 
-                    console.log(matches_correctly);
-
-
+                    console.log('matches_correctly' +  matches_correctly);
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
