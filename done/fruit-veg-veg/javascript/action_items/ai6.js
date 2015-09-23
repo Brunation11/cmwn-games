@@ -108,14 +108,15 @@
                 .appendTo($ul);
             });
 
-            selected_item = $("#match li")[0].id
+            selected_item = $("#match li")[0].id;
 
             console.log('already_matched: ' + already_matched);
             console.log('randomly selected item: ' + selected_item);
 
             if (already_matched.length > 10)
             {
-                alert('go to the nex page');
+                // alert('go to the nex page');
+                $("#putcontenthere").load("action_items/ai7.html");
             }
 
             // testing if the the selected item is in the already_matched array
