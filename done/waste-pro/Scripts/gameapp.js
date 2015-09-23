@@ -128,7 +128,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         {
             'name': "Rubber_sole",
             'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_rubber_sole.png",
-            'text': "<h3>Rubber sole</h3> <p>50-80 years</p>"
+            'text': "<h3>Rubber Sole</h3> <p>50-80 years</p>"
         },
 
         {
@@ -461,7 +461,7 @@ moduleGame.controller('landfillsController', function ($scope, $http, $sce, $win
         'name': "Contamination",
         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_1.png",
         'noseImages': content_path + "/content/_assets/elements/buttons/btn_1_on.png",
-        'text': "Waste changes the chemistry <br/> of the water. Hazardous  <br/> chemicals get into soil <br/> both harm plants, animals,<br/>  humans and  ecosystem."
+        'text': "Waste changes the chemistry <br/> of the water. Hazardous  <br/> chemicals get into the soil. <br/> Both harm plants, animals,<br/>  humans and  ecosystem."
     },
      {
          'name': "Pollution",

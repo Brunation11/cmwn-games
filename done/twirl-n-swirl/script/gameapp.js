@@ -89,7 +89,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         'name': "Band_Aids",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_7.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_7.png",
-        'text': "The plastic in band-aids <br/> is not bio-degradable.<br/> They are bad for the enviroment."
+        'text': "The plastic in band-aids <br/> is not bio-degradable.<br/> They are bad for the environment."
     },
     {
         'name': "Cat_Litter",
