@@ -250,15 +250,21 @@ function findRandomItem(available_drags) {
 
 
             //show the popup screen for game complete and send to bloom boom game
-            $('#game-complete').modal('show');
+            $('#game-success').modal('show');
             $('#game-info').modal('hide');
             $('.main-title').hide();
             $('.text-modal-start').hide();// HIDE Remember your hints from Level one.  Drag your food choices and feed each pollinator!  You can only feed each pollinator once
 
-            $("#button-next").click(function () {
+            $("#button-replay").click(function () {
                 $('#game-success').modal('hide');
 
             });
+
+
+                $("#button-next").click(function () {
+                $("#putcontenthere").load("action_items/ai1.html");
+                 });
+
 
             $('.purple-button').click(function () {
                 $('#game-complete').modal('hide');
@@ -266,7 +272,7 @@ function findRandomItem(available_drags) {
                    // RESET GAME FUNCTIONS HERE ///
                    // create a new time object
 
-                    // correct_matches = new Array();
+                     correct_matches = new Array();
                     currentTime = 60000;
                     timer1.Timer.play();
 
