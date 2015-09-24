@@ -17,15 +17,15 @@ $(document).ready(function () {
     },1000);
     clock.play();
 
-    try
-    {
-        Background.load();
-        Background.play();
-    }
-    catch (err)
-    {
-        //no sound - log error
-    }
+    // try
+    // {
+    //     Background.load();
+    //     Background.play();
+    // }
+    // catch (err)
+    // {
+    //     //no sound - log error
+    // }
 
 
     $('.carousel-inner').parent().carousel({ pause: true, interval: false });
