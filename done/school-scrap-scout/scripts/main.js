@@ -301,8 +301,8 @@
     $('#letslook a.next').click(function () {
         $('#letslook').fadeOut(500);
         $('#Listbreak1').fadeIn(500);
-        $('#Listbreak1 a.nextb').fadeIn(500);
-        $('#Listbreak1 a.next').fadeIn(500);
+        // $('#Listbreak1 a.nextb').fadeIn(500);
+        //$('#Listbreak1 a.next').fadeIn(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
         /*slider*/
@@ -319,15 +319,15 @@
             var num = $('#step .slider .slide').first().index() + 1;
 
             $(document).delegate('.sorter .sorts a', 'click', function () {
-                console.log($(this).attr('id'));
-                console.log($('.openslide').text());
+                 console.log($(this).attr('id'));
+                 console.log($('.openslide').text());
                 //$('#game').get(0).play();
                 if ($('#step .slider .slide').hasClass('openslide')) {
                     if (num <= $('#step .slider .slide').length) {
                         $('ul.' + $(this).attr("id")).append('<li>' + $(".openslide").text() + '</li>');
 
                         $('#step .slider .slide:nth-child(' + num + ')').removeClass('openslide').hide();
-                        $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show(); 
+                         $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show(); 
                         num++;
                         $('.arrows > .next').fadeOut();
                         $('.arrows > .next').removeClass('open');
@@ -360,6 +360,7 @@
         $('#letslook').fadeIn(500);
         $('#Listbreak1').fadeOut(500);
         $('#Listbreak1 a.next').fadeOut(500);
+        $('#Listbreak1 a.nextb').fadeOut(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
         $('#letslook a.next').fadeIn(500);
@@ -381,6 +382,7 @@
         $('#slide22').get(0).currentTime = 0;
         $('#slide22').get(0).play();
         $('#Listbreak1 a.next').fadeIn(500);
+        $('#Listbreak1 a.nextb').fadeIn(500);
     });
 
     $('#Listbreak a.next').click(function () {
