@@ -1,62 +1,64 @@
 <!--  -->
 <script type="text/javascript">
-    $(document).ready(function () {
-        GameApp.arrWormPartsPassed = [];
-        GameApp.arrWormPartsCircles = [];
 
-        GameApp.idWormPartsImg = $(".worm-parts-img");
-        GameApp.idWormPartsInfo = $(".worm-parts-info");
+$(document).ready(function () {
+    GameApp.arrWormPartsPassed = [];
+    GameApp.arrWormPartsCircles = [];
+
+    GameApp.idWormPartsImg = $(".worm-parts-img");
+    GameApp.idWormPartsInfo = $(".worm-parts-info");
+
+    //alert('got here');
+
+    GameApp.loadWormParts = function (id) {
+        for (var i = 0; i < 12; i++) {
+            $(GameApp.idWormPartsImg).removeClass("part"+i);
+        }
+
+        //alert('got here');
+        $(GameApp.idWormPartsImg).addClass("part" + id);
+
+        $(GameApp.idWormPartsInfo).load("/screens/wormparts/part" + id + ".html");
+    };
+    
+    GameApp.loadWormParts(0);
+
+    GameApp.onClickWormParts = function (evt) {
+        var id = $(this).data().id;
+        GameApp.loadWormParts(id);
 
         //alert('got here');
 
-        GameApp.loadWormParts = function (id) {
-            for (var i = 0; i < 12; i++) {
-                $(GameApp.idWormPartsImg).removeClass("part"+i);
-            }
+        GameApp.setActiveWormParts(id);
+        GameApp.arrWormPartsPassed[id - 1] = true;
 
-            //alert('got here');
-            $(GameApp.idWormPartsImg).addClass("part" + id);
+        //console.log($.inArray(false, GameApp.arrWormPartsPassed));
+        if ($.inArray(false, GameApp.arrWormPartsPassed) == -1) {
+            GameApp.onWormPartsPassed();
+        }
+    };
 
-            $(GameApp.idWormPartsInfo).load("/screens/wormparts/part" + id + ".html");
+    GameApp.initWormParts = function () {
+        for (var i = 1; i < 12; i++) {
+            GameApp.arrWormPartsPassed.push(false);
+            GameApp.arrWormPartsCircles.push($(".circle-"+i));
+            $(GameApp.arrWormPartsCircles[i-1]).data("id", i);
+
+            GameApp.arrWormPartsCircles[i-1].click(GameApp.onClickWormParts);
         };
-        
-        GameApp.loadWormParts(0);
+        //
+    };
+    GameApp.initWormParts();
 
-        GameApp.onClickWormParts = function (evt) {
-            var id = $(this).data().id;
-            GameApp.loadWormParts(id);
+    GameApp.setActiveWormParts = function (id) {
+        for (var i = 1; i < 12; i++) {
+            $(GameApp.arrWormPartsCircles[i-1]).removeClass("active");
+        }
+        $(GameApp.arrWormPartsCircles[id-1]).addClass("active");
+    };
 
-            //alert('got here');
+});
 
-            GameApp.setActiveWormParts(id);
-            GameApp.arrWormPartsPassed[id - 1] = true;
-
-            //console.log($.inArray(false, GameApp.arrWormPartsPassed));
-            if ($.inArray(false, GameApp.arrWormPartsPassed) == -1) {
-                GameApp.onWormPartsPassed();
-            }
-        };
-
-        GameApp.initWormParts = function () {
-            for (var i = 1; i < 12; i++) {
-                GameApp.arrWormPartsPassed.push(false);
-                GameApp.arrWormPartsCircles.push($(".circle-"+i));
-                $(GameApp.arrWormPartsCircles[i-1]).data("id", i);
-
-                GameApp.arrWormPartsCircles[i-1].click(GameApp.onClickWormParts);
-            };
-            //
-        };
-        GameApp.initWormParts();
-
-        GameApp.setActiveWormParts = function (id) {
-            for (var i = 1; i < 12; i++) {
-                $(GameApp.arrWormPartsCircles[i-1]).removeClass("active");
-            }
-            $(GameApp.arrWormPartsCircles[id-1]).addClass("active");
-        };
-
-    });
 </script>
 
 <div class="bframe" style="z-index:2;">

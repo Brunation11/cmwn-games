@@ -24,7 +24,7 @@ $(document).ready(function () {
         }
 
         // var screen_location = "@Url.Content("/screens/")";
-        var screen_location = "/screens/";
+        var screen_location = "screens/";
             var screen_name = "_screen" + id;
             var screen_ext = ".html";
 
