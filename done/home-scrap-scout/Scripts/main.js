@@ -289,8 +289,8 @@
     $('#letslook a.next').click(function () {
         $('#letslook').fadeOut(500);
         $('#Listbreak1').fadeIn(500);
-        $('#Listbreak1 a.nextb').fadeIn(500);
-        $('#Listbreak1 a.next').fadeIn(500);
+        $('#Listbreak1 a.prev').hide();
+        //$('#Listbreak1 a.next').fadeIn(500);
         $('#game').get(0).currentTime = 0;
         $('#game').get(0).play();
         /*slider*/
@@ -383,6 +383,17 @@
         $('#greenest').fadeIn(500);
         $('#greenest a.next').fadeIn(500);
     });
+
+    $('#Listbreak a.prev').click(function () {
+        $('#Listbreak1').fadeIn(500);
+        $('#Listbreak').fadeOut(500);
+        $('#Listbreak a.next').fadeOut(500);
+        $('#Listbreak1 a.next').fadeIn(500);
+        $('#Listbreak1 a.prev').fadeIn(500);
+    });
+
+
+
     $('#greenest a.next').click(function () {
         $('#greenest').fadeOut(500);
         $('#learned').fadeIn(500);
