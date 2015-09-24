@@ -6,6 +6,7 @@ $(document).ready(function () {
     $(".next-2").hide().delay(2000).fadeIn(1000);
 
     $('.next-2').click(function(){
+        cleanup.pause();
         click.load();
         click.play();
         setTimeout(function(){

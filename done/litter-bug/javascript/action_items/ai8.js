@@ -6,7 +6,7 @@ $(document).ready(function () {
         click.load();
         click.play();
         setTimeout(function(){
-            $("#putcontenthere").load("action_items/ai11.html");
+            $("#putcontenthere").load("action_items/ai12.html");
         },1000);
     });
 
