@@ -71,7 +71,7 @@ function startGame() {
 
 //create a new time object
     var timer1 = new (function () {
-        currentTime = '30000'; // 20 seconds (in milliseconds)
+        currentTime = '180000'; // 20 seconds (in milliseconds)
     });
 
 //start the timer and assign the counter location
@@ -114,7 +114,7 @@ function updateTimer() {
             $(".again-game").click(function(){
                 $("#try-modal").modal("hide");
                 correct_matches = new Array();
-                currentTime = 30000;
+                currentTime = 60000;
                 timer1.Timer.play();
 
                 background.play();
@@ -239,7 +239,7 @@ function findRandomItem(available_drags) {
         }
 
         //check to see if the game is over - all matches are found
-        if (correct_matches.length  === 12 - 6) {
+        if (correct_matches.length  === 11) {
 
             //stop the sound
             start.pause();
@@ -267,7 +267,7 @@ function findRandomItem(available_drags) {
                    // create a new time object
 
                     // correct_matches = new Array();
-                    currentTime = 30000;
+                    currentTime = 60000;
                     timer1.Timer.play();
 
                     background.play();
