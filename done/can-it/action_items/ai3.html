@@ -1,26 +1,640 @@
 <script type="text/javascript" src="javascript/action_items/ai3.js"></script>
 <script type="text/javascript" src="javascript/thirdparties/jquery.touchSwipe.min.js"></script>
 
-<div class="container body-content">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="container">
-                <div id="field">
-                        <div id="Big-btn" data-correct="trash" style="margin-left:260px;margin-top:100px;">
-                            <span><p><p>Can it!<p><p></span>
-                        </div>
-                            <div id="cr-stage" style="border:1px solid red;"></div>
-
-                        <!-- animate these items falling in to trash cans -->
-                        <div id="apple-core" class="Drop_1" style="position:absolute;z-index:1;margin-top:40px;margin-left: 233px;cursor:pointer;"><img src="content/images/Compost/big_apple_core.png" style=" width: 44px;" /></div>
 
 
+<!--sound-->
+<audio id="Background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 2000)">
+    <source src="content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="ButtonClick" preload="auto">
+    <source src="content/sound/Button click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="slide" preload="auto">
+    <source src="content/sound/Slide7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Correct" preload="auto">
+    <source src="content/sound/LandinCan.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Wrong" preload="auto">
+    <source src="content/sound/Incorrect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="clock" preload="auto" loop>
+    <source src="content/sound/ClockTick2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Timeout" preload="auto">
+    <source src="content/sound/TimerRunsout.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Win" preload="auto">
+    <source src="content/sound/levelcompleted.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Flip" preload="auto">
+    <source src="content/sound/FlipAwardScreen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
-                        <div id="hit-target" style="position: absolute;width: 70px;height:100px;background: green;z-index: 1;margin-top: 280px;margin-left: 228px;"></div>
+
+                <div class="scape-Btn">
+                    <img src="content/images/btn_exit_on.png" />
+                    <img src="content/images/btn_exit.png" />
                 </div>
+
+                <!-- SORE -->
+                <div id="score">
+                    <h1>SCORE:</h1>
+                    <p>0</p>
+                </div>
+
+                <div class="animated-points">
+                    <div class="win"><h1>+ 15</h1></div>
+                    <div class="loose"><h1>- 30</h1></div>
+                </div>
+
+                <!-- dumpster carousel starts here -->
+
+                <div id="myCarousel" class="carousel slide" data-interval="false">
+                    <div class="row">
+                        <div class="carousel-inner">
+
+                            <div class="item active">
+                                <div id="apple-core" data-correct="compost" class="Hit_One">
+                                    <img src="content/images/Compost/big_apple_core.png" alt="applecore" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Apple Core</h2>
+                                     <div id="Big-btn" data-correct="trash">
+                                        <span><p><p>Can it!<p><p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="batteries" data-correct="trash" class="Hit_three">
+                                    <img src="content/images/Trash/batteries.png" alt="batteries" class="img-responsive" />
+                                    <h2 style="margin-left:206px; margin-top:-102px; color:white; font-size:14px;">Batteries</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="computer" data-correct="recycle" class="Hit_five">
+                                    <img src="content/images/Recycle/computer.png" alt="computer" class="img-responsive" />
+                                    <h2 style="margin-left:201px; margin-top:-102px; color:white; font-size:14px;">Computer</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="carton-boxes" data-correct="recycle" class="Hit_two">
+                                    <img src="content/images/Recycle/carton_boxes.png" alt="carton" class="img-responsive" />
+                                    <h2 style="margin-left:199px; margin-top:-102px; color:white; font-size:14px;">Cardboard</h2>
+                                    <div id="Big-btn"  data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="banana-peel" data-correct="compost" class="Hit_four">
+                                    <img src="content/images/Compost/bannana_peal.png" alt="banana" class="img-responsive" />
+                                    <h2 style="margin-left:193px; margin-top:-102px; color:white; font-size:14px;">Banana peel</h2>
+                                    <div id="Big-btn"  data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="bulb" data-correct="trash" class="Hit_six">
+                                    <img src="content/images/Trash/big_bulb.png" alt="bulb" class="img-responsive" />
+                                    <h2 style="margin-left:202px; margin-top:-102px; color:white; font-size:14px;">Light Bulb</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="carrot" data-correct="compost" class="Hit_seven">
+                                    <img src="content/images/Compost/carrot.png" alt="carrot" class="img-responsive" />
+                                    <h2 style="margin-left:214px; margin-top:-102px; color:white; font-size:14px;">Carrot</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="diaper" data-correct="trash" class="Hit_nine">
+                                    <img src="content/images/Trash/diaper.png" alt="diaper" class="img-responsive" />
+                                    <h2 style="margin-left:209px; margin-top:-102px; color:white; font-size:14px;">Diapers</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="metal-can" data-correct="recycle" class="Hit_eight">
+                                    <img src="content/images/Recycle/food_can.png" alt="mtalCan" class="img-responsive" />
+                                    <h2 style="margin-left:201px; margin-top:-102px; color:white; font-size:14px;">Metal Can</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="paper-box" data-correct="recycle" class="Hit_eleven">
+                                    <img src="content/images/Recycle/juice_carton.png" alt="Paper box" class="img-responsive" />
+                                    <h2 style="margin-left:191px; margin-top:-102px; color:white; font-size:14px;">Paper Carton</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="chicken" data-correct="trash" class="Hit_thirteen">
+                                    <img src="content/images/Compost/chicken_drum.png" alt="chicken" class="img-responsive" />
+                                    <h2 style="margin-left:208px; margin-top:-102px; color:white; font-size:14px;">Chicken</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="milk-carton" data-correct="recycle" class="Hit_fourteen">
+                                    <img src="content/images/Recycle/milk_carton.png" alt="Milk carton" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Milk Carton</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="mirror" data-correct="trash" class="Hit_fifteen">
+                                    <img src="content/images/Trash/mirror.png" alt="mirror" class="img-responsive" />
+                                    <h2 style="margin-left:216px; margin-top:-102px; color:white; font-size:14px;">Mirror</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="magazine" data-correct="recycle" class="Hit_seventeen">
+                                    <img src="content/images/Recycle/paper.png" alt="Newspaper" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Newspaper</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="styrofoam" data-correct="trash" class="Hit_twelve">
+                                    <img src="content/images/Trash/foam_tray.png" alt="styrofoam" class="img-responsive" />
+                                    <h2 style="margin-left:201px; margin-top:-102px; color:white; font-size:14px;">Styrofoam</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="egg" data-correct="compost" class="Hit_nineteen">
+                                    <img src="content/images/Compost/egg_shell.png" alt="egg" class="img-responsive" />
+                                    <h2 style="margin-left:200px; margin-top:-102px; color:white; font-size:14px;">Egg Shells</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="phone" data-correct="recycle" class="Hit_twenty">
+                                    <img src="content/images/Recycle/phone.png" alt="phone" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Cell Phone</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="cracker" data-correct="compost" class="Hit_sixteen">
+                                    <img src="content/images/Compost/cracker.png" alt="cracker" class="img-responsive" />
+                                    <h2 style="margin-left:208px; margin-top:-102px; color:white; font-size:14px;">Cracker</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="feather" data-correct="compost" class="Hit_twentytwo">
+                                    <img src="content/images/Compost/feather.png" alt="feather" class="img-responsive" />
+                                    <h2 style="margin-left:204px; margin-top:-102px; color:white; font-size:14px;">A feather</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="plastic-bottle" data-correct="recycle" class="Hit_twentysix">
+                                    <img src="content/images/Recycle/plastic_bottle.png" alt="bottle" class="img-responsive" />
+                                    <h2 style="margin-left:195px; margin-top:-102px; color:white; font-size:14px;">Water Bottle</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="flower" data-correct="compost" class="Hit_twentyseven">
+                                    <img src="content/images/Compost/flower.png" alt="flower" class="img-responsive" />
+                                    <h2 style="margin-left:209px; margin-top:-102px; color:white; font-size:14px;">Flowers</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="plastic-package" data-correct="recycle" class="Hit_twentyeight">
+                                    <img src="content/images/Recycle/sauce_container.png" alt="container" class="img-responsive" />
+                                    <h2 style="margin-left:213px; margin-top:-102px; color:white; font-size:14px;">Plastic</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="leaf" data-correct="compost" class="Hit_twentynine">
+                                    <img src="content/images/Compost/leaf.png" alt="leaf" class="img-responsive" />
+                                    <h2 style="margin-left:212px; margin-top:-102px; color:white; font-size:14px;">A Leaf</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="soap" data-correct="recycle" class="Hit_thirty">
+                                    <img src="content/images/Recycle/soap_bottle.png" alt="bottle" class="img-responsive" />
+                                    <h2 style="margin-left:197px; margin-top:-102x; color:white; font-size:14px;">Soap bottle</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="hay" data-correct="compost" class="Hit_thirtyone">
+                                    <img src="content/images/Compost/matt.png" alt="hay" class="img-responsive" />
+                                    <h2 style="margin-left:222px; margin-top:-102px; color:white; font-size:14px;">Hay</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="socks" data-correct="trash" class="Hit_twentyfour">
+                                    <img src="content/images/Trash/socks.png" alt="socks" class="img-responsive" />
+                                    <h2 style="margin-left:204px; margin-top:-102px; color:white; font-size:14px;">Old Sock</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- trash -->
+
+                            <div class="item">
+                                <div id="soda-bottle" data-correct="recycle" class="Hit_thirtytwo">
+                                    <img src="content/images/Recycle/soda_bottle.png" alt="soda bottle" class="img-responsive" />
+                                    <h2 style="margin-left:197px; margin-top:-102px; color:white; font-size:14px;">Soda bottle</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="peanut" data-correct="compost" class="Hit_thirtythree">
+                                    <img src="content/images/Compost/peanut.png" alt="peanut" class="img-responsive" />
+                                    <h2 style="margin-left:192px; margin-top:-102px; color:white; font-size:14px;">Peanut Shell</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="soda-can" data-correct="recycle" class="Hit_thirtyfour">
+                                    <img src="content/images/Recycle/soda_can.png" alt="soda can" class="img-responsive" />
+                                    <h2 style="margin-left:203px; margin-top:-102px; color:white; font-size:14px;">Soda can</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="raw-pasta" data-correct="compost" class="Hit_twentythree">
+                                    <img src="content/images/Compost/pasta.png" alt="bag" class="img-responsive" />
+                                    <h2 style="margin-left:201px; margin-top:-102px; color:white; font-size:14px;">Raw pasta</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!--recycle -->
+
+                            <div class="item">
+                                <div id="tv" data-correct="recycle" class="Hit_thirtysix">
+                                    <img src="content/images/Recycle/T.V.png" alt="tv" class="img-responsive" />
+                                    <h2 style="margin-left:223px; margin-top:-102px; color:white; font-size:14px;">T.V.</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="tea" data-correct="compost" class="Hit_thirtyseven">
+                                    <img src="content/images/Compost/tea_bag.png" alt="tea bag" class="img-responsive" />
+                                    <h2 style="margin-left:206px; margin-top:-102px; color:white; font-size:14px;">Tea Bag</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- composed -->
+
+                            <div class="item">
+                                <div id="tissue" data-correct="recycle" class="Hit_thirtyeight">
+                                    <img src="content/images/Recycle/tissue.png" alt="tissue" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Tissue Box</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!-- recycle -->
+
+                            <div class="item">
+                                <div id="bag" data-correct="trash" class="Hit_twentythree">
+                                    <img src="content/images/Recycle/plastic_bag.png" alt="bag" class="img-responsive" />
+                                    <h2 style="margin-left:198px; margin-top:-102px; color:white; font-size:14px;">Plastic Bag</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!--recycle -->
+
+                            <div class="item">
+                                <div id="tube" data-correct="trash" class="Hit_twentythree">
+                                    <img src="content/images/Trash/tube.png" alt="bag" class="img-responsive" />
+                                    <h2 style="margin-left:190px; margin-top:-102px; color:white; font-size:14px;">Squeeze tube</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!--recycle -->
+
+                            <div class="item">
+                                <div id="lettuce" data-correct="compost" class="Hit_twentythree">
+                                    <img src="content/images/Compost/lettuce.png" alt="bag" class="img-responsive" />
+                                    <h2 style="margin-left:210px; margin-top:-102px; color:white; font-size:14px;">Lettuce</h2>
+                                    <div id="Big-btn" data-correct="trash">
+                                        <span><p>Can it!<p></span>
+                                    </div>
+                                </div>
+                            </div><!--recycle -->
+
+                        </div>
+                    </div>
+                </div><!-- /.container
+
+                <!-- timer -->
+                <div class="Time">
+                    <h1>TIME:</h1>
+                    <p style="margin-left:93px; margin-top:-39px; color:white; font-size:1.6em;">:</p>
+                </div>
+
+                <div class="time-function">
+                    <div id="counter" class="text-right" style="position:absolute; font-size:1.5em; color:#FFF; margin-top:29px; margin-left:75px; letter-spacing:6px; z-index:1000; width:60px;"></div>
+                </div>
+
+                <!-- dumpster img-->
+                <div class="dumpster">
+                    <img src="content/images/dumpster-1.png" />
+                </div>
+
+               <!--  <div id="Big-btn" class="" data-correct="trash">
+                    <img src="content/images/btn_can_it.png" />
+                    <img src="content/images/btn_can_it_on.png" />
+                </div> -->
+
+                <!-- animate these items falling in to trash cans -->
+
+                <div id="apple-core1" class="Drop_1" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Compost/big_apple_core.png" style=" width:44px;" /></div>
+                <div id="carton-boxes2" class="Drop_2" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/carton_boxes.png" /></div>
+                <div id="batteries3" class="Drop_3" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Trash/batteries.png" /></div>
+                <div id="banana-peel4" class="Drop_4" style="position:absolute; z-index:1; margin-top:40px; margin-left:236px; cursor:pointer;"><img src="content/images/Compost/bannana_peal.png" /></div>
+                <div id="computer5" class="Drop_5" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/computer.png" /></div>
+                <div id="bulb6" class="Drop_6" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/big_bulb.png" /></div>
+                <div id="carrot7" class="Drop_7" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/carrot.png" /></div>
+                <div id="metal-can8" class="Drop_8" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Recycle/food_can.png" /></div>
+                <div id="diaper9" class="Drop_9" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/diaper.png" /></div>
+                <div id="raw-pasta10" class="Drop_10" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/pasta.png" /></div>
+                <div id="paper-box11" class="Drop_11" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/juice_carton.png" /></div>
+                <div id="styrofoam12" class="Drop_12" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/foam_tray.png" /></div>
+                <div id="chicken13" class="Drop_13" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/chicken_drum.png" /></div>
+                <div id="milk-carton14" class="Drop_14" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/milk_carton.png" /></div>
+                <div id="mirror15" class="Drop_15" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/mirror.png" /></div>
+                <div id="cracker16" class="Drop_16" style="position:absolute; z-index:1; margin-top:40px; margin-left:235px; cursor:pointer;"><img src="content/images/Compost/cracker.png" /></div>
+                <div id="magazine17" class="Drop_17" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Recycle/paper.png" /></div>
+                <div id="tube18" class="Drop_18" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/tube.png" /></div>
+                <div id="egg19" class="Drop_19" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/egg_shell.png" /></div>
+                <div id="phone20" class="Drop_20" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/phone.png" /></div>
+                <!-- <div id="paint21" class="Drop_21" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Trash/paint_bucket.png" /></div> -->
+                <div id="feather22" class="Drop_22" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/feather.png" /></div>
+                <div id="bag23" class="Drop_23" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/plastic_bag.png" /></div>
+                <div id="socks24" class="Drop_24" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Trash/socks.png" /></div>
+                <!-- <div id="fish25" class="Drop_25" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/fish.png" /></div> -->
+                <div id="plastic-bottle26" class="Drop_26" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/plastic_bottle.png" /></div>
+                <div id="flower27" class="Drop_27" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Compost/flower.png" /></div>
+                <div id="plastic-package28" class="Drop_28" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/sauce_container.png" /></div>
+                <div id="leaf29" class="Drop_29" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/leaf.png" /></div>
+                <div id="soap30" class="Drop_30" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/soap_bottle.png" /></div>
+                <div id="hay31" class="Drop_31" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Compost/matt.png" /></div>
+                <div id="soda-bottle32" class="Drop_32" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/soda_bottle.png" /></div>
+                <div id="peanut33" class="Drop_33" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Compost/peanut.png" /></div>
+                <div id="soda-can34" class="Drop_34" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Recycle/soda_can.png" /></div>
+                <div id="lettuce35" class="Drop_35" style="position:absolute; z-index:1; margin-top:40px; margin-left:229px; cursor:pointer;"><img src="content/images/Compost/lettuce.png" /></div>
+                <div id="tv36" class="Drop_36" style="position:absolute; z-index:1; margin-top:40px; margin-left:237px; cursor:pointer;"><img src="content/images/Recycle/T.V.png" /></div>
+                <div id="tea37" class="Drop_37" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Compost/tea_bag.png" /></div>
+                <div id="tissue38" class="Drop_38" style="position:absolute; z-index:1; margin-top:40px; margin-left:233px; cursor:pointer;"><img src="content/images/Recycle/tissue.png" /></div>
+               <!--  <div id="toast39" class="Drop_39" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Compost/toast.png" /></div>
+                <div id="tray40" class="Drop_40" style="position:absolute;z-index:1;margin-top:40px;margin-left: 229px;cursor:pointer;"><img src="content/images/Recycle/tray.png" /></div> -->
+
+                <!-- second carousel for trash cans -->
+
+                <div id='carousel_container' style="position:absolute; z-index:1; margin-top:71px; margin-left:0px; left:0;">
+                    <div id='carousel_inner'>
+                        <ul id='carousel_ul'>
+                            <li>
+                                <div class="blank" style="width:120px; height:100px;"></div>
+                            </li>
+
+                            <li id="trash-li">
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+
+                            <li id="compost-li">
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:120px; height:100px;"></div>
+                            </li>
+
+                            <li id="recycle-li">
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+
+                            <li id="trash-li">
+                                <a id="trash"><img style="width:120px;" src="content/images/bin_trash.png" /></a>
+                            </li>
+
+                            <li>
+                                <div class="blank" style="width:120px; height:100px;"></div>
+                            </li>
+
+                            <li id="compost-li">
+                                <a id="compost"><img style="width:120px;" src="content/images/bin_compost.png" /></a>
+                            </li>
+
+                            <li id="recycle-li">
+                                <a id="recycle"><img style="width:120px;" src="content/images/bin_recycle.png" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <p style="position:absolute; top:89px; left:96px; text-align:center; font-size:36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+                <img src="content/images/background/bkg_1.png" />
             </div>
+
+            <div id="yes-btn">
+                <img src="content/images/btn_yes_on.png" />
+                <img src="content/images/btn_yes.png" />
+            </div>
+
+            <div id="no-btn">
+                <img src="content/images/btn_no_on.png" />
+                <img src="content/images/btn_no.png" />
+            </div>
+
         </div>
     </div>
-</div><!--end container body-content-->
+</div>
 
+<div class="modal fade current" id="retry-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <img src="content/images/header_5.png" style="position:absolute; top:25px; left:77px; z-index:1; width:346px; height:158px;" />
+                <img src="content/images/background/frame.png" />
+            </div>
+
+            <div id="re-try" style="position:absolute; top:203px; left:100px; cursor:pointer;">
+<!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                <img src="content/images/btn_replay_on.png" />
+                <img src="content/images/btn_replay.png" />
+            </div>
+
+            <div id="next-button2">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="fail-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:0px;">
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <p style="position:absolute; top:46px; left:162px; text-align:center; font-size:36px;"></p>
+                <div class="append-score">
+                    <p></p>
+                </div>
+                <img src="content/images/header_7.png" style="position:absolute; z-index:1; top:35px; left:129px; width:230px; height:164px;" />
+                <img src="content/images/background/frame.png" />
+            </div>
+
+            <div id="re-try-2" style="position:absolute; top:203px; left:210px; cursor:pointer;">
+<!-- When game is lost this button is supposed to restart ai2.html. Errase when ready and add function on jquery instead -->
+                <img src="content/images/btn_replay_on.png" />
+                <img src="content/images/btn_replay.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="flip-screen" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+
+                </div>
+                <p style="position:absolute; top:136px; left:128px; text-align:center;">It's <img src="content/images/header_6.png" /> time!</p>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="next-button3">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
 

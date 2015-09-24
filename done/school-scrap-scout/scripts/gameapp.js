@@ -86,7 +86,7 @@ moduleGame.controller('TodoListCtrl', function ($scope, $rootScope, $window) {
         angular.forEach($scope.todos2, function (item) {
             $scope.todos3.push({
                 item: item,
-                rank: 0.5 - $window.Math.random()
+                rank: 1 - $window.Math.random()
             });
         });
 
