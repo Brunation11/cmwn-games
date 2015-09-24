@@ -1,4 +1,3 @@
-
     try
     {
         Background.load();
@@ -549,9 +548,7 @@
         $('#carousel_ul').carousel().animate();
 });
 
-
-function playStart()
-{
+function playStart() {
     try
     {
         start.loop = true;
@@ -563,8 +560,7 @@ function playStart()
     }
 }
 
-function pauseStart()
-{
+function pauseStart() {
     try {
         start.pause();
     }
@@ -589,7 +585,6 @@ var timer1 = new (function () {
 });
 
 function delayTimerStart(delayLength) {
-
     $('#counter').slideUp(300).delay(delayLength).queue(function () {
 
     });
@@ -602,8 +597,7 @@ function startTimer() {
     timer1.Timer = $.timer(updateTimer, incrementTime, true);
 }
 
-function playWonGame()
-{
+function playWonGame() {
     try {
         wongame.load();
         wongame.play();
@@ -613,8 +607,7 @@ function playWonGame()
     }
 }
 
-function playFlip()
-{
+function playFlip() {
     try {
         flip.load();
         flip.play();
@@ -624,8 +617,7 @@ function playFlip()
     }
 }
 
-function playRunOut()
-{
+function playRunOut() {
     try {
         runout.load();
         runout.play();
