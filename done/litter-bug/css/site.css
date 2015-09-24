@@ -7097,6 +7097,7 @@ input[type="checkbox"].input-validation-error {
   margin-left: 282px;
   margin-top: 132px;
   cursor: pointer;
+  display: none;
 }
 .no-1 img:first-child {
   position: absolute;
@@ -7159,6 +7160,7 @@ input[type="checkbox"].input-validation-error {
   margin-left: 373px;
   margin-top: 165px;
   cursor: pointer;
+  display: none;
 }
 .no-2 img:first-child {
   position: absolute;
@@ -7212,6 +7214,7 @@ input[type="checkbox"].input-validation-error {
   margin-left: 108px;
   margin-top: 165px;
   cursor: pointer;
+  display: none;
 }
 .no-3 img:first-child {
   position: absolute;
