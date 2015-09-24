@@ -181,43 +181,43 @@ $(document).ready(function () {
     //Wrong Answers
 
     $('#green').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#damp').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#monsoon').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#trop').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#wet').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#steam').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#balm').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
     $('#swamp').click(function () {
-        clicks.load();
-        clicks.play();
+        wrong.load();
+        wrong.play();
     });
 
 });
