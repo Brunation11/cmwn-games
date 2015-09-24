@@ -1,8 +1,8 @@
     $(document).ready(function () {
-        
 
-    
-    $('#pop-up').modal('show');
+
+
+    // $('#pop-up').modal('show');
 
 
 
