@@ -42,20 +42,18 @@ $(document).ready(function () {
         $('#myCarousel').carousel(rand);
 
     }, 900000);
+
     // close window
     $('.scape-Btn').click(function () {
-
         $('#quit-game').modal('show');
     });
 
     $('#no-btn').click(function () {
-
         $('#quit-game').modal('hide');
     });
 
     $('.exit-Modal-Btn').click(function () {
         $('#quit-game').modal('hide');
-
     });
 
     // hide Good job sorting screen message
@@ -75,6 +73,7 @@ $(document).ready(function () {
             //no sound - log error
         }
     }
+
     function playWrong() {
         try
         {
@@ -99,8 +98,6 @@ $(document).ready(function () {
             var selected_item = $("#carousel_ul li")[2].id;
             selected_item = selected_item.replace("-li", "");
 
-
-
             if (click_correct === selected_item) {
                 //remove the correct item so ite does not diplay again
                 // $(this).remove();
@@ -115,9 +112,7 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top : -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 10);
-                     /// change color of active state //
-
-
+                    /// change color of active state //
                 }
 
                 if (correct_items.length === 2) {
@@ -125,7 +120,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 3) {
@@ -133,15 +127,13 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 4) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 5) {
@@ -149,7 +141,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15});
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 6) {
@@ -165,7 +156,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 8) {
@@ -173,7 +163,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 9) {
@@ -181,7 +170,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 10) {
@@ -189,7 +177,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 11) {
@@ -197,7 +184,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 12) {
@@ -205,23 +191,20 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 13) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 14) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 15) {
@@ -229,23 +212,20 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 16) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 17) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 18) {
@@ -253,7 +233,6 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 19) {
@@ -261,23 +240,20 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 20) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 21) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 22) {
@@ -285,15 +261,13 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 23) {
-                   Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 24) {
@@ -301,137 +275,119 @@ $(document).ready(function () {
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 25) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 26) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 27) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 28) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 29) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 30) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 31) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 32) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 33) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 34) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 35) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 36) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 37) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 38) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 39) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
 
                 if (correct_items.length === 40) {
-                     Correct.play();
+                    Correct.play();
                     $('#score p').html(function (i, val) { return val * 1 + 15 });
                     $('.win').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
-
                 }
-
             }
 
             else {
@@ -445,12 +401,12 @@ $(document).ready(function () {
         //});
 
         $("#" + click_item + "1").animate({
-                'marginTop': "+=220px"  //moves down
-            }, 800).hide(1);
+            'marginTop': "+=220px"  //moves down
+        }, 800).hide(1);
 
         $("#" + click_item + "2").animate({
-                'marginTop': "+=220px"  //moves down
-            }, 800).hide(1);
+            'marginTop': "+=220px"  //moves down
+        }, 800).hide(1);
 
         $("#" + click_item + "3").animate({
             'marginTop': "+=220px"  //moves down
@@ -624,6 +580,7 @@ function playStart()
         //no sound - log error
     }
 }
+
 function pauseStart()
 {
     try {
@@ -638,7 +595,6 @@ function startGame() {
     startTimer();
 
     playStart();
-
 }
 
 var $countdown;
@@ -652,21 +608,16 @@ var timer1 = new (function () {
 
 function delayTimerStart(delayLength) {
 
-
     $('#counter').slideUp(300).delay(delayLength).queue(function () {
 
     });
 }
-
-
 
 function startTimer() {
     $countdown = $('#counter');
     $countdown.show();
 
     timer1.Timer = $.timer(updateTimer, incrementTime, true);
-
-
 }
 
 function playWonGame()
@@ -747,7 +698,6 @@ function updateTimer() {
 
                     //need to tell the system that is is time to award flip
 
-
                     $('#retry-screen').modal('hide');
                 });
                 $("#re-try").click(function () {
@@ -777,9 +727,6 @@ function updateTimer() {
             }
 
         });
-
-
-
     }
     // Increment timer position
     currentTime -= incrementTime;
@@ -801,8 +748,4 @@ function displayTime(timeString) {
     //if (minutes = 0) minutes = "00";
 
     return minutes.toString() + seconds.toString();
-
-
-
 }
-
