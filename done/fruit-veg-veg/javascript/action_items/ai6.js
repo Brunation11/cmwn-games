@@ -115,7 +115,7 @@
             console.log('already_matched: ' + already_matched);
             console.log('randomly selected item: ' + selected_item);
 
-            if (already_matched.length > 11)
+            if (already_matched.length > 10)
             {
                 // alert('go to the nex page');
                 $("#putcontenthere").load("action_items/ai7.html");
@@ -342,10 +342,10 @@
             completed_sets.push(win_total);
 
 
-            if (completed_sets.length === 11) {
-                $("#match").hide();
-                $("#putcontenthere").load("action_items/ai7.html");
-            }
+            // if (completed_sets.length === 10) {
+            //     $("#match").hide();
+            //     $("#putcontenthere").load("action_items/ai7.html");
+            // }
         });
 
 
