@@ -5,6 +5,8 @@
     $(document).ready(function () {
         $("ul").css({ 'margin-left': '-37px' });
         $("li").css({ 'margin-top': '11px' });
+        $('.Veggies').show();
+        $('.Fruit').show();
         //this varible stores the correct matches for the item being shown
         var item_correct_matches = new Array();
 
@@ -113,7 +115,7 @@
             console.log('already_matched: ' + already_matched);
             console.log('randomly selected item: ' + selected_item);
 
-            if (already_matched.length > 10)
+            if (already_matched.length > 11)
             {
                 // alert('go to the nex page');
                 $("#putcontenthere").load("action_items/ai7.html");
@@ -340,7 +342,7 @@
             completed_sets.push(win_total);
 
 
-            if (completed_sets.length === 10) {
+            if (completed_sets.length === 11) {
                 $("#match").hide();
                 $("#putcontenthere").load("action_items/ai7.html");
             }

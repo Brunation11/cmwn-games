@@ -2,7 +2,7 @@ $(document).ready(function () {
     setTimeout(function(){
         slides.load();
         slides.play();
-    },200);
+    },2000);
     $('.vegetables').hide().delay(500).fadeIn(2000);
 
     $('.Next').hide().delay(2000).fadeIn(2000);
