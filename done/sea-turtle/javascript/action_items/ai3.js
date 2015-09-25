@@ -14,29 +14,29 @@ var full;
         $('.yellow img').fadeOut(3000);
         $('.yellow-fish img').fadeOut(3000);
 
-        $('#btn').hide();
+        //$('#btn').hide();
 
-        $('#f1').hide();
-        $('#f2').hide();
-        $('#f3').hide();
-        $('#f4').hide();
-        $('#f5').hide();
-        $('#f6').hide();
-        $('#f7').hide();
-        $('#f8').hide();
-        $('#f9').hide();
-        $('#f10').hide();
+        // $('#f1').hide();
+        // $('#f2').hide();
+        // $('#f3').hide();
+        // $('#f4').hide();
+        // $('#f5').hide();
+        // $('#f6').hide();
+        // $('#f7').hide();
+        // $('#f8').hide();
+        // $('#f9').hide();
+        // $('#f10').hide();
 
-        $('#fish1').hide();
-        $('#shrimp1').hide();
-        $('#anchor1').hide();
-        $('#fish3').hide();
-        $('#black1').hide();
-        $('#crab1').hide();
-        $('#fish5').hide();
-        $('#safe1').hide();
-        $('#fish7').hide();
-        $('#dolphin1').hide();
+        // $('#fish1').hide();
+        // $('#shrimp1').hide();
+        // $('#anchor1').hide();
+        // $('#fish3').hide();
+        // $('#black1').hide();
+        // $('#crab1').hide();
+        // $('#fish5').hide();
+        // $('#safe1').hide();
+        // $('#fish7').hide();
+        // $('#dolphin1').hide();
 
         $('#btn').click(function () {
             $("#putcontenthere").load("action_items/ai4.html");
