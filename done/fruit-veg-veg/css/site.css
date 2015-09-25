@@ -5496,7 +5496,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0;
+  opacity: 0.5;
   filter: alpha(opacity=50);
 }
 .modal-header {
@@ -6709,6 +6709,7 @@ input[type="checkbox"].input-validation-error {
   z-index: 2;
   margin-left: 155px;
   margin-top: 60px;
+  display: none;
 }
 .Play {
   position: absolute;
@@ -6736,6 +6737,7 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 23px;
   margin-top: 251px;
+  display: none;
 }
 .text {
   position: absolute;
@@ -6798,12 +6800,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 284px;
   margin-top: 48px;
+  display: none;
 }
 .header-text {
   position: absolute;
   z-index: 1;
   margin-top: 134px;
   margin-left: 260px;
+  display: none;
 }
 .tomato {
   position: absolute;
@@ -6843,12 +6847,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-top: 122px;
   margin-left: 41px;
+  display: none;
 }
 .body-copy-1 {
   position: absolute;
   z-index: 1;
   margin-top: 193px;
   margin-left: 35px;
+  display: none;
 }
 .Peas {
   position: absolute;
@@ -6920,6 +6926,7 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   margin-left: 29px;
   margin-top: 16px;
+  display: none;
 }
 .game-frame {
   position: absolute;
@@ -6949,12 +6956,14 @@ input[type="checkbox"].input-validation-error {
   z-index: 2;
   margin-top: 170px;
   margin-left: 480px;
+  display: none;
 }
 .Fruit {
   position: absolute;
   z-index: 2;
   margin-top: 170px;
   margin-left: 13px;
+  display: none;
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -7374,6 +7383,7 @@ input[type="checkbox"].input-validation-error {
   -webkit-animation: spin 1s linear;
   -moz-animation: spin 1s linear;
   animation: spin 1s linear;
+  display: none;
 }
 .body-copy {
   position: absolute;

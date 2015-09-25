@@ -152,6 +152,8 @@
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
+                        correct.load();
+                        correct.play();
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
@@ -175,7 +177,8 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-
+                    incorrect.load();
+                    incorrect.play();
 
 
                 }
@@ -207,6 +210,8 @@
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
+                        correct.load();
+                        correct.play();
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
@@ -229,7 +234,8 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-
+                    incorrect.load();
+                    incorrect.play();
                 }
             }
             return;
@@ -299,7 +305,8 @@
             backImg.remove();
             $('.bg-background').append(backImg);
             backImg.fadeIn();
-
+            play.load();
+            play.play();
             //reset items
             resetMatchArrays();
             selectRandomListItem();

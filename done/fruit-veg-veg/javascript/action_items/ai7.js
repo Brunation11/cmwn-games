@@ -1,8 +1,15 @@
 $(document).ready(function () {
+    bkmusic.volume = 0.2;
+    done.load();
+    done.play();
     $('.Next').hide().delay(2000).fadeIn(2000);
 
     $('.Next').click(function(){
-        $("#putcontenthere").load("action_items/ai8.html");
+        play.load();
+        play.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai8.html");
+        },1000);
     });
 
     $(".second-last").hide();

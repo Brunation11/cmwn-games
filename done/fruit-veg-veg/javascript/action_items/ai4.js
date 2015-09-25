@@ -1,15 +1,23 @@
 $(document).ready(function () {
+    setTimeout(function(){
+        slides.load();
+        slides.play();
+    },200);
     $('.vegetables').hide().delay(500).fadeIn(2000);
 
     $('.Next').hide().delay(2000).fadeIn(2000);
 
     $('.Next').click(function(){
-        $("#putcontenthere").load("action_items/ai5.html");
+        play.load();
+        play.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai5.html");
+        },1000);
     });
 
-    $(".body-copy").hide();
+    $(".body-copy-1").hide();
     setTimeout(function () {
-        $('.body-copy').hide().delay(1000).fadeIn(600);
+        $('.body-copy-1').hide().delay(1000).fadeIn(600);
     }, 1000);
 });
 
