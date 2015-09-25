@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+     music.load();
+     music.play();
+      music.volume = 0.3;
     $(".Next1").hide();
     setTimeout(function() {
         arrows.load();

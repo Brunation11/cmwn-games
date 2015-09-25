@@ -75,6 +75,7 @@ $(document).ready(function () {
 
         }
         if (AI3.length === 2) {
+            music.pause();
             $(".last-text").hide();
             $(".Video-frame-2").show();
             //document.location.href = "/ActionItem/AI4";

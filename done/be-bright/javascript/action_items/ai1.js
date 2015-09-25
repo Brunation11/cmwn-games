@@ -20,6 +20,8 @@ setTimeout(function() {
     $(".Next").click(function () {
         click.load();
         click.play();
+
+        music.pause();
         var Next = $(".Next");
 
         AI2.push(Next);
