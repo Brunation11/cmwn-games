@@ -33,24 +33,27 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-    $('#game-info').modal('show');
-    $('#scoop-game').hide();
-    $('#head2').hide().show(1000, function () {
-        progress.play();
-    });
-    $('#head3').hide().show(2000, function () {
-        progress2.play();
-    });
-    $('#head4').hide().show(3000, function () {
-        progress3.play();
-    });
+    $(".body-content").addClass("net");
+    startGame();
 
-    $('#next-button3').click(function () {
-        $(".body-content").addClass("net");
-        $('#game-info').modal('hide');
-        $('#scoop-game').show();
-        startGame();
-    });
+    // $('#game-info').modal('show');
+    // $('#scoop-game').hide();
+    // $('#head2').hide().show(1000, function () {
+    //     progress.play();
+    // });
+    // $('#head3').hide().show(2000, function () {
+    //     progress2.play();
+    // });
+    // $('#head4').hide().show(3000, function () {
+    //     progress3.play();
+    // });
+
+    // $('#next-button3').click(function () {
+    //     $(".body-content").addClass("net");
+    //     $('#game-info').modal('hide');
+    //     $('#scoop-game').show();
+    //     startGame();
+    // });
 
     $('#next-button2').click(function () {
         $('#game-complete').modal('hide');
