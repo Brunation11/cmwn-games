@@ -3,6 +3,14 @@ var bulb_4 = new Array();
 $(document).ready(function () {
 headerone.load();
 headerone.play();
+$('.text_1').show();
+$('.text_2').show();
+$('.text_3').show();
+$('.text_4').show();
+$('.bulb_1').show();
+$('.bulb_2').show();
+$('.bulb_3').show();
+$('.bulb_4').show();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');

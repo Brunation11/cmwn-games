@@ -2,6 +2,7 @@ var AI3 = new Array();
 var switch_5 = new Array();
 
 $(document).ready(function () {
+
     headtwo.load();
     headtwo.play();
     $('.close-Btn').click(function () {
