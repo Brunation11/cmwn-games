@@ -1,5 +1,5 @@
 $("#down").click(function(){
-  $(".block").animate({"top": "+=50px"}, "fast", checkCollisions);
+  $(".block").animate({"top": "+=190px"}, "fast", checkCollisions);
 });
 
 function getPositions(box) {
@@ -24,7 +24,7 @@ function checkCollisions(){
   var horizontalMatch = comparePositions(pos[0], pos2[0]);
   var verticalMatch = comparePositions(pos[1], pos2[1]);
   var match = horizontalMatch && verticalMatch;
-  if (match) { alert("Collision works!!!")}
+  if (match) { alert("Collision works!!!");}
 }
 
 
