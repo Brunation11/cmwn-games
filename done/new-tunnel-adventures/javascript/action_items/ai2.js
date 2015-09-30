@@ -7,6 +7,13 @@ $(document).ready(function () {
             $('#slide_1 img').hide();
             $('#slide_2 img').fadeIn(2000);
             $('#slide_2 h2').fadeIn(2000);
+            
+        try {
+           titlel.pause();
+        }
+        catch (err) {
+           //no sound - log error
+        }
         });
         
           $('.n1').one("click", function () {

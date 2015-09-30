@@ -15,6 +15,12 @@ $('.bkg-image').css('background-image','url(content/images/background/bkg_2.png)
             $('#slide_2 ul').hide();
             $('#slide_3 img').fadeIn(2000);
             $('#slide_3 h2').fadeIn(2000);
+            try {
+           steps.play();
+        }
+        catch (err) {
+           //no sound - log error
+        }
             });
 
          $('.nextBtn3').click(function () {
@@ -72,6 +78,18 @@ $('.bkg-image').css('background-image','url(content/images/background/bkg_2.png)
             $('#slide_10 h2').hide();
             $('#slide_11 img').fadeIn(2000);
             $('#slide_11 h2').fadeIn(2000);
+            try {
+           steps.pause();
+        }
+        catch (err) {
+           //no sound - log error
+        }
+            try {
+           flip.play();
+        }
+        catch (err) {
+           //no sound - log error
+        }
             });
 
     });
