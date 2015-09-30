@@ -1,3 +1,12 @@
+.main{
+  border: 1px solid red;
+  width: 616px;
+  height: 400px;
+  position: absolute;
+  z-index: 1;
+
+}
+
 .block {
   position:absolute;
   background-color:#abc;
@@ -5,13 +14,60 @@
   width:90px;
   height:90px;
   margin:5px;
+  z-index:1;
 }
-.bomb {
+
+
+.compost {
   position:absolute;
-  background-color:red;
-  left:219px;
-  top:251px;
+  background-color:yellow;
+  top: 251px;
   width:102px;
   height:123px;
   margin:5px;
+  z-index:1;
+
+  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
 }
+
+.trash {
+  position:absolute;
+  background-color:blue;
+  top: 251px;
+  width:102px;
+  height:123px;
+  margin:5px;
+  z-index:1;
+
+  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+}
+
+.recycle {
+  position:absolute;
+  background-color:green;
+  top: 251px;
+  width:102px;
+  height:123px;
+  margin:5px;
+  z-index:1;
+
+  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
+}
+
+
+
+
+
+
+
+
+
