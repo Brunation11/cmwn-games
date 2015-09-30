@@ -1,5 +1,35 @@
+
+//////////////////////////////////////////////////// set 1 /////////////////////////////////////////////////////////////////////////////////////////////////////
+$(function () {
+    var current = 1,
+
+    $imgs = jQuery('.cans .swap');
+    imgAmount = $imgs.length;
+
+    $($imgs.css('position', 'absolute').hide().get(1)).show();
+
+
+    window.setInterval(swapImages, 6000);
+
+    function swapImages() {
+
+        var $currentImg = $('.swap:visible');
+
+        var $nextImg = $('.swap:hidden').eq(Math.floor(Math.random() * $('.swap:hidden').length));
+            speed = 500;
+        // animation speed should be the same for both images so we have a smooth change
+        $currentImg.fadeOut(speed);
+        $nextImg.fadeIn(speed);
+    }
+});
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 $("#down").click(function(){
-  $(".block").animate({"top": "+=190px"}, "fast", checkCollisions);
+  $(".block").animate({"top": "+=280px"}, "fast", checkCollisions);
 });
 
 function getPositions(box) {
@@ -17,7 +47,7 @@ function comparePositions(p1, p2) {
 }
 
 function checkCollisions(){
-  var box = $(".bomb")[0];
+  var box = $(".compost")[0];
   var pos = getPositions(box);
 
   var pos2 = getPositions(this);
