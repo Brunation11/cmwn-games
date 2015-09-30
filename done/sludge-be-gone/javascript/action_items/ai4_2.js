@@ -72,7 +72,13 @@ $(document).ready(function () {
     });
 
     $('#replay').click(function () {
-        $("#putcontenthere").load("action_items/ai4_2.html");    
+        $("#putcontenthere").load("action_items/ai4_2.html");
+        correct_matches = new Array();
+        currentTime = 90000;
+        timer1.Timer.play();
+
+        start.loop = true;
+        start.play();
     });
 
 });

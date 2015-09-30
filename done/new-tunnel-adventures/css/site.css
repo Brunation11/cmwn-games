@@ -5496,7 +5496,7 @@ button.close {
   filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-  opacity: 0;
+  opacity: 0.5;
   filter: alpha(opacity=50);
 }
 .modal-header {
@@ -7335,6 +7335,13 @@ input[type="checkbox"].input-validation-error {
 .ai-margin {
   margin: 3px;
 }
+.bkg-image {
+  background-repeat: no-repeat;
+  background-size: 616px 400px;
+  height: 400px;
+  width: 616px;
+  margin-left: 15px;
+}
 .custom-font {
   font-family: 'cmwn';
 }
@@ -7510,6 +7517,25 @@ input[type="checkbox"].input-validation-error {
   height: 400px;
   z-index: 1;
   overflow: hidden;
+}
+ul {
+  position: absolute;
+  z-index: 3;
+}
+li {
+  position: absolute;
+  z-index: 3;
+  width: 233px;
+  font-family: source sans pro;
+  font-size: 19px;
+  font-weight: 900;
+}
+span {
+  z-index: 3;
+  width: 50px;
+  font-family: source sans pro;
+  font-size: 14px;
+  font-weight: 900;
 }
 /* Let's get this party started */
 ::-webkit-scrollbar {
