@@ -7518,6 +7518,25 @@ input[type="checkbox"].input-validation-error {
   z-index: 1;
   overflow: hidden;
 }
+ul {
+  position: absolute;
+  z-index: 3;
+}
+li {
+  position: absolute;
+  z-index: 3;
+  width: 233px;
+  font-family: source sans pro;
+  font-size: 19px;
+  font-weight: 900;
+}
+span {
+  z-index: 3;
+  width: 50px;
+  font-family: source sans pro;
+  font-size: 14px;
+  font-weight: 900;
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
   width: 12px;
