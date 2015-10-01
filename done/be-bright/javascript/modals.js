@@ -1,5 +1,6 @@
 $(document).ready(function () {
-
+music.load();
+music.play();
     $('.A').click(function () {
 
         $("#level-complete").modal('show');

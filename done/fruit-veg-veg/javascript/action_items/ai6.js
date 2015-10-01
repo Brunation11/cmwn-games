@@ -5,6 +5,8 @@
     $(document).ready(function () {
         $("ul").css({ 'margin-left': '-37px' });
         $("li").css({ 'margin-top': '11px' });
+        $('.Veggies').show();
+        $('.Fruit').show();
         //this varible stores the correct matches for the item being shown
         var item_correct_matches = new Array();
 
@@ -152,6 +154,8 @@
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
+                        correct.load();
+                        correct.play();
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
@@ -175,7 +179,8 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-
+                    incorrect.load();
+                    incorrect.play();
 
 
                 }
@@ -207,6 +212,8 @@
 
                     //check to see if you have the correct number of matches for the selected item
                     if (matches_correctly.length === 1) {
+                        correct.load();
+                        correct.play();
                         console.log('all done');
                         //end of this set
                         $('.Next').show();
@@ -229,7 +236,8 @@
                 }
                 else {
                     //this is an incorrect match - do incorrect actions
-
+                    incorrect.load();
+                    incorrect.play();
                 }
             }
             return;
@@ -299,7 +307,8 @@
             backImg.remove();
             $('.bg-background').append(backImg);
             backImg.fadeIn();
-
+            play.load();
+            play.play();
             //reset items
             resetMatchArrays();
             selectRandomListItem();
@@ -333,10 +342,10 @@
             completed_sets.push(win_total);
 
 
-            if (completed_sets.length === 10) {
-                $("#match").hide();
-                $("#putcontenthere").load("action_items/ai7.html");
-            }
+            // if (completed_sets.length === 10) {
+            //     $("#match").hide();
+            //     $("#putcontenthere").load("action_items/ai7.html");
+            // }
         });
 
 

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+	flip.play();
+
     $('.bkg-image').css('background-image','url(content/images/background/bakg_1.png)');
 
     $(".next-6").hide().delay(2000).fadeIn(1000);

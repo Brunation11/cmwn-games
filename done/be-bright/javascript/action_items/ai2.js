@@ -3,6 +3,19 @@ var bulb_4 = new Array();
 $(document).ready(function () {
 headerone.load();
 headerone.play();
+headerone.volume = 1.0;
+
+music.load();
+music.play();
+music.volume = 0.1,
+$('.text_1').show();
+$('.text_2').show();
+$('.text_3').show();
+$('.text_4').show();
+$('.bulb_1').show();
+$('.bulb_2').show();
+$('.bulb_3').show();
+$('.bulb_4').show();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');
@@ -35,6 +48,7 @@ headerone.play();
     $(".bulb_1 img:first").click(function () {
         messageone.load();
         messageone.play();
+        messageone.volume = 0.8;
         bulbtrack.load();
         bulbtrack.play();
 
@@ -78,6 +92,7 @@ headerone.play();
               setTimeout(function() {
                         messagetwo.load();
                         messagetwo.play();
+                        messagetwo.volume = 0.8;
                         },1000);
             messageone.pause();
             messagethree.pause();
@@ -107,6 +122,7 @@ headerone.play();
                 setTimeout(function() {
                         messagethree.load();
                         messagethree.play();
+                        messagethree.volume = 0.8;
                         },1000);
                 messagetwo.pause();
                 messageone.pause();
@@ -134,6 +150,7 @@ headerone.play();
                     setTimeout(function() {
                         messagefour.load();
                         messagefour.play();
+                        messagefour.volume = 0.8;
                         },1000);
                     messagetwo.pause();
                     messagethree.pause();

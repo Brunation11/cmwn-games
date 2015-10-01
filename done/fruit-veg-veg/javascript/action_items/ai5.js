@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    setTimeout(function(){
+        slides.load();
+        slides.play();
+    },2000);
     $('.main-header').hide().delay(500).fadeIn(2000);
 
     $(".Veggies").hide();
@@ -8,7 +12,11 @@ $(document).ready(function () {
     $('.Next').hide();
 
     $('.Next').click(function(){
-        $("#putcontenthere").load("action_items/ai6.html");
+        play.load();
+        play.play();
+        setTimeout(function(){
+            $("#putcontenthere").load("action_items/ai6.html");
+        },1000);
     });
 
     setTimeout(function () {

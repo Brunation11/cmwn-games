@@ -2,6 +2,7 @@ var AI3 = new Array();
 var switch_5 = new Array();
 
 $(document).ready(function () {
+
     headtwo.load();
     headtwo.play();
     $('.close-Btn').click(function () {
@@ -74,6 +75,7 @@ $(document).ready(function () {
 
         }
         if (AI3.length === 2) {
+            music.pause();
             $(".last-text").hide();
             $(".Video-frame-2").show();
             //document.location.href = "/ActionItem/AI4";
