@@ -6286,10 +6286,6 @@ button.close {
     display: none !important;
   }
 }
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-}
 /* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
@@ -7340,7 +7336,6 @@ input[type="checkbox"].input-validation-error {
   width: 622px;
   padding: 3px;
   position: absolute;
-  margin-left: 97px;
 }
 .ai-margin {
   margin: 3px;
