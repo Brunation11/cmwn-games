@@ -7332,6 +7332,10 @@ input[type="checkbox"].input-validation-error {
   padding: 3px;
   position: absolute;
 }
+.bkg-image img {
+  width: 616px;
+  margin-left: -30px;
+}
 .close-Btn {
   margin-top: 97px;
   z-index: 1;
@@ -7428,10 +7432,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
-}
 #sign img {
   float: right;
   margin-top: 384px;
@@ -7455,10 +7455,6 @@ input[type="checkbox"].input-validation-error {
   margin-right: 0px;
   position: absolute;
   z-index: 1;
-}
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
 }
 #sign img {
   float: right;
@@ -7500,10 +7496,6 @@ input[type="checkbox"].input-validation-error {
   margin-right: 0px;
   position: absolute;
   z-index: 1;
-}
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
 }
 #sign img {
   float: right;
@@ -7699,10 +7691,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
-}
 #sign img {
   float: right;
   margin-top: 384px;
@@ -7747,10 +7735,6 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 1;
 }
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
-}
 #sign img {
   float: right;
   margin-top: 384px;
@@ -7790,10 +7774,6 @@ p {
   margin-right: 0px;
   position: absolute;
   z-index: 1;
-}
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
 }
 #sign img {
   float: right;
@@ -7852,10 +7832,6 @@ p {
   position: absolute;
   z-index: 1;
 }
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
-}
 #sign img {
   float: right;
   margin-top: 384px;
@@ -7896,10 +7872,6 @@ p {
   position: absolute;
   z-index: 1;
 }
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
-}
 #sign img {
   float: right;
   margin-top: 384px;
@@ -7939,10 +7911,6 @@ p {
   margin-right: 0px;
   position: absolute;
   z-index: 1;
-}
-.bkg-image img {
-  width: 616px;
-  margin-left: -30px;
 }
 #sign img {
   float: right;
