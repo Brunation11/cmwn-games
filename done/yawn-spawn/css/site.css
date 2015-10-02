@@ -7329,6 +7329,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   z-index: 3;
   left: 572px;
+  top: 0;
 }
 .bkg-image {
   background-image: url('../content/images/BKG_1.png');
