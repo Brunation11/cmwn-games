@@ -1,14 +1,14 @@
-var bgMusic = $("#background")[0],
-    playing = true;
+// var bgMusic = $("#background")[0],
+//     playing = true;
 
-    bgMusic.addEventListener('ended', function () {
-        this.currentTime = 0;
-        if (playing) {
-            this.play();
-        }
-    }, false);
+//     bgMusic.addEventListener('ended', function () {
+//         this.currentTime = 0;
+//         if (playing) {
+//             this.play();
+//         }
+//     }, false);
 
-    background.play();
+//     background.play();
 
 $(document).ready(function () {
 
@@ -62,6 +62,7 @@ $(document).ready(function () {
         $(".animate-flower5").css("animation-play-state", "running");
         $('#butterfly').css({ top: 100, left: 150 });
         $("#f1").hide();
+        testCollision();
     });
 
     $('#c2').click(function () {
@@ -320,6 +321,9 @@ $(document).ready(function () {
                     $("#f1").show();
                     facts.load();
                     facts.play();
+                }
+                else {
+                    return false;
                 }
 
                 if (goal_tracker.goal === 2) {
