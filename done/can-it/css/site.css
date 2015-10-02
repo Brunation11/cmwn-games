@@ -7753,10 +7753,6 @@ input[type="checkbox"].input-validation-error {
   height: 123px;
   margin: 5px;
   z-index: 1;
-  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
 }
 .trash {
   position: absolute;
@@ -7766,10 +7762,6 @@ input[type="checkbox"].input-validation-error {
   height: 123px;
   margin: 5px;
   z-index: 1;
-  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
 }
 .recycle {
   position: absolute;
@@ -7779,8 +7771,4 @@ input[type="checkbox"].input-validation-error {
   height: 123px;
   margin: 5px;
   z-index: 1;
-  -webkit-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -moz-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  -ms-animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
-  animation: spin 1000ms linear infinite, moveRightToLeft 6.6s linear infinite;
 }

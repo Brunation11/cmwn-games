@@ -1,27 +1,70 @@
+$(document).ready(function(){
+    $(".compost").css("left", "650px");
+ first();
+ second();
+ third();
 
-//////////////////////////////////////////////////// set 1 /////////////////////////////////////////////////////////////////////////////////////////////////////
-$(function () {
-    var current = 1,
+    function first(){
+         $('.compost').animate({left:'-=760px'},5000, function(){
+            $(".compost").css("left", "530px");
+             // second();
+             var y = $('.compost').position();
 
-    $imgs = jQuery('.cans .swap');
-    imgAmount = $imgs.length;
+             if ("Left position:" + y.left  === 300){
+                alert("You got it");
+             }
+             //if position of compost Y is greater than 50% main div width
+             // call second() if is true else dont call
 
-    $($imgs.css('position', 'absolute').hide().get(1)).show();
 
+         });
 
-    window.setInterval(swapImages, 6000);
-
-    function swapImages() {
-
-        var $currentImg = $('.swap:visible');
-
-        var $nextImg = $('.swap:hidden').eq(Math.floor(Math.random() * $('.swap:hidden').length));
-            speed = 500;
-        // animation speed should be the same for both images so we have a smooth change
-        $currentImg.fadeOut(speed);
-        $nextImg.fadeIn(speed);
     }
+
+    function second(){
+         $('.trash').animate({left:'-=760px'},5000, function(){
+            $(".trash").css("left", "530px");
+             third();
+
+         });
+
+    }
+
+    function third(){
+         $('.recycle').animate({left:'-=760px'},5000, function(){
+            $(".recycle").css("left", "530px");
+             first();
+
+         });
+
+    }
+
+
+
 });
+//////////////////////////////////////////////////// set 1 /////////////////////////////////////////////////////////////////////////////////////////////////////
+// $(function () {
+//     var current = 1,
+
+//     $imgs = jQuery('.cans .swap');
+//     imgAmount = $imgs.length;
+
+//     $($imgs.css('position', 'absolute').hide().get(1)).show();
+
+
+//     window.setInterval(swapImages, 6000);
+
+//     function swapImages() {
+
+//         var $currentImg = $('.swap:visible');
+
+//         var $nextImg = $('.swap:hidden').eq(Math.floor(Math.random() * $('.swap:hidden').length));
+//             speed = 500;
+//         // animation speed should be the same for both images so we have a smooth change
+//         $currentImg.fadeOut(speed);
+//         $nextImg.fadeIn(speed);
+//     }
+// });
 
 
 
