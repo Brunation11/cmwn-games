@@ -82,13 +82,13 @@ text-decoration: none;
 
 body {
 background: #fff;
-padding: 50px;
+padding: 0px;
 width: 100%;
 margin: 0 auto;
 font-family: 'source_sans_prosemibold';
- -webkit-user-select: none;  
-  -moz-user-select: none;    
-  -ms-user-select: none;      
+ -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -857,7 +857,7 @@ background-position: center top;
 width: 23%;
 }
 .main-box {
-width: 72.5%;   
+width: 72.5%;
 }
 .content-box {
 max-width: 75%;
@@ -939,7 +939,7 @@ position: absolute;
   left: 0;
   width: 59%;
   padding-top: 60%;
- 
+
   background-size: 100%;
 }
 
@@ -1041,7 +1041,7 @@ transform: rotateY( 180deg );
 
 .card figure {
 display: block;
-     
+
 width: 100%;
 line-height: 260px;
 color: white;
@@ -1334,7 +1334,7 @@ transform:         rotate(0deg); /* CSS3 */
     height: 100px;
     padding: 5px 50px;
     text-align:center;
-    
+
 }
 .balance-footer .img-box{
     display:inline-block;
@@ -1366,7 +1366,7 @@ transform:         rotate(0deg); /* CSS3 */
     position:absolute;
     bottom:0;
     left:0;
-    top:auto;   
+    top:auto;
 }
 #balance .correct-ansver img {
 max-height:46px;
@@ -1383,7 +1383,7 @@ font-size:20px;
     background:#231f20;
     min-height:50px;
     text-align:center
-   
+
 }
 .garbage .headig-box img{
     width:80%;
@@ -1425,7 +1425,7 @@ font-size: 17px;
   line-height: 27px;
 
 }
-.garbage .main-box h3 {    
+.garbage .main-box h3 {
     margin-bottom:20px;
     font-family:source_sans_probold;
     font-size:26px;
@@ -1511,13 +1511,13 @@ padding: 0;
 #iCommit .heading{
     margin: 40px auto 0;
     text-align:center;
-    
+
 }
 #iCommit .heading h1{
     font-size:30px;
     line-height:50px;
     font-family:source_sans_probold;
-    
+
 }
 #iCommit .heading h1 img{
   height: 50px;
@@ -1526,16 +1526,16 @@ padding: 0;
   background-position: center center;
   background-repeat: no-repeat;
   display: inline-block;
-  vertical-align: middle;   
-    
+  vertical-align: middle;
+
 }
 #iCommit .heading img{
-    display:inline;    
+    display:inline;
 }
 #iCommit .commit-btn{
 width:300px;
 margin:70px auto 0;
-padding: 0;   
+padding: 0;
 }
 #iCommit .commit-btn a{
 background: url(_assets/elements/buttons/btn_commit.png) 0 0 no-repeat;
