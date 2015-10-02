@@ -6517,6 +6517,8 @@ input[type="checkbox"].input-validation-error {
   width: 622px;
   padding: 3px;
   position: absolute;
+  margin-left: -22px;
+  margin-top: -20px;
 }
 .ai-margin {
   margin: 3px;
