@@ -81,7 +81,7 @@ text-decoration: none;
 
 body {
 background:#fff;
-padding:50px;
+padding:0px;
 
 width: 100%;
 margin: 0 auto;
@@ -510,7 +510,7 @@ text-align: center;
 
 .end-story .heading {
 width: 100%;
-margin:0 auto;  
+margin:0 auto;
 }
 
 .end-story .heading img {
@@ -581,7 +581,7 @@ background-size:100%;
 .buttons-quit .no:hover {
 background:url('_assets/elements/btn_no_on.png') 0 0 no-repeat;
 background-size:100%;
- 
+
 }
 /*-----------------------------------*/
 .ai_background {
@@ -633,7 +633,7 @@ background-size:100%;
         color: #ffffff;
     }
     .modal-backdrop{
-        background-color: #7829bb;           
+        background-color: #7829bb;
         opacity: .2;
         filter: alpha(opacity=20);
         width: 100%;
@@ -685,14 +685,14 @@ background-size:100%;
 
 .bkg-image {
     background-position: center top;
-    background-size:120%; 
+    background-size:120%;
     padding:0;
 }
 .sidebar {
     width: 21.5%;
 }
 .main-box {
-    width: 72.5%;   
+    width: 72.5%;
 }
 .content-box {
     max-width: 75%;
@@ -779,15 +779,15 @@ color:#fff;
            -o-transition: -o-transform 1s;
               -ms-transition:  -ms-transform 1s;
               transition: transform 1s;
-              
-		    
+
+
         -ms-transform-style: preserve-3d;
-		    
+
       -webkit-transform-style: preserve-3d;
          -moz-transform-style: preserve-3d;
            -o-transform-style: preserve-3d;
               transform-style: preserve-3d;
-             
+
     }
 
     .card.flipped {
@@ -796,12 +796,12 @@ color:#fff;
            -o-transform: rotateY( 180deg );
             -ms-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
-             
+
     }
 
     .card figure {
       display: block;
-     
+
       width: 100%;
       line-height: 260px;
       color: white;
