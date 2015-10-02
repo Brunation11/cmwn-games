@@ -83,7 +83,7 @@ a {
 
 body {
     background: #fff;
-    padding: 50px;
+    padding: 0px;
     width: 100%;
     margin: 0 auto;
     font-family: source_sans_prosemibold;
@@ -939,7 +939,7 @@ div.upload {
 width: 23%;
 }
 .main-box {
-width: 72.5%;   
+width: 72.5%;
 }
 .content-box {
 max-width: 75%;
@@ -1786,28 +1786,28 @@ background-repeat:no-repeat;
 background-size:100%;
 }
 .sorter .sorts a#trasher {
-background-image: url("_assets/elements/buttons/btn_trash.png") 
+background-image: url("_assets/elements/buttons/btn_trash.png")
 }
 .sorter .sorts a#trasher:hover {
-background-image: url("_assets/elements/buttons/btn_trash_on.png") 
+background-image: url("_assets/elements/buttons/btn_trash_on.png")
 }
 .sorter .sorts a#composter {
-background-image: url("_assets/elements/buttons/btn_compost.png") 
+background-image: url("_assets/elements/buttons/btn_compost.png")
 }
 .sorter .sorts a#composter:hover {
-background-image: url("_assets/elements/buttons/btn_compost_on.png") 
+background-image: url("_assets/elements/buttons/btn_compost_on.png")
 }
 .sorter .sorts a#donater {
-background-image: url("_assets/elements/buttons/btn_donate.png") 
+background-image: url("_assets/elements/buttons/btn_donate.png")
 }
 .sorter .sorts a#donater:hover {
-background-image: url("_assets/elements/buttons/btn_donate_on.png") 
+background-image: url("_assets/elements/buttons/btn_donate_on.png")
 }
 .sorter .sorts a#recycler {
-background-image: url("_assets/elements/buttons/btn_recycle.png") 
+background-image: url("_assets/elements/buttons/btn_recycle.png")
 }
 .sorter .sorts a#recycler:hover {
-background-image: url("_assets/elements/buttons/btn_recycle_on.png") 
+background-image: url("_assets/elements/buttons/btn_recycle_on.png")
 }
 .remind-time {
     padding-top:20px;
