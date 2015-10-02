@@ -1373,10 +1373,10 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  margin-right: auto;
+  /*margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 15px;*/
 }
 @media (min-width: 768px) {
   .container {
@@ -6287,13 +6287,13 @@ button.close {
   }
 }
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+  /*padding-top: 50px;*/
+ /* padding-bottom: 20px;*/
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
-  padding-left: 15px;
-  padding-right: 15px;
+/*  padding-left: 15px;
+  padding-right: 15px;*/
 }
 @font-face {
   font-family: 'cmwn';
@@ -6444,9 +6444,9 @@ h1 {
   }
 }
 /*.main-background{
-    padding-bottom:400px; 
-    background-size:cover; 
-    background-repeat: no-repeat; 
+    padding-bottom:400px;
+    background-size:cover;
+    background-repeat: no-repeat;
     background-image:url('Images/bkg.png');
     position:absolute;
 }*/

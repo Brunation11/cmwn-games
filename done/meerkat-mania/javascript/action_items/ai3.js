@@ -52,7 +52,7 @@ var done;
             $('#banner').hide();
             $('#m5').css('opacity','1');
             $('#retry-level1').modal('show');
-            $('#Btn-hide1').fadeIn(9000);
+            $('#Btn-hide1').delay(6000).fadeIn(500);
             correct_items.push(1);
             if (correct_items.length === 5) {
                 //pop or redirect your game complete screen
@@ -70,7 +70,7 @@ var done;
             $('#banner').hide();
             $('#m4').css('opacity','1');
             $('#retry-level2').modal('show');
-            $('#Btn-hide2').fadeIn(9000);
+            $('#Btn-hide2').delay(6000).fadeIn(500);
             correct_items.push(2);
             if (correct_items.length === 5) {
                 //pop or redirect your game complete screen
@@ -90,7 +90,7 @@ var done;
             $('#banner').hide();
             $('#m3').css('opacity', '1');
             $('#retry-level3').modal('show');
-            $('#Btn-hide3').fadeIn(9000);
+            $('#Btn-hide3').delay(6000).fadeIn(500);
             correct_items.push(3);
             if (correct_items.length === 5) {
                 //pop or redirect your game complete screen
@@ -111,7 +111,7 @@ var done;
             $('#banner').hide();
             $('#m2').css('opacity', '1');
             $('#retry-level4').modal('show');
-            $('#Btn-hide4').fadeIn(9000);
+            $('#Btn-hide4').delay(6000).fadeIn(500);
             correct_items.push(4);
             if (correct_items.length === 5) {
                 //pop or redirect your game complete screen
@@ -131,7 +131,7 @@ var done;
             $('#banner').hide();
             $('#m1').css('opacity', '1');
             $('#retry-level5').modal('show');
-            $('#Btn-hide5').fadeIn(9000);
+            $('#Btn-hide5').delay(6000).fadeIn(500);
             correct_items.push(5);
             if (correct_items.length === 5) {
                 //pop or redirect your game complete screen
