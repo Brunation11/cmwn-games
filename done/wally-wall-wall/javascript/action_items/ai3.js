@@ -27,6 +27,13 @@ $(document).ready(function () {
         $('#game-close').modal('hide');
     });
 
+    $('#n1-active').delay(3500).fadeOut();
+    $('#n2-active').delay(3500).fadeOut();
+    $('#n3-active').delay(3500).fadeOut();
+    $('#n4-active').delay(3500).fadeOut();
+    $('#n5-active').delay(3500).fadeOut();
+    $('#n6-active').delay(3500).fadeOut();
+
     $('#m-close').click(function () {
         ants.pause();
         $('#ants-modal').modal('hide');
