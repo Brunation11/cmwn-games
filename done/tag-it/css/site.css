@@ -6287,10 +6287,10 @@ button.close {
     display: none !important;
   }
 }
-body {
+/*body {
   padding-top: 50px;
   padding-bottom: 20px;
-}
+}*/
 /* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
