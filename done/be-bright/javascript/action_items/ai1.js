@@ -1,7 +1,8 @@
 var AI2 = new Array();
 
 $(document).ready(function () {
-
+music.load();
+music.play();
     $('.close-Btn').click(function () {
 
         $("#retry-level").modal('show');
