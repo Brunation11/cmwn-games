@@ -6,20 +6,20 @@ $(document).ready(function () {
     $('#video').hide();
     $('#btn').hide();
     $('#btn1').hide();
-    $('#btn').fadeIn(3000);
+    $('#btn').delay(3000).fadeIn(500);
     $('#btn').click(function () {
         $('#content').hide();
         $('#btn').hide();
         $('#frame').show();
         $('#video').show();
         btn_click.play();
-        $('#btn1').fadeIn(74000);
-       
+        $('#btn1').delay(64000).fadeIn(500);
+
     });
     $('#btn1').click(function () {
-        
+
             $("#putcontenthere").load("action_items/ai5.html");
-        
+
         btn_click.play();
     });
     $("#Btn-hide1").click(function () {
