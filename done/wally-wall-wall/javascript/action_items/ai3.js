@@ -17,6 +17,12 @@ $(document).ready(function () {
     $('#next-button').click(function () {
         $('#game-info').modal('hide');
         $('#crannies').show();
+        $('#n1-active').delay(2100).fadeOut();
+        $('#n2-active').delay(2100).fadeOut();
+        $('#n3-active').delay(2100).fadeOut();
+        $('#n4-active').delay(2100).fadeOut();
+        $('#n5-active').delay(2100).fadeOut();
+        $('#n6-active').delay(2100).fadeOut();
     });
 
     $("#close").click(function () {
@@ -27,12 +33,12 @@ $(document).ready(function () {
         $('#game-close').modal('hide');
     });
 
-    $('#n1-active').delay(3375).fadeOut();
-    $('#n2-active').delay(3375).fadeOut();
-    $('#n3-active').delay(3375).fadeOut();
-    $('#n4-active').delay(3375).fadeOut();
-    $('#n5-active').delay(3375).fadeOut();
-    $('#n6-active').delay(3375).fadeOut();
+    // $('#n1-active').delay(3375).fadeOut();
+    // $('#n2-active').delay(3375).fadeOut();
+    // $('#n3-active').delay(3375).fadeOut();
+    // $('#n4-active').delay(3375).fadeOut();
+    // $('#n5-active').delay(3375).fadeOut();
+    // $('#n6-active').delay(3375).fadeOut();
 
     $('#m-close').click(function () {
         ants.pause();
