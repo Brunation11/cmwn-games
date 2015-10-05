@@ -62,7 +62,7 @@ $(document).ready(function () {
         $(".animate-flower5").css("animation-play-state", "running");
         $('#butterfly').css({ top: 100, left: 150 });
         $("#f1").hide();
-        testCollision();
+        return;
     });
 
     $('#c2').click(function () {
@@ -321,6 +321,7 @@ $(document).ready(function () {
                     $("#f1").show();
                     facts.load();
                     facts.play();
+                    return;
                 }
                 else {
                     return false;
