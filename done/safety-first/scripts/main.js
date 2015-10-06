@@ -66,7 +66,7 @@ $(document).ready(function () {
 
                         }, 50);
                     }
-                   
+
                     if (map[toY][toX] === '.' || map[toY][toX] === val) {
                         player.x = toX;
                         player.y = toY;
@@ -118,7 +118,7 @@ $(document).ready(function () {
                             $('#Slide_19').get(0).currentTime=0;
                             $('#Slide_19').get(0).play();
 
-                            
+
 
                         }
 
@@ -168,11 +168,11 @@ $(document).ready(function () {
             }
             mazestatic.innerHTML = mapToHTML(map);
             updateMap();
-            
+
             $('#mazepopup button.sliderClose').click(function () {
                 $('#mazepopup .slide').fadeOut(500);
                 $('#mazepopup ').fadeOut(500);
-                
+
 
                 document.onkeydown = function (e) {
                     switch (e.keyCode) {
@@ -198,7 +198,7 @@ $(document).ready(function () {
 
         }
 
-        
+
         /**********************************************/
         /**********************************************/
         /**************MAZE********************/
@@ -403,7 +403,7 @@ $(document).ready(function () {
             });
 
         }
-       
+
 
 
 
@@ -421,7 +421,7 @@ $(document).ready(function () {
         $('#btnClick').get(0).currentTime=0;
         $('#btnClick').get(0).play();
     });
-    
+
     $('#home .play').click(function () {
         $('#home').fadeOut(500);
         $('#noseWords').fadeIn(500);
@@ -432,7 +432,7 @@ $(document).ready(function () {
                 $('#noseWords .arrows > .next').addClass('open');
             }, 3000);
         }, 500);
-        
+
     });
     $('#noseWords .next').click(function () {
         $('#noseWords').fadeOut(500);
@@ -457,7 +457,7 @@ $(document).ready(function () {
             $('#step .slider .slide.openslide .img-hover').removeClass('view');
         }, 1500);
     });
-   
+
     $('#letsSee1 .next').click(function () {
 
         $('#letsSee1').fadeOut(500);
@@ -473,11 +473,11 @@ $(document).ready(function () {
         $('#slide19').get(0).play();
         $('#goodjob').fadeOut(500);
         $('#labyrinth').fadeIn(500);
-      
+
                maze1();
 
 
-       
+
     });
 
 
@@ -488,9 +488,9 @@ $(document).ready(function () {
 
         $('#labyrinth .popup').fadeOut(500);
 
-        //$('#BKG_slide20-27').get(0).play();
+        $('#BKG_slide20-27').get(0).play();
         $('#maze').fadeIn(500);
-       
+
 
     });
     $('#labyrinthHome .popup .sliderClose').click(function () {
@@ -506,9 +506,9 @@ $(document).ready(function () {
 
 
     });
-    /*$('#mainSound').get(0).play();
- 
-    /*slider*/
+    // $('#mainSound').get(0).play();
+
+    /*slider
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
@@ -517,12 +517,12 @@ $(document).ready(function () {
         $('#step .slider .slide').hide();
 
         $('#step .slider .slide').first().show();
-        setTimeout(function () { $('#step .slider .slide:nth-child(' + 1 + ') .cs-buttons a').trigger('click'); }, 1500);            
+        setTimeout(function () { $('#step .slider .slide:nth-child(' + 1 + ') .cs-buttons a').trigger('click'); }, 1500);
         $('#step .slider .slide').first().addClass('openslide');
-        $('#step .slider .slide.openslide .img-hover').addClass('view');          
-           
+        $('#step .slider .slide.openslide .img-hover').addClass('view');
+
         var num = $('#step .slider .slide').first().index() + 1;
-             
+
         $('#step .arrows > .next').click(function (i) {
              // $('#mainSound').get(0).play();
             $('.content-box .btn-hold .btn-hover').fadeOut(100);
@@ -533,7 +533,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $('#step .slider .slide.openslide .img-hover').removeClass('view');
                         $('#step .slider .slide.openslide .img-hover').addClass('view');
-                     }, 100);   
+                     }, 100);
                     num++;
                     $('#bell').get(0).currentTime=0;
                     $('#bell').get(0).play();
@@ -550,7 +550,7 @@ $(document).ready(function () {
                             $('#goodjob .arrows > .next').fadeIn();
                             $('#goodjob .arrows > .next').addClass('open');
                         }, 1500);
-                           
+
                         //$('#letsPlay').fadeIn(500);
                         /* $('#mainSound').get(0).pause();
                          $('#slide29').get(0).play();*/
@@ -563,8 +563,8 @@ $(document).ready(function () {
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
-    
-   
+
+
     $('.content-box .btn-hold a').click(function (e) {
         console.log('click!!!!');
         var parrentSlide = angular.element(e.target);
@@ -575,28 +575,28 @@ $(document).ready(function () {
         $('.content-box .btn-hold  .correct-ansver').fadeIn(200);
         setTimeout(function () { $(' #step .slider .next').fadeIn(500); }, 500);
         setTimeout(function () {
-             
+
              $('.arrows > .next').fadeIn();
             $('.arrows > .next').addClass('open');
         }, 1000);
-            
+
         $('#' + parrentSlideId + ' .correct-ansver img').css('visibility', 'visible');
         $('#' + parrentSlideId + ' .bg .pointer').fadeOut(1000);
-          
+
         if ($(this).hasClass('correct')) {
             $(this).addClass('Correct1');
             parrentSlide.find(".correct-ansver").css('z-index', '10');
             $(' .arrows-inctive').css('z-index', '0');
-                
+
             $('#incorrect').get(0).pause();
             $('#incorrect').get(0).currentTime = 0;
             $('#correct').get(0).pause();
             $('#correct').get(0).currentTime = 0;
             $('#correct').get(0).play();
 
-                
-                
-                
+
+
+
         }
         else if ($(this).hasClass('incorrect')) {
             $(this).addClass('Incorrect1');
@@ -607,19 +607,19 @@ $(document).ready(function () {
             $('#incorrect').get(0).play();
         }
     });
-    
+
 
     $('#labyrinth a.next').click(function () {
-        
+
         $('#labyrinth').fadeOut(500);
         $('#labyrinth').html('');
         $('.maze2-start').trigger('click');
-        
+
         $('#labyrinthHome').fadeIn(500);
         $('#BKG_slide20-27').get(0).currentTime=0;
         $('#BKG_slide20-27').get(0).pause();
-        // $('#BKG_slide31-40').get(0).currentTime = 0;
-        // $('#BKG_slide31-40').get(0).play();
+        $('#BKG_slide31-40').get(0).currentTime = 0;
+        $('#BKG_slide31-40').get(0).play();
         maze2();
     });
     $('#labyrinthHome a.next').click(function () {
@@ -630,8 +630,8 @@ $(document).ready(function () {
         $('#labyrinthHome').fadeOut(500);
         $('#flip').fadeIn(500);
     });
-    
-    
+
+
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
     // $('#pop-up').modal('show');
@@ -647,7 +647,7 @@ $(document).ready(function () {
         $('#game-info').modal('show');
     });
 
-    
+
 
     $('.A').click(function () {
 
@@ -665,9 +665,9 @@ $(document).ready(function () {
 
     });
 
-    $('.purple-button').click(function () {
-        $('#retry-level').modal('hide')
-    });
+    // $('.purple-button').click(function () {
+    //     $('#retry-level').modal('hide');
+    // });
 
     $('.close-Btn').click(function () {
 

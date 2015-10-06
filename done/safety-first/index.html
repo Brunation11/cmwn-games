@@ -48,7 +48,7 @@
 
         <span style="font-size:18px;"></span>
 
-        
+
 
 
 
@@ -81,7 +81,7 @@
 
                 <div class="col-md-12 custom-font game-title">
                     <div class=" text-left">
-                        <img style="width:72px; height:72px;margin-bottom:3px; float:left; margin:10px 20px 0 20px" src="content/images/gameicon.png">
+                        <img style="width:72px; height:72px;margin-bottom:3px; float:left; margin:0px 20px 0 0px" src="content/_assets/elements/white_flip.png">
                         <h2 style="line-height:75px; text-transform:uppercase">Safety first</h2>
                     </div>
 
@@ -102,7 +102,7 @@
                     <!--//////////////////////////////////////////////////-->
                     <div id="home">
                         <div class="homepage">
-                            
+
                             <div class="main-logo">
                                 <img src="content/_assets/elements/title_header.png" alt="Safety first" />
                             </div>
@@ -118,12 +118,12 @@
                         <button class="exit close-Btn"></button>
                         <div class="text-box">
                             <div class="headig-box">Police officers want <br/> you to stay safe!  <br />Here’s some things they<br /> want you to know.</div>
-                            
+
                         </div>
                         <div class="arrows">
                             <a href class="next arrow"></a>
                         </div>
-                       
+
 
                     </div>
                     <!--//////////////////////////////////////////////////-->
@@ -145,7 +145,7 @@
                         <button class="exit close-Btn"></button>
                         <div class="text-box">
                             <div class="headig-box" id="ex">DING! DONG!</div>
-                            
+
 
                         </div>
                         <div class="arrows">
@@ -154,8 +154,8 @@
 
 
                     </div>
-                   
-                    
+
+
                     <!--//////////////////////////////////////////////////-->
                     <div id="step">
                         <div ng-controller="stepController">
@@ -164,19 +164,19 @@
                                 <div class="steps slide clearfix" ng-repeat="item in data1 | orderBy: 'rank'" id="{{item.item.name}}">
                                     <div class="main-box">
                                         <div class="content-box">
-                                            
+
                                             <div class="img-box">
-                                                
+
                                                 <div class="img-hold">
-                                                    
+
                                                         <div class="bg">
                                                             <div class="img-hover" style="background-image:url({{item.item.mainImageUrl}})">
-                                                               
+
                                                             </div>
                                                         </div>
-                                                    
-                                                    
-                                                   
+
+
+
                                                 </div>
                                                 <div class="btn-hold">
                                                     <div class="clearfix"><img src="content/_assets/elements/header_whos_at_the_door.png" alt="d" /></div>
@@ -193,8 +193,8 @@
                                                         <p ng-bind-html="to_trusted(item.item.text)"></p>
                                                     </div>
                                                 </div>
-                                               
-                                                   
+
+
                                             </div>
 
 
@@ -202,12 +202,12 @@
                                     </div>
 
                                 </div>
-                                   
+
                                 </div>
                                 <div class="arrows">
                                     <div class="arrows-inctive"></div>
                                     <a href class="next arrow" ng-click="next()"></a>
-                                   
+
                                 </div>
 
                         </div>
@@ -226,20 +226,20 @@
                     </div>
 
                         <!--//////////////////////////////////////////////////-->
-                    <div id="labyrinth" ng-controller="mazeController">    
-                        <button class="exit close-Btn"></button>   
+                    <div id="labyrinth" ng-controller="mazeController">
+                        <button class="exit close-Btn"></button>
                         <div class="popup">
                             <button class="sliderClose" ng-click="data.doClick($event)"></button>
                             What do you need to  <br />
                             watch out for between<br />
                             school and home?<br />
                             Take a walk and <br /> find out!
-                        </div>                
+                        </div>
                         <div id="maze">
-                                                       
-                        </div>  
+
+                        </div>
                         <div  id="mazepopup">
-                            
+
                             <div slider class="slider" data="data1">
                                 <div class="steps slide clearfix" ng-repeat="item in data" id="{{item.name}}">
                                     <div class="main-box">
@@ -250,22 +250,22 @@
                                                         <div class="bg" style="background-image:url({{item.imgHeader}})">
                                                             <div ng-bind-html="to_trusted(item.text)"></div>
                                                         </div>
-                                                    </div>                                                        
-                                                </div>                                               
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="arrows">
-                                
+
                                 <a href class="next arrow" ng-click="next()"></a>
 
                             </div>
 
                         </div>
-                                             
-                  
+
+
 
                     <!--//////////////////////////////////////////////////-->
                     <div id="labyrinthHome" ng-controller="mazeHomeController">
@@ -320,11 +320,11 @@
 
                     <!--//////////////////////////////////////////////////-->
                     <div id="flip" class="end-story">
-                        <button class="exit close-Btn"></button>   
+                        <button class="exit close-Btn"></button>
                         <div class="inner">
 
                             <div class="headig-box">Here's a safe bet.<br/> You are going to <br/>love your new</div>
-                            
+
                             <div class="heading">
                                 <img src="content/_assets/elements/header_flip.png">
                             </div>
@@ -337,8 +337,8 @@
                     </div>
                     <!--//////////////////////////////////////////////////-->
 
-             
-                    
+
+
                     <!--//////////////////////////////////////////////////-->
                     <div id="quit" class="end-story">
                         <div class="inner">

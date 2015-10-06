@@ -7,7 +7,7 @@ var content_path = "";
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
+
     $routeProvider
 
         // route for the home page
@@ -154,7 +154,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
          'name': "B",
          'mainImageUrl': content_path + "content/_assets/elements/map_element_bus_1.png",
          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_1_off.png",
-         'imgHeader': content_path + "content/_assets/elements/info_window_2.png", 
+         'imgHeader': content_path + "content/_assets/elements/info_window_2.png",
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>"
      },
       {
@@ -201,9 +201,9 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
           },
 
     ];
-    
+
    function repaint2() {
-    
+
     jQuery.each($scope.data, function (i, val) {
         setTimeout(function () {
             console.log(val.name);
@@ -258,8 +258,8 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
         }, 200);
 
     };
-    
-   
+
+
 }
 
 );
@@ -326,7 +326,7 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
               'mainImageUrl': content_path + "content/_assets/elements/map_element_fire_alarm.png",
               'mainImageUrlHover': content_path + "content/_assets/elements/map_element_fire_alarm_off.png",
               'imgHeader': content_path + "content/_assets/elements/info_window_15.png",
-              'text': "<p style=' padding: 170px 0 0 0;'>If you're home alone<br/> and need help, dial 911.</p>"
+              'text': "<p style=' padding: 134px 0 0 0;'>Ask your parents<br/>to be sure the smoke<br/>and carbon monoxide<br/> alarms are working.</p>"
           }, {
               'name': "R",
               'mainImageUrl': content_path + "",
@@ -338,7 +338,7 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
     ];
 
     function repaint() {
-    
+
         jQuery.each($scope.data, function (i, val) {
             setTimeout(function () {
                 console.log(val.name);
@@ -393,7 +393,7 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
         }, 200);
 
     };
-   
+
 
 }
 
