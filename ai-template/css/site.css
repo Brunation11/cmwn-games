@@ -6299,31 +6299,6 @@ body {
   font-weight: normal;
   font-style: normal;
 }
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px;
-}
-/* styles for validation helpers */
-.field-validation-error {
-  color: #b94a48;
-}
-.field-validation-valid {
-  display: none;
-}
-input.input-validation-error {
-  border: 1px solid #b94a48;
-}
-input[type="checkbox"].input-validation-error {
-  border: 0 none;
-}
-.validation-summary-errors {
-  color: #b94a48;
-}
-.validation-summary-valid {
-  display: none;
-}
 .ai_background {
   background-color: #7829bb;
   width: 100%;
@@ -6378,33 +6353,6 @@ input[type="checkbox"].input-validation-error {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-.purple-button {
-  width: 180px;
-  height: 32px;
-  margin: 0px 0 0;
-  padding: 8px 3px 3px 5px;
-  background-color: #7829bb;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-}
-.green-button {
-  width: 180px;
-  height: 32px;
-  margin: 0px 0 0;
-  padding: 8px 3px 3px 5px;
-  background-color: #58CC20;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-}
-.button-text a {
-  font-size: 20px;
-  color: white;
-}
-.button-padding {
-  padding: 0px 50px 0px 50px;
-}
 .flip-off img {
   position: absolute;
   -webkit-transition: opacity 0s ease-in-out;
@@ -6416,9 +6364,36 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   opacity: 0;
 }
+.flip-on img {
+  position: absolute;
+}
 .close-Btn {
   top: 99px;
   z-index: 10;
   right: 7px;
   position: absolute;
+  width: 4%;
+}
+@media (max-width: 767px) {
+  .ai_background {
+    background-color: #AF0000;
+  }
+  .close-Btn {
+    width: 23px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .ai_background {
+    background-color: #FE9F03;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .ai_background {
+    background-color: #000;
+  }
+}
+@media (min-width: 1200px) {
+  .ai_background {
+    background-color: #00ACEF;
+  }
 }
