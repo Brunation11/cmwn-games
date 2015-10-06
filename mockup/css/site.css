@@ -6305,6 +6305,15 @@ select,
 textarea {
   max-width: 280px;
 }
+@media screen and (min-width: 480px) {
+    body {
+        background-color: lightgreen;
+    }
+    #logo {
+      width: auto;
+      margin: auto;
+    }
+}
 /* styles for validation helpers */
 .field-validation-error {
   color: #b94a48;
@@ -6424,7 +6433,7 @@ input[type="checkbox"].input-validation-error {
 }
 .ai_background {
   background-color: #7829bb;
-  width: 622px;
+  width: 100%;
   padding: 3px;
   position: absolute;
 }
@@ -6443,7 +6452,7 @@ input[type="checkbox"].input-validation-error {
   color: white;
 }
 .bkg-image img {
-  width: 650px;
+  width: 100%;
 }
 .text-left {
   margin: 5px;
