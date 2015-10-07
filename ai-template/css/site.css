@@ -6395,5 +6395,6 @@ body {
 @media (min-width: 1200px) {
   .ai_background {
     background-color: #00ACEF;
+    width: 1200px;
   }
 }
