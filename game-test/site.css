@@ -34,12 +34,22 @@ body{
 
 }
 
+@-webkit-keyframes arm {
+from { -webkit-transform: rotate(0deg); }
+70% { -webkit-transform: rotate(9.7deg); }
+to { -webkit-transform: rotate(0deg); }
+}
+
 .main img { 
 	position: absolute;
 	top: 10%;
 	left: 10%;
-	max-width: 60%;
-	max-height: 60%;
+	width: 32%;
+	height: 41%;
+
+  -webkit-transform-origin:0% 60%;
+  -webkit-animation:arm 3.9s ease-in-out infinite alternate;
+
 }
 
 .main .intro-text {
