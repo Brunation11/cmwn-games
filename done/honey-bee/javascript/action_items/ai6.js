@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    completeFlip(24309);
     // $('#game-info').modal('show');
 
     $('#flip-info').modal('show');
