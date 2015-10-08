@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     flip.load();
     flip.play();
 
@@ -14,18 +15,19 @@ $(document).ready(function () {
         $('#video').show();
         btn_click.play();
         $('#btn1').delay(64000).fadeIn(500);
-
     });
+
     $('#btn1').click(function () {
 
             $("#putcontenthere").load("action_items/ai5.html");
 
         btn_click.play();
     });
+    
     $("#Btn-hide1").click(function () {
         $('#retry-level').modal('hide');
-
     });
+
     $('.close-Btn').click(function () {
         $('#retry-level').modal('show');
     });

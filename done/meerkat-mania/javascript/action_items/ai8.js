@@ -3,14 +3,12 @@ $(document).ready(function () {
     $('#btn2').click(function () {
         $('#btn2').delay(3000).delay(10000, function () {
             $("#putcontenthere").load("action_items/ai9.html");
-            completeFlip(24310);
         });
         btn_click.play();
     });
 
     $("#Btn-hide1").click(function () {
         $('#retry-level').modal('hide');
-
     });
 
     $("#btn1").click(function () {

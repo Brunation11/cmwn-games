@@ -14,7 +14,6 @@ $(document).ready(function () {
         btn_click.play();
     });
 
-
     $('.close-Btn').click(function () {
         $('#retry-level').modal('show');
         btn_click.play();
@@ -23,13 +22,11 @@ $(document).ready(function () {
     $("#safe").click(function () {
         $('.flip-off1').hide();
         btn_click.play();
-
     });
 
     $("#loved").click(function () {
         $('.flip-off2').hide();
         btn_click.play();
-
     });
 
     $("#support").click(function () {
@@ -53,7 +50,6 @@ $(document).ready(function () {
         btn_click.play();
     });
 
-
     $("#grateful").click(function () {
         $('.flip-off7').hide();
         btn_click.play();
@@ -64,7 +60,6 @@ $(document).ready(function () {
         btn_click.play();
     });
 
-
     $("#secure").click(function () {
         $('.flip-off9').hide();
         btn_click.play();
@@ -74,6 +69,5 @@ $(document).ready(function () {
         $('.flip-off10').hide();
         btn_click.play();
     });
-
 
 })

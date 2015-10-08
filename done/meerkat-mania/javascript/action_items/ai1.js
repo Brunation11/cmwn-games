@@ -1,11 +1,11 @@
 $(document).ready(function () {
+
     title_screen.play();
 
-        document.getElementById('title_screen').addEventListener('ended', function () {
-            this.currentTime = 0;
-            this.play();
-        }, false);
-
+    document.getElementById('title_screen').addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+    }, false);
 
     $('#btn').click(function () {
         $('#btn').delay(1000).delay(1000, function () {
@@ -14,4 +14,5 @@ $(document).ready(function () {
         btn_click.play();
         title_screen.pause();
     });
+    
 })

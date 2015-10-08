@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    completeFlip(24310);
+
     flip.load();
     flip.play();
 
@@ -16,7 +18,6 @@ $(document).ready(function () {
 
     $("#Btn-hide1").click(function () {
         $('#retry-level').modal('hide');
-
     });
 
 })

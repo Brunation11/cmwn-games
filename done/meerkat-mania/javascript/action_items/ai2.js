@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     slide_3.play();
 
     $('#btn').hide();
@@ -9,11 +10,13 @@ $(document).ready(function () {
         });
         btn_click.play();
     });
+
     $("#Btn-hide1").click(function () {
         $('#retry-level').modal('hide');
-
     });
+
     $('.close-Btn').click(function () {
         $('#retry-level').modal('show');
     });
+
 })
