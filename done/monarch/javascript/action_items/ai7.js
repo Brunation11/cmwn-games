@@ -10,6 +10,8 @@ bgMusic.addEventListener('ended', function () {
 
 $(document).ready(function () {
 
+    completeFlip(24312);
+
     $('.modal-backdrop').remove();
 
     $('#journey').hide();
