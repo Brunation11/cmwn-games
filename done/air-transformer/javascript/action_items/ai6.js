@@ -1,4 +1,6 @@
   $(document).ready(function () {
+       completeFlip(24271);
+
         try
         {
             vo_transform.load();
