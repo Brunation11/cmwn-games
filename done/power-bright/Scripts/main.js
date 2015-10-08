@@ -102,7 +102,7 @@
                              $('#step').fadeOut(500);
                              // $('#letsPlay').fadeIn(500);
                               $('#flip').fadeIn(500);
-                              completeFlip(24315);
+
                              $('#mainSound').get(0).pause();
                              $('#slide20').get(0).play();
                          }
@@ -154,6 +154,7 @@
     $('#letsPlay .heading, #letsPlay .play').click(function () {
         $('#letsPlay').fadeOut(500);
         $('#flip').fadeIn(500);
+        completeFlip(24315);
     });
 
     /*$('#flip .heading, #flip .play').click(function () {
