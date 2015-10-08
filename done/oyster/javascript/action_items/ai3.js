@@ -99,7 +99,6 @@
                         //this is where you will send it to the next screen
                         // window.location.href="";
                         $("#putcontenthere").load("action_items/ai4.html");
-                        completeFlip(24313);
                     }
                     else
                     {
