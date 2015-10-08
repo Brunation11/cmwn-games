@@ -232,6 +232,7 @@ $(document).ready(function () {
                     //no sound - log error
                 }
         } else if (correct_items.length === 6) {
+            completeFlip(24323);
             $('#m-close6').click(function () {
                 $('#mouse-modal').modal('hide');
                 $('#game-complete').modal('show');
@@ -243,6 +244,6 @@ $(document).ready(function () {
         }
     });
 
-    completeFlip(24323);
+
 
 });
