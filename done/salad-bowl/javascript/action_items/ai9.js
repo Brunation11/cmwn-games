@@ -1,4 +1,7 @@
       $(document).ready(function () {
+
+        completeFlip(24321);
+
         try {
             flip.load();
             flip.play();
