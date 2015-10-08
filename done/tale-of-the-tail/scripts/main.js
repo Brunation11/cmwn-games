@@ -119,6 +119,7 @@
 
         $('#wellcome').fadeOut(500);
         $('#flip').fadeIn(500);
+        completeFlip(24316);
         $('#mainSound').get(0).pause();
         $('#slide27').get(0).play();
     });
