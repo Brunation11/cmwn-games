@@ -437,7 +437,7 @@
     $('#solution a.next').click(function () {
         $('#solution').fadeOut(500);
         $('#flip').fadeIn(500);
-        completeFlip(24320);
+
 
         $('#slide25').get(0).currentTime = 0;
         $('#slide25').get(0).play();
@@ -446,6 +446,7 @@
 
         $('#flip').fadeOut(500);
         $('#quit').fadeIn(500);
+        completeFlip(24320);
 
     });
 
