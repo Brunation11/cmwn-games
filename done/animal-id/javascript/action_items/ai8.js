@@ -6,7 +6,7 @@ $('.nextBtn8').click(function () {
                 $("#putcontenthere").load("action_items/ai9.html");
             });
             $('.modal-backdrop fade in').css('display','none');
-            
+            completeFlip(24324);
         });
 
 
