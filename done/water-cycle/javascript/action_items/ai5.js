@@ -1,7 +1,7 @@
 var correct_items = new Array();
 $(document).ready(function () {
 
-    completeFlip(12941);
+
 
     $ ('.bkg-image').css('background-image','url(content/images/background/BKG_6.png)');
 
@@ -74,6 +74,7 @@ $(document).ready(function () {
         }
 
         if (correct_items.length === 5) {
+            completeFlip(12941);
             slide5.pause();
             Flip.load();
             Flip.play();
