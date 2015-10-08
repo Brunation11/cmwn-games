@@ -7325,7 +7325,7 @@ input[type="checkbox"].input-validation-error {
   opacity: 0;
 }
 .close-Btn {
-  margin-top: 89px;
+  top: 89px;
   position: absolute;
   z-index: 3;
   left: 569px;
