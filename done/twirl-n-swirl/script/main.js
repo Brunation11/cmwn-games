@@ -103,6 +103,7 @@
         $('#flip').fadeIn(500);
         $('#mainSound').get(0).pause();
         $('#slide14').get(0).play();
+        completeFlip(11820);
 
     });
     $('#googjob .again').click(function () {
