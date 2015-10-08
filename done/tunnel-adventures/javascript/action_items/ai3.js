@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    completeFlip(24317);
+
 
     $('.bkg-image').css('background-image','url(content/images/background/bkg_2.png)');
 
@@ -80,6 +80,7 @@ $(document).ready(function () {
         $('#slide_10 h2').hide();
         $('#slide_11 img').fadeIn(2000);
         $('#slide_11 h2').fadeIn(2000);
+         completeFlip(24317);
         try {
        steps.pause();
     }
