@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    completeFlip(24314);
+
     $('#game-close').modal('hide');
 
     $('#close').click(function () {
