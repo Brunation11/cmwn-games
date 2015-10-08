@@ -19,7 +19,6 @@ $(document).ready(function () {
     });
 });
 
-
 $(function () { // DOM ready shorthand
 
     $("#left").click(function () {

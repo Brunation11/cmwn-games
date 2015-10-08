@@ -4,7 +4,6 @@ $(document).ready(function () { // DOM ready shorthand
 
     //Quit screen
 
-
     $('#close').click(function () {
         $('#game-close').modal('show');
         $('.header_Bkg').hide();

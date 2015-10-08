@@ -14,6 +14,7 @@ $(document).ready(function () {
 
     $('.Next-Ai').click(function () {
         $("#putcontenthere").load("action_items/ai12.html");
+        completeFlip(24314);
     });
 
 });
