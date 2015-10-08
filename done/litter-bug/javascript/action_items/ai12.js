@@ -16,6 +16,7 @@ $(document).ready(function () {
         commit.play();
         setTimeout(function(){
             $("#putcontenthere").load("action_items/ai13.html");
+            completeFlip(24322);
         },1000);
     });
 
