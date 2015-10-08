@@ -8,7 +8,6 @@
         //no sound - log error
     }
 
-
     $('.carousel-inner').parent().carousel({ pause: true, interval: false });
 
     currentSlide = Math.floor((Math.random() * $('.item').length));
