@@ -10,6 +10,9 @@ var correct_items = new Array();
 //var rand;
 
 $(document).ready(function () {
+
+    completeFlip(24307);
+
     $('#carousel_ul li').hide().delay(1900).fadeIn(500);
     $('#myCarousel').hide().delay(500).fadeIn(500);
    setTimeout(function () {
@@ -27,7 +30,6 @@ $(document).ready(function () {
     //     //no sound - log error
     // }
 
-
     $('.carousel-inner').parent().carousel({ pause: true, interval: false });
 
     currentSlide = Math.floor((Math.random() * $('.item').length));
@@ -42,20 +44,18 @@ $(document).ready(function () {
         $('#myCarousel').carousel(rand);
 
     }, 900000);
+
     // close window
     $('.scape-Btn').click(function () {
-
         $('#quit-game').modal('show');
     });
 
     $('#no-btn').click(function () {
-
         $('#quit-game').modal('hide');
     });
 
     $('.exit-Modal-Btn').click(function () {
         $('#quit-game').modal('hide');
-
     });
 
     // hide Good job sorting screen message
@@ -100,7 +100,6 @@ $(document).ready(function () {
             selected_item = selected_item.replace("-li", "");
 
 
-
             if (click_correct === selected_item) {
                 //remove the correct item so ite does not diplay again
                 // $(this).remove();
@@ -116,8 +115,6 @@ $(document).ready(function () {
                     $('.win').show().animate({ top : -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 10);
                      /// change color of active state //
-
-
                 }
 
                 if (correct_items.length === 2) {

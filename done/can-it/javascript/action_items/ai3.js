@@ -722,4 +722,3 @@ function displayTime(timeString) {
 
     return minutes.toString() + seconds.toString();
 }
-
