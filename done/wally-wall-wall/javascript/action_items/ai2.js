@@ -80,7 +80,7 @@ $(document).ready(function () {
 
     $('#next-ai').click(function () {
         $("#putcontenthere").load("action_items/ai3.html");
-        completeFlip(24323);
+
     });
 
 });

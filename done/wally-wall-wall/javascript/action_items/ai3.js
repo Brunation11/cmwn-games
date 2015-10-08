@@ -74,6 +74,8 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
+     completeFlip(24323);
+
     $('#n1').click(function () {
         $('#n1').hide();
         $('#n1-active').show();
@@ -93,7 +95,7 @@ $(document).ready(function () {
                     $('#next-ai').show();
                 });
                 //alert("You Won!!");
-            });               
+            });
         }
     });
 
@@ -114,7 +116,7 @@ $(document).ready(function () {
                 catch (err) {
                     //no sound - log error
                 }
-            
+
         } else if (correct_items.length === 6) {
             $('#m-close2').click(function () {
                 $('#chip-modal').modal('hide');
