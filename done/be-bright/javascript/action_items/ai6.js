@@ -8,5 +8,6 @@ $(document).ready(function(){
 
     $('.Next').click(function(){
             $("#putcontenthere").load("action_items/ai7.html");
+            completeFlip(24305);
         });
 });
