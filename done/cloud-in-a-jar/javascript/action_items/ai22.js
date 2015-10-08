@@ -37,6 +37,7 @@
             catch (err) {
                 //no sound - log error
             }
+            completeFlip(24274);
         });
 
     $("#close-Btn").click(function () {
