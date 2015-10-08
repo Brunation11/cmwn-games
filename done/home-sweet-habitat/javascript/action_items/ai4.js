@@ -25,7 +25,6 @@ $(document).ready(function () {
 
     $('.no').click(function () {
         $('#quit-game').modal('hide');
-
     });
 
     //initalize game and find the selected item and it's matches

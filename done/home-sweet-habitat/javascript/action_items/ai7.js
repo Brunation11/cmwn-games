@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     $('.close-Btn').click(function () {
@@ -16,6 +15,6 @@ $(document).ready(function () {
 
     $('.Next-5').click(function(){
         $("#putcontenthere").load("action_items/ai8.html");
-        completeFlip(24311);
     });
+
 });

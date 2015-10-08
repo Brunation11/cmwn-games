@@ -8,10 +8,10 @@ $(document).ready(function () {
 
     $('.no').click(function () {
         $('#quit-game').modal('hide');
-
     });
 
     $(".play-Btn").click(function (){
         $("#putcontenthere").load("action_items/ai2.html");
     });
+    
 });
