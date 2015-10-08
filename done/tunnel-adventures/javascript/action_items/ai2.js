@@ -1,8 +1,8 @@
 var full;
 var correct_items = new Array();
+
 $(document).ready(function () {
-    
-        
+          
     $('.nextBtn1').click(function () {
         $('#slide_1 img').hide();
         $('#slide_2 img').fadeIn(2000);
@@ -373,9 +373,7 @@ $(document).ready(function () {
 
     $('.nextBtn2').click(function () {
         $('.nextBtn2').delay(1000).delay(1000, function () {
-            $("#putcontenthere").load("action_items/ai3.html");
-           
+            $("#putcontenthere").load("action_items/ai3.html");         
         });
-         completeFlip(24317);
     });
 });
