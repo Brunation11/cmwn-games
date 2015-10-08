@@ -37,6 +37,7 @@ $(document).ready(function () {
 
     $('#next-button2').click(function () {
         $("#putcontenthere").load("action_items/ai6.html");
+        completeFlip(24309);
     });
 
 });
