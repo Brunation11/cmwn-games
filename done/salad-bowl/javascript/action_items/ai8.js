@@ -5,6 +5,7 @@ $(document).ready(function () {
         $('.play8').click(function () {
             $('.play8').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("action_items/ai9.html");
+                completeFlip(24321);
             });
             try {
                 click.play();
