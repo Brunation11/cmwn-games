@@ -236,6 +236,7 @@
         $('#googjob').fadeOut(500);
         $('#flip').fadeIn(500);
         $('#flip .next').fadeIn(500);
+        completeFlip(12938);
        
 
     });
