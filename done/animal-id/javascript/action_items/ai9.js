@@ -5,6 +5,8 @@ $('.nextBtn9').click(function () {
                 $("#putcontenthere").load("action_items/ai1.html");
             });
             $('.modal-backdrop fade in').css('display','none');
-           
+
         });
-    }) 
+
+
+    });
