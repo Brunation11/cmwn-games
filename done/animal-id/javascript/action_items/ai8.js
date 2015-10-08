@@ -4,9 +4,10 @@ $(document).ready(function () {
 $('.nextBtn8').click(function () {
             $('.nextBtn8').delay(1000).delay(1000, function () {
                 $("#putcontenthere").load("action_items/ai9.html");
+
             });
             $('.modal-backdrop fade in').css('display','none');
-            
+            completeFlip(24324);
         });
 
 
