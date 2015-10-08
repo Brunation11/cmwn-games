@@ -1,7 +1,7 @@
 var full;
-    var correct_items = new Array();
+var correct_items = new Array();
 $(document).ready(function () {
-    $('.bkg-image').css('background-image','url(content/images/background/bkg_2.png)');
+    
         
     $('.nextBtn1').click(function () {
         $('#slide_1 img').hide();
@@ -374,7 +374,8 @@ $(document).ready(function () {
     $('.nextBtn2').click(function () {
         $('.nextBtn2').delay(1000).delay(1000, function () {
             $("#putcontenthere").load("action_items/ai3.html");
-            completeFlip(24317);
+           
         });
+         completeFlip(24317);
     });
 });
