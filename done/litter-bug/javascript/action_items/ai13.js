@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    completeFlip(24322);
+
 	flip.play();
 
     $('.bkg-image').css('background-image','url(content/images/background/bakg_1.png)');
