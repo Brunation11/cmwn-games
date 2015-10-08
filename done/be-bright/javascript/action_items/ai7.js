@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    completeFlip(24305);
 flip.load();
 flip.play();
     $('.close-Btn').click(function () {
