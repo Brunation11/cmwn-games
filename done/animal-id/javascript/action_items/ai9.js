@@ -1,4 +1,5 @@
  $(document).ready(function () {
+     completeFlip(24324);
         final.play();
 $('.nextBtn9').click(function () {
             $('.nextBtn9').delay(1000).delay(1000, function () {
