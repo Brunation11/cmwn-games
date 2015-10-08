@@ -74,8 +74,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-     completeFlip(24323);
-
     $('#n1').click(function () {
         $('#n1').hide();
         $('#n1-active').show();
@@ -244,5 +242,7 @@ $(document).ready(function () {
             });
         }
     });
+
+    completeFlip(24323);
 
 });
