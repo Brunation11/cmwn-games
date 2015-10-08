@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    
+
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
     setTimeout(function () {
         $('#title1').get(0).currentTime = 0;
@@ -26,12 +26,12 @@
         $('#btnClick').currentTime = 0;
         $('#btnClick').get(0).play();
     });
-    
+
     $('#home .play').click(function () {
          $('#game').get(0).play();
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
-        
+
 
         $('.shnose li').each(function (i) {
             var row = $(this);
@@ -42,7 +42,7 @@
                 }, 400);
             }, 400 * i);
         });
-       
+
     });
     $('#noseWords .card').click(function () {
         $(this).addClass('flipped');
@@ -50,9 +50,9 @@
         $('#cardFlip').get(0).play();
         if ($('#Draining > .card').hasClass('flipped') && $('#Destroing > .card').hasClass('flipped') && $('#Hunting > .card').hasClass('flipped')) {
             setTimeout(function () { $('#noseWords .next').fadeIn(500); }, 1000);
-            setTimeout(function () { $('#noseWords .nextb').fadeIn(500); }, 1000);  
+            setTimeout(function () { $('#noseWords .nextb').fadeIn(500); }, 1000);
         };
-        
+
     });
     $('#noseWords .next').click(function () {
          $('#game').get(0).play();
@@ -61,11 +61,11 @@
         $('#upToUs a.next').fadeIn(500);
         $('#upToUs a.nextb').fadeIn(500);
     });
-    
+
     $('#noseWords .nextb').click(function () {
         $('#home').fadeIn(200);
         $('#noseWords').fadeOut(500);
-        
+
     });
 
     $('#upToUs .nextb').click(function () {
@@ -121,7 +121,7 @@
         $('#slide8').get(0).play();
         $('#definitely a.nextb').fadeIn(500);
     });
-    
+
     $('#definitely a.nextb').click(function () {
         $('#sort').fadeIn(500);
         $('#definitely').fadeOut(500);
@@ -138,7 +138,7 @@
         $('#slide9').get(0).play();
         $('#recycle a.nextb').fadeIn(500);
     });
-    
+
 
     $('#recycle a.nextb').click(function () {
         $('#definitely').fadeIn(500);
@@ -157,7 +157,7 @@
         $('#compost a.nextb').fadeIn(500);
         $('#compost a.next').fadeIn(500);
     });
-   
+
     $('#compost a.nextb').click(function () {
         $('#recycle').fadeIn(500);
         $('#recycle a.next').fadeIn(500);
@@ -236,7 +236,7 @@
     $('.yougotit').click(function () {
         $('.hint-popup, .hint-popup2').fadeOut(500);
     });
-   
+
     $('#notebook a.nextb').click(function () {
         $('#knowledge').fadeIn(500);
         $('#knowledge a.next').fadeIn(500);
@@ -267,7 +267,7 @@
         }
 
     });
-    
+
 
 
 
@@ -311,7 +311,7 @@
         /*---------------------------------------------------*/
 
         setTimeout(function () {
-            
+
             $('#step .slider .slide').hide();
 
             $('#step .slider .slide').first().show();
@@ -327,7 +327,7 @@
                         $('ul.' + $(this).attr("id")).append('<li>' + $(".openslide").text() + '</li>');
 
                         $('#step .slider .slide:nth-child(' + num + ')').removeClass('openslide').hide();
-                         $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show(); 
+                         $('#step .slider .slide:nth-child(' + (num + 1) + ')').addClass('openslide').show();
                         num++;
                         $('.arrows > .next').fadeOut();
                         $('.arrows > .next').removeClass('open');
@@ -391,7 +391,7 @@
         $('#greenest a.next').fadeIn(500);
         $('#greenest a.nextb').fadeIn(500);
     });
-    
+
     $('#greenest a.nextb').click(function () {
         $('#Listbreak').fadeIn(500);
         $('#greenest').fadeOut(500);
@@ -424,7 +424,7 @@
         $('#slide24').get(0).play();
         $('#solution a.nextb').fadeIn(500);
     });
-    
+
     $('#solution a.nextb').click(function () {
         $('#learned').fadeIn(500);
         $('#solution').fadeOut(500);
@@ -437,7 +437,8 @@
     $('#solution a.next').click(function () {
         $('#solution').fadeOut(500);
         $('#flip').fadeIn(500);
-        
+        completeFlip(24320);
+
         $('#slide25').get(0).currentTime = 0;
         $('#slide25').get(0).play();
     });
@@ -447,8 +448,8 @@
         $('#quit').fadeIn(500);
 
     });
-    
-  
+
+
 
     (function () {
         var clock = $('.countdown').FlipClock(
@@ -493,7 +494,7 @@
         $('#game-info').modal('show');
     });
 
-    
+
 
     $('.A').click(function () {
 
@@ -534,5 +535,5 @@
 
     /*----------------------------------------------------------*/
 
-  
+
 });
