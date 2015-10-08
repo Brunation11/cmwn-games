@@ -10,7 +10,7 @@ $(document).ready(function () {
         setTimeout(function(){
             $("#putcontenthere").load("action_items/ai8.html");
         },1000);
-        completeFlip(24308);
+        
     });
 
     $(".second-last").hide();

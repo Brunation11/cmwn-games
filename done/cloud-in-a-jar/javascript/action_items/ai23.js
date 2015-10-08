@@ -1,4 +1,5 @@
   $(document).ready(function () {
+        completeFlip(24274);
         try {
             load_8.load();
             load_8.play();

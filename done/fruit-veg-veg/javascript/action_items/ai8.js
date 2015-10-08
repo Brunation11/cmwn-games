@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	completeFlip(24308);
     bkmusic.pause();
     flipscreen.load();
     flipscreen.play();
