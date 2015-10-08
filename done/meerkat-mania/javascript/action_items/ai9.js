@@ -1,9 +1,9 @@
 $(document).ready(function () {
+
     flip.load();
     flip.play();
 
     $('#btn').click(function () {
-
         $('#btn').delay(3000).delay(10000, function () {
             $("#putcontenthere").load("action_items/ai1.html");
         });
@@ -18,6 +18,5 @@ $(document).ready(function () {
         $('#retry-level').modal('hide');
 
     });
-
 
 })
