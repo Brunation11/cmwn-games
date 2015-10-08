@@ -128,7 +128,7 @@ $ ('.bkg-image').css('background-image','url(content/images/background/BKG_5.png
 
     $(".b12").click(function () {
        $("#putcontenthere").load("action_items/ai5.html");
-       completeFlip(12941);
+
     });
 
     /// back button ///
