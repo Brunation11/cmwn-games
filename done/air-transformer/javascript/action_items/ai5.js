@@ -29,6 +29,7 @@
                 //no sound - log error
             }
 
+            completeFlip(24271);
 
         });
 
