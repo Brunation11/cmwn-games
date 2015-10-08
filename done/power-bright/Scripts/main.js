@@ -102,7 +102,7 @@
                              $('#step').fadeOut(500);
                              // $('#letsPlay').fadeIn(500);
                               $('#flip').fadeIn(500);
-                              completeFlip(12923);
+                              completeFlip(24315);
                              $('#mainSound').get(0).pause();
                              $('#slide20').get(0).play();
                          }
