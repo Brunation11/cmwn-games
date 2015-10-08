@@ -652,20 +652,16 @@ var timer1 = new (function () {
 
 function delayTimerStart(delayLength) {
 
-
     $('#counter').slideUp(300).delay(delayLength).queue(function () {
 
     });
 }
-
-
 
 function startTimer() {
     $countdown = $('#counter');
     $countdown.show();
 
     timer1.Timer = $.timer(updateTimer, incrementTime, true);
-
 
 }
 
@@ -778,8 +774,6 @@ function updateTimer() {
 
         });
 
-
-
     }
     // Increment timer position
     currentTime -= incrementTime;
@@ -802,7 +796,4 @@ function displayTime(timeString) {
 
     return minutes.toString() + seconds.toString();
 
-
-
 }
-

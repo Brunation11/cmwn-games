@@ -2,8 +2,6 @@ $(document).ready(function () {
     tittle.load();
     tittle.play();
 
-
-
 //Background.play();
 
 //Quit game
@@ -28,7 +26,6 @@ $('.close-Modal-Btn').click(function () {
 
         ButtonClick.load();
         ButtonClick.play();
-
 
     $('#game-info').modal('show');
     $('#game-info2').modal('hide');
@@ -58,7 +55,6 @@ function playButtonSound()
         //no sound - log error
     }
 }
-
 
 $('#slide-1').click(function () {
     playButtonSound();
@@ -117,6 +113,7 @@ $('#next-button7').click(function () {
 
 $('#next-button8').click(function () {
      $("#putcontenthere").load("action_items/ai2.html");
+     completeFlip(24307);
 });
 
 // back button functions
