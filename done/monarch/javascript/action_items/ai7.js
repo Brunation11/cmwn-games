@@ -10,8 +10,6 @@ bgMusic.addEventListener('ended', function () {
 
 $(document).ready(function () {
 
-    completeFlip(24312);
-
     $('.modal-backdrop').remove();
 
     $('#journey').hide();
@@ -96,6 +94,7 @@ $(document).ready(function () {
         $('#journey').hide();
         $('#next-button3').fadeIn(4000);
         $('#game-flip').modal('show');
+        completeFlip(24312);
     });
 
 });
