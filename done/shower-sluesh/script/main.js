@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+
     function loop() {
         $('#step .slider  .pointer').css({ top: 130 });
         $('#step .slider  .pointer').animate({
@@ -13,8 +14,6 @@
                 $('.arrows > .next').addClass('open');
             });
         });
-
-
     }
 
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
@@ -30,7 +29,6 @@
         $('#title').get(0).pause();
         $('#Sslide3').get(0).currentTime = 0;
         $('#Sslide3').get(0).play();
-
     });
 
     $('#reveal .next').click(function () {
@@ -44,8 +42,8 @@
         $('#esential .circle-container').addClass('together rotation');
         /*$('#mainSound').get(0).play();*/
     });
-    $('#esential .next').click(function () {
 
+    $('#esential .next').click(function () {
         $('#esential').fadeOut(500);
         $('#flip').fadeIn(500);
         $('#flip .water').addClass('waterspin');
@@ -63,15 +61,11 @@
         $('#step .slider  .pointer').remove();
         $('#step .slider .slide .img-hover').append('<div class="pointer"></div>');
 
-
-
         $('#step .slider .slide').first().show();
         setTimeout(function () { $('#step .slider .slide:nth-child(' + 1 + ') .cs-buttons a').trigger('click'); }, 2500);
 
         $('#step .slider .slide').first().addClass('openslide');
         $('.arrows > .prev').fadeOut();
-
-
 
         var num = $('#step .slider .slide').first().index() + 1;
 
@@ -128,7 +122,6 @@
                             $('.arrows > .next').addClass('open');
 
                         }, 750);
-
 
                     }
                     if ((num) == 6) {
@@ -200,7 +193,6 @@
 
                         }, 750);
 
-
                         /*$('#mainSound').get(0).pause();
                          $('#slide29').get(0).play();*/
 
@@ -267,7 +259,6 @@
                         $('#step .slider .slide .why').parent().addClass('tada');
                         $('.arrows > .prev').fadeIn();
 
-
                     }
                     if ((num) == 12) {
 
@@ -276,7 +267,6 @@
                             $('.arrows > .next').addClass('open');
 
                         }, 750);
-
 
                     }
                     if ((num) == 7 ) {
@@ -331,7 +321,6 @@
 
                         }, 750);
 
-
                     }
                     if ((num - 1) == ($('#step .slider .slide').length)) {
                         $('#step').fadeOut(500);
@@ -345,7 +334,6 @@
                             $('.arrows > .next').removeClass('open');
 
                         }, 750);
-
 
                         /*$('#mainSound').get(0).pause();
                          $('#slide29').get(0).play();*/
@@ -368,7 +356,6 @@
                         $('.year-spent').wave(null, 25, 1500);
                     }
 
-
                 }
             }
 
@@ -379,11 +366,10 @@
     /*---------------------------------------------------*/
     /*---------------------------------------------------*/
     $('ul.gallons li').click(function (e) {
-
         $('#incorrect').get(0).currentTime = 0;
         $('#incorrect').get(0).play();
-
     });
+
     $('ul.gallons li:first-child').click(function (e) {
         $('#incorrect').get(0).currentTime = 0;
         $('#incorrect').get(0).pause();
@@ -392,16 +378,12 @@
         $('.arrows > .next').addClass('open');
         $('#correct').get(0).currentTime = 0;
         $('#correct').get(0).play();
-
     });
-
-
 
     $('#flip .heading, #flip .next').click(function () {
         $('#flip').fadeOut(500);
         $('#quit').fadeIn(500);
     });
-
 
     (function () {
         var clock = $('.countdown').FlipClock(
@@ -436,22 +418,12 @@
         $('#game-info').modal('show');
     });
 
-
-
     $('.A').click(function () {
-
         $("#level-complete").modal('show');
-
-
-
     });
 
     $('.B').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.purple-button').click(function () {
@@ -459,24 +431,15 @@
     });
 
     $('.close-Btn').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.close-Btn').click(function () {
-
         $("#game-info").modal('hide');
-
-
-
     });
 
-
-
 });
+
 // Avoid `console` errors in browsers that lack a console.
 (function () {
     var method;
@@ -500,9 +463,7 @@
     }
 }());
 
-
 $(document).ready(function () {
-
 
     /*-+------------------------------------*/
     /*-+--------USER PARSING----------------*/
@@ -516,7 +477,6 @@ $(document).ready(function () {
                 var obj = {
                     name: $(this).find('[name]').val(), // place the name in a new object
                     tp:  $(this).find('[name]').attr("name")// time: $(this).find('.timepicker').val(), // place the url in a new object
-
                 };
                 o.items.push(obj); // push in the "o" object created
             });
@@ -528,19 +488,15 @@ $(document).ready(function () {
                         t++;
                         console.log(t);
 
-
                     $('.lister li:nth-child(' + (i + 1) + ')').addClass('timed').html("<span class='tp' value=" + val.name + ">" + val.name + "</span> <span class='timepicks timepick" + (i+1) + "></span>");
                     if (t >= 2)  {
                         $('.arrows > .next').fadeIn();
                         $('.arrows > .next').addClass('open');
                     }
-
                 }
             });
-
-
-
         });
+
         $('.lister > li').click(function () {
             $('.arrows > .next').fadeIn();
             $('.arrows > .next').addClass('open');
@@ -588,13 +544,13 @@ $(document).ready(function () {
                              seconds++;
                              m.text(minutes);
                              s.text(leadingZero(seconds));
-
                         }
 
                     }, 1000);
                 }
                 clicked = !clicked;
             });
+
             var totalTimes = 0;
             $('.user-timer .stop').click(function () {
                 $('#Sslide17stop').get(0).currentTime = 0;
@@ -614,17 +570,12 @@ $(document).ready(function () {
                 $('.arrows > .next').addClass('open');
                 /*--------------------------*/
 
-
                 totalTimes += ((minutes + (seconds/60)));
 
                 console.log('totalTimes', totalTimes.toFixed(0)); // strigify to show
                  $(".week-spent").html((totalTimes * 7 * 2.5).toFixed(0) + ' gallons');
                  $(".month-spent").html((totalTimes * 30 * 2.5).toFixed(0) + ' gallons');
                  $(".year-spent").html((totalTimes * 365 * 2.5).toFixed(0) + ' gallons');
-
-
-
-
 
                  /*---------------------------*/
 
@@ -635,7 +586,6 @@ $(document).ready(function () {
             $(this).removeClass('timed').css("color", "rgba(0, 0, 0, 0.5)");
             console.log($(this));
         });
-
 
     }, 1000);
     /*--------------------------------*/

@@ -327,10 +327,3 @@
         return element.getAttribute(name) || element.getAttribute('data-' + name);
     };
 })(window, window.angular);
-
-
-
-
-
-
-

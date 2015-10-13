@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,13 +34,9 @@
     <script type="text/javascript" src="script/draganddrop.js"></script>
     <script type="text/javascript" src="script/gameapp.js"></script>
     <script type="text/javascript" src="script/main.js"></script>
-
-
-
 </head>
+
 <body ng-app="GameApp">
-
-
     <audio id="title" src="content/_sounds/TitleScreen.mp3" loop="loop"></audio>
     <audio id="btnClick" src="content/_sounds/ButtonClick.mp3"></audio>
     <audio id="incorrect" src="content/_sounds/Slide_8_incorrect.mp3"></audio>
@@ -62,18 +57,9 @@
     <audio id="Timer" src="content/_sounds/Timer_Slide14and17.mp3"></audio>
     <audio id="Sslide27" src="content/_sounds/Slide27_onLastReveal.mp3"></audio>
 
-
-
-
-
-
     <div class="">
 
-
-
 <script type="text/javascript">
-
-
 
 </script>
 
@@ -82,295 +68,250 @@
         <div class="row">
 
 
-
-
-
-
-
-
-
         </div>
     </div>
 </div><!--end container body-content-->
 
-        <!--//////////////////////////////////////////////////-->
+    <!--//////////////////////////////////////////////////-->
 
-        <div class="col-md-12 ai_background clearfix">
-            <div class="row">
+    <div class="col-md-12 ai_background clearfix">
+        <div class="row">
+            <div class="col-md-12 custom-font game-title clearfix">
 
-                <div class="col-md-12 custom-font game-title clearfix">
-                    <div class=" text-left">
-                        <img style="width:72px; height:72px;margin-bottom:3px; float:left; margin:10px 20px 0 20px" src="content/images/gameicon.png">
-                        <h2 style="line-height:75px;text-transform:uppercase">Shower Slueth</h2>
-                    </div>
+                <div class=" text-left">
+                    <img style="width:72px; height:72px; margin-bottom:3px; float:left; margin:10px 20px 0 20px" src="content/images/gameicon.png">
+                    <h2 style="line-height:75px;text-transform:uppercase">Shower Slueth</h2>
+                </div>
 
-
-
-                    <div class="col-md-2 text-right ">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span style="font-size:18px;"></span>
-                            </div>
-                        </div><!--end row-->
-                    </div><!--end text-right-->
-
-                </div><!--end custom-font game title-->
-                <!--/**************************/-->
-
-                <div class="col-md-12 bkg-image clearfix">
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="home">
-                        <div class="homepage">
-                            <button class="exit close-Btn"></button>
-                            <div class="main-logo">
-                                <img src="content/_assets/elements/title_title.png" alt="Shower Shluesh" />
-                            </div>
-                            <div class="play-btn">
-                                <a href class="btn-click play" ng-click="" title="Play"></a>
-                            </div>
+                <div class="col-md-2 text-right ">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="font-size:18px;"></span>
                         </div>
+                    </div><!--end row-->
+                </div><!--end text-right-->
 
+            </div><!--end custom-font game title-->
+            <!--/**************************/-->
+
+            <div class="col-md-12 bkg-image clearfix">
+                <!--//////////////////////////////////////////////////-->
+                <div id="home">
+                    <div class="homepage">
+                        <button class="exit close-Btn"></button>
+                        <div class="main-logo">
+                            <img src="content/_assets/elements/title_title.png" alt="Shower Shluesh" />
+                        </div>
+                        <div class="play-btn">
+                            <a href class="btn-click play" ng-click="" title="Play"></a>
+                        </div>
                     </div>
+                </div>
 
+                <div id="step">
+                    <div ng-controller="stepController">
+                        <button class="exit close-Btn"></button>
 
-                    <div id="step">
-                        <div ng-controller="stepController">
-                            <button class="exit close-Btn"></button>
-                            <div slider class="slider" data="data1">
-                                <div class="steps slide clearfix" ng-repeat="item in data" id="{{item.name}}">
-                                    <div class="main-box">
-                                        <div class="content-box">
+                        <div slider class="slider" data="data1">
+                            <div class="steps slide clearfix" ng-repeat="item in data" id="{{item.name}}">
+                                <div class="main-box">
+                                    <div class="content-box">
+                                        <div class="img-box">
+                                            <div class="img-hold">
+                                                <div class="bg" style="{{item.bgImage}}">
+                                                    <div class="img-hover" style="background-image:url({{item.mainImageUrl}}); {{item.mainImageStyle}}" >
 
-                                            <div class="img-box">
+                                                    </div>
+                                                    <div class="content-text">
+                                                        <div  ng-bind-html="to_trusted(item.text)">
 
-                                                <div class="img-hold">
-
-                                                        <div class="bg" style="{{item.bgImage}}">
-                                                            <div class="img-hover" style="background-image:url({{item.mainImageUrl}}); {{item.mainImageStyle}}" >
-
-                                                            </div>
-                                                            <div class="content-text">
-                                                                <div  ng-bind-html="to_trusted(item.text)">
-
-                                                                </div>
-                                                            </div>
                                                         </div>
-
-
-
+                                                    </div>
                                                 </div>
-
                                             </div>
-
-
                                         </div>
                                     </div>
-
                                 </div>
+                            </div>
+                        </div>
 
-                                </div>
-                                <div class="arrows">
+                        <div class="arrows">
+                            <a href class="next arrow" ng-click="next()"></a>
+                            <a href class="prev arrow" ng-click="prev()"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="reveal" >
+                    <div class="inner">
+                        <button class="exit close-Btn"></button>
 
-                                    <a href class="next arrow" ng-click="next()"></a>
-                                    <a href class="prev arrow" ng-click="prev()"></a>
+                        <div class="headig-box"><img src="content/_assets/elements/header_click_each_button.png" alt="click each button" /></div>
+                    </div>
 
-                                </div>
+                    <div class="minutes-box">
+                        <div class="min-box1">
+                            <div class="top-box">
 
+                            </div>
+                            <div class="cont-box">
+                                <div class="item week">20 gallons</div>
+                                <div class="item month">75 gallons</div>
+                                <div class="item year">915 gallons</div>
+                            </div>
+                        </div>
+                        <div class="min-box2">
+                            <div class="top-box">
+
+                            </div>
+                            <div class="cont-box">
+                                <div class="item week">35 gallons</div>
+                                <div class="item month">150 gallons</div>
+                                <div class="item year">1825 gallons</div>
+                            </div>
+                        </div>
+                        <div class="min-box3">
+                            <div class="top-box">
+
+                            </div>
+                            <div class="cont-box">
+                                <div class="item week">55 gallons</div>
+                                <div class="item month">225 gallons</div>
+                                <div class="item year">2735 gallons</div>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="arrows">
+                        <a href class="prev arrow"></a>
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="esential" class="end-story">
+                    <div class="inner">
+                        <button class="exit close-Btn"></button>
 
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="reveal" >
-                        <div class="inner">
-                            <button class="exit close-Btn"></button>
+                        <div class="headig-box"><img src="content/_assets/elements/header_essential.png" alt="" /></div>
 
-                            <div class="headig-box"><img src="content/_assets/elements/header_click_each_button.png" alt="click each button" /></div>
-                        </div>
-                        <div class="minutes-box">
-                            <div class="min-box1">
-                                <div class="top-box">
-
-                                </div>
-                                <div class="cont-box">
-                                    <div class="item week">20 gallons</div>
-                                    <div class="item month">75 gallons</div>
-                                    <div class="item year">915 gallons</div>
-                                </div>
-                            </div>
-                            <div class="min-box2">
-                                <div class="top-box">
-
-                                </div>
-                                <div class="cont-box">
-                                    <div class="item week">35 gallons</div>
-                                    <div class="item month">150 gallons</div>
-                                    <div class="item year">1825 gallons</div>
-                                </div>
-                            </div>
-                            <div class="min-box3">
-                                <div class="top-box">
-
-                                </div>
-                                <div class="cont-box">
-                                    <div class="item week">55 gallons</div>
-                                    <div class="item month">225 gallons</div>
-                                    <div class="item year">2735 gallons</div>
-                                </div>
+                        <div class="flower">
+                            <div class='circle-container'>
+                                <a href='#' class='deg0'><img src='content/_assets/elements/pinwheel_4.png'></a>
+                                <a href='#' class='deg60'><img src='content/_assets/elements/pinwheel_5.png'></a>
+                                <a href='#' class='deg120'><img src='content/_assets/elements/pinwheel_6.png'></a>
+                                <a href='#' class='deg180'><img src='content/_assets/elements/pinwheel_1.png'></a>
+                                <a href='#' class='deg240'><img src='content/_assets/elements/pinwheel_2.png'></a>
+                                <a href='#' class='deg300'><img src='content/_assets/elements/pinwheel_3.png'></a>
                             </div>
                         </div>
-
 
                         <div class="arrows">
-                            <a href class="prev arrow"></a>
                             <a href class="next arrow"></a>
-
+                            <a href class="prev arrow"></a>
                         </div>
                     </div>
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="esential" class="end-story">
-                        <div class="inner">
-                            <button class="exit close-Btn"></button>
-
-                            <div class="headig-box"><img src="content/_assets/elements/header_essential.png" alt="" /></div>
-                            <div class="flower">
-                                <div class='circle-container'>
-                                    <a href='#' class='deg0'><img src='content/_assets/elements/pinwheel_4.png'></a>
-                                    <a href='#' class='deg60'><img src='content/_assets/elements/pinwheel_5.png'></a>
-                                    <a href='#' class='deg120'><img src='content/_assets/elements/pinwheel_6.png'></a>
-                                    <a href='#' class='deg180'><img src='content/_assets/elements/pinwheel_1.png'></a>
-                                    <a href='#' class='deg240'><img src='content/_assets/elements/pinwheel_2.png'></a>
-                                    <a href='#' class='deg300'><img src='content/_assets/elements/pinwheel_3.png'></a>
-                                </div>
-                            </div>
-
-                            <div class="arrows">
-                                <a href class="next arrow"></a>
-                                <a href class="prev arrow"></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!--//////////////////////////////////////////////////-->
-
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="flip">
-                        <div class="inner">
-                            <button class="exit close-Btn"></button>
-
-                            <div class="headig-box"><b>Look what just showered down:<br/> a brand new </b></div>
-                            <div class=" water" style="">
-
-                            </div>
-                            <div class="headig-box fliper" style="">
-                                 <img src="content/_assets/elements/header_flip.png" alt="" />
-
-                            </div>
-
-                            </div>
-
-                        <div class="arrows">
-
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="flip">
+                    <div class="inner">
+                        <button class="exit close-Btn"></button>
+                        <div class="headig-box"><b>Look what just showered down:<br/> a brand new </b></div>
+                        <div class=" water" style="">
 
                         </div>
+                        <div class="headig-box fliper" style="">
+                             <img src="content/_assets/elements/header_flip.png" alt="" />
+                        </div>
                     </div>
-                    <!--//////////////////////////////////////////////////-->
-                    <!--//////////////////////////////////////////////////-->
-                    <div id="quit" class="end-story">
-                        <div class="inner">
 
-                            <div class="text-box">
-                                <h1>Are you sure you<br/> want to quit?</h1>
+                    <div class="arrows">
 
-                            </div>
-                            <div class="buttons-quit clearfix">
-                                <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
-                                <a href class="no"></a>
-
-                            </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="quit" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Are you sure you<br/> want to quit?</h1>
                         </div>
 
-
+                        <div class="buttons-quit clearfix">
+                            <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                            <a href class="no"></a>
+                        </div>
                     </div>
-                    <!--//////////////////////////////////////////////////-->
-                    <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-top: 207px;  margin-left: 85px;">
-                            <div class="modal-content" style="width:420px; height:315px;">
-                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
-                                    <div class="modal-body custom-font modal-text">
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
 
-                                        <div class="second-slide">
-                                            <h1>Close Modal</h1>
+                                    <div class="second-slide">
+                                        <h1>Close Modal</h1>
+                                    </div><!--end second-slide-->
 
-
-                                        </div><!--end second-slide-->
-                                        <div class="purple-button text-center custom-font button-text button-padding">
-
-                                            <a href="#">Close</a>
-
-                                        </div>
-
+                                    <div class="purple-button text-center custom-font button-text button-padding">
+                                        <a href="#">Close</a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
-                            <div class="modal-content" style="width:420px; height:315px;">
-                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
-                                    <div class="modal-body custom-font modal-text">
+                <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
 
-                                        <div class="second-slide">
-                                            <h1>Load Modal</h1>
+                                    <div class="second-slide">
+                                        <h1>Load Modal</h1>
+                                    </div><!--end second-slide-->
 
-
-                                        </div><!--end second-slide-->
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
-                            <div class="modal-content" style="width:420px; height:315px;">
-                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
-                                    <div class="modal-body custom-font modal-text">
+                <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
 
-                                        <div class="second-slide">
-                                            <h1>Game Complete</h1>
+                                    <div class="second-slide">
+                                        <h1>Game Complete</h1>
+                                    </div><!--end second-slide-->
 
-
-                                        </div><!--end second-slide-->
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
-                        <div class="modal-dialog" style="margin-left: 193px;margin-top: 207px;  margin-left: 85px;">
-                            <div class="modal-content" style="width:420px; height:315px;">
-                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
-                                    <div class="modal-body custom-font modal-text">
-                                        <div id="quit" class="end-story">
-                                            <div class="inner">
+                <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+                                    <div id="quit" class="end-story">
+                                        <div class="inner">
 
-                                                <div class="text-box">
-                                                    <h1>Are you sure you<br/> want to quit?</h1>
-
-                                                </div>
-                                                <div class="buttons-quit clearfix">
-                                                    <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
-                                                    <a href class="no"></a>
-
-                                                </div>
+                                            <div class="text-box">
+                                                <h1>Are you sure you<br/> want to quit?</h1>
                                             </div>
 
+                                            <div class="buttons-quit clearfix">
+                                                <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                                                <a href class="no"></a>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -378,16 +319,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
 
-
-
-
-                    <!--//////////////////////////////////////////////////-->
-
-                </div><!--end row-->
-            </div><!--end ai_background-->
-        </div><!--end container body-content-->
-        <!--//////////////////////////////////////////////////-->
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+    <!--//////////////////////////////////////////////////-->
 
 </body>
 </html>
