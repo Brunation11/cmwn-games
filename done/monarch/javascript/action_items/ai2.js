@@ -1,14 +1,14 @@
-// var bgMusic = $("#background")[0],
-//     playing = true;
+var bgMusic = $("#background")[0],
+    playing = true;
 
-//     bgMusic.addEventListener('ended', function () {
-//         this.currentTime = 0;
-//         if (playing) {
-//             this.play();
-//         }
-//     }, false);
+    bgMusic.addEventListener('ended', function () {
+        this.currentTime = 0;
+        if (playing) {
+            this.play();
+        }
+    }, false);
 
-//     background.play();
+    background.play();
 
 $(document).ready(function () {
 
@@ -62,7 +62,6 @@ $(document).ready(function () {
         $(".animate-flower5").css("animation-play-state", "running");
         $('#butterfly').css({ top: 100, left: 150 });
         $("#f1").hide();
-        return;
     });
 
     $('#c2').click(function () {
@@ -321,14 +320,10 @@ $(document).ready(function () {
                     $("#f1").show();
                     facts.load();
                     facts.play();
-                    return;
-                }
-                else {
-                    return false;
                 }
 
                 if (goal_tracker.goal === 2) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -340,7 +335,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 3) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -352,7 +347,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 4) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -364,7 +359,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 5) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -376,7 +371,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 6) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -388,7 +383,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 7) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -400,7 +395,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 8) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -412,7 +407,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 9) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -424,7 +419,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 10) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -436,7 +431,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 11) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -448,7 +443,7 @@ $(document).ready(function () {
                 }
 
                 if (goal_tracker.goal === 12) {
-                     $('#butterfly').click(false).appendTo("#field");
+                    $('#butterfly').click(false).appendTo("#field");
                     $(".animate-flower").css("animation-play-state", "paused");
                     $(".animate-flower2").css("animation-play-state", "paused");
                     $(".animate-flower3").css("animation-play-state", "paused");
@@ -472,6 +467,6 @@ $(document).ready(function () {
             }
 
         }
-    })
+    });
 
 });
