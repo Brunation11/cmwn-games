@@ -1,7 +1,4 @@
-﻿
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     /**********************************************/
     /**********************************************/
@@ -25,19 +22,18 @@ $(document).ready(function () {
                     'F': '<span class="tile goal F">F</span>',
                     'G': '<span class="tile goal G">G</span>',
                     'X': '<span class="tile goal X">X</span>'
-
                 };
+
                 for (y = 0; y < map.length; y += 1) {
                     for (x = 0; x < map[y].length; x += 1) {
                         html += dictionary[map[y][x]];
                     }
                     html += '<br>';
-
-
                 }
 
                 return html;
             }
+
             function updateMap() {
                 var displayMap = [], x, y;
                 for (y = 0; y < map.length; y += 1) {
@@ -62,7 +58,6 @@ $(document).ready(function () {
                     if ($('#maze + #mazepopup #' + val).hasClass('poped')) {
                         setTimeout(function () {
                             $('#maze .' + val).addClass('poped');
-
 
                         }, 50);
                     }
@@ -107,7 +102,6 @@ $(document).ready(function () {
                             console.log($('#maze .goal').length);
                             console.log('!!!!!!!!!!!!!poped', $("#labyrinth #mazepopup .poped").length - 1);
 
-
                         }, 50);*/
 
                         if ($('#maze .goal').length == $("#labyrinth #mazepopup .poped").length - 1) {
@@ -117,19 +111,12 @@ $(document).ready(function () {
                             $('#BKG_slide20-27').get(0).pause();
                             $('#Slide_19').get(0).currentTime=0;
                             $('#Slide_19').get(0).play();
-
-
-
                         }
 
                     }
 
                 });
             }
-
-
-
-
 
             map = [
                 'HHHHHHHHHHHHHHHHH',
@@ -142,8 +129,8 @@ $(document).ready(function () {
                 '.HHHHHHH.HHH.H...',
                 'DHHHHHHH.HHH.H.H.',
                 '.......E.HHHG..HX',
-
             ];
+
             for (i = 0; i < map.length; i += 1) {
                 map[i] = map[i].split('');
             }
@@ -173,7 +160,6 @@ $(document).ready(function () {
                 $('#mazepopup .slide').fadeOut(500);
                 $('#mazepopup ').fadeOut(500);
 
-
                 document.onkeydown = function (e) {
                     switch (e.keyCode) {
                         case 37:
@@ -191,13 +177,9 @@ $(document).ready(function () {
                     }
                 };
 
-
-
             });
 
-
         }
-
 
         /**********************************************/
         /**********************************************/
@@ -222,8 +204,8 @@ $(document).ready(function () {
                     'P': '<span class="tile goal P">P</span>',
                     'Q': '<span class="tile goal Q">Q</span>',
                     'R': '<span class="tile goal R">R</span>',
-
                 };
+
                 for (y = 0; y < map.length; y += 1) {
                     for (x = 0; x < map[y].length; x += 1) {
                         html += dictionary[map[y][x]];
@@ -234,6 +216,7 @@ $(document).ready(function () {
 
                 return html;
             }
+
             function updateMap() {
                 var displayMap = [], x, y;
                 for (y = 0; y < map.length; y += 1) {
@@ -259,13 +242,11 @@ $(document).ready(function () {
                         setTimeout(function () {
                             $('#maze2 .' + val).addClass('poped');
 
-
                         }, 50);
                     }
                     if (map[toY][toX] === '.' || map[toY][toX] === val) {
                         player.x = toX;
                         player.y = toY;
-
                     }
 
                     updateMap();
@@ -335,8 +316,6 @@ $(document).ready(function () {
                 });
             }
 
-
-
             map = [
                 'HHHHHHHHHHHHHHHHH',
                 'HHHHHHHHHHHHHHHHH',
@@ -348,10 +327,8 @@ $(document).ready(function () {
                 'HHHHHH.HHHHKHHHHH',
                 'HHHHHH.HHHHHHHHHH',
                 'HHHHHHOHHHHHHHHHH',
-
-
-
             ];
+
             for (i = 0; i < map.length; i += 1) {
                 map[i] = map[i].split('');
             }
@@ -398,15 +375,9 @@ $(document).ready(function () {
                     }
                 };
 
-
-
             });
 
         }
-
-
-
-
 
     /**************************************/
     /**************************************/
@@ -432,8 +403,8 @@ $(document).ready(function () {
                 $('#noseWords .arrows > .next').addClass('open');
             }, 3000);
         }, 500);
-
     });
+
     $('#noseWords .next').click(function () {
         $('#noseWords').fadeOut(500);
         $('#letsSee').fadeIn(500);
@@ -444,6 +415,7 @@ $(document).ready(function () {
             $('#letsSee .arrows > .next').addClass('open');
         }, 3000);
     });
+
     $('#letsSee .next').click(function () {
         $('#slide4').get(0).currentTime=0;
         $('#slide4').get(0).play();
@@ -463,11 +435,11 @@ $(document).ready(function () {
         $('#letsSee1').fadeOut(500);
         $('#step').fadeIn(500);
 
-
         setInterval(function () {
             $('#step .slider .slide.openslide .img-hover').addClass('view');
         }, 100);
     });
+
     $('#goodjob .next').click(function () {
         $('#slide19').get(0).currentTime=0;
         $('#slide19').get(0).play();
@@ -475,12 +447,7 @@ $(document).ready(function () {
         $('#labyrinth').fadeIn(500);
 
                maze1();
-
-
-
     });
-
-
 
     $('#labyrinth .sliderClose').click(function () {
         $('#slide18').get(0).currentTime=0;
@@ -490,22 +457,18 @@ $(document).ready(function () {
 
         $('#BKG_slide20-27').get(0).play();
         $('#maze').fadeIn(500);
-
-
     });
+
     $('#labyrinthHome .popup .sliderClose').click(function () {
 
         $('#labyrinthHome .popup').fadeOut(500);
-
-
 
     });$('#labyrinthHome .popup2 .sliderClose').click(function () {
 
         $('#labyrinthHome .popup2').fadeOut(500);
 
-
-
     });
+
     // $('#mainSound').get(0).play();
 
     /*slider
@@ -593,11 +556,8 @@ $(document).ready(function () {
             $('#correct').get(0).pause();
             $('#correct').get(0).currentTime = 0;
             $('#correct').get(0).play();
-
-
-
-
         }
+
         else if ($(this).hasClass('incorrect')) {
             $(this).addClass('Incorrect1');
             $('#correct').get(0).pause();
@@ -607,7 +567,6 @@ $(document).ready(function () {
             $('#incorrect').get(0).play();
         }
     });
-
 
     $('#labyrinth a.next').click(function () {
 
@@ -622,6 +581,7 @@ $(document).ready(function () {
         $('#BKG_slide31-40').get(0).play();
         maze2();
     });
+
     $('#labyrinthHome a.next').click(function () {
         $('#BKG_slide31-40').get(0).currentTime = 0;
         $('#BKG_slide31-40').get(0).pause();
@@ -630,8 +590,6 @@ $(document).ready(function () {
         $('#labyrinthHome').fadeOut(500);
         $('#flip').fadeIn(500);
     });
-
-
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
     // $('#pop-up').modal('show');
@@ -647,22 +605,12 @@ $(document).ready(function () {
         $('#game-info').modal('show');
     });
 
-
-
     $('.A').click(function () {
-
         $("#level-complete").modal('show');
-
-
-
     });
 
     $('.B').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     // $('.purple-button').click(function () {
@@ -670,21 +618,14 @@ $(document).ready(function () {
     // });
 
     $('.close-Btn').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.close-Btn').click(function () {
-
         $("#game-info").modal('hide');
-
-
-
     });
-    });
+});
+
 // Avoid `console` errors in browsers that lack a console.
 (function () {
     var method;
