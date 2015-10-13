@@ -11,13 +11,12 @@ var correct_items = new Array();
 
 $(document).ready(function () {
 
-    completeFlip(24307);
+    // completeFlip(24307);
 
     $('#carousel_ul li').hide().delay(1900).fadeIn(500);
     $('#myCarousel').hide().delay(500).fadeIn(500);
-   setTimeout(function () {
-        startGame();
-    },1000);
+
+    // startGame();
     clock.play();
 
     // try
