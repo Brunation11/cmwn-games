@@ -3,10 +3,8 @@ var moduleGame = angular.module('GameApp', ['ngRoute', 'underscore', 'gamecatCon
 var content_path = "http://actionitems.changemyworldnow.com/safetyfirst";
 var content_path = "";
 
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
-
 
     $routeProvider
 
@@ -197,13 +195,11 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
               'mainImageUrlHover': content_path + "",
               'imgHeader': content_path + "content/_assets/elements/info_window_home.png",
               'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/content/_assets/elements/header_stay.png' class='safe'>safe!</p>"
-
           },
 
     ];
 
    function repaint2() {
-
     jQuery.each($scope.data, function (i, val) {
         setTimeout(function () {
             console.log(val.name);
@@ -214,6 +210,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
         }, 1);
     });
    };
+
    function onKeyup2() {
         onkeyup = function (e) {
             switch (e.keyCode) {
@@ -259,11 +256,9 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
 
     };
 
-
 }
 
 );
-
 
 /*------------------------------*/
 moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $window) {
@@ -338,7 +333,6 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
     ];
 
     function repaint() {
-
         jQuery.each($scope.data, function (i, val) {
             setTimeout(function () {
                 console.log(val.name);
@@ -349,6 +343,7 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
             }, 1);
         });
     };
+
     function onKeyup() {
         onkeyup = function (e) {
             switch (e.keyCode) {
@@ -394,12 +389,9 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
 
     };
 
-
 }
 
 );
-
-
 
 
 /*-----------------------------------*/
