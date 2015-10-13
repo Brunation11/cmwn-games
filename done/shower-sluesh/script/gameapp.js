@@ -2,13 +2,10 @@
 var content_path = "http://actionitems.changemyworldnow.com/realornot";
 var content_path = "";
 
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
     $routeProvider
-
         // route for the home page
         .when('/', {
             templateUrl: '/home.html',
@@ -27,8 +24,7 @@ moduleGame.config(function ($routeProvider) {
         })
     .otherwise({
             redirectTo: '/'
-        });
-
+    });
 });
 
 // create the controller and inject Angular's $scope
@@ -192,7 +188,6 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
     },
     ]
    
-  
 });
 
 
@@ -217,4 +212,3 @@ gamecatControllers.controller('gameDenoseCtrl', ['$scope', '$routeParams',
 
 
 /*-----------------------------*/
-
