@@ -5,6 +5,8 @@
 
 $(document).ready(function () {
 
+    ////// fade in dumpster items //////////////
+    $('#myCarousel').hide().delay(500).fadeIn(500);
     ///////// hide all bootstrap modals /////////
     $('#quit-game').modal("hide");
     $('#fail-screen').modal("hide");
