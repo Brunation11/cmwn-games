@@ -7,6 +7,8 @@
     var correct_items = new Array();
 
 
+$('.carousel-inner').parent().carousel('next', 1);
+
 $(document).ready(function () {
 
 
@@ -540,5 +542,193 @@ $(document).ready(function () {
             'marginTop': "+=220px"  //moves down
         }, 800).hide(1);
     }); /// End of big click function
+startGame();
 }); ///End of document.ready
 
+ function playStart()
+    {
+        try
+        {
+            start.loop = true;
+            start.play();
+        }
+        catch (err)
+        {
+            //no sound - log error
+        }
+    }
+    function pauseStart()
+    {
+        try {
+            start.pause();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+    }
+
+    function startGame() {
+        startTimer();
+
+        playStart();
+
+    }
+
+    var $countdown;
+    var $form;
+    var incrementTime = 1000;
+    var currentTime;
+
+    var timer1 = new (function () {
+        currentTime = '90000'; // 24 hours (in milliseconds)
+    });
+
+    function delayTimerStart(delayLength) {
+
+
+        $('#counter').slideUp(300).delay(delayLength).queue(function () {
+
+        });
+    }
+
+
+
+    function startTimer() {
+        $countdown = $('#counter');
+        $countdown.show();
+
+        timer1.Timer = $.timer(updateTimer, incrementTime, true);
+
+
+    }
+
+    function playWonGame()
+    {
+        try {
+            wongame.load();
+            wongame.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+    }
+
+    function playFlip()
+    {
+        try {
+            flip.load();
+            flip.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+    }
+
+    function playRunOut()
+    {
+        try {
+            runout.load();
+            runout.play();
+        }
+        catch (err) {
+            //no sound - log error
+        }
+    }
+
+    function updateTimer() {
+
+        // Output timer position
+        var timeString = currentTime.toString();
+        $countdown.html(displayTime(timeString));
+
+        // If timer is complete, trigger alert
+        if (currentTime == 0) {
+            timer1.Timer.stop();
+            //alert('Times up!');
+            try
+            {
+                start.currentTime = 0;
+            }
+            catch(err)
+            {
+                //no sound - log error
+            }
+
+            pauseStart();
+
+
+
+            setTimeout(function () {
+                try
+                {
+                    Background.pause();
+                }
+                catch(err)
+                {
+                    //no sound - log error
+                }
+
+                $('#carousel_ul').carousel().animate('pause');
+                if (correct_items.length >= 10) {
+                    //alert('You Win');
+                    $('#retry-screen').modal('show');
+                    playWonGame();
+
+                    $('#next-button2').click(function () {
+
+                        $('#flip-screen').modal('show');
+                        playFlip();
+
+                        //need to tell the system that is is time to award flip
+
+
+                        $('#retry-screen').modal('hide');
+                    });
+                    $("#button-replay").click(function () {
+                        $('#retry-screen').modal('hide');
+                        setTimeout(function () { location.reload(); }, 1000);
+                        try
+                        {
+                            startGame.load();
+                        }
+                        catch (err) {
+                            //no sound - log error
+                        }
+                        startGame();
+                    });
+
+                } else {
+                    playRunOut();
+                    $('#retry-screen').modal('hide');
+                    $('#fail-screen').modal('show');
+                }
+
+            });
+
+
+
+        }
+        // Increment timer position
+        currentTime -= incrementTime;
+        if (currentTime < 0) currentTime = 0;
+    }
+
+    function displayTime(timeString) {
+        var seconds = ~~((timeString / 1000) % 60);
+        var minutes = ~~((timeString / (1000 * 60)) % 60);
+        var hours = ~~((timeString / (1000 * 60 * 60)) % 24);
+
+        //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
+
+        if (seconds < 10) seconds = "0" + seconds;
+        if (minutes < 10) minutes = "" + minutes;
+        if (hours < 10) hours = "0" + hours;
+
+        //if (hours = 0) hours = "00";
+        //if (minutes = 0) minutes = "00";
+
+        return minutes.toString() + seconds.toString();
+
+
+
+    }
