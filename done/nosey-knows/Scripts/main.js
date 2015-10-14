@@ -24,11 +24,12 @@
             $('#noseWords .next').fadeIn(500);
         }, 2000);
     });
+
     $('#noseWords .next').click(function () {
-        
         $('#noseWords').fadeOut(500);
         $('#feelings').fadeIn(500);
     });
+
     $('#feelings .card').click(function () {
         $(this).addClass('flipped');
         $('#cardFlip').get(0).play();
@@ -36,11 +37,12 @@
             setTimeout(function () { $(' #feelings .next').fadeIn(500); }, 1000);
         };
     });
-    $('#feelings .next').click(function () {
 
+    $('#feelings .next').click(function () {
         $('#feelings').fadeOut(500);
         $('#startGame').fadeIn(500);
     });
+
     $('#startGame .next , #googjob .again').click(function () {
         $('#startGame').fadeOut(500);
         $('#step').fadeIn(500);
@@ -74,11 +76,7 @@
                             $('#slide14').get(0).play();
                         }
                     }
-
                 }
-
-
-
             });
 
         }, 500);
@@ -91,9 +89,8 @@
         $('#googjob').fadeOut(500);
         $('#step').fadeIn(500);
         $('.triggerRelink').trigger('click');
-        
-
     });
+
     $('#googjob .fliptime').click(function () {
         $('#mainSound').get(0).pause();
         $('#googjob').fadeOut(500);
@@ -103,14 +100,12 @@
         $('#showOff .next').fadeIn(500);   
     });
 
-   
     $('#showOff .next.arrow').click(function () {
         $('#game').get(0).pause();
         $('#mainSound').get(0).pause();
         $('#slide15').get(0).pause();
         /*$('#showOff').fadeOut(500);
         $('#quit').fadeIn(500);*/
-
     });
     /*-----------------------------------------*/
         // Turn multiple selections on in IE
@@ -118,7 +113,6 @@
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
    // $('#pop-up').modal('show');
-
 
 
     //to use the close modal, use this function
@@ -137,22 +131,12 @@
         $('#game-info').modal('show');
     });
 
-    
-
     $('.A').click(function () {
-
         $("#level-complete").modal('show');
-
-
-
     });
 
     $('.B').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.purple-button').click(function () {
@@ -160,22 +144,11 @@
     });
 
     $('.close-Btn').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.close-Btn').click(function () {
-
         $("#game-info").modal('hide');
-
-
-
     });
-
-
-
 
 });

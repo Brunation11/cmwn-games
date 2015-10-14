@@ -3,11 +3,9 @@ var content_path = "http://actionitems.changemyworldnow.com/noseyknows";
 //var content_path = "";
 
 
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
-   
     $routeProvider
 
         // route for the home page
@@ -27,8 +25,8 @@ moduleGame.config(function ($routeProvider) {
             controller: 'stepController'
         })
     .otherwise({
-            redirectTo: '/'
-        });
+        redirectTo: '/'
+    });
 
 });
 
@@ -148,15 +146,14 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
     ]
 
     $scope.onDrag = function (e) {
-        
          angular.element(e.target).addClass("dragstarted");
         if ($(angular.element(e.target)).hasClass('incorrect')) {
        
             $(angular.element(e.target).parents()).siblings().find('.correct.dragstarted').removeClass('dragstarted')
         }
     };
+
     $scope.onDrop = function (e) {
-        
         var parrentSlide = angular.element(e.target);
         parrentSlide.addClass('done');
         var parrentSlideId = parrentSlide.parents().eq(2).get(0).id
@@ -194,13 +191,8 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         });
 
         console.log($scope.data1);
-
-
-
     
 });
-
-
 
 moduleGame.directive('relinkEvent', function ($rootScope) {
     return {
@@ -251,6 +243,4 @@ gamecatControllers.controller('gameDenoseCtrl', ['$scope', '$routeParams',
       $scope.gameId = $routeParams.gameId;
   }]);
 
-
 /*-----------------------------*/
-
