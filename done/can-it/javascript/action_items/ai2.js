@@ -1,13 +1,7 @@
     var start = document.getElementById("start1");
     var runout = document.getElementById("runout4");
-    var $countdown;
-    var $form;
-    var incrementTime = 1000;
-    var currentTime;
     var correct_items = new Array();
 
-
-$('.carousel-inner').parent().carousel('next', 1);
 
 $(document).ready(function () {
 
@@ -542,193 +536,70 @@ $(document).ready(function () {
             'marginTop': "+=220px"  //moves down
         }, 800).hide(1);
     }); /// End of big click function
-startGame();
+
 }); ///End of document.ready
 
- function playStart()
-    {
-        try
-        {
-            start.loop = true;
-            start.play();
-        }
-        catch (err)
-        {
-            //no sound - log error
-        }
-    }
-    function pauseStart()
-    {
-        try {
-            start.pause();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
+$.fn.timer = function( callback ) {
+    callback = callback || function() {};
+    return this.each(function() {
+        var $timer = $( this ),
+            $minutesEl = $timer.find( '.minutes' ),
+            $secondsEl = $timer.find( '.seconds' ),
+            interval = 1000,
+            timer = null,
+            start = 60,
+            minutesText = $minutesEl.text(),
+            minutes = ( minutesText[0] == '0' ) ? minutesText[1] : minutesText[0],
+            m = Number( minutes );
 
-    function startGame() {
-        startTimer();
+            timer = setInterval(function() {
+                start--;
+                if( start == 0 ) {
+                    start = 60;
 
-        playStart();
+                    $secondsEl.text( '00' );
 
-    }
+                    m--;
 
-    var $countdown;
-    var $form;
-    var incrementTime = 1000;
-    var currentTime;
+                    if( m == 0 ) {
+                        clearInterval( timer );
+                        $minutesEl.text( '00' );
+                        callback();
 
-    var timer1 = new (function () {
-        currentTime = '90000'; // 24 hours (in milliseconds)
+                    }
+                } else {
+
+                    if( start >= 10 ) {
+
+                        $secondsEl.text( start.toString() );
+
+                    } else {
+
+                        $secondsEl.text( '0' + start.toString() );
+
+
+                    }
+                    if( minutes.length == 2 ) {
+                        $minutesEl.text( m.toString() );
+                    } else {
+                        if( m == 1 ) {
+                            $minutesEl.text( '00' );
+                        } else {
+                            $minutesEl.text( '0' + m.toString() );
+                        }
+                    }
+
+                }
+
+            }, interval);
+
     });
 
-    function delayTimerStart(delayLength) {
+};
 
+$(function() {
+    $( '.timer' ).timer(function() {
+        document.getElementById( 'timer-beep' ).play();
+    });
 
-        $('#counter').slideUp(300).delay(delayLength).queue(function () {
-
-        });
-    }
-
-
-
-    function startTimer() {
-        $countdown = $('#counter');
-        $countdown.show();
-
-        timer1.Timer = $.timer(updateTimer, incrementTime, true);
-
-
-    }
-
-    function playWonGame()
-    {
-        try {
-            wongame.load();
-            wongame.play();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
-
-    function playFlip()
-    {
-        try {
-            flip.load();
-            flip.play();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
-
-    function playRunOut()
-    {
-        try {
-            runout.load();
-            runout.play();
-        }
-        catch (err) {
-            //no sound - log error
-        }
-    }
-
-    function updateTimer() {
-
-        // Output timer position
-        var timeString = currentTime.toString();
-        $countdown.html(displayTime(timeString));
-
-        // If timer is complete, trigger alert
-        if (currentTime == 0) {
-            timer1.Timer.stop();
-            //alert('Times up!');
-            try
-            {
-                start.currentTime = 0;
-            }
-            catch(err)
-            {
-                //no sound - log error
-            }
-
-            pauseStart();
-
-
-
-            setTimeout(function () {
-                try
-                {
-                    Background.pause();
-                }
-                catch(err)
-                {
-                    //no sound - log error
-                }
-
-                $('#carousel_ul').carousel().animate('pause');
-                if (correct_items.length >= 10) {
-                    //alert('You Win');
-                    $('#retry-screen').modal('show');
-                    playWonGame();
-
-                    $('#next-button2').click(function () {
-
-                        $('#flip-screen').modal('show');
-                        playFlip();
-
-                        //need to tell the system that is is time to award flip
-
-
-                        $('#retry-screen').modal('hide');
-                    });
-                    $("#button-replay").click(function () {
-                        $('#retry-screen').modal('hide');
-                        setTimeout(function () { location.reload(); }, 1000);
-                        try
-                        {
-                            startGame.load();
-                        }
-                        catch (err) {
-                            //no sound - log error
-                        }
-                        startGame();
-                    });
-
-                } else {
-                    playRunOut();
-                    $('#retry-screen').modal('hide');
-                    $('#fail-screen').modal('show');
-                }
-
-            });
-
-
-
-        }
-        // Increment timer position
-        currentTime -= incrementTime;
-        if (currentTime < 0) currentTime = 0;
-    }
-
-    function displayTime(timeString) {
-        var seconds = ~~((timeString / 1000) % 60);
-        var minutes = ~~((timeString / (1000 * 60)) % 60);
-        var hours = ~~((timeString / (1000 * 60 * 60)) % 24);
-
-        //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
-
-        if (seconds < 10) seconds = "0" + seconds;
-        if (minutes < 10) minutes = "" + minutes;
-        if (hours < 10) hours = "0" + hours;
-
-        //if (hours = 0) hours = "00";
-        //if (minutes = 0) minutes = "00";
-
-        return minutes.toString() + seconds.toString();
-
-
-
-    }
+});
