@@ -1,8 +1,14 @@
 ﻿$(document).ready(function () {
 
+    $('.arrows > .next').fadeIn();
+    $('.arrows > .next').addClass('open').one("click", function() {
+        // $('#Sslide3').get(0).currentTime = 0;
+        // $('#Sslide3').get(0).play();
+    });
+
     function loop() {
-        $('#step .slider  .pointer').css({ top: 130 });
-        $('#step .slider  .pointer').animate({
+        $('#step .slider .pointer').css({ top: 130 });
+        $('#step .slider .pointer').animate({
             top: '+=400'
         }, 2000, 'linear', function () {
             $('#drip').get(0).currentTime = 0;
@@ -111,8 +117,8 @@
                     if ((num) == 2 ) {
                         console.log('slide2');
                         $('#step .slider .slide .why').parent().addClass('tada');
-                        $('#Sslide3').get(0).currentTime = 0;
-                        $('#Sslide3').get(0).play();
+                        // $('#Sslide3').get(0).currentTime = 0;
+                        // $('#Sslide3').get(0).play();
 
                     }
                     if ((num) == 12) {
@@ -216,7 +222,6 @@
                     }
                 }
             }
-
         });
         /*---------------NEXT--BUTTON------------------------*/
         $('.arrows > .next').click(function (i) {

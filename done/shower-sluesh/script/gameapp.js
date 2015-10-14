@@ -48,14 +48,14 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
         'bgImage': "background-image:url(" + content_path + "content/_assets/elements/frame_1.png); background-position:center center;",
         'mainImageUrl': content_path + "content/_assets/elements/image_faucet.png",
         'mainImageStyle': "left:0; top:0",
-        'text': "<img class='why ' src='" + content_path + "content/_assets/elements/header_catch.png'>"
+        'text': "<img class='why animated tada' src='" + content_path + "content/_assets/elements/header_why_should.png'>"
     },
     {
         'name': "slide1",
         'bgImage': "background-image:url(" + content_path + "content/_assets/elements/frame_1.png); background-position:center center;",
         'mainImageUrl': content_path + "content/_assets/elements/image_faucet.png",
         'mainImageStyle': "left:0; top:0",
-        'text': "<img class='why animated tada' src='" + content_path + "content/_assets/elements/header_why_should.png'>"
+        'text': "<img class='why ' src='" + content_path + "content/_assets/elements/header_catch.png'>"
     },
     {
         'name': "slide2",
