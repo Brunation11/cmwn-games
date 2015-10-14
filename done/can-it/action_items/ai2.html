@@ -1,7 +1,29 @@
 <script type="text/javascript" src="javascript/action_items/ai2.js"></script>
 <script type="text/javascript" src="javascript/jquery.timer.js"></script>
 <script type="text/javascript" src="javascript/animation.js"></script>
+<script type="text/javascript" src="javascript/sounds.js"></script>
 
+<!--sound-->
+<audio id="background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 1000)">
+    <source src="content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Correct" preload="auto">
+    <source src="content/sound/LandinCan.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Wrong" preload="auto">
+    <source src="content/sound/Incorrect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="clock" preload="auto" loop>
+    <source src="content/sound/ClockTick2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="timeout" preload="auto">
+    <source src="content/sound/TimerRunsout.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
 <div class="container body-content">
     <div class="col-md-12">

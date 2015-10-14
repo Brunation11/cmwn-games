@@ -5,6 +5,21 @@
 
 $(document).ready(function () {
 
+    ///////// hide all bootstrap modals /////////
+    $('#quit-game').modal("hide");
+    $('#fail-screen').modal("hide");
+    $('#retry-screen').modal("hide");
+
+    ////////// quit screen //////////////////////////////
+    $('.scape-Btn').click(function(){
+        $('#quit-game').modal("show");
+    });
+    //////// hide quit screen ///////////////////////
+    $('#no-btn').click(function(){
+        $('#quit-game').modal("hide");
+    });
+
+
 
     // hide points animation
     $('.win').hide();
@@ -50,14 +65,15 @@ $(document).ready(function () {
             correct_items.push(selected_item);
 
             if (correct_items.length == 1) {
-                // playCorrect();
+                playCorrect();
+
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top : -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 10);
             }
 
             if (correct_items.length === 2) {
-                // playCorrect();
+                playCorrect();
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -65,7 +81,7 @@ $(document).ready(function () {
             }
 
             if (correct_items.length === 3) {
-                // playCorrect();
+                playCorrect();
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -73,7 +89,7 @@ $(document).ready(function () {
             }
 
             if (correct_items.length === 4) {
-                // playCorrect();
+                playCorrect();
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -81,7 +97,7 @@ $(document).ready(function () {
             }
 
             if (correct_items.length === 5) {
-                // playCorrect();
+                playCorrect();
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -89,7 +105,7 @@ $(document).ready(function () {
             }
 
             if (correct_items.length === 6) {
-                // playCorrect();
+                playCorrect();
                 $('#score p').html(function (i, val) { return val * 1 + 15; });
                 $('.win').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -371,7 +387,7 @@ $(document).ready(function () {
 
         else {
                     //play incorrect sound
-                    // playWrong();
+                    playWrong();
                     $('#score p').html(function (i, val) { return val * 1 - 30; });
                     $('.loose').show().animate({ top: -10 }, 800).hide(1000);
                     $('.carousel-inner').parent().carousel('next', 1);
@@ -539,6 +555,7 @@ $(document).ready(function () {
 
 }); ///End of document.ready
 
+//////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
 $.fn.timer = function( callback ) {
     callback = callback || function() {};
     return this.each(function() {
@@ -599,7 +616,16 @@ $.fn.timer = function( callback ) {
 
 $(function() {
     $( '.timer' ).timer(function() {
-        document.getElementById( 'timer-beep' ).play();
+        document.getElementById( 'timeout' ).play();
+        document.getElementById( 'clock' ).pause();
+        document.getElementById( 'background' ).pause();
+
+
+        if (correct_items.length >= 5) {
+            $('#retry-screen').modal("show");
+        } else {
+            $('#fail-screen').modal("show");
+        }
     });
 
 });
