@@ -33,7 +33,7 @@ function slide(where) {
                 $('#carousel_ul li:last').after($('#carousel_ul li:first'));
             }
 
-            $('#carousel_ul').css({ 'left': '0px' });
+            $('#carousel_ul').css({ 'left': '-210px' });
     });
 
 }
