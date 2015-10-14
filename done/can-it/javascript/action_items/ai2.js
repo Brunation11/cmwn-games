@@ -9,6 +9,7 @@ $(document).ready(function () {
     $('#quit-game').modal("hide");
     $('#fail-screen').modal("hide");
     $('#retry-screen').modal("hide");
+    $('#flip-screen').modal("hide");
 
     ////////// quit screen //////////////////////////////
     $('.scape-Btn').click(function(){
@@ -19,6 +20,32 @@ $(document).ready(function () {
         $('#quit-game').modal("hide");
     });
 
+    /////// replay game /////////////////////////////
+    $('#re-try-2').click(function(){
+        $("#putcontenthere").load("action_items/ai2.html");
+    });
+
+    $('#re-try').click(function(){
+        $("#putcontenthere").load("action_items/ai2.html");
+    });
+
+    /////// advance to flip screen ///////////////
+    $('#next-button2').click(function(){
+        $('#flip-screen').modal("show");
+            try
+            {
+                flip.load();
+                flip.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+    });
+
+    ///// advance out of the ai after flip screen ///////////////////
+    $('#next-button3').click(function(){
+        ///// ------------ whatever the next screen may be -------/////
+    });
 
 
     // hide points animation
@@ -47,7 +74,7 @@ $(document).ready(function () {
             $('#carousel_ul').carousel().animate('pause',2000);
     });
     // All items click
-    $(".Hit_One,.Hit_two,.Hit_three,.Hit_four,.Hit_five,.Hit_six,.Hit_seven,.Hit_eight,.Hit_nine,.Hit_ten,.Hit_eleven,.Hit_twelve,.Hit_thirteen,.Hit_fourteen,.Hit_fifteen,.Hit_sixteen,.Hit_seventeen,.Hit_eighteen,.Hit_nineteen,.Hit_twenty,.Hit_twentyone,.Hit_twentytwo,.Hit_twentythree,.Hit_twentyfour,.Hit_twentyfive,.Hit_twentysix,.Hit_twentyseven,.Hit_twentyeight,.Hit_twentynine,.Hit_thirty,.Hit_thirtyone,.Hit_thirtytwo,.Hit_thirtythree,.Hit_thirtyfour,.Hit_thirtyfive,.Hit_thirtysix,.Hit_thirtyseven,.Hit_thirtyeight,.Hit_thirtynine,.Hit_forty").dblclick(function (event) {
+    $(".Hit_One,.Hit_two,.Hit_three,.Hit_four,.Hit_five,.Hit_six,.Hit_seven,.Hit_eight,.Hit_nine,.Hit_ten,.Hit_eleven,.Hit_twelve,.Hit_thirteen,.Hit_fourteen,.Hit_fifteen,.Hit_sixteen,.Hit_seventeen,.Hit_eighteen,.Hit_nineteen,.Hit_twenty,.Hit_twentyone,.Hit_twentytwo,.Hit_twentythree,.Hit_twentyfour,.Hit_twentyfive,.Hit_twentysix,.Hit_twentyseven,.Hit_twentyeight,.Hit_twentynine,.Hit_thirty,.Hit_thirtyone,.Hit_thirtytwo,.Hit_thirtythree,.Hit_thirtyfour,.Hit_thirtyfive,.Hit_thirtysix,.Hit_thirtyseven,.Hit_thirtyeight,.Hit_thirtynine,.Hit_forty").click(function (event) {
 
         var click_item = $(this).attr('id');
         var click_correct = $(this).attr('data-correct');
@@ -623,8 +650,10 @@ $(function() {
 
         if (correct_items.length >= 5) {
             $('#retry-screen').modal("show");
+            $('#fail-screen').modal("hide");
         } else {
             $('#fail-screen').modal("show");
+            $('#retry-screen').modal("hide");
         }
     });
 

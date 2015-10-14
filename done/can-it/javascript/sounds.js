@@ -1,4 +1,12 @@
-
+//////////////  background //////////////
+try
+{
+    background.load();
+    background.play();
+}
+catch (err) {
+    //no sound - log error
+}
 //////////////  Correct items //////////////
 function playCorrect() {
     try
@@ -33,3 +41,5 @@ try
 catch (err) {
     //no sound - log error
 }
+
+
