@@ -592,6 +592,19 @@
         $('#slide19').get(0).play();
         $('#labyrinthHome').fadeOut(500);
         $('#flip').fadeIn(500);
+        $('.flip-content').hide();
+        setTimeout(function () { $(' #step .slider .next').fadeIn(500); }, 500);
+        setTimeout(function () {
+
+             $('.arrows > .next').fadeIn();
+            $('.arrows > .next').addClass('open');
+        }, 1000);
+    });
+
+    $('#flip a.next').click(function() {
+        $('.flip-content').show();
+        $('.mcu-text').hide();
+        $('.mcu-logo').hide();
     });
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/

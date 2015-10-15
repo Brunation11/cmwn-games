@@ -681,6 +681,18 @@ max-height: 250px;
 text-align: center;
 }
 
+.mcu-text {
+max-width: 100%;
+max-height: 250px;
+text-align: center;
+}
+
+.flip-text {
+max-width: 100%;
+max-height: 250px;
+text-align: center;
+}
+
 .headig-box img {
 max-width: 86%;
 margin:0 7%;
@@ -1019,6 +1031,14 @@ background: url(_assets/background/BKG_7.png) 0 0 no-repeat ;
 background-size: 100%;
 min-height:400px;
 }
+#mcu {
+font-family:source_sans_prosemibold;
+color:#fff;
+font-size:38px;
+background: url(_assets/background/BKG_7.png) 0 0 no-repeat ;
+background-size: 100%;
+min-height:400px;
+}
 #noseWords .text-box, #flip .inner {
 width: 69%;
 padding: 30% 0;
@@ -1038,7 +1058,7 @@ background: url('_assets/elements/frame_3.png') center top no-repeat;
 background-size: 100%;
 color: #000;
 font-size: 25px;
-min-height: 320px;
+min-height: 400px;
 float: left;
 }
 #flip br {
@@ -1057,9 +1077,23 @@ font-family:source_sans_probold;
 #noseWords .text-box .headig-box:last-child{
 display:none;
 }
-#flip .inner .heading {
-max-width:50%;
+#flip .inner .mcu-logo {
+max-width:42%;
 margin:auto;
+margin-top: 10px;
+}
+
+#flip .flip-content .flip-logo {
+max-width:94%;
+margin:auto;
+margin-top: 14px;
+margin-left: 13px;
+}
+
+#flip .flip-content {
+    width:200px;
+    position: absolute;
+    margin-left: 108px;
 }
 /*----------------------------*/
 #feelings .headig-box {
@@ -1243,14 +1277,14 @@ margin:auto;
     text-align:center;
 }
 #labyrinthHome .popup2{
-     padding: 167px 0 0 0;
+     padding: 97px 0 0 0;
      font-size: 23px;
      font-weight: bold;
      font-family: source_sans_probold;
      text-align:center;
  }
 #labyrinthHome .popup2 img{
-    width:71%;
+    width:38%;
 }
 #labyrinth br {
     display:block
@@ -1347,8 +1381,15 @@ margin:auto;
 background-position: center 10%;
 background-size:50%;
 }
-#flip .inner .headig-box{
+#flip .inner .mcu-text{
     font-size: 22px;
+    margin-top: -12px;
+}
+
+#flip .flip-content .flip-text{
+    font-size: 22px;
+    margin-top: 137px;
+    color: #000;
 }
 #flip .inner .heading img {
     width: 96%;

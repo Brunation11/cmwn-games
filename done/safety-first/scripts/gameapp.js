@@ -79,14 +79,14 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
           'mainImageUrl': content_path + "content/_assets/elements/person_grandparent.png",
           'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
-          'text': "<p style='margin-top:10px;'>Grandparents who<br/>love you can come in!</p>"
+          'text': "<p style='margin-top:10px;'>Grandparents<br/>can come in!</p>"
       },
       {
           'name': "relative",
           'mainImageUrl': content_path + "content/_assets/elements/person_relative.png",
           'imgHeader': content_path + "content/_assets/elements/header_yes.png",
           'correct': 1,
-          'text': "A close relative that <br/>you see frequently who<br/>your parents approve<br/> of can come in."
+          'text': "A close relative that <br/>you see frequently who<br/>your parents approve<br/>can come in."
       }, {
           'name': "cable_guy",
           'mainImageUrl': content_path + "content/_assets/elements/person_cable_guy.png",
@@ -99,13 +99,13 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window) 
           'mainImageUrl': content_path + "content/_assets/elements/person_neighbor.png",
           'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
-          'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> He/She will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
+          'text': "<p style='margin-top:-8px;'>Keyword is new. <br/> They will have to<br/> come back and visit<br/> when your parents<br/> are home.</p>"
       }, {
           'name': "gas_man",
           'mainImageUrl': content_path + "content/_assets/elements/person_gas_man.png",
           'imgHeader': content_path + "content/_assets/elements/header_ding_dong.png",
           'correct': 2,
-          'text': "Not today. <br/>Even if the person is <br/>wearing a uniform,<br/>he/she is still a stranger."
+          'text': "Not today. <br/>Even if the person is <br/>wearing a uniform,<br/>they are still a stranger."
       },{
           'name': "flat_tire",
           'mainImageUrl': content_path + "content/_assets/elements/person_flat_tire.png",
