@@ -78,7 +78,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         {
             'name': "Glass",
             'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_glass.png",
-            'text': "<h3>Glass</h3> <p>Million of years</p><p class='small'>(Some say never)</p>"
+            'text': "<h3>Glass</h3> <p>Millions of years</p><p class='small'>(Some say never)</p>"
         },
         {
             'name': "Leather_shoe",
@@ -134,7 +134,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         {
             'name': "Styrofoam",
             'mainImageUrl': content_path + "/content/_assets/elements/Trash/Untitled-14_styrofoam.png",
-            'text': "<h3>Styrofoam</h3> <p>It does not biodegrade</p>"
+            'text': "<h3>Styrofoam</h3> <p>Never EVER goes away</p>"
         },
         {
             'name': "Tin_can",
