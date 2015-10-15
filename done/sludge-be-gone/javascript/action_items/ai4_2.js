@@ -1,5 +1,11 @@
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");
+var COUNT_START = 01*21*44; // tenths * seconds * hours
+var count = COUNT_START;
+var playing = false;
+
+playpause = document.getElementById('playpause');
+reset = document.getElementById('reset');
 // var timer1;
 // var $form;
 // var $countdown;
@@ -20,40 +26,13 @@ background.play();
 
 $(document).ready(function () {
 
-    $('#star2').hide();
-    $('#star3').hide();
-    $('#star4').hide();
-    $('#star5').hide();
-    $('#star6').hide();
-    $('#star7').hide();
-    $('#star8').hide();
-    $('#star9').hide();
-
-});
-
-$(document).ready(function () {
-
-    $(".body-content").addClass("net");
-    // startGame();
-
-    // $('#game-info').modal('show');
-    // $('#scoop-game').hide();
-    // $('#head2').hide().show(1000, function () {
-    //     progress.play();
-    // });
-    // $('#head3').hide().show(2000, function () {
-    //     progress2.play();
-    // });
-    // $('#head4').hide().show(3000, function () {
-    //     progress3.play();
-    // });
-
-    // $('#next-button3').click(function () {
-    //     $(".body-content").addClass("net");
-    //     $('#game-info').modal('hide');
-    //     $('#scoop-game').show();
-    //     startGame();
-    // });
+$('#time-modal').modal('hide');
+    
+        $(".body-content").addClass("net");
+        $('#game-info').modal('hide');
+        $('#scoop-game').show();
+        // startGame();
+  
 
     $('#next-button2').click(function () {
         $('#game-complete').modal('hide');
@@ -71,19 +50,19 @@ $(document).ready(function () {
         // timer1.Timer.play();
     });
 
-    $('#replay').click(function () {
+    $('#replay1').click(function () {
+      $('#time-modal1').remove();
         $("#putcontenthere").load("action_items/ai4_2.html");
         // correct_matches = new Array();
         // currentTime = 90000;
         // timer1.Timer.play();
 
+        // background.play();
         // start.loop = true;
         // start.play();
     });
 
-});
 
-$(document).ready(function () {
 
     //Correct Items
 
@@ -129,7 +108,6 @@ $(document).ready(function () {
             correct.play();
 
         } else if (correct_items.length === 8) {
-            // timer1.Timer.stop();
             $('#star9').show();
             $('#game-complete').modal('show');
             complete.play();
@@ -185,6 +163,7 @@ $(document).ready(function () {
         incorrect.load();
         incorrect.play();
     });
+
     $('#nemo').click(function () {
         incorrect.load();
         incorrect.play();
@@ -224,84 +203,104 @@ $(document).ready(function () {
         incorrect.load();
         incorrect.play();
     });
-});
+
 
 
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
-$.fn.timer = function( callback ) {
-   callback = callback || function() {};
-   return this.each(function() {
-       var $timer = $( this ),
-           $minutesEl = $timer.find( '.minutes' ),
-           $secondsEl = $timer.find( '.seconds' ),
-           interval = 1000,
-           timer = null,
-           start = 60,
-           minutesText = $minutesEl.text(),
-           minutes = ( minutesText[0] == '0' ) ? minutesText[1] : minutesText[0],
-           m = Number( minutes );
+playpause.onclick = function() {
+  if (playing) {
+    playing = false; 
+    console.log("Pause!");
+  } else if (!playing) {
+    playing = true; 
+    console.log("Play!");
+  }
+  
+}
 
-           timer = setInterval(function() {
-               start--;
-               if( start == 0 ) {
-                   start = 60;
-
-                   $secondsEl.text( '00' );
-
-                   m--;
-
-                   if( m == 0 ) {
-                       clearInterval( timer );
-                       $minutesEl.text( '0' );
-                       callback();
-
-                   }
-               } else {
-
-                   if( start >= 10 ) {
-
-                       $secondsEl.text( start.toString() );
-
-                   } else {
-
-                       $secondsEl.text( '0' + start.toString() );
+pause.onclick = function() {
+  if (playing) {
+    playing = false; 
+    console.log("Pause!");
+  }
+  
+}
 
 
-                   }
-                   if( minutes.length == 2 ) {
-                       $minutesEl.text( m.toString() );
-                   } else {
-                       if( m == 1 ) {
-                           $minutesEl.text( '0' );
-                       } else {
-                           $minutesEl.text( '0' + m.toString() );
-                       }
-                   }
+play.onclick = function() {
+   if (!playing) {
+    playing = true; 
+    console.log("Play!");
+  }
+  
+}
 
-               }
 
-           }, interval);
 
-   });
+reset.onclick = function() {
+  if (playing) {
+    playing = false; 
+  }
+  console.log("Reset Timer!");
+  count = COUNT_START;
+}
 
-};
+function countdown(){
+    displayTime();
 
-$(function() {
-   $( '.timer' ).timer(function() {
-        $('#time-modal').modal('show');
+    if (count == 0) {
+      playing = false;
+      count++;
+    setTimeout(function() { countdown; }, 10000); //////////    reset counter     ////////////////
+       $('#time-modal1').modal('show');
+    } else if (playing) {
+      setTimeout(countdown, 100);
+      count--;
+    } else {
+      setTimeout(countdown, 100); 
+    }
+  
+}
+countdown();
 
-        if (correct_items.length >= 8) {
-           $('#retry-screen').modal("show");
-           $('#fail-screen').modal("hide");
-       } else {
-           $('#fail-screen').modal("show");
-           $('#retry-screen').modal("hide");
-       }
-   });
+function displayTime() {
+  
+  var tenths = count;  
+  var sec = Math.floor(tenths / 10);
+  var hours = Math.floor(sec / 3600);
+  sec -= hours * (3600);
+  var mins = Math.floor(sec / 60);
+  sec -= mins * (60);
+
+  if (hours < 1) {
+    document.getElementById('time_left').innerHTML = LeadingZero(mins)+':'+LeadingZero(sec);
+  }
+  else {
+    document.getElementById('time_left').innerHTML = hours+':'+LeadingZero(mins)+':'+LeadingZero(sec);
+  }
+}
+
+function LeadingZero(Time) {
+  return (Time < 10) ? "0" + Time : + Time;
+}
+
+
+// $(function() {
+//    $( '.timer' ).timer(function() {
+//         $('#time-modal').modal('show');
+
+//         if (correct_items.length >= 8) {
+//            $('#retry-screen').modal("show");
+//            $('#fail-screen').modal("hide");
+//        } else {
+//            $('#fail-screen').modal("show");
+//            $('#retry-screen').modal("hide");
+//        }
+//    });
+
+// });
 
 });
-
-
 // function startGame() {
 //     startTimer();
 //     start.loop = true;

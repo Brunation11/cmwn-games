@@ -1,6 +1,5 @@
 ﻿/*----------------------------------*/
 
-
 @import "fonts/fonts.css";
 
 html, body, div, span, applet, object, iframe,
@@ -125,7 +124,7 @@ background-size: 100%;
 padding: 8% 6%;
 }
 
-#video, #flip, #step, #googjob, #file, #wellcome,  #hard, #easy, #showOff, #quit, #noseWords, #feelings, #startGame {
+#video, #flip, #flusher, #step, #googjob, #file, #wellcome,  #hard, #easy, #showOff, #quit, #noseWords, #feelings, #startGame {
 display: none;
 }
 
@@ -587,9 +586,9 @@ max-height: 250px;
 text-align: center;
 }
 
-.headig-box img {
+/*.headig-box img {
 max-width: 70%;
-}
+}*/
 
 .tex-box {
 background: url("_assets/elements/frame_2.png") 0 0 no-repeat;
@@ -902,6 +901,16 @@ position: relative;
 min-height: 400px;
 }
 
+#flusher {
+font-family: source_sans_prosemibold;
+color: #fff;
+font-size: 38px;
+background: url(_assets/background/bakg_1.png) center center no-repeat;
+background-size: 108%;
+position: relative;
+min-height: 400px;
+}
+
 #noseWords .toilet, #flip .toilet{
 position: absolute;
 bottom: 0;
@@ -911,7 +920,7 @@ padding-top: 60%;
 background: url(_assets/elements/toilet_2.png) center center no-repeat;
 background-size: 100%;
 }
-#flip .toilet{
+#flusher .toilet{
 position: absolute;
   bottom: 0;
   left: 0;
@@ -923,7 +932,11 @@ position: absolute;
 #flip button.exit {
   right: 1%;
   top: -2%;
-    }
+}
+#flusher button.exit {
+  right: 1%;
+  top: -2%;
+}
 #noseWords .headig-box, #flip .headig-box{
 position: absolute;
 top: 2%;
@@ -937,6 +950,20 @@ padding: 8% 5% 10%;
 font-size: 30px;
 font-family: source_sans_problack;
 line-height: 40px;
+}
+#flusher .heading-box{
+position: absolute;
+top: 2%;
+right: 2%;
+text-align: center;
+background: url(_assets/elements/frame_1.png) 0 0 no-repeat;
+background-size: 100%;
+color: #000000;
+width: 61%;
+padding: 8% 5% 10%;
+font-size: 24px;
+/*font-family: source_sans_problack;*/
+line-height: 29px;
 }
 #flip .headig-box{
 
@@ -957,6 +984,10 @@ display:block;
 }
 #flip .headig-box div.flip img {
 width:55%;
+}
+#flusher .heading-box div.flush2 img {
+margin-top: 5px;
+width:100%;
 }
 #noseWords .next {
 background: url(_assets/elements/buttons/btn_yes_btn.png) center center no-repeat;
