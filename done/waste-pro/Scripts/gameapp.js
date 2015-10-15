@@ -544,12 +544,12 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
           'headerImages': content_path + "/content/_assets/elements/header_bags.png",
          
       },
-       {
-           'name': "Paper_Napkins",
-           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_napkins_on.png",
-           'noseImages': content_path + "/content/_assets/elements/buttons/btn_napkins.png",
-           'headerImages': content_path + "/content/_assets/elements/header_napkins.png",
-       },
+       // {
+       //     'name': "Paper_Napkins",
+       //     'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_napkins_on.png",
+       //     'noseImages': content_path + "/content/_assets/elements/buttons/btn_napkins.png",
+       //     'headerImages': content_path + "/content/_assets/elements/header_napkins.png",
+       // },
        {
            'name': "Paper_Utensils",
            'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_utensils_on.png",
