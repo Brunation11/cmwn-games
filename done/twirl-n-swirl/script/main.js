@@ -4,6 +4,7 @@
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
     $('#mainSound').get(0).play();
     $('.btn-click, .next, .prev').click(function () {
+        $('#wonder').get(0).play();
         $('#btnClick').get(0).play();
     });
 
@@ -25,6 +26,7 @@
             $('#noseWords .next').fadeIn(500);
         }, 2000);
     });
+
     $('#noseWords .next').click(function () {
         $('#mainSound').get(0).pause();
         $('#flush').get(0).play();
@@ -33,7 +35,6 @@
             $('#noseWords').fadeOut(500);
             $('#feelings').fadeIn(500);
             $('#feelings .next').fadeIn(500);
-
         }, 1000);
     });
     // $('.flush a').click(function () {
@@ -45,14 +46,13 @@
     //     $('.correct-ansver-hover').fadeIn(500);
     //     $('.sidebar-hover ').fadeOut();
     //      setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
-
     // });
 
     $('#feelings .next').click(function () {
-
         $('#feelings').fadeOut(500);
         $('#step').fadeIn(500);
     });
+
     $('#startGame .next , #googjob .again').click(function () {
         $('#startGame').fadeOut(500);
         $('#step').fadeIn(500);
@@ -88,8 +88,6 @@
 
                 }
 
-
-
             });
 
         }, 500);
@@ -97,21 +95,21 @@
         /*---------------------------------------------------*/
         /*---------------------------------------------------*/
     });
+
     $('#step .slider > .arrows  a.next').click(function () {
-
         $('#step').fadeOut(500);
-        $('#flip').fadeIn(500);
+        $('#flusher').fadeIn(500);
         $('#mainSound').get(0).pause();
-        $('#slide14').get(0).play();
+        // $('#slide14').get(0).play();
         completeFlip(11820);
-
     });
+
     $('#googjob .again').click(function () {
         $('#googjob').fadeOut(500);
         $('#step').fadeIn(500);
         $('.triggerRelink').trigger('click');
-
     });
+
     $('#googjob .fliptime').click(function () {
         $('#googjob').fadeOut(500);
         $('#game').get(0).pause();
@@ -121,20 +119,21 @@
         $('#mainSound').get(0).play();
     });
 
+    $('#flusher .next.arrow').click(function () {
+        $('#flusher').fadeOut(500);
+        $('#flip').fadeIn(500);
+        $('#slide14').get(0).play();
+    });
 
     $('#flip .next.arrow').click(function () {
-
         $('#flip').fadeOut(500);
         $('#quit').fadeIn(500);
-
     });
     /*-----------------------------------------*/
         // Turn multiple selections on in IE
 
-
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
    // $('#pop-up').modal('show');
-
 
 
     //to use the close modal, use this function
@@ -153,22 +152,12 @@
         $('#game-info').modal('show');
     });
 
-
-
     $('.A').click(function () {
-
         $("#level-complete").modal('show');
-
-
-
     });
 
     $('.B').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.purple-button').click(function () {
@@ -176,22 +165,11 @@
     });
 
     $('.close-Btn').click(function () {
-
         $("#retry-level").modal('show');
-
-
-
     });
 
     $('.close-Btn').click(function () {
-
         $("#game-info").modal('hide');
-
-
-
     });
-
-
-
 
 });
