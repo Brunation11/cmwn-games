@@ -65,8 +65,8 @@
 
 .carousel-inner {
     margin-left: 17px;
-    width: 334px;
-    height:120px;
+    width: 345px;
+    height:211px;
     top:-43px;
 }
 
@@ -105,10 +105,10 @@
         width: 98px;
         padding: 0px;
         /*  height: 110px; */
-        margin-top: 194px;
         margin-bottom: 10px;
         margin-left: 0px;
         margin-right: 0px;
+        position:relative;
     }
 
 #carousel_inner {
@@ -124,6 +124,7 @@
     padding: 0px;
     width: 9999px;
     padding-bottom: 10px;
+    margin-top: 194px;
 }
 
 .Time {
@@ -423,3 +424,126 @@
     font-size: 25px;
     font-family: 'Source Sans Pro';
 }
+
+/* Main button */
+
+#Big-btn { /* This gives the shape to the button*/
+    position: absolute;
+    z-index: 99;
+    top: 27px;
+    left: 168px;
+    display: inline-block;
+    margin: 0 auto;
+
+    -webkit-border-radius: 93px;
+
+    -webkit-box-shadow:
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 3px rgba(98,98,98,1),
+        0px 3px rgba(88,88,88,1),
+        0px 3px rgba(78,78,78,1),
+        0px 9px 6px -1px rgba(128,128,128,1); /* shadow */
+
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+}
+
+#Big-btn span { /* creates the dimentions and texture of the button */
+    background-color: #bebbb3;
+
+    background-image:
+        /* gloss gradient */
+        -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(50%,rgba(255,255,255,0)),
+            color-stop(50%,rgba(255,255,255,0.3)),
+            color-stop(100%,rgba(255,255,255,0.2))),
+
+        /* dark outside gradient */
+        -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(210,210,210,0.3)),
+            color-stop(20%,rgba(212,205,193,0.78)),
+            color-stop(80%,rgba(212,205,193,0.78)),
+            color-stop(100%,rgba(210,210,210,0.3))),
+
+        /* light inner gradient */
+        -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(255,255,255,0)),
+            color-stop(20%,rgba(255,255,255,0.5)),
+            color-stop(80%,rgba(255,255,255,0.5)),
+            color-stop(100%,rgba(255,255,255,0))),
+
+        /* diagonal line pattern */
+        -webkit-gradient(
+            linear,
+            0% 100%,
+            100% 0%,
+            color-stop(0%,rgba(255,255,255,0)),
+            color-stop(40%,rgba(255,255,255,0)),
+            color-stop(40%,#D2D2D1),
+            color-stop(60%,#D2D2D1),
+            color-stop(60%,rgba(255,255,255,0)),
+            color-stop(100%,rgba(255,255,255,0)));
+
+        -webkit-box-shadow:
+            0px -1px #fff, /* top highlight */
+            0px 1px 1px #FFFFFF; /* bottom edge */
+
+    -webkit-background-size: 100%, 100%, 100%, 4px 4px;
+
+    -webkit-border-radius: 93px;
+    -webkit-transition: -webkit-transform .1s ease-in-out;
+
+    display: inline-block;
+    width:130px;
+    height:130px;
+    color: #009345;
+    text-align: center;
+    font-family: 'coop', sans serif;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 37px;
+    text-shadow: 0px 1px #fff, 0px -1px #262F33;
+}
+
+#Big-btn span p {
+    margin-top: 44px;
+    margin-left: -2px;
+}
+
+#Big-btn span:hover { /* Hover state button */
+    color: #fdbb30;
+    text-shadow: 0px -1px #97A63A;
+    cursor: pointer;
+}
+
+#Big-btn:active { /* Active state */
+    -webkit-box-shadow:
+    0px 3px rgba(128,128,128,1),
+    0px 4px rgba(118,118,118,1),
+    0px 5px rgba(108,108,108,1),
+    0px 6px rgba(98,98,98,1),
+    0px 7px rgba(88,88,88,1),
+    0px 8px rgba(78,78,78,1),
+    0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+}
+
+#Big-btn:active span{
+    -webkit-transform: translate(0, 5px); /* depth of button press */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
