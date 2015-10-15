@@ -77,7 +77,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         'name': "Fats",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_5.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_5.png",
-        'text': "They may seem like a liquid but<br/> when they cool they coat the pipe like<br/> wax, making the pipe opening <br/> smaller and smaller."
+        'text': "They may seem like liquid but<br/> when they cool they coat the pipe like<br/> wax, making the pipe opening <br/> smaller and smaller."
     },
     {
         'name': "Cosmetics",
@@ -95,13 +95,13 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         'name': "Cat_Litter",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_8.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_8.png",
-        'text': "Cat Litter can harbor parasites <br/> and even toxins. <br/> Litter is made from clay and <br/> sand which should <br/> NEVER be put in a toilet."
+        'text': "Cat Litter can harbor parasites <br/> and even toxins. <br/> Litter is made from clay<br/>and sand, which should <br/> NEVER be put in a toilet."
     },
     {
         'name': "Cotton",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_9.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_9.png",
-        'text': "They gather and bend in the pipes <br/> and create blockages."
+        'text': "<p style='margin-top: 2px; margin-left: 56px;''>They clump together and<br/>bend in the pipes <br/> and create blockages.</p>"
     },
     {
         'name': "Gum",
@@ -125,7 +125,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
          'name': "Preacsrpition_Medication",
          'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_13.png",
          'mainHeader': content_path + "/content/_assets/elements/headers/header_13.png",
-         'text': "This is a BIG NO!<br/> Medications are not removed in the <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for wildlife."
+         'text': "This is a BIG NO!<br/> Medications are not removed in the <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for animals and people."
      },
       {
           'name': "Blue_Automatic_Toilet_Bowl_Cleaner",
@@ -134,7 +134,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
           'text': "Sounds surprising! <br/> The chemicals are toxic and can<br/> damage animals, humans,<br/> and the environment."
       }
 
-    ]
+    ];
 
     $scope.onDrag = function (e) {
         //angular.element(e.target).parent().addClass("dragstarted");
