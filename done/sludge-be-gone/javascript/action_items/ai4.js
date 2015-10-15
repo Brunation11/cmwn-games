@@ -1,10 +1,10 @@
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");
-var timer1;
-var $form;
-var $countdown;
-var incrementTime = 1000;
-var currentTime;
+// var timer1;
+// var $form;
+// var $countdown;
+// var incrementTime = 1000;
+// var currentTime;
 
 var bgMusic = $("#background")[0],
 playing = true;
@@ -60,6 +60,7 @@ $(document).ready(function () {
 
     $('#close').click(function () {
         $('#game-close').modal('show');
+        timer.stop();
         // timer1.Timer.stop();
     });
 
@@ -127,7 +128,6 @@ $(document).ready(function () {
             correct.play();
 
         } else if (correct_items.length === 8) {
-            timer1.Timer.stop();
             $('#star9').show();
             $('#game-complete').modal('show');
             complete.play();
@@ -183,6 +183,7 @@ $(document).ready(function () {
         incorrect.load();
         incorrect.play();
     });
+
     $('#nemo').click(function () {
         incorrect.load();
         incorrect.play();
@@ -250,7 +251,7 @@ $.fn.timer = function( callback ) {
 
                    if( m == 0 ) {
                        clearInterval( timer );
-                       $minutesEl.text( '00' );
+                       $minutesEl.text( '0' );
                        callback();
 
                    }
@@ -270,7 +271,7 @@ $.fn.timer = function( callback ) {
                        $minutesEl.text( m.toString() );
                    } else {
                        if( m == 1 ) {
-                           $minutesEl.text( '00' );
+                           $minutesEl.text( '0' );
                        } else {
                            $minutesEl.text( '0' + m.toString() );
                        }
@@ -287,6 +288,14 @@ $.fn.timer = function( callback ) {
 $(function() {
    $( '.timer' ).timer(function() {
         $('#time-modal').modal('show');
+
+        if (correct_items.length >= 8) {
+           $('#retry-screen').modal("show");
+           $('#fail-screen').modal("hide");
+       } else {
+           $('#fail-screen').modal("show");
+           $('#retry-screen').modal("hide");
+       }
    });
 
 });

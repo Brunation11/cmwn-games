@@ -1,10 +1,10 @@
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");
-var timer1;
-var $form;
-var $countdown;
-var incrementTime = 1000;
-var currentTime;
+// var timer1;
+// var $form;
+// var $countdown;
+// var incrementTime = 1000;
+// var currentTime;
 
 var bgMusic = $("#background")[0],
 playing = true;
@@ -34,7 +34,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $(".body-content").addClass("net");
-    startGame();
+    // startGame();
 
     // $('#game-info').modal('show');
     // $('#scoop-game').hide();
@@ -63,22 +63,22 @@ $(document).ready(function () {
 
     $('#close').click(function () {
         $('#game-close').modal('show');
-        timer1.Timer.stop();
+        // timer1.Timer.stop();
     });
 
     $('.No-Btns').click(function () {
         $('#game-close').modal('hide');
-        timer1.Timer.play();
+        // timer1.Timer.play();
     });
 
     $('#replay').click(function () {
         $("#putcontenthere").load("action_items/ai4_2.html");
-        correct_matches = new Array();
-        currentTime = 90000;
-        timer1.Timer.play();
+        // correct_matches = new Array();
+        // currentTime = 90000;
+        // timer1.Timer.play();
 
-        start.loop = true;
-        start.play();
+        // start.loop = true;
+        // start.play();
     });
 
 });
@@ -129,7 +129,7 @@ $(document).ready(function () {
             correct.play();
 
         } else if (correct_items.length === 8) {
-            timer1.Timer.stop();
+            // timer1.Timer.stop();
             $('#star9').show();
             $('#game-complete').modal('show');
             complete.play();
@@ -227,69 +227,144 @@ $(document).ready(function () {
 });
 
 
-function startGame() {
-    startTimer();
-    start.loop = true;
-}
+//////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
+$.fn.timer = function( callback ) {
+   callback = callback || function() {};
+   return this.each(function() {
+       var $timer = $( this ),
+           $minutesEl = $timer.find( '.minutes' ),
+           $secondsEl = $timer.find( '.seconds' ),
+           interval = 1000,
+           timer = null,
+           start = 60,
+           minutesText = $minutesEl.text(),
+           minutes = ( minutesText[0] == '0' ) ? minutesText[1] : minutesText[0],
+           m = Number( minutes );
 
-var timer1 = new (function () {
-    currentTime = '90000'; // 24 hours (in milliseconds)
+           timer = setInterval(function() {
+               start--;
+               if( start == 0 ) {
+                   start = 60;
+
+                   $secondsEl.text( '00' );
+
+                   m--;
+
+                   if( m == 0 ) {
+                       clearInterval( timer );
+                       $minutesEl.text( '0' );
+                       callback();
+
+                   }
+               } else {
+
+                   if( start >= 10 ) {
+
+                       $secondsEl.text( start.toString() );
+
+                   } else {
+
+                       $secondsEl.text( '0' + start.toString() );
+
+
+                   }
+                   if( minutes.length == 2 ) {
+                       $minutesEl.text( m.toString() );
+                   } else {
+                       if( m == 1 ) {
+                           $minutesEl.text( '0' );
+                       } else {
+                           $minutesEl.text( '0' + m.toString() );
+                       }
+                   }
+
+               }
+
+           }, interval);
+
+   });
+
+};
+
+$(function() {
+   $( '.timer' ).timer(function() {
+        $('#time-modal').modal('show');
+
+        if (correct_items.length >= 8) {
+           $('#retry-screen').modal("show");
+           $('#fail-screen').modal("hide");
+       } else {
+           $('#fail-screen').modal("show");
+           $('#retry-screen').modal("hide");
+       }
+   });
+
 });
 
-function delayTimerStart(delayLength) {
-    $('#counter').slideUp(300).delay(delayLength).queue(function () {
 
-    });
-}
+// function startGame() {
+//     startTimer();
+//     start.loop = true;
+// }
 
-function startTimer() {
-    $countdown = $('#counter');
-    $countdown.show();
+// var timer1 = new (function () {
+//     currentTime = '90000'; // 24 hours (in milliseconds)
+// });
 
-    timer1.Timer = $.timer(updateTimer, incrementTime, true);
-}
+// function delayTimerStart(delayLength) {
+//     $('#counter').slideUp(300).delay(delayLength).queue(function () {
 
-function updateTimer() {
+//     });
+// }
 
-    // Output timer position
-    var timeString = currentTime.toString();
-    $countdown.html(displayTime(timeString));
+// function startTimer() {
+//     $countdown = $('#counter');
+//     $countdown.show();
 
-    // If timer is complete, trigger alert
-    if (currentTime == 0) {
-        timer1.Timer.stop();
-        //alert('Times up!');
-        $('#time-modal').modal('show');
-        start.pause();
-        start.currentTime = 0;
+//     timer1.Timer = $.timer(updateTimer, incrementTime, true);
+// }
+
+// function updateTimer() {
+
+//     // Output timer position
+//     var timeString = currentTime.toString();
+//     $countdown.html(displayTime(timeString));
+
+//     // If timer is complete, trigger alert
+//     if (currentTime == 0) {
+//         timer1.Timer.stop();
+//         //alert('Times up!');
+//         $('#time-modal').modal('show');
+//         start.pause();
+//         start.currentTime = 0;
         
-        runout.play();
+//         runout.play();
 
-        setTimeout(function () {
-            Background.pause();
+//         setTimeout(function () {
+//             Background.pause();
             
             
-        });
+//         });
 
-    }
-    // Increment timer position
-    currentTime -= incrementTime;
-    if (currentTime < 0) currentTime = 0;
-}
+//     }
+//     // Increment timer position
+//     currentTime -= incrementTime;
+//     if (currentTime < 0) currentTime = 0;
+// }
 
-function displayTime(timeString) {
-    var seconds = ~~((timeString / 1000) % 60);
-    var minutes = ~~((timeString / (1000 * 60)) % 60);
-    //var hours = ~~((timeString / (1000 * 60 * 60)) % 24);
+// function displayTime(timeString) {
+//     var seconds = ~~((timeString / 1000) % 60);
+//     var minutes = ~~((timeString / (1000 * 60)) % 60);
+//     //var hours = ~~((timeString / (1000 * 60 * 60)) % 24);
 
-    //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
+//     //alert('hours: ' + hours + ' minutes: ' + minutes + ' seconds: ' + seconds);
 
-    if (seconds < 10) seconds = "0" + seconds;
-    if (minutes < 10) minutes = "" + minutes;
-    //if (hours < 10) hours = "" + hours;
+//     if (seconds < 10) seconds = "0" + seconds;
+//     if (minutes < 10) minutes = "" + minutes;
+//     //if (hours < 10) hours = "" + hours;
 
-    //if (hours = 0) hours = "00";
-    //if (minutes = 0) minutes = "00";
+//     //if (hours = 0) hours = "00";
+//     //if (minutes = 0) minutes = "00";
 
-    return minutes.toString() + seconds.toString();
-}
+//     return minutes.toString() + seconds.toString();
+// }
