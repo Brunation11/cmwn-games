@@ -1,5 +1,11 @@
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");
+var COUNT_START =01*21*44;// tenths * seconds * hours
+var count = COUNT_START;
+var playing = false;
+
+playpause = document.getElementById('playpause');
+reset = document.getElementById('reset');
 // var timer1;
 // var $form;
 // var $countdown;
@@ -16,7 +22,7 @@ bgMusic.addEventListener('ended', function () {
     }
 }, false);
 
-background.play();
+ background.play();
 
 $(document).ready(function () {
 
@@ -39,6 +45,81 @@ $(document).ready(function () {
         $(".body-content").addClass("net");
         $('#game-info').modal('hide');
         $('#scoop-game').show();
+        playpause.onclick = function() {
+  if (playing) {
+    playing = false; 
+    console.log("Pause!");
+  } else if (!playing) {
+    playing = true; 
+    console.log("Play!");
+  }
+  
+}
+
+pause.onclick = function() {
+  if (playing) {
+    playing = false; 
+    console.log("Pause!");
+  }
+  
+}
+
+
+play.onclick = function() {
+   if (!playing) {
+    playing = true; 
+    console.log("Play!");
+  }
+  
+}
+
+
+
+reset.onclick = function() {
+  if (playing) {
+    playing = false; 
+  }
+  console.log("Reset Timer!");
+  count = COUNT_START;
+}
+
+function countdown(){
+    displayTime(); 
+    if (count == 0) {
+      playing = false;
+       setTimeout(function() { countdown; }, 10000); //////////    reset counter     ////////////////
+      count;
+      $('#time-modal').modal('show');
+    } else if (playing) {
+      setTimeout(countdown, 100);
+      count--;
+    } else {
+      setTimeout(countdown, 100); 
+    }
+  
+}
+countdown();
+
+function displayTime() {
+  
+  var tenths = count;  
+  var sec = Math.floor(tenths / 10);
+  var hours = Math.floor(sec / 3600);
+  sec -= hours * (3600);
+  var mins = Math.floor(sec / 60);
+  sec -= mins * (60);
+
+  if (hours < 1) {
+    document.getElementById('time_left').innerHTML = LeadingZero(mins)+':'+LeadingZero(sec);
+  }
+  else {
+    document.getElementById('time_left').innerHTML = hours+':'+LeadingZero(mins)+':'+LeadingZero(sec);
+  }
+}
+
+function LeadingZero(Time) {
+  return (Time < 10) ? "0" + Time : + Time;
+}
         // startGame();
     });
 
@@ -50,7 +131,6 @@ $(document).ready(function () {
 
     $('#close').click(function () {
         $('#game-close').modal('show');
-        timer.pause();
         // timer1.Timer.stop();
     });
 
@@ -60,6 +140,9 @@ $(document).ready(function () {
     });
 
     $('#replay').click(function () {
+      $('#time-modal').remove();
+
+
         $("#putcontenthere").load("action_items/ai4_2.html");
         // correct_matches = new Array();
         // currentTime = 90000;
@@ -215,79 +298,23 @@ $(document).ready(function () {
 
 
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
-$.fn.timer = function( callback ) {
-   callback = callback || function() {};
-   return this.each(function() {
-       var $timer = $( this ),
-           $minutesEl = $timer.find( '.minutes' ),
-           $secondsEl = $timer.find( '.seconds' ),
-           interval = 1000,
-           timer = null,
-           start = 30,
-           minutesText = $minutesEl.text(),
-           minutes = ( minutesText[0] == '1' ) ? minutesText[1] : minutesText[0],
-           m = Number( minutes );
-
-           timer = setInterval(function() {
-               start--;
-               if( start == 0 ) {
-                   start = 0;
-
-                   $secondsEl.text( '00' );
-
-                   m--;
-
-                   if( m == 0 ) {
-                       clearInterval( timer );
-                       $minutesEl.text( '1' );
-                       callback();
-
-                   }
-               } else {
-
-                   if( start >= 10 ) {
-
-                       $secondsEl.text( start.toString() );
-
-                   } else {
-
-                       $secondsEl.text( '0' + start.toString() );
 
 
-                   }
-                   if( minutes.length == 1 ) {
-                       $minutesEl.text( m.toString() );
-                   } else {
-                       if( m == 1 ) {
-                           $minutesEl.text( '0' );
-                       } else {
-                           $minutesEl.text( '0' + m.toString() );
-                       }
-                   }
 
-               }
+// $(function() {
+//    $( '.timer' ).timer(function() {
+//         $('#time-modal').modal('show');
 
-           }, interval);
+//         if (correct_items.length >= 8) {
+//            $('#retry-screen').modal("show");
+//            $('#fail-screen').modal("hide");
+//        } else {
+//            $('#fail-screen').modal("show");
+//            $('#retry-screen').modal("hide");
+//        }
+//    });
 
-   });
-
-};
-
-
-$(function() {
-   $( '.timer' ).timer(function() {
-        $('#time-modal').modal('show');
-
-        if (correct_items.length >= 8) {
-           $('#retry-screen').modal("show");
-           $('#fail-screen').modal("hide");
-       } else {
-           $('#fail-screen').modal("show");
-           $('#retry-screen').modal("hide");
-       }
-   });
-
-});
+// });
 
 });
 // function startGame() {
