@@ -256,31 +256,31 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
               'name': "Elephant",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_elephants.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_elephant.png",
-              'text': "Yes. An elephant weighs 15,000 pounds.",
+              'text': "An elephant weighs 15,000 pounds.",
               'correct': 1
           }, {
               'name': "Car",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_cars.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_car.png",
-              'text': "Yes. A car weighs 4,000 pounds.",
+              'text': "A car weighs 4,000 pounds.",
               'correct': 1
           }, {
               'name': "Hippopotamus",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_hippos.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_hippo.png",
-              'text': "Yes. A hippo weighs 3,000 pounds.",
+              'text': "A hippo weighs 3,000 pounds.",
               'correct': 1
           }, {
               'name': "School_bus",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_buses.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_bus.png",
-              'text': "No.  Not enough.  A school bus weighs 25,000 pounds.",
+              'text': "A school bus weighs 25,000 pounds.",
               'correct': 2
           }, {
               'name': "Kittens",
               'mainImageUrl': content_path + "/content/_assets/elements/weight_kittens.png",
               'headerImageUrl': content_path + "/content/_assets/elements/header_kitten.png",
-              'text': "Not even close.  A kitten weighs a pound.",
+              'text': "A kitten weighs a pound.",
               'correct': 2
           },
 
