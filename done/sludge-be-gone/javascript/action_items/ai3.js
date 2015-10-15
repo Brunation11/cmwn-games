@@ -43,7 +43,7 @@ $(document).ready(function () {
     $('#next-button2').click(function () {
         $("#putcontenthere").load("action_items/ai4.html");
         $('#bubble-game').hide();
-        background.pause();       
+        background.pause();
     });
 
 });
