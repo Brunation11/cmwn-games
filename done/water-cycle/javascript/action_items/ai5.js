@@ -74,7 +74,7 @@ $(document).ready(function () {
         }
 
         if (correct_items.length === 5) {
-            completeFlip(12941);
+            // completeFlip(12941);
             slide5.pause();
             Flip.load();
             Flip.play();
@@ -83,6 +83,7 @@ $(document).ready(function () {
             $(".Flip").hide().delay(1000).fadeIn(2000);
             $(".text_5").hide();
             $(".text_6").hide().delay(900).fadeIn(1000);
+            completeFlip(12941);
         }
 
 
