@@ -20,21 +20,11 @@ background.play();
 
 $(document).ready(function () {
 
-    $('#star2').hide();
-    $('#star3').hide();
-    $('#star4').hide();
-    $('#star5').hide();
-    $('#star6').hide();
-    $('#star7').hide();
-    $('#star8').hide();
-    $('#star9').hide();
+   
 
-});
-
-$(document).ready(function () {
 
     $('#game-info').modal('show');
-    $('#scoop-game').hide();
+    
     $('#head2').hide().show(1000, function () {
         progress.play();
     });
@@ -60,7 +50,7 @@ $(document).ready(function () {
 
     $('#close').click(function () {
         $('#game-close').modal('show');
-        timer.stop();
+        timer.pause();
         // timer1.Timer.stop();
     });
 
@@ -80,9 +70,7 @@ $(document).ready(function () {
         // start.play();
     });
 
-});
 
-$(document).ready(function () {
 
     //Correct Items
 
@@ -223,7 +211,7 @@ $(document).ready(function () {
         incorrect.load();
         incorrect.play();
     });
-});
+
 
 
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
@@ -235,15 +223,15 @@ $.fn.timer = function( callback ) {
            $secondsEl = $timer.find( '.seconds' ),
            interval = 1000,
            timer = null,
-           start = 60,
+           start = 30,
            minutesText = $minutesEl.text(),
-           minutes = ( minutesText[0] == '0' ) ? minutesText[1] : minutesText[0],
+           minutes = ( minutesText[0] == '1' ) ? minutesText[1] : minutesText[0],
            m = Number( minutes );
 
            timer = setInterval(function() {
                start--;
                if( start == 0 ) {
-                   start = 60;
+                   start = 0;
 
                    $secondsEl.text( '00' );
 
@@ -251,7 +239,7 @@ $.fn.timer = function( callback ) {
 
                    if( m == 0 ) {
                        clearInterval( timer );
-                       $minutesEl.text( '0' );
+                       $minutesEl.text( '1' );
                        callback();
 
                    }
@@ -267,7 +255,7 @@ $.fn.timer = function( callback ) {
 
 
                    }
-                   if( minutes.length == 2 ) {
+                   if( minutes.length == 1 ) {
                        $minutesEl.text( m.toString() );
                    } else {
                        if( m == 1 ) {
@@ -285,6 +273,7 @@ $.fn.timer = function( callback ) {
 
 };
 
+
 $(function() {
    $( '.timer' ).timer(function() {
         $('#time-modal').modal('show');
@@ -300,7 +289,7 @@ $(function() {
 
 });
 
-
+});
 // function startGame() {
 //     startTimer();
 //     start.loop = true;
