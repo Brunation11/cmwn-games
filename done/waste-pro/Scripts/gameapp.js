@@ -420,9 +420,6 @@ moduleGame.controller('garbageController', function ($scope, $http, $sce, $windo
            'noseImages': content_path + "/content/_assets/elements/buttons/btn_4_on.png",
            'text': "Incineration is the burning <br/> of waste at high heat."
 
-
-
-
        },
     ]
 
