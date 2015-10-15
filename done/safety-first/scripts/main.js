@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+    ///// background image is set to display none in main.css, and brought back with fade in,
+    //// to prevent glitch ////
+
 
     /**********************************************/
     /**********************************************/
@@ -394,8 +397,8 @@
     });
 
     $('#home .play').click(function () {
-        $('#home').fadeOut(500);
-        $('#noseWords').fadeIn(500);
+        $('#home').fadeOut(50);
+        $('#noseWords').fadeIn(50);
 
         setTimeout(function () {
             $('#noseWords .text-box .headig-box:last-child').fadeIn(500);
@@ -406,8 +409,8 @@
     });
 
     $('#noseWords .next').click(function () {
-        $('#noseWords').fadeOut(500);
-        $('#letsSee').fadeIn(500);
+        $('#noseWords').fadeOut(50);
+        $('#letsSee').fadeIn(50);
         $('#title').get(0).currentTime=0;
         $('#title').get(0).pause();
         setTimeout(function () {
@@ -419,9 +422,9 @@
     $('#letsSee .next').click(function () {
         $('#slide4').get(0).currentTime=0;
         $('#slide4').get(0).play();
-
-        $('#letsSee').fadeOut(500);
-        $('#letsSee1').fadeIn(500);
+        $('.bkg-image').css('background-image','url(_assets/background/BKG_2.png)');
+        $('#letsSee').fadeOut(50);
+        $('#letsSee1').fadeIn(50);
         $('#ex').wave(null, 100, 1200);
         setTimeout(function () {
             $('#letsSee1 .arrows > .next').fadeIn();
@@ -432,8 +435,8 @@
 
     $('#letsSee1 .next').click(function () {
 
-        $('#letsSee1').fadeOut(500);
-        $('#step').fadeIn(500);
+        $('#letsSee1').fadeOut(50);
+        $('#step').fadeIn(50);
 
         setInterval(function () {
             $('#step .slider .slide.openslide .img-hover').addClass('view');
@@ -443,8 +446,8 @@
     $('#goodjob .next').click(function () {
         $('#slide19').get(0).currentTime=0;
         $('#slide19').get(0).play();
-        $('#goodjob').fadeOut(500);
-        $('#labyrinth').fadeIn(500);
+        $('#goodjob').fadeOut(50);
+        $('#labyrinth').fadeIn(50);
 
                maze1();
     });
@@ -453,7 +456,7 @@
         $('#slide18').get(0).currentTime=0;
         $('#slide18').get(0).play();
 
-        $('#labyrinth .popup').fadeOut(500);
+        $('#labyrinth .popup').fadeOut(50);
 
         $('#BKG_slide20-27').get(0).play();
         $('#maze').fadeIn(500);
