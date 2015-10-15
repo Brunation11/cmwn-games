@@ -76,351 +76,354 @@ $(document).ready(function () {
             $('#carousel_ul').carousel().animate('pause',2000);
     });
     // All items click
-    $(".Hit_One,.Hit_two,.Hit_three,.Hit_four,.Hit_five,.Hit_six,.Hit_seven,.Hit_eight,.Hit_nine,.Hit_ten,.Hit_eleven,.Hit_twelve,.Hit_thirteen,.Hit_fourteen,.Hit_fifteen,.Hit_sixteen,.Hit_seventeen,.Hit_eighteen,.Hit_nineteen,.Hit_twenty,.Hit_twentyone,.Hit_twentytwo,.Hit_twentythree,.Hit_twentyfour,.Hit_twentyfive,.Hit_twentysix,.Hit_twentyseven,.Hit_twentyeight,.Hit_twentynine,.Hit_thirty,.Hit_thirtyone,.Hit_thirtytwo,.Hit_thirtythree,.Hit_thirtyfour,.Hit_thirtyfive,.Hit_thirtysix,.Hit_thirtyseven,.Hit_thirtyeight,.Hit_thirtynine,.Hit_forty").click(function (event) {
-
+    $(".hit").click(function (event) {
+        
         var click_item = $(this).attr('id');
         var click_correct = $(this).attr('data-correct');
         var item_animate = click_item + "#";
         var current = $('.item');
 
         var selected_item = $("#carousel_ul li")[2].id;
+
         selected_item = selected_item.replace("-li", "");
         // alert(click_correct + " " +selected_item);
 
-        /// Main if statement
-        if (click_correct == selected_item) {
-
-
-            correct_items.push(selected_item);
-
-            if (correct_items.length == 1) {
-                playCorrect();
-
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top : -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 10);
-            }
-
-            if (correct_items.length === 2) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 3) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 4) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 5) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 6) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-                $('.carousel-inner').carousel({ pause: true, interval: false });
-            }
-            if (correct_items.length === 7) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 8) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 9) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 10) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 11) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 12) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 13) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 14) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 15) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 16) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 17) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 18) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 19) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 20) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 21) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 22) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 23) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 24) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 25) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 26) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 27) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 28) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 29) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 30) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 31) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 32) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 33) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 34) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 35) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 36) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 37) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 38) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 39) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-            if (correct_items.length === 40) {
-                playCorrect();
-                $('#score p').html(function (i, val) { return val * 1 + 15; });
-                $('.win').show().animate({ top: -10 }, 800).hide(1000);
-                $('.carousel-inner').parent().carousel('next', 1);
-
-            }
-
-        } ///// End om main "if" statement
-
-        else {
-                    //play incorrect sound
-                    playWrong();
-                    $('#score p').html(function (i, val) { return val * 1 - 30; });
-                    $('.loose').show().animate({ top: -10 }, 800).hide(1000);
-                    $('.carousel-inner').parent().carousel('next', 1);
+        if(selected_item == ""){
+            $('.carousel-inner').parent().carousel('next', 1);
+        } else {
+            /// Main if statement
+            if (click_correct == selected_item) {
+
+                correct_items.push(selected_item);
+
+                if (correct_items.length == 1) {
+                    playCorrect();
+
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top : -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 10);
                 }
+
+                if (correct_items.length === 2) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 3) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 4) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 5) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 6) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+                    $('.carousel-inner').carousel({ pause: true, interval: false });
+                }
+                if (correct_items.length === 7) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 8) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 9) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 10) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 11) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 12) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 13) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 14) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 15) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 16) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 17) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 18) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 19) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 20) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 21) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 22) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 23) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 24) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 25) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 26) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 27) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 28) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 29) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 30) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 31) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 32) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 33) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 34) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 35) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 36) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 37) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 38) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 39) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+                if (correct_items.length === 40) {
+                    playCorrect();
+                    $('#score p').html(function (i, val) { return val * 1 + 15; });
+                    $('.win').show().animate({ top: -10 }, 800).hide(1000);
+                    $('.carousel-inner').parent().carousel('next', 1);
+
+                }
+
+            } ///// End om main "if" statement
+            else {
+                //play incorrect sound
+                playWrong();
+                $('#score p').html(function (i, val) { return val * 1 - 30; });
+                $('.loose').show().animate({ top: -10 }, 800).hide(1000);
+                $('.carousel-inner').parent().carousel('next', 1);
+            }
+        }
 
         $("#" + click_item + "1").animate({
             'marginTop': "+=220px"  //moves down
