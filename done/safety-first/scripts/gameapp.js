@@ -196,14 +196,14 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
               'mainImageUrlHover': content_path + "content/_assets/elements/map_element_granny_off.png",
               'imgHeader': content_path + "content/_assets/elements/info_window_7.png",
               'text': "<p style=' padding: 170px 0 0 0;font-size:23px;'>If a stranger offers<br/> you a gift, get away<br/> as fast as you can<br/> and tell an adult!</p>",
-              'sound' : 'sound6',
+              'sound' : 'sound11',
           }, {
               'name': "X",
               'mainImageUrl': content_path + "",
               'mainImageUrlHover': content_path + "",
               'imgHeader': content_path + "content/_assets/elements/info_window_home.png",
               'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/content/_assets/elements/header_stay.png' class='safe'>safe!</p>",
-              'sound' : 'sound7',
+              'sound' : 'sound13',
           },
 
     ];
@@ -281,6 +281,7 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_glass_off.png",
         'imgHeader': content_path + "content/_assets/elements/info_window_8.png",
         'text': "<p style=' padding: 137px 0 0 0;'>If you see broken glass<br/> near a door or window, <br/> don't go inside. <br/> Find a trusted adult!</p>"
+        // 'sound': 'sound14',
     },
 
      {

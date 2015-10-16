@@ -6697,24 +6697,16 @@ input[type="checkbox"].input-validation-error {
   background-repeat: no-repeat;
   background-size: 616px 400px;
 }
-.banners {
-  position: absolute;
-  z-index: 1;
-  width: 616px;
-  height: 115px;
-  margin-top: 263px;
-  background: #dfdfdf;
-  opacity: 0.8;
-  border-top: 3px dashed white;
-  border-bottom: 3px dashed white;
-}
-.banners p {
+.banners1 p {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans serif;
   text-align: center;
   font-weight: 600;
-  margin-top: 18px;
-  color: #000;
+  margin-top: 321px;
+  color: #001970;
+  position: absolute;
+  z-index: 1;
+  left: 26px;
 }
 .next-Btn-1 {
   position: absolute;
@@ -6970,15 +6962,16 @@ input[type="checkbox"].input-validation-error {
 .Intro {
   position: absolute;
   z-index: 1;
+  display: none;
 }
 .Intro p {
   text-align: center;
   color: white;
-  font-size: 24px;
-  margin-left: 62px;
+  font-size: 25px;
+  margin-left: 57px;
   margin-top: 8px;
-  line-height: 25px;
-  font-family: 'Source Sans Pro', sans serif;
+  font-family: 'Source Sans Pro';
+  line-height: 31px;
 }
 .modal-backdrop.in {
   opacity: 0;
@@ -7008,14 +7001,14 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   top: 0;
   margin-top: 68px;
-  margin-left: 94px;
+  margin-left: 112px;
   font-size: 1.5em;
 }
 .background-oval .four {
   position: absolute;
   top: 0;
   margin-top: 58px;
-  margin-left: 113px;
+  margin-left: 54px;
   text-align: center;
   font-size: 1.5em;
 }
@@ -7037,7 +7030,7 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   top: 0;
   margin-top: 64px;
-  margin-left: 115px;
+  margin-left: 76px;
   text-align: center;
   font-size: 1.5em;
 }
@@ -7052,19 +7045,20 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   top: 0;
   margin-top: 68px;
-  margin-left: 94px;
+  margin-left: 113px;
   font-size: 1.5em;
 }
 .background-oval .ten {
   position: absolute;
   top: 0;
   margin-top: 68px;
-  margin-left: 40px;
+  margin-left: 72px;
   font-size: 1.5em;
 }
 .last-text {
   position: absolute;
   z-index: 1;
+  display: none;
 }
 .last-text p {
   text-align: center;
@@ -7148,13 +7142,16 @@ input[type="checkbox"].input-validation-error {
   text-align: center;
   font-family: 'Source Sans Pro', sans serif;
   font-weight: 700;
-  font-size: 35px;
+  font-size: 36px;
+  line-height: 53px;
+  color: #001970;
 }
 .background-oval p {
   text-align: center;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans serif;
   font-weight: 600;
+  color: #001970;
 }
 .list-1 li p {
   font-size: 22px;
@@ -7206,7 +7203,7 @@ input[type="checkbox"].input-validation-error {
 }
 .step-five p {
   margin-left: -140px;
-  margin-top: 48px;
+  margin-top: 26px;
   font-size: 21px;
   font-family: 'Source Sans Pro', sans serif;
 }
@@ -7280,23 +7277,15 @@ input[type="checkbox"].input-validation-error {
   background-repeat: no-repeat;
   background-size: 616px 400px;
 }
-.banners {
-  position: absolute;
-  z-index: 1;
-  width: 616px;
-  height: 115px;
-  margin-top: 263px;
-  background: rgba(223, 223, 223, 0.8);
-  border-top: 3px dashed white;
-  border-bottom: 3px dashed white;
-}
 .banners p {
-  font-size: 24px;
+  font-size: 23px;
   font-family: 'Source Sans Pro', sans serif;
   text-align: center;
   font-weight: 600;
   margin-top: 5px;
-  color: #000;
+  color: #001970;
+  position: absolute;
+  z-index: 2;
 }
 .next-Btn-4 {
   position: absolute;

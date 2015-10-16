@@ -70,8 +70,8 @@ $(document).ready(function () {
 
     });
 
-    title.load();
-    title.play();
+    // title.load();
+    // title.play();
     $(".title").hide().delay(800).fadeIn(5000);
 
     $(".play").hide().delay(5000).fadeIn(2000);
