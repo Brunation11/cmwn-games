@@ -155,7 +155,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_1_off.png",
          'imgHeader': content_path + "content/_assets/elements/info_window_2.png",
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>",
-         'sound' : 'sound3',
+         'sound' : 'sound1',
      },
       {
           'name': "C",
@@ -163,7 +163,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
           'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_2_off.png",
           'imgHeader': content_path + "content/_assets/elements/info_window_3.png",
           'text': "<p style=' padding: 68px 0 0 0;'>If you drop <br/> something under <br/>or in front of the bus,<br/> tell the driver!<br/><br/>Don’t just reach for it.</p>",
-          'sound' : 'sound3',
+          'sound' : 'sound2',
       },
        {
            'name': "D",
@@ -179,7 +179,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
             'mainImageUrlHover': content_path + "content/_assets/elements/map_element_electronics_off.png",
             'imgHeader': content_path + "content/_assets/elements/info_window_5a.png",
             'text': "<p style=' padding: 130px 0 0 0;'>If a stranger tries to take <br/>your belongings, let them!<br/>Your life is more important!</p>",
-            'sound' : 'sound3',
+            'sound' : 'sound4',
         },
          {
              'name': "F",
@@ -187,7 +187,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_car_off.png",
              'imgHeader': content_path + "content/_assets/elements/info_window_6.png",
              'text': "<p style=' padding: 100px 0 0 0;'>Never get into a car<br/> with a stranger.<br/>It’s always okay to say no <br/>to an adult.</p>",
-             'sound' : 'sound3',
+             'sound' : 'sound5',
          },
           {
               'name': "G",
@@ -195,14 +195,14 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
               'mainImageUrlHover': content_path + "content/_assets/elements/map_element_granny_off.png",
               'imgHeader': content_path + "content/_assets/elements/info_window_7.png",
               'text': "<p style=' padding: 170px 0 0 0;font-size:23px;'>If a stranger offers<br/> you a gift, get away<br/> as fast as you can<br/> and tell an adult!</p>",
-              'sound' : 'sound3',
+              'sound' : 'sound6',
           }, {
               'name': "X",
               'mainImageUrl': content_path + "",
               'mainImageUrlHover': content_path + "",
               'imgHeader': content_path + "content/_assets/elements/info_window_home.png",
               'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>You made<br/>it home safe!<br/>Let’s <img src='http://actionitems.changemyworldnow.com/safetyfirst/content/_assets/elements/header_stay.png' class='safe'>safe!</p>",
-              'sound' : 'sound3',
+              'sound' : 'sound7',
           },
 
     ];
