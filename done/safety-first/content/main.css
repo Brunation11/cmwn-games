@@ -1084,16 +1084,16 @@ margin-top: 10px;
 }
 
 #flip .flip-content .flip-logo {
-max-width:94%;
+max-width:64%;
 margin:auto;
 margin-top: 14px;
-margin-left: 13px;
+margin-left: 56px;
 }
 
 #flip .flip-content {
-    width:200px;
+    width:273px;
     position: absolute;
-    margin-left: 108px;
+    margin-left: 73px;
 }
 /*----------------------------*/
 #feelings .headig-box {
