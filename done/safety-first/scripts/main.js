@@ -103,11 +103,8 @@
 
                         $('#labyrinth #mazepopup #' + val).fadeIn(1);
                         $('#labyrinth #mazepopup #' + val).addClass('poped');
-                        /*setTimeout(function () {
-                            console.log($('#maze .goal').length);
-                            console.log('!!!!!!!!!!!!!poped', $("#labyrinth #mazepopup .poped").length - 1);
-
-                        }, 50);*/
+                        var the_sound = $('#sound').attr("data-sound");
+                        $('#' + the_sound).get(0).play();
 
                         if ($('#maze .goal').length == $("#labyrinth #mazepopup .poped").length - 1) {
                             $('#labyrinth a.next').fadeIn(5000);
@@ -403,16 +400,25 @@
 
     $('#home .play').click(function () {
         $('#home').fadeOut(50);
-        $('#noseWords').fadeIn(50);
-        sound1.load();
-        sound1.play();
+        // $('#noseWords').fadeIn(50);
+        // sound1.load();
+        // sound1.play();
 
-        setTimeout(function () {
-            $('#noseWords .text-box .headig-box:last-child').fadeIn(500);
-            setTimeout(function () { $('#noseWords .arrows > .next').fadeIn();
-                $('#noseWords .arrows > .next').addClass('open');
-            }, 3000);
-        }, 500);
+        // setTimeout(function () {
+        //     $('#noseWords .text-box .headig-box:last-child').fadeIn(500);
+        //     setTimeout(function () { $('#noseWords .arrows > .next').fadeIn();
+        //         $('#noseWords .arrows > .next').addClass('open');
+        //     }, 3000);
+        // }, 500);
+
+        $('#slide19').get(0).currentTime=0;
+        $('#slide19').get(0).play();
+        $('#goodjob').fadeOut(50);
+        $('#labyrinth').fadeIn(50);
+        sound4.load();
+        sound4.play();
+        maze1();
+
     });
 
     $('#noseWords .next').click(function () {
