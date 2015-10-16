@@ -50,85 +50,99 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         'name': "Baby_Wipes",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_1.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_1.png",
-        'text': "Baby wipes are thicker and sturdier <br/> than toilet paper and <br/> do not break down easily.<br/> They are a clog waiting to happen!"
+        'text': "Baby wipes are thicker and sturdier <br/> than toilet paper and <br/> do not break down easily.<br/> They are a clog waiting to happen!",
+        'sound' : 'wipes',
     },
     {
         'name': "Diapers",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_2.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_2.png",
-        'text': "Diapers contain plastic that has<br/> chemicals which expand when wet. <br/> They create BIG clogs."
+        'text': "Diapers contain plastic that has<br/> chemicals which expand when wet. <br/> They create BIG clogs.",
+        'sound' : 'diaper',
     },
     {
         'name': "Paper_Towels",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_3.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_3.png",
-        'text': "Paper towels are not designed <br/> to break down in water <br/> like toilet paper. <br/> Flushing can cause problems."
+        'text': "Paper towels are not designed <br/> to break down in water <br/> like toilet paper. <br/> Flushing can cause problems.",
+        'sound' : 'paper',
     },
     {
         'name': "Dryer_Sheets",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_4.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_4.png",
-        'text': "Dryer Sheets contain synthetic<br/> chemicals that are not<br/> biodegradable!"
+        'text': "Dryer Sheets contain synthetic<br/> chemicals that are not<br/> biodegradable!",
+        'sound' : 'dryer',
     },
     {
         'name': "Fats",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_5.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_5.png",
-        'text': "They may seem like liquid but<br/> when they cool they coat the pipe like<br/> wax, making the pipe opening <br/> smaller and smaller."
+        'text': "They may seem like liquid but<br/> when they cool they coat the pipe like<br/> wax, making the pipe opening <br/> smaller and smaller.",
+        'sound' : 'oils',
     },
     {
         'name': "Cosmetics",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_6.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_6.png",
-        'text': "Many of the ingredients in<br/> cosmetics are toxic and shouldn’t <br/> be in the water supply."
+        'text': "Many of the ingredients in<br/> cosmetics are toxic and shouldn’t <br/> be in the water supply.",
+        'sound' : 'cosmet',
     },
     {
         'name': "Band_Aids",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_7.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_7.png",
-        'text': "The plastic in band-aids <br/> is not bio-degradable.<br/> They are bad for the environment."
+        'text': "The plastic in band-aids <br/> is not bio-degradable.<br/> They are bad for the environment.",
+        'sound' : 'aids',
     },
     {
         'name': "Cat_Litter",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_8.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_8.png",
-        'text': "Cat Litter can harbor parasites <br/> and even toxins. <br/> Litter is made from clay<br/>and sand, which should <br/> NEVER be put in a toilet."
+        'text': "Cat Litter can harbor parasites <br/> and even toxins. <br/> Litter is made from clay<br/>and sand, which should <br/> NEVER be put in a toilet.",
+        'sound' : 'litter',
     },
     {
         'name': "Cotton",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_9.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_9.png",
-        'text': "<p style='margin-top: 2px; margin-left: 56px;''>They clump together and<br/>bend in the pipes <br/> and create blockages.</p>"
+        'text': "<p style='margin-top: 2px; margin-left: 56px;''>They clump together and<br/>bend in the pipes <br/> and create blockages.</p>",
+        'sound' : 'cotton',
     },
     {
         'name': "Gum",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_10.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_10.png",
-        'text': "It’s gooey and sticky and definitely <br/> can cause problems."
+        'text': "It’s gooey and sticky and definitely <br/> can cause problems.",
+        'sound' : 'gum',
     },
     {
         'name': "Dental_Floss",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_11.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_11.png",
-        'text': "Dental Floss is not biodegradable.<br/> In the pipeline it can wrap<br/> around other objects and create<br/> monster clogs."
+        'text': "Dental Floss is not biodegradable.<br/> In the pipeline it can wrap<br/> around other objects and create<br/> monster clogs.",
+        'sound' : 'floss',
     },
     {
         'name': "Hair",
         'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_12.png",
         'mainHeader': content_path + "/content/_assets/elements/headers/header_12.png",
-        'text': "Hair catches things and tangles<br/> almost like dental floss.<br/> It’s a big clogger!"
+        'text': "Hair catches things and tangles<br/> almost like dental floss.<br/> It’s a big clogger!",
+        'sound' : 'hair',
     },
      {
          'name': "Preacsrpition_Medication",
          'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_13.png",
          'mainHeader': content_path + "/content/_assets/elements/headers/header_13.png",
-         'text': "This is a BIG NO!<br/> Medications are not removed in the <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for animals and people."
+         'text': "This is a BIG NO!<br/> Medications are not removed in the <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for animals and people.",
+         'sound' : 'pres',
      },
       {
           'name': "Blue_Automatic_Toilet_Bowl_Cleaner",
           'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_14.png",
           'mainHeader': content_path + "/content/_assets/elements/headers/header_14.png",
-          'text': "Sounds surprising! <br/> The chemicals are toxic and can<br/> damage animals, humans,<br/> and the environment."
+          'text': "Sounds surprising! <br/> The chemicals are toxic and can<br/> damage animals, humans,<br/> and the environment.",
+          'sound' : 'cleaner',
       }
 
     ];
@@ -156,6 +170,8 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
             $('.correct-ansver').fadeIn(500).css('z-index', '10');
             $('.correct-ansver-hover').fadeIn(500);
             $('.sidebar-hover ').fadeOut();
+            var the_sound = $('#sound').attr("data-sound");
+                        $('#' + the_sound).get(0).play();
             setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
         });
 
