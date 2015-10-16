@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     });
 
-    $(".Intro").hide().delay(900).fadeIn(500);
+    $(".Intro").delay(900).fadeIn(500);
     $(".last-text").hide();
     $(".next-Btn-2").hide();
 

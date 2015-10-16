@@ -1,7 +1,7 @@
 var correct_items = new Array();
 $(document).ready(function () {
 
-    $ ('.bkg-image').css('background-image','url(content/images/background/BKG_2.png)');
+    $ ('.bkg-image').css('background-image','url(content/images/new/BKG_2.png)');
 
     $('.No').click(function () {
         $('#retry-level').modal('hide')
@@ -19,8 +19,8 @@ $(document).ready(function () {
     $(".text_3").hide();
     $(".text_4").hide();
 
-    Ocean.load();
-    Ocean.play();
+    // Ocean.load();
+    // Ocean.play();
 
 
     $(".next-Btn-1").click(function () {
@@ -41,7 +41,7 @@ $(document).ready(function () {
            //     Seconddino.play();
            // },10000);
 
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_3.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_3.png)');
             $(".text_2").hide();
             $(".text_3").show();
         }

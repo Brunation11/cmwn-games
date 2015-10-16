@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
 
-    $ ('.bkg-image').css('background-image','url(content/images/background/BKG_6.png)');
+    $ ('.bkg-image').css('background-image','url(content/images/new/BKG_6.png)');
 
     $('.No').click(function () {
         $('#retry-level').modal('hide')
@@ -24,7 +24,9 @@ $(document).ready(function () {
     $(".text_4").hide();
     $(".text_5").hide();
     $(".text_6").hide();
+    $(".text_7").hide();
     $(".Flip").hide();
+    $(".Flip1").hide();
 
 
 
@@ -33,57 +35,71 @@ $(document).ready(function () {
         click.load();
         click.play();
         correct_items.push(selected_item);
-        if (correct_items.length === 1) {
+        if (correct_items.length == 1) {
             slide2.load();
             slide2.play();
             slide1.pause();
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_7.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_7.png)');
             $(".banners").animate({ top: '-=120' }, 1000);
             $(".text_1").hide();
             $(".text_2").hide().delay(900).fadeIn(1000);
         }
 
-        if (correct_items.length === 2) {
+        if (correct_items.length == 2) {
             slide3.load();
             slide3.play();
             slide2.pause();
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_8.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_8.png)');
             $(".banners").animate({ top: '+=120' }, 1000);
             $(".text_2").hide();
             $(".text_3").hide().delay(900).fadeIn(1000);
         }
 
-        if (correct_items.length === 3) {
+        if (correct_items.length == 3) {
             slide4.load();
             slide4.play();
             slide3.pause();
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_9.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_9.png)');
             $(".text_3").hide();
-            $(".text_4").show();
+            $(".text_4").hide().delay(900).fadeIn(1000);
         }
 
-        if (correct_items.length === 4) {
+        if (correct_items.length == 4) {
             slide5.load();
             slide5.play();
             slide4.pause();
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_10.png)');
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_10.png)');
             $(".banners").animate({ top: '-=230' }, 1000);
             $(".text_4").hide();
             $(".text_5").hide().delay(900).fadeIn(1000);
             //document.location.href = "/ActionItem/AI3";
         }
 
-        if (correct_items.length === 5) {
+       if (correct_items.length == 5) {
+           
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_11.png)');
+            $(".banners").animate({ top: '-=230' }, 1000);
+            $(".Flip1").hide().delay(1000).fadeIn(2000);
+            $(".text_5").hide();
+            $(".text_6").hide().delay(900).fadeIn(1000);
+            //document.location.href = "/ActionItem/AI3";
+        }
+
+
+
+
+        if (correct_items.length == 6) {
             // completeFlip(12941);
             slide5.pause();
             Flip.load();
             Flip.play();
-            $ ('.bkg-image').css('background-image','url(content/images/background/BKG_11.png)');
-            $(".banners").animate({ top: '+=80', height: "200px" }, 1000);
+            $ ('.bkg-image').css('background-image','url(content/images/new/BKG_12.png)');
+            $(".banners").animate({ top: '+=80', height: "0px" }, 1000);
             $(".Flip").hide().delay(1000).fadeIn(2000);
-            $(".text_5").hide();
-            $(".text_6").hide().delay(900).fadeIn(1000);
-            completeFlip(12941);
+            $(".Flip1").hide();
+            $(".text_6").hide();
+            $(".text_7").hide().delay(900).fadeIn(1000);
+            //completeFlip(12941);
         }
 
 
