@@ -146,7 +146,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_crosswalk_off.png",
         'imgHeader': content_path + "content/_assets/elements/info_window_1.png",
         'text': "<p style='color:#ffffff; padding: 170px 0 0 0;'>Always look both ways <br/> when crossing the street. <br/> Stop, look and listen!</p>",
-        'sound' : 'sound3',
+        'sound' : 'sound5',
     },
 
      {
@@ -155,7 +155,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_1_off.png",
          'imgHeader': content_path + "content/_assets/elements/info_window_2.png",
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>",
-         'sound' : 'sound3',
+         'sound' : 'sound6',
      },
       {
           'name': "C",
@@ -163,7 +163,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
           'mainImageUrlHover': content_path + "content/_assets/elements/map_element_bus_2_off.png",
           'imgHeader': content_path + "content/_assets/elements/info_window_3.png",
           'text': "<p style=' padding: 68px 0 0 0;'>If you drop <br/> something under <br/>or in front of the bus,<br/> tell the driver!<br/><br/>Don’t just reach for it.</p>",
-          'sound' : 'sound3',
+          'sound' : 'sound7',
       },
        {
            'name': "D",
@@ -171,7 +171,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
            'mainImageUrlHover': content_path + "content/_assets/elements/map_element_playground_off.png",
            'imgHeader': content_path + "content/_assets/elements/info_window_4.png",
            'text': "<p style=' padding: 105px 0 0 0;'>Play with others!<br/> There’s safety in numbers.</p>",
-           'sound' : 'sound3',
+           'sound' : 'sound8',
        },
         {
             'name': "E",
@@ -179,7 +179,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
             'mainImageUrlHover': content_path + "content/_assets/elements/map_element_electronics_off.png",
             'imgHeader': content_path + "content/_assets/elements/info_window_5a.png",
             'text': "<p style=' padding: 130px 0 0 0;'>If a stranger tries to take <br/>your belongings, let them!<br/>Your life is more important!</p>",
-            'sound' : 'sound3',
+            'sound' : 'sound9',
         },
          {
              'name': "F",
@@ -187,7 +187,7 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_car_off.png",
              'imgHeader': content_path + "content/_assets/elements/info_window_6.png",
              'text': "<p style=' padding: 100px 0 0 0;'>Never get into a car<br/> with a stranger.<br/>It’s always okay to say no <br/>to an adult.</p>",
-             'sound' : 'sound3',
+             'sound' : 'sound10',
          },
           {
               'name': "G",
