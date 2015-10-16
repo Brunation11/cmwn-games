@@ -3,6 +3,7 @@
     //// to prevent glitch ////
 
     title.volume = '.5';
+    bkgsong.volume = '.4';
 
     /**********************************************/
     /**********************************************/
@@ -103,7 +104,7 @@
 
                         $('#labyrinth #mazepopup #' + val).fadeIn(1);
                         $('#labyrinth #mazepopup #' + val).addClass('poped');
-                        
+
                         var the_sound = $('#sound-' + val).attr("data-sound");
 
                         $('#' + the_sound).get(0).play();
@@ -111,8 +112,8 @@
                         if ($('#maze .goal').length == $("#labyrinth #mazepopup .poped").length - 1) {
                             $('#labyrinth a.next').fadeIn(5000);
                             $('#labyrinth a.next').addClass('open');
-                            $('#BKG_slide20-27').get(0).currentTime=0;
-                            $('#BKG_slide20-27').get(0).pause();
+                            $('#bkgsong').get(0).currentTime=0;
+                            $('#bkgsong').get(0).pause();
                             $('#Slide_19').get(0).currentTime=0;
                             $('#Slide_19').get(0).play();
 
@@ -274,6 +275,12 @@
 
                         $('#labyrinthHome #mazepopup #' + val).fadeIn(1);
                         $('#labyrinthHome #mazepopup #' + val).addClass('poped');
+
+
+                        var the_sound = $('#sound-' + val).attr("data-sound");
+
+                        $('#' + the_sound).get(0).play();
+
                         setTimeout(function () {
                             console.log($('#maze2 .goal').length/2);
                             console.log('!!!!!!!!!!!!!poped', $("#labyrinthHome #mazepopup .poped").length - 1);
@@ -476,7 +483,7 @@
         sound4.pause();
         $('#labyrinth .popup').fadeOut(50);
 
-        $('#BKG_slide20-27').get(0).play();
+        $('#bkgsong').get(0).play();
         $('#maze').fadeIn(500);
     });
 
@@ -597,9 +604,11 @@
         $('#labyrinth').html('');
         $('.maze2-start').trigger('click');
 
-        $('#labyrinthHome').fadeIn(500);
-        $('#BKG_slide20-27').get(0).currentTime=0;
-        $('#BKG_slide20-27').get(0).pause();
+        $('#labyrinthHome').fadeIn(50);
+        sound14.load();
+        sound14.play();
+        $('#bkgsong').get(0).currentTime=0;
+        $('#bkgsong').get(0).pause();
         $('#BKG_slide31-40').get(0).currentTime = 0;
         $('#BKG_slide31-40').get(0).play();
         maze2();

@@ -26,7 +26,7 @@
 </head>
 <body ng-app="GameApp">
     <audio id="title" src="content/_sounds/Title_Slide_Slide1.mp3" loop="loop"></audio>
-    <audio id="BKG_slide20-27" src="content/_sounds/BKG_Slides20-27.mp3" loop="loop"></audio>
+    <audio id="bkgsong" src="content/_sounds/BKG_Slides20-27.mp3" loop="loop"></audio>
     <audio id="BKG_slide31-40" src="content/_sounds/BKG_Slides31-40.mp3" loop="loop"></audio>
     <audio id="btnClick" src="content/_sounds/ButtonClick.mp3"></audio>
     <audio id="correct" src="content/_sounds/Slide5-16_correct.mp3"></audio>
@@ -49,6 +49,18 @@
     <audio id="sound8" src="content/_sounds/8.mp3"></audio>
     <audio id="sound9" src="content/_sounds/9.mp3"></audio>
     <audio id="sound10" src="content/_sounds/10.mp3"></audio>
+    <audio id="sound11" src="content/_sounds/11.mp3"></audio>
+    <audio id="sound13" src="content/_sounds/13.mp3"></audio>
+    <audio id="sound14" src="content/_sounds/14.mp3"></audio>
+    <audio id="sound15" src="content/_sounds/15.mp3"></audio>
+    <audio id="sound16" src="content/_sounds/16.mp3"></audio>
+    <audio id="sound17" src="content/_sounds/17.mp3"></audio>
+    <audio id="sound18" src="content/_sounds/18.mp3"></audio>
+    <audio id="sound19" src="content/_sounds/19.mp3"></audio>
+    <audio id="sound20" src="content/_sounds/20.mp3"></audio>
+    <audio id="sound21" src="content/_sounds/21.mp3"></audio>
+    <audio id="sound22" src="content/_sounds/22.mp3"></audio>
+    <audio id="sound23" src="content/_sounds/23A.mp3"></audio>
 
 
     <div class="">
@@ -279,6 +291,7 @@
                                                 <div class="bg" style="background-image:url({{item.imgHeader}})">
                                                     <div ng-bind-html="to_trusted(item.text)"></div>
                                                 </div>
+                                                <div id="second-{{item.name}}" data-sound="{{item.sound}}"></div>
                                             </div>
                                         </div>
                                     </div>
