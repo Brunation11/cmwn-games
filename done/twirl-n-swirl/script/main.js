@@ -4,11 +4,11 @@
     setTimeout(function () { $('.hover-box .img-hover').height($('.sidebar .img-box img').height() * 1.065); }, 500);
     $('#mainSound').get(0).play();
     $('.btn-click, .next, .prev').click(function () {
-        $('#wonder').get(0).play();
         $('#btnClick').get(0).play();
     });
 
     $('#home .play').click(function () {
+        $('#wonder').get(0).play();
         $('#home').fadeOut(200);
         $('#noseWords').fadeIn(200);
         $('#mainSound').get(0).pause();
@@ -28,6 +28,7 @@
     });
 
     $('#noseWords .next').click(function () {
+        $('#whatever').get(0).play();
         $('#mainSound').get(0).pause();
         $('#flush').get(0).play();
 
@@ -51,6 +52,7 @@
     $('#feelings .next').click(function () {
         $('#feelings').fadeOut(500);
         $('#step').fadeIn(500);
+        $('#drag').get(0).play();
     });
 
     $('#startGame .next , #googjob .again').click(function () {
@@ -101,7 +103,7 @@
         $('#flusher').fadeIn(500);
         $('#mainSound').get(0).pause();
         // $('#slide14').get(0).play();
-        completeFlip(11820);
+        $('#pref').get(0).play();
     });
 
     $('#googjob .again').click(function () {
@@ -123,6 +125,8 @@
         $('#flusher').fadeOut(500);
         $('#flip').fadeIn(500);
         $('#slide14').get(0).play();
+        $('#fli').get(0).play();
+        completeFlip(11820);
     });
 
     $('#flip .next.arrow').click(function () {
