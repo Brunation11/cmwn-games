@@ -440,11 +440,13 @@
             }, 3000);
         }, 500);
 
-        $('#slide19').get(0).currentTime=0;
-        $('#slide19').get(0).play();
-        $('#goodjob').fadeOut(50);
-        $('#labyrinth').fadeIn(50);
-        maze1();
+        // $('#slide19').get(0).currentTime=0;
+        // $('#slide19').get(0).play();
+        // $('#goodjob').fadeOut(50);
+        // $('#labyrinth').fadeIn(50);
+        // sound4.load();
+        // sound4.play();
+        // maze1();
 
     });
 
@@ -490,8 +492,8 @@
         $('#slide19').get(0).play();
         $('#goodjob').fadeOut(50);
         $('#labyrinth').fadeIn(50);
-        // sound4.load();
-        // sound4.play();
+        sound4.load();
+        sound4.play();
                maze1();
     });
 
@@ -624,8 +626,8 @@
 
         $('#labyrinthHome').fadeIn(50);
         title.pause();
-        // sound14.load();
-        // sound14.play();
+        sound14.load();
+        sound14.play();
         $('#bkgsong').get(0).currentTime=0;
         $('#bkgsong').get(0).pause();
         $('#secondmaze').get(0).currentTime = 0;
@@ -642,6 +644,7 @@
         $('#slide19').get(0).play();
         $('#labyrinthHome').fadeOut(500);
         $('#flip').fadeIn(500);
+
         $('.flip-content').hide();
         setTimeout(function () { $(' #step .slider .next').fadeIn(500); }, 500);
         setTimeout(function () {
@@ -655,8 +658,8 @@
         $('.flip-content').show();
         $('.mcu-text').hide();
         $('.mcu-logo').hide();
-        // sound23.load();
-        // sound23.play();
+        sound23.load();
+        sound23.play();
     });
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
