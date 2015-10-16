@@ -277,7 +277,7 @@
                         $('#labyrinthHome #mazepopup #' + val).addClass('poped');
 
 
-                        var the_sound = $('#sound-' + val).attr("data-sound");
+                        var the_sound = $('#second-' + val).attr("data-sound");
 
                         $('#' + the_sound).get(0).play();
 
