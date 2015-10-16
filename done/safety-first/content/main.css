@@ -1263,15 +1263,15 @@ min-height:400px;
 margin:auto;
 }
 #labyrinth .popup {
-    padding: 150px 0 0 0;
+    padding: 178px 0 0 0;
     font-size: 27px;
     text-align:center;
     font-family: source_sans_probold;
 }
 #labyrinthHome .popup{
     padding: 116px 0 0 0;
-    font-size: 32px;
-    padding-top: 131px;
+    font-size: 28px;
+    padding-top: 186px;
     font-weight: bold;
     font-family: source_sans_probold;
     text-align:center;

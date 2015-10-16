@@ -2,7 +2,7 @@
     ///// background image is set to display none in main.css, and brought back with fade in,
     //// to prevent glitch ////
 
-
+    title.volume = '.5';
     /**********************************************/
     /**********************************************/
     /**************MAZE********************/
@@ -399,6 +399,8 @@
     $('#home .play').click(function () {
         $('#home').fadeOut(50);
         $('#noseWords').fadeIn(50);
+        sound1.load();
+        sound1.play();
 
         setTimeout(function () {
             $('#noseWords .text-box .headig-box:last-child').fadeIn(500);
@@ -413,6 +415,7 @@
         $('#letsSee').fadeIn(50);
         $('#title').get(0).currentTime=0;
         $('#title').get(0).pause();
+
         setTimeout(function () {
             $('#letsSee .arrows > .next').fadeIn();
             $('#letsSee .arrows > .next').addClass('open');
