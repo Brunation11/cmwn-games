@@ -76,7 +76,7 @@ $(document).ready(function () {
         }
 
        if (correct_items.length == 5) {
-           
+
             $ ('.bkg-image').css('background-image','url(content/images/new/BKG_11.png)');
             $(".banners").animate({ top: '-=230' }, 1000);
             $(".Flip1").hide().delay(1000).fadeIn(2000);

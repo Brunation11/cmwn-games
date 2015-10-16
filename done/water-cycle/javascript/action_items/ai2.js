@@ -19,8 +19,8 @@ $(document).ready(function () {
     $(".text_3").hide();
     $(".text_4").hide();
 
-    // Ocean.load();
-    // Ocean.play();
+     Ocean.load();
+    Ocean.play();
 
 
     $(".next-Btn-1").click(function () {
