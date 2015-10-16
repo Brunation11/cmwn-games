@@ -103,7 +103,9 @@
 
                         $('#labyrinth #mazepopup #' + val).fadeIn(1);
                         $('#labyrinth #mazepopup #' + val).addClass('poped');
-                        var the_sound = $('#sound').attr("data-sound");
+                        
+                        var the_sound = $('#sound-' + val).attr("data-sound");
+
                         $('#' + the_sound).get(0).play();
 
                         if ($('#maze .goal').length == $("#labyrinth #mazepopup .poped").length - 1) {
