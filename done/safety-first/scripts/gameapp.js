@@ -2,7 +2,6 @@
 var moduleGame = angular.module('GameApp', ['ngRoute', 'underscore', 'gamecatControllers', 'ngAnimate', 'ngDragDrop'])
 var content_path = "http://actionitems.changemyworldnow.com/safetyfirst";
 var content_path = "";
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
 
@@ -156,7 +155,6 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
          'imgHeader': content_path + "content/_assets/elements/info_window_2.png",
          'text': "<p style=' padding: 78px 0 0 12px;'>Wait for the <br/> bus on the sidewalk, <br/> not the street.</p>",
          'sound' : 'sound6',
-
      },
       {
           'name': "C",
@@ -280,8 +278,8 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
         'mainImageUrl': content_path + "content/_assets/elements/map_element_glass.png",
         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_glass_off.png",
         'imgHeader': content_path + "content/_assets/elements/info_window_8.png",
-        'text': "<p style=' padding: 137px 0 0 0;'>If you see broken glass<br/> near a door or window, <br/> don't go inside. <br/> Find a trusted adult!</p>"
-        // 'sound': 'sound14',
+        'text': "<p style=' padding: 137px 0 0 0;'>If you see broken glass<br/> near a door or window, <br/> don't go inside. <br/> Find a trusted adult!</p>",
+        'sound': 'sound15',
     },
 
      {
@@ -289,55 +287,63 @@ moduleGame.controller('mazeHomeController', function ($scope, $http, $sce, $wind
          'mainImageUrl': content_path + "content/_assets/elements/map_element_phone.png",
          'mainImageUrlHover': content_path + "content/_assets/elements/map_element_phone_off.png",
          'imgHeader': content_path + "content/_assets/elements/info_window_9.png",
-         'text': "<p style=' padding: 108px 0 0 0;'>If the phone rings <br/> and you don't know <br/> the caller, don't tell them <br/> you're home alone.</p>"
+         'text': "<p style=' padding: 108px 0 0 0;'>If the phone rings <br/> and you don't know <br/> the caller, don't tell them <br/> you're home alone.</p>",
+         'sound': 'sound22',
      },
       {
           'name': "L",
           'mainImageUrl': content_path + "content/_assets/elements/map_element_sink.png",
           'mainImageUrlHover': content_path + "content/_assets/elements/map_element_sink_off.png",
           'imgHeader': content_path + "content/_assets/elements/info_window_10.png",
-          'text': "<p style=' padding: 111px 0 0 4px;'>Never eat or drink<br/> from bottles under the sink.</p>"
+          'text': "<p style=' padding: 111px 0 0 4px;'>Never eat or drink<br/> from bottles under the sink.</p>",
+          'sound': 'sound16',
       },
        {
            'name': "M",
            'mainImageUrl': content_path + "content/_assets/elements/map_element_name.png",
            'mainImageUrlHover': content_path + "content/_assets/elements/map_element_name_off.png",
            'imgHeader': content_path + "content/_assets/elements/info_window_11.png",
-           'text': "<p style=' padding: 95px 0 0 7px;'>Always know<br/> your name and address. <br/> Know who to call<br/> in case of emergency.</p>"
+           'text': "<p style=' padding: 95px 0 0 7px;'>Always know<br/> your name and address. <br/> Know who to call<br/> in case of emergency.</p>",
+           'sound': 'sound17',
        },
         {
             'name': "N",
             'mainImageUrl': content_path + "content/_assets/elements/map_element_electric_plug.png",
             'mainImageUrlHover': content_path + "content/_assets/elements/map_element_electric_plug_off.png",
             'imgHeader': content_path + "content/_assets/elements/info_window_12.png",
-            'text': "<p style=' padding: 150px 0 0 0;'>Never have electrical wires<br/>near water.</p>"
+            'text': "<p style=' padding: 150px 0 0 0;'>Never have electrical wires<br/>near water.</p>",
+            'sound': 'sound18',
         },
          {
              'name': "O",
              'mainImageUrl': content_path + "content/_assets/elements/map_element_pills.png",
              'mainImageUrlHover': content_path + "content/_assets/elements/map_element_pills_off.png",
              'imgHeader': content_path + "content/_assets/elements/info_window_13.png",
-             'text': "<p style=' padding: 100px 0 0 4px;'>Never, ever swallow <br/> pills you find.</p>"
+             'text': "<p style=' padding: 100px 0 0 4px;'>Never, ever swallow <br/> pills you find.</p>",
+             'sound': 'sound21',
          },
           {
               'name': "P",
               'mainImageUrl': content_path + "content/_assets/elements/map_element_911.png",
               'mainImageUrlHover': content_path + "content/_assets/elements/map_element_911_off.png",
               'imgHeader': content_path + "content/_assets/elements/info_window_14.png",
-              'text': "<p style=' padding: 110px 0 0 0;'>If you're home alone<br/> and need help, dial 911.</p>"
+              'text': "<p style=' padding: 110px 0 0 0;'>If you're home alone<br/> and need help, dial 911.</p>",
+              'sound': 'sound20',
           },
           {
               'name': "Q",
               'mainImageUrl': content_path + "content/_assets/elements/map_element_fire_alarm.png",
               'mainImageUrlHover': content_path + "content/_assets/elements/map_element_fire_alarm_off.png",
               'imgHeader': content_path + "content/_assets/elements/info_window_15.png",
-              'text': "<p style=' padding: 134px 0 0 0;'>Ask your parents<br/>to be sure the smoke<br/>and carbon monoxide<br/> alarms are working.</p>"
+              'text': "<p style=' padding: 134px 0 0 0;'>Ask your parents<br/>to be sure the smoke<br/>and carbon monoxide<br/> alarms are working.</p>",
+              'sound': 'sound19',
           }, {
               'name': "R",
               'mainImageUrl': content_path + "",
               'mainImageUrlHover': content_path + "",
               'imgHeader': content_path + "",
-              'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>Ask you parrents<br/>to be sure the smoke<br/>and carbon monoxide <br/ > alarms are working.</p>"
+              'text': "<p style=' padding: 80px 0 0 0; font-size:30px'>Ask you parrents<br/>to be sure the smoke<br/>and carbon monoxide <br/ > alarms are working.</p>",
+              'sound': 'sound19',
           },
 
     ];

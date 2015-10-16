@@ -27,7 +27,7 @@
 <body ng-app="GameApp">
     <audio id="title" src="content/_sounds/Title_Slide_Slide1.mp3" loop="loop"></audio>
     <audio id="bkgsong" src="content/_sounds/BKG_Slides20-27.mp3" loop="loop"></audio>
-    <audio id="BKG_slide31-40" src="content/_sounds/BKG_Slides31-40.mp3" loop="loop"></audio>
+    <audio id="secondmaze" src="content/_sounds/BKG_Slides31-40.mp3" loop="loop"></audio>
     <audio id="btnClick" src="content/_sounds/ButtonClick.mp3"></audio>
     <audio id="correct" src="content/_sounds/Slide5-16_correct.mp3"></audio>
     <audio id="incorrect" src="content/_sounds/Slide5-16_incorrect.mp3"></audio>
@@ -242,6 +242,7 @@
                                                     <div ng-bind-html="to_trusted(item.text)"></div>
                                                 </div>
                                                 <div id="sound-{{item.name}}" data-sound="{{item.sound}}"></div>
+
                                             </div>
                                         </div>
                                     </div>
