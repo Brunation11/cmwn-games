@@ -85,7 +85,7 @@ $(document).ready(function () {
     // when next-arrow button is clicked, hide modal
     $('.Next-arrow').click(function () {
         //apply css to body-content - add paw class
-        $(".body-content").addClass("paw")
+        // $(".body-content").addClass("paw")
 
         $('#game-info').modal('hide');
         //Show fish

@@ -28,6 +28,7 @@
     });
 
     $('#noseWords .next').click(function () {
+        $('#wonder').get(0).pause();
         $('#whatever').get(0).play();
         $('#mainSound').get(0).pause();
         $('#flush').get(0).play();
@@ -50,12 +51,14 @@
     // });
 
     $('#feelings .next').click(function () {
+        $('#whatever').get(0).pause();
         $('#feelings').fadeOut(500);
         $('#step').fadeIn(500);
         $('#drag').get(0).play();
     });
 
     $('#startGame .next , #googjob .again').click(function () {
+        $('#drag').get(0).pause();
         $('#startGame').fadeOut(500);
         $('#step').fadeIn(500);
         $('#game').get(0).play();
@@ -122,6 +125,7 @@
     });
 
     $('#flusher .next.arrow').click(function () {
+        $('#pref').get(0).pause();
         $('#flusher').fadeOut(500);
         $('#flip').fadeIn(500);
         $('#slide14').get(0).play();
@@ -130,6 +134,7 @@
     });
 
     $('#flip .next.arrow').click(function () {
+        $('#fli').get(0).pause();
         $('#flip').fadeOut(500);
         $('#quit').fadeIn(500);
     });
