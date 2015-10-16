@@ -145,7 +145,8 @@ moduleGame.controller('mazeController', function ($scope, $http, $sce, $window) 
         'mainImageUrl': content_path + "content/_assets/elements/map_element_crosswalk.png",
         'mainImageUrlHover': content_path + "content/_assets/elements/map_element_crosswalk_off.png",
         'imgHeader': content_path + "content/_assets/elements/info_window_1.png",
-        'text': "<p style='color:#ffffff; padding: 170px 0 0 0;'>Always look both ways <br/> when crossing the street. <br/> Stop, look and listen!</p>"
+        'text': "<p style='color:#ffffff; padding: 170px 0 0 0;'>Always look both ways <br/> when crossing the street. <br/> Stop, look and listen!</p>",
+
     },
 
      {

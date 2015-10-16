@@ -3,6 +3,7 @@
     //// to prevent glitch ////
 
     title.volume = '.5';
+
     /**********************************************/
     /**********************************************/
     /**************MAZE********************/
@@ -57,6 +58,7 @@
             function playerMove(x, y) {
                 var toX = player.x + x, toY = player.y + y;
                 var obj = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'X'];
+
                 jQuery.each(obj, function (i, val) {
                     if ($('#maze + #mazepopup #' + val).hasClass('poped')) {
                         setTimeout(function () {
@@ -114,6 +116,7 @@
                             $('#BKG_slide20-27').get(0).pause();
                             $('#Slide_19').get(0).currentTime=0;
                             $('#Slide_19').get(0).play();
+
                         }
 
                     }
@@ -284,7 +287,9 @@
                                 $('#BKG_slide31-40').get(0).currentTime=0;
                                 $('#BKG_slide31-40').get(0).pause();
                                 $('#slide41').get(0).currentTime=0;
-                                $('#slide41').get(0).play();}
+                                $('#slide41').get(0).play();
+
+                            }
 
                                 , 500);
                             $('.popup2 button.sliderClose').click(function () {
@@ -415,7 +420,8 @@
         $('#letsSee').fadeIn(50);
         $('#title').get(0).currentTime=0;
         $('#title').get(0).pause();
-
+        sound2.load();
+        sound2.play();
         setTimeout(function () {
             $('#letsSee .arrows > .next').fadeIn();
             $('#letsSee .arrows > .next').addClass('open');
@@ -451,14 +457,15 @@
         $('#slide19').get(0).play();
         $('#goodjob').fadeOut(50);
         $('#labyrinth').fadeIn(50);
-
+        sound4.load();
+        sound4.play();
                maze1();
     });
 
     $('#labyrinth .sliderClose').click(function () {
         $('#slide18').get(0).currentTime=0;
         $('#slide18').get(0).play();
-
+        sound4.pause();
         $('#labyrinth .popup').fadeOut(50);
 
         $('#BKG_slide20-27').get(0).play();
@@ -513,6 +520,8 @@
                     if ((num - 1) == ($('#step .slider .slide').length)) {
                         $('#step').fadeOut(500);
                         $('#goodjob').fadeIn(500);
+                        sound3.load();
+                        sound3.play();
                         setTimeout(function () {
                             $('#slide18').get(0).currentTime=0;
                             $('#slide18').get(0).play();
