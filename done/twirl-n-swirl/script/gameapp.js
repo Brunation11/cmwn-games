@@ -153,8 +153,9 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
     };
 
     $scope.onDrop = function (e, ui) {
-        console.log(ui.draggable.scope().item.name);
-        var item_name = ui.draggable.scope().item.name;
+        console.log(ui.draggable.scope().item.name.toLowerCase());
+        var item_name = ui.draggable.scope().item.name.toLowerCase();
+        
         $("#" + ui.draggable.scope().item.name).addClass("drag");
         var parrentSlide = angular.element(e.target);
         parrentSlide.addClass('done');
@@ -168,8 +169,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         $('.flush a').click(function () {
 
             if (mycount==0) {
-                var the_sound = $('#sound-' + item_name).attr("data-sound");
-                $('#' + the_sound).get(0).play();
+                $('#' + item_name).get(0).play();
             }
             mycount++;
 
@@ -178,14 +178,12 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
             $('#flush').get(0).play();
             $('.drag').addClass("dragstarted");
 
-
-
             $('.correct-ansver').fadeIn(500).css('z-index', '10');
             $('.correct-ansver-hover').fadeIn(500);
             $('.sidebar-hover ').fadeOut();
 
-
             setTimeout(function () {$('.correct-ansver a').fadeIn(500);}, 1000);
+
         });
 
        /* var parrentSlideId = parrentSlide.parents().eq(2).get(0).id
