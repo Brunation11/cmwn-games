@@ -1,6 +1,6 @@
     var auto_slide = 1;
 
-    var auto_slide_seconds = 1300;
+    var auto_slide_seconds = 2000;
 
     $('#carousel_ul li:first').before($('#carousel_ul li:last'));
 
@@ -23,7 +23,7 @@ function slide(where) {
 
     }
 
-    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 450, function () {
+    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 850, function () {
 
             if (where == 'left') {
 

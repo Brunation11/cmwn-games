@@ -71,13 +71,11 @@ $(document).ready(function () {
         }, 900000);
     ////////////////////// End of random functions /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $('.item').click(function () {
-            //stop the main carousel
-            $('#carousel_ul').carousel().animate('pause',2000);
-    });
     // All items click
     $(".hit").click(function (event) {
-        
+
+    $('#carousel_ul').carousel().animate('pause' , 1000);
+
         var click_item = $(this).attr('id');
         var click_correct = $(this).attr('data-correct');
         var item_animate = click_item + "#";
@@ -93,7 +91,6 @@ $(document).ready(function () {
         } else {
             /// Main if statement
             if (click_correct == selected_item) {
-
                 correct_items.push(selected_item);
 
                 if (correct_items.length == 1) {
@@ -423,166 +420,166 @@ $(document).ready(function () {
                 $('.loose').show().animate({ top: -10 }, 800).hide(1000);
                 $('.carousel-inner').parent().carousel('next', 1);
             }
-        }
+        }/// End of first statement
 
         $("#" + click_item + "1").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
         $("#" + click_item + "2").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "3").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "4").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "5").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "6").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "7").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "8").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "9").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "10").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "11").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "12").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "13").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "14").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "15").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "16").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "17").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "18").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "19").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "20").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "21").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "22").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "23").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "24").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "25").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "26").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "27").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "28").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "29").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "30").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "31").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "32").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "33").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "34").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "35").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "36").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "37").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "38").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "39").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
 
         $("#" + click_item + "40").animate({
             'marginTop': "+=220px"  //moves down
-        }, 800).hide(1);
+        }, 300).hide(1);
     }); /// End of big click function
 
 }); ///End of document.ready
