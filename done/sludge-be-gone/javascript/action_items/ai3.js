@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     $('#next-button').hide().fadeIn(1000);
     $('#next-button2').hide();
-    $('#bubble-game').hide();
+    
 
     $('#close').click(function () {
         $('#game-close').modal('show');
@@ -114,13 +114,9 @@ $(document).ready(function () {
             correct.load();
             correct.play();
             $('#score p').html(function (i, val) { return val * 1 + 10 });
-
-        } else if (correct_items.length === 12) {
             $('#next-button2').show();
-            correct.load();
-            correct.play();
-            $('#score p').html(function (i, val) { return val * 1 + 10 });
-        }
+
+        } 
     });
 
     //Wrong Items

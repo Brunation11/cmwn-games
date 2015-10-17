@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#next-button").hide();
     $("#next-button2").hide();
     $("#next-button3").hide();
+    $("#next-button4").hide();
 
     // Quit screen function
 
@@ -52,7 +53,7 @@ $(document).ready(function () {
     $('#cleans').click(function () {
         pure.load();
         pure.play();
-        $("#next-button2").show();
+        $("#next-button3").show();
     });
 
     // First modal
@@ -64,18 +65,29 @@ $(document).ready(function () {
     $('#next-button').click(function () {
         $('#game-info').modal('hide');
         $('#game-info2').modal('show');
+        $("#next-button2").show();
 
     });
 
     $('#next-button2').click(function () {
         $('#game-info2').modal('hide');
         $('#game-info3').modal('show');
-        $("#next-button3").show();
         background.play();
 
     });
 
     $('#next-button3').click(function () {
+        $('#game-info3').modal('hide');
+        $('#game-info4').modal('show');
+        $("#next-button4").show();
+        background.play();
+
+    });
+
+
+
+
+    $('#next-button4').click(function () {
          $("#putcontenthere").load("action_items/ai3.html");
     });
 

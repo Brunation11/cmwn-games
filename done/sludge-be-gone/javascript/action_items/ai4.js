@@ -164,42 +164,97 @@ function LeadingZero(Time) {
         correct_items.push(clicked_item);
 
         if (correct_items.length === 1) {
-            $('#star2').show();
+            //$('#star2').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 2) {
-            $('#star3').show();
+            //$('#star3').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 3) {
-            $('#star4').show();
+            //$('#star4').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 4) {
-            $('#star5').show();
+            //$('#star5').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 5) {
-            $('#star6').show();
+            //$('#star6').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 6) {
-            $('#star7').show();
+           // $('#star7').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 7) {
-            $('#star8').show();
+           // $('#star8').show();
             correct.load();
             correct.play();
 
         } else if (correct_items.length === 8) {
-            $('#star9').show();
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 9) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 10) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 11) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 12) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 13) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 14) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 15) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 16) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 17) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 18) {
+          //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 19) {
+          //  $('#star9').show();
             $('#game-complete').modal('show');
             complete.play();
             $('#scoop-game').hide();
@@ -207,6 +262,26 @@ function LeadingZero(Time) {
             correct.play();
         }
     });
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //Wrong Items
 
