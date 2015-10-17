@@ -255,6 +255,11 @@ function LeadingZero(Time) {
 
         } else if (correct_items.length === 19) {
           //  $('#star9').show();
+            correct.load();
+            correct.play();
+
+        } else if (correct_items.length === 20) {
+          //  $('#star9').show();
             $('#game-complete').modal('show');
             complete.play();
             $('#scoop-game').hide();
