@@ -3,10 +3,8 @@ var content_path = "http://actionitems.changemyworldnow.com/wastepro";
 //var content_path = "";
 
 
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
-
    
     $routeProvider
 
@@ -26,7 +24,7 @@ moduleGame.config(function ($routeProvider) {
             templateUrl: '/step.html',
             controller: 'stepController'
         })
-    .otherwise({
+        .otherwise({
             redirectTo: '/'
         });
 
@@ -147,10 +145,6 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
             'text': "<h3>Tin Foil</h3> <p>It does not biodegrade</p>"
         },
 
-
-
-
-
     ]
 
     $scope.onDrag = function (e) {
@@ -158,6 +152,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         $scope.data3 = [];
         $('.correct-ansver').fadeOut(500).css('z-index', '10');
     };
+
     $scope.onDrop = function (e, ui) {
         /*console.log(ui.draggable.scope().item.name);*/
         
@@ -182,7 +177,6 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
             $("#step .slider a.next").fadeIn(500);
         }
 
-       
        /* var parrentSlideId = parrentSlide.parents().eq(2).get(0).id
         if ($('#' + parrentSlideId + ' .dragstarted').hasClass('correct')) {
 
@@ -219,7 +213,6 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
 
         /*console.log($scope.data2);*/
 
-
     $('.correct-ansver a.next').click(function () {
         $('.correct-ansver a.next').fadeOut(500);
         $('.correct-ansver > p').fadeOut(500);
@@ -235,13 +228,10 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
         if (($(".sidebar.left").children().length == $(".sidebar.left").children(".dragstarted").length) && ($(".sidebar.right").children().length == $(".sidebar.right").children(".dragstarted").length))
         {
             $("#step .slider a.next").fadeIn(500);
-        }
-        
+        }  
     });
     
 });
-
-
 
 /*---------------------------------------------------------------------*/
 
@@ -294,6 +284,7 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
         $('.balance-right-cup .img-box img').css('visibility', 'hidden');
         $('.balansir').removeClass('correct');
     };
+
     $scope.onDrop = function (e, ui) {
         /*console.log(ui.draggable.scope().item.item.name);
         console.log($("#" + ui.draggable.scope().item.item.name).children());*/
@@ -314,7 +305,6 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
         $('#balance > .headig-box').css('visibility','hidden');
         setTimeout(function () {
             $('.correct-ansver a').fadeIn(500);
-
         }, 1000);
 
         /*console.log(ui.draggable.scope().item.item.name);*/
@@ -337,7 +327,6 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
             $('#incorrect').get(0).play();
         }
 
-        
         /*console.log($scope.data3.mainImageUrl);*/
         if (($(".balance-footer").children().length == $(".balance-footer").children(".drag").length)) {
            
@@ -347,8 +336,6 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
 
             }, 1500);
         }
-
-
        
     };
 
@@ -365,7 +352,6 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
     });
 
     /*console.log($scope.data2);*/
-
 
     $('.correct-ansver a.next').click(function () {
         $('.balansir').removeClass('correct');
@@ -384,7 +370,6 @@ moduleGame.controller('balanceController', function ($scope, $http, $sce, $windo
         if (($(".sidebar.left").children().length == $(".sidebar.left").children(".dragstarted").length) && ($(".sidebar.right").children().length == $(".sidebar.right").children(".dragstarted").length)) {
             $("#step .slider a.next").fadeIn(500);
         }
-
     });
 
 });
@@ -419,16 +404,13 @@ moduleGame.controller('garbageController', function ($scope, $http, $sce, $windo
            'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_4.png",
            'noseImages': content_path + "/content/_assets/elements/buttons/btn_4_on.png",
            'text': "Incineration is the burning <br/> of waste at high heat."
-
        },
     ]
 
-    
     $scope.test = function (item) {
         $("#" + item.name).addClass('ckick');
         $("#btnClick10-15").get(0).currentTime = 0;
         $("#btnClick10-15").get(0).play();
-        
        
         $("#" + item.name + " .img-hold img").attr('src', item.noseImages);
         $('#garbage #bag').html('');
@@ -442,12 +424,9 @@ moduleGame.controller('garbageController', function ($scope, $http, $sce, $windo
         }, 1500);
     }
 
-
-
 });
 
 /*--------------------------------------------------------*/
-
 
 moduleGame.controller('landfillsController', function ($scope, $http, $sce, $window, $rootScope) {
     $scope.to_trusted = function (html_code) {
@@ -477,18 +456,14 @@ moduleGame.controller('landfillsController', function ($scope, $http, $sce, $win
            'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_4.png",
            'noseImages': content_path + "/content/_assets/elements/buttons/btn_4_on.png",
            'text': "Food waste in a landfill <br/> produces 34% of ALL toxic <br/> methane emissions in US. <br/> Methane is is 21 times more <br/> environmentally damaging <br/> than carbon dioxide!"
-
        },
     ]
 
-
     $scope.test = function (item) {
         $("#" + item.name).addClass('ckick');
-        
        
         $("#btnClick10-15").get(0).currentTime = 0;
         $("#btnClick10-15").get(0).play();
- 
         
         $("#" + item.name + " .img-hold img").attr('src', item.noseImages);
         $('#landfills #bag').html('');
@@ -499,21 +474,19 @@ moduleGame.controller('landfillsController', function ($scope, $http, $sce, $win
         };
         
         if (($("#landfills .btn-box.left .ckick").length == 2) && ($("#landfills .btn-box.right .ckick").length == 2)) {
-
             $("#landfills a.next").fadeIn(500);
         }
+
         setTimeout(function () {
             $("#" + item.name + " .img-hold img").attr('src', item.mainImageUrl)
         }, 500);
 
     }
 
-
-
 });
+
 /*----------------------------------------------------*/
 /*--------------------------------------------------------*/
-
 
 moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window, $rootScope) {
     $scope.to_trusted = function (html_code) {
@@ -525,21 +498,18 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
         'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_towels_on.png",
         'noseImages': content_path + "/content/_assets/elements/buttons/btn_towels.png",
         'headerImages': content_path + "/content/_assets/elements/header_towels.png",
-       
     },
      {
          'name': "Plastic_Bottles",
          'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bottles_on.png",
          'noseImages': content_path + "/content/_assets/elements/buttons/btn_bottles.png",
          'headerImages': content_path + "/content/_assets/elements/header_bottles.png",
-       
      },
       {
           'name': "Plastic_Bags",
           'mainImageUrl': content_path + "/content/_assets/elements/buttons/btn_bags_on.png",
           'noseImages': content_path + "/content/_assets/elements/buttons/btn_bags.png",
           'headerImages': content_path + "/content/_assets/elements/header_bags.png",
-         
       },
        // {
        //     'name': "Paper_Napkins",
@@ -555,7 +525,6 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
        },
     ]
 
-
     $scope.test = function (item) {
         $("#oneThing #" + item.name).addClass('ckick');
         $('#slide31').get(0).currentTime = 0;
@@ -568,6 +537,7 @@ moduleGame.controller('pledgeController', function ($scope, $http, $sce, $window
     }
 
 });
+
 /*----------------------------------------------------*/
 /*----------------------------------------------------*/
 /*----------------------------------------------------*/
@@ -590,7 +560,6 @@ moduleGame.directive('relinkEvent', function ($rootScope) {
                     element.parent().append(clone);
                     previousContent = clone;
                 });
-
             };
 
             triggerRelink();
@@ -601,9 +570,7 @@ moduleGame.directive('relinkEvent', function ($rootScope) {
 
 });
 
-
 /*-----------------------------------*/
-
 
 var gamecatControllers = angular.module('gamecatControllers', []);
 
@@ -621,6 +588,4 @@ gamecatControllers.controller('gameDenoseCtrl', ['$scope', '$routeParams',
       $scope.gameId = $routeParams.gameId;
   }]);
 
-
 /*-----------------------------*/
-
