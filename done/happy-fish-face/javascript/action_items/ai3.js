@@ -180,6 +180,12 @@ $(document).ready(function () {
     }); 
 
 
+    $('#brush').click(function () {
+        vo16.load();
+        vo16.play();
+    }); 
+
+
     //Wrong Items
 
     $('#drive').click(function () {
