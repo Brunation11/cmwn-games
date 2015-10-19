@@ -35,8 +35,10 @@ $(document).ready(function () {
         $('#next-button2').hide();
         $('#balloon-game').hide();
         $('#game-complete').modal('show');
-        lets.load(2000);
-        lets.play();
+        setTimeout(function () {
+            lets.load();
+            lets.play();
+        }, 1000);
     });
 
     // Quit screen function

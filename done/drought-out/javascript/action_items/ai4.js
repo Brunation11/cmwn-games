@@ -36,6 +36,8 @@ yahoo.play();
 
 $(document).ready(function () {
 
+    $('#message').get(0).play();
+
     $('#next-button2').hide();
     $('#next-button3').hide();
     $('#next-button4').hide();
@@ -82,6 +84,7 @@ $(document).ready(function () {
         $('#next-button3').show();
         $('#game-complete').modal('show');
         $('#effects').hide();
+        bad.play();
     });
 
     $('#next-button3').click(function () {
@@ -91,18 +94,24 @@ $(document).ready(function () {
     });
 
     $('#next-button4').click(function () {
+        what.load();
+        what.play();
         $('#next-button4').hide();
         $('#effects2').hide();
         $('#card').show();
     });
 
     $('#blur').click(function () {
+        line.load();
+        line.play();
         $('#next-button5').fadeIn(2000);
         flip.load();
         flip.play();
     });
 
     $('#next-button5').click(function () {
+        most.load();
+        most.play();
         $('#next-button5').hide();
         $('#next-button6').fadeIn(3000);
         $('#card').hide();
@@ -123,10 +132,12 @@ $(document).ready(function () {
             $('#next-button7').fadeIn(2000);
             $('#desert2').show();
             cash.play();
+            usin.play();
         });
     });
 
     $('#next-button7').click(function () {
+        sav.play();
         $('#next-button7').hide();
         $('#desert2').hide();
         $('#save').show();
@@ -135,22 +146,30 @@ $(document).ready(function () {
     });
 
     $('#c1').click(function () {
+        gal.play();
+        gal.play();
         flip.load();
         flip.play();
     });
 
     $('#c2').click(function () {
+        gal2.load();
+        gal2.play();
         flip.load();
         flip.play();
     });
 
     $('#card3').click(function () {
         $('#next-button8').show();
+        gal3.load();
+        gal3.play();
         flip.load();
         flip.play();
     });
 
     $('#next-button8').click(function () {
+        ways.load();
+        ways.play();
         $('#save').hide();
         $('#facts').show();
         triple.pause();
@@ -176,6 +195,7 @@ $(document).ready(function () {
     $('#key6').hide();
     $('#key7').hide();
     $('#key8').hide();
+    $('#key9').hide();
 
     $('#next-button9').hide();
     $('#next-button10').hide();
@@ -189,6 +209,7 @@ $(document).ready(function () {
     $('#door6').hide();
     $('#door7').hide();
     $('#door8').hide();
+    $('#door9').hide();
 
     $('#first').hide();
     $('#second').hide();
@@ -198,6 +219,7 @@ $(document).ready(function () {
     $('#sixth').hide();
     $('#seventh').hide();
     $('#eighth').hide();
+    $('#ninth').hide();
 
     $('#frame1').hide();
 
@@ -209,8 +231,10 @@ $(document).ready(function () {
     $('#door-c6').hide();
     $('#door-c7').hide();
     $('#door-c8').hide();
+    $('#door-c9').hide();
 
     $('#key').click(function () {
+        d1.play();
         $('#key').hide();
         $('#key2').show(8500);
         $('#door').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
@@ -220,6 +244,7 @@ $(document).ready(function () {
     });
 
     $('#key2').click(function () {
+        d2.play();
         $('#key2').hide();
         $('#key3').show(8500);
         $('#door-c').hide();
@@ -230,6 +255,7 @@ $(document).ready(function () {
     });
 
     $('#key3').click(function () {
+        d3.play();
         $('#key3').hide();
         $('#key4').show(8500);
         $('#door-c2').hide();
@@ -240,6 +266,7 @@ $(document).ready(function () {
     });
 
     $('#key4').click(function () {
+        d4.play();
         $('#key4').hide();
         $('#key5').show(8500);
         $('#door-c3').hide();
@@ -250,6 +277,7 @@ $(document).ready(function () {
     });
 
     $('#key5').click(function () {
+        d5.play();
         $('#key5').hide();
         $('#key6').show(8500);
         $('#door-c4').hide();
@@ -260,6 +288,7 @@ $(document).ready(function () {
     });
 
     $('#key6').click(function () {
+        d6.play();
         $('#key6').hide();
         $('#key7').show(8500);
         $('#door-c5').hide();
@@ -270,6 +299,7 @@ $(document).ready(function () {
     });
 
     $('#key7').click(function () {
+        d7.play();
         $('#key7').hide();
         $('#key8').show(8500);
         $('#door-c6').hide();
@@ -280,12 +310,24 @@ $(document).ready(function () {
     });
 
     $('#key8').click(function () {
+        d8.play();
         $('#key8').hide();
+        $('#key9').show(8500);
         $('#door-c7').hide();
-        $('#door7').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door8').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
         $('#frame1').fadeIn(2000).delay(6000).fadeOut();
         $('#eighth').fadeIn(2000).delay(6000).fadeOut();
         $('#door-c8').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#key9').click(function () {
+        d9.play();
+        $('#key9').hide();
+        $('#door-c8').hide();
+        $('#door9').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
+        $('#ninth').fadeIn(2000).delay(6000).fadeOut();
+        $('#door-c9').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
         $('#next-button9').show(6000);
     });
 
@@ -294,6 +336,7 @@ $(document).ready(function () {
         $('#next-button10').show();
         $('#facts').hide();
         $('#game-complete2').modal('show');
+        tag.play();
     });
 
     $('#next-button10').click(function () {
@@ -310,6 +353,8 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $('#s1').one("click", function () {
+        loss.load();
+        loss.play();
         $('#n-active').hide();
         $('#active').show();
         $('#e1').fadeIn();
@@ -328,6 +373,8 @@ $(document).ready(function () {
     });
 
     $('#s2').one("click", function () {
+        less.load();
+        less.play();
         $('#n-active2').hide();
         $('#active2').show();
         $('#e1').hide();
@@ -346,6 +393,8 @@ $(document).ready(function () {
     });
 
     $('#s3').one("click", function () {
+        more.load();
+        more.play();
         $('#n-active3').hide();
         $('#active3').show();
         $('#e1').hide();
@@ -364,6 +413,8 @@ $(document).ready(function () {
     });
 
     $('#s4').one("click", function () {
+        face.load();
+        face.play();
         $('#n-active4').hide();
         $('#active4').show();
         $('#e1').hide();
@@ -382,6 +433,8 @@ $(document).ready(function () {
     });
 
     $('#s5').one("click", function () {
+        soil.load();
+        soil.play();
         $('#n-active5').hide();
         $('#active5').show();
         $('#e1').hide();
@@ -404,6 +457,8 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $('#s6').one("click", function () {
+        health.load();
+        health.play();
         $('#n-active6').hide();
         $('#active6').show();
         $('#e6').fadeIn();
@@ -422,6 +477,8 @@ $(document).ready(function () {
     });
 
     $('#s7').one("click", function () {
+        threat.load();
+        threat.play();
         $('#n-active7').hide();
         $('#active7').show();
         $('#e6').hide();
@@ -440,6 +497,8 @@ $(document).ready(function () {
     });
 
     $('#s8').one("click", function () {
+        and.load();
+        and.play();
         $('#n-active8').hide();
         $('#active8').show();
         $('#e6').hide();
@@ -458,6 +517,8 @@ $(document).ready(function () {
     });
 
     $('#s9').one("click", function () {
+        income.load();
+        income.play();
         $('#n-active9').hide();
         $('#active9').show();
         $('#e6').hide();
@@ -476,6 +537,8 @@ $(document).ready(function () {
     });
 
     $('#s10').one("click", function () {
+        water.load();
+        water.play();
         $('#n-active10').hide();
         $('#active10').show();
         $('#e6').hide();
