@@ -13,6 +13,8 @@ var clicked_item = $(this).attr(".yes");
 
 $(document).ready(function () {
 
+    $('#drough').get(0).play();
+
     // Quit screen function
 
     $('#close').click(function () {
@@ -35,6 +37,7 @@ $(document).ready(function () {
         $('#next-button2').show(6000);
         $('#drought').hide();
         $('#game-complete').modal('show');
+        message.play();
         background.play();
         $('.stamp').hide(5000).show(function () {
             try {
@@ -49,6 +52,7 @@ $(document).ready(function () {
     });
 
     $('#next-button2').click(function () {
+        impact.play();
         $('#next-button2').hide();
         $('#next-button3').show();
         $('#game-complete').modal('hide');
@@ -57,6 +61,7 @@ $(document).ready(function () {
     });
 
     $('#next-button3').click(function () {
+        humans.play();
         $('#next-button3').hide();
         $('#next-button4').show();
         $('#game-info').modal('hide');
@@ -76,8 +81,8 @@ $(document).ready(function () {
     $('#dust').one("click", function () {
         $('#n-active').hide();
         $('#active').show();
-        clicks.load();
-        clicks.play();
+        three.load();
+        three.play();
 
         correct_items.push(clicked_item);
 
@@ -91,8 +96,8 @@ $(document).ready(function () {
     $('#dry').one("click", function () {
         $('#n-active2').hide();
         $('#active2').show();
-        clicks.load();
-        clicks.play();
+        one.load();
+        one.play();
 
         correct_items.push(clicked_item);
 
@@ -106,8 +111,8 @@ $(document).ready(function () {
     $('#hot').one("click", function () {
         $('#n-active3').hide();
         $('#active3').show();
-        clicks.load();
-        clicks.play();
+        four.load();
+        four.play();
 
         correct_items.push(clicked_item);
 
@@ -121,8 +126,8 @@ $(document).ready(function () {
     $('#water').one("click", function () {
         $('#n-active4').hide();
         $('#active4').show();
-        clicks.load();
-        clicks.play();
+        five.load();
+        five.play();
 
         correct_items.push(clicked_item);
 
@@ -136,8 +141,8 @@ $(document).ready(function () {
     $('#parch').one("click", function () {
         $('#n-active5').hide();
         $('#active5').show();
-        clicks.load();
-        clicks.play();
+        two.play();
+        two.play();
 
         correct_items.push(clicked_item);
 
@@ -151,8 +156,8 @@ $(document).ready(function () {
     $('#arid').one("click", function () {
         $('#n-active6').hide();
         $('#active6').show();
-        clicks.load();
-        clicks.play();
+        seven.load();
+        seven.play();
 
         correct_items.push(clicked_item);
 
@@ -166,8 +171,8 @@ $(document).ready(function () {
     $('#thirst').one("click", function () {
         $('#n-active7').hide();
         $('#active7').show();
-        clicks.load();
-        clicks.play();
+        six.load();
+        six.play();
 
         correct_items.push(clicked_item);
 

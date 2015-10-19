@@ -15,6 +15,8 @@ var clicked_item = $(this).attr(".yes");
 
 $(document).ready(function () {
 
+    $('#message').get(0).play();
+
     $('#next-button2').hide();
 
     $('#game-info').modal('show');
@@ -28,9 +30,13 @@ $(document).ready(function () {
     });
 
     $('#next-button2').click(function () {
+        great.load();
+        great.play();
         $('#next-button2').hide();
         $('#balloon-game').hide();
         $('#game-complete').modal('show');
+        lets.load(2000);
+        lets.play();
     });
 
     // Quit screen function
@@ -56,6 +62,7 @@ $(document).ready(function () {
         $('#active').show();
         balloon.load();
         balloon.play();
+        m1.play();
 
         correct_items.push(clicked_item);
 
@@ -73,6 +80,7 @@ $(document).ready(function () {
         $('#active2').show();
         balloon2.load();
         balloon2.play();
+        m2.play();
 
         correct_items.push(clicked_item);
 
@@ -90,6 +98,7 @@ $(document).ready(function () {
         $('#active3').show();
         balloon3.load();
         balloon3.play();
+        m3.play();
 
         correct_items.push(clicked_item);
 
@@ -105,6 +114,7 @@ $(document).ready(function () {
         $('#active4').show();
         balloon.load();
         balloon.play();
+        m4.play();
 
         correct_items.push(clicked_item);
 
@@ -122,6 +132,7 @@ $(document).ready(function () {
         $('#active5').show();
         balloon2.load();
         balloon2.play();
+        m5.play();
 
         correct_items.push(clicked_item);
 
@@ -139,6 +150,7 @@ $(document).ready(function () {
         $('#active6').show();
         balloon3.load();
         balloon3.play();
+        m6.play();
 
         correct_items.push(clicked_item);
 
@@ -156,6 +168,7 @@ $(document).ready(function () {
         $('#active7').show();
         balloon.load();
         balloon.play();
+        m7.play();
 
         correct_items.push(clicked_item);
 
@@ -173,6 +186,7 @@ $(document).ready(function () {
         $('#active8').show();
         balloon2.load();
         balloon2.play();
+        m8.play();
 
         correct_items.push(clicked_item);
 
@@ -190,6 +204,7 @@ $(document).ready(function () {
         $('#active9').show();
         balloon3.load();
         balloon3.play();
+        m9.play();
 
         correct_items.push(clicked_item);
 
@@ -207,6 +222,7 @@ $(document).ready(function () {
         $('#active10').show();
         balloon.load();
         balloon.play();
+        m10.play();
 
         correct_items.push(clicked_item);
 
@@ -224,6 +240,7 @@ $(document).ready(function () {
         $('#active11').show();
         balloon2.load();
         balloon2.play();
+        m11.play();
 
         correct_items.push(clicked_item);
 
@@ -241,6 +258,7 @@ $(document).ready(function () {
         $('#active12').show();
         balloon3.load();
         balloon3.play();
+        m12.play();
 
         correct_items.push(clicked_item);
 
@@ -258,6 +276,7 @@ $(document).ready(function () {
         $('#active13').show();
         balloon.load();
         balloon.play();
+        m13.play();
 
         correct_items.push(clicked_item);
 
@@ -275,6 +294,7 @@ $(document).ready(function () {
         $('#active14').show();
         balloon2.load();
         balloon2.play();
+        m14.play();
 
         correct_items.push(clicked_item);
 
@@ -292,6 +312,7 @@ $(document).ready(function () {
         $('#active15').show();
         balloon3.load();
         balloon3.play();
+        m15.play();
 
         correct_items.push(clicked_item);
 
