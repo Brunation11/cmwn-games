@@ -176,19 +176,25 @@ $(document).ready(function () {
     $('#key6').hide();
     $('#key7').hide();
     $('#key8').hide();
+    $('#key9').hide();
+    $('#key10').hide();
+    $('#key11').hide();
 
     $('#next-button9').hide();
     $('#next-button10').hide();
     $('#next-button11').hide();
 
-    $('#door').hide();
-    $('#door2').hide();
-    $('#door3').hide();
-    $('#door4').hide();
-    $('#door5').hide();
-    $('#door6').hide();
-    $('#door7').hide();
-    $('#door8').hide();
+    $('#chest').hide();
+    $('#chest2').hide();
+    $('#chest3').hide();
+    $('#chest4').hide();
+    $('#chest5').hide();
+    $('#chest6').hide();
+    $('#chest7').hide();
+    $('#chest8').hide();
+    $('#chest9').hide();
+    $('#chest10').hide();
+    $('#chest11').hide();
 
     $('#first').hide();
     $('#second').hide();
@@ -198,95 +204,128 @@ $(document).ready(function () {
     $('#sixth').hide();
     $('#seventh').hide();
     $('#eighth').hide();
+    $('#ninth').hide();
+    $('#tenth').hide();
+    $('#eleventh').hide();
 
-    $('#frame1').hide();
-
-    $('#door-c').hide();
-    $('#door-c2').hide();
-    $('#door-c3').hide();
-    $('#door-c4').hide();
-    $('#door-c5').hide();
-    $('#door-c6').hide();
-    $('#door-c7').hide();
-    $('#door-c8').hide();
+    $('#chest-c').hide();
+    $('#chest-c2').hide();
+    $('#chest-c3').hide();
+    $('#chest-c4').hide();
+    $('#chest-c5').hide();
+    $('#chest-c6').hide();
+    $('#chest-c7').hide();
+    $('#chest-c8').hide();
+    $('#chest-c9').hide();
+    $('#chest-c10').hide();
+    $('#chest-c11').hide();
 
     $('#key').click(function () {
         $('#key').hide();
-        $('#key2').show(8500);
-        $('#door').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#first').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key2').show(6000);
+        $('#ches').hide();
+        $('#chest').show().css("background-image", "url('content/images/chests/chest_open.gif" + "?a=" + Math.random() + "')");
+        $('#first').fadeIn(3000);
     });
 
     $('#key2').click(function () {
         $('#key2').hide();
-        $('#key3').show(8500);
-        $('#door-c').hide();
-        $('#door2').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#second').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c2').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key3').show(6000);
+        $('#chest-c').show().css("background-image", "url('content/images/chests/chest_closed.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#first').hide();
+        $('#chest').hide();
+        $('#chest2').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_2.gif" + "?a=" + Math.random() + "')");
+        $('#second').fadeIn(3000);
     });
 
     $('#key3').click(function () {
         $('#key3').hide();
-        $('#key4').show(8500);
-        $('#door-c2').hide();
-        $('#door3').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#third').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c3').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key4').show(6000);
+        $('#chest-c2').show().css("background-image", "url('content/images/chests/chest_closed_2.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#second').hide();
+        $('#chest2').hide();
+        $('#chest3').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_3.gif" + "?a=" + Math.random() + "')");
+        $('#third').fadeIn(3000);
     });
 
     $('#key4').click(function () {
         $('#key4').hide();
-        $('#key5').show(8500);
-        $('#door-c3').hide();
-        $('#door4').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#fourth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c4').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key5').show(6000);
+        $('#chest-c3').show().css("background-image", "url('content/images/chests/chest_closed_3.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#third').hide();
+        $('#chest3').hide();
+        $('#chest4').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_4.gif" + "?a=" + Math.random() + "')");
+        $('#fourth').fadeIn(3000);
     });
 
     $('#key5').click(function () {
         $('#key5').hide();
-        $('#key6').show(8500);
-        $('#door-c4').hide();
-        $('#door5').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#fifth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c5').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key6').show(6000);
+        $('#chest-c4').show().css("background-image", "url('content/images/chests/chest_closed_4.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#fourth').hide();
+        $('#chest4').hide();
+        $('#chest5').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_5.gif" + "?a=" + Math.random() + "')");
+        $('#fifth').fadeIn(3000);
     });
 
     $('#key6').click(function () {
         $('#key6').hide();
-        $('#key7').show(8500);
-        $('#door-c5').hide();
-        $('#door6').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#sixth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c6').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key7').show(6000);
+        $('#chest-c5').show().css("background-image", "url('content/images/chests/chest_closed_5.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#fifth').hide();
+        $('#chest5').hide();
+        $('#chest6').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_6.gif" + "?a=" + Math.random() + "')");
+        $('#sixth').fadeIn(3000);
     });
 
     $('#key7').click(function () {
         $('#key7').hide();
-        $('#key8').show(8500);
-        $('#door-c6').hide();
-        $('#door7').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#seventh').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c7').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key8').show(6000);
+        $('#chest-c6').show().css("background-image", "url('content/images/chests/chest_closed_6.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#sixth').hide();
+        $('#chest6').hide();
+        $('#chest7').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_7.gif" + "?a=" + Math.random() + "')");
+        $('#seventh').fadeIn(3000);
     });
 
     $('#key8').click(function () {
         $('#key8').hide();
-        $('#door-c7').hide();
-        $('#door7').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#eighth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c8').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key9').show(6000);
+        $('#chest-c7').show().css("background-image", "url('content/images/chests/chest_closed_7.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#seventh').hide();
+        $('#chest7').hide();
+        $('#chest8').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_8.gif" + "?a=" + Math.random() + "')");
+        $('#eighth').fadeIn(3000);
+    });
+
+    $('#key9').click(function () {
+        $('#key9').hide();
+        $('#key10').show(6000);
+        $('#chest-c8').show().css("background-image", "url('content/images/chests/chest_closed_8.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#eighth').hide();
+        $('#chest8').hide();
+        $('#chest9').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_9.gif" + "?a=" + Math.random() + "')");
+        $('#ninth').fadeIn(3000);
+    });
+
+    $('#key10').click(function () {
+        $('#key10').hide();
+        $('#key11').show(6000);
+        $('#chest-c9').show().css("background-image", "url('content/images/chests/chest_closed_9.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#ninth').hide();
+        $('#chest9').hide();
+        $('#chest10').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_10.gif" + "?a=" + Math.random() + "')");
+        $('#tenth').fadeIn(3000);
+    });
+
+    $('#key11').click(function () {
+        $('#key11').hide();
         $('#next-button9').show(6000);
+        $('#chest-c10').show().css("background-image", "url('content/images/chests/chest_closed_10.gif" + "?a=" + Math.random() + "')").delay(3000).hide();
+        $('#tenth').hide();
+        $('#chest10').hide();
+        $('#chest11').delay(8000).show().css("background-image", "url('content/images/chests/chest_open_11.gif" + "?a=" + Math.random() + "')");
+        $('#eleventh').fadeIn(3000);
     });
 
     $('#next-button9').click(function () {
