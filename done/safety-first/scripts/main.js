@@ -658,8 +658,8 @@
         $('.flip-content').show();
         $('.mcu-text').hide();
         $('.mcu-logo').hide();
-        sound23.load();
-        sound23.play();
+        // sound23.load();
+        // sound23.play();
     });
 
     /*//////////////////////// OLD scripts for purple box and popups /////////////////////////////*/
