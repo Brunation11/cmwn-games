@@ -15,12 +15,15 @@ bgMusic.addEventListener('ended', function () {
 background.play();
 
 $(document).ready(function () {
-
+    vo4.play();
+    background.play();
+    
+setTimeout(function(){ vo5.play(); }, 3000);
     $('#head2').hide();
     $('#head3').hide();
     $('#head4').hide();
 
-    $('#next-button').hide().fadeIn(1000);
+    $('#next-button').hide().fadeIn(4000);
     $('#next-button2').hide();
     
 
@@ -38,6 +41,8 @@ $(document).ready(function () {
         $('#next-button').hide();
         $('#game-info').modal('hide');
         $('#bubble-game').show();
+        vo4.pause();
+        vo5.pause();
     });
 
     $('#next-button2').click(function () {
@@ -118,6 +123,62 @@ $(document).ready(function () {
 
         } 
     });
+
+
+//correct items and it sounds 
+    
+    $('#run').click(function () {
+        vo6.load();
+        vo6.play();
+    });
+
+    $('#shower').click(function () {
+        vo7.load();
+        vo7.play();
+    });
+    
+    $('#dish').click(function () {
+        vo8.load();
+        vo8.play();
+    });
+
+    $('#laundry').click(function () {
+        vo9.load();
+        vo9.play();
+    });
+
+    $('#cook').click(function () {
+        vo10.load();
+        vo10.play();
+    });
+
+    $('#drink').click(function () {
+        vo11.load();
+        vo11.play();
+    });
+
+    $('#swim').click(function () {
+        vo12.load();
+        vo12.play();
+    });    
+
+
+    $('#face').click(function () {
+        vo13.load();
+        vo13.play();
+    }); 
+
+
+    $('#crop').click(function () {
+        vo14.load();
+        vo14.play();
+    }); 
+
+    $('#clean').click(function () {
+        vo15.load();
+        vo15.play();
+    }); 
+
 
     //Wrong Items
 

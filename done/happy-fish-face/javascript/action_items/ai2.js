@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    vo1.play();
     $("#next-button").hide();
     $("#next-button2").hide();
     $("#next-button3").hide();
@@ -66,6 +66,11 @@ $(document).ready(function () {
         $('#game-info').modal('hide');
         $('#game-info2').modal('show');
         $("#next-button2").show();
+        vo1.pause();
+        sad1.pause();
+        angry1.pause();
+        con1.pause();
+        vo2.play();
 
     });
 
@@ -73,7 +78,7 @@ $(document).ready(function () {
         $('#game-info2').modal('hide');
         $('#game-info3').modal('show');
         background.play();
-
+        vo2.pause();
     });
 
     $('#next-button3').click(function () {
@@ -81,7 +86,7 @@ $(document).ready(function () {
         $('#game-info4').modal('show');
         $("#next-button4").show();
         background.play();
-
+        vo3.play();
     });
 
 
@@ -89,6 +94,7 @@ $(document).ready(function () {
 
     $('#next-button4').click(function () {
          $("#putcontenthere").load("action_items/ai3.html");
+         vo3.pause();
     });
 
 });

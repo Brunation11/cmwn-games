@@ -26,8 +26,8 @@ bgMusic.addEventListener('ended', function () {
 
 $(document).ready(function () {
 
-   
-
+   vo16.play();
+setTimeout(function(){ vo17.play(); }, 3000);
 
     $('#game-info').modal('show');
     
@@ -40,6 +40,9 @@ $(document).ready(function () {
     $('#head4').hide().show(3000, function () {
         progress3.play();
     });
+
+$('#next-button2').hide();
+
 
     $('#next-button3').click(function () {
         $(".body-content").addClass("net");
@@ -87,9 +90,10 @@ function countdown(){
     displayTime(); 
     if (count == 0) {
       playing = false;
+      $('#time-modal1').modal('show');
        setTimeout(function() { countdown; }, 10000); //////////    reset counter     ////////////////
       count;
-      $('#time-modal').modal('show');
+      
     } else if (playing) {
       setTimeout(countdown, 100);
       count--;
@@ -124,9 +128,12 @@ function LeadingZero(Time) {
     });
 
     $('#next-button2').click(function () {
+        vo18.pause();
+        vo19.pause();
         $('#game-complete').modal('hide');
         $('#game-flip').modal('show');
         flip.play();
+        vo20.play();
     });
 
     $('#close').click(function () {
@@ -139,8 +146,8 @@ function LeadingZero(Time) {
         // timer1.Timer.play();
     });
 
-    $('#replay').click(function () {
-      $('#time-modal').remove();
+    $('#replay1').click(function () {
+      $('#time-modal1').remove();
 
 
         $("#putcontenthere").load("action_items/ai4_2.html");
@@ -260,11 +267,15 @@ function LeadingZero(Time) {
 
         } else if (correct_items.length === 20) {
           //  $('#star9').show();
+            vo18.play();
+            setTimeout(function(){ vo19.play(); }, 5000);
             $('#game-complete').modal('show');
             complete.play();
             $('#scoop-game').hide();
             correct.load();
             correct.play();
+            setTimeout(function(){$('#next-button2').show(); }, 7000);
+
         }
     });
 

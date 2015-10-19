@@ -33,11 +33,15 @@ $('#time-modal').modal('hide');
         $('#scoop-game').show();
         // startGame();
   
+$('#next-button2').hide();
 
     $('#next-button2').click(function () {
+        vo18.pause();
+        vo19.pause();
         $('#game-complete').modal('hide');
         $('#game-flip').modal('show');
         flip.play();
+        vo20.play();
     });
 
     $('#close').click(function () {
@@ -168,11 +172,14 @@ $('#time-modal').modal('hide');
 
         } else if (correct_items.length === 20) {
           //  $('#star9').show();
+            vo18.play();
+            setTimeout(function(){ vo19.play(); }, 5000);
             $('#game-complete').modal('show');
             complete.play();
             $('#scoop-game').hide();
             correct.load();
             correct.play();
+            setTimeout(function(){$('#next-button2').show(); }, 7000);
             playing = false;
         }
     });
