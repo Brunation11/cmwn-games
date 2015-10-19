@@ -134,6 +134,14 @@ display: none;
 max-width: 100%;
 }
 
+.main-logo-exit-game {
+    top: -6px;
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    height: 38px;
+}
+
 .play-btn {
 position: absolute;
 bottom: 2%;
@@ -608,6 +616,11 @@ text-align: center;
 
 .headig-box img {
 max-width: 70%;
+}
+
+.header-img{
+    height:52px;
+    width: 100%;
 }
 
 .tex-box {
@@ -1408,6 +1421,8 @@ font-size:20px;
     position:relative;
     z-index:50;
 }
+ 
+
 .garbage .main-box{
    width: 62%;
   float: left;

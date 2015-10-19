@@ -1,4 +1,5 @@
 background.play();
+
 $('#next').click(function () {
     click.load();
     click.play();
