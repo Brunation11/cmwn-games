@@ -2,8 +2,8 @@
     ///// background image is set to display none in main.css, and brought back with fade in,
     //// to prevent glitch ////
     title.volume = '.5';
-    bkgsong.volume = '.4';
-    secondmaze.volume = '.4';
+    bkgsong.volume = '.3';
+    secondmaze.volume = '.3';
 
     /**********************************************/
     /**********************************************/
