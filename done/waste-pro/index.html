@@ -122,6 +122,7 @@
 
                 <div class="homepage">
                     <div class="main-logo">
+                        <img class="main-logo-exit-game" src="content/_assets/elements/buttons/btn_exit_green.png" alt="Exit the game." />
                         <img src="content/_assets/elements/title.png" alt="Twirl and Swirl" />
                     </div>
                     <div class="play-btn">
@@ -155,7 +156,7 @@
                 <button class="exit close-Btn"></button>
 
                 <div class="headig-box">
-                    <img src="content/_assets/elements/header_1.png" />
+                    <img class="header-img" src="content/_assets/elements/header_equal_220_million.png" />
                 </div>
 
                 <div ng-controller="balanceController">
@@ -176,7 +177,7 @@
                             </div>
                         </div>
                         <div class="balance-footer">
-                            <div class="img-box" ng-repeat="item in data2 | orderBy:'rank'" id="{{item.item.name}}">
+                            <div class="img-box" ng-repeat="item in data2 | orderBy:'correct'" id="{{item.item.name}}">
                                 <div class="img-hold" ng-class="{correct: item.item.correct==1, incorrect: item.item.correct!=1}" >
                                     <div>
                                         <img data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="item" jqyoui-draggable="{ index: {{$index}}, animate: false, placeholder:'keep', onDrag:'onDrag'}" ng-src="{{item.item.mainImageUrl}}" />
