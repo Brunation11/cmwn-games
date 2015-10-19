@@ -436,6 +436,9 @@
     margin: 0 auto;
 
     -webkit-border-radius: 93px;
+    -moz-border-radius: 93px;
+    -ms-border-radius: 93px;
+    -o-border-radius: 93px;
 
     -webkit-box-shadow:
         0px 3px rgba(128,128,128,1), /* gradient effects */
@@ -446,7 +449,37 @@
         0px 3px rgba(78,78,78,1),
         0px 9px 6px -1px rgba(128,128,128,1); /* shadow */
 
+    -moz-box-shadow:
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 3px rgba(98,98,98,1),
+        0px 3px rgba(88,88,88,1),
+        0px 3px rgba(78,78,78,1),
+        0px 9px 6px -1px rgba(128,128,128,1); /* shadow */
+
+    -ms-box-shadow:
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 3px rgba(98,98,98,1),
+        0px 3px rgba(88,88,88,1),
+        0px 3px rgba(78,78,78,1),
+        0px 9px 6px -1px rgba(128,128,128,1); /* shadow */
+
+    -o-box-shadow:
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 3px rgba(98,98,98,1),
+        0px 3px rgba(88,88,88,1),
+        0px 3px rgba(78,78,78,1),
+        0px 9px 6px -1px rgba(128,128,128,1); /* shadow */
+
     -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    -moz-transition: -webkit-box-shadow .1s ease-in-out;
+    -ms-transition: -webkit-box-shadow .1s ease-in-out;
+    -o-transition: -webkit-box-shadow .1s ease-in-out;
 }
 
 #Big-btn span { /* creates the dimentions and texture of the button */
@@ -455,6 +488,30 @@
     background-image:
         /* gloss gradient */
         -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(50%,rgba(255,255,255,0)),
+            color-stop(50%,rgba(255,255,255,0.3)),
+            color-stop(100%,rgba(255,255,255,0.2))),
+
+        -moz-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(50%,rgba(255,255,255,0)),
+            color-stop(50%,rgba(255,255,255,0.3)),
+            color-stop(100%,rgba(255,255,255,0.2))),
+
+        -ms-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(50%,rgba(255,255,255,0)),
+            color-stop(50%,rgba(255,255,255,0.3)),
+            color-stop(100%,rgba(255,255,255,0.2))),
+
+        -o-gradient(
             linear,
             left bottom,
             left top,
@@ -472,8 +529,62 @@
             color-stop(80%,rgba(212,205,193,0.78)),
             color-stop(100%,rgba(210,210,210,0.3))),
 
+        -moz-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(210,210,210,0.3)),
+            color-stop(20%,rgba(212,205,193,0.78)),
+            color-stop(80%,rgba(212,205,193,0.78)),
+            color-stop(100%,rgba(210,210,210,0.3))),
+
+        -ms-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(210,210,210,0.3)),
+            color-stop(20%,rgba(212,205,193,0.78)),
+            color-stop(80%,rgba(212,205,193,0.78)),
+            color-stop(100%,rgba(210,210,210,0.3))),
+
+        -o-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(210,210,210,0.3)),
+            color-stop(20%,rgba(212,205,193,0.78)),
+            color-stop(80%,rgba(212,205,193,0.78)),
+            color-stop(100%,rgba(210,210,210,0.3))),
+
         /* light inner gradient */
         -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(255,255,255,0)),
+            color-stop(20%,rgba(255,255,255,0.5)),
+            color-stop(80%,rgba(255,255,255,0.5)),
+            color-stop(100%,rgba(255,255,255,0))),
+
+         -moz-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(255,255,255,0)),
+            color-stop(20%,rgba(255,255,255,0.5)),
+            color-stop(80%,rgba(255,255,255,0.5)),
+            color-stop(100%,rgba(255,255,255,0))),
+
+         -ms-gradient(
+            linear,
+            left top,
+            right top,
+            color-stop(0%,rgba(255,255,255,0)),
+            color-stop(20%,rgba(255,255,255,0.5)),
+            color-stop(80%,rgba(255,255,255,0.5)),
+            color-stop(100%,rgba(255,255,255,0))),
+
+         -o-gradient(
             linear,
             left top,
             right top,
@@ -494,14 +605,42 @@
             color-stop(60%,rgba(255,255,255,0)),
             color-stop(100%,rgba(255,255,255,0)));
 
+
+
+
+
         -webkit-box-shadow:
             0px -1px #fff, /* top highlight */
             0px 1px 1px #FFFFFF; /* bottom edge */
 
+        -moz-box-shadow:
+            0px -1px #fff, /* top highlight */
+            0px 1px 1px #FFFFFF; /* bottom edge */
+
+        -ms-box-shadow:
+            0px -1px #fff, /* top highlight */
+            0px 1px 1px #FFFFFF; /* bottom edge */
+
+        -o-box-shadow:
+            0px -1px #fff, /* top highlight */
+            0px 1px 1px #FFFFFF; /* bottom edge */
+
     -webkit-background-size: 100%, 100%, 100%, 4px 4px;
+    -moz-background-size: 100%, 100%, 100%, 4px 4px;
+    -ms-background-size: 100%, 100%, 100%, 4px 4px;
+    -o-background-size: 100%, 100%, 100%, 4px 4px;
 
     -webkit-border-radius: 93px;
     -webkit-transition: -webkit-transform .1s ease-in-out;
+
+    -moz-border-radius: 93px;
+    -moz-transition: -webkit-transform .1s ease-in-out;
+
+    -ms-border-radius: 93px;
+    -ms-transition: -webkit-transform .1s ease-in-out;
+
+    -o-border-radius: 93px;
+    -o-transition: -webkit-transform .1s ease-in-out;
 
     display: inline-block;
     width:130px;
@@ -535,10 +674,40 @@
     0px 7px rgba(88,88,88,1),
     0px 8px rgba(78,78,78,1),
     0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+
+    -moz-box-shadow:
+    0px 3px rgba(128,128,128,1),
+    0px 4px rgba(118,118,118,1),
+    0px 5px rgba(108,108,108,1),
+    0px 6px rgba(98,98,98,1),
+    0px 7px rgba(88,88,88,1),
+    0px 8px rgba(78,78,78,1),
+    0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+
+    -ms-box-shadow:
+    0px 3px rgba(128,128,128,1),
+    0px 4px rgba(118,118,118,1),
+    0px 5px rgba(108,108,108,1),
+    0px 6px rgba(98,98,98,1),
+    0px 7px rgba(88,88,88,1),
+    0px 8px rgba(78,78,78,1),
+    0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+
+    -o-box-shadow:
+    0px 3px rgba(128,128,128,1),
+    0px 4px rgba(118,118,118,1),
+    0px 5px rgba(108,108,108,1),
+    0px 6px rgba(98,98,98,1),
+    0px 7px rgba(88,88,88,1),
+    0px 8px rgba(78,78,78,1),
+    0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
 }
 
 #Big-btn:active span{
     -webkit-transform: translate(0, 5px); /* depth of button press */
+    -moz-transform: translate(0, 5px); /* depth of button press */
+    -ms-transform: translate(0, 5px); /* depth of button press */
+    -o-transform: translate(0, 5px); /* depth of button press */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
