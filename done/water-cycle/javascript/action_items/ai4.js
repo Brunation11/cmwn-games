@@ -1,5 +1,7 @@
 var correct_items = new Array();
 $(document).ready(function () {
+    vo17.play();
+    setTimeout(function(){ vo18.play(); }, 3000);
 
 $ ('.bkg-image').css('background-image','url(content/images/background/BKG_5.png)');
 

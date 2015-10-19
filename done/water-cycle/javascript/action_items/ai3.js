@@ -2,6 +2,9 @@ var correct_items = new Array();
 
 $(document).ready(function () {
 
+    vo5.play();
+
+
     $ ('.bkg-image').css('background-image','url(content/images/background/BKG_4.png)');
 
     $('.No').click(function () {
@@ -40,10 +43,21 @@ $(document).ready(function () {
             $(".next-Btn-2").click(function () {
                 click.load();
                 click.play();
+                vo5.pause();
+                vo6.pause();
+                vo7.pause();
+                vo8.pause();
+                vo9.pause();
+                vo10.pause();
+                vo11.pause();
+                vo12.pause();
+                vo13.pause();
+                vo14.pause();
+                vo15.pause();
 
                 $(".next-Btn-2").show();
                 $(".last-text").hide().delay(700).fadeIn(500);
-
+                vo16.play();
                 $("#pop_1,#pop_2,#pop_3,#pop_4,#pop_5,#pop_6,#pop_7,#pop_8,#pop_9,#pop_10").click(function () {
 
                     // remove intro text when any of these buttons are pressed
@@ -55,7 +69,7 @@ $(document).ready(function () {
 
                 $(".next-Btn-2").click(function () {
                     $("#putcontenthere").load("action_items/ai4.html");
-
+                    vo16.pause();
 
                 });
             });
@@ -65,7 +79,17 @@ $(document).ready(function () {
 
         // bubble 1
         $(".plus_1").click(function () {
-
+            vo12.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("show");
@@ -90,7 +114,17 @@ $(document).ready(function () {
 
         // bubble 2
         $(".plus_2").click(function () {
-
+            vo11.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -115,7 +149,17 @@ $(document).ready(function () {
 
         // bubble 3
         $(".plus_3").click(function () {
-
+            vo6.play();
+            vo5.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -141,7 +185,17 @@ $(document).ready(function () {
 
         // bubble 4
         $(".plus_4").click(function () {
-
+            vo7.play();
+            vo5.pause();
+            vo6.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -167,7 +221,17 @@ $(document).ready(function () {
         // bubble 5
 
         $(".plus_5").click(function () {
-
+            vo13.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -193,7 +257,17 @@ $(document).ready(function () {
         // bubble 6
 
         $(".plus_6").click(function () {
-
+            vo10.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -218,7 +292,17 @@ $(document).ready(function () {
 
         // bubble 7
         $(".plus_7").click(function () {
-
+            vo14.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -244,7 +328,17 @@ $(document).ready(function () {
         // bubble 8
 
         $(".plus_8").click(function () {
-
+            vo8.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -270,7 +364,17 @@ $(document).ready(function () {
         // bubble 9
 
         $(".plus_9").click(function () {
-
+            vo15.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo9.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
@@ -296,7 +400,17 @@ $(document).ready(function () {
         // bubble 10
 
         $(".plus_10").click(function () {
-
+            vo9.play();
+            vo5.pause();
+            vo6.pause();
+            vo7.pause();
+            vo8.pause();
+            vo10.pause();
+            vo11.pause();
+            vo12.pause();
+            vo13.pause();
+            vo14.pause();
+            vo15.pause();
             click.load();
             click.play();
             $("#fact_1").modal("hide");
