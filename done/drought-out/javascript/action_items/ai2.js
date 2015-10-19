@@ -11,6 +11,8 @@ bgMusic.addEventListener('ended', function () {
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");
 
+background.volume = 0.2
+
 $(document).ready(function () {
 
     $('#drough').get(0).play();
