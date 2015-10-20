@@ -1,3 +1,4 @@
+
     var auto_slide = 1;
     var auto_slide_seconds = 2000;
 
@@ -7,9 +8,17 @@
 
         var timer = setInterval('slide("right")', auto_slide_seconds);
 
-        $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
+        // $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
 
     }
+
+
+
+
+
+function Stop() {
+    clearInterval(timer);
+}
 
 function slide(where) {
 
@@ -34,7 +43,6 @@ function slide(where) {
             }
 
             $('#carousel_ul').css({ 'left': '-210px' });
-
 
     });
 

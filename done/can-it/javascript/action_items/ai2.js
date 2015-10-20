@@ -5,6 +5,8 @@
 
 $(document).ready(function () {
 
+
+// console.log('hey');
     ////// fade in dumpster items //////////////
     $('#myCarousel').hide().delay(500).fadeIn(500);
     ///////// hide all bootstrap modals /////////
@@ -76,17 +78,10 @@ $(document).ready(function () {
     ////////////////////// End of random functions /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
     // All items click
     $(".hit").click(function (event) {
-
-        // var moving = $('#compost-li').position().left;
-        // console.log(moving);
-
-        // if (moving = -210){
-        //     console.log("Is more");
-
-
-        // }
 
 
         $('#carousel_ul').carousel().animate('pause', 1000);
