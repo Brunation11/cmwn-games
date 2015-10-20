@@ -13,17 +13,23 @@ var game = {
     },
 
     loadNextScreen: function() {
-         this.currentSlide++;
+        this.currentSlide++;
 
         this.loadScreen(this.currentSlide);
 
-
+        if (this.currentSlide == 2) {
+            alert('Sound goes here !!!');
+        }
     },
 
     loadPrevScreen: function() {
         this.currentSlide--;
 
         this.loadScreen(this.currentSlide);
+
+        if (this.currentSlide == 2) {
+            alert('Sound goes here !!!');
+        }
     }
 
 };

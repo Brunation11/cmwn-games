@@ -119,6 +119,8 @@
                             $('#bkgsong').get(0).pause();
                             $('#Slide_19').get(0).currentTime=0;
                             $('#Slide_19').get(0).play();
+                            bkgsong.volume = "0.1";
+                            secondmaze.volume = '0.1';
 
                         }
 
@@ -337,9 +339,11 @@
                         $('#slide37').get(0).play();
                     }
                     if (map[toY][toX] == "P" ) {
+                        setTimeout(function() {
+                            $('#slide39').get(0).currentTime=0;
+                            $('#slide39').get(0).play();
+                        },3000);
 
-                        $('#slide39').get(0).currentTime=0;
-                        $('#slide39').get(0).play();
                     }
                     if (map[toY][toX] == "Q" ) {
 
@@ -391,6 +395,7 @@
             $('#mazepopup button.sliderClose').click(function () {
                 $('#mazepopup .slide').fadeOut(500);
                 $('#mazepopup ').fadeOut(500);
+                $('#slide39').get(0).pause();
 
                 document.onkeydown = function (e) {
                     switch (e.keyCode) {
@@ -504,6 +509,7 @@
         $('#labyrinth .popup').fadeOut(50);
 
         $('#bkgsong').get(0).play();
+         bkgsong.volume = "0.1";
         $('#maze').fadeIn(500);
     });
 
@@ -658,6 +664,8 @@
         $('.flip-content').show();
         $('.mcu-text').hide();
         $('.mcu-logo').hide();
+        pickup.load();
+        pickup.play();
         // sound23.load();
         // sound23.play();
     });
