@@ -9,6 +9,7 @@ bgMusic.addEventListener('ended', function () {
 }, false);
 
 background.play();
+background.volume = 0.2
 
 var correct_items = new Array();
 var clicked_item = $(this).attr(".yes");

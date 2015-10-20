@@ -17,7 +17,6 @@ var game = {
 
         this.loadScreen(this.currentSlide);
 
-
     },
 
     loadPrevScreen: function() {
@@ -35,6 +34,10 @@ game.loadScreen(1);
 //     return document.getElementById(x);
 
 // }
+
+game.loadScreen(2, function () {
+    alert('Hello World');
+});
 
 
 $('.next').on('click', function(){
