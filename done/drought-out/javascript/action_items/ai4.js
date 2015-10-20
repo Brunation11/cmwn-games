@@ -8,6 +8,8 @@ bgMusic.addEventListener('ended', function () {
     }
 }, false);
 
+background.volume = 0.2
+
 var bgMusic = $("#triple")[0],
 playing = true;
 
@@ -27,6 +29,8 @@ bgMusic.addEventListener('ended', function () {
         this.play();
     }
 }, false);
+
+treasure.volume = 0.2
 
 var correct_items = new Array();
 var correct_heads = new Array();
