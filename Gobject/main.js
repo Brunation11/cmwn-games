@@ -17,12 +17,10 @@ var game = {
 
         this.loadScreen(this.currentSlide);
 
-<<<<<<< HEAD
         if (this.currentSlide == 2) {
             alert('Sound goes here !!!');
         }
-=======
->>>>>>> 9363b18db4e8aa88ca2a0d512e1f16eed3bf8cb6
+
     },
 
     loadPrevScreen: function() {
