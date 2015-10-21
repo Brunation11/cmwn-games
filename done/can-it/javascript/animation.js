@@ -1,19 +1,14 @@
 
     var auto_slide = 1;
-    var auto_slide_seconds = 2000;
+    var auto_slide_seconds = 3000;
 
     $('#carousel_ul li:first').before($('#carousel_ul li:last'));
 
     if (auto_slide == 1) {
 
         var timer = setInterval('slide("right")', auto_slide_seconds);
-
         // $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
-
     }
-
-
-
 
 
 function Stop() {
@@ -32,7 +27,7 @@ function slide(where) {
 
     }
 
-    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 850, function () {
+    $('#carousel_ul:not(:animated)').animate({ 'left': left_indent }, 650, function () {
 
             if (where == 'left') {
 
@@ -43,7 +38,6 @@ function slide(where) {
             }
 
             $('#carousel_ul').css({ 'left': '-210px' });
-
     });
 
 }

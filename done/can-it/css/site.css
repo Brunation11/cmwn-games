@@ -7420,3 +7420,11 @@ input[type="checkbox"].input-validation-error {
   -ms-user-select: none;
   user-select: none;
 }
+.magic-box {
+  animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0.0;
+  }
+}
