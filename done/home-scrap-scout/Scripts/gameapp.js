@@ -2,11 +2,8 @@
 var content_path = "http://actionitems.changemyworldnow.com/wastepro";
 var content_path = "";
 
-
-
 // configure our routes
 moduleGame.config(function ($routeProvider) {
-
    
     $routeProvider
 
@@ -26,7 +23,7 @@ moduleGame.config(function ($routeProvider) {
             templateUrl: '/step.html',
             controller: 'stepController'
         })
-    .otherwise({
+        .otherwise({
             redirectTo: '/'
         });
 
@@ -51,7 +48,6 @@ moduleGame.controller('TodoCtrl', function ($scope, $rootScope) {
         return $scope.todos.length;
     };
   
-  
     $scope.addTodo = function (todo) {
         if ($scope.formTodoText.length > 0) {
             $scope.todos.push({ text: $scope.formTodoText, done: false });
@@ -64,21 +60,17 @@ moduleGame.controller('TodoCtrl', function ($scope, $rootScope) {
     };
   
     $scope.clearCompleted = function () {
-        
         $scope.todos = _.filter($scope.todos, function (todo) {          
-            
-            
-            return !todo.done;
-            
+            return !todo.done;        
         });
-      
     };
+
     $scope.next = function () {
         $rootScope.todos = $scope.todos;
-        $rootScope.$broadcast('todos');
-        
+        $rootScope.$broadcast('todos');  
     }
 });
+
 moduleGame.controller('TodoListCtrl', function ($scope, $rootScope, $window) {
     $scope.$on('todos', function (response) {
         $scope.todos2 = $rootScope.todos;
@@ -101,11 +93,11 @@ moduleGame.controller('TodoListCtrl', function ($scope, $rootScope, $window) {
         { text: "asbvdkfbv5" },
     ];*/
 
-  
 });
+
 /*-----------------------------------*/
 
-moduleGame.service('productService',  function($rootScope) {});
+moduleGame.service('productService', function($rootScope) {});
 
 var gamecatControllers = angular.module('gamecatControllers', []);
 

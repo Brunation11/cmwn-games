@@ -240,99 +240,99 @@ $(document).ready(function () {
     $('#key').click(function () {
         d1.play();
         $('#key').hide();
-        $('#key2').show(8500);
-        $('#door').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#first').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#key2').show(5500);
+        $('#door').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#first').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key2').click(function () {
         d2.play();
         $('#key2').hide();
-        $('#key3').show(8500);
+        $('#key3').show(5500);
         $('#door-c').hide();
-        $('#door2').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#second').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c2').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door2').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#second').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c2').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key3').click(function () {
         d3.play();
         $('#key3').hide();
-        $('#key4').show(8500);
+        $('#key4').show(5500);
         $('#door-c2').hide();
-        $('#door3').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#third').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c3').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door3').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#third').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c3').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key4').click(function () {
         d4.play();
         $('#key4').hide();
-        $('#key5').show(8500);
+        $('#key5').show(5500);
         $('#door-c3').hide();
-        $('#door4').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#fourth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c4').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door4').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#fourth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c4').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key5').click(function () {
         d5.play();
         $('#key5').hide();
-        $('#key6').show(8500);
+        $('#key6').show(5500);
         $('#door-c4').hide();
-        $('#door5').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#fifth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c5').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door5').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#fifth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c5').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key6').click(function () {
         d6.play();
         $('#key6').hide();
-        $('#key7').show(8500);
+        $('#key7').show(5500);
         $('#door-c5').hide();
-        $('#door6').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#sixth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c6').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door6').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#sixth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c6').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key7').click(function () {
         d7.play();
         $('#key7').hide();
-        $('#key8').show(8500);
+        $('#key8').show(5500);
         $('#door-c6').hide();
-        $('#door7').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#seventh').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c7').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door7').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#seventh').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key8').click(function () {
         d8.play();
         $('#key8').hide();
-        $('#key9').show(8500);
+        $('#key9').show(5500);
         $('#door-c7').hide();
-        $('#door8').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#eighth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c8').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#door8').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#eighth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c8').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#key9').click(function () {
         d9.play();
         $('#key9').hide();
         $('#door-c8').hide();
-        $('#door9').show().delay(8000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
-        $('#frame1').fadeIn(2000).delay(6000).fadeOut();
-        $('#ninth').fadeIn(2000).delay(6000).fadeOut();
-        $('#door-c9').hide().delay(8000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
-        $('#next-button9').show(6000);
+        $('#door9').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_doors.gif" + "?a=" + Math.random() + "')");
+        $('#frame1').fadeIn(2000).delay(3000).fadeOut();
+        $('#ninth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c9').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
+        $('#next-button9').show(3000);
     });
 
     $('#next-button9').click(function () {
