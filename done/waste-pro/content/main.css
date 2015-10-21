@@ -360,7 +360,7 @@ position: relative;
 position: absolute;
 top: 23px;
 right: -5%;
-background: url("_assets/elements/buttons/btn_next.png") 0 0 no-repeat;
+background: url("_assets/elements/buttons/btn_next_green.png") 0 0 no-repeat;
 background-size: 100%;
 width:50px;
 height: 32px;
@@ -369,7 +369,7 @@ display:block;
 }
 .correct-ansver a.next:hover {
 
-background-image: url("_assets/elements/buttons/btn_next_on.png");
+background-image: url("_assets/elements/buttons/btn_next_green_on.png");
 
 }
 .slider > .arrows .next {
@@ -1071,7 +1071,7 @@ backface-visibility: hidden;
 .card img {
 display: block;
 height: 100%;
-width: 100%;
+width: 89%;
 }
 
 .card .front {

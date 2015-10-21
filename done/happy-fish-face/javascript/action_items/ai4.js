@@ -275,7 +275,7 @@ function LeadingZero(Time) {
             correct.load();
             correct.play();
             setTimeout(function(){$('#next-button2').show(); }, 7000);
-
+            playing = false;
         }
     });
 
