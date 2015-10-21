@@ -36,12 +36,14 @@ $(document).ready(function () {
 
     $('#next-button').click(function () {
         $('#next-button').hide();
-        $('#next-button2').show(6000);
+        $('#next-button2').hide().delay(13000).fadeIn();
         $('#drought').hide();
         $('#game-complete').modal('show');
-        message.play();
         background.play();
-        $('.stamp').hide(5000).show(function () {
+        setTimeout(function () {
+            message.play();
+        }, 6000);
+        $('.stamp').hide().delay(13000).show(function () {
             try {
                 stamped.play();
             }
