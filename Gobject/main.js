@@ -10,6 +10,8 @@ var game = {
 
         $(divId).show();
         console.log("current slide: " + this.currentSlide);
+
+        this.loadScreenCallback(this.currentSlide);
     },
 
     loadNextScreen: function() {
@@ -17,35 +19,23 @@ var game = {
 
         this.loadScreen(this.currentSlide);
 
-        if (this.currentSlide == 2) {
-            alert('Sound goes here !!!');
-        }
-
     },
 
     loadPrevScreen: function() {
         this.currentSlide--;
 
         this.loadScreen(this.currentSlide);
-
-        if (this.currentSlide == 2) {
-            alert('Sound goes here !!!');
-        }
     }
 
 };
 
+game.loadScreenCallback = function (currentSlide) {
+    if (currentSlide == 2) {
+            alert('Sound goes here !!!');
+    }
+}
+
 game.loadScreen(1);
-
-// function loadScreen(x) {
-
-//     return document.getElementById(x);
-
-// }
-
-game.loadScreen(2, function () {
-    alert('Hello World');
-});
 
 
 $('.next').on('click', function(){
