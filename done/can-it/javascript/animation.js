@@ -38,6 +38,7 @@ function slide(where) {
             }
 
             $('#carousel_ul').css({ 'left': '-210px' });
+
     });
 
 }
