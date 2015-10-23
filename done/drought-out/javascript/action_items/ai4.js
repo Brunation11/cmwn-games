@@ -349,6 +349,7 @@ $(document).ready(function () {
         $('#game-complete2').modal('hide');
         $('#game-flip').modal('show');
         treasure.pause();
+        thanks.play();
         flips.play();
         end.play();
     });
