@@ -310,20 +310,21 @@
                         }, 50);
 
                         if (($('#maze2 .goal').length/2 -0.5)== $("#labyrinthHome #mazepopup .poped").length - 1) {
+
                             setTimeout(function(){
                                 $('#labyrinthHome .popup2').fadeIn(500);
                                 $('#secondmaze').get(0).currentTime=0;
                                 $('#secondmaze').get(0).pause();
                                 $('#slide41').get(0).currentTime=0;
                                 $('#slide41').get(0).play();
-
                             }
 
                                 , 500);
+
                             $('.popup2 button.sliderClose').click(function () {
-                            $('#labyrinthHome a.next').fadeIn(500);
-                            $('#labyrinthHome a.next').addClass('open');
-                        });
+                                $('#labyrinthHome a.next').fadeIn(500);
+                                $('#labyrinthHome a.next').addClass('open');
+                            });
 
                         }
 
@@ -393,6 +394,9 @@
             updateMap();
 
             $('#mazepopup button.sliderClose').click(function () {
+                if (($('#maze2 .goal').length/2 -0.5)== $("#labyrinthHome #mazepopup .poped").length - 1) {
+                    $('#jobs').get(0).play();
+                }
                 $('#mazepopup .slide').fadeOut(500);
                 $('#mazepopup ').fadeOut(500);
                 $('#slide39').get(0).pause();

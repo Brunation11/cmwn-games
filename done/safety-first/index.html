@@ -24,6 +24,7 @@
     <script type="text/javascript" src="scripts/gameapp.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
 </head>
+
 <body ng-app="GameApp">
     <audio id="title" src="content/_sounds/Title_Slide_Slide1.mp3" loop="loop"></audio>
     <audio id="bkgsong" src="content/_sounds/BKG_Slides20-27.mp3" loop="loop"></audio>
@@ -62,6 +63,7 @@
     <audio id="sound22" src="content/_sounds/22.mp3"></audio>
     <audio id="sound23" src="content/_sounds/23A.mp3"></audio>
     <audio id="pickup" src="content/_sounds/pickup.mp3"></audio>
+    <audio id="jobs" src="content/_sounds/SafetyFirst_Good_Job.mp3"></audio>
 
 
     <div class="">
@@ -220,7 +222,7 @@
 
                     <div class="popup">
                         <button class="sliderClose" ng-click="data.doClick($event)"></button>
-                        <img style="position: absolute;margin-left: -70px;margin-top:-156px;width:65%;" src="content/_assets/elements/info_window_legs_1.png"/>
+                        <img style="position:absolute; margin-left:-70px; margin-top:-156px; width:65%;" src="content/_assets/elements/info_window_legs_1.png"/>
                         What do you need to  <br />
                         watch out for between<br />
                         school and home?<br />
@@ -243,7 +245,6 @@
                                                     <div ng-bind-html="to_trusted(item.text)"></div>
                                                 </div>
                                                 <div id="sound-{{item.name}}" data-sound="{{item.sound}}"></div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +265,7 @@
 
                     <div class="popup">
                         <button class="sliderClose" ng-click="data.doClick($event)"></button>
-                        <img style="position: absolute;margin-left: -134px;margin-top:-243px;width:65%;" src="content/_assets/elements/info_window_legs_2.png"/>
+                        <img style="position:absolute; margin-left:-134px; margin-top:-243px; width:65%;" src="content/_assets/elements/info_window_legs_2.png"/>
                         We aren't<br />
                         home free yet!<br />
                         Let's stay secure<br />
@@ -322,7 +323,6 @@
 
                     </div>
                 </div> -->
-
                 <!--//////////////////////////////////////////////////-->
                 <div id="flip" class="end-story">
                     <button class="exit close-Btn"></button>
