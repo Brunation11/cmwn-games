@@ -272,7 +272,6 @@ $('#next-button2').hide();
     });
 
 
-
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
 playpause.onclick = function() {
   if (playing) {
@@ -293,7 +292,6 @@ pause.onclick = function() {
   
 }
 
-
 play.onclick = function() {
    if (!playing) {
     playing = true; 
@@ -301,8 +299,6 @@ play.onclick = function() {
   }
   
 }
-
-
 
 reset.onclick = function() {
   if (playing) {

@@ -19,7 +19,6 @@ $(document).ready(function () {
         $(".current").each(function () {
             $(this).show("display", "block");
         });
-
     });
 
     $('#happy').click(function () {
@@ -71,7 +70,6 @@ $(document).ready(function () {
         angry1.pause();
         con1.pause();
         vo2.play();
-
     });
 
     $('#next-button2').click(function () {
@@ -89,12 +87,9 @@ $(document).ready(function () {
         vo3.play();
     });
 
-
-
-
     $('#next-button4').click(function () {
-         $("#putcontenthere").load("action_items/ai3.html");
-         vo3.pause();
+        $("#putcontenthere").load("action_items/ai3.html");
+        vo3.pause();
     });
 
 });

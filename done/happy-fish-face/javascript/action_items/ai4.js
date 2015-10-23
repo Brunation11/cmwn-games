@@ -43,7 +43,6 @@ setTimeout(function(){ vo17.play(); }, 3000);
 
 $('#next-button2').hide();
 
-
     $('#next-button3').click(function () {
         $(".body-content").addClass("net");
         $('#game-info').modal('hide');
@@ -67,7 +66,6 @@ pause.onclick = function() {
   
 }
 
-
 play.onclick = function() {
    if (!playing) {
     playing = true; 
@@ -75,8 +73,6 @@ play.onclick = function() {
   }
   
 }
-
-
 
 reset.onclick = function() {
   if (playing) {
@@ -149,7 +145,6 @@ function LeadingZero(Time) {
     $('#replay1').click(function () {
       $('#time-modal1').remove();
 
-
         $("#putcontenthere").load("action_items/ai4_2.html");
         // correct_matches = new Array();
         // currentTime = 90000;
@@ -159,7 +154,6 @@ function LeadingZero(Time) {
         // start.loop = true;
         // start.play();
     });
-
 
 
     //Correct Items
@@ -279,25 +273,6 @@ function LeadingZero(Time) {
         }
     });
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //Wrong Items
 
@@ -387,9 +362,7 @@ function LeadingZero(Time) {
     });
 
 
-
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
-
 
 
 // $(function() {
