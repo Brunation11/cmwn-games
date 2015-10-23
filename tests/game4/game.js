@@ -25,3 +25,54 @@ function resizeGame() {
 resizeGame();
 window.addEventListener('resize', resizeGame, false);
 window.addEventListener('orientationchange', resizeGame, false);
+
+var gamer = {
+    currentSlide: 1,
+    loadScreen : function(slide) {
+        this.currentSlide = slide;
+
+         $('.replace').hide();
+
+        var divId = "#div" + slide;
+
+        $(divId).show();
+        console.log("current slide: " + this.currentSlide);
+
+        this.loadScreenCallback(this.currentSlide);
+    },
+
+    loadNextScreen: function() {
+        this.currentSlide++;
+
+        this.loadScreen(this.currentSlide);
+
+    },
+
+    loadPrevScreen: function() {
+        this.currentSlide--;
+
+        this.loadScreen(this.currentSlide);
+    }
+
+};
+
+gamer.loadScreenCallback = function (currentSlide) {
+    if (currentSlide == 2) {
+           
+    }
+}
+
+gamer.loadScreen(1);
+
+
+$('.next').on('click', function(){
+    gamer.loadNextScreen();
+});
+
+$('.prev').on('click', function(){
+    gamer.loadPrevScreen();
+});
+
+$("#start-over").on('click', function() {
+    gamer.loadScreen(1);
+});
