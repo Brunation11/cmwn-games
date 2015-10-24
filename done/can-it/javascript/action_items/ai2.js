@@ -5,11 +5,21 @@
 
 $(document).ready(function () {
 
+///////////////////////// When document loads, this function gives a random oreder of items ///////////////////////////////////////////////
+    $("div.carousel-inner div").sort(function(){
+        return Math.random()*10 > 5 ? 1 : -1;
+    }).each(function(){
+        var $t = $(this),
+            color = $t.attr("class");
+        $t.css({backgroundColor: color}).appendTo( $t.parent() );
+
+    });
 
 
-// console.log('hey');
-    ////// fade in dumpster items //////////////
-    $('#myCarousel').hide().delay(500).fadeIn(500);
+    $('.carousel-inner').parent().carousel({ pause: true, interval: false });
+
+
+
     ///////// hide all bootstrap modals /////////
     $('#quit-game').modal("hide");
     $('#fail-screen').modal("hide");
@@ -28,10 +38,18 @@ $(document).ready(function () {
     /////// replay game /////////////////////////////
     $('#re-try-2').click(function(){
         $("#putcontenthere").load("action_items/ai2.html");
+        $('#myCarousel.carousel').carousel({
+            pause: true,
+            interval: false
+        }).carousel(0);
     });
 
     $('#re-try').click(function(){
         $("#putcontenthere").load("action_items/ai2.html");
+        $('#myCarousel.carousel').carousel({
+            pause: true,
+            interval: false
+        }).carousel(0);
     });
 
     /////// advance to flip screen ///////////////
@@ -61,27 +79,7 @@ $(document).ready(function () {
     $('.win').hide();
     $('.loose').hide();
 
-    ///////////////////////// When document loads, this function gives a random oreder of items ///////////////////////////////////////////////
-    $('.carousel-inner').parent().carousel({ pause: true, interval: false });
-
-        currentSlide = Math.floor((Math.random() * $('.item').length));
-        rand = currentSlide;
-        $('#myCarousel').carousel(currentSlide);
-        setInterval(function () {
-            while (rand == currentSlide) {
-
-                rand = Math.floor((Math.random() * $('.item').length));
-            }
-            currentSlide = rand;
-            $('#myCarousel').carousel(rand);
-
-        }, 900000);
     ////////////////////// End of random functions /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // $(".hit").click(function(){
-    //     $('#carousel_ul').carousel().animate('pause', 2000);
-
-    // });
-
 
     // All items click
     $(".hit").dblclick(function (event) {
@@ -104,8 +102,8 @@ $(document).ready(function () {
             if (click_correct) {
                 correct_items.push(click_correct);
 
+                // playSound(correct_items);
                 $('.carousel-inner').parent().carousel('next', 1);
-
 
             } ///// End of main "if" statement
             else {
@@ -115,6 +113,8 @@ $(document).ready(function () {
 
             }
         }/// End of first statement
+
+
 
         var wait = setInterval(function() {
 
@@ -142,6 +142,7 @@ $(document).ready(function () {
 
             }
         }, 700);
+
         $("#" + click_item + "1").animate({
             top: "+=260px"  //moves down
         }, 400).hide(1);
@@ -302,6 +303,17 @@ $(document).ready(function () {
         }, 400).hide(1);
     }); /// End of big click function
 
+
+function playSound(){
+//Play music here
+    var audio = document.getElementById("object");
+    $("#banana-peel").get(audio);
+    audio.play();
+
+
+}
+
+
 }); ///End of document.ready
 
 //////////////// Timer functionality ////////////////////////////////////////////////////////////////////////////////
@@ -368,7 +380,6 @@ $(function() {
         document.getElementById( 'timeout' ).play();
         document.getElementById( 'clock' ).pause();
         document.getElementById( 'background' ).pause();
-
 
         if (correct_items.length >= 5) {
             $('#retry-screen').modal("show");

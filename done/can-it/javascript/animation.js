@@ -10,6 +10,7 @@
         // $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
     }
 
+// setTimeout(function() { clearInterval(timer); }, 60000);
 
 function slide(where) {
 
@@ -34,7 +35,6 @@ function slide(where) {
             }
 
             $('#carousel_ul').css({ 'left': '-210px' });
-
     });
 
 }
