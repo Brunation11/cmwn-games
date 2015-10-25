@@ -4,7 +4,8 @@
 
 
 $(document).ready(function () {
-
+background.volume = "0.3";
+clock.volume = "0.3";
 ///////////////////////// When document loads, this function gives a random oreder of items ///////////////////////////////////////////////
     $("div.carousel-inner div").sort(function(){
         return Math.random()*10 > 5 ? 1 : -1;
@@ -80,9 +81,191 @@ $(document).ready(function () {
     $('.loose').hide();
 
     ////////////////////// End of random functions /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    $(".hit").click(function(){
+         if($('#apple-core').is(':visible')) {
+            object1.play();
+       } else {
+            object1.pause();
+       }
+        if($('#batteries').is(':visible')) {
+            object2.play();
+       } else {
+            object2.pause();
+       }
+       if($('#computer').is(':visible')) {
+            object3.play();
+       } else {
+            object3.pause();
+       }
+        if($('#carton-boxes').is(':visible')) {
+            object4.play();
+       } else {
+            object4.pause();
+       }
+        if($('#banana-peel').is(':visible')) {
+            object5.play();
+       } else {
+            object5.pause();
+       }
+        if($('#bulb').is(':visible')) {
+            object6.play();
+       } else {
+            object6.pause();
+       }
+       if($('#carrot').is(':visible')) {
+            object7.play();
+       } else {
+            object7.pause();
+       }
+       if($('#diaper').is(':visible')) {
+            object8.play();
+       } else {
+            object8.pause();
+       }
+       if($('#metal-can').is(':visible')) {
+            object9.play();
+       } else {
+            object9.pause();
+       }
+       if($('#paper-box').is(':visible')) {
+            object10.play();
+       } else {
+            object10.pause();
+       }
+       if($('#chicken').is(':visible')) {
+            object11.play();
+       } else {
+            object11.pause();
+       }
+       if($('#milk-carton').is(':visible')) {
+            object12.play();
+       } else {
+            object12.pause();
+       }
+       if($('#mirror').is(':visible')) {
+            object13.play();
+       } else {
+            object13.pause();
+       }
+       if($('#magazine').is(':visible')) {
+            object14.play();
+       } else {
+            object14.pause();
+       }
+       if($('#styrofoam').is(':visible')) {
+            object15.play();
+       } else {
+            object15.pause();
+       }
+       if($('#egg').is(':visible')) {
+            object16.play();
+       } else {
+            object16.pause();
+       }
+       if($('#phone').is(':visible')) {
+            object17.play();
+       } else {
+            object17.pause();
+       }
+       if($('#cracker').is(':visible')) {
+            object18.play();
+       } else {
+            object18.pause();
+       }
+       if($('#feather').is(':visible')) {
+            object19.play();
+       } else {
+            object19.pause();
+       }
+       if($('#bag').is(':visible')) {
+            object20.play();
+       } else {
+            object20.pause();
+       }
+       if($('#pasta').is(':visible')) {
+            object21.play();
+       } else {
+            object21.pause();
+       }
+       if($('#plastic-bottle').is(':visible')) {
+            object22.play();
+       } else {
+            object22.pause();
+       }
+       if($('#flower').is(':visible')) {
+            object23.play();
+       } else {
+            object23.pause();
+       }
+       if($('#plastic-package').is(':visible')) {
+            object24.play();
+       } else {
+            object24.pause();
+       }
+       if($('#leaf').is(':visible')) {
+            object25.play();
+       } else {
+            object25.pause();
+       }
+       if($('#soap').is(':visible')) {
+            object26.play();
+       } else {
+            object26.pause();
+       }
+       if($('#hay').is(':visible')) {
+            object27.play();
+       } else {
+            object27.pause();
+       }
+       if($('#socks').is(':visible')) {
+            object28.play();
+       } else {
+            object28.pause();
+       }
+       if($('#soda-bottle').is(':visible')) {
+            object29.play();
+       } else {
+            object29.pause();
+       }
+       if($('#peanut').is(':visible')) {
+            object30.play();
+       } else {
+            object30.pause();
+       }
+       if($('#soda-can').is(':visible')) {
+            object31.play();
+       } else {
+            object31.pause();
+       }
+       if($('#lettuce').is(':visible')) {
+            object32.play();
+       } else {
+            object32.pause();
+       }
+       if($('#tv').is(':visible')) {
+            object33.play();
+       } else {
+            object33.pause();
+       }
+       if($('#tea').is(':visible')) {
+            object34.play();
+       } else {
+            object34.pause();
+       }
+       if($('#tissue').is(':visible')) {
+            object35.play();
+       } else {
+            object35.pause();
+       }
+       if($('#tube').is(':visible')) {
+            object36.play();
+       } else {
+            object36.pause();
+       }
+    });
     // All items click
     $(".hit").dblclick(function (event) {
+
 
 
         var click_item = $(this).attr('id');
@@ -99,8 +282,8 @@ $(document).ready(function () {
             $('.carousel-inner').parent().carousel('next', 1);
         } else {
             /// Main if statement
-            if (click_correct) {
-                correct_items.push(click_correct);
+            if (click_correct == selected_item) {
+                correct_items.push(selected_item);
 
                 // playSound(correct_items);
                 $('.carousel-inner').parent().carousel('next', 1);
@@ -301,17 +484,9 @@ $(document).ready(function () {
         $("#" + click_item + "40").animate({
             top: "+=260px"  //moves down
         }, 400).hide(1);
+
+
     }); /// End of big click function
-
-
-function playSound(){
-//Play music here
-    var audio = document.getElementById("object");
-    $("#banana-peel").get(audio);
-    audio.play();
-
-
-}
 
 
 }); ///End of document.ready
