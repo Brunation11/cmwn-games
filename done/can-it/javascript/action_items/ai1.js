@@ -64,6 +64,10 @@ $(document).ready(function () {
         $('#game-info2').modal('show');
         slide1.load();
         slide1.play();
+        setTimeout(function(){
+            slide1b.load();
+            slide1b.play();
+        },4000);
     });
 
     $('#next-button3').click(function () {
@@ -74,6 +78,7 @@ $(document).ready(function () {
         $('#game-info2').modal('hide');
         $('#game-info3').modal('show');
         slide1.pause();
+        slide1b.pause();
         slide2.load();
         slide2.play();
         setTimeout(function(){
