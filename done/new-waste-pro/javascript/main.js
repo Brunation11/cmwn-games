@@ -118,9 +118,5 @@ $('.incineration').click(function(){
     $(".incineration-text").fadeIn(500);
 });
 
-<<<<<<< HEAD
-});
 
-=======
->>>>>>> e8b2f8454641476a03cdf6c6d77320f586904c85
 });
