@@ -7613,6 +7613,7 @@ _:-ms-fullscreen,
   background-size: 100%;
   background-repeat: no-repeat;
 }
+/*----------- end slide 4 -----------*/
 .balansir {
   margin: 0 auto;
   width: 400px;
@@ -7719,16 +7720,17 @@ _:-ms-fullscreen,
   left: auto;
   right: -51px;
 }
+/*------------ slide 4 ----------------*/
 .composting:hover {
   background-image: url("../content/images/buttons/btn_composting_on.png");
 }
 .landfill {
-  background-image: url("../content/images/buttons/btn_leachate.png");
+  background-image: url("../content/images/buttons/btn_landfill.png");
   background-size: 100%;
   background-repeat: no-repeat;
 }
 .landfill:hover {
-  background-image: url("../content/images/buttons/btn_leachate_on.png");
+  background-image: url("../content/images/buttons/btn_landfill_on.png");
 }
 .incineration {
   background-image: url("../content/images/buttons/btn_incineration.png");
@@ -7782,3 +7784,4 @@ _:-ms-fullscreen,
   font-size: 22px;
   line-height: 28px;
 }
+/*---------- end slide 4 -----------*/

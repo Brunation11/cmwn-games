@@ -33,6 +33,9 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
+    if (currentSlide == 4) {
+
+    }
     if (currentSlide == 3) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
