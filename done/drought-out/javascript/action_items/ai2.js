@@ -58,7 +58,7 @@ $(document).ready(function () {
     $('#next-button2').click(function () {
         impact.play();
         $('#next-button2').hide();
-        $('#next-button3').show();
+        $('#next-button3').delay(3000).fadeIn();
         $('#game-complete').modal('hide');
         $('#game-info').modal('show');
         $('#des3').show();
@@ -67,7 +67,7 @@ $(document).ready(function () {
     $('#next-button3').click(function () {
         humans.play();
         $('#next-button3').hide();
-        $('#next-button4').show();
+        $('#next-button4').delay(4000).fadeIn();
         $('#game-info').modal('hide');
         $('#game-info2').modal('show');
     });
