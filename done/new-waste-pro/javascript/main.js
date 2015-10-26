@@ -84,6 +84,11 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
+    //////// DIV3 /////////
+
+    
+
+    //////// DIV4 /////////    
 
     $('.recycling').click(function (){
         $(".recycling-text").fadeIn(500);
@@ -94,8 +99,6 @@ $(document).ready(function () {
         $(".recycling-text").hide();
         $(".composting-text").fadeIn(500);
     });
-
-    ////////// DIV3 //////////
 
 $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
