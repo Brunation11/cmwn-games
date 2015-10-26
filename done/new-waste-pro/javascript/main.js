@@ -84,10 +84,6 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> 56151b2a9ba1561f4135208c9925a3ac597d91b7
     $('.recycling').click(function (){
         $(".recycling-text").fadeIn(500);
         $(".composting-text").hide();
@@ -99,11 +95,8 @@ $(document).ready(function () {
     });
 
     ////////// DIV3 //////////
-<<<<<<< HEAD
 
-=======
-// =======
->>>>>>> 56151b2a9ba1561f4135208c9925a3ac597d91b7
+
 $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
@@ -133,12 +126,5 @@ $('.incineration').click(function(){
 });
 
 });
-<<<<<<< HEAD
-=======
-// >>>>>>> 69e531fe265628a610dd1ff79e16f786d20587fc
->>>>>>> 56151b2a9ba1561f4135208c9925a3ac597d91b7
-
-
-
 
 });
