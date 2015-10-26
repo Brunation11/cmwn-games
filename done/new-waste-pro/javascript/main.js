@@ -36,6 +36,7 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 3) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
+            $(".landfill-text").hide();
             $('.next').show();
     }
     if (currentSlide == 2) {
@@ -85,11 +86,19 @@ $('.card').click(function () {
 $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
+    $(".landfill-text").hide();
 });
 
 $('.composting').click(function(){
     $(".recycling-text").hide();
+    $(".landfill-text").hide();
     $(".composting-text").fadeIn(500);
+});
+
+$('.landfill').click(function(){
+    $(".recycling-text").hide();
+    $(".composting-text").hide();
+    $(".landfill-text").fadeIn(500);
 });
 
 });
