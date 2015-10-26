@@ -84,18 +84,11 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
-    $('.recycling').click(function (){
-        $(".recycling-text").fadeIn(500);
-        $(".composting-text").hide();
-    });
+    //////// DIV3 /////////
 
-    $('.composting').click(function(){
-        $(".recycling-text").hide();
-        $(".composting-text").fadeIn(500);
-    });
 
-    ////////// DIV3 //////////
 
+    //////// DIV4 /////////
 
 $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
@@ -125,6 +118,9 @@ $('.incineration').click(function(){
     $(".incineration-text").fadeIn(500);
 });
 
+<<<<<<< HEAD
 });
 
+=======
+>>>>>>> e8b2f8454641476a03cdf6c6d77320f586904c85
 });
