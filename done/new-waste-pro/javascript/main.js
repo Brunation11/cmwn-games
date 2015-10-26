@@ -82,16 +82,18 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
-$('.recycling').click(function (){
-    $(".recycling-text").fadeIn(500);
-    $(".composting-text").hide();
+    $('.recycling').click(function (){
+        $(".recycling-text").fadeIn(500);
+        $(".composting-text").hide();
+    });
+
+    $('.composting').click(function(){
+        $(".recycling-text").hide();
+        $(".composting-text").fadeIn(500);
+    });
+
+    ////////// DIV3 //////////
+
+    
+
 });
-
-$('.composting').click(function(){
-    $(".recycling-text").hide();
-    $(".composting-text").fadeIn(500);
-});
-
-});
-
-
