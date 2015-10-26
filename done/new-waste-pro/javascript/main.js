@@ -27,10 +27,15 @@ var game = {
         this.loadScreen(this.currentSlide);
     }
 
+
 };
+
+
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 3) {
+            $(".recycling-text").hide();
+            $(".composting-text").hide();
             $('.next').show();
     }
     if (currentSlide == 2) {
@@ -48,6 +53,8 @@ game.loadScreenCallback = function (currentSlide) {
 
 
 game.loadScreen(1);
+
+
 
 $(document).ready(function () {
 $('.next').on('click', function(){
@@ -75,4 +82,16 @@ $('.card').click(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
+$('.recycling').click(function (){
+    $(".recycling-text").fadeIn(500);
+    $(".composting-text").hide();
 });
+
+$('.composting').click(function(){
+    $(".recycling-text").hide();
+    $(".composting-text").fadeIn(500);
+});
+
+});
+
+

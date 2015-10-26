@@ -7584,3 +7584,14 @@ _:-ms-fullscreen,
   font-size: 22px;
   line-height: 28px;
 }
+.composting-text {
+  color: #fff;
+  position: absolute;
+  top: 269px;
+  left: 83px;
+  text-align: center;
+  z-index: 1;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 26px;
+}
