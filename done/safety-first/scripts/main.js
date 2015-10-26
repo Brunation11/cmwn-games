@@ -313,8 +313,8 @@
 
                             setTimeout(function(){
                                 $('#labyrinthHome .popup2').fadeIn(500);
-                                $('#secondmaze').get(0).currentTime=0;
-                                $('#secondmaze').get(0).pause();
+                                // $('#secondmaze').get(0).currentTime=0;
+                                // $('#secondmaze').get(0).pause();
                                 $('#slide41').get(0).currentTime=0;
                                 $('#slide41').get(0).play();
                             }
@@ -395,6 +395,8 @@
 
             $('#mazepopup button.sliderClose').click(function () {
                 if (($('#maze2 .goal').length/2 -0.5)== $("#labyrinthHome #mazepopup .poped").length - 1) {
+                    $('#secondmaze').get(0).currentTime=0;
+                    $('#secondmaze').get(0).pause();
                     $('#jobs').get(0).play();
                 }
                 $('#mazepopup .slide').fadeOut(500);
