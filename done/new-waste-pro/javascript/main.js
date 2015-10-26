@@ -84,6 +84,19 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
+<<<<<<< HEAD
+    $('.recycling').click(function (){
+        $(".recycling-text").fadeIn(500);
+        $(".composting-text").hide();
+    });
+
+    $('.composting').click(function(){
+        $(".recycling-text").hide();
+        $(".composting-text").fadeIn(500);
+    });
+
+    ////////// DIV3 //////////
+=======
 $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
@@ -113,5 +126,8 @@ $('.incineration').click(function(){
 });
 
 });
+>>>>>>> 69e531fe265628a610dd1ff79e16f786d20587fc
 
+    
 
+});
