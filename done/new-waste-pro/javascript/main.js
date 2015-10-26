@@ -118,5 +118,4 @@ $('.incineration').click(function(){
     $(".incineration-text").fadeIn(500);
 });
 
-
 });
