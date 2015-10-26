@@ -7462,6 +7462,8 @@ input[type="checkbox"].input-validation-error {
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  left: 400px;
+  top: 145px;
 }
 .card.flipped {
   -webkit-transform: rotateY(180deg);
@@ -7488,8 +7490,6 @@ input[type="checkbox"].input-validation-error {
 .card img {
   display: block;
   width: 202px;
-  margin-left: 397px;
-  margin-top: 152px;
 }
 .card .front {
   backface-visibility: hidden\9;

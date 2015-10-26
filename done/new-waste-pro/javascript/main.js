@@ -30,8 +30,8 @@ var game = {
 };
 
 game.loadScreenCallback = function (currentSlide) {
-    if (currentSlide == 3) {  
-            $('.next').show();    
+    if (currentSlide == 3) {
+            $('.next').show();
     }
     if (currentSlide == 2) {
             $('.arrows').fadeIn(500);
@@ -39,8 +39,8 @@ game.loadScreenCallback = function (currentSlide) {
             $('.card').removeClass('flipped');
     }
     if (currentSlide == 1) {
-            $('#play, .next').fadeIn(500);  
-            $('.arrows').fadeOut(100);    
+            $('#play, .next').fadeIn(500);
+            $('.arrows').fadeOut(100);
     }
 
 }
@@ -72,7 +72,7 @@ $('#Btn-hide1').click(function () {
 
 $('.card').click(function () {
         $(this).addClass('flipped');
-        setTimeout(function () { $('.next').fadeIn(500); }, 1000);    
+        setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
-      
+
 });
