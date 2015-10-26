@@ -42,6 +42,8 @@ $(document).ready(function () {
 
     $('#message').get(0).play();
 
+    $('#next-button').hide().delay(4000).fadeIn();
+
     $('#next-button2').hide();
     $('#next-button3').hide();
     $('#next-button4').hide();
@@ -85,7 +87,7 @@ $(document).ready(function () {
 
     $('#next-button2').click(function () {
         $('#next-button2').hide();
-        $('#next-button3').show();
+        $('#next-button3').delay(3500).fadeIn();
         $('#game-complete').modal('show');
         $('#effects').hide();
         bad.play();
@@ -108,7 +110,7 @@ $(document).ready(function () {
     $('#blur').click(function () {
         line.load();
         line.play();
-        $('#next-button5').fadeIn(2000);
+        $('#next-button5').delay(3500).fadeIn();
         flip.load();
         flip.play();
     });
@@ -117,7 +119,7 @@ $(document).ready(function () {
         most.load();
         most.play();
         $('#next-button5').hide();
-        $('#next-button6').fadeIn(3000);
+        $('#next-button6').delay(11000).fadeIn();
         $('#card').hide();
         $('#desert').show();
         background.pause();
@@ -133,7 +135,7 @@ $(document).ready(function () {
         });
         $('#next-button6').hide();
         $('#desert').delay(5000).hide(function () {
-            $('#next-button7').fadeIn(2000);
+            $('#next-button7').delay(2000).fadeIn();
             $('#desert2').show();
             cash.play();
             usin.play();
@@ -164,7 +166,7 @@ $(document).ready(function () {
     });
 
     $('#card3').click(function () {
-        $('#next-button8').show();
+        $('#next-button8').delay(9000).fadeIn();
         gal3.load();
         gal3.play();
         flip.load();
@@ -332,12 +334,12 @@ $(document).ready(function () {
         $('#frame1').fadeIn(2000).delay(3000).fadeOut();
         $('#ninth').fadeIn(2000).delay(3000).fadeOut();
         $('#door-c9').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_doors.gif" + "?a=" + Math.random() + "')");
-        $('#next-button9').show(3000);
+        $('#next-button9').delay(3000).fadeIn();
     });
 
     $('#next-button9').click(function () {
         $('#next-button9').hide();
-        $('#next-button10').show();
+        $('#next-button10').delay(11000).fadeIn();
         $('#facts').hide();
         $('#game-complete2').modal('show');
         tag.play();
@@ -360,6 +362,12 @@ $(document).ready(function () {
     $('#s1').one("click", function () {
         loss.load();
         loss.play();
+
+        $('#less').get(0).pause();
+        $('#more').get(0).pause();
+        $('#face').get(0).pause();
+        $('#soil').get(0).pause();
+
         $('#n-active').hide();
         $('#active').show();
         $('#e1').fadeIn();
@@ -380,6 +388,12 @@ $(document).ready(function () {
     $('#s2').one("click", function () {
         less.load();
         less.play();
+
+        $('#loss').get(0).pause();
+        $('#more').get(0).pause();
+        $('#face').get(0).pause();
+        $('#soil').get(0).pause();
+
         $('#n-active2').hide();
         $('#active2').show();
         $('#e1').hide();
@@ -400,6 +414,12 @@ $(document).ready(function () {
     $('#s3').one("click", function () {
         more.load();
         more.play();
+
+        $('#less').get(0).pause();
+        $('#loss').get(0).pause();
+        $('#face').get(0).pause();
+        $('#soil').get(0).pause();
+
         $('#n-active3').hide();
         $('#active3').show();
         $('#e1').hide();
@@ -420,6 +440,12 @@ $(document).ready(function () {
     $('#s4').one("click", function () {
         face.load();
         face.play();
+
+        $('#less').get(0).pause();
+        $('#more').get(0).pause();
+        $('#loss').get(0).pause();
+        $('#soil').get(0).pause();
+
         $('#n-active4').hide();
         $('#active4').show();
         $('#e1').hide();
@@ -440,6 +466,12 @@ $(document).ready(function () {
     $('#s5').one("click", function () {
         soil.load();
         soil.play();
+
+        $('#less').get(0).pause();
+        $('#more').get(0).pause();
+        $('#face').get(0).pause();
+        $('#loss').get(0).pause();
+
         $('#n-active5').hide();
         $('#active5').show();
         $('#e1').hide();
@@ -464,6 +496,12 @@ $(document).ready(function () {
     $('#s6').one("click", function () {
         health.load();
         health.play();
+
+        $('#threat').get(0).pause();
+        $('#and').get(0).pause();
+        $('#income').get(0).pause();
+        $('#water').get(0).pause();
+
         $('#n-active6').hide();
         $('#active6').show();
         $('#e6').fadeIn();
@@ -484,6 +522,12 @@ $(document).ready(function () {
     $('#s7').one("click", function () {
         threat.load();
         threat.play();
+
+        $('#health').get(0).pause();
+        $('#and').get(0).pause();
+        $('#income').get(0).pause();
+        $('#water').get(0).pause();
+
         $('#n-active7').hide();
         $('#active7').show();
         $('#e6').hide();
@@ -504,6 +548,12 @@ $(document).ready(function () {
     $('#s8').one("click", function () {
         and.load();
         and.play();
+
+        $('#threat').get(0).pause();
+        $('#health').get(0).pause();
+        $('#income').get(0).pause();
+        $('#water').get(0).pause();
+
         $('#n-active8').hide();
         $('#active8').show();
         $('#e6').hide();
@@ -524,6 +574,12 @@ $(document).ready(function () {
     $('#s9').one("click", function () {
         income.load();
         income.play();
+
+        $('#threat').get(0).pause();
+        $('#and').get(0).pause();
+        $('#health').get(0).pause();
+        $('#water').get(0).pause();
+
         $('#n-active9').hide();
         $('#active9').show();
         $('#e6').hide();
@@ -544,6 +600,12 @@ $(document).ready(function () {
     $('#s10').one("click", function () {
         water.load();
         water.play();
+
+        $('#threat').get(0).pause();
+        $('#and').get(0).pause();
+        $('#income').get(0).pause();
+        $('#health').get(0).pause();
+
         $('#n-active10').hide();
         $('#active10').show();
         $('#e6').hide();

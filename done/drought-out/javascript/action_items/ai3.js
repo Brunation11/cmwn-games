@@ -18,7 +18,11 @@ $(document).ready(function () {
 
     $('#message').get(0).play();
 
+    $('#next-button').hide().delay(4500).fadeIn();
+
     $('#next-button2').hide();
+
+    $('#next-button3').hide();
 
     $('#game-info').modal('show');
 
@@ -35,6 +39,7 @@ $(document).ready(function () {
         great.play();
         $('#next-button2').hide();
         $('#balloon-game').hide();
+        $('#next-button3').delay(4000).fadeIn();
         $('#game-complete').modal('show');
         setTimeout(function () {
             lets.load();
