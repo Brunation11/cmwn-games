@@ -37,6 +37,7 @@ game.loadScreenCallback = function (currentSlide) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
             $(".landfill-text").hide();
+            $(".incineration-text").hide();
             $('.next').show();
     }
     if (currentSlide == 2) {
@@ -87,18 +88,28 @@ $('.recycling').click(function (){
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
     $(".landfill-text").hide();
+    $(".incineration-text").hide();
 });
 
 $('.composting').click(function(){
     $(".recycling-text").hide();
     $(".landfill-text").hide();
+    $(".incineration-text").hide();
     $(".composting-text").fadeIn(500);
 });
 
 $('.landfill').click(function(){
     $(".recycling-text").hide();
     $(".composting-text").hide();
+    $(".incineration-text").hide();
     $(".landfill-text").fadeIn(500);
+});
+
+$('.incineration').click(function(){
+    $(".recycling-text").hide();
+    $(".composting-text").hide();
+    $(".landfill-text").hide();
+    $(".incineration-text").fadeIn(500);
 });
 
 });
