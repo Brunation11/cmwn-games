@@ -1139,8 +1139,46 @@
 }
 
 
+.balansir .balance{
+transform:         rotate(-18deg); /* CSS3 */
+ -moz-transform:    rotate(-18deg); /* Firefox */
+ -webkit-transform: rotate(-18deg); /* Webkit */
+ -o-transform:      rotate(-18deg); /* Opera */
+ -ms-transform:     rotate(-18deg); /* IE 9 */
+ -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+}
+.balansir .balance-left-cup,
+.balansir .balance-right-cup{
+transform:         rotate(18deg); /* CSS3 */
+ -moz-transform:    rotate(18deg); /* Firefox */
+ -webkit-transform: rotate(18deg); /* Webkit */
+ -o-transform:      rotate(18deg); /* Opera */
+ -ms-transform:     rotate(18deg); /* IE 9 */
+ -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
+}
 
-
+.balansir.correct .balance{
+transform:         rotate(0deg); /* CSS3 */
+ -moz-transform:    rotate(0deg); /* Firefox */
+ -webkit-transform: rotate(0deg); /* Webkit */
+ -o-transform:      rotate(0deg); /* Opera */
+ -ms-transform:     rotate(0deg); /* IE 9 */
+}
+.balansir.correct .balance-left-cup,
+.balansir.correct .balance-right-cup{
+    left: -49px;
+    transform:         rotate(0deg); /* CSS3 */
+    -moz-transform:    rotate(0deg); /* Firefox */
+    -webkit-transform: rotate(0deg); /* Webkit */
+    -o-transform:      rotate(0deg); /* Opera */
+    -ms-transform:     rotate(0deg); /* IE 9 */
+}
 
 
 
