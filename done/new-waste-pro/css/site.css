@@ -7328,6 +7328,65 @@ input[type="checkbox"].input-validation-error {
   position: absolute;
   opacity: 0;
 }
+.balansir .balance {
+  transform: rotate(-18deg);
+  /* CSS3 */
+  -moz-transform: rotate(-18deg);
+  /* Firefox */
+  -webkit-transform: rotate(-18deg);
+  /* Webkit */
+  -o-transform: rotate(-18deg);
+  /* Opera */
+  -ms-transform: rotate(-18deg);
+  /* IE 9 */
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+.balansir .balance-left-cup,
+.balansir .balance-right-cup {
+  transform: rotate(18deg);
+  /* CSS3 */
+  -moz-transform: rotate(18deg);
+  /* Firefox */
+  -webkit-transform: rotate(18deg);
+  /* Webkit */
+  -o-transform: rotate(18deg);
+  /* Opera */
+  -ms-transform: rotate(18deg);
+  /* IE 9 */
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+.balansir.correct .balance {
+  transform: rotate(0deg);
+  /* CSS3 */
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+  -webkit-transform: rotate(0deg);
+  /* Webkit */
+  -o-transform: rotate(0deg);
+  /* Opera */
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+}
+.balansir.correct .balance-left-cup,
+.balansir.correct .balance-right-cup {
+  left: -49px;
+  transform: rotate(0deg);
+  /* CSS3 */
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+  -webkit-transform: rotate(0deg);
+  /* Webkit */
+  -o-transform: rotate(0deg);
+  /* Opera */
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+}
 .ai_background {
   background-color: #7829bb;
   width: 622px;
@@ -7554,6 +7613,112 @@ _:-ms-fullscreen,
   background-size: 100%;
   background-repeat: no-repeat;
 }
+.balansir {
+  margin: 0 auto;
+  width: 400px;
+  clear: both;
+  position: absolute;
+  height: 199px;
+  margin-top: 52px;
+}
+.balansir .balance {
+  background: url(content/images/scale_arm-l.png) top right no-repeat;
+  background-size: 100%;
+  width: 300px;
+  height: 30px;
+  float: left;
+  transform: rotate(-18deg);
+  /* CSS3 */
+  -moz-transform: rotate(-18deg);
+  /* Firefox */
+  -webkit-transform: rotate(-18deg);
+  /* Webkit */
+  -o-transform: rotate(-18deg);
+  /* Opera */
+  -ms-transform: rotate(-18deg);
+  /* IE 9 */
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+.balansir .balance-left-cup,
+.balansir .balance-right-cup {
+  background: url(content/images/scale_cup.png) center top no-repeat;
+  background-size: 100%;
+  width: 120px;
+  height: 30px;
+  float: left;
+  position: absolute;
+  left: -44px;
+  top: -29px;
+  transform: rotate(18deg);
+  /* CSS3 */
+  -moz-transform: rotate(18deg);
+  /* Firefox */
+  -webkit-transform: rotate(18deg);
+  /* Webkit */
+  -o-transform: rotate(18deg);
+  /* Opera */
+  -ms-transform: rotate(18deg);
+  /* IE 9 */
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+.balansir .balance-left-cup img,
+.balansir .balance-right-cup img {
+  position: absolute;
+  max-width: 100%;
+  top: -94px;
+}
+.balansir .balance-right-cup {
+  right: -56px;
+  top: -27px;
+  float: right;
+  left: auto;
+}
+.balansir .balance-foot {
+  background: url(content/images/scale_foot.png) top center no-repeat;
+  background-size: 100%;
+  width: 90px;
+  height: 100px;
+  float: left;
+  position: absolute;
+  left: 42%;
+  top: 100px;
+}
+.balansir.correct .balance {
+  transform: rotate(0deg);
+  /* CSS3 */
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+  -webkit-transform: rotate(0deg);
+  /* Webkit */
+  -o-transform: rotate(0deg);
+  /* Opera */
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+}
+.balansir.correct .balance-left-cup,
+.balansir.correct .balance-right-cup {
+  left: -49px;
+  transform: rotate(0deg);
+  /* CSS3 */
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+  -webkit-transform: rotate(0deg);
+  /* Webkit */
+  -o-transform: rotate(0deg);
+  /* Opera */
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+}
+.balansir.correct .balance-right-cup {
+  left: auto;
+  right: -51px;
+}
 .composting:hover {
   background-image: url("../content/images/buttons/btn_composting_on.png");
 }
@@ -7594,4 +7759,15 @@ _:-ms-fullscreen,
   font-family: 'Source Sans Pro';
   font-size: 22px;
   line-height: 26px;
+}
+.landfill-text {
+  color: #fff;
+  position: absolute;
+  top: 268px;
+  left: 110px;
+  text-align: center;
+  z-index: 1;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
 }

@@ -36,6 +36,7 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 3) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
+            $(".landfill-text").hide();
             $('.next').show();
     }
     if (currentSlide == 2) {
@@ -82,6 +83,7 @@ $(document).ready(function () {
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
 
+<<<<<<< HEAD
     $('.recycling').click(function (){
         $(".recycling-text").fadeIn(500);
         $(".composting-text").hide();
@@ -93,6 +95,27 @@ $(document).ready(function () {
     });
 
     ////////// DIV3 //////////
+=======
+$('.recycling').click(function (){
+    $(".recycling-text").fadeIn(500);
+    $(".composting-text").hide();
+    $(".landfill-text").hide();
+});
+
+$('.composting').click(function(){
+    $(".recycling-text").hide();
+    $(".landfill-text").hide();
+    $(".composting-text").fadeIn(500);
+});
+
+$('.landfill').click(function(){
+    $(".recycling-text").hide();
+    $(".composting-text").hide();
+    $(".landfill-text").fadeIn(500);
+});
+
+});
+>>>>>>> 69e531fe265628a610dd1ff79e16f786d20587fc
 
     
 
