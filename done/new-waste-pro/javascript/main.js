@@ -89,7 +89,38 @@ $(document).ready(function () {
 
     //////// DIV3 /////////
 
+    $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag3").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag4").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag5").draggable({ cursor: 'move', revert: 'invalid' });
 
+    $(".balance-right-cup").droppable({
+            tolerance: "pointer",
+            accept: ".drag",
+            drop: function () {
+                try {
+                    // correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $(".drag").fadeOut(4000);
+                // $("#sleep p").css("text-decoration", "line-through");
+                // correct_items.push(1);
+                // var path = "content/images/meter_";
+                // var file_ext = ".png";
+                // var image_src = path + correct_items.length + file_ext;
+
+                // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                // if (correct_items.length === 8) {
+                //     //pop or redirect your game complete screen
+                //     setTimeout(function () {
+                //         $("#putcontenthere").load("action_items/ai9.html");
+                //     }, 2000);
+                // }
+            }
+        });
 
     //////// DIV4 /////////
 
