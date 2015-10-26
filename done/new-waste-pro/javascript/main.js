@@ -58,27 +58,27 @@ game.loadScreen(1);
 
 
 $(document).ready(function () {
-$('.next').on('click', function(){
-    game.loadNextScreen();
-});
 
-$('.prev').on('click', function(){
-    game.loadPrevScreen();
-});
+    $('.next').on('click', function(){
+        game.loadNextScreen();
+    });
 
-$("#start-over").on('click', function() {
-    game.loadScreen(1);
-});
+    $('.prev').on('click', function(){
+        game.loadPrevScreen();
+    });
 
+    $("#start-over").on('click', function() {
+        game.loadScreen(1);
+    });
 
-$('.close-Btn').click(function () {
-    $('#retry-level').modal('show');
-});
-$('#Btn-hide1').click(function () {
-    $('#retry-level').modal('hide')
-});
+    $('.close-Btn').click(function () {
+        $('#retry-level').modal('show');
+    });
+    $('#Btn-hide1').click(function () {
+        $('#retry-level').modal('hide')
+    });
 
-$('.card').click(function () {
+    $('.card').click(function () {
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
     });
