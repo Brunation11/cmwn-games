@@ -34,7 +34,11 @@ var game = {
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 4) {
-
+            $(".leachate-text").hide();
+            $(".methane-gas-text").hide();
+            $(".contamination-text").hide();
+            $(".pollution-text").hide();
+            $('.next').show();
     }
     if (currentSlide == 3) {
             $(".recycling-text").hide();
@@ -151,5 +155,36 @@ $('.incineration').click(function(){
     $(".landfill-text").hide();
     $(".incineration-text").fadeIn(500);
 });
+
+    ///////// DIV 5 ////////////
+$('.leachate').click(function (){
+    $(".leachate-text").fadeIn(500);
+    $(".methane-gas-text").hide();
+    $(".contamination-text").hide();
+    $(".pollution-text").hide();
+});
+
+$('.methane-gas').click(function(){
+    $(".contamination-text").hide();
+    $(".leachate-text").hide();
+    $(".pollution-text").hide();
+    $(".methane-gas-text").fadeIn(500);
+});
+
+$('.contamination').click(function(){
+    $(".contamination-text").fadeIn(500);
+    $(".leachate-text").hide();
+    $(".pollution-text").hide();
+    $(".methane-gas-text").hide();
+});
+
+$('.pollution').click(function(){
+    $(".pollution-text").fadeIn(500);
+    $(".methane-gas-text").hide();
+    $(".leachate-text").hide();
+    $(".contamination-text").hide();
+
+});
+
 
 });
