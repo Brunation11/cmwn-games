@@ -152,4 +152,9 @@ $('.incineration').click(function(){
     $(".incineration-text").fadeIn(500);
 });
 
+    //////// DIV5 /////////
+
+
+    //////// DIV6 /////////
+
 });
