@@ -34,8 +34,7 @@ var game = {
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 7) {
-        $(".bkg-image").hide();
-    $(".bkg-image2").show();
+     
 
     }
 
