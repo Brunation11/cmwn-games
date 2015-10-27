@@ -107,9 +107,9 @@ $(document).ready(function () {
 
     //////// DIV3 /////////
 
-<<<<<<< HEAD
+
     $('#buses').hide();
-=======
+
     // $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     // $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
     // $("#drag3").draggable({ cursor: 'move', revert: 'invalid' });
@@ -143,7 +143,6 @@ $(document).ready(function () {
     //             // }
     //         }
     //     });
->>>>>>> 9614036178f95cbdf6ec58cbde5e6c760675c9aa
 
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
@@ -163,12 +162,11 @@ $(document).ready(function () {
                     //no sound - log error
                 }
                 $("#head").hide();
-<<<<<<< HEAD
                 $('#buses').show();
-=======
+
 
                 $("#drag").css('width', '-=120px');
->>>>>>> 9614036178f95cbdf6ec58cbde5e6c760675c9aa
+
 
                 // $("#drag").fadeOut(4000);
 
@@ -187,7 +185,6 @@ $(document).ready(function () {
                 // }
             }
         });
->>>>>>> 150f52c59be91c0b27a09c68eeea50e44c52a830
 
     //////// DIV4 /////////
 
