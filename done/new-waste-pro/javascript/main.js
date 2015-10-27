@@ -157,4 +157,9 @@ $('.incineration').click(function(){
 
     //////// DIV6 /////////
 
+
+    //////// DIV6 /////////
+
+    $ ('.bkg-image').css('background-image','url(content/images/new/BKG_2.png)');
+
 });
