@@ -163,8 +163,13 @@ $(document).ready(function () {
             catch (err) {
                 //no sound - log error
             }
-            $("#arm").css('-webkit-transform','rotate('+1+'deg)'); 
-            
+            $("#arm").animate({  borderSpacing: +18 }, {
+                step: function(now,fx) {
+                  $(this).css('transform','rotate('+now+'deg)');  
+                },
+                duration:'slow'
+            },'linear');
+
             $("#head").hide();
             $('#cars').show();
 
