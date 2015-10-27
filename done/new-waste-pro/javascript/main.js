@@ -97,7 +97,7 @@ $(document).ready(function () {
         $('#retry-level').modal('show');
     });
     $('#Btn-hide1').click(function () {
-        $('#retry-level').modal('hide')
+        $('#retry-level').modal('hide');
     });
 
     $('.card').click(function () {
@@ -108,6 +108,7 @@ $(document).ready(function () {
     //////// DIV3 /////////
 
     $('#buses').hide();
+    $('#cars').hide();
 
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
@@ -115,42 +116,62 @@ $(document).ready(function () {
     $("#drag4").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag5").draggable({ cursor: 'move', revert: 'invalid' });
 
-    $("#droppable1").droppable({
-            tolerance: "pointer",
-            accept: "#drag",
-            drop: function () {
-                try {
-                    alert('wrong');
-                    // correct.play();
-                }
-                catch (err) {
-                    //no sound - log error
-                }
-                $("#head").hide();
-                $('#buses').show();
-
-
-                $("#drag").css('width', '-=120px');
-
-
-                // $("#drag").fadeOut(4000);
-
-                // $("#sleep p").css("text-decoration", "line-through");
-                // correct_items.push(1);
-                // var path = "content/images/meter_";
-                // var file_ext = ".png";
-                // var image_src = path + correct_items.length + file_ext;
-
-                // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
-                // if (correct_items.length === 8) {
-                //     //pop or redirect your game complete screen
-                //     setTimeout(function () {
-                //         $("#putcontenthere").load("action_items/ai9.html");
-                //     }, 2000);
-                // }
+    $("#drop1").droppable({
+        tolerance: "pointer",
+        accept: "#drag",
+        drop: function () {
+            try {
+                alert('wrong');
+                // correct.play();
             }
-        });
+            catch (err) {
+                //no sound - log error
+            }
+            $("#head").hide();
+            $('#buses').show();
 
+
+            $("#drag").css('width', '-=120px');
+
+
+            // $("#drag").fadeOut(4000);
+
+            // $("#sleep p").css("text-decoration", "line-through");
+            // correct_items.push(1);
+            // var path = "content/images/meter_";
+            // var file_ext = ".png";
+            // var image_src = path + correct_items.length + file_ext;
+
+            // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+            // if (correct_items.length === 8) {
+            //     //pop or redirect your game complete screen
+            //     setTimeout(function () {
+            //         $("#putcontenthere").load("action_items/ai9.html");
+            //     }, 2000);
+            // }
+        }
+    });
+        
+    $("#drop2").droppable({
+        tolerance: "pointer",
+        accept: "#drag2",
+        drop: function () {
+            try {
+                alert('correct');
+                // correct.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $("#arm").css('-webkit-transform','rotate('+1+'deg)'); 
+            
+            $("#head").hide();
+            $('#cars').show();
+
+
+            $("#drag2").css('width', '-=120px');
+        }
+    });
 
     //////// DIV4 /////////
 
