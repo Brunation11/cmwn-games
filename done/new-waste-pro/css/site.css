@@ -7991,13 +7991,15 @@ _:-ms-fullscreen,
 .orange-text {
   color: #fff;
   position: absolute;
-  top: 251px;
-  left: 106px;
+  top: 314px;
+  left: 82px;
   text-align: center;
   z-index: 2;
+  width: 150px;
   font-family: 'Source Sans Pro';
   font-size: 22px;
   line-height: 28px;
+  display: none;
 }
 .shoe-text {
   color: #fff;
@@ -8009,6 +8011,7 @@ _:-ms-fullscreen,
   font-family: 'Source Sans Pro';
   font-size: 22px;
   line-height: 28px;
+  display: none;
 }
 .can-text {
   color: #fff;
@@ -8020,6 +8023,7 @@ _:-ms-fullscreen,
   font-family: 'Source Sans Pro';
   font-size: 22px;
   line-height: 28px;
+  display: none;
 }
 .shirt-text {
   color: #fff;
@@ -8031,6 +8035,67 @@ _:-ms-fullscreen,
   font-family: 'Source Sans Pro';
   font-size: 22px;
   line-height: 28px;
+  display: none;
+}
+.milk-text {
+  color: #fff;
+  position: absolute;
+  top: 274px;
+  left: 85px;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
+  display: none;
+}
+.bottle-text {
+  color: #fff;
+  position: absolute;
+  top: 274px;
+  left: 85px;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
+  display: none;
+}
+.battery-text {
+  color: #fff;
+  position: absolute;
+  top: 274px;
+  left: 85px;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
+  display: none;
+}
+.paper-text {
+  color: #fff;
+  position: absolute;
+  top: 274px;
+  left: 85px;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
+  display: none;
+}
+.foil-text {
+  color: #fff;
+  position: absolute;
+  top: 274px;
+  left: 85px;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Source Sans Pro';
+  font-size: 22px;
+  line-height: 28px;
+  display: none;
 }
 .droppable {
   height: 154px;

@@ -35,10 +35,6 @@ var game = {
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 6) {
-			$(".orange-text").hide();
-            $(".shoe-text").hide();
-            $(".can-text").hide();
-            $(".shirt-text").hide();
 
     }
 
@@ -235,12 +231,6 @@ $('.pollution').click(function(){
 
     //////// DIV6 /////////
 
-// $('.orange').click(function (){
-//     $(".orange-text").fadeIn(500);
-//     $(".methane-gas-text").hide();
-//     $(".contamination-text").hide();
-//     $(".pollution-text").hide();
-// });
 $("#item").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item2").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item3").draggable({ cursor: 'move', revert: 'invalid' });
@@ -250,11 +240,14 @@ $("#item6").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item7").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item8").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
+ 
+
  $(".droppable").droppable({
             tolerance: "pointer",
             accept: "#item",
             drop: function () {
                 $("#item").css('opacity','0');
+                $(".orange-text").fadeIn(500);
                 correct_items_trash.push(1);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -268,6 +261,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             accept: "#item2",
             drop: function () {
                 $("#item2").css('opacity','0');
+                $(".shoe-text").fadeIn(500);
                 correct_items_trash.push(2);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
