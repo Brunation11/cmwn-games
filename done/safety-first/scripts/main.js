@@ -348,8 +348,9 @@
                     }
                     if (map[toY][toX] == "Q" ) {
 
-                        $('#slide40').get(0).currentTime=0;
-                        $('#slide40').get(0).play();
+                        // $('#slide19').get(0).currentTime=0;
+                        // $('#slide19').get(0).play();
+
                     }
 
                 });
@@ -503,8 +504,10 @@
         $('#slide19').get(0).play();
         $('#goodjob').fadeOut(50);
         $('#labyrinth').fadeIn(50);
+        setTimeout(function(){
         sound4.load();
         sound4.play();
+    },1500);
                maze1();
     });
 
