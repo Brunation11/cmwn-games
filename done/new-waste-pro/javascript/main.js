@@ -109,18 +109,23 @@ $(document).ready(function () {
     $("#drag4").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag5").draggable({ cursor: 'move', revert: 'invalid' });
 
-    $(".balance-right-cup").droppable({
+    $("#droppable1").droppable({
             tolerance: "pointer",
             accept: "#drag",
             drop: function () {
                 try {
-                    alert('correct');
+                    alert('wrong');
                     // correct.play();
                 }
                 catch (err) {
                     //no sound - log error
                 }
-                $("#drag").fadeOut(4000);
+                $("#head").hide();
+                
+                $("#drag").css('width', '-=120px');
+
+                // $("#drag").fadeOut(4000);
+
                 // $("#sleep p").css("text-decoration", "line-through");
                 // correct_items.push(1);
                 // var path = "content/images/meter_";

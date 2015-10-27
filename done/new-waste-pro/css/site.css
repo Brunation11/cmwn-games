@@ -1,5 +1,4 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
 html {
   font-family: sans-serif;
@@ -7893,18 +7892,6 @@ _:-ms-fullscreen,
   font-size: 22px;
   line-height: 28px;
 }
-<<<<<<< HEAD
-.slot-machine {
-  width: 567px;
-  height: 323px;
-  background-image: url("../content/images/slot_machine_frame.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  margin-top: 164px;
-  margin-left: 36px;
-}
-=======
-
 /*---------- end slide 5 -----------*/
 /*---------- slide 6 -----------------*/
 .nav-3 {
@@ -8046,13 +8033,12 @@ _:-ms-fullscreen,
   line-height: 28px;
 }
 /*---------- end slide 6 -----------*/
-
 .slot-machine {
-  width: 616px;
+  width: 567px;
   height: 323px;
-  outline: 1px solid red;
+  background-image: url("../content/images/slot_machine_frame.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
   margin-top: 164px;
-  margin-left: 16px;
+  margin-left: 36px;
 }
-
->>>>>>> 726f82c1fa3a2d8619483386abd11547e2ad1a0e
