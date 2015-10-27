@@ -107,7 +107,43 @@ $(document).ready(function () {
 
     //////// DIV3 /////////
 
+<<<<<<< HEAD
     $('#buses').hide();
+=======
+    // $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
+    // $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
+    // $("#drag3").draggable({ cursor: 'move', revert: 'invalid' });
+    // $("#drag4").draggable({ cursor: 'move', revert: 'invalid' });
+    // $("#drag5").draggable({ cursor: 'move', revert: 'invalid' });
+
+    // $(".balance-right-cup").droppable({
+    //         tolerance: "pointer",
+    //         accept: "#drag",
+    //         drop: function () {
+    //             try {
+    //                 alert('correct');
+    //                 // correct.play();
+    //             }
+    //             catch (err) {
+    //                 //no sound - log error
+    //             }
+    //             $("#drag").fadeOut(4000);
+    //             // $("#sleep p").css("text-decoration", "line-through");
+    //             // correct_items.push(1);
+    //             // var path = "content/images/meter_";
+    //             // var file_ext = ".png";
+    //             // var image_src = path + correct_items.length + file_ext;
+
+    //             // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+    //             // if (correct_items.length === 8) {
+    //             //     //pop or redirect your game complete screen
+    //             //     setTimeout(function () {
+    //             //         $("#putcontenthere").load("action_items/ai9.html");
+    //             //     }, 2000);
+    //             // }
+    //         }
+    //     });
+>>>>>>> 9614036178f95cbdf6ec58cbde5e6c760675c9aa
 
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
@@ -127,7 +163,12 @@ $(document).ready(function () {
                     //no sound - log error
                 }
                 $("#head").hide();
+<<<<<<< HEAD
                 $('#buses').show();
+=======
+
+                $("#drag").css('width', '-=120px');
+>>>>>>> 9614036178f95cbdf6ec58cbde5e6c760675c9aa
 
                 // $("#drag").fadeOut(4000);
 
@@ -146,6 +187,7 @@ $(document).ready(function () {
                 // }
             }
         });
+>>>>>>> 150f52c59be91c0b27a09c68eeea50e44c52a830
 
     //////// DIV4 /////////
 
@@ -347,19 +389,18 @@ $(".droppable9").droppable({
 });
 
 
-/////////// slot machine code ////////////////
 $(function() {
 
     var msa = [
-            { name: " Use cloth towels <br/> instead of <br/> paper towels." },
+            { name: "Use cloth towels <br/> instead of <br/> paper towels." },
             { name: "Use real plates<br/>  instead of <br/> paper or plastic." },
             { name: "Offer to wash the dishes <br/>  at home to avoid <br/> paper and plastic." },
             { name: "Get a re-usable <br/> shopping bag." },
-            { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys.  " },
+            { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys." },
             { name: "Give away rather <br/>than throw away." },
-            { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." },
+            { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." }
         ],
-        $input = $('input'),
+        $input = $('.input'),
         random_index;
 
     //make list for slots recursively and call spin when complete
@@ -380,7 +421,7 @@ $(function() {
         } else {
             //slot list is complete
             //clear search field
-            $input.val('');
+            $input.html('');
             //attach list, show jslots, run animation
             $('#slot').html(list.join('')).parent().show().trigger('spin');
             return list;
@@ -390,7 +431,7 @@ $(function() {
     //before spinning, build out list to spin through and insert into the DOM
     function makeSlots(){
         //start with current value
-        var list = ['<li>'+$input.val()+'</li>'];
+        var list = ['<li>'+$input.html()+'</li>'];
 
         //call recursive list builder that won't spin slots until it's finished
         makeSlotList(list);
@@ -400,12 +441,12 @@ $(function() {
         number: 1,
         spinner : '.jSlots-wrapper',
         spinEvent: 'spin',
-        time: 300,
-        loops: 1,
+        time: 5500,
+        loops: 25,
         endNum: 2,//spins backwards through the list. endNum 1 ends on the same value we started on
         onEnd: function(finalElement){
             //set result
-            $input.val(msa[random_index].name);
+            $input.html(msa[random_index].name);
             //hide spinner
             $(this.spinner).hide();
         }
@@ -414,3 +455,7 @@ $(function() {
     //bind random button
     $('#random_location').on('click', makeSlots);
 });
+
+
+
+

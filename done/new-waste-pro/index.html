@@ -13,13 +13,15 @@
         <script src="javascript/thirdparties/bootstrap.js"></script>
         <script src="javascript/thirdparties/respond.js"></script>
         <script src="javascript/thirdparties/jquery-ui.js"></script>
-        <script src="javascript/thirdparties/jquery.jSlots.js"></script>
 
         <!-- Platform JS Scripts
         <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
         -->
         <!-- Interal JS Scripts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
         <script type="text/javascript" src="javascript/main.js"></script>
+        <script src="javascript/thirdparties/jquery.jSlots.js"></script>
     </head>
 
 <body>
@@ -250,8 +252,20 @@
 <!--//////////////////////////////////////////////////-->
                 <div id="div7"class="screen-seven replace">
                     <img src="content/images/headers/header_solution.png" style="width:557px; margin-left:38px; position:absolute; margin-top:90px; z-index:2;">
-                    <div class="slot-machine">
-                        <div class=""></div>
+                    <div id="slot_wrapper">
+
+                            <div type="text" class="search input slot-text"></div>
+                            <ul id="slot">
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                                <li>&nbsp;</li>
+                            </ul>
+
+                        <div class ="spin" id="random_location"></div>
                     </div>
                 </div>
 <!--//////////////////////////////////////////////////-->

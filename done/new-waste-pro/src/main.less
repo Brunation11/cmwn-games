@@ -752,9 +752,9 @@ transform:         rotate(0deg); /* CSS3 */
 
 
 
+/*--------- slide 7 ------------------*/
 
-
-.slot-machine {
+#slot_wrapper {
     width: 567px;
     height: 323px;
     background-image: url("../content/images/slot_machine_frame.png");
@@ -762,4 +762,62 @@ transform:         rotate(0deg); /* CSS3 */
     background-size: 100%;
     margin-top: 164px;
     margin-left: 36px;
+}
+
+li, ul { padding: 0; margin:0; }
+.input {
+    margin: 86px 0;
+    margin-left: 108px;
+    position: absolute;
+    font-family: 'Source Sans Pro';
+    font-size: 25px;
+    padding: 55px 4px 4px;
+    height: 167px;
+    width: 350px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 28px;
+}
+#slot li {
+    font-family: 'Source Sans Pro';
+    font-size: 25px;
+    padding: 6px 4px 6px 6px;
+    line-height: normal;
+    height: 167px;
+    overflow: hidden;
+}
+#slot_wrapper {
+    position: relative;
+}
+.jSlots-wrapper {
+    margin: 87px 108px;
+    overflow: hidden; /* to hide the magic */
+    height: 167px; /* whatever the height of your list items are */
+    width: 350px;
+    position: absolute;
+    top: 0px;
+    display: none;
+    text-align: center;
+    font-weight: 900;
+    line-height: 28px;
+}
+#slot {
+    display: none;
+}
+
+/* ----- spin button ----- */
+.spin {
+    width:93px;
+    height:49px;
+    background-image: url("../content/images/buttons/btn_spin.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor:pointer;
+    margin-top: 274px;
+    margin-left: 239px;
+    position: absolute;
+}
+
+.spin:hover {
+    background-image: url("../content/images/buttons/btn_spin_on.png");
 }
