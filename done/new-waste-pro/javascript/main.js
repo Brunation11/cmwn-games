@@ -107,6 +107,8 @@ $(document).ready(function () {
 
     //////// DIV3 /////////
 
+    $('#buses').hide();
+
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag3").draggable({ cursor: 'move', revert: 'invalid' });
@@ -125,8 +127,7 @@ $(document).ready(function () {
                     //no sound - log error
                 }
                 $("#head").hide();
-                
-                $("#drag").css('width', '-=120px');
+                $('#buses').show();
 
                 // $("#drag").fadeOut(4000);
 
