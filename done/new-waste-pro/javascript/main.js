@@ -33,8 +33,11 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
-    if (currentSlide == 7) {
-
+    if (currentSlide == 6) {
+			$(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
 
     }
 
@@ -108,15 +111,16 @@ $(document).ready(function () {
 
     $(".balance-right-cup").droppable({
             tolerance: "pointer",
-            accept: ".drag",
+            accept: "#drag",
             drop: function () {
                 try {
+                    alert('correct');
                     // correct.play();
                 }
                 catch (err) {
                     //no sound - log error
                 }
-                $(".drag").fadeOut(4000);
+                $("#drag").fadeOut(4000);
                 // $("#sleep p").css("text-decoration", "line-through");
                 // correct_items.push(1);
                 // var path = "content/images/meter_";
@@ -193,9 +197,18 @@ $('.pollution').click(function(){
 
 });
 
-
-
     //////// DIV6 /////////
+
+$('.orange').click(function (){
+    $(".orange-text").fadeIn(500);
+    $(".methane-gas-text").hide();
+    $(".contamination-text").hide();
+    $(".pollution-text").hide();
+});
+
+
+
+
 
 
     //////// DIV7 /////////
