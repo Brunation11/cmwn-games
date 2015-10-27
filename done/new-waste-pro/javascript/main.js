@@ -33,6 +33,11 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
+    if (currentSlide == 7) {
+
+
+    }
+
     if (currentSlide == 4) {
             $(".leachate-text").hide();
             $(".methane-gas-text").hide();
@@ -66,6 +71,8 @@ game.loadScreen(1);
 
 
 $(document).ready(function () {
+
+    $(".bkg-image2").hide();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
@@ -185,6 +192,13 @@ $('.pollution').click(function(){
     $(".contamination-text").hide();
 
 });
+
+
+
+    //////// DIV6 /////////
+
+
+    //////// DIV7 /////////
 
 
 });
