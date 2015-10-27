@@ -111,15 +111,16 @@ $(document).ready(function () {
 
     $(".balance-right-cup").droppable({
             tolerance: "pointer",
-            accept: ".drag",
+            accept: "#drag",
             drop: function () {
                 try {
+                    alert('correct');
                     // correct.play();
                 }
                 catch (err) {
                     //no sound - log error
                 }
-                $(".drag").fadeOut(4000);
+                $("#drag").fadeOut(4000);
                 // $("#sleep p").css("text-decoration", "line-through");
                 // correct_items.push(1);
                 // var path = "content/images/meter_";
