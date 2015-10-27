@@ -7500,12 +7500,14 @@ input[type="checkbox"].input-validation-error {
 #div1,
 #div2,
 #div3,
-#div4 {
+#div4,
+#div5 {
   position: absolute;
 }
 #div2,
 #div3,
-#div4 {
+#div4,
+#div5 {
   display: none;
 }
 .card {
@@ -7785,3 +7787,20 @@ _:-ms-fullscreen,
   line-height: 28px;
 }
 /*---------- end slide 4 -----------*/
+/*---------- slide 5 -----------------*/
+.nav-2 {
+  width: 230px;
+  height: 281px;
+  margin-left: 390px;
+  margin-top: 150px;
+  padding-left: 14px;
+}
+.nav-2 .recycling,
+.composting,
+.landfill,
+.incineration {
+  width: 180px;
+  height: 67px;
+  margin-top: 3px;
+  cursor: pointer;
+}
