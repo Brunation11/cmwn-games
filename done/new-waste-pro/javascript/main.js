@@ -33,6 +33,12 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
+    if (currentSlide == 7) {
+        $(".bkg-image").hide();
+    $(".bkg-image2").show();
+
+    }
+
     if (currentSlide == 4) {
 
     }
@@ -62,6 +68,8 @@ game.loadScreen(1);
 
 
 $(document).ready(function () {
+
+    $(".bkg-image2").hide();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
@@ -159,6 +167,7 @@ $('.incineration').click(function(){
 
 
     //////// DIV7 /////////
+
 
 
 });
