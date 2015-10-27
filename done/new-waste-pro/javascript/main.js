@@ -33,8 +33,11 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
-    if (currentSlide == 7) {
-
+    if (currentSlide == 6) {
+			$(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
 
     }
 
@@ -194,9 +197,18 @@ $('.pollution').click(function(){
 
 });
 
-
-
     //////// DIV6 /////////
+
+$('.orange').click(function (){
+    $(".orange-text").fadeIn(500);
+    $(".methane-gas-text").hide();
+    $(".contamination-text").hide();
+    $(".pollution-text").hide();
+});
+
+
+
+
 
 
     //////// DIV7 /////////
