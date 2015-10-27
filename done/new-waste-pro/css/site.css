@@ -8032,9 +8032,85 @@ _:-ms-fullscreen,
   font-size: 22px;
   line-height: 28px;
 }
+.droppable {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable2 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable3 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable4 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable5 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable6 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable7 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable8 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
+.droppable9 {
+  height: 154px;
+  width: 218px;
+  z-index: 15;
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 179px;
+}
 /*---------- end slide 6 -----------*/
+<<<<<<< HEAD
 /*--------- slide 7 ------------------*/
 #slot_wrapper {
+=======
+.slot-machine {
+>>>>>>> 150f52c59be91c0b27a09c68eeea50e44c52a830
   width: 567px;
   height: 323px;
   background-image: url("../content/images/slot_machine_frame.png");
@@ -8042,6 +8118,7 @@ _:-ms-fullscreen,
   background-size: 100%;
   margin-top: 164px;
   margin-left: 36px;
+<<<<<<< HEAD
 }
 li,
 ul {
@@ -8103,4 +8180,6 @@ ul {
 }
 .spin:hover {
   background-image: url("../content/images/buttons/btn_spin_on.png");
+=======
+>>>>>>> 150f52c59be91c0b27a09c68eeea50e44c52a830
 }

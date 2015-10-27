@@ -1,4 +1,5 @@
 
+
 var game = {
     currentSlide: 1,
     loadScreen : function(slide) {
@@ -71,9 +72,12 @@ game.loadScreenCallback = function (currentSlide) {
 
 game.loadScreen(1);
 
-
+var full;
+var correct_items_trash = new Array();
 
 $(document).ready(function () {
+
+
 
     $(".bkg-image2").hide();
 
@@ -137,6 +141,46 @@ $(document).ready(function () {
     //         }
     //     });
 
+    $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag3").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag4").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#drag5").draggable({ cursor: 'move', revert: 'invalid' });
+
+    $("#droppable1").droppable({
+            tolerance: "pointer",
+            accept: "#drag",
+            drop: function () {
+                try {
+                    alert('wrong');
+                    // correct.play();
+                }
+                catch (err) {
+                    //no sound - log error
+                }
+                $("#head").hide();
+
+                $("#drag").css('width', '-=120px');
+
+                // $("#drag").fadeOut(4000);
+
+                // $("#sleep p").css("text-decoration", "line-through");
+                // correct_items.push(1);
+                // var path = "content/images/meter_";
+                // var file_ext = ".png";
+                // var image_src = path + correct_items.length + file_ext;
+
+                // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
+                // if (correct_items.length === 8) {
+                //     //pop or redirect your game complete screen
+                //     setTimeout(function () {
+                //         $("#putcontenthere").load("action_items/ai9.html");
+                //     }, 2000);
+                // }
+            }
+        });
+>>>>>>> 150f52c59be91c0b27a09c68eeea50e44c52a830
+
     //////// DIV4 /////////
 
 $('.recycling').click(function (){
@@ -199,19 +243,139 @@ $('.pollution').click(function(){
 
     //////// DIV6 /////////
 
-$('.orange').click(function (){
-    $(".orange-text").fadeIn(500);
-    $(".methane-gas-text").hide();
-    $(".contamination-text").hide();
-    $(".pollution-text").hide();
-});
+// $('.orange').click(function (){
+//     $(".orange-text").fadeIn(500);
+//     $(".methane-gas-text").hide();
+//     $(".contamination-text").hide();
+//     $(".pollution-text").hide();
+// });
+$("#item").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item2").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item3").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item4").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item5").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item6").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item7").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item8").draggable({ cursor: 'move', revert: 'invalid' });
+$("#item9").draggable({ cursor: 'move', revert: 'invalid' });
+ $(".droppable").droppable({
+            tolerance: "pointer",
+            accept: "#item",
+            drop: function () {
+                $("#item").css('opacity','0');
+                correct_items_trash.push(1);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+
+ $(".droppable2").droppable({
+            tolerance: "pointer",
+            accept: "#item2",
+            drop: function () {
+                $("#item2").css('opacity','0');
+                correct_items_trash.push(2);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+
+ $(".droppable3").droppable({
+            tolerance: "pointer",
+            accept: "#item3",
+            drop: function () {
+                $("#item3").css('opacity','0');
+                correct_items_trash.push(3);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+ $(".droppable4").droppable({
+            tolerance: "pointer",
+            accept: "#item4",
+            drop: function () {
+                $("#item4").css('opacity','0');
+                correct_items_trash.push(4);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+$(".droppable5").droppable({
+            tolerance: "pointer",
+            accept: "#item5",
+            drop: function () {
+                $("#item5").css('opacity','0');
+                correct_items_trash.push(5);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+$(".droppable6").droppable({
+            tolerance: "pointer",
+            accept: "#item6",
+            drop: function () {
+                $("#item6").css('opacity','0');
+                correct_items_trash.push(6);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+
+$(".droppable7").droppable({
+            tolerance: "pointer",
+            accept: "#item7",
+            drop: function () {
+                $("#item7").css('opacity','0');
+                correct_items_trash.push(7);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+$(".droppable8").droppable({
+            tolerance: "pointer",
+            accept: "#item8",
+            drop: function () {
+                $("#item8").css('opacity','0');
+                correct_items_trash.push(8);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+$(".droppable9").droppable({
+            tolerance: "pointer",
+            accept: "#item9",
+            drop: function () {
+                $("#item9").css('opacity','0');
+                correct_items_trash.push(9);
+                if (correct_items_trash.length === 9) {
+                    //pop or redirect your game complete screen
+                    // alert('hi');
+                }
+            }
+        });
+
+//////// DIV7 /////////
 
 
 
 
 
-
-    //////// DIV7 /////////
 
 
 });
