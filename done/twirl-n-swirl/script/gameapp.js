@@ -134,7 +134,7 @@ moduleGame.controller('stepController', function ($scope, $http, $sce, $window, 
          'name': "Preacsrpition_Medication",
          'mainImageUrl': content_path + "/content/_assets/elements/Non Flushables/item_13.png",
          'mainHeader': content_path + "/content/_assets/elements/headers/header_13.png",
-         'text': "This is a BIG NO!<br/> Medications are not removed in the <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for animals and people.",
+         'text': "This is a BIG NO!<br/> Medications are not removed in <br/> treatment plants and contaminate<br/> water supplies. They are very <br/> bad for animals and people.",
          'sound' : 'pres',
      },
       {
