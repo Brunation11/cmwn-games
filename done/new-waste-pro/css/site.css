@@ -7895,3 +7895,12 @@ _:-ms-fullscreen,
   font-size: 22px;
   line-height: 28px;
 }
+.slot-machine {
+  width: 567px;
+  height: 323px;
+  background-image: url("../content/images/slot_machine_frame.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-top: 164px;
+  margin-left: 36px;
+}

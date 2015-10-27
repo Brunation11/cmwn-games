@@ -202,3 +202,72 @@ $('.pollution').click(function(){
 
 
 });
+
+
+/////////// slot machine code ////////////////
+$(function() {
+
+    var msa = [
+            { name: " Use cloth towels <br/> instead of <br/> paper towels." },
+            { name: "Use real plates<br/>  instead of <br/> paper or plastic." },
+            { name: "Offer to wash the dishes <br/>  at home to avoid <br/> paper and plastic." },
+            { name: "Get a re-usable <br/> shopping bag." },
+            { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys.  " },
+            { name: "Give away rather <br/>than throw away." },
+            { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." },
+        ],
+        $input = $('input'),
+        random_index;
+
+    //make list for slots recursively and call spin when complete
+    function makeSlotList(list){
+        //could choose one random index and then populate with next 18 values instead, but need to account for looping at end
+        if(list.length<20){//length chosen based on appearance of spin, can be changed
+            var index = _.random(msa.length-1);
+            if(list.length===1){
+                /*
+                    This index will be second item in the list, which is our winning number
+                    Save this for future reference
+                    Instead of saving it, we could get the index attribute from the list item we end on
+                */
+                random_index = index;
+            }
+            list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
+            return makeSlotList(list);
+        } else {
+            //slot list is complete
+            //clear search field
+            $input.val('');
+            //attach list, show jslots, run animation
+            $('#slot').html(list.join('')).parent().show().trigger('spin');
+            return list;
+        }
+    }
+
+    //before spinning, build out list to spin through and insert into the DOM
+    function makeSlots(){
+        //start with current value
+        var list = ['<li>'+$input.val()+'</li>'];
+
+        //call recursive list builder that won't spin slots until it's finished
+        makeSlotList(list);
+    }
+
+    $('#slot').jSlots({
+        number: 1,
+        spinner : '.jSlots-wrapper',
+        spinEvent: 'spin',
+        time: 300,
+        loops: 1,
+        endNum: 2,//spins backwards through the list. endNum 1 ends on the same value we started on
+        onEnd: function(finalElement){
+            //set result
+            $input.val(msa[random_index].name);
+            //hide spinner
+            $(this.spinner).hide();
+        }
+    });
+
+    //bind random button
+    $('#random_location').on('click', makeSlots);
+});
