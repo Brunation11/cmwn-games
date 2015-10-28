@@ -322,6 +322,29 @@ $(document).ready(function () {
         }
     });
 
+    $("#drop5").droppable({
+        tolerance: "pointer",
+        accept: "#drag5",
+        drop: function () {
+            try {
+                alert('wrong');
+                // correct.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $("#head").fadeOut();
+            $('#cats').fadeIn();
+
+            $('#n5').fadeIn().click(function() {
+                $('#n5').fadeOut();
+                $("#head").fadeIn();
+                $('#cats').hide();
+                $("#drag5").fadeOut();
+            });
+        }
+    });
+
     //////// DIV4 /////////
 
 $('.recycling').click(function (){
