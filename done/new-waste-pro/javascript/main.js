@@ -128,12 +128,7 @@ $(document).ready(function () {
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-<<<<<<< HEAD
-        $('.next').hide();
-=======
-        $('.next').show();
         cont.load();
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
         cont.play();
     });
 
@@ -183,18 +178,10 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag",
         drop: function () {
-<<<<<<< HEAD
-            try {
-<<<<<<< HEAD
 
-=======
+            try {
                 slide.play();
-                wrong.play();
-=======
-            try {  
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
-                // correct.play();
->>>>>>> 5a59765fffb61fce54339debde4114b0819829d6
+                wrong.play();  
             }
             catch (err) {
                 //no sound - log error
@@ -216,18 +203,10 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag2",
         drop: function () {
-<<<<<<< HEAD
-            try {
-<<<<<<< HEAD
 
-=======
+            try {
                 slide.play();
                 right.play();
-=======
-            try { 
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
-                // correct.play();
->>>>>>> 5a59765fffb61fce54339debde4114b0819829d6
             }
             catch (err) {
                 //no sound - log error
@@ -286,13 +265,8 @@ $(document).ready(function () {
         accept: "#drag3",
         drop: function () {
             try {
-<<<<<<< HEAD
-
-                // correct.play();
-=======
                 slide.play();
                 right.play();
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
             }
             catch (err) {
                 //no sound - log error
@@ -351,13 +325,8 @@ $(document).ready(function () {
         accept: "#drag4",
         drop: function () {
             try {
-<<<<<<< HEAD
-
-                // correct.play();
-=======
                 slide.play();
                 right.play();
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
             }
             catch (err) {
                 //no sound - log error
@@ -416,13 +385,8 @@ $(document).ready(function () {
         accept: "#drag5",
         drop: function () {
             try {
-<<<<<<< HEAD
-
-                // correct.play();
-=======
-                slide.play();
+            	slide.play();
                 wrong.play();
->>>>>>> 1e9fabb69f2b4eb6384a46395ec01fdecf3961ab
             }
             catch (err) {
                 //no sound - log error
