@@ -8,7 +8,7 @@ background.volume = "0.3";
 clock.volume = "0.3";
 ///////////////////////// When document loads, this function gives a random oreder of items ///////////////////////////////////////////////
     $("div.carousel-inner div").sort(function(){
-        return Math.random()*10 > 5 ? 1 : -1;
+        return Math.random()*40 > 1 ? 1 : -1;
     }).each(function(){
         var $t = $(this),
             color = $t.attr("class");
@@ -81,8 +81,8 @@ clock.volume = "0.3";
     $('.loose').hide();
 
     ////////////////////// End of random functions /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $(".hit").click(function(){
-         if($('#apple-core').is(':visible')) {
+
+        if($('#apple-core').is(':visible')) {
             object1.play();
        } else {
             object1.pause();
@@ -262,7 +262,7 @@ clock.volume = "0.3";
        } else {
             object36.pause();
        }
-    });
+
     // All items click
     $(".hit").dblclick(function (event) {
 

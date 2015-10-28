@@ -1,7 +1,7 @@
 $(document).ready(function () {
     tittle.load();
     tittle.play();
-    Background.volume = '.7';
+    Background.volume = '.4';
 //Background.play();
 
     //Quit game
@@ -64,10 +64,6 @@ $(document).ready(function () {
         $('#game-info2').modal('show');
         slide1.load();
         slide1.play();
-        setTimeout(function(){
-            slide1b.load();
-            slide1b.play();
-        },4000);
     });
 
     $('#next-button3').click(function () {
