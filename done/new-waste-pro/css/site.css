@@ -8600,7 +8600,55 @@ ul {
   background-repeat: no-repeat;
 }
 /*------- end div 9 ---------*/
-.icommit {
+.icommit1 {
   position: absolute;
   z-index: 2;
+  font-size: 40px;
+  font-family: source sans pro;
+  font-weight: 900;
+  margin-left: 232px;
+  margin-top: 99px;
+  width: 203px;
+}
+.icommit2 {
+  position: absolute;
+  z-index: 2;
+  font-size: 40px;
+  font-family: source sans pro;
+  font-weight: 900;
+  margin-left: 41px;
+  margin-top: 141px;
+  width: 130px;
+}
+.icommit3 {
+  position: absolute;
+  z-index: 2;
+  font-size: 40px;
+  font-family: source sans pro;
+  font-weight: 900;
+  margin-top: 141px;
+  margin-left: 475px;
+  width: 136px;
+}
+.icommit4 {
+  position: absolute;
+  z-index: 2;
+  font-size: 40px;
+  font-family: source sans pro;
+  font-weight: 900;
+  margin-top: 190px;
+  margin-left: 179px;
+  width: 325px;
+}
+.earned {
+  position: absolute;
+  z-index: 2;
+  font-size: 24px;
+  font-family: source sans pro;
+  font-weight: 600;
+  margin-top: 156px;
+  margin-left: 68px;
+  width: 515px;
+  text-align: center;
+  line-height: 28px;
 }
