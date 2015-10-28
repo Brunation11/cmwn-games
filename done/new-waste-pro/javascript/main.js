@@ -35,7 +35,7 @@ var game = {
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 11) {
-    	$('.next').hide();
+    	$('.next').show();
     }
     if (currentSlide == 10) {
 
@@ -43,8 +43,8 @@ game.loadScreenCallback = function (currentSlide) {
 
     if (currentSlide == 8) {
             setTimeout(function(){
-                $('.next').fadeIn(2000);
-            },5500);
+                $('.next').fadeIn(500);
+            },2000);
     }
 
     if (currentSlide == 4) {
@@ -81,7 +81,8 @@ var full;
 var correct_items_trash = new Array();
 var balance = new Array(); ///// feed variable with selected_one variable /////
 var four_btns = new Array(); ///// feed variable with green_btns variable ////
-var spin = new Array();
+var spin = new Array();//// feed variable spin with spin_btn ////
+var pledge = new Array();
 $(document).ready(function () {
 
     var bgMusic = $("#background")[0],
@@ -100,6 +101,7 @@ $(document).ready(function () {
     var selected_one = $(".toNext");
     var green_btns = $(".nexdiv");
     var spin_btn = $('.spin');
+    var pledge_btn = $('.pledge');
     $('#play').click(function () {
         background.pause();
     });
@@ -139,6 +141,17 @@ $(document).ready(function () {
 
         }
     });
+
+    // feed array to go to next screen //
+    $('.pledge').click(function() {
+        pledge.push(pledge_btn);
+
+        if (pledge.length == 4) {
+
+            $('.next').fadeIn(500);
+        }
+    });
+
 
     $('.next').on('click', function(){
         game.loadNextScreen();
