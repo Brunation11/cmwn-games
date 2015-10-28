@@ -76,17 +76,35 @@ var correct_items_trash = new Array();
 
 $(document).ready(function () {
 
+    var bgMusic = $("#background")[0],
+    playing = true;
 
+    bgMusic.addEventListener('ended', function () {
+        this.currentTime = 0;
+        if (playing) {
+            this.play();
+        }
+    }, false);
+    background.play();
+
+    $('#play').click(function () {
+        background.pause();
+    });
 
     $(".bkg-image2").hide();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
+
         $('.next').hide();
+
+        cont.play();
+
     });
 
     $('.prev').on('click', function(){
         game.loadPrevScreen();
+        cont.play();
     });
 
     $("#start-over").on('click', function() {
@@ -103,6 +121,7 @@ $(document).ready(function () {
     $('.card').click(function () {
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
+        cards.play();
     });
 
     //////// DIV3 /////////
