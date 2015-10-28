@@ -103,12 +103,13 @@ $(document).ready(function () {
 
         if (balance.length == 5) {
             game.loadNextScreen();
+
         }
     });
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').hide();
+        $('.next').show();
         cont.play();
     });
 
