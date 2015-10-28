@@ -103,6 +103,11 @@ $(document).ready(function () {
 
     //////// DIV3 /////////
 
+    $('#n1').hide();
+    $('#n2').hide();
+    $('#n3').hide();
+    $('#n4').hide();
+    $('#n5').hide();
     $('#buses').hide();
     $('#cars').hide();
 
@@ -123,13 +128,15 @@ $(document).ready(function () {
             catch (err) {
                 //no sound - log error
             }
-            $("#head").hide();
-            $('#buses').show();
+            $("#head").fadeOut();
+            $('#buses').fadeIn();
 
-
-            $("#drag").css('width', '-=120px');
-
-            // $("#drag").fadeOut(4000);
+            $('#n1').fadeIn().click(function() {
+                $('#n1').fadeOut();
+                $("#head").fadeIn();
+                $('#buses').fadeOut();
+                $("#drag").fadeOut();
+            });
         }
     });
         
@@ -166,8 +173,29 @@ $(document).ready(function () {
                  left: "230px"
              }, 600);
 
-            $("#head").hide();
-            $('#cars').show();
+            $("#head").fadeOut();
+            $('#cars').fadeIn();
+
+            $('#n2').fadeIn().click(function() {
+                $('#n2').fadeOut();
+                $("#head").fadeIn();
+                $('#cars').fadeOut();
+                $("#drag2").fadeOut();
+                $("#arm").animate({  borderSpacing: +0 }, {
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    },
+                    duration:'slow'
+                },'linear');
+                $("#lefty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+                $("#righty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+            });
         }
     });
 
