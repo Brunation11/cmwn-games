@@ -38,7 +38,7 @@ game.loadScreenCallback = function (currentSlide) {
     	$('.next').hide();
     }
     if (currentSlide == 10) {
-    	$('.next').show();
+
     }
 
     if (currentSlide == 4) {
@@ -46,14 +46,14 @@ game.loadScreenCallback = function (currentSlide) {
             $(".methane-gas-text").hide();
             $(".contamination-text").hide();
             $(".pollution-text").hide();
-            $('.next').show();
+
     }
     if (currentSlide == 3) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
             $(".landfill-text").hide();
             $(".incineration-text").hide();
-            $('.next').show();
+
     }
     if (currentSlide == 2) {
             $('.arrows').fadeIn(500);
@@ -76,16 +76,35 @@ var correct_items_trash = new Array();
 
 $(document).ready(function () {
 
+    var bgMusic = $("#background")[0],
+    playing = true;
 
+    bgMusic.addEventListener('ended', function () {
+        this.currentTime = 0;
+        if (playing) {
+            this.play();
+        }
+    }, false);
+    background.play();
+
+    $('#play').click(function () {
+        background.pause();
+    });
 
     $(".bkg-image2").hide();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
+
+        $('.next').hide();
+
+        cont.play();
+
     });
 
     $('.prev').on('click', function(){
         game.loadPrevScreen();
+        cont.play();
     });
 
     $("#start-over").on('click', function() {
@@ -102,6 +121,7 @@ $(document).ready(function () {
     $('.card').click(function () {
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
+        cards.play();
     });
 
     //////// DIV3 /////////
