@@ -41,6 +41,12 @@ game.loadScreenCallback = function (currentSlide) {
 
     }
 
+    if (currentSlide == 8) {
+            setTimeout(function(){
+                $('.next').fadeIn(2000);
+            },5500);
+    }
+
     if (currentSlide == 4) {
             $(".leachate-text").hide();
             $(".methane-gas-text").hide();
@@ -122,8 +128,16 @@ $(document).ready(function () {
         }
     });
 
+    // feed array to go to next screen //
     $('.spin').click(function() {
+        spin.push(spin_btn);
 
+        if (spin.length == 7) {
+            setTimeout(function(){
+                $('.next').fadeIn(500);
+            },5500);
+
+        }
     });
 
     $('.next').on('click', function(){
