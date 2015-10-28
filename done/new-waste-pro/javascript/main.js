@@ -42,33 +42,32 @@ game.loadScreenCallback = function (currentSlide) {
     }
 
     if (currentSlide == 8) {
-            setTimeout(function(){
-                $('.next').fadeIn(500);
-            },2000);
+        pledges.play();
+        setTimeout(function(){
+            $('.next').fadeIn(2000);
+        },5500);
     }
 
     if (currentSlide == 4) {
-            $(".leachate-text").hide();
-            $(".methane-gas-text").hide();
-            $(".contamination-text").hide();
-            $(".pollution-text").hide();
-
+        $(".leachate-text").hide();
+        $(".methane-gas-text").hide();
+        $(".contamination-text").hide();
+        $(".pollution-text").hide();
     }
     if (currentSlide == 3) {
-            $(".recycling-text").hide();
-            $(".composting-text").hide();
-            $(".landfill-text").hide();
-            $(".incineration-text").hide();
-
+        $(".recycling-text").hide();
+        $(".composting-text").hide();
+        $(".landfill-text").hide();
+        $(".incineration-text").hide();
     }
     if (currentSlide == 2) {
-            $('.arrows').fadeIn(500);
-            $('.next').hide();
-            $('.card').removeClass('flipped');
+        $('.arrows').fadeIn(500);
+        $('.next').hide();
+        $('.card').removeClass('flipped');
     }
     if (currentSlide == 1) {
-            $('#play, .next').fadeIn(500);
-            $('.arrows').fadeOut(100);
+        $('#play, .next').fadeIn(500);
+        $('.arrows').fadeOut(100);
     }
 
 }
@@ -132,11 +131,18 @@ $(document).ready(function () {
 
     // feed array to go to next screen //
     $('.spin').click(function() {
+        pull.play();
+        spins.play();
+        setTimeout(function () {
+            stops.play();
+        }, 3600);
+
         spin.push(spin_btn);
 
         if (spin.length == 7) {
             setTimeout(function(){
                 $('.next').fadeIn(500);
+                endslot.play();
             },5500);
 
         }
@@ -429,9 +435,9 @@ $(document).ready(function () {
             $('#n5').fadeIn().click(function() {
                 cont.play();
                 $('#n5').fadeOut();
-                $("#head").hide();
+                $("#head").fadeIn();
                 $('#cats').fadeOut();
-                $("#drag5").fadeOut();
+                $("#drag5").hide();
             });
         }
     });
@@ -763,15 +769,23 @@ $(".cancel-btn").click(function(){
     $("#plastic-bags").modal('hide');
 });
 $(".paper-towels").click(function(){
+    items.load();
+    items.play();
     $("#paper-towels").modal('show');
 });
 $(".plastic-bottles").click(function(){
+    items.load();
+    items.play();
     $("#plastic-bottles").modal('show');
 });
 $(".plastic-utensils").click(function(){
+    items.load();
+    items.play();
     $("#plastic-utensils").modal('show');
 });
 $(".plastic-bags").click(function(){
+    items.load();
+    items.play();
     $("#plastic-bags").modal('show');
 });
 
