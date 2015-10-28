@@ -115,6 +115,7 @@ $(document).ready(function () {
     $('#cars').hide();
     $('#elephants').hide();
     $('#hippos').hide();
+    $('#cats').hide();
 
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
@@ -139,8 +140,8 @@ $(document).ready(function () {
             $('#n1').fadeIn().click(function() {
                 $('#n1').fadeOut();
                 $("#head").fadeIn();
-                $('#buses').hide();
-                $("#drag").fadeOut();
+                $('#buses').fadeOut();
+                $("#drag").hide();
             });
         }
     });
@@ -184,8 +185,8 @@ $(document).ready(function () {
             $('#n2').fadeIn().click(function() {
                 $('#n2').fadeOut();
                 $("#head").fadeIn();
-                $('#cars').hide();
-                $("#drag2").fadeOut();
+                $('#cars').fadeOut();
+                $("#drag2").hide();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
                       $(this).css('transform','rotate('+now+'deg)');
@@ -243,8 +244,8 @@ $(document).ready(function () {
             $('#n3').fadeIn().click(function() {
                 $('#n3').fadeOut();
                 $("#head").fadeIn();
-                $('#elephants').hide();
-                $("#drag3").fadeOut();
+                $('#elephants').fadeOut();
+                $("#drag3").hide();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
                       $(this).css('transform','rotate('+now+'deg)');
@@ -302,8 +303,8 @@ $(document).ready(function () {
             $('#n4').fadeIn().click(function() {
                 $('#n4').fadeOut();
                 $("#head").fadeIn();
-                $('#hippos').hide();
-                $("#drag4").fadeOut();
+                $('#hippos').fadeOut();
+                $("#drag4").hide();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
                       $(this).css('transform','rotate('+now+'deg)');
@@ -318,6 +319,29 @@ $(document).ready(function () {
                     top: '0px',
                     left: "0px"
                 }, 600);
+            });
+        }
+    });
+
+    $("#drop5").droppable({
+        tolerance: "pointer",
+        accept: "#drag5",
+        drop: function () {
+            try {
+                alert('wrong');
+                // correct.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $("#head").fadeOut();
+            $('#cats').fadeIn();
+
+            $('#n5').fadeIn().click(function() {
+                $('#n5').fadeOut();
+                $("#head").hide();
+                $('#cats').fadeOut();
+                $("#drag5").fadeOut();
             });
         }
     });
