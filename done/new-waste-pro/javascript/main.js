@@ -73,7 +73,7 @@ game.loadScreen(1);
 
 var full;
 var correct_items_trash = new Array();
-
+var balance = new Array(); ///// feed variable with selected_one variable /////
 $(document).ready(function () {
 
     var bgMusic = $("#background")[0],
@@ -87,19 +87,29 @@ $(document).ready(function () {
     }, false);
     background.play();
 
+    //// once droped items are equal to 5, send me to next screen/////
+    /// balance variable ////
+    var selected_one = $(".toNext");
+
     $('#play').click(function () {
         background.pause();
     });
 
     $(".bkg-image2").hide();
 
+    /// balance conditional statement ////
+    $('.toNext').click(function() {
+        balance.push(selected_one);
+
+        if (balance.length == 5) {
+            game.loadNextScreen();
+        }
+    });
+
     $('.next').on('click', function(){
         game.loadNextScreen();
-
         $('.next').hide();
-
         cont.play();
-
     });
 
     $('.prev').on('click', function(){
