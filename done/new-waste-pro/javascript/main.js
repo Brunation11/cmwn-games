@@ -147,7 +147,7 @@ $(document).ready(function () {
             // }
         }
     });
-        
+
     $("#drop2").droppable({
         tolerance: "pointer",
         accept: "#drag2",
@@ -161,7 +161,7 @@ $(document).ready(function () {
             }
             $("#arm").animate({  borderSpacing: +18 }, {
                 step: function(now,fx) {
-                  $(this).css('transform','rotate('+now+'deg)');  
+                  $(this).css('transform','rotate('+now+'deg)');
                 },
                 duration:'slow'
             },'linear');
@@ -245,7 +245,7 @@ $("#item6").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item7").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item8").draggable({ cursor: 'move', revert: 'invalid' });
 $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
- 
+
 
  $(".droppable").droppable({
             tolerance: "pointer",
@@ -361,8 +361,13 @@ $(".droppable9").droppable({
             }
         });
 
-//////// DIV7 /////////
-
+//////// DIV9 /////////
+$(".cancel-btn").click(function(){
+    $("#paper-towels").modal('hide');
+});
+$(".paper-towels").click(function(){
+    $("#paper-towels").modal('show');
+});
 
 
 
@@ -371,7 +376,7 @@ $(".droppable9").droppable({
 
 });
 
-
+//////// DIV7 /////////
 $(function() {
 
     var msa = [
