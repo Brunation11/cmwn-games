@@ -152,6 +152,10 @@ $(document).ready(function () {
         }
     });
 
+    $('#plastic').click(function() {
+        game.loadNextScreen();
+    });
+
 
     $('.next').on('click', function(){
         game.loadNextScreen();
