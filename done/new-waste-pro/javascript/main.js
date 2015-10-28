@@ -48,7 +48,7 @@ game.loadScreenCallback = function (currentSlide) {
         },5500);
     }
     if (currentSlide == 5) {
-        // vo27.play();
+        vo27.play();
     }
     if (currentSlide == 4) {
         $(".leachate-text").hide();
