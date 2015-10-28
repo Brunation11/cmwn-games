@@ -47,7 +47,9 @@ game.loadScreenCallback = function (currentSlide) {
             $('.next').fadeIn(2000);
         },5500);
     }
-
+    if (currentSlide == 5) {
+        // vo27.play();
+    }
     if (currentSlide == 4) {
         $(".leachate-text").hide();
         $(".methane-gas-text").hide();
@@ -55,6 +57,7 @@ game.loadScreenCallback = function (currentSlide) {
         $(".pollution-text").hide();
     }
     if (currentSlide == 3) {
+        vo3.play();
         $(".recycling-text").hide();
         $(".composting-text").hide();
         $(".landfill-text").hide();
@@ -103,6 +106,7 @@ $(document).ready(function () {
     var pledge_btn = $('.pledge');
     $('#play').click(function () {
         background.pause();
+        vo1.play();
     });
 
     $(".bkg-image2").hide();
@@ -153,12 +157,12 @@ $(document).ready(function () {
         pledge.push(pledge_btn);
 
         if (pledge.length == 4) {
-
             $('.next').fadeIn(500);
         }
     });
 
     $('#plastic').click(function() {
+        flip.play();
         game.loadNextScreen();
     });
 
@@ -191,6 +195,7 @@ $(document).ready(function () {
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
         cards.play();
+        vo2.play();
     });
 
     //////// DIV3 /////////
@@ -220,6 +225,7 @@ $(document).ready(function () {
             try {
                 slide.play();
                 wrong.play();
+                vo6.play();
             }
             catch (err) {
                 //no sound - log error
@@ -245,6 +251,7 @@ $(document).ready(function () {
             try {
                 slide.play();
                 right.play();
+                vo4.play();
             }
             catch (err) {
                 //no sound - log error
@@ -305,6 +312,7 @@ $(document).ready(function () {
             try {
                 slide.play();
                 right.play();
+                vo5.play();
             }
             catch (err) {
                 //no sound - log error
@@ -365,6 +373,7 @@ $(document).ready(function () {
             try {
                 slide.play();
                 right.play();
+                vo8.play();
             }
             catch (err) {
                 //no sound - log error
@@ -425,6 +434,7 @@ $(document).ready(function () {
             try {
             	slide.play();
                 wrong.play();
+                vo7.play();
             }
             catch (err) {
                 //no sound - log error
@@ -447,6 +457,11 @@ $(document).ready(function () {
 $('.recycling').click(function (){
     on.load();
     on.play();
+    vo12.load();
+    vo12.play();
+    setTimeout(function () {
+        vo21.play();
+    }, 1500);
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
     $(".landfill-text").hide();
@@ -456,6 +471,8 @@ $('.recycling').click(function (){
 $('.composting').click(function(){
     on.load();
     on.play();
+    vo13.load();
+    vo13.play();
     $(".recycling-text").hide();
     $(".landfill-text").hide();
     $(".incineration-text").hide();
@@ -465,6 +482,11 @@ $('.composting').click(function(){
 $('.landfill').click(function(){
     on.load();
     on.play();
+    vo11.load();
+    vo11.play();
+    setTimeout(function () {
+        vo19.play();
+    }, 1500);
     $(".recycling-text").hide();
     $(".composting-text").hide();
     $(".incineration-text").hide();
@@ -474,6 +496,11 @@ $('.landfill').click(function(){
 $('.incineration').click(function(){
     on.load();
     on.play();
+    vo14.load();
+    vo14.play();
+    setTimeout(function () {
+        vo22a.play();
+    }, 1500);
     $(".recycling-text").hide();
     $(".composting-text").hide();
     $(".landfill-text").hide();
@@ -484,6 +511,9 @@ $('.incineration').click(function(){
 $('.leachate').click(function (){
     on.load();
     on.play();
+    setTimeout(function () {
+        vo25.play();
+    }, 1500);
     $(".leachate-text").fadeIn(500);
     $(".methane-gas-text").hide();
     $(".contamination-text").hide();
@@ -493,6 +523,11 @@ $('.leachate').click(function (){
 $('.methane-gas').click(function(){
     on.load();
     on.play();
+    vo18.load();
+    vo18.play();
+    setTimeout(function () {
+        vo26.play();
+    }, 1500);
     $(".contamination-text").hide();
     $(".leachate-text").hide();
     $(".pollution-text").hide();
@@ -502,6 +537,11 @@ $('.methane-gas').click(function(){
 $('.contamination').click(function(){
     on.load();
     on.play();
+    vo15.load();
+    vo15.play();
+    setTimeout(function () {
+        vo23.play();
+    }, 1500);
     $(".contamination-text").fadeIn(500);
     $(".leachate-text").hide();
     $(".pollution-text").hide();
@@ -511,6 +551,11 @@ $('.contamination').click(function(){
 $('.pollution').click(function(){
     on.load();
     on.play();
+    vo16.load();
+    vo16.play();
+    setTimeout(function () {
+        vo24.play();
+    }, 1500);
     $(".pollution-text").fadeIn(500);
     $(".methane-gas-text").hide();
     $(".leachate-text").hide();
