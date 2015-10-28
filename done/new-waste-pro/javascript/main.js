@@ -34,8 +34,11 @@ var game = {
 
 
 game.loadScreenCallback = function (currentSlide) {
-    if (currentSlide == 6) {
-
+    if (currentSlide == 11) {
+    	$('.next').hide();
+    }
+    if (currentSlide == 10) {
+    	$('.next').show();
     }
 
     if (currentSlide == 4) {
@@ -110,6 +113,8 @@ $(document).ready(function () {
     $('#n5').hide();
     $('#buses').hide();
     $('#cars').hide();
+    $('#elephants').hide();
+    $('#hippos').hide();
 
     $("#drag").draggable({ cursor: 'move', revert: 'invalid' });
     $("#drag2").draggable({ cursor: 'move', revert: 'invalid' });
@@ -134,7 +139,7 @@ $(document).ready(function () {
             $('#n1').fadeIn().click(function() {
                 $('#n1').fadeOut();
                 $("#head").fadeIn();
-                $('#buses').fadeOut();
+                $('#buses').hide();
                 $("#drag").fadeOut();
             });
         }
@@ -179,11 +184,129 @@ $(document).ready(function () {
             $('#n2').fadeIn().click(function() {
                 $('#n2').fadeOut();
                 $("#head").fadeIn();
-                $('#cars').fadeOut();
+                $('#cars').hide();
                 $("#drag2").fadeOut();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
                       $(this).css('transform','rotate('+now+'deg)');
+                    },
+                    duration:'slow'
+                },'linear');
+                $("#lefty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+                $("#righty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+            });
+        }
+    });
+
+    $("#drop3").droppable({
+        tolerance: "pointer",
+        accept: "#drag3",
+        drop: function () {
+            try {
+                alert('correct');
+                // correct.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $("#arm").animate({  borderSpacing: +18 }, {
+                step: function(now,fx) {
+                  $(this).css('transform','rotate('+now+'deg)');
+                },
+                duration:'slow'
+            },'linear');
+
+            $("#lefty").animate({
+                 top: '-45px',
+                 left: "-5px"
+             }, 600);
+
+            $("#righty").animate({
+                 top: '43px',
+                 left: "10px"
+             }, 600);
+
+            $('#drag3').animate({
+                 top: '-220px',
+                 left: "130px"
+             }, 600);
+
+            $("#head").fadeOut();
+            $('#elephants').fadeIn();
+
+            $('#n3').fadeIn().click(function() {
+                $('#n3').fadeOut();
+                $("#head").fadeIn();
+                $('#elephants').hide();
+                $("#drag3").fadeOut();
+                $("#arm").animate({  borderSpacing: +0 }, {
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    },
+                    duration:'slow'
+                },'linear');
+                $("#lefty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+                $("#righty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+            });
+        }
+    });
+
+    $("#drop4").droppable({
+        tolerance: "pointer",
+        accept: "#drag4",
+        drop: function () {
+            try {
+                alert('correct');
+                // correct.play();
+            }
+            catch (err) {
+                //no sound - log error
+            }
+            $("#arm").animate({  borderSpacing: +18 }, {
+                step: function(now,fx) {
+                  $(this).css('transform','rotate('+now+'deg)');
+                },
+                duration:'slow'
+            },'linear');
+
+            $("#lefty").animate({
+                 top: '-45px',
+                 left: "-5px"
+             }, 600);
+
+            $("#righty").animate({
+                 top: '43px',
+                 left: "10px"
+             }, 600);
+
+            $('#drag4').animate({
+                 top: '-220px',
+                 left: "30px"
+             }, 600);
+
+            $("#head").fadeOut();
+            $('#hippos').fadeIn();
+
+            $('#n4').fadeIn().click(function() {
+                $('#n4').fadeOut();
+                $("#head").fadeIn();
+                $('#hippos').hide();
+                $("#drag4").fadeOut();
+                $("#arm").animate({  borderSpacing: +0 }, {
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
                     },
                     duration:'slow'
                 },'linear');
