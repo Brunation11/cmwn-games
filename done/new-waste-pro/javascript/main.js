@@ -42,16 +42,10 @@ game.loadScreenCallback = function (currentSlide) {
     }
 
     if (currentSlide == 8) {
-<<<<<<< HEAD
         pledge.play();
         setTimeout(function(){
             $('.next').fadeIn(2000);
         },5500);
-=======
-            setTimeout(function(){
-                $('.next').fadeIn(500);
-            },2000);
->>>>>>> 4804d1afd1ad518f5926865430a5f255fd486743
     }
 
     if (currentSlide == 4) {
