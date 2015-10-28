@@ -159,7 +159,7 @@ $(document).ready(function () {
         accept: "#drag",
         drop: function () {
             try {
-                alert('wrong');
+               
                 // correct.play();
             }
             catch (err) {
@@ -182,7 +182,7 @@ $(document).ready(function () {
         accept: "#drag2",
         drop: function () {
             try {
-                alert('correct');
+                
                 // correct.play();
             }
             catch (err) {
@@ -241,7 +241,7 @@ $(document).ready(function () {
         accept: "#drag3",
         drop: function () {
             try {
-                alert('correct');
+                
                 // correct.play();
             }
             catch (err) {
@@ -300,7 +300,7 @@ $(document).ready(function () {
         accept: "#drag4",
         drop: function () {
             try {
-                alert('correct');
+                
                 // correct.play();
             }
             catch (err) {
@@ -359,7 +359,7 @@ $(document).ready(function () {
         accept: "#drag5",
         drop: function () {
             try {
-                alert('wrong');
+                
                 // correct.play();
             }
             catch (err) {
