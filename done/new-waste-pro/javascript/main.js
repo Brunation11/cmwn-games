@@ -153,12 +153,12 @@ $(document).ready(function () {
         pledge.push(pledge_btn);
 
         if (pledge.length == 4) {
-
             $('.next').fadeIn(500);
         }
     });
 
     $('#plastic').click(function() {
+        flip.play();
         game.loadNextScreen();
     });
 
