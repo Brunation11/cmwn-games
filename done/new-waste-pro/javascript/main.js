@@ -183,7 +183,7 @@ $(document).ready(function () {
                 $("#drag2").fadeOut();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
-                      $(this).css('transform','rotate('+now+'deg)');  
+                      $(this).css('transform','rotate('+now+'deg)');
                     },
                     duration:'slow'
                 },'linear');
@@ -478,9 +478,17 @@ $(".droppable9").droppable({
 //////// DIV9 /////////
 $(".cancel-btn").click(function(){
     $("#paper-towels").modal('hide');
+    $("#plastic-bottles").modal('hide');
+    $("#plastic-utensils").modal('hide');
 });
 $(".paper-towels").click(function(){
     $("#paper-towels").modal('show');
+});
+$(".plastic-bottles").click(function(){
+    $("#plastic-bottles").modal('show');
+});
+$(".plastic-utensils").click(function(){
+    $("#plastic-utensils").modal('show');
 });
 
 
