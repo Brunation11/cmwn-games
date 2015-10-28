@@ -157,8 +157,7 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag",
         drop: function () {
-            try {
-               
+            try {  
                 // correct.play();
             }
             catch (err) {
@@ -180,8 +179,7 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag2",
         drop: function () {
-            try {
-                
+            try { 
                 // correct.play();
             }
             catch (err) {
