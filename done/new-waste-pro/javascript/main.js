@@ -38,7 +38,7 @@ game.loadScreenCallback = function (currentSlide) {
     	$('.next').hide();
     }
     if (currentSlide == 10) {
-    	$('.next').show();
+
     }
 
     if (currentSlide == 4) {
@@ -46,14 +46,14 @@ game.loadScreenCallback = function (currentSlide) {
             $(".methane-gas-text").hide();
             $(".contamination-text").hide();
             $(".pollution-text").hide();
-            $('.next').show();
+
     }
     if (currentSlide == 3) {
             $(".recycling-text").hide();
             $(".composting-text").hide();
             $(".landfill-text").hide();
             $(".incineration-text").hide();
-            $('.next').show();
+
     }
     if (currentSlide == 2) {
             $('.arrows').fadeIn(500);
@@ -82,6 +82,7 @@ $(document).ready(function () {
 
     $('.next').on('click', function(){
         game.loadNextScreen();
+        $('.next').hide();
     });
 
     $('.prev').on('click', function(){
