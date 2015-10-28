@@ -42,33 +42,32 @@ game.loadScreenCallback = function (currentSlide) {
     }
 
     if (currentSlide == 8) {
-            setTimeout(function(){
-                $('.next').fadeIn(2000);
-            },5500);
+        pledge.play();
+        setTimeout(function(){
+            $('.next').fadeIn(2000);
+        },5500);
     }
 
     if (currentSlide == 4) {
-            $(".leachate-text").hide();
-            $(".methane-gas-text").hide();
-            $(".contamination-text").hide();
-            $(".pollution-text").hide();
-
+        $(".leachate-text").hide();
+        $(".methane-gas-text").hide();
+        $(".contamination-text").hide();
+        $(".pollution-text").hide();
     }
     if (currentSlide == 3) {
-            $(".recycling-text").hide();
-            $(".composting-text").hide();
-            $(".landfill-text").hide();
-            $(".incineration-text").hide();
-
+        $(".recycling-text").hide();
+        $(".composting-text").hide();
+        $(".landfill-text").hide();
+        $(".incineration-text").hide();
     }
     if (currentSlide == 2) {
-            $('.arrows').fadeIn(500);
-            $('.next').hide();
-            $('.card').removeClass('flipped');
+        $('.arrows').fadeIn(500);
+        $('.next').hide();
+        $('.card').removeClass('flipped');
     }
     if (currentSlide == 1) {
-            $('#play, .next').fadeIn(500);
-            $('.arrows').fadeOut(100);
+        $('#play, .next').fadeIn(500);
+        $('.arrows').fadeOut(100);
     }
 
 }
@@ -131,13 +130,17 @@ $(document).ready(function () {
     // feed array to go to next screen //
     $('.spin').click(function() {
         pull.play();
-        spin.play();
-        
+        spins.play();
+        setTimeout(function () {
+            stops.play();
+        }, 3600);
+
         spin.push(spin_btn);
 
         if (spin.length == 7) {
             setTimeout(function(){
                 $('.next').fadeIn(500);
+                endslot.play();
             },5500);
 
         }
@@ -749,15 +752,23 @@ $(".cancel-btn").click(function(){
     $("#plastic-bags").modal('hide');
 });
 $(".paper-towels").click(function(){
+    items.load();
+    items.play();
     $("#paper-towels").modal('show');
 });
 $(".plastic-bottles").click(function(){
+    items.load();
+    items.play();
     $("#plastic-bottles").modal('show');
 });
 $(".plastic-utensils").click(function(){
+    items.load();
+    items.play();
     $("#plastic-utensils").modal('show');
 });
 $(".plastic-bags").click(function(){
+    items.load();
+    items.play();
     $("#plastic-bags").modal('show');
 });
 
