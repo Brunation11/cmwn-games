@@ -128,6 +128,7 @@ $(document).ready(function () {
 
     $('.next').on('click', function(){
         game.loadNextScreen();
+        $('.next').hide();
         cont.load();
         cont.play();
     });
@@ -181,7 +182,7 @@ $(document).ready(function () {
 
             try {
                 slide.play();
-                wrong.play();  
+                wrong.play();
             }
             catch (err) {
                 //no sound - log error
