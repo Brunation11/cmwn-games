@@ -130,6 +130,9 @@ $(document).ready(function () {
 
     // feed array to go to next screen //
     $('.spin').click(function() {
+        pull.play();
+        spin.play();
+        
         spin.push(spin_btn);
 
         if (spin.length == 7) {
@@ -412,9 +415,9 @@ $(document).ready(function () {
             $('#n5').fadeIn().click(function() {
                 cont.play();
                 $('#n5').fadeOut();
-                $("#head").hide();
+                $("#head").fadeIn();
                 $('#cats').fadeOut();
-                $("#drag5").fadeOut();
+                $("#drag5").hide();
             });
         }
     });
