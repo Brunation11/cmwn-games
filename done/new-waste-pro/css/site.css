@@ -8004,8 +8004,9 @@ _:-ms-fullscreen,
 .shoe-text {
   color: #fff;
   position: absolute;
-  top: 262px;
-  left: 62px;
+  top: 295px;
+  width: 165px;
+  left: 74px;
   text-align: center;
   z-index: 2;
   font-family: 'Source Sans Pro';

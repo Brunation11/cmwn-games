@@ -129,22 +129,7 @@ $(document).ready(function () {
 
             $("#drag").css('width', '-=120px');
 
-
             // $("#drag").fadeOut(4000);
-
-            // $("#sleep p").css("text-decoration", "line-through");
-            // correct_items.push(1);
-            // var path = "content/images/meter_";
-            // var file_ext = ".png";
-            // var image_src = path + correct_items.length + file_ext;
-
-            // $("#meter").html("<img src=" + image_src + " class='img-responsive' alt='Responsive image'/>");
-            // if (correct_items.length === 8) {
-            //     //pop or redirect your game complete screen
-            //     setTimeout(function () {
-            //         $("#putcontenthere").load("action_items/ai9.html");
-            //     }, 2000);
-            // }
         }
     });
         
@@ -166,11 +151,23 @@ $(document).ready(function () {
                 duration:'slow'
             },'linear');
 
+            $("#lefty").animate({
+                 top: '-45px',
+                 left: "-5px"
+             }, 600);
+
+            $("#righty").animate({
+                 top: '43px',
+                 left: "10px"
+             }, 600);
+
+            $('#drag2').animate({
+                 top: '-220px',
+                 left: "230px"
+             }, 600);
+
             $("#head").hide();
             $('#cars').show();
-
-
-            $("#drag2").css('width', '-=120px');
         }
     });
 
