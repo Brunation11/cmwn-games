@@ -250,11 +250,21 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 $("#item").css('opacity','0');
                 $(".orange-text").fadeIn(500);
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(1);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
                 }
+
             }
         });
 
@@ -264,6 +274,15 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 $("#item2").css('opacity','0');
                 $(".shoe-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(2);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -277,6 +296,16 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             accept: "#item3",
             drop: function () {
                 $("#item3").css('opacity','0');
+                $(".can-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(3);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -289,6 +318,16 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             accept: "#item4",
             drop: function () {
                 $("#item4").css('opacity','0');
+                $(".shirt-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(4);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -301,6 +340,16 @@ $(".droppable5").droppable({
             accept: "#item5",
             drop: function () {
                 $("#item5").css('opacity','0');
+                $(".milk-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(5);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -313,6 +362,16 @@ $(".droppable6").droppable({
             accept: "#item6",
             drop: function () {
                 $("#item6").css('opacity','0');
+                $(".bottle-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(6);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -326,6 +385,16 @@ $(".droppable7").droppable({
             accept: "#item7",
             drop: function () {
                 $("#item7").css('opacity','0');
+                $(".battery-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".paper-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(7);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -338,6 +407,16 @@ $(".droppable8").droppable({
             accept: "#item8",
             drop: function () {
                 $("#item8").css('opacity','0');
+                $(".paper-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".foil-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(8);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
@@ -350,6 +429,16 @@ $(".droppable9").droppable({
             accept: "#item9",
             drop: function () {
                 $("#item9").css('opacity','0');
+                $(".foil-text").fadeIn(500);
+                $(".orange-text").hide();
+                $(".shoe-text").hide();
+                $(".can-text").hide();
+                $(".shirt-text").hide();
+                $(".milk-text").hide();
+                $(".bottle-text").hide();
+                $(".battery-text").hide();
+                $(".paper-text").hide();
+                $("#frame").show();
                 correct_items_trash.push(9);
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
