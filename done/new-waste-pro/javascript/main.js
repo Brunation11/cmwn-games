@@ -74,6 +74,8 @@ game.loadScreen(1);
 var full;
 var correct_items_trash = new Array();
 var balance = new Array(); ///// feed variable with selected_one variable /////
+var four_btns = new Array(); ///// feed variable with green_btns variable ////
+var spin = new Array();
 $(document).ready(function () {
 
     var bgMusic = $("#background")[0],
@@ -90,7 +92,8 @@ $(document).ready(function () {
     //// once droped items are equal to 5, send me to next screen/////
     /// balance variable ////
     var selected_one = $(".toNext");
-
+    var green_btns = $(".nexdiv");
+    var spin_btn = $('.spin');
     $('#play').click(function () {
         background.pause();
     });
@@ -107,9 +110,25 @@ $(document).ready(function () {
         }
     });
 
+    /// four buttons nav condition statement /////
+    $('.nexdiv').click(function() {
+        four_btns.push(green_btns);
+
+        if (four_btns.length == 4) {
+            $('.next').fadeIn(500);
+
+        } else if (four_btns.length == 8) {
+            $('.next').fadeIn(500);
+        }
+    });
+
+    $('.spin').click(function() {
+
+    });
+
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').show();
+        $('.next').hide();
         cont.play();
     });
 
@@ -159,7 +178,7 @@ $(document).ready(function () {
         accept: "#drag",
         drop: function () {
             try {
-               
+
                 // correct.play();
             }
             catch (err) {
@@ -182,7 +201,7 @@ $(document).ready(function () {
         accept: "#drag2",
         drop: function () {
             try {
-                
+
                 // correct.play();
             }
             catch (err) {
@@ -241,7 +260,7 @@ $(document).ready(function () {
         accept: "#drag3",
         drop: function () {
             try {
-                
+
                 // correct.play();
             }
             catch (err) {
@@ -300,7 +319,7 @@ $(document).ready(function () {
         accept: "#drag4",
         drop: function () {
             try {
-                
+
                 // correct.play();
             }
             catch (err) {
@@ -359,7 +378,7 @@ $(document).ready(function () {
         accept: "#drag5",
         drop: function () {
             try {
-                
+
                 // correct.play();
             }
             catch (err) {
@@ -469,6 +488,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
 
             }
@@ -493,6 +513,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -516,6 +537,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -538,6 +560,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -560,6 +583,7 @@ $(".droppable5").droppable({
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -582,6 +606,7 @@ $(".droppable6").droppable({
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -605,6 +630,7 @@ $(".droppable7").droppable({
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -627,6 +653,7 @@ $(".droppable8").droppable({
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
@@ -649,6 +676,7 @@ $(".droppable9").droppable({
                 if (correct_items_trash.length === 9) {
                     //pop or redirect your game complete screen
                     // alert('hi');
+                    $('.next').fadeIn(500);
                 }
             }
         });
