@@ -35,7 +35,7 @@ var game = {
 
 game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 11) {
-    	$('.next').show();
+    	$('.next').hide();
     }
     if (currentSlide == 10) {
 
