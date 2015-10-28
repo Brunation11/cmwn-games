@@ -247,7 +247,7 @@ $(document).ready(function () {
                 $("#drag3").fadeOut();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
-                      $(this).css('transform','rotate('+now+'deg)');  
+                      $(this).css('transform','rotate('+now+'deg)');
                     },
                     duration:'slow'
                 },'linear');
@@ -306,7 +306,7 @@ $(document).ready(function () {
                 $("#drag4").fadeOut();
                 $("#arm").animate({  borderSpacing: +0 }, {
                     step: function(now,fx) {
-                      $(this).css('transform','rotate('+now+'deg)');  
+                      $(this).css('transform','rotate('+now+'deg)');
                     },
                     duration:'slow'
                 },'linear');
@@ -603,6 +603,7 @@ $(".cancel-btn").click(function(){
     $("#paper-towels").modal('hide');
     $("#plastic-bottles").modal('hide');
     $("#plastic-utensils").modal('hide');
+    $("#plastic-bags").modal('hide');
 });
 $(".paper-towels").click(function(){
     $("#paper-towels").modal('show');
@@ -612,6 +613,9 @@ $(".plastic-bottles").click(function(){
 });
 $(".plastic-utensils").click(function(){
     $("#plastic-utensils").modal('show');
+});
+$(".plastic-bags").click(function(){
+    $("#plastic-bags").modal('show');
 });
 
 
