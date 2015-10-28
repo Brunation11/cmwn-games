@@ -110,11 +110,13 @@ $(document).ready(function () {
     $('.next').on('click', function(){
         game.loadNextScreen();
         $('.next').show();
+        cont.load();
         cont.play();
     });
 
     $('.prev').on('click', function(){
         game.loadPrevScreen();
+        cont.load();
         cont.play();
     });
 
@@ -159,8 +161,8 @@ $(document).ready(function () {
         accept: "#drag",
         drop: function () {
             try {
-               
-                // correct.play();
+                slide.play();
+                wrong.play();
             }
             catch (err) {
                 //no sound - log error
@@ -169,6 +171,7 @@ $(document).ready(function () {
             $('#buses').fadeIn();
 
             $('#n1').fadeIn().click(function() {
+                cont.play();
                 $('#n1').fadeOut();
                 $("#head").fadeIn();
                 $('#buses').fadeOut();
@@ -182,8 +185,8 @@ $(document).ready(function () {
         accept: "#drag2",
         drop: function () {
             try {
-                
-                // correct.play();
+                slide.play();
+                right.play();
             }
             catch (err) {
                 //no sound - log error
@@ -214,6 +217,7 @@ $(document).ready(function () {
             $('#cars').fadeIn();
 
             $('#n2').fadeIn().click(function() {
+                cont.play();
                 $('#n2').fadeOut();
                 $("#head").fadeIn();
                 $('#cars').fadeOut();
@@ -241,8 +245,8 @@ $(document).ready(function () {
         accept: "#drag3",
         drop: function () {
             try {
-                
-                // correct.play();
+                slide.play();
+                right.play();
             }
             catch (err) {
                 //no sound - log error
@@ -273,6 +277,7 @@ $(document).ready(function () {
             $('#elephants').fadeIn();
 
             $('#n3').fadeIn().click(function() {
+                cont.play();
                 $('#n3').fadeOut();
                 $("#head").fadeIn();
                 $('#elephants').fadeOut();
@@ -300,8 +305,8 @@ $(document).ready(function () {
         accept: "#drag4",
         drop: function () {
             try {
-                
-                // correct.play();
+                slide.play();
+                right.play();
             }
             catch (err) {
                 //no sound - log error
@@ -332,6 +337,7 @@ $(document).ready(function () {
             $('#hippos').fadeIn();
 
             $('#n4').fadeIn().click(function() {
+                cont.play();
                 $('#n4').fadeOut();
                 $("#head").fadeIn();
                 $('#hippos').fadeOut();
@@ -359,8 +365,8 @@ $(document).ready(function () {
         accept: "#drag5",
         drop: function () {
             try {
-                
-                // correct.play();
+                slide.play();
+                wrong.play();
             }
             catch (err) {
                 //no sound - log error
@@ -369,6 +375,7 @@ $(document).ready(function () {
             $('#cats').fadeIn();
 
             $('#n5').fadeIn().click(function() {
+                cont.play();
                 $('#n5').fadeOut();
                 $("#head").hide();
                 $('#cats').fadeOut();
@@ -380,6 +387,8 @@ $(document).ready(function () {
     //////// DIV4 /////////
 
 $('.recycling').click(function (){
+    on.load();
+    on.play();
     $(".recycling-text").fadeIn(500);
     $(".composting-text").hide();
     $(".landfill-text").hide();
@@ -387,6 +396,8 @@ $('.recycling').click(function (){
 });
 
 $('.composting').click(function(){
+    on.load();
+    on.play();
     $(".recycling-text").hide();
     $(".landfill-text").hide();
     $(".incineration-text").hide();
@@ -394,6 +405,8 @@ $('.composting').click(function(){
 });
 
 $('.landfill').click(function(){
+    on.load();
+    on.play();
     $(".recycling-text").hide();
     $(".composting-text").hide();
     $(".incineration-text").hide();
@@ -401,6 +414,8 @@ $('.landfill').click(function(){
 });
 
 $('.incineration').click(function(){
+    on.load();
+    on.play();
     $(".recycling-text").hide();
     $(".composting-text").hide();
     $(".landfill-text").hide();
@@ -409,6 +424,8 @@ $('.incineration').click(function(){
 
     ///////// DIV 5 ////////////
 $('.leachate').click(function (){
+    on.load();
+    on.play();
     $(".leachate-text").fadeIn(500);
     $(".methane-gas-text").hide();
     $(".contamination-text").hide();
@@ -416,6 +433,8 @@ $('.leachate').click(function (){
 });
 
 $('.methane-gas').click(function(){
+    on.load();
+    on.play();
     $(".contamination-text").hide();
     $(".leachate-text").hide();
     $(".pollution-text").hide();
@@ -423,6 +442,8 @@ $('.methane-gas').click(function(){
 });
 
 $('.contamination').click(function(){
+    on.load();
+    on.play();
     $(".contamination-text").fadeIn(500);
     $(".leachate-text").hide();
     $(".pollution-text").hide();
@@ -430,6 +451,8 @@ $('.contamination').click(function(){
 });
 
 $('.pollution').click(function(){
+    on.load();
+    on.play();
     $(".pollution-text").fadeIn(500);
     $(".methane-gas-text").hide();
     $(".leachate-text").hide();
@@ -454,6 +477,8 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             tolerance: "pointer",
             accept: "#item",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item").css('opacity','0');
                 $(".orange-text").fadeIn(500);
                 $(".shoe-text").hide();
@@ -478,6 +503,8 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             tolerance: "pointer",
             accept: "#item2",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item2").css('opacity','0');
                 $(".shoe-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -501,6 +528,8 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             tolerance: "pointer",
             accept: "#item3",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item3").css('opacity','0');
                 $(".can-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -523,6 +552,8 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             tolerance: "pointer",
             accept: "#item4",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item4").css('opacity','0');
                 $(".shirt-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -545,6 +576,8 @@ $(".droppable5").droppable({
             tolerance: "pointer",
             accept: "#item5",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item5").css('opacity','0');
                 $(".milk-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -567,6 +600,8 @@ $(".droppable6").droppable({
             tolerance: "pointer",
             accept: "#item6",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item6").css('opacity','0');
                 $(".bottle-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -590,6 +625,8 @@ $(".droppable7").droppable({
             tolerance: "pointer",
             accept: "#item7",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item7").css('opacity','0');
                 $(".battery-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -612,6 +649,8 @@ $(".droppable8").droppable({
             tolerance: "pointer",
             accept: "#item8",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item8").css('opacity','0');
                 $(".paper-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -634,6 +673,8 @@ $(".droppable9").droppable({
             tolerance: "pointer",
             accept: "#item9",
             drop: function () {
+                trash.load();
+                trash.play();
                 $("#item9").css('opacity','0');
                 $(".foil-text").fadeIn(500);
                 $(".orange-text").hide();
