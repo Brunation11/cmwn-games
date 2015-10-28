@@ -47,9 +47,6 @@ game.loadScreenCallback = function (currentSlide) {
             $('.next').fadeIn(2000);
         },5500);
     }
-    if (currentSlide == 5) {
-        vo27.play();
-    }
     if (currentSlide == 4) {
         $(".leachate-text").hide();
         $(".methane-gas-text").hide();
@@ -113,6 +110,7 @@ $(document).ready(function () {
 
     /// balance conditional statement ////
     $('.toNext').click(function() {
+
         balance.push(selected_one);
 
         if (balance.length == 5) {
@@ -224,12 +222,34 @@ $(document).ready(function () {
 
             try {
                 slide.play();
-                wrong.play();
+                right.play();
                 vo6.play();
             }
             catch (err) {
                 //no sound - log error
             }
+            $("#arm").animate({  borderSpacing: +18 }, {
+                step: function(now,fx) {
+                  $(this).css('transform','rotate('+now+'deg)');
+                },
+                duration:'slow'
+            },'linear');
+
+            $("#lefty").animate({
+                 top: '-45px',
+                 left: "-5px"
+             }, 600);
+
+            $("#righty").animate({
+                 top: '43px',
+                 left: "10px"
+             }, 600);
+
+            $('#drag').animate({
+                 top: '-220px',
+                 left: "315px"
+             }, 600);
+
             $("#head").fadeOut();
             $('#buses').fadeIn();
 
@@ -239,6 +259,20 @@ $(document).ready(function () {
                 $("#head").fadeIn();
                 $('#buses').fadeOut();
                 $("#drag").hide();
+                $("#arm").animate({  borderSpacing: +0 }, {
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');
+                    },
+                    duration:'slow'
+                },'linear');
+                $("#lefty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+                $("#righty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
             });
         }
     });
@@ -275,7 +309,7 @@ $(document).ready(function () {
 
             $('#drag2').animate({
                  top: '-220px',
-                 left: "230px"
+                 left: "225px"
              }, 600);
 
             $("#head").fadeOut();
@@ -336,7 +370,7 @@ $(document).ready(function () {
 
             $('#drag3').animate({
                  top: '-220px',
-                 left: "130px"
+                 left: "135px"
              }, 600);
 
             $("#head").fadeOut();
@@ -397,7 +431,7 @@ $(document).ready(function () {
 
             $('#drag4').animate({
                  top: '-220px',
-                 left: "30px"
+                 left: "45px"
              }, 600);
 
             $("#head").fadeOut();
@@ -433,12 +467,34 @@ $(document).ready(function () {
         drop: function () {
             try {
             	slide.play();
-                wrong.play();
+                right.play();
                 vo7.play();
             }
             catch (err) {
                 //no sound - log error
             }
+            $("#arm").animate({  borderSpacing: +18 }, {
+                step: function(now,fx) {
+                  $(this).css('transform','rotate('+now+'deg)');
+                },
+                duration:'slow'
+            },'linear');
+
+            $("#lefty").animate({
+                 top: '-45px',
+                 left: "-5px"
+             }, 600);
+
+            $("#righty").animate({
+                 top: '43px',
+                 left: "10px"
+             }, 600);
+
+            $('#drag5').animate({
+                 top: '-220px',
+                 left: "-45px"
+             }, 600);
+
             $("#head").fadeOut();
             $('#cats').fadeIn();
 
@@ -448,6 +504,20 @@ $(document).ready(function () {
                 $("#head").fadeIn();
                 $('#cats').fadeOut();
                 $("#drag5").hide();
+                $("#arm").animate({  borderSpacing: +0 }, {
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');
+                    },
+                    duration:'slow'
+                },'linear');
+                $("#lefty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
+                $("#righty").animate({
+                    top: '0px',
+                    left: "0px"
+                }, 600);
             });
         }
     });
