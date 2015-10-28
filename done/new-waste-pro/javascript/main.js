@@ -160,9 +160,14 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag",
         drop: function () {
+<<<<<<< HEAD
             try {
                 slide.play();
                 wrong.play();
+=======
+            try {  
+                // correct.play();
+>>>>>>> 5a59765fffb61fce54339debde4114b0819829d6
             }
             catch (err) {
                 //no sound - log error
@@ -184,9 +189,14 @@ $(document).ready(function () {
         tolerance: "pointer",
         accept: "#drag2",
         drop: function () {
+<<<<<<< HEAD
             try {
                 slide.play();
                 right.play();
+=======
+            try { 
+                // correct.play();
+>>>>>>> 5a59765fffb61fce54339debde4114b0819829d6
             }
             catch (err) {
                 //no sound - log error
