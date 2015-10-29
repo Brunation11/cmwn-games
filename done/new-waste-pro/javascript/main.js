@@ -62,10 +62,10 @@ game.loadScreenCallback = function (currentSlide) {
     }
     if (currentSlide == 3) {
         vo3.play();
-        $(".recycling-text").hide();
-        $(".composting-text").hide();
-        $(".landfill-text").hide();
-        $(".incineration-text").hide();
+        // $(".recycling-text").show();
+        // $(".composting-text").hide();
+        // $(".landfill-text").hide();
+        // $(".incineration-text").hide();
     }
     if (currentSlide == 2) {
         $('.arrows').fadeIn(500);
@@ -127,16 +127,21 @@ $(document).ready(function () {
     });
 
     /// four buttons nav condition statement /////
-    $('.nexdiv').click(function() {
-        four_btns.push(green_btns);
+    // $('.nexdiv').click(function() { /////////////// do not errase ///////////
+    //     four_btns.push(green_btns);
 
-        if (four_btns.length == 4) {
-            $('.next').fadeIn(500);
+    //     if (four_btns.length == 4) {
+    //         $('.next').fadeIn(500);
 
-        } else if (four_btns.length == 8) {
-            $('.next').fadeIn(500);
-        }
-    });
+    //     } else if (four_btns.length == 8) {
+    //         $('.next').fadeIn(500);
+    //     }
+    // });
+function randText() {
+var random = Math.floor(Math.random() * $('.quote').length);
+$('.quote').hide().eq(random).show();
+};
+randText();
 
     // feed array to go to next screen //
     $('.spin').click(function() {
@@ -540,10 +545,13 @@ $('.recycling').click(function (){
     setTimeout(function () {
         vo21.play();
     }, 1500);
-    $(".recycling-text").fadeIn(500);
-    $(".composting-text").hide();
-    $(".landfill-text").hide();
-    $(".incineration-text").hide();
+
+    // $(".recycling-text").fadeIn(500);
+    // $(".composting-text").hide();
+    // $(".landfill-text").hide();
+    // $(".incineration-text").hide();
+randText();
+
 });
 
 $('.composting').click(function(){
@@ -551,10 +559,12 @@ $('.composting').click(function(){
     on.play();
     vo13.load();
     vo13.play();
-    $(".recycling-text").hide();
-    $(".landfill-text").hide();
-    $(".incineration-text").hide();
-    $(".composting-text").fadeIn(500);
+    // $(".recycling-text").hide();
+    // $(".landfill-text").hide();
+    // $(".incineration-text").hide();
+    // $(".composting-text").fadeIn(500);
+randText();
+
 });
 
 $('.landfill').click(function(){
@@ -565,10 +575,12 @@ $('.landfill').click(function(){
     setTimeout(function () {
         vo19.play();
     }, 1500);
-    $(".recycling-text").hide();
-    $(".composting-text").hide();
-    $(".incineration-text").hide();
-    $(".landfill-text").fadeIn(500);
+    // $(".recycling-text").hide();
+    // $(".composting-text").hide();
+    // $(".incineration-text").hide();
+    // $(".landfill-text").fadeIn(500);
+randText();
+
 });
 
 $('.incineration').click(function(){
@@ -579,10 +591,12 @@ $('.incineration').click(function(){
     setTimeout(function () {
         vo22a.play();
     }, 1500);
-    $(".recycling-text").hide();
-    $(".composting-text").hide();
-    $(".landfill-text").hide();
-    $(".incineration-text").fadeIn(500);
+    // $(".recycling-text").hide();
+    // $(".composting-text").hide();
+    // $(".landfill-text").hide();
+    // $(".incineration-text").fadeIn(500);
+randText();
+
 });
 
     ///////// DIV 5 ////////////
@@ -994,7 +1008,3 @@ $(function() {
     //bind random button
     $('#random_location').on('click', makeSlots);
 });
-
-
-
-
