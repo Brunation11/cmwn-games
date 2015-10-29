@@ -38,14 +38,21 @@ game.loadScreenCallback = function (currentSlide) {
     	$('.next').hide();
     }
     if (currentSlide == 10) {
-
+        vo61.play();
     }
 
     if (currentSlide == 8) {
         pledges.play();
+        vo55.play();
         setTimeout(function(){
             $('.next').fadeIn(2000);
         },5500);
+    }
+    if (currentSlide == 7) {
+        vo46.play();
+    }
+    if (currentSlide == 6) {
+        vo27.play();
     }
     if (currentSlide == 4) {
         $(".leachate-text").hide();
@@ -160,6 +167,7 @@ $(document).ready(function () {
     });
 
     $('#plastic').click(function() {
+        vo62.play();
         flip.play();
         game.loadNextScreen();
     });
@@ -652,6 +660,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 trash.load();
                 trash.play();
+                vo43.play();
                 $("#item").css('opacity','0');
                 $(".orange-text").fadeIn(500);
                 $(".shoe-text").hide();
@@ -679,6 +688,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 trash.load();
                 trash.play();
+                vo32.play();
                 $("#item2").css('opacity','0');
                 $(".shoe-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -705,6 +715,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 trash.load();
                 trash.play();
+                vo37.play();
                 $("#item3").css('opacity','0');
                 $(".can-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -730,6 +741,7 @@ $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
             drop: function () {
                 trash.load();
                 trash.play();
+                vo28.play();
                 $("#item4").css('opacity','0');
                 $(".shirt-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -780,6 +792,7 @@ $(".droppable6").droppable({
             drop: function () {
                 trash.load();
                 trash.play();
+                vo34.play();
                 $("#item6").css('opacity','0');
                 $(".bottle-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -806,6 +819,7 @@ $(".droppable7").droppable({
             drop: function () {
                 trash.load();
                 trash.play();
+                vo45.play();
                 $("#item7").css('opacity','0');
                 $(".battery-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -831,6 +845,7 @@ $(".droppable8").droppable({
             drop: function () {
                 trash.load();
                 trash.play();
+                vo42.play();
                 $("#item8").css('opacity','0');
                 $(".paper-text").fadeIn(500);
                 $(".orange-text").hide();
@@ -856,6 +871,7 @@ $(".droppable9").droppable({
             drop: function () {
                 trash.load();
                 trash.play();
+                vo30.play();
                 $("#item9").css('opacity','0');
                 $(".foil-text").fadeIn(500);
                 $(".orange-text").hide();
