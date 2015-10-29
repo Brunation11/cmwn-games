@@ -180,7 +180,7 @@ randText();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').hide();
+        $('.next').show();
         cont.load();
         cont.play();
     });
