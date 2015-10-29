@@ -8604,6 +8604,46 @@ ul {
   background-size: 80%;
   background-repeat: no-repeat;
 }
+.paper-towels1 {
+  background: url("../content/images/buttons/btn_paper_towels.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.paper-towels1:hover {
+  background: url("../content/images/buttons/btn_paper_towels_on.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-bottles1 {
+  background: url("../content/images/buttons/btn_plastic_bottles.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-bottles1:hover {
+  background: url("../content/images/buttons/btn_plastic_bottles_on.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-utensils1 {
+  background: url("../content/images/buttons/btn_plastic_utensils.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-utensils1:hover {
+  background: url("../content/images/buttons/btn_plastic_utensils_on.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-bags1 {
+  background: url("../content/images/buttons/btn_plastic_bags.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.plastic-bags1:hover {
+  background: url("../content/images/buttons/btn_plastic_bags_on.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 /*------- end div 9 ---------*/
 .icommit1 {
   position: absolute;

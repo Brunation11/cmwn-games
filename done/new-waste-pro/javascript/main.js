@@ -183,7 +183,7 @@ randText();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').hide();
+        $('.next').show();
         cont.load();
         cont.play();
     });
@@ -938,6 +938,39 @@ $(".plastic-bags").click(function(){
 });
 
 
+//////// DIV10 /////////
+$(".paper-towels1").click(function(){
+    items.load();
+    items.play();
+    $("#plastic-bags1a img").hide();
+    $("#plastic-bottles1a img").hide();
+    $("#plastic-utensils1a img").hide();
+    $("#paper-towels1a img").show();
+});
+$(".plastic-bottles1").click(function(){
+    items.load();
+    items.play();
+    $("#plastic-bags1a img").hide();
+    $("#plastic-utensils1a img").hide();
+    $("#paper-towels1a img").hide();
+    $("#plastic-bottles1a img").show();
+});
+$(".plastic-utensils1").click(function(){
+    items.load();
+    items.play();
+    $("#paper-towels1a img").hide();
+    $("#plastic-bags1a img").hide();
+    $("#plastic-bottles1a img").hide();
+    $("#plastic-utensils1a img").show();
+});
+$(".plastic-bags1").click(function(){
+    items.load();
+    items.play();
+    $("#paper-towels1a img").hide();
+    $("#plastic-bottles1a img").hide();
+    $("#plastic-utensils1a img").hide();
+    $("#plastic-bags1a img").show();
+});
 
 
 
