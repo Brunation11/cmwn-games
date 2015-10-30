@@ -123,6 +123,14 @@ background: url("_assets/elements/toilet_1.png") 0 0 no-repeat;
 background-size: 100%;
 padding: 8% 6%;
 }
+.second-logo {
+max-width: 70%;
+margin: 0 auto 0;
+text-align: center;
+background: url("_assets/elements/toilet_1.png") 0 0 no-repeat;
+background-size: 100%;
+padding: 34% 6%;
+}
 
 #video, #flip, #flusher, #step, #googjob, #file, #wellcome,  #hard, #easy, #showOff, #quit, #noseWords, #feelings, #startGame {
 display: none;
@@ -900,6 +908,25 @@ background-size: 108%;
 position: relative;
 min-height: 400px;
 }
+#proudly{
+background: url(_assets/background/bakg_1.png) center center no-repeat;
+background-size: 104%;
+position: relative;
+min-height: 400px;
+}
+#proudly .next {
+  width: 100px;
+  height: 78px;
+  bottom: -3px;
+  right: 2%;
+}
+}
+#noseWords .next {
+display: block;
+width: 150px;
+height: 150px;
+bottom: 10px;
+}
 
 #flusher {
 font-family: source_sans_prosemibold;
@@ -933,7 +960,7 @@ position: absolute;
   right: 1%;
   top: -2%;
 }
-#flusher button.exit {
+#flusher, #proudly button.exit {
   right: 1%;
   top: -2%;
 }

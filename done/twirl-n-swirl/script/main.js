@@ -8,9 +8,9 @@
     });
 
     $('#home .play').click(function () {
-        $('#wonder').get(0).play();
+        // $('#wonder').get(0).play();
         $('#home').fadeOut(200);
-        $('#noseWords').fadeIn(200);
+        $('#proudly').fadeIn(200);
         $('#mainSound').get(0).pause();
 
         $('.shnose li').each(function (i) {
@@ -23,14 +23,21 @@
             }, 400 * i);
         });
         setTimeout(function () {
-            $('#noseWords .next').fadeIn(500);
+            $('#proudly .next').fadeIn(500);
         }, 2000);
     });
 
-    $('#noseWords .next').click(function () {
-        $('#wonder').get(0).pause();
-        $('#whatever').get(0).play();
+    $('#proudly .next').click(function () {
+        $('#wonder').get(0).play();
+        $('#noseWords').fadeIn(200);
         $('#mainSound').get(0).pause();
+        $('#proudly').fadeOut(200);
+    });
+
+    $('#noseWords .next').click(function () {
+        
+        $('#wonder').get(0).pause();
+        $('#whatever').get(0).play();;
         $('#flush').get(0).play();
 
         setTimeout(function () {
