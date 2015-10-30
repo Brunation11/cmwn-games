@@ -1,5 +1,11 @@
 build:
   build_hook_timeout: 600
   before_exec:
-    - "rm .htaccess"
-    - "mv .htaccess-prod .htaccess"
+    - "rm demo/.htaccess"
+    - "rm done/.htaccess"
+    - "rm mcu/.htaccess"
+    - "rm game-tests/.htaccess"
+    - "mv demo/.htaccess-prod demo/.htaccess"
+    - "mv done/.htaccess-prod done/.htaccess"
+    - "mv game-tests/.htaccess-prod game-tests/.htaccess"
+    - "mv mcu/.htaccess-prod mcu/.htaccess"
