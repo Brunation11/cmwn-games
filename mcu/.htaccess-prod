@@ -1,6 +1,6 @@
 AuthType Basic
 AuthName "Password Protected Area"
-AuthUserFile /var/www/.htpasswd
+AuthUserFile /var/www/mcu/.htpasswd
 Require valid-user
 
 Options +Indexes
