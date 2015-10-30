@@ -61,17 +61,10 @@ game.loadScreenCallback = function (currentSlide) {
         vo27.play();
     }
     if (currentSlide == 4) {
-        $(".leachate-text").hide();
-        $(".methane-gas-text").hide();
-        $(".contamination-text").hide();
-        $(".pollution-text").hide();
+
     }
     if (currentSlide == 3) {
         vo3.play();
-        // $(".recycling-text").show();
-        // $(".composting-text").hide();
-        // $(".landfill-text").hide();
-        // $(".incineration-text").hide();
 
     }
     if (currentSlide == 2) {
@@ -94,6 +87,7 @@ var full;
 var correct_items_trash = new Array();
 var balance = new Array(); ///// feed variable with selected_one variable /////
 var four_btns = new Array(); ///// feed variable with green_btns variable ////
+var div_five_btns = new Array();
 var spin = new Array();//// feed variable spin with spin_btn ////
 var pledge = new Array();
 $(document).ready(function () {
@@ -113,6 +107,7 @@ $(document).ready(function () {
     /// balance variable ////
     var selected_one = $(".toNext");
     var button_1 = $('.button-1');
+    var div_5 = $('.answer1');
     var spin_btn = $('.spin');
     var pledge_btn = $('.pledge');
     $('#play').click(function () {
@@ -134,13 +129,18 @@ $(document).ready(function () {
     });
 
 // randomize function for
+// first set of facts in div 4 and 5///
 $('.quote').hide();
+$('.quote2').hide();
 function selectRandomListItem() {
     var random = Math.floor(Math.random() * $('.quote').length);
     $('.quote').hide().eq(random).show();
 
+    var random2 = Math.floor(Math.random() * $('.quote2').length);
+    $('.quote2').hide().eq(random2).show();
 };
 selectRandomListItem();
+
 
 
     // feed array to go to next screen //
@@ -180,7 +180,7 @@ selectRandomListItem();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').show();
+        $('.next').hide();
         cont.load();
         cont.play();
     });
@@ -589,60 +589,74 @@ alert("wrong");
 
 
     ///////// DIV 5 ////////////
-$('.leachate').click(function (){
-    on.load();
-    on.play();
-    setTimeout(function () {
-        vo25.play();
-    }, 1500);
-    $(".leachate-text").fadeIn(500);
-    $(".methane-gas-text").hide();
-    $(".contamination-text").hide();
-    $(".pollution-text").hide();
-});
 
-$('.methane-gas').click(function(){
-    on.load();
-    on.play();
-    vo18.load();
-    vo18.play();
-    setTimeout(function () {
-        vo26.play();
-    }, 1500);
-    $(".contamination-text").hide();
-    $(".leachate-text").hide();
-    $(".pollution-text").hide();
-    $(".methane-gas-text").fadeIn(500);
-});
+$('.answer1').click(function() {
+    div_five_btns.push(div_5);
+    if (div_five_btns.length == 4) {
+        $('.next').fadeIn(500);
+    }
+selectRandomListItem();
 
-$('.contamination').click(function(){
-    on.load();
-    on.play();
-    vo15.load();
-    vo15.play();
-    setTimeout(function () {
-        vo23.play();
-    }, 1500);
-    $(".contamination-text").fadeIn(500);
-    $(".leachate-text").hide();
-    $(".pollution-text").hide();
-    $(".methane-gas-text").hide();
-});
-
-$('.pollution').click(function(){
-    on.load();
-    on.play();
-    vo16.load();
-    vo16.play();
-    setTimeout(function () {
-        vo24.play();
-    }, 1500);
-    $(".pollution-text").fadeIn(500);
-    $(".methane-gas-text").hide();
-    $(".leachate-text").hide();
-    $(".contamination-text").hide();
 
 });
+
+$('.answer2').click(function() {
+    alert("wrong");
+});
+// $('.leachate').click(function (){
+//     on.load();
+//     on.play();
+//     setTimeout(function () {
+//         vo25.play();
+//     }, 1500);
+//     $(".leachate-text").fadeIn(500);
+//     $(".methane-gas-text").hide();
+//     $(".contamination-text").hide();
+//     $(".pollution-text").hide();
+// });
+
+// $('.methane-gas').click(function(){
+//     on.load();
+//     on.play();
+//     vo18.load();
+//     vo18.play();
+//     setTimeout(function () {
+//         vo26.play();
+//     }, 1500);
+//     $(".contamination-text").hide();
+//     $(".leachate-text").hide();
+//     $(".pollution-text").hide();
+//     $(".methane-gas-text").fadeIn(500);
+// });
+
+// $('.contamination').click(function(){
+//     on.load();
+//     on.play();
+//     vo15.load();
+//     vo15.play();
+//     setTimeout(function () {
+//         vo23.play();
+//     }, 1500);
+//     $(".contamination-text").fadeIn(500);
+//     $(".leachate-text").hide();
+//     $(".pollution-text").hide();
+//     $(".methane-gas-text").hide();
+// });
+
+// $('.pollution').click(function(){
+//     on.load();
+//     on.play();
+//     vo16.load();
+//     vo16.play();
+//     setTimeout(function () {
+//         vo24.play();
+//     }, 1500);
+//     $(".pollution-text").fadeIn(500);
+//     $(".methane-gas-text").hide();
+//     $(".leachate-text").hide();
+//     $(".contamination-text").hide();
+
+// });
 
     //////// DIV6 /////////
 
