@@ -59,6 +59,7 @@ game.loadScreenCallback = function (currentSlide) {
         // $(".composting-text").hide();
         // $(".landfill-text").hide();
         // $(".incineration-text").hide();
+
     }
     if (currentSlide == 2) {
         $('.arrows').fadeIn(500);
@@ -98,7 +99,7 @@ $(document).ready(function () {
     //// once droped items are equal to 5, send me to next screen/////
     /// balance variable ////
     var selected_one = $(".toNext");
-    var green_btns = $(".nexdiv");
+    var button_1 = $('.button-1');
     var spin_btn = $('.spin');
     var pledge_btn = $('.pledge');
     $('#play').click(function () {
@@ -119,22 +120,15 @@ $(document).ready(function () {
         }
     });
 
-    /// four buttons nav condition statement /////
-    // $('.nexdiv').click(function() { /////////////// do not errase ///////////
-    //     four_btns.push(green_btns);
+// randomize function for
+$('.quote').hide();
+function selectRandomListItem() {
+    var random = Math.floor(Math.random() * $('.quote').length);
+    $('.quote').hide().eq(random).show();
 
-    //     if (four_btns.length == 4) {
-    //         $('.next').fadeIn(500);
-
-    //     } else if (four_btns.length == 8) {
-    //         $('.next').fadeIn(500);
-    //     }
-    // });
-function randText() {
-var random = Math.floor(Math.random() * $('.quote').length);
-$('.quote').hide().eq(random).show();
 };
-randText();
+selectRandomListItem();
+
 
     // feed array to go to next screen //
     $('.spin').click(function() {
@@ -529,7 +523,7 @@ randText();
 
     //////// DIV4 /////////
 
-$('.recycling').click(function (){
+$('.button-1').click(function (){
     on.load();
     on.play();
     vo12.load();
@@ -538,58 +532,47 @@ $('.recycling').click(function (){
         vo21.play();
     }, 1500);
 
-    // $(".recycling-text").fadeIn(500);
-    // $(".composting-text").hide();
-    // $(".landfill-text").hide();
-    // $(".incineration-text").hide();
-randText();
+four_btns.push(button_1);
+if (four_btns.length == 4) {
+    $('.next').fadeIn(500);
+}
+selectRandomListItem();
 
 });
 
-$('.composting').click(function(){
+$('.button-2').click(function(){
     on.load();
     on.play();
     vo13.load();
     vo13.play();
-    // $(".recycling-text").hide();
-    // $(".landfill-text").hide();
-    // $(".incineration-text").hide();
-    // $(".composting-text").fadeIn(500);
-randText();
+alert("wrong");
 
 });
 
-$('.landfill').click(function(){
-    on.load();
-    on.play();
-    vo11.load();
-    vo11.play();
-    setTimeout(function () {
-        vo19.play();
-    }, 1500);
-    // $(".recycling-text").hide();
-    // $(".composting-text").hide();
-    // $(".incineration-text").hide();
-    // $(".landfill-text").fadeIn(500);
-randText();
+// $('.landfill').click(function(){
+//     on.load();
+//     on.play();
+//     vo11.load();
+//     vo11.play();
+//     setTimeout(function () {
+//         vo19.play();
+//     }, 1500);
 
-});
 
-$('.incineration').click(function(){
-    on.load();
-    on.play();
-    vo14.load();
-    vo14.play();
-    setTimeout(function () {
-        vo22a.play();
-    }, 1500);
-    // $(".recycling-text").hide();
-    // $(".composting-text").hide();
-    // $(".landfill-text").hide();
-    // $(".incineration-text").fadeIn(500);
-randText();
+// });
 
-});
+// $('.incineration').click(function(){
+//     on.load();
+//     on.play();
+//     vo14.load();
+//     vo14.play();
+//     setTimeout(function () {
+//         vo22a.play();
+//     }, 1500);
+
+
+// });
+
 
     ///////// DIV 5 ////////////
 $('.leachate').click(function (){
@@ -992,3 +975,5 @@ $(function() {
     //bind random button
     $('#random_location').on('click', makeSlots);
 });
+
+
