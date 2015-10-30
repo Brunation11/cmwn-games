@@ -1,0 +1,62 @@
+body{
+	margin: 0px auto;
+	text-align: center;
+	background: #333333;
+}
+
+
+.wrapper {
+  width: 90%;
+  /* whatever width you want */
+  display: inline-block;
+  position: relative;
+}
+.wrapper:after {
+  padding-top: 55.25%;
+  /* 16:9 ratio */
+  display: block;
+  content: '';
+}
+.main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* fill parent */
+  background-color: deepskyblue;
+  /* let's see it! */
+  color: white;
+  background-image: url("images/bg.png");
+  background-size: cover;
+  font-size: 1.5em;
+  overflow: hidden;
+
+}
+
+@-webkit-keyframes arm {
+from { -webkit-transform: rotate(0deg); }
+70% { -webkit-transform: rotate(9.7deg); }
+to { -webkit-transform: rotate(0deg); }
+}
+
+.main img { 
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 32%;
+	height: 41%;
+
+  -webkit-transform-origin:0% 60%;
+  -webkit-animation:arm 3.9s ease-in-out infinite alternate;
+
+}
+
+.main .intro-text {
+	position: absolute;
+	top: 10%;
+	right: 10%;
+	font-size: 4em;
+	color: yellow;
+	width: 50%;
+}
