@@ -38,10 +38,13 @@ game.loadScreenCallback = function (currentSlide) {
     	$('.next').hide();
     }
     if (currentSlide == 11) {
-
+        vo61.play();
     }
     if (currentSlide == 10) {
-        vo61.play();
+        vo56.play();
+    }
+    if (currentSlide == 9) {
+        vo56.play();
     }
 
     if (currentSlide == 8) {
@@ -894,6 +897,10 @@ $(".droppable9").droppable({
 
 //////// DIV9 /////////
 $(".cancel-btn").click(function(){
+    vo57.pause();
+    vo58.pause();
+    vo59.pause();
+    vo60.pause();
     $("#paper-towels").modal('hide');
     $("#plastic-bottles").modal('hide');
     $("#plastic-utensils").modal('hide');
@@ -902,21 +909,25 @@ $(".cancel-btn").click(function(){
 $(".paper-towels").click(function(){
     items.load();
     items.play();
+    vo57.play();
     $("#paper-towels").modal('show');
 });
 $(".plastic-bottles").click(function(){
     items.load();
     items.play();
+    vo58.play();
     $("#plastic-bottles").modal('show');
 });
 $(".plastic-utensils").click(function(){
     items.load();
     items.play();
+    vo60.play();
     $("#plastic-utensils").modal('show');
 });
 $(".plastic-bags").click(function(){
     items.load();
     items.play();
+    vo59.play();
     $("#plastic-bags").modal('show');
 });
 
