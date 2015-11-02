@@ -133,11 +133,25 @@ $(document).ready(function () {
 $('.quote').hide();
 $('.quote2').hide();
 function selectRandomListItem() {
-    var random = Math.floor(Math.random() * $('.quote').length);
-    $('.quote').hide().eq(random).show();
 
-    var random2 = Math.floor(Math.random() * $('.quote2').length);
-    $('.quote2').hide().eq(random2).show();
+/////////  first set of buttons ////////////////////
+    $('#fact-text .quote:gt(0)').hide();
+
+        var random = $('#fact-text > .quote').not(':visible') //Select only the hidden one
+        var swapRandom = Math.floor(Math.random() * random.length); //Use only those hidden, remove the 1 since we are now on a 0-based index
+
+        $('#fact-text > .quote').hide();
+        random.eq(swapRandom).show();
+
+///////// Second set of buttons ///////////////
+    $('#fact-text-2 .quote2:gt(0)').hide();
+
+    var random_two = $('#fact-text-2 > .quote2').not(':visible') //Select only the hidden one
+    var swapRandom_two = Math.floor(Math.random() * random_two.length);
+
+    $('#fact-text-2 > .quote2').hide();
+    random_two.eq(swapRandom_two).show();
+
 };
 selectRandomListItem();
 
@@ -1002,7 +1016,7 @@ $(function() {
 
     //make list for slots recursively and call spin when complete
     function makeSlotList(list){
-        //could choose one random index and then populate with next 18 values instead, but need to account for looping at end
+        //could choose one random index and then populate with next 7 values instead, but need to account for looping at end
         if(list.length<20){//length chosen based on appearance of spin, can be changed
             var index = _.random(msa.length-1);
             if(list.length===1){
@@ -1011,6 +1025,7 @@ $(function() {
                     Save this for future reference
                     Instead of saving it, we could get the index attribute from the list item we end on
                 */
+
                 random_index = index;
             }
             list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
