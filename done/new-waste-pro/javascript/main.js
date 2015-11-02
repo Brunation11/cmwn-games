@@ -554,10 +554,10 @@ selectRandomListItem();
 $('.button-1').click(function (){
     on.load();
     on.play();
-    vo12.load();
-    vo12.play();
+    right.load();
+    right.play();
     setTimeout(function () {
-        vo21.play();
+        // vo21.play();
     }, 1500);
 
 four_btns.push(button_1);
@@ -571,10 +571,8 @@ selectRandomListItem();
 $('.button-2').click(function(){
     on.load();
     on.play();
-    vo13.load();
-    vo13.play();
-alert("wrong");
-
+    wrong.load();
+    wrong.play();
 });
 
 // $('.landfill').click(function(){
@@ -605,6 +603,8 @@ alert("wrong");
     ///////// DIV 5 ////////////
 
 $('.answer1').click(function() {
+    right.load();
+    right.play();
     div_five_btns.push(div_5);
     if (div_five_btns.length == 4) {
         $('.next').fadeIn(500);
@@ -615,7 +615,8 @@ selectRandomListItem();
 });
 
 $('.answer2').click(function() {
-    alert("wrong");
+    wrong.load();
+    wrong.play();
 });
 // $('.leachate').click(function (){
 //     on.load();
@@ -798,6 +799,7 @@ $(".droppable5").droppable({
             drop: function () {
                 trash.load();
                 trash.play();
+                milk.play();
                 $("#item5").css('opacity','0');
                 $(".milk-text").fadeIn(500);
                 $(".orange-text").hide();
