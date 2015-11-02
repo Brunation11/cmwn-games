@@ -970,6 +970,7 @@ $(".paper-towels1").click(function(){
     $("#plastic-bottles1a img").hide();
     $("#plastic-utensils1a img").hide();
     $("#paper-towels1a img").show();
+    $('.next').fadeIn(500);
 });
 $(".plastic-bottles1").click(function(){
     items.load();
@@ -978,6 +979,7 @@ $(".plastic-bottles1").click(function(){
     $("#plastic-utensils1a img").hide();
     $("#paper-towels1a img").hide();
     $("#plastic-bottles1a img").show();
+    $('.next').fadeIn(500);
 });
 $(".plastic-utensils1").click(function(){
     items.load();
@@ -986,6 +988,7 @@ $(".plastic-utensils1").click(function(){
     $("#plastic-bags1a img").hide();
     $("#plastic-bottles1a img").hide();
     $("#plastic-utensils1a img").show();
+    $('.next').fadeIn(500);
 });
 $(".plastic-bags1").click(function(){
     items.load();
@@ -994,6 +997,7 @@ $(".plastic-bags1").click(function(){
     $("#plastic-bottles1a img").hide();
     $("#plastic-utensils1a img").hide();
     $("#plastic-bags1a img").show();
+    $('.next').fadeIn(500);
 });
 
 
