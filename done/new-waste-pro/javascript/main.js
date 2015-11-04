@@ -17,7 +17,6 @@ var game = {
         this.currentSlide++;
 
         this.loadScreen(this.currentSlide);
-
     },
 
     loadPrevScreen: function() {
@@ -171,11 +170,11 @@ function selectRandomListItem() {
         }
     });
 
-        var random = $('#fact-text > .quote').not(':visible') //Select only the hidden one
-        var swapRandom = Math.floor(Math.random() * random.length); //Use only those hidden, remove the 1 since we are now on a 0-based index
+    var random = $('#fact-text > .quote').not(':visible') //Select only the hidden one
+    var swapRandom = Math.floor(Math.random() * random.length); //Use only those hidden, remove the 1 since we are now on a 0-based index
 
-        $('#fact-text > .quote').hide();
-        random.eq(swapRandom).show();
+    $('#fact-text > .quote').hide();
+    random.eq(swapRandom).show();
 
 ///////// Second set of buttons ///////////////
     $('#fact-text-2 .quote2:gt(0)').hide( function() {
