@@ -55,8 +55,11 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 6) {
         vo27.play();
     }
+    if (currentSlide == 5) {
+        vo22b.play();
+    }
     if (currentSlide == 4) {
-
+        vo10.play();
     }
     if (currentSlide == 3) {
         vo3.play();
@@ -76,6 +79,7 @@ game.loadScreenCallback = function (currentSlide) {
 game.loadScreen(1);
 
 var full;
+var good_items = new Array();
 var correct_items_trash = new Array();
 var balance = new Array(); ///// feed variable with selected_one variable /////
 var four_btns = new Array(); ///// feed variable with green_btns variable ////
@@ -117,16 +121,22 @@ $(document).ready(function () {
         if (balance.length == 5) {
             game.loadNextScreen();
             if($('#b1').is(':visible')) {
-                vo21.play();
+                setTimeout(function () {
+                    vo21.play();
+                }, 5000);
             }
             if($('#b2').is(':visible')) {
                 // vo21.play();
             }
             if($('#b3').is(':visible')) {
-                vo19.play();
+                setTimeout(function () {
+                    vo19.play();
+                }, 5000);
             }
             if($('#b4').is(':visible')) {
-                vo22a.play();
+                setTimeout(function () {
+                    vo22a.play();
+                }, 5000);
             }
         }
     });
@@ -347,6 +357,12 @@ selectRandomListItem();
                     left: "0px"
                 }, 600);
             });
+            good_items.push(1);
+            if (good_items.length === 5) {
+                setTimeout(function () {
+                    vo9.play();
+                }, 8000);
+            }
         }
     });
 
@@ -409,6 +425,12 @@ selectRandomListItem();
                     left: "0px"
                 }, 600);
             });
+            good_items.push(2);
+            if (good_items.length === 5) {
+                setTimeout(function () {
+                    vo9.play();
+                }, 6000);
+            }
         }
     });
 
@@ -470,6 +492,12 @@ selectRandomListItem();
                     left: "0px"
                 }, 600);
             });
+            good_items.push(3);
+            if (good_items.length === 5) {
+                setTimeout(function () {
+                    vo9.play();
+                }, 6000);
+            }
         }
     });
 
@@ -531,6 +559,12 @@ selectRandomListItem();
                     left: "0px"
                 }, 600);
             });
+            good_items.push(4);
+            if (good_items.length === 5) {
+                setTimeout(function () {
+                    vo9.play();
+                }, 9000);
+            }
         }
     });
 
@@ -592,34 +626,40 @@ selectRandomListItem();
                     left: "0px"
                 }, 600);
             });
+            good_items.push(5);
+            if (good_items.length === 5) {
+                setTimeout(function () {
+                    vo9.play();
+                }, 7000);
+            }
         }
     });
 
     //////// DIV4 /////////
 
-$('.button-1').click(function (){
-    on.load();
-    on.play();
-    right.load();
-    right.play();
-    setTimeout(function () {
-        
-    }, 1500);
+    $('.button-1').click(function (){
+        on.load();
+        on.play();
+        right.load();
+        right.play();
+        setTimeout(function () {
+            
+        }, 1500);
 
-four_btns.push(button_1);
-if (four_btns.length == 4) {
-    $('.next').fadeIn(500);
-}
-selectRandomListItem();
+    four_btns.push(button_1);
+    if (four_btns.length == 4) {
+        $('.next').fadeIn(500);
+    }
+    selectRandomListItem();
 
-});
+    });
 
-$('.button-2').click(function(){
-    on.load();
-    on.play();
-    wrong.load();
-    wrong.play();
-});
+    $('.button-2').click(function(){
+        on.load();
+        on.play();
+        wrong.load();
+        wrong.play();
+    });
 
 // $('.landfill').click(function(){
 //     on.load();
@@ -648,21 +688,21 @@ $('.button-2').click(function(){
 
     ///////// DIV 5 ////////////
 
-$('.answer1').click(function() {
-    right.load();
-    right.play();
-    div_five_btns.push(div_5);
-    if (div_five_btns.length == 4) {
-        $('.next').fadeIn(500);
-    }
-selectRandomListItem();
+    $('.answer1').click(function() {
+        right.load();
+        right.play();
+        div_five_btns.push(div_5);
+        if (div_five_btns.length == 4) {
+            $('.next').fadeIn(500);
+        }
+    selectRandomListItem();
 
-});
+    });
 
-$('.answer2').click(function() {
-    wrong.load();
-    wrong.play();
-});
+    $('.answer2').click(function() {
+        wrong.load();
+        wrong.play();
+    });
 // $('.leachate').click(function (){
 //     on.load();
 //     on.play();
@@ -720,342 +760,341 @@ $('.answer2').click(function() {
 
     //////// DIV6 /////////
 
-$("#item").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item2").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item3").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item4").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item5").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item6").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item7").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item8").draggable({ cursor: 'move', revert: 'invalid' });
-$("#item9").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item2").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item3").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item4").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item5").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item6").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item7").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item8").draggable({ cursor: 'move', revert: 'invalid' });
+    $("#item9").draggable({ cursor: 'move', revert: 'invalid' });
 
 
-$(".droppable").droppable({
-    tolerance: "pointer",
-    accept: "#item",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo43.play();
-        $("#item").css('opacity','0');
-        $(".orange-text").fadeIn(500);
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(1);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable").droppable({
+        tolerance: "pointer",
+        accept: "#item",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo43.play();
+            $("#item").css('opacity','0');
+            $(".orange-text").fadeIn(500);
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(1);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable2").droppable({
-    tolerance: "pointer",
-    accept: "#item2",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo32.play();
-        $("#item2").css('opacity','0');
-        $(".shoe-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(2);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable2").droppable({
+        tolerance: "pointer",
+        accept: "#item2",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo32.play();
+            $("#item2").css('opacity','0');
+            $(".shoe-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(2);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable3").droppable({
-    tolerance: "pointer",
-    accept: "#item3",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo37.play();
-        $("#item3").css('opacity','0');
-        $(".can-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(3);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable3").droppable({
+        tolerance: "pointer",
+        accept: "#item3",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo37.play();
+            $("#item3").css('opacity','0');
+            $(".can-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(3);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable4").droppable({
-    tolerance: "pointer",
-    accept: "#item4",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo28.play();
-        $("#item4").css('opacity','0');
-        $(".shirt-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(4);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable4").droppable({
+        tolerance: "pointer",
+        accept: "#item4",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo28.play();
+            $("#item4").css('opacity','0');
+            $(".shirt-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(4);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable5").droppable({
-    tolerance: "pointer",
-    accept: "#item5",
-    drop: function () {
-        trash.load();
-        trash.play();
-        milk.play();
-        $("#item5").css('opacity','0');
-        $(".milk-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(5);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable5").droppable({
+        tolerance: "pointer",
+        accept: "#item5",
+        drop: function () {
+            trash.load();
+            trash.play();
+            milk.play();
+            $("#item5").css('opacity','0');
+            $(".milk-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(5);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable6").droppable({
-    tolerance: "pointer",
-    accept: "#item6",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo34.play();
-        $("#item6").css('opacity','0');
-        $(".bottle-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(6);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable6").droppable({
+        tolerance: "pointer",
+        accept: "#item6",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo34.play();
+            $("#item6").css('opacity','0');
+            $(".bottle-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(6);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable7").droppable({
-    tolerance: "pointer",
-    accept: "#item7",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo45.play();
-        $("#item7").css('opacity','0');
-        $(".battery-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".paper-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(7);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable7").droppable({
+        tolerance: "pointer",
+        accept: "#item7",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo45.play();
+            $("#item7").css('opacity','0');
+            $(".battery-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".paper-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(7);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable8").droppable({
-    tolerance: "pointer",
-    accept: "#item8",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo42.play();
-        $("#item8").css('opacity','0');
-        $(".paper-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".foil-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(8);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable8").droppable({
+        tolerance: "pointer",
+        accept: "#item8",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo42.play();
+            $("#item8").css('opacity','0');
+            $(".paper-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".foil-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(8);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-$(".droppable9").droppable({
-    tolerance: "pointer",
-    accept: "#item9",
-    drop: function () {
-        trash.load();
-        trash.play();
-        vo30.play();
-        $("#item9").css('opacity','0');
-        $(".foil-text").fadeIn(500);
-        $(".orange-text").hide();
-        $(".shoe-text").hide();
-        $(".can-text").hide();
-        $(".shirt-text").hide();
-        $(".milk-text").hide();
-        $(".bottle-text").hide();
-        $(".battery-text").hide();
-        $(".paper-text").hide();
-        $("#frame").show();
-        correct_items_trash.push(9);
-        if (correct_items_trash.length === 9) {
-            //pop or redirect your game complete screen
-            // alert('hi');
-            $('.next').fadeIn(500);
+    $(".droppable9").droppable({
+        tolerance: "pointer",
+        accept: "#item9",
+        drop: function () {
+            trash.load();
+            trash.play();
+            vo30.play();
+            $("#item9").css('opacity','0');
+            $(".foil-text").fadeIn(500);
+            $(".orange-text").hide();
+            $(".shoe-text").hide();
+            $(".can-text").hide();
+            $(".shirt-text").hide();
+            $(".milk-text").hide();
+            $(".bottle-text").hide();
+            $(".battery-text").hide();
+            $(".paper-text").hide();
+            $("#frame").show();
+            correct_items_trash.push(9);
+            if (correct_items_trash.length === 9) {
+                //pop or redirect your game complete screen
+                // alert('hi');
+                $('.next').fadeIn(500);
+            }
         }
-    }
-});
+    });
 
-//////// DIV9 /////////
-$(".cancel-btn").click(function(){
-    vo57.pause();
-    vo58.pause();
-    vo59.pause();
-    vo60.pause();
-    $("#paper-towels").modal('hide');
-    $("#plastic-bottles").modal('hide');
-    $("#plastic-utensils").modal('hide');
-    $("#plastic-bags").modal('hide');
-});
+    //////// DIV9 /////////
+    $(".cancel-btn").click(function(){
+        vo57.pause();
+        vo58.pause();
+        vo59.pause();
+        vo60.pause();
+        $("#paper-towels").modal('hide');
+        $("#plastic-bottles").modal('hide');
+        $("#plastic-utensils").modal('hide');
+        $("#plastic-bags").modal('hide');
+    });
 
-$(".paper-towels").click(function(){
-    items.load();
-    items.play();
-    vo57.play();
-    $("#paper-towels").modal('show');
-});
+    $(".paper-towels").click(function(){
+        items.load();
+        items.play();
+        vo57.play();
+        $("#paper-towels").modal('show');
+    });
 
-$(".plastic-bottles").click(function(){
-    items.load();
-    items.play();
-    vo58.play();
-    $("#plastic-bottles").modal('show');
-});
+    $(".plastic-bottles").click(function(){
+        items.load();
+        items.play();
+        vo58.play();
+        $("#plastic-bottles").modal('show');
+    });
 
-$(".plastic-utensils").click(function(){
-    items.load();
-    items.play();
-    vo60.play();
-    $("#plastic-utensils").modal('show');
-});
+    $(".plastic-utensils").click(function(){
+        items.load();
+        items.play();
+        vo60.play();
+        $("#plastic-utensils").modal('show');
+    });
 
-$(".plastic-bags").click(function(){
-    items.load();
-    items.play();
-    vo59.play();
-    $("#plastic-bags").modal('show');
-});
+    $(".plastic-bags").click(function(){
+        items.load();
+        items.play();
+        vo59.play();
+        $("#plastic-bags").modal('show');
+    });
 
 
 //////// DIV10 /////////
-$(".paper-towels1").click(function(){
-    items.load();
-    items.play();
-    $("#plastic-bags1a img").hide();
-    $("#plastic-bottles1a img").hide();
-    $("#plastic-utensils1a img").hide();
-    $("#paper-towels1a img").show();
-    $('.next').fadeIn(500);
-});
+    $(".paper-towels1").click(function(){
+        items.load();
+        items.play();
+        $("#plastic-bags1a img").hide();
+        $("#plastic-bottles1a img").hide();
+        $("#plastic-utensils1a img").hide();
+        $("#paper-towels1a img").show();
+        $('.next').fadeIn(500);
+    });
 
-$(".plastic-bottles1").click(function(){
-    items.load();
-    items.play();
-    $("#plastic-bags1a img").hide();
-    $("#plastic-utensils1a img").hide();
-    $("#paper-towels1a img").hide();
-    $("#plastic-bottles1a img").show();
-    $('.next').fadeIn(500);
-});
+    $(".plastic-bottles1").click(function(){
+        items.load();
+        items.play();
+        $("#plastic-bags1a img").hide();
+        $("#plastic-utensils1a img").hide();
+        $("#paper-towels1a img").hide();
+        $("#plastic-bottles1a img").show();
+        $('.next').fadeIn(500);
+    });
 
-$(".plastic-utensils1").click(function(){
-    items.load();
-    items.play();
-    $("#paper-towels1a img").hide();
-    $("#plastic-bags1a img").hide();
-    $("#plastic-bottles1a img").hide();
-    $("#plastic-utensils1a img").show();
-    $('.next').fadeIn(500);
-});
+    $(".plastic-utensils1").click(function(){
+        items.load();
+        items.play();
+        $("#paper-towels1a img").hide();
+        $("#plastic-bags1a img").hide();
+        $("#plastic-bottles1a img").hide();
+        $("#plastic-utensils1a img").show();
+        $('.next').fadeIn(500);
+    });
 
-$(".plastic-bags1").click(function(){
-    items.load();
-    items.play();
-    $("#paper-towels1a img").hide();
-    $("#plastic-bottles1a img").hide();
-    $("#plastic-utensils1a img").hide();
-    $("#plastic-bags1a img").show();
-    $('.next').fadeIn(500);
-});
-
+    $(".plastic-bags1").click(function(){
+        items.load();
+        items.play();
+        $("#paper-towels1a img").hide();
+        $("#plastic-bottles1a img").hide();
+        $("#plastic-utensils1a img").hide();
+        $("#plastic-bags1a img").show();
+        $('.next').fadeIn(500);
+    });
 
 });
 
