@@ -1021,7 +1021,7 @@ $(function() {
         random_index;
 
     //make list for slots recursively and call spin when complete
-    function makeSlotList(list){
+    function makeSlotList(list, index){
         //could choose one random index and then populate with next 7 values instead, but need to account for looping at end
         if(list.length<20){//length chosen based on appearance of spin, can be changed
             var index = _.random(msa.length-1);
@@ -1035,7 +1035,7 @@ $(function() {
                 random_index = index;
             }
             list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
-            return makeSlotList(list);
+            return makeSlotList(list, index+1);
         } else {
             //slot list is complete
             //clear search field
@@ -1052,7 +1052,7 @@ $(function() {
         var list = ['<li>'+$input.html()+'</li>'];
 
         //call recursive list builder that won't spin slots until it's finished
-        makeSlotList(list);
+        makeSlotList(list, 0);
     }
 
     $('#slot').jSlots({
