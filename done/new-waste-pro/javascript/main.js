@@ -32,13 +32,19 @@ game.loadScreenCallback = function (currentSlide) {
     	$('.next').hide();
     }
     if (currentSlide == 11) {
-        vo61.play();
+        setTimeout(function () {
+            vo61.play();
+        }, 1000);
     }
     if (currentSlide == 10) {
-        vo56.play();
+        setTimeout(function () {
+            vo56.play();
+        }, 1000);
     }
     if (currentSlide == 9) {
-        vo56.play();
+        setTimeout(function () {
+            // vo56.play();
+        }, 1000);
     }
 
     if (currentSlide == 8) {
@@ -49,19 +55,29 @@ game.loadScreenCallback = function (currentSlide) {
         },5500);
     }
     if (currentSlide == 7) {
-        vo46.play();
+        setTimeout(function () {
+            vo46.play();
+        }, 1000);
     }
     if (currentSlide == 6) {
-        vo27.play();
+        setTimeout(function () {
+            vo27.play();
+        }, 1000);
     }
     if (currentSlide == 5) {
-        vo22b.play();
+        setTimeout(function () {
+            vo22b.play();
+        }, 1000);
     }
     if (currentSlide == 4) {
-        vo10.play();
+        setTimeout(function () {
+            vo10.play();
+        }, 1000);
     }
     if (currentSlide == 3) {
-        vo3.play();
+        setTimeout(function () {
+            vo3.play();
+        }, 1000);
     }
     if (currentSlide == 2) {
         $('.arrows').fadeIn(500);
@@ -107,7 +123,9 @@ $(document).ready(function () {
     var pledge_btn = $('.pledge');
     $('#play').click(function () {
         background.pause();
-        vo1.play();
+        setTimeout(function () {
+            vo1.play();
+        }, 1000);
     });
 
     $(".bkg-image2").hide();
@@ -122,7 +140,7 @@ $(document).ready(function () {
             if($('#b1').is(':visible')) {
                 setTimeout(function () {
                     vo21.play();
-                }, 5000);
+                }, 6000);
             }
             if($('#b2').is(':visible')) {
                 // vo21.play();
@@ -130,12 +148,12 @@ $(document).ready(function () {
             if($('#b3').is(':visible')) {
                 setTimeout(function () {
                     vo19.play();
-                }, 5000);
+                }, 6000);
             }
             if($('#b4').is(':visible')) {
                 setTimeout(function () {
                     vo22a.play();
-                }, 5000);
+                }, 6000);
             }
         }
     });
@@ -241,7 +259,9 @@ selectRandomListItem();
     });
 
     $('#plastic').click(function() {
-        vo62.play();
+        setTimeout(function () {
+            vo62.play();
+        }, 5000);
         flip.play();
         game.loadNextScreen();
     });
