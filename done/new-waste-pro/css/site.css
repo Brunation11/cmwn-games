@@ -7509,7 +7509,8 @@ input[type="checkbox"].input-validation-error {
 #div9,
 #div10,
 #div11,
-#div12 {
+#div12,
+#div13 {
   position: absolute;
   top: 0;
 }
@@ -7523,7 +7524,8 @@ input[type="checkbox"].input-validation-error {
 #div9,
 #div10,
 #div11,
-#div12 {
+#div12,
+#div13 {
   display: none;
 }
 .card {

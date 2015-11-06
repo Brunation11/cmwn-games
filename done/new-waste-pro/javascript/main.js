@@ -28,48 +28,55 @@ var game = {
 };
 
 game.loadScreenCallback = function (currentSlide) {
-    if (currentSlide == 12) {
+    if (currentSlide == 13) {
     	$('.next').hide();
     }
-    if (currentSlide == 11) {
+    if (currentSlide == 12) {
         setTimeout(function () {
             vo61.play();
         }, 1000);
     }
-    if (currentSlide == 10) {
+    if (currentSlide == 11) {
         setTimeout(function () {
             vo56.play();
         }, 1000);
     }
-    if (currentSlide == 9) {
+    if (currentSlide == 10) {
         setTimeout(function () {
             // vo56.play();
         }, 1000);
     }
 
-    if (currentSlide == 8) {
+    if (currentSlide == 9) {
+        pledges.volume = 0.2
         pledges.play();
         vo55.play();
         setTimeout(function(){
             $('.next').fadeIn(2000);
         },5500);
     }
-    if (currentSlide == 7) {
+    if (currentSlide == 8) {
         setTimeout(function () {
             vo46.play();
         }, 1000);
     }
-    if (currentSlide == 6) {
+    if (currentSlide == 7) {
         setTimeout(function () {
             vo27.play();
         }, 1000);
     }
-    if (currentSlide == 5) {
+    if (currentSlide == 6) {
         setTimeout(function () {
             vo22b.play();
         }, 1000);
     }
+    if (currentSlide == 5) {
+        // setTimeout(function () {
+        //     vo10.play();
+        // }, 1000);
+    }
     if (currentSlide == 4) {
+        $('.next').fadeIn(500);
         setTimeout(function () {
             vo10.play();
         }, 1000);
@@ -295,7 +302,9 @@ selectRandomListItem();
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 1000);
         cards.play();
-        vo2.play();
+        setTimeout(function () {
+            vo2.play();
+        }, 1000);
     });
 
     //////// DIV3 /////////
@@ -582,7 +591,7 @@ selectRandomListItem();
             if (good_items.length === 5) {
                 setTimeout(function () {
                     vo9.play();
-                }, 9000);
+                }, 13000);
             }
         }
     });
