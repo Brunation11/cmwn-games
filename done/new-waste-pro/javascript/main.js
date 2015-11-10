@@ -56,6 +56,7 @@ game.loadScreenCallback = function (currentSlide) {
         },5500);
     }
     if (currentSlide == 8) {
+        $('.next').hide();
         setTimeout(function () {
             vo46.play();
         }, 1000);
@@ -239,22 +240,22 @@ function selectRandomListItem() {
 selectRandomListItem();
 
     // feed array to go to next screen //
-    $('.spin').click(function() {
-        pull.play();
-        spins.play();
-        setTimeout(function () {
-            stops.play();
-        }, 3600);
+    // $('.spin').click(function() {
+    //     pull.play();
+    //     spins.play();
+    //     setTimeout(function () {
+    //         stops.play();
+    //     }, 3600);
 
-        spin.push(spin_btn);
+    //     spin.push(spin_btn);
 
-        if (spin.length == 7) {
-            setTimeout(function(){
-                $('.next').fadeIn(500);
-                endslot.play();
-            },5500);
-        }
-    });
+    //     if (spin.length == 7) {
+    //         setTimeout(function(){
+    //             $('.next').fadeIn(500);
+    //             endslot.play();
+    //         },5500);
+    //     }
+    // });
 
     // feed array to go to next screen //
     $('.pledge').click(function() {
@@ -1124,73 +1125,182 @@ selectRandomListItem();
         $('.next').fadeIn(500);
     });
 
+    //////// DIV8 /////////
+
+    $('#open2').hide();
+    $('#open3').hide();
+    $('#open4').hide();
+    $('#open5').hide();
+    $('#open6').hide();
+    $('#open7').hide();
+
+    $('#door').hide();
+    $('#door2').hide();
+    $('#door3').hide();
+    $('#door4').hide();
+    $('#door5').hide();
+    $('#door6').hide();
+    $('#door7').hide();
+
+    $('#first').hide();
+    $('#second').hide();
+    $('#third').hide();
+    $('#fourth').hide();
+    $('#fifth').hide();
+    $('#sixth').hide();
+    $('#seventh').hide();
+
+    $('#door-c').hide();
+    $('#door-c2').hide();
+    $('#door-c3').hide();
+    $('#door-c4').hide();
+    $('#door-c5').hide();
+    $('#door-c6').hide();
+    $('#door-c7').hide();
+
+    $('#open1').click(function () {
+        vo47.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open1').hide();
+        $('#open2').delay(5500).fadeIn();
+        $('#door').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#first').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open2').click(function () {
+        vo49.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open2').hide();
+        $('#open3').delay(5500).fadeIn();
+        $('#door2').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#second').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c2').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open3').click(function () {
+        vo50.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open3').hide();
+        $('#open4').delay(5500).fadeIn();
+        $('#door3').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#third').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c3').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open4').click(function () {
+        vo51.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open4').hide();
+        $('#open5').delay(5500).fadeIn();
+        $('#door4').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#fourth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c4').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open5').click(function () {
+        vo52.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(9000).fadeIn();
+        $('#open5').hide();
+        $('#open6').delay(9500).fadeIn();
+        $('#door5').show().delay(9000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#fifth').fadeIn(2000).delay(7000).fadeOut();
+        $('#door-c5').hide().delay(9000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open6').click(function () {
+        vo53.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open6').hide();
+        $('#open7').delay(5500).fadeIn();
+        $('#door6').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#sixth').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c6').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
+    $('#open7').click(function () {
+        vo54.play();
+        $('#main').hide();
+        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#open7').fadeOut();
+        $('.next').delay(5500).fadeIn();
+        $('#door7').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#seventh').fadeIn(2000).delay(3000).fadeOut();
+        $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+    });
+
 });
 
-//////// DIV7 /////////
-$(function() {
+// $(function() {
 
-    var msa = [
-            { name: "Use cloth towels <br/> instead of <br/> paper towels." },
-            { name: "Use real plates<br/>  instead of <br/> paper or plastic." },
-            { name: "Offer to wash the dishes <br/>  at home to avoid <br/> paper and plastic." },
-            { name: "Get a re-usable <br/> shopping bag." },
-            { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys." },
-            { name: "Give away rather <br/>than throw away." },
-            { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." }
-        ],
-        $input = $('.input'),
-        random_index;
+//     var msa = [
+//             { name: "Use cloth towels <br/> instead of <br/> paper towels." },
+//             { name: "Use real plates<br/>  instead of <br/> paper or plastic." },
+//             { name: "Offer to wash the dishes <br/>  at home to avoid <br/> paper and plastic." },
+//             { name: "Get a re-usable <br/> shopping bag." },
+//             { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys." },
+//             { name: "Give away rather <br/>than throw away." },
+//             { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." }
+//         ],
+//         $input = $('.input'),
+//         random_index;
 
     //make list for slots recursively and call spin when complete
-    function makeSlotList(list, index){
+    // function makeSlotList(list, index){
         //could choose one random index and then populate with next 7 values instead, but need to account for looping at end
-        if(list.length<20){//length chosen based on appearance of spin, can be changed
-            var index = _.random(msa.length-1);
-            if(list.length===1){
+        // if(list.length<20){//length chosen based on appearance of spin, can be changed
+            // var index = _.random(msa.length-1);
+            // if(list.length===1){
                 /*
                     This index will be second item in the list, which is our winning number
                     Save this for future reference
                     Instead of saving it, we could get the index attribute from the list item we end on
                 */
 
-                random_index = index;
-            }
-            list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
-            return makeSlotList(list, index+1);
-        } else {
-            //slot list is complete
-            //clear search field
-            $input.html('');
-            //attach list, show jslots, run animation
-            $('#slot').html(list.join('')).parent().show().trigger('spin');
-            return list;
-        }
-    }
+    //             random_index = index;
+    //         }
+    //         list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
+    //         return makeSlotList(list, index+1);
+    //     } else {
+    //         //slot list is complete
+    //         //clear search field
+    //         $input.html('');
+    //         //attach list, show jslots, run animation
+    //         $('#slot').html(list.join('')).parent().show().trigger('spin');
+    //         return list;
+    //     }
+    // }
 
     //before spinning, build out list to spin through and insert into the DOM
-    function makeSlots(){
+    // function makeSlots(){
         //start with current value
-        var list = ['<li>'+$input.html()+'</li>'];
+        // var list = ['<li>'+$input.html()+'</li>'];
 
         //call recursive list builder that won't spin slots until it's finished
-        makeSlotList(list, 0);
-    }
+    //     makeSlotList(list, 0);
+    // }
 
-    $('#slot').jSlots({
-        number: 1,
-        spinner : '.jSlots-wrapper',
-        spinEvent: 'spin',
-        time: 5500,
-        loops: 25,
-        endNum: 2,//spins backwards through the list. endNum 1 ends on the same value we started on
-        onEnd: function(finalElement){
-            //set result
-            $input.html(msa[random_index].name);
-            //hide spinner
-            $(this.spinner).hide();
-        }
-    });
+    // $('#slot').jSlots({
+    //     number: 1,
+    //     spinner : '.jSlots-wrapper',
+    //     spinEvent: 'spin',
+    //     time: 5500,
+    //     loops: 25,
+    //     endNum: 2,//spins backwards through the list. endNum 1 ends on the same value we started on
+    //     onEnd: function(finalElement){
+    //         //set result
+    //         $input.html(msa[random_index].name);
+    //         //hide spinner
+    //         $(this.spinner).hide();
+    //     }
+    // });
 
     //bind random button
-    $('#random_location').on('click', makeSlots);
-});
+//     $('#random_location').on('click', makeSlots);
+// });
