@@ -666,53 +666,7 @@ selectRandomListItem();
 
     //////// DIV4 /////////
 
-    $('.button-1').click(function (){
-        on.load();
-        on.play();
-        right.load();
-        right.play();
-        setTimeout(function () {
-            
-        }, 1500);
-
-    four_btns.push(button_1);
-    if (four_btns.length == 4) {
-        $('.next').fadeIn(500);
-    }
-    selectRandomListItem();
-
-    });
-
-    $('.button-2').click(function(){
-        on.load();
-        on.play();
-        wrong.load();
-        wrong.play();
-    });
-
-// $('.landfill').click(function(){
-//     on.load();
-//     on.play();
-//     vo11.load();
-//     vo11.play();
-//     setTimeout(function () {
-//         vo19.play();
-//     }, 1500);
-
-
-// });
-
-// $('.incineration').click(function(){
-//     on.load();
-//     on.play();
-//     vo14.load();
-//     vo14.play();
-//     setTimeout(function () {
-//         vo22a.play();
-//     }, 1500);
-
-
-// });
+  
 
 
     ///////// DIV 5 ////////////
@@ -1234,73 +1188,86 @@ selectRandomListItem();
         $('#seventh').fadeIn(2000).delay(3000).fadeOut();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
+var sound1 = document.getElementById('vo13');
+var sound2 = document.getElementById('vo12');
+var sound3 = document.getElementById('vo11');
+var sound4 = document.getElementById('vo14');
+var sound5 = document.getElementById('incorrect');
 
+var already_matched   = new Array();
+var selected_item;
+
+function gamer() {
+
+    var rand = 1;
+    var match = [
+         {
+            texter: 'This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.',
+            sound: sound2,
+            button: 'btn1'
+        } ,
+
+         {
+            texter: 'This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
+            sound: sound1,
+            button: 'btn2'
+        },
+
+         {
+            texter: 'This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.',
+            sound: sound3,
+            button: 'btn3'
+        },
+
+         {
+            texter: 'This is the burning<br/>of waste at high heat.',
+            sound: sound4,
+            button: 'btn4'
+        }
+    ];
+
+
+  function newItem() {
+        rand = match [ Math.floor(Math.random() * match.length) ];
+        document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
+        rand.sound.play();
+
+        selected_item = rand.texter;
+        console.log('randomly selected item: ' + selected_item);
+
+         if (already_matched.indexOf(selected_item) >= 0) {
+                //alert('already matched');
+                rand.sound.pause();
+                newItem();
+        }
+        already_matched.push(selected_item);
+    }
+
+   newItem();
+
+    $('.button').on('click', function(event) {
+
+            console.log('already_matched: ' + already_matched);
+
+            if (already_matched.length > 4) {
+                alert("All done");
+                return rand;
+            }
+
+            if($(this).hasClass(rand.button)) {
+                alert('it matches');
+                rand.sound.pause();
+                newItem();
+
+            } else {
+                alert('Try again');
+
+            }
+
+    });
+
+}
+
+gamer();
 });
 
-// $(function() {
-
-//     var msa = [
-//             { name: "Use cloth towels <br/> instead of <br/> paper towels." },
-//             { name: "Use real plates<br/>  instead of <br/> paper or plastic." },
-//             { name: "Offer to wash the dishes <br/>  at home to avoid <br/> paper and plastic." },
-//             { name: "Get a re-usable <br/> shopping bag." },
-//             { name: "<b>Re-use things like:</b>  <br/> boxes, gift bags, gift wrap, <br/> clothing, furniture, toys." },
-//             { name: "Give away rather <br/>than throw away." },
-//             { name: "Sort your trash and <br/> remove anything that <br/> can be recycled." }
-//         ],
-//         $input = $('.input'),
-//         random_index;
-
-    //make list for slots recursively and call spin when complete
-    // function makeSlotList(list, index){
-        //could choose one random index and then populate with next 7 values instead, but need to account for looping at end
-        // if(list.length<20){//length chosen based on appearance of spin, can be changed
-            // var index = _.random(msa.length-1);
-            // if(list.length===1){
-                /*
-                    This index will be second item in the list, which is our winning number
-                    Save this for future reference
-                    Instead of saving it, we could get the index attribute from the list item we end on
-                */
-
-    //             random_index = index;
-    //         }
-    //         list.push( '<li index='+_.random(msa.length-1)+'>'+msa[index].name+'</li>' );
-    //         return makeSlotList(list, index+1);
-    //     } else {
-    //         //slot list is complete
-    //         //clear search field
-    //         $input.html('');
-    //         //attach list, show jslots, run animation
-    //         $('#slot').html(list.join('')).parent().show().trigger('spin');
-    //         return list;
-    //     }
-    // }
-
-    //before spinning, build out list to spin through and insert into the DOM
-    // function makeSlots(){
-        //start with current value
-        // var list = ['<li>'+$input.html()+'</li>'];
-
-        //call recursive list builder that won't spin slots until it's finished
-    //     makeSlotList(list, 0);
-    // }
-
-    // $('#slot').jSlots({
-    //     number: 1,
-    //     spinner : '.jSlots-wrapper',
-    //     spinEvent: 'spin',
-    //     time: 5500,
-    //     loops: 25,
-    //     endNum: 2,//spins backwards through the list. endNum 1 ends on the same value we started on
-    //     onEnd: function(finalElement){
-    //         //set result
-    //         $input.html(msa[random_index].name);
-    //         //hide spinner
-    //         $(this.spinner).hide();
-    //     }
-    // });
-
-    //bind random button
-//     $('#random_location').on('click', makeSlots);
-// });

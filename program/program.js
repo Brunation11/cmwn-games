@@ -48,6 +48,7 @@ function game() {
 
          if (already_matched.indexOf(selected_item) >= 0) {
                 //alert('already matched');
+                rand.sound.pause();
                 newItem();
         }
         already_matched.push(selected_item);
@@ -66,6 +67,7 @@ function game() {
 
             if($(this).hasClass(rand.button)) {
                 alert('it matches');
+                rand.sound.pause();
                 newItem();
 
             } else {
