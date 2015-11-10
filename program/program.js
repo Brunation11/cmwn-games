@@ -5,7 +5,12 @@ var sound3 = document.getElementById('landfill');
 var sound4 = document.getElementById('ins');
 var sound5 = document.getElementById('incorrect');
 
+var already_matched   = new Array();
+var selected_item;
+
 function game() {
+
+    var rand = 1;
     var match = [
          {
             text: 'recycle recycle recycle recycle recycle recycle recycle recycle',
@@ -33,18 +38,41 @@ function game() {
     ];
 
 
+  function newItem() {
+        rand = match [ Math.floor(Math.random() * match.length) ];
+        document.getElementById('text').innerHTML = '<p>' + rand.text + '</p>' ;
+        rand.sound.play();
 
-    var rand = match [ Math.floor(Math.random() * match.length) ];
+        selected_item = rand.text;
+        console.log('randomly selected item: ' + selected_item);
 
-    document.getElementById('text').innerHTML = '<p>' + rand.text + '</p>' ;
-    rand.sound.play();
-
-    $('.button').on('click', function(event){
-
-        if (  ) {
-            game();
+         if (already_matched.indexOf(selected_item) >= 0) {
+                //alert('already matched');
+                newItem();
         }
-        console.log(event, rand);
+        already_matched.push(selected_item);
+    }
+
+   newItem();
+
+    $('.button').on('click', function(event) {
+
+            console.log('already_matched: ' + already_matched);
+
+            if (already_matched.length > 4) {
+                alert("All done");
+                return rand;
+            }
+
+            if($(this).hasClass(rand.button)) {
+                alert('it matches');
+                newItem();
+
+            } else {
+                alert('Try again');
+
+            }
+
     });
 
 }
@@ -53,48 +81,3 @@ game();
 
 
 
-// $(".btn1").click(function() {
-
-
-// });
-
-// $(".btn2").click(function() {
-
-// });
-
-// $(".btn3").click(function() {
-
-// });
-
-// $(".btn4").click(function() {
-
-// });
-
-
-=======
-// b();
-// console.log(a);
-
-// var a = 'Hello World!';
-
-// function b(){
-// 	console.log('Called b!');
-// }
-
-
-    $(".quote").hide();
-
-    var elements = $(".quote");
-    var elementCount = elements.size();
-    var elementsToShow = 1;
-    var alreadyChoosen = ",";
-    var i = 0;
-    while (i < elementsToShow) {
-        var rand = Math.floor(Math.random() * elementCount);
-        if (alreadyChoosen.indexOf("," + rand + ",") < 0) {
-            alreadyChoosen += rand + ",";
-            elements.eq(rand).show();
-            ++i;
-        }
-    }
->>>>>>> f74243119e95116501ee1ef22cb796220d5331cc
