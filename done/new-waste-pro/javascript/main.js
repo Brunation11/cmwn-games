@@ -1288,6 +1288,45 @@ selectRandomListItem();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
+var sound1 = document.getElementById('vo20z');
+var sound2 = document.getElementById('vo21z');
+var sound3 = document.getElementById('vo19z');
+var sound4 = document.getElementById('vo22z');
+var sound5 = document.getElementById('incorrect');
+
+var already_matched   = new Array();
+var selected_item;  
+
+function gamer() {
+
+    var rand = 1;
+    var match = [
+         {
+            texter: 'This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.',
+            sound: sound2,
+            button: 'btn1'
+        } ,
+
+         {
+            texter: 'This means to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
+            sound: sound1,
+            button: 'btn2'
+        },
+
+         {
+            texter: 'This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.',
+            sound: sound3,
+            button: 'btn3'
+        },
+
+         {
+            texter: 'This is the burning<br/>of waste at high heat.',
+            sound: sound4,
+            button: 'btn4'
+        }
+    ];
+
+
 
 // ////// div 4 multyple choice game ////////////////////////
 // var sound1 = document.getElementById('vo13');
