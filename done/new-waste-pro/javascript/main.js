@@ -1265,77 +1265,77 @@ selectRandomListItem();
     $('#open1').click(function () {
         vo47.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open1').hide();
-        $('#open2').delay(5500).fadeIn();
+        $('#open2').delay(4500).fadeIn();
         $('#door').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#first').fadeIn(2000).delay(3000).fadeOut();
+        $('#first').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open2').click(function () {
         vo49.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open2').hide();
-        $('#open3').delay(5500).fadeIn();
+        $('#open3').delay(4500).fadeIn();
         $('#door2').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#second').fadeIn(2000).delay(3000).fadeOut();
+        $('#second').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c2').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open3').click(function () {
         vo50.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open3').hide();
-        $('#open4').delay(5500).fadeIn();
+        $('#open4').delay(4500).fadeIn();
         $('#door3').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#third').fadeIn(2000).delay(3000).fadeOut();
+        $('#third').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c3').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open4').click(function () {
         vo51.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open4').hide();
-        $('#open5').delay(5500).fadeIn();
+        $('#open5').delay(4500).fadeIn();
         $('#door4').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#fourth').fadeIn(2000).delay(3000).fadeOut();
+        $('#fourth').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c4').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open5').click(function () {
         vo52.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(9000).fadeIn();
+        $('#head1').fadeOut().delay(8000).fadeIn();
         $('#open5').hide();
-        $('#open6').delay(9500).fadeIn();
+        $('#open6').delay(8500).fadeIn();
         $('#door5').show().delay(9000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#fifth').fadeIn(2000).delay(7000).fadeOut();
+        $('#fifth').delay(500).fadeIn(500).delay(8000).fadeOut();
         $('#door-c5').hide().delay(9000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open6').click(function () {
         vo53.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open6').hide();
-        $('#open7').delay(5500).fadeIn();
+        $('#open7').delay(4500).fadeIn();
         $('#door6').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#sixth').fadeIn(2000).delay(3000).fadeOut();
+        $('#sixth').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c6').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open7').click(function () {
         vo54.play();
         $('#main').hide();
-        $('#head1').fadeOut().delay(5000).fadeIn();
+        $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open7').fadeOut();
-        $('.next').delay(5500).fadeIn();
+        $('.next').delay(4500).fadeIn();
         $('#door7').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#seventh').fadeIn(2000).delay(3000).fadeOut();
+        $('#seventh').delay(500).fadeIn(500).delay(4000).fadeOut();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
