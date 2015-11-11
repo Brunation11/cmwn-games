@@ -1188,14 +1188,14 @@ selectRandomListItem();
         $('#seventh').fadeIn(2000).delay(3000).fadeOut();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
-var sound1 = document.getElementById('vo13');
-var sound2 = document.getElementById('vo12');
-var sound3 = document.getElementById('vo11');
-var sound4 = document.getElementById('vo14');
+var sound1 = document.getElementById('vo20z');
+var sound2 = document.getElementById('vo21z');
+var sound3 = document.getElementById('vo19z');
+var sound4 = document.getElementById('vo22z');
 var sound5 = document.getElementById('incorrect');
 
 var already_matched   = new Array();
-var selected_item;
+var selected_item;  
 
 function gamer() {
 
@@ -1208,7 +1208,7 @@ function gamer() {
         } ,
 
          {
-            texter: 'This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
+            texter: 'This means to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
             sound: sound1,
             button: 'btn2'
         },
