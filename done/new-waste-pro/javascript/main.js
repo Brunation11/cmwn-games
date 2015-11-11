@@ -72,9 +72,97 @@ game.loadScreenCallback = function (currentSlide) {
         }, 1000);
     }
     if (currentSlide == 5) {
-        // setTimeout(function () {
-        //     vo10.play();
-        // }, 1000);
+        ////// div 5 multyple choice game ////////////////////////
+        var sound1 = document.getElementById('vo13');
+        var sound2 = document.getElementById('vo12');
+        var sound3 = document.getElementById('vo11');
+        var sound4 = document.getElementById('vo14');
+        var sound5 = document.getElementById('incorrect');
+
+        var already_matched   = new Array();
+        var selected_item;
+
+        function gamer() {
+
+            var rand = 1;
+            var match = [
+                 {
+                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
+                    sound: sound2,
+                    button: 'btn1'
+                } ,
+
+                 {
+                    texter: '<div class="comp-text delete">This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
+                    sound: sound1,
+                    button: 'btn2'
+                },
+
+                 {
+                    texter: '<div class="land-text delete">This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.</div>',
+                    sound: sound3,
+                    button: 'btn3'
+                },
+
+                 {
+                    texter: '<div class="Ins-text delete">This is the burning<br/>of waste at high heat.</div>',
+                    sound: sound4,
+                    button: 'btn4'
+                }
+            ];
+
+
+          function newItem() {
+                rand = match [ Math.floor(Math.random() * match.length) ];
+                document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
+                rand.sound.play();
+
+                selected_item = rand.texter;
+                console.log('randomly selected item: ' + selected_item);
+
+                if (already_matched.length >= 4) {
+                        // alert("All done");
+                        $(".button").unbind("click");
+                        rand.sound.pause();
+                        $(".delete").hide();
+                        $('.next').fadeIn(500);
+                        return rand;
+                }
+
+                 if (already_matched.indexOf(selected_item) >= 0) {
+                        //alert('already matched');
+                        rand.sound.pause();
+                        newItem();
+                }
+                already_matched.push(selected_item);
+                return rand;
+            }
+
+           newItem();
+
+            $('.button').on('click', function(event) {
+
+                    console.log('already_matched: ' + already_matched);
+
+
+
+                    if($(this).hasClass(rand.button)) {
+                        // alert('it matches');
+                        rand.sound.pause();
+                        newItem();
+
+                    } else {
+                        // alert('Try again');
+                        wrong.load();
+                        wrong.play();
+                    }
+
+            });
+
+        }
+
+        gamer();
+
     }
     if (currentSlide == 4) {
         $('.next').fadeIn(500);
@@ -109,6 +197,7 @@ var four_btns = new Array(); ///// feed variable with green_btns variable ////
 var div_five_btns = new Array();
 var spin = new Array();//// feed variable spin with spin_btn ////
 var pledge = new Array();
+
 $(document).ready(function () {
 
     var bgMusic = $("#background")[0],
@@ -666,7 +755,7 @@ selectRandomListItem();
 
     //////// DIV4 /////////
 
-  
+
 
 
     ///////// DIV 5 ////////////
@@ -1188,86 +1277,96 @@ selectRandomListItem();
         $('#seventh').fadeIn(2000).delay(3000).fadeOut();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
-var sound1 = document.getElementById('vo13');
-var sound2 = document.getElementById('vo12');
-var sound3 = document.getElementById('vo11');
-var sound4 = document.getElementById('vo14');
-var sound5 = document.getElementById('incorrect');
-
-var already_matched   = new Array();
-var selected_item;
-
-function gamer() {
-
-    var rand = 1;
-    var match = [
-         {
-            texter: 'This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.',
-            sound: sound2,
-            button: 'btn1'
-        } ,
-
-         {
-            texter: 'This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
-            sound: sound1,
-            button: 'btn2'
-        },
-
-         {
-            texter: 'This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.',
-            sound: sound3,
-            button: 'btn3'
-        },
-
-         {
-            texter: 'This is the burning<br/>of waste at high heat.',
-            sound: sound4,
-            button: 'btn4'
-        }
-    ];
 
 
-  function newItem() {
-        rand = match [ Math.floor(Math.random() * match.length) ];
-        document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
-        rand.sound.play();
+// ////// div 4 multyple choice game ////////////////////////
+// var sound1 = document.getElementById('vo13');
+// var sound2 = document.getElementById('vo12');
+// var sound3 = document.getElementById('vo11');
+// var sound4 = document.getElementById('vo14');
+// var sound5 = document.getElementById('incorrect');
 
-        selected_item = rand.texter;
-        console.log('randomly selected item: ' + selected_item);
+// var already_matched   = new Array();
+// var selected_item;
 
-         if (already_matched.indexOf(selected_item) >= 0) {
-                //alert('already matched');
-                rand.sound.pause();
-                newItem();
-        }
-        already_matched.push(selected_item);
-    }
+// function gamer() {
 
-   newItem();
+//     var rand = 1;
+//     var match = [
+//          {
+//             texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
+//             sound: sound2,
+//             button: 'btn1'
+//         } ,
 
-    $('.button').on('click', function(event) {
+//          {
+//             texter: '<div class="comp-text delete">This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
+//             sound: sound1,
+//             button: 'btn2'
+//         },
 
-            console.log('already_matched: ' + already_matched);
+//          {
+//             texter: '<div class="land-text delete">This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.</div>',
+//             sound: sound3,
+//             button: 'btn3'
+//         },
 
-            if (already_matched.length > 4) {
-                alert("All done");
-                return rand;
-            }
+//          {
+//             texter: '<div class="Ins-text delete">This is the burning<br/>of waste at high heat.</div>',
+//             sound: sound4,
+//             button: 'btn4'
+//         }
+//     ];
 
-            if($(this).hasClass(rand.button)) {
-                alert('it matches');
-                rand.sound.pause();
-                newItem();
 
-            } else {
-                alert('Try again');
+//   function newItem() {
+//         rand = match [ Math.floor(Math.random() * match.length) ];
+//         document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
+//         rand.sound.play();
 
-            }
+//         selected_item = rand.texter;
+//         console.log('randomly selected item: ' + selected_item);
 
-    });
+//         if (already_matched.length >= 4) {
+//                 // alert("All done");
+//                 $(".button").unbind("click");
+//                 rand.sound.pause();
+//                 $(".delete").hide();
+//                 $('.next').fadeIn(500);
+//                 return rand;
+//         }
 
-}
+//          if (already_matched.indexOf(selected_item) >= 0) {
+//                 //alert('already matched');
+//                 rand.sound.pause();
+//                 newItem();
+//         }
+//         already_matched.push(selected_item);
+//         return rand;
+//     }
 
-gamer();
+//    newItem();
+
+//     $('.button').on('click', function(event) {
+
+//             console.log('already_matched: ' + already_matched);
+
+
+
+//             if($(this).hasClass(rand.button)) {
+//                 // alert('it matches');
+//                 rand.sound.pause();
+//                 newItem();
+
+//             } else {
+//                 // alert('Try again');
+//                 wrong.load();
+//                 wrong.play();
+//             }
+
+//     });
+
+// }
+
+// gamer();
 });
-
