@@ -65,11 +65,9 @@ game.loadScreenCallback = function (currentSlide) {
         setTimeout(function () {
             vo27.play();
         }, 1000);
+        vo22b.pause();
     }
     if (currentSlide == 6) {
-        setTimeout(function () {
-            vo22b.play();
-        }, 1000);
 
         background.pause();
 
@@ -123,10 +121,13 @@ game.loadScreenCallback = function (currentSlide) {
 
                 if (matched_item.length >= 4) {
                     // alert("All done");
+                    setTimeout(function () {
+                        vo22b.play();
+                    }, 1000);
                     $(".bclick").unbind("click");
                     swap.audio.pause();
                     $(".del").hide();
-                    $('.next').fadeIn(500);
+                    $('.next').delay(4000).fadeIn(500);
                     return swap;
                 }
                 if (matched_item.indexOf(picked_item) >= 0) {
@@ -163,6 +164,11 @@ game.loadScreenCallback = function (currentSlide) {
         var sound3 = document.getElementById('vo19z');
         var sound4 = document.getElementById('vo22z');
         var sound5 = document.getElementById('incorrect');
+        var name1 = document.getElementById('vo12');
+        var name2 = document.getElementById('vo13');
+        var name3 = document.getElementById('vo11');//landfill
+        var name4 = document.getElementById('vo14');
+
 
         var already_matched   = new Array();
         var selected_item;
@@ -176,25 +182,29 @@ game.loadScreenCallback = function (currentSlide) {
                  {
                     texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
                     sound: sound2,
-                    button: 'btn1'
+                    button: 'btn1',
+                    name: name1
                 } ,
 
                  {
                     texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>75% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
                     sound: sound1,
-                    button: 'btn2'
+                    button: 'btn2',
+                    name: name2
                 },
 
                  {
                     texter: '<div class="land-text delete">This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.</div>',
                     sound: sound3,
-                    button: 'btn3'
+                    button: 'btn3',
+                    name: name3
                 },
 
                  {
                     texter: '<div class="Ins-text delete">This is the burning<br/>of waste at high heat.</div>',
                     sound: sound4,
-                    button: 'btn4'
+                    button: 'btn4',
+                    name: name4
                 }
             ];
 
@@ -234,12 +244,15 @@ game.loadScreenCallback = function (currentSlide) {
 
                     console.log('already_matched: ' + already_matched);
 
-
+                    rand.name.play();
 
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
                         rand.sound.pause();
+
+                        setTimeout(function () {
                         newItem();
+                        }, 1800);
 
                     } else {
                         // alert('Try again');
