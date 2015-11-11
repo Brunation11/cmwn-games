@@ -70,7 +70,7 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 6) {
 
         background.pause();
-
+        $('.goodJob').hide();
         var sound6 = document.getElementById('vo25');
         var sound7 = document.getElementById('vo26');
         var sound8 = document.getElementById('vo23');
@@ -130,6 +130,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                 if (matched_item.length >= 4) {
                     // alert("All done");
+                    $('.goodJob').fadeIn(500);
                     setTimeout(function () {
                         vo22b.play();
                     }, 500);
@@ -186,7 +187,7 @@ game.loadScreenCallback = function (currentSlide) {
         var already_matched   = new Array();
         var selected_item;
 
-        $('.goodJob').hide();
+        $('.moveOn').hide();
 
         function gamer() {
 
@@ -235,7 +236,7 @@ game.loadScreenCallback = function (currentSlide) {
                         background.load();
                         background.play();
                         $(".button").unbind("click");
-                        $('.goodJob').fadeIn(500);
+                        $('.moveOn').fadeIn(500);
                         rand.sound.pause();
                         $(".delete").hide();
                         $('.next').fadeIn(500);
