@@ -346,6 +346,8 @@ $(document).ready(function () {
     /// balance conditional statement ////
     $('.toNext').click(function() {
 
+        vo9.pause();
+
         balance.push(selected_one);
 
         if (balance.length == 5) {
@@ -505,6 +507,7 @@ selectRandomListItem();
     });
 
     $('.card').click(function () {
+        vo1.pause();
         $(this).addClass('flipped');
         setTimeout(function () { $('.next').fadeIn(500); }, 6000);
         cards.play();
