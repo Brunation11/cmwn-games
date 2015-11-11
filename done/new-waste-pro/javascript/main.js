@@ -44,7 +44,7 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 10) {
         setTimeout(function () {
             // vo56.play();
-        }, 1000);
+        }, 8000);
     }
 
     if (currentSlide == 9) {
@@ -77,7 +77,7 @@ game.loadScreenCallback = function (currentSlide) {
         // }, 1000);
     }
     if (currentSlide == 4) {
-        $('.next').fadeIn(500);
+        $('.next').delay(5000).fadeIn();
         setTimeout(function () {
             vo10.play();
         }, 1000);
@@ -301,7 +301,7 @@ selectRandomListItem();
 
     $('.card').click(function () {
         $(this).addClass('flipped');
-        setTimeout(function () { $('.next').fadeIn(500); }, 1000);
+        setTimeout(function () { $('.next').fadeIn(500); }, 6000);
         cards.play();
         setTimeout(function () {
             vo2.play();
@@ -362,12 +362,14 @@ selectRandomListItem();
                  left: "315px"
              }, 600);
 
+            $("#dragger").fadeOut();
             $("#head").fadeOut();
             $('#buses').fadeIn();
 
-            $('#n1').fadeIn().click(function() {
+            $('#n1').delay(8000).fadeIn().click(function() {
                 cont.play();
                 $('#n1').fadeOut();
+                $("#dragger").fadeIn();
                 $("#head").fadeIn();
                 $('#buses').fadeOut();
                 $("#drag").hide();
@@ -430,12 +432,14 @@ selectRandomListItem();
                  left: "225px"
              }, 600);
 
+            $("#dragger").fadeOut();
             $("#head").fadeOut();
             $('#cars').fadeIn();
 
-            $('#n2').fadeIn().click(function() {
+            $('#n2').delay(6000).fadeIn().click(function() {
                 cont.play();
                 $('#n2').fadeOut();
+                $("#dragger").fadeIn();
                 $("#head").fadeIn();
                 $('#cars').fadeOut();
                 $("#drag2").hide();
@@ -497,12 +501,14 @@ selectRandomListItem();
                  left: "135px"
              }, 600);
 
+            $("#dragger").fadeOut();
             $("#head").fadeOut();
             $('#elephants').fadeIn();
 
-            $('#n3').fadeIn().click(function() {
+            $('#n3').delay(6000).fadeIn().click(function() {
                 cont.play();
                 $('#n3').fadeOut();
+                $("#dragger").fadeIn();
                 $("#head").fadeIn();
                 $('#elephants').fadeOut();
                 $("#drag3").hide();
@@ -564,12 +570,14 @@ selectRandomListItem();
                  left: "45px"
              }, 600);
 
+            $("#dragger").fadeOut();
             $("#head").fadeOut();
             $('#hippos').fadeIn();
 
-            $('#n4').fadeIn().click(function() {
+            $('#n4').delay(13000).fadeIn().click(function() {
                 cont.play();
                 $('#n4').fadeOut();
+                $("#dragger").fadeIn();
                 $("#head").fadeIn();
                 $('#hippos').fadeOut();
                 $("#drag4").hide();
@@ -631,12 +639,14 @@ selectRandomListItem();
                  left: "-45px"
              }, 600);
 
+            $("#dragger").fadeOut();
             $("#head").fadeOut();
             $('#cats').fadeIn();
 
-            $('#n5').fadeIn().click(function() {
+            $('#n5').delay(7000).fadeIn().click(function() {
                 cont.play();
                 $('#n5').fadeOut();
+                $("#dragger").fadeIn();
                 $("#head").fadeIn();
                 $('#cats').fadeOut();
                 $("#drag5").hide();
