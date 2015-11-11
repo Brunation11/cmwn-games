@@ -75,6 +75,11 @@ game.loadScreenCallback = function (currentSlide) {
         var sound7 = document.getElementById('vo26');
         var sound8 = document.getElementById('vo23');
         var sound9 = document.getElementById('vo24');
+        var btnName1 = document.getElementById('vo17');
+        var btnName2 = document.getElementById('vo18');
+        var btnName3 = document.getElementById('vo15'); //contamination
+        var btnName4 = document.getElementById('vo16');
+
 
         var matched_item   = new Array();
         var picked_item;
@@ -86,28 +91,32 @@ game.loadScreenCallback = function (currentSlide) {
                     description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>Its harmful and enters<br/>water and soil.</div>',
                     called:'<div class="called1 del">Its called...</div>',
                     audio: sound6,
-                    button:'btn5'
+                    button:'btn5',
+                    name: btnName1
                 },
 
                 {
                     description:'<div class="methane-gas-text del">Food waste in a landfill<br/>produces 34% of this<br/>in the US. Its 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
                     called:'<div class="called2 del">Its called...</div>',
                     audio: sound7,
-                    button: 'btn6'
+                    button: 'btn6',
+                    name: btnName2
                 },
 
                 {
                     description:'<div class="contamination-text del">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
                     called:'<div class="called3 del">Its called...</div>',
                     audio: sound8,
-                    button: 'btn7'
+                    button: 'btn7',
+                    name: btnName3
                 },
 
                 {
                     description:'<div class="pollution-text del">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
                     called:'<div class="called4 del">Its called...</div>',
                     audio: sound9,
-                    button: 'btn8'
+                    button: 'btn8',
+                    name: btnName4
                 }
             ];
 
@@ -123,7 +132,7 @@ game.loadScreenCallback = function (currentSlide) {
                     // alert("All done");
                     setTimeout(function () {
                         vo22b.play();
-                    }, 1000);
+                    }, 500);
                     $(".bclick").unbind("click");
                     swap.audio.pause();
                     $(".del").hide();
@@ -144,8 +153,12 @@ game.loadScreenCallback = function (currentSlide) {
             $('.bclick').on('click', function(event) {
                     if($(this).hasClass(swap.button)) {
                         // alert('it matches');
+                        swap.name.play();
                         swap.audio.pause();
+                        // getRandom();
+                        setTimeout(function () {
                         getRandom();
+                        }, 1800);
 
                     } else {
                         // alert('Try again');
