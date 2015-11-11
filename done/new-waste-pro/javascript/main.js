@@ -208,6 +208,8 @@ game.loadScreenCallback = function (currentSlide) {
                 if (already_matched.length >= 4) {
                         // alert("All done");
                         $(".button").unbind("click");
+                        background.load();
+                        background.play();
                         $('.goodJob').fadeIn(500);
                         rand.sound.pause();
                         $(".delete").hide();
