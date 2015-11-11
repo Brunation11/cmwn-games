@@ -106,10 +106,10 @@ game.loadScreenCallback = function (currentSlide) {
     }
     if (currentSlide == 5) {
         ////// div 5 multyple choice game ////////////////////////
-        var sound1 = document.getElementById('vo13');
-        var sound2 = document.getElementById('vo12');
-        var sound3 = document.getElementById('vo11');
-        var sound4 = document.getElementById('vo14');
+        var sound1 = document.getElementById('vo20z');
+        var sound2 = document.getElementById('vo21z');
+        var sound3 = document.getElementById('vo19z');
+        var sound4 = document.getElementById('vo22z');
         var sound5 = document.getElementById('incorrect');
 
         var already_matched   = new Array();
@@ -126,7 +126,7 @@ game.loadScreenCallback = function (currentSlide) {
                 } ,
 
                  {
-                    texter: '<div class="comp-text delete">This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
+                    texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
                     sound: sound1,
                     button: 'btn2'
                 },
@@ -1258,134 +1258,4 @@ selectRandomListItem();
         $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
-var sound1 = document.getElementById('vo20z');
-var sound2 = document.getElementById('vo21z');
-var sound3 = document.getElementById('vo19z');
-var sound4 = document.getElementById('vo22z');
-var sound5 = document.getElementById('incorrect');
-
-var already_matched   = new Array();
-var selected_item;  
-
-function gamer() {
-
-    var rand = 1;
-    var match = [
-         {
-            texter: 'This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.',
-            sound: sound2,
-            button: 'btn1'
-        } ,
-
-         {
-            texter: 'This means to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.',
-            sound: sound1,
-            button: 'btn2'
-        },
-
-         {
-            texter: 'This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.',
-            sound: sound3,
-            button: 'btn3'
-        },
-
-         {
-            texter: 'This is the burning<br/>of waste at high heat.',
-            sound: sound4,
-            button: 'btn4'
-        }
-    ];
-
-
-
-// ////// div 4 multyple choice game ////////////////////////
-// var sound1 = document.getElementById('vo13');
-// var sound2 = document.getElementById('vo12');
-// var sound3 = document.getElementById('vo11');
-// var sound4 = document.getElementById('vo14');
-// var sound5 = document.getElementById('incorrect');
-
-// var already_matched   = new Array();
-// var selected_item;
-
-// function gamer() {
-
-//     var rand = 1;
-//     var match = [
-//          {
-//             texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
-//             sound: sound2,
-//             button: 'btn1'
-//         } ,
-
-//          {
-//             texter: '<div class="comp-text delete">This is a way to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
-//             sound: sound1,
-//             button: 'btn2'
-//         },
-
-//          {
-//             texter: '<div class="land-text delete">This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.</div>',
-//             sound: sound3,
-//             button: 'btn3'
-//         },
-
-//          {
-//             texter: '<div class="Ins-text delete">This is the burning<br/>of waste at high heat.</div>',
-//             sound: sound4,
-//             button: 'btn4'
-//         }
-//     ];
-
-
-//   function newItem() {
-//         rand = match [ Math.floor(Math.random() * match.length) ];
-//         document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
-//         rand.sound.play();
-
-//         selected_item = rand.texter;
-//         console.log('randomly selected item: ' + selected_item);
-
-//         if (already_matched.length >= 4) {
-//                 // alert("All done");
-//                 $(".button").unbind("click");
-//                 rand.sound.pause();
-//                 $(".delete").hide();
-//                 $('.next').fadeIn(500);
-//                 return rand;
-//         }
-
-//          if (already_matched.indexOf(selected_item) >= 0) {
-//                 //alert('already matched');
-//                 rand.sound.pause();
-//                 newItem();
-//         }
-//         already_matched.push(selected_item);
-//         return rand;
-//     }
-
-//    newItem();
-
-//     $('.button').on('click', function(event) {
-
-//             console.log('already_matched: ' + already_matched);
-
-
-
-//             if($(this).hasClass(rand.button)) {
-//                 // alert('it matches');
-//                 rand.sound.pause();
-//                 newItem();
-
-//             } else {
-//                 // alert('Try again');
-//                 wrong.load();
-//                 wrong.play();
-//             }
-
-//     });
-
-// }
-
-// gamer();
 });
