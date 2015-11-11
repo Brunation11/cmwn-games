@@ -70,6 +70,39 @@ game.loadScreenCallback = function (currentSlide) {
         setTimeout(function () {
             vo22b.play();
         }, 1000);
+
+        var sound6 = document.getElementById('vo25');
+        var sound7 = document.getElementById('vo26');
+        var sound8 = document.getElementById('vo23');
+        var sound9 = document.getElementById('vo24');
+        function multypleChoice() {
+            var swap = 1;
+            var allContent = [
+                {
+                    description:'<div class="leachate-text">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>Its harmful and enters<br/>water and soil.</div>',
+                    audio: sound6,
+                    button:'btn5'
+                },
+
+                {
+                    description:'<div class="methane-gas-text">Food waste in a landfill<br/>produces 34% of this<br/>in the US. Its 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
+                    audio: sound7,
+                    button: 'btn6'
+                },
+
+                {
+                    description:'<div class="contamination-text">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
+                    audio: sound8,
+                    button: 'btn7'
+                },
+
+                {
+                    description:'<div class="pollution-text">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
+                    audio: sound9,
+                    button: 'btn8'
+                }
+            ];
+        };
     }
     if (currentSlide == 5) {
         ////// div 5 multyple choice game ////////////////////////
@@ -760,75 +793,22 @@ selectRandomListItem();
 
     ///////// DIV 5 ////////////
 
-    $('.answer1').click(function() {
-        right.load();
-        right.play();
-        div_five_btns.push(div_5);
-        if (div_five_btns.length == 4) {
-            $('.next').fadeIn(500);
-        }
-    selectRandomListItem();
+    // $('.answer1').click(function() {
+    //     right.load();
+    //     right.play();
+    //     div_five_btns.push(div_5);
+    //     if (div_five_btns.length == 4) {
+    //         $('.next').fadeIn(500);
+    //     }
+    // selectRandomListItem();
 
-    });
+    // });
 
-    $('.answer2').click(function() {
-        wrong.load();
-        wrong.play();
-    });
-// $('.leachate').click(function (){
-//     on.load();
-//     on.play();
-//     setTimeout(function () {
-//         vo25.play();
-//     }, 1500);
-//     $(".leachate-text").fadeIn(500);
-//     $(".methane-gas-text").hide();
-//     $(".contamination-text").hide();
-//     $(".pollution-text").hide();
-// });
+    // $('.answer2').click(function() {
+    //     wrong.load();
+    //     wrong.play();
+    // });
 
-// $('.methane-gas').click(function(){
-//     on.load();
-//     on.play();
-//     vo18.load();
-//     vo18.play();
-//     setTimeout(function () {
-//         vo26.play();
-//     }, 1500);
-//     $(".contamination-text").hide();
-//     $(".leachate-text").hide();
-//     $(".pollution-text").hide();
-//     $(".methane-gas-text").fadeIn(500);
-// });
-
-// $('.contamination').click(function(){
-//     on.load();
-//     on.play();
-//     vo15.load();
-//     vo15.play();
-//     setTimeout(function () {
-//         vo23.play();
-//     }, 1500);
-//     $(".contamination-text").fadeIn(500);
-//     $(".leachate-text").hide();
-//     $(".pollution-text").hide();
-//     $(".methane-gas-text").hide();
-// });
-
-// $('.pollution').click(function(){
-//     on.load();
-//     on.play();
-//     vo16.load();
-//     vo16.play();
-//     setTimeout(function () {
-//         vo24.play();
-//     }, 1500);
-//     $(".pollution-text").fadeIn(500);
-//     $(".methane-gas-text").hide();
-//     $(".leachate-text").hide();
-//     $(".contamination-text").hide();
-
-// });
 
     //////// DIV6 /////////
 
