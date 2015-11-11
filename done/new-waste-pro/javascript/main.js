@@ -75,34 +75,84 @@ game.loadScreenCallback = function (currentSlide) {
         var sound7 = document.getElementById('vo26');
         var sound8 = document.getElementById('vo23');
         var sound9 = document.getElementById('vo24');
+
+        var matched_item   = new Array();
+        var picked_item;
+
         function multypleChoice() {
             var swap = 1;
             var allContent = [
                 {
-                    description:'<div class="leachate-text">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>Its harmful and enters<br/>water and soil.</div>',
+                    description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>Its harmful and enters<br/>water and soil.</div>',
+                    called:'<div class="called1 del">Its called...</div>',
                     audio: sound6,
                     button:'btn5'
                 },
 
                 {
-                    description:'<div class="methane-gas-text">Food waste in a landfill<br/>produces 34% of this<br/>in the US. Its 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
+                    description:'<div class="methane-gas-text del">Food waste in a landfill<br/>produces 34% of this<br/>in the US. Its 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
+                    called:'<div class="called2 del">Its called...</div>',
                     audio: sound7,
                     button: 'btn6'
                 },
 
                 {
-                    description:'<div class="contamination-text">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
+                    description:'<div class="contamination-text del">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
+                    called:'<div class="called3 del">Its called...</div>',
                     audio: sound8,
                     button: 'btn7'
                 },
 
                 {
-                    description:'<div class="pollution-text">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
+                    description:'<div class="pollution-text del">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
+                    called:'<div class="called4 del">Its called...</div>',
                     audio: sound9,
                     button: 'btn8'
                 }
             ];
-        };
+
+
+            function getRandom() {
+                swap = allContent [ Math.floor(Math.random() * allContent.length) ];
+                document.getElementById('message').innerHTML = '<p>' + swap.description + swap.called + '</p>' ;
+                swap.audio.play();
+
+                picked_item = swap.description;
+
+                if (matched_item.length >= 4) {
+                    // alert("All done");
+                    $(".bclick").unbind("click");
+                    swap.audio.pause();
+                    $(".del").hide();
+                    $('.next').fadeIn(500);
+                    return swap;
+                }
+                if (matched_item.indexOf(picked_item) >= 0) {
+                        //alert('already matched');
+                        swap.audio.pause();
+                        getRandom();
+                }
+                matched_item.push(picked_item);
+                return swap;
+
+            }
+            getRandom();
+
+            $('.bclick').on('click', function(event) {
+                    if($(this).hasClass(swap.button)) {
+                        // alert('it matches');
+                        swap.audio.pause();
+                        getRandom();
+
+                    } else {
+                        // alert('Try again');
+                        wrong.load();
+                        wrong.play();
+                    }
+
+            });
+        }
+        multypleChoice();
     }
     if (currentSlide == 5) {
         ////// div 5 multyple choice game ////////////////////////
@@ -115,6 +165,8 @@ game.loadScreenCallback = function (currentSlide) {
         var already_matched   = new Array();
         var selected_item;
 
+        $('.goodJob').hide();
+
         function gamer() {
 
             var rand = 1;
@@ -126,7 +178,7 @@ game.loadScreenCallback = function (currentSlide) {
                 } ,
 
                  {
-                    texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>73% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
+                    texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>75% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
                     sound: sound1,
                     button: 'btn2'
                 },
@@ -156,6 +208,7 @@ game.loadScreenCallback = function (currentSlide) {
                 if (already_matched.length >= 4) {
                         // alert("All done");
                         $(".button").unbind("click");
+                        $('.goodJob').fadeIn(500);
                         rand.sound.pause();
                         $(".delete").hide();
                         $('.next').fadeIn(500);
@@ -832,22 +885,6 @@ selectRandomListItem();
 
 
     ///////// DIV 5 ////////////
-
-    // $('.answer1').click(function() {
-    //     right.load();
-    //     right.play();
-    //     div_five_btns.push(div_5);
-    //     if (div_five_btns.length == 4) {
-    //         $('.next').fadeIn(500);
-    //     }
-    // selectRandomListItem();
-
-    // });
-
-    // $('.answer2').click(function() {
-    //     wrong.load();
-    //     wrong.play();
-    // });
 
 
     //////// DIV6 /////////
