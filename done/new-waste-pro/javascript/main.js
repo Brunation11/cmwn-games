@@ -44,7 +44,7 @@ game.loadScreenCallback = function (currentSlide) {
     if (currentSlide == 10) {
         setTimeout(function () {
             // vo56.play();
-        }, 1000);
+        }, 8000);
     }
 
     if (currentSlide == 9) {
@@ -253,7 +253,7 @@ game.loadScreenCallback = function (currentSlide) {
 
     }
     if (currentSlide == 4) {
-        $('.next').fadeIn(500);
+        $('.next').delay(5000).fadeIn();
         setTimeout(function () {
             vo10.play();
         }, 1000);
@@ -478,7 +478,7 @@ selectRandomListItem();
 
     $('.card').click(function () {
         $(this).addClass('flipped');
-        setTimeout(function () { $('.next').fadeIn(500); }, 1000);
+        setTimeout(function () { $('.next').fadeIn(500); }, 6000);
         cards.play();
         setTimeout(function () {
             vo2.play();
@@ -539,12 +539,20 @@ selectRandomListItem();
                  left: "315px"
              }, 600);
 
+            $("#drag2").css('z-index', -1);
+            $("#drag3").css('z-index', -1);
+            $("#drag4").css('z-index', -1);
+            $("#drag5").css('z-index', -1);
             $("#head").fadeOut();
             $('#buses').fadeIn();
 
-            $('#n1').fadeIn().click(function() {
+            $('#n1').delay(8000).fadeIn().click(function() {
                 cont.play();
                 $('#n1').fadeOut();
+                $("#drag2").css('z-index', 2);
+                $("#drag3").css('z-index', 2);
+                $("#drag4").css('z-index', 2);
+                $("#drag5").css('z-index', 2);
                 $("#head").fadeIn();
                 $('#buses').fadeOut();
                 $("#drag").hide();
@@ -607,12 +615,20 @@ selectRandomListItem();
                  left: "225px"
              }, 600);
 
+            $("#drag").css('z-index', -1);
+            $("#drag3").css('z-index', -1);
+            $("#drag4").css('z-index', -1);
+            $("#drag5").css('z-index', -1);
             $("#head").fadeOut();
             $('#cars').fadeIn();
 
-            $('#n2').fadeIn().click(function() {
+            $('#n2').delay(6000).fadeIn().click(function() {
                 cont.play();
                 $('#n2').fadeOut();
+                $("#drag").css('z-index', 2);
+                $("#drag3").css('z-index', 2);
+                $("#drag4").css('z-index', 2);
+                $("#drag5").css('z-index', 2);
                 $("#head").fadeIn();
                 $('#cars').fadeOut();
                 $("#drag2").hide();
@@ -674,12 +690,20 @@ selectRandomListItem();
                  left: "135px"
              }, 600);
 
+            $("#drag").css('z-index', -1);
+            $("#drag2").css('z-index', -1);
+            $("#drag4").css('z-index', -1);
+            $("#drag5").css('z-index', -1);
             $("#head").fadeOut();
             $('#elephants').fadeIn();
 
-            $('#n3').fadeIn().click(function() {
+            $('#n3').delay(6000).fadeIn().click(function() {
                 cont.play();
                 $('#n3').fadeOut();
+                $("#drag").css('z-index', 2);
+                $("#drag2").css('z-index', 2);
+                $("#drag4").css('z-index', 2);
+                $("#drag5").css('z-index', 2);
                 $("#head").fadeIn();
                 $('#elephants').fadeOut();
                 $("#drag3").hide();
@@ -741,12 +765,20 @@ selectRandomListItem();
                  left: "45px"
              }, 600);
 
+            $("#drag").css('z-index', -1);
+            $("#drag2").css('z-index', -1);
+            $("#drag3").css('z-index', -1);
+            $("#drag5").css('z-index', -1);
             $("#head").fadeOut();
             $('#hippos').fadeIn();
 
-            $('#n4').fadeIn().click(function() {
+            $('#n4').delay(13000).fadeIn().click(function() {
                 cont.play();
                 $('#n4').fadeOut();
+                $("#drag").css('z-index', 2);
+                $("#drag2").css('z-index', 2);
+                $("#drag3").css('z-index', 2);
+                $("#drag5").css('z-index', 2);
                 $("#head").fadeIn();
                 $('#hippos').fadeOut();
                 $("#drag4").hide();
@@ -808,12 +840,20 @@ selectRandomListItem();
                  left: "-45px"
              }, 600);
 
+            $("#drag").css('z-index', -1);
+            $("#drag2").css('z-index', -1);
+            $("#drag3").css('z-index', -1);
+            $("#drag4").css('z-index', -1);
             $("#head").fadeOut();
             $('#cats').fadeIn();
 
-            $('#n5').fadeIn().click(function() {
+            $('#n5').delay(7000).fadeIn().click(function() {
                 cont.play();
                 $('#n5').fadeOut();
+                $("#drag").css('z-index', 2);
+                $("#drag2").css('z-index', 2);
+                $("#drag3").css('z-index', 2);
+                $("#drag4").css('z-index', 2);
                 $("#head").fadeIn();
                 $('#cats').fadeOut();
                 $("#drag5").hide();
