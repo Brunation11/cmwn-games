@@ -71,6 +71,8 @@ game.loadScreenCallback = function (currentSlide) {
             vo22b.play();
         }, 1000);
 
+        background.pause();
+
         var sound6 = document.getElementById('vo25');
         var sound7 = document.getElementById('vo26');
         var sound8 = document.getElementById('vo23');
@@ -207,9 +209,9 @@ game.loadScreenCallback = function (currentSlide) {
 
                 if (already_matched.length >= 4) {
                         // alert("All done");
-                        $(".button").unbind("click");
                         background.load();
                         background.play();
+                        $(".button").unbind("click");
                         $('.goodJob').fadeIn(500);
                         rand.sound.pause();
                         $(".delete").hide();
