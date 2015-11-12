@@ -130,12 +130,12 @@ game.loadScreenCallback = function (currentSlide) {
 
                 if (matched_item.length >= 4) {
                     // alert("All done");
-                    $('.goodJob').fadeIn(500);
+                    swap.audio.pause();
                     setTimeout(function () {
                         vo22b.play();
                     }, 500);
+                    $('.goodJob').fadeIn(500);
                     $(".bclick").unbind("click");
-                    swap.audio.pause();
                     $(".del").hide();
                     $('.next').delay(4000).fadeIn(500);
                     return swap;
