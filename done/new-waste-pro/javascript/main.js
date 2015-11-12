@@ -197,28 +197,28 @@ game.loadScreenCallback = function (currentSlide) {
                     texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
                     sound: sound2,
                     button: 'btn1',
-                    name: name1
+                    names: name1
                 } ,
 
                  {
                     texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>75% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
                     sound: sound1,
                     button: 'btn2',
-                    name: name2
+                    names: name2
                 },
 
                  {
                     texter: '<div class="land-text delete">This is a place<br/>to bury solid waste.<br/>Its lined and covered.<br/>It is not a dump.</div>',
                     sound: sound3,
                     button: 'btn3',
-                    name: name3
+                    names: name3
                 },
 
                  {
                     texter: '<div class="Ins-text delete">This is the burning<br/>of waste at high heat.</div>',
                     sound: sound4,
                     button: 'btn4',
-                    name: name4
+                    names: name4
                 }
             ];
 
@@ -258,7 +258,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                     console.log('already_matched: ' + already_matched);
 
-                    rand.name.play();
+                    rand.names.play();
 
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
