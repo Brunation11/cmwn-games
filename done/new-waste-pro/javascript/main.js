@@ -258,10 +258,9 @@ game.loadScreenCallback = function (currentSlide) {
 
                     console.log('already_matched: ' + already_matched);
 
-                    rand.names.play();
-
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
+                        rand.names.play();
                         rand.sound.pause();
 
                         setTimeout(function () {
