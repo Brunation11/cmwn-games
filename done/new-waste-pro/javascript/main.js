@@ -542,6 +542,7 @@ selectRandomListItem();
         drop: function () {
 
             try {
+                vo3.pause();
                 slide.play();
                 right.play();
                 vo6.play();
@@ -618,6 +619,7 @@ selectRandomListItem();
         drop: function () {
 
             try {
+                vo3.pause();
                 slide.play();
                 right.play();
                 vo4.play();
@@ -693,6 +695,7 @@ selectRandomListItem();
         accept: "#drag3",
         drop: function () {
             try {
+                vo3.pause();
                 slide.play();
                 right.play();
                 vo5.play();
@@ -768,6 +771,7 @@ selectRandomListItem();
         accept: "#drag4",
         drop: function () {
             try {
+                vo3.pause();
                 slide.play();
                 right.play();
                 vo8.play();
@@ -843,6 +847,7 @@ selectRandomListItem();
         accept: "#drag5",
         drop: function () {
             try {
+                vo3.pause();
             	slide.play();
                 right.play();
                 vo7.play();
