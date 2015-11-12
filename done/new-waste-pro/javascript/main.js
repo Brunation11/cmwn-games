@@ -88,16 +88,16 @@ game.loadScreenCallback = function (currentSlide) {
             var swap = 1;
             var allContent = [
                 {
-                    description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>Its harmful and enters<br/>water and soil.</div>',
-                    called:'<div class="called1 del">Its called...</div>',
+                    description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>It\'s harmful and enters<br/>water and soil.</div>',
+                    called:'<div class="called1 del">It\'s called...</div>',
                     audio: sound6,
                     button:'btn5',
                     name: btnName1
                 },
 
                 {
-                    description:'<div class="methane-gas-text del">Food waste in a landfill<br/>produces 34% of this<br/>in the US. Its 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
-                    called:'<div class="called2 del">Its called...</div>',
+                    description:'<div class="methane-gas-text del">Food waste in a landfill<br/>produces 34% of this<br/>in the US. It\'s 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
+                    called:'<div class="called2 del">It\'s called...</div>',
                     audio: sound7,
                     button: 'btn6',
                     name: btnName2
@@ -105,7 +105,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                 {
                     description:'<div class="contamination-text del">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
-                    called:'<div class="called3 del">Its called...</div>',
+                    called:'<div class="called3 del">It\'s called...</div>',
                     audio: sound8,
                     button: 'btn7',
                     name: btnName3
@@ -113,7 +113,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                 {
                     description:'<div class="pollution-text del">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
-                    called:'<div class="called4 del">Its called...</div>',
+                    called:'<div class="called4 del">It\'s called...</div>',
                     audio: sound9,
                     button: 'btn8',
                     name: btnName4
@@ -194,7 +194,7 @@ game.loadScreenCallback = function (currentSlide) {
             var rand = 1;
             var match = [
                  {
-                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>Its used to improve soil.</div>',
+                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>It\'s used to improve soil.</div>',
                     sound: sound2,
                     button: 'btn1',
                     names: name1
