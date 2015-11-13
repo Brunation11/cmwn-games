@@ -946,6 +946,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo43.play();
@@ -973,6 +974,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item2",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo32.play();
@@ -1000,6 +1002,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item3",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo37.play();
@@ -1027,6 +1030,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item4",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo28.play();
@@ -1054,6 +1058,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item5",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             milk.play();
@@ -1081,6 +1086,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item6",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo34.play();
@@ -1108,6 +1114,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item7",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo45.play();
@@ -1135,6 +1142,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item8",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo42.play();
@@ -1162,6 +1170,7 @@ selectRandomListItem();
         tolerance: "pointer",
         accept: "#item9",
         drop: function () {
+            vo27.pause();
             trash.load();
             trash.play();
             vo30.play();
