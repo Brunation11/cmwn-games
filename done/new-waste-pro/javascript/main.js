@@ -68,110 +68,113 @@ game.loadScreenCallback = function (currentSlide) {
         vo22b.pause();
     }
     if (currentSlide == 6) {
-
+        vo22b.play();
         background.pause();
-        $('.goodJob').hide();
-        var sound6 = document.getElementById('vo25');
-        var sound7 = document.getElementById('vo26');
-        var sound8 = document.getElementById('vo23');
-        var sound9 = document.getElementById('vo24');
-        var btnName1 = document.getElementById('vo17');
-        var btnName2 = document.getElementById('vo18');
-        var btnName3 = document.getElementById('vo15'); //contamination
-        var btnName4 = document.getElementById('vo16');
+            $('.goodJob').hide();
+            var sound6 = document.getElementById('vo25');
+            var sound7 = document.getElementById('vo26');
+            var sound8 = document.getElementById('vo23');
+            var sound9 = document.getElementById('vo24');
+            var btnName1 = document.getElementById('vo17');
+            var btnName2 = document.getElementById('vo18');
+            var btnName3 = document.getElementById('vo15'); //contamination
+            var btnName4 = document.getElementById('vo16');
 
 
-        var matched_item   = new Array();
-        var picked_item;
+            var matched_item   = new Array();
+            var picked_item;
 
-        function multypleChoice() {
-            var swap = 1;
-            var allContent = [
-                {
-                    description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>It\'s harmful and enters<br/>water and soil.</div>',
-                    called:'<div class="called1 del">It\'s called...</div>',
-                    audio: sound6,
-                    button:'btn5',
-                    name: btnName1
-                },
+        setTimeout(function () {
+            function multypleChoice() {
+                var swap = 1;
+                var allContent = [
+                    {
+                        description:'<div class="leachate-text del">This is the water that<br/>trickles through toxic<br/>substances in landfills.<br/>It\'s harmful and enters<br/>water and soil.</div>',
+                        called:'<div class="called1 del">It\'s called...</div>',
+                        audio: sound6,
+                        button:'btn5',
+                        name: btnName1
+                    },
 
-                {
-                    description:'<div class="methane-gas-text del">Food waste in a landfill<br/>produces 34% of this<br/>in the US. It\'s 21 times<br/>more environmentally<br/>damaging than carbon dioxide.</div>',
-                    called:'<div class="called2 del">It\'s called...</div>',
-                    audio: sound7,
-                    button: 'btn6',
-                    name: btnName2
-                },
+                    {
+                        description:'<div class="methane-gas-text del">Food waste in a<br/>landfill produces 34%<br/>of this in the US.<br/>It\'s 21 times more<br/>environmentally damaging<br/>than carbon dioxide.</div>',
+                        called:'<div class="called2 del">It\'s called...</div>',
+                        audio: sound7,
+                        button: 'btn6',
+                        name: btnName2
+                    },
 
-                {
-                    description:'<div class="contamination-text del">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
-                    called:'<div class="called3 del">It\'s called...</div>',
-                    audio: sound8,
-                    button: 'btn7',
-                    name: btnName3
-                },
+                    {
+                        description:'<div class="contamination-text del">Waste changes the<br/>chemistry of the water.<br/>Hazardous chemicals<br/>get into the soil.<br/>Both harm plants, animals,<br/>humans and ecosystems.</div>',
+                        called:'<div class="called3 del">It\'s called...</div>',
+                        audio: sound8,
+                        button: 'btn7',
+                        name: btnName3
+                    },
 
-                {
-                    description:'<div class="pollution-text del">Bad waste management<br/>leads to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
-                    called:'<div class="called4 del">It\'s called...</div>',
-                    audio: sound9,
-                    button: 'btn8',
-                    name: btnName4
-                }
-            ];
-
-
-            function getRandom() {
-                swap = allContent [ Math.floor(Math.random() * allContent.length) ];
-                document.getElementById('message').innerHTML = '<p>' + swap.description + swap.called + '</p>' ;
-                swap.audio.play();
-
-                picked_item = swap.description;
-
-                if (matched_item.length >= 4) {
-                    // alert("All done");
-                    swap.audio.pause();
-                    setTimeout(function () {
-                        vo22b.play();
-                    }, 500);
-                    $('.goodJob').fadeIn(500);
-                    $(".bclick").unbind("click");
-                    $(".del").hide();
-                    $('.next').delay(4000).fadeIn(500);
-                    return swap;
-                }
-                if (matched_item.indexOf(picked_item) >= 0) {
-                        //alert('already matched');
-                        swap.audio.pause();
-                        getRandom();
-                }
-                matched_item.push(picked_item);
-                return swap;
-
-            }
-            getRandom();
-
-            $('.bclick').on('click', function(event) {
-                    if($(this).hasClass(swap.button)) {
-                        // alert('it matches');
-                        swap.name.play();
-                        swap.audio.pause();
-                        // getRandom();
-                        setTimeout(function () {
-                        getRandom();
-                        }, 1800);
-
-                    } else {
-                        // alert('Try again');
-                        wrong.load();
-                        wrong.play();
+                    {
+                        description:'<div class="pollution-text del">Bad waste<br/>management leads<br/>to dirty land and air.<br/>It causes respiratory and<br/>other health problems.</div>',
+                        called:'<div class="called4 del">It\'s called...</div>',
+                        audio: sound9,
+                        button: 'btn8',
+                        name: btnName4
                     }
+                ];
 
-            });
-        }
-        multypleChoice();
+
+                function getRandom() {
+                    swap = allContent [ Math.floor(Math.random() * allContent.length) ];
+                    document.getElementById('message').innerHTML = '<p>' + swap.description + swap.called + '</p>' ;
+                    swap.audio.play();
+
+                    picked_item = swap.description;
+
+                    if (matched_item.length >= 4) {
+                        // alert("All done");
+                        swap.audio.pause();
+                        setTimeout(function () {
+                            // vo22b.play();
+                        }, 500);
+                        $('.goodJob').fadeIn(500);
+                        $(".bclick").unbind("click");
+                        $(".del").hide();
+                        $('.next').delay(4000).fadeIn(500);
+                        return swap;
+                    }
+                    if (matched_item.indexOf(picked_item) >= 0) {
+                            //alert('already matched');
+                            swap.audio.pause();
+                            getRandom();
+                    }
+                    matched_item.push(picked_item);
+                    return swap;
+
+                }
+                getRandom();
+
+                $('.bclick').on('click', function(event) {
+                        if($(this).hasClass(swap.button)) {
+                            // alert('it matches');
+                            swap.name.play();
+                            swap.audio.pause();
+                            // getRandom();
+                            setTimeout(function () {
+                            getRandom();
+                            }, 1800);
+
+                        } else {
+                            // alert('Try again');
+                            wrong.load();
+                            wrong.play();
+                        }
+
+                });
+            }
+            multypleChoice();
+        }, 7000);
     }
     if (currentSlide == 5) {
+        background.pause();
         ////// div 5 multyple choice game ////////////////////////
         var sound1 = document.getElementById('vo20z');
         var sound2 = document.getElementById('vo21z');
@@ -194,14 +197,14 @@ game.loadScreenCallback = function (currentSlide) {
             var rand = 1;
             var match = [
                  {
-                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay of<br/>organic material.<br/>It\'s used to improve soil.</div>',
+                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay<br/>of organic material.<br/>It\'s used to improve soil.</div>',
                     sound: sound2,
                     button: 'btn1',
                     names: name1
                 } ,
 
                  {
-                    texter: '<div class="comp-text delete">This means to convert<br/>waste into usable material.<br/>75% of what we waste can<br/>be converted but in the US<br/>only 30% is used.</div>',
+                    texter: '<div class="comp-text delete">This means to<br/>convert waste into<br/>usable material. 75% of<br/> what we waste can be converted<br/>but in the US only 30% is used.</div>',
                     sound: sound1,
                     button: 'btn2',
                     names: name2
@@ -281,6 +284,7 @@ game.loadScreenCallback = function (currentSlide) {
 
     }
     if (currentSlide == 4) {
+        background.play();
         $('.next').delay(5000).fadeIn();
         setTimeout(function () {
             vo10.play();
@@ -483,7 +487,7 @@ selectRandomListItem();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').hide();
+        $('.next').show();
         cont.load();
         cont.play();
     });
@@ -1297,6 +1301,7 @@ selectRandomListItem();
     $('#door-c7').hide();
 
     $('#open1').click(function () {
+        vo46.pause();
         vo47.play();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
