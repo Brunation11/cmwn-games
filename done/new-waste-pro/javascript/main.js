@@ -487,7 +487,7 @@ selectRandomListItem();
 
     $('.next').on('click', function(){
         game.loadNextScreen();
-        $('.next').show();
+        $('.next').hide();
         cont.load();
         cont.play();
     });
