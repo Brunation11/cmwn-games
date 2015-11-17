@@ -495,7 +495,31 @@ selectRandomListItem();
     $('.prev').on('click', function(){
         game.loadPrevScreen();
         cont.load();
-        cont.play();
+        cont.play();   
+        vo1.pause(); // Stop playing
+        vo1.currentTime = 0; // Reset time
+        vo3.pause(); // Stop playing
+        vo3.currentTime = 0; // Reset time
+        vo10.pause(); // Stop playing
+        vo10.currentTime = 0; // Reset time
+        background.pause(); // Stop playing
+        background.currentTime = 0; // Reset time
+        vo22b.pause(); // Stop playing
+        vo22b.currentTime = 0; // Reset time
+        vo27.pause(); // Stop playing
+        vo27.currentTime = 0; // Reset time
+        vo46.pause(); // Stop playing
+        vo46.currentTime = 0; // Reset time
+        vo55.pause(); // Stop playing
+        vo55.currentTime = 0; // Reset time
+        pledges.pause(); // Stop playing
+        pledges.currentTime = 0; // Reset time
+        vo56.pause(); // Stop playing
+        vo56.currentTime = 0; // Reset time
+        flip.pause(); // Stop playing
+        flip.currentTime = 0; // Reset time
+        vo62.pause(); // Stop playing
+        vo62.currentTime = 0; // Reset time
     });
 
     $("#start-over").on('click', function() {
