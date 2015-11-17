@@ -129,7 +129,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-                    if (matched_item.length >= 4) {
+                    if (matched_item.length === 4) {
                         // alert("All done");
                         swap.audio.pause();
                         setTimeout(function () {
@@ -234,7 +234,7 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-                if (already_matched.length >= 4) {
+                if (already_matched.length === 4) {
                         // alert("All done");
                         background.load();
                         background.play();
