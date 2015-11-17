@@ -501,6 +501,18 @@ selectRandomListItem();
         vo1.currentTime = 0; // Reset time
         vo3.pause(); // Stop playing
         vo3.currentTime = 0; // Reset time
+        vo4.pause(); // Stop playing
+        vo4.currentTime = 0; // Reset time
+        vo5.pause(); // Stop playing
+        vo5.currentTime = 0; // Reset time
+        vo6.pause(); // Stop playing
+        vo6.currentTime = 0; // Reset time
+        vo7.pause(); // Stop playing
+        vo7.currentTime = 0; // Reset time
+        vo8.pause(); // Stop playing
+        vo8.currentTime = 0; // Reset time
+        vo9.pause(); // Stop playing
+        vo9.currentTime = 0; // Reset time
         vo10.pause(); // Stop playing
         vo10.currentTime = 0; // Reset time
         background.pause(); // Stop playing
@@ -509,8 +521,38 @@ selectRandomListItem();
         vo22b.currentTime = 0; // Reset time
         vo27.pause(); // Stop playing
         vo27.currentTime = 0; // Reset time
+        vo28.pause();
+        vo28.currentTime = 0; // Reset time
+        vo30.pause();
+        vo30.currentTime = 0; // Reset time
+        vo32.pause();
+        vo32.currentTime = 0; // Reset time
+        vo34.pause();
+        vo34.currentTime = 0; // Reset time
+        vo42.pause();
+        vo42.currentTime = 0; // Reset time
+        vo43.pause();
+        vo43.currentTime = 0; // Reset time
+        vo45.pause();
+        vo45.currentTime = 0; // Reset time
+        milk.pause();
+        milk.currentTime = 0; // Reset time
         vo46.pause(); // Stop playing
         vo46.currentTime = 0; // Reset time
+        vo47.pause();
+        vo47.currentTime = 0; // Reset time
+        vo49.pause();
+        vo49.currentTime = 0; // Reset time
+        vo50.pause();
+        vo50.currentTime = 0; // Reset time
+        vo51.pause();
+        vo51.currentTime = 0; // Reset time
+        vo52.pause();
+        vo52.currentTime = 0; // Reset time
+        vo53.pause();
+        vo53.currentTime = 0; // Reset time
+        vo54.pause();
+        vo54.currentTime = 0; // Reset time
         vo55.pause(); // Stop playing
         vo55.currentTime = 0; // Reset time
         pledges.pause(); // Stop playing
