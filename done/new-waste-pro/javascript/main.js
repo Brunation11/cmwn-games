@@ -129,7 +129,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-                    if (matched_item.length === 4) {
+                    if (matched_item.length >= 4) {
                         // alert("All done");
                         swap.audio.pause();
                         setTimeout(function () {
@@ -228,13 +228,13 @@ game.loadScreenCallback = function (currentSlide) {
 
           function newItem() {
                 rand = match [ Math.floor(Math.random() * match.length) ];
-                document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
+                document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>';
                 rand.sound.play();
 
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-                if (already_matched.length === 4) {
+                if (already_matched.length >= 4) {
                         // alert("All done");
                         background.load();
                         background.play();
@@ -252,6 +252,7 @@ game.loadScreenCallback = function (currentSlide) {
                         newItem();
                 }
                 already_matched.push(selected_item);
+
                 return rand;
             }
 
