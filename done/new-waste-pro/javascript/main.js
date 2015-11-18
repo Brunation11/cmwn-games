@@ -214,8 +214,7 @@ game.loadScreenCallback = function (currentSlide) {
                             j++;
 
                             swap.name.play();
-                            // swap.audio.pause();
-                            // getRandom();
+                            swap.audio.pause();
                             setTimeout(function () {
                                     if (j == 4) {
                                     swap.audio.pause();
