@@ -1406,6 +1406,7 @@ selectRandomListItem();
         items.load();
         items.play();
         vo57.play();
+        vo57.currentTime = 0; // Reset time
         $("#paper-towels").modal('show');
     });
 
@@ -1413,6 +1414,7 @@ selectRandomListItem();
         items.load();
         items.play();
         vo58.play();
+        vo58.currentTime = 0; // Reset time
         $("#plastic-bottles").modal('show');
     });
 
@@ -1420,6 +1422,7 @@ selectRandomListItem();
         items.load();
         items.play();
         vo60.play();
+        vo60.currentTime = 0; // Reset time
         $("#plastic-utensils").modal('show');
     });
 
@@ -1427,6 +1430,7 @@ selectRandomListItem();
         items.load();
         items.play();
         vo59.play();
+        vo59.currentTime = 0; // Reset time
         $("#plastic-bags").modal('show');
     });
 
