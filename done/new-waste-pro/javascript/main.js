@@ -35,16 +35,39 @@ game.loadScreenCallback = function (currentSlide) {
         setTimeout(function () {
             vo61.play();
         }, 1000);
+        try {
+        flip.pause(); // Stop playing
+        flip.currentTime = 0; // Reset time
+        vo62.pause(); // Stop playing
+        vo62.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 11) {
         setTimeout(function () {
             vo56.play();
         }, 1000);
+        try {
+            vo61.pause(); // Stop playing
+            vo61.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 10) {
         setTimeout(function () {
             // vo56.play();
         }, 8000);
+        try {
+        vo56.pause(); // Stop playing
+        vo56.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
 
     if (currentSlide == 9) {
@@ -60,12 +83,55 @@ game.loadScreenCallback = function (currentSlide) {
         setTimeout(function () {
             vo46.play();
         }, 1000);
+        $('.prev').click( function(){
+            $('.next').show();
+        });
+        try {
+        vo55.pause(); // Stop playing
+        vo55.currentTime = 0; // Reset time
+        pledges.pause(); // Stop playing
+        pledges.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 7) {
         setTimeout(function () {
             vo27.play();
         }, 1000);
         vo22b.pause();
+        try {
+        // vo27.pause(); // Stop playing
+        // vo27.currentTime = 0; // Reset time
+        // vo28.pause();
+        // vo28.currentTime = 0; // Reset time
+        // vo30.pause();
+        // vo30.currentTime = 0; // Reset time
+        // vo32.pause();
+        // vo32.currentTime = 0; // Reset time
+        // vo34.pause();
+        // vo34.currentTime = 0; // Reset time
+        // vo42.pause();
+        // vo42.currentTime = 0; // Reset time
+        // vo43.pause();
+        // vo43.currentTime = 0; // Reset time
+        // vo45.pause();
+        // vo45.currentTime = 0; // Reset time
+        // milk.pause();
+        // milk.currentTime = 0; // Reset time
+        vo46.pause(); // Stop playing
+        vo47.pause();
+        vo49.pause();
+        vo50.pause();
+        vo51.pause();
+        vo52.pause();
+        vo53.pause();
+        vo54.pause();
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 6) {
         vo22b.play();
@@ -295,15 +361,49 @@ game.loadScreenCallback = function (currentSlide) {
         setTimeout(function () {
             vo3.play();
         }, 1000);
+        vo22b.pause(); // Stop playing
+        vo22b.currentTime = 0; // Reset time
+        try {
+            background.pause(); // Stop playing
+            background.currentTime = 0; // Reset time
+            vo10.pause(); // Stop playing
+            vo10.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 2) {
         $('.arrows').fadeIn(500);
         $('.next').hide();
         $('.card').removeClass('flipped');
+        try {
+            vo3.pause(); // Stop playing
+            vo4.pause(); // Stop playing
+            vo5.pause(); // Stop playing
+            vo6.pause(); // Stop playing
+            vo7.pause(); // Stop playing
+            vo8.pause(); // Stop playing
+            vo9.pause(); // Stop playing
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
     if (currentSlide == 1) {
         $('#play, .next').fadeIn(500);
         $('.arrows').fadeOut(100);
+        try {
+            background.play();
+            background.currentTime = 0; // Reset time
+            vo1.pause(); // Stop playing
+            vo1.currentTime = 0; // Reset time
+            vo2.pause(); // Stop playing
+            vo2.currentTime = 0; // Reset time
+        }
+        catch (err) {
+            //no sound - log error
+        }
     }
 
 }
@@ -496,73 +596,7 @@ selectRandomListItem();
     $('.prev').on('click', function(){
         game.loadPrevScreen();
         cont.load();
-        cont.play();   
-        vo1.pause(); // Stop playing
-        vo1.currentTime = 0; // Reset time
-        vo3.pause(); // Stop playing
-        vo3.currentTime = 0; // Reset time
-        vo4.pause(); // Stop playing
-        vo4.currentTime = 0; // Reset time
-        vo5.pause(); // Stop playing
-        vo5.currentTime = 0; // Reset time
-        vo6.pause(); // Stop playing
-        vo6.currentTime = 0; // Reset time
-        vo7.pause(); // Stop playing
-        vo7.currentTime = 0; // Reset time
-        vo8.pause(); // Stop playing
-        vo8.currentTime = 0; // Reset time
-        vo9.pause(); // Stop playing
-        vo9.currentTime = 0; // Reset time
-        vo10.pause(); // Stop playing
-        vo10.currentTime = 0; // Reset time
-        background.pause(); // Stop playing
-        background.currentTime = 0; // Reset time
-        vo22b.pause(); // Stop playing
-        vo22b.currentTime = 0; // Reset time
-        vo27.pause(); // Stop playing
-        vo27.currentTime = 0; // Reset time
-        vo28.pause();
-        vo28.currentTime = 0; // Reset time
-        vo30.pause();
-        vo30.currentTime = 0; // Reset time
-        vo32.pause();
-        vo32.currentTime = 0; // Reset time
-        vo34.pause();
-        vo34.currentTime = 0; // Reset time
-        vo42.pause();
-        vo42.currentTime = 0; // Reset time
-        vo43.pause();
-        vo43.currentTime = 0; // Reset time
-        vo45.pause();
-        vo45.currentTime = 0; // Reset time
-        milk.pause();
-        milk.currentTime = 0; // Reset time
-        vo46.pause(); // Stop playing
-        vo46.currentTime = 0; // Reset time
-        vo47.pause();
-        vo47.currentTime = 0; // Reset time
-        vo49.pause();
-        vo49.currentTime = 0; // Reset time
-        vo50.pause();
-        vo50.currentTime = 0; // Reset time
-        vo51.pause();
-        vo51.currentTime = 0; // Reset time
-        vo52.pause();
-        vo52.currentTime = 0; // Reset time
-        vo53.pause();
-        vo53.currentTime = 0; // Reset time
-        vo54.pause();
-        vo54.currentTime = 0; // Reset time
-        vo55.pause(); // Stop playing
-        vo55.currentTime = 0; // Reset time
-        pledges.pause(); // Stop playing
-        pledges.currentTime = 0; // Reset time
-        vo56.pause(); // Stop playing
-        vo56.currentTime = 0; // Reset time
-        flip.pause(); // Stop playing
-        flip.currentTime = 0; // Reset time
-        vo62.pause(); // Stop playing
-        vo62.currentTime = 0; // Reset time
+        cont.play();
     });
 
     $("#start-over").on('click', function() {
