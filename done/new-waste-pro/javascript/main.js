@@ -129,21 +129,6 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-<<<<<<< HEAD
-=======
-                    if (matched_item.length >= 4) {
-                        // alert("All done");
-                        swap.audio.pause();
-                        setTimeout(function () {
-                            // vo22b.play();
-                        }, 500);
-                        $('.goodJob').fadeIn(500);
-                        $(".bclick").unbind("click");
-                        $(".del").hide();
-                        $('.next').delay(4000).fadeIn(500);
-                        return swap;
-                    }
->>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -173,7 +158,7 @@ game.loadScreenCallback = function (currentSlide) {
                                 return swap;
                             }
                             swap.name.play();
-                            swap.audio.pause();
+                            // swap.audio.pause();
                             // getRandom();
                             setTimeout(function () {
                             getRandom();
@@ -251,21 +236,6 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-<<<<<<< HEAD
-=======
-                if (already_matched.length >= 4) {
-                        // alert("All done");
-                        background.load();
-                        background.play();
-                        $(".button").unbind("click");
-                        $('.moveOn').fadeIn(500);
-                        rand.sound.pause();
-                        $(".delete").hide();
-                        $('.next').fadeIn(500);
-                        return rand;
-                }
-
->>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
                  if (already_matched.indexOf(selected_item) >= 0) {
                         //alert('already matched');
                         rand.sound.pause();
@@ -282,24 +252,24 @@ game.loadScreenCallback = function (currentSlide) {
             $('.button').on('click', function(event) {
 
                     console.log('already_matched: ' + already_matched);
-
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
                         i++;
-                        if (i == 4) {
-                            background.load();
-                            background.play();
-                            $(".button").unbind("click");
-                            $('.moveOn').fadeIn(500);
-                            rand.sound.pause();
-                            $(".delete").hide();
-                            $('.next').fadeIn(500);
-                            return rand;
-                        }
                         rand.names.play();
                         rand.sound.pause();
 
                         setTimeout(function () {
+                                if (i == 4) {
+                                background.load();
+                                background.play();
+                                $(".button").unbind("click");
+                                $('.moveOn').fadeIn(500);
+                                // rand.sound.pause();
+                                $(".delete").hide();
+                                $('.next').fadeIn(500);
+                                return rand;
+                            }
+
                         newItem();
                         }, 1800);
 
@@ -528,7 +498,7 @@ selectRandomListItem();
     $('.prev').on('click', function(){
         game.loadPrevScreen();
         cont.load();
-        cont.play();   
+        cont.play();
         vo1.pause(); // Stop playing
         vo1.currentTime = 0; // Reset time
         vo3.pause(); // Stop playing
