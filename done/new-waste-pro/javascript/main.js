@@ -195,8 +195,6 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-<<<<<<< HEAD
-=======
                     if (matched_item.length >= 4) {
                         // alert("All done");
                         swap.audio.pause();
@@ -209,7 +207,6 @@ game.loadScreenCallback = function (currentSlide) {
                         $('.next').delay(4000).fadeIn(500);
                         return swap;
                     }
->>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -317,8 +314,6 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-<<<<<<< HEAD
-=======
                 if (already_matched.length >= 4) {
                         // alert("All done");
                         background.load();
@@ -331,8 +326,7 @@ game.loadScreenCallback = function (currentSlide) {
                         return rand;
                 }
 
->>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
-                 if (already_matched.indexOf(selected_item) >= 0) {
+                if (already_matched.indexOf(selected_item) >= 0) {
                         //alert('already matched');
                         rand.sound.pause();
                         newItem();
