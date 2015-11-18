@@ -225,21 +225,23 @@ game.loadScreenCallback = function (currentSlide) {
                         if($(this).hasClass(swap.button)) {
                             // alert('it matches');
                             j++;
-                            if (j == 4) {
-                                swap.audio.pause();
-                                setTimeout(function () {
-                                    // vo22b.play();
-                                }, 500);
-                                $('.goodJob').fadeIn(500);
-                                $(".bclick").unbind("click");
-                                $(".del").hide();
-                                $('.next').delay(4000).fadeIn(500);
-                                return swap;
-                            }
+
                             swap.name.play();
                             // swap.audio.pause();
                             // getRandom();
                             setTimeout(function () {
+                                    if (j == 4) {
+                                    swap.audio.pause();
+                                    setTimeout(function () {
+                                        // vo22b.play();
+                                    }, 500);
+                                    $('.goodJob').fadeIn(500);
+                                    $(".bclick").unbind("click");
+                                    $(".del").hide();
+                                    $('.next').delay(4000).fadeIn(500);
+                                    return swap;
+                                }
+
                             getRandom();
                             }, 1800);
 
