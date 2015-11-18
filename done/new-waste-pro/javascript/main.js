@@ -195,19 +195,6 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-                    if (matched_item.length >= 4) {
-                        // alert("All done");
-                        swap.audio.pause();
-                        setTimeout(function () {
-                            // vo22b.play();
-                        }, 500);
-                        $('.goodJob').fadeIn(500);
-                        $(".bclick").unbind("click");
-                        $(".del").hide();
-                        $('.next').delay(4000).fadeIn(500);
-                        return swap;
-                    }
-
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -317,18 +304,6 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-                if (already_matched.length >= 4) {
-                        // alert("All done");
-                        background.load();
-                        background.play();
-                        $(".button").unbind("click");
-                        $('.moveOn').fadeIn(500);
-                        rand.sound.pause();
-                        $(".delete").hide();
-                        $('.next').fadeIn(500);
-                        return rand;
-                }
-
                 if (already_matched.indexOf(selected_item) >= 0) {
                         //alert('already matched');
                         rand.sound.pause();
@@ -357,7 +332,7 @@ game.loadScreenCallback = function (currentSlide) {
                                 background.play();
                                 $(".button").unbind("click");
                                 $('.moveOn').fadeIn(500);
-                                // rand.sound.pause();
+                                rand.sound.pause();
                                 $(".delete").hide();
                                 $('.next').fadeIn(500);
                                 return rand;
@@ -506,97 +481,6 @@ $(document).ready(function () {
             }
         }
     });
-
-// randomize function for
-// first set of facts in div 4 and 5///
-$('.quote').hide();
-$('.quote2').hide();
-function selectRandomListItem() {
-
-/////////  first set of buttons ////////////////////
-    $('#fact-text .quote:gt(0)').hide( function(){
-        if($('#b1').is(':visible')) {
-            vo19.pause();
-            vo21.play();
-            vo22a.pause();
-        }
-        if($('#b2').is(':visible')) {
-            vo19.pause();
-            vo21.pause();
-            vo22a.pause();
-        }
-        if($('#b3').is(':visible')) {
-            vo19.play();
-            vo21.pause();
-            vo22a.pause();
-        }
-        if($('#b4').is(':visible')) {
-            vo19.pause();
-            vo21.pause();
-            vo22a.play();
-        }
-    });
-
-    var random = $('#fact-text > .quote').not(':visible') //Select only the hidden one
-    var swapRandom = Math.floor(Math.random() * random.length); //Use only those hidden, remove the 1 since we are now on a 0-based index
-
-    $('#fact-text > .quote').hide();
-    random.eq(swapRandom).show();
-
-///////// Second set of buttons ///////////////
-    $('#fact-text-2 .quote2:gt(0)').hide( function() {
-        if($('#c1').is(':visible')) {
-            vo23.pause();
-            vo24.pause();
-            vo25.play();
-            vo26.pause();
-        }
-        if($('#c2').is(':visible')) {
-            vo23.pause();
-            vo24.pause();
-            vo25.pause();
-            vo26.play();
-        }
-        if($('#c3').is(':visible')) {
-            vo23.play();
-            vo24.pause();
-            vo25.pause();
-            vo26.pause();
-        }
-        if($('#c4').is(':visible')) {
-            vo23.pause();
-            vo24.play();
-            vo25.pause();
-            vo26.pause();
-        }
-    });
-
-    var random_two = $('#fact-text-2 > .quote2').not(':visible') //Select only the hidden one
-    var swapRandom_two = Math.floor(Math.random() * random_two.length);
-
-    $('#fact-text-2 > .quote2').hide();
-    random_two.eq(swapRandom_two).show();
-
-};
-selectRandomListItem();
-
-    // feed array to go to next screen //
-    // $('.spin').click(function() {
-    //     pull.play();
-    //     spins.play();
-    //     setTimeout(function () {
-    //         stops.play();
-    //     }, 3600);
-
-    //     spin.push(spin_btn);
-
-    //     if (spin.length == 7) {
-    //         setTimeout(function(){
-    //             $('.next').fadeIn(500);
-    //             endslot.play();
-    //         },5500);
-    //     }
-    // });
 
     // feed array to go to next screen //
     $('.pledge').click(function() {
