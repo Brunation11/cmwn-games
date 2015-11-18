@@ -243,7 +243,7 @@ game.loadScreenCallback = function (currentSlide) {
                                 }
 
                             getRandom();
-                            }, 1800);
+                            }, 2000);
 
                         } else {
                             // alert('Try again');
@@ -364,7 +364,7 @@ game.loadScreenCallback = function (currentSlide) {
                             }
 
                         newItem();
-                        }, 1800);
+                        }, 2000);
 
                     } else {
                         // alert('Try again');
