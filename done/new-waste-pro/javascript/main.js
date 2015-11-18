@@ -129,18 +129,6 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-                    if (matched_item.length === 4) {
-                        // alert("All done");
-                        swap.audio.pause();
-                        setTimeout(function () {
-                            // vo22b.play();
-                        }, 500);
-                        $('.goodJob').fadeIn(500);
-                        $(".bclick").unbind("click");
-                        $(".del").hide();
-                        $('.next').delay(4000).fadeIn(500);
-                        return swap;
-                    }
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -152,9 +140,23 @@ game.loadScreenCallback = function (currentSlide) {
                 }
                 getRandom();
 
+                var j = 0;
+
                 $('.bclick').on('click', function(event) {
                         if($(this).hasClass(swap.button)) {
                             // alert('it matches');
+                            j++;
+                            if (j == 4) {
+                                swap.audio.pause();
+                                setTimeout(function () {
+                                    // vo22b.play();
+                                }, 500);
+                                $('.goodJob').fadeIn(500);
+                                $(".bclick").unbind("click");
+                                $(".del").hide();
+                                $('.next').delay(4000).fadeIn(500);
+                                return swap;
+                            }
                             swap.name.play();
                             swap.audio.pause();
                             // getRandom();
@@ -197,15 +199,15 @@ game.loadScreenCallback = function (currentSlide) {
             var rand = 1;
             var match = [
                  {
-                    texter: '<div class="Rec-text delete">This is how you<br/>manage the decay<br/>of organic material.<br/>It\'s used to improve soil.</div>',
-                    sound: sound2,
+                    texter: '<div class="Rec-text delete">This means to<br/>convert waste into<br/>usable material. 75% of<br/> what we waste can be converted<br/>but in the US only 30% is used.</div>',
+                    sound: sound1,
                     button: 'btn1',
                     names: name1
                 } ,
 
                  {
-                    texter: '<div class="comp-text delete">This means to<br/>convert waste into<br/>usable material. 75% of<br/> what we waste can be converted<br/>but in the US only 30% is used.</div>',
-                    sound: sound1,
+                    texter: '<div class="comp-text delete">This is how you<br/>manage the decay<br/>of organic material.<br/>It\'s used to improve soil.</div>',
+                    sound: sound2,
                     button: 'btn2',
                     names: name2
                 },
@@ -234,18 +236,6 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-                if (already_matched.length === 4) {
-                        // alert("All done");
-                        background.load();
-                        background.play();
-                        $(".button").unbind("click");
-                        $('.moveOn').fadeIn(500);
-                        rand.sound.pause();
-                        $(".delete").hide();
-                        $('.next').fadeIn(500);
-                        return rand;
-                }
-
                  if (already_matched.indexOf(selected_item) >= 0) {
                         //alert('already matched');
                         rand.sound.pause();
@@ -257,12 +247,24 @@ game.loadScreenCallback = function (currentSlide) {
 
            newItem();
 
+           var i = 0;
             $('.button').on('click', function(event) {
 
                     console.log('already_matched: ' + already_matched);
 
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
+                        i++;
+                        if (i == 4) {
+                            background.load();
+                            background.play();
+                            $(".button").unbind("click");
+                            $('.moveOn').fadeIn(500);
+                            rand.sound.pause();
+                            $(".delete").hide();
+                            $('.next').fadeIn(500);
+                            return rand;
+                        }
                         rand.names.play();
                         rand.sound.pause();
 

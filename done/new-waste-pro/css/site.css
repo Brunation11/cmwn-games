@@ -7822,10 +7822,10 @@ _:-ms-fullscreen,
   line-height: 25px;
 }
 .Rec-text {
-  margin-left: 22px;
+  margin-left: -12px;
 }
 .comp-text {
-  margin-left: -10px;
+  margin-left: 20px;
 }
 .land-text {
   margin-left: 33px;
