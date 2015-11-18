@@ -195,7 +195,6 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
-<<<<<<< HEAD
                     if (matched_item.length >= 4) {
                         // alert("All done");
                         swap.audio.pause();
@@ -208,8 +207,7 @@ game.loadScreenCallback = function (currentSlide) {
                         $('.next').delay(4000).fadeIn(500);
                         return swap;
                     }
-=======
->>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
+
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -317,7 +315,6 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
-<<<<<<< HEAD
                 if (already_matched.length >= 4) {
                         // alert("All done");
                         background.load();
@@ -331,9 +328,6 @@ game.loadScreenCallback = function (currentSlide) {
                 }
 
                 if (already_matched.indexOf(selected_item) >= 0) {
-=======
-                 if (already_matched.indexOf(selected_item) >= 0) {
->>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
                         //alert('already matched');
                         rand.sound.pause();
                         newItem();
@@ -630,8 +624,6 @@ selectRandomListItem();
         game.loadPrevScreen();
         cont.load();
         cont.play();
-<<<<<<< HEAD
-=======
         vo1.pause(); // Stop playing
         vo1.currentTime = 0; // Reset time
         vo3.pause(); // Stop playing
@@ -698,7 +690,6 @@ selectRandomListItem();
         flip.currentTime = 0; // Reset time
         vo62.pause(); // Stop playing
         vo62.currentTime = 0; // Reset time
->>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
     });
 
     $("#start-over").on('click', function() {
