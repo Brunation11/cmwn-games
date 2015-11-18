@@ -195,6 +195,7 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
+<<<<<<< HEAD
                     if (matched_item.length >= 4) {
                         // alert("All done");
                         swap.audio.pause();
@@ -207,6 +208,8 @@ game.loadScreenCallback = function (currentSlide) {
                         $('.next').delay(4000).fadeIn(500);
                         return swap;
                     }
+=======
+>>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -236,7 +239,7 @@ game.loadScreenCallback = function (currentSlide) {
                                 return swap;
                             }
                             swap.name.play();
-                            swap.audio.pause();
+                            // swap.audio.pause();
                             // getRandom();
                             setTimeout(function () {
                             getRandom();
@@ -314,6 +317,7 @@ game.loadScreenCallback = function (currentSlide) {
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
+<<<<<<< HEAD
                 if (already_matched.length >= 4) {
                         // alert("All done");
                         background.load();
@@ -327,6 +331,9 @@ game.loadScreenCallback = function (currentSlide) {
                 }
 
                 if (already_matched.indexOf(selected_item) >= 0) {
+=======
+                 if (already_matched.indexOf(selected_item) >= 0) {
+>>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
                         //alert('already matched');
                         rand.sound.pause();
                         newItem();
@@ -342,24 +349,24 @@ game.loadScreenCallback = function (currentSlide) {
             $('.button').on('click', function(event) {
 
                     console.log('already_matched: ' + already_matched);
-
                     if($(this).hasClass(rand.button)) {
                         // alert('it matches');
                         i++;
-                        if (i == 4) {
-                            background.load();
-                            background.play();
-                            $(".button").unbind("click");
-                            $('.moveOn').fadeIn(500);
-                            rand.sound.pause();
-                            $(".delete").hide();
-                            $('.next').fadeIn(500);
-                            return rand;
-                        }
                         rand.names.play();
                         rand.sound.pause();
 
                         setTimeout(function () {
+                                if (i == 4) {
+                                background.load();
+                                background.play();
+                                $(".button").unbind("click");
+                                $('.moveOn').fadeIn(500);
+                                // rand.sound.pause();
+                                $(".delete").hide();
+                                $('.next').fadeIn(500);
+                                return rand;
+                            }
+
                         newItem();
                         }, 1800);
 
@@ -623,6 +630,75 @@ selectRandomListItem();
         game.loadPrevScreen();
         cont.load();
         cont.play();
+<<<<<<< HEAD
+=======
+        vo1.pause(); // Stop playing
+        vo1.currentTime = 0; // Reset time
+        vo3.pause(); // Stop playing
+        vo3.currentTime = 0; // Reset time
+        vo4.pause(); // Stop playing
+        vo4.currentTime = 0; // Reset time
+        vo5.pause(); // Stop playing
+        vo5.currentTime = 0; // Reset time
+        vo6.pause(); // Stop playing
+        vo6.currentTime = 0; // Reset time
+        vo7.pause(); // Stop playing
+        vo7.currentTime = 0; // Reset time
+        vo8.pause(); // Stop playing
+        vo8.currentTime = 0; // Reset time
+        vo9.pause(); // Stop playing
+        vo9.currentTime = 0; // Reset time
+        vo10.pause(); // Stop playing
+        vo10.currentTime = 0; // Reset time
+        background.pause(); // Stop playing
+        background.currentTime = 0; // Reset time
+        vo22b.pause(); // Stop playing
+        vo22b.currentTime = 0; // Reset time
+        vo27.pause(); // Stop playing
+        vo27.currentTime = 0; // Reset time
+        vo28.pause();
+        vo28.currentTime = 0; // Reset time
+        vo30.pause();
+        vo30.currentTime = 0; // Reset time
+        vo32.pause();
+        vo32.currentTime = 0; // Reset time
+        vo34.pause();
+        vo34.currentTime = 0; // Reset time
+        vo42.pause();
+        vo42.currentTime = 0; // Reset time
+        vo43.pause();
+        vo43.currentTime = 0; // Reset time
+        vo45.pause();
+        vo45.currentTime = 0; // Reset time
+        milk.pause();
+        milk.currentTime = 0; // Reset time
+        vo46.pause(); // Stop playing
+        vo46.currentTime = 0; // Reset time
+        vo47.pause();
+        vo47.currentTime = 0; // Reset time
+        vo49.pause();
+        vo49.currentTime = 0; // Reset time
+        vo50.pause();
+        vo50.currentTime = 0; // Reset time
+        vo51.pause();
+        vo51.currentTime = 0; // Reset time
+        vo52.pause();
+        vo52.currentTime = 0; // Reset time
+        vo53.pause();
+        vo53.currentTime = 0; // Reset time
+        vo54.pause();
+        vo54.currentTime = 0; // Reset time
+        vo55.pause(); // Stop playing
+        vo55.currentTime = 0; // Reset time
+        pledges.pause(); // Stop playing
+        pledges.currentTime = 0; // Reset time
+        vo56.pause(); // Stop playing
+        vo56.currentTime = 0; // Reset time
+        flip.pause(); // Stop playing
+        flip.currentTime = 0; // Reset time
+        vo62.pause(); // Stop playing
+        vo62.currentTime = 0; // Reset time
+>>>>>>> 6e9c575912c5c0e40d0e5fbe55dc6e7c18557f44
     });
 
     $("#start-over").on('click', function() {
