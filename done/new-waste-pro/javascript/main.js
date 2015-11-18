@@ -129,6 +129,21 @@ game.loadScreenCallback = function (currentSlide) {
 
                     picked_item = swap.description;
 
+<<<<<<< HEAD
+=======
+                    if (matched_item.length >= 4) {
+                        // alert("All done");
+                        swap.audio.pause();
+                        setTimeout(function () {
+                            // vo22b.play();
+                        }, 500);
+                        $('.goodJob').fadeIn(500);
+                        $(".bclick").unbind("click");
+                        $(".del").hide();
+                        $('.next').delay(4000).fadeIn(500);
+                        return swap;
+                    }
+>>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
                     if (matched_item.indexOf(picked_item) >= 0) {
                             //alert('already matched');
                             swap.audio.pause();
@@ -230,18 +245,34 @@ game.loadScreenCallback = function (currentSlide) {
 
           function newItem() {
                 rand = match [ Math.floor(Math.random() * match.length) ];
-                document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>' ;
+                document.getElementById('texter').innerHTML = '<p>' + rand.texter + '</p>';
                 rand.sound.play();
 
                 selected_item = rand.texter;
                 console.log('randomly selected item: ' + selected_item);
 
+<<<<<<< HEAD
+=======
+                if (already_matched.length >= 4) {
+                        // alert("All done");
+                        background.load();
+                        background.play();
+                        $(".button").unbind("click");
+                        $('.moveOn').fadeIn(500);
+                        rand.sound.pause();
+                        $(".delete").hide();
+                        $('.next').fadeIn(500);
+                        return rand;
+                }
+
+>>>>>>> 0e47f49b2b13e225044ed7cb5cffa8f8ea402055
                  if (already_matched.indexOf(selected_item) >= 0) {
                         //alert('already matched');
                         rand.sound.pause();
                         newItem();
                 }
                 already_matched.push(selected_item);
+
                 return rand;
             }
 
@@ -497,7 +528,73 @@ selectRandomListItem();
     $('.prev').on('click', function(){
         game.loadPrevScreen();
         cont.load();
-        cont.play();
+        cont.play();   
+        vo1.pause(); // Stop playing
+        vo1.currentTime = 0; // Reset time
+        vo3.pause(); // Stop playing
+        vo3.currentTime = 0; // Reset time
+        vo4.pause(); // Stop playing
+        vo4.currentTime = 0; // Reset time
+        vo5.pause(); // Stop playing
+        vo5.currentTime = 0; // Reset time
+        vo6.pause(); // Stop playing
+        vo6.currentTime = 0; // Reset time
+        vo7.pause(); // Stop playing
+        vo7.currentTime = 0; // Reset time
+        vo8.pause(); // Stop playing
+        vo8.currentTime = 0; // Reset time
+        vo9.pause(); // Stop playing
+        vo9.currentTime = 0; // Reset time
+        vo10.pause(); // Stop playing
+        vo10.currentTime = 0; // Reset time
+        background.pause(); // Stop playing
+        background.currentTime = 0; // Reset time
+        vo22b.pause(); // Stop playing
+        vo22b.currentTime = 0; // Reset time
+        vo27.pause(); // Stop playing
+        vo27.currentTime = 0; // Reset time
+        vo28.pause();
+        vo28.currentTime = 0; // Reset time
+        vo30.pause();
+        vo30.currentTime = 0; // Reset time
+        vo32.pause();
+        vo32.currentTime = 0; // Reset time
+        vo34.pause();
+        vo34.currentTime = 0; // Reset time
+        vo42.pause();
+        vo42.currentTime = 0; // Reset time
+        vo43.pause();
+        vo43.currentTime = 0; // Reset time
+        vo45.pause();
+        vo45.currentTime = 0; // Reset time
+        milk.pause();
+        milk.currentTime = 0; // Reset time
+        vo46.pause(); // Stop playing
+        vo46.currentTime = 0; // Reset time
+        vo47.pause();
+        vo47.currentTime = 0; // Reset time
+        vo49.pause();
+        vo49.currentTime = 0; // Reset time
+        vo50.pause();
+        vo50.currentTime = 0; // Reset time
+        vo51.pause();
+        vo51.currentTime = 0; // Reset time
+        vo52.pause();
+        vo52.currentTime = 0; // Reset time
+        vo53.pause();
+        vo53.currentTime = 0; // Reset time
+        vo54.pause();
+        vo54.currentTime = 0; // Reset time
+        vo55.pause(); // Stop playing
+        vo55.currentTime = 0; // Reset time
+        pledges.pause(); // Stop playing
+        pledges.currentTime = 0; // Reset time
+        vo56.pause(); // Stop playing
+        vo56.currentTime = 0; // Reset time
+        flip.pause(); // Stop playing
+        flip.currentTime = 0; // Reset time
+        vo62.pause(); // Stop playing
+        vo62.currentTime = 0; // Reset time
     });
 
     $("#start-over").on('click', function() {
@@ -952,6 +1049,14 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo43.play();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo37.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item").css('opacity','0');
             $(".orange-text").fadeIn(500);
             $(".shoe-text").hide();
@@ -980,6 +1085,14 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo32.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo34.pause();
+            vo37.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item2").css('opacity','0');
             $(".shoe-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1008,6 +1121,14 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo37.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item3").css('opacity','0');
             $(".can-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1036,6 +1157,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo28.play();
+            vo43.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item4").css('opacity','0');
             $(".shirt-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1064,6 +1192,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             milk.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo42.pause();
+            vo45.pause();
             $("#item5").css('opacity','0');
             $(".milk-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1092,6 +1227,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo34.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item6").css('opacity','0');
             $(".bottle-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1120,6 +1262,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo45.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo42.pause();
+            milk.pause();
             $("#item7").css('opacity','0');
             $(".battery-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1148,6 +1297,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo42.play();
+            vo43.pause();
+            vo28.pause();
+            vo30.pause();
+            vo32.pause();
+            vo34.pause();
+            vo45.pause();
+            milk.pause();
             $("#item8").css('opacity','0');
             $(".paper-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1176,6 +1332,13 @@ selectRandomListItem();
             trash.load();
             trash.play();
             vo30.play();
+            vo43.pause();
+            vo28.pause();
+            vo32.pause();
+            vo34.pause();
+            vo42.pause();
+            vo45.pause();
+            milk.pause();
             $("#item9").css('opacity','0');
             $(".foil-text").fadeIn(500);
             $(".orange-text").hide();
@@ -1317,10 +1480,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open1').hide();
-        $('#open2').delay(5500).fadeIn();
-        $('#door').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#first').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open2').delay(6000).fadeIn();
+        $('#door').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#first').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open2').click(function () {
@@ -1328,10 +1491,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open2').hide();
-        $('#open3').delay(5500).fadeIn();
-        $('#door2').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#second').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c2').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open3').delay(6000).fadeIn();
+        $('#door2').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#second').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c2').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open3').click(function () {
@@ -1339,10 +1502,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open3').hide();
-        $('#open4').delay(5500).fadeIn();
-        $('#door3').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#third').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c3').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open4').delay(6000).fadeIn();
+        $('#door3').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#third').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c3').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open4').click(function () {
@@ -1350,10 +1513,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open4').hide();
-        $('#open5').delay(5500).fadeIn();
-        $('#door4').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#fourth').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c4').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open5').delay(6000).fadeIn();
+        $('#door4').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#fourth').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c4').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open5').click(function () {
@@ -1361,10 +1524,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(8000).fadeIn();
         $('#open5').hide();
-        $('#open6').delay(9500).fadeIn();
-        $('#door5').show().delay(9000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#fifth').delay(500).fadeIn(500).delay(8000).fadeOut();
-        $('#door-c5').hide().delay(9000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open6').delay(10000).fadeIn();
+        $('#door5').show().delay(10000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#fifth').delay(700).fadeIn(300).delay(8000).fadeOut();
+        $('#door-c5').hide().delay(10000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open6').click(function () {
@@ -1372,10 +1535,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open6').hide();
-        $('#open7').delay(5500).fadeIn();
-        $('#door6').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#sixth').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c6').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('#open7').delay(6000).fadeIn();
+        $('#door6').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#sixth').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c6').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
     $('#open7').click(function () {
@@ -1383,10 +1546,10 @@ selectRandomListItem();
         $('#main').hide();
         $('#head1').fadeOut().delay(4000).fadeIn();
         $('#open7').fadeOut();
-        $('.next').delay(5500).fadeIn();
-        $('#door7').show().delay(5000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
-        $('#seventh').delay(500).fadeIn(500).delay(4000).fadeOut();
-        $('#door-c7').hide().delay(5000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
+        $('.next').delay(6000).fadeIn();
+        $('#door7').show().delay(6000).fadeOut().css("background-image", "url('content/images/open_door.gif" + "?a=" + Math.random() + "')");
+        $('#seventh').delay(700).fadeIn(300).delay(4000).fadeOut();
+        $('#door-c7').hide().delay(6000).fadeIn().css("background-image", "url('content/images/closed_door.gif" + "?a=" + Math.random() + "')");
     });
 
 });
