@@ -1,0 +1,291 @@
+<audio id="start1" preload="auto">
+    <source src="content/sound/Clock Tick2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="correct" preload="auto">
+    <source src="content/sound/Correct Selection_Singular.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="complete3" preload="auto">
+    <source src="content/sound/Level completed.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="runout4" preload="auto">
+    <source src="content/sound/Timer Runs out.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="wrong5" preload="auto">
+    <source src="content/sound/Wrong Answer.wav" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="background" preload="auto" loop>
+    <source src="content/sound/happyc.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/jquery.timer.js"></script>
+<script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+
+<div class="container body-content">
+    <div class="row">
+        <div class="main-border">
+            <div class="row">
+                <div class="green-border">
+                    <img src="content/images/findpollinators/border_v.png" style="width:616px;">
+                </div><!--end green-border-->
+
+                <div class="pointing-arrow">
+                    <img src="content/images/drag_arrow_2.png" style="width:320px;"/>
+                </div>
+
+                <div id="golden-tortoise-drop" class="golden-tortoise-beetle-img drop-zone">
+                    <img src="content/images/findpollinators/golden_tortoise_beetle.png" />
+                </div><!--end golden-tortoise-beetle-->
+
+                <div id="white-dove-drop" class="white-dove drop-zone">
+                    <img src="content/images/findpollinators/dove.png" />
+                </div><!--end white-dove-->
+
+                <div id="scarab-drop" class="scrab drop-zone">
+                    <img src="content/images/findpollinators/scarab_beetle.png" />
+                </div><!--end scrab-->
+
+                <div id="ant-drop" class="ant drop-zone">
+                    <img src="content/images/findpollinators/ant.png" />
+                </div><!--end ant-->
+
+                <div id="soldierfly-drop" class="soldier-fly drop-zone">
+                    <img src="content/images/findpollinators/soldierfly.png" />
+                </div><!--end soldier-fly-->
+
+                <div id="moth-drop" class="moth drop-zone">
+                    <img src="content/images/findpollinators/moth.png" />
+                </div><!--end moth-->
+
+                <div id="bat-drop" class="bat drop-zone">
+                    <img src="content/images/findpollinators/bat.png" />
+                </div><!--end bat-->
+
+                <div id="swallowtail-drop" class="swallowtail drop-zone">
+                    <img src="content/images/findpollinators/swallowtail_butterfly.png" />
+                </div><!--end swallowtail-->
+
+                <div id="ladybug-drop" class="redladybug drop-zone">
+                    <img src="content/images/findpollinators/ladybug.png" />
+                </div><!--end redladybug-->
+
+                <div id="hummingbird-drop" class="humming drop-zone">
+                    <img src="content/images/findpollinators/hummingbird.png" />
+                </div><!--end humming-->
+                <div id="monarch-drop" class="monarch drop-zone">
+                    <img src="content/images/findpollinators/monarch_butterfly.png" />
+                </div><!--end monarch-->
+                <div id="bee-drop" class="bee drop-zone">
+                    <img src="content/images/findpollinators/bumblebee.png" />
+                </div><!--end bumblebee-->
+
+                <div id="honey-drop" class="honey drop-zone">
+                    <img src="content/images/findpollinators/honeybee.png" />
+                </div><!--end honeybee-->
+
+                <div id="ball-drop" class="ball drop-zone">
+                    <img src="content/images/findpollinators/soccerball.png" />
+                </div><!--end soccercall-->
+
+                <div id="boot-drop" class="boot drop-zone">
+                    <img src="content/images/findpollinators/boot.png" />
+                </div><!--end boot-->
+
+                <div id="balloon-drop" class="balloon drop-zone">
+                    <img src="content/images/findpollinators/balloon.png" />
+                </div><!--end balloon-->
+
+                <div class="pollinators-background drop-zone">
+                    <img src="content/images/findpollinators/pollinator_background.jpg" style="width:604px; margin-left:3px; margin-top:3px;" />
+                </div><!--end pollinators-background-->
+
+                <div class="hint">
+                    <div class="Thehint" style="position:relative;">
+                        <div class="flip-off" style="position:absolute; z-index:30;"><a href="#"><img src="content/images/findpollinators/hint_v.png" /></a></div>
+                        <div class="flip-on" style="position:absolute; z-index:10;"><img src="content/images/findpollinators/hint_on_v.png" /></div>
+                    </div>
+                </div><!--end hint-->
+
+                <div class="clock">
+                    <img src="content/images/findpollinators/timer_v.png" />
+                </div><!--end clock-->
+
+                <div class="time-function">
+                    <div id="counter" class="text-right" style="position:absolute; font-size:1.2em; color:black; margin-top:27px; margin-left:30px; letter-spacing:16px; z-index:1000;"></div>
+                </div>
+
+
+                <div class="dash-board">
+                    <img src="content/images/findpollinators/container_v.png" style="width:603px; margin-left:5px;" />
+                </div><!--end dashboard-->
+
+                <div class="grass">
+                    <img src="content/images/findpollinators/grass.png" width="111" height="223" id="grass">
+                </div><!--end-grass-->
+
+                <div class="animals-drop-zone">
+                    <div class="row">
+                        <ul style="display:block; list-style:none; float:left; width:100%;">
+                            <li>
+                                <div class="milk-weed" style="width:70px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro';">
+                                    <div id="milkweed" data-correct-drops='monarch-drop,swallowtail-drop,honey-drop,bee-drop' class="drag-item"><img style="margin-top:5px;" src="content/images/findpollinators/Milkweed.png" /></div>
+                                    <p style="padding-top:11px; font-family:'Source Sans Pro';">Milkweed</p>
+                                </div><!--end Milkweed-->
+                            </li>
+
+                            <li>
+                                <div class="Pflower" style="width:80px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="passion-flower" data-correct-drops='monarch-drop,swallowtail-drop,honey-drop,bee-drop' class="drag-item"><img style="margin-top:5px; width: 55px;" src="content/images/findpollinators/Passionflower.png" /></div>
+                                    <p style="font-family:'Source Sans Pro'; padding-top:3px;">Passion Flower</p>
+                                </div><!--end Passion Flower-->
+                            </li>
+
+                            <li>
+                                <div class="Mflower" style="width:70px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="morning-glory" data-correct-drops='swallowtail-drop,honey-drop,bee-drop,golden-tortoise-drop' class="drag-item"><img style="margin-top:5px; width:47px;" src="content/images/findpollinators/MorningGlory.png" /></div>
+                                    <p style="padding-top:10px; font-family:'Source Sans Pro';">Morning Glory</p>
+                                </div><!--end Morning Glory-->
+                            </li>
+
+                            <li>
+                                <div class="Sdatura" style="width:60px; height:90px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="sacred-datura" data-correct-drops='hummingbird-drop,swallowtail-drop,honey-drop,bee-drop,moth-drop' class="drag-item"><img style="margin-top:5px; width:47px;" src="content/images/findpollinators/SacredDatura.png" /></div>
+                                    <p style="padding-top:14px; font-family:'Source Sans Pro';">Sacred Datura</p>
+                                </div><!--end Sacred Datura-->
+                            </li>
+
+                            <li>
+                                <div class="APhid" style="width:60px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="aphid" data-correct-drops='ladybug-drop' class="drag-item"><img style="margin-top:5px;" src="content/images/findpollinators/Aphid.png" /></div>
+                                    <p style="padding-top:12px; font-family:'Source Sans Pro';">Aphid</p>
+                                </div><!--end Aphid-->
+                            </li>
+
+                            <li>
+                                <div class="JUniper" style="width:80px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="juniper" data-correct-drops='scarab-drop' class="drag-item"><img style="margin-top:5px;" src="content/images/findpollinators/Juniper.png" /></div>
+                                    <p style="padding-top:7px; font-family:'Source Sans Pro';">Juniper</p>
+                                </div><!--end Juniper-->
+                            </li>
+
+                            <li>
+                                <div class="BErgamot" style="width:60px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'">
+                                    <div id="bergmot" data-correct-drops='monarch-drop,swallowtail-drop,honey-drop,bee-drop' class="drag-item"><img style="margin-top:5px;" src="content/images/findpollinators/Bergamot.png" /></div>
+                                    <p style="padding-top:6px; font-family:'Source Sans Pro';">Bergamot</p>
+                                </div><!--end Bergamot-->
+                            </li>
+
+                            <li>
+                                <div class="Cactus" style="width:60px; height:90px; padding-right:10px; text-align:center; line-height:13px; float:left; font-family:'Source Sans Pro'; margin-left:20px;">
+                                    <div id="cactus" data-correct-drops='white-dove-drop,bat-drop' class="drag-item"><img style="margin-top:5px;" src="content/images/findpollinators/Cactus.png" /></div>
+                                    <p style="padding-top:4px; font-family:'Source Sans Pro';">Cactus</p>
+                                </div><!--end Cactus-->
+                            </li>
+                        </ul>
+                    </div><!--end row-->
+                </div><!--end animal-drop-zone-->
+
+                <!-- Dragg and drop starts here -->
+
+                <div class="modal fade" id="game-success" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false">
+                     <div class="modal-dialog" style="margin-left:102px; top:19px;">
+                        <div class="modal-content" style="width:393px; height:310px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:405px; height:325px; background-repeat:no-repeat; background-image:url('content/images/findpollinators/popup_border.png');">
+                                <div class="modal-body custom-font modal-text">
+                                    <!--<a id="close-button" href="#"><img src="content/images/imagequiz/close.png" style="margin-left:345px; margin-top:-30px;" /></a>-->
+                                    <h3 class="main-title" style="color:#000; font-size:1em; padding-left:10px; text-align:center;">Yum! Time to feed the pollinators!</h3><!--end tittle-->
+
+                                    <div class="Source-sans-pro" style="font-family:'Source Sans Pro'; sans-serif; font-size:24px; color:#000; padding-top:0; padding-right:20px; text-align:center; position:absolute; z-index:99;">
+                                        <h3 class="text-modal" style="margin-left:17px; font-family:'Source Sans Pro'; font-weight:bolder;">You have unlocked Bloom Boom<br/> in the Arcade!</h3>
+                                        <h3 class="text-modal-end" style="margin-left:35px; font-family:'Source Sans Pro'; font-weight:bolder;">Get your flip!</h3>
+                                    </div><!--end box message-->
+
+                                    <div class="popup-image" style="margin-left:130px; padding-top:130px; margin-bottom:7px;">
+                                        <img style="width:123px; height=123px;" src="content/images/findpollinators/plant_pilot_flip_green.png" />
+                                    </div><!--end popup-image-->
+
+                                    <div class="Btns" style="position:absolute; margin-top:-36px;">
+                                        <ul>
+                                            <li><a id="button-replay" class="purple-button text-center custom-font button-text" href="#" style="padding: 0px 40px 0px 40px; margin-left:-47px;">REPLAY</a></li>
+                                            <li><a id="button-next" class="purple-button text-center custom-font button-text" href="#" style="padding: 0px 40px 0px 40px; margin-left:9px;">NEXT</a></li>
+                                        </ul>
+                                    </div><!--button-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="game-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="position:relative;z-index:1000; ">
+                    <div class="modal-dialog" style="margin-left:115px; margin-top: 47px;">
+                        <div class="modal-content" style="width:393px; height:310px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:405px; height:325px; background-repeat:no-repeat; background-image:url('content/images/findpollinators/popup_border.png');">
+                                <div class="modal-body custom-font modal-text">
+                                    <p class="text-modal" style="text-align:center; color:black;  position: absolute;top: 34px;left: 56px;font-family: 'cmwn';font-size: 30px;">You're batting a thousand!</p><!--end tittle-->
+
+                                    <div class="popup-image" style="margin-left: 13px; margin-top: 39px;">
+                                        <img src="content/images/findpollinators/img_hummingbird.png" />
+                                    </div><!--end popup-image-->
+
+                                    <div class="Btns" style="position:absolute; top: 236px;left: -33px;">
+                                        <ul style="list-style:none;">
+                                            <li><a id="button-replay" class="purple-button text-center custom-font button-text" href="#" style="padding: 4px 45px 4px 45px;margin-left: 81px;">REPLAY</a></li>
+                                        </ul>
+                                    </div><!--button-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="modal fade" id="game-success" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false">
+                   <div class="modal-dialog" style="margin-left:102px; top:19px;">
+                       <div class="modal-content" style="width:393px; height:310px;">
+                           <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:405px; height:325px; background-repeat:no-repeat; background-image:url('content/images/findpollinators/popup_border.png');">
+                               <div class="modal-body custom-font modal-text">
+                                   <!--<a id="close-button" href="#"><img src="~/Content/images/imagequiz/close.png" style="margin-left:345px; margin-top:-30px;" /></a>-->
+                                   <h3 class="main-title" style="color:#000; font-size: 1em; padding-left:10px; text-align:center;">Yum! Time to feed the pollinators!</h3><!--end tittle-->
+
+                                   <div class="Source-sans-pro" style="font-family: 'Source Sans Pro'; sans-serif; font-size:24px; color:#000; padding-top:0;padding-right:20px;text-align:center;position:absolute;z-index:99;">
+
+                                       <h3 class="text-modal" style="margin-left:17px; font-family:'Source Sans Pro';font-weight:bolder;">You have unlocked Bloom Boom<br/> in the Arcade!</h3>
+                                       <h3 class="text-modal-end" style="margin-left:35px; font-family:'Source Sans Pro'; font-weight:bolder;">Get your flip!</h3>
+                                   </div><!--end box message-->
+
+                                   <div class="popup-image" style="margin-left: 130px; padding-top:130px; margin-bottom:7px;">
+                                       <img style="width:123px; height=123px;" src="content/images/findpollinators/plant_pilot_flip_green.png" />
+                                   </div><!--end popup-image-->
+
+                                   <div class="Btns" style="position:absolute; margin-top:-36px;">
+                                       <ul>
+                                           <li><a id="button-replay" class="purple-button text-center custom-font button-text" href="#" style="padding: 0px 40px 0px 40px; margin-left:-47px;">REPLAY</a></li>
+                                           <li><a id="button-next" class="purple-button text-center custom-font button-text" href="#" style="padding: 0px 40px 0px 40px; margin-left:9px;">NEXT</a></li>
+                                       </ul>
+                                   </div><!--button-->
+
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+
+
+
+
+
+            </div><!--end row-->
+        </div><!--end main-border-->
+    </div><!--end row-->
+</div><!--end container body-content-->

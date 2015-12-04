@@ -1,0 +1,335 @@
+<audio id="forest" preload="auto">
+    <source src="content/sound/Slide 8 until Flip screen.MP3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="ants" preload="auto">
+    <source src="content/sound/Ants.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="chipmunk" preload="auto">
+    <source src="content/sound/Chipmunk.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="millipede" preload="auto">
+    <source src="content/sound/Milipede.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="mouse" preload="auto">
+    <source src="content/sound/Mouse.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="snake" preload="auto">
+    <source src="content/sound/Snake.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="toad" preload="auto">
+    <source src="content/sound/Toad.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai3.js"></script>
+
+<div class="row">
+    <div class="col-md-12 content-box">
+        <div class="row">
+
+            <div id="close" style="position:absolute; z-index:999;">
+                <img style="width:62px; cursor:pointer; margin-top:4px; margin-left:582px; position:absolute;" src="content/images/buttons/btn_exit_on.png" />
+                <img style="width:62px; cursor:pointer; margin-top:4px; margin-left:582px; position:absolute;" src="content/images/buttons/btn_exit.png" />
+            </div>
+
+            <div id="crannies">
+                <div class="yes" id="nook-info" style="position:absolute; margin-left:26px; margin-top:225px; z-index:2;">
+                    <img id="n1" class="animated flash" src="content/images/nooks/nook_1.png" style="width:92px; position:absolute;" />
+                    <img id="n1-active" src="content/images/nooks/nook_1_on.png" style="width:92px;" />
+                </div>
+
+                <div class="yes" id="nook-info2" style="position:absolute; margin-left:101px; margin-top:78px; z-index:2;">
+                    <img id="n2" class="animated flash" src="content/images/nooks/nook_2.png" style="width:92px; position:absolute;" />
+                    <img id="n2-active" src="content/images/nooks/nook_2_on.png" style="width:92px;" />
+                </div>
+
+                <div class="yes" id="nook-info3" style="position:absolute; margin-left:222px; margin-top:-23px; z-index:2;">
+                    <img id="n3" class="animated flash" src="content/images/nooks/nook_3.png" style="width:118px; position:absolute;" />
+                    <img id="n3-active" src="content/images/nooks/nook_3_on.png" style="width:118px;" />
+                </div>
+
+                <div class="yes" id="nook-info4" style="position:absolute; margin-left:470px; margin-top:161px; z-index:2;">
+                    <img id="n4" class="animated flash" src="content/images/nooks/nook_4.png" style="width:92px; position:absolute;" />
+                    <img id="n4-active" src="content/images/nooks/nook_4_on.png" style="width:92px;" />
+                </div>
+
+                <div class="yes" id="nook-info5" style="position:absolute; margin-left:501px; margin-top:291px; z-index:2;">
+                    <img id="n5" class="animated flash" src="content/images/nooks/nook_5.png" style="width:92px; position:absolute;" />
+                    <img id="n5-active" src="content/images/nooks/nook_5_on.png" style="width:92px;" />
+                </div>
+
+                <div class="yes" id="nook-info6" style="position:absolute; margin-left:564px; margin-top:88px; z-index:2;">
+                    <img id="n6" class="animated flash" src="content/images/nooks/nook_6.png" style="width:92px; position:absolute;" />
+                    <img id="n6-active" src="content/images/nooks/nook_6_on.png" style="width:92px;" />
+                </div>
+            </div>
+
+            <div style="position:absolute; margin-left:562px; margin-top:338px; z-index:3;">
+                <a id="next-ai">
+                    <img src="content/images/buttons/btn_next.png" style="width:92px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/buttons/btn_next_on.png" style="width:92px;" />
+                </a>
+            </div>
+
+        </div><!--end row-->
+    </div><!--end container body-content-->
+</div>
+
+<!-- Game Info Modal -->
+
+<div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:3;">
+    <div class="modal-dialog" style="margin-top:115px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px;" />
+                <p style="font-family:'Source Sans Pro'; font-size:1.8em; font-weight:bolder; line-height:28px; text-align:center; margin-top:-295px; margin-bottom:37px;">The cool thing about nature is that<br />almost everywhere is a home to someone!</p>
+                <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:600; line-height:28px; text-align:center; margin-bottom:37px;">Today let's think about stone walls.<br />They are filled with nooks and crannies,<br />and guess what?<br /><b><i>Somebody lives there!</i></b></p>
+                <p style="font-family:'Source Sans Pro'; font-size:1.8em; font-weight:bolder; text-align:center;">Click to discover some wall dwelling animals.</p>
+            </div>
+
+            <div id="next-button" style="position:absolute; margin-left:492px; margin-top:308px; z-index:2;">
+                <img src="content/images/buttons/btn_next.png" style="width:92px; cursor:pointer; position:absolute;" />
+                <img src="content/images/buttons/btn_next_on.png" style="width:92px;" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Game Close Modal -->
+
+<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:3;">
+    <div class="modal-dialog" style="margin-top:120px; margin-left:48px;">
+        <div class="modal-content" style="width:523px; height:312px;">
+            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
+                <div class="modal-body custom-font modal-text">
+
+                    <div style="position:absolute; margin-top:-20px;">
+                        <img src="content/images/frame.png" style="width:535px;" />
+                    </div>
+
+                    <div style="position:absolute;">
+                        <p style="font-family:'Source Sans Pro'; font-size:3.6em; font-weight:bolder; text-align:center; line-height:58px; margin-top:44px; margin-left:81px;">Are you sure you<br /> want to quit?</p>
+                    </div>
+
+                    <div class="Yes-Btns" style="position:absolute; top:195px; left:93px;">
+                        <img src="content/images/buttons/btn_yes_on.png" style="width:149px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_yes.png" style="width:149px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                    <div class="No-Btns" style="position:absolute; top:195px; left:326px;">
+                        <img src="content/images/buttons/btn_no_on.png" style="width:135px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_no.png" style="width:135px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Animal Modals -->
+
+<div class="modal fade" id="ants-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/ants.png" style="width:522px; margin-left:7px; margin-top:7px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-left:174px; margin-top:115px;">
+                <img src="content/images/headers/header_1.png" style="width:170px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:174px; margin-left:153px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">The ant can carry<br />20 times its body weight!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="chip-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close2" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/chipmunk.png" style="width:408px; margin-left:-39px; margin-top:-9px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/headers/header_2.png" style="width:438px; margin-left:48px; margin-top:215px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:60px; margin-left:352px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">A chipmunk gathers<br />food in cheek<br />pouches that can<br />enlarge 3 times<br />bigger than<br />their heads!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="milli-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close3" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/millipede.png" style="width:492px; margin-left:25px; margin-top:129px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/headers/header_3.png" style="width:438px; margin-left:48px; margin-top:25px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:257px; margin-left:48px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">The millipede was the earliest animal to breathe air<br />and come out of the water to live on land.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="toad-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close4" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/toad.png" style="width:348px; margin-left:7px; margin-top:48px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/headers/header_4.png" style="width:240px; margin-left:269px; margin-top:63px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:160px; margin-left:353px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">A group of toads<br />is called a knot.<br />Like frogs, they<br />start as tadpoles.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="snake-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close5" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/snake.png" style="width:252px; margin-left:276px; margin-top:6px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/headers/header_5.png" style="width:258px; margin-left:17px; margin-top:80px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:168px; margin-left:27px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">There are about<br />3000 kinds of snakes!<br />Their skin is smooth and dry.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mouse-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:128px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px; height:330px;" />
+            </div>
+
+            <div id="m-close6" style="position:absolute; z-index:999;">
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit_on.png" />
+                <img style="width:38px; cursor:pointer; margin-top:9px; margin-left:488px; position:absolute;" src="content/images/buttons/btn_little_exit.png" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/mouse.png" style="width:552px; margin-left:14px; margin-top:49px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/headers/header_6.png" style="width:282px; margin-left:31px; margin-top:50px;" />
+            </div>
+
+            <div style="position:absolute; z-index:2; margin-top:135px; margin-left:27px;">
+                <p style="font-family:'Source Sans Pro'; font-size:1.4em; font-weight:600; text-align:center; line-height:24px;">A mouse has a HUGE appetite and<br />eats 15 to 20 times a day!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Game Complete Modal -->
+
+<div class="modal fade" id="game-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:2;">
+    <div class="modal-dialog" style="margin-top:115px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute;">
+                <img src="content/images/frame.png" style="width:535px;" />
+            </div>
+
+            <div style="position:absolute; margin-top:19px; margin-left:42px;">
+                <p style="font-family:'Source Sans Pro'; font-size:2.6em; font-weight:600; text-align:center; line-height:47px; margin-bottom:188px;">It's time for the Flip Awards!</p>
+                <p style="font-family:'Source Sans Pro'; font-size:2.6em; font-weight:600; text-align:center;">You just unlocked a game!</p>
+            </div>
+
+            <div style="position:absolute; margin-top:70px; margin-left:118px;">
+                <img src="content/images/_RockingRoom_title.jpg" style="width:283px;" />
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,431 @@
+    <!DOCTYPE html>
+<html style="background-color: #7829bb;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Change My World Now</title>
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <script src="script/modernizr-2.8.3.js"></script>
+    <script src="script/jquery-2.1.1.js"></script>
+    <script src="script/bootstrap.js"></script>
+    <script src="script/respond.js"></script>
+    <script src="script/jquery-ui.js"></script>
+
+    <!-- Platform JS Scripts -->
+    <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="content/main.css">
+    <script type="text/javascript" src="script/angular.js"></script>
+    <script type="text/javascript" src="script/angular-route.min.js"></script>
+    <script type="text/javascript" src="script/angular-underscore-module.js"></script>
+    <script type="text/javascript" src="script/angular-animate.min.js"></script>
+    <script type="text/javascript" src="script/draganddrop.js"></script>
+    <script type="text/javascript" src="script/gameapp.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
+</head>
+
+<body ng-app="GameApp" style="background-color: #7829bb;">
+    <audio id="btnClick" src="content/_sounds/Button Click.mp3"></audio>
+    <audio id="flush" src="content/_sounds/Flush Sound.mp3"></audio>
+    <!--<audio id="incorrect" src="~/content/_sounds/Incorrect.mp3"></audio>-->
+    <audio id="drop" src="content/_sounds/Drop in Water.mp3"></audio>
+    <audio id="slide14" src="content/_sounds/Flip Screen.mp3"></audio>
+    <audio id="mainSound" src="content/_sounds/Title Screen.mp3"></audio>
+
+    <audio id="wonder" src="content/_sounds/1 Did you ever.mp3"></audio>
+    <audio id="whatever" src="content/_sounds/2 whatever.mp3"></audio>
+    <audio id="drag" src="content/_sounds/3 drag and drop.mp3"></audio>
+    <audio id="cat_litter" src="content/_sounds/4 catliter pickup 2.mp3"></audio>
+    <audio id="cotton" src="content/_sounds/5 cotton.mp3"></audio>
+    <audio id="gum" src="content/_sounds/6 gum.mp3"></audio>
+    <audio id="dental_floss" src="content/_sounds/7 dental floss.mp3"></audio>
+    <audio id="hair" src="content/_sounds/8 hair.mp3"></audio>
+    <audio id="preacsrpition_medication" src="content/_sounds/9 prescription.mp3"></audio>
+    <audio id="diapers" src="content/_sounds/10 diapers.mp3"></audio>
+    <audio id="blue_automatic_toilet_bowl_cleaner" src="content/_sounds/11 BATBC.mp3"></audio>
+    <audio id="baby_wipes" src="content/_sounds/12 Baby wipes.mp3"></audio>
+    <audio id="paper_towels" src="content/_sounds/13 paper towels.mp3"></audio>
+    <audio id="dryer_sheets" src="content/_sounds/14 dryer sheets.mp3"></audio>
+    <audio id="cosmetics" src="content/_sounds/15 cosmetics.mp3"></audio>
+    <audio id="fats" src="content/_sounds/16 fats oils and grease.mp3"></audio>
+    <audio id="band_aids" src="content/_sounds/17 band aids.mp3"></audio>
+    <audio id="pref" src="content/_sounds/18 PreFlip.mp3"></audio>
+    <audio id="fli" src="content/_sounds/19 Flip.mp3"></audio>
+
+    <div class="">
+        <span style="font-size:18px;"></span>
+
+<style type="text/css">
+
+    .close-Btn {
+        /* margin-top: 10px;
+        position: absolute;
+        z-index: 1;
+        left: 580px;
+        position: absolute;*/
+    }
+
+    .A {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 100px;
+    }
+
+    .B {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 250px;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+    <!--//////////////////////////////////////////////////-->
+
+    <div class="col-md-12 ai_background">
+        <div class="row">
+            <div class="col-md-12 custom-font game-title">
+
+                <div class=" text-left">
+                    <img style="width:72px; height:72px; margin-bottom:3px; float:left; margin:10px 20px 10px 4px" src="content/images/twirlswirl_white.png">
+                    <h2 style="line-height:75px; text-transform:uppercase">Twirl and Swirl</h2>
+                </div>
+
+                <div class="col-md-2 text-right">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="font-size:18px;"></span>
+                        </div>
+                    </div><!--end row-->
+                </div><!--end text-right-->
+
+            </div><!--end custom-font game title-->
+            <!--/**************************/-->
+
+            <div class="col-md-12 bkg-image">
+                <!--//////////////////////////////////////////////////-->
+                <div id="home">
+                    <div class="homepage">
+                        <div class="main-logo">
+                          <img src="content/_assets/elements/title.png" alt="Twirl and Swirl" />
+                        </div>
+
+                        <div class="play-btn">
+                            <a href class="btn-click play" ng-click="" title="Play"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="proudly">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="second-logo">
+                    </div>
+
+                    <div class="headproud" style="margin-top:-366px; margin-left:111px;">
+                        <img src="content/_assets/elements/headers/header_proudly.png" style="width:368px;">
+                    </div>
+
+                    <div class="sanitize" style="margin-top:-3px; margin-left:180px;">
+                        <img src="content/_assets/elements/sanitation_logo.png" style="width:237px;">
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="noseWords">
+                    <div class="toilet"></div>
+
+                    <div class="headig-box">
+                       <p> Did you ever wonder what happens when you flush?</p>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="feelings">
+                    <div class="headig-box">
+                        <p>Whatever you flush goes down into the pipe that<br/>
+                            leads out of your house and into the system.<br />
+                            From there it travels, mostly by gravity,<br />
+                            to a treatment plant.
+                        </p>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////--
+                <div id="startGame">
+                    <div class="headig-box"><img src="~/content/_assets/elements/header_3.png" alt="Match this animal with their sneezers" /></div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="step">
+                    <button class="exit close-Btn"></button>
+
+                    <a href="#" class="triggerRelink" ng-click="triggerRelink()">RELOAD</a>
+
+                    <div class="clearfix" relink-event="myEventName">
+                        <div class="text-true hide">
+                        </div>
+
+                        <div ng-controller="stepController">
+                            <div slider class="slider" data="data1">
+                                <div class="steps slide clearfix">
+                                    <div class="sidebar-hover left"></div>
+                                    <div class="sidebar-hover right"></div>
+                                    <div class="sidebar left clearfix">
+                                        <div class="img-box" ng-repeat="item in data |limitTo:7" id="{{item.name}}">
+                                            <div class="img-hold" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="item" jqyoui-draggable="{ index: {{$index}}, animate: false, placeholder:'keep', onDrag:'onDrag'}">
+                                                <div>
+                                                    <img ng-src="{{item.mainImageUrl}}" />
+                                                </div>
+                                                <div id="sound-{{item.name}}" data-sound="{{item.sound}}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-box">
+                                        <div class="block-btn"></div>
+
+                                        <div class="content-box">
+                                            <div class="flush">
+                                                <a href></a>
+                                            </div>
+                                            <div class="img-box" data-drop="true" ng-model='data2' jqyoui-droppable="{ multiple:false, onDrop:'onDrop'}" data-jqyoui-options="" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate:false}">
+                                                <div class="caption" ng-repeat="item in data2 track by $index">
+                                                    <div class="img-hold">
+                                                        <img ng-src="{{data2[0].mainImageUrl}}" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="correct-ansver">
+                                                <p>
+                                                    Drag and drop items into the toilet <br/>
+                                                    and flush to find out what<br />
+                                                    happens when you send the<br />
+                                                    wrong things down the drain.
+                                                </p>
+                                                <div class="heading"><img ng-src="{{data2[0].mainHeader}}" /></div>
+                                                <div class="text-box" ng-bind-html="to_trusted(data2[0].text)"></div>
+                                                <div class="arrows">
+                                                    <a href class="next arrow" ng-click="next()"></a>
+                                                </div>
+                                            </div>
+                                            <div class="correct-ansver-hover"></div>
+                                        </div>
+                                    </div>
+                                    <div class="sidebar right clearfix">
+                                        <div class="img-box" ng-repeat="item in data |limitTo:-7" id="{{item.name}}">
+                                            <div class="img-hold" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="item" jqyoui-draggable="{ index: {{$index}}, animate: false, placeholder:'keep', onDrag:'onDrag'}">
+                                                <div>
+                                                    <img ng-src="{{item.mainImageUrl}}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arrows">
+                                    <div class="arrows-inctive"></div>
+                                    <a href class="next arrow" ng-click="next()"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////--
+                <div id="googjob">
+                    <div class="heading">
+                        <div class="clearfix"><img src="~/content/_assets/elements/header_4.png" title="good job"></div>
+
+                        <div class="buttons-box clearfix">
+                            <a href class="again btn-click" ng-init="reset()"></a>
+                            <a href class="fliptime btn-click"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="showOff" class="end-story">
+                    <div class="inner">
+                        <div class="heading">
+                            <img src="~/content/_assets/elements/header_flip.png">
+                        </div>
+                        <div class="arrows">
+                            <div class="arrows-inctive"></div>
+                            <a href class="next arrow" ng-click="next()"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////--
+                <div id="wellcome" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Wellcome to the animal Kingdom!</h1>
+                        </div>
+                        <div class="heading">
+                            <img src="~/content/_assets/elements/header_5.png">
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="flusher" class="end-story">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="toilet"></div>
+
+                    <div class="heading-box">
+                        <div>Now that you know how<br>harmful these things can be,<br>make a difference and be a</div>
+                        <div class="flush2"><img src="content/_assets/elements/headers/header_responsible_flusher.png"></div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="flip" class="end-story">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="toilet"></div>
+
+                    <div class="headig-box">
+                        <div><img src="content/_assets/elements/headers/header_good_job.png" style="width:184px"></div>
+                        <div> You flushed out a brand new</div>
+                        <div class="flip"><img src="content/_assets/elements/headers/header_15.png"></div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="quit" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Are you sure you<br/> want to quit?</h1>
+                        </div>
+
+                        <div class="buttons-quit clearfix">
+                            <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                            <a href class="no"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Close Modal</h1>
+                                    </div><!--end second-slide-->
+
+                                    <div class="purple-button text-center custom-font button-text button-padding">
+                                        <a href="#">Close</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Load Modal</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Game Complete</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+                                    <div id="quit" class="end-story">
+                                        <div class="inner">
+
+                                            <div class="text-box">
+                                                <h1>Are you sure you<br/> want to quit?</h1>
+                                            </div>
+
+                                            <div class="buttons-quit clearfix">
+                                                <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                                                <a href class="no"></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+    <!--//////////////////////////////////////////////////-->
+
+</body>
+</html>

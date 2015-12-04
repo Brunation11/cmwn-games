@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Change My World Now</title>
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <script src="scripts/modernizr-2.8.3.js"></script>
+
+    <script src="scripts/jquery-2.1.1.js"></script>
+
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/respond.js"></script>
+
+    <script src="scripts/jquery-ui.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="content/main.css">
+    <link rel="stylesheet" type="text/css" href="content/flipclock.css">
+
+    <script type="text/javascript" src="scripts/angular.js"></script>
+    <script type="text/javascript" src="scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-underscore-module.js"></script>
+    <script type="text/javascript" src="scripts/angular-animate.min.js"></script>
+    <script type="text/javascript" src="scripts/underscore-min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="scripts/jquery.jSlots.js"></script>
+    <script type="text/javascript" src="scripts/draganddrop.js"></script>
+    <script type="text/javascript" src="scripts/gameapp.js"></script>
+    <script type="text/javascript" src="scripts/flipclock.min.js"></script>
+    <script type="text/javascript" src="scripts/moment.min.js"></script>
+    <script type="text/javascript" src="scripts/sv.min.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+
+    <!-- Platform JS Scripts -->
+    <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+</head>
+
+<body ng-app="GameApp">
+    <audio id="game" src="content/_sounds/Background.mp3" loop="loop"></audio>
+    <audio id="title1" src="content/_sounds/TitleScreenComposed/1.mp3"></audio>
+    <audio id="title2" src="content/_sounds/TitleScreenComposed/2.mp3"></audio>
+    <audio id="title3" src="content/_sounds/TitleScreenComposed/3.mp3"></audio>
+    <audio id="title4" src="content/_sounds/TitleScreenComposed/4.mp3"></audio>
+    <audio id="btnClick" src="content/_sounds/ButtonClick.mp3"></audio>
+    <audio id="cardFlip" src="content/_sounds/CardFlip.mp3"></audio>
+    <audio id="checkbox" src="content/_sounds/CheckBox.mp3"></audio>
+    <audio id="hint" src="content/_sounds/HintButton.mp3"></audio>
+
+    <audio id="slide8" src="content/_sounds/Slide 8.mp3"></audio>
+    <audio id="slide9" src="content/_sounds/Slide 9.mp3"></audio>
+    <audio id="slide10" src="content/_sounds/Slide 10.mp3"></audio>
+    <audio id="slide11" src="content/_sounds/Slide 11.mp3"></audio>
+    <audio id="slide16error" src="content/_sounds/Slide 16 -  error.mp3"></audio>
+    <audio id="slide16timeout" src="content/_sounds/slide 16 -Timeup.mp3"></audio>
+    <audio id="slide17-18" src="content/_sounds/Slide 17,18.mp3"></audio>
+    <audio id="slide19" src="content/_sounds/Slide 19.mp3"></audio>
+    <audio id="slide21" src="content/_sounds/Slide 21.mp3"></audio>
+    <audio id="slide22" src="content/_sounds/Slide 22.mp3"></audio>
+    <audio id="slide23reminders" src="content/_sounds/slide 23,reminders.mp3"></audio>
+    <audio id="slide24" src="content/_sounds/Slide 24.mp3"></audio>
+    <audio id="slide25" src="content/_sounds/Slide 25.mp3"></audio>
+
+    <div class="">
+
+        <span style="font-size:18px;"></span>
+
+<style type="text/css">
+    .close-Btn {
+        /* margin-top: 10px;
+        position: absolute;
+        z-index: 1;
+        left: 580px;
+        position: absolute;*/
+    }
+
+    .A {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 100px;
+    }
+
+    .B {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 250px;
+    }
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+    <!--//////////////////////////////////////////////////-->
+
+    <div class="col-md-12 ai_background">
+        <div class="row">
+            <div class="col-md-12 custom-font game-title">
+
+                <div class=" text-left">
+                    <img style="width:72px; height:72px; margin-bottom:3px; float:left; margin:4px 16px 0 1px" src="content/_assets/elements/schoolscrapout_white.png">
+                    <h2 style="line-height:75px; text-transform:uppercase; float:left; width:80%; height:80px; overflow:hidden; white-space:nowrap;">School Scrap Scout!</h2>
+                </div>
+
+                <div class="col-md-2 text-right">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="font-size:18px;"></span>
+                        </div>
+                    </div><!--end row-->
+                </div><!--end text-right-->
+
+            </div><!--end custom-font game title-->
+            <!--/**************************/-->
+
+            <div class="col-md-12 bkg-image">
+                <!--//////////////////////////////////////////////////-->
+                <div id="home">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="homepage">
+                        <div class="main-logo">
+                          <img src="content/_assets/elements/title.png" alt="Twirl and Swirl" />
+                        </div>
+                        <div class="play-btn">
+                            <a href class="btn-click play" ng-click="" title="Play"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="noseWords">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="nose-helps">
+                        <div class="head">
+                            <img src="content/_assets/elements/headers/header_1.png" alt="Twirl and Swirl" />
+                        </div>
+                        <section class="feelcontainer" id="Draining">
+                            <div class="card">
+                                <figure class="front"><img src="content/_assets/elements/card_back.png" alt="?" /></figure>
+                                <figure class="back"><img src="content/_assets/elements/card_1.png" alt="Draining" /></figure>
+                            </div>
+                        </section>
+                        <section class="feelcontainer" id="Destroing">
+                            <div class="card">
+                                <figure class="front"><img src="content/_assets/elements/card_back.png" alt="?" /></figure>
+                                <figure class="back"><img src="content/_assets/elements/card_2.png" alt="Destroing" /></figure>
+                            </div>
+                        </section>
+                        <section class="feelcontainer" id="Hunting">
+                            <div class="card">
+                                <figure class="front"><img src="content/_assets/elements/card_back.png" alt="?" /></figure>
+                                <figure class="back"><img src="content/_assets/elements/card_3.png" alt="Hunting" /></figure>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="upToUs">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="nose-helps">
+                        <div class="head" style="padding-top:35px">
+                            <img src="content/_assets/elements/headers/header_2.png" alt="Up to Us" />
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="startGame">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="nose-helps">
+                        <div class="head" style="padding-top:46px">
+                          <h1>At the end of the day, when the trash is full, <br /> you will list every item in that can!</h1>
+                        </div>
+                        <div class="head" style="width: 96%; margin:0 auto;"><!--
+                            <img src="content/_assets/elements/headers/header_3.png" alt="Up to Us" /> -->
+                        </div>
+
+                        <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                        </div>
+
+                        <div class="yes-btn">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="knowledge" class="reminder" ng-controller="TodoCtrl">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="notebook-wide-popup">
+                        <h1>
+                            Knowledge is power, so start listing!<br />
+                            Remember you want to count EVERYTHING!<br />
+                            There is no maximum but you MUST list<br />
+                            at least 15 items.
+                        </h1>
+                    </div>
+
+                    <div class="todo-wrapper">
+
+                    </div>
+
+                    <div class="clock">
+                        <div class="racoon"><img src="content/_assets/elements/scout_1.png"></div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow" ng-click="next()"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="notebook" class="reminder" ng-controller="TodoCtrl">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clock">
+                        <div class="countdown">
+
+                        </div>
+
+                        <div class="hint-btn"></div>
+                        <div class="hint-popup">
+                            <h2>Scrap Scout Hints</h2>
+                            <p> Compost = Organic Matter</p>
+                            <p>Donate = Good for Somebody Else</p>
+                            <p>Trash = Useless Stuff</p>
+                            <p>Recycle = Reuse or Make New</p>
+                            <a href class="yougotit"></a>
+                        </div>
+                        <div class="hint-popup2">
+                            <p>
+                                You haven't added the minimum<br />
+                                of 15 items you must have to<br />
+                                complete this action item.<br />
+                                Back to the drawing board!
+                            </p>
+                            <a href class="yougotit"></a>
+                        </div>
+                    </div>
+
+                    <div class="timeout">
+                        <div class="heading"><img src="content/_assets/elements/headers/header_12.png" /></div>
+                        <div class="text"> <h1>Do you have anything <br /> else to add?</h1></div>
+
+                        <div class="buttons-quit clearfix">
+                            <a href="" class="yes"></a>
+                            <a href class="no"></a>
+                        </div>
+                    </div>
+
+                    <div class="todo-wrapper">
+                        <h2>Please add <span class="emphasis">{{15 - getTotalTodos()}}</span> items in list</h2>
+                        <ul>
+                            <li ng-repeat="todo in todos">
+                                <input type="checkbox" ng-model="todo.done" />
+                                <span class="done-{{todo.done}}">{{todo.text}}</span>
+                            </li>
+                        </ul>
+                        <form>
+                            <input class="add-input" placeholder="My trash item is..." type="text" ng-model="formTodoText" ng-model-instant />
+                            <button class="add-btn" ng-click="addTodo()"></button>
+                        </form>
+
+                        <button class="clear-btn" ng-click="clearCompleted()">Remove</button>
+                    </div>
+
+                    <div class="backarrows" style="margin-left: 284px; margin-bottom: 0px;">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow" ng-click="next()"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="sort">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="nose-helps">
+                        <div class="head" style="padding-top:40px">
+                            <h1 style="font-size:31px; line-height:43px;">You will sort the items into<br/>categories to determine if there<br/>could be better was to dispose<br/>of these items so that they<br>don't end up in landfills.</h1>
+                        </div>
+                        <div class="backarrows">   
+                            <a href class="nextb arrow"></a>
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="definitely">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="racoon"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_4.png">
+                            <h1>Stuff nobody wants.<br /> Trash has little or no value and <br /> can't be used to make <br /> anything else.</h1>
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="recycle">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="racoon"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_5.png">
+                            <h1>Anything that can <br /> be used again or <br /> deconstructed to make <br /> something new.</h1>
+                        </div>
+                        <div class="backarrows">
+                            <a href class="nextb arrow"></a>
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="compost">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="racoon"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_6.png">
+                            <h1>Organic matter <br /> <span>(which means it was once alive)</span><br /> that has decayed and<br /> is used as plant ferilizer.</h1>
+                        </div>
+                        <div class="backarrows">
+                            <a href class="nextb arrow"></a>
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="donate">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="racoon"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_7.png">
+                            <h1>You might no longer want<br /> something but it could be <br /> an item someone else could use.</h1>
+                        </div>
+                        <div class="backarrows">
+                            <a href class="nextb arrow"></a>
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!-- <div id="choseTime">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="padding-top:45px">
+                            <h1>We will send you reminders as you go<br />
+                                so you don’t forget to keep up your list.<br /><br />
+                                What time do you want to be poked?<br />
+                            </h1>
+                        </div>
+                        <div class="remind-time">
+                            <input type="radio" id="c1" name="cc" />
+                            <label for="c1"><span></span><img src="content/_assets/elements/headers/header_8.png"></label>
+                            <input type="radio" id="c2" name="cc" />
+                            <label for="c2"><span></span><img src="content/_assets/elements/headers/header_9.png"></label>
+                            <input type="radio" id="c3" name="cc" />
+                            <label for="c3"><span></span><img style=" margin: 16px 20px 0 0;" src="content/_assets/elements/headers/header_10.png"></label>
+                        </div>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div> -->
+                <!--//////////////////////////////////////////////////-->
+                <!-- <div id="reminder1" class="reminder">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="remind-bg"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_11.png">
+                        </div>
+                        <h1>
+                            Remember to keep track of EVERYTHING <br />
+                            that gets thrown away.
+                        </h1>
+                    </div>
+
+                    <div class="remind-btn">
+                        <a href class=""></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                 -->
+                <!--//////////////////////////////////////////////////-->
+                <!-- <div id="reminder2" class="reminder">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="remind-bg"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_11.png">
+                        </div>
+                        <h1>
+                            Surprised already by<br />
+                            how long your list is?
+                        </h1>
+                    </div>
+
+                    <div class="remind-btn">
+                        <a href class=""></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div> -->
+                <!--//////////////////////////////////////////////////-->
+                <!--  <div id="reminder3" class="reminder">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="remind-bg"></div>
+
+                    <div class="nose-helps">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_11.png">
+                        </div>
+                        <h1>
+                            This is your last day.<br />
+                            Be sure to count EVERYTHING.
+                        </h1>
+                    </div>
+
+                    <div class="remind-btn">
+                        <a href class=""></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div> -->
+                <!--//////////////////////////////////////////////////-->
+
+                <div id="howcouldyou" >
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/headers/header_13.png">
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="betterway">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="trash" style="width:86%; margin:20px auto">
+                            <img src="content/_assets/elements/headers/header_14.png">
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="letslook">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="trash" style="width:66%; margin:100px auto">
+                            <img src="content/_assets/elements/headers/header_25.png">
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="Listbreak1" >
+                    <div id="step" style="display:block">
+                        <button class="exit close-Btn"></button>
+
+                        <div class="clearfix">
+                            <div ng-controller="TodoListCtrl">
+                                <div class="random-item slider ">
+                                    <div class="slide" ng-repeat="todo in todos3 | orderBy:'rank' ">{{todo.item.text}}</div>
+                                </div>
+
+                                <div class="sorter clearfix">
+                                    <div class="sorts">
+                                        <a id="trasher"></a>
+                                        <a id="composter"></a>
+                                        <a id="recycler"></a>
+                                        <a id="donater"></a>
+                                    </div>
+                                    <div class="racoon">
+                                        <img src="content/_assets/elements/scout_2.png" style="margin:0 auto;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="backarrows" style="margin-left:284px; margin-bottom:0px;">
+                            <a href class="nextb arrow"></a>
+                        </div>
+
+                        <div class="arrows">
+                            <a href class="next arrow"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="Listbreak">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <!--<div ng-controller="TodoListCtrl"><div ng-repeat="todo in todos2">{{todo.text}}</div></div>-->
+                        <div class="trash" style="width:60%; margin:0 auto;">
+                            <img src="content/_assets/elements/headers/header_15.png" style="margin:0 auto;">
+                        </div>
+                        <div class="sorts clearfix">
+                            <div class="sort">
+                                <h2><img src="content/_assets/elements/headers/header_16.png"></h2>
+                                <ul class="trasher">
+
+                                </ul>
+                            </div>
+                            <div class="sort">
+                                <h2><img src="content/_assets/elements/headers/header_19.png"></h2>
+                                <ul class="composter">
+
+                                </ul>
+                            </div>
+                            <div class="sort">
+                                <h2><img src="content/_assets/elements/headers/header_17.png"></h2>
+                                <ul class="recycler">
+
+                                </ul>
+                            </div>
+                            <div class="sort">
+                                <h2><img src="content/_assets/elements/headers/header_20.png"></h2>
+                                <ul class="donater">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="greenest">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="trash" style="width:72%; margin:0 auto">
+                            <img src="content/_assets/elements/scout_3.png">
+                            <img src="content/_assets/elements/headers/header_21.png">
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="learned">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="shout">
+                            <img src="content/_assets/elements/headers/header_22.png">
+                            <h1 style="padding:20px 0;">
+                                Share what you're learned<br /><br />
+                                Add the name of those<br />
+                                you shared with
+                            </h1>
+                            <textarea></textarea>
+                        </div>
+                        <div class="trash" style="">
+                            <img src="content/_assets/elements/scout_4.png">
+                        </div>
+                    </div>
+
+                    <div class="backarrows" style="margin-left:338px; margin-bottom:0px;">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="solution">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="clearfix">
+                        <div class="trash" style="width:100%; margin:0 auto">
+                            <img src="content/_assets/elements/scout_5.png" style="float:left; width:40%; margin-top:30px">
+                            <img src="content/_assets/elements/headers/header_23.png" style="float:left; width:57%; margin-top:130px">
+                        </div>
+                    </div>
+
+                    <div class="backarrows">
+                        <a href class="nextb arrow"></a>
+                    </div>
+
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="flip">
+                    <button class="exit close-Btn"></button>
+
+                    <div class="heading">
+                        <div class="clearfix">
+                            <img src="content/_assets/elements/scout_6.png" style="float:left; width:40%; margin:30px 0 0 50px">
+                            <div class="flip-left">
+                                <h1>And you've <br /> scouted out a<br /> a lovely new</h1>
+                                <img src="content/_assets/elements/headers/header_24.png" style="width:80%; margin-top:20px; display:inline">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="quit" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Are you sure you<br /> want to quit?</h1>
+                        </div>
+
+                        <div class="buttons-quit clearfix">
+                            <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                            <a href class="no"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
+                    <div class="modal-dialog" style="margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Close Modal</h1>
+                                    </div><!--end second-slide-->
+
+                                    <div class="purple-button text-center custom-font button-text button-padding">
+                                        <a href="#">Close</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Load Modal</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Game Complete</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+                                    <div id="quit" class="end-story">
+                                        <div class="inner">
+
+                                            <div class="text-box">
+                                                <h1>Are you sure you<br /> want to quit?</h1>
+                                            </div>
+
+                                            <div class="buttons-quit clearfix">
+                                                <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                                                <a href class="no"></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+    <!--//////////////////////////////////////////////////-->
+
+</body>
+</html>

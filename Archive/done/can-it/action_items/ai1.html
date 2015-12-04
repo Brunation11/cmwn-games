@@ -1,0 +1,281 @@
+<script type="text/javascript" src="javascript/action_items/ai1.js"></script>
+
+<!--sound-->
+<audio id="Background" preload="auto" loop onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 2000)">
+    <source src="content/sound/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="tittle" preload="auto">
+    <source src="content/sound/TitleScreen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="ButtonClick" preload="auto">
+    <source src="content/sound/Buttonclick.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="slide" preload="auto">
+    <source src="content/sound/Slide7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="slide1" preload="auto">
+    <source src="content/sound/WeareGoing.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide1b" preload="auto">
+    <source src="content/sound/threethings.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide2" preload="auto">
+    <source src="content/sound/CI2.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide3" preload="auto">
+    <source src="content/sound/CI3.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide4" preload="auto">
+    <source src="content/sound/CI4.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide5" preload="auto">
+    <source src="content/sound/CI5.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide6" preload="auto">
+    <source src="content/sound/CI6.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide7" preload="auto">
+    <source src="content/sound/CI7.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide8" preload="auto">
+    <source src="content/sound/CI8.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide9" preload="auto">
+    <source src="content/sound/CI9.mp3" type="audio/mpeg">
+</audio>
+<audio id="slide10" preload="auto">
+    <source src="content/sound/CI10.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="container">
+
+                <div class="close-Button">
+                    <img src="content/images/btn_exit_on.png" />
+                    <img src="content/images/btn_exit.png" />
+                </div>
+
+                <!-- dumpster carousel starts here -->
+
+            </div>
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="title">
+                    <img src="content/images/title.png"/>
+                </div>
+                <img src="content/images/background/bkg_1.png"/>
+            </div>
+
+            <div id="slide-1">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info2" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:127px; left:117px; text-align:center;font-size:34px;line-height:34px;">We are going to learn<br />three important things.</p>
+                <img src="content/images/metal_can.png" style="position:absolute; top:73px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button1">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button3">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info3" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:153px; left:88px; text-align:center; font-size:28px;">Stuff nobody wants.<br />Trash has little or no value<br />and can't be used<br />to make anything.</p>
+                <img src="content/images/header_1.png" style="position:absolute; top:66px; left:143px; z-index: 1;"/>
+                <img src="content/images/big_bulb.png" style="position:absolute; top:26px; left:79px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button2">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button4">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info4" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:118px; left:52px; text-align:center; font-size:28px;">Anything that can be used<br />again or deconstructed to make<br />something new.</p>
+                <img src="content/images/header_2.png" style="position:absolute; top:52px; left:90px;"/>
+                <img src="content/images/big_tv.png" style="position:absolute; top:196px; left:26px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button3">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button5">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info5" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:118px; left:43px; text-align:center; font-size:28px;">Organic matter<br /><span style="font-weight:600; font-style:italic;">(something that was once alive)</span><br />that has now decayed and is used<br />as plant fertilizer.</p>
+                <img src="content/images/big_apple_core.png" style="position:absolute; top:28px; left:370px;"/>
+                <img src="content/images/header_3.png" style="position:absolute; left:100px; top:47px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button4">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button6">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info6" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:118px; left:52px; text-align:center; font-size:28px;"></p>
+                <img src="content/images/bin_3.png" style="position:absolute; top:106px; left:55px;"/>
+                <img src="content/images/header_4.png" style="position:absolute; top:58px; left:37px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button5">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button7">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="game-info7" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:118px; left:37px; text-align:center; font-size:28px;">Sort 10 to Win!<br/>Double tap/click to release an item<br />from the dumpster into the<br />correct bin below.</p>
+                <img src="content/images/dumpster-1.png" style="position:absolute; top:20px; left:175px; width:156px;"/>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="back-button6">
+                <img src="content/images/Arrows/btn_back_on.png" />
+                <img src="content/images/Arrows/btn_back.png" />
+            </div>
+
+            <div id="next-button8">
+                <img src="content/images/Arrows/btn_next_on.png" />
+                <img src="content/images/Arrows/btn_next.png" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade current" id="quit-game" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden; z-index:1">
+    <div class="modal-dialog" style="margin-top:132px; margin-left:61px;">
+        <div class="modal-content" style="width:500px; height:287px;">
+
+            <div class="background">
+                <div class="Metal-can">
+                    <!--<img src="content/images/title.png" />-->
+                </div>
+                <p style="position:absolute; top:89px; left:96px; text-align:center; font-size:36px;">ARE YOU SURE YOU<br />WANT TO QUIT?</p>
+                <img src="content/images/background/bkg_1.png" />
+            </div>
+
+            <div id="yes-btn">
+                <img src="content/images/btn_yes_on.png" />
+                <img src="content/images/btn_yes.png" />
+            </div>
+
+            <div id="no-btn">
+                <img src="content/images/btn_no_on.png" />
+                <img src="content/images/btn_no.png"/>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Change My World Now</title>
+
+        <link rel="stylesheet" href="css/site.css">
+
+        <!-- Thirdparty JS Scripts -->
+        <script src="javascript/thirdparties/modernizr-2.8.3.js"></script>
+        <script src="javascript/thirdparties/jquery-2.1.4.js"></script>
+        <script src="javascript/thirdparties/bootstrap.js"></script>
+        <script src="javascript/thirdparties/respond.js"></script>
+        <script src="javascript/thirdparties/jquery-ui.js"></script>
+
+        <!-- Platform JS Scripts -->
+        <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+
+        <!-- Interal JS Scripts -->
+        <script type="text/javascript" src="javascript/modals.js"></script>
+        <script type="text/javascript" src="javascript/initialize.js"></script>
+    </head>
+
+    <body>
+        <div class="body-content">
+            <div class="ai_background">
+                <div class="row">
+
+                    <div class="col-md-12 custom-font game-title">
+                        <div class=" text-left">
+                            <img style="width:72px; height:72px;margin-bottom:3px;" src="content/images/plant_pilot_flip_white.png" />
+                            PLANT PILOTS
+                        </div>
+
+
+
+                        <div class="col-md-2 text-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                </div>
+                            </div><!--end row-->
+                        </div><!--end text-right-->
+
+                    </div><!--end custom-font game title-->
+
+                    <span id="putcontenthere" name="putcontenthere"></span>
+
+                    <!--try again modal-->
+                     <div class="modal fade" id="try-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog" style="margin-top: 197px;  margin-left: 120px;">
+                            <div class="modal-content" style="width:396px; height:314px;">
+
+                                    <div class="modal-body custom-font modal-text">
+                                        <div class="message-try">
+                                            <p>
+                                               Try again !
+                                            </p>
+
+                                        </div>
+
+                                        <div class="again-game"><p>NEXT</p></div>
+
+                                        <div class="again-img">
+                                            <img src="content/images/findpollinators/img_bee_daffodils.png">
+                                        </div>
+
+                                        <div class="border-image-2" style="margin-left: -18px;margin-top: -20px;">
+                                            <img src="content/images/findpollinators/popup_border.png">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- show this modal if you win a second time -->
+
+                    <div class="modal fade" id="second-modal" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog" style="margin-top: 180px;  margin-left: 120px;">
+                            <div class="modal-content" style="width:396px; height:314px;">
+
+                                    <div class="modal-body custom-font modal-text">
+                                        <div class="message-two">
+                                            <p>
+                                                You have unlocked Bloom Boom<br/>in the Arcade!
+                                            </p>
+
+                                            <p>Get your flip!</p>
+                                        </div>
+
+                                        <div class="reply-game"><p>REPLAY</p></div>
+
+                                        <div class="next-game"><p>NEXT</p></div>
+
+                                        <div class="flip">
+                                            <img src="content/images/findpollinators/plant_pilot_flip_green.png">
+                                        </div>
+
+                                        <div class="border-image-2">
+                                            <img src="content/images/findpollinators/popup_border.png">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div><!-- end bkg-image-->
+    </body>
+</html>

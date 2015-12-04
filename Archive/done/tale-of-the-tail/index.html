@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index - Change My World Now</title>
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <script src="scripts/modernizr-2.8.3.js"></script>
+
+    <script src="scripts/jquery-2.1.1.js"></script>
+
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/respond.js"></script>
+
+    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="content/main.css">
+    <script type="text/javascript" src="http://static.cdn-ec.viddler.com/js/arpeggio/v2/build/main-built.js"></script>
+    <script type="text/javascript" src="scripts/main-built.js"></script>
+    <script type="text/javascript" src="scripts/angular.js"></script>
+    <script type="text/javascript" src="scripts/angular-route.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-underscore-module.js"></script>
+    <script type="text/javascript" src="scripts/angular-animate.min.js"></script>
+    <script type="text/javascript" src="scripts/gameapp.js"></script>
+
+    <script type="text/javascript" src="scripts/main.js"></script>
+
+     <!-- Platform JS Scripts -->
+    <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+</head>
+<body ng-app="GameApp">
+
+    <audio id="mainSound" src="content/_sounds/Background.mp3" loop="loop"></audio>
+    <audio id="btnClick" src="content/_sounds/Button Click.mp3"></audio>
+    <audio id="incorrect" src="content/_sounds/Incorrect.mp3"></audio>
+    <audio id="correct" src="content/_sounds/Correct.mp3"></audio>
+    <audio id="slide13" src="content/_sounds/Slide 13.mp3"></audio>
+    <audio id="slide27" src="content/_sounds/Title Slide _Slide 27.mp3"></audio>
+
+    <div class="">
+        <span style="font-size:18px;"></span>
+
+<style type="text/css">
+    .close-Btn {
+       /* margin-top: 10px;
+        position: absolute;
+        z-index: 1;
+        left: 580px;
+        position: absolute;*/
+    }
+
+    .A {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 100px;
+    }
+
+    .B {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        z-index: 1;
+        top: 100px;
+        left: 250px;
+    }
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+        </div>
+    </div>
+</div><!--end container body-content-->
+
+    <!--//////////////////////////////////////////////////-->
+
+    <div class="col-md-12 ai_background">
+        <div class="row">
+            <div class="col-md-12 custom-font game-title">
+                <div class=" text-left">
+                    <img style="width:72px; height:72px; margin-bottom:3px; float:left; margin:4px 16px 6px 1px" src="content/_assets/elements/taleofatail_white.png">
+                    <h2 style="line-height:75px; text-transform:uppercase">Tale of the Tail</h2>
+                </div>
+
+                <div class="col-md-2 text-right">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span style="font-size:18px;"></span>
+                        </div>
+                    </div><!--end row-->
+                </div><!--end text-right-->
+            </div><!--end custom-font game title-->
+
+            <!--/**************************/-->
+
+            <div class="col-md-12 bkg-image">
+                     <!--//////////////////////////////////////////////////-->
+                <div id="home">
+                    <div class="homepage">
+                        <div class="main-logo">
+                            <img src="content/_assets/elements/title.png" alt="Tale of the Tail" />
+                        </div>
+                        <div class="play-btn">
+                            <a href class="btn-click play" ng-click="" title="Play"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="video">
+                   <div id="my-player"></div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div id="step">
+                    <div ng-controller="stepController">
+                        <div class="slider" data="data">
+                            <div class="steps slide clearfix" ng-repeat="item in data | orderBy:'rank'" id="{{item.item.name}}">
+                                <div class="sidebar clearfix">
+                                    <div class="img-box" ng-repeat="img in item.item.tailImages">
+                                        <img ng-src="{{img.tail1}}" />
+                                        <img ng-src="{{img.tail2}}" />
+                                        <img ng-src="{{img.tail3}}" />
+                                    </div>
+                                    <div class="film">
+                                        <div class="hover-box" ng-repeat="img in item.item.tailImages">
+                                            <div class="img-hover" ng-class="{correct: img.correct==1, incorrect: img.correct!=1}"></div>
+                                            <div class="img-hover" ng-class="{correct: img.correct==2, incorrect: img.correct!=2}"></div>
+                                            <div class="img-hover" ng-class="{correct: img.correct==3, incorrect: img.correct!=3}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-box">
+                                    <div class="content-box">
+                                        <h1 class="heading"><img src="content/_assets/elements/header_1.png"></h1>
+                                        <div class="img-box">
+                                            <img ng-src="{{item.item.mainImageUrl}}">-
+                                            <div class="correct-ansver clearfix">
+                                                <p ng-bind-html="to_trusted(item.item.text)"></p>
+                                            </div>
+                                        </div>
+                                        <button class="exit close-Btn"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arrows">
+                                <div class="arrows-inctive"></div>
+                                <a href class="next arrow" ng-click="next()"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="googjob">
+                    <div class="heading">
+                        <div class="clearfix"><img src="content/_assets/elements/header_2.png" title="good job"></div>
+                        <h1>Do you wish you had your own tail?<br /> Don't be sad! Make your own!</h1>
+
+                        <div class="buttons-box clearfix">
+                            <a href class="easy btn-click"></a>
+                            <a href class="hard btn-click"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="easy">
+                    <div class="heading">
+                        <div class="steps-box" ng-controller="easyTailController">
+                            <div slider class="slider" data="data">
+                                <div class="clearfix step" ng-repeat="item in data" ng-show="item.visible" id="{{item.name}}">
+                                    <div class="headig-box clearfix"><img ng-src="{{item.mainImageUrl}}"></div>
+                                    <div class="tex-box clearfix">
+                                        <div ng-bind-html="to_trusted(item.text)" ng-attr-style="{{item.divStyle}}" style="{{item.divStyle}}" class="insert-text"></div>
+                                            <img ng-src="{{item.tailImg}}" ng-attr-style="{{item.imgStyle}}" style="{{item.imgStyle}}" />
+                                        <div class="border-box"></div>
+                                    </div>
+                                </div>
+                                <div class="arrows">
+                                    <a href class="next arrow" ng-click="next()"></a>
+                                    <a href class="prev arrow" ng-click="prev()"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="hard">
+                    <div class="heading">
+                        <div class="steps-box" ng-controller="stepTailController">
+                            <div slider class="slider" data="data">
+                                <div class="clearfix step" ng-repeat="item in data" ng-show="item.visible" id="{{item.name}}">
+                                    <div class="headig-box clearfix"><img ng-src="{{item.mainImageUrl}}"></div>
+                                    <div class="tex-box clearfix">
+                                        <div ng-bind-html="to_trusted(item.text)" ng-attr-style="{{item.divStyle}}" style="{{item.divStyle}}" class="insert-text"></div>
+                                            <img ng-src="{{item.tailImg}}" ng-attr-style="{{item.imgStyle}}" style="{{item.imgStyle}}" />
+                                        <div class="border-box"></div>
+                                    </div>
+                                </div>
+                                <div class="arrows">
+                                    <a href class="next arrow" ng-click="next()"></a>
+                                    <a href class="prev arrow" ng-click="prev()"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <!--  <div id="showOff" class="end-story">
+
+                    <div class="inner">
+                        <div class="heading">
+                            <img src="content/_assets/elements/header_4.png">
+                        </div>
+                        <div class="text-box">
+                            <h1>Take a picture with your tail!</h1>
+                            <div class="upload">
+                                <form id="target">
+                                    <input type="file" id="file" value="Go" />
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div> -->
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="wellcome" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Welcome to the animal Kingdom!</h1>
+                        </div>
+                        <div class="heading">
+                            <img src="content/_assets/elements/header_5.png">
+                        </div>
+                    </div>
+                    <div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="flip" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>The Tail end of this story <br /> that you have a new</h1>
+                        </div>
+                        <div class="heading">
+                            <img src="content/_assets/elements/header_flip.png">
+                        </div>
+                    </div>
+                    <!--<div class="arrows">
+                        <a href class="next arrow"></a>
+                    </div>-->
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <!--//////////////////////////////////////////////////-->
+                <div id="quit" class="end-story">
+                    <div class="inner">
+                        <div class="text-box">
+                            <h1>Are you sure you<br/> want to quit?</h1>
+                        </div>
+                        <div class="buttons-quit clearfix">
+                            <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                            <a href class="no"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--//////////////////////////////////////////////////-->
+                <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Close Modal</h1>
+                                    </div><!--end second-slide-->
+                                    <div class="purple-button text-center custom-font button-text button-padding">
+                                        <a href="#">Close</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="pop-up" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Load Modal</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="level-complete" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="second-slide">
+                                        <h1>Game Complete</h1>
+                                    </div><!--end second-slide-->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-left:193px; margin-top:207px; margin-left:85px;">
+                        <div class="modal-content" style="width:420px; height:315px;">
+                            <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div id="quit" class="end-story">
+                                        <div class="inner">
+                                            <div class="text-box">
+                                                <h1>Are you sure you<br /> want to quit?</h1>
+                                            </div>
+                                            <div class="buttons-quit clearfix">
+                                                <a href="javascript:window.open(location, '_self').close();" class="yes"></a>
+                                                <a href class="no"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--//////////////////////////////////////////////////-->
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+
+ <!--//////////////////////////////////////////////////-->
+
+</body>
+</html>

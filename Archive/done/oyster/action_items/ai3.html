@@ -1,0 +1,147 @@
+<link rel="stylesheet" href="css/Oysters.css"/>
+<script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+
+<audio id="background" preload="auto" loop>
+    <source src="content/sounds/Background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Btn_Click" preload="auto">
+    <source src="content/sounds/Button Click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="Wrong" preload="auto">
+    <source src="content/sounds/Wrong Answer.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="CorrectSound" preload="auto">
+    <source src="content/sounds/Correct Answer.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="splash1" preload="auto">
+    <source src="content/sounds/Drop_Oyster/Water Splash 1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="splash2" preload="auto">
+    <source src="content/sounds/Drop_Oyster/Water Splash 2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="splash3" preload="auto">
+    <source src="content/sounds/Drop_Oyster/Water Splash 3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="splash4" preload="auto">
+    <source src="content/sounds/Drop_Oyster/Water Splash 4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="splash5" preload="auto">
+    <source src="content/sounds/Drop_Oyster/Water Splash 5.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<div class="container body-content">
+    <div class="row">
+        <div class="background">
+
+            <div class="bubble-shell">
+                <div class="bubble_1"></div>
+                <div class="bubble_2"></div>
+                <div class="bubble_3"></div>
+                <div class="bubble_4"></div>
+                <div class="bubble_5"></div>
+                <div class="bubble_6"></div>
+                <div class="bubble_7"></div>
+                <div class="bubble_8"></div>
+                <div class="bubble_9"></div>
+                <div class="bubble_10"></div>
+            </div>
+
+            <!--end bubble-shell-->
+
+            <div class="front-image-bucket" style="position:absolute; top:385px; left:7px; z-index:20; width:0;">
+                <img class="front-image" src="content/images/elements/bucket_front.png" style="width:131px;" />
+            </div>
+
+            <div id="content" style="height:300px; width:474px; position:absolute; top:204px; left:30px;">
+                <div class="makeMeDraggable">
+                    <div id="Oyster1" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_1.png" style="width:69px; -ms-transform: rotate(90deg); /* IE 9 */-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */transform: rotate(90deg); z-index:9;" />
+                    </div>
+
+                    <div id="Oyster2" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_2.png" style="width:60px; -ms-transform: rotate(70deg); /* IE 9 */-webkit-transform: rotate(70deg); /* Chrome, Safari, Opera */transform: rotate(70deg); z-index:9;" />
+                    </div>
+
+                    <div id="Oyster3" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_3.png" style="width:60px; -ms-transform: rotate(40deg); /* IE 9 */-webkit-transform: rotate(40deg); /* Chrome, Safari, Opera */transform: rotate(40deg); z-index:9;" />
+                    </div>
+
+                    <div id="Oyster4" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_4.png" style="width:60px; -ms-transform: rotate(48deg); /* IE 9 */-webkit-transform: rotate(48deg); /* Chrome, Safari, Opera */transform: rotate(48deg); z-index:9;" />
+                    </div>
+
+                    <div id="Oyster5" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_5.png" style="width:60px; -ms-transform: rotate(36deg); /* IE 9 */-webkit-transform: rotate(36deg); /* Chrome, Safari, Opera */transform: rotate(36deg); z-index:9;" />
+                    </div>
+
+                    <div id="Oyster6" class="dragOyster" style="z-index:10;position:absolute;">
+                        <img src="content/images/elements/Oysters_6.png" style="width:60px; -ms-transform: rotate(110deg); /* IE 9 */-webkit-transform: rotate(110deg); /* Chrome, Safari, Opera */transform: rotate(110deg); z-index:9;" />
+                    </div>
+                </div><!-- end make me draggable-->
+
+                <div id="makeMeDroppable">
+                    <div style="z-index:1;top:88px;" class="water_05"></div>
+                    <div style="z-index:1;top:88px;" class="water_04"></div>
+                    <div style="z-index:1;top:88px;" class="water_03"></div>
+                    <div style="z-index:1;top:88px;" class="water_02"></div>
+                    <div style="z-index:1;top:88px;" class="water_01"></div>
+                </div><!-- end droppable area -->
+
+                <img class="back-image" src="content/images/elements/bucket_back.png" style="z-index:1; margin-top: -108px;  margin-left:-17px; width:121px;position: absolute;" />
+            </div><!-- end content-->
+
+            <div id="check-answer" class="advance-btn">
+                <a href="#">
+                    <img class="imagebtn-off" src="content/images/elements/btn_next_on.png" style="width:52px; height:52px; margin-left:29px; margin-top:29px; z-index:9999; cursor:pointer;" />
+                    <img class="imageBtn" src="content/images/elements/btn_next_glow.png" style="cursor:pointer;" />
+                </a>
+            </div><!--end advance-btn-->
+
+            <div class="modal fade" id="game-info-Question" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:1; position:absolute;display:block;height:130px;top:101px;">
+                <div class="modal-dialog" style="margin-left:80px; margin-top:22px;">
+                    <div class="modal-content" style="width:483px; height:78px;">
+
+                        <div class="modal-body custom-font modal-text">
+                            <p id="ai-text" class="text-modal-start" style="position:absolute;"></p>
+                            <img style="width:499px; top:-20px; left:-16px;margin-left:-23px;margin-top:-24px;" src="content/images/elements/Question_Window.png" />
+                        </div><!--end six-slide-->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="game-info-correct" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:1; position:absolute;height:130px;top:101px;">
+                <div class="modal-dialog" style="margin-left:80px; margin-top:22px;">
+                    <div class="modal-content" style="width:483px; height:78px;">
+
+                        <div class="modal-body custom-font modal-text">
+                            <img style="width:499px; top:-20px; left:-16px;margin-left:-23px;margin-top:-24px;" src="content/images/elements/Correct_Window.png" />
+                        </div><!--end six-slide-->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="game-info-incorrect" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:1; position:absolute;height:130px;top:101px;">
+                <div class="modal-dialog" style="margin-left:80px; margin-top:22px;">
+                    <div class="modal-content" style="width:483px; height:78px;">
+
+                        <div class="modal-body custom-font modal-text">
+                            <img style="width:499px; top:-20px; left:-16px;margin-left:-23px;margin-top:-24px;" src="content/images/elements/Incorrect_Window.png" />
+                        </div><!--end six-slide-->
+                    </div>
+                </div>
+            </div>
+
+        </div><!--end background-->
+    </div><!--end row-->
+</div><!--end container body-content-->
