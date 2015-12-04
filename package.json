@@ -1,0 +1,19 @@
+{
+  "name": "action-items",
+  "version": "0.1.0",
+  "description": "CMWN Action Items Library",
+  "main": "index.html",
+  "devDependencies": {
+    "js-interactive-library": "github:ginasink/js-interactive-library#v0.1.0",
+    "babel": "^5.8.29",
+    "babel-loader": "^5.3.3",
+    "gulp": "^3.9.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "author": "Max Rafferty",
+  "license": "ISC"
+}

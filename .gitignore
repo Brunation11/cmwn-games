@@ -1,6 +1,4 @@
 .DS_Store
 **/.DS_Store
-**/index.php
-MAMP-PRO-Logo.png
-wallywallwall/MAMP-PRO-Logo.png
-wallywallwall/index.php
+node_modules
+build
