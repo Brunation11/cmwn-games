@@ -1,24 +1,29 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require('path'),
+    webpack = require('webpack');
+
+delete require.cache[require.resolve("js-interactive-library")];
 
 module.exports = {
+    context: __dirname + '/library',
+    entry: null,
     devtool: 'eval-source-map',
     resolve: {
-        root: path.resolve('./source'),
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
+        modulesDirectories: ['node_modules']
     },
-    entry: ['./source/main.js'],
+    plugins: [],
     output: {
-        path: path.join(__dirname, 'build'),
-        filename: 'play.js',
+        path: __dirname+'/build',
+        filename: '[name]/ai.js',
         publicPath: '/build/'
     },
     module: {
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
-            include: path.join(__dirname, 'source')
+            include: path.join(__dirname, 'library/')
         }]
-    }
+    },
+    cache: false
 };
 
