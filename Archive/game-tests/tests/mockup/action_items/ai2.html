@@ -1,0 +1,150 @@
+<audio id="bee" preload="auto">
+    <source src="content/sound/Slide 4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="background" preload="auto">
+    <source src="content/sound/Slides 5-7_2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai2.js"></script>
+
+<div class="row">
+    <div class="col-md-12 content-box">
+        <div class="row">
+            <div id="title" class="background-intro">
+                <img src="content/images/bkg_two.png" style="width:100%; position:absolute; margin-top:1px; margin-left:30px; z-index:1;">
+            </div><!--end background-intro-->
+
+            <div id="close" style="position:absolute; z-index:999;">
+                <img style="width:62px; cursor:pointer; margin-top:4px; margin-left:582px; position:absolute;" src="content/images/buttons/btn_exit_on.png" />
+                <img style="width:62px; cursor:pointer; margin-top:4px; margin-left:582px; position:absolute;" src="content/images/buttons/btn_exit.png" />
+            </div>
+
+            <div id="small-bee" style="position:absolute; z-index:2; margin-left:47px; margin-top:150px;">
+                <div class="bee-div" style="padding:4px;">
+                    <img src="content/images/animals/small_bee.png" style="width:47px;" />
+                </div>
+
+                <div id="b1" aria-hidden="true" style="position:absolute; z-index:3; margin-top:-84px; margin-left:13px;">
+                    <img src="content/images/bubbles/bubble_1.png" style="width:140px;" />
+                    <div style="margin-top:-81px; margin-left:99px;">
+                        <a href="#" id="b-close">
+                            <img src="content/images/buttons/btn_bubble_exit_on.png" style="width:14px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_bubble_exit.png" style="width:14px;" />
+                        </a>
+                    </div>
+                    <div style="margin-top:13px;">
+                        <p style="font-size:1.3em; font-family:'Source Sans Pro'; font-weight:bold; text-align:center; line-height:20px;">There must<br />be food!</p>
+                    </div>
+                </div>
+
+                <div id="b2" aria-hidden="true" style="position:absolute; z-index:3; margin-top:26px; margin-left:-120px;">
+                    <img src="content/images/bubbles/bubble_2.png" style="width:202px;" />
+                    <div style="margin-top:-77px; margin-left:145px;">
+                        <a href="#" id="b-close2">
+                            <img src="content/images/buttons/btn_bubble_exit_on.png" style="width:14px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_bubble_exit.png" style="width:14px;" />
+                        </a>
+                    </div>
+                    <div style="margin-top:18px;">
+                        <p style="font-size:1.2em; font-family:'Source Sans Pro'; font-weight:bold; text-align:center; line-height:20px;">There must be<br />room to raise young!</p>
+                    </div>
+                </div>
+
+                <div id="b3" aria-hidden="true" style="position:absolute; z-index:3; margin-top:-109px; margin-left:-101px;">
+                    <img src="content/images/bubbles/bubble_3.png" style="width:140px;" />
+                    <div style="margin-top:-106px; margin-left:91px;">
+                        <a href="#" id="b-close3">
+                            <img src="content/images/buttons/btn_bubble_exit_on.png" style="width:14px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_bubble_exit.png" style="width:14px;" />
+                        </a>
+                    </div>
+                    <div style="margin-top:23px; margin-left:-7px;">
+                        <p style="font-size:1.2em; font-family:'Source Sans Pro'; font-weight:bold; text-align:center; line-height:20px;">There must<br />be water!</p>
+                    </div>
+                </div>
+
+                <div id="b4" aria-hidden="true" style="position:absolute; z-index:3; margin-left:-29px; margin-top:41px;">
+                    <img src="content/images/bubbles/bubble_4.png" style="width:158px;" />
+                    <div style="margin-top:-82px; margin-left:107px;">
+                        <a href="#" id="b-close4">
+                            <img src="content/images/buttons/btn_bubble_exit_on.png" style="width:14px; cursor:pointer; position:absolute;" />
+                            <img src="content/images/buttons/btn_bubble_exit.png" style="width:14px;" />
+                        </a>
+                    </div>
+                    <div style="margin-top:13px;">
+                        <p style="font-size:1.2em; font-family:'Source Sans Pro'; font-weight:bold; text-align:center; line-height:20px;">There must<br />be shelter!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="position:absolute; margin-left:562px; margin-top:338px; z-index:3;">
+                <a href="#" id="next-ai">
+                    <img src="content/images/buttons/btn_next.png" style="width:92px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/buttons/btn_next_on.png" style="width:92px;" />
+                </a>
+            </div>
+
+        </div><!--end row-->
+    </div><!--end container body-content-->
+</div>
+
+<!-- Game Info Modal -->
+
+<div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:115px; margin-left:43px;">
+        <div class="modal-content">
+
+            <div style="position:absolute; z-index:2;">
+                <img src="content/images/animals/large_bee.png" style="width:50%; margin-left:-33px; margin-top:-10px;" />
+            </div>
+
+            <div style="position:absolute; z-index:1;">
+                <img src="content/images/frame.png" style="width:535px;" />
+                <p style="font-family:'Source Sans Pro'; font-size:1.6em; font-weight:bold; line-height:28px; text-align:center; margin-top:-198px; margin-left:169px; margin-bottom:54px;">What four things must there be<br /> for an animal to stay alive<br />in their habitat?</p>
+                <p style="font-family:'Source Sans Pro'; font-size:2.2em; font-weight:bolder; line-height:28px; text-align:center;">Catch the bee and find out!</p>
+            </div>
+
+            <div style="position:absolute; margin-left:492px; margin-top:312px; z-index:2;">
+                <a id="next-button">
+                    <img src="content/images/buttons/btn_next.png" style="width:92px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/buttons/btn_next_on.png" style="width:92px;" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Game Close Modal -->
+
+<div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:3;">
+    <div class="modal-dialog" style="margin-top:120px; margin-left:48px;">
+        <div class="modal-content" style="width:523px; height:312px;">
+            <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
+                <div class="modal-body custom-font modal-text">
+
+                    <div style="position:absolute; margin-top:-20px;">
+                        <img src="content/images/frame.png" style="width:535px;" />
+                    </div>
+
+                    <div style="position:absolute;">
+                        <p style="font-family:'Source Sans Pro'; font-size:3.6em; font-weight:bolder; text-align:center; line-height:58px; margin-top:44px; margin-left:81px;">Are you sure you<br /> want to quit?</p>
+                    </div>
+
+                    <div class="Yes-Btns" style="position:absolute; top:195px; left:93px;">
+                        <img src="content/images/buttons/btn_yes_on.png" style="width:149px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_yes.png" style="width:149px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                    <div class="No-Btns" style="position:absolute; top:195px; left:326px;">
+                        <img src="content/images/buttons/btn_no_on.png" style="width:135px; position:absolute; cursor:pointer;" />
+                        <img src="content/images/buttons/btn_no.png" style="width:135px; position:absolute; cursor:pointer;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

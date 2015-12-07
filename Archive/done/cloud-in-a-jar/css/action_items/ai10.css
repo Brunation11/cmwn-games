@@ -1,0 +1,69 @@
+#title img {
+  margin-top: 66px;
+  margin-left: 92px;
+  margin-right: 0px;
+  position: absolute;
+  z-index: 1;
+}
+#sign img {
+  float: right;
+  margin-top: 384px;
+  margin-left: 466px;
+  position: absolute;
+}
+.flip-off img {
+  position: absolute;
+  -webkit-transition: opacity 0s ease-in-out;
+  -moz-transition: opacity 0s ease-in-out;
+  -o-transition: opacity 0s ease-in-out;
+  transition: opacity 0s ease-in-out;
+}
+.flip-off img:hover {
+  position: absolute;
+  opacity: 0;
+}
+p,
+.p {
+  font-family: Source Sans Pro;
+  font-size: 30px;
+  position: absolute;
+  z-index: 2;
+  width: 614px;
+  text-align: center;
+  margin-top: 124px;
+  margin-left: 6px;
+  letter-spacing: -1px;
+}
+h2,
+.h2 {
+  font-family: Source Sans Pro ;
+  font-size: 28px;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  margin-top: 198px;
+  margin-left: 101px;
+}
+b,
+strong {
+  font-weight: 900;
+  font-family: Source Sans Pro;
+}
+.tag1,
+.tag2,
+.tag3,
+.tag4,
+.tag5 {
+  font-family: Source Sans Pro;
+}
+h3,
+.h3 {
+  font-family: Source Sans Pro;
+  position: absolute;
+  z-index: 2;
+  margin-top: 279px;
+  font-size: 20px;
+  margin-left: 116px;
+  letter-spacing: -1px;
+  font-weight: 600;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html style="background-color: #7829bb;">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Change My World Now</title>
+
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/animate.css">
+
+        <!-- Thirdparty JS Scripts -->
+        <script src="javascript/thirdparties/modernizr-2.8.3.js"></script>
+        <script src="javascript/thirdparties/jquery-2.1.4.js"></script>
+        <script src="javascript/thirdparties/bootstrap.js"></script>
+        <script src="javascript/thirdparties/respond.js"></script>
+        <script src="javascript/thirdparties/jquery-ui.js"></script>
+
+        <!-- Platform JS Scripts -->
+        <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+
+        <!-- Interal JS Scripts -->
+        <script type="text/javascript" src="javascript/modals.js"></script>
+        <script type="text/javascript" src="javascript/initialize.js"></script>
+    </head>
+
+    <body style="background-color: #7829bb;">
+        <div class="body-content">
+            <div class="ai_background">
+                <div class="row">
+
+                    <div class="col-md-12 custom-font game-title">
+                        <div class=" text-left">
+                            <img style="width:72px; height:72px;" src="content/images/droughtout_white.png" />
+                            DROUGHT OUT
+                        </div>
+
+                        <div class="col-md-2 text-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span style="font-size:18px;"></span>
+                                </div>
+                            </div>
+                        </div><!--end text-right-->
+                    </div>
+
+                    <span id="putcontenthere" name="putcontenthere"></span>
+
+                    <!-- Game Close Modal -->
+
+                    <div class="modal fade" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:11;">
+                        <div class="modal-dialog" style="margin-top:129px; margin-left:48px;">
+                            <div class="modal-content" style="width:523px; height:312px;">
+                                <div class="blue-border" style="margin-left:-20px; width:466px; height:325px;">
+                                    <div class="modal-body custom-font modal-text">
+
+                                        <div style="position:absolute; margin-top:-28px; margin-left:-7px;">
+                                            <img src="content/images/frame_1.png" style="width:546px; height:363px;" />
+                                        </div>
+
+                                        <div style="position:absolute;">
+                                            <p style="font-family:'Source Sans Pro'; font-size:3em; font-weight:bolder; text-align:center; line-height:53px; margin-top:35px; margin-left:111px;">Are you sure you<br /> want to quit?</p>
+                                        </div>
+
+                                        <div class="Yes-Btns" style="position:absolute; margin-top:164px; margin-left:63px;">
+                                            <img src="content/images/buttons/btn_yes.png" style="width:175px; position:absolute; cursor:pointer;" />
+                                            <img src="content/images/buttons/btn_yes_on.png" style="width:175px; cursor:pointer;" />
+                                        </div>
+
+                                        <div class="No-Btns" style="position:absolute; margin-top:164px; margin-left:295px;">
+                                            <img src="content/images/buttons/btn_no.png" style="width:165px; position:absolute; cursor:pointer;" />
+                                            <img src="content/images/buttons/btn_no_on.png" style="width:165px; cursor:pointer;" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 bkg-image">
+                        <img src="content/images/BKG_2.png" />
+                    </div><!-- end bkg-image-->
+
+                    <div class="modal fade" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="position:absolute;">
+                        <div class="modal-dialog" style="margin-top:131px; margin-left:85px;">
+                            <div class="modal-content" style="width:420px; height:315px;">
+                                <div class="blue-border" style="margin-left:-5px; margin-top:-7px; width:430px; height:325px;">
+                                    <div class="modal-body custom-font modal-text">
+
+                                        <div class="second-slide">
+                                            <h1>Close Modal</h1>
+                                        </div>
+
+                                        <div class="purple-button text-center custom-font button-text button-padding">
+                                            <a href="#">Close</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end ai_background-->
+        </div><!--end container body-content-->
+    </body>
+</html>

@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Change My World Now</title>
+        
+        <link rel="stylesheet" href="css/site.css">
+        
+        <!-- Thirdparty JS Scripts -->
+        <script src="javascript/thirdparties/modernizr-2.8.3.js"></script>
+        <script src="javascript/thirdparties/jquery-2.1.4.js"></script>
+        <script src="javascript/thirdparties/bootstrap.js"></script>
+        <script src="javascript/thirdparties/respond.js"></script>
+        <script src="javascript/thirdparties/jquery-ui.js"></script>
+
+        <!-- Platform JS Scripts -->
+        <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+
+        <!-- Interal JS Scripts -->
+        <script type="text/javascript" src="javascript/modals.js"></script>
+        <script type="text/javascript" src="javascript/initialize.js"></script>
+    </head>
+
+<body>
+    <audio id="titlel" preload="auto">
+    <source src="content/sound/Title screen Load.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <audio id="arrows" preload="auto">
+    <source src="content/sound/arrow-click.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>    
+
+    <audio id="compm" preload="auto">
+    <source src="content/sound/Complete Maze.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <audio id="wormpart" preload="auto">
+    <source src="content/sound/Select Worm Part Number Icon.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <audio id="steps" preload="auto" loop>
+    <source src="content/sound/Each Step Screen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <audio id="flip" preload="auto">
+    <source src="content/sound/Last Screen Flip.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <div class="container body-content" style="margin-left:0px; padding-left:0px;">
+        <div class="col-md-12 ai_background">
+            <div class="row">
+
+                <div class="col-md-12 custom-font game-title">
+                    <div class="text-left">
+                        <img style="width:72px; height:72px; margin-bottom:3px;" src="content/images/worms_white.png" />
+                        TUNNEL ADVENTURES
+                    </div>
+
+                    <div class="col-md-2 text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:18px;"></span>
+                            </div>
+                        </div><!--end row-->
+                    </div><!--end text-right-->
+                </div><!--end custom-font game title-->
+
+                <!--  <div class="close-Btn">
+                <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_exit_on.png" style="width:30px;" /></div>
+                <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_exit.png" style="width: 30px;margin-top: -30px;" /></div>
+            </div> -->
+              
+                <span id="putcontenthere" name="putcontenthere"></span>
+
+                <div class="col-md-12 bkg-image">
+                    <!-- <img src="content/images/background/bkg_1.png" /> -->
+                </div><!-- end bkg-image-->
+
+                <!--  <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999;position:absolute;">
+                        <div class="modal-dialog" style="margin-top: 173px;  margin-left: 98px;">
+                            <div class="modal-content" style="width: 431px; height: 241px; -moz-border-radius: 100px / 50px; -webkit-border-radius: 100px / 50px; border-radius: 179px / 104px;">
+                                <div class="blue-border" style="margin-left:125px; margin-top:-7px; width:430px; height:325px;">
+                                    <div class="modal-body custom-font modal-text">
+
+                                        <a href="~/ActionItem/AI1">
+                                            <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_yes_on.png" class="img-responsive" alt="Responsive image" style="width: 150px; margin-left: -76px; position: absolute; z-index: 8; margin-top: 133px;"></div>
+                                            <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_yes.png" class="img-responsive" alt="Responsive image" style=" width: 150px; position: absolute; margin-left: -76px; z-index: 9; margin-top: 132px;"></div>
+                                        </a>
+
+                                        <div id="Btn-hide1">
+                                            <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_no_on.png" class="img-responsive" alt="Responsive image" style="width: 150px; margin-left: 91px; position: absolute; z-index: 8; margin-top: 131px;"></div>
+                                            <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_no.png" class="img-responsive" alt="Responsive image" style=" width: 150px; position: absolute; margin-left: 91px; z-index: 9; margin-top: 130px;"></div>
+                                        </div>
+
+                                        <div class="second-slide" style=" position: absolute; margin-top: 55px; margin-left: 95px; width: 311px; text-align: center;">
+                                            <h2 style=" width: 297px; margin-top: -28px; font-size: 34px;  margin-left: -170px; font-family: CMWN; color: #2cc4f4;">
+                                                Are you sure you want to quit?
+                                            </h2>
+                                        </div>
+                                        <img src="content/images/headers/frame_2.png" style=" width: 516px; margin-left: -182px; margin-top: -53px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+
+</body>   
+</html>

@@ -1,0 +1,282 @@
+<audio id="background" preload="auto">
+    <source src="content/sound/BKG_BubblingUpGame2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="correct" preload="auto">
+    <source src="content/sound/Correct_ScoopGame.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="incorrect" preload="auto">
+    <source src="content/sound/Incorrect_ScoopGame.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo4" preload="auto">
+    <source src="content/sound/HFF5 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo5" preload="auto">
+    <source src="content/sound/HFF6 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo6" preload="auto">
+    <source src="content/sound/HFF7 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo7" preload="auto">
+    <source src="content/sound/HFF8 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo8" preload="auto">
+    <source src="content/sound/HFF9 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo9" preload="auto">
+    <source src="content/sound/HFF11 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo10" preload="auto">
+    <source src="content/sound/HFF12 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo11" preload="auto">
+    <source src="content/sound/HFF13 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo12" preload="auto">
+    <source src="content/sound/HFF14 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="vo13" preload="auto">
+    <source src="content/sound/HFF15 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo14" preload="auto">
+    <source src="content/sound/HFF16 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo15" preload="auto">
+    <source src="content/sound/HFF17 (mp3cut.net).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo16" preload="auto">
+    <source src="content/sound/HFF10.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai3.js"></script>
+
+<div class="container body-content">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div id="title" class="background-intro">
+                <img src="content/images/bkg_2.png" style="width:616px; position:absolute; margin-top:1px; z-index:1;">
+            </div><!--end background-intro-->
+
+            <div id="close" style="position:absolute; z-index:999; margin-top:-15px; margin-left:567px;">
+                <img style="width:60px; cursor:pointer; position:absolute;" src="content/images/buttons/btn_exit_on.png" />
+                <img style="width:60px; cursor:pointer; position:absolute;" src="content/images/buttons/btn_exit.png" />
+            </div>
+
+            <div id="next-button" style="margin-left:560px; margin-top:324px; position:absolute; z-index:2;">
+                <img src="content/images/buttons/btn_next.png" style="width:64px; z-index:99; cursor:pointer; position:absolute; margin-top:6px;" />
+                <img src="content/images/buttons/btn_next_on.png" style="width:64px;" />
+            </div>
+
+            <div id="bubble-game" style="display:none;">
+
+                <div style="position:absolute; z-index:1; margin-top:-14px;">
+                    <img src="content/images/headers/header_4.png" style="width:600px;" />
+                </div>
+
+                <div style="position:absolute; z-index:1; margin-top:368px; margin-left:3px;">
+                    <img src="content/images/score.png" style="width:100px;" />
+                </div>
+
+                <div id="score" style="position:absolute; z-index:1; margin-top:370px; margin-left:101px;">
+                    <p style="font-size:1.5em; color:#fff;">0</p>
+                </div>
+
+                <!-- Right Items -->
+
+                <div id="brush" class="yes" style="position:absolute; z-index:999; margin-top:67px; margin-left:301px;">
+                    <img id="brush-on" src="content/images/Bubbles/bubble_correct_1_on.png" style="width:93px; cursor:pointer; position:absolute;" />
+                    <img id="brush-off" src="content/images/Bubbles/bubble_correct_1.png" style="width:93px;" />
+                </div>
+
+                <div id="dish" class="yes" style="position:absolute; z-index:999; margin-top:194px; margin-left:217px;">
+                    <img id="dish-on" src="content/images/Bubbles/bubble_correct_2_on.png" style="width:111px; cursor:pointer; position:absolute;" />
+                    <img id="dish-off" src="content/images/Bubbles/bubble_correct_2.png" style="width:111px;" />
+                </div>
+
+                <div id="crop" class="yes" style="position:absolute; z-index:999; margin-top:271px; margin-left:359px;">
+                    <img id="crop-on" src="content/images/Bubbles/bubble_correct_3_on.png" style="width:114px; cursor:pointer; position:absolute;" />
+                    <img id="crop-off" src="content/images/Bubbles/bubble_correct_3.png" style="width:114px;" />
+                </div>
+
+                <div id="swim" class="yes" style="position:absolute; z-index:999; margin-top:224px; margin-left:501px;">
+                    <img id="swim-on" src="content/images/Bubbles/bubble_correct_4_on.png" style="width:93px; cursor:pointer; position:absolute;" />
+                    <img id="swim-off" src="content/images/Bubbles/bubble_correct_4.png" style="width:93px;" />
+                </div>
+
+                <div id="clean" class="yes" style="position:absolute; z-index:999; margin-top:270px; margin-left:153px;">
+                    <img id="clean-on" src="content/images/Bubbles/bubble_correct_5_on.png" style="width:93px; cursor:pointer; position:absolute;" />
+                    <img id="clean-off" src="content/images/Bubbles/bubble_correct_5.png" style="width:93px;" />
+                </div>
+
+                <div id="run" class="yes" style="position:absolute; z-index:999; margin-top:62px; margin-left:-5px;">
+                    <img id="run-on" src="content/images/Bubbles/bubble_correct_6_on.png" style="width:93px; cursor:pointer; position:absolute;" />
+                    <img id="run-off" src="content/images/Bubbles/bubble_correct_6.png" style="width:93px;" />
+                </div>
+
+                <div id="cook" class="yes" style="position:absolute; z-index:999; margin-top:55px; margin-left:543px;">
+                    <img id="cook-on" src="content/images/Bubbles/bubble_correct_7_on.png" style="width:82px; cursor:pointer; position:absolute;" />
+                    <img id="cook-off" src="content/images/Bubbles/bubble_correct_7.png" style="width:82px;" />
+                </div>
+
+                <div id="face" class="yes" style="position:absolute; z-index:999; margin-top:308px; margin-left:482px;">
+                    <img id="face-on" src="content/images/Bubbles/bubble_correct_8_on.png" style="width:82px; cursor:pointer; position:absolute;" />
+                    <img id="face-off" src="content/images/Bubbles/bubble_correct_8.png" style="width:82px;" />
+                </div>
+
+                <div id="laundry" class="yes" style="position:absolute; z-index:999; margin-top:63px; margin-left:400px;">
+                    <img id="laundry-on" src="content/images/Bubbles/bubble_correct_9_on.png" style="width:82px; cursor:pointer; position:absolute;" />
+                    <img id="laundry-off" src="content/images/Bubbles/bubble_correct_9.png" style="width:82px;" />
+                </div>
+
+                <div id="drink" class="yes" style="position:absolute; z-index:999; margin-top:163px; margin-left:542px;">
+                    <img id="drink-on" src="content/images/Bubbles/bubble_correct_10_on.png" style="width:82px; cursor:pointer; position:absolute;" />
+                    <img id="drink-off" src="content/images/Bubbles/bubble_correct_10.png" style="width:82px;" />
+                </div>
+
+                <div id="shower" class="yes" style="position:absolute; z-index:999; margin-top:316px; margin-left:210px;">
+                    <img id="shower-on" src="content/images/Bubbles/bubble_correct_11_on.png" style="width:90px; cursor:pointer; position:absolute;" />
+                    <img id="shower-off" src="content/images/Bubbles/bubble_correct_11.png" style="width:90px;" />
+                </div>
+
+                <!-- <div id="aqua" class="yes" style="position:absolute; z-index:999; margin-top:124px; margin-left:224px;">
+                    <img id="aqua-on" src="content/images/new/bubbles_incorrect_crochet_onpng" style="width:90px; cursor:pointer; position:absolute;" />
+                    <img id="aqua-off" src="content/images/new/bubbles_incorrect_crochet_on.png" style="width:90px;" />
+                </div> -->
+
+                <!-- Wrong Items -->
+
+                <div id="drive" style="position:absolute; z-index:999; margin-top:224px; margin-left:310px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_1_on.png" style="width:95px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_1.png" style="width:95px;" />
+                </div>
+
+                <div id="read" style="position:absolute; z-index:999; margin-top:158px; margin-left:10px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_2_on.png" style="width:95px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_2.png" style="width:95px;" />
+                </div>
+
+                <div id="sleep" style="position:absolute; z-index:999; margin-top:58px; margin-left:167px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_3_on.png" style="width:100px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_3.png" style="width:100px;" />
+                </div>
+
+                <div id="sand" style="position:absolute; z-index:999; margin-top:234px; margin-left:45px;">
+                    <img src="content/images/new/bubbles_incorrect_crochet_on.png" style="width:85px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/new/bubbles_incorrect_ crochet.png" style="width:85px;" />
+                </div>
+
+                <div id="zip" style="position:absolute; z-index:999; margin-top:185px; margin-left:404px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_5_on.png" style="width:105px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_5.png" style="width:105px;" />
+                </div>
+
+                <div id="time" style="position:absolute; z-index:999; margin-top:180px; margin-left:130px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_6_on.png" style="width:95px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_6.png" style="width:95px;" />
+                </div>
+
+                <div id="dance" style="position:absolute; z-index:999; margin-top:290px; margin-left:281px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_7_on.png" style="width:90px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_7.png" style="width:90px;" />
+                </div>
+
+                <!-- <div id="bucket" style="position:absolute; z-index:999; margin-top:115px; margin-left:466px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_8_on.png" style="width:115px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_8.png" style="width:115px;" />
+                </div> -->
+
+                <div id="kite" style="position:absolute; z-index:999; margin-top:134px; margin-left:345px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_9_on.png" style="width:80px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_9.png" style="width:80px;" />
+                </div>
+
+                <div id="play" style="position:absolute; z-index:999; margin-top:291px; margin-left:75px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_10_on.png" style="width:80px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_10.png" style="width:80px;" />
+                </div>
+
+                <!-- <div id="phone" style="position:absolute; z-index:999; margin-top:288px; margin-left:-3px;">
+                    <img src="content/images/Bubbles/bubble_incorrect_11_on.png" style="width:80px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/Bubbles/bubble_incorrect_11.png" style="width:80px;" />
+                </div> -->
+
+                <div id="soda" style="position:absolute; z-index:999; margin-top:95px; margin-left:92px;">
+                    <img src="content/images/new/bubbles_incorrect_talk_on.png" style="width:95px; cursor:pointer; position:absolute;" />
+                    <img src="content/images/new/bubbles_incorrect_talk.png" style="width:95px;" />
+                </div>
+
+                <div id="next-button2" style="position:absolute; z-index:1; margin-left:560px; margin-top:324px;">
+                    <a href="#">
+                        <img src="content/images/buttons/btn_next.png" style="width:64px; z-index:99; cursor:pointer; position:absolute; margin-top:6px;" />
+                        <img src="content/images/buttons/btn_next_on.png" style="width:64px;" />
+                    </a>
+                </div>
+
+            </div>
+
+        </div><!--end row-->
+    </div><!--end col-md-12-->
+</div><!--end container body-content-->
+
+<!-- Game Info Modals -->
+
+<div class="modal fade current" id="game-info" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:1; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:101px; margin-left:26px;">
+
+        <div class="Box-border">
+            <img src="content/images/window_2.png" style="width:570px;" />
+        </div>
+
+        <div style="position:absolute; margin-top:-317px; margin-left:40px;">
+            <img src="content/images/new/header_bubble_up.png" style="width:490px;" />
+        </div>
+
+        <div style="margin-top:-175px; margin-left:-26px;">
+            <p style="font-family:'Source Sans Pro'; font-weight:600; font-size:2.1em; text-align:center; line-height:35px;">Answer the question by<br />popping the correct bubbles.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Game Close Modal -->
+
+<div class="modal fade current" id="game-close" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" data-number="1" data-backdrop="static" data-keyboard="false" style="position:absolute; z-index:9999; overflow:hidden;">
+    <div class="modal-dialog" style="margin-top:101px; margin-left:26px;">
+
+        <div class="Box-border">
+            <img src="content/images/window_2.png" style="width:570px;" />
+        </div>
+
+        <div style="position:absolute; margin-top:-280px; margin-left:148px;">
+            <p style="font-size:2.7em; font-family:'Source Sans Pro'; font-weight:600; text-align:center; line-height:37px;">Are you sure you<br /> want to quit?</p>
+        </div>
+
+        <div class="Yes-Btns" style="position:absolute; top:165px; left:88px;">
+            <img src="content/images/buttons/btn_yes.png" style="width:180px; position:absolute; cursor:pointer;" />
+            <img src="content/images/buttons/btn_yes_on.png" style="width:180px; position:absolute; cursor:pointer;" />
+        </div>
+
+        <div class="No-Btns" style="position:absolute; top:165px; left:314px;">
+            <img src="content/images/buttons/btn_no.png" style="width:141px; position:absolute; cursor:pointer;" />
+            <img src="content/images/buttons/btn_no_on.png" style="width:141px; position:absolute; cursor:pointer;" />
+        </div>
+
+    </div>
+</div>

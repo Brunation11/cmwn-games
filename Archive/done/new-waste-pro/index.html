@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Change My World Now</title>
+
+        <link rel="stylesheet" href="css/site.css">
+
+        <!-- Platform JS Scripts
+        <script type="text/javascript" src="../../../../../sites/all/modules/cmwn_module/cmwn_games/js/cmwn_games.js"></script>
+        -->
+        <!-- Interal JS Scripts -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+        <script type="text/javascript" src="javascript/main.js"></script>
+        <script src="javascript/thirdparties/bootstrap.js"></script>
+        <!-- Thirdparty JS Scripts -->
+        <script src="javascript/thirdparties/modernizr-2.8.3.js"></script>
+        <script src="javascript/thirdparties/jquery-2.1.4.js"></script>
+        <script src="javascript/thirdparties/respond.js"></script>
+        <script src="javascript/thirdparties/jquery-ui.js"></script>
+        <script src="javascript/thirdparties/bootstrap.js"></script>
+        <script src="javascript/thirdparties/jquery.jSlots.js"></script>
+
+    </head>
+
+<body>
+
+<audio id="background" preload="auto">
+    <source src="content/sound/TitleScreen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="cont" preload="auto">
+    <source src="content/sound/ButtonClick.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="cards" preload="auto">
+    <source src="content/sound/Card Turn.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="right" preload="auto">
+    <source src="content/sound/Correct.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="wrong" preload="auto">
+    <source src="content/sound/Incorrect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="slide" preload="auto">
+    <source src="content/sound/Drop_Slides5-9.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="on" preload="auto">
+    <source src="content/sound/ClickOn_Slides10-15.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="trash" preload="auto">
+    <source src="content/sound/Drop_Slides16-21.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="pull" preload="auto">
+    <source src="content/sound/slot spin/Pull.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="stops" preload="auto">
+    <source src="content/sound/slot spin/Stop.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="endslot" preload="auto">
+    <source src="content/sound/slot spin/EndOfSlot.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="pledges" preload="auto">
+    <source src="content/sound/Slide30.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="items" preload="auto">
+    <source src="content/sound/Slide31_ItemSelect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="flip" preload="auto">
+    <source src="content/sound/Slide32_OnCommitClick.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="milk" preload="auto">
+    <source src="content/sound/vo/Milk Carton.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo1" preload="auto">
+    <source src="content/sound/vo/WP1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo2" preload="auto">
+    <source src="content/sound/vo/WP2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo3" preload="auto">
+    <source src="content/sound/vo/WP3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo4" preload="auto">
+    <source src="content/sound/vo/WP4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo5" preload="auto">
+    <source src="content/sound/vo/WP5.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo6" preload="auto">
+    <source src="content/sound/vo/WP6.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo7" preload="auto">
+    <source src="content/sound/vo/WP7.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo8" preload="auto">
+    <source src="content/sound/vo/WP8.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo9" preload="auto">
+    <source src="content/sound/vo/WP9.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo10" preload="auto">
+    <source src="content/sound/vo/WP10.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo11" preload="auto">
+    <source src="content/sound/vo/WP11.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo12" preload="auto">
+    <source src="content/sound/vo/WP12.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo13" preload="auto">
+    <source src="content/sound/vo/WP13.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo14" preload="auto">
+    <source src="content/sound/vo/WP14.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo15" preload="auto">
+    <source src="content/sound/vo/WP15z.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo16" preload="auto">
+    <source src="content/sound/vo/WP16.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo17" preload="auto">
+    <source src="content/sound/vo/WP17.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo18" preload="auto">
+    <source src="content/sound/vo/WP18.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo19" preload="auto">
+    <source src="content/sound/vo/WP19.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo21" preload="auto">
+    <source src="content/sound/vo/WP21.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo22a" preload="auto">
+    <source src="content/sound/vo/WP22a.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo22b" preload="auto">
+    <source src="content/sound/vo/WP22b.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo23" preload="auto">
+    <source src="content/sound/vo/WP23.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo24" preload="auto">
+    <source src="content/sound/vo/WP24.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo25" preload="auto">
+    <source src="content/sound/vo/WP25.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo26" preload="auto">
+    <source src="content/sound/vo/WP26.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo27" preload="auto">
+    <source src="content/sound/vo/wp27.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo28" preload="auto">
+    <source src="content/sound/vo/wp28.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo29" preload="auto">
+    <source src="content/sound/vo/WP29.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo30" preload="auto">
+    <source src="content/sound/vo/WP30.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo31" preload="auto">
+    <source src="content/sound/vo/WP31.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo32" preload="auto">
+    <source src="content/sound/vo/WP32.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo33" preload="auto">
+    <source src="content/sound/vo/WP33.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo34" preload="auto">
+    <source src="content/sound/vo/WP34.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo35" preload="auto">
+    <source src="content/sound/vo/WP35.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo36" preload="auto">
+    <source src="content/sound/vo/WP36.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo37" preload="auto">
+    <source src="content/sound/vo/WP37.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo38" preload="auto">
+    <source src="content/sound/vo/WP38.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo39" preload="auto">
+    <source src="content/sound/vo/WP39.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo40" preload="auto">
+    <source src="content/sound/vo/WP40.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo41" preload="auto">
+    <source src="content/sound/vo/WP41.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo42" preload="auto">
+    <source src="content/sound/vo/WP42.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo43" preload="auto">
+    <source src="content/sound/vo/WP43.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo44" preload="auto">
+    <source src="content/sound/vo/WP44.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo45" preload="auto">
+    <source src="content/sound/vo/WP45.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo46" preload="auto">
+    <source src="content/sound/vo/WP46.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo47" preload="auto">
+    <source src="content/sound/vo/WP47.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo49" preload="auto">
+    <source src="content/sound/vo/WP49.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo50" preload="auto">
+    <source src="content/sound/vo/WP50.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo51" preload="auto">
+    <source src="content/sound/vo/WP51.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo52" preload="auto">
+    <source src="content/sound/vo/WP52.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo53" preload="auto">
+    <source src="content/sound/vo/WP53.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo54" preload="auto">
+    <source src="content/sound/vo/WP54.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo55" preload="auto">
+    <source src="content/sound/vo/WP55.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo56" preload="auto">
+    <source src="content/sound/vo/WP56.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo57" preload="auto">
+    <source src="content/sound/vo/WP57.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo58" preload="auto">
+    <source src="content/sound/vo/WP58.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo59" preload="auto">
+    <source src="content/sound/vo/WP59.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo60" preload="auto">
+    <source src="content/sound/vo/WP60.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo61" preload="auto">
+    <source src="content/sound/vo/WP61.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo62" preload="auto">
+    <source src="content/sound/vo/WP62.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="vo19z" preload="auto">
+    <source src="content/sound/vo/WP19z.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo20z" preload="auto">
+    <source src="content/sound/vo/WP20z.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo21z" preload="auto">
+    <source src="content/sound/vo/WP21z.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<audio id="vo22z" preload="auto">
+    <source src="content/sound/vo/WP22z.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+    <div class="body-content">
+        <div class="ai_background">
+            <div class="row">
+
+                <div class="col-md-12 custom-font game-title">
+                    <div class=" text-left">
+                        <img style="width:72px; height:72px; margin-bottom:3px;" src="content/images/wastepro_white.png" />
+                        WASTE PRO
+                    </div>
+
+                    <div class="col-md-2 text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span style="font-size:18px;"></span>
+                            </div>
+                        </div><!--end row-->
+                    </div><!--end text-right-->
+                </div><!--end custom-font game title-->
+
+                <div class="close-Btn">
+                    <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_exit_green_on.png" style="position:absolute; width:30px;" /></div>
+                    <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_exit_green.png" style="width:30px;" /></div>
+                </div>
+
+                <span id="putcontenthere" name="putcontenthere"></span>
+
+                <div class="col-md-12 bkg-image">
+                    <img src="content/images/BKG_1.png" />
+                </div><!-- end bkg-image-->
+
+<!--//////////////////////////////////////////////////-->
+                <div id="div1" class="screen-one replace">
+                    <img style="width:616px; margin-top:95px; position:absolute; z-index:1; margin-left:15px;" src="content/images/title.png" />
+
+                    <div id="play" class="next">
+                        <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_play_on.png" style="position:absolute; width:141px; margin-top:399px; margin-left:491px; z-index:2;" /></div>
+                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_play.png" style="width:141px; margin-top:399px; margin-left:491px; z-index:3;" /></div>
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div2" class="screen-two replace">
+                    <div class="howMuch">
+                        <p>How much waste do <br/> Americans produce <br/> every year? </p>
+                    </div>
+
+                    <img src="content/images/frame_1.png" style="width:361px; margin-left:40px; position:absolute; margin-top:97px; z-index:1;">
+
+                    <div class="nose-helps">
+                        <section class="feelcontainer" id="Taste">
+                            <div class="card">
+                                <figure class="front"><img src="content/images/card_back.png" alt="?" /></figure>
+                                <figure class="back"><img src="content/images/card_front.png" alt="Taste" /></figure>
+                            </div>
+                        </section>
+                     </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div3"class="screen-three replace">
+                    <div id="head">
+                        <img src="content/images/header_equal_220_million.png" style="width:616px; margin-left:15px; position:absolute; margin-top:86px; z-index:1;">
+                    </div>
+
+                    <!-- BALANCE -->
+
+                    <div class="balansir" style="margin-top:0px;">
+                        <div id="arm" style="position:absolute; z-index:2; margin-left:165px; margin-top:285px;">
+                            <img src="content/images//scales/scale_arm-l.png" style="width:300px; -webkit-transform:rotate(-18deg); -ms-transform:rotate(-18deg); transform:rotate(-18deg);">
+                        </div>
+                        <div id="lefty" class=".balance-left-cup" style="position:absolute; z-index:2; margin-left:119px; margin-top:294px;">
+                            <img src="content/images/scales/scale_cup.png" style="width:120px;">
+                            <div style="position:absolute; z-index:2; margin-top:-131px;">
+                                <img src="content/images/weights/weight_trash.png" style="width:120px;">
+                            </div>
+                        </div>
+                        <div id="righty" class=".balance-right-cup" style="position:absolute; z-index:2; margin-left:387px; margin-top:206px;">
+                            <img src="content/images/scales/scale_cup.png" style="width:120px;">
+                        </div>
+                        <div class=".balance-foot" style="position:absolute; z-index:2; margin-left:274px; margin-top:285px;">
+                            <img src="content/images/scales/scale_foot.png" style="width:90px;">
+                        </div>
+                    </div>
+
+                    <div id="dragger">
+                        <div id="drag" style="position:absolute; z-index:2; margin-left:79px; margin-top:372px;">
+                            <img src="content/images/weights/weight_bus.png" style="width:129px;">
+                        </div>
+                        <div id="drag2" style="position:absolute; z-index:2; margin-left:169px; margin-top:372px;">
+                            <img src="content/images/weights/weight_car.png" style="width:129px;">
+                        </div>
+                        <div id="drag3" style="position:absolute; z-index:2; margin-left:259px; margin-top:372px;">
+                            <img src="content/images/weights/weight_elephant.png" style="width:129px;">
+                        </div>
+                        <div id="drag4" style="position:absolute; z-index:2; margin-left:349px; margin-top:372px;">
+                            <img src="content/images/weights/weight_hippo.png" style="width:129px;">
+                        </div>
+                        <div id="drag5" style="position:absolute; z-index:2; margin-left:438px; margin-top:372px;">
+                            <img src="content/images/weights/weight_kittens.png" style="width:129px;">
+                        </div>
+                    </div>
+
+                    <!-- FACTS -->
+
+                    <div id="buses">
+                        <img src="content/images/frame_3.png" style="width:616px; margin-left:15px; position:absolute; margin-top:374px; z-index:3;">
+                        <div style="position:absolute; z-index:3;">
+                            <img src="content/images/Headers/header_buses.png" style="width:338px; margin-top:387px; margin-left:148px;">
+                            <p style="font-size:1.5em; font-family:'source sans pro'; font-weight:600; text-align:center; margin-left:147px;">A school bus weighs 25,000 pounds.</p>
+                        </div>
+                    </div>
+                    <div id="cars" style="position:absolute; z-index:3;">
+                        <img src="content/images/frame_3.png" style="width:616px; margin-left:15px; margin-top:374px;">
+                        <img src="content/images/Headers/header_cars.png" style="width:230px; margin-top:-168px; margin-left:202px;">
+                        <p style="font-size:1.6em; font-family:'source sans pro'; font-weight:600; text-align:center; margin-top:-65px;">A car weighs 4,000 pounds.</p>
+                    </div>
+                    <div id="elephants" style="position:absolute; z-index:3;">
+                        <img src="content/images/frame_3.png" style="width:616px; margin-left:15px; margin-top:374px;">
+                        <img src="content/images/Headers/header_elephants.png" style="width:302px; margin-top:-168px; margin-left:165px;">
+                        <p style="font-size:1.6em; font-family:'source sans pro'; font-weight:600; text-align:center; margin-top:-66px;">One elephant weighs 15,000 pounds.</p>
+                    </div>
+                    <div id="hippos" style="position:absolute; z-index:3;">
+                        <img src="content/images/frame_3.png" style="width:616px; margin-left:15px; margin-top:374px;">
+                        <img src="content/images/Headers/header_hippos.png" style="width:296px; margin-top:-168px; margin-left:165px;">
+                        <p style="font-size:1.6em; font-family:'source sans pro'; font-weight:600; text-align:center; margin-top:-66px;">One hippo weighs 3,000 pounds.</p>
+                    </div>
+                    <div id="cats" style="position:absolute; z-index:3;">
+                        <img src="content/images/frame_3.png" style="width:616px; margin-left:15px; margin-top:374px;">
+                        <img src="content/images/Headers/header_kitten.png" style="width:296px; margin-top:-168px; margin-left:165px;">
+                        <p style="font-size:1.6em; font-family:'source sans pro'; font-weight:600; text-align:center; margin-top:-66px;">A kitten weighs a pound.</p>
+                    </div>
+
+                    <div id="drop1" style="position:absolute; z-index:2; width:125px; height:100px; padding:0.5em; margin-top:112px; margin-left:384px; border:0px red solid;"></div>
+                    <div id="drop2" style="position:absolute; z-index:2; width:125px; height:100px; padding:0.5em; margin-top:112px; margin-left:384px; border:0px red solid;"></div>
+                    <div id="drop3" style="position:absolute; z-index:2; width:125px; height:100px; padding:0.5em; margin-top:112px; margin-left:384px; border:0px red solid;"></div>
+                    <div id="drop4" style="position:absolute; z-index:2; width:125px; height:100px; padding:0.5em; margin-top:112px; margin-left:384px; border:0px red solid;"></div>
+                    <div id="drop5" style="position:absolute; z-index:2; width:125px; height:100px; padding:0.5em; margin-top:112px; margin-left:384px; border:0px red solid;"></div>
+
+                    <img src="content/images/frame_2.png" style="width:616px; margin-left:15px; position:absolute; margin-top:377px; z-index:1;">
+
+                    <!-- NEXT BUTTONS -->
+
+                    <div id="n1" class="toNext" style="position:absolute; z-index:9999; margin-top:434px; margin-left:548px;">
+                        <img src="content/images/buttons/btn_next_green.png" style="width:73px; position:absolute; z-index:3;" />
+                        <img src="content/images/buttons/btn_next_green_on.png" style="width:73px; position:absolute;" />
+                    </div>
+                    <div id="n2" class="toNext" style="position:absolute; z-index:9999; margin-top:434px; margin-left:548px;">
+                        <img src="content/images/buttons/btn_next_green.png" style="width:73px; position:absolute; z-index:3;" />
+                        <img src="content/images/buttons/btn_next_green_on.png" style="width:73px; position:absolute;" />
+                    </div>
+                    <div id="n3" class="toNext" style="position:absolute; z-index:9999; margin-top:434px; margin-left:548px;">
+                        <img src="content/images/buttons/btn_next_green.png" style="width:73px; position:absolute; z-index:3;" />
+                        <img src="content/images/buttons/btn_next_green_on.png" style="width:73px; position:absolute;" />
+                    </div>
+                    <div id="n4" class="toNext" style="position:absolute; z-index:9999; margin-top:434px; margin-left:548px;">
+                        <img src="content/images/buttons/btn_next_green.png" style="width:73px; position:absolute; z-index:3;" />
+                        <img src="content/images/buttons/btn_next_green_on.png" style="width:73px; position:absolute;" />
+                    </div>
+                    <div id="n5" class="toNext" style="position:absolute; z-index:9999; margin-top:434px; margin-left:548px;">
+                        <img src="content/images/buttons/btn_next_green.png" style="width:73px; position:absolute; z-index:3;" />
+                        <img src="content/images/buttons/btn_next_green_on.png" style="width:73px; position:absolute;" />
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div4"class="screen-four replace">
+                    <div style="position:absolute; z-index:9; margin-top:86px; margin-left:11px;">
+                        <img src="content/images/garbagetruck_side.png" style="width:620px;">
+                    </div>
+
+                    <div style="position:absolute; z-index:9; margin-top:158px; margin-left:273px;">
+                        <img src="content/images/Headers/header_garbage_go.png" style="width:321px;">
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div5"class="screen-five replace">
+                    <img src="content/images/Headers/header_meaning_of_word.png" style="width:557px; margin-left:38px; position:absolute; margin-top:90px; z-index:2;">
+
+                    <img src="content/images/Headers/header_meaning_of_word.png" style="width:557px; margin-left:38px; position:absolute; margin-top:90px; z-index:2;">
+
+                    <img src="content/images/header_bar.png" style="width:616px; margin-left:15px; position:absolute; margin-top:86px; z-index:1;">
+
+                    <img src="content/images/frame_1.png" style="width:361px; margin-left:40px; position:absolute; margin-top:97px; z-index:1;">
+
+
+                            <div class="nav">
+                                <div class="recycling btn1 button"></div>
+                                <div class="composting btn2 button"></div>
+                                <div class="landfill btn3 button"></div>
+                                <div class="incineration btn4 button"></div>
+                            </div>
+
+                            <div id="texter">
+                                <!-- text here -->
+                            </div>
+
+                            <div class="moveOn"></div>
+
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div6"class="screen-six replace">
+                    <img src="content/images/Headers/header_click_to_id.png" style="width:557px; margin-left:38px; position:absolute; margin-top:86px; z-index:3;">
+
+                    <img src="content/images/frame_1.png" style="width:361px; margin-left:40px; position:absolute; margin-top:97px; z-index:2;">
+
+                    <img src="content/images/header_bar.png" style="width:616px; margin-left:15px; position:absolute; margin-top:86px; z-index:1;">
+
+                    <div class="nav-2">
+                        <div class="leachate btn5 bclick"></div>
+                        <div class="methane-gas btn6 bclick"></div>
+                        <div class="contamination btn7 bclick"></div>
+                        <div class="pollution btn8 bclick"></div>
+                    </div>
+
+                    <div id="message">
+                            <!-- text here -->
+                    </div>
+
+                    <div class="goodJob"></div>
+
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div7"class="screen-seven replace">
+                    <img src="content/images/header_4.png" style="width:616px; margin-left:15px; position:absolute; margin-top:86px; z-index:1;">
+
+                    <img src="content/images/trashbin.png" style="width:322px; margin-left:16px; position:absolute; margin-top:180px; z-index:2;">
+
+                    <img src="content/images/grid.png" style="width:268px; margin-left:345px; position:absolute; margin-top:195px; z-index:2;">
+
+                    <div id="frame" style="display:none;">
+                        <img src="content/images/trashbin_frame.png" style="width:172px; margin-left:78px; position:absolute; margin-top:264px; z-index:2;">
+                    </div>
+
+                    <div class="nav-3">
+                        <div class="orange" id="item"></div>
+                        <div class="shoe" id="item2"></div>
+                        <div class="can" id="item3"></div>
+                        <div class="shirt" id="item4"></div>
+                        <div class="milk" id="item5"></div>
+                        <div class="bottle" id="item6"></div>
+                        <div class="battery" id="item7"></div>
+                        <div class="paper" id="item8"></div>
+                        <div class="foil" id="item9"></div>
+                    </div>
+
+                    <div id="fact-text-3">
+                        <div  class="orange-text">
+                            <p><strong>Orange Peel</strong><br/>
+                                6 months</p>
+                        </div>
+                        <div class="shoe-text">
+                            <p><strong>Leather</br>shoes</strong></br>
+                                25-40 years</p>
+                        </div>
+                        <div class="can-text">
+                            <p><strong>Tin can</strong><br/>
+                                50 years</p>
+                        </div>
+                        <div class="shirt-text">
+                            <p><strong>Cotton </br> clothing</strong><br/>
+                                6 months</p>
+                        </div>
+
+                        <div class="milk-text">
+                            <p><strong>Milk Carton</strong><br/>
+                                5 years</p>
+                        </div>
+                        <div class="bottle-text">
+                            <p><strong style="font-size:25px; margin-left:6px;">Glass</strong><br/>
+                                Millions of years </br> (Some say never)</p>
+                        </div>
+                        <div class="battery-text">
+                            <p><strong> Batteries</strong><br/>
+                                100 years</p>
+                        </div>
+                        <div class="paper-text">
+                            <p><strong>Paper </strong><br/>
+                                2-5 months</p>
+                        </div>
+                        <div class="foil-text">
+                            <p><strong>Tin Foil</strong><br/>
+                                It does not</br> biodegrade</p>
+                        </div>
+                    </div>
+
+                    <div class="droppable"></div>
+                    <div class="droppable2"></div>
+                    <div class="droppable3"></div>
+                    <div class="droppable4"></div>
+                    <div class="droppable5"></div>
+                    <div class="droppable6"></div>
+                    <div class="droppable7"></div>
+                    <div class="droppable8"></div>
+                    <div class="droppable9"></div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div8"class="screen-eight replace">
+                    <div id="head1">
+                        <img src="content/images/Headers/header_solution_2.png" style="width:616px; margin-left:15px; position:absolute; margin-top:89px; z-index:3;">
+                    </div>
+
+                    <div id="main" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px;">
+                        <img src="content/images/garbagetruck.png" style="width:393px;">
+                    </div>
+
+                    <!-- First Set -->
+
+                    <div id="door" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="first" style="position:absolute; margin-top:262px; margin-left:168px; z-index:7;">
+                        <p style="font-size:2.2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:318px;">Use cloth towels<br/>instead of<br/>paper towels.</p>
+                    </div>
+
+                    <div id="door-c" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open1"></div>
+
+                    <!-- Second Set -->
+
+                    <div id="door2" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="second" style="position:absolute; margin-top:262px; margin-left:170px; z-index:7;">
+                        <p style="font-size:2.2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:318px;">Use real plates<br/>instead of<br/>paper or plastic.</p>
+                    </div>
+
+                    <div id="door-c2" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open2"></div>
+
+                    <!-- Third Set -->
+
+                    <div id="door3" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="third" style="position:absolute; margin-top:265px; margin-left:167px; z-index:7;">
+                        <p style="font-size:2.1em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:320px;">Offer to wash the<br/>dishes at home to avoid<br/>paper and plastic.</p>
+                    </div>
+
+                    <div id="door-c3" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open3"></div>
+
+                    <!-- Fourth Set -->
+
+                    <div id="door4" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="fourth" style="position:absolute; margin-top:277px; margin-left:167px; z-index:7;">
+                        <p style="font-size:2.2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:320px;">Get a re-usable<br/>shopping bag.</p>
+                    </div>
+
+                    <div id="door-c4" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open4"></div>
+
+                    <!-- Fifth Set -->
+
+                    <div id="door5" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="fifth" style="position:absolute; margin-top:262px; margin-left:168px; z-index:7;">
+                        <p style="font-size:2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:33px; width:320px;"><b>Re-use things like:</b><br/>boxes, gift bags, gift wrap,<br/>clothing, furniture, toys.</p>
+                    </div>
+
+                    <div id="door-c5" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open5"></div>
+
+                    <!-- Sixth Set -->
+
+                    <div id="door6" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="sixth" style="position:absolute; margin-top:277px; margin-left:167px; z-index:7;">
+                        <p style="font-size:2.2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:320px;">Give away rather<br/>than throw away.</p>
+                    </div>
+
+                    <div id="door-c6" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open6"></div>
+
+                    <!-- Seventh Set -->
+
+                    <div id="door7" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="seventh" style="position:absolute; margin-top:262px; margin-left:167px; z-index:7;">
+                        <p style="font-size:2.2em; font-family:'source sans pro'; font-weight:600; text-align:center; color:#fff; line-height:31px; width:320px;">Sort your trash and<br/>remove anything that<br/>can be recycled.</p>
+                    </div>
+
+                    <div id="door-c7" style="position:absolute; z-index:1; margin-top:115px; margin-left:131px; background-size:100%; background-repeat:no-repeat; padding-bottom:332px; width:393px; height:376px;">
+                    </div>
+
+                    <div id="open7"></div>
+
+                    <!-- <div id="slot_wrapper">
+                        <div type="text" class="search input slot-text"></div>
+                        <ul id="slot">
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                        </ul>
+                        <div class ="spin" id="random_location"></div>
+                    </div> -->
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div9"class="screen-nine replace">
+                    <img src="content/images/BKG_2.jpg" style="width:616px; margin-left:15px; position:absolute; margin-top:89px; z-index:1;">
+
+                    <div style="position:absolute; z-index:2; margin-top:83px; margin-left:45px;">
+                        <img src="content/images/Pladge.png" style="width:565px;">
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div10"class="screen-ten replace">
+                    <div class="check-text"></div>
+                    <div class="pledge-logo"></div>
+                    <div class="blue-rectangle"></div>
+                    <div class="white-bkg"></div>
+
+                    <!-- 4 buttons -->
+                    <div id="buttons-container">
+                        <ul>
+                            <li class="paper-towels pledge"></li>
+                            <li class="plastic-bottles pledge"></li>
+                        </ul>
+                        <ul>
+                            <li class="plastic-utensils pledge"></li>
+                            <li class="plastic-bags pledge"></li>
+                        </ul>
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                 <div id="div11"class="screen-eleven replace">
+                    <div class="pledge-text"></div>
+                    <div class="pledge-logo"></div>
+                    <div class="blue-rectangle"></div>
+                    <div class="white-bkg"></div>
+
+                    <!-- 4 buttons -->
+                    <div id="buttons-container">
+                        <ul>
+                            <li class="paper-towels1"></li>
+                            <li class="plastic-bottles1"></li>
+                        </ul>
+                        <ul>
+                            <li class="plastic-utensils1"></li>
+                            <li class="plastic-bags1"></li>
+                        </ul>
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div12"class="screen-twelve replace">
+                    <img src="content/images/BKG_5.jpg" style="width:616px; margin-left:15px; position:absolute; margin-top:89px; z-index:1;">
+                    <div class="icommit1"><p> I pledge to</div>
+
+                    <div class="icommit2"><p> give up</p></div>
+
+                    <div id="paper-towels1a">
+                        <img src="content/images/Headers/header_paper_towels.png" style="width:277px; margin-left:184px; position:absolute; margin-top:149px; z-index:1; display:none;">
+                    </div>
+
+                    <div id="plastic-bottles1a">
+                        <img src="content/images/Headers/header_plastic_bottles.png" style="width:277px; margin-left:184px; position:absolute; margin-top:149px; z-index:1; display:none;">
+                    </div>
+
+                    <div id="plastic-utensils1a">
+                        <img src="content/images/Headers/header_plastic_utensils.png" style="width:277px; margin-left:184px; position:absolute; margin-top:149px; z-index:1; display:none;">
+                    </div>
+
+                    <div id="plastic-bags1a">
+                        <img src="content/images/Headers/header_plastic_bags.png" style="width:277px; margin-left:184px; position:absolute; margin-top:149px; z-index:1; display:none;">
+                    </div>
+
+                    <div class="icommit3"><p> to help</p></div>
+
+                    <div class="icommit4"><p> the environment!</p></div>
+
+                    <div id="plastic">
+                        <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_yes_2_on.png" style="position:absolute; width:240px; margin-top:350px; margin-left:212px; z-index:2;"/></div>
+                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_yes_2.png" style="width:240px; margin-top:350px; margin-left:212px; z-index:3;" /></div>
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div id="div13"class="screen-thirteen replace">
+                    <img src="content/images/BKG_5.jpg" style="width:616px; margin-left:15px; position:absolute; margin-top:89px; z-index:1;">
+
+                    <img src="content/images/frame_4.png" style="width:553px; margin-left:48px; position:absolute; margin-top:127px; z-index:1;">
+
+                    <div class="earned">
+                        <p>See how good it feels </br>
+                            to be part of the solution!</br>
+                            Thank you for committing to take action</br>
+                            to help the environment.</br>
+                            <strong style="font-size:30px; line-height:1;">Enjoy your well earned</strong>
+                        </p>
+                    </div>
+
+                    <img src="content/images/Headers/header_flip.png" style="width:253px; margin-left:198px; position:absolute; margin-top:324px; z-index:1;">
+                </div>
+<!--//////////////////////////////////////////////////-->
+                <div class="arrows">
+                    <div class="next">
+                        <a href="#"><div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_next_green_on.png" style="position:absolute; width:73px; margin-top:435px; margin-left:523px; z-index:2;" /></div>
+                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_next_green.png" style="width:73px; margin-top:434px; margin-left:523px; z-index:3;" /></div></a>
+                    </div>
+
+                    <div class="prev">
+                        <a href="#"><div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_back_green_on.png" style="position:absolute; width:73px; margin-top:435px; margin-left:0px; z-index:2;" /></div>
+                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_back_green.png" style="width:73px; margin-top:434px; margin-left:0px; z-index:3;" /></div></a>
+                    </div>
+                </div>
+<!--//////////////////////////////////////////////////-->
+<!--////////////////////close modal///////////////////-->
+<!--//////////////////////////////////////////////////-->
+                <div class="modal fade" id="retry-level" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:173px; margin-left:98px;">
+                        <div class="modal-content" style="width:431px; height:241px;">
+                            <div class="blue-border" style="margin-left:125px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <a href="Btn-home">
+                                        <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_yes_on.png" class="img-responsive" alt="Responsive image" style="width:73px; position:absolute; z-index:8; margin-left:-28px; margin-top:174px;"></div>
+                                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_yes.png" class="img-responsive" alt="Responsive image" style="width:73px; z-index:9; margin-top:172px; margin-left:-28px;"></div>
+                                    </a>
+
+                                    <div id="Btn-hide1">
+                                        <div class="flip-on" style="z-index:10;"><img src="content/images/buttons/btn_no_on.png" class="img-responsive" alt="Responsive image" style="width:66px; margin-left:107px; position:absolute; z-index:8; margin-top:169px;"></div>
+                                        <div class="flip-off" style="z-index:9;"><img src="content/images/buttons/btn_no.png" class="img-responsive" alt="Responsive image" style="width:64px; position:absolute; margin-left:109px; z-index:9; margin-top:169px;"></div>
+                                    </div>
+
+                                    <div class="second-slide" style="position:absolute; margin-top:55px; margin-left:95px; width:311px; text-align:center; z-index:2;">
+                                        <h2 style="width:245px; margin-top:43px; font-size:27px; margin-left:-142px; font-family:source sans pro; color:#f5f5f5; font-weight:600;">
+                                            Are you sure you want to quit?
+                                        </h2>
+                                    </div><!--end second-slide-->
+
+                                    <img src="content/images/BKG_5.jpg" style="width:516px; margin-left:-182px; margin-top:-53px;">
+
+                                    <img src="content/images/frame_1.png" style="width:327px; margin-left:-72px; margin-top:-339px; -ms-transform:rotate(4deg); /* IE 9 */  -webkit-transform:rotate(4deg); /* Chrome, Safari, Opera */     transform:rotate(4deg);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--///////////////////// div 9 modals ////////////////////////-->
+<!--///////////////////// paper towels modal ////////////////////////-->
+                <div class="modal fade" id="paper-towels" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:173px; margin-left:98px;">
+                        <div class="modal-content" style="width:431px; height:241px;">
+                            <div class="blue-border" style="margin-left:0px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="cancel-btn"></div>
+
+                                    <div class="paper-towels-container">
+                                        <p>
+                                            13 billion pounds of paper<br/>towels are used every year!<br/>If every American used ONE less<br/>a day we would save over<br/>571 million pounds of paper.
+                                        </p>
+                                        <h2>You have the Power!</h2>
+                                    </div><!--end second-slide-->
+
+                                    <div class="header-paper-towels"></div>
+
+                                    <img src="content/images/frame_5.png" style="width:516px; margin-left:-60px; margin-top:-53px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--///////////////////// end paper towels modal ////////////////////////-->
+<!--///////////////////// plastic bottles modal ////////////////////////-->
+                <div class="modal fade" id="plastic-bottles" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:173px; margin-left:98px;">
+                        <div class="modal-content" style="width:431px; height:241px;">
+                            <div class="blue-border" style="margin-left:0px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="cancel-btn"></div>
+
+                                    <div class="plastic-bottles-container">
+                                        <p>
+                                            Americans used about<br/>50 billion plastic bottles last year.<br/>They harm the environment<br/>and waste resources.
+                                        </p>
+                                        <h2>You picked a good one!</h2>
+                                    </div><!--end second-slide-->
+
+                                    <div class="header-plastic-bottles"></div>
+
+                                    <img src="content/images/frame_5.png" style="width:516px; margin-left:-60px; margin-top:-53px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--///////////////////// plastic bottles modal ////////////////////////-->
+<!--///////////////////// plastic utensils modal ////////////////////////-->
+                <div class="modal fade" id="plastic-utensils" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:173px; margin-left:98px;">
+                        <div class="modal-content" style="width:431px; height:241px;">
+                            <div class="blue-border" style="margin-left:0px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="cancel-btn"></div>
+
+                                    <div class="plastic-utensils-container">
+                                        <p>
+                                            Good choice!<br/>40 billion plastic utensils<br/>are used every year!<br/>Think how much space<br/>they take up in landfills.
+                                        </p>
+                                        <h2>This is an important pledge!</h2>
+                                    </div><!--end second-slide-->
+
+                                    <div class="header-plastic-utensils"></div>
+
+                                    <img src="content/images/frame_5.png" style="width:516px; margin-left:-60px; margin-top:-53px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--///////////////////// end utensils modal ////////////////////////-->
+<!--///////////////////// plastic bags modal ////////////////////////-->
+                <div class="modal fade" id="plastic-bags" tabindex="-1" role="dialog" aria-labelledby="actionCompleteLabel" aria-hidden="false" style="z-index:999; position:absolute;">
+                    <div class="modal-dialog" style="margin-top:173px; margin-left:98px;">
+                        <div class="modal-content" style="width:431px; height:241px;">
+                            <div class="blue-border" style="margin-left:0px; margin-top:-7px; width:430px; height:325px;">
+                                <div class="modal-body custom-font modal-text">
+
+                                    <div class="cancel-btn"></div>
+
+                                    <div class="plastic-bags-container">
+                                        <p>
+                                            1 trillion plastic bags<br/>are used worldwide EVERY YEAR!<br/>They often end up in<br/>the water harming wildlife.
+                                        </p>
+                                        <h2>Your choice is important!</h2>
+                                    </div><!--end second-slide-->
+
+                                    <div class="header-plastic-bags"></div>
+
+                                    <img src="content/images/frame_5.png" style="width:516px; margin-left:-60px; margin-top:-53px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--///////////////////// end plastic bags modal ////////////////////////-->
+<!--///////////////////// end div 9 modals ////////////////////////-->
+
+            </div><!--end row-->
+        </div><!--end ai_background-->
+    </div><!--end container body-content-->
+
+</body>
+</html>

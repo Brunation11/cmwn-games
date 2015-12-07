@@ -1,0 +1,58 @@
+<audio id="background" preload="auto" loop>
+    <source src="content/sound/happyc_2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script type="text/javascript" src="javascript/action_items/ai1.js"></script>
+<script type="text/javascript" src="javascript/scripts.js"></script>
+
+<div class="container body-content">
+    <div class="row">
+        <div id="pollinator">
+            <div class="row">
+                <div class="game" style="position:relative; margin-top:17px; margin-left:29px;">
+
+                    <div class="timer"></div>
+                    <div class="hint">
+                        <img src="content/images/findpollinators/hint.png">
+                    </div>
+
+                    <div class="main-border-green" style="position:absolute; z-index:99; margin-left:-5px;margin-top:-8px;">
+                        <img src="content/images/findpollinators/border.png" style="width:614px;" />
+                    </div>
+
+                    <div class="pollinators">
+                        <img src="content/images/findpollinators/grass.png" width="111" height="223" id="grass">
+                        <img src="content/images/findpollinators/soccerball.png" width="63" height="64" id="soccerball">
+                    </div>
+
+                    <div class="dropzones">
+                        <table width="100%">
+                            <tr id="drop"></tr>
+                            <tr id="title" style="font-family:'Source Sans Pro';"></tr>
+                        </table>
+                    </div>
+
+                    <div class="info">
+                        <div class="visible">
+                            <div class="popup-body">
+                                <div class="border">
+                                    <img src="content/images/findpollinators/popup_border.png" />
+                                </div><!--end-border-->
+                            </div><!--end-popup-body-->
+                        </div><!--end-visible-->
+                    </div><!--end-info-->
+
+                </div><!--end game-->
+
+                <div class="popup-overlay" style="margin-top:16px; margin-left:15px; position:absolute;">
+                    <div class="shaded"></div>
+                    <div class="border">
+                        <!--<img src="content/images/findpollinators/border.png" />-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
