@@ -1,5 +1,5 @@
 ﻿var moduleGame = angular.module('GameApp', ['ngRoute', 'underscore', 'gamecatControllers', 'ngAnimate', 'ngDragDrop']);
-var content_path = "http://actionitems.changemyworldnow.com/twirlnswirl";
+var content_path = "http://action-items.gopagoda.io/done/twirl-n-swirl";
 //var content_path = "";
 
 // configure our routes
