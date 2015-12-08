@@ -35,7 +35,7 @@ games = lsd('./library');
 
 gulp.task('default', ['build-dev']); 
 
-gulp.task('build-dev', ['webpack:build-dev', 'copy-index', 'copy-components']);
+gulp.task('build-dev', ['webpack:build-dev', 'copy-index', 'copy-media', 'copy-components']);
 
 // Production build
 gulp.task('build', ['webpack:build']);
@@ -73,7 +73,15 @@ gulp.task('copy-index', ['webpack:build-dev'], function () {
     });
 });
 
-gulp.task('copy-components', ['copy-index'], function () {
+gulp.task('copy-media', ['copy-index'], function () {
+    games.forEach(function (_game) {
+        gulp
+            .src(path.join( './library', _game, 'media/**/*' ))
+            .pipe( gulp.dest(path.join( './build', _game, 'media' )) );
+    });
+});
+
+gulp.task('copy-components', ['copy-media'], function () {
     games.forEach(function (_game) {
         gulp
             .src(path.join( './library', _game, 'source/js/components/**/*' ))

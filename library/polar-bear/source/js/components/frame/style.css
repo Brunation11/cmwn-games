@@ -1,0 +1,63 @@
+.frame-component {}
+
+	.frame-component .frame {
+		position: relative;
+		width: 70%;
+		max-width: 977px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+		.frame-component .frame .next-screen,
+		.frame-component .frame .prev-screen {
+			position: absolute;
+			display: block;
+			width: 70px; height: 70px;
+
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			top: 50%;
+		}
+
+		.frame-component .frame .next-screen {
+			margin-top: 5px;
+			margin-right: 5px;
+			right: 0;
+			transform: translateY(-50%) translateX(50%);
+			background-image: url(media/images/button-next.png);
+		}
+
+		.frame-component .frame .next-screen:hover {
+			background-image: url(media/images/button-next-hover.png);
+		}
+
+		.frame-component .frame .prev-screen {
+			margin-top: 5px;
+			margin-left: 10px;
+			transform: translateY(-50%) translateX(-50%);
+			background-image: url(media/images/button-back.png);
+		}
+		
+		.frame-component .frame .prev-screen:hover {
+			background-image: url(media/images/button-back-hover.png);
+		}
+
+		.frame-component .frame img.background {
+			width: 100%;
+			box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+		}
+
+		.frame-component .frame .content-group {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			margin: 2%;
+			font-size: 1.5em;
+			overflow: auto;
+		}
+
+			.frame-component .frame .content-group > * {
+				margin-left: 1em;
+				margin-right: 1em;
+			}

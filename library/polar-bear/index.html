@@ -5,12 +5,89 @@
 	<title>Polar Bear</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="ai.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<link rel="stylesheet" type="text/css" href="animate.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		body {
+			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 20px;
+			background: url(media/images/background.png) bottom center no-repeat;
+			background-size: auto 100%;
+		}
+
+		button {
+			margin: 0;
+			padding: 0;
+			border: none;
+
+			font-family: inherit;
+			font-size: inherit;
+			background-color: transparent;
+			outline: none;
+			cursor: pointer;
+		}
+
+		.screen {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			opacity: 0;
+			transition: opacity 1s, transform 0.5s;
+			transform: translateX(100%);
+		}
+
+		.screen.OPEN {
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.screen.LEAVE {
+			opacity: 1;
+			transform: translateX(-100%);
+		}
+		
+	</style>
 </head>
 <body id="polar-bear">
-	<section id="index" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<p>Hello World</p>
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
+	
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title"></div>
 	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>I am a majestic, beautiful Polar Bear and I am endangered.</p>
+				<p>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</p>
+			</div>
+			<div pl-component="frame" pl-transclude="content">
+				<p>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a CHILLY fun fact!</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_5.1.png" width="80%">
+			<p>Let’s learn some more!</p>
+		</div>
+	</section>
+
 </body>
 
 </html>

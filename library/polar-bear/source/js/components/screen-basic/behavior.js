@@ -12,6 +12,16 @@ pl.game.component('screen-basic', function () {
 		return nextScreen;
 	};
 
+	this.start = function () {
+		if (this.audio)	{
+			if (this.audio.background.length) {
+				this.audio.background[0].play();
+			}
+		}
+
+		return this;
+	};
+
 	this.on('ui-open', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
 			this.start();
