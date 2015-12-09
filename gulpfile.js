@@ -110,7 +110,11 @@ gulp.task('webpack:build-dev', function(callback) {
 });
 
 gulp.task('watch', function(callback) {
-    watch(['library/**/source/js/**/*.js', 'library/**/index.html'], function () {
+    watch([
+        'library/**/source/js/**/*.js',
+        'library/**/source/js/components/**/*.css',
+        'library/**/source/js/components/**/*.html',
+        'library/**/index.html'], function () {
         gulp.start('build-dev');
     });
 });

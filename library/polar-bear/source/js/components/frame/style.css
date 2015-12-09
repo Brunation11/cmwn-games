@@ -4,7 +4,6 @@
 		position: relative;
 		width: 70%;
 		max-width: 977px;
-		text-align: center;
 		font-weight: bold;
 	}
 
@@ -36,14 +35,15 @@
 			margin-top: 5px;
 			margin-left: 10px;
 			transform: translateY(-50%) translateX(-50%);
-			background-image: url(media/images/button-back.png);
+			background-image: url(media/images/button-prev.png);
 		}
 		
 		.frame-component .frame .prev-screen:hover {
-			background-image: url(media/images/button-back-hover.png);
+			background-image: url(media/images/button-prev-hover.png);
 		}
 
 		.frame-component .frame img.background {
+			display: block;
 			width: 100%;
 			box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
 		}
@@ -53,6 +53,7 @@
 			top: 0; bottom: 0;
 			left: 0; right: 0;
 			margin: 2%;
+
 			font-size: 1.5em;
 			overflow: auto;
 		}
@@ -60,4 +61,5 @@
 			.frame-component .frame .content-group > * {
 				margin-left: 1em;
 				margin-right: 1em;
+				text-align: center;
 			}

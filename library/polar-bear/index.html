@@ -20,11 +20,17 @@
 			overflow: hidden;
 		}
 
-		body {
+		html {
 			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 			font-size: 20px;
 			background: url(media/images/background.png) bottom center no-repeat;
 			background-size: auto 100%;
+		}
+
+		body {
+			position: relative;
+			width: 960px;
+			margin: auto;
 		}
 
 		button {
@@ -57,6 +63,18 @@
 			opacity: 1;
 			transform: translateX(-100%);
 		}
+
+		.slides-component .frame-component.variant-bg {}
+
+			.slides-component .frame-component.variant-bg .content-group {
+				background: url(media/images/Img_3.2.png) no-repeat bottom right;
+				background-size: 50%;
+				text-align: left;
+			}
+
+			.slides-component .frame-component.variant-bg .content-group > * {
+				margin-right: 0;
+			}
 		
 	</style>
 </head>
@@ -74,7 +92,7 @@
 				<p>I am a majestic, beautiful Polar Bear and I am endangered.</p>
 				<p>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</p>
 			</div>
-			<div pl-component="frame" pl-transclude="content">
+			<div class="variant-bg" pl-component="frame" pl-transclude="content">
 				<p>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a CHILLY fun fact!</p>
 			</div>
 		</div>

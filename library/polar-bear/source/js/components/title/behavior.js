@@ -1,9 +1,15 @@
 pl.game.component('title', function () {
 
 	this.start = function () {
-		this.open();
-		this.audio.background[0].play();
-		this.delay(1500, this.showTitle);
+		var bgAudio;
+
+		bgAudio = pl.util.resolvePath(this, 'audio.background[0]?');
+
+		this
+			.open()
+			.delay(1500, this.showTitle);
+
+		if (bgAudio) bgAudio.play();
 	};
 
 	this.showTitle = function () {

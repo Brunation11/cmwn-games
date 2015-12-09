@@ -1,23 +1,41 @@
 pl.game.component('screen-basic', function () {
 	
 	this.next = function () {
-		var nextScreen;
+		var nextScreen, buttonSound;
+
 		nextScreen = this.proto();
+		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
 		if (nextScreen) {
-			this.leave();
+			this.screen.leave();
 			nextScreen.open();
+			if (buttonSound) buttonSound.play();
 		}
 
 		return nextScreen;
 	};
 
-	this.start = function () {
-		if (this.audio)	{
-			if (this.audio.background.length) {
-				this.audio.background[0].play();
-			}
+	this.prev = function () {
+		var prevScreen, buttonSound;
+
+		prevScreen = this.proto();
+		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+
+		if (prevScreen) {
+			this.screen.close();
+			prevScreen.open();
+			if (buttonSound) buttonSound.play();
 		}
+
+		return prevScreen;
+	};
+
+	this.start = function () {
+		var bgSound;
+
+		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
+
+		if (bgSound) bgSound.play();
 
 		return this;
 	};
