@@ -1,5 +1,14 @@
 pl.game.component('cannon', function () {
 
+	this.willInit = function () {
+		var $ball;
+
+		if (this.properties.ball) {
+			$ball = this.findOwn('[pl-id=ball]');
+			$ball.attr('src', this.properties.ball);
+		}
+	};
+
 	this.behavior('fire', function () {
 		this.launch();
 		return {

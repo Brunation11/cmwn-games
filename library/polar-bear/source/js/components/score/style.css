@@ -1,0 +1,9 @@
+.score-component {}
+	
+	.score-component .board img {
+		display: none;
+	}
+
+	.score-component .board img.SELECTED {
+		display: block;
+	}

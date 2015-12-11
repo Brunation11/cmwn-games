@@ -5,21 +5,27 @@ pl.game.component('score', function () {
 	this.entity('.board', function () {
 		
 		this.template = null;
+		this.images = null;
 
 		this.ready = function () {
-			this.template = this.html();
+			this.template = this.counter.html();
+			this.images = this.find('img');
 		};
 
 		this.render = function () {
-			this.html(this.template.replace('{{score}}', this.value));
+			var image;
+
+			if (this.images.length) {
+				image = this.images[this.value];
+				this.select(image);
+			}
+			
+			this.counter.html(this.template.replace('{{score}}', this.value));
+
 			return this;
 		};
 
 	});
-
-	this.init = function () {
-		this.screen.require(this);
-	};
 
 	this.ready = function () {
 		this.board.render();

@@ -23,8 +23,19 @@
 			margin-top: 5px;
 			margin-right: 5px;
 			right: 0;
-			transform: translateY(-50%) translateX(50%);
+
 			background-image: url(media/images/button-next.png);
+			transform: translateY(-50%) translateX(50%);
+			transition: opacity 1s;
+		}
+
+		.frame-component:last-child .frame .next-screen {
+			opacity: 0;
+			cursor: default;
+		}
+
+		.screen.COMPLETE .frame-component:last-child .frame .next-screen {
+			opacity: 1;
 		}
 
 		.frame-component .frame .next-screen:hover {
@@ -34,8 +45,8 @@
 		.frame-component .frame .prev-screen {
 			margin-top: 5px;
 			margin-left: 10px;
-			transform: translateY(-50%) translateX(-50%);
 			background-image: url(media/images/button-prev.png);
+			transform: translateY(-50%) translateX(-50%);
 		}
 		
 		.frame-component .frame .prev-screen:hover {
@@ -52,14 +63,14 @@
 			position: absolute;
 			top: 0; bottom: 0;
 			left: 0; right: 0;
-			margin: 2%;
+			margin: 12px;
 
 			font-size: 1.5em;
 			overflow: auto;
 		}
 
 			.frame-component .frame .content-group > * {
-				margin-left: 1em;
-				margin-right: 1em;
+				margin-left: 1.5em;
+				margin-right: 1.5em;
 				text-align: center;
 			}

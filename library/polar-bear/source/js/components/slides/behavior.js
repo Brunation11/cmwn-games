@@ -1,7 +1,11 @@
 pl.game.component('slides', function () {
-		
+	
+	this.slides = null;
+
 	this.ready = function () {
-		this.find('.frame-component:first-child').scope().open();
+		this.slides = this.find('> *').scope();
+
+		if (this.slides.length) this.slides[0].open();
 	};
 
 	/*
@@ -10,10 +14,10 @@ pl.game.component('slides', function () {
 	this.next = function () {
 		var index, nextSlide, buttonSound;
 
-		index = this.frame.indexOf(this);
+		index = this.slides.indexOf(this);
 		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		if (~index) nextSlide = this.frame[index+1];
+		if (~index) nextSlide = this.slides[index+1];
 		
 		if (nextSlide) {
 			this.leave();
@@ -35,10 +39,10 @@ pl.game.component('slides', function () {
 	this.prev = function () {
 		var index, prevSlide, buttonSound;
 
-		index = this.frame.indexOf(this);
+		index = this.slides.indexOf(this);
 		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		if (~index) prevSlide = this.frame[index-1];
+		if (~index) prevSlide = this.slides[index-1];
 		
 		if (prevSlide) {
 			this.close();

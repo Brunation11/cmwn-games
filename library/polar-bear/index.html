@@ -5,7 +5,7 @@
 	<title>Polar Bear</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="jquery.js"></script>
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
 	<script type="text/javascript" src="ai.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="layout.css">
@@ -27,6 +27,12 @@
 			background-size: auto 100%;
 		}
 
+		@media (min-width: 1517px) {
+			html {
+				background-size: 100%;
+			}
+		}
+
 		body {
 			position: relative;
 			width: 960px;
@@ -44,6 +50,8 @@
 			outline: none;
 			cursor: pointer;
 		}
+
+		.canvas-src { display: none; }
 
 		.screen {
 			position: absolute;
@@ -64,23 +72,72 @@
 			transform: translateX(-100%);
 		}
 
-		.slides-component .frame-component.variant-bg {}
+		/* STORY BOARD SCREEN: 3 */
+		.screen:nth-of-type(2) .frame-component.variant-bg {}
 
-			.slides-component .frame-component.variant-bg .content-group {
+			.screen:nth-of-type(2) .frame-component.variant-bg .content-group {
 				background: url(media/images/Img_3.2.png) no-repeat bottom right;
 				background-size: 50%;
 				text-align: left;
 			}
 
-			.slides-component .frame-component.variant-bg .content-group > * {
+			.screen:nth-of-type(2) .frame-component.variant-bg .content-group > * {
 				margin-right: 0;
 			}
+
+		/* STORY BOARD SCREEN: 6 */
+		.screen:nth-of-type(4) .frame-component {}
+
+			.screen:nth-of-type(4) .frame-component .content-group {
+				background: url(media/images/Img_6.1.png) no-repeat top left;
+				background-size: auto 100%;
+				text-align: right;
+			}
+
+		/* STORY BOARD SCREEN: 8 */
+		.screen:nth-of-type(5) .frame-component {}
+
+			.screen:nth-of-type(5) .frame-component .content-group {
+				background: url(media/images/Img_8.1.png) no-repeat top left;
+				background-size: auto 100%;
+				text-align: right;
+			}
 		
+		#map .country {
+			position: absolute;
+			top: 0; left: 0;
+			opacity: 0;
+		}
+
+		#map .map {
+			width: 80%;
+		}
+			#map .map img {
+				width: 100%;
+			}
+
+		#bears {}
+
+			#bears .viewport {
+				position: relative;
+				margin: 20px;
+				overflow: hidden;
+			}
+
+				#bears .viewport .carousel-component {
+					width: 33.4%;
+				}
 	</style>
 </head>
 <body id="polar-bear">
-	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
 	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3" preload></audio>
+	
+	<!-- SCREENS -->
+
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
 	</section>
@@ -104,6 +161,97 @@
 			<img src="media/images/Img_5.1.png" width="80%">
 			<p>Let’s learn some more!</p>
 		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload loop></audio>
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>What color<br>is a Polar Bear’s fur?</p>
+			</div>
+			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="multiple-choice" pl-required>
+					<ul pl-pluck="answers">
+						<li>
+							<p>White</p>
+						</li>
+						<li>
+							<p>Plaid</p>
+						</li>
+						<li pl-correct>
+							<p>Clear</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="map" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>Where do<br>Polar Bears live?</p>
+			</div>
+			<div pl-id="frame" class="map-entity">
+				<audio pl-id="correct" class="sfx" src="media/audio/map/answer-correct.mp3" preload></audio>
+				<audio pl-id="incorrect" class="sfx" src="media/audio/map/answer-incorrect.mp3" preload></audio>
+
+				<audio pl-id="north-pole" class="voice-over" src="media/audio/map/VO_9.1.mp3" preload></audio>
+				<audio pl-id="greenland" class="voice-over" src="media/audio/map/VO_9.2.mp3" preload></audio>
+				<audio pl-id="canada" class="voice-over" src="media/audio/map/VO_9.3.mp3" preload></audio>
+				<audio pl-id="russia" class="voice-over" src="media/audio/map/VO_9.4.mp3" preload></audio>
+				<audio pl-id="norway" class="voice-over" src="media/audio/map/VO_9.5.mp3" preload></audio>
+
+				<div class="center">
+					<div class="map" pl-action="test(event.cursor)">
+						<img pl-id="gray-map" class="full" src="media/images/map/Img_9.1.png">
+						<img pl-id="iceland" class="country" src="media/images/map/Img_9.2.png">
+						<img pl-id="russia" class="country" src="media/images/map/Img_9.4.png" pl-correct>
+						<img pl-id="north-pole" class="country" src="media/images/map/Img_9.5.png" pl-correct>
+						<img pl-id="greenland" class="country" src="media/images/map/Img_9.3.png" pl-correct>
+						<img pl-id="denmark" class="country" src="media/images/map/Img_9.6.png">
+						<img pl-id="norway" class="country" src="media/images/map/Img_9.7.png" pl-correct>
+						<img pl-id="canada" class="country" src="media/images/map/Img_9.8.png" pl-correct>
+						<img pl-id="usa" class="country" src="media/images/map/Img_9.9.png">
+						<img pl-id="sweden" class="country" src="media/images/map/Img_9.10.png">
+						<img pl-id="finland" class="country" src="media/images/map/Img_9.11.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_10.1.png" width="80%">
+			<p>Tap or click the puck.<br>Land 5 in the pocket when the<br>polar bear is overhead.</p>
+		</div>
+	</section>
+
+	<section id="bears" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="score" pl-transclude="images">
+			<img pl-id="" src="media/images/score-bears/score-0.png">
+			<img pl-id="" src="media/images/score-bears/score-1.png">
+			<img pl-id="" src="media/images/score-bears/score-2.png">
+			<img pl-id="" src="media/images/score-bears/score-3.png">
+			<img pl-id="" src="media/images/score-bears/score-4.png">
+			<img pl-id="" src="media/images/score-bears/score-5.png">
+		</div>
+		<div class="viewport">
+			<div class="slide" pl-component="carousel" pl-randomize pl-delay="2s">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-1.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-2.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-3.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-4.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-5.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-6.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-7.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-8.png">
+				<img pl-id="" src="media/images/carousel-bears/carousel-slide-9.png">
+			</div>
+		</div>
+		<div pl-component="cannon" pl-ball="media/images/cannon-bears/ball.png" pl-fire="polar"></div>
 	</section>
 
 </body>

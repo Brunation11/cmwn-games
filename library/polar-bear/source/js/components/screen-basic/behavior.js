@@ -1,4 +1,20 @@
 pl.game.component('screen-basic', function () {
+
+	this.ready = function () {
+		console.log(this.id(), this.requiredQueue)
+
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) sfx.play();
+
+				console.log('required complete');
+			}));
+		}
+	};
 	
 	this.next = function () {
 		var nextScreen, buttonSound;
@@ -41,7 +57,9 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.on('ui-open', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
+		if (this !== _event.targetScope) return;
+
+		if (this.isReady) {
 			this.start();
 		}
 
