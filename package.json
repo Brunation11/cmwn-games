@@ -4,7 +4,7 @@
   "description": "CMWN Action Items Library",
   "main": "index.html",
   "devDependencies": {
-    "js-interactive-library": "github:ginasink/js-interactive-library#v0.1.0",
+    "js-interactive-library": "github:ginasink/js-interactive-library#v0.1.2",
     "babel": "^5.8.29",
     "babel-loader": "^5.3.3",
     "gulp": "^3.9.0",
