@@ -2,7 +2,7 @@ pl.game.component('score', function () {
 
 	this.value = 0;
 
-	this.entity('.board', function () {
+	this.entity('board', function () {
 		
 		this.template = null;
 		this.images = null;

@@ -174,4 +174,54 @@ pl.game('polar-bear', function () {
 
 	});
 
+	this.screen('bears', function () {
+
+		this.start = function (_event) {
+			this.proto();
+			this.carousel.start();
+		};
+
+		this.on('ui-select', function (_event) {
+			if (_event.targetScope === this.reveal) {
+				this.reveal.delay('2s', function () {
+					var $selected;
+
+					$selected = this.getSelected();
+
+					this.close();
+					$selected
+						.addClass('animated slideOutUp')
+						.on('animationend', function () {
+							console.log('HEY!');
+							$selected.removeClass('slideOutUp');
+							$selected.off();
+						});
+				});
+				
+			}
+		});
+
+		this.entity('carousel', function () {
+			// The event 'behaviorTarget' for this entities 'hit' behavior
+			this.provideBehaviorTarget = function () {
+				// Choose the item thats in the middle of the 3 visible.
+				return this.current().next();
+			};
+
+		});
+		
+		this.respond('hit', function (_event) {
+			if (_event.message === _event.behaviorTarget.id()) {
+				this.score.up();
+			}
+
+			this.reveal.item(_event.behaviorTarget.id());
+		});
+
+		this.respond('next', function () {
+			if (this.cannon.didLaunch()) this.cannon.reload();
+		});
+
+	});
+
 });
