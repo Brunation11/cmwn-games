@@ -157,6 +157,47 @@
 				margin: -40px 80px 0;
 			}
 
+		.multiple-choice-component li.hand {
+			width: 50%;
+			float: left;
+		}
+
+		.multiple-choice-component li.hand:before {
+			display: none;
+		}
+
+		.multiple-choice-component li.hand img {
+			width: 100%;
+		}
+
+		.multiple-choice-component li.hand img.hover {
+			position: absolute;
+		    top: 0;
+		    left: 0;
+		    opacity: 0;
+
+		    -webkit-transition: opacity .5s;
+		    transition: opacity .5s;
+		}
+
+		.multiple-choice-component li.hand.SELECTED img.hover,
+		.multiple-choice-component li.hand:hover img.hover {
+		    opacity: 1;
+		}
+
+		/* STORY BOARD SCREEN: 21 */
+		/* this will have to be changed after the merge of Micah and Adam's code */
+		.screen:nth-of-type(11) .frame-component {}
+
+			.screen:nth-of-type(11) .multiple-choice-component ul:after {
+				visibility: hidden;
+			    display: block;
+			    font-size: 0;
+			    content: " ";
+			    clear: both;
+			    height: 0;
+			}
+
 	</style>
 </head>
 <body id="polar-bear">
@@ -337,6 +378,25 @@
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_14.1.png">
 			<p>Polar Bears have a thick layer of fat under their skin.<br/>Do this experiment to see how they keep warm.</p>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_21.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<!-- <img class="title" src="media/images/Img_21.1.png"> -->
+			<div pl-component="multiple-choice" pl-required>
+				<ul pl-pluck="answers">
+					<li class="hand">
+						<img src="media/images/hands-bears/left_a.png">
+						<img class="hover" src="media/images/hands-bears/left_b.png">
+					</li>
+					<li class="hand" pl-correct>
+						<img src="media/images/hands-bears/right_a.png">
+						<img class="hover" src="media/images/hands-bears/right_b.png">
+					</li>
+				</ul>
+			</div>
 		</div>
 	</section>
 
