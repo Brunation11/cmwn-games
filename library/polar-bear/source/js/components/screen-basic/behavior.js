@@ -44,10 +44,15 @@ pl.game.component('screen-basic', function () {
 
 	this.start = function () {
 		var bgSound;
+		var voSound;
 
 		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
 
 		if (bgSound) bgSound.play();
+
+		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+
+		if (voSound) voSound.play();
 
 		return this;
 	};
