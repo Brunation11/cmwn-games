@@ -40,3 +40,40 @@
 				white-space: normal;
 				overflow: hidden;
 			}
+
+	.multiple-choice-component.multiple-choice-images ul:after {
+		visibility: hidden;
+	    display: block;
+	    font-size: 0;
+	    content: " ";
+	    clear: both;
+	    height: 0;
+	}
+
+		.multiple-choice-component.multiple-choice-images li {
+			width: 50%;
+			float: left;
+		}
+
+			.multiple-choice-component.multiple-choice-images li:before {
+				display: none;
+			}
+
+			.multiple-choice-component.multiple-choice-images li img {
+				width: 100%;
+			}
+
+			.multiple-choice-component.multiple-choice-images li img.hover {
+				position: absolute;
+			    top: 0;
+			    left: 0;
+			    opacity: 0;
+
+			    -webkit-transition: opacity .5s;
+			    transition: opacity .5s;
+			}
+
+			.multiple-choice-component.multiple-choice-images li.SELECTED img.hover,
+			.multiple-choice-component.multiple-choice-images li:hover img.hover {
+			    opacity: 1;
+			}
