@@ -5,12 +5,291 @@
 	<title>Polar Bear</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
 	<script type="text/javascript" src="ai.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<link rel="stylesheet" type="text/css" href="animate.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		html {
+			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 20px;
+			background: url(media/images/background.png) bottom center no-repeat;
+			background-size: auto 100%;
+		}
+
+		@media (min-width: 1517px) {
+			html {
+				background-size: 100%;
+			}
+		}
+
+		body {
+			position: relative;
+			width: 960px;
+			margin: auto;
+		}
+
+		button {
+			margin: 0;
+			padding: 0;
+			border: none;
+
+			font-family: inherit;
+			font-size: inherit;
+			background-color: transparent;
+			outline: none;
+			cursor: pointer;
+		}
+
+		.canvas-src { display: none; }
+
+		.screen {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			opacity: 0;
+			transition: opacity 1s, transform 0.5s;
+			transform: translateX(100%);
+		}
+
+		.screen.OPEN {
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.screen.LEAVE {
+			opacity: 1;
+			transform: translateX(-100%);
+		}
+
+		.carousel-component.slide img {
+			padding: 0 25px;
+		}
+
+		/* STORY BOARD SCREEN: 3 */
+		.screen:nth-of-type(2) .frame-component.variant-bg {}
+
+			.screen:nth-of-type(2) .frame-component.variant-bg .content-group {
+				background: url(media/images/Img_3.2.png) no-repeat bottom right;
+				background-size: 50%;
+				text-align: left;
+			}
+
+			.screen:nth-of-type(2) .frame-component.variant-bg .content-group > * {
+				margin-right: 0;
+			}
+
+		/* STORY BOARD SCREEN: 6 */
+		.screen:nth-of-type(4) .frame-component {}
+
+			.screen:nth-of-type(4) .frame-component .content-group {
+				background: url(media/images/Img_6.1.png) no-repeat top left;
+				background-size: auto 100%;
+				text-align: right;
+			}
+
+		/* STORY BOARD SCREEN: 8 */
+		.screen:nth-of-type(5) .frame-component {}
+
+			.screen:nth-of-type(5) .frame-component .content-group {
+				background: url(media/images/Img_8.1.png) no-repeat top left;
+				background-size: auto 100%;
+				text-align: right;
+			}
+		
+		#map .country {
+			position: absolute;
+			top: 0; left: 0;
+			opacity: 0;
+		}
+
+		#map .map {
+			width: 80%;
+		}
+			#map .map img {
+				width: 100%;
+			}
+
+		#bears {}
+
+			#bears .viewport {
+				position: relative;
+				margin: 40px;
+				overflow: hidden;
+			}
+
+				#bears .viewport .carousel-component {
+					width: 33.4%;
+				}
+	</style>
 </head>
 <body id="polar-bear">
-	<section id="index" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<p>Hello World</p>
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3" preload></audio>
+	
+	<!-- SCREENS -->
+
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title"></div>
 	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>I am a majestic, beautiful Polar Bear and I am endangered.</p>
+				<p>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</p>
+			</div>
+			<div class="variant-bg" pl-component="frame" pl-transclude="content">
+				<p>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a CHILLY fun fact!</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_5.1.png" width="80%">
+			<p>Let’s learn some more!</p>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload loop></audio>
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>What color<br>is a Polar Bear’s fur?</p>
+			</div>
+			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="multiple-choice" pl-required>
+					<ul pl-pluck="answers">
+						<li>
+							<p>White</p>
+						</li>
+						<li>
+							<p>Plaid</p>
+						</li>
+						<li pl-correct>
+							<p>Clear</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="map" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<p>Where do<br>Polar Bears live?</p>
+			</div>
+			<div pl-id="frame" class="map-entity">
+				<audio pl-id="correct" class="sfx" src="media/audio/map/answer-correct.mp3" preload></audio>
+				<audio pl-id="incorrect" class="sfx" src="media/audio/map/answer-incorrect.mp3" preload></audio>
+
+				<audio pl-id="north-pole" class="voice-over" src="media/audio/map/VO_9.1.mp3" preload></audio>
+				<audio pl-id="greenland" class="voice-over" src="media/audio/map/VO_9.2.mp3" preload></audio>
+				<audio pl-id="canada" class="voice-over" src="media/audio/map/VO_9.3.mp3" preload></audio>
+				<audio pl-id="russia" class="voice-over" src="media/audio/map/VO_9.4.mp3" preload></audio>
+				<audio pl-id="norway" class="voice-over" src="media/audio/map/VO_9.5.mp3" preload></audio>
+
+				<div class="center">
+					<div class="map" pl-action="test(event.cursor)">
+						<img pl-id="gray-map" class="full" src="media/images/map/Img_9.1.png">
+						<img pl-id="iceland" class="country" src="media/images/map/Img_9.2.png">
+						<img pl-id="russia" class="country" src="media/images/map/Img_9.4.png" pl-correct>
+						<img pl-id="north-pole" class="country" src="media/images/map/Img_9.5.png" pl-correct>
+						<img pl-id="greenland" class="country" src="media/images/map/Img_9.3.png" pl-correct>
+						<img pl-id="denmark" class="country" src="media/images/map/Img_9.6.png">
+						<img pl-id="norway" class="country" src="media/images/map/Img_9.7.png" pl-correct>
+						<img pl-id="canada" class="country" src="media/images/map/Img_9.8.png" pl-correct>
+						<img pl-id="usa" class="country" src="media/images/map/Img_9.9.png">
+						<img pl-id="sweden" class="country" src="media/images/map/Img_9.10.png">
+						<img pl-id="finland" class="country" src="media/images/map/Img_9.11.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_10.1.png" width="80%">
+			<p>Tap or click the puck.<br>Land 5 in the pocket when the<br>polar bear is overhead.</p>
+		</div>
+	</section>
+
+	<section id="bears" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_2.mp3" preload></audio>
+		<audio pl-id="correct" class="sfx" src="media/audio/bears/answer-correct.mp3" preload></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/audio/bears/answer-incorrect.mp3" preload></audio>
+		<div class="center">
+			<div class="group">
+				<div pl-component="score" pl-transclude="images" pl-max="5" pl-required>
+					<img src="media/images/score-bears/score-0.png">
+					<img src="media/images/score-bears/score-1.png">
+					<img src="media/images/score-bears/score-2.png">
+					<img src="media/images/score-bears/score-3.png">
+					<img src="media/images/score-bears/score-4.png">
+					<img src="media/images/score-bears/score-5.png">
+				</div>
+				
+				<div class="viewport">
+					<div class="slide" pl-component="carousel" pl-randomize pl-delay="1s">
+						<img pl-id="fox" src="media/images/carousel-bears/carousel-slide-1.png">
+						<img pl-id="dog" src="media/images/carousel-bears/carousel-slide-2.png">
+						<img pl-id="cat" src="media/images/carousel-bears/carousel-slide-3.png">
+						<img pl-id="ermine" src="media/images/carousel-bears/carousel-slide-4.png">
+						<img pl-id="goat" src="media/images/carousel-bears/carousel-slide-5.png">
+						<img pl-id="peacock" src="media/images/carousel-bears/carousel-slide-6.png">
+						<img pl-id="polar" src="media/images/carousel-bears/carousel-slide-7.png">
+						<img pl-id="seal" src="media/images/carousel-bears/carousel-slide-8.png">
+						<img pl-id="hare" src="media/images/carousel-bears/carousel-slide-9.png">
+					</div>
+				</div>
+				
+				<div pl-component="cannon" pl-ball="media/images/cannon-bears/ball.png" pl-fire="polar"></div>
+				
+				<div pl-component="reveal" class="center">
+					<audio pl-id="fox" class="voice-over" src="media/audio/reveal-bears/VO_1.mp3" preload></audio>
+					<audio pl-id="seal" class="voice-over" src="media/audio/reveal-bears/VO_2.mp3" preload></audio>
+					<audio pl-id="ermine" class="voice-over" src="media/audio/reveal-bears/VO_3.mp3" preload></audio>
+					<audio pl-id="goat" class="voice-over" src="media/audio/reveal-bears/VO_4.mp3" preload></audio>
+					<audio pl-id="peacock" class="voice-over" src="media/audio/reveal-bears/VO_5.mp3" preload></audio>
+					<audio pl-id="dog" class="voice-over" src="media/audio/reveal-bears/VO_6.mp3" preload></audio>
+					<audio pl-id="cat" class="voice-over" src="media/audio/reveal-bears/VO_7.mp3" preload></audio>
+					<audio pl-id="hare" class="voice-over" src="media/audio/reveal-bears/VO_8.mp3" preload></audio>
+					<!-- <audio pl-id="polar" class="voice-over" src="media/audio/reveal-bears/VO_9.mp3" preload></audio> -->
+					<ul>
+						<li pl-id="fox"><img src="media/images/reveal-bears/reveal-1.png"></li>
+						<li pl-id="dog"><img src="media/images/reveal-bears/reveal-2.png"></li>
+						<li pl-id="cat"><img src="media/images/reveal-bears/reveal-3.png"></li>
+						<li pl-id="ermine"><img src="media/images/reveal-bears/reveal-4.png"></li>
+						<li pl-id="seal"><img src="media/images/reveal-bears/reveal-5.png"></li>
+						<li pl-id="goat"><img src="media/images/reveal-bears/reveal-6.png"></li>
+						<li pl-id="peacock"><img src="media/images/reveal-bears/reveal-7.png"></li>
+						<li pl-id="polar"><img src="media/images/reveal-bears/reveal-8.png"></li>
+						<li pl-id="hare"><img src="media/images/reveal-bears/reveal-9.png"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </body>
 
 </html>

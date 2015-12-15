@@ -26,10 +26,19 @@ pl.game.component('carousel', function () {
 		}
 
 		if (this.$images.length) {
-			this.nodes = [];
-			this.$images.each(this.bind(function (_index, _item) {
-				this.nodes.push(_item);
-			}));
+			this.nodes = this.$images.map(this.bind(function (_index, _node) {
+				var siblings;
+				
+				siblings = [_node.previousSibling, _node.nextSibling];
+
+				siblings.forEach(function (_node) {
+					if (_node.nodeType === document.TEXT_NODE) {
+						$(_node).remove();
+					}
+				});
+
+				return _node;
+			})).toArray();
 		}
 		
 		this.TYPE.forEach(this.bind(function (_item) {
