@@ -9,7 +9,9 @@ import 'components/screen-basic/behavior';
 import 'components/title/behavior';
 import 'components/frame/behavior';
 import 'components/slides/behavior';
-import 'components/multiple-choice/behavior';
+import 'components/carousel/behavior';
+import 'components/score/behavior';
+import 'components/reveal/behavior';
 
 pl.game('polar-bear', function () {
 
@@ -181,6 +183,10 @@ pl.game('polar-bear', function () {
 			this.carousel.start();
 		};
 
+		this.stop = function () {
+			this.carousel.stop();
+		}
+
 		this.on('ui-select', function (_event) {
 			if (_event.targetScope === this.reveal) {
 				this.reveal.delay('2s', function () {
@@ -192,7 +198,6 @@ pl.game('polar-bear', function () {
 					$selected
 						.addClass('animated slideOutUp')
 						.on('animationend', function () {
-							console.log('HEY!');
 							$selected.removeClass('slideOutUp');
 							$selected.off();
 						});
@@ -213,14 +218,37 @@ pl.game('polar-bear', function () {
 		this.respond('hit', function (_event) {
 			if (_event.message === _event.behaviorTarget.id()) {
 				this.score.up();
+				this.playSFX('correct');
+			}
+
+			else {
+				this.playSFX('incorrect');
 			}
 
 			this.reveal.item(_event.behaviorTarget.id());
 		});
 
 		this.respond('next', function () {
-			if (this.cannon.didLaunch()) this.cannon.reload();
+			this.cannon.ball.reload();
 		});
+
+		this.complete = function () {
+			var r = this.proto();
+
+			this.delay('2s', this.next);
+			
+			return r;
+		};
+
+		this.playSFX = function (_name) {
+			var sfx;
+
+			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+
+			if (sfx) sfx.play();
+
+			return this;
+		};
 
 	});
 

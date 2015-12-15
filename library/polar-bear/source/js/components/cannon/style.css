@@ -13,12 +13,19 @@
 	background: url(media/images/cannon-bears/background.png) no-repeat center;
     height: 300px;
     background-size: auto 100%;
-    overflow: hidden;
 }
+	
+	.cannon-component .barrel {
+		display: inline-block;
+		height: 100%;
+		margin-top: 5px;
+		overflow: hidden;
+	}
 
 	.cannon-component img {
-		width: 90px;
-		transform: translateY(200px);
+		width: 150px;
+		cursor: pointer;
+		transform: translateY(180px);
 	}
 
 	.cannon-component img.LAUNCHED {
@@ -27,7 +34,7 @@
 		 *  the animation will not play when the "LAUNCHED" flag is removed.
 		 */
 		transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
-		transform: translateY(-100px);
+		transform: translateY(-100px) scale(0.3);
 	}
 
 	.cannon-component img.RELOAD {

@@ -1,8 +1,6 @@
 pl.game.component('screen-basic', function () {
 
 	this.ready = function () {
-		console.log(this.id(), this.requiredQueue)
-
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
@@ -10,8 +8,6 @@ pl.game.component('screen-basic', function () {
 				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
 				if (sfx) sfx.play();
-
-				console.log('required complete');
 			}));
 		}
 	};
@@ -63,9 +59,12 @@ pl.game.component('screen-basic', function () {
 			this.start();
 		}
 
-		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
-			this.complete();
+		if (!this.isComplete) {
+			if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
+				this.complete();
+			}
 		}
+		
 	});
 
 	this.on('ui-leave', function (_event) {
