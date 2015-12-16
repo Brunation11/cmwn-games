@@ -76,6 +76,46 @@
 			padding: 0 25px;
 		}
 
+		.image-cell {
+			padding: 0;
+			list-style: none;
+			/*font-size: 0.5em;*/
+		}	
+
+			.image-cell li {
+				display: inline-block;
+				width: 170px;
+			}
+
+			.image-cell img {
+				display: block;
+				margin: auto;
+				width: 70%;
+			}
+
+		.experiment img.title {
+			position: absolute;
+			left: 50%;
+			bottom: 100%;
+			transform: translateX(-50%);
+		}
+
+		.experiment .frame-component h3,
+		.experiment .frame-component p {
+			margin: 0.7em;
+		}
+
+		.experiment .print {
+			width: 260px;
+			height: 70px;
+			background: url(media/images/S_15/Img_15.7b.png) no-repeat center;
+			background-size: 100%;
+		}
+
+		.experiment .print:hover {
+			background-image: url(media/images/S_15/Img_15.7a.png);
+		}
+
 		/* STORY BOARD SCREEN: 3 */
 		.screen:nth-of-type(2) .frame-component.variant-bg {}
 
@@ -142,10 +182,12 @@
 	
 	<!-- SCREENS -->
 
+	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
 	</section>
 
+	<!-- 2 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
 		<div pl-component="slides">
@@ -159,6 +201,7 @@
 		</div>
 	</section>
 
+	<!-- 5 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -167,12 +210,15 @@
 		</div>
 	</section>
 
+	<!-- 6 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload loop></audio>
 		<div pl-component="slides">
+			<!-- 6 -->
 			<div pl-component="frame" pl-transclude="content">
 				<p>What color<br>is a Polar Bear’s fur?</p>
 			</div>
+			<!-- 7.1 -->
 			<div pl-component="frame" pl-transclude="content">
 				<div pl-component="multiple-choice" pl-required>
 					<ul pl-pluck="answers">
@@ -188,14 +234,21 @@
 					</ul>
 				</div>
 			</div>
+			<!-- 7.2 -->
+			<div pl-component="frame" pl-transclude="content">
+				<p>Yup.<br>The fur is actually<br>a clear tube that<br>looks white because it<br>reflects the light.</p>
+			</div>
 		</div>
 	</section>
 
+	<!-- 8 -->
 	<section id="map" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="slides">
+			<!-- 8 -->
 			<div pl-component="frame" pl-transclude="content">
 				<p>Where do<br>Polar Bears live?</p>
 			</div>
+			<!-- 9 -->
 			<div pl-id="frame" class="map-entity">
 				<audio pl-id="correct" class="sfx" src="media/audio/map/answer-correct.mp3" preload></audio>
 				<audio pl-id="incorrect" class="sfx" src="media/audio/map/answer-incorrect.mp3" preload></audio>
@@ -225,6 +278,7 @@
 		</div>
 	</section>
 
+	<!-- 10 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -233,6 +287,7 @@
 		</div>
 	</section>
 
+	<!-- 11 -->
 	<section id="bears" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_2.mp3" preload></audio>
 		<audio pl-id="correct" class="sfx" src="media/audio/bears/answer-correct.mp3" preload></audio>
@@ -289,6 +344,97 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- 12 -->
+
+	<!-- 13 -->
+
+	<!-- 14 -->
+
+	<!-- 15 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img class="title" src="media/images/S_15/Img_15.1.png" width="80%">
+			<ul class="image-cell">
+				<li>
+					<img src="media/images/S_15/Img_15.2.png">
+					<strong>Large bowl</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.3.png">
+					<strong>4 cups of ice</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.4.png">
+					<strong>Cold water</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.5.png">
+					<strong>4 cups of solid vegetable shortening (like Crisco)</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.6.png">
+					<strong>4 medium-size sealable plastic bags</strong>
+				</li>
+			</ul>
+			<button class="print"></button>
+		</div>
+	</section>
+
+	<!-- 16 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img class="title" src="media/images/Img_16.1.png" width="80%">
+			<ul class="image-cell">
+				<li>
+					<img src="media/images/S_15/Img_15.2.png">
+					<strong>Large bowl</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.3.png">
+					<strong>4 cups of ice</strong>
+				</li><li>
+					<img src="media/images/S_15/Img_15.4.png">
+					<strong>Cold water</strong>
+				</li>
+			</ul>
+			<h3>Fill your bowl with water and ice.</h3>
+		</div>
+	</section>
+
+	<!-- 16 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img class="title" src="media/images/Img_16.1.png" width="80%">
+			<ul class="image-cell">
+				<li>
+					<img src="media/images/S_15/Img_15.5.png">
+					<p>4 cups of solid vegetable shortening (like Crisco)</p>
+				</li><li>
+					<img src="media/images/S_15/Img_15.6.png">
+					<p>4 medium-size sealable plastic bags</p>
+				</li>
+			</ul>
+			<h3>Put all shortening in ONE plastic bag.</h3>
+			<p>Shortening is a kind of fat and fat is what Polar Bears have under their skin.</p>
+		</div>
+	</section>
+
+	<!-- 17 -->
+
+	<!-- 18 -->
+
+	<!-- 19 -->
+
+	<!-- 20 -->
+
+	<!-- 21 -->
+
+	<!-- 22 -->
+	
+	<!-- 23 -->
+	
+	<!-- 24 -->
+	
+	<!-- 25 -->
 
 </body>
 
