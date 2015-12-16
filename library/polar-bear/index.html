@@ -206,9 +206,18 @@
 			    margin-top: -28%;
 			}
 
-			.screen:nth-of-type(10) .frame-component .content-group p {
+			.screen:nth-of-type(10) .frame-component .content-group h2 {
 				margin: -40px 80px 0;
 			}
+
+		.thank-you {
+			margin: 0 0 20px;
+		}
+
+		section.OPEN .flip {
+			-webkit-animation: rotateIn 1.5s;
+			animation: rotateIn 1.5s;
+		}
 
 	</style>
 </head>
@@ -389,7 +398,7 @@
 		<audio class="voice-over" src="media/audio/VO_12.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_12.1.png" width="80%">
-			<h3>Time for an experiment!</h3>
+			<h2>Time for an experiment!</h2>
 		</div>
 	</section>
 
@@ -397,19 +406,18 @@
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_13.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
-			<h3>In the Arctic regions where Polar Bears live, the temperature can be as low as 50 degrees below zero!</h3>
-		</div>
-	</section>
-
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/audio/VO_14.1.mp3" preload pl-required></audio>
-		<div pl-component="frame" pl-transclude="content">
-			<img src="media/images/Img_14.1.png">
-			<h3>Polar Bears have a thick layer of fat under their skin.<br/>Do this experiment to see how they keep warm.</h3>
+			<h2>In the Arctic regions where Polar Bears live, the temperature can be as low as 50 degrees below zero!</h2>
 		</div>
 	</section>
 
 	<!-- 14 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_14.1.mp3" preload pl-required></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_14.1.png">
+			<h2>Polar Bears have a thick layer<br/>of fat under their skin.<br/>Do this experiment to see<br/>how they keep warm.</h2>
+		</div>
+	</section>
 
 	<!-- 15 -->
 	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
@@ -518,11 +526,75 @@
 	</section>
 	
 	<!-- 23 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_23.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<h3>Polar Bears have a layer of fat<br/>under their skin<br/>that is 4 inches think.</h3>
+			<img src="media/images/Img_23.1.png" width="90%">
+			<div class="variant-image variant-question-image" pl-component="multiple-choice" pl-required>
+				<ul pl-pluck="answers">
+					<li pl-correct>
+						<img src="media/images/cold-bears/warm_a.png">
+						<img class="hover" src="media/images/cold-bears/warm_b.png">
+					</li>
+					<li>
+						<img src="media/images/cold-bears/cold_a.png">
+						<img class="hover" src="media/images/cold-bears/cold_b.png">
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 	
 	<!-- 24 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_24.4.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img class="title" src="media/images/Img_24.1.png" width="130%">
+			<div pl-component="selectable-reveal" pl-select-state="highlight" pl-required>
+				<div pl-component="selectable">
+					<ul class="items" pl-action="select()">
+						<li id="feet" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/feet_a.png">
+							<img class="hover" src="media/images/features-bears/feet_b.png">
+							<h3 class="checked">
+								Fur between<br/>pads keep<br/>feet warm
+							</h3>
+						</li><li id="ears" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/ears_a.png">
+							<img class="hover" src="media/images/features-bears/ears_b.png">
+							<h3 class="checked">
+								Small ears<br/>prevent<br/>heat loss
+							</h3>
+						</li><li id="coat" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/coat_a.png">
+							<img class="hover" src="media/images/features-bears/coat_b.png">
+							<h3 class="checked">
+								Wooly undercoat<br/>traps<br/>body heat
+							</h3>
+						</li>
+					</ul>
+				</div>
+				<div pl-component="reveal">
+					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload></audio>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	<!-- 25 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img  class="title" src="media/images/Img_25.1.png" width="80%">
+			<h2 class="thank-you">Thank you for taking time<br/>to learn more about<br/>Polar Bears.</h2>
+			<img class="flip" src="media/images/flip.png" width="50%">
+		</div>
+	</section>
 
 </body>
 
 </html>
+	
