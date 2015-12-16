@@ -28,12 +28,14 @@
 			transition: opacity 1s;
 		}
 
-		.frame-component:last-child .frame .next-screen {
+		.frame-component.GATED .frame .next-screen,
+		.screen.GATED > .frame-component .frame .next-screen {
 			opacity: 0;
 			cursor: default;
 		}
 
-		.screen.COMPLETE .frame-component:last-child .frame .next-screen {
+		.frame-component.COMPLETE .frame .next-screen,
+		.screen.COMPLETE > .frame-component .frame .next-screen {
 			opacity: 1;
 		}
 
@@ -66,7 +68,7 @@
 		}
 
 			.frame-component .frame .content-group > * {
-				margin-left: 1.5em;
-				margin-right: 1.5em;
+				margin-left: 2em;
+				margin-right: 2em;
 				text-align: center;
 			}

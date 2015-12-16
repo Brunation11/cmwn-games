@@ -4,7 +4,9 @@ pl.game.component('slides', function () {
 
 	this.ready = function () {
 		this.slides = this.find('> *').scope();
+	};
 
+	this.start = function () {
 		if (this.slides.length) this.slides[0].open();
 	};
 
@@ -13,6 +15,8 @@ pl.game.component('slides', function () {
 	 */
 	this.next = function () {
 		var index, nextSlide, buttonSound;
+
+		if (!this.isComplete) return false;
 
 		index = this.slides.indexOf(this);
 		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
