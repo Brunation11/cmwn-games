@@ -171,6 +171,32 @@
 				#bears .viewport .carousel-component {
 					width: 33.4%;
 				}
+
+		/* STORY BOARD SCREEN: 13 */
+		.screen:nth-of-type(9) .frame-component {}
+
+			.screen:nth-of-type(9) .frame-component .content-group {
+				background: url(media/images/Img_13.1.png) no-repeat top left;
+				background-size: auto 100%;
+				text-align: right;
+			}
+
+			.screen:nth-of-type(9) .frame-component .content-group > div {
+				max-width: 45%;
+			}
+
+		/* STORY BOARD SCREEN: 14 */
+		.screen:nth-of-type(10) .frame-component {}
+
+			.screen:nth-of-type(10) .frame-component .content-group img {
+				max-width: 80%;
+			    margin-top: -28%;
+			}
+
+			.screen:nth-of-type(10) .frame-component .content-group p {
+				margin: -40px 80px 0;
+			}
+
 	</style>
 </head>
 <body id="polar-bear">
@@ -294,7 +320,7 @@
 		<audio pl-id="incorrect" class="sfx" src="media/audio/bears/answer-incorrect.mp3" preload></audio>
 		<div class="center">
 			<div class="group">
-				<div pl-component="score" pl-transclude="images" pl-max="5" pl-required>
+				<div pl-component="score" pl-transclude="images" pl-max="1" pl-required>
 					<img src="media/images/score-bears/score-0.png">
 					<img src="media/images/score-bears/score-1.png">
 					<img src="media/images/score-bears/score-2.png">
@@ -346,8 +372,30 @@
 	</section>
 
 	<!-- 12 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_12.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_12.1.png" width="80%">
+			<p>Time for an experiment!</p>
+		</div>
+	</section>
 
 	<!-- 13 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_13.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<p>In the Arctic regions where Polar Bears live, the temperature can be as low as 50 degrees below zero!</p>
+		</div>
+	</section>
+
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_14.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/Img_14.1.png">
+			<p>Polar Bears have a thick layer of fat under their skin.<br/>Do this experiment to see how they keep warm.</p>
+		</div>
+	</section>
 
 	<!-- 14 -->
 
@@ -427,8 +475,44 @@
 	<!-- 20 -->
 
 	<!-- 21 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_21.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<!-- <img class="title" src="media/images/Img_21.1.png"> -->
+			<div class="variant-image" pl-component="multiple-choice" pl-required>
+				<ul pl-pluck="answers">
+					<li>
+						<img src="media/images/hands-bears/left_a.png">
+						<img class="hover" src="media/images/hands-bears/left_b.png">
+					</li>
+					<li pl-correct>
+						<img src="media/images/hands-bears/right_a.png">
+						<img class="hover" src="media/images/hands-bears/right_b.png">
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
 	<!-- 22 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_22.1.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<!-- <img class="title" src="media/images/Img_22.1.png"> -->
+			<div class="variant-image" pl-component="multiple-choice" pl-required>
+				<ul pl-pluck="answers">
+					<li pl-correct>
+						<img src="media/images/shortening-bears/shortening_a.png">
+						<img class="hover" src="media/images/shortening-bears/shortening_b.png">
+					</li>
+					<li>
+						<img src="media/images/shortening-bears/bag_a.png">
+						<img class="hover" src="media/images/shortening-bears/bag_b.png">
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 	
 	<!-- 23 -->
 	
