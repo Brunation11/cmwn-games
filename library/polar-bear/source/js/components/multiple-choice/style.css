@@ -41,7 +41,7 @@
 				overflow: hidden;
 			}
 
-	.multiple-choice-component.multiple-choice-images ul:after {
+	.multiple-choice-component.variant-image ul:after {
 		visibility: hidden;
 	    display: block;
 	    font-size: 0;
@@ -50,20 +50,20 @@
 	    height: 0;
 	}
 
-		.multiple-choice-component.multiple-choice-images li {
+		.multiple-choice-component.variant-image li {
 			width: 50%;
 			float: left;
 		}
 
-			.multiple-choice-component.multiple-choice-images li:before {
+			.multiple-choice-component.variant-image li:before {
 				display: none;
 			}
 
-			.multiple-choice-component.multiple-choice-images li img {
+			.multiple-choice-component.variant-image li img {
 				width: 100%;
 			}
 
-			.multiple-choice-component.multiple-choice-images li img.hover {
+			.multiple-choice-component.variant-image li img.hover {
 				position: absolute;
 			    top: 0;
 			    left: 0;
@@ -73,7 +73,7 @@
 			    transition: opacity .5s;
 			}
 
-			.multiple-choice-component.multiple-choice-images li.SELECTED img.hover,
-			.multiple-choice-component.multiple-choice-images li:hover img.hover {
+			.multiple-choice-component.variant-image li.SELECTED img.hover,
+			.multiple-choice-component.variant-image li:hover img.hover {
 			    opacity: 1;
 			}
