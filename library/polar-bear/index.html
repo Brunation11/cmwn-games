@@ -521,11 +521,11 @@
 			<img src="media/images/Img_23.1.png" width="90%">
 			<div class="variant-image variant-question-image" pl-component="multiple-choice" pl-required>
 				<ul pl-pluck="answers">
-					<li>
+					<li pl-correct>
 						<img src="media/images/cold-bears/warm_a.png">
 						<img class="hover" src="media/images/cold-bears/warm_b.png">
 					</li>
-					<li pl-correct>
+					<li>
 						<img src="media/images/cold-bears/cold_a.png">
 						<img class="hover" src="media/images/cold-bears/cold_b.png">
 					</li>
@@ -535,6 +535,42 @@
 	</section>
 	
 	<!-- 24 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/VO_24.4.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img class="title" src="media/images/Img_24.1.png" width="130%">
+			<div pl-component="selectable-reveal" pl-select-state="highlight" pl-required>
+				<div pl-component="selectable">
+					<ul class="items" pl-action="select()">
+						<li id="feet" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/feet_a.png">
+							<img class="hover" src="media/images/features-bears/feet_b.png">
+							<h3 class="checked">
+								Fur between<br/>pads keep<br/>feet warm
+							</h3>
+						</li><li id="ears" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/ears_a.png">
+							<img class="hover" src="media/images/features-bears/ears_b.png">
+							<h3 class="checked">
+								Small ears<br/>prevent<br/>heat loss
+							</h3>
+						</li><li id="coat" pl-always-selectable pl-correct>
+							<img src="media/images/features-bears/coat_a.png">
+							<img class="hover" src="media/images/features-bears/coat_b.png">
+							<h3 class="checked">
+								Wooly undercoat<br/>traps<br/>body heat
+							</h3>
+						</li>
+					</ul>
+				</div>
+				<div pl-component="reveal">
+					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload></audio>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	<!-- 25 -->
 
