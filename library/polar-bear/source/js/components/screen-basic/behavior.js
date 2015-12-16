@@ -43,16 +43,15 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound;
-		var voSound;
+		var bgSound, voSound;
 
 		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-
-		if (bgSound) bgSound.play();
-
 		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
 
+		if (bgSound) bgSound.play();
 		if (voSound) voSound.play();
+
+		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
 		return this;
 	};
@@ -69,7 +68,6 @@ pl.game.component('screen-basic', function () {
 				this.complete();
 			}
 		}
-		
 	});
 
 	this.on('ui-leave', function (_event) {

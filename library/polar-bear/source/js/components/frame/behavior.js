@@ -11,4 +11,12 @@ pl.game.component('frame', function () {
 		}
 	});
 
+	this.on('ui-open', function (_event) {
+		if (this === _event.targetScope) {
+			if (!(this.hasOwnProperty('isComplete') && this.isComplete) && !(this.hasOwnProperty('requiredQueue') && (this.requiredQueue && this.requiredQueue.length))) {
+				this.complete();
+			}
+		}
+	});
+
 });
