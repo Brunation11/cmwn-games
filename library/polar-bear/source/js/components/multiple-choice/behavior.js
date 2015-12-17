@@ -58,7 +58,7 @@ pl.game.component('multiple-choice', function () {
 	this.answer = function () {
 		if (this.event) {
 			$li = $(this.event.target).closest('li');
-			this.playVO($li.attr('pl-id'));
+			this.playVO($li.id());
 
 			if (!this.isComplete && this.select($li)) {
 				validateAnswer(this);
