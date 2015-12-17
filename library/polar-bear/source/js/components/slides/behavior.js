@@ -7,7 +7,14 @@ pl.game.component('slides', function () {
 	};
 
 	this.start = function () {
+		var current;
+
+		if (current = this.current()) current.close();
 		if (this.slides.length) this.slides[0].open();
+	};
+
+	this.current = function () {
+		return this.find('> .OPEN').scope();
 	};
 
 	/*
@@ -16,7 +23,7 @@ pl.game.component('slides', function () {
 	this.next = function () {
 		var index, nextSlide, buttonSound;
 
-		if (!this.isComplete) return false;
+		if (!this.completed()) return false;
 
 		index = this.slides.indexOf(this);
 		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
