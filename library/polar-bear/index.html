@@ -93,6 +93,12 @@
 				width: 100px;
 			}
 
+		img.chilly {
+			width: 70px;
+		    position: relative;
+		    top: 2px;
+		}
+
 		.experiment img.title {
 			position: absolute;
 			left: 50%;
@@ -151,6 +157,15 @@
 				text-align: right;
 			}
 
+		/* STORY BOARD SCREEN: 7 */
+			.screen:nth-of-type(4) .frame-component.mc .content-group > div {
+				width: 20%;
+			}
+
+			.screen:nth-of-type(4) .frame-component.mc .content-group ul {
+				text-align: left;
+			}
+
 		/* STORY BOARD SCREEN: 8 */
 		.screen:nth-of-type(5) .frame-component {}
 
@@ -159,6 +174,10 @@
 				background-size: auto 100%;
 				text-align: right;
 			}
+
+				.screen:nth-of-type(5) .frame-component .content-group > div {
+					width: 35%;
+				}
 		
 		#map .country {
 			position: absolute;
@@ -244,7 +263,7 @@
 				<h3>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</h3>
 			</div>
 			<div class="variant-bg" pl-component="frame" pl-transclude="content">
-				<h3>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a CHILLY fun fact!</h3>
+				<h3>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a <img class="chilly" src="media/images/Img_3.1.png"> fun fact!</h3>
 			</div>
 		</div>
 	</section>
@@ -267,7 +286,7 @@
 				<h3>What color<br>is a Polar Bear’s fur?</h3>
 			</div>
 			<!-- 7.1 -->
-			<div pl-id="mc" pl-component="frame" pl-transclude="content" pl-require="multiple-choice">
+			<div class="mc" pl-id="mc" pl-component="frame" pl-transclude="content" pl-require="multiple-choice">
 				<div pl-component="multiple-choice">
 					<ul pl-pluck="answers">
 						<li>
@@ -482,8 +501,20 @@
 	</section>
 
 	<!-- 18 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_18.1.png">
+			<h3>Cover Hands With Plastic Bags</h3>
+			<p>Cover your right hand with a plastic bag. Then place the covered hand inside the plastic bag with the fat and seal it. Move the fat around until it covers your hand. Cover the left hand with the remaining two plastic bags (without fat) and seal.</p>
+		</div>
+	</section>
 
 	<!-- 19 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_19.1.png">
+			<h3>Put hands in water</h3>
+			<p>Set a timer for 30 seconds and put both hands in the bowl of ice water.</p>
+		</div>
+	</section>
 
 	<!-- 20 -->
 
@@ -576,9 +607,9 @@
 					</ul>
 				</div>
 				<div pl-component="reveal">
-					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload></audio>
-					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload></audio>
-					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload pl-required></audio>
+					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload pl-required></audio>
+					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload pl-required></audio>
 				</div>
 			</div>
 		</div>
