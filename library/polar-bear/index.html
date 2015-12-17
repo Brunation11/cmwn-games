@@ -93,6 +93,12 @@
 				width: 100px;
 			}
 
+		img.inline {
+			height: 1em;
+		    position: relative;
+		    top: 3px;
+		}
+
 		.experiment img.title {
 			position: absolute;
 			left: 50%;
@@ -151,6 +157,15 @@
 				text-align: right;
 			}
 
+		/* STORY BOARD SCREEN: 7 */
+			.screen:nth-of-type(4) .frame-component.mc .content-group > div {
+				width: 20%;
+			}
+
+			.screen:nth-of-type(4) .frame-component.mc .content-group ul {
+				text-align: left;
+			}
+
 		/* STORY BOARD SCREEN: 8 */
 		.screen:nth-of-type(5) .frame-component {}
 
@@ -159,6 +174,10 @@
 				background-size: auto 100%;
 				text-align: right;
 			}
+
+				.screen:nth-of-type(5) .frame-component .content-group > div {
+					width: 35%;
+				}
 		
 		#map .country {
 			position: absolute;
@@ -239,19 +258,26 @@
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
 		<div pl-component="slides">
-			<div pl-component="frame" pl-transclude="content">
+			<div pl-component="frame" pl-transclude="content" pl-require="voice-over-majestic">
+				<audio pl-id="voice-over-majestic" class="voice-over" src="media/audio/VO_2.1.mp3" preload></audio>
 				<h3>I am a majestic, beautiful Polar Bear and I am endangered.</h3>
 				<h3>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</h3>
 			</div>
 			<div class="variant-bg" pl-component="frame" pl-transclude="content">
-				<h3>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a CHILLY fun fact!</h3>
+				<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload></audio>
+				<h3>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a <img class="inline" src="media/images/Img_3.1.png"> fun fact!</h3>
 			</div>
 		</div>
 	</section>
 
+	<!-- 3 -->
+
+	<!-- 4 -->
+
 	<!-- 5 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_5.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_5.1.png" width="80%">
 			<h3>Let’s learn some more!</h3>
@@ -264,26 +290,33 @@
 		<div pl-component="slides" pl-require="mc" pl-required>
 			<!-- 6 -->
 			<div pl-component="frame" pl-transclude="content">
+				<audio class="voice-over" src="media/audio/VO_6.1.mp3" preload></audio>
 				<h3>What color<br>is a Polar Bear’s fur?</h3>
 			</div>
 			<!-- 7.1 -->
-			<div pl-id="mc" pl-component="frame" pl-transclude="content" pl-require="multiple-choice">
+			<div class="mc" pl-id="mc" pl-component="frame" pl-transclude="content" pl-require="multiple-choice">
 				<div pl-component="multiple-choice">
 					<ul pl-pluck="answers">
-						<li>
+						<li pl-id="white">
 							<p><strong>White</strong></p>
 						</li>
-						<li>
+						<li pl-id="plaid">
 							<p><strong>Plaid</strong></p>
 						</li>
-						<li pl-correct>
+						<li pl-id="clear" pl-correct>
 							<p><strong>Clear</strong></p>
 						</li>
 					</ul>
+					<div pl-pluck="content">
+						<audio pl-id="white" class="voice-over" src="media/audio/colors-bears/white.mp3" preload pl-dontautoplay></audio>
+						<audio pl-id="plaid" class="voice-over" src="media/audio/colors-bears/plaid.mp3" preload pl-dontautoplay></audio>
+						<audio pl-id="clear" class="voice-over" src="media/audio/colors-bears/clear.mp3" preload pl-dontautoplay></audio>
+					</div>
 				</div>
 			</div>
 			<!-- 7.2 -->
 			<div pl-component="frame" pl-transclude="content">
+				<audio class="voice-over" src="media/audio/VO_7.4.mp3" preload></audio>
 				<h3>Yup.<br>The fur is actually<br>a clear tube that<br>looks white because it<br>reflects the light.</h3>
 			</div>
 		</div>
@@ -294,6 +327,7 @@
 		<div pl-component="slides">
 			<!-- 8 -->
 			<div pl-component="frame" pl-transclude="content">
+				<audio class="voice-over" src="media/audio/VO_8.1.mp3" preload></audio>
 				<h3>Where do<br>Polar Bears live?</h3>
 			</div>
 			<!-- 9 -->
@@ -338,6 +372,7 @@
 	<!-- 11 -->
 	<section id="bears" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_2.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
 		<audio pl-id="correct" class="sfx" src="media/audio/bears/answer-correct.mp3" preload></audio>
 		<audio pl-id="incorrect" class="sfx" src="media/audio/bears/answer-incorrect.mp3" preload></audio>
 		<div class="center">
@@ -376,6 +411,7 @@
 					<audio pl-id="dog" class="voice-over" src="media/audio/reveal-bears/VO_6.mp3" preload></audio>
 					<audio pl-id="cat" class="voice-over" src="media/audio/reveal-bears/VO_7.mp3" preload></audio>
 					<audio pl-id="hare" class="voice-over" src="media/audio/reveal-bears/VO_8.mp3" preload></audio>
+					<audio pl-id="polar" class="voice-over" src="media/audio/reveal-bears/VO_9.mp3" preload></audio>
 					<ul>
 						<li pl-id="fox"><img src="media/images/reveal-bears/reveal-1.png"></li>
 						<li pl-id="dog"><img src="media/images/reveal-bears/reveal-2.png"></li>
@@ -482,8 +518,20 @@
 	</section>
 
 	<!-- 18 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_18.1.png">
+			<h3>Cover Hands With Plastic Bags</h3>
+			<p>Cover your right hand with a plastic bag. Then place the covered hand inside the plastic bag with the fat and seal it. Move the fat around until it covers your hand. Cover the left hand with the remaining two plastic bags (without fat) and seal.</p>
+		</div>
+	</section>
 
 	<!-- 19 -->
+	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_19.1.png">
+			<h3>Put hands in water</h3>
+			<p>Set a timer for 30 seconds and put both hands in the bowl of ice water.</p>
+		</div>
+	</section>
 
 	<!-- 20 -->
 
@@ -576,9 +624,9 @@
 					</ul>
 				</div>
 				<div pl-component="reveal">
-					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload></audio>
-					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload></audio>
-					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload></audio>
+					<audio class="voice-over" src="media/audio/features-bears/feet.mp3" preload pl-required></audio>
+					<audio class="voice-over" src="media/audio/features-bears/ears.mp3" preload pl-required></audio>
+					<audio class="voice-over" src="media/audio/features-bears/coat.mp3" preload pl-required></audio>
 				</div>
 			</div>
 		</div>
@@ -587,10 +635,27 @@
 	<!-- 25 -->
 	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_25.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img  class="title" src="media/images/Img_25.1.png" width="80%">
-			<h2 class="thank-you">Thank you for taking time<br/>to learn more about<br/>Polar Bears.</h2>
+			<h2 class="thank-you">You now know more<br/>about Polar Bears<br/>Here's your frozen</h2>
 			<img class="flip" src="media/images/flip.png" width="50%">
+		</div>
+	</section>
+
+	<!-- QUIT -->
+	<section id="quit" class="screen" pl-component="screen-quit">
+		<div pl-component="frame" pl-transclude="content">
+			<h2>Are you sure<br/>you want to quit?</h2>
+			<h3>Your game progress will be saved</h3>
+			<button class="yes" pl-action="screen.okay()">
+				<img src="media/images/quit-bears/yes_a.png">
+				<img class="hover" src="media/images/quit-bears/yes_b.png">
+			</button>
+			<button class="no" pl-action="screen.cancel()">
+				<img src="media/images/quit-bears/no_a.png">
+				<img class="hover" src="media/images/quit-bears/no_b.png">
+			</button>
 		</div>
 	</section>
 

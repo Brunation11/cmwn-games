@@ -45,9 +45,20 @@ pl.game.component('multiple-choice', function () {
 		return sfx;
 	};
 
+	this.playVO = function (_name) {
+		var vo;
+
+		vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
+
+		if (vo) vo.play();
+
+		return vo;
+	};
+
 	this.answer = function () {
 		if (this.event) {
 			$li = $(this.event.target).closest('li');
+			this.playVO($li.id());
 
 			if (!this.isComplete && this.select($li)) {
 				validateAnswer(this);
