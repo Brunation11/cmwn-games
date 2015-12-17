@@ -13,6 +13,10 @@ import 'components/slides/behavior';
 import 'components/carousel/behavior';
 import 'components/score/behavior';
 import 'components/reveal/behavior';
+import 'components/multiple-choice/behavior';
+import 'components/selectable/behavior';
+import 'components/selectable-reveal/behavior';
+import 'components/cannon/behavior';
 
 pl.game('polar-bear', function () {
 

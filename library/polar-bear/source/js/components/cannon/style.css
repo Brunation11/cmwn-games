@@ -11,21 +11,21 @@
 .cannon-component {
 	text-align: center;
 	background: url(media/images/cannon-bears/background.png) no-repeat center;
-    height: 300px;
+    height: 180px;
     background-size: auto 100%;
 }
 	
 	.cannon-component .barrel {
 		display: inline-block;
 		height: 100%;
-		margin-top: 5px;
+		margin-top: 2px;
 		overflow: hidden;
 	}
 
 	.cannon-component img {
-		width: 150px;
+		width: 90px;
 		cursor: pointer;
-		transform: translateY(180px);
+		transform: translateY(100px);
 	}
 
 	.cannon-component img.LAUNCHED {
