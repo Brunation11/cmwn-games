@@ -6,6 +6,7 @@ import 'js-interactive-library';
 import 'config.game';
 
 import 'components/screen-basic/behavior';
+import 'components/screen-quit/behavior';
 import 'components/title/behavior';
 import 'components/frame/behavior';
 import 'components/slides/behavior';
