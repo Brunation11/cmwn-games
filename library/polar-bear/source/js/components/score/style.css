@@ -1,4 +1,6 @@
-.score-component {}
+.score-component {
+	margin: 20px auto;
+}
 	
 	.score-component .board img {
 		display: none;
