@@ -76,7 +76,7 @@ pl.game('polar-bear', function () {
 			};
 
 			this.ready = function () {
-				var correct;
+				var correct, $countries;
 
 				correct = pl.Queue.create();
 
@@ -90,8 +90,15 @@ pl.game('polar-bear', function () {
 				this.buffer.width = this.grayMap[0].naturalWidth;
 				this.buffer.height = this.grayMap[0].naturalHeight;
 
-				this.countries = this
-					.find('.country')
+				$countries = this.find('.country');
+
+				$countries
+					.not(SELECTOR.CORRECT)
+					.on('animationend', function () {
+						$(this).removeClass('flash').addClass('fadeIn');
+					});
+
+				this.countries = $countries
 					.map(function (_index, _node) {
 						var $node, id;
 
