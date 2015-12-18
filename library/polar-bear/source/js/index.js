@@ -154,7 +154,11 @@ pl.game('polar-bear', function () {
 
 				else {
 					this.playSFX('incorrect');
-					$country.addClass('animated flash');
+					$country
+						.addClass('animated flash')
+						.on('animationend', function () {
+							$country.removeClass('flash').addClass('fadeIn');
+						});
 				}
 			};
 
