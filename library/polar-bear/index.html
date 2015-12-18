@@ -62,6 +62,12 @@
 			transform: translateX(100%);
 		}
 
+		.screen.last {}
+
+			.screen.last.COMPLETE .next-screen {
+				display: none;
+			}
+
 		.screen.OPEN {
 			opacity: 1;
 			transform: translateX(0);
@@ -179,6 +185,10 @@
 					width: 35%;
 				}
 		
+		.QUIT-SCREEN .screen.OPEN {
+			opacity: 0;
+		}
+
 		#map .country {
 			position: absolute;
 			top: 0; left: 0;
@@ -645,7 +655,7 @@
 	</section>
 
 	<!-- QUIT -->
-	<section id="quit" class="screen" pl-component="screen-quit">
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
 		<div pl-component="frame" pl-transclude="content">
 			<h2>Are you sure<br/>you want to quit?</h2>
 			<h3>Your game progress will be saved</h3>

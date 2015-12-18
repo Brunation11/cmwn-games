@@ -68,6 +68,10 @@ pl.game.component('screen-basic', function () {
 				this.complete();
 			}
 		}
+
+		if (this.screen.isLast()) {
+			this.addClass('last');
+		}
 	});
 
 	this.on('ui-leave', function (_event) {
