@@ -1,4 +1,5 @@
-var gulp = require('gulp'),
+var argv = require('yargs').argv,
+    gulp = require('gulp'),
     watch = require('gulp-watch'),
     gutil = require('gulp-util'),
     webpack = require('webpack'),
@@ -89,8 +90,11 @@ gulp.task('copy-components', ['copy-media'], function () {
     });
 });
 
+// To specify what game you'd like to copy play components into call gulp play-components --game game-name
+// Replace game-name with the name of the game
 gulp.task('play-components', function () {
-    games.forEach(function (_game) {
+    var gamesArray = (argv.game === undefined) ? games : [argv.game];
+    gamesArray.forEach(function (_game) {
         gulp
             .src( './node_modules/js-interactive-library/components/**/*' )
             .pipe( gulp.dest(path.join( './library', _game, 'source/js/components' )) );
@@ -109,12 +113,15 @@ gulp.task('webpack:build-dev', function(callback) {
     });
 });
 
+// To specify what game you'd like to watch call gulp watch --game game-name
+// Replace game-name with the name of the game
 gulp.task('watch', function(callback) {
+    var game = (argv.game === undefined) ? '**' : argv.game;
     watch([
-        'library/**/source/js/**/*.js',
-        'library/**/source/js/components/**/*.css',
-        'library/**/source/js/components/**/*.html',
-        'library/**/index.html'], function () {
+        'library/' + game + '/source/js/**/*.js',
+        'library/' + game + '/source/js/components/**/*.css',
+        'library/' + game + '/source/js/components/**/*.html',
+        'library/' + game + '/index.html'], function () {
         gulp.start('build-dev');
     });
 });

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sea Turtle</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- <script type="text/javascript" src="jquery.js"></script> -->
+	<script type="text/javascript" src="ai.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="layout.css">
+	<link rel="stylesheet" type="text/css" href="animate.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+	<style type="text/css">
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		html {
+			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+			font-size: 20px;
+			background: url(media/images/background.png) bottom center no-repeat;
+			background-size: auto 100%;
+		}
+
+		@media (min-width: 1517px) {
+			html {
+				background-size: 100%;
+			}
+		}
+
+		body {
+			position: relative;
+			width: 960px;
+			margin: auto;
+		}
+
+		button {
+			margin: 0;
+			padding: 0;
+			border: none;
+
+			font-family: inherit;
+			font-size: inherit;
+			background-color: transparent;
+			outline: none;
+			cursor: pointer;
+		}
+
+		.canvas-src { display: none; }
+
+		.screen {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			opacity: 0;
+			transition: opacity 1s, transform 0.5s;
+			transform: translateX(100%);
+		}
+
+		.screen.last {}
+
+			.screen.last.COMPLETE .next-screen {
+				display: none;
+			}
+
+		.screen.OPEN {
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.screen.LEAVE {
+			opacity: 1;
+			transform: translateX(-100%);
+		}
+
+	</style>
+</head>
+<body id="polar-bear">
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3" preload></audio>
+	
+	<!-- SCREENS -->
+
+	<!-- TITLE -->
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title"></div>
+	</section>
+
+	<!-- 2 -->
+
+	<!-- QUIT -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<div pl-component="frame" pl-transclude="content">
+			<h2>Are you sure<br/>you want to quit?</h2>
+			<h3>Your game progress will be saved</h3>
+			<button class="yes" pl-action="screen.okay()">
+				<img src="media/images/quit-bears/yes_a.png">
+				<img class="hover" src="media/images/quit-bears/yes_b.png">
+			</button>
+			<button class="no" pl-action="screen.cancel()">
+				<img src="media/images/quit-bears/no_a.png">
+				<img class="hover" src="media/images/quit-bears/no_b.png">
+			</button>
+		</div>
+	</section>
+
+</body>
+
+</html>
+	
