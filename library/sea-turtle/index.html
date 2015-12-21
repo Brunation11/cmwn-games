@@ -27,12 +27,6 @@
 			background-size: auto 100%;
 		}
 
-		@media (min-width: 1517px) {
-			html {
-				background-size: 100%;
-			}
-		}
-
 		body {
 			position: relative;
 			width: 960px;
@@ -49,6 +43,14 @@
 			background-color: transparent;
 			outline: none;
 			cursor: pointer;
+		}
+
+		h2 {
+			font-size: 40px;
+		}
+
+		h3 {
+			font-size: 30px;
 		}
 
 		.canvas-src { display: none; }
@@ -78,6 +80,93 @@
 			transform: translateX(-100%);
 		}
 
+			.screen .next-screen,
+			.screen .prev-screen {
+				position: absolute;
+				display: block;
+				width: 70px; height: 70px;
+
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 100%;
+				bottom: 1%;
+			}
+
+			.screen .next-screen {
+				margin-top: 5px;
+				margin-right: 5px;
+				right: 4%;
+
+				background-image: url(media/images/buttons/next.png);
+				transform: translateX(50%);
+				transition: opacity 1s;
+			}
+
+			.screen.GATED .next-screen {
+				opacity: 0;
+				cursor: default;
+			}
+
+			.screen.COMPLETE .next-screen {
+				opacity: 1;
+			}
+
+			.screen .next-screen:hover {
+				background-image: url(media/images/buttons/next-hover.png);
+			}
+
+			.screen .prev-screen {
+				margin-top: 5px;
+				margin-left: 10px;
+				left: 4%;
+				background-image: url(media/images/buttons/prev.png);
+				transform: translateX(-50%);
+			}
+			
+			.screen .prev-screen:hover {
+				background-image: url(media/images/buttons/prev-hover.png);
+			}
+
+		.screen.no-frame {
+			overflow: hidden;
+		}
+
+			.screen.no-frame .frame {
+				width: 70%;
+			    height: 100%;
+			    text-align: center;
+			}
+
+				.screen.no-frame .frame img.background {
+					height: 100%;
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+
+				.screen.no-frame .frame .center > div {
+					text-align: center;
+				}
+
+		.screen.no-frame.jelly {}
+
+			.screen.no-frame.jelly .frame img.background {
+				transform: translateX(-48%);
+			}
+
+			.screen.no-frame.jelly .frame h2 {
+				margin: 6% 0 12%;
+			}
+
+		img.flip {
+			margin-top: -20px;
+		}
+
+		section.OPEN .flip {
+			-webkit-animation: zoomIn 1.5s;
+			animation: zoomIn 1.5s;
+		}
+
 	</style>
 </head>
 <body id="polar-bear">
@@ -96,18 +185,135 @@
 
 	<!-- 2 -->
 
+	<!-- 3 -->
+	<section class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload pl-required></audio>
+		<div class="center">
+			<div class="frame">
+				<img class="background" src="media/images/bg-globe.png">
+				<div class="content-group center">
+					<div>
+						<img src="media/images/img_3.1.png" width="80%">
+						<h2>Answering these questions<br/> fills your bowl<br/> AND gives you the scoop!</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 4 -->
+	
+	<!-- 5 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_5.1.mp3" preload pl-required></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/img_5.1.png" width="80%">
+			<h3>Someone has thrown<br/> trash in the ocean.</h3>
+			<h3>Please make this Sea Turtle smile<br/> by cleaning up his home.</h3>
+		</div>
+	</section>
+
+	<!-- 6 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-id="frame">
+			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
+			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload></audio>
+
+			<div class="center">
+				<div pl-action="test(event.cursor)">
+					<span>
+						<img src="media/images/trash/img_6.4a.png">
+						<img src="media/images/trash/img_6.4b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.5a.png">
+						<img src="media/images/trash/img_6.5b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.3a.png">
+						<img src="media/images/trash/img_6.3b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.6a.png">
+						<img src="media/images/trash/img_6.6b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.7a.png">
+						<img src="media/images/trash/img_6.7b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.8a.png">
+						<img src="media/images/trash/img_6.8b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.9a.png">
+						<img src="media/images/trash/img_6.9b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.10a.png">
+						<img src="media/images/trash/img_6.10b.png">
+					</span>
+					<span>
+						<img src="media/images/trash/img_6.11a.png">
+						<img src="media/images/trash/img_6.11b.png">
+					</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 7 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_7.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_7.1.mp3" preload pl-required></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<img src="media/images/img_7.1.png" width="80%">
+			<h2>Let's keep going!</h2>
+		</div>
+	</section>
+
+	<!-- 8 -->
+	<section class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_8.1.mp3" preload pl-required></audio>
+		<div class="center">
+			<div class="frame">
+				<img class="background" src="media/images/bg-jelly.png">
+				<div class="content-group center">
+					<div>
+						<img src="media/images/img_8.1.png" height="140vh">
+						<h2>Catch the jellyfish<br/> to discover what<br/> you need to know.</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 10 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_10.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<h3>You’ve learned a lot!<br/> Now you know how<br/> to help Sea Turtles!</h3>
+			<h3>Here's your</h3>
+			<img class="flip" src="media/images/img_10.1.png" width="50%">
+		</div>
+	</section>
+
 	<!-- QUIT -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
 		<div pl-component="frame" pl-transclude="content">
-			<h2>Are you sure<br/>you want to quit?</h2>
+			<h2>Are you sure you<br/>want to quit?</h2>
 			<h3>Your game progress will be saved</h3>
 			<button class="yes" pl-action="screen.okay()">
-				<img src="media/images/quit-bears/yes_a.png">
-				<img class="hover" src="media/images/quit-bears/yes_b.png">
+				<img src="media/images/quit-sea-turtles/yes.png">
+				<img class="hover" src="media/images/quit-sea-turtles/yes-hover.png">
 			</button>
 			<button class="no" pl-action="screen.cancel()">
-				<img src="media/images/quit-bears/no_a.png">
-				<img class="hover" src="media/images/quit-bears/no_b.png">
+				<img src="media/images/quit-sea-turtles/no.png">
+				<img class="hover" src="media/images/quit-sea-turtles/no-hover.png">
 			</button>
 		</div>
 	</section>

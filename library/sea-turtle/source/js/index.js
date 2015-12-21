@@ -15,6 +15,7 @@ import 'components/reveal/behavior';
 import 'components/multiple-choice/behavior';
 import 'components/selectable/behavior';
 import 'components/selectable-reveal/behavior';
+import 'components/selectable-remove/behavior';
 
 pl.game('sea-turtle', function () {
 
