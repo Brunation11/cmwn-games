@@ -292,3 +292,5 @@ pl.game('polar-bear', function () {
 	};
 
 });
+
+document.domain = 'changemyworldnow.com';
