@@ -2,6 +2,7 @@
  * Index script
  * @module
  */
+import 'testPlatformIntegration';
 import 'js-interactive-library';
 import 'config.game';
 
@@ -291,3 +292,5 @@ pl.game('polar-bear', function () {
 	};
 
 });
+
+document.domain = 'changemyworldnow.com';
