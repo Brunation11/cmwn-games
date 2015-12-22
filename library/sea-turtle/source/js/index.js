@@ -9,7 +9,6 @@ import 'components/screen-basic/behavior';
 import 'components/screen-quit/behavior';
 import 'components/title/behavior';
 import 'components/frame/behavior';
-import 'components/slides/behavior';
 import 'components/score/behavior';
 import 'components/reveal/behavior';
 import 'components/multiple-choice/behavior';
