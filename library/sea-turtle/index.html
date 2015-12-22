@@ -183,67 +183,6 @@
 		<div pl-component="title"></div>
 	</section>
 
-
-	<!-- 6 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-component="selectable-remove">
-			<div pl-id="frame" class="map-entity">
-				<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
-				<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload></audio>
-
-				<!-- <div pl-component="selectable" pl-select-state="highlight">
-					<ul class="items" pl-action="select()">
-						<li pl-correct>
-							<img src="media/images/trash/img_6.4a.png">
-							<img src="media/images/trash/img_6.4b.png">
-						</li>
-						<li>
-							<img src="media/images/trash/img_6.5a.png">
-							<img src="media/images/trash/img_6.5b.png">
-						</li>
-					</ul>
-				</div> -->
-
-				<div class="center">
-					<ul class="items" pl-action="select()">
-						<li>
-							<img class="item" src="media/images/trash/img_6.4a.png">
-							<img src="media/images/trash/img_6.4b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.5a.png">
-							<img src="media/images/trash/img_6.5b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.6a.png">
-							<img src="media/images/trash/img_6.6b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.7a.png">
-							<img src="media/images/trash/img_6.7b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.8a.png">
-							<img src="media/images/trash/img_6.8b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.9a.png">
-							<img src="media/images/trash/img_6.9b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.10a.png">
-							<img src="media/images/trash/img_6.10b.png">
-						</li>
-						<li>
-							<img class="item" src="media/images/trash/img_6.11a.png">
-							<img src="media/images/trash/img_6.11b.png">
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<!-- 2 -->
 
 	<!-- 3 -->
@@ -275,65 +214,102 @@
 			<h3>Please make this Sea Turtle smile<br/> by cleaning up his home.</h3>
 		</div>
 	</section>
-
+	
 	<!-- 6 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-id="frame">
+		<div pl-component="selectable-remove" pl-select-state="highlight" pl-required>
 			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
 			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload></audio>
-
-			<div pl-component="selectable">
+			<img class="turtle" src="media/images/trash/img_6.1.png">
+			<img class="turtle smile" src="media/images/trash/img_6.2.png">
+			<div class="center">
 				<ul class="items" pl-action="select()">
-					<li pl-correct>
+					<li class="bag">
 						<img src="media/images/trash/img_6.4a.png">
-						<img src="media/images/trash/img_6.4b.png">
-					</li><li>
+						<img class="hover" src="media/images/trash/img_6.4b.png">
+					</li>
+					<li class="milk">
 						<img src="media/images/trash/img_6.5a.png">
-						<img src="media/images/trash/img_6.5b.png">
+						<img class="hover" src="media/images/trash/img_6.5b.png">
+					</li>
+					<li class="milk2">
+						<img src="media/images/trash/img_6.5a.png">
+						<img class="hover" src="media/images/trash/img_6.5b.png">
+					</li>
+					<li class="shrimp" pl-incorrect>
+						<img src="media/images/trash/img_6.6a.png">
+						<img class="hover" src="media/images/trash/img_6.6b.png">
+					</li>
+					<li class="shrimp2" pl-incorrect>
+						<img src="media/images/trash/img_6.6a.png">
+						<img class="hover" src="media/images/trash/img_6.6b.png">
+					</li>
+					<li class="seaweed" pl-incorrect>
+						<img src="media/images/trash/img_6.7a.png">
+						<img class="hover" src="media/images/trash/img_6.7b.png">
+					</li>
+					<li class="bottle">
+						<img src="media/images/trash/img_6.8a.png">
+						<img class="hover" src="media/images/trash/img_6.8b.png">
+					</li>
+					<li class="paper">
+						<img src="media/images/trash/img_6.9a.png">
+						<img class="hover" src="media/images/trash/img_6.9b.png">
+					</li>
+					<li class="paper2">
+						<img src="media/images/trash/img_6.9a.png">
+						<img class="hover" src="media/images/trash/img_6.9b.png">
+					</li>
+					<li class="jar">
+						<img src="media/images/trash/img_6.10a.png">
+						<img class="hover" src="media/images/trash/img_6.10b.png">
+					</li>
+					<li class="lobster" pl-incorrect>
+						<img src="media/images/trash/img_6.11a.png">
+						<img class="hover" src="media/images/trash/img_6.11b.png">
+					</li>
+					<li class="glassbottle">
+						<img src="media/images/trash/img_6.12a.png">
+						<img class="hover" src="media/images/trash/img_6.12b.png">
+					</li>
+					<li class="soda">
+						<img src="media/images/trash/img_6.13a.png">
+						<img class="hover" src="media/images/trash/img_6.13b.png">
+					</li>
+					<li class="soda2">
+						<img src="media/images/trash/img_6.13a.png">
+						<img class="hover" src="media/images/trash/img_6.13b.png">
+					</li>
+					<li class="shell" pl-incorrect>
+						<img src="media/images/trash/img_6.14a.png">
+						<img class="hover" src="media/images/trash/img_6.14b.png">
+					</li>
+					<li class="spike" pl-incorrect>
+						<img src="media/images/trash/img_6.15a.png">
+						<img class="hover" src="media/images/trash/img_6.15b.png">
+					</li>
+					<li class="box">
+						<img src="media/images/trash/img_6.16a.png">
+						<img class="hover" src="media/images/trash/img_6.16b.png">
+					</li>
+					<li class="box2">
+						<img src="media/images/trash/img_6.16a.png">
+						<img class="hover" src="media/images/trash/img_6.16b.png">
+					</li>
+					<li class="shell2" pl-incorrect>
+						<img src="media/images/trash/img_6.17a.png">
+						<img class="hover" src="media/images/trash/img_6.17b.png">
+					</li>
+					<li class="can">
+						<img src="media/images/trash/img_6.18a.png">
+						<img class="hover" src="media/images/trash/img_6.18b.png">
+					</li>
+					<li class="canholder">
+						<img src="media/images/trash/img_6.19a.png">
+						<img class="hover" src="media/images/trash/img_6.19b.png">
 					</li>
 				</ul>
 			</div>
-<!-- 
-			<div class="center">
-				<div pl-action="test(event.cursor)">
-					<span>
-						<img src="media/images/trash/img_6.4a.png">
-						<img src="media/images/trash/img_6.4b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.5a.png">
-						<img src="media/images/trash/img_6.5b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.3a.png">
-						<img src="media/images/trash/img_6.3b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.6a.png">
-						<img src="media/images/trash/img_6.6b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.7a.png">
-						<img src="media/images/trash/img_6.7b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.8a.png">
-						<img src="media/images/trash/img_6.8b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.9a.png">
-						<img src="media/images/trash/img_6.9b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.10a.png">
-						<img src="media/images/trash/img_6.10b.png">
-					</span>
-					<span>
-						<img src="media/images/trash/img_6.11a.png">
-						<img src="media/images/trash/img_6.11b.png">
-					</span>
-				</div>
-			</div> -->
 		</div>
 	</section>
 
