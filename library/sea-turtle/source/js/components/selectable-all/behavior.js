@@ -117,6 +117,8 @@ pl.game.component('selectable-all', function () {
 		this.screen.requiredQueue.ready(this.count);
 		this.screen.reveal.item(this.count);
 
+		this.audio.sfx.play();
+
 		this.count++;
 
 		this.highlight(_$target);

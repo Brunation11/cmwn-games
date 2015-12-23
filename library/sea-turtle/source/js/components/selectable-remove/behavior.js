@@ -3,7 +3,7 @@ pl.game.component('selectable-remove', function () {
 	this.behavior('select', function (_target) {
 		var $target;
 
-		if (this.screen.state(this.STATE.PLAYING)) {
+		if (this.screen.state(this.STATE.SFX)) {
 			return false;
 		}
 
@@ -11,7 +11,7 @@ pl.game.component('selectable-remove', function () {
 			$target = $(this.event.target).closest('li');
 
 			if (this.shouldSelect($target) !== false) {
-				this.audio.sfx.correct.play();
+				$target.is('li') && this.audio.sfx.correct.play();
 				return {
 					message: $target.attr('class'),
 					behaviorTarget: $target
@@ -53,7 +53,7 @@ pl.game.component('selectable-remove', function () {
 
 
 	this.ready = function () {
-		var correct;
+		var correct ,$net, zoom;
 
 		correct = pl.Queue.create();
 
@@ -70,6 +70,13 @@ pl.game.component('selectable-remove', function () {
 			.toArray();
 
 		this.items.correct = correct;
+
+		$net = $('.selectable-remove-component .net');
+		zoom = this.game.zoom;
+
+		$('.selectable-remove-component .center').mousemove(function(e){
+           	$net.css('left', e.clientX / zoom - 85).css('top', e.clientY / zoom - 65);
+      	});
 	};
 
 });

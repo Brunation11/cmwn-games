@@ -185,45 +185,6 @@
 		<div pl-component="title"></div>
 	</section>
 
-	<!-- 9 -->
-	<section id="jellyfish" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-component="selectable-all" pl-transclude="content"></div>
-		<div pl-component="reveal">
-			<audio class="voice-over" src="media/audio/jellyfish/VO_1.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_2.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_3.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" preload pl-required></audio>
-			<ul>
-				<li>
-					Entanglement in Fishing Gear
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-				<li>
-					Poaching and Illegal Trade of Eggs, Meat and Shells
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-				<li>
-					Coastal Development
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-				<li>
-					Plastic and Other Marine Debris
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-				<li>
-					Global Warming
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-				<li>
-					Ocean Pollution
-					<button class="close" pl-action="closeAll()">✖</button>
-				</li>
-			</ul>
-		</div>
-	</section>
-
 	<!-- 2 -->
 
 	<!-- 3 -->
@@ -259,10 +220,12 @@
 	<!-- 6 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="selectable-remove" pl-select-state="highlight" pl-required>
+			<audio class="background" src="media/audio/background/2.mp3" preload></audio>
 			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
 			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload></audio>
 			<img class="turtle" src="media/images/trash/img_6.1.png">
 			<img class="turtle smile" src="media/images/trash/img_6.2.png">
+			<img class="net" src="media/images/trash/img_6.3.png">
 			<div class="center">
 				<ul class="items" pl-action="select()">
 					<li class="bag">
@@ -365,8 +328,8 @@
 	</section>
 
 	<!-- 8 -->
-	<section class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
+	<section class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content" pl-gated>
+		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_8.1.mp3" preload pl-required></audio>
 		<div class="center">
 			<div class="frame">
@@ -382,22 +345,59 @@
 	</section>
 
 	<!-- 9 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/SO_10.1.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
-		<div pl-component="selectable-all" pl-transclude="content">
-			<ul class="viewport" pl-action="pick(target())"></ul>
-			<ul class="bin">
-				<li class="b" pl-message="bathing"></li>
-				<li class="ws" pl-message="water slides" pl-correct></li>
-				<li class="f" pl-message="flowers"></li>
+	<section id="jellyfish" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="selectable-all" pl-transclude="content"></div>
+		<div pl-component="reveal">
+			<audio class="voice-over" src="media/audio/jellyfish/VO_1.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_2.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_3.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" preload pl-required></audio>
+			<ul>
+				<li>
+					<div>
+						Entanglement in Fishing Gear
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						Poaching and Illegal Trade of Eggs, Meat and Shells
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						Coastal Development
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						Plastic and Other Marine Debris
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						Global Warming
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
+				<li>
+					<div>
+						Ocean Pollution
+						<button class="close" pl-action="closeAll()">✖</button>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</section>
 
 	<!-- 10 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/SO_10.1.mp3" preload></audio>
+		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h3>You’ve learned a lot!<br/> Now you know how<br/> to help Sea Turtles!</h3>
@@ -408,6 +408,7 @@
 
 	<!-- QUIT -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<audio class="sfx" src="media/audio/button.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h2>Are you sure you<br/>want to quit?</h2>
 			<h3>Your game progress will be saved</h3>

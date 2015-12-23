@@ -29,6 +29,7 @@
 				height: 200px;
 				top: 600px;
 				margin: 0 40px;
+				cursor: pointer;
 			}
 
 			.selectable-all-component li,

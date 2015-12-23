@@ -6,20 +6,23 @@ pl.game.component('screen-quit', function () {
 			this.addClass('LEAVE-END');	
 		}
 	});
-
+	
 	this.on('ui-open', function (_event) {
+		this.game.addClass('QUIT-SCREEN');
 		this.removeClass('LEAVE-END');
 	});
 
-	this.init = function () {
-		this.addClass('LEAVE LEAVE-END');
-	};
+	this.on('ui-leave', function () {
+		this.game.removeClass('QUIT-SCREEN');
+	});
 	
 	this.okay = function () {
+		this.screen.audio.sfx.play();
 		this.game.exit();
 	};
 
 	this.cancel = function () {
+		this.screen.audio.sfx.play();
 		this.leave();
 	};
 
