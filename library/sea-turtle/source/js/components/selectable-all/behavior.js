@@ -6,7 +6,7 @@ pl.game.component('selectable-all', function () {
 		var width, item, i, columns;
 
 		// width of the first item
-		width = this.$bin.width();
+		width = this.$bin.outerWidth(true);
 		columns = Math.floor(this.$viewport.width() / width);
 
 		for (i=0; i < columns; i+=1) {
@@ -26,10 +26,6 @@ pl.game.component('selectable-all', function () {
 			this.$viewport = _$viewport;
 			this.$el = $(pl.util.random(_$collection)).clone();
 
-			this.$el.css({
-				transitionDuration: (pl.util.random(5, 10)*(1+Math.random()))+'s'
-			});
-
 			this.$viewport.append(this.$el);
 
 			return this;
@@ -41,9 +37,6 @@ pl.game.component('selectable-all', function () {
 			if (!this.shouldRecycel) return;
 
 			$clone = $(pl.util.random(this.$collection)).clone();
-			$clone.css({
-				transitionDuration: (pl.util.random(7, 15)*(1+Math.random()))+'s'
-			});
 
 			this.$el.replaceWith($clone);
 			this.$el = $clone;
@@ -77,6 +70,7 @@ pl.game.component('selectable-all', function () {
 	this.$viewport = null;
 	this.$bin = null;
 	this.columns = null;
+	this.count = 0;
 	
 	this.init = function () {
 		this.$viewport = this.find('.viewport');
@@ -104,6 +98,8 @@ pl.game.component('selectable-all', function () {
 		this.columns.forEach(function (_item) {
 			_item.launch();
 		});
+
+		this.screen.requiredQueue.ready();
 	};
 
 	this.stop = function () {
@@ -114,13 +110,14 @@ pl.game.component('selectable-all', function () {
 	};
 
 	this.behavior('pick', function (_$target) {
-		var message = _$target.attr('pl-message');
+		var message = this.count;
 
-		console.log(this.event.target);
+		if (_$target.attr('pl-correct') == null || this.screen.isComplete || this.screen.state(this.STATE.VOICE_OVER)) return;
 
-		if (_$target.attr('pl-correct') == null) return;
+		this.screen.requiredQueue.ready(this.count);
+		this.screen.reveal.item(this.count);
 
-		this.screen.requiredQueue.ready(message);
+		this.count++;
 
 		this.highlight(_$target);
 

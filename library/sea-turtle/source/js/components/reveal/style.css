@@ -13,4 +13,51 @@
 
 		.reveal-component li.OPEN {
 			opacity: 1;
+			z-index: 1;
 		}
+
+#jellyfish {
+	overflow: hidden;
+}
+
+	#jellyfish .reveal-component ul {
+		position: static;
+	}
+
+		#jellyfish .reveal-component li {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 400px;
+			height: 133px;
+			transform: translateX(-50%) translateY(-50%);
+			background: url('media/images/jellyfish/reveal.png') no-repeat center center;
+			background-size: 400px;
+			padding: 40px 10px;
+			box-sizing: border-box;
+			text-align: center;
+			font-size: 30px;
+			z-index: -1;
+		}
+
+		#jellyfish .reveal-component li.OPEN {
+			z-index: 1;
+		}
+
+		#jellyfish .reveal-component li.OPEN:before {
+			content: "";
+			position: fixed;
+			left: -1000%;
+			top: -1000%;
+			width: 3000%;
+			height: 3000%;
+			z-index: -1;
+		}
+
+			#jellyfish .reveal-component li .close {
+				position: absolute;
+				right: 10px;
+				top: 0;
+				width: 30px;
+				margin: 0;
+			}

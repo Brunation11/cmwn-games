@@ -26,13 +26,15 @@ function defineEntries (_config) {
 
     games.forEach(function (_path) {
         config.resolve.modulesDirectories.push(__dirname+'/library/'+_path+'/source/js/');
-        config.entry[_path] = ['index'];
+        config.entry[_path] = ['./'+_path+'/source/js/index.js'];
     });
+
+    console.log(games, 'entry', config.entry);
 
     return config;
 }
 
-games = lsd('./library');
+games = (argv.game === undefined) ? lsd('./library') : [argv.game];
 
 gulp.task('default', ['build-dev']); 
 
@@ -93,8 +95,7 @@ gulp.task('copy-components', ['copy-media'], function () {
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name
 // Replace game-name with the name of the game
 gulp.task('play-components', function () {
-    var gamesArray = (argv.game === undefined) ? games : [argv.game];
-    gamesArray.forEach(function (_game) {
+    games.forEach(function (_game) {
         gulp
             .src( './node_modules/js-interactive-library/components/**/*' )
             .pipe( gulp.dest(path.join( './library', _game, 'source/js/components' )) );
@@ -116,7 +117,7 @@ gulp.task('webpack:build-dev', function(callback) {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 gulp.task('watch', function(callback) {
-    var game = (argv.game === undefined) ? '**' : argv.game;
+    var game = (games.length > 1) ? '**' : games[0];
     watch([
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.css',

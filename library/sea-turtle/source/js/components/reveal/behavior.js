@@ -3,11 +3,12 @@ pl.game.component('reveal', function () {
 	this.item = function (_id) {
 		var vo, index;
 
-		this.close(this.find('li.OPEN'));
+		this.closeAll();
 
 		if (typeof _id === 'number') {
 			this.open(this.find('li').eq(_id));
 			this.audio.voiceOver[_id].play();
+
 		}
 			
 		else if (typeof _id === 'string') {
@@ -23,5 +24,9 @@ pl.game.component('reveal', function () {
 			}
 		}
 	};
+
+	this.closeAll = function() {
+		this.close(this.find('li.OPEN'));
+	}
 
 });

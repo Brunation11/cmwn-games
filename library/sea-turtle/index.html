@@ -90,6 +90,8 @@
 				background-repeat: no-repeat;
 				background-size: 100%;
 				bottom: 1%;
+
+				z-index: 2;
 			}
 
 			.screen .next-screen {
@@ -169,7 +171,7 @@
 
 	</style>
 </head>
-<body id="polar-bear">
+<body id="sea-turtle">
 	
 	<!-- GLOBAL GAME ASSETS -->
 
@@ -181,6 +183,45 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
+	</section>
+
+	<!-- 9 -->
+	<section id="jellyfish" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="selectable-all" pl-transclude="content"></div>
+		<div pl-component="reveal">
+			<audio class="voice-over" src="media/audio/jellyfish/VO_1.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_2.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_3.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" preload pl-required></audio>
+			<ul>
+				<li>
+					Entanglement in Fishing Gear
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+				<li>
+					Poaching and Illegal Trade of Eggs, Meat and Shells
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+				<li>
+					Coastal Development
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+				<li>
+					Plastic and Other Marine Debris
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+				<li>
+					Global Warming
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+				<li>
+					Ocean Pollution
+					<button class="close" pl-action="closeAll()">✖</button>
+				</li>
+			</ul>
+		</div>
 	</section>
 
 	<!-- 2 -->
@@ -337,6 +378,20 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+
+	<!-- 9 -->
+	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/SO_10.1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
+		<div pl-component="selectable-all" pl-transclude="content">
+			<ul class="viewport" pl-action="pick(target())"></ul>
+			<ul class="bin">
+				<li class="b" pl-message="bathing"></li>
+				<li class="ws" pl-message="water slides" pl-correct></li>
+				<li class="f" pl-message="flowers"></li>
+			</ul>
 		</div>
 	</section>
 
