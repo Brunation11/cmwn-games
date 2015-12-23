@@ -1,5 +1,6 @@
 @-webkit-keyframes bob {
-    100% {}
+    0% {transform: translateY(-10%);}
+    50% {transform: translateY(10%);}
 }
 
 @keyframes bob {
@@ -41,6 +42,8 @@
 	    top: 0;
 	    opacity: 1;
 	    transition: opacity .5s;
+	    pointer-events: none;
+	    z-index: 1;
 	}
 
 	.screen.COMPLETE .selectable-remove-component .net {
@@ -82,7 +85,9 @@
 		}
 
 		.selectable-remove-component .items li.HIGHLIGHTED img,
-		.selectable-remove-component .items li.HIGHLIGHTED:hover img {
+		.selectable-remove-component .items li.HIGHLIGHTED:hover img,
+		.screen.SFX .selectable-remove-component .items li img.hover,
+		.screen.COMPLETE .selectable-remove-component .items li img.hover {
 			opacity: 0;
 		}
 
