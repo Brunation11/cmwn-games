@@ -16,6 +16,7 @@
 
 	.selectable-remove-component .center {
 		cursor: none;
+		overflow: hidden;
 	}
 
 	.screen.COMPLETE .selectable-remove-component .center {
