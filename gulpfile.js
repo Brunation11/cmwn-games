@@ -6,7 +6,11 @@ var argv = require('yargs').argv,
     webpackDevConfig = require('./webpack.config.dev.js'),
     fs = require('fs'),
     path = require('path'),
-    games;
+    games,
+    sourcemaps = require('gulp-sourcemaps'),
+    sass = require('gulp-sass'),
+    concat = require('gulp-concat'),
+    livereload = require('gulp-livereload');
 
 function lsd (_path) {
     return fs.readdirSync(_path).filter(function (file) {
@@ -38,10 +42,10 @@ games = (argv.game === undefined) ? lsd('./library') : [argv.game];
 
 gulp.task('default', ['build-dev']); 
 
-gulp.task('build-dev', ['webpack:build-dev', 'copy-index', 'copy-media', 'copy-components']);
+gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components']);
 
 // Production build
-gulp.task('build', ['webpack:build']);
+gulp.task('build', ['sass', 'webpack:build']);
 
 gulp.task('webpack:build', function(callback) {
     var config = defineEntries(webpackProdConfig);
@@ -65,6 +69,22 @@ gulp.task('webpack:build', function(callback) {
         }));
         
         callback();
+    });
+});
+
+gulp.task('sass', function () {
+    games.forEach(function (_game) {
+        gulp
+            .src(['./library/' + _game + '/source/js/components/**/*.scss',
+                  './library/' + _game + '/source/js/components/**/*.css',
+                  './library/' + _game + '/source/css/*.scss',
+                  './library/' + _game + '/source/css/*.css'])
+            .pipe(sourcemaps.init())
+            .pipe(sass().on('error', sass.logError))
+            .pipe(sourcemaps.write())
+            .pipe(concat('style.css'))
+            .pipe(gulp.dest('./build/'+_game+'/css'))
+            .pipe(livereload());
     });
 });
 
@@ -117,10 +137,14 @@ gulp.task('webpack:build-dev', function(callback) {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 gulp.task('watch', function(callback) {
+    livereload.listen();
     var game = (games.length > 1) ? '**' : games[0];
     watch([
         'library/' + game + '/source/js/**/*.js',
+        'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',
+        'library/' + game + '/source/css/*.scss',
+        'library/' + game + '/source/css/*.css',
         'library/' + game + '/source/js/components/**/*.html',
         'library/' + game + '/index.html'], function () {
         gulp.start('build-dev');

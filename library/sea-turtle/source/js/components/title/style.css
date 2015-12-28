@@ -25,18 +25,18 @@
 		right: 40px;
 		width: 120px;
 		height: 75px;
-		background-image: url(media/images/buttons/play.png);
+		background-image: url(../media/images/buttons/play.png);
 		background-size: 100%;
 		transform: none;
 	}
 
 		.title-component button.play:hover {
-			background-image: url(media/images/buttons/play.png);
+			background-image: url(../media/images/buttons/play.png);
 		}
 	
 	.title-component img.background {
-	    min-width: 100%;
-	    min-height: 100%;
+		min-width: 100%;
+		min-height: 100%;
 	}
 
 		.title-component .center > .content-group {

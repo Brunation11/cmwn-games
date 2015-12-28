@@ -1,9 +1,9 @@
 @-webkit-keyframes swim {
-    100% {background-position: -3080px 0;}
+	100% {background-position: -3080px 0;}
 }
 
 @keyframes swim {
-    100% {background-position: -3080px 0;}
+	100% {background-position: -3080px 0;}
 }
 
 .selectable-all-component {}
@@ -34,7 +34,7 @@
 
 			.selectable-all-component li,
 			.screen.COMPLETE .selectable-all-component li {
-				background: url(media/images/jellyfish/jellyfish.png) left center;
+				background: url(../media/images/jellyfish/jellyfish.png) left center;
 				background-size: 3000px;
 				background-position: -50px 0;
 				-webkit-animation: swim 1s steps(13) infinite;
@@ -43,7 +43,7 @@
 
 			.selectable-all-component li:hover,
 			.selectable-all-component li.HIGHLIGHTED {
-				background: url(media/images/jellyfish/jellyfish-hover.png) left center;
+				background: url(../media/images/jellyfish/jellyfish-hover.png) left center;
 				background-size: 3000px;
 				background-position: -50px 0;
 			}

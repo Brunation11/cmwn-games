@@ -46,18 +46,18 @@
 	}
 
 	.screen-quit-component button {
-	    position: absolute;
-	    bottom: -20px;
+		position: absolute;
+		bottom: -20px;
 	}
 
 		.screen-quit-component button.yes {
-		    left: 0;
-		    width: 40%;
+			left: 0;
+			width: 40%;
 		}
 
 		.screen-quit-component button.no {
-	        left: 60%;
-		    width: 40%;
+			left: 60%;
+			width: 40%;
 		}
 
 		.screen-quit-component button img {
@@ -65,11 +65,11 @@
 		}
 
 		.screen-quit-component button img.hover {
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    opacity: 0;
-		    transition: opacity .5s;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: opacity .5s;
 		}
 
 			.screen-quit-component button:hover img.hover {

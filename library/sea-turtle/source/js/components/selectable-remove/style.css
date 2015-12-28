@@ -1,15 +1,15 @@
 @-webkit-keyframes bob {
-    0% {transform: translateY(-10%);}
-    50% {transform: translateY(10%);}
+	0% {transform: translateY(-10%);}
+	50% {transform: translateY(10%);}
 }
 
 @keyframes bob {
-    0% {transform: translateY(-10%);}
-    50% {transform: translateY(10%);}
+	0% {transform: translateY(-10%);}
+	50% {transform: translateY(10%);}
 }
 
 .selectable-remove-component {
-	background: url(media/images/background2.png) bottom center no-repeat;
+	background: url(../media/images/background2.png) bottom center no-repeat;
 	background-size: auto 100%;
 	height: 100%;
 	width: 100%;
@@ -25,25 +25,25 @@
 	}
 
 	.selectable-remove-component .turtle {
-	    position: absolute;
-	    left: 0;
-	    top: 10%;
-	    width: 37%;
+		position: absolute;
+		left: 0;
+		top: 10%;
+		width: 37%;
 	}
 
 	.selectable-remove-component .turtle.smile {
-	    opacity: 0;
-	    transition: opacity .5s;
+		opacity: 0;
+		transition: opacity .5s;
 	}
 
 	.selectable-remove-component .net {
-	    position: absolute;
-	    left: 0;
-	    top: 0;
-	    opacity: 1;
-	    transition: opacity .5s;
-	    pointer-events: none;
-	    z-index: 1;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 1;
+		transition: opacity .5s;
+		pointer-events: none;
+		z-index: 1;
 	}
 
 	.screen.COMPLETE .selectable-remove-component .net {
@@ -51,7 +51,7 @@
 	}
 
 	section.COMPLETE .selectable-remove-component .turtle.smile {
-	    opacity: 1;
+		opacity: 1;
 	}
 
 	.selectable-remove-component .items {
@@ -98,12 +98,12 @@
 
 	.selectable-remove-component .items li.bag {
 		left: 1%;
-	    top: -1%;
+		top: -1%;
 	}
 	
 	.selectable-remove-component .items li.milk {
 		left: 17%;
-	    top: -2%;
+		top: -2%;
 	}
 
 	.selectable-remove-component .items li.milk2 {
@@ -113,67 +113,67 @@
 	
 	.selectable-remove-component .items li.shrimp {
 		left: 40%;
-	    top: 25%;
+		top: 25%;
 	}
 	
 	.selectable-remove-component .items li.shrimp2 {
 		left: 70%;
-	    top: 78%;
+		top: 78%;
 	}
 	
 	.selectable-remove-component .items li.seaweed {
 		left: 60%;
-	    top: 34%;
+		top: 34%;
 	}
 	
 	.selectable-remove-component .items li.bottle {
-	    left: 16%;
-	    top: 53%;
+		left: 16%;
+		top: 53%;
 	}
 	
 	.selectable-remove-component .items li.paper {
 		left: 60%;
-	    top: 14%;
+		top: 14%;
 	}
 	
 	.selectable-remove-component .items li.paper2 {
 		left: 10%;
-	    top: 76%;
+		top: 76%;
 	}
 	
 	.selectable-remove-component .items li.jar {
-	    left: 48%;
-	    top: -2%;
+		left: 48%;
+		top: -2%;
 	}
 	
 	.selectable-remove-component .items li.lobster {
 		left: 62%;
-	    top: 1%;
+		top: 1%;
 	}
 	
 	.selectable-remove-component .items li.glassbottle {
 		left: 29%;
-	    top: 20%;
+		top: 20%;
 	}
 	
 	.selectable-remove-component .items li.soda {
-	    left: 79%;
-	    top: 3%;
+		left: 79%;
+		top: 3%;
 	}
 	
 	.selectable-remove-component .items li.soda2 {
-	    left: 33%;
-	    top: 48%;
+		left: 33%;
+		top: 48%;
 	}
 	
 	.selectable-remove-component .items li.shell {
-	    left: 47%;
-	    top: 42%;
+		left: 47%;
+		top: 42%;
 	}
 	
 	.selectable-remove-component .items li.spike {
 		left: 78%;
-	    top: 55%;
+		top: 55%;
 	}
 	
 	.selectable-remove-component .items li.box {
@@ -183,12 +183,12 @@
 	
 	.selectable-remove-component .items li.box2 {
 		left: 39%;
-	    top: 71%;
+		top: 71%;
 	}
 	
 	.selectable-remove-component .items li.shell2 {
 		left: 34%;
-	    top: -3%;
+		top: -3%;
 	}
 	
 	.selectable-remove-component .items li.can {
@@ -198,5 +198,5 @@
 
 	.selectable-remove-component .items li.canholder {
 		left: 60%;
-	    top: 55%;
+		top: 55%;
 	}

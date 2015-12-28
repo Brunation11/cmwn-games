@@ -54,7 +54,7 @@
 				width: 400px;
 				height: 133px;
 				transform: translateX(-50%) translateY(-50%);
-				background: url('media/images/jellyfish/reveal.png') no-repeat center center;
+				background: url('../media/images/jellyfish/reveal.png') no-repeat center center;
 				background-size: 400px;
 				padding: 40px 10px;
 				box-sizing: border-box;
