@@ -37,154 +37,158 @@ pl.game('polar-bear', function () {
 
 	this.screen('map', function () {
 
-		this.entity('.map-entity', function () {
-
-			var SELECTOR;
-
-			function isCorrect (_element) {
-				var $el;
-
-				$el = _element.jquery ? _element : $(_element);
-
-				return 
-			}
-
-			SELECTOR = {
-				CORRECT: '[pl-correct]',
-				INCORRECT: '[pl-incorrect]'
-			};
+		this.entity('slides', function () {
 			
-			this.buffer = null;
-			this.bctx = null;
-			this.countries = null;
+			this.entity('.map-entity', function () {
 
-			// images
-			this.grayMap = null;
-			this.iceland = null;
-			this.russia = null;
-			this.northPole = null;
-			this.greenland = null;
-			this.denmark = null;
-			this.norway = null;
-			this.canada = null;
-			this.usa = null;
-			this.sweden = null;
-			this.finland = null;
+				var SELECTOR;
 
-			this.init = function () {
-				this.buffer = document.createElement('canvas');
-				this.bctx = this.buffer.getContext('2d');
-			};
+				function isCorrect (_element) {
+					var $el;
 
-			this.ready = function () {
-				var correct, $countries;
+					$el = _element.jquery ? _element : $(_element);
 
-				correct = pl.Queue.create();
+					return 
+				}
 
-				correct.on('complete', this.bind(function () {
-					this.complete();
-					this.delay('2s', function () {
-						this.next();
-					});
-				}));
+				SELECTOR = {
+					CORRECT: '[pl-correct]',
+					INCORRECT: '[pl-incorrect]'
+				};
+				
+				this.buffer = null;
+				this.bctx = null;
+				this.countries = null;
 
-				this.buffer.width = this.grayMap[0].naturalWidth;
-				this.buffer.height = this.grayMap[0].naturalHeight;
+				// images
+				this.grayMap = null;
+				this.iceland = null;
+				this.russia = null;
+				this.northPole = null;
+				this.greenland = null;
+				this.denmark = null;
+				this.norway = null;
+				this.canada = null;
+				this.usa = null;
+				this.sweden = null;
+				this.finland = null;
 
-				$countries = this.find('.country');
+				this.init = function () {
+					this.buffer = document.createElement('canvas');
+					this.bctx = this.buffer.getContext('2d');
+				};
 
-				$countries
-					.not(SELECTOR.CORRECT)
-					.on('animationend', function () {
-						$(this).removeClass('flash').addClass('fadeIn');
-					});
+				this.ready = function () {
+					var correct, $countries;
 
-				this.countries = $countries
-					.map(function (_index, _node) {
-						var $node, id;
+					correct = pl.Queue.create();
 
-						$node = $(_node);
-						id = pl.util.transformId($node.id(), true);
+					correct.on('complete', this.bind(function () {
+						this.complete();
+						this.delay('2s', function () {
+							this.next();
+						});
+					}));
 
-						if ($node.is(SELECTOR.CORRECT)) correct.add(id);
+					this.buffer.width = this.grayMap[0].naturalWidth;
+					this.buffer.height = this.grayMap[0].naturalHeight;
 
-						return id;
-					})
-					.toArray();
+					$countries = this.find('.country');
 
-				this.countries.correct = correct;
-			};
+					$countries
+						.not(SELECTOR.CORRECT)
+						.on('animationend', function () {
+							$(this).removeClass('flash').addClass('fadeIn');
+						});
 
-			this.isImageTarget = function (_image, _point) {
-				this.bctx.clearRect(0,0, this.buffer.width, this.buffer.height);
-				this.bctx.drawImage(_image[0], 0,0, _image.width(), _image.height());
-				pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+					this.countries = $countries
+						.map(function (_index, _node) {
+							var $node, id;
 
-				this.bctx.fillStyle = 'white';
-				this.bctx.fillRect(_point.x, _point.y, 5,5);
+							$node = $(_node);
+							id = pl.util.transformId($node.id(), true);
 
-				// opaque pixel
-				return pixel.data[3] > 0;
-			};
+							if ($node.is(SELECTOR.CORRECT)) correct.add(id);
 
-			this.test = function (_cursor) {
-				var offset, cursor, pixel;
+							return id;
+						})
+						.toArray();
 
-				offset = this.grayMap.absolutePosition();
-				cursor = _cursor
-					.scale(1/this.game.zoom).math('floor')
-					.dec(offset);
+					this.countries.correct = correct;
+				};
 
-				this.countries.every(this.bind(function (_country) {
-					if (this.isImageTarget(this[_country], cursor)) {
-						this.answer( _country);
-						return false;
+				this.isImageTarget = function (_image, _point) {
+					this.bctx.clearRect(0,0, this.buffer.width, this.buffer.height);
+					this.bctx.drawImage(_image[0], 0,0, _image.width(), _image.height());
+					pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+
+					this.bctx.fillStyle = 'white';
+					this.bctx.fillRect(_point.x, _point.y, 5,5);
+
+					// opaque pixel
+					return pixel.data[3] > 0;
+				};
+
+				this.test = function (_cursor) {
+					var offset, cursor, pixel;
+
+					offset = this.grayMap.absolutePosition();
+					cursor = _cursor
+						.scale(1/this.game.zoom).math('floor')
+						.dec(offset);
+
+					this.countries.every(this.bind(function (_country) {
+						if (this.isImageTarget(this[_country], cursor)) {
+							this.answer( _country);
+							return false;
+						}
+
+						return true;
+					}));
+				};
+
+				this.answer = function (_country) {
+					var $country, index;
+
+					$country = this[_country];
+
+					if ($country.is(SELECTOR.CORRECT)) {
+
+						this.playSFX('correct');
+						this.playVO(_country);
+
+						$country.addClass('animated fadeIn');
+
+						this.countries.correct.ready(_country);
 					}
 
-					return true;
-				}));
-			};
+					else {
+						this.playSFX('incorrect');
+						$country.addClass('animated flash');
+					}
+				};
 
-			this.answer = function (_country) {
-				var $country, index;
+				this.playSFX = function (_answer) {
+					var sfx;
 
-				$country = this[_country];
+					sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
 
-				if ($country.is(SELECTOR.CORRECT)) {
+					if (sfx) sfx.play();
 
-					this.playSFX('correct');
-					this.playVO(_country);
+					return sfx;
+				};
 
-					$country.addClass('animated fadeIn');
+				this.playVO = function (_name) {
+					var vo;
 
-					this.countries.correct.ready(_country);
-				}
+					vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
 
-				else {
-					this.playSFX('incorrect');
-					$country.addClass('animated flash');
-				}
-			};
+					if (vo) vo.play();
 
-			this.playSFX = function (_answer) {
-				var sfx;
+					return vo;
+				};
+			});
 
-				sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
-
-				if (sfx) sfx.play();
-
-				return sfx;
-			};
-
-			this.playVO = function (_name) {
-				var vo;
-
-				vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
-
-				if (vo) vo.play();
-
-				return vo;
-			};
 		});
 
 	});
