@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animal ID</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="ai.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+</head>
+<body id="animal-id">
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3" preload></audio>
+	
+	<!-- SCREENS -->
+
+	<!-- TITLE -->
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title"></div>
+	</section>
+
+	<!-- 2 -->
+
+
+	<!-- 3 -->
+
+
+	<!-- 4 -->
+
+
+	<!-- 5 -->
+
+
+	<!-- 6 -->
+
+
+	<!-- 7 -->
+
+
+	<!-- 8 -->
+
+
+	<!-- 9 -->
+
+
+	<!-- 10 -->
+
+
+	<!-- 11 -->
+
+
+	<!-- 12 -->
+
+
+	<!-- 13 -->
+
+
+	<!-- 14 -->
+
+
+	<!-- 15 -->
+
+
+	<!-- 16 -->
+
+
+	<!-- 17 -->
+
+
+	<!-- 18 -->
+
+
+	<!-- 19 -->
+
+
+	<!-- 20 -->
+
+
+	<!-- 21 -->
+
+
+	<!-- 22 -->
+
+
+	<!-- 23 -->
+
+
+	<!-- 24 -->
+
+
+	<!-- 25 -->
+
+
+
+	<!-- QUIT -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<audio class="sfx" src="media/audio/button.mp3" preload></audio>
+		<div pl-component="frame" pl-transclude="content">
+			<h2>Are you sure you<br/>want to quit?</h2>
+			<h3>Your game progress will be saved</h3>
+			<button class="yes" pl-action="screen.okay()">
+				<img src="media/images/quit-sea-turtles/yes.png">
+				<img class="hover" src="media/images/quit-sea-turtles/yes-hover.png">
+			</button>
+			<button class="no" pl-action="screen.cancel()">
+				<img src="media/images/quit-sea-turtles/no.png">
+				<img class="hover" src="media/images/quit-sea-turtles/no-hover.png">
+			</button>
+		</div>
+	</section>
+
+</body>
+
+</html>
+	
