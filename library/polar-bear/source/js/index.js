@@ -27,12 +27,6 @@ pl.game('polar-bear', function () {
 			this.open();
 		};
 
-		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
-		});
-
 	});
 
 	this.screen('map', function () {
