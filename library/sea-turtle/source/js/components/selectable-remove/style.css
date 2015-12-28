@@ -86,7 +86,6 @@
 
 		.selectable-remove-component .items li.HIGHLIGHTED img,
 		.selectable-remove-component .items li.HIGHLIGHTED:hover img,
-		.screen.SFX .selectable-remove-component .items li img.hover,
 		.screen.COMPLETE .selectable-remove-component .items li img.hover {
 			opacity: 0;
 		}

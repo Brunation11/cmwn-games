@@ -3,10 +3,6 @@ pl.game.component('selectable-remove', function () {
 	this.behavior('select', function (_target) {
 		var $target;
 
-		if (this.screen.state(this.STATE.SFX)) {
-			return false;
-		}
-
 		if (this.event && !_target) {
 			$target = $(this.event.target).closest('li');
 

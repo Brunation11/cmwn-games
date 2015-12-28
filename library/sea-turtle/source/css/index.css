@@ -96,6 +96,7 @@ h3 {
 
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
+		cursor: pointer;
 	}
 
 	.screen .next-screen:hover {
@@ -141,8 +142,20 @@ h3 {
 		transform: translateX(-48%);
 	}
 
+	.screen.no-frame.jelly .frame .content-group div {
+		margin-top: 50%;
+		transform: translateY(-70%);
+	}
+
+	.screen.no-frame.jelly .frame .content-group img {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 100%;
+	}
+
 	.screen.no-frame.jelly .frame h2 {
-		margin: 6% 0 12%;
+		margin: 6% 0 6%;
 	}
 
 img.flip {
