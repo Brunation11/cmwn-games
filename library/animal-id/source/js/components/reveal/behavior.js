@@ -1,27 +1,41 @@
 pl.game.component('reveal', function () {
 
-	this.item = function (_id) {
+	this.respond('select', function (_event) {
 		var vo, index;
 
-		this.close(this.find('li.OPEN'));
+		index = _event.message;
+		this.closeAll();
 
-		if (typeof _id === 'number') {
-			this.open(this.find('li').eq(_id));
-			this.audio.voiceOver[_id].play();
-		}
-			
-		else if (typeof _id === 'string') {
-			if (this[_id]) {
-				this.open(this[_id]);
+		if(index !== undefined) {
+			if (typeof index === 'number') {
+				this.open(this.find('li').eq(index));
+				this.audio.voiceOver[index].play();
+			}
+				
+			else if (typeof index === 'string') {
+				if (this[index]) {
+					this.open(this[index]);
 
-				if (this.audio) {
-					index = this[_id].index();
-					vo = this.audio.voiceOver[_id] || this.audio.voiceOver[index];
-					
-					if (vo) vo.play();
+					if (this.audio) {
+						index = this[index].index();
+						vo = this.audio.voiceOver ? this.audio.voiceOver[index] : null;
+						
+						if (vo) vo.play();
+					}
 				}
 			}
 		}
+	});
+
+	this.closeAll = function() {
+		if(!this.screen.state(this.screen.STATE.VOICE_OVER)) {
+			this.close(this.find('li.OPEN'));
+		}
+	};
+
+	this.handleCloseClick = function() {
+		this.closeAll();
+		this.screen.next();
 	};
 
 });

@@ -15,6 +15,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
+import './components/class-switcher/behavior';
 
 pl.game('animal-id', function () {
 
