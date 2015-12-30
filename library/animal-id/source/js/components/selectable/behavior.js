@@ -8,11 +8,12 @@ pl.game.component('selectable', function () {
 
 			if (this.shouldSelect($target) !== false) {
 				$target.is('li') && this.audio.sfx.correct.play();
-				this.showSelect($target);
-				return {
-					message: $target.id(),
-					behaviorTarget: $target
-				};
+				if(this.showSelect($target)) {
+					return {
+						message: $target.id(),
+						behaviorTarget: $target
+					};
+				}
 			}
 
 			else {
@@ -38,8 +39,10 @@ pl.game.component('selectable', function () {
 
 		if (_$target) {
 			this[stateMethod](_$target);
-			this.items.correct.ready(_$target.attr('class'));
+			this.items.correct.ready(_$target.id());
 		}
+
+		return true;
 	};
 
 	this.populateList = function(_$bin) {
@@ -61,13 +64,13 @@ pl.game.component('selectable', function () {
 		correct = pl.Queue.create();
 
 		correct.on('complete', this.bind(function () {
-			this.complete();
+			this.screen.complete();
 		}));
 
 		this.items = this
 			.find('.items li[pl-correct]')
 			.map(function (_index, _node) {
-				correct.add(_node.className);
+				correct.add(_node.getAttribute("pl-id"));
 				return _node;
 			})
 			.toArray();

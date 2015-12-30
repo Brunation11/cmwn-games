@@ -104,11 +104,13 @@
 				transform: rotateX(-180deg);
 			}
 
+			.flip-card-component.bt > ul.show-all li .side.a,
 			.flip-card-component.bt > ul li.HIGHLIGHTED .side.a {
 				transform: rotateY(0deg);
 				transform: rotateX(180deg);
 			}
 
+			.flip-card-component.bt > ul.show-all li .side.b,
 			.flip-card-component.bt > ul li.HIGHLIGHTED .side.b {
 				transform: rotateY(0deg);
 				transform: rotateX(0deg);

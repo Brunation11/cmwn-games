@@ -5,6 +5,7 @@ pl.game.component('dropzone', function () {
 		this.cache = null;
 
 		this.respond('grab', function () {
+			this.audio.sfx.drag.play();
 			this.cache = {
 				position: this.absolutePosition(),
 				size: this.size()
@@ -18,8 +19,13 @@ pl.game.component('dropzone', function () {
 					_event.state.$helper.addClass('DROPED');
 					
 					this.drop(_event.state.$draggable);
+					this.audio.sfx.correct.play()
 					
 					return;
+				}
+
+				else {
+					this.audio.sfx.incorrect.play()
 				}
 			}
 
