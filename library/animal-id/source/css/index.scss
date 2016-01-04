@@ -373,7 +373,8 @@ h3 {
 						height: 0;
 						padding-bottom: 50%;
 						left: 10%;
-						top: 20%;
+						top: 50%;
+						transform: translateY(-50%);
 
 						h3 {
 							position: absolute;
@@ -527,7 +528,7 @@ h3 {
 					background-size: 100% auto;
 					background-position: center center;
 					padding-bottom: 70%;
-					top: -10%;
+					top: 45%;
 					text-align: center;
 					color: #000;
 
@@ -603,19 +604,30 @@ h3 {
 		position: relative;
 		margin: 20% 0;
 
-		&:before {
-			content: "";
-			background-image: url(../media/images/frame/draggable.png);
-			background-size: 200% 100%;
-			display: block;
-			position: absolute;
-			width: 168%;
-			height: 168%;
-			left: -38%;
-			top: -38%;
-			z-index: 1;
-			pointer-events: none;
+		.draggable {
+			&.PLUCKED {
+				&:before {
+					background-position: 95% 0;
+				}
+			}
 		}
+	}
+}
+
+.draggable {
+
+	&:before {
+		content: "";
+		background-image: url(../media/images/frame/draggable.png);
+		background-size: 200% 100%;
+		display: block;
+		position: absolute;
+		width: 168%;
+		height: 168%;
+		left: -38%;
+		top: -38%;
+		z-index: 1;
+		pointer-events: none;
 	}
 }
 
