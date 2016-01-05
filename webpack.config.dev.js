@@ -21,7 +21,8 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             loaders: ['babel'],
-            include: path.join(__dirname, 'library/')
+            include: path.join(__dirname, 'library/'),
+            exclude: [/bower_components/, /node_modules/]
         }]
     },
     cache: false

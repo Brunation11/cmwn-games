@@ -18,7 +18,7 @@ function lsd (_path) {
     });
 }
 
-function defineEntries (_config) {
+function defineEntries (_config,_game) {
     // modify some webpack config options
     var config, modulesDirectories;
 
@@ -28,10 +28,8 @@ function defineEntries (_config) {
     config.entry = {};
     config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
-    games.forEach(function (_path) {
-        config.resolve.modulesDirectories.push(__dirname+'/library/'+_path+'/source/js/');
-        config.entry[_path] = ['./'+_path+'/source/js/index.js'];
-    });
+    config.resolve.modulesDirectories.push(__dirname+'/library/'+_game+'/source/js/');
+    config.entry[_game] = ['./'+_game+'/source/js/index.js'];
 
     console.log(games, 'entry', config.entry);
 
@@ -123,14 +121,18 @@ gulp.task('play-components', function () {
 });
 
 gulp.task('webpack:build-dev', function(callback) {
-    var config = defineEntries(webpackDevConfig);
+    games.forEach(function (_game, _index) {
+        var config = defineEntries(webpackDevConfig,_game);
 
-    webpack(config).run(function(err, stats) {
-        if(err) throw new gutil.PluginError('webpack:build-dev', err);
-        gutil.log('[webpack:build-dev]', stats.toString({
-            colors: true
-        }));
-        callback();
+        webpack(config).run(function(err, stats) {
+            if(err) throw new gutil.PluginError('webpack:build-dev', err);
+            gutil.log('[webpack:build-dev]', stats.toString({
+                colors: true
+            }));
+            if(_index === games.length-1) {
+              callback();
+            }
+        });
     });
 });
 
