@@ -4,6 +4,7 @@ var argv = require('yargs').argv,
     gutil = require('gulp-util'),
     webpack = require('webpack'),
     webpackDevConfig = require('./webpack.config.dev.js'),
+    webpackProdConfig = require('./webpack.config.prod.js'),
     fs = require('fs'),
     path = require('path'),
     games,
@@ -46,27 +47,30 @@ gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media',
 gulp.task('build', ['sass', 'webpack:build']);
 
 gulp.task('webpack:build', function(callback) {
-    var config = defineEntries(webpackProdConfig);
+    games.forEach(function (_game, _index) {
+        var config = defineEntries(webpackProdConfig,_game);
 
-    config.plugins = config.plugins.concat(
-        new webpack.DefinePlugin({
-            'process.env': {
-                // This has effect on the react lib size
-                'NODE_ENV': JSON.stringify('production')
+        config.plugins = config.plugins.concat(
+            new webpack.DefinePlugin({
+                'process.env': {
+                    // This has effect on the react lib size
+                    'NODE_ENV': JSON.stringify('production')
+                }
+            }),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin()
+        );
+
+        // run webpack
+        webpack(config, function(err, stats) {
+            if(err) throw new gutil.PluginError('webpack:build', err);
+            gutil.log('[webpack:build]', stats.toString({
+                colors: true
+            }));
+            if(_index === games.length-1) {
+              callback();
             }
-        }),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
-    );
-
-    // run webpack
-    webpack(config, function(err, stats) {
-        if(err) throw new gutil.PluginError('webpack:build', err);
-        gutil.log('[webpack:build]', stats.toString({
-            colors: true
-        }));
-        
-        callback();
+        });
     });
 });
 
