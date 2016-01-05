@@ -6,7 +6,7 @@ pl.game.component('reveal', function () {
 		index = _event.message;
 		this.closeAll();
 
-		if(index !== undefined) {
+		if(typeof index !== 'undefined') {
 			if (typeof index === 'number') {
 				this.open(this.find('li').eq(index));
 				this.audio.voiceOver[index].play();
@@ -33,7 +33,7 @@ pl.game.component('reveal', function () {
 
 		this.closeAll();
 
-		if(_id !== undefined) {
+		if(typeof _id !== 'undefined') {
 			if (typeof _id === 'number') {
 				this.open('li:nth-child('+_id+')');
 				this.audio.voiceOver[_id].play();
