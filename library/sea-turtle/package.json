@@ -1,0 +1,12 @@
+{
+  "name": "action-items",
+  "version": "0.1.0",
+  "description": "CMWN Action Items Library",
+  "main": "index.html",
+  "devDependencies": {
+    "js-interactive-library": "github:ginasink/js-interactive-library#micah/hotfixes_GAME-47",
+    "yargs": "^3.31.0"
+  },
+  "author": "Max Rafferty",
+  "license": "ISC"
+}
