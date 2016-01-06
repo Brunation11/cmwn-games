@@ -41,7 +41,7 @@ games = (argv.game === undefined) ? lsd('./library') : [argv.game];
 
 gulp.task('default', ['build-dev']); 
 
-gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components']);
+gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
 gulp.task('build', ['sass', 'webpack:build']);
@@ -111,6 +111,14 @@ gulp.task('copy-components', ['copy-media'], function () {
         gulp
             .src(path.join( './library', _game, 'source/js/components/**/*' ))
             .pipe( gulp.dest(path.join( './build', _game, 'components' )) );
+    });
+});
+
+gulp.task('copy-thumbs', ['copy-components'], function () {
+    games.forEach(function (_game) {
+        gulp
+            .src(path.join( './library', _game, 'thumb.jpg' ))
+            .pipe( gulp.dest(path.join( './build', _game, 'thumb.jpg' )) );
     });
 });
 
