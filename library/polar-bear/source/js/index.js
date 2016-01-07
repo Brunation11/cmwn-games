@@ -79,9 +79,9 @@ pl.game('polar-bear', function () {
 
 					correct.on('complete', this.bind(function () {
 						this.complete();
-						this.delay('2s', function () {
-							this.next();
-						});
+						this.delay('2s', this.bind(function () {
+							this.screen.next();
+						}));
 					}));
 
 					this.buffer.width = this.grayMap[0].naturalWidth;
