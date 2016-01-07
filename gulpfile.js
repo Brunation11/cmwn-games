@@ -118,7 +118,7 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
     games.forEach(function (_game) {
         gulp
             .src(path.join( './library', _game, 'thumb.jpg' ))
-            .pipe( gulp.dest(path.join( './build', _game, 'thumb.jpg' )) );
+            .pipe( gulp.dest('./build/'+_game) );
     });
 });
 
