@@ -2,7 +2,7 @@
  * Index script
  * @module
  */
-import 'testPlatformIntegration';
+import './testPlatformIntegration';
 import 'js-interactive-library';
 import './config.game';
 
