@@ -10,6 +10,7 @@ import './config.game';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
+import './components/video/behavior';
 import './components/frame/behavior';
 import './components/score/behavior';
 import './components/reveal/behavior';
@@ -37,6 +38,18 @@ pl.game('sea-turtle', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
+		});
+
+	});
+
+	this.screen('video', function () {
+		
+		this.on('ui-open', function() {
+			this.video.start();
+		});
+
+		this.on('ui-close', function() {
+			this.video.pause();
 		});
 
 	});
