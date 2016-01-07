@@ -1,10 +1,12 @@
 /**
- * Index script
- * @module
+ * Defines the game scope and imports used component behaviors.
  */
 import 'js-interactive-library';
+
+import './testPlatformIntegration';
 import './config.game';
 
+// INCLUDE USED COMPONENT BEHAVIORS HERE
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -18,13 +20,25 @@ import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
 import './components/selectable-remove/behavior';
 
+// Sea Turtle game scope.
+// This selects the element `#sea-turtle`.
+// 
 pl.game('sea-turtle', function () {
 
+	/**
+	 * Make the title screen auto display when its ready.
+	 * @override
+	 */
 	this.screen('title', function () {
 		
-		this.ready = function () {
-			this.open();
-		};
+		this.on('ready', function (_event) {
+			// Screens are display:none then when READY get display:block.
+			// When a screen is OPEN then it transitions a transform,
+			// the delay is to prevent the transition failing to play
+			// because of collision of these styles.
+			// 
+			if (this.is(_event.target)) this.delay(0, this.open);
+		});
 
 	});
 
@@ -40,6 +54,14 @@ pl.game('sea-turtle', function () {
 
 	});
 
+	/**
+	 * Creates a style noded with the given style definition and selector.
+	 * @arg {string} _selector - The CSS selector for the rule.
+	 * @arg {object} _def - Literal with the rule props.
+	 * @returns {string} The generated CSS.
+	 *
+	 * @todo Move to JS-Lib. Make sure new rules get added the same node.
+	 */
 	this.defineRule = function (_selector_scope, _selector_def, _definition) {
 		var _scope, _selector, source, prop, value;
 		// Resolve arguments.

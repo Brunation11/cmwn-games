@@ -45,6 +45,7 @@ h3 {
 	top: 0; bottom: 0;
 	left: 0; right: 0;
 	opacity: 0;
+	display: none;
 	transition: opacity 1s, transform 0.5s;
 	transform: translateX(100%);
 }
@@ -54,6 +55,10 @@ h3 {
 	.screen.last.COMPLETE .next-screen {
 		display: none;
 	}
+
+.screen.READY {
+	display: block;
+}
 
 .screen.OPEN {
 	opacity: 1;

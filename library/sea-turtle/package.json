@@ -1,12 +1,11 @@
 {
-  "name": "action-items",
+  "name": "sea-turtle",
   "version": "0.1.0",
-  "description": "CMWN Action Items Library",
+  "description": "Sea Turtle Action Item",
   "main": "index.html",
   "devDependencies": {
-    "js-interactive-library": "github:ginasink/js-interactive-library#micah/hotfixes_GAME-47",
-    "yargs": "^3.31.0"
+    "js-interactive-library": "github:ginasink/js-interactive-library#micah/seaTurtle/GAME-63"
   },
-  "author": "Max Rafferty",
+  "author": "CMWN",
   "license": "ISC"
 }
