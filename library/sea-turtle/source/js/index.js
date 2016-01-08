@@ -12,13 +12,11 @@ import './components/screen-quit/behavior';
 import './components/title/behavior';
 import './components/video/behavior';
 import './components/frame/behavior';
-import './components/score/behavior';
 import './components/reveal/behavior';
 import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
 import './components/selectable-remove/behavior';
+import './components/dropzone/behavior';
 
 // Sea Turtle game scope.
 // This selects the element `#sea-turtle`.
@@ -50,6 +48,38 @@ pl.game('sea-turtle', function () {
 
 		this.on('ui-close', function() {
 			this.video.pause();
+		});
+
+	});
+
+	this.screen('globe', function () {
+		
+		var characters;
+
+		characters = [];
+
+		this.handleProperty({
+			bg: function (_node, _name, _value) {
+				var img = new Image();
+
+				img.src = _value;
+				characters.push(img);
+				$(_node).css('background-image', 'url('+_value+')');
+			}
+		});
+
+		this.on('initialize', function (_event) {
+			if (!this.is(_event.targetScope)) return;
+			this.watchAssets(characters);
+		});
+
+		this.respond('drop', function (_event) {
+			var $character;
+
+			$character = _event.behaviorTarget;
+
+			this.log('reveal', $character.index());
+			this.reveal.item($character.index()+1);
 		});
 
 	});
