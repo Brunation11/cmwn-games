@@ -35,8 +35,14 @@ pl.game.component('dropzone', function () {
 	};
 
 	this.takes = function (_id) {
-		var takes = this.properties.take.split(/\s+/);
-		return arguments.length ? !!~takes.indexOf(_id) : takes;
+		var takes
+
+		// if no pl-take attribute is defined then
+		// the dropzone will take any draggable.
+		if (!this.properties.take) return _id != null ? true : [];
+
+		takes = this.properties.take.split(/\s+/);
+		return _id != null ? !!~takes.indexOf(_id) : takes;
 	};
 
 	this.isPointInBounds = function (_point, _y) {
@@ -57,10 +63,8 @@ pl.game.component('dropzone', function () {
 		// comming soon!
 	};
 
-	this.behavior('drop', function (_$thing) {		
-		console.log('*** In bounds!!', _$thing.id());
-		
-		this.requiredQueue.ready(_$thing.id());
+	this.behavior('drop', function (_$thing) {
+		if (_$thing.id()) this.requiredQueue.ready(_$thing.id());
 
 		return {
 			behaviorTarget: _$thing
