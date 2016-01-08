@@ -1,4 +1,7 @@
 #globe {
+	> .center {
+		bottom: 100px;
+	}
 
 	.characters {
 		position: absolute;
@@ -12,37 +15,103 @@
 
 		ul {
 			position: absolute;
-			top: 0;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
 			padding: 0;
-			margin: 13px 0;
-			width: 100%;
+			margin: 0;
 			text-align: center;
+			list-style: none;
 
 			li {
 				display: inline-block;
-				list-style: none;
-				vertical-align: middle;
-
-				img {
-					width: 70px;
-				}
+				width: 60px; height: 100%;
+				background: center no-repeat;
+				background-size: 100%;
 			}
 		}
 	}
 
+	.dropzone-component {
+		float: left;
+		background: center no-repeat;
+		background-size: auto 100%;
+		width: 330px; height: 330px;
+
+		.area {
+			position: absolute;
+			top: 0; left: 30px;
+			width: 270px; height: 280px;
+		}
+	}
+
 	.frame {
-		position: absolute;
+		position: relative;
+		overflow: hidden;
+		margin: 15px auto;
 
 		img {
 			display: block;
-			height: 400px;
+			height: 300px;
 		}
 
-		.reveal-component {
-			position: absolute;
-			top: 0;
+		.reveal-component .items {
+			position: static;
+			margin: 0;
 
-			li {}
+			> li {
+				position: absolute;
+				top: 0;
+				padding: 10px;
+
+				> h3 {
+					text-align: center;
+					font-size: 1.2em;
+				}
+
+				> * {
+					margin-left: 1em;
+					margin-right: 1em;
+				}
+			}
+		}
+
+		.multiple-choice-component {
+
+			ul {
+				padding-left: 20px;
+			}
+
+			li {
+				position: relative;
+				margin: 10px 0;
+				list-style: none;
+
+				&.SELECTED {
+					background: url(../media/images/globe/img_4.11c.png);
+					background-size: 100% 100%;
+					font-weight: normal;
+				}
+
+				> * {
+					padding: 10px;
+					padding-left: 30px;
+					margin: 0;
+				}
+			}
+
+			li::before {
+				position: absolute;
+				left: -30px;
+				width: 20.5%; height: 100%;
+				content: "";
+				background: url(../media/images/globe/img_4.11a.png) center no-repeat;
+				background-size: auto 90%;
+			}
+
+			li.SELECTED::before {
+				background-image: url(../media/images/globe/img_4.11b.png);
+				background-size: auto 120%;
+			}
 		}
 	}
 }

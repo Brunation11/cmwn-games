@@ -28,50 +28,65 @@
 	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div class="characters">
 			<img class="background" src="media/images/globe/background-frame.png" />
-			<ul>
-				<li><img src="media/images/globe/img_4.1.png" /></li>
-				<li><img src="media/images/globe/img_4.2.png" /></li>
-				<li><img src="media/images/globe/img_4.3.png" /></li>
-				<li><img src="media/images/globe/img_4.4.png" /></li>
-				<li><img src="media/images/globe/img_4.5.png" /></li>
-				<li><img src="media/images/globe/img_4.6.png" /></li>
-				<li><img src="media/images/globe/img_4.7.png" /></li>
-				<li><img src="media/images/globe/img_4.8.png" /></li>
-				<li><img src="media/images/globe/img_4.9.png" /></li>
-				<li><img src="media/images/globe/img_4.10.png" /></li>
+			<ul class="draggables">
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.14a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.15a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.16a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.17a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.18a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.19a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.20a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.21a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.22a.png"></li>
+				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.23a.png"></li>
 			</ul>
 		</div>
-		<div class="frame">
-			<img class="background" src="media/images/bg-slide.png">
-			<div pl-component="reveal">
-				<audio class="voice-over" src="media/audio/globe/SO_4.1.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload pl-required></audio>
-				<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload pl-required></audio>
+		<div class="center">
+			<div class="group">
+				<div pl-component="dropzone" pl-bg="media/images/globe/background-dropzone.png"></div>
+				<div class="frame">
+					<img class="background" src="media/images/globe/background-reveal.png">
+					<div pl-component="reveal">
+						<audio class="voice-over" src="media/audio/globe/SO_4.1.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload pl-required></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload pl-required></audio>
 
-				<ul>
-					<li>
-						<h2>Click and drag icons into the globe to get a question! Answer correctly to fill the globe.</h2>
-					</li>
-					<li pl-component="multiple-choice">
-						<ul pl-action="answer(target('li'))">
-							<li><p>Up a tree</p></li>
-							<li><p>To a terrarium</p></li>
-							<li pl-correct><p>To their place of birth</p></li>
+						<ul class="items">
+							<li class="center OPEN">
+								<h3>Click and drag icons into<br />the globe to get a question!<br />Answer correctly to<br />fill the globe.</h3>
+							</li>
+							<li pl-component="multiple-choice" pl-required>
+								<h3>Where do Sea Turtles go to nest?</h3>
+								<ul pl-action="answer(target('li'))">
+									<li><h4>Up a tree</h4></li>
+									<li><h4>To a terrarium</h4></li>
+									<li pl-correct><h4>To their place of birth</h4></li>
+								</ul>
+							</li>
+							<li pl-component="multiple-choice" pl-required>
+								<h3>How many Sea Turtles make it to adulthood?</h3>
+								<ul pl-action="answer(target('li'))">
+									<li><h4>1 in 100</h4></li>
+									<li pl-correct><h4>1 in 1,000</h4></li>
+									<li><h4>Most of them</h4></li>
+								</ul>
+							</li>
 						</ul>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</div>
 		</div>
+		
 	</section>
 
 	<!-- 2 -->
