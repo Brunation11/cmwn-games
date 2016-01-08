@@ -264,6 +264,10 @@ h3 {
 	.flip-card-component > ul li .side {
 		background-color: transparent;
 	}
+
+	.reveal-component {
+		display: none;
+	}
 }
 
 .screen.no-frame.screen-id {
@@ -536,7 +540,7 @@ h3 {
 
 					img {
 						display: block;
-						max-width: 50%;
+						max-width: 80%;
 						max-height: 250px;
 
 						&:nth-of-type(1) {
