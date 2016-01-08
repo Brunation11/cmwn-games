@@ -9,6 +9,7 @@ import 'config.game';
 import 'components/screen-basic/behavior';
 import 'components/screen-quit/behavior';
 import 'components/title/behavior';
+import 'components/snow/behavior';
 import 'components/frame/behavior';
 import 'components/slides/behavior';
 import 'components/carousel/behavior';
