@@ -125,10 +125,6 @@ h3 {
 
 .screen.last {}
 
-	.screen.last.COMPLETE .next-screen {
-		display: none;
-	}
-
 .screen.OPEN {
 	opacity: 1;
 	transform: translateX(0);
