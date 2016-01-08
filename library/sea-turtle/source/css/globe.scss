@@ -1,0 +1,48 @@
+#globe {
+
+	.characters {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+
+		.background {
+			display: block;
+			width: 100%;
+		}
+
+		ul {
+			position: absolute;
+			top: 0;
+			padding: 0;
+			margin: 13px 0;
+			width: 100%;
+			text-align: center;
+
+			li {
+				display: inline-block;
+				list-style: none;
+				vertical-align: middle;
+
+				img {
+					width: 70px;
+				}
+			}
+		}
+	}
+
+	.frame {
+		position: absolute;
+
+		img {
+			display: block;
+			height: 400px;
+		}
+
+		.reveal-component {
+			position: absolute;
+			top: 0;
+
+			li {}
+		}
+	}
+}

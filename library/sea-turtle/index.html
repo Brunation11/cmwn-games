@@ -24,6 +24,55 @@
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
 	</section>
+	
+	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div class="characters">
+			<img class="background" src="media/images/globe/background-frame.png" />
+			<ul>
+				<li><img src="media/images/globe/img_4.1.png" /></li>
+				<li><img src="media/images/globe/img_4.2.png" /></li>
+				<li><img src="media/images/globe/img_4.3.png" /></li>
+				<li><img src="media/images/globe/img_4.4.png" /></li>
+				<li><img src="media/images/globe/img_4.5.png" /></li>
+				<li><img src="media/images/globe/img_4.6.png" /></li>
+				<li><img src="media/images/globe/img_4.7.png" /></li>
+				<li><img src="media/images/globe/img_4.8.png" /></li>
+				<li><img src="media/images/globe/img_4.9.png" /></li>
+				<li><img src="media/images/globe/img_4.10.png" /></li>
+			</ul>
+		</div>
+		<div class="frame">
+			<img class="background" src="media/images/bg-slide.png">
+			<div pl-component="reveal">
+				<audio class="voice-over" src="media/audio/globe/SO_4.1.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload pl-required></audio>
+
+				<ul>
+					<li>
+						<h2>Click and drag icons into the globe to get a question! Answer correctly to fill the globe.</h2>
+					</li>
+					<li pl-component="multiple-choice">
+						<ul pl-action="answer(target('li'))">
+							<li><p>Up a tree</p></li>
+							<li><p>To a terrarium</p></li>
+							<li pl-correct><p>To their place of birth</p></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 
 	<!-- 2 -->
 	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
