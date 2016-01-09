@@ -100,6 +100,25 @@ pl.game('sea-turtle', function () {
 			});
 
 		});
+		
+		/**
+		 * The reveal compoent holds the correct/incorrect splash
+		 * images. So its responsible for handling the multiple
+		 * choice "answer" behavior by displaying the
+		 * "correct" or "incorrect" image.
+		 */
+		this.entity('reveal', function () {
+			
+			this.respond('answer', function (_event) {
+				var message = this[_event.message];
+				if (message) this.select(message);
+
+				if (_event.message === 'incorrect') {
+					this.delay('2s', function () {
+						this.deselect(message);
+					});
+				}
+			});
 
 		this.handleProperty({
 			bg: function (_node, _name, _value) {
