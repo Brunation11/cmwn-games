@@ -122,6 +122,8 @@ pl.game('sea-turtle', function () {
 
 		});
 
+		this.STATE.COMPLETE = "COMPLETE";
+
 		/**
 		 * Nodes, including the node of this screen, with a
 		 * attribute of pl-bg will get a background-image style
@@ -146,6 +148,7 @@ pl.game('sea-turtle', function () {
 		this.on('initialize', function (_event) {
 			if (!this.is(_event.targetScope)) return;
 			this.watchAssets(characters);
+			this.area = this.find('.area');
 		});
 
 		/**
@@ -156,6 +159,7 @@ pl.game('sea-turtle', function () {
 
 			$character = _event.behaviorTarget.parent();
 
+			this.area.find('img:eq('+$character.index()+')').addClass('show active');
 			this.reveal.item($character.index()+1);
 
 			this.characters.disable();
@@ -164,6 +168,16 @@ pl.game('sea-turtle', function () {
 
 		this.respond('missed', function (_event) {
 			_event.behaviorTarget.parent().removeClass('ACTIVE');
+		});
+
+		this.respond('answer', function (_event) {
+			if(_event.targetScope.state(this.STATE.COMPLETE)) {
+				this.area.find('img.active').removeClass('active');
+			}
+
+			else {
+				this.area.find('img.active').removeClass('show active');
+			}
 		});
 
 		this.start = function () {
