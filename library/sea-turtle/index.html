@@ -26,8 +26,9 @@
 	</section>
 	
 	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" preload pl-required></audio>
 		<div class="characters">
-			<img class="background" src="media/images/globe/background-frame.png" />
+			<img class="background" src="media/images/globe/background-tray.png" />
 			<ul class="draggables">
 				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.14a.png"></li>
 				<li pl-draggable="clone" pl-bg="media/images/globe/img_4.15a.png"></li>
@@ -43,12 +44,25 @@
 		</div>
 		<div class="center">
 			<div class="group">
-				<div pl-component="dropzone" pl-bg="media/images/globe/background-dropzone.png"></div>
+				<div pl-component="dropzone" pl-bg="media/images/globe/background-dropzone.png">
+					<div pl-drop="content"></div>
+					<div class="area">
+						<img src="media/images/globe/img_4.3.png" />
+						<img src="media/images/globe/img_4.1.png" />
+						<img src="media/images/globe/img_4.4.png" />
+						<img src="media/images/globe/img_4.6.png" />
+						<img src="media/images/globe/img_4.7.png" />
+						<img src="media/images/globe/img_4.2.png" />
+						<img src="media/images/globe/img_4.5.png" />
+						<img src="media/images/globe/img_4.10.png" />
+						<img src="media/images/globe/img_4.8.png" />
+						<img src="media/images/globe/img_4.9.png" />
+					</div>
+				</div>
 				<div class="frame">
 					<img class="background" src="media/images/globe/background-reveal.png">
 					<div pl-component="reveal">
 						<audio class="voice-over" src="media/audio/globe/SO_4.1.mp3" preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" preload pl-required></audio>
 						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3" preload pl-required></audio>
 						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3" preload pl-required></audio>
 						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3" preload pl-required></audio>

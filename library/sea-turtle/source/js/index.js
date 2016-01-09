@@ -58,6 +58,8 @@ pl.game('sea-turtle', function () {
 
 		characters = [];
 
+		this.STATE.COMPLETE = "COMPLETE";
+
 		this.handleProperty({
 			bg: function (_node, _name, _value) {
 				var img = new Image();
@@ -71,6 +73,7 @@ pl.game('sea-turtle', function () {
 		this.on('initialize', function (_event) {
 			if (!this.is(_event.targetScope)) return;
 			this.watchAssets(characters);
+			this.area = this.find('.area');
 		});
 
 		this.respond('drop', function (_event) {
@@ -79,7 +82,18 @@ pl.game('sea-turtle', function () {
 			$character = _event.behaviorTarget;
 
 			this.log('reveal', $character.index());
+			this.area.find('img:eq('+$character.index()+')').addClass('show active');
 			this.reveal.item($character.index()+1);
+		});
+
+		this.respond('answer', function (_event) {
+			if(_event.targetScope.state(this.STATE.COMPLETE)) {
+				this.area.find('img.active').removeClass('active');
+			}
+
+			else {
+				this.area.find('img.active').removeClass('show active');
+			}
 		});
 
 	});
