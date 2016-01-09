@@ -1,12 +1,47 @@
+@keyframes fadeOutRelayer {
+	0% {
+		z-index: 1;
+		opacity: 1;
+	}
+	99% {
+		z-index: 1;
+		opacity: 0;
+	}
+	100% {
+		z-index: auto;
+	}
+}
+
+@keyframes fadeInRelayer {
+	0% {
+		z-index: 1;
+		opacity: 0;
+	}
+
+	100% {
+		z-index: 1;
+		opacity: 1;
+	}
+}
+
 #globe {
 	> .center {
 		bottom: 100px;
 	}
 
-	.characters {
+	[pl-id=characters] {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
+		transition: opacity 1s;
+
+		&.DISABLED {
+			opacity: 0.8;
+
+			.draggables > * {
+				cursor: default;
+			}
+		}
 
 		.background {
 			display: block;
@@ -23,10 +58,36 @@
 			list-style: none;
 
 			li {
+				position: relative;
 				display: inline-block;
 				width: 60px; height: 100%;
-				background: center no-repeat;
-				background-size: 100%;
+
+				.state {
+					position: absolute;
+					width: 100%; height: 100%;
+					transition: opacity 0.5s;
+					background: center no-repeat;
+					background-size: 100%;
+
+					&.active,
+					&.inactive {
+						opacity: 0;
+					}
+				}
+
+				&.ACTIVE,
+				&.DISABLED {
+					.state { opacity: 0; }
+				}
+
+				&.ACTIVE .state.active {
+					opacity: 1;
+				}
+
+
+				&.DISABLED .state.inactive {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -49,7 +110,7 @@
 		overflow: hidden;
 		margin: 15px auto;
 
-		img {
+		.background {
 			display: block;
 			height: 300px;
 		}
@@ -72,6 +133,24 @@
 					margin-left: 1em;
 					margin-right: 1em;
 				}
+			}
+		}
+
+		.response {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			opacity: 0;
+			animation: fadeOutRelayer 1s;
+
+			&[pl-id=incorrect] {
+				top: 40px;
+			}
+
+			&.SELECTED {
+				opacity: 1;
+				z-index: 1;
+				animation: fadeInRelayer 1s;
 			}
 		}
 
