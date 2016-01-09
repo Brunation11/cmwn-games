@@ -8,12 +8,14 @@ pl.game.component('multiple-choice', function () {
 
 			if (this.correct.has(index)) {
 				this.correct.ready(index);
+				return true;
 			}
 		}
 
 		else if (_$selected) {
 			if (_$selected.is('[pl-correct]') && this.correct.has(_$selected[0])) {
 				this.correct.ready(_$selected[0]);
+				return true;
 			}
 		}
 
@@ -47,9 +49,16 @@ pl.game.component('multiple-choice', function () {
 	});
 
 	this.behavior('answer', function (_$target) {
+		var isCorrect;
+
 		if (!this.isComplete && this.select(_$target)) {
-			validateAnswer.call(this, _$target);
+			isCorrect = validateAnswer.call(this, _$target);
 		}
+
+		return {
+			message: isCorrect ? 'correct' : 'incorrect',
+			behaviorTarget: _$target
+		};
 	});
 
 });
