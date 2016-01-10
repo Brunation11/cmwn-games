@@ -95,8 +95,13 @@ pl.game('sea-turtle', function () {
 					this.disable(
 						this.$active.removeClass('ACTIVE')
 					);
-					this.enable();
 				}
+
+				else {
+					this.$active.removeClass('ACTIVE');
+				}
+
+				this.enable();
 			});
 
 		});
