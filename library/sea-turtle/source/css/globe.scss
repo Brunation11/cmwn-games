@@ -38,7 +38,7 @@
 		&.DISABLED {
 			opacity: 0.8;
 
-			.draggables > * {
+			.draggables [pl-draggable] {
 				cursor: default;
 			}
 		}
@@ -60,7 +60,7 @@
 			li {
 				position: relative;
 				display: inline-block;
-				width: 60px; height: 100%;
+				width: 75px; height: 100%;
 
 				.state {
 					position: absolute;
@@ -82,11 +82,13 @@
 
 				&.ACTIVE .state.active {
 					opacity: 1;
+					z-index: 1;
 				}
 
 
 				&.DISABLED .state.inactive {
 					opacity: 1;
+					z-index: 1;
 				}
 			}
 		}
@@ -96,7 +98,7 @@
 		float: left;
 		background: center no-repeat;
 		background-size: auto 100%;
-		width: 330px; height: 330px;
+		width: 400px; height: 430px;
 
 		.area {
 			position: absolute;
@@ -173,7 +175,7 @@
 
 		.background {
 			display: block;
-			height: 300px;
+			height: 400px;
 		}
 
 		.reveal-component .items {
@@ -183,11 +185,13 @@
 			> li {
 				position: absolute;
 				top: 0;
+				left: 0; right: 0;
 				padding: 10px;
+				font-size: 1.1em;
 
 				> h3 {
 					text-align: center;
-					font-size: 1.2em;
+					font-size: 1.3em;
 				}
 
 				> * {
@@ -223,7 +227,6 @@
 
 			li {
 				position: relative;
-				margin: 10px 0;
 				list-style: none;
 
 				&.SELECTED {
@@ -235,22 +238,28 @@
 				> * {
 					padding: 10px;
 					padding-left: 30px;
-					margin: 0;
+					margin: 10px 0;
 				}
 			}
 
 			li::before {
 				position: absolute;
 				left: -30px;
-				width: 20.5%; height: 100%;
+				width: 60px; height: 100%;
 				content: "";
 				background: url(../media/images/globe/img_4.11a.png) center no-repeat;
-				background-size: auto 90%;
+				background-size: auto 40px;
 			}
 
 			li.SELECTED::before {
 				background-image: url(../media/images/globe/img_4.11b.png);
-				background-size: auto 120%;
+				background-size: auto 55px;
+			}
+		}
+
+		[pl-id=well-done] {
+			img {
+				width: 100%;
 			}
 		}
 	}
