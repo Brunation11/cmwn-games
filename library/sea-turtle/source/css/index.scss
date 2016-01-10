@@ -54,7 +54,7 @@ h3 {
 	opacity: 0;
 }
 
-.draggables > * {
+.draggables [pl-draggable] {
 	cursor: -webkit-grab;
 }
 
@@ -96,12 +96,6 @@ h3 {
 	transition: opacity 1s, transform 0.5s;
 	transform: translateX(100%);
 }
-
-.screen.last {}
-
-	.screen.last.COMPLETE .next-screen {
-		display: none;
-	}
 
 .screen.READY {
 	display: block;
@@ -146,7 +140,8 @@ h3 {
 		cursor: default;
 	}
 
-	.screen.COMPLETE .next-screen {
+	.screen.COMPLETE .next-screen,
+	.DEMO .screen .next-screen {
 		opacity: 1;
 		cursor: pointer;
 	}
