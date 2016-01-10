@@ -111,13 +111,7 @@ pl.game('sea-turtle', function () {
 			
 			this.respond('answer', function (_event) {
 				var message = this[_event.message];
-				if (message) this.select(message);
-
-				if (_event.message === 'incorrect') {
-					this.delay('2s', function () {
-						this.deselect(message);
-					});
-				}
+				if (message && !this.isComplete) this.select(message);
 			});
 
 		});
