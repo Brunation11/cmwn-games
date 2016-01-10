@@ -177,6 +177,10 @@ pl.game('sea-turtle', function () {
 			else {
 				this.area.find('img.active').removeClass('show active');
 			}
+		this.respond('complete', function (_event) {
+			if (this.reveal.is(_event.targetScope)) {
+				this.reveal.item('wellDone');
+			}
 		});
 
 		this.start = function () {
