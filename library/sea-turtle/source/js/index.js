@@ -154,15 +154,18 @@ pl.game('sea-turtle', function () {
 		 * When the character is droped, reveal the question.
 		 */
 		this.respond('drop', function (_event) {
-			var $character;
+			var $character, sfx;
 
 			$character = _event.behaviorTarget.parent();
+			sfx = pl.util.resolvePath(this, 'dropzone.audio.sfx.drop');
 
 			this.area.find('img:eq('+$character.index()+')').addClass('show active');
 			this.reveal.item($character.index()+1);
 
 			this.characters.disable();
-			this.deselect(this.reveal.correct);
+			this.deselect(this.reveal.find('img.response'));
+
+			if (sfx) sfx.play();
 		});
 
 		this.respond('missed', function (_event) {
@@ -170,6 +173,10 @@ pl.game('sea-turtle', function () {
 		});
 
 		this.respond('answer', function (_event) {
+			var sfx;
+
+			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_event.message);
+
 			if(_event.targetScope.state(this.STATE.COMPLETE)) {
 				this.area.find('img.active').removeClass('active');
 			}
@@ -177,6 +184,10 @@ pl.game('sea-turtle', function () {
 			else {
 				this.area.find('img.active').removeClass('show active');
 			}
+
+			if (sfx) sfx.play();
+		});
+
 		this.respond('complete', function (_event) {
 			if (this.reveal.is(_event.targetScope)) {
 				this.reveal.item('wellDone');
@@ -184,6 +195,8 @@ pl.game('sea-turtle', function () {
 		});
 
 		this.start = function () {
+			// take advantage of the screen's start()
+			this.proto();
 			this.reveal.item(0);
 		};
 
