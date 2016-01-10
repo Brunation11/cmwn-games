@@ -186,6 +186,12 @@ pl.game('sea-turtle', function () {
 
 	});
 
+	this.screen('flip', function () {
+		this.next = function () {
+			this.game.quit.okay();
+		};
+	});
+
 	/**
 	 * Creates a style noded with the given style definition and selector.
 	 * @arg {string} _selector - The CSS selector for the rule.
