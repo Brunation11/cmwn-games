@@ -24,9 +24,40 @@
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
 	</section>
-	
+
+	<!-- 2 -->
+	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div class="center">
+			<div class="frame">
+				<div pl-component="video" pl-required>
+					<video pl-id="video" src="media/video/vid_2.1.mov" controls></video>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 3 -->
+	<section class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
+		<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload pl-required></audio>
+		<div class="center">
+			<div class="frame">
+				<img class="background" src="media/images/bg-globe.png">
+				<div class="content-group center">
+					<div>
+						<img src="media/images/img_3.1.png" width="80%">
+						<h2>Answering these questions<br/> fills your bowl<br/> AND gives you the scoop!</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 4 -->
 	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="sfx" src="media/audio/globe/SO_4.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/background/1.mp3" preload loop></audio>
+		<audio pl-id="correct" class="sfx" src="media/audio/SO_Right.mp3" preload></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/audio/SO_Wrong.mp3" preload></audio>
 
 		<div pl-id="characters">
 			<img class="background" src="media/images/globe/background-tray.png" />
@@ -86,6 +117,7 @@
 		<div class="center">
 			<div class="group">
 				<div pl-component="dropzone" pl-bg="media/images/globe/background-dropzone.png">
+					<audio pl-id="drop" class="sfx" src="media/audio/SO_Drop.mp3" preload></audio>
 					<div pl-drop="content"></div>
 					<div class="area">
 						<img src="media/images/globe/img_4.3.png" />
@@ -102,41 +134,42 @@
 				</div>
 				<div class="frame">
 					<img class="background" src="media/images/globe/background-reveal.png">
-					<div pl-component="reveal">
-						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3"  preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload pl-required></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload pl-required></audio>
+					<div pl-component="reveal" pl-require="multiple-choice" pl-required>
+						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3"  preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload></audio>
+						<audio pl-id="well-done" class="sfx" src="media/audio/globe/SO_4.1.mp3" preload></audio>
 
 						<ul class="items">
 							<li class="center OPEN">
 								<h3>Click and drag icons into<br />the globe to get a question!<br />Answer correctly to<br />fill the globe.</h3>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
-								<h3>Where do Sea Turtles go to nest?</h3>
+							<li pl-component="multiple-choice">
+								<h3>Where do Sea Turtles<br>go to nest?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Up a tree</h4></li>
 									<li><h4>To a terrarium</h4></li>
 									<li pl-correct><h4>To their place of birth</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
-								<h3>How many Sea Turtles make it to adulthood?</h3>
+							<li pl-component="multiple-choice">
+								<h3>How many Sea Turtles<br>make it to adulthood?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>1 in 100</h4></li>
 									<li pl-correct><h4>1 in 1,000</h4></li>
 									<li><h4>Most of them</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
+							<li pl-component="multiple-choice">
 								<h3>Can Sea Turtles pull their head and flippers into their shells?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Yes</h4></li>
@@ -144,15 +177,15 @@
 									<li><h4>It depends on how scared they are</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
-								<h3>What kind of Sea Turtle can dive to 1,000 feet</h3>
+							<li pl-component="multiple-choice">
+								<h3>What kind of Sea Turtle<br>can dive to 1,000 feet</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Green</h4></li>
 									<li><h4>Hawksbill</h4></li>
 									<li pl-correct><h4>Leatherbacks</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
+							<li pl-component="multiple-choice">
 								<h3>How long can a Green Sea Turtle stay underwater?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>1.5 hours</h4></li>
@@ -160,7 +193,7 @@
 									<li><h4>Long enough to sing the score of La Traviata</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
+							<li pl-component="multiple-choice">
 								<h3>The ocean is salty! Where do Sea Turtles get water?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li pl-correct><h4>From their food</h4></li>
@@ -168,7 +201,7 @@
 									<li><h4>From a nearby tap</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
+							<li pl-component="multiple-choice">
 								<h3>If a Sea Turtle looks like he’s crying, what’s really happening?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Found out he didn’t make the team</h4></li>
@@ -176,7 +209,7 @@
 									<li><h4>Just saw Selena Gomez and is overwhelmed with emotion</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
+							<li pl-component="multiple-choice">
 								<h3>How many years have Sea Turtles been on earth?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Since before the Civil War</h4></li>
@@ -184,25 +217,27 @@
 									<li><h4>Since Tuesday</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
-								<h3>What one ocean does NOT have Sea Turtles?</h3>
+							<li pl-component="multiple-choice">
+								<h3>What one ocean<br>does NOT have Sea Turtles?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>Mediterranean</h4></li>
 									<li pl-correct><h4>Arctic Ocean</h4></li>
 									<li><h4>The Caspian Sea</h4></li>
 								</ul>
 							</li>
-							<li pl-component="multiple-choice" pl-required>
-								<h3>Why do Sea Turtles come onto land?</h3>
+							<li pl-component="multiple-choice">
+								<h3>Why do Sea Turtles<br>come onto land?</h3>
 								<ul pl-action="answer(target('li'))">
 									<li><h4>To get some sun</h4></li>
 									<li pl-correct><h4>To lay eggs</h4></li>
 									<li><h4>Circus work</h4></li>
 								</ul>
 							</li>
-							<li class="center">
-								<img src="media/images/globe/img_4.13.png">
-								<h3>Now let’s take a look at<br> Sea Turtle risks!</h3>
+							<li pl-id="well-done" class="center">
+								<div class="group" align="center">
+									<img src="media/images/globe/img_4.13.png">
+									<h3>Now let’s take a look at<br> Sea Turtle risks!</h3>
+								</div>
 							</li>
 						</ul>
 
@@ -214,36 +249,6 @@
 		</div>
 		
 	</section>
-
-	<!-- 2 -->
-	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="center">
-			<div class="frame">
-				<div pl-component="video" pl-required>
-					<video pl-id="video" src="media/video/vid_2.1.mov" controls></video>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 3 -->
-	<section class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload pl-required></audio>
-		<div class="center">
-			<div class="frame">
-				<img class="background" src="media/images/bg-globe.png">
-				<div class="content-group center">
-					<div>
-						<img src="media/images/img_3.1.png" width="80%">
-						<h2>Answering these questions<br/> fills your bowl<br/> AND gives you the scoop!</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 4 -->
 	
 	<!-- 5 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
@@ -435,7 +440,7 @@
 	</section>
 
 	<!-- 10 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section pl-id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
