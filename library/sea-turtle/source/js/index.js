@@ -36,6 +36,7 @@ pl.game('sea-turtle', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
+			this.close($('#loader'));
 		});
 
 	});

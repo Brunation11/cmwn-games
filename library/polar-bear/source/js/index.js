@@ -26,6 +26,7 @@ pl.game('polar-bear', function () {
 		
 		this.ready = function () {
 			this.open();
+			this.close($('#loader'));
 		};
 
 	});
