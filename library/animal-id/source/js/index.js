@@ -25,6 +25,7 @@ pl.game('animal-id', function () {
 		
 		this.ready = function () {
 			this.open();
+			this.close($('#loader'));
 		};
 
 		this.on('ui-open', function (_event) {
