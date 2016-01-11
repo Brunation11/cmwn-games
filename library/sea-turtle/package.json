@@ -4,7 +4,7 @@
   "description": "Sea Turtle Action Item",
   "main": "index.html",
   "devDependencies": {
-    "js-interactive-library": "github:ginasink/js-interactive-library#micah/seaTurtle/GAME-63"
+    "js-interactive-library": "github:ginasink/js-interactive-library#v0.2.0"
   },
   "author": "CMWN",
   "license": "ISC"
