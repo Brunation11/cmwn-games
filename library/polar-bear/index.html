@@ -8,8 +8,6 @@
 	<script type="text/javascript" src="ai.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="layout.css">
-
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
 
@@ -50,6 +48,39 @@
 			background-color: transparent;
 			outline: none;
 			cursor: pointer;
+		}
+
+		.spinner {
+			position: relative;
+			width: 60%; height: 60%;
+			animation: pulse 0.5s infinite;
+			background: rgba(200,200,200,0.5);
+			border-radius: 50px;
+
+		}
+
+		.spinner > .spinner {
+			position: absolute;
+			top: 20%; left: 20%;
+		}
+
+		.spinner > .spinner > .spinner {
+
+		}
+
+		#loader {
+			transition: opacity 0.5s;
+			opacity: 0;
+			color: #eee;
+		}
+
+		#loader.OPEN {
+			opacity: 1;
+		}
+
+		#loader .group > .spinner {
+			width: 80px; height: 80px;
+			margin: auto;
 		}
 
 		.canvas-src { display: none; }
@@ -265,6 +296,16 @@
 	</style>
 </head>
 <body id="polar-bear">
+	<div id="loader" class="center OPEN">
+		<div class="group">
+			<h2>Loading!</h2>
+			<div class="spinner">
+				<div class="spinner">
+					<div class="spinner"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<!-- GLOBAL GAME ASSETS -->
 
