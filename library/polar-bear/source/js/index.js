@@ -9,6 +9,7 @@ import 'config.game';
 import 'components/screen-basic/behavior';
 import 'components/screen-quit/behavior';
 import 'components/title/behavior';
+import 'components/snow/behavior';
 import 'components/frame/behavior';
 import 'components/slides/behavior';
 import 'components/carousel/behavior';
@@ -80,7 +81,7 @@ pl.game('polar-bear', function () {
 					correct.on('complete', this.bind(function () {
 						this.complete();
 						this.delay('2s', function () {
-							this.next();
+							this.screen.next();
 						});
 					}));
 
@@ -217,6 +218,18 @@ pl.game('polar-bear', function () {
 			}
 		});
 
+		this.on('ui-open', function() {
+			this.carousel.start();
+			this.incomplete();
+			this.score.incomplete();
+		});
+
+		this.state('incomplete','-COMPLETE', {
+			willSet: function (_target) {
+				this.isComplete = false;
+			}
+		});
+
 		this.entity('carousel', function () {
 			// The event 'behaviorTarget' for this entities 'hit' behavior
 			this.provideBehaviorTarget = function () {
@@ -225,7 +238,7 @@ pl.game('polar-bear', function () {
 			};
 
 		});
-		
+
 		this.respond('hit', function (_event) {
 			if (_event.message === _event.behaviorTarget.id()) {
 				this.score.up();
@@ -246,7 +259,7 @@ pl.game('polar-bear', function () {
 		this.complete = function () {
 			var r = this.proto();
 
-			this.delay('2s', this.next);
+			if(this.score.isComplete) this.delay('2s', this.next);
 			
 			return r;
 		};

@@ -8,6 +8,8 @@
 	<script type="text/javascript" src="ai.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="layout.css">
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
 
@@ -57,6 +59,7 @@
 			top: 0; bottom: 0;
 			left: 0; right: 0;
 			opacity: 0;
+			display: none;
 			transition: opacity 1s, transform 0.5s;
 			transform: translateX(100%);
 		}
@@ -66,6 +69,10 @@
 			.screen.last .next-screen {
 				display: none;
 			}
+
+		.screen.READY {
+			display: block;
+		}
 
 		.screen.OPEN {
 			opacity: 1;
@@ -107,7 +114,7 @@
 		.experiment img.title {
 			position: absolute;
 			left: 50%;
-			bottom: 100%;
+			bottom: 95%;
 			transform: translateX(-50%);
 		}
 
@@ -116,17 +123,20 @@
 			margin: 1em 0;
 		}
 
-
-
 		.experiment .frame-component .frame.title::before {
 			position: absolute;
-			bottom: 80%;
+			bottom: 95%;
 			width: 100%;
-			height: 200px;
+			height: 90px;
 
 			content: "";
 			background: no-repeat center;
-			background-size: 100%;
+			background-size: auto 100%;
+		}
+
+		.experiment.why-warmer .frame-component .frame.title::before {
+			height: 140px;
+			bottom: 84%;
 		}
 
 		.experiment .print {
@@ -140,47 +150,51 @@
 			background-image: url(media/images/S_15/Img_15.7a.png);
 		}
 
-		/* STORY BOARD SCREEN: 3 */
-		.screen:nth-of-type(2) .frame-component.variant-bg {}
+		.experiment.discover .content-group > div {
+			margin: 0;
+		}
 
-			.screen:nth-of-type(2) .frame-component.variant-bg .content-group {
+		/* STORY BOARD SCREEN: 3 */
+		.frame-component.variant-bg.polar-bear-right {}
+
+			.frame-component.variant-bg.polar-bear-right .content-group {
 				background: url(media/images/Img_3.2.png) no-repeat bottom right;
 				background-size: 50%;
 				text-align: left;
 			}
 
-			.screen:nth-of-type(2) .frame-component.variant-bg .content-group > * {
+			.frame-component.variant-bg.polar-bear-right .content-group > * {
 				margin-right: 0;
 			}
 
 		/* STORY BOARD SCREEN: 6 */
-		.screen:nth-of-type(4) .frame-component {}
+		.screen.what-color .frame-component {}
 
-			.screen:nth-of-type(4) .frame-component .content-group {
+			.screen.what-color .frame-component .content-group {
 				background: url(media/images/Img_6.1.png) no-repeat top left;
 				background-size: auto 100%;
 				text-align: right;
 			}
 
 		/* STORY BOARD SCREEN: 7 */
-			.screen:nth-of-type(4) .frame-component.mc .content-group > div {
+			.screen.what-color .frame-component.mc .content-group > div {
 				width: 20%;
 			}
 
-			.screen:nth-of-type(4) .frame-component.mc .content-group ul {
+			.screen.what-color .frame-component.mc .content-group ul {
 				text-align: left;
 			}
 
 		/* STORY BOARD SCREEN: 8 */
-		.screen:nth-of-type(5) .frame-component {}
+		#map.screen .frame-component {}
 
-			.screen:nth-of-type(5) .frame-component .content-group {
+			#map.screen .frame-component .content-group {
 				background: url(media/images/Img_8.1.png) no-repeat top left;
 				background-size: auto 100%;
 				text-align: right;
 			}
 
-				.screen:nth-of-type(5) .frame-component .content-group > div {
+				#map.screen .frame-component .content-group > div {
 					width: 35%;
 				}
 		
@@ -215,27 +229,27 @@
 				}
 
 		/* STORY BOARD SCREEN: 13 */
-		.screen:nth-of-type(9) .frame-component {}
+		.screen.fifty-below .frame-component {}
 
-			.screen:nth-of-type(9) .frame-component .content-group {
+			.screen.fifty-below .frame-component .content-group {
 				background: url(media/images/Img_13.1.png) no-repeat top left;
 				background-size: auto 100%;
 				text-align: right;
 			}
 
-			.screen:nth-of-type(9) .frame-component .content-group > div {
+			.screen.fifty-below .frame-component .content-group > div {
 				max-width: 45%;
 			}
 
 		/* STORY BOARD SCREEN: 14 */
-		.screen:nth-of-type(10) .frame-component {}
+		.screen.thick-layer .frame-component {}
 
-			.screen:nth-of-type(10) .frame-component .content-group img {
+			.screen.thick-layer .frame-component .content-group img {
 				max-width: 80%;
 			    margin-top: -28%;
 			}
 
-			.screen:nth-of-type(10) .frame-component .content-group h2 {
+			.screen.thick-layer .frame-component .content-group h2 {
 				margin: -40px 80px 0;
 			}
 
@@ -262,22 +276,24 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title"></div>
+		<!-- <div pl-component="snow"></div> -->
 	</section>
 
 	<!-- 2 -->
 	<section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
-		<div pl-component="slides">
-			<div pl-component="frame" pl-transclude="content" pl-require="voice-over-majestic">
-				<audio pl-id="voice-over-majestic" class="voice-over" src="media/audio/VO_2.1.mp3" preload></audio>
-				<h3>I am a majestic, beautiful Polar Bear and I am endangered.</h3>
-				<h3>I can only survive where oceans freeze allowing me to hunt seals living under, on or in the ice.</h3>
+		<!-- these lines will be uncommented when screens 3 and 4 have been completed -->
+		<!-- <div pl-component="slides"> -->
+			<div class="variant-bg polar-bear-right" pl-component="frame" pl-transclude="content" pl-require="voice-over-majestic">
+				<audio pl-id="voice-over-majestic" class="voice-over" src="media/audio/VO_2.1.mp3" pl-required preload></audio>
+				<h3>I am a majestic, beautiful<br> Polar Bear and<br> I am endangered.</h3>
+				<h3>I can only survive<br> where oceans freeze<br> allowing me to hunt<br> seals living under,<br> on or in the ice.</h3>
 			</div>
-			<div class="variant-bg" pl-component="frame" pl-transclude="content" pl-require="voice-over-chilly">
+			<!-- <div class="variant-bg polar-bear-right" pl-component="frame" pl-transclude="content" pl-require="voice-over-chilly">
 				<audio pl-id="voice-over-chilly" class="voice-over" src="media/audio/VO_3.1.mp3" preload></audio>
 				<h3>Tap or click to catch.<br>For every 5 fish<br>I’ll pay you back with<br>a <img class="inline" src="media/images/Img_3.1.png"> fun fact!</h3>
-			</div>
-		</div>
+			</div> -->
+		<!-- </div> -->
 	</section>
 
 	<!-- 3 -->
@@ -285,17 +301,18 @@
 	<!-- 4 -->
 
 	<!-- 5 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<!-- these lines will be uncommented when screens 3 and 4 have been completed -->
+	<!-- <section class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_5.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_5.1.png" width="80%">
 			<h3>Let’s learn some more!</h3>
 		</div>
-	</section>
+	</section> -->
 
 	<!-- 6 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen what-color" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload loop></audio>
 		<div pl-component="slides" pl-require="mc" pl-required>
 			<!-- 6 -->
@@ -350,6 +367,7 @@
 				<audio pl-id="canada" class="voice-over" src="media/audio/map/VO_9.3.mp3" preload></audio>
 				<audio pl-id="russia" class="voice-over" src="media/audio/map/VO_9.4.mp3" preload></audio>
 				<audio pl-id="norway" class="voice-over" src="media/audio/map/VO_9.5.mp3" preload></audio>
+				<audio pl-id="alaska" class="voice-over" src="media/audio/map/VO_9.6.mp3" preload></audio>
 
 				<div class="center">
 					<div class="map" pl-action="test(event.cursor)">
@@ -361,7 +379,7 @@
 						<img pl-id="denmark" class="country" src="media/images/map/Img_9.6.png">
 						<img pl-id="norway" class="country" src="media/images/map/Img_9.7.png" pl-correct>
 						<img pl-id="canada" class="country" src="media/images/map/Img_9.8.png" pl-correct>
-						<img pl-id="usa" class="country" src="media/images/map/Img_9.9.png">
+						<img pl-id="alaska" class="country" src="media/images/map/Img_9.9.png" pl-correct>
 						<img pl-id="sweden" class="country" src="media/images/map/Img_9.10.png">
 						<img pl-id="finland" class="country" src="media/images/map/Img_9.11.png">
 					</div>
@@ -387,7 +405,7 @@
 		<audio pl-id="incorrect" class="sfx" src="media/audio/bears/answer-incorrect.mp3" preload></audio>
 		<div class="center">
 			<div class="group">
-				<div pl-component="score" pl-transclude="images" pl-max="1" pl-required>
+				<div pl-component="score" pl-transclude="images" pl-max="5" pl-required>
 					<img src="media/images/score-bears/score-0.png">
 					<img src="media/images/score-bears/score-1.png">
 					<img src="media/images/score-bears/score-2.png">
@@ -400,6 +418,7 @@
 					<div class="slide" pl-component="carousel" pl-randomize pl-delay="500">
 						<img pl-id="fox" src="media/images/carousel-bears/carousel-slide-1.png">
 						<img pl-id="dog" src="media/images/carousel-bears/carousel-slide-2.png">
+						<img pl-id="polar" src="media/images/carousel-bears/carousel-slide-7.png">
 						<img pl-id="cat" src="media/images/carousel-bears/carousel-slide-3.png">
 						<img pl-id="ermine" src="media/images/carousel-bears/carousel-slide-4.png">
 						<img pl-id="goat" src="media/images/carousel-bears/carousel-slide-5.png">
@@ -407,6 +426,7 @@
 						<img pl-id="polar" src="media/images/carousel-bears/carousel-slide-7.png">
 						<img pl-id="seal" src="media/images/carousel-bears/carousel-slide-8.png">
 						<img pl-id="hare" src="media/images/carousel-bears/carousel-slide-9.png">
+						<img pl-id="polar" src="media/images/carousel-bears/carousel-slide-7.png">
 					</div>
 				</div>
 				
@@ -449,7 +469,7 @@
 	</section>
 
 	<!-- 13 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen fifty-below" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_13.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h2>In the Arctic regions where Polar Bears live, the temperature can be as low as 50 degrees below zero!</h2>
@@ -457,7 +477,7 @@
 	</section>
 
 	<!-- 14 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen thick-layer" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_14.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_14.1.png">
@@ -565,7 +585,7 @@
 	</section>
 
 	<!-- 22 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen experiment why-warmer" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_22.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_22.1.png" pl-require="multiple-choice" pl-required>
 			<div class="variant-image" pl-component="multiple-choice">
@@ -605,10 +625,10 @@
 	</section>
 	
 	<!-- 24 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen experiment discover" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_24.4.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
-			<img class="title" src="media/images/Img_24.1.png" width="130%">
+			<img class="title" src="media/images/Img_24.1.png" width="110%">
 			<div pl-component="selectable-reveal" pl-select-state="highlight" pl-required>
 				<div pl-component="selectable">
 					<ul class="items" pl-action="select()">
