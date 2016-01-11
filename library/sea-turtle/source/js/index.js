@@ -55,7 +55,9 @@ pl.game('sea-turtle', function () {
 
 	this.screen('globe', function () {
 		
-		var characters;
+		var characters, restAnimation;
+
+		restAnimation = 'bounce';
 
 		this.entity('characters', function () {
 			/**
@@ -83,7 +85,9 @@ pl.game('sea-turtle', function () {
 			this.$active = null;
 			
 			this.on('drag-start', function (_event) {
-				(this.$active = _event.state.$draggable.closest('li')).addClass('ACTIVE');
+				(this.$active = _event.state.$draggable.closest('li'))
+					.addClass('ACTIVE')
+					.removeClass(restAnimation);
 			});
 
 			this.on('initialize', function () {
@@ -99,7 +103,9 @@ pl.game('sea-turtle', function () {
 				}
 
 				else {
-					this.$active.removeClass('ACTIVE');
+					this.$active
+						.removeClass('ACTIVE')
+						.addClass(restAnimation);
 				}
 
 				this.enable();
