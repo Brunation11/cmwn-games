@@ -12,13 +12,11 @@ import './components/screen-quit/behavior';
 import './components/title/behavior';
 import './components/video/behavior';
 import './components/frame/behavior';
-import './components/score/behavior';
 import './components/reveal/behavior';
 import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
 import './components/selectable-remove/behavior';
+import './components/dropzone/behavior';
 
 // Sea Turtle game scope.
 // This selects the element `#sea-turtle`.
@@ -52,6 +50,162 @@ pl.game('sea-turtle', function () {
 			this.video.pause();
 		});
 
+	});
+
+	this.screen('globe', function () {
+		
+		var characters;
+
+		this.entity('characters', function () {
+			/**
+			 * Responds to the "mousedown" event on the capture phase
+			 * to prevent propagation of the event.
+			 *
+			 * This will prevent the draggables inside to not be
+			 * draggable when the draggable or the container (this)
+			 * has the DISABLED UIState.
+			 */
+			function preventDrag (_event) {
+				var $target, isDisabled;
+
+				$target = $(_event.target);
+				isDisabled = [
+					this.state(this.STATE.DISABLED),
+					$target.state(this.STATE.DISABLED)
+				];
+
+				if (~isDisabled.indexOf(true)) {
+					_event.stopPropagation();
+				}
+			}
+
+			this.$active = null;
+			
+			this.on('drag-start', function (_event) {
+				(this.$active = _event.state.$draggable.closest('li')).addClass('ACTIVE');
+			});
+
+			this.on('initialize', function () {
+				// Add a vanilajs event listener attached to the capture event propagation phase.
+				this.listen('mousedown', true, this.bind(preventDrag));
+			});
+
+			this.respond('answer', function (_event) {
+				if (_event.message === 'correct') {
+					this.disable(
+						this.$active.removeClass('ACTIVE')
+					);
+				}
+
+				else {
+					this.$active.removeClass('ACTIVE');
+				}
+
+				this.enable();
+			});
+
+		});
+		
+		/**
+		 * The reveal compoent holds the correct/incorrect splash
+		 * images. So its responsible for handling the multiple
+		 * choice "answer" behavior by displaying the
+		 * "correct" or "incorrect" image.
+		 */
+		this.entity('reveal', function () {
+			
+			this.respond('answer', function (_event) {
+				var message = this[_event.message];
+				if (message && !this.isComplete) this.select(message);
+			});
+
+		});
+
+		this.STATE.COMPLETE = "COMPLETE";
+
+		/**
+		 * Nodes, including the node of this screen, with a
+		 * attribute of pl-bg will get a background-image style
+		 * and the resource preloaded and collected for watching.
+		 */
+		this.handleProperty({
+			bg: function (_node, _name, _value) {
+				var img = new Image();
+				
+				if (!characters) characters = [];
+
+				img.src = _value;
+				characters.push(img);
+				$(_node).css('background-image', 'url('+_value+')');
+			}
+		});
+
+		/**
+		 * When the screen has initialized, start watching the
+		 * background images we collected.
+		 */
+		this.on('initialize', function (_event) {
+			if (!this.is(_event.targetScope)) return;
+			this.watchAssets(characters);
+			this.area = this.find('.area');
+		});
+
+		/**
+		 * When the character is droped, reveal the question.
+		 */
+		this.respond('drop', function (_event) {
+			var $character, sfx;
+
+			$character = _event.behaviorTarget.parent();
+			sfx = pl.util.resolvePath(this, 'dropzone.audio.sfx.drop');
+
+			this.area.find('img:eq('+$character.index()+')').addClass('show active');
+			this.reveal.item($character.index()+1);
+
+			this.characters.disable();
+			this.deselect(this.reveal.find('img.response'));
+
+			if (sfx) sfx.play();
+		});
+
+		this.respond('missed', function (_event) {
+			_event.behaviorTarget.parent().removeClass('ACTIVE');
+		});
+
+		this.respond('answer', function (_event) {
+			var sfx;
+
+			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_event.message);
+
+			if(_event.targetScope.state(this.STATE.COMPLETE)) {
+				this.area.find('img.active').removeClass('active');
+			}
+
+			else {
+				this.area.find('img.active').removeClass('show active');
+			}
+
+			if (sfx) sfx.play();
+		});
+
+		this.respond('complete', function (_event) {
+			if (this.reveal.is(_event.targetScope)) {
+				this.reveal.item('wellDone');
+			}
+		});
+
+		this.start = function () {
+			// take advantage of the screen's start()
+			this.proto();
+			this.reveal.item(0);
+		};
+
+	});
+
+	this.screen('flip', function () {
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
 
 	/**

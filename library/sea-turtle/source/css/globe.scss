@@ -1,0 +1,266 @@
+@keyframes fadeOutRelayer {
+	0% {
+		z-index: 1;
+		opacity: 1;
+	}
+	99% {
+		z-index: 1;
+		opacity: 0;
+	}
+	100% {
+		z-index: auto;
+	}
+}
+
+@keyframes fadeInRelayer {
+	0% {
+		z-index: 1;
+		opacity: 0;
+	}
+
+	100% {
+		z-index: 1;
+		opacity: 1;
+	}
+}
+
+#globe {
+	> .center {
+		bottom: 100px;
+	}
+
+	[pl-id=characters] {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		transition: opacity 1s;
+
+		&.DISABLED {
+			opacity: 0.8;
+
+			.draggables [pl-draggable] {
+				cursor: default;
+			}
+		}
+
+		.background {
+			display: block;
+			width: 100%;
+		}
+
+		ul {
+			position: absolute;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			padding: 0;
+			margin: 0;
+			text-align: center;
+			list-style: none;
+
+			li {
+				position: relative;
+				display: inline-block;
+				width: 75px; height: 100%;
+
+				.state {
+					position: absolute;
+					width: 100%; height: 100%;
+					transition: opacity 0.5s;
+					background: center no-repeat;
+					background-size: 100%;
+
+					&.active,
+					&.inactive {
+						opacity: 0;
+					}
+				}
+
+				&.ACTIVE,
+				&.DISABLED {
+					.state { opacity: 0; }
+				}
+
+				&.ACTIVE .state.active {
+					opacity: 1;
+					z-index: 1;
+				}
+
+
+				&.DISABLED .state.inactive {
+					opacity: 1;
+					z-index: 1;
+				}
+			}
+		}
+	}
+
+	.dropzone-component {
+		float: left;
+		background: center no-repeat;
+		background-size: auto 100%;
+		width: 400px; height: 430px;
+
+		.area {
+			position: absolute;
+			top: 0; left: 30px;
+			width: 270px; height: 280px;
+
+			img {
+				opacity: 0;
+				transition: opacity .5s;
+				width: 18%;
+				position: absolute;
+
+				&.show {
+					opacity: 1;
+				}
+
+				&:nth-of-type(1) {
+					top: 30%;
+					left: 60%;
+				}
+
+				&:nth-of-type(2) {
+					top: 73%;
+					left: 19%;
+				}
+
+				&:nth-of-type(3) {
+					top: 80%;
+					left: 44%;
+				}
+
+				&:nth-of-type(4) {
+					top: 50%;
+					left: 40%;
+				}
+
+				&:nth-of-type(5) {
+					top: 53%;
+					left: 16%;
+				}
+
+				&:nth-of-type(6) {
+					top: 70%;
+					left: 60%;
+				}
+
+				&:nth-of-type(7) {
+					top: 30%;
+					left: 30%;
+				}
+
+				&:nth-of-type(8) {
+					top: 8%;
+					left: 40%;
+				}
+
+				&:nth-of-type(9) {
+					top: 34%;
+					left: 7%;
+				}
+
+				&:nth-of-type(10) {
+					top: 19%;
+					left: 16%;
+				}
+			}
+		}
+	}
+
+	.frame {
+		position: relative;
+		overflow: hidden;
+		margin: 15px auto;
+
+		.background {
+			display: block;
+			height: 400px;
+		}
+
+		.reveal-component .items {
+			position: static;
+			margin: 0;
+
+			> li {
+				position: absolute;
+				top: 0;
+				left: 0; right: 0;
+				padding: 10px;
+				font-size: 1.1em;
+
+				> h3 {
+					text-align: center;
+					font-size: 1.3em;
+				}
+
+				> * {
+					margin-left: 1em;
+					margin-right: 1em;
+				}
+			}
+		}
+
+		.response {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			opacity: 0;
+			animation: fadeOutRelayer 1s;
+
+			&[pl-id=incorrect] {
+				top: 40px;
+			}
+
+			&.SELECTED {
+				opacity: 1;
+				z-index: 1;
+				animation: fadeInRelayer 1s;
+			}
+		}
+
+		.multiple-choice-component {
+
+			ul {
+				padding-left: 20px;
+			}
+
+			li {
+				position: relative;
+				list-style: none;
+
+				&.SELECTED {
+					background: url(../media/images/globe/img_4.11c.png);
+					background-size: 100% 100%;
+					font-weight: normal;
+				}
+
+				> * {
+					padding: 10px;
+					padding-left: 30px;
+					margin: 10px 0;
+				}
+			}
+
+			li::before {
+				position: absolute;
+				left: -30px;
+				width: 60px; height: 100%;
+				content: "";
+				background: url(../media/images/globe/img_4.11a.png) center no-repeat;
+				background-size: auto 40px;
+			}
+
+			li.SELECTED::before {
+				background-image: url(../media/images/globe/img_4.11b.png);
+				background-size: auto 55px;
+			}
+		}
+
+		[pl-id=well-done] {
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
