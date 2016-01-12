@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Litterbug</title>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="ai.js"></script>
+	<!-- this script is for livereload and should be removed before deploy -->
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+</head>
+<body id="litterbug">
+	<div id="loader" class="center OPEN">
+		<div class="group">
+			<h2>Loading!</h2>
+			<div class="spinner animated">
+				<div class="spinner animated">
+					<div class="spinner animated"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<button class="close" pl-action="quit()">&#x2716;</button>
+
+	<audio pl-id="button" class="sfx" src="media/_Buttons/S_BU_1.mp3" preload></audio>
+	<audio pl-id="no" class="sfx" src="media/S_4/VO_4.2.mp3" preload></audio>
+	<!-- no screen complete sound was provided -->
+	<!-- <audio pl-id="screen-complete" class="sfx" src="media/audio/complete.mp3" preload></audio> -->
+
+	<!-- GAME BACKGROUNDS -->
+	<div class="background lets-clean-up"></div>
+
+	<!-- SCREENS -->
+
+	<!-- TITLE -->
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title"></div>
+	</section>
+
+	<!-- 2 -->
+	<section pl-id="lets-clean-up" class="screen lets-clean-up" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_2/VO_2.1.mp3" preload pl-required></audio>
+		<div>
+			<h3>Litter is trash.</h3>
+			<p>Paper, can, bottle on the ground<br> make a mess and can hurt wildlife<br> and the environment.</p>
+		</div>
+		<img pl-id="image" src="media/S_2/img_2.1.png">
+	</section>
+
+	<!-- 3 -->
+
+	<!-- 4 -->
+	<section class="screen room" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_4/VO_4.1.mp3" preload pl-required></audio>
+		<img pl-id="image" src="media/S_4/img_4.1.png">
+		<img pl-id="image" src="media/S_4/img_4.2.png">
+		<button class="no" pl-action="next()"></button>
+	</section>
+
+	<!-- 5 -->
+	<section class="screen school" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_5/VO_5.1.mp3" preload pl-required></audio>
+		<img pl-id="image" src="media/S_5/img_5.1.png">
+		<img pl-id="image" src="media/S_5/img_5.2.png">
+		<button class="no" pl-action="next()"></button>
+	</section>
+
+	<!-- 6 -->
+
+	<!-- 7 -->
+
+	<!-- 8 -->
+
+	<!-- 9 -->
+
+	<!-- 10 -->
+
+	<!-- 11 -->
+
+	<!-- 12 -->
+
+	<!-- 13 -->
+
+	<!-- 14 -->
+
+	<!-- QUIT -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<!-- <audio class="sfx" src="media/audio/button.mp3" preload></audio> -->
+		<div pl-component="frame" pl-transclude="content">
+			<h2>Are you sure you<br/>want to quit?</h2>
+			<h3>Your game progress will be saved</h3>
+			<button class="yes" pl-action="screen.okay()"></button>
+			<button class="no" pl-action="screen.cancel()"></button>
+		</div>
+	</section>
+
+
+</body>
+
+</html>
+	
