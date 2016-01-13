@@ -51,10 +51,10 @@ body {
 		background-image: url(../media/_BKG/BKG_5.png);
 	}
 
-	&.lets-clean-up > .background.lets-clean-up,
-	&.select > .background.select,
-	&.sun > .background.sun,
-	&.commit > .background.commit {
+	&.lets-clean-up:not(.QUIT-SCREEN) > .background.lets-clean-up,
+	&.select:not(.QUIT-SCREEN) > .background.select,
+	&.sun:not(.QUIT-SCREEN) > .background.sun,
+	&.commit:not(.QUIT-SCREEN) > .background.commit {
 		opacity: 1;
 	}
 }
@@ -82,6 +82,7 @@ button {
 		position: absolute;
 		right: 0;
 		top: 0;
+		margin: 5px;
 		z-index: 2;
 
 		&:hover {
@@ -118,6 +119,46 @@ button {
 
 		&:hover {
 			background-position: -300px 243px;
+		}
+	}
+
+	&.accept {
+		width: 230px;
+		height: 130px;
+		background-position: -1320px 450px;
+
+		&:hover {
+			background-position: -1320px 193px;
+		}
+	}
+
+	&.commit {
+		width: 230px;
+		height: 130px;
+		background-position: -1570px 450px;
+
+		&:hover {
+			background-position: -1570px 193px;
+		}
+	}
+
+	&.quit-yes {
+		width: 230px;
+		height: 130px;
+		background-position: -1820px 450px;
+
+		&:hover {
+			background-position: -1820px 193px;
+		}
+	}
+
+	&.quit-no {
+		width: 230px;
+		height: 130px;
+		background-position: -2080px 450px;
+
+		&:hover {
+			background-position: -2080px 193px;
 		}
 	}
 }
@@ -246,6 +287,38 @@ p {
 
 // the following css is specific to this game
 
+.frame-component {
+	.center {
+		overflow: hidden;
+
+		.content-group {
+			overflow: visible;
+
+			div {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+			}
+		}
+	}
+
+	.frame {
+		position: relative;
+		width: 960px;
+		height: 200px;
+
+		img.background {
+			position: absolute;
+			width: 105%;
+			left: -2.5%;
+			opacity: 1;
+		}
+	}
+}
+
 #title {
 
 	button {
@@ -329,5 +402,242 @@ p {
 		position: absolute;
 		left: 540px;
 		top: 200px;
+	}
+}
+
+.screen.school {
+
+	button.next-screen {
+		display: none;
+	}
+
+	img {
+		position: absolute;
+
+		&:nth-of-type(1) {
+			width: 960px;
+			left: 0;
+			bottom: 0;
+		}
+
+		&:nth-of-type(2) {
+			width: 400px;
+			left: 150px;
+			bottom: 40px;
+		}
+	}
+
+	button.no {
+		position: absolute;
+		left: 640px;
+		bottom: 0px;
+	}
+}
+
+.screen.ground {
+
+	button.next-screen {
+		display: none;
+	}
+
+	img {
+		position: absolute;
+
+		&:nth-of-type(1) {
+			width: 500px;
+			left: 80px;
+			top: 0;
+		}
+
+		&:nth-of-type(2) {
+			width: 720px;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	button.no {
+		position: absolute;
+		left: 200px;
+		bottom: 0px;
+	}
+}
+
+.screen.sing-about-it {
+
+	img {
+		position: absolute;
+
+		&:nth-of-type(1) {
+			width: 500px;
+			left: 230px;
+			top: 0;
+		}
+	}
+}
+
+#video .frame {
+	width: 80%;
+	height: 100%;
+}
+
+.video-component {
+	position: absolute;
+	background-image: url(../media/_Frames/FR_2.png);
+	background-size: 100% 100%;
+	top: 50px;
+	width: 100%;
+
+	video {
+		position: relative;
+		width: 96.2%;
+		max-height: 95%;
+		margin: 1.4% 1.9%;
+	}
+}
+
+.screen.good-for-you {
+
+	.content-group {
+
+		img {
+			position: absolute;
+
+			&:nth-of-type(1) {
+				width: 500px;
+				right: 30px;
+				bottom: 140px;
+			}
+
+			&:nth-of-type(2) {
+				width: 400px;
+				left: 40px;
+				top: -70px;
+			}
+		}
+
+		p {
+			position: absolute;
+			width: 500px;
+			right: 30px;
+			bottom: 30px;
+		}
+	}
+}
+
+.screen.take-pledge {
+
+	button.next-screen {
+		display: none;
+	}
+
+	.frame {
+		margin-top: -40px;
+	}
+
+	.content-group {
+
+		img {
+			position: absolute;
+			width: 400px;
+			left: 40px;
+			top: -70px;
+		}
+
+		p {
+			position: absolute;
+			width: 500px;
+			right: 30px;
+			bottom: 40px;
+		}
+
+		button {
+			position: absolute;
+			left: 50%;
+			top: 125%;
+			margin-left: -115px;
+		}
+	}
+}
+
+.screen.commit {
+
+	button.next-screen {
+		display: none;
+	}
+
+	.frame {
+		margin-top: -100px;
+
+		img.background {
+			position: relative;
+			opacity: 1;
+			width: 440px;
+		}
+
+		p {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 40px;
+			font-weight: bold;
+		}
+
+		button {
+			position: absolute;
+			left: 50%;
+			top: 95%;
+			margin-left: -115px;
+		}
+	}
+}
+
+.screen.flip {
+
+	img {
+		position: absolute;
+
+		&:nth-of-type(1) {
+			width: 460px;
+			left: 80px;
+			top: -30px;
+		}
+
+		&:nth-of-type(2) {
+			width: 300px;
+			right: 60px;
+			top: 280px;
+		}
+	}
+
+	p {
+		position: absolute;
+		width: 460px;
+		right: 0;
+		top: 80px;
+		font-size: 34px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	button.no {
+		position: absolute;
+		left: 200px;
+		bottom: 0px;
+	}
+}
+
+#quit {
+
+	.frame {
+		text-align: center;
+
+		h2 {
+			margin: 0;
+		}
+
+		button {
+			margin: 20px 10px;
+		}
 	}
 }

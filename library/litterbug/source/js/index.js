@@ -44,21 +44,29 @@ pl.game('litterbug', function () {
 	});
 
 	this.screen('lets-clean-up', function () {
-		
 		this.on('ui-open', function() {
-			$('body').addClass('lets-clean-up');
+			this.game.addClass('lets-clean-up');
 		});
 
 		this.on('ui-close', function() {
-			$('body').removeClass('lets-clean-up');
+			this.game.removeClass('lets-clean-up');
 		});
-
 	});
 
-	pl.game.component('no', function () {
+	this.screen('commit', function () {
+		this.on('ui-open', function() {
+			this.game.addClass('commit');
+		});
 
-		console.log("here");
+		this.on('ui-close', function() {
+			this.game.removeClass('commit');
+		});
+	});
 
+	this.screen('flip', function () {
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
 
 
