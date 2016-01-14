@@ -1,15 +1,22 @@
 pl.game.component('selectable-remove', function () {
 	
 	this.behavior('select', function (_target) {
-		var $target;
+		var $target, stateMethod;
 
 		if (this.event && !_target) {
 			$target = $(this.event.target).closest('li');
 
 			if (this.shouldSelect($target) !== false) {
-				$target.is('li') && this.audio.sfx.correct.play();
+
+				if($target.is('li')) {
+					this.audio.sfx.correct.play();
+					stateMethod = this.properties.selectState || 'select';
+					this[stateMethod]($target);
+					this.items.correct.ready($target.index());
+				}
+
 				return {
-					message: $target.attr('class'),
+					message: $target.index(),
 					behaviorTarget: $target
 				};
 			}
@@ -26,18 +33,6 @@ pl.game.component('selectable-remove', function () {
 		return false;
 	});
 
-	this.respond('select', function (_event) {
-		var index, stateMethod;
-
-		index = _event.message;
-		stateMethod = this.properties.selectState || 'select';
-
-		if (index) {
-			this[stateMethod](_event.behaviorTarget);
-			this.items.correct.ready(index);
-		}
-	});
-
 	this.shouldSelect = function (_target) {
 		var $target = $(_target);
 		if (!$target.hasClass(this.STATE.HIGHLIGHTED) && !$target.is('[pl-incorrect]')) {
@@ -48,7 +43,7 @@ pl.game.component('selectable-remove', function () {
 	};
 
 	this.ready = function () {
-		var correct, $net;
+		var correct;
 
 		correct = pl.Queue.create();
 
@@ -60,18 +55,12 @@ pl.game.component('selectable-remove', function () {
 		this.items = this
 			.find('.items li:not([pl-incorrect])')
 			.map(function (_index, _node) {
-				correct.add(_node.className);
+				correct.add(_index);
 				return _node;
 			})
 			.toArray();
 
 		this.items.correct = correct;
-
-		$net = $('.selectable-remove-component .net');
-
-		$('.selectable-remove-component .center').mousemove(this.bind(function(e){
-			$net.css({left: e.clientX / this.game.zoom - 85, top: e.clientY / this.game.zoom - 65});
-		}));
 	};
 
 });
