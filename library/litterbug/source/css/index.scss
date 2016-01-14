@@ -390,9 +390,8 @@ p {
 		&.COMPLETE {
 			
 			img.symbol {
-				-webkit-animation-name: pulse;
-				animation-name: pulse;
-				animation-iteration-count: 3;
+				-webkit-animation-name: bounceIn;
+				animation-name: bounceIn;
 				opacity: 1;
 			}
 		}
@@ -729,9 +728,8 @@ p {
 			}
 
 			&:nth-of-type(2) {
-				-webkit-animation-name: pulse;
-				animation-name: pulse;
-				animation-iteration-count: 3;
+				-webkit-animation-name: bounceIn;
+				animation-name: bounceIn;
 			}
 		}
 	}
@@ -775,10 +773,12 @@ p {
 
 	&.OPEN {
 
-		img {
-			-webkit-animation-name: pulse;
-			animation-name: pulse;
-			animation-iteration-count: 3;
+		.content-group {
+
+			img {
+				-webkit-animation-name: bounceIn;
+				animation-name: bounceIn;
+			}
 		}
 
 		&.COMPLETE {
