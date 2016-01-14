@@ -6,6 +6,8 @@
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="ai.js"></script>
+	<!-- this script is to allow livereload during development and should be removed prior to deploying. -->
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -548,7 +550,7 @@
 	</section>
 
 	<!-- 14 -->
-	<section class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen no-frame snout" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="class-switcher" pl-add="nose" pl-remove="match"></div>
 		<audio class="background" src="media/audio/background/nose.mp3" preload loop></audio>
 		<audio class="voice-over" src="media/audio/VO_14-1.mp3" preload pl-required></audio>
@@ -556,7 +558,15 @@
 			<div class="frame">
 				<img src="media/images/img_14.1.png" width="100%">
 				<h2>That's right</h2>
-				<h2>The snout, schnoz, sniffer,<br/>snuffer, whiffer, snoot!</h2>
+				<div>
+					<img src="media/images/img_14.3.png" width="100%">
+					<span class="animated"></span>
+					<span class="animated"></span>
+					<span class="animated"></span>
+					<span class="animated"></span>
+					<span class="animated"></span>
+					<span class="animated"></span>
+				</div>
 			</div>
 		</div>
 	</section>
