@@ -21,6 +21,11 @@ pl.game('be-bright', function () {
 
 	this.screen('title', function () {
 
+		this.ready = function () {
+			this.open();
+			this.close($('#loader'));
+		};
+
 	});
 
 	this.screen('video', function() {
