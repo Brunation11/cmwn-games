@@ -12,6 +12,9 @@ pl.game.component('video', function () {
 		this.video[0].pause();
 	};
 
-	this.on("ui-leave", this.pause);
+	this.on("ui-close", function() {
+		console.log("pause");
+		this.pause();
+	});
 
 });

@@ -43,6 +43,12 @@ pl.game('litterbug', function () {
 
 	});
 
+	this.screen('video', function() {
+		this.on("ui-close", function() {
+			this.video.pause();
+		});
+	});
+
 	this.screen('lets-clean-up', function () {
 		this.on('ui-open', function() {
 			this.game.addClass('lets-clean-up');

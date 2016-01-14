@@ -8,7 +8,7 @@ pl.game.component('title', function () {
 			this.audio.background.play();
 		}
 		this.delay(1500, function () {
-			this.image.addClass('animated '+this.image.attr('pl-animation'));
+			this.image.addClass('animated '+(this.image.attr('pl-animation')||''));
 			this.complete();
 		});
 	};

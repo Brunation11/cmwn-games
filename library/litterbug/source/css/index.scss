@@ -249,6 +249,9 @@ p {
 	.screen .next-screen {
 		margin-right: 5px;
 		right: 0;
+		opacity: 0;
+		transform: rotate(-180deg);
+		transition: opacity 1s, transform 1s;
 	}
 
 	.screen.GATED .next-screen {
@@ -258,6 +261,7 @@ p {
 
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
+		transform: rotate(0deg);
 		cursor: pointer;
 	}
 
@@ -332,6 +336,8 @@ p {
 		left: 100px;
 		top: 20px;
 		width: 420px;
+		opacity: 0;
+		transition: opacity 0s 1s;
 	}
 
 	img.litterbug {
@@ -356,6 +362,29 @@ p {
 			}
 		}
 	}
+
+	&.OPEN {
+
+		img.litterbug {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
+
+		.title {
+			-webkit-animation-name: slideInLeft;
+			animation-name: slideInLeft;
+		}
+
+		&.COMPLETE {
+			
+			img.symbol {
+				-webkit-animation-name: pulse;
+				animation-name: pulse;
+				animation-iteration-count: 3;
+				opacity: 1;
+			}
+		}
+	}
 }
 
 .screen.lets-clean-up {
@@ -373,6 +402,19 @@ p {
 		right: 40px;
 		bottom: 0;
 		width: 640px;
+	}
+
+	&.OPEN {
+
+		div {
+			-webkit-animation-name: flipInX;
+			animation-name: flipInX;
+		}
+
+		img {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
 	}
 }
 
@@ -393,6 +435,7 @@ p {
 		.next-screen {
 			z-index: 1;
 			opacity: 1;
+			transform: rotate(0deg);
 		}
 
 		.frame {
@@ -463,6 +506,34 @@ p {
 		position: absolute;
 		left: 540px;
 		top: 200px;
+		opacity: 0;
+		cursor: auto;
+	}
+
+	&.OPEN {
+
+		img {
+
+			&:nth-of-type(1) {
+				-webkit-animation-name: bounceInUp;
+				animation-name: bounceInUp;
+			}
+
+			&:nth-of-type(2) {
+				-webkit-animation-name: bounceInDown;
+				animation-name: bounceInDown;
+			}
+		}
+
+		&.COMPLETE {
+
+			button.no {
+				opacity: 1;
+				cursor: pointer;
+				-webkit-animation-name: bounceInLeft;
+				animation-name: bounceInLeft;
+			}
+		}
 	}
 }
 
@@ -492,6 +563,29 @@ p {
 		position: absolute;
 		left: 640px;
 		bottom: 0px;
+		opacity: 0;
+		cursor: auto;
+	}
+
+	&.OPEN {
+
+		img {
+
+			&:nth-of-type(2) {
+				-webkit-animation-name: bounceInDown;
+				animation-name: bounceInDown;
+			}
+		}
+
+		&.COMPLETE {
+
+			button.no {
+				opacity: 1;
+				cursor: pointer;
+				-webkit-animation-name: bounceInLeft;
+				animation-name: bounceInLeft;
+			}
+		}
 	}
 }
 
@@ -521,6 +615,29 @@ p {
 		position: absolute;
 		left: 200px;
 		bottom: 0px;
+		opacity: 0;
+		cursor: auto;
+	}
+
+	&.OPEN {
+
+		img {
+
+			&:nth-of-type(1) {
+				-webkit-animation-name: bounceInDown;
+				animation-name: bounceInDown;
+			}
+		}
+
+		&.COMPLETE {
+
+			button.no {
+				opacity: 1;
+				cursor: pointer;
+				-webkit-animation-name: bounceInLeft;
+				animation-name: bounceInLeft;
+			}
+		}
 	}
 }
 
@@ -528,11 +645,16 @@ p {
 
 	img {
 		position: absolute;
+		width: 500px;
+		left: 230px;
+		top: 0;
+	}
 
-		&:nth-of-type(1) {
-			width: 500px;
-			left: 230px;
-			top: 0;
+	&.OPEN {
+
+		img {
+			-webkit-animation-name: flipInY;
+			animation-name: flipInY;
 		}
 	}
 }
@@ -581,7 +703,24 @@ p {
 			position: absolute;
 			width: 500px;
 			right: 30px;
-			bottom: 30px;
+			bottom: 50px;
+		}
+	}
+
+	&.OPEN {
+
+		img {
+
+			&:nth-of-type(1) {
+				-webkit-animation-name: zoomInDown;
+				animation-name: zoomInDown;
+			}
+
+			&:nth-of-type(2) {
+				-webkit-animation-name: pulse;
+				animation-name: pulse;
+				animation-iteration-count: 3;
+			}
 		}
 	}
 }
@@ -617,6 +756,27 @@ p {
 			left: 50%;
 			top: 125%;
 			margin-left: -115px;
+			opacity: 0;
+			cursor: auto;
+		}
+	}
+
+	&.OPEN {
+
+		img {
+			-webkit-animation-name: pulse;
+			animation-name: pulse;
+			animation-iteration-count: 3;
+		}
+
+		&.COMPLETE {
+
+			button {
+				opacity: 1;
+				cursor: pointer;
+				-webkit-animation-name: zoomInDown;
+				animation-name: zoomInDown;
+			}
 		}
 	}
 }
@@ -649,8 +809,24 @@ p {
 			left: 50%;
 			top: 95%;
 			margin-left: -115px;
+			opacity: 0;
+			cursor: auto;
 		}
 	}
+
+	&.OPEN {
+
+		&.COMPLETE {
+
+			button {
+				opacity: 1;
+				cursor: pointer;
+				-webkit-animation-name: zoomInDown;
+				animation-name: zoomInDown;
+			}
+		}
+	}
+
 }
 
 .screen.flip {
@@ -668,6 +844,8 @@ p {
 			width: 300px;
 			right: 60px;
 			top: 280px;
+			opacity: 0;
+			transition: opacity 1s 5s;
 		}
 	}
 
@@ -681,10 +859,29 @@ p {
 		font-weight: bold;
 	}
 
-	button.no {
-		position: absolute;
-		left: 200px;
-		bottom: 0px;
+	&.OPEN {
+
+		img {
+
+			&:nth-of-type(1) {
+				-webkit-animation-name: bounceInUp;
+				animation-name: bounceInUp;
+			}
+
+			&:nth-of-type(2) {
+				opacity: 1;
+				-webkit-animation-name: flip;
+				animation-name: flip;
+				animation-delay: 5s;
+			}
+		}
+
+		&.COMPLETE {
+
+			img {
+
+			}
+		}
 	}
 }
 
