@@ -1,5 +1,18 @@
 pl.game.component('screen-basic', function () {
 	
+	this.ready = function () {
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+				console.log("complete");
+
+				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) sfx.play();
+			}));
+		}
+	};
+
 	this.next = function () {
 		var nextScreen, buttonSound;
 

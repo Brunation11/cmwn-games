@@ -7,6 +7,7 @@ pl.game.component('selectable', function () {
 			$target = $(this.event.target).closest('li');
 
 			if (this.shouldSelect($target) !== false) {
+				if(this.game.audio.sfx.correct) this.game.audio.sfx.correct.play();
 				return {
 					message: $target.index(),
 					behaviorTarget: $target

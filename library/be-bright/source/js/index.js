@@ -22,6 +22,10 @@ pl.game('be-bright', function () {
 		this.ready = function () {
 			this.open();
 			this.close($('#loader'));
+			this.delay(3000, function() {
+				this.complete();
+				if(this.title.audio.sfx) this.title.audio.sfx.play();
+			});
 		};
 
 	});
@@ -46,6 +50,12 @@ pl.game('be-bright', function () {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
 		});
+	});
+
+	this.screen('flip', function () {
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
 
 });

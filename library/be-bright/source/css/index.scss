@@ -1,3 +1,23 @@
+@keyframes flicker {
+  0% {opacity:1;}
+  10% {opacity:1;}
+  12% {opacity:0;}
+  14% {opacity:1;}
+  16% {opacity:0;}
+  18% {opacity:1;}
+  44% {opacity:1;}
+  46% {opacity:0;}
+  48% {opacity:1;}
+  50% {opacity:0;}
+  52% {opacity:1;}
+  82% {opacity:1;}
+  84% {opacity:0;}
+  86% {opacity:1;}
+  88% {opacity:0;}
+  90% {opacity:1;}
+  100% {opacity:1;}
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -20,6 +40,7 @@ body {
 	width: 960px;
 	margin: auto;
 	font-size: 36px;
+	color: #fff;
 	background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
 	background-size: cover;
 }
@@ -89,21 +110,21 @@ button {
 
 	&.quit-yes {
 		width: 230px;
-		height: 130px;
-		background-position: -1820px 450px;
+		height: 230px;
+		background-position: -1830px 495px;
 
 		&:hover {
-			background-position: -1820px 193px;
+			background-position: -1830px 251px;
 		}
 	}
 
 	&.quit-no {
 		width: 230px;
-		height: 130px;
-		background-position: -2080px 450px;
+		height: 230px;
+		background-position: -2080px 495px;
 
 		&:hover {
-			background-position: -2080px 193px;
+			background-position: -2080px 251px;
 		}
 	}
 }
@@ -158,8 +179,11 @@ p {
 
 .screen {
 	position: absolute;
-	top: 0; bottom: 0;
-	left: 0; right: 0;
+	top: 50%;
+	left: 0;
+	width: 960px;
+	height: 540px;
+	margin-top: -270px;
 	opacity: 0;
 	display: none;
 	transition: opacity 1s, transform 0.5s;
@@ -202,12 +226,14 @@ p {
 	.screen.GATED .next-screen {
 		opacity: 0;
 		cursor: default;
+		z-index: -1;
 	}
 
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);
 		cursor: pointer;
+		z-index: 1;
 	}
 
 	.screen .next-screen:hover {
@@ -223,16 +249,6 @@ p {
 	.screen .prev-screen:hover {
 		
 	}
-
-.screen {
-	&.no-frame {
-		color: #fff;
-
-		.frame {
-			text-align: center;
-		}
-	}
-}
 
 // the following css is specific to this game
 
@@ -269,6 +285,7 @@ p {
 					transform: translateY(-50%);
 					width: 100%;
 					text-align: center;
+					color: #000;
 				}
 
 				.close-reveal {
@@ -284,6 +301,15 @@ p {
 				transition: opacity .5s;
 			}
 		}
+	}
+}
+
+.video-component {
+	background: url(../media/_Frames/FR_2.png) center center no-repeat;
+	background-size: 100% 100%;
+
+	video {
+		margin: 15px 15px 34px;
 	}
 }
 
@@ -313,6 +339,44 @@ p {
 	.prev-screen {
 		display: none;
 	}
+
+	&.READY {
+		img {
+			opacity: 1;
+
+			&.bulb {
+				-webkit-animation-name: bounceInUp;
+				animation-name: bounceInUp;
+			}
+
+			&.presents {
+				-webkit-animation-name: bounceInLeft;
+				animation-name: bounceInLeft;
+				-webkit-animation-delay: 1s;
+				animation-delay: 1s;
+			}
+
+			&.title {
+				-webkit-animation-name: bounceInUp;
+				animation-name: bounceInUp;
+				-webkit-animation-delay: 2s;
+				animation-delay: 2s;
+			}
+		}
+
+		&.COMPLETE {
+			img {
+				-webkit-animation-name: flicker;
+				-webkit-animation-duration: 2s;
+				-webkit-animation-delay: 0s;
+				-webkit-animation-iteration-count: 3;
+				animation-name: flicker;
+				animation-duration: 2s;
+				animation-delay: 0s;
+				animation-iteration-count: 3;
+			}
+		}
+	}
 }
 
 .screen.why {
@@ -331,6 +395,8 @@ p {
 				height: 300px;
 				width: 800px;
 				margin: 20px auto;
+				opacity: 0;
+				transition: opacity 1s 1s;
 
 				li {
 					background-position: 0 0;
@@ -361,6 +427,23 @@ p {
 					&:nth-of-type(4) {
 						background-image: url(../media/S_3/img_3.5.png);
 					}
+				}
+			}
+		}
+	}
+
+	&.OPEN {
+		img.title {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
+
+		.selectable-reveal-component {
+
+			.selectable-component {
+
+				.items {
+					opacity: 1;
 				}
 			}
 		}
@@ -418,6 +501,27 @@ p {
 			}
 		}
 	}
+
+	&.OPEN {
+		img {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
+
+		.pig {
+			-webkit-animation-name: shake;
+			-webkit-animation-duration: 3s;
+			animation-name: shake;
+			animation-duration: 3s;
+		}
+
+		.bulb {
+			-webkit-animation-name: bounce;
+			-webkit-animation-duration: 3s;
+			animation-name: bounce;
+			animation-duration: 3s;
+		}
+	}
 }
 
 .screen.what {
@@ -437,6 +541,8 @@ p {
 				height: 300px;
 				width: 800px;
 				margin: 20px auto;
+				opacity: 0;
+				transition: opacity 1s 1s;
 
 				li {
 					background-position: 0 0;
@@ -486,6 +592,23 @@ p {
 			}
 		}
 	}
+
+	&.OPEN {
+		img.title {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
+
+		.selectable-reveal-component {
+
+			.selectable-component {
+
+				.items {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 .screen.lets-learn {
@@ -495,6 +618,13 @@ p {
 		left: 130px;
 		width: 700px;
 		margin: 0;
+	}
+
+	&.OPEN {
+		img {
+			-webkit-animation-name: zoomInDown;
+			animation-name: zoomInDown;
+		}
 	}
 }
 
@@ -516,6 +646,30 @@ p {
 			vertical-align: middle;
 			margin-top: -60px;
 			top: 50px;
+		}
+	}
+
+	.stamp {
+		position: relative;
+		width: 800px;
+		display: block;
+		margin: 0 auto;
+		z-index: 1;
+	}
+
+	&.OPEN {
+		.inline {
+			-webkit-animation-name: flipInX;
+			-webkit-animation-duration: 3s;
+			animation-name: flipInX;
+			animation-duration: 3s;
+		}
+
+		.stamp {
+			-webkit-animation-name: rollIn;
+			-webkit-animation-delay: 1.5s;
+			animation-name: rollIn;
+			animation-delay: 1.5s;
 		}
 	}
 }

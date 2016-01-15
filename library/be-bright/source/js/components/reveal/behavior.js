@@ -3,7 +3,7 @@ pl.game.component('reveal', function () {
 	this.item = function (_id) {
 		var vo, index;
 
-		this.closeAll();
+		this.close(this.find('li.OPEN'));
 
 		if (typeof _id === 'number') {
 			this.open(this.find('li').eq(_id));
@@ -26,6 +26,7 @@ pl.game.component('reveal', function () {
 
 	this.closeAll = function() {
 		if(!this.screen.state(this.screen.STATE.VOICE_OVER)) {
+			if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
 			this.close(this.find('li.OPEN'));
 		}
 	};
