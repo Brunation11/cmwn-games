@@ -667,8 +667,10 @@ p {
 
 		.stamp {
 			-webkit-animation-name: rollIn;
+			-webkit-animation-duration: 1.5s;
 			-webkit-animation-delay: 1.5s;
 			animation-name: rollIn;
+			animation-duration: 1.5s;
 			animation-delay: 1.5s;
 		}
 	}
