@@ -19,7 +19,7 @@ body {
 	position: relative;
 	width: 960px;
 	margin: auto;
-	font-size: 20px;
+	font-size: 36px;
 	background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
 	background-size: cover;
 }
@@ -70,10 +70,20 @@ button {
 	}
 
 	&.prev-screen {
-		background-position: -30px 420px;
+		background-position: -15px 420px;
 
 		&:hover {
-			background-position: -30px 664px;
+			background-position: -15px 676px;
+		}
+	}
+
+	&.close-reveal {
+		width: 55px;
+		height: 50px;
+		background-position: -225px 420px;
+
+		&:hover {
+			background-position: -225px 676px;
 		}
 	}
 
@@ -226,6 +236,57 @@ p {
 
 // the following css is specific to this game
 
+.reveal-component {
+	position: static;
+
+	.items {
+		position: static;
+
+		li {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			z-index: -1;
+			transition: opacity .5s, z-index 0s .6s;
+
+			div {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				height: 240px;
+				margin-top: -120px;
+				background-image: url(../media/_Frames/FR_1.png);
+				background-size: 100% 100%;
+
+				span {
+					position: absolute;
+					display: block;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 100%;
+					text-align: center;
+				}
+
+				.close-reveal {
+					position: absolute;
+					right: 5px;
+					bottom: 10px;
+				}
+			}
+
+			&.OPEN {
+				opacity: 1;
+				z-index: 1;
+				transition: opacity .5s;
+			}
+		}
+	}
+}
+
 #title {
 	img {
 		position: absolute;
@@ -246,6 +307,215 @@ p {
 			width: 700px;
 			left: 130px;
 			top: 300px;
+		}
+	}
+
+	.prev-screen {
+		display: none;
+	}
+}
+
+.screen.why {
+	img.title {
+		display: block;
+		width: 800px;
+		margin: 30px auto 0;
+	}
+
+	.selectable-reveal-component {
+		margin-top: -30px;
+
+		.selectable-component {
+
+			.items {
+				height: 300px;
+				width: 800px;
+				margin: 20px auto;
+
+				li {
+					background-position: 0 0;
+					background-size: auto 100%;
+					cursor: pointer;
+
+					&:hover {
+						-webkit-animation-name: bounce;
+						animation-name: bounce;
+					}
+
+					&.HIGHLIGHTED {
+						background-position: 204px 0;
+					}
+
+					&:nth-of-type(1) {
+						background-image: url(../media/S_3/img_3.2.png);
+					}
+
+					&:nth-of-type(2) {
+						background-image: url(../media/S_3/img_3.3.png);
+					}
+
+					&:nth-of-type(3) {
+						background-image: url(../media/S_3/img_3.4.png);
+					}
+
+					&:nth-of-type(4) {
+						background-image: url(../media/S_3/img_3.5.png);
+					}
+				}
+			}
+		}
+	}
+}
+
+.screen.pig {
+	img {
+		display: block;
+		width: 640px;
+		margin: 40px auto 0;
+	}
+
+	.multiple-choice-component {
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: -20px auto 0;
+			display: block;
+			width: 730px;
+
+			li {
+				display: inline-block;
+				height: 380px;
+				cursor: pointer;
+				background-repeat: no-repeat;
+
+				&.pig {
+					width: 500px;
+					background-image: url(../media/S_4/img_4.2.png);
+					background-size: auto 100%;
+
+					&:hover {
+						background-position: -497px 0;
+					}
+
+					&.SELECTED {
+						background-position: -993px 0;
+					}
+				}
+
+				&.bulb {
+					width: 230px;
+					background-image: url(../media/S_4/img_4.3.png);
+					background-size: auto 100%;
+
+					&:hover {
+						background-position: -246px 0;
+					}
+
+					&.SELECTED {
+						background-position: 0 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.screen.what {
+	img.title {
+		display: block;
+		width: 800px;
+		margin: 30px auto 0;
+	}
+
+	.selectable-reveal-component {
+		margin-top: -30px;
+
+		.selectable-component {
+
+			.items {
+				position: relative;
+				height: 300px;
+				width: 800px;
+				margin: 20px auto;
+
+				li {
+					background-position: 0 0;
+					background-size: auto 100%;
+					cursor: pointer;
+					position: absolute;
+					width: 200px;
+					height: 200px;
+					top: 0;
+
+					&:hover {
+						-webkit-animation-name: bounce;
+						animation-name: bounce;
+					}
+
+					&.HIGHLIGHTED {
+						background-position: -194px 0;
+					}
+
+					&:nth-of-type(1) {
+						background-image: url(../media/S_5/img_5.2.png);
+						left: 0;
+					}
+
+					&:nth-of-type(2) {
+						background-image: url(../media/S_5/img_5.3.png);
+						left: 150px;
+						top: 200px;
+					}
+
+					&:nth-of-type(3) {
+						background-image: url(../media/S_5/img_5.4.png);
+						left: 300px;
+					}
+
+					&:nth-of-type(4) {
+						background-image: url(../media/S_5/img_5.5.png);
+						left: 450px;
+						top: 200px;
+					}
+
+					&:nth-of-type(5) {
+						background-image: url(../media/S_5/img_5.6.png);
+						left: 600px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.screen.lets-learn {
+	img {
+		position: absolute;
+		top: 140px;
+		left: 130px;
+		width: 700px;
+		margin: 0;
+	}
+}
+
+.screen.flip {
+	h2 {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+		margin: -80px 0 0;
+		text-align: center;
+		color: #fff;
+		font-weight: normal;
+
+		.inline {
+			position: relative;
+			height: 100px;
+			vertical-align: middle;
+			margin-top: -60px;
+			top: 50px;
 		}
 	}
 }

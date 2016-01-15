@@ -39,7 +39,7 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title">
-			<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload></audio>
+			<!-- <audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio> -->
 			<audio class="sfx" src="media/S_1/S_1.2.mp3" preload></audio>
 			<img class="bulb" src="media/S_1/img_1.2.png">
 			<img class="presents" src="media/S_1/img_1.1.png">
@@ -48,7 +48,7 @@
 	</section>
 
 	<!-- 2 -->
-	<section pl-id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<!-- <section pl-id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div class="center">
 			<div class="frame">
 				<div pl-component="video" pl-required>
@@ -56,51 +56,154 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<!-- 3 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<!-- <section class="screen why" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-required></audio>
-		<div pl-component="frame" pl-transclude="content">
 			<img class="title" src="media/S_3/img_3.1.png">
-			<div pl-component="selectable-reveal" pl-select-state="highlight" pl-required>
+			<div pl-component="selectable-reveal" pl-select-state="highlight">
 				<div pl-component="selectable">
 					<ul class="items" pl-action="select()">
-						<li pl-correct></li>
-						<li pl-correct></li>
-						<li pl-correct></li>
-						<li pl-correct></li>
+						<li class="animated" pl-correct></li>
+						<li class="animated" pl-correct></li>
+						<li class="animated" pl-correct></li>
+						<li class="animated" pl-correct></li>
 					</ul>
 				</div>
 				<div pl-component="reveal">
 					<audio class="voice-over" src="media/S_3/VO_3.2.mp3" preload pl-required></audio>
 					<audio class="voice-over" src="media/S_3/VO_3.3.mp3" preload pl-required></audio>
 					<audio class="voice-over" src="media/S_3/VO_3.4.mp3" preload pl-required></audio>
+					<audio class="voice-over" src="media/S_3/VO_3.5.mp3" preload pl-required></audio>
 					<ul class="items">
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
+						<li>
+							<div>
+								<span>Light bulbs burn electricity!</span>
+								<button class="close-reveal" pl-action="closeAll()"></button>
+							</div>
+						</li>
+						<li>
+							<div>
+								<span>Making electricity burns fossil!</span>
+								<button class="close-reveal" pl-action="closeAll()"></button>
+							</div>
+						</li>
+						<li>
+							<div>
+								<span>Burning fossil fuels contributes<br> to bad air quality and climate change!</span>
+								<button class="close-reveal" pl-action="closeAll()"></button>
+							</div>
+						</li>
+						<li>
+							<div>
+								<span>Leaving the lights on when<br> you don’t need them cost money!</span>
+								<button class="close-reveal" pl-action="closeAll()"></button>
+							</div>
+						</li>
 					</ul>
 				</div>
+		</div>
+	</section> -->
+
+	<!-- 4 -->
+	<section class="screen pig" pl-component="screen-basic" pl-transclude="content">
+		<div class="variant-image" pl-component="multiple-choice" pl-correct=1>
+			<div pl-pluck="content">
+				<img src="media/S_4/img_4.1.png">
+			</div>
+			<ul pl-pluck="answers">
+				<li class="pig"></li>
+				<li class="bulb" pl-correct></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- 5 -->
+	<section class="screen what" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_5/VO_5.1.mp3" preload pl-required></audio>
+		<img class="title" src="media/S_5/img_5.1.png">
+		<div pl-component="selectable-reveal" pl-select-state="highlight">
+			<div pl-component="selectable">
+				<ul class="items" pl-action="select()">
+					<li class="animated" pl-correct></li>
+					<li class="animated" pl-correct></li>
+					<li class="animated" pl-correct></li>
+					<li class="animated" pl-correct></li>
+					<li class="animated" pl-correct></li>
+				</ul>
+			</div>
+			<div pl-component="reveal">
+				<audio class="voice-over" src="media/S_5/VO_5.2.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/S_5/VO_5.3.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/S_5/VO_5.4.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/S_5/VO_5.5.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/S_5/VO_5.6.mp3" preload pl-required></audio>
+				<ul class="items">
+					<li>
+						<div>
+							<span>They turn out the lights<br> EVERY time they leave a room.</span>
+							<button class="close-reveal" pl-action="closeAll()"></button>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>They help out by doing a walk through<br> of their house before they leave<br> to be sure the lights are out.</span>
+							<button class="close-reveal" pl-action="closeAll()"></button>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>They even turn out lights that<br> other people leave on!</span>
+							<button class="close-reveal" pl-action="closeAll()"></button>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>They use notes and reminders<br> to help their families remember<br> to flip that switch.</span>
+							<button class="close-reveal" pl-action="closeAll()"></button>
+						</div>
+					</li>
+					<li>
+						<div>
+							<span>They inspire their friends and sibling<br> to become Light Savers too!</span>
+							<button class="close-reveal" pl-action="closeAll()"></button>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</section>
 
-	<!-- 4 -->
-
-	<!-- 5 -->
-
 	<!-- 6 -->
+	<section class="screen lets-learn" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_6/VO_6.1.mp3" preload pl-required></audio>
+		<img src="media/S_6/img_6.png">
+	</section>
 
 	<!-- 7 -->
+	<!-- <section pl-id="video-2" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div class="center">
+			<div class="frame">
+				<div pl-component="video" pl-required>
+					<video pl-id="video" src="https://res.cloudinary.com/changemyworldnow/video/upload/v1452810808/Litterbug-Final_xdcrcf.mp4" controls></video>
+				</div>
+			</div>
+		</div>
+	</section> -->
 
 	<!-- 8 -->
 
 	<!-- 9 -->
 
 	<!-- 10 -->
-
+	<section class="screen flip" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_10/VO_10.1.mp3" preload pl-required></audio>
+		<h2>
+			Good Job!<br> Be a super Light Saver hero<br> and <img class="inline" src="media/S_10/img_10.1.png"> that switch!
+		</h2>
+		<img class="stamp" src="media/S_10/img_10.2.png">
+	</section>
 
 	<!-- QUIT -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
