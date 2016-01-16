@@ -50,36 +50,6 @@ pl.game('litterbug', function () {
 		});
 	});
 
-	this.screen('lets-clean-up', function () {
-		this.on('ui-open', function() {
-			this.game.addClass('lets-clean-up');
-		});
-
-		this.on('ui-close', function() {
-			this.game.removeClass('lets-clean-up');
-		});
-	});
-
-	this.screen('clean-up', function () {
-		this.on('ui-open', function() {
-			this.game.addClass('select');
-		});
-
-		this.on('ui-close', function() {
-			this.game.removeClass('select');
-		});
-	});
-
-	this.screen('commit', function () {
-		this.on('ui-open', function() {
-			this.game.addClass('commit');
-		});
-
-		this.on('ui-close', function() {
-			this.game.removeClass('commit');
-		});
-	});
-
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
