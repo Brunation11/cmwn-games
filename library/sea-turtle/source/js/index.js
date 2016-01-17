@@ -86,8 +86,7 @@ pl.game('sea-turtle', function () {
 			
 			this.on('drag-start', function (_event) {
 				(this.$active = _event.state.$draggable.closest('li'))
-					.addClass('ACTIVE')
-					.removeClass(restAnimation);
+					.addClass('ACTIVE');
 			});
 
 			this.on('initialize', function () {
@@ -97,18 +96,14 @@ pl.game('sea-turtle', function () {
 
 			this.respond('answer', function (_event) {
 				if (_event.message === 'correct') {
+					this.enable();
 					this.disable(
 						this.$active.removeClass('ACTIVE')
 					);
+					this.reveal.delay('2.5s', function () {
+						this.item('instruction');
+					});
 				}
-
-				else {
-					this.$active
-						.removeClass('ACTIVE')
-						.addClass(restAnimation);
-				}
-
-				this.enable();
 			});
 
 		});
@@ -123,7 +118,15 @@ pl.game('sea-turtle', function () {
 			
 			this.respond('answer', function (_event) {
 				var message = this[_event.message];
-				if (message && !this.isComplete) this.select(message);
+				if (message && !this.isComplete) {
+					this.select(message);
+					this.delay('2s', function() {
+						this.deselect(message);
+					});
+					
+					this.currentAudio.pause();
+					this.currentAudio.currentTime = 0;
+				}
 			});
 
 		});
@@ -184,15 +187,11 @@ pl.game('sea-turtle', function () {
 
 			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_event.message);
 
+			if (sfx) sfx.play();
+
 			if(_event.targetScope.state(this.STATE.COMPLETE)) {
 				this.area.find('img.active').removeClass('active');
 			}
-
-			else {
-				this.area.find('img.active').removeClass('show active');
-			}
-
-			if (sfx) sfx.play();
 		});
 
 		this.respond('complete', function (_event) {
