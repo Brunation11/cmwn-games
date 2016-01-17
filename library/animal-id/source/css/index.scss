@@ -450,6 +450,106 @@ h3 {
 	}
 }
 
+.screen.snout {
+
+	.frame {
+
+		h2 {
+			font-size: 60px;
+			margin: 20px 0 40px;
+		}
+
+		> div {
+			position: relative;
+			width: 760px;
+			margin: 45px auto 0;
+
+			span {
+				position: absolute;
+				display: block;
+				background-image: url(../media/images/img_14.2.png);
+				background-size: 760px 160px;
+				background-repeat: no-repeat;
+
+				&:nth-of-type(1) {
+					background-size: 770px 160px;
+					width: 200px;
+					height: 80px;
+					top: -2px;
+					left: 110px;
+					background-position: -100px 0px;
+					-webkit-animation-delay: 4.5s;
+					animation-delay: 4.5s;
+				}
+
+				&:nth-of-type(2) {
+					background-size: 770px 160px;
+					width: 230px;
+					height: 80px;
+					top: -2px;
+					left: 302px;
+					background-position: -300px 0px;
+					-webkit-animation-delay: 6s;
+					animation-delay: 6s;
+				}
+
+				&:nth-of-type(3) {
+					width: 270px;
+					height: 75px;
+					top: -2px;
+					left: 524px;
+					background-position: -520px 0px;
+					-webkit-animation-delay: 7.5s;
+					animation-delay: 7.5s;
+				}
+
+				&:nth-of-type(4) {
+					width: 240px;
+					height: 80px;
+					top: 78px;
+					left: 24px;
+					background-position: -10px -80px;
+					-webkit-animation-delay: 8.75s;
+					animation-delay: 8.75s;
+				}
+
+				&:nth-of-type(5) {
+					width: 260px;
+					height: 80px;
+					top: 78px;
+					left: 260px;
+					background-position: -250px -80px;
+					-webkit-animation-delay: 10s;
+					animation-delay: 10s;
+				}
+
+				&:nth-of-type(6) {
+					width: 260px;
+					height: 80px;
+					top: 70px;
+					left: 516px;
+					background-position: -510px -72px;
+					-webkit-animation-delay: 11s;
+					animation-delay: 11s;
+				}
+			}
+		}
+	}
+
+	&.OPEN {
+		.frame {
+
+			> div {
+
+				span {
+					-webkit-animation-name: bounceIn;
+					animation-name: bounceIn;
+				}
+			}
+		}
+	}
+}
+
 #match-game {
 
 	.frame {
