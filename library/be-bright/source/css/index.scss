@@ -17,6 +17,27 @@
   90% {opacity:1;}
   100% {opacity:1;}
 }
+@keyframes stamp {
+  0% {
+  	opacity: 0;
+    transform: scale(4);
+  }
+  10% {
+  	opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+}
 
 html, body {
 	margin: 0;
@@ -655,6 +676,7 @@ p {
 		display: block;
 		margin: 0 auto;
 		z-index: 1;
+		opacity: 0;
 	}
 
 	&.OPEN {
@@ -665,13 +687,14 @@ p {
 			animation-duration: 3s;
 		}
 
-		.stamp {
-			-webkit-animation-name: rollIn;
-			-webkit-animation-duration: 1.5s;
-			-webkit-animation-delay: 1.5s;
-			animation-name: rollIn;
-			animation-duration: 1.5s;
-			animation-delay: 1.5s;
+		.stamp.START {
+			opacity: 1;
+			-webkit-animation-name: stamp;
+			-webkit-animation-duration: 1s;
+			/*-webkit-animation-delay: 0.5s;*/
+			animation-name: stamp;
+			animation-duration: 1s;
+			/*animation-delay: 0.5s;*/
 		}
 	}
 }
