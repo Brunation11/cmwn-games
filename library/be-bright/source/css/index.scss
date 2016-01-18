@@ -124,7 +124,7 @@ button {
 		height: 50px;
 		background-position: -225px 420px;
 
-		&:hover {
+		&.ENABLED:hover {
 			background-position: -225px 676px;
 		}
 	}
@@ -313,6 +313,14 @@ p {
 					position: absolute;
 					right: 5px;
 					bottom: 10px;
+					opacity: 0.5;
+					cursor: default;
+					transition: opacity 1s;
+
+					&.ENABLED {
+						opacity: 1;
+						cursor: pointer;
+					}
 				}
 			}
 
