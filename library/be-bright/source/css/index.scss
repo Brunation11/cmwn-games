@@ -17,6 +17,27 @@
   90% {opacity:1;}
   100% {opacity:1;}
 }
+@keyframes stamp {
+  0% {
+  	opacity: 0;
+    transform: scale(4);
+  }
+  10% {
+  	opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+}
 
 html, body {
 	margin: 0;
@@ -103,7 +124,7 @@ button {
 		height: 50px;
 		background-position: -225px 420px;
 
-		&:hover {
+		&.ENABLED:hover {
 			background-position: -225px 676px;
 		}
 	}
@@ -292,6 +313,14 @@ p {
 					position: absolute;
 					right: 5px;
 					bottom: 10px;
+					opacity: 0.5;
+					cursor: default;
+					transition: opacity 1s;
+
+					&.ENABLED {
+						opacity: 1;
+						cursor: pointer;
+					}
 				}
 			}
 
@@ -401,15 +430,33 @@ p {
 				li {
 					background-position: 0 0;
 					background-size: auto 100%;
-					cursor: pointer;
+					cursor: default;
+					opacity: 0.5;
+					transition: opacity 1s;
 
-					&:hover {
-						-webkit-animation-name: bounce;
-						animation-name: bounce;
+					&:first-of-type:not(.HIGHLIGHTED) {
+						opacity: 1;
+						cursor: pointer;
+
+						&:hover {
+							-webkit-animation-name: bounce;
+							animation-name: bounce;
+						}
 					}
 
 					&.HIGHLIGHTED {
+						opacity: 1;
 						background-position: 204px 0;
+					}
+
+					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
+						opacity: 1;
+						cursor: pointer;
+
+						&:hover {
+							-webkit-animation-name: bounce;
+							animation-name: bounce;
+						}
 					}
 
 					&:nth-of-type(1) {
@@ -547,19 +594,37 @@ p {
 				li {
 					background-position: 0 0;
 					background-size: auto 100%;
-					cursor: pointer;
+					cursor: default;
 					position: absolute;
 					width: 200px;
 					height: 200px;
 					top: 0;
+					opacity: 0.5;
+					transition: opacity 1s;
 
-					&:hover {
-						-webkit-animation-name: bounce;
-						animation-name: bounce;
+					&:first-of-type:not(.HIGHLIGHTED) {
+						opacity: 1;
+						cursor: pointer;
+
+						&:hover {
+							-webkit-animation-name: bounce;
+							animation-name: bounce;
+						}
 					}
 
 					&.HIGHLIGHTED {
+						opacity: 1;
 						background-position: -194px 0;
+					}
+
+					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
+						opacity: 1;
+						cursor: pointer;
+
+						&:hover {
+							-webkit-animation-name: bounce;
+							animation-name: bounce;
+						}
 					}
 
 					&:nth-of-type(1) {
@@ -655,6 +720,7 @@ p {
 		display: block;
 		margin: 0 auto;
 		z-index: 1;
+		opacity: 0;
 	}
 
 	&.OPEN {
@@ -665,13 +731,14 @@ p {
 			animation-duration: 3s;
 		}
 
-		.stamp {
-			-webkit-animation-name: rollIn;
-			-webkit-animation-duration: 1.5s;
-			-webkit-animation-delay: 1.5s;
-			animation-name: rollIn;
-			animation-duration: 1.5s;
-			animation-delay: 1.5s;
+		.stamp.START {
+			opacity: 1;
+			-webkit-animation-name: stamp;
+			-webkit-animation-duration: 1s;
+			/*-webkit-animation-delay: 0.5s;*/
+			animation-name: stamp;
+			animation-duration: 1s;
+			/*animation-delay: 0.5s;*/
 		}
 	}
 }

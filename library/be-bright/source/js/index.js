@@ -21,8 +21,8 @@ pl.game('be-bright', function () {
 
 		this.ready = function () {
 			this.open();
-			this.close($('#loader'));
-			this.delay(3000, function() {
+			this.close(this.game.loader);
+			this.delay('3s', function() {
 				this.complete();
 				if(this.title.audio.sfx) this.title.audio.sfx.play();
 			});
@@ -53,6 +53,12 @@ pl.game('be-bright', function () {
 	});
 
 	this.screen('flip', function () {
+		this.on('audio-ended', function (_event) {
+			if (this.audio.voiceOver !== _event.target) return;
+			this.stampImg.addClass('START');
+			this.audio.sfx.stamp.play();
+		});
+
 		this.next = function () {
 			this.game.quit.okay();
 		};
