@@ -21,8 +21,8 @@ pl.game('be-bright', function () {
 
 		this.ready = function () {
 			this.open();
-			this.close($('#loader'));
-			this.delay(3000, function() {
+			this.close(this.game.loader);
+			this.delay('3s', function() {
 				this.complete();
 				if(this.title.audio.sfx) this.title.audio.sfx.play();
 			});
