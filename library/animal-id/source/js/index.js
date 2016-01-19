@@ -10,23 +10,18 @@ import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
 import './components/frame/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
-import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
 import './components/class-switcher/behavior';
+import './components/reveal/behavior';
+import './components/selectable/behavior';
 import './components/match-game/behavior';
+import './components/flip-card/behavior';
+import './components/drop-responder/behavior';
+import './components/dropzone/behavior';
+import './components/sparkles/behavior';
 
 pl.game('animal-id', function () {
 
 	this.screen('title', function () {
-		
-		this.ready = function () {
-			this.open();
-			this.close($('#loader'));
-		};
 
 		this.on('ui-open', function (_event) {
 			if (this === _event.targetScope) {
@@ -40,7 +35,10 @@ pl.game('animal-id', function () {
  			// the delay is to prevent the transition failing to play
  			// because of collision of these styles.
  			// 
- 			if (this.is(_event.target)) this.delay(0, this.open);
+ 			if (this.is(_event.target)) {
+ 				this.delay(0, this.open);
+				this.close(this.game.loader);
+ 			}
   		});
 
 	});
