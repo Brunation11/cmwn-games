@@ -13,7 +13,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
-    "js-interactive-library": "github:ginasink/js-interactive-library#micah/hotfixes_GAME-47",
+    "js-interactive-library": "github:ginasink/js-interactive-library#v0.2.1",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
     "yargs": "^3.31.0"
