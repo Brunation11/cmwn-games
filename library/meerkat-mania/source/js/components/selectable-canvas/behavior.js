@@ -6,39 +6,6 @@ pl.game.component('selectable-canvas', function () {
 		CORRECT: '[pl-correct]',
 		INCORRECT: '[pl-incorrect]'
 	};
-
-	this.behavior('select', function (_target) {
-		var $target;
-
-		if (this.event) {
-			$target = $(this.event.target).closest('li');
-
-			if (this.shouldSelect($target) !== false) {
-				return {
-					message: $target.index(),
-					behaviorTarget: $target
-				};
-			}	
-		}
-
-		else {
-			this.proto(_target);
-		}
-
-		return false;
-	});
-
-	this.shouldSelect = function (_target) {
-		return !this.screen.state(this.screen.STATE.VOICE_OVER);
-	};
-
-	// function isCorrect (_element) {
-	// 	var $el;
-
-	// 	$el = _element.jquery ? _element : $(_element);
-
-	// 	return 
-	// }
 	
 	this.buffer = null;
 	this.bctx = null;
@@ -113,44 +80,6 @@ pl.game.component('selectable-canvas', function () {
 
 		return returnValue;
 	});
-
-	this.answer = function (_$item) {
-
-		if (_$item.is(SELECTOR.CORRECT)) {
-
-			this.playSFX('correct');
-			this.playVO(_item);
-
-			_$item.addClass('animated fadeIn');
-
-			this.countries.correct.ready(_item);
-		}
-
-		else {
-			this.playSFX('incorrect');
-			_$item.addClass('animated flash');
-		}
-	};
-
-	this.playSFX = function (_answer) {
-		var sfx;
-
-		sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
-
-		if (sfx) sfx.play();
-
-		return sfx;
-	};
-
-	this.playVO = function (_name) {
-		var vo;
-
-		vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
-
-		if (vo) vo.play();
-
-		return vo;
-	};
 	
 
 });

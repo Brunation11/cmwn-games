@@ -49,8 +49,6 @@ pl.game('meerkat-mania', function () {
 		this.respond('select', function (_event) {
 			var index, stateMethod;
 
-			console.log(_event);
-
 			index = _event.message;
 			stateMethod = this.properties.selectState || 'select';
 
