@@ -54,8 +54,14 @@ pl.game('meerkat-mania', function () {
 
 			if (~index) {
 				this[stateMethod](_event.behaviorTarget);
+				_event.behaviorTarget.addClass('COMPLETE');
+				this.reveal.item(index);
 				// if(this.audio.sfx.correct) this.audio.sfx.correct.play();
 			}
+		});
+
+		this.respond('closeAll', function(didClose) {
+			if(didClose) this.selectableCanvas.deselectAll();
 		});
 	});
 

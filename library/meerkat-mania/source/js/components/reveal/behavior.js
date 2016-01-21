@@ -24,4 +24,13 @@ pl.game.component('reveal', function () {
 		}
 	};
 
+	this.behavior('closeAll', function() {
+		if(!this.screen.state(this.STATE.VOICE_OVER)) {
+			if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
+			this.find('li.OPEN').removeClass('OPEN');
+			return true;
+		}
+		return false;
+	});
+
 });

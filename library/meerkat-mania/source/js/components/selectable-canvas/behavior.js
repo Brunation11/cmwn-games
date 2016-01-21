@@ -80,6 +80,10 @@ pl.game.component('selectable-canvas', function () {
 
 		return returnValue;
 	});
+
+	this.deselectAll = function() {
+		this.deselect(this.find('li.SELECTED'));
+	}
 	
 
 });
