@@ -26,7 +26,7 @@ pl.game.component('reveal', function () {
 
 	this.behavior('closeAll', function() {
 		if(!this.screen.state(this.STATE.VOICE_OVER)) {
-			if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
+			if(this.game.audio.sfx.close) this.game.audio.sfx.close.play();
 			this.find('li.OPEN').removeClass('OPEN');
 			return true;
 		}
