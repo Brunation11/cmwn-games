@@ -21,11 +21,6 @@ pl.game('fire', function () {
 
 	this.screen('title', function () {
 		
-		this.ready = function () {
-			this.open();
-			this.close($('#loader'));
-		};
-
 		this.on('ui-open', function (_event) {
 			if (this === _event.targetScope) {
 				this.title.start();
@@ -39,6 +34,8 @@ pl.game('fire', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
+			this.open();
+			this.close(this.game.loader);
 		});
 
 	});
