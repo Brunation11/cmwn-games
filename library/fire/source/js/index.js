@@ -16,6 +16,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
+import './components/slides/behavior';
 
 pl.game('fire', function () {
 
@@ -34,16 +35,27 @@ pl.game('fire', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
-			this.open();
 			this.close(this.game.loader);
 		});
 
 	});
 
-	this.screen('video', function() {
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
+	this.screen('who', function() {
+		
+		this.entity('slides', function () {
+			
+			this.entity('mc-frame', function () {
+				
+				this.respond('answer', function(_event) {
+					if(this.audio.voiceOver[_event.message]) this.audio.voiceOver[_event.message].play();
+
+					if(_event.message === this.properties.answer) {
+						this.delay('1s', function() {
+							this.screen.next();
+						});
+					}
+				});
+			});
 		});
 	});
 

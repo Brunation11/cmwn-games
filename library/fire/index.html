@@ -35,42 +35,121 @@
 	<!-- <audio pl-id="screen-complete" class="sfx" src="media/audio/complete.mp3" preload></audio> -->
 
 	<!-- GAME BACKGROUNDS -->
-	<div class="background black"></div>
+	<div class="background fire"></div>
 	<div class="background forrest"></div>
 
 	<!-- SCREENS -->
 
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-component="title" pl-required>
+		<div pl-component="title">
 			<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
 			<img class="animated" src="media/S_1/img_1.1.png">
+			<img class="animated" src="media/S_1/img_1.2.png">
+			<img class="animated" src="media/S_1/img_1.3.png">
 		</div>
 	</section>
 
 	<!-- 2 -->
+	<section class="screen chemical" pl-component="screen-basic" pl-transclude="content">
+		<img class="animated" src="media/S_2/img_2.1.png">
+		<img class="animated" src="media/S_2/img_2.2.png">
+		<img class="animated" src="media/S_2/img_2.3.png">
+		<h2>Chemical<br>Reaction</h2>
+	</section>
 
 	<!-- 3 -->
+	<section class="screen fuel-oxygen" pl-component="screen-basic" pl-transclude="content">
+		<img class="animated" src="media/S_3/img_3.1.png">
+		<img class="animated" src="media/S_3/img_3.2.png">
+		<img class="animated" src="media/S_3/img_3.3.png">
+		<img class="animated" src="media/S_3/img_3.4.png">
+		<img class="animated" src="media/S_3/img_3.5.png">
+		<img class="animated" src="media/S_3/img_3.6.png">
+	</section>
 
 	<!-- 4 -->
+	<section class="screen forrest" pl-game-class="forrest" pl-component="screen-basic" pl-transclude="content">
+		<div>
+			<img class="background" src="media/_Frames/FR_1.png">
+			<p>Fire destroys tree and homes and<br> consumes landscapes and habitats.</p>
+		</div>
+	</section>
 
 	<!-- 5 -->
+	<section pl-id="alarm" class="screen alarm" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<img class="animated" src="media/S_5/img_5.1.png">
+		<p>Click and show you know.</p>
+		<img class="animated" src="media/S_5/img_5.2.png">
+		<img class="animated" src="media/S_1/img_1.1.png">
+		<button class="push-down" pl-action="next()"></button>
+	</section>
 
 	<!-- 6 -->
+	<section pl-id="who" class="screen who" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="slides">
+			<div pl-id="mc-frame" pl-component="frame" pl-require="mc" pl-answer="firefighter">
+				<audio class="voice-over" src="media/S_6/VO_6-1.mp3" preload pl-required></audio>
+				<audio pl-id="police" class="voice-over" src="media/S_6/VO_6-2.mp3" preload></audio>
+				<audio pl-id="plumber" class="voice-over" src="media/S_6/VO_6-3.mp3" preload></audio>
+				<audio pl-id="firefighter" class="voice-over" src="media/S_6/VO_6-4.mp3" preload pl-required></audio>
+				<audio pl-id="chef" class="voice-over" src="media/S_6/VO_6-5.mp3" preload></audio>
+				<img class="animated" src="media/S_6/img_6.1.png">
+				<div pl-id="mc" pl-component="multiple-choice" pl-correct=2>
+					<ul pl-action="answer()">
+						<li pl-id="police"></li>
+						<li pl-id="plumber"></li>
+						<li pl-id="firefighter"></li>
+						<li pl-id="chef"></li>
+					</ul>
+				</div>
+			</div>
+			<div pl-component="frame">
+				<audio class="voice-over" src="media/S_6/VO_6-1.mp3" preload pl-required></audio>
+				<img class="animated" src="media/S_6/img_6.7.png">
+				<div>
+					<img class="background" src="media/_Frames/FR_2.png">
+					Firefighting is one of the<br> toughest jobs in the world<br> and demands total teamwork.
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- 7 -->
+	<section class="screen men-and-women" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<img class="animated" src="media/S_7/img_7.1.png">
+		<img class="animated" src="media/S_7/img_7.2.png">
+		<div>
+			<img class="background" src="media/_Frames/FR_3.png">
+			They are in excellent physical shape<br> and also great mental shape.<br> They constantly learn theory<br> and firefighting techniques.
+		</div>
+	</section>
 
 	<!-- 8 -->
 
 	<!-- 9 -->
 
 	<!-- 10 -->
+	<section class="screen ladder" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<img class="animated" src="media/S_10/img_10.1.png">
+		<div>
+			<img class="background" src="media/_Frames/FR_2.png">
+			Firefighters need lots of<br> special gear to keep<br> them safe and help<br> them battle the flames.
+		</div>
+	</section>
 
 	<!-- 11 -->
 
 	<!-- 12 -->
 
 	<!-- 13 -->
+	<section pl-id="flip" class="screen flip" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<h2>
+			You just earned<br> a red hot
+		</h2>
+		<img class="animated fire" src="media/S_1/img_1.1.png">
+		<img class="animated flip" src="media/S_13/img_13.1.png">
+	</section>
 
 	<!-- QUIT -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>

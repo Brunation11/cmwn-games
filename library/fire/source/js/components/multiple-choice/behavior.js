@@ -14,14 +14,22 @@ pl.game.component('multiple-choice', function () {
 		return false;
 	}
 
-	this.answer = function () {
+	this.behavior('answer', function () {
+		var $li;
 		if (this.event) {
 			$li = $(this.event.target).closest('li');
 
 			if (!this.isComplete && this.select($li)) {
 				validateAnswer(this);
 			}
+
+			return {
+				behaviorTarget: $li,
+				message: $li.id(),
+			};
 		}
-	};
+
+		return false;
+	});
 
 });
