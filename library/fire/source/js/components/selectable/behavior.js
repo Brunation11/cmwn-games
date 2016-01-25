@@ -8,7 +8,7 @@ pl.game.component('selectable', function () {
 
 			if (this.shouldSelect($target) !== false) {
 				return {
-					message: $target.index(),
+					message: $target.id(),
 					behaviorTarget: $target
 				};
 			}	

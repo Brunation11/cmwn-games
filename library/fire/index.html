@@ -126,8 +126,75 @@
 	</section>
 
 	<!-- 8 -->
+	<section pl-id="triangle" class="screen no-frame triangle" pl-component="screen-basic" pl-transclude="content">
+		<div class="center">
+			<div class="frame">
+				<img class="title" src="media/S_8/img_8.1.png">
+				<div class="directions">
+					Choose the words and drag to form triangle
+				</div>
+				<ul class="draggables">
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="air" pl-bg="media/S_8/img_8.3.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="clouds" pl-bg="media/S_8/img_8.4.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="co2" pl-bg="media/S_8/img_8.5.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="heat" pl-bg="media/S_8/img_8.6.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="smoke" pl-bg="media/S_8/img_8.7.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="fuel" pl-bg="media/S_8/img_8.8.png"></div>
+					</li>
+					<li>
+						<div class="draggable" pl-draggable="pluck" pl-id="water" pl-bg="media/S_8/img_8.9.png"></div>
+					</li>
+				</ul>
+				<div pl-component="dropzone" pl-take="air heat fuel" pl-required>
+					<audio class="sfx" pl-id="incorrect" src="media/S_8/S_8.1.mp3" preload></audio>
+					<audio class="sfx" pl-id="correct" src="media/S_8/S_8.2.mp3" preload></audio>
+					<audio class="sfx" pl-id="complete" src="media/S_8/S_8.3.mp3" preload></audio>
+					<audio class="sfx" pl-id="drag" src="media/S_8/S_8.4.mp3" preload></audio>
+					<audio class="voice-over" pl-id="title" src="media/S_8/VO_8-1.mp3" preload></audio>
+					<audio class="voice-over" pl-id="directions" src="media/S_8/VO_8-2.mp3" preload></audio>
+					<audio class="voice-over" pl-id="air" src="media/S_8/VO_8-3.mp3" preload></audio>
+					<audio class="voice-over" pl-id="clouds" src="media/S_8/VO_8-4.mp3" preload></audio>
+					<audio class="voice-over" pl-id="co2" src="media/S_8/VO_8-5.mp3" preload></audio>
+					<audio class="voice-over" pl-id="heat" src="media/S_8/VO_8-6.mp3" preload></audio>
+					<audio class="voice-over" pl-id="smoke" src="media/S_8/VO_8-7.mp3" preload></audio>
+					<audio class="voice-over" pl-id="fuel" src="media/S_8/VO_8-8.mp3" preload></audio>
+					<audio class="voice-over" pl-id="water" src="media/S_8/VO_8-9.mp3" preload></audio>
+					<div class="area">
+						<img class="grey-triangle" src="media/S_8/img_8.10a.png">
+						<img pl-id="fuel" src="media/S_8/img_8.10b.png">
+						<img pl-id="heat" src="media/S_8/img_8.10c.png">
+						<img pl-id="air" src="media/S_8/img_8.10d.png">
+						<img class="color-triangle" src="media/S_8/img_8.10e.png">
+						<img class="side" pl-id="heatSide" src="media/S_8/img_8.10f.png">
+						<img class="side" pl-id="fuelSide" src="media/S_8/img_8.10g.png">
+						<img class="side" pl-id="airSide" src="media/S_8/img_8.10h.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- 9 -->
+	<section class="screen break-triangle" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<p>
+			Firefighters break the triangle by removing<br> one of more these three sides.
+		</p>
+		<img class="animated" src="media/S_9/img_9.1.png">
+		<h2>
+			This basic firefighter theory!
+		</h2>
+	</section>
 
 	<!-- 10 -->
 	<section class="screen ladder" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
@@ -139,8 +206,240 @@
 	</section>
 
 	<!-- 11 -->
+	<section pl-id="dress" class="screen dress" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="slides">
+			<div pl-id="femaleMale" class="female-male" pl-component="frame">
+				<audio class="voice-over" src="media/S_11/VO_11-1.mp3" preload pl-required></audio>
+				<img class="animated" src="media/S_11/img_11.1.png">
+				<div pl-component="selectable">
+					<ul class="items" pl-action="select()">
+						<li pl-id="gender-female"></li>
+						<li pl-id="gender-male"></li>
+					</ul>
+				</div>
+			</div>
+			<div pl-id="skinColor" class="skin-color" pl-component="frame">
+				<img class="animated" src="media/S_11/img_11.1.png">
+				<div pl-component="selectable">
+					<ul class="items" pl-action="select()">
+						<li pl-id="skin-light"></li>
+						<li pl-id="skin-medium"></li>
+						<li pl-id="skin-dark"></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 12 -->
+			<div pl-id="need" class="need" pl-remove-game-class="fire" pl-component="frame">
+				<div class="center">
+					<div class="frame">
+						<img class="animated" src="media/S_12/img_12.1.png">
+						<ul class="draggables">
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="pants" pl-bg="media/S_12/img_12.2.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="jacket" pl-bg="media/S_12/img_12.3.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="hood" pl-bg="media/S_12/img_12.4.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="boots" pl-bg="media/S_12/img_12.5.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="mask" pl-bg="media/S_12/img_12.6.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="glove" pl-bg="media/S_12/img_12.7.png"></div>
+							</li>
+						</ul>
+						<div pl-component="dropzone" pl-take="pants jacket hood boots mask glove tank walkie axe light camera punch" pl-required>
+							<audio class="sfx" pl-id="correct" src="media/S_12/S_12.2.mp3" preload></audio>
+							<audio class="sfx" pl-id="complete" src="media/S_12/S_12.3.mp3" preload></audio>
+							<audio class="sfx" pl-id="drag" src="media/S_12/S_12.1.mp3" preload></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-2.mp3" preload></audio>
+							<div class="area">
+								<div class="bun"></div>
+								<div class="tank"></div>
+								<div class="body"></div>
+								<div class="boots"></div>
+								<div class="hood"></div>
+								<div class="pants"></div>
+								<div class="jacket"></div>
+								<div class="gloves"></div>
+								<div class="mask"></div>
+								<div class="tank straps"></div>
+								<div class="light"></div>
+								<div class="axe"></div>
+								<div class="walkie"></div>
+								<div class="camera"></div>
+								<div class="punch"></div>
+							</div>
+						</div>
+						<ul class="draggables">
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="tank" pl-bg="media/S_12/img_12.8.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="walkie" pl-bg="media/S_12/img_12.9.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="axe" pl-bg="media/S_12/img_12.10.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="light" pl-bg="media/S_12/img_12.11.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="camera" pl-bg="media/S_12/img_12.12.png"></div>
+							</li>
+							<li>
+								<div class="draggable" pl-draggable="pluck" pl-id="punch" pl-bg="media/S_12/img_12.13.png"></div>
+							</li>
+						</ul>
+						<div pl-component="reveal">
+							<!--
+							<audio class="voice-over" pl-id="pants" src="media/S_12/VO_12-2A.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="jacket" src="media/S_12/VO_12-3.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="hood" src="media/S_12/VO_12-4.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="boots" src="media/S_12/VO_12-5.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="mask" src="media/S_12/VO_12-6.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="glove" src="media/S_12/VO_12-7.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="tank" src="media/S_12/VO_12-8.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="walkie" src="media/S_12/VO_12-9.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="axe" src="media/S_12/VO_12-10.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="light" src="media/S_12/VO_12-11.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="camera" src="media/S_12/VO_12-12.mp3" preload pl-required></audio>
+							<audio class="voice-over" pl-id="punch" src="media/S_12/VO_12-13.mp3" preload pl-required></audio>
+							-->
+							<audio class="voice-over" src="media/S_12/VO_12-2A.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-3.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-4.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-5.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-6.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-7.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-8.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-9.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-10.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-11.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-12.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_12/VO_12-13.mp3" preload pl-required></audio>
+							<ul class="items">
+								<li pl-id="pants">
+									<div>
+										<img src="media/S_12/img_12.15.png">
+										<p>
+											Nobody wears shorts in a fire!<br> You need these!
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="jacket">
+									<div>
+										<img src="media/S_12/img_12.16.png">
+										<p>
+											If there is a fire, you<br> need this special coat.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="hood">
+									<div>
+										<img src="media/S_12/img_12.17.png">
+										<p>
+											This keeps every bit of<br> you head protected.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="boots">
+									<div>
+										<img src="media/S_12/img_12.18.png">
+										<p>
+											They keep dangerous<br> chemicals off your feet.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="mask">
+									<div>
+										<img src="media/S_12/img_12.19.png">
+										<p>
+											This protects you head and face.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="glove">
+									<div>
+										<img src="media/S_12/img_12.20.png">
+										<p>
+											Like boots do for your feet,<br> these protect your hands.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="tank">
+									<div>
+										<img src="media/S_12/img_12.21.png">
+										<p>
+											This is a can of air<br> so you can breathe!
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="walkie">
+									<div>
+										<img src="media/S_12/img_12.22.png">
+										<p>
+											When shouting isn't enough<br> you need this.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="axe">
+									<div>
+										<img src="media/S_12/img_12.23.png">
+										<p>
+											This helps you get<br> through closed doors.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="light">
+									<div>
+										<img src="media/S_12/img_12.24.png">
+										<p>
+											Could be too dark to see<br> unless you have this!
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="camera">
+									<div>
+										<img src="media/S_12/img_12.25.png">
+										<p>
+											Need to see through<br> darkness and smoke?<br> This is for you!
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+								<li pl-id="punch">
+									<div>
+										<img src="media/S_12/img_12.26.png">
+										<p>
+											This helps you break<br> through a window.
+										</p>
+										<button class="reveal-close"></button>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<!-- 12 -->
 
 	<!-- 13 -->
 	<section pl-id="flip" class="screen flip" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
