@@ -106,6 +106,16 @@ button {
 		}
 	}
 
+	&.reveal-close {
+		width: 60px;
+		height: 45px;
+		background-position: -500px -90px;
+
+		&:hover {
+			background-position: -500px -340px;
+		}
+	}
+
 	&.quit-yes {
 		width: 230px;
 		height: 130px;
@@ -947,6 +957,12 @@ img.background {
 							img {
 								width: auto;
 								height: 50px;
+							}
+
+							button {
+								position: absolute;
+								right: 40px;
+								bottom: 50px;
 							}
 						}
 					}
