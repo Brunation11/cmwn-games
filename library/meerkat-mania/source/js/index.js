@@ -52,7 +52,7 @@ pl.game('meerkat-mania', function () {
 			index = _event.message;
 			stateMethod = this.properties.selectState || 'select';
 
-			if (~index) {
+			if (Number.isInteger(index) && ~index) {
 				this[stateMethod](_event.behaviorTarget);
 				_event.behaviorTarget.addClass('COMPLETE');
 				this.reveal.item(index);
