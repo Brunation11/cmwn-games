@@ -129,12 +129,32 @@ pl.game('fire', function () {
 			this.entity('mc-frame', function () {
 				
 				this.respond('answer', function(_event) {
-					if(this.audio.voiceOver[_event.message]) this.audio.voiceOver[_event.message].play();
+					// if(this.audio.voiceOver[_event.message]) this.audio.voiceOver[_event.message].play();
 
 					if(_event.message === this.properties.answer) {
 						this.delay('2s', function() {
 							this.screen.next();
 						});
+					}
+				});
+
+				this.on('ready', function() {
+					if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
+						this.audio.voiceOver.title.onended = function() {
+							if(this.audio.voiceOver.police) this.audio.voiceOver.police.play();
+						}.bind(this);
+
+						this.audio.voiceOver.police.onended = function() {
+							if(this.audio.voiceOver.plumber) this.audio.voiceOver.plumber.play();
+						}.bind(this);
+
+						this.audio.voiceOver.plumber.onended = function() {
+							if(this.audio.voiceOver.firefighter) this.audio.voiceOver.firefighter.play();
+						}.bind(this);
+
+						this.audio.voiceOver.firefighter.onended = function() {
+							if(this.audio.voiceOver.chef) this.audio.voiceOver.chef.play();
+						}.bind(this);
 					}
 				});
 			});
@@ -291,8 +311,6 @@ pl.game('fire', function () {
 						
 						this.respond('release', function (_event) {
 							if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
-
-								if(this.audio.voiceOver[_event.state.$draggable.id()]) this.audio.voiceOver[_event.state.$draggable.id()].play();
 
 								if (this.takes(_event.state.$draggable.id())) {
 									_event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
