@@ -81,10 +81,10 @@ gulp.task('sass', function () {
                   './library/' + _game + '/source/js/components/**/*.css',
                   './library/' + _game + '/source/css/*.scss',
                   './library/' + _game + '/source/css/*.css'])
-            .pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
-            .pipe(sourcemaps.write())
             .pipe(concat('style.css'))
+            .pipe(sourcemaps.init())
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
     });
