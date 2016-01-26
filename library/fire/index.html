@@ -31,8 +31,7 @@
 	<button class="close" pl-action="quit.open()">&#x2716;</button>
 
 	<audio pl-id="button" class="sfx" src="media/_Buttons/S_BU_1.mp3" preload></audio>
-	<!-- no screen complete sound was provided -->
-	<!-- <audio pl-id="screen-complete" class="sfx" src="media/audio/complete.mp3" preload></audio> -->
+	<audio pl-id="screen-complete" class="sfx" src="media/_Buttons/S_BU_2.mp3" preload></audio>
 
 	<!-- GAME BACKGROUNDS -->
 	<div class="background fire"></div>
@@ -51,15 +50,25 @@
 	</section>
 
 	<!-- 2 -->
-	<section class="screen chemical" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen chemical" pl-component="screen-basic" pl-transclude="content" pl-sfx="flame equal text">
+		<audio class="voice-over" src="media/S_2/VO_2-1.mp3" preload pl-required></audio>
+		<audio pl-id="flame" class="sfx" src="media/S_2/S_2.2.mp3" preload></audio>
+		<audio pl-id="equal" class="sfx" src="media/S_2/S_2.3.mp3" preload pl-delay="1s"></audio>
+		<audio pl-id="text" class="sfx" src="media/S_2/S_2.4.mp3" preload pl-delay="2s"></audio>
 		<img class="animated" src="media/S_2/img_2.1.png">
 		<img class="animated" src="media/S_2/img_2.2.png">
 		<img class="animated" src="media/S_2/img_2.3.png">
-		<h2>Chemical<br>Reaction</h2>
+		<h2 class="animated">Chemical<br>Reaction</h2>
 	</section>
 
 	<!-- 3 -->
-	<section class="screen fuel-oxygen" pl-component="screen-basic" pl-transclude="content">
+	<section class="screen fuel-oxygen" pl-component="screen-basic" pl-transclude="content" pl-sfx="wood plus o2 equal fire">
+		<audio class="voice-over" src="media/S_3/VO_3-1.mp3" preload pl-required></audio>
+		<audio pl-id="wood" class="sfx" src="media/S_3/S_3.2.mp3" preload></audio>
+		<audio pl-id="plus" class="sfx" src="media/S_3/S_3.4.mp3" preload pl-delay=".75s"></audio>
+		<audio pl-id="o2" class="sfx" src="media/S_3/S_3.2.mp3" preload pl-delay="1.5s"></audio>
+		<audio pl-id="equal" class="sfx" src="media/S_3/S_3.4.mp3" preload pl-delay="2.25s"></audio>
+		<audio pl-id="fire" class="sfx" src="media/S_3/S_3.3.mp3" preload pl-delay="3s"></audio>
 		<img class="animated" src="media/S_3/img_3.1.png">
 		<img class="animated" src="media/S_3/img_3.2.png">
 		<img class="animated" src="media/S_3/img_3.3.png">
@@ -70,14 +79,18 @@
 
 	<!-- 4 -->
 	<section class="screen forrest" pl-game-class="forrest" pl-component="screen-basic" pl-transclude="content">
-		<div>
+		<audio class="voice-over" src="media/S_4/VO_4-1.mp3" preload pl-required></audio>
+		<div class="animated">
 			<img class="background" src="media/_Frames/FR_1.png">
-			<p>Fire destroys tree and homes and<br> consumes landscapes and habitats.</p>
+			<p class="animated">Fire destroys tree and homes and<br> consumes landscapes and habitats.</p>
 		</div>
 	</section>
 
 	<!-- 5 -->
 	<section pl-id="alarm" class="screen alarm" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<audio pl-id="title" class="voice-over" src="media/S_5/VO_5.1.mp3" preload pl-required></audio>
+		<audio pl-id="directions" class="voice-over" src="media/S_5/VO_5.2.mp3" preload pl-required></audio>
+		<audio pl-id="next" class="sfx" src="media/S_5/S_5.1.mp3" preload></audio>
 		<img class="animated" src="media/S_5/img_5.1.png">
 		<p>Click and show you know.</p>
 		<img class="animated" src="media/S_5/img_5.2.png">
@@ -105,7 +118,7 @@
 				</div>
 			</div>
 			<div pl-component="frame">
-				<audio class="voice-over" src="media/S_6/VO_6-1.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/S_6/VO_6.6.mp3" preload pl-required></audio>
 				<img class="animated" src="media/S_6/img_6.7.png">
 				<div>
 					<img class="background" src="media/_Frames/FR_2.png">
@@ -116,7 +129,9 @@
 	</section>
 
 	<!-- 7 -->
-	<section class="screen men-and-women" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+	<section pl-id="menAndWomen" class="screen men-and-women" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<audio pl-id="title" class="voice-over" src="media/S_7/VO_7-1.mp3" preload pl-required></audio>
+		<audio pl-id="subtitle" class="voice-over" src="media/S_7/VO_7-2.mp3" preload pl-required></audio>
 		<img class="animated" src="media/S_7/img_7.1.png">
 		<img class="animated" src="media/S_7/img_7.2.png">
 		<div>
@@ -186,7 +201,11 @@
 	</section>
 
 	<!-- 9 -->
-	<section class="screen break-triangle" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+	<section pl-id="breakTriangle" class="screen break-triangle" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" pl-id="title" src="media/S_9/VO_9-1.mp3" preload></audio>
+		<audio class="voice-over" pl-id="heat" src="media/S_9/VO_9-2.mp3" preload></audio>
+		<audio class="voice-over" pl-id="air" src="media/S_9/VO_9-3.mp3" preload></audio>
+		<audio class="voice-over" pl-id="fuel" src="media/S_9/VO_9-4.mp3" preload pl-required></audio>
 		<p>
 			Firefighters break the triangle by removing<br> one of more these three sides.
 		</p>
@@ -198,6 +217,7 @@
 
 	<!-- 10 -->
 	<section class="screen ladder" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_10/VO_10-1.mp3" preload></audio>
 		<img class="animated" src="media/S_10/img_10.1.png">
 		<div>
 			<img class="background" src="media/_Frames/FR_2.png">
@@ -297,20 +317,6 @@
 							</li>
 						</ul>
 						<div pl-component="reveal">
-							<!--
-							<audio class="voice-over" pl-id="pants" src="media/S_12/VO_12-2A.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="jacket" src="media/S_12/VO_12-3.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="hood" src="media/S_12/VO_12-4.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="boots" src="media/S_12/VO_12-5.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="mask" src="media/S_12/VO_12-6.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="glove" src="media/S_12/VO_12-7.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="tank" src="media/S_12/VO_12-8.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="walkie" src="media/S_12/VO_12-9.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="axe" src="media/S_12/VO_12-10.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="light" src="media/S_12/VO_12-11.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="camera" src="media/S_12/VO_12-12.mp3" preload pl-required></audio>
-							<audio class="voice-over" pl-id="punch" src="media/S_12/VO_12-13.mp3" preload pl-required></audio>
-							-->
 							<audio class="voice-over" src="media/S_12/VO_12-2A.mp3" preload pl-required></audio>
 							<audio class="voice-over" src="media/S_12/VO_12-3.mp3" preload pl-required></audio>
 							<audio class="voice-over" src="media/S_12/VO_12-4.mp3" preload pl-required></audio>
@@ -440,9 +446,10 @@
 		</div>
 	</section>
 
-
 	<!-- 13 -->
 	<section pl-id="flip" class="screen flip" pl-game-class="fire" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_13/VO_13-1.mp3" preload pl-required></audio>
+		<audio class="sfx" src="media/S_13/S_13.1.mp3" preload></audio>
 		<h2>
 			You just earned<br> a red hot
 		</h2>

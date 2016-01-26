@@ -1,5 +1,17 @@
 pl.game.component('screen-basic', function () {
 	
+	this.ready = function () {
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) sfx.play();
+			}));
+		}
+	};
+
 	this.playSound = function (_sound) {
 		var delay;
 	
@@ -114,6 +126,13 @@ pl.game.component('screen-basic', function () {
 
 		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
 			this.complete();
+		}
+
+		if(this.properties.sfx) {
+			var sfx = this.properties.sfx.split(" ");
+			for(var i = 0, n = sfx.length; i < n; i++) {
+				if(this.audio.sfx[sfx[i]]) this.playSound(this.audio.sfx[sfx[i]]);
+			}
 		}
 	});
 
