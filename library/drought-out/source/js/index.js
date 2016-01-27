@@ -17,7 +17,7 @@ import './components/selectable/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
 
-pl.game('meerkat-mania', function () {
+pl.game('drought-out', function () {
 
 	this.screen('title', function () {
 		
