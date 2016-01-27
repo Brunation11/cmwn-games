@@ -48,13 +48,11 @@ body {
 		background-position: center center
 	}
 
-	&.excel > .background-component.excel,
-	&.roles > .background-component.roles,
-	&.look-out > .background-component.look-out,
-	&.feel > .background-component.feel,
-	&.movie > .background-component.movie,
-	&.upload > .background-component.upload,
-	&.flip > .background-component.flip {
+	> .background-component.sun,
+	&.rocks > .background-component.rocks,
+	&.cactus > .background-component.cactus,
+	&.arch > .background-component.arch,
+	&.mountains > .background-component.mountains {
 		opacity: 1;
 	}
 }

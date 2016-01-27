@@ -16,6 +16,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
+import './components/background/behavior';
 
 pl.game('drought-out', function () {
 
@@ -41,51 +42,6 @@ pl.game('drought-out', function () {
 			if (this.is(_event.target)) this.delay(0, this.open);
 		});
 
-	});
-
-	this.screen('roles', function () {
-
-		this.respond('select', function (_event) {
-			var index, stateMethod;
-
-			index = _event.message;
-			stateMethod = this.properties.selectState || 'select';
-
-			if (Number.isInteger(index) && ~index) {
-				this[stateMethod](_event.behaviorTarget);
-				_event.behaviorTarget.addClass('COMPLETE');
-				this.reveal.item(index);
-				// if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-			}
-		});
-
-		this.respond('closeAll', function(didClose) {
-			if(didClose) this.selectableCanvas.deselectAll();
-		});
-	});
-
-	this.screen('video', function() {
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
-		});
-	});
-
-	this.screen('feel', function () {
-
-		this.respond('select', function (_event) {
-			var index, stateMethod;
-
-			index = _event.message;
-			stateMethod = this.properties.selectState || 'select';
-
-			if (~index) {
-				this[stateMethod](_event.behaviorTarget);
-				if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-				if(this.selectable.audio.voiceOver[index]) this.selectable.audio.voiceOver[index].play();
-				this.complete();
-			}
-		});
 	});
 
 	this.screen('flip', function () {

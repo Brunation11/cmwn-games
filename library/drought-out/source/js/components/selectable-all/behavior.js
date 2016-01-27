@@ -19,7 +19,7 @@ pl.game.component('selectable-all', function () {
 		this.$el = null;
 		this.$collection = null;
 		this.$viewport = null;
-		this.shouldRecycel = true;
+		this.shouldRecycle = true;
 
 		this.init = function (_$collection, _$viewport) {
 			this.$collection = _$collection;
@@ -38,9 +38,9 @@ pl.game.component('selectable-all', function () {
 		this.recycle = function () {
 			var $clone;
 
-			if (!this.shouldRecycel) return;
+			if (!this.shouldRecycle) return;
 
-			$clone = $(pl.util.random(this.$collection)).clone();
+			$clone = $(pl.util.random(this.$collection.not(".HIGHLIGHTED"))).clone();
 			$clone.css({
 				transitionDuration: (pl.util.random(7, 15)*(1+Math.random()))+'s'
 			});
@@ -108,7 +108,7 @@ pl.game.component('selectable-all', function () {
 
 	this.stop = function () {
 		this.columns.forEach(function (_item) {
-			_item.shouldRecycel = false;
+			_item.shouldRecycle = false;
 			_item.$el.removeClass('LAUNCHED').css('transition', 'none');
 		});
 	};
@@ -118,10 +118,11 @@ pl.game.component('selectable-all', function () {
 
 		console.log(this.event.target);
 
-		if (_$target.attr('pl-correct') == null) return;
+		if (_$target.attr('pl-incorrect') != null) return;
 
 		this.screen.requiredQueue.ready(message);
 
+		this.highlight(this.$bin.find('.'+_$target.attr('class')));
 		this.highlight(_$target);
 
 		return {
