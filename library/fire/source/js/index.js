@@ -99,7 +99,9 @@ pl.game('fire', function () {
 			}
 		});
 
-		this.on('ready', function (_event) {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
 			// Screens are display:none then when READY get display:block.
 			// When a screen is OPEN then it transitions a transform,
 			// the delay is to prevent the transition failing to play
@@ -113,7 +115,9 @@ pl.game('fire', function () {
 
 	this.screen('alarm', function() {
 
-		this.on('ready', function() {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
 			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 				this.audio.voiceOver.title.onended = function() {
 					if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
@@ -138,7 +142,9 @@ pl.game('fire', function () {
 					}
 				});
 
-				this.on('ready', function() {
+				this.on('ready', function(_event) {
+					if (!this.is(_event.target)) return;
+
 					if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 						this.audio.voiceOver.title.onended = function() {
 							if(this.audio.voiceOver.police) this.audio.voiceOver.police.play();
@@ -163,7 +169,9 @@ pl.game('fire', function () {
 
 	this.screen('menAndWomen', function() {
 
-		this.on('ready', function() {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
 			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 				this.audio.voiceOver.title.onended = function() {
 					if(this.audio.voiceOver.subtitle) this.audio.voiceOver.subtitle.play();
@@ -235,7 +243,9 @@ pl.game('fire', function () {
 				});
 			});
 
-			this.on('ready', function() {
+			this.on('ready', function(_event) {
+				if (!this.is(_event.target)) return;
+
 				if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 					this.audio.voiceOver.title.onended = function() {
 						if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
@@ -247,7 +257,9 @@ pl.game('fire', function () {
 
 	this.screen('break-triangle', function() {
 
-		this.on('ready', function() {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
 			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 				this.audio.voiceOver.title.onended = function() {
 					if(this.audio.voiceOver.heat) this.audio.voiceOver.heat.play();
