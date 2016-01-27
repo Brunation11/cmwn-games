@@ -43,6 +43,32 @@ pl.game('animal-id', function () {
 
 	});
 
+	this.screen('flip', function () {
+
+		this.complete = function (_event) {
+			var eventCategory;
+
+			eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+			this.log('screen complete');
+
+			ga('send', 'event', eventCategory, 'complete');
+
+			return this.proto();
+		};
+
+	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
+
 	this.defineRule = function (_selector_scope, _selector_def, _definition) {
 		var _scope, _selector, source, prop, value;
 		// Resolve arguments.
