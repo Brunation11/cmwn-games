@@ -24,10 +24,9 @@ body {
 	width: 960px;
 	margin: auto;
 	font-size: 20px;
-	background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
 	background-size: cover;
 
-	> .background {
+	.background-component {
 		opacity: 0;
 		transition: opacity .5s;
 		position: absolute;
@@ -37,18 +36,15 @@ body {
 		height: 100%;
 		background-size: cover;
 		background-position: center center;
+		background-repeat: no-repeat;
+
+		&.black {
+			opacity: 1;
+		}
 	}
 
-	.background.fire {
-		background-image: url(../media/_BKG/BKG_3.png);
-	}
-
-	.background.forrest {
-		background-image: url(../media/_BKG/BKG_2.png);
-	}
-
-	&.fire:not(.QUIT-SCREEN) > .background.fire,
-	&.forrest:not(.QUIT-SCREEN) > .background.forrest {
+	&.fire > .background-component.fire,
+	&.forrest > .background-component.forrest {
 		opacity: 1;
 	}
 }
@@ -524,7 +520,6 @@ img.background {
 		height: 140px;
 		left: 410px;
 		top: 250px;
-		background-image: url(../media/S_5/img_5.3.png);
 		background-position: -30px -140px;
 		background-size: 400px auto;
 
@@ -577,7 +572,6 @@ img.background {
 
 						&:nth-of-type(1) {
 							width: 175px;
-							background-image: url(../media/S_6/img_6.2.png);
 							background-position: left 12px;
 
 							&:hover {
@@ -587,7 +581,6 @@ img.background {
 
 						&:nth-of-type(2) {
 							width: 171px;
-							background-image: url(../media/S_6/img_6.3.png);
 							background-position: left 23px;
 
 							&:hover {
@@ -597,12 +590,10 @@ img.background {
 
 						&:nth-of-type(3) {
 							width: 200px;
-							background-image: url(../media/S_6/img_6.4.png);
 						}
 
 						&:nth-of-type(4) {
 							width: 252px;
-							background-image: url(../media/S_6/img_6.5.png);
 							margin-left: -30px
 						}
 					}
@@ -725,7 +716,6 @@ img.background {
 	.draggables {
 		margin: 0;
 		padding: 10px;
-		background-image: url(../media/S_8/img_8.2.png);
 		background-size: 100% 100%;
 		width: 240px;
 		display: inline-block;
@@ -777,7 +767,7 @@ img.background {
 					opacity: 1;
 				}
 
-				&.show {
+				&.OPEN {
 					opacity: 1;
 				}
 			}
@@ -890,14 +880,6 @@ img.background {
 						background-position: left top;
 						margin: 0 25px;
 
-						&:nth-of-type(1) {
-							background-image: url(../media/S_11/img_11.2.png);
-						}
-
-						&:nth-of-type(2) {
-							background-image: url(../media/S_11/img_11.3.png);
-						}
-
 						&:hover {
 							background-position: right top;
 						}
@@ -945,6 +927,7 @@ img.background {
 						background-position: left top;
 						margin: 0 25px;
 
+						// I'm using background-image here because it can be changed depending on choices made in previous frames.
 						&:nth-of-type(1) {
 							background-image: url(../media/S_11/img_11.4.png);
 						}
@@ -1012,7 +995,6 @@ img.background {
 				position: relative;
 				margin: 20px 0 0;
 				padding: 10px;
-				background-image: url(../media/_FRAMES/FR_4.png);
 				background-size: 100% 100%;
 				width: 200px;
 				height: 320px;
@@ -1421,7 +1403,6 @@ img.background {
 	.frame {
 		text-align: center;
 		width: 960px;
-		background-image: url(../media/_Frames/FR_6.png);
 		background-size: 100% 100%;
 		padding: 30px;
 

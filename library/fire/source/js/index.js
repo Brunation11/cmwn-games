@@ -17,6 +17,7 @@ import './components/selectable/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-reveal/behavior';
 import './components/slides/behavior';
+import './components/background/behavior';
 
 pl.game('fire', function () {
 
@@ -172,7 +173,7 @@ pl.game('fire', function () {
 	});
 
 	this.screen('triangle', function() {
-		var characters = [];
+		var characters;
 		/**
 		 * Nodes, including the node of this screen, with a
 		 * attribute of pl-bg will get a background-image style
@@ -181,6 +182,7 @@ pl.game('fire', function () {
 		this.handleProperty({
 			bg: function (_node, _name, _value) {
 				var img = new Image();
+				characters = characters || [];
 
 				img.src = _value;
 				characters.push(img);
@@ -212,8 +214,8 @@ pl.game('fire', function () {
 							_event.state.$helper.addClass('DROPED');
 							
 							this.drop(_event.state.$draggable);
-							if(this[_event.state.$draggable.id()]) this[_event.state.$draggable.id()].addClass('show');
-							if(this[_event.state.$draggable.id()+'Side']) this[_event.state.$draggable.id()+'Side'].addClass('show');
+							this.open(this[_event.state.$draggable.id()]);
+							this.open(this[_event.state.$draggable.id()+'Side']);
 							if(this.isComplete) {
 								this.audio.sfx.complete.play();
 							} else {
