@@ -46,10 +46,7 @@ pl.game('animal-id', function () {
 	this.screen('flip', function () {
 
 		this.complete = function (_event) {
-			var eventCategory;
-
-			eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
-			this.log('screen complete');
+			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
 
 			ga('send', 'event', eventCategory, 'complete');
 
