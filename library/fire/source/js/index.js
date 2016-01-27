@@ -245,7 +245,7 @@ pl.game('fire', function () {
 		});
 	});
 
-	this.screen('breakTriangle', function() {
+	this.screen('break-triangle', function() {
 
 		this.on('ready', function() {
 			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
