@@ -9,3 +9,12 @@
 	.dropzone-component .area:active {
 		box-shadow: 0px 0px 5px #05a;
 	}
+
+.draggable.RETURN {
+	transition: transform .5s;
+}
+
+.draggable.DROPED {
+	transition: opacity .5s;
+	opacity: 0;
+}
