@@ -117,20 +117,20 @@ button {
 	&.quit-yes {
 		width: 170px;
 		height: 90px;
-		background-position: 330px 490px;
+		background-position: 330px 280px;
 
 		&:hover {
-			background-position: 330px 360px;
+			background-position: 330px 120px;
 		}
 	}
 
 	&.quit-no {
 		width: 170px;
 		height: 90px;
-		background-position: 170px 490px;
+		background-position: 170px 280px;
 
 		&:hover {
-			background-position: 170px 360px;
+			background-position: 170px 120px;
 		}
 	}
 
@@ -354,71 +354,70 @@ img.inline {
 			height: 40px;
 			margin: 5px 40px 5px 0;
 
+			&.HIGHLIGHTED,
 			&:hover {
 				background-position: right center;
 			}
 
 			&.dry {
-				width: 65px;
+				width: 67px;
 			}
 
 			&.green {
-				width: 109px;
+				width: 112px;
 			}
 
 			&.parched {
-				width: 147px;
+				width: 150px;
 			}
 
 			&.monsoon {
-				width: 160px;
+				width: 164px;
 			}
 
 			&.damp {
-				width: 102px;
+				width: 104px;
 			}
 
 			&.dusty {
-				width: 107px;
+				width: 109px;
 			}
 
 			&.hot {
-				width: 66px;
+				width: 67px;
 			}
 
 			&.no-water {
-				width: 166px;
+				width: 169px;
 			}
 
 			&.thirsty {
-				width: 131px;
+				width: 135px;
 			}
 
 			&.wet {
-				width: 72px;
+				width: 74px;
 			}
 
 			&.tropical {
-				width: 148px;
-			}
-
-			&.arid {
-				width: 76px;
-			}
-
-			&.steamy {
-				width: 137px;
-			}
-
-			&.balmy {
-				width: 114px;
-			}
-
-			&.swampy {
 				width: 152px;
 			}
 
+			&.arid {
+				width: 78px;
+			}
 
+			&.steamy {
+				width: 139px;
+			}
+
+			&.balmy {
+				width: 117px;
+			}
+
+			&.swampy {
+				width: 155px;
+			}
 		}
 	}
 }
@@ -464,6 +463,25 @@ img.inline {
 			width: 340px;
 			left: 40px;
 			top: 40px;
+		}
+	}
+}
+
+#balloons {
+	.viewport {
+		padding: 0;
+		width: 800px;
+		margin: 0 80px;
+	}
+
+	li {
+		width: 160px;
+		height: 200px;
+		background-size: auto 100%;
+		background-position: left center;
+
+		&.HIGHLIGHTED {
+			background-position: right center;
 		}
 	}
 }
@@ -515,6 +533,7 @@ img.inline {
 				background-size: auto 100%;
 				background-position: left top;
 
+				&.HIGHLIGHTED,
 				&:hover {
 					background-position: right top;
 				}
@@ -523,7 +542,7 @@ img.inline {
 	}
 
 	.reveal-component {
-		margin-top: -55px;
+		margin-top: -50px;
 
 		.frame {
 			position: relative;
@@ -538,6 +557,14 @@ img.inline {
 				left: 310px;
 				top: 18px;
 				transform: translateX(-50%);
+			}
+
+			.items {
+				li {
+					position: absolute;
+					width: 100%;
+					top: 200px;
+				}
 			}
 		}
 	}
@@ -756,6 +783,16 @@ img.inline {
 		text-align: center;
 		box-sizing: border-box;
 		padding: 100px 80px;
+		color: #000;
+
+		.background {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
 
 		h2 {
 			margin: 0;

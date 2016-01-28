@@ -20,8 +20,22 @@ import './components/background/behavior';
 
 pl.game('drought-out', function () {
 
+	var selectScreen = function() {
+		this.respond('select', function(_event) {
+			var vo;
+
+			if(_event.behaviorTarget.attr('pl-correct') == null) {
+				vo = this.audio.sfx.incorrect;
+			} else {
+				this.highlight(_event.behaviorTarget);
+				vo = this.selectable.audio.voiceOver[_event.message];
+			}
+
+			if(vo) vo.play();
+		});
+	};
+
 	this.screen('title', function () {
-		
 		this.ready = function () {
 			this.open();
 			this.close($('#loader'));
@@ -44,8 +58,9 @@ pl.game('drought-out', function () {
 
 	});
 
-	this.screen('info-no-water', function() {
+	this.screen('think', selectScreen);
 
+	this.screen('info-no-water', function() {
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;
 
@@ -58,7 +73,6 @@ pl.game('drought-out', function () {
 	});
 
 	this.screen('info-environment', function() {
-
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;
 
@@ -67,6 +81,47 @@ pl.game('drought-out', function () {
 					if(this.audio.voiceOver.letsLook) this.audio.voiceOver.letsLook.play();
 				}.bind(this);
 			}
+		});
+	});
+
+	this.screen('what-can-we-do', selectScreen);
+
+	this.screen('info-drain', function() {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
+			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.info) {
+				this.audio.voiceOver.info.onended = function() {
+					if(this.audio.sfx.drain) this.audio.sfx.drain.play();
+				}.bind(this);
+			}
+		});
+	});
+
+	this.screen('shower', function() {
+		this.respond('select', function(_event) {
+			var vo;
+
+			if(_event.behaviorTarget.attr('pl-correct') == null) {
+				vo = this.audio.sfx.incorrect;
+			} else {
+				this.highlight(_event.behaviorTarget);
+				vo = this.selectable.audio.voiceOver[_event.message];
+			}
+
+			if(vo) vo.play();
+		});
+
+		this.entity('selectable', function () {
+			
+			this.shouldSelect = function (_$target) {
+				if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
+					return !this.screen.state(this.STATE.VOICE_OVER);
+				}
+
+				return false; 
+			};
+
 		});
 	});
 

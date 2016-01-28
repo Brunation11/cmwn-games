@@ -1,14 +1,15 @@
 pl.game.component('selectable', function () {
 
 	this.behavior('select', function (_target) {
-		var $target;
+		var $target, message;
 
 		if (this.event) {
 			$target = $(this.event.target).closest('li');
+			message = $target.id() || $target.index();
 
 			if (this.shouldSelect($target) !== false) {
 				return {
-					message: $target.index(),
+					message,
 					behaviorTarget: $target
 				};
 			}	
@@ -22,7 +23,7 @@ pl.game.component('selectable', function () {
 	});
 
 	this.shouldSelect = function (_target) {
-		return true;
+		return !this.screen.state(this.STATE.VOICE_OVER);
 	};
 
 });

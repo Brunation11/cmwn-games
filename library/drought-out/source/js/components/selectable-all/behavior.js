@@ -78,7 +78,7 @@ pl.game.component('selectable-all', function () {
 	this.$bin = null;
 	this.columns = null;
 	
-	this.init = function () {
+	this.on('ready', function () {
 		this.$viewport = this.find('.viewport');
 		this.$bin = this.find('.bin li');
 		this.columns = [];
@@ -90,7 +90,7 @@ pl.game.component('selectable-all', function () {
 			message = $node.attr('pl-message')
 
 			if ($node.attr('pl-correct') != null) {
-				this.screen.require(message);	
+				this.screen.require(message);
 			}
 			
 		}));
@@ -98,7 +98,7 @@ pl.game.component('selectable-all', function () {
 		populateViewport.call(this);
 
 		return this;
-	};
+	});
 
 	this.start = function () {
 		this.columns.forEach(function (_item) {

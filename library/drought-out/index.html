@@ -61,29 +61,29 @@
 				What do you think of when you hear<br> the word <img class="inline" src="media/S_2/img_2.1.png">
 			</p>
 			<div pl-component="selectable">
-				<audio class="voice-over" src="media/S_2/VO_2.2.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.3.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.4.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.5.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.6.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.7.mp3" preload pl-required pl-dontautoplay></audio>
-				<audio class="voice-over" src="media/S_2/VO_2.8.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="dry" src="media/S_2/VO_2.2.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="parched" src="media/S_2/VO_2.3.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="dusty" src="media/S_2/VO_2.4.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="hot" src="media/S_2/VO_2.5.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="noWater" src="media/S_2/VO_2.6.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="thirsty" src="media/S_2/VO_2.7.mp3" preload pl-required pl-dontautoplay></audio>
+				<audio class="voice-over" pl-id="arid" src="media/S_2/VO_2.8.mp3" preload pl-required pl-dontautoplay></audio>
 				<ul class="items" pl-action="select()">
-					<li class="dry" pl-bg="media/S_2/img_2.2.png"></li>
-					<li class="green" pl-bg="media/S_2/img_2.3.png"></li>
-					<li class="parched" pl-bg="media/S_2/img_2.4.png"></li>
-					<li class="monsoon" pl-bg="media/S_2/img_2.5.png"></li>
-					<li class="damp" pl-bg="media/S_2/img_2.6.png"></li>
-					<li class="dusty" pl-bg="media/S_2/img_2.7.png"></li>
-					<li class="hot" pl-bg="media/S_2/img_2.8.png"></li>
-					<li class="no-water" pl-bg="media/S_2/img_2.9.png"></li>
-					<li class="thirsty" pl-bg="media/S_2/img_2.10.png"></li>
-					<li class="wet" pl-bg="media/S_2/img_2.11.png"></li>
-					<li class="tropical" pl-bg="media/S_2/img_2.12.png"></li>
-					<li class="arid" pl-bg="media/S_2/img_2.13.png"></li>
-					<li class="steamy" pl-bg="media/S_2/img_2.14.png"></li>
-					<li class="balmy" pl-bg="media/S_2/img_2.15.png"></li>
-					<li class="swampy" pl-bg="media/S_2/img_2.16.png"></li>
+					<li class="dry" pl-id="dry" pl-bg="media/S_2/img_2.2.png" pl-correct></li>
+					<li class="green" pl-id="green" pl-bg="media/S_2/img_2.3.png"></li>
+					<li class="parched" pl-id="parched" pl-bg="media/S_2/img_2.4.png" pl-correct></li>
+					<li class="monsoon" pl-id="monsoon" pl-bg="media/S_2/img_2.5.png"></li>
+					<li class="damp" pl-id="damp" pl-bg="media/S_2/img_2.6.png"></li>
+					<li class="dusty" pl-id="dusty" pl-bg="media/S_2/img_2.7.png" pl-correct></li>
+					<li class="hot" pl-id="hot" pl-bg="media/S_2/img_2.8.png" pl-correct></li>
+					<li class="no-water" pl-id="noWater" pl-bg="media/S_2/img_2.9.png" pl-correct></li>
+					<li class="thirsty" pl-id="thirsty" pl-bg="media/S_2/img_2.10.png" pl-correct></li>
+					<li class="wet" pl-id="wet" pl-bg="media/S_2/img_2.11.png"></li>
+					<li class="tropical" pl-id="tropical" pl-bg="media/S_2/img_2.12.png"></li>
+					<li class="arid" pl-id="arid" pl-bg="media/S_2/img_2.13.png" pl-correct></li>
+					<li class="steamy" pl-id="steamy" pl-bg="media/S_2/img_2.14.png"></li>
+					<li class="balmy" pl-id="balmy" pl-bg="media/S_2/img_2.15.png"></li>
+					<li class="swampy" pl-id="swampy" pl-bg="media/S_2/img_2.16.png"></li>
 				</ul>
 			</div>
 		</div>
@@ -144,21 +144,21 @@
 			<audio class="voice-over" src="media/S_7/VO_7.15.mp3" preload pl-required></audio>
 			<ul class="viewport" pl-action="pick(target())"></ul>
 			<ul class="bin">
-				<li class="b" pl-message="bathing"></li>
-				<li class="d" pl-message="drinking"></li>
-				<li class="wd" pl-message="washing dishes"></li>
-				<li class="s" pl-message="swimming"></li>
-				<li class="c" pl-message="canoeing"></li>
-				<li class="f" pl-message="factories"></li>
-				<li class="bt" pl-message="brushing teeth"></li>
-				<li class="e" pl-message="electricity"></li>
-				<li class="g" pl-message="growing food"></li>
-				<li class="ws" pl-message="water slides"></li>
-				<li class="r" pl-message="rafting"></li>
-				<li class="l" pl-message="lawns"></li>
-				<li class="c" pl-message="cooking"></li>
-				<li class="f" pl-message="flowers"></li>
-				<li class="a" pl-message="animal feed"></li>
+				<li class="b" pl-message="bathing" pl-bg="media/S_7/img_7.1.png"></li>
+				<li class="d" pl-message="drinking" pl-bg="media/S_7/img_7.2.png"></li>
+				<li class="wd" pl-message="washing dishes" pl-bg="media/S_7/img_7.5.png"></li>
+				<li class="s" pl-message="swimming" pl-bg="media/S_7/img_7.6.png"></li>
+				<li class="c" pl-message="canoeing" pl-bg="media/S_7/img_7.3.png"></li>
+				<li class="f" pl-message="factories" pl-bg="media/S_7/img_7.4.png"></li>
+				<li class="bt" pl-message="brushing teeth" pl-bg="media/S_7/img_7.7.png"></li>
+				<li class="e" pl-message="electricity" pl-bg="media/S_7/img_7.8.png"></li>
+				<li class="g" pl-message="growing food" pl-bg="media/S_7/img_7.12.png"></li>
+				<li class="ws" pl-message="water slides" pl-bg="media/S_7/img_7.11.png"></li>
+				<li class="r" pl-message="rafting" pl-bg="media/S_7/img_7.10.png"></li>
+				<li class="l" pl-message="lawns" pl-bg="media/S_7/img_7.13.png"></li>
+				<li class="c" pl-message="cooking" pl-bg="media/S_7/img_7.9.png"></li>
+				<li class="f" pl-message="flowers" pl-bg="media/S_7/img_7.14.png"></li>
+				<li class="a" pl-message="animal feed" pl-bg="media/S_7/img_7.15.png"></li>
 			</ul>
 		</div>
 	</section>
@@ -186,9 +186,9 @@
 	<!-- 10 -->
 	<section id="environment-effects" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/S_10/VO_10.1.mp3" preload pl-required></audio>
-		<div pl-component="selectable-reveal">
-			<div pl-component="selectable" pl-select-state="highlight">
-				<ul class="items" pl-action="select">
+		<div pl-component="selectable-reveal" pl-select-state="highlight">
+			<div pl-component="selectable">
+				<ul class="items" pl-action="select()">
 					<li pl-bg="media/S_10/img_10.1.png"></li>
 					<li pl-bg="media/S_10/img_10.2.png"></li>
 					<li pl-bg="media/S_10/img_10.3.png"></li>
@@ -228,9 +228,9 @@
 	<!-- 12 -->
 	<section id="human-effects" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/S_12/VO_12.1.mp3" preload pl-required></audio>
-		<div pl-component="selectable-reveal">
-			<div pl-component="selectable" pl-select-state="highlight">
-				<ul class="items" pl-action="select">
+		<div pl-component="selectable-reveal" pl-select-state="highlight">
+			<div pl-component="selectable">
+				<ul class="items" pl-action="select()">
 					<li pl-bg="media/S_12/img_12.1.png"></li>
 					<li pl-bg="media/S_12/img_12.2.png"></li>
 					<li pl-bg="media/S_12/img_12.3.png"></li>
@@ -260,11 +260,11 @@
 
 	<!-- 13 -->
 	<section id="what-can-we-do" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/S_13/VO_13.2.mp3" preload pl-required></audio>
+		<audio class="voice-over" src="media/S_13/VO_13.1.mp3" preload pl-required></audio>
 		<img src="media/S_13/img_13.1.png">
-		<div class="bt flip-card" pl-component="selectable" pl-select-state="highlight" pl-required>
+		<div class="bt flip-card" pl-component="selectable" pl-select-state="highlight">
 			<audio pl-id="correct" class="sfx" src="media/S_13/S_13.1.mp3" preload></audio>
-			<audio pl-id="conservation" class="voice-over" src="media/S_13/VO_13.1.mp3" preload></audio>
+			<audio pl-id="conservation" class="voice-over" src="media/S_13/VO_13.2.mp3" preload pl-required pl-dontautoplay></audio>
 			<ul class="items" pl-action="select()">
 				<li pl-id="conservation" pl-correct>
 					<div class="side b center inline" pl-bg="media/S_13/img_13.2.png"></div>
@@ -276,8 +276,8 @@
 
 	<!-- 14 -->
 	<section id="info-drain" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
-		<audio class="background" src="media/S_14/S_14.1.mp3" preload pl-required></audio>
+		<audio pl-id="info" class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/S_14/S_14.1.mp3" preload></audio>
 		<audio pl-id="drain" class="sfx" src="media/S_14/S_14.2.mp3" preload pl-required></audio>
 		<img src="media/S_14/img_14.1.png">
 		<p>
@@ -288,7 +288,7 @@
 	<!-- 15 -->
 	<section id="info-using-less" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/S_15/VO_15.1.mp3" preload pl-required></audio>
-		<audio pl-id="start" class="background" src="media/S_15/S_15.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/S_15/S_15.1.mp3" preload></audio>
 		<img src="media/S_15/img_15.1.png">
 		<p>
 			Using less<br> adds up!
@@ -301,11 +301,11 @@
 		<audio class="background" src="media/S_16/S_16.1.mp3" preload></audio>
 		<img src="media/S_16/img_16.1.png">
 		<p>Turn each card.</p>
-		<div class="bt flip-card" pl-component="selectable" pl-select-state="highlight" pl-required>
+		<div class="bt flip-card" pl-component="selectable" pl-select-state="highlight">
 			<audio pl-id="correct" class="sfx" src="media/S_16/S_16.2.mp3" preload></audio>
-			<audio pl-id="day" class="voice-over" src="media/S_16/VO_16.2.mp3" preload pl-dontautoplay></audio>
-			<audio pl-id="week" class="voice-over" src="media/S_16/VO_16.3.mp3" preload pl-dontautoplay></audio>
-			<audio pl-id="year" class="voice-over" src="media/S_16/VO_16.4.mp3" preload pl-dontautoplay></audio>
+			<audio pl-id="day" class="voice-over" src="media/S_16/VO_16.2.mp3" preload pl-required pl-dontautoplay></audio>
+			<audio pl-id="week" class="voice-over" src="media/S_16/VO_16.3.mp3" preload pl-required pl-dontautoplay></audio>
+			<audio pl-id="year" class="voice-over" src="media/S_16/VO_16.4.mp3" preload pl-required pl-dontautoplay></audio>
 			<ul class="items" pl-action="select()">
 				<li pl-id="day" pl-correct>
 					<div class="side b center inline" pl-bg="media/S_16/img_16.2.png"></div>
