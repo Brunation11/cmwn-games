@@ -78,7 +78,7 @@ pl.game.component('selectable-all', function () {
 	this.$bin = null;
 	this.columns = null;
 	
-	this.on('ready', function () {
+	this.init = function () {
 		this.$viewport = this.find('.viewport');
 		this.$bin = this.find('.bin li');
 		this.columns = [];
@@ -98,7 +98,7 @@ pl.game.component('selectable-all', function () {
 		populateViewport.call(this);
 
 		return this;
-	});
+	};
 
 	this.start = function () {
 		this.columns.forEach(function (_item) {
