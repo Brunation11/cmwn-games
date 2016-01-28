@@ -72,6 +72,22 @@ pl.game('drought-out', function () {
 		});
 	});
 
+	this.screen('balloons', function() {
+		this.respond('pick', function(_event) {
+			console.log(_event);
+			var vo;
+
+			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
+				vo = this.audio.sfx.incorrect;
+			} else {
+				this.highlight(_event.behaviorTarget);
+				vo = this.selectableAll.audio.voiceOver[_event.message];
+			}
+
+			if(vo) vo.play();
+		});
+	});
+
 	this.screen('info-environment', function() {
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;

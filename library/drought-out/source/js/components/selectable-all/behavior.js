@@ -89,7 +89,7 @@ pl.game.component('selectable-all', function () {
 			$node = $(_node);
 			message = $node.attr('pl-message')
 
-			if ($node.attr('pl-correct') != null) {
+			if ($node.attr('pl-incorrect') == null) {
 				this.screen.require(message);
 			}
 			
@@ -113,16 +113,19 @@ pl.game.component('selectable-all', function () {
 		});
 	};
 
+	this.shouldSelect = function (_$target) {
+		return !this.screen.state(this.STATE.VOICE_OVER);
+	};
+
 	this.behavior('pick', function (_$target) {
 		var message = _$target.attr('pl-message');
 
-		console.log(this.event.target);
-
 		if (_$target.attr('pl-incorrect') != null) return;
+		if(!this.shouldSelect(_$target)) return;
 
 		this.screen.requiredQueue.ready(message);
 
-		this.highlight(this.$bin.find('.'+_$target.attr('class')));
+		this.highlight(this.$bin.filter('.'+_$target.attr('class').split(" ")[0]));
 		this.highlight(_$target);
 
 		return {
