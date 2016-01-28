@@ -5,6 +5,7 @@ pl.game.component('dropzone', function () {
 		this.cache = null;
 
 		this.respond('grab', function () {
+			this.audio.sfx.drag.play();
 			this.cache = {
 				position: this.absolutePosition(),
 				size: this.size()
@@ -14,16 +15,21 @@ pl.game.component('dropzone', function () {
 		this.respond('release', function (_event) {
 			if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
 				if (this.takes(_event.state.$draggable.id())) {
-					_event.state.$draggable.removeClass('PLUCKED');
+					_event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
 					_event.state.$helper.addClass('DROPED');
 					
 					this.drop(_event.state.$draggable);
+					this.audio.sfx.correct.play();
 					
 					return;
 				}
+
+				else {
+					this.audio.sfx.incorrect.play()
+				}
 			}
 
-			_event.state.$helper.addClass('RETURN');
+			_event.state.$helper.addClass('RETURN').css('transform', 'translateX(0px) translateY(0px)');
 		});
 
 	});
@@ -63,6 +69,7 @@ pl.game.component('dropzone', function () {
 		this.requiredQueue.ready(_$thing.id());
 
 		return {
+			message: _$thing.id(),
 			behaviorTarget: _$thing
 		};
 	});
