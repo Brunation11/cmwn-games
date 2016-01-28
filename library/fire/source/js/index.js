@@ -348,7 +348,7 @@ pl.game('fire', function () {
 				});
 
 				this.respond('drop', function(_event) {
-					this.reveal.item(_event.message);
+					this.modal.item(_event.message);
 				});
 			});
 		});
