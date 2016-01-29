@@ -770,9 +770,13 @@ img.inline {
 	}
 
 	&.OPEN {
-		.flip {
-			-webkit-animation-name: rubberBand;
-			animation-name: rubberBand;
+		img {
+			-webkit-animation-name: shake;
+			-webkit-animation-delay: 11s;
+			-webkit-animation-iteration-count: 3;
+			animation-name: shake;
+			animation-delay: 11s;
+			animation-iteration-count: 3;
 		}
 	}
 }

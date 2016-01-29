@@ -112,4 +112,16 @@ pl.game.component('screen-basic', function () {
 			this.stop();
 		}
 	});
+
+	this.on('ready', function () {
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) sfx.play();
+			}));
+		}
+	});
 });
