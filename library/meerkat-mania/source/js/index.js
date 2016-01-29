@@ -93,6 +93,12 @@ pl.game('meerkat-mania', function () {
 		this.next = function () {
 			this.game.quit.okay();
 		};
+
+		this.on('ui-open', function() {
+			this.delay('4.5s', function() {
+				if(this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
+			});
+		});
 	});
 
 
