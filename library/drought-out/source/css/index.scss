@@ -475,10 +475,11 @@ img.inline {
 	}
 
 	li {
-		width: 160px;
+		width: 180px;
 		height: 200px;
-		background-size: auto 100%;
+		background-size: 200% auto;
 		background-position: left center;
+		cursor: pointer;
 
 		&.HIGHLIGHTED {
 			background-position: right center;
@@ -534,7 +535,8 @@ img.inline {
 				background-position: left top;
 
 				&.HIGHLIGHTED,
-				&:hover {
+				&:nth-of-type(1):hover,
+				&.HIGHLIGHTED + li:hover {
 					background-position: right top;
 				}
 			}

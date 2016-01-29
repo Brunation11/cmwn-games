@@ -41,6 +41,7 @@ pl.game.component('selectable-all', function () {
 			if (!this.shouldRecycle) return;
 
 			$clone = $(pl.util.random(this.$collection.not(".HIGHLIGHTED"))).clone();
+			if($clone.length === 0) $clone = $('<li>');
 			$clone.css({
 				transitionDuration: (pl.util.random(7, 15)*(1+Math.random()))+'s'
 			});
