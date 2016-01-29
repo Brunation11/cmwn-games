@@ -140,6 +140,33 @@ pl.game('drought-out', function () {
 		});
 	});
 
+	this.screen('conserve', function() {
+		var item = 0;
+
+		this.behavior('openDoor', function() {
+			if(!this.state(this.STATE.VOICE_OVER)) {
+				this.select(this);
+				this.reveal.item(item++);
+				this.audio.sfx.open.play();
+			}
+		});
+
+		this.behavior('ended', function() {
+			this.audio.sfx.close.play();
+			this.deselect(this);
+		});
+
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+
+			if(this.reveal && this.reveal.audio && this.reveal.audio.voiceOver) {
+				this.reveal.audio.voiceOver.forEach(function(audio) {
+					audio.onended = this.ended.bind(this);
+				}.bind(this));
+			}
+		});
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();

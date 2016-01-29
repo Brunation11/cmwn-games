@@ -3,6 +3,8 @@ pl.game.component('reveal', function () {
 	this.item = function (_id) {
 		var vo, index;
 
+		console.log(_id);
+
 		if (typeof _id === 'number') {
 			this.select(this.find('li').eq(_id));
 			this.audio.voiceOver[_id].play();
