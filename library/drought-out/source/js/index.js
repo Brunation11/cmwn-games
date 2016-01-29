@@ -74,7 +74,7 @@ pl.game('drought-out', function () {
 
 	this.screen('balloons', function() {
 		this.respond('pick', function(_event) {
-			var vo;
+			var vo, sfx;
 
 			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
 				vo = this.audio.sfx.incorrect;
@@ -83,7 +83,32 @@ pl.game('drought-out', function () {
 				vo = this.selectableAll.audio.voiceOver[_event.message];
 			}
 
+			switch(_event.message) {
+				case "bathing":
+				case "drinking":
+				case "canoeing":
+				case "factories":
+				case "lawns":
+				case "flowers":
+				case "animalFeed":
+					sfx = this.audio.sfx.yellow;
+					break;
+				case "washingDishes":
+				case "swimming":
+				case "brushingTeeth":
+				case "electricity":
+					sfx = this.audio.sfx.green;
+					break;
+				case "cooking":
+				case "rafting":
+				case "waterSlides":
+				case "growingFood":
+					sfx = this.audio.sfx.red;
+					break;
+			}
+
 			if(vo) vo.play();
+			if(sfx) sfx.play();
 		});
 	});
 
