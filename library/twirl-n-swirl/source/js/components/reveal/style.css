@@ -8,7 +8,6 @@
 		.reveal-component > ul > li {
 			list-style: none;
 			opacity: 0;
-			transition: opacity 0.5s;
 			z-index: -1;
 		}
 

@@ -59,20 +59,30 @@ export default function flushIt () {
 		});
 
 	});
-	
+	/**
+	 * Adds an ability for the screen to respond to items droped in the
+	 * toilet bowl. Its responsibility is to show the reveal via the
+	 * dropped item's ID and disable draggable bins.
+	 */
 	this.respond('drop', function (_event) {
 		var id = _event.behaviorTarget.id();
 
 		this.toilet.reveal.item(id);
 		this.disable('.draggables');
 	});
-
+	/**
+	 * Show the instructional modal when the screen starts.
+	 */
 	this.start = function () {
 		this.delay('1.5s', function () {
 			this.modalReveal.item(0);
 		});
 	};
-
+	/**
+	 * The flush button action.
+	 * Here we animate the dropped item flushing and display the modal
+	 * by the item's ID.
+	 */
 	this.flush = function () {
 		var current = this.reveal.currentItem();
 		var sfx = pl.util.resolvePath(this, 'game.audio.sfx.flush');
