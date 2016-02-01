@@ -84,6 +84,9 @@ pl.game.component('selectable-canvas', function () {
 	this.deselectAll = function() {
 		this.deselect(this.find('li.SELECTED'));
 	}
-	
+
+	this.uncompleteAll = function() {
+		this.find('li.COMPLETE').removeClass('COMPLETE');
+	}
 
 });

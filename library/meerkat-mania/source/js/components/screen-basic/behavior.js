@@ -18,7 +18,7 @@ pl.game.component('screen-basic', function () {
 		nextScreen = this.proto();
 		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		if (nextScreen) {
+		if (nextScreen && (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode)) {
 			this.leave();
 			nextScreen.open();
 			if (buttonSound) buttonSound.play();

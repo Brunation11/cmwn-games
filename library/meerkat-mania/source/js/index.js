@@ -63,6 +63,15 @@ pl.game('meerkat-mania', function () {
 		this.respond('closeAll', function(didClose) {
 			if(didClose) this.selectableCanvas.deselectAll();
 		});
+
+		this.entity('selectable-canvas', function() {
+			this.start = function() {
+				this.ready();
+				this.deselectAll();
+				this.uncompleteAll();
+				this.reveal.item(6);
+			};
+		});
 	});
 
 	this.screen('video', function() {
