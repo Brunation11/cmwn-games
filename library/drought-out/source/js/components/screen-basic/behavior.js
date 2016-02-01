@@ -17,6 +17,11 @@ pl.game.component('screen-basic', function () {
 			$(_node).css('background-image', 'url('+_value+')');
 		}
 	});
+
+	this.on('initialize', function (_event) {
+		if (!this.is(_event.targetScope)) return;
+		this.watchAssets(characters);
+	});
 	
 	this.playSound = function (_sound) {
 		var delay;
