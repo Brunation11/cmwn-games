@@ -60,18 +60,6 @@ pl.game('drought-out', function () {
 
 	this.screen('think', selectScreen);
 
-	this.screen('info-no-water', function() {
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver) {
-				this.audio.voiceOver.onended = function() {
-					if(this.audio.sfx) this.audio.sfx.play();
-				}.bind(this);
-			}
-		});
-	});
-
 	this.screen('balloons', function() {
 		this.respond('pick', function(_event) {
 			var vo, sfx;

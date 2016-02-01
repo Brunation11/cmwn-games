@@ -15,6 +15,12 @@ pl.game.component('screen-basic', function () {
 			img.src = _value;
 			characters.push(img);
 			$(_node).css('background-image', 'url('+_value+')');
+		},
+		'play-next': function (_node, _name, _value) {
+			_node.onended = function() {
+				var audio = _value && pl.util.resolvePath(this, _value);
+				if(audio) this.playSound(audio);
+			}.bind(this);
 		}
 	});
 
