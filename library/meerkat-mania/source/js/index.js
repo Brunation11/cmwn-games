@@ -47,28 +47,25 @@ pl.game('meerkat-mania', function () {
 	this.screen('roles', function () {
 
 		this.respond('select', function (_event) {
-			var index, stateMethod;
-
-			index = _event.message;
-			stateMethod = this.properties.selectState || 'select';
+			var index = _event.message;
 
 			if (Number.isInteger(index) && ~index) {
-				this[stateMethod](_event.behaviorTarget);
-				_event.behaviorTarget.addClass('COMPLETE');
+				this.highlight(_event.behaviorTarget);
+				this.selectableCanvas.activate(_event.behaviorTarget);
 				this.reveal.item(index);
 				// if(this.audio.sfx.correct) this.audio.sfx.correct.play();
 			}
 		});
 
 		this.respond('closeAll', function(didClose) {
-			if(didClose) this.selectableCanvas.deselectAll();
+			if(didClose) this.selectableCanvas.deactivateAll();
 		});
 
 		this.entity('selectable-canvas', function() {
 			this.start = function() {
 				this.ready();
-				this.deselectAll();
-				this.uncompleteAll();
+				this.deactivateAll();
+				this.unhighlightAll();
 				this.reveal.item(6);
 			};
 		});

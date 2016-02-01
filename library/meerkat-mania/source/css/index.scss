@@ -459,11 +459,11 @@ p {
 
 				}
 
-				&.COMPLETE img {
+				&.HIGHLIGHTED img {
 					opacity: 1;
 				}
 
-				&.SELECTED {
+				&.ACTIVE {
 
 					&:before {
 						content: "";
