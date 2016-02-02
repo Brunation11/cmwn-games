@@ -296,6 +296,14 @@ img.inline {
 		width: 860px;
 		height: 520px;
 		margin: 10px auto;
+
+		p:only-child {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&.OPEN {
@@ -312,6 +320,14 @@ img.inline {
 		width: 600px;
 		height: 400px;
 		margin: 10px 300px;
+
+		p:only-child {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&.OPEN {
@@ -462,7 +478,7 @@ img.inline {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
-				transition: transform .5s 6.5s;
+				transition: transform .5s 13s;
 				// -webkit-animation-name: slideInDown;
 				// -webkit-animation-delay: 7s;
 				// animation-name: slideInDown;
@@ -491,22 +507,41 @@ img.inline {
 	}
 }
 
+@keyframes floatUp {
+	0% {top:560px;}
+	100% {top:-220px;}
+}
+
+$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
+$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
+
 #balloons {
-	.viewport {
+	.items {
+		position: absolute;
 		padding: 0;
 		width: 800px;
+		height: 540px;
+		top: 0;
 		margin: 0 80px;
-	}
+		display: block;
 
-	li {
-		width: 180px;
-		height: 200px;
-		background-size: 200% auto;
-		background-position: left center;
-		cursor: pointer;
+		li {
+			position: absolute;
+			width: 180px;
+			height: 200px;
+			background-size: 200% auto;
+			background-position: left center;
+			cursor: pointer;
+			top: 560px;
 
-		&.HIGHLIGHTED {
-			background-position: right center;
+			// &:hover {
+			// 	background-position: center center;
+			// }
+
+			&.HIGHLIGHTED {
+				background-position: right center;
+				pointer-events: none;
+			}
 		}
 	}
 
@@ -514,6 +549,25 @@ img.inline {
 		width: 640px;
 		display: block;
 		margin: 10px auto;
+	}
+
+	&.OPEN {
+		.items {
+			li {
+				animation: floatUp 8s infinite linear;
+
+				@for $i from 1 through 15{
+					&:nth-of-type(#{$i}){
+						// the following equation follows this pattern
+						// (interval * $i) % range + min
+						$left: (-15 * $i) % 80 + 0;
+						left: percentage($left / 100);
+						animation-delay: nth($delays, ($i % 15) + 1);
+						animation-duration: nth($durations, ($i % 15) + 1);
+					}
+				}
+			}
+		}
 	}
 }
 

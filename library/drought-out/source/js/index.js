@@ -61,14 +61,14 @@ pl.game('drought-out', function () {
 	this.screen('think', selectScreen);
 
 	this.screen('balloons', function() {
-		this.respond('pick', function(_event) {
+		this.respond('select', function(_event) {
 			var vo, sfx;
 
 			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
 				vo = this.audio.sfx.incorrect;
 			} else {
 				this.highlight(_event.behaviorTarget);
-				vo = this.selectableAll.audio.voiceOver[_event.message];
+				vo = this.selectable.audio.voiceOver[_event.message];
 			}
 
 			switch(_event.message) {
