@@ -350,22 +350,24 @@ img.background {
 		img {
 			&:nth-of-type(2) {
 				-webkit-animation-name: zoomInUp;
+				-webkit-animation-delay: 2s;
 				animation-name: zoomInUp;
+				animation-delay: 2s;
 			}
 
 			&:nth-of-type(3) {
 				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 1s;
+				-webkit-animation-delay: 3s;
 				animation-name: fadeInRightBig;
-				animation-delay: 1s;
+				animation-delay: 3s;
 			}
 		}
 
 		h2 {
 			-webkit-animation-name: fadeIn;
-			-webkit-animation-delay: 2s;
+			-webkit-animation-delay: 4s;
 			animation-name: fadeIn;
-			animation-delay: 2s;
+			animation-delay: 4s;
 		}
 	}
 }
@@ -415,35 +417,37 @@ img.background {
 		img {
 			&:nth-of-type(1) {
 				-webkit-animation-name: bounceInDown;
+				-webkit-animation-delay: 4s;
 				animation-name: bounceInDown;
+				animation-delay: 4s;
 			}
 
 			&:nth-of-type(2) {
 				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: .75s;
+				-webkit-animation-delay: 4.75s;
 				animation-name: fadeInRightBig;
-				animation-delay: .75s;
+				animation-delay: 4.75s;
 			}
 
 			&:nth-of-type(3) {
 				-webkit-animation-name: fadeInDown;
-				-webkit-animation-delay: 1.5s;
+				-webkit-animation-delay: 5.5s;
 				animation-name: fadeInDown;
-				animation-delay: 1.5s;
+				animation-delay: 5.5s;
 			}
 
 			&:nth-of-type(4) {
 				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 2.25s;
+				-webkit-animation-delay: 6.25s;
 				animation-name: fadeInRightBig;
-				animation-delay: 2.25s;
+				animation-delay: 6.25s;
 			}
 
 			&:nth-of-type(5) {
 				-webkit-animation-name: zoomInUp;
-				-webkit-animation-delay: 3s;
+				-webkit-animation-delay: 7s;
 				animation-name: zoomInUp;
-				animation-delay: 3s;
+				animation-delay: 7s;
 			}
 		}
 
@@ -1168,6 +1172,10 @@ img.background {
 							img {
 								width: auto;
 								height: 50px;
+							}
+
+							&[pl-id=mask] p {
+								margin-top: 30px;
 							}
 						}
 					}
