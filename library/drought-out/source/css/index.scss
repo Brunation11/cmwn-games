@@ -701,7 +701,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	img {
 		position: absolute;
 		left: 140px;
-		top: 70px;
+		bottom: 10px;
 		width: 680px;
 		height: auto;
 	}
@@ -709,7 +709,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	p {
 		position: absolute;
 		left: 510px;
-		top: 140px;
+		bottom: 240px;
 		font-size: 26px;
 		line-height: 1.1;
 		text-align: center;
@@ -720,9 +720,9 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 
 	&.OPEN {
 		p {
-			transform: rotate(720deg) scale(.3);
+			transform: rotate(1800deg) scale(.3);
 			opacity: 0;
-			transition: transform 3s 12s, opacity 3s 12s;
+			transition: transform 6s 12s, opacity 6s 12s;
 		}
 	}
 }
@@ -731,7 +731,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	img {
 		position: absolute;
 		left: 200px;
-		top: 30px;
+		bottom: 28px;
 		width: 580px;
 		height: auto;
 	}
@@ -739,7 +739,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	p {
 		position: absolute;
 		left: 420px;
-		top: 100px;
+		bottom: 320px;
 		font-size: 56px;
 		line-height: 1.1;
 		text-align: center;
@@ -788,7 +788,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		width: 400px;
 		height: 240px;
 		left: 280px;
-		top: 260px;
+		bottom: 40px;
 
 		.items {
 			position: relative;
@@ -806,8 +806,8 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	img {
 		position: absolute;
 		height: 530px;
-		left: 65px;
-		top: 10px;
+		left: 64px;
+		bottom: 0;
 	}
 
 	#door-sprite {
@@ -815,7 +815,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		width: 824px;
 		height: 809px;
 		left: 67px;
-		top: -50px;
+		bottom: -217px;
 		background-size: auto 809px;
 		background-repeat: no-repeat;
 		-webkit-animation: swing-closed .5s steps(5) forwards;
@@ -827,7 +827,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		width: 405px;
 		height: 378px;
 		left: 278px;
-		top: 170px;
+		bottom: -8px;
 		background-size: auto 120%;
 		background-position: -50px center;
 		cursor: pointer;
