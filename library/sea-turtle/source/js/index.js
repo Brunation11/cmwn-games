@@ -212,7 +212,26 @@ pl.game('sea-turtle', function () {
 		this.next = function () {
 			this.game.quit.okay();
 		};
+
+		this.complete = function (_event) {
+			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+
+			ga('send', 'event', eventCategory, 'complete');
+
+			return this.proto();
+		};
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 	/**
 	 * Creates a style noded with the given style definition and selector.

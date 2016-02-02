@@ -21,11 +21,6 @@ import './components/video/behavior';
 pl.game('meerkat-mania', function () {
 
 	this.screen('title', function () {
-		
-		this.ready = function () {
-			this.open();
-			this.close($('#loader'));
-		};
 
 		this.on('ui-open', function (_event) {
 			if (this === _event.targetScope) {
@@ -40,6 +35,7 @@ pl.game('meerkat-mania', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
+			this.close(this.game.loader);
 		});
 
 	});
@@ -100,12 +96,31 @@ pl.game('meerkat-mania', function () {
 			this.game.quit.okay();
 		};
 
+<<<<<<< HEAD
 		this.on('ui-open', function() {
 			this.delay('4.5s', function() {
 				if(this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
 			});
 		});
+=======
+		this.complete = function (_event) {
+			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+
+			ga('send', 'event', eventCategory, 'complete');
+
+			return this.proto();
+		};
+>>>>>>> 9d24c2ffa081a17b86f513d58f9742477235d4b6
 	});
 
+	this.exit = function () {
+		var screen, eventCategory;
 
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 });
