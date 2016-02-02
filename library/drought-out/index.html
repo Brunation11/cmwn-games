@@ -91,8 +91,10 @@
 
 	<!-- 3 -->
 	<section id="info-no-water" pl-game-class="rocks" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-play-next="audio.sfx" pl-required></audio>
-		<audio pl-id="stamp" class="sfx" src="media/S_3/S_3.1.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-required></audio>
+			<audio pl-id="stamp" class="sfx" src="media/S_3/S_3.1.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame animated" pl-bg="media/_Frames/FR_1.png">
 			<p>
 				When there is less rain and snow<br> consistently over a period of years,<br> it causes drought.
@@ -174,8 +176,10 @@
 	<!-- 8 -->
 	<section id="info-environment" pl-game-class="arch" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_BKG/S_BKG_2.mp3" preload loop></audio>
-		<audio pl-id="great-job" class="voice-over" src="media/S_8/VO_8.1.mp3" preload pl-required></audio>
-		<audio pl-id="lets-look" class="voice-over" src="media/S_8/VO_8.2.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio pl-id="great-job" class="voice-over" src="media/S_8/VO_8.1.mp3" preload pl-required></audio>
+			<audio pl-id="lets-look" class="voice-over" src="media/S_8/VO_8.2.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame animated" pl-bg="media/_Frames/FR_1.png">
 			<img src="media/S_8/img_8.1.png">
 			<p>
@@ -289,9 +293,11 @@
 
 	<!-- 14 -->
 	<section id="info-drain" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio pl-id="info" class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
 		<audio class="background" src="media/S_14/S_14.1.mp3" preload></audio>
-		<audio pl-id="drain" class="sfx" src="media/S_14/S_14.2.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio pl-id="info" class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
+			<audio pl-id="drain" class="sfx" src="media/S_14/S_14.2.mp3" preload pl-required></audio>
+		</div>
 		<img src="media/S_14/img_14.1.png">
 		<p class="animated">
 			We now use<br> 127% more water<br> than we did in 1950!<br><br> Most of that water<br> swirls down the drain.

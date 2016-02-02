@@ -100,31 +100,7 @@ pl.game('drought-out', function () {
 		});
 	});
 
-	this.screen('info-environment', function() {
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.greatJob) {
-				this.audio.voiceOver.greatJob.onended = function() {
-					if(this.audio.voiceOver.letsLook) this.audio.voiceOver.letsLook.play();
-				}.bind(this);
-			}
-		});
-	});
-
 	this.screen('what-can-we-do', selectScreen);
-
-	this.screen('info-drain', function() {
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.info) {
-				this.audio.voiceOver.info.onended = function() {
-					if(this.audio.sfx.drain) this.audio.sfx.drain.play();
-				}.bind(this);
-			}
-		});
-	});
 
 	this.screen('shower', function() {
 		this.respond('select', function(_event) {
