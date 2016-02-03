@@ -529,18 +529,30 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 			position: absolute;
 			width: 180px;
 			height: 200px;
-			background-size: 200% auto;
+			background-size: 300% auto;
 			background-position: left center;
 			cursor: pointer;
 			top: 560px;
 
-			// &:hover {
-			// 	background-position: center center;
-			// }
+			&.a,
+			&.l,
+			&.fl {
+				background-position: -10px center;
+			}
+
+			&:hover {
+				background-position: right center;
+			}
 
 			&.HIGHLIGHTED {
-				background-position: right center;
+				background-position: center center;
 				pointer-events: none;
+
+				&.a,
+				&.l,
+				&.fl {
+					background-position: -185px center;
+				}
 			}
 		}
 	}
@@ -778,6 +790,11 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 				&.b {
 					background-position: right top;
 				}
+			}
+
+			&:nth-of-type(1) .side.a:hover,
+			&.HIGHLIGHTED + li .side.a:hover {
+				background-position: -212px top;
 			}
 		}
 	}
