@@ -649,7 +649,8 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 				li {
 					position: absolute;
 					width: 100%;
-					top: 200px;
+					top: 250px;
+					transform: translateY(-50%);
 				}
 			}
 		}
@@ -791,14 +792,17 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		bottom: 40px;
 
 		.items {
-			position: relative;
-			margin: 50px 0;
+			position: static;
+			margin: 0;
 
 			li {
 				position: absolute;
+				left: 0;
+				top: 50%;
 				width: 100%;
 				font-size: 30px;
 				line-height: 1.1;
+				transform: translateY(-50%);
 			}
 		}
 	}
