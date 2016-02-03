@@ -13,6 +13,18 @@
 	}
 }
 
+@keyframes flushTitle {
+	0% {
+		transform: rotate(0deg) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: rotate(720deg) scale(.3);
+		opacity: 0;
+	}
+}
+
 #twirl-n-swirl {
 	margin: auto;
 	perspective: 500px;
@@ -107,6 +119,8 @@
 /* This is just to preload the images used in css. */
 #asset-bin { display: none; }
 
+
+
 #title {
 
 	img[pl-id=logo] {
@@ -115,16 +129,15 @@
 		animation: fadeInUp 1s;
 		animation-play-state: paused;
 		z-index: 1;
-		transform: rotate(0deg);
-		opacity: 1;
-		transition: transform 3s, opacity 3s;
 
 		&.animated {
 			animation-play-state: running;
 		}
 
 		&.rotateOut {
-			transform: rotate(720deg);
+			animation-name: flushTitle;
+			animation-duration: 3s;
+			animation-iteration-count: 1;
 			opacity: 0;
 		}
 	}
