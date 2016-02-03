@@ -82,7 +82,7 @@
 			background-position: -480px -53px;
 
 			&:hover {
-				background-position-y: -260px;
+				background-position: -480px -260px;
 			}
 		}
 
@@ -90,7 +90,7 @@
 			background-position: -270px -53px;
 
 			&:hover {
-				background-position-y: -260px;
+				background-position: -270px -260px;
 			}
 		}
 
@@ -111,7 +111,7 @@
 		z-index: 1;
 
 		&:hover {
-			background-position-y: -266px;
+			background-position: -910px -266px;
 		}
 	}
 }
@@ -151,10 +151,10 @@
 
 	button.play {
 		width: 240px; height: 208px;
-		background-position: top left;
+		background-position: left top;
 
 		&:hover {
-			background-position-y: bottom;
+			background-position: left bottom;
 		}
 	}
 
@@ -214,7 +214,7 @@
 		background-size: 451px;
 
 		&:hover {
-			background-position-x: right;
+			background-position: right 2px;
 		}
 	}
 }
@@ -262,7 +262,7 @@
 			height: 110px;
 
 			&:hover {
-				background-position-y: -258px;
+				background-position: -1050px -258px;
 			}
 		}
 
@@ -272,7 +272,7 @@
 			height: 140px;
 
 			&:hover {
-				background-position-y: -248px;
+				background-position: -1290px -248px;
 			}
 		}
 

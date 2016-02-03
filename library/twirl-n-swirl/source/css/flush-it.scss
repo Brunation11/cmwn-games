@@ -50,7 +50,7 @@
 			width: 190px; height: 190px;
 
 			&:hover {
-				background-position-x: -190px;
+				background-position: -190px top;
 			}
 		}
 
@@ -126,7 +126,7 @@
 				transition: opacity 1s;
 
 				&:hover {
-					background-position-y: -231px;
+					background-position: -570px -231px;
 				}
 			}
 		}
