@@ -508,8 +508,9 @@ img.inline {
 }
 
 @keyframes floatUp {
-	0% {top:560px;}
-	100% {top:-220px;}
+	0% {top:560px;opacity:0;}
+	1% {top:560px;opacity:1;}
+	100% {top:-220px;opacity:1;}
 }
 
 $delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
@@ -533,6 +534,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 			background-position: left center;
 			cursor: pointer;
 			top: 560px;
+			opacity: 0;
 
 			&.a,
 			&.l,
