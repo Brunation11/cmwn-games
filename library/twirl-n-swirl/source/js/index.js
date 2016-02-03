@@ -1,7 +1,7 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import '/Users/mrolon/Development/js-interactive-library/build/play.js';
+import 'js-interactive-library';
 
 import './testPlatformIntegration';
 import './config.game';
