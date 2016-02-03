@@ -96,13 +96,12 @@ pl.game('meerkat-mania', function () {
 			this.game.quit.okay();
 		};
 
-<<<<<<< HEAD
 		this.on('ui-open', function() {
 			this.delay('4.5s', function() {
 				if(this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
 			});
 		});
-=======
+
 		this.complete = function (_event) {
 			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
 
@@ -110,7 +109,6 @@ pl.game('meerkat-mania', function () {
 
 			return this.proto();
 		};
->>>>>>> 9d24c2ffa081a17b86f513d58f9742477235d4b6
 	});
 
 	this.exit = function () {
