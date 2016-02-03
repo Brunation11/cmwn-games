@@ -48,7 +48,7 @@
 	</section>
 
 	<!-- 3 -->
-	<section class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-globe" class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload pl-required></audio>
 		<div class="center">
@@ -250,10 +250,12 @@
 									<h3>Now let’s take a look at<br> Sea Turtle risks!</h3>
 								</div>
 							</li>
+							<li pl-id="instruction" class="center">
+								<h3>Keep filling the globe!</h3>
+							</li>
 						</ul>
 
 						<img pl-id="correct" class="response" src="media/images/globe/img_4.12.png" />
-						<img pl-id="incorrect" class="response" src="media/images/globe/img_4.25.png" />
 					</div>
 				</div>
 			</div>
@@ -262,7 +264,7 @@
 	</section>
 	
 	<!-- 5 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-trash" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_5.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -273,7 +275,7 @@
 	</section>
 	
 	<!-- 6 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="trash" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="selectable-remove" pl-select-state="highlight" pl-required>
 			<audio class="background" src="media/audio/background/2.mp3" preload></audio>
 			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
@@ -373,7 +375,7 @@
 	</section>
 
 	<!-- 7 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-keep-going" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_7.1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_7.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -383,7 +385,7 @@
 	</section>
 
 	<!-- 8 -->
-	<section class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-jelly" class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_8.1.mp3" preload pl-required></audio>
 		<div class="center">
@@ -477,7 +479,17 @@
 			</button>
 		</div>
 	</section>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-26000499-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 
 </html>

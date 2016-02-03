@@ -22,12 +22,15 @@ import 'components/cannon/behavior';
 pl.game('polar-bear', function () {
 
 	this.screen('title', function () {
-		
-		this.ready = function () {
-			this.open();
-			this.close($('#loader'));
-		};
-
+		this.on('ready', function (_event) {
+			// Screens are display:none then when READY get display:block.
+			// When a screen is OPEN then it transitions a transform,
+			// the delay is to prevent the transition failing to play
+			// because of collision of these styles.
+			// 
+			if (this.is(_event.target)) this.delay(0, this.open);
+			this.close(this.game.loader);
+		});
 	});
 
 	this.screen('map', function () {
@@ -275,6 +278,29 @@ pl.game('polar-bear', function () {
 		};
 
 	});
+
+	this.screen('flip', function () {
+
+		this.complete = function (_event) {
+			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+
+			ga('send', 'event', eventCategory, 'complete');
+
+			return this.proto();
+		};
+
+	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 	this.defineRule = function (_selector_scope, _selector_def, _definition) {
 		var _scope, _selector, source, prop, value;

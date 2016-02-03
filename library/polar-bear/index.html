@@ -7,293 +7,10 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="ai.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="layout.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
 
-	<style type="text/css">
-		html, body {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-			overflow: hidden;
-		}
-
-		html {
-			font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
-			font-size: 20px;
-			background: url(media/images/background.png) bottom center no-repeat;
-			background-size: cover;
-		}
-
-		@media (min-width: 1517px) {
-			html {
-				background-size: 100%;
-			}
-		}
-
-		body {
-			position: relative;
-			width: 960px;
-			margin: auto;
-		}
-
-		button {
-			margin: 0;
-			padding: 0;
-			border: none;
-
-			font-family: inherit;
-			font-size: inherit;
-			background-color: transparent;
-			outline: none;
-			cursor: pointer;
-		}
-
-		.spinner {
-			position: relative;
-			width: 60%; height: 60%;
-			animation: pulse 0.5s infinite;
-			background: rgba(200,200,200,0.5);
-			border-radius: 50px;
-
-		}
-
-		.spinner > .spinner {
-			position: absolute;
-			top: 20%; left: 20%;
-		}
-
-		.spinner > .spinner > .spinner {
-
-		}
-
-		#loader {
-			transition: opacity 0.5s;
-			opacity: 0;
-			color: #eee;
-		}
-
-		#loader.OPEN {
-			opacity: 1;
-		}
-
-		#loader .group > .spinner {
-			width: 80px; height: 80px;
-			margin: auto;
-		}
-
-		.canvas-src { display: none; }
-
-		.screen {
-			position: absolute;
-			top: 0; bottom: 0;
-			left: 0; right: 0;
-			opacity: 0;
-			display: none;
-			transition: opacity 1s, transform 0.5s;
-			transform: translateX(100%);
-		}
-
-		.screen.last {}
-
-			.screen.last .next-screen {
-				display: none;
-			}
-
-		.screen.READY {
-			display: block;
-		}
-
-		.screen.OPEN {
-			opacity: 1;
-			transform: translateX(0);
-		}
-
-		.screen.LEAVE {
-			opacity: 1;
-			transform: translateX(-100%);
-		}
-
-		.carousel-component.slide img {
-			padding: 0 25px;
-		}
-
-		.image-cell {
-			padding: 0;
-			list-style: none;
-		}	
-
-			.image-cell li {
-				display: inline-block;
-				max-width: 220px;
-				margin: 0 1em;
-			}
-
-			.image-cell img {
-				display: block;
-				margin: auto;
-				width: 100px;
-			}
-
-		img.inline {
-			height: 1em;
-		    position: relative;
-		    top: 3px;
-		}
-
-		.experiment img.title {
-			position: absolute;
-			left: 50%;
-			bottom: 95%;
-			transform: translateX(-50%);
-		}
-
-		.experiment .frame-component h3,
-		.experiment .frame-component p {
-			margin: 1em 0;
-		}
-
-		.experiment .frame-component .frame.title::before {
-			position: absolute;
-			bottom: 95%;
-			width: 100%;
-			height: 90px;
-
-			content: "";
-			background: no-repeat center;
-			background-size: auto 100%;
-		}
-
-		.experiment.why-warmer .frame-component .frame.title::before {
-			height: 140px;
-			bottom: 84%;
-		}
-
-		.experiment .print {
-			width: 260px;
-			height: 70px;
-			background: url(media/images/S_15/Img_15.7b.png) no-repeat center;
-			background-size: 100%;
-		}
-
-		.experiment .print:hover {
-			background-image: url(media/images/S_15/Img_15.7a.png);
-		}
-
-		.experiment.discover .content-group > div {
-			margin: 0;
-		}
-
-		/* STORY BOARD SCREEN: 3 */
-		.frame-component.variant-bg.polar-bear-right {}
-
-			.frame-component.variant-bg.polar-bear-right .content-group {
-				background: url(media/images/Img_3.2.png) no-repeat bottom right;
-				background-size: 50%;
-				text-align: left;
-			}
-
-			.frame-component.variant-bg.polar-bear-right .content-group > * {
-				margin-right: 0;
-			}
-
-		/* STORY BOARD SCREEN: 6 */
-		.screen.what-color .frame-component {}
-
-			.screen.what-color .frame-component .content-group {
-				background: url(media/images/Img_6.1.png) no-repeat top left;
-				background-size: auto 100%;
-				text-align: right;
-			}
-
-		/* STORY BOARD SCREEN: 7 */
-			.screen.what-color .frame-component.mc .content-group > div {
-				width: 20%;
-			}
-
-			.screen.what-color .frame-component.mc .content-group ul {
-				text-align: left;
-			}
-
-		/* STORY BOARD SCREEN: 8 */
-		#map.screen .frame-component {}
-
-			#map.screen .frame-component .content-group {
-				background: url(media/images/Img_8.1.png) no-repeat top left;
-				background-size: auto 100%;
-				text-align: right;
-			}
-
-				#map.screen .frame-component .content-group > div {
-					width: 35%;
-				}
-		
-		.QUIT-SCREEN .screen.OPEN {
-			opacity: 0;
-		}
-
-		#map .country {
-			position: absolute;
-			top: 0; left: 0;
-			opacity: 0;
-		}
-
-		#map .map {
-			width: 500px;
-		}
-			#map .map img {
-				width: 100%;
-			}
-
-		#bears {}
-
-			#bears .viewport {
-				position: relative;
-				margin: 20px auto;
-				width: 750px;
-				overflow: hidden;
-			}
-
-				#bears .viewport .carousel-component {
-					width: 33.4%;
-				}
-
-		/* STORY BOARD SCREEN: 13 */
-		.screen.fifty-below .frame-component {}
-
-			.screen.fifty-below .frame-component .content-group {
-				background: url(media/images/Img_13.1.png) no-repeat top left;
-				background-size: auto 100%;
-				text-align: right;
-			}
-
-			.screen.fifty-below .frame-component .content-group > div {
-				max-width: 45%;
-			}
-
-		/* STORY BOARD SCREEN: 14 */
-		.screen.thick-layer .frame-component {}
-
-			.screen.thick-layer .frame-component .content-group img {
-				max-width: 80%;
-			    margin-top: -28%;
-			}
-
-			.screen.thick-layer .frame-component .content-group h2 {
-				margin: -40px 80px 0;
-			}
-
-		.thank-you {
-			margin: 0 0 20px;
-		}
-
-		section.OPEN .flip {
-			-webkit-animation: rotateIn 1.5s;
-			animation: rotateIn 1.5s;
-		}
-
-	</style>
 </head>
 <body id="polar-bear">
 	<div id="loader" class="center OPEN">
@@ -321,7 +38,7 @@
 	</section>
 
 	<!-- 2 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-majestic" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_1.mp3" preload></audio>
 		<!-- these lines will be uncommented when screens 3 and 4 have been completed -->
 		<!-- <div pl-component="slides"> -->
@@ -353,7 +70,7 @@
 	</section> -->
 
 	<!-- 6 -->
-	<section class="screen what-color" pl-component="screen-basic" pl-transclude="content">
+	<section id="what-color" class="screen what-color" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload loop></audio>
 		<div pl-component="slides" pl-require="mc" pl-required>
 			<!-- 6 -->
@@ -430,7 +147,7 @@
 	</section>
 
 	<!-- 10 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-puck" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -500,7 +217,7 @@
 	</section>
 
 	<!-- 12 -->
-	<section class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="info-experiment" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_12.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -510,7 +227,7 @@
 	</section>
 
 	<!-- 13 -->
-	<section class="screen fifty-below" pl-component="screen-basic" pl-transclude="content">
+	<section id="fifty-below" class="screen fifty-below" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_13.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h2>In the Arctic regions where Polar Bears live, the temperature can be as low as 50 degrees below zero!</h2>
@@ -518,7 +235,7 @@
 	</section>
 
 	<!-- 14 -->
-	<section class="screen thick-layer" pl-component="screen-basic" pl-transclude="content">
+	<section id="thick-layer" class="screen thick-layer" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_14.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/Img_14.1.png">
@@ -527,7 +244,7 @@
 	</section>
 
 	<!-- 15 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-step-one" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_BKG_4.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/S_15/Img_15.1.png">
 			<ul class="image-cell">
@@ -553,7 +270,7 @@
 	</section>
 
 	<!-- 16 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-step-two" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_16.1.png">
 			<ul class="image-cell">
 				<li>
@@ -572,7 +289,7 @@
 	</section>
 
 	<!-- 17 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-step-three" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_17.1.png">
 			<ul class="image-cell">
 				<li>
@@ -589,7 +306,7 @@
 	</section>
 
 	<!-- 18 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-step-four" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_18.1.png">
 			<h3>Cover Hands With Plastic Bags</h3>
 			<p>Cover your right hand with a plastic bag. Then place the covered hand inside the plastic bag with the fat and seal it. Move the fat around until it covers your hand. Cover the left hand with the remaining two plastic bags (without fat) and seal.</p>
@@ -597,7 +314,7 @@
 	</section>
 
 	<!-- 19 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-step-five" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_19.1.png">
 			<h3>Put hands in water</h3>
 			<p>Set a timer for 30 seconds and put both hands in the bowl of ice water.</p>
@@ -607,7 +324,7 @@
 	<!-- 20 -->
 
 	<!-- 21 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-hands" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_21.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_21.1.png" pl-require="multiple-choice" pl-required>
 			<div class="variant-image" pl-component="multiple-choice">
@@ -626,7 +343,7 @@
 	</section>
 
 	<!-- 22 -->
-	<section class="screen experiment why-warmer" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-why-warmer" class="screen experiment why-warmer" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_22.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content" pl-title="media/images/Img_22.1.png" pl-require="multiple-choice" pl-required>
 			<div class="variant-image" pl-component="multiple-choice">
@@ -645,7 +362,7 @@
 	</section>
 	
 	<!-- 23 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-how-warmer" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_23.1.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h3>Polar Bears have a layer of fat<br/>under their skin<br/>that is 4 inches thick.</h3>
@@ -666,7 +383,7 @@
 	</section>
 	
 	<!-- 24 -->
-	<section class="screen experiment discover" pl-component="screen-basic" pl-transclude="content">
+	<section id="experiment-discover" class="screen experiment discover" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/audio/VO_24.4.mp3" preload></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img class="title" src="media/images/Img_24.1.png" width="110%">
@@ -704,7 +421,7 @@
 	</section>
 	
 	<!-- 25 -->
-	<section class="screen experiment" pl-component="screen-basic" pl-transclude="content">
+	<section id="flip" class="screen experiment" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/audio/SO_5.1.mp3" preload></audio>
 		<audio class="voice-over" src="media/audio/VO_25.1.mp3" preload pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
@@ -730,6 +447,16 @@
 		</div>
 	</section>
 
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-26000499-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 
 </html>

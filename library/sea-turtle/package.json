@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "Sea Turtle Action Item",
   "main": "index.html",
-  "devDependencies": {
-    "js-interactive-library": "github:ginasink/js-interactive-library#v0.2.0"
-  },
   "author": "CMWN",
   "license": "ISC"
 }
