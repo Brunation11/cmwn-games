@@ -1,6 +1,6 @@
 @keyframes flush {
 	0% {
-		transform: translate3d(-50%, -50%, 0) scale(1) rotate(0deg);
+		transform: translate3d(-50%, -50%, 0) scale(1.5) rotate(0deg);
 		opacity: 1;
 	}
 
@@ -9,7 +9,7 @@
 	}
 
 	100% {
-		transform: translate3d(-50%, -50%, 0) scale(0.2) rotate(360deg);
+		transform: translate3d(-50%, -50%, 0) scale(0.2) rotate(720deg);
 	}
 }
 
@@ -221,7 +221,7 @@
 
 #plant {
 	h2 {
-		width: 600px;
+		width: 650px;
 		margin: 20px auto;
 		text-align: center;
 	}
