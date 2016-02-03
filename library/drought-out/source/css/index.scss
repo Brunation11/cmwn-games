@@ -296,6 +296,14 @@ img.inline {
 		width: 860px;
 		height: 520px;
 		margin: 10px auto;
+
+		p:only-child {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&.OPEN {
@@ -312,6 +320,14 @@ img.inline {
 		width: 600px;
 		height: 400px;
 		margin: 10px 300px;
+
+		p:only-child {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&.OPEN {
@@ -462,7 +478,7 @@ img.inline {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
-				transition: transform .5s 6.5s;
+				transition: transform .5s 13s;
 				// -webkit-animation-name: slideInDown;
 				// -webkit-animation-delay: 7s;
 				// animation-name: slideInDown;
@@ -491,22 +507,55 @@ img.inline {
 	}
 }
 
+@keyframes floatUp {
+	0% {top:560px;opacity:0;}
+	1% {top:560px;opacity:1;}
+	100% {top:-220px;opacity:1;}
+}
+
+$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
+$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
+
 #balloons {
-	.viewport {
+	.items {
+		position: absolute;
 		padding: 0;
 		width: 800px;
+		height: 540px;
+		top: 0;
 		margin: 0 80px;
-	}
+		display: block;
 
-	li {
-		width: 180px;
-		height: 200px;
-		background-size: 200% auto;
-		background-position: left center;
-		cursor: pointer;
+		li {
+			position: absolute;
+			width: 180px;
+			height: 200px;
+			background-size: 300% auto;
+			background-position: left center;
+			cursor: pointer;
+			top: 560px;
+			opacity: 0;
 
-		&.HIGHLIGHTED {
-			background-position: right center;
+			&.a,
+			&.l,
+			&.fl {
+				background-position: -10px center;
+			}
+
+			&:hover {
+				background-position: right center;
+			}
+
+			&.HIGHLIGHTED {
+				background-position: center center;
+				pointer-events: none;
+
+				&.a,
+				&.l,
+				&.fl {
+					background-position: -185px center;
+				}
+			}
 		}
 	}
 
@@ -514,6 +563,25 @@ img.inline {
 		width: 640px;
 		display: block;
 		margin: 10px auto;
+	}
+
+	&.OPEN {
+		.items {
+			li {
+				animation: floatUp 8s infinite linear;
+
+				@for $i from 1 through 15{
+					&:nth-of-type(#{$i}){
+						// the following equation follows this pattern
+						// (interval * $i) % range + min
+						$left: (-15 * $i) % 80 + 0;
+						left: percentage($left / 100);
+						animation-delay: nth($delays, ($i % 15) + 1);
+						animation-duration: nth($durations, ($i % 15) + 1);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -595,7 +663,8 @@ img.inline {
 				li {
 					position: absolute;
 					width: 100%;
-					top: 200px;
+					top: 250px;
+					transform: translateY(-50%);
 				}
 			}
 		}
@@ -647,7 +716,7 @@ img.inline {
 	img {
 		position: absolute;
 		left: 140px;
-		top: 70px;
+		bottom: 10px;
 		width: 680px;
 		height: auto;
 	}
@@ -655,7 +724,7 @@ img.inline {
 	p {
 		position: absolute;
 		left: 510px;
-		top: 140px;
+		bottom: 240px;
 		font-size: 26px;
 		line-height: 1.1;
 		text-align: center;
@@ -666,9 +735,9 @@ img.inline {
 
 	&.OPEN {
 		p {
-			transform: rotate(720deg) scale(.3);
+			transform: rotate(1800deg) scale(.3);
 			opacity: 0;
-			transition: transform 3s 12s, opacity 3s 12s;
+			transition: transform 6s 12s, opacity 6s 12s;
 		}
 	}
 }
@@ -677,7 +746,7 @@ img.inline {
 	img {
 		position: absolute;
 		left: 200px;
-		top: 30px;
+		bottom: 28px;
 		width: 580px;
 		height: auto;
 	}
@@ -685,7 +754,7 @@ img.inline {
 	p {
 		position: absolute;
 		left: 420px;
-		top: 100px;
+		bottom: 320px;
 		font-size: 56px;
 		line-height: 1.1;
 		text-align: center;
@@ -724,6 +793,11 @@ img.inline {
 					background-position: right top;
 				}
 			}
+
+			&:nth-of-type(1) .side.a:hover,
+			&.HIGHLIGHTED + li .side.a:hover {
+				background-position: -212px top;
+			}
 		}
 	}
 }
@@ -734,17 +808,20 @@ img.inline {
 		width: 400px;
 		height: 240px;
 		left: 280px;
-		top: 260px;
+		bottom: 40px;
 
 		.items {
-			position: relative;
-			margin: 50px 0;
+			position: static;
+			margin: 0;
 
 			li {
 				position: absolute;
+				left: 0;
+				top: 50%;
 				width: 100%;
 				font-size: 30px;
 				line-height: 1.1;
+				transform: translateY(-50%);
 			}
 		}
 	}
@@ -752,8 +829,8 @@ img.inline {
 	img {
 		position: absolute;
 		height: 530px;
-		left: 65px;
-		top: 10px;
+		left: 64px;
+		bottom: 0;
 	}
 
 	#door-sprite {
@@ -761,7 +838,7 @@ img.inline {
 		width: 824px;
 		height: 809px;
 		left: 67px;
-		top: -50px;
+		bottom: -217px;
 		background-size: auto 809px;
 		background-repeat: no-repeat;
 		-webkit-animation: swing-closed .5s steps(5) forwards;
@@ -773,7 +850,7 @@ img.inline {
 		width: 405px;
 		height: 378px;
 		left: 278px;
-		top: 170px;
+		bottom: -8px;
 		background-size: auto 120%;
 		background-position: -50px center;
 		cursor: pointer;

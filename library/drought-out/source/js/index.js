@@ -61,14 +61,14 @@ pl.game('drought-out', function () {
 	this.screen('think', selectScreen);
 
 	this.screen('balloons', function() {
-		this.respond('pick', function(_event) {
+		this.respond('select', function(_event) {
 			var vo, sfx;
 
 			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
 				vo = this.audio.sfx.incorrect;
 			} else {
 				this.highlight(_event.behaviorTarget);
-				vo = this.selectableAll.audio.voiceOver[_event.message];
+				vo = this.selectable.audio.voiceOver[_event.message];
 			}
 
 			switch(_event.message) {
@@ -100,31 +100,7 @@ pl.game('drought-out', function () {
 		});
 	});
 
-	this.screen('info-environment', function() {
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.greatJob) {
-				this.audio.voiceOver.greatJob.onended = function() {
-					if(this.audio.voiceOver.letsLook) this.audio.voiceOver.letsLook.play();
-				}.bind(this);
-			}
-		});
-	});
-
 	this.screen('what-can-we-do', selectScreen);
-
-	this.screen('info-drain', function() {
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.info) {
-				this.audio.voiceOver.info.onended = function() {
-					if(this.audio.sfx.drain) this.audio.sfx.drain.play();
-				}.bind(this);
-			}
-		});
-	});
 
 	this.screen('shower', function() {
 		this.respond('select', function(_event) {

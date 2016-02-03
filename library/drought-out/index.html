@@ -8,8 +8,8 @@
 	<script type="text/javascript" src="ai.js"></script>
 	<!-- this script is for livereload and should be removed before deploy -->
 	<!-- 
-	-->
 	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	-->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -47,7 +47,7 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title" pl-required>
-			<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
+			<audio class="background" src="media/S_1/S_1.1.mp3" preload></audio>
 			<img class="animated" src="media/S_1/img_1.1.png">
 		</div>
 	</section>
@@ -91,8 +91,11 @@
 
 	<!-- 3 -->
 	<section id="info-no-water" pl-game-class="rocks" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-play-next="audio.sfx" pl-required></audio>
-		<audio pl-id="stamp" class="sfx" src="media/S_3/S_3.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-delay="6.5s" pl-required></audio>
+			<audio pl-id="stamp" class="sfx" src="media/S_3/S_3.1.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame animated" pl-bg="media/_Frames/FR_1.png">
 			<p>
 				When there is less rain and snow<br> consistently over a period of years,<br> it causes drought.
@@ -105,7 +108,9 @@
 	<section id="info-impact" pl-game-class="cactus" class="screen small-frame" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/S_4/VO_4.1.mp3" preload pl-required></audio>
 		<div class="frame animated" pl-bg="media/_Frames/FR_2.png">
-			What is the impact of<br> drought?
+			<p>
+				What is the impact<br> of drought?
+			</p>
 		</div>
 	</section>
 
@@ -134,39 +139,38 @@
 		<audio pl-id="green" class="sfx" src="media/S_7/S_7.2.mp3" preload></audio>
 		<audio pl-id="red" class="sfx" src="media/S_7/S_7.3.mp3" preload></audio>
 		<img src="media/S_7/img_7.16.png">
-		<div pl-component="selectable-all">
-			<audio pl-id="bathing" class="voice-over" src="media/S_7/VO_7.1.mp3" preload></audio>
-			<audio pl-id="drinking" class="voice-over" src="media/S_7/VO_7.2.mp3" preload></audio>
-			<audio pl-id="washingDishes" class="voice-over" src="media/S_7/VO_7.3.mp3" preload></audio>
-			<audio pl-id="swimming" class="voice-over" src="media/S_7/VO_7.4.mp3" preload></audio>
-			<audio pl-id="canoeing" class="voice-over" src="media/S_7/VO_7.5.mp3" preload></audio>
-			<audio pl-id="factories" class="voice-over" src="media/S_7/VO_7.6.mp3" preload></audio>
-			<audio pl-id="brushingTeeth" class="voice-over" src="media/S_7/VO_7.7.mp3" preload></audio>
-			<audio pl-id="electricity" class="voice-over" src="media/S_7/VO_7.8.mp3" preload></audio>
-			<audio pl-id="growingFood" class="voice-over" src="media/S_7/VO_7.9.mp3" preload></audio>
-			<audio pl-id="waterSlides" class="voice-over" src="media/S_7/VO_7.10.mp3" preload></audio>
-			<audio pl-id="rafting" class="voice-over" src="media/S_7/VO_7.11.mp3" preload></audio>
-			<audio pl-id="lawns" class="voice-over" src="media/S_7/VO_7.12.mp3" preload></audio>
-			<audio pl-id="cooking" class="voice-over" src="media/S_7/VO_7.13.mp3" preload></audio>
-			<audio pl-id="flowers" class="voice-over" src="media/S_7/VO_7.14.mp3" preload></audio>
-			<audio pl-id="animalFeed" class="voice-over" src="media/S_7/VO_7.15.mp3" preload></audio>
-			<ul class="viewport" pl-action="pick(target())"></ul>
-			<ul class="bin">
-				<li class="b" pl-message="bathing" pl-bg="media/S_7/img_7.1.png"></li>
-				<li class="d" pl-message="drinking" pl-bg="media/S_7/img_7.2.png"></li>
-				<li class="wd" pl-message="washingDishes" pl-bg="media/S_7/img_7.5.png"></li>
-				<li class="s" pl-message="swimming" pl-bg="media/S_7/img_7.6.png"></li>
-				<li class="c" pl-message="canoeing" pl-bg="media/S_7/img_7.3.png"></li>
-				<li class="f" pl-message="factories" pl-bg="media/S_7/img_7.4.png"></li>
-				<li class="bt" pl-message="brushingTeeth" pl-bg="media/S_7/img_7.7.png"></li>
-				<li class="e" pl-message="electricity" pl-bg="media/S_7/img_7.8.png"></li>
-				<li class="g" pl-message="growingFood" pl-bg="media/S_7/img_7.12.png"></li>
-				<li class="ws" pl-message="waterSlides" pl-bg="media/S_7/img_7.11.png"></li>
-				<li class="r" pl-message="rafting" pl-bg="media/S_7/img_7.10.png"></li>
-				<li class="l" pl-message="lawns" pl-bg="media/S_7/img_7.13.png"></li>
-				<li class="k" pl-message="cooking" pl-bg="media/S_7/img_7.9.png"></li>
-				<li class="fl" pl-message="flowers" pl-bg="media/S_7/img_7.14.png"></li>
-				<li class="a" pl-message="animalFeed" pl-bg="media/S_7/img_7.15.png"></li>
+		<div pl-component="selectable">
+			<audio pl-id="bathing" class="voice-over" src="media/S_7/VO_7.1.mp3" preload pl-dontautoplay pl-required></audio>
+			<audio pl-id="drinking" class="voice-over" src="media/S_7/VO_7.2.mp3" preload pl-required></audio>
+			<audio pl-id="washingDishes" class="voice-over" src="media/S_7/VO_7.3.mp3" preload pl-required></audio>
+			<audio pl-id="swimming" class="voice-over" src="media/S_7/VO_7.4.mp3" preload pl-required></audio>
+			<audio pl-id="canoeing" class="voice-over" src="media/S_7/VO_7.5.mp3" preload pl-required></audio>
+			<audio pl-id="factories" class="voice-over" src="media/S_7/VO_7.6.mp3" preload pl-required></audio>
+			<audio pl-id="brushingTeeth" class="voice-over" src="media/S_7/VO_7.7.mp3" preload pl-required></audio>
+			<audio pl-id="electricity" class="voice-over" src="media/S_7/VO_7.8.mp3" preload pl-required></audio>
+			<audio pl-id="growingFood" class="voice-over" src="media/S_7/VO_7.9.mp3" preload pl-required></audio>
+			<audio pl-id="waterSlides" class="voice-over" src="media/S_7/VO_7.10.mp3" preload pl-required></audio>
+			<audio pl-id="rafting" class="voice-over" src="media/S_7/VO_7.11.mp3" preload pl-required></audio>
+			<audio pl-id="lawns" class="voice-over" src="media/S_7/VO_7.12.mp3" preload pl-required></audio>
+			<audio pl-id="cooking" class="voice-over" src="media/S_7/VO_7.13.mp3" preload pl-required></audio>
+			<audio pl-id="flowers" class="voice-over" src="media/S_7/VO_7.14.mp3" preload pl-required></audio>
+			<audio pl-id="animalFeed" class="voice-over" src="media/S_7/VO_7.15.mp3" preload pl-required></audio>
+			<ul class="items" pl-action="select()">
+				<li class="b" pl-id="bathing" pl-bg="media/S_7/img_7.1.png"></li>
+				<li class="d" pl-id="drinking" pl-bg="media/S_7/img_7.2.png"></li>
+				<li class="wd" pl-id="washingDishes" pl-bg="media/S_7/img_7.5.png"></li>
+				<li class="s" pl-id="swimming" pl-bg="media/S_7/img_7.6.png"></li>
+				<li class="c" pl-id="canoeing" pl-bg="media/S_7/img_7.3.png"></li>
+				<li class="f" pl-id="factories" pl-bg="media/S_7/img_7.4.png"></li>
+				<li class="bt" pl-id="brushingTeeth" pl-bg="media/S_7/img_7.7.png"></li>
+				<li class="e" pl-id="electricity" pl-bg="media/S_7/img_7.8.png"></li>
+				<li class="g" pl-id="growingFood" pl-bg="media/S_7/img_7.12.png"></li>
+				<li class="ws" pl-id="waterSlides" pl-bg="media/S_7/img_7.11.png"></li>
+				<li class="r" pl-id="rafting" pl-bg="media/S_7/img_7.10.png"></li>
+				<li class="l" pl-id="lawns" pl-bg="media/S_7/img_7.13.png"></li>
+				<li class="k" pl-id="cooking" pl-bg="media/S_7/img_7.9.png"></li>
+				<li class="fl" pl-id="flowers" pl-bg="media/S_7/img_7.14.png"></li>
+				<li class="a" pl-id="animalFeed" pl-bg="media/S_7/img_7.15.png"></li>
 			</ul>
 		</div>
 	</section>
@@ -174,12 +178,14 @@
 	<!-- 8 -->
 	<section id="info-environment" pl-game-class="arch" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_BKG/S_BKG_2.mp3" preload loop></audio>
-		<audio pl-id="great-job" class="voice-over" src="media/S_8/VO_8.1.mp3" preload pl-required></audio>
-		<audio pl-id="lets-look" class="voice-over" src="media/S_8/VO_8.2.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio pl-id="great-job" class="voice-over" src="media/S_8/VO_8.1.mp3" preload pl-required></audio>
+			<audio pl-id="lets-look" class="voice-over" src="media/S_8/VO_8.2.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame animated" pl-bg="media/_Frames/FR_1.png">
 			<img src="media/S_8/img_8.1.png">
 			<p>
-				Now let's have a look<br> at the environments!
+				Now let's have a look<br> at the environment!
 			</p>
 			<img src="media/S_8/img_8.2.png">
 		</div>
@@ -260,7 +266,7 @@
 					<img src="media/S_12/img_12.6.png">
 					<ul class="items">
 						<li>Health problems from<br> dust and bad water</li>
-						<li>Threats to homes and lives<br> form forest fires</li>
+						<li>Threats to homes and lives<br> from forest fires</li>
 						<li>Anxiety and depression</li>
 						<li>Loss of income</li>
 						<li>Unable to play in the water</li>
@@ -289,12 +295,14 @@
 
 	<!-- 14 -->
 	<section id="info-drain" pl-game-class="mountains" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio pl-id="info" class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
 		<audio class="background" src="media/S_14/S_14.1.mp3" preload></audio>
-		<audio pl-id="drain" class="sfx" src="media/S_14/S_14.2.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio pl-id="info" class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
+			<audio pl-id="drain" class="sfx" src="media/S_14/S_14.2.mp3" preload pl-required></audio>
+		</div>
 		<img src="media/S_14/img_14.1.png">
 		<p class="animated">
-			We now use<br> 127% more water<br> than we did in 1950!<br><br> Most of that water<br> swirls down the drain.
+			Today we use<br> 127% more water<br> than we did in 1950!<br><br> Most of that water<br> swirls down the drain.
 		</p>
 	</section>
 
@@ -357,9 +365,9 @@
 					<li>Don't let the water<br> run while<br> washing dishes</li>
 					<li>Don't let the water<br> run continuously while<br> brushing your teeth</li>
 					<li>Use leftover water from<br> the melted ice in your<br> glass to water plants</li>
-					<li>Only wash full loads<br> of clothes.</li>
+					<li>Only wash full loads<br> of clothes</li>
 					<li>Use lukewarm water<br><br> Don't let it<br> run to warm up</li>
-					<li>Collecting cooler water<br> in a bucket for plants<br> or cleaning or flushing</li>
+					<li>Collect rain water<br> in a bucket for plants<br> or cleaning or flushing</li>
 					<li>Throw trash in<br> a waste basket<br><br> Don't flush it</li>
 					<li>Wash the car in the grass<br> instead of the driveway</li>
 					<li>Sweep sidewalks instead<br> of hosing them</li>
