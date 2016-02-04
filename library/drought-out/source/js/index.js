@@ -163,7 +163,7 @@ pl.game('drought-out', function () {
 
 		this.on('ui-open', function() {
 			if(this.audio && this.audio.sfx) {
-				this.delay('11s', this.audio.sfx.play.bind(this.audio.sfx));
+				this.delay('9.5s', this.audio.sfx.play.bind(this.audio.sfx));
 			}
 		});
 	});
