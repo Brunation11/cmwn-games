@@ -278,6 +278,7 @@ p {
 		cursor: default;
 	}
 
+	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);
@@ -458,11 +459,11 @@ p {
 
 				}
 
-				&.COMPLETE img {
+				&.HIGHLIGHTED img {
 					opacity: 1;
 				}
 
-				&.SELECTED {
+				&.ACTIVE {
 
 					&:before {
 						content: "";
@@ -804,13 +805,18 @@ p {
 		.flip {
 			width: 90%;
 			margin-top: 30px;
+			opacity: 0;
+			transition: opacity .5s 4s;
 		}
 	}
 
 	&.OPEN {
 		.flip {
 			-webkit-animation-name: rubberBand;
+			-webkit-animation-delay: 4.5s;
 			animation-name: rubberBand;
+			animation-delay: 4.5s;
+			opacity: 1;
 		}
 	}
 }

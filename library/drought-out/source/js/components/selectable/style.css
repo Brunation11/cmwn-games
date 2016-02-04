@@ -10,6 +10,7 @@
 		.selectable-component .items li {
 			position: relative;
 			width: 200px;
+			cursor: pointer;
 		}
 
 		.selectable-component .items li img {
