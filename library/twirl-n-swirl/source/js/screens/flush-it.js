@@ -29,8 +29,8 @@ export default function flushIt () {
 		this.item = function (_id) {
 			this
 				.removeClass('LAYER')
-				.open()
-				.reveal.item(_id);
+				.open();
+			this.reveal.item(_id);
 		};
 		/**
 		 * Close the modal and play the standard button sound.
