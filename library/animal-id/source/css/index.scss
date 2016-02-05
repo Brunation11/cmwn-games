@@ -751,13 +751,13 @@ h3 {
 	vertical-align: middle;
 
 	li {
-		position: relative;
 		height: 170px;
-
 		background: url(../media/images/frame/draggable.png) right center;
 		background-size: auto 120%;
 
 		.draggable {
+			position: relative;
+
 			&.PLUCKED {
 				&:before {
 					background-position: 95% 0;
