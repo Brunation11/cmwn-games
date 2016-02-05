@@ -29,30 +29,3 @@
 			.selectable-all-component li.LAUNCHED {
 				top: -200px;
 			}
-
-
-			.selectable-all-component li.b {
-				background-image: url(images/ballon_1.png);
-			}
-
-			.selectable-all-component li.b.HIGHLIGHTED {
-				background-image: url(images/ballon_1_on.png);
-			}
-
-			
-			.selectable-all-component li.ws {
-				background-image: url(images/ballon_10.png);
-			}
-
-			.selectable-all-component li.ws.HIGHLIGHTED {
-				background-image: url(images/ballon_10_on.png);
-			}
-
-			
-			.selectable-all-component li.f {
-				background-image: url(images/ballon_14.png);
-			}
-
-			.selectable-all-component li.f.HIGHLIGHTED {
-				background-image: url(images/ballon_14_on.png);
-			}

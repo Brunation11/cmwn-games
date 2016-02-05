@@ -6,7 +6,7 @@ pl.game.component('modal', function () {
 	};
 	
 	this.close = function() {
-		if(!this.screen.state(this.screen.STATE.VOICE_OVER)) {
+		if(!this.screen.state(this.screen.STATE.PLAYING) && !this.screen.state(this.screen.STATE.VOICE_OVER)) {
 			this.deselect(this);
 		}
 	};

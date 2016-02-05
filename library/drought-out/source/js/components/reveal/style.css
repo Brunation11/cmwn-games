@@ -11,6 +11,6 @@
 			transition: opacity 0.5s;
 		}
 
-		.reveal-component li.OPEN {
+		.reveal-component li.SELECTED {
 			opacity: 1;
 		}
