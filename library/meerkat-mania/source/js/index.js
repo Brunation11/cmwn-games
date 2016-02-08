@@ -91,6 +91,9 @@ pl.game('meerkat-mania', function () {
 		});
 	});
 
+	/**
+	 * Adds Flip screen behavior to send game completion to GA.
+	 */
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
@@ -111,6 +114,10 @@ pl.game('meerkat-mania', function () {
 		};
 	});
 
+	/**
+	 * When the game exits submit a GA (Google Analytics) event.
+	 * @override
+	 */
 	this.exit = function () {
 		var screen, eventCategory;
 
