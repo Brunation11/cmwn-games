@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Printmaster</title>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="ai.js"></script>
+	<!-- this script is for livereload and should be removed before deploy -->
+	<!-- 
+	-->
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+</head>
+<body id="drought-out">
+	<div id="loader" class="center OPEN">
+		<div class="group">
+			<h2>Loading!</h2>
+			<div class="spinner animated">
+				<div class="spinner animated">
+					<div class="spinner animated"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<button class="close" pl-action="quit.open()">&#x2716;</button>
+
+	<audio pl-id="button" class="sfx" src="media/_Button/S_BU_1.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/_Button/S_BU_2.mp3" preload></audio>
+
+	<!-- GAME BACKGROUNDS -->
+
+	<!-- SCREENS -->
+
+	<!-- TITLE -->
+	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="title" pl-required>
+			<audio class="background" src="media/S_1/S_1.1.mp3" preload></audio>
+			<img class="animated" src="media/S_1/img_1.1.gif">
+			<img class="animated" src="media/S_1/img_1.2.png">
+		</div>
+	</section>
+
+	<!-- 2 -->
+
+	<!-- 3 -->
+
+	<!-- 4 -->
+
+	<!-- 5 -->
+
+	<!-- 6 -->
+
+	<!-- 7 -->
+
+	<!-- 8 -->
+
+	<!-- 9 -->
+
+	<!-- 10 -->
+
+	<!-- 11 -->
+
+	<!-- 12 -->
+
+	<!-- 13 -->
+
+	<!-- 14 -->
+
+	<!-- 15 -->
+
+	<!-- 16 -->
+
+	<!-- 17 -->
+
+	<!-- 18 -->
+
+	<!-- 19 -->
+
+	<!-- 20 -->
+
+	<!-- 21 -->
+
+	<!-- FLIP -->
+
+	<!-- QUIT -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<div class="center">
+			<div class="frame animted">
+				<img class="background" src="media/_Frame/Fr_1.png">
+				<h2>Are you sure you<br/>want to quit?</h2>
+				<h3>Your game progress will be saved</h3>
+				<button class="quit-yes" pl-action="screen.okay()"></button>
+				<button class="quit-no" pl-action="screen.cancel()"></button>
+			</div>
+		</div>
+	</section>
+
+
+</body>
+
+</html>
+	
