@@ -16,7 +16,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 
-pl.game('drought-out', function () {
+pl.game('printmaster', function () {
 
 	var selectScreen = function() {
 		this.respond('select', function(_event) {
