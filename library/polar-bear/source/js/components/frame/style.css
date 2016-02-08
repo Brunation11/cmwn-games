@@ -23,7 +23,7 @@
 			margin-right: 5px;
 			right: 0;
 
-			background-image: url(media/images/button-next.png);
+			background-image: url(../media/images/button-next.png);
 			transform: translateY(-50%) translateX(50%);
 			transition: opacity 1s;
 		}
@@ -42,18 +42,18 @@
 		}
 
 		.frame-component .frame .next-screen:hover {
-			background-image: url(media/images/button-next-hover.png);
+			background-image: url(../media/images/button-next-hover.png);
 		}
 
 		.frame-component .frame .prev-screen {
 			margin-top: 5px;
 			margin-left: 10px;
-			background-image: url(media/images/button-prev.png);
+			background-image: url(../media/images/button-prev.png);
 			transform: translateY(-50%) translateX(-50%);
 		}
 		
 		.frame-component .frame .prev-screen:hover {
-			background-image: url(media/images/button-prev-hover.png);
+			background-image: url(../media/images/button-prev-hover.png);
 		}
 
 		.frame-component .frame img.background {

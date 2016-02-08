@@ -9,14 +9,14 @@
 		border: none;
 
 		font-size: 2em;
-		background: url(media/images/button-quit.png) center center no-repeat;
+		background: url(../media/images/button-quit.png) center center no-repeat;
 		background-size: 100%;
 		color: transparent;
 		z-index: 1;
 	}
 
 	.screen-basic-component button.close:hover {
-		background-image: url(media/images/button-quit-hover.png);
+		background-image: url(../media/images/button-quit-hover.png);
 	}
 
 	.screen-basic-component button.close:active {
