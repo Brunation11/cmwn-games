@@ -43,17 +43,6 @@ pl.game('animal-id', function () {
 
 	});
 
-	this.screen('match-game', function() {
-		this.entity('reveal', function() {
-			this.handleCloseClick = function() {
-				if(!this.screen.state(this.screen.STATE.VOICE_OVER)) {
-					this.closeAll();
-					this.screen.next();
-				}
-			};
-		});
-	});
-
 	this.screen('flip', function () {
 
 		this.complete = function (_event) {
