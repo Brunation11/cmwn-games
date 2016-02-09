@@ -306,6 +306,11 @@ img.inline {
 			top: 50%;
 			transform: translateX(-50%) translateY(-50%);
 		}
+
+		.title {
+			max-height: 100px;
+			margin-top: -30px;
+		}
 	}
 
 	&.OPEN {
@@ -440,6 +445,83 @@ img.inline {
 #info-lets-dust {
 	img {
 		max-width: 540px;
+	}
+}
+
+#info-need {
+	.title {
+		width: 700px;
+		margin-top: -30px;
+	}
+
+	.illustration {
+		float: right;
+		width: 400px;
+		margin-top: -30px;
+	}
+
+	ul {
+		text-align: left;
+		font-size: 34px;
+		margin-top: -20px;
+		white-space: nowrap;
+	}
+
+	span {
+		display: block;
+		font-size: 24px;
+		padding-left: 45px;
+	}
+}
+
+.large-frame.right {
+	.illustration {
+		float: right;
+		max-height: 100%;
+	}
+
+	.frame div {
+		float: left;
+		width: 500px;
+	}
+}
+
+.large-frame.left {
+	.illustration {
+		float: left;
+		max-height: 100%;
+	}
+
+	.frame div {
+		float: right;
+		width: 500px;
+	}
+}
+
+#info-step-1 {
+	p {
+		margin-top: -10px;
+	}
+}
+
+#info-step-2 {
+	.illustration {
+		width: 380px;
+	}
+
+	p {
+		margin-top: -30px;
+	}
+}
+
+#info-step-3 {
+	.illustration {
+		float: left;
+		width: 340px;
+	}
+
+	p {
+		margin-top: -30px;
 	}
 }
 
