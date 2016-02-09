@@ -1,5 +1,7 @@
 pl.game.component('reveal', function () {
 
+	this.screen.STATE.COMPLETE = "COMPLETE";
+
 	function playSound (_sound) {
 		var delay;
 
@@ -27,7 +29,6 @@ pl.game.component('reveal', function () {
 			else if (typeof index === 'string') {
 				if (this[index]) {
 					this.open(this[index]);
-					this.items.correct.ready(index);
 
 					if (this.audio) {
 						if (this.audio.voiceOver.length) index = this[index].index();
@@ -73,30 +74,10 @@ pl.game.component('reveal', function () {
 	};
 
 	this.handleCloseClick = function() {
-		if(!this.screen.state(this.screen.STATE.VOICE_OVER)) {
+		if(!this.screen.state(this.screen.STATE.VOICE_OVER) && this.screen.state(this.screen.STATE.COMPLETE)) {
 			this.closeAll();
 			this.screen.next();
 		}
-	};
-
-	this.ready = function () {
-		var correct;
-
-		correct = pl.Queue.create();
-
-		correct.on('complete', this.bind(function () {
-			this.screen.complete();
-		}));
-
-		this.items = this
-			.find('[pl-required]')
-			.map(function (_index, _node) {
-				correct.add(_node.getAttribute("pl-id"));
-				return _node;
-			})
-			.toArray();
-
-		this.items.correct = correct;
 	};
 
 });
