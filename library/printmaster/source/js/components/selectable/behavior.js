@@ -8,7 +8,7 @@ pl.game.component('selectable', function () {
 
 			if (this.shouldSelect($target) !== false) {
 				return {
-					message: $target.index(),
+					message: $target.id(),
 					behaviorTarget: $target
 				};
 			}	
@@ -23,6 +23,12 @@ pl.game.component('selectable', function () {
 
 	this.shouldSelect = function (_target) {
 		return true;
+	};
+
+	this.deselectAll = function() {
+		var items = this.find('li');
+		this.deselect(items);
+		this.unhighlight(items);
 	};
 
 });

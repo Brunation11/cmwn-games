@@ -134,14 +134,38 @@
 	</section>
 
 	<!-- 9 -->
-	<!-- todo -->
+	<section id="identify" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio pl-id="correct" class="sfx" src="media/S_9/S_9.1.mp3" preload></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/S_9/S_9.2.mp3" preload></audio>
+		<audio pl-id="granted" class="sfx" src="media/S_9/S_9.3.mp3" preload></audio>
+		<audio pl-id="denied" class="sfx" src="media/S_9/S_9.4.mp3" preload></audio>
+		<audio pl-id="confirmed" class="sfx" src="media/S_9/S_9.5.mp3" preload pl-required></audio>
+		<div class="header" pl-bg="media/S_9/img_9.1.png">
+			<img pl-id="arch" class="animated" src="media/S_9/img_9.2.png">
+			<img pl-id="loops" class="animated" src="media/S_9/img_9.3.png">
+			<img pl-id="whorl" class="animated" src="media/S_9/img_9.4.png">
+			<img pl-id="doubleloop" class="animated" src="media/S_9/img_9.5.png">
+		</div>
+		<div pl-component="selectable">
+			<ul class="items" pl-action="select()">
+				<li pl-id="arch" pl-bg="media/S_9/img_9.8.png"></li>
+				<li pl-id="loops" pl-bg="media/S_9/img_9.6.png"></li>
+				<li pl-id="whorl" pl-bg="media/S_9/img_9.7.png"></li>
+				<li pl-id="doubleloop" pl-bg="media/S_9/img_9.9.png"></li>
+			</ul>
+		</div>
+	</section>
 
 	<!-- 10 -->
 	<!-- todo -->
 
 	<!-- 11 -->
 	<section id="info-lets-dust" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
-		<audio class="voice-over" src="media/S_11/VO_11.1.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/S_11/VO_11.1.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_11/S_11.2.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_11/S_11.3.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="animated" src="media/S_11/img_11.1.png">
 		</div>
@@ -149,6 +173,15 @@
 
 	<!-- 12 -->
 	<section id="info-need" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/S_12/S_12.1.mp3" preload></audio>
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/S_12/VO_12.1.mp3" preload pl-required pl-delay="1s"></audio>
+			<audio class="voice-over" src="media/S_12/VO_12.2.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_12/VO_12.3.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_12/VO_12.4.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_12/VO_12.5.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_12/VO_12.7.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="title animated" src="media/S_12/img_12.1.png">
 			<img class="illustration animated" src="media/S_12/img_12.2.png">
@@ -165,6 +198,7 @@
 
 	<!-- 13 -->
 	<section id="info-step-1" class="screen large-frame right" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_13/VO_13.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="illustration animated" src="media/S_13/img_13.2.gif">
 			<div>
@@ -178,6 +212,7 @@
 
 	<!-- 14 -->
 	<section id="info-step-2" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_14/VO_14.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="title animated" src="media/S_14/img_14.1.png">
 			<p>
@@ -189,6 +224,7 @@
 
 	<!-- 15 -->
 	<section id="info-step-3" class="screen large-frame left" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_15/VO_15.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="illustration animated" src="media/S_15/img_15.2.gif">
 			<div>
@@ -202,6 +238,7 @@
 
 	<!-- 16 -->
 	<section id="info-step-4" class="screen large-frame left" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_16/VO_16.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="illustration animated" src="media/S_16/img_16.2.gif">
 			<img class="title animated" src="media/S_16/img_16.1.png">
@@ -213,6 +250,7 @@
 
 	<!-- 17 -->
 	<section id="info-step-5" class="screen large-frame left" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_17/VO_17.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="illustration animated" src="media/S_17/img_17.2.gif">
 			<div>
@@ -226,6 +264,7 @@
 
 	<!-- 18 -->
 	<section id="info-step-6" class="screen large-frame right" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_18/VO_18.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="illustration animated" src="media/S_18/img_18.2.gif">
 			<div>
@@ -239,6 +278,7 @@
 
 	<!-- 19 -->
 	<section id="info-step-7" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_19/VO_19.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="title animated" src="media/S_19/img_19.1.png">
 			<img class="illustration animated" src="media/S_19/img_19.2.gif">
@@ -250,6 +290,7 @@
 
 	<!-- 20 -->
 	<section id="info-everybody" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_20/VO_20.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<p>
 				Everybody leaves fingerprints,<br> see if you can find some more.<br>
@@ -261,6 +302,7 @@
 
 	<!-- 21 -->
 	<section id="info-further" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_21/VO_21.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<p>
 				Use your magnifying glass and compare<br> the prints and see if you can identify yours!<br>
@@ -272,10 +314,12 @@
 
 	<!-- FLIP -->
 	<section id="flip" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/S_22/S_22.1.mp3" preload pl-required></audio>
+		<audio class="voice-over" src="media/S_22/VO_22.1.mp3" preload pl-required></audio>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<div>
 				<p>
-					You've just fingerprinted you way<br> to a brand new
+					You've just fingerprinted your way<br> to a brand new
 				</p>
 				<img class="flip animated" src="media/S_22/img_22.1.png">
 			</div>

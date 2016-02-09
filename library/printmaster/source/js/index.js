@@ -15,23 +15,10 @@ import './components/reveal/behavior';
 import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
+import './components/audio-sequence/behavior';
+import './components/slides/behavior';
 
 pl.game('printmaster', function () {
-
-	var selectScreen = function() {
-		this.respond('select', function(_event) {
-			var vo;
-
-			if(_event.behaviorTarget.attr('pl-correct') == null) {
-				vo = this.audio.sfx.incorrect;
-			} else {
-				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
-
-			if(vo) vo.play();
-		});
-	};
 
 	this.screen('title', function () {
 		this.ready = function () {
@@ -56,100 +43,58 @@ pl.game('printmaster', function () {
 
 	});
 
-	this.screen('think', selectScreen);
+	this.screen('identify', function() {
 
-	this.screen('balloons', function() {
+		this.on('ready', function() {
+			var correct;
+
+			correct = pl.Queue.create();
+
+			correct.on('complete', this.bind(function () {
+				this.delay('1.5s',this.audio.sfx.confirmed.play.bind(this.audio.sfx.confirmed));
+			}));
+
+			this.items = this
+				.find('.header img')
+				.map(function (_index, _node) {
+					correct.add($(_node).id());
+					return _node;
+				})
+				.toArray();
+
+			this.items.correct = correct;
+
+			this.headers = this.find('.header img');
+			this.answers = this.find('.items li');
+			this.setItem();
+		});
+
+		this.setItem = function(_idx) {
+			if(this.item && this.items[this.item]) this.items[this.item].ready();
+			this.idx = _idx || 0;
+			this.item = $(this.items[this.idx]).id();
+
+			if(this.item) {
+				this.select(this.headers.filter('[pl-id='+this.item+']'));
+				if(this.selectable) this.selectable.deselectAll();
+			}
+
+			this.answers.each(function (_index, _node) {
+				_node.style.order = Math.round(10*Math.random());
+			});
+		};
+
 		this.respond('select', function(_event) {
-			var vo, sfx;
-
-			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
-				vo = this.audio.sfx.incorrect;
+			if(_event.message === this.item) {
+				this.audio.sfx.correct.play();
+				this.audio.sfx.granted.play();
+				this.select(_event.behaviorTarget);
+				this.items.correct.ready(this.item);
+				this.delay('1s', this.setItem.bind(this,++this.idx));
 			} else {
+				this.audio.sfx.incorrect.play();
+				this.audio.sfx.denied.play();
 				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
-
-			switch(_event.message) {
-				case "bathing":
-				case "drinking":
-				case "canoeing":
-				case "factories":
-				case "lawns":
-				case "flowers":
-				case "animalFeed":
-					sfx = this.audio.sfx.yellow;
-					break;
-				case "washingDishes":
-				case "swimming":
-				case "brushingTeeth":
-				case "electricity":
-					sfx = this.audio.sfx.green;
-					break;
-				case "cooking":
-				case "rafting":
-				case "waterSlides":
-				case "growingFood":
-					sfx = this.audio.sfx.red;
-					break;
-			}
-
-			if(vo) vo.play();
-			if(sfx) sfx.play();
-		});
-	});
-
-	this.screen('what-can-we-do', selectScreen);
-
-	this.screen('shower', function() {
-		this.respond('select', function(_event) {
-			var vo;
-
-			if(_event.behaviorTarget.attr('pl-correct') == null) {
-				vo = this.audio.sfx.incorrect;
-			} else {
-				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
-
-			if(vo) vo.play();
-		});
-
-		this.entity('selectable', function () {
-			
-			this.shouldSelect = function (_$target) {
-				if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
-					return !this.screen.state(this.STATE.VOICE_OVER);
-				}
-
-				return false; 
-			};
-
-		});
-	});
-
-	this.screen('conserve', function() {
-		var item = 0;
-
-		this.behavior('openDoor', function() {
-			if(!this.state(this.STATE.VOICE_OVER)) {
-				this.select(this);
-				this.reveal.item(item++);
-				this.audio.sfx.open.play();
-			}
-		});
-
-		this.behavior('ended', function() {
-			this.audio.sfx.close.play();
-			this.deselect(this);
-		});
-
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.reveal && this.reveal.audio && this.reveal.audio.voiceOver) {
-				this.reveal.audio.voiceOver.forEach(function(audio) {
-					audio.onended = this.ended.bind(this);
-				}.bind(this));
 			}
 		});
 	});
