@@ -364,8 +364,10 @@ img.inline {
 
 	&.OPEN {
 		.frame {
-			-webkit-animation-name: fadeInDown;
-			animation-name: fadeInDown;
+			img {
+				animation-name: flash;
+				animation-iteration-count: infinite;
+			}
 		}
 	}
 }
@@ -592,6 +594,14 @@ img.inline {
 
 #flip {
 	.frame {
+
+		div {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+		}
 
 		p {
 			font-size: 36px;
