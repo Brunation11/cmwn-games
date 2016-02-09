@@ -839,7 +839,7 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		height: 809px;
 		left: 67px;
 		bottom: -217px;
-		background-size: auto 809px;
+		background-size: 800% 100%;
 		background-repeat: no-repeat;
 		-webkit-animation: swing-closed .5s steps(5) forwards;
 		animation: swing-closed .5s steps(5) forwards;
@@ -914,10 +914,10 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 	&.OPEN {
 		img {
 			-webkit-animation-name: shake;
-			-webkit-animation-delay: 11s;
+			-webkit-animation-delay: 9.5s;
 			-webkit-animation-iteration-count: 3;
 			animation-name: shake;
-			animation-delay: 11s;
+			animation-delay: 9.5s;
 			animation-iteration-count: 3;
 		}
 	}
@@ -957,21 +957,21 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 }
 
 @-webkit-keyframes swing-open {
-	0% {background-position: -808px center;}
-	100% {background-position: -4930px center;}
+	0% {background-position: 14% center;}
+	100% {background-position: 85.46% center;}
 }
 
 @keyframes swing-open {
-	0% {background-position: -808px center;}
-	100% {background-position: -4930px center;}
+	0% {background-position: 14% center;}
+	100% {background-position: 85.46% center;}
 }
 
 @-webkit-keyframes swing-closed {
-	0% {background-position: -4930px center;}
-	100% {background-position: -808px center;}
+	0% {background-position: 85.46% center;}
+	100% {background-position: 14% center;}
 }
 
 @keyframes swing-closed {
-	0% {background-position: -4930px center;}
-	100% {background-position: -808px center;}
+	0% {background-position: 85.46% center;}
+	100% {background-position: 14% center;}
 }
