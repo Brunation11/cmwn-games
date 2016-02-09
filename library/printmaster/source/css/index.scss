@@ -516,8 +516,73 @@ img.inline {
 
 #info-step-3 {
 	.illustration {
-		float: left;
-		width: 340px;
+		max-width: 300px;
+		margin: 20px 0;
+	}
+
+	.frame div {
+		width: 410px;
+		padding: 30px 0;
+	}
+
+	p {
+		margin-top: 0px;
+	}
+}
+
+#info-step-4 {
+	.illustration {
+		max-width: 300px;
+		margin: 60px 0;
+	}
+
+	.frame div {
+		width: 410px;
+		padding: 30px 0;
+	}
+
+	p {
+		margin-top: -20px;
+	}
+}
+
+#info-step-5 {
+	.illustration {
+		max-width: 300px;
+		margin: 20px 0;
+	}
+
+	.frame div {
+		width: 410px;
+		padding: 30px 0;
+	}
+
+	p {
+		margin-top: -20px;
+	}
+}
+
+#info-step-6 {
+	.illustration {
+		max-width: 250px;
+		margin: 40px 0;
+	}
+
+	.frame div {
+		width: 460px;
+		padding: 0;
+	}
+
+	p {
+		margin-top: -30px;
+	}
+}
+
+#info-step-7 {
+	.illustration {
+		max-width: 300px;
+		margin: -25px auto 30px;
+		display: block;
 	}
 
 	p {
@@ -527,10 +592,6 @@ img.inline {
 
 #flip {
 	.frame {
-
-		h3 {
-			font-size: 42px;
-		}
 
 		p {
 			font-size: 36px;
