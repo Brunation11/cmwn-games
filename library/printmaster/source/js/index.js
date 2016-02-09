@@ -16,7 +16,6 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/audio-sequence/behavior';
-import './components/slides/behavior';
 
 pl.game('printmaster', function () {
 
@@ -77,11 +76,11 @@ pl.game('printmaster', function () {
 			if(this.item) {
 				this.select(this.headers.filter('[pl-id='+this.item+']'));
 				if(this.selectable) this.selectable.deselectAll();
-			}
 
-			this.answers.each(function (_index, _node) {
-				_node.style.order = Math.round(10*Math.random());
-			});
+				this.answers.each(function (_index, _node) {
+					_node.style.order = Math.round(10*Math.random());
+				});
+			}
 		};
 
 		this.respond('select', function(_event) {
