@@ -29,18 +29,29 @@ pl.game('animal-id', function () {
 			}
 		});
 
- 		this.on('ready', function (_event) {
- 			// Screens are display:none then when READY get display:block.
- 			// When a screen is OPEN then it transitions a transform,
- 			// the delay is to prevent the transition failing to play
- 			// because of collision of these styles.
- 			// 
- 			if (this.is(_event.target)) {
- 				this.delay(0, this.open);
+		this.on('ready', function (_event) {
+			// Screens are display:none then when READY get display:block.
+			// When a screen is OPEN then it transitions a transform,
+			// the delay is to prevent the transition failing to play
+			// because of collision of these styles.
+			// 
+			if (this.is(_event.target)) {
+				this.delay(0, this.open);
 				this.close(this.game.loader);
- 			}
-  		});
+			}
+		});
 
+	});
+
+	this.screen('match-game', function() {
+		this.entity('reveal', function() {
+			this.handleCloseClick = function() {
+				if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+					this.closeAll();
+					this.screen.next();
+				}
+			};
+		});
 	});
 
 	this.screen('flip', function () {
