@@ -98,6 +98,10 @@ pl.game('printmaster', function () {
 		});
 	});
 
+	this.screen('carousel', function() {
+		
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
