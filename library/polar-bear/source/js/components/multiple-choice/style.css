@@ -19,13 +19,13 @@
 			width: 1em; height: 100%;
 			margin-right: 15px;
 
-			background: url(media/images/button-radio.png) no-repeat center;
+			background: url(../media/images/button-radio.png) no-repeat center;
 			background-size: 100%;
 			content: "";
 		}
 
 		.multiple-choice-component li.SELECTED::before {
-			background-image: url(media/images/button-radio-selected.png);
+			background-image: url(../media/images/button-radio-selected.png);
 		}
 
 		.multiple-choice-component li:hover {

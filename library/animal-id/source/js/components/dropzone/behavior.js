@@ -7,7 +7,7 @@ pl.game.component('dropzone', function () {
 		this.respond('grab', function () {
 			this.audio.sfx.drag.play();
 			this.cache = {
-				position: this.absolutePosition(),
+				position: this.absolutePosition().dec(this.game.absolutePosition()),
 				size: this.size()
 			};
 		});
