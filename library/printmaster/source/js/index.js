@@ -3,7 +3,7 @@
  * @module
  */
 import './testPlatformIntegration';
-import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -99,7 +99,109 @@ pl.game('printmaster', function () {
 	});
 
 	this.screen('carousel', function() {
-		
+
+		this.on('ready', function() {
+			this.$targets = this.find('.target img');
+			this.setTarget();
+		});
+
+		this.setTarget = function(_idx) {
+			this.idx = _idx || 0;
+			this.target = $(this.$targets[this.idx]).id();
+
+			if(this.target) {
+				this.select(this.$targets[this.idx]);
+
+				this.score && this.score.removeClass('loops-three loops-two whorl-two whorl-three arch-two arch-three doubleloops-two doubleloops-three').addClass(this.target);
+
+				// if(this.target[0] === '3') {
+				// 	this.score && this.score.addClass('three');
+				// } else {
+				// 	this.score && this.score.removeClass('three');
+				// }
+			}
+		};
+
+		this.start = function (_event) {
+			this.proto();
+			this.carousel.start();
+		};
+
+		this.stop = function () {
+			this.carousel.stop();
+		}
+
+		this.on('ui-select', function (_event) {
+			if (_event.targetScope === this.reveal) {
+				this.reveal.delay('2s', function () {
+					var $selected;
+
+					$selected = this.getSelected();
+
+					this.close();
+					$selected
+						.addClass('animated slideOutUp')
+						.on('animationend', function () {
+							$selected.removeClass('slideOutUp');
+							$selected.off();
+						});
+				});
+			}
+		});
+
+		this.on('ui-open', function() {
+			this.carousel.start();
+			this.incomplete();
+		});
+
+		this.state('incomplete','-COMPLETE', {
+			willSet: function (_target) {
+				this.isComplete = false;
+			}
+		});
+
+		this.entity('carousel', function () {
+			// The event 'behaviorTarget' for this entities 'hit' behavior
+			this.provideBehaviorTarget = function () {
+				// Choose the item thats in the middle of the 3 visible.
+				return this.current().next();
+			};
+
+		});
+
+		this.entity('cannon', function() {
+			this.behavior('fire', function () {
+				return {
+					message: this.screen.target
+				};
+			});
+		});
+
+		this.respond('hit', function (_event) {
+			if (_event.message.indexOf(_event.behaviorTarget.id()) !== -1) {
+				this.playSFX('correct');
+			} else {
+				this.playSFX('incorrect');
+			}
+
+			this.reveal.item(_event.behaviorTarget.id());
+		});
+
+		this.complete = function () {
+			var r = this.proto();
+			return r;
+		};
+
+		this.playSFX = function (_name) {
+			var sfx;
+
+			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+
+			if (sfx) sfx.play();
+
+			return this;
+		};
+
 	});
 
 	this.screen('flip', function () {
