@@ -93,8 +93,8 @@ gulp.task('sass', function () {
 gulp.task('copy-index', ['webpack:build-dev'], function () {
     games.forEach(function (_game) {
         gulp
-            .src([ path.join('./library', _game, 'index.html'), path.join('./library', _game, 'source/js/config.game.js') ])
-            .pipe( gulp.dest('./build/'+_game) );
+            .src(path.join('./library', _game, 'index.html'))
+            .pipe(gulp.dest('./build/'+_game));
     });
 });
 
@@ -109,7 +109,7 @@ gulp.task('copy-media', ['copy-index'], function () {
 gulp.task('copy-components', ['copy-media'], function () {
     games.forEach(function (_game) {
         gulp
-            .src(path.join( './library', _game, 'source/js/components/**/*' ))
+            .src(path.join( './library', _game, 'source/js/components/**/*.html' ))
             .pipe( gulp.dest(path.join( './build', _game, 'components' )) );
     });
 });
@@ -154,6 +154,7 @@ gulp.task('watch', function(callback) {
     livereload.listen();
     var game = (games.length > 1) ? '**' : games[0];
     watch([
+        '../js-interactive-library/build/play.js',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',
