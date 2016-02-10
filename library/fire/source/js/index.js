@@ -115,15 +115,18 @@ pl.game('fire', function () {
 
 	this.screen('alarm', function() {
 
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
+		this.ready = function() {
 			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
 				this.audio.voiceOver.title.onended = function() {
 					if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
 				}.bind(this);
 			}
-		});
+		};
+
+		this.pushDown = function() {
+			if(this.audio.sfx) this.audio.sfx.play();
+			this.next();
+		};
 	});
 
 	this.screen('who', function() {
