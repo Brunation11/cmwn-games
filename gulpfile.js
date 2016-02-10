@@ -154,6 +154,7 @@ gulp.task('watch', function(callback) {
     livereload.listen();
     var game = (games.length > 1) ? '**' : games[0];
     watch([
+        '../js-interactive-library/build/play.js',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',
