@@ -93,8 +93,8 @@ gulp.task('sass', function () {
 gulp.task('copy-index', ['webpack:build-dev'], function () {
     games.forEach(function (_game) {
         gulp
-            .src([ path.join('./library', _game, 'index.html'), path.join('./library', _game, 'source/js/config.game.js') ])
-            .pipe( gulp.dest('./build/'+_game) );
+            .src(path.join('./library', _game, 'index.html'))
+            .pipe(gulp.dest('./build/'+_game));
     });
 });
 
