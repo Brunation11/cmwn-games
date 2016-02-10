@@ -262,7 +262,7 @@ img.inline {
 .screen.thick-layer .frame-component {}
 
 	.screen.thick-layer .frame-component .content-group img {
-		max-width: 80%;
+		max-width: 450px;
 	    margin-top: -28%;
 	}
 
