@@ -109,7 +109,7 @@ gulp.task('copy-media', ['copy-index'], function () {
 gulp.task('copy-components', ['copy-media'], function () {
     games.forEach(function (_game) {
         gulp
-            .src(path.join( './library', _game, 'source/js/components/**/*' ))
+            .src(path.join( './library', _game, 'source/js/components/**/*.html' ))
             .pipe( gulp.dest(path.join( './build', _game, 'components' )) );
     });
 });
