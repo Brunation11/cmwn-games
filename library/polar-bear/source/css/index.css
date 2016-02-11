@@ -215,7 +215,7 @@ img.inline {
 			width: 35%;
 		}
 
-.QUIT-SCREEN .screen.OPEN {
+.QUIT-SCREEN .screen.OPEN:not(#quit) {
 	opacity: 0;
 }
 
