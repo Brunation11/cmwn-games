@@ -1,65 +1,38 @@
 pl.game.component('cannon', function () {
 
-	this.entity('ball', function () {
-		
-		this.reloadRequest = false;
-		this.isLaunchComplete = false;
+	this.isLaunchComplete = true;
 
-		// this.willInit = function () {
-			// if (this.cannon.properties.ball) {
-			// 	this.attr('src', this.cannon.properties.ball);
-			// 	// I shouldn't have to do this
-			// 	this.on('load', function () {
-			// 		this.assetQueue.ready(this.node().src);
-			// 		this.off('load');
-			// 	})
-			// }
-		// };
+	this.state('launch launched', '+LAUNCHED -RELOAD', {
+		didSet: function () {
+			this.playSFX('fire');
+			this.isLaunchComplete = false;
+			this.delay('1s',function() {
+				this.isLaunchComplete = true;
+			});
+		}
+	});
 
-		this.on('transitionend', function () {
-			this.log('transitionend');
-
-			this.isLaunchComplete = true;
-
-			if (this.launched()) {
-				this.playSFX('hit');
-
-				if (this.reloadRequest) {
-					this.reload();
-				}
+	this.state('reload', '+RELOAD -LAUNCHED', {
+		shouldSet: function () {
+			if (!this.isLaunchComplete) {
+				return false;
 			}
-		});
-
-		this.state('launch launched', '+LAUNCHED -RELOAD', {
-			didSet: function () {
-				this.playSFX('fire');
-				this.isLaunchComplete = false;
-			}
-		});
-
-		this.state('reload', '+RELOAD -LAUNCHED', {
-			shouldSet: function () {
-				if (!this.isLaunchComplete) {
-					this.reloadRequest = true;
-					return false;
-				}
-			},
-
-			didSet: function () {
-				this.reloadRequest = false;
-			}
-		});
+		}
 	});
 
 	this.behavior('fire', function () {
-		this.ball.launch();
-		return {
-			message: this.cannon.properties.fire
-		};
+		if(this.isLaunchComplete) {
+			this.launch(this.ball);
+			return {
+				message: this.cannon.properties.fire
+			};
+		}
+
+		return false;
 	});
 
-	this.reload = function () {
-		this.ball.reload();
+	this.load = function() {
+		this.reload(this.ball);
 	};
 
 	this.playSFX = function (_name) {

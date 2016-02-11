@@ -158,8 +158,8 @@
 
 	<!-- 10 -->
 	<section id="carousel" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio pl-id="correct" class="sfx" src="media/S_10/S_10.3.mp3" preload pl-required></audio>
-		<audio pl-id="incorrect" class="sfx" src="media/S_10/S_10.4.mp3" preload pl-required></audio>
+		<audio pl-id="correct" class="sfx" src="media/S_10/S_10.3.mp3" preload></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/S_10/S_10.4.mp3" preload></audio>
 		<div class="center">
 			<div class="group">
 				<div class="viewport" pl-bg="media/S_10/img_10.3.png">
@@ -167,19 +167,19 @@
 						<img pl-id="loops" src="media/S_10/img_10.4.png">
 						<img pl-id="whorl" src="media/S_10/img_10.5.png">
 						<img pl-id="arch" src="media/S_10/img_10.6.png">
-						<img pl-id="doubleloop" src="media/S_10/img_10.7.png">
+						<img pl-id="doubleloops" src="media/S_10/img_10.7.png">
 					</div>
 				</div>
 
 				<div class="target" pl-bg="media/S_10/img_10.8.png">
-					<img pl-id="loops-two" class="animated" src="media/S_10/img_10.11.png">
-					<img pl-id="loops-three" class="animated" src="media/S_10/img_10.12.png">
-					<img pl-id="whorl-two" class="animated" src="media/S_10/img_10.14.png">
-					<img pl-id="whorl-three" class="animated" src="media/S_10/img_10.15.png">
-					<img pl-id="arch-two" class="animated" src="media/S_10/img_10.17.png">
-					<img pl-id="arch-three" class="animated" src="media/S_10/img_10.18.png">
-					<img pl-id="doubleloops-two" class="animated" src="media/S_10/img_10.20.png">
-					<img pl-id="doubleloops-three" class="animated" src="media/S_10/img_10.21.png">
+					<img pl-id="loops" pl-amount=2 class="animated" src="media/S_10/img_10.11.png">
+					<img pl-id="whorl" pl-amount="3" class="animated" src="media/S_10/img_10.15.png">
+					<img pl-id="arch" pl-amount="3" class="animated" src="media/S_10/img_10.18.png">
+					<img pl-id="doubleloops" pl-amount="2" class="animated" src="media/S_10/img_10.20.png">
+					<img pl-id="whorl" pl-amount=2 class="animated" src="media/S_10/img_10.14.png">
+					<img pl-id="doubleloops" pl-amount="3" class="animated" src="media/S_10/img_10.21.png">
+					<img pl-id="arch" pl-amount="2" class="animated" src="media/S_10/img_10.17.png">
+					<img pl-id="loops" pl-amount=3 class="animated" src="media/S_10/img_10.12.png">
 				</div>
 
 				<div pl-component="score" pl-bg="media/S_10/img_10.9.png" pl-transclude="images">
@@ -192,30 +192,50 @@
 					<div pl-id="ball" pl-action="fire()"></div>
 				</div>
 
-				<div pl-component="reveal" class="center">
-					<ul>
-						<li>
-
-						</li>
-						<li>
-
-						</li>
-						<li>
-
-						</li>
-						<li>
-
-						</li>
-						<li>
-
-						</li>
-						<li>
-
-						</li>
-						<li>
-							<img src="media/S_10/img_10.1.png">
-						</li>
-					</ul>
+				<div pl-component="modal">
+					<div pl-bg="media/_Frame/Fr_3.png">
+						<div pl-component="reveal" class="center">
+							<audio class="voice-over" src="media/S_10/VO_10.3.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.4.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.5.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.6.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.7.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.8.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.9.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.10.mp3" preload pl-required></audio>
+							<audio class="voice-over" src="media/S_10/VO_10.1.mp3" preload pl-required></audio>
+							<ul>
+								<li>
+									No two fingerprint<br> are the same!
+								</li>
+								<li>
+									Fingerprints are more<br> unique the DNA.
+								</li>
+								<li>
+									The chance of having the same<br> fingerprint as someone else<br> is 1 in 64 billion.
+								</li>
+								<li>
+									Fingerprinting is part of the<br> science of biometrics which uses<br> physical characteristics<br> as identifiers.
+								</li>
+								<li>
+									The ridges that make up<br> fingerprints are called<br> friction ridges.
+								</li>
+								<li>
+									Your fingerprints never change.
+								</li>
+								<li>
+									Your fingertips contain pores<br> that attach to sweat glands.<br> The sweat is what causes you<br> to leave prints on the<br> things you touch.
+								</li>
+								<li>
+									Fingerprinting is a technique<br> know as dactyloscopy.
+								</li>
+								<li>
+									<img src="media/S_10/img_10.1.png">
+								</li>
+							</ul>
+						</div>
+						<button class="reveal-close" pl-action="close()"></button>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -128,12 +128,13 @@ button {
 	}
 
 	&.reveal-close {
-		width: 40px;
-		height: 40px;
-		background-position: -503px 463px;
+		width: 30px;
+		height: 30px;
+		background-position: -660px 240px;
+		transition: opacity 1s;
 
 		&:hover {
-			background-position: -503px 333px;
+			background-position: -660px 390px;
 		}
 	}
 }
@@ -229,10 +230,12 @@ p {
 		transition: opacity 1s, transform 1s;
 	}
 
+	.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
 	.screen.GATED .next-screen {
 		opacity: 0;
 		cursor: default;
 	}
+
 
 	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
@@ -609,7 +612,7 @@ img.inline {
 		background-position: -565px;
 		transform: translateX(50%);
 
-		&[class*=two] {
+		&[pl-max="2"] {
 			width: 340px;
 			background-position: -210px;
 
@@ -637,7 +640,7 @@ img.inline {
 			}
 		}
 
-		&[class*=three] {
+		&[pl-max="3"] {
 
 			.board {
 				div {
@@ -670,7 +673,7 @@ img.inline {
 		&[class*=whorl] {
 
 			.board div {
-				background-image: url(../media/S_10/img_10.4.png)
+				background-image: url(../media/S_10/img_10.5.png)
 			}
 		}
 
@@ -684,7 +687,7 @@ img.inline {
 		&[class*=doubleloop] {
 
 			.board div {
-				background-image: url(../media/S_10/img_10.6.png)
+				background-image: url(../media/S_10/img_10.7.png)
 			}
 		}
 
@@ -703,35 +706,78 @@ img.inline {
 				background-size: 90px auto;
 				background-position: center center;
 				background-repeat: no-repeat;
-				transition: transform 1s, opacity 1s;
+				transition: transform 0s 1s, opacity 1s, background 0s 1s;
 				opacity: 0;
 
 				&.HIGHLIGHTED {
+					transition: transform 1s, opacity 1s, background 0s 1s;
 					opacity: 1;
 				}
 			}
 		}
 	}
 
-	.reveal-component {
-		position: static;
+	.modal-component {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		opacity: 0;
+		transition: opacity .5s, z-index 0s .5s;
+		background-color: rgba(0,0,0,.3);
 
-		ul {
-			position: static;
+		&.SELECTED {
+			z-index: 1;
+			opacity: 1;
+			transition: opacity .5s;
 		}
 
-
-		li {
+		> div {
 			position: absolute;
-			z-index: -1;
-			opacity: 0;
-			transition: opacity 1s, z-index 0s 1s;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			width: 700px;
+			height: 400px;
+			left: 130px;
+			top: 80px;
+		}
 
-			&.OPEN {
-				opacity: 1;
-				z-index: 1;
-				transition: opacity 1s, z-index 0s;
+		.reveal-component {
+			position: static;
+
+			ul {
+				position: static;
 			}
+
+			li {
+				position: absolute;
+				transition: opacity .5s;
+				left: 50%;
+				top: 50%;
+				width: 600px;
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center;
+				font-size: 36px;
+
+				&.SELECTED {
+					opacity: 1;
+				}
+			}
+
+			img {
+				width: 620px;
+			}
+
+
+		}
+		
+		button {
+			position: absolute;
+			right: 35px;
+			top: 35px;
 		}
 	}
 }

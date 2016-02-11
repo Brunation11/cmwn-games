@@ -16,11 +16,12 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/audio-sequence/behavior';
+import './components/modal/behavior';
 
 pl.game('printmaster', function () {
 
 	this.screen('title', function () {
-		this.ready = function () {
+		this.ready = function (_event) {
 			this.open();
 			this.close($('#loader'));
 		};
@@ -44,8 +45,10 @@ pl.game('printmaster', function () {
 
 	this.screen('identify', function() {
 
-		this.on('ready', function() {
+		this.on('ready', function(_event) {
 			var correct;
+
+			if (!this.is(_event.target)) return;
 
 			correct = pl.Queue.create();
 
@@ -100,7 +103,9 @@ pl.game('printmaster', function () {
 
 	this.screen('carousel', function() {
 
-		this.on('ready', function() {
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+			
 			this.$targets = this.find('.target img');
 			this.setTarget();
 		});
@@ -108,19 +113,26 @@ pl.game('printmaster', function () {
 		this.setTarget = function(_idx) {
 			this.idx = _idx || 0;
 			this.target = $(this.$targets[this.idx]).id();
+			this.amount = $(this.$targets[this.idx]).attr('pl-amount');
 
 			if(this.target) {
 				this.select(this.$targets[this.idx]);
 
-				this.score && this.score.removeClass('loops-three loops-two whorl-two whorl-three arch-two arch-three doubleloops-two doubleloops-three').addClass(this.target);
-
-				// if(this.target[0] === '3') {
-				// 	this.score && this.score.addClass('three');
-				// } else {
-				// 	this.score && this.score.removeClass('three');
-				// }
+				if(this.score) {
+					this.score.removeClass('loops whorl arch doubleloops').addClass(this.target);
+					this.score.attr('pl-max', this.amount);
+					this.score.properties.max = this.amount;
+					this.score.reset();
+				}
 			}
 		};
+
+		this.respond('complete', function(_event) {
+			if(_event.message === 'score') {
+				this.modal.item(this.idx);
+				this.setTarget(++this.idx);
+			}
+		});
 
 		this.start = function (_event) {
 			this.proto();
@@ -131,26 +143,11 @@ pl.game('printmaster', function () {
 			this.carousel.stop();
 		}
 
-		this.on('ui-select', function (_event) {
-			if (_event.targetScope === this.reveal) {
-				this.reveal.delay('2s', function () {
-					var $selected;
+		this.on('ui-open', function(_event) {
+			if (!this.is(_event.target)) return;
 
-					$selected = this.getSelected();
-
-					this.close();
-					$selected
-						.addClass('animated slideOutUp')
-						.on('animationend', function () {
-							$selected.removeClass('slideOutUp');
-							$selected.off();
-						});
-				});
-			}
-		});
-
-		this.on('ui-open', function() {
 			this.carousel.start();
+			this.modal.item(8);
 			this.incomplete();
 		});
 
@@ -171,20 +168,71 @@ pl.game('printmaster', function () {
 
 		this.entity('cannon', function() {
 			this.behavior('fire', function () {
-				return {
-					message: this.screen.target
-				};
+				if(this.isLaunchComplete) {
+					this.launch(this.ball);
+					return {
+						message: this.screen.target
+					};
+				}
+
+				return false;
 			});
 		});
 
+		this.entity('score', function() {
+
+			this.entity('board', function() {
+				
+				this.on('ready', function(_event) {
+					if (!this.is(_event.target)) return;
+
+					this.items = this.find('div');
+				});
+
+				this.render = function() {
+					this.highlight(this.items[this.value-1]);
+					return this;
+				};
+			});
+
+			this.up = function (_count) {
+				this.value+= _count || 1;
+
+				this.board.render();
+
+				console.log('score', this.value, this.properties.max)
+
+				if (this.value == this.properties.max) {
+					console.log('score complete');
+					this.delay('1s', this.complete);
+				}
+
+				return this;
+			};
+
+			this.behavior('complete', function() {
+				return {
+					message: 'score'
+				}
+			});
+
+			this.reset = function() {
+				this.value = 0;
+				this.unhighlight(this.board.items);
+			};
+		});
+
 		this.respond('hit', function (_event) {
-			if (_event.message.indexOf(_event.behaviorTarget.id()) !== -1) {
+			if (_event.message === _event.behaviorTarget.id()) {
+				this.score.up();
 				this.playSFX('correct');
 			} else {
 				this.playSFX('incorrect');
 			}
+		});
 
-			this.reveal.item(_event.behaviorTarget.id());
+		this.respond('next', function () {
+			this.cannon.reload();
 		});
 
 		this.complete = function () {
