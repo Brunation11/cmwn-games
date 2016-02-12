@@ -566,6 +566,21 @@ img.inline {
 	}
 }
 
+#info-loops {
+	span,
+	h2 {
+		width: 260px;
+	}
+
+	&.OPEN {
+		.frame {
+			h2 {
+				animation: type .5s steps(5, end);
+			}
+		}
+	}
+}
+
 #info-id {
 	img {
 		max-width: 760px;
