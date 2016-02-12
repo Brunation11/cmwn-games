@@ -19,5 +19,9 @@
     "yargs": "^3.31.0"
   },
   "author": "Max Rafferty",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ginasink/cmwn-games.git"
+  }
 }
