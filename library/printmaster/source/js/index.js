@@ -25,7 +25,7 @@ import './components/modal/behavior';
 pl.game('printmaster', function () {
 
 	var typing = function(_duration) {
-		var duration = _duration || '1s';
+		var duration = _duration || '.5s';
 		return function() {
 			this.on('ui-open', function() {
 				this.game.audio.sfx.typing.play();
@@ -57,6 +57,16 @@ pl.game('printmaster', function () {
 	});
 
 	this.screen('info-discover', typing('5s'));
+
+	this.screen('info-arch', typing('.5s'));
+
+	this.screen('info-loops', typing('.5s'));
+
+	this.screen('info-whorl', typing('.5s'));
+
+	this.screen('info-double-loop', typing('.5s'));
+
+	this.screen('info-id', typing('3.25s'));
 
 	this.screen('identify', identify);
 

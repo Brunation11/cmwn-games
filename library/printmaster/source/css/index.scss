@@ -384,17 +384,12 @@ img.inline {
 			overflow: hidden;
 		}
 
-		img {
-			max-height: 120px;
-			max-width: 380px;
-		}
-
 		span {
 			display: inline-block;
 		}
 
 		h2 {
-			margin: 20px 0;
+			margin: 0 0 10px 0;
 			font-size: 72px;
 			letter-spacing: 4px;
 			padding: 0 20px;
@@ -408,7 +403,6 @@ img.inline {
 
 	&.OPEN {
 		.frame {
-			img,
 			span {
 				animation-name: flash;
 				animation-delay: 1s;
@@ -500,8 +494,8 @@ img.inline {
 
 	.frame div {
 		float: left;
-		width: 480px;
-		margin: 60px -10px 0 -30px;
+		width: 490px;
+		margin: 60px -20px 0 -40px;
 		text-align: center;
 	}
 
@@ -510,6 +504,8 @@ img.inline {
 		transform: none;
 		white-space: nowrap;
 		overflow: hidden;
+		padding: 0 10px;
+		opacity: 1;
 	}
 
 	span {
@@ -519,22 +515,22 @@ img.inline {
 
 		&:nth-of-type(1),
 		&:nth-of-type(1) p {
-			width: 390px;
+			width: 410px;
 		}
 
 		&:nth-of-type(2),
 		&:nth-of-type(2) p {
-			width: 431px;
+			width: 451px;
 		}
 
 		&:nth-of-type(3),
 		&:nth-of-type(3) p {
-			width: 475px;
+			width: 495px;
 		}
 
 		&:nth-of-type(4),
 		&:nth-of-type(4) p {
-			width: 367px;
+			width: 387px;
 		}
 	}
 
@@ -581,20 +577,108 @@ img.inline {
 	}
 }
 
+#info-whorl {
+	span,
+	h2 {
+		width: 260px;
+	}
+
+	&.OPEN {
+		.frame {
+			h2 {
+				animation: type .5s steps(5, end);
+			}
+		}
+	}
+}
+
+#info-double-loop {
+	span,
+	h2 {
+		width: 380px;
+		font-size: 46px;
+	}
+
+	&.OPEN {
+		.frame {
+			h2 {
+				animation: type .5s steps(11, end);
+			}
+		}
+	}
+}
+
 #info-id {
-	img {
-		max-width: 760px;
+	span {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		width: 357px;
+		opacity: 1;
+		transition: opacity 0s .75s;
+	}
+
+	h2 {
+		font-size: 72px;
+		margin: 0;
+		width: 357px;
 	}
 
 	p {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		text-align: center;
-		bottom: 5px;
-		font-weight: bold;
+		position: relative;
+		text-align: left;
 		letter-spacing: 1.5px;
 		font-size: 40px;
+		opacity: 1;
+		padding: 0 10px;
+		@include powder;
+
+		&:nth-of-type(1) {
+			margin: 0;
+			width: 384px;
+		}
+
+		&:nth-of-type(2) {
+			margin: 0 10px;
+			width: 364px;
+		}
+	}
+
+	.center {
+		div {
+			width: 364px;
+			opacity: 0;
+			transition: opacity 0s .75s;
+		}
+	}
+
+	&.OPEN {
+		span {
+			opacity: 0;
+		}
+
+		h2 {
+			animation: type .5s steps(11, end);
+		}
+
+		.center {
+			div {
+				opacity: 1;
+			}
+		}
+
+		p {
+			&:nth-of-type(1) {
+				animation: type 1.25s steps(16, end);
+				animation-delay: .75s;
+			}
+
+			&:nth-of-type(2) {
+				animation: type2 2.5s steps(15, end);
+				animation-delay: .75s;
+			}
+		}
 	}
 }
 

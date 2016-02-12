@@ -37,9 +37,13 @@ export default function identify () {
 			this.select(this.headers.filter('[pl-id='+this.item+']'));
 			if(this.selectable) this.selectable.deselectAll();
 
-			this.answers.each(function (_index, _node) {
-				_node.style.order = Math.round(10*Math.random());
-			});
+			for(var i = 0; i < 5; i++) {
+				this.delay(i*150, function() {
+					this.answers.each(function (_index, _node) {
+						_node.style.order = Math.round(20*Math.random());
+					});
+				});
+			}
 		}
 	};
 
