@@ -11,6 +11,7 @@ html {
 	background: url(../media/images/background.png) bottom center no-repeat;
 	background-size: cover;
 	-webkit-user-select: none;
+	-moz-user-select: none;
 	user-select: none;
 	cursor: default;
 }
@@ -89,6 +90,8 @@ h3 {
 
 .draggables [pl-draggable] {
 	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
 }
 
 .draggables .DRAG-START,
@@ -96,6 +99,8 @@ h3 {
 .draggable-helper {
 	z-index: 1;
 	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: grabbing;
 }
 
 .draggable-helper.PLUCKED {
