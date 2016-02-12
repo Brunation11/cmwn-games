@@ -2,8 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
 import 'js-interactive-library';
+// Use when doing local changes to the library
+// import '../../../../../js-interactive-library/build/play.js';
+
+import './testPlatformIntegration';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -88,8 +91,8 @@ pl.game('polar-bear', function () {
 						});
 					}));
 
-					this.buffer.width = this.grayMap[0].naturalWidth;
-					this.buffer.height = this.grayMap[0].naturalHeight;
+					this.buffer.width = 500;
+					this.buffer.height = 500;
 
 					$countries = this.find('.country');
 
@@ -128,12 +131,24 @@ pl.game('polar-bear', function () {
 				};
 
 				this.test = function (_cursor) {
-					var offset, cursor, pixel;
+					var offset, cursor, pixel, gameScale;
 
 					offset = this.grayMap.absolutePosition();
-					cursor = _cursor
-						.scale(1/this.game.zoom).math('floor')
-						.dec(offset);
+					gameScale = this.game.transformScale().x;
+					
+					// FireFox uses transfom scale which
+					// does NOT produce scaled DOM values like `zoom`.
+					if (gameScale !== 1) {
+						cursor = _cursor
+							.dec(offset)
+							.scale(1/this.game.zoom)
+							.math('floor');
+					} else {
+						cursor = _cursor
+							.scale(1/this.game.zoom)
+							.math('floor')
+							.dec(offset);
+					}
 
 					this.countries.every(this.bind(function (_country) {
 						if (this.isImageTarget(this[_country], cursor)) {
