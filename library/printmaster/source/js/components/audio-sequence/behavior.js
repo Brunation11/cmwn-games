@@ -13,9 +13,12 @@ pl.game.component('audio-sequence', function () {
 				if(sounds[i+1]) self.screen.playSound(sounds[i+1]);
 			};
 		});
+		if(typeof this.properties.loop !== 'undefined') {
+			sounds[sounds.length-1].onended = this.start.bind(this);
+		}
 	});
 
 	this.start = function() {
-		if(sounds[0]) this.screen.playSound(sounds[0]);
+		if(sounds[0] && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(sounds[0]);
 	};
 });

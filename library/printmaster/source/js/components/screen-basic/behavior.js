@@ -140,7 +140,7 @@ pl.game.component('screen-basic', function () {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+				sfx = pl.util.resolvePath(this, 'screen.audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
 				if (sfx) sfx.play();
 			}));

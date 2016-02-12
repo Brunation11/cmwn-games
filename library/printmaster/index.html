@@ -34,6 +34,7 @@
 
 	<audio pl-id="button" class="sfx" src="media/_Button/S_BU_1.mp3" preload></audio>
 	<audio pl-id="screen-complete" class="sfx" src="media/_Button/S_BU_2.mp3" preload></audio>
+	<audio pl-id="typing" class="sfx" src="media/S_3/S_3.1.mp3" preload></audio>
 
 	<!-- GAME BACKGROUNDS -->
 
@@ -42,19 +43,24 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="title" pl-required>
-			<audio class="background" src="media/S_1/S_1.1.mp3" preload></audio>
-			<img class="animated" src="media/S_1/img_1.1.gif">
-			<img class="animated" src="media/S_1/img_1.2.png">
+			<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
+			<audio pl-id="screen-complete" class="sfx" src="media/S_1/S_1.3.mp3" preload></audio>
+			<div pl-component="audio-sequence" pl-loop>
+				<audio class="sfx" src="media/S_1/S_1.1.mp3" preload pl-required></audio>
+				<audio class="sfx" src="media/S_1/S_1.2.mp3" preload pl-required></audio>
+			</div>
+ 			<img class="scanner animated" src="media/S_1/img_1.1.gif">
+			<img class="title animated" src="media/S_1/img_1.2.png">
 		</div>
 	</section>
 
 	<!-- 2 -->
 	<section id="info-tiny-patterns" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
-		<!-- file doesn't exist -->
-		<!-- <audio class="background" src="media/S_2/S_2.1.mp3" preload></audio> -->
-		<!-- was this meant instead? -->
-		<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
 		<audio class="voice-over" src="media/S_2/VO_2.1.mp3" preload pl-required></audio>
+		<div pl-component="audio-sequence" pl-loop>
+			<audio class="sfx" src="media/S_1/S_1.1.mp3" preload pl-required></audio>
+			<audio class="sfx" src="media/S_1/S_1.2.mp3" preload pl-required></audio>
+		</div>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="animated" src="media/S_2/img_2.1.gif">
 			<p>
@@ -64,7 +70,27 @@
 	</section>
 
 	<!-- 3 -->
-	<!-- omit -->
+	<section id="info-discover" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-required></audio>
+		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
+			<img class="animated" src="media/S_3/img_3.1.png">
+			<!-- <img class="animated" src="media/S_3/img_3.2.png"> -->
+			<div>
+				<span>
+					<p>CLICK AND DISCOVER</p>
+				</span>
+				<span>
+					<p>THE FOUR MOST COMMON</p>
+				</span>
+				<span>
+					<p>TYPES OF PATTERNS THAT</p>
+				</span>
+				<span>
+					<p>FORM FINGERPRINTS</p>
+				</span>
+			</div>
+		</div>
+	</section>
 
 	<!-- 4 -->
 	<section id="info-arch" class="screen types" pl-component="screen-basic" pl-transclude="content">
@@ -72,10 +98,17 @@
 		<img class="animated" src="media/S_4/img_4.1.gif">
 		<div class="frame" pl-bg="media/_Frame/Fr_2.png">
 			<div>
-				<img class="animated" src="media/S_4/img_4.2.png">
-				<p>
-					Arches slope up to<br> a peak and then down.
-				</p>
+				<div>
+					<!-- <img class="animated" src="media/S_4/img_4.2.png"> -->
+					<span class="animated">
+						<h2 class="typing">
+							ARCH
+						</h2>
+					</span>
+					<p class="animated">
+						Arches slope up to<br> a peak and then down.
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -130,7 +163,6 @@
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="animated" src="media/S_8/img_8.1.png">
 		</div>
-		<p>SCANNING...</p>
 	</section>
 
 	<!-- 9 -->

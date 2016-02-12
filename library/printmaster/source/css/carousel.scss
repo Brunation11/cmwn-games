@@ -1,0 +1,277 @@
+#carousel {
+	.group {
+		width: 960px;
+		height: 540px;
+	}
+
+	.viewport {
+		position: absolute;
+		left: 40px;
+		top: 0;
+		width: 400px;
+		height: 540px;
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+	.carousel-component {
+		width: 400px;
+
+		img {
+			display: block;
+			width: auto;
+			height: 210px;
+			margin: 40px auto;
+			transform: scale(.6);
+			transition: transform 1s;
+
+			&.OPEN {
+				margin-top: -95px;
+
+				& + img {
+					transform: scale(1);
+				}
+			}
+
+			&.LEAVE {
+				margin-top: -345px;
+				transition: margin 1s, transform 1s;
+
+				& + .OPEN {
+					margin-top: 40px;
+				}
+			}
+		}
+	}
+
+	.cannon-component {
+		position: absolute;
+		left: 0;
+		top: 100px;
+		width: 440px;
+		height: 440px;
+		background-size: 880px 440px;
+		background-position: left top;
+		cursor: pointer;
+
+		&:hover {
+			background-position: right top;
+		}
+
+		[pl-id=ball] {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.target {
+		position: absolute;
+		right: 30px;
+		top: 0;
+		width: 500px;
+		height: 160px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%) scale(.5);
+			max-width: 460px;
+			max-height: 100px;
+			opacity: 0;
+			transition: opacity 1s, transform 1s;
+
+			&.SELECTED {
+				opacity: 1;
+				transform: translateX(-50%) translateY(-50%) scale(1);
+			}
+		}
+	}
+
+	.score-component {
+		position: absolute;
+		right: 280px;
+		top: 205px;
+		width: 500px;
+		height: 250px;
+		background-repeat: no-repeat;
+		background-size: 1075px 250px;
+		background-position: -565px;
+		transform: translateX(50%);
+
+		&[pl-max="2"] {
+			width: 340px;
+			background-position: -210px;
+
+			.board {
+				div {
+					transition: transform 1s, opacity 1s;
+
+					&:nth-of-type(1) {
+						transform: translateX(-340%) translateY(-30%) scale(1.5);
+					}
+
+					&:nth-of-type(2) {
+						transform: translateX(-478%) translateY(-30%) scale(1.5);
+					}
+
+					&:nth-of-type(3) {
+						display: none;
+					}
+
+					&.HIGHLIGHTED {
+						transform: translateX(0%) translateY(0%) scale(1);
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		&[pl-max="3"] {
+
+			.board {
+				div {
+					&:nth-of-type(1) {
+						transform: translateX(-260%) translateY(-32%) scale(1.5);
+					}
+
+					&:nth-of-type(2) {
+						transform: translateX(-395%) translateY(-32%) scale(1.5);
+					}
+
+					&:nth-of-type(3) {
+						transform: translateX(-530%) translateY(-32%) scale(1.5);
+					}
+
+					&.HIGHLIGHTED {
+						transform: translateX(0%) translateY(0%) scale(1);
+					}
+				}
+			}
+		}
+
+		&[class*=loops] {
+
+			.board div {
+				background-image: url(../media/S_10/img_10.4.png)
+			}
+		}
+
+		&[class*=whorl] {
+
+			.board div {
+				background-image: url(../media/S_10/img_10.5.png)
+			}
+		}
+
+		&[class*=arch] {
+
+			.board div {
+				background-image: url(../media/S_10/img_10.6.png)
+			}
+		}
+
+		&[class*=doubleloop] {
+
+			.board div {
+				background-image: url(../media/S_10/img_10.7.png)
+			}
+		}
+
+		p {
+			display: none;
+		}
+
+		.board {
+			padding: 30px 20px;
+			display: flex;
+
+			div {
+				width: 200px;
+				height: 190px;
+				margin: 0 20px;
+				background-size: 90px auto;
+				background-position: center center;
+				background-repeat: no-repeat;
+				transition: transform 0s 1s, opacity 1s, background 0s 1s;
+				opacity: 0;
+
+				&.HIGHLIGHTED {
+					transition: transform 1s, opacity 1s, background 0s 1s;
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	.modal-component {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		opacity: 0;
+		transition: opacity .5s, z-index 0s .5s;
+		background-color: rgba(0,0,0,.3);
+
+		&.SELECTED {
+			z-index: 1;
+			opacity: 1;
+			transition: opacity .5s;
+		}
+
+		> div {
+			position: absolute;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			width: 700px;
+			height: 400px;
+			left: 130px;
+			top: 80px;
+		}
+
+		.reveal-component {
+			position: static;
+
+			ul {
+				position: static;
+			}
+
+			li {
+				position: absolute;
+				transition: opacity .5s;
+				left: 50%;
+				top: 50%;
+				width: 600px;
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center;
+				font-size: 36px;
+
+				&.SELECTED {
+					opacity: 1;
+				}
+			}
+
+			img {
+				width: 620px;
+			}
+
+
+		}
+		
+		button {
+			position: absolute;
+			right: 35px;
+			top: 35px;
+		}
+	}
+}

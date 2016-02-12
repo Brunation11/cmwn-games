@@ -1,0 +1,56 @@
+#identify {
+	.header {
+		position: relative;
+		width: 900px;
+		height: 160px;
+		margin: 0 auto;
+		background-position: center center;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		img {
+			position: absolute;
+			left: 50%;
+			top: 55%;
+			max-width: 600px;
+			max-height: 170px;
+			transform: translateX(-50%) translateY(-50%) scale(.5);
+			opacity: 0;
+			transition: opacity 1s, transform 1s;
+
+			&.SELECTED {
+				opacity: 1;
+				transform: translateX(-50%) translateY(-50%) scale(1);
+			}
+		}
+	}
+
+	.items {
+		width: 800px;
+		margin: 20px auto;
+
+		li {
+			background-size: 1000px 250px;
+			background-position: -25px;
+			cursor: pointer;
+
+			&:hover {
+				background-position: -275px;
+			}
+
+			&.SELECTED {
+				background-position: -525px;
+			}
+
+			&.HIGHLIGHTED {
+				background-position: -775px;
+			}
+		}
+	}
+
+	&.COMPLETE {
+		.items {
+			pointer-events: none;
+		}
+	}
+}
