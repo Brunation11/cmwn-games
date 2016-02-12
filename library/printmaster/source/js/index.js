@@ -72,6 +72,8 @@ pl.game('printmaster', function () {
 
 	this.screen('carousel', carousel);
 
+	this.screen('info-lets-dust', typing('1s'));
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();

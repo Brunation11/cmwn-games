@@ -1,4 +1,5 @@
-$text-color: #fff;
+@import 'variables';
+@import 'mixins';
 
 @font-face {
 	font-family: 'Powderfinger';
@@ -10,12 +11,6 @@ $text-color: #fff;
 
 	font-style:   normal;
 	font-weight:  400;
-}
-
-@mixin powder($blur: 15px) {
-	font-family: "Powderfinger";
-	text-shadow: 0px 0px $blur #32c4f3;
-	font-weight: normal;
 }
 
 * {
@@ -442,18 +437,30 @@ img.inline {
 		}
 	}
 
-	img {
+	.scanner {
 		display: inline-block;
 		vertical-align: middle;
 		margin: 40px 0;
+		width: 320px;
+	}
 
-		&.scanner {
-			width: 320px;
-		}
+	.title {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 40px 0 40px 40px;
+		width: 504px;
 
-		&.title {
-			width: 480px;
-			margin-left: 40px;
+		div {
+			background-size: 480px;
+			float: left;
+			height: 240px;
+			width: 75px;
+
+			@for $item from 1 through 6 {
+				&:nth-child(#{$item}) {
+					background-position: 61-(75*$item)+px center;
+				}
+			} 
 		}
 	}
 
@@ -465,11 +472,19 @@ img.inline {
 			animation-delay: 1.75s;
 		}
 
-		img.title {
-			-webkit-animation-name: fadeInRightBig;
-			-webkit-animation-delay: 1.75s;
-			animation-name: fadeInRightBig;
-			animation-delay: 1.75s;
+		.title {
+
+			div {
+				-webkit-animation-name: fadeInRightBig;
+				animation-name: fadeInRightBig;
+
+				@for $item from 1 through 6 {
+					&:nth-child(#{$item}) {
+						-webkit-animation-delay: $item*.2+1.75+s;
+						animation-delay: $item*.2+1.75+s;
+					}
+				} 
+			}
 		}
 	}
 }
@@ -683,8 +698,34 @@ img.inline {
 }
 
 #info-lets-dust {
-	img {
-		max-width: 540px;
+	p {
+		letter-spacing: 1.5px;
+		font-size: 58px;
+		opacity: 1;
+		padding: 0 10px;
+		@include powder;
+
+		&:nth-of-type(1) {
+			margin: 100px 90px 0;
+			width: 530px;
+		}
+
+		&:nth-of-type(2) {
+			margin: 0 115px;
+			width: 480px;
+		}
+	}
+
+	&.OPEN {
+		p {
+			&:nth-of-type(1) {
+				animation: type .5s steps(14, end);
+			}
+
+			&:nth-of-type(2) {
+				animation: type2 1s steps(15, end);
+			}
+		}
 	}
 }
 
@@ -695,9 +736,65 @@ img.inline {
 	}
 
 	.illustration {
+		position: relative;
 		float: right;
 		width: 400px;
+		height: 292px;
 		margin-top: -30px;
+
+		div {
+			position: absolute;
+			background-size: 400px 292px;
+			background-repeat: no-repeat;
+
+			&:nth-of-type(1) {
+				background-position: left top;
+				left: 0;
+				top: 0;
+				width: 110px;
+				height: 140px;
+			}
+
+			&:nth-of-type(2) {
+				background-position: -110px top;
+				left: 110px;
+				top: 0;
+				width: 110px;
+				height: 110px;
+			}
+
+			&:nth-of-type(3) {
+				background-position: -220px top;
+				left: 220px;
+				top: 0;
+				width: 80px;
+				height: 130px;
+			}
+
+			&:nth-of-type(4) {
+				background-position: -300px top;
+				left: 300px;
+				top: 0;
+				width: 90px;
+				height: 130px;
+			}
+
+			&:nth-of-type(5) {
+				background-position: -160px -130px;
+				left: 160px;
+				top: 130px;
+				width: 140px;
+				height: 160px;
+			}
+
+			&:nth-of-type(6) {
+				background-position: -298px -130px;
+				left: 298px;
+				top: 130px;
+				width: 100px;
+				height: 160px;
+			}
+		}
 	}
 
 	ul {
@@ -707,10 +804,81 @@ img.inline {
 		white-space: nowrap;
 	}
 
+	li {
+		opacity: 0;
+		transition: opacity .5s;
+	}
+
 	span {
 		display: block;
 		font-size: 24px;
 		padding-left: 45px;
+	}
+
+	&.OPEN {
+		.title {
+			-webkit-animation-name: fadeInDownBig;
+			animation-name: fadeInDownBig;
+		}
+
+		.illustration {
+			div {
+				-webkit-animation-name: fadeInRightBig;
+				animation-name: fadeInRightBig;
+
+				&:nth-of-type(1) {
+					animation-delay: 2.5s;
+				}
+
+				&:nth-of-type(2) {
+					animation-delay: 5s;
+				}
+
+				&:nth-of-type(3) {
+					animation-delay: 7s;
+				}
+
+				&:nth-of-type(4) {
+					animation-delay: 9s;
+				}
+
+				&:nth-of-type(5) {
+					animation-delay: 11.5s;
+				}
+
+				&:nth-of-type(6) {
+					animation-delay: 14s;
+				}
+			}
+		}
+
+		li {
+			opacity: 1;
+
+			&:nth-of-type(1) {
+				transition-delay: 2.5s;
+			}
+
+			&:nth-of-type(2) {
+				transition-delay: 5s;
+			}
+
+			&:nth-of-type(3) {
+				transition-delay: 7s;
+			}
+
+			&:nth-of-type(4) {
+				transition-delay: 9s;
+			}
+
+			&:nth-of-type(5) {
+				transition-delay: 11.5s;
+			}
+
+			&:nth-of-type(6) {
+				transition-delay: 14s;
+			}
+		}
 	}
 }
 
@@ -724,6 +892,20 @@ img.inline {
 		float: left;
 		width: 500px;
 	}
+
+	&.OPEN {
+		.title {
+			-webkit-animation-name: fadeInDownBig;
+			animation-name: fadeInDownBig;
+		}
+
+		.illustration {
+			-webkit-animation-name: fadeInRightBig;
+			-webkit-animation-delay: 2s;
+			animation-name: fadeInRightBig;
+			animation-delay: 2s;
+		}
+	}
 }
 
 .large-frame.left {
@@ -735,6 +917,20 @@ img.inline {
 	.frame div {
 		float: right;
 		width: 500px;
+	}
+
+	&.OPEN {
+		.title {
+			-webkit-animation-name: fadeInDownBig;
+			animation-name: fadeInDownBig;
+		}
+
+		.illustration {
+			-webkit-animation-name: fadeInLeftBig;
+			-webkit-animation-delay: 2s;
+			animation-name: fadeInLeftBig;
+			animation-delay: 2s;
+		}
 	}
 }
 
@@ -751,6 +947,20 @@ img.inline {
 
 	p {
 		margin-top: -30px;
+	}
+
+	&.OPEN {
+		.title {
+			-webkit-animation-name: fadeInDownBig;
+			animation-name: fadeInDownBig;
+		}
+
+		.illustration {
+			-webkit-animation-name: fadeInUpBig;
+			-webkit-animation-delay: 2s;
+			animation-name: fadeInUpBig;
+			animation-delay: 2s;
+		}
 	}
 }
 
@@ -828,12 +1038,26 @@ img.inline {
 	p {
 		margin-top: -30px;
 	}
+
+	&.OPEN {
+		.title {
+			-webkit-animation-name: fadeInLeftBig;
+			animation-name: fadeInLeftBig;
+		}
+
+		.illustration {
+			-webkit-animation-name: fadeInRightBig;
+			-webkit-animation-delay: 2s;
+			animation-name: fadeInRightBig;
+			animation-delay: 2s;
+		}
+	}
 }
 
 #flip {
 	.frame {
 
-		div {
+		> div {
 			position: absolute;
 			left: 0;
 			top: 50%;
@@ -846,21 +1070,46 @@ img.inline {
 			line-height: 1.3;
 		}
 
-		img {
+		.flip {
 			display: block;
-			height: 130px;
+			width: 304px;
 			margin: 20px auto 0;
+
+			div {
+				background-size: 330px;
+				float: left;
+				height: 130px;
+				width: 76px;
+
+				@for $item from 1 through 4 {
+					&:nth-child(#{$item}) {
+						background-position: 62-(76*$item)+px center;
+					}
+				} 
+			}
 		}
 	}
 
 	&.OPEN {
-		img {
+		.flip {
 			-webkit-animation-name: shake;
 			-webkit-animation-delay: 11s;
-			-webkit-animation-iteration-count: 3;
+			-webkit-animation-iteration-count: 2;
 			animation-name: shake;
 			animation-delay: 11s;
-			animation-iteration-count: 3;
+			animation-iteration-count: 2;
+
+			div {
+				-webkit-animation-name: fadeInRightBig;
+				animation-name: fadeInRightBig;
+
+				@for $item from 1 through 4 {
+					&:nth-child(#{$item}) {
+						-webkit-animation-delay: 3+.2*$item+s;
+						animation-delay: 3+.2*$item+s;
+					}
+				} 
+			}
 		}
 	}
 }

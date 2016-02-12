@@ -48,6 +48,11 @@ export default function carousel () {
 		this.carousel.start();
 		this.modal.item(8);
 		this.incomplete();
+
+		this.game.audio.sfx.typing.play();
+		this.delay('3.5s', function() {
+			this.game.audio.sfx.typing.pause();
+		});
 	});
 
 	this.state('incomplete','-COMPLETE', {
