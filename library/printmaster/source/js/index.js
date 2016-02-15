@@ -50,8 +50,7 @@ pl.game('printmaster', function () {
 			// the delay is to prevent the transition failing to play
 			// because of collision of these styles.
 			// 
-			if (!this.is(_event.target)) return;
-			this.delay(0, this.open);
+			if (this.is(_event.target)) this.delay(0, this.open);
 			this.close($('#loader'));
 		});
 
