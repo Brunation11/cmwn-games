@@ -448,28 +448,50 @@ img.inline {
 		display: inline-block;
 		vertical-align: middle;
 		margin: 40px 0 40px 40px;
-		width: 504px;
+		width: 485px;
 
 		div {
 			background-size: 480px;
 			float: left;
-			height: 240px;
+			height: 120px;
 			width: 75px;
 
-			@for $item from 1 through 6 {
+			@for $item from 1 through 11 {
+				$offset: 58;
 				&:nth-child(#{$item}) {
-					background-position: 61-(75*$item)+px center;
+					@if $item == 1 {
+						$offset: 63;
+						width: 80px;
+					}
+					@if $item == 6 {
+						margin-left: 5px;
+					}
+					@if $item == 5 {
+						width: 120px;
+					}
+					@if $item == 11 {
+						width: 90px;
+					}
+					@if $item > 5 {
+						$top: 120;
+						$offset: 433;
+						$position: -(75*$item)+$offset+px $top+px;
+					} @else {
+						$top: 0;
+						$position: -(75*$item)+$offset+px $top+px;
+					}
+					background-position: $position;
 				}
-			} 
+			}
 		}
 	}
 
 	&.OPEN {
 		img.scanner {
 			-webkit-animation-name: fadeInLeftBig;
-			-webkit-animation-delay: 1.75s;
+			-webkit-animation-delay: 1.5s;
 			animation-name: fadeInLeftBig;
-			animation-delay: 1.75s;
+			animation-delay: 1.5s;
 		}
 
 		.title {
@@ -478,10 +500,10 @@ img.inline {
 				-webkit-animation-name: fadeInRightBig;
 				animation-name: fadeInRightBig;
 
-				@for $item from 1 through 6 {
+				@for $item from 1 through 11 {
 					&:nth-child(#{$item}) {
-						-webkit-animation-delay: $item*.2+1.75+s;
-						animation-delay: $item*.2+1.75+s;
+						-webkit-animation-delay: $item*.2+1.5+s;
+						animation-delay: $item*.2+1.5+s;
 					}
 				} 
 			}
