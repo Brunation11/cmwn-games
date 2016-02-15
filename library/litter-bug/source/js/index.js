@@ -8,6 +8,7 @@ import './config.game';
 
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
+import './components/background/behavior';
 import './components/title/behavior';
 import './components/slides/behavior';
 import './components/frame/behavior';

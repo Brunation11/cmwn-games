@@ -36,13 +36,7 @@ body {
 		background-position: center center
 	}
 
-	.background.lets-clean-up {
-		background-image: url(../media/_BKG/BKG_2.png);
-	}
-
 	.background.select {
-		background-image: url(../media/_BKG/BKG_3.png);
-
 		&:before {
 			content: "";
 			position: absolute;
@@ -53,14 +47,6 @@ body {
 			height: 100%;
 			opacity: .2;
 		}
-	}
-
-	.background.sun {
-		background-image: url(../media/_BKG/BKG_4.png);
-	}
-
-	.background.commit {
-		background-image: url(../media/_BKG/BKG_5.png);
 	}
 
 	&.lets-clean-up:not(.QUIT-SCREEN) > .background.lets-clean-up,
