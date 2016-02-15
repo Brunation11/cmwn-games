@@ -150,6 +150,15 @@ button {
 	}
 }
 
+body.DEMO .reveal-component .items li div .close-reveal {
+	opacity: 1;
+	cursor: pointer;
+
+	&:hover {
+		background-position: -225px 676px;
+	}
+}
+
 h2 {
 	font-size: 40px;
 }
@@ -250,6 +259,7 @@ p {
 		z-index: -1;
 	}
 
+	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);
