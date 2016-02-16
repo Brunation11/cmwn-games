@@ -39,4 +39,10 @@ pl.game.component('reveal', function () {
 		return true;
 	};
 
+	this.deselect = function(_$target) {
+		if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+			this.screen.deselect(_$target);
+		}
+	};
+
 });
