@@ -69,6 +69,9 @@ button {
 	margin: auto;
 }
 
+/* This is just to preload the images used in css. */
+#asset-bin { display: none; }
+
 .canvas-src { display: none; }
 
 .screen {
@@ -82,10 +85,6 @@ button {
 }
 
 .screen.last {}
-
-	.screen.last .next-screen {
-		display: none;
-	}
 
 .screen.READY {
 	display: block;
@@ -232,7 +231,28 @@ img.inline {
 		width: 100%;
 	}
 
-#bears {}
+	#map .map-entity .prev-screen {
+		width: 70px;
+		height: 70px;
+	}
+
+#bears {
+
+	.score-component {
+		width: 400px;
+		height: 110px;
+		background-size: auto 125px;
+		margin: 10px auto -20px -80px;
+		background-position: -2100px top;
+
+		@for $val from 0 to 5 {
+			&[value="#{$val}"] {
+				background-position: ($val*-420)+px top;
+			}
+		}
+
+	}
+}
 
 	#bears .viewport {
 		position: relative;
@@ -269,6 +289,17 @@ img.inline {
 	.screen.thick-layer .frame-component .content-group h2 {
 		margin: -40px 80px 0;
 	}
+
+/* STORY BOARD SCREEN: 23 */
+#experiment-how-warmer {
+	.content-group {
+		> div {
+			> img {
+				margin: -10px 0;
+			}
+		}
+	}
+}
 
 .thank-you {
 	margin: 0 0 20px;
