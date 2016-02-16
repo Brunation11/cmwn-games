@@ -44,7 +44,7 @@ gulp.task('default', ['build-dev']);
 gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass', 'webpack:build']);
+gulp.task('build', ['sass', 'webpack:build', 'copy-webgl']);
 
 gulp.task('webpack:build', function(callback) {
     games.forEach(function (_game, _index) {
@@ -120,6 +120,12 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
             .src(path.join( './library', _game, 'thumb.jpg' ))
             .pipe( gulp.dest('./build/'+_game) );
     });
+});
+
+gulp.task('copy-webgl', [], function () {
+    gulp
+        .src(path.join('./webgl-library/**/*'))
+        .pipe( gulp.dest(path.join('./build')) );
 });
 
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name
