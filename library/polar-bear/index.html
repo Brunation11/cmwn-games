@@ -173,14 +173,7 @@
 		<audio pl-id="incorrect" class="sfx" src="media/audio/bears/answer-incorrect.mp3" preload></audio>
 		<div class="center">
 			<div class="group">
-				<div pl-component="score" pl-transclude="images" pl-max="5" pl-required>
-					<img src="media/images/score-bears/score-0.png">
-					<img src="media/images/score-bears/score-1.png">
-					<img src="media/images/score-bears/score-2.png">
-					<img src="media/images/score-bears/score-3.png">
-					<img src="media/images/score-bears/score-4.png">
-					<img src="media/images/score-bears/score-5.png">
-				</div>
+				<div pl-component="score" pl-max="5" pl-required pl-bg="media/images/score-bears/background.png"></div>
 				
 				<div class="viewport">
 					<div class="slide" pl-component="carousel" pl-randomize pl-delay="500">
@@ -222,6 +215,9 @@
 						<li pl-id="hare"><img src="media/images/reveal-bears/reveal-9.png"></li>
 					</ul>
 				</div>
+
+				<button class="prev-screen" pl-action="screen.prev()"></button>
+				<button class="next-screen" pl-action="screen.next()"></button>
 			</div>
 		</div>
 	</section>

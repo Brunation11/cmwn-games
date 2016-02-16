@@ -236,7 +236,23 @@ img.inline {
 		height: 70px;
 	}
 
-#bears {}
+#bears {
+
+	.score-component {
+		width: 400px;
+		height: 110px;
+		background-size: auto 122px;
+		margin: 10px auto -20px -80px;
+		background-position: (5*-405)+px top;
+
+		@for $val from 0 to 5 {
+			&[value="#{$val}"] {
+				background-position: ($val*-405)+px top;
+			}
+		}
+
+	}
+}
 
 	#bears .viewport {
 		position: relative;

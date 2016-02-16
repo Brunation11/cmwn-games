@@ -5,35 +5,27 @@ pl.game.component('score', function () {
 	this.entity('board', function () {
 		
 		this.template = null;
-		this.images = null;
 
 		this.ready = function () {
 			this.template = this.counter.html();
-			this.images = this.find('img');
 		};
 
 		this.render = function () {
-			var image;
-
-			if (this.images.length) {
-				image = this.images[this.value];
-				this.select(image);
-			}
-			
 			this.counter.html(this.template.replace('{{score}}', this.value));
-
 			return this;
 		};
 
 	});
 
 	this.ready = function () {
+		this.attr('value',this.value);
 		this.board.render();
 	};
 
 	this.up = function (_count) {
 		this.value+= _count || 1;
 
+		this.attr('value',this.value);
 		this.board.render();
 
 		console.log('score', this.value, this.properties.max)

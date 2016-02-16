@@ -236,7 +236,8 @@ pl.game('polar-bear', function () {
 			}
 		});
 
-		this.on('ui-open', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
 			this.carousel.start();
 			this.incomplete();
 			this.score.incomplete();
@@ -273,14 +274,6 @@ pl.game('polar-bear', function () {
 		this.respond('next', function () {
 			this.cannon.ball.reload();
 		});
-
-		this.complete = function () {
-			var r = this.proto();
-
-			if(this.score.isComplete) this.delay('2s', this.next);
-			
-			return r;
-		};
 
 		this.playSFX = function (_name) {
 			var sfx;
