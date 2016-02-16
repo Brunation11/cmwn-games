@@ -244,18 +244,16 @@ h3 {
 	}
 
 #video .frame {
-	width: 90%;
-	height: 100%;
+	width: 760px;
+	height: 540px;
 }
 
 .video-component {
 	position: absolute;
 	background-image: url(../media/images/video-frame.png);
 	background-size: 100% 100%;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 90%;
-	margin: 0 5%;
+	top: 40px;
+	width: 760px;
 
 	video {
 		position: relative;
