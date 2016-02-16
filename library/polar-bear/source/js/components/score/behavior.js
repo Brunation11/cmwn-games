@@ -41,6 +41,7 @@ pl.game.component('score', function () {
 	this.down = function (_count) {
 		this.value-= _count || 1;
 
+		this.attr('value',this.value);
 		this.board.render();
 		
 		if (this.value >= this.properties.max) {
@@ -49,15 +50,5 @@ pl.game.component('score', function () {
 
 		return this;
 	};
-
-	this.state('incomplete','-COMPLETE', {
-		willSet: function (_target) {
-			this.isComplete = false;
-
-			if(this.value >= this.properties.max) {
-				this.value = this.properties.max - 1;
-			}
-		}
-	});
 
 });

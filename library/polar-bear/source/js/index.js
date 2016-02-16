@@ -239,8 +239,6 @@ pl.game('polar-bear', function () {
 		this.on('ui-open', function(_event) {
 			if(!this.is(_event.target)) return;
 			this.carousel.start();
-			this.incomplete();
-			this.score.incomplete();
 		});
 
 		this.state('incomplete','-COMPLETE', {
