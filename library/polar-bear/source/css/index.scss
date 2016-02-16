@@ -241,13 +241,13 @@ img.inline {
 	.score-component {
 		width: 400px;
 		height: 110px;
-		background-size: auto 122px;
+		background-size: auto 125px;
 		margin: 10px auto -20px -80px;
-		background-position: (5*-405)+px top;
+		background-position: (5*-420)+px top;
 
 		@for $val from 0 to 5 {
 			&[value="#{$val}"] {
-				background-position: ($val*-405)+px top;
+				background-position: ($val*-420)+px top;
 			}
 		}
 
