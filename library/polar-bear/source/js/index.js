@@ -85,10 +85,9 @@ pl.game('polar-bear', function () {
 					correct = pl.Queue.create();
 
 					correct.on('complete', this.bind(function () {
+						var sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+						if (sfx) sfx.play();
 						this.complete();
-						this.delay('2s', function () {
-							this.screen.next();
-						});
 					}));
 
 					this.buffer.width = 500;
@@ -116,6 +115,7 @@ pl.game('polar-bear', function () {
 						.toArray();
 
 					this.countries.correct = correct;
+
 				};
 
 				this.isImageTarget = function (_image, _point) {
