@@ -393,6 +393,21 @@ h3 {
 	> .next-screen {
 		display: none;
 	}
+
+	&.VOICE-OVER {
+		.frame {
+			.items {
+				li {
+					cursor: auto;
+					&:hover {
+						&:after {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 .screen.no-frame {
@@ -505,8 +520,8 @@ h3 {
 					background-size: 770px 160px;
 					width: 230px;
 					height: 80px;
-					top: -2px;
-					left: 302px;
+					top: -3px;
+					left: 303px;
 					background-position: -300px 0px;
 					-webkit-animation-delay: 6s;
 					animation-delay: 6s;
