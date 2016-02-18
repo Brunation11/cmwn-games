@@ -133,7 +133,7 @@ pl.game('polar-bear', function () {
 				this.test = function (_cursor) {
 					var offset, cursor, pixel, gameScale;
 
-					if(this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
+					if(!this.screen.allowAction()) return false;
 
 					offset = this.grayMap.absolutePosition();
 					gameScale = this.game.transformScale().x;

@@ -1,5 +1,9 @@
 pl.game.component('screen-basic', function () {
 
+	this.allowAction = functino() {
+		return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
+	};
+
 	this.ready = function () {
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
