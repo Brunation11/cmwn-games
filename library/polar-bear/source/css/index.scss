@@ -224,6 +224,11 @@ img.inline {
 	opacity: 0;
 }
 
+#map .names {
+	position: absolute;
+	top: 0; left: 0;
+}
+
 #map .map {
 	width: 500px;
 }
