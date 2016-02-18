@@ -301,6 +301,44 @@ img.inline {
 	}
 }
 
+/* STORY BOARD SCREEN: 24 */
+#experiment-discover {
+
+	.selectable-component .items li {
+		cursor: pointer;
+	}
+
+	.selectable-component .items li img {
+		opacity: 1;
+	}
+
+	.selectable-component .items li img.hover {
+		opacity: 0;
+	}
+
+	&:not(.VOICE-OVER) .selectable-component .items li:hover img.hover {
+		opacity: 1;
+	}
+
+	.selectable-component .items li .checked {
+		opacity: 0;
+		transition: opacity .5s;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		margin: 0;
+	}
+
+		.selectable-component .items li.HIGHLIGHTED img {
+			transform: translateY(-20%);
+		}
+
+		.selectable-component .items li.HIGHLIGHTED .checked {
+			opacity: 1;
+		}
+}
+
 .thank-you {
 	margin: 0 0 20px;
 }
