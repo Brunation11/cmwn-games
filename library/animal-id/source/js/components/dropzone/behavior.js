@@ -5,16 +5,10 @@ pl.game.component('dropzone', function () {
 		this.cache = null;
 
 		this.respond('grab', function () {
-			var scale, size;
-			scale = this.game.transformScale().x;
-			size = this.size();
-
-			if(scale !== 1) size = size.scale(scale);
-
 			this.audio.sfx.drag.play();
 			this.cache = {
 				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: size
+				size: this.size().scale(this.game.transformScale().x)
 			};
 		});
 
