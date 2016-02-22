@@ -176,7 +176,6 @@ p {
 .spinner {
 	position: relative;
 	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
 	background: rgba(0,0,0,0.5);
 	border-radius: 50px;
 
@@ -203,6 +202,7 @@ p {
 #loader .group > .spinner {
 	width: 80px; height: 80px;
 	margin: auto;
+	animation: pulse 0.5s infinite;
 }
 
 .canvas-src { display: none; }
