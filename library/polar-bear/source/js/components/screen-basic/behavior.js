@@ -1,6 +1,6 @@
 pl.game.component('screen-basic', function () {
 
-	this.allowAction = functino() {
+	this.allowAction = function() {
 		return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
 	};
 
