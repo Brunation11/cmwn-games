@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'cmwn_ucl';
+	src: url("../media/fonts/cmwn_ulc-webfont.ttf") format('truetype'),
+		 url("../content/fonts/cmwn_ulc-webfont.eot?#iefix") format('embedded-opentype'),
+		 url("../content/fonts/cmwn_ulc-webfont.woff2") format('woff2'),
+		 url("../content/fonts/cmwn_ulc-webfont.woff") format('woff'),
+		 url("../content/fonts/cmwn_ulc-webfont.ttf") format('truetype'),
+		 url("../content/fonts/cmwn_ulc-webfont.svg#cmwn_ulcregular") format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -12,7 +24,7 @@ html, body {
 }
 
 html {
-	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+	font-family: "cmwn_ucl", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body {
@@ -264,6 +276,8 @@ h3 {
 
 	h3 {
 		text-shadow: 0 3px 10px #000;
+		font-size: 40px;
+		margin-bottom: 10px;
 	}
 
 	.frame {
@@ -289,6 +303,10 @@ h3 {
 
 	img {
 		width: 900px;
+	}
+
+	h3 {
+		font-size: 36px;
 	}
 
 	.items {
@@ -570,7 +588,7 @@ h3 {
 					width: 260px;
 					height: 80px;
 					top: 70px;
-					left: 516px;
+					left: 515px;
 					background-position: -510px -72px;
 					-webkit-animation-delay: 11s;
 					animation-delay: 11s;
@@ -825,7 +843,13 @@ h3 {
 	}
 
 	h3 {
-		font-size: 24px;
+		font-size: 28px;
+	}
+}
+
+#flip {
+	h3 {
+		font-size: 36px;
 	}
 }
 
