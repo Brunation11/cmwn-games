@@ -49,13 +49,29 @@ pl.game.component('screen-basic', function () {
 
 		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
 		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+		this.startFirstEntity();
 
 		if (bgSound) bgSound.play();
 		if (voSound) voSound.play();
-
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
-
 		return this;
+	};
+
+	this.startFirstEntity = function (argument) {
+		var conditions;
+
+		if (this.hasOwnProperty('entities') && this.entities) {
+			conditions = [
+				this.entities[0],
+				this.entities[0].hasOwnProperty('start'),
+				typeof this.entities[0].start === 'function'
+			];
+
+			if (!~conditions.indexOf(false)) {
+				return this.entities[0].start();
+			}
+		}
+
+		return false;
 	};
 
 	this.on('ui-open', function (_event) {
