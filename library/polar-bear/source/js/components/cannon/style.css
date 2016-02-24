@@ -12,7 +12,7 @@
 	position: relative;
 	z-index: 1;
 	text-align: center;
-	background: url(media/images/cannon-bears/background.png) no-repeat center;
+	background: url(../media/images/cannon-bears/background.png) no-repeat center;
     height: 180px;
     background-size: auto 100%;
 }

@@ -44,7 +44,7 @@ gulp.task('default', ['build-dev']);
 gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass', 'webpack:build']);
+gulp.task('build', ['sass', 'webpack:build', 'copy-webgl']);
 
 gulp.task('webpack:build', function(callback) {
     games.forEach(function (_game, _index) {
@@ -93,8 +93,8 @@ gulp.task('sass', function () {
 gulp.task('copy-index', ['webpack:build-dev'], function () {
     games.forEach(function (_game) {
         gulp
-            .src([ path.join('./library', _game, 'index.html'), path.join('./library', _game, 'source/js/config.game.js') ])
-            .pipe( gulp.dest('./build/'+_game) );
+            .src(path.join('./library', _game, 'index.html'))
+            .pipe(gulp.dest('./build/'+_game));
     });
 });
 
@@ -109,7 +109,7 @@ gulp.task('copy-media', ['copy-index'], function () {
 gulp.task('copy-components', ['copy-media'], function () {
     games.forEach(function (_game) {
         gulp
-            .src(path.join( './library', _game, 'source/js/components/**/*' ))
+            .src(path.join( './library', _game, 'source/js/components/**/*.html' ))
             .pipe( gulp.dest(path.join( './build', _game, 'components' )) );
     });
 });
@@ -120,6 +120,12 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
             .src(path.join( './library', _game, 'thumb.jpg' ))
             .pipe( gulp.dest('./build/'+_game) );
     });
+});
+
+gulp.task('copy-webgl', [], function () {
+    gulp
+        .src(path.join('./webgl-library/**/*'))
+        .pipe( gulp.dest(path.join('./build')) );
 });
 
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name
@@ -154,6 +160,7 @@ gulp.task('watch', function(callback) {
     livereload.listen();
     var game = (games.length > 1) ? '**' : games[0];
     watch([
+        '../js-interactive-library/build/play.js',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',

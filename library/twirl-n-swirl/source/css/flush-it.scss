@@ -114,6 +114,18 @@
 					margin-right: 1em;
 					text-align: center;
 				}
+
+				&[pl-id=wipes] {
+					h3 {
+						margin-top: -0.5em;
+					}
+				}
+
+				&[pl-id=gum] {
+					h3 {
+						margin-top: 1.5em;
+					}
+				}
 			}
 
 			button.close {

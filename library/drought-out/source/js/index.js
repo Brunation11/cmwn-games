@@ -8,15 +8,12 @@ import './config.game';
 
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/frame/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
-import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
 import './components/background/behavior';
+import './components/title/behavior';
+import './components/selectable/behavior';
+import './components/selectable-reveal/behavior';
+import './components/reveal/behavior';
+import './components/audio-sequence/behavior';
 
 pl.game('drought-out', function () {
 
@@ -163,7 +160,7 @@ pl.game('drought-out', function () {
 
 		this.on('ui-open', function() {
 			if(this.audio && this.audio.sfx) {
-				this.delay('11s', this.audio.sfx.play.bind(this.audio.sfx));
+				this.delay('9.5s', this.audio.sfx.play.bind(this.audio.sfx));
 			}
 		});
 	});
