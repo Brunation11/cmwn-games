@@ -11,7 +11,7 @@ pl.game.component('dropzone', function () {
 		this.cache = null;
 
 		this.respond('grab', function () {
-			var sfx = pl.util.resolvePath(this, 'audio.sfx.drag');
+			var sfx = this.audio.sfx.drag;
 			
 			if (sfx) sfx.play();
 
@@ -25,8 +25,9 @@ pl.game.component('dropzone', function () {
 			var sfx;
 
 			sfx = {
-				correct: pl.util.resolvePath(this, 'audio.sfx.correct'),
-				incorrect: pl.util.resolvePath(this, 'audio.sfx.incorrect')
+				correct: this.audio.sfx.correct,
+				incorrect: this.audio.sfx.incorrect,
+				drop: this.audio.sfx.drop
 			};
 
 			if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
@@ -36,14 +37,16 @@ pl.game.component('dropzone', function () {
 					
 					this.drop(_event.state.$draggable);
 					
-					if (sfx.correct) sfx.correct.play()
+					if (sfx.correct) sfx.correct.play();
 					
 					return;
 				}
 
 				else if (sfx.incorrect) {
-					sfx.incorrect.play()
+					sfx.incorrect.play();
 				}
+
+				if (sfx.drop) sfx.drop.play();
 			}
 
 			_event.state.$helper.addClass('RETURN');
