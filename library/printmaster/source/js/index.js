@@ -83,10 +83,16 @@ pl.game('printmaster', function () {
 			this.game.quit.okay();
 		};
 
-		this.on('ui-open', function() {
-			if(this.audio && this.audio.sfx) {
-				this.delay('11s', this.audio.sfx.play.bind(this.audio.sfx));
-			}
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+			this.require('shake');
+		});
+
+		this.entity('.flip', function() {
+			this.on('animationend', function(_event) {
+				if (!this.is(_event.target)) return;
+				this.screen.requiredQueue.ready('shake');
+			});
 		});
 	});
 
