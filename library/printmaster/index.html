@@ -8,8 +8,8 @@
 	<script type="text/javascript" src="ai.js"></script>
 	<!-- this script is for livereload and should be removed before deploy -->
 	<!-- 
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 	-->
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -47,9 +47,9 @@
 
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio pl-id="screen-complete" class="sfx" src="media/S_1/S_1.3.mp3" preload></audio>
 		<div pl-component="title" pl-required>
 			<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
-			<audio pl-id="screen-complete" class="sfx" src="media/S_1/S_1.3.mp3" preload></audio>
 			<div pl-component="audio-sequence" pl-loop>
 				<audio class="sfx" src="media/S_1/S_1.1.mp3" preload pl-required></audio>
 				<audio class="sfx" src="media/S_1/S_1.2.mp3" preload pl-required></audio>
@@ -74,10 +74,10 @@
 	<!-- 2 -->
 	<section id="info-tiny-patterns" class="screen large-frame" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
-		<audio class="voice-over" src="media/S_2/VO_2.1.mp3" preload pl-required></audio>
-		<div pl-component="audio-sequence" pl-loop>
+		<div pl-component="audio-sequence">
 			<audio class="sfx" src="media/S_1/S_1.1.mp3" preload pl-required></audio>
 			<audio class="sfx" src="media/S_1/S_1.2.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/S_2/VO_2.1.mp3" preload pl-required></audio>
 		</div>
 		<div class="frame" pl-bg="media/_Frame/Fr_1.png">
 			<img class="animated" src="media/S_2/img_2.1.gif">

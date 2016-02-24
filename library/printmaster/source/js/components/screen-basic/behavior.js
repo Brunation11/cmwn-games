@@ -118,7 +118,7 @@ pl.game.component('screen-basic', function () {
 
 				sfx = pl.util.resolvePath(this, 'screen.audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-				if (sfx) sfx.play();
+				if (sfx) this.playSound(sfx);
 			}));
 		}
 	});
