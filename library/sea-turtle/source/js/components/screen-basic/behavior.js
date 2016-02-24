@@ -33,7 +33,7 @@ pl.game.component('screen-basic', function () {
 		var prevScreen, buttonSound;
 
 		prevScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+		buttonSound = this.game.audio.sfx.button;
 
 		if (prevScreen) {
 			this.screen.close();
@@ -45,14 +45,13 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
+		if (this.audio) {
+			this.audio.background.play();
+			this.audio.voiceOver.play();
+		}
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
 		this.startFirstEntity();
 
-		if (bgSound) bgSound.play();
-		if (voSound) voSound.play();
 		return this;
 	};
 
