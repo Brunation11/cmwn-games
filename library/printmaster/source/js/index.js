@@ -70,7 +70,7 @@ pl.game('printmaster', function () {
 
 	this.screen('info-double-loop', typing('.5s'));
 
-	this.screen('info-id', typing('3.25s'));
+	this.screen('info-id', typing('4.25s'));
 
 	this.screen('identify', identify);
 
