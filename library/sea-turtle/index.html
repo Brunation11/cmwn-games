@@ -29,8 +29,8 @@
 	
 	<!-- GLOBAL GAME ASSETS -->
 
-	<audio pl-id="button" class="sfx" src="media/audio/button.mp3" preload></audio>
-	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3" preload></audio>
+	<audio pl-id="button" class="sfx" src="media/audio/button.mp3"></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/audio/button-next-activated.mp3"></audio>
 	
 	<!-- SCREENS -->
 
@@ -52,8 +52,8 @@
 
 	<!-- 3 -->
 	<section id="info-globe" class="screen no-frame" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/1.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_3.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/background/1.mp3" loop></audio>
+		<audio class="voice-over" src="media/audio/VO_3.1.mp3" pl-required></audio>
 		<div class="center">
 			<div class="frame">
 				<img class="background" src="media/images/bg-globe.png">
@@ -69,9 +69,9 @@
 
 	<!-- 4 -->
 	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/1.mp3" preload loop></audio>
-		<audio pl-id="correct" class="sfx" src="media/audio/SO_Right.mp3" preload></audio>
-		<audio pl-id="incorrect" class="sfx" src="media/audio/SO_Wrong.mp3" preload></audio>
+		<audio class="background" src="media/audio/background/1.mp3"></audio>
+		<audio pl-id="correct" class="sfx" src="media/audio/SO_Right.mp3"></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/audio/SO_Wrong.mp3"></audio>
 
 		<div pl-id="characters">
 			<img class="background" src="media/images/globe/background-tray.png" />
@@ -131,7 +131,7 @@
 		<div class="center">
 			<div class="group">
 				<div pl-component="dropzone" pl-bg="media/images/globe/background-dropzone.png">
-					<audio pl-id="drop" class="sfx" src="media/audio/SO_Drop.mp3" preload></audio>
+					<audio pl-id="drop" class="sfx" src="media/audio/SO_Drop.mp3"></audio>
 					<div pl-drop="content"></div>
 					<div class="area">
 						<img src="media/images/globe/img_4.3.png" />
@@ -149,19 +149,19 @@
 				<div class="frame">
 					<img class="background" src="media/images/globe/background-reveal.png">
 					<div pl-component="reveal" pl-require="multiple-choice" pl-required>
-						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3"  preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload></audio>
-						<audio pl-id="well-done" class="sfx" src="media/audio/globe/SO_4.1.mp3" preload></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.1.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.2.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.3.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.4.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.5.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.6.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.7.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.8.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3" ></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3"></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3"></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3"></audio>
+						<audio pl-id="well-done" class="sfx" src="media/audio/globe/SO_4.1.mp3"></audio>
 
 						<ul class="items">
 							<li class="center OPEN">
@@ -268,8 +268,8 @@
 	
 	<!-- 5 -->
 	<section id="info-trash" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_5.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/background/3.mp3"></audio>
+		<audio class="voice-over" src="media/audio/VO_5.1.mp3" pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/img_5.1.png" width="80%">
 			<h3>Someone has thrown<br/> trash in the ocean.</h3>
@@ -280,9 +280,9 @@
 	<!-- 6 -->
 	<section id="trash" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="selectable-remove" pl-select-state="highlight" pl-required>
-			<audio class="background" src="media/audio/background/2.mp3" preload></audio>
-			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload></audio>
-			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload></audio>
+			<audio class="background" src="media/audio/background/2.mp3"></audio>
+			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3"></audio>
+			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3"></audio>
 			<img class="turtle" src="media/images/trash/img_6.1.png">
 			<img class="turtle smile" src="media/images/trash/img_6.2.png">
 			<img class="net" src="media/images/trash/img_6.3.png">
@@ -379,8 +379,8 @@
 
 	<!-- 7 -->
 	<section id="info-keep-going" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/SO_7.1.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_7.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/SO_7.1.mp3"></audio>
+		<audio class="voice-over" src="media/audio/VO_7.1.mp3" pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<img src="media/images/img_7.1.png" width="80%">
 			<h2>Let's keep going!</h2>
@@ -389,8 +389,8 @@
 
 	<!-- 8 -->
 	<section id="info-jelly" class="screen no-frame jelly" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_8.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/background/3.mp3"></audio>
+		<audio class="voice-over" src="media/audio/VO_8.1.mp3" pl-required></audio>
 		<div class="center">
 			<div class="frame">
 				<img class="background" src="media/images/bg-jelly.png">
@@ -408,12 +408,12 @@
 	<section id="jellyfish" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="selectable-all" pl-transclude="content"></div>
 		<div pl-component="reveal">
-			<audio class="voice-over" src="media/audio/jellyfish/VO_1.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_2.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_3.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" preload pl-required></audio>
-			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" preload pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_1.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_2.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_3.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" pl-required></audio>
 			<ul pl-action="if (target().is('button')) deselect(target('li'));">
 				<li>
 					<div>
@@ -457,8 +457,8 @@
 
 	<!-- 10 -->
 	<section pl-id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/audio/background/3.mp3" preload></audio>
-		<audio class="voice-over" src="media/audio/VO_10.1.mp3" preload pl-required></audio>
+		<audio class="background" src="media/audio/background/3.mp3"></audio>
+		<audio class="voice-over" src="media/audio/VO_10.1.mp3" pl-required></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h3>You’ve learned a lot!<br/> Now you know how<br/> to help Sea Turtles!</h3>
 			<h3>Here's your</h3>
@@ -468,7 +468,7 @@
 
 	<!-- QUIT -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
-		<audio class="sfx" src="media/audio/button.mp3" preload></audio>
+		<audio class="sfx" src="media/audio/button.mp3"></audio>
 		<div pl-component="frame" pl-transclude="content">
 			<h2>Are you sure you<br/>want to quit?</h2>
 			<h3>Your game progress will be saved</h3>
