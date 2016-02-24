@@ -39,7 +39,7 @@ pl.game('printmaster', function () {
 	this.screen('title', function () {
 
 		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
+			if(this.is(_event.targetScope)) {
 				this.title.start();
 			}
 		});
@@ -84,13 +84,13 @@ pl.game('printmaster', function () {
 		};
 
 		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
+			if(!this.is(_event.target)) return;
 			this.require('shake');
 		});
 
 		this.entity('.flip', function() {
 			this.on('animationend', function(_event) {
-				if (!this.is(_event.target)) return;
+				if(!this.is(_event.target) || !this.screen.allowAction()) return;
 				this.screen.requiredQueue.ready('shake');
 			});
 		});
