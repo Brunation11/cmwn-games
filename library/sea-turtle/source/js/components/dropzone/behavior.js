@@ -74,9 +74,10 @@ pl.game.component('dropzone', function () {
 	};
 
 	this.isPointInBounds = function (_point, _y) {
-		var point, position;
+		var point, position, scale;
 
 		point = pl.Point.create(arguments);
+		if((scale = this.game.transformScale().x) !== 1) point = point.scale(1/scale);
 
 		if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
 			if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
