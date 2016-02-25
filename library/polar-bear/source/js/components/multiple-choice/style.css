@@ -43,11 +43,11 @@
 
 	.multiple-choice-component.variant-image ul:after {
 		visibility: hidden;
-	    display: block;
-	    font-size: 0;
-	    content: " ";
-	    clear: both;
-	    height: 0;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
 	}
 
 		.multiple-choice-component.variant-image li {
@@ -65,17 +65,22 @@
 
 			.multiple-choice-component.variant-image li img.hover {
 				position: absolute;
-			    top: 0;
-			    left: 0;
-			    opacity: 0;
+				top: 0;
+				left: 0;
+				opacity: 0;
 
-			    -webkit-transition: opacity .5s;
-			    transition: opacity .5s;
+				-webkit-transition: opacity .5s;
+				transition: opacity .5s;
 			}
 
 			.multiple-choice-component.variant-image li.SELECTED img.hover,
-			.multiple-choice-component.variant-image li:hover img.hover {
-			    opacity: 1;
+			.multiple-choice-component.variant-image li:hover img.hover,
+			.DEMO .VOICE-OVER .multiple-choice-component.variant-image li:hover img.hover {
+				opacity: 1;
+			}
+
+			.VOICE-OVER .multiple-choice-component.variant-image li:hover img.hover {
+				opacity: 0;
 			}
 
 	.multiple-choice-component.variant-question-image ul {

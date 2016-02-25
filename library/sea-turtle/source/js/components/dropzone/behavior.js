@@ -24,7 +24,7 @@ pl.game.component('dropzone', function () {
 		this.respond('grab', function () {
 			this.cache = {
 				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: this.size()
+				size: this.size().scale(this.game.transformScale().x)
 			};
 		});
 

@@ -85,10 +85,9 @@ pl.game('polar-bear', function () {
 					correct = pl.Queue.create();
 
 					correct.on('complete', this.bind(function () {
+						var sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+						if (sfx) sfx.play();
 						this.complete();
-						this.delay('2s', function () {
-							this.screen.next();
-						});
 					}));
 
 					this.buffer.width = 500;
@@ -116,6 +115,7 @@ pl.game('polar-bear', function () {
 						.toArray();
 
 					this.countries.correct = correct;
+
 				};
 
 				this.isImageTarget = function (_image, _point) {
@@ -132,6 +132,8 @@ pl.game('polar-bear', function () {
 
 				this.test = function (_cursor) {
 					var offset, cursor, pixel, gameScale;
+
+					if(!this.screen.allowAction()) return false;
 
 					offset = this.grayMap.absolutePosition();
 					gameScale = this.game.transformScale().x;
@@ -236,10 +238,9 @@ pl.game('polar-bear', function () {
 			}
 		});
 
-		this.on('ui-open', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
 			this.carousel.start();
-			this.incomplete();
-			this.score.incomplete();
 		});
 
 		this.state('incomplete','-COMPLETE', {
@@ -274,14 +275,6 @@ pl.game('polar-bear', function () {
 			this.cannon.ball.reload();
 		});
 
-		this.complete = function () {
-			var r = this.proto();
-
-			if(this.score.isComplete) this.delay('2s', this.next);
-			
-			return r;
-		};
-
 		this.playSFX = function (_name) {
 			var sfx;
 
@@ -292,6 +285,40 @@ pl.game('polar-bear', function () {
 			return this;
 		};
 
+	});
+
+	this.screen('experiment-discover', function() {
+		this.respond('select', function (_event) {
+			var id = _event.message;
+
+			if (id) {
+				this.highlight(_event.behaviorTarget);
+				this.audio.voiceOver[id].play();
+			}
+		});
+
+		this.entity('selectable', function() {
+			this.behavior('select', function (_target) {
+				var $target;
+
+				if (this.event) {
+					$target = $(this.event.target).closest('li');
+
+					if (this.shouldSelect($target) !== false) {
+						return {
+							message: $target.id(),
+							behaviorTarget: $target
+						};
+					}	
+				}
+
+				else {
+					this.proto(_target);
+				}
+
+				return false;
+			});
+		});
 	});
 
 	this.screen('flip', function () {

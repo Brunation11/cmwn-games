@@ -77,18 +77,6 @@ pl.game.component('selectable-all', function () {
 		this.$bin = this.find('.bin li');
 		this.columns = [];
 
-		this.$bin.each(this.bind(function (_index, _node) {
-			var $node, message
-			
-			$node = $(_node);
-			message = $node.attr('pl-message')
-
-			if ($node.attr('pl-correct') != null) {
-				this.screen.require(message);	
-			}
-			
-		}));
-		
 		populateViewport.call(this);
 
 		return this;
