@@ -39,10 +39,8 @@ button {
 .spinner {
 	position: relative;
 	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
 	background: rgba(200,200,200,0.5);
 	border-radius: 50px;
-
 }
 
 .spinner > .spinner {
@@ -67,6 +65,7 @@ button {
 #loader .group > .spinner {
 	width: 80px; height: 80px;
 	margin: auto;
+	animation: pulse 0.5s infinite;
 }
 
 /* This is just to preload the images used in css. */
@@ -224,11 +223,16 @@ img.inline {
 	opacity: 0;
 }
 
+#map .names {
+	position: absolute;
+	top: 0; left: 0;
+}
+
 #map .map {
 	width: 500px;
 }
 	#map .map img {
-		width: 100%;
+		width: 545px;
 	}
 
 	#map .map-entity .prev-screen {
@@ -299,6 +303,44 @@ img.inline {
 			}
 		}
 	}
+}
+
+/* STORY BOARD SCREEN: 24 */
+#experiment-discover {
+
+	.selectable-component .items li {
+		cursor: pointer;
+	}
+
+	.selectable-component .items li img {
+		opacity: 1;
+	}
+
+	.selectable-component .items li img.hover {
+		opacity: 0;
+	}
+
+	&:not(.VOICE-OVER) .selectable-component .items li:hover img.hover {
+		opacity: 1;
+	}
+
+	.selectable-component .items li .checked {
+		opacity: 0;
+		transition: opacity .5s;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		margin: 0;
+	}
+
+		.selectable-component .items li.HIGHLIGHTED img {
+			transform: translateY(-20%);
+		}
+
+		.selectable-component .items li.HIGHLIGHTED .checked {
+			opacity: 1;
+		}
 }
 
 .thank-you {

@@ -78,6 +78,24 @@ pl.game.component('screen-basic', function () {
 			this.game.removeClass(this.properties.gameClass);
 		}
 
+		if(this.properties.gameClass) {
+			this.game.removeClass(this.properties.gameClass);
+		}
+
+		if (this.isReady && this === _event.targetScope) {
+			this.stop();
+		}
+	});
+
+	this.on('ui-close', function (_event) {
+		if(this.properties.gameClass) {
+			this.game.removeClass(this.properties.gameClass);
+		}
+
+		if(this.properties.gameClass) {
+			this.game.removeClass(this.properties.gameClass);
+		}
+
 		if (this.isReady && this === _event.targetScope) {
 			this.stop();
 		}
