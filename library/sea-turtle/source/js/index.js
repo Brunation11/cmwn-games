@@ -124,8 +124,7 @@ pl.game('sea-turtle', function () {
 						this.deselect(message);
 					});
 					
-					this.currentAudio.pause();
-					this.currentAudio.currentTime = 0;
+					this.currentAudio.stop();
 				}
 			});
 
