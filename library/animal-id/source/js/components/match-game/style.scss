@@ -26,6 +26,7 @@
 				background-color: #0af;
 				color: #eee;
 				border-radius: 8px;
+				transform: rotateX(0deg);
 				transition: transform 0.5s;
 				-webkit-backface-visibility: hidden;
 				backface-visibility: hidden;
@@ -44,18 +45,15 @@
 
 .match-game-component.bt > ul li .side.b,
 .match-game-component > ul li.bt .side.b {
-	transform: rotateY(0deg);
 	transform: rotateX(-180deg);
 }
 
 .match-game-component.bt > ul.show-all li .side.a,
 .match-game-component.bt > ul li.HIGHLIGHTED .side.a {
-	transform: rotateY(0deg);
 	transform: rotateX(180deg);
 }
 
 .match-game-component.bt > ul.show-all li .side.b,
 .match-game-component.bt > ul li.HIGHLIGHTED .side.b {
-	transform: rotateY(0deg);
 	transform: rotateX(0deg);
 }

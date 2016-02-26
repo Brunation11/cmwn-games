@@ -39,10 +39,8 @@ button {
 .spinner {
 	position: relative;
 	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
 	background: rgba(200,200,200,0.5);
 	border-radius: 50px;
-
 }
 
 .spinner > .spinner {
@@ -67,6 +65,7 @@ button {
 #loader .group > .spinner {
 	width: 80px; height: 80px;
 	margin: auto;
+	animation: pulse 0.5s infinite;
 }
 
 /* This is just to preload the images used in css. */
@@ -233,7 +232,7 @@ img.inline {
 	width: 500px;
 }
 	#map .map img {
-		width: 100%;
+		width: 545px;
 	}
 
 	#map .map-entity .prev-screen {
