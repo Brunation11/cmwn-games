@@ -11,9 +11,9 @@ import './config.game';
 
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
 import './components/frame/behavior';
 import './components/score/behavior';
+import './components/timer/behavior';
 import './components/reveal/behavior';
 import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
