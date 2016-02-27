@@ -298,6 +298,10 @@ p {
 	}
 }
 
+.hidden {
+	display: none;
+}
+
 // the following css is specific to this game
 
 .frame {
@@ -305,8 +309,11 @@ p {
 	text-align: center;
 	font-size: 40px;
 	line-height: 1.2;
-	background-size: 100% 100%;
+	background-size: 100%;
 	background-repeat: no-repeat;
+	padding: 40px;
+	width: 720px;
+	height: 480px;
 }
 
 .screen.large-frame {
@@ -350,7 +357,134 @@ p {
 }
 
 #title {
+	.group {
+		width: 960px;
+		height: 540px;
+	}
 
+	.fish {
+		position: absolute;
+		height: 540px;
+		left: 40px;
+		top: 0;
+	}
+
+	.title {
+		position: absolute;
+		width: 680px;
+		left: 280px;
+		top: -50px;
+	}
+
+	.prev-screen {
+		display: none;
+	}
+
+	.next-screen {
+		background-position: 0px -30px;
+		width: 150px;
+		height: 90px;
+		right: 80px;
+
+		&:hover {
+			background-position: 0px -180px;
+		}
+	}
+}
+
+#you-feel {
+	.frame {
+
+		> img {
+			width: 100%;
+		}
+	}
+
+	.items {
+		margin: -10px;
+		height: 200px;
+		justify-content: center;
+	}
+
+	li {
+		background-size: auto 200px;
+		background-position: left center;
+
+		&:hover {
+			background-position: right center;
+		}
+	}
+}
+
+#healthy-water {
+	.words {
+		width: 620px;
+		margin: 10px 0 0;
+	}
+
+	.items {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	li {
+		list-style: none;
+		width: 300px;
+		height: 300px;
+		background-position: left center;
+		background-size: auto 300px;
+
+		&:hover {
+			background-position: right center;
+		}
+	}
+}
+
+#water-pollution {
+	img {
+		vertical-align: middle;
+		margin: 0 -20px;
+	}
+
+	.words {
+		width: 360px;
+	}
+
+	.fish {
+		width: 330px;
+	}
+}
+
+#clean-water {
+	p {
+		width: 360px;
+		margin-top: 100px;
+		font-weight: bold;
+	}
+
+	img {
+		position: absolute;
+		right: 35px;
+		bottom: 50px;
+		height: 360px;
+	}
+}
+
+#bubble-up {
+	.center div {
+		text-align: center;
+	}
+
+	img {
+		width: 640px;
+		margin-top: -60px;
+	}
+
+	p {
+		margin-top: -30px;
+	}
 }
 
 #flip {

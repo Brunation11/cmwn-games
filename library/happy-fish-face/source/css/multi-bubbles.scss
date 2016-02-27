@@ -1,0 +1,51 @@
+#multi-bubbles {
+	.group {
+		text-align: center;
+		width: 960px;
+		height: 540px;
+	}
+
+	img {
+		width: 840px;
+		margin: -30px auto;
+	}
+
+	.items {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 960px;
+		height: 540px;
+		margin: -270px -480px;
+		display: block;
+	}
+
+	li {
+		position: absolute;
+		background-image: url('../media/_images/_S_MultiBubbles/IMG_7.3.png');
+		background-size: 1602px;
+		background-repeat: no-repeat;
+		cursor: pointer;
+
+		&[pl-id=swim] {
+			width: 80px;
+			height: 80px;
+			background-position: -50px -50px;
+			top: 40px;
+			left: 20px;
+
+			&:hover {
+				background-position: -250px -50px;
+			}
+		}
+	}
+
+	.score-component {
+		color: #fff;
+
+		img {
+			width: 240px;
+			margin: 0;
+		}
+	}
+}

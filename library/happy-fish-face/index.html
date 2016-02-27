@@ -61,19 +61,13 @@
 		<audio class="sfx" src="media/_audio/_S_YouFeel/HFF_SX_LeftEmoji.mp3" preload></audio>
 		<audio class="sfx" src="media/_audio/_S_YouFeel/HFF_SX_CenterEmoji.mp3" preload></audio>
 		<audio class="sfx" src="media/_audio/_S_YouFeel/HFF_SX_RightEmoji.mp3" preload></audio>
-		<div pl-bg="media/_images/_frames/FR_1.png">
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
 			<img src="media/_images/_S_YouFeel/img_2.1.png">
 			<div pl-component="selectable">
 				<ul class="items" pl-action="select()">
-					<li>
-						<img src="media/_images/_S_YouFeel/img_2.2.png">
-					</li>
-					<li>
-						<img src="media/_images/_S_YouFeel/img_2.3.png">
-					</li>
-					<li>
-						<img src="media/_images/_S_YouFeel/img_2.4.png">
-					</li>
+					<li pl-bg="media/_images/_S_YouFeel/img_2.2.png"></li>
+					<li pl-bg="media/_images/_S_YouFeel/img_2.3.png"></li>
+					<li pl-bg="media/_images/_S_YouFeel/img_2.4.png"></li>
 				</ul>
 			</div>
 		</div>
@@ -82,25 +76,21 @@
 	<!-- WaterPolution -->
 	<section id="water-pollution" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/_audio/_S_WaterPollution/HFF_VO_WaterPollution.mp3" preload></audio>
-		<div pl-bg="media/_images/_frames/FR_1.png">
-			<img src="media/_images/_S_WaterPollution/img_3.1.png">
-			<img src="media/_images/_S_WaterPollution/img_3.2.png">
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
+			<img class="words" src="media/_images/_S_WaterPollution/img_3.1.png">
+			<img class="fish" src="media/_images/_S_WaterPollution/img_3.2.png">
 		</div>
 	</section>
 
 	<!-- HealthyWater -->
 	<section id="healthy-water" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/_audio/_S_HealthyWater/HFF_VO_HealthyWater.mp3" preload></audio>
-		<div pl-bg="media/_images/_frames/FR_1.png">
-			<img src="media/_images/_S_HealthyWater/img_4.1.png">
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
+			<img class="words" src="media/_images/_S_HealthyWater/img_4.1.png">
 			<div pl-component="multiple-choice">
 				<ul class="items" pl-action="answer()">
-					<li>
-						<img src="media/_images/_S_HealthyWater/img_4.2.png">
-					</li>
-					<li>
-						<img src="media/_images/_S_HealthyWater/img_4.3.png">
-					</li>
+					<li pl-bg="media/_images/_S_HealthyWater/img_4.2.png"></li>
+					<li pl-bg="media/_images/_S_HealthyWater/img_4.3.png"></li>
 				</ul>
 			</div>
 		</div>
@@ -110,7 +100,7 @@
 	<section id="clean-water" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" preload loop></audio>
 		<audio class="voice-over" src="media/_audio/_S_CleanWater/HFF_VO_CleanWater.mp3" preload></audio>
-		<div pl-bg="media/_images/_frames/FR_1.png">
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
 			<p>
 				And clean water is<br> important for<br> humans too!
 			</p>
@@ -125,11 +115,15 @@
 			<audio class="voice-over" src="media/_audio/_S_BubbleUp/HFF_VO_BubbleUP.mp3" preload pl-required></audio>
 			<audio class="voice-over" src="media/_audio/_S_BubbleUp/HFF_VO_Answer.mp3" preload pl-required></audio>
 		</div>
-		<div pl-bg="media/_images/_frames/FR_1.png">
-			<img src="media/_images/_S_BubbleUp/img_6.1.png">
-			<p>
-				Answer the question by<br> popping the correct bubbles.
-			</p>
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
+			<div class="center">
+				<div>
+					<img src="media/_images/_S_BubbleUp/img_6.1.png">
+					<p>
+						Answer the question by<br> popping the correct bubbles.
+					</p>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -190,7 +184,7 @@
 			<audio class="voice-over" src="media/_audio/_S_PollutesWater/HFF_VO_PollutesWater.mp3" preload pl-required></audio>
 			<audio class="voice-over" src="media/_audio/_S_PollutesWater/HFF_VO_Remove.mp3" preload pl-required></audio>
 		</div>
-		<div pl-bg="media/_images/_frames/FR_1.png">
+		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
 			<div class="stars" pl-bg="media/_images/_S_PollutesWater/img_8.2.png"></div>
 			<img src="media/_images/_S_PollutesWater/img_8.1.png">
 			<p>

@@ -23,6 +23,20 @@ import './components/modal/behavior';
 
 pl.game('happy-fish-face', function () {
 
+	var garbage = function() {
+		this.on('ui-open', function() {
+			this.game.addClass('garbage');
+		});
+
+		this.on('ui-close', function() {
+			this.game.removeClass('garbage');
+		});
+
+		this.on('ui-leave', function() {
+			this.game.removeClass('garbage');
+		});
+	};
+
 	this.screen('title', function () {
 
 		this.on('ready', function (_event) {
@@ -39,6 +53,22 @@ pl.game('happy-fish-face', function () {
 			}
 		});
 
+	});
+
+	this.screen('you-feel', function() {
+		garbage.call(this);
+	});
+
+	this.screen('water-pollution', function() {
+		garbage.call(this);
+	});
+
+	this.screen('healthy-water', function() {
+		garbage.call(this);
+	});
+
+	this.screen('clean-water', function() {
+		garbage.call(this);
 	});
 
 	this.screen('flip', function () {
