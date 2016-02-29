@@ -1,4 +1,6 @@
 #trash {
+	opacity: 0;
+	transition: opacity .5s, transform .5s;
 
 	.net {
 		position: absolute;
@@ -498,5 +500,9 @@
 
 	.modal-component {
 		position: absolute;
+	}
+
+	&.OPEN {
+		opacity: 1;
 	}
 }
