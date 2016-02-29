@@ -510,10 +510,22 @@ p {
 }
 
 #flip {
+
+	.fish {
+		max-height: 400px;
+		margin-top: -30px;
+	}
+
+	.flip {
+		width: 280px;
+		margin-top: -30px;
+	}
+
 	.frame {
-
-		.flip {
-
+		> div {
+			display: inline-block;
+			width: 380px;
+			margin-left: -80px;
 		}
 	}
 
