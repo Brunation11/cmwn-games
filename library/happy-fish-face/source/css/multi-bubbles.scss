@@ -38,14 +38,265 @@
 				background-position: -250px -50px;
 			}
 		}
+
+		&[pl-id=wash-dishes] {
+			width: 100px;
+			height: 100px;
+			background-position: -440px -40px;
+			top: 385px;
+			left: 680px;
+
+			&:hover {
+				background-position: -640px -41px;
+			}
+		}
+
+		&[pl-id=grow-crops] {
+			width: 120px;
+			height: 120px;
+			background-position: -830px -40px;
+			top: 105px;
+			left: 500px;
+
+			&:hover {
+				background-position: -1030px -40px;
+			}
+		}
+
+		&[pl-id=tap-dance] {
+			width: 100px;
+			height: 100px;
+			background-position: -1240px -50px;
+			top: 55px;
+			left: 850px;
+
+			&:hover {
+				background-position: -1440px -50px;
+			}
+		}
+
+		&[pl-id=cook] {
+			width: 80px;
+			height: 80px;
+			background-position: -50px -285px;
+			top: 230px;
+			left: 420px;
+
+			&:hover {
+				background-position: -250px -285px;
+			}
+		}
+
+		&[pl-id=clean-house] {
+			width: 100px;
+			height: 100px;
+			background-position: -440px -275px;
+			top: 80px;
+			left: 345px;
+
+			&:hover {
+				background-position: -640px -275px;
+			}
+		}
+
+		&[pl-id=run-factories] {
+			width: 120px;
+			height: 120px;
+			background-position: -830px -265px;
+			top: 140px;
+			left: 35px;
+
+			&:hover {
+				background-position: -1030px -265px;
+			}
+		}
+
+		&[pl-id=play-basketball] {
+			width: 120px;
+			height: 120px;
+			background-position: -1230px -265px;
+			top: 260px;
+			left: 155px;
+
+			&:hover {
+				background-position: -1430px -265px;
+			}
+		}
+
+		&[pl-id=drink-it] {
+			width: 80px;
+			height: 80px;
+			background-position: -50px -520px;
+			top: 80px;
+			left: 175px;
+
+			&:hover {
+				background-position: -250px -520px;
+			}
+		}
+
+		&[pl-id=wash-face] {
+			width: 100px;
+			height: 100px;
+			background-position: -440px -510px;
+			top: 350px;
+			left: 25px;
+
+			&:hover {
+				background-position: -640px -510px;
+			}
+		}
+
+		&[pl-id=laundry] {
+			width: 120px;
+			height: 120px;
+			background-position: -830px -500px;
+			top: 120px;
+			left: 635px;
+
+			&:hover {
+				background-position: -1030px -500px;
+			}
+		}
+
+		&[pl-id=fly-a-kite] {
+			width: 120px;
+			height: 120px;
+			background-position: -1230px -500px;
+			top: 260px;
+			left: 835px;
+
+			&:hover {
+				background-position: -1430px -500px;
+			}
+		}
+
+		&[pl-id=brush-teeth] {
+			width: 80px;
+			height: 80px;
+			background-position: -50px -750px;
+			top: 180px;
+			left: 255px;
+
+			&:hover {
+				background-position: -250px -750px;
+			}
+		}
+
+		&[pl-id=take-showers] {
+			width: 100px;
+			height: 100px;
+			background-position: -440px -740px;
+			top: 290px;
+			left: 305px;
+
+			&:hover {
+				background-position: -640px -740px;
+			}
+		}
+
+		&[pl-id=drive] {
+			width: 80px;
+			height: 80px;
+			background-position: -850px -750px;
+			top: 255px;
+			left: 695px;
+
+			&:hover {
+				background-position: -1050px -750px;
+			}
+		}
+
+		&[pl-id=zipline] {
+			width: 100px;
+			height: 100px;
+			background-position: -40px -975px;
+			top: 290px;
+			left: 545px;
+
+			&:hover {
+				background-position: -240px -975px;
+			}
+		}
+
+		&[pl-id=crochet] {
+			width: 120px;
+			height: 120px;
+			background-position: -430px -965px;
+			top: 390px;
+			left: 405px;
+
+			&:hover {
+				background-position: -630px -965px;
+			}
+		}
+
+		&[pl-id=read] {
+			width: 80px;
+			height: 80px;
+			background-position: -850px -985px;
+			top: 425px;
+			left: 585px;
+
+			&:hover {
+				background-position: -1050px -985px;
+			}
+		}
+
+		&[pl-id=sleep] {
+			width: 100px;
+			height: 100px;
+			background-position: -50px -1220px;
+			top: 160px;
+			left: 775px;
+
+			&:hover {
+				background-position: -250px -1220px;
+			}
+		}
+
+		&[pl-id=tell-time] {
+			width: 100px;
+			height: 100px;
+			background-position: -435px -1210px;
+			top: 410px;
+			left: 215px;
+
+			&:hover {
+				background-position: -635px -1210px;
+			}
+		}
+
+		&[pl-id=talk] {
+			width: 80px;
+			height: 80px;
+			background-position: -850px -1220px;
+			top: 425px;
+			left: 825px;
+
+			&:hover {
+				background-position: -1050px -1220px;
+			}
+		}
 	}
 
 	.score-component {
+		position: absolute;
+		left: 50px;
+		bottom: 0;
 		color: #fff;
 
 		img {
-			width: 240px;
+			width: 180px;
 			margin: 0;
+			vertical-align: middle;
+		}
+
+		p {
+			display: inline-block;
+			vertical-align: bottom;
+			padding-bottom: 4px;
+			margin-left: -15px;
 		}
 	}
 }

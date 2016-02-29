@@ -487,6 +487,28 @@ p {
 	}
 }
 
+#pollutes-water {
+	.stars {
+		margin: 0 auto;
+		width: 380px;
+		height: 200px;
+		background-position: 0px center;
+		background-size: auto 200px;
+		background-repeat: no-repeat;
+	}
+
+	img {
+		width: 600px;
+		margin: -20px 0;
+	}
+
+	&.OPEN {
+		.stars {
+			animation: stars 2s steps(2) forwards;
+		}
+	}
+}
+
 #flip {
 	.frame {
 
