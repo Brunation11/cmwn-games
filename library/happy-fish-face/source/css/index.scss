@@ -390,6 +390,17 @@ p {
 			background-position: 0px -180px;
 		}
 	}
+
+	&.OPEN {
+		.fish {
+			animation-name: fadeInRight;
+			animation-delay: 1s;
+		}
+
+		.title {
+			animation: title 6s infinite;
+		}
+	}
 }
 
 #you-feel {
@@ -436,7 +447,8 @@ p {
 		background-position: left center;
 		background-size: auto 300px;
 
-		&:hover {
+		&:hover,
+		&.SELECTED {
 			background-position: right center;
 		}
 	}
@@ -504,7 +516,7 @@ p {
 
 	&.OPEN {
 		.stars {
-			animation: stars 2s steps(2) forwards;
+			animation: stars 4s steps(2) forwards;
 		}
 	}
 }

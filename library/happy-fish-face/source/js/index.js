@@ -8,7 +8,9 @@ import 'js-interactive-library';
 import './config.game';
 
 // SCREENS
+import multiBubbles from './screens/multi-bubbles';
 
+// COMPONENTS
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/frame/behavior';
@@ -57,6 +59,25 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('you-feel', function() {
 		garbage.call(this);
+
+		this.respond('select', function (_event) {
+			var id, stateMethod;
+
+			id = _event.message;
+			stateMethod = this.properties.selectState || 'select';
+
+			if(id != null) {
+				var sfx = this.audio.sfx[id];
+				if(sfx) this.playSound(sfx);
+
+				this.requiredQueue.ready('select');
+			}
+		});
+
+		this.on('ready', function(_event) {
+			if (!this.is(_event.target)) return;
+			this.require('select');
+		});
 	});
 
 	this.screen('water-pollution', function() {
@@ -70,6 +91,8 @@ pl.game('happy-fish-face', function () {
 	this.screen('clean-water', function() {
 		garbage.call(this);
 	});
+
+	this.screen('multi-bubbles', multiBubbles);
 
 	this.screen('flip', function () {
 		this.next = function () {

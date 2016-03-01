@@ -26,6 +26,14 @@
 		background-size: 1602px;
 		background-repeat: no-repeat;
 		cursor: pointer;
+		animation: bob 6s infinite;
+		transition: opacity .5s;
+
+		&.HIGHLIGHTED {
+			opacity: 0;
+			cursor: auto;
+			pointer-events: none;
+		}
 
 		&[pl-id=swim] {
 			width: 80px;
@@ -39,7 +47,7 @@
 			}
 		}
 
-		&[pl-id=wash-dishes] {
+		&[pl-id=washDishes] {
 			width: 100px;
 			height: 100px;
 			background-position: -440px -40px;
@@ -51,7 +59,7 @@
 			}
 		}
 
-		&[pl-id=grow-crops] {
+		&[pl-id=growCrops] {
 			width: 120px;
 			height: 120px;
 			background-position: -830px -40px;
@@ -63,7 +71,7 @@
 			}
 		}
 
-		&[pl-id=tap-dance] {
+		&[pl-id=tapDance] {
 			width: 100px;
 			height: 100px;
 			background-position: -1240px -50px;
@@ -87,7 +95,7 @@
 			}
 		}
 
-		&[pl-id=clean-house] {
+		&[pl-id=cleanHouse] {
 			width: 100px;
 			height: 100px;
 			background-position: -440px -275px;
@@ -99,7 +107,7 @@
 			}
 		}
 
-		&[pl-id=run-factories] {
+		&[pl-id=runFactories] {
 			width: 120px;
 			height: 120px;
 			background-position: -830px -265px;
@@ -111,7 +119,7 @@
 			}
 		}
 
-		&[pl-id=play-basketball] {
+		&[pl-id=playBasketball] {
 			width: 120px;
 			height: 120px;
 			background-position: -1230px -265px;
@@ -123,7 +131,7 @@
 			}
 		}
 
-		&[pl-id=drink-it] {
+		&[pl-id=drinkIt] {
 			width: 80px;
 			height: 80px;
 			background-position: -50px -520px;
@@ -135,7 +143,7 @@
 			}
 		}
 
-		&[pl-id=wash-face] {
+		&[pl-id=washFace] {
 			width: 100px;
 			height: 100px;
 			background-position: -440px -510px;
@@ -159,7 +167,7 @@
 			}
 		}
 
-		&[pl-id=fly-a-kite] {
+		&[pl-id=flyAKite] {
 			width: 120px;
 			height: 120px;
 			background-position: -1230px -500px;
@@ -171,7 +179,7 @@
 			}
 		}
 
-		&[pl-id=brush-teeth] {
+		&[pl-id=brushTeeth] {
 			width: 80px;
 			height: 80px;
 			background-position: -50px -750px;
@@ -183,7 +191,7 @@
 			}
 		}
 
-		&[pl-id=take-showers] {
+		&[pl-id=takeShowers] {
 			width: 100px;
 			height: 100px;
 			background-position: -440px -740px;
@@ -255,7 +263,7 @@
 			}
 		}
 
-		&[pl-id=tell-time] {
+		&[pl-id=tellTime] {
 			width: 100px;
 			height: 100px;
 			background-position: -435px -1210px;

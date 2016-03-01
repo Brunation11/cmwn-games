@@ -1,14 +1,15 @@
 pl.game.component('selectable', function () {
 
 	this.behavior('select', function (_target) {
-		var $target;
+		var $target, message;
 
 		if (this.event) {
 			$target = $(this.event.target).closest('li');
+			message = $target.id() || $target.index();
 
 			if (this.shouldSelect($target) !== false) {
 				return {
-					message: $target.id(),
+					message,
 					behaviorTarget: $target
 				};
 			}	
@@ -21,8 +22,8 @@ pl.game.component('selectable', function () {
 		return false;
 	});
 
-	this.shouldSelect = function (_target) {
-		return true;
+	this.shouldSelect = function (_$target) {
+		return this.screen.allowAction() && _$target.is('li');
 	};
 
 	this.deselectAll = function() {

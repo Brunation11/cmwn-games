@@ -9,6 +9,12 @@
 	100% {transform: translateY(-10%);}
 }
 
+@keyframes title {
+	0% {transform: translateY(-20px);}
+	50% {transform: translateY(20px);}
+	100% {transform: translateY(-20px);}
+}
+
 @keyframes crab {
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(360deg);}
