@@ -17,8 +17,10 @@
 
 </head>
 <body id="happy-fish-face">
+	<!-- GAME BACKGROUNDS -->
 	<div class="background garbage"></div>
 
+	<!-- GAME LOADER -->
 	<div id="loader" class="center OPEN">
 		<div class="group">
 			<h2>Loading!</h2>
@@ -44,8 +46,6 @@
 	<audio pl-id="button" class="sfx" src="media/_audio/_buttons/HFF_SX_BU1.mp3" preload></audio>
 	<audio pl-id="screen-complete" class="sfx" src="media/_audio/_buttons/HFF_SX_BU2.mp3" preload></audio>
 
-	<!-- GAME BACKGROUNDS -->
-
 	<!-- SCREENS -->
 
 	<!-- TITLE -->
@@ -53,6 +53,7 @@
 		<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" preload loop></audio>
 		<img class="fish animated" src="media/_images/_title/img_1.1.png">
 		<img class="title animated" src="media/_images/_title/img_1.2.png">
+		<div pl-component="bubbles"></div>
 	</section>
 
 	<!-- YouFeel -->
@@ -177,7 +178,6 @@
 
 	<!-- PollutesWater -->
 	<section id="pollutes-water" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" preload loop></audio>
 		<div pl-component="audio-sequence">
 			<audio class="sfx" src="media/_audio/_S_PollutesWater/HFF_SX_Star_1.mp3" preload pl-required></audio>
 			<audio class="sfx" src="media/_audio/_S_PollutesWater/HFF_SX_Star_2.mp3" preload pl-required></audio>
@@ -198,6 +198,7 @@
 
 	<!-- Trash -->
 	<section id="trash" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" preload loop></audio>
 		<audio pl-id="correct" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Right.mp3" preload></audio>
 		<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Wrong.mp3" preload></audio>
 		<!-- GoodJob -->

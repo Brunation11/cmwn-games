@@ -537,6 +537,14 @@
 		}
 	}
 
+	&.try-again {
+		cursor: auto;
+
+		.net {
+			opacity: 0;
+		}
+	}
+
 	&.OPEN {
 		opacity: 1;
 	}

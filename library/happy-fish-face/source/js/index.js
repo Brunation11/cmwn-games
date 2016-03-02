@@ -14,6 +14,7 @@ import trash from './screens/trash';
 // COMPONENTS
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
+import './components/bubbles/behavior';
 import './components/frame/behavior';
 import './components/score/behavior';
 import './components/timer/behavior';
