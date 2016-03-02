@@ -82,7 +82,6 @@ export default function trash () {
 		};
 
 		this.timerComplete = function() {
-			console.log('* timer complete!', this.time, this.timeout);
 			this.stop();
 			this.screen.modal.item('tryAgain');
 			this.screen.addClass('try-again');

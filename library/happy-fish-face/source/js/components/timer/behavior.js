@@ -22,7 +22,6 @@ pl.game.component('timer', function () {
 	this.stamp = 0;
 
 	this.timerComplete = function() {
-		console.log('* timer complete!', this.time, this.timeout);
 		this
 			.stop()
 			.complete();
