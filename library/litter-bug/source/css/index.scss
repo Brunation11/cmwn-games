@@ -459,6 +459,10 @@ p {
 			z-index: 1;
 		}
 
+		.prev-screen {
+			z-index: 1;
+		}
+
 		.next-screen {
 			z-index: 1;
 			opacity: 1;
@@ -497,6 +501,21 @@ p {
 
 	.next-screen {
 		z-index: -1;
+	}
+
+	&.VOICE-OVER {
+		.slides-component {
+
+			.frame-component:not(.COMPLETE) {
+
+				.next-screen {
+					opacity: 0;
+					pointer-events: none;
+					transform: rotate(-180deg);
+					transition: none;
+				}
+			}
+		}
 	}
 
 	&.COMPLETE {

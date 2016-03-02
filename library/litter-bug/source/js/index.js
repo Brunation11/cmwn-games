@@ -37,6 +37,23 @@ pl.game('litterbug', function () {
 
 	});
 
+	this.screen('clean-up', function() {
+
+		this.state('incomplete', '-COMPLETE', {
+			didSet: function (_target) {
+				_target.isComplete = false;
+			}
+		});
+
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.game.removeClass('sun');
+			this.incomplete(this);
+			this.incomplete(this.slides.trash);
+			this.slides.trash.ready();
+		});
+	});
+
 	this.screen('video', function() {
 		this.on("ui-close", function() {
 			this.video.pause();
