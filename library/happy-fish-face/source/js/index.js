@@ -89,17 +89,11 @@ pl.game('happy-fish-face', function () {
 		});
 	});
 
-	this.screen('water-pollution', function() {
-		garbage.call(this);
-	});
+	this.screen('water-pollution', garbage);
 
-	this.screen('healthy-water', function() {
-		garbage.call(this);
-	});
+	this.screen('healthy-water', garbage);
 
-	this.screen('clean-water', function() {
-		garbage.call(this);
-	});
+	this.screen('clean-water', garbage);
 
 	this.screen('multi-bubbles', multiBubbles);
 
