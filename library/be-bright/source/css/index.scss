@@ -173,6 +173,11 @@ p {
 	margin: 0;
 }
 
+// preload game assets
+#asset-bin {
+	display: none;
+}
+
 .spinner {
 	position: relative;
 	width: 60%; height: 60%;
