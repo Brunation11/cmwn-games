@@ -26,6 +26,12 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Preloads game backgrounds -->
+	<div id="asset-bin">
+		<img src="media/images/background.png">
+		<img src="media/images/background2.png">
+	</div>
 	
 	<!-- GLOBAL GAME ASSETS -->
 
@@ -414,7 +420,7 @@
 			<audio class="voice-over" src="media/audio/jellyfish/VO_4.mp3" preload pl-required></audio>
 			<audio class="voice-over" src="media/audio/jellyfish/VO_5.mp3" preload pl-required></audio>
 			<audio class="voice-over" src="media/audio/jellyfish/VO_6.mp3" preload pl-required></audio>
-			<ul pl-action="if (target().is('button')) deselect(target('li'));">
+			<ul pl-action="if (target().is('button')) deselectTarget(target('li'));">
 				<li>
 					<div>
 						Entanglement in Fishing Gear
