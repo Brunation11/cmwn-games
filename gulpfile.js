@@ -9,6 +9,8 @@ var argv = require('yargs').argv,
     path = require('path'),
     games,
     sourcemaps = require('gulp-sourcemaps'),
+    postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     livereload = require('gulp-livereload');
@@ -84,6 +86,7 @@ gulp.task('sass', function () {
             .pipe(sass().on('error', sass.logError))
             .pipe(concat('style.css'))
             .pipe(sourcemaps.init())
+            .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
