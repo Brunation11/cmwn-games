@@ -293,20 +293,20 @@
 
 			&[pl-id=crab] {
 				width: 85px;
-				height: 75px;
-				background-position: -445px -1055px;
+				height: 85px;
+				background-position: -445px -1045px;
 				top: 180px;
 				left: 120px;
 				transform-origin: 150px 0;
 				animation: crab 8s infinite linear;
 
 				&:hover {
-					background-position: -645px -1055px;
+					background-position: -645px -1045px;
 				}
 			}
 
 			&[pl-id=turtle] {
-				width: 140px;
+				width: 150px;
 				height: 110px;
 				background-position: -815px -1030px;
 				top: 100px;
@@ -397,13 +397,13 @@
 			&[pl-id=starfish] {
 				width: 100px;
 				height: 90px;
-				background-position: -440px -1445px;
+				background-position: -440px -1440px;
 				top: 0px;
 				left: 110px;
 				animation: seahorse 7s infinite linear;
 
 				&:hover {
-					background-position: -640px -1445px;
+					background-position: -640px -1440px;
 				}
 
 				&.second {
@@ -414,15 +414,15 @@
 			}
 
 			&[pl-id=octopus] {
-				width: 140px;
-				height: 130px;
-				background-position: -815px -1430px;
+				width: 160px;
+				height: 145px;
+				background-position: -805px -1420px;
 				top: 20px;
 				left: 310px;
 				animation: octopus 5s infinite;
 
 				&:hover {
-					background-position: -1015px -1430px;
+					background-position: -1005px -1420px;
 				}
 			}
 
@@ -465,15 +465,15 @@
 			}
 
 			&[pl-id=fish5] {
-				width: 90px;
-				height: 60px;
+				width: 95px;
+				height: 65px;
 				background-position: -840px -1660px;
 				top: 280px;
 				left: 1160px;
 				animation: swim-left 8s infinite linear;
 
 				&:hover {
-					background-position: -1040px -1660px;
+					background-position: -1040px -1655px;
 				}
 			}
 
