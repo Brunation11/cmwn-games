@@ -307,4 +307,11 @@
 			margin-left: -15px;
 		}
 	}
+
+	&.VOICE-OVER {
+		li {
+			cursor: auto;
+			pointer-events: none;
+		}
+	}
 }

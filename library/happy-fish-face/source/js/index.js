@@ -3,12 +3,13 @@
  * @module
  */
 import './testPlatformIntegration';
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
 import multiBubbles from './screens/multi-bubbles';
+import trash from './screens/trash';
 
 // COMPONENTS
 import './components/screen-basic/behavior';
@@ -52,9 +53,16 @@ pl.game('happy-fish-face', function () {
 					this.open();
 					this.close($('#loader'));
 				});
+				this.require('appear');
 			}
 		});
 
+		this.entity('.fish', function() {
+			this.on('animationend', function(_event) {
+				if(!this.is(_event.target) || !this.screen.allowAction()) return;
+				this.screen.requiredQueue.ready('appear');
+			});
+		});
 	});
 
 	this.screen('you-feel', function() {
@@ -94,6 +102,8 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('multi-bubbles', multiBubbles);
 
+	this.screen('trash', trash);
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
@@ -101,13 +111,13 @@ pl.game('happy-fish-face', function () {
 
 		this.on('ready', function(_event) {
 			if(!this.is(_event.target)) return;
-			this.require('shake');
+			this.require('appear');
 		});
 
 		this.entity('.flip', function() {
 			this.on('animationend', function(_event) {
 				if(!this.is(_event.target) || !this.screen.allowAction()) return;
-				this.screen.requiredQueue.ready('shake');
+				this.screen.requiredQueue.ready('appear');
 			});
 		});
 	});

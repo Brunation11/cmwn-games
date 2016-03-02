@@ -2,6 +2,10 @@
  * HFF - multiBubbles Screen
  */
 export default function multiBubbles () {
+	this.SELECTER = {
+		CORRECT: '[pl-correct]'
+	};
+
 	this.on('ready', function(_event) {
 		var correct;
 
@@ -10,13 +14,13 @@ export default function multiBubbles () {
 		correct = pl.Queue.create();
 
 		correct.on('complete', this.bind(function () {
-			// this.delay('1.5s',this.audio.sfx.confirmed.play.bind(this.audio.sfx.confirmed));
+			this.playSound(this.game.audio.sfx.screenComplete);
 			this.complete();
 		}));
 
 		this.items = this
 			.selectable
-			.find('[pl-correct]')
+			.find(this.SELECTER.CORRECT)
 			.map(function (_index, _node) {
 				correct.add($(_node).id());
 				return _node;

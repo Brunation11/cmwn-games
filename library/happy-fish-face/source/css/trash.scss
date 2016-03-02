@@ -1,10 +1,19 @@
 #trash {
 	opacity: 0;
-	transition: opacity .5s, transform .5s;
+	cursor: none;
 
 	.net {
 		position: absolute;
-		display: none;
+		pointer-events: none;
+		width: 250px;
+		opacity: 1;
+		transition: opacity .5s;
+	}
+
+	.selectable-component,
+	.timer-component {
+		opacity: 1;
+		transition: opacity .5s;
 	}
 
 	.selectable-component {
@@ -22,8 +31,13 @@
 			background-image: url('../media/_images/_S_Trash/IMG_9.2.png');
 			background-size: 1600px;
 			background-repeat: no-repeat;
-			cursor: pointer;
 			animation: bob 8s infinite;
+			transition: opacity .5s;
+
+			&.HIGHLIGHTED {
+				opacity: 0;
+				pointer-events: none;
+			}
 
 			&[pl-id=bottle] {
 				width: 90px;
@@ -395,7 +409,7 @@
 				&.second {
 					top: 370px;
 					left: 780px;
-					animation: starfish2 5s infinite linear;
+					animation: starfish 5s infinite linear;
 				}
 			}
 
@@ -499,10 +513,47 @@
 	}
 
 	.modal-component {
-		position: absolute;
+
+		&.SELECTED ~ .selectable-component,
+		&.SELECTED ~ .timer-component {
+			opacity: 0;
+		}
+
+		[pl-id=try-again] {
+			img {
+				margin-bottom: -30px;
+			}
+		}
+
+		.try-again {
+			width: 146px;
+			height: 146px;
+			background-size: auto 146px;
+			background-position: left center;
+
+			&:hover {
+				background-position: right center;
+			}
+		}
 	}
 
 	&.OPEN {
 		opacity: 1;
+	}
+
+	&.COMPLETE {
+		cursor: auto;
+
+		.net {
+			opacity: 0;
+		}
+	}
+}
+
+body:not(.DEMO) #trash.try-again {
+	.prev-screen,
+	.next-screen {
+		opacity: 0;
+		pointer-events: none;
 	}
 }

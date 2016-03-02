@@ -82,6 +82,12 @@ body {
 	display: none;
 }
 
+[pl-bg] {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 button {
 	margin: 0;
 	padding: 0;
@@ -115,23 +121,23 @@ button {
 
 	&.next-screen,
 	&.prev-screen {
-		width: 70px;
-		height: 40px;
+		width: 50px;
+		height: 50px;
 	}
 
 	&.next-screen {
-		background-position: -340px -55px;
+		background-position: -350px -50px;
 
 		&:hover {
-			background-position: -340px -205px;
+			background-position: -350px -200px;
 		}
 	}
 
 	&.prev-screen {
-		background-position: -195px -55px;
+		background-position: -200px -50px;
 
 		&:hover {
-			background-position: -195px -205px;
+			background-position: -200px -200px;
 		}
 	}
 
@@ -154,17 +160,6 @@ button {
 
 		&:hover {
 			background-position: 187px 144px;
-		}
-	}
-
-	&.reveal-close {
-		width: 30px;
-		height: 30px;
-		background-position: -660px 240px;
-		transition: opacity 1s;
-
-		&:hover {
-			background-position: -660px 390px;
 		}
 	}
 }
@@ -335,13 +330,6 @@ p {
 			transform: translateY(-50%);
 		}
 
-		img:only-child {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translateX(-50%) translateY(-50%);
-		}
-
 		.title {
 			max-height: 100px;
 			margin-top: -30px;
@@ -420,9 +408,17 @@ p {
 	li {
 		background-size: auto 200px;
 		background-position: left center;
+		cursor: pointer;
 
 		&:hover {
 			background-position: right center;
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			cursor: auto;
+			pointer-events: none;
 		}
 	}
 }
@@ -452,6 +448,13 @@ p {
 			background-position: right center;
 		}
 	}
+
+	&.VOICE-OVER {
+		li {
+			cursor: auto;
+			pointer-events: none;
+		}
+	}
 }
 
 #water-pollution {
@@ -479,7 +482,7 @@ p {
 	img {
 		position: absolute;
 		right: 35px;
-		bottom: 50px;
+		bottom: 43px;
 		height: 360px;
 	}
 }
@@ -504,9 +507,9 @@ p {
 		margin: 0 auto;
 		width: 380px;
 		height: 200px;
-		background-position: 0px center;
 		background-size: auto 200px;
 		background-repeat: no-repeat;
+		background-position: -727px center;
 	}
 
 	img {
@@ -515,6 +518,10 @@ p {
 	}
 
 	&.OPEN {
+		.stars-container {
+			animation: stars-container 4.4s forwards;
+		}
+
 		.stars {
 			animation: stars 4s steps(2) forwards;
 		}
@@ -542,13 +549,12 @@ p {
 	}
 
 	&.OPEN {
+		.flip-container {
+			animation: flip-container 4s forwards;
+		}
+
 		.flip {
-			-webkit-animation-name: shake;
-			-webkit-animation-delay: 5s;
-			-webkit-animation-iteration-count: 2;
-			animation-name: shake;
-			animation-delay: 5s;
-			animation-iteration-count: 2;
+			animation: bob 4s infinite;
 		}
 	}
 }

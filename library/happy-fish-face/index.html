@@ -130,19 +130,19 @@
 	<!-- MultiBubbles -->
 	<section id="multi-bubbles" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" preload loop></audio>
-		<!-- <audio class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" preload ></audio> -->
-		<audio pl-id="swim" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Swim.mp3" preload ></audio>
-		<audio pl-id="runFactories" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_RunFactories.mp3" preload ></audio>
-		<audio pl-id="washFace" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WashFace.mp3" preload ></audio>
-		<audio pl-id="drinkIt" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_DrinkIt.mp3" preload ></audio>
-		<audio pl-id="brushTeeth" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_BrushTeeth.mp3" preload ></audio>
-		<audio pl-id="takeShowers" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_TakeShowers.mp3" preload ></audio>
-		<audio pl-id="cleanHouse" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_CleanHouse.mp3" preload ></audio>
-		<audio pl-id="cook" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Cook.mp3" preload ></audio>
-		<audio pl-id="growCrops" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_GrowCrops.mp3" preload ></audio>
-		<audio pl-id="laundry" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Laundry.mp3" preload ></audio>
-		<audio pl-id="washDishes" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WashDishes.mp3" preload ></audio>
-		<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_MultiBubbles/HFF_SX_Wrong.mp3" preload ></audio>
+		<!-- <audio class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" preload pl-required></audio> -->
+		<audio pl-id="swim" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Swim.mp3" preload pl-required></audio>
+		<audio pl-id="runFactories" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_RunFactories.mp3" preload pl-required></audio>
+		<audio pl-id="washFace" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WashFace.mp3" preload pl-required></audio>
+		<audio pl-id="drinkIt" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_DrinkIt.mp3" preload pl-required></audio>
+		<audio pl-id="brushTeeth" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_BrushTeeth.mp3" preload pl-required></audio>
+		<audio pl-id="takeShowers" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_TakeShowers.mp3" preload pl-required></audio>
+		<audio pl-id="cleanHouse" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_CleanHouse.mp3" preload pl-required></audio>
+		<audio pl-id="cook" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Cook.mp3" preload pl-required></audio>
+		<audio pl-id="growCrops" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_GrowCrops.mp3" preload pl-required></audio>
+		<audio pl-id="laundry" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_Laundry.mp3" preload pl-required></audio>
+		<audio pl-id="washDishes" class="voice-over" src="media/_audio/_S_MultiBubbles/HFF_VO_WashDishes.mp3" preload pl-required></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_MultiBubbles/HFF_SX_Wrong.mp3" preload pl-required></audio>
 		<img src="media/_images/_S_MultiBubbles/img_7.1.png">
 		<div pl-component="selectable">
 			<img class="hidden" src="media/_images/_S_MultiBubbles/img_7.3.png">
@@ -186,7 +186,9 @@
 			<audio class="voice-over" src="media/_audio/_S_PollutesWater/HFF_VO_Remove.mp3" preload pl-required></audio>
 		</div>
 		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
-			<div class="stars" pl-bg="media/_images/_S_PollutesWater/img_8.2.png"></div>
+			<div class="stars-container">
+				<div class="stars" pl-bg="media/_images/_S_PollutesWater/img_8.2.png"></div>
+			</div>
 			<img src="media/_images/_S_PollutesWater/img_8.1.png">
 			<p>
 				In this game remove everything<br> that doesn't belong in the water.
@@ -196,7 +198,34 @@
 
 	<!-- Trash -->
 	<section id="trash" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<img class="net" src="media/_images/_S_Trash/img_9.3.png">
+		<audio pl-id="correct" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Right.mp3" preload></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Wrong.mp3" preload></audio>
+		<!-- GoodJob -->
+		<div pl-component="modal" class="center">
+			<div pl-component="reveal" pl-bg="media/_images/_frames/FR_2.png">
+				<audio pl-id="goodJob" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" preload pl-dontautoplay pl-required></audio>
+				<audio pl-id="neverThrow" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" preload pl-dontautoplay pl-required></audio>
+				<audio pl-id="tryAgain" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" preload pl-dontautoplay></audio>
+				<div class="center">
+					<ul class="items">
+						<li pl-id="good-job">
+							<img src="media/_images/_S_GoodJob/img_10.1.png">
+							<p>
+								Taker this offline.<br> Never throw the trash in the water.
+							</p>
+						</li>
+						<li pl-id="try-again">
+							<img src="media/_images/_S_GoodJob/img_10.2.png">
+							<p>
+								You ran out of time!
+							</p>
+							<button class="try-again" pl-bg="media/_images/_S_GoodJob/img_10.3.png" pl-action="screen.reset()"></button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- END GoodJob -->
 		<div pl-component="selectable">
 			<img class="hidden" src="media/_images/_S_Trash/img_9.2.png">
 			<ul class="items" pl-action="select()">
@@ -239,30 +268,11 @@
 				<li pl-id="jellyfish"></li>
 			</ul>
 		</div>
-		<div pl-component="timer" pl-required>
+		<div pl-component="timer" pl-set="90s" pl-required>
 			<img src="media/_images/_S_Trash/img_9.1.png">
 			<p pl-id="stopWatch"></p>
 		</div>
-		<!-- GoodJob -->
-		<div pl-component="modal">
-			<div pl-component="reveal">
-				<ul class="items">
-					<li pl-id="good-job">
-						<img src="media/_images/_S_GoodJob/img_10.1.png">
-						<p>
-							Taker this offline.<br> Never throw the trash in the water.
-						</p>
-					</li>
-					<li pl-id="try-again">
-						<img src="media/_images/_S_GoodJob/img_10.2.png">
-						<p>
-							You ran out of time!
-						</p>
-						<button class="try-again" pl-bg="media/_images/_S_GoodJob/img_10.3.png" pl-action="tryAgain()"></button>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<img class="net" src="media/_images/_S_Trash/img_9.3.png">
 	</section>
 
 	<!-- FLIP -->
@@ -274,7 +284,9 @@
 				<p>
 					Let me say thank you<br> for cleaning up<br> with a new
 				</p>
-				<img class="flip" src="media/_images/_flip/img_11.2.png">
+				<div class="flip-container">
+					<img class="flip" src="media/_images/_flip/img_11.2.png">
+				</div>
 			</div>
 		</div>
 	</section>

@@ -12,10 +12,7 @@ pl.game.component('timer', function () {
 			this.render();
 
 			if (this.time*1000 >= this.timeout) {
-				console.log('* timer complete!', this.time, this.timeout);
-				this
-					.stop()
-					.complete();
+				this.timerComplete();
 			}
 		}
 	}
@@ -23,6 +20,13 @@ pl.game.component('timer', function () {
 	this.timeout = 0;
 	this.time = 0;
 	this.stamp = 0;
+
+	this.timerComplete = function() {
+		console.log('* timer complete!', this.time, this.timeout);
+		this
+			.stop()
+			.complete();
+	};
 
 	this.init = function () {
 		this.timeout = pl.util.toMillisec(this.properties.set);
@@ -38,6 +42,13 @@ pl.game.component('timer', function () {
 
 	this.start = function () {
 		this.eachFrame(testTime);
+		return this;
+	};
+
+	this.restart = function() {
+		this.time = 0;
+		this.stamp = 0;
+		this.start();
 		return this;
 	};
 

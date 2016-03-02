@@ -19,6 +19,6 @@ pl.game.component('audio-sequence', function () {
 	});
 
 	this.start = function() {
-		if(sounds[0] && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(sounds[0]);
+		if(typeof this.properties.dontautoplay === 'undefined' && sounds[0] && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(sounds[0]);
 	};
 });
