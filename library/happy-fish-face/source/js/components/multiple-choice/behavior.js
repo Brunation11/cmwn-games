@@ -6,7 +6,7 @@ pl.game.component('multiple-choice', function () {
 		if (_scope.properties.correct) {
 			answers = _scope.properties.correct.split(/\s*,\s*/);
 
-			if (~answers.indexOf(String(_scope.getSelected().index()))) {
+			if (~answers.indexOf(String(_scope.getSelected().id()))) {
 				_scope.complete();
 			}
 		}
