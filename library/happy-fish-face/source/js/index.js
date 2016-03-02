@@ -54,14 +54,13 @@ pl.game('happy-fish-face', function () {
 					this.open();
 					this.close($('#loader'));
 				});
-				this.require('appear');
 			}
 		});
 
 		this.entity('.fish', function() {
 			this.on('animationend', function(_event) {
 				if(!this.is(_event.target) || !this.screen.allowAction()) return;
-				this.screen.requiredQueue.ready('appear');
+				this.complete();
 			});
 		});
 	});
@@ -103,18 +102,6 @@ pl.game('happy-fish-face', function () {
 		this.next = function () {
 			this.game.quit.okay();
 		};
-
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
-			this.require('appear');
-		});
-
-		this.entity('.flip', function() {
-			this.on('animationend', function(_event) {
-				if(!this.is(_event.target) || !this.screen.allowAction()) return;
-				this.screen.requiredQueue.ready('appear');
-			});
-		});
 	});
 
 
