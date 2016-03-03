@@ -215,7 +215,18 @@ pl.game('fire', function () {
 				});
 				
 				this.respond('release', function (_event) {
-					if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
+					var point, scale;
+
+					if((scale = this.game.transformScale().x) !== 1) {
+						point = [
+									_event.state.start.point[0] + scale * _event.state.progress.distance[0],
+									_event.state.start.point[1] + scale * _event.state.progress.distance[1]
+								];
+					} else {
+						point = _event.state.progress.point;
+					}
+
+					if (point && this.isPointInBounds(point)) {
 
 						if(this.audio.voiceOver[_event.state.$draggable.id()]) this.audio.voiceOver[_event.state.$draggable.id()].play();
 
@@ -325,7 +336,18 @@ pl.game('fire', function () {
 						});
 						
 						this.respond('release', function (_event) {
-							if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
+							var point, scale;
+
+							if((scale = this.game.transformScale().x) !== 1) {
+								point = [
+											_event.state.start.point[0] + scale * _event.state.progress.distance[0],
+											_event.state.start.point[1] + scale * _event.state.progress.distance[1]
+										];
+							} else {
+								point = _event.state.progress.point;
+							}
+
+							if (point && this.isPointInBounds(point)) {
 
 								if (this.takes(_event.state.$draggable.id())) {
 									_event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
