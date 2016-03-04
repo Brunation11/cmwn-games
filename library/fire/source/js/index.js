@@ -124,7 +124,7 @@ pl.game('fire', function () {
 
 		this.pushDown = function() {
 			if(this.audio.sfx) this.audio.sfx.play();
-			this.next();
+			this.screen.next();
 		};
 	});
 
