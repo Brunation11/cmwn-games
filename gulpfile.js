@@ -46,19 +46,29 @@ gulp.task('default', ['build-dev']);
 gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass', 'webpack:build']);
+gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
+
+gulp.task('webpack:build-dev', function(callback) {
+    games.forEach(function (_game, _index) {
+        var config = defineEntries(webpackDevConfig,_game);
+
+        webpack(config).run(function(err, stats) {
+            if(err) throw new gutil.PluginError('webpack:build-dev', err);
+            gutil.log('[webpack:build-dev]', stats.toString({
+                colors: true
+            }));
+            if(_index === games.length-1) {
+                callback();
+            }
+        });
+    });
+});
 
 gulp.task('webpack:build', function(callback) {
     games.forEach(function (_game, _index) {
         var config = defineEntries(webpackProdConfig,_game);
 
         config.plugins = config.plugins.concat(
-            new webpack.DefinePlugin({
-                'process.env': {
-                    // This has effect on the react lib size
-                    'NODE_ENV': JSON.stringify('production')
-                }
-            }),
             new webpack.optimize.DedupePlugin(),
             new webpack.optimize.UglifyJsPlugin()
         );
@@ -70,7 +80,7 @@ gulp.task('webpack:build', function(callback) {
                 colors: true
             }));
             if(_index === games.length-1) {
-              callback();
+                callback();
             }
         });
     });
@@ -88,6 +98,21 @@ gulp.task('sass', function () {
             .pipe(sourcemaps.init())
             .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./build/'+_game+'/css'))
+            .pipe(livereload());
+    });
+});
+
+gulp.task('sass-prod', function () {
+    games.forEach(function (_game) {
+        gulp
+            .src(['./library/' + _game + '/source/js/components/**/*.scss',
+                  './library/' + _game + '/source/js/components/**/*.css',
+                  './library/' + _game + '/source/css/*.scss',
+                  './library/' + _game + '/source/css/*.css'])
+            .pipe(sass().on('error', sass.logError))
+            .pipe(concat('style.css'))
+            .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
     });
@@ -132,22 +157,6 @@ gulp.task('play-components', function () {
         gulp
             .src( './node_modules/js-interactive-library/components/**/*' )
             .pipe( gulp.dest(path.join( './library', _game, 'source/js/components' )) );
-    });
-});
-
-gulp.task('webpack:build-dev', function(callback) {
-    games.forEach(function (_game, _index) {
-        var config = defineEntries(webpackDevConfig,_game);
-
-        webpack(config).run(function(err, stats) {
-            if(err) throw new gutil.PluginError('webpack:build-dev', err);
-            gutil.log('[webpack:build-dev]', stats.toString({
-                colors: true
-            }));
-            if(_index === games.length-1) {
-              callback();
-            }
-        });
     });
 });
 
