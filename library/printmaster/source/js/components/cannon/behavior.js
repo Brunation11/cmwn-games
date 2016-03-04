@@ -3,7 +3,7 @@ pl.game.component('cannon', function () {
 	this.isLaunchComplete = true;
 
 	this.state('launch launched', '+LAUNCHED -RELOAD', {
-		didSet: function () {
+		willSet: function () {
 			this.playSFX('fire');
 			this.isLaunchComplete = false;
 			this.delay('1s',function() {

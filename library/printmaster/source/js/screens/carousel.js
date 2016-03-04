@@ -11,11 +11,12 @@ export default function carousel () {
 
 	this.setTarget = function(_idx) {
 		this.idx = _idx || 0;
-		this.target = $(this.$targets[this.idx]).id();
-		this.amount = $(this.$targets[this.idx]).attr('pl-amount');
+		this.$target = $(this.$targets[this.idx]);
+		this.target = this.$target.id();
+		this.amount = this.$target.attr('pl-amount');
 
 		if(this.target) {
-			this.select(this.$targets[this.idx]);
+			this.select(this.$target);
 
 			if(this.score) {
 				this.score.removeClass('loops whorl arch doubleloops').addClass(this.target);
