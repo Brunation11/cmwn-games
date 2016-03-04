@@ -268,4 +268,22 @@
 			}
 		}
 	}
+
+	&.VOICE-OVER {
+		.draggables {
+			li {
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.DEMO {
+	#globe.VOICE-OVER {
+		.draggables {
+			li {
+				pointer-events: auto;
+			}
+		}
+	}
 }

@@ -22,6 +22,10 @@ body {
 	margin: auto;
 }
 
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
+}
+
 // preload assets
 #asset-bin {
 	display: none;

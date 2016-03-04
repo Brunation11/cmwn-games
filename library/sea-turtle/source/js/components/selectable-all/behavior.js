@@ -49,7 +49,9 @@ pl.game.component('selectable-all', function () {
 		};
 
 		this.launch = function () {
-			this.$el.on('transitionend', this.bind(function () {
+			this.$el.on('transitionend', this.bind(function (_event) {
+				if(!this.$el.is(_event.target)) return;
+
 				if (!this.recycle()) {
 					this.$el.off();
 				}
