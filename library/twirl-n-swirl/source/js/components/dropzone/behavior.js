@@ -22,14 +22,23 @@ pl.game.component('dropzone', function () {
 		});
 
 		this.respond('release', function (_event) {
-			var sfx;
+			var point, scale, sfx;
 
 			sfx = {
 				correct: pl.util.resolvePath(this, 'audio.sfx.correct'),
 				incorrect: pl.util.resolvePath(this, 'audio.sfx.incorrect')
 			};
 
-			if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
+			if((scale = this.game.transformScale().x) !== 1) {
+				point = [
+							_event.state.start.point[0] + scale * _event.state.progress.distance[0],
+							_event.state.start.point[1] + scale * _event.state.progress.distance[1]
+						];
+			} else {
+				point = _event.state.progress.point;
+			}
+
+			if (point && this.isPointInBounds(point)) {
 				if (this.takes(_event.state.$draggable.id())) {
 					_event.state.$draggable.removeClass('PLUCKED');
 					_event.state.$helper.addClass('DROPED');
@@ -70,7 +79,6 @@ pl.game.component('dropzone', function () {
 		var point, scale;
 
 		point = pl.Point.create(arguments);
-		if((scale = this.game.transformScale().x) !== 1) point = point.scale(1/scale);
 
 		if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
 			if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
