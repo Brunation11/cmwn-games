@@ -41,7 +41,7 @@ function defineEntries (_config,_game) {
 
 games = (argv.game === undefined) ? lsd('./library') : [argv.game];
 
-gulp.task('default', ['build-dev']); 
+gulp.task('default', ['build-dev']);
 
 gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
 
@@ -67,11 +67,6 @@ gulp.task('webpack:build-dev', function(callback) {
 gulp.task('webpack:build', function(callback) {
     games.forEach(function (_game, _index) {
         var config = defineEntries(webpackProdConfig,_game);
-
-        config.plugins = config.plugins.concat(
-            new webpack.optimize.DedupePlugin(),
-            new webpack.optimize.UglifyJsPlugin()
-        );
 
         // run webpack
         webpack(config, function(err, stats) {
@@ -113,12 +108,11 @@ gulp.task('sass-prod', function () {
             .pipe(sass().on('error', sass.logError))
             .pipe(concat('style.css'))
             .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
-            .pipe(gulp.dest('./build/'+_game+'/css'))
-            .pipe(livereload());
+            .pipe(gulp.dest('./build/'+_game+'/css'));
     });
 });
 
-gulp.task('copy-index', ['webpack:build-dev'], function () {
+gulp.task('copy-index', function () {
     games.forEach(function (_game) {
         gulp
             .src(path.join('./library', _game, 'index.html'))
