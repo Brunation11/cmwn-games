@@ -1170,21 +1170,16 @@ img.inline {
 
 	&.OPEN {
 		.flip {
-			-webkit-animation-name: shake;
-			-webkit-animation-delay: 5s;
-			-webkit-animation-iteration-count: 2;
 			animation-name: shake;
-			animation-delay: 5s;
+			animation-delay: 4s;
 			animation-iteration-count: 2;
 
 			div {
-				-webkit-animation-name: fadeInRightBig;
 				animation-name: fadeInRightBig;
 
 				@for $item from 1 through 4 {
 					&:nth-child(#{$item}) {
-						-webkit-animation-delay: 3+.2*$item+s;
-						animation-delay: 3+.2*$item+s;
+						animation-delay: 2+.2*$item+s;
 					}
 				} 
 			}
