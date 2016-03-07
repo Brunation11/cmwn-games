@@ -2,6 +2,8 @@
  * Defines the game scope and imports used component behaviors.
  */
 import 'js-interactive-library';
+// Use when doing local changes to the library
+// import '../../../../../js-interactive-library/build/play.js';
 
 import './testPlatformIntegration';
 import './config.game';

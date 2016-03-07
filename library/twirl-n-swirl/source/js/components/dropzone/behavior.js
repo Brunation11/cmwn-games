@@ -16,7 +16,7 @@ pl.game.component('dropzone', function () {
 			if (sfx) sfx.play();
 
 			this.cache = {
-				position: this.position(),
+				position: this.absolutePosition().dec(this.game.absolutePosition()),
 				size: this.size()
 			};
 		});

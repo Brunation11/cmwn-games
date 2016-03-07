@@ -3,6 +3,8 @@ pl.game.component('selectable', function () {
 	this.behavior('select', function (_target) {
 		var $target;
 
+		if(this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
+
 		if (this.event && !_target) {
 			$target = $(this.event.target).closest('li');
 
@@ -39,7 +41,6 @@ pl.game.component('selectable', function () {
 
 		if (_$target) {
 			this[stateMethod](_$target);
-			this.items.correct.ready(_$target.id());
 		}
 
 		return true;
@@ -59,26 +60,7 @@ pl.game.component('selectable', function () {
 	};
 
 	this.ready = function () {
-		var correct, $bin;
-
-		correct = pl.Queue.create();
-
-		correct.on('complete', this.bind(function () {
-			this.screen.complete();
-		}));
-
-		this.items = this
-			.find('.items li[pl-correct]')
-			.map(function (_index, _node) {
-				correct.add(_node.getAttribute("pl-id"));
-				return _node;
-			})
-			.toArray();
-
-		this.items.correct = correct;
-
-		$bin = this.find('.bin li');
-
+		var $bin = this.find('.bin li');
 		if($bin.length) this.populateList($bin);
 	};
 

@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="ai.js"></script>
 	<!-- this script is for livereload and should be removed before deploy -->
 	<!-- 
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<script>if(window.location.href.indexOf("http://local.changemyworldnow.com/dev/cmwn-games/build/") !== -1) document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 	-->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,6 +17,14 @@
 
 </head>
 <body id="drought-out">
+	<!-- GAME BACKGROUNDS -->
+	<div class="background sun"></div>
+	<div class="background rocks"></div>
+	<div class="background cactus"></div>
+	<div class="background arch"></div>
+	<div class="background mountains"></div>
+
+	<!-- GAME LOADER -->
 	<div id="loader" class="center OPEN">
 		<div class="group">
 			<h2>Loading!</h2>
@@ -35,12 +43,14 @@
 	<audio pl-id="button" class="sfx" src="media/_Buttons/S_BU_1.mp3" preload></audio>
 	<audio pl-id="screen-complete" class="sfx" src="media/_Buttons/S_BU_2.mp3" preload></audio>
 
-	<!-- GAME BACKGROUNDS -->
-	<div class="sun" pl-component="background" pl-bg="media/_BKG/BKG_1.png"></div>
-	<div class="rocks" pl-component="background" pl-bg="media/_BKG/BKG_2.png"></div>
-	<div class="cactus" pl-component="background" pl-bg="media/_BKG/BKG_3.png"></div>
-	<div class="arch" pl-component="background" pl-bg="media/_BKG/BKG_4.png"></div>
-	<div class="mountains" pl-component="background" pl-bg="media/_BKG/BKG_5.png"></div>
+	<!-- Preloads game backgrounds -->
+	<div id="asset-bin">
+		<img src="media/_BKG/BKG_1.png">
+		<img src="media/_BKG/BKG_2.png">
+		<img src="media/_BKG/BKG_3.png">
+		<img src="media/_BKG/BKG_4.png">
+		<img src="media/_BKG/BKG_5.png">
+	</div>
 
 	<!-- SCREENS -->
 
@@ -226,7 +236,7 @@
 						<li>Less food and water</li>
 						<li>Loss of habitat<br> for fish and wildlife</li>
 						<li>More forest fires occur</li>
-						<li>Endangered species<br> could face extinction</li>
+						<li>Endangered species<br> can face extinction</li>
 						<li>Erosion of soil</li>
 					</ul>
 				</div>

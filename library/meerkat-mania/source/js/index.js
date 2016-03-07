@@ -9,13 +9,9 @@ import './config.game';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
-import './components/frame/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
-import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
+import './components/selectable-canvas/behavior';
+import './components/reveal/behavior';
 import './components/video/behavior';
 
 pl.game('meerkat-mania', function () {
@@ -91,6 +87,9 @@ pl.game('meerkat-mania', function () {
 		});
 	});
 
+	/**
+	 * Adds Flip screen behavior to send game completion to GA.
+	 */
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
@@ -111,6 +110,10 @@ pl.game('meerkat-mania', function () {
 		};
 	});
 
+	/**
+	 * When the game exits submit a GA (Google Analytics) event.
+	 * @override
+	 */
 	this.exit = function () {
 		var screen, eventCategory;
 

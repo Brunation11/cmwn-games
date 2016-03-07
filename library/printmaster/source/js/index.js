@@ -39,7 +39,7 @@ pl.game('printmaster', function () {
 	this.screen('title', function () {
 
 		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
+			if(this.is(_event.targetScope)) {
 				this.title.start();
 			}
 		});
@@ -70,7 +70,7 @@ pl.game('printmaster', function () {
 
 	this.screen('info-double-loop', typing('.5s'));
 
-	this.screen('info-id', typing('3.25s'));
+	this.screen('info-id', typing('4.25s'));
 
 	this.screen('identify', identify);
 
@@ -83,10 +83,16 @@ pl.game('printmaster', function () {
 			this.game.quit.okay();
 		};
 
-		this.on('ui-open', function() {
-			if(this.audio && this.audio.sfx) {
-				this.delay('11s', this.audio.sfx.play.bind(this.audio.sfx));
-			}
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.require('shake');
+		});
+
+		this.entity('.flip', function() {
+			this.on('animationend', function(_event) {
+				if(!this.is(_event.target) || !this.screen.allowAction()) return;
+				this.screen.requiredQueue.ready('shake');
+			});
 		});
 	});
 

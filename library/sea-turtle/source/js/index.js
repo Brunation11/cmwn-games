@@ -95,13 +95,13 @@ pl.game('sea-turtle', function () {
 			});
 
 			this.respond('answer', function (_event) {
-				if (_event.message === 'correct') {
-					this.enable();
+				if (_event.message === 'correct' && !this.screen.state(this.screen.STATE.COMPLETE)) {
 					this.disable(
 						this.$active.removeClass('ACTIVE')
 					);
-					this.reveal.delay('2.5s', function () {
-						this.item('instruction');
+					this.delay('2.5s', function () {
+						this.reveal.item('instruction');
+						this.enable();
 					});
 				}
 			});

@@ -102,8 +102,8 @@
 
 		.area {
 			position: absolute;
-			top: 0; left: 30px;
-			width: 270px; height: 280px;
+			top: 10px; left: 30px;
+			width: 340px; height: 340px;
 
 			img {
 				opacity: 0;
@@ -172,6 +172,7 @@
 		position: relative;
 		overflow: hidden;
 		margin: 15px auto;
+		float: left;
 
 		.background {
 			display: block;
@@ -197,6 +198,10 @@
 				> * {
 					margin-left: 1em;
 					margin-right: 1em;
+				}
+
+				&[pl-id=well-done] h3 {
+					text-align: center;
 				}
 			}
 		}
