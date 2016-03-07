@@ -348,57 +348,60 @@ img.inline {
 	}
 }
 
-.screen.types .center {
-	text-align: center;
+.screen.types {
 
-	> * {
-		vertical-align: middle;
-	}
-
-	> img {
-		width: 340px;
-		margin: 60px 0;
-	}
-
-	.frame {
-		position: relative;
-		display: inline-block;
-		width: 500px;
-		height: 435px;
-		margin: 60px 0 60px 20px;
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
+	.center {
 		text-align: center;
 
-		div {
-			position: absolute;
-			padding: 60px;
-			left: 0;
-			top: 50%;
-			width: 100%;
-			transform: translateY(-50%);
+		> * {
+			vertical-align: middle;
 		}
 
-		> div {
-			height: 396px;
-			overflow: hidden;
+		> img {
+			width: 340px;
+			margin: 60px 0;
 		}
 
-		span {
+		.frame {
+			position: relative;
 			display: inline-block;
-		}
+			width: 500px;
+			height: 435px;
+			margin: 60px 0 60px 20px;
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+			text-align: center;
 
-		h2 {
-			margin: 0 0 10px 0;
-			font-size: 72px;
-			letter-spacing: 4px;
-			padding: 0 20px;
-			@include powder;
-		}
+			div {
+				position: absolute;
+				padding: 60px;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				transform: translateY(-50%);
+			}
 
-		p {
-			font-size: 32px;
+			> div {
+				height: 396px;
+				overflow: hidden;
+			}
+
+			span {
+				display: inline-block;
+			}
+
+			h2 {
+				margin: 0 0 10px 0;
+				font-size: 72px;
+				letter-spacing: 4px;
+				padding: 0 20px;
+				@include powder;
+			}
+
+			p {
+				font-size: 32px;
+			}
 		}
 	}
 
@@ -906,23 +909,23 @@ img.inline {
 				}
 
 				&:nth-of-type(2) {
-					animation-delay: 5s;
+					animation-delay: 3.5s;
 				}
 
 				&:nth-of-type(3) {
-					animation-delay: 7s;
+					animation-delay: 5s;
 				}
 
 				&:nth-of-type(4) {
-					animation-delay: 9s;
+					animation-delay: 6s;
 				}
 
 				&:nth-of-type(5) {
-					animation-delay: 11.5s;
+					animation-delay: 10.5s;
 				}
 
 				&:nth-of-type(6) {
-					animation-delay: 14s;
+					animation-delay: 13s;
 				}
 			}
 		}
@@ -935,23 +938,23 @@ img.inline {
 			}
 
 			&:nth-of-type(2) {
-				transition-delay: 5s;
+				transition-delay: 3.5s;
 			}
 
 			&:nth-of-type(3) {
-				transition-delay: 7s;
+				transition-delay: 5s;
 			}
 
 			&:nth-of-type(4) {
-				transition-delay: 9s;
+				transition-delay: 6s;
 			}
 
 			&:nth-of-type(5) {
-				transition-delay: 11.5s;
+				transition-delay: 10.5s;
 			}
 
 			&:nth-of-type(6) {
-				transition-delay: 14s;
+				transition-delay: 13s;
 			}
 		}
 	}
