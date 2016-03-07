@@ -70,9 +70,9 @@
 
 	<!-- 3 -->
 	<section pl-id="clean-up" pl-game-class="select" class="screen clean-up" pl-component="screen-basic" pl-require="trash">
-		<audio class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-required></audio>
 		<div pl-component="slides">
-			<div pl-component="frame">
+			<div pl-component="frame" pl-require="vo">
+				<audio pl-id="vo" class="voice-over" src="media/S_3/VO_3.1.mp3" preload pl-required></audio>
 				<div class="center">
 					<div class="frame">
 						<img class="background" src="media/_Frames/FR_1.png">
@@ -83,7 +83,6 @@
 							</div>
 						</div>
 					</div>
-					<button class="prev-screen" pl-action="prev()"></button>
 					<button class="next-screen" pl-action="next()"></button>
 				</div>
 			</div>
@@ -110,10 +109,10 @@
 						<li class="can"></li>
 						<li class="tires"></li>
 					</ul>
-					<button class="prev-screen" pl-action="prev()"></button>
 				</div>
 			</div>
 		</div>
+		<button class="prev-screen" pl-action="prev()"></button>
 		<button class="next-screen" pl-action="next()"></button>
 	</section>
 

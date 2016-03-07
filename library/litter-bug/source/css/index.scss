@@ -459,10 +459,16 @@ p {
 			z-index: 1;
 		}
 
-		.next-screen {
+		.prev-screen {
 			z-index: 1;
-			opacity: 1;
-			transform: rotate(0deg);
+		}
+
+		.COMPLETE {
+			.next-screen {
+				z-index: 1;
+				opacity: 1;
+				transform: rotate(0deg);
+			}
 		}
 
 		.frame {

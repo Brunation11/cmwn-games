@@ -1,5 +1,9 @@
 pl.game.component('screen-basic', function () {
-	
+
+	this.allowAction = function() {
+		return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
+	};
+
 	this.playSound = function (_sound) {
 		var delay;
 	
