@@ -6,7 +6,7 @@ delete require.cache[require.resolve("js-interactive-library")];
 module.exports = {
     context: __dirname + '/library',
     entry: null,
-    devtool: null,
+    devtool: 'eval',
     resolve: {
         extensions: ['', '.js'],
         modulesDirectories: ['node_modules']
@@ -19,8 +19,10 @@ module.exports = {
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             mangle: {},
+            sourceMap: false,
             compressor: {
                 warnings: false
             }
