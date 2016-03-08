@@ -55,7 +55,7 @@ pl.game('sea-turtle', function () {
 
 	this.screen('globe', function () {
 		
-		var characters, restAnimation;
+		var characters, restAnimation, onClose;
 
 		restAnimation = 'bounce';
 
@@ -95,7 +95,7 @@ pl.game('sea-turtle', function () {
 			});
 
 			this.respond('answer', function (_event) {
-				if (_event.message === 'correct' && !this.screen.state(this.screen.STATE.COMPLETE)) {
+				if (_event.message === 'correct' && !this.screen.reveal.state(this.screen.STATE.COMPLETE)) {
 					this.disable(
 						this.$active.removeClass('ACTIVE')
 					);
@@ -199,6 +199,17 @@ pl.game('sea-turtle', function () {
 				this.reveal.item('wellDone');
 			}
 		});
+
+		onClose = function(_event) {
+			if(!this.is(_event.target)) return;
+			this.area.find('.active').removeClass('show active');
+			if(this.characters.$active) this.characters.$active.removeClass('ACTIVE');
+			this.characters.enable();
+		};
+
+		this.on('ui-close', onClose);
+
+		this.on('ui-leave', onClose);
 
 		this.start = function () {
 			// take advantage of the screen's start()
