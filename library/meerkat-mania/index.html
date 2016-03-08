@@ -17,6 +17,15 @@
 
 </head>
 <body id="meerkat-mania">
+	<!-- GAME BACKGROUNDS -->
+	<div class="background excel"></div>
+	<div class="background look-out"></div>
+	<div class="background feel"></div>
+	<div class="background movie"></div>
+	<div class="background upload"></div>
+	<div class="background flip"></div>
+
+	<!-- GAME LOADER -->
 	<div id="loader" class="center OPEN">
 		<div class="group">
 			<h2>Loading!</h2>
@@ -30,21 +39,22 @@
 	
 	<!-- GLOBAL GAME ASSETS -->
 
-	<button class="close" pl-action="quit.open()">&#x2716;</button>
+	<button class="close" pl-action="quit.open()"></button>
 
 	<audio pl-id="button" class="sfx" src="media/_Buttons/S_BU_1.mp3" preload></audio>
 	<audio pl-id="close" class="sfx" src="media/_Buttons/S_Close_1.mp3" preload></audio>
 	<!-- no screen complete sound was provided -->
 	<!-- <audio pl-id="screen-complete" class="sfx" src="media/audio/complete.mp3" preload></audio> -->
 
-	<!-- GAME BACKGROUNDS -->
-	<div class="background excel"></div>
-	<div class="background roles"></div>
-	<div class="background look-out"></div>
-	<div class="background feel"></div>
-	<div class="background movie"></div>
-	<div class="background upload"></div>
-	<div class="background flip"></div>
+	<div id="asset-bin">
+		<img src="media/_BKG/BKG_1.png">
+		<img src="media/_BKG/BKG_2.png">
+		<img src="media/_BKG/BKG_4.png">
+		<img src="media/_BKG/BKG_5.png">
+		<img src="media/_BKG/BKG_6.png">
+		<img src="media/_BKG/BKG_7.png">
+		<img src="media/_BKG/BKG_8.png">
+	</div>
 
 	<!-- SCREENS -->
 
@@ -70,7 +80,7 @@
 	</section>
 
 	<!-- 3 -->
-	<section pl-id="roles" pl-game-class="roles" class="screen roles" pl-component="screen-basic" pl-transclude="content">
+	<section pl-id="roles" class="screen roles" pl-component="screen-basic" pl-transclude="content" pl-bg="media/_BKG/BKG_3.png">
 		<div pl-component="selectable-canvas">
 			<ul class="items" pl-action="select()">
 				<li pl-correct>
@@ -106,7 +116,7 @@
 					<div>
 						<img class="background" src="media/_Frames/FR_2.png">
 						<img src="media/S_3/img_3.2.png">
-						I stand watch!<br> I look out for predators<br> while the other forage for food.
+						I stand watch!<br> I look out for predators<br> while the others forage for food.
 						<button class="reveal-close" pl-action="closeAll()"></button>
 					</div>
 				</li>
@@ -130,7 +140,7 @@
 					<div>
 						<img class="background" src="media/_Frames/FR_5.png">
 						<img src="media/S_3/img_3.8.png">
-						As a meerkat, I’m omnivorous so<br> I eat both plants and animals.<br> I enjoy anything from fruit<br> to insects and small mammals.<br> We foragers bring food<br> back for the pups.
+						As a meerkat, I’m omnivorous so<br> I eat both plants and animals.<br> I enjoy anything from fruit<br> to insects and small mammals.<br> We foragers bring back<br> food for the pups.
 						<button class="reveal-close" pl-action="closeAll()"></button>
 					</div>
 				</li>
@@ -138,7 +148,7 @@
 					<div>
 						<img class="background" src="media/_Frames/FR_6.png">
 						<img src="media/S_3/img_3.10.png">
-						Alpha males usually come<br> from different mobs.<br> I work with the alpha female to<br> lead the group and care the pups.
+						Alpha males usually come<br> from different mobs.<br> I work with the alpha female to<br> lead the group and care for the pups.
 						<button class="reveal-close" pl-action="closeAll()"></button>
 					</div>
 				</li>
@@ -178,7 +188,7 @@
 		<div class="center">
 			<div class="frame">
 				<div pl-component="video" pl-required>
-					<video pl-id="video" src="https://res.cloudinary.com/changemyworldnow/video/upload/v1453403916/Meerkat_Mania-Final_File_xguw1u.mp4" controls></video>
+					<video pl-id="video" src="https://res.cloudinary.com/changemyworldnow/video/upload/v1455037006/Meerkat_Mania-Final_File_g1tgbg.mp4" controls></video>
 				</div>
 			</div>
 		</div>

@@ -22,7 +22,11 @@ pl.game.component('selectable', function () {
 	});
 
 	this.shouldSelect = function (_target) {
-		return true;
+		if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+			return true;
+		}
+
+		return false;
 	};
 
 });

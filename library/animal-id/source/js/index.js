@@ -4,6 +4,7 @@
  */
 import './testPlatformIntegration';
 import 'js-interactive-library';
+// import '../../../../../js-interactive-library/build/play.js';
 import './config.game';
 
 import './components/screen-basic/behavior';

@@ -150,6 +150,15 @@ button {
 	}
 }
 
+body.DEMO .reveal-component .items li div .close-reveal {
+	opacity: 1;
+	cursor: pointer;
+
+	&:hover {
+		background-position: -225px 676px;
+	}
+}
+
 h2 {
 	font-size: 40px;
 }
@@ -167,7 +176,6 @@ p {
 .spinner {
 	position: relative;
 	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
 	background: rgba(0,0,0,0.5);
 	border-radius: 50px;
 
@@ -194,6 +202,7 @@ p {
 #loader .group > .spinner {
 	width: 80px; height: 80px;
 	margin: auto;
+	animation: pulse 0.5s infinite;
 }
 
 .canvas-src { display: none; }
@@ -250,6 +259,7 @@ p {
 		z-index: -1;
 	}
 
+	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);

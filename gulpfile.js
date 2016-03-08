@@ -144,6 +144,12 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
     });
 });
 
+gulp.task('copy-webgl', [], function () {
+    gulp
+        .src(path.join('./webgl-library/**/*'))
+        .pipe( gulp.dest(path.join('./build')) );
+});
+
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name
 // Replace game-name with the name of the game
 gulp.task('play-components', function () {

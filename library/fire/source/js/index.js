@@ -8,16 +8,15 @@ import './config.game';
 
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
+import './components/background/behavior';
 import './components/title/behavior';
+import './components/slides/behavior';
+import './components/dropzone/behavior';
 import './components/frame/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
 import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
-import './components/selectable-all/behavior';
-import './components/selectable-reveal/behavior';
-import './components/slides/behavior';
-import './components/background/behavior';
+import './components/modal/behavior';
+import './components/reveal/behavior';
 
 pl.game('fire', function () {
 
