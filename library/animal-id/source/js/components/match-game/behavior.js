@@ -5,6 +5,7 @@ pl.game.component('match-game', function () {
 
 		if (this.event && !_target) {
 			$target = $(this.event.target).closest('li');
+			if(!$target.length) return false;
 
 			if (this.shouldSelect($target) !== false) {
 				$target.is('li') && this.audio.sfx.correct.play();
@@ -36,10 +37,13 @@ pl.game.component('match-game', function () {
 		var $items, self = this;
 		
 		$items = this.find('.items').addClass('show-all');
+		this.disable();
 
 		setTimeout(function() {
-			$items.removeClass('show-all');
-		}, 5000);
+			$items
+				.removeClass('show-all');
+			this.enable();
+		}.bind(this), 5000);
 
 		this.$currentCard = null;
 
@@ -60,18 +64,26 @@ pl.game.component('match-game', function () {
 
 			if(!this.$currentCard) {
 				this.$currentCard = _$target;
+				this.disable()
+					.on('transitionend', function() {
+						this.enable()
+							.off('transitionend');
+					}.bind(this));
 			}
 
 			else if(this.$currentCard.id() === _$target.id()) {
 				this.$currentCard = null;
+				this.enable();
 				return true;
 			}
 
 			else {
+				this.disable();
 				setTimeout(function() {
 					this[undoStateMethod](_$target);
 					this[undoStateMethod](this.$currentCard);
 					this.$currentCard = null;
+					this.enable();
 				}.bind(this), 1000);
 			}
 		}
