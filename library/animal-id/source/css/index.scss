@@ -313,6 +313,15 @@ h3 {
 	}
 }
 
+body:not(.DEMO) #what-does-a-nose-do {
+	&.SFX,
+	&.VOICE-OVER {
+		.items {
+			pointer-events: none;
+		}
+	}
+}
+
 .screen.no-frame.screen-id {
 
 	.frame {
@@ -647,21 +656,12 @@ h3 {
 				&.cow .side.b {
 					background-position: -2528px -15px;
 				}
+			}
+		}
 
-				// fox
-				// frog
-				// rhino
-				// mouse
-				// cactus
-				// oxpecker
-				// worm
-				// robin
-				// lily-pad
-				// humming-bird
-				// dove
-				// grass
-				// honeysuckle
-				// cow
+		&.DISABLED {
+			.items {
+				pointer-events: none;
 			}
 		}
 	}
