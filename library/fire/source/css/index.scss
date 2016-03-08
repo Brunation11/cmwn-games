@@ -1420,6 +1420,14 @@ img.background {
 		display: block;
 		-webkit-animation: burn 1.5s linear infinite alternate;
 		animation: burn 1.5s linear infinite alternate;
+		-moz-animation: none;
+	}
+
+	&.OPEN {
+		.flip {
+			animation-name: fadeInUp;
+			animation-delay: 1s;
+		}
 	}
 }
 
