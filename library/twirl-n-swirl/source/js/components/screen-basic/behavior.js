@@ -17,7 +17,7 @@ pl.game.component('screen-basic', function () {
 		if (this.is(_event.target) && this.isReady) {
 			this.game.setWallpaper(this.properties.wallpaper);
 			this.start();
-			if (this.completed() && !this.isComplete) this.complete();
+			if (this.completed() && !this.isComplete && !this.game.demoMode) this.complete();
 		}
 	});
 

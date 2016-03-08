@@ -127,19 +127,26 @@
 					}
 				}
 			}
+		}
 
+		button.close {
+			right: 0;
+			background-position: -570px -60px;
+			background-size: 1200px;
+			width: 70px;
+			height: 50px;
+			margin: 40px;
+			opacity: 0;
+			transition: opacity 1s;
+
+			&:hover {
+				background-position: -570px -231px;
+			}
+		}
+
+		&.PROGRESS {
 			button.close {
-				right: 0;
-				background-position: -570px -60px;
-				background-size: 1200px;
-				width: 70px;
-				height: 50px;
-				margin: 40px;
-				transition: opacity 1s;
-
-				&:hover {
-					background-position: -570px -231px;
-				}
+				opacity: 1;
 			}
 		}
 
@@ -155,6 +162,8 @@
 				transform: scale(1);
 			}
 		}
+
+
 	}
 
 	&.VOICE-OVER {
