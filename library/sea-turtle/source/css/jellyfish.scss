@@ -13,20 +13,6 @@
 			height: 100%;
 			z-index: -1;
 
-			&.SELECTED {
-				z-index: 1;
-
-				&:before {
-					content: "";
-					position: fixed;
-					left: -1000%;
-					top: -1000%;
-					width: 3000%;
-					height: 3000%;
-					z-index: -1;
-				}
-			}
-
 			div {
 				position: absolute;
 				left: 50%;
@@ -48,6 +34,26 @@
 				top: 0;
 				width: 30px;
 				margin: 0;
+			}
+		}
+	}
+
+	&.OPEN {
+		.reveal-component ul {
+			li {
+				&.SELECTED {
+					z-index: 1;
+
+					&:before {
+						content: "";
+						position: fixed;
+						left: -1000%;
+						top: -1000%;
+						width: 3000%;
+						height: 3000%;
+						z-index: -1;
+					}
+				}
 			}
 		}
 	}

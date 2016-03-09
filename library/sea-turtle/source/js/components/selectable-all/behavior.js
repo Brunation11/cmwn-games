@@ -19,7 +19,7 @@ pl.game.component('selectable-all', function () {
 		this.$el = null;
 		this.$collection = null;
 		this.$viewport = null;
-		this.shouldRecycel = true;
+		this.shouldRecycle = false;
 
 		this.init = function (_$collection, _$viewport) {
 			this.$collection = _$collection;
@@ -34,7 +34,7 @@ pl.game.component('selectable-all', function () {
 		this.recycle = function () {
 			var $clone;
 
-			if (!this.shouldRecycel) return;
+			if (!this.shouldRecycle) return;
 
 			$clone = $(pl.util.random(this.$collection)).clone();
 
@@ -57,6 +57,7 @@ pl.game.component('selectable-all', function () {
 				}
 			}));
 
+			this.shouldRecycle = true;
 			this.$el.addClass('LAUNCHED');
 		};
 
@@ -81,6 +82,8 @@ pl.game.component('selectable-all', function () {
 
 		populateViewport.call(this);
 
+		$(window).on('resize', this.restart.bind(this));
+
 		return this;
 	};
 
@@ -92,9 +95,15 @@ pl.game.component('selectable-all', function () {
 		this.screen.requiredQueue.ready();
 	};
 
+	this.restart = function() {
+		this.columns.forEach(function (_item) {
+			_item.recycle();
+		});
+	};
+
 	this.stop = function () {
 		this.columns.forEach(function (_item) {
-			_item.shouldRecycel = false;
+			_item.shouldRecycle = false;
 			_item.$el.removeClass('LAUNCHED').css('transition', 'none');
 		});
 	};
