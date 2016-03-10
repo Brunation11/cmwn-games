@@ -169,7 +169,7 @@ pl.game('sea-turtle', function () {
 			$character = _event.behaviorTarget.parent();
 			sfx = pl.util.resolvePath(this, 'dropzone.audio.sfx.drop');
 
-			this.area.find('img:eq('+$character.index()+')').addClass('show active');
+			this.area.find('div:eq('+$character.index()+')').addClass('show active');
 			this.reveal.item($character.index()+1);
 
 			this.characters.disable();
@@ -190,7 +190,7 @@ pl.game('sea-turtle', function () {
 			if (sfx) sfx.play();
 
 			if(_event.targetScope.state(this.STATE.COMPLETE)) {
-				this.area.find('img.active').removeClass('active');
+				this.area.find('div.active').removeClass('active');
 			}
 		});
 
