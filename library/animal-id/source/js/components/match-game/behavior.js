@@ -104,6 +104,14 @@ pl.game.component('match-game', function () {
 		}
 	};
 
+	this.randomize = function() {
+		var $bin;
+
+		$bin = this.find('.bin');
+		this.find('.items li').remove().appendTo($bin);
+		this.populateList($bin.find('li'));
+	};
+
 	this.ready = function () {
 		var correct, $bin;
 

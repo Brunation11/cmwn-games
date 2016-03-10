@@ -218,7 +218,8 @@ h3 {
 	}
 
 	body.DEMO .screen .next-screen,
-	body.DEMO #match-game .next-screen,
+	body.DEMO #match-game:not(.COMPLETE) .next-screen,
+	body.DEMO #match-game:not(.COMPLETE) .reveal-component ul li div .next-screen,
 	body.DEMO .screen.no-frame .frame .reveal-component .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
@@ -425,8 +426,14 @@ body:not(.DEMO) #what-does-a-nose-do {
 		}
 	}
 
-	> .next-screen {
-		display: none;
+	.next-screen {
+		opacity: 0;
+	}
+
+	&.RETURN {
+		.next-screen {
+			opacity: 1;
+		}
 	}
 
 	&.VOICE-OVER {
@@ -635,6 +642,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 			width: 800px;
 			height: auto;
 			position: absolute;
+			padding: 0;
 			left: 50%;
 			top: 50%;
 			transform: translateX(-50%) translateY(-60%);
@@ -773,12 +781,8 @@ body:not(.DEMO) #what-does-a-nose-do {
 		}
 	}
 
-	.next-screen {
-		display: none;
-	}
-
-	&.PLAYING .reveal-component ul li div .next-screen,
-	&.VOICE-OVER .reveal-component ul li div .next-screen {
+	&:not(.COMPLETE).PLAYING .reveal-component ul li div .next-screen,
+	&:not(.COMPLETE).VOICE-OVER .reveal-component ul li div .next-screen {
 		opacity: 0;
 		cursor: auto;
 	}
@@ -853,11 +857,17 @@ body:not(.DEMO) #what-does-a-nose-do {
 
 .screen.screen-dropzone {
 	> .next-screen {
-		display: none;
+		opacity: 0;
 	}
 
 	h3 {
 		font-size: 28px;
+	}
+
+	&.RETURN {
+		> .next-screen {
+			opacity: 1;
+		}
 	}
 }
 
