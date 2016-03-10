@@ -277,8 +277,10 @@
 				list-style: none;
 
 				&.SELECTED {
-					background: url(../media/images/globe/img_4.11c.png);
-					background-size: 100% 100%;
+					background-image: url(../media/images/globe/sprite_4.4.png);
+					background-size: auto 40px;
+					background-size: 1320px 57px;
+					background-position: -880px 0px;
 					font-weight: normal;
 				}
 
@@ -294,13 +296,15 @@
 				left: -30px;
 				width: 60px; height: 100%;
 				content: "";
-				background: url(../media/images/globe/img_4.11a.png) center no-repeat;
+				background-repeat: no-repeat;
+				background-image: url(../media/images/globe/sprite_4.4.png);
 				background-size: auto 40px;
+				background-size: 900px;
+				background-position: -300px -5px;
 			}
 
 			li.SELECTED::before {
-				background-image: url(../media/images/globe/img_4.11b.png);
-				background-size: auto 55px;
+				background-position: 0px -5px;
 			}
 		}
 
