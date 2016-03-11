@@ -22,6 +22,17 @@ import './components/sparkles/behavior';
 
 pl.game('animal-id', function () {
 
+	var showNext = function() {
+		this.STATE.BACK = 'RETURN';
+
+		this.state('return','+RETURN');
+
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			if(this.state(this.STATE.COMPLETE)) this.return(this);
+		});
+	};
+
 	this.screen('title', function () {
 
 		this.on('ui-open', function (_event) {
@@ -44,16 +55,39 @@ pl.game('animal-id', function () {
 
 	});
 
+	this.screen('id-carnivore', showNext);
+	this.screen('id-marsupial', showNext);
+	this.screen('id-rodent', showNext);
+	this.screen('id-arachnid', showNext);
+	this.screen('id-mammal', showNext);
+	this.screen('id-mollusk', showNext);
+	this.screen('id-reptile', showNext);
+	this.screen('id-herbivore', showNext);
+
 	this.screen('match-game', function() {
 		this.entity('reveal', function() {
 			this.handleCloseClick = function() {
 				if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
 					this.closeAll();
-					this.screen.next();
 				}
 			};
 		});
+
+		this.on('ui-close', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.reveal.closeAll();
+			this.delay('.5s',this.matchGame.randomize.bind(this.matchGame));
+		});
 	});
+
+	this.screen('dnd-lion', showNext);
+	this.screen('dnd-sloth', showNext);
+	this.screen('dnd-wolf', showNext);
+	this.screen('dnd-elephant', showNext);
+	this.screen('dnd-dragon', showNext);
+	this.screen('dnd-pig', showNext);
+	this.screen('dnd-gorilla', showNext);
+	this.screen('dnd-mule', showNext);
 
 	this.screen('flip', function () {
 
