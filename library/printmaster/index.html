@@ -4,11 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Printmaster</title>
 
-	<!-- I moved the js to the bottom of the body -->
-	<!-- this script is for livereload and should be removed before deploy -->
-	<!-- 
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-	-->
+	<!-- inject:livereload -->
+	<!-- endinject -->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -172,7 +169,6 @@
 
 	<!-- 7 -->
 	<section id="info-double-loop" class="screen types" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/_BKG/S_BKG_1.mp3" preload loop></audio>
 		<audio class="voice-over" src="media/S_7/VO_7.1.mp3" preload pl-required></audio>
 		<img class="animated" src="media/S_7/img_7.1.gif">
 		<div class="frame" pl-bg="media/_Frame/Fr_2.png">
