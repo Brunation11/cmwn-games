@@ -156,10 +156,12 @@ img.inline {
 }
 
 .experiment .print {
+	display: inline-block;
 	width: 260px;
 	height: 70px;
 	background: url(../media/images/S_15/Img_15.7b.png) no-repeat center;
 	background-size: 100%;
+	cursor: pointer;
 }
 
 .experiment .print:hover {
