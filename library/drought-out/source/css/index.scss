@@ -517,7 +517,7 @@ img.inline {
 		li {
 			position: absolute;
 			width: 180px;
-			height: 200px;
+			height: 230px;
 			background-image: url(../media/S_7/sprite_7.2.png) !important;
 			background-size: 675px;
 			background-repeat: no-repeat;
@@ -530,14 +530,14 @@ img.inline {
 
 			@for $i from 1 through 15 {
 				&.#{nth($balloons,$i)} {
-					background-position: 0px -250*nth($background-top,$i)-5+px;
+					background-position: 0px -250*nth($background-top,$i)+px;
 
 					&:hover {
-						background-position: -225px -250*nth($background-top,$i)-5+px;
+						background-position: -225px -250*nth($background-top,$i)+px;
 					}
 
 					&.HIGHLIGHTED {
-						background-position: -450px -250*nth($background-top,$i)-5+px;
+						background-position: -450px -250*nth($background-top,$i)+px;
 					}
 				}
 			}
