@@ -118,8 +118,10 @@ gulp.task('copy-index', function () {
         gulp
             .src(path.join('./library', _game, 'index.html'))
             // include the following code where you want the livereload script to be injected
-            //<!-- inject:livereload -->
-            //<!-- endinject -->
+            /*
+                <!-- inject:livereload -->
+                <!-- endinject -->
+            */
             .pipe(inject(gulp.src('./livereload.js'), {
                 starttag: '<!-- inject:livereload -->',
                 transform: function (filePath, file) {
