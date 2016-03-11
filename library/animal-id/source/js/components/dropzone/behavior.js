@@ -8,7 +8,7 @@ pl.game.component('dropzone', function () {
 			this.audio.sfx.drag.play();
 			this.cache = {
 				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: this.size()
+				size: this.size().scale(this.game.transformScale().x)
 			};
 		});
 

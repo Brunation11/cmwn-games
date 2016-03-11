@@ -1,3 +1,9 @@
+/* damn firefox */
+audio {
+	display: none !important;
+	width: 0 !important; height: 0 !important;
+}
+
 .center {
 	position: absolute;
 	top: 0; bottom: 0;
