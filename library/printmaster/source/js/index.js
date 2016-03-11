@@ -89,8 +89,7 @@ pl.game('printmaster', function () {
 					this.game.audio.sfx.typing.pause();
 				});
 			} else {
-				this.removeClass('COUNT');
-				this.removeClass('ENGAGE');
+				this.removeClass('COUNT ENGAGE');
 			}
 		});
 	});
