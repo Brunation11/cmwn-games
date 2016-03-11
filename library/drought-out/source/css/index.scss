@@ -421,12 +421,11 @@ img.inline {
 
 		li {
 			display: inline-block;
-			background-image: url(../media/S_2/sprite_2.1.png) !important;
+			background-image: url(../media/S_2/sprite_2.1.png);
 			background-size: 650px;
 			background-repeat: no-repeat;
 			height: 42px;
 			margin: 5px 40px 5px 0;
-
 
 			$words: dry green parched monsoon damp dusty hot no-water thirsty wet tropical arid steamy balmy swampy;
 			$width: 74 120 160 174 114 119 74 180 145 84 162 88 150 128 165;
@@ -505,9 +504,6 @@ img.inline {
 	100% {top:-220px;opacity:1;}
 }
 
-$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
-$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
-
 #balloons {
 	.items {
 		position: absolute;
@@ -522,30 +518,27 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 			position: absolute;
 			width: 180px;
 			height: 200px;
-			background-size: 300% auto;
-			background-position: left center;
+			background-image: url(../media/S_7/sprite_7.2.png) !important;
+			background-size: 675px;
+			background-repeat: no-repeat;
 			cursor: pointer;
-			top: 560px;
+			top: 600px;
 			opacity: 0;
 
-			&.a,
-			&.l,
-			&.fl {
-				background-position: -10px center;
-			}
+			$balloons:       b d wd s c f bt e  g ws r  l k fl  a;
+			$background-top: 0 1  4 5 2 3  6 7 11 10 9 12 8 13 14;
 
-			&:hover {
-				background-position: right center;
-			}
+			@for $i from 1 through 15 {
+				&.#{nth($balloons,$i)} {
+					background-position: 0px -250*nth($background-top,$i)-5+px;
 
-			&.HIGHLIGHTED {
-				background-position: center center;
-				pointer-events: none;
+					&:hover {
+						background-position: -225px -250*nth($background-top,$i)-5+px;
+					}
 
-				&.a,
-				&.l,
-				&.fl {
-					background-position: -185px center;
+					&.HIGHLIGHTED {
+						background-position: -450px -250*nth($background-top,$i)-5+px;
+					}
 				}
 			}
 		}
@@ -561,6 +554,9 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		.items {
 			li {
 				animation: floatUp 8s infinite linear;
+
+				$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
+				$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
 
 				@for $i from 1 through 15{
 					&:nth-of-type(#{$i}){
