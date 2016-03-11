@@ -13,7 +13,8 @@ var argv = require('yargs').argv,
     autoprefixer = require('autoprefixer'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    inject = require('gulp-inject');
 
 function lsd (_path) {
     return fs.readdirSync(_path).filter(function (file) {
@@ -116,6 +117,15 @@ gulp.task('copy-index', function () {
     games.forEach(function (_game) {
         gulp
             .src(path.join('./library', _game, 'index.html'))
+            // include the following code where you want the livereload script to be injected
+            //<!-- inject:livereload -->
+            //<!-- endinject -->
+            .pipe(inject(gulp.src('./livereload.js'), {
+                starttag: '<!-- inject:livereload -->',
+                transform: function (filePath, file) {
+                    if(livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
+                }
+            }))
             .pipe(gulp.dest('./build/'+_game));
     });
 });
@@ -142,12 +152,6 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
             .src(path.join( './library', _game, 'thumb.jpg' ))
             .pipe( gulp.dest('./build/'+_game) );
     });
-});
-
-gulp.task('copy-webgl', [], function () {
-    gulp
-        .src(path.join('./webgl-library/**/*'))
-        .pipe( gulp.dest(path.join('./build')) );
 });
 
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name
