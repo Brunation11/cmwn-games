@@ -88,6 +88,10 @@ body {
 	display: none;
 }
 
+img.hidden {
+	display: none;
+}
+
 button {
 	margin: 0;
 	padding: 0;
@@ -372,14 +376,14 @@ img.inline {
 		}
 
 		&.next-screen {
-			width: 135px;
+			width: 140px;
 			height: 78px;
 			right: 10px;
 			bottom: 10px;
-			background-position: -20px -39px;
+			background-position: -15px -39px;
 
 			&:hover {
-				background-position: -20px -198px;
+				background-position: -15px -198px;
 			}
 		}
 	}
@@ -400,15 +404,27 @@ img.inline {
 }
 
 #think {
+	.inline {
+		vertical-align: middle;
+		display: inline-block;
+		height: 80px;
+		width: 330px;
+		background-size: 650px;
+		background-repeat: no-repeat;
+		background-position: 0px -75*15-5+px;
+	}
+
 	.items {
 		display: block;
 		height: auto;
+		margin: 10px 0 0;
 
 		li {
 			display: inline-block;
-			background-size: auto 100%;
+			background-image: url(../media/S_2/sprite_2.1.png) !important;
+			background-size: 650px;
 			background-repeat: no-repeat;
-			background-position: left center;
+
 			height: 40px;
 			margin: 5px 40px 5px 0;
 
@@ -417,64 +433,20 @@ img.inline {
 				background-position: right center;
 			}
 
-			&.dry {
-				width: 67px;
-			}
+			$words: dry green parched monsoon damp dusty hot no-water thirsty wet tropical arid steamy balmy swampy;
+			$width: 74 120 160 174 114 119 74 180 145 84 162 88 150 128 165;
+			$background-top: 10 11 12 0 1 2 3 4 5 6 7 8 9 13 14;
 
-			&.green {
-				width: 112px;
-			}
+			@for $i from 1 through 15 {
+				&.#{nth($words,$i)} {
+					width: nth($width,$i)+px;
+					background-position: 0px -75*nth($background-top,$i)-5+px;
 
-			&.parched {
-				width: 150px;
-			}
-
-			&.monsoon {
-				width: 164px;
-			}
-
-			&.damp {
-				width: 104px;
-			}
-
-			&.dusty {
-				width: 109px;
-			}
-
-			&.hot {
-				width: 67px;
-			}
-
-			&.no-water {
-				width: 169px;
-			}
-
-			&.thirsty {
-				width: 135px;
-			}
-
-			&.wet {
-				width: 74px;
-			}
-
-			&.tropical {
-				width: 152px;
-			}
-
-			&.arid {
-				width: 78px;
-			}
-
-			&.steamy {
-				width: 139px;
-			}
-
-			&.balmy {
-				width: 117px;
-			}
-
-			&.swampy {
-				width: 155px;
+					&.HIGHLIGHTED,
+					&:hover {
+						background-position: -325px -75*nth($background-top,$i)-5+px;
+					}
+				}
 			}
 		}
 	}
