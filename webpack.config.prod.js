@@ -6,12 +6,29 @@ delete require.cache[require.resolve("js-interactive-library")];
 module.exports = {
     context: __dirname + '/library',
     entry: null,
-    devtool: 'eval-source-map',
+    devtool: 'eval',
     resolve: {
         extensions: ['', '.js'],
         modulesDirectories: ['node_modules']
     },
-    plugins: [],
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'BABEL_ENV': JSON.stringify('production'),
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: {},
+            sourceMap: false,
+            compressor: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.AggressiveMergingPlugin()
+    ],
     output: {
         path: __dirname+'/build',
         filename: '[name]/ai.js',
@@ -25,6 +42,8 @@ module.exports = {
             exclude: [/bower_components/, /node_modules/]
         }]
     },
+    postcss: function () {
+        return [autoprefixer];
+    },
     cache: false
 };
-
