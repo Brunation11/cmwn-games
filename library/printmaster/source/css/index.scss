@@ -762,7 +762,7 @@ img.inline {
 
 	.frame div {
 		opacity: 1;
-		transition: opacity .25s 2s;
+		transition: opacity .25s;
 	}
 
 	h3 {
@@ -777,9 +777,26 @@ img.inline {
 
 		@for $item from 1 through 5 {
 			&:nth-of-type(#{$item}) {
-				animation-delay: (1+$item)+s;
+				animation-delay: (-1+$item)+s;
 			}
 		}
+	}
+
+	div.engage {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		text-align: left;
+		opacity: 0;
+		width: 362px;
+		transition: opacity 0s;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 80px;
+		width: 362px;
 	}
 
 	&.OPEN {
@@ -792,17 +809,29 @@ img.inline {
 				animation: type2 1s steps(15, end);
 			}
 		}
+	}
 
-		.frame > p {
-			animation-name: fadeIn;
-		}
-
+	&.COUNT {
 		.frame div {
 			opacity: 0;
 		}
 
 		h3 {
 			animation-name: blink;
+		}
+	}
+
+	&.ENGAGE {
+		.frame div {
+			opacity: 0;
+		}
+
+		div.engage {
+			opacity: 1;
+		}
+
+		h2 {
+			animation: type .75s steps(9, end);
 		}
 	}
 }

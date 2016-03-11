@@ -76,7 +76,24 @@ pl.game('printmaster', function () {
 
 	this.screen('carousel', carousel);
 
-	this.screen('info-lets-dust', typing('1s'));
+	this.screen('info-lets-dust', function() {
+		typing('1s').call(this);
+
+		this.on('audio-play', function(_event) {
+			if(this.audioSequence.audio.voiceOver.count === _event.target) {
+				this.addClass('COUNT');
+			} else if(this.audioSequence.audio.voiceOver.engage === _event.target) {
+				this.addClass('ENGAGE');
+				this.game.audio.sfx.typing.play();
+				this.delay('.75s', function() {
+					this.game.audio.sfx.typing.pause();
+				});
+			} else {
+				this.removeClass('COUNT');
+				this.removeClass('ENGAGE');
+			}
+		});
+	});
 
 	this.screen('flip', function () {
 		this.next = function () {
