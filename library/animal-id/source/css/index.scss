@@ -15,10 +15,6 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
 	cursor: default;
 }
@@ -916,6 +912,11 @@ $area-left: 0 7 1 6 2 5 3 4;
 #flip {
 	h3 {
 		font-size: 36px;
+	}
+
+	.flip {
+		width: 600px;
+		margin: -140px 0;
 	}
 }
 
