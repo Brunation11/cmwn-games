@@ -95,7 +95,7 @@ pl.game('sea-turtle', function () {
 			});
 
 			this.respond('answer', function (_event) {
-				if (_event.message === 'correct' && !this.screen.reveal.state(this.screen.STATE.COMPLETE)) {
+				if (_event.message === 'correct') {
 					this.disable(
 						this.$active.removeClass('ACTIVE')
 					);
