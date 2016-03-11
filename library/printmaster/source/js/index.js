@@ -94,6 +94,18 @@ pl.game('printmaster', function () {
 		});
 	});
 
+	this.screen('info-need', function() {
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			id = id ? id.toUpperCase() : false;
+			this.addClass(id);
+		});
+
+		this.on('ui-close', function() {
+			this.removeClass('LOTION TAPE POWDER BRUSH PAPER GLASS');
+		});
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
