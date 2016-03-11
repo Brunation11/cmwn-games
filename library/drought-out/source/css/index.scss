@@ -424,14 +424,9 @@ img.inline {
 			background-image: url(../media/S_2/sprite_2.1.png) !important;
 			background-size: 650px;
 			background-repeat: no-repeat;
-
-			height: 40px;
+			height: 42px;
 			margin: 5px 40px 5px 0;
 
-			&.HIGHLIGHTED,
-			&:hover {
-				background-position: right center;
-			}
 
 			$words: dry green parched monsoon damp dusty hot no-water thirsty wet tropical arid steamy balmy swampy;
 			$width: 74 120 160 174 114 119 74 180 145 84 162 88 150 128 165;
