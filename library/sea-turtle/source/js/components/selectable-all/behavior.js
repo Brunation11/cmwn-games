@@ -19,7 +19,7 @@ pl.game.component('selectable-all', function () {
 		this.$el = null;
 		this.$collection = null;
 		this.$viewport = null;
-		this.shouldRecycle = false;
+		this.shouldRecycle = true;
 
 		this.init = function (_$collection, _$viewport) {
 			this.$collection = _$collection;
@@ -57,7 +57,6 @@ pl.game.component('selectable-all', function () {
 				}
 			}));
 
-			this.shouldRecycle = true;
 			this.$el.addClass('LAUNCHED');
 		};
 
