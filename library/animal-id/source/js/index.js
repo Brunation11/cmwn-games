@@ -24,9 +24,7 @@ pl.game('animal-id', function () {
 	this.screen('title', function () {
 
 		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
+			if (this.is(_event.target)) this.title.startAudio();
 		});
 
 		this.on('ready', function (_event) {
@@ -40,6 +38,14 @@ pl.game('animal-id', function () {
 				this.close(this.game.loader);
 			}
 		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play()
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.background.stop();
+		};
 
 	});
 

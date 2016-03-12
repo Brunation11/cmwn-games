@@ -1,108 +1,76 @@
 pl.game.component('screen-basic', function () {
-	var collection;
 
 	this.SELECTOR = {
 		CORRECT: '[pl-correct]',
 		INCORRECT: '[pl-incorrect]'
 	};
 
-	this.handleProperty({
-		bg: function (_node, _name, _value) {
-			var img = new Image();
-			
-			if (!collection) collection = [];
-
-			img.src = _value;
-			collection.push(img);
-			$(_node).css('background-image', 'url('+_value+')');
-		}
+	this.on('ui-open', function (_event) {
+		if (!this.is(_event.target)) return;
+		if (this.completed() && !this.isComplete) this.complete();
+		if (this.isReady) this.start();
+		if (this.screen.isLast()) this.addClass('last');
 	});
 
-	this.on('initialize', function (_event) {
-		if (!this.is(_event.targetScope)) return;
-		this.watchAssets(collection);
+	this.on('ui-leave', function (_event) {
+		if (this.isReady && this.is(_event.target)) this.stop();
 	});
-
-	this.ready = function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
-
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-				if (sfx) sfx.play();
-			}));
-		}
-	};
 	
 	this.next = function () {
-		var nextScreen, buttonSound;
+		var nextScreen;
 
-		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+		// @todo make isLast a method for slides. (this.isLast() for any sequence of views)
+		// @todo Perhaps make the slides component the primary machine for screen
+		// navigation since they are esentially the same.
+		// 
+		if(this.screen.isLast() && this.completed()) this.game.quit.okay();
 
 		nextScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
 		if (nextScreen) {
 			this.screen.leave();
 			nextScreen.open();
-			if (buttonSound) buttonSound.play();
+			this.game.audio.sfx.button.play();
 		}
 
 		return nextScreen;
 	};
 
 	this.prev = function () {
-		var prevScreen, buttonSound;
+		var prevScreen;
 
 		prevScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
 		if (prevScreen) {
 			this.screen.close();
 			prevScreen.open();
-			if (buttonSound) buttonSound.play();
+			this.game.audio.sfx.button.play();
 		}
 
 		return prevScreen;
 	};
 
+	// @todo Possibly make this a behavior so decendants can respond to the screen starting - Micah: 3/8/16
 	this.start = function () {
-		var bgSound, voSound;
+		var entities = this.hasOwnProperty('entities') && this.entities;
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+		this.startAudio();
 
-		if (bgSound) bgSound.play();
-		if (voSound) voSound.play();
+		// start all screen entities.
+		entities.forEach(function (_entity) {
+			var type = typeof _entity.start;
 
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+			if (_entity.hasOwnProperty('start') && type === 'function') {
+				_entity.start();
+			}
+		});
 
 		return this;
 	};
 
-	this.on('ui-open', function (_event) {
-		if (this !== _event.targetScope) return;
-
-		if (this.isReady) {
-			this.start();
-		}
-
-		if (!this.isComplete) {
-			if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
-				this.complete();
-			}
-		}
-
-		if (this.screen.isLast()) {
-			this.addClass('last');
-		}
-	});
-
-	this.on('ui-leave', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
-	});
+	this.complete = function () {
+		this.game.audio.sfx.screenComplete.play();
+		return this.proto();
+	};
 
 });
