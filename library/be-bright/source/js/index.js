@@ -24,8 +24,12 @@ pl.game('be-bright', function () {
 			this.close(this.game.loader);
 			this.delay('3s', function() {
 				this.complete();
-				if(this.title.audio.sfx) this.title.audio.sfx.play();
+				this.title.audio.sfx.play();
 			});
+		};
+
+		this.startAudio = function () {
+			this.title.startAudio();
 		};
 
 	});
