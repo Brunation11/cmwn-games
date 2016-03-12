@@ -1,6 +1,6 @@
 @keyframes flush {
 	0% {
-		transform: translate3d(-50%, -50%, 0) scale(1.5) rotate(0deg);
+		transform: translate3d(-50%, -50%, 0) scale(1.75) rotate(0deg);
 		opacity: 1;
 	}
 
@@ -27,6 +27,10 @@
 
 html {
 	background-color: #fff;
+}
+
+img.hidden {
+	display: none;
 }
 
 #twirl-n-swirl {
