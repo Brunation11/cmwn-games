@@ -15,11 +15,7 @@ pl.game.component('screen-title', function () {
 	 * Start the title screen logo animation when the screen opens.
 	 */
 	this.on('ui-open', function () {
-		var so, delay = this.properties.delay;
-
-		so = pl.util.resolvePath(this, 'audio.background[0]?');
-
-		if (so) so.play();
+		var delay = this.properties.delay;
 
 		if (delay) {
 			this.delay(this.properties.delay, this.animateSplashImage);
@@ -27,6 +23,7 @@ pl.game.component('screen-title', function () {
 			this.animateSplashImage();
 		}
 
+		this.start();
 		this.game.setWallpaper(this.properties.wallpaper);
 		
 		return this;

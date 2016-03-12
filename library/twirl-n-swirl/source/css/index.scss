@@ -81,7 +81,8 @@
 			cursor: default;
 			background-position: -480px -53px;
 
-			&:hover {
+			// &:hover,
+			&:active {
 				background-position: -480px -260px;
 			}
 		}
@@ -89,7 +90,8 @@
 		.prev-screen {
 			background-position: -270px -53px;
 
-			&:hover {
+			// &:hover,
+			&:active {
 				background-position: -270px -260px;
 			}
 		}
@@ -110,7 +112,8 @@
 		background-position: -910px -58px;
 		z-index: 1;
 
-		&:hover {
+		// &:hover,
+		&:active {
 			background-position: -910px -266px;
 		}
 	}
@@ -153,7 +156,8 @@
 		width: 240px; height: 208px;
 		background-position: left top;
 
-		&:hover {
+		// &:hover,
+		&:active {
 			background-position: left bottom;
 		}
 	}
@@ -213,7 +217,8 @@
 		background-position: 3px 2px;
 		background-size: 451px;
 
-		&:hover {
+		// &:hover,
+		&:active {
 			background-position: right 2px;
 		}
 	}
@@ -261,7 +266,8 @@
 			background-position: -1050px -50px;
 			height: 110px;
 
-			&:hover {
+			// &:hover,
+			&:active {
 				background-position: -1050px -258px;
 			}
 		}
@@ -271,7 +277,8 @@
 			width: 150px;
 			height: 140px;
 
-			&:hover {
+			// &:hover,
+			&:active {
 				background-position: -1290px -248px;
 			}
 		}

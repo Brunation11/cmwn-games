@@ -49,8 +49,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		this.audio.background.play();
-		this.audio.voiceOver.play();
+		this.proto();
 
 		// Start all screen entities
 		if (this.hasOwnProperty('entities')) this.entities.forEach(function (_entity) {
@@ -61,12 +60,7 @@ pl.game.component('screen-basic', function () {
 	};
 	
 	this.complete = function () {
-		var sfx;
-
-		sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-		if (sfx) sfx.play();
-
+		this.game.audio.sfx.screenComplete.play();
 		return this.proto();
 	};
 
