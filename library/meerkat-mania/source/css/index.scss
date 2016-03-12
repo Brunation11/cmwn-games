@@ -53,10 +53,6 @@ body {
 		background-image: url(../media/_BKG/BKG_2.png);
 	}
 
-	.background.roles {
-		background-image: url(../media/_BKG/BKG_3.png);
-	}
-
 	.background.look-out {
 		background-image: url(../media/_BKG/BKG_4.png);
 	}
@@ -78,7 +74,6 @@ body {
 	}
 
 	&.excel:not(.QUIT-SCREEN) > .background.excel,
-	&.roles:not(.QUIT-SCREEN) > .background.roles,
 	&.look-out:not(.QUIT-SCREEN) > .background.look-out,
 	&.feel:not(.QUIT-SCREEN) > .background.feel,
 	&.movie:not(.QUIT-SCREEN) > .background.movie,
@@ -86,6 +81,11 @@ body {
 	&.flip:not(.QUIT-SCREEN) > .background.flip {
 		opacity: 1;
 	}
+}
+
+// this is to pre-load assets
+#asset-bin {
+	display: none;
 }
 
 button {
@@ -409,6 +409,15 @@ p {
 }
 
 .screen.roles {
+	background-size: contain;
+	background-position: left bottom;
+	background-repeat: no-repeat;
+	width: 960px;
+	height: 540px;
+	position: relative;
+	top: 50%;
+	margin-top: -270px;
+	overflow: hidden;
 
 	.selectable-canvas-component {
 
@@ -562,7 +571,7 @@ p {
 					margin: 190px 100px;
 
 					button {
-						right: 35px;
+						right: 40px;
 						top: 70px;
 					}
 				}
@@ -615,6 +624,37 @@ p {
 						margin: 100px 120px;
 					}
 				}
+			}
+		}
+	}
+
+	.reveal-close {
+		opacity: 0;
+		transition: opacity .5s;
+		cursor: auto;
+	}
+
+	.OPEN {
+		.reveal-close {
+			opacity: 1;
+			cursor: pointer;
+		}
+	}
+
+	&.VOICE-OVER {
+		.reveal-close {
+			opacity: 0;
+			cursor: auto;
+		}
+	}
+}
+
+.DEMO {
+	.screen.roles {
+		.OPEN {
+			.reveal-close {
+				opacity: 1;
+				cursor: pointer;
 			}
 		}
 	}

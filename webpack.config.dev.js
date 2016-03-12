@@ -25,6 +25,8 @@ module.exports = {
             exclude: [/bower_components/, /node_modules/]
         }]
     },
+    postcss: function () {
+        return [autoprefixer];
+    },
     cache: false
 };
-
