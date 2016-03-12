@@ -34,6 +34,15 @@ pl.game('polar-bear', function () {
 			if (this.is(_event.target)) this.delay(0, this.open);
 			this.close(this.game.loader);
 		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
 	});
 
 	this.screen('map', function () {
@@ -371,5 +380,3 @@ pl.game('polar-bear', function () {
 	};
 
 });
-
-document.domain = 'changemyworldnow.com';
