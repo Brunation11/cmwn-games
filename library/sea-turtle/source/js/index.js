@@ -39,6 +39,15 @@ pl.game('sea-turtle', function () {
 			this.close($('#loader'));
 		});
 
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
+
 	});
 
 	this.screen('video', function () {
@@ -90,8 +99,9 @@ pl.game('sea-turtle', function () {
 			});
 
 			this.on('initialize', function () {
+				var eventName = typeof this.$els[0].ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
 				// Add a vanilajs event listener attached to the capture event propagation phase.
-				this.listen('mousedown', true, this.bind(preventDrag));
+				this.listen(eventName, true, preventDrag.bind(this));
 			});
 
 			this.respond('answer', function (_event) {
@@ -133,29 +143,12 @@ pl.game('sea-turtle', function () {
 		this.STATE.COMPLETE = "COMPLETE";
 
 		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-				
-				if (!characters) characters = [];
-
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
-
-		/**
 		 * When the screen has initialized, start watching the
 		 * background images we collected.
 		 */
 		this.on('initialize', function (_event) {
 			if (!this.is(_event.targetScope)) return;
-			this.watchAssets(characters);
+			// this.watchAssets(characters);
 			this.area = this.find('.area');
 		});
 

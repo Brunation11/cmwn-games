@@ -48,7 +48,13 @@
 				top: 0;
 				width: 30px;
 				margin: 0;
+				opacity: 0;
+				transition: opacity 0.5s;
 			}
 		}
+	}
+
+	.reveal-component:not(.VOICE-OVER) button.close {
+		opacity: 1;
 	}
 }

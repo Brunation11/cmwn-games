@@ -35,13 +35,13 @@ pl.game.component('reveal', function () {
 		return this;
 	};
 
-	this.shouldRevealItem = function () {
-		return true;
+	this.shouldRevealItem = function (_id) {
+		return !!this.items[_id] || !!this[_id];
 	};
 
 	this.deselectTarget = function(_$target) {
-		if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
-			this.screen.deselect(_$target);
+		if(!this.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+			this.deselect(_$target);
 		}
 	};
 
