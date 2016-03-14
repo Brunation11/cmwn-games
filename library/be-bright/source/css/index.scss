@@ -443,51 +443,47 @@ p {
 				transition: opacity 1s 1s;
 
 				li {
-					background-position: 0 0;
-					background-size: auto 100%;
 					cursor: default;
 					opacity: 0.5;
 					transition: opacity 1s;
+					background-image: url(../media/S_3/img_3.2.png);
+					background-size: 450px;
+					background-repeat: no-repeat;
+					pointer-events: none;
 
 					&:first-of-type:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
 					&.HIGHLIGHTED {
 						opacity: 1;
-						background-position: 204px 0;
 					}
 
 					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
-					&:nth-of-type(1) {
-						background-image: url(../media/S_3/img_3.2.png);
-					}
+					@for $i from 1 through 4 {
+						&:nth-of-type(#{$i}) {
+							background-position: -12px 310-325*$i+px;
 
-					&:nth-of-type(2) {
-						background-image: url(../media/S_3/img_3.3.png);
-					}
-
-					&:nth-of-type(3) {
-						background-image: url(../media/S_3/img_3.4.png);
-					}
-
-					&:nth-of-type(4) {
-						background-image: url(../media/S_3/img_3.5.png);
+							&.HIGHLIGHTED,
+							&:hover {
+								background-position: -237px 310-325*$i+px;
+							}
+						}
 					}
 				}
 			}
@@ -496,7 +492,6 @@ p {
 
 	&.OPEN {
 		img.title {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
@@ -550,20 +545,15 @@ p {
 
 	&.OPEN {
 		img {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
 		.pig {
-			-webkit-animation-name: shake;
-			-webkit-animation-duration: 3s;
 			animation-name: shake;
 			animation-duration: 3s;
 		}
 
 		.bulb {
-			-webkit-animation-name: bounce;
-			-webkit-animation-duration: 3s;
 			animation-name: bounce;
 			animation-duration: 3s;
 		}
@@ -622,8 +612,6 @@ p {
 				transition: opacity 1s 1s;
 
 				li {
-					background-position: 0 0;
-					background-size: auto 100%;
 					cursor: default;
 					position: absolute;
 					width: 200px;
@@ -631,57 +619,46 @@ p {
 					top: 0;
 					opacity: 0.5;
 					transition: opacity 1s;
+					background-image: url(../media/S_5/img_5.2.png);
+					background-size: 400px;
+					background-repeat: no-repeat;
+					pointer-events: none;
 
 					&:first-of-type:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
 					&.HIGHLIGHTED {
 						opacity: 1;
-						background-position: -194px 0;
 					}
 
 					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
-					&:nth-of-type(1) {
-						background-image: url(../media/S_5/img_5.2.png);
-						left: 0;
-					}
+					@for $i from 1 through 5 {
+						&:nth-of-type(#{$i}) {
+							background-position: 0px 200-200*$i+px;
+							left: -150+150*$i+px;
+							top: 200-200*($i%2)+px;
 
-					&:nth-of-type(2) {
-						background-image: url(../media/S_5/img_5.3.png);
-						left: 150px;
-						top: 200px;
-					}
-
-					&:nth-of-type(3) {
-						background-image: url(../media/S_5/img_5.4.png);
-						left: 300px;
-					}
-
-					&:nth-of-type(4) {
-						background-image: url(../media/S_5/img_5.5.png);
-						left: 450px;
-						top: 200px;
-					}
-
-					&:nth-of-type(5) {
-						background-image: url(../media/S_5/img_5.6.png);
-						left: 600px;
+							&.HIGHLIGHTED,
+							&:hover {
+								background-position: -200px 200-200*$i+px;
+							}
+						}
 					}
 				}
 			}
@@ -690,7 +667,6 @@ p {
 
 	&.OPEN {
 		img.title {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
@@ -717,7 +693,6 @@ p {
 
 	&.OPEN {
 		img {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 	}
@@ -755,20 +730,14 @@ p {
 
 	&.OPEN {
 		.inline {
-			-webkit-animation-name: flipInX;
-			-webkit-animation-duration: 3s;
 			animation-name: flipInX;
 			animation-duration: 3s;
 		}
 
 		.stamp.START {
 			opacity: 1;
-			-webkit-animation-name: stamp;
-			-webkit-animation-duration: 1s;
-			/*-webkit-animation-delay: 0.5s;*/
 			animation-name: stamp;
 			animation-duration: 1s;
-			/*animation-delay: 0.5s;*/
 		}
 	}
 }
