@@ -35,6 +35,7 @@
 				width: 30px;
 				margin: 0;
 				opacity: 0;
+				cursor: default;
 				transition: opacity 0.5s;
 			}
 		}
@@ -62,5 +63,13 @@
 
 	.reveal-component:not(.VOICE-OVER) button.close {
 		opacity: 1;
+		cursor: pointer;
+	}
+}
+
+.DEMO #jellyfish {
+	.reveal-component button.close {
+		opacity: 1;
+		cursor: pointer;
 	}
 }

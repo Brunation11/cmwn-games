@@ -73,10 +73,6 @@ pl.game.component('screen-basic', function () {
 		return false;
 	};
 
-	this.shouldProceed = function () {
-		return this.state(this.STATE.VOICE_OVER) || this.game.demoMode;
-	};
-
 	this.on('ui-open', function (_event) {
 		if (this !== _event.targetScope) return;
 

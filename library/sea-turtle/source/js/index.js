@@ -36,7 +36,7 @@ pl.game('sea-turtle', function () {
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close($('#loader'));
+			this.close(this.game.loader);
 		});
 
 		this.startAudio = function () {
@@ -64,7 +64,7 @@ pl.game('sea-turtle', function () {
 
 	this.screen('globe', function () {
 		
-		var characters, restAnimation, onClose;
+		var restAnimation, onClose;
 
 		restAnimation = 'bounce';
 
@@ -106,13 +106,7 @@ pl.game('sea-turtle', function () {
 
 			this.respond('answer', function (_event) {
 				if (_event.message === 'correct') {
-					this.disable(
-						this.$active.removeClass('ACTIVE')
-					);
-					this.delay('2.5s', function () {
-						this.reveal.item('instruction');
-						this.enable();
-					});
+					this.disable(this.$active.removeClass('ACTIVE'));
 				}
 			});
 
@@ -127,14 +121,23 @@ pl.game('sea-turtle', function () {
 		this.entity('reveal', function () {
 			
 			this.respond('answer', function (_event) {
-				var message = this[_event.message];
-				if (message && !this.isComplete) {
+				var message, playing;
+
+				message = this[_event.message];
+				playing = this.audio.playing();
+
+				if (message && !this.screen.isComplete) {
 					this.select(message);
 					this.delay('2s', function() {
 						this.deselect(message);
 					});
 					
-					this.currentAudio.stop();
+					if (playing) playing.stop();
+
+					this.delay('2.5s', function () {
+						this.reveal.item('instruction');
+						this.characters.enable();
+					});
 				}
 			});
 
@@ -148,7 +151,6 @@ pl.game('sea-turtle', function () {
 		 */
 		this.on('initialize', function (_event) {
 			if (!this.is(_event.targetScope)) return;
-			// this.watchAssets(characters);
 			this.area = this.find('.area');
 		});
 
