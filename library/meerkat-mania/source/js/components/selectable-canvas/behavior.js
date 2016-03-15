@@ -49,10 +49,11 @@ pl.game.component('selectable-canvas', function () {
 		this.items.correct = correct;
 	};
 
-	this.isImageTarget = function (_$image, _point) {
+	this.isImageTarget = function (_$image, _point, _offset, _scale) {
 		var offset = _$image.offset();
-		this.bctx.clearRect(0,0, this.buffer.width, this.buffer.height);
-		this.bctx.drawImage(_$image[0], offset.left, offset.top, _$image.width(), _$image.height());
+
+		this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+		this.bctx.drawImage(_$image[0], offset.left/_scale - _offset[0], offset.top/_scale - _offset[1], _$image.width(), _$image.height());
 		pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
 
 		this.bctx.fillStyle = 'white';
@@ -63,15 +64,17 @@ pl.game.component('selectable-canvas', function () {
 	};
 
 	this.behavior('select', function (_cursor) {
-		var offset, cursor, returnValue = false;
+		var offset, cursor, scale, returnValue = false;
 
-		offset = this.$els.absolutePosition();
+		scale = this.game.transformScale().x;
+		offset = this.$els.absolutePosition().scale(1/scale);
 		cursor = this.event.cursor
-			.scale(1/this.game.zoom).math('floor')
-			.dec(offset);
+			.scale(1/this.game.zoom)
+			.dec(offset)
+			.math('floor');
 
 		this.items.every(this.bind(function (_$item) {
-			if (this.isImageTarget(_$item, cursor)) {
+			if (this.isImageTarget(_$item, cursor, offset, scale)) {
 				returnValue = {
 					message: _$item.parent().index(),
 					behaviorTarget: _$item.parent()
