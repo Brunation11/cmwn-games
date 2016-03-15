@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Monarch</title>
+
+	<!-- inject:livereload -->
+	<!-- endinject -->
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+</head>
+<body id="monarch">
+	<div id="loader" class="center OPEN">
+		<div class="group">
+			<h2>Loading!</h2>
+			<div class="spinner animated">
+				<div class="spinner animated">
+					<div class="spinner animated"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Preloads game backgrounds -->
+	<div id="asset-bin">
+	</div>
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<button class="close" pl-action="quit.open()"></button>
+
+	<audio pl-id="button" class="sfx" src="media/_audio/_Buttons/MON_BU_1.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/_audio/_Buttons/MON_BU_2.mp3" preload></audio>
+
+	<!-- GAME BACKGROUNDS -->
+
+	<!-- SCREENS -->
+
+	<!-- TITLE -->
+	<section id="title" class="screen" pl-component="screen-title">
+		<audio class="background" src="media/_audio/_BKG/MON_BKG_1.mp3" preload loop></audio>
+		<div class="center">
+			<div class="group">
+				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.1.png">
+				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.2.png">
+				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.3.png">
+				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.4.png">
+				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.5.png">
+			</div>
+		</div>
+		<button class="next-screen play" pl-action="next()"></button>
+	</section>
+
+	<!-- VIDEO_MON -->
+	<section id="video-mon" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-compnent="video">
+			
+		</div>
+	</section>
+
+	<!-- LAND_ON -->
+	<section id="land-on" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- FLY_ACROSS -->
+	<section id="fly-across" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- HATCH_CATPILL -->
+	<section id="hatch-catpill" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- LIKE_WARM -->
+	<section id="like-warm" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- PROBOSCIS -->
+	<section id="proboscis" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- 3000_MILES -->
+	<section id="3000-miles" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- 25_MPH -->
+	<section id="25-mph" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- ROCKIES -->
+	<section id="rockies" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- CATCH_MILKWEED -->
+	<section id="catch-milkweed" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- FLOATING_WEED -->
+	<section id="floating-weed" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- MILLION_MON -->
+	<section id="million-mon" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- TARSI -->
+	<section id="tarsi" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- UPDRAFTS -->
+	<section id="updrafts" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- FRAS -->
+	<section id="fras" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- DEVOUR_4_MIN -->
+	<section id="devour-4-min" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- FLY_3000_MILES -->
+	<section id="fly-3000-miles" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- MIGRATION_VID -->
+	<section id="migration-vid" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- 4_GENERATIONS -->
+	<section id="4-generations" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- 2_WEEK_LIFE -->
+	<section id="2-week-life" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- 9_MONTHS -->
+	<section id="9-months" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- MIGRATE_NORTH -->
+	<section id="migrate-north" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- FLIP -->
+	<section id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
+
+	</section>
+
+	<!-- QUIT -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<div class="center">
+			<div class="frame animated">
+				<h2>Are you sure you<br/>want to quit?</h2>
+				<h3>Your game progress will be saved.</h3>
+				<button class="quit-yes" pl-action="screen.okay()"></button>
+				<button class="quit-no" pl-action="screen.cancel()"></button>
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="ai.js"></script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-26000499-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>
+	
