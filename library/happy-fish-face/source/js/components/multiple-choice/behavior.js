@@ -1,13 +1,13 @@
 pl.game.component('multiple-choice', function () {
 
-	function validateAnswer (_scope) {
+	this.validateAnswer = function () {
 		var answers;
 
-		if (_scope.properties.correct) {
-			answers = _scope.properties.correct.split(/\s*,\s*/);
+		if (this.properties.correct) {
+			answers = this.properties.correct.split(/\s*,\s*/);
 
-			if (~answers.indexOf(String(_scope.getSelected().id()))) {
-				_scope.complete();
+			if (~answers.indexOf(String(this.getSelected().id()))) {
+				this.complete();
 			}
 		}
 
@@ -19,7 +19,7 @@ pl.game.component('multiple-choice', function () {
 			$li = $(this.event.target).closest('li');
 
 			if (!this.isComplete && this.select($li)) {
-				validateAnswer(this);
+				this.validateAnswer();
 			}
 		}
 	};

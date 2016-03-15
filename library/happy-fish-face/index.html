@@ -6,10 +6,8 @@
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="ai.js"></script>
-	<!-- this script is for livereload and should be removed before deploy -->
-	<!-- 
-	-->
-	<script>if(window.location.href.indexOf("http://local.changemyworldnow.com/dev/cmwn-games/build/") !== -1) document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<!-- inject:livereload -->
+	<!-- endinject -->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -87,6 +85,8 @@
 	<!-- HealthyWater -->
 	<section id="healthy-water" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="voice-over" src="media/_audio/_S_HealthyWater/HFF_VO_HealthyWater.mp3" preload pl-required></audio>
+		<audio pl-id="correct" class="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Right.mp3" preload pl-required></audio>
+		<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Wrong.mp3" preload></audio>
 		<div class="frame" pl-bg="media/_images/_frames/FR_1.png">
 			<img class="words" src="media/_images/_S_HealthyWater/img_4.1.png">
 			<div pl-component="multiple-choice" pl-correct="healthy" pl-required>
