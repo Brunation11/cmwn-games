@@ -30,6 +30,7 @@ export default function trash () {
 			this.complete();
 			this.timer.stop();
 			this.modal.item('goodJob');
+			this.game.bgSound.pause();
 		}));
 
 		this.items = this
