@@ -118,6 +118,13 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('multi-bubbles', multiBubbles);
 
+	this.screen('pollutes-water', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.game.bgSound.pause();
+		});
+	});
+
 	this.screen('trash', trash);
 
 	this.screen('flip', function () {
