@@ -22,268 +22,56 @@
 
 	li {
 		position: absolute;
-		background-image: url('../media/_images/_S_MultiBubbles/img_7.3.png');
-		background-size: 1602px;
-		background-repeat: no-repeat;
 		cursor: pointer;
 		animation: bob 6s infinite;
 		transition: opacity .5s;
+
+		&:before {
+			content: "";
+			display: block;
+			background-image: url('../media/_images/_S_MultiBubbles/img_7.3.png');
+			background-size: 1602px;
+			background-repeat: no-repeat;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
 
 		&.HIGHLIGHTED {
 			opacity: 0;
 			cursor: auto;
 			pointer-events: none;
-		}
 
-		&[pl-id=swim] {
-			width: 80px;
-			height: 80px;
-			background-position: -50px -50px;
-			top: 40px;
-			left: 20px;
-
-			&:hover {
-				background-position: -250px -50px;
+			&:before {
+				animation: rubberBand .75s infinite;
 			}
 		}
 
-		&[pl-id=washDishes] {
-			width: 100px;
-			height: 100px;
-			background-position: -440px -40px;
-			top: 385px;
-			left: 680px;
+		$items: swim washDishes growCrops tapDance cook cleanHouse runFactories playBasketball drinkIt washFace laundry flyAKite brushTeeth takeShowers drive zipline crochet read sleep tellTime talk;
+		$widths: 80 100 120 100 80 100 120 120 80 100 120 120 80 100 80 100 120 80 100 100 80;
+		$heights: 80 100 120 100 80 100 120 120 80 100 120 120 80 100 80 100 120 80 100 100 80;
+		$lefts: 20 680 500 850 420 345 35 155 175 25 635 835 255 305 695 545 405 585 775 215 825;
+		$tops: 40 385 105 55 230 80 140 260 80 350 120 260 180 290 255 290 390 425 160 410 425;
+		$background-lefts: -50 -440 -830 -1240 -50 -440 -830 -1230 -50 -440 -830 -1230 -50 -440 -850 -40 -430 -850 -50 -435 -850;
+		$background-tops: -50 -40 -40 -50 -285 -275 -265 -265 -520 -510 -500 -500 -750 -740 -750 -975 -965 -985 -1220 -1210 -1220;
+		$hover-lefts: -250 -640 -1030 -1440 -250 -640 -1030 -1430 -250 -640 -1030 -1430 -250 -640 -1050 -240 -630 -1050 -250 -635 -1050;
+		$hover-tops: -50 -41 -40 -50 -285 -275 -265 -265 -520 -510 -500 -500 -750 -740 -750 -975 -965 -985 -1220 -1210 -1220;
 
-			&:hover {
-				background-position: -640px -41px;
-			}
-		}
+		@for $i from 1 through 21 {
+			&[pl-id=#{nth($items,$i)}] {
+				width: nth($widths,$i)+px;
+				height: nth($heights,$i)+px;
+				left: nth($lefts,$i)+px;
+				top: nth($tops,$i)+px;
 
-		&[pl-id=growCrops] {
-			width: 120px;
-			height: 120px;
-			background-position: -830px -40px;
-			top: 105px;
-			left: 500px;
+				&:before {
+					background-position: #{nth($background-lefts,$i)+px} #{nth($background-tops,$i)+px};
+				}
 
-			&:hover {
-				background-position: -1030px -40px;
-			}
-		}
-
-		&[pl-id=tapDance] {
-			width: 100px;
-			height: 100px;
-			background-position: -1240px -50px;
-			top: 55px;
-			left: 850px;
-
-			&:hover {
-				background-position: -1440px -50px;
-			}
-		}
-
-		&[pl-id=cook] {
-			width: 80px;
-			height: 80px;
-			background-position: -50px -285px;
-			top: 230px;
-			left: 420px;
-
-			&:hover {
-				background-position: -250px -285px;
-			}
-		}
-
-		&[pl-id=cleanHouse] {
-			width: 100px;
-			height: 100px;
-			background-position: -440px -275px;
-			top: 80px;
-			left: 345px;
-
-			&:hover {
-				background-position: -640px -275px;
-			}
-		}
-
-		&[pl-id=runFactories] {
-			width: 120px;
-			height: 120px;
-			background-position: -830px -265px;
-			top: 140px;
-			left: 35px;
-
-			&:hover {
-				background-position: -1030px -265px;
-			}
-		}
-
-		&[pl-id=playBasketball] {
-			width: 120px;
-			height: 120px;
-			background-position: -1230px -265px;
-			top: 260px;
-			left: 155px;
-
-			&:hover {
-				background-position: -1430px -265px;
-			}
-		}
-
-		&[pl-id=drinkIt] {
-			width: 80px;
-			height: 80px;
-			background-position: -50px -520px;
-			top: 80px;
-			left: 175px;
-
-			&:hover {
-				background-position: -250px -520px;
-			}
-		}
-
-		&[pl-id=washFace] {
-			width: 100px;
-			height: 100px;
-			background-position: -440px -510px;
-			top: 350px;
-			left: 25px;
-
-			&:hover {
-				background-position: -640px -510px;
-			}
-		}
-
-		&[pl-id=laundry] {
-			width: 120px;
-			height: 120px;
-			background-position: -830px -500px;
-			top: 120px;
-			left: 635px;
-
-			&:hover {
-				background-position: -1030px -500px;
-			}
-		}
-
-		&[pl-id=flyAKite] {
-			width: 120px;
-			height: 120px;
-			background-position: -1230px -500px;
-			top: 260px;
-			left: 835px;
-
-			&:hover {
-				background-position: -1430px -500px;
-			}
-		}
-
-		&[pl-id=brushTeeth] {
-			width: 80px;
-			height: 80px;
-			background-position: -50px -750px;
-			top: 180px;
-			left: 255px;
-
-			&:hover {
-				background-position: -250px -750px;
-			}
-		}
-
-		&[pl-id=takeShowers] {
-			width: 100px;
-			height: 100px;
-			background-position: -440px -740px;
-			top: 290px;
-			left: 305px;
-
-			&:hover {
-				background-position: -640px -740px;
-			}
-		}
-
-		&[pl-id=drive] {
-			width: 80px;
-			height: 80px;
-			background-position: -850px -750px;
-			top: 255px;
-			left: 695px;
-
-			&:hover {
-				background-position: -1050px -750px;
-			}
-		}
-
-		&[pl-id=zipline] {
-			width: 100px;
-			height: 100px;
-			background-position: -40px -975px;
-			top: 290px;
-			left: 545px;
-
-			&:hover {
-				background-position: -240px -975px;
-			}
-		}
-
-		&[pl-id=crochet] {
-			width: 120px;
-			height: 120px;
-			background-position: -430px -965px;
-			top: 390px;
-			left: 405px;
-
-			&:hover {
-				background-position: -630px -965px;
-			}
-		}
-
-		&[pl-id=read] {
-			width: 80px;
-			height: 80px;
-			background-position: -850px -985px;
-			top: 425px;
-			left: 585px;
-
-			&:hover {
-				background-position: -1050px -985px;
-			}
-		}
-
-		&[pl-id=sleep] {
-			width: 100px;
-			height: 100px;
-			background-position: -50px -1220px;
-			top: 160px;
-			left: 775px;
-
-			&:hover {
-				background-position: -250px -1220px;
-			}
-		}
-
-		&[pl-id=tellTime] {
-			width: 100px;
-			height: 100px;
-			background-position: -435px -1210px;
-			top: 410px;
-			left: 215px;
-
-			&:hover {
-				background-position: -635px -1210px;
-			}
-		}
-
-		&[pl-id=talk] {
-			width: 80px;
-			height: 80px;
-			background-position: -850px -1220px;
-			top: 425px;
-			left: 825px;
-
-			&:hover {
-				background-position: -1050px -1220px;
+				&:hover:before {
+					background-position: #{nth($hover-lefts,$i)+px} #{nth($hover-tops,$i)+px};
+				}
 			}
 		}
 	}
