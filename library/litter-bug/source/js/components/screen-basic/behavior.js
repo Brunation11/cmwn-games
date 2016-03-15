@@ -4,18 +4,6 @@ pl.game.component('screen-basic', function () {
 		return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
 	};
 
-	this.playSound = function (_sound) {
-		var delay;
-	
-		delay = $(_sound).attr('pl-delay');
-	
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
-	};
-
 	this.next = function () {
 		var nextScreen, buttonSound;
 
@@ -47,16 +35,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
-
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) {
-			this.game.bgSound = bgSound;
-			bgSound.play();
-		}
-		if (voSound) this.playSound(voSound);
+		this.startAudio();
 
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 

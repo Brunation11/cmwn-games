@@ -35,6 +35,15 @@ pl.game('litterbug', function () {
 			this.close(this.game.loader);
 		});
 
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
+
 	});
 
 	this.screen('clean-up', function() {
