@@ -57,13 +57,15 @@ pl.game.component('screen-basic', function () {
 		this.startAudio();
 
 		// start all screen entities.
-		entities.forEach(function (_entity) {
-			var type = typeof _entity.start;
+		if (entities) {
+			entities.forEach(function (_entity) {
+				var type = typeof _entity.start;
 
-			if (_entity.hasOwnProperty('start') && type === 'function') {
-				_entity.start();
-			}
-		});
+				if (_entity.hasOwnProperty('start') && type === 'function') {
+					_entity.start();
+				}
+			});
+		}
 
 		return this;
 	};
@@ -72,5 +74,10 @@ pl.game.component('screen-basic', function () {
 		this.game.audio.sfx.screenComplete.play();
 		return this.proto();
 	};
+
+	this.on('ui-close', function (_event) {
+		if(!this.is(_event.target)) return;
+		this.stop();
+	});
 
 });
