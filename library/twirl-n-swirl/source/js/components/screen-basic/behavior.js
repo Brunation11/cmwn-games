@@ -13,15 +13,35 @@ pl.game.component('screen-basic', function () {
 		if (so) so.play();
 	}
 
+	this.playSound = function(_sound) {
+		var delay, $sound;
+
+		$sound = $(_sound);
+		delay = $sound.attr('pl-delay');
+		if($sound.hasClass('voice-over')) {
+			this.currentVO = _sound;
+		}
+
+		if (delay) {
+			return this.delay(delay, _sound.play.bind(_sound));
+		} else {
+			return _sound.play();
+		}
+	};
+
 	this.on('ui-open', function (_event) {
 		if (this.is(_event.target) && this.isReady) {
 			this.game.setWallpaper(this.properties.wallpaper);
 			this.start();
-			if (this.completed() && !this.isComplete) this.complete();
+			if (this.completed() && !this.isComplete && !this.game.demoMode) this.complete();
 		}
 	});
 
 	this.on('ui-leave', function (_event) {
+		if (this.is(_event.target)) this.stop();
+	});
+
+	this.on('ui-close', function (_event) {
 		if (this.is(_event.target)) this.stop();
 	});
 
@@ -64,15 +84,24 @@ pl.game.component('screen-basic', function () {
 
 		if (bgSound) {
 			this.game.current.playingBG = bgSound;
-			bgSound.play();
+			this.playSound(bgSound);
 		}
 
-		if (voSound) voSound.play();
+		if (voSound) this.playSound(voSound);
 
 		// Start all screen entities
 		if (this.hasOwnProperty('entities')) this.entities.forEach(function (_entity) {
 			if (typeof _entity.start === 'function' && _entity.hasOwnProperty('start')) _entity.start();
 		});
+
+		return this;
+	};
+
+	this.stop = function() {
+		if(this.currentVO) {
+			this.currentVO.pause();
+			this.currentVO.currentTime = 0;
+		}
 
 		return this;
 	};
@@ -82,7 +111,7 @@ pl.game.component('screen-basic', function () {
 
 		sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-		if (sfx) sfx.play();
+		if (sfx) this.playSound(sfx);
 
 		return this.proto();
 	};
