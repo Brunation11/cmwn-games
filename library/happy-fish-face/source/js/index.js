@@ -91,11 +91,39 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('water-pollution', garbage);
 
-	this.screen('healthy-water', garbage);
+	this.screen('healthy-water', function() {
+		garbage.call(this);
+
+		this.entity('multiple-choice', function() {
+			this.validateAnswer = function() {
+				var answers;
+
+				if (this.properties.correct) {
+					answers = this.properties.correct.split(/\s*,\s*/);
+
+					if (~answers.indexOf(String(this.getSelected().id()))) {
+						this.audio.sfx.correct.play();
+						this.complete();
+					} else {
+						this.audio.sfx.incorrect.play();
+					}
+				}
+
+				return false;
+			};
+		});
+	});
 
 	this.screen('clean-water', garbage);
 
 	this.screen('multi-bubbles', multiBubbles);
+
+	this.screen('pollutes-water', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.game.bgSound.pause();
+		});
+	});
 
 	this.screen('trash', trash);
 

@@ -27,9 +27,9 @@ export default function trash () {
 		var correct = pl.Queue.create();
 
 		correct.on('complete', this.bind(function () {
-			this.complete();
 			this.timer.stop();
 			this.modal.item('goodJob');
+			this.game.bgSound.pause();
 		}));
 
 		this.items = this
@@ -70,6 +70,10 @@ export default function trash () {
 
 				this.audio.voiceOver.goodJob.onended = function() {
 					if(this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(this.audio.voiceOver.neverThrow);
+				}.bind(this);
+
+				this.audio.voiceOver.neverThrow.onended = function() {
+					if(this.screen.state(this.screen.STATE.OPEN)) this.screen.complete();
 				}.bind(this);
 			});
 		});
