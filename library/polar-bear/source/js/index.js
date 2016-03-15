@@ -230,7 +230,7 @@ pl.game('polar-bear', function () {
 
 		this.on('ui-select', function (_event) {
 			if (_event.targetScope === this.reveal) {
-				this.reveal.delay('2s', function () {
+				this.reveal.delay('1s', function () {
 					var $selected;
 
 					$selected = this.getSelected();
