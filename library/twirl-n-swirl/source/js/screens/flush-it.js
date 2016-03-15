@@ -29,8 +29,8 @@ export default function flushIt () {
 		this.item = function (_id) {
 			this
 				.removeClass('LAYER')
-				.open()
-				.reveal.item(_id);
+				.open();
+			this.reveal.item(_id);
 		};
 		/**
 		 * Close the modal and play the standard button sound.
@@ -54,7 +54,9 @@ export default function flushIt () {
 		this.on('transitionend', function (_event) {
 			if (!this.is(_event.target)) return;
 			if (!this.state(this.STATE.OPEN)) {
-				this.addClass('LAYER');
+				this.addClass('LAYER').removeClass('PROGRESS');
+			} else {
+				this.addClass('PROGRESS');
 			}
 		});
 
@@ -74,9 +76,7 @@ export default function flushIt () {
 	 * Show the instructional modal when the screen starts.
 	 */
 	this.start = function () {
-		this.delay('1.5s', function () {
-			this.modalReveal.item(0);
-		});
+		this.modalReveal.item(0);
 	};
 	/**
 	 * The flush button action.

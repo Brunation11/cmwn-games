@@ -1,11 +1,5 @@
 pl.game.component('screen-title', function () {
 
-	/**
-	 * this is necessary to allow the screen to progress
-	 * even when the animation has already completed
-	 */
-	var passed = false;
-
 	this.on('ready', function () {
 		this.delay(0, this.open);
 		this.close(this.game.loader);
@@ -29,6 +23,16 @@ pl.game.component('screen-title', function () {
 		return this;
 	});
 
+	this.on('ui-close', function(_event) {
+		if(!this.is(_event.target)) return;
+		this.on('transitionend', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.logo.removeClass(this.properties.animOut)
+				.off('animationend');
+			this.off('transitionend');
+		});
+	});
+
 	this.next = function () {
 		var nextScreen, so, animate;
 		
@@ -39,7 +43,7 @@ pl.game.component('screen-title', function () {
 
 		nextScreen = this.proto();
 		so = pl.util.resolvePath(this, 'audio.sfx.nextScreen');
-		animate = passed ? false : this.properties.animOut || '';
+		animate = this.properties.animOut || '';
 
 		if (!so) {
 			so = pl.util.resolvePath(this, 'game.audio.sfx.button');
@@ -56,8 +60,6 @@ pl.game.component('screen-title', function () {
 				
 			if (so) so.play();
 		}
-
-		passed = true;
 
 		return nextScreen;
 	};

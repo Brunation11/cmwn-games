@@ -1,6 +1,6 @@
 @keyframes flush {
 	0% {
-		transform: translate3d(-50%, -50%, 0) scale(1.5) rotate(0deg);
+		transform: translate3d(-50%, -50%, 0) scale(1.75) rotate(0deg);
 		opacity: 1;
 	}
 
@@ -25,7 +25,16 @@
 	}
 }
 
+html {
+	background-color: #fff;
+}
+
+img.hidden {
+	display: none;
+}
+
 #twirl-n-swirl {
+	background-color: #fff;
 	margin: auto;
 	perspective: 500px;
 
@@ -53,9 +62,13 @@
 		}
 	}
 
-	&.DEMO section .next-screen {
+	&.DEMO section .yes,
+	&.DEMO section.VOICE-OVER .yes,
+	&.DEMO section .next-screen,
+	&.DEMO section.VOICE-OVER .next-screen {
 		opacity: 1;
 		cursor: pointer;
+		pointer-events: auto;
 	}
 	
 	section {
@@ -93,6 +106,13 @@
 			// &:hover,
 			&:active {
 				background-position: -270px -260px;
+			}
+		}
+
+		&.VOICE-OVER:not(.COMPLETE) {
+			.yes,
+			.next-screen {
+				pointer-events: none;
 			}
 		}
 
