@@ -78,6 +78,7 @@ pl.game('happy-fish-face', function () {
 				var sfx = this.audio.sfx[id];
 				if(sfx) this.playSound(sfx);
 
+				this[stateMethod](_event.behaviorTarget);
 				this.requiredQueue.ready('select');
 			}
 		});
