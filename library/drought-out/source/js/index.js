@@ -2,7 +2,7 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
+// import './testPlatformIntegration';
 import 'js-interactive-library';
 import './config.game';
 
@@ -35,7 +35,11 @@ pl.game('drought-out', function () {
 	this.screen('title', function () {
 		this.ready = function () {
 			this.open();
-			this.close($('#loader'));
+			this.close(this.game.loader);
+		};
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
 		};
 
 		this.on('ui-open', function (_event) {
@@ -114,7 +118,7 @@ pl.game('drought-out', function () {
 		});
 
 		this.entity('selectable', function () {
-			
+
 			this.shouldSelect = function (_$target) {
 				if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
 					return !this.screen.state(this.STATE.VOICE_OVER);
@@ -164,6 +168,5 @@ pl.game('drought-out', function () {
 			}
 		});
 	});
-
 
 });
