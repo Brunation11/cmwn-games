@@ -3,6 +3,10 @@
 		opacity: 0;
 	}
 
+	50% {
+		opacity: 0;
+	}
+
 	100% {
 		opacity: 1;
 	}
@@ -10,7 +14,6 @@
 
 .cannon-component {
 	position: relative;
-	z-index: 1;
 	text-align: center;
 	background: url(../media/images/cannon-bears/background.png) no-repeat center;
     height: 180px;
@@ -40,5 +43,5 @@
 	}
 
 	.cannon-component img.RELOAD {
-		animation: reload 1s;
+		animation: reload 2s;
 	}
