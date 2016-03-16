@@ -75,6 +75,10 @@ pl.game.component('screen-basic', function () {
 			clearTimeout(this.timeoutID);
 		}
 
+		if(this.intervalID) {
+			this.kill("repeat");
+		}
+
 		if(this.currentVO) {
 			this.currentVO.pause();
 			this.currentVO.currentTime = 0;

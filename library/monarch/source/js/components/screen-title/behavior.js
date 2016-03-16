@@ -1,8 +1,35 @@
 pl.game.component('screen-title', function () {
 
+	this.playSound = function (_sound) {
+		var delay;
+
+		delay = $(_sound).attr('pl-delay');
+
+		if($(_sound).hasClass('voice-over')) {
+			this.currentVO = _sound;
+		}
+
+		if (delay) {
+			return this.delay(delay, _sound.play.bind(_sound));
+		} else {
+			return _sound.play();
+		}
+	};
+
 	this.on('ready', function (_event) {
 		if(!this.is(_event.target)) return;
+
 		this.delay(0, this.open);
+
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'screen.audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) this.playSound(sfx);
+			}));
+		}
 	});
 
 	/**

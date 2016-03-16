@@ -72,23 +72,23 @@ button {
 
 	&.next-screen,
 	&.prev-screen {
-		width: 70px;
-		height: 40px;
+		width: 100px;
+		height: 82px;
 	}
 
 	&.next-screen {
-		background-position: -340px -55px;
+		background-position: -450px -17px;
 
 		&:hover {
-			background-position: -340px -205px;
+			background-position: -453px -181px;
 		}
 	}
 
 	&.prev-screen {
-		background-position: -195px -55px;
+		background-position: -265px -15px;
 
 		&:hover {
-			background-position: -195px -205px;
+			background-position: -265px -190px;
 		}
 	}
 
@@ -115,13 +115,13 @@ button {
 	}
 
 	&.reveal-close {
-		width: 30px;
-		height: 30px;
-		background-position: -660px 240px;
+		width: 60px;
+		height: 55px;
+		background-position: -1310px -30px;
 		transition: opacity 1s;
 
 		&:hover {
-			background-position: -660px 390px;
+			background-position: -1310px -205px;
 		}
 	}
 }
@@ -217,10 +217,12 @@ p {
 		transition: opacity 1s, transform 1s;
 	}
 
+	.pl-game:not(.DEMO) .screen.SFX .reveal-close,
 	.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
 	.screen.GATED .next-screen {
 		opacity: 0;
 		cursor: default;
+		transition: none;
 	}
 
 
@@ -300,6 +302,11 @@ p {
 		left: 320px;
 		top: 250px;
 		width: 200px;
+
+		&.SHAKE {
+			transform-origin: 50% 80px;
+			animation-name: swing;
+		}
 	}
 
 	.caterpillar {
@@ -315,9 +322,244 @@ p {
 	}
 
 	&.OPEN {
-		img.scanner {
-			animation-name: fadeInLeftBig;
-			animation-delay: 1.5s;
+
+	}
+}
+
+#video-mon {
+	.video-component {
+		padding: 18px 20px 12px 18px;
+		background-size: 100% 100%;
+	}
+}
+
+#land-on {
+	img {
+		position: absolute;
+	}
+
+	.copy {
+		left: 80px;
+		top: 120px;
+		width: 800px;
+	}
+
+	.flowers {
+		left: 60px;
+		bottom: 0;
+		width: 860px;
+	}
+}
+
+#catch-milkweed {
+	.copy {
+		position: absolute;
+		left: 80px;
+		top: 180px;
+		width: 800px;
+	}
+
+	.milkweed {
+		position: absolute;
+		animation: cross 6s infinite;
+
+		&:before {
+			content: "";
+			display: block;
+			width: 200px;
+			height: 200px;
+			background-image: url(../media/_Images/S_CatchMilkweed/IMG_5.2.png);
+			background-size: 875px;
+			background-repeat: no-repeat;
+			background-position: 0px 0px;
+			animation: milkweed .4s steps(1) infinite;
+		}
+	}
+}
+
+#floating-weed {
+	.selectable-component {
+		.items {
+			position: relative;
+			display: block;
+			margin: 0;
+			width: 960px;
+			height: 540px;
+		}
+
+		li {
+			position: absolute;
+			background-image: url(../media/_Images/S_FloatingWeed/IMG_6.1.png);
+			background-size: 100%;
+			width: 100px;
+			height: 100px;
+			animation-name: float;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+			top: -100px;
+			cursor: pointer;
+
+			$lefts: 150 250 300 350 450 550 650 700 800 900;
+			$delays: 0 1 0 3 1 3 2 2;
+			$durations: 8 6 7 6 8 8 7 8;
+
+			@for $i from 1 through 8 {
+				&:nth-of-type(#{$i}) {
+					left: nth($lefts,$i)+px;
+					animation-duration: nth($durations,$i)+s;
+					animation-delay: nth($delays,$i)+s;
+				}
+			}
+		}
+	}
+
+	.modal-component {
+		position: absolute;
+		left: 130px;
+		top: 0;
+		width: 700px;
+		height: 460px;
+		opacity: 0;
+		z-index: -1;
+		transition: opacity .5s, z-index 0s .5s;
+
+		&.SELECTED {
+			opacity: 1;
+			z-index: 1;
+			transition: opacity .5s, z-index 0s;
+		}
+
+		.items {
+			margin: 0;
+			position: static;
+		}
+
+		li {
+			text-align: center;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			opacity: 0;
+			transition: none;
+
+			&.SELECTED {
+				opacity: 1;
+			}
+		}
+
+		.reveal-close {
+			position: absolute;
+			right: 120px;
+			top: 80px;
+		}
+	}
+
+	&.COMPLETE {
+		.selectable-component {
+			.items {
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+#fly-3000-miles {
+	img {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 540px;
+	}
+
+	p {
+		position: absolute;
+		text-align: center;
+		width: 600px;
+		left: 300px;
+		top: 110px;
+	}
+}
+
+#migration-vid {
+	img {
+		position: absolute;
+		width: 700px;
+		left: 130px;
+		top: 10px;
+	}
+
+	.video-component {
+		margin-top: 50px;
+		padding: 18px 20px 12px 18px;
+		background-size: 100% 100%;
+	}
+}
+
+#four-generations {
+	img {
+		position: absolute;
+		width: 800px;
+		left: 80px;
+		top: 10px;
+	}
+
+	.reveal-component {
+		margin-left: 25px;
+		margin-top: 80px;
+		width: 800px;
+		height: 380px;
+
+		.items {
+			margin: 0;
+			height: 330px;
+		}
+
+		li {
+			text-align: center;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			opacity: 0;
+			transition: none;
+
+			&.SELECTED {
+				opacity: 1;
+			}
+		}
+	}
+
+	.selectable-component {
+		.items {
+			margin: -60px auto 0;
+			width: 680px;
+			justify-content: space-between;
+			align-items: center;
+			height: 140px;
+			padding: 0 34px 30px 30px;
+		}
+
+		li {
+			background-image: url(../media/_Images/S_4Generations/IMG_9.3.png);
+			background-repeat: no-repeat;
+			background-size: 580px;
+			height: 70px;
+			width: 60px;
+			cursor: pointer;
+
+			$background-lefts: 0 170 345 520;
+
+			@for $i from 1 through 4 {
+				&:nth-of-type(#{$i}) {
+					background-position: -1*nth($background-lefts,$i)+px 0px;
+
+					&.HIGHLIGHTED,
+					&:hover {
+						background-position: #{-1*nth($background-lefts,$i)+px} -115px;
+					}
+				}
+			}
 		}
 	}
 }

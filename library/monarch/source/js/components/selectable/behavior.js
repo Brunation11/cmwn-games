@@ -1,14 +1,15 @@
 pl.game.component('selectable', function () {
 
 	this.behavior('select', function (_target) {
-		var $target;
+		var $target, id;
 
 		if (this.event) {
 			$target = $(this.event.target).closest('li');
+			id = $target.id() || $target.index();
 
 			if (this.shouldSelect($target) !== false) {
 				return {
-					message: $target.id(),
+					message: id,
 					behaviorTarget: $target
 				};
 			}	
