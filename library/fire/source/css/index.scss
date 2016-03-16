@@ -1,3 +1,6 @@
+$white: #fff;
+$spinner-color: rgba(255,255,255,0.5);
+
 * {
 	box-sizing: border-box;
 }
@@ -160,7 +163,7 @@ img.background {
 	position: relative;
 	width: 60%; height: 60%;
 	animation: pulse 0.5s infinite;
-	background: rgba(0,0,0,0.5);
+	background: $spinner-color;
 	border-radius: 50px;
 
 }
@@ -177,6 +180,7 @@ img.background {
 #loader {
 	transition: opacity 0.5s;
 	opacity: 0;
+	color: $white;
 }
 
 #loader.OPEN {
@@ -1108,11 +1112,11 @@ img.background {
 						}
 
 						&.axe {
-							background-image: url(../media/S_12/img_12.27l.png);
+							background-image: url(../media/S_12/img_12.27n.png);
 						}
 
 						&.walkie {
-							background-image: url(../media/S_12/img_12.27n.png);
+							background-image: url(../media/S_12/img_12.27l.png);
 						}
 
 						&.radio {
@@ -1289,11 +1293,11 @@ img.background {
 							}
 
 							&.axe {
-								background-image: url(../media/S_12/img_12.28m.png);
+								background-image: url(../media/S_12/img_12.28n.png);
 							}
 
 							&.walkie {
-								background-image: url(../media/S_12/img_12.28n.png);
+								background-image: url(../media/S_12/img_12.28m.png);
 							}
 
 							&.radio {
@@ -1416,6 +1420,14 @@ img.background {
 		display: block;
 		-webkit-animation: burn 1.5s linear infinite alternate;
 		animation: burn 1.5s linear infinite alternate;
+		-moz-animation: none;
+	}
+
+	&.OPEN {
+		.flip {
+			animation-name: fadeInUp;
+			animation-delay: 1s;
+		}
 	}
 }
 
