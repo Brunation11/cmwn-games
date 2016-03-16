@@ -1,5 +1,9 @@
 pl.game.component('screen-basic', function () {
 
+	this.shouldProceed = function () {
+		return !this.state(this.STATE.VOICE_OVER) || this.game.demoMode;
+	};
+
 	this.next = function () {
 		var nextScreen, buttonSound;
 
