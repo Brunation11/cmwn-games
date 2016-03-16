@@ -23,6 +23,16 @@ import './components/modal/behavior';
 
 pl.game('monarch', function () {
 
+	this.screen('title', function() {
+		this.on('ui-open', function() {
+			this.delay('2s', function() {
+				this.repeat('2s', function() {
+					this.audio.sfx.play();
+				});
+			});
+		});
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();

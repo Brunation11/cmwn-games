@@ -43,13 +43,14 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-title">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_1.mp3" preload loop></audio>
+		<audio class="sfx" src="media/_audio/_Title/MON_SX_Shake.mp3" preload></audio>
 		<div class="center">
 			<div class="group">
-				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.1.png">
-				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.2.png">
-				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.3.png">
-				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.4.png">
-				<img class="animated" src="media/_Images/_Title/MON_TITLE_1.5.png">
+				<img class="animated branch" src="media/_Images/_Title/MON_TITLE_1.1.png">
+				<img class="animated monarch" src="media/_Images/_Title/MON_TITLE_1.2.png">
+				<img class="animated pupa" src="media/_Images/_Title/MON_TITLE_1.3.png">
+				<img class="animated caterpillar" src="media/_Images/_Title/MON_TITLE_1.4.png">
+				<img class="animated title" src="media/_Images/_Title/MON_TITLE_1.5.png">
 			</div>
 		</div>
 		<button class="next-screen play" pl-action="next()"></button>
@@ -64,6 +65,7 @@
 
 	<!-- LAND_ON -->
 	<section id="land-on" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-pver" src="media/_audio/S_LandOn/VO_LandOn.mp3" preload></audio>
 		<img class="copy" src="media/_Images/S_LandOn/IMG_3.1.png">
 		<img class="flowers" src="media/_Images/S_LandOn/IMG_3.2.png">
 	</section>

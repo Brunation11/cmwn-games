@@ -52,13 +52,13 @@ button {
 	cursor: pointer;
 
 	background-image: url(../media/_Images/_Buttons/MON_BU_1.png);
-	background-size: auto 300px;
+	background-size: 1485px;
 	background-position: left top;
 
 	&.close {
 		width: 36px;
 		height: 36px;
-		background-position: -508px -58px;
+		background-position: -608px -22px;
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -66,7 +66,7 @@ button {
 		z-index: 2;
 
 		&:hover {
-			background-position: -508px -208px;
+			background-position: -606px -192px;
 		}
 	}
 
@@ -260,38 +260,58 @@ p {
 #title {
 	text-align: center;
 
+	.group {
+		width: 960px;
+		height: 540px;
+	}
+
 	button {
-		&.prev-screen {
-			display: none;
-		}
 
 		&.next-screen {
-			width: 100px;
-			height: 78px;
+			width: 155px;
+			height: 145px;
 			right: 10px;
 			bottom: 10px;
-			background-position: -25px -39px;
+			background-position: -15px -10px;
 
 			&:hover {
-				background-position: -25px -189px;
+				background-position: -15px -198px;
 			}
 		}
 	}
 
-	.scanner {
-		display: inline-block;
-		vertical-align: middle;
-		margin: 40px 0;
-		width: 320px;
+	img {
+		position: absolute;
+	}
+
+	.branch {
+		left: 0;
+		top: 0;
+		width: 960px;
+	}
+
+	.monarch {
+		left: -60px;
+		top: -50px;
+		width: 560px;
+	}
+
+	.pupa {
+		left: 320px;
+		top: 250px;
+		width: 200px;
+	}
+
+	.caterpillar {
+		left: 560px;
+		top: 80px;
+		width: 400px;
 	}
 
 	.title {
-		display: inline-block;
-		vertical-align: middle;
-		margin: 40px 0 40px 40px;
-		width: 485px;
-
-		div {}
+		left: 160px;
+		top: 200px;
+		width: 640px;
 	}
 
 	&.OPEN {
