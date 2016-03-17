@@ -87,9 +87,29 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
+		var entities = this.hasOwnProperty('entities') && this.entities;
+
 		this.startAudio();
 
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.hasOwnProperty('start')) _entity.start();
+			});
+		}
+
+		return this;
+	};
+
+	this.stop = function () {
+		var entities = this.hasOwnProperty('entities') && this.entities;
+
+		this.stopAudio();
+
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.hasOwnProperty('start')) _entity.stop();
+			});
+		}
 
 		return this;
 	};
