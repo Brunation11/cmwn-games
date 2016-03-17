@@ -261,8 +261,8 @@ pl.game.component('runner', function () {
 			inBoundsX = target.x > hitArea.x1 && target.x < hitArea.x2;
 			inBoundsY = target.y > hitArea.y1 && target.y < hitArea.y2;
 
-			flower = _flower;
 			if (inBoundsX && inBoundsY && _flower.is(FLOWER.RED)) {
+				flower = _flower;
 				return true;
 			}
 		}));
@@ -272,7 +272,7 @@ pl.game.component('runner', function () {
 		// canvas.ctx.fillStyle = '#00f';
 		// canvas.ctx.fillRect(target.x, target.y, 10,10);
 
-		return flower.is(FLOWER.RED);
+		return flower;
 	};
 
 	this.behavior('jump', function () {
@@ -295,8 +295,9 @@ pl.game.component('runner', function () {
 	});
 
 	this.behavior('landed', function (_flower) {
+		var id = _flower && _flower.id();
 		return {
-			message: _flower.id(),
+			message: id,
 			behaviorTarget: this.player
 		};
 	});

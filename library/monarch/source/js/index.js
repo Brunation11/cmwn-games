@@ -52,9 +52,15 @@ pl.game('monarch', function () {
 	this.screen('floating-weed', function() {
 		var count = 0;
 
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.length = this.modal.reveal.find('li').length;
+		});
+
 		this.respond('select', function (_event) {
 			this.audio.sfx.correct.play();
 			this.modal.item(count++);
+			if(count >= this.length) count = 0;
 		});
 	});
 
