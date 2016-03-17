@@ -93,24 +93,24 @@ button {
 	}
 
 	&.quit-yes {
-		width: 170px;
-		height: 90px;
+		width: 240px;
+		height: 130px;
 		background-size: auto 400px;
-		background-position: 387px 344px;
+		background-position: 807px -10px;
 
 		&:hover {
-			background-position: 387px 144px;
+			background-position: 807px -190px;
 		}
 	}
 
 	&.quit-no {
-		width: 170px;
-		height: 90px;
+		width: 240px;
+		height: 130px;
 		background-size: auto 400px;
-		background-position: 187px 344px;
+		background-position: 507px -12px;
 
 		&:hover {
-			background-position: 187px 144px;
+			background-position: 506px -190px;
 		}
 	}
 
