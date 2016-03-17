@@ -68,7 +68,7 @@ pl.game('fire', function () {
 		};
 	}
 
-	var draw = function(){
+	function draw () {
 		var p = new Particle(position.x, position.y);
 		particles.push(p);
 		
@@ -82,13 +82,13 @@ pl.game('fire', function () {
 		{
 			particles[i].update();
 		}
-	};
 
-	setInterval(draw, 1000/60);
+		requestAnimationFrame(draw);
+	}
+
+	requestAnimationFrame(draw);
 	})();
 	// end of the mouse smoke js
-
-
 
 	this.screen('title', function () {
 		
@@ -103,27 +103,36 @@ pl.game('fire', function () {
 
 			// Screens are display:none then when READY get display:block.
 			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
+			// the delay is to prevent the transition from failing to play
 			// because of collision of these styles.
 			// 
 			if (this.is(_event.target)) this.delay(0, this.open);
 			this.close(this.game.loader);
 		});
 
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
+
 	});
 
 	this.screen('alarm', function() {
 
 		this.ready = function() {
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
-				}.bind(this);
+			if (this.audio) {
+				this.audio.voiceOver.on('ended', function (_event) {
+					if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
+				}.bind(this));
 			}
 		};
 
 		this.pushDown = function() {
-			if(this.audio.sfx) this.audio.sfx.play();
+			if (this.audio) this.audio.sfx.play();
 			this.screen.next();
 		};
 	});
@@ -145,24 +154,19 @@ pl.game('fire', function () {
 				});
 
 				this.on('ready', function(_event) {
+					var sequence = 'title police plumber firefighter chef'.split(' ');
+
 					if (!this.is(_event.target)) return;
 
-					if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-						this.audio.voiceOver.title.onended = function() {
-							if(this.audio.voiceOver.police) this.audio.voiceOver.police.play();
-						}.bind(this);
+					if (this.audio) {
+						this.audio.voiceOver.on('ended', function (_event) {
+							var i, next;
 
-						this.audio.voiceOver.police.onended = function() {
-							if(this.audio.voiceOver.plumber) this.audio.voiceOver.plumber.play();
-						}.bind(this);
+							i = sequence.indexOf(_event.target.id()) + 1;
+							next = this.audio.voiceOver[sequence[i]]
 
-						this.audio.voiceOver.plumber.onended = function() {
-							if(this.audio.voiceOver.firefighter) this.audio.voiceOver.firefighter.play();
-						}.bind(this);
-
-						this.audio.voiceOver.firefighter.onended = function() {
-							if(this.audio.voiceOver.chef) this.audio.voiceOver.chef.play();
-						}.bind(this);
+							if (next) next.play();
+						}.bind(this));
 					}
 				});
 			});
@@ -174,31 +178,15 @@ pl.game('fire', function () {
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;
 
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.subtitle) this.audio.voiceOver.subtitle.play();
-				}.bind(this);
+			if (this.audio) {
+				this.audio.voiceOver.on('ended', function (_event) {
+					if (_event.target.id() === 'title') this.audio.voiceOver.subtitle.play();
+				}.bind(this));
 			}
 		});
 	});
 
 	this.screen('triangle', function() {
-		var characters;
-		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-				characters = characters || [];
-
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
 
 		this.entity('dropzone', function () {
 		
@@ -259,10 +247,10 @@ pl.game('fire', function () {
 			this.on('ready', function(_event) {
 				if (!this.is(_event.target)) return;
 
-				if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-					this.audio.voiceOver.title.onended = function() {
-						if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
-					}.bind(this);
+				if(this.audio) {
+					this.audio.voiceOver.on('ended', function(_event) {
+						if (_event.target === 'title') this.audio.voiceOver.directions.play();
+					}.bind(this));
 				}
 			});
 		});
@@ -271,41 +259,24 @@ pl.game('fire', function () {
 	this.screen('break-triangle', function() {
 
 		this.on('ready', function(_event) {
+			var sequence = 'title heat air fuel'.split(' ');
+
 			if (!this.is(_event.target)) return;
 
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.heat) this.audio.voiceOver.heat.play();
-				}.bind(this);
+			if (this.audio) {
+				this.audio.voiceOver.on('ended', function(_event) {
+					var i, next;
 
-				this.audio.voiceOver.heat.onended = function() {
-					if(this.audio.voiceOver.air) this.audio.voiceOver.air.play();
-				}.bind(this);
+					i = sequence.indexOf(_event.target.id()) + 1;
+					next = this.audio.voiceOver[sequence[i]]
 
-				this.audio.voiceOver.air.onended = function() {
-					if(this.audio.voiceOver.fuel) this.audio.voiceOver.fuel.play();
-				}.bind(this);
+					if (next) next.play();
+				}.bind(this));
 			}
 		});
 	});
 
 	this.screen('dress', function() {
-
-		var characters = [];
-		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
 
 		this.respond('select', function(_event) {
 			// this removes any screen class that starts with the same thing as the event message
@@ -361,7 +332,7 @@ pl.game('fire', function () {
 								}
 
 								else {
-									this.audio.sfx.incorrect.play()
+									this.audio.sfx.incorrect.play();
 								}
 
 							}
