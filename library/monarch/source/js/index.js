@@ -21,6 +21,7 @@ import './components/selectable-reveal/behavior';
 import './components/audio-sequence/behavior';
 import './components/modal/behavior';
 import './components/video/behavior';
+import './components/runner/behavior';
 
 pl.game('monarch', function () {
 
@@ -45,6 +46,8 @@ pl.game('monarch', function () {
 			this.kill('repeat');
 		});
 	});
+
+	this.screen('fly-across', flyAcross);
 
 	this.screen('floating-weed', function() {
 		var count = 0;
