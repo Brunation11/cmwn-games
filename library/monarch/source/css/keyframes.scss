@@ -1,3 +1,9 @@
+@keyframes sun {
+	0% {opacity: 0;}
+	50% {opacity: .4;}
+	100% {opacity: 0;}
+}
+
 @keyframes milkweed {
 	0% {background-position: 0px 0px;}
 	25% {background-position: -150px 0px;}
@@ -23,13 +29,13 @@
 		opacity:1;
 	}
 	20% {
-		transform: translateX(20px) translateY(140px) rotate(30deg);
+		transform: translateX(50px) translateY(140px) rotate(45deg);
 	}
 	40% {
 		transform: translateX(0) translateY(280px);
 	}
 	60% {
-		transform: translateX(20px) translateY(420px) rotate(30deg);
+		transform: translateX(50px) translateY(420px) rotate(45deg);
 	}
 	80% {
 		transform: translateX(0) translateY(560px);
@@ -42,4 +48,10 @@
 		transform: translateX(0) translateY(700px);
 		opacity:0;
 	}
+}
+
+@keyframes flip-container {
+	0% {opacity: 0;}
+	85% {opacity: 0;}
+	100% {opacity: 1;}
 }

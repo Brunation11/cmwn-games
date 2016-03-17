@@ -55,10 +55,48 @@ pl.game('monarch', function () {
 		});
 	});
 
+	this.screen('four-generations', function() {
+		this.on('ui-open', function() {
+			this.deselect(this.selectableReveal.reveal.find('li'));
+		});
+
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.audio.voiceOver.lifespan.onended = function() {
+				this.selectableReveal.reveal.item(4);
+			}.bind(this);
+		});
+
+		this.entity('selectable-reveal', function() {
+			this.start = function() {};
+
+			this.entity('selectable', function () {
+				
+				this.shouldSelect = function (_$target) {
+					if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
+						return !this.screen.state(this.STATE.VOICE_OVER);
+					}
+
+					return false; 
+				};
+
+			});
+		});
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();
 		};
+
+		this.entity('.flip-container', function() {
+			this.on('animationend', function(_event) {
+				if(!this.is(_event.target)) return;
+				this.find('.pupa').addClass('SHAKE');
+				this.screen.audio.sfx.shake.play();
+			});
+		});
+
 	});
 
 

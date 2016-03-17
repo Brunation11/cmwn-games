@@ -189,6 +189,7 @@
 
 	<!-- FLY_3000_MILES -->
 	<section id="fly-3000-miles" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="voice-over" src="media/_audio/S_Fly3000miles/VO_3000Miles.mp3" preload pl-required></audio>
 		<img src="media/_Images/S_Fly3000miles/IMG_7.1.png">
 		<p>
 			Monarchs migrate south every winter.<br>
@@ -200,16 +201,23 @@
 	<!-- MIGRATION_VID -->
 	<section id="migration-vid" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<img src="media/_Images/S_Migration_Video/IMG_8.1.png">
-		<div pl-component="video" pl-bg="media/_Images/_Frames/MON_FR_1.png">
+		<div pl-component="video" pl-bg="media/_Images/_Frames/MON_FR_1.png" pl-required>
 			<video pl-id="video" src="http://res.cloudinary.com/changemyworldnow/video/upload/af_44100/v1458067825/Monarch_Workout_vhol0y.mp4" controls></video>
 		</div>
 	</section>
 
 	<!-- 4_GENERATIONS -->
 	<section id="four-generations" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio pl-id="lifespan" class="voice-over" src="media/_audio/S_4Generations/VO_MonarchLifespan.mp3" preload pl-required></audio>
 		<img src="media/_Images/S_4Generations/IMG_9.1.png">
 		<div pl-component="selectable-reveal" pl-select-state="highlight">
 			<div pl-component="reveal" pl-bg="media/_Images/_Frames/MON_FR_3.png">
+				<audio class="voice-over" src="media/_audio/S_4Generations/VO_4Generations.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/_audio/S_2WeekLife/VO_2WeekLife.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/_audio/S_9Months/VO_9Months.mp3" preload pl-required></audio>
+				<audio class="voice-over" src="media/_audio/S_MigrateNorth/VO_MigrateNorth.mp3" preload pl-required></audio>
+				<!-- TODO: this should be replaced with the new VO -->
+				<audio class="voice-over" src="media/_audio/S_MigrateNorth/VO_MigrateNorth.mp3" preload pl-required></audio>
 				<ul class="items">
 					<li>
 						Every summer Monarchs<br>
@@ -223,7 +231,7 @@
 					<!-- 9_MONTHS -->
 					<li>
 						The fourth generation will migrate south<br>
-						for the winder and this group can<br>
+						for the winter and this group can<br>
 						live up to 9 months!
 					</li>
 					<!-- MIGRATE_NORTH -->
@@ -232,6 +240,7 @@
 						and continue migrating north.
 					</li>
 					<li>
+						<!-- TODO: this should be changed to match the new VO  -->
 						Click the four numbers to<br>
 						learn facts about<br>
 						Monarch's Lifespan.
@@ -240,7 +249,7 @@
 			</div>
 			<div pl-component="selectable">
 				<img class="hidden" src="media/_Images/S_4Generations/IMG_9.3.png">
-				<ul class="items" pl-bg="media/_Images/S_4Generations/IMG_9.2.png" pl-action="select()">
+				<ul class="items" pl-bg="media/_Images/S_4Generations/IMG_9.2.png" pl-action="select(target('li'))">
 					<li></li>
 					<li></li>
 					<li></li>
@@ -252,15 +261,21 @@
 
 	<!-- FLIP -->
 	<section id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<p>
-			Understanding these beautiful<br>
-			insects is the first step<br>
-			to making a difference.<br>
-			Here's your
-		</p>
-		<img src="media/_Images/_Flip/MON_FLIP_10.1.png">
-		<img src="media/_Images/_Flip/MON_FLIP_10.2.png">
-		<img src="media/_Images/_Flip/MON_FLIP_10.3.png">
+		<audio class="voice-over" src="media/_audio/S_Flip/VO_Flip.mp3" preload pl-required></audio>
+		<audio pl-id="shake" class="sfx" src="media/_audio/S_Flip/MON_SX_Shake.mp3" preload></audio>
+		<div class="group">
+			<p>
+				Understanding these beautiful<br>
+				insects is the first step<br>
+				to making a difference.<br>
+				Here's your
+			</p>
+			<div class="flip-container">
+				<img class="flip" src="media/_Images/_Flip/MON_FLIP_10.1.png">
+				<img class="monarch" src="media/_Images/_Flip/MON_FLIP_10.2.png">
+				<img class="animated pupa" src="media/_Images/_Flip/MON_FLIP_10.3.png">
+			</div>
+		</div>
 	</section>
 
 	<!-- QUIT -->
