@@ -1,16 +1,12 @@
 pl.game.component('screen-basic', function () {
 
-	this.ready = function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
-
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-				if (sfx) sfx.play();
-			}));
+	this.on('ready', function (_event) {
+		if (this.is(_event.target) && this.audio) {
+			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
+				_event.response(!_event.target.config("dontautoplay"));
+			});
 		}
-	};
+	});
 	
 	this.next = function () {
 		var current, nextScreen, buttonSound;
@@ -90,10 +86,11 @@ pl.game.component('screen-basic', function () {
 		var entities = this.hasOwnProperty('entities') && this.entities;
 
 		this.startAudio();
+		if (this.audio) this.audio.sfx.play('start');
 
 		if (entities) {
 			entities.forEach(function (_entity) {
-				if (_entity.hasOwnProperty('start')) _entity.start();
+				if (_entity.isMemberSafe('start')) _entity.start();
 			});
 		}
 
@@ -104,27 +101,28 @@ pl.game.component('screen-basic', function () {
 		var entities = this.hasOwnProperty('entities') && this.entities;
 
 		this.stopAudio();
+		this.kill('delay');
 
 		if (entities) {
 			entities.forEach(function (_entity) {
-				if (_entity.hasOwnProperty('start')) _entity.stop();
+				if (_entity.isMemberSafe('start')) _entity.stop();
 			});
 		}
 
 		return this;
 	};
 
+	this.complete = function () {
+		this.game.audio.sfx.screenComplete.play();
+		return this.proto();
+	};
+
 	this.on('ui-open', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.start();
-		}
+		if (this.isReady && this.is(_event.target)) this.start();
+		if (this.completed()) this.complete();
 
 		if(this.properties.gameClass) {
 			this.game.addClass(this.properties.gameClass);
-		}
-
-		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
-			this.complete();
 		}
 
 		if(this.properties.sfx) {
@@ -135,24 +133,12 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
-	this.on('ui-leave', function (_event) {
+	this.on('ui-leave ui-close', function (_event) {
 		if(this.properties.gameClass) {
 			this.game.removeClass(this.properties.gameClass);
 		}
 
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
-	});
-
-	this.on('ui-close', function (_event) {
-		if(this.properties.gameClass) {
-			this.game.removeClass(this.properties.gameClass);
-		}
-
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
+		if (this.isReady && this.is(_event.target)) this.stop();
 	});
 
 });

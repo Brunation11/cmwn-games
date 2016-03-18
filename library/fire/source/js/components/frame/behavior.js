@@ -1,18 +1,20 @@
 pl.game.component('frame', function () {
+
+	this.on('ready', function (_event) {
+		if (this.is(_event.target) && this.audio) {
+			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
+				_event.response(!_event.target.config("dontautoplay"));
+			});
+		}
+	});
 	
 	this.start = function () {
-		var voSound;
+		this.log('start');
+		return this.screen.start.call(this);
+	};
 
-		if (this.audio) {
-			this.audio.background.play();
-			voSound = this.audio.voiceOver[0];
-
-			if (voSound && !voSound.config("dontautoplay")) voSound.play();
-		}
-		
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
-
-		return this;
+	this.stop = function () {
+		return this.screen.stop.call(this);
 	};
 
 	this.on('ui-open', function (_event) {
