@@ -82,7 +82,7 @@ pl.game.component('runner', function () {
 
 		this.render = function () {
 			return {
-				drawImage: [this.image, this.position.x + this.margin, this.position.y, this.size.width, this.size.height]
+				drawImage: [this.image, this.position.x + this.margin, this.position.y + 25, this.size.width, this.size.height]
 			};
 		};
 
@@ -191,7 +191,7 @@ pl.game.component('runner', function () {
 
 		canvasSize = pl.Size
 			.create()
-			.set(width, 100);
+			.set(width, 125);
 
 		canvas.init(this.conveyor[0], canvasSize, this.game.zoom);
 
