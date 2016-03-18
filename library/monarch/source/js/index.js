@@ -79,6 +79,19 @@ pl.game('monarch', function () {
 		this.entity('selectable-reveal', function() {
 			this.start = function() {};
 
+			this.respond('select', function (_event) {
+				var index, stateMethod;
+
+				index = _event.message;
+				stateMethod = this.properties.selectState || 'select';
+
+				if (~index) {
+					this[stateMethod](_event.behaviorTarget);
+					if(this.audio.sfx.button) this.audio.sfx.button.play();
+					this.reveal.item(index);
+				}
+			});
+
 			this.entity('selectable', function () {
 				
 				this.shouldSelect = function (_$target) {

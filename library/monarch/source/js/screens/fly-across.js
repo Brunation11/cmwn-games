@@ -22,6 +22,7 @@ export default function flyAcross () {
 	this.entity('modal', function() {
 		this.close = function() {
 			if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+				if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
 				this.deselect();
 				this.screen.runner.restart();
 			}
