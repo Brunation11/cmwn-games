@@ -238,10 +238,11 @@ pl.game('fire', function () {
 							this.drop(_event.state.$draggable);
 							this.open(this[_event.state.$draggable.id()]);
 							this.open(this[_event.state.$draggable.id()+'Side']);
+							this.audio.sfx.correct.play();
 							if(this.isComplete) {
-								this.audio.sfx.complete.play();
-							} else {
-								this.audio.sfx.correct.play();
+								this.delay('.75s', function() {
+									this.audio.sfx.complete.play();
+								});
 							}
 							
 							return;
