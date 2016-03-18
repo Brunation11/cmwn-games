@@ -247,7 +247,9 @@ img.background {
 		cursor: pointer;
 	}
 
-	.DEMO .screen.alarm.VOICE-OVER .push-down {
+	.DEMO .screen.alarm.VOICE-OVER .push-down,
+	.DEMO .screen.who.VOICE-OVER ul,
+	.DEMO .screen.triangle.VOICE-OVER ul {
 		pointer-events: auto;
 	}
 
@@ -545,7 +547,7 @@ img.background {
 		display: none;
 	}
 
-	&.VOICE-OVER {
+	&.VOICE-OVER:not(.COMPLETE) {
 		.push-down {
 			pointer-events: none;
 		}
@@ -685,6 +687,12 @@ img.background {
 			}
 		}
 	}
+
+	&.VOICE-OVER:not(.COMPLETE) {
+		ul {
+			pointer-events: none;
+		}
+	}
 }
 
 .screen.men-and-women {
@@ -807,6 +815,12 @@ img.background {
 					}
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		ul {
+			pointer-events: none;
 		}
 	}
 }
