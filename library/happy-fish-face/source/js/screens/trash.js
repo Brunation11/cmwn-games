@@ -2,7 +2,7 @@
  * HFF - Trash Screen
  */
 export default function trash () {
-	this.SELECTER = {
+	this.SELECTOR = {
 		CORRECT: '[pl-correct]'
 	};
 
@@ -19,8 +19,22 @@ export default function trash () {
 		
 		this.$items = this
 			.selectable
-			.find(this.SELECTER.CORRECT);
+			.find(this.SELECTOR.CORRECT);
 		this.setup();
+
+		this.modal.reveal.audio.voiceOver.on('ended', function (_event) {
+			if (this.screen.state(this.STATE.OPEN)) {
+				switch (_event.target.id()) {
+					case 'goodJob':
+						this.audio.voiceOver.neverThrow.play();
+						break;
+
+					case 'neverThrow':
+						this.screen.complete();
+						break
+				}
+			}
+		}.bind(this.modal.reveal));
 	});
 
 	this.setup = function () {
@@ -29,7 +43,6 @@ export default function trash () {
 		correct.on('complete', this.bind(function () {
 			this.timer.stop();
 			this.modal.item('goodJob');
-			this.game.bgSound.pause();
 		}));
 
 		this.items = this
@@ -55,28 +68,12 @@ export default function trash () {
 
 	this.respond('select', function(_event) {
 		if(~this.items.correct.indexOf(_event.message)) {
-			this.playSound(this.audio.sfx.correct);
+			this.audio.sfx.correct.play();
 			this.highlight(_event.behaviorTarget);
 			this.items.correct.ready(_event.message);
 		} else {
-			this.playSound(this.audio.sfx.incorrect);
+			this.audio.sfx.incorrect.play();
 		}
-	});
-
-	this.entity('modal', function() {
-		this.entity('reveal', function() {
-			this.on('ready', function(_event) {
-				if (!this.is(_event.target)) return;
-
-				this.audio.voiceOver.goodJob.onended = function() {
-					if(this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(this.audio.voiceOver.neverThrow);
-				}.bind(this);
-
-				this.audio.voiceOver.neverThrow.onended = function() {
-					if(this.screen.state(this.screen.STATE.OPEN)) this.screen.complete();
-				}.bind(this);
-			});
-		});
 	});
 
 	this.entity('timer', function() {

@@ -14,7 +14,7 @@ export default function multiBubbles () {
 		correct = pl.Queue.create();
 
 		correct.on('complete', this.bind(function () {
-			this.playSound(this.game.audio.sfx.screenComplete);
+			this.game.audio.sfx.screenComplete.play();
 			this.complete();
 		}));
 
@@ -32,13 +32,13 @@ export default function multiBubbles () {
 
 	this.respond('select', function(_event) {
 		if(~this.items.correct.indexOf(_event.message)) {
-			this.playSound(this.audio.voiceOver[_event.message]);
+			this.audio.voiceOver.play(_event.message);
 			this.highlight(_event.behaviorTarget);
 			this.score.up(10);
 			this.items.correct.ready(_event.message);
 		} else {
 			this.score.down(10);
-			this.playSound(this.audio.sfx.incorrect);
+			this.audio.sfx.incorrect.play();
 		}
 	});
 }

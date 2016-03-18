@@ -3,8 +3,8 @@
  * @module
  */
 import './testPlatformIntegration';
-// import 'js-interactive-library';
-import '../../../../../js-interactive-library';
+import 'js-interactive-library';
+// import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -15,7 +15,6 @@ import trash from './screens/trash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/bubbles/behavior';
-import './components/frame/behavior';
 import './components/score/behavior';
 import './components/timer/behavior';
 import './components/reveal/behavior';
@@ -32,11 +31,7 @@ pl.game('happy-fish-face', function () {
 			this.game.addClass('garbage');
 		});
 
-		this.on('ui-close', function() {
-			this.game.removeClass('garbage');
-		});
-
-		this.on('ui-leave', function() {
+		this.on('ui-close ui-leave', function() {
 			this.game.removeClass('garbage');
 		});
 	};
@@ -52,7 +47,7 @@ pl.game('happy-fish-face', function () {
 			if (this.is(_event.target)) {
 				this.delay(0, function() {
 					this.open();
-					this.close($('#loader'));
+					this.close(this.game.loader);
 				});
 			}
 		});
@@ -75,9 +70,7 @@ pl.game('happy-fish-face', function () {
 			stateMethod = this.properties.selectState || 'select';
 
 			if(id != null) {
-				var sfx = this.audio.sfx[id];
-				if(sfx) this.playSound(sfx);
-
+				this.audio.sfx.play(id);
 				this[stateMethod](_event.behaviorTarget);
 				this.requiredQueue.ready('select');
 			}
@@ -117,13 +110,6 @@ pl.game('happy-fish-face', function () {
 	this.screen('clean-water', garbage);
 
 	this.screen('multi-bubbles', multiBubbles);
-
-	this.screen('pollutes-water', function() {
-		this.on('ui-open', function(_event) {
-			if(!this.is(_event.target)) return;
-			this.game.bgSound.pause();
-		});
-	});
 
 	this.screen('trash', trash);
 
