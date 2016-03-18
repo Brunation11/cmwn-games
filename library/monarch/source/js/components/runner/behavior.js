@@ -1,5 +1,5 @@
 pl.game.component('runner', function () {
-	var canvas, Flower, gameLoop, FLOWER, scale;
+	var canvas, Flower, gameLoop, FLOWER, scale, boundPulse;
 
 	FLOWER = {
 		ORANGE: "[pl-id=orange]",
@@ -37,7 +37,18 @@ pl.game.component('runner', function () {
 			}
 
 			this.lastRecycledFlower = _flower;
-		}
+		},
+
+		pulsePoint: 0,
+
+		pulse: function (_scope,_flower) {
+			// pulse flower
+			gameLoop.pulsePoint++;
+			_flower.position.x += gameLoop.pulsePoint % 40 > 20 ? 1 : -1;
+			_flower.position.y += gameLoop.pulsePoint % 40 > 20 ? 1 : -1;
+			_flower.size.width += gameLoop.pulsePoint % 40 > 20 ? -2 : 2;
+			_flower.size.height += gameLoop.pulsePoint % 40 > 20 ? -2 : 2;
+		},
 
 	};
 
@@ -233,6 +244,21 @@ pl.game.component('runner', function () {
 		});
 	};
 
+	this.pulse = function (_flower) {
+		if(gameLoop.pulsePoint >= 80) {
+			gameLoop.pulsePoint = 0;
+			this.eachFrame(boundPulse, false);
+		}
+
+		canvas.clear();
+
+		gameLoop.pulse(this,_flower);
+
+		this.flowers.forEach(function (_flower) {
+			canvas.draw(_flower);
+		});
+	};
+
 	this.testFlower = function () {
 		var target, flower, player;
 
@@ -295,7 +321,14 @@ pl.game.component('runner', function () {
 	});
 
 	this.behavior('landed', function (_flower) {
-		var id = _flower && _flower.id();
+		var id;
+
+		if(_flower) {
+			id = _flower.id();
+			boundPulse = this.pulse.bind(this,_flower);
+			this.eachFrame(boundPulse);
+		}
+
 		return {
 			message: id,
 			behaviorTarget: this.player
