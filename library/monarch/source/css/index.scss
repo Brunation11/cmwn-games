@@ -72,15 +72,15 @@ button {
 
 	&.next-screen,
 	&.prev-screen {
-		width: 100px;
+		width: 102px;
 		height: 82px;
 	}
 
 	&.next-screen {
-		background-position: -450px -17px;
+		background-position: -449px -17px;
 
 		&:hover {
-			background-position: -453px -181px;
+			background-position: -452px -181px;
 		}
 	}
 
