@@ -247,6 +247,10 @@ img.background {
 		cursor: pointer;
 	}
 
+	.DEMO .screen.alarm.VOICE-OVER .push-down {
+		pointer-events: auto;
+	}
+
 	.screen .next-screen:hover {
 		
 	}
@@ -539,6 +543,12 @@ img.background {
 
 	.next-screen {
 		display: none;
+	}
+
+	&.VOICE-OVER {
+		.push-down {
+			pointer-events: none;
+		}
 	}
 
 	&.OPEN {
@@ -1178,12 +1188,15 @@ img.background {
 								width: auto;
 								height: 50px;
 							}
-
-							&[pl-id=mask] p {
-								margin-top: 30px;
-							}
 						}
 					}
+				}
+
+				p {
+					position: absolute;
+					width: 520px;
+					top: 185px;
+					transform: translateY(-50%);
 				}
 				
 				button {
