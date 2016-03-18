@@ -91,6 +91,24 @@ pl.game('fire', function () {
 
 
 
+	var soundClasses = function() {
+		var classes = "";
+
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) {
+				id = id.toUpperCase()
+				this.addClass(id);
+				classes += " "+id;
+			}
+		});
+
+		this.on('ui-close', function() {
+			this.removeClass(classes);
+			classes = "";
+		});
+	};
+
 	this.screen('title', function () {
 		
 		this.on('ui-open', function (_event) {
@@ -112,6 +130,9 @@ pl.game('fire', function () {
 		});
 
 	});
+
+	this.screen('info-chemical', soundClasses);
+	this.screen('info-fuel-oxygen', soundClasses);
 
 	this.screen('alarm', function() {
 
@@ -271,7 +292,6 @@ pl.game('fire', function () {
 	});
 
 	this.screen('break-triangle', function() {
-
 		this.on('audio-play', function(_event) {
 			var id = _event.target.getAttribute('pl-id');
 			if(id) this.addClass(id.toUpperCase());
@@ -281,7 +301,6 @@ pl.game('fire', function () {
 			var id = _event.target.getAttribute('pl-id');
 			if(id) this.removeClass(id.toUpperCase());
 		});
-
 	});
 
 	this.screen('dress', function() {

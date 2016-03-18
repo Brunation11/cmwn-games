@@ -10,10 +10,6 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
 	cursor: default;
 }
@@ -362,27 +358,20 @@ img.background {
 	}
 
 	&.OPEN {
-		img {
-			&:nth-of-type(2) {
-				-webkit-animation-name: zoomInUp;
-				-webkit-animation-delay: 2s;
-				animation-name: zoomInUp;
-				animation-delay: 2s;
+		$items: flame equal text;
+		$animations: zoomInUp fadeInRightMedium fadeIn;
+
+		@for $i from 1 through 3 {
+			$item: nth($items,$i);
+
+			.#{$item} {
+				animation-name: nth($animations,$i);
+				animation-play-state: paused;
 			}
 
-			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 3s;
-				animation-name: fadeInRightBig;
-				animation-delay: 3s;
+			&.#{to-upper-case($item)} .#{$item} {
+				animation-play-state: running;
 			}
-		}
-
-		h2 {
-			-webkit-animation-name: fadeIn;
-			-webkit-animation-delay: 4s;
-			animation-name: fadeIn;
-			animation-delay: 4s;
 		}
 	}
 }
@@ -429,48 +418,20 @@ img.background {
 	}
 
 	&.OPEN {
-		img {
-			&:nth-of-type(1) {
-				-webkit-animation-name: bounceInDown;
-				-webkit-animation-delay: 4s;
-				animation-name: bounceInDown;
-				animation-delay: 4s;
+		$items: wood plus o2 equal fire;
+		$animations: bounceInDown fadeInRightMedium fadeInDown fadeInRightMedium zoomInUp fadeIn;
+
+		@for $i from 1 through 5 {
+			$item: nth($items,$i);
+
+			.#{$item} {
+				animation-name: nth($animations,$i);
+				animation-play-state: paused;
 			}
 
-			&:nth-of-type(2) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 4.75s;
-				animation-name: fadeInRightBig;
-				animation-delay: 4.75s;
+			&.#{to-upper-case($item)} .#{$item} {
+				animation-play-state: running;
 			}
-
-			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInDown;
-				-webkit-animation-delay: 5.5s;
-				animation-name: fadeInDown;
-				animation-delay: 5.5s;
-			}
-
-			&:nth-of-type(4) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 6.25s;
-				animation-name: fadeInRightBig;
-				animation-delay: 6.25s;
-			}
-
-			&:nth-of-type(5) {
-				-webkit-animation-name: zoomInUp;
-				-webkit-animation-delay: 7s;
-				animation-name: zoomInUp;
-				animation-delay: 7s;
-			}
-		}
-
-		h2 {
-			-webkit-animation-name: fadeIn;
-			-webkit-animation-delay: 2s;
-			animation-name: fadeIn;
-			animation-delay: 2s;
 		}
 	}
 }
@@ -487,12 +448,9 @@ img.background {
 
 	&.OPEN {
 		div {
-			-webkit-animation-name: fadeInUp;
 			animation-name: fadeInUp;
 
 			p {
-				-webkit-animation-name: fadeIn;
-				-webkit-animation-delay: 1s;
 				animation-name: fadeIn;
 				animation-delay: 1s;
 			}
@@ -561,7 +519,6 @@ img.background {
 		img {
 
 			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInUp;
 				animation-name: fadeInUp;
 			}
 		}
@@ -629,26 +586,21 @@ img.background {
 				.multiple-choice-component {
 					ul {
 						li {
-							-webkit-animation-name: faceInRightBig;
 							animation-name: fadeInRightBig;
 
 							&:nth-of-type(1) {
-								-webkit-animation-delay: 3s;
 								animation-delay: 3s;
 							}
 
 							&:nth-of-type(2) {
-								-webkit-animation-delay: 4s;
 								animation-delay: 4s;
 							}
 
 							&:nth-of-type(3) {
-								-webkit-animation-delay: 5s;
 								animation-delay: 5s;
 							}
 
 							&:nth-of-type(4) {
-								-webkit-animation-delay: 7s;
 								animation-delay: 7s;
 							}
 						}
@@ -678,14 +630,11 @@ img.background {
 
 			&.OPEN {
 				>img {
-					-webkit-animation-name: zoomIn;
 					animation-name: zoomIn;
-					-webkit-animation-delay: 1s;
 					animation-delay: 1s;
 				}
 
 				div {
-					-webkit-animation-name: faceInRightBig;
 					animation-name: fadeInRightBig;
 				}
 			}
@@ -730,7 +679,6 @@ img.background {
 	&.OPEN {
 		> img {
 			&:nth-of-type(2) {
-				-webkit-animation-name: zoomIn;
 				animation-name: zoomIn;
 			}
 		}
@@ -896,14 +844,11 @@ img.background {
 
 	&.OPEN {
 		>img {
-			-webkit-animation-name: zoomIn;
 			animation-name: zoomIn;
-			-webkit-animation-delay: 1s;
 			animation-delay: 1s;
 		}
 
 		div {
-			-webkit-animation-name: faceInRightBig;
 			animation-name: fadeInRightBig;
 		}
 	}
@@ -946,12 +891,10 @@ img.background {
 					.items {
 						li {
 							&:nth-of-type(1) {
-								-webkit-animation-name: fadeInLeftBig;
 								animation-name: fadeInLeftBig;
 							}
 
 							&:nth-of-type(2) {
-								-webkit-animation-name: fadeInRightBig;
 								animation-name: fadeInRightBig;
 							}
 						}
@@ -1006,23 +949,17 @@ img.background {
 					.items {
 						li {
 							&:nth-of-type(1) {
-								-webkit-animation-name: lightSpeedIn;
 								animation-name: lightSpeedIn;
-								-webkit-animation-delay: .5s;
 								animation-delay: .5s;
 							}
 
 							&:nth-of-type(2) {
-								-webkit-animation-name: lightSpeedIn;
 								animation-name: lightSpeedIn;
-								-webkit-animation-delay: 1s;
 								animation-delay: 1s;
 							}
 
 							&:nth-of-type(3) {
-								-webkit-animation-name: lightSpeedIn;
 								animation-name: lightSpeedIn;
-								-webkit-animation-delay: 1.5s;
 								animation-delay: 1.5s;
 							}
 						}
@@ -1475,7 +1412,6 @@ img.background {
 		color: transparent;
 		margin: 0;
 		display: block;
-		-webkit-animation: burn 1.5s linear infinite alternate;
 		animation: burn 1.5s linear infinite alternate;
 		-moz-animation: none;
 	}
@@ -1509,49 +1445,4 @@ img.background {
 canvas {
 	position: absolute;
 	z-index: -1;
-}
-
-@-webkit-keyframes vanishOut {
-  0% {
-    opacity: 1;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(1, 1);
-    -webkit-filter: blur(0px);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(2, 2);
-    -webkit-filter: blur(20px);
-  }
-}
-@keyframes vanishOut {
-  0% {
-    opacity: 1;
-    transform-origin: 50% 50%;
-    transform: scale(1, 1);
-    -webkit-filter: blur(0px);
-  }
-
-  100% {
-    opacity: 0;
-    transform-origin: 50% 50%;
-    transform: scale(2, 2);
-    -webkit-filter: blur(20px);
-  }
-}
-
-@keyframes burn {
-	0%   { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
-	45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
-	70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
-	100% { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
-}
-
-@-webkit-keyframes burn {
-	0%   { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
-	45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
-	70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
-	100% { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
 }
