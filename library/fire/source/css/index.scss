@@ -242,14 +242,18 @@ img.background {
 	}
 
 	.DEMO .screen .next-screen,
-	.screen.COMPLETE .next-screen {
+	.screen.COMPLETE .next-screen,
+	.DEMO .screen.dress.SFX .reveal-close,
+	.DEMO .screen.dress.VOICE-OVER .reveal-close {
 		opacity: 1;
 		cursor: pointer;
 	}
 
 	.DEMO .screen.alarm.VOICE-OVER .push-down,
 	.DEMO .screen.who.VOICE-OVER ul,
-	.DEMO .screen.triangle.VOICE-OVER ul {
+	.DEMO .screen.triangle.VOICE-OVER ul,
+	.DEMO .screen.dress.SFX .reveal-close,
+	.DEMO .screen.dress.VOICE-OVER .reveal-close {
 		pointer-events: auto;
 	}
 
@@ -833,7 +837,17 @@ img.background {
 		margin: 10px 0;
 	}
 
+	.images {
+		position: relative;
+		margin: 0 auto;
+		width: 400px;
+		height: 360px;
+	}
+
 	img {
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 400px;
 		margin: 0;
 	}
@@ -842,11 +856,18 @@ img.background {
 		margin: 0;
 	}
 
+	$items: fuel heat air;
+
+	@for $i from 1 through 3 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} .#{$item} {
+			animation-name: pulse;
+		}
+	}
+
 	&.OPEN {
-		img {
-			-webkit-animation-name: vanishOut;
+		.images {
 			animation-name: vanishOut;
-			-webkit-animation-delay: 9s;
 			animation-delay: 9s;
 		}
 	}
@@ -1217,6 +1238,7 @@ img.background {
 					position: absolute;
 					right: 40px;
 					bottom: 40px;
+					transition: opacity .5s;
 				}
 			}
 		}
@@ -1402,6 +1424,14 @@ img.background {
 					}
 				}
 			}
+		}
+	}
+
+	&.SFX,
+	&.VOICE-OVER {
+		.reveal-close {
+			pointer-events: none;
+			opacity: 0;
 		}
 	}
 }

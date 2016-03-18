@@ -17,6 +17,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/modal/behavior';
 import './components/reveal/behavior';
+import './components/audio-sequence/behavior';
 
 pl.game('fire', function () {
 
@@ -270,23 +271,16 @@ pl.game('fire', function () {
 
 	this.screen('break-triangle', function() {
 
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.heat) this.audio.voiceOver.heat.play();
-				}.bind(this);
-
-				this.audio.voiceOver.heat.onended = function() {
-					if(this.audio.voiceOver.air) this.audio.voiceOver.air.play();
-				}.bind(this);
-
-				this.audio.voiceOver.air.onended = function() {
-					if(this.audio.voiceOver.fuel) this.audio.voiceOver.fuel.play();
-				}.bind(this);
-			}
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) this.addClass(id.toUpperCase());
 		});
+
+		this.on('audio-ended', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) this.removeClass(id.toUpperCase());
+		});
+
 	});
 
 	this.screen('dress', function() {
