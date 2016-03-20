@@ -52,7 +52,7 @@ export default function carousel () {
 
 		this.game.audio.sfx.typing.play();
 		this.delay('3.5s', function() {
-			this.game.audio.sfx.typing.pause();
+			this.game.audio.sfx.typing.stop();
 		});
 	});
 
