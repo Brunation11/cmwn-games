@@ -89,7 +89,7 @@ pl.game.component('screen-basic', function () {
 	});
 
 	this.on('ui-leave ui-close', function (_event) {
-		if (!this.is(_event.target)) {
+		if (this.is(_event.target)) {
 			this.stop();
 
 			if (this.properties.gameClass) {
