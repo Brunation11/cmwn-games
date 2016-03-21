@@ -873,14 +873,23 @@ img.background {
 					justify-content: center;
 
 					li {
-						width: 191px;
-						height: 400px;
-						background-size: auto 100%;
-						background-position: left top;
+						width: 183px;
+						height: 384px;
+						background-size: 1200px;
+						background-repeat: no-repeat;
 						margin: 0 25px;
+						cursor: pointer;
 
-						&:hover {
-							background-position: right top;
+						$genders: female male;
+
+						@for $i from 1 through 2 {
+							&[pl-id=gender-#{nth($genders,$i)}] {
+								background-position: -409px 402-(422*$i)+px;
+
+								&:hover {
+									background-position: -609px 402-(422*$i)+px;
+								}
+							}
 						}
 					}
 				}
@@ -918,23 +927,22 @@ img.background {
 					justify-content: center;
 
 					li {
-						width: 191px;
-						height: 400px;
-						background-size: auto 100%;
-						background-position: left top;
+						width: 183px;
+						height: 384px;
 						margin: 0 25px;
-
+						cursor: pointer;
 						// I'm using background-image here because it can be changed depending on choices made in previous frames.
-						&:nth-of-type(1) {
-							background-image: url(../media/S_11/img_11.4.png);
-						}
+						background-image: url(../media/S_11/sprite_11.2.png);
+						background-size: 1200px;
 
-						&:nth-of-type(2) {
-							background-image: url(../media/S_11/img_11.2.png);
-						}
+						@for $i from 1 through 3 {
+							&:nth-of-type(#{$i}) {
+								background-position: #{391-(400*$i)+px} -20px;
 
-						&:nth-of-type(3) {
-							background-image: url(../media/S_11/img_11.5.png);
+								&:hover {
+									background-position: #{191-(400*$i)+px} -20px;
+								}
+							}
 						}
 
 						&:hover {
@@ -1040,73 +1048,25 @@ img.background {
 						top: 0;
 						width: 100%;
 						height: 100%;
-						background-size: 100% 100%;
 						opacity: 0;
 						transition: opacity .5s;
+						background-image: url(../media/S_12/sprite_12.5.png);
+						background-repeat: no-repeat;
+						background-size: 880px;
 
-						&.show {
-							opacity: 1;
-						}
-
-						&.bun {
-							background-image: url(../media/S_12/img_12.27a.png);
-						}
-
-						&.tank {
-							background-image: url(../media/S_12/img_12.27b.png);
-
-							&.straps {
-								background-image: url(../media/S_12/img_12.27j.png);
-							}
-						}
-
+						&.show,
 						&.body {
-							background-image: url(../media/S_12/img_12.27cM.png);
 							opacity: 1;
 						}
 
-						&.boots {
-							background-image: url(../media/S_12/img_12.27d.png);
-						}
+						$items:           bun tank straps body boots hood pants jacket gloves mask light  axe walkie punch camera;
+						$background-lefts:  0  220     -3  220   437  656    -3    218    439  658     0  440    220   660    440;
+						$background-tops: 405  405   1196    0   401  402   798    800    800  800  1600 1200   1589  1592   1592;
 
-						&.hood {
-							background-image: url(../media/S_12/img_12.27e.png);
-						}
-
-						&.pants {
-							background-image: url(../media/S_12/img_12.27f.png);
-						}
-
-						&.jacket {
-							background-image: url(../media/S_12/img_12.27g.png);
-						}
-
-						&.gloves {
-							background-image: url(../media/S_12/img_12.27h.png);
-						}
-
-						&.mask {
-							background-image: url(../media/S_12/img_12.27i.png);
-						}
-
-						&.light {
-							background-image: url(../media/S_12/img_12.27k.png);
-						}
-
-						&.axe {
-							background-image: url(../media/S_12/img_12.27n.png);
-						}
-
-						&.walkie {
-							background-image: url(../media/S_12/img_12.27l.png);
-						}
-
-						&.radio {
-							background-image: url(../media/S_12/img_12.27o.png);
-						}
-
-						&.punch {
-							background-image: url(../media/S_12/img_12.27p.png);
+						@for $i from 1 through 15 {
+							&.#{nth($items,$i)} {
+								background-position: #{-1*nth($background-lefts,$i)+px} #{-1*nth($background-tops,$i)+px};
+							}
 						}
 					}
 				}
@@ -1200,26 +1160,21 @@ img.background {
 						justify-content: center;
 
 						li {
-							width: 191px;
-							height: 400px;
-							background-size: auto 100%;
-							background-position: left top;
+							width: 183px;
+							height: 384px;
 							margin: 0 25px;
+							// I'm using background-image here because it can be changed depending on choices made in previous frames.
+							background-image: url(../media/S_11/sprite_11.2.png);
+							background-size: 1200px;
 
-							&:nth-of-type(1) {
-								background-image: url(../media/S_11/img_11.6.png);
-							}
+							@for $i from 1 through 3 {
+								&:nth-of-type(#{$i}) {
+									background-position: #{391-(400*$i)+px} -442px;
 
-							&:nth-of-type(2) {
-								background-image: url(../media/S_11/img_11.3.png);
-							}
-
-							&:nth-of-type(3) {
-								background-image: url(../media/S_11/img_11.7.png);
-							}
-
-							&:hover {
-								background-position: right top;
+									&:hover {
+										background-position: #{191-(400*$i)+px} -442px;
+									}
+								}
 							}
 						}
 					}
@@ -1233,96 +1188,19 @@ img.background {
 					.area {
 
 						div {
+							background-image: url(../media/S_12/sprite_12.6.png);
 
 							&.bun {
 								opacity: 0;
 							}
 
-							&.tank {
-								background-image: url(../media/S_12/img_12.28a.png);
+							$items:           tank straps boots hood pants jacket gloves mask light  axe walkie punch camera;
+							$background-lefts: 660    446     5  225   443    662      1  658    -3  222    440   220    660;
+							$background-tops:    0    797   401  402   401    402    800  800  1196 1195   1194   798   1200;
 
-								&.straps {
-									background-image: url(../media/S_12/img_12.28j.png);
-								}
-							}
-
-							&.body {
-								background-image: url(../media/S_12/img_12.28bM.png);
-							}
-
-							&.boots {
-								background-image: url(../media/S_12/img_12.28c.png);
-							}
-
-							&.hood {
-								background-image: url(../media/S_12/img_12.28d.png);
-							}
-
-							&.pants {
-								background-image: url(../media/S_12/img_12.28f.png);
-							}
-
-							&.jacket {
-								background-image: url(../media/S_12/img_12.28g.png);
-							}
-
-							&.gloves {
-								background-image: url(../media/S_12/img_12.28h.png);
-							}
-
-							&.mask {
-								background-image: url(../media/S_12/img_12.28k.png);
-							}
-
-							&.light {
-								background-image: url(../media/S_12/img_12.28l.png);
-							}
-
-							&.axe {
-								background-image: url(../media/S_12/img_12.28n.png);
-							}
-
-							&.walkie {
-								background-image: url(../media/S_12/img_12.28m.png);
-							}
-
-							&.radio {
-								background-image: url(../media/S_12/img_12.28o.png);
-							}
-
-							&.punch {
-								background-image: url(../media/S_12/img_12.28i.png);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		&.skin-light {
-			.slides-component {
-				.need {
-					.dropzone-component {
-						.area {
-							div {
-								&.body {
-									background-image: url(../media/S_12/img_12.28bL.png);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		&.skin-dark {
-			.slides-component {
-				.need {
-					.dropzone-component {
-						.area {
-							div {
-								&.body {
-									background-image: url(../media/S_12/img_12.28bD.png);
+							@for $i from 1 through 13 {
+								&.#{nth($items,$i)} {
+									background-position: #{-1*nth($background-lefts,$i)+px} #{-1*nth($background-tops,$i)+px};
 								}
 							}
 						}
@@ -1339,7 +1217,7 @@ img.background {
 					.area {
 						div {
 							&.body {
-								background-image: url(../media/S_12/img_12.27cL.png);
+								background-position: #{0px} #{0px};
 							}
 						}
 					}
@@ -1355,7 +1233,7 @@ img.background {
 					.area {
 						div {
 							&.body {
-								background-image: url(../media/S_12/img_12.27cD.png);
+								background-position: #{-440px} #{0px};
 							}
 						}
 					}

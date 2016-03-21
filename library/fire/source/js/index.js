@@ -324,6 +324,7 @@ pl.game('fire', function () {
 		this.respond('select', function(_event) {
 			// this removes any screen class that starts with the same thing as the event message
 			// and then adds the event message as a class to the screen
+			if(!_event.message) return;
 			var regexp = new RegExp("(^|\\s)"+_event.message.split("-")[0]+"-\\S+");
 			this.screen.removeClass(function(index, className) {
 				return (className.match(regexp) || []).join(' ');
