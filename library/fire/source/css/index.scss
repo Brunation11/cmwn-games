@@ -950,6 +950,10 @@ img.background {
 				width: 700px;
 				margin: 10px auto;
 				display: block;
+
+				&.hidden {
+					display: none;
+				}
 			}
 
 			.draggables {
