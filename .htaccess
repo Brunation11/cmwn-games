@@ -9,15 +9,12 @@ default-src \
  base-uri \
     https://*.changemyworldnow.com:*; \
  style-src \
-    'unsafe-inline' \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
     https://maxcdn.bootstrapcdn.com \
     https://cdnjs.cloudflare.com \
-    https://cdnjs.cloudflare.com; \
+    https://fonts.googleapis.com; \
  script-src \
-    'unsafe-eval' \
-    'unsafe-inline' \
     http://changemyworldnow.com:* \
     https://changemyworldnow.com:* \
     http://*.changemyworldnow.com:* \
@@ -36,7 +33,6 @@ default-src \
     https://*.changemyworldnow.com \
     https://widget.cloudinary.com \
     https://*.viddler.com; \
- frame-ancestors 'none'; \
  child-src \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
@@ -56,8 +52,17 @@ default-src \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
     https://cdnjs.cloudflare.com \
-    https://maxcdn.bootstrapcdn.com; \
+    https://maxcdn.bootstrapcdn.com \
+    https://fonts.googleapis.com; \
  img-src \
+    https://changemyworldnow.com:* \
+    https://*.changemyworldnow.com:* \
+    https://*.cloudinary.com \
+    https://*.bugsnag.com \
+    https://*.trackjs.com \
+    https://*.google-analytics.com \
+    http://*.cloudinary.com; \
+ media-src \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
     https://*.cloudinary.com \
@@ -73,12 +78,15 @@ default-src \
 # 1 year for all static assets
 <filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|bmp|css|swf|js|woff)$">
 Header set Cache-Control "max-age=31556926, public"
-Header always append X-Frame-Options DENY
 </filesMatch>
 
 # 4 hours for dynamic assets
 <filesMatch ".(html|htm|php)$">
 Header set Cache-Control "max-age=14400, must-revalidate"
-Header always append X-Frame-Options DENY
 </filesMatch>
 
+<FilesMatch "\.(ttf|ttc|otf|eot|woff)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
