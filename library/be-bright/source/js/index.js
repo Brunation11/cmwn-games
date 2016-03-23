@@ -72,6 +72,12 @@ pl.game('be-bright', function () {
 		};
 	});
 
+	this.screen('quit', function() {
+		this.on('ui-open', function() {
+			this.game.audio.sfx.button.play();
+		});
+	});
+
 	this.exit = function () {
 		var screen, eventCategory;
 

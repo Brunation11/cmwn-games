@@ -21,10 +21,12 @@ pl.game.component('screen-quit', function () {
 	};
 	
 	this.okay = function () {
+		this.game.audio.sfx.button.play();
 		this.game.exit();
 	};
 
 	this.cancel = function () {
+		this.game.audio.sfx.button.play();
 		this.leave();
 	};
 
