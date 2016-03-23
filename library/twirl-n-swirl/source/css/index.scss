@@ -63,9 +63,9 @@ img.hidden {
 	}
 
 	&.DEMO section .yes,
-	&.DEMO section.VOICE-OVER .yes,
+	&.DEMO section.VOICE-OVER:not(.COMPLETE) .yes,
 	&.DEMO section .next-screen,
-	&.DEMO section.VOICE-OVER .next-screen {
+	&.DEMO section.VOICE-OVER:not(.COMPLETE) .next-screen {
 		opacity: 1;
 		cursor: pointer;
 		pointer-events: auto;
