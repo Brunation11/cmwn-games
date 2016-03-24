@@ -48,17 +48,18 @@
 	<!-- SCREENS -->
 
 	<!-- S_TITLE -->
-	<section id="title" class="screen" pl-component="screen-title" pl-transclude="content">
-		<div class="title" pl-bg="media/_images/_Title/img_1.1.png"></div>
-		<div class="drop"></div>
+	<section id="title" class="screen" pl-component="screen-title" pl-transclude="content" pl-wallpaper="">
+		<audio class="background" src="media/_audio/_BKG/TI_BKG_1.mp3"></audio>
+		<div class="drop" pl-bg="media/_images/_Title/img_1.1.png"></div>
+		<div class="title animated" pl-required></div>
 		<div class="left"></div>
 		<div class="right"></div>
 	</section>
 
 	<!-- S_Precious -->
-	<section id="precious" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="drop"></div>
-		<div class="text">
+	<section id="precious" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
+		<img src="media/_images/S_Precious/img_2.1.png">
+		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				Water is one of<br> the world's most precious<br> limited resources!
 			</p>
@@ -66,9 +67,9 @@
 	</section>
 
 	<!-- S_NotToWaste -->
-	<section id="not-to-waste" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="drop"></div>
-		<div class="text">
+	<section id="not-to-waste" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
+		<img src="media/_images/S_Precious/img_2.1.png">
+		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				We know it's<br> important not to waste it…<br> but it's easy to forget.<br><br> That's where you come in!
 			</p>
@@ -76,8 +77,8 @@
 	</section>
 
 	<!-- S_RecyclingArts -->
-	<section id="recycling-arts" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="pallet"></div>
+	<section id="recycling-arts" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="RECYCLE">
+		<div class="pallet" pl-bg="media/_images/S_RecyclingArts/img_4.1.png"></div>
 		<p>
 			This is a<br> <span class="recycle inline"></span><br> project!
 		</p>

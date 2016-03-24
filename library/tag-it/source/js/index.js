@@ -24,6 +24,19 @@ import './components/modal/behavior';
 
 pl.game('tag-it', function () {
 
+	this.changeWallpaper = function(wallpaper) {
+		this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
+	};
+
+	this.screen('title', function() {
+		this.entity('.title', function() {
+			this.on('animationend', function(_event) {
+				if(!this.is(_event.target)) return;
+				this.complete();
+			});
+		});
+	});
+
 	this.screen('flip', function () {
 		this.next = function () {
 			this.game.quit.okay();

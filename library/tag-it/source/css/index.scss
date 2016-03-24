@@ -16,6 +16,7 @@ html, body {
 
 html {
 	font-family: $default-font;
+	font-weight: bold;
 	color: $text-color;
 }
 
@@ -27,6 +28,33 @@ body {
 	font-size: 20px;
 	background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
 	background-size: cover;
+
+	.background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		opacity: 0;
+		transition: opacity .5s;
+	}
+
+	$backgrounds: precious recycle steps scissors spread;
+
+	@for $i from 1 through 5 {
+		$background: nth($backgrounds,$i);
+
+		.background.#{$background} {
+			background-image: url(../media/_images/_BKG/BKG_#{$i+1}.png);
+		}
+
+		&.#{to-upper-case($background)} {
+			.background.#{$background} {
+				opacity: 1;
+			}
+		}
+	}
 }
 
 // preload assets
@@ -47,7 +75,7 @@ button {
 	cursor: pointer;
 
 	background-image: url(../media/_images/_Buttons/BU_1.png);
-	background-size: auto 300px;
+	background-size: 3750px;
 	background-position: left top;
 
 	&.close {
@@ -67,23 +95,33 @@ button {
 
 	&.next-screen,
 	&.prev-screen {
-		width: 70px;
-		height: 40px;
+		width: 90px;
+		height: 120px;
 	}
 
 	&.next-screen {
-		background-position: -340px -55px;
+		background-position: -760px 0px;
 
 		&:hover {
-			background-position: -340px -205px;
+			background-position: -760px -200px;
 		}
 	}
 
 	&.prev-screen {
-		background-position: -195px -55px;
+		background-position: -385px 0px;
 
 		&:hover {
-			background-position: -195px -205px;
+			background-position: -385px -200px;
+		}
+	}
+
+	&.play {
+		width: 280px;
+		height: 120px;
+		background-position: 0px 0px;
+
+		&:hover {
+			background-position: 0px -200px;
 		}
 	}
 
@@ -240,16 +278,6 @@ p {
 		
 	}
 
-.screen {
-	&.no-frame {
-		color: #fff;
-
-		.frame {
-			text-align: center;
-		}
-	}
-}
-
 // the following css is specific to this game
 
 .frame {
@@ -267,7 +295,115 @@ img.inline {
 }
 
 #title {
+	.group {
+		width: 960px;
+		height: 540px;
 
+		div {
+			background-image: url(../media/_images/_Title/img_1.1.png);
+			background-size: 3000px;
+			position: absolute;
+		}
+	}
+
+	$items: title left right drop;
+	$widths:  730 315 315 490;
+	$heights: 230 300 300 540;
+
+	@for $i from 1 through 4 {
+		.#{nth($items,$i)} {
+			width: nth($widths,$i)+px;
+			height: nth($heights,$i)+px;
+			background-position: #{750-(750*$i)+px} 0px;
+		}
+	}
+
+	.drop {
+		left: 235px;
+		bottom: 0;
+	}
+
+	.title {
+		left: 115px;
+		top: 50px;
+	}
+
+	.left {
+		left: 0;
+		bottom: 0;
+	}
+
+	.right {
+		right: 0;
+		bottom: 0;
+	}
+
+	.play {
+		margin: 0;
+		left: 340px;
+		bottom: 90px;
+	}
+
+	&.OPEN {
+		.title {
+			animation-name: rubberBand;
+		}
+	}
+}
+
+.screen.precious {
+	img {
+		position: absolute;
+		left: 40px;
+		height: 540px;
+	}
+
+	.text {
+		position: absolute;
+		right: 30px;
+		top: 50%;
+		transform: translateY(-50%);
+		background-size: 3900px;
+		width: 540px;
+		height: 270px;
+	}
+
+	p {
+		text-align: center;
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+#recycling-arts {
+	.pallet {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 480px;
+		height: 540px;
+		background-size: 1200px;
+	}
+
+	p {
+		position: absolute;
+		text-align: center;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.recycle {
+		background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
+		background-size: 1200px;
+		background-position: 600px 0px;
+		display: inline-block;
+		width: 600px;
+		height: 110px;
+		margin: -5px auto -15px;
+	}
 }
 
 #flip {

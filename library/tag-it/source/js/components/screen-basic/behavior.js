@@ -93,6 +93,10 @@ pl.game.component('screen-basic', function () {
 		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
 			this.complete();
 		}
+
+		if(typeof this.properties.wallpaper != 'undefined') {
+			this.game.changeWallpaper(this.properties.wallpaper);
+		}
 	});
 
 	this.on('ui-leave', function (_event) {
