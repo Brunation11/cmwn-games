@@ -13,6 +13,14 @@
 
 </head>
 <body id="tag-it">
+	<!-- GAME BACKGROUNDS -->
+	<div class="background precious"></div>
+	<div class="background recycle"></div>
+	<div class="background steps"></div>
+	<div class="background scissors"></div>
+	<div class="background spread"></div>
+
+	<!-- GAME LOADER -->
 	<div id="loader" class="center OPEN">
 		<div class="group">
 			<h2>Loading!</h2>
@@ -36,8 +44,6 @@
 
 	<audio pl-id="button" class="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" preload></audio>
 	<audio pl-id="screen-complete" class="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" preload></audio>
-
-	<!-- GAME BACKGROUNDS -->
 
 	<!-- SCREENS -->
 
@@ -87,7 +93,7 @@
 
 	<!-- S_Step1 -->
 	<section id="step-1" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<img src="media/_images/S_Reminder/img_6.1.png">
+		<img src="media/_images/S_Step1/img_6.1.png">
 		<p class="count">
 			Count how many faucets you have in your house.<br> Remember to include sinks, tubs, showers<br> and even outdoor spigots.
 		</p>
@@ -98,7 +104,7 @@
 
 	<!-- S_WhatFaucet -->
 	<section id="what-faucet" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-bg="media/_iamges/S_WhatFaucet/img_7.1.png"></div>
+		<div pl-bg="media/_images/S_WhatFaucet/img_7.1.png"></div>
 		<div pl-component="selectable">
 			<ul pl-action="select(target('li'))">
 				<li>Kitchen Faucet</li>
@@ -132,7 +138,7 @@
 
 	<!-- S_WhatNeed -->
 	<section id="what-need" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="left" pl-bg="media/images/S_WhatNeed/img_9.1.png"></div>
+		<div class="left" pl-bg="media/_images/S_WhatNeed/img_9.1.png"></div>
 		<div class="right">
 			<div></div>
 			<ul>
@@ -155,69 +161,157 @@
 
 	<!-- S_Step3 -->
 	<section id="step-3" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step3/img_11.1.png"></div>
+		<div class="text">
+			<p>
+				Choose a plastic lid and cut off the rim.
+			</p>
+			<span>
+				(The part that attaches to the body of the container.)
+			</span>
+		</div>
+		<div class="lids"></div>
 	</section>
 
 	<!-- S_Step4 -->
 	<section id="step-4" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step4/img_12.1.png"></div>
+		<p>
+			Check the faucet.<br><br> Determine how your tag<br> will fit on your faucet.
+		</p>
+		<div class="faucet"></div>
 	</section>
 
 	<!-- S_Step5 -->
 	<section id="step-5" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step5/img_13.1.png"></div>
+		<p class="text">
+			You may want to use a Sharpie<br> and trace a cup to create a guide<br> to cut out the center.<br>
+			<br>
+			Cut a straight line from anywhere<br> on the perimeter to the edge<br> where your circle will begin.<br>
+			<br>
+			Then cut around the circle until you<br> have the center of the plastic cut out
+		</p>
+		<div class="lid"></div>
+		<p class="tip hint">
+			Hint: Make sure to leave enough room to write your words.
+		</p>
 	</section>
 
 	<!-- S_Step6 -->
 	<section id="step-6" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step6/img_14.1.png"></div>
+		<p>
+			Test it on the faucet<br> to be sure it fits,<br> and that the faucet<br> is still useable.<br>
+			<br>
+			Make any<br> adjustments necessary.
+		</p>
+		<div class="faucet"></div>
 	</section>
 
 	<!-- S_Step7 -->
 	<section id="step-7" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step7/img_15.1.png"></div>
+		<p class="text">
+			Your tag can have any shape you<br> choose from round to scalloped edges.<br>
+			<br>
+			Cut the outside edge to create<br> whatever design you like.<br>
+			<br>
+			Let creativity be your guide.
+		</p>
+		<div class="lid"></div>
+		<p class="tip hint">
+			Hint: You can draw a template on paper and trace it if you like!
+		</p>
 	</section>
 
 	<!-- S_DecorateTag -->
 	<section id="decorate-tag" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<p pl-bg="media/_images/_Frames/FR_1.png">
+			Now you are ready<br> to decorate your tag!<br>
+			<br>
+			Be sure to layer old<br> newspapers on your<br> work-space so you don't<br> make a mess!
+		</p>
+		<img src="media/_images/S_ScissorsAndPaint/img_10.1.png">
 	</section>
 
 	<!-- S_Step8 -->
 	<section id="step-8" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step8/img_17.1.png"></div>
+		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
+			First, write your<br> <span>SAVE WATER</span> message<br> with a marker.
+			</p>
+		<div class="lid"></div>
+		<p class="tip hint">
+			Hint: Plan out your spacing before you write!
+		</p>
 	</section>
 
 	<!-- S_SelectPaint -->
 	<section id="select-paint" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
+			Select your<br> nail polish, markers or<br> acrylic paint.
+		</p>
+		<img src="media/_images/S_SelectPaint/img_18.1.png">
+		<p class="tip hint">
+			Hint: Be creative! Use bold colors to attract attention
+		</p>
 	</section>
 
 	<!-- S_Step9 -->
 	<section id="step-9" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="step" pl-bg="media/_images/S_Step9/img_19.1.png"></div>
+		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
+			Go over your guide<br> with nail polish,<br> paint or markers.<br>
+			<br>
+			Add fun designs!
+		</p>
+		<div class="lid"></div>
+		<p class="tip hint">
+			Hint: Apply in layers. Your color must dry between each layer.
+		</p>
 	</section>
 
 	<!-- S_All_Layers -->
 	<section id="all-layers" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
+			When all layers<br> of paint have dried,<br> you are ready to<br> place on the faucet.
+		</p>
+		<img src="media/_images/S_All_layers/img_20.1.png">
 	</section>
 
 	<!-- S_SpreadTheWord -->
 	<section id="spread-the-word" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<img src="media/_images/S_SpreadTheWord/img_21.1.png">
+		<p>
+			Gather the people in your house<br> and explain why you created<br> water-saver tags!
+		</p>
 	</section>
 
 	<!-- S_Tips -->
 	<section id="tips" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="tips" pl-bg="media/_images/S_Tips/img_22.1.png"></div>
+		<div class="lid-1"></div>
+		<div class="lid-2"></div>
+		<div class="lid-3"></div>
+		<ul>
+			<li>Use your creativity!</li>
+			<li>Try glow in the dark paint.</li>
+			<li>Use multiple colors to catch attention. </li>
+			<li>Create a theme, like flowers or superheroes.</li>
+			<li>Personalize for family members or rooms.</li>
+		</ul>
 	</section>
 
 	<!-- S_ShowYourStuff -->
 	<!-- omit screen for now -->
 	<!--
 	<section id="show-your-stuff" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<img src="media/_images/S_ShowYourStuff/img_23.1.png">
+		<p>
+			Upload a picture of your<br> water-saver tag on a faucet.
+		</p>
+		<button pl-id="update" pl-action="upload()"></button>
 	</section>
 	-->
 
@@ -225,7 +319,13 @@
 	<!-- omit screen for now -->
 	<!--
 	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<div class="image-frame" pl-bg="media/_images/_Frames/FR_1.png">
+			<img src="">
+		</div>
+		<div class="buttons">
+			<button pl-id="update" pl-action="upload()"></button>
+			<button pl-id="done" pl-action="next()"></button>
+		</div>
 	</section>
 	-->
 
@@ -233,28 +333,34 @@
 	<!-- omit screen for now -->
 	<!--
 	<section id="thanks-for-uploading" class="screen" pl-component="screen-basic" pl-transclude="content">
-		
+		<img src="media/_images/S_ThanksForUploading/img_24.1.png">
+		<p>
+			If you made multiple tags,<br> do you want to upload more images?
+		</p>
+		<div class="buttons">
+			<button pl-id="yes" pl-action="yes()"></button>
+			<button pl-id="no" pl-action="next()"></button>
+		</div>
 	</section>
 	-->
 
 	<!-- S_Flip -->
 	<section id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_Flip/TI_Flip.mp3" preload></audio>
-		<div class="frame">
-			<div>
-				<p>
-					You've just fingerprinted your way<br> to a brand new
-				</p>
-			</div>
+		<div class="drop" pl-bg="media/_images/_Flip/img_25.1.png">
+			<p>
+				Thank you for conserving water!
+				Every drop counts.
+			</p>
+			<div class="flip"></div>
 		</div>
 	</section>
 
 	<!-- S_Quit -->
 	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
 		<div class="center">
-			<div class="frame animated">
+			<div class="frame">
 				<h2>Are you sure you<br/>want to quit?</h2>
-				<h3>Your game progress will be saved.</h3>
 				<button class="quit-yes" pl-action="screen.okay()"></button>
 				<button class="quit-no" pl-action="screen.cancel()"></button>
 			</div>
