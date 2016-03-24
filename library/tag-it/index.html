@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tag IT</title>
+
+	<!-- inject:livereload -->
+	<!-- endinject -->
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
+
+</head>
+<body id="tag-it">
+	<div id="loader" class="center OPEN">
+		<div class="group">
+			<h2>Loading!</h2>
+			<div class="spinner animated">
+				<div class="spinner animated">
+					<div class="spinner animated"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Preloads game backgrounds -->
+	<div id="asset-bin">
+		<img src="media/_images/_BKG/BKG_1.png">
+		<img src="media/_images/_Buttons/BU_1.png">
+	</div>
+	
+	<!-- GLOBAL GAME ASSETS -->
+
+	<button class="close" pl-action="quit.open()"></button>
+
+	<audio pl-id="button" class="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" preload></audio>
+	<audio pl-id="screen-complete" class="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" preload></audio>
+
+	<!-- GAME BACKGROUNDS -->
+
+	<!-- SCREENS -->
+
+	<!-- S_TITLE -->
+	<section id="title" class="screen" pl-component="screen-title" pl-transclude="content">
+
+	</section>
+
+	<!-- S_Precious -->
+	<section id="precious" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_NotToWaste -->
+	<section id="not-to-waste" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_RecyclingArts -->
+	<section id="recycling-arts" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Reminder -->
+	<section id="reminder" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step1 -->
+	<section id="step-1" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_WhatFaucet -->
+	<section id="what-faucet" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step2 -->
+	<section id="step-2" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_WhatNeed -->
+	<section id="what-need" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_ScissorsAndPaint -->
+	<section id="scissors-and-paint" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step3 -->
+	<section id="step-3" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step4 -->
+	<section id="step-4" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step5 -->
+	<section id="step-5" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step6 -->
+	<section id="step-6" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step7 -->
+	<section id="step-7" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_DecorateTag -->
+	<section id="decorate-tag" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step8 -->
+	<section id="step-8" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_SelectPaint -->
+	<section id="select-paint" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Step9 -->
+	<section id="step-9" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_All_Layers -->
+	<section id="all-layers" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_SpreadTheWord -->
+	<section id="spread-the-word" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_Tips -->
+	<section id="tips" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+
+	<!-- S_ShowYourStuff -->
+	<!-- omit screen for now -->
+	<!--
+	<section id="show-your-stuff" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+	-->
+
+	<!-- S_Video -->
+	<!-- omit screen for now -->
+	<!--
+	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+	-->
+
+	<!-- S_ThanksForUploading -->
+	<!-- omit screen for now -->
+	<!--
+	<section id="thanks-for-uploading" class="screen" pl-component="screen-basic" pl-transclude="content">
+		
+	</section>
+	-->
+
+	<!-- S_Flip -->
+	<section id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/_audio/_Flip/TI_Flip.mp3" preload></audio>
+		<div class="frame">
+			<div>
+				<p>
+					You've just fingerprinted your way<br> to a brand new
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- S_Quit -->
+	<section id="quit" class="screen LEAVE LEAVE-END" pl-component="screen-quit" pl-skip>
+		<div class="center">
+			<div class="frame animated">
+				<h2>Are you sure you<br/>want to quit?</h2>
+				<h3>Your game progress will be saved.</h3>
+				<button class="quit-yes" pl-action="screen.okay()"></button>
+				<button class="quit-no" pl-action="screen.cancel()"></button>
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="ai.js"></script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-26000499-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>
+	

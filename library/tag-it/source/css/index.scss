@@ -1,0 +1,308 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	user-select: none;
+	cursor: default;
+}
+
+html {
+	font-family: $default-font;
+	color: $text-color;
+}
+
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	font-size: 20px;
+	background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
+	background-size: cover;
+}
+
+// preload assets
+#asset-bin {
+	display: none;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	font-family: inherit;
+	font-size: inherit;
+	color: transparent;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+
+	background-image: url(../media/_images/_Buttons/BU_1.png);
+	background-size: auto 300px;
+	background-position: left top;
+
+	&.close {
+		width: 36px;
+		height: 36px;
+		background-position: -508px -58px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin: 5px;
+		z-index: 2;
+
+		&:hover {
+			background-position: -508px -208px;
+		}
+	}
+
+	&.next-screen,
+	&.prev-screen {
+		width: 70px;
+		height: 40px;
+	}
+
+	&.next-screen {
+		background-position: -340px -55px;
+
+		&:hover {
+			background-position: -340px -205px;
+		}
+	}
+
+	&.prev-screen {
+		background-position: -195px -55px;
+
+		&:hover {
+			background-position: -195px -205px;
+		}
+	}
+
+	&.quit-yes {
+		width: 170px;
+		height: 90px;
+		background-size: auto 400px;
+		background-position: 387px 344px;
+
+		&:hover {
+			background-position: 387px 144px;
+		}
+	}
+
+	&.quit-no {
+		width: 170px;
+		height: 90px;
+		background-size: auto 400px;
+		background-position: 187px 344px;
+
+		&:hover {
+			background-position: 187px 144px;
+		}
+	}
+
+	&.reveal-close {
+		width: 30px;
+		height: 30px;
+		background-position: -660px 240px;
+		transition: opacity 1s;
+
+		&:hover {
+			background-position: -660px 390px;
+		}
+	}
+}
+
+h2 {
+	font-size: 50px;
+}
+
+h3 {
+	font-size: 36px;
+	margin: 0;
+}
+
+p {
+	font-size: 36px;
+	margin: 0;
+}
+
+.spinner {
+	position: relative;
+	width: 60%; height: 60%;
+	background: rgba(0,0,0,0.5);
+	border-radius: 50px;
+
+}
+
+.spinner > .spinner {
+	position: absolute;
+	top: 20%; left: 20%;
+}
+
+.spinner > .spinner > .spinner {
+
+}
+
+#loader {
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+
+#loader.OPEN {
+	opacity: 1;
+}
+
+#loader .group > .spinner {
+	width: 80px; height: 80px;
+	margin: auto;
+	animation: pulse 0.5s infinite;
+}
+
+.canvas-src { display: none; }
+
+.screen {
+	position: absolute;
+	top: 0; bottom: 0;
+	left: 0; right: 0;
+	opacity: 0;
+	display: none;
+	transition: opacity 1s, transform 0.5s;
+	transform: translateX(100%);
+}
+
+.screen.last {}
+
+.screen.OPEN {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.screen.READY {
+	display: block;
+}
+
+.screen.LEAVE {
+	opacity: 1;
+	transform: translateX(-100%);
+}
+
+	.screen .next-screen,
+	.screen .prev-screen {
+		position: absolute;
+		display: block;
+		bottom: 1%;
+		margin-bottom: 5px;
+		z-index: 2;
+	}
+
+	.screen .next-screen {
+		margin-right: 5px;
+		right: 0;
+		opacity: 0;
+		transform: rotate(-180deg);
+		transition: opacity 1s, transform 1s;
+	}
+
+	.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+	.screen.GATED .next-screen {
+		opacity: 0;
+		cursor: default;
+	}
+
+
+	.pl-game.DEMO .screen .next-screen,
+	.screen.COMPLETE .next-screen {
+		opacity: 1;
+		transform: rotate(0deg);
+		cursor: pointer;
+	}
+
+	.screen .next-screen:hover {
+		
+	}
+
+	.screen .prev-screen {
+		margin-left: 5px;
+		left: 0;
+		
+	}
+	
+	.screen .prev-screen:hover {
+		
+	}
+
+.screen {
+	&.no-frame {
+		color: #fff;
+
+		.frame {
+			text-align: center;
+		}
+	}
+}
+
+// the following css is specific to this game
+
+.frame {
+	position: relative;
+	text-align: center;
+	font-size: 40px;
+	line-height: 1.2;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+img.inline {
+	height: 56px;
+	vertical-align: middle;
+}
+
+#title {
+
+}
+
+#flip {
+
+}
+
+#quit {
+
+	.frame {
+		width: 720px;
+		height: 440px;
+		text-align: center;
+		padding: 70px 80px;
+
+		.background {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
+
+		h2 {
+			margin: 0;
+			font-size: $large;
+		}
+
+		h3 {
+			margin: 20px 0 10px;
+			font-size: $medium;
+		}
+
+		button {
+			margin: 20px 10px;
+		}
+	}
+}
