@@ -13,6 +13,7 @@ import './components/screen-basic/behavior';
 import './components/screen-title/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
+import './components/slides/behavior';
 import './components/frame/behavior';
 import './components/score/behavior';
 import './components/reveal/behavior';
@@ -34,6 +35,12 @@ pl.game('tag-it', function () {
 				if(!this.is(_event.target)) return;
 				this.complete();
 			});
+		});
+	});
+
+	this.screen('what-faucet', function() {
+		this.respond('select', function(_event) {
+			this.select(_event.behaviorTarget);
 		});
 	});
 

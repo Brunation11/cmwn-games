@@ -85,7 +85,7 @@
 	</section>
 
 	<!-- S_Reminder -->
-	<section id="reminder" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="reminder" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="RECYCLE">
 		<img src="media/_images/S_Reminder/img_5.1.png">
 		<p>
 			You're going to make reminder<br> tags to help you and your<br> family remember to save<br> the planet by not wasting water!
@@ -93,7 +93,7 @@
 	</section>
 
 	<!-- S_Step1 -->
-	<section id="step-1" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="step-1" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="STEPS">
 		<img src="media/_images/S_Step1/img_6.1.png">
 		<p class="count">
 			Count how many faucets you have in your house.<br> Remember to include sinks, tubs, showers<br> and even outdoor spigots.
@@ -105,40 +105,48 @@
 
 	<!-- S_WhatFaucet -->
 	<section id="what-faucet" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-bg="media/_images/S_WhatFaucet/img_7.1.png"></div>
+		<div class="question" pl-bg="media/_images/S_WhatFaucet/img_7.1.png"></div>
 		<div pl-component="selectable">
-			<ul pl-action="select(target('li'))">
+			<ul pl-action="select()">
 				<li>Kitchen Faucet</li>
-				<li>Bathroom Faucet</li>
-				<li>Classroom Faucet</li>
 				<li>Shower Faucet</li>
+				<li>Bathroom Faucet</li>
 				<li>Bathtub Faucet</li>
+				<li>Classroom Faucet</li>
 				<li>Outdoor Faucet</li>
 			</ul>
 		</div>
 	</section>
 
 	<!-- S_Step2 -->
-	<section id="step-2" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div pl-bg="media/_images/S_Step2/img_8.1.png"></div>
-		<p class="collect">
-			Collect empty plastic lids<br> that you would otherwise throw away.
-		</p>
-		<div class="images">
-			<div></div>
-			<div></div>
-			<div></div>
+	<section id="step-2" class="screen" pl-component="screen-basic">
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<div class="step" pl-bg="media/_images/S_Step2/img_8.1.png"></div>
+				<p class="collect">
+					Collect empty plastic lids<br> that you would otherwise throw away.
+				</p>
+				<div class="images">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+			<div pl-component="frame" class="tip round" pl-transclude="content">
+				<p>
+					Tip: Use plastic lids from products like cottage cheese,<br> yogurt or even take-out food containers.<br> Round works best.
+				</p>
+			</div>
+			<div pl-component="frame" class="tip size" pl-transclude="content">
+				<p>
+					Tip: You'll want to choose a size for your faucet that<br> is big enough to see but not too big to be in the way.
+				</p>
+			</div>
 		</div>
-		<p class="tip round">
-			Tip: Use plastic lids from products like cottage cheese, yogurt or even take-out food containers. Round works best.
-		</p>
-		<p class="tip size">
-			Tip: You'll want to choose a size for your faucet that is big enough to see but not too big to be in the way.
-		</p>
 	</section>
 
 	<!-- S_WhatNeed -->
-	<section id="what-need" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="what-need" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="STEPS">
 		<div class="left" pl-bg="media/_images/S_WhatNeed/img_9.1.png"></div>
 		<div class="right">
 			<div></div>
@@ -153,7 +161,7 @@
 	</section>
 
 	<!-- S_ScissorsAndPaint -->
-	<section id="scissors-and-paint" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="scissors-and-paint" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SCISSORS">
 		<img src="media/_images/S_ScissorsAndPaint/img_10.1.png">
 		<p>
 			Be sure to let<br> your parent or guardian<br> know that you will<br> be using scissors<br> and paint or nail polish.
@@ -274,7 +282,7 @@
 	</section>
 
 	<!-- S_All_Layers -->
-	<section id="all-layers" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="all-layers" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SCISSORS">
 		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			When all layers<br> of paint have dried,<br> you are ready to<br> place on the faucet.
 		</p>
@@ -282,7 +290,7 @@
 	</section>
 
 	<!-- S_SpreadTheWord -->
-	<section id="spread-the-word" class="screen" pl-component="screen-basic" pl-transclude="content">
+	<section id="spread-the-word" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SPREAD">
 		<img src="media/_images/S_SpreadTheWord/img_21.1.png">
 		<p>
 			Gather the people in your house<br> and explain why you created<br> water-saver tags!
