@@ -816,7 +816,14 @@ img.inline {
 }
 
 #step-7 {
-
+	.step {
+		position: absolute;
+		left: 45px;
+		top: 0;
+		background-size: 1800px;
+		width: 320px;
+		height: 130px;
+	}
 }
 
 #decorate-tag {
