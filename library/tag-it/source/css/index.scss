@@ -569,6 +569,11 @@ img.inline {
 	}
 }
 
+.slides-component {
+	width: 960px;
+	height: 540px
+}
+
 .frame-component.tip {
 	position: absolute;
 	left: 0;
@@ -602,27 +607,212 @@ img.inline {
 }
 
 #what-need {
+	.left {
+		position: absolute;
+		left: 0;
+		background-size: 1875px;
+		width: 400px;
+		height: 540px;
+	}
 
+	.right {
+		position: absolute;
+		right: 0;
+		top: 0;
+		background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+		background-size: 1875px;
+		background-position: -1250px 0px;
+		width: 607px;
+		height: 540px;
+		padding-left: 70px;
+
+		div {
+			background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+			background-size: 1875px;
+			background-position: -640px 0px;
+			width: 535px;
+			height: 110px;
+			margin: 40px auto 25px;
+		}
+	}
+
+	ul {
+		list-style-position: inside;
+		padding: 0;
+		margin: 0 auto;
+		font-size: $medium;
+		width: 280px;
+	}
+
+	li {
+		span {
+			position: relative;
+			left: -15px;
+		}
+	}
+
+	.tip {
+		padding: 24px 10px;
+	}
 }
 
 #scissors-and-paint {
+	img {
+		position: absolute;
+		left: 0;
+		top: 40px;
+		width: 500px;
+	}
 
+	p {
+		padding-left: 450px;
+	}
 }
 
 #step-3 {
+	.step {
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-size: 1950px;
+		width: 320px;
+		height: 130px;
+	}
 
+	.text {
+		background-image: url(../media/_images/S_Step3/img_11.1.png);
+		background-size: 1950px 360%;
+		background-position: -650px 0px;
+		padding: 10px;
+		margin-top: 130px;
+	}
+
+	p {
+		font-size: $medium;
+	}
+
+	span {
+		font-size: $small;
+	}
+
+	.lids {
+		background-image: url(../media/_images/S_Step3/img_11.1.png);
+		background-size: 1950px;
+		background-position: -1300px 0px;
+		width: 610px;
+		height: 330px;
+		margin-top: -240px;
+	}
 }
 
 #step-4 {
+	.step {
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-size: 1350px;
+		width: 320px;
+		height: 130px;
+	}
 
+	p {
+		position: absolute;
+		left: 50px;
+		top: 160px;
+		width: 400px;
+		background-image: url(../media/_images/S_Step4/img_12.1.png);
+		background-size: 1350px 190%;
+		background-position: -450px 0px;
+		padding: 20px 0;
+		font-size: $medium;
+	}
+
+	.faucet {
+		position: absolute;
+		right: 50px;
+		top: 80px;
+		width: 450px;
+		height: 380px;
+		background-image: url(../media/_images/S_Step4/img_12.1.png);
+		background-size: 1350px;
+		background-repeat: no-repeat;
+		background-position: -900px 0px;
+	}
 }
 
 #step-5 {
+	.step {
+		position: absolute;
+		left: 45px;
+		top: 0;
+		background-size: 1575px;
+		width: 320px;
+		height: 130px;
+	}
 
+	.text {
+		position: absolute;
+		left: 50px;
+		top: 110px;
+		width: 530px;
+		background-image: url(../media/_images/S_Step5/img_13.1.png);
+		background-size: 1575px 190%;
+		background-position: -525px 0px;
+		padding: 10px 20px;
+		font-size: $small;
+		line-height: 30px;
+		text-align: left;
+	}
+
+	.lid {
+		position: absolute;
+		right: 0;
+		top: 60px;
+		width: 315px;
+		height: 380px;
+		background-image: url(../media/_images/S_Step5/img_13.1.png);
+		background-size: 1575px;
+		background-position: -1040px 0px;
+	}
+
+	.tip p {
+		padding: 34px 10px;
+	}
 }
 
 #step-6 {
+	.step {
+		position: absolute;
+		left: 45px;
+		top: 0;
+		background-size: 1350px;
+		width: 320px;
+		height: 130px;
+	}
 
+	p {
+		position: absolute;
+		left: 50px;
+		top: 130px;
+		width: 420px;
+		background-image: url(../media/_images/S_Step6/img_14.1.png);
+		background-size: 1350px 140%;
+		background-position: -450px 0px;
+		padding: 10px 20px;
+		font-size: $medium;
+	}
+
+	.faucet {
+		position: absolute;
+		right: 60px;
+		top: 40px;
+		width: 450px;
+		height: 430px;
+		background-image: url(../media/_images/S_Step6/img_14.1.png);
+		background-repeat: no-repeat;
+		background-size: 1350px;
+		background-position: -900px 0px;
+	}
 }
 
 #step-7 {
@@ -656,7 +846,6 @@ img.inline {
 #tips {
 
 }
-
 
 #flip {
 

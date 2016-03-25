@@ -146,18 +146,26 @@
 	</section>
 
 	<!-- S_WhatNeed -->
-	<section id="what-need" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="STEPS">
-		<div class="left" pl-bg="media/_images/S_WhatNeed/img_9.1.png"></div>
-		<div class="right">
-			<div></div>
-			<ul>
-				<li>The plastic lids</li>
-				<li>Utility scissors</li>
-				<li>Markers</li>
-				<li>Colored nail polish<br> (or) acrylic paint</li>
-			</ul>
+	<section id="what-need" class="screen" pl-component="screen-basic" pl-wallpaper="STEPS">
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<div class="left" pl-bg="media/_images/S_WhatNeed/img_9.1.png"></div>
+				<div class="right">
+					<div></div>
+					<ul>
+						<li><span>The plastic lids</span></li>
+						<li><span>Utility scissors</span></li>
+						<li><span>Markers</span></li>
+						<li><span>Colored nail polish<br>&nbsp; (or) acrylic paint</span></li>
+					</ul>
+				</div>
+			</div>
+			<div pl-component="frame" pl-transclude="content" class="tip">
+				<p>
+					Note: Paint, polish and markers must be waterproof.
+				</p>
+			</div>
 		</div>
-		<p class="tip">Note: Paint, polish and markers must be waterproof.</p>
 	</section>
 
 	<!-- S_ScissorsAndPaint -->
@@ -192,19 +200,25 @@
 	</section>
 
 	<!-- S_Step5 -->
-	<section id="step-5" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<div class="step" pl-bg="media/_images/S_Step5/img_13.1.png"></div>
-		<p class="text">
-			You may want to use a Sharpie<br> and trace a cup to create a guide<br> to cut out the center.<br>
-			<br>
-			Cut a straight line from anywhere<br> on the perimeter to the edge<br> where your circle will begin.<br>
-			<br>
-			Then cut around the circle until you<br> have the center of the plastic cut out
-		</p>
-		<div class="lid"></div>
-		<p class="tip hint">
-			Hint: Make sure to leave enough room to write your words.
-		</p>
+	<section id="step-5" class="screen" pl-component="screen-basic">
+		<div pl-component="slides">
+			<div pl-component="frame" pl-transclude="content">
+				<div class="step" pl-bg="media/_images/S_Step5/img_13.1.png"></div>
+				<p class="text">
+					You may want to use a Sharpie<br> and trace a cup to create a guide<br> to cut out the center.<br>
+					<br>
+					Cut a straight line from anywhere<br> on the perimeter to the edge<br> where your circle will begin.<br>
+					<br>
+					Then cut around the circle until you<br> have the center of the plastic cut out
+				</p>
+				<div class="lid"></div>
+			</div>
+			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<p>
+					Hint: Make sure to leave enough room to write your words.
+				</p>
+			</div>
+		</div>
 	</section>
 
 	<!-- S_Step6 -->
