@@ -24,11 +24,13 @@ import './components/modal/behavior';
 
 pl.game('tag-it', function () {
 
+	var audioClasses, audioScreens, screenName;
+
 	this.changeWallpaper = function(wallpaper) {
 		this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
 	};
 
-	var audioClasses = function() {
+	audioClasses = function() {
 		var classes = "";
 
 		this.on('audio-play', function(_event) {
@@ -44,13 +46,19 @@ pl.game('tag-it', function () {
 		});
 	};
 
-	this.screen('step-1', audioClasses);
-
 	this.screen('what-faucet', function() {
+		audioClasses.call(this);
+
 		this.respond('select', function(_event) {
 			this.select(_event.behaviorTarget);
 		});
 	});
+
+	audioScreens = ['step-1', 'step-2', 'what-need'];
+
+	for(screenName in audioScreens) {
+		this.screen(screenName, audioClasses);
+	}
 
 	this.screen('flip', function () {
 		this.next = function () {
@@ -64,6 +72,5 @@ pl.game('tag-it', function () {
 			if(vo) vo.play();
 		});
 	});
-
 
 });

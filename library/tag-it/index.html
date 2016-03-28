@@ -61,7 +61,7 @@
 	<section id="precious" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
 		<audio class="background" src="media/_audio/_BKG/TI_BKG_2.mp3"></audio>
 		<audio class="voice-over" src="media/_audio/S_Precious/VO_Precious.mp3" pl-required></audio>
-		<img src="media/_images/S_Precious/img_2.1.png">
+		<img class="animated" src="media/_images/S_Precious/img_2.1.png">
 		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				Water is one of<br> the world's most precious<br> limited resources!
@@ -73,7 +73,7 @@
 	<section id="not-to-waste" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
 		<audio class="background" src="media/_audio/_BKG/TI_BKG_3.mp3"></audio>
 		<audio class="voice-over" src="media/_audio/S_NotToWaste/VO_NotToWaste.mp3" pl-required></audio>
-		<img src="media/_images/S_Precious/img_2.1.png">
+		<img class="animated" src="media/_images/S_Precious/img_2.1.png">
 		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				We know it's<br> important not to waste it…<br> but it's easy to forget.<br><br> That's where you come in!
@@ -184,6 +184,13 @@
 	<section id="what-need" class="screen" pl-component="screen-basic" pl-wallpaper="STEPS">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio pl-id="what-need" class="voice-over" src="media/_audio/S_WhatNeed/VO_WhatNeed.mp3" pl-required></audio>
+					<audio pl-id="lids" class="voice-over" src="media/_audio/S_WhatNeed/VO_Lids.mp3" pl-required></audio>
+					<audio pl-id="scissors" class="voice-over" src="media/_audio/S_WhatNeed/VO_Scissors.mp3" pl-required></audio>
+					<audio pl-id="markers" class="voice-over" src="media/_audio/S_WhatNeed/VO_Markers.mp3" pl-required></audio>
+					<audio pl-id="polish" class="voice-over" src="media/_audio/S_WhatNeed/VO_Polish.mp3" pl-required></audio>
+				</div>
 				<div class="left" pl-bg="media/_images/S_WhatNeed/img_9.1.png"></div>
 				<div class="right">
 					<div></div>
@@ -196,6 +203,7 @@
 				</div>
 			</div>
 			<div pl-component="frame" pl-transclude="content" class="tip">
+				<audio class="voice-over" src="media/_audio/S_WhatNeed/VO_Note_WN.mp3" pl-required></audio>
 				<p>
 					Note: Paint, polish and markers must be waterproof.
 				</p>
@@ -205,6 +213,10 @@
 
 	<!-- S_ScissorsAndPaint -->
 	<section id="scissors-and-paint" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SCISSORS">
+		<div pl-component="audio-sequence">
+			<audio class="sfx" src="media/_audio/_Reveals/TI_RV_7.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_ScissorsAndPaint/VO_ScissorsAndPaint.mp3" pl-required></audio>
+		</div>
 		<img src="media/_images/S_ScissorsAndPaint/img_10.1.png">
 		<p>
 			Be sure to let<br> your parent or guardian<br> know that you will<br> be using scissors<br> and paint or nail polish.
@@ -213,6 +225,11 @@
 
 	<!-- S_Step3 -->
 	<section id="step-3" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="audio-sequence">
+			<audio class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Step3/VO_Step3.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Step3/VO_ChooseA.mp3" pl-required></audio>
+		</div>
 		<div class="step" pl-bg="media/_images/S_Step3/img_11.1.png"></div>
 		<div class="text">
 			<p>
@@ -227,6 +244,11 @@
 
 	<!-- S_Step4 -->
 	<section id="step-4" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="audio-sequence">
+			<audio pl-id="step" class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+			<audio pl-id="step-4" class="voice-over" src="media/_audio/S_Step4/VO_Step4.mp3" pl-required></audio>
+			<audio pl-id="check-the" class="voice-over" src="media/_audio/S_Step4/VO_CheckThe.mp3" pl-required></audio>
+		</div>
 		<div class="step" pl-bg="media/_images/S_Step4/img_12.1.png"></div>
 		<p>
 			Check the faucet.<br><br> Determine how your tag<br> will fit on your faucet.
@@ -238,17 +260,23 @@
 	<section id="step-5" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio pl-id="step" class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+					<audio pl-id="step-5" class="voice-over" src="media/_audio/S_Step5/VO_Step5.mp3" pl-required></audio>
+					<audio pl-id="you-may" class="voice-over" src="media/_audio/S_Step5/VO_YouMay.mp3" pl-required></audio>
+				</div>
 				<div class="step" pl-bg="media/_images/S_Step5/img_13.1.png"></div>
 				<p class="text">
 					You may want to use a Sharpie<br> and trace a cup to create a guide<br> to cut out the center.<br>
 					<br>
 					Cut a straight line from anywhere<br> on the perimeter to the edge<br> where your circle will begin.<br>
 					<br>
-					Then cut around the circle until you<br> have the center of the plastic cut out
+					Then cut around the circle until you<br> have the center of the plastic cut out.
 				</p>
 				<div class="lid"></div>
 			</div>
 			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<audio class="voice-over" src="media/_audio/S_Step5/VO_MakeSure.mp3"></audio>
 				<p>
 					Hint: Make sure to leave enough room to write your words.
 				</p>
@@ -258,6 +286,11 @@
 
 	<!-- S_Step6 -->
 	<section id="step-6" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="audio-sequence">
+			<audio pl-id="step" class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+			<audio pl-id="step-6" class="voice-over" src="media/_audio/S_Step6/VO_Step6.mp3" pl-required></audio>
+			<audio pl-id="test-it" class="voice-over" src="media/_audio/S_Step6/VO_TestIt.mp3" pl-required></audio>
+		</div>
 		<div class="step" pl-bg="media/_images/S_Step6/img_14.1.png"></div>
 		<p>
 			Test it on the faucet<br> to be sure it fits,<br> and that the faucet<br> is still useable.<br>
@@ -271,6 +304,11 @@
 	<section id="step-7" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio pl-id="step" class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+					<audio pl-id="step-7" class="voice-over" src="media/_audio/S_Step7/VO_Step7.mp3" pl-required></audio>
+					<audio pl-id="test-it" class="voice-over" src="media/_audio/S_Step7/VO_YourTag.mp3" pl-required></audio>
+				</div>
 				<div class="step" pl-bg="media/_images/S_Step7/img_15.1.png"></div>
 				<p class="text">
 					Your tag can have any shape you<br> choose from round to scalloped edges.<br>
@@ -281,7 +319,11 @@
 				</p>
 				<div class="lid"></div>
 			</div>
-			<div  class="tip hint" pl-component="frame" pl-transclude="content">
+			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step7/VO_HintYouCan.mp3" pl-required></audio>
+				</div>
 				<p>
 					Hint: You can draw a template on paper and trace it if you like!
 				</p>
@@ -291,6 +333,10 @@
 
 	<!-- S_DecorateTag -->
 	<section id="decorate-tag" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="audio-sequence">
+			<audio pl-id="notice" class="sfx" src="media/_audio/_Reveals/TI_RV_7.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_DecorateTag/VO_NowYou.mp3" pl-required></audio>
+		</div>
 		<p pl-bg="media/_images/_Frames/FR_1.png">
 			Now you are ready<br> to decorate your tag!<br>
 			<br>
@@ -303,6 +349,11 @@
 	<section id="step-8" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step8/VO_Step8.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step8/VO_First.mp3" pl-required></audio>
+				</div>
 				<div class="step" pl-bg="media/_images/S_Step8/img_17.1.png"></div>
 				<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 					First, write your<br> <span>SAVE WATER</span> message<br> with a marker.
@@ -310,6 +361,10 @@
 				<div class="lid"></div>
 			</div>
 			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step8/VO_HintPlan.mp3" pl-required></audio>
+				</div>
 				<p>
 					Hint: Plan out your spacing before you write!
 				</p>
@@ -320,12 +375,20 @@
 	<section id="select-paint" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio pl-id="brush" class="sfx" src="media/_audio/_Reveals/TI_RV_6.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_SelectPaint/VO_SelectYour.mp3" pl-required></audio>
+				</div>
 				<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 					Select your<br> nail polish, markers or<br> acrylic paint.
 				</p>
 				<img src="media/_images/S_SelectPaint/img_18.1.png">
 			</div>
 			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_SelectPaint/VO_BeCreative.mp3" pl-required></audio>
+				</div>
 				<p>
 					Hint: Be creative! Use bold colors to attract attention
 				</p>
@@ -337,6 +400,11 @@
 	<section id="step-9" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
 			<div pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step9/VO_Step9.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step9/VO_GoOver.mp3" pl-required></audio>
+				</div>
 				<div class="step" pl-bg="media/_images/S_Step9/img_19.1.png"></div>
 				<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 					Go over your guide<br> with nail polish,<br> paint or markers.<br>
@@ -346,6 +414,10 @@
 				<div class="lid"></div>
 			</div>
 			<div class="tip hint" pl-component="frame" pl-transclude="content">
+				<div pl-component="audio-sequence">
+					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
+					<audio class="voice-over" src="media/_audio/S_Step9/VO_HintApply.mp3" pl-required></audio>
+				</div>
 				<p>
 					Hint: Apply in layers. Your color must dry between each layer.
 				</p>
@@ -355,6 +427,7 @@
 
 	<!-- S_All_Layers -->
 	<section id="all-layers" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SCISSORS">
+		<audio class="voice-over" src="media/_audio/S_All_Layers/VO_WhenAll.mp3" pl-required></audio>
 		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			When all layers<br> of paint have dried,<br> you are ready to<br> place on the faucet.
 		</p>
@@ -363,6 +436,10 @@
 
 	<!-- S_SpreadTheWord -->
 	<section id="spread-the-word" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="SPREAD">
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/_audio/S_SpreadTheWord/VO_NowThat.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_SpreadTheWord/VO_GatherThe.mp3" pl-required></audio>
+		</div>
 		<img src="media/_images/S_SpreadTheWord/img_21.1.png">
 		<p>
 			Gather the people in your house<br> and explain why you created<br> water-saver tags!
@@ -371,6 +448,16 @@
 
 	<!-- S_Tips -->
 	<section id="tips" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<div pl-component="audio-sequence">
+			<audio class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_Tips.mp3" pl-required></audio>
+			<audio class="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_UseYour.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_TryGlow.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_UseMultiple.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_Create.mp3" pl-required></audio>
+			<audio class="voice-over" src="media/_audio/S_Tips/VO_Personalize.mp3" pl-required></audio>
+		</div>
 		<div class="tips" pl-bg="media/_images/S_Tips/img_22.1.png"></div>
 		<div class="lid-1"></div>
 		<div class="lid-2"></div>
@@ -427,7 +514,10 @@
 
 	<!-- S_Flip -->
 	<section id="flip" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<audio class="background" src="media/_audio/_Flip/TI_Flip.mp3" preload></audio>
+		<div pl-component="audio-sequence">
+			<audio class="voice-over" src="media/_audio/S_Flip/VO_Flip.mp3" pl-required></audio>
+			<audio pl-id="flip" class="sfx" src="media/_audio/_Flip/TI_Flip.mp3" preload></audio>
+		</div>
 		<div class="drop" pl-bg="media/_images/_Flip/img_25.1.png"></div>
 		<p>
 			Thank you for conserving water!<br>
