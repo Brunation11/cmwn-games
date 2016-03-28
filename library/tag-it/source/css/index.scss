@@ -735,6 +735,9 @@ img.inline {
 	}
 
 	li {
+		opacity: 0;
+		transition: opacity .5s;
+
 		span {
 			position: relative;
 			left: -15px;
@@ -743,6 +746,30 @@ img.inline {
 
 	.tip {
 		padding: 24px 10px;
+	}
+
+	$items: lids scissors markers polish;
+
+	@for $i from 1 through 4 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} {
+			.#{$item} {
+				opacity: 1;
+				animation-name: slideInRight;
+			}
+		}
+	}
+
+	&.WHAT-NEED {
+		.right div {
+			animation-name: fadeInRightBig;
+		}
+	}
+
+	&.OPEN {
+		.left {
+			animation-name: slideInLeft;
+		}
 	}
 }
 
@@ -756,6 +783,12 @@ img.inline {
 
 	p {
 		padding-left: 450px;
+	}
+
+	&.OPEN {
+		img {
+			animation-name: zoomIn;
+		}
 	}
 }
 
@@ -793,6 +826,12 @@ img.inline {
 		height: 330px;
 		margin-top: -240px;
 	}
+
+	&.OPEN {
+		.lids {
+			animation-name: fadeInLeftBig;
+		}
+	}
 }
 
 #step-4 {
@@ -827,6 +866,12 @@ img.inline {
 		background-size: 1350px;
 		background-repeat: no-repeat;
 		background-position: -900px 0px;
+	}
+
+	&.OPEN {
+		.faucet {
+			animation-name: fadeInLeftBig;
+		}
 	}
 }
 
@@ -863,6 +908,12 @@ img.inline {
 		background-image: url(../media/_images/S_Step5/img_13.1.png);
 		background-size: 1575px;
 		background-position: -1040px 0px;
+	}
+
+	&.OPEN {
+		.step {
+			animation-name: fadeInLeftBig;
+		}
 	}
 }
 
