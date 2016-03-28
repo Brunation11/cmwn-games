@@ -257,7 +257,8 @@ p {
 
 
 	.pl-game.DEMO .screen .next-screen,
-	.screen.COMPLETE .next-screen {
+	.screen.COMPLETE .next-screen,
+	.frame-component.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);
 		cursor: pointer;
@@ -376,6 +377,13 @@ img.inline {
 		top: 50%;
 		transform: translateY(-50%);
 	}
+
+	&.OPEN {
+		img {
+			animation-delay: .5s;
+			animation-name: jello;
+		}
+	}
 }
 
 #recycling-arts {
@@ -405,6 +413,17 @@ img.inline {
 		height: 110px;
 		margin: -5px auto -15px;
 	}
+
+	&.OPEN {
+		.pallet {
+			animation-name: zoomInLeft;
+		}
+
+		.recycle {
+			animation-delay: .8s;
+			animation-name: tada;
+		}
+	}
 }
 
 #reminder {
@@ -417,6 +436,12 @@ img.inline {
 
 	p {
 		text-align: center;
+	}
+
+	&.OPEN {
+		img {
+			animation-name: slideInUp;
+		}
 	}
 }
 
@@ -446,6 +471,19 @@ img.inline {
 		left: 180px;
 		bottom: 12.5%;
 		width: 800px;
+		opacity: 0;
+	}
+
+	&.OPEN {
+		img {
+			animation-name: fadeInLeftBig;
+		}
+	}
+
+	&.YOU-CAN {
+		.start {
+			animation-name: fadeInRightBig;
+		}
 	}
 }
 
@@ -478,6 +516,8 @@ img.inline {
 		text-align: left;
 		cursor: pointer;
 		float: left;
+		opacity: 0;
+		transition: opacity .5s;
 
 		&:before {
 			content: "";
@@ -506,6 +546,24 @@ img.inline {
 			background-size: 1700px;
 			background-repeat: no-repeat;
 			background-position: -826px 28px;
+		}
+	}
+
+	$items: kitchen shower bathroom bathtub classroom outdoor;
+
+	@for $i from 1 through 6 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} {
+			li.#{$item} {
+				opacity: 1;
+				animation-name: slideInRight;
+			}
+		}
+	}
+
+	&.VOICE-OVER {
+		ul {
+			pointer-events: none;
 		}
 	}
 }
@@ -541,6 +599,7 @@ img.inline {
 			background-size: 5000px;
 			width: 240px;
 			height: 240px;
+			opacity: 0;
 
 			$widths:  240 300 210;
 			$heights: 190 200 220;
@@ -557,6 +616,18 @@ img.inline {
 
 	.size {
 		padding: 14px 10px;
+	}
+
+	$items: step container-1 container-2 container-3;
+	$directions: Left Right Right Right;
+
+	@for $i from 1 through 4 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} {
+			.#{$item} {
+				animation-name: fadeIn#{nth($directions,$i)}Big;
+			}
+		}
 	}
 }
 

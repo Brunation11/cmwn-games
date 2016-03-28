@@ -84,16 +84,19 @@
 	<!-- S_RecyclingArts -->
 	<section id="recycling-arts" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="RECYCLE">
 		<audio class="voice-over" src="media/_audio/S_RecyclingArts/VO_RecyclingArt.mp3" pl-required></audio>
-		<div class="pallet" pl-bg="media/_images/S_RecyclingArts/img_4.1.png"></div>
+		<div pl-component="audio-sequence">
+			<audio pl-delay=".8s" class="sfx" src="media/_audio/S_RecyclingArts/TI_Recycling.mp3" pl-required></audio>
+		</div>
+		<div class="pallet animated" pl-bg="media/_images/S_RecyclingArts/img_4.1.png"></div>
 		<p>
-			This is a<br> <span class="recycle inline"></span><br> project!
+			This is a<br> <span class="recycle inline animated"></span><br> project!
 		</p>
 	</section>
 
 	<!-- S_Reminder -->
 	<section id="reminder" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="RECYCLE">
 		<audio class="voice-over" src="media/_audio/S_Reminder/VO_Reminder.mp3" pl-required></audio>
-		<img src="media/_images/S_Reminder/img_5.1.png">
+		<img class="animated" src="media/_images/S_Reminder/img_5.1.png">
 		<p>
 			You're going to make reminder<br> tags to help you and your<br> family remember to save<br> the planet by not wasting water!
 		</p>
@@ -106,17 +109,18 @@
 			<audio pl-id="count" class="voice-over" src="media/_audio/S_Step1/VO_CountHow.mp3" pl-required></audio>
 			<audio pl-id="you-can" class="voice-over" src="media/_audio/S_Step1/VO_YouCan.mp3" pl-required></audio>
 		</div>
-		<img src="media/_images/S_Step1/img_6.1.png">
+		<img class="animated" src="media/_images/S_Step1/img_6.1.png">
 		<p class="count">
 			Count how many faucets you have in your house.<br> Remember to include sinks, tubs, showers<br> and even outdoor spigots.
 		</p>
-		<p class="start">
+		<p class="start animated">
 			You can make a tag for every<br> one of them if you choose, but start<br> with the most commonly used faucet.
 		</p>
 	</section>
 
 	<!-- S_WhatFaucet -->
 	<section id="what-faucet" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" pl-required></audio>
 		<div pl-component="audio-sequence">
 			<audio pl-id="what-faucet" class="voice-over" src="media/_audio/S_WhatFaucet/VO_WhatFaucet.mp3" pl-required></audio>
 			<audio pl-id="kitchen" class="voice-over" src="media/_audio/S_WhatFaucet/VO_Kitchen.mp3" pl-required></audio>
@@ -129,12 +133,12 @@
 		<div class="question" pl-bg="media/_images/S_WhatFaucet/img_7.1.png"></div>
 		<div pl-component="selectable">
 			<ul pl-action="select()">
-				<li pl-id="kitchen">Kitchen Faucet</li>
-				<li pl-id="shower">Shower Faucet</li>
-				<li pl-id="bathroom">Bathroom Faucet</li>
-				<li pl-id="bathtub">Bathtub Faucet</li>
-				<li pl-id="classroom">Classroom Faucet</li>
-				<li pl-id="outdoor">Outdoor Faucet</li>
+				<li class="kitchen animated">Kitchen Faucet</li>
+				<li class="shower animated">Shower Faucet</li>
+				<li class="bathroom animated">Bathroom Faucet</li>
+				<li class="bathtub animated">Bathtub Faucet</li>
+				<li class="classroom animated">Classroom Faucet</li>
+				<li class="outdoor animated">Outdoor Faucet</li>
 			</ul>
 		</div>
 	</section>
@@ -142,36 +146,38 @@
 	<!-- S_Step2 -->
 	<section id="step-2" class="screen" pl-component="screen-basic">
 		<div pl-component="slides">
-			<div pl-component="frame" pl-transclude="content">
-				<div pl-component="audio-sequence">
+			<div pl-id="main-frame" pl-component="frame" pl-transclude="content" pl-require="sounds">
+				<div pl-id="sounds" pl-component="audio-sequence" pl-require="container-3">
 					<audio pl-id="step" class="sfx" src="media/_audio/_Reveals/TI_RV_1.mp3" pl-required></audio>
 					<audio pl-id="step2" class="voice-over" src="media/_audio/S_Step2/VO_Step2.mp3" pl-required></audio>
 					<audio pl-id="collect" class="voice-over" src="media/_audio/S_Step2/VO_CollectEmpty.mp3" pl-required></audio>
-					<audio pl-id="containers" class="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" pl-required></audio>
+					<audio pl-id="container-1" class="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" pl-required></audio>
+					<audio pl-id="container-2" class="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" pl-delay=".3s" pl-required></audio>
+					<audio pl-id="container-3" class="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" pl-delay=".3s" pl-required></audio>
 				</div>
-				<div class="step" pl-bg="media/_images/S_Step2/img_8.1.png"></div>
+				<div class="step animated" pl-bg="media/_images/S_Step2/img_8.1.png"></div>
 				<p class="collect">
 					Collect empty plastic lids<br> that you would otherwise throw away.
 				</p>
 				<div class="images">
-					<div></div>
-					<div></div>
-					<div></div>
+					<div class="container-1 animated"></div>
+					<div class="container-2 animated"></div>
+					<div class="container-3 animated"></div>
 				</div>
 			</div>
-			<div pl-component="frame" class="tip round" pl-transclude="content">
-				<div pl-component="audio-sequence">
+			<div pl-component="frame" class="tip round" pl-transclude="content" pl-require="sounds">
+				<div pl-id="sounds" pl-component="audio-sequence" pl-require="tip">
 					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
-					<audio class="voice-over" src="media/_audio/S_Step2/VO_Tip1.mp3" pl-required></audio>
+					<audio pl-id="tip" class="voice-over" src="media/_audio/S_Step2/VO_Tip1.mp3" pl-required></audio>
 				</div>
 				<p>
 					Tip: Use plastic lids from products like cottage cheese,<br> yogurt or even take-out food containers.<br> Round works best.
 				</p>
 			</div>
-			<div pl-component="frame" class="tip size" pl-transclude="content">
-				<div pl-component="audio-sequence">
+			<div pl-component="frame" class="tip size" pl-transclude="content" pl-require="sounds">
+				<div pl-id="sounds" pl-component="audio-sequence" pl-require="tip">
 					<audio class="sfx" src="media/_audio/_Reveals/TI_RV_2.mp3" pl-required></audio>
-					<audio class="voice-over" src="media/_audio/S_Step2/VO_Tip2.mp3" pl-required></audio>
+					<audio pl-id="tip" class="voice-over" src="media/_audio/S_Step2/VO_Tip2.mp3" pl-required></audio>
 				</div>
 				<p>
 					Tip: You'll want to choose a size for your faucet that<br> is big enough to see but not too big to be in the way.

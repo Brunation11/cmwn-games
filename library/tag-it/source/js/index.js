@@ -24,7 +24,7 @@ import './components/modal/behavior';
 
 pl.game('tag-it', function () {
 
-	var audioClasses, audioScreens, screenName;
+	var audioClasses, audioScreens, k;
 
 	this.changeWallpaper = function(wallpaper) {
 		this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
@@ -46,19 +46,20 @@ pl.game('tag-it', function () {
 		});
 	};
 
+	audioScreens = ['step-1', 'step-2', 'what-need'];
+
+	for(k in audioScreens) {
+		this.screen(audioScreens[k], audioClasses);
+	}
+
 	this.screen('what-faucet', function() {
 		audioClasses.call(this);
 
 		this.respond('select', function(_event) {
+			this.playSound(this.audio.sfx);
 			this.select(_event.behaviorTarget);
 		});
 	});
-
-	audioScreens = ['step-1', 'step-2', 'what-need'];
-
-	for(screenName in audioScreens) {
-		this.screen(screenName, audioClasses);
-	}
 
 	this.screen('flip', function () {
 		this.next = function () {
