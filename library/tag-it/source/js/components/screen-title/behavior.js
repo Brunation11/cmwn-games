@@ -59,7 +59,7 @@ pl.game.component('screen-title', function () {
 		var nextScreen, buttonSound;
 
 		nextScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+		buttonSound = pl.util.resolvePath(this, 'audio.sfx.button') || pl.util.resolvePath(this, 'game.audio.sfx.button');
 
 		if (nextScreen) {
 			this.leave();

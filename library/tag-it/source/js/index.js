@@ -12,7 +12,6 @@ import './config.game';
 import './components/screen-basic/behavior';
 import './components/screen-title/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
 import './components/slides/behavior';
 import './components/frame/behavior';
 import './components/score/behavior';
@@ -29,14 +28,23 @@ pl.game('tag-it', function () {
 		this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
 	};
 
-	this.screen('title', function() {
-		this.entity('.title', function() {
-			this.on('animationend', function(_event) {
-				if(!this.is(_event.target)) return;
-				this.complete();
-			});
+	var audioClasses = function() {
+		var classes = "";
+
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			id = id ? id.toUpperCase() : false;
+			classes += id + " ";
+			this.addClass(id);
 		});
-	});
+
+		this.on('ui-close', function() {
+			this.removeClass(classes);
+			classes = "";
+		});
+	};
+
+	this.screen('step-1', audioClasses);
 
 	this.screen('what-faucet', function() {
 		this.respond('select', function(_event) {
@@ -48,6 +56,13 @@ pl.game('tag-it', function () {
 		this.next = function () {
 			this.game.quit.okay();
 		};
+	});
+
+	this.screen('quit', function() {
+		this.on('ui-open' , function() {
+			var vo = this.audio.voiceOver.sure;
+			if(vo) vo.play();
+		});
 	});
 
 
