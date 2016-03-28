@@ -250,7 +250,8 @@ p {
 	}
 
 	.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
-	.screen.GATED .next-screen {
+	.screen.GATED .next-screen,
+	.frame-component.GATED .next-screen {
 		opacity: 0;
 		cursor: default;
 	}
@@ -262,6 +263,10 @@ p {
 		opacity: 1;
 		transform: rotate(0deg);
 		cursor: pointer;
+	}
+
+	.frame-component:not(.OPEN).COMPLETE .next-screen {
+		opacity: 0;
 	}
 
 	.screen .next-screen:hover {

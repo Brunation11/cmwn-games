@@ -37,4 +37,16 @@ pl.game.component('frame', function () {
 		}
 	});
 
+	this.on('ready', function () {
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'audio.sfx.screenComplete') || pl.util.resolvePath(this, 'screen.audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) this.playSound(sfx);
+			}));
+		}
+	});
+
 });
