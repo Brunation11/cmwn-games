@@ -1101,6 +1101,7 @@ img.inline {
 		background-size: 700px;
 		width: 320px;
 		height: 130px;
+		z-index: 1;
 	}
 
 	.text {
@@ -1125,6 +1126,12 @@ img.inline {
 		background-repeat: no-repeat;
 		background-size: 700px;
 		background-position: -350px 0px;
+	}
+
+	&.OPEN {
+		.step {
+			animation-name: fadeInLeftBig;
+		}
 	}
 }
 
@@ -1200,9 +1207,26 @@ img.inline {
 		width: 620px;
 	}
 
+	li {
+		opacity: 0;
+		transition: opacity .5s;
+	}
+
 	span {
 		position: relative;
 		left: -15px;
+	}
+
+	$items: use-your try-glow use-multiple create personalize;
+
+	@for $i from 1 through 5 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} {
+			.#{$item} {
+				opacity: 1;
+				animation-name: slideInRight;
+			}
+		}
 	}
 }
 
@@ -1233,6 +1257,12 @@ img.inline {
 		background-size: 850px;
 		background-repeat: no-repeat;
 		background-position: 0px 0px;
+	}
+
+	&.FLIP {
+		.flip {
+			animation-name: rubberBand;
+		}
 	}
 }
 

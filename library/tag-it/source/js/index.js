@@ -61,7 +61,26 @@ pl.game('tag-it', function () {
 		});
 	});
 
+	this.screen('tips', function() {
+		var classes = "";
+
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			id = id ? id.toUpperCase() : false;
+			classes += id + " ";
+			this.addClass(id);
+			if(id) this.playSound(this.audio.sfx.answer);
+		});
+
+		this.on('ui-close', function() {
+			this.removeClass(classes);
+			classes = "";
+		});
+	});
+
 	this.screen('flip', function () {
+		audioClasses.call(this);
+
 		this.next = function () {
 			this.game.quit.okay();
 		};
