@@ -950,6 +950,12 @@ img.inline {
 		background-size: 1350px;
 		background-position: -900px 0px;
 	}
+
+	&.OPEN {
+		.step {
+			animation-name: fadeInLeftBig;
+		}
+	}
 }
 
 #step-7 {
@@ -984,6 +990,12 @@ img.inline {
 		background-size: 1800px;
 		background-position: -1200px 0px;
 	}
+
+	&.OPEN {
+		.step {
+			animation-name: fadeInLeftBig;
+		}
+	}
 }
 
 #decorate-tag {
@@ -1004,6 +1016,12 @@ img.inline {
 		top: 20px;
 		width: 480px;
 	}
+
+	&.OPEN {
+		img {
+			animation-name: zoomIn;
+		}
+	}
 }
 
 #step-8 {
@@ -1014,6 +1032,7 @@ img.inline {
 		background-size: 950px;
 		width: 320px;
 		height: 130px;
+		z-index: 1;
 	}
 
 	.text {
@@ -1039,6 +1058,12 @@ img.inline {
 		background-size: 950px;
 		background-position: -475px 0px;
 	}
+
+	&.OPEN {
+		.step {
+			animation-name: fadeInLeftBig;
+		}
+	}
 }
 
 #select-paint {
@@ -1059,6 +1084,12 @@ img.inline {
 		right: -2px;
 		top: 40px;
 		height: 400px;
+	}
+
+	&.OPEN {
+		img {
+			animation-name: slideInRight;
+		}
 	}
 }
 
