@@ -40,7 +40,13 @@ function defineEntries (_config,_game) {
     return config;
 }
 
-games = (argv.game === undefined) ? lsd('./library') : [argv.game];
+games = (function() {
+    switch (typeof argv.game) {
+        case 'undefined': return lsd('./library');
+        case 'string': return [argv.game];
+        case 'object': if (argv.game) return argv.game;
+    }
+}());
 
 gulp.task('default', ['build-dev']);
 
