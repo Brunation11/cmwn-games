@@ -2,9 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library/build/play.js';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -33,22 +32,59 @@ pl.game('animal-id', function () {
 		});
 	};
 
+	this.screen('ios-splash', function () {
+		
+		this.on('ready', function (_event) {
+			var shouldSplash;
+
+			shouldSplash = ['AppleWebKit', 'Mobile'].every(function (_term) {
+				return !!~navigator.userAgent.indexOf(_term);
+			});
+
+			if (this.is(_event.target)) {
+				this.close(this.game.loader);
+				
+				if (shouldSplash) {
+					this.ball.delay(0, this.ball.open);
+					this.game.addClass('BG');
+				} else {
+					this.game.title.on('ready', function (_e) {
+						if (this.is(_e.target)) {
+							this.delay(0, this.open);
+						}
+					});
+				}
+			}
+		});
+
+		this.entity('ball', function () {
+			var sequence = 'OPEN R S G'.split(' ');
+
+			this.on('transitionend', function (_e) {
+				var state, i
+
+				if (!this.ball.is(_e.target)) return;
+
+				state = (state = this.ball.state(), typeof state === 'object' ? state[state.length-1] : state);
+				i = sequence.indexOf(state);
+
+				if (sequence[i+1]) this.ball.addClass(sequence[i+1]);
+				
+				if (sequence[i+1] === 'G') {
+					this.delay('1s', function () {
+						this.ball.addClass('T');
+					});
+				}
+			}.bind(this));
+
+		});
+
+	});
+
 	this.screen('title', function () {
 
 		this.on('ui-open', function (_event) {
 			if (this.is(_event.target)) this.title.startAudio();
-		});
-
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) {
-				this.delay(0, this.open);
-				this.close(this.game.loader);
-			}
 		});
 
 		this.startAudio = function () {

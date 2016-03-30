@@ -2,10 +2,10 @@
   font-family: 'CMWN';
   src: url('../media/fonts/CMWN_Jade.eot'); /* IE9 Compat Modes */
   src: url('../media/fonts/CMWN_Jade.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../media/fonts/CMWN_Jade.woff') format('woff'), /* Modern Browsers */
-       url('../media/fonts/CMWN_Jade.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../media/fonts/CMWN_Jade.svg#4012903f3d164196860fdbc893b3e032') format('svg'); /* Legacy iOS */
-       
+	   url('../media/fonts/CMWN_Jade.woff') format('woff'), /* Modern Browsers */
+	   url('../media/fonts/CMWN_Jade.ttf')  format('truetype'), /* Safari, Android, iOS */
+	   url('../media/fonts/CMWN_Jade.svg#4012903f3d164196860fdbc893b3e032') format('svg'); /* Legacy iOS */
+	   
   font-style:   normal;
   font-weight:  400;
 }
@@ -28,7 +28,7 @@ body {
 	width: 960px;
 	margin: auto;
 	font-size: 20px;
-	background: url(../media/images/background/title.png) bottom center no-repeat;
+	background: bottom center no-repeat;
 	background-size: cover;
 
 	&.id {
@@ -42,6 +42,10 @@ body {
 	&.nose {
 		background-image: url(../media/images/background/nose.png);
 	}
+}
+
+body.BG {
+	background-image: url(../media/images/background/title.png);
 }
 
 /**
@@ -135,6 +139,62 @@ h2 {
 h3 {
 	font-size: 30px;
 	margin: 0 0 30px;
+}
+
+#ios-splash {
+	background-color: #fff;
+
+	&.OPEN {
+		transform: none;
+		opacity: 1;	
+	}
+
+	button {
+		display: none;
+	}
+
+	[pl-id=ball] {
+		width: 200px; height: 190px;
+		// width: 60px; height: 60px;
+		background: url(../media/images/ios_start_ball.png) no-repeat;
+		background-size: 1250px;
+		background-position: 70px 70px;
+		transition: transform 1s linear;
+		transform: translate(100px,-300px);
+
+		.label {
+			position: absolute;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+
+		&.OPEN {
+			transform: translate(0,0);
+		}
+
+		&.R {
+			transform: translate(300px,500px);
+		}
+
+		&.S {
+			transform: translate(500px,100px);
+			background-position: -195px 50px;
+		}
+
+		&.G {
+			background-position: -750px 0;
+		}
+
+		&.T {
+			background-position: -1000px 0;
+			
+			&:hover {
+				background-image: url(../media/images/ios_start_ball_anim.gif);
+				background-size: contain;
+				background-position: center;
+			}
+		}
+	}
 }
 
 .spinner {
@@ -933,7 +993,7 @@ $area-left: 0 7 1 6 2 5 3 4;
 }
 
 .POSITIONED {
-    transform-origin: top left;
+	transform-origin: top left;
 }
 
 .POSITIONED.absolute {
