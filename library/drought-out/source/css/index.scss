@@ -444,6 +444,12 @@ img.inline {
 			}
 		}
 	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
+		}
+	}
 }
 
 #info-no-water {
@@ -569,6 +575,12 @@ img.inline {
 					}
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }
