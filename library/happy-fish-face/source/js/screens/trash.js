@@ -16,6 +16,10 @@ export default function trash () {
 		this.mousemove(function(e){
 			$net.css({left: e.clientX / this.game.zoom - 50, top: e.clientY / this.game.zoom - 65});
 		}.bind(this));
+
+		this.on('touchstart', function() {
+			this.addClass('TOUCH');
+		}.bind(this));
 		
 		this.$items = this
 			.selectable
@@ -24,15 +28,7 @@ export default function trash () {
 
 		this.modal.reveal.audio.voiceOver.on('ended', function (_event) {
 			if (this.screen.state(this.STATE.OPEN)) {
-				switch (_event.target.id()) {
-					case 'goodJob':
-						this.audio.voiceOver.neverThrow.play();
-						break;
-
-					case 'neverThrow':
-						this.screen.complete();
-						break
-				}
+				if(_event.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
 			}
 		}.bind(this.modal.reveal));
 	});
@@ -43,6 +39,7 @@ export default function trash () {
 		correct.on('complete', this.bind(function () {
 			this.timer.stop();
 			this.modal.item('goodJob');
+			this.addClass('GOOD-JOB');
 		}));
 
 		this.items = this
@@ -57,7 +54,7 @@ export default function trash () {
 
 		this.items.correct = correct;
 
-		this.removeClass('try-again');
+		this.removeClass('TRY-AGAIN GOOD-JOB');
 	};
 
 	this.reset = function() {
@@ -85,7 +82,7 @@ export default function trash () {
 		this.timerComplete = function() {
 			this.stop();
 			this.screen.modal.item('tryAgain');
-			this.screen.addClass('try-again');
+			this.screen.addClass('TRY-AGAIN');
 		};
 	});
 }

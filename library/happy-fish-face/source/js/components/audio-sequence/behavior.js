@@ -10,7 +10,7 @@ pl.game.component('audio-sequence', function () {
 
 		this.audio.on('ended', function (_event) {
 			var next = sounds[i++];
-			if (next) next.play();
+			if (next && this.screen.state(this.screen.STATE.OPEN)) next.play();
 		}.bind(this));
 	});
 

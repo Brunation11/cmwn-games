@@ -514,9 +514,12 @@
 
 	.modal-component {
 
-		&.SELECTED ~ .selectable-component,
-		&.SELECTED ~ .timer-component {
-			opacity: 0;
+		&.SELECTED {
+			~ .selectable-component,
+			~ .timer-component,
+			~ .net {
+				opacity: 0;
+			}
 		}
 
 		[pl-id=try-again] {
@@ -537,7 +540,9 @@
 		}
 	}
 
-	&.try-again {
+	&.TOUCH,
+	&.GOOD-JOB,
+	&.TRY-AGAIN {
 		cursor: auto;
 
 		.net {
@@ -547,14 +552,6 @@
 
 	&.OPEN {
 		opacity: 1;
-	}
-
-	&.COMPLETE {
-		cursor: auto;
-
-		.net {
-			opacity: 0;
-		}
 	}
 }
 
