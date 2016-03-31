@@ -6,6 +6,8 @@ pl.game.component('screen-basic', function () {
 				_event.response(!_event.target.config("dontautoplay"));
 			});
 		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 
 	this.next = function () {
