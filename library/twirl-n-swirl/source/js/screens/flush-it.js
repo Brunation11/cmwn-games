@@ -94,7 +94,7 @@ export default function flushIt () {
 		this.disable($('.draggables [pl-id='+current.id()+']'));
 
 		this.delay('2s', function () {
-			if(this.state(this.STATE.OPEN)) this.modalReveal.item(current.id());
+			if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
 		});
 	};
 
