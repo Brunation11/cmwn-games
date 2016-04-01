@@ -69,12 +69,17 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		this.proto();
+		var bgSound, voSound;
 
-		// Start all screen entities
-		if (this.hasOwnProperty('entities')) this.entities.forEach(function (_entity) {
-			if (typeof _entity.start === 'function' && _entity.hasOwnProperty('start')) _entity.start();
-		});
+		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
+		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
+
+		if(bgSound) bgSound.play();
+		if(fxSound) fxSound.play();
+		if(voSound) voSound.play();
+
+		if(this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
 		return this;
 	};
