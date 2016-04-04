@@ -64,5 +64,9 @@ pl.game('twirl-n-swirl', function () {
 
 			return this.proto();
 		};
+
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
 });

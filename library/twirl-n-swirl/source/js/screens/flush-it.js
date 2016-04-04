@@ -93,9 +93,13 @@ export default function flushIt () {
 		current.addClass('FLUSH');
 		this.disable($('.draggables [pl-id='+current.id()+']'));
 
-		this.delay('2s', function () {
+		this.game.audio.sfx.flush.off('ended').on('ended', function () {
 			if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
-		});
+		}.bind(this));
 	};
+
+	this.on('ui-close', function() {
+		this.game.audio.sfx.flush.off('ended');
+	});
 
 }
