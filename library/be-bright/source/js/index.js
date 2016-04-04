@@ -2,7 +2,8 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/title/behavior';

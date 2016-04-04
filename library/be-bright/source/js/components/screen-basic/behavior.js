@@ -27,6 +27,8 @@ pl.game.component('screen-basic', function () {
 				if (sfx) this.playSound(sfx);
 			}));
 		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
 	};
 
 	this.next = function () {
