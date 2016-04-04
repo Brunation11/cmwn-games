@@ -1,9 +1,9 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 
-import './testPlatformIntegration';
 import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
@@ -135,6 +135,7 @@ pl.game('sea-turtle', function () {
 					if (playing) playing.stop();
 
 					this.delay('2.5s', function () {
+						if(this.wellDone.state(this.STATE.SELECTED)) return;
 						this.reveal.item('instruction');
 						this.characters.enable();
 					});
