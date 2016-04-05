@@ -84,4 +84,9 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
+	this.on('ready', function(_event) {
+		if(!this.is(_event.target)) return;
+		if(this.state(this.STATE.OPEN)) this.start();
+	});
+
 });
