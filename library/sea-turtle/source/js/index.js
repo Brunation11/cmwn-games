@@ -191,8 +191,8 @@ pl.game('sea-turtle', function () {
 
 		this.respond('complete', function (_event) {
 			if (this.reveal.is(_event.targetScope)) {
-				this.audio.sfx.wellDone.play();
 				this.reveal.item('wellDone');
+				this.audio.sfx.complete.play();
 			}
 		});
 
