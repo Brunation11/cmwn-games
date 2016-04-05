@@ -1,11 +1,15 @@
 pl.game.component('screen-basic', function () {
 
 	this.on('ready', function (_event) {
-		if (this.is(_event.target) && this.audio) {
+		if(!this.is(_event.target)) return;
+
+		if(this.audio) {
 			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
 				_event.response(!_event.target.config("dontautoplay"));
 			});
 		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 
 	this.allowAction = function() {
