@@ -243,6 +243,13 @@ img.inline {
 		height: 70px;
 	}
 
+#map .map-entity.COMPLETE .ring {
+	transition: opacity .5s;
+	opacity: 1;
+	width: 547px;
+	margin-left: -1px;
+}
+
 #bears {
 
 	.score-component {
