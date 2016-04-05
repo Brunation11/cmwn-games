@@ -113,7 +113,7 @@ pl.game('sea-turtle', function () {
 		});
 		
 		/**
-		 * The reveal compoent holds the correct/incorrect splash
+		 * The reveal component holds the correct/incorrect splash
 		 * images. So its responsible for handling the multiple
 		 * choice "answer" behavior by displaying the
 		 * "correct" or "incorrect" image.
@@ -126,7 +126,7 @@ pl.game('sea-turtle', function () {
 				message = this[_event.message];
 				playing = this.audio.playing();
 
-				if (message && !this.screen.isComplete) {
+				if (message && !this.isComplete) {
 					this.select(message);
 					this.delay('2s', function() {
 						this.deselect(message);
@@ -191,6 +191,7 @@ pl.game('sea-turtle', function () {
 
 		this.respond('complete', function (_event) {
 			if (this.reveal.is(_event.targetScope)) {
+				this.audio.sfx.wellDone.play();
 				this.reveal.item('wellDone');
 			}
 		});
