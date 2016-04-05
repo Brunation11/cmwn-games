@@ -2,7 +2,6 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
 import 'js-interactive-library';
 // import '../../../../../js-interactive-library/build/play.js';
 import './config.game';
@@ -58,6 +57,13 @@ pl.game('animal-id', function () {
 		this.stopAudio = function () {
 			this.title.audio.background.stop();
 		};
+
+		this.entity('title', function() {
+			this.on('animationend', function(_event) {
+				if(!this.image.is(_event.target)) return;
+				this.complete();
+			});
+		});
 
 	});
 
