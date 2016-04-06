@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -58,6 +58,7 @@ pl.game('monarch', function () {
 		});
 
 		this.respond('select', function (_event) {
+			if(!_event.behaviorTarget.is('li')) return;
 			this.audio.sfx.correct.play();
 			this.modal.item(count++);
 			if(count >= this.length) count = 0;

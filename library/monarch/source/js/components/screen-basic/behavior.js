@@ -63,7 +63,7 @@ pl.game.component('screen-basic', function () {
 			bgSound.play();
 		}
 		if(fxSound) fxSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) this.playSound(voSound);
+		if(voSound) voSound.play();
 
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
