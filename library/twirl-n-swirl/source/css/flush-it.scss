@@ -15,7 +15,12 @@
 
 		&.DISABLED li {
 			opacity: 0.5;
+			pointer-events: none;
 			cursor: default;
+
+			&.DISABLED {
+				opacity: 0;
+			}
 		}
 
 		&.left {
@@ -33,6 +38,7 @@
 
 			&.DISABLED {
 				opacity: 0;
+				pointer-events: none;
 				cursor: default;
 			}
 		}

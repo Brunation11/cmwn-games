@@ -43,6 +43,7 @@ export default function flushIt () {
 			if (so) so.play();
 
 			this.screen.enable('.draggables');
+			this.disable($('.draggables [pl-id='+this.find('li.SELECTED').id()+']'));
 			
 			return this.sup();
 		};
@@ -62,14 +63,14 @@ export default function flushIt () {
 
 	});
 	/**
-	 * Adds an ability for the screen to respond to items droped in the
+	 * Adds an ability for the screen to respond to items dropped in the
 	 * toilet bowl. Its responsibility is to show the reveal via the
 	 * dropped item's ID and disable draggable bins.
 	 */
 	this.respond('drop', function (_event) {
 		var id = _event.behaviorTarget.id();
 
-		this.toilet.reveal.item(id);
+		this.toilet.reveal.item(id).find('.FLUSH').removeClass('FLUSH');
 		this.disable('.draggables');
 	});
 	/**
@@ -91,7 +92,7 @@ export default function flushIt () {
 		if (!current) return;
 
 		current.addClass('FLUSH');
-		this.disable($('.draggables [pl-id='+current.id()+']'));
+		// this.disable($('.draggables [pl-id='+current.id()+']'));
 
 		this.game.audio.sfx.flush.off('ended').on('ended', function () {
 			if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());

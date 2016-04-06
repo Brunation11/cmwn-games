@@ -1,7 +1,7 @@
 pl.game.component('screen-basic', function () {
 
 	function playButtonSFX (_direction) {
-		var so = (_direction === "next") ? this.audio.sfx.nextScreen : this.game.audio.sfx.button;
+		var so = (_direction === "next") ? pl.util.resolvePath(this, 'this.audio.sfx.nextScreen') : pl.util.resolvePath(this, 'this.game.audio.sfx.nextScreen');
 		if (so) so.play();
 	}
 
