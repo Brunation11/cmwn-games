@@ -33,7 +33,7 @@ pl.game.component('screen-basic', function () {
 		var prevScreen, buttonSound;
 
 		prevScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+		buttonSound = this.game.audio.sfx.button;
 
 		if (prevScreen) {
 			this.screen.close();
@@ -45,17 +45,32 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
+		if (this.audio) {
+			this.audio.background.play();
+			this.audio.voiceOver.play();
+		}
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) bgSound.play();
-		if (voSound) voSound.play();
-
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+		this.startFirstEntity();
 
 		return this;
+	};
+
+	this.startFirstEntity = function (argument) {
+		var conditions;
+
+		if (this.hasOwnProperty('entities') && this.entities) {
+			conditions = [
+				this.entities[0],
+				this.entities[0].hasOwnProperty('start'),
+				typeof this.entities[0].start === 'function'
+			];
+
+			if (!~conditions.indexOf(false)) {
+				return this.entities[0].start();
+			}
+		}
+
+		return false;
 	};
 
 	this.on('ui-open', function (_event) {

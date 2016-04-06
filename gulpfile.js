@@ -40,7 +40,13 @@ function defineEntries (_config,_game) {
     return config;
 }
 
-games = (argv.game === undefined) ? lsd('./library') : [argv.game];
+games = (function() {
+    switch (typeof argv.game) {
+        case 'undefined': return lsd('./library');
+        case 'string': return [argv.game];
+        case 'object': if (argv.game) return argv.game;
+    }
+}());
 
 gulp.task('default', ['build-dev']);
 
@@ -118,12 +124,21 @@ gulp.task('copy-index', function () {
         gulp
             .src(path.join('./library', _game, 'index.html'))
             // include the following code where you want the livereload script to be injected
-            //<!-- inject:livereload -->
-            //<!-- endinject -->
+            /*
+                <!-- inject:livereload -->
+                <!-- endinject -->
+            */
             .pipe(inject(gulp.src('./livereload.js'), {
                 starttag: '<!-- inject:livereload -->',
                 transform: function (filePath, file) {
                     if(livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
+                }
+            }))
+            .pipe(inject(gulp.src('./testPlatformIntegration.js'), {
+                starttag: '<!-- inject:testPlatformIntegration -->',
+                transform: function (filePath, file) {
+                    console.log('inject', filePath);
+                    return '<script>\n' + file.contents.toString('utf8') + ' test();\n</script>';
                 }
             }))
             .pipe(gulp.dest('./build/'+_game));
@@ -152,12 +167,6 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
             .src(path.join( './library', _game, 'thumb.jpg' ))
             .pipe( gulp.dest('./build/'+_game) );
     });
-});
-
-gulp.task('copy-webgl', [], function () {
-    gulp
-        .src(path.join('./webgl-library/**/*'))
-        .pipe( gulp.dest(path.join('./build')) );
 });
 
 // To specify what game you'd like to copy play components into call gulp play-components --game game-name

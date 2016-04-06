@@ -91,13 +91,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
-
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) bgSound.play();
-		if (voSound) voSound.play();
+		this.startAudio();
 
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 

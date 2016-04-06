@@ -1,15 +1,7 @@
 pl.game.component('screen-basic', function () {
 
 	function playButtonSFX (_direction) {
-		var so;
-
-		if (_direction === "next") {
-			so = pl.util.resolvePath(this, 'audio.sfx.nextScreen');
-		}
-
-		if (!so) {
-			so = pl.util.resolvePath(this, 'game.audio.sfx.button');
-		}
+		var so = (_direction === "next") ? this.audio.sfx.nextScreen : this.game.audio.sfx.button;
 		if (so) so.play();
 	}
 
@@ -77,17 +69,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
-
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) {
-			this.game.current.playingBG = bgSound;
-			this.playSound(bgSound);
-		}
-
-		if (voSound) this.playSound(voSound);
+		this.proto();
 
 		// Start all screen entities
 		if (this.hasOwnProperty('entities')) this.entities.forEach(function (_entity) {
@@ -107,12 +89,7 @@ pl.game.component('screen-basic', function () {
 	};
 	
 	this.complete = function () {
-		var sfx;
-
-		sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-		if (sfx) this.playSound(sfx);
-
+		this.game.audio.sfx.screenComplete.play();
 		return this.proto();
 	};
 
