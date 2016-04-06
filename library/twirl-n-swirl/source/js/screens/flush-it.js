@@ -71,6 +71,7 @@ export default function flushIt () {
 		var id = _event.behaviorTarget.id();
 
 		this.toilet.reveal.item(id).find('.FLUSH').removeClass('FLUSH');
+		$('.draggables [pl-id='+id+']').addClass('TOILET');
 		this.disable('.draggables');
 	});
 	/**
@@ -92,7 +93,6 @@ export default function flushIt () {
 		if (!current) return;
 
 		current.addClass('FLUSH');
-		// this.disable($('.draggables [pl-id='+current.id()+']'));
 
 		this.game.audio.sfx.flush.off('ended').on('ended', function () {
 			if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
@@ -101,6 +101,12 @@ export default function flushIt () {
 
 	this.on('ui-close', function() {
 		this.game.audio.sfx.flush.off('ended');
+	});
+
+	this.on('ui-open', function(_event) {
+		if(!this.is(_event.target)) return;
+		this.find('.TOILET').removeClass('TOILET');
+		this.deselect(this.toilet.reveal.find('.SELECTED'));
 	});
 
 }
