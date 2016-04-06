@@ -70,11 +70,10 @@ pl.game('monarch', function () {
 			this.deselect(this.selectableReveal.reveal.find('li'));
 		});
 
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
-			this.audio.voiceOver.lifespan.onended = function() {
+		this.on('audio-ended', function(_event) {
+			if(this.audio.voiceOver.lifespan === _event.target) {
 				this.selectableReveal.reveal.item(4);
-			}.bind(this);
+			}
 		});
 
 		this.entity('selectable-reveal', function() {
@@ -119,8 +118,18 @@ pl.game('monarch', function () {
 				this.screen.audio.sfx.shake.play();
 			});
 		});
-
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 
 });
