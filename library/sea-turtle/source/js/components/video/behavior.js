@@ -12,4 +12,9 @@ pl.game.component('video', function () {
 		this.video[0].pause();
 	};
 
+	this.on('ready', function(_event) {
+		if(!this.is(_event.target)) return;
+		this.video.on('ended', this.complete.bind(this));
+	});
+
 });

@@ -6,7 +6,7 @@ delete require.cache[require.resolve("js-interactive-library")];
 module.exports = {
     context: __dirname + '/library',
     entry: null,
-    devtool: 'cheap-source-map',
+    devtool: 'source-map',
     resolve: {
         extensions: ['', '.js'],
         modulesDirectories: ['node_modules']

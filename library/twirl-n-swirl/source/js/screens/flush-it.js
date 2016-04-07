@@ -85,9 +85,8 @@ export default function flushIt () {
 	 */
 	this.flush = function () {
 		var current = this.reveal.currentItem();
-		var sfx = pl.util.resolvePath(this, 'game.audio.sfx.flush');
-		
-		if (sfx) sfx.play();
+
+		this.game.audio.sfx.flush.play();
 		
 		if (!current) return;
 

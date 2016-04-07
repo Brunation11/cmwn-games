@@ -1,22 +1,12 @@
 pl.game.component('screen-basic', function () {
-	
-	this.currentVO = null;
 
-	this.playSound = function (_sound) {
-		var delay;
-	
-		delay = $(_sound).attr('pl-delay');
-
-		if($(_sound).hasClass('voice-over')) {
-			this.currentVO = _sound;
+	this.on('ready', function (_event) {
+		if (this.audio) {
+			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
+				_event.response(!_event.target.config("dontautoplay"));
+			});
 		}
-
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
-	};
+	});
 
 	this.next = function () {
 		var nextScreen, buttonSound;
@@ -49,33 +39,35 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
+		var entities = this.hasOwnProperty('entities') && this.entities;
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
-
-		if (bgSound) {
-			this.game.bgSound = bgSound;
-			bgSound.play();
+		if (this.audio) {
+			this.startAudio();
+			this.audio.sfx.play('start');
 		}
-		if(fxSound) fxSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) this.playSound(voSound);
 
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.hasOwnProperty('start')) _entity.start();
+			});
+		}
 
 		return this;
 	};
 
-	this.stop = function() {
-		if(this.timeoutID) {
-			clearTimeout(this.timeoutID);
+	this.stop = function () {
+		var entities = this.hasOwnProperty('entities') && this.entities;
+
+		this.stopAudio();
+		this.kill('delay');
+
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.hasOwnProperty('start')) _entity.stop();
+			});
 		}
 
-		if(this.currentVO) {
-			this.currentVO.pause();
-			this.currentVO.currentTime = 0;
-		}
+		return this;
 	};
 
 	this.on('ui-open', function (_event) {

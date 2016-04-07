@@ -1,17 +1,19 @@
 pl.game.component('frame', function () {
+
+	this.on('ready', function (_event) {
+		if (this.audio) {
+			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
+				_event.response(!_event.target.config("dontautoplay"));
+			});
+		}
+	});
 	
 	this.start = function () {
-		var bgSound, voSound;
+		return this.screen.start.call(this);
+	};
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) bgSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) voSound.play();
-
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
-
-		return this;
+	this.stop = function () {
+		return this.screen.stop.call(this);
 	};
 
 	this.handleProperty({
