@@ -1,11 +1,12 @@
 pl.game.component('reveal', function () {
 
 	this.item = function (_id) {
-		var vo, index;
+		var vo, index, vo;
 
 		if (typeof _id === 'number') {
 			this.select(this.find('li').eq(_id));
-			this.audio.voiceOver[_id].play();
+			vo = this.audio.voiceOver && this.audio.voiceOver[_id];
+			if(vo) vo.play();
 		}
 			
 		else if (typeof _id === 'string') {

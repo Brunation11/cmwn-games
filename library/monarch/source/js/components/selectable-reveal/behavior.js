@@ -4,7 +4,7 @@ pl.game.component('selectable-reveal', function () {
 		var index, stateMethod;
 
 		index = _event.message;
-		stateMethod = this.properties.select_state || 'select';
+		stateMethod = this.properties.selectState || 'select';
 
 		if (~index) {
 			this[stateMethod](_event.behaviorTarget);
