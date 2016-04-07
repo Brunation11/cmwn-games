@@ -2,9 +2,9 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
 import 'js-interactive-library';
-// import '../../../../../js-interactive-library/build/play.js';
+// Use when doing local changes to the library
+// import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
