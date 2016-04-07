@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -34,13 +34,14 @@ pl.game('tag-it', function () {
 		var classes = "";
 
 		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
+			var id = _event.target.$el[0].id;
 			id = id ? id.toUpperCase() : false;
 			classes += id + " ";
 			this.addClass(id);
 		});
 
-		this.on('ui-close', function() {
+		this.on('ui-close', function(_event) {
+			if(!this.is(_event.target)) return;
 			this.removeClass(classes);
 			classes = "";
 		});
@@ -65,14 +66,16 @@ pl.game('tag-it', function () {
 		var classes = "";
 
 		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
+			var id = _event.target.$el[0].id;
+			if(id === 'answer') return;
 			id = id ? id.toUpperCase() : false;
 			classes += id + " ";
 			this.addClass(id);
 			if(id) this.playSound(this.audio.sfx.answer);
 		});
 
-		this.on('ui-close', function() {
+		this.on('ui-close', function(_event) {
+			if(!this.is(_event.target)) return;
 			this.removeClass(classes);
 			classes = "";
 		});
@@ -92,5 +95,16 @@ pl.game('tag-it', function () {
 			if(vo) vo.play();
 		});
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 });
