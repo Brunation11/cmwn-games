@@ -32,6 +32,13 @@ body {
 	}
 }
 
+/**
+ * Removes gray box when tapping on actionables.
+ */
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
+}
+
 // preload assets
 #asset-bin {
 	display: none;

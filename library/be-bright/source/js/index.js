@@ -24,8 +24,12 @@ pl.game('be-bright', function () {
 			this.close(this.game.loader);
 			this.delay('3s', function() {
 				this.complete();
-				if(this.title.audio.sfx) this.title.audio.sfx.play();
+				this.title.audio.sfx.play();
 			});
+		};
+
+		this.startAudio = function () {
+			this.title.startAudio();
 		};
 
 	});
@@ -53,11 +57,13 @@ pl.game('be-bright', function () {
 	});
 
 	this.screen('flip', function () {
-		this.on('audio-ended', function (_event) {
-			if (this.audio.voiceOver !== _event.target) return;
-			this.stampImg.addClass('START');
-			this.audio.sfx.stamp.play();
-		});
+
+		this.ready = function () {
+			this.audio.voiceOver.on('ended', function (_event) {
+				this.stampImg.addClass('START');
+				this.audio.sfx.stamp.play();
+			}.bind(this));
+		};
 
 		this.next = function () {
 			this.game.quit.okay();

@@ -35,6 +35,32 @@ pl.game('litterbug', function () {
 			this.close(this.game.loader);
 		});
 
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
+
+	});
+
+	this.screen('clean-up', function() {
+
+		this.state('incomplete', '-COMPLETE', {
+			didSet: function (_target) {
+				_target.isComplete = false;
+			}
+		});
+
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.game.removeClass('sun');
+			this.incomplete(this);
+			this.incomplete(this.slides.trash);
+			this.slides.trash.ready();
+		});
 	});
 
 	this.screen('video', function() {

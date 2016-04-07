@@ -34,6 +34,15 @@ pl.game('meerkat-mania', function () {
 			this.close(this.game.loader);
 		});
 
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
+
 	});
 
 	this.screen('roles', function () {
@@ -72,6 +81,14 @@ pl.game('meerkat-mania', function () {
 
 	this.screen('feel', function () {
 
+		this.on('ready', function (_event) {
+			if (!this.is(_event.target)) return;
+
+			this.selectable.audio.voiceOver.on('ended', function (_ended) {
+				this.complete();
+			}.bind(this.selectable));
+		});
+
 		this.respond('select', function (_event) {
 			var index, stateMethod;
 
@@ -80,9 +97,8 @@ pl.game('meerkat-mania', function () {
 
 			if (~index) {
 				this[stateMethod](_event.behaviorTarget);
-				if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-				if(this.selectable.audio.voiceOver[index]) this.selectable.audio.voiceOver[index].play();
-				this.complete();
+				this.audio.sfx.play('correct');
+				this.selectable.audio.voiceOver.play(index);
 			}
 		});
 	});
