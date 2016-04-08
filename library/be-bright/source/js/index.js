@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/title/behavior';
@@ -28,10 +28,25 @@ pl.game('be-bright', function () {
 			});
 		};
 
+		this.on('ui-open', function (_event) {
+			if (this.isReady && this === _event.targetScope) {
+				this.start();
+			}
+		});
+
 		this.startAudio = function () {
 			this.title.startAudio();
 		};
 
+	});
+
+	this.screen('bulbs', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.unhighlight(this.find('.HIGHLIGHTED'));
+			this.selectableReveal.reveal.closeAll();
+		});
 	});
 
 	this.screen('video', function() {

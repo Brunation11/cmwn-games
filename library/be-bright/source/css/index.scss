@@ -44,11 +44,8 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
+	user-drag: none;
 	cursor: default;
 }
 
@@ -328,14 +325,9 @@ p {
 					position: absolute;
 					right: 5px;
 					bottom: 10px;
-					opacity: 0.5;
+					opacity: 1;
 					cursor: default;
 					transition: opacity 1s;
-
-					&.ENABLED {
-						opacity: 1;
-						cursor: pointer;
-					}
 				}
 			}
 
@@ -343,6 +335,21 @@ p {
 				opacity: 1;
 				z-index: 1;
 				transition: opacity .5s;
+			}
+		}
+	}
+}
+
+.screen.VOICE-OVER {
+	.reveal-component {
+		.items {
+			li {
+				div {
+					.close-reveal {
+						opacity: .5;
+						pointer-events: none;
+					}
+				}
 			}
 		}
 	}
@@ -389,31 +396,22 @@ p {
 			opacity: 1;
 
 			&.bulb {
-				-webkit-animation-name: bounceInUp;
 				animation-name: bounceInUp;
 			}
 
 			&.presents {
-				-webkit-animation-name: bounceInLeft;
 				animation-name: bounceInLeft;
-				-webkit-animation-delay: 1s;
 				animation-delay: 1s;
 			}
 
 			&.title {
-				-webkit-animation-name: bounceInUp;
 				animation-name: bounceInUp;
-				-webkit-animation-delay: 2s;
 				animation-delay: 2s;
 			}
 		}
 
 		&.COMPLETE {
 			img {
-				-webkit-animation-name: flicker;
-				-webkit-animation-duration: 2s;
-				-webkit-animation-delay: 0s;
-				-webkit-animation-iteration-count: 3;
 				animation-name: flicker;
 				animation-duration: 2s;
 				animation-delay: 0s;
@@ -490,7 +488,7 @@ p {
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img.title {
 			animation-name: zoomInDown;
 		}
@@ -501,6 +499,20 @@ p {
 
 				.items {
 					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&.VOICE-OVER {
+		.selectable-component {
+			.items {
+				li {
+					pointer-events: none;
+
+					&:first-of-type:not(.HIGHLIGHTED) {
+						pointer-events: none;
+					}
 				}
 			}
 		}
