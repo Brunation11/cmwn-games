@@ -17,6 +17,17 @@ import './components/video/behavior';
 
 pl.game('be-bright', function () {
 
+	var screens, restart;
+
+	restart = function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.unhighlight(this.find('.HIGHLIGHTED'));
+			this.selectableReveal.reveal.closeAll();
+		});
+	};
+
 	this.screen('title', function () {
 
 		this.ready = function () {
@@ -40,12 +51,18 @@ pl.game('be-bright', function () {
 
 	});
 
-	this.screen('bulbs', function() {
+	screens = ['bulbs', 'switches'];
+
+	screens.map(function(name) {
+		this.screen(name, restart);
+	}.bind(this));
+
+	this.screen('pig', function() {
 		this.on('ui-open', function(_event) {
 			if(!this.is(_event.target)) return;
 
-			this.unhighlight(this.find('.HIGHLIGHTED'));
-			this.selectableReveal.reveal.closeAll();
+			this.deselect(this.find('.SELECTED'));
+			this.multipleChoice.removeClass('COMPLETE').isComplete = false;
 		});
 	});
 

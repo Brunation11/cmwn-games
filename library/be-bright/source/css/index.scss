@@ -544,18 +544,43 @@ p {
 					width: 500px;
 					background-image: url(../media/S_4/img_4.2.png);
 					background-size: auto 100%;
+
+					&:hover {
+						background-position: -497px 0;
+					}
+					
+					&.SELECTED {
+						background-position: -993px 0;
+					}
 				}
 
 				&.bulb {
 					width: 230px;
 					background-image: url(../media/S_4/img_4.3.png);
 					background-size: auto 100%;
+
+					&:hover {
+						background-position: -246px 0;
+					}
+
+					&.SELECTED {
+						background-position: 0 0;
+					}
 				}
+			}
+		}
+
+		&.COMPLETE {
+			pointer-events: none;
+
+			li.pig {
+				transition: opacity 1s;
+				opacity: 0.5;
 			}
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img {
 			animation-name: zoomInDown;
 		}
@@ -571,35 +596,10 @@ p {
 		}
 	}
 
-	&:not(.COMPLETE) {
-		.multiple-choice-component li {
-			cursor: pointer;
-
-			&.pig {
-				&:hover {
-					background-position: -497px 0;
-				}
-				
-				&.SELECTED {
-					background-position: -993px 0;
-				}
-			}
-
-			&.bulb {
-				&:hover {
-					background-position: -246px 0;
-				}
-
-				&.SELECTED {
-					background-position: 0 0;
-				}
-			}
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
-	}
-
-	&.COMPLETE .multiple-choice-component li.pig {
-		transition: opacity 1s;
-		opacity: 0.5;
 	}
 }
 
@@ -677,7 +677,7 @@ p {
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img.title {
 			animation-name: zoomInDown;
 		}
@@ -703,7 +703,7 @@ p {
 		margin: 0;
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img {
 			animation-name: zoomInDown;
 		}
@@ -740,7 +740,7 @@ p {
 		opacity: 0;
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		.inline {
 			animation-name: flipInX;
 			animation-duration: 3s;
