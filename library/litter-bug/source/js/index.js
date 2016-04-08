@@ -66,6 +66,12 @@ pl.game('litterbug', function () {
 	});
 
 	this.screen('video', function() {
+		this.on('ui-open', function() {
+			setTimeout(function() {
+				this.start();
+			}.bind(this), 250);
+		});
+
 		this.on("ui-close", function() {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
