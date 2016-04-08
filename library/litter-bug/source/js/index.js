@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -72,6 +72,8 @@ pl.game('litterbug', function () {
 
 	this.screen('flip', function () {
 		this.next = function () {
+			var buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+			if (buttonSound) buttonSound.play();
 			this.game.quit.okay();
 		};
 
