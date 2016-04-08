@@ -31,8 +31,10 @@ pl.game('litterbug', function () {
 			// the delay is to prevent the transition failing to play
 			// because of collision of these styles.
 			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+			if (this.is(_event.target)) this.delay(0, function() {
+				this.open();
+				this.close(this.game.loader);
+			});
 		});
 
 		this.startAudio = function () {
