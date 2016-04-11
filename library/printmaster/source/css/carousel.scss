@@ -20,26 +20,33 @@
 
 	.carousel-component {
 		width: 400px;
+		height: 540px;
 
 		img {
+			position: absolute;
+			top: 0;
+			left: 130px;
 			display: block;
 			width: auto;
 			height: 210px;
 			margin: 40px auto;
-			transform: scale(.6);
+			transform:  translateY(540px) scale(.6);
 			transition: transform 1s;
 
 			&.OPEN {
-				margin-top: -95px;
+				transform: translateY(-95px) scale(.6);
 
 				& + img {
-					transform: scale(1);
+					transform: translateY(115px) scale(1);
+
+					& + img {
+						transform: translateY(360px) scale(.6);
+					}
 				}
 			}
 
 			&.LEAVE {
-				margin-top: -345px;
-				transition: margin 1s, transform 1s;
+				transform: translateY(-220px) scale(.6);
 
 				& + .OPEN {
 					margin-top: 40px;
