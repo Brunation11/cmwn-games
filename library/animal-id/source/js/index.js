@@ -37,28 +37,22 @@ pl.game('animal-id', function () {
 		this.on('ready', function (_event) {
 			var shouldSplash;
 
-			shouldSplash = ['AppleWebKit', 'Mobile'].every(function (_term) {
-				return !!~navigator.userAgent.indexOf(_term);
-			});
+			shouldSplash = this.game.hasClass('iOS');
 
-			if (this.is(_event.target)) {
+			if(this.is(_event.target)) {
 				this.close(this.game.loader);
 				
-				if (shouldSplash) {
+				if(shouldSplash) {
+					this.open();
 					this.ball.delay(0, this.ball.open);
-					this.game.addClass('BG');
 				} else {
-					this.game.title.on('ready', function (_e) {
-						if (this.is(_e.target)) {
-							this.delay(0, this.open);
-						}
-					});
+					this.game.title.open();
 				}
 			}
 		});
 
 		this.entity('ball', function () {
-			var sequence = 'OPEN R S G'.split(' ');
+			var sequence = 'R S G'.split(' ');
 
 			this.on('transitionend', function (_e) {
 				var state, i
@@ -77,6 +71,14 @@ pl.game('animal-id', function () {
 				}
 			}.bind(this));
 
+			this.startGame = function() {
+				if(!this.hasClass('G')) return;
+				this.delay('2.5s', function() {
+					this.next();
+					this.game.addClass('STARTED');
+				});
+			};
+
 		});
 
 	});
@@ -85,6 +87,8 @@ pl.game('animal-id', function () {
 
 		this.on('ui-open', function (_event) {
 			if (this.is(_event.target)) this.title.startAudio();
+
+			if(this.state(this.STATE.OPEN)) this.start();
 		});
 
 		this.startAudio = function () {
