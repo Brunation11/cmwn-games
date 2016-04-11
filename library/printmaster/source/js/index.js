@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -34,6 +34,9 @@ pl.game('printmaster', function () {
 				this.delay(duration, function() {
 					this.game.audio.sfx.typing.stop();
 				});
+			});
+			this.on('ui-close ui-leave', function() {
+				this.game.audio.sfx.typing.stop();
 			});
 		};
 	}
