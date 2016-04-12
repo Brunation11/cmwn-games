@@ -74,8 +74,8 @@ pl.game('animal-id', function () {
 			this.startGame = function() {
 				if(!this.hasClass('G')) return;
 				this.delay('2.5s', function() {
-					this.next();
 					this.game.addClass('STARTED');
+					this.next();
 				});
 			};
 
