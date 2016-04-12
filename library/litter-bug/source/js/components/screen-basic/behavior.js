@@ -44,7 +44,11 @@ pl.game.component('screen-basic', function () {
 
 	this.on('ui-open', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
-			this.start();
+			this.on('transitionend', function(_event) {
+				if(!this.is(_event.target)) return;
+				this.start();
+				this.off('transitionend');
+			}.bind(this));
 		}
 
 		if(this.properties.gameClass) {
@@ -82,6 +86,11 @@ pl.game.component('screen-basic', function () {
 		if (this.isReady && this === _event.targetScope) {
 			this.stop();
 		}
+	});
+
+	this.on('ready', function(_event) {
+		if(!this.is(_event.target)) return;
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 
 });

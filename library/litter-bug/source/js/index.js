@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -31,8 +31,10 @@ pl.game('litterbug', function () {
 			// the delay is to prevent the transition failing to play
 			// because of collision of these styles.
 			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+			if (this.is(_event.target)) this.delay(0, function() {
+				this.open();
+				this.close(this.game.loader);
+			});
 		});
 
 		this.startAudio = function () {
@@ -64,6 +66,12 @@ pl.game('litterbug', function () {
 	});
 
 	this.screen('video', function() {
+		this.on('ui-open', function() {
+			setTimeout(function() {
+				this.start();
+			}.bind(this), 250);
+		});
+
 		this.on("ui-close", function() {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
@@ -72,6 +80,8 @@ pl.game('litterbug', function () {
 
 	this.screen('flip', function () {
 		this.next = function () {
+			var buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+			if (buttonSound) buttonSound.play();
 			this.game.quit.okay();
 		};
 
