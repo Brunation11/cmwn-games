@@ -6,6 +6,7 @@
 import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../../screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -32,58 +33,13 @@ pl.game('animal-id', function () {
 		});
 	};
 
-	this.screen('ios-splash', function () {
-		
-		this.on('ready', function (_event) {
-			var shouldSplash;
-
-			shouldSplash = this.game.hasClass('iOS');
-
-			if(this.is(_event.target)) {
-				this.close(this.game.loader);
-				
-				if(shouldSplash) {
-					this.open();
-					this.ball.delay(0, this.ball.open);
-				} else {
-					this.game.title.open();
-				}
-			}
-		});
-
-		this.entity('ball', function () {
-			var sequence = 'R S G'.split(' ');
-
-			this.on('transitionend', function (_e) {
-				var state, i
-
-				if (!this.ball.is(_e.target)) return;
-
-				state = (state = this.ball.state(), typeof state === 'object' ? state[state.length-1] : state);
-				i = sequence.indexOf(state);
-
-				if (sequence[i+1]) this.ball.addClass(sequence[i+1]);
-				
-				if (sequence[i+1] === 'G') {
-					this.delay('1s', function () {
-						this.ball.addClass('T');
-					});
-				}
-			}.bind(this));
-
-			this.startGame = function() {
-				if(!this.hasClass('G')) return;
-				this.delay('2.5s', function() {
-					this.game.addClass('STARTED');
-					this.next();
-				});
-			};
-
-		});
-
-	});
-
 	this.screen('title', function () {
+
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
 
 		this.on('ui-open', function (_event) {
 			if (this.is(_event.target)) this.title.startAudio();

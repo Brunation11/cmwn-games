@@ -1,0 +1,87 @@
+@keyframes splash {
+	0% {
+		transform: translate(100px,-300px);
+	}
+	25% {
+		transform: translate(-70px,0px);
+	}
+	50% {
+		transform: translate(300px,410px);
+	}
+	75% {
+		transform: translate(500px,100px);
+	}
+	100% {
+		transform: translate(500px,100px);
+	}
+}
+
+@keyframes splash-bg {
+	0% {
+		background-position: 70px 70px;
+	}
+	50% {
+		background-position: -195px 50px;
+	}
+	75% {
+		background-position: -750px 0;
+	}
+	100% {
+		background-position: -1000px 0;
+	}
+}
+
+#ios-splash {
+	background-color: #fff;
+	z-index: 1;
+
+	img.hidden {
+		display: none;
+	}
+
+	&.OPEN {
+		transform: none;
+		opacity: 1;	
+	}
+
+	button {
+		display: none;
+	}
+
+	[pl-id=ball] {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform: translate(100px,-300px);
+
+		&:before {
+			content: "";
+			display: block;
+			width: 200px;
+			height: 190px;
+			background-image: url(../images/ios_start_ball.png);
+			background-repeat: no-repeat;
+			background-size: 1250px;
+			background-position: 70px 70px;
+		}
+	}
+
+	&.OPEN {
+		[pl-id=ball] {
+			animation: splash 6s forwards linear;
+
+			&:before {
+				animation: splash-bg 6s steps(1) forwards;
+			}
+		}
+	}
+}
+
+.pl-game.STARTED #ios-splash {
+	[pl-id=ball]:before {
+		background-image: url(../images/ios_start_ball_anim.gif);
+		background-size: contain;
+		background-position: center center;
+		animation: none;
+	}
+}

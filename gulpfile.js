@@ -103,6 +103,14 @@ gulp.task('sass', function () {
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
     });
+
+    gulp
+        .src(['./library/shared/css/*.scss',
+              './library/shared/css/*.css'])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('style.css'))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(gulp.dest('./build/shared/css'));
 });
 
 gulp.task('sass-prod', function () {
@@ -116,6 +124,7 @@ gulp.task('sass-prod', function () {
             .pipe(concat('style.css'))
             .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(gulp.dest('./build/'+_game+'/css'));
+
     });
 });
 
