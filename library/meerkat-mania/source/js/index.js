@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/screen-basic/behavior';
@@ -73,6 +73,12 @@ pl.game('meerkat-mania', function () {
 	});
 
 	this.screen('video', function() {
+		this.on('ui-open', function() {
+			setTimeout(function() {
+				this.video.start();
+			}.bind(this), 250);
+		});
+
 		this.on("ui-close", function() {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
