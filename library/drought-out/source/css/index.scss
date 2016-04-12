@@ -269,12 +269,14 @@ p {
 
 	.screen.GATED .next-screen {
 		opacity: 0;
+		pointer-events: none;
 		cursor: default;
 	}
 
 	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
+		pointer-events: auto;
 		transform: rotate(0deg);
 		cursor: pointer;
 	}
@@ -465,7 +467,7 @@ img.inline {
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
