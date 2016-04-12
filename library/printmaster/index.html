@@ -6,6 +6,8 @@
 
 	<!-- inject:livereload -->
 	<!-- endinject -->
+	<!-- inject:testPlatformIntegration -->
+	<!-- endinject -->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -180,7 +182,7 @@
 						</h2>
 					</span>
 					<p class="animated">
-						Double Loop show loops<br> going in two directions.
+						Double Loops show loops<br> going in two directions.
 					</p>
 				</div>
 			</div>
@@ -239,12 +241,16 @@
 		<audio pl-id="incorrect" class="sfx" src="media/S_10/S_10.4.mp3" preload="none"></audio>
 		<div class="group">
 			<div class="viewport" pl-bg="media/S_10/img_10.3.png">
-				<div class="slide" pl-component="carousel" pl-randomize pl-delay=".4s">
-					<img pl-id="loops" src="media/S_10/img_10.4.png">
-					<img pl-id="whorl" src="media/S_10/img_10.5.png">
-					<img pl-id="arch" src="media/S_10/img_10.6.png">
-					<img pl-id="doubleloops" src="media/S_10/img_10.7.png">
-				</div>
+				<ul class="slide" pl-component="carousel" pl-randomize pl-delay=".4s">
+					<li pl-id="loops" pl-bg="media/S_10/img_10.4.png"></li>
+					<li pl-id="whorl" pl-bg="media/S_10/img_10.5.png"></li>
+					<li pl-id="arch" pl-bg="media/S_10/img_10.6.png"></li>
+					<li pl-id="doubleloops" pl-bg="media/S_10/img_10.7.png"></li>
+					<li pl-id="loops" pl-bg="media/S_10/img_10.4.png"></li>
+					<li pl-id="whorl" pl-bg="media/S_10/img_10.5.png"></li>
+					<li pl-id="arch" pl-bg="media/S_10/img_10.6.png"></li>
+					<li pl-id="doubleloops" pl-bg="media/S_10/img_10.7.png"></li>
+				</ul>
 			</div>
 
 			<div class="target" pl-bg="media/S_10/img_10.8.png">

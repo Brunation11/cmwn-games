@@ -2,9 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -35,6 +34,9 @@ pl.game('printmaster', function () {
 				this.delay(duration, function() {
 					this.game.audio.sfx.typing.stop();
 				});
+			});
+			this.on('ui-close ui-leave', function() {
+				this.game.audio.sfx.typing.stop();
 			});
 		};
 	}
@@ -138,5 +140,15 @@ pl.game('printmaster', function () {
 		});
 	});
 
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 });
