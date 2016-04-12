@@ -9,6 +9,7 @@ import './config.game';
 // SCREENS
 import flyAcross from './screens/fly-across';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-title/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
@@ -30,16 +31,18 @@ pl.game('monarch', function () {
 			this.repeat('4s', function() {
 				this.audio.sfx.play();
 			});
-		});
-
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
 			this.audio.sfx.onplay = function() {
 				this.pupa.addClass('SHAKE');
 			}.bind(this);
 			this.audio.sfx.onended = function() {
 				this.pupa.removeClass('SHAKE');
 			}.bind(this);
+		});
+
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
 		this.on('ui-close', function() {
