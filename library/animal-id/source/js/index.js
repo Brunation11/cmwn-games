@@ -99,6 +99,13 @@ pl.game('animal-id', function () {
 			this.title.audio.background.stop();
 		};
 
+		this.entity('title', function() {
+			this.on('animationend', function(_event) {
+				if(!this.image.is(_event.target)) return;
+				this.complete();
+			});
+		});
+
 	});
 
 	this.screen('id-carnivore', showNext);
