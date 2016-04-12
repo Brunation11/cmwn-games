@@ -31,6 +31,10 @@
 	}
 }
 
+body.iOS:not(.STARTED) {
+	background: #ffffff !important;
+}
+
 #ios-splash {
 	background-color: #fff;
 	z-index: 1;

@@ -45,10 +45,6 @@ body {
 	}
 }
 
-body.iOS:not(.STARTED) {
-	background: #ffffff !important;
-}
-
 /**
  * Removes gray box when tapping on actionables.
  */
