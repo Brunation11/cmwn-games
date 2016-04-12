@@ -17,8 +17,9 @@ pl.game.component('screen-title', function () {
 	};
 
 	this.on('ready', function () {
-		this.delay(0, this.open);
-		this.close(this.game.loader);
+		if(!this.is(_event.target)) return;
+
+		if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
