@@ -45,10 +45,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		if (this.audio) {
-			this.audio.background.play();
-			this.audio.voiceOver.play();
-		}
+		this.startAudio();
 
 		this.startFirstEntity();
 
@@ -91,7 +88,7 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
-	this.on('ui-leave', function (_event) {
+	this.on('ui-close', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
 			this.stop();
 		}

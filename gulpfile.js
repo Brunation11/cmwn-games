@@ -110,7 +110,8 @@ gulp.task('sass', function () {
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
-        .pipe(gulp.dest('./build/shared/css'));
+        .pipe(gulp.dest('./build/shared/css'))
+        .pipe(livereload());
 });
 
 gulp.task('sass-prod', function () {
@@ -195,6 +196,7 @@ gulp.task('watch', function(callback) {
     var game = (games.length > 1) ? '**' : games[0];
     watch([
         '../js-interactive-library/build/play.js',
+        'library/shared/**/*',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',

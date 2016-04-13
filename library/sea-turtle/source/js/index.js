@@ -29,22 +29,11 @@ pl.game('sea-turtle', function () {
 	 * @override
 	 */
 	this.screen('title', function () {
-		
 		this.on('ready', function(_event) {
 			if(!this.is(_event.target)) return;
 
 			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
-
-		this.startAudio = function () {
-			this.title.audio.background.play();
-			this.title.audio.voiceOver.play();
-		};
-
-		this.stopAudio = function () {
-			this.title.audio.voiceOver.stop('@ALL');
-		};
-
 	});
 
 	this.screen('video', function () {
