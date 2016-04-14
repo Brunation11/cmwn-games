@@ -37,8 +37,8 @@
 
 	<!-- Preloads game backgrounds -->
 	<div id="asset-bin">
-		<img src="media/_images/_BKG/BKG_1.png">
-		<img src="media/_images/_Buttons/BU_1.png">
+		<img src="media/_images/_BKG/BKG_1.png" draggable=false>
+		<img src="media/_images/_Buttons/BU_1.png" draggable=false>
 	</div>
 	
 	<!-- GLOBAL GAME ASSETS -->
@@ -50,8 +50,8 @@
 
 	<!-- SCREENS -->
 	<section id="ios-splash" class="screen" pl-component="screen-ios-splash">
-		<img class="hidden" src="../shared/images/ios_start_ball.png">
-		<img class="hidden" src="../shared/images/ios_start_ball_anim.gif">
+		<img class="hidden" src="../shared/images/ios_start_ball.png" draggable=false>
+		<img class="hidden" src="../shared/images/ios_start_ball_anim.gif" draggable=false>
 		<div pl-id="ball" pl-action="startGame()"></div>
 	</section>
 
@@ -69,7 +69,7 @@
 	<section id="precious" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
 		<audio class="background" src="media/_audio/_BKG/TI_BKG_2.mp3" preload="none"></audio>
 		<audio class="voice-over" src="media/_audio/S_Precious/VO_Precious.mp3" pl-required preload="none"></audio>
-		<img class="animated" src="media/_images/S_Precious/img_2.1.png">
+		<img class="animated" src="media/_images/S_Precious/img_2.1.png" draggable=false>
 		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				Water is one of<br> the world's most precious<br> limited resources!
@@ -81,7 +81,7 @@
 	<section id="not-to-waste" class="screen precious" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="PRECIOUS">
 		<audio class="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop preload="none"></audio>
 		<audio class="voice-over" src="media/_audio/S_NotToWaste/VO_NotToWaste.mp3" pl-required preload="none"></audio>
-		<img class="animated" src="media/_images/S_Precious/img_2.1.png">
+		<img class="animated" src="media/_images/S_Precious/img_2.1.png" draggable=false>
 		<div class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			<p>
 				We know it's<br> important not to waste it…<br> but it's easy to forget.<br><br> That's where you come in!
@@ -104,7 +104,7 @@
 	<!-- S_Reminder -->
 	<section id="reminder" class="screen" pl-component="screen-basic" pl-transclude="content" pl-wallpaper="RECYCLE">
 		<audio class="voice-over" src="media/_audio/S_Reminder/VO_Reminder.mp3" pl-required preload="none"></audio>
-		<img class="animated" src="media/_images/S_Reminder/img_5.1.png">
+		<img class="animated" src="media/_images/S_Reminder/img_5.1.png" draggable=false>
 		<p>
 			You're going to make reminder<br> tags to help you and your<br> family remember to save<br> the planet by not wasting water!
 		</p>
@@ -117,7 +117,7 @@
 			<audio pl-id="count" class="voice-over" src="media/_audio/S_Step1/VO_CountHow.mp3" pl-required preload="none"></audio>
 			<audio pl-id="you-can" class="voice-over" src="media/_audio/S_Step1/VO_YouCan.mp3" pl-required preload="none"></audio>
 		</div>
-		<img class="animated" src="media/_images/S_Step1/img_6.1.png">
+		<img class="animated" src="media/_images/S_Step1/img_6.1.png" draggable=false>
 		<p class="count">
 			Count how many faucets you have in your house.<br> Remember to include sinks, tubs, showers<br> and even outdoor spigots.
 		</p>
@@ -231,7 +231,7 @@
 			<audio class="sfx" src="media/_audio/_Reveals/TI_RV_7.mp3" pl-required preload="none"></audio>
 			<audio class="voice-over" src="media/_audio/S_ScissorsAndPaint/VO_ScissorsAndPaint.mp3" pl-required preload="none"></audio>
 		</div>
-		<img class="animated" src="media/_images/S_ScissorsAndPaint/img_10.1.png">
+		<img class="animated" src="media/_images/S_ScissorsAndPaint/img_10.1.png" draggable=false>
 		<p>
 			Be sure to let<br> your parent or guardian<br> know that you will<br> be using scissors<br> and paint or nail polish.
 		</p>
@@ -356,7 +356,7 @@
 			<br>
 			Be sure to layer old<br> newspapers on your<br> work-space so you don't<br> make a mess!
 		</p>
-		<img class="animated" src="media/_images/S_ScissorsAndPaint/img_10.1.png">
+		<img class="animated" src="media/_images/S_ScissorsAndPaint/img_10.1.png" draggable=false>
 	</section>
 
 	<!-- S_Step8 -->
@@ -396,7 +396,7 @@
 				<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 					Select your<br> nail polish, markers or<br> acrylic paint.
 				</p>
-				<img class="animated" src="media/_images/S_SelectPaint/img_18.1.png">
+				<img class="animated" src="media/_images/S_SelectPaint/img_18.1.png" draggable=false>
 			</div>
 			<div class="tip hint" pl-component="frame" pl-transclude="content" pl-require="sounds">
 				<div pl-id="sounds" pl-component="audio-sequence" pl-require="be-creative">
@@ -445,7 +445,7 @@
 		<p class="text" pl-bg="media/_images/_Frames/FR_1.png">
 			When all layers<br> of paint have dried,<br> you are ready to<br> place on the faucet.
 		</p>
-		<img src="media/_images/S_All_layers/img_20.1.png">
+		<img src="media/_images/S_All_layers/img_20.1.png" draggable=false>
 	</section>
 
 	<!-- S_SpreadTheWord -->
@@ -454,7 +454,7 @@
 			<audio class="voice-over" src="media/_audio/S_SpreadTheWord/VO_NowThat.mp3" pl-required preload="none"></audio>
 			<audio class="voice-over" src="media/_audio/S_SpreadTheWord/VO_GatherThe.mp3" pl-required preload="none"></audio>
 		</div>
-		<img src="media/_images/S_SpreadTheWord/img_21.1.png">
+		<img src="media/_images/S_SpreadTheWord/img_21.1.png" draggable=false>
 		<p>
 			Gather the people in your house<br> and explain why you created<br> water-saver tags!
 		</p>
@@ -489,7 +489,7 @@
 	<!-- omit screen for now -->
 	<!--
 	<section id="show-your-stuff" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<img src="media/_images/S_ShowYourStuff/img_23.1.png">
+		<img src="media/_images/S_ShowYourStuff/img_23.1.png" draggable=false>
 		<p>
 			Upload a picture of your<br> water-saver tag on a faucet.
 		</p>
@@ -502,7 +502,7 @@
 	<!--
 	<section id="video" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div class="image-frame" pl-bg="media/_images/_Frames/FR_1.png">
-			<img src="">
+			<img src="" draggable=false>
 		</div>
 		<div class="buttons">
 			<button pl-id="update" pl-action="upload()"></button>
@@ -515,7 +515,7 @@
 	<!-- omit screen for now -->
 	<!--
 	<section id="thanks-for-uploading" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<img src="media/_images/S_ThanksForUploading/img_24.1.png">
+		<img src="media/_images/S_ThanksForUploading/img_24.1.png" draggable=false>
 		<p>
 			If you made multiple tags,<br> do you want to upload more images?
 		</p>

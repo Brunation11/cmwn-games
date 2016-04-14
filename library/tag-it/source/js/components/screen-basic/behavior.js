@@ -118,7 +118,7 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
-	this.on('ready', function () {
+	this.on('ready', function (_event) {
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
