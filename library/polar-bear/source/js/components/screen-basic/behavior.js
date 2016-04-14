@@ -120,7 +120,7 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
-	this.on('ui-leave', function (_event) {
+	this.on('ui-close', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
 			this.stop();
 		}
