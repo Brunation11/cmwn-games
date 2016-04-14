@@ -1,7 +1,7 @@
 pl.game.component('screen-quit', function () {
 
 	this.buttonSound = function() {
-		if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
+		if(this.audio.sfx.button) this.audio.sfx.button.play();
 	}
 
 	// TODO: Make an automated way to handle this
