@@ -6,7 +6,7 @@
 import '../../../../../js-interactive-library';
 import './config.game';
 
-import '../../..//shared/js/screen-ios-splash';
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/background/behavior';
