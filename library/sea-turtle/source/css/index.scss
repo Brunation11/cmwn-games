@@ -10,9 +10,11 @@ html {
 	font-size: 20px;
 	background: url(../media/images/background.png) bottom center no-repeat;
 	background-size: cover;
-	-webkit-user-select: none;
-	-moz-user-select: none;
 	user-select: none;
+	// the autoprefixer doesn't add these automatically
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	user-drag: none;
 	cursor: default;
 }
 
