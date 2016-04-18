@@ -8,6 +8,8 @@
 	<script type="text/javascript" src="ai.js"></script>
 	<!-- inject:livereload -->
 	<!-- endinject -->
+	<!-- inject:testPlatformIntegration -->
+	<!-- endinject -->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
@@ -78,6 +80,7 @@
 	<section id="globe" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio pl-id="correct" class="sfx" src="media/audio/SO_Right.mp3" preload="none"></audio>
 		<audio pl-id="incorrect" class="sfx" src="media/audio/SO_Wrong.mp3" preload="none"></audio>
+		<audio pl-id="complete" class="sfx" src="media/audio/globe/SO_4.1.mp3" preload="none"></audio>
 
 		<div pl-id="characters">
 			<img class="background" src="media/images/globe/background-tray.png" />
@@ -168,8 +171,7 @@
 						<audio class="voice-over" src="media/audio/globe/VO_4.9.mp3"  preload="none"></audio>
 						<audio class="voice-over" src="media/audio/globe/VO_4.10.mp3" preload="none"></audio>
 						<audio class="voice-over" src="media/audio/globe/VO_4.11.mp3" preload="none"></audio>
-						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload="none"></audio>
-						<audio pl-id="well-done" class="sfx" src="media/audio/globe/SO_4.1.mp3" preload="none"></audio>
+						<audio class="voice-over" src="media/audio/globe/VO_4.12.mp3" preload="none" pl-required></audio>
 
 						<ul class="items">
 							<li class="center OPEN">
@@ -287,8 +289,8 @@
 	
 	<!-- 6 -->
 	<section id="trash" class="screen" pl-component="screen-basic" pl-transclude="content">
+		<audio class="background" src="media/audio/background/2.mp3" loop preload="none"></audio>
 		<div pl-component="selectable-remove" pl-select-state="highlight" pl-required>
-			<audio class="background" src="media/audio/background/2.mp3" preload="none"></audio>
 			<audio pl-id="correct" class="sfx" src="media/audio/trash/answer-correct.mp3" preload="none"></audio>
 			<audio pl-id="incorrect" class="sfx" src="media/audio/trash/answer-incorrect.mp3" preload="none"></audio>
 			<div class="turtle" pl-bg="media/images/trash/sprite_6.1.png"></div>
