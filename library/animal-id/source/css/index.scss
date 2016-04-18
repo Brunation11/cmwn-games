@@ -383,6 +383,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 					transition: opacity .4s;
 				}
 
+				&.SELECTED,
 				&:hover {
 					&:after {
 						opacity: 1;
@@ -411,6 +412,22 @@ body:not(.DEMO) #what-does-a-nose-do {
 			.items {
 				li {
 					cursor: auto;
+					&:not('.SELECTED'):hover {
+						&:after {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.pl-game.MOBILE {
+	.screen.screen-id {
+		.frame {
+			.items {
+				li {
 					&:hover {
 						&:after {
 							opacity: 0;

@@ -89,6 +89,13 @@ pl.game('animal-id', function () {
 		});
 	});
 
+	this.screen('what-does-a-nose-do', function() {
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+			if(this.state(this.STATE.COMPLETE)) this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
+	});
+
 	this.screen('dnd-lion', showNext);
 	this.screen('dnd-sloth', showNext);
 	this.screen('dnd-wolf', showNext);
