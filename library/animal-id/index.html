@@ -4,9 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Animal ID</title>
 
+	<!-- inject:testPlatformIntegration -->
+	<!-- endinject -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="ai.js"></script>
 	<!-- inject:livereload -->
+	<!-- endinject -->
+	<!-- inject:testPlatformIntegration -->
 	<!-- endinject -->
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -46,7 +50,7 @@
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<div pl-component="class-switcher" pl-add="title" pl-remove="id"></div>
-		<div pl-component="title"></div>
+		<div pl-component="title" pl-required></div>
 	</section>
 
 	<!-- 2 -->
