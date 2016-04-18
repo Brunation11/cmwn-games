@@ -27,3 +27,13 @@
 		text-align: left;
 		white-space: normal;
 	}
+
+[pl-draggable] {
+	cursor: -moz-grab;
+	cursor: grab;
+}
+
+.DRAGGING {
+	cursor: -moz-grabbing;
+	cursor: grabbing;
+}

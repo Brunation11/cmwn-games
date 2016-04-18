@@ -17,6 +17,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/modal/behavior';
 import './components/reveal/behavior';
+import './components/audio-sequence/behavior';
 
 pl.game('fire', function () {
 
@@ -90,6 +91,24 @@ pl.game('fire', function () {
 
 
 
+	var soundClasses = function() {
+		var classes = "";
+
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) {
+				id = id.toUpperCase()
+				this.addClass(id);
+				classes += " "+id;
+			}
+		});
+
+		this.on('ui-close', function() {
+			this.removeClass(classes);
+			classes = "";
+		});
+	};
+
 	this.screen('title', function () {
 		
 		this.on('ui-open', function (_event) {
@@ -111,6 +130,9 @@ pl.game('fire', function () {
 		});
 
 	});
+
+	this.screen('info-chemical', soundClasses);
+	this.screen('info-fuel-oxygen', soundClasses);
 
 	this.screen('alarm', function() {
 
@@ -237,10 +259,11 @@ pl.game('fire', function () {
 							this.drop(_event.state.$draggable);
 							this.open(this[_event.state.$draggable.id()]);
 							this.open(this[_event.state.$draggable.id()+'Side']);
+							this.audio.sfx.correct.play();
 							if(this.isComplete) {
-								this.audio.sfx.complete.play();
-							} else {
-								this.audio.sfx.correct.play();
+								this.delay('.75s', function() {
+									this.audio.sfx.complete.play();
+								});
 							}
 							
 							return;
@@ -269,47 +292,22 @@ pl.game('fire', function () {
 	});
 
 	this.screen('break-triangle', function() {
+		this.on('audio-play', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) this.addClass(id.toUpperCase());
+		});
 
-		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
-
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.heat) this.audio.voiceOver.heat.play();
-				}.bind(this);
-
-				this.audio.voiceOver.heat.onended = function() {
-					if(this.audio.voiceOver.air) this.audio.voiceOver.air.play();
-				}.bind(this);
-
-				this.audio.voiceOver.air.onended = function() {
-					if(this.audio.voiceOver.fuel) this.audio.voiceOver.fuel.play();
-				}.bind(this);
-			}
+		this.on('audio-ended', function(_event) {
+			var id = _event.target.getAttribute('pl-id');
+			if(id) this.removeClass(id.toUpperCase());
 		});
 	});
 
 	this.screen('dress', function() {
-
-		var characters = [];
-		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
-
 		this.respond('select', function(_event) {
 			// this removes any screen class that starts with the same thing as the event message
 			// and then adds the event message as a class to the screen
+			if(!_event.message) return;
 			var regexp = new RegExp("(^|\\s)"+_event.message.split("-")[0]+"-\\S+");
 			this.screen.removeClass(function(index, className) {
 				return (className.match(regexp) || []).join(' ');

@@ -10,10 +10,6 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
 	cursor: default;
 }
@@ -242,9 +238,19 @@ img.background {
 	}
 
 	.DEMO .screen .next-screen,
-	.screen.COMPLETE .next-screen {
+	.screen.COMPLETE .next-screen,
+	.DEMO .screen.dress.SFX .reveal-close,
+	.DEMO .screen.dress.VOICE-OVER .reveal-close {
 		opacity: 1;
 		cursor: pointer;
+	}
+
+	.DEMO .screen.alarm.VOICE-OVER .push-down,
+	.DEMO .screen.who.VOICE-OVER ul,
+	.DEMO .screen.triangle.VOICE-OVER ul,
+	.DEMO .screen.dress.SFX .reveal-close,
+	.DEMO .screen.dress.VOICE-OVER .reveal-close {
+		pointer-events: auto;
 	}
 
 	.screen .next-screen:hover {
@@ -352,27 +358,20 @@ img.background {
 	}
 
 	&.OPEN {
-		img {
-			&:nth-of-type(2) {
-				-webkit-animation-name: zoomInUp;
-				-webkit-animation-delay: 2s;
-				animation-name: zoomInUp;
-				animation-delay: 2s;
+		$items: flame equal text;
+		$animations: zoomInUp fadeInRightMedium fadeIn;
+
+		@for $i from 1 through 3 {
+			$item: nth($items,$i);
+
+			.#{$item} {
+				animation-name: nth($animations,$i);
+				animation-play-state: paused;
 			}
 
-			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 3s;
-				animation-name: fadeInRightBig;
-				animation-delay: 3s;
+			&.#{to-upper-case($item)} .#{$item} {
+				animation-play-state: running;
 			}
-		}
-
-		h2 {
-			-webkit-animation-name: fadeIn;
-			-webkit-animation-delay: 4s;
-			animation-name: fadeIn;
-			animation-delay: 4s;
 		}
 	}
 }
@@ -419,48 +418,20 @@ img.background {
 	}
 
 	&.OPEN {
-		img {
-			&:nth-of-type(1) {
-				-webkit-animation-name: bounceInDown;
-				-webkit-animation-delay: 4s;
-				animation-name: bounceInDown;
-				animation-delay: 4s;
+		$items: wood plus o2 equal fire;
+		$animations: bounceInDown fadeInRightMedium fadeInDown fadeInRightMedium zoomInUp fadeIn;
+
+		@for $i from 1 through 5 {
+			$item: nth($items,$i);
+
+			.#{$item} {
+				animation-name: nth($animations,$i);
+				animation-play-state: paused;
 			}
 
-			&:nth-of-type(2) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 4.75s;
-				animation-name: fadeInRightBig;
-				animation-delay: 4.75s;
+			&.#{to-upper-case($item)} .#{$item} {
+				animation-play-state: running;
 			}
-
-			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInDown;
-				-webkit-animation-delay: 5.5s;
-				animation-name: fadeInDown;
-				animation-delay: 5.5s;
-			}
-
-			&:nth-of-type(4) {
-				-webkit-animation-name: fadeInRightBig;
-				-webkit-animation-delay: 6.25s;
-				animation-name: fadeInRightBig;
-				animation-delay: 6.25s;
-			}
-
-			&:nth-of-type(5) {
-				-webkit-animation-name: zoomInUp;
-				-webkit-animation-delay: 7s;
-				animation-name: zoomInUp;
-				animation-delay: 7s;
-			}
-		}
-
-		h2 {
-			-webkit-animation-name: fadeIn;
-			-webkit-animation-delay: 2s;
-			animation-name: fadeIn;
-			animation-delay: 2s;
 		}
 	}
 }
@@ -477,12 +448,9 @@ img.background {
 
 	&.OPEN {
 		div {
-			-webkit-animation-name: fadeInUp;
 			animation-name: fadeInUp;
 
 			p {
-				-webkit-animation-name: fadeIn;
-				-webkit-animation-delay: 1s;
 				animation-name: fadeIn;
 				animation-delay: 1s;
 			}
@@ -541,11 +509,16 @@ img.background {
 		display: none;
 	}
 
+	&.VOICE-OVER:not(.COMPLETE) {
+		.push-down {
+			pointer-events: none;
+		}
+	}
+
 	&.OPEN {
 		img {
 
 			&:nth-of-type(3) {
-				-webkit-animation-name: fadeInUp;
 				animation-name: fadeInUp;
 			}
 		}
@@ -613,26 +586,21 @@ img.background {
 				.multiple-choice-component {
 					ul {
 						li {
-							-webkit-animation-name: faceInRightBig;
 							animation-name: fadeInRightBig;
 
 							&:nth-of-type(1) {
-								-webkit-animation-delay: 3s;
 								animation-delay: 3s;
 							}
 
 							&:nth-of-type(2) {
-								-webkit-animation-delay: 4s;
 								animation-delay: 4s;
 							}
 
 							&:nth-of-type(3) {
-								-webkit-animation-delay: 5s;
 								animation-delay: 5s;
 							}
 
 							&:nth-of-type(4) {
-								-webkit-animation-delay: 7s;
 								animation-delay: 7s;
 							}
 						}
@@ -662,17 +630,20 @@ img.background {
 
 			&.OPEN {
 				>img {
-					-webkit-animation-name: zoomIn;
 					animation-name: zoomIn;
-					-webkit-animation-delay: 1s;
 					animation-delay: 1s;
 				}
 
 				div {
-					-webkit-animation-name: faceInRightBig;
 					animation-name: fadeInRightBig;
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER:not(.COMPLETE) {
+		ul {
+			pointer-events: none;
 		}
 	}
 }
@@ -708,7 +679,6 @@ img.background {
 	&.OPEN {
 		> img {
 			&:nth-of-type(2) {
-				-webkit-animation-name: zoomIn;
 				animation-name: zoomIn;
 			}
 		}
@@ -799,6 +769,12 @@ img.background {
 			}
 		}
 	}
+
+	&.VOICE-OVER {
+		ul {
+			pointer-events: none;
+		}
+	}
 }
 
 #break-triangle.screen {
@@ -809,7 +785,17 @@ img.background {
 		margin: 10px 0;
 	}
 
+	.images {
+		position: relative;
+		margin: 0 auto;
+		width: 400px;
+		height: 360px;
+	}
+
 	img {
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 400px;
 		margin: 0;
 	}
@@ -818,11 +804,18 @@ img.background {
 		margin: 0;
 	}
 
+	$items: fuel heat air;
+
+	@for $i from 1 through 3 {
+		$item: nth($items,$i);
+		&.#{to-upper-case($item)} .#{$item} {
+			animation-name: pulse;
+		}
+	}
+
 	&.OPEN {
-		img {
-			-webkit-animation-name: vanishOut;
+		.images {
 			animation-name: vanishOut;
-			-webkit-animation-delay: 9s;
 			animation-delay: 9s;
 		}
 	}
@@ -851,14 +844,11 @@ img.background {
 
 	&.OPEN {
 		>img {
-			-webkit-animation-name: zoomIn;
 			animation-name: zoomIn;
-			-webkit-animation-delay: 1s;
 			animation-delay: 1s;
 		}
 
 		div {
-			-webkit-animation-name: faceInRightBig;
 			animation-name: fadeInRightBig;
 		}
 	}
@@ -875,42 +865,36 @@ img.background {
 				margin: 10px 130px 0;
 			}
 
-			.selectable-component {
-
-				.items {
-					height: auto;
-					margin: 0;
-					justify-content: center;
-
-					li {
-						width: 191px;
-						height: 400px;
-						background-size: auto 100%;
-						background-position: left top;
-						margin: 0 25px;
-
-						&:hover {
-							background-position: right top;
-						}
-					}
-				}
+			.items {
+				height: auto;
+				margin: 0;
+				justify-content: center;
 			}
 
-			&.OPEN {
-				.selectable-component {
-					.items {
-						li {
-							&:nth-of-type(1) {
-								-webkit-animation-name: fadeInLeftBig;
-								animation-name: fadeInLeftBig;
-							}
+			li {
+				width: 183px;
+				height: 384px;
+				background-size: 1200px;
+				background-repeat: no-repeat;
+				margin: 0 25px;
+				cursor: pointer;
 
-							&:nth-of-type(2) {
-								-webkit-animation-name: fadeInRightBig;
-								animation-name: fadeInRightBig;
-							}
-						}
+			}
+
+			$genders: female male;
+			$animation-names: fadeInLeftBig fadeInRightBig;
+
+			@for $i from 1 through 2 {
+				li[pl-id=gender-#{nth($genders,$i)}] {
+					background-position: -409px 402-(422*$i)+px;
+
+					&:hover {
+						background-position: -609px 402-(422*$i)+px;
 					}
+				}
+
+				&.OPEN li:nth-of-type(#{$i}) {
+					animation-name: nth($animation-names,$i);
 				}
 			}
 		}
@@ -922,66 +906,34 @@ img.background {
 				margin: 10px 130px 0;
 			}
 
-			.selectable-component {
-
-				.items {
-					height: auto;
-					margin: 0;
-					justify-content: center;
-
-					li {
-						width: 191px;
-						height: 400px;
-						background-size: auto 100%;
-						background-position: left top;
-						margin: 0 25px;
-
-						// I'm using background-image here because it can be changed depending on choices made in previous frames.
-						&:nth-of-type(1) {
-							background-image: url(../media/S_11/img_11.4.png);
-						}
-
-						&:nth-of-type(2) {
-							background-image: url(../media/S_11/img_11.2.png);
-						}
-
-						&:nth-of-type(3) {
-							background-image: url(../media/S_11/img_11.5.png);
-						}
-
-						&:hover {
-							background-position: right top;
-						}
-					}
-				}
+			.items {
+				height: auto;
+				margin: 0;
+				justify-content: center;
 			}
 
-			&.OPEN {
-				.selectable-component {
-					.items {
-						li {
-							&:nth-of-type(1) {
-								-webkit-animation-name: lightSpeedIn;
-								animation-name: lightSpeedIn;
-								-webkit-animation-delay: .5s;
-								animation-delay: .5s;
-							}
+			li {
+				width: 183px;
+				height: 384px;
+				margin: 0 25px;
+				cursor: pointer;
+				// I'm using background-image here because it can be changed depending on choices made in previous frames.
+				background-image: url(../media/S_11/sprite_11.2.png);
+				background-size: 1200px;
+			}
 
-							&:nth-of-type(2) {
-								-webkit-animation-name: lightSpeedIn;
-								animation-name: lightSpeedIn;
-								-webkit-animation-delay: 1s;
-								animation-delay: 1s;
-							}
+			@for $i from 1 through 3 {
+				li:nth-of-type(#{$i}) {
+					background-position: #{391-(400*$i)+px} -20px;
 
-							&:nth-of-type(3) {
-								-webkit-animation-name: lightSpeedIn;
-								animation-name: lightSpeedIn;
-								-webkit-animation-delay: 1.5s;
-								animation-delay: 1.5s;
-							}
-						}
+					&:hover {
+						background-position: #{191-(400*$i)+px} -20px;
 					}
+				}
+
+				&.OPEN li:nth-of-type(#{$i}) {
+					animation-name: lightSpeedIn;
+					animation-delay: .5*$i+s;
 				}
 			}
 		}
@@ -998,6 +950,10 @@ img.background {
 				width: 700px;
 				margin: 10px auto;
 				display: block;
+
+				&.hidden {
+					display: none;
+				}
 			}
 
 			.draggables {
@@ -1007,26 +963,25 @@ img.background {
 				background-size: 100% 100%;
 				width: 200px;
 				height: 320px;
-				display: inline-block;
 				vertical-align: middle;
+				display: inline-flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				align-content: center;
 
 				li {
 					list-style: none;
-					display: inline-block;
+					display: inline-flex;
+					flex-direction: column;
+					justify-content: space-around;
+					margin-bottom: 10px;
+				}
 
-					div {
-						display: inline-block;
-						width: 80px;
-						height: 90px;
-						margin-bottom: 10px;
-						background-size: contain;
-						background-repeat: no-repeat;
-						background-position: center center;
+				.draggable {
 
-						&.COMPLETE,
-						&.PLUCKED {
-							opacity: 0;
-						}
+					&.COMPLETE,
+					&.PLUCKED {
+						opacity: 0;
 					}
 				}
 			}
@@ -1058,73 +1013,25 @@ img.background {
 						top: 0;
 						width: 100%;
 						height: 100%;
-						background-size: 100% 100%;
 						opacity: 0;
 						transition: opacity .5s;
+						background-image: url(../media/S_12/sprite_12.5.png);
+						background-repeat: no-repeat;
+						background-size: 880px;
 
-						&.show {
-							opacity: 1;
-						}
-
-						&.bun {
-							background-image: url(../media/S_12/img_12.27a.png);
-						}
-
-						&.tank {
-							background-image: url(../media/S_12/img_12.27b.png);
-
-							&.straps {
-								background-image: url(../media/S_12/img_12.27j.png);
-							}
-						}
-
+						&.show,
 						&.body {
-							background-image: url(../media/S_12/img_12.27cM.png);
 							opacity: 1;
 						}
 
-						&.boots {
-							background-image: url(../media/S_12/img_12.27d.png);
-						}
+						$items:           bun tank straps body boots hood pants jacket gloves mask light  axe walkie punch camera;
+						$background-lefts:  0  220     -3  220   437  656    -3    218    439  658     0  440    220   660    440;
+						$background-tops: 405  405   1196    0   401  402   798    800    800  800  1600 1200   1589  1592   1592;
 
-						&.hood {
-							background-image: url(../media/S_12/img_12.27e.png);
-						}
-
-						&.pants {
-							background-image: url(../media/S_12/img_12.27f.png);
-						}
-
-						&.jacket {
-							background-image: url(../media/S_12/img_12.27g.png);
-						}
-
-						&.gloves {
-							background-image: url(../media/S_12/img_12.27h.png);
-						}
-
-						&.mask {
-							background-image: url(../media/S_12/img_12.27i.png);
-						}
-
-						&.light {
-							background-image: url(../media/S_12/img_12.27k.png);
-						}
-
-						&.axe {
-							background-image: url(../media/S_12/img_12.27n.png);
-						}
-
-						&.walkie {
-							background-image: url(../media/S_12/img_12.27l.png);
-						}
-
-						&.radio {
-							background-image: url(../media/S_12/img_12.27o.png);
-						}
-
-						&.punch {
-							background-image: url(../media/S_12/img_12.27p.png);
+						@for $i from 1 through 15 {
+							&.#{nth($items,$i)} {
+								background-position: #{-1*nth($background-lefts,$i)+px} #{-1*nth($background-tops,$i)+px};
+							}
 						}
 					}
 				}
@@ -1160,36 +1067,55 @@ img.background {
 
 					.items {
 						position: static;
+					}
 
-						li {
-							position: absolute;
-							left: 0;
-							top: 0;
-							width: 100%;
-							height: 100%;
-							padding: 60px 40px;
-							transition: opacity .5s;
+					li {
+						position: absolute;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						padding: 60px 40px;
+						transition: opacity .5s;
 
-							&.SELECTED {
-								opacity: 1;
-							}
+						&.SELECTED {
+							opacity: 1;
+						}
 
-							img {
-								width: auto;
-								height: 50px;
-							}
+						&:before {
+							content: "";
+							display: block;
+							margin: 10px auto;
+							height: 50px;
+							background-image: url(../media/S_12/sprite_12.4.png);
+							background-size: 1320px;
+						}
 
-							&[pl-id=mask] p {
-								margin-top: 30px;
+						$widths:          300 320 400 432 340 280 302  74 300 214 420 242;
+						$background-lefts:  0   1   2   0   1   2   0   1   2   0   1   2;
+						$background-tops:   0   0   0   1   1   1   2   2   2   3   3   3;
+
+						@for $i from 1 through 12 {
+							&:nth-of-type(#{$i}):before {
+								width: nth($widths,$i)+px;
+								background-position: #{-440*nth($background-lefts,$i)+px} #{-66*nth($background-tops,$i)+px}
 							}
 						}
 					}
+				}
+
+				p {
+					position: absolute;
+					width: 520px;
+					top: 185px;
+					transform: translateY(-50%);
 				}
 				
 				button {
 					position: absolute;
 					right: 40px;
 					bottom: 40px;
+					transition: opacity .5s;
 				}
 			}
 		}
@@ -1214,26 +1140,21 @@ img.background {
 						justify-content: center;
 
 						li {
-							width: 191px;
-							height: 400px;
-							background-size: auto 100%;
-							background-position: left top;
+							width: 183px;
+							height: 384px;
 							margin: 0 25px;
+							// I'm using background-image here because it can be changed depending on choices made in previous frames.
+							background-image: url(../media/S_11/sprite_11.2.png);
+							background-size: 1200px;
 
-							&:nth-of-type(1) {
-								background-image: url(../media/S_11/img_11.6.png);
-							}
+							@for $i from 1 through 3 {
+								&:nth-of-type(#{$i}) {
+									background-position: #{391-(400*$i)+px} -442px;
 
-							&:nth-of-type(2) {
-								background-image: url(../media/S_11/img_11.3.png);
-							}
-
-							&:nth-of-type(3) {
-								background-image: url(../media/S_11/img_11.7.png);
-							}
-
-							&:hover {
-								background-position: right top;
+									&:hover {
+										background-position: #{191-(400*$i)+px} -442px;
+									}
+								}
 							}
 						}
 					}
@@ -1247,96 +1168,19 @@ img.background {
 					.area {
 
 						div {
+							background-image: url(../media/S_12/sprite_12.6.png);
 
 							&.bun {
 								opacity: 0;
 							}
 
-							&.tank {
-								background-image: url(../media/S_12/img_12.28a.png);
+							$items:           tank straps boots hood pants jacket gloves mask light  axe walkie punch camera;
+							$background-lefts: 660    446     5  225   443    662      1  658    -3  222    440   220    660;
+							$background-tops:    0    797   401  402   401    402    800  800  1196 1195   1194   798   1200;
 
-								&.straps {
-									background-image: url(../media/S_12/img_12.28j.png);
-								}
-							}
-
-							&.body {
-								background-image: url(../media/S_12/img_12.28bM.png);
-							}
-
-							&.boots {
-								background-image: url(../media/S_12/img_12.28c.png);
-							}
-
-							&.hood {
-								background-image: url(../media/S_12/img_12.28d.png);
-							}
-
-							&.pants {
-								background-image: url(../media/S_12/img_12.28f.png);
-							}
-
-							&.jacket {
-								background-image: url(../media/S_12/img_12.28g.png);
-							}
-
-							&.gloves {
-								background-image: url(../media/S_12/img_12.28h.png);
-							}
-
-							&.mask {
-								background-image: url(../media/S_12/img_12.28k.png);
-							}
-
-							&.light {
-								background-image: url(../media/S_12/img_12.28l.png);
-							}
-
-							&.axe {
-								background-image: url(../media/S_12/img_12.28n.png);
-							}
-
-							&.walkie {
-								background-image: url(../media/S_12/img_12.28m.png);
-							}
-
-							&.radio {
-								background-image: url(../media/S_12/img_12.28o.png);
-							}
-
-							&.punch {
-								background-image: url(../media/S_12/img_12.28i.png);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		&.skin-light {
-			.slides-component {
-				.need {
-					.dropzone-component {
-						.area {
-							div {
-								&.body {
-									background-image: url(../media/S_12/img_12.28bL.png);
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		&.skin-dark {
-			.slides-component {
-				.need {
-					.dropzone-component {
-						.area {
-							div {
-								&.body {
-									background-image: url(../media/S_12/img_12.28bD.png);
+							@for $i from 1 through 13 {
+								&.#{nth($items,$i)} {
+									background-position: #{-1*nth($background-lefts,$i)+px} #{-1*nth($background-tops,$i)+px};
 								}
 							}
 						}
@@ -1353,7 +1197,7 @@ img.background {
 					.area {
 						div {
 							&.body {
-								background-image: url(../media/S_12/img_12.27cL.png);
+								background-position: #{0px} #{0px};
 							}
 						}
 					}
@@ -1369,12 +1213,41 @@ img.background {
 					.area {
 						div {
 							&.body {
-								background-image: url(../media/S_12/img_12.27cD.png);
+								background-position: #{-440px} #{0px};
 							}
 						}
 					}
 				}
 			}
+		}
+	}
+
+	&.SFX,
+	&.VOICE-OVER {
+		.reveal-close {
+			pointer-events: none;
+			opacity: 0;
+		}
+	}
+}
+
+.draggable {
+	$items:           pants jacket hood boots mask gloves tank walkie axe light camera punch;
+	$background-lefts:    0      1    2     3    0      1    2      3   0     1      2     3;
+	$background-tops:     0      0    0     0    1      1    1      1   2     2      2     2;
+	$widths:             65     85   58    65   70     72  104     50  70    52     80    70;
+	$heights:            90     90   80    80   90     80   44     80  80    80     80    80;
+
+	@for $i from 1 through 12 {
+		&[pl-id=#{nth($items,$i)}] {
+			display: inline-block;
+			background-image: url(../media/S_12/sprite_12.3.png) !important;
+			background-repeat: no-repeat;
+			background-size: 500px;
+			vertical-align: middle;
+			width: nth($widths,$i)+px;
+			height: nth($heights,$i)+px;
+			background-position: #{-4-(122*nth($background-lefts,$i))+px} #{-3-(109*nth($background-tops,$i))+px};
 		}
 	}
 }
@@ -1418,7 +1291,6 @@ img.background {
 		color: transparent;
 		margin: 0;
 		display: block;
-		-webkit-animation: burn 1.5s linear infinite alternate;
 		animation: burn 1.5s linear infinite alternate;
 		-moz-animation: none;
 	}
@@ -1452,49 +1324,4 @@ img.background {
 canvas {
 	position: absolute;
 	z-index: -1;
-}
-
-@-webkit-keyframes vanishOut {
-  0% {
-    opacity: 1;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(1, 1);
-    -webkit-filter: blur(0px);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(2, 2);
-    -webkit-filter: blur(20px);
-  }
-}
-@keyframes vanishOut {
-  0% {
-    opacity: 1;
-    transform-origin: 50% 50%;
-    transform: scale(1, 1);
-    -webkit-filter: blur(0px);
-  }
-
-  100% {
-    opacity: 0;
-    transform-origin: 50% 50%;
-    transform: scale(2, 2);
-    -webkit-filter: blur(20px);
-  }
-}
-
-@keyframes burn {
-	0%   { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
-	45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
-	70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
-	100% { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
-}
-
-@-webkit-keyframes burn {
-	0%   { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .4em #ffae34, .2em -.3em .3em #ec760c, -.2em -.4em .4em #cd4606, .1em -.5em .7em #973716, .1em -.7em .7em #451b0e; }
-	45%  { text-shadow: .1em -.2em .5em #fefcc9, .15em 0 .4em #feec85, -.1em -.25em .5em #ffae34, .15em -.45em .5em #ec760c, -.1em -.5em .6em #cd4606, 0 -.8em .6em #973716, .2em -1em .8em #451b0e; }
-	70%  { text-shadow: -.1em 0 .3em #fefcc9, .1em -.1em .3em #feec85, -.2em -.2em .6em #ffae34, .2em -.3em .4em #ec760c, -.2em -.4em .7em #cd4606, .1em -.5em .7em #973716, .1em -.7em .9em #451b0e; }
-	100% { text-shadow: -.1em -.2em .6em #fefcc9, -.15em 0 .6em #feec85, .1em -.25em .6em #ffae34, -.15em -.45em .5em #ec760c, .1em -.5em .6em #cd4606, 0 -.8em .6em #973716, -.2em -1em .8em #451b0e; }
 }
