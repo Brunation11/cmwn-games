@@ -4,7 +4,6 @@
 // import 'js-interactive-library';
 // Use when doing local changes to the library
 import '../../../../../js-interactive-library';
-
 import './config.game';
 
 // SCREENS

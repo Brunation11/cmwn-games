@@ -4,7 +4,9 @@ pl.game.component('screen-basic', function () {
 		return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
 	};
 
-	this.ready = function () {
+	this.on('ready', function (_event) {
+		if(!this.is(_event.target)) return;
+
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
@@ -14,7 +16,9 @@ pl.game.component('screen-basic', function () {
 				if (sfx) sfx.play();
 			}));
 		}
-	};
+
+		if(this.state(this.STATE.OPEN)) this.start();
+	});
 	
 	this.next = function () {
 		var current, nextScreen, buttonSound;
