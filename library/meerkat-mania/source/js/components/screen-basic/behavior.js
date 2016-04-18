@@ -1,11 +1,33 @@
 pl.game.component('screen-basic', function () {
 
+	this.playSound = function(_sound) {
+		var delay, $sound;
+
+		if(!_sound) return;
+
+		$sound = $(_sound);
+		delay = $sound.attr('pl-delay');
+		if(_sound.type === 'voiceOver') {
+			this.currentVO = _sound;
+		} else if(_sound.type === 'sfx') {
+			this.currentSFX = _sound;
+		}
+
+		if (delay) {
+			return this.delay(delay, _sound.play.bind(_sound));
+		} else {
+			return _sound.play();
+		}
+	};
+
 	this.on('ready', function (_event) {
 		if (this.audio) {
 			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
 				_event.response(!_event.target.config("dontautoplay"));
 			});
 		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 
 	this.next = function () {
@@ -43,7 +65,7 @@ pl.game.component('screen-basic', function () {
 
 		if (this.audio) {
 			this.startAudio();
-			this.audio.sfx.play('start');
+			this.playSound(this.audio.sfx.start);
 		}
 
 		if (entities) {
@@ -53,6 +75,12 @@ pl.game.component('screen-basic', function () {
 		}
 
 		return this;
+	};
+
+	this.startAudio = function () {
+		if (!this.audio) return;
+		this.audio.background.play();
+		this.playSound(this.audio.voiceOver);
 	};
 
 	this.stop = function () {
@@ -70,9 +98,18 @@ pl.game.component('screen-basic', function () {
 		return this;
 	};
 
+	this.stopAudio = function () {
+		if (!this.audio) return;
+		if(this.currentVO) this.currentVO.stop();
+		if(this.currentSFX) this.currentSFX.stop();
+	};
+
 	this.on('ui-open', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
-			this.start();
+			this.on('transitionend', function() {
+				this.start();
+				this.off('transitionend');
+			}.bind(this));
 		}
 
 		if(this.properties.gameClass) {
