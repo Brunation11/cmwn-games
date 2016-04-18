@@ -3,7 +3,6 @@
  * @module
  */
 import 'js-interactive-library';
-// Use when doing local changes to the library
 // import '../../../../../js-interactive-library';
 import './config.game';
 
@@ -21,6 +20,8 @@ pl.game('drought-out', function () {
 	var selectScreen = function() {
 		this.respond('select', function(_event) {
 			var vo;
+
+			if(!_event.behaviorTarget.is('li')) return;
 
 			if(_event.behaviorTarget.attr('pl-correct') == null) {
 				vo = this.audio.sfx.incorrect;
