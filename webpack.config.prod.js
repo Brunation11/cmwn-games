@@ -21,9 +21,10 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
-            mangle: {},
-            sourceMap: false,
-            compressor: {
+            mangle: false,
+            sourceMap: true,
+            compress: {
+                unused: false,
                 warnings: false
             }
         }),

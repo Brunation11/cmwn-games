@@ -6,7 +6,6 @@ export default function carousel () {
 		if (!this.is(_event.target)) return;
 		
 		this.$targets = this.find('.target img');
-		this.setTarget();
 	});
 
 	this.setTarget = function(_idx) {
@@ -24,6 +23,8 @@ export default function carousel () {
 				this.score.properties.max = this.amount;
 				this.score.reset();
 			}
+		} else {
+			this.deselect(this.$targets);
 		}
 	};
 
@@ -48,11 +49,11 @@ export default function carousel () {
 
 		this.carousel.start();
 		this.modal.item(8);
-		this.incomplete();
+		this.setTarget();
 
 		this.game.audio.sfx.typing.play();
 		this.delay('3.5s', function() {
-			this.game.audio.sfx.typing.pause();
+			this.game.audio.sfx.typing.stop();
 		});
 	});
 

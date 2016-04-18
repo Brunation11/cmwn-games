@@ -2,10 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -25,19 +26,47 @@ pl.game('litterbug', function () {
 			}
 		});
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
 
 	});
 
+	this.screen('clean-up', function() {
+
+		this.state('incomplete', '-COMPLETE', {
+			didSet: function (_target) {
+				_target.isComplete = false;
+			}
+		});
+
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+			this.game.removeClass('sun');
+			this.incomplete(this);
+			this.incomplete(this.slides.trash);
+			this.slides.trash.ready();
+		});
+	});
+
 	this.screen('video', function() {
+		this.on('ui-open', function() {
+			setTimeout(function() {
+				this.start();
+			}.bind(this), 250);
+		});
+
 		this.on("ui-close", function() {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
@@ -46,6 +75,8 @@ pl.game('litterbug', function () {
 
 	this.screen('flip', function () {
 		this.next = function () {
+			var buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+			if (buttonSound) buttonSound.play();
 			this.game.quit.okay();
 		};
 

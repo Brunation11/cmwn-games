@@ -1,24 +1,19 @@
 pl.game.component('screen-basic', function () {
-	this.currentVO = null;
+
+	this.on('ready', function (_event) {
+		if(!this.is(_event.target)) return;
+
+		if(this.audio) {
+			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
+				_event.response(!_event.target.config("dontautoplay"));
+			});
+		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
+	});
 
 	this.allowAction = function() {
 		return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
-	};
-
-	this.playSound = function (_sound) {
-		var delay;
-
-		delay = $(_sound).attr('pl-delay');
-
-		if($(_sound).hasClass('voice-over')) {
-			this.currentVO = _sound;
-		}
-
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
 	};
 
 	this.next = function () {
@@ -52,78 +47,62 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
+		var entities = this.hasOwnProperty('entities') && this.entities;
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
+		this.startAudio();
+		if (this.audio) this.audio.sfx.play('start');
 
-		if (bgSound) {
-			this.game.bgSound = bgSound;
-			bgSound.play();
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.isMemberSafe('start')) _entity.start();
+			});
 		}
-		if(fxSound) fxSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) this.playSound(voSound);
-
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
 		return this;
 	};
 
-	this.stop = function() {
-		if(this.timeoutID) {
-			clearTimeout(this.timeoutID);
+	this.stop = function () {
+		var entities = this.hasOwnProperty('entities') && this.entities;
+
+		this.stopAudio();
+		this.kill('delay');
+
+		if (entities) {
+			entities.forEach(function (_entity) {
+				if (_entity.isMemberSafe('start')) _entity.stop();
+			});
 		}
 
-		if(this.currentVO) {
-			this.currentVO.pause();
-			this.currentVO.currentTime = 0;
+		return this;
+	};
+
+	this.complete = function () {
+		if(this.is(this.screen)) {
+			var screenComplete = pl.util.resolvePath(this, 'audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+			if(screenComplete) screenComplete.play();
 		}
+
+		return this.proto();
 	};
 
 	this.on('ui-open', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.start();
-		}
+		if (this.is(_event.target)) {
+			if (this.isReady) this.start();
+			if (this.completed() && !this.isComplete) this.complete();
 
-		if(this.properties.gameClass) {
-			this.game.addClass(this.properties.gameClass);
-		}
-
-		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
-			this.complete();
+			if (this.properties.gameClass) {
+				this.game.addClass(this.properties.gameClass);
+			}
 		}
 	});
 
-	this.on('ui-leave', function (_event) {
-		if(this.properties.gameClass) {
-			this.game.removeClass(this.properties.gameClass);
-		}
-
-		if (this.isReady && this === _event.targetScope) {
+	this.on('ui-leave ui-close', function (_event) {
+		if (this.is(_event.target)) {
 			this.stop();
-		}
-	});
 
-	this.on('ui-close', function (_event) {
-		if(this.properties.gameClass) {
-			this.game.removeClass(this.properties.gameClass);
-		}
-
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
-	});
-
-	this.on('ready', function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
-
-				sfx = pl.util.resolvePath(this, 'screen.audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-				if (sfx) this.playSound(sfx);
-			}));
+			if (this.properties.gameClass) {
+				this.game.removeClass(this.properties.gameClass);
+			}
 		}
 	});
 });
