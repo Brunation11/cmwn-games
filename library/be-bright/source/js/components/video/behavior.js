@@ -1,10 +1,9 @@
 pl.game.component('video', function () {
 
 	this.start = function() {
-		var self = this;
 		this.video.on('ended', function() {
-			self.screen.complete();
-		});
+			this.complete();
+		}.bind(this));
 		this.video[0].play();
 	};
 

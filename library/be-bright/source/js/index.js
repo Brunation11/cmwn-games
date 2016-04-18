@@ -2,8 +2,8 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 import './components/title/behavior';
@@ -17,6 +17,30 @@ import './components/video/behavior';
 
 pl.game('be-bright', function () {
 
+	var screens, restart, vScreens, startVideo;
+
+	restart = function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.unhighlight(this.find('.HIGHLIGHTED'));
+			this.selectableReveal.reveal.closeAll();
+		});
+	};
+
+	startVideo = function() {
+		this.on('ui-open', function() {
+			if(this.game.bgSound) this.game.bgSound.pause();
+			setTimeout(function() {
+				this.video.start();
+			}.bind(this), 250);
+		});
+		this.on("ui-close", function() {
+			this.video.pause();
+			if(this.game.bgSound) this.game.bgSound.play();
+		});
+	};
+
 	this.screen('title', function () {
 
 		this.ready = function () {
@@ -28,33 +52,38 @@ pl.game('be-bright', function () {
 			});
 		};
 
+		this.on('ui-open', function (_event) {
+			if (this.isReady && this === _event.targetScope) {
+				this.start();
+			}
+		});
+
 		this.startAudio = function () {
 			this.title.startAudio();
 		};
 
 	});
 
-	this.screen('video', function() {
-		this.on('ui-open', function() {
-			if(this.game.bgSound) this.game.bgSound.pause();
-			this.video.start();
-		});
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
+	screens = ['bulbs', 'switches'];
+
+	screens.map(function(name) {
+		this.screen(name, restart);
+	}.bind(this));
+
+	this.screen('pig', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.deselect(this.find('.SELECTED'));
+			this.multipleChoice.removeClass('COMPLETE').isComplete = false;
 		});
 	});
 
-	this.screen('video-2', function() {
-		this.on('ui-open', function() {
-			if(this.game.bgSound) this.game.bgSound.pause();
-			this.video.start();
-		});
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
-		});
-	});
+	vScreens = ['video', 'video-2'];
+
+	vScreens.map(function(name) {
+		this.screen(name, startVideo);
+	}.bind(this));
 
 	this.screen('flip', function () {
 
