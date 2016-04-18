@@ -68,4 +68,6 @@ pl.game.component('multiple-choice', function () {
 		}
 	};
 
+	this.start = function() {};
+
 });

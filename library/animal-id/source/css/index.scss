@@ -16,8 +16,9 @@ body {
 	width: 960px;
 	margin: auto;
 	font-size: 20px;
-	background: url(../media/images/background/title.png) bottom center no-repeat;
+	background: bottom center no-repeat;
 	background-size: cover;
+	background-image: url(../media/images/background/title.png);
 
 	&.id {
 		background-image: url(../media/images/background/id.png);
@@ -30,6 +31,13 @@ body {
 	&.nose {
 		background-image: url(../media/images/background/nose.png);
 	}
+}
+
+/**
+ * Removes gray box when tapping on actionables.
+ */
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
 }
 
 // preload assets
@@ -118,38 +126,6 @@ h3 {
 	margin: 0 0 30px;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(0,0,0,0.5);
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
-}
-
 .canvas-src { display: none; }
 
 .screen {
@@ -157,7 +133,6 @@ h3 {
 	top: 0; bottom: 0;
 	left: 0; right: 0;
 	opacity: 0;
-	display: none;
 	transition: opacity 1s, transform 0.5s;
 	transform: translateX(100%);
 }
@@ -167,10 +142,6 @@ h3 {
 .screen.OPEN {
 	opacity: 1;
 	transform: translateX(0);
-}
-
-.screen.READY {
-	display: block;
 }
 
 .screen.LEAVE {
@@ -239,7 +210,6 @@ h3 {
 #title {
 
 	button {
-
 		&.next-screen {
 			width: 200px;
 			height: 100px;
@@ -253,6 +223,22 @@ h3 {
 
 		&.prev-screen {
 			display: none;
+		}
+	}
+
+	.content-group {
+		opacity: 0;
+		transition: opacity .5s 1.5s;
+	}
+
+	&.READY.OPEN {
+		.content-group {
+			opacity: 1;
+		}
+
+		img {
+			animation-delay: 1.5s;
+			animation-name: tada;
 		}
 	}
 }
@@ -914,7 +900,7 @@ $area-left: 0 7 1 6 2 5 3 4;
 }
 
 .POSITIONED {
-    transform-origin: top left;
+	transform-origin: top left;
 }
 
 .POSITIONED.absolute {

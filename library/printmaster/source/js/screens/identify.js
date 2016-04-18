@@ -2,15 +2,27 @@
  * Printmaster - Identify Screen
  */
 export default function identify () {
-	this.on('ready', function(_event) {
-		var correct;
+	this.on('ui-open', function(_event) {
+		if(!this.is(_event.target)) return;
 
-		if (!this.is(_event.target)) return;
+		this.start();
+
+		if(this.state(this.STATE.COMPLETE)) {
+			this.selectable.removeClass('COMPLETE').isComplete = false;
+			this.setItem();
+		}
+	});
+
+	this.start = function() {
+		var correct;
 
 		correct = pl.Queue.create();
 
 		correct.on('complete', this.bind(function () {
-			this.delay('1.5s',this.audio.sfx.confirmed.play.bind(this.audio.sfx.confirmed));
+			this.delay('1.5s', function() {
+				this.audio.sfx.confirmed.play();
+				this.selectable.complete();
+			});
 		}));
 
 		this.items = this
@@ -25,8 +37,7 @@ export default function identify () {
 
 		this.headers = this.find('.header img');
 		this.answers = this.find('.items li');
-		this.setItem();
-	});
+	};
 
 	this.setItem = function(_idx) {
 		if(this.item && this.items[this.item]) this.items[this.item].ready();

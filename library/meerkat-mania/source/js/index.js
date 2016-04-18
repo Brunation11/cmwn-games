@@ -2,10 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -24,15 +25,20 @@ pl.game('meerkat-mania', function () {
 			}
 		});
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
 
 	});
 
@@ -64,6 +70,12 @@ pl.game('meerkat-mania', function () {
 	});
 
 	this.screen('video', function() {
+		this.on('ui-open', function() {
+			setTimeout(function() {
+				this.video.start();
+			}.bind(this), 250);
+		});
+
 		this.on("ui-close", function() {
 			this.video.pause();
 			if(this.game.bgSound) this.game.bgSound.play();
@@ -71,6 +83,14 @@ pl.game('meerkat-mania', function () {
 	});
 
 	this.screen('feel', function () {
+
+		this.on('ready', function (_event) {
+			if (!this.is(_event.target)) return;
+
+			this.selectable.audio.voiceOver.on('ended', function (_ended) {
+				this.complete();
+			}.bind(this.selectable));
+		});
 
 		this.respond('select', function (_event) {
 			var index, stateMethod;
@@ -80,9 +100,8 @@ pl.game('meerkat-mania', function () {
 
 			if (~index) {
 				this[stateMethod](_event.behaviorTarget);
-				if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-				if(this.selectable.audio.voiceOver[index]) this.selectable.audio.voiceOver[index].play();
-				this.complete();
+				this.audio.sfx.play('correct');
+				this.selectable.audio.voiceOver.play(index);
 			}
 		});
 	});

@@ -52,7 +52,7 @@
 		}
 	}
 
-	&.COMPLETE {
+	.selectable-component.COMPLETE {
 		.items {
 			pointer-events: none;
 		}

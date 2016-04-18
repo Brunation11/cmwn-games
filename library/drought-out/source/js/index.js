@@ -2,10 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/background/behavior';
@@ -33,9 +34,14 @@ pl.game('drought-out', function () {
 	};
 
 	this.screen('title', function () {
-		this.ready = function () {
-			this.open();
-			this.close($('#loader'));
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
 		};
 
 		this.on('ui-open', function (_event) {
@@ -114,7 +120,7 @@ pl.game('drought-out', function () {
 		});
 
 		this.entity('selectable', function () {
-			
+
 			this.shouldSelect = function (_$target) {
 				if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
 					return !this.screen.state(this.STATE.VOICE_OVER);
@@ -129,27 +135,21 @@ pl.game('drought-out', function () {
 	this.screen('conserve', function() {
 		var item = 0;
 
-		this.behavior('openDoor', function() {
-			if(!this.state(this.STATE.VOICE_OVER)) {
+		this.openDoor = function() {
+			if(this.shouldProceed()) {
 				this.select(this);
 				this.reveal.item(item++);
 				this.audio.sfx.open.play();
 			}
-		});
-
-		this.behavior('ended', function() {
-			this.audio.sfx.close.play();
-			this.deselect(this);
-		});
+		};
 
 		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
+			if (!(this.is(_event.target) && this.reveal.audio)) return;
 
-			if(this.reveal && this.reveal.audio && this.reveal.audio.voiceOver) {
-				this.reveal.audio.voiceOver.forEach(function(audio) {
-					audio.onended = this.ended.bind(this);
-				}.bind(this));
-			}
+			this.reveal.audio.voiceOver.on('ended', function(audio) {
+				this.audio.sfx.close.play();
+				this.deselect();
+			}.bind(this));
 		});
 	});
 
@@ -164,6 +164,5 @@ pl.game('drought-out', function () {
 			}
 		});
 	});
-
 
 });

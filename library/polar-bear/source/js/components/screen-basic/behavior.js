@@ -4,7 +4,9 @@ pl.game.component('screen-basic', function () {
 		return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
 	};
 
-	this.ready = function () {
+	this.on('ready', function (_event) {
+		if(!this.is(_event.target)) return;
+
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
@@ -14,7 +16,9 @@ pl.game.component('screen-basic', function () {
 				if (sfx) sfx.play();
 			}));
 		}
-	};
+
+		if(this.state(this.STATE.OPEN)) this.start();
+	});
 	
 	this.next = function () {
 		var current, nextScreen, buttonSound;
@@ -91,13 +95,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
-
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-
-		if (bgSound) bgSound.play();
-		if (voSound) voSound.play();
+		this.startAudio();
 
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
@@ -122,7 +120,7 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
-	this.on('ui-leave', function (_event) {
+	this.on('ui-close', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
 			this.stop();
 		}

@@ -1,11 +1,10 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
 // Use when doing local changes to the library
-// import '../../../../../js-interactive-library/build/play.js';
+import '../../../../../js-interactive-library';
 
-import './testPlatformIntegration';
 import './config.game';
 
 // SCREENS
@@ -13,6 +12,7 @@ import infoQuestion from './screens/info-question';
 import flushIt from './screens/flush-it';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-title/behavior';
 import './components/screen-quit/behavior';
@@ -65,5 +65,20 @@ pl.game('twirl-n-swirl', function () {
 
 			return this.proto();
 		};
+
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 });
