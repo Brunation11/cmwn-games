@@ -1,9 +1,9 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
 // Use when doing local changes to the library
-// import '../../../../../js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -63,5 +63,20 @@ pl.game('twirl-n-swirl', function () {
 
 			return this.proto();
 		};
+
+		this.next = function () {
+			this.game.quit.okay();
+		};
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 });
