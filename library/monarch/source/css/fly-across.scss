@@ -1,4 +1,10 @@
 #fly-across {
+	> .center > div {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+
 	img.hidden {
 		display: none;
 	}
