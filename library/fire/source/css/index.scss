@@ -160,36 +160,7 @@ img.background {
 }
 
 .spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
 	background: $spinner-color;
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-	color: $white;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
 }
 
 .canvas-src { display: none; }

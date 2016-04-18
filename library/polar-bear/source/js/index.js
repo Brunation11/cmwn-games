@@ -2,12 +2,13 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
 // Use when doing local changes to the library
-// import '../../../../../js-interactive-library/build/play.js';
+import '../../../../../js-interactive-library/build/play.js';
 
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -24,14 +25,10 @@ import './components/cannon/behavior';
 pl.game('polar-bear', function () {
 
 	this.screen('title', function () {
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
 		this.startAudio = function () {

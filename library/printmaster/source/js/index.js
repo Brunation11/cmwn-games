@@ -2,15 +2,15 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
 import identify from './screens/identify';
 import carousel from './screens/carousel';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -36,23 +36,18 @@ pl.game('printmaster', function () {
 					this.game.audio.sfx.typing.stop();
 				});
 			});
+			this.on('ui-close ui-leave', function() {
+				this.game.audio.sfx.typing.stop();
+			});
 		};
 	}
 
 	this.screen('title', function () {
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) {
-				this.delay(0, function() {
-					this.open();
-					this.close(this.game.loader);
-				});
-			}
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
 		this.on('ui-open', function (_event) {
@@ -138,5 +133,15 @@ pl.game('printmaster', function () {
 		});
 	});
 
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 });

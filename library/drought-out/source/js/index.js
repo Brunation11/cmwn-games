@@ -6,6 +6,7 @@ import 'js-interactive-library';
 // import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/background/behavior';
@@ -35,10 +36,11 @@ pl.game('drought-out', function () {
 	};
 
 	this.screen('title', function () {
-		this.ready = function () {
-			this.open();
-			this.close(this.game.loader);
-		};
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
 
 		this.startAudio = function () {
 			this.title.audio.background.play();

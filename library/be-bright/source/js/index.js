@@ -6,6 +6,7 @@
 import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../..//shared/js/screen-ios-splash';
 import './components/title/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
@@ -42,19 +43,19 @@ pl.game('be-bright', function () {
 	};
 
 	this.screen('title', function () {
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
 
-		this.ready = function () {
-			this.open();
-			this.close(this.game.loader);
-			this.delay('3s', function() {
-				this.complete();
-				this.title.audio.sfx.play();
-			});
-		};
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
 
 		this.on('ui-open', function (_event) {
 			if (this.isReady && this === _event.targetScope) {
 				this.start();
+				this.delay('3s', function() {
+					this.complete();
+					this.title.audio.sfx.play();
+				});
 			}
 		});
 
