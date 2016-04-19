@@ -25,17 +25,6 @@ pl.game.component('selectable-reveal', function () {
 
 	});
 
-	this.entity('reveal', function () {
-		this.on('ready', function (_event) {
-			if (!this.is(_event.targetScope)) return;
-
-			this.screen.on('audio-ended', this.bind(function (_event) {
-				this.enable('.items .OPEN button.close-reveal');
-			}));
-
-		});
-	});
-
 	this.ready = function () {
 		var correct;
 
