@@ -36,7 +36,7 @@ pl.game.component('selectable-remove', function () {
 	this.shouldSelect = function (_target) {
 		var $target = $(_target);
 		if (!$target.hasClass(this.STATE.HIGHLIGHTED) && !$target.is('[pl-incorrect]')) {
-			return !this.screen.state(this.STATE.VOICE_OVER);
+			return this.screen.allowAction();
 		}
 
 		return false;
@@ -52,8 +52,11 @@ pl.game.component('selectable-remove', function () {
 			this.game.addClass('sun');
 		}));
 
+		this.$items = this.find('.items li:not([pl-incorrect])');
+		this.unhighlight(this.$items);
+
 		this.items = this
-			.find('.items li:not([pl-incorrect])')
+			.$items
 			.map(function (_index, _node) {
 				correct.add(_index);
 				return _node;

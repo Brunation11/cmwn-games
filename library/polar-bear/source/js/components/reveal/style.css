@@ -1,15 +1,16 @@
 .reveal-component {
 	opacity: 0;
-	transition: opacity 1s;
+	transition: opacity 1s, z-index 0s;
+	z-index: 1;
 }
 
 .reveal-component.OPEN {
 	opacity: 1;
-	z-index: auto;
 }
 
 .reveal-component.ANIM-DONE {
 	z-index: -1;
+	transition: opacity 1s, z-index 0s 1s;
 }
 	
 	.reveal-component ul {

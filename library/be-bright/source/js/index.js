@@ -2,10 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../..//shared/js/screen-ios-splash';
 import './components/title/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
@@ -17,47 +18,82 @@ import './components/video/behavior';
 
 pl.game('be-bright', function () {
 
-	this.screen('title', function () {
+	var screens, restart, vScreens, startVideo;
 
-		this.ready = function () {
-			this.open();
-			this.close(this.game.loader);
-			this.delay('3s', function() {
-				this.complete();
-				if(this.title.audio.sfx) this.title.audio.sfx.play();
-			});
+	restart = function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.unhighlight(this.find('.HIGHLIGHTED'));
+			this.selectableReveal.reveal.closeAll();
+		});
+	};
+
+	startVideo = function() {
+		this.on('ui-open', function() {
+			if(this.game.bgSound) this.game.bgSound.pause();
+			setTimeout(function() {
+				this.video.start();
+			}.bind(this), 250);
+		});
+		this.on("ui-close", function() {
+			this.video.pause();
+			if(this.game.bgSound) this.game.bgSound.play();
+		});
+	};
+
+	this.screen('title', function () {
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
+
+		this.on('ui-open', function (_event) {
+			if (this.isReady && this === _event.targetScope) {
+				this.start();
+				this.delay('3s', function() {
+					this.complete();
+					this.title.audio.sfx.play();
+				});
+			}
+		});
+
+		this.startAudio = function () {
+			this.title.startAudio();
 		};
 
 	});
 
-	this.screen('video', function() {
-		this.on('ui-open', function() {
-			if(this.game.bgSound) this.game.bgSound.pause();
-			this.video.start();
-		});
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
+	screens = ['bulbs', 'switches'];
+
+	screens.map(function(name) {
+		this.screen(name, restart);
+	}.bind(this));
+
+	this.screen('pig', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			this.deselect(this.find('.SELECTED'));
+			this.multipleChoice.removeClass('COMPLETE').isComplete = false;
 		});
 	});
 
-	this.screen('video-2', function() {
-		this.on('ui-open', function() {
-			if(this.game.bgSound) this.game.bgSound.pause();
-			this.video.start();
-		});
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
-		});
-	});
+	vScreens = ['video', 'video-2'];
+
+	vScreens.map(function(name) {
+		this.screen(name, startVideo);
+	}.bind(this));
 
 	this.screen('flip', function () {
-		this.on('audio-ended', function (_event) {
-			if (this.audio.voiceOver !== _event.target) return;
-			this.stampImg.addClass('START');
-			this.audio.sfx.stamp.play();
-		});
+
+		this.ready = function () {
+			this.audio.voiceOver.on('ended', function (_event) {
+				this.stampImg.addClass('START');
+				this.audio.sfx.stamp.play();
+			}.bind(this));
+		};
 
 		this.next = function () {
 			this.game.quit.okay();
