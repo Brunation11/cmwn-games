@@ -49,6 +49,10 @@
 		background-position: -740px 0;
 	}
 
+	.pl-game.MOBILE .selectable-remove-component .net {
+		display: none;
+	}
+
 	.screen:not(.OPEN) .selectable-remove-component .net,
 	.screen.COMPLETE .selectable-remove-component .net {
 		opacity: 0;

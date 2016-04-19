@@ -110,7 +110,7 @@ pl.game.component('selectable-all', function () {
 	this.behavior('pick', function (_$target) {
 		var message = this.count;
 
-		if (_$target.attr('pl-correct') == null || this.screen.isComplete || this.screen.state(this.STATE.VOICE_OVER)) return;
+		if (_$target.attr('pl-correct') == null || (!this.game.demoMode && (this.screen.isComplete || this.screen.state(this.STATE.VOICE_OVER)))) return;
 
 		this.screen.requiredQueue.ready(this.count);
 		this.screen.reveal.item(this.count);

@@ -7,7 +7,7 @@ pl.game.component('frame', function () {
 		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
 
 		if (bgSound) bgSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) voSound.play();
+		if (voSound && !voSound.config('dontautoplay')) voSound.play();
 
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 

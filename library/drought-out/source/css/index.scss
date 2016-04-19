@@ -42,7 +42,7 @@ body {
 	background-size: cover;
 
 
-	.background-component {
+	> .background {
 		opacity: 0;
 		transition: opacity .5s;
 		position: absolute;
@@ -51,16 +51,45 @@ body {
 		width: 100%;
 		height: 100%;
 		background-size: cover;
-		background-position: center center
+		background-position: center center;
+
+		&.sun {
+			background-image: url('../media/_BKG/BKG_1.png');
+		}
+
+		&.rocks {
+			background-image: url('../media/_BKG/BKG_2.png');
+		}
+
+		&.cactus {
+			background-image: url('../media/_BKG/BKG_3.png');
+		}
+
+		&.arch {
+			background-image: url('../media/_BKG/BKG_4.png');
+		}
+
+		&.mountains {
+			background-image: url('../media/_BKG/BKG_5.png');
+		}
 	}
 
-	> .background-component.sun,
-	&.rocks > .background-component.rocks,
-	&.cactus > .background-component.cactus,
-	&.arch > .background-component.arch,
-	&.mountains > .background-component.mountains {
+	> .background.sun,
+	&.rocks > .background.rocks,
+	&.cactus > .background.cactus,
+	&.arch > .background.arch,
+	&.mountains > .background.mountains {
 		opacity: 1;
 	}
+}
+
+// for pre-loading assets
+#asset-bin {
+	display: none;
+}
+
+img.hidden {
+	display: none;
 }
 
 button {
@@ -161,38 +190,6 @@ p {
 	margin: 0;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(0,0,0,0.5);
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
-}
-
 .canvas-src { display: none; }
 
 .screen {
@@ -234,18 +231,21 @@ p {
 		margin-right: 5px;
 		right: 0;
 		opacity: 0;
+		pointer-events: none;
 		transform: rotate(-180deg);
 		transition: opacity 1s, transform 1s;
 	}
 
 	.screen.GATED .next-screen {
 		opacity: 0;
+		pointer-events: none;
 		cursor: default;
 	}
 
 	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
+		pointer-events: auto;
 		transform: rotate(0deg);
 		cursor: pointer;
 	}
@@ -347,14 +347,14 @@ img.inline {
 		}
 
 		&.next-screen {
-			width: 135px;
+			width: 140px;
 			height: 78px;
 			right: 10px;
 			bottom: 10px;
-			background-position: -20px -39px;
+			background-position: -15px -39px;
 
 			&:hover {
-				background-position: -20px -198px;
+				background-position: -15px -198px;
 			}
 		}
 	}
@@ -375,82 +375,50 @@ img.inline {
 }
 
 #think {
+	.inline {
+		vertical-align: middle;
+		display: inline-block;
+		height: 80px;
+		width: 330px;
+		background-size: 650px;
+		background-repeat: no-repeat;
+		background-position: 0px -75*15-5+px;
+	}
+
 	.items {
 		display: block;
 		height: auto;
+		margin: 10px 0 0;
 
 		li {
 			display: inline-block;
-			background-size: auto 100%;
+			background-image: url(../media/S_2/sprite_2.1.png);
+			background-size: 650px;
 			background-repeat: no-repeat;
-			background-position: left center;
-			height: 40px;
+			height: 42px;
 			margin: 5px 40px 5px 0;
 
-			&.HIGHLIGHTED,
-			&:hover {
-				background-position: right center;
-			}
+			$words: dry green parched monsoon damp dusty hot no-water thirsty wet tropical arid steamy balmy swampy;
+			$width: 74 120 160 174 114 119 74 180 145 84 162 88 150 128 165;
+			$background-top: 10 11 12 0 1 2 3 4 5 6 7 8 9 13 14;
 
-			&.dry {
-				width: 67px;
-			}
+			@for $i from 1 through 15 {
+				&.#{nth($words,$i)} {
+					width: nth($width,$i)+px;
+					background-position: 0px -75*nth($background-top,$i)-5+px;
 
-			&.green {
-				width: 112px;
+					&.HIGHLIGHTED,
+					&:hover {
+						background-position: -325px -75*nth($background-top,$i)-5+px;
+					}
+				}
 			}
+		}
+	}
 
-			&.parched {
-				width: 150px;
-			}
-
-			&.monsoon {
-				width: 164px;
-			}
-
-			&.damp {
-				width: 104px;
-			}
-
-			&.dusty {
-				width: 109px;
-			}
-
-			&.hot {
-				width: 67px;
-			}
-
-			&.no-water {
-				width: 169px;
-			}
-
-			&.thirsty {
-				width: 135px;
-			}
-
-			&.wet {
-				width: 74px;
-			}
-
-			&.tropical {
-				width: 152px;
-			}
-
-			&.arid {
-				width: 78px;
-			}
-
-			&.steamy {
-				width: 139px;
-			}
-
-			&.balmy {
-				width: 117px;
-			}
-
-			&.swampy {
-				width: 155px;
-			}
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }
@@ -474,7 +442,7 @@ img.inline {
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
@@ -513,9 +481,6 @@ img.inline {
 	100% {top:-220px;opacity:1;}
 }
 
-$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
-$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
-
 #balloons {
 	.items {
 		position: absolute;
@@ -529,32 +494,33 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 		li {
 			position: absolute;
 			width: 180px;
-			height: 200px;
-			background-size: 300% auto;
-			background-position: left center;
+			height: 230px;
+			background-image: url(../media/S_7/sprite_7.2.png) !important;
+			background-size: 675px;
+			background-repeat: no-repeat;
 			cursor: pointer;
-			top: 560px;
+			top: 600px;
 			opacity: 0;
 
-			&.a,
-			&.l,
-			&.fl {
-				background-position: -10px center;
-			}
+			$balloons:       b d wd s c f bt e  g ws r  l k fl  a;
+			$background-top: 0 1  4 5 2 3  6 7 11 10 9 12 8 13 14;
 
-			&:hover {
-				background-position: right center;
+			@for $i from 1 through 15 {
+				&.#{nth($balloons,$i)} {
+					background-position: 0px -250*nth($background-top,$i)+px;
+
+					&:hover {
+						background-position: -225px -250*nth($background-top,$i)+px;
+					}
+
+					&.HIGHLIGHTED {
+						background-position: -450px -250*nth($background-top,$i)+px;
+					}
+				}
 			}
 
 			&.HIGHLIGHTED {
-				background-position: center center;
 				pointer-events: none;
-
-				&.a,
-				&.l,
-				&.fl {
-					background-position: -185px center;
-				}
 			}
 		}
 	}
@@ -570,6 +536,9 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 			li {
 				animation: floatUp 8s infinite linear;
 
+				$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
+				$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
+
 				@for $i from 1 through 15{
 					&:nth-of-type(#{$i}){
 						// the following equation follows this pattern
@@ -581,6 +550,12 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 					}
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }
@@ -631,6 +606,12 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 				width: 150px;
 				background-size: auto 100%;
 				background-position: left top;
+				pointer-events: none;
+
+				&:nth-of-type(1),
+				&.HIGHLIGHTED + li {
+					pointer-events: auto;
+				}
 
 				&.HIGHLIGHTED,
 				&:nth-of-type(1):hover,
@@ -666,6 +647,17 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 					top: 250px;
 					transform: translateY(-50%);
 				}
+			}
+		}
+	}
+}
+
+.pl-game:not(.DEMO) .screen.VOICE-OVER {
+	.selectable-reveal-component {
+		.selectable-component {
+			li,
+			li:nth-of-type(1) {
+				pointer-events: none;
 			}
 		}
 	}
@@ -798,6 +790,12 @@ $durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s;
 			&.HIGHLIGHTED + li .side.a:hover {
 				background-position: -212px top;
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }

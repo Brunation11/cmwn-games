@@ -40,7 +40,13 @@ function defineEntries (_config,_game) {
     return config;
 }
 
-games = (argv.game === undefined) ? lsd('./library') : [argv.game];
+games = (function() {
+    switch (typeof argv.game) {
+        case 'undefined': return lsd('./library');
+        case 'string': return [argv.game];
+        case 'object': if (argv.game) return argv.game;
+    }
+}());
 
 gulp.task('default', ['build-dev']);
 
@@ -97,6 +103,15 @@ gulp.task('sass', function () {
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
     });
+
+    gulp
+        .src(['./library/shared/css/*.scss',
+              './library/shared/css/*.css'])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('style.css'))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(gulp.dest('./build/shared/css'))
+        .pipe(livereload());
 });
 
 gulp.task('sass-prod', function () {
@@ -110,6 +125,7 @@ gulp.task('sass-prod', function () {
             .pipe(concat('style.css'))
             .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(gulp.dest('./build/'+_game+'/css'));
+
     });
 });
 
@@ -173,6 +189,7 @@ gulp.task('watch', function(callback) {
     var game = (games.length > 1) ? '**' : games[0];
     watch([
         '../js-interactive-library/build/play.js',
+        'library/shared/**/*',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',

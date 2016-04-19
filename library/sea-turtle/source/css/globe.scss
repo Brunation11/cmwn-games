@@ -49,14 +49,9 @@
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		transition: opacity 1s;
 
-		&.DISABLED {
-			opacity: 0.8;
-
-			.draggables [pl-draggable] {
-				cursor: default;
-			}
+		&.DISABLED .draggables [pl-draggable] {
+			cursor: default;
 		}
 
 		.background {
@@ -279,8 +274,8 @@
 				&.SELECTED {
 					background-image: url(../media/images/globe/sprite_4.4.png);
 					background-size: auto 40px;
-					background-size: 1320px 57px;
-					background-position: -880px 0px;
+					background-size: 1320px 100%;
+					background-position: -880px 4px;
 					font-weight: normal;
 				}
 
