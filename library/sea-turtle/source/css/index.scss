@@ -10,8 +10,11 @@ html {
 	font-size: 20px;
 	background: url(../media/images/background.png) bottom center no-repeat;
 	background-size: cover;
-	-webkit-user-select: none;
 	user-select: none;
+	// the autoprefixer doesn't add these automatically
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	user-drag: none;
 	cursor: default;
 }
 
@@ -19,6 +22,15 @@ body {
 	position: relative;
 	width: 960px;
 	margin: auto;
+}
+
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
+}
+
+// preload assets
+#asset-bin {
+	display: none;
 }
 
 button {
@@ -41,37 +53,12 @@ h3 {
 	font-size: 1.5em;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
-	background: rgba(255,255,255,0.5);
-	border-radius: 50px;
-
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
 }
 
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-	color: #fff;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
+img.hidden {
+	display: none;
 }
 
 .POSITIONED {
@@ -89,6 +76,8 @@ h3 {
 
 .draggables [pl-draggable] {
 	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
 }
 
 .draggables .DRAG-START,
@@ -96,6 +85,8 @@ h3 {
 .draggable-helper {
 	z-index: 1;
 	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: grabbing;
 }
 
 .draggable-helper.PLUCKED {
@@ -239,17 +230,16 @@ h3 {
 	}
 
 #video .frame {
-	width: 90%;
-	height: 100%;
+	width: 760px;
+	height: 540px;
 }
 
 .video-component {
 	position: absolute;
 	background-image: url(../media/images/video-frame.png);
 	background-size: 100% 100%;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 100%;
+	top: 40px;
+	width: 760px;
 
 	video {
 		position: relative;

@@ -6,7 +6,7 @@ delete require.cache[require.resolve("js-interactive-library")];
 module.exports = {
     context: __dirname + '/library',
     entry: null,
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     resolve: {
         extensions: ['', '.js'],
         modulesDirectories: ['node_modules']
@@ -25,6 +25,8 @@ module.exports = {
             exclude: [/bower_components/, /node_modules/]
         }]
     },
+    postcss: function () {
+        return [autoprefixer];
+    },
     cache: false
 };
-

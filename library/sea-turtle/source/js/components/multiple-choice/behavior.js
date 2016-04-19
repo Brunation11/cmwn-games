@@ -51,7 +51,7 @@ pl.game.component('multiple-choice', function () {
 	this.behavior('answer', function (_$target) {
 		var isCorrect;
 
-		if (!this.isComplete && this.select(_$target)) {
+		if (this.select(_$target)) {
 			isCorrect = validateAnswer.call(this, _$target);
 		}
 

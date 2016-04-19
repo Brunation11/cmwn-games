@@ -8,12 +8,23 @@ pl.game.component('dropzone', function () {
 			this.audio.sfx.drag.play();
 			this.cache = {
 				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: this.size()
+				size: this.size().scale(this.game.transformScale().x)
 			};
 		});
 
 		this.respond('release', function (_event) {
-			if (_event.state.progress.point && this.isPointInBounds(_event.state.progress.point)) {
+			var point, scale;
+
+			if((scale = this.game.transformScale().x) !== 1) {
+				point = [
+							_event.state.start.point[0] + scale * _event.state.progress.distance[0],
+							_event.state.start.point[1] + scale * _event.state.progress.distance[1]
+						];
+			} else {
+				point = _event.state.progress.point;
+			}
+
+			if (point && this.isPointInBounds(point)) {
 				if (this.takes(_event.state.$draggable.id())) {
 					_event.state.$draggable.removeClass('PLUCKED');
 					_event.state.$helper.addClass('DROPED');
@@ -46,7 +57,7 @@ pl.game.component('dropzone', function () {
 	};
 
 	this.isPointInBounds = function (_point, _y) {
-		var point, position;
+		var point, scale;
 
 		point = pl.Point.create(arguments);
 
