@@ -3,7 +3,7 @@
  * @module
  */
 // import 'js-interactive-library';
-import '../../../../../js-interactive-library';
+// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -15,6 +15,9 @@ import './components/frame/behavior';
 import './components/selectable-remove/behavior';
 import './components/no/behavior';
 import './components/video/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('litterbug', function () {
 
