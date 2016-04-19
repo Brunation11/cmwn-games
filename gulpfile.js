@@ -144,13 +144,6 @@ gulp.task('copy-index', function () {
                     if(livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
                 }
             }))
-            .pipe(inject(gulp.src('./testPlatformIntegration.js'), {
-                starttag: '<!-- inject:testPlatformIntegration -->',
-                transform: function (filePath, file) {
-                    console.log('inject', filePath);
-                    return '<script>\n' + file.contents.toString('utf8') + ' test();\n</script>';
-                }
-            }))
             .pipe(gulp.dest('./build/'+_game));
     });
 });

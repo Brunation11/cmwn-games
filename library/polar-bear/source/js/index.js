@@ -4,7 +4,7 @@
  */
 // import 'js-interactive-library';
 // Use when doing local changes to the library
-import '../../../../../js-interactive-library/build/play.js';
+// import '../../../../../js-interactive-library/build/play.js';
 
 import './config.game';
 
@@ -21,6 +21,9 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/cannon/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
 
@@ -347,32 +350,6 @@ pl.game('polar-bear', function () {
 		ga('send', 'event', eventCategory, 'quit');
 
 		return this.proto();
-	};
-
-	this.defineRule = function (_selector_scope, _selector_def, _definition) {
-		var _scope, _selector, source, prop, value;
-		// Resolve arguments.
-		_selector_scope.$els ? // (A) if we are a scope
-			(_scope = _selector_scope, // assign scope arg...
-			typeof _selector_def === 'string' ? // ...also, (B) if arg 2 is a string
-				_selector = _scope.address() + _selector_def: // assing selector arg with scope address:
-				(_selector = _scope.address(), _definition = _selector_def)): // (B) otherwise, assign selector arg to scope address, also assing definition arg
-			(_selector = _selector_scope, _definition = _selector_def); // (A) otherwise, assing selector and definition args.
-
-		source = _selector+' {';
-
-		for (prop in _definition) {
-			if (!_definition.hasOwnProperty(prop)) continue;
-			value = _definition[prop];
-			source += prop.replace(/([A-Z]+)/g, '-$1').toLowerCase()+': '+value+';'
-		}
-
-		source += '}'
-
-		$('<style type="text/css" class="dynanic-styles">'+source+'</style>')
-			.appendTo(document.body);
-
-		return source;
 	};
 
 });
