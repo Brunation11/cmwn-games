@@ -2,7 +2,7 @@
  * Defines the game scope and imports used component behaviors.
  */
 // import 'js-interactive-library';
-import '../../../../../js-interactive-library';
+// import '../../../../../js-interactive-library';
 
 import './config.game';
 
@@ -18,6 +18,9 @@ import './components/multiple-choice/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-remove/behavior';
 import './components/dropzone/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 // Sea Turtle game scope.
 // This selects the element `#sea-turtle`.
@@ -224,40 +227,6 @@ pl.game('sea-turtle', function () {
 		ga('send', 'event', eventCategory, 'quit');
 
 		return this.proto();
-	};
-
-	/**
-	 * Creates a style noded with the given style definition and selector.
-	 * @arg {string} _selector - The CSS selector for the rule.
-	 * @arg {object} _def - Literal with the rule props.
-	 * @returns {string} The generated CSS.
-	 *
-	 * @todo Move to JS-Lib. Make sure new rules get added the same node.
-	 */
-	this.defineRule = function (_selector_scope, _selector_def, _definition) {
-		var _scope, _selector, source, prop, value;
-		// Resolve arguments.
-		_selector_scope.$els ? // (A) if we are a scope
-			(_scope = _selector_scope, // assign scope arg...
-			typeof _selector_def === 'string' ? // ...also, (B) if arg 2 is a string
-				_selector = _scope.address() + _selector_def: // assing selector arg with scope address:
-				(_selector = _scope.address(), _definition = _selector_def)): // (B) otherwise, assign selector arg to scope address, also assing definition arg
-			(_selector = _selector_scope, _definition = _selector_def); // (A) otherwise, assing selector and definition args.
-
-		source = _selector+' {';
-
-		for (prop in _definition) {
-			if (!_definition.hasOwnProperty(prop)) continue;
-			value = _definition[prop];
-			source += prop.replace(/([A-Z]+)/g, '-$1').toLowerCase()+': '+value+';'
-		}
-
-		source += '}'
-
-		$('<style type="text/css" class="dynanic-styles">'+source+'</style>')
-			.appendTo(document.body);
-
-		return source;
 	};
 
 });
