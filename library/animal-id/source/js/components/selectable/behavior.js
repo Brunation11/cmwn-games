@@ -3,6 +3,8 @@ pl.game.component('selectable', function () {
 	this.behavior('select', function (_target) {
 		var $target;
 
+		if(this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
+
 		if (this.event && !_target) {
 			$target = $(this.event.target).closest('li');
 

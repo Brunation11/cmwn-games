@@ -2,10 +2,13 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+// Use when doing local changes to the library
+// import '../../../../../js-interactive-library/build/play.js';
+
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -19,18 +22,26 @@ import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/cannon/behavior';
 
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
+
 pl.game('polar-bear', function () {
 
 	this.screen('title', function () {
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.title.audio.voiceOver.stop('@ALL');
+		};
 	});
 
 	this.screen('map', function () {
@@ -82,14 +93,13 @@ pl.game('polar-bear', function () {
 					correct = pl.Queue.create();
 
 					correct.on('complete', this.bind(function () {
+						var sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+						if (sfx) sfx.play();
 						this.complete();
-						this.delay('2s', function () {
-							this.screen.next();
-						});
 					}));
 
-					this.buffer.width = this.grayMap[0].naturalWidth;
-					this.buffer.height = this.grayMap[0].naturalHeight;
+					this.buffer.width = 500;
+					this.buffer.height = 500;
 
 					$countries = this.find('.country');
 
@@ -113,6 +123,7 @@ pl.game('polar-bear', function () {
 						.toArray();
 
 					this.countries.correct = correct;
+
 				};
 
 				this.isImageTarget = function (_image, _point) {
@@ -128,12 +139,26 @@ pl.game('polar-bear', function () {
 				};
 
 				this.test = function (_cursor) {
-					var offset, cursor, pixel;
+					var offset, cursor, pixel, gameScale;
+
+					if(!this.screen.allowAction()) return false;
 
 					offset = this.grayMap.absolutePosition();
-					cursor = _cursor
-						.scale(1/this.game.zoom).math('floor')
-						.dec(offset);
+					gameScale = this.game.transformScale().x;
+					
+					// FireFox uses transfom scale which
+					// does NOT produce scaled DOM values like `zoom`.
+					if (gameScale !== 1) {
+						cursor = _cursor
+							.dec(offset)
+							.scale(1/this.game.zoom)
+							.math('floor');
+					} else {
+						cursor = _cursor
+							.scale(1/this.game.zoom)
+							.math('floor')
+							.dec(offset);
+					}
 
 					this.countries.every(this.bind(function (_country) {
 						if (this.isImageTarget(this[_country], cursor)) {
@@ -204,7 +229,7 @@ pl.game('polar-bear', function () {
 
 		this.on('ui-select', function (_event) {
 			if (_event.targetScope === this.reveal) {
-				this.reveal.delay('2s', function () {
+				this.reveal.delay('1s', function () {
 					var $selected;
 
 					$selected = this.getSelected();
@@ -221,10 +246,9 @@ pl.game('polar-bear', function () {
 			}
 		});
 
-		this.on('ui-open', function() {
+		this.on('ui-open', function(_event) {
+			if(!this.is(_event.target)) return;
 			this.carousel.start();
-			this.incomplete();
-			this.score.incomplete();
 		});
 
 		this.state('incomplete','-COMPLETE', {
@@ -259,14 +283,6 @@ pl.game('polar-bear', function () {
 			this.cannon.ball.reload();
 		});
 
-		this.complete = function () {
-			var r = this.proto();
-
-			if(this.score.isComplete) this.delay('2s', this.next);
-			
-			return r;
-		};
-
 		this.playSFX = function (_name) {
 			var sfx;
 
@@ -277,6 +293,40 @@ pl.game('polar-bear', function () {
 			return this;
 		};
 
+	});
+
+	this.screen('experiment-discover', function() {
+		this.respond('select', function (_event) {
+			var id = _event.message;
+
+			if (id) {
+				this.highlight(_event.behaviorTarget);
+				this.audio.voiceOver[id].play();
+			}
+		});
+
+		this.entity('selectable', function() {
+			this.behavior('select', function (_target) {
+				var $target;
+
+				if (this.event) {
+					$target = $(this.event.target).closest('li');
+
+					if (this.shouldSelect($target) !== false) {
+						return {
+							message: $target.id(),
+							behaviorTarget: $target
+						};
+					}	
+				}
+
+				else {
+					this.proto(_target);
+				}
+
+				return false;
+			});
+		});
 	});
 
 	this.screen('flip', function () {
@@ -302,32 +352,4 @@ pl.game('polar-bear', function () {
 		return this.proto();
 	};
 
-	this.defineRule = function (_selector_scope, _selector_def, _definition) {
-		var _scope, _selector, source, prop, value;
-		// Resolve arguments.
-		_selector_scope.$els ? // (A) if we are a scope
-			(_scope = _selector_scope, // assign scope arg...
-			typeof _selector_def === 'string' ? // ...also, (B) if arg 2 is a string
-				_selector = _scope.address() + _selector_def: // assing selector arg with scope address:
-				(_selector = _scope.address(), _definition = _selector_def)): // (B) otherwise, assign selector arg to scope address, also assing definition arg
-			(_selector = _selector_scope, _definition = _selector_def); // (A) otherwise, assing selector and definition args.
-
-		source = _selector+' {';
-
-		for (prop in _definition) {
-			if (!_definition.hasOwnProperty(prop)) continue;
-			value = _definition[prop];
-			source += prop.replace(/([A-Z]+)/g, '-$1').toLowerCase()+': '+value+';'
-		}
-
-		source += '}'
-
-		$('<style type="text/css" class="dynanic-styles">'+source+'</style>')
-			.appendTo(document.body);
-
-		return source;
-	};
-
 });
-
-document.domain = 'changemyworldnow.com';

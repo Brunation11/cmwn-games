@@ -18,6 +18,13 @@ html, body {
 }
 
 /**
+ * Removes gray box when tapping on actionables.
+ */
+[pl-action] {
+	-webkit-tap-highlight-color: transparent;
+}
+
+/**
  * Center aligns a child element vertically and horzontally.
  */
 .center {

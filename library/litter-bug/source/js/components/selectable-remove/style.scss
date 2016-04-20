@@ -16,250 +16,46 @@
 			cursor: pointer;
 			opacity: 1;
 			transition: opacity .5s;
+			background-image: url(../media/S_3/sprite_3.1.png);
 			background-repeat: no-repeat;
-			background-size: auto 100%;
+			background-size: 351px;
 
 			&.HIGHLIGHTED {
 				cursor: auto;
 				opacity: 0;
+				pointer-events: none;
 			}
 
-			&.bottle {
-				background-image: url(../media/S_3/img_3.1.png);
-				background-position: -8px 0px;
-				width: 90px;
-				height: 65px;
-				left: 800px;
-				top: 350px;
+			$items: bottle card-board-first card-board-second bag paper-first paper-second paper-third paper-fourth batteries banana glass tuna glass-bottle newspaper soda-first soda-second can tires;
+			$widths: 120 140 140  70 120 120 120 120  70  60 145  70 100 120 100 100  70 120;
+			$heights: 65 100 100  75 100 100 100 100  65  75 100  85  65  85  80  80  50  95;
+			$lefts:  800 720 300  30 120 260 520 860 180 355 375 445 345 495 560 124 665 705;
+			$tops:   350 430 260 350 430 300 285 235 350 290 430 230 355 335 410 286 305 225;
+			$background-tops: 0 1 1 2 3 3 3 3 4 5 6 7 8 9 10 10 11 12;
+			$scales: 1 1 .5 1 1 .6 .8 .6 1 1 1 1 1 1 1 .6 1 1;
 
-				&:hover {
-					background-position: -160px 0px;
-				}
-			}
-
-			&.card-board {
-				background-image: url(../media/S_3/img_3.2.png);
-
-				&.first {
-					background-position: -8px 0px;
-					width: 120px;
-					height: 100px;
-					left: 720px;
-					top: 430px;
-
-					&:hover {
-						background-position: -161px 0px;
+			@for $i from 1 through 18 {
+				&.#{nth($items,$i)} {
+					background-position: 0px #{-175*nth($background-tops,$i)+px};
+					width: nth($widths,$i)+px;
+					height: nth($heights,$i)+px;
+					left: nth($lefts,$i)+px;
+					top: nth($tops,$i)+px;
+					$scale: nth($scales,$i);
+					@if($scale != 1) {
+						transform-origin: 0 0 0;
+						transform: scale($scale);
 					}
-				}
-
-				&.second {
-					background-position: -4px 0px;
-					width: 60px;
-					height: 50px;
-					left: 300px;
-					top: 260px;
 
 					&:hover {
-						background-position: -80px 0px;
+						background-position: -176px #{-175*nth($background-tops,$i)+px};
 					}
 				}
 			}
 
-			&.bag {
-				background-image: url(../media/S_3/img_3.3.png);
-				background-position: 1px 0px;
-				width: 70px;
-				height: 75px;
-				left: 30px;
-				top: 350px;
-
-				&:hover {
-					background-position: -164px 0px;
-				}
-			}
-
-			&.paper {
-				background-image: url(../media/S_3/img_3.4.png);
-
-				&.first {
-					background-position: -8px 0px;
-					width: 120px;
-					height: 100px;
-					left: 120px;
-					top: 430px;
-
-					&:hover {
-						background-position: -204px 0px;
-					}
-				}
-
-				&.second {
-					background-position: -4px 0px;
-					width: 60px;
-					height: 50px;
-					left: 260px;
-					top: 300px;
-
-					&:hover {
-						background-position: -102px 0px;
-					}
-				}
-
-				&.third {
-					background-position: -4px 0px;
-					width: 60px;
-					height: 50px;
-					left: 520px;
-					top: 285px;
-
-					&:hover {
-						background-position: -102px 0px;
-					}
-				}
-
-				&.fourth {
-					background-position: -4px 0px;
-					width: 60px;
-					height: 50px;
-					left: 860px;
-					top: 235px;
-
-					&:hover {
-						background-position: -100px 0px;
-					}
-				}
-			}
-
-			&.batteries {
-				background-image: url(../media/S_3/img_3.5.png);
-				background-position: -9px 0px;
-				width: 70px;
-				height: 75px;
-				left: 180px;
-				top: 350px;
-
-				&:hover {
-					background-position: -192px 0px;
-				}
-			}
-
-			&.banana {
-				background-image: url(../media/S_3/img_3.6.png);
-				background-position: -14px 0px;
-				width: 60px;
-				height: 75px;
-				left: 355px;
-				top: 290px;
-
-				&:hover {
-					background-position: -177px 0px;
-				}
-			}
-
-			&.glass {
-				background-image: url(../media/S_3/img_3.7.png);
-				background-position: -14px 0px;
-				width: 125px;
-				height: 100px;
-				left: 375px;
-				top: 430px;
-
-				&:hover {
-					background-position: -163px 0px;
-				}
-			}
-
-			&.tuna {
-				background-image: url(../media/S_3/img_3.8.png);
-				background-position: -9px 0px;
-				width: 70px;
-				height: 85px;
-				left: 445px;
-				top: 230px;
-
-				&:hover {
-					background-position: -172px 0px;
-				}
-			}
-
-			&.glass-bottle {
-				background-image: url(../media/S_3/img_3.9.png);
-				background-position: -19px 0px;
-				width: 100px;
-				height: 65px;
-				left: 345px;
-				top: 355px;
-
-				&:hover {
-					background-position: -194px 0px;
-				}
-			}
-
-			&.newspaper {
-				background-image: url(../media/S_3/img_3.10.png);
-				background-position: -9px 0px;
-				width: 110px;
-				height: 85px;
-				left: 495px;
-				top: 335px;
-
-				&:hover {
-					background-position: -168px 0px;
-				}
-			}
-
-			&.soda {
-				background-image: url(../media/S_3/img_3.11.png);
-
-				&.first {
-					background-position: -8px 0px;
-					width: 80px;
-					height: 80px;
-					left: 560px;
-					top: 410px;
-
-					&:hover {
-						background-position: -170px 0px;
-					}
-				}
-
-				&.second {
-					background-position: -4px 0px;
-					width: 50px;
-					height: 50px;
-					left: 124px;
-					top: 286px;
-
-					&:hover {
-						background-position: -106px 0px;
-					}
-				}
-			}
-
-			&.can {
-				background-image: url(../media/S_3/img_3.12.png);
-				background-position: -10px 0px;
-				width: 100px;
-				height: 70px;
-				left: 665px;
-				top: 305px;
-
-				&:hover {
-					background-position: -198px 0px;
-				}
-			}
-
-			&.tires {
-				background-image: url(../media/S_3/img_3.13.png);
-				background-position: -5px 0px;
-				width: 120px;
-				height: 95px;
-				left: 705px;
-				top: 225px;
-
-				&:hover {
-					background-position: -175px 0px;
-				}
+			// the banana hover was slightly off and needed to be adjusted
+			&.banana:hover {
+				background-position: -181px #{-175*5-5+px};
 			}
 		}
 	}

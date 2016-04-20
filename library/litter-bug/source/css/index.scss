@@ -3,11 +3,8 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
+	user-drag: none;
 	cursor: default;
 }
 
@@ -37,9 +34,9 @@ body {
 	}
 
 	.background.lets-clean-up {
-		background-image: url(../media/_BKG/BKG_2.png);
-	}
-
+			background-image: url(../media/_BKG/BKG_2.png);
+		}
+	
 	.background.select {
 		background-image: url(../media/_BKG/BKG_3.png);
 
@@ -70,6 +67,9 @@ body {
 		opacity: 1;
 	}
 }
+
+/* This is just to preload the images used in css. */
+#asset-bin { display: none; }
 
 button {
 	margin: 0;
@@ -189,38 +189,6 @@ p {
 	margin: 0;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	animation: pulse 0.5s infinite;
-	background: rgba(0,0,0,0.5);
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-}
-
 .canvas-src { display: none; }
 
 .screen {
@@ -271,10 +239,23 @@ p {
 		cursor: default;
 	}
 
+	.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
 		transform: rotate(0deg);
 		cursor: pointer;
+	}
+
+	.DEMO .screen.room button.next-screen,
+	.DEMO .screen.school button.next-screen,
+	.DEMO .screen.ground button.next-screen,
+	.DEMO .screen.take-pledge button.next-screen,
+	.DEMO .screen.commit button.next-screen {
+		display: block;
+	}
+
+	.DEMO .screen.clean-up .next-screen {
+		z-index: 0;
 	}
 
 	.screen .next-screen:hover {
@@ -443,10 +424,16 @@ p {
 			z-index: 1;
 		}
 
-		.next-screen {
+		.prev-screen {
 			z-index: 1;
-			opacity: 1;
-			transform: rotate(0deg);
+		}
+
+		.COMPLETE {
+			.next-screen {
+				z-index: 1;
+				opacity: 1;
+				transform: rotate(0deg);
+			}
 		}
 
 		.frame {
@@ -503,7 +490,7 @@ p {
 		&:nth-of-type(1) {
 			width: 360px;
 			left: 100px;
-			top: -40px;
+			top: 10px;
 		}
 
 		&:nth-of-type(2) {
@@ -658,7 +645,7 @@ p {
 		position: absolute;
 		width: 500px;
 		left: 230px;
-		top: 0;
+		top: 30px;
 	}
 
 	&.OPEN {
@@ -849,7 +836,7 @@ p {
 		&:nth-of-type(1) {
 			width: 460px;
 			left: 80px;
-			top: -30px;
+			top: 20px;
 		}
 
 		&:nth-of-type(2) {

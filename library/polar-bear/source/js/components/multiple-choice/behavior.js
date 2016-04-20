@@ -56,6 +56,8 @@ pl.game.component('multiple-choice', function () {
 	};
 
 	this.answer = function () {
+		if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return;
+
 		if (this.event) {
 			$li = $(this.event.target).closest('li');
 			this.playVO($li.id());
@@ -65,5 +67,7 @@ pl.game.component('multiple-choice', function () {
 			}
 		}
 	};
+
+	this.start = function() {};
 
 });
