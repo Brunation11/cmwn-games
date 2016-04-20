@@ -7,6 +7,34 @@ pl.game.component('screen-basic', function () {
 			});
 		}
 	});
+
+	this.shouldProceed = function() {
+		return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
+	};
+
+	this.ready = function () {
+		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+			this.requiredQueue.on('complete', this.bind(function () {
+				var sfx;
+
+				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+
+				if (sfx) sfx.play();
+			}));
+		}
+	};
+
+	this.playSound = function (_sound) {
+		var delay;
+	
+		delay = $(_sound).attr('pl-delay');
+	
+		if (delay) {
+			return this.delay(delay, _sound.play.bind(_sound));
+		} else {
+			return _sound.play();
+		}
+	};
 	
 	this.next = function () {
 		var current, nextScreen, buttonSound;
