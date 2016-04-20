@@ -2,7 +2,7 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
 // import '../../../../../js-interactive-library';
 import './config.game';
 
@@ -15,6 +15,9 @@ import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/reveal/behavior';
 import './components/audio-sequence/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
