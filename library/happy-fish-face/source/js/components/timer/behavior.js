@@ -56,6 +56,10 @@ pl.game.component('timer', function () {
 		return this;
 	};
 
+	this.pause = this.stop;
+
+	this.resume = this.start;
+
 	this.render = function () {
 		this.stopWatch.text(this.time);
 		return this;

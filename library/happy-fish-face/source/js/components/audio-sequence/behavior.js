@@ -1,24 +1,21 @@
 pl.game.component('audio-sequence', function () {
-	
-	var sounds = null;
+	var i, sounds;
 
-	this.on('ready', function(_event) {
-		var screen = this.screen;
-
+	this.on('ready', function (_event) {
 		if (!this.is(_event.target)) return;
 
-		sounds = this.find("> audio");
-		sounds.each(function(i, audio) {
-			audio.onended = function() {
-				if(sounds[i+1] && screen.state(screen.STATE.OPEN)) screen.playSound(sounds[i+1]);
-			};
-		});
-		if(typeof this.properties.loop !== 'undefined') {
-			sounds[sounds.length-1].onended = this.start.bind(this);
-		}
+		sounds = this.find('audio').map(function () {
+			return $(this).data('context');
+		}).toArray();
+
+		this.audio.on('ended', function (_event) {
+			var next = sounds[i++];
+			if (next && this.screen.state(this.screen.STATE.OPEN)) next.play();
+		}.bind(this));
 	});
 
 	this.start = function() {
-		if(typeof this.properties.dontautoplay === 'undefined' && sounds[0] && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound(sounds[0]);
+		i = 1;
+		if(sounds[0]) sounds[0].play();
 	};
 });

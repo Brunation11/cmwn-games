@@ -2,7 +2,6 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
 // import 'js-interactive-library';
 import '../../../../../js-interactive-library';
 import './config.game';
@@ -12,10 +11,10 @@ import multiBubbles from './screens/multi-bubbles';
 import trash from './screens/trash';
 
 // COMPONENTS
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/bubbles/behavior';
-import './components/frame/behavior';
 import './components/score/behavior';
 import './components/timer/behavior';
 import './components/reveal/behavior';
@@ -32,29 +31,17 @@ pl.game('happy-fish-face', function () {
 			this.game.addClass('garbage');
 		});
 
-		this.on('ui-close', function() {
-			this.game.removeClass('garbage');
-		});
-
-		this.on('ui-leave', function() {
+		this.on('ui-close ui-leave', function() {
 			this.game.removeClass('garbage');
 		});
 	};
 
 	this.screen('title', function () {
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) {
-				this.delay(0, function() {
-					this.open();
-					this.close($('#loader'));
-				});
-			}
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
 		this.entity('.fish', function() {
@@ -75,9 +62,7 @@ pl.game('happy-fish-face', function () {
 			stateMethod = this.properties.selectState || 'select';
 
 			if(id != null) {
-				var sfx = this.audio.sfx[id];
-				if(sfx) this.playSound(sfx);
-
+				this.audio.sfx.play(id);
 				this[stateMethod](_event.behaviorTarget);
 				this.requiredQueue.ready('select');
 			}
@@ -118,13 +103,6 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('multi-bubbles', multiBubbles);
 
-	this.screen('pollutes-water', function() {
-		this.on('ui-open', function(_event) {
-			if(!this.is(_event.target)) return;
-			this.game.bgSound.pause();
-		});
-	});
-
 	this.screen('trash', trash);
 
 	this.screen('flip', function () {
@@ -132,6 +110,17 @@ pl.game('happy-fish-face', function () {
 			this.game.quit.okay();
 		};
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 
 });
