@@ -15,6 +15,7 @@
 
 		&.DISABLED li {
 			opacity: 0.5;
+			pointer-events: none;
 			cursor: default;
 		}
 
@@ -31,8 +32,10 @@
 			display: inline-block;
 			width: 100px; height: 100px;
 
+			&.TOILET,
 			&.DISABLED {
 				opacity: 0;
+				pointer-events: none;
 				cursor: default;
 			}
 		}
@@ -73,7 +76,8 @@
 			background-size: 381px;
 			width: 190px; height: 190px;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -190px top;
 			}
 		}
@@ -156,7 +160,7 @@
 				}
 
 				$items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
-				$background-top:  0  82 170 250 330 420 506 586 672 756 838 918 1004 1084;
+				$background-top:  0  82 170 250 330 420 504 586 672 756 838 918 1004 1084;
 				$width:         246 170 292 276 370 218 210 216 370 120 268 100  358  366;
 
 				@for $i from 1 through 14 {
@@ -175,17 +179,12 @@
 			width: 70px;
 			height: 50px;
 			margin: 40px;
-			opacity: 0;
+			opacity: 1;
 			transition: opacity 1s;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -570px -231px;
-			}
-		}
-
-		&.PROGRESS {
-			button.close {
-				opacity: 1;
 			}
 		}
 
@@ -209,6 +208,7 @@
 		[pl-id=modal-reveal] button.close {
 			opacity: 0;
 			cursor: default;
+			transition: none;
 		}
 	}
 }
