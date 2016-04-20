@@ -71,7 +71,9 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.complete = function () {
-		this.game.audio.sfx.play('screenComplete');
+		if(this.is(this.screen)) {
+			this.game.audio.sfx.play('screenComplete');
+		}
 		return this.proto();
 	};
 
