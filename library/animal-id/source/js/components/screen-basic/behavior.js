@@ -7,7 +7,6 @@ pl.game.component('screen-basic', function () {
 
 	this.on('ui-open', function (_event) {
 		if (!this.is(_event.target)) return;
-		if (this.completed() && !this.isComplete) this.complete();
 		if (this.isReady) this.start();
 		if (this.screen.isLast()) this.addClass('last');
 	});
