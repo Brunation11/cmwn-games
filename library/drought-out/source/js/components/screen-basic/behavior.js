@@ -86,15 +86,16 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
+	this.complete = function () {
+		var audio;
+
+		audio = (this.audio && this.audio.has('screenComplete') ? this.audio : this.game.audio);
+
+		audio.sfx.play('screenComplete');
+		return this.proto();
+	};
+
 	this.on('ready', function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
-
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-				if (sfx) sfx.play();
-			}));
-		}
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 });

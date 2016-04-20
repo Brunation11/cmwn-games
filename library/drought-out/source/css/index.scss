@@ -231,6 +231,7 @@ p {
 		margin-right: 5px;
 		right: 0;
 		opacity: 0;
+		pointer-events: none;
 		transform: rotate(-180deg);
 		transition: opacity 1s, transform 1s;
 	}
@@ -414,6 +415,12 @@ img.inline {
 			}
 		}
 	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
+		}
+	}
 }
 
 #info-no-water {
@@ -511,6 +518,10 @@ img.inline {
 					}
 				}
 			}
+
+			&.HIGHLIGHTED {
+				pointer-events: none;
+			}
 		}
 	}
 
@@ -539,6 +550,12 @@ img.inline {
 					}
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }
@@ -589,6 +606,12 @@ img.inline {
 				width: 150px;
 				background-size: auto 100%;
 				background-position: left top;
+				pointer-events: none;
+
+				&:nth-of-type(1),
+				&.HIGHLIGHTED + li {
+					pointer-events: auto;
+				}
 
 				&.HIGHLIGHTED,
 				&:nth-of-type(1):hover,
@@ -624,6 +647,17 @@ img.inline {
 					top: 250px;
 					transform: translateY(-50%);
 				}
+			}
+		}
+	}
+}
+
+.pl-game:not(.DEMO) .screen.VOICE-OVER {
+	.selectable-reveal-component {
+		.selectable-component {
+			li,
+			li:nth-of-type(1) {
+				pointer-events: none;
 			}
 		}
 	}
@@ -756,6 +790,12 @@ img.inline {
 			&.HIGHLIGHTED + li .side.a:hover {
 				background-position: -212px top;
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }

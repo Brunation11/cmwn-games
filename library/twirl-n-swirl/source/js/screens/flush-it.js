@@ -107,6 +107,8 @@ export default function flushIt () {
 		if(!this.is(_event.target)) return;
 		this.find('.TOILET').removeClass('TOILET');
 		this.deselect(this.toilet.reveal.find('.SELECTED'));
+
+		if(this.isComplete) this.find('.DISABLED').removeClass('DISABLED');
 	});
 
 }
