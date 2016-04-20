@@ -2,10 +2,11 @@
  * Index script
  * @module
  */
-import './testPlatformIntegration';
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 import './config.game';
 
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/background/behavior';
@@ -17,6 +18,7 @@ import './components/multiple-choice/behavior';
 import './components/selectable/behavior';
 import './components/modal/behavior';
 import './components/reveal/behavior';
+import './components/smoke/behavior';
 import './components/audio-sequence/behavior';
 
 pl.game('fire', function () {
@@ -89,13 +91,11 @@ pl.game('fire', function () {
 	})();
 	// end of the mouse smoke js
 
-
-
 	var soundClasses = function() {
 		var classes = "";
 
 		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
+			var id = _event.target.$el[0].id;
 			if(id) {
 				id = id.toUpperCase()
 				this.addClass(id);
@@ -110,25 +110,19 @@ pl.game('fire', function () {
 	};
 
 	this.screen('title', function () {
-		
-		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
-		});
 
 		this.on('ready', function(_event) {
-			if (!this.is(_event.target)) return;
+			if(!this.is(_event.target)) return;
 
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
+		this.on('ui-open', this.complete);
+
+		this.startAudio = function () {
+			this.title.audio.background.play();
+			this.title.audio.voiceOver.play();
+		};
 	});
 
 	this.screen('info-chemical', soundClasses);
@@ -137,15 +131,15 @@ pl.game('fire', function () {
 	this.screen('alarm', function() {
 
 		this.ready = function() {
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
-				}.bind(this);
+			if (this.audio) {
+				this.audio.voiceOver.on('ended', function (_event) {
+					if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
+				}.bind(this));
 			}
 		};
 
 		this.pushDown = function() {
-			if(this.audio.sfx) this.audio.sfx.play();
+			if (this.audio) this.audio.sfx.play();
 			this.screen.next();
 		};
 	});
@@ -157,8 +151,6 @@ pl.game('fire', function () {
 			this.entity('mc-frame', function () {
 				
 				this.respond('answer', function(_event) {
-					// if(this.audio.voiceOver[_event.message]) this.audio.voiceOver[_event.message].play();
-
 					if(_event.message === this.properties.answer) {
 						this.delay('2s', function() {
 							this.screen.next();
@@ -167,24 +159,19 @@ pl.game('fire', function () {
 				});
 
 				this.on('ready', function(_event) {
+					var sequence = 'title police plumber firefighter chef'.split(' ');
+
 					if (!this.is(_event.target)) return;
 
-					if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-						this.audio.voiceOver.title.onended = function() {
-							if(this.audio.voiceOver.police) this.audio.voiceOver.police.play();
-						}.bind(this);
+					if (this.audio) {
+						this.audio.voiceOver.on('ended', function (_event) {
+							var i, next;
 
-						this.audio.voiceOver.police.onended = function() {
-							if(this.audio.voiceOver.plumber) this.audio.voiceOver.plumber.play();
-						}.bind(this);
+							i = sequence.indexOf(_event.target.id()) + 1;
+							next = this.audio.voiceOver[sequence[i]];
 
-						this.audio.voiceOver.plumber.onended = function() {
-							if(this.audio.voiceOver.firefighter) this.audio.voiceOver.firefighter.play();
-						}.bind(this);
-
-						this.audio.voiceOver.firefighter.onended = function() {
-							if(this.audio.voiceOver.chef) this.audio.voiceOver.chef.play();
-						}.bind(this);
+							if (next) next.play();
+						}.bind(this));
 					}
 				});
 			});
@@ -196,31 +183,24 @@ pl.game('fire', function () {
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;
 
-			if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-				this.audio.voiceOver.title.onended = function() {
-					if(this.audio.voiceOver.subtitle) this.audio.voiceOver.subtitle.play();
-				}.bind(this);
+			if (this.audio) {
+				this.audio.voiceOver.on('ended', function (_event) {
+					if (_event.target.id() === 'title') this.audio.voiceOver.subtitle.play();
+				}.bind(this));
 			}
 		});
 	});
 
 	this.screen('triangle', function() {
-		var characters;
-		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-				characters = characters || [];
 
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
+		this.startAudio = function () {
+			this.dropzone.audio.background.play();
+			this.dropzone.audio.voiceOver.play();
+		};
+
+		this.stopAudio = function () {
+			this.dropzone.audio.voiceOver.stop('@ALL');
+		};
 
 		this.entity('dropzone', function () {
 		
@@ -282,26 +262,16 @@ pl.game('fire', function () {
 			this.on('ready', function(_event) {
 				if (!this.is(_event.target)) return;
 
-				if(this.audio && this.audio.voiceOver && this.audio.voiceOver.title) {
-					this.audio.voiceOver.title.onended = function() {
-						if(this.audio.voiceOver.directions) this.audio.voiceOver.directions.play();
-					}.bind(this);
+				if (this.audio) {
+					this.audio.voiceOver.on('ended', function(_event) {
+						if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
+					}.bind(this));
 				}
 			});
 		});
 	});
 
-	this.screen('break-triangle', function() {
-		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
-			if(id) this.addClass(id.toUpperCase());
-		});
-
-		this.on('audio-ended', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
-			if(id) this.removeClass(id.toUpperCase());
-		});
-	});
+	this.screen('break-triangle', soundClasses);
 
 	this.screen('dress', function() {
 		this.respond('select', function(_event) {
@@ -359,7 +329,7 @@ pl.game('fire', function () {
 								}
 
 								else {
-									this.audio.sfx.incorrect.play()
+									this.audio.sfx.incorrect.play();
 								}
 
 							}
