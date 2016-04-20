@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -24,6 +22,9 @@ import './components/modal/behavior';
 import './components/video/behavior';
 import './components/runner/behavior';
 
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
+
 pl.game('monarch', function () {
 
 	this.screen('title', function() {
@@ -31,12 +32,12 @@ pl.game('monarch', function () {
 			this.repeat('4s', function() {
 				this.audio.sfx.play();
 			});
-			this.audio.sfx.onplay = function() {
+			this.audio.sfx.on('play', function() {
 				this.pupa.addClass('SHAKE');
-			}.bind(this);
-			this.audio.sfx.onended = function() {
+			}.bind(this));
+			this.audio.sfx.on('ended', function() {
 				this.pupa.removeClass('SHAKE');
-			}.bind(this);
+			}.bind(this));
 		});
 
 		this.on('ready', function(_event) {
