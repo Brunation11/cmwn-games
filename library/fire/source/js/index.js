@@ -95,7 +95,7 @@ pl.game('fire', function () {
 		var classes = "";
 
 		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
+			var id = _event.target.$el[0].id;
 			if(id) {
 				id = id.toUpperCase()
 				this.addClass(id);
@@ -271,34 +271,7 @@ pl.game('fire', function () {
 		});
 	});
 
-	this.screen('break-triangle', function() {
-		this.on('audio-play', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
-			if(id) this.addClass(id.toUpperCase());
-		});
-
-		this.on('ready', function(_event) {
-			var sequence = 'title heat air fuel'.split(' ');
-
-			if (!this.is(_event.target)) return;
-
-			if (this.audio) {
-				this.audio.voiceOver.on('ended', function(_event) {
-					var i, next;
-
-					i = sequence.indexOf(_event.target.id()) + 1;
-					next = this.audio.voiceOver[sequence[i]]
-
-					if (next) next.play();
-				}.bind(this));
-			}
-		});
-
-		this.on('audio-ended', function(_event) {
-			var id = _event.target.getAttribute('pl-id');
-			if(id) this.removeClass(id.toUpperCase());
-		});
-	});
+	this.screen('break-triangle', soundClasses);
 
 	this.screen('dress', function() {
 		this.respond('select', function(_event) {

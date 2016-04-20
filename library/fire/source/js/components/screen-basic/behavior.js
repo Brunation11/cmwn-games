@@ -6,13 +6,7 @@ pl.game.component('screen-basic', function () {
 				_event.response(!_event.target.config("dontautoplay"));
 			});
 		}
-	});
 
-	this.shouldProceed = function() {
-		return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
-	};
-
-	this.ready = function () {
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
 			this.requiredQueue.on('complete', this.bind(function () {
 				var sfx;
@@ -22,13 +16,17 @@ pl.game.component('screen-basic', function () {
 				if (sfx) sfx.play();
 			}));
 		}
+	});
+
+	this.shouldProceed = function() {
+		return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
 	};
 
 	this.playSound = function (_sound) {
 		var delay;
 	
-		delay = $(_sound).attr('pl-delay');
-	
+		delay = $(_sound.media).attr('pl-start');
+
 		if (delay) {
 			return this.delay(delay, _sound.play.bind(_sound));
 		} else {
@@ -156,7 +154,7 @@ pl.game.component('screen-basic', function () {
 		if(this.properties.sfx) {
 			var sfx = this.properties.sfx.split(" ");
 			for(var i = 0, n = sfx.length; i < n; i++) {
-				if(this.audio.sfx[sfx[i]]) this.audio.sfx[sfx[i]].play();
+				if(this.audio.sfx[sfx[i]]) this.playSound(this.audio.sfx[sfx[i]]);
 			}
 		}
 	});
