@@ -11,6 +11,7 @@ import multiBubbles from './screens/multi-bubbles';
 import trash from './screens/trash';
 
 // COMPONENTS
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/bubbles/behavior';
@@ -37,18 +38,10 @@ pl.game('happy-fish-face', function () {
 
 	this.screen('title', function () {
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) {
-				this.delay(0, function() {
-					this.open();
-					this.close(this.game.loader);
-				});
-			}
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
 		this.entity('.fish', function() {

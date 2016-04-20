@@ -4,6 +4,7 @@
 // import 'js-interactive-library';
 // Use when doing local changes to the library
 import '../../../../../js-interactive-library';
+
 import './config.game';
 
 // SCREENS
@@ -11,6 +12,7 @@ import infoQuestion from './screens/info-question';
 import flushIt from './screens/flush-it';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-title/behavior';
 import './components/screen-quit/behavior';

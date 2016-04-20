@@ -10,9 +10,11 @@ html {
 	font-size: 20px;
 	background: url(../media/images/background.png) bottom center no-repeat;
 	background-size: cover;
-	-webkit-user-select: none;
-	-moz-user-select: none;
 	user-select: none;
+	// the autoprefixer doesn't add these automatically
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	user-drag: none;
 	cursor: default;
 }
 
@@ -57,38 +59,6 @@ h3 {
 
 img.hidden {
 	display: none;
-}
-
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(255,255,255,0.5);
-	border-radius: 50px;
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-	color: #fff;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
 }
 
 .POSITIONED {

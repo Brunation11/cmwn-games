@@ -20,30 +20,37 @@
 
 	.carousel-component {
 		width: 400px;
+		height: 540px;
+		margin: 0;
+		padding: 0;
 
-		img {
+		li {
+			position: absolute;
+			top: 0;
+			left: 100px;
 			display: block;
-			width: auto;
+			width: 210px;
 			height: 210px;
-			margin: 40px auto;
-			transform: scale(.6);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			transform:  translateY(540px) scale(.6);
 			transition: transform 1s;
 
 			&.OPEN {
-				margin-top: -95px;
+				transform: translateY(-60px) scale(.6);
 
-				& + img {
-					transform: scale(1);
+				& + li {
+					transform: translateY(160px) scale(1);
+
+					& + li {
+						transform: translateY(380px) scale(.6);
+					}
 				}
 			}
 
 			&.LEAVE {
-				margin-top: -345px;
-				transition: margin 1s, transform 1s;
-
-				& + .OPEN {
-					margin-top: 40px;
-				}
+				transform: translateY(-220px) scale(.6);
 			}
 		}
 	}
