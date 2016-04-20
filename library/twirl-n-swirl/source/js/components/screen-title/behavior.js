@@ -1,8 +1,9 @@
 pl.game.component('screen-title', function () {
 
-	this.on('ready', function () {
-		this.delay(0, this.open);
-		this.close(this.game.loader);
+	this.on('ready', function(_event) {
+		if(!this.is(_event.target)) return;
+
+		if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 	});
 
 	/**
@@ -32,6 +33,22 @@ pl.game.component('screen-title', function () {
 			this.off('transitionend');
 		});
 	});
+
+	this.start = function () {
+		var bgSound, voSound;
+
+		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
+		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
+
+		if(bgSound) bgSound.play();
+		if(fxSound) fxSound.play();
+		if(voSound) voSound.play();
+
+		if(this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+
+		return this;
+	};
 
 	this.next = function () {
 		var nextScreen, so, animate;

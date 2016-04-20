@@ -190,38 +190,6 @@ p {
 	margin: 0;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(0,0,0,0.5);
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
-}
-
 .canvas-src { display: none; }
 
 .screen {
@@ -263,18 +231,21 @@ p {
 		margin-right: 5px;
 		right: 0;
 		opacity: 0;
+		pointer-events: none;
 		transform: rotate(-180deg);
 		transition: opacity 1s, transform 1s;
 	}
 
 	.screen.GATED .next-screen {
 		opacity: 0;
+		pointer-events: none;
 		cursor: default;
 	}
 
 	.pl-game.DEMO .screen .next-screen,
 	.screen.COMPLETE .next-screen {
 		opacity: 1;
+		pointer-events: auto;
 		transform: rotate(0deg);
 		cursor: pointer;
 	}
@@ -444,6 +415,12 @@ img.inline {
 			}
 		}
 	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
+		}
+	}
 }
 
 #info-no-water {
@@ -465,7 +442,7 @@ img.inline {
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
@@ -541,6 +518,10 @@ img.inline {
 					}
 				}
 			}
+
+			&.HIGHLIGHTED {
+				pointer-events: none;
+			}
 		}
 	}
 
@@ -569,6 +550,12 @@ img.inline {
 					}
 				}
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }
@@ -619,6 +606,12 @@ img.inline {
 				width: 150px;
 				background-size: auto 100%;
 				background-position: left top;
+				pointer-events: none;
+
+				&:nth-of-type(1),
+				&.HIGHLIGHTED + li {
+					pointer-events: auto;
+				}
 
 				&.HIGHLIGHTED,
 				&:nth-of-type(1):hover,
@@ -654,6 +647,17 @@ img.inline {
 					top: 250px;
 					transform: translateY(-50%);
 				}
+			}
+		}
+	}
+}
+
+.pl-game:not(.DEMO) .screen.VOICE-OVER {
+	.selectable-reveal-component {
+		.selectable-component {
+			li,
+			li:nth-of-type(1) {
+				pointer-events: none;
 			}
 		}
 	}
@@ -786,6 +790,12 @@ img.inline {
 			&.HIGHLIGHTED + li .side.a:hover {
 				background-position: -212px top;
 			}
+		}
+	}
+
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
 	}
 }

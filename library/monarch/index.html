@@ -9,6 +9,7 @@
 	<!-- inject:testPlatformIntegration -->
 	<!-- endinject -->
 
+	<link rel="stylesheet" type="text/css" href="../shared/css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
@@ -28,7 +29,7 @@
 
 	<!-- Preloads game backgrounds -->
 	<div id="asset-bin">
-		<img src="media/_Images/_Frames/MON_FR_2.png">
+		<img src="media/_Images/_Frames/MON_FR_2.png" draggable=false>
 	</div>
 	
 	<!-- GLOBAL GAME ASSETS -->
@@ -41,6 +42,11 @@
 	<!-- GAME BACKGROUNDS -->
 
 	<!-- SCREENS -->
+	<section id="ios-splash" class="screen" pl-component="screen-ios-splash">
+		<img class="hidden" src="../shared/images/ios_start_ball.png" draggable=false>
+		<img class="hidden" src="../shared/images/ios_start_ball_anim.gif" draggable=false>
+		<div pl-id="ball" pl-action="startGame()"></div>
+	</section>
 
 	<!-- TITLE -->
 	<section id="title" class="screen" pl-component="screen-title">
@@ -48,11 +54,11 @@
 		<audio class="sfx" src="media/_audio/_Title/MON_SX_Shake.mp3" preload="none" pl-required></audio>
 		<div class="center">
 			<div class="group">
-				<img class="animated branch" src="media/_Images/_Title/MON_TITLE_1.1.png">
-				<img class="animated monarch" src="media/_Images/_Title/MON_TITLE_1.2.png">
-				<img pl-id="pupa" class="animated pupa" src="media/_Images/_Title/MON_TITLE_1.3.png">
-				<img class="animated caterpillar" src="media/_Images/_Title/MON_TITLE_1.4.png">
-				<img pl-id="logo" class="animated title" src="media/_Images/_Title/MON_TITLE_1.5.png">
+				<img class="animated branch" src="media/_Images/_Title/MON_TITLE_1.1.png" draggable=false>
+				<img class="animated monarch" src="media/_Images/_Title/MON_TITLE_1.2.png" draggable=false>
+				<img pl-id="pupa" class="animated pupa" src="media/_Images/_Title/MON_TITLE_1.3.png" draggable=false>
+				<img class="animated caterpillar" src="media/_Images/_Title/MON_TITLE_1.4.png" draggable=false>
+				<img pl-id="logo" class="animated title" src="media/_Images/_Title/MON_TITLE_1.5.png" draggable=false>
 			</div>
 		</div>
 		<button class="next-screen play" pl-action="next()"></button>
@@ -69,14 +75,14 @@
 	<section id="land-on" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_1.mp3" preload="none" loop></audio>
 		<audio class="voice-over" src="media/_audio/S_LandOn/VO_LandOn.mp3" preload="none" pl-required></audio>
-		<img class="copy" src="media/_Images/S_LandOn/IMG_3.1.png">
-		<img class="flowers" src="media/_Images/S_LandOn/IMG_3.2.png">
+		<img class="copy" src="media/_Images/S_LandOn/IMG_3.1.png" draggable=false>
+		<img class="flowers" src="media/_Images/S_LandOn/IMG_3.2.png" draggable=false>
 	</section>
 
 	<!-- FLY_ACROSS -->
 	<section id="fly-across" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_2.mp3" preload="none" loop></audio>
-		<img class="hidden" src="media/_Images/S_FlyAcross/SP_4.1.png">
+		<img class="hidden" src="media/_Images/S_FlyAcross/SP_4.1.png" draggable=false>
 		<audio pl-id="correct" class="sfx" src="media/_audio/S_FlyAcross/MON_SX_correct.mp3" preload="none"></audio>
 		<audio pl-id="incorrect" class="sfx" src="media/_audio/S_FlyAcross/MON_SX_incorrect.mp3" preload="none"></audio>
 		<div>
@@ -86,10 +92,10 @@
 				</div>
 				<canvas pl-id="conveyor"></canvas>
 				<div class="bin">
-					<img pl-id="yellow" class="flower yellow" src="media/_Images/S_FlyAcross/IMG_4.1.png" width=200>
-					<img pl-id="orange" class="flower orange" src="media/_Images/S_FlyAcross/IMG_4.2.png" width=200>
-					<img pl-id="red" class="flower red" src="media/_Images/S_FlyAcross/IMG_4.3.png" width=200>
-					<img pl-id="red" class="flower red" src="media/_Images/S_FlyAcross/IMG_4.3.png" width=200>
+					<img pl-id="yellow" class="flower yellow" src="media/_Images/S_FlyAcross/IMG_4.1.png" width=200 draggable=false>
+					<img pl-id="orange" class="flower orange" src="media/_Images/S_FlyAcross/IMG_4.2.png" width=200 draggable=false>
+					<img pl-id="red" class="flower red" src="media/_Images/S_FlyAcross/IMG_4.3.png" width=200 draggable=false>
+					<img pl-id="red" class="flower red" src="media/_Images/S_FlyAcross/IMG_4.3.png" width=200 draggable=false>
 				</div>
 			</div>
 			<div pl-component="modal" pl-transclude="content" pl-bg="media/_Images/_Frames/MON_FR_2.png">
@@ -149,7 +155,7 @@
 	<section id="catch-milkweed" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_3.mp3" preload="none" loop></audio>
 		<audio class="voice-over" src="media/_audio/S_CatchMilkweed/VO_CatchMilkweed.mp3" preload="none" pl-required></audio>
-		<img class="copy" src="media/_Images/S_CatchMilkweed/IMG_5.1.png">
+		<img class="copy" src="media/_Images/S_CatchMilkweed/IMG_5.1.png" draggable=false>
 		<div class="milkweed"></div>
 	</section>
 
@@ -220,7 +226,7 @@
 	<section id="fly-3000-miles" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_4.mp3" preload="none" loop></audio>
 		<audio class="voice-over" src="media/_audio/S_Fly3000miles/VO_fly3000Miles.mp3" preload="none" pl-required></audio>
-		<img src="media/_Images/S_Fly3000miles/IMG_7.1.png">
+		<img src="media/_Images/S_Fly3000miles/IMG_7.1.png" draggable=false>
 		<p>
 			Monarchs migrate south every winter.<br>
 			Ever wonder what it must be like to fly<br>
@@ -230,7 +236,7 @@
 
 	<!-- MIGRATION_VID -->
 	<section id="migration-vid" class="screen" pl-component="screen-basic" pl-transclude="content">
-		<img src="media/_Images/S_Migration_Video/IMG_8.1.png">
+		<img src="media/_Images/S_Migration_Video/IMG_8.1.png" draggable=false>
 		<div pl-component="video" pl-bg="media/_Images/_Frames/MON_FR_1.png" pl-required>
 			<video pl-id="video" src="https://res.cloudinary.com/changemyworldnow/video/upload/af_44100/v1458067825/Monarch_Workout_vhol0y.mp4" controls></video>
 		</div>
@@ -240,7 +246,7 @@
 	<section id="four-generations" class="screen" pl-component="screen-basic" pl-transclude="content">
 		<audio class="background" src="media/_audio/_BKG/MON_BKG_3.mp3" preload="none" loop></audio>
 		<audio pl-id="lifespan" class="voice-over" src="media/_audio/S_Reveal4Stages/VO_MonarchLifespan.mp3" preload="none" pl-required></audio>
-		<img src="media/_Images/S_4Generations/IMG_9.1.png">
+		<img src="media/_Images/S_4Generations/IMG_9.1.png" draggable=false>
 		<div pl-component="selectable-reveal" pl-select-state="highlight">
 			<audio pl-id="button" class="sfx" src="media/_audio/_Buttons/MON_BU_3.mp3" preload="none"></audio>
 			<div pl-component="reveal" pl-bg="media/_Images/_Frames/MON_FR_3.png">
@@ -277,7 +283,7 @@
 				</ul>
 			</div>
 			<div pl-component="selectable">
-				<img class="hidden" src="media/_Images/S_4Generations/IMG_9.3.png">
+				<img class="hidden" src="media/_Images/S_4Generations/IMG_9.3.png" draggable=false>
 				<ul class="items" pl-bg="media/_Images/S_4Generations/IMG_9.2.png" pl-action="select(target('li'))">
 					<li></li>
 					<li></li>
@@ -301,9 +307,9 @@
 				Here's your
 			</p>
 			<div class="flip-container">
-				<img class="flip" src="media/_Images/_Flip/MON_FLIP_10.1.png">
-				<img class="monarch" src="media/_Images/_Flip/MON_FLIP_10.2.png">
-				<img class="animated pupa" src="media/_Images/_Flip/MON_FLIP_10.3.png">
+				<img class="flip" src="media/_Images/_Flip/MON_FLIP_10.1.png" draggable=false>
+				<img class="monarch" src="media/_Images/_Flip/MON_FLIP_10.2.png" draggable=false>
+				<img class="animated pupa" src="media/_Images/_Flip/MON_FLIP_10.3.png" draggable=false>
 			</div>
 		</div>
 	</section>

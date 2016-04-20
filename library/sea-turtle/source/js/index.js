@@ -1,12 +1,13 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 
-import './testPlatformIntegration';
 import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -28,26 +29,11 @@ pl.game('sea-turtle', function () {
 	 * @override
 	 */
 	this.screen('title', function () {
-		
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close(this.game.loader);
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
+
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
-
-		this.startAudio = function () {
-			this.title.audio.background.play();
-			this.title.audio.voiceOver.play();
-		};
-
-		this.stopAudio = function () {
-			this.title.audio.voiceOver.stop('@ALL');
-		};
-
 	});
 
 	this.screen('video', function () {
@@ -113,7 +99,7 @@ pl.game('sea-turtle', function () {
 		});
 		
 		/**
-		 * The reveal compoent holds the correct/incorrect splash
+		 * The reveal component holds the correct/incorrect splash
 		 * images. So its responsible for handling the multiple
 		 * choice "answer" behavior by displaying the
 		 * "correct" or "incorrect" image.
@@ -126,7 +112,7 @@ pl.game('sea-turtle', function () {
 				message = this[_event.message];
 				playing = this.audio.playing();
 
-				if (message && !this.screen.isComplete) {
+				if (message && !this.isComplete) {
 					this.select(message);
 					this.delay('2s', function() {
 						this.deselect(message);
@@ -135,6 +121,7 @@ pl.game('sea-turtle', function () {
 					if (playing) playing.stop();
 
 					this.delay('2.5s', function () {
+						if(this.wellDone.state(this.STATE.SELECTED)) return;
 						this.reveal.item('instruction');
 						this.characters.enable();
 					});
@@ -191,6 +178,7 @@ pl.game('sea-turtle', function () {
 		this.respond('complete', function (_event) {
 			if (this.reveal.is(_event.targetScope)) {
 				this.reveal.item('wellDone');
+				this.audio.sfx.complete.play();
 			}
 		});
 

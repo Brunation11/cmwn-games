@@ -4,15 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Twirl n' Swirl</title>
 
+	<link rel="stylesheet" type="text/css" href="../shared/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<!-- inject:testPlatformIntegration -->
-	<!-- endinject -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="ai.js"></script>
 	<!-- inject:livereload -->
+	<!-- endinject -->
+	<!-- inject:testPlatformIntegration -->
 	<!-- endinject -->
 
 </head>
@@ -45,6 +46,11 @@
 
 
 	<!-- SCREENS -->
+	<section id="ios-splash" class="screen" pl-component="screen-ios-splash">
+		<img class="hidden" src="../shared/images/ios_start_ball.png">
+		<img class="hidden" src="../shared/images/ios_start_ball_anim.gif">
+		<div pl-id="ball" pl-action="startGame()"></div>
+	</section>
 
 	<!-- 1 -->
 	<section id="title" pl-component="screen-title" pl-delay="1.5s" pl-anim-out="rotateOut" pl-wallpaper="title"></section>

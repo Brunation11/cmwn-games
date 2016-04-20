@@ -1,11 +1,15 @@
 pl.game.component('screen-basic', function () {
 
+	this.allowAction = function() {
+		return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
+	};
+
 	this.playSound = function(_sound) {
 		var delay, $sound;
 
 		$sound = $(_sound);
 		delay = $sound.attr('pl-delay');
-		if($sound.hasClass('voice-over')) {
+		if(_sound.type === 'voiceOver') {
 			this.currentVO = _sound;
 		}
 
@@ -27,6 +31,8 @@ pl.game.component('screen-basic', function () {
 				if (sfx) this.playSound(sfx);
 			}));
 		}
+
+		if(this.state(this.STATE.OPEN)) this.start();
 	};
 
 	this.next = function () {
@@ -78,8 +84,7 @@ pl.game.component('screen-basic', function () {
 
 	this.stop = function() {
 		if(this.currentVO) {
-			this.currentVO.pause();
-			this.currentVO.currentTime = 0;
+			this.currentVO.stop();
 		}
 
 		return this;
@@ -87,7 +92,11 @@ pl.game.component('screen-basic', function () {
 
 	this.on('ui-open', function (_event) {
 		if (this.isReady && this === _event.targetScope) {
-			this.start();
+			this.on('transitionend', function(_event) {
+				if(!this.is(_event.target)) return;
+				this.start();
+				this.off('transitionend');
+			}.bind(this));
 		}
 
 		if (!this.requiredQueue || (this.hasOwnProperty('requiredQueue') && !this.requiredQueue.length)) {
@@ -96,9 +105,8 @@ pl.game.component('screen-basic', function () {
 	});
 
 	this.on('ui-leave', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
+		if(!this.is(_event.target)) return;
+		this.stop();
 	});
 
 	this.on('ui-close', function (_event) {

@@ -103,6 +103,15 @@ gulp.task('sass', function () {
             .pipe(gulp.dest('./build/'+_game+'/css'))
             .pipe(livereload());
     });
+
+    gulp
+        .src(['./library/shared/css/*.scss',
+              './library/shared/css/*.css'])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('style.css'))
+        .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+        .pipe(gulp.dest('./build/shared/css'))
+        .pipe(livereload());
 });
 
 gulp.task('sass-prod', function () {
@@ -116,6 +125,7 @@ gulp.task('sass-prod', function () {
             .pipe(concat('style.css'))
             .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
             .pipe(gulp.dest('./build/'+_game+'/css'));
+
     });
 });
 
@@ -132,13 +142,6 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:livereload -->',
                 transform: function (filePath, file) {
                     if(livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
-                }
-            }))
-            .pipe(inject(gulp.src('./testPlatformIntegration.js'), {
-                starttag: '<!-- inject:testPlatformIntegration -->',
-                transform: function (filePath, file) {
-                    console.log('inject', filePath);
-                    return '<script>\n' + file.contents.toString('utf8') + ' test();\n</script>';
                 }
             }))
             .pipe(gulp.dest('./build/'+_game));
@@ -186,6 +189,7 @@ gulp.task('watch', function(callback) {
     var game = (games.length > 1) ? '**' : games[0];
     watch([
         '../js-interactive-library/build/play.js',
+        'library/shared/**/*',
         'library/' + game + '/source/js/**/*.js',
         'library/' + game + '/source/js/components/**/*.scss',
         'library/' + game + '/source/js/components/**/*.css',

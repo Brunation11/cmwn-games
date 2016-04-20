@@ -10,10 +10,12 @@ pl.game.component('screen-quit', function () {
 	this.on('ui-open', function (_event) {
 		this.game.addClass('QUIT-SCREEN');
 		this.removeClass('LEAVE-END');
+		this.game.pause(true);
 	});
 
 	this.on('ui-leave', function () {
 		this.game.removeClass('QUIT-SCREEN');
+		this.game.resume();
 	});
 
 	this.init = function () {
