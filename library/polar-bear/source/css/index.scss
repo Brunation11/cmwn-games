@@ -37,38 +37,6 @@ button {
 	cursor: pointer;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(200,200,200,0.5);
-	border-radius: 50px;
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-	color: #eee;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
-}
-
 /* This is just to preload the images used in css. */
 #asset-bin { display: none; }
 
@@ -139,20 +107,26 @@ img.inline {
 	margin: 1em 0;
 }
 
-.experiment .frame-component .frame.title::before {
+.experiment div.title {
 	position: absolute;
-	bottom: 95%;
+	top: 30px;
 	width: 100%;
 	height: 90px;
 
-	content: "";
 	background: no-repeat center;
 	background-size: auto 100%;
+	z-index: 1;
 }
 
-.experiment.why-warmer .frame-component .frame.title::before {
-	height: 140px;
-	bottom: 84%;
+.experiment.why-warmer {
+	div.title {
+		height: 140px;
+		bottom: 84%;
+	}
+
+	.multiple-choice-component {
+		margin-top: 70px;
+	}
 }
 
 .experiment .print {
@@ -242,6 +216,13 @@ img.inline {
 		width: 70px;
 		height: 70px;
 	}
+
+#map .map .ring {
+	transition: opacity .5s;
+	opacity: 1;
+	width: 547px;
+	margin-left: -1px;
+}
 
 #bears {
 

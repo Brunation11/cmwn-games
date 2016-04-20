@@ -1,44 +1,7 @@
 pl.game.component('screen-basic', function () {
-	var characters;
 
-	this.currentVO = null;
-
-	/**
-	 * Nodes, including the node of this screen, with a
-	 * attribute of pl-bg will get a background-image style
-	 * and the resource preloaded and collected for watching.
-	 */
-	this.handleProperty({
-		bg: function (_node, _name, _value) {
-			var img = new Image();
-			
-			if (!characters) characters = [];
-
-			img.src = _value;
-			characters.push(img);
-			$(_node).css('background-image', 'url('+_value+')');
-		}
-	});
-
-	this.on('initialize', function (_event) {
-		if (!this.is(_event.targetScope)) return;
-		this.watchAssets(characters);
-	});
-	
-	this.playSound = function (_sound) {
-		var delay;
-
-		delay = $(_sound).attr('pl-delay');
-
-		if($(_sound).hasClass('voice-over')) {
-			this.currentVO = _sound;
-		}
-
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
+	this.shouldProceed = function () {
+		return !this.state(this.STATE.VOICE_OVER) || this.game.demoMode;
 	};
 
 	this.next = function () {
@@ -72,19 +35,11 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.start = function () {
-		var bgSound, voSound;
+		var fxSound = this.audio && this.audio.sfx.start;
 
-		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
-		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
-		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
+		this.startAudio();
 
-		if (bgSound) {
-			this.game.bgSound = bgSound;
-			bgSound.play();
-		}
-		if(fxSound) fxSound.play();
-		if (voSound && !voSound.hasAttribute("pl-dontautoplay")) this.playSound(voSound);
-
+		if (fxSound) fxSound.play();
 		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
 		return this;
@@ -94,11 +49,7 @@ pl.game.component('screen-basic', function () {
 		if(this.timeoutID) {
 			clearTimeout(this.timeoutID);
 		}
-
-		if(this.currentVO) {
-			this.currentVO.pause();
-			this.currentVO.currentTime = 0;
-		}
+		return this.proto();
 	};
 
 	this.on('ui-open', function (_event) {
@@ -135,15 +86,16 @@ pl.game.component('screen-basic', function () {
 		}
 	});
 
+	this.complete = function () {
+		var audio;
+
+		audio = (this.audio && this.audio.has('screenComplete') ? this.audio : this.game.audio);
+
+		audio.sfx.play('screenComplete');
+		return this.proto();
+	};
+
 	this.on('ready', function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
-
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-				if (sfx) sfx.play();
-			}));
-		}
+		if(this.state(this.STATE.OPEN)) this.start();
 	});
 });

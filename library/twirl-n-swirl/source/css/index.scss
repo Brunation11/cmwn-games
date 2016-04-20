@@ -1,6 +1,6 @@
 @keyframes flush {
 	0% {
-		transform: translate3d(-50%, -50%, 0) scale(1.5) rotate(0deg);
+		transform: translate3d(-50%, -50%, 0) scale(1.75) rotate(0deg);
 		opacity: 1;
 	}
 
@@ -27,6 +27,10 @@
 
 html {
 	background-color: #fff;
+}
+
+img.hidden {
+	display: none;
 }
 
 #twirl-n-swirl {
@@ -59,9 +63,9 @@ html {
 	}
 
 	&.DEMO section .yes,
-	&.DEMO section.VOICE-OVER .yes,
+	&.DEMO section.VOICE-OVER:not(.COMPLETE) .yes,
 	&.DEMO section .next-screen,
-	&.DEMO section.VOICE-OVER .next-screen {
+	&.DEMO section.VOICE-OVER:not(.COMPLETE) .next-screen {
 		opacity: 1;
 		cursor: pointer;
 		pointer-events: auto;
@@ -90,7 +94,8 @@ html {
 			cursor: default;
 			background-position: -480px -53px;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -480px -260px;
 			}
 		}
@@ -98,7 +103,8 @@ html {
 		.prev-screen {
 			background-position: -270px -53px;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -270px -260px;
 			}
 		}
@@ -126,7 +132,8 @@ html {
 		background-position: -910px -58px;
 		z-index: 1;
 
-		&:hover {
+		&:hover,
+		&:active {
 			background-position: -910px -266px;
 		}
 	}
@@ -169,7 +176,8 @@ html {
 		width: 240px; height: 208px;
 		background-position: left top;
 
-		&:hover {
+		&:hover,
+		&:active {
 			background-position: left bottom;
 		}
 	}
@@ -229,7 +237,8 @@ html {
 		background-position: 3px 2px;
 		background-size: 451px;
 
-		&:hover {
+		&:hover,
+		&:active {
 			background-position: right 2px;
 		}
 	}
@@ -237,7 +246,7 @@ html {
 
 #plant {
 	h2 {
-		width: 650px;
+		width: 700px;
 		margin: 20px auto;
 		text-align: center;
 	}
@@ -277,7 +286,8 @@ html {
 			background-position: -1050px -50px;
 			height: 110px;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -1050px -258px;
 			}
 		}
@@ -287,7 +297,8 @@ html {
 			width: 150px;
 			height: 140px;
 
-			&:hover {
+			&:hover,
+			&:active {
 				background-position: -1290px -248px;
 			}
 		}
