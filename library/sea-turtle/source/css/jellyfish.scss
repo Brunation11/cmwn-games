@@ -13,20 +13,6 @@
 			height: 100%;
 			z-index: -1;
 
-			&.SELECTED {
-				z-index: 1;
-
-				&:before {
-					content: "";
-					position: fixed;
-					left: -1000%;
-					top: -1000%;
-					width: 3000%;
-					height: 3000%;
-					z-index: -1;
-				}
-			}
-
 			div {
 				position: absolute;
 				left: 50%;
@@ -48,7 +34,42 @@
 				top: 0;
 				width: 30px;
 				margin: 0;
+				opacity: 0;
+				cursor: default;
+				transition: opacity 0.5s;
 			}
 		}
+	}
+
+	&.OPEN {
+		.reveal-component ul {
+			li {
+				&.SELECTED {
+					z-index: 1;
+
+					&:before {
+						content: "";
+						position: fixed;
+						left: -1000%;
+						top: -1000%;
+						width: 3000%;
+						height: 3000%;
+						z-index: -1;
+					}
+				}
+			}
+		}
+	}
+
+	.reveal-component:not(.VOICE-OVER) button.close {
+		opacity: 1;
+		cursor: pointer;
+	}
+}
+
+.DEMO #jellyfish {
+	.reveal-component button.close {
+		opacity: 1;
+		cursor: pointer;
 	}
 }

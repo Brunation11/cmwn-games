@@ -43,6 +43,7 @@ export default function flushIt () {
 			if (so) so.play();
 
 			this.screen.enable('.draggables');
+			this.disable($('.draggables [pl-id='+this.find('li.SELECTED').id()+']'));
 			
 			return this.sup();
 		};
@@ -62,14 +63,15 @@ export default function flushIt () {
 
 	});
 	/**
-	 * Adds an ability for the screen to respond to items droped in the
+	 * Adds an ability for the screen to respond to items dropped in the
 	 * toilet bowl. Its responsibility is to show the reveal via the
 	 * dropped item's ID and disable draggable bins.
 	 */
 	this.respond('drop', function (_event) {
 		var id = _event.behaviorTarget.id();
 
-		this.toilet.reveal.item(id);
+		this.toilet.reveal.item(id).find('.FLUSH').removeClass('FLUSH');
+		$('.draggables [pl-id='+id+']').addClass('TOILET');
 		this.disable('.draggables');
 	});
 	/**
@@ -85,18 +87,28 @@ export default function flushIt () {
 	 */
 	this.flush = function () {
 		var current = this.reveal.currentItem();
-		var sfx = pl.util.resolvePath(this, 'game.audio.sfx.flush');
-		
-		if (sfx) sfx.play();
+
+		this.game.audio.sfx.flush.play();
 		
 		if (!current) return;
 
 		current.addClass('FLUSH');
-		this.disable($('.draggables [pl-id='+current.id()+']'));
 
-		this.delay('2s', function () {
-			this.modalReveal.item(current.id());
-		});
+		this.game.audio.sfx.flush.off('ended').on('ended', function () {
+			if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
+		}.bind(this));
 	};
+
+	this.on('ui-close', function() {
+		this.game.audio.sfx.flush.off('ended');
+	});
+
+	this.on('ui-open', function(_event) {
+		if(!this.is(_event.target)) return;
+		this.find('.TOILET').removeClass('TOILET');
+		this.deselect(this.toilet.reveal.find('.SELECTED'));
+
+		if(this.isComplete) this.find('.DISABLED').removeClass('DISABLED');
+	});
 
 }

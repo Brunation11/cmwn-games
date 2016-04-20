@@ -16,7 +16,7 @@ pl.game.component('carousel', function () {
 	this.isPlaying = false;
 
 	this.ready = function () {
-		this.$images = this.find('img');
+		this.$images = this.find('li');
 		this.shouldRandomize = this.properties.has('randomize');
 
 		if (this.TYPE.every(this.bind(function (_type) {
@@ -46,7 +46,7 @@ pl.game.component('carousel', function () {
 		}));
 
 		this.on('transitionend', function (_event) {
-			if (_event.target.nodeName === 'IMG' && $(_event.target).state(this.STATE.LEAVE)) {
+			if (_event.target.nodeName === 'LI' && $(_event.target).state(this.STATE.LEAVE)) {
 				this.recycle();
 			}
 		});

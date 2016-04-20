@@ -1,15 +1,7 @@
 pl.game.component('screen-basic', function () {
 
 	function playButtonSFX (_direction) {
-		var so;
-
-		if (_direction === "next") {
-			so = pl.util.resolvePath(this, 'audio.sfx.nextScreen');
-		}
-
-		if (!so) {
-			so = pl.util.resolvePath(this, 'game.audio.sfx.button');
-		}
+		var so = (_direction === "next") ? pl.util.resolvePath(this, 'this.audio.sfx.nextScreen') : pl.util.resolvePath(this, 'this.game.audio.sfx.nextScreen');
 		if (so) so.play();
 	}
 
@@ -81,18 +73,13 @@ pl.game.component('screen-basic', function () {
 
 		bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
 		voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
+		fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
 
-		if (bgSound) {
-			this.game.current.playingBG = bgSound;
-			this.playSound(bgSound);
-		}
+		if(bgSound) bgSound.play();
+		if(fxSound) fxSound.play();
+		if(voSound) voSound.play();
 
-		if (voSound) this.playSound(voSound);
-
-		// Start all screen entities
-		if (this.hasOwnProperty('entities')) this.entities.forEach(function (_entity) {
-			if (typeof _entity.start === 'function' && _entity.hasOwnProperty('start')) _entity.start();
-		});
+		if(this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
 		return this;
 	};
@@ -107,12 +94,7 @@ pl.game.component('screen-basic', function () {
 	};
 	
 	this.complete = function () {
-		var sfx;
-
-		sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-
-		if (sfx) this.playSound(sfx);
-
+		this.game.audio.sfx.screenComplete.play();
 		return this.proto();
 	};
 
