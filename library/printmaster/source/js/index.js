@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -24,6 +22,9 @@ import './components/audio-sequence/behavior';
 import './components/modal/behavior';
 import './components/carousel/behavior';
 import './components/cannon/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('printmaster', function () {
 
