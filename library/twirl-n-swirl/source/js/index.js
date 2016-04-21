@@ -1,9 +1,6 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-// import 'js-interactive-library';
-// Use when doing local changes to the library
-import '../../../../../js-interactive-library';
 import './config.game';
 
 // SCREENS
@@ -17,6 +14,9 @@ import './components/screen-title/behavior';
 import './components/screen-quit/behavior';
 import './components/dropzone/behavior';
 import './components/reveal/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 /**
  * Define the game behavior.
