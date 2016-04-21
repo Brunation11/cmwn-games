@@ -18,7 +18,7 @@ pl.game.component('multiple-choice', function () {
 		if (this.event) {
 			$li = $(this.event.target).closest('li');
 
-			if (!this.isComplete && this.select($li)) {
+			if (this.select($li)) {
 				this.validateAnswer();
 			}
 		}

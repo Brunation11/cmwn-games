@@ -76,6 +76,10 @@ pl.game('happy-fish-face', function () {
 			if (!this.is(_event.target)) return;
 			this.require('select');
 		});
+
+		this.on('ui-open', function() {
+			this.deselect(this.find('.SELECTED'));
+		});
 	});
 
 	this.screen('water-pollution', garbage);
@@ -100,6 +104,10 @@ pl.game('happy-fish-face', function () {
 
 				return false;
 			};
+		});
+
+		this.on('ui-open', function() {
+			this.deselect(this.find('.SELECTED'));
 		});
 	});
 
