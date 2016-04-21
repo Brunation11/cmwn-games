@@ -53,13 +53,13 @@ pl.game('be-bright', function () {
 		});
 
 		this.on('ui-open', function (_event) {
-			if (this.isReady && this === _event.targetScope) {
-				this.start();
-				this.delay('3s', function() {
-					this.complete();
-					this.title.audio.sfx.play();
-				});
-			}
+			if(!this.is(_event.target)) return;
+
+			this.start();
+			this.delay('3s', function() {
+				this.title.complete();
+				this.title.audio.sfx.play();
+			});
 		});
 
 		this.startAudio = function () {
