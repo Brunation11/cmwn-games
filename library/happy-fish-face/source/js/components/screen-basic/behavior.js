@@ -72,15 +72,20 @@ pl.game.component('screen-basic', function () {
 		return this;
 	};
 
+	this.stopAudio = function () {
+		if (!this.audio) return;
+		this.audio.voiceOver.stop('@ALL');
+		this.audio.sfx.stop('@ALL');
+	};
+
 	this.complete = function () {
-		this.game.audio.sfx.screenComplete.play();
+		if(!this.isComplete) this.game.audio.sfx.screenComplete.play();
 		return this.proto();
 	};
 
 	this.on('ui-open', function (_event) {
 		if (this.is(_event.target)) {
 			if (this.isReady) this.start();
-			if (this.completed() && !this.isComplete) this.complete();
 
 			if (this.properties.gameClass) {
 				this.game.addClass(this.properties.gameClass);
