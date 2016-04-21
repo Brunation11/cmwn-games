@@ -32,21 +32,6 @@ pl.game('twirl-n-swirl', function () {
 		if (_paper) this.removeClass('DEFAULT TITLE PLANT').addClass(_paper.toUpperCase());
 	};
 
-	/**
-	 * When the game exits submit a GA (Google Analytics) event.
-	 * @override
-	 */
-	this.exit = function () {
-		var screen, eventCategory;
-
-		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
-
-		ga('send', 'event', eventCategory, 'quit');
-
-		return this.proto();
-	};
-
 	// Define Screen Behaviors
 	this.screen('info-question', infoQuestion);
 	this.screen('flush-it', flushIt);
@@ -70,6 +55,10 @@ pl.game('twirl-n-swirl', function () {
 		};
 	});
 
+	/**
+	 * When the game exits submit a GA (Google Analytics) event.
+	 * @override
+	 */
 	this.exit = function () {
 		var screen, eventCategory;
 
