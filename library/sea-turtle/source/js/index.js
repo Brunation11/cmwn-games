@@ -212,6 +212,14 @@ pl.game('sea-turtle', function () {
 
 	});
 
+	this.screen('trash', function() {
+		this.on('ui-close', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			if(this.isComplete) this.delay('.5s', this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED)));
+		});
+	});
+
 	this.screen('jellyfish', function() {
 		this.entity('reveal', function() {
 			this.deselectTarget = function(_$target) {

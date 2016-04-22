@@ -2,8 +2,10 @@ pl.game.component('screen-basic', function () {
 
 	this.ready = function () {
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
+			this.requiredQueue.on('complete', this.bind(function (_e) {
 				var sfx;
+
+				if(!this.is(_e.target)) return;
 
 				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
@@ -65,7 +67,7 @@ pl.game.component('screen-basic', function () {
 	};
 
 	this.on('ui-open', function (_event) {
-		if (this !== _event.targetScope) return;
+		if (!this.is(_event.target)) return;
 
 		if (this.isReady) {
 			this.start();

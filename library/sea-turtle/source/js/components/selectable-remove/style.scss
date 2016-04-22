@@ -18,10 +18,6 @@
 		overflow: hidden;
 	}
 
-	.screen.COMPLETE .selectable-remove-component .center {
-		cursor: auto;
-	}
-
 	.selectable-remove-component .turtle {
 		position: absolute;
 		left: 0;
@@ -53,8 +49,7 @@
 		display: none;
 	}
 
-	.screen:not(.OPEN) .selectable-remove-component .net,
-	.screen.COMPLETE .selectable-remove-component .net {
+	.screen:not(.OPEN) .selectable-remove-component .net {
 		opacity: 0;
 	}
 

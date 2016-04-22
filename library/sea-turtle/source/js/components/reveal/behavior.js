@@ -6,6 +6,8 @@ pl.game.component('reveal', function () {
 		this.items = this.findOwn('li')
 	});
 
+	this.start = () => {};
+
 	this.item = function (_id) {
 		var vo, index;
 
@@ -14,9 +16,7 @@ pl.game.component('reveal', function () {
 		if (typeof _id === 'number') {
 			this.select(this.items[_id]);
 			this.audio.voiceOver[_id].play();
-		}
-			
-		else if (typeof _id === 'string') {
+		} else if (typeof _id === 'string') {
 			if (this[_id]) {
 				this.select(this[_id]);
 
