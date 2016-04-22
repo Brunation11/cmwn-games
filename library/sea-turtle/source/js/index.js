@@ -199,6 +199,17 @@ pl.game('sea-turtle', function () {
 			this.reveal.item(0);
 		};
 
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			if(this.isComplete) {
+				this.deselect(this.dropzone.reveal.find('.SELECTED'));
+				this.enable(this.characters.find('.DISABLED'));
+				this.dropzone.find('.show').removeClass('show');
+				this.reveal.item(0);
+			}
+		});
+
 	});
 
 	this.screen('jellyfish', function() {

@@ -47,24 +47,18 @@ pl.game.component('screen-basic', function () {
 	this.start = function () {
 		this.startAudio();
 
-		this.startFirstEntity();
+		this.startEntities();
 
 		return this;
 	};
 
-	this.startFirstEntity = function (argument) {
+	this.startEntities = function (argument) {
 		var conditions;
 
 		if (this.hasOwnProperty('entities') && this.entities) {
-			conditions = [
-				this.entities[0],
-				this.entities[0].hasOwnProperty('start'),
-				typeof this.entities[0].start === 'function'
-			];
-
-			if (!~conditions.indexOf(false)) {
-				return this.entities[0].start();
-			}
+			this.entities.forEach((_node) => {
+				if(typeof _node.start === 'function') _node.start();
+			});
 		}
 
 		return false;
