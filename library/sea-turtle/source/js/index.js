@@ -1,9 +1,6 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
-
 import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
@@ -202,6 +199,17 @@ pl.game('sea-turtle', function () {
 			this.reveal.item(0);
 		};
 
+	});
+
+	this.screen('jellyfish', function() {
+		this.entity('reveal', function() {
+			this.deselectTarget = function(_$target) {
+				if(!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
+					this.deselect(_$target);
+					this.screen.requiredQueue.ready(this.audio.voiceOver[_$target.index()]);
+				}
+			};
+		});
 	});
 
 	this.screen('flip', function () {
