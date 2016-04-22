@@ -2,9 +2,9 @@ pl.game.component('selectable-remove', function () {
 	
 	this.behavior('select', function (_target) {
 		var $target;
+		$target = $(this.event.target).closest('li');
 
-		if (this.event && !_target) {
-			$target = $(this.event.target).closest('li');
+		if (this.event && !_target && !$target.hasClass(this.STATE.HIGHLIGHTED)) {
 
 			if (this.shouldSelect($target) !== false) {
 				$target.is('li') && this.audio.sfx.correct.play();
@@ -12,15 +12,9 @@ pl.game.component('selectable-remove', function () {
 					message: $target.attr('class'),
 					behaviorTarget: $target
 				};
-			}
-
-			else {
+			} else {
 				this.audio.sfx.incorrect.play();
 			}
-		}
-
-		else {
-			this.proto(_target);
 		}
 
 		return false;
@@ -40,7 +34,7 @@ pl.game.component('selectable-remove', function () {
 
 	this.shouldSelect = function (_target) {
 		var $target = $(_target);
-		if (!$target.hasClass(this.STATE.HIGHLIGHTED) && !$target.is('[pl-incorrect]')) {
+		if (!$target.is('[pl-incorrect]')) {
 			return !this.screen.state(this.STATE.VOICE_OVER);
 		}
 
