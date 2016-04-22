@@ -70,7 +70,7 @@ export default function flushIt () {
 	this.respond('drop', function (_event) {
 		var id = _event.behaviorTarget.id();
 
-		this.toilet.reveal.item(id).find('.FLUSH').removeClass('FLUSH');
+		this.toilet.addClass('FLUSH').reveal.item(id).find('.FLUSH').removeClass('FLUSH');
 		$('.draggables [pl-id='+id+']').addClass('TOILET');
 		this.disable('.draggables');
 	});
@@ -92,6 +92,7 @@ export default function flushIt () {
 		
 		if (!current) return;
 
+		this.toilet.removeClass('FLUSH');
 		current.addClass('FLUSH');
 
 		this.game.audio.sfx.flush.off('ended').on('ended', function () {
