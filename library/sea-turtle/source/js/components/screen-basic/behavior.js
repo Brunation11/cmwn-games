@@ -1,18 +1,20 @@
 pl.game.component('screen-basic', function () {
 
-	this.ready = function () {
+	this.on('ready', function (_e) {
+		var self = this;
+
+		if(!this.is(_e.target)) return;
+
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function (_e) {
+			this.requiredQueue.on('complete', function () {
 				var sfx;
 
-				if(!this.is(_e.target)) return;
-
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+				sfx = pl.util.resolvePath(self, 'game.audio.sfx.screenComplete');
 
 				if (sfx) sfx.play();
-			}));
+			});
 		}
-	};
+	});
 	
 	this.next = function () {
 		var nextScreen, buttonSound;

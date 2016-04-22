@@ -216,7 +216,7 @@ pl.game('sea-turtle', function () {
 		this.on('ui-close', function(_e) {
 			if(!this.is(_e.target)) return;
 
-			if(this.isComplete) this.delay('.5s', this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED)));
+			if(this.isComplete) this.delay('.5s', function() {this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED))});
 		});
 	});
 
