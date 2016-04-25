@@ -3,7 +3,7 @@
 		opacity: 0;
 	}
 
-	50% {
+	67% {
 		opacity: 0;
 	}
 
@@ -43,5 +43,5 @@
 	}
 
 	.cannon-component img.RELOAD {
-		animation: reload 2s;
+		animation: reload 3s;
 	}

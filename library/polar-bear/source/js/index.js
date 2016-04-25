@@ -221,7 +221,7 @@ pl.game('polar-bear', function () {
 
 		this.stop = function () {
 			this.carousel.stop();
-		}
+		};
 
 		this.on('ui-select', function (_event) {
 			if (_event.targetScope === this.reveal) {
