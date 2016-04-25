@@ -3,7 +3,7 @@
  * @module
  */
 // import 'js-interactive-library';
-import '../../../../../js-interactive-library';
+// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -20,6 +20,9 @@ import './components/modal/behavior';
 import './components/reveal/behavior';
 import './components/smoke/behavior';
 import './components/audio-sequence/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('fire', function () {
 
