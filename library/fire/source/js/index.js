@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -162,7 +160,7 @@ pl.game('fire', function () {
 				});
 
 				this.on('ready', function(_event) {
-					var sequence = 'title police plumber firefighter chef'.split(' ');
+					var sequence = 'title builder plumber firefighter chef'.split(' ');
 
 					if (!this.is(_event.target)) return;
 
