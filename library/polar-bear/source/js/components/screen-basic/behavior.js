@@ -23,6 +23,8 @@ pl.game.component('screen-basic', function () {
 	this.next = function () {
 		var current, nextScreen, buttonSound;
 
+		if(!this.state(this.STATE.OPEN)) return;
+
 		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
 		if (this !== this.screen) {
@@ -60,6 +62,8 @@ pl.game.component('screen-basic', function () {
 
 	this.prev = function () {
 		var current, prevScreen, buttonSound;
+
+		if(!this.state(this.STATE.OPEN)) return;
 
 		if (this !== this.screen) {
 			this.log('Not called on a screen');
@@ -121,7 +125,7 @@ pl.game.component('screen-basic', function () {
 	});
 
 	this.on('ui-close', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
+		if (this.isReady && this.is(_event.target)) {
 			this.stop();
 		}
 	});

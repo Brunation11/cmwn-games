@@ -2,7 +2,7 @@
 	
 	.title-component button.play {
 		position: absolute;
-		top: 100%; right: 40px;
+		top: 96%; right: 40px;
 		width: 120px; height: 70px;
 		background-image: url(../media/images/button-play.png);
 		background-size: 100%;

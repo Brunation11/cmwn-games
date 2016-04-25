@@ -2,10 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// Use when doing local changes to the library
-// import '../../../../../js-interactive-library/build/play.js';
-
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -22,7 +18,7 @@ import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/cannon/behavior';
 
-import '../../../shared/js/test-platform-integration';
+// import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
