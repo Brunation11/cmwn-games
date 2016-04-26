@@ -445,11 +445,7 @@ img.inline {
 		.frame {
 			img {
 				transform: scale(1) translateX(0%) translateY(0%);
-				transition: transform .5s 13s;
-				// -webkit-animation-name: slideInDown;
-				// -webkit-animation-delay: 7s;
-				// animation-name: slideInDown;
-				// animation-delay: 7s;
+				transition: transform .5s 13.5s;
 			}
 		}
 	}
