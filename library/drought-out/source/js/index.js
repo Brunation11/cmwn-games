@@ -34,6 +34,12 @@ pl.game('drought-out', function () {
 
 			if(vo) vo.play();
 		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
 	};
 
 	this.screen('title', function () {
