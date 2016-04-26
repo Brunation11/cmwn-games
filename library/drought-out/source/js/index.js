@@ -127,6 +127,12 @@ pl.game('drought-out', function () {
 			};
 
 		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
 	});
 
 	this.screen('conserve', function() {
