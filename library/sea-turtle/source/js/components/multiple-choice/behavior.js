@@ -10,9 +10,7 @@ pl.game.component('multiple-choice', function () {
 				this.correct.ready(index);
 				return true;
 			}
-		}
-
-		else if (_$selected) {
+		} else if (_$selected) {
 			if (_$selected.is('[pl-correct]') && this.correct.has(_$selected[0])) {
 				this.correct.ready(_$selected[0]);
 				return true;
@@ -37,16 +35,21 @@ pl.game.component('multiple-choice', function () {
 
 			if (this.is(_node)) {
 				answers = this.properties.correct.split(/\s*,\s*/);
-				answer.forEach(this.bind(function (_index) {
+				answers.forEach(this.bind(function (_index) {
 					this.correct.add(Number(_index));
 				}));
-			}
-
-			else {
+			} else {
 				this.correct.add(_node);
 			}
 		}
 	});
+
+	this.start = function() {
+		var self = this;
+		this.find('[pl-correct]').each((i,_node) => {
+			self.correct.add(_node);
+		});
+	};
 
 	this.behavior('answer', function (_$target) {
 		var isCorrect;

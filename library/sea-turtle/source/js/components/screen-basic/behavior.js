@@ -1,16 +1,20 @@
 pl.game.component('screen-basic', function () {
 
-	this.ready = function () {
+	this.on('ready', function (_e) {
+		var self = this;
+
+		if(!this.is(_e.target)) return;
+
 		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
+			this.requiredQueue.on('complete', function () {
 				var sfx;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+				sfx = pl.util.resolvePath(self, 'game.audio.sfx.screenComplete');
 
 				if (sfx) sfx.play();
-			}));
+			});
 		}
-	};
+	});
 	
 	this.next = function () {
 		var nextScreen, buttonSound;
@@ -47,31 +51,25 @@ pl.game.component('screen-basic', function () {
 	this.start = function () {
 		this.startAudio();
 
-		this.startFirstEntity();
+		this.startEntities();
 
 		return this;
 	};
 
-	this.startFirstEntity = function (argument) {
+	this.startEntities = function (argument) {
 		var conditions;
 
 		if (this.hasOwnProperty('entities') && this.entities) {
-			conditions = [
-				this.entities[0],
-				this.entities[0].hasOwnProperty('start'),
-				typeof this.entities[0].start === 'function'
-			];
-
-			if (!~conditions.indexOf(false)) {
-				return this.entities[0].start();
-			}
+			this.entities.forEach((_node) => {
+				if(typeof _node.start === 'function') _node.start();
+			});
 		}
 
 		return false;
 	};
 
 	this.on('ui-open', function (_event) {
-		if (this !== _event.targetScope) return;
+		if (!this.is(_event.target)) return;
 
 		if (this.isReady) {
 			this.start();
