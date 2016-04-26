@@ -23,6 +23,14 @@ import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
 
+	var resetMultipleChoice = function() {
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			if(this.isComplete) this.deselect(this.find('.'+this.STATE.SELECTED));
+		});
+	};
+
 	this.screen('title', function () {
 		this.on('ready', function(_event) {
 			if(!this.is(_event.target)) return;
@@ -38,6 +46,12 @@ pl.game('polar-bear', function () {
 		this.stopAudio = function () {
 			this.title.audio.voiceOver.stop('@ALL');
 		};
+	});
+
+	this.screen('what-color', function() {
+		this.entity('slides', function() {
+			this.entity('mc', resetMultipleChoice);
+		});
 	});
 
 	this.screen('map', function () {
@@ -178,7 +192,7 @@ pl.game('polar-bear', function () {
 
 						$country.addClass('animated fadeIn');
 
-						this.countries.correct.ready(_country);
+						if(!this.state('COMPLETE')) this.countries.correct.ready(_country);
 					}
 
 					else {
@@ -206,6 +220,14 @@ pl.game('polar-bear', function () {
 
 					return vo;
 				};
+
+				this.on('ui-open', function(_e) {
+					if(!this.is(_e.target)) return;
+
+					if(this.isComplete) {
+						this.find('.fadeIn').removeClass('fadeIn');
+					}
+				});
 			});
 
 		});
@@ -245,6 +267,8 @@ pl.game('polar-bear', function () {
 		this.on('ui-open', function(_event) {
 			if(!this.is(_event.target)) return;
 			this.carousel.start();
+
+			if(this.isComplete) this.score.reset();
 		});
 
 		this.state('incomplete','-COMPLETE', {
@@ -291,7 +315,17 @@ pl.game('polar-bear', function () {
 
 	});
 
+	this.screen('experiment-hands', resetMultipleChoice);
+	this.screen('experiment-why-warmer', resetMultipleChoice);
+	this.screen('experiment-how-warmer', resetMultipleChoice);
+
 	this.screen('experiment-discover', function() {
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
+
 		this.respond('select', function (_event) {
 			var id = _event.message;
 

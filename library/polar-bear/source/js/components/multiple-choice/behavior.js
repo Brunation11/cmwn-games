@@ -9,25 +9,19 @@ pl.game.component('multiple-choice', function () {
 			answers = _scope.properties.correct.split(/\s*,\s*/);
 
 			if (~answers.indexOf(String($selected.index()))) {
-				_scope.playSFX('correct');
+				if(_scope.isComplete) _scope.playSFX('correct');
 				_scope.complete();
-			}
-
-			else {
+			} else {
 				_scope.playSFX('incorrect');
 			}
-		}
-
-		else {
+		} else {
 			correctCount = 0;
 			$correct = _scope.find('[pl-correct]');
 
 			if (~$.inArray($selected[0], $correct)) {
-				_scope.playSFX('correct');
+				if(_scope.isComplete) _scope.playSFX('correct');
 				_scope.complete();
-			}
-
-			else {
+			} else {
 				_scope.playSFX('incorrect');
 			}
 		}
@@ -62,7 +56,7 @@ pl.game.component('multiple-choice', function () {
 			$li = $(this.event.target).closest('li');
 			this.playVO($li.id());
 
-			if (!this.isComplete && this.select($li)) {
+			if (this.select($li)) {
 				validateAnswer(this);
 			}
 		}
