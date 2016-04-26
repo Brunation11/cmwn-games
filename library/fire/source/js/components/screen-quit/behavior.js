@@ -31,6 +31,8 @@ pl.game.component('screen-quit', function () {
 	});
 
 	this.on('ui-leave', function () {
+		var vo = this.audio.voiceOver.sure;
+		if(vo) vo.stop();
 		this.game.removeClass('QUIT-SCREEN');
 		this.game.resume();
 	});
@@ -40,10 +42,14 @@ pl.game.component('screen-quit', function () {
 	};
 	
 	this.okay = function () {
+		var sfx = this.audio.sfx.button;
+		if(sfx) sfx.play();
 		this.game.exit();
 	};
 
 	this.cancel = function () {
+		var sfx = this.audio.sfx.button;
+		if(sfx) sfx.play();
 		this.leave();
 	};
 

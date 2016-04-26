@@ -145,7 +145,6 @@ pl.game.component('screen-basic', function () {
 
 	this.on('ui-open', function (_event) {
 		if (this.isReady && this.is(_event.target)) this.start();
-		if (this.completed()) this.complete();
 
 		if(this.properties.gameClass) {
 			this.game.addClass(this.properties.gameClass);

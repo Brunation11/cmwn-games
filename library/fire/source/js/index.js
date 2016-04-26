@@ -361,6 +361,27 @@ pl.game('fire', function () {
 		};
 	});
 
+	this.screen('quit', function() {
+		var ctx;
+
+		this.on('ready', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			ctx = new (window.AudioContext || window.webkitAudioContext);
+			this.audio.voiceOver.sure.setContext(ctx);
+			this.audio.sfx.button.setContext(ctx);
+		});
+
+		this.on('ui-open' , function() {
+			var vo, sfx;
+
+			vo = this.audio.voiceOver.sure;
+			sfx = this.audio.sfx.button;
+			if(vo) vo.play();
+			if(sfx) sfx.play();
+		});
+	});
+
 	this.exit = function () {
 		var screen, eventCategory;
 
