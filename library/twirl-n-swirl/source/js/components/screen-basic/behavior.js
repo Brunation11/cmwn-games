@@ -6,19 +6,12 @@ pl.game.component('screen-basic', function () {
 	}
 
 	this.playSound = function(_sound) {
-		var delay, $sound;
 
-		$sound = $(_sound);
-		delay = $sound.attr('pl-delay');
-		if($sound.hasClass('voice-over')) {
+		if(_sound.type === 'voiceOver') {
 			this.currentVO = _sound;
 		}
 
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
+		return _sound.play();
 	};
 
 	this.on('ui-open', function (_event) {
@@ -77,7 +70,7 @@ pl.game.component('screen-basic', function () {
 
 		if(bgSound) bgSound.play();
 		if(fxSound) fxSound.play();
-		if(voSound) voSound.play();
+		if(voSound) this.playSound(voSound);
 
 		if(this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
@@ -86,8 +79,7 @@ pl.game.component('screen-basic', function () {
 
 	this.stop = function() {
 		if(this.currentVO) {
-			this.currentVO.pause();
-			this.currentVO.currentTime = 0;
+			this.currentVO.stop();
 		}
 
 		return this;
