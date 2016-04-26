@@ -141,18 +141,27 @@ pl.game('drought-out', function () {
 		this.openDoor = function() {
 			if(this.shouldProceed()) {
 				this.select(this);
-				this.reveal.item(item++);
+				this.reveal.item(item);
 				this.audio.sfx.open.play();
 			}
 		};
 
-		this.on('ready', function(_event) {
-			if (!(this.is(_event.target) && this.reveal.audio)) return;
+		this.on('ready', function(_e) {
+			var self = this;
+
+			if(!(this.is(_e.target) && this.reveal.audio)) return;
 
 			this.reveal.audio.voiceOver.on('ended', function(audio) {
-				this.audio.sfx.close.play();
-				this.deselect();
-			}.bind(this));
+				self.audio.sfx.close.play();
+				self.deselect();
+				item++;
+			});
+		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			if(this.isComplete) item = 0;
 		});
 	});
 
