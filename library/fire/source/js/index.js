@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -162,7 +160,7 @@ pl.game('fire', function () {
 				});
 
 				this.on('ready', function(_event) {
-					var sequence = 'title police plumber firefighter chef'.split(' ');
+					var sequence = 'title builder plumber firefighter chef'.split(' ');
 
 					if (!this.is(_event.target)) return;
 
@@ -361,6 +359,27 @@ pl.game('fire', function () {
 
 			return this.proto();
 		};
+	});
+
+	this.screen('quit', function() {
+		var ctx;
+
+		this.on('ready', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			ctx = new (window.AudioContext || window.webkitAudioContext);
+			this.audio.voiceOver.sure.setContext(ctx);
+			this.audio.sfx.button.setContext(ctx);
+		});
+
+		this.on('ui-open' , function() {
+			var vo, sfx;
+
+			vo = this.audio.voiceOver.sure;
+			sfx = this.audio.sfx.button;
+			if(vo) vo.play();
+			if(sfx) sfx.play();
+		});
 	});
 
 	this.exit = function () {

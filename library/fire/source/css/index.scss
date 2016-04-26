@@ -216,7 +216,7 @@ img.background {
 		cursor: pointer;
 	}
 
-	.DEMO .screen.alarm.VOICE-OVER .push-down,
+	.DEMO .screen.alarm:not(.COMPLETE) .push-down,
 	.DEMO .screen.who.VOICE-OVER ul,
 	.DEMO .screen.triangle.VOICE-OVER ul,
 	.DEMO .screen.dress.SFX .reveal-close,
@@ -480,7 +480,7 @@ img.background {
 		display: none;
 	}
 
-	&.VOICE-OVER:not(.COMPLETE) {
+	&:not(.COMPLETE) {
 		.push-down {
 			pointer-events: none;
 		}
@@ -787,7 +787,7 @@ img.background {
 	&.OPEN {
 		.images {
 			animation-name: vanishOut;
-			animation-delay: 9s;
+			animation-delay: 15s;
 		}
 	}
 }
