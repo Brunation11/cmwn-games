@@ -18,7 +18,7 @@ import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
 import './components/cannon/behavior';
 
-// import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
