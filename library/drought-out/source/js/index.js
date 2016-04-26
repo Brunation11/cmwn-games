@@ -14,7 +14,7 @@ import './components/selectable-reveal/behavior';
 import './components/reveal/behavior';
 import './components/audio-sequence/behavior';
 
-// import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
@@ -97,6 +97,12 @@ pl.game('drought-out', function () {
 
 			if(vo) vo.play();
 			if(sfx) sfx.play();
+		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
 		});
 	});
 
