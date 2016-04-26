@@ -85,4 +85,12 @@ export default function trash () {
 			this.screen.addClass('TRY-AGAIN');
 		};
 	});
+
+	this.on('ui-open', function(_e) {
+		if(!this.is(_e.target)) return;
+
+		if(this.modal.state(this.STATE.SELECTED)) {
+			this.reset();
+		}
+	});
 }

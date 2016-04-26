@@ -63,15 +63,22 @@ pl.game('happy-fish-face', function () {
 			stateMethod = this.properties.selectState || 'select';
 
 			if(id != null) {
+				this.audio.sfx.stop('@ALL');
 				this.audio.sfx.play(id);
 				this[stateMethod](_event.behaviorTarget);
-				this.requiredQueue.ready('select');
+				this.delay('2s', function() {
+					this.requiredQueue.ready('select');
+				});
 			}
 		});
 
 		this.on('ready', function(_event) {
 			if (!this.is(_event.target)) return;
 			this.require('select');
+		});
+
+		this.on('ui-open', function() {
+			this.deselect(this.find('.SELECTED'));
 		});
 	});
 
@@ -97,6 +104,10 @@ pl.game('happy-fish-face', function () {
 
 				return false;
 			};
+		});
+
+		this.on('ui-open', function() {
+			this.deselect(this.find('.SELECTED'));
 		});
 	});
 

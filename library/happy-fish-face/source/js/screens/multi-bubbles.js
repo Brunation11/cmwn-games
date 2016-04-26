@@ -41,4 +41,13 @@ export default function multiBubbles () {
 			this.audio.sfx.incorrect.play();
 		}
 	});
+
+	this.on('ui-open', function(_e) {
+		if(!this.is(_e.target)) return;
+
+		if(this.isComplete) {
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+			this.start();
+		}
+	});
 }
