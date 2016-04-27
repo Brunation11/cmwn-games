@@ -39,4 +39,10 @@ pl.game.component('frame', function () {
 		}
 	});
 
+	this.on('ui-close', function (_event) {
+		if (this.isReady && this.is(_event.target)) {
+			this.stop();
+		}
+	});
+
 });

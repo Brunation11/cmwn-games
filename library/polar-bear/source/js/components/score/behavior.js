@@ -17,6 +17,11 @@ pl.game.component('score', function () {
 
 	});
 
+	this.reset = function() {
+		this.value = 0;
+		this.ready();
+	};
+
 	this.ready = function () {
 		this.attr('value',this.value);
 		this.board.render();
