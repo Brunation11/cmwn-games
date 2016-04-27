@@ -10,6 +10,7 @@ import './components/screen-quit/behavior';
 import './components/background/behavior';
 import './components/title/behavior';
 import './components/selectable/behavior';
+import './components/selectable-canvas-move/behavior';
 import './components/selectable-reveal/behavior';
 import './components/reveal/behavior';
 import './components/audio-sequence/behavior';
@@ -68,7 +69,7 @@ pl.game('drought-out', function () {
 				vo = this.audio.sfx.incorrect;
 			} else {
 				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
+				vo = this.audio.voiceOver[_event.message];
 			}
 
 			switch(_event.message) {
@@ -104,6 +105,8 @@ pl.game('drought-out', function () {
 
 			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
 		});
+
+		this.startAudio = function() {};
 	});
 
 	this.screen('what-can-we-do', selectScreen);

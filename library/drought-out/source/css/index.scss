@@ -539,7 +539,7 @@ img.inline {
 						// the following equation follows this pattern
 						// (interval * $i) % range + min
 						$left: (-15 * $i) % 80 + 0;
-						left: percentage($left / 100);
+						left: (960 * $left / 100)+px;
 						animation-delay: nth($delays, ($i % 15) + 1);
 						animation-duration: nth($durations, ($i % 15) + 1);
 					}
@@ -549,7 +549,7 @@ img.inline {
 	}
 
 	&.VOICE-OVER {
-		li {
+		canvas {
 			pointer-events: none;
 		}
 	}
