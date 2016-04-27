@@ -477,75 +477,10 @@ img.inline {
 }
 
 #balloons {
-	.items {
-		position: absolute;
-		padding: 0;
-		width: 800px;
-		height: 540px;
-		top: 0;
-		margin: 0 80px;
-		display: block;
-
-		li {
-			position: absolute;
-			width: 180px;
-			height: 230px;
-			background-image: url(../media/S_7/sprite_7.2.png) !important;
-			background-size: 675px;
-			background-repeat: no-repeat;
-			cursor: pointer;
-			top: 600px;
-			opacity: 0;
-
-			$balloons:       b d wd s c f bt e  g ws r  l k fl  a;
-			$background-top: 0 1  4 5 2 3  6 7 11 10 9 12 8 13 14;
-
-			@for $i from 1 through 15 {
-				&.#{nth($balloons,$i)} {
-					background-position: 0px -250*nth($background-top,$i)+px;
-
-					&:hover {
-						background-position: -225px -250*nth($background-top,$i)+px;
-					}
-
-					&.HIGHLIGHTED {
-						background-position: -450px -250*nth($background-top,$i)+px;
-					}
-				}
-			}
-
-			&.HIGHLIGHTED {
-				pointer-events: none;
-			}
-		}
-	}
-
 	> img {
 		width: 640px;
 		display: block;
 		margin: 10px auto;
-	}
-
-	&.OPEN {
-		.items {
-			li {
-				animation: floatUp 8s infinite linear;
-
-				$delays: 0s 6s 3s 5s 1s 7s 0s 4s 1s 5s 1s 7s 2s 5s 1s;
-				$durations: 14s 8s 7s 10s 12s 10s 8s 14s 12s 10s 12s 10s 10s 12s 10s; 
-
-				@for $i from 1 through 15{
-					&:nth-of-type(#{$i}){
-						// the following equation follows this pattern
-						// (interval * $i) % range + min
-						$left: (-15 * $i) % 80 + 0;
-						left: (960 * $left / 100)+px;
-						animation-delay: nth($delays, ($i % 15) + 1);
-						animation-duration: nth($durations, ($i % 15) + 1);
-					}
-				}
-			}
-		}
 	}
 
 	&.VOICE-OVER {
@@ -864,13 +799,6 @@ img.inline {
 		#door {
 			opacity: 0;
 			transition: opacity 0s;
-		}
-	}
-
-	&.COMPLETE {
-
-		#door {
-			display: none;
 		}
 	}
 }

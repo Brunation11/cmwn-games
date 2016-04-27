@@ -149,7 +149,7 @@ pl.game('drought-out', function () {
 
 		this.openDoor = function() {
 			if(this.shouldProceed()) {
-				this.select(this);
+				this.select();
 				this.reveal.item(item);
 				this.audio.sfx.open.play();
 			}
@@ -160,10 +160,12 @@ pl.game('drought-out', function () {
 
 			if(!(this.is(_e.target) && this.reveal.audio)) return;
 
+			this.length = this.reveal.find('li').length;
+
 			this.reveal.audio.voiceOver.on('ended', function(audio) {
 				self.audio.sfx.close.play();
 				self.deselect();
-				item++;
+				item = (item + 1) % self.length;
 			});
 		});
 
