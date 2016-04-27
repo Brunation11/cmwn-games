@@ -103,8 +103,8 @@ pl.game.component('selectable-canvas-move', function () {
 					.dec(offset)
 					.math('floor');
 
-				self.items.every(function (_item) {
-					if (!_item.selected && self.isImageTarget(_item, cursor)) {
+				self.reverseItems.every(function (_item) {
+					if (self.isImageTarget(_item, cursor)) {
 						_item.hover();
 						return false;
 					}
@@ -177,6 +177,8 @@ pl.game.component('selectable-canvas-move', function () {
 			})
 			.toArray();
 
+		this.reverseItems = this.items.slice().reverse();
+
 		canvasSize = pl.Size
 			.create()
 			.set(width, height);
@@ -192,7 +194,7 @@ pl.game.component('selectable-canvas-move', function () {
 		this.isRunning = true;
 		this.eachFrame(this.onEachFrame);
 
-		this.items.every(function (_item) {
+		this.items.forEach(function (_item) {
 			_item.deselect();
 		});
 	};
@@ -235,8 +237,8 @@ pl.game.component('selectable-canvas-move', function () {
 			.dec(offset)
 			.math('floor');
 
-		this.items.every(function (_item) {
-			if(!_item.selected && self.isImageTarget(_item, cursor)) {
+		this.reverseItems.every(function (_item) {
+			if(self.isImageTarget(_item, cursor)) {
 				_item.select();
 				returnValue = {
 					message: _item.$image.id(),
