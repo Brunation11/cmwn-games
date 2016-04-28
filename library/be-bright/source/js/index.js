@@ -107,6 +107,11 @@ pl.game('be-bright', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
+      pl.game.trigger($.Event('platform-event', {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      }));
+
       return this.proto();
     };
   });
