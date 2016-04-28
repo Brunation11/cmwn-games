@@ -14,15 +14,15 @@ pl.game.component('screen-basic', function () {
   this.on('ui-leave', function (_event) {
     if (this.isReady && this.is(_event.target)) this.stop();
   });
-  
+
   this.next = function () {
     var nextScreen;
 
     // @todo make isLast a method for slides. (this.isLast() for any sequence of views)
     // @todo Perhaps make the slides component the primary machine for screen
     // navigation since they are esentially the same.
-    // 
-    if(this.screen.isLast() && this.completed()) this.game.quit.okay();
+    //
+    if (this.screen.isLast() && this.completed()) this.game.quit.okay();
 
     nextScreen = this.proto();
 
@@ -70,20 +70,20 @@ pl.game.component('screen-basic', function () {
   };
 
   this.complete = function () {
-    if(this.is(this.screen)) {
+    if (this.is(this.screen)) {
       this.game.audio.sfx.play('screenComplete');
     }
     return this.proto();
   };
 
   this.on('ui-close', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
     this.stop();
   });
 
-  this.on('ready', function(_event) {
-    if(!this.is(_event.target)) return;
-    if(this.state(this.STATE.OPEN)) this.start();
-  })
+  this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
+    if (this.state(this.STATE.OPEN)) this.start();
+  });
 
 });

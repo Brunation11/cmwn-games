@@ -5,11 +5,11 @@ pl.game.component('match-game', function () {
 
     if (this.event && !_target) {
       $target = $(this.event.target).closest('li');
-      if(!$target.length) return false;
+      if (!$target.length) return false;
 
       if (this.shouldSelect($target) !== false) {
         $target.is('li') && this.audio.sfx.correct.play();
-        if(this.showSelect($target)) {
+        if (this.showSelect($target)) {
           return {
             message: $target.id(),
             behaviorTarget: $target
@@ -18,7 +18,7 @@ pl.game.component('match-game', function () {
       }
 
       else {
-        if(this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
+        if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
     }
 
@@ -29,17 +29,17 @@ pl.game.component('match-game', function () {
     return false;
   });
 
-  this.shouldSelect = function(_$target) {
+  this.shouldSelect = function (_$target) {
     return !_$target.hasClass(this.STATE.HIGHLIGHTED) && !_$target.parent().hasClass('show-all');
   };
 
-  this.start = function() {
+  this.start = function () {
     var $items, self = this;
-    
+
     $items = this.find('.items').addClass('show-all');
     this.disable();
 
-    setTimeout(function() {
+    setTimeout(function () {
       $items
         .removeClass('show-all');
       this.enable();
@@ -47,31 +47,31 @@ pl.game.component('match-game', function () {
 
     this.$currentCard = null;
 
-    this.find('li').each(function() {
+    this.find('li').each(function () {
       self.unhighlight($(this));
     });
   };
 
-  this.showSelect = function(_$target) {
+  this.showSelect = function (_$target) {
     var stateMethod, undoStateMethod;
 
     stateMethod = this.properties.selectState || 'select';
-    if(stateMethod === 'select') undoStateMethod = 'deselect';
-    if(stateMethod === 'highlight') undoStateMethod = 'unhighlight';
+    if (stateMethod === 'select') undoStateMethod = 'deselect';
+    if (stateMethod === 'highlight') undoStateMethod = 'unhighlight';
 
     if (_$target) {
       this[stateMethod](_$target);
 
-      if(!this.$currentCard) {
+      if (!this.$currentCard) {
         this.$currentCard = _$target;
         this.disable()
-          .on('transitionend', function() {
+          .on('transitionend', function () {
             this.enable()
               .off('transitionend');
           }.bind(this));
       }
 
-      else if(this.$currentCard.id() === _$target.id()) {
+      else if (this.$currentCard.id() === _$target.id()) {
         this.$currentCard = null;
         this.enable();
         return true;
@@ -79,7 +79,7 @@ pl.game.component('match-game', function () {
 
       else {
         this.disable();
-        setTimeout(function() {
+        setTimeout(function () {
           this[undoStateMethod](_$target);
           this[undoStateMethod](this.$currentCard);
           this.$currentCard = null;
@@ -91,20 +91,20 @@ pl.game.component('match-game', function () {
     return false;
   };
 
-  this.populateList = function(_$bin) {
+  this.populateList = function (_$bin) {
     var $items, $bin, random;
 
-    $items = this.find(".items");
+    $items = this.find('.items');
     $bin = _$bin;
 
-    while($bin.length) {
-      random = Math.floor(_$bin.length*Math.random());
+    while ($bin.length) {
+      random = Math.floor(_$bin.length * Math.random());
       $bin.eq(random).remove().appendTo($items);
       $bin = this.find('.bin li');
     }
   };
 
-  this.randomize = function() {
+  this.randomize = function () {
     var $bin;
 
     $bin = this.find('.bin');
@@ -124,7 +124,7 @@ pl.game.component('match-game', function () {
     this.items = this
       .find('.items li[pl-correct]')
       .map(function (_index, _node) {
-        correct.add(_node.getAttribute("pl-id"));
+        correct.add(_node.getAttribute('pl-id'));
         return _node;
       })
       .toArray();
@@ -133,7 +133,7 @@ pl.game.component('match-game', function () {
 
     $bin = this.find('.bin li');
 
-    if($bin.length) this.populateList($bin);
+    if ($bin.length) this.populateList($bin);
   };
 
 });

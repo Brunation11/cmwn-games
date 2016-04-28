@@ -3,7 +3,7 @@ pl.game.component('score', function () {
   this.value = 0;
 
   this.entity('.board', function () {
-    
+
     this.template = null;
 
     this.ready = function () {
@@ -26,11 +26,11 @@ pl.game.component('score', function () {
   };
 
   this.up = function (_count) {
-    this.value+= _count || 1;
+    this.value += _count || 1;
 
     this.board.render();
 
-    console.log('score', this.value, this.properties.max)
+    console.log('score', this.value, this.properties.max);
 
     if (this.value == this.properties.max) {
       console.log('oh word');
@@ -41,10 +41,10 @@ pl.game.component('score', function () {
   };
 
   this.down = function (_count) {
-    this.value-= _count || 1;
+    this.value -= _count || 1;
 
     this.board.render();
-    
+
     if (this.value == this.properties.max) {
       this.complete();
     }

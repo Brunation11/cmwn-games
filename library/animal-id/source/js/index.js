@@ -23,42 +23,42 @@ import '../../../shared/js/google-analytics';
 
 pl.game('animal-id', function () {
 
-  var showNext = function() {
+  var showNext = function () {
     this.STATE.BACK = 'RETURN';
 
-    this.state('return','+RETURN');
+    this.state('return', '+RETURN');
 
-    this.on('ui-open', function(_event) {
-      if(!this.is(_event.target)) return;
-      if(this.state(this.STATE.COMPLETE)) this.return(this);
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
+      if (this.state(this.STATE.COMPLETE)) this.return(this);
     });
   };
 
   this.screen('title', function () {
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.on('ui-open', function (_event) {
       if (this.is(_event.target)) this.title.startAudio();
 
-      if(this.state(this.STATE.OPEN)) this.start();
+      if (this.state(this.STATE.OPEN)) this.start();
     });
 
     this.startAudio = function () {
-      this.title.audio.background.play()
+      this.title.audio.background.play();
     };
 
     this.stopAudio = function () {
       this.title.audio.background.stop();
     };
 
-    this.entity('title', function() {
-      this.on('animationend', function(_event) {
-        if(!this.image.is(_event.target)) return;
+    this.entity('title', function () {
+      this.on('animationend', function (_event) {
+        if (!this.image.is(_event.target)) return;
         this.complete();
       });
     });
@@ -74,19 +74,19 @@ pl.game('animal-id', function () {
   this.screen('id-reptile', showNext);
   this.screen('id-herbivore', showNext);
 
-  this.screen('match-game', function() {
-    this.entity('reveal', function() {
-      this.handleCloseClick = function() {
-        if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+  this.screen('match-game', function () {
+    this.entity('reveal', function () {
+      this.handleCloseClick = function () {
+        if (!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
           this.closeAll();
         }
       };
     });
 
-    this.on('ui-close', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ui-close', function (_event) {
+      if (!this.is(_event.target)) return;
       this.reveal.closeAll();
-      this.delay('.5s',this.matchGame.randomize.bind(this.matchGame));
+      this.delay('.5s', this.matchGame.randomize.bind(this.matchGame));
     });
   });
 
@@ -102,7 +102,7 @@ pl.game('animal-id', function () {
   this.screen('flip', function () {
 
     this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -114,8 +114,8 @@ pl.game('animal-id', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

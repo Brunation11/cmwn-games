@@ -2,14 +2,14 @@ pl.game.component('selectable-all', function () {
 
   var Column;
 
-  function populateViewport () {
+  function populateViewport() {
     var width, item, i, columns;
 
     // width of the first item
     width = this.$bin.width();
     columns = Math.floor(this.$viewport.width() / width);
 
-    for (i=0; i < columns; i+=1) {
+    for (i = 0; i < columns; i += 1) {
       this.columns.push(Column.create().init(this.$bin, this.$viewport));
     }
   }
@@ -27,14 +27,14 @@ pl.game.component('selectable-all', function () {
       this.$el = $(pl.util.random(_$collection)).clone();
 
       this.$el.css({
-        transitionDuration: (pl.util.random(5, 10)*(1+Math.random()))+'s'
+        transitionDuration: (pl.util.random(5, 10) * (1 + Math.random())) + 's'
       });
 
       this.$viewport.append(this.$el);
 
       return this;
     };
-    
+
     this.recycle = function () {
       var $clone;
 
@@ -42,7 +42,7 @@ pl.game.component('selectable-all', function () {
 
       $clone = $(pl.util.random(this.$collection)).clone();
       $clone.css({
-        transitionDuration: (pl.util.random(7, 15)*(1+Math.random()))+'s'
+        transitionDuration: (pl.util.random(7, 15) * (1 + Math.random())) + 's'
       });
 
       this.$el.replaceWith($clone);
@@ -70,31 +70,31 @@ pl.game.component('selectable-all', function () {
       return function () {
         return _fun.apply(self, arguments);
       };
-    }
+    };
 
   });
 
   this.$viewport = null;
   this.$bin = null;
   this.columns = null;
-  
+
   this.init = function () {
     this.$viewport = this.find('.viewport');
     this.$bin = this.find('.bin li');
     this.columns = [];
 
     this.$bin.each(this.bind(function (_index, _node) {
-      var $node, message
-      
+      var $node, message;
+
       $node = $(_node);
-      message = $node.attr('pl-message')
+      message = $node.attr('pl-message');
 
       if ($node.attr('pl-correct') != null) {
-        this.screen.require(message);  
+        this.screen.require(message);
       }
-      
+
     }));
-    
+
     populateViewport.call(this);
 
     return this;

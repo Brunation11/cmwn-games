@@ -3,14 +3,14 @@ pl.game.component('selectable', function () {
   this.behavior('select', function (_target) {
     var $target;
 
-    if(this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
+    if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
 
     if (this.event && !_target) {
       $target = $(this.event.target).closest('li');
 
       if (this.shouldSelect($target) !== false) {
         $target.is('li') && this.audio.sfx.correct.play();
-        if(this.showSelect($target)) {
+        if (this.showSelect($target)) {
           return {
             message: $target.id(),
             behaviorTarget: $target
@@ -19,7 +19,7 @@ pl.game.component('selectable', function () {
       }
 
       else {
-        if(this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
+        if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
     }
 
@@ -34,7 +34,7 @@ pl.game.component('selectable', function () {
     return _$target.is(this.screen.SELECTOR.CORRECT);
   };
 
-  this.showSelect = function(_$target) {
+  this.showSelect = function (_$target) {
     var stateMethod;
 
     stateMethod = this.properties.selectState || 'select';
@@ -46,14 +46,14 @@ pl.game.component('selectable', function () {
     return true;
   };
 
-  this.populateList = function(_$bin) {
+  this.populateList = function (_$bin) {
     var $items, $bin, random;
 
-    $items = this.find(".items");
+    $items = this.find('.items');
     $bin = _$bin;
 
-    while($bin.length) {
-      random = Math.floor(_$bin.length*Math.random());
+    while ($bin.length) {
+      random = Math.floor(_$bin.length * Math.random());
       $bin.eq(random).remove().appendTo($items);
       $bin = this.find('.bin li');
     }
@@ -61,7 +61,7 @@ pl.game.component('selectable', function () {
 
   this.ready = function () {
     var $bin = this.find('.bin li');
-    if($bin.length) this.populateList($bin);
+    if ($bin.length) this.populateList($bin);
   };
 
 });
