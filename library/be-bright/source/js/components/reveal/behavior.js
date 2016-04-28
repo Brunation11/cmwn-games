@@ -8,9 +8,7 @@ pl.game.component('reveal', function () {
     if (typeof _id === 'number') {
       this.open(this.find('li').eq(_id));
       this.screen.playSound(this.audio.voiceOver[_id]);
-    }
-
-    else if (typeof _id === 'string') {
+    } else if (typeof _id === 'string') {
       if (this[_id]) {
         this.open(this[_id]);
 
@@ -24,7 +22,7 @@ pl.game.component('reveal', function () {
     }
   };
 
-  this.closeAll = function (_$target) {
+  this.closeAll = function () {
     if (this.allowAction()) {
       if (this.game.audio.sfx.button) this.game.audio.sfx.button.play();
       this.close(this.find('li.OPEN'));

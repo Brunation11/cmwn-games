@@ -92,7 +92,7 @@ pl.game('be-bright', function () {
   this.screen('flip', function () {
 
     this.ready = function () {
-      this.audio.voiceOver.on('ended', function (_event) {
+      this.audio.voiceOver.on('ended', function () {
         this.stampImg.addClass('START');
         this.audio.sfx.stamp.play();
       }.bind(this));
@@ -102,7 +102,7 @@ pl.game('be-bright', function () {
       this.game.quit.okay();
     };
 
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
