@@ -24,9 +24,7 @@ pl.game.component('reveal', function () {
       if (typeof index === 'number') {
         this.open(this.find('li').eq(index));
         this.audio.voiceOver[index].play();
-      }
-
-      else if (typeof index === 'string') {
+      } else if (typeof index === 'string') {
         if (this[index]) {
           this.open(this[index]);
 
@@ -50,9 +48,7 @@ pl.game.component('reveal', function () {
       if (typeof _id === 'number') {
         this.open('li:nth-child(' + _id + ')');
         this.audio.voiceOver[_id].play();
-      }
-
-      else if (typeof _id === 'string') {
+      } else if (typeof _id === 'string') {
         if (this[_id]) {
           this.open(this[_id]);
 

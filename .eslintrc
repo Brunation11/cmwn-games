@@ -2,7 +2,8 @@
     "globals": {
         "pl": true,
         "play": true,
-        "$": true
+        "$": true,
+        "ga": true
     },
     "parser": "babel-eslint",
     "plugins": [

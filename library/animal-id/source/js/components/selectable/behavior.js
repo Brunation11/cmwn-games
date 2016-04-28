@@ -16,14 +16,10 @@ pl.game.component('selectable', function () {
             behaviorTarget: $target
           };
         }
-      }
-
-      else {
+      } else {
         if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
-    }
-
-    else {
+    } else {
       this.proto(_target);
     }
 

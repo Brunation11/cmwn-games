@@ -33,9 +33,7 @@ pl.game.component('dropzone', function () {
           this.audio.sfx.correct.play();
 
           return;
-        }
-
-        else {
+        } else {
           this.audio.sfx.incorrect.play();
         }
       }
@@ -56,8 +54,9 @@ pl.game.component('dropzone', function () {
     return arguments.length ? !!~takes.indexOf(_id) : takes;
   };
 
-  this.isPointInBounds = function (_point, _y) {
-    var point, scale;
+  // arguments should be _point and _y
+  this.isPointInBounds = function () {
+    var point;
 
     point = pl.Point.create(arguments);
 
@@ -70,13 +69,11 @@ pl.game.component('dropzone', function () {
     return false;
   };
 
-  this.isBoxInBounds = function (_point, _size) {
-    // comming soon!
-  };
+  // this.isBoxInBounds = function (_point, _size) {
+  //   // comming soon!
+  // };
 
   this.behavior('drop', function (_$thing) {
-    console.log('*** In bounds!!', _$thing.id());
-
     this.requiredQueue.ready(_$thing.id());
 
     return {

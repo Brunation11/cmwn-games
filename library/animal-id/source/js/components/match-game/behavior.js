@@ -15,14 +15,10 @@ pl.game.component('match-game', function () {
             behaviorTarget: $target
           };
         }
-      }
-
-      else {
+      } else {
         if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
-    }
-
-    else {
+    } else {
       this.proto(_target);
     }
 
@@ -69,15 +65,11 @@ pl.game.component('match-game', function () {
             this.enable()
               .off('transitionend');
           }.bind(this));
-      }
-
-      else if (this.$currentCard.id() === _$target.id()) {
+      } else if (this.$currentCard.id() === _$target.id()) {
         this.$currentCard = null;
         this.enable();
         return true;
-      }
-
-      else {
+      } else {
         this.disable();
         setTimeout(function () {
           this[undoStateMethod](_$target);

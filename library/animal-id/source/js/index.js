@@ -101,7 +101,7 @@ pl.game('animal-id', function () {
 
   this.screen('flip', function () {
 
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
