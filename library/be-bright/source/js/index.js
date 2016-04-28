@@ -23,40 +23,40 @@ pl.game('be-bright', function () {
 
   var screens, restart, vScreens, startVideo;
 
-  restart = function() {
-    this.on('ui-open', function(_event) {
-      if(!this.is(_event.target)) return;
+  restart = function () {
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
 
       this.unhighlight(this.find('.HIGHLIGHTED'));
       this.selectableReveal.reveal.closeAll();
     });
   };
 
-  startVideo = function() {
-    this.on('ui-open', function() {
-      if(this.game.bgSound) this.game.bgSound.pause();
-      setTimeout(function() {
+  startVideo = function () {
+    this.on('ui-open', function () {
+      if (this.game.bgSound) this.game.bgSound.pause();
+      setTimeout(function () {
         this.video.start();
       }.bind(this), 250);
     });
-    this.on("ui-close", function() {
+    this.on('ui-close', function () {
       this.video.pause();
-      if(this.game.bgSound) this.game.bgSound.play();
+      if (this.game.bgSound) this.game.bgSound.play();
     });
   };
 
   this.screen('title', function () {
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.on('ui-open', function (_event) {
-      if(!this.is(_event.target)) return;
+      if (!this.is(_event.target)) return;
 
       this.start();
-      this.delay('3s', function() {
+      this.delay('3s', function () {
         this.title.complete();
         this.title.audio.sfx.play();
       });
@@ -70,13 +70,13 @@ pl.game('be-bright', function () {
 
   screens = ['bulbs', 'switches'];
 
-  screens.map(function(name) {
+  screens.map(function (name) {
     this.screen(name, restart);
   }.bind(this));
 
-  this.screen('pig', function() {
-    this.on('ui-open', function(_event) {
-      if(!this.is(_event.target)) return;
+  this.screen('pig', function () {
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
 
       this.deselect(this.find('.SELECTED'));
       this.multipleChoice.removeClass('COMPLETE').isComplete = false;
@@ -85,7 +85,7 @@ pl.game('be-bright', function () {
 
   vScreens = ['video', 'video-2'];
 
-  vScreens.map(function(name) {
+  vScreens.map(function (name) {
     this.screen(name, startVideo);
   }.bind(this));
 
@@ -103,7 +103,7 @@ pl.game('be-bright', function () {
     };
 
     this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -111,8 +111,8 @@ pl.game('be-bright', function () {
     };
   });
 
-  this.screen('quit', function() {
-    this.on('ui-open', function() {
+  this.screen('quit', function () {
+    this.on('ui-open', function () {
       this.game.audio.sfx.button.play();
     });
   });
@@ -120,8 +120,8 @@ pl.game('be-bright', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

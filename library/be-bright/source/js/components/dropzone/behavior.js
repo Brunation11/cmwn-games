@@ -1,7 +1,7 @@
 pl.game.component('dropzone', function () {
-    
+
   this.entity('.area', function () {
-    
+
     this.cache = null;
 
     this.respond('grab', function () {
@@ -16,9 +16,9 @@ pl.game.component('dropzone', function () {
         if (this.takes(_event.state.$draggable.id())) {
           _event.state.$draggable.removeClass('PLUCKED');
           _event.state.$helper.addClass('DROPED');
-          
+
           this.drop(_event.state.$draggable);
-          
+
           return;
         }
       }
@@ -44,8 +44,8 @@ pl.game.component('dropzone', function () {
 
     point = pl.Point.create(arguments);
 
-    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
         return true;
       }
     }
@@ -57,9 +57,9 @@ pl.game.component('dropzone', function () {
     // comming soon!
   };
 
-  this.behavior('drop', function (_$thing) {    
+  this.behavior('drop', function (_$thing) {
     console.log('*** In bounds!!', _$thing.id());
-    
+
     this.requiredQueue.ready(_$thing.id());
 
     return {

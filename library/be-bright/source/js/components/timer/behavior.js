@@ -1,17 +1,17 @@
 pl.game.component('timer', function () {
 
-  function testTime () {
+  function testTime() {
     var time;
 
     time = Date.now();
 
     if (time >= this.stamp) {
-      this.stamp = time+1000;
+      this.stamp = time + 1000;
       this.time += 1;
-      
+
       this.render();
 
-      if (this.time*1000 >= this.timeout) {
+      if (this.time * 1000 >= this.timeout) {
         console.log('* timer complete!', this.time, this.timeout);
         this
           .stop()

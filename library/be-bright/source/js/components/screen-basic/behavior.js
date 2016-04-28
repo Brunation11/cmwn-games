@@ -1,15 +1,15 @@
 pl.game.component('screen-basic', function () {
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
   };
 
-  this.playSound = function(_sound) {
+  this.playSound = function (_sound) {
     var delay, $sound;
 
     $sound = $(_sound);
     delay = $sound.attr('pl-delay');
-    if(_sound.type === 'voiceOver') {
+    if (_sound.type === 'voiceOver') {
       this.currentVO = _sound;
     }
 
@@ -24,7 +24,7 @@ pl.game.component('screen-basic', function () {
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', this.bind(function () {
         var sfx;
-        console.log("complete");
+        console.log('complete');
 
         sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
@@ -32,7 +32,7 @@ pl.game.component('screen-basic', function () {
       }));
     }
 
-    if(this.state(this.STATE.OPEN)) this.start();
+    if (this.state(this.STATE.OPEN)) this.start();
   };
 
   this.next = function () {
@@ -82,8 +82,8 @@ pl.game.component('screen-basic', function () {
     return this;
   };
 
-  this.stop = function() {
-    if(this.currentVO) {
+  this.stop = function () {
+    if (this.currentVO) {
       this.currentVO.stop();
     }
 
@@ -92,8 +92,8 @@ pl.game.component('screen-basic', function () {
 
   this.on('ui-open', function (_event) {
     if (this.isReady && this === _event.targetScope) {
-      this.on('transitionend', function(_event) {
-        if(!this.is(_event.target)) return;
+      this.on('transitionend', function (_event) {
+        if (!this.is(_event.target)) return;
         this.start();
         this.off('transitionend');
       }.bind(this));
@@ -105,12 +105,12 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-leave', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
     this.stop();
   });
 
   this.on('ui-close', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
     this.stop();
   });
 

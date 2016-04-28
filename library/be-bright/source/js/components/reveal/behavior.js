@@ -9,7 +9,7 @@ pl.game.component('reveal', function () {
       this.open(this.find('li').eq(_id));
       this.screen.playSound(this.audio.voiceOver[_id]);
     }
-      
+
     else if (typeof _id === 'string') {
       if (this[_id]) {
         this.open(this[_id]);
@@ -17,16 +17,16 @@ pl.game.component('reveal', function () {
         if (this.audio) {
           index = this[_id].index();
           vo = this.audio.voiceOver[_id] || this.audio.voiceOver[index];
-          
+
           if (vo) this.screen.playSound(vo);
         }
       }
     }
   };
 
-  this.closeAll = function(_$target) {
-    if(this.allowAction()) {
-      if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
+  this.closeAll = function (_$target) {
+    if (this.allowAction()) {
+      if (this.game.audio.sfx.button) this.game.audio.sfx.button.play();
       this.close(this.find('li.OPEN'));
     }
   };
