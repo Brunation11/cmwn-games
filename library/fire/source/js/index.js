@@ -5,19 +5,19 @@
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
+import './components/audio-sequence/behavior';
 import './components/background/behavior';
-import './components/title/behavior';
-import './components/slides/behavior';
 import './components/dropzone/behavior';
 import './components/frame/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/modal/behavior';
+import './components/multiple-choice/behavior';
 import './components/reveal/behavior';
+import './components/screen-basic/behavior';
+import './components/screen-quit/behavior';
+import './components/selectable/behavior';
+import './components/slides/behavior';
 import './components/smoke/behavior';
-import './components/audio-sequence/behavior';
+import './components/title/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
