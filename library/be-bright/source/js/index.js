@@ -7,13 +7,13 @@
 import './config.game';
 
 import '../../..//shared/js/screen-ios-splash';
-import './components/title/behavior';
+import './components/multiple-choice/behavior';
+import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
+import './components/selectable/behavior';
+import './components/title/behavior';
 import './components/video/behavior';
 
 import '../../../shared/js/test-platform-integration';
