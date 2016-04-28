@@ -1,8 +1,8 @@
 pl.game.component('screen-quit', function () {
 
 	this.buttonSound = function() {
-		if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
-	}
+		if(this.audio.sfx.button) this.audio.sfx.button.play();
+	};
 
 	// TODO: Make an automated way to handle this
 	this.on('transitionend', function (_event) {
@@ -11,7 +11,18 @@ pl.game.component('screen-quit', function () {
 		}
 	});
 
+	this.on('ready', function(_e) {
+		var ctx;
+
+		if(!this.is(_e.target)) return;
+
+		ctx = new (window.AudioContext || window.webkitAudioContext);
+		if(this.audio.voiceOver.sure) this.audio.voiceOver.sure.setContext(ctx);
+		if(this.audio.sfx.button) this.audio.sfx.button.setContext(ctx);
+	});
+
 	this.on('ui-open', function (_event) {
+		if(this.audio.voiceOver.sure) this.audio.voiceOver.sure.play();
 		this.buttonSound();
 		this.game.addClass('QUIT-SCREEN');
 		this.removeClass('LEAVE-END');
