@@ -5,18 +5,18 @@
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/frame/behavior';
 import './components/class-switcher/behavior';
-import './components/reveal/behavior';
-import './components/selectable/behavior';
-import './components/match-game/behavior';
-import './components/flip-card/behavior';
 import './components/drop-responder/behavior';
 import './components/dropzone/behavior';
+import './components/flip-card/behavior';
+import './components/frame/behavior';
+import './components/match-game/behavior';
+import './components/reveal/behavior';
+import './components/screen-basic/behavior';
+import './components/screen-quit/behavior';
+import './components/selectable/behavior';
 import './components/sparkles/behavior';
+import './components/title/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
