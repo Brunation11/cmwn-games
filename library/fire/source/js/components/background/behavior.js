@@ -12,7 +12,7 @@ pl.game.component('background', function () {
 
       img.src = _value;
       characters.push(img);
-      $(_node).css('background-image', 'url('+_value+')');
+      $(_node).css('background-image', 'url(' + _value + ')');
     }
   });
 });

@@ -27,95 +27,95 @@ pl.game('fire', function () {
   var self = this;
 
   // the following is the mouse smoke js
-  (function() {
-  var canvas = document.createElement('canvas');
-  var w = canvas.width = 960,
+  (function () {
+    var canvas = document.createElement('canvas');
+    var w = canvas.width = 960,
     h = canvas.height = 540;
-  var c = canvas.getContext('2d');
+    var c = canvas.getContext('2d');
 
-  var img = new Image();
-  img.src = 'http://oi41.tinypic.com/4i2aso.jpg';
+    var img = new Image();
+    img.src = 'http://oi41.tinypic.com/4i2aso.jpg';
 
-  var position = {x : w/2, y : h/2};
+    var position = {x : w / 2, y : h / 2};
 
-  document.body.appendChild(canvas);
+    document.body.appendChild(canvas);
 
-  var particles = [];
-  var random = function(min, max){
-    return Math.random()*(max-min)*min;
+    var particles = [];
+    var random = function (min, max){
+    return Math.random() * (max - min) * min;
   };
 
-  document.body.onmousemove = function(e){
-    position.x = e.clientX/self.zoom;
-    position.y = e.clientY/self.zoom;
+    document.body.onmousemove = function (e){
+    position.x = e.clientX / self.zoom;
+    position.y = e.clientY / self.zoom;
   };
-  function Particle(x, y){
+    function Particle(x, y){
     this.x = x;
     this.y = y;
     this.velY = -2;
-    this.velX = (random(1, 10)-5)/10;
-    this.size = random(3, 5)/10;
+    this.velX = (random(1, 10) - 5) / 10;
+    this.size = random(3, 5) / 10;
     this.alpha = 1;
-    this.update = function(){
+    this.update = function (){
       this.y += this.velY;
       this.x += this.velX;
       this.velY *= 0.99;
-      if(this.alpha < 0) this.alpha = 0;
+      if (this.alpha < 0) this.alpha = 0;
       c.globalAlpha = this.alpha;
       c.save();
       c.translate(this.x, this.y);
       c.scale(this.size, this.size);
-      c.drawImage(img, -img.width/2, -img.height/2);
+      c.drawImage(img, -img.width / 2, -img.height / 2);
       c.restore();
       this.alpha *= 0.96;
       this.size += 0.02;
     };
   }
 
-  var draw = function(){
+    var draw = function (){
     var p = new Particle(position.x, position.y);
     particles.push(p);
-    
-    while(particles.length > 500) particles.shift();
-    
+
+    while (particles.length > 500) particles.shift();
+
     c.globalAlpha = 1;
     c.fillStyle = '#000';
-    c.fillRect(0,0,w,h);
-    
-    for(var i = 0; i < particles.length; i++)
+    c.fillRect(0, 0, w, h);
+
+    for (var i = 0; i < particles.length; i++)
     {
       particles[i].update();
     }
   };
 
-  setInterval(draw, 1000/60);
+    setInterval(draw, 1000 / 60);
   })();
   // end of the mouse smoke js
 
-  var soundClasses = function() {
-    var classes = "";
+  var soundClasses = function () {
+    var classes = '';
 
-    this.on('audio-play', function(_event) {
+    this.on('audio-play', function (_event) {
       var id = _event.target.$el[0].id;
-      if(id) {
-        id = id.toUpperCase()
+      if (id) {
+        id = id.toUpperCase();
         this.addClass(id);
-        classes += " "+id;
+        classes += " " + id;
       }
     });
 
-    this.on('ui-close', function() {
+    this.on('ui-close', function () {
       this.removeClass(classes);
-      classes = "";
+      classes = '';
     });
   };
 
   this.screen('title', function () {
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.on('ui-open', this.complete);
@@ -129,9 +129,9 @@ pl.game('fire', function () {
   this.screen('info-chemical', soundClasses);
   this.screen('info-fuel-oxygen', soundClasses);
 
-  this.screen('alarm', function() {
+  this.screen('alarm', function () {
 
-    this.ready = function() {
+    this.ready = function () {
       if (this.audio) {
         this.audio.voiceOver.on('ended', function (_event) {
           if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
@@ -139,27 +139,27 @@ pl.game('fire', function () {
       }
     };
 
-    this.pushDown = function() {
+    this.pushDown = function () {
       if (this.audio) this.audio.sfx.play();
       this.screen.next();
     };
   });
 
-  this.screen('who', function() {
-    
+  this.screen('who', function () {
+
     this.entity('slides', function () {
-      
+
       this.entity('mc-frame', function () {
-        
-        this.respond('answer', function(_event) {
-          if(_event.message === this.properties.answer) {
-            this.delay('2s', function() {
+
+        this.respond('answer', function (_event) {
+          if (_event.message === this.properties.answer) {
+            this.delay('2s', function () {
               this.screen.next();
             });
           }
         });
 
-        this.on('ready', function(_event) {
+        this.on('ready', function (_event) {
           var sequence = 'title builder plumber firefighter chef'.split(' ');
 
           if (!this.is(_event.target)) return;
@@ -179,9 +179,9 @@ pl.game('fire', function () {
     });
   });
 
-  this.screen('menAndWomen', function() {
+  this.screen('menAndWomen', function () {
 
-    this.on('ready', function(_event) {
+    this.on('ready', function (_event) {
       if (!this.is(_event.target)) return;
 
       if (this.audio) {
@@ -192,7 +192,7 @@ pl.game('fire', function () {
     });
   });
 
-  this.screen('triangle', function() {
+  this.screen('triangle', function () {
 
     this.startAudio = function () {
       this.dropzone.audio.background.play();
@@ -204,7 +204,7 @@ pl.game('fire', function () {
     };
 
     this.entity('dropzone', function () {
-    
+
       this.entity('.area', function () {
 
         this.cache = null;
@@ -216,42 +216,42 @@ pl.game('fire', function () {
             size: this.size().scale(this.game.transformScale().x)
           };
         });
-        
+
         this.respond('release', function (_event) {
           var point, scale;
 
-          if((scale = this.game.transformScale().x) !== 1) {
+          if ((scale = this.game.transformScale().x) !== 1) {
             point = [
-                  _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-                  _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-                ];
+              _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+              _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+            ];
           } else {
             point = _event.state.progress.point;
           }
 
           if (point && this.isPointInBounds(point)) {
 
-            if(this.audio.voiceOver[_event.state.$draggable.id()]) this.audio.voiceOver[_event.state.$draggable.id()].play();
+            if (this.audio.voiceOver[_event.state.$draggable.id()]) this.audio.voiceOver[_event.state.$draggable.id()].play();
 
             if (this.takes(_event.state.$draggable.id())) {
-              _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
+              _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
               _event.state.$helper.addClass('DROPED');
-              
+
               this.drop(_event.state.$draggable);
               this.open(this[_event.state.$draggable.id()]);
-              this.open(this[_event.state.$draggable.id()+'Side']);
+              this.open(this[_event.state.$draggable.id() + 'Side']);
               this.audio.sfx.correct.play();
-              if(this.isComplete) {
-                this.delay('.75s', function() {
+              if (this.isComplete) {
+                this.delay('.75s', function () {
                   this.audio.sfx.complete.play();
                 });
               }
-              
+
               return;
             }
 
             else {
-              this.audio.sfx.incorrect.play()
+              this.audio.sfx.incorrect.play();
             }
 
           }
@@ -260,11 +260,11 @@ pl.game('fire', function () {
         });
       });
 
-      this.on('ready', function(_event) {
+      this.on('ready', function (_event) {
         if (!this.is(_event.target)) return;
 
         if (this.audio) {
-          this.audio.voiceOver.on('ended', function(_event) {
+          this.audio.voiceOver.on('ended', function (_event) {
             if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
           }.bind(this));
         }
@@ -274,24 +274,24 @@ pl.game('fire', function () {
 
   this.screen('break-triangle', soundClasses);
 
-  this.screen('dress', function() {
-    this.respond('select', function(_event) {
+  this.screen('dress', function () {
+    this.respond('select', function (_event) {
       // this removes any screen class that starts with the same thing as the event message
       // and then adds the event message as a class to the screen
-      if(!_event.message) return;
-      var regexp = new RegExp("(^|\\s)"+_event.message.split("-")[0]+"-\\S+");
-      this.screen.removeClass(function(index, className) {
+      if (!_event.message) return;
+      var regexp = new RegExp("(^|\\s)" + _event.message.split('-')[0]+'-\\S+');
+      this.screen.removeClass(function (index, className) {
         return (className.match(regexp) || []).join(' ');
       }).addClass(_event.message);
       this.screen.next();
     });
 
-    this.entity('slides', function() {
+    this.entity('slides', function () {
 
-      this.entity('need', function() {
-        
+      this.entity('need', function () {
+
         this.entity('dropzone', function () {
-        
+
           this.entity('.area', function () {
 
             this.cache = null;
@@ -303,15 +303,15 @@ pl.game('fire', function () {
                 size: this.size().scale(this.game.transformScale().x)
               };
             });
-            
+
             this.respond('release', function (_event) {
               var point, scale;
 
-              if((scale = this.game.transformScale().x) !== 1) {
+              if ((scale = this.game.transformScale().x) !== 1) {
                 point = [
-                      _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-                      _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-                    ];
+                  _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+                  _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+                ];
               } else {
                 point = _event.state.progress.point;
               }
@@ -319,13 +319,13 @@ pl.game('fire', function () {
               if (point && this.isPointInBounds(point)) {
 
                 if (this.takes(_event.state.$draggable.id())) {
-                  _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
+                  _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
                   _event.state.$helper.addClass('DROPED');
-                  
+
                   this.drop(_event.state.$draggable);
-                  this.find('.'+_event.state.$draggable.id()).addClass('show');
+                  this.find('.' + _event.state.$draggable.id()).addClass('show');
                   this.audio.sfx.correct.play();
-                  
+
                   return;
                 }
 
@@ -340,7 +340,7 @@ pl.game('fire', function () {
           });
         });
 
-        this.respond('drop', function(_event) {
+        this.respond('drop', function (_event) {
           this.modal.item(_event.message);
         });
       });
@@ -353,7 +353,7 @@ pl.game('fire', function () {
     };
 
     this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -366,32 +366,32 @@ pl.game('fire', function () {
     };
   });
 
-  this.screen('quit', function() {
+  this.screen('quit', function () {
     var ctx;
 
-    this.on('ready', function(_e) {
-      if(!this.is(_e.target)) return;
+    this.on('ready', function (_e) {
+      if (!this.is(_e.target)) return;
 
       ctx = new (window.AudioContext || window.webkitAudioContext);
       this.audio.voiceOver.sure.setContext(ctx);
       this.audio.sfx.button.setContext(ctx);
     });
 
-    this.on('ui-open' , function() {
+    this.on('ui-open', function () {
       var vo, sfx;
 
       vo = this.audio.voiceOver.sure;
       sfx = this.audio.sfx.button;
-      if(vo) vo.play();
-      if(sfx) sfx.play();
+      if (vo) vo.play();
+      if (sfx) sfx.play();
     });
   });
 
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

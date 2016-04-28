@@ -3,11 +3,11 @@ pl.game.component('frame', function () {
   this.on('ready', function (_event) {
     if (this.is(_event.target) && this.audio) {
       this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config("dontautoplay"));
+        _event.response(!_event.target.config('dontautoplay'));
       });
     }
   });
-  
+
   this.start = function () {
     this.log('start');
     return this.screen.start.call(this);

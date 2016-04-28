@@ -1,5 +1,5 @@
 pl.game.component('slides', function () {
-  
+
   this.slides = null;
 
   this.ready = function () {
@@ -17,7 +17,7 @@ pl.game.component('slides', function () {
 
     else if (this.slides.length) {
       this.slides[0].open();
-      for(i = 1, n = this.slides.length; i < n; i++) {
+      for (i = 1, n = this.slides.length; i < n; i++) {
         this.slides[i] && this.slides[i].close();
       }
     }
@@ -37,11 +37,11 @@ pl.game.component('slides', function () {
 
     buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
     index = this.slides.indexOf(this);
-    if (~index) return this.slides[index+1];
+    if (~index) return this.slides[index + 1];
 
 
-    if (~index) nextSlide = this.slides[index+1];
-    
+    if (~index) nextSlide = this.slides[index + 1];
+
     if (nextSlide) {
       this.leave();
       nextSlide.open();
@@ -64,11 +64,11 @@ pl.game.component('slides', function () {
 
     buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
     index = this.slides.indexOf(this);
-    if (~index) return this.slides[index-1];
+    if (~index) return this.slides[index - 1];
 
 
-    if (~index) prevSlide = this.slides[index-1];
-    
+    if (~index) prevSlide = this.slides[index - 1];
+
     if (prevSlide) {
       this.close();
       prevSlide.open();

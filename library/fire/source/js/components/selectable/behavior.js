@@ -11,7 +11,7 @@ pl.game.component('selectable', function () {
           message: $target.id(),
           behaviorTarget: $target
         };
-      }  
+      }
     }
 
     else {

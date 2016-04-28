@@ -1,7 +1,7 @@
 pl.game.component('dropzone', function () {
-    
+
   this.entity('.area', function () {
-    
+
     this.cache = null;
 
     this.respond('grab', function () {
@@ -15,28 +15,28 @@ pl.game.component('dropzone', function () {
     this.respond('release', function (_event) {
       var point, scale;
 
-      if((scale = this.game.transformScale().x) !== 1) {
+      if ((scale = this.game.transformScale().x) !== 1) {
         point = [
-              _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-              _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-            ];
+          _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+          _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+        ];
       } else {
         point = _event.state.progress.point;
       }
 
       if (point && this.isPointInBounds(point)) {
         if (this.takes(_event.state.$draggable.id())) {
-          _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
+          _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
           _event.state.$helper.addClass('DROPED');
-          
+
           this.drop(_event.state.$draggable);
           this.audio.sfx.correct.play();
-          
+
           return;
         }
 
         else {
-          this.audio.sfx.incorrect.play()
+          this.audio.sfx.incorrect.play();
         }
       }
 
@@ -61,8 +61,8 @@ pl.game.component('dropzone', function () {
 
     point = pl.Point.create(arguments);
 
-    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
         return true;
       }
     }
@@ -74,9 +74,9 @@ pl.game.component('dropzone', function () {
     // comming soon!
   };
 
-  this.behavior('drop', function (_$thing) {    
+  this.behavior('drop', function (_$thing) {
     console.log('*** In bounds!!', _$thing.id());
-    
+
     this.requiredQueue.ready(_$thing.id());
 
     return {

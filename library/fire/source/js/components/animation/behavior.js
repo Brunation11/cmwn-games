@@ -1,13 +1,13 @@
 pl.game.component('animation', function () {
 
-  function nextFrame (_time, _frameRate, _targetFrameRate) {
+  function nextFrame(_time, _frameRate, _targetFrameRate) {
     this.render(this.frame);
 
-    this.frame+=1;
+    this.frame += 1;
 
     if (this.frame >= this.totalFrames) this.frame = 0;
   }
-  
+
   this.canvas = null;
   this.ctx = null;
   this.buffer = null;
@@ -18,7 +18,7 @@ pl.game.component('animation', function () {
   this.totalFrames = 0;
 
   this.handleProperty(function () {
-    
+
     this.frame = function (_node, _name, _value) {
       var $node, size, grid, tokenizer;
 
@@ -32,7 +32,7 @@ pl.game.component('animation', function () {
 
         if (grid) {
           grid = grid.split(tokenizer).map(Number);
-          this.grid = pl.Point.create().set(grid);  
+          this.grid = pl.Point.create().set(grid);
           this.totalFrames = this.grid.product();
         }
       }
@@ -84,8 +84,8 @@ pl.game.component('animation', function () {
       height: this.frameSize.height
     };
 
-    c.clearRect(0,0, this.frameSize.width, this.frameSize.height);
-    c.drawImage(this.source[0], crop.x, crop.y, crop.width, crop.height, 0,0, this.frameSize.width, this.frameSize.height);
+    c.clearRect(0, 0, this.frameSize.width, this.frameSize.height);
+    c.drawImage(this.source[0], crop.x, crop.y, crop.width, crop.height, 0, 0, this.frameSize.width, this.frameSize.height);
   };
 
 });

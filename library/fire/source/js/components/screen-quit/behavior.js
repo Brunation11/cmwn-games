@@ -13,14 +13,14 @@ pl.game.component('screen-quit', function () {
 
       img.src = _value;
       characters.push(img);
-      $(_node).css('background-image', 'url('+_value+')');
+      $(_node).css('background-image', 'url(' + _value + ')');
     }
   });
 
   // TODO: Make an automated way to handle this
   this.on('transitionend', function (_event) {
     if (this.state(this.STATE.LEAVE)) {
-      this.addClass('LEAVE-END');  
+      this.addClass('LEAVE-END');
     }
   });
 
@@ -32,7 +32,7 @@ pl.game.component('screen-quit', function () {
 
   this.on('ui-leave', function () {
     var vo = this.audio.voiceOver.sure;
-    if(vo) vo.stop();
+    if (vo) vo.stop();
     this.game.removeClass('QUIT-SCREEN');
     this.game.resume();
   });
@@ -40,16 +40,16 @@ pl.game.component('screen-quit', function () {
   this.init = function () {
     this.addClass('LEAVE LEAVE-END');
   };
-  
+
   this.okay = function () {
     var sfx = this.audio.sfx.button;
-    if(sfx) sfx.play();
+    if (sfx) sfx.play();
     this.game.exit();
   };
 
   this.cancel = function () {
     var sfx = this.audio.sfx.button;
-    if(sfx) sfx.play();
+    if (sfx) sfx.play();
     this.leave();
   };
 
