@@ -3,12 +3,12 @@ pl.game.component('screen-basic', function () {
   this.on('ready', function (_event) {
     if (this.is(_event.target) && this.audio) {
       this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config("dontautoplay"));
+        _event.response(!_event.target.config('dontautoplay'));
       });
     }
   });
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
   };
 
@@ -79,7 +79,7 @@ pl.game.component('screen-basic', function () {
   };
 
   this.complete = function () {
-    if(!this.isComplete) this.game.audio.sfx.screenComplete.play();
+    if (!this.isComplete) this.game.audio.sfx.screenComplete.play();
     return this.proto();
   };
 

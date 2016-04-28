@@ -1,17 +1,17 @@
 pl.game.component('timer', function () {
 
-  function testTime () {
+  function testTime() {
     var time;
 
     time = Date.now();
 
     if (time >= this.stamp) {
-      this.stamp = time+1000;
+      this.stamp = time + 1000;
       this.time += 1;
-      
+
       this.render();
 
-      if (this.time*1000 >= this.timeout) {
+      if (this.time * 1000 >= this.timeout) {
         this.timerComplete();
       }
     }
@@ -21,7 +21,7 @@ pl.game.component('timer', function () {
   this.time = 0;
   this.stamp = 0;
 
-  this.timerComplete = function() {
+  this.timerComplete = function () {
     this
       .stop()
       .complete();
@@ -44,7 +44,7 @@ pl.game.component('timer', function () {
     return this;
   };
 
-  this.restart = function() {
+  this.restart = function () {
     this.time = 0;
     this.stamp = 0;
     this.start();

@@ -14,8 +14,8 @@ pl.game.component('audio-sequence', function () {
     }.bind(this));
   });
 
-  this.start = function() {
+  this.start = function () {
     i = 1;
-    if(sounds[0]) sounds[0].play();
+    if (sounds[0]) sounds[0].play();
   };
 });

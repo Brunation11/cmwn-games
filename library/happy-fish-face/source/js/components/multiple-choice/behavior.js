@@ -12,7 +12,7 @@ pl.game.component('multiple-choice', function () {
     }
 
     return false;
-  }
+  };
 
   this.answer = function () {
     if (this.event) {

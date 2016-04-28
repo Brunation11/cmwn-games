@@ -1,12 +1,12 @@
 /**
  * HFF - multiBubbles Screen
  */
-export default function multiBubbles () {
+export default function multiBubbles() {
   this.SELECTER = {
     CORRECT: '[pl-correct]'
   };
 
-  this.on('ready', function(_event) {
+  this.on('ready', function (_event) {
     var correct;
 
     if (!this.is(_event.target)) return;
@@ -30,8 +30,8 @@ export default function multiBubbles () {
     this.items.correct = correct;
   });
 
-  this.respond('select', function(_event) {
-    if(~this.items.correct.indexOf(_event.message)) {
+  this.respond('select', function (_event) {
+    if (~this.items.correct.indexOf(_event.message)) {
       this.audio.voiceOver.play(_event.message);
       this.highlight(_event.behaviorTarget);
       this.score.up(10);
@@ -42,11 +42,11 @@ export default function multiBubbles () {
     }
   });
 
-  this.on('ui-open', function(_e) {
-    if(!this.is(_e.target)) return;
+  this.on('ui-open', function (_e) {
+    if (!this.is(_e.target)) return;
 
-    if(this.isComplete) {
-      this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+    if (this.isComplete) {
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
       this.start();
     }
   });
