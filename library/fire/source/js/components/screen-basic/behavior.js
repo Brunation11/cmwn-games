@@ -2,8 +2,8 @@ pl.game.component('screen-basic', function () {
 
   this.on('ready', function (_event) {
     if (this.is(_event.target) && this.audio) {
-      this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config('dontautoplay'));
+      this.audio.rule('.voiceOver', 'shouldPlay', function (_e) {
+        _e.response(!_e.target.config('dontautoplay'));
       });
     }
 
@@ -41,7 +41,6 @@ pl.game.component('screen-basic', function () {
 
     if (this !== this.screen) {
       this.log('Not called on a screen');
-      console.trace();
       return;
     }
 
@@ -56,9 +55,7 @@ pl.game.component('screen-basic', function () {
         current = this;
         nextScreen = this.proto();
       }
-    }
-
-    else {
+    } else {
       current = this;
       nextScreen = this.proto();
     }
@@ -77,7 +74,6 @@ pl.game.component('screen-basic', function () {
 
     if (this !== this.screen) {
       this.log('Not called on a screen');
-      console.trace();
       return;
     }
 
@@ -92,9 +88,7 @@ pl.game.component('screen-basic', function () {
         current = this;
         prevScreen = this.proto();
       }
-    }
-
-    else {
+    } else {
       current = this;
       prevScreen = this.proto();
     }

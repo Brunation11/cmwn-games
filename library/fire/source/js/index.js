@@ -30,66 +30,65 @@ pl.game('fire', function () {
   (function () {
     var canvas = document.createElement('canvas');
     var w = canvas.width = 960,
-    h = canvas.height = 540;
+      h = canvas.height = 540;
     var c = canvas.getContext('2d');
 
     var img = new Image();
     img.src = 'http://oi41.tinypic.com/4i2aso.jpg';
 
-    var position = {x : w / 2, y : h / 2};
+    var position = {x: w / 2, y: h / 2};
 
     document.body.appendChild(canvas);
 
     var particles = [];
     var random = function (min, max){
-    return Math.random() * (max - min) * min;
-  };
+      return Math.random() * (max - min) * min;
+    };
 
     document.body.onmousemove = function (e){
-    position.x = e.clientX / self.zoom;
-    position.y = e.clientY / self.zoom;
-  };
-    function Particle(x, y){
-    this.x = x;
-    this.y = y;
-    this.velY = -2;
-    this.velX = (random(1, 10) - 5) / 10;
-    this.size = random(3, 5) / 10;
-    this.alpha = 1;
-    this.update = function (){
-      this.y += this.velY;
-      this.x += this.velX;
-      this.velY *= 0.99;
-      if (this.alpha < 0) this.alpha = 0;
-      c.globalAlpha = this.alpha;
-      c.save();
-      c.translate(this.x, this.y);
-      c.scale(this.size, this.size);
-      c.drawImage(img, -img.width / 2, -img.height / 2);
-      c.restore();
-      this.alpha *= 0.96;
-      this.size += 0.02;
+      position.x = e.clientX / self.zoom;
+      position.y = e.clientY / self.zoom;
     };
-  }
+    function Particle(x, y){
+      this.x = x;
+      this.y = y;
+      this.velY = -2;
+      this.velX = (random(1, 10) - 5) / 10;
+      this.size = random(3, 5) / 10;
+      this.alpha = 1;
+      this.update = function (){
+        this.y += this.velY;
+        this.x += this.velX;
+        this.velY *= 0.99;
+        if (this.alpha < 0) this.alpha = 0;
+        c.globalAlpha = this.alpha;
+        c.save();
+        c.translate(this.x, this.y);
+        c.scale(this.size, this.size);
+        c.drawImage(img, -img.width / 2, -img.height / 2);
+        c.restore();
+        this.alpha *= 0.96;
+        this.size += 0.02;
+      };
+    }
 
     var draw = function (){
-    var p = new Particle(position.x, position.y);
-    particles.push(p);
+      var p = new Particle(position.x, position.y);
+      particles.push(p);
 
-    while (particles.length > 500) particles.shift();
+      while (particles.length > 500) particles.shift();
 
-    c.globalAlpha = 1;
-    c.fillStyle = '#000';
-    c.fillRect(0, 0, w, h);
+      c.globalAlpha = 1;
+      c.fillStyle = '#000';
+      c.fillRect(0, 0, w, h);
 
-    for (var i = 0; i < particles.length; i++)
-    {
-      particles[i].update();
-    }
-  };
+      for (var i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+    };
 
     setInterval(draw, 1000 / 60);
-  })();
+  }());
   // end of the mouse smoke js
 
   var soundClasses = function () {
@@ -100,7 +99,7 @@ pl.game('fire', function () {
       if (id) {
         id = id.toUpperCase();
         this.addClass(id);
-        classes += " " + id;
+        classes += ' ' + id;
       }
     });
 
@@ -165,10 +164,10 @@ pl.game('fire', function () {
           if (!this.is(_event.target)) return;
 
           if (this.audio) {
-            this.audio.voiceOver.on('ended', function (_event) {
+            this.audio.voiceOver.on('ended', function (_e) {
               var i, next;
 
-              i = sequence.indexOf(_event.target.id()) + 1;
+              i = sequence.indexOf(_e.target.id()) + 1;
               next = this.audio.voiceOver[sequence[i]];
 
               if (next) next.play();
@@ -185,8 +184,8 @@ pl.game('fire', function () {
       if (!this.is(_event.target)) return;
 
       if (this.audio) {
-        this.audio.voiceOver.on('ended', function (_event) {
-          if (_event.target.id() === 'title') this.audio.voiceOver.subtitle.play();
+        this.audio.voiceOver.on('ended', function (_e) {
+          if (_e.target.id() === 'title') this.audio.voiceOver.subtitle.play();
         }.bind(this));
       }
     });
@@ -248,9 +247,7 @@ pl.game('fire', function () {
               }
 
               return;
-            }
-
-            else {
+            } else {
               this.audio.sfx.incorrect.play();
             }
 
@@ -264,8 +261,8 @@ pl.game('fire', function () {
         if (!this.is(_event.target)) return;
 
         if (this.audio) {
-          this.audio.voiceOver.on('ended', function (_event) {
-            if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
+          this.audio.voiceOver.on('ended', function (_e) {
+            if (_e.target.id() === 'title') this.audio.voiceOver.directions.play();
           }.bind(this));
         }
       });
@@ -279,7 +276,7 @@ pl.game('fire', function () {
       // this removes any screen class that starts with the same thing as the event message
       // and then adds the event message as a class to the screen
       if (!_event.message) return;
-      var regexp = new RegExp("(^|\\s)" + _event.message.split('-')[0]+'-\\S+');
+      var regexp = new RegExp('(^|\\s)' + _event.message.split('-')[0] + '-\\S+');
       this.screen.removeClass(function (index, className) {
         return (className.match(regexp) || []).join(' ');
       }).addClass(_event.message);
@@ -327,9 +324,7 @@ pl.game('fire', function () {
                   this.audio.sfx.correct.play();
 
                   return;
-                }
-
-                else {
+                } else {
                   this.audio.sfx.incorrect.play();
                 }
 
@@ -352,7 +347,7 @@ pl.game('fire', function () {
       this.game.quit.okay();
     };
 
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');

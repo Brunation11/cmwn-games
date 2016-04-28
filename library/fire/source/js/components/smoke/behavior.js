@@ -41,8 +41,7 @@ pl.game.component('smoke', function () {
     c.fillStyle = '#000';
     c.fillRect(0, 0, w, h);
 
-    for (var i = 0; i < particles.length; i++)
-    {
+    for (var i = 0; i < particles.length; i++) {
       particles[i].update();
     }
 
@@ -64,7 +63,7 @@ pl.game.component('smoke', function () {
     h = this.canvas[0].height = this.game.height();
     c = this.canvas.exec('getContext', ['2d'])[0];
     img = this.particle[0];
-    position = {x : w / 2, y : h / 2};
+    position = {x: w / 2, y: h / 2};
 
     this.start();
   });
