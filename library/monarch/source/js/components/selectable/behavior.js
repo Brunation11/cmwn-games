@@ -12,7 +12,7 @@ pl.game.component('selectable', function () {
           message: id,
           behaviorTarget: $target
         };
-      }  
+      }
     }
 
     else {
@@ -26,7 +26,7 @@ pl.game.component('selectable', function () {
     return true;
   };
 
-  this.deselectAll = function() {
+  this.deselectAll = function () {
     var items = this.find('li');
     this.deselect(items);
     this.unhighlight(items);

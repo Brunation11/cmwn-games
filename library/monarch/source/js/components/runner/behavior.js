@@ -2,13 +2,13 @@ pl.game.component('runner', function () {
   var canvas, Flower, gameLoop, FLOWER, scale, boundPulse;
 
   FLOWER = {
-    ORANGE: "[pl-id=orange]",
-    RED: "[pl-id=red]",
-    YELLOW: "[pl-id=yellow]"
+    ORANGE: '[pl-id=orange]',
+    RED: '[pl-id=red]',
+    YELLOW: '[pl-id=yellow]'
   };
 
   gameLoop = {
-    
+
     lastRecycledFlower: null,
 
     // main game loop
@@ -27,11 +27,11 @@ pl.game.component('runner', function () {
 
     recycle: function (_scope, _flower) {
       _flower.image = pl.util.random(_scope.bin);
-      _flower.margin = pl.util.random(2,10) * 10;
+      _flower.margin = pl.util.random(2, 10) * 10;
       _flower.position.x = _scope.width() + _flower.margin;
 
       if (this.lastRecycledFlower) {
-        _flower.position.x = this.lastRecycledFlower.margin + 
+        _flower.position.x = this.lastRecycledFlower.margin +
           this.lastRecycledFlower.position.x +
           this.lastRecycledFlower.size.width;
       }
@@ -41,7 +41,7 @@ pl.game.component('runner', function () {
 
     pulsePoint: 0,
 
-    pulse: function (_scope,_flower) {
+    pulse: function (_scope, _flower) {
       // pulse flower
       gameLoop.pulsePoint++;
       _flower.position.x += gameLoop.pulsePoint % 40 > 20 ? 1 : -1;
@@ -53,7 +53,7 @@ pl.game.component('runner', function () {
   };
 
   Flower = pl.Basic.extend(function () {
-    
+
     this.position = null;
     this.size = null;
     this.margin = 0;
@@ -66,17 +66,17 @@ pl.game.component('runner', function () {
 
       this.position = pl.Point.create();
       this.size = [_image.naturalWidth, _image.naturalHeight].to('size');
-      this.margin = pl.util.random(2,10) * 10;
+      this.margin = pl.util.random(2, 10) * 10;
 
       ['Width', 'Height'].some(function (_plane) {
-        if (_image[_plane.toLowerCase()] !== _image['natural'+_plane]) {
-          scale = _image[_plane.toLowerCase()] / _image['natural'+_plane];
+        if (_image[_plane.toLowerCase()] !== _image['natural' + _plane]) {
+          scale = _image[_plane.toLowerCase()] / _image['natural' + _plane];
           return false;
         }
       });
 
       if (scale) this.size = this.size.scale(scale).math('floor');
- 
+
       return this;
     };
 
@@ -92,11 +92,11 @@ pl.game.component('runner', function () {
 
     this.id = function () {
       return $(this.image).id();
-    }
+    };
   });
 
   canvas = {
-    
+
     ctx: null,
     node: null,
     content: null,
@@ -134,7 +134,7 @@ pl.game.component('runner', function () {
     },
 
     clear: function () {
-      this.ctx.clearRect(0,0, this.node.width/this.scale, this.node.height/this.scale);
+      this.ctx.clearRect(0, 0, this.node.width / this.scale, this.node.height / this.scale);
     },
 
     draw: function (_obj) {
@@ -181,7 +181,7 @@ pl.game.component('runner', function () {
         this.push(flower);
 
         shouldAppend = flower.position.x < width;
-        
+
         _scope.log(flower.position.x, width);
       }
 
@@ -196,7 +196,7 @@ pl.game.component('runner', function () {
     canvas.init(this.conveyor[0], canvasSize, this.game.zoom);
 
     this.game.viewport.onResize(this.game.bind(function () {
-       canvas.resize(canvasSize, this.zoom);
+      canvas.resize(canvasSize, this.zoom);
     }));
   });
 
@@ -222,11 +222,11 @@ pl.game.component('runner', function () {
     this.eachFrame(this.onEachFrame);
   };
 
-  this.restart = function() {
+  this.restart = function () {
     this.isConveyorRunning = true;
     this.player
       .removeClass('GRAVITY');
-  }
+  };
 
   this.stop = function () {
     this.eachFrame(this.onEachFrame, false);
@@ -245,14 +245,14 @@ pl.game.component('runner', function () {
   };
 
   this.pulse = function (_flower) {
-    if(gameLoop.pulsePoint >= 80) {
+    if (gameLoop.pulsePoint >= 80) {
       gameLoop.pulsePoint = 0;
       this.eachFrame(boundPulse, false);
     }
 
     canvas.clear();
 
-    gameLoop.pulse(this,_flower);
+    gameLoop.pulse(this, _flower);
 
     this.flowers.forEach(function (_flower) {
       canvas.draw(_flower);
@@ -267,7 +267,7 @@ pl.game.component('runner', function () {
       size: pl.Size.create().set(this.player.width(), this.player.height())
     };
 
-    target = pl.Point.create().set(player.pos.x + (player.size.width/2), 40).inc(20,0);
+    target = pl.Point.create().set(player.pos.x + (player.size.width / 2), 40).inc(20, 0);
 
     // canvas.ctx.fillStyle = '#000';
 
@@ -279,7 +279,7 @@ pl.game.component('runner', function () {
         x1: _flower.position.x + _flower.margin + padding,
         y1: _flower.position.y + padding,
         x2: _flower.position.x + _flower.margin + _flower.size.width - (padding * 1),
-        y2: _flower.position.y +_flower.size.height - (padding * 1)
+        y2: _flower.position.y + _flower.size.height - (padding * 1)
       };
 
       // canvas.ctx.fillRect(hitArea.x1, hitArea.y1, hitArea.x2 - hitArea.x1, hitArea.y2 - hitArea.y1);
@@ -311,7 +311,7 @@ pl.game.component('runner', function () {
     this.player
       .removeClass('GRAVITY')
       .addClass('JUMPING')
-      .transformPosition(position.dec(0,60));
+      .transformPosition(position.dec(0, 60));
 
     this.log('behavior:jump');
 
@@ -323,9 +323,9 @@ pl.game.component('runner', function () {
   this.behavior('landed', function (_flower) {
     var id;
 
-    if(_flower) {
+    if (_flower) {
       id = _flower.id();
-      boundPulse = this.pulse.bind(this,_flower);
+      boundPulse = this.pulse.bind(this, _flower);
       this.eachFrame(boundPulse);
     }
 

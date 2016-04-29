@@ -5,7 +5,7 @@ pl.game.component('screen-title', function () {
 
     delay = $(_sound).attr('pl-delay');
 
-    if($(_sound).hasClass('voice-over')) {
+    if ($(_sound).hasClass('voice-over')) {
       this.currentVO = _sound;
     }
 
@@ -17,7 +17,7 @@ pl.game.component('screen-title', function () {
   };
 
   this.on('ready', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
 
     this.delay(0, this.open);
 
@@ -46,10 +46,10 @@ pl.game.component('screen-title', function () {
     return this;
   });
 
-  this.on('ui-close', function(_event) {
-    if(!this.is(_event.target)) return;
-    this.on('transitionend', function(_event) {
-      if(!this.is(_event.target)) return;
+  this.on('ui-close', function (_event) {
+    if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_event) {
+      if (!this.is(_event.target)) return;
       this.logo.removeClass(this.properties.animOut)
         .off('animationend');
       this.off('transitionend');
@@ -58,8 +58,8 @@ pl.game.component('screen-title', function () {
 
   this.next = function () {
     var nextScreen, so, animate;
-    
-    function leave () {
+
+    function leave() {
       this.screen.leave();
       nextScreen.open();
     }
@@ -80,7 +80,7 @@ pl.game.component('screen-title', function () {
       } else {
         leave.call(this);
       }
-        
+
       if (so) so.play();
     }
 
