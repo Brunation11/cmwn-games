@@ -50,9 +50,7 @@ pl.game('sea-turtle', function () {
 
   this.screen('globe', function () {
 
-    var restAnimation, onClose;
-
-    restAnimation = 'bounce';
+    var onClose;
 
     this.entity('characters', function () {
       /**
@@ -216,7 +214,11 @@ pl.game('sea-turtle', function () {
     this.on('ui-close', function (_e) {
       if (!this.is(_e.target)) return;
 
-      if (this.isComplete) this.delay('.5s', function () { this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED)) });
+      if (this.isComplete) {
+        this.delay('.5s', function () {
+          this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+        });
+      }
     });
   });
 
@@ -236,7 +238,7 @@ pl.game('sea-turtle', function () {
       this.game.quit.okay();
     };
 
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');

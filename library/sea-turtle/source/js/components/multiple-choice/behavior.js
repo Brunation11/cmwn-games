@@ -23,12 +23,12 @@ pl.game.component('multiple-choice', function () {
   this.correct = null;
 
   this.handleProperty({
-    correct: function (_node, _name, _value) {
+    correct: function (_node) {
       var answers;
 
       if (!this.correct) {
         this.correct = pl.Queue.create();
-        this.correct.on('complete', this.bind(function (_event) {
+        this.correct.on('complete', this.bind(function () {
           this.complete();
         }));
       }

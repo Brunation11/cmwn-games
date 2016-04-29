@@ -3,7 +3,7 @@ pl.game.component('selectable-all', function () {
   var Column;
 
   function populateViewport() {
-    var width, item, i, columns;
+    var width, i, columns;
 
     // width of the first item
     width = this.$bin.outerWidth(true);

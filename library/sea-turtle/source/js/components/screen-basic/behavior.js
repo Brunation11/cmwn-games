@@ -56,9 +56,7 @@ pl.game.component('screen-basic', function () {
     return this;
   };
 
-  this.startEntities = function (argument) {
-    var conditions;
-
+  this.startEntities = function () {
     if (this.hasOwnProperty('entities') && this.entities) {
       this.entities.forEach((_node) => {
         if (typeof _node.start === 'function') _node.start();

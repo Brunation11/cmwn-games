@@ -73,8 +73,9 @@ pl.game.component('dropzone', function () {
     return _id != null ? !!~takes.indexOf(_id) : takes;
   };
 
-  this.isPointInBounds = function (_point, _y) {
-    var point, position, scale;
+  // expected arguments are _point and _y
+  this.isPointInBounds = function () {
+    var point, scale;
 
     point = pl.Point.create(arguments);
     if ((scale = this.game.transformScale().x) !== 1) point = point.scale(1 / scale);
@@ -88,9 +89,9 @@ pl.game.component('dropzone', function () {
     return false;
   };
 
-  this.isBoxInBounds = function (_point, _size) {
-    // comming soon!
-  };
+  // this.isBoxInBounds = function (_point, _size) {
+  //   // comming soon!
+  // };
 
   this.behavior('drop', function (_$draggable) {
     if (_$draggable.id()) this.requiredQueue.ready(_$draggable.id());
