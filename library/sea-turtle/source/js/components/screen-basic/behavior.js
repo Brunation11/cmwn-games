@@ -3,7 +3,7 @@ pl.game.component('screen-basic', function () {
   this.on('ready', function (_e) {
     var self = this;
 
-    if(!this.is(_e.target)) return;
+    if (!this.is(_e.target)) return;
 
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', function () {
@@ -15,11 +15,11 @@ pl.game.component('screen-basic', function () {
       });
     }
   });
-  
+
   this.next = function () {
     var nextScreen, buttonSound;
 
-    if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
     nextScreen = this.proto();
     buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
@@ -61,7 +61,7 @@ pl.game.component('screen-basic', function () {
 
     if (this.hasOwnProperty('entities') && this.entities) {
       this.entities.forEach((_node) => {
-        if(typeof _node.start === 'function') _node.start();
+        if (typeof _node.start === 'function') _node.start();
       });
     }
 

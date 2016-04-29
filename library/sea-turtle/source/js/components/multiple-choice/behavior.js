@@ -1,6 +1,6 @@
 pl.game.component('multiple-choice', function () {
 
-  function validateAnswer (_$selected) {
+  function validateAnswer(_$selected) {
     var index;
 
     if (this.properties.correct) {
@@ -44,9 +44,9 @@ pl.game.component('multiple-choice', function () {
     }
   });
 
-  this.start = function() {
+  this.start = function () {
     var self = this;
-    this.find('[pl-correct]').each((i,_node) => {
+    this.find('[pl-correct]').each((i, _node) => {
       self.correct.add(_node);
     });
   };

@@ -4,15 +4,15 @@ pl.game.component('dropzone', function () {
    * Handler for a dropzone behavior.
    * @insatnce
    */
-  function reportState (_state) {
+  function reportState(_state) {
     return {
       state: _state,
       behaviorTarget: _state.$draggable
     };
   }
-    
+
   this.entity('.area', function () {
-    
+
     this.cache = null;
 
     /**
@@ -41,9 +41,9 @@ pl.game.component('dropzone', function () {
         if (this.takes(_event.state.$draggable.id())) {
           _event.state.$draggable.removeClass('PLUCKED');
           _event.state.$helper.addClass('DROPED');
-          
+
           this.drop(_event.state.$draggable);
-          
+
           return;
         }
         this.reject(_event.state);
@@ -63,7 +63,7 @@ pl.game.component('dropzone', function () {
   };
 
   this.takes = function (_id) {
-    var takes
+    var takes;
 
     // if no pl-take attribute is defined then
     // the dropzone will take any draggable.
@@ -77,10 +77,10 @@ pl.game.component('dropzone', function () {
     var point, position, scale;
 
     point = pl.Point.create(arguments);
-    if((scale = this.game.transformScale().x) !== 1) point = point.scale(1/scale);
+    if ((scale = this.game.transformScale().x) !== 1) point = point.scale(1 / scale);
 
-    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
         return true;
       }
     }

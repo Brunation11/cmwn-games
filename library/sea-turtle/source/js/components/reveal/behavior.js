@@ -1,9 +1,9 @@
 pl.game.component('reveal', function () {
-  
+
   this.items = null;
 
   this.on('ready', function () {
-    this.items = this.findOwn('li')
+    this.items = this.findOwn('li');
   });
 
   this.start = () => {};
@@ -36,8 +36,8 @@ pl.game.component('reveal', function () {
     return !!this.items[_id] || !!this[_id];
   };
 
-  this.deselectTarget = function(_$target) {
-    if(!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
+  this.deselectTarget = function (_$target) {
+    if (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
       this.deselect(_$target);
     }
   };

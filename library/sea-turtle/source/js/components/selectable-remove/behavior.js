@@ -1,5 +1,5 @@
 pl.game.component('selectable-remove', function () {
-  
+
   this.behavior('select', function (_target) {
     var $target;
     $target = $(this.event.target).closest('li');
@@ -41,7 +41,7 @@ pl.game.component('selectable-remove', function () {
     return false;
   };
 
-  this.start = function() {
+  this.start = function () {
     var correct = pl.Queue.create();
 
     correct.on('complete', this.bind(function () {
@@ -62,7 +62,7 @@ pl.game.component('selectable-remove', function () {
   this.ready = function () {
     var $net = $('.selectable-remove-component .net');
 
-    this.mousemove(this.bind(function(e){
+    this.mousemove(this.bind(function (e){
       $net.css({left: e.clientX / this.game.zoom - 72, top: e.clientY / this.game.zoom - 50});
     }));
   };

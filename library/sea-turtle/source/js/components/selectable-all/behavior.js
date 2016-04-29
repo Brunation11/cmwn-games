@@ -2,14 +2,14 @@ pl.game.component('selectable-all', function () {
 
   var Column;
 
-  function populateViewport () {
+  function populateViewport() {
     var width, item, i, columns;
 
     // width of the first item
     width = this.$bin.outerWidth(true);
     columns = Math.floor(this.$viewport.width() / width);
 
-    for (i=0; i < columns; i+=1) {
+    for (i = 0; i < columns; i += 1) {
       this.columns.push(Column.create().init(this.$bin, this.$viewport));
     }
   }
@@ -30,7 +30,7 @@ pl.game.component('selectable-all', function () {
 
       return this;
     };
-    
+
     this.recycle = function () {
       var $clone;
 
@@ -50,7 +50,7 @@ pl.game.component('selectable-all', function () {
 
     this.launch = function () {
       this.$el.on('transitionend', this.bind(function (_event) {
-        if(!this.$el.is(_event.target)) return;
+        if (!this.$el.is(_event.target)) return;
 
         if (!this.recycle()) {
           this.$el.off();
@@ -65,7 +65,7 @@ pl.game.component('selectable-all', function () {
       return function () {
         return _fun.apply(self, arguments);
       };
-    }
+    };
 
   });
 
@@ -73,7 +73,7 @@ pl.game.component('selectable-all', function () {
   this.$bin = null;
   this.columns = null;
   this.count = 0;
-  
+
   this.init = function () {
     this.$viewport = this.find('.viewport');
     this.$bin = this.find('.bin li');
@@ -94,7 +94,7 @@ pl.game.component('selectable-all', function () {
     this.screen.requiredQueue.ready();
   };
 
-  this.restart = function() {
+  this.restart = function () {
     this.columns.forEach(function (_item) {
       _item.recycle();
     });

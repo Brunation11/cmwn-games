@@ -21,7 +21,7 @@ import '../../../shared/js/google-analytics';
 
 // Sea Turtle game scope.
 // This selects the element `#sea-turtle`.
-// 
+//
 pl.game('sea-turtle', function () {
 
   /**
@@ -29,27 +29,27 @@ pl.game('sea-turtle', function () {
    * @override
    */
   this.screen('title', function () {
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
   });
 
   this.screen('video', function () {
-    
-    this.on('ui-open', function() {
+
+    this.on('ui-open', function () {
       this.video.start();
     });
 
-    this.on('ui-close', function() {
+    this.on('ui-close', function () {
       this.video.pause();
     });
 
   });
 
   this.screen('globe', function () {
-    
+
     var restAnimation, onClose;
 
     restAnimation = 'bounce';
@@ -63,7 +63,7 @@ pl.game('sea-turtle', function () {
        * draggable when the draggable or the container (this)
        * has the DISABLED UIState.
        */
-      function preventDrag (_event) {
+      function preventDrag(_event) {
         var $target, isDisabled;
 
         $target = $(_event.target);
@@ -78,7 +78,7 @@ pl.game('sea-turtle', function () {
       }
 
       this.$active = null;
-      
+
       this.on('drag-start', function (_event) {
         (this.$active = _event.state.$draggable.closest('li'))
           .addClass('ACTIVE');
@@ -97,7 +97,7 @@ pl.game('sea-turtle', function () {
       });
 
     });
-    
+
     /**
      * The reveal component holds the correct/incorrect splash
      * images. So its responsible for handling the multiple
@@ -105,7 +105,7 @@ pl.game('sea-turtle', function () {
      * "correct" or "incorrect" image.
      */
     this.entity('reveal', function () {
-      
+
       this.respond('answer', function (_event) {
         var message, playing;
 
@@ -114,14 +114,14 @@ pl.game('sea-turtle', function () {
 
         if (message && !this.isComplete) {
           this.select(message);
-          this.delay('2s', function() {
+          this.delay('2s', function () {
             this.deselect(message);
           });
-          
+
           if (playing) playing.stop();
 
           this.delay('2.5s', function () {
-            if(this.wellDone.state(this.STATE.SELECTED)) return;
+            if (this.wellDone.state(this.STATE.SELECTED)) return;
             this.reveal.item('instruction');
             this.characters.enable();
           });
@@ -130,7 +130,7 @@ pl.game('sea-turtle', function () {
 
     });
 
-    this.STATE.COMPLETE = "COMPLETE";
+    this.STATE.COMPLETE = 'COMPLETE';
 
     /**
      * When the screen has initialized, start watching the
@@ -150,8 +150,8 @@ pl.game('sea-turtle', function () {
       $character = _event.behaviorTarget.parent();
       sfx = pl.util.resolvePath(this, 'dropzone.audio.sfx.drop');
 
-      this.area.find('div:eq('+$character.index()+')').addClass('show active');
-      this.reveal.item($character.index()+1);
+      this.area.find('div:eq(' + $character.index() + ')').addClass('show active');
+      this.reveal.item($character.index() + 1);
 
       this.characters.disable();
       this.deselect(this.reveal.find('img.response'));
@@ -166,11 +166,11 @@ pl.game('sea-turtle', function () {
     this.respond('answer', function (_event) {
       var sfx;
 
-      sfx = pl.util.resolvePath(this, 'audio.sfx.'+_event.message);
+      sfx = pl.util.resolvePath(this, 'audio.sfx.' + _event.message);
 
       if (sfx) sfx.play();
 
-      if(_event.targetScope.state(this.STATE.COMPLETE)) {
+      if (_event.targetScope.state(this.STATE.COMPLETE)) {
         this.area.find('div.active').removeClass('active');
       }
     });
@@ -182,10 +182,10 @@ pl.game('sea-turtle', function () {
       }
     });
 
-    onClose = function(_event) {
-      if(!this.is(_event.target)) return;
+    onClose = function (_event) {
+      if (!this.is(_event.target)) return;
       this.area.find('.active').removeClass('show active');
-      if(this.characters.$active) this.characters.$active.removeClass('ACTIVE');
+      if (this.characters.$active) this.characters.$active.removeClass('ACTIVE');
       this.characters.enable();
     };
 
@@ -199,10 +199,10 @@ pl.game('sea-turtle', function () {
       this.reveal.item(0);
     };
 
-    this.on('ui-open', function(_e) {
-      if(!this.is(_e.target)) return;
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-      if(this.isComplete) {
+      if (this.isComplete) {
         this.deselect(this.dropzone.reveal.find('.SELECTED'));
         this.enable(this.characters.find('.DISABLED'));
         this.dropzone.find('.show').removeClass('show');
@@ -212,18 +212,18 @@ pl.game('sea-turtle', function () {
 
   });
 
-  this.screen('trash', function() {
-    this.on('ui-close', function(_e) {
-      if(!this.is(_e.target)) return;
+  this.screen('trash', function () {
+    this.on('ui-close', function (_e) {
+      if (!this.is(_e.target)) return;
 
-      if(this.isComplete) this.delay('.5s', function() {this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED))});
+      if (this.isComplete) this.delay('.5s', function () { this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED)) });
     });
   });
 
-  this.screen('jellyfish', function() {
-    this.entity('reveal', function() {
-      this.deselectTarget = function(_$target) {
-        if(!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
+  this.screen('jellyfish', function () {
+    this.entity('reveal', function () {
+      this.deselectTarget = function (_$target) {
+        if (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
           this.deselect(_$target);
           this.screen.requiredQueue.ready(this.audio.voiceOver[_$target.index()]);
         }
@@ -237,7 +237,7 @@ pl.game('sea-turtle', function () {
     };
 
     this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -253,8 +253,8 @@ pl.game('sea-turtle', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 
