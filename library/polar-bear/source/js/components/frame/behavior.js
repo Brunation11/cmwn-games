@@ -1,5 +1,5 @@
 pl.game.component('frame', function () {
-  
+
   this.ready = function () {
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', this.bind(function () {
@@ -19,7 +19,7 @@ pl.game.component('frame', function () {
       voSound = this.audio.voiceOver[0];
 
       this.audio.background.play();
-      if (voSound && !voSound.config("dontautoplay")) voSound.play();
+      if (voSound && !voSound.config('dontautoplay')) voSound.play();
     }
 
     if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();

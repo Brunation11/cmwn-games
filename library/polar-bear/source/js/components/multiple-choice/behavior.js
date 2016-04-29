@@ -1,6 +1,6 @@
 pl.game.component('multiple-choice', function () {
 
-  function validateAnswer (_scope) {
+  function validateAnswer(_scope) {
     var $selected, answers, $correct, correctCount;
 
     $selected = _scope.getSelected();
@@ -9,7 +9,7 @@ pl.game.component('multiple-choice', function () {
       answers = _scope.properties.correct.split(/\s*,\s*/);
 
       if (~answers.indexOf(String($selected.index()))) {
-        if(_scope.isComplete) _scope.playSFX('correct');
+        if (_scope.isComplete) _scope.playSFX('correct');
         _scope.complete();
       } else {
         _scope.playSFX('incorrect');
@@ -19,7 +19,7 @@ pl.game.component('multiple-choice', function () {
       $correct = _scope.find('[pl-correct]');
 
       if (~$.inArray($selected[0], $correct)) {
-        if(_scope.isComplete) _scope.playSFX('correct');
+        if (_scope.isComplete) _scope.playSFX('correct');
         _scope.complete();
       } else {
         _scope.playSFX('incorrect');
@@ -32,7 +32,7 @@ pl.game.component('multiple-choice', function () {
   this.playSFX = function (_answer) {
     var sfx;
 
-    sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _answer);
 
     if (sfx) sfx.play();
 
@@ -42,7 +42,7 @@ pl.game.component('multiple-choice', function () {
   this.playVO = function (_name) {
     var vo;
 
-    vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
+    vo = pl.util.resolvePath(this, 'audio.voiceOver.' + _name);
 
     if (vo) vo.play();
 
@@ -62,6 +62,6 @@ pl.game.component('multiple-choice', function () {
     }
   };
 
-  this.start = function() {};
+  this.start = function () {};
 
 });

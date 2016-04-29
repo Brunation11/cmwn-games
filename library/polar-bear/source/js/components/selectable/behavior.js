@@ -11,7 +11,7 @@ pl.game.component('selectable', function () {
           message: $target.index(),
           behaviorTarget: $target
         };
-      }  
+      }
     }
 
     else {
@@ -22,7 +22,7 @@ pl.game.component('selectable', function () {
   });
 
   this.shouldSelect = function (_target) {
-    if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+    if (!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
       return true;
     }
 

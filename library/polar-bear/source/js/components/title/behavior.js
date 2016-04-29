@@ -6,7 +6,7 @@ pl.game.component('title', function () {
   };
 
   this.showTitle = function () {
-    this.image.addClass('animated '+this.image.attr('pl-animation'));
+    this.image.addClass('animated ' + this.image.attr('pl-animation'));
     this.complete();
   };
 

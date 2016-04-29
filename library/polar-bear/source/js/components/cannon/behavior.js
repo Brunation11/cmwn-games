@@ -1,7 +1,7 @@
 pl.game.component('cannon', function () {
 
   this.entity('ball', function () {
-    
+
     this.reloadRequest = false;
     this.isLaunchComplete = false;
 
@@ -12,7 +12,7 @@ pl.game.component('cannon', function () {
         this.on('load', function () {
           this.assetQueue.ready(this.node().src);
           this.off('load');
-        })
+        });
       }
     };
 
@@ -65,7 +65,7 @@ pl.game.component('cannon', function () {
   this.playSFX = function (_name) {
     var sfx;
 
-    sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
     if (sfx) sfx.play();
 

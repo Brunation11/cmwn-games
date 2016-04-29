@@ -1,11 +1,11 @@
 pl.game.component('screen-basic', function () {
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
   };
 
   this.on('ready', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
 
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', this.bind(function () {
@@ -17,15 +17,15 @@ pl.game.component('screen-basic', function () {
       }));
     }
 
-    if(this.state(this.STATE.OPEN)) this.start();
+    if (this.state(this.STATE.OPEN)) this.start();
   });
-  
+
   this.next = function () {
     var current, nextScreen, buttonSound;
 
-    if(!this.state(this.STATE.OPEN)) return;
+    if (!this.state(this.STATE.OPEN)) return;
 
-    if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
     if (this !== this.screen) {
       this.log('Not called on a screen');
@@ -63,7 +63,7 @@ pl.game.component('screen-basic', function () {
   this.prev = function () {
     var current, prevScreen, buttonSound;
 
-    if(!this.state(this.STATE.OPEN)) return;
+    if (!this.state(this.STATE.OPEN)) return;
 
     if (this !== this.screen) {
       this.log('Not called on a screen');

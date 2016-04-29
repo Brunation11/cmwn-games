@@ -23,19 +23,19 @@ import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
 
-  var resetMultipleChoice = function() {
-    this.on('ui-open', function(_e) {
-      if(!this.is(_e.target)) return;
+  var resetMultipleChoice = function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-      if(this.isComplete) this.deselect(this.find('.'+this.STATE.SELECTED));
+      if (this.isComplete) this.deselect(this.find('.' + this.STATE.SELECTED));
     });
   };
 
   this.screen('title', function () {
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.startAudio = function () {
@@ -48,8 +48,8 @@ pl.game('polar-bear', function () {
     };
   });
 
-  this.screen('what-color', function() {
-    this.entity('slides', function() {
+  this.screen('what-color', function () {
+    this.entity('slides', function () {
       this.entity('mc', resetMultipleChoice);
     });
   });
@@ -57,24 +57,24 @@ pl.game('polar-bear', function () {
   this.screen('map', function () {
 
     this.entity('slides', function () {
-      
+
       this.entity('.map-entity', function () {
 
         var SELECTOR;
 
-        function isCorrect (_element) {
+        function isCorrect(_element) {
           var $el;
 
           $el = _element.jquery ? _element : $(_element);
 
-          return 
+          return
         }
 
         SELECTOR = {
           CORRECT: '[pl-correct]',
           INCORRECT: '[pl-incorrect]'
         };
-        
+
         this.buffer = null;
         this.bctx = null;
         this.countries = null;
@@ -137,12 +137,12 @@ pl.game('polar-bear', function () {
         };
 
         this.isImageTarget = function (_image, _point) {
-          this.bctx.clearRect(0,0, this.buffer.width, this.buffer.height);
-          this.bctx.drawImage(_image[0], 0,0, _image.width(), _image.height());
-          pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+          this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+          this.bctx.drawImage(_image[0], 0, 0, _image.width(), _image.height());
+          pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
           this.bctx.fillStyle = 'white';
-          this.bctx.fillRect(_point.x, _point.y, 5,5);
+          this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
           // opaque pixel
           return pixel.data[3] > 0;
@@ -151,21 +151,21 @@ pl.game('polar-bear', function () {
         this.test = function (_cursor) {
           var offset, cursor, pixel, gameScale;
 
-          if(!this.screen.allowAction()) return false;
+          if (!this.screen.allowAction()) return false;
 
           offset = this.grayMap.absolutePosition();
           gameScale = this.game.transformScale().x;
-          
+
           // FireFox uses transfom scale which
           // does NOT produce scaled DOM values like `zoom`.
           if (gameScale !== 1) {
             cursor = _cursor
               .dec(offset)
-              .scale(1/this.game.zoom)
+              .scale(1 / this.game.zoom)
               .math('floor');
           } else {
             cursor = _cursor
-              .scale(1/this.game.zoom)
+              .scale(1 / this.game.zoom)
               .math('floor')
               .dec(offset);
           }
@@ -192,7 +192,7 @@ pl.game('polar-bear', function () {
 
             $country.addClass('animated fadeIn');
 
-            if(!this.state('COMPLETE')) this.countries.correct.ready(_country);
+            if (!this.state('COMPLETE')) this.countries.correct.ready(_country);
           }
 
           else {
@@ -204,7 +204,7 @@ pl.game('polar-bear', function () {
         this.playSFX = function (_answer) {
           var sfx;
 
-          sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
+          sfx = pl.util.resolvePath(this, 'audio.sfx.' + _answer);
 
           if (sfx) sfx.play();
 
@@ -214,17 +214,17 @@ pl.game('polar-bear', function () {
         this.playVO = function (_name) {
           var vo;
 
-          vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
+          vo = pl.util.resolvePath(this, 'audio.voiceOver.' + _name);
 
           if (vo) vo.play();
 
           return vo;
         };
 
-        this.on('ui-open', function(_e) {
-          if(!this.is(_e.target)) return;
+        this.on('ui-open', function (_e) {
+          if (!this.is(_e.target)) return;
 
-          if(this.isComplete) {
+          if (this.isComplete) {
             this.find('.fadeIn').removeClass('fadeIn');
           }
         });
@@ -260,18 +260,18 @@ pl.game('polar-bear', function () {
               $selected.off();
             });
         });
-        
+
       }
     });
 
-    this.on('ui-open', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
       this.carousel.start();
 
-      if(this.isComplete) this.score.reset();
+      if (this.isComplete) this.score.reset();
     });
 
-    this.state('incomplete','-COMPLETE', {
+    this.state('incomplete', '-COMPLETE', {
       willSet: function (_target) {
         this.isComplete = false;
       }
@@ -306,7 +306,7 @@ pl.game('polar-bear', function () {
     this.playSFX = function (_name) {
       var sfx;
 
-      sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+      sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
       if (sfx) sfx.play();
 
@@ -319,11 +319,11 @@ pl.game('polar-bear', function () {
   this.screen('experiment-why-warmer', resetMultipleChoice);
   this.screen('experiment-how-warmer', resetMultipleChoice);
 
-  this.screen('experiment-discover', function() {
-    this.on('ui-open', function(_e) {
-      if(!this.is(_e.target)) return;
+  this.screen('experiment-discover', function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-      this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
     });
 
     this.respond('select', function (_event) {
@@ -335,7 +335,7 @@ pl.game('polar-bear', function () {
       }
     });
 
-    this.entity('selectable', function() {
+    this.entity('selectable', function () {
       this.behavior('select', function (_target) {
         var $target;
 
@@ -347,7 +347,7 @@ pl.game('polar-bear', function () {
               message: $target.id(),
               behaviorTarget: $target
             };
-          }  
+          }
         }
 
         else {
@@ -362,7 +362,7 @@ pl.game('polar-bear', function () {
   this.screen('flip', function () {
 
     this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -379,8 +379,8 @@ pl.game('polar-bear', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 
