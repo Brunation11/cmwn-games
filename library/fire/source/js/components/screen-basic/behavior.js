@@ -1,169 +1,163 @@
 pl.game.component('screen-basic', function () {
 
-	this.on('ready', function (_event) {
-		if (this.is(_event.target) && this.audio) {
-			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-				_event.response(!_event.target.config("dontautoplay"));
-			});
-		}
+  this.on('ready', function (_event) {
+    if (this.is(_event.target) && this.audio) {
+      this.audio.rule('.voiceOver', 'shouldPlay', function (_e) {
+        _e.response(!_e.target.config('dontautoplay'));
+      });
+    }
 
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
+    if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+      this.requiredQueue.on('complete', this.bind(function () {
+        var sfx;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+        sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-				if (sfx) sfx.play();
-			}));
-		}
-	});
+        if (sfx) sfx.play();
+      }));
+    }
+  });
 
-	this.shouldProceed = function() {
-		return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
-	};
+  this.shouldProceed = function () {
+    return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
+  };
 
-	this.playSound = function (_sound) {
-		var delay;
-	
-		delay = $(_sound.media).attr('pl-start');
+  this.playSound = function (_sound) {
+    var delay;
 
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
-	};
-	
-	this.next = function () {
-		var current, nextScreen, buttonSound;
+    delay = $(_sound.media).attr('pl-start');
 
-		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+    if (delay) {
+      return this.delay(delay, _sound.play.bind(_sound));
+    } else {
+      return _sound.play();
+    }
+  };
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+  this.next = function () {
+    var current, nextScreen, buttonSound;
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			nextScreen = current.next();
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-			if (nextScreen == null) {
-				current = this;
-				nextScreen = this.proto();
-			}
-		}
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		else {
-			current = this;
-			nextScreen = this.proto();
-		}
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      nextScreen = current.next();
 
-		if (nextScreen) {
-			current.leave();
-			nextScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+      if (nextScreen == null) {
+        current = this;
+        nextScreen = this.proto();
+      }
+    } else {
+      current = this;
+      nextScreen = this.proto();
+    }
 
-		return nextScreen;
-	};
+    if (nextScreen) {
+      current.leave();
+      nextScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-	this.prev = function () {
-		var current, prevScreen, buttonSound;
+    return nextScreen;
+  };
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+  this.prev = function () {
+    var current, prevScreen, buttonSound;
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			prevScreen = current.prev();
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-			if (prevScreen == null) {
-				current = this;
-				prevScreen = this.proto();
-			}
-		}
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      prevScreen = current.prev();
 
-		else {
-			current = this;
-			prevScreen = this.proto();
-		}
+      if (prevScreen == null) {
+        current = this;
+        prevScreen = this.proto();
+      }
+    } else {
+      current = this;
+      prevScreen = this.proto();
+    }
 
-		if (prevScreen) {
-			current.close();
-			prevScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+    if (prevScreen) {
+      current.close();
+      prevScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-		return prevScreen;
-	};
+    return prevScreen;
+  };
 
-	this.start = function () {
-		var entities = this.hasOwnProperty('entities') && this.entities;
+  this.start = function () {
+    var entities = this.hasOwnProperty('entities') && this.entities;
 
-		this.startAudio();
-		if (this.audio) this.audio.sfx.play('start');
+    this.startAudio();
+    if (this.audio) this.audio.sfx.play('start');
 
-		if (entities) {
-			entities.forEach(function (_entity) {
-				if (_entity.isMemberSafe('start')) _entity.start();
-			});
-		}
+    if (entities) {
+      entities.forEach(function (_entity) {
+        if (_entity.isMemberSafe('start')) _entity.start();
+      });
+    }
 
-		return this;
-	};
+    return this;
+  };
 
-	this.stop = function () {
-		var entities = this.hasOwnProperty('entities') && this.entities;
+  this.stop = function () {
+    var entities = this.hasOwnProperty('entities') && this.entities;
 
-		this.stopAudio();
-		this.kill('delay');
+    this.stopAudio();
+    this.kill('delay');
 
-		if (entities) {
-			entities.forEach(function (_entity) {
-				if (_entity.isMemberSafe('start')) _entity.stop();
-			});
-		}
+    if (entities) {
+      entities.forEach(function (_entity) {
+        if (_entity.isMemberSafe('start')) _entity.stop();
+      });
+    }
 
-		return this;
-	};
+    return this;
+  };
 
-	this.complete = function () {
-		this.game.audio.sfx.screenComplete.play();
-		return this.proto();
-	};
+  this.complete = function () {
+    this.game.audio.sfx.screenComplete.play();
+    return this.proto();
+  };
 
-	this.on('ui-open', function (_event) {
-		if (this.isReady && this.is(_event.target)) this.start();
+  this.on('ui-open', function (_event) {
+    if (this.isReady && this.is(_event.target)) this.start();
 
-		if(this.properties.gameClass) {
-			this.game.addClass(this.properties.gameClass);
-		}
+    if (this.properties.gameClass) {
+      this.game.addClass(this.properties.gameClass);
+    }
 
-		if(this.properties.sfx) {
-			var sfx = this.properties.sfx.split(" ");
-			for(var i = 0, n = sfx.length; i < n; i++) {
-				if(this.audio.sfx[sfx[i]]) this.playSound(this.audio.sfx[sfx[i]]);
-			}
-		}
-	});
+    if (this.properties.sfx) {
+      var sfx = this.properties.sfx.split(' ');
+      for (var i = 0, n = sfx.length; i < n; i++) {
+        if (this.audio.sfx[sfx[i]]) this.playSound(this.audio.sfx[sfx[i]]);
+      }
+    }
+  });
 
-	this.on('ui-leave ui-close', function (_event) {
-		if(this.properties.gameClass) {
-			this.game.removeClass(this.properties.gameClass);
-		}
+  this.on('ui-leave ui-close', function (_event) {
+    if (this.properties.gameClass) {
+      this.game.removeClass(this.properties.gameClass);
+    }
 
-		if (this.isReady && this.is(_event.target)) this.stop();
-	});
+    if (this.isReady && this.is(_event.target)) this.stop();
+  });
 
 });
