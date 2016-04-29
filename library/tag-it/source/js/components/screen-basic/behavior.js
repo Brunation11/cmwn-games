@@ -1,7 +1,7 @@
 pl.game.component('screen-basic', function () {
   this.currentVO = null;
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
   };
 
@@ -10,7 +10,7 @@ pl.game.component('screen-basic', function () {
 
     delay = $(_sound).attr('pl-delay');
 
-    if(_sound.type === 'voiceOver') {
+    if (_sound.type === 'voiceOver') {
       this.currentVO = _sound;
     }
 
@@ -62,20 +62,20 @@ pl.game.component('screen-basic', function () {
       this.game.bgSound = bgSound;
       bgSound.play();
     }
-    if(fxSound) fxSound.play();
-    if(voSound) this.playSound(voSound);
+    if (fxSound) fxSound.play();
+    if (voSound) this.playSound(voSound);
 
     if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
     return this;
   };
 
-  this.stop = function() {
-    if(this.timeoutID) {
+  this.stop = function () {
+    if (this.timeoutID) {
       clearTimeout(this.timeoutID);
     }
 
-    if(this.currentVO) {
+    if (this.currentVO) {
       this.currentVO.stop();
     }
   };
@@ -85,7 +85,7 @@ pl.game.component('screen-basic', function () {
       this.start();
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.addClass(this.properties.gameClass);
     }
 
@@ -93,13 +93,13 @@ pl.game.component('screen-basic', function () {
       this.complete();
     }
 
-    if(typeof this.properties.wallpaper != 'undefined') {
+    if (typeof this.properties.wallpaper != 'undefined') {
       this.game.changeWallpaper(this.properties.wallpaper);
     }
   });
 
   this.on('ui-leave', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -109,7 +109,7 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-close', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 

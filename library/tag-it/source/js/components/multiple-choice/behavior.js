@@ -1,6 +1,6 @@
 pl.game.component('multiple-choice', function () {
 
-  function validateAnswer (_scope) {
+  function validateAnswer(_scope) {
     var answers;
 
     if (_scope.properties.correct) {

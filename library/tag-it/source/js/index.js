@@ -28,58 +28,58 @@ pl.game('tag-it', function () {
 
   var audioClasses, audioScreens, k;
 
-  this.changeWallpaper = function(wallpaper) {
+  this.changeWallpaper = function (wallpaper) {
     this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
   };
 
-  audioClasses = function() {
-    var classes = "";
+  audioClasses = function () {
+    var classes = '';
 
-    this.on('audio-play', function(_event) {
+    this.on('audio-play', function (_event) {
       var id = _event.target.$el[0].id;
       id = id ? id.toUpperCase() : false;
-      classes += id + " ";
+      classes += id + ' ';
       this.addClass(id);
     });
 
-    this.on('ui-close', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ui-close', function (_event) {
+      if (!this.is(_event.target)) return;
       this.removeClass(classes);
-      classes = "";
+      classes = '';
     });
   };
 
   audioScreens = ['step-1', 'step-2', 'what-need'];
 
-  for(k in audioScreens) {
+  for (k in audioScreens) {
     this.screen(audioScreens[k], audioClasses);
   }
 
-  this.screen('what-faucet', function() {
+  this.screen('what-faucet', function () {
     audioClasses.call(this);
 
-    this.respond('select', function(_event) {
+    this.respond('select', function (_event) {
       this.playSound(this.audio.sfx);
       this.select(_event.behaviorTarget);
     });
   });
 
-  this.screen('tips', function() {
-    var classes = "";
+  this.screen('tips', function () {
+    var classes = '';
 
-    this.on('audio-play', function(_event) {
+    this.on('audio-play', function (_event) {
       var id = _event.target.$el[0].id;
-      if(id === 'answer') return;
+      if (id === 'answer') return;
       id = id ? id.toUpperCase() : false;
-      classes += id + " ";
+      classes += id + ' ';
       this.addClass(id);
-      if(id) this.playSound(this.audio.sfx.answer);
+      if (id) this.playSound(this.audio.sfx.answer);
     });
 
-    this.on('ui-close', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ui-close', function (_event) {
+      if (!this.is(_event.target)) return;
       this.removeClass(classes);
-      classes = "";
+      classes = '';
     });
   });
 
@@ -104,30 +104,30 @@ pl.game('tag-it', function () {
     };
   });
 
-  this.screen('quit', function() {
+  this.screen('quit', function () {
     var ctx;
 
-    this.on('ready', function(_e) {
-      if(!this.is(_e.target)) return;
+    this.on('ready', function (_e) {
+      if (!this.is(_e.target)) return;
 
       ctx = new (window.AudioContext || window.webkitAudioContext);
       this.audio.voiceOver.sure.setContext(ctx);
       this.audio.sfx.button.setContext(ctx);
     });
 
-    this.on('ui-open' , function() {
+    this.on('ui-open', function () {
       var vo;
 
       vo = this.audio.voiceOver.sure;
-      if(vo) vo.play();
+      if (vo) vo.play();
     });
   });
 
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

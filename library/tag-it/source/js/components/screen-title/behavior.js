@@ -5,7 +5,7 @@ pl.game.component('screen-title', function () {
 
     delay = $(_sound).attr('pl-delay');
 
-    if($(_sound).hasClass('voice-over')) {
+    if ($(_sound).hasClass('voice-over')) {
       this.currentVO = _sound;
     }
 
@@ -17,9 +17,9 @@ pl.game.component('screen-title', function () {
   };
 
   this.on('ready', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
 
-    if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+    if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', this.bind(function () {
@@ -38,7 +38,7 @@ pl.game.component('screen-title', function () {
   this.on('ui-open', function () {
     var so, delay = this.properties.delay;
 
-    if(typeof this.properties.wallpaper != 'undefined') {
+    if (typeof this.properties.wallpaper != 'undefined') {
       this.game.changeWallpaper(this.properties.wallpaper);
     }
 
@@ -49,10 +49,10 @@ pl.game.component('screen-title', function () {
     return this;
   });
 
-  this.on('ui-close', function(_event) {
-    if(!this.is(_event.target)) return;
-    this.on('transitionend', function(_event) {
-      if(!this.is(_event.target)) return;
+  this.on('ui-close', function (_event) {
+    if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_event) {
+      if (!this.is(_event.target)) return;
     });
   });
 
