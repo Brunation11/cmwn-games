@@ -42,7 +42,7 @@ pl.game('twirl-n-swirl', function () {
     /**
      * @override
      */
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');

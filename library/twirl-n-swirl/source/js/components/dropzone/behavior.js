@@ -49,9 +49,7 @@ pl.game.component('dropzone', function () {
           if (sfx.correct) sfx.correct.play();
 
           return;
-        }
-
-        else if (sfx.incorrect) {
+        } else if (sfx.incorrect) {
           sfx.incorrect.play();
         }
 
@@ -78,8 +76,9 @@ pl.game.component('dropzone', function () {
     return arguments.length ? !!~takes.indexOf(_id) : takes;
   };
 
-  this.isPointInBounds = function (_point, _y) {
-    var point, scale;
+  // expected arguments are _point and _y
+  this.isPointInBounds = function () {
+    var point;
 
     point = pl.Point.create(arguments);
 
@@ -92,9 +91,9 @@ pl.game.component('dropzone', function () {
     return false;
   };
 
-  this.isBoxInBounds = function (_point, _size) {
-    // comming soon!
-  };
+  // this.isBoxInBounds = function (_point, _size) {
+  //   // comming soon!
+  // };
 
   this.behavior('drop', function (_$thing) {
     var sfx = pl.util.resolvePath(this, 'audio.sfx.drop');

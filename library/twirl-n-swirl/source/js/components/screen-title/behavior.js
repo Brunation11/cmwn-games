@@ -26,8 +26,8 @@ pl.game.component('screen-title', function () {
 
   this.on('ui-close', function (_event) {
     if (!this.is(_event.target)) return;
-    this.on('transitionend', function (_event) {
-      if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_e) {
+      if (!this.is(_e.target)) return;
       this.logo.removeClass(this.properties.animOut)
         .off('animationend');
       this.off('transitionend');
@@ -35,7 +35,7 @@ pl.game.component('screen-title', function () {
   });
 
   this.start = function () {
-    var bgSound, voSound;
+    var bgSound, voSound, fxSound;
 
     bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');

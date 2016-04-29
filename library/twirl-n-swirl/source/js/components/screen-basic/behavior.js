@@ -62,7 +62,7 @@ pl.game.component('screen-basic', function () {
   };
 
   this.start = function () {
-    var bgSound, voSound;
+    var bgSound, voSound, fxSound;
 
     bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');

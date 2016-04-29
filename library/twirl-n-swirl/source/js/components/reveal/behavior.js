@@ -16,9 +16,7 @@ pl.game.component('reveal', function () {
       this.select(this.items[_id]);
       this.audio.voiceOver[_id].play();
       this.currentAudio = this.audio.voiceOver[_id];
-    }
-
-    else if (typeof _id === 'string') {
+    } else if (typeof _id === 'string') {
       if (this[_id]) {
         this.select(this[_id]);
 
