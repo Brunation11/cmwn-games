@@ -1,15 +1,15 @@
 pl.game.component('screen-basic', function () {
 
-  this.playSound = function(_sound) {
+  this.playSound = function (_sound) {
     var delay, $sound;
 
-    if(!_sound) return;
+    if (!_sound) return;
 
     $sound = $(_sound);
     delay = $sound.attr('pl-delay');
-    if(_sound.type === 'voiceOver') {
+    if (_sound.type === 'voiceOver') {
       this.currentVO = _sound;
-    } else if(_sound.type === 'sfx') {
+    } else if (_sound.type === 'sfx') {
       this.currentSFX = _sound;
     }
 
@@ -21,13 +21,14 @@ pl.game.component('screen-basic', function () {
   };
 
   this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
     if (this.audio) {
-      this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config("dontautoplay"));
+      this.audio.rule('.voiceOver', 'shouldPlay', function (_e) {
+        _e.response(!_e.target.config('dontautoplay'));
       });
     }
 
-    if(this.state(this.STATE.OPEN)) this.start();
+    if (this.state(this.STATE.OPEN)) this.start();
   });
 
   this.next = function () {
@@ -100,19 +101,19 @@ pl.game.component('screen-basic', function () {
 
   this.stopAudio = function () {
     if (!this.audio) return;
-    if(this.currentVO) this.currentVO.stop();
-    if(this.currentSFX) this.currentSFX.stop();
+    if (this.currentVO) this.currentVO.stop();
+    if (this.currentSFX) this.currentSFX.stop();
   };
 
   this.on('ui-open', function (_event) {
     if (this.isReady && this === _event.targetScope) {
-      this.on('transitionend', function() {
+      this.on('transitionend', function () {
         this.start();
         this.off('transitionend');
       }.bind(this));
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.addClass(this.properties.gameClass);
     }
 
@@ -122,7 +123,7 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-leave', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -132,7 +133,7 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-close', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 

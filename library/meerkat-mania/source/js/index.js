@@ -26,10 +26,10 @@ pl.game('meerkat-mania', function () {
       }
     });
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.startAudio = function () {
@@ -56,12 +56,12 @@ pl.game('meerkat-mania', function () {
       }
     });
 
-    this.respond('closeAll', function(didClose) {
-      if(didClose) this.selectableCanvas.deactivateAll();
+    this.respond('closeAll', function (didClose) {
+      if (didClose) this.selectableCanvas.deactivateAll();
     });
 
-    this.entity('selectable-canvas', function() {
-      this.start = function() {
+    this.entity('selectable-canvas', function () {
+      this.start = function () {
         this.ready();
         this.deactivateAll();
         this.unhighlightAll();
@@ -70,16 +70,16 @@ pl.game('meerkat-mania', function () {
     });
   });
 
-  this.screen('video', function() {
-    this.on('ui-open', function() {
-      setTimeout(function() {
+  this.screen('video', function () {
+    this.on('ui-open', function () {
+      setTimeout(function () {
         this.video.start();
       }.bind(this), 250);
     });
 
-    this.on("ui-close", function() {
+    this.on('ui-close', function () {
       this.video.pause();
-      if(this.game.bgSound) this.game.bgSound.play();
+      if (this.game.bgSound) this.game.bgSound.play();
     });
   });
 
@@ -88,7 +88,7 @@ pl.game('meerkat-mania', function () {
     this.on('ready', function (_event) {
       if (!this.is(_event.target)) return;
 
-      this.selectable.audio.voiceOver.on('ended', function (_ended) {
+      this.selectable.audio.voiceOver.on('ended', function () {
         this.complete();
       }.bind(this.selectable));
     });
@@ -115,14 +115,14 @@ pl.game('meerkat-mania', function () {
       this.game.quit.okay();
     };
 
-    this.on('ui-open', function() {
-      this.delay('4.5s', function() {
-        if(this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
+    this.on('ui-open', function () {
+      this.delay('4.5s', function () {
+        if (this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
       });
     });
 
-    this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -142,8 +142,8 @@ pl.game('meerkat-mania', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

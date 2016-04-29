@@ -6,7 +6,7 @@ pl.game.component('selectable-canvas', function () {
     CORRECT: '[pl-correct]',
     INCORRECT: '[pl-incorrect]'
   };
-  
+
   this.buffer = null;
   this.bctx = null;
   this.items = null;
@@ -50,26 +50,28 @@ pl.game.component('selectable-canvas', function () {
   };
 
   this.isImageTarget = function (_$image, _point, _offset, _scale) {
-    var offset = _$image.offset();
+    var offset, pixel;
+
+    offset = _$image.offset();
 
     this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-    this.bctx.drawImage(_$image[0], offset.left/_scale - _offset[0], offset.top/_scale - _offset[1], _$image.width(), _$image.height());
-    pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+    this.bctx.drawImage(_$image[0], offset.left / _scale - _offset[0], offset.top / _scale - _offset[1], _$image.width(), _$image.height());
+    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
     this.bctx.fillStyle = 'white';
-    this.bctx.fillRect(_point.x, _point.y, 5,5);
+    this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
     // opaque pixel
     return pixel.data[3] > 0;
   };
 
-  this.behavior('select', function (_cursor) {
+  this.behavior('select', function () {
     var offset, cursor, scale, returnValue = false;
 
     scale = this.game.transformScale().x;
-    offset = this.$els.absolutePosition().scale(1/scale);
+    offset = this.$els.absolutePosition().scale(1 / scale);
     cursor = this.event.cursor
-      .scale(1/this.game.zoom)
+      .scale(1 / this.game.zoom)
       .dec(offset)
       .math('floor');
 
@@ -88,12 +90,12 @@ pl.game.component('selectable-canvas', function () {
     return returnValue;
   });
 
-  this.deactivateAll = function() {
+  this.deactivateAll = function () {
     this.deactivate(this.getActive());
-  }
+  };
 
-  this.unhighlightAll = function() {
+  this.unhighlightAll = function () {
     this.unhighlight(this.getHighlighted());
-  }
+  };
 
 });
