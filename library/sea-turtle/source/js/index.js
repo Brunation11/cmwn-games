@@ -5,16 +5,16 @@ import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
 import '../../../shared/js/screen-ios-splash';
+import './components/dropzone/behavior';
+import './components/frame/behavior';
+import './components/multiple-choice/behavior';
+import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/video/behavior';
-import './components/frame/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
 import './components/selectable-all/behavior';
 import './components/selectable-remove/behavior';
-import './components/dropzone/behavior';
+import './components/title/behavior';
+import './components/video/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
