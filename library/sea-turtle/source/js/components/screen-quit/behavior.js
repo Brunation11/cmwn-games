@@ -1,31 +1,31 @@
 pl.game.component('screen-quit', function () {
 
-	// TODO: Make an automated way to handle this
-	this.on('transitionend', function (_event) {
-		if (this.state(this.STATE.LEAVE)) {
-			this.addClass('LEAVE-END');	
-		}
-	});
-	
-	this.on('ui-open', function (_event) {
-		this.game.addClass('QUIT-SCREEN');
-		this.removeClass('LEAVE-END');
-		this.game.pause(true);
-	});
+  // TODO: Make an automated way to handle this
+  this.on('transitionend', function (_event) {
+    if (this.state(this.STATE.LEAVE)) {
+      this.addClass('LEAVE-END');  
+    }
+  });
+  
+  this.on('ui-open', function (_event) {
+    this.game.addClass('QUIT-SCREEN');
+    this.removeClass('LEAVE-END');
+    this.game.pause(true);
+  });
 
-	this.on('ui-leave', function () {
-		this.game.removeClass('QUIT-SCREEN');
-		this.game.resume();
-	});
-	
-	this.okay = function () {
-		this.screen.audio.sfx.play();
-		this.game.exit();
-	};
+  this.on('ui-leave', function () {
+    this.game.removeClass('QUIT-SCREEN');
+    this.game.resume();
+  });
+  
+  this.okay = function () {
+    this.screen.audio.sfx.play();
+    this.game.exit();
+  };
 
-	this.cancel = function () {
-		this.screen.audio.sfx.play();
-		this.leave();
-	};
+  this.cancel = function () {
+    this.screen.audio.sfx.play();
+    this.leave();
+  };
 
 });

@@ -1,45 +1,45 @@
 pl.game.component('reveal', function () {
-	
-	this.items = null;
+  
+  this.items = null;
 
-	this.on('ready', function () {
-		this.items = this.findOwn('li')
-	});
+  this.on('ready', function () {
+    this.items = this.findOwn('li')
+  });
 
-	this.start = () => {};
+  this.start = () => {};
 
-	this.item = function (_id) {
-		var vo, index;
+  this.item = function (_id) {
+    var vo, index;
 
-		if (this.shouldRevealItem(_id) === false) return false;
+    if (this.shouldRevealItem(_id) === false) return false;
 
-		if (typeof _id === 'number') {
-			this.select(this.items[_id]);
-			this.audio.voiceOver[_id].play();
-		} else if (typeof _id === 'string') {
-			if (this[_id]) {
-				this.select(this[_id]);
+    if (typeof _id === 'number') {
+      this.select(this.items[_id]);
+      this.audio.voiceOver[_id].play();
+    } else if (typeof _id === 'string') {
+      if (this[_id]) {
+        this.select(this[_id]);
 
-				if (this.audio) {
-					index = this[_id].index();
-					vo = this.audio.voiceOver[_id] || this.audio.voiceOver[index];
+        if (this.audio) {
+          index = this[_id].index();
+          vo = this.audio.voiceOver[_id] || this.audio.voiceOver[index];
 
-					if (vo) vo.play();
-				}
-			}
-		}
+          if (vo) vo.play();
+        }
+      }
+    }
 
-		return this;
-	};
+    return this;
+  };
 
-	this.shouldRevealItem = function (_id) {
-		return !!this.items[_id] || !!this[_id];
-	};
+  this.shouldRevealItem = function (_id) {
+    return !!this.items[_id] || !!this[_id];
+  };
 
-	this.deselectTarget = function(_$target) {
-		if(!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
-			this.deselect(_$target);
-		}
-	};
+  this.deselectTarget = function(_$target) {
+    if(!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
+      this.deselect(_$target);
+    }
+  };
 
 });
