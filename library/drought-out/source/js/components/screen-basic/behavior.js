@@ -45,8 +45,8 @@ pl.game.component('screen-basic', function () {
     return this;
   };
 
-  this.stop = function() {
-    if(this.timeoutID) {
+  this.stop = function () {
+    if (this.timeoutID) {
       clearTimeout(this.timeoutID);
     }
     return this.proto();
@@ -57,7 +57,7 @@ pl.game.component('screen-basic', function () {
       this.start();
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.addClass(this.properties.gameClass);
     }
 
@@ -67,7 +67,7 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-leave', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -77,7 +77,7 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-close', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -96,6 +96,6 @@ pl.game.component('screen-basic', function () {
   };
 
   this.on('ready', function () {
-    if(this.state(this.STATE.OPEN)) this.start();
+    if (this.state(this.STATE.OPEN)) this.start();
   });
 });

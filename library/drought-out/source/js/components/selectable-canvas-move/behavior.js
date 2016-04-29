@@ -33,7 +33,7 @@ pl.game.component('selectable-canvas-move', function () {
       this.position = pl.Point.create();
       this.backgroundSize = [200, 200].to('size');
       this.size = [360, 460].to('size');
- 
+
       return this;
     };
 
@@ -43,20 +43,20 @@ pl.game.component('selectable-canvas-move', function () {
       };
     };
 
-    this.hover = function() {
-      if(!this.selected) this.left = this.image.naturalWidth / 3;
+    this.hover = function () {
+      if (!this.selected) this.left = this.image.naturalWidth / 3;
     };
 
-    this.unhover = function() {
-      if(!this.selected) this.left = 0;
+    this.unhover = function () {
+      if (!this.selected) this.left = 0;
     };
 
-    this.select = function() {
+    this.select = function () {
       this.selected = true;
       this.left = this.image.naturalWidth * 2 / 3;
     };
 
-    this.deselect = function() {
+    this.deselect = function () {
       this.selected = false;
       this.left = 0;
     };
@@ -67,11 +67,11 @@ pl.game.component('selectable-canvas-move', function () {
 
     this.id = function () {
       return this.$image.id();
-    }
+    };
   });
 
   canvas = {
-    
+
     ctx: null,
     node: null,
     content: null,
@@ -93,13 +93,13 @@ pl.game.component('selectable-canvas-move', function () {
 
       this.ctx.scale(_scale, _scale);
 
-      this.node.onmousemove = function(_e) {
+      this.node.onmousemove = function (_e) {
         var offset, cursor, scale;
 
         scale = self.game.transformScale().x;
-        offset = self.$els.absolutePosition().scale(1/scale);
-        cursor = pl.Point.create().set(_e.x,_e.y)
-          .scale(scale/self.game.zoom)
+        offset = self.$els.absolutePosition().scale(1 / scale);
+        cursor = pl.Point.create().set(_e.x, _e.y)
+          .scale(scale / self.game.zoom)
           .dec(offset)
           .math('floor');
 
@@ -128,7 +128,7 @@ pl.game.component('selectable-canvas-move', function () {
     },
 
     clear: function () {
-      this.ctx.clearRect(0,0, this.node.width/this.scale, this.node.height/this.scale);
+      this.ctx.clearRect(0, 0, this.node.width / this.scale, this.node.height / this.scale);
     },
 
     draw: function (_obj) {
@@ -218,10 +218,10 @@ pl.game.component('selectable-canvas-move', function () {
   this.isImageTarget = function (_item, _point) {
     this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
     this.bctx.drawImage(_item.image, 0, _item.image.getAttribute('top') * _item.image.naturalHeight / 15, _item.size.width, _item.size.height, _item.position.x, _item.position.y, _item.backgroundSize.width, _item.backgroundSize.height);
-    pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
     this.bctx.fillStyle = 'white';
-    this.bctx.fillRect(_point.x, _point.y, 5,5);
+    this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
     // opaque pixel
     return pixel.data[3] > 0;
@@ -231,14 +231,14 @@ pl.game.component('selectable-canvas-move', function () {
     var offset, cursor, scale, returnValue = false;
 
     scale = this.game.transformScale().x;
-    offset = this.$els.absolutePosition().scale(1/scale);
+    offset = this.$els.absolutePosition().scale(1 / scale);
     cursor = this.event.cursor
-      .scale(scale/this.game.zoom)
+      .scale(scale / this.game.zoom)
       .dec(offset)
       .math('floor');
 
     this.reverseItems.every(function (_item) {
-      if(self.isImageTarget(_item, cursor)) {
+      if (self.isImageTarget(_item, cursor)) {
         _item.select();
         returnValue = {
           message: _item.$image.id(),

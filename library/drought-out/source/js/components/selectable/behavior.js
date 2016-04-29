@@ -12,7 +12,7 @@ pl.game.component('selectable', function () {
           message,
           behaviorTarget: $target
         };
-      }  
+      }
     }
 
     else {

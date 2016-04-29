@@ -1,5 +1,5 @@
 pl.game.component('selectable-reveal', function () {
-  
+
   this.respond('select', function (_event) {
     var index, stateMethod;
 
@@ -13,13 +13,13 @@ pl.game.component('selectable-reveal', function () {
   });
 
   this.entity('selectable', function () {
-    
+
     this.shouldSelect = function (_$target) {
       if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
         return !this.screen.state(this.STATE.VOICE_OVER);
       }
 
-      return false; 
+      return false;
     };
 
   });
