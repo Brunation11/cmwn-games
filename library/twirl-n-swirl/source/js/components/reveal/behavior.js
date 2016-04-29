@@ -1,10 +1,10 @@
 pl.game.component('reveal', function () {
-  
+
   this.items = null;
   this.currentAudio = null;
 
   this.on('ready', function () {
-    this.items = this.findOwn('li')
+    this.items = this.findOwn('li');
   });
 
   this.item = function (_id) {
@@ -17,7 +17,7 @@ pl.game.component('reveal', function () {
       this.audio.voiceOver[_id].play();
       this.currentAudio = this.audio.voiceOver[_id];
     }
-      
+
     else if (typeof _id === 'string') {
       if (this[_id]) {
         this.select(this[_id]);
@@ -30,7 +30,7 @@ pl.game.component('reveal', function () {
         this.select(_id);
 
         index = this.findOwn(_id).index();
-        vo = pl.util.resolvePath(this, 'audio.voiceOver['+index+']');
+        vo = pl.util.resolvePath(this, 'audio.voiceOver[' + index + ']');
       }
 
       if (vo) (this.currentAudio = vo).play();

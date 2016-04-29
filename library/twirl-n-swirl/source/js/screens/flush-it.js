@@ -1,7 +1,7 @@
 /**
  * Twirl n Swirl - Toilet Flush Game
  */
-export default function flushIt () {
+export default function flushIt() {
   /**
    * Adds behavior to the bins with draggable items.
    * We add a native event listener so we can handle
@@ -43,8 +43,8 @@ export default function flushIt () {
       if (so) so.play();
 
       this.screen.enable('.draggables');
-      this.disable($('.draggables [pl-id='+this.find('li.SELECTED').id()+']'));
-      
+      this.disable($('.draggables [pl-id=' + this.find('li.SELECTED').id() + ']'));
+
       return this.sup();
     };
     /**
@@ -71,7 +71,7 @@ export default function flushIt () {
     var id = _event.behaviorTarget.id();
 
     this.toilet.addClass('FLUSH').reveal.item(id).find('.FLUSH').removeClass('FLUSH');
-    $('.draggables [pl-id='+id+']').addClass('TOILET');
+    $('.draggables [pl-id=' + id + ']').addClass('TOILET');
     this.disable('.draggables');
   });
   /**
@@ -89,27 +89,27 @@ export default function flushIt () {
     var current = this.reveal.currentItem();
 
     this.game.audio.sfx.flush.play();
-    
+
     if (!current) return;
 
     this.toilet.removeClass('FLUSH');
     current.addClass('FLUSH');
 
     this.game.audio.sfx.flush.off('ended').on('ended', function () {
-      if(this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
+      if (this.screen.state(this.screen.STATE.OPEN)) this.modalReveal.item(current.id());
     }.bind(this));
   };
 
-  this.on('ui-close', function() {
+  this.on('ui-close', function () {
     this.game.audio.sfx.flush.off('ended');
   });
 
-  this.on('ui-open', function(_event) {
-    if(!this.is(_event.target)) return;
+  this.on('ui-open', function (_event) {
+    if (!this.is(_event.target)) return;
     this.find('.TOILET').removeClass('TOILET');
     this.deselect(this.toilet.reveal.find('.SELECTED'));
 
-    if(this.isComplete) this.find('.DISABLED').removeClass('DISABLED');
+    if (this.isComplete) this.find('.DISABLED').removeClass('DISABLED');
   });
 
 }

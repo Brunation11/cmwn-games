@@ -1,4 +1,4 @@
-export default function infoQuestion () {
+export default function infoQuestion() {
   /**
    * Plays the flush sound with a delay.
    * I may want move this to the screen component.

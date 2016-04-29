@@ -1,18 +1,18 @@
 pl.game.component('dropzone', function () {
 
-  function deQ (_id) {
+  function deQ(_id) {
     if (this.requiredQueue && this.isMemberSafe('requiredQueue') && this.requiredQueue.has(_id)) {
       return this.requiredQueue.ready(_id);
     }
   }
-    
+
   this.entity('.area', function () {
-    
+
     this.cache = null;
 
     this.respond('grab', function () {
       var sfx = this.audio.sfx.drag;
-      
+
       if (sfx) sfx.play();
 
       this.cache = {
@@ -30,11 +30,11 @@ pl.game.component('dropzone', function () {
         drop: this.audio.sfx.drop
       };
 
-      if((scale = this.game.transformScale().x) !== 1) {
+      if ((scale = this.game.transformScale().x) !== 1) {
         point = [
-              _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-              _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-            ];
+          _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+          _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+        ];
       } else {
         point = _event.state.progress.point;
       }
@@ -43,11 +43,11 @@ pl.game.component('dropzone', function () {
         if (this.takes(_event.state.$draggable.id())) {
           _event.state.$draggable.removeClass('PLUCKED');
           _event.state.$helper.addClass('DROPED');
-          
+
           this.drop(_event.state.$draggable);
-          
+
           if (sfx.correct) sfx.correct.play();
-          
+
           return;
         }
 
@@ -83,8 +83,8 @@ pl.game.component('dropzone', function () {
 
     point = pl.Point.create(arguments);
 
-    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
         return true;
       }
     }
@@ -98,11 +98,11 @@ pl.game.component('dropzone', function () {
 
   this.behavior('drop', function (_$thing) {
     var sfx = pl.util.resolvePath(this, 'audio.sfx.drop');
-      
+
     if (sfx) sfx.play();
 
     deQ.call(this, _$thing.id());
-    
+
     return {
       behaviorTarget: _$thing
     };

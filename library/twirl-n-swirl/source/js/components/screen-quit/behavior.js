@@ -1,9 +1,9 @@
 pl.game.component('screen-quit', function () {
 
-  function playButtonSFX (_direction) {
+  function playButtonSFX(_direction) {
     var so;
 
-    if (_direction === "next") {
+    if (_direction === 'next') {
       so = pl.util.resolvePath(this, 'audio.sfx.nextScreen');
     }
 
@@ -16,10 +16,10 @@ pl.game.component('screen-quit', function () {
   // TODO: Make an automated way to handle this
   this.on('transitionend', function (_event) {
     if (this.state(this.STATE.LEAVE)) {
-      this.addClass('LEAVE-END');  
+      this.addClass('LEAVE-END');
     }
   });
-  
+
   this.on('ui-open', function (_event) {
     this.game.addClass('QUIT-SCREEN');
     this.removeClass('LEAVE-END');
@@ -30,7 +30,7 @@ pl.game.component('screen-quit', function () {
     this.game.removeClass('QUIT-SCREEN');
     this.game.resume();
   });
-  
+
   this.okay = function () {
     playButtonSFX.call(this);
     this.game.exit();

@@ -1,9 +1,9 @@
 pl.game.component('screen-title', function () {
 
-  this.on('ready', function(_event) {
-    if(!this.is(_event.target)) return;
+  this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
 
-    if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+    if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
   });
 
   /**
@@ -20,14 +20,14 @@ pl.game.component('screen-title', function () {
 
     this.start();
     this.game.setWallpaper(this.properties.wallpaper);
-    
+
     return this;
   });
 
-  this.on('ui-close', function(_event) {
-    if(!this.is(_event.target)) return;
-    this.on('transitionend', function(_event) {
-      if(!this.is(_event.target)) return;
+  this.on('ui-close', function (_event) {
+    if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_event) {
+      if (!this.is(_event.target)) return;
       this.logo.removeClass(this.properties.animOut)
         .off('animationend');
       this.off('transitionend');
@@ -41,19 +41,19 @@ pl.game.component('screen-title', function () {
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
     fxSound = pl.util.resolvePath(this, 'audio.sfx.start');
 
-    if(bgSound) bgSound.play();
-    if(fxSound) fxSound.play();
-    if(voSound) voSound.play();
+    if (bgSound) bgSound.play();
+    if (fxSound) fxSound.play();
+    if (voSound) voSound.play();
 
-    if(this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+    if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
     return this;
   };
 
   this.next = function () {
     var nextScreen, so, animate;
-    
-    function leave () {
+
+    function leave() {
       this.screen.leave();
       nextScreen.open();
     }
@@ -74,7 +74,7 @@ pl.game.component('screen-title', function () {
       } else {
         leave.call(this);
       }
-        
+
       if (so) so.play();
     }
 
