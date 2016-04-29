@@ -1,27 +1,29 @@
 pl.game.component('multiple-choice', function () {
 
-	this.validateAnswer = function () {
-		var answers;
+  this.validateAnswer = function () {
+    var answers;
 
-		if (this.properties.correct) {
-			answers = this.properties.correct.split(/\s*,\s*/);
+    if (this.properties.correct) {
+      answers = this.properties.correct.split(/\s*,\s*/);
 
-			if (~answers.indexOf(String(this.getSelected().id()))) {
-				this.complete();
-			}
-		}
+      if (~answers.indexOf(String(this.getSelected().id()))) {
+        this.complete();
+      }
+    }
 
-		return false;
-	}
+    return false;
+  };
 
-	this.answer = function () {
-		if (this.event) {
-			$li = $(this.event.target).closest('li');
+  this.answer = function () {
+    var $li;
 
-			if (this.select($li)) {
-				this.validateAnswer();
-			}
-		}
-	};
+    if (this.event) {
+      $li = $(this.event.target).closest('li');
+
+      if (this.select($li)) {
+        this.validateAnswer();
+      }
+    }
+  };
 
 });
