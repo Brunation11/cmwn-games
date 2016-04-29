@@ -52,7 +52,7 @@ pl.game.component('screen-basic', function () {
   };
 
   this.start = function () {
-    var bgSound, voSound;
+    var bgSound, voSound, fxSound;
 
     bgSound = pl.util.resolvePath(this, 'audio.background[0]?');
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
@@ -93,7 +93,7 @@ pl.game.component('screen-basic', function () {
       this.complete();
     }
 
-    if (typeof this.properties.wallpaper != 'undefined') {
+    if (typeof this.properties.wallpaper !== 'undefined') {
       this.game.changeWallpaper(this.properties.wallpaper);
     }
   });
@@ -118,7 +118,7 @@ pl.game.component('screen-basic', function () {
     }
   });
 
-  this.on('ready', function (_event) {
+  this.on('ready', function () {
     if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
       this.requiredQueue.on('complete', this.bind(function () {
         var sfx;

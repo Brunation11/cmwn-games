@@ -36,9 +36,9 @@ pl.game.component('screen-title', function () {
    * Start the title screen logo animation when the screen opens.
    */
   this.on('ui-open', function () {
-    var so, delay = this.properties.delay;
+    var so;
 
-    if (typeof this.properties.wallpaper != 'undefined') {
+    if (typeof this.properties.wallpaper !== 'undefined') {
       this.game.changeWallpaper(this.properties.wallpaper);
     }
 
@@ -51,8 +51,8 @@ pl.game.component('screen-title', function () {
 
   this.on('ui-close', function (_event) {
     if (!this.is(_event.target)) return;
-    this.on('transitionend', function (_event) {
-      if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_e) {
+      if (!this.is(_e.target)) return;
     });
   });
 

@@ -13,9 +13,7 @@ pl.game.component('slides', function () {
 
     if (current) {
       current.start();
-    }
-
-    else if (this.slides.length) {
+    } else if (this.slides.length) {
       this.slides[0].open();
       for (i = 1, n = this.slides.length; i < n; i++) {
         this.slides[i] && this.slides[i].close();
@@ -70,9 +68,7 @@ pl.game.component('slides', function () {
       if (buttonSound) buttonSound.play();
 
       return prevSlide;
-    }
-
-    else {
+    } else {
       return this.proto();
     }
   };

@@ -6,7 +6,7 @@ pl.game.component('audio-sequence', function () {
 
     sounds = this.find('> audio').toArray();
 
-    this.audio.on('ended', function (_event) {
+    this.audio.on('ended', function () {
       var next = sounds[i++];
       if (next && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound($(next).data('context'));
     }.bind(this));
