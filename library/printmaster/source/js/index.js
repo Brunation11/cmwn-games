@@ -9,19 +9,19 @@ import identify from './screens/identify';
 import carousel from './screens/carousel';
 
 import '../../../shared/js/screen-ios-splash';
+import './components/audio-sequence/behavior';
+import './components/cannon/behavior';
+import './components/carousel/behavior';
+import './components/frame/behavior';
+import './components/modal/behavior';
+import './components/multiple-choice/behavior';
+import './components/reveal/behavior';
+import './components/score/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/frame/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
-import './components/audio-sequence/behavior';
-import './components/modal/behavior';
-import './components/carousel/behavior';
-import './components/cannon/behavior';
+import './components/selectable/behavior';
+import './components/title/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
@@ -141,6 +141,11 @@ pl.game('printmaster', function () {
     eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
+
+    pl.game.trigger($.Event('platform-event', {
+      name: 'flip',
+      gameData: {id: this.game.id()}
+    }));
 
     return this.proto();
   };
