@@ -1,70 +1,70 @@
 pl.game.component('selectable-remove', function () {
-	
-	this.behavior('select', function (_target) {
-		var $target;
-		$target = $(this.event.target).closest('li');
 
-		if (this.event && !_target && !$target.hasClass(this.STATE.HIGHLIGHTED)) {
+  this.behavior('select', function (_target) {
+    var $target;
+    $target = $(this.event.target).closest('li');
 
-			if (this.shouldSelect($target) !== false) {
-				$target.is('li') && this.audio.sfx.correct.play();
-				return {
-					message: $target.attr('class'),
-					behaviorTarget: $target
-				};
-			} else {
-				this.audio.sfx.incorrect.play();
-			}
-		}
+    if (this.event && !_target && !$target.hasClass(this.STATE.HIGHLIGHTED)) {
 
-		return false;
-	});
+      if (this.shouldSelect($target) !== false) {
+        $target.is('li') && this.audio.sfx.correct.play();
+        return {
+          message: $target.attr('class'),
+          behaviorTarget: $target
+        };
+      } else {
+        this.audio.sfx.incorrect.play();
+      }
+    }
 
-	this.respond('select', function (_event) {
-		var index, stateMethod;
+    return false;
+  });
 
-		index = _event.message;
-		stateMethod = this.properties.selectState || 'select';
+  this.respond('select', function (_event) {
+    var index, stateMethod;
 
-		if (index) {
-			this[stateMethod](_event.behaviorTarget);
-			this.items.correct.ready(index);
-		}
-	});
+    index = _event.message;
+    stateMethod = this.properties.selectState || 'select';
 
-	this.shouldSelect = function (_target) {
-		var $target = $(_target);
-		if (!$target.is('[pl-incorrect]')) {
-			return !this.screen.state(this.STATE.VOICE_OVER);
-		}
+    if (index) {
+      this[stateMethod](_event.behaviorTarget);
+      this.items.correct.ready(index);
+    }
+  });
 
-		return false;
-	};
+  this.shouldSelect = function (_target) {
+    var $target = $(_target);
+    if (!$target.is('[pl-incorrect]')) {
+      return !this.screen.state(this.STATE.VOICE_OVER);
+    }
 
-	this.start = function() {
-		var correct = pl.Queue.create();
+    return false;
+  };
 
-		correct.on('complete', this.bind(function () {
-			this.complete();
-		}));
+  this.start = function () {
+    var correct = pl.Queue.create();
 
-		this.items = this
-			.find('.items li:not([pl-incorrect])')
-			.map(function (_index, _node) {
-				correct.add(_node.className);
-				return _node;
-			})
-			.toArray();
+    correct.on('complete', this.bind(function () {
+      this.complete();
+    }));
 
-		this.items.correct = correct;
-	};
+    this.items = this
+      .find('.items li:not([pl-incorrect])')
+      .map(function (_index, _node) {
+        correct.add(_node.className);
+        return _node;
+      })
+      .toArray();
 
-	this.ready = function () {
-		var $net = $('.selectable-remove-component .net');
+    this.items.correct = correct;
+  };
 
-		this.mousemove(this.bind(function(e){
-			$net.css({left: e.clientX / this.game.zoom - 72, top: e.clientY / this.game.zoom - 50});
-		}));
-	};
+  this.ready = function () {
+    var $net = $('.selectable-remove-component .net');
+
+    this.mousemove(this.bind(function (e){
+      $net.css({left: e.clientX / this.game.zoom - 72, top: e.clientY / this.game.zoom - 50});
+    }));
+  };
 
 });
