@@ -1,13 +1,14 @@
 pl.game.component('screen-quit', function () {
 
   // TODO: Make an automated way to handle this
-  this.on('transitionend', function (_event) {
+  this.on('transitionend', function () {
     if (this.state(this.STATE.LEAVE)) {
       this.addClass('LEAVE-END');
     }
   });
 
   this.on('ui-open', function (_event) {
+    if (!this.is(_event.target)) return;
     this.game.addClass('QUIT-SCREEN');
     this.removeClass('LEAVE-END');
     this.game.pause(true);

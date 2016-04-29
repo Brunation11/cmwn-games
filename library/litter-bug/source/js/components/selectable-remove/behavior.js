@@ -19,14 +19,10 @@ pl.game.component('selectable-remove', function () {
           message: $target.index(),
           behaviorTarget: $target
         };
-      }
-
-      else {
+      } else {
         if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
-    }
-
-    else {
+    } else {
       this.proto(_target);
     }
 
