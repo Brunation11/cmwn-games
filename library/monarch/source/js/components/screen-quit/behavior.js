@@ -6,6 +6,7 @@ pl.game.component('screen-quit', function () {
 
   // TODO: Make an automated way to handle this
   this.on('transitionend', function (_event) {
+    if (!this.is(_event.taget)) return;
     if (this.state(this.STATE.LEAVE)) {
       this.addClass('LEAVE-END');
     }
@@ -22,6 +23,7 @@ pl.game.component('screen-quit', function () {
   });
 
   this.on('ui-open', function (_event) {
+    if (!this.is(_event.taget)) return;
     if (this.audio.voiceOver.sure) this.audio.voiceOver.sure.play();
     this.buttonSound();
     this.game.addClass('QUIT-SCREEN');

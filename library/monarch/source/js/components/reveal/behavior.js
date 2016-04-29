@@ -1,15 +1,13 @@
 pl.game.component('reveal', function () {
 
   this.item = function (_id) {
-    var vo, index, vo;
+    var vo, index;
 
     if (typeof _id === 'number') {
       this.select(this.find('li').eq(_id));
       vo = this.audio.voiceOver && this.audio.voiceOver[_id];
       if (vo) vo.play();
-    }
-
-    else if (typeof _id === 'string') {
+    } else if (typeof _id === 'string') {
       if (this[_id]) {
         this.select(this[_id]);
 

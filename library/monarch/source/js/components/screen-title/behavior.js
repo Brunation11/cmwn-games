@@ -36,7 +36,7 @@ pl.game.component('screen-title', function () {
    * Start the title screen logo animation when the screen opens.
    */
   this.on('ui-open', function () {
-    var so, delay = this.properties.delay;
+    var so;
     this.close(this.game.loader);
 
     so = pl.util.resolvePath(this, 'audio.background[0]?');
@@ -48,8 +48,8 @@ pl.game.component('screen-title', function () {
 
   this.on('ui-close', function (_event) {
     if (!this.is(_event.target)) return;
-    this.on('transitionend', function (_event) {
-      if (!this.is(_event.target)) return;
+    this.on('transitionend', function (_e) {
+      if (!this.is(_e.target)) return;
       this.logo.removeClass(this.properties.animOut)
         .off('animationend');
       this.off('transitionend');

@@ -60,8 +60,6 @@ pl.game.component('runner', function () {
     this.image = null;
 
     this.init = function (_image) {
-      var $image = $(_image);
-
       this.image = _image;
 
       this.position = pl.Point.create();
@@ -254,8 +252,8 @@ pl.game.component('runner', function () {
 
     gameLoop.pulse(this, _flower);
 
-    this.flowers.forEach(function (_flower) {
-      canvas.draw(_flower);
+    this.flowers.forEach(function (_f) {
+      canvas.draw(_f);
     });
   };
 
