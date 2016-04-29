@@ -8,7 +8,7 @@ pl.game.component('audio-sequence', function () {
       return $(this).data('context');
     }).toArray();
 
-    this.audio.on('ended', function (_event) {
+    this.audio.on('ended', function () {
       var next = sounds[i++];
       if (next && this.screen.state(this.screen.STATE.OPEN)) next.play();
     }.bind(this));

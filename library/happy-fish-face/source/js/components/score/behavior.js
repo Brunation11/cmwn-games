@@ -41,10 +41,7 @@ pl.game.component('score', function () {
 
     this.board.render();
 
-    console.log('score', this.value, this.properties.max);
-
     if (this.value >= this.properties.max) {
-      console.log('oh word');
       this.complete();
     }
 
@@ -64,7 +61,7 @@ pl.game.component('score', function () {
   };
 
   this.state('incomplete', '-COMPLETE', {
-    willSet: function (_target) {
+    willSet: function () {
       this.isComplete = false;
 
       if (this.value >= this.properties.max) {

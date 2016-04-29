@@ -15,6 +15,8 @@ pl.game.component('multiple-choice', function () {
   };
 
   this.answer = function () {
+    var $li;
+
     if (this.event) {
       $li = $(this.event.target).closest('li');
 

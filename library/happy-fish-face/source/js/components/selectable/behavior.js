@@ -13,9 +13,7 @@ pl.game.component('selectable', function () {
           behaviorTarget: $target
         };
       }
-    }
-
-    else {
+    } else {
       this.proto(_target);
     }
 

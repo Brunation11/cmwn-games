@@ -26,9 +26,9 @@ export default function trash() {
       .find(this.SELECTOR.CORRECT);
     this.setup();
 
-    this.modal.reveal.audio.voiceOver.on('ended', function (_event) {
+    this.modal.reveal.audio.voiceOver.on('ended', function (_e) {
       if (this.screen.state(this.STATE.OPEN)) {
-        if (_event.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
+        if (_e.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
       }
     }.bind(this.modal.reveal));
   });
