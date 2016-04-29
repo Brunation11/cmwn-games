@@ -40,6 +40,18 @@ pl.game('monarch', function () {
 			}.bind(this));
 		});
 
+		this.pause = function() {
+			this.kill('repeat');
+			this.__proto__.pause();
+		};
+
+		this.resume = function() {
+			this.repeat('4s', function() {
+				this.audio.sfx.play();
+			});
+			this.__proto__.resume();
+		};
+
 		this.on('ready', function(_event) {
 			if(!this.is(_event.target)) return;
 
