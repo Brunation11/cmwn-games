@@ -27,10 +27,10 @@ pl.game('litterbug', function () {
       }
     });
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.startAudio = function () {
@@ -44,7 +44,7 @@ pl.game('litterbug', function () {
 
   });
 
-  this.screen('clean-up', function() {
+  this.screen('clean-up', function () {
 
     this.state('incomplete', '-COMPLETE', {
       didSet: function (_target) {
@@ -52,8 +52,8 @@ pl.game('litterbug', function () {
       }
     });
 
-    this.on('ui-open', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
       this.game.removeClass('sun');
       this.incomplete(this);
       this.incomplete(this.slides.trash);
@@ -61,16 +61,16 @@ pl.game('litterbug', function () {
     });
   });
 
-  this.screen('video', function() {
-    this.on('ui-open', function() {
-      setTimeout(function() {
+  this.screen('video', function () {
+    this.on('ui-open', function () {
+      setTimeout(function () {
         this.start();
       }.bind(this), 250);
     });
 
-    this.on("ui-close", function() {
+    this.on('ui-close', function () {
       this.video.pause();
-      if(this.game.bgSound) this.game.bgSound.play();
+      if (this.game.bgSound) this.game.bgSound.play();
     });
   });
 
@@ -81,8 +81,8 @@ pl.game('litterbug', function () {
       this.game.quit.okay();
     };
 
-    this.complete = function (_event) {
-      var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');
 
@@ -98,8 +98,8 @@ pl.game('litterbug', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 

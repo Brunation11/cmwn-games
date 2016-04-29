@@ -1,5 +1,5 @@
 pl.game.component('selectable-remove', function () {
-  
+
   this.behavior('select', function (_target) {
     var $target, stateMethod;
 
@@ -8,7 +8,7 @@ pl.game.component('selectable-remove', function () {
 
       if (this.shouldSelect($target) !== false) {
 
-        if($target.is('li')) {
+        if ($target.is('li')) {
           this.audio.sfx.correct.play();
           stateMethod = this.properties.selectState || 'select';
           this[stateMethod]($target);
@@ -22,7 +22,7 @@ pl.game.component('selectable-remove', function () {
       }
 
       else {
-        if(this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
+        if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
       }
     }
 

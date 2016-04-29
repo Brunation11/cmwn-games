@@ -1,6 +1,6 @@
 pl.game.component('screen-basic', function () {
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
   };
 
@@ -44,14 +44,14 @@ pl.game.component('screen-basic', function () {
 
   this.on('ui-open', function (_event) {
     if (this.isReady && this === _event.targetScope) {
-      this.on('transitionend', function(_event) {
-        if(!this.is(_event.target)) return;
+      this.on('transitionend', function (_event) {
+        if (!this.is(_event.target)) return;
         this.start();
         this.off('transitionend');
       }.bind(this));
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.addClass(this.properties.gameClass);
     }
 
@@ -61,11 +61,11 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-leave', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -75,11 +75,11 @@ pl.game.component('screen-basic', function () {
   });
 
   this.on('ui-close', function (_event) {
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
-    if(this.properties.gameClass) {
+    if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
@@ -88,9 +88,9 @@ pl.game.component('screen-basic', function () {
     }
   });
 
-  this.on('ready', function(_event) {
-    if(!this.is(_event.target)) return;
-    if(this.state(this.STATE.OPEN)) this.start();
+  this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
+    if (this.state(this.STATE.OPEN)) this.start();
   });
 
 });
