@@ -121,6 +121,19 @@ pl.game('happy-fish-face', function () {
     this.next = function () {
       this.game.quit.okay();
     };
+
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
+
+      ga('send', 'event', eventCategory, 'complete');
+
+      pl.game.trigger($.Event('platform-event', {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      }));
+
+      return this.proto();
+    };
   });
 
   this.exit = function () {
