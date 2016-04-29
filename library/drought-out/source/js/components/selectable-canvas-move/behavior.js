@@ -1,5 +1,5 @@
 pl.game.component('selectable-canvas-move', function () {
-  var canvas, Item, gameLoop, scale, self = this;
+  var canvas, Item, gameLoop, self = this;
 
   gameLoop = {
     // main game loop
@@ -216,6 +216,8 @@ pl.game.component('selectable-canvas-move', function () {
   };
 
   this.isImageTarget = function (_item, _point) {
+    var pixel;
+
     this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
     this.bctx.drawImage(_item.image, 0, _item.image.getAttribute('top') * _item.image.naturalHeight / 15, _item.size.width, _item.size.height, _item.position.x, _item.position.y, _item.backgroundSize.width, _item.backgroundSize.height);
     pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
@@ -227,7 +229,7 @@ pl.game.component('selectable-canvas-move', function () {
     return pixel.data[3] > 0;
   };
 
-  this.behavior('select', function (_cursor) {
+  this.behavior('select', function () {
     var offset, cursor, scale, returnValue = false;
 
     scale = this.game.transformScale().x;

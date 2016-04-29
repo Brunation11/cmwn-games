@@ -6,9 +6,7 @@ pl.game.component('reveal', function () {
     if (typeof _id === 'number') {
       this.select(this.find('li').eq(_id));
       this.audio.voiceOver[_id].play();
-    }
-
-    else if (typeof _id === 'string') {
+    } else if (typeof _id === 'string') {
       if (this[_id]) {
         this.select(this[_id]);
 

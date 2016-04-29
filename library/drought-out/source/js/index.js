@@ -161,7 +161,7 @@ pl.game('drought-out', function () {
 
       this.length = this.reveal.find('li').length;
 
-      this.reveal.audio.voiceOver.on('ended', function (audio) {
+      this.reveal.audio.voiceOver.on('ended', function () {
         self.audio.sfx.close.play();
         self.deselect();
         item = (item + 1) % self.length;

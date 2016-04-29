@@ -8,7 +8,7 @@ pl.game.component('audio-sequence', function () {
 
     sounds = this.audio.find('.audio');
 
-    this.audio.on('ended', function (_event) {
+    this.audio.on('ended', function () {
       var next = sounds[self.i++];
       if (next) next.play();
     });
