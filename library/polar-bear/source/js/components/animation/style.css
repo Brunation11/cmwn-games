@@ -1,7 +1,7 @@
 .animation-component {
-	background-color: black;
+  background-color: black;
 }
-	
-	.animation-component img[pl-id=source] {
-		display: none;
-	}
+  
+  .animation-component img[pl-id=source] {
+    display: none;
+  }

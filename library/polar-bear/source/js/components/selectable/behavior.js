@@ -1,32 +1,32 @@
 pl.game.component('selectable', function () {
 
-	this.behavior('select', function (_target) {
-		var $target;
+  this.behavior('select', function (_target) {
+    var $target;
 
-		if (this.event) {
-			$target = $(this.event.target).closest('li');
+    if (this.event) {
+      $target = $(this.event.target).closest('li');
 
-			if (this.shouldSelect($target) !== false) {
-				return {
-					message: $target.index(),
-					behaviorTarget: $target
-				};
-			}	
-		}
+      if (this.shouldSelect($target) !== false) {
+        return {
+          message: $target.index(),
+          behaviorTarget: $target
+        };
+      }  
+    }
 
-		else {
-			this.proto(_target);
-		}
+    else {
+      this.proto(_target);
+    }
 
-		return false;
-	});
+    return false;
+  });
 
-	this.shouldSelect = function (_target) {
-		if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
-			return true;
-		}
+  this.shouldSelect = function (_target) {
+    if(!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
+      return true;
+    }
 
-		return false;
-	};
+    return false;
+  };
 
 });
