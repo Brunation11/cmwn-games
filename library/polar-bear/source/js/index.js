@@ -5,18 +5,18 @@
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
+import './components/cannon/behavior';
+import './components/carousel/behavior';
+import './components/frame/behavior';
+import './components/multiple-choice/behavior';
+import './components/reveal/behavior';
+import './components/score/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/frame/behavior';
-import './components/slides/behavior';
-import './components/carousel/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
-import './components/cannon/behavior';
+import './components/selectable/behavior';
+import './components/slides/behavior';
+import './components/title/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
