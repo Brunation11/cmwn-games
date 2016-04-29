@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
@@ -12,6 +10,7 @@ import './components/screen-quit/behavior';
 import './components/background/behavior';
 import './components/title/behavior';
 import './components/selectable/behavior';
+import './components/selectable-canvas-move/behavior';
 import './components/selectable-reveal/behavior';
 import './components/reveal/behavior';
 import './components/audio-sequence/behavior';
@@ -36,6 +35,12 @@ pl.game('drought-out', function () {
 
 			if(vo) vo.play();
 		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
 	};
 
 	this.screen('title', function () {
@@ -45,25 +50,13 @@ pl.game('drought-out', function () {
 			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
 		});
 
-		this.startAudio = function () {
-			this.title.audio.background.play();
-		};
+		this.entity('cacti', function() {
+			this.on('animationend', function(_e) {
+				if(!this.is(_e.target)) return;
 
-		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
+				this.complete();
+			});
 		});
-
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-		});
-
 	});
 
 	this.screen('think', selectScreen);
@@ -76,7 +69,7 @@ pl.game('drought-out', function () {
 				vo = this.audio.sfx.incorrect;
 			} else {
 				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
+				vo = this.audio.voiceOver[_event.message];
 			}
 
 			switch(_event.message) {
@@ -106,6 +99,14 @@ pl.game('drought-out', function () {
 			if(vo) vo.play();
 			if(sfx) sfx.play();
 		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
+
+		this.startAudio = function() {};
 	});
 
 	this.screen('what-can-we-do', selectScreen);
@@ -135,6 +136,12 @@ pl.game('drought-out', function () {
 			};
 
 		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+		});
 	});
 
 	this.screen('conserve', function() {
@@ -142,19 +149,30 @@ pl.game('drought-out', function () {
 
 		this.openDoor = function() {
 			if(this.shouldProceed()) {
-				this.select(this);
-				this.reveal.item(item++);
+				this.select();
+				this.reveal.item(item);
 				this.audio.sfx.open.play();
 			}
 		};
 
-		this.on('ready', function(_event) {
-			if (!(this.is(_event.target) && this.reveal.audio)) return;
+		this.on('ready', function(_e) {
+			var self = this;
+
+			if(!(this.is(_e.target) && this.reveal.audio)) return;
+
+			this.length = this.reveal.find('li').length;
 
 			this.reveal.audio.voiceOver.on('ended', function(audio) {
-				this.audio.sfx.close.play();
-				this.deselect();
-			}.bind(this));
+				self.audio.sfx.close.play();
+				self.deselect();
+				item = (item + 1) % self.length;
+			});
+		});
+
+		this.on('ui-open', function(_e) {
+			if(!this.is(_e.target)) return;
+
+			if(this.isComplete) item = 0;
 		});
 	});
 
@@ -169,5 +187,16 @@ pl.game('drought-out', function () {
 			}
 		});
 	});
+
+	this.exit = function () {
+		var screen, eventCategory;
+
+		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
+		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+
+		ga('send', 'event', eventCategory, 'quit');
+
+		return this.proto();
+	};
 
 });
