@@ -6,7 +6,6 @@ import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
 import './components/audio-sequence/behavior';
-import './components/background/behavior';
 import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
