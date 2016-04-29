@@ -4,8 +4,8 @@ pl.game.component('screen-basic', function () {
     if (!this.is(_event.target)) return;
 
     if (this.audio) {
-      this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config('dontautoplay'));
+      this.audio.rule('.voiceOver', 'shouldPlay', function (_e) {
+        _e.response(!_e.target.config('dontautoplay'));
       });
     }
 

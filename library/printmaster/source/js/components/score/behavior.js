@@ -30,10 +30,7 @@ pl.game.component('score', function () {
 
     this.board.render();
 
-    console.log('score', this.value, this.properties.max);
-
-    if (this.value == this.properties.max) {
-      console.log('oh word');
+    if (this.value === parseInt(this.properties.max, 10)) {
       this.complete();
     }
 
@@ -45,7 +42,7 @@ pl.game.component('score', function () {
 
     this.board.render();
 
-    if (this.value == this.properties.max) {
+    if (this.value === parseInt(this.properties.max, 10)) {
       this.complete();
     }
 

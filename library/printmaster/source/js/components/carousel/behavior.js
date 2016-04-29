@@ -31,9 +31,9 @@ pl.game.component('carousel', function () {
 
         siblings = [_node.previousSibling, _node.nextSibling];
 
-        siblings.forEach(function (_node) {
-          if (_node.nodeType === document.TEXT_NODE) {
-            $(_node).remove();
+        siblings.forEach(function (_n) {
+          if (_n.nodeType === document.TEXT_NODE) {
+            $(_n).remove();
           }
         });
 
@@ -85,9 +85,7 @@ pl.game.component('carousel', function () {
       this.isPlaying = true;
       this.open(this.$images.first());
       this.repeat(delay, this.next);
-    }
-
-    else {
+    } else {
       this.on('ready', this.beginShow);
     }
   };

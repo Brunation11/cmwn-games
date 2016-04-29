@@ -35,7 +35,7 @@ export default function carousel() {
     }
   });
 
-  this.start = function (_event) {
+  this.start = function () {
     this.proto();
     this.carousel.start();
   };
@@ -58,7 +58,7 @@ export default function carousel() {
   });
 
   this.state('incomplete', '-COMPLETE', {
-    willSet: function (_target) {
+    willSet: function () {
       this.isComplete = false;
     }
   });
@@ -106,10 +106,7 @@ export default function carousel() {
 
       this.board.render();
 
-      console.log('score', this.value, this.properties.max);
-
-      if (this.value == this.properties.max) {
-        console.log('score complete');
+      if (this.value === parseInt(this.properties.max, 10)) {
         this.delay('1s', this.complete);
       }
 
