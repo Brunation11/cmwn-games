@@ -6,7 +6,7 @@ pl.game.component('cannon', function () {
     willSet: function () {
       this.playSFX('fire');
       this.isLaunchComplete = false;
-      this.delay('1s',function() {
+      this.delay('1s', function () {
         this.isLaunchComplete = true;
       });
     }
@@ -21,7 +21,7 @@ pl.game.component('cannon', function () {
   });
 
   this.behavior('fire', function () {
-    if(this.isLaunchComplete) {
+    if (this.isLaunchComplete) {
       this.launch(this.ball);
       return {
         message: this.cannon.properties.fire
@@ -31,14 +31,14 @@ pl.game.component('cannon', function () {
     return false;
   });
 
-  this.load = function() {
+  this.load = function () {
     this.reload(this.ball);
   };
 
   this.playSFX = function (_name) {
     var sfx;
 
-    sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
     if (sfx) sfx.play();
 

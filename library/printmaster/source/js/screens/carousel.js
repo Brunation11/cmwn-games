@@ -1,23 +1,23 @@
 /**
  * Printmaster - Carousel Screen
  */
-export default function carousel () {
-  this.on('ready', function(_event) {
+export default function carousel() {
+  this.on('ready', function (_event) {
     if (!this.is(_event.target)) return;
-    
+
     this.$targets = this.find('.target img');
   });
 
-  this.setTarget = function(_idx) {
+  this.setTarget = function (_idx) {
     this.idx = _idx || 0;
     this.$target = $(this.$targets[this.idx]);
     this.target = this.$target.id();
     this.amount = this.$target.attr('pl-amount');
 
-    if(this.target) {
+    if (this.target) {
       this.select(this.$target);
 
-      if(this.score) {
+      if (this.score) {
         this.score.removeClass('loops whorl arch doubleloops').addClass(this.target);
         this.score.attr('pl-max', this.amount);
         this.score.properties.max = this.amount;
@@ -28,8 +28,8 @@ export default function carousel () {
     }
   };
 
-  this.respond('complete', function(_event) {
-    if(_event.message === 'score') {
+  this.respond('complete', function (_event) {
+    if (_event.message === 'score') {
       this.modal.item(this.idx);
       this.setTarget(++this.idx);
     }
@@ -42,9 +42,9 @@ export default function carousel () {
 
   this.stop = function () {
     this.carousel.stop();
-  }
+  };
 
-  this.on('ui-open', function(_event) {
+  this.on('ui-open', function (_event) {
     if (!this.is(_event.target)) return;
 
     this.carousel.start();
@@ -52,12 +52,12 @@ export default function carousel () {
     this.setTarget();
 
     this.game.audio.sfx.typing.play();
-    this.delay('3.5s', function() {
+    this.delay('3.5s', function () {
       this.game.audio.sfx.typing.stop();
     });
   });
 
-  this.state('incomplete','-COMPLETE', {
+  this.state('incomplete', '-COMPLETE', {
     willSet: function (_target) {
       this.isComplete = false;
     }
@@ -72,9 +72,9 @@ export default function carousel () {
 
   });
 
-  this.entity('cannon', function() {
+  this.entity('cannon', function () {
     this.behavior('fire', function () {
-      if(this.isLaunchComplete) {
+      if (this.isLaunchComplete) {
         this.launch(this.ball);
         return {
           message: this.screen.target
@@ -85,28 +85,28 @@ export default function carousel () {
     });
   });
 
-  this.entity('score', function() {
+  this.entity('score', function () {
 
-    this.entity('board', function() {
-      
-      this.on('ready', function(_event) {
+    this.entity('board', function () {
+
+      this.on('ready', function (_event) {
         if (!this.is(_event.target)) return;
 
         this.items = this.find('div');
       });
 
-      this.render = function() {
-        this.highlight(this.items[this.value-1]);
+      this.render = function () {
+        this.highlight(this.items[this.value - 1]);
         return this;
       };
     });
 
     this.up = function (_count) {
-      this.value+= _count || 1;
+      this.value += _count || 1;
 
       this.board.render();
 
-      console.log('score', this.value, this.properties.max)
+      console.log('score', this.value, this.properties.max);
 
       if (this.value == this.properties.max) {
         console.log('score complete');
@@ -116,13 +116,13 @@ export default function carousel () {
       return this;
     };
 
-    this.behavior('complete', function() {
+    this.behavior('complete', function () {
       return {
         message: 'score'
-      }
+      };
     });
 
-    this.reset = function() {
+    this.reset = function () {
       this.value = 0;
       this.unhighlight(this.board.items);
     };
@@ -149,7 +149,7 @@ export default function carousel () {
   this.playSFX = function (_name) {
     var sfx;
 
-    sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
     if (sfx) sfx.play();
 

@@ -1,5 +1,5 @@
 pl.game.component('frame', function () {
-  
+
   this.start = function () {
     var bgSound, voSound;
 
@@ -7,7 +7,7 @@ pl.game.component('frame', function () {
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
 
     if (bgSound) bgSound.play();
-    if (voSound && !voSound.hasAttribute("pl-dontautoplay")) voSound.play();
+    if (voSound && !voSound.hasAttribute('pl-dontautoplay')) voSound.play();
 
     if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
@@ -18,8 +18,8 @@ pl.game.component('frame', function () {
     title: function (_node, _name, _value) {
       if (this.is(_node)) {
         this.find('.frame').addClass('title');
-        this.game.defineRule('.experiment:nth-of-type('+(this.screen.index()+1)+') .frame-component .frame.title::before', {
-          backgroundImage: 'url('+ _value +')'
+        this.game.defineRule('.experiment:nth-of-type(' + (this.screen.index() + 1) + ') .frame-component .frame.title::before', {
+          backgroundImage: 'url(' + _value + ')'
         });
       }
     }

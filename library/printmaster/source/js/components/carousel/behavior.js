@@ -1,7 +1,7 @@
 pl.game.component('carousel', function () {
 
   this.TYPE = (function () {
-    
+
     this.SLIDE = 'slide';
     this.CROSS_FADE = 'cross-fade';
 
@@ -9,7 +9,7 @@ pl.game.component('carousel', function () {
 
   }).call(['slide', 'cross-fade']);
 
-  this.type = null
+  this.type = null;
   this.$images = null;
   this.nodes = null;
   this.shouldRandomize = false;
@@ -28,7 +28,7 @@ pl.game.component('carousel', function () {
     if (this.$images.length) {
       this.nodes = this.$images.map(this.bind(function (_index, _node) {
         var siblings;
-        
+
         siblings = [_node.previousSibling, _node.nextSibling];
 
         siblings.forEach(function (_node) {
@@ -40,7 +40,7 @@ pl.game.component('carousel', function () {
         return _node;
       })).toArray();
     }
-    
+
     this.TYPE.forEach(this.bind(function (_item) {
       if (this.hasClass(_item)) this.type = _item;
     }));
@@ -86,7 +86,7 @@ pl.game.component('carousel', function () {
       this.open(this.$images.first());
       this.repeat(delay, this.next);
     }
-    
+
     else {
       this.on('ready', this.beginShow);
     }

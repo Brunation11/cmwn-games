@@ -1,18 +1,18 @@
 pl.game.component('screen-basic', function () {
 
   this.on('ready', function (_event) {
-    if(!this.is(_event.target)) return;
+    if (!this.is(_event.target)) return;
 
-    if(this.audio) {
+    if (this.audio) {
       this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-        _event.response(!_event.target.config("dontautoplay"));
+        _event.response(!_event.target.config('dontautoplay'));
       });
     }
 
-    if(this.state(this.STATE.OPEN)) this.start();
+    if (this.state(this.STATE.OPEN)) this.start();
   });
 
-  this.allowAction = function() {
+  this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
   };
 
@@ -77,9 +77,9 @@ pl.game.component('screen-basic', function () {
   };
 
   this.complete = function () {
-    if(this.is(this.screen)) {
+    if (this.is(this.screen)) {
       var screenComplete = pl.util.resolvePath(this, 'audio.sfx.screenComplete') || pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-      if(screenComplete) screenComplete.play();
+      if (screenComplete) screenComplete.play();
     }
 
     return this.proto();

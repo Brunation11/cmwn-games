@@ -28,27 +28,27 @@ import '../../../shared/js/google-analytics';
 
 pl.game('printmaster', function () {
 
-  var typing = function(_duration) {
+  var typing = function (_duration) {
     var duration = _duration || '.5s';
-    return function() {
-      this.on('ui-open', function() {
+    return function () {
+      this.on('ui-open', function () {
         this.game.audio.sfx.typing.play();
-        this.delay(duration, function() {
+        this.delay(duration, function () {
           this.game.audio.sfx.typing.stop();
         });
       });
-      this.on('ui-close ui-leave', function() {
+      this.on('ui-close ui-leave', function () {
         this.game.audio.sfx.typing.stop();
       });
     };
-  }
+  };
 
   this.screen('title', function () {
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-      if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
     this.on('ui-open', function (_event) {
@@ -87,16 +87,16 @@ pl.game('printmaster', function () {
 
   this.screen('carousel', carousel);
 
-  this.screen('info-lets-dust', function() {
+  this.screen('info-lets-dust', function () {
     typing('1s').call(this);
 
-    this.on('audio-play', function(_event) {
-      if(this.audioSequence.audio.voiceOver.count === _event.target) {
+    this.on('audio-play', function (_event) {
+      if (this.audioSequence.audio.voiceOver.count === _event.target) {
         this.addClass('COUNT');
-      } else if(this.audioSequence.audio.voiceOver.engage === _event.target) {
+      } else if (this.audioSequence.audio.voiceOver.engage === _event.target) {
         this.addClass('ENGAGE');
         this.game.audio.sfx.typing.play();
-        this.delay('.75s', function() {
+        this.delay('.75s', function () {
           this.game.audio.sfx.typing.stop();
         });
       } else {
@@ -105,13 +105,13 @@ pl.game('printmaster', function () {
     });
   });
 
-  this.screen('info-need', function() {
-    this.on('audio-play', function(_event) {
+  this.screen('info-need', function () {
+    this.on('audio-play', function (_event) {
       var id = _event.target.id();
       if (id) this.addClass(id.toUpperCase());
     });
 
-    this.on('ui-close', function() {
+    this.on('ui-close', function () {
       this.removeClass('LOTION TAPE POWDER BRUSH PAPER GLASS');
     });
   });
@@ -121,14 +121,14 @@ pl.game('printmaster', function () {
       this.game.quit.okay();
     };
 
-    this.on('ready', function(_event) {
-      if(!this.is(_event.target)) return;
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
       this.require('shake');
     });
 
-    this.entity('.flip', function() {
-      this.on('animationend', function(_event) {
-        if(!this.is(_event.target) || !this.screen.allowAction()) return;
+    this.entity('.flip', function () {
+      this.on('animationend', function (_event) {
+        if (!this.is(_event.target) || !this.screen.allowAction()) return;
         this.screen.requiredQueue.ready('shake');
       });
     });
@@ -137,8 +137,8 @@ pl.game('printmaster', function () {
   this.exit = function () {
     var screen, eventCategory;
 
-    screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
     ga('send', 'event', eventCategory, 'quit');
 
