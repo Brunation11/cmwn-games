@@ -1,256 +1,258 @@
 pl.game.component('selectable-canvas-move', function () {
-	var canvas, Item, gameLoop, scale, self = this;
+  var canvas, Item, gameLoop, self = this;
 
-	gameLoop = {
-		// main game loop
-		frame: function (_scope) {
-			// transition items one px on each frame
-			_scope.items.forEach((function (_item) {
-				var y, height;
-				_item.position.y -= _item.speed;
+  gameLoop = {
+    // main game loop
+    frame: function (_scope) {
+      // transition items one px on each frame
+      _scope.items.forEach((function (_item) {
+        var y, height;
+        _item.position.y -= _item.speed;
 
-				y = _item.position.y + _item.margin;
-				height = _item.size.height;
+        y = _item.position.y + _item.margin;
+        height = _item.size.height;
 
-				if (y + height < 0) _item.position.y = _scope.height() * 1.1;
-			}));
-		},
-	};
+        if (y + height < 0) _item.position.y = _scope.height() * 1.1;
+      }));
+    },
+  };
 
-	Item = pl.Basic.extend(function () {
-		this.position = null;
-		this.size = null;
-		this.margin = 0;
-		this.image = null;
-		this.$image = null;
-		this.left = 0;
-		this.selected = false;
+  Item = pl.Basic.extend(function () {
+    this.position = null;
+    this.size = null;
+    this.margin = 0;
+    this.image = null;
+    this.$image = null;
+    this.left = 0;
+    this.selected = false;
 
-		this.init = function (_image) {
-			this.$image = $(_image);
-			this.image = _image;
+    this.init = function (_image) {
+      this.$image = $(_image);
+      this.image = _image;
 
-			this.position = pl.Point.create();
-			this.backgroundSize = [200, 200].to('size');
-			this.size = [360, 460].to('size');
- 
-			return this;
-		};
+      this.position = pl.Point.create();
+      this.backgroundSize = [200, 200].to('size');
+      this.size = [360, 460].to('size');
 
-		this.render = function () {
-			return {
-				drawImage: [this.image, this.left, this.image.getAttribute('top') * this.image.naturalHeight / 15, this.size.width, this.size.height, this.position.x, this.position.y, this.backgroundSize.width, this.backgroundSize.height]
-			};
-		};
+      return this;
+    };
 
-		this.hover = function() {
-			if(!this.selected) this.left = this.image.naturalWidth / 3;
-		};
+    this.render = function () {
+      return {
+        drawImage: [this.image, this.left, this.image.getAttribute('top') * this.image.naturalHeight / 15, this.size.width, this.size.height, this.position.x, this.position.y, this.backgroundSize.width, this.backgroundSize.height]
+      };
+    };
 
-		this.unhover = function() {
-			if(!this.selected) this.left = 0;
-		};
+    this.hover = function () {
+      if (!this.selected) this.left = this.image.naturalWidth / 3;
+    };
 
-		this.select = function() {
-			this.selected = true;
-			this.left = this.image.naturalWidth * 2 / 3;
-		};
+    this.unhover = function () {
+      if (!this.selected) this.left = 0;
+    };
 
-		this.deselect = function() {
-			this.selected = false;
-			this.left = 0;
-		};
+    this.select = function () {
+      this.selected = true;
+      this.left = this.image.naturalWidth * 2 / 3;
+    };
 
-		this.is = function (_type) {
-			return $(this.image).is(_type);
-		};
+    this.deselect = function () {
+      this.selected = false;
+      this.left = 0;
+    };
 
-		this.id = function () {
-			return this.$image.id();
-		}
-	});
+    this.is = function (_type) {
+      return $(this.image).is(_type);
+    };
 
-	canvas = {
-		
-		ctx: null,
-		node: null,
-		content: null,
-		scale: 1,
+    this.id = function () {
+      return this.$image.id();
+    };
+  });
 
-		init: function (_canvas, _size, _scale) {
-			var size;
+  canvas = {
 
-			size = _scale ? _size.scale(_scale) : _size;
+    ctx: null,
+    node: null,
+    content: null,
+    scale: 1,
 
-			this.node = _canvas;
-			this.ctx = _canvas.getContext('2d');
-			this.scale = _scale || 1;
+    init: function (_canvas, _size, _scale) {
+      var size;
 
-			if (!~size.indexOf(void 0)) {
-				_canvas.width = size.width;
-				_canvas.height = size.height;
-			}
+      size = _scale ? _size.scale(_scale) : _size;
 
-			this.ctx.scale(_scale, _scale);
+      this.node = _canvas;
+      this.ctx = _canvas.getContext('2d');
+      this.scale = _scale || 1;
 
-			this.node.onmousemove = function(_e) {
-				var offset, cursor, scale;
+      if (!~size.indexOf(void 0)) {
+        _canvas.width = size.width;
+        _canvas.height = size.height;
+      }
 
-				scale = self.game.transformScale().x;
-				offset = self.$els.absolutePosition().scale(1/scale);
-				cursor = pl.Point.create().set(_e.x,_e.y)
-					.scale(scale/self.game.zoom)
-					.dec(offset)
-					.math('floor');
+      this.ctx.scale(_scale, _scale);
 
-				self.reverseItems.every(function (_item) {
-					if (self.isImageTarget(_item, cursor)) {
-						_item.hover();
-						return false;
-					}
+      this.node.onmousemove = function (_e) {
+        var offset, cursor, scale;
 
-					_item.unhover();
-					return true;
-				});
-			};
-		},
+        scale = self.game.transformScale().x;
+        offset = self.$els.absolutePosition().scale(1 / scale);
+        cursor = pl.Point.create().set(_e.x, _e.y)
+          .scale(scale / self.game.zoom)
+          .dec(offset)
+          .math('floor');
 
-		resize: function (_size, _scale) {
-			var size;
+        self.reverseItems.every(function (_item) {
+          if (self.isImageTarget(_item, cursor)) {
+            _item.hover();
+            return false;
+          }
 
-			size = _scale ? _size.scale(_scale) : _size;
+          _item.unhover();
+          return true;
+        });
+      };
+    },
 
-			this.node.width = size.width;
-			this.node.height = size.height;
-			this.scale = _scale || 1;
+    resize: function (_size, _scale) {
+      var size;
 
-			this.ctx.scale(_scale, _scale);
-		},
+      size = _scale ? _size.scale(_scale) : _size;
 
-		clear: function () {
-			this.ctx.clearRect(0,0, this.node.width/this.scale, this.node.height/this.scale);
-		},
+      this.node.width = size.width;
+      this.node.height = size.height;
+      this.scale = _scale || 1;
 
-		draw: function (_obj) {
-			var commands, cmd;
+      this.ctx.scale(_scale, _scale);
+    },
 
-			commands = _obj.render();
+    clear: function () {
+      this.ctx.clearRect(0, 0, this.node.width / this.scale, this.node.height / this.scale);
+    },
 
-			for (cmd in commands) {
-				if (typeof this.ctx[cmd] !== 'function') continue;
-				this.ctx[cmd].apply(this.ctx, commands[cmd]);
-			}
-		}
-	};
+    draw: function (_obj) {
+      var commands, cmd;
 
-	this.items = null;
-	this.player = null;
-	this.canvas = null;
-	this.buffer = null;
-	this.bctx = null;
-	this.isRunning = false;
+      commands = _obj.render();
 
-	this.init = function () {
-		this.buffer = document.createElement('canvas');
-		this.bctx = this.buffer.getContext('2d');
-	};
+      for (cmd in commands) {
+        if (typeof this.ctx[cmd] !== 'function') continue;
+        this.ctx[cmd].apply(this.ctx, commands[cmd]);
+      }
+    }
+  };
 
-	// Handle when the component scope is ready.
-	this.on('ready', function (_event) {
-		var canvasSize, width, height;
+  this.items = null;
+  this.player = null;
+  this.canvas = null;
+  this.buffer = null;
+  this.bctx = null;
+  this.isRunning = false;
 
-		// Do not handle child scopes becoming ready.
-		if (!this.is(_event.target)) return;
+  this.init = function () {
+    this.buffer = document.createElement('canvas');
+    this.bctx = this.buffer.getContext('2d');
+  };
 
-		this.buffer.width = width = this.width();
-		this.buffer.height = height = this.height();
+  // Handle when the component scope is ready.
+  this.on('ready', function (_event) {
+    var canvasSize, width, height;
 
-		this.items = this.bin.find('img')
-			.map(function (_i, _node) {
-				var item = Item.create().init(_node);
+    // Do not handle child scopes becoming ready.
+    if (!this.is(_event.target)) return;
 
-				item.position.x = 40 + (120 * _i % (width - 280));
-				item.position.y = height + (250 * _i % (2 * height));
-				item.speed = ((_i * 5) % 3 + 2) / 2;
+    this.buffer.width = width = this.width();
+    this.buffer.height = height = this.height();
 
-				return item;
-			})
-			.toArray();
+    this.items = this.bin.find('img')
+      .map(function (_i, _node) {
+        var item = Item.create().init(_node);
 
-		this.reverseItems = this.items.slice().reverse();
+        item.position.x = 40 + (120 * _i % (width - 280));
+        item.position.y = height + (250 * _i % (2 * height));
+        item.speed = ((_i * 5) % 3 + 2) / 2;
 
-		canvasSize = pl.Size
-			.create()
-			.set(width, height);
+        return item;
+      })
+      .toArray();
 
-		canvas.init(this.canvas[0], canvasSize, this.game.zoom);
+    this.reverseItems = this.items.slice().reverse();
 
-		this.game.viewport.onResize(this.game.bind(function () {
-			canvas.resize(canvasSize, this.zoom);
-		}));
-	});
+    canvasSize = pl.Size
+      .create()
+      .set(width, height);
 
-	this.start = function () {
-		this.isRunning = true;
-		this.eachFrame(this.onEachFrame);
+    canvas.init(this.canvas[0], canvasSize, this.game.zoom);
 
-		this.items.forEach(function (_item) {
-			_item.deselect();
-		});
-	};
+    this.game.viewport.onResize(this.game.bind(function () {
+      canvas.resize(canvasSize, this.zoom);
+    }));
+  });
 
-	this.stop = function () {
-		this.eachFrame(this.onEachFrame, false);
-	};
+  this.start = function () {
+    this.isRunning = true;
+    this.eachFrame(this.onEachFrame);
 
-	this.onEachFrame = function () {
-		if (!this.isRunning) return;
+    this.items.forEach(function (_item) {
+      _item.deselect();
+    });
+  };
 
-		canvas.clear();
+  this.stop = function () {
+    this.eachFrame(this.onEachFrame, false);
+  };
 
-		gameLoop.frame(this);
+  this.onEachFrame = function () {
+    if (!this.isRunning) return;
 
-		this.items.forEach(function (_item) {
-			canvas.draw(_item);
-		});
-	};
+    canvas.clear();
 
-	this.isImageTarget = function (_item, _point) {
-		this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-		this.bctx.drawImage(_item.image, 0, _item.image.getAttribute('top') * _item.image.naturalHeight / 15, _item.size.width, _item.size.height, _item.position.x, _item.position.y, _item.backgroundSize.width, _item.backgroundSize.height);
-		pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+    gameLoop.frame(this);
 
-		this.bctx.fillStyle = 'white';
-		this.bctx.fillRect(_point.x, _point.y, 5,5);
+    this.items.forEach(function (_item) {
+      canvas.draw(_item);
+    });
+  };
 
-		// opaque pixel
-		return pixel.data[3] > 0;
-	};
+  this.isImageTarget = function (_item, _point) {
+    var pixel;
 
-	this.behavior('select', function (_cursor) {
-		var offset, cursor, scale, returnValue = false;
+    this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+    this.bctx.drawImage(_item.image, 0, _item.image.getAttribute('top') * _item.image.naturalHeight / 15, _item.size.width, _item.size.height, _item.position.x, _item.position.y, _item.backgroundSize.width, _item.backgroundSize.height);
+    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
-		scale = this.game.transformScale().x;
-		offset = this.$els.absolutePosition().scale(1/scale);
-		cursor = this.event.cursor
-			.scale(scale/this.game.zoom)
-			.dec(offset)
-			.math('floor');
+    this.bctx.fillStyle = 'white';
+    this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
-		this.reverseItems.every(function (_item) {
-			if(self.isImageTarget(_item, cursor)) {
-				_item.select();
-				returnValue = {
-					message: _item.$image.id(),
-					behaviorTarget: _item.$image
-				};
-				return false;
-			}
+    // opaque pixel
+    return pixel.data[3] > 0;
+  };
 
-			return true;
-		});
+  this.behavior('select', function () {
+    var offset, cursor, scale, returnValue = false;
 
-		return returnValue;
-	});
+    scale = this.game.transformScale().x;
+    offset = this.$els.absolutePosition().scale(1 / scale);
+    cursor = this.event.cursor
+      .scale(scale / this.game.zoom)
+      .dec(offset)
+      .math('floor');
+
+    this.reverseItems.every(function (_item) {
+      if (self.isImageTarget(_item, cursor)) {
+        _item.select();
+        returnValue = {
+          message: _item.$image.id(),
+          behaviorTarget: _item.$image
+        };
+        return false;
+      }
+
+      return true;
+    });
+
+    return returnValue;
+  });
 
 });
