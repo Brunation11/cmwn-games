@@ -1,6 +1,6 @@
 pl.game.component('reveal', function () {
 
-  this.on('transitionend', function (_event) {
+  this.on('transitionend', function () {
     if (!this.opened()) {
       this.addClass('ANIM-DONE');
     }
@@ -15,9 +15,7 @@ pl.game.component('reveal', function () {
     if (typeof _id === 'number') {
       this.select('li:nth-child(' + _id + ')');
       this.audio.voiceOver[_id].play();
-    }
-
-    else if (typeof _id === 'string') {
+    } else if (typeof _id === 'string') {
       if (this[_id]) {
         this.select(this[_id]);
 

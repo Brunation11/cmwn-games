@@ -1,7 +1,7 @@
 pl.game.component('multiple-choice', function () {
 
   function validateAnswer(_scope) {
-    var $selected, answers, $correct, correctCount;
+    var $selected, answers, $correct;
 
     $selected = _scope.getSelected();
 
@@ -15,7 +15,6 @@ pl.game.component('multiple-choice', function () {
         _scope.playSFX('incorrect');
       }
     } else {
-      correctCount = 0;
       $correct = _scope.find('[pl-correct]');
 
       if (~$.inArray($selected[0], $correct)) {
@@ -50,6 +49,8 @@ pl.game.component('multiple-choice', function () {
   };
 
   this.answer = function () {
+    var $li;
+
     if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return;
 
     if (this.event) {

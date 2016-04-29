@@ -36,7 +36,7 @@ pl.game.component('selectable-reveal', function () {
 
     this.features = this
       .find('.items li')
-      .map(function (_index, _node) {
+      .map(function (_index) {
         correct.add(_index);
         return _index;
       })

@@ -33,10 +33,7 @@ pl.game.component('score', function () {
     this.attr('value', this.value);
     this.board.render();
 
-    console.log('score', this.value, this.properties.max);
-
     if (this.value >= this.properties.max) {
-      console.log('oh word');
       this.complete();
     }
 

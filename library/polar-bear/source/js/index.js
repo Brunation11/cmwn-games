@@ -62,14 +62,6 @@ pl.game('polar-bear', function () {
 
         var SELECTOR;
 
-        function isCorrect(_element) {
-          var $el;
-
-          $el = _element.jquery ? _element : $(_element);
-
-          return
-        }
-
         SELECTOR = {
           CORRECT: '[pl-correct]',
           INCORRECT: '[pl-incorrect]'
@@ -137,6 +129,8 @@ pl.game('polar-bear', function () {
         };
 
         this.isImageTarget = function (_image, _point) {
+          var pixel;
+
           this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
           this.bctx.drawImage(_image[0], 0, 0, _image.width(), _image.height());
           pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
@@ -149,7 +143,7 @@ pl.game('polar-bear', function () {
         };
 
         this.test = function (_cursor) {
-          var offset, cursor, pixel, gameScale;
+          var offset, cursor, gameScale;
 
           if (!this.screen.allowAction()) return false;
 
@@ -181,7 +175,7 @@ pl.game('polar-bear', function () {
         };
 
         this.answer = function (_country) {
-          var $country, index;
+          var $country;
 
           $country = this[_country];
 
@@ -193,9 +187,7 @@ pl.game('polar-bear', function () {
             $country.addClass('animated fadeIn');
 
             if (!this.state('COMPLETE')) this.countries.correct.ready(_country);
-          }
-
-          else {
+          } else {
             this.playSFX('incorrect');
             $country.addClass('animated flash');
           }
@@ -236,7 +228,7 @@ pl.game('polar-bear', function () {
 
   this.screen('bears', function () {
 
-    this.start = function (_event) {
+    this.start = function () {
       this.proto();
       this.carousel.start();
     };
@@ -272,7 +264,7 @@ pl.game('polar-bear', function () {
     });
 
     this.state('incomplete', '-COMPLETE', {
-      willSet: function (_target) {
+      willSet: function () {
         this.isComplete = false;
       }
     });
@@ -290,9 +282,7 @@ pl.game('polar-bear', function () {
       if (_event.message === _event.behaviorTarget.id()) {
         this.score.up();
         this.playSFX('correct');
-      }
-
-      else {
+      } else {
         this.playSFX('incorrect');
       }
 
@@ -348,9 +338,7 @@ pl.game('polar-bear', function () {
               behaviorTarget: $target
             };
           }
-        }
-
-        else {
+        } else {
           this.proto(_target);
         }
 
@@ -361,7 +349,7 @@ pl.game('polar-bear', function () {
 
   this.screen('flip', function () {
 
-    this.complete = function (_event) {
+    this.complete = function () {
       var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
       ga('send', 'event', eventCategory, 'complete');

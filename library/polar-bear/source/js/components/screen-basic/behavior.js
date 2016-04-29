@@ -29,7 +29,6 @@ pl.game.component('screen-basic', function () {
 
     if (this !== this.screen) {
       this.log('Not called on a screen');
-      console.trace();
       return;
     }
 
@@ -44,9 +43,7 @@ pl.game.component('screen-basic', function () {
         current = this;
         nextScreen = this.proto();
       }
-    }
-
-    else {
+    } else {
       current = this;
       nextScreen = this.proto();
     }
@@ -67,7 +64,6 @@ pl.game.component('screen-basic', function () {
 
     if (this !== this.screen) {
       this.log('Not called on a screen');
-      console.trace();
       return;
     }
 
@@ -82,9 +78,7 @@ pl.game.component('screen-basic', function () {
         current = this;
         prevScreen = this.proto();
       }
-    }
-
-    else {
+    } else {
       current = this;
       prevScreen = this.proto();
     }
