@@ -1,48 +1,48 @@
 pl.game.component('frame', function () {
-	
-	this.ready = function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+  this.ready = function () {
+    if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+      this.requiredQueue.on('complete', this.bind(function () {
+        var sfx;
 
-				if (sfx) sfx.play();
-			}));
-		}
-	};
+        sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-	this.start = function () {
-		var voSound;
+        if (sfx) sfx.play();
+      }));
+    }
+  };
 
-		if (this.audio) {
-			voSound = this.audio.voiceOver[0];
+  this.start = function () {
+    var voSound;
 
-			this.audio.background.play();
-			if (voSound && !voSound.config("dontautoplay")) voSound.play();
-		}
+    if (this.audio) {
+      voSound = this.audio.voiceOver[0];
 
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+      this.audio.background.play();
+      if (voSound && !voSound.config('dontautoplay')) voSound.play();
+    }
 
-		return this;
-	};
+    if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
-	this.on('ui-open', function (_event) {
-		if (this.isReady) {
-			this.start();
-		}
+    return this;
+  };
 
-		if (this === _event.targetScope) {
-			if (!(this.hasOwnProperty('isComplete') && this.isComplete) && !(this.hasOwnProperty('requiredQueue') && (this.requiredQueue && this.requiredQueue.length))) {
-				this.complete();
-			}
-		}
-	});
+  this.on('ui-open', function (_event) {
+    if (this.isReady) {
+      this.start();
+    }
 
-	this.on('ui-close', function (_event) {
-		if (this.isReady && this.is(_event.target)) {
-			this.stop();
-		}
-	});
+    if (this === _event.targetScope) {
+      if (!(this.hasOwnProperty('isComplete') && this.isComplete) && !(this.hasOwnProperty('requiredQueue') && (this.requiredQueue && this.requiredQueue.length))) {
+        this.complete();
+      }
+    }
+  });
+
+  this.on('ui-close', function (_event) {
+    if (this.isReady && this.is(_event.target)) {
+      this.stop();
+    }
+  });
 
 });
