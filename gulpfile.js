@@ -145,6 +145,10 @@ gulp.task('copy-index', function () {
                 }
             }))
             .pipe(gulp.dest('./build/'+_game));
+
+        gulp
+            .src(path.join('./library', _game, 'source/screens/*'))
+            .pipe(gulp.dest('./build/'+_game+'/screens'));
     });
 });
 
