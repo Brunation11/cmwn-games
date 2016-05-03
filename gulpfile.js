@@ -151,8 +151,8 @@ gulp.task('copy-index', function () {
 gulp.task('copy-framework', function () {
     games.forEach(function (_game) {
         gulp
-            .src(path.join('./library/framework'))
-            .pipe(gulp.dest('./build/'));
+            .src(['./library/framework/*'])
+            .pipe(gulp.dest('./build/framework'));
     });
 });
 
