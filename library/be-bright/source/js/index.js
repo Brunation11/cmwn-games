@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../..//shared/js/screen-ios-splash';
@@ -91,12 +89,16 @@ pl.game('be-bright', function () {
 
   this.screen('flip', function () {
 
-    this.ready = function () {
+    this.on('ui-open', function () {
       this.audio.voiceOver.on('ended', function () {
         this.stampImg.addClass('START');
         this.audio.sfx.stamp.play();
       }.bind(this));
-    };
+    });
+
+    this.on('ui-close ui-leave', function() {
+      this.audio.voiceOver.off('ended');
+    });
 
     this.next = function () {
       this.game.quit.okay();
