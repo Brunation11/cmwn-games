@@ -50,10 +50,10 @@ games = (function() {
 
 gulp.task('default', ['build-dev']);
 
-gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
+gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
+gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 gulp.task('webpack:build-dev', function(callback) {
     games.forEach(function (_game, _index) {
@@ -145,6 +145,18 @@ gulp.task('copy-index', function () {
                 }
             }))
             .pipe(gulp.dest('./build/'+_game));
+
+        gulp
+            .src(path.join('./library', _game, 'source/screens/*'))
+            .pipe(gulp.dest('./build/'+_game+'/screens'));
+    });
+});
+
+gulp.task('copy-framework', function () {
+    games.forEach(function (_game) {
+        gulp
+            .src(['./library/framework/*'])
+            .pipe(gulp.dest('./build/framework'));
     });
 });
 
