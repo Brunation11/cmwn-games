@@ -8,9 +8,42 @@
         to making a difference.<br>
         Here's your
     </p>
-    <div class="flip-container">
+    <div id="flip-container" class="flip-container">
         <img class="flip" src="media/_Images/_Flip/MON_FLIP_10.1.png" draggable=false>
         <img class="monarch" src="media/_Images/_Flip/MON_FLIP_10.2.png" draggable=false>
         <img class="animated pupa" src="media/_Images/_Flip/MON_FLIP_10.3.png" draggable=false>
     </div>
 </div>
+
+<script type="application/javascript">
+    window._screenDeferred(
+        function () {
+            this.screen('flip', function () {
+                this.next = function () {
+                    this.game.quit.okay();
+                };
+
+                this.entity('flip-container', function () {
+                    this.on('animationend', function (_event) {
+                        if (!this.is(_event.target)) return;
+                        this.find('.pupa').addClass('SHAKE');
+                        this.screen.audio.sfx.shake.play();
+                    });
+                });
+
+                this.complete = function () {
+                    var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
+
+                    ga('send', 'event', eventCategory, 'complete');
+
+                    pl.game.trigger($.Event('platform-event', {
+                        name: 'flip',
+                        gameData: {id: this.game.id()}
+                    }));
+
+                    return this.proto();
+                };
+            });
+        }
+    )
+</script>

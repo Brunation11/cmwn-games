@@ -4,9 +4,6 @@
  */
 import './config.game';
 
-// SCREENS
-import flyAcross from './screens/fly-across';
-
 import '../../../shared/js/screen-ios-splash';
 import './components/audio-sequence/behavior';
 import './components/frame/behavior';
@@ -63,12 +60,10 @@ pl.game('monarch', function () {
     });
   });
 
-  this.screen('fly-across', flyAcross);
-
   this.screen('floating-weed', function () {
     var count = 0;
 
-    this.on('ready', function (_event) {
+    this.on('ui-open', function (_event) {
       if (!this.is(_event.target)) return;
       this.length = this.modal.reveal.find('li').length;
     });
@@ -81,73 +76,11 @@ pl.game('monarch', function () {
     });
   });
 
-  this.screen('four-generations', function () {
-    this.on('ui-open', function () {
-      this.deselect(this.selectableReveal.reveal.find('li'));
-    });
+  
 
-    this.on('audio-ended', function (_event) {
-      if (this.audio.voiceOver.lifespan === _event.target) {
-        this.selectableReveal.reveal.item(4);
-      }
-    });
-
-    this.entity('selectable-reveal', function () {
-      this.start = function () {};
-
-      this.respond('select', function (_event) {
-        var index, stateMethod;
-
-        index = _event.message;
-        stateMethod = this.properties.selectState || 'select';
-
-        if (~index) {
-          this[stateMethod](_event.behaviorTarget);
-          if (this.audio.sfx.button) this.audio.sfx.button.play();
-          this.reveal.item(index);
-        }
-      });
-
-      this.entity('selectable', function () {
-
-        this.shouldSelect = function (_$target) {
-          if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
-            return !this.screen.state(this.STATE.VOICE_OVER);
-          }
-
-          return false;
-        };
-
-      });
-    });
-  });
-
-  this.screen('flip', function () {
-    this.next = function () {
-      this.game.quit.okay();
-    };
-
-    this.entity('.flip-container', function () {
-      this.on('animationend', function (_event) {
-        if (!this.is(_event.target)) return;
-        this.find('.pupa').addClass('SHAKE');
-        this.screen.audio.sfx.shake.play();
-      });
-    });
-
-    this.complete = function () {
-      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-
-      ga('send', 'event', eventCategory, 'complete');
-
-      pl.game.trigger($.Event('platform-event', {
-        name: 'flip',
-        gameData: {id: this.game.id()}
-      }));
-
-      return this.proto();
-    };
-  });
+  window._screenDeferred = function (cb) {
+    cb.call(this);
+  };
 
   this.exit = function () {
     var screen, eventCategory;
