@@ -32,12 +32,12 @@ pl.game('be-bright', function () {
 
   startVideo = function () {
     this.on('ui-open', function () {
-      if (this.game.bgSound) this.game.bgSound.pause();
+      if (this.game.bgSound) this.game.bgSound.stop();
       setTimeout(function () {
         this.video.start();
       }.bind(this), 250);
     });
-    this.on('ui-close', function () {
+    this.on('ui-close ui-leave', function () {
       this.video.pause();
       if (this.game.bgSound) this.game.bgSound.play();
     });
