@@ -55,36 +55,4 @@ pl.game.component('screen-title', function () {
       this.off('transitionend');
     });
   });
-
-  this.next = function () {
-    var nextScreen, so, animate;
-
-    function leave() {
-      this.screen.leave();
-      nextScreen.open();
-    }
-
-    nextScreen = this.proto();
-    so = pl.util.resolvePath(this, 'audio.sfx.nextScreen');
-    animate = this.properties.animOut || '';
-
-    if (!so) {
-      so = pl.util.resolvePath(this, 'game.audio.sfx.button');
-    }
-
-    if (nextScreen) {
-      if (animate) {
-        this.logo
-          .on('animationend', leave.bind(this))
-          .addClass(animate);
-      } else {
-        leave.call(this);
-      }
-
-      if (so) so.play();
-    }
-
-    return nextScreen;
-  };
-
 });
