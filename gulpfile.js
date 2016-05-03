@@ -153,11 +153,9 @@ gulp.task('copy-index', function () {
 });
 
 gulp.task('copy-framework', function () {
-    games.forEach(function (_game) {
-        gulp
-            .src(['./library/framework/*'])
-            .pipe(gulp.dest('./build/framework'));
-    });
+    gulp
+        .src(['./library/framework/*'])
+        .pipe(gulp.dest('./build/framework'));
 });
 
 gulp.task('copy-media', ['copy-index'], function () {
@@ -166,6 +164,14 @@ gulp.task('copy-media', ['copy-index'], function () {
             .src(path.join( './library', _game, 'media/**/*' ))
             .pipe( gulp.dest(path.join( './build', _game, 'media' )) );
     });
+
+    gulp
+        .src(['./library/shared/fonts/*'])
+        .pipe(gulp.dest('./build/shared/fonts'));
+
+    gulp
+        .src(['./library/shared/images/*'])
+        .pipe(gulp.dest('./build/shared/images'));
 });
 
 gulp.task('copy-components', ['copy-media'], function () {
