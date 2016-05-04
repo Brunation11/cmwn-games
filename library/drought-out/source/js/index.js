@@ -19,8 +19,10 @@ import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
+  var self = this;
+
   pl.game.attachScreen = function(cb) {
-    cb.call(this);
+    cb.call(self);
   };
 
   var selectScreen = function () {
