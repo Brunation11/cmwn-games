@@ -24,11 +24,11 @@ import '../../../shared/js/google-analytics';
 
 pl.game('fire', function () {
 
-  pl.game.attachScreen = function(cb) {
-    cb.call(this);
-  };
-
   var self = this;
+
+  pl.game.attachScreen = function(cb) {
+    cb.call(self);
+  };
 
   // the following is the mouse smoke js
   (function () {
@@ -131,14 +131,6 @@ pl.game('fire', function () {
 
   this.screen('info-chemical', soundClasses);
   this.screen('info-fuel-oxygen', soundClasses);
-
-  this.screen('alarm', function () {
-    this.pushDown = function () {
-      if (this.audio) this.audio.sfx.play();
-      this.screen.next();
-    };
-  });
-
   this.screen('break-triangle', soundClasses);
 
   this.screen('flip', function () {
