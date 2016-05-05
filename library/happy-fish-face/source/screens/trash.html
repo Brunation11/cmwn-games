@@ -1,0 +1,173 @@
+<audio class="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" preload="none" loop></audio>
+<audio pl-id="correct" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Right.mp3" preload="none"></audio>
+<audio pl-id="incorrect" class="sfx" src="media/_audio/_S_Trash/HFF_SX_Wrong.mp3" preload="none"></audio>
+<!-- GoodJob -->
+<div pl-component="modal" class="center">
+  <div pl-component="reveal" pl-bg="media/_images/_frames/FR_2.png">
+    <audio pl-id="goodJob" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" preload="none" pl-dontautoplay pl-required></audio>
+    <audio pl-id="neverThrow" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" preload="none" pl-dontautoplay pl-required></audio>
+    <audio pl-id="tryAgain" class="voice-over" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" preload="none" pl-dontautoplay></audio>
+    <div class="center">
+      <ul class="items">
+        <li pl-id="good-job">
+          <img src="media/_images/_S_GoodJob/img_10.1.png" draggable=false>
+          <p>
+            Take this offline.<br> Never throw the trash in the water.
+          </p>
+        </li>
+        <li pl-id="try-again">
+          <img src="media/_images/_S_GoodJob/img_10.2.png" draggable=false>
+          <p>
+            You ran out of time!
+          </p>
+          <button class="try-again" pl-bg="media/_images/_S_GoodJob/img_10.3.png" pl-action="screen.reset()"></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END GoodJob -->
+<div pl-component="selectable">
+  <img class="hidden" src="media/_images/_S_Trash/img_9.2.png" draggable=false>
+  <ul class="items" pl-action="select()">
+    <li pl-id="bottle" pl-correct></li>
+    <li pl-id="cans" pl-correct></li>
+    <li pl-id="cleaner" pl-correct></li>
+    <li pl-id="wash" pl-correct></li>
+    <li pl-id="necklace" pl-correct></li>
+    <li pl-id="oil" pl-correct></li>
+    <li pl-id="bag" pl-correct></li>
+    <li pl-id="water" pl-correct></li>
+    <li pl-id="shoes" pl-correct></li>
+    <li pl-id="soap" pl-correct></li>
+    <li pl-id="sauce" pl-correct></li>
+    <li pl-id="beeker" pl-correct></li>
+    <li pl-id="drum" pl-correct></li>
+    <li pl-id="cosmetics" pl-correct></li>
+    <li pl-id="tire" pl-correct></li>
+    <li pl-id="floss" pl-correct></li>
+    <li pl-id="ketchup" pl-correct></li>
+    <li pl-id="bulb" pl-correct></li>
+    <li pl-id="fries" pl-correct></li>
+    <li pl-id="soda" pl-correct></li>
+    <li pl-id="coral"></li>
+    <li pl-id="crab"></li>
+    <li pl-id="turtle"></li>
+    <li pl-id="shell"></li>
+    <li pl-id="fish1"></li>
+    <li pl-id="fish2"></li>
+    <li pl-id="lobster"></li>
+    <li pl-id="shell2"></li>
+    <li pl-id="fish3"></li>
+    <li pl-id="starfish"></li>
+    <li pl-id="starfish" class="second"></li>
+    <li pl-id="octopus"></li>
+    <li pl-id="shell3"></li>
+    <li pl-id="seahorse"></li>
+    <li pl-id="fish4"></li>
+    <li pl-id="fish5"></li>
+    <li pl-id="jellyfish"></li>
+  </ul>
+</div>
+<div pl-component="timer" pl-set="90s">
+  <img src="media/_images/_S_Trash/img_9.1.png" draggable=false>
+  <p pl-id="stopWatch"></p>
+</div>
+<img class="net" src="media/_images/_S_Trash/img_9.3.png" draggable=false>
+<script>
+  pl.game.attachScreen(function () {
+    this.screen('trash', function () {
+      this.SELECTOR = {
+        CORRECT: '[pl-correct]'
+      };
+
+      this.on('ready', function (_event) {
+        var $net;
+
+        if (!this.is(_event.target)) return;
+
+        $net = this.find('.net');
+
+        this.mousemove(function (e){
+          $net.css({left: e.clientX / this.game.zoom - 50, top: e.clientY / this.game.zoom - 65});
+        }.bind(this));
+
+        this.on('touchstart', function () {
+          this.addClass('TOUCH');
+        }.bind(this));
+
+        this.$items = this
+          .selectable
+          .find(this.SELECTOR.CORRECT);
+        this.setup();
+
+        this.modal.reveal.audio.voiceOver.on('ended', function (_e) {
+          if (this.screen.state(this.STATE.OPEN)) {
+            if (_e.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
+          }
+        }.bind(this.modal.reveal));
+      });
+
+      this.setup = function () {
+        var correct = pl.Queue.create();
+
+        correct.on('complete', this.bind(function () {
+          this.timer.stop();
+          this.modal.item('goodJob');
+          this.addClass('GOOD-JOB');
+        }));
+
+        this.items = this
+          .$items
+          .map(function (_index, _node) {
+            correct.add($(_node).id());
+            return _node;
+          })
+          .toArray();
+
+        this.unhighlight(this.$items);
+
+        this.items.correct = correct;
+
+        this.removeClass('TRY-AGAIN GOOD-JOB');
+      };
+
+      this.reset = function () {
+        this.setup();
+        this.deselect(this.modal);
+        this.timer.restart();
+      };
+
+      this.respond('select', function (_event) {
+        if (~this.items.correct.indexOf(_event.message)) {
+          this.audio.sfx.correct.play();
+          this.highlight(_event.behaviorTarget);
+          this.items.correct.ready(_event.message);
+        } else {
+          this.audio.sfx.incorrect.play();
+        }
+      });
+
+      this.entity('timer', function () {
+        this.render = function () {
+          this.stopWatch.text(this.timeout / 1000 - this.time);
+          return this;
+        };
+
+        this.timerComplete = function () {
+          this.stop();
+          this.screen.modal.item('tryAgain');
+          this.screen.addClass('TRY-AGAIN');
+        };
+      });
+
+      this.on('ui-open', function (_e) {
+        if (!this.is(_e.target)) return;
+
+        if (this.modal.state(this.STATE.SELECTED)) {
+          this.reset();
+        }
+      });
+    });
+  });
+</script>

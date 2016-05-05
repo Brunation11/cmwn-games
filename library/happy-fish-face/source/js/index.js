@@ -4,10 +4,6 @@
  */
 import './config.game';
 
-// SCREENS
-import multiBubbles from './screens/multi-bubbles';
-import trash from './screens/trash';
-
 // COMPONENTS
 import '../../../shared/js/screen-ios-splash';
 import './components/audio-sequence/behavior';
@@ -26,6 +22,12 @@ import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('happy-fish-face', function () {
+
+  var self = this;
+
+  pl.game.attachScreen = function(cb) {
+    cb.call(self);
+  };
 
   var garbage = function () {
     this.on('ui-open', function () {
@@ -84,38 +86,7 @@ pl.game('happy-fish-face', function () {
 
   this.screen('water-pollution', garbage);
 
-  this.screen('healthy-water', function () {
-    garbage.call(this);
-
-    this.entity('multiple-choice', function () {
-      this.validateAnswer = function () {
-        var answers;
-
-        if (this.properties.correct) {
-          answers = this.properties.correct.split(/\s*,\s*/);
-
-          if (~answers.indexOf(String(this.getSelected().id()))) {
-            this.audio.sfx.correct.play();
-            this.complete();
-          } else {
-            this.audio.sfx.incorrect.play();
-          }
-        }
-
-        return false;
-      };
-    });
-
-    this.on('ui-open', function () {
-      this.deselect(this.find('.SELECTED'));
-    });
-  });
-
   this.screen('clean-water', garbage);
-
-  this.screen('multi-bubbles', multiBubbles);
-
-  this.screen('trash', trash);
 
   this.screen('flip', function () {
     this.next = function () {
