@@ -214,6 +214,7 @@ gulp.task('watch', function(callback) {
         'library/' + game + '/source/css/*.scss',
         'library/' + game + '/source/css/*.css',
         'library/' + game + '/source/js/components/**/*.html',
+        'library/' + game + '/source/screens/*',
         'library/' + game + '/index.html'], function () {
         gulp.start('build-dev');
     });
