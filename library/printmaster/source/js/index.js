@@ -144,7 +144,7 @@ pl.game('printmaster', function () {
 
     pl.game.trigger($.Event('platform-event', {
       name: 'flip',
-      gameData: {id: this.game.id()}
+      gameData: {id: this.id()}
     }));
 
     return this.proto();
