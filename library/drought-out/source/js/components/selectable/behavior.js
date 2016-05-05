@@ -20,10 +20,16 @@ pl.game.component('selectable', function () {
     return false;
   });
 
-  this.shouldSelect = function () {
-    return !this.screen.state(this.STATE.VOICE_OVER);
+  this.shouldSelect = function (_$target) {
+    if (this.allowSelectAll || _$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
+      return !this.screen.state(this.STATE.VOICE_OVER);
+    }
+
+    return false;
   };
 
-  this.start = function () {};
+  this.start = function () {
+    this.allowSelectAll = typeof this.attr('pl-allow-select-all') !== 'undefined';
+  };
 
 });

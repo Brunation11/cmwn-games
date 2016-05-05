@@ -116,6 +116,27 @@ pl.game('drought-out', function () {
 
   this.screen('what-can-we-do', selectScreen);
 
+  this.screen('shower', function () {
+    this.respond('select', function (_event) {
+      var vo;
+
+      if (_event.behaviorTarget.attr('pl-correct') == null) {
+        vo = this.audio.sfx.incorrect;
+      } else {
+        this.highlight(_event.behaviorTarget);
+        vo = this.audio.voiceOver[_event.message];
+      }
+
+      if (vo) vo.play();
+    });
+
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
+
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+    });
+  });
+
   this.screen('conserve', function () {
     var item = 0;
 
@@ -143,7 +164,7 @@ pl.game('drought-out', function () {
       if (this.isComplete) item = 0;
     });
 
-    this.on('ui-close ui-leave', function() {
+    this.on('ui-close ui-leave', function(_e) {
       if (!this.is(_e.target)) return;
       this.reveal.audio.voiceOver.off('ended');
     });

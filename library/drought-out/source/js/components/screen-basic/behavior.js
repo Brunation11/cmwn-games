@@ -40,7 +40,11 @@ pl.game.component('screen-basic', function () {
     this.startAudio();
 
     if (fxSound) fxSound.play();
-    if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+    if (this.hasOwnProperty('entities')) {
+      this.entities.forEach(function(_entity) {
+        _entity.start();
+      });
+    }
 
     return this;
   };
@@ -53,7 +57,9 @@ pl.game.component('screen-basic', function () {
   };
 
   this.on('ui-open', function (_event) {
-    if (this.isReady && this === _event.targetScope) {
+    if (!this.is(_event.target)) return;
+
+    if (this.isReady) {
       this.start();
     }
 
