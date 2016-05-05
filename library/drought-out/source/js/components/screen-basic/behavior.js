@@ -42,7 +42,7 @@ pl.game.component('screen-basic', function () {
     if (fxSound) fxSound.play();
     if (this.hasOwnProperty('entities')) {
       this.entities.forEach(function(_entity) {
-        _entity.start();
+        if(_entity && typeof _entity.start === 'function') _entity.start();
       });
     }
 
