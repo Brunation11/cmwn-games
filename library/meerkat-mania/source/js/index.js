@@ -18,6 +18,25 @@ import '../../../shared/js/google-analytics';
 
 pl.game('meerkat-mania', function () {
 
+  var self = this;
+
+  var videoScreen = function () {
+    this.on('ui-open', function () {
+      setTimeout(function () {
+        this.video.start();
+      }.bind(this), 250);
+    });
+
+    this.on('ui-close', function () {
+      this.video.pause();
+      if (this.game.bgSound) this.game.bgSound.play();
+    });
+  };
+
+  pl.game.attachScreen = function(cb) {
+    cb.call(self);
+  };
+
   this.screen('title', function () {
 
     this.on('ui-open', function (_event) {
@@ -43,54 +62,21 @@ pl.game('meerkat-mania', function () {
 
   });
 
-  this.screen('roles', function () {
-
-    this.respond('select', function (_event) {
-      var index = _event.message;
-
-      if (Number.isInteger(index) && ~index) {
-        this.highlight(_event.behaviorTarget);
-        this.selectableCanvas.activate(_event.behaviorTarget);
-        this.reveal.item(index);
-        // if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-      }
-    });
-
-    this.respond('closeAll', function (didClose) {
-      if (didClose) this.selectableCanvas.deactivateAll();
-    });
-
-    this.entity('selectable-canvas', function () {
-      this.start = function () {
-        this.ready();
-        this.deactivateAll();
-        this.unhighlightAll();
-        this.reveal.item(6);
-      };
-    });
-  });
-
-  this.screen('video', function () {
-    this.on('ui-open', function () {
-      setTimeout(function () {
-        this.video.start();
-      }.bind(this), 250);
-    });
-
-    this.on('ui-close', function () {
-      this.video.pause();
-      if (this.game.bgSound) this.game.bgSound.play();
-    });
-  });
+  this.screen('video', videoScreen);
+  this.screen('video-2', videoScreen);
 
   this.screen('feel', function () {
 
-    this.on('ready', function (_event) {
+    this.on('ui-open', function (_event) {
       if (!this.is(_event.target)) return;
 
       this.selectable.audio.voiceOver.on('ended', function () {
         this.complete();
       }.bind(this.selectable));
+    });
+
+    this.on('ui-close ui-leave', function () {
+      this.selectable.audio.voiceOver.off('ended');
     });
 
     this.respond('select', function (_event) {
