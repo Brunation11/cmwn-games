@@ -126,10 +126,10 @@ pl.game('meerkat-mania', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };
@@ -144,11 +144,6 @@ pl.game('meerkat-mania', function () {
 
     screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
     eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
-
-    pl.game.report.flip(this, {
-      name: 'flip',
-      gameData: {id: this.game.id()}
-    });
 
     ga('send', 'event', eventCategory, 'quit');
 
