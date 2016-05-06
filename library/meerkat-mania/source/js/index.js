@@ -18,8 +18,6 @@ import '../../../shared/js/google-analytics';
 
 pl.game('meerkat-mania', function () {
 
-  var self = this;
-
   var videoScreen = function () {
     this.on('ui-open', function () {
       setTimeout(function () {
@@ -31,10 +29,6 @@ pl.game('meerkat-mania', function () {
       this.video.pause();
       if (this.game.bgSound) this.game.bgSound.play();
     });
-  };
-
-  pl.game.attachScreen = function(cb) {
-    cb.call(self);
   };
 
   this.screen('title', function () {
@@ -60,6 +54,30 @@ pl.game('meerkat-mania', function () {
       this.title.audio.voiceOver.stop('@ALL');
     };
 
+  });
+
+  this.screen('roles', function () {
+
+    this.respond('select', function (_event) {
+      var index = _event.message;
+
+      if (Number.isInteger(index) && ~index) {
+        this.highlight(_event.behaviorTarget);
+        this.selectableCanvas.activate(_event.behaviorTarget);
+        this.reveal.item(index);
+        // if(this.audio.sfx.correct) this.audio.sfx.correct.play();
+      }
+    });
+
+    this.respond('closeAll', function (didClose) {
+      if (didClose) this.selectableCanvas.deactivateAll();
+    });
+
+    this.start = function () {
+      this.selectableCanvas.deactivateAll();
+      this.selectableCanvas.unhighlightAll();
+      this.reveal.item(6);
+    };
   });
 
   this.screen('video', videoScreen);
