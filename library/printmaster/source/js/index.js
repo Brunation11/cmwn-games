@@ -142,10 +142,10 @@ pl.game('printmaster', function () {
 
     ga('send', 'event', eventCategory, 'quit');
 
-    pl.game.trigger($.Event('platform-event', {
+    pl.game.report.flip(this, {
       name: 'flip',
       gameData: {id: this.id()}
-    }));
+    });
 
     return this.proto();
   };
