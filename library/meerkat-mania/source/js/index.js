@@ -145,6 +145,11 @@ pl.game('meerkat-mania', function () {
     screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
     eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
 
+    pl.game.report.flip(this, {
+      name: 'flip',
+      gameData: {id: this.game.id()}
+    });
+
     ga('send', 'event', eventCategory, 'quit');
 
     return this.proto();
