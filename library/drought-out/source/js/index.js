@@ -52,15 +52,15 @@ pl.game('drought-out', function () {
     this.on('ready', function (_event) {
       if (!this.is(_event.target)) return;
 
+      this.require('cacti');
+
       if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
-    this.entity('cacti', function () {
-      this.on('animationend', function (_e) {
-        if (!this.is(_e.target)) return;
+    this.on('animationend', function (_e) {
+      if ($(_e.target).id() !== 'cacti') return;
 
-        this.complete();
-      });
+      if (!this.isComplete) this.requiredQueue.ready('cacti');
     });
   });
 
