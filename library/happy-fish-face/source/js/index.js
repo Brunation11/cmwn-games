@@ -204,18 +204,9 @@ pl.game('happy-fish-face', function () {
       }
     });
 
-    // this.entity('timer', function () {
-    //   this.render = function () {
-    //     this.stopWatch.text(this.timeout / 1000 - this.time);
-    //     return this;
-    //   };
-
-    //   this.timerComplete = function () {
-    //     this.stop();
-    //     this.screen.modal.item('tryAgain');
-    //     this.screen.addClass('TRY-AGAIN');
-    //   };
-    // });
+    this.respond('timerComplete', function() {
+      this.addClass('TRY-AGAIN').modal.item('tryAgain');
+    });
 
     this.on('ui-open', function (_e) {
       if (!this.is(_e.target)) return;
