@@ -20,6 +20,7 @@ pl.game.component('timer', function () {
   this.timeout = 0;
   this.time = 0;
   this.stamp = 0;
+  this.countDown = false;
 
   this.timerComplete = function () {
     this
@@ -64,5 +65,13 @@ pl.game.component('timer', function () {
     this.stopWatch.text(this.time);
     return this;
   };
+
+  this.handleProperty({
+    countDown: function (_node, _name, _value) {
+      if (this.is(_node)) {
+        this.countDown = _value;
+      }
+    }
+  });
 
 });

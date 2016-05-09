@@ -10,39 +10,3 @@
     </ul>
   </div>
 </div>
-<script>
-  pl.game.attachScreen(function () {
-    this.screen('healthy-water', function () {
-      this.on('ui-open', function () {
-        this.game.addClass('garbage');
-      });
-
-      this.on('ui-close ui-leave', function () {
-        this.game.removeClass('garbage');
-      });
-
-      this.entity('multiple-choice', function () {
-        this.validateAnswer = function () {
-          var answers;
-
-          if (this.properties.correct) {
-            answers = this.properties.correct.split(/\s*,\s*/);
-
-            if (~answers.indexOf(String(this.getSelected().id()))) {
-              this.audio.sfx.correct.play();
-              this.complete();
-            } else {
-              this.audio.sfx.incorrect.play();
-            }
-          }
-
-          return false;
-        };
-      });
-
-      this.on('ui-open', function () {
-        this.deselect(this.find('.SELECTED'));
-      });
-    });
-  });
-</script>
