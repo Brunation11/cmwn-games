@@ -62,7 +62,8 @@ pl.game('litterbug', function () {
   });
 
   this.screen('video', function () {
-    this.on('ui-open', function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
       setTimeout(function () {
         this.start();
       }.bind(this), 250);

@@ -5,7 +5,7 @@ pl.game.component('video', function () {
     this.video.on('ended', function () {
       self.screen.complete();
     });
-    if (this.game.bgSound) this.game.bgSound.pause();
+    if (this.game.bgSound) this.game.bgSound.stop();
     this.video[0].play();
   };
 
