@@ -31,7 +31,8 @@ pl.game('be-bright', function () {
   };
 
   startVideo = function () {
-    this.on('ui-open', function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
       if (this.game.bgSound) this.game.bgSound.stop();
       setTimeout(function () {
         this.video.start();
@@ -59,6 +60,8 @@ pl.game('be-bright', function () {
         this.title.audio.sfx.play();
       });
     });
+
+    this.prev = function () {};
 
     this.startAudio = function () {
       this.title.startAudio();
