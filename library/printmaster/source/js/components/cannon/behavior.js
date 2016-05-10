@@ -21,10 +21,12 @@ pl.game.component('cannon', function () {
   });
 
   this.behavior('fire', function () {
+    var message;
     if (this.isLaunchComplete) {
       this.launch(this.ball);
+      message = pl.util.resolvePath(this, this.properties.messagePath || 'cannon.properties.fire');
       return {
-        message: this.cannon.properties.fire
+        message
       };
     }
 

@@ -126,11 +126,9 @@ pl.game('printmaster', function () {
       this.require('shake');
     });
 
-    this.entity('.flip', function () {
-      this.on('animationend', function (_event) {
-        if (!this.is(_event.target) || !this.screen.allowAction()) return;
-        this.screen.requiredQueue.ready('shake');
-      });
+    this.on('animationend', function (_event) {
+      if (!this.flip.is(_event.target) || !this.allowAction()) return;
+      this.requiredQueue.ready('shake');
     });
   });
 
