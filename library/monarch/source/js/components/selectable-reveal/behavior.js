@@ -8,9 +8,12 @@ pl.game.component('selectable-reveal', function () {
 
     if (~index) {
       this[stateMethod](_event.behaviorTarget);
+      if (this.audio.sfx.button) this.audio.sfx.button.play();
       this.reveal.item(index);
     }
   });
+
+  this.start = function () {};
 
   this.entity('selectable', function () {
 
