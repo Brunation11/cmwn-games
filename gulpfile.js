@@ -33,7 +33,7 @@ function defineEntries (_config,_game) {
     config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
     config.resolve.modulesDirectories.push(__dirname+'/library/'+_game+'/source/js/');
-    config.entry[_game] = ['./'+_game+'/source/js/index.js'];
+    config.entry[_game] = ['./'+_game+'/index.js'];
 
     console.log(games, 'entry', config.entry);
 
@@ -91,10 +91,8 @@ gulp.task('webpack:build', function(callback) {
 gulp.task('sass', function () {
     games.forEach(function (_game) {
         gulp
-            .src(['./library/' + _game + '/source/js/components/**/*.scss',
-                  './library/' + _game + '/source/js/components/**/*.css',
-                  './library/' + _game + '/source/css/*.scss',
-                  './library/' + _game + '/source/css/*.css'])
+            .src(['./library/' + _game + '/**/*.scss',
+                  './library/' + _game + '/**/*.css'])
             .pipe(sass().on('error', sass.logError))
             .pipe(concat('style.css'))
             .pipe(sourcemaps.init())
@@ -105,8 +103,8 @@ gulp.task('sass', function () {
     });
 
     gulp
-        .src(['./library/shared/css/*.scss',
-              './library/shared/css/*.css'])
+        .src(['./library/shared/css/**/*.scss',
+              './library/shared/css/**/*.css'])
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
@@ -208,14 +206,10 @@ gulp.task('watch', function(callback) {
     watch([
         '../js-interactive-library/build/play.js',
         'library/shared/**/*',
-        'library/' + game + '/source/js/**/*.js',
-        'library/' + game + '/source/js/components/**/*.scss',
-        'library/' + game + '/source/js/components/**/*.css',
-        'library/' + game + '/source/css/*.scss',
-        'library/' + game + '/source/css/*.css',
-        'library/' + game + '/source/js/components/**/*.html',
-        'library/' + game + '/source/screens/*',
-        'library/' + game + '/index.html'], function () {
+        'library/' + game + '/**/*.js',
+        'library/' + game + '/**/*.scss',
+        'library/' + game + '/**/*.css',
+        'library/' + game + '/**/*.html'], function () {
         gulp.start('build-dev');
     });
 });
