@@ -21,7 +21,7 @@ import Flip from './screens/flip-screen.js';
 import '../shared/js/test-platform-integration';
 
 class BeBright extends play.Game {
-  constructor(config, gameSelector) {
+  constructor(config) {
     super();
 
     this.screens = [
@@ -33,6 +33,6 @@ class BeBright extends play.Game {
 
 }
 
-play.start(BeBright,'be-bright');
+play.start(BeBright,config.id);
 
 import '../shared/js/google-analytics';

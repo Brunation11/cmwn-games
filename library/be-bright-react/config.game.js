@@ -1,4 +1,5 @@
 var config = {
+  id: 'be-bright',
   screenSelector: '.screen',
   componentDirectory: 'components/',
   dimensions: {
