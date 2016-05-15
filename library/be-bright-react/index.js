@@ -14,9 +14,11 @@ import config from './config.game';
 // import './components/title/behavior';
 // import './components/video/behavior';
 
+import Loader from '../shared/components/loader/0.1.js';
+
+import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
 import TitleScreen from './components/title_screen.js';
 import BulbsScreen from './components/bulbs_screen.js';
-import AudioScreen from './components/audio_screen.js';
 import InfoScreen from './components/info_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
@@ -27,12 +29,16 @@ class BeBright extends play.Game {
     super(config);
 
     this.screens = [
+      iOSScreen,
       TitleScreen,
       BulbsScreen,
-      AudioScreen,
       InfoScreen,
       FlipScreen,
     ];
+  }
+
+  renderLoader() {
+    return Loader;
   }
 
 }

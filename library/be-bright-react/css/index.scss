@@ -390,6 +390,10 @@ p {
       }
     }
   }
+
+  &.CLOSE {
+    transform: translateX(0%);
+  }
 }
 
 #why {

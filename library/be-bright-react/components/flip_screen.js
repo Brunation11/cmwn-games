@@ -2,6 +2,10 @@ class Flip extends play.Screen {
   constructor() {
     super();
 
+    this.state = {
+      id: 'flip'
+    };
+
   }
 
   renderContent() {

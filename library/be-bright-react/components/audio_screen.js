@@ -4,6 +4,10 @@ class AudioScreen extends play.Screen {
   constructor() {
     super();
 
+    this.state = {
+      id: 'audio-screen'
+    };
+
   }
 
   renderContent() {

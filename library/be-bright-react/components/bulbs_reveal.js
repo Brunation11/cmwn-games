@@ -12,6 +12,7 @@ class BulbsReveal extends Reveal {
         <li></li>
         <li></li>
         <li></li>
+        <li></li>
       </ul>
     );
   }
