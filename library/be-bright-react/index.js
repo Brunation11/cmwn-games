@@ -14,16 +14,16 @@ import config from './config.game';
 // import './components/title/behavior';
 // import './components/video/behavior';
 
-import TitleScreen from './screens/title_screen.js';
-import BulbsScreen from './screens/bulbs_screen.js';
-import AudioScreen from './screens/audio_screen.js';
-import InfoScreen from './screens/info_screen.js';
-import FlipScreen from './screens/flip_screen.js';
+import TitleScreen from './components/title_screen.js';
+import BulbsScreen from './components/bulbs_screen.js';
+import AudioScreen from './components/audio_screen.js';
+import InfoScreen from './components/info_screen.js';
+import FlipScreen from './components/flip_screen.js';
 
 import '../shared/js/test-platform-integration';
 
 class BeBright extends play.Game {
-  constructor(config) {
+  constructor() {
     super(config);
 
     this.screens = [
@@ -37,6 +37,6 @@ class BeBright extends play.Game {
 
 }
 
-play.start(BeBright.bind(this,config),config.id);
+play.start(BeBright,config.id);
 
 import '../shared/js/google-analytics';

@@ -9,10 +9,10 @@ class BulbsSelectable extends Selectable {
   render() {
     return (
       <ul className='selectable' onClick={this.select()}>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li ref="1" className="animated" correct={true}></li>
+        <li ref="2" className="animated" correct={true}></li>
+        <li ref="3" className="animated" correct={true}></li>
+        <li ref="4" className="animated" correct={true}></li>
       </ul>
     );
   }

@@ -4,6 +4,9 @@ class BulbScreen extends play.Screen {
   constructor() {
     super();
 
+    this.state = {
+      id: 'why'
+    };
   }
 
   renderContent() {
