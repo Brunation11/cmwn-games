@@ -22,7 +22,7 @@ import BulbsScreen from './components/bulbs_screen.js';
 import InfoScreen from './components/info_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
-import '../shared/js/test-platform-integration';
+// import '../shared/js/test-platform-integration';
 
 class BeBright extends play.Game {
   constructor() {
@@ -40,7 +40,7 @@ class BeBright extends play.Game {
   componentWillMount() {
     play.Game.prototype.componentWillMount.call(this);
 
-    
+
   }
 
   renderLoader() {
@@ -52,7 +52,7 @@ class BeBright extends play.Game {
   renderAssets() {
     return (
       <div>
-        <play.Audio ref='bkg-1' type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <play.Audio ref='bkg-1' type="background" src="media/_BKG/_S_BKG_1.mp3" loop />
       </div>
     );
   }
