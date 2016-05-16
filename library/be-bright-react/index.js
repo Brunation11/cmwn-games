@@ -37,6 +37,12 @@ class BeBright extends play.Game {
     ];
   }
 
+  componentWillMount() {
+    play.Game.prototype.componentWillMount.call(this);
+
+    
+  }
+
   renderLoader() {
     return (
       <Loader />

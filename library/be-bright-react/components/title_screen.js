@@ -19,9 +19,9 @@ class Title extends play.Screen {
 
   startMedia() {
     var self = this;
+    this.refs['buzz'].play();
     setTimeout(() => {
       self.complete();
-      self.refs['buzz'].play();
     }, 3000);
   }
 
@@ -29,7 +29,7 @@ class Title extends play.Screen {
     return (
       <div>
         <play.Image ref="background" className="hidden" src="media/_BKG/BKG_1.png" />
-        <play.Audio ref="buzz" type="sfx" src="media/S_1/S_1.2.mp3" />
+        <play.Audio ref="buzz" type="sfx" src="media/S_1/S_1.2.mp3" delay={3000} />
         <play.Image ref="bulb" className="bulb animated" src="media/S_1/img_1.2.png" />
         <play.Image ref="presenets" className="presents animated" src="media/S_1/img_1.1.png" />
         <play.Image ref="title" className="title animated" src="media/S_1/img_1.3.png" />
