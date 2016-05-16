@@ -8,17 +8,21 @@ class BulbsSelectable extends Selectable {
       selectClass: 'HIGHLIGHTED',
       classes: {}
     };
+
+    this.list = [
+      <li className="animated" correct={true}></li>,
+      <li className="animated" correct={true}></li>,
+      <li className="animated" correct={true}></li>,
+      <li className="animated" correct={true}></li>
+    ];
   }
 
-  render() {
-    return (
-      <ul className='selectable' onClick={this.select.bind(this)}>
-        <li className={"animated "+this.state.classes[0]} ref="0" data-ref="0" correct={true}></li>
-        <li className={"animated "+this.state.classes[1]} ref="1" data-ref="1" correct={true}></li>
-        <li className={"animated "+this.state.classes[2]} ref="2" data-ref="2" correct={true}></li>
-        <li className={"animated "+this.state.classes[3]} ref="3" data-ref="3" correct={true}></li>
-      </ul>
-    );
+  renderList() {
+    return this.list.map((li, key) => {
+      return (
+        <li {...li.props} className={li.props.className+' '+this.getClass(key)} ref={key} key={key} data-ref={key} ></li>
+      );
+    });
   }
 }
 

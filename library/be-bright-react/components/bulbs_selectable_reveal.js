@@ -10,13 +10,13 @@ class BulbsSelectableReveal extends SelectableReveal {
 
   renderSelectable() {
     return (
-      <BulbsSelectable />
+      <BulbsSelectable ref="selectable" selectRespond={this.selectRespond.bind(this)} />
     );
   }
 
   renderReveal() {
     return (
-      <BulbsReveal />
+      <BulbsReveal ref="reveal" />
     );
   }
 }

@@ -6,23 +6,73 @@ class Selectable extends play.Component {
       selectClass: 'SELECTED',
       classes: {}
     };
+
+    this.list = [
+      <li></li>,
+      <li></li>,
+      <li></li>,
+      <li></li>
+    ];
+  }
+
+  start() {
+    this.setState({
+      started: true
+    });
+
+    this.componentDidMount();
+
+    Object.keys(this.refs).map(key => {
+      if (typeof this.refs[key].start === 'function') this.refs[key].start();
+    });
   }
 
   select(e) {
-    var classes = this.state.classes;
-    classes[e.target.getAttribute('data-ref')] = this.state.selectClass;
+    var classes, message;
+
+    classes = this.state.classes;
+    message = e.target.getAttribute('data-ref');
+    classes[message] = this.state.selectClass;
 
     this.setState({
       classes,
+    });
+
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond(message);
+    }
+
+    this.requireForComplete = this.requireForComplete.filter((key) => {
+      return key !== message;
+    });
+
+    this.checkComplete();
+  }
+
+  getClass(key) {
+    return this.state.classes[key] ? this.state.classes[key] : '';
+  }
+
+  getULClass() {
+    var classes = '';
+
+    if (this.state.complete) classes += ' COMPLETE';
+
+    return classes;
+  }
+
+  renderList() {
+    return this.list.map((li, key) => {
+      return (
+        <li {...li.props} className={li.props.className+' '+this.getClass(key)} ref={key} key={key} index={key} ></li>
+      );
     });
   }
 
   render() {
     return (
-      <ul className='selectable' onClick={this.select.bind(this)}>
-        <li className={this.state.classes[0]} ref="0" data-ref="0"></li>
-        <li className={this.state.classes[1]} ref="1" data-ref="1"></li>
-        <li className={this.state.classes[2]} ref="2" data-ref="2"></li>
+      <ul className={'selectable'+this.getULClass()} onClick={this.select.bind(this)}>
+        {this.renderList()}
       </ul>
     );
   }

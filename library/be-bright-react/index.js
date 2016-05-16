@@ -38,7 +38,17 @@ class BeBright extends play.Game {
   }
 
   renderLoader() {
-    return Loader;
+    return (
+      <Loader />
+    );
+  }
+
+  renderAssets() {
+    return (
+      <div>
+        <play.Audio ref='bkg-1' type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+      </div>
+    );
   }
 
 }
