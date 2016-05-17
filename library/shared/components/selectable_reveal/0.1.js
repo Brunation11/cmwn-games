@@ -25,9 +25,17 @@ class SelectableReveal extends play.Component {
     );
   }
 
+  getClasses() {
+    var classes = '';
+
+    if (this.state.complete) classes += ' COMPLETE';
+
+    return classes;
+  }
+
   render() {
     return (
-      <div className="selectable-reveal">
+      <div className={"selectable-reveal"+this.getClasses()}>
         {this.renderSelectable()}
         {this.renderReveal()}
       </div>

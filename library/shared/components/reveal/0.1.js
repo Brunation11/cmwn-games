@@ -17,15 +17,24 @@ class Reveal extends play.Component {
     });
 
     this.playAudio(message);
+
+    this.requireForComplete = this.requireForComplete.filter(item => {
+      return item !== message;
+    });
   }
 
   close() {
     this.setState({
       open: false,
+      openReveal: null,
     });
   }
 
   playAudio(message) {
+    if (this.audio['open-sound']) {
+      this.audio['open-sound'].play();
+    }
+
     if (this.audio.voiceOver[message]) {
       this.audio.voiceOver[message].play();
     }
@@ -56,6 +65,7 @@ class Reveal extends play.Component {
     var classes = '';
 
     if (this.state.open) classes += 'OPEN';
+    if (this.state.complete) classes += ' COMPLETE';
 
     return classes;
   }

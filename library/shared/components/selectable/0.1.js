@@ -30,6 +30,8 @@ class Selectable extends play.Component {
   select(e) {
     var classes, message;
 
+    if (e.target.tagName !== 'LI') return;
+
     classes = this.state.classes;
     message = e.target.getAttribute('data-ref');
     classes[message] = this.state.selectClass;

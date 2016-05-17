@@ -53,6 +53,9 @@ class BeBright extends play.Game {
     return (
       <div>
         <play.Audio ref='bkg-1' type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <play.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+        <play.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
+        <play.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       </div>
     );
   }

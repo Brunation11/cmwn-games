@@ -27,10 +27,11 @@ class BulbsReveal extends Reveal {
   renderAssets() {
     return (
       <div>
-        <play.Audio ref="vo-0" type="voiceOver" src="media/S_3/VO_3.2.mp3" delay="2s" />
-        <play.Audio ref="vo-1" type="voiceOver" src="media/S_3/VO_3.3.mp3" delay="2s" />
-        <play.Audio ref="vo-2" type="voiceOver" src="media/S_3/VO_3.4.mp3" delay="2s" />
-        <play.Audio ref="vo-3" type="voiceOver" src="media/S_3/VO_3.5.mp3" delay="2s" />
+        <play.Audio ref="vo-0" type="voiceOver" src="media/S_3/VO_3.2.mp3" delay={2000} />
+        <play.Audio ref="vo-1" type="voiceOver" src="media/S_3/VO_3.3.mp3" delay={2000} />
+        <play.Audio ref="vo-2" type="voiceOver" src="media/S_3/VO_3.4.mp3" delay={2000} />
+        <play.Audio ref="vo-3" type="voiceOver" src="media/S_3/VO_3.5.mp3" delay={2000} />
+        <play.Audio ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       </div>
     );
   }

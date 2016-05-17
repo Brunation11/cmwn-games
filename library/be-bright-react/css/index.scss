@@ -47,7 +47,7 @@ html, body, body > div, body > div > div {
   overflow: hidden;
   user-select: none;
   user-drag: none;
-  cursor: default;
+  cursor: auto;
 }
 
 html {
@@ -190,6 +190,14 @@ p {
   display: none;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
+
+  &:not(.COMPLETE) {
+    button {
+      &.next-screen {
+        cursor: auto;
+      }
+    }
+  }
 }
 
 .screen.last {}
@@ -227,7 +235,7 @@ p {
 
   .screen.GATED .next-screen {
     opacity: 0;
-    cursor: default;
+    cursor: auto;
     z-index: -1;
   }
 
@@ -302,7 +310,7 @@ p {
     right: 5px;
     bottom: 10px;
     opacity: 1;
-    cursor: default;
+    cursor: pointer;
     transition: opacity 1s;
   }
 
@@ -313,17 +321,11 @@ p {
   }
 }
 
-.screen.VOICE-OVER {
+.pl-game.VOICE-OVER {
   .reveal {
-    .items {
-      li {
-        div {
-          .close-reveal {
-            opacity: .5;
-            pointer-events: none;
-          }
-        }
-      }
+    .close-reveal {
+      opacity: .5;
+      pointer-events: none;
     }
   }
 }
@@ -416,7 +418,7 @@ p {
       transition: opacity 1s 1s;
 
       li {
-        cursor: default;
+        cursor: auto;
         opacity: 0.5;
         transition: opacity 1s;
         background-image: url(../media/S_3/img_3.2.png);
@@ -474,17 +476,15 @@ p {
       }
     }
   }
+}
 
-  &.VOICE-OVER {
-    .selectable {
-      .items {
-        li {
-          pointer-events: none;
+.pl-game.VOICE-OVER #why {
+  .selectable {
+    li {
+      pointer-events: none;
 
-          &:first-of-type:not(.HIGHLIGHTED) {
-            pointer-events: none;
-          }
-        }
+      &:first-of-type:not(.HIGHLIGHTED) {
+        pointer-events: none;
       }
     }
   }
@@ -508,7 +508,7 @@ p {
       li {
         display: inline-block;
         height: 380px;
-        cursor: default;
+        cursor: auto;
         background-repeat: no-repeat;
 
         &.pig {
@@ -595,7 +595,7 @@ p {
         transition: opacity 1s 1s;
 
         li {
-          cursor: default;
+          cursor: auto;
           position: absolute;
           width: 200px;
           height: 200px;
