@@ -95,10 +95,10 @@ pl.game('tag-it', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };
