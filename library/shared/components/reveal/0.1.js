@@ -30,6 +30,11 @@ class Reveal extends play.Component {
     });
   }
 
+  start() {
+    play.Component.prototype.start.call(this);
+    this.close();
+  }
+
   playAudio(message) {
     if (this.audio['open-sound']) {
       this.audio['open-sound'].play();

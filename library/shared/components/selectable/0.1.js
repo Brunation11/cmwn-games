@@ -7,6 +7,8 @@ class Selectable extends play.Component {
       classes: {}
     };
 
+    this.selectFunction = this.select;
+
     this.list = [
       <li></li>,
       <li></li>,
@@ -17,22 +19,22 @@ class Selectable extends play.Component {
 
   start() {
     this.setState({
-      started: true
+      started: true,
+      classes: {}
     });
 
-    this.componentDidMount();
+    this.bootstrap();
 
     Object.keys(this.refs).map(key => {
       if (typeof this.refs[key].start === 'function') this.refs[key].start();
     });
   }
 
-  select(e) {
-    var classes, message;
+  selectHelper(e, classes) {
+    var message;
 
     if (e.target.tagName !== 'LI') return;
 
-    classes = this.state.classes;
     message = e.target.getAttribute('data-ref');
     classes[message] = this.state.selectClass;
 
@@ -51,6 +53,16 @@ class Selectable extends play.Component {
     this.checkComplete();
   }
 
+  select(e) {
+    var classes = [];
+    this.selectHelper(e, classes)
+  }
+
+  highlight(e) {
+    var classes = this.state.classes;
+    this.selectHelper(e, classes)
+  }
+
   getClass(key) {
     return this.state.classes[key] ? this.state.classes[key] : '';
   }
@@ -65,15 +77,22 @@ class Selectable extends play.Component {
 
   renderList() {
     return this.list.map((li, key) => {
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <li {...li.props} className={li.props.className+' '+this.getClass(key)} ref={key} key={key} index={key} ></li>
+        <play.ListItem
+          {...li.props}
+          className={li.props.className+' '+this.getClass(key)}
+          data-ref={ref}
+          ref={ref}
+          key={key}
+        />
       );
     });
   }
 
   render() {
     return (
-      <ul className={'selectable'+this.getULClass()} onClick={this.select.bind(this)}>
+      <ul className={'selectable'+this.getULClass()} onClick={this.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

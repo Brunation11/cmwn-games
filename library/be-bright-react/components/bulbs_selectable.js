@@ -9,6 +9,8 @@ class BulbsSelectable extends Selectable {
       classes: {}
     };
 
+    this.selectFunction = this.highlight;
+
     this.list = [
       <li className="animated" correct={true}></li>,
       <li className="animated" correct={true}></li>,
