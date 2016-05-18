@@ -130,6 +130,19 @@ pl.game('printmaster', function () {
       if (!this.flip.is(_event.target) || !this.allowAction()) return;
       this.requiredQueue.ready('shake');
     });
+
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
+
+      ga('send', 'event', eventCategory, 'complete');
+
+      pl.game.report.flip(this, {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      });
+
+      return this.proto();
+    };
   });
 
   this.exit = function () {
