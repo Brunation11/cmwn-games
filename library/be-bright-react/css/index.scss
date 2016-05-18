@@ -330,7 +330,7 @@ p {
   }
 }
 
-.video-component {
+.video {
   background: url(../media/_Frames/FR_2.png) center center no-repeat;
   background-size: 100% 100%;
 
@@ -656,7 +656,7 @@ p {
   }
 }
 
-.screen.lets-learn {
+#info-lets-learn {
   img {
     position: absolute;
     top: 140px;
@@ -672,7 +672,7 @@ p {
   }
 }
 
-.screen.flip {
+#flip {
   h2 {
     position: absolute;
     left: 0;
@@ -708,9 +708,10 @@ p {
       animation-duration: 3s;
     }
 
-    .stamp.START {
+    .stamp {
       opacity: 1;
       animation-name: stamp;
+      animation-delay: 4s;
       animation-duration: 1s;
     }
   }

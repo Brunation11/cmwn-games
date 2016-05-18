@@ -4,15 +4,18 @@ class Info extends play.Screen {
   constructor() {
     super();
 
+
+    this.state = {
+      id: 'info-lets-learn'
+    };
+
   }
 
   renderContent() {
     return (
       <div>
-        <div>info screen content</div>
-        <InfoComponent />
-        <play.Image ref="title" src="media/S_3/img_3.1.png" />
-        <play.Video ref="video" src="https://res.cloudinary.com/changemyworldnow/video/upload/v1455037011/Be_Bright_112015_DM_480p_ghb6vh_summbp.mp4" />
+        <play.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
+        <play.Image ref="info" className="animated" src="media/S_6/img_6.png" />
       </div>
     );
   }
