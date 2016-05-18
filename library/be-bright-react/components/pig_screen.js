@@ -19,7 +19,6 @@ class PigScreen extends play.Screen {
   }
 
   renderContent() {
-    console.log(this.requireForComplete);
     return (
       <div>
         <play.Audio ref="vo" type="voiceOver" src="media/S_4/VO_4.1.mp3" pl-delay={1000} />

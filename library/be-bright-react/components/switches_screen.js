@@ -5,7 +5,7 @@ class SwitchesScreen extends play.Screen {
     super();
 
     this.state = {
-      id: 'Switches'
+      id: 'switches'
     };
   }
 

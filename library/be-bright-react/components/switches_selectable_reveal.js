@@ -1,6 +1,6 @@
 import SelectableReveal from '../../shared/components/selectable_reveal/0.1';
-import SwitchesSelectable from './bulbs_selectable';
-import SwitchesReveal from './bulbs_reveal';
+import SwitchesSelectable from './switches_selectable';
+import SwitchesReveal from './switches_reveal';
 
 class SwitchesSelectableReveal extends SelectableReveal {
   constructor() {

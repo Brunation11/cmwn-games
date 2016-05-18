@@ -35,6 +35,7 @@ class SwitchesReveal extends Reveal {
         <play.Audio ref="vo-2" type="voiceOver" src="media/S_5/VO_5.4.mp3" delay={2000} />
         <play.Audio ref="vo-3" type="voiceOver" src="media/S_5/VO_5.5.mp3" delay={2000} />
         <play.Audio ref="vo-4" type="voiceOver" src="media/S_5/VO_5.6.mp3" delay={2000} />
+        <play.Audio ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       </div>
     );
   }
