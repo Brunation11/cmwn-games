@@ -1,6 +1,6 @@
 import Selectable from '../../shared/components/selectable/0.1';
 
-class BulbsSelectable extends Selectable {
+class SwitchesSelectable extends Selectable {
   constructor() {
     super();
 
@@ -15,9 +15,10 @@ class BulbsSelectable extends Selectable {
       <li className="animated" correct={true}></li>,
       <li className="animated" correct={true}></li>,
       <li className="animated" correct={true}></li>,
+      <li className="animated" correct={true}></li>,
       <li className="animated" correct={true}></li>
     ];
   }
 }
 
-export default BulbsSelectable;
+export default SwitchesSelectable;

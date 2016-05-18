@@ -20,7 +20,7 @@ import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
 import TitleScreen from './components/title_screen.js';
 import BulbsScreen from './components/bulbs_screen.js';
 import PigScreen from './components/pig_screen.js';
-import InfoScreen from './components/info_screen.js';
+import SwitchesScreen from './components/switches_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
@@ -36,7 +36,7 @@ class BeBright extends play.Game {
       TitleScreen,
       BulbsScreen,
       PigScreen,
-      InfoScreen,
+      SwitchesScreen,
       FlipScreen,
     ];
 
