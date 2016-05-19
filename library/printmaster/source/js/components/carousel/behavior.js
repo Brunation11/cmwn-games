@@ -53,7 +53,7 @@ pl.game.component('carousel', function () {
   };
 
   this.provideBehaviorTarget = function () {
-    return this.current();
+    return this.properties.targetNext ? this.current().next() : this.current();
   };
 
   this.respond('fire', function (_event) {

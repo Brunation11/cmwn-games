@@ -75,14 +75,6 @@ pl.game('animal-id', function () {
   this.screen('id-herbivore', showNext);
 
   this.screen('match-game', function () {
-    this.entity('reveal', function () {
-      this.handleCloseClick = function () {
-        if (!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
-          this.closeAll();
-        }
-      };
-    });
-
     this.on('ui-close', function (_event) {
       if (!this.is(_event.target)) return;
       this.reveal.closeAll();
@@ -106,10 +98,10 @@ pl.game('animal-id', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };

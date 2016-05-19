@@ -101,7 +101,7 @@ pl.game.component('screen-basic', function () {
   };
 
   this.on('ui-open', function (_event) {
-    if (this !== _event.targetScope) return;
+    if (!this.is(_event.target)) return;
 
     if (this.isReady) {
       this.start();

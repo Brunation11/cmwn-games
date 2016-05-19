@@ -18,6 +18,19 @@ import '../../../shared/js/google-analytics';
 
 pl.game('meerkat-mania', function () {
 
+  var videoScreen = function () {
+    this.on('ui-open', function () {
+      setTimeout(function () {
+        this.video.start();
+      }.bind(this), 250);
+    });
+
+    this.on('ui-close', function () {
+      this.video.pause();
+      if (this.game.bgSound) this.game.bgSound.play();
+    });
+  };
+
   this.screen('title', function () {
 
     this.on('ui-open', function (_event) {
@@ -60,37 +73,28 @@ pl.game('meerkat-mania', function () {
       if (didClose) this.selectableCanvas.deactivateAll();
     });
 
-    this.entity('selectable-canvas', function () {
-      this.start = function () {
-        this.ready();
-        this.deactivateAll();
-        this.unhighlightAll();
-        this.reveal.item(6);
-      };
-    });
+    this.start = function () {
+      this.selectableCanvas.deactivateAll();
+      this.selectableCanvas.unhighlightAll();
+      this.reveal.item(6);
+    };
   });
 
-  this.screen('video', function () {
-    this.on('ui-open', function () {
-      setTimeout(function () {
-        this.video.start();
-      }.bind(this), 250);
-    });
-
-    this.on('ui-close', function () {
-      this.video.pause();
-      if (this.game.bgSound) this.game.bgSound.play();
-    });
-  });
+  this.screen('video', videoScreen);
+  this.screen('video-2', videoScreen);
 
   this.screen('feel', function () {
 
-    this.on('ready', function (_event) {
+    this.on('ui-open', function (_event) {
       if (!this.is(_event.target)) return;
 
       this.selectable.audio.voiceOver.on('ended', function () {
         this.complete();
       }.bind(this.selectable));
+    });
+
+    this.on('ui-close ui-leave', function () {
+      this.selectable.audio.voiceOver.off('ended');
     });
 
     this.respond('select', function (_event) {

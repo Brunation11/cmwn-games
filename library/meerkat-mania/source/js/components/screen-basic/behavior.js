@@ -107,6 +107,7 @@ pl.game.component('screen-basic', function () {
 
   this.on('ui-open', function (_event) {
     if (this.isReady && this === _event.targetScope) {
+      this.off('transitionend');
       this.on('transitionend', function () {
         this.start();
         this.off('transitionend');
@@ -122,22 +123,12 @@ pl.game.component('screen-basic', function () {
     }
   });
 
-  this.on('ui-leave', function (_event) {
+  this.on('ui-leave ui-close', function (_event) {
     if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
-    if (this.isReady && this === _event.targetScope) {
-      this.stop();
-    }
-  });
-
-  this.on('ui-close', function (_event) {
-    if (this.properties.gameClass) {
-      this.game.removeClass(this.properties.gameClass);
-    }
-
-    if (this.isReady && this === _event.targetScope) {
+    if (this.isReady && this.is(_event.target)) {
       this.stop();
     }
   });

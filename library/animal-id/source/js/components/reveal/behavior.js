@@ -1,6 +1,7 @@
 pl.game.component('reveal', function () {
 
   this.screen.STATE.COMPLETE = 'COMPLETE';
+  this.nextOnClose = true;
 
   function playSound(_sound) {
     var delay;
@@ -39,6 +40,14 @@ pl.game.component('reveal', function () {
     }
   });
 
+  this.handleProperty({
+    nextOnClose: function (_node, _name, _value) {
+      if (this.is(_node)) {
+        this.nextOnClose = _value === false ? false : true;
+      }
+    }
+  });
+
   this.item = function (_id) {
     var vo;
 
@@ -70,9 +79,9 @@ pl.game.component('reveal', function () {
   };
 
   this.handleCloseClick = function () {
-    if (this.screen.state(this.screen.STATE.COMPLETE) || this.game.demoMode) {
+    if (!this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode) {
       this.closeAll();
-      this.screen.next();
+      if(this.nextOnClose) this.screen.next();
     }
   };
 });

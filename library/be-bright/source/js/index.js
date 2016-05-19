@@ -2,8 +2,6 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../..//shared/js/screen-ios-splash';
@@ -33,13 +31,14 @@ pl.game('be-bright', function () {
   };
 
   startVideo = function () {
-    this.on('ui-open', function () {
-      if (this.game.bgSound) this.game.bgSound.pause();
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
+
       setTimeout(function () {
         this.video.start();
       }.bind(this), 250);
     });
-    this.on('ui-close', function () {
+    this.on('ui-close ui-leave', function () {
       this.video.pause();
       if (this.game.bgSound) this.game.bgSound.play();
     });
@@ -56,11 +55,14 @@ pl.game('be-bright', function () {
       if (!this.is(_event.target)) return;
 
       this.start();
+      this.off('transitionend');
       this.delay('3s', function () {
         this.title.complete();
         this.title.audio.sfx.play();
       });
     });
+
+    this.prev = function () {};
 
     this.startAudio = function () {
       this.title.startAudio();
@@ -91,12 +93,16 @@ pl.game('be-bright', function () {
 
   this.screen('flip', function () {
 
-    this.ready = function () {
+    this.on('ui-open', function () {
       this.audio.voiceOver.on('ended', function () {
         this.stampImg.addClass('START');
         this.audio.sfx.stamp.play();
       }.bind(this));
-    };
+    });
+
+    this.on('ui-close ui-leave', function() {
+      this.audio.voiceOver.off('ended');
+    });
 
     this.next = function () {
       this.game.quit.okay();

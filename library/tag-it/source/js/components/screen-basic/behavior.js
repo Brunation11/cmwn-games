@@ -8,7 +8,7 @@ pl.game.component('screen-basic', function () {
   this.playSound = function (_sound) {
     var delay;
 
-    delay = $(_sound).attr('pl-delay');
+    delay = $(_sound.media).attr('pl-start');
 
     if (_sound.type === 'voiceOver') {
       this.currentVO = _sound;
