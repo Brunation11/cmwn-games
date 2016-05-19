@@ -1,0 +1,15 @@
+.selectable-canvas-move-component {
+
+  &,
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 960px;
+    height: 540px;
+  }
+
+  [pl-id=bin] {
+    display: none;
+  }
+}

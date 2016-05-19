@@ -741,8 +741,9 @@ img.background {
     }
   }
 
-  &.VOICE-OVER {
-    ul {
+  .audio-sequence-component.VOICE-OVER {
+    display: block;
+    & + .center .draggables {
       pointer-events: none;
     }
   }
