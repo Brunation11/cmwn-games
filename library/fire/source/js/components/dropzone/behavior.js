@@ -1,88 +1,85 @@
 pl.game.component('dropzone', function () {
-		
-	this.entity('.area', function () {
-		
-		this.cache = null;
 
-		this.respond('grab', function () {
-			this.audio.sfx.drag.play();
-			this.cache = {
-				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: this.size().scale(this.game.transformScale().x)
-			};
-		});
+  this.entity('.area', function () {
 
-		this.respond('release', function (_event) {
-			var point, scale;
+    this.cache = null;
 
-			if((scale = this.game.transformScale().x) !== 1) {
-				point = [
-							_event.state.start.point[0] + scale * _event.state.progress.distance[0],
-							_event.state.start.point[1] + scale * _event.state.progress.distance[1]
-						];
-			} else {
-				point = _event.state.progress.point;
-			}
+    this.respond('grab', function () {
+      this.audio.sfx.drag.play();
+      this.cache = {
+        position: this.absolutePosition().dec(this.game.absolutePosition()),
+        size: this.size().scale(this.game.transformScale().x)
+      };
+    });
 
-			if (point && this.isPointInBounds(point)) {
-				if (this.takes(_event.state.$draggable.id())) {
-					_event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable',null);
-					_event.state.$helper.addClass('DROPED');
-					
-					this.drop(_event.state.$draggable);
-					this.audio.sfx.correct.play();
-					
-					return;
-				}
+    this.respond('release', function (_event) {
+      var point, scale;
 
-				else {
-					this.audio.sfx.incorrect.play()
-				}
-			}
+      if ((scale = this.game.transformScale().x) !== 1) {
+        point = [
+          _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+          _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+        ];
+      } else {
+        point = _event.state.progress.point;
+      }
 
-			_event.state.$helper.addClass('RETURN').css('transform', 'translateX(0px) translateY(0px)');
-		});
+      if (point && this.isPointInBounds(point)) {
+        if (this.takes(_event.state.$draggable.id())) {
+          _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
+          _event.state.$helper.addClass('DROPED');
 
-	});
+          this.drop(_event.state.$draggable);
+          this.audio.sfx.correct.play();
 
-	this.init = function () {
-		this.takes().forEach(this.bind(function (_id) {
-			this.require(_id);
-		}));
-	};
+          return;
+        } else {
+          this.audio.sfx.incorrect.play();
+        }
+      }
 
-	this.takes = function (_id) {
-		var takes = this.properties.take.split(/\s+/);
-		return arguments.length ? !!~takes.indexOf(_id) : takes;
-	};
+      _event.state.$helper.addClass('RETURN').css('transform', 'translateX(0px) translateY(0px)');
+    });
 
-	this.isPointInBounds = function (_point, _y) {
-		var point;
+  });
 
-		point = pl.Point.create(arguments);
+  this.init = function () {
+    this.takes().forEach(this.bind(function (_id) {
+      this.require(_id);
+    }));
+  };
 
-		if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-			if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
-				return true;
-			}
-		}
+  this.takes = function (_id) {
+    var takes = this.properties.take.split(/\s+/);
+    return arguments.length ? !!~takes.indexOf(_id) : takes;
+  };
 
-		return false;
-	};
+  // arguments would be _point and _y
+  this.isPointInBounds = function () {
+    var point;
 
-	this.isBoxInBounds = function (_point, _size) {
-		// comming soon!
-	};
+    point = pl.Point.create(arguments);
 
-	this.behavior('drop', function (_$thing) {		
-		console.log('*** In bounds!!', _$thing.id());
-		
-		this.requiredQueue.ready(_$thing.id());
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
+        return true;
+      }
+    }
 
-		return {
-			message: _$thing.id(),
-			behaviorTarget: _$thing
-		};
-	});
+    return false;
+  };
+
+  // this.isBoxInBounds = function (_point, _size) {
+  //   // comming soon!
+  // };
+
+  this.behavior('drop', function (_$thing) {
+    this.requiredQueue.ready(_$thing.id());
+
+    return {
+      message: _$thing.id(),
+      behaviorTarget: _$thing
+    };
+  });
 
 });
