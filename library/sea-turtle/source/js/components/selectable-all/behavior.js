@@ -1,130 +1,130 @@
 pl.game.component('selectable-all', function () {
 
-	var Column;
+  var Column;
 
-	function populateViewport () {
-		var width, item, i, columns;
+  function populateViewport() {
+    var width, i, columns;
 
-		// width of the first item
-		width = this.$bin.outerWidth(true);
-		columns = Math.floor(this.$viewport.width() / width);
+    // width of the first item
+    width = this.$bin.outerWidth(true);
+    columns = Math.floor(this.$viewport.width() / width);
 
-		for (i=0; i < columns; i+=1) {
-			this.columns.push(Column.create().init(this.$bin, this.$viewport));
-		}
-	}
+    for (i = 0; i < columns; i += 1) {
+      this.columns.push(Column.create().init(this.$bin, this.$viewport));
+    }
+  }
 
-	Column = pl.Basic.extend(function () {
+  Column = pl.Basic.extend(function () {
 
-		this.$el = null;
-		this.$collection = null;
-		this.$viewport = null;
-		this.shouldRecycle = true;
+    this.$el = null;
+    this.$collection = null;
+    this.$viewport = null;
+    this.shouldRecycle = true;
 
-		this.init = function (_$collection, _$viewport) {
-			this.$collection = _$collection;
-			this.$viewport = _$viewport;
-			this.$el = $(pl.util.random(_$collection)).clone();
+    this.init = function (_$collection, _$viewport) {
+      this.$collection = _$collection;
+      this.$viewport = _$viewport;
+      this.$el = $(pl.util.random(_$collection)).clone();
 
-			this.$viewport.append(this.$el);
+      this.$viewport.append(this.$el);
 
-			return this;
-		};
-		
-		this.recycle = function () {
-			var $clone;
+      return this;
+    };
 
-			if (!this.shouldRecycle) return;
+    this.recycle = function () {
+      var $clone;
 
-			$clone = $(pl.util.random(this.$collection)).clone();
+      if (!this.shouldRecycle) return;
 
-			this.$el.replaceWith($clone);
-			this.$el = $clone;
+      $clone = $(pl.util.random(this.$collection)).clone();
 
-			setTimeout(this.bind(function () {
-				this.launch();
-			}), 0);
+      this.$el.replaceWith($clone);
+      this.$el = $clone;
 
-			return $clone;
-		};
+      setTimeout(this.bind(function () {
+        this.launch();
+      }), 0);
 
-		this.launch = function () {
-			this.$el.on('transitionend', this.bind(function (_event) {
-				if(!this.$el.is(_event.target)) return;
+      return $clone;
+    };
 
-				if (!this.recycle()) {
-					this.$el.off();
-				}
-			}));
+    this.launch = function () {
+      this.$el.on('transitionend', this.bind(function (_event) {
+        if (!this.$el.is(_event.target)) return;
 
-			this.$el.addClass('LAUNCHED');
-		};
+        if (!this.recycle()) {
+          this.$el.off();
+        }
+      }));
 
-		this.bind = function (_fun) {
-			var self = this;
-			return function () {
-				return _fun.apply(self, arguments);
-			};
-		}
+      this.$el.addClass('LAUNCHED');
+    };
 
-	});
+    this.bind = function (_fun) {
+      var self = this;
+      return function () {
+        return _fun.apply(self, arguments);
+      };
+    };
 
-	this.$viewport = null;
-	this.$bin = null;
-	this.columns = null;
-	this.count = 0;
-	
-	this.init = function () {
-		this.$viewport = this.find('.viewport');
-		this.$bin = this.find('.bin li');
-		this.columns = [];
+  });
 
-		populateViewport.call(this);
+  this.$viewport = null;
+  this.$bin = null;
+  this.columns = null;
+  this.count = 0;
 
-		$(window).on('resize', this.restart.bind(this));
+  this.init = function () {
+    this.$viewport = this.find('.viewport');
+    this.$bin = this.find('.bin li');
+    this.columns = [];
 
-		return this;
-	};
+    populateViewport.call(this);
 
-	this.start = function () {
-		this.columns.forEach(function (_item) {
-			_item.launch();
-		});
+    $(window).on('resize', this.restart.bind(this));
 
-		this.screen.requiredQueue.ready();
-	};
+    return this;
+  };
 
-	this.restart = function() {
-		this.columns.forEach(function (_item) {
-			_item.recycle();
-		});
-	};
+  this.start = function () {
+    this.columns.forEach(function (_item) {
+      _item.launch();
+    });
 
-	this.stop = function () {
-		this.columns.forEach(function (_item) {
-			_item.shouldRecycle = false;
-			_item.$el.removeClass('LAUNCHED').css('transition', 'none');
-		});
-	};
+    this.screen.requiredQueue.ready();
+  };
 
-	this.behavior('pick', function (_$target) {
-		var message = this.count;
+  this.restart = function () {
+    this.columns.forEach(function (_item) {
+      _item.recycle();
+    });
+  };
 
-		if (_$target.attr('pl-correct') == null || (!this.game.demoMode && (this.screen.isComplete || this.screen.state(this.STATE.VOICE_OVER)))) return;
+  this.stop = function () {
+    this.columns.forEach(function (_item) {
+      _item.shouldRecycle = false;
+      _item.$el.removeClass('LAUNCHED').css('transition', 'none');
+    });
+  };
 
-		this.screen.requiredQueue.ready(this.count);
-		this.screen.reveal.item(this.count);
+  this.behavior('pick', function (_$target) {
+    var message = this.count;
 
-		this.audio.sfx.play();
+    if (_$target.attr('pl-correct') == null || (!this.game.demoMode && this.screen.state(this.STATE.VOICE_OVER))) return;
 
-		this.count++;
+    this.screen.requiredQueue.ready(this.count);
+    this.screen.reveal.item(this.count);
 
-		this.highlight(_$target);
+    this.audio.sfx.play();
 
-		return {
-			message: message,
-			behaviorTarget: _$target
-		};
-	});
+    this.count = (this.count + 1) % 6;
+
+    this.highlight(_$target);
+
+    return {
+      message: message,
+      behaviorTarget: _$target
+    };
+  });
 
 });

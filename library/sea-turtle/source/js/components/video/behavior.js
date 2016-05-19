@@ -1,25 +1,31 @@
 pl.game.component('video', function () {
+  var bg;
 
-	this.start = function() {
-		var self = this;
-		this.video.on('ended', function() {
-			self.screen.complete();
-		});
-		this.video[0].play();
-	};
+  this.start = function () {
+    var self = this;
+    this.video.on('ended', function () {
+      self.complete();
+    });
+    this.stopBackground();
+    this.video[0].play();
+  };
 
-	this.pause = function() {
-		this.video[0].pause();
-	};
+  this.stopBackground = function () {
+    if (!this.properties.playBackground && (bg = this.game.media.playing('.background'))) {
+      bg.stop('@ALL');
+    }
+  };
 
-	this.resume = function() {
-		if(this.isComplete) return;
-		this.video[0].play();
-	};
+  this.pause = function () {
+    this.video[0].pause();
+  };
 
-	this.on('ready', function(_event) {
-		if(!this.is(_event.target)) return;
-		this.video.on('ended', this.complete.bind(this));
-	});
+  this.resume = function () {
+    if (this.isComplete) return;
+    this.stopBackground();
+    this.video[0].play();
+  };
+
+  this.screen.on('ui-close', this.pause.bind(this));
 
 });

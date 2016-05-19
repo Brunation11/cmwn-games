@@ -1,137 +1,135 @@
 pl.game.component('carousel', function () {
 
-	this.TYPE = (function () {
-		
-		this.SLIDE = 'slide';
-		this.CROSS_FADE = 'cross-fade';
+  this.TYPE = (function () {
 
-		return this;
+    this.SLIDE = 'slide';
+    this.CROSS_FADE = 'cross-fade';
 
-	}).call(['slide', 'cross-fade']);
+    return this;
 
-	this.type = null
-	this.$images = null;
-	this.nodes = null;
-	this.shouldRandomize = false;
-	this.isPlaying = false;
+  }).call(['slide', 'cross-fade']);
 
-	this.ready = function () {
-		this.$images = this.find('li');
-		this.shouldRandomize = this.properties.has('randomize');
+  this.type = null;
+  this.$images = null;
+  this.nodes = null;
+  this.shouldRandomize = false;
+  this.isPlaying = false;
 
-		if (this.TYPE.every(this.bind(function (_type) {
-			return !this.hasClass(_type);
-		}))) {
-			this.addClass(this.TYPE.CROSS_FADE);
-		}
+  this.ready = function () {
+    this.$images = this.find('li');
+    this.shouldRandomize = this.properties.has('randomize');
 
-		if (this.$images.length) {
-			this.nodes = this.$images.map(this.bind(function (_index, _node) {
-				var siblings;
-				
-				siblings = [_node.previousSibling, _node.nextSibling];
+    if (this.TYPE.every(this.bind(function (_type) {
+      return !this.hasClass(_type);
+    }))) {
+      this.addClass(this.TYPE.CROSS_FADE);
+    }
 
-				siblings.forEach(function (_node) {
-					if (_node.nodeType === document.TEXT_NODE) {
-						$(_node).remove();
-					}
-				});
+    if (this.$images.length) {
+      this.nodes = this.$images.map(this.bind(function (_index, _node) {
+        var siblings;
 
-				return _node;
-			})).toArray();
-		}
-		
-		this.TYPE.forEach(this.bind(function (_item) {
-			if (this.hasClass(_item)) this.type = _item;
-		}));
+        siblings = [_node.previousSibling, _node.nextSibling];
 
-		this.on('transitionend', function (_event) {
-			if (_event.target.nodeName === 'LI' && $(_event.target).state(this.STATE.LEAVE)) {
-				this.recycle();
-			}
-		});
-	};
+        siblings.forEach(function (_n) {
+          if (_n.nodeType === document.TEXT_NODE) {
+            $(_n).remove();
+          }
+        });
 
-	this.provideBehaviorTarget = function () {
-		return this.current();
-	};
+        return _node;
+      })).toArray();
+    }
 
-	this.respond('fire', function (_event) {
-		this.hit(_event.message);
-	});
+    this.TYPE.forEach(this.bind(function (_item) {
+      if (this.hasClass(_item)) this.type = _item;
+    }));
 
-	this.behavior('hit', function (_message) {
-		return {
-			message: _message,
-			behaviorTarget: this.provideBehaviorTarget()
-		};
-	});
+    this.on('transitionend', function (_event) {
+      if (_event.target.nodeName === 'LI' && $(_event.target).state(this.STATE.LEAVE)) {
+        this.recycle();
+      }
+    });
+  };
 
-	this.behavior('next', function () {
-		var current;
+  this.provideBehaviorTarget = function () {
+    return this.properties.targetNext ? this.current().next() : this.current();
+  };
 
-		current = this.$images.first();
+  this.respond('fire', function (_event) {
+    this.hit(_event.message);
+  });
 
-		this.leave(current);
-		this.open(current.next());
-	});
+  this.behavior('hit', function (_message) {
+    return {
+      message: _message,
+      behaviorTarget: this.provideBehaviorTarget()
+    };
+  });
 
-	this.start = function () {
-		var delay;
+  this.behavior('next', function () {
+    var current;
 
-		delay = pl.util.toMillisec(this.properties.delay) || 1000;
+    current = this.$images.first();
 
-		if (this.isReady && !this.isPlaying) {
-			this.isPlaying = true;
-			this.open(this.$images.first());
-			this.repeat(delay, this.next);
-		}
-		
-		else {
-			this.on('ready', this.beginShow);
-		}
-	};
+    this.leave(current);
+    this.open(current.next());
+  });
 
-	this.stop = function () {
-		this.kill('repeat');
-		this.isPlaying = false;
-	};
+  this.start = function () {
+    var delay;
 
-	this.current = function () {
-		return this.$images.filter('.OPEN');
-	};
+    delay = pl.util.toMillisec(this.properties.delay) || 1000;
 
-	this.recycle = function () {
-		var $current, reload;
+    if (this.isReady && !this.isPlaying) {
+      this.isPlaying = true;
+      this.open(this.$images.first());
+      this.repeat(delay, this.next);
+    } else {
+      this.on('ready', this.beginShow);
+    }
+  };
 
-		$current = this.$images.first();
-		reload = this.reloadWithNode(this.$images[0]);
+  this.stop = function () {
+    this.kill('repeat');
+    this.isPlaying = false;
+  };
 
-		$current.removeClass(this.STATE.LEAVE);
-		$current.remove();
+  this.current = function () {
+    return this.$images.filter('.OPEN');
+  };
 
-		[].shift.call(this.$images);
+  this.recycle = function () {
+    var $current, reload;
 
-		this.$images.push(reload);
-		this.append(reload);
+    $current = this.$images.first();
+    reload = this.reloadWithNode(this.$images[0]);
 
-		return this;
-	};
+    $current.removeClass(this.STATE.LEAVE);
+    $current.remove();
 
-	this.reloadWithNode = function (_item) {
-		var $clone, state;
+    [].shift.call(this.$images);
 
-		if (this.shouldRandomize) {
-			$clone = $(pl.util.random(this.nodes)).clone();
-			state = $clone.state();
+    this.$images.push(reload);
+    this.append(reload);
 
-			if (state) $clone.removeClass(state.join ? state.join(' ') : state);
+    return this;
+  };
 
-			return $clone[0];
-		}
+  this.reloadWithNode = function (_item) {
+    var $clone, state;
 
-		return _item;
-	};
+    if (this.shouldRandomize) {
+      $clone = $(pl.util.random(this.nodes)).clone();
+      state = $clone.state();
+
+      if (state) $clone.removeClass(state.join ? state.join(' ') : state);
+
+      return $clone[0];
+    }
+
+    return _item;
+  };
 
 
 });
