@@ -1,111 +1,110 @@
 pl.game.component('dropzone', function () {
 
-	function deQ (_id) {
-		if (this.requiredQueue && this.isMemberSafe('requiredQueue') && this.requiredQueue.has(_id)) {
-			return this.requiredQueue.ready(_id);
-		}
-	}
-		
-	this.entity('.area', function () {
-		
-		this.cache = null;
+  function deQ(_id) {
+    if (this.requiredQueue && this.isMemberSafe('requiredQueue') && this.requiredQueue.has(_id)) {
+      return this.requiredQueue.ready(_id);
+    }
+  }
 
-		this.respond('grab', function () {
-			var sfx = this.audio.sfx.drag;
-			
-			if (sfx) sfx.play();
+  this.entity('.area', function () {
 
-			this.cache = {
-				position: this.absolutePosition().dec(this.game.absolutePosition()),
-				size: this.size()
-			};
-		});
+    this.cache = null;
 
-		this.respond('release', function (_event) {
-			var point, scale, sfx;
+    this.respond('grab', function () {
+      var sfx = this.audio.sfx.drag;
 
-			sfx = {
-				correct: this.audio.sfx.correct,
-				incorrect: this.audio.sfx.incorrect,
-				drop: this.audio.sfx.drop
-			};
+      if (sfx) sfx.play();
 
-			if((scale = this.game.transformScale().x) !== 1) {
-				point = [
-							_event.state.start.point[0] + scale * _event.state.progress.distance[0],
-							_event.state.start.point[1] + scale * _event.state.progress.distance[1]
-						];
-			} else {
-				point = _event.state.progress.point;
-			}
+      this.cache = {
+        position: this.absolutePosition().dec(this.game.absolutePosition()),
+        size: this.size()
+      };
+    });
 
-			if (point && this.isPointInBounds(point)) {
-				if (this.takes(_event.state.$draggable.id())) {
-					_event.state.$draggable.removeClass('PLUCKED');
-					_event.state.$helper.addClass('DROPED');
-					
-					this.drop(_event.state.$draggable);
-					
-					if (sfx.correct) sfx.correct.play();
-					
-					return;
-				}
+    this.respond('release', function (_event) {
+      var point, scale, sfx;
 
-				else if (sfx.incorrect) {
-					sfx.incorrect.play();
-				}
+      sfx = {
+        correct: this.audio.sfx.correct,
+        incorrect: this.audio.sfx.incorrect,
+        drop: this.audio.sfx.drop
+      };
 
-				if (sfx.drop) sfx.drop.play();
-			}
+      if ((scale = this.game.transformScale().x) !== 1) {
+        point = [
+          _event.state.start.point[0] + scale * _event.state.progress.distance[0],
+          _event.state.start.point[1] + scale * _event.state.progress.distance[1]
+        ];
+      } else {
+        point = _event.state.progress.point;
+      }
 
-			_event.state.$helper.addClass('RETURN');
-		});
+      if (point && this.isPointInBounds(point)) {
+        if (this.takes(_event.state.$draggable.id())) {
+          _event.state.$draggable.removeClass('PLUCKED');
+          _event.state.$helper.addClass('DROPED');
 
-	});
+          this.drop(_event.state.$draggable);
 
-	this.on('initialize', function () {
-		this.takes().forEach(this.bind(function (_id) {
-			this.require(_id);
-		}));
-	});
+          if (sfx.correct) sfx.correct.play();
 
-	this.takes = function (_id) {
-		var takes = this.properties.take;
-		// if no pl-take attribute is defined then
-		// the dropzone will take any draggable.
-		if (!takes) return _id != null ? true : [];
+          return;
+        } else if (sfx.incorrect) {
+          sfx.incorrect.play();
+        }
 
-		return arguments.length ? !!~takes.indexOf(_id) : takes;
-	};
+        if (sfx.drop) sfx.drop.play();
+      }
 
-	this.isPointInBounds = function (_point, _y) {
-		var point, scale;
+      _event.state.$helper.addClass('RETURN');
+    });
 
-		point = pl.Point.create(arguments);
+  });
 
-		if (point.x >= this.cache.position.x && point.x <= this.cache.position.x+this.cache.size.width) {
-			if (point.y >= this.cache.position.y && point.y <= this.cache.position.y+this.cache.size.height) {
-				return true;
-			}
-		}
+  this.on('initialize', function () {
+    this.takes().forEach(this.bind(function (_id) {
+      this.require(_id);
+    }));
+  });
 
-		return false;
-	};
+  this.takes = function (_id) {
+    var takes = this.properties.take;
+    // if no pl-take attribute is defined then
+    // the dropzone will take any draggable.
+    if (!takes) return _id != null ? true : [];
 
-	this.isBoxInBounds = function (_point, _size) {
-		// comming soon!
-	};
+    return arguments.length ? !!~takes.indexOf(_id) : takes;
+  };
 
-	this.behavior('drop', function (_$thing) {
-		var sfx = pl.util.resolvePath(this, 'audio.sfx.drop');
-			
-		if (sfx) sfx.play();
+  // expected arguments are _point and _y
+  this.isPointInBounds = function () {
+    var point;
 
-		deQ.call(this, _$thing.id());
-		
-		return {
-			behaviorTarget: _$thing
-		};
-	});
+    point = pl.Point.create(arguments);
+
+    if (point.x >= this.cache.position.x && point.x <= this.cache.position.x + this.cache.size.width) {
+      if (point.y >= this.cache.position.y && point.y <= this.cache.position.y + this.cache.size.height) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  // this.isBoxInBounds = function (_point, _size) {
+  //   // comming soon!
+  // };
+
+  this.behavior('drop', function (_$thing) {
+    var sfx = pl.util.resolvePath(this, 'audio.sfx.drop');
+
+    if (sfx) sfx.play();
+
+    deQ.call(this, _$thing.id());
+
+    return {
+      behaviorTarget: _$thing
+    };
+  });
 
 });
