@@ -2,168 +2,213 @@
  * Index script
  * @module
  */
-import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
+import './components/audio-sequence/behavior';
+import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/background/behavior';
-import './components/title/behavior';
-import './components/selectable/behavior';
+import './components/selectable-canvas-move/behavior';
 import './components/selectable-reveal/behavior';
-import './components/reveal/behavior';
-import './components/audio-sequence/behavior';
+import './components/selectable/behavior';
+import './components/title/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
-	var selectScreen = function() {
-		this.respond('select', function(_event) {
-			var vo;
+  var selectScreen = function () {
+    this.respond('select', function (_event) {
+      var vo;
 
-			if(!_event.behaviorTarget.is('li')) return;
+      if (!_event.behaviorTarget.is('li')) return;
 
-			if(_event.behaviorTarget.attr('pl-correct') == null) {
-				vo = this.audio.sfx.incorrect;
-			} else {
-				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
+      if (_event.behaviorTarget.attr('pl-correct') == null) {
+        vo = this.audio.sfx.incorrect;
+      } else {
+        this.highlight(_event.behaviorTarget);
+        vo = this.selectable.audio.voiceOver[_event.message];
+      }
 
-			if(vo) vo.play();
-		});
-	};
+      if (vo) vo.play();
+    });
 
-	this.screen('title', function () {
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-		});
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+    });
+  };
 
-		this.startAudio = function () {
-			this.title.audio.background.play();
-		};
+  this.screen('title', function () {
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
-		});
+      this.require('cacti');
 
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-		});
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+    });
 
-	});
+    this.on('animationend', function (_e) {
+      if ($(_e.target).id() !== 'cacti') return;
 
-	this.screen('think', selectScreen);
+      if (!this.isComplete) this.requiredQueue.ready('cacti');
+    });
+  });
 
-	this.screen('balloons', function() {
-		this.respond('select', function(_event) {
-			var vo, sfx;
+  this.screen('think', selectScreen);
 
-			if(_event.behaviorTarget.attr('pl-incorrect') != null) {
-				vo = this.audio.sfx.incorrect;
-			} else {
-				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
+  this.screen('balloons', function () {
+    this.respond('select', function (_event) {
+      var vo, sfx;
 
-			switch(_event.message) {
-				case "bathing":
-				case "drinking":
-				case "canoeing":
-				case "factories":
-				case "lawns":
-				case "flowers":
-				case "animalFeed":
-					sfx = this.audio.sfx.yellow;
-					break;
-				case "washingDishes":
-				case "swimming":
-				case "brushingTeeth":
-				case "electricity":
-					sfx = this.audio.sfx.green;
-					break;
-				case "cooking":
-				case "rafting":
-				case "waterSlides":
-				case "growingFood":
-					sfx = this.audio.sfx.red;
-					break;
-			}
+      if (_event.behaviorTarget.attr('pl-incorrect') != null) {
+        vo = this.audio.sfx.incorrect;
+      } else {
+        this.highlight(_event.behaviorTarget);
+        vo = this.audio.voiceOver[_event.message];
+      }
 
-			if(vo) vo.play();
-			if(sfx) sfx.play();
-		});
-	});
+      switch (_event.message) {
+      case 'bathing':
+      case 'drinking':
+      case 'canoeing':
+      case 'factories':
+      case 'lawns':
+      case 'flowers':
+      case 'animalFeed':
+        sfx = this.audio.sfx.yellow;
+        break;
+      case 'washingDishes':
+      case 'swimming':
+      case 'brushingTeeth':
+      case 'electricity':
+        sfx = this.audio.sfx.green;
+        break;
+      case 'cooking':
+      case 'rafting':
+      case 'waterSlides':
+      case 'growingFood':
+        sfx = this.audio.sfx.red;
+        break;
+      }
 
-	this.screen('what-can-we-do', selectScreen);
+      if (vo) vo.play();
+      if (sfx) sfx.play();
+    });
 
-	this.screen('shower', function() {
-		this.respond('select', function(_event) {
-			var vo;
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-			if(_event.behaviorTarget.attr('pl-correct') == null) {
-				vo = this.audio.sfx.incorrect;
-			} else {
-				this.highlight(_event.behaviorTarget);
-				vo = this.selectable.audio.voiceOver[_event.message];
-			}
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+    });
 
-			if(vo) vo.play();
-		});
+    this.startAudio = function () {};
+  });
 
-		this.entity('selectable', function () {
+  this.screen('what-can-we-do', selectScreen);
 
-			this.shouldSelect = function (_$target) {
-				if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
-					return !this.screen.state(this.STATE.VOICE_OVER);
-				}
+  this.screen('shower', function () {
+    this.respond('select', function (_event) {
+      var vo;
 
-				return false; 
-			};
+      if (_event.behaviorTarget.attr('pl-correct') == null) {
+        vo = this.audio.sfx.incorrect;
+      } else {
+        this.highlight(_event.behaviorTarget);
+        vo = this.selectable.audio.voiceOver[_event.message];
+      }
 
-		});
-	});
+      if (vo) vo.play();
+    });
 
-	this.screen('conserve', function() {
-		var item = 0;
+    this.entity('selectable', function () {
 
-		this.openDoor = function() {
-			if(this.shouldProceed()) {
-				this.select(this);
-				this.reveal.item(item++);
-				this.audio.sfx.open.play();
-			}
-		};
+      this.shouldSelect = function (_$target) {
+        if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
+          return !this.screen.state(this.STATE.VOICE_OVER);
+        }
 
-		this.on('ready', function(_event) {
-			if (!(this.is(_event.target) && this.reveal.audio)) return;
+        return false;
+      };
 
-			this.reveal.audio.voiceOver.on('ended', function(audio) {
-				this.audio.sfx.close.play();
-				this.deselect();
-			}.bind(this));
-		});
-	});
+    });
 
-	this.screen('flip', function () {
-		this.next = function () {
-			this.game.quit.okay();
-		};
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-		this.on('ui-open', function() {
-			if(this.audio && this.audio.sfx) {
-				this.delay('9.5s', this.audio.sfx.play.bind(this.audio.sfx));
-			}
-		});
-	});
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+    });
+  });
+
+  this.screen('conserve', function () {
+    var item = 0;
+
+    this.openDoor = function () {
+      if (this.shouldProceed()) {
+        this.select();
+        this.reveal.item(item);
+        this.audio.sfx.open.play();
+      }
+    };
+
+    this.on('ready', function (_e) {
+      var self = this;
+
+      if (!(this.is(_e.target) && this.reveal.audio)) return;
+
+      this.length = this.reveal.find('li').length;
+
+      this.reveal.audio.voiceOver.on('ended', function () {
+        self.audio.sfx.close.play();
+        self.deselect();
+        item = (item + 1) % self.length;
+      });
+    });
+
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
+
+      if (this.isComplete) item = 0;
+    });
+  });
+
+  this.screen('flip', function () {
+    this.next = function () {
+      this.game.quit.okay();
+    };
+
+    this.on('ui-open', function () {
+      if (this.audio && this.audio.sfx) {
+        this.delay('9.5s', this.audio.sfx.play.bind(this.audio.sfx));
+      }
+    });
+
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
+
+      ga('send', 'event', eventCategory, 'complete');
+
+      pl.game.report.flip(this, {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      });
+
+      return this.proto();
+    };
+  });
+
+  this.exit = function () {
+    var screen, eventCategory;
+
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
+
+    ga('send', 'event', eventCategory, 'quit');
+
+    return this.proto();
+  };
 
 });
