@@ -1,11 +1,19 @@
 pl.game.component('video', function () {
+  var bg;
 
   this.start = function () {
     var self = this;
     this.video.on('ended', function () {
-      self.screen.complete();
+      self.complete();
     });
+    this.stopBackground();
     this.video[0].play();
+  };
+
+  this.stopBackground = function () {
+    if (!this.properties.playBackground && (bg = this.game.media.playing('.background'))) {
+      bg.stop('@ALL');
+    }
   };
 
   this.pause = function () {
@@ -14,12 +22,10 @@ pl.game.component('video', function () {
 
   this.resume = function () {
     if (this.isComplete) return;
+    this.stopBackground();
     this.video[0].play();
   };
 
-  this.on('ready', function (_event) {
-    if (!this.is(_event.target)) return;
-    this.video.on('ended', this.complete.bind(this));
-  });
+  this.screen.on('ui-close', this.pause.bind(this));
 
 });

@@ -36,10 +36,14 @@ pl.game.component('reveal', function () {
     return !!this.items[_id] || !!this[_id];
   };
 
-  this.deselectTarget = function (_$target) {
+  this.behavior('deselectTarget', function (_$target) {
     if (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
       this.deselect(_$target);
     }
-  };
+
+    return {
+      message: _$target.index()
+    };
+  });
 
 });

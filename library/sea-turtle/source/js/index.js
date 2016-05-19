@@ -5,6 +5,7 @@ import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
 import '../../../shared/js/screen-ios-splash';
+import './components/characters/behavior';
 import './components/dropzone/behavior';
 import './components/frame/behavior';
 import './components/multiple-choice/behavior';
@@ -52,80 +53,32 @@ pl.game('sea-turtle', function () {
 
     var onClose;
 
-    this.entity('characters', function () {
-      /**
-       * Responds to the "mousedown" event on the capture phase
-       * to prevent propagation of the event.
-       *
-       * This will prevent the draggables inside to not be
-       * draggable when the draggable or the container (this)
-       * has the DISABLED UIState.
-       */
-      function preventDrag(_event) {
-        var $target, isDisabled;
-
-        $target = $(_event.target);
-        isDisabled = [
-          this.state(this.STATE.DISABLED),
-          $target.state(this.STATE.DISABLED)
-        ];
-
-        if (~isDisabled.indexOf(true)) {
-          _event.stopPropagation();
-        }
-      }
-
-      this.$active = null;
-
-      this.on('drag-start', function (_event) {
-        (this.$active = _event.state.$draggable.closest('li'))
-          .addClass('ACTIVE');
-      });
-
-      this.on('initialize', function () {
-        var eventName = typeof this.$els[0].ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
-        // Add a vanilajs event listener attached to the capture event propagation phase.
-        this.listen(eventName, true, preventDrag.bind(this));
-      });
-
-      this.respond('answer', function (_event) {
-        if (_event.message === 'correct') {
-          this.disable(this.$active.removeClass('ACTIVE'));
-        }
-      });
-
-    });
-
     /**
      * The reveal component holds the correct/incorrect splash
      * images. So its responsible for handling the multiple
      * choice "answer" behavior by displaying the
      * "correct" or "incorrect" image.
      */
-    this.entity('reveal', function () {
+    this.respond('answer', function (_event) {
+      var message, playing;
 
-      this.respond('answer', function (_event) {
-        var message, playing;
+      message = this.reveal[_event.message];
+      playing = this.reveal.audio.playing();
 
-        message = this[_event.message];
-        playing = this.audio.playing();
+      if (message && !this.reveal.isComplete) {
+        this.reveal.select(message);
+        this.delay('2s', function () {
+          this.reveal.deselect(message);
+        });
 
-        if (message && !this.isComplete) {
-          this.select(message);
-          this.delay('2s', function () {
-            this.deselect(message);
-          });
+        if (playing) playing.stop();
 
-          if (playing) playing.stop();
-
-          this.delay('2.5s', function () {
-            if (this.wellDone.state(this.STATE.SELECTED)) return;
-            this.reveal.item('instruction');
-            this.characters.enable();
-          });
-        }
-      });
-
+        this.delay('2.5s', function () {
+          if (this.reveal.wellDone.state(this.STATE.SELECTED)) return;
+          this.reveal.item('instruction');
+          this.characters.enable();
+        });
+      }
     });
 
     this.STATE.COMPLETE = 'COMPLETE';
@@ -180,16 +133,12 @@ pl.game('sea-turtle', function () {
       }
     });
 
-    onClose = function (_event) {
+    this.on('ui-close ui-leave', function (_event) {
       if (!this.is(_event.target)) return;
       this.area.find('.active').removeClass('show active');
       if (this.characters.$active) this.characters.$active.removeClass('ACTIVE');
       this.characters.enable();
-    };
-
-    this.on('ui-close', onClose);
-
-    this.on('ui-leave', onClose);
+    });
 
     this.start = function () {
       // take advantage of the screen's start()
@@ -201,7 +150,7 @@ pl.game('sea-turtle', function () {
       if (!this.is(_e.target)) return;
 
       if (this.isComplete) {
-        this.deselect(this.dropzone.reveal.find('.SELECTED'));
+        this.deselect(this.dropzone.find('.SELECTED'));
         this.enable(this.characters.find('.DISABLED'));
         this.dropzone.find('.show').removeClass('show');
         this.reveal.item(0);
@@ -223,13 +172,10 @@ pl.game('sea-turtle', function () {
   });
 
   this.screen('jellyfish', function () {
-    this.entity('reveal', function () {
-      this.deselectTarget = function (_$target) {
-        if (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode) {
-          this.deselect(_$target);
-          this.screen.requiredQueue.ready(this.audio.voiceOver[_$target.index()]);
-        }
-      };
+    this.respond('deselectTarget', function (_event) {
+      if (!this.isComplete && (!this.state(this.STATE.VOICE_OVER) || this.game.demoMode)) {
+        this.screen.requiredQueue.ready(this.reveal.audio.voiceOver[_event.message]);
+      }
     });
   });
 
