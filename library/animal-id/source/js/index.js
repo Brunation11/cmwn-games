@@ -83,6 +83,12 @@ pl.game('animal-id', function () {
       };
     });
 
+  this.screen('what-does-a-nose-do', function() {
+    this.on('ui-open', function(_e) {
+      if(!this.is(_e.target)) return;
+      if(this.state(this.STATE.COMPLETE)) this.unhighlight(this.find('.'+this.STATE.HIGHLIGHTED));
+    });
+
     this.on('ui-close', function (_event) {
       if (!this.is(_event.target)) return;
       this.reveal.closeAll();
