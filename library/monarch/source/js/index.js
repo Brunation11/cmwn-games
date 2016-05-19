@@ -4,9 +4,6 @@
  */
 import './config.game';
 
-// SCREENS
-import flyAcross from './screens/fly-across';
-
 import '../../../shared/js/screen-ios-splash';
 import './components/audio-sequence/behavior';
 import './components/frame/behavior';
@@ -17,7 +14,6 @@ import './components/runner/behavior';
 import './components/score/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/screen-title/behavior';
 import './components/selectable-reveal/behavior';
 import './components/selectable/behavior';
 import './components/video/behavior';
@@ -63,12 +59,34 @@ pl.game('monarch', function () {
     });
   });
 
-  this.screen('fly-across', flyAcross);
+  this.screen('fly-across', function () {
+    var count = 0;
+
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
+      this.length = this.modal.reveal.find('li').length;
+    });
+
+    this.respond('landed', function (_event) {
+      if (_event.message === 'red') {
+        this.audio.sfx.correct.play();
+        this.modal.item(count++);
+        if (count >= this.length) count = 0;
+      } else {
+        this.audio.sfx.incorrect.play();
+      }
+    });
+
+    this.respond('close', function (_event) {
+      if (!this.modal.is(_event.target)) return;
+      this.screen.runner.restart();
+    });
+  });
 
   this.screen('floating-weed', function () {
     var count = 0;
 
-    this.on('ready', function (_event) {
+    this.on('ui-open', function (_event) {
       if (!this.is(_event.target)) return;
       this.length = this.modal.reveal.find('li').length;
     });
@@ -91,35 +109,6 @@ pl.game('monarch', function () {
         this.selectableReveal.reveal.item(4);
       }
     });
-
-    this.entity('selectable-reveal', function () {
-      this.start = function () {};
-
-      this.respond('select', function (_event) {
-        var index, stateMethod;
-
-        index = _event.message;
-        stateMethod = this.properties.selectState || 'select';
-
-        if (~index) {
-          this[stateMethod](_event.behaviorTarget);
-          if (this.audio.sfx.button) this.audio.sfx.button.play();
-          this.reveal.item(index);
-        }
-      });
-
-      this.entity('selectable', function () {
-
-        this.shouldSelect = function (_$target) {
-          if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
-            return !this.screen.state(this.STATE.VOICE_OVER);
-          }
-
-          return false;
-        };
-
-      });
-    });
   });
 
   this.screen('flip', function () {
@@ -127,12 +116,10 @@ pl.game('monarch', function () {
       this.game.quit.okay();
     };
 
-    this.entity('.flip-container', function () {
-      this.on('animationend', function (_event) {
-        if (!this.is(_event.target)) return;
-        this.find('.pupa').addClass('SHAKE');
-        this.screen.audio.sfx.shake.play();
-      });
+    this.on('animationend', function (_event) {
+      if (!this.flipContainer.is(_event.target)) return;
+      this.find('.pupa').addClass('SHAKE');
+      this.screen.audio.sfx.shake.play();
     });
 
     this.complete = function () {
@@ -140,10 +127,10 @@ pl.game('monarch', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };
