@@ -1,97 +1,93 @@
 pl.game.component('screen-basic', function () {
 
-	this.ready = function () {
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
+  this.on('ready', function (_e) {
+    var self = this;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+    if (!this.is(_e.target)) return;
 
-				if (sfx) sfx.play();
-			}));
-		}
-	};
-	
-	this.next = function () {
-		var nextScreen, buttonSound;
+    if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+      this.requiredQueue.on('complete', function () {
+        var sfx;
 
-		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+        sfx = pl.util.resolvePath(self, 'game.audio.sfx.screenComplete');
 
-		nextScreen = this.proto();
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+        if (sfx) sfx.play();
+      });
+    }
+  });
 
-		if (nextScreen) {
-			this.screen.leave();
-			nextScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+  this.next = function () {
+    var nextScreen, buttonSound;
 
-		return nextScreen;
-	};
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
-	this.prev = function () {
-		var prevScreen, buttonSound;
+    nextScreen = this.proto();
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		prevScreen = this.proto();
-		buttonSound = this.game.audio.sfx.button;
+    if (nextScreen) {
+      this.screen.leave();
+      nextScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-		if (prevScreen) {
-			this.screen.close();
-			prevScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+    return nextScreen;
+  };
 
-		return prevScreen;
-	};
+  this.prev = function () {
+    var prevScreen, buttonSound;
 
-	this.start = function () {
-		this.startAudio();
+    prevScreen = this.proto();
+    buttonSound = this.game.audio.sfx.button;
 
-		this.startFirstEntity();
+    if (prevScreen) {
+      this.screen.close();
+      prevScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-		return this;
-	};
+    return prevScreen;
+  };
 
-	this.startFirstEntity = function (argument) {
-		var conditions;
+  this.start = function () {
+    this.startAudio();
 
-		if (this.hasOwnProperty('entities') && this.entities) {
-			conditions = [
-				this.entities[0],
-				this.entities[0].hasOwnProperty('start'),
-				typeof this.entities[0].start === 'function'
-			];
+    this.startEntities();
 
-			if (!~conditions.indexOf(false)) {
-				return this.entities[0].start();
-			}
-		}
+    return this;
+  };
 
-		return false;
-	};
+  this.startEntities = function () {
+    if (this.hasOwnProperty('entities') && this.entities) {
+      this.entities.forEach((_node) => {
+        if (typeof _node.start === 'function') _node.start();
+      });
+    }
 
-	this.on('ui-open', function (_event) {
-		if (this !== _event.targetScope) return;
+    return false;
+  };
 
-		if (this.isReady) {
-			this.start();
-		}
+  this.on('ui-open', function (_event) {
+    if (!this.is(_event.target)) return;
 
-		if (!this.isComplete) {
-			if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
-				this.complete();
-			}
-		}
+    if (this.isReady) {
+      this.start();
+    }
 
-		if (this.screen.isLast()) {
-			this.addClass('last');
-		}
-	});
+    if (!this.isComplete) {
+      if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
+        this.complete();
+      }
+    }
 
-	this.on('ui-close', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
-	});
+    if (this.screen.isLast()) {
+      this.addClass('last');
+    }
+  });
+
+  this.on('ui-close', function (_event) {
+    if (this.isReady && this === _event.targetScope) {
+      this.stop();
+    }
+  });
 
 });
