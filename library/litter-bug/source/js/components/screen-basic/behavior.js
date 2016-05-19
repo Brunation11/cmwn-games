@@ -42,8 +42,17 @@ pl.game.component('screen-basic', function () {
     return this;
   };
 
+  this.startAudio = function () {
+    if (!this.audio) return;
+    if (this.audio.background) {
+      this.game.bgSound = this.audio.background;
+      this.audio.background.play();
+    }
+    this.audio.voiceOver.play();
+  };
+
   this.on('ui-open', function (_event) {
-    if (this.isReady && this === _event.targetScope) {
+    if (this.isReady && this.is(_event.target)) {
       this.on('transitionend', function (_e) {
         if (!this.is(_e.target)) return;
         this.start();
@@ -60,30 +69,12 @@ pl.game.component('screen-basic', function () {
     }
   });
 
-  this.on('ui-leave', function (_event) {
+  this.on('ui-leave ui-close', function (_event) {
     if (this.properties.gameClass) {
       this.game.removeClass(this.properties.gameClass);
     }
 
-    if (this.properties.gameClass) {
-      this.game.removeClass(this.properties.gameClass);
-    }
-
-    if (this.isReady && this === _event.targetScope) {
-      this.stop();
-    }
-  });
-
-  this.on('ui-close', function (_event) {
-    if (this.properties.gameClass) {
-      this.game.removeClass(this.properties.gameClass);
-    }
-
-    if (this.properties.gameClass) {
-      this.game.removeClass(this.properties.gameClass);
-    }
-
-    if (this.isReady && this === _event.targetScope) {
+    if (this.isReady && this.is(_event.target)) {
       this.stop();
     }
   });
