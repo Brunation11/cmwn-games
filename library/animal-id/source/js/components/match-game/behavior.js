@@ -1,139 +1,131 @@
 pl.game.component('match-game', function () {
 
-	this.behavior('select', function (_target) {
-		var $target;
+  this.behavior('select', function (_target) {
+    var $target;
 
-		if (this.event && !_target) {
-			$target = $(this.event.target).closest('li');
-			if(!$target.length) return false;
+    if (this.event && !_target) {
+      $target = $(this.event.target).closest('li');
+      if (!$target.length) return false;
 
-			if (this.shouldSelect($target) !== false) {
-				$target.is('li') && this.audio.sfx.correct.play();
-				if(this.showSelect($target)) {
-					return {
-						message: $target.id(),
-						behaviorTarget: $target
-					};
-				}
-			}
+      if (this.shouldSelect($target) !== false) {
+        $target.is('li') && this.audio.sfx.correct.play();
+        if (this.showSelect($target)) {
+          return {
+            message: $target.id(),
+            behaviorTarget: $target
+          };
+        }
+      } else {
+        if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
+      }
+    } else {
+      this.proto(_target);
+    }
 
-			else {
-				if(this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
-			}
-		}
+    return false;
+  });
 
-		else {
-			this.proto(_target);
-		}
+  this.shouldSelect = function (_$target) {
+    return !_$target.hasClass(this.STATE.HIGHLIGHTED) && !_$target.parent().hasClass('show-all');
+  };
 
-		return false;
-	});
+  this.start = function () {
+    var $items, self = this;
 
-	this.shouldSelect = function(_$target) {
-		return !_$target.hasClass(this.STATE.HIGHLIGHTED) && !_$target.parent().hasClass('show-all');
-	};
+    $items = this.find('.items').addClass('show-all');
+    this.disable();
 
-	this.start = function() {
-		var $items, self = this;
-		
-		$items = this.find('.items').addClass('show-all');
-		this.disable();
+    setTimeout(function () {
+      $items
+        .removeClass('show-all');
+      this.enable();
+    }.bind(this), 5000);
 
-		setTimeout(function() {
-			$items
-				.removeClass('show-all');
-			this.enable();
-		}.bind(this), 5000);
+    this.$currentCard = null;
 
-		this.$currentCard = null;
+    this.find('li').each(function () {
+      self.unhighlight($(this));
+    });
+  };
 
-		this.find('li').each(function() {
-			self.unhighlight($(this));
-		});
-	};
+  this.showSelect = function (_$target) {
+    var stateMethod, undoStateMethod;
 
-	this.showSelect = function(_$target) {
-		var stateMethod, undoStateMethod;
+    stateMethod = this.properties.selectState || 'select';
+    if (stateMethod === 'select') undoStateMethod = 'deselect';
+    if (stateMethod === 'highlight') undoStateMethod = 'unhighlight';
 
-		stateMethod = this.properties.selectState || 'select';
-		if(stateMethod === 'select') undoStateMethod = 'deselect';
-		if(stateMethod === 'highlight') undoStateMethod = 'unhighlight';
+    if (_$target) {
+      this[stateMethod](_$target);
 
-		if (_$target) {
-			this[stateMethod](_$target);
+      if (!this.$currentCard) {
+        this.$currentCard = _$target;
+        this.disable()
+          .on('transitionend', function () {
+            this.enable()
+              .off('transitionend');
+          }.bind(this));
+      } else if (this.$currentCard.id() === _$target.id()) {
+        this.$currentCard = null;
+        this.enable();
+        return true;
+      } else {
+        this.disable();
+        setTimeout(function () {
+          this[undoStateMethod](_$target);
+          this[undoStateMethod](this.$currentCard);
+          this.$currentCard = null;
+          this.enable();
+        }.bind(this), 1000);
+      }
+    }
 
-			if(!this.$currentCard) {
-				this.$currentCard = _$target;
-				this.disable()
-					.on('transitionend', function() {
-						this.enable()
-							.off('transitionend');
-					}.bind(this));
-			}
+    return false;
+  };
 
-			else if(this.$currentCard.id() === _$target.id()) {
-				this.$currentCard = null;
-				this.enable();
-				return true;
-			}
+  this.populateList = function (_$bin) {
+    var $items, $bin, random;
 
-			else {
-				this.disable();
-				setTimeout(function() {
-					this[undoStateMethod](_$target);
-					this[undoStateMethod](this.$currentCard);
-					this.$currentCard = null;
-					this.enable();
-				}.bind(this), 1000);
-			}
-		}
+    $items = this.find('.items');
+    $bin = _$bin;
 
-		return false;
-	};
+    while ($bin.length) {
+      random = Math.floor(_$bin.length * Math.random());
+      $bin.eq(random).remove().appendTo($items);
+      $bin = this.find('.bin li');
+    }
+  };
 
-	this.populateList = function(_$bin) {
-		var $items, $bin, random;
+  this.randomize = function () {
+    var $bin;
 
-		$items = this.find(".items");
-		$bin = _$bin;
+    $bin = this.find('.bin');
+    this.find('.items li').remove().appendTo($bin);
+    this.populateList($bin.find('li'));
+  };
 
-		while($bin.length) {
-			random = Math.floor(_$bin.length*Math.random());
-			$bin.eq(random).remove().appendTo($items);
-			$bin = this.find('.bin li');
-		}
-	};
+  this.ready = function () {
+    var correct, $bin;
 
-	this.randomize = function() {
-		var $bin;
+    correct = pl.Queue.create();
 
-		$bin = this.find('.bin');
-		this.find('.items li').remove().appendTo($bin);
-		this.populateList($bin.find('li'));
-	};
+    correct.on('complete', this.bind(function () {
+      this.screen.complete();
+    }));
 
-	this.ready = function () {
-		var correct, $bin;
+    this.items = this
+      .find('.items li[pl-correct]')
+      .map(function (_index, _node) {
+        correct.add(_node.getAttribute('pl-id'));
+        return _node;
+      })
+      .toArray();
 
-		correct = pl.Queue.create();
+    this.items.correct = correct;
 
-		correct.on('complete', this.bind(function () {
-			this.screen.complete();
-		}));
+    $bin = this.find('.bin li');
 
-		this.items = this
-			.find('.items li[pl-correct]')
-			.map(function (_index, _node) {
-				correct.add(_node.getAttribute("pl-id"));
-				return _node;
-			})
-			.toArray();
-
-		this.items.correct = correct;
-
-		$bin = this.find('.bin li');
-
-		if($bin.length) this.populateList($bin);
-	};
+    if ($bin.length) this.populateList($bin);
+  };
 
 });

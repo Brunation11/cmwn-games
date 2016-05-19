@@ -1,99 +1,101 @@
 pl.game.component('selectable-canvas', function () {
 
-	var SELECTOR;
+  var SELECTOR;
 
-	SELECTOR = {
-		CORRECT: '[pl-correct]',
-		INCORRECT: '[pl-incorrect]'
-	};
-	
-	this.buffer = null;
-	this.bctx = null;
-	this.items = null;
+  SELECTOR = {
+    CORRECT: '[pl-correct]',
+    INCORRECT: '[pl-incorrect]'
+  };
 
-	this.state('activate active', '+ACTIVE');
+  this.buffer = null;
+  this.bctx = null;
+  this.items = null;
 
-	this.state('deactivate', '-ACTIVE');
+  this.state('activate active', '+ACTIVE');
 
-	this.init = function () {
-		this.buffer = document.createElement('canvas');
-		this.bctx = this.buffer.getContext('2d');
-	};
+  this.state('deactivate', '-ACTIVE');
 
-	this.ready = function () {
-		var correct, $items;
+  this.init = function () {
+    this.buffer = document.createElement('canvas');
+    this.bctx = this.buffer.getContext('2d');
+  };
 
-		correct = pl.Queue.create();
+  this.ready = function () {
+    var correct, $items;
 
-		correct.on('complete', this.bind(function () {
-			this.complete();
-		}));
+    correct = pl.Queue.create();
 
-		this.buffer.width = this.$els.width();
-		this.buffer.height = this.$els.height();
+    correct.on('complete', this.bind(function () {
+      this.complete();
+    }));
 
-		$items = this.find('li img');
+    this.buffer.width = this.$els.width();
+    this.buffer.height = this.$els.height();
 
-		this.items = $items
-			.map(function (_index, _node) {
-				var $node;
+    $items = this.find('li img');
 
-				$node = $(_node);
+    this.items = $items
+      .map(function (_index, _node) {
+        var $node;
 
-				if ($node.is(SELECTOR.CORRECT)) correct.add(_index);
+        $node = $(_node);
 
-				return $node;
-			})
-			.toArray();
+        if ($node.is(SELECTOR.CORRECT)) correct.add(_index);
 
-		this.items.correct = correct;
-	};
+        return $node;
+      })
+      .toArray();
 
-	this.isImageTarget = function (_$image, _point, _offset, _scale) {
-		var offset = _$image.offset();
+    this.items.correct = correct;
+  };
 
-		this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-		this.bctx.drawImage(_$image[0], offset.left/_scale - _offset[0], offset.top/_scale - _offset[1], _$image.width(), _$image.height());
-		pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+  this.isImageTarget = function (_$image, _point, _offset, _scale) {
+    var offset, pixel;
 
-		this.bctx.fillStyle = 'white';
-		this.bctx.fillRect(_point.x, _point.y, 5,5);
+    offset = _$image.offset();
 
-		// opaque pixel
-		return pixel.data[3] > 0;
-	};
+    this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+    this.bctx.drawImage(_$image[0], offset.left / _scale - _offset[0], offset.top / _scale - _offset[1], _$image.width(), _$image.height());
+    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
-	this.behavior('select', function (_cursor) {
-		var offset, cursor, scale, returnValue = false;
+    this.bctx.fillStyle = 'white';
+    this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
-		scale = this.game.transformScale().x;
-		offset = this.$els.absolutePosition().scale(1/scale);
-		cursor = this.event.cursor
-			.scale(1/this.game.zoom)
-			.dec(offset)
-			.math('floor');
+    // opaque pixel
+    return pixel.data[3] > 0;
+  };
 
-		this.items.every(this.bind(function (_$item) {
-			if (this.isImageTarget(_$item, cursor, offset, scale)) {
-				returnValue = {
-					message: _$item.parent().index(),
-					behaviorTarget: _$item.parent()
-				};
-				return false;
-			}
+  this.behavior('select', function () {
+    var offset, cursor, scale, returnValue = false;
 
-			return true;
-		}));
+    scale = this.game.transformScale().x;
+    offset = this.$els.absolutePosition().scale(1 / scale);
+    cursor = this.event.cursor
+      .scale(1 / this.game.zoom)
+      .dec(offset)
+      .math('floor');
 
-		return returnValue;
-	});
+    this.items.every(this.bind(function (_$item) {
+      if (this.isImageTarget(_$item, cursor, offset, scale)) {
+        returnValue = {
+          message: _$item.parent().index(),
+          behaviorTarget: _$item.parent()
+        };
+        return false;
+      }
 
-	this.deactivateAll = function() {
-		this.deactivate(this.getActive());
-	}
+      return true;
+    }));
 
-	this.unhighlightAll = function() {
-		this.unhighlight(this.getHighlighted());
-	}
+    return returnValue;
+  });
+
+  this.deactivateAll = function () {
+    this.deactivate(this.getActive());
+  };
+
+  this.unhighlightAll = function () {
+    this.unhighlight(this.getHighlighted());
+  };
 
 });

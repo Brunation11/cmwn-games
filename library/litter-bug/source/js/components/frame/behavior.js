@@ -1,26 +1,26 @@
 pl.game.component('frame', function () {
-	
-	this.start = function () {
-		var voSound = this.audio.voiceOver[0];
 
-		this.audio.background.play();
+  this.start = function () {
+    var voSound = this.audio.voiceOver[0];
 
-		if (voSound && !voSound.config("dontautoplay")) voSound.play();
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+    this.audio.background.play();
 
-		return this;
-	};
+    if (voSound && !voSound.config('dontautoplay')) voSound.play();
+    if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
-	this.on('ui-open', function (_event) {
-		if (this.isReady) {
-			this.start();
-		}
+    return this;
+  };
 
-		if (this === _event.targetScope) {
-			if (!(this.hasOwnProperty('isComplete') && this.isComplete) && !(this.hasOwnProperty('requiredQueue') && (this.requiredQueue && this.requiredQueue.length))) {
-				this.complete();
-			}
-		}
-	});
+  this.on('ui-open', function (_event) {
+    if (this.isReady) {
+      this.start();
+    }
+
+    if (this === _event.targetScope) {
+      if (!(this.hasOwnProperty('isComplete') && this.isComplete) && !(this.hasOwnProperty('requiredQueue') && (this.requiredQueue && this.requiredQueue.length))) {
+        this.complete();
+      }
+    }
+  });
 
 });

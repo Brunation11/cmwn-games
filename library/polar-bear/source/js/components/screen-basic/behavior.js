@@ -1,129 +1,127 @@
 pl.game.component('screen-basic', function () {
 
-	this.allowAction = function() {
-		return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
-	};
+  this.allowAction = function () {
+    return !this.screen.state(this.screen.STATE.VOICE_OVER) || this.game.demoMode;
+  };
 
-	this.on('ready', function (_event) {
-		if(!this.is(_event.target)) return;
+  this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
 
-		if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
-			this.requiredQueue.on('complete', this.bind(function () {
-				var sfx;
+    if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+      this.requiredQueue.on('complete', this.bind(function () {
+        var sfx;
 
-				sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+        sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-				if (sfx) sfx.play();
-			}));
-		}
+        if (sfx) sfx.play();
+      }));
+    }
 
-		if(this.state(this.STATE.OPEN)) this.start();
-	});
-	
-	this.next = function () {
-		var current, nextScreen, buttonSound;
+    if (this.state(this.STATE.OPEN)) this.start();
+  });
 
-		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+  this.next = function () {
+    var current, nextScreen, buttonSound;
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+    if (!this.state(this.STATE.OPEN)) return;
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			nextScreen = current.next();
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-			if (nextScreen == null) {
-				current = this;
-				nextScreen = this.proto();
-			}
-		}
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		else {
-			current = this;
-			nextScreen = this.proto();
-		}
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      nextScreen = current.next();
 
-		if (nextScreen) {
-			current.leave();
-			nextScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+      if (nextScreen == null) {
+        current = this;
+        nextScreen = this.proto();
+      }
+    } else {
+      current = this;
+      nextScreen = this.proto();
+    }
 
-		return nextScreen;
-	};
+    if (nextScreen) {
+      current.leave();
+      nextScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-	this.prev = function () {
-		var current, prevScreen, buttonSound;
+    return nextScreen;
+  };
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+  this.prev = function () {
+    var current, prevScreen, buttonSound;
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+    if (!this.state(this.STATE.OPEN)) return;
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			prevScreen = current.prev();
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-			if (prevScreen == null) {
-				current = this;
-				prevScreen = this.proto();
-			}
-		}
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		else {
-			current = this;
-			prevScreen = this.proto();
-		}
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      prevScreen = current.prev();
 
-		if (prevScreen) {
-			current.close();
-			prevScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+      if (prevScreen == null) {
+        current = this;
+        prevScreen = this.proto();
+      }
+    } else {
+      current = this;
+      prevScreen = this.proto();
+    }
 
-		return prevScreen;
-	};
+    if (prevScreen) {
+      current.close();
+      prevScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-	this.start = function () {
-		this.startAudio();
+    return prevScreen;
+  };
 
-		if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
+  this.start = function () {
+    this.startAudio();
 
-		return this;
-	};
+    if (this.hasOwnProperty('entities') && this.entities[0]) this.entities[0].start();
 
-	this.on('ui-open', function (_event) {
-		if (this !== _event.targetScope) return;
+    return this;
+  };
 
-		if (this.isReady) {
-			this.start();
-		}
+  this.on('ui-open', function (_event) {
+    if (!this.is(_event.target)) return;
 
-		if (!this.isComplete) {
-			if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
-				this.complete();
-			}
-		}
+    if (this.isReady) {
+      this.start();
+    }
 
-		if (this.screen.isLast()) {
-			this.addClass('last');
-		}
-	});
+    if (!this.isComplete) {
+      if (!this.requiredQueue || (this.isMemberSafe('requiredQueue') && !this.requiredQueue.length)) {
+        this.complete();
+      }
+    }
 
-	this.on('ui-close', function (_event) {
-		if (this.isReady && this === _event.targetScope) {
-			this.stop();
-		}
-	});
+    if (this.screen.isLast()) {
+      this.addClass('last');
+    }
+  });
+
+  this.on('ui-close', function (_event) {
+    if (this.isReady && this.is(_event.target)) {
+      this.stop();
+    }
+  });
 
 });
