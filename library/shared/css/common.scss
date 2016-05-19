@@ -1,0 +1,12 @@
+/*
+ * general common scss for all games should be added to this file
+ * later we should refactor to bring in more common scss
+ */
+
+html {
+	user-select: none;
+	// the autoprefixer doesn't add these automatically
+	-moz-user-drag: none;
+	-webkit-user-drag: none;
+	user-drag: none;
+}

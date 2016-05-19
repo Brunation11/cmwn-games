@@ -1,12 +1,13 @@
 /**
  * Defines the game scope and imports used component behaviors.
  */
-import 'js-interactive-library';
+// import 'js-interactive-library';
+import '../../../../../js-interactive-library';
 
-import './testPlatformIntegration';
 import './config.game';
 
 // INCLUDE USED COMPONENT BEHAVIORS HERE
+import '../../../shared/js/screen-ios-splash';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
 import './components/title/behavior';
@@ -28,17 +29,11 @@ pl.game('sea-turtle', function () {
 	 * @override
 	 */
 	this.screen('title', function () {
-		
-		this.on('ready', function (_event) {
-			// Screens are display:none then when READY get display:block.
-			// When a screen is OPEN then it transitions a transform,
-			// the delay is to prevent the transition failing to play
-			// because of collision of these styles.
-			// 
-			if (this.is(_event.target)) this.delay(0, this.open);
-			this.close($('#loader'));
-		});
+		this.on('ready', function(_event) {
+			if(!this.is(_event.target)) return;
 
+			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+		});
 	});
 
 	this.screen('video', function () {
@@ -55,7 +50,7 @@ pl.game('sea-turtle', function () {
 
 	this.screen('globe', function () {
 		
-		var characters, restAnimation;
+		var restAnimation, onClose;
 
 		restAnimation = 'bounce';
 
@@ -90,26 +85,21 @@ pl.game('sea-turtle', function () {
 			});
 
 			this.on('initialize', function () {
+				var eventName = typeof this.$els[0].ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
 				// Add a vanilajs event listener attached to the capture event propagation phase.
-				this.listen('mousedown', true, this.bind(preventDrag));
+				this.listen(eventName, true, preventDrag.bind(this));
 			});
 
 			this.respond('answer', function (_event) {
-				if (_event.message === 'correct' && !this.screen.state(this.screen.STATE.COMPLETE)) {
-					this.disable(
-						this.$active.removeClass('ACTIVE')
-					);
-					this.delay('2.5s', function () {
-						this.reveal.item('instruction');
-						this.enable();
-					});
+				if (_event.message === 'correct') {
+					this.disable(this.$active.removeClass('ACTIVE'));
 				}
 			});
 
 		});
 		
 		/**
-		 * The reveal compoent holds the correct/incorrect splash
+		 * The reveal component holds the correct/incorrect splash
 		 * images. So its responsible for handling the multiple
 		 * choice "answer" behavior by displaying the
 		 * "correct" or "incorrect" image.
@@ -117,15 +107,24 @@ pl.game('sea-turtle', function () {
 		this.entity('reveal', function () {
 			
 			this.respond('answer', function (_event) {
-				var message = this[_event.message];
+				var message, playing;
+
+				message = this[_event.message];
+				playing = this.audio.playing();
+
 				if (message && !this.isComplete) {
 					this.select(message);
 					this.delay('2s', function() {
 						this.deselect(message);
 					});
 					
-					this.currentAudio.pause();
-					this.currentAudio.currentTime = 0;
+					if (playing) playing.stop();
+
+					this.delay('2.5s', function () {
+						if(this.wellDone.state(this.STATE.SELECTED)) return;
+						this.reveal.item('instruction');
+						this.characters.enable();
+					});
 				}
 			});
 
@@ -134,29 +133,11 @@ pl.game('sea-turtle', function () {
 		this.STATE.COMPLETE = "COMPLETE";
 
 		/**
-		 * Nodes, including the node of this screen, with a
-		 * attribute of pl-bg will get a background-image style
-		 * and the resource preloaded and collected for watching.
-		 */
-		this.handleProperty({
-			bg: function (_node, _name, _value) {
-				var img = new Image();
-				
-				if (!characters) characters = [];
-
-				img.src = _value;
-				characters.push(img);
-				$(_node).css('background-image', 'url('+_value+')');
-			}
-		});
-
-		/**
 		 * When the screen has initialized, start watching the
 		 * background images we collected.
 		 */
 		this.on('initialize', function (_event) {
 			if (!this.is(_event.targetScope)) return;
-			this.watchAssets(characters);
 			this.area = this.find('.area');
 		});
 
@@ -169,7 +150,7 @@ pl.game('sea-turtle', function () {
 			$character = _event.behaviorTarget.parent();
 			sfx = pl.util.resolvePath(this, 'dropzone.audio.sfx.drop');
 
-			this.area.find('img:eq('+$character.index()+')').addClass('show active');
+			this.area.find('div:eq('+$character.index()+')').addClass('show active');
 			this.reveal.item($character.index()+1);
 
 			this.characters.disable();
@@ -190,15 +171,27 @@ pl.game('sea-turtle', function () {
 			if (sfx) sfx.play();
 
 			if(_event.targetScope.state(this.STATE.COMPLETE)) {
-				this.area.find('img.active').removeClass('active');
+				this.area.find('div.active').removeClass('active');
 			}
 		});
 
 		this.respond('complete', function (_event) {
 			if (this.reveal.is(_event.targetScope)) {
 				this.reveal.item('wellDone');
+				this.audio.sfx.complete.play();
 			}
 		});
+
+		onClose = function(_event) {
+			if(!this.is(_event.target)) return;
+			this.area.find('.active').removeClass('show active');
+			if(this.characters.$active) this.characters.$active.removeClass('ACTIVE');
+			this.characters.enable();
+		};
+
+		this.on('ui-close', onClose);
+
+		this.on('ui-leave', onClose);
 
 		this.start = function () {
 			// take advantage of the screen's start()

@@ -44,11 +44,8 @@ html, body {
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
 	user-select: none;
+	user-drag: none;
 	cursor: default;
 }
 
@@ -173,36 +170,9 @@ p {
 	margin: 0;
 }
 
-.spinner {
-	position: relative;
-	width: 60%; height: 60%;
-	background: rgba(0,0,0,0.5);
-	border-radius: 50px;
-
-}
-
-.spinner > .spinner {
-	position: absolute;
-	top: 20%; left: 20%;
-}
-
-.spinner > .spinner > .spinner {
-
-}
-
-#loader {
-	transition: opacity 0.5s;
-	opacity: 0;
-}
-
-#loader.OPEN {
-	opacity: 1;
-}
-
-#loader .group > .spinner {
-	width: 80px; height: 80px;
-	margin: auto;
-	animation: pulse 0.5s infinite;
+// preload game assets
+#asset-bin {
+	display: none;
 }
 
 .canvas-src { display: none; }
@@ -323,14 +293,9 @@ p {
 					position: absolute;
 					right: 5px;
 					bottom: 10px;
-					opacity: 0.5;
+					opacity: 1;
 					cursor: default;
 					transition: opacity 1s;
-
-					&.ENABLED {
-						opacity: 1;
-						cursor: pointer;
-					}
 				}
 			}
 
@@ -338,6 +303,21 @@ p {
 				opacity: 1;
 				z-index: 1;
 				transition: opacity .5s;
+			}
+		}
+	}
+}
+
+.screen.VOICE-OVER {
+	.reveal-component {
+		.items {
+			li {
+				div {
+					.close-reveal {
+						opacity: .5;
+						pointer-events: none;
+					}
+				}
 			}
 		}
 	}
@@ -384,31 +364,22 @@ p {
 			opacity: 1;
 
 			&.bulb {
-				-webkit-animation-name: bounceInUp;
 				animation-name: bounceInUp;
 			}
 
 			&.presents {
-				-webkit-animation-name: bounceInLeft;
 				animation-name: bounceInLeft;
-				-webkit-animation-delay: 1s;
 				animation-delay: 1s;
 			}
 
 			&.title {
-				-webkit-animation-name: bounceInUp;
 				animation-name: bounceInUp;
-				-webkit-animation-delay: 2s;
 				animation-delay: 2s;
 			}
 		}
 
 		&.COMPLETE {
 			img {
-				-webkit-animation-name: flicker;
-				-webkit-animation-duration: 2s;
-				-webkit-animation-delay: 0s;
-				-webkit-animation-iteration-count: 3;
 				animation-name: flicker;
 				animation-duration: 2s;
 				animation-delay: 0s;
@@ -438,60 +409,55 @@ p {
 				transition: opacity 1s 1s;
 
 				li {
-					background-position: 0 0;
-					background-size: auto 100%;
 					cursor: default;
 					opacity: 0.5;
 					transition: opacity 1s;
+					background-image: url(../media/S_3/img_3.2.png);
+					background-size: 450px;
+					background-repeat: no-repeat;
+					pointer-events: none;
 
 					&:first-of-type:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
 					&.HIGHLIGHTED {
 						opacity: 1;
-						background-position: 204px 0;
 					}
 
 					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
-					&:nth-of-type(1) {
-						background-image: url(../media/S_3/img_3.2.png);
-					}
+					@for $i from 1 through 4 {
+						&:nth-of-type(#{$i}) {
+							background-position: -12px 310-325*$i+px;
 
-					&:nth-of-type(2) {
-						background-image: url(../media/S_3/img_3.3.png);
-					}
-
-					&:nth-of-type(3) {
-						background-image: url(../media/S_3/img_3.4.png);
-					}
-
-					&:nth-of-type(4) {
-						background-image: url(../media/S_3/img_3.5.png);
+							&.HIGHLIGHTED,
+							&:hover {
+								background-position: -237px 310-325*$i+px;
+							}
+						}
 					}
 				}
 			}
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img.title {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
@@ -501,6 +467,20 @@ p {
 
 				.items {
 					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&.VOICE-OVER {
+		.selectable-component {
+			.items {
+				li {
+					pointer-events: none;
+
+					&:first-of-type:not(.HIGHLIGHTED) {
+						pointer-events: none;
+					}
 				}
 			}
 		}
@@ -532,67 +512,62 @@ p {
 					width: 500px;
 					background-image: url(../media/S_4/img_4.2.png);
 					background-size: auto 100%;
+
+					&:hover {
+						background-position: -497px 0;
+					}
+					
+					&.SELECTED {
+						background-position: -993px 0;
+					}
 				}
 
 				&.bulb {
 					width: 230px;
 					background-image: url(../media/S_4/img_4.3.png);
 					background-size: auto 100%;
+
+					&:hover {
+						background-position: -246px 0;
+					}
+
+					&.SELECTED {
+						background-position: 0 0;
+					}
 				}
+			}
+		}
+
+		&.COMPLETE {
+			pointer-events: none;
+
+			li.pig {
+				transition: opacity 1s;
+				opacity: 0.5;
 			}
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
 		.pig {
-			-webkit-animation-name: shake;
-			-webkit-animation-duration: 3s;
 			animation-name: shake;
 			animation-duration: 3s;
 		}
 
 		.bulb {
-			-webkit-animation-name: bounce;
-			-webkit-animation-duration: 3s;
 			animation-name: bounce;
 			animation-duration: 3s;
 		}
 	}
 
-	&:not(.COMPLETE) {
-		.multiple-choice-component li {
-			cursor: pointer;
-
-			&.pig {
-				&:hover {
-					background-position: -497px 0;
-				}
-				
-				&.SELECTED {
-					background-position: -993px 0;
-				}
-			}
-
-			&.bulb {
-				&:hover {
-					background-position: -246px 0;
-				}
-
-				&.SELECTED {
-					background-position: 0 0;
-				}
-			}
+	&.VOICE-OVER {
+		li {
+			pointer-events: none;
 		}
-	}
-
-	&.COMPLETE .multiple-choice-component li.pig {
-		transition: opacity 1s;
-		opacity: 0.5;
 	}
 }
 
@@ -617,8 +592,6 @@ p {
 				transition: opacity 1s 1s;
 
 				li {
-					background-position: 0 0;
-					background-size: auto 100%;
 					cursor: default;
 					position: absolute;
 					width: 200px;
@@ -626,66 +599,54 @@ p {
 					top: 0;
 					opacity: 0.5;
 					transition: opacity 1s;
+					background-image: url(../media/S_5/img_5.2.png);
+					background-size: 400px;
+					background-repeat: no-repeat;
+					pointer-events: none;
 
 					&:first-of-type:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
 					&.HIGHLIGHTED {
 						opacity: 1;
-						background-position: -194px 0;
 					}
 
 					&.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
 						opacity: 1;
 						cursor: pointer;
+						pointer-events: auto;
 
 						&:hover {
-							-webkit-animation-name: bounce;
 							animation-name: bounce;
 						}
 					}
 
-					&:nth-of-type(1) {
-						background-image: url(../media/S_5/img_5.2.png);
-						left: 0;
-					}
+					@for $i from 1 through 5 {
+						&:nth-of-type(#{$i}) {
+							background-position: 0px 200-200*$i+px;
+							left: -150+150*$i+px;
+							top: 200-200*($i%2)+px;
 
-					&:nth-of-type(2) {
-						background-image: url(../media/S_5/img_5.3.png);
-						left: 150px;
-						top: 200px;
-					}
-
-					&:nth-of-type(3) {
-						background-image: url(../media/S_5/img_5.4.png);
-						left: 300px;
-					}
-
-					&:nth-of-type(4) {
-						background-image: url(../media/S_5/img_5.5.png);
-						left: 450px;
-						top: 200px;
-					}
-
-					&:nth-of-type(5) {
-						background-image: url(../media/S_5/img_5.6.png);
-						left: 600px;
+							&.HIGHLIGHTED,
+							&:hover {
+								background-position: -200px 200-200*$i+px;
+							}
+						}
 					}
 				}
 			}
 		}
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img.title {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 
@@ -710,9 +671,8 @@ p {
 		margin: 0;
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		img {
-			-webkit-animation-name: zoomInDown;
 			animation-name: zoomInDown;
 		}
 	}
@@ -748,22 +708,16 @@ p {
 		opacity: 0;
 	}
 
-	&.OPEN {
+	&.READY.OPEN {
 		.inline {
-			-webkit-animation-name: flipInX;
-			-webkit-animation-duration: 3s;
 			animation-name: flipInX;
 			animation-duration: 3s;
 		}
 
 		.stamp.START {
 			opacity: 1;
-			-webkit-animation-name: stamp;
-			-webkit-animation-duration: 1s;
-			/*-webkit-animation-delay: 0.5s;*/
 			animation-name: stamp;
 			animation-duration: 1s;
-			/*animation-delay: 0.5s;*/
 		}
 	}
 }

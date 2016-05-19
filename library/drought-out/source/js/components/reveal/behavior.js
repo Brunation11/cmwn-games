@@ -22,4 +22,6 @@ pl.game.component('reveal', function () {
 		}
 	};
 
+	this.start = function() {};
+
 });

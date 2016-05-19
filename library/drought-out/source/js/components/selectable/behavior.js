@@ -26,4 +26,6 @@ pl.game.component('selectable', function () {
 		return !this.screen.state(this.STATE.VOICE_OVER);
 	};
 
+	this.start = function () {};
+
 });
