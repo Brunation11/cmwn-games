@@ -1,144 +1,163 @@
 pl.game.component('screen-basic', function () {
 
-	this.on('ready', function (_event) {
-		if (this.is(_event.target) && this.audio) {
-			this.audio.rule('.voiceOver', 'shouldPlay', function (_event) {
-				_event.response(!_event.target.config("dontautoplay"));
-			});
-		}
-	});
-	
-	this.next = function () {
-		var current, nextScreen, buttonSound;
+  this.on('ready', function (_event) {
+    if (this.is(_event.target) && this.audio) {
+      this.audio.rule('.voiceOver', 'shouldPlay', function (_e) {
+        _e.response(!_e.target.config('dontautoplay'));
+      });
+    }
 
-		if(this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
+    if (this.isMemberSafe('requiredQueue') && this.requiredQueue) {
+      this.requiredQueue.on('complete', this.bind(function () {
+        var sfx;
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+        sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+        if (sfx) sfx.play();
+      }));
+    }
+  });
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			nextScreen = current.next();
+  this.shouldProceed = function () {
+    return (!this.state(this.STATE.PLAYING) && !this.state(this.STATE.VOICE_OVER)) || this.game.demoMode;
+  };
 
-			if (nextScreen == null) {
-				current = this;
-				nextScreen = this.proto();
-			}
-		}
+  this.playSound = function (_sound) {
+    var delay;
 
-		else {
-			current = this;
-			nextScreen = this.proto();
-		}
+    delay = $(_sound.media).attr('pl-start');
 
-		if (nextScreen) {
-			current.leave();
-			nextScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+    if (delay) {
+      return this.delay(delay, _sound.play.bind(_sound));
+    } else {
+      return _sound.play();
+    }
+  };
 
-		return nextScreen;
-	};
+  this.next = function () {
+    var current, nextScreen, buttonSound;
 
-	this.prev = function () {
-		var current, prevScreen, buttonSound;
+    if (this.hasClass('last') && this.hasClass('COMPLETE')) this.game.quit.okay();
 
-		if (this !== this.screen) {
-			this.log('Not called on a screen');
-			console.trace();
-			return;
-		}
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-		buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		// delegate to a child "slides" component.
-		if (this.slides && this.slides.isComponent) {
-			current = this.slides.current();
-			prevScreen = current.prev();
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      nextScreen = current.next();
 
-			if (prevScreen == null) {
-				current = this;
-				prevScreen = this.proto();
-			}
-		}
+      if (nextScreen == null) {
+        current = this;
+        nextScreen = this.proto();
+      }
+    } else {
+      current = this;
+      nextScreen = this.proto();
+    }
 
-		else {
-			current = this;
-			prevScreen = this.proto();
-		}
+    if (nextScreen) {
+      current.leave();
+      nextScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-		if (prevScreen) {
-			current.close();
-			prevScreen.open();
-			if (buttonSound) buttonSound.play();
-		}
+    return nextScreen;
+  };
 
-		return prevScreen;
-	};
+  this.prev = function () {
+    var current, prevScreen, buttonSound;
 
-	this.start = function () {
-		var entities = this.hasOwnProperty('entities') && this.entities;
+    if (this !== this.screen) {
+      this.log('Not called on a screen');
+      return;
+    }
 
-		this.startAudio();
-		if (this.audio) this.audio.sfx.play('start');
+    buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
 
-		if (entities) {
-			entities.forEach(function (_entity) {
-				if (_entity.isMemberSafe('start')) _entity.start();
-			});
-		}
+    // delegate to a child "slides" component.
+    if (this.slides && this.slides.isComponent) {
+      current = this.slides.current();
+      prevScreen = current.prev();
 
-		return this;
-	};
+      if (prevScreen == null) {
+        current = this;
+        prevScreen = this.proto();
+      }
+    } else {
+      current = this;
+      prevScreen = this.proto();
+    }
 
-	this.stop = function () {
-		var entities = this.hasOwnProperty('entities') && this.entities;
+    if (prevScreen) {
+      current.close();
+      prevScreen.open();
+      if (buttonSound) buttonSound.play();
+    }
 
-		this.stopAudio();
-		this.kill('delay');
+    return prevScreen;
+  };
 
-		if (entities) {
-			entities.forEach(function (_entity) {
-				if (_entity.isMemberSafe('start')) _entity.stop();
-			});
-		}
+  this.start = function () {
+    var entities = this.hasOwnProperty('entities') && this.entities;
 
-		return this;
-	};
+    this.startAudio();
+    if (this.audio) this.audio.sfx.play('start');
 
-	this.complete = function () {
-		this.game.audio.sfx.screenComplete.play();
-		return this.proto();
-	};
+    if (entities) {
+      entities.forEach(function (_entity) {
+        if (_entity.isMemberSafe('start')) _entity.start();
+      });
+    }
 
-	this.on('ui-open', function (_event) {
-		if (this.isReady && this.is(_event.target)) this.start();
-		if (this.completed()) this.complete();
+    return this;
+  };
 
-		if(this.properties.gameClass) {
-			this.game.addClass(this.properties.gameClass);
-		}
+  this.stop = function () {
+    var entities = this.hasOwnProperty('entities') && this.entities;
 
-		if(this.properties.sfx) {
-			var sfx = this.properties.sfx.split(" ");
-			for(var i = 0, n = sfx.length; i < n; i++) {
-				if(this.audio.sfx[sfx[i]]) this.audio.sfx[sfx[i]].play();
-			}
-		}
-	});
+    this.stopAudio();
+    this.kill('delay');
 
-	this.on('ui-leave ui-close', function (_event) {
-		if(this.properties.gameClass) {
-			this.game.removeClass(this.properties.gameClass);
-		}
+    if (entities) {
+      entities.forEach(function (_entity) {
+        if (_entity.isMemberSafe('start')) _entity.stop();
+      });
+    }
 
-		if (this.isReady && this.is(_event.target)) this.stop();
-	});
+    return this;
+  };
+
+  this.complete = function () {
+    this.game.audio.sfx.screenComplete.play();
+    return this.proto();
+  };
+
+  this.on('ui-open', function (_event) {
+    if (this.isReady && this.is(_event.target)) this.start();
+
+    if (this.properties.gameClass) {
+      this.game.addClass(this.properties.gameClass);
+    }
+
+    if (this.properties.sfx) {
+      var sfx = this.properties.sfx.split(' ');
+      for (var i = 0, n = sfx.length; i < n; i++) {
+        if (this.audio.sfx[sfx[i]]) this.playSound(this.audio.sfx[sfx[i]]);
+      }
+    }
+  });
+
+  this.on('ui-leave ui-close', function (_event) {
+    if (this.properties.gameClass) {
+      this.game.removeClass(this.properties.gameClass);
+    }
+
+    if (this.isReady && this.is(_event.target)) this.stop();
+  });
 
 });
