@@ -19,6 +19,12 @@ import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
+  var self = this;
+
+  pl.game.attachScreen = function(cb) {
+    cb.call(self);
+  };
+
   var selectScreen = function () {
     this.respond('select', function (_event) {
       var vo;
@@ -118,22 +124,10 @@ pl.game('drought-out', function () {
         vo = this.audio.sfx.incorrect;
       } else {
         this.highlight(_event.behaviorTarget);
-        vo = this.selectable.audio.voiceOver[_event.message];
+        vo = this.audio.voiceOver[_event.message];
       }
 
       if (vo) vo.play();
-    });
-
-    this.entity('selectable', function () {
-
-      this.shouldSelect = function (_$target) {
-        if (_$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
-          return !this.screen.state(this.STATE.VOICE_OVER);
-        }
-
-        return false;
-      };
-
     });
 
     this.on('ui-open', function (_e) {
@@ -154,10 +148,10 @@ pl.game('drought-out', function () {
       }
     };
 
-    this.on('ready', function (_e) {
+    this.on('ui-open', function (_e) {
       var self = this;
 
-      if (!(this.is(_e.target) && this.reveal.audio)) return;
+      if (!this.is(_e.target)) return;
 
       this.length = this.reveal.find('li').length;
 
@@ -166,12 +160,13 @@ pl.game('drought-out', function () {
         self.deselect();
         item = (item + 1) % self.length;
       });
-    });
-
-    this.on('ui-open', function (_e) {
-      if (!this.is(_e.target)) return;
 
       if (this.isComplete) item = 0;
+    });
+
+    this.on('ui-close ui-leave', function(_e) {
+      if (!this.is(_e.target)) return;
+      this.reveal.audio.voiceOver.off('ended');
     });
   });
 
