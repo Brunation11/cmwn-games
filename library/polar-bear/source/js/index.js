@@ -2,354 +2,377 @@
  * Index script
  * @module
  */
-// import 'js-interactive-library';
-// Use when doing local changes to the library
-// import '../../../../../js-interactive-library/build/play.js';
-
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
+import './components/cannon/behavior';
+import './components/carousel/behavior';
+import './components/frame/behavior';
+import './components/multiple-choice/behavior';
+import './components/reveal/behavior';
+import './components/score/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/frame/behavior';
-import './components/slides/behavior';
-import './components/carousel/behavior';
-import './components/score/behavior';
-import './components/reveal/behavior';
-import './components/multiple-choice/behavior';
-import './components/selectable/behavior';
 import './components/selectable-reveal/behavior';
-import './components/cannon/behavior';
+import './components/selectable/behavior';
+import './components/slides/behavior';
+import './components/title/behavior';
 
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('polar-bear', function () {
 
-	this.screen('title', function () {
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
-
-			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-		});
-
-		this.startAudio = function () {
-			this.title.audio.background.play();
-			this.title.audio.voiceOver.play();
-		};
+  var resetMultipleChoice = function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
 
-		this.stopAudio = function () {
-			this.title.audio.voiceOver.stop('@ALL');
-		};
-	});
+      if (this.isComplete) this.deselect(this.find('.' + this.STATE.SELECTED));
+    });
+  };
 
-	this.screen('map', function () {
+  this.screen('title', function () {
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-		this.entity('slides', function () {
-			
-			this.entity('.map-entity', function () {
-
-				var SELECTOR;
-
-				function isCorrect (_element) {
-					var $el;
-
-					$el = _element.jquery ? _element : $(_element);
-
-					return 
-				}
-
-				SELECTOR = {
-					CORRECT: '[pl-correct]',
-					INCORRECT: '[pl-incorrect]'
-				};
-				
-				this.buffer = null;
-				this.bctx = null;
-				this.countries = null;
-
-				// images
-				this.grayMap = null;
-				this.iceland = null;
-				this.russia = null;
-				this.northPole = null;
-				this.greenland = null;
-				this.denmark = null;
-				this.norway = null;
-				this.canada = null;
-				this.usa = null;
-				this.sweden = null;
-				this.finland = null;
-
-				this.init = function () {
-					this.buffer = document.createElement('canvas');
-					this.bctx = this.buffer.getContext('2d');
-				};
-
-				this.ready = function () {
-					var correct, $countries;
-
-					correct = pl.Queue.create();
-
-					correct.on('complete', this.bind(function () {
-						var sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
-						if (sfx) sfx.play();
-						this.complete();
-					}));
-
-					this.buffer.width = 500;
-					this.buffer.height = 500;
-
-					$countries = this.find('.country');
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+    });
 
-					$countries
-						.not(SELECTOR.CORRECT)
-						.on('animationend', function () {
-							$(this).removeClass('flash').addClass('fadeIn');
-						});
+    this.startAudio = function () {
+      this.title.audio.background.play();
+      this.title.audio.voiceOver.play();
+    };
 
-					this.countries = $countries
-						.map(function (_index, _node) {
-							var $node, id;
+    this.stopAudio = function () {
+      this.title.audio.voiceOver.stop('@ALL');
+    };
+  });
 
-							$node = $(_node);
-							id = pl.util.transformId($node.id(), true);
+  this.screen('what-color', function () {
+    this.entity('slides', function () {
+      this.entity('mc', resetMultipleChoice);
+    });
+  });
 
-							if ($node.is(SELECTOR.CORRECT)) correct.add(id);
+  this.screen('map', function () {
 
-							return id;
-						})
-						.toArray();
+    this.entity('slides', function () {
 
-					this.countries.correct = correct;
+      this.entity('.map-entity', function () {
 
-				};
+        var SELECTOR;
+
+        SELECTOR = {
+          CORRECT: '[pl-correct]',
+          INCORRECT: '[pl-incorrect]'
+        };
+
+        this.buffer = null;
+        this.bctx = null;
+        this.countries = null;
+
+        // images
+        this.grayMap = null;
+        this.iceland = null;
+        this.russia = null;
+        this.northPole = null;
+        this.greenland = null;
+        this.denmark = null;
+        this.norway = null;
+        this.canada = null;
+        this.usa = null;
+        this.sweden = null;
+        this.finland = null;
 
-				this.isImageTarget = function (_image, _point) {
-					this.bctx.clearRect(0,0, this.buffer.width, this.buffer.height);
-					this.bctx.drawImage(_image[0], 0,0, _image.width(), _image.height());
-					pixel = this.bctx.getImageData(_point.x, _point.y, 1,1);
+        this.init = function () {
+          this.buffer = document.createElement('canvas');
+          this.bctx = this.buffer.getContext('2d');
+        };
 
-					this.bctx.fillStyle = 'white';
-					this.bctx.fillRect(_point.x, _point.y, 5,5);
+        this.ready = function () {
+          var correct, $countries;
 
-					// opaque pixel
-					return pixel.data[3] > 0;
-				};
+          correct = pl.Queue.create();
 
-				this.test = function (_cursor) {
-					var offset, cursor, pixel, gameScale;
+          correct.on('complete', this.bind(function () {
+            var sfx = pl.util.resolvePath(this, 'game.audio.sfx.screenComplete');
+            if (sfx) sfx.play();
+            this.complete();
+          }));
 
-					if(!this.screen.allowAction()) return false;
+          this.buffer.width = 500;
+          this.buffer.height = 500;
 
-					offset = this.grayMap.absolutePosition();
-					gameScale = this.game.transformScale().x;
-					
-					// FireFox uses transfom scale which
-					// does NOT produce scaled DOM values like `zoom`.
-					if (gameScale !== 1) {
-						cursor = _cursor
-							.dec(offset)
-							.scale(1/this.game.zoom)
-							.math('floor');
-					} else {
-						cursor = _cursor
-							.scale(1/this.game.zoom)
-							.math('floor')
-							.dec(offset);
-					}
+          $countries = this.find('.country');
 
-					this.countries.every(this.bind(function (_country) {
-						if (this.isImageTarget(this[_country], cursor)) {
-							this.answer( _country);
-							return false;
-						}
-
-						return true;
-					}));
-				};
-
-				this.answer = function (_country) {
-					var $country, index;
-
-					$country = this[_country];
-
-					if ($country.is(SELECTOR.CORRECT)) {
-
-						this.playSFX('correct');
-						this.playVO(_country);
+          $countries
+            .not(SELECTOR.CORRECT)
+            .on('animationend', function () {
+              $(this).removeClass('flash').addClass('fadeIn');
+            });
 
-						$country.addClass('animated fadeIn');
-
-						this.countries.correct.ready(_country);
-					}
-
-					else {
-						this.playSFX('incorrect');
-						$country.addClass('animated flash');
-					}
-				};
+          this.countries = $countries
+            .map(function (_index, _node) {
+              var $node, id;
 
-				this.playSFX = function (_answer) {
-					var sfx;
+              $node = $(_node);
+              id = pl.util.transformId($node.id(), true);
 
-					sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
+              if ($node.is(SELECTOR.CORRECT)) correct.add(id);
 
-					if (sfx) sfx.play();
+              return id;
+            })
+            .toArray();
 
-					return sfx;
-				};
+          this.countries.correct = correct;
 
-				this.playVO = function (_name) {
-					var vo;
+        };
 
-					vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
+        this.isImageTarget = function (_image, _point) {
+          var pixel;
 
-					if (vo) vo.play();
+          this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+          this.bctx.drawImage(_image[0], 0, 0, _image.width(), _image.height());
+          pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
 
-					return vo;
-				};
-			});
+          this.bctx.fillStyle = 'white';
+          this.bctx.fillRect(_point.x, _point.y, 5, 5);
 
-		});
+          // opaque pixel
+          return pixel.data[3] > 0;
+        };
 
-	});
+        this.test = function (_cursor) {
+          var offset, cursor, gameScale;
 
-	this.screen('bears', function () {
+          if (!this.screen.allowAction()) return false;
 
-		this.start = function (_event) {
-			this.proto();
-			this.carousel.start();
-		};
+          offset = this.grayMap.absolutePosition();
+          gameScale = this.game.transformScale().x;
 
-		this.stop = function () {
-			this.carousel.stop();
-		}
+          // FireFox uses transfom scale which
+          // does NOT produce scaled DOM values like `zoom`.
+          if (gameScale !== 1) {
+            cursor = _cursor
+              .dec(offset)
+              .scale(1 / this.game.zoom)
+              .math('floor');
+          } else {
+            cursor = _cursor
+              .scale(1 / this.game.zoom)
+              .math('floor')
+              .dec(offset);
+          }
 
-		this.on('ui-select', function (_event) {
-			if (_event.targetScope === this.reveal) {
-				this.reveal.delay('1s', function () {
-					var $selected;
+          this.countries.every(this.bind(function (_country) {
+            if (this.isImageTarget(this[_country], cursor)) {
+              this.answer( _country);
+              return false;
+            }
 
-					$selected = this.getSelected();
+            return true;
+          }));
+        };
 
-					this.close();
-					$selected
-						.addClass('animated slideOutUp')
-						.on('animationend', function () {
-							$selected.removeClass('slideOutUp');
-							$selected.off();
-						});
-				});
-				
-			}
-		});
+        this.answer = function (_country) {
+          var $country;
 
-		this.on('ui-open', function(_event) {
-			if(!this.is(_event.target)) return;
-			this.carousel.start();
-		});
+          $country = this[_country];
 
-		this.state('incomplete','-COMPLETE', {
-			willSet: function (_target) {
-				this.isComplete = false;
-			}
-		});
+          if ($country.is(SELECTOR.CORRECT)) {
 
-		this.entity('carousel', function () {
-			// The event 'behaviorTarget' for this entities 'hit' behavior
-			this.provideBehaviorTarget = function () {
-				// Choose the item thats in the middle of the 3 visible.
-				return this.current().next();
-			};
+            this.playSFX('correct');
+            this.playVO(_country);
 
-		});
+            $country.addClass('animated fadeIn');
 
-		this.respond('hit', function (_event) {
-			if (_event.message === _event.behaviorTarget.id()) {
-				this.score.up();
-				this.playSFX('correct');
-			}
+            if (!this.state('COMPLETE')) this.countries.correct.ready(_country);
+          } else {
+            this.playSFX('incorrect');
+            $country.addClass('animated flash');
+          }
+        };
 
-			else {
-				this.playSFX('incorrect');
-			}
+        this.playSFX = function (_answer) {
+          var sfx;
 
-			this.reveal.item(_event.behaviorTarget.id());
-		});
+          sfx = pl.util.resolvePath(this, 'audio.sfx.' + _answer);
 
-		this.respond('next', function () {
-			this.cannon.ball.reload();
-		});
+          if (sfx) sfx.play();
 
-		this.playSFX = function (_name) {
-			var sfx;
+          return sfx;
+        };
 
-			sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+        this.playVO = function (_name) {
+          var vo;
 
-			if (sfx) sfx.play();
+          vo = pl.util.resolvePath(this, 'audio.voiceOver.' + _name);
 
-			return this;
-		};
+          if (vo) vo.play();
 
-	});
+          return vo;
+        };
 
-	this.screen('experiment-discover', function() {
-		this.respond('select', function (_event) {
-			var id = _event.message;
+        this.on('ui-open', function (_e) {
+          if (!this.is(_e.target)) return;
 
-			if (id) {
-				this.highlight(_event.behaviorTarget);
-				this.audio.voiceOver[id].play();
-			}
-		});
+          if (this.isComplete) {
+            this.find('.fadeIn').removeClass('fadeIn');
+          }
+        });
+      });
 
-		this.entity('selectable', function() {
-			this.behavior('select', function (_target) {
-				var $target;
+    });
 
-				if (this.event) {
-					$target = $(this.event.target).closest('li');
+  });
 
-					if (this.shouldSelect($target) !== false) {
-						return {
-							message: $target.id(),
-							behaviorTarget: $target
-						};
-					}	
-				}
+  this.screen('bears', function () {
 
-				else {
-					this.proto(_target);
-				}
+    this.start = function () {
+      this.proto();
+      this.carousel.start();
+    };
 
-				return false;
-			});
-		});
-	});
+    this.stop = function () {
+      this.carousel.stop();
+    };
 
-	this.screen('flip', function () {
+    this.on('ui-select', function (_event) {
+      if (_event.targetScope === this.reveal) {
+        this.reveal.delay('1s', function () {
+          var $selected;
 
-		this.complete = function (_event) {
-			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+          $selected = this.getSelected();
 
-			ga('send', 'event', eventCategory, 'complete');
+          this.close();
+          $selected
+            .addClass('animated slideOutUp')
+            .on('animationend', function () {
+              $selected.removeClass('slideOutUp');
+              $selected.off();
+            });
+        });
 
-			return this.proto();
-		};
+      }
+    });
 
-	});
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
+      this.carousel.start();
 
-	this.exit = function () {
-		var screen, eventCategory;
+      if (this.isComplete) this.score.reset();
+    });
 
-		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+    this.state('incomplete', '-COMPLETE', {
+      willSet: function () {
+        this.isComplete = false;
+      }
+    });
 
-		ga('send', 'event', eventCategory, 'quit');
+    this.entity('carousel', function () {
+      // The event 'behaviorTarget' for this entities 'hit' behavior
+      this.provideBehaviorTarget = function () {
+        // Choose the item thats in the middle of the 3 visible.
+        return this.current().next();
+      };
 
-		return this.proto();
-	};
+    });
+
+    this.respond('hit', function (_event) {
+      if (_event.message === _event.behaviorTarget.id()) {
+        this.score.up();
+        this.playSFX('correct');
+      } else {
+        this.playSFX('incorrect');
+      }
+
+      this.reveal.item(_event.behaviorTarget.id());
+    });
+
+    this.respond('next', function () {
+      this.cannon.ball.reload();
+    });
+
+    this.playSFX = function (_name) {
+      var sfx;
+
+      sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
+
+      if (sfx) sfx.play();
+
+      return this;
+    };
+
+  });
+
+  this.screen('experiment-hands', resetMultipleChoice);
+  this.screen('experiment-why-warmer', resetMultipleChoice);
+  this.screen('experiment-how-warmer', resetMultipleChoice);
+
+  this.screen('experiment-discover', function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
+
+      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+    });
+
+    this.respond('select', function (_event) {
+      var id = _event.message;
+
+      if (id) {
+        this.highlight(_event.behaviorTarget);
+        this.audio.voiceOver[id].play();
+      }
+    });
+
+    this.entity('selectable', function () {
+      this.behavior('select', function (_target) {
+        var $target;
+
+        if (this.event) {
+          $target = $(this.event.target).closest('li');
+
+          if (this.shouldSelect($target) !== false) {
+            return {
+              message: $target.id(),
+              behaviorTarget: $target
+            };
+          }
+        } else {
+          this.proto(_target);
+        }
+
+        return false;
+      });
+    });
+  });
+
+  this.screen('flip', function () {
+
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
+
+      ga('send', 'event', eventCategory, 'complete');
+
+      pl.game.trigger($.Event('platform-event', {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      }));
+
+      return this.proto();
+    };
+
+  });
+
+  this.exit = function () {
+    var screen, eventCategory;
+
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
+
+    ga('send', 'event', eventCategory, 'quit');
+
+    return this.proto();
+  };
 
 });
