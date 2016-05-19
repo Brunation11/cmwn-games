@@ -1,16 +1,16 @@
 .score-component {
-	margin: 20px auto;
+  margin: 20px auto;
 }
-	
-	.score-component .board img {
-		display: none;
-	    height: 80px;
-	}
+  
+  .score-component .board img {
+    display: none;
+      height: 80px;
+  }
 
-	.score-component .board img.SELECTED {
-		display: block;
-	}
+  .score-component .board img.SELECTED {
+    display: block;
+  }
 
-		.score-component .board [pl-id=counter] {
-			display: none;
-		}
+    .score-component .board [pl-id=counter] {
+      display: none;
+    }

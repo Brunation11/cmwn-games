@@ -1,73 +1,68 @@
 pl.game.component('multiple-choice', function () {
 
-	function validateAnswer (_scope) {
-		var $selected, answers, $correct, correctCount;
+  function validateAnswer(_scope) {
+    var $selected, answers, $correct;
 
-		$selected = _scope.getSelected();
+    $selected = _scope.getSelected();
 
-		if (_scope.properties.correct) {
-			answers = _scope.properties.correct.split(/\s*,\s*/);
+    if (_scope.properties.correct) {
+      answers = _scope.properties.correct.split(/\s*,\s*/);
 
-			if (~answers.indexOf(String($selected.index()))) {
-				_scope.playSFX('correct');
-				_scope.complete();
-			}
+      if (~answers.indexOf(String($selected.index()))) {
+        if (_scope.isComplete) _scope.playSFX('correct');
+        _scope.complete();
+      } else {
+        _scope.playSFX('incorrect');
+      }
+    } else {
+      $correct = _scope.find('[pl-correct]');
 
-			else {
-				_scope.playSFX('incorrect');
-			}
-		}
+      if (~$.inArray($selected[0], $correct)) {
+        if (_scope.isComplete) _scope.playSFX('correct');
+        _scope.complete();
+      } else {
+        _scope.playSFX('incorrect');
+      }
+    }
 
-		else {
-			correctCount = 0;
-			$correct = _scope.find('[pl-correct]');
+    return false;
+  }
 
-			if (~$.inArray($selected[0], $correct)) {
-				_scope.playSFX('correct');
-				_scope.complete();
-			}
+  this.playSFX = function (_answer) {
+    var sfx;
 
-			else {
-				_scope.playSFX('incorrect');
-			}
-		}
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _answer);
 
-		return false;
-	}
+    if (sfx) sfx.play();
 
-	this.playSFX = function (_answer) {
-		var sfx;
+    return sfx;
+  };
 
-		sfx = pl.util.resolvePath(this, 'audio.sfx.'+_answer);
+  this.playVO = function (_name) {
+    var vo;
 
-		if (sfx) sfx.play();
+    vo = pl.util.resolvePath(this, 'audio.voiceOver.' + _name);
 
-		return sfx;
-	};
+    if (vo) vo.play();
 
-	this.playVO = function (_name) {
-		var vo;
+    return vo;
+  };
 
-		vo = pl.util.resolvePath(this, 'audio.voiceOver.'+_name);
+  this.answer = function () {
+    var $li;
 
-		if (vo) vo.play();
+    if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return;
 
-		return vo;
-	};
+    if (this.event) {
+      $li = $(this.event.target).closest('li');
+      this.playVO($li.id());
 
-	this.answer = function () {
-		if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return;
+      if (this.select($li)) {
+        validateAnswer(this);
+      }
+    }
+  };
 
-		if (this.event) {
-			$li = $(this.event.target).closest('li');
-			this.playVO($li.id());
-
-			if (!this.isComplete && this.select($li)) {
-				validateAnswer(this);
-			}
-		}
-	};
-
-	this.start = function() {};
+  this.start = function () {};
 
 });
