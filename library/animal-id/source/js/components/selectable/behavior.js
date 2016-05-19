@@ -1,67 +1,63 @@
 pl.game.component('selectable', function () {
 
-	this.behavior('select', function (_target) {
-		var $target;
+  this.behavior('select', function (_target) {
+    var $target;
 
-		if(this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
+    if (this.screen.state(this.screen.STATE.VOICE_OVER) && !this.game.demoMode) return false;
 
-		if (this.event && !_target) {
-			$target = $(this.event.target).closest('li');
+    if (this.event && !_target) {
+      $target = $(this.event.target).closest('li');
 
-			if (this.shouldSelect($target) !== false) {
-				$target.is('li') && this.audio.sfx.correct.play();
-				if(this.showSelect($target)) {
-					return {
-						message: $target.id(),
-						behaviorTarget: $target
-					};
-				}
-			}
+      if (this.shouldSelect($target) !== false) {
+        $target.is('li') && this.audio.sfx.correct.play();
+        if (this.showSelect($target)) {
+          return {
+            message: $target.id(),
+            behaviorTarget: $target
+          };
+        }
+      } else {
+        if (this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
+      }
+    } else {
+      this.proto(_target);
+    }
 
-			else {
-				if(this.audio.sfx.incorrect) this.audio.sfx.incorrect.play();
-			}
-		}
+    return false;
+  });
 
-		else {
-			this.proto(_target);
-		}
+  this.shouldSelect = function (_$target) {
+    return _$target.is(this.screen.SELECTOR.CORRECT);
+  };
 
-		return false;
-	});
+  this.showSelect = function (_$target) {
+    var stateMethod;
 
-	this.shouldSelect = function (_$target) {
-		return _$target.is(this.screen.SELECTOR.CORRECT);
-	};
+    stateMethod = this.properties.selectState || 'select';
 
-	this.showSelect = function(_$target) {
-		var stateMethod;
+    if (_$target) {
+      this[stateMethod](_$target);
+    }
 
-		stateMethod = this.properties.selectState || 'select';
+    return true;
+  };
 
-		if (_$target) {
-			this[stateMethod](_$target);
-		}
+  this.populateList = function (_$bin) {
+    var $items, $bin, random;
 
-		return true;
-	};
+    $items = this.find('.items');
+    $bin = _$bin;
 
-	this.populateList = function(_$bin) {
-		var $items, $bin, random;
+    while ($bin.length) {
+      random = Math.floor(_$bin.length * Math.random());
+      $bin.eq(random).remove().appendTo($items);
+      $bin = this.find('.bin li');
+    }
+  };
 
-		$items = this.find(".items");
-		$bin = _$bin;
-
-		while($bin.length) {
-			random = Math.floor(_$bin.length*Math.random());
-			$bin.eq(random).remove().appendTo($items);
-			$bin = this.find('.bin li');
-		}
-	};
-
-	this.ready = function () {
-		var $bin = this.find('.bin li');
-		if($bin.length) this.populateList($bin);
-	};
+  this.ready = function () {
+    var $bin = this.find('.bin li');
+    if ($bin.length) this.populateList($bin);
+  };
 
 });
