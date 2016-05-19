@@ -31,8 +31,9 @@ pl.game('be-bright', function () {
   };
 
   startVideo = function () {
-    this.on('ui-open', function () {
-      if (this.game.bgSound) this.game.bgSound.stop();
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
+
       setTimeout(function () {
         this.video.start();
       }.bind(this), 250);
@@ -54,11 +55,14 @@ pl.game('be-bright', function () {
       if (!this.is(_event.target)) return;
 
       this.start();
+      this.off('transitionend');
       this.delay('3s', function () {
         this.title.complete();
         this.title.audio.sfx.play();
       });
     });
+
+    this.prev = function () {};
 
     this.startAudio = function () {
       this.title.startAudio();
