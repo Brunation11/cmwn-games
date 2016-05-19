@@ -50,10 +50,10 @@ games = (function() {
 
 gulp.task('default', ['build-dev']);
 
-gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
+gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-media', 'copy-components', 'copy-thumbs']);
+gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 gulp.task('webpack:build-dev', function(callback) {
     games.forEach(function (_game, _index) {
@@ -145,7 +145,17 @@ gulp.task('copy-index', function () {
                 }
             }))
             .pipe(gulp.dest('./build/'+_game));
+
+        gulp
+            .src(path.join('./library', _game, 'source/screens/*'))
+            .pipe(gulp.dest('./build/'+_game+'/screens'));
     });
+});
+
+gulp.task('copy-framework', function () {
+    gulp
+        .src(['./library/framework/*'])
+        .pipe(gulp.dest('./build/framework'));
 });
 
 gulp.task('copy-media', ['copy-index'], function () {
@@ -154,6 +164,14 @@ gulp.task('copy-media', ['copy-index'], function () {
             .src(path.join( './library', _game, 'media/**/*' ))
             .pipe( gulp.dest(path.join( './build', _game, 'media' )) );
     });
+
+    gulp
+        .src(['./library/shared/fonts/*'])
+        .pipe(gulp.dest('./build/shared/fonts'));
+
+    gulp
+        .src(['./library/shared/images/*'])
+        .pipe(gulp.dest('./build/shared/images'));
 });
 
 gulp.task('copy-components', ['copy-media'], function () {
@@ -196,6 +214,7 @@ gulp.task('watch', function(callback) {
         'library/' + game + '/source/css/*.scss',
         'library/' + game + '/source/css/*.css',
         'library/' + game + '/source/js/components/**/*.html',
+        'library/' + game + '/source/screens/*',
         'library/' + game + '/index.html'], function () {
         gulp.start('build-dev');
     });

@@ -71,7 +71,6 @@ pl.game.component('screen-basic', function () {
     voSound = pl.util.resolvePath(this, 'audio.voiceOver[0]?');
 
     if (bgSound) {
-      this.game.bgSound = bgSound;
       this.playSound(bgSound);
     }
     if (voSound) this.playSound(voSound);
@@ -91,7 +90,7 @@ pl.game.component('screen-basic', function () {
 
   this.on('ui-open', function (_event) {
     if (this.isReady && this === _event.targetScope) {
-      this.on('transitionend', function (_e) {
+      this.off('transitionend').on('transitionend', function (_e) {
         if (!this.is(_e.target)) return;
         this.start();
         this.off('transitionend');
@@ -103,12 +102,7 @@ pl.game.component('screen-basic', function () {
     }
   });
 
-  this.on('ui-leave', function (_event) {
-    if (!this.is(_event.target)) return;
-    this.stop();
-  });
-
-  this.on('ui-close', function (_event) {
+  this.on('ui-leave ui-close', function (_event) {
     if (!this.is(_event.target)) return;
     this.stop();
   });
