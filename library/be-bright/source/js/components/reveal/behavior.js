@@ -1,17 +1,5 @@
 pl.game.component('reveal', function () {
 
-	function playSound (_sound) {
-		var delay;
-
-		delay = $(_sound).attr('pl-delay');
-
-		if (delay) {
-			return this.delay(delay, _sound.play.bind(_sound));
-		} else {
-			return _sound.play();
-		}
-	}
-
 	this.item = function (_id) {
 		var vo, index;
 
@@ -19,7 +7,7 @@ pl.game.component('reveal', function () {
 
 		if (typeof _id === 'number') {
 			this.open(this.find('li').eq(_id));
-			playSound.call(this, this.audio.voiceOver[_id]);
+			this.screen.playSound(this.audio.voiceOver[_id]);
 		}
 			
 		else if (typeof _id === 'string') {
@@ -30,14 +18,14 @@ pl.game.component('reveal', function () {
 					index = this[_id].index();
 					vo = this.audio.voiceOver[_id] || this.audio.voiceOver[index];
 					
-					if (vo) playSound.call(this, vo);
+					if (vo) this.screen.playSound(vo);
 				}
 			}
 		}
 	};
 
 	this.closeAll = function(_$target) {
-		if(_$target.state(this.STATE.ENABLED) || this.game.demoMode) {
+		if(this.allowAction()) {
 			if(this.game.audio.sfx.button) this.game.audio.sfx.button.play();
 			this.close(this.find('li.OPEN'));
 		}
