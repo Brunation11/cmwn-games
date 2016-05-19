@@ -20,12 +20,13 @@ pl.game.component('timer', function () {
   this.timeout = 0;
   this.time = 0;
   this.stamp = 0;
+  this.countDown = false;
 
-  this.timerComplete = function () {
+  this.behavior('timerComplete', function () {
     this
       .stop()
       .complete();
-  };
+  });
 
   this.init = function () {
     this.timeout = pl.util.toMillisec(this.properties.set);
@@ -61,8 +62,16 @@ pl.game.component('timer', function () {
   this.resume = this.start;
 
   this.render = function () {
-    this.stopWatch.text(this.time);
+    this.stopWatch.text(this.countDown ? this.timeout / 1000 - this.time : this.time);
     return this;
   };
+
+  this.handleProperty({
+    'countdown': function (_node, _name, _value) {
+      if (this.is(_node)) {
+        this.countDown = _value === 'true' ? true : false;
+      }
+    }
+  });
 
 });

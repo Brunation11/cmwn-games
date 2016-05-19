@@ -7,7 +7,10 @@ pl.game.component('multiple-choice', function () {
       answers = this.properties.correct.split(/\s*,\s*/);
 
       if (~answers.indexOf(String(this.getSelected().id()))) {
+        this.audio.sfx.play('correct');
         this.complete();
+      } else {
+        this.audio.sfx.play('incorrect');
       }
     }
 
