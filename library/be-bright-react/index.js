@@ -33,16 +33,16 @@ class BeBright extends play.Game {
   constructor() {
     super(config);
 
-    this.screens = [
-      iOSScreen,
-      TitleScreen,
-      BulbsScreen,
-      PigScreen,
-      SwitchesScreen,
-      InfoScreen,
-      VideoScreen,
-      FlipScreen,
-    ];
+    this.screens = {
+      0: iOSScreen,
+      1: TitleScreen,
+      2: BulbsScreen,
+      3: PigScreen,
+      4: SwitchesScreen,
+      5: InfoScreen,
+      6: VideoScreen,
+      7: FlipScreen,
+    };
 
     this.menus = {
       quit: QuitScreen,
