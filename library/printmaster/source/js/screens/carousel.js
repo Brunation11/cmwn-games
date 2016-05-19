@@ -1,158 +1,155 @@
 /**
  * Printmaster - Carousel Screen
  */
-export default function carousel () {
-	this.on('ready', function(_event) {
-		if (!this.is(_event.target)) return;
-		
-		this.$targets = this.find('.target img');
-	});
+export default function carousel() {
+  this.on('ready', function (_event) {
+    if (!this.is(_event.target)) return;
 
-	this.setTarget = function(_idx) {
-		this.idx = _idx || 0;
-		this.$target = $(this.$targets[this.idx]);
-		this.target = this.$target.id();
-		this.amount = this.$target.attr('pl-amount');
+    this.$targets = this.find('.target img');
+  });
 
-		if(this.target) {
-			this.select(this.$target);
+  this.setTarget = function (_idx) {
+    this.idx = _idx || 0;
+    this.$target = $(this.$targets[this.idx]);
+    this.target = this.$target.id();
+    this.amount = this.$target.attr('pl-amount');
 
-			if(this.score) {
-				this.score.removeClass('loops whorl arch doubleloops').addClass(this.target);
-				this.score.attr('pl-max', this.amount);
-				this.score.properties.max = this.amount;
-				this.score.reset();
-			}
-		} else {
-			this.deselect(this.$targets);
-		}
-	};
+    if (this.target) {
+      this.select(this.$target);
 
-	this.respond('complete', function(_event) {
-		if(_event.message === 'score') {
-			this.modal.item(this.idx);
-			this.setTarget(++this.idx);
-		}
-	});
+      if (this.score) {
+        this.score.removeClass('loops whorl arch doubleloops').addClass(this.target);
+        this.score.attr('pl-max', this.amount);
+        this.score.properties.max = this.amount;
+        this.score.reset();
+      }
+    } else {
+      this.deselect(this.$targets);
+    }
+  };
 
-	this.start = function (_event) {
-		this.proto();
-		this.carousel.start();
-	};
+  this.respond('complete', function (_event) {
+    if (_event.message === 'score') {
+      this.modal.item(this.idx);
+      this.setTarget(++this.idx);
+    }
+  });
 
-	this.stop = function () {
-		this.carousel.stop();
-	}
+  this.start = function () {
+    this.proto();
+    this.carousel.start();
+  };
 
-	this.on('ui-open', function(_event) {
-		if (!this.is(_event.target)) return;
+  this.stop = function () {
+    this.carousel.stop();
+  };
 
-		this.carousel.start();
-		this.modal.item(8);
-		this.setTarget();
+  this.on('ui-open', function (_event) {
+    if (!this.is(_event.target)) return;
 
-		this.game.audio.sfx.typing.play();
-		this.delay('3.5s', function() {
-			this.game.audio.sfx.typing.stop();
-		});
-	});
+    this.carousel.start();
+    this.modal.item(8);
+    this.setTarget();
 
-	this.state('incomplete','-COMPLETE', {
-		willSet: function (_target) {
-			this.isComplete = false;
-		}
-	});
+    this.game.audio.sfx.typing.play();
+    this.delay('3.5s', function () {
+      this.game.audio.sfx.typing.stop();
+    });
+  });
 
-	this.entity('carousel', function () {
-		// The event 'behaviorTarget' for this entities 'hit' behavior
-		this.provideBehaviorTarget = function () {
-			// Choose the item thats in the middle of the 3 visible.
-			return this.current().next();
-		};
+  this.state('incomplete', '-COMPLETE', {
+    willSet: function () {
+      this.isComplete = false;
+    }
+  });
 
-	});
+  this.entity('carousel', function () {
+    // The event 'behaviorTarget' for this entities 'hit' behavior
+    this.provideBehaviorTarget = function () {
+      // Choose the item thats in the middle of the 3 visible.
+      return this.current().next();
+    };
 
-	this.entity('cannon', function() {
-		this.behavior('fire', function () {
-			if(this.isLaunchComplete) {
-				this.launch(this.ball);
-				return {
-					message: this.screen.target
-				};
-			}
+  });
 
-			return false;
-		});
-	});
+  this.entity('cannon', function () {
+    this.behavior('fire', function () {
+      if (this.isLaunchComplete) {
+        this.launch(this.ball);
+        return {
+          message: this.screen.target
+        };
+      }
 
-	this.entity('score', function() {
+      return false;
+    });
+  });
 
-		this.entity('board', function() {
-			
-			this.on('ready', function(_event) {
-				if (!this.is(_event.target)) return;
+  this.entity('score', function () {
 
-				this.items = this.find('div');
-			});
+    this.entity('board', function () {
 
-			this.render = function() {
-				this.highlight(this.items[this.value-1]);
-				return this;
-			};
-		});
+      this.on('ready', function (_event) {
+        if (!this.is(_event.target)) return;
 
-		this.up = function (_count) {
-			this.value+= _count || 1;
+        this.items = this.find('div');
+      });
 
-			this.board.render();
+      this.render = function () {
+        this.highlight(this.items[this.value - 1]);
+        return this;
+      };
+    });
 
-			console.log('score', this.value, this.properties.max)
+    this.up = function (_count) {
+      this.value += _count || 1;
 
-			if (this.value == this.properties.max) {
-				console.log('score complete');
-				this.delay('1s', this.complete);
-			}
+      this.board.render();
 
-			return this;
-		};
+      if (this.value === parseInt(this.properties.max, 10)) {
+        this.delay('1s', this.complete);
+      }
 
-		this.behavior('complete', function() {
-			return {
-				message: 'score'
-			}
-		});
+      return this;
+    };
 
-		this.reset = function() {
-			this.value = 0;
-			this.unhighlight(this.board.items);
-		};
-	});
+    this.behavior('complete', function () {
+      return {
+        message: 'score'
+      };
+    });
 
-	this.respond('hit', function (_event) {
-		if (_event.message === _event.behaviorTarget.id()) {
-			this.score.up();
-			this.playSFX('correct');
-		} else {
-			this.playSFX('incorrect');
-		}
-	});
+    this.reset = function () {
+      this.value = 0;
+      this.unhighlight(this.board.items);
+    };
+  });
 
-	this.respond('next', function () {
-		this.cannon.reload();
-	});
+  this.respond('hit', function (_event) {
+    if (_event.message === _event.behaviorTarget.id()) {
+      this.score.up();
+      this.playSFX('correct');
+    } else {
+      this.playSFX('incorrect');
+    }
+  });
 
-	this.complete = function () {
-		var r = this.proto();
-		return r;
-	};
+  this.respond('next', function () {
+    this.cannon.reload();
+  });
 
-	this.playSFX = function (_name) {
-		var sfx;
+  this.complete = function () {
+    var r = this.proto();
+    return r;
+  };
 
-		sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+  this.playSFX = function (_name) {
+    var sfx;
 
-		if (sfx) sfx.play();
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
-		return this;
-	};
+    if (sfx) sfx.play();
+
+    return this;
+  };
 }
