@@ -1,68 +1,68 @@
 pl.game.component('timer', function () {
 
-	function testTime () {
-		var time;
+  function testTime() {
+    var time;
 
-		time = Date.now();
+    time = Date.now();
 
-		if (time >= this.stamp) {
-			this.stamp = time+1000;
-			this.time += 1;
-			
-			this.render();
+    if (time >= this.stamp) {
+      this.stamp = time + 1000;
+      this.time += 1;
 
-			if (this.time*1000 >= this.timeout) {
-				this.timerComplete();
-			}
-		}
-	}
+      this.render();
 
-	this.timeout = 0;
-	this.time = 0;
-	this.stamp = 0;
+      if (this.time * 1000 >= this.timeout) {
+        this.timerComplete();
+      }
+    }
+  }
 
-	this.timerComplete = function() {
-		this
-			.stop()
-			.complete();
-	};
+  this.timeout = 0;
+  this.time = 0;
+  this.stamp = 0;
 
-	this.init = function () {
-		this.timeout = pl.util.toMillisec(this.properties.set);
-		return this;
-	};
+  this.timerComplete = function () {
+    this
+      .stop()
+      .complete();
+  };
 
-	this.ready = function () {
-		this.screen.on('ui-open', this.bind(function () {
-			this.start();
-		}));
-		return this;
-	};
+  this.init = function () {
+    this.timeout = pl.util.toMillisec(this.properties.set);
+    return this;
+  };
 
-	this.start = function () {
-		this.eachFrame(testTime);
-		return this;
-	};
+  this.ready = function () {
+    this.screen.on('ui-open', this.bind(function () {
+      this.start();
+    }));
+    return this;
+  };
 
-	this.restart = function() {
-		this.time = 0;
-		this.stamp = 0;
-		this.start();
-		return this;
-	};
+  this.start = function () {
+    this.eachFrame(testTime);
+    return this;
+  };
 
-	this.stop = function () {
-		this.eachFrame(testTime, false);
-		return this;
-	};
+  this.restart = function () {
+    this.time = 0;
+    this.stamp = 0;
+    this.start();
+    return this;
+  };
 
-	this.pause = this.stop;
+  this.stop = function () {
+    this.eachFrame(testTime, false);
+    return this;
+  };
 
-	this.resume = this.start;
+  this.pause = this.stop;
 
-	this.render = function () {
-		this.stopWatch.text(this.time);
-		return this;
-	};
+  this.resume = this.start;
+
+  this.render = function () {
+    this.stopWatch.text(this.time);
+    return this;
+  };
 
 });

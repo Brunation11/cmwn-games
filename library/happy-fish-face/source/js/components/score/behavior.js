@@ -1,71 +1,73 @@
 pl.game.component('score', function () {
 
-	this.value = 0;
+  this.value = 0;
 
-	this.entity('board', function () {
-		
-		this.template = null;
-		this.images = null;
+  this.entity('board', function () {
 
-		this.ready = function () {
-			this.template = this.counter.html();
-			this.images = this.find('img');
-		};
+    this.template = null;
+    this.images = null;
 
-		this.render = function () {
-			var image;
+    this.ready = function () {
+      this.template = this.counter.html();
+      this.images = this.find('img');
+    };
 
-			if (this.images.length) {
-				image = this.images[this.value];
-				this.select(image);
-			}
-			
-			this.counter.html(this.template.replace('{{score}}', this.value));
+    this.render = function () {
+      var image;
 
-			return this;
-		};
+      if (this.images.length) {
+        image = this.images[this.value];
+        this.select(image);
+      }
 
-	});
+      this.counter.html(this.template.replace('{{score}}', this.value));
 
-	this.ready = function () {
-		this.board.render();
-	};
+      return this;
+    };
 
-	this.up = function (_count) {
-		this.value+= _count || 1;
+  });
 
-		this.board.render();
+  this.start = () => {
+    this.value = 0;
+    this.board.render();
+  };
 
-		console.log('score', this.value, this.properties.max)
+  this.ready = function () {
+    this.board.render();
+  };
 
-		if (this.value >= this.properties.max) {
-			console.log('oh word');
-			this.complete();
-		}
+  this.up = function (_count) {
+    this.value += _count || 1;
 
-		return this;
-	};
+    this.board.render();
 
-	this.down = function (_count) {
-		this.value-= _count || 1;
+    if (this.value >= this.properties.max) {
+      this.complete();
+    }
 
-		this.board.render();
-		
-		if (this.value >= this.properties.max) {
-			this.complete();
-		}
+    return this;
+  };
 
-		return this;
-	};
+  this.down = function (_count) {
+    this.value -= _count || 1;
 
-	this.state('incomplete','-COMPLETE', {
-		willSet: function (_target) {
-			this.isComplete = false;
+    this.board.render();
 
-			if(this.value >= this.properties.max) {
-				this.value = this.properties.max - 1;
-			}
-		}
-	});
+    if (this.value >= this.properties.max) {
+      this.complete();
+    }
+
+    return this;
+  };
+
+  this.state('incomplete', '-COMPLETE', {
+    willSet: function () {
+      this.isComplete = false;
+
+      if (this.value >= this.properties.max) {
+        this.value = this.properties.max - 1;
+      }
+    }
+  });
 
 });
