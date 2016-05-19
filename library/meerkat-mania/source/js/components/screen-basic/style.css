@@ -1,14 +1,14 @@
 .screen-basic-component {}
 
-	.screen-basic-component button.close {
-		position: relative;
-		float: right;
-		border: none;
+  .screen-basic-component button.close {
+    position: relative;
+    float: right;
+    border: none;
 
-		font-size: 2em;
-		z-index: 1;
-	}
+    font-size: 2em;
+    z-index: 1;
+  }
 
-	.screen-basic-component button.close:active{
-		transform: scale(0.8);
-	}
+  .screen-basic-component button.close:active{
+    transform: scale(0.8);
+  }

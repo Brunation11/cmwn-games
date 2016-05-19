@@ -2,145 +2,155 @@
  * Index script
  * @module
  */
-import 'js-interactive-library';
-// import '../../../../../js-interactive-library';
 import './config.game';
 
 import '../../../shared/js/screen-ios-splash';
+import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
-import './components/title/behavior';
-import './components/selectable/behavior';
 import './components/selectable-canvas/behavior';
-import './components/reveal/behavior';
+import './components/selectable/behavior';
+import './components/title/behavior';
 import './components/video/behavior';
+
+import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/google-analytics';
 
 pl.game('meerkat-mania', function () {
 
-	this.screen('title', function () {
+  var videoScreen = function () {
+    this.on('ui-open', function () {
+      setTimeout(function () {
+        this.video.start();
+      }.bind(this), 250);
+    });
 
-		this.on('ui-open', function (_event) {
-			if (this === _event.targetScope) {
-				this.title.start();
-			}
-		});
+    this.on('ui-close', function () {
+      this.video.pause();
+      if (this.game.bgSound) this.game.bgSound.play();
+    });
+  };
 
-		this.on('ready', function(_event) {
-			if(!this.is(_event.target)) return;
+  this.screen('title', function () {
 
-			if(this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-		});
+    this.on('ui-open', function (_event) {
+      if (this === _event.targetScope) {
+        this.title.start();
+      }
+    });
 
-		this.startAudio = function () {
-			this.title.audio.background.play();
-			this.title.audio.voiceOver.play();
-		};
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
 
-		this.stopAudio = function () {
-			this.title.audio.voiceOver.stop('@ALL');
-		};
+      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
+    });
 
-	});
+    this.startAudio = function () {
+      this.title.audio.background.play();
+      this.title.audio.voiceOver.play();
+    };
 
-	this.screen('roles', function () {
+    this.stopAudio = function () {
+      this.title.audio.voiceOver.stop('@ALL');
+    };
 
-		this.respond('select', function (_event) {
-			var index = _event.message;
+  });
 
-			if (Number.isInteger(index) && ~index) {
-				this.highlight(_event.behaviorTarget);
-				this.selectableCanvas.activate(_event.behaviorTarget);
-				this.reveal.item(index);
-				// if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-			}
-		});
+  this.screen('roles', function () {
 
-		this.respond('closeAll', function(didClose) {
-			if(didClose) this.selectableCanvas.deactivateAll();
-		});
+    this.respond('select', function (_event) {
+      var index = _event.message;
 
-		this.entity('selectable-canvas', function() {
-			this.start = function() {
-				this.ready();
-				this.deactivateAll();
-				this.unhighlightAll();
-				this.reveal.item(6);
-			};
-		});
-	});
+      if (Number.isInteger(index) && ~index) {
+        this.highlight(_event.behaviorTarget);
+        this.selectableCanvas.activate(_event.behaviorTarget);
+        this.reveal.item(index);
+        // if(this.audio.sfx.correct) this.audio.sfx.correct.play();
+      }
+    });
 
-	this.screen('video', function() {
-		this.on('ui-open', function() {
-			setTimeout(function() {
-				this.video.start();
-			}.bind(this), 250);
-		});
+    this.respond('closeAll', function (didClose) {
+      if (didClose) this.selectableCanvas.deactivateAll();
+    });
 
-		this.on("ui-close", function() {
-			this.video.pause();
-			if(this.game.bgSound) this.game.bgSound.play();
-		});
-	});
+    this.start = function () {
+      this.selectableCanvas.deactivateAll();
+      this.selectableCanvas.unhighlightAll();
+      this.reveal.item(6);
+    };
+  });
 
-	this.screen('feel', function () {
+  this.screen('video', videoScreen);
+  this.screen('video-2', videoScreen);
 
-		this.on('ready', function (_event) {
-			if (!this.is(_event.target)) return;
+  this.screen('feel', function () {
 
-			this.selectable.audio.voiceOver.on('ended', function (_ended) {
-				this.complete();
-			}.bind(this.selectable));
-		});
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
 
-		this.respond('select', function (_event) {
-			var index, stateMethod;
+      this.selectable.audio.voiceOver.on('ended', function () {
+        this.complete();
+      }.bind(this.selectable));
+    });
 
-			index = _event.message;
-			stateMethod = this.properties.selectState || 'select';
+    this.on('ui-close ui-leave', function () {
+      this.selectable.audio.voiceOver.off('ended');
+    });
 
-			if (~index) {
-				this[stateMethod](_event.behaviorTarget);
-				this.audio.sfx.play('correct');
-				this.selectable.audio.voiceOver.play(index);
-			}
-		});
-	});
+    this.respond('select', function (_event) {
+      var index, stateMethod;
 
-	/**
-	 * Adds Flip screen behavior to send game completion to GA.
-	 */
-	this.screen('flip', function () {
-		this.next = function () {
-			this.game.quit.okay();
-		};
+      index = _event.message;
+      stateMethod = this.properties.selectState || 'select';
 
-		this.on('ui-open', function() {
-			this.delay('4.5s', function() {
-				if(this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
-			});
-		});
+      if (~index) {
+        this[stateMethod](_event.behaviorTarget);
+        this.audio.sfx.play('correct');
+        this.selectable.audio.voiceOver.play(index);
+      }
+    });
+  });
 
-		this.complete = function (_event) {
-			var eventCategory = (['game', this.game.id(), this.id()+'('+(this.index()+1)+')']).join(' ');
+  /**
+   * Adds Flip screen behavior to send game completion to GA.
+   */
+  this.screen('flip', function () {
+    this.next = function () {
+      this.game.quit.okay();
+    };
 
-			ga('send', 'event', eventCategory, 'complete');
+    this.on('ui-open', function () {
+      this.delay('4.5s', function () {
+        if (this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
+      });
+    });
 
-			return this.proto();
-		};
-	});
+    this.complete = function () {
+      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
 
-	/**
-	 * When the game exits submit a GA (Google Analytics) event.
-	 * @override
-	 */
-	this.exit = function () {
-		var screen, eventCategory;
+      ga('send', 'event', eventCategory, 'complete');
 
-		screen = this.findOwn(pl.game.config('screenSelector')+'.OPEN:not(#quit)').scope();
-		eventCategory = (['game', this.id(), screen.id()+'('+(screen.index()+1)+')']).join(' ');
+      pl.game.report.flip(this, {
+        name: 'flip',
+        gameData: {id: this.game.id()}
+      });
 
-		ga('send', 'event', eventCategory, 'quit');
+      return this.proto();
+    };
+  });
 
-		return this.proto();
-	};
+  /**
+   * When the game exits submit a GA (Google Analytics) event.
+   * @override
+   */
+  this.exit = function () {
+    var screen, eventCategory;
+
+    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
+    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
+
+    ga('send', 'event', eventCategory, 'quit');
+
+    return this.proto();
+  };
 });

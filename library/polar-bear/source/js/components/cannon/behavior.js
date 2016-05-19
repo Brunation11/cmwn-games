@@ -1,75 +1,75 @@
 pl.game.component('cannon', function () {
 
-	this.entity('ball', function () {
-		
-		this.reloadRequest = false;
-		this.isLaunchComplete = false;
+  this.entity('ball', function () {
 
-		this.willInit = function () {
-			if (this.cannon.properties.ball) {
-				this.attr('src', this.cannon.properties.ball);
-				// I shouldn't have to do this
-				this.on('load', function () {
-					this.assetQueue.ready(this.node().src);
-					this.off('load');
-				})
-			}
-		};
+    this.reloadRequest = false;
+    this.isLaunchComplete = false;
 
-		this.on('transitionend', function () {
-			this.log('transitionend');
+    this.willInit = function () {
+      if (this.cannon.properties.ball) {
+        this.attr('src', this.cannon.properties.ball);
+        // I shouldn't have to do this
+        this.on('load', function () {
+          this.assetQueue.ready(this.node().src);
+          this.off('load');
+        });
+      }
+    };
 
-			this.isLaunchComplete = true;
+    this.on('transitionend', function () {
+      this.log('transitionend');
 
-			if (this.launched()) {
-				this.playSFX('hit');
+      this.isLaunchComplete = true;
 
-				if (this.reloadRequest) {
-					this.reload();
-				}
-			}
-		});
+      if (this.launched()) {
+        this.playSFX('hit');
 
-		this.state('launch launched', '+LAUNCHED -RELOAD', {
-			didSet: function () {
-				this.playSFX('fire');
-				this.isLaunchComplete = false;
-			}
-		});
+        if (this.reloadRequest) {
+          this.reload();
+        }
+      }
+    });
 
-		this.state('reload', '+RELOAD -LAUNCHED', {
-			shouldSet: function () {
-				if (!this.isLaunchComplete) {
-					this.reloadRequest = true;
-					return false;
-				}
-			},
+    this.state('launch launched', '+LAUNCHED -RELOAD', {
+      didSet: function () {
+        this.playSFX('fire');
+        this.isLaunchComplete = false;
+      }
+    });
 
-			didSet: function () {
-				this.reloadRequest = false;
-			}
-		});
-	});
+    this.state('reload', '+RELOAD -LAUNCHED', {
+      shouldSet: function () {
+        if (!this.isLaunchComplete) {
+          this.reloadRequest = true;
+          return false;
+        }
+      },
 
-	this.behavior('fire', function () {
-		this.ball.launch();
-		return {
-			message: this.cannon.properties.fire
-		};
-	});
+      didSet: function () {
+        this.reloadRequest = false;
+      }
+    });
+  });
 
-	this.reload = function () {
-		this.ball.reload();
-	};
+  this.behavior('fire', function () {
+    this.ball.launch();
+    return {
+      message: this.cannon.properties.fire
+    };
+  });
 
-	this.playSFX = function (_name) {
-		var sfx;
+  this.reload = function () {
+    this.ball.reload();
+  };
 
-		sfx = pl.util.resolvePath(this, 'audio.sfx.'+_name);
+  this.playSFX = function (_name) {
+    var sfx;
 
-		if (sfx) sfx.play();
+    sfx = pl.util.resolvePath(this, 'audio.sfx.' + _name);
 
-		return this;
-	};
+    if (sfx) sfx.play();
+
+    return this;
+  };
 
 });
