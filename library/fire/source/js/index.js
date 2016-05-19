@@ -26,6 +26,10 @@ pl.game('fire', function () {
 
   var self = this;
 
+  pl.game.attachScreen = function(cb) {
+    cb.call(self);
+  };
+
   // the following is the mouse smoke js
   (function () {
     var canvas = document.createElement('canvas');
@@ -127,220 +131,7 @@ pl.game('fire', function () {
 
   this.screen('info-chemical', soundClasses);
   this.screen('info-fuel-oxygen', soundClasses);
-
-  this.screen('alarm', function () {
-
-    this.ready = function () {
-      if (this.audio) {
-        this.audio.voiceOver.on('ended', function (_event) {
-          if (_event.target.id() === 'title') this.audio.voiceOver.directions.play();
-        }.bind(this));
-      }
-    };
-
-    this.pushDown = function () {
-      if (this.audio) this.audio.sfx.play();
-      this.screen.next();
-    };
-  });
-
-  this.screen('who', function () {
-
-    this.entity('slides', function () {
-
-      this.entity('mc-frame', function () {
-
-        this.respond('answer', function (_event) {
-          if (_event.message === this.properties.answer) {
-            this.delay('2s', function () {
-              this.screen.next();
-            });
-          }
-        });
-
-        this.on('ready', function (_event) {
-          var sequence = 'title builder plumber firefighter chef'.split(' ');
-
-          if (!this.is(_event.target)) return;
-
-          if (this.audio) {
-            this.audio.voiceOver.on('ended', function (_e) {
-              var i, next;
-
-              i = sequence.indexOf(_e.target.id()) + 1;
-              next = this.audio.voiceOver[sequence[i]];
-
-              if (next) next.play();
-            }.bind(this));
-          }
-        });
-      });
-    });
-  });
-
-  this.screen('menAndWomen', function () {
-
-    this.on('ready', function (_event) {
-      if (!this.is(_event.target)) return;
-
-      if (this.audio) {
-        this.audio.voiceOver.on('ended', function (_e) {
-          if (_e.target.id() === 'title') this.audio.voiceOver.subtitle.play();
-        }.bind(this));
-      }
-    });
-  });
-
-  this.screen('triangle', function () {
-
-    this.startAudio = function () {
-      this.dropzone.audio.background.play();
-      this.dropzone.audio.voiceOver.play();
-    };
-
-    this.stopAudio = function () {
-      this.dropzone.audio.voiceOver.stop('@ALL');
-    };
-
-    this.entity('dropzone', function () {
-
-      this.entity('.area', function () {
-
-        this.cache = null;
-
-        this.respond('grab', function () {
-          this.audio.sfx.drag.play();
-          this.cache = {
-            position: this.absolutePosition().dec(this.game.absolutePosition()),
-            size: this.size().scale(this.game.transformScale().x)
-          };
-        });
-
-        this.respond('release', function (_event) {
-          var point, scale;
-
-          if ((scale = this.game.transformScale().x) !== 1) {
-            point = [
-              _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-              _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-            ];
-          } else {
-            point = _event.state.progress.point;
-          }
-
-          if (point && this.isPointInBounds(point)) {
-
-            if (this.audio.voiceOver[_event.state.$draggable.id()]) this.audio.voiceOver[_event.state.$draggable.id()].play();
-
-            if (this.takes(_event.state.$draggable.id())) {
-              _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
-              _event.state.$helper.addClass('DROPED');
-
-              this.drop(_event.state.$draggable);
-              this.open(this[_event.state.$draggable.id()]);
-              this.open(this[_event.state.$draggable.id() + 'Side']);
-              this.audio.sfx.correct.play();
-              if (this.isComplete) {
-                this.delay('.75s', function () {
-                  this.audio.sfx.complete.play();
-                });
-              }
-
-              return;
-            } else {
-              this.audio.sfx.incorrect.play();
-            }
-
-          }
-
-          _event.state.$helper.addClass('RETURN').css('transform', 'translateX(0px) translateY(0px)');
-        });
-      });
-
-      this.on('ready', function (_event) {
-        if (!this.is(_event.target)) return;
-
-        if (this.audio) {
-          this.audio.voiceOver.on('ended', function (_e) {
-            if (_e.target.id() === 'title') this.audio.voiceOver.directions.play();
-          }.bind(this));
-        }
-      });
-    });
-  });
-
   this.screen('break-triangle', soundClasses);
-
-  this.screen('dress', function () {
-    this.respond('select', function (_event) {
-      // this removes any screen class that starts with the same thing as the event message
-      // and then adds the event message as a class to the screen
-      if (!_event.message) return;
-      var regexp = new RegExp('(^|\\s)' + _event.message.split('-')[0] + '-\\S+');
-      this.screen.removeClass(function (index, className) {
-        return (className.match(regexp) || []).join(' ');
-      }).addClass(_event.message);
-      this.screen.next();
-    });
-
-    this.entity('slides', function () {
-
-      this.entity('need', function () {
-
-        this.entity('dropzone', function () {
-
-          this.entity('.area', function () {
-
-            this.cache = null;
-
-            this.respond('grab', function () {
-              this.audio.sfx.drag.play();
-              this.cache = {
-                position: this.absolutePosition().dec(this.game.absolutePosition()),
-                size: this.size().scale(this.game.transformScale().x)
-              };
-            });
-
-            this.respond('release', function (_event) {
-              var point, scale;
-
-              if ((scale = this.game.transformScale().x) !== 1) {
-                point = [
-                  _event.state.start.point[0] + scale * _event.state.progress.distance[0],
-                  _event.state.start.point[1] + scale * _event.state.progress.distance[1]
-                ];
-              } else {
-                point = _event.state.progress.point;
-              }
-
-              if (point && this.isPointInBounds(point)) {
-
-                if (this.takes(_event.state.$draggable.id())) {
-                  _event.state.$draggable.removeClass('PLUCKED').addClass('COMPLETE').attr('pl-draggable', null);
-                  _event.state.$helper.addClass('DROPED');
-
-                  this.drop(_event.state.$draggable);
-                  this.find('.' + _event.state.$draggable.id()).addClass('show');
-                  this.audio.sfx.correct.play();
-
-                  return;
-                } else {
-                  this.audio.sfx.incorrect.play();
-                }
-
-              }
-
-              _event.state.$helper.addClass('RETURN').css('transform', 'translateX(0px) translateY(0px)');
-            });
-          });
-        });
-
-        this.respond('drop', function (_event) {
-          this.modal.item(_event.message);
-        });
-      });
-    });
-  });
 
   this.screen('flip', function () {
     this.next = function () {
@@ -352,10 +143,10 @@ pl.game('fire', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };
