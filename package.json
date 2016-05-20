@@ -26,5 +26,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:ginasink/cmwn-games.git"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }
