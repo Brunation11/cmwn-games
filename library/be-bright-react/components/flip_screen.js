@@ -8,6 +8,19 @@ class Flip extends play.Screen {
 
   }
 
+  complete() {
+    play.Screen.prototype.call(this);
+    this.trigger('emit', {
+      name: 'flip',
+    });
+  }
+
+  renderNextButton() {
+    return (
+      <button className='next-screen' onClick={() => {play.trigger('quit')}}></button>
+    );
+  }
+
   renderContent() {
     return (
       <div>

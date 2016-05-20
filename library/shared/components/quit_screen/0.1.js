@@ -9,7 +9,7 @@ class QuitScreen extends play.Screen {
   }
 
   okay() {
-
+    play.trigger('quit');
   }
 
   cancel() {
