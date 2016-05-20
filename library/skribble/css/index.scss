@@ -264,8 +264,17 @@ p {
 // the following css is specific to this game
 
 #sample {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   li {
-    position: static;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     width: 200px;
     height: 200px;
   }
