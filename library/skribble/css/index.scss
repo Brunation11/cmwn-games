@@ -1,0 +1,302 @@
+@keyframes flicker {
+  0% {opacity:1;}
+  10% {opacity:1;}
+  12% {opacity:0;}
+  14% {opacity:1;}
+  16% {opacity:0;}
+  18% {opacity:1;}
+  44% {opacity:1;}
+  46% {opacity:0;}
+  48% {opacity:1;}
+  50% {opacity:0;}
+  52% {opacity:1;}
+  82% {opacity:1;}
+  84% {opacity:0;}
+  86% {opacity:1;}
+  88% {opacity:0;}
+  90% {opacity:1;}
+  100% {opacity:1;}
+}
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: scale(4);
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+  }
+  65% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+}
+
+html, body, body > div, body > div > div {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  user-drag: none;
+  cursor: auto;
+}
+
+html {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body > div > div {
+  position: relative;
+  margin: auto;
+  width: 960px;
+  height: 540px;
+  font-size: 36px;
+  color: #000;
+  // background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
+  background-size: cover;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  color: transparent;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+
+  // background-image: url(../media/_Buttons/BU_1.png);
+  background-size: auto 500px;
+  background-position: left top;
+
+  &.close {
+    width: 35px;
+    height: 35px;
+    background-position: -310px 410px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    z-index: 2;
+
+    &:hover {
+      background-position: -310px 165px;
+    }
+  }
+
+  &.next-screen,
+  &.prev-screen {
+    width: 80px;
+    height: 60px;
+  }
+
+  &.next-screen {
+    background-position: -120px 420px;
+
+    &:hover {
+      background-position: -120px 676px;
+    }
+  }
+
+  &.prev-screen {
+    background-position: -15px 420px;
+
+    &:hover {
+      background-position: -15px 676px;
+    }
+  }
+
+  &.close-reveal {
+    width: 55px;
+    height: 50px;
+    background-position: -225px 420px;
+
+    &.ENABLED:hover {
+      background-position: -225px 676px;
+    }
+  }
+
+  &.quit-yes {
+    width: 230px;
+    height: 230px;
+    background-position: -1830px 495px;
+
+    &:hover {
+      background-position: -1830px 251px;
+    }
+  }
+
+  &.quit-no {
+    width: 230px;
+    height: 230px;
+    background-position: -2080px 495px;
+
+    &:hover {
+      background-position: -2080px 251px;
+    }
+  }
+}
+
+body.DEMO .reveal-component .items li div .close-reveal {
+  opacity: 1;
+  cursor: pointer;
+
+  &:hover {
+    background-position: -225px 676px;
+  }
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+  margin: 0;
+}
+
+p {
+  font-size: 28px;
+  margin: 0;
+}
+
+// preload game assets
+#asset-bin {
+  display: none;
+}
+
+.canvas-src { display: none; }
+
+.screen {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 960px;
+  height: 540px;
+  margin-top: -270px;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s, transform 0.5s;
+  transform: translateX(100%);
+
+  &:not(.COMPLETE) {
+    button {
+      &.next-screen {
+        cursor: auto;
+      }
+    }
+  }
+}
+
+.screen.last {}
+
+.screen.OPEN {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.screen.READY {
+  display: block;
+}
+
+.screen.LEAVE {
+  opacity: 1;
+  transform: translateX(-100%);
+}
+
+  .screen .next-screen,
+  .screen .prev-screen {
+    position: absolute;
+    display: block;
+    bottom: 1%;
+
+    z-index: 2;
+  }
+
+  .screen .next-screen {
+    margin-right: 5px;
+    right: 0;
+    opacity: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+  }
+
+  .screen.GATED .next-screen {
+    opacity: 0;
+    cursor: auto;
+    z-index: -1;
+  }
+
+  .pl-game.DEMO .screen .next-screen,
+  .screen.COMPLETE .next-screen {
+    opacity: 1;
+    transform: rotate(0deg);
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .screen .next-screen:hover {
+    
+  }
+
+  .screen .prev-screen {
+    margin-left: 5px;
+    left: 0;
+    
+  }
+  
+  .screen .prev-screen:hover {
+    
+  }
+
+// the following css is specific to this game
+
+
+
+#flip {
+  h2 {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    margin: -80px 0 0;
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+  }
+}
+
+#quit {
+  margin-top: 60px;
+  transform: translateX(-100%);
+  transition: transform .25s;
+
+  .frame {
+    text-align: center;
+
+    h2 {
+      margin: 0;
+    }
+
+    button {
+      margin: 20px 10px;
+    }
+  }
+
+  &.OPEN {
+    transform: translateX(0%);
+  }
+}
