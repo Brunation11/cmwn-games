@@ -16,20 +16,18 @@ class Draggable extends play.Component {
   startEvent(e) {
     var top, left, el;
 
-    if (typeof this.state.top !== 'number') {
-      left = 0;
-      top = 0;
-      el = this.refs['el'];
+    left = 0;
+    top = 0;
+    el = this.refs['el'];
 
-      while (el) {
-          if (el.className.indexOf('screen') !== -1) {
-            break;
-          }
+    while (el) {
+        if (el.className.indexOf('screen') !== -1) {
+          break;
+        }
 
-          left += el.offsetLeft || 0;
-          top += el.offsetTop  || 0;
-          el = el.offsetParent;
-      }
+        left += el.offsetLeft || 0;
+        top += el.offsetTop  || 0;
+        el = el.offsetParent;
     }
 
     this.setState({
@@ -66,7 +64,7 @@ class Draggable extends play.Component {
     this.setState({
       x: (e.x-this.state.offsetX)/this.state.scale-this.state.left,
       y: (e.y-this.state.offsetY)/this.state.scale-this.state.top,
-    })
+    });
   }
 
   endEvent() {
@@ -75,14 +73,18 @@ class Draggable extends play.Component {
     if (this.props.return) {
       x = 0;
       y = 0;
+      this.setState({
+        dragging: false,
+        return: this.props.return,
+        x,
+        y,
+      });
+    } else {
+      this.setState({
+        dragging: false,
+        return: this.props.return,
+      });
     }
-
-    this.setState({
-      dragging: false,
-      return: this.props.return,
-      x,
-      y,
-    });
   }
 
   dettachMouseEvents() {
