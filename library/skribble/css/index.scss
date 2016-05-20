@@ -263,7 +263,13 @@ p {
 
 // the following css is specific to this game
 
-
+#sample {
+  li {
+    position: static;
+    width: 200px;
+    height: 200px;
+  }
+}
 
 #flip {
   h2 {

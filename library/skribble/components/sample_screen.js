@@ -13,7 +13,14 @@ class SampleScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <Draggable />
+        <ul>
+          <li>
+            <Draggable>drag me!</Draggable>
+          </li>
+          <li>
+            <Draggable return={true} >return</Draggable>
+          </li>
+        </ul>
       </div>
     );
   }
