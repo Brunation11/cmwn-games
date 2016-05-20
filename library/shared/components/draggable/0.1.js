@@ -21,7 +21,7 @@ class Draggable extends play.Component {
     el = this.refs['el'];
 
     while (el) {
-        if (el.className.indexOf('screen') !== -1) {
+        if (el.className.indexOf(this.containerClass) !== -1) {
           break;
         }
 
@@ -110,6 +110,8 @@ class Draggable extends play.Component {
   componentDidMount() {
     play.Component.prototype.componentDidMount.call(this);
     this.setScale();
+
+    this.containerClass = this.props.containerClass || 'screen';
 
     this.refs['el'].addEventListener('mousedown', this.boundMouseDown);
     this.refs['el'].addEventListener('touchstart', this.boundTouchStart);
