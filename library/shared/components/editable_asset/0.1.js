@@ -32,6 +32,8 @@ class EditableAsset extends Draggable {
     this.setState({
       endX: e.x - this.state.grabX,
       endY: e.y - this.state.grabY,
+      left: ((e.x - this.state.grabX - this.state.startX) / this.state.zoom),
+      top: ((e.y - this.state.grabY - this.state.startY) / this.state.zoom),
     });
     this.checkItem();
   }
@@ -170,17 +172,10 @@ class EditableAsset extends Draggable {
   }
 
   getStyle() {
-    var style, x, y, transform = '';
+    var style, transform = '';
 
     transform += 'scale(' + this.state.scale + ') ';
     transform += 'rotate(' + this.state.rotation + 'deg) ';
-
-    if (typeof this.state.startX === 'number') {
-      x = ((this.state.endX - this.state.startX) / this.state.zoom) / this.state.scale;
-      y = ((this.state.endY - this.state.startY) / this.state.zoom) / this.state.scale;
-      transform += 'translateX(' + x + 'px) ';
-      transform += 'translatey(' + y + 'px) ';
-    }
 
     style = {
       backgroundImage: 'url("' + this.props.src + '")',
