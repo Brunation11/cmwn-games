@@ -4,16 +4,16 @@ class iOSSplashScreen extends play.Screen {
 
     this.state = {
       id: 'ios-splash',
-    }
+    };
   }
 
   startGame() {
     var self = this;
 
-    if(!this.state.complete || this.state.leaving) return;
+    if (!this.state.complete || this.state.leaving) return;
 
     setTimeout(() => {
-      self.goto(this.props.index+1);
+      self.goto(this.props.index + 1);
     }, 2500);
 
     this.setState({
@@ -50,7 +50,7 @@ class iOSSplashScreen extends play.Screen {
       <div>
         <play.Image className="hidden" src="../shared/images/ios_start_ball.png" />
         <play.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
-        <div ref="ball" className="ball" onAnimationEnd={() => {console.log('onAnimationEnd'); self.complete()}} onClick={this.startGame.bind(this)}></div>
+        <div ref="ball" className="ball" onAnimationEnd={() => { console.log('onAnimationEnd'); self.complete();}} onClick={this.startGame.bind(this)}></div>
       </div>
     );
   }

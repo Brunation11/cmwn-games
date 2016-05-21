@@ -134,12 +134,12 @@ class Draggable extends play.Component {
   getStyle() {
     var x, y;
 
-    x = ((this.state.endX-this.state.startX)/this.state.zoom);
-    y = ((this.state.endY-this.state.startY)/this.state.zoom);
+    x = ((this.state.endX - this.state.startX) / this.state.zoom);
+    y = ((this.state.endY - this.state.startY) / this.state.zoom);
 
     return {
-      transform: 'translateX('+x+'px) translateY('+y+'px)',
-    }
+      transform: 'translateX(' + x + 'px) translateY(' + y + 'px)',
+    };
   }
 
   getClassNames() {
@@ -153,7 +153,7 @@ class Draggable extends play.Component {
     return (
       <div
         ref="el"
-        className={"draggable "+this.getClassNames()}
+        className={"draggable " + this.getClassNames()}
         style={this.getStyle()}
       >{this.props.children}</div>
     );

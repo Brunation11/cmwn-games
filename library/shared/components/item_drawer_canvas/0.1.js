@@ -63,7 +63,7 @@ class ItemDrawerCanvas extends play.Component {
 
   render() {
     return (
-      <div className={"item-drawer-canvas"+this.getClasses()}>
+      <div className={"item-drawer-canvas" + this.getClasses()}>
         {this.renderDrawer()}
         {this.renderCanvas()}
       </div>

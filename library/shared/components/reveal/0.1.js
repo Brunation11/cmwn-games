@@ -52,16 +52,16 @@ class Reveal extends play.Component {
   renderList() {
     return this.list.map((li, key) => {
       return (
-        <li {...li.props} className={this.getClass(li,key)} ref={key} key={key} data-ref={key} ></li>
+        <li {...li.props} className={this.getClass(li, key)} ref={key} key={key} data-ref={key} ></li>
       );
     });
   }
 
-  getClass(li,key) {
+  getClass(li, key) {
     var classes = '';
 
     if (li.props.className) classes += li.props.className;
-    if (''+key === ''+this.state.openReveal) classes += ' OPEN';
+    if ('' + key === '' + this.state.openReveal) classes += ' OPEN';
 
     return classes;
   }
@@ -77,7 +77,7 @@ class Reveal extends play.Component {
 
   render() {
     return (
-      <div className={'reveal '+this.getClasses()}>
+      <div className={'reveal ' + this.getClasses()}>
         {this.renderAssets()}
         <div>
           <ul>

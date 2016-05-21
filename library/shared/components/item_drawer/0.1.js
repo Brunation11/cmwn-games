@@ -28,7 +28,7 @@ class ItemDrawer extends Selectable {
           data-ref={key}
           item={item}
           key={key}
-          style={{backgroundImage: 'url("'+item.src+'")'}}
+          style={{backgroundImage: 'url("' + item.src + '")'}}
         />
       );
     });
@@ -36,7 +36,7 @@ class ItemDrawer extends Selectable {
 
   render() {
     return (
-      <ul className={'item-drawer '+this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+      <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

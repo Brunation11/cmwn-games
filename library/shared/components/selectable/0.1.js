@@ -55,12 +55,12 @@ class Selectable extends play.Component {
 
   select(e) {
     var classes = [];
-    this.selectHelper(e, classes)
+    this.selectHelper(e, classes);
   }
 
   highlight(e) {
     var classes = this.state.classes;
-    this.selectHelper(e, classes)
+    this.selectHelper(e, classes);
   }
 
   getClass(key) {
@@ -79,7 +79,7 @@ class Selectable extends play.Component {
       return (
         <play.ListItem
           {...li.props}
-          className={li.props.className+' '+this.getClass(key)}
+          className={li.props.className + ' ' + this.getClass(key)}
           data-ref={ref}
           ref={ref}
           key={key}
@@ -90,7 +90,7 @@ class Selectable extends play.Component {
 
   render() {
     return (
-      <ul className={'selectable '+this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+      <ul className={'selectable ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

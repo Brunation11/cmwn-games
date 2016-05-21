@@ -35,7 +35,7 @@ class SelectableReveal extends play.Component {
 
   render() {
     return (
-      <div className={"selectable-reveal"+this.getClasses()}>
+      <div className={"selectable-reveal" + this.getClasses()}>
         {this.renderSelectable()}
         {this.renderReveal()}
       </div>

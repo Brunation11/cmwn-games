@@ -11,7 +11,7 @@ class Canvas extends play.Component {
       items: [],
       offsetX: 0,
       offsetY: 0,
-    }
+    };
   }
 
   addItem(message) {
@@ -43,7 +43,7 @@ class Canvas extends play.Component {
   }
 
   checkItem(key) {
-    
+
   }
 
   renderItems() {

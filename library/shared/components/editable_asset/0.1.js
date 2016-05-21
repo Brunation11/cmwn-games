@@ -17,7 +17,7 @@ class EditableAsset extends Draggable {
       rotate: 0,
       layer: 1000,
       zoom: 1,
-    }
+    };
 
     this.boundScale = this.scale.bind(this);
     this.boundAdjustScale = this.adjustScale.bind(this);
@@ -39,7 +39,7 @@ class EditableAsset extends Draggable {
   }
 
   rotate() {
-    
+
     this.checkItem();
   }
 
@@ -54,13 +54,13 @@ class EditableAsset extends Draggable {
   }
 
   scale() {
-    this.refs['el'].parentNode.addEventListener('mousemove', this.boundAdjustScale);
-    this.refs['el'].parentNode.addEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustScale);
+    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffScale);
   }
 
   offScale() {
-    this.refs['el'].parentNode.removeEventListener('mousemove', this.boundAdjustScale);
-    this.refs['el'].parentNode.removeEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustScale);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffScale);
   }
 
   adjustScale(e) {
@@ -116,7 +116,7 @@ class EditableAsset extends Draggable {
         minScale,
         scale: Math.max(this.state.scale, minScale),
       });
-    }
+    };
 
     image.src = this.props.src;
   }
@@ -125,17 +125,17 @@ class EditableAsset extends Draggable {
     var layer = 1000;
 
     switch (this.props.type) {
-      case 'background':
-        layer = 1;
-        break;
-      case 'text':
-        layer = 10000;
-        break;
+    case 'background':
+      layer = 1;
+      break;
+    case 'text':
+      layer = 10000;
+      break;
     }
 
     this.setState({
       layer,
-    })
+    });
   }
 
   attachEvents() {
@@ -152,18 +152,18 @@ class EditableAsset extends Draggable {
   getStyle() {
     var style, x, y, transform = '';
 
-    transform += 'scale('+this.state.scale+') ';
-    transform += 'rotate('+this.state.rotate+'deg) ';
+    transform += 'scale(' + this.state.scale + ') ';
+    transform += 'rotate(' + this.state.rotate + 'deg) ';
 
     if (typeof this.state.startX === 'number') {
-      x = ((this.state.endX-this.state.startX)/this.state.zoom)/this.state.scale;
-      y = ((this.state.endY-this.state.startY)/this.state.zoom)/this.state.scale;
-      transform += 'translateX('+x+'px) ';
-      transform += 'translatey('+y+'px) ';
+      x = ((this.state.endX - this.state.startX) / this.state.zoom) / this.state.scale;
+      y = ((this.state.endY - this.state.startY) / this.state.zoom) / this.state.scale;
+      transform += 'translateX(' + x + 'px) ';
+      transform += 'translatey(' + y + 'px) ';
     }
 
     style = {
-      backgroundImage: 'url("'+this.props.src+'")',
+      backgroundImage: 'url("' + this.props.src + '")',
       width: this.state.width,
       height: this.state.height,
       left: this.state.left,
