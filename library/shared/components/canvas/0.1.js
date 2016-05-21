@@ -33,7 +33,7 @@ class Canvas extends play.Component {
     var items;
 
     items = this.state.items;
-    items.splice(key, 1);
+    delete items[key];
 
     this.setState({
       items,
