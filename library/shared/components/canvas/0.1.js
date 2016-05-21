@@ -1,7 +1,5 @@
 import EditableAsset from '../editable_asset/0.1.js';
 
-import classNames from 'classnames';
-
 class Canvas extends play.Component {
   constructor() {
     super();
@@ -42,7 +40,8 @@ class Canvas extends play.Component {
     });
   }
 
-  checkItem(key) {
+  // the key will be passed in here
+  checkItem() {
 
   }
 

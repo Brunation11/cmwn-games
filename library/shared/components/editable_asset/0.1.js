@@ -139,7 +139,7 @@ class EditableAsset extends Draggable {
   }
 
   attachEvents() {
-    this.refs['scale'].addEventListener('mousedown', this.boundScale);
+    this.refs.scale.addEventListener('mousedown', this.boundScale);
   }
 
   componentDidMount() {

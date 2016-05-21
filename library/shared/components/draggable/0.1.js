@@ -16,7 +16,7 @@ class Draggable extends play.Component {
   startEvent(e) {
     var startX, startY, endX, endY, grabX, grabY;
 
-    if (e.target !== this.refs['el']) return;
+    if (e.target !== this.refs.el) return;
 
     grabX = e.offsetX;
     grabY = e.offsetY;
@@ -69,8 +69,6 @@ class Draggable extends play.Component {
   }
 
   endEvent() {
-    var x, y;
-
     if (this.props.return) {
       this.setState({
         dragging: false,
@@ -100,12 +98,12 @@ class Draggable extends play.Component {
     window.removeEventListener('touchend', this.boundTouchEnd);
   }
 
-  mouseUp(e) {
+  mouseUp() {
     this.endEvent();
     this.dettachMouseEvents();
   }
 
-  touchEnd(e) {
+  touchEnd() {
     this.endEvent();
     this.dettachTouchEvents();
   }
@@ -119,8 +117,8 @@ class Draggable extends play.Component {
 
     this.setZoom();
 
-    this.refs['el'].addEventListener('mousedown', this.boundMouseDown);
-    this.refs['el'].addEventListener('touchstart', this.boundTouchStart);
+    this.refs.el.addEventListener('mousedown', this.boundMouseDown);
+    this.refs.el.addEventListener('touchstart', this.boundTouchStart);
 
     window.addEventListener('resize', this.setZoom.bind(this));
   }
@@ -153,7 +151,7 @@ class Draggable extends play.Component {
     return (
       <div
         ref="el"
-        className={"draggable " + this.getClassNames()}
+        className={'draggable ' + this.getClassNames()}
         style={this.getStyle()}
       >{this.props.children}</div>
     );

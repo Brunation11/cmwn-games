@@ -40,8 +40,6 @@ class iOSSplashScreen extends play.Screen {
   }
 
   renderContent() {
-    var self = this;
-
     if (!this.state.load) {
       return null;
     }
@@ -50,7 +48,7 @@ class iOSSplashScreen extends play.Screen {
       <div>
         <play.Image className="hidden" src="../shared/images/ios_start_ball.png" />
         <play.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
-        <div ref="ball" className="ball" onAnimationEnd={() => { console.log('onAnimationEnd'); self.complete();}} onClick={this.startGame.bind(this)}></div>
+        <div ref="ball" className="ball" onAnimationEnd={this.complete.bind(this)} onClick={this.startGame.bind(this)}></div>
       </div>
     );
   }

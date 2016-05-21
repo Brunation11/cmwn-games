@@ -5,7 +5,7 @@ class ItemDrawer extends Selectable {
     super();
   }
 
-  selectHelper(e, classes) {
+  selectHelper(e) {
     var message;
 
     if (e.target.tagName !== 'LI') return;
