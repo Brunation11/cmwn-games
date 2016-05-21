@@ -189,12 +189,12 @@ class EditableAsset extends Draggable {
   render() {
     return (
       <li
-      ref="el"
-      className={this.getClasses()}
-      style={this.getStyle()}
-    >
-      {this.renderButtons()}
-    </li>
+        ref="el"
+        className={this.getClasses()}
+        style={this.getStyle()}
+      >
+        {this.renderButtons()}
+      </li>
     );
   }
 }
