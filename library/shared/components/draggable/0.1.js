@@ -14,29 +14,28 @@ class Draggable extends play.Component {
   }
 
   startEvent(e) {
-    var top, left, el;
+    var startX, startY, grabX, grabY;
 
-    left = 0;
-    top = 0;
-    el = this.refs['el'];
+    grabX = e.offsetX;
+    grabY = e.offsetY;
 
-    while (el) {
-        if (el.className.indexOf(this.containerClass) !== -1) {
-          break;
-        }
+    startX = e.x - grabX;
+    startY = e.y - grabY;
 
-        left += el.offsetLeft || 0;
-        top += el.offsetTop  || 0;
-        el = el.offsetParent;
+    if (!this.props.return) {
+      startX = typeof this.state.startX === 'number' ? this.state.startX : startX;
+      startY = typeof this.state.startY === 'number' ? this.state.startY : startY;
     }
 
     this.setState({
       dragging: true,
       return: false,
-      offsetX: e.offsetX,
-      offsetY: e.offsetY,
-      left,
-      top,
+      startX,
+      startY,
+      grabX,
+      grabY,
+      endX: e.x - grabX,
+      endY: e.y - grabY,
     });
   }
 
@@ -62,8 +61,8 @@ class Draggable extends play.Component {
 
   moveEvent(e) {
     this.setState({
-      x: (e.x-this.state.offsetX)/this.state.scale-this.state.left,
-      y: (e.y-this.state.offsetY)/this.state.scale-this.state.top,
+      endX: e.x - this.state.grabX,
+      endY: e.y - this.state.grabY,
     });
   }
 
@@ -71,19 +70,21 @@ class Draggable extends play.Component {
     var x, y;
 
     if (this.props.return) {
-      x = 0;
-      y = 0;
       this.setState({
         dragging: false,
         return: this.props.return,
-        x,
-        y,
+        endX: this.state.startX,
+        endY: this.state.startY,
       });
     } else {
       this.setState({
         dragging: false,
         return: this.props.return,
       });
+    }
+
+    if (typeof this.props.dropRespond === 'function') {
+      this.props.dropRespond();
     }
   }
 
@@ -111,8 +112,6 @@ class Draggable extends play.Component {
     play.Component.prototype.componentDidMount.call(this);
     this.setScale();
 
-    this.containerClass = this.props.containerClass || 'screen';
-
     this.refs['el'].addEventListener('mousedown', this.boundMouseDown);
     this.refs['el'].addEventListener('touchstart', this.boundTouchStart);
 
@@ -126,8 +125,13 @@ class Draggable extends play.Component {
   }
 
   getStyle() {
+    var x, y;
+
+    x = ((this.state.endX-this.state.startX)/this.state.scale);
+    y = ((this.state.endY-this.state.startY)/this.state.scale);
+
     return {
-      transform: 'translateX('+this.state.x+'px) translateY('+this.state.y+'px)',
+      transform: 'translateX('+x+'px) translateY('+y+'px)',
     }
   }
 
