@@ -14,7 +14,7 @@ class EditableAsset extends Draggable {
       scale: .75,
       minScale: .1,
       maxScale: 1,
-      rotate: 0,
+      rotation: 0,
       layer: 1000,
       zoom: 1,
     };
@@ -22,6 +22,10 @@ class EditableAsset extends Draggable {
     this.boundScale = this.scale.bind(this);
     this.boundAdjustScale = this.adjustScale.bind(this);
     this.boundOffScale = this.offScale.bind(this);
+
+    this.boundRotate = this.rotate.bind(this);
+    this.boundAdjustRotation = this.adjustRotation.bind(this);
+    this.boundOffRotate = this.offRotate.bind(this);
   }
 
   moveEvent(e) {
@@ -39,6 +43,28 @@ class EditableAsset extends Draggable {
   }
 
   rotate() {
+    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustRotation);
+    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffRotate);
+  }
+
+  offRotate() {
+    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustRotation);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffRotate);
+  }
+
+  adjustRotation(e) {
+    var rotation, deltaX, deltaY;
+
+    // scale = this.state.scale;
+
+    deltaX = e.x - (this.state.left + this.state.width * this.state.scale / 2) - this.refs.el.offsetParent.offsetLeft;
+    deltaY = e.y - (this.state.top + this.state.height * this.state.scale / 2) - this.refs.el.offsetParent.offsetTop;
+
+    rotation = Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45 % 360;
+
+    this.setState({
+      rotation,
+    });
 
     this.checkItem();
   }
@@ -89,13 +115,6 @@ class EditableAsset extends Draggable {
     }
   }
 
-  getClasses() {
-    return classNames({
-      'editable-asset': true,
-      [this.props.type]: true,
-    });
-  }
-
   getSize() {
     var image, self = this;
 
@@ -140,6 +159,7 @@ class EditableAsset extends Draggable {
 
   attachEvents() {
     this.refs.scale.addEventListener('mousedown', this.boundScale);
+    this.refs.rotate.addEventListener('mousedown', this.boundRotate);
   }
 
   componentDidMount() {
@@ -153,7 +173,7 @@ class EditableAsset extends Draggable {
     var style, x, y, transform = '';
 
     transform += 'scale(' + this.state.scale + ') ';
-    transform += 'rotate(' + this.state.rotate + 'deg) ';
+    transform += 'rotate(' + this.state.rotation + 'deg) ';
 
     if (typeof this.state.startX === 'number') {
       x = ((this.state.endX - this.state.startX) / this.state.zoom) / this.state.scale;
@@ -173,6 +193,13 @@ class EditableAsset extends Draggable {
     };
 
     return style;
+  }
+
+  getClasses() {
+    return classNames({
+      'editable-asset': true,
+      [this.props.type]: true,
+    });
   }
 
   renderButtons() {

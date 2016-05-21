@@ -16,8 +16,6 @@ class Draggable extends play.Component {
   startEvent(e) {
     var startX, startY, endX, endY, grabX, grabY;
 
-    if (e.target !== this.refs.el) return;
-
     grabX = e.offsetX;
     grabY = e.offsetY;
 
@@ -52,11 +50,15 @@ class Draggable extends play.Component {
   }
 
   mouseDown(e) {
+    if (e.target !== this.refs.el) return;
+
     this.startEvent(e);
     this.attachMouseEvents();
   }
 
   touchStart(e) {
+    if (e.target !== this.refs.el) return;
+
     this.startEvent(e);
     this.attachTouchEvents();
   }

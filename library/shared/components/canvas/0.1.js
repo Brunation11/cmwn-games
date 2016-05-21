@@ -45,6 +45,14 @@ class Canvas extends play.Component {
 
   }
 
+  getStyle() {
+    if (!this.state.background) return;
+
+    return {
+      backgroundImage: 'url("' + this.state.background.src + '")',
+    };
+  }
+
   renderItems() {
     var self = this;
 
@@ -64,7 +72,10 @@ class Canvas extends play.Component {
 
   render() {
     return (
-      <ul className={'canvas'}>
+      <ul
+        className={'canvas'}
+        style={this.getStyle()}
+      >
         {this.renderItems()}
       </ul>
     );
