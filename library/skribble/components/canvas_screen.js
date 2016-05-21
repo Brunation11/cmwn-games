@@ -1,6 +1,6 @@
 import Draggable from '../../shared/components/draggable/0.1.js';
 
-class SampleScreen extends play.Screen {
+class CanvasScreen extends play.Screen {
   constructor() {
     super();
 
@@ -11,13 +11,13 @@ class SampleScreen extends play.Screen {
   }
 
   renderPrevButton() {
-    return null;
+    return (
+      <button className='prev-screen' onClick={this.goto.bind(this,1)}>{'<'}</button>
+    );
   }
 
   renderNextButton() {
-    return (
-      <button className='next-screen' onClick={this.goto.bind(this,'canvas')}>{'>'}</button>
-    );
+    return null;
   }
 
   renderContent() {
@@ -36,4 +36,4 @@ class SampleScreen extends play.Screen {
   }
 }
 
-export default SampleScreen;
+export default CanvasScreen;
