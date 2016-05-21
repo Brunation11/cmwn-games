@@ -14,13 +14,13 @@ class Draggable extends play.Component {
   }
 
   startEvent(e) {
-    var startX, startY, grabX, grabY;
+    var startX, startY, endX, endY, grabX, grabY;
 
     grabX = e.offsetX;
     grabY = e.offsetY;
 
-    startX = e.x - grabX;
-    startY = e.y - grabY;
+    startX = endX = e.x - grabX;
+    startY = endY = e.y - grabY;
 
     if (!this.props.return) {
       startX = typeof this.state.startX === 'number' ? this.state.startX : startX;
@@ -34,8 +34,8 @@ class Draggable extends play.Component {
       startY,
       grabX,
       grabY,
-      endX: e.x - grabX,
-      endY: e.y - grabY,
+      endX,
+      endY,
     });
   }
 
