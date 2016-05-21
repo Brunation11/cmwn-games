@@ -1,20 +1,20 @@
+import classNames from 'classnames';
+
 class Selectable extends play.Component {
   constructor() {
     super();
 
     this.state = {
       selectClass: 'SELECTED',
-      classes: {}
+      classes: {},
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
+      selectFunction: this.select,
     };
-
-    this.selectFunction = this.select;
-
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
   }
 
   start() {
@@ -68,15 +68,13 @@ class Selectable extends play.Component {
   }
 
   getULClass() {
-    var classes = '';
-
-    if (this.state.complete) classes += ' COMPLETE';
-
-    return classes;
+    return classNames({
+      COMPLETE: this.state.complete,
+    });
   }
 
   renderList() {
-    return this.list.map((li, key) => {
+    return this.state.list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <play.ListItem
@@ -92,7 +90,7 @@ class Selectable extends play.Component {
 
   render() {
     return (
-      <ul className={'selectable'+this.getULClass()} onClick={this.selectFunction.bind(this)}>
+      <ul className={'selectable '+this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

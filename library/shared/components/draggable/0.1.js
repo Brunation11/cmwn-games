@@ -16,6 +16,8 @@ class Draggable extends play.Component {
   startEvent(e) {
     var startX, startY, endX, endY, grabX, grabY;
 
+    if (e.target !== this.refs['el']) return;
+
     grabX = e.offsetX;
     grabY = e.offsetY;
 
@@ -109,26 +111,31 @@ class Draggable extends play.Component {
   }
 
   componentDidMount() {
-    play.Component.prototype.componentDidMount.call(this);
-    this.setScale();
+    this.bootstrap();
+  }
+
+  bootstrap() {
+    play.Component.prototype.bootstrap.call(this);
+
+    this.setZoom();
 
     this.refs['el'].addEventListener('mousedown', this.boundMouseDown);
     this.refs['el'].addEventListener('touchstart', this.boundTouchStart);
 
-    window.addEventListener('resize', this.setScale.bind(this));
+    window.addEventListener('resize', this.setZoom.bind(this));
   }
 
-  setScale() {
+  setZoom() {
     this.setState({
-      scale: play.trigger('getState').scale,
+      zoom: play.trigger('getState').scale,
     });
   }
 
   getStyle() {
     var x, y;
 
-    x = ((this.state.endX-this.state.startX)/this.state.scale);
-    y = ((this.state.endY-this.state.startY)/this.state.scale);
+    x = ((this.state.endX-this.state.startX)/this.state.zoom);
+    y = ((this.state.endY-this.state.startY)/this.state.zoom);
 
     return {
       transform: 'translateX('+x+'px) translateY('+y+'px)',

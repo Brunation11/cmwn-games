@@ -1,0 +1,33 @@
+.editable-asset {
+  list-style: none;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0;
+  padding: 0;
+
+  button {
+    display: block;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate3d(-50%,-50%,0);
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        top: 0;
+        left: 0;
+        @if $i > 2 {
+          top: 100%;
+        }
+        @if ($i % 2) == 0 {
+          left: 100%;
+        }
+      }
+    }
+  }
+}

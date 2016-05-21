@@ -284,6 +284,18 @@ p {
   }
 }
 
+#canvas {
+  button {
+    color: #000;
+  }
+
+  .editable-asset {
+    button {
+      color: #fff;
+    }
+  }
+}
+
 #flip {
   h2 {
     position: absolute;
@@ -317,5 +329,12 @@ p {
 
   &.OPEN {
     transform: translateX(0%);
+  }
+}
+
+.pl-game.PAUSED {
+  &:before,
+  &:after {
+    display: none !important;
   }
 }

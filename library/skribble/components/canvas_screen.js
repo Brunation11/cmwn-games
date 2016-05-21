@@ -1,11 +1,11 @@
-import Draggable from '../../shared/components/draggable/0.1.js';
+import ItemDrawerCanvas from '../../shared/components/item_drawer_canvas/0.1.js';
 
 class CanvasScreen extends play.Screen {
   constructor() {
     super();
 
     this.state = {
-      id: 'sample'
+      id: 'canvas'
     };
 
   }
@@ -23,14 +23,7 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <ul>
-          <li>
-            <Draggable>drag me!</Draggable>
-          </li>
-          <li>
-            <Draggable return={true} >return</Draggable>
-          </li>
-        </ul>
+        <ItemDrawerCanvas />
       </div>
     );
   }
