@@ -17,6 +17,7 @@ class EditableAsset extends Draggable {
       rotation: 0,
       layer: 1000,
       zoom: 1,
+      active: false,
     };
 
     this.boundScale = this.scale.bind(this);
@@ -28,12 +29,32 @@ class EditableAsset extends Draggable {
     this.boundOffRotate = this.offRotate.bind(this);
   }
 
+  shouldDrag() {
+    return this.state.active;
+  }
+
+  activate() {
+    this.setState({
+      active: true,
+    });
+
+    if (typeof this.props.deactivateItems === 'function') {
+      this.props.deactivateItems(this.props['data-ref']);
+    }
+  }
+
+  deactivate() {
+    this.setState({
+      active: false,
+    });
+  }
+
   moveEvent(e) {
     this.setState({
-      endX: e.x - this.state.grabX,
-      endY: e.y - this.state.grabY,
-      left: ((e.x - this.state.grabX - this.state.startX) / this.state.zoom),
-      top: ((e.y - this.state.grabY - this.state.startY) / this.state.zoom),
+      endX: e.pageX - this.state.grabX,
+      endY: e.pageY - this.state.grabY,
+      left: ((e.pageX - this.state.grabX - this.state.startX) / this.state.zoom),
+      top: ((e.pageY - this.state.grabY - this.state.startY) / this.state.zoom),
     });
     this.checkItem();
   }
@@ -57,10 +78,8 @@ class EditableAsset extends Draggable {
   adjustRotation(e) {
     var rotation, deltaX, deltaY;
 
-    // scale = this.state.scale;
-
-    deltaX = e.x - (this.state.left + this.state.width * this.state.scale / 2) - this.refs.el.offsetParent.offsetLeft;
-    deltaY = e.y - (this.state.top + this.state.height * this.state.scale / 2) - this.refs.el.offsetParent.offsetTop;
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     rotation = Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45 % 360;
 
@@ -94,10 +113,8 @@ class EditableAsset extends Draggable {
   adjustScale(e) {
     var scale, deltaX, deltaY, delta, base;
 
-    // scale = this.state.scale;
-
-    deltaX = e.x - (this.state.left + this.state.width * this.state.scale / 2) - this.refs.el.offsetParent.offsetLeft;
-    deltaY = e.y - (this.state.top + this.state.height * this.state.scale / 2) - this.refs.el.offsetParent.offsetTop;
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -171,6 +188,19 @@ class EditableAsset extends Draggable {
     this.attachEvents();
   }
 
+  getButtonStyle() {
+    var style, transform = '';
+
+    transform += 'scale(' + (1 / this.state.scale) + ') ';
+    transform += 'rotate(' + (-this.state.rotation) + 'deg) ';
+
+    style = {
+      transform,
+    };
+
+    return style;
+  }
+
   getStyle() {
     var style, transform = '';
 
@@ -192,6 +222,9 @@ class EditableAsset extends Draggable {
 
   getClasses() {
     return classNames({
+      DRAGGING: this.state.dragging,
+      RETURN: this.state.return,
+      ACTIVE: this.state.active,
       'editable-asset': true,
       [this.props.type]: true,
     });
@@ -199,11 +232,27 @@ class EditableAsset extends Draggable {
 
   renderButtons() {
     return (
-      <div>
-        <button className="delete" onClick={this.delete.bind(this)}>X</button>
-        <button ref="rotate" className="rotate">R</button>
-        <button className="layer" onClick={this.layer.bind(this)}>L</button>
-        <button ref="scale" className="scale">S</button>
+      <div className={'buttons'}>
+        <button
+          className="delete"
+          style={this.getButtonStyle()}
+          onClick={this.delete.bind(this)}
+        >X</button>
+        <button
+          ref="rotate"
+          className="rotate"
+          style={this.getButtonStyle()}
+        >R</button>
+        <button
+          className="layer"
+          onClick={this.layer.bind(this)}
+          style={this.getButtonStyle()}
+        >L</button>
+        <button
+          ref="scale"
+          className="scale"
+          style={this.getButtonStyle()}
+        >S</button>
       </div>
     );
   }
@@ -214,6 +263,7 @@ class EditableAsset extends Draggable {
         ref="el"
         className={this.getClasses()}
         style={this.getStyle()}
+        onClick={this.activate.bind(this)}
       >
         {this.renderButtons()}
       </li>

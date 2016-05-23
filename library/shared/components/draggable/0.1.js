@@ -13,14 +13,21 @@ class Draggable extends play.Component {
     this.boundTouchEnd = this.touchEnd.bind(this);
   }
 
-  startEvent(e) {
+  shouldDrag() {
+    return true;
+  }
+
+  startEvent(e, cb) {
     var startX, startY, endX, endY, grabX, grabY;
+
+    if (e.target !== this.refs.el) return;
+    if (!this.shouldDrag()) return;
 
     grabX = e.offsetX;
     grabY = e.offsetY;
 
-    startX = endX = e.x - grabX;
-    startY = endY = e.y - grabY;
+    startX = endX = e.pageX - grabX;
+    startY = endY = e.pageY - grabY;
 
     if (!this.props.return) {
       startX = typeof this.state.startX === 'number' ? this.state.startX : startX;
@@ -37,6 +44,10 @@ class Draggable extends play.Component {
       endX,
       endY,
     });
+
+    if (typeof cb === 'function') {
+      cb.call(this);
+    }
   }
 
   attachMouseEvents() {
@@ -50,27 +61,21 @@ class Draggable extends play.Component {
   }
 
   mouseDown(e) {
-    if (e.target !== this.refs.el) return;
-
-    this.startEvent(e);
-    this.attachMouseEvents();
+    this.startEvent(e, this.attachMouseEvents);
   }
 
   touchStart(e) {
-    if (e.target !== this.refs.el) return;
-
-    this.startEvent(e);
-    this.attachTouchEvents();
+    this.startEvent(e, this.attachTouchEvents);
   }
 
   moveEvent(e) {
     this.setState({
-      endX: e.x - this.state.grabX,
-      endY: e.y - this.state.grabY,
+      endX: e.pageX - this.state.grabX,
+      endY: e.pageY - this.state.grabY,
     });
   }
 
-  endEvent() {
+  endEvent(cb) {
     if (this.props.return) {
       this.setState({
         dragging: false,
@@ -88,26 +93,28 @@ class Draggable extends play.Component {
     if (typeof this.props.dropRespond === 'function') {
       this.props.dropRespond();
     }
+
+    if (typeof cb === 'function') {
+      cb.call(this);
+    }
   }
 
-  dettachMouseEvents() {
+  detachMouseEvents() {
     window.removeEventListener('mousemove', this.boundMoveEvent);
     window.removeEventListener('mouseup', this.boundMouseUp);
   }
 
-  dettachTouchEvents() {
+  detachTouchEvents() {
     window.removeEventListener('touchmove', this.boundMoveEvent);
     window.removeEventListener('touchend', this.boundTouchEnd);
   }
 
   mouseUp() {
-    this.endEvent();
-    this.dettachMouseEvents();
+    this.endEvent(this.detachMouseEvents);
   }
 
   touchEnd() {
-    this.endEvent();
-    this.dettachTouchEvents();
+    this.endEvent(this.detachTouchEvents);
   }
 
   componentDidMount() {

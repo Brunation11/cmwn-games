@@ -40,6 +40,20 @@ class Canvas extends play.Component {
     });
   }
 
+  deactivateItems(exclude) {
+    if (typeof exclude === 'object' && exclude.target) {
+      if (exclude.target.tagName !== 'UL') {
+        return;
+      }
+    }
+
+    return this.state.items.map((item, key) => {
+      if (key !== exclude && this.refs[key]) {
+        this.refs[key].deactivate();
+      }
+    });
+  }
+
   // the key will be passed in here
   checkItem() {
 
@@ -63,6 +77,7 @@ class Canvas extends play.Component {
           data-ref={key}
           deleteItem={self.deleteItem.bind(self)}
           checkItem={self.checkItem.bind(self)}
+          deactivateItems={self.deactivateItems.bind(self)}
           ref={key}
           key={key}
         />
@@ -73,8 +88,10 @@ class Canvas extends play.Component {
   render() {
     return (
       <ul
+        id={'canvasul'}
         className={'canvas'}
         style={this.getStyle()}
+        onClick={this.deactivateItems.bind(this)}
       >
         {this.renderItems()}
       </ul>
