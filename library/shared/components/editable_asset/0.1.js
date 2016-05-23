@@ -18,6 +18,7 @@ class EditableAsset extends Draggable {
       layer: 1000,
       zoom: 1,
       active: false,
+      corners: [],
     };
 
     this.boundScale = this.scale.bind(this);
@@ -39,7 +40,7 @@ class EditableAsset extends Draggable {
     });
 
     if (typeof this.props.deactivateItems === 'function') {
-      this.props.deactivateItems(this.props['data-ref']);
+      this.props.deactivateItems(this.props['data-ref'], this.props.type);
     }
   }
 
@@ -61,7 +62,7 @@ class EditableAsset extends Draggable {
 
   delete() {
     if (typeof this.props.deleteItem === 'function') {
-      this.props.deleteItem(this.props['data-ref']);
+      this.props.deleteItem(this.props['data-ref'], this.props.type);
     }
   }
 
@@ -81,7 +82,7 @@ class EditableAsset extends Draggable {
     deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
     deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
-    rotation = Math.atan2(deltaY, deltaX) * 180 / Math.PI + 45 % 360;
+    rotation = Math.atan2(deltaY, deltaX) + (Math.PI / 4) % (2 * Math.PI);
 
     this.setState({
       rotation,
@@ -91,10 +92,20 @@ class EditableAsset extends Draggable {
   }
 
   layer() {
-    var layer;
+    var layer, self = this;
 
     layer = this.state.layer - 1;
 
+    this.setState({
+      layer,
+    }, () => {
+      if (typeof self.props.relayerItems === 'function') {
+        self.props.relayerItems(self.props.type);
+      }
+    });
+  }
+
+  relayer(layer) {
     this.setState({
       layer,
     });
@@ -129,9 +140,55 @@ class EditableAsset extends Draggable {
   }
 
   checkItem() {
+    var valid;
+
+    this.setCorners();
+
     if (typeof this.props.checkItem === 'function') {
-      this.props.checkItem(this.props['data-ref']);
+      valid = this.props.checkItem(this.props['data-ref'], this.props.type);
+
+      if (valid) {
+        // do stuff
+      }
     }
+  }
+
+  setCorners() {
+    var center, distance, angle, corners = [];
+
+    center = {
+      x: this.state.left + this.state.width / 2,
+      y: this.state.top + this.state.height / 2,
+    };
+
+    // distance = {
+    //   x: this.state.width * this.state.scale / 2,
+    //   y: this.state.height * this.state.scale / 2,
+    // };
+
+    // for (var i = 0; i < 4; i++) {
+    //   corners.push({
+    //     x: center.x + distance.x * Math.pow(-1, i),
+    //     y: center.y + distance.y * (i < 2 ? 1 : -1),
+    //   });
+    // }
+
+    distance = Math.pow(Math.pow(this.state.width * this.state.scale / 2, 2) + Math.pow(this.state.height * this.state.scale / 2, 2), .5);
+
+    for (var i = 0; i < 4; i++) {
+      angle = this.state.rotation;
+      angle += (i < 2 ? 0 : Math.PI);
+      angle += Math.pow(-1, i) * Math.atan2(this.state.height, this.state.width);
+
+      corners.push({
+        x: center.x + distance * Math.cos(angle),
+        y: center.y + distance * Math.sin(angle),
+      });
+    }
+
+    this.setState({
+      corners,
+    });
   }
 
   getSize() {
@@ -153,6 +210,8 @@ class EditableAsset extends Draggable {
         height,
         minScale,
         scale: Math.max(this.state.scale, minScale),
+      }, () => {
+        self.setCorners();
       });
     };
 
@@ -166,7 +225,7 @@ class EditableAsset extends Draggable {
     case 'background':
       layer = 1;
       break;
-    case 'text':
+    case 'message':
       layer = 10000;
       break;
     }
@@ -182,6 +241,10 @@ class EditableAsset extends Draggable {
   }
 
   componentDidMount() {
+    this.bootstrap();
+  }
+
+  bootstrap() {
     Draggable.prototype.bootstrap.call(this);
     this.getSize();
     this.getLayer();
@@ -192,7 +255,7 @@ class EditableAsset extends Draggable {
     var style, transform = '';
 
     transform += 'scale(' + (1 / this.state.scale) + ') ';
-    transform += 'rotate(' + (-this.state.rotation) + 'deg) ';
+    transform += 'rotate(' + (-this.state.rotation) + 'rad) ';
 
     style = {
       transform,
@@ -205,7 +268,7 @@ class EditableAsset extends Draggable {
     var style, transform = '';
 
     transform += 'scale(' + this.state.scale + ') ';
-    transform += 'rotate(' + this.state.rotation + 'deg) ';
+    transform += 'rotate(' + this.state.rotation + 'rad) ';
 
     style = {
       backgroundImage: 'url("' + this.props.src + '")',
