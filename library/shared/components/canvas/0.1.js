@@ -168,7 +168,6 @@ class Canvas extends play.Component {
     return true;
   }
 
-  // the key will be passed in here
   checkItem(key, type) {
     var intersects = false, self = this;
     this.state[type + 's'].some((item, index) => {
@@ -179,7 +178,8 @@ class Canvas extends play.Component {
       );
       return intersects;
     });
-    console.log(intersects);
+
+    return !intersects;
   }
 
   getStyle() {

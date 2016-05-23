@@ -18,6 +18,7 @@ class EditableAsset extends Draggable {
       layer: 1000,
       zoom: 1,
       active: false,
+      valid: true,
       corners: [],
     };
 
@@ -148,7 +149,14 @@ class EditableAsset extends Draggable {
       valid = this.props.checkItem(this.props['data-ref'], this.props.type);
 
       if (valid) {
-        // do stuff
+        this.setState({
+          valid,
+          lastValid: new Object(this.state),
+        });
+      } else {
+        this.setState({
+          valid,
+        });
       }
     }
   }
@@ -160,18 +168,6 @@ class EditableAsset extends Draggable {
       x: this.state.left + this.state.width / 2,
       y: this.state.top + this.state.height / 2,
     };
-
-    // distance = {
-    //   x: this.state.width * this.state.scale / 2,
-    //   y: this.state.height * this.state.scale / 2,
-    // };
-
-    // for (var i = 0; i < 4; i++) {
-    //   corners.push({
-    //     x: center.x + distance.x * Math.pow(-1, i),
-    //     y: center.y + distance.y * (i < 2 ? 1 : -1),
-    //   });
-    // }
 
     distance = Math.pow(Math.pow(this.state.width * this.state.scale / 2, 2) + Math.pow(this.state.height * this.state.scale / 2, 2), .5);
 
@@ -211,7 +207,7 @@ class EditableAsset extends Draggable {
         minScale,
         scale: Math.max(this.state.scale, minScale),
       }, () => {
-        self.setCorners();
+        self.checkItem();
       });
     };
 
@@ -288,6 +284,7 @@ class EditableAsset extends Draggable {
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       ACTIVE: this.state.active,
+      INVALID: !this.state.valid,
       'editable-asset': true,
       [this.props.type]: true,
     });

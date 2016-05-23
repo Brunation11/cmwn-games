@@ -55,4 +55,17 @@
     cursor: grabbing;
     cursor: -moz-grabbing;
   }
+
+  &.INVALID {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(250, 25, 25, 0.6);
+    }
+  }
 }
