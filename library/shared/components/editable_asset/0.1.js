@@ -20,6 +20,7 @@ class EditableAsset extends Draggable {
       active: false,
       valid: true,
       corners: [],
+      lastValid: {},
     };
 
     this.boundScale = this.scale.bind(this);
@@ -46,9 +47,25 @@ class EditableAsset extends Draggable {
   }
 
   deactivate() {
-    this.setState({
-      active: false,
-    });
+    var self = this;
+
+    if (!this.state.valid) {
+      this.setState({
+        left: this.state.lastValid.left || this.state.left,
+        top: this.state.lastValid.top || this.state.top,
+        scale: this.state.lastValid.scale || this.state.scale,
+        rotation: this.state.lastValid.rotation || this.state.rotation,
+        active: false,
+      }, () => {
+        setTimeout(() => {
+          self.checkItem();
+        }, 0);
+      });
+    } else {
+      this.setState({
+        active: false,
+      });
+    }
   }
 
   moveEvent(e) {

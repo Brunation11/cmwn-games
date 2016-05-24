@@ -1,5 +1,7 @@
 import EditableAsset from '../editable_asset/0.1.js';
 
+import classNames from 'classnames';
+
 class Canvas extends play.Component {
   constructor() {
     super();
@@ -10,6 +12,7 @@ class Canvas extends play.Component {
       messages: [],
       offsetX: 0,
       offsetY: 0,
+      active: false,
     };
 
     this.boundDeleteItem = this.deleteItem.bind(this);
@@ -58,6 +61,15 @@ class Canvas extends play.Component {
       if (exclude.target.tagName !== 'UL') {
         return;
       }
+      this.setState({
+        active: false,
+      });
+    }
+
+    if (typeof exclude === 'number') {
+      this.setState({
+        active: true,
+      });
     }
 
     this.state.items.map((item, key) => {
@@ -170,8 +182,14 @@ class Canvas extends play.Component {
 
   checkItem(key, type) {
     var intersects = false, self = this;
+
+    if (this.state[type + 's'][key].canOverlap) {
+      return true;
+    }
+
     this.state[type + 's'].some((item, index) => {
       if (key === index) return;
+      if (this.state[type + 's'][index].canOverlap) return;
       intersects = self.doPolygonsIntersect(
         self.refs[type + '-' + key].state.corners,
         self.refs[type + '-' + index].state.corners
@@ -228,11 +246,17 @@ class Canvas extends play.Component {
     });
   }
 
+  getClassNames() {
+    return classNames({
+      canvas: true,
+      ACTIVE: this.state.active,
+    });
+  }
+
   render() {
     return (
       <ul
-        id={'canvasul'}
-        className={'canvas'}
+        className={this.getClassNames()}
         style={this.getStyle()}
         onClick={this.deactivateItems.bind(this)}
       >
