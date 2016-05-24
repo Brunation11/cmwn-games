@@ -16,7 +16,7 @@ class SampleScreen extends play.Screen {
 
   renderNextButton() {
     return (
-      <button className='next-screen' onClick={this.goto.bind(this,'canvas')}>{'>'}</button>
+      <button className={'next-screen'} onClick={this.goto.bind(this, 'canvas')}>{'>'}</button>
     );
   }
 

@@ -1,30 +1,17 @@
 import ItemDrawerCanvas from '../../shared/components/item_drawer_canvas/0.1.js';
-import Menu from '../../shared/components/menu/0.1.js';
 
-class CanvasScreen extends play.Screen {
+class ItemDrawerScreen extends play.Screen {
   constructor() {
     super();
 
     this.state = {
-      id: 'canvas',
-      menus: {},
+      id: 'item-drawer',
     };
 
   }
 
   bootstrap() {
-    var menus, state;
-
     play.Screen.prototype.bootstrap.call(this);
-
-    state = play.trigger('getState');
-
-    if (state && state.data && state.data.menus) {
-      menus = state.data.menus;
-      this.setState({
-        menus,
-      });
-    }
   }
 
   renderPrevButton() {
@@ -40,11 +27,10 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <Menu items={this.state.menus} />
         <ItemDrawerCanvas />
       </div>
     );
   }
 }
 
-export default CanvasScreen;
+export default ItemDrawerScreen;
