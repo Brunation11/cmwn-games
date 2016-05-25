@@ -6,5 +6,11 @@
     background-position: center center;
     width: 100px;
     height: 100px;
+    border: 2px solid transparent;
+    transition: border .5s;
+
+    &.SELECTED {
+      border-color: black;
+    }
   }
 }

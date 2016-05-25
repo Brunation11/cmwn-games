@@ -33,6 +33,13 @@ class Skribble extends play.Game {
     };
   }
 
+  passData(opts) {
+    if (opts.name === 'add-item') {
+      this.refs['screen-canvas'].addItem(opts.message);
+      this.goto({ index: 'canvas' });
+    }
+  }
+
   renderLoader() {
     return (
       <Loader />

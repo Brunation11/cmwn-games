@@ -13,6 +13,20 @@ class Menu extends Selectable {
     };
   }
 
+  deactivate() {
+    var self = this;
+
+    this.setState({
+      active: false,
+    });
+
+    Object.keys(this.refs).map(key => {
+      if (typeof self.refs[key].deactivate === 'function') {
+        self.refs[key].deactivate();
+      }
+    });
+  }
+
   onClick(e) {
     var li, message, active = false, classes = [];
 
@@ -41,7 +55,7 @@ class Menu extends Selectable {
     return Object.keys(this.props.items).map((key) => {
       var item, onClick, gotoObj, categories;
 
-      categories = this.props.categories || [];
+      categories = this.props.categories ? [].concat(this.props.categories) : [];
       categories.push(key);
 
       item = this.props.items[key];
@@ -64,9 +78,9 @@ class Menu extends Selectable {
         >
           {key}
           {(() => {
-            if (typeof item.items !== 'object') return;
+            if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
             return (
-              <Menu categories={categories} items={item.items} />
+              <Menu ref={'menu-' + key} categories={categories} items={item.items} />
             );
           })()}
         </play.ListItem>

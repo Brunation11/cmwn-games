@@ -6,14 +6,29 @@ class ItemDrawer extends Selectable {
   }
 
   selectHelper(e) {
-    var message;
+    var message, key, classes = [];
 
     if (e.target.tagName !== 'LI') return;
 
-    message = this.refs[e.target.getAttribute('data-ref')].props.item;
+    key = e.target.getAttribute('data-ref');
+    message = this.refs[key].props.item;
+    classes[key] = this.state.selectClass;
 
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+    this.setState({
+      message,
+      classes,
+    });
+  }
+
+  selectButton() {
+    if (typeof this.props.selectRespond === 'function' && this.state.message) {
+      this.props.selectRespond(this.state.message);
+    }
+  }
+
+  cancelButton() {
+    if (typeof this.props.cancelRespond === 'function') {
+      this.props.cancelRespond();
     }
   }
 
@@ -24,6 +39,7 @@ class ItemDrawer extends Selectable {
       return (
         <play.ListItem
           {...item.props}
+          className={this.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
@@ -36,9 +52,13 @@ class ItemDrawer extends Selectable {
 
   render() {
     return (
-      <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
-        {this.renderList()}
-      </ul>
+      <div>
+        <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+          {this.renderList()}
+        </ul>
+        <button onClick={this.selectButton.bind(this)}>{'Select'}</button>
+        <button onClick={this.cancelButton.bind(this)}>{'Cancel'}</button>
+      </div>
     );
   }
 }

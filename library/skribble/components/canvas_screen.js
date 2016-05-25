@@ -1,4 +1,4 @@
-import ItemDrawerCanvas from '../../shared/components/item_drawer_canvas/0.1.js';
+import Canvas from '../../shared/components/canvas/0.1.js';
 import Menu from '../../shared/components/menu/0.1.js';
 
 class CanvasScreen extends play.Screen {
@@ -27,6 +27,18 @@ class CanvasScreen extends play.Screen {
     }
   }
 
+  addItem(message) {
+    this.refs.canvas.addItem(message);
+  }
+
+  open() {
+    if (this.refs && this.refs.menu) {
+      this.refs.menu.deactivate();
+    }
+
+    play.Screen.prototype.open.call(this);
+  }
+
   renderPrevButton() {
     return (
       <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
@@ -40,8 +52,8 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <Menu items={this.state.menus} />
-        <ItemDrawerCanvas />
+        <Menu ref={'menu'} items={this.state.menus} />
+        <Canvas ref={'canvas'} />
       </div>
     );
   }
