@@ -6,18 +6,26 @@ class ItemDrawer extends Selectable {
   }
 
   selectHelper(e) {
-    var message, key, classes = [];
+    var message, key, type, classes = [];
 
     if (e.target.tagName !== 'LI') return;
 
     key = e.target.getAttribute('data-ref');
-    message = this.refs[key].props.item;
-    classes[key] = this.state.selectClass;
+    type = this.refs[key].props.item.type;
 
-    this.setState({
-      message,
-      classes,
-    });
+    if (type === 'category') {
+      this.setState({
+        category: key,
+      });
+    } else {
+      message = this.refs[key].props.item;
+      classes[key] = this.state.selectClass;
+
+      this.setState({
+        message,
+        classes,
+      });
+    }
   }
 
   selectButton() {
@@ -32,20 +40,35 @@ class ItemDrawer extends Selectable {
     }
   }
 
+  componentWillReceiveProps() {
+    this.setState({
+      category: null,
+    });
+  }
+
   renderList() {
+    var items;
+
     if (!this.props.data || !this.props.data.items) return;
 
-    return this.props.data.items.map((item, key) => {
+    items = this.props.data.items;
+
+    if (this.state.category) {
+      items = items[this.state.category].items;
+    }
+
+    return items.map((item, key) => {
       return (
         <play.ListItem
-          {...item.props}
           className={this.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
           style={{backgroundImage: 'url("' + item.src + '")'}}
-        />
+        >
+          {item.name}
+        </play.ListItem>
       );
     });
   }

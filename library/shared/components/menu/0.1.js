@@ -28,17 +28,22 @@ class Menu extends Selectable {
   }
 
   onClick(e) {
-    var li, message, active = false, classes = [];
+    var li, ul, dom, message, active = false, classes = [];
 
     li = e.target.closest('LI');
 
     if (!li) return;
 
+    ul = li.closest('UL');
+    dom = ReactDOM.findDOMNode(this); // eslint-disable-line no-undef
+
+    if (ul !== dom) return;
+
     message = li.getAttribute('data-ref');
 
     if (this.state.classes[message] !== this.state.selectClass) {
       classes[message] = this.state.selectClass;
-      active = true;
+      active = !this.props.inactive;
     }
 
     this.setState({
@@ -60,7 +65,7 @@ class Menu extends Selectable {
 
       item = this.props.items[key];
 
-      if (!item.items) {
+      if (!item.items || Object.prototype.toString.call(item.items) === '[object Array]') {
         gotoObj = {
           index: 'item-drawer',
           categories,
@@ -80,7 +85,7 @@ class Menu extends Selectable {
           {(() => {
             if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
             return (
-              <Menu ref={'menu-' + key} categories={categories} items={item.items} />
+              <Menu ref={'menu-' + key} categories={categories} items={item.items} inactive={true} />
             );
           })()}
         </play.ListItem>
