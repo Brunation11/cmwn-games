@@ -264,6 +264,10 @@ class EditableAsset extends Draggable {
     this.attachEvents();
   }
 
+  componentDidUpdate() {
+    this.attachEvents();
+  }
+
   getButtonStyle() {
     var style, transform = '';
 

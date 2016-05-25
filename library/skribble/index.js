@@ -33,6 +33,18 @@ class Skribble extends play.Game {
     };
   }
 
+  save() {
+    this.emit({
+      name: 'save-skribble',
+      game: this.config.id,
+      skribble: {
+        background: this.refs['screen-canvas'].refs.canvas.state.background,
+        items: this.refs['screen-canvas'].refs.canvas.state.items,
+        messages: this.refs['screen-canvas'].refs.canvas.state.messages,
+      }
+    });
+  }
+
   passData(opts) {
     if (opts.name === 'add-item') {
       this.refs['screen-canvas'].addItem(opts.message);
@@ -43,6 +55,17 @@ class Skribble extends play.Game {
   renderLoader() {
     return (
       <Loader />
+    );
+  }
+
+  renderMenu() {
+    return (
+      <div className="game-menu">
+        <button className="save" onClick={this.save.bind(this)}>{'+'}</button>
+        <button className="inbox" onClick={this.openMenu.bind(this, {id: 'quit'})}>{'#'}</button>
+        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})}>{'?'}</button>
+        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})}>{'X'}</button>
+      </div>
     );
   }
 
