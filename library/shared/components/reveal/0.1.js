@@ -8,6 +8,10 @@ class Reveal extends play.Component {
       <li></li>,
       <li></li>
     ];
+
+    this.state = {
+      openReveal: '',
+    };
   }
 
   open(message) {
@@ -26,7 +30,7 @@ class Reveal extends play.Component {
   close() {
     this.setState({
       open: false,
-      openReveal: null,
+      openReveal: '',
     });
   }
 
@@ -36,23 +40,55 @@ class Reveal extends play.Component {
   }
 
   playAudio(message) {
+    var messages;
+
     if (this.audio['open-sound']) {
       this.audio['open-sound'].play();
     }
 
-    if (this.audio.voiceOver[message]) {
-      this.audio.voiceOver[message].play();
+    if (typeof message === 'string') {
+      messages = message.split(' ');
+      messages.map(audio => {
+        if (this.audio[audio]) {
+          this.audio[audio].play();
+        }
+      });
+    } else {
+      if (this.audio.voiceOver[message]) {
+        this.audio.voiceOver[message].play();
+      }
     }
   }
 
   renderAssets() {
+    if (this.props.assets) {
+      return this.props.assets.map((asset, key) => {
+        return (
+          <play.Audio
+            {...asset.props}
+            ref={asset.props['data-ref'] || ('asset-' + key)}
+            key={key}
+            data-ref={key}
+          />
+        );
+      });
+    }
+
     return null;
   }
 
   renderList() {
-    return this.list.map((li, key) => {
+    var list = this.props.list || this.list;
+
+    return list.map((li, key) => {
       return (
-        <li {...li.props} className={this.getClass(li, key)} ref={key} key={key} data-ref={key} ></li>
+        <li
+          {...li.props}
+          className={this.getClass(li, key)}
+          ref={key}
+          key={key}
+          data-ref={key}
+        ></li>
       );
     });
   }
@@ -61,7 +97,8 @@ class Reveal extends play.Component {
     var classes = '';
 
     if (li.props.className) classes += li.props.className;
-    if ('' + key === '' + this.state.openReveal) classes += ' OPEN';
+    if (this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
+    if (this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
 
     return classes;
   }

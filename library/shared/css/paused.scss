@@ -19,7 +19,7 @@ $background-color: rgba(84,194,242,.7);
 	100% {transform: translate(-50%,-50%) scale3d(1,1,1);}
 }
 
-.pl-game.PAUSED {
+.pl-game.PAUSED:not(.DEMO) {
 
 	&:before {
 		content: "";
