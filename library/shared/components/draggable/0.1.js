@@ -17,6 +17,18 @@ class Draggable extends play.Component {
     return true;
   }
 
+  markCorrect() {
+    this.setState({
+      correct: true,
+    });
+  }
+
+  markIncorrect() {
+    this.setState({
+      correct: false,
+    });
+  }
+
   startEvent(e, cb) {
     var startX, startY, endX, endY, grabX, grabY;
 
@@ -76,6 +88,8 @@ class Draggable extends play.Component {
   }
 
   endEvent(cb) {
+    this.dropRespond();
+
     if (this.props.return) {
       this.setState({
         dragging: false,
@@ -88,10 +102,6 @@ class Draggable extends play.Component {
         dragging: false,
         return: this.props.return,
       });
-    }
-
-    if (typeof this.props.dropRespond === 'function') {
-      this.props.dropRespond();
     }
 
     if (typeof cb === 'function') {
@@ -115,6 +125,52 @@ class Draggable extends play.Component {
 
   touchEnd() {
     this.endEvent(this.detachTouchEvents);
+  }
+
+  dropRespond() {
+    var corners;
+
+    corners = this.setCorners();
+
+    if (typeof this.props.dropRespond === 'function') {
+      this.props.dropRespond(this.props.message, corners);
+    }
+  }
+
+  setCorners() {
+    var top, left, width, height, el, corners = [];
+
+    left = 0;
+    top = 0;
+    el = this.refs.el;
+    width = el.offsetWidth;
+    height = el.offsetHeight;
+
+    while (el) {
+      if (el.className.indexOf('screen') !== -1) {
+        break;
+      }
+
+      left += el.offsetLeft || 0;
+      top += el.offsetTop || 0;
+      el = el.offsetParent;
+    }
+
+    left += ((this.state.endX - this.state.startX) / this.state.zoom);
+    top += ((this.state.endY - this.state.startY) / this.state.zoom);
+
+    for (var i = 0; i < 4; i++) {
+      corners.push({
+        x: left + width * (i === 1 || i === 2 ? 1 : 0),
+        y: top + height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    this.setState({
+      corners,
+    });
+
+    return corners;
   }
 
   componentDidMount() {
@@ -153,6 +209,7 @@ class Draggable extends play.Component {
     return classNames({
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
+      CORRECT: this.state.correct,
     });
   }
 

@@ -1,4 +1,4 @@
-import Draggable from '../../shared/components/draggable/0.1.js';
+import Dropzone from '../../shared/components/dropzone/0.1.js';
 
 class SampleScreen extends play.Screen {
   constructor() {
@@ -23,14 +23,7 @@ class SampleScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <ul>
-          <li>
-            <Draggable>drag me!</Draggable>
-          </li>
-          <li>
-            <Draggable return={true} >return</Draggable>
-          </li>
-        </ul>
+        <Dropzone ref={'dropzone'} message={'drag'} />
       </div>
     );
   }

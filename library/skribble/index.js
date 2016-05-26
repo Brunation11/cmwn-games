@@ -7,6 +7,7 @@ import config from './config.game';
 import Loader from '../shared/components/loader/0.1.js';
 
 import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
+import SampleScreen from './components/sample_screen.js';
 import MenuScreen from './components/menu_screen.js';
 import FriendScreen from './components/friend_screen.js';
 import CanvasScreen from './components/canvas_screen.js';
@@ -22,7 +23,8 @@ class Skribble extends play.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: MenuScreen,
+      1: SampleScreen,
+      2: MenuScreen,
       friend: FriendScreen,
       canvas: CanvasScreen,
       'item-drawer': ItemDrawerScreen,
