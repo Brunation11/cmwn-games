@@ -18,7 +18,7 @@ import './components/selectable-reveal/behavior';
 import './components/selectable/behavior';
 import './components/video/behavior';
 
-// import '../../../shared/js/test-platform-integration';
+import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
 pl.game('monarch', function () {
