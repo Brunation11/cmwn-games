@@ -8,9 +8,14 @@ class Dropzone extends play.Component {
 
     this.state = {
       corners: [],
+      list: [
+        <Draggable message={'drag'} dropRespond={this.boundDropRespond}>drag me!</Draggable>,
+        <Draggable message={'return'} dropRespond={this.boundDropRespond} return={true} >return</Draggable>
+      ],
     };
 
     this.boundDropRespond = this.dropRespond.bind(this);
+    this.boundDragRespond = this.dragRespond.bind(this);
   }
 
   setCorners() {
@@ -47,12 +52,25 @@ class Dropzone extends play.Component {
   }
 
   start() {
+    var list;
+
+    list = this.props.list || this.state.list;
+
+    this.setState({
+      list,
+    });
+
     play.Component.prototype.start.call(this);
     this.setCorners();
   }
 
+  dragRespond() {
+    if (this.audio.drag) {
+      this.audio.drag.play();
+    }
+  }
+
   dropRespond(message, corners) {
-    // console.log(corners, this.state.corners);
     if (play.util.doIntersect(corners, this.state.corners)) {
       this.inBounds(message);
     } else {
@@ -62,7 +80,7 @@ class Dropzone extends play.Component {
 
   inBounds(message) {
     if (message === this.props.message) {
-      this.correct();
+      this.correct(message);
     } else {
       this.incorrect();
     }
@@ -70,14 +88,58 @@ class Dropzone extends play.Component {
 
   outOfBounds() {
     // respond to out of bounds drop
+    if (this.audio.out) {
+      this.audio.out.play();
+    }
   }
 
-  correct() {
+  correct(message) {
     // respond to correct drop
+    if (this.audio.correct) {
+      this.audio.correct.play();
+    }
+
+    if (typeof this.props.correctRespond === 'function') {
+      this.props.correctRespond(message);
+    }
   }
 
   incorrect() {
     // respond to incorrect drop
+    if (this.audio.incorrect) {
+      this.audio.incorrect.play();
+    }
+  }
+
+  renderAssets() {
+    if (this.props.assets) {
+      return this.props.assets.map((asset, key) => {
+        return (
+          <play.Audio
+            {...asset.props}
+            ref={asset.props['data-ref'] || ('asset-' + key)}
+            key={key}
+            data-ref={key}
+          />
+        );
+      });
+    }
+
+    return null;
+  }
+
+  renderList() {
+    return this.state.list.map((item, key) => {
+      return (
+        <li key={key}>
+          <Draggable
+            {...item.props}
+            dragRespond={this.boundDragRespond}
+            dropRespond={this.boundDropRespond}
+          />
+        </li>
+      );
+    });
   }
 
   getClassNames() {
@@ -89,17 +151,13 @@ class Dropzone extends play.Component {
   render() {
     return (
       <div>
+        {this.renderAssets()}
         <div
           className={this.getClassNames()}
           ref={'dropzone'}
         ></div>
         <ul>
-          <li>
-            <Draggable message={'drag'} dropRespond={this.boundDropRespond}>drag me!</Draggable>
-          </li>
-          <li>
-            <Draggable message={'return'} dropRespond={this.boundDropRespond} return={true} >return</Draggable>
-          </li>
+          {this.renderList()}
         </ul>
       </div>
     );

@@ -91,9 +91,8 @@ class Reveal extends play.Component {
           {...li.props}
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={ref}
+          ref={key}
           key={key}
-          data-ref={key}
         ></li>
       );
     });

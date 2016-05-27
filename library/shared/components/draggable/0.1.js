@@ -57,6 +57,10 @@ class Draggable extends play.Component {
       endY,
     });
 
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond(this.props.message);
+    }
+
     if (typeof cb === 'function') {
       cb.call(this);
     }
@@ -207,6 +211,8 @@ class Draggable extends play.Component {
 
   getClassNames() {
     return classNames({
+      draggable: true,
+      [this.props.className]: true,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
@@ -217,7 +223,7 @@ class Draggable extends play.Component {
     return (
       <div
         ref="el"
-        className={'draggable ' + this.getClassNames()}
+        className={this.getClassNames()}
         style={this.getStyle()}
       >{this.props.children}</div>
     );

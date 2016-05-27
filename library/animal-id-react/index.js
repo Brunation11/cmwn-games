@@ -12,6 +12,7 @@ import InfoWelcomeScreen from './components/info_welcome_screen.js';
 import IDCarnivoreScreen from './components/id_carnivore_screen.js';
 import InfoSnoutScreen from './components/info_snout_screen.js';
 import WhatDoesANoseDoScreen from './components/what_does_a_nose_do_screen.js';
+import DNDLionScreen from './components/dnd_lion_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
@@ -26,9 +27,10 @@ class AnimalID extends play.Game {
       0: iOSScreen,
       1: TitleScreen,
       3: InfoWelcomeScreen, // should actually be index 2
-      // 4: IDCarnivoreScreen,
+      // 2: IDCarnivoreScreen,
       // 5: InfoSnoutScreen,
-      2: WhatDoesANoseDoScreen,
+      // 6: WhatDoesANoseDoScreen,
+      2: DNDLionScreen,
       // 3: FlipScreen,
     };
 
