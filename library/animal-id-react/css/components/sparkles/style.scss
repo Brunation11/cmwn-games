@@ -28,11 +28,11 @@
 
 $delays: 0s .5s 1s .25s 1.25s .75s;
 
-.title-component.COMPLETE .sparkles-component {
+#title.COMPLETE .sparkles {
   opacity: 1;
 }
 
-.sparkles-component {
+.sparkles {
   position: absolute;
   left: 0;
   top: 0;

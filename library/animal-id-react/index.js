@@ -10,6 +10,8 @@ import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
 import TitleScreen from './components/title_screen.js';
 import InfoWelcomeScreen from './components/info_welcome_screen.js';
 import IDCarnivoreScreen from './components/id_carnivore_screen.js';
+import InfoSnoutScreen from './components/info_snout_screen.js';
+import WhatDoesANoseDoScreen from './components/what_does_a_nose_do_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
@@ -23,8 +25,10 @@ class AnimalID extends play.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: InfoWelcomeScreen,
-      3: IDCarnivoreScreen,
+      3: InfoWelcomeScreen, // should actually be index 2
+      // 4: IDCarnivoreScreen,
+      // 5: InfoSnoutScreen,
+      2: WhatDoesANoseDoScreen,
       // 3: FlipScreen,
     };
 
@@ -39,8 +43,15 @@ class AnimalID extends play.Game {
 
   }
 
-  getBackgroundIndex() {
-    return 0;
+  getBackgroundIndex(currentScreenIndex) {
+    var indexes = {
+      0: 0,
+      1: 0,
+      2: 1,
+      3: 1,
+    };
+
+    return indexes[currentScreenIndex];
   }
 
   renderLoader() {
@@ -53,7 +64,9 @@ class AnimalID extends play.Game {
     return (
       <div>
         <play.Audio ref="bkg-1" type="background" src="media/audio/title.mp3" />
-        <play.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" preload="none" loop />
+        <play.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" loop />
+        <play.Audio ref="bkg-3" type="background" src="media/audio/background/nose.mp3" loop />
+
         <play.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />
         <play.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
       </div>

@@ -1,11 +1,11 @@
-.flip-card-component {
+.flip-card {
 }
   
-  .flip-card-component > ul {
+  .flip-card > ul {
     text-align: center;
   }
 
-    .flip-card-component > ul li {
+    .flip-card > ul li {
       position: relative;
       display: inline-block;
       vertical-align: top;
@@ -16,102 +16,107 @@
       cursor: pointer;
     }
 
-    .flip-card-component > ul li.HIGHLIGHTED {
+    .flip-card > ul li.HIGHLIGHTED {
       cursor: auto;
     }
 
-      .flip-card-component > ul li .side {
+      #what-does-a-nose-do ul li .side,
+      .flip-card > ul li .side {
         position: absolute;
         top: 0; left: 0;
         width: inherit;
         max-height: 100%;
 
-        background-color: #0af;
+        /*background-color: #0af;*/
         color: #eee;
-        border-radius: 8px;
+        /*border-radius: 8px;*/
         transition: transform 0.5s;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         overflow: hidden;
       }
 
-        .flip-card-component > ul li .side img {
+        .flip-card > ul li .side img {
           max-width: 100%;
           max-height: 100%;
         }
 
       /* Left to Right (Default) */
-      .flip-card-component.lr > ul li .side.b,
-      .flip-card-component > ul li.lr .side.b {
+      .flip-card.lr > ul li .side.b,
+      .flip-card > ul li.lr .side.b {
         transform: rotateY(-180deg);
       }
 
-      .flip-card-component.lr > ul li:hover .side.a,
-      .flip-card-component > ul li.lr:hover .side.a {
+      .flip-card.lr > ul li:hover .side.a,
+      .flip-card > ul li.lr:hover .side.a {
         transform: rotateY(180deg);
       }
 
-      .flip-card-component > ul li:hover .side.b,
-      .flip-card-component.lr > ul li:hover .side.b,
-      .flip-card-component > ul li.lr:hover .side.b {
+      .flip-card > ul li:hover .side.b,
+      .flip-card.lr > ul li:hover .side.b,
+      .flip-card > ul li.lr:hover .side.b {
         transform: rotateY(0deg);
       }
 
       /* Right to Left */
 
-      .flip-card-component.rl > ul li .side.b,
-      .flip-card-component > ul li.rl .side.b {
+      .flip-card.rl > ul li .side.b,
+      .flip-card > ul li.rl .side.b {
         transform: rotateY(180deg);
       }
 
-      .flip-card-component.rl > ul li:hover .side.a,
-      .flip-card-component > ul li.rl:hover .side.a {
+      .flip-card.rl > ul li:hover .side.a,
+      .flip-card > ul li.rl:hover .side.a {
         transform: rotateY(-180deg);
       }
 
-      .flip-card-component.rl > ul li:hover .side.b,
-      .flip-card-component > ul li.rl:hover .side.b {
+      .flip-card.rl > ul li:hover .side.b,
+      .flip-card > ul li.rl:hover .side.b {
         transform: rotateY(0deg);
       }
 
       /* Top to Bottom */
 
-      .flip-card-component.tb > ul li .side.b,
-      .flip-card-component > ul li.tb .side.b {
+      .flip-card.tb > ul li .side.b,
+      .flip-card > ul li.tb .side.b {
         transform: rotateY(0deg);
         transform: rotateX(180deg);
       }
 
-      .flip-card-component.tb > ul li.HIGHLIGHTED .side.a,
-      .flip-card-component.tb > ul li:hover .side.a,
-      .flip-card-component > ul li.tb:hover .side.a {
+      .flip-card.tb > ul li.HIGHLIGHTED .side.a,
+      .flip-card.tb > ul li:hover .side.a,
+      .flip-card > ul li.tb:hover .side.a {
         transform: rotateY(0deg);
         transform: rotateX(-180deg);
       }
 
-      .flip-card-component.tb > ul li.HIGHLIGHTED .side.b,
-      .flip-card-component.tb > ul li:hover .side.b,
-      .flip-card-component > ul li.tb:hover .side.b {
+      .flip-card.tb > ul li.HIGHLIGHTED .side.b,
+      .flip-card.tb > ul li:hover .side.b,
+      .flip-card > ul li.tb:hover .side.b {
         transform: rotateY(0deg);
         transform: rotateX(0deg);
       }
 
       /* Bottom to Top */
 
-      .flip-card-component.bt > ul li .side.b,
-      .flip-card-component > ul li.bt .side.b {
+      #what-does-a-nose-do ul li .side.b,
+      .flip-card.bt > ul li .side.b,
+      .flip-card > ul li.bt .side.b {
         transform: rotateY(0deg);
         transform: rotateX(-180deg);
       }
 
-      .flip-card-component.bt > ul.show-all li .side.a,
-      .flip-card-component.bt > ul li.HIGHLIGHTED .side.a {
+      #what-does-a-nose-do ul li.HIGHLIGHTED .side.a,
+      .flip-card.bt > ul.show-all li .side.a,
+      .flip-card.bt > ul li.HIGHLIGHTED .side.a {
         transform: rotateY(0deg);
-        transform: rotateX(180deg);
+        transform: rotateX(-180deg);
       }
 
-      .flip-card-component.bt > ul.show-all li .side.b,
-      .flip-card-component.bt > ul li.HIGHLIGHTED .side.b {
+      #what-does-a-nose-do ul li .side.a,
+      #what-does-a-nose-do ul li.HIGHLIGHTED .side.b,
+      .flip-card.bt > ul.show-all li .side.b,
+      .flip-card.bt > ul li.HIGHLIGHTED .side.b {
         transform: rotateY(0deg);
         transform: rotateX(0deg);
       }

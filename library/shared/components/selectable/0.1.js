@@ -18,9 +18,14 @@ class Selectable extends play.Component {
   }
 
   start() {
+    var selectFunction;
+
+    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
     this.setState({
       started: true,
-      classes: {}
+      classes: {},
+      selectFunction,
     });
 
     this.bootstrap();
@@ -31,11 +36,13 @@ class Selectable extends play.Component {
   }
 
   selectHelper(e, classes) {
-    var message;
+    var message, target;
 
-    if (e.target.tagName !== 'LI') return;
+    target = e.target.closest('LI');
 
-    message = e.target.getAttribute('data-ref');
+    if (!target) return;
+
+    message = target.getAttribute('data-ref');
     classes[message] = this.state.selectClass;
 
     this.setState({
@@ -81,7 +88,7 @@ class Selectable extends play.Component {
       return (
         <play.ListItem
           {...li.props}
-          className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(key)}
+          className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}
           ref={ref}
           key={key}

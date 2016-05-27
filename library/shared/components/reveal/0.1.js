@@ -23,7 +23,7 @@ class Reveal extends play.Component {
     this.playAudio(message);
 
     this.requireForComplete = this.requireForComplete.filter(item => {
-      return item !== message;
+      return (item !== message) || (this.refs[message] instanceof play.Audio);
     });
   }
 
@@ -32,6 +32,10 @@ class Reveal extends play.Component {
       open: false,
       openReveal: '',
     });
+
+    if (typeof this.props.closeRespond === 'function') {
+      this.props.closeRespond();
+    }
   }
 
   start() {
@@ -81,11 +85,13 @@ class Reveal extends play.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <li
           {...li.props}
           className={this.getClass(li, key)}
-          ref={key}
+          data-ref={ref}
+          ref={ref}
           key={key}
           data-ref={key}
         ></li>

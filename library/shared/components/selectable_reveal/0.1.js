@@ -27,6 +27,12 @@ class SelectableReveal extends play.Component {
     }
   }
 
+  closeRespond() {
+    if (typeof this.props.closeRespond === 'function') {
+      this.props.closeRespond();
+    }
+  }
+
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
@@ -46,13 +52,23 @@ class SelectableReveal extends play.Component {
 
   renderSelectable() {
     return (
-      <Selectable ref="selectable" list={this.props.selectableList} selectRespond={this.selectRespond.bind(this)} />
+      <Selectable
+        ref="selectable"
+        list={this.props.selectableList}
+        selectRespond={this.selectRespond.bind(this)}
+        selectClass={this.props.selectableSelectClass}
+      />
     );
   }
 
   renderReveal() {
     return (
-      <Reveal ref="reveal" list={this.props.revealList} assets={this.props.revealAssets} />
+      <Reveal
+        ref="reveal"
+        list={this.props.revealList}
+        assets={this.props.revealAssets}
+        closeRespond={this.closeRespond.bind(this)}
+      />
     );
   }
 

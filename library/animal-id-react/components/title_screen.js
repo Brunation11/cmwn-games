@@ -40,13 +40,22 @@ class Title extends play.Screen {
     }, 3000);
   }
 
+  renderDivs(number) {
+    var array = new Array(number).fill(null);
+    return array.map((div, index) => {
+      return <div key={index}></div>;
+    });
+  }
+
   renderContent() {
     return (
       <div className={'title'}>
         <div className="center">
           <div className="content-group">
             <play.Image ref="title" className="animated" src="media/images/title.png" incomplete={true} />
-            <div pl-component="sparkles"></div>
+            <div className="sparkles">
+              {this.renderDivs(32)}
+            </div>
           </div>
         </div>
       </div>

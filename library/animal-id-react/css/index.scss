@@ -23,15 +23,15 @@ body > div > div {
   background-size: cover;
   background-image: url(../media/images/background/title.png);
 
-  &.id {
+  &.SCREEN-2 {
     background-image: url(../media/images/background/id.png);
   }
 
-  &.match {
+  &.SCREEN-3 {
     background-image: url(../media/images/background/match.png);
   }
 
-  &.nose {
+  &.SCREEN-4 {
     background-image: url(../media/images/background/nose.png);
   }
 }
@@ -321,8 +321,7 @@ h3 {
     font-size: 36px;
   }
 
-  .items {
-    display: block;
+  ul {
 
     li {
       width: 200px;
@@ -346,7 +345,7 @@ h3 {
     }
   }
 
-  .flip-card > ul li .side {
+  ul li .side {
     background-color: transparent;
   }
 
@@ -447,22 +446,38 @@ body:not(.DEMO) #what-does-a-nose-do {
     opacity: 0;
   }
 
-  &.RETURN {
+  &.COMPLETE {
     .next-screen {
-      opacity: 1;
+      opacity: 0;
+    }
+
+    &.RETURN {
+      .next-screen {
+        opacity: 1;
+      }
     }
   }
+}
 
-  &.VOICE-OVER {
+.VOICE-OVER {
+  [id^="id-"].screen {
     .frame {
-      .items {
+      ul {
         li {
           cursor: auto;
+
           &:hover {
             &:after {
               opacity: 0;
             }
           }
+        }
+      }
+
+      .reveal {
+        .close-reveal {
+          cursor: auto;
+          opacity: 0;
         }
       }
     }
@@ -505,6 +520,7 @@ body:not(.DEMO) #what-does-a-nose-do {
         left: 10%;
         top: 50%;
         transform: translateY(-50%);
+        transition: z-index 0s .5s, opacity .5s;
 
         h3 {
           position: absolute;
@@ -546,13 +562,19 @@ body:not(.DEMO) #what-does-a-nose-do {
   }
 }
 
-.screen.snout {
+#info-snout {
+
+  img {
+    width: 100%;
+  }
 
   .frame {
 
     h2 {
       font-size: 60px;
       margin: 20px 0 40px;
+      color: #fff;
+      text-align: center;
     }
 
     > div {

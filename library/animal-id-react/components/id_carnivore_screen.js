@@ -56,14 +56,31 @@ class IDCarnivore extends play.Screen {
 
   }
 
+  closeRespond() {
+    if (this.state.complete && !this.state.return) {
+      this.goto(this.props.index + 1);
+    }
+  }
+
   renderContent() {
     return (
       <div>
         <play.Audio ref="vo" type="voiceOver" src="media/audio/VO_3-1.mp3" />
         <div className="center">
           <div className="frame">
-            <play.Image className="title" src="media/images/img_3.1.png" />
-            <SelectableReveal answers={['lion']} assets={this.assets} selectableList={this.selectableList} revealList={this.revealList} revealAssets={this.revealAssets} />
+            <play.Image
+              className="title"
+              src="media/images/img_3.1.png"
+            />
+            <SelectableReveal
+              ref={'selectableReveal'}
+              answers={['lion']}
+              assets={this.assets}
+              selectableList={this.selectableList}
+              revealList={this.revealList}
+              revealAssets={this.revealAssets}
+              closeRespond={this.closeRespond.bind(this)}
+            />
           </div>
         </div>
       </div>
