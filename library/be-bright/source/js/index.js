@@ -100,7 +100,7 @@ pl.game('be-bright', function () {
       }.bind(this));
     });
 
-    this.on('ui-close ui-leave', function() {
+    this.on('ui-close ui-leave', function () {
       this.audio.voiceOver.off('ended');
     });
 
