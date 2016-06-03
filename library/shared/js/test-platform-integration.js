@@ -4,4 +4,4 @@
 	} else {
 		document.domain = 'changemyworldnow.com';
 	}
-})();
+}());

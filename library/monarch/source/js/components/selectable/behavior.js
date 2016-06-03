@@ -20,8 +20,13 @@ pl.game.component('selectable', function () {
     return false;
   });
 
-  this.shouldSelect = function () {
-    return true;
+  this.shouldSelect = function (_$target) {
+    console.log(this.properties);
+    if (this.properties.eachSelectable || _$target.prev().hasClass(this.STATE.HIGHLIGHTED) || _$target.index() === 0) {
+      return !this.screen.state(this.STATE.VOICE_OVER);
+    }
+
+    return false;
   };
 
   this.deselectAll = function () {

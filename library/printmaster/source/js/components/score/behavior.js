@@ -6,15 +6,16 @@ pl.game.component('score', function () {
 
     this.template = null;
 
-    this.ready = function () {
-      this.template = this.html();
-    };
+    this.on('ready', function (_event) {
+      if (!this.is(_event.target)) return;
+
+      this.items = this.find('div');
+    });
 
     this.render = function () {
-      this.html(this.template.replace('{{score}}', this.value));
+      this.highlight(this.items[this.value - 1]);
       return this;
     };
-
   });
 
   this.init = function () {
@@ -25,13 +26,18 @@ pl.game.component('score', function () {
     this.board.render();
   };
 
+  this.reset = function () {
+    this.value = 0;
+    this.unhighlight(this.board.items);
+  };
+
   this.up = function (_count) {
     this.value += _count || 1;
 
     this.board.render();
 
     if (this.value === parseInt(this.properties.max, 10)) {
-      this.complete();
+      this.delay(this.properties.completeDelay || '0s', this.complete);
     }
 
     return this;
@@ -49,4 +55,9 @@ pl.game.component('score', function () {
     return this;
   };
 
+  this.behavior('complete', function () {
+    return {
+      message: 'score'
+    };
+  });
 });

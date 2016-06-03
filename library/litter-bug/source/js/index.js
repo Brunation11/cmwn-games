@@ -62,7 +62,8 @@ pl.game('litterbug', function () {
   });
 
   this.screen('video', function () {
-    this.on('ui-open', function () {
+    this.on('ui-open', function (_e) {
+      if (!this.is(_e.target)) return;
       setTimeout(function () {
         this.start();
       }.bind(this), 250);
@@ -86,10 +87,10 @@ pl.game('litterbug', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.trigger($.Event('platform-event', {
+      pl.game.report.flip(this, {
         name: 'flip',
         gameData: {id: this.game.id()}
-      }));
+      });
 
       return this.proto();
     };

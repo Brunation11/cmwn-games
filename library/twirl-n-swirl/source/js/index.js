@@ -10,6 +10,7 @@ import flushIt from './screens/flush-it';
 // INCLUDE USED COMPONENT BEHAVIORS HERE
 import '../../../shared/js/screen-ios-splash';
 import './components/dropzone/behavior';
+import './components/modal/behavior';
 import './components/reveal/behavior';
 import './components/screen-basic/behavior';
 import './components/screen-quit/behavior';
