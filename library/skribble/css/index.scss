@@ -337,6 +337,42 @@ p {
     display: block;
     color: #000;
   }
+
+  .selectable {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    li {
+      padding: 10px;
+    }
+  }
+
+  .reveal {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    ul {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  .item-drawer {
+    li {
+      position: relative;
+      height: 100px;
+      opacity: 1;
+      background-color: #ccc;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
 }
 
 #flip {

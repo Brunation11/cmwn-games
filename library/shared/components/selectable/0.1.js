@@ -71,7 +71,9 @@ class Selectable extends play.Component {
   }
 
   getClass(key) {
-    return this.state.classes[key] ? this.state.classes[key] : '';
+    return classNames({
+      [this.state.classes[key] || '']: true,
+    });
   }
 
   getULClass() {
