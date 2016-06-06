@@ -31,6 +31,9 @@ pl.game('animal-id', function () {
     this.on('ui-open', function (_event) {
       if (!this.is(_event.target)) return;
       if (this.state(this.STATE.COMPLETE)) this.return(this);
+      if (this.reveal) {
+        this.reveal.close(this.reveal.find('li.OPEN'));
+      }
     });
   };
 
@@ -77,8 +80,15 @@ pl.game('animal-id', function () {
   this.screen('match-game', function () {
     this.on('ui-close', function (_event) {
       if (!this.is(_event.target)) return;
-      this.reveal.closeAll();
+      this.reveal.close(this.reveal.find('li.OPEN'));
       this.delay('.5s', this.matchGame.randomize.bind(this.matchGame));
+    });
+  });
+
+  this.screen('what-does-a-nose-do', function () {
+    this.on('ui-open', function (_event) {
+      if (!this.is(_event.target)) return;
+      this.unhighlight(this.find('.HIGHLIGHTED'));
     });
   });
 
@@ -98,7 +108,7 @@ pl.game('animal-id', function () {
 
       ga('send', 'event', eventCategory, 'complete');
 
-      pl.game.report.flip(this, {
+      pl.game.report.flip(this.game, {
         name: 'flip',
         gameData: {id: this.game.id()}
       });
