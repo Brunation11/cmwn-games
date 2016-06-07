@@ -66,7 +66,24 @@ class Canvas extends play.Component {
   }
 
   setItems(message) {
-    this.setState(message);
+    if (message) {
+      /*
+       *
+       * This is being this way in order to make sure the
+       * EditableAssets get cleared.
+       *
+       * This prevents the new assets from inheriting
+       * state from the old assets.
+       *
+       */
+      this.setState({
+        background: null,
+        items: [],
+        messages: [],
+      }, () => {
+        this.setState(message);
+      });
+    }
   }
 
   addItem(asset) {
