@@ -45,9 +45,8 @@ class CanvasScreen extends play.Screen {
   }
 
   renderPrevButton() {
-    return (
-      <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
-    );
+    // <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
+    return null;
   }
 
   renderNextButton() {
@@ -57,8 +56,11 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
+        <play.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
         <Menu ref={'menu'} items={this.state.menus} />
-        <Canvas ref={'canvas'} />
+        <div className="canvas-container">
+          <Canvas ref={'canvas'} />
+        </div>
       </div>
     );
   }

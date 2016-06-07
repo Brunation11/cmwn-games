@@ -14,24 +14,36 @@
   > li {
     list-style: none;
     display: block;
-    margin-left: -150px;
-    max-height: 64px;
+    margin-left: -130px;
+    max-height: 70px;
     transition: margin .5s, max-height .5s;
 
     span {
       display: block;
-      border: 2px solid black;
       width: 200px;
-      height: 60px;
-      line-height: 60px;
+      height: 70px;
+      line-height: 70px;
       border-radius: 0 30px 30px 0;
-      background-color: #fff;
+      background-image: url(../media/_Buttons/SK_btn_slidenav.png);
+      background-size: 1350px;
     }
 
     &.SELECTED,
     &:hover {
       margin-left: -2px;
     }
+
+    $classes: messages images sounds effects;
+    $left:         226    226    226     226;
+    $top:            5     80    155     230;
+
+    @for $i from 1 through 4 {
+      &.#{nth($classes, $i)} span {
+        background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
+      }
+    }
+
+
   }
 
   .menu {
@@ -45,15 +57,25 @@
 
       span {
         display: block;
-        border: 2px solid black;
-        width: 150px;
-        height: 40px;
+        width: 140px;
+        height: 42px;
         line-height: 40px;
         border-radius: 0;
-        background-color: #fff;
         margin-left: 20px;
         font-size: 20px;
         text-align: center;
+        background-size: 1050px;
+        background-image: url(../media/_Buttons/SK_btn_catergorymenu.png);
+      }
+
+      $classes: backgrounds word-bubbles animals discover emoji fantasy greetings kudos challenges statements;
+      $left:              8            8       8        8     8     308       758   758        758        758;
+      $top:               5           55     105      155   205       5         5    55        105        155;
+
+      @for $i from 1 through 10 {
+        &.#{nth($classes, $i)} span {
+          background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
+        }
       }
     }
   }

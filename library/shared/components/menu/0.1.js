@@ -81,7 +81,7 @@ class Menu extends Selectable {
           key={key}
           onClick={onClick}
         >
-          {key}
+          <span />
           {(() => {
             if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
             return (
@@ -90,6 +90,13 @@ class Menu extends Selectable {
           })()}
         </play.ListItem>
       );
+    });
+  }
+
+  getClass(key) {
+    return classNames({
+      [key.replace(' ', '-')]: true,
+      [this.state.classes[key] || '']: true,
     });
   }
 

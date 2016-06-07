@@ -19,9 +19,11 @@ class FriendScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <h2>select a friend</h2>
-        <button onClick={this.goto.bind(this, 'canvas')}>{'Select'}</button>
-        <button onClick={this.goto.bind(this, 1)}>{'Cancel'}</button>
+        <div className="header" />
+        <div className="buttons">
+          <button className="select" onClick={this.goto.bind(this, 'canvas')} />
+          <button className="cancel" onClick={this.goto.bind(this, 1)} />
+        </div>
       </div>
     );
   }

@@ -152,6 +152,26 @@ button {
     }
   }
 
+  &.select {
+    width: 180px;
+    height: 90px;
+    background-position: -498px -370px;
+
+    &:hover {
+      background-position: -748px -370px;
+    }
+  }
+
+  &.cancel {
+    width: 180px;
+    height: 90px;
+    background-position: -498px -495px;
+
+    &:hover {
+      background-position: -748px -495px;
+    }
+  }
+
   &.next-screen,
   &.prev-screen {
     width: 80px;
@@ -350,6 +370,14 @@ p {
   }
 
 // the following css is specific to this game
+
+.header {
+  background-image: url(../media/_Headers/SK_headers.png);
+  background-size: 1900px;
+  height: 70px;
+  width: 450px;
+  margin: 0 auto;
+}
 
 #sample {
   ul {

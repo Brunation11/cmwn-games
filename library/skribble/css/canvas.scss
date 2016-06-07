@@ -1,14 +1,19 @@
 .canvas {
-  position: absolute;
   margin: 0;
   padding: 0;
-  border: 1px solid black;
-  left: 140px;
-  top: 140px;
-  width: 640px;
-  height: 360px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  border-radius: 20px;
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
   z-index: 1;
+}
+
+.canvas-container {
+  position: absolute;
+  left: 80px;
+  top: 40px;
+  padding: 20px;
+  background-image: url(../media/_Frames/SK_frames_canvas.png);
+  background-repeat: no-repeat;
+  background-size: 2550px;
 }

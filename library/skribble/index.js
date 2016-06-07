@@ -72,11 +72,11 @@ class Skribble extends play.Game {
   renderMenu() {
     return (
       <div className="game-menu">
-        <button className="save" onClick={this.save.bind(this)}></button>
-        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})}></button>
-        <button className="create" onClick={this.goto.bind(this, {index: 'friend'})}></button>
-        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})}></button>
-        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})}></button>
+        <button className="save" onClick={this.save.bind(this)} />
+        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+        <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
+        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
       </div>
     );
   }
