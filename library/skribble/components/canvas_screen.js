@@ -37,7 +37,9 @@ class CanvasScreen extends play.Screen {
       this.refs.menu.deactivate();
     }
 
-    this.refs.canvas.setItems(opts.message);
+    if (opts.message) {
+      this.refs.canvas.setItems(opts.message);
+    }
 
     play.Screen.prototype.open.call(this);
   }

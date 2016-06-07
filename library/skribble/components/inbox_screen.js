@@ -7,7 +7,8 @@ class InboxScreen extends play.Screen {
     super();
 
     this.state = {
-      id: 'inbox'
+      id: 'inbox',
+      load: true,
     };
 
     this.selectableList = [
@@ -145,6 +146,7 @@ class InboxScreen extends play.Screen {
               ref={'selectableReveal'}
               selectableList={this.selectableList}
               revealList={this.revealList}
+              openOnStart={'0'}
             />
           </div>
         </div>

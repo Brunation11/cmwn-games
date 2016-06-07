@@ -58,13 +58,25 @@ class Skribble extends play.Game {
     );
   }
 
+  renderAssets() {
+    return (
+      <div>
+        <div className="background-1" />
+        <div className="background-2" />
+        <div className="background-3" />
+        <div className="background-4" />
+      </div>
+    );
+  }
+
   renderMenu() {
     return (
       <div className="game-menu">
-        <button className="save" onClick={this.save.bind(this)}>{'+'}</button>
-        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})}>{'#'}</button>
-        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})}>{'?'}</button>
-        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})}>{'X'}</button>
+        <button className="save" onClick={this.save.bind(this)}></button>
+        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})}></button>
+        <button className="create" onClick={this.goto.bind(this, {index: 'friend'})}></button>
+        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})}></button>
+        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})}></button>
       </div>
     );
   }

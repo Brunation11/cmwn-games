@@ -28,6 +28,9 @@ class Canvas extends play.Component {
       var state = self.refs['item-' + key].state;
 
       item.state = {
+        id: state.id,
+        thumbnail: state.thumbnail,
+        timestamp: state.timestamp,
         left: state.left,
         top: state.top,
         scale: state.scale,

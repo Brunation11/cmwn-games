@@ -41,6 +41,10 @@ class Reveal extends play.Component {
   start() {
     play.Component.prototype.start.call(this);
     this.close();
+
+    if (this.props.openOnStart) {
+      this.open(this.props.openOnStart);
+    }
   }
 
   playAudio(message) {

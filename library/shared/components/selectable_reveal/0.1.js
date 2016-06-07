@@ -10,6 +10,10 @@ class SelectableReveal extends play.Component {
     };
   }
 
+  open(message) {
+    this.refs.reveal.open(message);
+  }
+
   selectRespond(message) {
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
@@ -17,12 +21,12 @@ class SelectableReveal extends play.Component {
       } else {
         if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
-          this.refs.reveal.open(message);
+          this.open(message);
         }
       }
     } else {
       if (typeof this.refs.reveal.open === 'function') {
-        this.refs.reveal.open(message);
+        this.open(message);
       }
     }
   }
@@ -68,6 +72,7 @@ class SelectableReveal extends play.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
+        openOnStart={this.props.openOnStart}
       />
     );
   }

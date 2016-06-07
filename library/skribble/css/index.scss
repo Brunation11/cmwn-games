@@ -48,6 +48,58 @@ html, body, body > div, body > div > div {
   user-select: none;
   user-drag: none;
   cursor: auto;
+
+  [class^=background-] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: opacity .5s;
+    opacity: 0;
+  }
+
+  .background-1 {
+    background-image: url(../media/_Background/SK_BKG_1.png);
+  }
+
+  .background-2 {
+    background-image: url(../media/_Background/SK_BKG_2.png);
+  }
+
+  .background-3 {
+    background-image: url(../media/_Background/SK_BKG_3.png);
+  }
+
+  .background-4 {
+    background-image: url(../media/_Background/SK_BKG_4.png);
+  }
+
+  &.SCREEN-1,
+  &.SCREEN-canvas {
+    .background-1 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-friend {
+    .background-2 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-inbox {
+    .background-3 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-sent {
+    .background-4 {
+      opacity: 1;
+    }
+  }
 }
 
 html {
@@ -72,24 +124,31 @@ button {
 
   font-family: inherit;
   font-size: inherit;
-  color: transparent;
   background-color: transparent;
   outline: none;
   cursor: pointer;
 
-  // background-image: url(../media/_Buttons/BU_1.png);
-  background-size: auto 500px;
+  background-image: url(../media/_Buttons/SK_btn_rounded.png);
+  background-size: 1000px;
   background-position: left top;
 
-  &.close {
-    width: 35px;
-    height: 35px;
-    background-position: -310px 410px;
-    margin: 5px;
-    z-index: 2;
+  &.make {
+    width: 225px;
+    height: 105px;
+    background-position: 0px 0px;
 
     &:hover {
-      background-position: -310px 165px;
+      background-position: -250px 0px;
+    }
+  }
+
+  &.read {
+    width: 225px;
+    height: 105px;
+    background-position: 0px -120px;
+
+    &:hover {
+      background-position: -250px -120px;
     }
   }
 
@@ -142,6 +201,38 @@ button {
 
     &:hover {
       background-position: -2080px 251px;
+    }
+  }
+}
+
+.game-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  button {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+
+    background-image: url(../media/_Buttons/SK_btn_topnav.png);
+    background-size: 250px;
+
+    $classes: save create inbox help close;
+
+    @for $i from 1 through 5 {
+      &.#{nth($classes, $i)} {
+        $left: 45 - (50 * $i);
+
+        background-position: ($left+px) -5px;
+
+        &:hover {
+          background-position: ($left+px) -55px;
+        }
+      }
     }
   }
 }
@@ -260,23 +351,6 @@ p {
 
 // the following css is specific to this game
 
-.game-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-
-  button {
-    float: left;
-    color: #000;
-    width: 35px;
-    height: 35px;
-    background-position: -310px 410px;
-    margin: 5px;
-    cursor: pointer;
-  }
-}
-
 #sample {
   ul {
     list-style: none;
@@ -319,6 +393,13 @@ p {
 }
 
 #menu {
+  .buttons {
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
   button {
     display: block;
     color: #000;
