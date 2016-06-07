@@ -1,5 +1,6 @@
 import SelectableReveal from '../../shared/components/selectable_reveal/0.1.js';
 import Inbox from '../../shared/components/inbox/0.1.js';
+import SavedMessages from '../../shared/components/saved_messages/0.1.js';
 
 class InboxScreen extends play.Screen {
   constructor() {
@@ -78,7 +79,7 @@ class InboxScreen extends play.Screen {
         />
       </li>,
       <li>
-        <Inbox
+        <SavedMessages
           data-ref="saved"
           data={{
             items: saved || [],

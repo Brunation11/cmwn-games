@@ -21,6 +21,50 @@ class Canvas extends play.Component {
     this.boundRelayerItems = this.relayerItems.bind(this);
   }
 
+  getItems() {
+    var items, messages, self = this;
+
+    items = this.state.items.map((item, key) => {
+      var state = self.refs['item-' + key].state;
+
+      item.state = {
+        left: state.left,
+        top: state.top,
+        scale: state.scale,
+        rotation: state.rotation,
+        layer: state.layer,
+        zoom: state.zoom,
+        valid: state.valid,
+        corners: state.corners,
+      };
+
+      return item;
+    });
+
+    messages = this.state.messages.map((item, key) => {
+      var state = self.refs['message-' + key].state;
+
+      item.state = {
+        left: state.left,
+        top: state.top,
+        scale: state.scale,
+        rotation: state.rotation,
+        layer: state.layer,
+        zoom: state.zoom,
+        valid: state.valid,
+        corners: state.corners,
+      };
+
+      return item;
+    });
+
+    return {
+      background: this.state.background,
+      items,
+      messages,
+    };
+  }
+
   addItem(asset) {
     var items, messages;
 

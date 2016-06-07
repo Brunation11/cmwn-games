@@ -41,11 +41,7 @@ class Skribble extends play.Game {
     this.emit({
       name: 'save-skribble',
       game: this.config.id,
-      skribble: {
-        background: this.refs['screen-canvas'].refs.canvas.state.background,
-        items: this.refs['screen-canvas'].refs.canvas.state.items,
-        messages: this.refs['screen-canvas'].refs.canvas.state.messages,
-      }
+      skribble: this.refs['screen-canvas'].refs.canvas.getItems(),
     });
   }
 
