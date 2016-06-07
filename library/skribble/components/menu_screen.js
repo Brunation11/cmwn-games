@@ -19,7 +19,7 @@ class MenuScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <button onClick={alert.bind(null, 'This will be developed later.')}>{'Read'}</button>
+        <button onClick={this.goto.bind(this, 'inbox')}>{'Read'}</button>
         <button onClick={this.goto.bind(this, 'friend')}>{'Create'}</button>
       </div>
     );

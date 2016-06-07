@@ -84,9 +84,17 @@ class InboxScreen extends play.Screen {
           data={{
             items: saved || [],
           }}
+          selectRespond={this.editMessage.bind(this)}
         />
       </li>,
     ];
+  }
+
+  editMessage(message) {
+    play.trigger('goto', {
+      index: 'canvas',
+      message,
+    });
   }
 
   updateData() {

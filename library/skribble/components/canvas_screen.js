@@ -7,6 +7,7 @@ class CanvasScreen extends play.Screen {
 
     this.state = {
       id: 'canvas',
+      load: true,
       menus: {},
     };
 
@@ -31,10 +32,12 @@ class CanvasScreen extends play.Screen {
     this.refs.canvas.addItem(message);
   }
 
-  open() {
+  open(opts) {
     if (this.refs && this.refs.menu) {
       this.refs.menu.deactivate();
     }
+
+    this.refs.canvas.setItems(opts.message);
 
     play.Screen.prototype.open.call(this);
   }

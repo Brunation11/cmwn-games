@@ -8,37 +8,24 @@ class SavedMessages extends Selectable {
   }
 
   selectHelper(e) {
-    var message, key, type, classes = [];
+    var message, key, classes = [];
 
     if (e.target.tagName !== 'LI') return;
 
     key = e.target.getAttribute('data-ref');
-    type = this.refs[key].props.item.type;
 
-    if (type === 'category') {
-      this.setState({
-        category: key,
-      });
-    } else {
-      message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+    message = this.refs[key].props.item;
+    classes[key] = this.state.selectClass;
 
-      this.setState({
-        message,
-        classes,
-      });
-    }
+    this.setState({
+      message,
+      classes,
+    }, this.selectRespond.bind(this));
   }
 
-  selectButton() {
+  selectRespond() {
     if (typeof this.props.selectRespond === 'function' && this.state.message) {
       this.props.selectRespond(this.state.message);
-    }
-  }
-
-  cancelButton() {
-    if (typeof this.props.cancelRespond === 'function') {
-      this.props.cancelRespond();
     }
   }
 

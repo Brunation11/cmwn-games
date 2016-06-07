@@ -65,6 +65,10 @@ class Canvas extends play.Component {
     };
   }
 
+  setItems(message) {
+    this.setState(message);
+  }
+
   addItem(asset) {
     var items, messages;
 

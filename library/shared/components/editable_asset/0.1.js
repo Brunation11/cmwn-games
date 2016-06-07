@@ -222,7 +222,7 @@ class EditableAsset extends Draggable {
         width,
         height,
         minScale,
-        scale: Math.max(this.state.scale, minScale),
+        scale: this.props.state.scale || Math.max(this.state.scale, minScale),
       }, () => {
         self.checkItem();
       });
@@ -234,13 +234,17 @@ class EditableAsset extends Draggable {
   getLayer() {
     var layer = 1000;
 
-    switch (this.props.type) {
-    case 'background':
-      layer = 1;
-      break;
-    case 'message':
-      layer = 10000;
-      break;
+    if (this.props.state.layer) {
+      layer = this.props.state.layer;
+    } else {
+      switch (this.props.type) {
+      case 'background':
+        layer = 1;
+        break;
+      case 'message':
+        layer = 10000;
+        break;
+      }
     }
 
     this.setState({
@@ -259,8 +263,14 @@ class EditableAsset extends Draggable {
 
   bootstrap() {
     Draggable.prototype.bootstrap.call(this);
+
+    if (this.props.state) {
+      this.setState(this.props.state);
+    }
+
     this.getSize();
     this.getLayer();
+
     this.attachEvents();
   }
 
