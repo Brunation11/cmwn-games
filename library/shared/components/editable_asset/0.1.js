@@ -330,22 +330,22 @@ class EditableAsset extends Draggable {
           className="delete"
           style={this.getButtonStyle()}
           onClick={this.delete.bind(this)}
-        >X</button>
+        />
         <button
           ref="rotate"
           className="rotate"
           style={this.getButtonStyle()}
-        >R</button>
+        />
         <button
           className="layer"
           onClick={this.layer.bind(this)}
           style={this.getButtonStyle()}
-        >L</button>
+        />
         <button
           ref="scale"
           className="scale"
           style={this.getButtonStyle()}
-        >S</button>
+        />
       </div>
     );
   }

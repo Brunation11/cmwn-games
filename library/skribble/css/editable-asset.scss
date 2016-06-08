@@ -21,18 +21,23 @@
     display: block;
     position: absolute;
     font-size: 12px;
-    background-color: #000;
     color: #fff;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    transform-origin: 10px 10px;
-    margin: -10px 0 0 -10px;
+    width: 45px;
+    height: 45px;
+    transform-origin: 22.5px 22.5px;
+    margin: -22.5px 0 0 -22.5px;
+    background-image: url(../media/_Frames/SK_frames_canvas.png);
+    background-size: 2500px;
+
+    $left: 1666 2034 1666 2034;
+    $top:     0  343  343    0;
 
     @for $i from 1 through 4 {
       &:nth-child(#{$i}) {
         top: 0;
         left: 0;
+        background-position: (-1 * nth($left, $i)+px) (-1 * nth($top, $i)+px);
         @if $i > 2 {
           top: 100%;
         }
