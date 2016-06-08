@@ -39,6 +39,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html, body, body > div, body > div > div {
   margin: 0;
   padding: 0;
@@ -77,7 +81,8 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-1,
-  &.SCREEN-canvas {
+  &.SCREEN-canvas,
+  &.SCREEN-item-drawer {
     .background-1 {
       opacity: 1;
     }
@@ -435,6 +440,11 @@ p {
 }
 
 #item-drawer {
+  .buttons {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   button {
     display: block;
     color: #000;

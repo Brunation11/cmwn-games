@@ -61,9 +61,7 @@ class ItemDrawerScreen extends play.Screen {
   }
 
   renderPrevButton() {
-    return (
-      <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
-    );
+    return null;
   }
 
   renderNextButton() {
@@ -77,6 +75,7 @@ class ItemDrawerScreen extends play.Screen {
           ref="drawer"
           selectRespond={this.selectRespond.bind(this)}
           cancelRespond={this.goto.bind(this, 'canvas')}
+          categories={this.state.opts.categories}
           data={{
             items: this.state.data,
           }}

@@ -1,5 +1,7 @@
 import Selectable from '../selectable/0.1';
 
+import classNames from 'classnames';
+
 class ItemDrawer extends Selectable {
   constructor() {
     super();
@@ -46,6 +48,20 @@ class ItemDrawer extends Selectable {
     });
   }
 
+  getULClass() {
+    var categories = '';
+
+    if (this.props.categories) {
+      categories = this.props.categories.join(' ');
+    }
+
+    return classNames({
+      'item-drawer': true,
+      [categories]: true,
+      COMPLETE: this.state.complete,
+    });
+  }
+
   renderList() {
     var items;
 
@@ -76,11 +92,15 @@ class ItemDrawer extends Selectable {
   render() {
     return (
       <div>
-        <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-        <button onClick={this.selectButton.bind(this)}>{'Select'}</button>
-        <button onClick={this.cancelButton.bind(this)}>{'Cancel'}</button>
+        <div className="item-drawer-container">
+          <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+            {this.renderList()}
+          </ul>
+        </div>
+        <div className="buttons">
+          <button className="select" onClick={this.selectButton.bind(this)} />
+          <button className="cancel" onClick={this.cancelButton.bind(this)} />
+        </div>
       </div>
     );
   }
