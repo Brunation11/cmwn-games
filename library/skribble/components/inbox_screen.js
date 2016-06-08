@@ -144,6 +144,7 @@ class InboxScreen extends play.Screen {
               ref={'selectableReveal'}
               selectableList={this.selectableList}
               revealList={this.revealList}
+              selectOnStart={'0'}
               openOnStart={'0'}
             />
           </div>

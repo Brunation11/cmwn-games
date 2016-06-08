@@ -8,11 +8,13 @@ class SavedMessages extends Selectable {
   }
 
   selectHelper(e) {
-    var message, key, classes = [];
+    var li, message, key, classes = [];
 
-    if (e.target.tagName !== 'LI') return;
+    li = e.target.closest('LI');
 
-    key = e.target.getAttribute('data-ref');
+    if (!li) return;
+
+    key = li.getAttribute('data-ref');
 
     message = this.refs[key].props.item;
     classes[key] = this.state.selectClass;
@@ -35,10 +37,10 @@ class SavedMessages extends Selectable {
     });
   }
 
-  getClass(key, unread) {
+  getClass(key) {
     return classNames({
       [this.state.classes[key] || '']: true,
-      UNREAD: unread,
+      DRAFT: true,
     });
   }
 
@@ -54,16 +56,20 @@ class SavedMessages extends Selectable {
     }
 
     return items.map((item, key) => {
+      var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
       return (
         <play.ListItem
-          className={this.getClass(key, item.unread)}
+          className={this.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
           <play.Image src={item.thumbnail} />
-          <span>{item.timestamp}</span>
+          <span className="timestamp">
+            <span className="date">{timestamp.format('DD.MM.YY')}</span>
+            <span className="time">{timestamp.format('h:mm:ss a')}</span>
+          </span>
         </play.ListItem>
       );
     });
@@ -72,7 +78,7 @@ class SavedMessages extends Selectable {
   render() {
     return (
       <div>
-        <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+        <ul className={'item-drawer SAVED' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
           {this.renderList()}
         </ul>
       </div>

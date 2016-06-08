@@ -210,22 +210,22 @@ button {
   }
 
   &.quit-yes {
-    width: 230px;
-    height: 230px;
-    background-position: -1830px 495px;
+    width: 110px;
+    height: 50px;
+    background-position: 0px -500px;
 
     &:hover {
-      background-position: -1830px 251px;
+      background-position: -250px -500px;
     }
   }
 
   &.quit-no {
-    width: 230px;
-    height: 230px;
-    background-position: -2080px 495px;
+    width: 110px;
+    height: 50px;
+    background-position: 0px -624px;
 
     &:hover {
-      background-position: -2080px 251px;
+      background-position: -250px -624px;
     }
   }
 }
@@ -461,47 +461,172 @@ p {
     background-image: url(../media/_Frames/SK_frames_general.png);
     background-size: 3900px;
     background-position: -1940px 0px;
-    width: 760px;
+    width: 740px;
     height: 480px;
   }
 
   .selectable {
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 50px;
     list-style: none;
     display: flex;
     height: 45px;
 
     li {
-      padding: 10px;
-      width: 40px;
+      width: 75px;
+      margin-right: 5px;
       background-image: url(../media/_Buttons/SK_btn_inbox.png);
+      background-size: 375px;
+      background-position: 0px -44px;
 
+      @for $i from 1 through 5 {
+        $left: 75 - 75 * $i;
+
+        &:nth-of-type(#{$i}) {
+          background-position: ($left + px) -44px;
+
+          &.SELECTED {
+            background-position: ($left + px) 0px;
+          }
+        }
+      }
     }
   }
 
   .reveal {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     list-style: none;
+    width: 100%;
+    height: 425px;
+
+    > div,
+    li > div {
+      height: 100%;
+    }
 
     ul {
-      width: 400px;
-      height: 400px;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .close-reveal {
+      display: none;
     }
   }
 
   .item-drawer {
+    flex-direction: column;
+    justify-content: flex-start;
+
     li {
       position: relative;
-      height: 100px;
+      height: 80px;
       opacity: 1;
-      background-color: #ccc;
+      background-color: transparent;
+      background-image: url(../media/_Buttons/SK_btn_messages.png);
+      background-size: 1440px;
+      background-position: -15px -232px;
+      margin: 0;
+
+      &.SELECTED {
+        border-color: transparent;
+      }
+
+      &:hover {
+        background-position: -735px -232px;
+      }
+
+      &.UNREAD {
+        background-position: -15px -20px;
+
+        &:hover {
+          background-position: -735px -20px;
+        }
+      }
+
+      &.SENT {
+        background-position: -15px -127px;
+
+        &:hover {
+          background-position: -735px -127px;
+        }
+      }
+
+      &.DRAFT {
+        background-image: none;
+        width: 200px;
+        height: 140px;
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+          height: auto;
+          left: 0;
+          top: 0;
+        }
+
+        .timestamp {
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          top: auto;
+          right: auto;
+          display: flex;
+          justify-content: space-between;
+
+          .date,
+          .time {
+            display: inline-block;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    &.SAVED {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
     img {
-      max-width: 100%;
-      max-height: 100%;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 91px;
+      top: 9px;
+    }
+
+    span {
+      position: absolute;
+      font-size: 16px;
+      line-height: 20px;
+      color: #fff;
+      text-shadow: 3px 3px 1px rgba(0, 0, 0, .6);
+
+      &.username {
+        left: 150px;
+        top: 50%;
+        margin-top: -20px;
+        font-size: 32px;
+        line-height: 32px;
+      }
+
+      &.timestamp {
+        right: 20px;
+        top: 50%;
+        margin-top: -23px;
+        display: inline-block;
+      }
+
+      &.date,
+      &.time {
+        position: relative;
+        display: block;
+        text-align: center;
+      }
     }
   }
 }

@@ -8,11 +8,13 @@ class Inbox extends Selectable {
   }
 
   selectHelper(e) {
-    var message, key, type, classes = [];
+    var li, message, key, type, classes = [];
 
-    if (e.target.tagName !== 'LI') return;
+    li = e.target.closest('LI');
 
-    key = e.target.getAttribute('data-ref');
+    if (!li) return;
+
+    key = li.getAttribute('data-ref');
     type = this.refs[key].props.item.type;
 
     if (type === 'category') {
@@ -48,10 +50,11 @@ class Inbox extends Selectable {
     });
   }
 
-  getClass(key, unread) {
+  getClass(key, unread, sent) {
     return classNames({
       [this.state.classes[key] || '']: true,
       UNREAD: unread,
+      SENT: sent,
     });
   }
 
@@ -67,17 +70,21 @@ class Inbox extends Selectable {
     }
 
     return items.map((item, key) => {
+      var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
       return (
         <play.ListItem
-          className={this.getClass(key, item.unread)}
+          className={this.getClass(key, item.unread, item.sent)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
           <play.Image src={item['profile-image']} />
-          <span>{item.username}</span>
-          <span>{item.timestamp}</span>
+          <span className="username">{item.username}</span>
+          <span className="timestamp">
+            <span className="date">{timestamp.format('DD.MM.YY')}</span>
+            <span className="time">{timestamp.format('h:mm:ss a')}</span>
+          </span>
         </play.ListItem>
       );
     });

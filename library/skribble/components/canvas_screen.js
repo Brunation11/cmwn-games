@@ -32,11 +32,10 @@ class CanvasScreen extends play.Screen {
 
   addItem(message) {
     if (message) {
-      if (message.type === 'background') {
-        this.setState({
-          background: true,
-        });
-      }
+      this.setState({
+        background: this.state.background ||
+                    message.type === 'background',
+      });
       this.refs.canvas.addItem(message);
     }
   }
@@ -47,6 +46,10 @@ class CanvasScreen extends play.Screen {
     }
 
     if (opts.message) {
+      this.setState({
+        background: !!opts.message.background,
+      });
+
       this.refs.canvas.setItems(opts.message);
     }
 

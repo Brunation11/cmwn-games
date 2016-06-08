@@ -61,6 +61,7 @@ class SelectableReveal extends play.Component {
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
+        selectOnStart={this.props.selectOnStart}
       />
     );
   }
