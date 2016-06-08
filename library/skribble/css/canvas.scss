@@ -19,4 +19,8 @@
   background-image: url(../media/_Frames/SK_frames_canvas.png);
   background-repeat: no-repeat;
   background-size: 2550px;
+
+  &.BACKGROUND {
+    background-image: none;
+  }
 }

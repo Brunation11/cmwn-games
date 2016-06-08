@@ -12,21 +12,11 @@ class InboxScreen extends play.Screen {
     };
 
     this.selectableList = [
-      <li>
-        inbox
-      </li>,
-      <li>
-        unread
-      </li>,
-      <li>
-        read
-      </li>,
-      <li>
-        sent
-      </li>,
-      <li>
-        saved
-      </li>,
+      <li />,
+      <li />,
+      <li />,
+      <li />,
+      <li />,
     ];
 
     this.revealList = this.getRevealList();
@@ -135,6 +125,14 @@ class InboxScreen extends play.Screen {
         self.start();
       }
     }, 250);
+  }
+
+  renderPrevButton() {
+    return null;
+  }
+
+  renderNextButton() {
+    return null;
   }
 
   renderContent() {

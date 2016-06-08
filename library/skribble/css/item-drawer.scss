@@ -15,19 +15,31 @@
   margin: 0;
   height: 100%;
   overflow: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
   li {
     display: inline-block;
-    background-size: contain;
+    background-size: 130px;
     background-repeat: no-repeat;
-    background-position: center center;
-    width: 100px;
-    height: 100px;
+    background-position: center top;
+    width: 175px;
+    height: 175px;
+    line-height: 290px;
+    font-size: 28px;
+    text-align: center;
+    background-color: #fff;
     border: 2px solid transparent;
     transition: border .5s;
+    margin-bottom: 20px;
 
     &.SELECTED {
       border-color: black;
+    }
+
+    &:empty {
+      background-size: contain;
     }
   }
 
@@ -36,6 +48,14 @@
       width: 100%;
       height: 50px;
       background-position: top left;
+    }
+  }
+
+  &.backgrounds {
+    li {
+      height: 100px;
+      line-height: 160px;
+      background-position: top center;
     }
   }
 }

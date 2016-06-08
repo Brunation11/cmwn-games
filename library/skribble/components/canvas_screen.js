@@ -1,6 +1,8 @@
 import Canvas from '../../shared/components/canvas/0.1.js';
 import Menu from '../../shared/components/menu/0.1.js';
 
+import classNames from 'classnames';
+
 class CanvasScreen extends play.Screen {
   constructor() {
     super();
@@ -29,7 +31,14 @@ class CanvasScreen extends play.Screen {
   }
 
   addItem(message) {
-    this.refs.canvas.addItem(message);
+    if (message) {
+      if (message.type === 'background') {
+        this.setState({
+          background: true,
+        });
+      }
+      this.refs.canvas.addItem(message);
+    }
   }
 
   open(opts) {
@@ -42,6 +51,13 @@ class CanvasScreen extends play.Screen {
     }
 
     play.Screen.prototype.open.call(this);
+  }
+
+  getContainerClasses() {
+    return classNames({
+      'canvas-container': true,
+      BACKGROUND: this.state.background,
+    });
   }
 
   renderPrevButton() {
@@ -58,7 +74,7 @@ class CanvasScreen extends play.Screen {
       <div>
         <play.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
         <Menu ref={'menu'} items={this.state.menus} />
-        <div className="canvas-container">
+        <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />
         </div>
       </div>

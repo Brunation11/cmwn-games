@@ -457,14 +457,26 @@ p {
     color: #000;
   }
 
+  .selectable-reveal {
+    background-image: url(../media/_Frames/SK_frames_general.png);
+    background-size: 3900px;
+    background-position: -1940px 0px;
+    width: 760px;
+    height: 480px;
+  }
+
   .selectable {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
+    height: 45px;
 
     li {
       padding: 10px;
+      width: 40px;
+      background-image: url(../media/_Buttons/SK_btn_inbox.png);
+
     }
   }
 
