@@ -28,15 +28,16 @@ class Canvas extends play.Component {
       var state = self.refs['item-' + key].state;
 
       item.state = {
+        version: '0.1',
         id: state.id,
         thumbnail: state.thumbnail,
         timestamp: state.timestamp,
-        left: state.left,
-        top: state.top,
-        scale: state.scale,
-        rotation: state.rotation,
+        left: skoash.floor(state.left, 14),
+        top: skoash.floor(state.top, 14),
+        scale: skoash.floor(state.scale, 14),
+        rotation: skoash.floor(state.rotation, 14),
         layer: state.layer,
-        zoom: state.zoom,
+        zoom: skoash.floor(state.zoom, 14),
         valid: state.valid,
         corners: state.corners,
       };

@@ -110,7 +110,8 @@ class InboxScreen extends play.Screen {
 
     play.trigger('getData', {
       categories: 'inbox',
-      callback: this.updateData.bind(this),
+    }).then(data => {
+      self.updateData.call(self, data);
     });
 
     this.setState({
