@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d6cf364a53b85d34aecd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "104ceb35b2f113e5e3af"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1737,30 +1737,19 @@
 
 	var _video2 = _interopRequireDefault(_video);
 
-	var _list_item = __webpack_require__(327);
+	var _list_item = __webpack_require__(326);
 
 	var _list_item2 = _interopRequireDefault(_list_item);
 
-	var _start = __webpack_require__(328);
+	var _start = __webpack_require__(327);
 
 	var _start2 = _interopRequireDefault(_start);
 
-	var _util = __webpack_require__(329);
+	var _util = __webpack_require__(328);
 
 	var _util2 = _interopRequireDefault(_util);
 
-	var _react = __webpack_require__(15);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(326);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	window.React = _react2.default;
-	window.ReactDOM = _reactDom2.default;
 
 	window.play = {
 	  Component: _component2.default,
@@ -2009,7 +1998,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react3.default.createElement(
+	      return React.createElement(
 	        'div',
 	        null,
 	        'woohoo!'
@@ -2018,7 +2007,7 @@
 	  }]);
 
 	  return Component;
-	}(_react3.default.Component));
+	}(React.Component));
 
 		exports.default = Component;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
@@ -30865,10 +30854,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _reactDom = __webpack_require__(326);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	var _asset = __webpack_require__(322);
 
 	var _asset2 = _interopRequireDefault(_asset);
@@ -30931,7 +30916,7 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.el = _reactDom2.default.findDOMNode(this);
+	      this.el = ReactDOM.findDOMNode(this);
 	    }
 	  }, {
 	    key: 'render',
@@ -30947,15 +30932,6 @@
 
 /***/ },
 /* 326 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = __webpack_require__(17);
-
-
-/***/ },
-/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -31055,21 +31031,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
-/* 328 */
-/***/ function(module, exports, __webpack_require__) {
+/* 327 */
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _reactDom = __webpack_require__(326);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var start = function start(Game, id) {
 	  var el;
 
@@ -31081,13 +31050,13 @@
 	    document.body.appendChild(el);
 	  }
 
-	  _reactDom2.default.render(React.createElement(Game, null), el);
+	  ReactDOM.render(React.createElement(Game, null), el);
 	};
 
 	exports.default = start;
 
 /***/ },
-/* 329 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31096,7 +31065,7 @@
 	  value: true
 	});
 
-	var _do_intersect = __webpack_require__(330);
+	var _do_intersect = __webpack_require__(329);
 
 	var _do_intersect2 = _interopRequireDefault(_do_intersect);
 
@@ -31109,7 +31078,7 @@
 		exports.default = util;
 
 /***/ },
-/* 330 */
+/* 329 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -3,7 +3,10 @@
         "pl": true,
         "play": true,
         "$": true,
-        "ga": true
+        "ga": true,
+        "React": true,
+        "ReactDOM": true,
+        "moment": true
     },
     "parser": "babel-eslint",
     "plugins": [
