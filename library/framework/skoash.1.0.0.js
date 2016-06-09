@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "085c332907922b61759e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bc25cfa488e07c351c07"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1725,25 +1725,29 @@
 
 	var _game2 = _interopRequireDefault(_game);
 
-	var _image = __webpack_require__(322);
+	var _image = __webpack_require__(326);
 
 	var _image2 = _interopRequireDefault(_image);
 
-	var _audio = __webpack_require__(324);
+	var _audio = __webpack_require__(328);
 
 	var _audio2 = _interopRequireDefault(_audio);
 
-	var _video = __webpack_require__(326);
+	var _video = __webpack_require__(330);
 
 	var _video2 = _interopRequireDefault(_video);
 
-	var _list_item = __webpack_require__(327);
+	var _list_item = __webpack_require__(331);
 
 	var _list_item2 = _interopRequireDefault(_list_item);
 
-	var _start = __webpack_require__(328);
+	var _start = __webpack_require__(332);
 
 	var _start2 = _interopRequireDefault(_start);
+
+	var _util = __webpack_require__(322);
+
+	var _util2 = _interopRequireDefault(_util);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1757,7 +1761,8 @@
 	  Audio: _audio2.default,
 	  Video: _video2.default,
 	  ListItem: _list_item2.default,
-	  start: _start2.default
+	  start: _start2.default,
+	  util: _util2.default
 	};
 
 		exports.default = window.play;
@@ -1899,6 +1904,10 @@
 
 	      this.collectMedia();
 	      this.checkReady();
+
+	      // this seems to duplicate a lot of data
+	      // let's think more about this before adding this code
+	      // this.setState(this.props);
 	    }
 	  }, {
 	    key: 'collectMedia',
@@ -1973,7 +1982,7 @@
 	        return false;
 	      });
 
-	      if (self.requireForComplete.length) {
+	      if (!self.requireForComplete.length) {
 	        self.complete();
 	      } else if (self.state.started) {
 	        self.state.complete = false;
@@ -44429,11 +44438,18 @@
 	      }
 	    }
 	  }, {
+	    key: 'checkCompleteOnStart',
+	    value: function checkCompleteOnStart() {
+	      return true;
+	    }
+	  }, {
 	    key: 'start',
 	    value: function start() {
 	      var _this2 = this;
 
-	      this.bootstrap();
+	      var self = this;
+
+	      self.bootstrap();
 
 	      Object.keys(this.refs).map(function (key) {
 	        if (typeof _this2.refs[key].start === 'function') {
@@ -44441,11 +44457,15 @@
 	        }
 	      });
 
-	      this.startMedia();
+	      self.startMedia();
 
-	      this.setState({
+	      self.setState({
 	        started: true
-	      }, this.checkComplete.bind(this));
+	      });
+
+	      if (self.props.checkComplete !== false) {
+	        self.checkComplete();
+	      }
 	    }
 	  }, {
 	    key: 'startMedia',
@@ -44468,13 +44488,16 @@
 	    }
 	  }, {
 	    key: 'open',
-	    value: function open() {
+	    value: function open(opts) {
 	      var self = this;
 
 	      self.setState({
+	        load: true,
 	        open: true,
 	        leave: false,
-	        close: false
+	        close: false,
+	        return: this.state.complete,
+	        opts: opts
 	      });
 
 	      setTimeout(function () {
@@ -44507,13 +44530,15 @@
 	    key: 'getClassNames',
 	    value: function getClassNames() {
 	      return (0, _classnames2.default)({
+	        screen: true,
 	        READY: this.state.ready,
 	        LOAD: this.state.load,
 	        OPEN: this.state.open,
 	        LEAVING: this.state.leaving,
 	        LEAVE: this.state.leave,
 	        CLOSE: this.state.close,
-	        COMPLETE: this.state.complete
+	        COMPLETE: this.state.complete,
+	        RETURN: this.state.return
 	      });
 	    }
 	  }, {
@@ -44549,7 +44574,7 @@
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { id: this.state.id, className: 'screen ' + this.getClassNames() },
+	        { id: this.state.id, className: this.getClassNames() },
 	        this.renderScreen(),
 	        this.renderPrevButton(),
 	        this.renderNextButton()
@@ -44655,6 +44680,10 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
+	var _util = __webpack_require__(322);
+
+	var _util2 = _interopRequireDefault(_util);
+
 	var _component = __webpack_require__(13);
 
 	var _component2 = _interopRequireDefault(_component);
@@ -44664,6 +44693,8 @@
 	var _screen2 = _interopRequireDefault(_screen);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -44703,19 +44734,23 @@
 	  function Game(config) {
 	    _classCallCheck(this, Game);
 
+	    var self;
+
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Game).call(this));
 
-	    _this.config = config;
+	    self = _this;
 
-	    _this.screens = {
+	    self.config = config;
+
+	    self.screens = {
 	      0: _screen2.default
 	    };
 
-	    _this.menus = {
+	    self.menus = {
 	      Screen: _screen2.default
 	    };
 
-	    _this.state = {
+	    self.state = {
 	      currentScreenIndex: 0,
 	      highestScreenIndex: 0,
 	      playingSFX: [],
@@ -44723,24 +44758,31 @@
 	      playingBKG: [],
 	      playingVideo: null,
 	      openMenus: [],
-	      loading: true
+	      loading: true,
+	      demo: false,
+	      data: {}
 	    };
 
-	    play.trigger = _this.trigger.bind(_this);
+	    play.trigger = self.trigger.bind(self);
 
 	    window.addEventListener('load', window.focus);
 	    window.addEventListener('focus', function () {
-	      this.resume();
-	    }.bind(_this));
+	      self.resume();
+	    });
 	    window.addEventListener('blur', function () {
-	      this.pause();
-	    }.bind(_this));
+	      self.pause();
+	    });
+
 	    window.addEventListener('resize', function () {
-	      this.scale();
-	    }.bind(_this));
+	      self.scale();
+	    });
+	    window.addEventListener('orientationchange', function () {
+	      window.onresize();
+	    });
+
 	    window.addEventListener('keydown', function (e) {
-	      this.onKeyUp(e);
-	    }.bind(_this));
+	      self.onKeyUp(e);
+	    });
 	    return _this;
 	  }
 
@@ -44786,17 +44828,17 @@
 	    value: function bootstrap() {
 	      var self = this;
 
-	      if (!this.state.iOS) {
-	        this.state.currentScreenIndex = 1;
+	      if (!self.state.iOS) {
+	        self.state.currentScreenIndex = 1;
 	      }
 
-	      this.requireForReady = Object.keys(this.refs);
-	      this.requireForComplete = this.requireForReady.filter(function (key) {
+	      self.requireForReady = Object.keys(self.refs);
+	      self.requireForComplete = self.requireForReady.filter(function (key) {
 	        return !self.refs[key].state || !self.refs[key].state.complete;
 	      });
 
-	      this.collectMedia();
-	      this.loadScreens();
+	      self.collectMedia();
+	      self.loadScreens();
 	    }
 	  }, {
 	    key: 'loadScreens',
@@ -44818,17 +44860,19 @@
 	  }, {
 	    key: 'ready',
 	    value: function ready() {
-	      this.emit({
-	        name: 'ready',
-	        game: this.config.id
-	      });
-	      this.setState({
-	        ready: true
-	      });
-	      this.goto({
-	        index: this.state.currentScreenIndex,
-	        silent: true
-	      });
+	      if (!this.state.ready) {
+	        this.emit({
+	          name: 'ready',
+	          game: this.config.id
+	        });
+	        this.setState({
+	          ready: true
+	        });
+	        this.goto({
+	          index: this.state.currentScreenIndex,
+	          silent: true
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'resume',
@@ -44913,13 +44957,17 @@
 	    key: 'goto',
 	    value: function goto(opts) {
 	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex;
-
 	      oldIndex = this.state.currentScreenIndex;
 	      oldScreen = this.refs['screen-' + oldIndex];
-	      currentScreenIndex = Math.min(this.screensLength - 1, Math.max(0, opts.index));
+	      if (typeof opts.index === 'number') {
+	        currentScreenIndex = Math.min(this.screensLength - 1, Math.max(0, opts.index));
+	        nextScreen = this.refs['screen-' + (currentScreenIndex + 1)];
+	        highestScreenIndex = Math.max(this.state.highestScreenIndex, currentScreenIndex);
+	      } else if (typeof opts.index === 'string') {
+	        currentScreenIndex = opts.index;
+	        highestScreenIndex = this.state.highestScreenIndex;
+	      }
 	      newScreen = this.refs['screen-' + currentScreenIndex];
-	      nextScreen = this.refs['screen-' + (currentScreenIndex + 1)];
-	      highestScreenIndex = Math.max(this.state.highestScreenIndex, currentScreenIndex);
 
 	      if (oldScreen.props.index < newScreen.props.index) {
 	        if (!this.state.demo && !oldScreen.state.complete) {
@@ -44938,7 +44986,7 @@
 	        if (!newScreen.state.load || !newScreen.state.ready) {
 	          this.loadScreens();
 	        }
-	        newScreen.open();
+	        newScreen.open(opts);
 	      }
 
 	      if (oldScreen && oldScreen !== newScreen) {
@@ -44962,14 +45010,15 @@
 	      this.emit({
 	        name: 'save',
 	        game: this.config.id,
-	        screenIndex: highestScreenIndex
+	        highestScreenIndex: highestScreenIndex,
+	        currentScreenIndex: currentScreenIndex
 	      });
 
 	      if (!opts.silent && this.audio.button) {
 	        this.audio.button.play();
 	      }
 
-	      this.playBackground();
+	      this.playBackground(currentScreenIndex);
 	    }
 	  }, {
 	    key: 'openMenu',
@@ -45005,12 +45054,12 @@
 	    }
 	  }, {
 	    key: 'playBackground',
-	    value: function playBackground() {
+	    value: function playBackground(currentScreenIndex) {
 	      var index,
 	          playingBKG,
 	          self = this;
 
-	      index = this.getBackgroundIndex();
+	      index = this.getBackgroundIndex(currentScreenIndex);
 	      playingBKG = this.state.playingBKG;
 
 	      if (playingBKG[0] === this.audio.background[index]) {
@@ -45051,6 +45100,12 @@
 	        videoPlay: this.videoPlay,
 	        videoStop: this.videoStop,
 	        demo: this.demo,
+	        'toggle-demo-mode': this.demo,
+	        getData: this.getData,
+	        'get-data': this.getData,
+	        passData: this.passData,
+	        'pass-data': this.passData,
+	        'update-data': this.updateData,
 	        screenComplete: this.screenComplete,
 	        menuClose: this.menuClose,
 	        getState: this.getState,
@@ -45060,13 +45115,15 @@
 
 	      fn = events[event];
 	      if (typeof fn === 'function') {
-	        return this[event](opts);
+	        return fn.call(this, opts);
 	      }
 	    }
 	  }, {
 	    key: 'emit',
 	    value: function emit(data) {
 	      var _this2 = this;
+
+	      var self = this;
 
 	      return new Promise(function (resolve) {
 	        var event;
@@ -45088,7 +45145,20 @@
 	        if (window.frameElement) {
 	          window.frameElement.dispatchEvent(event);
 	        }
+	      }).then(function (d) {
+	        self.trigger(d.name, d);
 	      });
+	    }
+	  }, {
+	    key: 'getData',
+	    value: function getData(opts) {
+	      opts.name = 'get-data';
+	      return this.emit(opts);
+	    }
+	  }, {
+	    key: 'passData',
+	    value: function passData() {
+	      // this should be implemented per game
 	    }
 	  }, {
 	    key: 'quit',
@@ -45097,6 +45167,15 @@
 	        name: 'quit',
 	        game: this.config.id
 	      });
+	    }
+	  }, {
+	    key: 'updateData',
+	    value: function updateData(opts) {
+	      var data = _util2.default.mergeObjects(this.state.data, opts.data);
+
+	      this.setState({
+	        data: data
+	      }, opts.callback);
 	    }
 	  }, {
 	    key: 'audioPlay',
@@ -45208,7 +45287,7 @@
 	  }, {
 	    key: 'getClassNames',
 	    value: function getClassNames() {
-	      return (0, _classnames2.default)({
+	      return (0, _classnames2.default)(_defineProperty({
 	        iOS: this.state.iOS,
 	        MOBILE: this.state.mobile,
 	        SFX: this.state.playingSFX.length,
@@ -45217,7 +45296,7 @@
 	        LOADING: this.state.loading,
 	        MENU: this.state.openMenus.length,
 	        DEMO: this.state.demo
-	      });
+	      }, 'SCREEN-' + this.state.currentScreenIndex, true));
 	    }
 	  }, {
 	    key: 'getStyles',
@@ -45305,9 +45384,164 @@
 	  value: true
 	});
 
+	var _do_intersect = __webpack_require__(323);
+
+	var _do_intersect2 = _interopRequireDefault(_do_intersect);
+
+	var _floor = __webpack_require__(324);
+
+	var _floor2 = _interopRequireDefault(_floor);
+
+	var _merge_objects = __webpack_require__(325);
+
+	var _merge_objects2 = _interopRequireDefault(_merge_objects);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var util = {
+	  doIntersect: _do_intersect2.default,
+	  floor: _floor2.default,
+	  mergeObjects: _merge_objects2.default
+	};
+
+		exports.default = util;
+
+/***/ },
+/* 323 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/**
+	 *
+	 * from http://stackoverflow.com/questions/10962379/how-to-check-intersection-between-2-rotated-rectangles
+	 *
+	 * Helper function to determine whether there is an intersection between the two polygons described
+	 * by the lists of vertices. Uses the Separating Axis Theorem
+	 *
+	 * @param a an array of connected points [{x:, y:}, {x:, y:},...] that form a closed polygon
+	 * @param b an array of connected points [{x:, y:}, {x:, y:},...] that form a closed polygon
+	 * @return true if there is any intersection between the 2 polygons, false otherwise
+	 */
+	var doIntersect = function doIntersect(a, b) {
+	  var polygons = [a, b];
+	  var minA, maxA, projected, i, i1, j, minB, maxB;
+
+	  for (i = 0; i < polygons.length; i++) {
+
+	    // for each polygon, look at each edge of the polygon, and determine if it separates
+	    // the two shapes
+	    var polygon = polygons[i];
+	    for (i1 = 0; i1 < polygon.length; i1++) {
+
+	      // grab 2 vertices to create an edge
+	      var i2 = (i1 + 1) % polygon.length;
+	      var p1 = polygon[i1];
+	      var p2 = polygon[i2];
+
+	      // find the line perpendicular to this edge
+	      var normal = { x: p2.y - p1.y, y: p1.x - p2.x };
+
+	      minA = maxA = undefined;
+	      // for each vertex in the first shape, project it onto the line perpendicular to the edge
+	      // and keep track of the min and max of these values
+	      for (j = 0; j < a.length; j++) {
+	        projected = normal.x * a[j].x + normal.y * a[j].y;
+	        if (typeof minA === 'undefined' || projected < minA) {
+	          minA = projected;
+	        }
+	        if (typeof maxA === 'undefined' || projected > maxA) {
+	          maxA = projected;
+	        }
+	      }
+
+	      // for each vertex in the second shape, project it onto the line perpendicular to the edge
+	      // and keep track of the min and max of these values
+	      minB = maxB = undefined;
+	      for (j = 0; j < b.length; j++) {
+	        projected = normal.x * b[j].x + normal.y * b[j].y;
+	        if (typeof minB === 'undefined' || projected < minB) {
+	          minB = projected;
+	        }
+	        if (typeof maxB === 'undefined' || projected > maxB) {
+	          maxB = projected;
+	        }
+	      }
+
+	      // if there is no overlap between the projects, the edge we are looking at separates the two
+	      // polygons, and we know there is no overlap
+	      if (maxA < minB || maxB < minA) {
+	        return false;
+	      }
+	    }
+	  }
+	  return true;
+	};
+
+	exports.default = doIntersect;
+
+/***/ },
+/* 324 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var floor = function floor(a, b) {
+	  var c = b ? Math.pow(10, b) : 1;
+	  return Math.floor(a * c) / c;
+	};
+
+	exports.default = floor;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	var mergeObjects = function mergeObjects(data1, data2) {
+	  if (!data2) return data1;
+
+	  Object.keys(data2).map(function (key) {
+	    if (data1[key]) {
+	      if (_typeof(data1[key]) === 'object' && _typeof(data2[key]) === 'object') {
+	        data1[key] = mergeObjects(data1[key], data2[key]);
+	      }
+	    } else {
+	      data1[key] = data2[key];
+	    }
+	  });
+
+	  return data1;
+	};
+
+	exports.default = mergeObjects;
+
+/***/ },
+/* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _asset = __webpack_require__(323);
+	var _asset = __webpack_require__(327);
 
 	var _asset2 = _interopRequireDefault(_asset);
 
@@ -45341,7 +45575,7 @@
 	      if (!this.state.error) {
 	        this.setState({
 	          ready: true,
-	          complete: true
+	          complete: !this.props.incomplete
 	        });
 	      }
 	    }
@@ -45366,7 +45600,7 @@
 		exports.default = Image;
 
 /***/ },
-/* 323 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -45465,7 +45699,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
-/* 324 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45476,9 +45710,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _howler = __webpack_require__(325);
+	var _howler = __webpack_require__(329);
 
-	var _asset = __webpack_require__(323);
+	var _asset = __webpack_require__(327);
 
 	var _asset2 = _interopRequireDefault(_asset);
 
@@ -45625,7 +45859,7 @@
 		exports.default = Audio;
 
 /***/ },
-/* 325 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -46983,7 +47217,7 @@
 
 
 /***/ },
-/* 326 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46994,7 +47228,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _asset = __webpack_require__(323);
+	var _asset = __webpack_require__(327);
 
 	var _asset2 = _interopRequireDefault(_asset);
 
@@ -47061,12 +47295,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var self = this;
-	      return React.createElement('video', { onCanPlay: function onCanPlay() {
-	          return self.ready();
-	        }, onEnded: function onEnded() {
-	          return self.complete();
-	        }, className: this.props.className, src: this.props.src, preload: 'auto', controls: true });
+	      return React.createElement('video', { onCanPlay: this.ready.bind(this), onEnded: this.complete.bind(this), className: this.props.className, src: this.props.src, preload: 'auto', controls: true });
 	    }
 	  }]);
 
@@ -47076,7 +47305,7 @@
 		exports.default = Video;
 
 /***/ },
-/* 327 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -47176,16 +47405,26 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
-/* 328 */
+/* 332 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	var start = function start(Game, id) {
-	  ReactDOM.render(React.createElement(Game, null), document.getElementById(id));
+	  var el;
+
+	  el = document.getElementById(id);
+
+	  if (!el) {
+	    el = document.createElement('DIV');
+	    el.id = id;
+	    document.body.appendChild(el);
+	  }
+
+	  ReactDOM.render(React.createElement(Game, null), el);
 	};
 
 	exports.default = start;
