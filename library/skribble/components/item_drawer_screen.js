@@ -41,11 +41,12 @@ class ItemDrawerScreen extends play.Screen {
     var self = this;
 
     play.trigger('getData', {
-      categories: opts.categories,
-      callback: this.updateData.bind(this),
+      categories: opts.categories
+    }).then(data => {
+      self.updateData.call(self, data);
     });
 
-    this.setState({
+    self.setState({
       load: true,
       open: true,
       leave: false,
