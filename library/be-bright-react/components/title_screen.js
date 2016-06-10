@@ -35,7 +35,7 @@ class Title extends play.Screen {
 
   startMedia() {
     var self = this;
-    this.refs['buzz'].play();
+    this.refs.buzz.play();
     setTimeout(() => {
       self.complete();
     }, 3000);
