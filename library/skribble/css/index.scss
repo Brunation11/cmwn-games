@@ -43,6 +43,10 @@
   box-sizing: border-box;
 }
 
+img.hidden {
+  display: none;
+}
+
 html, body, body > div, body > div > div {
   margin: 0;
   padding: 0;
@@ -114,8 +118,8 @@ html {
 body > div > div {
   position: relative;
   margin: auto;
-  width: 960px;
-  height: 540px;
+  width: 1600px;
+  height: 900px;
   font-size: 36px;
   color: #000;
   // background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
@@ -238,24 +242,24 @@ button {
 
   button {
     float: left;
-    width: 40px;
-    height: 40px;
+    width: 65px;
+    height: 65px;
     margin: 5px;
     cursor: pointer;
 
     background-image: url(../media/_Buttons/SK_btn_topnav.png);
-    background-size: 250px;
+    background-size: 400px;
 
     $classes: save create inbox help close;
 
     @for $i from 1 through 5 {
       &.#{nth($classes, $i)} {
-        $left: 45 - (50 * $i);
+        $left: 70 - (80 * $i);
 
-        background-position: ($left+px) -5px;
+        background-position: ($left+px) -10px;
 
         &:hover {
-          background-position: ($left+px) -55px;
+          background-position: ($left+px) -89px;
         }
       }
     }
@@ -296,9 +300,9 @@ p {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 960px;
-  height: 540px;
-  margin-top: -270px;
+  width: 1600px;
+  height: 900px;
+  margin-top: -450px;
   opacity: 0;
   display: none;
   transition: opacity 1s, transform 0.5s;
@@ -459,34 +463,34 @@ p {
 
   .selectable-reveal {
     background-image: url(../media/_Frames/SK_frames_general.png);
-    background-size: 3900px;
-    background-position: -1940px 0px;
-    width: 740px;
-    height: 480px;
+    background-size: 7000px;
+    background-position: -3500px 0px;
+    width: 1300px;
+    height: 860px;
   }
 
   .selectable {
     margin: 0;
-    padding: 0 0 0 50px;
+    padding: 0 0 0 70px;
     list-style: none;
     display: flex;
-    height: 45px;
+    height: 80px;
 
     li {
-      width: 75px;
-      margin-right: 5px;
+      width: 138px;
+      margin-right: 6px;
       background-image: url(../media/_Buttons/SK_btn_inbox.png);
-      background-size: 375px;
-      background-position: 0px -44px;
+      background-size: 684px;
+      background-position: 0px -82px;
 
       @for $i from 1 through 5 {
-        $left: 75 - 75 * $i;
+        $left: 136.5 - 136.5 * $i;
 
         &:nth-of-type(#{$i}) {
-          background-position: ($left + px) -44px;
+          background-position: ($left + px) -82px;
 
           &.SELECTED {
-            background-position: ($left + px) 0px;
+            background-position: ($left + px) -1px;
           }
         }
       }
@@ -498,7 +502,7 @@ p {
     padding: 20px;
     list-style: none;
     width: 100%;
-    height: 425px;
+    height: 750px;
 
     > div,
     li > div {
@@ -522,12 +526,12 @@ p {
 
     li {
       position: relative;
-      height: 80px;
+      height: 160px;
       opacity: 1;
       background-color: transparent;
       background-image: url(../media/_Buttons/SK_btn_messages.png);
-      background-size: 1440px;
-      background-position: -15px -232px;
+      background-size: 2600px;
+      background-position: -30px -414px;
       margin: 0;
 
       &.SELECTED {
@@ -535,29 +539,29 @@ p {
       }
 
       &:hover {
-        background-position: -735px -232px;
+        background-position: -1328px -414px;
       }
 
       &.UNREAD {
-        background-position: -15px -20px;
+        background-position: -30px -30px;
 
         &:hover {
-          background-position: -735px -20px;
+          background-position: -1328px -30px;
         }
       }
 
       &.SENT {
-        background-position: -15px -127px;
+        background-position: -30px -220px;
 
         &:hover {
-          background-position: -735px -127px;
+          background-position: -1328px -220px;
         }
       }
 
       &.DRAFT {
         background-image: none;
-        width: 200px;
-        height: 140px;
+        width: 360px;
+        height: 250px;
         margin-bottom: 20px;
 
         img {
@@ -579,7 +583,7 @@ p {
           .date,
           .time {
             display: inline-block;
-            font-size: 20px;
+            font-size: 34px;
           }
         }
       }
@@ -593,31 +597,31 @@ p {
 
     img {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      left: 91px;
-      top: 9px;
+      width: 92px;
+      height: 92px;
+      left: 160px;
+      top: 22px;
     }
 
     span {
       position: absolute;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 32px;
+      line-height: 40px;
       color: #fff;
       text-shadow: 3px 3px 1px rgba(0, 0, 0, .6);
 
       &.username {
-        left: 150px;
+        left: 270px;
         top: 50%;
-        margin-top: -20px;
-        font-size: 32px;
-        line-height: 32px;
+        margin-top: -46px;
+        font-size: 64px;
+        line-height: 64px;
       }
 
       &.timestamp {
-        right: 20px;
+        right: 26px;
         top: 50%;
-        margin-top: -23px;
+        margin-top: -50px;
         display: inline-block;
       }
 

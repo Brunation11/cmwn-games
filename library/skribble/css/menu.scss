@@ -6,28 +6,28 @@
   left: 0;
   top: 0;
   z-index: 2;
-  height: 540px;
-  max-height: 540px;
+  height: 900px;
+  max-height: 900px;
   transition: max-height .5s, padding .5s;
   box-sizing: border-box;
 
   > li {
     list-style: none;
     display: block;
-    margin-left: -130px;
-    max-height: 70px;
+    margin-left: -260px;
+    max-height: 140px;
     overflow: hidden;
     transition: margin .5s, max-height .5s;
 
     span {
       position: relative;
       display: block;
-      width: 200px;
-      height: 70px;
+      width: 410px;
+      height: 140px;
       line-height: 70px;
       border-radius: 0 30px 30px 0;
       background-image: url(../media/_Buttons/SK_btn_slidenav.png);
-      background-size: 1350px;
+      background-size: 2700px;
       z-index: 2;
     }
 
@@ -37,8 +37,8 @@
     }
 
     $classes: messages images sounds effects;
-    $left:         226    226    226     226;
-    $top:            5     80    155     230;
+    $left:         452    452    452     452;
+    $top:           10    160    310     460;
 
     @for $i from 1 through 4 {
       &.#{nth($classes, $i)} span {
@@ -48,18 +48,18 @@
 
     &.messages {
       .menu {
-        background-position: 0px -500px;
-        height: 240px;
+        background-position: 0px -1000px;
+        height: 480px;
       }
     }
 
     &.images {
       .menu {
-        background-position: -850px -500px;
+        background-position: -1700px -1000px;
       }
 
       &.SELECTED {
-        margin-top: -40px;
+        margin-top: -80px;
       }
     }
   }
@@ -69,11 +69,11 @@
     position: relative;
     max-height: 0;
     bottom: auto;
-    width: 170px;
-    margin: -10px 10px 10px;
+    width: 340px;
+    margin: -20px 20px 20px;
     z-index: 1;
     background-image: url(../media/_Frames/SK_frames_canvas.png);
-    background-size: 2550px;
+    background-size: 5100px;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -83,29 +83,29 @@
       margin: 0;
 
       &:nth-of-type(1) {
-        margin: 15px 0 0;
+        margin: 30px 0 0;
       }
 
       &:last-of-type {
-        margin: 0 0 22px;
+        margin: 0 0 44px;
       }
 
       span {
         display: block;
-        width: 140px;
-        height: 42px;
-        line-height: 40px;
+        width: 280px;
+        height: 84px;
+        line-height: 80px;
         border-radius: 0;
-        margin-left: 17px;
-        font-size: 20px;
+        margin-left: 34px;
+        font-size: 40px;
         text-align: center;
-        background-size: 1050px;
+        background-size: 2100px;
         background-image: url(../media/_Buttons/SK_btn_catergorymenu.png);
       }
 
       $classes: backgrounds word-bubbles animals discover emoji fantasy greetings kudos challenges statements;
-      $left:              8            8       8        8     8     308       758   758        758        758;
-      $top:               5           55     105      155   205       5         5    55        105        155;
+      $left:             16           16      16       16    16     616      1516  1516       1516       1516;
+      $top:              10          110     210      310   410      10        10   110        210        310;
 
       @for $i from 1 through 10 {
         &.#{nth($classes, $i)} span {
@@ -121,10 +121,10 @@
       max-height: 0px;
 
       &.SELECTED {
-        max-height: 440px;
+        max-height: 880px;
 
         .menu {
-          max-height: 370px;
+          max-height: 740px;
         }
       }
     }

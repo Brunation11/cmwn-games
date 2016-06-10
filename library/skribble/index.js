@@ -16,7 +16,7 @@ import InboxScreen from './components/inbox_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
-// import '../shared/js/test-platform-integration';
+import '../shared/js/test-platform-integration';
 
 class Skribble extends play.Game {
   constructor() {

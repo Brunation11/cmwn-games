@@ -1,7 +1,7 @@
 var config = {
   id: 'skribble',
   dimensions: {
-    width: 960,
+    width: 1600,
     ratio: 16 / 9
   },
 };
