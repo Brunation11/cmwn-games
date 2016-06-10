@@ -19,10 +19,10 @@ import '../../../shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
-  var self = this;
+  var game = this;
 
-  pl.game.attachScreen = function(cb) {
-    cb.call(self);
+  pl.game.attachScreen = function (cb) {
+    cb.call(game);
   };
 
   var selectScreen = function () {
@@ -62,6 +62,19 @@ pl.game('drought-out', function () {
 
       if (!this.isComplete) this.requiredQueue.ready('cacti');
     });
+  });
+
+  this.screen('info-no-water', function () {
+    this.startAudio = function () {
+      if (!this.audio) return;
+      // Yes, infoWeedWater. This is due to an error in the framework
+      // this is not worth fixing at this point.
+      if (this.game.infoWeedWater.audio) {
+        this.game.infoWeedWater.audio.background.stop('@ALL');
+      }
+      this.audio.background.play();
+      this.audio.voiceOver.play();
+    };
   });
 
   this.screen('think', selectScreen);
@@ -114,6 +127,10 @@ pl.game('drought-out', function () {
     this.startAudio = function () {};
   });
 
+  this.screen('environment-effects', selectScreen);
+
+  this.screen('human-effects', selectScreen);
+
   this.screen('what-can-we-do', selectScreen);
 
   this.screen('shower', function () {
@@ -164,7 +181,7 @@ pl.game('drought-out', function () {
       if (this.isComplete) item = 0;
     });
 
-    this.on('ui-close ui-leave', function(_e) {
+    this.on('ui-close ui-leave', function (_e) {
       if (!this.is(_e.target)) return;
       this.reveal.audio.voiceOver.off('ended');
     });
