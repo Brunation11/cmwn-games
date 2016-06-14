@@ -23,7 +23,9 @@ import '../../../shared/js/google-analytics';
 
 pl.game('animal-id', function () {
 
-  var showNext = function () {
+  var showNext, showNextScreens, self = this;
+
+  showNext = function () {
     this.STATE.BACK = 'RETURN';
 
     this.state('return', '+RETURN');
@@ -68,14 +70,28 @@ pl.game('animal-id', function () {
 
   });
 
-  this.screen('id-carnivore', showNext);
-  this.screen('id-marsupial', showNext);
-  this.screen('id-rodent', showNext);
-  this.screen('id-arachnid', showNext);
-  this.screen('id-mammal', showNext);
-  this.screen('id-mollusk', showNext);
-  this.screen('id-reptile', showNext);
-  this.screen('id-herbivore', showNext);
+  showNextScreens = [
+    'id-carnivore',
+    'id-marsupial',
+    'id-rodent',
+    'id-arachnid',
+    'id-mammal',
+    'id-mollusk',
+    'id-reptile',
+    'id-herbivore',
+    'dnd-lion',
+    'dnd-sloth',
+    'dnd-wolf',
+    'dnd-elephant',
+    'dnd-dragon',
+    'dnd-pig',
+    'dnd-gorilla',
+    'dnd-mule',
+  ];
+
+  showNextScreens.forEach(key => {
+    self.screen(key, showNext);
+  });
 
   this.screen('match-game', function () {
     this.on('ui-close', function (_event) {
@@ -91,15 +107,6 @@ pl.game('animal-id', function () {
       this.unhighlight(this.find('.HIGHLIGHTED'));
     });
   });
-
-  this.screen('dnd-lion', showNext);
-  this.screen('dnd-sloth', showNext);
-  this.screen('dnd-wolf', showNext);
-  this.screen('dnd-elephant', showNext);
-  this.screen('dnd-dragon', showNext);
-  this.screen('dnd-pig', showNext);
-  this.screen('dnd-gorilla', showNext);
-  this.screen('dnd-mule', showNext);
 
   this.screen('flip', function () {
 
