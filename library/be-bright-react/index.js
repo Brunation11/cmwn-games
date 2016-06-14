@@ -17,7 +17,7 @@ import FlipScreen from './components/flip_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
-import '../shared/js/test-platform-integration';
+// import '../shared/js/test-platform-integration';
 
 class BeBright extends play.Game {
   constructor() {
@@ -32,6 +32,13 @@ class BeBright extends play.Game {
       5: InfoScreen,
       6: VideoScreen,
       7: FlipScreen,
+    };
+
+    this.screenProps = {
+      1: {
+        checkComplete: false,
+        playOnStart: 'buzz',
+      },
     };
 
     this.menus = {

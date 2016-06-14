@@ -8,31 +8,6 @@ class Title extends play.Screen {
 
   }
 
-  start() {
-    this.bootstrap();
-
-    this.setState({
-      started: true,
-    });
-
-    Object.keys(this.refs).map(key => {
-      if (typeof this.refs[key].start === 'function') {
-        this.refs[key].start();
-      }
-    });
-
-    this.startMedia();
-  }
-
-  open() {
-    this.setState({
-      open: true,
-      leave: false,
-      close: false,
-    });
-    this.start();
-  }
-
   startMedia() {
     var self = this;
     this.refs.buzz.play();
