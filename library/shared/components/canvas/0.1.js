@@ -37,7 +37,6 @@ class Canvas extends play.Component {
         scale: skoash.util.floor(state.scale, 14),
         rotation: skoash.util.floor(state.rotation, 14),
         layer: state.layer,
-        zoom: skoash.util.floor(state.zoom, 14),
         valid: state.valid,
         corners: state.corners,
       };
