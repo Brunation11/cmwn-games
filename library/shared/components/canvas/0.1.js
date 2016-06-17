@@ -15,10 +15,10 @@ class Canvas extends play.Component {
       active: false,
     };
 
-    this.boundDeleteItem = this.deleteItem.bind(this);
-    this.boundCheckItem = this.checkItem.bind(this);
-    this.boundDeactivateItems = this.deactivateItems.bind(this);
-    this.boundRelayerItems = this.relayerItems.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.checkItem = this.checkItem.bind(this);
+    this.deactivateItems = this.deactivateItems.bind(this);
+    this.relayerItems = this.relayerItems.bind(this);
   }
 
   getItems() {
@@ -72,8 +72,7 @@ class Canvas extends play.Component {
     if (message) {
       /*
        *
-       * This is being this way in order to make sure the
-       * EditableAssets get cleared.
+       * This makes sure the EditableAssets get cleared.
        *
        * This prevents the new assets from inheriting
        * state from the old assets.
@@ -214,10 +213,10 @@ class Canvas extends play.Component {
         <EditableAsset
           {...item}
           data-ref={key}
-          deleteItem={self.boundDeleteItem}
-          checkItem={self.boundCheckItem}
-          deactivateItems={self.boundDeactivateItems}
-          relayerItems={self.boundRelayerItems}
+          deleteItem={self.deleteItem}
+          checkItem={self.checkItem}
+          deactivateItems={self.deactivateItems}
+          relayerItems={self.relayerItems}
           ref={'item-' + key}
           key={key}
         />
@@ -233,10 +232,10 @@ class Canvas extends play.Component {
         <EditableAsset
           {...item}
           data-ref={key}
-          deleteItem={self.boundDeleteItem}
-          checkItem={self.boundCheckItem}
-          deactivateItems={self.boundDeactivateItems}
-          relayerItems={self.boundRelayerItems}
+          deleteItem={self.deleteItem}
+          checkItem={self.checkItem}
+          deactivateItems={self.deactivateItems}
+          relayerItems={self.relayerItems}
           ref={'message-' + key}
           key={key}
         />
