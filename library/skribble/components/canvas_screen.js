@@ -34,7 +34,7 @@ class CanvasScreen extends play.Screen {
     if (message) {
       this.setState({
         background: this.state.background ||
-                    message.type === 'background',
+              message.type === 'background',
       });
       this.refs.canvas.addItem(message);
     }

@@ -283,8 +283,8 @@ class EditableAsset extends Draggable {
   getButtonStyle() {
     var style, transform = '';
 
-    transform += 'scale(' + (1 / this.state.scale) + ') ';
-    transform += 'rotate(' + (-this.state.rotation) + 'rad) ';
+    transform += 'scale(${(1 / this.state.scale)}) ';
+    transform += 'rotate(${(-this.state.rotation)}rad) ';
 
     style = {
       transform,
