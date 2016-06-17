@@ -199,24 +199,23 @@ class Draggable extends play.Component {
   }
 
   getStyle() {
-    var x, y;
+    var x, y; // eslint-disable-line no-unused-vars
 
     x = ((this.state.endX - this.state.startX) / this.state.zoom);
     y = ((this.state.endY - this.state.startY) / this.state.zoom);
 
     return {
-      transform: 'translateX(' + x + 'px) translateY(' + y + 'px)',
+      transform: 'translateX(${x}px) translateY(${y}px)',
     };
   }
 
   getClassNames() {
     return classNames({
       draggable: true,
-      [this.props.className]: true,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
-    });
+    }, this.props.className);
   }
 
   render() {

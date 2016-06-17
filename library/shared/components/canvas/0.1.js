@@ -182,23 +182,20 @@ class Canvas extends play.Component {
   }
 
   checkItem(key, type) {
-    var intersects = false, self = this;
-
-    if (this.state[type + 's'][key].canOverlap) {
-      return true;
-    }
-
-    this.state[type + 's'].some((item, index) => {
-      if (key === index) return;
-      if (this.state[type + 's'][index].canOverlap) return;
-      intersects = play.util.doIntersect(
-        self.refs[type + '-' + key].state.corners,
-        self.refs[type + '-' + index].state.corners
-      );
-      return intersects;
-    });
-
-    return !intersects;
+    var self = this;
+    return (
+        /* because we use OR here, if the first condition is true, the second condition will not run */
+        self.state[type + 's'][key].canOverlap ||
+        /* we want to return a bool so we just omit the curly braces  on the arrow function */
+        this.state[type + 's'].some((item, index) =>
+          /* we can drop the repeated `canOverlap` check because of the OR */
+          key === index &&
+          play.util.doIntersect(
+              self.refs[type + '-' + key].state.corners,
+              self.refs[type + '-' + index].state.corners
+          )
+        )
+    );
   }
 
   getStyle() {
