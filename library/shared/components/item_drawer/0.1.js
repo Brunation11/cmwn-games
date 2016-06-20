@@ -62,12 +62,35 @@ class ItemDrawer extends Selectable {
     });
   }
 
+  renderButtons() {
+    return (
+      <div className="buttons">
+        <button className="select" onClick={this.selectButton.bind(this)} />
+        <button className="cancel" onClick={this.cancelButton.bind(this)} />
+      </div>
+    );
+  }
+
+  renderItemText(item) {
+    var text = [];
+
+    if (item.name) {
+      text.push(<span className="name">{item.name}</span>);
+    }
+
+    if (item.description) {
+      text.push(<span className="description">{item.description}</span>);
+    }
+
+    return text;
+  }
+
   renderList() {
-    var items;
+    var items, self = this;
 
-    if (!this.props.data || !this.props.data.items) return;
+    if (!this.props.data) return;
 
-    items = this.props.data.items;
+    items = this.props.data;
 
     if (this.state.category) {
       items = items[this.state.category].items;
@@ -83,7 +106,7 @@ class ItemDrawer extends Selectable {
           key={key}
           style={{backgroundImage: 'url("' + item.src + '")'}}
         >
-          {item.name}
+          {self.renderItemText(item)}
         </play.ListItem>
       );
     });
@@ -97,10 +120,7 @@ class ItemDrawer extends Selectable {
             {this.renderList()}
           </ul>
         </div>
-        <div className="buttons">
-          <button className="select" onClick={this.selectButton.bind(this)} />
-          <button className="cancel" onClick={this.cancelButton.bind(this)} />
-        </div>
+        {this.renderButtons()}
       </div>
     );
   }

@@ -382,6 +382,12 @@ p {
 }
 
 #friends {
+  .item-drawer {
+    li {
+      height: 225px;
+    }
+  }
+
   button {
     display: block;
     color: #000;
