@@ -2,6 +2,8 @@
  * Printmaster - Carousel Screen
  */
 export default function carousel() {
+  var responding;
+
   this.setTarget = function (_idx) {
     this.idx = _idx || 0;
     this.$target = $(this.$targets[this.idx]);
@@ -60,12 +62,20 @@ export default function carousel() {
   });
 
   this.respond('hit', function (_event) {
+    if (responding) return;
+
+    responding = true;
+
     if (_event.message === _event.behaviorTarget.id()) {
       this.score.up();
       this.playSFX('correct');
     } else {
       this.playSFX('incorrect');
     }
+
+    setTimeout(() => {
+      responding = false;
+    }, 250);
   });
 
   this.respond('next', function () {
