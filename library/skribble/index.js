@@ -41,13 +41,16 @@ class Skribble extends play.Game {
     this.emit({
       name: 'save-skribble',
       game: this.config.id,
-      skribble: this.refs['screen-canvas'].refs.canvas.getItems(),
+      skribble: this.refs['screen-canvas'].refs.getData(),
     });
   }
 
   passData(opts) {
     if (opts.name === 'add-item') {
       this.refs['screen-canvas'].addItem(opts.message);
+      this.goto({ index: 'canvas' });
+    } else if (opts.name === 'add-recipient') {
+      this.refs['screen-canvas'].addRecipient(opts.message);
       this.goto({ index: 'canvas' });
     }
   }

@@ -8,11 +8,13 @@ class ItemDrawer extends Selectable {
   }
 
   selectHelper(e) {
-    var message, key, type, classes = [];
+    var li, message, key, type, classes = [];
 
-    if (e.target.tagName !== 'LI') return;
+    li = e.target.closest('LI');
 
-    key = e.target.getAttribute('data-ref');
+    if (!li) return;
+
+    key = li.getAttribute('data-ref');
     type = this.refs[key].props.item.type;
 
     if (type === 'category') {
@@ -31,7 +33,7 @@ class ItemDrawer extends Selectable {
   }
 
   selectButton() {
-    if (typeof this.props.selectRespond === 'function' && this.state.message) {
+    if (typeof this.props.selectRespond === 'function') {
       this.props.selectRespond(this.state.message);
     }
   }

@@ -10,8 +10,11 @@ class FriendScreen extends play.Screen {
 
   }
 
-  selectRespond() {
-
+  selectRespond(message) {
+    play.trigger('pass-data', {
+      name: 'add-recipient',
+      message
+    });
   }
 
   updateData() {
@@ -24,6 +27,10 @@ class FriendScreen extends play.Screen {
         src: friend.profile_image,
         description: friend.flips_earned + ' Flips Earned',
       };
+    });
+
+    data.unshift({
+      name: 'Choose Friend Later',
     });
 
     this.setState({

@@ -30,6 +30,20 @@ class CanvasScreen extends play.Screen {
     }
   }
 
+  getData() {
+    var data = this.refs.canvas.getItems();
+
+    data.recipient = this.state.recipient;
+
+    return data;
+  }
+
+  addRecipient(recipient) {
+    this.setState({
+      recipient
+    });
+  }
+
   addItem(message) {
     if (message) {
       this.setState({
