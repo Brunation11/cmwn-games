@@ -1,4 +1,4 @@
-class iOSSplashScreen extends play.Screen {
+class iOSSplashScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -46,8 +46,8 @@ class iOSSplashScreen extends play.Screen {
 
     return (
       <div>
-        <play.Image className="hidden" src="../shared/images/ios_start_ball.png" />
-        <play.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
+        <skoash.Image className="hidden" src="../shared/images/ios_start_ball.png" />
+        <skoash.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
         <div ref="ball" className="ball" onAnimationEnd={this.complete.bind(this)} onClick={this.startGame.bind(this)}></div>
       </div>
     );

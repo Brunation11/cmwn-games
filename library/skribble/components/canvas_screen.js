@@ -3,7 +3,7 @@ import Menu from '../../shared/components/menu/0.1.js';
 
 import classNames from 'classnames';
 
-class CanvasScreen extends play.Screen {
+class CanvasScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -18,9 +18,9 @@ class CanvasScreen extends play.Screen {
   bootstrap() {
     var menus, state;
 
-    play.Screen.prototype.bootstrap.call(this);
+    skoash.Screen.prototype.bootstrap.call(this);
 
-    state = play.trigger('getState');
+    state = skoash.trigger('getState');
 
     if (state && state.data && state.data.menus) {
       menus = state.data.menus;
@@ -57,7 +57,7 @@ class CanvasScreen extends play.Screen {
       this.refs.canvas.setItems(opts.message);
     }
 
-    play.Screen.prototype.open.call(this);
+    skoash.Screen.prototype.open.call(this);
   }
 
   getContainerClasses() {
@@ -79,8 +79,8 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <play.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-        <play.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+        <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
+        <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
         <Menu ref={'menu'} items={this.state.menus} />
         <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />

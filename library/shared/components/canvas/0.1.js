@@ -2,7 +2,7 @@ import EditableAsset from '../editable_asset/0.1.js';
 
 import classNames from 'classnames';
 
-class Canvas extends play.Component {
+class Canvas extends skoash.Component {
   constructor() {
     super();
 
@@ -189,7 +189,7 @@ class Canvas extends play.Component {
         this.state[type + 's'].some((item, index) =>
           /* we can drop the repeated `canOverlap` check because of the OR */
           key === index &&
-          play.util.doIntersect(
+          skoash.util.doIntersect(
               self.refs[type + '-' + key].state.corners,
               self.refs[type + '-' + index].state.corners
           )

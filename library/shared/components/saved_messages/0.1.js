@@ -58,19 +58,19 @@ class SavedMessages extends Selectable {
     return items.map((item, key) => {
       var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={this.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
-          <play.Image src={item.thumbnail} />
+          <skoash.Image src={item.thumbnail} />
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
           </span>
-        </play.ListItem>
+        </skoash.ListItem>
       );
     });
   }

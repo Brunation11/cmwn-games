@@ -1,6 +1,6 @@
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
-class FriendScreen extends play.Screen {
+class FriendScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -11,14 +11,14 @@ class FriendScreen extends play.Screen {
   }
 
   selectRespond(message) {
-    play.trigger('pass-data', {
+    skoash.trigger('pass-data', {
       name: 'add-recipient',
       message
     });
   }
 
   updateData() {
-    var data = play.trigger('getState').data.friends;
+    var data = skoash.trigger('getState').data.friends;
 
     data = data.map(friend => {
       return {
@@ -41,7 +41,7 @@ class FriendScreen extends play.Screen {
   open(opts) {
     var self = this;
 
-    play.trigger('getData', {
+    skoash.trigger('getData', {
       categories: ['friends']
     }).then(data => {
       self.updateData.call(self, data);

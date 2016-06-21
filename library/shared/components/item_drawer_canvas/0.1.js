@@ -1,7 +1,7 @@
 import ItemDrawer from '../item_drawer/0.1.js';
 import Canvas from '../canvas/0.1.js';
 
-class ItemDrawerCanvas extends play.Component {
+class ItemDrawerCanvas extends skoash.Component {
   constructor() {
     super();
 

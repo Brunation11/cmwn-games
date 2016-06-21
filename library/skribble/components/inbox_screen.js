@@ -2,7 +2,7 @@ import SelectableReveal from '../../shared/components/selectable_reveal/0.1.js';
 import Inbox from '../../shared/components/inbox/0.1.js';
 import SavedMessages from '../../shared/components/saved_messages/0.1.js';
 
-class InboxScreen extends play.Screen {
+class InboxScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -82,7 +82,7 @@ class InboxScreen extends play.Screen {
   }
 
   editMessage(message) {
-    play.trigger('goto', {
+    skoash.trigger('goto', {
       index: 'canvas',
       message,
     });
@@ -91,7 +91,7 @@ class InboxScreen extends play.Screen {
   updateData() {
     var data, inbox, outbox, saved;
 
-    data = play.trigger('getState').data;
+    data = skoash.trigger('getState').data;
     inbox = data.inbox;
     outbox = data.outbox;
     saved = data.saved;
@@ -108,7 +108,7 @@ class InboxScreen extends play.Screen {
   open() {
     var self = this;
 
-    play.trigger('getData', {
+    skoash.trigger('getData', {
       categories: 'inbox',
     }).then(data => {
       self.updateData.call(self, data);

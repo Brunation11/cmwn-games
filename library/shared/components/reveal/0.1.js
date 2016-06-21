@@ -1,4 +1,4 @@
-class Reveal extends play.Component {
+class Reveal extends skoash.Component {
   constructor() {
     super();
 
@@ -23,7 +23,7 @@ class Reveal extends play.Component {
     this.playAudio(message);
 
     this.requireForComplete = this.requireForComplete.filter(item => {
-      return (item !== message) || (this.refs[message] instanceof play.Audio);
+      return (item !== message) || (this.refs[message] instanceof skoash.Audio);
     });
   }
 
@@ -39,7 +39,7 @@ class Reveal extends play.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.close();
 
     if (this.props.openOnStart) {
@@ -72,7 +72,7 @@ class Reveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}

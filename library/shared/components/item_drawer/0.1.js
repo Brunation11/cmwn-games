@@ -100,7 +100,7 @@ class ItemDrawer extends Selectable {
 
     return items.map((item, key) => {
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={this.getClass(key)}
           ref={key}
           data-ref={key}
@@ -109,7 +109,7 @@ class ItemDrawer extends Selectable {
           style={{backgroundImage: 'url("' + item.src + '")'}}
         >
           {self.renderItemText(item)}
-        </play.ListItem>
+        </skoash.ListItem>
       );
     });
   }

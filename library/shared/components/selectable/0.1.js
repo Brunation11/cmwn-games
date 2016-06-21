@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-class Selectable extends play.Component {
+class Selectable extends skoash.Component {
   constructor() {
     super();
 
@@ -92,7 +92,7 @@ class Selectable extends play.Component {
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <play.ListItem
+        <skoash.ListItem
           {...li.props}
           className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}

@@ -1,6 +1,6 @@
 import Dropzone from '../../shared/components/dropzone/0.1.js';
 
-class SampleScreen extends play.Screen {
+class SampleScreen extends skoash.Screen {
   constructor() {
     super();
 
