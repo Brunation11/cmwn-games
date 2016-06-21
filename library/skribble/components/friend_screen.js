@@ -30,7 +30,7 @@ class FriendScreen extends play.Screen {
     });
 
     data.unshift({
-      name: 'Choose Friend Later',
+      description: 'Choose Friend Later',
     });
 
     this.setState({
@@ -75,7 +75,7 @@ class FriendScreen extends play.Screen {
         <ItemDrawer
           ref="drawer"
           selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.goto.bind(this, 'canvas')}
+          cancelRespond={this.back}
           categories={this.state.opts.categories}
           data={this.state.data}
         />

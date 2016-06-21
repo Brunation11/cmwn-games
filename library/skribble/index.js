@@ -38,10 +38,13 @@ class Skribble extends play.Game {
   }
 
   save() {
+    var skribble = this.refs['screen-canvas'].refs.getData();
+    skribble.recipient = this.state.recipient;
+
     this.emit({
       name: 'save-skribble',
       game: this.config.id,
-      skribble: this.refs['screen-canvas'].refs.getData(),
+      skribble,
     });
   }
 
@@ -50,9 +53,15 @@ class Skribble extends play.Game {
       this.refs['screen-canvas'].addItem(opts.message);
       this.goto({ index: 'canvas' });
     } else if (opts.name === 'add-recipient') {
-      this.refs['screen-canvas'].addRecipient(opts.message);
+      this.addRecipient(opts.message);
       this.goto({ index: 'canvas' });
     }
+  }
+
+  addRecipient(recipient) {
+    this.setState({
+      recipient
+    });
   }
 
   renderLoader() {
@@ -72,14 +81,39 @@ class Skribble extends play.Game {
     );
   }
 
+  renderRecipient() {
+    var recipient = this.state.recipient, content = [];
+
+    if (!recipient) return;
+
+    if (recipient.name) {
+      content.push(<span className="name">{recipient.name}</span>);
+    }
+
+    if (recipient.src) {
+      content.push(<img className="profile-image" src={recipient.src} />);
+    }
+
+    return content;
+  }
+
   renderMenu() {
     return (
-      <div className="game-menu">
-        <button className="save" onClick={this.save.bind(this)} />
-        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
-        <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
-        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
-        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+      <div>
+        <div className="game-menu">
+          <button className="save" onClick={this.save.bind(this)} />
+          <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+          <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
+          <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+          <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+        </div>
+        <ul className="menu recipient">
+          <li>
+            <span>
+              {this.renderRecipient()}
+            </span>
+          </li>
+        </ul>
       </div>
     );
   }

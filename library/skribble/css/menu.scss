@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 .menu {
   padding: 140px 0 0 0;
   margin: 0;
@@ -126,6 +129,51 @@
         .menu {
           max-height: 740px;
         }
+      }
+    }
+  }
+
+  &.recipient {
+    padding-top: 30px;
+    height: auto;
+    z-index: 3;
+
+    li {
+      position: relative;
+      margin-left: -370px;
+
+      &:hover {
+        margin-left: -2px;
+      }
+
+      > span {
+        height: 80px;
+        width: 465px;
+        background-size: 1000px;
+        background-image: url(../media/_Buttons/SK_btn_friend.png);
+        background-position: -500px -10px;
+
+        &:empty {
+          background-position: 0px -120px;
+        }
+      }
+
+      .name {
+        float: right;
+        height: auto;
+        width: auto;
+        margin: 10px 100px 0 0;
+        background: none;
+        color: $white;
+      }
+
+      .profile-image {
+        position: absolute;
+        right: 34px;
+        top: 17px;
+        width: 50px;
+        height: 50px;
+        background-color: $white;
       }
     }
   }
