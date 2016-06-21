@@ -1,42 +1,9 @@
-@keyframes flicker {
-  0% {opacity:1;}
-  10% {opacity:1;}
-  12% {opacity:0;}
-  14% {opacity:1;}
-  16% {opacity:0;}
-  18% {opacity:1;}
-  44% {opacity:1;}
-  46% {opacity:0;}
-  48% {opacity:1;}
-  50% {opacity:0;}
-  52% {opacity:1;}
-  82% {opacity:1;}
-  84% {opacity:0;}
-  86% {opacity:1;}
-  88% {opacity:0;}
-  90% {opacity:1;}
-  100% {opacity:1;}
+* {
+  box-sizing: border-box;
 }
-@keyframes stamp {
-  0% {
-    opacity: 0;
-    transform: scale(4);
-  }
-  10% {
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1);
-  }
-  65% {
-    transform: scale(1.1);
-  }
-  75% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(1.1);
-  }
+
+img.hidden {
+  display: none;
 }
 
 html, body, body > div, body > div > div {
@@ -48,6 +15,59 @@ html, body, body > div, body > div > div {
   user-select: none;
   user-drag: none;
   cursor: auto;
+
+  [class^=background-] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: opacity .5s;
+    opacity: 0;
+  }
+
+  .background-1 {
+    background-image: url(../media/_Background/SK_BKG_1.png);
+  }
+
+  .background-2 {
+    background-image: url(../media/_Background/SK_BKG_2.png);
+  }
+
+  .background-3 {
+    background-image: url(../media/_Background/SK_BKG_3.png);
+  }
+
+  .background-4 {
+    background-image: url(../media/_Background/SK_BKG_4.png);
+  }
+
+  &.SCREEN-1,
+  &.SCREEN-canvas,
+  &.SCREEN-item-drawer {
+    .background-1 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-friend {
+    .background-2 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-inbox {
+    .background-3 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-sent {
+    .background-4 {
+      opacity: 1;
+    }
+  }
 }
 
 html {
@@ -57,8 +77,8 @@ html {
 body > div > div {
   position: relative;
   margin: auto;
-  width: 960px;
-  height: 540px;
+  width: 1600px;
+  height: 900px;
   font-size: 36px;
   color: #000;
   // background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
@@ -72,27 +92,51 @@ button {
 
   font-family: inherit;
   font-size: inherit;
-  color: transparent;
   background-color: transparent;
   outline: none;
   cursor: pointer;
 
-  // background-image: url(../media/_Buttons/BU_1.png);
-  background-size: auto 500px;
+  background-image: url(../media/_Buttons/SK_btn_rounded.png);
+  background-size: 1000px;
   background-position: left top;
 
-  &.close {
-    width: 35px;
-    height: 35px;
-    background-position: -310px 410px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px;
-    z-index: 2;
+  &.make {
+    width: 225px;
+    height: 105px;
+    background-position: 0px 0px;
 
     &:hover {
-      background-position: -310px 165px;
+      background-position: -250px 0px;
+    }
+  }
+
+  &.read {
+    width: 225px;
+    height: 105px;
+    background-position: 0px -120px;
+
+    &:hover {
+      background-position: -250px -120px;
+    }
+  }
+
+  &.select {
+    width: 180px;
+    height: 90px;
+    background-position: -498px -370px;
+
+    &:hover {
+      background-position: -748px -370px;
+    }
+  }
+
+  &.cancel {
+    width: 180px;
+    height: 90px;
+    background-position: -498px -495px;
+
+    &:hover {
+      background-position: -748px -495px;
     }
   }
 
@@ -129,22 +173,54 @@ button {
   }
 
   &.quit-yes {
-    width: 230px;
-    height: 230px;
-    background-position: -1830px 495px;
+    width: 110px;
+    height: 50px;
+    background-position: 0px -500px;
 
     &:hover {
-      background-position: -1830px 251px;
+      background-position: -250px -500px;
     }
   }
 
   &.quit-no {
-    width: 230px;
-    height: 230px;
-    background-position: -2080px 495px;
+    width: 110px;
+    height: 50px;
+    background-position: 0px -624px;
 
     &:hover {
-      background-position: -2080px 251px;
+      background-position: -250px -624px;
+    }
+  }
+}
+
+.game-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  button {
+    float: left;
+    width: 65px;
+    height: 65px;
+    margin: 5px;
+    cursor: pointer;
+
+    background-image: url(../media/_Buttons/SK_btn_topnav.png);
+    background-size: 400px;
+
+    $classes: save create inbox help close;
+
+    @for $i from 1 through 5 {
+      &.#{nth($classes, $i)} {
+        $left: 70 - (80 * $i);
+
+        background-position: ($left+px) -10px;
+
+        &:hover {
+          background-position: ($left+px) -89px;
+        }
+      }
     }
   }
 }
@@ -183,9 +259,9 @@ p {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 960px;
-  height: 540px;
-  margin-top: -270px;
+  width: 1600px;
+  height: 900px;
+  margin-top: -450px;
   opacity: 0;
   display: none;
   transition: opacity 1s, transform 0.5s;
@@ -263,7 +339,260 @@ p {
 
 // the following css is specific to this game
 
+.header {
+  background-image: url(../media/_Headers/SK_headers.png);
+  background-size: 1900px;
+  height: 70px;
+  width: 450px;
+  margin: 0 auto;
+}
 
+#sample {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    height: 200px;
+  }
+
+  button {
+    color: #000;
+  }
+}
+
+#canvas {
+  button {
+    color: #000;
+  }
+
+  .editable-asset {
+    button {
+      color: #fff;
+    }
+  }
+}
+
+#friends {
+  button {
+    display: block;
+    color: #000;
+  }
+}
+
+#menu {
+  .buttons {
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  button {
+    display: block;
+    color: #000;
+  }
+}
+
+#item-drawer {
+  .buttons {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  button {
+    display: block;
+    color: #000;
+  }
+}
+
+#inbox {
+  button {
+    display: block;
+    color: #000;
+  }
+
+  .selectable-reveal {
+    background-image: url(../media/_Frames/SK_frames_general.png);
+    background-size: 7000px;
+    background-position: -3500px 0px;
+    width: 1300px;
+    height: 860px;
+  }
+
+  .selectable {
+    margin: 0;
+    padding: 0 0 0 70px;
+    list-style: none;
+    display: flex;
+    height: 80px;
+
+    li {
+      width: 138px;
+      margin-right: 6px;
+      background-image: url(../media/_Buttons/SK_btn_inbox.png);
+      background-size: 684px;
+      background-position: 0px -82px;
+
+      @for $i from 1 through 5 {
+        $left: 136.5 - 136.5 * $i;
+
+        &:nth-of-type(#{$i}) {
+          background-position: ($left + px) -82px;
+
+          &.SELECTED {
+            background-position: ($left + px) -1px;
+          }
+        }
+      }
+    }
+  }
+
+  .reveal {
+    margin: 0;
+    padding: 20px;
+    list-style: none;
+    width: 100%;
+    height: 750px;
+
+    > div,
+    li > div {
+      height: 100%;
+    }
+
+    ul {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .close-reveal {
+      display: none;
+    }
+  }
+
+  .item-drawer {
+    flex-direction: column;
+    justify-content: flex-start;
+
+    li {
+      position: relative;
+      height: 160px;
+      opacity: 1;
+      background-color: transparent;
+      background-image: url(../media/_Buttons/SK_btn_messages.png);
+      background-size: 2600px;
+      background-position: -30px -414px;
+      margin: 0;
+
+      &.SELECTED {
+        border-color: transparent;
+      }
+
+      &:hover {
+        background-position: -1328px -414px;
+      }
+
+      &.UNREAD {
+        background-position: -30px -30px;
+
+        &:hover {
+          background-position: -1328px -30px;
+        }
+      }
+
+      &.SENT {
+        background-position: -30px -220px;
+
+        &:hover {
+          background-position: -1328px -220px;
+        }
+      }
+
+      &.DRAFT {
+        background-image: none;
+        width: 360px;
+        height: 250px;
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+          height: auto;
+          left: 0;
+          top: 0;
+        }
+
+        .timestamp {
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          top: auto;
+          right: auto;
+          display: flex;
+          justify-content: space-between;
+
+          .date,
+          .time {
+            display: inline-block;
+            font-size: 34px;
+          }
+        }
+      }
+    }
+
+    &.SAVED {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    img {
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      left: 160px;
+      top: 22px;
+    }
+
+    span {
+      position: absolute;
+      font-size: 32px;
+      line-height: 40px;
+      color: #fff;
+      text-shadow: 3px 3px 1px rgba(0, 0, 0, .6);
+
+      &.username {
+        left: 270px;
+        top: 50%;
+        margin-top: -46px;
+        font-size: 64px;
+        line-height: 64px;
+      }
+
+      &.timestamp {
+        right: 26px;
+        top: 50%;
+        margin-top: -50px;
+        display: inline-block;
+      }
+
+      &.date,
+      &.time {
+        position: relative;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
 
 #flip {
   h2 {
@@ -298,5 +627,12 @@ p {
 
   &.OPEN {
     transform: translateX(0%);
+  }
+}
+
+.pl-game.PAUSED {
+  &:before,
+  &:after {
+    display: none !important;
   }
 }

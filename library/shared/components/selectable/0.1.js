@@ -1,26 +1,35 @@
+import classNames from 'classnames';
+
 class Selectable extends play.Component {
   constructor() {
     super();
 
     this.state = {
       selectClass: 'SELECTED',
-      classes: {}
+      classes: {},
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
+      selectFunction: this.select,
     };
-
-    this.selectFunction = this.select;
-
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
   }
 
   start() {
+    var selectFunction, classes = {};
+
+    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    if (this.props.selectOnStart) {
+      classes[this.props.selectOnStart] = this.state.selectClass;
+    }
+
     this.setState({
       started: true,
-      classes: {}
+      classes,
+      selectFunction,
     });
 
     this.bootstrap();
@@ -31,11 +40,13 @@ class Selectable extends play.Component {
   }
 
   selectHelper(e, classes) {
-    var message;
+    var message, target;
 
-    if (e.target.tagName !== 'LI') return;
+    target = e.target.closest('LI');
 
-    message = e.target.getAttribute('data-ref');
+    if (!target) return;
+
+    message = target.getAttribute('data-ref');
     classes[message] = this.state.selectClass;
 
     this.setState({
@@ -55,33 +66,35 @@ class Selectable extends play.Component {
 
   select(e) {
     var classes = [];
-    this.selectHelper(e, classes)
+    this.selectHelper(e, classes);
   }
 
   highlight(e) {
     var classes = this.state.classes;
-    this.selectHelper(e, classes)
+    this.selectHelper(e, classes);
   }
 
   getClass(key) {
-    return this.state.classes[key] ? this.state.classes[key] : '';
+    return classNames({
+      [this.state.classes[key] || '']: true,
+    });
   }
 
   getULClass() {
-    var classes = '';
-
-    if (this.state.complete) classes += ' COMPLETE';
-
-    return classes;
+    return classNames({
+      COMPLETE: this.state.complete,
+    });
   }
 
   renderList() {
-    return this.list.map((li, key) => {
+    var list = this.props.list || this.state.list;
+
+    return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <play.ListItem
           {...li.props}
-          className={li.props.className+' '+this.getClass(key)}
+          className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}
           ref={ref}
           key={key}
@@ -92,7 +105,7 @@ class Selectable extends play.Component {
 
   render() {
     return (
-      <ul className={'selectable'+this.getULClass()} onClick={this.selectFunction.bind(this)}>
+      <ul className={'selectable ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

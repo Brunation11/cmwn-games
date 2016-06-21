@@ -1,8 +1,6 @@
 var path = require('path'),
     webpack = require('webpack');
 
-delete require.cache[require.resolve("js-interactive-library")];
-
 module.exports = {
     context: __dirname + '/library',
     entry: null,

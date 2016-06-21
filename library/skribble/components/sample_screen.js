@@ -1,4 +1,4 @@
-import Draggable from '../../shared/components/draggable/0.1.js';
+import Dropzone from '../../shared/components/dropzone/0.1.js';
 
 class SampleScreen extends play.Screen {
   constructor() {
@@ -10,10 +10,20 @@ class SampleScreen extends play.Screen {
 
   }
 
+  renderPrevButton() {
+    return null;
+  }
+
+  renderNextButton() {
+    return (
+      <button className={'next-screen'} onClick={this.goto.bind(this, 'canvas')}>{'>'}</button>
+    );
+  }
+
   renderContent() {
     return (
       <div>
-        <Draggable />
+        <Dropzone ref={'dropzone'} message={'drag'} />
       </div>
     );
   }
