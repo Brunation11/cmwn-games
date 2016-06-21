@@ -32,10 +32,6 @@ class CanvasScreen extends play.Screen {
 
   getData() {
     return this.refs.canvas.getItems();
-
-    data.recipient = this.state.recipient;
-
-    return data;
   }
 
   addItem(message) {

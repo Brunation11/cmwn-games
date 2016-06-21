@@ -13,6 +13,7 @@ import FriendScreen from './components/friend_screen.js';
 import CanvasScreen from './components/canvas_screen.js';
 import ItemDrawerScreen from './components/item_drawer_screen.js';
 import InboxScreen from './components/inbox_screen.js';
+import SendScreen from './components/inbox_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
@@ -30,6 +31,7 @@ class Skribble extends play.Game {
       canvas: CanvasScreen,
       'item-drawer': ItemDrawerScreen,
       inbox: InboxScreen,
+      send: SendScreen,
     };
 
     this.menus = {
@@ -38,7 +40,7 @@ class Skribble extends play.Game {
   }
 
   save() {
-    var skribble = this.refs['screen-canvas'].refs.getData();
+    var skribble = this.refs['screen-canvas'].getData();
     skribble.recipient = this.state.recipient;
 
     this.emit({
@@ -61,6 +63,14 @@ class Skribble extends play.Game {
   addRecipient(recipient) {
     this.setState({
       recipient
+    });
+  }
+
+  clickRecipient() {
+    this.goto({
+      index: this.state.recipient && this.state.recipient.user_id ?
+        'send' :
+        'friend'
     });
   }
 
@@ -108,7 +118,7 @@ class Skribble extends play.Game {
           <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
         </div>
         <ul className="menu recipient">
-          <li>
+          <li onClick={this.clickRecipient.bind(this)}>
             <span>
               {this.renderRecipient()}
             </span>
