@@ -13,7 +13,7 @@ import FriendScreen from './components/friend_screen.js';
 import CanvasScreen from './components/canvas_screen.js';
 import ItemDrawerScreen from './components/item_drawer_screen.js';
 import InboxScreen from './components/inbox_screen.js';
-import SendScreen from './components/inbox_screen.js';
+import SendScreen from './components/send_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
@@ -68,9 +68,8 @@ class Skribble extends play.Game {
 
   clickRecipient() {
     this.goto({
-      index: this.state.recipient && this.state.recipient.user_id ?
-        'send' :
-        'friend'
+      index: 'friend',
+      recipient: this.state.recipient
     });
   }
 

@@ -5,7 +5,10 @@ class FriendScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'friends'
+      id: 'friends',
+      load: true,
+      complete: true,
+      opts: {},
     };
 
   }
@@ -53,6 +56,8 @@ class FriendScreen extends skoash.Screen {
       leave: false,
       close: false,
       opts,
+    }, () => {
+      self.refs.drawer.start();
     });
 
     if (!self.state.started) {
@@ -78,6 +83,8 @@ class FriendScreen extends skoash.Screen {
           cancelRespond={this.back}
           categories={this.state.opts.categories}
           data={this.state.data}
+          selectedItem={this.state.opts.recipient}
+          complete={true}
         />
       </div>
     );

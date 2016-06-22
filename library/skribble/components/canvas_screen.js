@@ -1,5 +1,6 @@
 import Canvas from '../../shared/components/canvas/0.1.js';
 import Menu from '../../shared/components/menu/0.1.js';
+import Selectable from '../../shared/components/selectable/0.1.js';
 
 import classNames from 'classnames';
 
@@ -60,6 +61,14 @@ class CanvasScreen extends skoash.Screen {
     skoash.Screen.prototype.open.call(this);
   }
 
+  getRightMenuItems() {
+    var items = [];
+
+
+
+    return items;
+  }
+
   getContainerClasses() {
     return classNames({
       'canvas-container': true,
@@ -85,6 +94,7 @@ class CanvasScreen extends skoash.Screen {
         <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />
         </div>
+        <Selectable ref={'right-menu'} className="menu right-menu" list={this.getRightMenuItems()} />
       </div>
     );
   }

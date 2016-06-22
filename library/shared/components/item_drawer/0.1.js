@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import Selectable from '../selectable/0.1';
 
 import classNames from 'classnames';
@@ -6,6 +8,41 @@ class ItemDrawer extends Selectable {
   constructor() {
     super();
   }
+
+  start() {
+    var items, selectFunction, classes = {}, self = this;
+
+    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    items = self.props.data || [];
+
+    if (self.state.category) {
+      items = items[self.state.category].items;
+    }
+
+    _.each(items, (item, key) => {
+      if (self.props.selectedItem && item === self.props.selectedItem) {
+        classes[key] = self.state.selectClass;
+      }
+    });
+
+    if (this.props.selectOnStart) {
+      classes[this.props.selectOnStart] = this.state.selectClass;
+    }
+
+    this.setState({
+      started: true,
+      classes,
+      selectFunction,
+    });
+
+    this.bootstrap();
+
+    _.each(self.refs, ref => {
+      if (typeof ref.start === 'function') ref.start();
+    });
+  }
+
 
   selectHelper(e) {
     var li, message, key, type, classes = [];

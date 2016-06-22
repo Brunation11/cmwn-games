@@ -58,6 +58,13 @@ class Inbox extends Selectable {
     });
   }
 
+  getClassNames() {
+    return classNames({
+      'item-drawer': true,
+      COMPLETE: this.state.complete,
+    }, this.props.className);
+  }
+
   renderList() {
     var items;
 
@@ -93,7 +100,7 @@ class Inbox extends Selectable {
   render() {
     return (
       <div>
-        <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
           {this.renderList()}
         </ul>
       </div>

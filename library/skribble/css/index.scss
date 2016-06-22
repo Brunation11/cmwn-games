@@ -54,7 +54,8 @@ html, body, body > div, body > div > div {
     }
   }
 
-  &.SCREEN-friend {
+  &.SCREEN-friend,
+  &.SCREEN-send {
     .background-2 {
       opacity: 1;
     }

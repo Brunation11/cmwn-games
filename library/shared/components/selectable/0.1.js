@@ -80,10 +80,11 @@ class Selectable extends skoash.Component {
     });
   }
 
-  getULClass() {
+  getClassNames() {
     return classNames({
+      selectable: true,
       COMPLETE: this.state.complete,
-    });
+    }, this.props.className);
   }
 
   renderList() {
@@ -105,7 +106,7 @@ class Selectable extends skoash.Component {
 
   render() {
     return (
-      <ul className={'selectable ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+      <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );

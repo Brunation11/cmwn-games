@@ -104,7 +104,7 @@ class Menu extends Selectable {
     return classNames({
       menu: true,
       ACTIVE: this.state.active,
-    });
+    }, this.props.className);
   }
 
   render() {
