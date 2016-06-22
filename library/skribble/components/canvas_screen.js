@@ -14,6 +14,15 @@ class CanvasScreen extends skoash.Screen {
       menus: {},
     };
 
+    this.rightMenuList = [
+      <li className="preview" onClick={this.goto.bind(this, 'preview')}>
+        <span />
+      </li>,
+      <li className="send" onClick={this.goto.bind(this, 'send')}>
+        <span />
+      </li>
+    ];
+
   }
 
   bootstrap() {
@@ -61,14 +70,6 @@ class CanvasScreen extends skoash.Screen {
     skoash.Screen.prototype.open.call(this);
   }
 
-  getRightMenuItems() {
-    var items = [];
-
-
-
-    return items;
-  }
-
   getContainerClasses() {
     return classNames({
       'canvas-container': true,
@@ -77,7 +78,6 @@ class CanvasScreen extends skoash.Screen {
   }
 
   renderPrevButton() {
-    // <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
     return null;
   }
 
@@ -94,7 +94,7 @@ class CanvasScreen extends skoash.Screen {
         <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />
         </div>
-        <Selectable ref={'right-menu'} className="menu right-menu" list={this.getRightMenuItems()} />
+        <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
     );
   }

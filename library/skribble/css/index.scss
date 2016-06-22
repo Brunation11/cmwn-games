@@ -268,6 +268,7 @@ p {
   margin-top: -450px;
   opacity: 0;
   display: none;
+  overflow: hidden;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
 
@@ -649,6 +650,21 @@ p {
         text-align: center;
       }
     }
+  }
+}
+
+#send {
+  span {
+    display: inline-block;
+    height: 100px;
+  }
+
+  .your-message-to {
+    background-image: url(../media/_Headers/SK_headers.png);
+    background-size: 3800px;
+    background-repeat: no-repeat;
+    background-position: -2850px 0;
+    width: 730px;
   }
 }
 

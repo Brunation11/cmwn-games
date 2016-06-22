@@ -1,6 +1,12 @@
-import SelectableReveal from '../../shared/components/selectable_reveal/0.1.js';
-import Inbox from '../../shared/components/inbox/0.1.js';
-import SavedMessages from '../../shared/components/saved_messages/0.1.js';
+import Selectable from '../../shared/components/selectable/0.1.js';
+
+const classNameText = {
+  yourMessageTo: 'your-message-to',
+  isReady: 'is-ready',
+  changeFriend: 'change-friend',
+  bear: 'bear',
+  gift: 'gift',
+};
 
 class InboxScreen extends skoash.Screen {
   constructor() {
@@ -10,6 +16,18 @@ class InboxScreen extends skoash.Screen {
       id: 'send',
       load: true,
     };
+
+    this.rightMenuList = [
+      <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
+        <span />
+      </li>,
+      <li className="send" onClick={this.goto.bind(this, 'send')}>
+        <span />
+      </li>
+    ];
+  }
+
+  updateData() {
 
   }
 
@@ -47,7 +65,13 @@ class InboxScreen extends skoash.Screen {
   renderContent() {
     return (
       <div>
-        
+        <span className={classNameText.yourMessageTo} />
+        <span></span>
+        <span className={classNameText.isReady} />
+        <button className={classNameText.changeFriend} />
+        <div className={classNameText.bear} />
+        <div className={classNameText.gift} />
+        <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
     );
   }

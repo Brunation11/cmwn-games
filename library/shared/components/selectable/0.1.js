@@ -18,18 +18,21 @@ class Selectable extends skoash.Component {
   }
 
   start() {
-    var selectFunction, classes = {};
+    var selectClass, selectFunction, classes = {};
 
-    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
+    selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     if (this.props.selectOnStart) {
-      classes[this.props.selectOnStart] = this.state.selectClass;
+      classes[this.props.selectOnStart] = selectClass;
     }
 
     this.setState({
       started: true,
       classes,
       selectFunction,
+      selectClass,
     });
 
     this.bootstrap();
