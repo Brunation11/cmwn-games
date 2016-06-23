@@ -144,6 +144,16 @@ button {
     }
   }
 
+  &.change-friend {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -750px;
+
+    &:hover {
+      background-position: -500px -750px;
+    }
+  }
+
   &.next-screen,
   &.prev-screen {
     width: 160px;
@@ -654,17 +664,47 @@ p {
 }
 
 #send {
-  span {
-    display: inline-block;
-    height: 100px;
+  .header {
+    background: none;
+    width: auto;
+    text-align: center;
+    margin-top: 10px;
+
+    span {
+      display: inline-block;
+      height: 100px;
+      line-height: 100px;
+      vertical-align: middle;
+    }
   }
 
-  .your-message-to {
+  .your-message-to,
+  .is-ready {
     background-image: url(../media/_Headers/SK_headers.png);
     background-size: 3800px;
     background-repeat: no-repeat;
+  }
+  
+  .your-message-to {
     background-position: -2850px 0;
-    width: 730px;
+    width: 750px;
+  }
+
+  .username {
+    color: $white;
+    font-size: 54px;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.6);
+  }
+
+  .is-ready {
+    background-position: -2840px -250px;
+    width: 700px;
+  }
+
+  .change-friend {
+    vertical-align: middle;
+    margin-left: -230px;
+    transform: translateX(240px);
   }
 }
 

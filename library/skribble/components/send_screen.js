@@ -6,6 +6,8 @@ const classNameText = {
   changeFriend: 'change-friend',
   bear: 'bear',
   gift: 'gift',
+  header: 'header',
+  username: 'username',
 };
 
 class InboxScreen extends skoash.Screen {
@@ -15,6 +17,7 @@ class InboxScreen extends skoash.Screen {
     this.state = {
       id: 'send',
       load: true,
+      recipient: {},
     };
 
     this.rightMenuList = [
@@ -32,26 +35,17 @@ class InboxScreen extends skoash.Screen {
   }
 
   open() {
-    var self = this;
-
-    skoash.trigger('getData', {
-      categories: 'inbox',
-    }).then(data => {
-      self.updateData.call(self, data);
-    });
+    var recipient = skoash.trigger('getState').recipient || {};
 
     this.setState({
       load: true,
       open: true,
       leave: false,
       close: false,
+      recipient
     });
 
-    setTimeout(() => {
-      if (!self.state.started) {
-        self.start();
-      }
-    }, 250);
+    this.start();
   }
 
   renderPrevButton() {
@@ -63,12 +57,20 @@ class InboxScreen extends skoash.Screen {
   }
 
   renderContent() {
+    var changeFriendClick = this.goto.bind(this, {
+      index: 'friend',
+      goto: 'send',
+    });
+
     return (
       <div>
-        <span className={classNameText.yourMessageTo} />
-        <span></span>
-        <span className={classNameText.isReady} />
-        <button className={classNameText.changeFriend} />
+        <div className={classNameText.header}>
+          <span className={classNameText.yourMessageTo} />
+          <span className={classNameText.username}>{this.state.recipient.name}</span>
+          <br/>
+          <span className={classNameText.isReady} />
+          <button className={classNameText.changeFriend} onClick={changeFriendClick} />
+        </div>
         <div className={classNameText.bear} />
         <div className={classNameText.gift} />
         <Selectable className="menu right-menu" list={this.rightMenuList} />

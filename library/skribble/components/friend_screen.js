@@ -8,6 +8,7 @@ class FriendScreen extends skoash.Screen {
       id: 'friends',
       load: true,
       complete: true,
+      recipient: {},
       opts: {},
     };
 
@@ -16,6 +17,7 @@ class FriendScreen extends skoash.Screen {
   selectRespond(message) {
     skoash.trigger('pass-data', {
       name: 'add-recipient',
+      goto: this.state.opts.goto,
       message
     });
   }
@@ -42,7 +44,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var self = this;
+    var recipient, self = this;
 
     skoash.trigger('getData', {
       categories: ['friends']
@@ -50,11 +52,14 @@ class FriendScreen extends skoash.Screen {
       self.updateData.call(self, data);
     });
 
+    recipient = skoash.trigger('getState').recipient;
+
     self.setState({
       load: true,
       open: true,
       leave: false,
       close: false,
+      recipient,
       opts,
     }, () => {
       self.refs.drawer.start();
@@ -83,7 +88,7 @@ class FriendScreen extends skoash.Screen {
           cancelRespond={this.back}
           categories={this.state.opts.categories}
           data={this.state.data}
-          selectedItem={this.state.opts.recipient}
+          selectedItem={this.state.recipient}
           complete={true}
         />
       </div>

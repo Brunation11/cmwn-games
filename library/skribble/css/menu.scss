@@ -41,7 +41,7 @@
 
     $classes: messages images sounds effects send preview edit-right;
     $left:         452    452    452     452 2250    2250       2250;
-    $top:           10    160    310     460    0     155        155;
+    $top:           10    160    310     460    0     155        305;
 
     @for $i from 1 through 7 {
       &.#{nth($classes, $i)} span {

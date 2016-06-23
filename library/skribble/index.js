@@ -17,9 +17,9 @@ import SendScreen from './components/send_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
-import '../shared/js/test-platform-integration';
+// import '../shared/js/test-platform-integration';
 
-class Skribble extends play.Game {
+class Skribble extends skoash.Game {
   constructor() {
     super(config);
 
@@ -39,6 +39,17 @@ class Skribble extends play.Game {
     };
   }
 
+  goto(opts) {
+    if (opts.index === 'send') {
+      if (!this.state.recipient || !this.state.recipient.name) {
+        opts.index = 'friend';
+        opts.goto = 'send';
+      }
+    }
+
+    skoash.Game.prototype.goto.call(this, opts);
+  }
+
   save() {
     var skribble = this.refs['screen-canvas'].getData();
     skribble.recipient = this.state.recipient;
@@ -56,7 +67,7 @@ class Skribble extends play.Game {
       this.goto({ index: 'canvas' });
     } else if (opts.name === 'add-recipient') {
       this.addRecipient(opts.message);
-      this.goto({ index: 'canvas' });
+      this.goto({ index: opts.goto || 'canvas' });
     }
   }
 
@@ -68,8 +79,7 @@ class Skribble extends play.Game {
 
   clickRecipient() {
     this.goto({
-      index: 'friend',
-      recipient: this.state.recipient
+      index: 'friend'
     });
   }
 
@@ -129,6 +139,6 @@ class Skribble extends play.Game {
 
 }
 
-play.start(Skribble, config.id);
+skoash.start(Skribble, config.id);
 
 import '../shared/js/google-analytics';
