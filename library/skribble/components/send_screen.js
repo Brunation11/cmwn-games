@@ -30,10 +30,6 @@ class InboxScreen extends skoash.Screen {
     ];
   }
 
-  updateData() {
-
-  }
-
   open() {
     var recipient = skoash.trigger('getState').recipient || {};
 
