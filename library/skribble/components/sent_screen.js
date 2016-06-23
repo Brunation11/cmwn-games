@@ -8,6 +8,11 @@ const classNameText = {
   inbox: 'inbox',
 };
 
+const text = {
+  yourMessageTo: 'YOUR MESSAGE TO:',
+  hasBeenSent: 'HAS BEEN SENT!',
+};
+
 class SentScreen extends skoash.Screen {
   constructor() {
     super();
@@ -33,10 +38,10 @@ class SentScreen extends skoash.Screen {
     return (
       <div>
         <div className={classNameText.header}>
-          <span className={classNameText.yourMessageTo} />
+          <span className={classNameText.yourMessageTo}>{text.yourMessageTo}</span>
           <span className={classNameText.username}>{this.state.opts.recipient.name}</span>
           <br/>
-          <span className={classNameText.isReady} />
+          <span className={classNameText.isReady}>{text.hasBeenSent}</span>
         </div>
         <div className={classNameText.buttons}>
           <button className={classNameText.createAnother} onClick={this.goto.bind(this, 'friend')} />

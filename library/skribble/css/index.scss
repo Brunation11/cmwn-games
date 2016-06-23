@@ -719,6 +719,29 @@ p {
   }
 }
 
+#sent {
+  .header {
+    background: none;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+
+    span {
+      display: inline-block;
+      height: 100px;
+      line-height: 100px;
+      vertical-align: middle;
+      color: $white;
+      font-size: 54px;
+    }
+  }
+
+  .your-message-to {
+    margin-right: 20px;
+  }
+}
+
 #flip {
   h2 {
     position: absolute;
