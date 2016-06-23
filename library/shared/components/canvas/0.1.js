@@ -182,18 +182,19 @@ class Canvas extends skoash.Component {
 
   checkItem(key, type) {
     var self = this;
+
     return (
-        /* because we use OR here, if the first condition is true, the second condition will not run */
-        self.state[type + 's'][key].canOverlap ||
-        /* we want to return a bool so we just omit the curly braces  on the arrow function */
-        this.state[type + 's'].some((item, index) =>
-          /* we can drop the repeated `canOverlap` check because of the OR */
-          key === index &&
-          skoash.util.doIntersect(
-              self.refs[type + '-' + key].state.corners,
-              self.refs[type + '-' + index].state.corners
+      this.state[type + 's'][key].canOverlap ||
+      !this.state[type + 's'].some((item, index) => {
+        return (
+          key !== index &&
+          !this.state[type + 's'][index].canOverlap &&
+          play.util.doIntersect(
+            self.refs[type + '-' + key].state.corners,
+            self.refs[type + '-' + index].state.corners
           )
-        )
+        );
+      })
     );
   }
 
