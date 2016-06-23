@@ -319,8 +319,7 @@ class EditableAsset extends Draggable {
       ACTIVE: this.state.active,
       INVALID: !this.state.valid,
       'editable-asset': true,
-      [this.props.type]: true,
-    });
+    }, this.props.type);
   }
 
   renderButtons() {
