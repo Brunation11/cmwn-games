@@ -667,6 +667,7 @@ p {
   .header {
     background: none;
     width: auto;
+    height: auto;
     text-align: center;
     margin-top: 10px;
 
@@ -705,6 +706,16 @@ p {
     vertical-align: middle;
     margin-left: -230px;
     transform: translateX(240px);
+  }
+
+  .gift {
+    background-image: url(../media/_Frames/SK_frames_messagebox.png);
+    background-size: 1750px;
+    background-repeat: no-repeat;
+    background-position: -40px -80px;
+    width: 670px;
+    height: 620px;
+    margin: 0 auto;
   }
 }
 
