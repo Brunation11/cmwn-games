@@ -14,6 +14,7 @@ import CanvasScreen from './components/canvas_screen.js';
 import ItemDrawerScreen from './components/item_drawer_screen.js';
 import InboxScreen from './components/inbox_screen.js';
 import SendScreen from './components/send_screen.js';
+import SentScreen from './components/sent_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
@@ -32,6 +33,7 @@ class Skribble extends skoash.Game {
       'item-drawer': ItemDrawerScreen,
       inbox: InboxScreen,
       send: SendScreen,
+      sent: SentScreen,
     };
 
     this.menus = {
@@ -61,20 +63,41 @@ class Skribble extends skoash.Game {
     });
   }
 
+  send() {
+    var skribble, self = this;
+
+    skribble = self.refs['screen-canvas'].getData();
+    skribble.recipient = self.state.recipient;
+
+    self.emit({
+      name: 'send-skribble',
+      game: self.config.id,
+      skribble,
+    }).then(response => {
+      self.goto({
+        index: 'sent',
+        success: response.success,
+        recipient: response.recipient,
+      });
+    });
+
+  }
+
   passData(opts) {
     if (opts.name === 'add-item') {
       this.refs['screen-canvas'].addItem(opts.message);
       this.goto({ index: 'canvas' });
     } else if (opts.name === 'add-recipient') {
-      this.addRecipient(opts.message);
-      this.goto({ index: opts.goto || 'canvas' });
+      this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
+    } else if (opts.name === 'send') {
+      this.send();
     }
   }
 
-  addRecipient(recipient) {
+  addRecipient(recipient, cb) {
     this.setState({
       recipient
-    });
+    }, cb);
   }
 
   clickRecipient() {

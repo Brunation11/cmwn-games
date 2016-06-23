@@ -10,7 +10,7 @@ const classNameText = {
   username: 'username',
 };
 
-class InboxScreen extends skoash.Screen {
+class SendScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -24,7 +24,7 @@ class InboxScreen extends skoash.Screen {
       <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
         <span />
       </li>,
-      <li className="send" onClick={this.goto.bind(this, 'send')}>
+      <li className="send" onClick={this.send}>
         <span />
       </li>
     ];
@@ -42,6 +42,12 @@ class InboxScreen extends skoash.Screen {
     });
 
     this.start();
+  }
+
+  send() {
+    skoash.trigger('pass-data', {
+      name: 'send',
+    });
   }
 
   renderPrevButton() {
@@ -75,4 +81,4 @@ class InboxScreen extends skoash.Screen {
   }
 }
 
-export default InboxScreen;
+export default SendScreen;
