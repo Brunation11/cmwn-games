@@ -2,6 +2,8 @@
  * Printmaster - Identify Screen
  */
 export default function identify() {
+  var responding;
+
   this.on('ui-open', function (_event) {
     if (!this.is(_event.target)) return;
 
@@ -59,6 +61,10 @@ export default function identify() {
   };
 
   this.respond('select', function (_event) {
+    if (responding) return;
+
+    responding = true;
+
     if (_event.message === this.item) {
       this.audio.sfx.correct.play();
       this.audio.sfx.granted.play();
@@ -70,5 +76,9 @@ export default function identify() {
       this.audio.sfx.denied.play();
       this.highlight(_event.behaviorTarget);
     }
+
+    setTimeout(() => {
+      responding = false;
+    }, 250);
   });
 }
