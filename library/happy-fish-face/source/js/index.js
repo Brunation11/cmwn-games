@@ -25,7 +25,7 @@ pl.game('happy-fish-face', function () {
 
   var self = this;
 
-  pl.game.attachScreen = function(cb) {
+  pl.game.attachScreen = function (cb) {
     cb.call(self);
   };
 
@@ -47,11 +47,9 @@ pl.game('happy-fish-face', function () {
       if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
     });
 
-    this.entity('.fish', function () {
-      this.on('animationend', function (_event) {
-        if (!this.is(_event.target) || !this.screen.allowAction()) return;
-        this.complete();
-      });
+    this.on('animationend', function (_event) {
+      if (!this.find('.fish')[0] === _event.target || !this.screen.allowAction()) return;
+      this.complete();
     });
   });
 
@@ -130,7 +128,7 @@ pl.game('happy-fish-face', function () {
         this.start();
       }
 
-      if(!this.items) {
+      if (!this.items) {
         correct = pl.Queue.create();
 
         correct.on('complete', this.bind(function () {
@@ -204,7 +202,7 @@ pl.game('happy-fish-face', function () {
       }
     });
 
-    this.respond('timerComplete', function() {
+    this.respond('timerComplete', function () {
       this.addClass('TRY-AGAIN').modal.item('tryAgain');
     });
 
@@ -230,14 +228,14 @@ pl.game('happy-fish-face', function () {
 
       }
 
-      this.modal.reveal.audio.voiceOver.on('ended', function (_e) {
+      this.modal.reveal.audio.voiceOver.on('ended', function (_ev) {
         if (this.screen.state(this.STATE.OPEN)) {
-          if (_e.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
+          if (_ev.target.id() === 'goodJob') this.audio.voiceOver.neverThrow.play();
         }
       }.bind(this.modal.reveal));
     });
 
-    this.on('ui-leave ui-close', function() {
+    this.on('ui-leave ui-close', function () {
       this.modal.reveal.audio.voiceOver.off('ended');
     });
   });
