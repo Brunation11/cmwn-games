@@ -6,18 +6,16 @@ class SwitchesSelectable extends Selectable {
 
     this.state = {
       selectClass: 'HIGHLIGHTED',
-      classes: {}
+      classes: {},
+      list: [
+        <li className="animated" correct={true}></li>,
+        <li className="animated" correct={true}></li>,
+        <li className="animated" correct={true}></li>,
+        <li className="animated" correct={true}></li>,
+        <li className="animated" correct={true}></li>
+      ],
+      selectFunction: this.highlight,
     };
-
-    this.selectFunction = this.highlight;
-
-    this.list = [
-      <li className="animated" correct={true}></li>,
-      <li className="animated" correct={true}></li>,
-      <li className="animated" correct={true}></li>,
-      <li className="animated" correct={true}></li>,
-      <li className="animated" correct={true}></li>
-    ];
   }
 }
 

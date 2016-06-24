@@ -6,13 +6,13 @@ class PigSelectable extends Selectable {
 
     this.state = {
       selectClass: 'SELECTED',
-      classes: {}
+      classes: {},
+      list: [
+        <li className="pig animated" data-ref="pig" />,
+        <li className="bulb animated" data-ref="saver" correct={true} />
+      ],
+      selectFunction: this.select,
     };
-
-    this.list = [
-      <li className="pig animated" data-ref="pig" />,
-      <li className="bulb animated" data-ref="saver" correct={true} />
-    ];
   }
 }
 

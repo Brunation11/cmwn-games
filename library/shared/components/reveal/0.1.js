@@ -50,6 +50,10 @@ class Reveal extends play.Component {
       this.audio['open-sound'].play();
     }
 
+    if ('' + parseInt(message, 10) === message) {
+      message = parseInt(message, 10);
+    }
+
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {

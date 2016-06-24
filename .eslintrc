@@ -3,7 +3,8 @@
         "pl": true,
         "play": true,
         "$": true,
-        "ga": true
+        "ga": true,
+        "skoash": true
     },
     "parser": "babel-eslint",
     "plugins": [

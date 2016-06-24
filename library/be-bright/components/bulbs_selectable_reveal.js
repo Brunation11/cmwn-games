@@ -15,8 +15,16 @@ class BulbsSelectableReveal extends SelectableReveal {
   }
 
   renderReveal() {
+    var assets = [
+      <skoash.Audio type="voiceOver" src="media/S_3/VO_3.2.mp3" delay={2000} />,
+      <skoash.Audio type="voiceOver" src="media/S_3/VO_3.3.mp3" delay={2000} />,
+      <skoash.Audio type="voiceOver" src="media/S_3/VO_3.4.mp3" delay={2000} />,
+      <skoash.Audio type="voiceOver" src="media/S_3/VO_3.5.mp3" delay={2000} />,
+      <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
+    ];
+
     return (
-      <BulbsReveal ref="reveal" />
+      <BulbsReveal ref="reveal" assets={assets} />
     );
   }
 }

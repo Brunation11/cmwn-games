@@ -5,7 +5,7 @@ class SwitchesReveal extends Reveal {
     super();
 
     this.state = {
-      classes: {}
+      openReveal: '',
     };
 
     this.list = [
