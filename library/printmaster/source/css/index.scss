@@ -217,6 +217,7 @@ p {
   .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
   .screen.GATED .next-screen {
     opacity: 0;
+    transition: opacity 0s;
     cursor: default;
   }
 

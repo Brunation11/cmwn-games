@@ -25,10 +25,18 @@ export default function carousel() {
   };
 
   this.respond('complete', function (_event) {
+    if (responding) return;
+
+    responding = true;
+
     if (_event.message === 'score') {
       this.modal.item(this.idx);
       this.setTarget(++this.idx);
     }
+
+    setTimeout(() => {
+      responding = false;
+    }, 250);
   });
 
   this.start = function () {
