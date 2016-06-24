@@ -8,11 +8,14 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
   height: 900px;
   max-height: 900px;
   transition: max-height .5s, padding .5s;
   box-sizing: border-box;
+
+  * {
+    z-index: 2;
+  }
 
   > li {
     list-style: none;
@@ -74,7 +77,6 @@
     bottom: auto;
     width: 340px;
     margin: -20px 20px 20px;
-    z-index: 1;
     background-image: url(../media/_Frames/SK_frames_canvas.png);
     background-size: 5100px;
     list-style: none;
@@ -180,21 +182,23 @@
 
   &.right-menu {
     top: 50%;
-    left: 1190px;
+    left: 1445px;
     height: auto;
     padding: 0;
     transform: translateY(-50%);
+    overflow: visible;
+    z-index: 2;
 
     > li {
-      margin-left: 260px;
+      margin-left: 0px;
       max-height: 150px;
 
       &.SELECTED {
-        margin-left: 260px;
+        margin-left: 0px;
       }
 
       &:hover {
-        margin-left: 0;
+        margin-left: -250px;
       }
 
       span {

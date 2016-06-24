@@ -68,6 +68,14 @@ class Canvas extends skoash.Component {
     };
   }
 
+  reset() {
+    this.setState({
+      background: null,
+      items: [],
+      messages: []
+    });
+  }
+
   setItems(message) {
     if (message) {
       /*

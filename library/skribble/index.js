@@ -74,6 +74,13 @@ class Skribble extends skoash.Game {
       game: self.config.id,
       skribble,
     }).then(response => {
+      if (response.success) {
+        self.refs['screen-canvas'].reset();
+        self.setState({
+          recipient: {}
+        });
+      }
+
       self.goto({
         index: 'sent',
         success: response.success,

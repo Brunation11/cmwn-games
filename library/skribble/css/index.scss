@@ -154,6 +154,26 @@ button {
     }
   }
 
+  &.create-another {
+    width: 460px;
+    height: 210px;
+    background-position: -995px 0px;
+
+    &:hover {
+      background-position: -1495px 0px;
+    }
+  }
+
+  &.inbox {
+    width: 460px;
+    height: 210px;
+    background-position: -995px -250px;
+
+    &:hover {
+      background-position: -1495px -250px;
+    }
+  }
+
   &.next-screen,
   &.prev-screen {
     width: 160px;
@@ -392,6 +412,16 @@ p {
   .editable-asset {
     button {
       color: #fff;
+    }
+  }
+
+  .right-menu {
+    display: none;
+  }
+
+  &.HAS-ASSETS {
+    .right-menu {
+      display: block;
     }
   }
 }
@@ -720,17 +750,27 @@ p {
 }
 
 #sent {
+  .character {
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+  }
+
   .header {
-    background: none;
+    background-image: url(../media/_Frames/SK_frames_general.png);
+    background-size: 6450px;
+    background-repeat: no-repeat;
+    background-position: -4825px 0px;
     width: auto;
     height: auto;
     text-align: center;
     margin-top: 10px;
+    padding: 40px 0;
 
     span {
       display: inline-block;
-      height: 100px;
-      line-height: 100px;
+      height: 60px;
+      line-height: 60px;
       vertical-align: middle;
       color: $white;
       font-size: 54px;
@@ -740,6 +780,16 @@ p {
   .your-message-to {
     margin-right: 20px;
   }
+
+  .buttons {
+    text-align: center;
+  }
+
+  .create-another,
+  .inbox {
+    margin: 20px;
+  }
+
 }
 
 #flip {

@@ -1,4 +1,5 @@
 const classNameText = {
+  character: 'character',
   header: 'header',
   yourMessageTo: 'your-message-to',
   username: 'username',
@@ -37,6 +38,7 @@ class SentScreen extends skoash.Screen {
   renderContent() {
     return (
       <div>
+        <div className={classNameText.character} />
         <div className={classNameText.header}>
           <span className={classNameText.yourMessageTo}>{text.yourMessageTo}</span>
           <span className={classNameText.username}>{this.state.opts.recipient.name}</span>

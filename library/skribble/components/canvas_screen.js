@@ -44,9 +44,18 @@ class CanvasScreen extends skoash.Screen {
     return this.refs.canvas.getItems();
   }
 
+  reset() {
+    this.refs.canvas.reset();
+    this.setState({
+      background: false,
+      hasAssets: false,
+    });
+  }
+
   addItem(message) {
     if (message) {
       this.setState({
+        hasAssets: true,
         background: this.state.background ||
               message.type === 'background',
       });
@@ -75,6 +84,12 @@ class CanvasScreen extends skoash.Screen {
       'canvas-container': true,
       BACKGROUND: this.state.background,
     });
+  }
+
+  getClassNames() {
+    return classNames({
+      'HAS-ASSETS': this.state.hasAssets,
+    }, skoash.Screen.prototype.getClassNames.call(this));
   }
 
   renderPrevButton() {
