@@ -2,15 +2,14 @@ class Reveal extends play.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
     };
   }
 
@@ -86,7 +85,7 @@ class Reveal extends play.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.list;
+    var list = this.props.list || this.state.list;
 
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];

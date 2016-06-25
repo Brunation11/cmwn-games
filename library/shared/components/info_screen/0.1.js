@@ -4,13 +4,12 @@ class InfoScreen extends skoash.Screen {
   }
 
   renderContentList() {
-    return this.props.content.map((component, key) => {
-      var ref = component.props['data-ref'] == null ? key : component.props['data-ref'];
+    var children = this.props.children || this.props.content || [];
+    return children.map((component, key) => {
       return (
         <component.type
           {...component.props}
-          data-ref={ref}
-          ref={ref}
+          ref={component.ref}
           key={key}
         />
       );

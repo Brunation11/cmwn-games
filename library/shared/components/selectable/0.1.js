@@ -18,13 +18,15 @@ class Selectable extends play.Component {
   }
 
   start() {
-    var selectFunction;
+    var selectClass, selectFunction;
 
-    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+    selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     this.setState({
       started: true,
       classes: {},
+      selectClass,
       selectFunction,
     });
 

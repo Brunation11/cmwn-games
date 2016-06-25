@@ -26,7 +26,7 @@ class BeBright extends skoash.Game {
     this.screens = {
       0: <iOSScreen />,
       1: TitleScreen,
-      2: <BulbsScreen />,
+      2: BulbsScreen,
       3: <PigScreen />,
       4: <SwitchesScreen />,
       5: <InfoScreen />,
