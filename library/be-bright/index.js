@@ -19,37 +19,24 @@ import QuitScreen from 'shared/components/quit_screen/0.1.js';
 
 // import 'shared/js/test-platform-integration';
 
-class BeBright extends play.Game {
+class BeBright extends skoash.Game {
   constructor() {
     super(config);
 
     this.screens = {
-      0: iOSScreen,
+      0: <iOSScreen />,
       1: TitleScreen,
-      2: BulbsScreen,
-      3: PigScreen,
-      4: SwitchesScreen,
-      5: InfoScreen,
-      6: VideoScreen,
-      7: FlipScreen,
-    };
-
-    this.screenProps = {
-      1: {
-        checkComplete: false,
-        playOnStart: 'buzz',
-      },
+      2: <BulbsScreen />,
+      3: <PigScreen />,
+      4: <SwitchesScreen />,
+      5: <InfoScreen />,
+      6: <VideoScreen />,
+      7: <FlipScreen />,
     };
 
     this.menus = {
       quit: QuitScreen,
     };
-  }
-
-  componentWillMount() {
-    play.Game.prototype.componentWillMount.call(this);
-
-
   }
 
   renderLoader() {
@@ -61,16 +48,16 @@ class BeBright extends play.Game {
   renderAssets() {
     return (
       <div>
-        <play.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
-        <play.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <play.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
-        <play.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
+        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
+        <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       </div>
     );
   }
 
 }
 
-play.start(BeBright, config.id);
+skoash.start(BeBright, config.id);
 
 import 'shared/js/google-analytics';
