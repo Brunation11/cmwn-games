@@ -1,20 +1,21 @@
 var path = require('path'),
-    webpack = require('webpack');
+  webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/library',
   entry: null,
   devtool: 'source-map',
   resolve: {
+    root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js'],
     modulesDirectories: ['node_modules']
   },
   plugins: [
     new webpack.DefinePlugin({
-        'process.env': {
-            'BABEL_ENV': JSON.stringify('production'),
-            'NODE_ENV': JSON.stringify('production')
-        }
+      'process.env': {
+        'BABEL_ENV': JSON.stringify('production'),
+        'NODE_ENV': JSON.stringify('production')
+      }
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
@@ -29,7 +30,7 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin()
   ],
   output: {
-    path: __dirname+'/build',
+    path: __dirname + '/build',
     filename: '[name]/ai.js',
     publicPath: '/build/'
   },

@@ -4,7 +4,11 @@
         "play": true,
         "$": true,
         "ga": true,
-        "skoash": true
+        "skoash": true,
+        "require": true,
+        "module": true,
+        "__dirname": true,
+        "autoprefixer": true
     },
     "parser": "babel-eslint",
     "plugins": [

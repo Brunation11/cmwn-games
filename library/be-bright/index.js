@@ -4,9 +4,9 @@
  */
 import config from './config.game';
 
-import Loader from '../shared/components/loader/0.1.js';
+import Loader from 'shared/components/loader/0.1.js';
 
-import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1.js';
 import TitleScreen from './components/title_screen.js';
 import BulbsScreen from './components/bulbs_screen.js';
 import PigScreen from './components/pig_screen.js';
@@ -15,9 +15,9 @@ import InfoScreen from './components/info_screen.js';
 import VideoScreen from './components/video_screen.js';
 import FlipScreen from './components/flip_screen.js';
 
-import QuitScreen from '../shared/components/quit_screen/0.1.js';
+import QuitScreen from 'shared/components/quit_screen/0.1.js';
 
-import '../shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class BeBright extends play.Game {
   constructor() {
@@ -73,4 +73,4 @@ class BeBright extends play.Game {
 
 play.start(BeBright, config.id);
 
-import '../shared/js/google-analytics';
+import 'shared/js/google-analytics';
