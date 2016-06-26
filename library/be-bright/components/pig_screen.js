@@ -1,4 +1,4 @@
-import SelectableScreen from 'shared/components/selectable_screen/0.1.js';
+import SelectableScreen from 'shared/components/selectable_screen/0.1';
 
 var PigScreen = (
   <SelectableScreen
