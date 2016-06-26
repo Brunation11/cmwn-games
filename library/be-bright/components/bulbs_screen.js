@@ -24,7 +24,7 @@ var BulbsScreen = (
         </li>,
         <li>
           <p>Burning fossil fuels contributes<br/> to bad air quality and climate change!</p>
-          </li>,
+        </li>,
         <li>
           <p>Leaving the lights on when<br/> you don’t need them costs money!</p>
         </li>
