@@ -1,6 +1,6 @@
 import InfoScreen from 'shared/components/info_screen/0.1.js';
 
-export default (
+var TitleScreen = (
   <InfoScreen
     id="title"
     checkComplete={false}
@@ -14,3 +14,5 @@ export default (
     <skoash.Image ref="title" className="title animated" src="media/S_1/img_1.3.png" />
   </InfoScreen>
 );
+
+export default TitleScreen;

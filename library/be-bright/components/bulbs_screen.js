@@ -1,7 +1,7 @@
 import InfoScreen from 'shared/components/info_screen/0.1.js';
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
-export default (
+var BulbsScreen = (
   <InfoScreen
     id="bulbs"
   >
@@ -40,3 +40,5 @@ export default (
     />
   </InfoScreen>
 );
+
+export default BulbsScreen;
