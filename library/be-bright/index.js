@@ -31,7 +31,7 @@ class BeBright extends skoash.Game {
       4: SwitchesScreen,
       5: InfoScreen,
       6: VideoScreen,
-      7: <FlipScreen />,
+      7: FlipScreen,
     };
 
     this.menus = {
