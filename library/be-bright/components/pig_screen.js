@@ -5,8 +5,8 @@ var PigScreen = (
     id="pig"
     answers={['saver']}
     selectableList={[
-      <skoash.listItem className="pig animated" data-ref="pig" />,
-      <skoash.listItem className="bulb animated" data-ref="saver" correct />
+      <skoash.ListItem className="pig animated" data-ref="pig" />,
+      <skoash.ListItem className="bulb animated" data-ref="saver" correct />
     ]}
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_4/VO_4.1.mp3" pl-delay={1000} />
