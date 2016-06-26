@@ -4,8 +4,8 @@ var SwitchesScreen = (
   <skoash.Screen
     id="switches"
   >
-    <play.Audio ref="vo" type="voiceOver" src="media/S_5/VO_5.1.mp3" />
-    <play.Image ref="title" className="title animated" src="media/S_5/img_5.1.png" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/S_5/VO_5.1.mp3" />
+    <skoash.Image ref="title" className="title animated" src="media/S_5/img_5.1.png" />
     <SelectableReveal
       ref="selectable-reveal"
       selectableList={[
@@ -34,12 +34,12 @@ var SwitchesScreen = (
         </li>
       ]}
       revealAssets={[
-        <play.Audio type="voiceOver" src="media/S_5/VO_5.2.mp3" delay={2000} />,
-        <play.Audio type="voiceOver" src="media/S_5/VO_5.3.mp3" delay={2000} />,
-        <play.Audio type="voiceOver" src="media/S_5/VO_5.4.mp3" delay={2000} />,
-        <play.Audio type="voiceOver" src="media/S_5/VO_5.5.mp3" delay={2000} />,
-        <play.Audio type="voiceOver" src="media/S_5/VO_5.6.mp3" delay={2000} />,
-        <play.Audio ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
+        <skoash.Audio type="voiceOver" src="media/S_5/VO_5.2.mp3" delay={2000} />,
+        <skoash.Audio type="voiceOver" src="media/S_5/VO_5.3.mp3" delay={2000} />,
+        <skoash.Audio type="voiceOver" src="media/S_5/VO_5.4.mp3" delay={2000} />,
+        <skoash.Audio type="voiceOver" src="media/S_5/VO_5.5.mp3" delay={2000} />,
+        <skoash.Audio type="voiceOver" src="media/S_5/VO_5.6.mp3" delay={2000} />,
+        <skoash.Audio ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
       ]}
     />
   </skoash.Screen>
