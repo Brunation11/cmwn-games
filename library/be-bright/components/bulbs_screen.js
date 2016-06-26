@@ -1,8 +1,7 @@
-import InfoScreen from 'shared/components/info_screen/0.1.js';
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
 var BulbsScreen = (
-  <InfoScreen
+  <skoash.Screen
     id="bulbs"
   >
     <play.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
@@ -38,7 +37,7 @@ var BulbsScreen = (
         <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       ]}
     />
-  </InfoScreen>
+  </skoash.Screen>
 );
 
 export default BulbsScreen;

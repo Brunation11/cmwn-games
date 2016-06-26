@@ -17,19 +17,10 @@ class SelectableScreen extends skoash.Screen {
     if (correct && this.props.answers && ~this.props.answers.indexOf(message)) {
       correct.play();
     }
-  }
 
-  renderContentList() {
-    var children = this.props.children || this.props.content || [];
-    return children.map((component, key) => {
-      return (
-        <component.type
-          {...component.props}
-          ref={component.ref}
-          key={key}
-        />
-      );
-    });
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond.call(this, message);
+    }
   }
 
   renderContent() {
