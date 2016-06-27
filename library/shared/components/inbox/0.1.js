@@ -8,14 +8,13 @@ class Inbox extends Selectable {
   }
 
   selectHelper(e) {
-    var li, message, key, type, classes = [];
+    var li, message, key, classes = [];
 
     li = e.target.closest('LI');
 
     if (!li) return;
 
     key = li.getAttribute('data-ref');
-    type = this.refs[key].props.item.type;
 
     message = this.refs[key].props.item;
     classes[key] = this.state.selectClass;
@@ -72,8 +71,8 @@ class Inbox extends Selectable {
           item={item}
           key={key}
         >
-          <skoash.Image src={item['profile-image']} />
-          <span className="username">{item.username}</span>
+          <skoash.Image src={item.user.profile_image} />
+          <span className="username">{item.user.name}</span>
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>

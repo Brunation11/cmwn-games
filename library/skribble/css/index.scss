@@ -73,6 +73,31 @@ html, body, body > div, body > div > div {
       opacity: 1;
     }
   }
+
+  // hiding buttons for certain screens
+  &.SCREEN-1,
+  &.SCREEN-friend {
+    .game-menu .save,
+    .game-menu .create,
+    .menu.recipient {
+      display: none;
+    }
+  }
+
+  &.SCREEN-canvas {
+    .game-menu .create {
+      display: none;
+    }
+  }
+
+  &.SCREEN-inbox,
+  &.SCREEN-read {
+    .game-menu .save,
+    .game-menu .inbox,
+    .menu.recipient {
+      display: none;
+    }
+  }
 }
 
 html {
@@ -660,6 +685,7 @@ p {
       height: 92px;
       left: 160px;
       top: 22px;
+      background-color: $white;
     }
 
     span {
@@ -794,6 +820,10 @@ p {
 }
 
 #read {
+  .menu.recipient.sender {
+    display: block;
+  }
+
   .skribble-box {
     position: absolute;
     left: 0;

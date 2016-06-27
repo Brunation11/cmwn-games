@@ -5,6 +5,7 @@ const classNameText = {
   box: 'box',
   leftMenu: 'menu left-menu',
   rightMenu: 'menu right-menu',
+  sender: 'menu recipient sender',
 };
 
 const refs = {
@@ -18,7 +19,9 @@ class ReadScreen extends skoash.Screen {
     this.state = {
       id: 'read',
       load: true,
-      recipient: {},
+      message: {
+        user: {}
+      },
     };
 
     this.leftMenuList = [
@@ -28,30 +31,31 @@ class ReadScreen extends skoash.Screen {
     ];
 
     this.rightMenuList = [
-      <li className="reply" onClick={this.goto.bind(this, 'canvas')}>
+      <li className="reply" onClick={this.reply.bind(this)}>
         <span />
       </li>
     ];
   }
 
-  open() {
-    var recipient = skoash.trigger('getState').recipient || {};
+  reply() {
+    skoash.trigger('passData', {
+      name: 'add-recipient',
+      message: this.state.message.user,
+    });
+  }
+
+  open(opts) {
+    var message = opts.message || {};
 
     this.setState({
       load: true,
       open: true,
       leave: false,
       close: false,
-      recipient
+      message
     });
 
     this.start();
-  }
-
-  send() {
-    skoash.trigger('pass-data', {
-      name: 'send',
-    });
   }
 
   renderPrevButton() {
@@ -62,11 +66,34 @@ class ReadScreen extends skoash.Screen {
     return null;
   }
 
+  renderSender() {
+    var message = this.state.message, content = [];
+
+    if (!message) return;
+
+    if (message.user.name) {
+      content.push(<span className="name">{message.user.name}</span>);
+    }
+
+    if (message.user.profile_image) {
+      content.push(<img className="profile-image" src={message.user.profile_image} />);
+    }
+
+    return content;
+  }
+
   renderContent() {
     return (
       <div>
+        <ul className={classNameText.sender}>
+          <li>
+            <span>
+              {this.renderSender()}
+            </span>
+          </li>
+        </ul>
         <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          <skoash.Image src="media/tempthumb.png" />
+          <skoash.Image src={this.state.message.src} />
           <div className={classNameText.box} />
         </skoash.Component>
         <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />

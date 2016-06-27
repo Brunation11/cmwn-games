@@ -102,6 +102,10 @@ class Skribble extends skoash.Game {
   }
 
   addRecipient(recipient, cb) {
+    if (recipient.src) {
+      recipient.profile_image = recipient.src; // eslint-disable-line camelcase
+      delete recipient.src;
+    }
     this.setState({
       recipient
     }, cb);
@@ -139,8 +143,8 @@ class Skribble extends skoash.Game {
       content.push(<span className="name">{recipient.name}</span>);
     }
 
-    if (recipient.src) {
-      content.push(<img className="profile-image" src={recipient.src} />);
+    if (recipient.profile_image) {
+      content.push(<img className="profile-image" src={recipient.profile_image} />);
     }
 
     return content;
