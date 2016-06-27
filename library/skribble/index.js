@@ -4,36 +4,34 @@
  */
 import config from './config.game';
 
-import Loader from '../shared/components/loader/0.1.js';
+import Loader from 'shared/components/loader/0.1';
 
-import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
-// import SampleScreen from './components/sample_screen.js';
-import MenuScreen from './components/menu_screen.js';
-import FriendScreen from './components/friend_screen.js';
-import CanvasScreen from './components/canvas_screen.js';
-import ItemDrawerScreen from './components/item_drawer_screen.js';
-import InboxScreen from './components/inbox_screen.js';
-import SendScreen from './components/send_screen.js';
-import SentScreen from './components/sent_screen.js';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import MenuScreen from './components/menu_screen';
+import FriendScreen from './components/friend_screen';
+import CanvasScreen from './components/canvas_screen';
+import ItemDrawerScreen from './components/item_drawer_screen';
+import InboxScreen from './components/inbox_screen';
+import SendScreen from './components/send_screen';
+import SentScreen from './components/sent_screen';
 
-import QuitScreen from '../shared/components/quit_screen/0.1.js';
+import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import '../shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class Skribble extends skoash.Game {
   constructor() {
     super(config);
 
     this.screens = {
-      0: iOSScreen,
-      // 1: SampleScreen,
-      1: MenuScreen,
-      friend: FriendScreen,
-      canvas: CanvasScreen,
-      'item-drawer': ItemDrawerScreen,
-      inbox: InboxScreen,
-      send: SendScreen,
-      sent: SentScreen,
+      0: <iOSScreen />,
+      1: <MenuScreen />,
+      friend: <FriendScreen />,
+      canvas: <CanvasScreen />,
+      'item-drawer': <ItemDrawerScreen />,
+      inbox: <InboxScreen />,
+      send: <SendScreen />,
+      sent: <SentScreen />,
     };
 
     this.menus = {
