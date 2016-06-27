@@ -14,6 +14,7 @@ import ItemDrawerScreen from './components/item_drawer_screen';
 import InboxScreen from './components/inbox_screen';
 import SendScreen from './components/send_screen';
 import SentScreen from './components/sent_screen';
+import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -32,6 +33,7 @@ class Skribble extends skoash.Game {
       inbox: <InboxScreen />,
       send: <SendScreen />,
       sent: <SentScreen />,
+      read: <ReadScreen />,
     };
 
     this.menus = {

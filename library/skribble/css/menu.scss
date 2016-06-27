@@ -42,11 +42,11 @@
       margin-left: -2px;
     }
 
-    $classes: messages images sounds effects send preview edit-right;
-    $left:         452    452    452     452 2250    2250       2250;
-    $top:           10    160    310     460    0     155        305;
+    $classes: messages images sounds effects send preview edit-right inbox reply;
+    $left:         452    452    452     452 2250    2250       2250  1350  2250;
+    $top:           10    160    310     460    0     155        305   155   455;
 
-    @for $i from 1 through 7 {
+    @for $i from 1 through 9 {
       &.#{nth($classes, $i)} span {
         background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
       }

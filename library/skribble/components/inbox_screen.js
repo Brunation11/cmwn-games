@@ -43,6 +43,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: inbox || [],
           }}
+          selectRespond={this.readMessage.bind(this)}
         />
       </li>,
       <li>
@@ -51,6 +52,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: unread || [],
           }}
+          selectRespond={this.readMessage.bind(this)}
         />
       </li>,
       <li>
@@ -59,6 +61,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: read || [],
           }}
+          selectRespond={this.readMessage.bind(this)}
         />
       </li>,
       <li>
@@ -67,6 +70,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: outbox || [],
           }}
+          selectRespond={this.readMessage.bind(this)}
         />
       </li>,
       <li>
@@ -84,6 +88,13 @@ class InboxScreen extends skoash.Screen {
   editMessage(message) {
     skoash.trigger('goto', {
       index: 'canvas',
+      message,
+    });
+  }
+
+  readMessage(message) {
+    skoash.trigger('goto', {
+      index: 'read',
       message,
     });
   }

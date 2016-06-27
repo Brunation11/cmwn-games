@@ -48,7 +48,8 @@ html, body, body > div, body > div > div {
 
   &.SCREEN-1,
   &.SCREEN-canvas,
-  &.SCREEN-item-drawer {
+  &.SCREEN-item-drawer,
+  &.SCREEN-read {
     .background-1 {
       opacity: 1;
     }
@@ -790,6 +791,34 @@ p {
     margin: 20px;
   }
 
+}
+
+#read {
+  .skribble-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .left-menu {
+    height: auto;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    > li {
+      height: 150px;
+      max-height: 150px;
+
+      &.SELECTED {
+        margin-left: -260px;
+      }
+      
+      &:hover {
+        margin-left: -2px;
+      }
+    }
+  }
 }
 
 #flip {

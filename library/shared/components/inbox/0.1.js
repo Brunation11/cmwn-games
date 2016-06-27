@@ -17,30 +17,16 @@ class Inbox extends Selectable {
     key = li.getAttribute('data-ref');
     type = this.refs[key].props.item.type;
 
-    if (type === 'category') {
-      this.setState({
-        category: key,
-      });
-    } else {
-      message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+    message = this.refs[key].props.item;
+    classes[key] = this.state.selectClass;
 
-      this.setState({
-        message,
-        classes,
-      });
-    }
-  }
+    this.setState({
+      message,
+      classes,
+    });
 
-  selectButton() {
-    if (typeof this.props.selectRespond === 'function' && this.state.message) {
-      this.props.selectRespond(this.state.message);
-    }
-  }
-
-  cancelButton() {
-    if (typeof this.props.cancelRespond === 'function') {
-      this.props.cancelRespond();
+    if (typeof this.props.selectRespond === 'function' && message) {
+      this.props.selectRespond(message);
     }
   }
 
@@ -77,7 +63,7 @@ class Inbox extends Selectable {
     }
 
     return items.map((item, key) => {
-      var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
+      var timestamp = moment(item.timestamp);
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
