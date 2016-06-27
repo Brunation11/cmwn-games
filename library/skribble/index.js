@@ -169,4 +169,4 @@ class Skribble extends skoash.Game {
 
 skoash.start(Skribble, config.id);
 
-import '../shared/js/google-analytics';
+import 'shared/js/google-analytics';
