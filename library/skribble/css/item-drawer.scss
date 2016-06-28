@@ -103,9 +103,28 @@
 
   &.backgrounds {
     li {
-      height: 100px;
-      padding-top: 64px;
-      background-position: top center;
+      height: 180px;
+      background-image: url(../media/_Frames/SK_frames_Background.png);
+      background-size: 350px;
+      background-repeat: no-repeat;
+      background-position: 0px -230px;
+
+      &:before {
+        background-image: url(../media/_Frames/SK_frames_Background.png);
+        background-size: 350px;
+        background-repeat: no-repeat;
+        background-position: 0px -4px;
+      }
+
+      img {
+        max-width: 95%;
+
+        &:only-child {
+          max-width: 120%;
+          margin-left: -11%;
+          margin-top: 1%;
+        }
+      }
     }
   }
 }
