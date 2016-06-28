@@ -70,6 +70,35 @@ class FriendScreen extends skoash.Screen {
     window.open('https://changemyworldnow.com/friends');
   }
 
+  renderOtter() {
+    var copy, src;
+
+    src = 'One';
+    copy = (
+      <span>
+        Don't have<br/> friends yes<br/><br/> Let me suggest<br/> some for you.
+      </span>
+    );
+
+    if (this.state.data && this.state.data.length) {
+      src = 'Two';
+      copy = (
+        <span>
+          Let me find a friend<br/> to send your message to.
+        </span>
+      );
+    }
+
+    return (
+      <div className={'otter-container ' + src}>
+        <skoash.Image className="otter" src={`media/_Otter/Otter_Static_Greeting${src}.png`} />
+        <div className="bubble">
+          {copy}
+        </div>
+      </div>
+    );
+  }
+
   renderFriends() {
     if (this.state.data && this.state.data.length) {
       return (
@@ -111,6 +140,7 @@ class FriendScreen extends skoash.Screen {
     return (
       <div>
         <div className="header" />
+        {this.renderOtter()}
         {this.renderFriends()}
       </div>
     );
