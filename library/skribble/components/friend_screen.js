@@ -87,6 +87,7 @@ class FriendScreen extends skoash.Screen {
           selectedItem={this.state.recipient}
           buttons={this.buttons}
           complete={true}
+          className={this.state.opts.goto}
         />
       </div>
     );

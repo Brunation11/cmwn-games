@@ -183,7 +183,7 @@ class ItemDrawer extends Selectable {
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
           <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>

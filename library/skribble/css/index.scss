@@ -536,6 +536,12 @@ p {
     display: block;
     color: #000;
   }
+
+  .send {
+    .continue {
+      display: none;
+    }
+  }
 }
 
 #menu {
