@@ -50,6 +50,11 @@ class Inbox extends Selectable {
     }, this.props.className);
   }
 
+  getStatusText(item) {
+    if (!item.status || item.status === 'COMPLETE') return '';
+    return item.status;
+  }
+
   renderList() {
     var items;
 
@@ -76,6 +81,9 @@ class Inbox extends Selectable {
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
+          </span>
+          <span className={'status ' + item.status}>
+            {this.getStatusText(item)}
           </span>
         </skoash.ListItem>
       );

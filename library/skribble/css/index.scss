@@ -662,6 +662,14 @@ p {
       background-position: -30px -414px;
       margin: 0;
 
+      .status {
+        display: none;
+      }
+
+      &:before {
+        display: none;
+      }
+
       &.SELECTED {
         border-color: transparent;
       }
@@ -683,6 +691,17 @@ p {
 
         &:hover {
           background-position: -1328px -220px;
+        }
+
+        .status {
+          display: inline-block;
+          top: 45%;
+          right: 220px;
+          transform: translateY(-50%);
+
+          &.ERROR {
+            color: $error-red;
+          }
         }
       }
 
