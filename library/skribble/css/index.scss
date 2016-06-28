@@ -84,7 +84,8 @@ html, body, body > div, body > div > div {
     }
   }
 
-  &.SCREEN-canvas {
+  &.SCREEN-canvas,
+  &.SCREEN-send {
     .game-menu .create {
       display: none;
     }
@@ -157,6 +158,16 @@ button {
 
     &:hover {
       background-position: -1496px -740px;
+    }
+  }
+
+  &.continue {
+    width: 360px;
+    height: 180px;
+    background-position: -996px -1240px;
+
+    &:hover {
+      background-position: -1496px -1240px;
     }
   }
 
@@ -531,6 +542,10 @@ p {
   .buttons {
     display: inline-block;
     vertical-align: middle;
+  }
+
+  .continue {
+    display: none;
   }
 
   button {

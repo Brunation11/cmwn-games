@@ -34,10 +34,6 @@ class FriendScreen extends skoash.Screen {
       };
     });
 
-    data.unshift({
-      description: 'Choose Friend Later',
-    });
-
     this.setState({
       data,
     });
@@ -89,6 +85,7 @@ class FriendScreen extends skoash.Screen {
           categories={this.state.opts.categories}
           data={this.state.data}
           selectedItem={this.state.recipient}
+          buttons={this.buttons}
           complete={true}
         />
       </div>

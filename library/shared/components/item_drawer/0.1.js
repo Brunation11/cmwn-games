@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import Selectable from '../selectable/0.1';
-
-import classNames from 'classnames';
 
 class ItemDrawer extends Selectable {
   constructor() {
@@ -45,7 +44,6 @@ class ItemDrawer extends Selectable {
     });
   }
 
-
   selectHelper(e) {
     var li, message, key, type, classes = [];
 
@@ -74,6 +72,12 @@ class ItemDrawer extends Selectable {
   selectButton() {
     if (typeof this.props.selectRespond === 'function') {
       this.props.selectRespond(this.state.message);
+    }
+  }
+
+  continueButton() {
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond({});
     }
   }
 
@@ -107,6 +111,7 @@ class ItemDrawer extends Selectable {
     return (
       <div className="buttons">
         <button className="select" onClick={this.selectButton.bind(this)} />
+        <button className="continue" onClick={this.continueButton.bind(this)} />
         <button className="cancel" onClick={this.cancelButton.bind(this)} />
       </div>
     );

@@ -81,7 +81,7 @@ class Menu extends Selectable {
           key={key}
           onClick={onClick}
         >
-          <span />
+          <span>{key}</span>
           {(() => {
             if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
             return (
