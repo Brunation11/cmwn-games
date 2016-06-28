@@ -107,6 +107,15 @@ class ItemDrawer extends Selectable {
     });
   }
 
+  getClass(key, item) {
+    var white = item && item.src && item.src.indexOf('_w.') !== -1;
+
+    return classNames({
+      [this.state.classes[key] || '']: true,
+      white
+    });
+  }
+
   renderButtons() {
     return (
       <div className="buttons">
@@ -117,18 +126,22 @@ class ItemDrawer extends Selectable {
     );
   }
 
-  renderItemText(item) {
-    var text = [];
+  renderItemContent(item) {
+    var content = [];
+
+    if (item.src) {
+      content.push(<skoash.Image src={item.src} />);
+    }
 
     if (item.name) {
-      text.push(<span className="name">{item.name}</span>);
+      content.push(<span className="name">{item.name}</span>);
     }
 
     if (item.description) {
-      text.push(<span className="description">{item.description}</span>);
+      content.push(<span className="description">{item.description}</span>);
     }
 
-    return text;
+    return content;
   }
 
   renderList() {
@@ -145,14 +158,13 @@ class ItemDrawer extends Selectable {
     return items.map((item, key) => {
       return (
         <skoash.ListItem
-          className={this.getClass(key)}
+          className={this.getClass(key, item)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
-          style={{backgroundImage: 'url("' + item.src + '")'}}
         >
-          {self.renderItemText(item)}
+          {self.renderItemContent(item)}
         </skoash.ListItem>
       );
     });

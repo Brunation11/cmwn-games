@@ -481,11 +481,21 @@ p {
 
   .item-drawer {
     li {
-      height: 182px;
+      padding: 15px 10px;
+      width: 200px;
+      height: 270px;
+      background-image: url(../media/_Buttons/sk_btn_selectfriend.png);
+      background-size: 400px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+
+      &:before {
+        display: none;
+      }
 
       span {
         display: block;
-        font-size: 18px;
+        font-size: 24px;
 
         &.name {
           color: $green;
@@ -496,7 +506,11 @@ p {
         }
       }
 
-      &:hover {
+      &:hover,
+      &.SELECTED {
+        border-color: transparent;
+        background-position: -200px 0;
+
         span {
 
           &.name {
@@ -782,7 +796,7 @@ p {
 
   .gift {
     background-image: url(../media/_Frames/SK_frames_messagebox.png);
-    background-size: 1750px;
+    background-size: 2600px;
     background-repeat: no-repeat;
     background-position: -40px -80px;
     width: 670px;
@@ -860,7 +874,7 @@ p {
     .box {
       position: relative;
       background-image: url(../media/_Frames/SK_frames_messagebox.png);
-      background-size: 1750px;
+      background-size: 2600px;
       background-repeat: no-repeat;
       background-position: -40px -80px;
       width: 670px;
