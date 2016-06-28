@@ -30,46 +30,48 @@ html, body, body > div, body > div > div {
     opacity: 0;
   }
 
-  .background-1 {
-    background-image: url(../media/_Background/SK_BKG_1.png);
-  }
-
-  .background-2 {
-    background-image: url(../media/_Background/SK_BKG_2.png);
-  }
-
-  .background-3 {
-    background-image: url(../media/_Background/SK_BKG_3.png);
-  }
-
-  .background-4 {
-    background-image: url(../media/_Background/SK_BKG_4.png);
+  @for $i from 1 through 6 {
+    .background-#{$i} {
+      background-image: url(../media/_Background/SK_BKG_#{$i}.png);
+    }
   }
 
   &.SCREEN-1,
-  &.SCREEN-canvas,
-  &.SCREEN-item-drawer,
+  &.SCREEN-menu,
   &.SCREEN-read {
     .background-1 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-friend,
-  &.SCREEN-send {
+  &.SCREEN-canvas,
+  &.SCREEN-item-drawer,
+  &.SCREEN-preview {
     .background-2 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-inbox {
+  &.SCREEN-friend {
     .background-3 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-sent {
+  &.SCREEN-send {
     .background-4 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-inbox {
+    .background-5 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-sent {
+    .background-6 {
       opacity: 1;
     }
   }
@@ -419,25 +421,13 @@ p {
   margin: 0 auto;
 }
 
-#sample {
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-
-  li {
-    position: relative;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    height: 200px;
-  }
-
-  button {
-    color: #000;
+#title {
+  img {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 

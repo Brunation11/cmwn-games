@@ -7,6 +7,7 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import TitleScreen from './components/title_screen';
 import MenuScreen from './components/menu_screen';
 import FriendScreen from './components/friend_screen';
 import CanvasScreen from './components/canvas_screen';
@@ -26,7 +27,8 @@ class Skribble extends skoash.Game {
 
     this.screens = {
       0: <iOSScreen />,
-      1: <MenuScreen />,
+      1: TitleScreen,
+      'menu': <MenuScreen />,
       friend: <FriendScreen />,
       canvas: <CanvasScreen />,
       'item-drawer': <ItemDrawerScreen />,
@@ -130,6 +132,8 @@ class Skribble extends skoash.Game {
         <div className="background-2" />
         <div className="background-3" />
         <div className="background-4" />
+        <div className="background-5" />
+        <div className="background-6" />
       </div>
     );
   }
