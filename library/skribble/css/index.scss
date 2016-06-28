@@ -573,6 +573,25 @@ p {
 }
 
 #menu {
+  .otter {
+    position: absolute;
+    left: 280px;
+    bottom: 80px;
+  }
+
+  .bubble {
+    position: absolute;
+    left: 450px;
+    top: 80px;
+    background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+    background-repeat: no-repeat;
+    background-size: 1125px;
+    background-position: -380px -380px;
+    padding: 60px 30px 100px 35px;
+    text-align: center;
+    font-size: 44px;
+  }
+
   .buttons {
     position: absolute;
     left: 75%;
