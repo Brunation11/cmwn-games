@@ -13,12 +13,14 @@ class Canvas extends skoash.Component {
       offsetX: 0,
       offsetY: 0,
       active: false,
+      valid: true,
     };
 
     this.deleteItem = this.deleteItem.bind(this);
     this.checkItem = this.checkItem.bind(this);
     this.deactivateItems = this.deactivateItems.bind(this);
     this.relayerItems = this.relayerItems.bind(this);
+    this.setValid = this.setValid.bind(this);
   }
 
   getItems() {
@@ -193,17 +195,25 @@ class Canvas extends skoash.Component {
 
     return (
       this.state[type + 's'][key].can_overlap ||
-      !this.state[type + 's'].some((item, index) => {
-        return (
-          key !== index &&
-          !this.state[type + 's'][index].can_overlap &&
-          play.util.doIntersect(
-            self.refs[type + '-' + key].state.corners,
-            self.refs[type + '-' + index].state.corners
-          )
-        );
-      })
+      !this.state[type + 's'].some((item, index) =>
+        key !== index &&
+        !this.state[type + 's'][index].can_overlap &&
+        play.util.doIntersect(
+          self.refs[type + '-' + key].state.corners,
+          self.refs[type + '-' + index].state.corners
+        )
+      )
     );
+  }
+
+  setValid(valid) {
+    this.setState({
+      valid
+    });
+
+    if (typeof this.props.setValid === 'function') {
+      this.props.setValid(valid);
+    }
   }
 
   getStyle() {
@@ -226,6 +236,7 @@ class Canvas extends skoash.Component {
           checkItem={self.checkItem}
           deactivateItems={self.deactivateItems}
           relayerItems={self.relayerItems}
+          setValid={self.setValid}
           ref={'item-' + key}
           key={key}
         />
@@ -245,6 +256,7 @@ class Canvas extends skoash.Component {
           checkItem={self.checkItem}
           deactivateItems={self.deactivateItems}
           relayerItems={self.relayerItems}
+          setInvalid={self.setInvalid}
           ref={'message-' + key}
           key={key}
         />

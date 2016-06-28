@@ -175,6 +175,10 @@ class EditableAsset extends Draggable {
           valid,
         });
       }
+
+      if (typeof this.props.setValid === 'function') {
+        this.props.setValid(valid);
+      }
     }
   }
 

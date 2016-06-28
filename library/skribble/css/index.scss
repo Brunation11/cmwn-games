@@ -454,11 +454,20 @@ p {
 
   .right-menu {
     display: none;
+    opacity: 1;
+    transition: opacity .5s;
   }
 
   &.HAS-ASSETS {
     .right-menu {
       display: block;
+    }
+  }
+
+  &.INVALID {
+    .right-menu {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 }

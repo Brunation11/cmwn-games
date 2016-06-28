@@ -12,17 +12,19 @@ class CanvasScreen extends skoash.Screen {
       id: 'canvas',
       load: true,
       menus: {},
+      valid: true,
     };
 
     this.rightMenuList = [
-      <li className="preview" onClick={this.goto.bind(this, 'preview')}>
+      <li className="preview" onClick={this.preview.bind(this)}>
         <span />
       </li>,
-      <li className="send" onClick={this.goto.bind(this, 'send')}>
+      <li className="send" onClick={this.send.bind(this)}>
         <span />
       </li>
     ];
 
+    this.setValid = this.setValid.bind(this);
   }
 
   bootstrap() {
@@ -80,6 +82,22 @@ class CanvasScreen extends skoash.Screen {
     skoash.Screen.prototype.open.call(this);
   }
 
+  setValid(valid) {
+    this.setState({
+      valid
+    });
+  }
+
+  send() {
+    if (!this.state.valid) return;
+    this.goto('send');
+  }
+
+  preview() {
+    if (!this.state.valid) return;
+    this.goto('preview');
+  }
+
   getContainerClasses() {
     return classNames({
       'canvas-container': true,
@@ -90,6 +108,7 @@ class CanvasScreen extends skoash.Screen {
   getClassNames() {
     return classNames({
       'HAS-ASSETS': this.state.hasAssets,
+      'INVALID': !this.state.valid,
     }, skoash.Screen.prototype.getClassNames.call(this));
   }
 
@@ -108,7 +127,10 @@ class CanvasScreen extends skoash.Screen {
         <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
         <Menu ref={'menu'} items={this.state.menus} />
         <div className={this.getContainerClasses()}>
-          <Canvas ref={'canvas'} />
+          <Canvas
+            ref={'canvas'}
+            setValid={this.setValid}
+          />
         </div>
         <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
