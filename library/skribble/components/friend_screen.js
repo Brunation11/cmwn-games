@@ -58,12 +58,45 @@ class FriendScreen extends skoash.Screen {
       recipient,
       opts,
     }, () => {
-      self.refs.drawer.start();
+      self.refs.drawer && self.refs.drawer.start();
     });
 
     if (!self.state.started) {
       self.start();
     }
+  }
+
+  suggestFriends() {
+    window.open('https://changemyworldnow.com/friends');
+  }
+
+  renderFriends() {
+    if (this.state.data && this.state.data.length) {
+      return (
+        <ItemDrawer
+          ref="drawer"
+          selectRespond={this.selectRespond.bind(this)}
+          cancelRespond={this.back}
+          categories={this.state.opts.categories}
+          data={this.state.data}
+          selectedItem={this.state.recipient}
+          buttons={this.buttons}
+          complete={true}
+          className={this.state.opts.goto}
+        />
+      );
+    }
+
+    return (
+      <div className={this.props.className}>
+        <div className="item-drawer-container">
+          <div className="suggest-friends-buttons">
+            <button className="continue" onClick={this.selectRespond.bind(this, {})} />
+            <button className="suggest" onClick={this.suggestFriends} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   renderPrevButton() {
@@ -78,17 +111,7 @@ class FriendScreen extends skoash.Screen {
     return (
       <div>
         <div className="header" />
-        <ItemDrawer
-          ref="drawer"
-          selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.back}
-          categories={this.state.opts.categories}
-          data={this.state.data}
-          selectedItem={this.state.recipient}
-          buttons={this.buttons}
-          complete={true}
-          className={this.state.opts.goto}
-        />
+        {this.renderFriends()}
       </div>
     );
   }

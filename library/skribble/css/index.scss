@@ -173,6 +173,16 @@ button {
     }
   }
 
+  &.suggest {
+    width: 460px;
+    height: 200px;
+    background-position: -998px -500px;
+
+    &:hover {
+      background-position: -1498px -500px;
+    }
+  }
+
   &.cancel {
     width: 360px;
     height: 180px;
@@ -529,6 +539,25 @@ p {
     top: 50%;
     right: 30px;
     transform: translateY(-50%);
+  }
+
+  .suggest-friends-buttons {
+    width: 108%;
+    margin-top: -20px;
+
+    .continue {
+      width: 460px;
+      height: 200px;
+      background-position: 2px -500px;
+
+      &:hover {
+        background-position: -498px -500px;
+      }
+    }
+
+    button {
+      margin: 20px auto;
+    }
   }
 
   button {
