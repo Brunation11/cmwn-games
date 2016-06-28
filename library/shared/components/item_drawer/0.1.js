@@ -45,7 +45,7 @@ class ItemDrawer extends Selectable {
   }
 
   selectHelper(e) {
-    var li, message, key, type, classes = [];
+    var li, message, key, type, categoryName, classes = [];
 
     li = e.target.closest('LI');
 
@@ -55,8 +55,10 @@ class ItemDrawer extends Selectable {
     type = this.refs[key].props.item.type;
 
     if (type === 'category') {
+      categoryName = this.refs[key].props.item.name;
       this.setState({
         category: key,
+        categoryName
       });
     } else {
       message = this.refs[key].props.item;
@@ -91,6 +93,17 @@ class ItemDrawer extends Selectable {
     this.setState({
       category: null,
     });
+  }
+
+  getCategory() {
+    if (this.state.categoryName) {
+      return this.state.categoryName;
+    }
+
+    if (this.props.categories && this.props.categories.length) {
+      return this.props.categories[this.props.categories.length - 1];
+    }
+    return '';
   }
 
   getULClass() {
@@ -155,25 +168,24 @@ class ItemDrawer extends Selectable {
       items = items[this.state.category].items;
     }
 
-    return items.map((item, key) => {
-      return (
-        <skoash.ListItem
-          className={this.getClass(key, item)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={key}
-        >
-          {self.renderItemContent(item)}
-        </skoash.ListItem>
-      );
-    });
+    return items.map((item, key) =>
+      <skoash.ListItem
+        className={this.getClass(key, item)}
+        ref={key}
+        data-ref={key}
+        item={item}
+        key={key}
+      >
+        {self.renderItemContent(item)}
+      </skoash.ListItem>
+    );
   }
 
   render() {
     return (
       <div>
         <div className="item-drawer-container">
+          <h2>{this.getCategory()}</h2>
           <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
             {this.renderList()}
           </ul>

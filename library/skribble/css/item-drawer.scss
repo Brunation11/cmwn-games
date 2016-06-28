@@ -1,3 +1,5 @@
+@import 'variables';
+
 .item-drawer-container {
   display: inline-block;
   background-image: url(../media/_Frames/SK_frames_general.png);
@@ -9,6 +11,15 @@
   height: 836px;
   margin: 20px 0px 20px 120px;
   padding: 40px;
+
+  h2 {
+    text-transform: uppercase;
+    color: $white;
+    text-align: center;
+    font-size: 90px;
+    margin: 0;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+  }
 }
 
 .item-drawer {
