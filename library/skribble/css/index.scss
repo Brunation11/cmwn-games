@@ -486,31 +486,43 @@ p {
     bottom: 40px;
     z-index: -1;
 
+    .bubble {
+      position: absolute;
+      background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+      background-repeat: no-repeat;
+      background-size: 1500px;
+      text-align: center;
+      font-size: 30px;
+    }
+
     &.One {
       img {
         transform: scale3d(-1, 1, 1);
         margin-left: -160px;
+        width: 460px;
+      }
+
+      .bubble {
+        left: -30px;
+        top: -260px;
+        width: 350px;
+        background-position: -70px -540px;
+        padding: 60px 50px 110px 70px;
       }
     }
 
     &.Two {
       img {
+        width: 480px;
         margin-left: -20px;
       }
-    }
 
-    .bubble {
-      position: absolute;
-      left: 100px;
-      top: -100px;
-      background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
-      background-repeat: no-repeat;
-      background-size: 1125px;
-      background-position: -380px -380px;
-      padding: 60px 30px 100px 35px;
-      text-align: center;
-      font-size: 44px;
-
+      .bubble {
+        left: -20px;
+        top: -260px;
+        background-position: -70px -540px;
+        padding: 110px 30px 150px 35px;
+      }
     }
   }
 
