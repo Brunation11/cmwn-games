@@ -458,6 +458,33 @@ p {
     transition: opacity .5s;
   }
 
+  .reveal {
+    li {
+      width: 1600px;
+      height: 900px;
+      z-index: 3;
+
+      img {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+      }
+
+      .bubble {
+        position: absolute;
+        background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+        background-repeat: no-repeat;
+        background-size: 1500px;
+        text-align: center;
+        font-size: 40px;
+        left: 680px;
+        top: 120px;
+        background-position: -1010px -20px;
+        padding: 60px 50px 110px 70px;
+      }
+    }
+  }
+
   &.HAS-ASSETS {
     .right-menu {
       display: block;
@@ -528,7 +555,7 @@ p {
 
   .item-drawer-container {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 0 270px;
     width: 1120px;
     background-position: -10px 0px;
     padding: 308px 250px 40px 110px;
