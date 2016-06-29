@@ -127,20 +127,23 @@ pl.game('printmaster', function () {
     });
 
     this.on('animationend', function (_event) {
-      if (!this.flip.is(_event.target) || !this.allowAction()) return;
+      if (this.isComplete || this.find('.flip')[0] !== _event.target || !this.allowAction()) return;
       this.requiredQueue.ready('shake');
     });
 
-    this.complete = function () {
+    this.on('complete', function () {
       var eventCategory;
       var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-      theEvent.name = 'flip';
-      theEvent.gameData = {id: this.game.id()};
+      theEvent.name = 'game-event';
+      theEvent.gameData = {
+        id: this.game.id(),
+        name: 'flip'
+      };
       if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
       eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
       ga('send', 'event', eventCategory, 'complete');
       return this.proto();
-    };
+    });
   });
 
   this.exit = function () {
