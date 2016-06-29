@@ -16,6 +16,8 @@ class Inbox extends Selectable {
 
     key = li.getAttribute('data-ref');
 
+    if (!this.refs[key]) return;
+
     message = this.refs[key].props.item;
     classes[key] = this.state.selectClass;
 
@@ -68,6 +70,7 @@ class Inbox extends Selectable {
 
     return items.map((item, key) => {
       var timestamp = moment(item.timestamp);
+      key = 'message-' + key;
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
