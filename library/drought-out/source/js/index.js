@@ -45,6 +45,7 @@ pl.game('drought-out', function () {
       if (!this.is(_e.target)) return;
 
       this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
+      this.deselect(this.find('.' + this.STATE.SELECTED));
     });
   };
 
