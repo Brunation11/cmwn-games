@@ -131,10 +131,10 @@ pl.game('printmaster', function () {
       this.requiredQueue.ready('shake');
     });
 
-    this.on('complete', function () {
+    this.complete = function () {
       var eventCategory;
       var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-      theEvent.name = 'game-event';
+      theEvent.name = 'flip';
       theEvent.gameData = {
         id: this.game.id(),
         name: 'flip'
@@ -143,7 +143,7 @@ pl.game('printmaster', function () {
       eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
       ga('send', 'event', eventCategory, 'complete');
       return this.proto();
-    });
+    };
   });
 
   this.exit = function () {
