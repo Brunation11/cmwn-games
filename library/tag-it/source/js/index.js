@@ -69,7 +69,14 @@ pl.game('tag-it', function () {
 
     this.on('audio-play', function (_event) {
       var id = _event.target.$el[0].id;
-      if (id === 'answer') return;
+      var ids = [
+        'use-your',
+        'try-glow',
+        'use-multiple',
+        'create',
+        'personalize'
+      ];
+      if (ids.indexOf(id) === -1) return;
       id = id ? id.toUpperCase() : false;
       classes += id + ' ';
       this.addClass(id);
@@ -100,25 +107,6 @@ pl.game('tag-it', function () {
       ga('send', 'event', eventCategory, 'complete');
       return this.proto();
     };
-  });
-
-  this.screen('quit', function () {
-    var ctx;
-
-    this.on('ready', function (_e) {
-      if (!this.is(_e.target)) return;
-
-      ctx = new (window.AudioContext || window.webkitAudioContext);
-      this.audio.voiceOver.sure.setContext(ctx);
-      this.audio.sfx.button.setContext(ctx);
-    });
-
-    this.on('ui-open', function () {
-      var vo;
-
-      vo = this.audio.voiceOver.sure;
-      if (vo) vo.play();
-    });
   });
 
   this.exit = function () {
