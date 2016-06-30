@@ -15,6 +15,8 @@ default-src \
     https://cdnjs.cloudflare.com \
     https://fonts.googleapis.com; \
  script-src \
+    'unsafe-eval' \
+    'unsafe-inline' \
     http://changemyworldnow.com:* \
     https://changemyworldnow.com:* \
     http://*.changemyworldnow.com:* \
@@ -48,6 +50,7 @@ default-src \
     https://*.google-analytics.com; \
  font-src \
     'self' \
+    https://fonts.gstatic.com \
     https://changemyworldnow.education \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
