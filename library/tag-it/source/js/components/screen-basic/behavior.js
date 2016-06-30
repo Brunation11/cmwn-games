@@ -1,5 +1,5 @@
 pl.game.component('screen-basic', function () {
-  this.currentVO = null;
+  this.currentMedia = {};
 
   this.allowAction = function () {
     return (this.screen.state(this.screen.STATE.OPEN) && !this.screen.state(this.screen.STATE.VOICE_OVER)) || this.game.demoMode;
@@ -11,7 +11,7 @@ pl.game.component('screen-basic', function () {
     delay = $(_sound.media).attr('pl-start');
 
     if (_sound.type === 'voiceOver') {
-      this.currentVO = _sound;
+      this.currentMedia.voiceOver = _sound;
     }
 
     if (delay) {

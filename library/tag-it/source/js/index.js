@@ -109,25 +109,6 @@ pl.game('tag-it', function () {
     };
   });
 
-  this.screen('quit', function () {
-    var ctx;
-
-    this.on('ready', function (_e) {
-      if (!this.is(_e.target)) return;
-
-      ctx = new (window.AudioContext || window.webkitAudioContext);
-      this.audio.voiceOver.sure.setContext(ctx);
-      this.audio.sfx.button.setContext(ctx);
-    });
-
-    this.on('ui-open', function () {
-      var vo;
-
-      vo = this.audio.voiceOver.sure;
-      if (vo) vo.play();
-    });
-  });
-
   this.exit = function () {
     var screen, eventCategory;
 
