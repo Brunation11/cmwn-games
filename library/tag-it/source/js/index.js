@@ -69,7 +69,14 @@ pl.game('tag-it', function () {
 
     this.on('audio-play', function (_event) {
       var id = _event.target.$el[0].id;
-      if (id === 'answer') return;
+      var ids = [
+        'use-your',
+        'try-glow',
+        'use-multiple',
+        'create',
+        'personalize'
+      ];
+      if (ids.indexOf(id) === -1) return;
       id = id ? id.toUpperCase() : false;
       classes += id + ' ';
       this.addClass(id);
