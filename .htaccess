@@ -3,18 +3,22 @@ Options +FollowSymLinks +ExecCGI +Indexes
 # Content security policies. Unfortunately we need to use unsafe inlining for the time being because
 # a number of our tools rely on injecting style/script tags (webpack in particular).
 # See http://www.html5rocks.com/en/tutorials/security/content-security-policy/ for additional details
+
 Header set Content-Security-Policy "\
 default-src \
     https://*.changemyworldnow.com:*; \
  base-uri \
     https://*.changemyworldnow.com:*; \
  style-src \
+    'unsafe-inline' \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
     https://maxcdn.bootstrapcdn.com \
     https://cdnjs.cloudflare.com \
     https://fonts.googleapis.com; \
  script-src \
+    'unsafe-eval' \
+    'unsafe-inline' \
     http://changemyworldnow.com:* \
     https://changemyworldnow.com:* \
     http://*.changemyworldnow.com:* \
@@ -48,6 +52,7 @@ default-src \
     https://*.google-analytics.com; \
  font-src \
     'self' \
+    https://fonts.gstatic.com \
     https://changemyworldnow.education \
     https://changemyworldnow.com:* \
     https://*.changemyworldnow.com:* \
