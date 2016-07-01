@@ -78,7 +78,7 @@ pl.game('litterbug', function () {
   this.screen('commit', function () {
     this.on('ui-open', function () {
       // this is ugly but apparently necessary to fix an rending issue
-      window.resizeTo(960, 680);
+      this.css({display: 'none'}).css({display: 'block'});
     });
   });
 
