@@ -51,8 +51,6 @@ pl.game('sea-turtle', function () {
 
   this.screen('globe', function () {
 
-    var onClose;
-
     /**
      * The reveal component holds the correct/incorrect splash
      * images. So its responsible for handling the multiple
@@ -160,6 +158,10 @@ pl.game('sea-turtle', function () {
   });
 
   this.screen('trash', function () {
+    this.on('ui-open', function () {
+      this.unhighlight(this.find('.HIGHLIGHTED'));
+    });
+
     this.on('ui-close', function (_e) {
       if (!this.is(_e.target)) return;
 
