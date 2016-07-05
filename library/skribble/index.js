@@ -112,7 +112,9 @@ class Skribble extends skoash.Game {
       path
     }).then(data => {
       var opts = {
-        [pathArray[0]]: data
+        data: {
+          [pathArray[0]]: data
+        }
       };
       self.updateData(opts);
     });
