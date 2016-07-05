@@ -2,6 +2,9 @@
  * Index script
  * @module
  */
+
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -110,12 +113,35 @@ class Skribble extends skoash.Game {
     self.getData({
       name: 'getMedia',
       path
-    }).then(data => {
-      var opts = {
-        data: {
-          [pathArray[0]]: data
-        }
+    }).then(d => {
+      var opts, currentOpts;
+      opts = {
+        data: {}
       };
+      currentOpts = opts.data;
+
+      pathArray.forEach((key, index) => {
+        currentOpts[key] = {
+          items: {}
+        };
+        if (index !== pathArray.length - 1) {
+          currentOpts = currentOpts[key].items;
+        }
+      });
+
+      currentOpts[pathArray[pathArray.length - 1]] = _.clone(d);
+      currentOpts[pathArray[pathArray.length - 1]].items = {};
+
+      if (d.items) {
+        d.items.every(item => {
+          if (item.type === 'folder' && item.name) {
+            // currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
+            self.getMedia(path + '/' + item.name);
+          }
+        });
+      }
+
+
       self.updateData(opts);
     });
   }
