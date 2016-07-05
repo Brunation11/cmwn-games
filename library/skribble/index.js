@@ -19,7 +19,7 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class Skribble extends skoash.Game {
   constructor() {
@@ -52,6 +52,14 @@ class Skribble extends skoash.Game {
     }
 
     skoash.Game.prototype.goto.call(this, opts);
+  }
+
+  ready() {
+    if (!this.state.ready) {
+      this.getMedia();
+    }
+
+    skoash.Game.prototype.ready.call(this);
   }
 
   save() {
@@ -90,6 +98,35 @@ class Skribble extends skoash.Game {
       });
     });
 
+  }
+
+  getMedia(path) {
+    var pathArray, self = this;
+
+    path = path || 'skribble/menu';
+    pathArray = path.split('/');
+    pathArray.shift();
+
+    self.getData({
+      name: 'getMedia',
+      path
+    }).then(data => {
+      var opts = {
+        [pathArray[0]]: data
+      };
+      self.updateData(opts);
+    });
+  }
+
+  getData(opts) {
+    var names = [
+      'getFriends',
+      'getMedia',
+    ];
+    if (names.indexOf(opts.name) === -1) {
+      opts.name = 'getData';
+    }
+    return this.emit(opts);
   }
 
   passData(opts) {

@@ -1,6 +1,6 @@
-import Canvas from '../../shared/components/canvas/0.1.js';
-import Menu from '../../shared/components/menu/0.1.js';
-import Selectable from '../../shared/components/selectable/0.1.js';
+import Canvas from 'shared/components/canvas/0.1';
+import Menu from 'shared/components/menu/0.1';
+import Selectable from 'shared/components/selectable/0.1';
 
 import classNames from 'classnames';
 

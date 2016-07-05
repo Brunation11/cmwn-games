@@ -1,5 +1,7 @@
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
+const DEFAULT_PROFILE_IMAGE = '';
+
 class FriendScreen extends skoash.Screen {
   constructor() {
     super();
@@ -22,15 +24,20 @@ class FriendScreen extends skoash.Screen {
     });
   }
 
-  updateData() {
-    var data = skoash.trigger('getState').data.friends;
+  updateData(d) {
+    var data = d && d.user ? d.user : skoash.trigger('getState').data.user;
 
     data = data.map(friend => {
+      var src = friend._links.user_image && friend._links.user_image.href ?
+        friend._links.user_image.href :
+        DEFAULT_PROFILE_IMAGE;
       return {
         'user_id': friend.user_id,
-        name: friend.name,
-        src: friend.profile_image,
-        description: friend.flips_earned + ' Flips Earned',
+        name: friend.username,
+        src,
+        // I need to get the flips earned back from the backend to do this.
+        description: '',
+        // description: friend.flips_earned + ' Flips Earned',
       };
     });
 
@@ -43,7 +50,7 @@ class FriendScreen extends skoash.Screen {
     var recipient, self = this;
 
     skoash.trigger('getData', {
-      categories: ['friends']
+      name: 'getFriends'
     }).then(data => {
       self.updateData.call(self, data);
     });
