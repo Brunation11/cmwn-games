@@ -42,11 +42,12 @@ function defineEntries(_config, _game) {
 }
 
 games = (function () {
-  switch (typeof argv.game) {
-  case 'undefined': return lsd('./library');
-  case 'string': return [argv.game];
-  case 'object': if (argv.game) return argv.game;
+  var game = argv.game || argv.g;
+  switch (game) {
+  case 'string': return [game];
+  case 'object': if (game) return game;
   }
+  return lsd('./library');
 }());
 
 nolivereload = argv.nolr;
@@ -57,6 +58,10 @@ gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framewo
 
 // Production build
 gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
+
+gulp.task('b', function () {
+  gulp.start('build');
+});
 
 gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
@@ -215,4 +220,8 @@ gulp.task('watch', function () {
     'library/' + game + '/**/*.html'], function () {
     gulp.start('build-dev');
   });
+});
+
+gulp.task('w', function () {
+  gulp.start('watch');
 });
