@@ -43,7 +43,7 @@ function defineEntries(_config, _game) {
 
 games = (function () {
   var game = argv.game || argv.g;
-  switch (game) {
+  switch (typeof game) {
   case 'string': return [game];
   case 'object': if (game) return game;
   }
