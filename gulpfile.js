@@ -8,6 +8,7 @@ var argv = require('yargs').argv,
   fs = require('fs'),
   path = require('path'),
   games,
+  nolivereload,
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
@@ -47,6 +48,8 @@ games = (function () {
   case 'object': if (argv.game) return argv.game;
   }
 }());
+
+nolivereload = argv.nolr;
 
 gulp.task('default', ['build-dev']);
 
@@ -201,7 +204,7 @@ gulp.task('play-components', function () {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 gulp.task('watch', function () {
-  livereload.listen();
+  if (!nolivereload) livereload.listen();
   var game = (games.length > 1) ? '**' : games[0];
   watch([
     '../js-interactive-library/build/play.js',
