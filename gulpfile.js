@@ -59,9 +59,7 @@ gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framewo
 // Production build
 gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
-gulp.task('b', function () {
-  gulp.start('build');
-});
+gulp.task('b', ['build']);
 
 gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
@@ -222,6 +220,4 @@ gulp.task('watch', function () {
   });
 });
 
-gulp.task('w', function () {
-  gulp.start('watch');
-});
+gulp.task('w', ['watch']);
