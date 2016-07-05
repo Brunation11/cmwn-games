@@ -34,8 +34,6 @@ class CanvasScreen extends skoash.Screen {
 
     state = skoash.trigger('getState');
 
-    console.log(state.data.menu);
-
     if (state && state.data && state.data.menu) {
       menu = state.data.menu;
       this.setState({
