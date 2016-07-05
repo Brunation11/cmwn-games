@@ -34,6 +34,8 @@ class CanvasScreen extends skoash.Screen {
 
     state = skoash.trigger('getState');
 
+    console.log(state.data.menu);
+
     if (state && state.data && state.data.menu) {
       menu = state.data.menu;
       this.setState({
@@ -125,7 +127,12 @@ class CanvasScreen extends skoash.Screen {
       <div>
         <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
         <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
-        <Menu ref={'menu'} items={this.state.menu} />
+        <Menu
+          ref={'menu'}
+          items={this.state.menu.items}
+          level={0}
+          lastLevel={1}
+        />
         <div className={this.getContainerClasses()}>
           <Canvas
             ref={'canvas'}

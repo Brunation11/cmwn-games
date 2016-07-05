@@ -114,7 +114,7 @@ class Skribble extends skoash.Game {
       name: 'getMedia',
       path
     }).then(d => {
-      var opts, currentOpts;
+      var opts, currentOpts, hasFolders;
       opts = {
         data: {}
       };
@@ -130,7 +130,12 @@ class Skribble extends skoash.Game {
       });
 
       currentOpts[pathArray[pathArray.length - 1]] = _.clone(d);
-      currentOpts[pathArray[pathArray.length - 1]].items = {};
+      hasFolders = currentOpts[pathArray[pathArray.length - 1]].items &&
+        currentOpts[pathArray[pathArray.length - 1]].items[0] &&
+        currentOpts[pathArray[pathArray.length - 1]].items[0].type === 'folder';
+      if (hasFolders) {
+        currentOpts[pathArray[pathArray.length - 1]].items = {};
+      }
 
       if (d.items) {
         d.items.every(item => {
