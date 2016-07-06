@@ -52,9 +52,9 @@ class ItemDrawer extends Selectable {
     if (!li) return;
 
     key = li.getAttribute('data-ref');
-    type = this.refs[key].props.item.type;
+    type = this.refs[key].props.item.asset_type;
 
-    if (type === 'category') {
+    if (type === 'folder') {
       categoryName = this.refs[key].props.item.name;
       this.setState({
         category: key,
@@ -158,7 +158,7 @@ class ItemDrawer extends Selectable {
       content.push(<skoash.Image src={src} key={0} />);
     }
 
-    if (item.name) {
+    if (item.name && item.asset_type !== 'item') {
       content.push(<span className="name" key={1}>{item.name}</span>);
     }
 
