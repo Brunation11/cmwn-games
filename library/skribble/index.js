@@ -103,6 +103,15 @@ class Skribble extends skoash.Game {
 
   }
 
+  trigger(event, opts) {
+    switch (event) {
+    case 'getMedia':
+      return this.getMedia(opts.path);
+    }
+
+    return skoash.Game.prototype.trigger.call(this, event, opts);
+  }
+
   getMedia(path) {
     var pathArray, self = this;
 
@@ -110,7 +119,7 @@ class Skribble extends skoash.Game {
     pathArray = path.split('/');
     pathArray.shift();
 
-    self.getData({
+    return self.getData({
       name: 'getMedia',
       path
     }).then(d => {

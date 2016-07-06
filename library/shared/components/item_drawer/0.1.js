@@ -140,25 +140,37 @@ class ItemDrawer extends Selectable {
   }
 
   renderItemContent(item) {
-    var content = [];
+    var content = [], src;
 
     if (item.src) {
-      content.push(<skoash.Image src={item.src} />);
+      src = item.src;
+    } else if (item.items && _.isArray(item.items)) {
+      src = item.items[0].src;
+      item.items.some(subitem => {
+        if (subitem.name === '_thumb.png') {
+          src = subitem.src;
+          return false;
+        }
+      });
+    }
+
+    if (src) {
+      content.push(<skoash.Image src={src} key={0} />);
     }
 
     if (item.name) {
-      content.push(<span className="name">{item.name}</span>);
+      content.push(<span className="name" key={1}>{item.name}</span>);
     }
 
     if (item.description) {
-      content.push(<span className="description">{item.description}</span>);
+      content.push(<span className="description" key={2}>{item.description}</span>);
     }
 
     return content;
   }
 
   renderList() {
-    var items, self = this;
+    var items, listItems = [], self = this;
 
     if (!this.props.data) return;
 
@@ -168,17 +180,35 @@ class ItemDrawer extends Selectable {
       items = items[this.state.category].items;
     }
 
-    return items.map((item, key) =>
-      <skoash.ListItem
-        className={this.getClass(key, item)}
-        ref={key}
-        data-ref={key}
-        item={item}
-        key={key}
-      >
-        {self.renderItemContent(item)}
-      </skoash.ListItem>
-    );
+    if (_.isArray(items)) {
+      return items.map((item, key) =>
+        <skoash.ListItem
+          className={this.getClass(key, item)}
+          ref={key}
+          data-ref={key}
+          item={item}
+          key={key}
+        >
+          {self.renderItemContent(item)}
+        </skoash.ListItem>
+      );
+    }
+
+    _.forIn(items, (item, key) => {
+      listItems.push(
+        <skoash.ListItem
+          className={this.getClass(key, item)}
+          ref={key}
+          data-ref={key}
+          item={item}
+          key={key}
+        >
+          {self.renderItemContent(item)}
+        </skoash.ListItem>
+      );
+    });
+
+    return listItems;
   }
 
   render() {
