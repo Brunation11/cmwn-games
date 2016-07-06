@@ -101,18 +101,18 @@ class Canvas extends skoash.Component {
   addItem(asset) {
     var items, messages;
 
-    if (asset.type === 'background') {
+    if (asset.asset_type === 'background') {
       this.setState({
         background: asset,
       });
-    } else if (asset.type === 'item') {
+    } else if (asset.asset_type === 'item') {
       items = this.state.items;
       items.push(asset);
 
       this.setState({
         items,
       });
-    } else if (asset.type === 'message') {
+    } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
       messages.push(asset);
 

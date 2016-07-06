@@ -59,7 +59,7 @@ class CanvasScreen extends skoash.Screen {
       this.setState({
         hasAssets: true,
         background: this.state.background ||
-              message.type === 'background',
+              message.asset_type === 'background',
       });
       this.refs.canvas.addItem(message);
     }
