@@ -17,7 +17,7 @@ import './components/video/behavior';
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
-pl.game('litterbug', function () {
+pl.game('litter-bug', function () {
 
   this.screen('title', function () {
 
