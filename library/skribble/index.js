@@ -113,7 +113,7 @@ class Skribble extends skoash.Game {
     pathArray = path.split('/');
     pathArray.shift();
 
-    return self.getData({
+    return self.emit({
       name: 'getMedia',
       path
     }).then(d => {
@@ -157,12 +157,15 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
-      'getMedia',
     ];
+
     if (names.indexOf(opts.name) === -1) {
       opts.name = 'getData';
     }
-    return this.emit(opts);
+
+    return this.emit(opts).then(data => {
+      this.updateData({data});
+    });
   }
 
   passData(opts) {
