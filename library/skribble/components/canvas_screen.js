@@ -26,6 +26,8 @@ class CanvasScreen extends skoash.Screen {
     ];
 
     this.setValid = this.setValid.bind(this);
+
+    this.closeReveal = this.closeReveal.bind(this);
   }
 
   bootstrap() {
@@ -101,6 +103,12 @@ class CanvasScreen extends skoash.Screen {
     this.goto('preview');
   }
 
+  closeReveal() {
+    if (this.refs && this.refs.reveal) {
+      this.refs.reveal.close();
+    }
+  }
+
   getContainerClasses() {
     return classNames({
       'canvas-container': true,
@@ -141,6 +149,10 @@ class CanvasScreen extends skoash.Screen {
           />
         </div>
         <Selectable className="menu right-menu" list={this.rightMenuList} />
+      </div>
+    );
+    // move this back up below the Selectable when there is an instructional help video
+    /*
         <Reveal
           ref="reveal"
           openOnStart="0"
@@ -152,13 +164,20 @@ class CanvasScreen extends skoash.Screen {
                 Would you like me<br/>
                 to show you around?
                 <div className="buttons">
+                  <button
+                    className="yes"
+                    onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
+                  />
+                  <button
+                    className="no"
+                    onClick={this.closeReveal}
+                  />
                 </div>
               </div>
             </li>
           ]}
         />
-      </div>
-    );
+    */
   }
 }
 

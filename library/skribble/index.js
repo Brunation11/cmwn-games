@@ -238,7 +238,7 @@ class Skribble extends skoash.Game {
           <button className="save" onClick={this.save.bind(this)} />
           <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
           <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
-          <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+          <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
           <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
         </div>
         <ul className="menu recipient">

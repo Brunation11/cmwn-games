@@ -102,6 +102,10 @@ html, body, body > div, body > div > div {
       display: none;
     }
   }
+
+  .game-menu .help {
+    display: none;
+  }
 }
 
 html {
@@ -221,6 +225,26 @@ button {
 
     &:hover {
       background-position: -1495px -250px;
+    }
+  }
+
+  &.yes {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -1000px;
+
+    &:hover {
+      background-position: -500px -1000px;
+    }
+  }
+
+  &.no {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -1250px;
+
+    &:hover {
+      background-position: -500px -1250px;
     }
   }
 
@@ -478,10 +502,10 @@ p {
         background-size: 1500px;
         text-align: center;
         font-size: 40px;
-        left: 680px;
-        top: 120px;
+        left: 690px;
+        top: 10px;
         background-position: -1010px -20px;
-        padding: 60px 50px 110px 70px;
+        padding: 120px 50px 140px 20px;
       }
     }
   }
