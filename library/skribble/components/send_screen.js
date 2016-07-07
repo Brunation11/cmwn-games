@@ -4,7 +4,7 @@ const classNameText = {
   yourMessageTo: 'your-message-to',
   isReady: 'is-ready',
   changeFriend: 'change-friend',
-  bear: 'bear',
+  character: 'character',
   gift: 'gift',
   header: 'header',
   username: 'username',
@@ -73,7 +73,7 @@ class SendScreen extends skoash.Screen {
           <span className={classNameText.isReady} />
           <button className={classNameText.changeFriend} onClick={changeFriendClick} />
         </div>
-        <div className={classNameText.bear} />
+        <div className={classNameText.character} />
         <div className={classNameText.gift} />
         <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
