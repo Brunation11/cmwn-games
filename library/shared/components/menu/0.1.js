@@ -65,7 +65,7 @@ class Menu extends Selectable {
 
       item = this.props.items[key];
 
-      if (!item.items || Object.prototype.toString.call(item.items) === '[object Array]') {
+      if (typeof self.props.lastLevel === 'number' && self.props.lastLevel === self.props.level) {
         gotoObj = {
           index: 'item-drawer',
           categories,
@@ -84,8 +84,16 @@ class Menu extends Selectable {
           <span>{key}</span>
           {(() => {
             if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
+            if (typeof self.props.lastLevel === 'number' && self.props.lastLevel === self.props.level) return;
             return (
-              <Menu ref={'menu-' + key} categories={categories} items={item.items} inactive={true} />
+              <Menu
+                ref={'menu-' + key}
+                categories={categories}
+                items={item.items}
+                inactive={true}
+                level={(self.props.level || 0) + 1}
+                lastLevel={self.props.lastLevel}
+              />
             );
           })()}
         </skoash.ListItem>

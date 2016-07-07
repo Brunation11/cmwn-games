@@ -54,6 +54,11 @@
       }
     }
 
+    // TODO - remove this when developing preview screen
+    &.preview {
+      display: none;
+    }
+
     &.messages {
       .menu {
         background-position: 0px -1000px;

@@ -94,6 +94,7 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-inbox,
+  &.SCREEN-sent,
   &.SCREEN-read {
     .game-menu .save,
     .game-menu .inbox,
@@ -822,11 +823,32 @@ p {
         height: 250px;
         margin-bottom: 20px;
 
-        img {
+        .thumbnail {
+          position: absolute;
           width: 100%;
-          height: auto;
+          height: 0;
+          padding-bottom: 66.25%;
           left: 0;
           top: 0;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+
+          img {
+            width: auto;
+            height: auto;
+            max-width: 80%;
+            max-height: 80%;
+            margin: 0;
+            background-color: transparent;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            &[src=""] {
+              display: none;
+            }
+          }
         }
 
         .timestamp {

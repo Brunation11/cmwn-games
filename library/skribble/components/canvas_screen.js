@@ -12,7 +12,7 @@ class CanvasScreen extends skoash.Screen {
     this.state = {
       id: 'canvas',
       load: true,
-      menus: {},
+      menu: {},
       valid: true,
     };
 
@@ -29,16 +29,16 @@ class CanvasScreen extends skoash.Screen {
   }
 
   bootstrap() {
-    var menus, state;
+    var menu, state;
 
     skoash.Screen.prototype.bootstrap.call(this);
 
     state = skoash.trigger('getState');
 
-    if (state && state.data && state.data.menus) {
-      menus = state.data.menus;
+    if (state && state.data && state.data.menu) {
+      menu = state.data.menu;
       this.setState({
-        menus,
+        menu,
       });
     }
   }
@@ -60,9 +60,11 @@ class CanvasScreen extends skoash.Screen {
       this.setState({
         hasAssets: true,
         background: this.state.background ||
-              message.type === 'background',
+              message.asset_type === 'background',
       });
-      this.refs.canvas.addItem(message);
+      this.refs.canvas.addItem(message, () => {
+        skoash.trigger('save');
+      });
     }
   }
 
@@ -126,7 +128,12 @@ class CanvasScreen extends skoash.Screen {
       <div>
         <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
         <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
-        <Menu ref={'menu'} items={this.state.menus} />
+        <Menu
+          ref={'menu'}
+          items={this.state.menu.items}
+          level={0}
+          lastLevel={1}
+        />
         <div className={this.getContainerClasses()}>
           <Canvas
             ref={'canvas'}

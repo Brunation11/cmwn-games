@@ -8,6 +8,7 @@ var argv = require('yargs').argv,
   fs = require('fs'),
   path = require('path'),
   games,
+  nolivereload,
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
@@ -41,12 +42,15 @@ function defineEntries(_config, _game) {
 }
 
 games = (function () {
-  switch (typeof argv.game) {
-  case 'undefined': return lsd('./library');
-  case 'string': return [argv.game];
-  case 'object': if (argv.game) return argv.game;
+  var game = argv.game || argv.g;
+  switch (typeof game) {
+  case 'string': return [game];
+  case 'object': if (game) return game;
   }
+  return lsd('./library');
 }());
+
+nolivereload = argv.nolr;
 
 gulp.task('default', ['build-dev']);
 
@@ -54,6 +58,8 @@ gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framewo
 
 // Production build
 gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
+
+gulp.task('b', ['build']);
 
 gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
@@ -201,7 +207,7 @@ gulp.task('play-components', function () {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 gulp.task('watch', function () {
-  livereload.listen();
+  if (!nolivereload) livereload.listen();
   var game = (games.length > 1) ? '**' : games[0];
   watch([
     '../js-interactive-library/build/play.js',
@@ -213,3 +219,5 @@ gulp.task('watch', function () {
     gulp.start('build-dev');
   });
 });
+
+gulp.task('w', ['watch']);

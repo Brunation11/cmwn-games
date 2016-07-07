@@ -11,7 +11,7 @@ const classNameText = {
 
 const text = {
   yourMessageTo: 'YOUR MESSAGE TO:',
-  hasBeenSent: 'HAS BEEN SENT!',
+  hasBeenSent: 'IS BEING SENT!',
 };
 
 class SentScreen extends skoash.Screen {
