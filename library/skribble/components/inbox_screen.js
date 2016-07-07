@@ -29,11 +29,11 @@ class InboxScreen extends skoash.Screen {
     inbox = inbox || [];
 
     read = inbox.filter(item => {
-      return !item.unread;
+      return item.read;
     });
 
     unread = inbox.filter((item) => {
-      return item.unread;
+      return !item.read;
     });
 
     return [
@@ -106,7 +106,7 @@ class InboxScreen extends skoash.Screen {
     inbox = data.received;
     outbox = data.sent;
     saved = data.draft;
-    console.log(data);
+
     this.revealList = this.getRevealList(inbox, outbox, saved);
 
     this.setState({
