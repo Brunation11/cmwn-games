@@ -146,12 +146,10 @@ class Skribble extends skoash.Game {
       if (d.items) {
         d.items.every(item => {
           if (item.type === 'folder' && item.name) {
-            // currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
             self.getMedia(path + '/' + item.name);
           }
         });
       }
-
 
       self.updateData(opts);
     });
