@@ -94,6 +94,7 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-inbox,
+  &.SCREEN-sent,
   &.SCREEN-read {
     .game-menu .save,
     .game-menu .inbox,

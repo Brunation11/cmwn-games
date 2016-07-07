@@ -77,30 +77,24 @@ class Skribble extends skoash.Game {
   }
 
   send() {
-    var skribble, self = this;
+    var skribble = this.refs['screen-canvas'].getData();
+    skribble.recipient = this.state.recipient;
 
-    skribble = self.refs['screen-canvas'].getData();
-    skribble.recipient = self.state.recipient;
-
-    self.emit({
+    this.emit({
       name: 'send-skribble',
-      game: self.config.id,
+      game: this.config.id,
       skribble,
-    }).then(response => {
-      if (response.success) {
-        self.refs['screen-canvas'].reset();
-        self.setState({
-          recipient: {}
-        });
-      }
-
-      self.goto({
-        index: 'sent',
-        success: response.success,
-        recipient: response.recipient,
-      });
     });
 
+    this.refs['screen-canvas'].reset();
+    this.goto({
+      index: 'sent',
+      recipient: this.state.recipient,
+    });
+
+    this.setState({
+      recipient: {}
+    });
   }
 
   trigger(event, opts) {
