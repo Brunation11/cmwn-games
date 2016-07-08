@@ -28,8 +28,8 @@ class FriendScreen extends skoash.Screen {
     var data = d && d.user ? d.user : skoash.trigger('getState').data.user;
 
     data = data.map(friend => {
-      var src = friend._links.user_image && friend._links.user_image.href ?
-        friend._links.user_image.href :
+      var src = friend._embedded.image && friend._embedded.image.url ?
+        friend._embedded.image.url :
         DEFAULT_PROFILE_IMAGE;
       return {
         'user_id': friend.user_id,
@@ -38,6 +38,7 @@ class FriendScreen extends skoash.Screen {
         // I need to get the flips earned back from the backend to do this.
         description: '',
         // description: friend.flips_earned + ' Flips Earned',
+        'asset_type': 'friend',
       };
     });
 

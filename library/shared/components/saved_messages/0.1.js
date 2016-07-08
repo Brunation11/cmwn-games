@@ -87,7 +87,7 @@ class SavedMessages extends Selectable {
     }
 
     return items.map((item, key) => {
-      var timestamp = moment(item.timestamp);
+      var timestamp = moment(item.updated);
       return (
         <skoash.ListItem
           className={self.getClass(key)}
@@ -98,7 +98,7 @@ class SavedMessages extends Selectable {
         >
           {self.renderThumb(item)}
           <span className="timestamp">
-            <span className="date">{timestamp.format('DD.MM.YY')}</span>
+            <span className="date">{timestamp.format('MM.DD.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
           </span>
         </skoash.ListItem>

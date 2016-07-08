@@ -432,6 +432,10 @@ p {
     z-index: 1;
   }
 
+  .pl-game.MENU .screen {
+    opacity: 0;
+  }
+
   .screen .next-screen:hover {
     
   }
@@ -711,6 +715,10 @@ p {
 
   .continue {
     display: none;
+  }
+
+  .item-drawer {
+    height: 670px;
   }
 
   button {

@@ -138,17 +138,18 @@ class Skribble extends skoash.Game {
       currentOpts[pathArray[pathArray.length - 1]] = _.clone(d);
       hasFolders = currentOpts[pathArray[pathArray.length - 1]].items &&
         currentOpts[pathArray[pathArray.length - 1]].items[0] &&
-        currentOpts[pathArray[pathArray.length - 1]].items[0].type === 'folder';
+        currentOpts[pathArray[pathArray.length - 1]].items[0].asset_type === 'folder';
+
       if (hasFolders) {
         currentOpts[pathArray[pathArray.length - 1]].items = {};
-      }
 
-      if (d.items) {
-        d.items.every(item => {
-          if (item.type === 'folder' && item.name) {
-            self.getMedia(path + '/' + item.name);
-          }
-        });
+        if (d.items) {
+          d.items.forEach(item => {
+            if (item.asset_type === 'folder' && item.name) {
+              self.getMedia(path + '/' + item.name);
+            }
+          });
+        }
       }
 
       self.updateData(opts);
