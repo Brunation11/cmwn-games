@@ -77,9 +77,7 @@ class ItemDrawerScreen extends play.Screen {
           selectRespond={this.selectRespond.bind(this)}
           cancelRespond={this.goto.bind(this, 'canvas')}
           categories={this.state.opts.categories}
-          data={{
-            items: this.state.data,
-          }}
+          data={this.state.data}
         />
       </div>
     );

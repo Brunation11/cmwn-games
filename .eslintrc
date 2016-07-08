@@ -7,7 +7,8 @@
         "ga": true,
         "React": true,
         "ReactDOM": true,
-        "moment": true
+        "moment": true,
+        'require': true
     },
     "parser": "babel-eslint",
     "plugins": [

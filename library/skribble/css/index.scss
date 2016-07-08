@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 * {
   box-sizing: border-box;
 }
@@ -97,98 +100,98 @@ button {
   cursor: pointer;
 
   background-image: url(../media/_Buttons/SK_btn_rounded.png);
-  background-size: 1000px;
+  background-size: 2000px;
   background-position: left top;
 
   &.make {
-    width: 225px;
-    height: 105px;
+    width: 450px;
+    height: 210px;
     background-position: 0px 0px;
 
     &:hover {
-      background-position: -250px 0px;
+      background-position: -500px 0px;
     }
   }
 
   &.read {
-    width: 225px;
-    height: 105px;
-    background-position: 0px -120px;
+    width: 450px;
+    height: 210px;
+    background-position: 0px -240px;
 
     &:hover {
-      background-position: -250px -120px;
+      background-position: -500px -240px;
     }
   }
 
   &.select {
-    width: 180px;
-    height: 90px;
-    background-position: -498px -370px;
+    width: 360px;
+    height: 180px;
+    background-position: -996px -740px;
 
     &:hover {
-      background-position: -748px -370px;
+      background-position: -1496px -740px;
     }
   }
 
   &.cancel {
-    width: 180px;
-    height: 90px;
-    background-position: -498px -495px;
+    width: 360px;
+    height: 180px;
+    background-position: -996px -990px;
 
     &:hover {
-      background-position: -748px -495px;
+      background-position: -1496px -990px;
     }
   }
 
   &.next-screen,
   &.prev-screen {
-    width: 80px;
-    height: 60px;
+    width: 160px;
+    height: 120px;
   }
 
   &.next-screen {
-    background-position: -120px 420px;
+    background-position: -240px 840px;
 
     &:hover {
-      background-position: -120px 676px;
+      background-position: -240px 1352px;
     }
   }
 
   &.prev-screen {
-    background-position: -15px 420px;
+    background-position: -30px 840px;
 
     &:hover {
-      background-position: -15px 676px;
+      background-position: -30px 1352px;
     }
   }
 
   &.close-reveal {
     width: 55px;
     height: 50px;
-    background-position: -225px 420px;
+    background-position: -450px 840px;
 
     &.ENABLED:hover {
-      background-position: -225px 676px;
+      background-position: -450px 1352px;
     }
   }
 
   &.quit-yes {
     width: 110px;
     height: 50px;
-    background-position: 0px -500px;
+    background-position: 0px -1000px;
 
     &:hover {
-      background-position: -250px -500px;
+      background-position: -500px -1000px;
     }
   }
 
   &.quit-no {
     width: 110px;
     height: 50px;
-    background-position: 0px -624px;
+    background-position: 0px -1248px;
 
     &:hover {
-      background-position: -250px -624px;
+      background-position: -500px -1248px;
     }
   }
 }
@@ -341,9 +344,9 @@ p {
 
 .header {
   background-image: url(../media/_Headers/SK_headers.png);
-  background-size: 1900px;
-  height: 70px;
-  width: 450px;
+  background-size: 3800px;
+  height: 140px;
+  width: 900px;
   margin: 0 auto;
 }
 
@@ -382,6 +385,60 @@ p {
 }
 
 #friends {
+  .header {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .item-drawer-container {
+    display: block;
+    margin: 0 auto;
+    width: 1120px;
+    background-position: -10px 0px;
+    padding: 308px 250px 40px 110px;
+  }
+
+  .item-drawer {
+    li {
+      height: 182px;
+
+      span {
+        display: block;
+        font-size: 18px;
+
+        &.name {
+          color: $green;
+        }
+
+        &.description {
+          color: $black;
+        }
+      }
+
+      &:hover {
+        span {
+
+          &.name {
+            color: $white;
+          }
+
+          &.description {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+  }
+
   button {
     display: block;
     color: #000;

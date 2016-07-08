@@ -13,6 +13,7 @@ import FriendScreen from './components/friend_screen.js';
 import CanvasScreen from './components/canvas_screen.js';
 import ItemDrawerScreen from './components/item_drawer_screen.js';
 import InboxScreen from './components/inbox_screen.js';
+import SendScreen from './components/inbox_screen.js';
 
 import QuitScreen from '../shared/components/quit_screen/0.1.js';
 
@@ -30,6 +31,7 @@ class Skribble extends play.Game {
       canvas: CanvasScreen,
       'item-drawer': ItemDrawerScreen,
       inbox: InboxScreen,
+      send: SendScreen,
     };
 
     this.menus = {
@@ -38,10 +40,13 @@ class Skribble extends play.Game {
   }
 
   save() {
+    var skribble = this.refs['screen-canvas'].getData();
+    skribble.recipient = this.state.recipient;
+
     this.emit({
       name: 'save-skribble',
       game: this.config.id,
-      skribble: this.refs['screen-canvas'].refs.canvas.getItems(),
+      skribble,
     });
   }
 
@@ -49,7 +54,24 @@ class Skribble extends play.Game {
     if (opts.name === 'add-item') {
       this.refs['screen-canvas'].addItem(opts.message);
       this.goto({ index: 'canvas' });
+    } else if (opts.name === 'add-recipient') {
+      this.addRecipient(opts.message);
+      this.goto({ index: 'canvas' });
     }
+  }
+
+  addRecipient(recipient) {
+    this.setState({
+      recipient
+    });
+  }
+
+  clickRecipient() {
+    this.goto({
+      index: this.state.recipient && this.state.recipient.user_id ?
+        'send' :
+        'friend'
+    });
   }
 
   renderLoader() {
@@ -69,14 +91,39 @@ class Skribble extends play.Game {
     );
   }
 
+  renderRecipient() {
+    var recipient = this.state.recipient, content = [];
+
+    if (!recipient) return;
+
+    if (recipient.name) {
+      content.push(<span className="name">{recipient.name}</span>);
+    }
+
+    if (recipient.src) {
+      content.push(<img className="profile-image" src={recipient.src} />);
+    }
+
+    return content;
+  }
+
   renderMenu() {
     return (
-      <div className="game-menu">
-        <button className="save" onClick={this.save.bind(this)} />
-        <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
-        <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
-        <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
-        <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+      <div>
+        <div className="game-menu">
+          <button className="save" onClick={this.save.bind(this)} />
+          <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+          <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
+          <button className="help" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+          <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+        </div>
+        <ul className="menu recipient">
+          <li onClick={this.clickRecipient.bind(this)}>
+            <span>
+              {this.renderRecipient()}
+            </span>
+          </li>
+        </ul>
       </div>
     );
   }

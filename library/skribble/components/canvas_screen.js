@@ -30,6 +30,10 @@ class CanvasScreen extends play.Screen {
     }
   }
 
+  getData() {
+    return this.refs.canvas.getItems();
+  }
+
   addItem(message) {
     if (message) {
       this.setState({
@@ -76,6 +80,7 @@ class CanvasScreen extends play.Screen {
     return (
       <div>
         <play.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
+        <play.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
         <Menu ref={'menu'} items={this.state.menus} />
         <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />
