@@ -220,7 +220,7 @@ class Canvas extends skoash.Component {
     if (!this.state.background) return;
 
     return {
-      backgroundImage: 'url("' + this.state.background.src + '")',
+      backgroundImage: `url(${this.state.background.src})`,
     };
   }
 
