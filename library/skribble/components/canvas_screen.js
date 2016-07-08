@@ -25,6 +25,7 @@ class CanvasScreen extends skoash.Screen {
     ];
 
     this.setValid = this.setValid.bind(this);
+    this.setHasAssets = this.setHasAssets.bind(this);
   }
 
   bootstrap() {
@@ -90,6 +91,12 @@ class CanvasScreen extends skoash.Screen {
     });
   }
 
+  setHasAssets(hasAssets) {
+    this.setState({
+      hasAssets
+    });
+  }
+
   send() {
     if (!this.state.valid) return;
     this.goto('send');
@@ -137,6 +144,7 @@ class CanvasScreen extends skoash.Screen {
           <Canvas
             ref={'canvas'}
             setValid={this.setValid}
+            setHasAssets={this.setHasAssets}
           />
         </div>
         <Selectable className="menu right-menu" list={this.rightMenuList} />

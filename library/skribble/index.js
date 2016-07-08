@@ -112,8 +112,6 @@ class Skribble extends skoash.Game {
   getMedia(path) {
     var pathArray, self = this;
 
-    console.log(path);
-
     path = path || 'skribble/menu';
     pathArray = path.split('/');
     pathArray.shift();
