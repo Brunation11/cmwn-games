@@ -35,6 +35,7 @@ class ItemDrawer extends Selectable {
       started: true,
       classes,
       selectFunction,
+      categoryName: '',
     });
 
     this.bootstrap();
