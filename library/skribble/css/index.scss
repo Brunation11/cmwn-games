@@ -228,6 +228,7 @@ button {
     }
   }
 
+  &.quit-yes,
   &.yes {
     width: 230px;
     height: 100px;
@@ -238,6 +239,7 @@ button {
     }
   }
 
+  &.quit-no,
   &.no {
     width: 230px;
     height: 100px;
@@ -277,26 +279,6 @@ button {
 
     &.ENABLED:hover {
       background-position: -450px 1352px;
-    }
-  }
-
-  &.quit-yes {
-    width: 110px;
-    height: 50px;
-    background-position: 0px -1000px;
-
-    &:hover {
-      background-position: -500px -1000px;
-    }
-  }
-
-  &.quit-no {
-    width: 110px;
-    height: 50px;
-    background-position: 0px -1248px;
-
-    &:hover {
-      background-position: -500px -1248px;
     }
   }
 }
@@ -1162,7 +1144,28 @@ p {
   transition: transform .25s;
 
   .frame {
+    background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+    background-repeat: no-repeat;
+    background-size: 1700px;
     text-align: center;
+    font-size: 40px;
+    background-position: -1130px -20px;
+    padding: 120px 60px 140px 40px;
+    text-align: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-image: url(../media/_Otter/Otter_Static_GreetingOne.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top left;
+      display: block;
+      width: 600px;
+      height: 400px;
+      left: 500px;
+      top: 400px;
+    }
 
     h2 {
       margin: 0;
