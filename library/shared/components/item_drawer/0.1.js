@@ -122,7 +122,11 @@ class ItemDrawer extends Selectable {
   }
 
   getClass(key, item) {
-    var white = item && item.name && item.name.indexOf('_w.') !== -1;
+    var white = item && item.name &&
+      (
+        item.name.indexOf('_w.') !== -1 ||
+        item.name.indexOf('W.') !== -1
+      );
 
     return classNames({
       [this.state.classes[key] || '']: true,
@@ -159,7 +163,7 @@ class ItemDrawer extends Selectable {
       content.push(<skoash.Image src={src} key={0} />);
     }
 
-    if (item.name && item.asset_type === 'folder') {
+    if (item.name && (item.asset_type === 'folder' || item.asset_type === 'friend')) {
       content.push(<span className="name" key={1}>{item.name}</span>);
     }
 
