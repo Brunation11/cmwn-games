@@ -52,6 +52,7 @@ body.iOS:not(.STARTED) {
 		display: none;
 	}
 
+	.ball,
 	[pl-id=ball] {
 		position: absolute;
 		left: 0;
@@ -71,6 +72,7 @@ body.iOS:not(.STARTED) {
 	}
 
 	&.OPEN {
+		.ball,
 		[pl-id=ball] {
 			animation: splash 6s forwards linear;
 
@@ -81,7 +83,9 @@ body.iOS:not(.STARTED) {
 	}
 }
 
+#ios-splash.LEAVING,
 .pl-game.STARTED #ios-splash {
+	.ball:before,
 	[pl-id=ball]:before {
 		background-image: url(../images/ios_start_ball_anim.gif);
 		background-size: contain;
