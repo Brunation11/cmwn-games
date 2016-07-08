@@ -17,7 +17,7 @@ import './components/video/behavior';
 import '../../../shared/js/test-platform-integration';
 import '../../../shared/js/google-analytics';
 
-pl.game('litterbug', function () {
+pl.game('litter-bug', function () {
 
   this.screen('title', function () {
 
@@ -75,6 +75,13 @@ pl.game('litterbug', function () {
     });
   });
 
+  this.screen('commit', function () {
+    this.on('ui-open', function () {
+      // this is ugly but apparently necessary to fix an rending issue
+      this.css({display: 'none'}).css({display: 'block'});
+    });
+  });
+
   this.screen('flip', function () {
     this.next = function () {
       var buttonSound = pl.util.resolvePath(this, 'game.audio.sfx.button');
@@ -83,15 +90,13 @@ pl.game('litterbug', function () {
     };
 
     this.complete = function () {
-      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-
+      var eventCategory;
+      var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
+      theEvent.name = 'flip';
+      theEvent.gameData = {id: this.game.id()};
+      if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
+      eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
       ga('send', 'event', eventCategory, 'complete');
-
-      pl.game.report.flip(this, {
-        name: 'flip',
-        gameData: {id: this.game.id()}
-      });
-
       return this.proto();
     };
   });

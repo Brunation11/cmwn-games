@@ -1,19 +1,23 @@
 pl.game.component('audio-sequence', function () {
-  var i, sounds;
+  var i, sounds, self = this;
 
-  this.on('ready', function (_event) {
-    if (!this.is(_event.target)) return;
+  self.on('ready', function (_event) {
+    if (!self.is(_event.target)) return;
 
-    sounds = this.find('> audio').toArray();
+    sounds = self.find('> audio').toArray();
 
-    this.audio.on('ended', function () {
+    self.audio.on('ended', function () {
       var next = sounds[i++];
-      if (next && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound($(next).data('context'));
-    }.bind(this));
+      if (next && self.screen.state(self.screen.STATE.OPEN)) {
+        setTimeout(function () {
+          self.screen.playSound($(next).data('context'));
+        }, 0);
+      }
+    }.bind(self));
   });
 
-  this.start = function () {
+  self.start = function () {
     i = 1;
-    if (sounds[0] && this.screen.state(this.screen.STATE.OPEN)) this.screen.playSound($(sounds[0]).data('context'));
+    if (sounds[0] && self.screen.state(self.screen.STATE.OPEN)) self.screen.playSound($(sounds[0]).data('context'));
   };
 });
