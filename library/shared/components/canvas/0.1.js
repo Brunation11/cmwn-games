@@ -256,7 +256,7 @@ class Canvas extends skoash.Component {
           checkItem={self.checkItem}
           deactivateItems={self.deactivateItems}
           relayerItems={self.relayerItems}
-          setInvalid={self.setInvalid}
+          setValid={self.setValid}
           ref={'message-' + key}
           key={key}
         />
