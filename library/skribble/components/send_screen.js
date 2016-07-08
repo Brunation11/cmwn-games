@@ -73,7 +73,14 @@ class SendScreen extends skoash.Screen {
           <span className={classNameText.isReady} />
           <button className={classNameText.changeFriend} onClick={changeFriendClick} />
         </div>
-        <div className={classNameText.character} />
+        <div className={classNameText.character}>
+          <skoash.Image className="otter" src="media/_Otter/Otter_Static_GreetingTwo.png" />
+          <div className="bubble">
+            Are you sure<br/>
+            you are ready to<br/>
+            send your message?
+          </div>
+        </div>
         <div className={classNameText.gift} />
         <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>

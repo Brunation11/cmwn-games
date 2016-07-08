@@ -941,6 +941,28 @@ p {
 }
 
 #send {
+  .character {
+    position: absolute;
+
+    .otter {
+      margin: 140px 0 0 10px;
+      width: 470px;
+    }
+
+    .bubble {
+      position: absolute;
+      background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+      background-repeat: no-repeat;
+      background-size: 1500px;
+      text-align: center;
+      font-size: 36px;
+      left: 110px;
+      top: -80px;
+      background-position: -70px -540px;
+      padding: 70px 30px 150px 38px;
+    }
+  }
+
   .header {
     background: none;
     width: auto;
