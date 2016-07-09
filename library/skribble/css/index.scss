@@ -443,12 +443,31 @@ p {
 }
 
 #title {
+  &.LEAVE {
+    transform: translateX(100%);
+  }
+
+  &.LEAVING {
+    .next-screen {
+      transform: rotate(360deg);
+    }
+  }
+
   img {
     position: absolute;
     width: 90%;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  .next-screen {
+    background: none;
+
+    &:before {
+      content: "PLAY";
+      font-size: 48px;
+    }
   }
 }
 

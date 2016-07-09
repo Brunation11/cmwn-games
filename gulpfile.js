@@ -211,6 +211,7 @@ gulp.task('watch', function () {
   var game = (games.length > 1) ? '**' : games[0];
   watch([
     '../js-interactive-library/build/play.js',
+    'library/framework/*',
     'library/shared/**/*',
     'library/' + game + '/**/*.js',
     'library/' + game + '/**/*.scss',
