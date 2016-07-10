@@ -6,7 +6,6 @@ const classNameText = {
   box: 'box',
   leftMenu: 'menu left-menu',
   rightMenu: 'menu right-menu',
-  sender: 'menu recipient sender',
 };
 
 const refs = {
@@ -37,35 +36,12 @@ class PreviewScreen extends skoash.Screen {
     ];
   }
 
-  reply() {
-    skoash.trigger('passData', {
-      name: 'add-recipient',
-      message: this.state.message.user,
-    });
-  }
-
   renderPrevButton() {
     return null;
   }
 
   renderNextButton() {
     return null;
-  }
-
-  renderSender() {
-    var message = this.state.message, content = [];
-
-    if (!message) return;
-
-    if (message.user.name) {
-      content.push(<span className="name">{message.user.name}</span>);
-    }
-
-    if (message.user.profile_image) {
-      content.push(<img className="profile-image" src={message.user.profile_image} />);
-    }
-
-    return content;
   }
 
   open(opts) {
@@ -75,20 +51,9 @@ class PreviewScreen extends skoash.Screen {
     skoash.Screen.prototype.open.call(this, opts);
   }
 
-  renderCanvas() {
-    return <div />;
-  }
-
   renderContent() {
     return (
       <div>
-        <ul className={classNameText.sender}>
-          <li>
-            <span>
-              {this.renderSender()}
-            </span>
-          </li>
-        </ul>
         <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
           <Canvas ref={refs.canvas} />
           <div className={classNameText.box} />
