@@ -1074,52 +1074,79 @@ p {
 
 }
 
-#read {
-  .menu.recipient.sender {
-    display: block;
+#preview {
+  .left-menu {
+    height: auto;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    > li {
+      height: 150px;
+      max-height: 150px;
+
+      &.SELECTED {
+        margin-left: -260px;
+      }
+      
+      &:hover {
+        margin-left: -2px;
+      }
+    }
+  }
+}
+
+.skribble-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  .canvas,
+  img {
+    position: absolute;
+    background-color: $white;
+    border-radius: 80px;
+    width: 1280px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transform-origin: top left;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
   }
 
-  .skribble-box {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+  .box {
+    position: relative;
+    background-image: url(../media/_Frames/SK_frames_messagebox.png);
+    background-size: 2600px;
+    background-repeat: no-repeat;
+    background-position: -40px -80px;
+    width: 670px;
+    height: 620px;
+    margin: 100px auto;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    z-index: 1;
+  }
 
+  &.STARTED {
+    .canvas,
     img {
-      position: absolute;
-      width: 1280px;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      transform-origin: top left;
-      animation-duration: 4s;
-      animation-fill-mode: forwards;
+      animation-name: skribble-zoom;
     }
 
     .box {
-      position: relative;
-      background-image: url(../media/_Frames/SK_frames_messagebox.png);
-      background-size: 2600px;
-      background-repeat: no-repeat;
-      background-position: -40px -80px;
-      width: 670px;
-      height: 620px;
-      margin: 100px auto;
-      animation-duration: 3s;
-      animation-fill-mode: forwards;
-      opacity: 0;
+      animation-name: box-explode;
     }
+  }
+}
 
-    &.STARTED {
-      img {
-        animation-name: skribble-zoom;
-      }
-
-      .box {
-        animation-name: box-explode;
-      }
-    }
+#read {
+  .menu.recipient.sender {
+    display: block;
   }
 
   .left-menu {
