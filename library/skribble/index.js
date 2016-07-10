@@ -29,7 +29,7 @@ class Skribble extends skoash.Game {
     super(config);
 
     this.screens = {
-      0: <iOSScreen />,
+      0: iOSScreen,
       1: TitleScreen,
       'menu': <MenuScreen />,
       friend: <FriendScreen />,
