@@ -9,9 +9,6 @@ var TitleScreen = (
       ref="title"
       className="title animated"
       src="media/_Title/SKribble_title.png"
-      onClick={() => {
-        skoash.trigger('goto', {index: 'menu'});
-      }}
     />
   </skoash.Screen>
 );
