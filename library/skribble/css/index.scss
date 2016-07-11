@@ -416,6 +416,7 @@ p {
 
   .pl-game.MENU .screen {
     opacity: 0;
+    pointer-events: none;
   }
 
   .screen .next-screen:hover {

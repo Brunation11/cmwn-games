@@ -84,7 +84,7 @@ class FriendScreen extends skoash.Screen {
     src = 'One';
     copy = (
       <span>
-        Don't have<br/> friends yes<br/><br/> Let me suggest<br/> some for you.
+        Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
       </span>
     );
 
