@@ -71,13 +71,13 @@ class Skribble extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(send) {
+  save(skramble) {
     var self = this;
     var skribble = {
       'version': config.version,
       'friend_to': self.state.recipient.user_id,
       ...self.state.skribbleData,
-      send,
+      skramble,
       rules: self.getRules()
     };
 
