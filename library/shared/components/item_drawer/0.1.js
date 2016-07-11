@@ -49,11 +49,13 @@ class ItemDrawer extends Selectable {
     var li, message, key, type, categoryName, classes = [];
 
     li = e.target.closest('LI');
-
     if (!li) return;
 
     key = li.getAttribute('data-ref');
+    if (!this.refs[key]) return;
+
     type = this.refs[key].props.item.asset_type;
+    if (!type) return;
 
     if (type === 'folder') {
       categoryName = this.refs[key].props.item.name;
@@ -86,7 +88,7 @@ class ItemDrawer extends Selectable {
 
   cancelButton() {
     if (typeof this.props.cancelRespond === 'function') {
-      this.props.cancelRespond();
+      this.props.cancelRespond.call(this);
     }
   }
 

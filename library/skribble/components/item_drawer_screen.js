@@ -70,13 +70,24 @@ class ItemDrawerScreen extends skoash.Screen {
     return null;
   }
 
+  cancelRespond() {
+    if (this.state.category) {
+      this.setState({
+        category: '',
+        categoryName: '',
+      });
+    } else {
+      skoash.trigger('goto', {index: 'canvas'});
+    }
+  }
+
   renderContent() {
     return (
       <div>
         <ItemDrawer
           ref="drawer"
           selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.goto.bind(this, 'canvas')}
+          cancelRespond={this.cancelRespond}
           categories={this.state.opts.categories}
           data={this.state.data}
         />
