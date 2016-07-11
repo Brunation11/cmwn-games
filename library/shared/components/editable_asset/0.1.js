@@ -23,13 +23,13 @@ class EditableAsset extends Draggable {
       lastValid: {},
     };
 
-    this.boundScale = this.scale.bind(this);
-    this.boundAdjustScale = this.adjustScale.bind(this);
-    this.boundOffScale = this.offScale.bind(this);
+    this.scale = this.scale.bind(this);
+    this.adjustScale = this.adjustScale.bind(this);
+    this.offScale = this.offScale.bind(this);
 
-    this.boundRotate = this.rotate.bind(this);
-    this.boundAdjustRotation = this.adjustRotation.bind(this);
-    this.boundOffRotate = this.offRotate.bind(this);
+    this.rotate = this.rotate.bind(this);
+    this.adjustRotation = this.adjustRotation.bind(this);
+    this.offRotate = this.offRotate.bind(this);
   }
 
   shouldDrag() {
@@ -85,13 +85,13 @@ class EditableAsset extends Draggable {
   }
 
   rotate() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offRotate);
   }
 
   offRotate() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offRotate);
   }
 
   adjustRotation(e) {
@@ -130,13 +130,13 @@ class EditableAsset extends Draggable {
   }
 
   scale() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
   }
 
   offScale() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
   }
 
   adjustScale(e) {
@@ -259,8 +259,8 @@ class EditableAsset extends Draggable {
   }
 
   attachEvents() {
-    this.refs.scale.addEventListener('mousedown', this.boundScale);
-    this.refs.rotate.addEventListener('mousedown', this.boundRotate);
+    this.refs.scale.addEventListener('mousedown', this.scale);
+    this.refs.rotate.addEventListener('mousedown', this.rotate);
   }
 
   componentDidMount() {

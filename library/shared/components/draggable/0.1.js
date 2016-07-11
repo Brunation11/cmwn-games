@@ -4,13 +4,13 @@ class Draggable extends skoash.Component {
   constructor() {
     super();
 
-    this.boundMouseDown = this.mouseDown.bind(this);
-    this.boundMouseUp = this.mouseUp.bind(this);
+    this.mouseDown = this.mouseDown.bind(this);
+    this.mouseUp = this.mouseUp.bind(this);
 
-    this.boundMoveEvent = this.moveEvent.bind(this);
+    this.moveEvent = this.moveEvent.bind(this);
 
-    this.boundTouchStart = this.touchStart.bind(this);
-    this.boundTouchEnd = this.touchEnd.bind(this);
+    this.touchStart = this.touchStart.bind(this);
+    this.touchEnd = this.touchEnd.bind(this);
   }
 
   shouldDrag() {
@@ -67,13 +67,13 @@ class Draggable extends skoash.Component {
   }
 
   attachMouseEvents() {
-    window.addEventListener('mousemove', this.boundMoveEvent);
-    window.addEventListener('mouseup', this.boundMouseUp);
+    window.addEventListener('mousemove', this.moveEvent);
+    window.addEventListener('mouseup', this.mouseUp);
   }
 
   attachTouchEvents() {
-    window.addEventListener('touchmove', this.boundMoveEvent);
-    window.addEventListener('touchend', this.boundTouchEnd);
+    window.addEventListener('touchmove', this.moveEvent);
+    window.addEventListener('touchend', this.touchEnd);
   }
 
   mouseDown(e) {
@@ -114,13 +114,13 @@ class Draggable extends skoash.Component {
   }
 
   detachMouseEvents() {
-    window.removeEventListener('mousemove', this.boundMoveEvent);
-    window.removeEventListener('mouseup', this.boundMouseUp);
+    window.removeEventListener('mousemove', this.moveEvent);
+    window.removeEventListener('mouseup', this.mouseUp);
   }
 
   detachTouchEvents() {
-    window.removeEventListener('touchmove', this.boundMoveEvent);
-    window.removeEventListener('touchend', this.boundTouchEnd);
+    window.removeEventListener('touchmove', this.moveEvent);
+    window.removeEventListener('touchend', this.touchEnd);
   }
 
   mouseUp() {
@@ -186,8 +186,8 @@ class Draggable extends skoash.Component {
 
     this.setZoom();
 
-    this.refs.el.addEventListener('mousedown', this.boundMouseDown);
-    this.refs.el.addEventListener('touchstart', this.boundTouchStart);
+    this.refs.el.addEventListener('mousedown', this.mouseDown);
+    this.refs.el.addEventListener('touchstart', this.touchStart);
 
     window.addEventListener('resize', this.setZoom.bind(this));
   }
