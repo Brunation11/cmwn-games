@@ -214,13 +214,15 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var width, height, minDim, minScale;
+      var width, height, minDim, maxDim, minScale, maxScale;
 
       minDim = this.props.minDim || 40;
+      maxDim = this.props.maxDim || 400;
       width = image.width;
       height = image.height;
 
       minScale = Math.max(minDim / width, minDim / height);
+      maxScale = Math.min(maxDim / width, maxDim / height, this.state.maxScale);
 
       self.setState({
         width,
@@ -228,7 +230,7 @@ class EditableAsset extends Draggable {
         minScale,
         scale: self.props.state && self.props.state.scale ?
                 self.props.state.scale :
-                Math.max(self.state.scale, minScale),
+                Math.max(Math.min(self.state.scale, maxScale), minScale),
       }, () => {
         self.checkItem();
       });
