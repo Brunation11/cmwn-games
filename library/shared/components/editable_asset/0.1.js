@@ -300,7 +300,7 @@ class EditableAsset extends Draggable {
     return style;
   }
 
-  getStyle() {
+  getAssetStyle() {
     var style, transform = '';
 
     transform += `scale(${this.state.scale}) `;
@@ -319,6 +319,23 @@ class EditableAsset extends Draggable {
     return style;
   }
 
+  getButtonsStyle() {
+    var style, transform = '';
+
+    transform += `scale(${this.state.scale}) `;
+    transform += `rotate(${this.state.rotation}rad) `;
+
+    style = {
+      width: this.state.width,
+      height: this.state.height,
+      left: this.state.left,
+      top: this.state.top,
+      transform,
+    };
+
+    return style;
+  }
+
   getClasses() {
     return classNames({
       DRAGGING: this.state.dragging,
@@ -328,9 +345,22 @@ class EditableAsset extends Draggable {
     }, 'editable-asset', this.props.asset_type);
   }
 
+  renderAsset() {
+    return (
+      <div
+        ref="el"
+        className="asset"
+        style={this.getAssetStyle()}
+      />
+    );
+  }
+
   renderButtons() {
     return (
-      <div className={'buttons'}>
+      <div
+        className="buttons"
+        style={this.getButtonsStyle()}
+      >
         <button
           className="delete"
           style={this.getButtonStyle()}
@@ -356,13 +386,13 @@ class EditableAsset extends Draggable {
   }
 
   render() {
+        // style={this.getStyle()}
     return (
       <li
-        ref="el"
         className={this.getClasses()}
-        style={this.getStyle()}
         onClick={this.activate.bind(this)}
       >
+        {this.renderAsset()}
         {this.renderButtons()}
       </li>
     );

@@ -8,13 +8,17 @@
   padding: 0;
   transform-origin: 50% 50%;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: border .5s;
+
+  .asset {
+    position: absolute;
+  }
 
   .buttons {
+    position: absolute;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .5s;
+    border: 6px solid black;
+    transition: opacity .5s, border .5s;
   }
 
   button {
@@ -29,6 +33,7 @@
     margin: -22.5px 0 0 -22.5px;
     background-image: url(../media/_Frames/SK_frames_canvas.png);
     background-size: 2500px;
+    opacity: 0;
 
     $left: 1666 2034 1666 2034;
     $top:     0  343  343    0;
@@ -53,8 +58,12 @@
     cursor: -moz-grab;
 
     .buttons {
-      opacity: 1;
-      pointer-events: auto;
+      z-index: 1000000;
+
+      button {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 
@@ -79,6 +88,8 @@
 
 .canvas.ACTIVE {
   .editable-asset {
-    border-color: black;
+    .buttons {
+      opacity: 1;
+    }
   }
 }

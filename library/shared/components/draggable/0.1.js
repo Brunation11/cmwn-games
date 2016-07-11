@@ -35,15 +35,19 @@ class Draggable extends skoash.Component {
     if (e.target !== this.refs.el) return;
     if (!this.shouldDrag()) return;
 
-    grabX = e.offsetX;
-    grabY = e.offsetY;
+    grabX = e.offsetX * (this.state.scale || 1);
+    grabY = e.offsetY * (this.state.scale || 1);
 
     startX = endX = e.pageX - grabX;
     startY = endY = e.pageY - grabY;
 
     if (!this.props.return) {
-      startX = typeof this.state.startX === 'number' ? this.state.startX : startX;
-      startY = typeof this.state.startY === 'number' ? this.state.startY : startY;
+      startX = endX = typeof this.state.startX === 'number' ?
+        this.state.startX + this.state.grabX - grabX :
+        startX;
+      startY = endY = typeof this.state.startY === 'number' ?
+        this.state.startY + this.state.grabY - grabY :
+        startY;
     }
 
     this.setState({
