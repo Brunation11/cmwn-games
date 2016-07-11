@@ -75,7 +75,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   suggestFriends() {
-    window.open('https://changemyworldnow.com/friends');
+    window.open('https://local.changemyworldnow.com/friends/suggested');
   }
 
   renderOtter() {
