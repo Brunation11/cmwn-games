@@ -18,6 +18,7 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
+    message = new Object(message);
     skoash.trigger('pass-data', {
       name: 'add-item',
       message
