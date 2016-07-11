@@ -125,7 +125,7 @@ class FriendScreen extends skoash.Screen {
     }
 
     return (
-      <div className={this.props.className}>
+      <div className={this.state.opts.goto}>
         <div className="item-drawer-container">
           <div className="suggest-friends-buttons">
             <button className="continue" onClick={this.selectRespond.bind(this, {})} />
