@@ -97,8 +97,8 @@ class EditableAsset extends Draggable {
   adjustRotation(e) {
     var rotation, deltaX, deltaY;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     rotation = Math.atan2(deltaY, deltaX) + (Math.PI / 4) % (2 * Math.PI);
 
@@ -142,8 +142,8 @@ class EditableAsset extends Draggable {
   adjustScale(e) {
     var scale, deltaX, deltaY, delta, base;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -396,6 +396,7 @@ class EditableAsset extends Draggable {
         // style={this.getStyle()}
     return (
       <li
+        ref="li"
         className={this.getClasses()}
         onClick={this.activate.bind(this)}
       >
