@@ -68,9 +68,13 @@ class Inbox extends Selectable {
       items = items[this.state.category].items;
     }
 
+    // friends = skoash.trigger('getState').data.friends;
+
     return items.map((item, key) => {
       var timestamp = moment(item.timestamp);
       key = 'message-' + key;
+          // <skoash.Image src={item.user.profile_image} />
+          // <span className="username">{item.user.name}</span>
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
@@ -79,8 +83,6 @@ class Inbox extends Selectable {
           item={item}
           key={key}
         >
-          <skoash.Image src={item.user.profile_image} />
-          <span className="username">{item.user.name}</span>
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>

@@ -107,8 +107,6 @@ class InboxScreen extends skoash.Screen {
     outbox = data.sent;
     saved = data.draft;
 
-    console.log(data);
-
     this.revealList = this.getRevealList(inbox, outbox, saved);
 
     this.setState({
