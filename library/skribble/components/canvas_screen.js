@@ -78,10 +78,10 @@ class CanvasScreen extends skoash.Screen {
     if (opts.message) {
       this.setState({
         hasAssets: true,
-        background: !!opts.message.background,
+        background: !!opts.message.rules.background,
       });
 
-      this.refs.canvas.setItems(opts.message);
+      this.refs.canvas.setItems(opts.message.rules);
     }
 
     skoash.Screen.prototype.open.call(this);

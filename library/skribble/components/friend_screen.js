@@ -32,7 +32,7 @@ class FriendScreen extends skoash.Screen {
         friend._embedded.image.url :
         DEFAULT_PROFILE_IMAGE;
       return {
-        'user_id': friend.user_id,
+        'user_id': friend.friend_id,
         name: friend.username,
         src,
         // I need to get the flips earned back from the backend to do this.
