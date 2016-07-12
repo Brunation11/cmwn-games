@@ -81,6 +81,8 @@ class Skribble extends skoash.Game {
       rules: self.getRules()
     };
 
+    console.log(skribble);
+
     self.emit({
       name: 'saveSkribble',
       game: self.config.id,

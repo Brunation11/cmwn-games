@@ -1236,3 +1236,19 @@ p {
     display: none !important;
   }
 }
+
+#test {
+  .canvas {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    height: 500px;
+    width: 1000px;
+    border: 4px solid black;
+
+    .draggable {
+      left: 400px;
+      top: 400px;
+    }
+  }
+}

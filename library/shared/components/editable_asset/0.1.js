@@ -281,6 +281,13 @@ class EditableAsset extends Draggable {
     this.getLayer();
 
     this.attachEvents();
+
+    skoash.trigger('emit', {
+      name: 'getMedia',
+      'media_id': this.props.media_id
+    }).then(d => {
+      this.setState(d);
+    });
   }
 
   componentDidUpdate() {

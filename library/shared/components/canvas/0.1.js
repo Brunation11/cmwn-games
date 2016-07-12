@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import EditableAsset from '../editable_asset/0.1.js';
 
 import classNames from 'classnames';
@@ -24,24 +26,23 @@ class Canvas extends skoash.Component {
   }
 
   getItems() {
-    var items, messages, self = this;
+    var items, messages, background, backgroundState, self = this;
 
     items = this.state.items.map((item, key) => {
       var state = self.refs['item-' + key].state;
 
       item.state = {
-        version: '0.1',
-        id: state.id,
-        thumbnail: state.thumbnail,
-        timestamp: state.timestamp,
-        left: skoash.util.floor(state.left, 14),
-        top: skoash.util.floor(state.top, 14),
-        scale: skoash.util.floor(state.scale, 14),
-        rotation: skoash.util.floor(state.rotation, 14),
+        left: _.floor(state.left, 14),
+        top: _.floor(state.top, 14),
+        scale: _.floor(state.scale, 14),
+        rotation: _.floor(state.rotation, 14),
         layer: state.layer,
         valid: state.valid,
         corners: state.corners,
       };
+
+      item.check = state.check;
+      item.mime_type = state.mime_type; // eslint-disable-line camelcase
 
       return item;
     });
@@ -50,15 +51,17 @@ class Canvas extends skoash.Component {
       var state = self.refs['message-' + key].state;
 
       item.state = {
-        left: state.left,
-        top: state.top,
-        scale: state.scale,
-        rotation: state.rotation,
+        left: _.floor(state.left, 14),
+        top: _.floor(state.top, 14),
+        scale: _.floor(state.scale, 14),
+        rotation: _.floor(state.rotation, 14),
         layer: state.layer,
-        zoom: state.zoom,
         valid: state.valid,
         corners: state.corners,
       };
+
+      item.check = state.check;
+      item.mime_type = state.mime_type; // eslint-disable-line camelcase
 
       return item;
     });
@@ -104,7 +107,19 @@ class Canvas extends skoash.Component {
     if (asset.asset_type === 'background') {
       this.setState({
         background: asset,
-      }, cb);
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          var background = this.state.background;
+          background.check = d.check;
+          background.mime_type = d.mime_type; // eslint-disable-line camelcase
+          this.setState({background});
+        });
+        cb(arguments);
+      });
+
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
       items.push(asset);
