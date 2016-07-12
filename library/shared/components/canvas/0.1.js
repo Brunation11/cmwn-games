@@ -26,7 +26,7 @@ class Canvas extends skoash.Component {
   }
 
   getItems() {
-    var items, messages, background, backgroundState, self = this;
+    var items, messages, self = this;
 
     items = this.state.items.map((item, key) => {
       var state = self.refs['item-' + key].state;
