@@ -73,7 +73,7 @@
   }
 
   &.INVALID {
-    &:before {
+    .buttons:before {
       content: '';
       display: block;
       position: absolute;

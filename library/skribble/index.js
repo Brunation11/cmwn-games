@@ -174,7 +174,15 @@ class Skribble extends skoash.Game {
     }
 
     return this.emit(opts).then(data => {
-      this.updateData({data});
+      if (opts.status) {
+        data[opts.status] = data.skribble;
+        delete data.skribble;
+        this.updateData({
+          data
+        });
+      } else {
+        this.updateData({data});
+      }
     });
   }
 
