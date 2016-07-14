@@ -29,21 +29,6 @@ class CanvasScreen extends skoash.Screen {
     this.setHasAssets = this.setHasAssets.bind(this);
   }
 
-  bootstrap() {
-    var menu, state;
-
-    skoash.Screen.prototype.bootstrap.call(this);
-
-    state = skoash.trigger('getState');
-
-    if (state && state.data && state.data.menu) {
-      menu = state.data.menu;
-      this.setState({
-        menu,
-      });
-    }
-  }
-
   getData() {
     return this.refs.canvas.getItems();
   }
@@ -70,18 +55,33 @@ class CanvasScreen extends skoash.Screen {
   }
 
   open(opts) {
+    var hasAssets, background, menu, state;
+
+    hasAssets = this.state.hasAssets;
+    background = this.state.background;
+
     if (this.refs && this.refs.menu) {
       this.refs.menu.deactivate();
     }
 
     if (opts.message) {
-      this.setState({
-        hasAssets: true,
-        background: !!opts.message.rules.background,
-      });
+      hasAssets = true,
+      background = !!opts.message.rules.background,
 
       this.refs.canvas.setItems(opts.message.rules);
     }
+
+    state = skoash.trigger('getState');
+
+    if (state && state.data && state.data.menu) {
+      menu = state.data.menu;
+    }
+
+    this.setState({
+      hasAssets,
+      background,
+      menu,
+    });
 
     skoash.Screen.prototype.open.call(this);
   }
