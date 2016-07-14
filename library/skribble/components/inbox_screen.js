@@ -172,7 +172,7 @@ class InboxScreen extends skoash.Screen {
 export default (
   <InboxScreen
     id="inbox"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

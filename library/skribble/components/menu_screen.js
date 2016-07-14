@@ -21,7 +21,7 @@ class MenuScreen extends skoash.Screen {
 export default (
   <MenuScreen
     id="menu"
-    showPrev={false}
-    showNext={false}
+    hidePrev
+    hideNext
   />
 );

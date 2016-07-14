@@ -90,7 +90,7 @@ class ItemDrawerScreen extends skoash.Screen {
 export default (
   <ItemDrawerScreen
     id="item-drawer"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

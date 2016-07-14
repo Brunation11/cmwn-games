@@ -1,7 +1,7 @@
 var TitleScreen = (
   <skoash.Screen
     id="title"
-    showPrev={false}
+    hidePrev
     nextDelay={1000}
     nextIndex="menu"
   >

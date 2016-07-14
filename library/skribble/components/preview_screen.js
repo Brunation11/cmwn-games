@@ -59,7 +59,7 @@ class PreviewScreen extends skoash.Screen {
 export default (
   <PreviewScreen
     id="preview"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

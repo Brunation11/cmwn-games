@@ -97,7 +97,7 @@ class ReadScreen extends skoash.Screen {
 export default (
   <ReadScreen
     id="read"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

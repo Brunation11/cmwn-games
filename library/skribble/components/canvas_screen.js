@@ -182,7 +182,7 @@ class CanvasScreen extends skoash.Screen {
 export default (
   <CanvasScreen
     id="canvas"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

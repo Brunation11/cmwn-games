@@ -82,7 +82,7 @@ class SendScreen extends skoash.Screen {
 export default (
   <SendScreen
     id="send"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );

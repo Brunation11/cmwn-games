@@ -149,7 +149,7 @@ class FriendScreen extends skoash.Screen {
 export default (
   <FriendScreen
     id="friends"
-    showNext={false}
-    showPrev={false}
+    hideNext
+    hidePrev
   />
 );
