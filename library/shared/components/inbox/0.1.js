@@ -58,6 +58,13 @@ class Inbox extends Selectable {
     });
   }
 
+  getClassNames() {
+    return classNames({
+      'item-drawer': true,
+      COMPLETE: this.state.complete,
+    }, this.props.className);
+  }
+
   renderList() {
     var items;
 
@@ -72,20 +79,20 @@ class Inbox extends Selectable {
     return items.map((item, key) => {
       var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
-          <play.Image src={item['profile-image']} />
+          <skoash.Image src={item['profile-image']} />
           <span className="username">{item.username}</span>
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
           </span>
-        </play.ListItem>
+        </skoash.ListItem>
       );
     });
   }
@@ -93,7 +100,7 @@ class Inbox extends Selectable {
   render() {
     return (
       <div>
-        <ul className={'item-drawer ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
           {this.renderList()}
         </ul>
       </div>

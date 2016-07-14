@@ -1,4 +1,4 @@
-class QuitScreen extends play.Screen {
+class QuitScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -9,12 +9,12 @@ class QuitScreen extends play.Screen {
   }
 
   okay() {
-    play.trigger('quit');
+    skoash.trigger('quit');
   }
 
   cancel() {
     this.close();
-    play.trigger('menuClose', {
+    skoash.trigger('menuClose', {
       id: this.state.id,
     });
   }

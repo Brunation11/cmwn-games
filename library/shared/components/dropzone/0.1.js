@@ -2,7 +2,7 @@ import Draggable from '../draggable/0.1.js';
 
 import classNames from 'classnames';
 
-class Dropzone extends play.Component {
+class Dropzone extends skoash.Component {
   constructor() {
     super();
 
@@ -60,7 +60,7 @@ class Dropzone extends play.Component {
       list,
     });
 
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.setCorners();
   }
 
@@ -71,7 +71,7 @@ class Dropzone extends play.Component {
   }
 
   dropRespond(message, corners) {
-    if (play.util.doIntersect(corners, this.state.corners)) {
+    if (skoash.util.doIntersect(corners, this.state.corners)) {
       this.inBounds(message);
     } else {
       this.outOfBounds();
@@ -115,7 +115,7 @@ class Dropzone extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}

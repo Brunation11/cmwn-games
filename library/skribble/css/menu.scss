@@ -8,11 +8,14 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
   height: 900px;
   max-height: 900px;
   transition: max-height .5s, padding .5s;
   box-sizing: border-box;
+
+  * {
+    z-index: 2;
+  }
 
   > li {
     list-style: none;
@@ -39,11 +42,11 @@
       margin-left: -2px;
     }
 
-    $classes: messages images sounds effects;
-    $left:         452    452    452     452;
-    $top:           10    160    310     460;
+    $classes: messages images sounds effects send preview edit-right;
+    $left:         452    452    452     452 2250    2250       2250;
+    $top:           10    160    310     460    0     155        305;
 
-    @for $i from 1 through 4 {
+    @for $i from 1 through 7 {
       &.#{nth($classes, $i)} span {
         background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
       }
@@ -74,7 +77,6 @@
     bottom: auto;
     width: 340px;
     margin: -20px 20px 20px;
-    z-index: 1;
     background-image: url(../media/_Frames/SK_frames_canvas.png);
     background-size: 5100px;
     list-style: none;
@@ -174,6 +176,34 @@
         width: 50px;
         height: 50px;
         background-color: $white;
+      }
+    }
+  }
+
+  &.right-menu {
+    top: 50%;
+    left: 1445px;
+    height: auto;
+    padding: 0;
+    transform: translateY(-50%);
+    overflow: visible;
+    z-index: 2;
+
+    > li {
+      margin-left: 0px;
+      max-height: 150px;
+
+      &.SELECTED {
+        margin-left: 0px;
+      }
+
+      &:hover {
+        margin-left: -250px;
+      }
+
+      span {
+        border-radius: 30px 0 0 30px;
+        height: 150px;
       }
     }
   }

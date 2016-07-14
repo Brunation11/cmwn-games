@@ -1,7 +1,7 @@
 import Selectable from '../selectable/0.1.js';
 import Reveal from '../reveal/0.1.js';
 
-class SelectableReveal extends play.Component {
+class SelectableReveal extends skoash.Component {
   constructor() {
     super();
 
@@ -41,7 +41,7 @@ class SelectableReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}

@@ -1,9 +1,10 @@
 import Canvas from '../../shared/components/canvas/0.1.js';
 import Menu from '../../shared/components/menu/0.1.js';
+import Selectable from '../../shared/components/selectable/0.1.js';
 
 import classNames from 'classnames';
 
-class CanvasScreen extends play.Screen {
+class CanvasScreen extends skoash.Screen {
   constructor() {
     super();
 
@@ -13,14 +14,23 @@ class CanvasScreen extends play.Screen {
       menus: {},
     };
 
+    this.rightMenuList = [
+      <li className="preview" onClick={this.goto.bind(this, 'preview')}>
+        <span />
+      </li>,
+      <li className="send" onClick={this.goto.bind(this, 'send')}>
+        <span />
+      </li>
+    ];
+
   }
 
   bootstrap() {
     var menus, state;
 
-    play.Screen.prototype.bootstrap.call(this);
+    skoash.Screen.prototype.bootstrap.call(this);
 
-    state = play.trigger('getState');
+    state = skoash.trigger('getState');
 
     if (state && state.data && state.data.menus) {
       menus = state.data.menus;
@@ -34,9 +44,18 @@ class CanvasScreen extends play.Screen {
     return this.refs.canvas.getItems();
   }
 
+  reset() {
+    this.refs.canvas.reset();
+    this.setState({
+      background: false,
+      hasAssets: false,
+    });
+  }
+
   addItem(message) {
     if (message) {
       this.setState({
+        hasAssets: true,
         background: this.state.background ||
               message.type === 'background',
       });
@@ -57,7 +76,7 @@ class CanvasScreen extends play.Screen {
       this.refs.canvas.setItems(opts.message);
     }
 
-    play.Screen.prototype.open.call(this);
+    skoash.Screen.prototype.open.call(this);
   }
 
   getContainerClasses() {
@@ -67,8 +86,13 @@ class CanvasScreen extends play.Screen {
     });
   }
 
+  getClassNames() {
+    return classNames({
+      'HAS-ASSETS': this.state.hasAssets,
+    }, skoash.Screen.prototype.getClassNames.call(this));
+  }
+
   renderPrevButton() {
-    // <button className={'prev-screen'} onClick={this.goto.bind(this, 1)}>{'<'}</button>
     return null;
   }
 
@@ -79,12 +103,13 @@ class CanvasScreen extends play.Screen {
   renderContent() {
     return (
       <div>
-        <play.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-        <play.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+        <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
+        <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
         <Menu ref={'menu'} items={this.state.menus} />
         <div className={this.getContainerClasses()}>
           <Canvas ref={'canvas'} />
         </div>
+        <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
     );
   }

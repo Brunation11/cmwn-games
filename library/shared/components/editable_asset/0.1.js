@@ -283,8 +283,8 @@ class EditableAsset extends Draggable {
   getButtonStyle() {
     var style, transform = '';
 
-    transform += 'scale(${(1 / this.state.scale)}) ';
-    transform += 'rotate(${(-this.state.rotation)}rad) ';
+    transform += `scale(${(1 / this.state.scale)}) `;
+    transform += `rotate(${(-this.state.rotation)}rad) `;
 
     style = {
       transform,
@@ -296,11 +296,11 @@ class EditableAsset extends Draggable {
   getStyle() {
     var style, transform = '';
 
-    transform += 'scale(' + this.state.scale + ') ';
-    transform += 'rotate(' + this.state.rotation + 'rad) ';
+    transform += `scale(${this.state.scale}) `;
+    transform += `rotate(${this.state.rotation}rad) `;
 
     style = {
-      backgroundImage: 'url("' + this.props.src + '")',
+      backgroundImage: `url("${this.props.src}")`,
       width: this.state.width,
       height: this.state.height,
       left: this.state.left,
@@ -319,8 +319,7 @@ class EditableAsset extends Draggable {
       ACTIVE: this.state.active,
       INVALID: !this.state.valid,
       'editable-asset': true,
-      [this.props.type]: true,
-    });
+    }, this.props.type);
   }
 
   renderButtons() {

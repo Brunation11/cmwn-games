@@ -4,39 +4,50 @@
  */
 import config from './config.game';
 
-import Loader from '../shared/components/loader/0.1.js';
+import Loader from 'shared/components/loader/0.1';
 
-import iOSScreen from '../shared/components/ios_splash_screen/0.1.js';
-// import SampleScreen from './components/sample_screen.js';
-import MenuScreen from './components/menu_screen.js';
-import FriendScreen from './components/friend_screen.js';
-import CanvasScreen from './components/canvas_screen.js';
-import ItemDrawerScreen from './components/item_drawer_screen.js';
-import InboxScreen from './components/inbox_screen.js';
-import SendScreen from './components/inbox_screen.js';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import MenuScreen from './components/menu_screen';
+import FriendScreen from './components/friend_screen';
+import CanvasScreen from './components/canvas_screen';
+import ItemDrawerScreen from './components/item_drawer_screen';
+import InboxScreen from './components/inbox_screen';
+import SendScreen from './components/send_screen';
+import SentScreen from './components/sent_screen';
 
-import QuitScreen from '../shared/components/quit_screen/0.1.js';
+import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import '../shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
-class Skribble extends play.Game {
+class Skribble extends skoash.Game {
   constructor() {
     super(config);
 
     this.screens = {
-      0: iOSScreen,
-      // 1: SampleScreen,
-      1: MenuScreen,
-      friend: FriendScreen,
-      canvas: CanvasScreen,
-      'item-drawer': ItemDrawerScreen,
-      inbox: InboxScreen,
-      send: SendScreen,
+      0: <iOSScreen />,
+      1: <MenuScreen />,
+      friend: <FriendScreen />,
+      canvas: <CanvasScreen />,
+      'item-drawer': <ItemDrawerScreen />,
+      inbox: <InboxScreen />,
+      send: <SendScreen />,
+      sent: <SentScreen />,
     };
 
     this.menus = {
       quit: QuitScreen,
     };
+  }
+
+  goto(opts) {
+    if (opts.index === 'send') {
+      if (!this.state.recipient || !this.state.recipient.name) {
+        opts.index = 'friend';
+        opts.goto = 'send';
+      }
+    }
+
+    skoash.Game.prototype.goto.call(this, opts);
   }
 
   save() {
@@ -50,27 +61,53 @@ class Skribble extends play.Game {
     });
   }
 
+  send() {
+    var skribble, self = this;
+
+    skribble = self.refs['screen-canvas'].getData();
+    skribble.recipient = self.state.recipient;
+
+    self.emit({
+      name: 'send-skribble',
+      game: self.config.id,
+      skribble,
+    }).then(response => {
+      if (response.success) {
+        self.refs['screen-canvas'].reset();
+        self.setState({
+          recipient: {}
+        });
+      }
+
+      self.goto({
+        index: 'sent',
+        success: response.success,
+        recipient: response.recipient,
+      });
+    });
+
+  }
+
   passData(opts) {
     if (opts.name === 'add-item') {
       this.refs['screen-canvas'].addItem(opts.message);
       this.goto({ index: 'canvas' });
     } else if (opts.name === 'add-recipient') {
-      this.addRecipient(opts.message);
-      this.goto({ index: 'canvas' });
+      this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
+    } else if (opts.name === 'send') {
+      this.send();
     }
   }
 
-  addRecipient(recipient) {
+  addRecipient(recipient, cb) {
     this.setState({
       recipient
-    });
+    }, cb);
   }
 
   clickRecipient() {
     this.goto({
-      index: this.state.recipient && this.state.recipient.user_id ?
-        'send' :
-        'friend'
+      index: 'friend'
     });
   }
 
@@ -130,6 +167,6 @@ class Skribble extends play.Game {
 
 }
 
-play.start(Skribble, config.id);
+skoash.start(Skribble, config.id);
 
-import '../shared/js/google-analytics';
+import 'shared/js/google-analytics';

@@ -54,7 +54,8 @@ html, body, body > div, body > div > div {
     }
   }
 
-  &.SCREEN-friend {
+  &.SCREEN-friend,
+  &.SCREEN-send {
     .background-2 {
       opacity: 1;
     }
@@ -140,6 +141,36 @@ button {
 
     &:hover {
       background-position: -1496px -990px;
+    }
+  }
+
+  &.change-friend {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -750px;
+
+    &:hover {
+      background-position: -500px -750px;
+    }
+  }
+
+  &.create-another {
+    width: 460px;
+    height: 210px;
+    background-position: -995px 0px;
+
+    &:hover {
+      background-position: -1495px 0px;
+    }
+  }
+
+  &.inbox {
+    width: 460px;
+    height: 210px;
+    background-position: -995px -250px;
+
+    &:hover {
+      background-position: -1495px -250px;
     }
   }
 
@@ -267,6 +298,7 @@ p {
   margin-top: -450px;
   opacity: 0;
   display: none;
+  overflow: hidden;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
 
@@ -380,6 +412,16 @@ p {
   .editable-asset {
     button {
       color: #fff;
+    }
+  }
+
+  .right-menu {
+    display: none;
+  }
+
+  &.HAS-ASSETS {
+    .right-menu {
+      display: block;
     }
   }
 }
@@ -649,6 +691,105 @@ p {
       }
     }
   }
+}
+
+#send {
+  .header {
+    background: none;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+
+    span {
+      display: inline-block;
+      height: 100px;
+      line-height: 100px;
+      vertical-align: middle;
+    }
+  }
+
+  .your-message-to,
+  .is-ready {
+    background-image: url(../media/_Headers/SK_headers.png);
+    background-size: 3800px;
+    background-repeat: no-repeat;
+  }
+  
+  .your-message-to {
+    background-position: -2850px 0;
+    width: 750px;
+  }
+
+  .username {
+    color: $white;
+    font-size: 54px;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.6);
+  }
+
+  .is-ready {
+    background-position: -2840px -250px;
+    width: 700px;
+  }
+
+  .change-friend {
+    vertical-align: middle;
+    margin-left: -230px;
+    transform: translateX(240px);
+  }
+
+  .gift {
+    background-image: url(../media/_Frames/SK_frames_messagebox.png);
+    background-size: 1750px;
+    background-repeat: no-repeat;
+    background-position: -40px -80px;
+    width: 670px;
+    height: 620px;
+    margin: 0 auto;
+  }
+}
+
+#sent {
+  .character {
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+  }
+
+  .header {
+    background-image: url(../media/_Frames/SK_frames_general.png);
+    background-size: 6450px;
+    background-repeat: no-repeat;
+    background-position: -4825px 0px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+    padding: 40px 0;
+
+    span {
+      display: inline-block;
+      height: 60px;
+      line-height: 60px;
+      vertical-align: middle;
+      color: $white;
+      font-size: 54px;
+    }
+  }
+
+  .your-message-to {
+    margin-right: 20px;
+  }
+
+  .buttons {
+    text-align: center;
+  }
+
+  .create-another,
+  .inbox {
+    margin: 20px;
+  }
+
 }
 
 #flip {

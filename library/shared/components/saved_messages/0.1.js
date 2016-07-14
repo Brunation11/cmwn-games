@@ -44,6 +44,14 @@ class SavedMessages extends Selectable {
     });
   }
 
+  getClassNames() {
+    return classNames({
+      'item-drawer': true,
+      SAVED: true,
+      COMPLETE: this.state.complete,
+    }, this.props.className);
+  }
+
   renderList() {
     var items;
 
@@ -58,19 +66,19 @@ class SavedMessages extends Selectable {
     return items.map((item, key) => {
       var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={this.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
-          <play.Image src={item.thumbnail} />
+          <skoash.Image src={item.thumbnail} />
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
           </span>
-        </play.ListItem>
+        </skoash.ListItem>
       );
     });
   }
@@ -78,7 +86,7 @@ class SavedMessages extends Selectable {
   render() {
     return (
       <div>
-        <ul className={'item-drawer SAVED' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
           {this.renderList()}
         </ul>
       </div>

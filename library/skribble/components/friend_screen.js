@@ -1,24 +1,29 @@
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
-class FriendScreen extends play.Screen {
+class FriendScreen extends skoash.Screen {
   constructor() {
     super();
 
     this.state = {
-      id: 'friends'
+      id: 'friends',
+      load: true,
+      complete: true,
+      recipient: {},
+      opts: {},
     };
 
   }
 
   selectRespond(message) {
-    play.trigger('pass-data', {
+    skoash.trigger('pass-data', {
       name: 'add-recipient',
+      goto: this.state.opts.goto,
       message
     });
   }
 
   updateData() {
-    var data = play.trigger('getState').data.friends;
+    var data = skoash.trigger('getState').data.friends;
 
     data = data.map(friend => {
       return {
@@ -39,20 +44,25 @@ class FriendScreen extends play.Screen {
   }
 
   open(opts) {
-    var self = this;
+    var recipient, self = this;
 
-    play.trigger('getData', {
+    skoash.trigger('getData', {
       categories: ['friends']
     }).then(data => {
       self.updateData.call(self, data);
     });
+
+    recipient = skoash.trigger('getState').recipient;
 
     self.setState({
       load: true,
       open: true,
       leave: false,
       close: false,
+      recipient,
       opts,
+    }, () => {
+      self.refs.drawer.start();
     });
 
     if (!self.state.started) {
@@ -78,6 +88,8 @@ class FriendScreen extends play.Screen {
           cancelRespond={this.back}
           categories={this.state.opts.categories}
           data={this.state.data}
+          selectedItem={this.state.recipient}
+          complete={true}
         />
       </div>
     );

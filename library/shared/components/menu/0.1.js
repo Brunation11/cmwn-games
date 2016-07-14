@@ -70,11 +70,11 @@ class Menu extends Selectable {
           index: 'item-drawer',
           categories,
         };
-        onClick = play.trigger.bind(null, 'goto', gotoObj);
+        onClick = skoash.trigger.bind(null, 'goto', gotoObj);
       }
 
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={self.getClass(key)}
           data-ref={key}
           ref={key}
@@ -88,7 +88,7 @@ class Menu extends Selectable {
               <Menu ref={'menu-' + key} categories={categories} items={item.items} inactive={true} />
             );
           })()}
-        </play.ListItem>
+        </skoash.ListItem>
       );
     });
   }
@@ -104,7 +104,7 @@ class Menu extends Selectable {
     return classNames({
       menu: true,
       ACTIVE: this.state.active,
-    });
+    }, this.props.className);
   }
 
   render() {

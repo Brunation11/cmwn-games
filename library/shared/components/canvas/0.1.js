@@ -2,7 +2,7 @@ import EditableAsset from '../editable_asset/0.1.js';
 
 import classNames from 'classnames';
 
-class Canvas extends play.Component {
+class Canvas extends skoash.Component {
   constructor() {
     super();
 
@@ -66,6 +66,14 @@ class Canvas extends play.Component {
       items,
       messages,
     };
+  }
+
+  reset() {
+    this.setState({
+      background: null,
+      items: [],
+      messages: []
+    });
   }
 
   setItems(message) {
@@ -182,18 +190,19 @@ class Canvas extends play.Component {
 
   checkItem(key, type) {
     var self = this;
+
     return (
-        /* because we use OR here, if the first condition is true, the second condition will not run */
-        self.state[type + 's'][key].canOverlap ||
-        /* we want to return a bool so we just omit the curly braces  on the arrow function */
-        this.state[type + 's'].some((item, index) =>
-          /* we can drop the repeated `canOverlap` check because of the OR */
-          key === index &&
+      this.state[type + 's'][key].can_overlap ||
+      !this.state[type + 's'].some((item, index) => {
+        return (
+          key !== index &&
+          !this.state[type + 's'][index].can_overlap &&
           play.util.doIntersect(
-              self.refs[type + '-' + key].state.corners,
-              self.refs[type + '-' + index].state.corners
+            self.refs[type + '-' + key].state.corners,
+            self.refs[type + '-' + index].state.corners
           )
-        )
+        );
+      })
     );
   }
 
