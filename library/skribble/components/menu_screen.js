@@ -1,21 +1,4 @@
 class MenuScreen extends skoash.Screen {
-  constructor() {
-    super();
-
-    this.state = {
-      id: 'menu'
-    };
-
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderContent() {
     return (
       <div>
@@ -35,4 +18,10 @@ class MenuScreen extends skoash.Screen {
   }
 }
 
-export default MenuScreen;
+export default (
+  <MenuScreen
+    id="menu"
+    showPrev={false}
+    showNext={false}
+  />
+);

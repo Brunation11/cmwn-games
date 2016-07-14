@@ -32,15 +32,15 @@ class Skribble extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      'menu': <MenuScreen />,
-      friend: <FriendScreen />,
-      canvas: <CanvasScreen />,
-      'item-drawer': <ItemDrawerScreen />,
-      inbox: <InboxScreen />,
-      preview: <PreviewScreen />,
-      send: <SendScreen />,
-      sent: <SentScreen />,
-      read: <ReadScreen />,
+      'menu': MenuScreen,
+      friend: FriendScreen,
+      canvas: CanvasScreen,
+      'item-drawer': ItemDrawerScreen,
+      inbox: InboxScreen,
+      preview: PreviewScreen,
+      send: SendScreen,
+      sent: SentScreen,
+      read: ReadScreen,
     };
 
     this.menus = {

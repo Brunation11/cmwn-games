@@ -18,7 +18,6 @@ class PreviewScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'preview',
       load: true,
       opts: {},
     };
@@ -34,14 +33,6 @@ class PreviewScreen extends skoash.Screen {
         <span />
       </li>
     ];
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
   }
 
   open(opts) {
@@ -65,4 +56,10 @@ class PreviewScreen extends skoash.Screen {
   }
 }
 
-export default PreviewScreen;
+export default (
+  <PreviewScreen
+    id="preview"
+    showNext={false}
+    showPrev={false}
+  />
+);

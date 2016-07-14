@@ -10,7 +10,6 @@ class CanvasScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'canvas',
       load: true,
       menu: {},
       valid: true,
@@ -129,14 +128,6 @@ class CanvasScreen extends skoash.Screen {
     }, skoash.Screen.prototype.getClassNames.call(this));
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderContent() {
     return (
       <div>
@@ -188,4 +179,10 @@ class CanvasScreen extends skoash.Screen {
   }
 }
 
-export default CanvasScreen;
+export default (
+  <CanvasScreen
+    id="canvas"
+    showNext={false}
+    showPrev={false}
+  />
+);

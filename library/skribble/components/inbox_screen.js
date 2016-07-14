@@ -7,7 +7,6 @@ class InboxScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'inbox',
       load: true,
     };
 
@@ -151,14 +150,6 @@ class InboxScreen extends skoash.Screen {
     }, 250);
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderContent() {
     return (
       <div>
@@ -178,4 +169,10 @@ class InboxScreen extends skoash.Screen {
   }
 }
 
-export default InboxScreen;
+export default (
+  <InboxScreen
+    id="inbox"
+    showNext={false}
+    showPrev={false}
+  />
+);

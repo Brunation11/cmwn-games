@@ -5,7 +5,6 @@ class ItemDrawerScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'item-drawer',
       opts: {
         categories: [],
       },
@@ -62,14 +61,6 @@ class ItemDrawerScreen extends skoash.Screen {
     }, 250);
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   cancelRespond() {
     if (this.state.category) {
       this.setState({
@@ -96,4 +87,10 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 }
 
-export default ItemDrawerScreen;
+export default (
+  <ItemDrawerScreen
+    id="item-drawer"
+    showNext={false}
+    showPrev={false}
+  />
+);

@@ -15,7 +15,6 @@ class SendScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'send',
       load: true,
       recipient: {},
     };
@@ -50,14 +49,6 @@ class SendScreen extends skoash.Screen {
     });
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderContent() {
     var changeFriendClick = this.goto.bind(this, {
       index: 'friend',
@@ -88,4 +79,10 @@ class SendScreen extends skoash.Screen {
   }
 }
 
-export default SendScreen;
+export default (
+  <SendScreen
+    id="send"
+    showNext={false}
+    showPrev={false}
+  />
+);

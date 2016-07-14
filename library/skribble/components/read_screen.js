@@ -17,7 +17,6 @@ class ReadScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'read',
       load: true,
       message: {
         user: {}
@@ -58,14 +57,6 @@ class ReadScreen extends skoash.Screen {
     this.start();
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderSender() {
     var message = this.state.message, content = [];
 
@@ -103,4 +94,10 @@ class ReadScreen extends skoash.Screen {
   }
 }
 
-export default ReadScreen;
+export default (
+  <ReadScreen
+    id="read"
+    showNext={false}
+    showPrev={false}
+  />
+);

@@ -7,7 +7,6 @@ class FriendScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'friends',
       load: true,
       complete: true,
       recipient: {},
@@ -136,14 +135,6 @@ class FriendScreen extends skoash.Screen {
     );
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
-  }
-
   renderContent() {
     return (
       <div>
@@ -155,4 +146,10 @@ class FriendScreen extends skoash.Screen {
   }
 }
 
-export default FriendScreen;
+export default (
+  <FriendScreen
+    id="friends"
+    showNext={false}
+    showPrev={false}
+  />
+);
