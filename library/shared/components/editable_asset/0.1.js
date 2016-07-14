@@ -97,6 +97,11 @@ class EditableAsset extends Draggable {
   adjustRotation(e) {
     var rotation, deltaX, deltaY;
 
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
     deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
     deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
@@ -132,15 +137,26 @@ class EditableAsset extends Draggable {
   scale() {
     this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
+
+    this.refs.el.parentNode.addEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('touchend', this.offScale);
   }
 
   offScale() {
     this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
+
+    this.refs.el.parentNode.removeEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('touchend', this.offScale);
   }
 
   adjustScale(e) {
     var scale, deltaX, deltaY, delta, base;
+
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
 
     deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
     deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
@@ -264,6 +280,9 @@ class EditableAsset extends Draggable {
   attachEvents() {
     this.refs.scale.addEventListener('mousedown', this.scale);
     this.refs.rotate.addEventListener('mousedown', this.rotate);
+
+    this.refs.scale.addEventListener('touchstart', this.scale);
+    this.refs.rotate.addEventListener('touchstart', this.rotate);
   }
 
   componentDidMount() {

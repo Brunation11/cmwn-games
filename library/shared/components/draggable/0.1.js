@@ -1,8 +1,17 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
   constructor() {
     super();
+
+    this.state = {
+      startX: 0,
+      startY: 0,
+      endX: 0,
+      endY: 0,
+      zoom: 1,
+    };
 
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
@@ -30,10 +39,19 @@ class Draggable extends skoash.Component {
   }
 
   startEvent(e, cb) {
-    var startX, startY, endX, endY, grabX, grabY;
+    var pageX, pageY, rect, startX, startY, endX, endY, grabX, grabY;
 
     if (e.target !== this.refs.el) return;
     if (!this.shouldDrag()) return;
+
+    if (e.targetTouches && e.targetTouches[0]) {
+      pageX = e.targetTouches[0].pageX;
+      pageY = e.targetTouches[0].pageY;
+      rect = e.target.getBoundingClientRect();
+      e = e.targetTouches[0];
+      e.offsetX = pageX - rect.left;
+      e.offsetY = pageY - rect.top;
+    }
 
     grabX = e.offsetX;
     grabY = e.offsetY;
@@ -42,10 +60,10 @@ class Draggable extends skoash.Component {
     startY = endY = e.pageY - grabY;
 
     if (!this.props.return) {
-      startX = typeof this.state.startX === 'number' ?
+      startX = _.isFinite(this.state.grabX) ?
         this.state.startX + this.state.grabX - grabX :
         startX;
-      startY = typeof this.state.startY === 'number' ?
+      startY = _.isFinite(this.state.grabY) ?
         this.state.startY + this.state.grabY - grabY :
         startY;
     }
@@ -89,6 +107,11 @@ class Draggable extends skoash.Component {
   }
 
   moveEvent(e) {
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
     this.setState({
       endX: e.pageX - this.state.grabX,
       endY: e.pageY - this.state.grabY,
