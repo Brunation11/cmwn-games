@@ -11,7 +11,6 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
-// import TestScreen from './components/test_screen';
 import MenuScreen from './components/menu_screen';
 import FriendScreen from './components/friend_screen';
 import CanvasScreen from './components/canvas_screen';
@@ -24,7 +23,7 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class Skribble extends skoash.Game {
   constructor() {
@@ -33,7 +32,6 @@ class Skribble extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      // 1: TestScreen,
       'menu': <MenuScreen />,
       friend: <FriendScreen />,
       canvas: <CanvasScreen />,

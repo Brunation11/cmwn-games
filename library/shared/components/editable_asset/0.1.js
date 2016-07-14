@@ -69,6 +69,11 @@ class EditableAsset extends Draggable {
   }
 
   moveEvent(e) {
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
     this.setState({
       endX: e.pageX - this.state.grabX,
       endY: e.pageY - this.state.grabY,
