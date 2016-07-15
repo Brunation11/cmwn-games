@@ -24,8 +24,8 @@ class ItemDrawerScreen extends skoash.Screen {
     });
   }
 
-  updateData() {
-    var data = skoash.trigger('getState').data.menu.items;
+  updateData(d) {
+    var data = d ? d : skoash.trigger('getState').data.menu.items;
 
     this.state.opts.categories.forEach(key => {
       if (data[key]) data = data[key];
@@ -40,10 +40,12 @@ class ItemDrawerScreen extends skoash.Screen {
   open(opts) {
     var self = this;
 
+    self.updateData();
+
     skoash.trigger('getMedia', {
       path: 'skribble/menu/' + opts.categories.join('/')
     }).then(data => {
-      self.updateData.call(self, data);
+      self.updateData(data);
     });
 
     self.setState({
