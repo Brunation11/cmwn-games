@@ -1259,6 +1259,7 @@ p {
     padding: 120px 90px 180px 130px;
     text-align: center;
     margin-top: -320px;
+    margin-left: -680px;
 
     &:after {
       content: '';
@@ -1270,7 +1271,7 @@ p {
       display: block;
       width: 600px;
       height: 400px;
-      left: 500px;
+      left: -100px;
       top: 400px;
     }
 
