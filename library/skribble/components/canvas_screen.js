@@ -110,6 +110,7 @@ class CanvasScreen extends skoash.Screen {
   }
 
   close() {
+    skoash.trigger('save');
     clearInterval(this.state.interval);
     this.setState({
       interval: null
