@@ -67,7 +67,7 @@ class CanvasScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var hasAssets, background;
+    var hasAssets, background, interval;
 
     this.setMenu();
 
@@ -86,8 +86,6 @@ class CanvasScreen extends skoash.Screen {
         background,
       });
 
-      console.log(opts.message.friend_to);
-
       if (opts.message.friend_to) {
         skoash.trigger('passData', {
           name: 'add-recipient',
@@ -98,7 +96,25 @@ class CanvasScreen extends skoash.Screen {
       }
     }
 
+    skoash.trigger('save');
+
+    interval = setInterval(() => {
+      skoash.trigger('save');
+    }, 120000);
+
+    this.setState({
+      interval
+    });
+
     skoash.Screen.prototype.open.call(this);
+  }
+
+  close() {
+    clearInterval(this.state.interval);
+    this.setState({
+      interval: null
+    });
+    skoash.Screen.prototype.close.call(this);
   }
 
   setValid(valid) {
