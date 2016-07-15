@@ -22,6 +22,7 @@ import SentScreen from './components/sent_screen';
 import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
+import SaveMenu from './components/save_menu';
 
 import 'shared/js/test-platform-integration';
 
@@ -45,6 +46,7 @@ class Skribble extends skoash.Game {
 
     this.menus = {
       quit: QuitScreen,
+      save: SaveMenu,
     };
   }
 
@@ -235,6 +237,11 @@ class Skribble extends skoash.Game {
     }
   }
 
+  saveButton() {
+    this.save();
+    this.openMenu({id: 'save'});
+  }
+
   renderLoader() {
     return (
       <Loader />
@@ -274,7 +281,7 @@ class Skribble extends skoash.Game {
     return (
       <div>
         <div className="game-menu">
-          <button className="save" onClick={this.save.bind(this)} />
+          <button className="save" onClick={this.saveButton.bind(this)} />
           <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
           <button className="create" onClick={this.create.bind(this)} />
           <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
