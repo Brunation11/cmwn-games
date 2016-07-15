@@ -210,9 +210,9 @@ class Skribble extends skoash.Game {
         this.state.data.user.some(friend => {
           if (friend.friend_id === recipient) {
             recipient = friend;
-            return false;
+            return true;
           }
-          return true;
+          return false;
         });
       }
     }
