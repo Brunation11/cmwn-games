@@ -728,6 +728,14 @@ p {
     display: block;
     color: #000;
   }
+
+  .name {
+    position: absolute;
+    display: block;
+    width: 100%;
+    left: 0;
+    bottom: 5px;
+  }
 }
 
 #inbox {

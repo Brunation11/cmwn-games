@@ -227,6 +227,14 @@ class Skribble extends skoash.Game {
     });
   }
 
+  create() {
+    if (this.state.recipient) {
+      this.goto({index: 'canvas'});
+    } else {
+      this.goto({index: 'friend'});
+    }
+  }
+
   renderLoader() {
     return (
       <Loader />
@@ -268,7 +276,7 @@ class Skribble extends skoash.Game {
         <div className="game-menu">
           <button className="save" onClick={this.save.bind(this)} />
           <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
-          <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
+          <button className="create" onClick={this.create.bind(this)} />
           <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
           <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
         </div>
