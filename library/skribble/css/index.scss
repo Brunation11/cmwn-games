@@ -463,11 +463,16 @@ p {
   }
 
   .next-screen {
-    background: none;
+    background-image: url(../media/_Buttons/skribble-play-01.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    margin: 0 90px 70px 0;
+    width: 400px;
+    height: 180px;
 
-    &:before {
-      content: "PLAY";
-      font-size: 48px;
+    &:hover {
+      background-image: url(../media/_Buttons/skribble-hover.png);
     }
   }
 }
