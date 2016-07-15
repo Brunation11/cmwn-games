@@ -3,7 +3,12 @@
         "pl": true,
         "play": true,
         "$": true,
-        "ga": true
+        "ga": true,
+        "skoash": true,
+        "require": true,
+        "module": true,
+        "__dirname": true,
+        "autoprefixer": true
     },
     "parser": "babel-eslint",
     "plugins": [

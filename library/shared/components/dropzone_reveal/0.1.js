@@ -1,7 +1,9 @@
-import Selectable from '../selectable/0.1.js';
+import Dropzone from '../dropzone/0.1.js';
 import Reveal from '../reveal/0.1.js';
 
-class SelectableReveal extends play.Component {
+import classNames from 'classnames';
+
+class DropzoneReveal extends play.Component {
   constructor() {
     super();
 
@@ -10,7 +12,7 @@ class SelectableReveal extends play.Component {
     };
   }
 
-  selectRespond(message) {
+  correctRespond(message) {
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
@@ -50,13 +52,14 @@ class SelectableReveal extends play.Component {
     return null;
   }
 
-  renderSelectable() {
+  renderDropzone() {
     return (
-      <Selectable
-        ref="selectable"
-        list={this.props.selectableList}
-        selectRespond={this.selectRespond.bind(this)}
-        selectClass={this.props.selectableSelectClass}
+      <Dropzone
+        ref="dropzone"
+        message={this.props.dropzoneMessage}
+        list={this.props.dropzoneList}
+        assets={this.props.dropzoneAssets}
+        correctRespond={this.correctRespond.bind(this)}
       />
     );
   }
@@ -73,22 +76,21 @@ class SelectableReveal extends play.Component {
   }
 
   getClasses() {
-    var classes = '';
-
-    if (this.state.complete) classes += ' COMPLETE';
-
-    return classes;
+    return classNames({
+      'dropzone-reveal': true,
+      COMPLETE: this.state.complete,
+    });
   }
 
   render() {
     return (
-      <div className={'selectable-reveal' + this.getClasses()}>
+      <div className={this.getClasses()}>
         {this.renderAssets()}
-        {this.renderSelectable()}
+        {this.renderDropzone()}
         {this.renderReveal()}
       </div>
     );
   }
 }
 
-export default SelectableReveal;
+export default DropzoneReveal;
