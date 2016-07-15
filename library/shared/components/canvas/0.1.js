@@ -150,7 +150,7 @@ class Canvas extends skoash.Component {
 
   deactivateItems(exclude, type) {
     if (typeof exclude === 'object' && exclude.target) {
-      if (exclude.target.tagName !== 'UL') {
+      if (exclude.target.tagName !== 'LI') {
         return;
       }
       this.setState({

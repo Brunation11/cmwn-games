@@ -254,6 +254,7 @@ class EditableAsset extends Draggable {
         minScale,
         scale,
       }, () => {
+        self.activate();
         self.checkItem();
       });
     };
@@ -417,7 +418,6 @@ class EditableAsset extends Draggable {
   }
 
   render() {
-        // style={this.getStyle()}
     return (
       <li
         ref="li"
