@@ -62,6 +62,7 @@ class Skribble extends skoash.Game {
   ready() {
     if (!this.state.ready) {
       this.getMedia();
+      this.getData({name: 'getFriends'});
     }
 
     skoash.Game.prototype.ready.call(this);
@@ -71,12 +72,14 @@ class Skribble extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(skramble) {
-    var self = this;
+  save(e, skramble) {
+    /* eslint-disable camelcase */
+    var friend_to, self = this;
+    friend_to = self.state.recipient ? self.state.recipient.user_id : '';
     var skribble = {
       'version': config.version,
-      'friend_to': self.state.recipient.user_id,
       ...self.state.skribbleData,
+      friend_to,
       skramble,
       rules: self.getRules()
     };
@@ -88,10 +91,11 @@ class Skribble extends skoash.Game {
     }).then(skribbleData => {
       self.setState({skribbleData});
     });
+    /* eslint-enable camelcase */
   }
 
   send() {
-    this.save(true);
+    this.save(null, true);
 
     this.refs['screen-canvas'].reset();
     this.goto({
@@ -201,6 +205,16 @@ class Skribble extends skoash.Game {
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
       delete recipient.src;
+    } else if (typeof recipient === 'string') {
+      if (this.state.data && this.state.data.user) {
+        this.state.data.user.some(friend => {
+          if (friend.friend_id === recipient) {
+            recipient = friend;
+            return false;
+          }
+          return true;
+        });
+      }
     }
     this.setState({
       recipient

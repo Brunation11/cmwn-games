@@ -39,7 +39,7 @@ class ReadScreen extends skoash.Screen {
   reply() {
     skoash.trigger('passData', {
       name: 'add-recipient',
-      message: this.state.message.user,
+      message: this.state.message.created_by,
     });
   }
 
@@ -58,16 +58,29 @@ class ReadScreen extends skoash.Screen {
   }
 
   renderSender() {
-    var message = this.state.message, content = [];
+    var message, friends, creater, content = [];
+
+    message = this.state.message;
 
     if (!message) return;
 
-    if (message.user.name) {
-      content.push(<span className="name">{message.user.name}</span>);
+    friends = skoash.trigger('getState').data.user || [];
+    friends.some(friend => {
+      if (message.created_by === friend.friend_id) {
+        creater = friend;
+        return false;
+      }
+      return true;
+    });
+
+    if (!creater) return;
+
+    if (creater.username) {
+      content.push(<span className="name">{creater.username}</span>);
     }
 
-    if (message.user.profile_image) {
-      content.push(<img className="profile-image" src={message.user.profile_image} />);
+    if (creater._embedded.image) {
+      content.push(<img className="profile-image" src={creater._embedded.image.url} />);
     }
 
     return content;

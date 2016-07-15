@@ -85,6 +85,17 @@ class CanvasScreen extends skoash.Screen {
         hasAssets,
         background,
       });
+
+      console.log(opts.message.friend_to);
+
+      if (opts.message.friend_to) {
+        skoash.trigger('passData', {
+          name: 'add-recipient',
+          message: {
+            'friend_id': opts.message.friend_to
+          }
+        });
+      }
     }
 
     skoash.Screen.prototype.open.call(this);

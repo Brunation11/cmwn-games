@@ -24,7 +24,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   updateData(d) {
-    var data = d && d.user ? d.user : skoash.trigger('getState').data.user;
+    var data = d && d.user ? d.user : skoash.trigger('getState').data.user || [];
 
     data = data.map(friend => {
       var src = friend._embedded.image && friend._embedded.image.url ?
@@ -48,6 +48,8 @@ class FriendScreen extends skoash.Screen {
 
   open(opts) {
     var recipient, self = this;
+
+    self.updateData();
 
     skoash.trigger('getData', {
       name: 'getFriends'
