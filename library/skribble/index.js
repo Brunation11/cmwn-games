@@ -7,6 +7,7 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import TitleScreen from './components/title_screen';
 import MenuScreen from './components/menu_screen';
 import FriendScreen from './components/friend_screen';
 import CanvasScreen from './components/canvas_screen';
@@ -14,6 +15,7 @@ import ItemDrawerScreen from './components/item_drawer_screen';
 import InboxScreen from './components/inbox_screen';
 import SendScreen from './components/send_screen';
 import SentScreen from './components/sent_screen';
+import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -25,13 +27,15 @@ class Skribble extends skoash.Game {
 
     this.screens = {
       0: <iOSScreen />,
-      1: <MenuScreen />,
+      1: TitleScreen,
+      'menu': <MenuScreen />,
       friend: <FriendScreen />,
       canvas: <CanvasScreen />,
       'item-drawer': <ItemDrawerScreen />,
       inbox: <InboxScreen />,
       send: <SendScreen />,
       sent: <SentScreen />,
+      read: <ReadScreen />,
     };
 
     this.menus = {
@@ -100,6 +104,10 @@ class Skribble extends skoash.Game {
   }
 
   addRecipient(recipient, cb) {
+    if (recipient.src) {
+      recipient.profile_image = recipient.src; // eslint-disable-line camelcase
+      delete recipient.src;
+    }
     this.setState({
       recipient
     }, cb);
@@ -124,6 +132,8 @@ class Skribble extends skoash.Game {
         <div className="background-2" />
         <div className="background-3" />
         <div className="background-4" />
+        <div className="background-5" />
+        <div className="background-6" />
       </div>
     );
   }
@@ -137,8 +147,8 @@ class Skribble extends skoash.Game {
       content.push(<span className="name">{recipient.name}</span>);
     }
 
-    if (recipient.src) {
-      content.push(<img className="profile-image" src={recipient.src} />);
+    if (recipient.profile_image) {
+      content.push(<img className="profile-image" src={recipient.profile_image} />);
     }
 
     return content;

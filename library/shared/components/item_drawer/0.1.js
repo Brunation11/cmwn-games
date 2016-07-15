@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import Selectable from '../selectable/0.1';
-
-import classNames from 'classnames';
 
 class ItemDrawer extends Selectable {
   constructor() {
@@ -45,9 +44,8 @@ class ItemDrawer extends Selectable {
     });
   }
 
-
   selectHelper(e) {
-    var li, message, key, type, classes = [];
+    var li, message, key, type, categoryName, classes = [];
 
     li = e.target.closest('LI');
 
@@ -57,8 +55,10 @@ class ItemDrawer extends Selectable {
     type = this.refs[key].props.item.type;
 
     if (type === 'category') {
+      categoryName = this.refs[key].props.item.name;
       this.setState({
         category: key,
+        categoryName
       });
     } else {
       message = this.refs[key].props.item;
@@ -77,6 +77,12 @@ class ItemDrawer extends Selectable {
     }
   }
 
+  continueButton() {
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond({});
+    }
+  }
+
   cancelButton() {
     if (typeof this.props.cancelRespond === 'function') {
       this.props.cancelRespond();
@@ -87,6 +93,17 @@ class ItemDrawer extends Selectable {
     this.setState({
       category: null,
     });
+  }
+
+  getCategory() {
+    if (this.state.categoryName) {
+      return this.state.categoryName;
+    }
+
+    if (this.props.categories && this.props.categories.length) {
+      return this.props.categories[this.props.categories.length - 1];
+    }
+    return '';
   }
 
   getULClass() {
@@ -103,27 +120,41 @@ class ItemDrawer extends Selectable {
     });
   }
 
+  getClass(key, item) {
+    var white = item && item.src && item.src.indexOf('_w.') !== -1;
+
+    return classNames({
+      [this.state.classes[key] || '']: true,
+      white
+    });
+  }
+
   renderButtons() {
     return (
       <div className="buttons">
         <button className="select" onClick={this.selectButton.bind(this)} />
+        <button className="continue" onClick={this.continueButton.bind(this)} />
         <button className="cancel" onClick={this.cancelButton.bind(this)} />
       </div>
     );
   }
 
-  renderItemText(item) {
-    var text = [];
+  renderItemContent(item) {
+    var content = [];
+
+    if (item.src) {
+      content.push(<skoash.Image src={item.src} />);
+    }
 
     if (item.name) {
-      text.push(<span className="name">{item.name}</span>);
+      content.push(<span className="name">{item.name}</span>);
     }
 
     if (item.description) {
-      text.push(<span className="description">{item.description}</span>);
+      content.push(<span className="description">{item.description}</span>);
     }
 
-    return text;
+    return content;
   }
 
   renderList() {
@@ -137,26 +168,24 @@ class ItemDrawer extends Selectable {
       items = items[this.state.category].items;
     }
 
-    return items.map((item, key) => {
-      return (
-        <skoash.ListItem
-          className={this.getClass(key)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={key}
-          style={{backgroundImage: 'url("' + item.src + '")'}}
-        >
-          {self.renderItemText(item)}
-        </skoash.ListItem>
-      );
-    });
+    return items.map((item, key) =>
+      <skoash.ListItem
+        className={this.getClass(key, item)}
+        ref={key}
+        data-ref={key}
+        item={item}
+        key={key}
+      >
+        {self.renderItemContent(item)}
+      </skoash.ListItem>
+    );
   }
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         <div className="item-drawer-container">
+          <h2>{this.getCategory()}</h2>
           <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
             {this.renderList()}
           </ul>

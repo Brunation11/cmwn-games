@@ -8,39 +8,24 @@ class Inbox extends Selectable {
   }
 
   selectHelper(e) {
-    var li, message, key, type, classes = [];
+    var li, message, key, classes = [];
 
     li = e.target.closest('LI');
 
     if (!li) return;
 
     key = li.getAttribute('data-ref');
-    type = this.refs[key].props.item.type;
 
-    if (type === 'category') {
-      this.setState({
-        category: key,
-      });
-    } else {
-      message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+    message = this.refs[key].props.item;
+    classes[key] = this.state.selectClass;
 
-      this.setState({
-        message,
-        classes,
-      });
-    }
-  }
+    this.setState({
+      message,
+      classes,
+    });
 
-  selectButton() {
-    if (typeof this.props.selectRespond === 'function' && this.state.message) {
-      this.props.selectRespond(this.state.message);
-    }
-  }
-
-  cancelButton() {
-    if (typeof this.props.cancelRespond === 'function') {
-      this.props.cancelRespond();
+    if (typeof this.props.selectRespond === 'function' && message) {
+      this.props.selectRespond(message);
     }
   }
 
@@ -65,6 +50,11 @@ class Inbox extends Selectable {
     }, this.props.className);
   }
 
+  getStatusText(item) {
+    if (!item.status || item.status === 'COMPLETE') return '';
+    return item.status;
+  }
+
   renderList() {
     var items;
 
@@ -77,7 +67,7 @@ class Inbox extends Selectable {
     }
 
     return items.map((item, key) => {
-      var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
+      var timestamp = moment(item.timestamp);
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
@@ -86,11 +76,14 @@ class Inbox extends Selectable {
           item={item}
           key={key}
         >
-          <skoash.Image src={item['profile-image']} />
-          <span className="username">{item.username}</span>
+          <skoash.Image src={item.user.profile_image} />
+          <span className="username">{item.user.name}</span>
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
+          </span>
+          <span className={'status ' + item.status}>
+            {this.getStatusText(item)}
           </span>
         </skoash.ListItem>
       );

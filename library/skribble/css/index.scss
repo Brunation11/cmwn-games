@@ -30,52 +30,81 @@ html, body, body > div, body > div > div {
     opacity: 0;
   }
 
-  .background-1 {
-    background-image: url(../media/_Background/SK_BKG_1.png);
-  }
-
-  .background-2 {
-    background-image: url(../media/_Background/SK_BKG_2.png);
-  }
-
-  .background-3 {
-    background-image: url(../media/_Background/SK_BKG_3.png);
-  }
-
-  .background-4 {
-    background-image: url(../media/_Background/SK_BKG_4.png);
+  @for $i from 1 through 6 {
+    .background-#{$i} {
+      background-image: url(../media/_Background/SK_BKG_#{$i}.png);
+    }
   }
 
   &.SCREEN-1,
-  &.SCREEN-canvas,
-  &.SCREEN-item-drawer {
+  &.SCREEN-menu,
+  &.SCREEN-read {
     .background-1 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-friend,
-  &.SCREEN-send {
+  &.SCREEN-canvas,
+  &.SCREEN-item-drawer,
+  &.SCREEN-preview {
     .background-2 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-inbox {
+  &.SCREEN-friend {
     .background-3 {
       opacity: 1;
     }
   }
 
-  &.SCREEN-sent {
+  &.SCREEN-send {
     .background-4 {
       opacity: 1;
+    }
+  }
+
+  &.SCREEN-inbox {
+    .background-5 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-sent {
+    .background-6 {
+      opacity: 1;
+    }
+  }
+
+  // hiding buttons for certain screens
+  &.SCREEN-1,
+  &.SCREEN-friend {
+    .game-menu .save,
+    .game-menu .create,
+    .menu.recipient {
+      display: none;
+    }
+  }
+
+  &.SCREEN-canvas,
+  &.SCREEN-send {
+    .game-menu .create {
+      display: none;
+    }
+  }
+
+  &.SCREEN-inbox,
+  &.SCREEN-read {
+    .game-menu .save,
+    .game-menu .inbox,
+    .menu.recipient {
+      display: none;
     }
   }
 }
 
 html {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "CMWN", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -131,6 +160,26 @@ button {
 
     &:hover {
       background-position: -1496px -740px;
+    }
+  }
+
+  &.continue {
+    width: 360px;
+    height: 180px;
+    background-position: -996px -1240px;
+
+    &:hover {
+      background-position: -1496px -1240px;
+    }
+  }
+
+  &.suggest {
+    width: 460px;
+    height: 200px;
+    background-position: -998px -500px;
+
+    &:hover {
+      background-position: -1498px -500px;
     }
   }
 
@@ -382,25 +431,13 @@ p {
   margin: 0 auto;
 }
 
-#sample {
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-
-  li {
-    position: relative;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    height: 200px;
-  }
-
-  button {
-    color: #000;
+#title {
+  img {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 
@@ -417,11 +454,20 @@ p {
 
   .right-menu {
     display: none;
+    opacity: 1;
+    transition: opacity .5s;
   }
 
   &.HAS-ASSETS {
     .right-menu {
       display: block;
+    }
+  }
+
+  &.INVALID {
+    .right-menu {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 }
@@ -444,11 +490,21 @@ p {
 
   .item-drawer {
     li {
-      height: 182px;
+      padding: 15px 10px;
+      width: 200px;
+      height: 270px;
+      background-image: url(../media/_Buttons/sk_btn_selectfriend.png);
+      background-size: 400px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+
+      &:before {
+        display: none;
+      }
 
       span {
         display: block;
-        font-size: 18px;
+        font-size: 22px;
 
         &.name {
           color: $green;
@@ -459,7 +515,11 @@ p {
         }
       }
 
-      &:hover {
+      &:hover,
+      &.SELECTED {
+        border-color: transparent;
+        background-position: -200px 0;
+
         span {
 
           &.name {
@@ -481,9 +541,34 @@ p {
     transform: translateY(-50%);
   }
 
+  .suggest-friends-buttons {
+    width: 108%;
+    margin-top: -20px;
+
+    .continue {
+      width: 460px;
+      height: 200px;
+      background-position: 2px -500px;
+
+      &:hover {
+        background-position: -498px -500px;
+      }
+    }
+
+    button {
+      margin: 20px auto;
+    }
+  }
+
   button {
     display: block;
     color: #000;
+  }
+
+  .send {
+    .continue {
+      display: none;
+    }
   }
 }
 
@@ -505,6 +590,10 @@ p {
   .buttons {
     display: inline-block;
     vertical-align: middle;
+  }
+
+  .continue {
+    display: none;
   }
 
   button {
@@ -592,6 +681,14 @@ p {
       background-position: -30px -414px;
       margin: 0;
 
+      .status {
+        display: none;
+      }
+
+      &:before {
+        display: none;
+      }
+
       &.SELECTED {
         border-color: transparent;
       }
@@ -613,6 +710,17 @@ p {
 
         &:hover {
           background-position: -1328px -220px;
+        }
+
+        .status {
+          display: inline-block;
+          top: 45%;
+          right: 220px;
+          transform: translateY(-50%);
+
+          &.ERROR {
+            color: $error-red;
+          }
         }
       }
 
@@ -659,6 +767,7 @@ p {
       height: 92px;
       left: 160px;
       top: 22px;
+      background-color: $white;
     }
 
     span {
@@ -740,7 +849,7 @@ p {
 
   .gift {
     background-image: url(../media/_Frames/SK_frames_messagebox.png);
-    background-size: 1750px;
+    background-size: 2600px;
     background-repeat: no-repeat;
     background-position: -40px -80px;
     width: 670px;
@@ -790,6 +899,75 @@ p {
     margin: 20px;
   }
 
+}
+
+#read {
+  .menu.recipient.sender {
+    display: block;
+  }
+
+  .skribble-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      position: absolute;
+      width: 1280px;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      transform-origin: top left;
+      animation-duration: 4s;
+      animation-fill-mode: forwards;
+    }
+
+    .box {
+      position: relative;
+      background-image: url(../media/_Frames/SK_frames_messagebox.png);
+      background-size: 2600px;
+      background-repeat: no-repeat;
+      background-position: -40px -80px;
+      width: 670px;
+      height: 620px;
+      margin: 100px auto;
+      animation-duration: 3s;
+      animation-fill-mode: forwards;
+      opacity: 0;
+    }
+
+    &.STARTED {
+      img {
+        animation-name: skribble-zoom;
+      }
+
+      .box {
+        animation-name: box-explode;
+      }
+    }
+  }
+
+  .left-menu {
+    height: auto;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    > li {
+      height: 150px;
+      max-height: 150px;
+
+      &.SELECTED {
+        margin-left: -260px;
+      }
+      
+      &:hover {
+        margin-left: -2px;
+      }
+    }
+  }
 }
 
 #flip {

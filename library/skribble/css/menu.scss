@@ -35,6 +35,8 @@
       background-image: url(../media/_Buttons/SK_btn_slidenav.png);
       background-size: 2700px;
       z-index: 2;
+      color: transparent;
+      font-size: 0;
     }
 
     &.SELECTED,
@@ -42,11 +44,11 @@
       margin-left: -2px;
     }
 
-    $classes: messages images sounds effects send preview edit-right;
-    $left:         452    452    452     452 2250    2250       2250;
-    $top:           10    160    310     460    0     155        305;
+    $classes: messages images sounds effects send preview edit-right inbox reply;
+    $left:         452    452    452     452 2250    2250       2250  1350  2250;
+    $top:           10    160    310     460    0     155        305   155   455;
 
-    @for $i from 1 through 7 {
+    @for $i from 1 through 9 {
       &.#{nth($classes, $i)} span {
         background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
       }
@@ -104,18 +106,18 @@
         margin-left: 34px;
         font-size: 40px;
         text-align: center;
-        background-size: 2100px;
+        background-size: 600px;
+        background-repeat: no-repeat;
         background-image: url(../media/_Buttons/SK_btn_catergorymenu.png);
+        background-position: -10px -10px;
+        color: $black;
+        font-size: 40px;
+        text-transform: uppercase;
       }
 
-      $classes: backgrounds word-bubbles animals discover emoji fantasy greetings kudos challenges statements;
-      $left:             16           16      16       16    16     616      1516  1516       1516       1516;
-      $top:              10          110     210      310   410      10        10   110        210        310;
-
-      @for $i from 1 through 10 {
-        &.#{nth($classes, $i)} span {
-          background-position: ((-1 * nth($left, $i))+px) ((-1 * nth($top, $i))+px);
-        }
+      &:hover span {
+        background-position: -310px -10px;
+        color: $white;
       }
     }
   }
@@ -146,6 +148,11 @@
 
       &:hover {
         margin-left: -2px;
+      }
+
+      span {
+        color: $white;
+        font-size: 36px;
       }
 
       > span {
