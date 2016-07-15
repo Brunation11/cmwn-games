@@ -86,13 +86,18 @@ class Skribble extends skoash.Game {
       rules: self.getRules()
     };
 
-    self.emit({
-      name: 'saveSkribble',
-      game: self.config.id,
-      skribble,
-    }).then(skribbleData => {
-      self.setState({skribbleData});
-    });
+    if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
+      self.emit({
+        name: 'saveSkribble',
+        game: self.config.id,
+        skribble,
+      }).then(skribbleData => {
+        self.setState({
+          skribbleData,
+          skribble
+        });
+      });
+    }
     /* eslint-enable camelcase */
   }
 
