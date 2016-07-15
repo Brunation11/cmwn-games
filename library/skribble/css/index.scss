@@ -414,7 +414,7 @@ p {
     z-index: 1;
   }
 
-  .pl-game.MENU .screen {
+  .pl-game.MENU-quit .screen {
     &:not(#quit):not(#save) {
       opacity: 0;
       pointer-events: none;
