@@ -121,22 +121,22 @@ class InboxScreen extends skoash.Screen {
     skoash.trigger('getData', {
       status: 'received',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
     skoash.trigger('getData', {
       status: 'sent',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
     skoash.trigger('getData', {
       status: 'draft',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
-    this.setState({
+    self.setState({
       load: true,
       open: true,
       leave: false,
