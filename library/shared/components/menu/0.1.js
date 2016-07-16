@@ -58,14 +58,22 @@ class Menu extends Selectable {
     if (typeof this.props.items !== 'object') return;
 
     return Object.keys(this.props.items).map((key) => {
-      var item, onClick, gotoObj, categories;
+      var item, onClick, gotoObj, categories, isFinal;
 
       categories = this.props.categories ? [].concat(this.props.categories) : [];
       categories.push(key);
 
       item = this.props.items[key];
 
-      if (!item.items || Object.prototype.toString.call(item.items) === '[object Array]') {
+      isFinal = (
+          typeof item.items !== 'object' ||
+          Object.prototype.toString.call(item.items) === '[object Array]'
+        ) || (
+          typeof self.props.lastLevel === 'number' &&
+          self.props.lastLevel === self.props.level
+        );
+
+      if (isFinal) {
         gotoObj = {
           index: 'item-drawer',
           categories,
@@ -83,9 +91,16 @@ class Menu extends Selectable {
         >
           <span>{key}</span>
           {(() => {
-            if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
+            if (isFinal) return;
             return (
-              <Menu ref={'menu-' + key} categories={categories} items={item.items} inactive={true} />
+              <Menu
+                ref={'menu-' + key}
+                categories={categories}
+                items={item.items}
+                inactive={true}
+                level={(self.props.level || 0) + 1}
+                lastLevel={self.props.lastLevel}
+              />
             );
           })()}
         </skoash.ListItem>

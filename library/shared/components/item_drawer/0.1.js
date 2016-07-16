@@ -35,6 +35,7 @@ class ItemDrawer extends Selectable {
       started: true,
       classes,
       selectFunction,
+      categoryName: '',
     });
 
     this.bootstrap();
@@ -52,9 +53,9 @@ class ItemDrawer extends Selectable {
     if (!li) return;
 
     key = li.getAttribute('data-ref');
-    type = this.refs[key].props.item.type;
+    type = this.refs[key].props.item.asset_type;
 
-    if (type === 'category') {
+    if (type === 'folder') {
       categoryName = this.refs[key].props.item.name;
       this.setState({
         category: key,
@@ -121,7 +122,11 @@ class ItemDrawer extends Selectable {
   }
 
   getClass(key, item) {
-    var white = item && item.src && item.src.indexOf('_w.') !== -1;
+    var white = item && item.name &&
+      (
+        item.name.indexOf('_w.') !== -1 ||
+        item.name.indexOf('W.') !== -1
+      );
 
     return classNames({
       [this.state.classes[key] || '']: true,
@@ -140,25 +145,37 @@ class ItemDrawer extends Selectable {
   }
 
   renderItemContent(item) {
-    var content = [];
+    var content = [], src;
 
     if (item.src) {
-      content.push(<skoash.Image src={item.src} />);
+      src = item.src;
+    } else if (item.items && _.isArray(item.items)) {
+      src = item.items[0].src;
+      item.items.some(subitem => {
+        if (subitem.name === '_thumb.png') {
+          src = subitem.src;
+          return false;
+        }
+      });
     }
 
-    if (item.name) {
-      content.push(<span className="name">{item.name}</span>);
+    if (src) {
+      content.push(<skoash.Image src={src} key={0} />);
+    }
+
+    if (item.name && (item.asset_type === 'folder' || item.asset_type === 'friend')) {
+      content.push(<span className="name" key={1}>{item.name}</span>);
     }
 
     if (item.description) {
-      content.push(<span className="description">{item.description}</span>);
+      content.push(<span className="description" key={2}>{item.description}</span>);
     }
 
     return content;
   }
 
   renderList() {
-    var items, self = this;
+    var items, listItems = [], self = this;
 
     if (!this.props.data) return;
 
@@ -168,17 +185,35 @@ class ItemDrawer extends Selectable {
       items = items[this.state.category].items;
     }
 
-    return items.map((item, key) =>
-      <skoash.ListItem
-        className={this.getClass(key, item)}
-        ref={key}
-        data-ref={key}
-        item={item}
-        key={key}
-      >
-        {self.renderItemContent(item)}
-      </skoash.ListItem>
-    );
+    if (_.isArray(items)) {
+      return items.map((item, key) =>
+        <skoash.ListItem
+          className={this.getClass(key, item)}
+          ref={key}
+          data-ref={key}
+          item={item}
+          key={key}
+        >
+          {self.renderItemContent(item)}
+        </skoash.ListItem>
+      );
+    }
+
+    _.forIn(items, (item, key) => {
+      listItems.push(
+        <skoash.ListItem
+          className={this.getClass(key, item)}
+          ref={key}
+          data-ref={key}
+          item={item}
+          key={key}
+        >
+          {self.renderItemContent(item)}
+        </skoash.ListItem>
+      );
+    });
+
+    return listItems;
   }
 
   render() {

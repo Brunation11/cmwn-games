@@ -29,11 +29,11 @@ class InboxScreen extends skoash.Screen {
     inbox = inbox || [];
 
     read = inbox.filter(item => {
-      return !item.unread;
+      return item.read;
     });
 
     unread = inbox.filter((item) => {
-      return item.unread;
+      return !item.read;
     });
 
     return [
@@ -103,9 +103,9 @@ class InboxScreen extends skoash.Screen {
     var data, inbox, outbox, saved;
 
     data = skoash.trigger('getState').data;
-    inbox = data.inbox;
-    outbox = data.outbox;
-    saved = data.saved;
+    inbox = data.received;
+    outbox = data.sent;
+    saved = data.draft;
 
     this.revealList = this.getRevealList(inbox, outbox, saved);
 
@@ -120,9 +120,21 @@ class InboxScreen extends skoash.Screen {
     var self = this;
 
     skoash.trigger('getData', {
-      categories: 'inbox',
-    }).then(data => {
-      self.updateData.call(self, data);
+      status: 'received',
+    }).then(() => {
+      self.updateData.call(self);
+    });
+
+    skoash.trigger('getData', {
+      status: 'sent',
+    }).then(() => {
+      self.updateData.call(self);
+    });
+
+    skoash.trigger('getData', {
+      status: 'draft',
+    }).then(() => {
+      self.updateData.call(self);
     });
 
     this.setState({

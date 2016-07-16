@@ -42,7 +42,7 @@ class EditableAsset extends Draggable {
     });
 
     if (typeof this.props.deactivateItems === 'function') {
-      this.props.deactivateItems(this.props['data-ref'], this.props.type);
+      this.props.deactivateItems(this.props['data-ref'], this.props.asset_type);
     }
   }
 
@@ -80,7 +80,7 @@ class EditableAsset extends Draggable {
 
   delete() {
     if (typeof this.props.deleteItem === 'function') {
-      this.props.deleteItem(this.props['data-ref'], this.props.type);
+      this.props.deleteItem(this.props['data-ref'], this.props.asset_type);
     }
   }
 
@@ -118,7 +118,7 @@ class EditableAsset extends Draggable {
       layer,
     }, () => {
       if (typeof self.props.relayerItems === 'function') {
-        self.props.relayerItems(self.props.type);
+        self.props.relayerItems(self.props.asset_type);
       }
     });
   }
@@ -163,7 +163,7 @@ class EditableAsset extends Draggable {
     this.setCorners();
 
     if (typeof this.props.checkItem === 'function') {
-      valid = this.props.checkItem(this.props['data-ref'], this.props.type);
+      valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
 
       if (valid) {
         this.setState({
@@ -243,7 +243,7 @@ class EditableAsset extends Draggable {
     if (this.props.state && this.props.state.layer) {
       layer = this.props.state.layer;
     } else {
-      switch (this.props.type) {
+      switch (this.props.asset_type) {
       case 'background':
         layer = 1;
         break;
@@ -322,8 +322,7 @@ class EditableAsset extends Draggable {
       RETURN: this.state.return,
       ACTIVE: this.state.active,
       INVALID: !this.state.valid,
-      'editable-asset': true,
-    }, this.props.type);
+    }, 'editable-asset', this.props.asset_type);
   }
 
   renderButtons() {

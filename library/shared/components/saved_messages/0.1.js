@@ -52,30 +52,53 @@ class SavedMessages extends Selectable {
     }, this.props.className);
   }
 
+  renderThumb(item) {
+    var firstImg, background;
+
+    background = item && item.rules && item.rules.background &&
+      item.rules.background.src ? item.rules.background.src :
+      '';
+
+    firstImg = item && item.rules && item.rules.items &&
+      item.rules.items[0] && item.rules.items[0].src ?
+      item.rules.items[0].src : '';
+
+    return (
+      <div
+        className="thumbnail"
+        style={{
+          backgroundImage: `url(${background})`
+        }}
+      >
+        <skoash.Image src={firstImg} />
+      </div>
+    );
+  }
+
   renderList() {
-    var items;
+    var items, self = this;
 
-    if (!this.props.data || !this.props.data.items) return;
+    if (!self.props.data || !self.props.data.items) return;
 
-    items = this.props.data.items;
+    items = self.props.data.items;
 
-    if (this.state.category) {
-      items = items[this.state.category].items;
+    if (self.state.category) {
+      items = items[self.state.category].items;
     }
 
     return items.map((item, key) => {
-      var timestamp = moment(item.timestamp); // eslint-disable-line no-undef
+      var timestamp = moment(item.updated);
       return (
         <skoash.ListItem
-          className={this.getClass(key)}
+          className={self.getClass(key)}
           ref={key}
           data-ref={key}
           item={item}
           key={key}
         >
-          <skoash.Image src={item.thumbnail} />
+          {self.renderThumb(item)}
           <span className="timestamp">
-            <span className="date">{timestamp.format('DD.MM.YY')}</span>
+            <span className="date">{timestamp.format('MM.DD.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>
           </span>
         </skoash.ListItem>

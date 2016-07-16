@@ -2,6 +2,9 @@
  * Index script
  * @module
  */
+
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -19,7 +22,7 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class Skribble extends skoash.Game {
   constructor() {
@@ -54,42 +57,117 @@ class Skribble extends skoash.Game {
     skoash.Game.prototype.goto.call(this, opts);
   }
 
-  save() {
-    var skribble = this.refs['screen-canvas'].getData();
-    skribble.recipient = this.state.recipient;
+  ready() {
+    if (!this.state.ready) {
+      this.getMedia();
+    }
 
-    this.emit({
-      name: 'save-skribble',
-      game: this.config.id,
+    skoash.Game.prototype.ready.call(this);
+  }
+
+  save(send) {
+    var self = this;
+    var skribble = {
+      'version': config.version,
+      'friend_to': self.state.recipient.user_id,
+      ...self.state.skribbleData,
+      send,
+      rules: self.refs['screen-canvas'].getData()
+    };
+
+    self.emit({
+      name: 'saveSkribble',
+      game: self.config.id,
       skribble,
+    }).then(skribbleData => {
+      self.setState({skribbleData});
     });
   }
 
   send() {
-    var skribble, self = this;
+    this.save(true);
 
-    skribble = self.refs['screen-canvas'].getData();
-    skribble.recipient = self.state.recipient;
-
-    self.emit({
-      name: 'send-skribble',
-      game: self.config.id,
-      skribble,
-    }).then(response => {
-      if (response.success) {
-        self.refs['screen-canvas'].reset();
-        self.setState({
-          recipient: {}
-        });
-      }
-
-      self.goto({
-        index: 'sent',
-        success: response.success,
-        recipient: response.recipient,
-      });
+    this.refs['screen-canvas'].reset();
+    this.goto({
+      index: 'sent',
+      recipient: this.state.recipient,
     });
 
+    this.setState({
+      recipient: {}
+    });
+  }
+
+  trigger(event, opts) {
+    switch (event) {
+    case 'save':
+      return this.save();
+    case 'getMedia':
+      return this.getMedia(opts.path);
+    }
+
+    return skoash.Game.prototype.trigger.call(this, event, opts);
+  }
+
+  getMedia(path) {
+    var pathArray, self = this;
+
+    path = path || 'skribble/menu';
+    pathArray = path.split('/');
+    pathArray.shift();
+
+    return self.emit({
+      name: 'getMedia',
+      path
+    }).then(d => {
+      var opts, currentOpts, hasFolders;
+      opts = {
+        data: {}
+      };
+      currentOpts = opts.data;
+
+      pathArray.forEach((key, index) => {
+        currentOpts[key] = {
+          items: {}
+        };
+        if (index !== pathArray.length - 1) {
+          currentOpts = currentOpts[key].items;
+        }
+      });
+
+      currentOpts[pathArray[pathArray.length - 1]] = _.clone(d);
+      hasFolders = currentOpts[pathArray[pathArray.length - 1]].items &&
+        currentOpts[pathArray[pathArray.length - 1]].items[0] &&
+        currentOpts[pathArray[pathArray.length - 1]].items[0].asset_type === 'folder';
+
+      if (hasFolders) {
+        currentOpts[pathArray[pathArray.length - 1]].items = {};
+
+        if (d.items) {
+          d.items.forEach(item => {
+            if (item.asset_type === 'folder' && item.name) {
+              self.getMedia(path + '/' + item.name);
+            }
+          });
+        }
+      }
+
+      self.updateData(opts);
+    });
+  }
+
+  getData(opts) {
+    var names = [
+      'getFriends',
+    ];
+
+    if (names.indexOf(opts.name) === -1) {
+      opts.name = 'getData';
+    }
+
+    return this.emit(opts).then(data => {
+      this.updateData({data});
+    });
   }
 
   passData(opts) {
