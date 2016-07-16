@@ -16,6 +16,7 @@ import FriendScreen from './components/friend_screen';
 import CanvasScreen from './components/canvas_screen';
 import ItemDrawerScreen from './components/item_drawer_screen';
 import InboxScreen from './components/inbox_screen';
+import PreviewScreen from './components/preview_screen';
 import SendScreen from './components/send_screen';
 import SentScreen from './components/sent_screen';
 import ReadScreen from './components/read_screen';
@@ -29,13 +30,14 @@ class Skribble extends skoash.Game {
     super(config);
 
     this.screens = {
-      0: <iOSScreen />,
+      0: iOSScreen,
       1: TitleScreen,
       'menu': <MenuScreen />,
       friend: <FriendScreen />,
       canvas: <CanvasScreen />,
       'item-drawer': <ItemDrawerScreen />,
       inbox: <InboxScreen />,
+      preview: <PreviewScreen />,
       send: <SendScreen />,
       sent: <SentScreen />,
       read: <ReadScreen />,
@@ -65,6 +67,10 @@ class Skribble extends skoash.Game {
     skoash.Game.prototype.ready.call(this);
   }
 
+  getRules() {
+    return this.refs['screen-canvas'].getData();
+  }
+
   save(send) {
     var self = this;
     var skribble = {
@@ -72,7 +78,7 @@ class Skribble extends skoash.Game {
       'friend_to': self.state.recipient.user_id,
       ...self.state.skribbleData,
       send,
-      rules: self.refs['screen-canvas'].getData()
+      rules: self.getRules()
     };
 
     self.emit({
@@ -104,6 +110,8 @@ class Skribble extends skoash.Game {
       return this.save();
     case 'getMedia':
       return this.getMedia(opts.path);
+    case 'getRules':
+      return this.getRules();
     }
 
     return skoash.Game.prototype.trigger.call(this, event, opts);
