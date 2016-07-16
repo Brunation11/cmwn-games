@@ -102,6 +102,10 @@ html, body, body > div, body > div > div {
       display: none;
     }
   }
+
+  .game-menu .help {
+    display: none;
+  }
 }
 
 html {
@@ -224,6 +228,28 @@ button {
     }
   }
 
+  &.quit-yes,
+  &.yes {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -1000px;
+
+    &:hover {
+      background-position: -500px -1000px;
+    }
+  }
+
+  &.quit-no,
+  &.no {
+    width: 230px;
+    height: 100px;
+    background-position: 0px -1250px;
+
+    &:hover {
+      background-position: -500px -1250px;
+    }
+  }
+
   &.next-screen,
   &.prev-screen {
     width: 160px;
@@ -253,26 +279,6 @@ button {
 
     &.ENABLED:hover {
       background-position: -450px 1352px;
-    }
-  }
-
-  &.quit-yes {
-    width: 110px;
-    height: 50px;
-    background-position: 0px -1000px;
-
-    &:hover {
-      background-position: -500px -1000px;
-    }
-  }
-
-  &.quit-no {
-    width: 110px;
-    height: 50px;
-    background-position: 0px -1248px;
-
-    &:hover {
-      background-position: -500px -1248px;
     }
   }
 }
@@ -437,12 +443,31 @@ p {
 }
 
 #title {
+  &.LEAVE {
+    transform: translateX(100%);
+  }
+
+  &.LEAVING {
+    .next-screen {
+      transform: rotate(360deg);
+    }
+  }
+
   img {
     position: absolute;
     width: 90%;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  .next-screen {
+    background: none;
+
+    &:before {
+      content: "PLAY";
+      font-size: 48px;
+    }
   }
 }
 
@@ -461,6 +486,33 @@ p {
     display: none;
     opacity: 1;
     transition: opacity .5s;
+  }
+
+  .reveal {
+    li {
+      width: 1600px;
+      height: 900px;
+      z-index: 3;
+
+      img {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+      }
+
+      .bubble {
+        position: absolute;
+        background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+        background-repeat: no-repeat;
+        background-size: 1500px;
+        text-align: center;
+        font-size: 40px;
+        left: 690px;
+        top: 10px;
+        background-position: -1010px -20px;
+        padding: 120px 50px 140px 20px;
+      }
+    }
   }
 
   &.HAS-ASSETS {
@@ -485,9 +537,55 @@ p {
     transform: translateX(-50%);
   }
 
+  .otter-container {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    z-index: -1;
+
+    .bubble {
+      position: absolute;
+      background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+      background-repeat: no-repeat;
+      background-size: 1500px;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    &.One {
+      img {
+        transform: scale3d(-1, 1, 1);
+        margin-left: -160px;
+        width: 460px;
+      }
+
+      .bubble {
+        left: -30px;
+        top: -260px;
+        width: 350px;
+        background-position: -70px -540px;
+        padding: 60px 50px 110px 70px;
+      }
+    }
+
+    &.Two {
+      img {
+        width: 480px;
+        margin-left: -20px;
+      }
+
+      .bubble {
+        left: -20px;
+        top: -260px;
+        background-position: -70px -540px;
+        padding: 110px 30px 150px 35px;
+      }
+    }
+  }
+
   .item-drawer-container {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 0 270px;
     width: 1120px;
     background-position: -10px 0px;
     padding: 308px 250px 40px 110px;
@@ -578,6 +676,25 @@ p {
 }
 
 #menu {
+  .otter {
+    position: absolute;
+    left: 280px;
+    bottom: 80px;
+  }
+
+  .bubble {
+    position: absolute;
+    left: 450px;
+    top: 80px;
+    background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+    background-repeat: no-repeat;
+    background-size: 1125px;
+    background-position: -380px -380px;
+    padding: 60px 30px 100px 35px;
+    text-align: center;
+    font-size: 44px;
+  }
+
   .buttons {
     position: absolute;
     left: 75%;
@@ -833,6 +950,28 @@ p {
 }
 
 #send {
+  .character {
+    position: absolute;
+
+    .otter {
+      margin: 140px 0 0 10px;
+      width: 470px;
+    }
+
+    .bubble {
+      position: absolute;
+      background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+      background-repeat: no-repeat;
+      background-size: 1500px;
+      text-align: center;
+      font-size: 36px;
+      left: 110px;
+      top: -80px;
+      background-position: -70px -540px;
+      padding: 70px 30px 150px 38px;
+    }
+  }
+
   .header {
     background: none;
     width: auto;
@@ -893,6 +1032,10 @@ p {
     margin: 0 auto;
     width: 400px;
     height: 300px;
+    background-image: url(../media/_Otter/Otter_Static4.png);
+    background-size: 700px;
+    background-position: 52px 0;
+    height: 480px;
   }
 
   .header {
@@ -903,7 +1046,7 @@ p {
     width: auto;
     height: auto;
     text-align: center;
-    margin-top: 10px;
+    margin-top: -35px;
     padding: 40px 0;
 
     span {
@@ -1020,7 +1163,28 @@ p {
   transition: transform .25s;
 
   .frame {
+    background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+    background-repeat: no-repeat;
+    background-size: 1700px;
     text-align: center;
+    font-size: 40px;
+    background-position: -1130px -20px;
+    padding: 120px 60px 140px 40px;
+    text-align: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      background-image: url(../media/_Otter/Otter_Static_GreetingOne.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: top left;
+      display: block;
+      width: 600px;
+      height: 400px;
+      left: 500px;
+      top: 400px;
+    }
 
     h2 {
       margin: 0;

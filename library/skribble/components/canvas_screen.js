@@ -1,6 +1,7 @@
 import Canvas from 'shared/components/canvas/0.1';
 import Menu from 'shared/components/menu/0.1';
 import Selectable from 'shared/components/selectable/0.1';
+import Reveal from 'shared/components/reveal/0.1';
 
 import classNames from 'classnames';
 
@@ -25,6 +26,7 @@ class CanvasScreen extends skoash.Screen {
     ];
 
     this.setValid = this.setValid.bind(this);
+    this.closeReveal = this.closeReveal.bind(this);
     this.setHasAssets = this.setHasAssets.bind(this);
   }
 
@@ -107,6 +109,12 @@ class CanvasScreen extends skoash.Screen {
     this.goto('preview');
   }
 
+  closeReveal() {
+    if (this.refs && this.refs.reveal) {
+      this.refs.reveal.close();
+    }
+  }
+
   getContainerClasses() {
     return classNames({
       'canvas-container': true,
@@ -150,6 +158,33 @@ class CanvasScreen extends skoash.Screen {
         <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
     );
+    // move this back up below the Selectable when there is an instructional help video
+    /*
+        <Reveal
+          ref="reveal"
+          openOnStart="0"
+          list={[
+            <li>
+              <skoash.Image className="otter" src={'media/_Otter/Otter_Static_GreetingTwo.png'} />
+              <div className="bubble">
+                Welcome to your canvas!<br/><br/>
+                Would you like me<br/>
+                to show you around?
+                <div className="buttons">
+                  <button
+                    className="yes"
+                    onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
+                  />
+                  <button
+                    className="no"
+                    onClick={this.closeReveal}
+                  />
+                </div>
+              </div>
+            </li>
+          ]}
+        />
+    */
   }
 }
 

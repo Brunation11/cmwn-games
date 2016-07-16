@@ -42,7 +42,7 @@ class Reveal extends skoash.Component {
     skoash.Component.prototype.start.call(this);
     this.close();
 
-    if (this.props.openOnStart) {
+    if (this.props.openOnStart != null) {
       this.open(this.props.openOnStart);
     }
   }
