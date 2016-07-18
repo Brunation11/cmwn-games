@@ -15,6 +15,8 @@ var dragRespond = function (message) {
 
     if (!contains.length) {
       dropzoneRef.incomplete();
+      self.requireForComplete.push(`dropzone-${key}`);
+      self.checkComplete();
     }
   });
 };
