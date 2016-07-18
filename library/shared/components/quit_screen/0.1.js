@@ -1,27 +1,18 @@
-class QuitScreen extends play.Screen {
-  constructor() {
-    super();
-
-    this.state = {
-      id: 'quit'
-    };
-
-  }
-
+class QuitScreen extends skoash.Screen {
   okay() {
-    play.trigger('quit');
+    skoash.trigger('quit');
   }
 
   cancel() {
     this.close();
-    play.trigger('menuClose', {
+    skoash.trigger('menuClose', {
       id: this.state.id,
     });
   }
 
   render() {
     return (
-      <div id={this.state.id} className={'screen' + this.getClassNames()}>
+      <div id={this.props.id} className={this.getClassNames()}>
         <div className="center">
           <div className="frame">
             <h2>Are you sure you<br/>want to quit?</h2>
@@ -35,4 +26,8 @@ class QuitScreen extends play.Screen {
   }
 }
 
-export default QuitScreen;
+export default (
+  <QuitScreen
+    id="quit"
+  />
+);
