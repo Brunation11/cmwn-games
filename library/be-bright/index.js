@@ -31,7 +31,7 @@ class BeBright extends skoash.Game {
     };
 
     this.menus = {
-      quit: QuitScreen,
+      quit: <QuitScreen />,
     };
   }
 
