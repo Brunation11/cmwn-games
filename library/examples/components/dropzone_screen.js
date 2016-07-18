@@ -1,7 +1,36 @@
 import Dropzone from 'shared/components/dropzone/0.1';
+import Draggable from 'shared/components/draggable/0.1';
 
-var correctRespond = function (message, dropzoneRef) {
-  console.log(message, dropzoneRef); // eslint-disable-line no-console
+var dragRespond = function (message) {
+  var self = this;
+
+  self.dropzones.map((dropzone, key) => {
+    var dropzoneRef, contains, index;
+
+    dropzoneRef = self.refs[`dropzone-${key}`];
+    contains = self.contains[key] || [];
+    index = contains.indexOf(message);
+    if (~index) contains.splice(index, 1);
+    self.contains[key] = contains;
+
+    if (!contains.length) {
+      dropzoneRef.incomplete();
+    }
+  });
+};
+
+var correctRespond = function (message, dropzoneKey) {
+  var dropzoneRef, contains;
+
+  dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
+  contains = this.contains[dropzoneKey] || [];
+
+  contains.push(message);
+  this.contains[dropzoneKey] = contains;
+
+  if (contains.length) {
+    dropzoneRef.complete();
+  }
 };
 
 var AudioScreen = (
@@ -10,8 +39,8 @@ var AudioScreen = (
   >
     <Dropzone
       ref="dropzone"
-      checkComplete={false}
       correctRespond={correctRespond}
+      dragRespond={dragRespond}
       dropzones={[
         <skoash.Component>
           <span>A</span>
@@ -22,6 +51,11 @@ var AudioScreen = (
         <skoash.Component>
           <span>C</span>
         </skoash.Component>,
+      ]}
+      draggables={[
+        <Draggable message={1}>1</Draggable>,
+        <Draggable message={2}>2</Draggable>,
+        <Draggable message={3}>3</Draggable>,
       ]}
     />
   </skoash.Screen>

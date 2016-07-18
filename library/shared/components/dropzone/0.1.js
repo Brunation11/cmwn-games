@@ -15,6 +15,8 @@ class Dropzone extends skoash.Component {
       <Draggable message={'return'} return={true} >return</Draggable>
     ];
 
+    this.contains = [];
+
     this.dropRespond = this.dropRespond.bind(this);
     this.dragRespond = this.dragRespond.bind(this);
   }
@@ -25,7 +27,7 @@ class Dropzone extends skoash.Component {
     self.dropzones.map((dropzone, key) => {
       var dropzoneRef = this.refs[`dropzone-${key}`];
       if (dropzoneRef) {
-        dropzoneRef.corners = self.getCorners(dropzoneRef);
+        dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
       }
     });
   }
@@ -58,17 +60,23 @@ class Dropzone extends skoash.Component {
     return corners;
   }
 
-  start() {
+  componentWillMount() {
     this.dropzones = this.props.dropzones || this.dropzones;
     this.draggables = this.props.draggables || this.draggables;
+  }
 
+  start() {
     play.Component.prototype.start.call(this);
     this.prepareDropzones();
   }
 
-  dragRespond() {
+  dragRespond(message) {
     if (this.audio.drag) {
       this.audio.drag.play();
+    }
+
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, message);
     }
   }
 
@@ -78,7 +86,7 @@ class Dropzone extends skoash.Component {
     isInBounds = self.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
-        self.inBounds(message, dropzoneRef);
+        self.inBounds(message, key);
         return true;
       }
       return false;
@@ -87,9 +95,10 @@ class Dropzone extends skoash.Component {
     if (!isInBounds) self.outOfBounds();
   }
 
-  inBounds(message, dropzoneRef) {
+  inBounds(message, dropzoneKey) {
+    var dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
     if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(message) !== -1) {
-      this.correct(message, dropzoneRef);
+      this.correct(message, dropzoneKey);
     } else {
       this.incorrect();
     }
@@ -102,14 +111,14 @@ class Dropzone extends skoash.Component {
     }
   }
 
-  correct(message, dropzoneRef) {
+  correct(message, dropzoneKey) {
     // respond to correct drop
     if (this.audio.correct) {
       this.audio.correct.play();
     }
 
     if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond.call(this, message, dropzoneRef);
+      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -140,6 +149,7 @@ class Dropzone extends skoash.Component {
       <component.type
         {...component.props}
         className={this.getClassNames()}
+        checkComplete={false}
         ref={`dropzone-${key}`}
         key={key}
       />
