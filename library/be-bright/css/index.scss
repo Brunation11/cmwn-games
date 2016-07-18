@@ -735,6 +735,6 @@ p {
   }
 
   &.OPEN {
-    transform: translateX(0%);
+    transform: translateX(0%) translateY(-50%);
   }
 }
