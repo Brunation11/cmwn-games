@@ -4,18 +4,18 @@
  */
 import './config.game';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/audio-sequence/behavior';
-import './components/reveal/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-canvas-move/behavior';
-import './components/selectable-reveal/behavior';
-import './components/selectable/behavior';
-import './components/title/behavior';
+import 'shared/js/screen-ios-splash';
+import './source/js/components/audio-sequence/behavior';
+import './source/js/components/reveal/behavior';
+import './source/js/components/screen-basic/behavior';
+import './source/js/components/screen-quit/behavior';
+import './source/js/components/selectable-canvas-move/behavior';
+import './source/js/components/selectable-reveal/behavior';
+import './source/js/components/selectable/behavior';
+import './source/js/components/title/behavior';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+import 'shared/js/test-platform-integration';
+import 'shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
