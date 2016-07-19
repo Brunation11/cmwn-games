@@ -8,12 +8,16 @@ class ScoreScreenComponent extends skoash.Screen {
   constructor() {
     super();
 
+    this.count = 0;
+
     this.up = this.up.bind(this);
     this.down = this.down.bind(this);
   }
 
   up() {
-    this.refs[score].up();
+    var increment;
+    if (++this.count % 3 === 0) increment = 30;
+    this.refs[score].up(increment);
   }
 
   down() {

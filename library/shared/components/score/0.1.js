@@ -20,15 +20,15 @@ class Score extends skoash.Component {
     }
   }
 
-  up() {
-    var increment = this.props.increment || 1;
+  up(increment) {
+    increment = increment || this.props.increment || 1;
     this.setState({
       score: this.state.score + increment
     }, this.checkComplete);
   }
 
-  down() {
-    var increment = this.props.downIncrement || this.props.increment || 1;
+  down(increment) {
+    increment = increment || this.props.downIncrement || this.props.increment || 1;
     this.setState({
       score: this.state.score - increment
     }, this.checkComplete);
