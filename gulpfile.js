@@ -57,7 +57,7 @@ gulp.task('default', ['build-dev']);
 gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 // Production build
-gulp.task('build', ['sass-prod', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
+gulp.task('build', ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
 
 gulp.task('b', ['build']);
 
@@ -116,21 +116,6 @@ gulp.task('sass', function () {
     .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
     .pipe(livereload());
-});
-
-gulp.task('sass-prod', function () {
-  games.forEach(function (_game) {
-    gulp
-      .src(['./library/' + _game + '/source/js/components/**/*.scss',
-          './library/' + _game + '/source/js/components/**/*.css',
-          './library/' + _game + '/source/css/*.scss',
-          './library/' + _game + '/source/css/*.css'])
-      .pipe(sass().on('error', sass.logError))
-      .pipe(concat('style.css'))
-      .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
-      .pipe(gulp.dest('./build/' + _game + '/css'));
-
-  });
 });
 
 gulp.task('copy-index', function () {

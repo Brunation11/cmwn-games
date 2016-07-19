@@ -7,7 +7,6 @@ class InboxScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'inbox',
       load: true,
     };
 
@@ -122,22 +121,22 @@ class InboxScreen extends skoash.Screen {
     skoash.trigger('getData', {
       status: 'received',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
     skoash.trigger('getData', {
       status: 'sent',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
     skoash.trigger('getData', {
       status: 'draft',
     }).then(() => {
-      self.updateData.call(self);
+      self.updateData();
     });
 
-    this.setState({
+    self.setState({
       load: true,
       open: true,
       leave: false,
@@ -149,14 +148,6 @@ class InboxScreen extends skoash.Screen {
         self.start();
       }
     }, 250);
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
   }
 
   renderContent() {
@@ -178,4 +169,10 @@ class InboxScreen extends skoash.Screen {
   }
 }
 
-export default InboxScreen;
+export default (
+  <InboxScreen
+    id="inbox"
+    hideNext
+    hidePrev
+  />
+);

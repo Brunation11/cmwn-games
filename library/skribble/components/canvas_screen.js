@@ -10,7 +10,6 @@ class CanvasScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'canvas',
       load: true,
       menu: {},
       valid: true,
@@ -28,21 +27,6 @@ class CanvasScreen extends skoash.Screen {
     this.setValid = this.setValid.bind(this);
     this.closeReveal = this.closeReveal.bind(this);
     this.setHasAssets = this.setHasAssets.bind(this);
-  }
-
-  bootstrap() {
-    var menu, state;
-
-    skoash.Screen.prototype.bootstrap.call(this);
-
-    state = skoash.trigger('getState');
-
-    if (state && state.data && state.data.menu) {
-      menu = state.data.menu;
-      this.setState({
-        menu,
-      });
-    }
   }
 
   getData() {
@@ -70,21 +54,68 @@ class CanvasScreen extends skoash.Screen {
     }
   }
 
+  setMenu() {
+    var menu, state;
+    state = skoash.trigger('getState');
+
+    if (state && state.data && state.data.menu) {
+      menu = state.data.menu;
+      this.setState({
+        menu,
+      });
+    }
+  }
+
   open(opts) {
+    var hasAssets, background, interval;
+
+    this.setMenu();
+
     if (this.refs && this.refs.menu) {
       this.refs.menu.deactivate();
     }
 
     if (opts.message) {
+      hasAssets = true,
+      background = !!opts.message.rules.background,
+
+      this.refs.canvas.setItems(opts.message.rules);
+
       this.setState({
-        hasAssets: true,
-        background: !!opts.message.background,
+        hasAssets,
+        background,
       });
 
-      this.refs.canvas.setItems(opts.message);
+      if (opts.message.friend_to) {
+        skoash.trigger('passData', {
+          name: 'add-recipient',
+          message: {
+            'friend_id': opts.message.friend_to
+          }
+        });
+      }
     }
 
+    skoash.trigger('save');
+
+    interval = setInterval(() => {
+      skoash.trigger('save');
+    }, 120000);
+
+    this.setState({
+      interval
+    });
+
     skoash.Screen.prototype.open.call(this);
+  }
+
+  close() {
+    skoash.trigger('save');
+    clearInterval(this.state.interval);
+    this.setState({
+      interval: null
+    });
+    skoash.Screen.prototype.close.call(this);
   }
 
   setValid(valid) {
@@ -127,14 +158,6 @@ class CanvasScreen extends skoash.Screen {
       'HAS-ASSETS': this.state.hasAssets,
       'INVALID': !this.state.valid,
     }, skoash.Screen.prototype.getClassNames.call(this));
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
   }
 
   renderContent() {
@@ -188,4 +211,10 @@ class CanvasScreen extends skoash.Screen {
   }
 }
 
-export default CanvasScreen;
+export default (
+  <CanvasScreen
+    id="canvas"
+    hideNext
+    hidePrev
+  />
+);

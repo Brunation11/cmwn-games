@@ -19,20 +19,11 @@ class SentScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'sent',
       load: true,
       opts: {
         recipient: {}
       },
     };
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
   }
 
   renderContent() {
@@ -54,4 +45,10 @@ class SentScreen extends skoash.Screen {
   }
 }
 
-export default SentScreen;
+export default (
+  <SentScreen
+    id="sent"
+    hideNext
+    hidePrev
+  />
+);

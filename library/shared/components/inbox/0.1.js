@@ -58,7 +58,7 @@ class Inbox extends Selectable {
   }
 
   renderList() {
-    var items;
+    var items, friends;
 
     if (!this.props.data || !this.props.data.items) return;
 
@@ -68,9 +68,22 @@ class Inbox extends Selectable {
       items = items[this.state.category].items;
     }
 
+    friends = skoash.trigger('getState').data.user || [];
+
     return items.map((item, key) => {
-      var timestamp = moment(item.timestamp);
+      var timestamp, image, name;
+      timestamp = moment(item.timestamp);
       key = 'message-' + key;
+
+      friends.some(friend => {
+        if (item.created_by === friend.friend_id) {
+          image = friend._embedded.image ? friend._embedded.image.url : '';
+          name = friend.username;
+          return false;
+        }
+        return true;
+      });
+
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
@@ -79,8 +92,8 @@ class Inbox extends Selectable {
           item={item}
           key={key}
         >
-          <skoash.Image src={item.user.profile_image} />
-          <span className="username">{item.user.name}</span>
+          <skoash.Image src={image} />
+          <span className="username">{name}</span>
           <span className="timestamp">
             <span className="date">{timestamp.format('DD.MM.YY')}</span>
             <span className="time">{timestamp.format('h:mm:ss a')}</span>

@@ -5,7 +5,6 @@ class ItemDrawerScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'item-drawer',
       opts: {
         categories: [],
       },
@@ -18,14 +17,15 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
+    message = new Object(message);
     skoash.trigger('pass-data', {
       name: 'add-item',
       message
     });
   }
 
-  updateData() {
-    var data = skoash.trigger('getState').data.menu.items;
+  updateData(d) {
+    var data = d ? d : skoash.trigger('getState').data.menu.items;
 
     this.state.opts.categories.forEach(key => {
       if (data[key]) data = data[key];
@@ -40,10 +40,12 @@ class ItemDrawerScreen extends skoash.Screen {
   open(opts) {
     var self = this;
 
+    self.updateData();
+
     skoash.trigger('getMedia', {
       path: 'skribble/menu/' + opts.categories.join('/')
     }).then(data => {
-      self.updateData.call(self, data);
+      self.updateData(data);
     });
 
     self.setState({
@@ -61,12 +63,15 @@ class ItemDrawerScreen extends skoash.Screen {
     }, 250);
   }
 
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
+  cancelRespond() {
+    if (this.state.category) {
+      this.setState({
+        category: '',
+        categoryName: '',
+      });
+    } else {
+      skoash.trigger('goto', {index: 'canvas'});
+    }
   }
 
   renderContent() {
@@ -75,7 +80,7 @@ class ItemDrawerScreen extends skoash.Screen {
         <ItemDrawer
           ref="drawer"
           selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.goto.bind(this, 'canvas')}
+          cancelRespond={this.cancelRespond}
           categories={this.state.opts.categories}
           data={this.state.data}
         />
@@ -84,4 +89,10 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 }
 
-export default ItemDrawerScreen;
+export default (
+  <ItemDrawerScreen
+    id="item-drawer"
+    hideNext
+    hidePrev
+  />
+);

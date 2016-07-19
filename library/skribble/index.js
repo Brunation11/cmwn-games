@@ -22,6 +22,7 @@ import SentScreen from './components/sent_screen';
 import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
+import SaveMenu from './components/save_menu';
 
 import 'shared/js/test-platform-integration';
 
@@ -32,19 +33,20 @@ class Skribble extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      'menu': <MenuScreen />,
-      friend: <FriendScreen />,
-      canvas: <CanvasScreen />,
-      'item-drawer': <ItemDrawerScreen />,
-      inbox: <InboxScreen />,
-      preview: <PreviewScreen />,
-      send: <SendScreen />,
-      sent: <SentScreen />,
-      read: <ReadScreen />,
+      'menu': MenuScreen,
+      friend: FriendScreen,
+      canvas: CanvasScreen,
+      'item-drawer': ItemDrawerScreen,
+      inbox: InboxScreen,
+      preview: PreviewScreen,
+      send: SendScreen,
+      sent: SentScreen,
+      read: ReadScreen,
     };
 
     this.menus = {
       quit: QuitScreen,
+      save: SaveMenu,
     };
   }
 
@@ -62,6 +64,7 @@ class Skribble extends skoash.Game {
   ready() {
     if (!this.state.ready) {
       this.getMedia();
+      this.getData({name: 'getFriends'});
     }
 
     skoash.Game.prototype.ready.call(this);
@@ -71,27 +74,35 @@ class Skribble extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(send) {
-    var self = this;
+  save(e, skramble) {
+    /* eslint-disable camelcase */
+    var friend_to, self = this;
+    friend_to = self.state.recipient ? self.state.recipient.user_id : '';
     var skribble = {
       'version': config.version,
-      'friend_to': self.state.recipient.user_id,
       ...self.state.skribbleData,
-      send,
+      friend_to,
+      skramble,
       rules: self.getRules()
     };
 
-    self.emit({
-      name: 'saveSkribble',
-      game: self.config.id,
-      skribble,
-    }).then(skribbleData => {
-      self.setState({skribbleData});
-    });
+    if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
+      self.emit({
+        name: 'saveSkribble',
+        game: self.config.id,
+        skribble,
+      }).then(skribbleData => {
+        self.setState({
+          skribbleData,
+          skribble
+        });
+      });
+    }
+    /* eslint-enable camelcase */
   }
 
   send() {
-    this.save(true);
+    this.save(null, true);
 
     this.refs['screen-canvas'].reset();
     this.goto({
@@ -174,7 +185,15 @@ class Skribble extends skoash.Game {
     }
 
     return this.emit(opts).then(data => {
-      this.updateData({data});
+      if (opts.status) {
+        data[opts.status] = data.skribble;
+        delete data.skribble;
+        this.updateData({
+          data
+        });
+      } else {
+        this.updateData({data});
+      }
     });
   }
 
@@ -193,6 +212,16 @@ class Skribble extends skoash.Game {
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
       delete recipient.src;
+    } else if (typeof recipient === 'string') {
+      if (this.state.data && this.state.data.user) {
+        this.state.data.user.some(friend => {
+          if (friend.friend_id === recipient) {
+            recipient = friend;
+            return true;
+          }
+          return false;
+        });
+      }
     }
     this.setState({
       recipient
@@ -203,6 +232,19 @@ class Skribble extends skoash.Game {
     this.goto({
       index: 'friend'
     });
+  }
+
+  create() {
+    if (this.state.recipient) {
+      this.goto({index: 'canvas'});
+    } else {
+      this.goto({index: 'friend'});
+    }
+  }
+
+  saveButton() {
+    this.save();
+    this.openMenu({id: 'save'});
   }
 
   renderLoader() {
@@ -244,9 +286,9 @@ class Skribble extends skoash.Game {
     return (
       <div>
         <div className="game-menu">
-          <button className="save" onClick={this.save.bind(this)} />
+          <button className="save" onClick={this.saveButton.bind(this)} />
           <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
-          <button className="create" onClick={this.goto.bind(this, {index: 'friend'})} />
+          <button className="create" onClick={this.create.bind(this)} />
           <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
           <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
         </div>

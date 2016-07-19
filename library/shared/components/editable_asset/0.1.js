@@ -11,7 +11,7 @@ class EditableAsset extends Draggable {
       height: 0,
       left: 0,
       top: 0,
-      scale: .75,
+      scale: .5,
       minScale: .1,
       maxScale: 1,
       rotation: 0,
@@ -23,13 +23,13 @@ class EditableAsset extends Draggable {
       lastValid: {},
     };
 
-    this.boundScale = this.scale.bind(this);
-    this.boundAdjustScale = this.adjustScale.bind(this);
-    this.boundOffScale = this.offScale.bind(this);
+    this.scale = this.scale.bind(this);
+    this.adjustScale = this.adjustScale.bind(this);
+    this.offScale = this.offScale.bind(this);
 
-    this.boundRotate = this.rotate.bind(this);
-    this.boundAdjustRotation = this.adjustRotation.bind(this);
-    this.boundOffRotate = this.offRotate.bind(this);
+    this.rotate = this.rotate.bind(this);
+    this.adjustRotation = this.adjustRotation.bind(this);
+    this.offRotate = this.offRotate.bind(this);
   }
 
   shouldDrag() {
@@ -69,6 +69,11 @@ class EditableAsset extends Draggable {
   }
 
   moveEvent(e) {
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
     this.setState({
       endX: e.pageX - this.state.grabX,
       endY: e.pageY - this.state.grabY,
@@ -85,20 +90,25 @@ class EditableAsset extends Draggable {
   }
 
   rotate() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offRotate);
   }
 
   offRotate() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offRotate);
   }
 
   adjustRotation(e) {
     var rotation, deltaX, deltaY;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     rotation = Math.atan2(deltaY, deltaX) + (Math.PI / 4) % (2 * Math.PI);
 
@@ -130,20 +140,31 @@ class EditableAsset extends Draggable {
   }
 
   scale() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
+
+    this.refs.el.parentNode.addEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('touchend', this.offScale);
   }
 
   offScale() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
+
+    this.refs.el.parentNode.removeEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('touchend', this.offScale);
   }
 
   adjustScale(e) {
     var scale, deltaX, deltaY, delta, base;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -214,22 +235,26 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var width, height, minDim, minScale;
+      var width, height, minDim, maxDim, minScale, maxScale, scale;
 
       minDim = this.props.minDim || 40;
+      maxDim = this.props.maxDim || 400;
       width = image.width;
       height = image.height;
 
       minScale = Math.max(minDim / width, minDim / height);
+      maxScale = Math.min(maxDim / width, maxDim / height, this.state.maxScale);
+      scale = self.props.state && self.props.state.scale ?
+        self.props.state.scale :
+        Math.max(Math.min(self.state.scale, maxScale), minScale);
 
       self.setState({
         width,
         height,
         minScale,
-        scale: self.props.state && self.props.state.scale ?
-                self.props.state.scale :
-                Math.max(self.state.scale, minScale),
+        scale,
       }, () => {
+        self.activate();
         self.checkItem();
       });
     };
@@ -259,8 +284,11 @@ class EditableAsset extends Draggable {
   }
 
   attachEvents() {
-    this.refs.scale.addEventListener('mousedown', this.boundScale);
-    this.refs.rotate.addEventListener('mousedown', this.boundRotate);
+    this.refs.scale.addEventListener('mousedown', this.scale);
+    this.refs.rotate.addEventListener('mousedown', this.rotate);
+
+    this.refs.scale.addEventListener('touchstart', this.scale);
+    this.refs.rotate.addEventListener('touchstart', this.rotate);
   }
 
   componentDidMount() {
@@ -278,6 +306,13 @@ class EditableAsset extends Draggable {
     this.getLayer();
 
     this.attachEvents();
+
+    skoash.trigger('emit', {
+      name: 'getMedia',
+      'media_id': this.props.media_id
+    }).then(d => {
+      this.setState(d);
+    });
   }
 
   componentDidUpdate() {
@@ -297,7 +332,7 @@ class EditableAsset extends Draggable {
     return style;
   }
 
-  getStyle() {
+  getAssetStyle() {
     var style, transform = '';
 
     transform += `scale(${this.state.scale}) `;
@@ -316,6 +351,23 @@ class EditableAsset extends Draggable {
     return style;
   }
 
+  getButtonsStyle() {
+    var style, transform = '';
+
+    transform += `scale(${this.state.scale}) `;
+    transform += `rotate(${this.state.rotation}rad) `;
+
+    style = {
+      width: this.state.width,
+      height: this.state.height,
+      left: this.state.left,
+      top: this.state.top,
+      transform,
+    };
+
+    return style;
+  }
+
   getClasses() {
     return classNames({
       DRAGGING: this.state.dragging,
@@ -325,9 +377,22 @@ class EditableAsset extends Draggable {
     }, 'editable-asset', this.props.asset_type);
   }
 
+  renderAsset() {
+    return (
+      <div
+        ref="el"
+        className="asset"
+        style={this.getAssetStyle()}
+      />
+    );
+  }
+
   renderButtons() {
     return (
-      <div className={'buttons'}>
+      <div
+        className="buttons"
+        style={this.getButtonsStyle()}
+      >
         <button
           className="delete"
           style={this.getButtonStyle()}
@@ -355,11 +420,11 @@ class EditableAsset extends Draggable {
   render() {
     return (
       <li
-        ref="el"
+        ref="li"
         className={this.getClasses()}
-        style={this.getStyle()}
         onClick={this.activate.bind(this)}
       >
+        {this.renderAsset()}
         {this.renderButtons()}
       </li>
     );

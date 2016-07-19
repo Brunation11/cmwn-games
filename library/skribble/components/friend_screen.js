@@ -7,7 +7,6 @@ class FriendScreen extends skoash.Screen {
     super();
 
     this.state = {
-      id: 'friends',
       load: true,
       complete: true,
       recipient: {},
@@ -25,14 +24,14 @@ class FriendScreen extends skoash.Screen {
   }
 
   updateData(d) {
-    var data = d && d.user ? d.user : skoash.trigger('getState').data.user;
+    var data = d && d.user ? d.user : skoash.trigger('getState').data.user || [];
 
     data = data.map(friend => {
       var src = friend._embedded.image && friend._embedded.image.url ?
         friend._embedded.image.url :
         DEFAULT_PROFILE_IMAGE;
       return {
-        'user_id': friend.user_id,
+        'user_id': friend.friend_id,
         name: friend.username,
         src,
         // I need to get the flips earned back from the backend to do this.
@@ -49,6 +48,8 @@ class FriendScreen extends skoash.Screen {
 
   open(opts) {
     var recipient, self = this;
+
+    self.updateData();
 
     skoash.trigger('getData', {
       name: 'getFriends'
@@ -75,7 +76,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   suggestFriends() {
-    window.open('https://changemyworldnow.com/friends');
+    window.open(window.location.origin.replace('games-', '') + '/friends/suggested');
   }
 
   renderOtter() {
@@ -84,7 +85,7 @@ class FriendScreen extends skoash.Screen {
     src = 'One';
     copy = (
       <span>
-        Don't have<br/> friends yes<br/><br/> Let me suggest<br/> some for you.
+        Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
       </span>
     );
 
@@ -125,7 +126,7 @@ class FriendScreen extends skoash.Screen {
     }
 
     return (
-      <div className={this.props.className}>
+      <div className={this.state.opts.goto}>
         <div className="item-drawer-container">
           <div className="suggest-friends-buttons">
             <button className="continue" onClick={this.selectRespond.bind(this, {})} />
@@ -134,14 +135,6 @@ class FriendScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
-
-  renderPrevButton() {
-    return null;
-  }
-
-  renderNextButton() {
-    return null;
   }
 
   renderContent() {
@@ -155,4 +148,10 @@ class FriendScreen extends skoash.Screen {
   }
 }
 
-export default FriendScreen;
+export default (
+  <FriendScreen
+    id="friends"
+    hideNext
+    hidePrev
+  />
+);

@@ -1,7 +1,7 @@
 var TitleScreen = (
   <skoash.Screen
     id="title"
-    showPrev={false}
+    hidePrev
     nextDelay={1000}
     nextIndex="menu"
   >
@@ -9,6 +9,16 @@ var TitleScreen = (
       ref="title"
       className="title animated"
       src="media/_Title/SKribble_title.png"
+    />
+    <skoash.Image
+      ref="play"
+      className="hidden"
+      src="media/_Buttons/skribble-play-01.png"
+    />
+    <skoash.Image
+      ref="play"
+      className="hidden"
+      src="media/_Buttons/skribble-hover.png"
     />
   </skoash.Screen>
 );
