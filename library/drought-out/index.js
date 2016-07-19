@@ -68,11 +68,7 @@ pl.game('drought-out', function () {
   this.screen('info-no-water', function () {
     this.startAudio = function () {
       if (!this.audio) return;
-      // Yes, infoWeedWater. This is due to an error in the framework
-      // this is not worth fixing at this point.
-      if (this.game.infoWeedWater.audio) {
-        this.game.infoWeedWater.audio.background.stop('@ALL');
-      }
+      this.audio.background.stop();
       this.audio.background.play();
       this.audio.voiceOver.play();
     };
