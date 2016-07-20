@@ -33,7 +33,7 @@ class Examples extends skoash.Game {
     };
 
     this.menus = {
-      quit: QuitScreen,
+      quit: <QuitScreen />,
     };
   }
 
