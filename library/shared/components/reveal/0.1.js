@@ -1,15 +1,16 @@
-class Reveal extends play.Component {
+class Reveal extends skoash.Component {
   constructor() {
     super();
 
+    this.list = [
+      <li></li>,
+      <li></li>,
+      <li></li>,
+      <li></li>
+    ];
+
     this.state = {
       openReveal: '',
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
     };
   }
 
@@ -22,7 +23,7 @@ class Reveal extends play.Component {
     this.playAudio(message);
 
     this.requireForComplete = this.requireForComplete.filter(item => {
-      return (item !== message) || (this.refs[message] instanceof play.Audio);
+      return (item !== message) || (this.refs[message] instanceof skoash.Audio);
     });
   }
 
@@ -38,8 +39,12 @@ class Reveal extends play.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.close();
+
+    if (this.props.openOnStart != null) {
+      this.open(this.props.openOnStart);
+    }
   }
 
   playAudio(message) {
@@ -47,10 +52,6 @@ class Reveal extends play.Component {
 
     if (this.audio['open-sound']) {
       this.audio['open-sound'].play();
-    }
-
-    if ('' + parseInt(message, 10) === message) {
-      message = parseInt(message, 10);
     }
 
     if (typeof message === 'string') {
@@ -70,11 +71,10 @@ class Reveal extends play.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
-            ref={ref}
+            ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
             data-ref={key}
           />
@@ -86,7 +86,7 @@ class Reveal extends play.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
+    var list = this.props.list || this.list;
 
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];

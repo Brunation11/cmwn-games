@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-class Selectable extends play.Component {
+class Selectable extends skoash.Component {
   constructor() {
     super();
 
@@ -18,16 +18,21 @@ class Selectable extends play.Component {
   }
 
   start() {
-    var selectClass, selectFunction;
+    var selectClass, selectFunction, classes = {};
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    if (this.props.selectOnStart) {
+      classes[this.props.selectOnStart] = selectClass;
+    }
 
     this.setState({
       started: true,
-      classes: {},
-      selectClass,
+      classes,
       selectFunction,
+      selectClass,
     });
 
     this.bootstrap();
@@ -73,13 +78,16 @@ class Selectable extends play.Component {
   }
 
   getClass(key) {
-    return this.state.classes[key] ? this.state.classes[key] : '';
+    return classNames({
+      [this.state.classes[key] || '']: true,
+    });
   }
 
-  getULClass() {
+  getClassNames() {
     return classNames({
+      selectable: true,
       COMPLETE: this.state.complete,
-    });
+    }, this.props.className);
   }
 
   renderList() {
@@ -88,7 +96,7 @@ class Selectable extends play.Component {
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <play.ListItem
+        <skoash.ListItem
           {...li.props}
           className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}
@@ -101,7 +109,7 @@ class Selectable extends play.Component {
 
   render() {
     return (
-      <ul className={'selectable ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+      <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );
