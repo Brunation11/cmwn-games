@@ -50,6 +50,10 @@ class Reveal extends skoash.Component {
   playAudio(message) {
     var messages;
 
+    if ('' + parseInt(message, 10) === message) {
+      message = 'asset-' + message;
+    }
+
     if (this.audio['open-sound']) {
       this.audio['open-sound'].play();
     }

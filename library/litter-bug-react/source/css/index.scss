@@ -64,7 +64,7 @@ html, body, body > div, body > div > div {
 
   &.SCREEN-2 .background.lets-clean-up,
   &.SCREEN-3 .background.select,
-  &.SCREEN-3.sun .background.sun,
+  &.SCREEN-3.SUN .background.sun,
   &.commit .background.commit {
     opacity: 1;
   }
@@ -485,8 +485,22 @@ p {
       pointer-events: auto;
     }
 
+    &.COMPLETE {
+      .close-reveal {
+        opacity: 1;
+        transform: rotate(0deg);
+        pointer-events: auto;
+      }
+    }
+
     ul {
       list-style: none;
+    }
+  }
+
+  .selectable-reveal {
+    .reveal {
+      display: none;
     }
   }
 
@@ -498,6 +512,10 @@ p {
     margin-right: 5px;
     right: 0;
     bottom: 1%;
+    opacity: 0;
+    transform: rotate(-180deg);
+    pointer-events: none;
+    transition: opacity 1s, transform 1s;
 
     &:hover {
       background-position: -125px 664px;

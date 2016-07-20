@@ -21,7 +21,7 @@ class QuitScreen extends skoash.Screen {
 
   render() {
     return (
-      <div id={this.state.id} className={'screen' + this.getClassNames()}>
+      <div id={this.state.id} className={this.getClassNames()}>
         <div className="center">
           <div className="frame">
             <h2>Are you sure you<br/>want to quit?</h2>

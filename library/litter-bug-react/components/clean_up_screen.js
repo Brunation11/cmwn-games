@@ -1,16 +1,21 @@
 import Reveal from 'shared/components/reveal/0.1';
-import Selectable from 'shared/components/selectable/0.1';
+import SelectableReveal from 'shared/components/selectable_reveal/0.1';
+
+var toggleSun = function (sun) {
+  skoash.trigger('passData', {sun});
+};
 
 var CleanUpScreen = (
   <skoash.Screen
     id="clean-up"
+    onComplete={toggleSun.bind(null, true)}
+    onOpen={toggleSun.bind(null, false)}
   >
-    <skoash.Audio ref="correct" type="sfx" src="media/S_3/S_3.1.mp3" />
     <Reveal
       ref="reveal"
       openOnStart="0"
       assets={[
-        <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
+        <skoash.Audio type="voiceOver" src="media/S_3/VO_3.1.mp3" />
       ]}
       list={[
         <skoash.Component ref="center" classNameName="center" type="li">
@@ -29,11 +34,15 @@ var CleanUpScreen = (
         </skoash.Component>
       ]}
     />
-    <Selectable
+    <SelectableReveal
       ref="trash"
       className="trash"
-      selectClass="HIGHLIGHTED"
-      list={[
+      selectableSelectClass="HIGHLIGHTED"
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/S_3/S_3.1.mp3" />
+      ]}
+      selectableList={[
         <skoash.Component
           type="li"
           checkComplete={false}

@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -27,10 +29,20 @@ class LitterBug extends skoash.Game {
     };
   }
 
+  passData(opts) {
+    this.setState(opts);
+  }
+
   renderLoader() {
     return (
       <Loader />
     );
+  }
+
+  getClassNames() {
+    return classNames({
+      'SUN': this.state.sun
+    }, skoash.Game.prototype.getClassNames.call(this));
   }
 
   renderAssets() {

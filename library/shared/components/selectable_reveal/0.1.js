@@ -25,6 +25,9 @@ class SelectableReveal extends skoash.Component {
         }
       }
     } else {
+      if (this.props.allCorrect && this.audio.correct) {
+        this.audio.correct.play();
+      }
       if (typeof this.refs.reveal.open === 'function') {
         this.open(message);
       }
@@ -43,7 +46,7 @@ class SelectableReveal extends skoash.Component {
         return (
           <skoash.Audio
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
             key={key}
             data-ref={key}
           />
