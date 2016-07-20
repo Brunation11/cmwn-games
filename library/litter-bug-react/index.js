@@ -5,6 +5,7 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import LetsCleanUpScreen from './components/lets_clean_up_screen';
+import CleanUpScreen from './components/clean_up_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -18,6 +19,7 @@ class LitterBug extends skoash.Game {
       0: iOSScreen,
       1: TitleScreen,
       2: LetsCleanUpScreen,
+      3: CleanUpScreen,
     };
 
     this.menus = {
