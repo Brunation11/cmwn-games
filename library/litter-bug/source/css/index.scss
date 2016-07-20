@@ -284,34 +284,37 @@ p {
 
 // the following css is specific to this game
 
-.frame-component {
-  .center {
-    overflow: hidden;
+#litter-bug {
+  .frame-component {
+    .center {
+      overflow: hidden;
 
-    .content-group {
-      overflow: visible;
+      .content-group {
+        overflow: visible;
 
-      div {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        margin: 0;
+        div {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+        }
       }
     }
-  }
 
-  .frame {
-    position: relative;
-    width: 960px;
-    height: 200px;
+    .frame {
+      position: relative;
+      width: 960px;
+      height: 200px;
+      top: 0;
 
-    img.background {
-      position: absolute;
-      width: 105%;
-      left: -2.5%;
-      opacity: 1;
+      img.background {
+        position: absolute;
+        width: 105%;
+        left: -2.5%;
+        opacity: 1;
+      }
     }
   }
 }
