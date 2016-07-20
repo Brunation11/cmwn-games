@@ -132,16 +132,6 @@ button {
     }
   }
 
-  &.no {
-    width: 230px;
-    height: 235px;
-    background-position: -300px 500px;
-
-    &:hover {
-      background-position: -300px 243px;
-    }
-  }
-
   &.accept {
     width: 230px;
     height: 130px;
@@ -183,6 +173,22 @@ button {
   }
 }
 
+#room,
+#school,
+#ground {
+  button.next-screen {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    width: 230px;
+    height: 235px;
+    background-position: -300px 500px;
+
+    &:hover {
+      background-position: -300px 243px;
+    }
+  }
+}
+
 h2 {
   font-size: 40px;
 }
@@ -207,6 +213,7 @@ p {
   display: none;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
+  overflow: hidden;
   width: 960px;
   height: 540px;
 }
@@ -541,11 +548,7 @@ p {
   }
 }
 
-.screen.room {
-
-  button.next-screen {
-    display: none;
-  }
+#room {
 
   img {
     position: absolute;
@@ -563,7 +566,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 540px;
     top: 200px;
@@ -576,33 +579,26 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: bounceInUp;
         animation-name: bounceInUp;
       }
 
       &:nth-of-type(2) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.school {
-
-  button.next-screen {
-    display: none;
-  }
+#school {
 
   img {
     position: absolute;
@@ -620,7 +616,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 640px;
     bottom: 0px;
@@ -637,24 +633,20 @@ p {
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: bounceInLeft;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.ground {
-
-  button.next-screen {
-    display: none;
-  }
+#ground {
 
   img {
     position: absolute;
@@ -672,7 +664,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 200px;
     bottom: 0px;
@@ -689,20 +681,20 @@ p {
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: bounceInLeft;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.sing-about-it {
+#sing-about-it {
 
   img {
     position: absolute;
@@ -740,7 +732,7 @@ p {
   }
 }
 
-.screen.good-for-you {
+#good-for-you {
 
   .content-group {
 
@@ -785,7 +777,7 @@ p {
   }
 }
 
-.screen.take-pledge {
+#take-pledge {
 
   button.next-screen {
     display: none;
@@ -843,7 +835,7 @@ p {
   }
 }
 
-.screen.commit {
+#commit {
 
   button.next-screen {
     display: none;
@@ -891,7 +883,7 @@ p {
 
 }
 
-.screen.flip {
+#flip {
 
   img {
     position: absolute;

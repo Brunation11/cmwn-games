@@ -8,6 +8,9 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import LetsCleanUpScreen from './components/lets_clean_up_screen';
 import CleanUpScreen from './components/clean_up_screen';
+import RoomScreen from './components/room_screen';
+import SchoolScreen from './components/school_screen';
+import GroundScreen from './components/ground_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -22,6 +25,9 @@ class LitterBug extends skoash.Game {
       1: TitleScreen,
       2: LetsCleanUpScreen,
       3: CleanUpScreen,
+      4: RoomScreen,
+      5: SchoolScreen,
+      6: GroundScreen,
     };
 
     this.menus = {
@@ -50,7 +56,6 @@ class LitterBug extends skoash.Game {
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="no" type="sfx" src="media/S_4/VO_4.2.mp3" />
         <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />
         <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />
         <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />

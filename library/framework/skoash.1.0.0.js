@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0e568bcf481e562cf962"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ece69ef2dec1a5171241"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -44566,10 +44566,14 @@
 
 	  _createClass(Screen, [{
 	    key: 'goto',
-	    value: function goto(index) {
+	    value: function goto(index, buttonSound) {
 	      if (typeof index === 'string' || typeof index === 'number') {
-	        skoash.trigger('goto', { index: index });
+	        skoash.trigger('goto', {
+	          index: index,
+	          buttonSound: buttonSound
+	        });
 	      } else if ((typeof index === 'undefined' ? 'undefined' : _typeof(index)) === 'object') {
+	        index.buttonSound = index.buttonSound || buttonSound;
 	        skoash.trigger('goto', index);
 	      }
 	    }
@@ -44587,7 +44591,7 @@
 	        leaving: true
 	      });
 
-	      setTimeout(this.goto.bind(this, this.props.nextIndex || this.props.index + 1), this.props.nextDelay || 0);
+	      setTimeout(this.goto.bind(this, this.props.nextIndex || this.props.index + 1, this.audio.button), this.props.nextDelay || 0);
 	    }
 	  }, {
 	    key: 'prev',
@@ -45188,8 +45192,12 @@
 	        currentScreenIndex: currentScreenIndex
 	      });
 
-	      if (!opts.silent && this.audio.button) {
-	        this.audio.button.play();
+	      if (!opts.silent) {
+	        if (opts.buttonSound) {
+	          opts.buttonSound.play();
+	        } else if (this.audio.button) {
+	          this.audio.button.play();
+	        }
 	      }
 
 	      this.playBackground(currentScreenIndex);
