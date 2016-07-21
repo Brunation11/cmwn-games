@@ -29,7 +29,11 @@ class Canvas extends skoash.Component {
     var items, messages, self = this;
 
     items = this.state.items.map((item, key) => {
-      var state = self.refs['item-' + key].state;
+      var state;
+
+      if (!self.refs['item-' + key]) return item;
+
+      state = self.refs['item-' + key].state;
 
       item.state = {
         left: _.floor(state.left, 14),
@@ -48,7 +52,11 @@ class Canvas extends skoash.Component {
     });
 
     messages = this.state.messages.map((item, key) => {
-      var state = self.refs['message-' + key].state;
+      var state;
+
+      if (!self.refs['item-' + key]) return item;
+
+      state = self.refs['message-' + key].state;
 
       item.state = {
         left: _.floor(state.left, 14),
@@ -102,7 +110,7 @@ class Canvas extends skoash.Component {
   }
 
   addItem(asset, cb) {
-    var items, messages;
+    var items, messages, index;
 
     if (asset.asset_type === 'background') {
       this.setState({
@@ -115,25 +123,52 @@ class Canvas extends skoash.Component {
           var background = this.state.background;
           background.check = d.check;
           background.mime_type = d.mime_type; // eslint-disable-line camelcase
-          this.setState({background});
+          this.setState({
+            background
+          }, cb);
         });
-        cb(arguments);
       });
 
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
       items.push(asset);
+      index = items.indexOf(asset);
 
       this.setState({
         items,
-      }, cb);
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          items[index] = asset;
+          this.setState({
+            items
+          }, cb);
+        });
+      });
     } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
       messages.push(asset);
+      index = messages.indexOf(asset);
 
       this.setState({
         messages,
-      }, cb);
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          messages[index] = asset;
+          this.setState({
+            messages
+          }, cb);
+        });
+      });
     }
   }
 
@@ -282,7 +317,7 @@ class Canvas extends skoash.Component {
   getClassNames() {
     return classNames({
       canvas: true,
-      ACTIVE: this.state.active,
+      ACTIVE: !this.props.preview && this.state.active,
     });
   }
 

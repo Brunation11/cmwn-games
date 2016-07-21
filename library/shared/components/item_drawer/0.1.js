@@ -36,6 +36,7 @@ class ItemDrawer extends Selectable {
       classes,
       selectFunction,
       categoryName: '',
+      category: null,
     });
 
     this.bootstrap();
@@ -90,12 +91,6 @@ class ItemDrawer extends Selectable {
     if (typeof this.props.cancelRespond === 'function') {
       this.props.cancelRespond.call(this);
     }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
   }
 
   getCategory() {
