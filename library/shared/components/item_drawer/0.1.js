@@ -104,6 +104,12 @@ class ItemDrawer extends Selectable {
     return '';
   }
 
+  getClassNames() {
+    return classNames({
+      'ANSWERED': _.values(this.state.classes).indexOf(this.state.selectClass) !== -1
+    }, this.props.className, 'item-drawer-component');
+  }
+
   getULClass() {
     var categories = '';
 
@@ -151,7 +157,7 @@ class ItemDrawer extends Selectable {
       item.items.some(subitem => {
         if (subitem.name === '_thumb.png') {
           src = subitem.src;
-          return false;
+          return true;
         }
       });
     }
@@ -215,7 +221,7 @@ class ItemDrawer extends Selectable {
 
   render() {
     return (
-      <div className={this.props.className}>
+      <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
           <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>

@@ -40,8 +40,6 @@ class ItemDrawerScreen extends skoash.Screen {
   open(opts) {
     var self = this;
 
-    self.updateData();
-
     skoash.trigger('getMedia', {
       path: 'skribble/menu/' + opts.categories.join('/')
     }).then(data => {
@@ -54,6 +52,9 @@ class ItemDrawerScreen extends skoash.Screen {
       leave: false,
       close: false,
       opts,
+      data: null
+    }, () => {
+      self.updateData();
     });
 
     setTimeout(() => {
