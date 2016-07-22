@@ -11,6 +11,8 @@ import CleanUpScreen from './components/clean_up_screen';
 import RoomScreen from './components/room_screen';
 import SchoolScreen from './components/school_screen';
 import GroundScreen from './components/ground_screen';
+import SingAboutItScreen from './components/sing_about_it_screen';
+import VideoScreen from './components/video_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -28,6 +30,8 @@ class LitterBug extends skoash.Game {
       4: RoomScreen,
       5: SchoolScreen,
       6: GroundScreen,
+      7: SingAboutItScreen,
+      8: VideoScreen,
     };
 
     this.menus = {
