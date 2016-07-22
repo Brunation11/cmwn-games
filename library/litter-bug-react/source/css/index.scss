@@ -137,26 +137,6 @@ button {
     }
   }
 
-  &.accept {
-    width: 230px;
-    height: 130px;
-    background-position: -1320px 450px;
-
-    &:hover {
-      background-position: -1320px 193px;
-    }
-  }
-
-  &.commit {
-    width: 230px;
-    height: 130px;
-    background-position: -1570px 450px;
-
-    &:hover {
-      background-position: -1570px 193px;
-    }
-  }
-
   &.quit-yes {
     width: 230px;
     height: 130px;
@@ -735,8 +715,11 @@ p {
 
 #good-for-you {
 
-  .content-group {
+  .frame {
+    top: 200px;
+  }
 
+  .content-group {
     img {
       position: absolute;
 
@@ -758,6 +741,7 @@ p {
       width: 500px;
       right: 30px;
       bottom: 50px;
+      text-align: center;
     }
   }
 
@@ -780,11 +764,8 @@ p {
 
 #take-pledge {
 
-  button.next-screen {
-    display: none;
-  }
-
   .frame {
+    top: 200px;
     margin-top: -40px;
   }
 
@@ -804,18 +785,29 @@ p {
       bottom: 40px;
     }
 
-    button {
+  }
+
+  button {
+    &.next-screen {
       position: absolute;
+      width: 230px;
+      height: 130px;
+      background-position: -1320px 450px;
       left: 50%;
-      top: 125%;
+      top: 70%;
       margin-left: -115px;
       opacity: 0;
       cursor: auto;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+
+      &:hover {
+        background-position: -1320px 193px;
+      }
     }
   }
 
   &.OPEN {
-
     .content-group {
 
       img {
@@ -823,32 +815,31 @@ p {
         animation-name: bounceIn;
       }
     }
+  }
 
-    &.COMPLETE {
-
-      button {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: zoomInDown;
-        animation-name: zoomInDown;
-      }
+  &.COMPLETE {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: zoomInDown;
+      animation-name: zoomInDown;
     }
   }
 }
 
 #commit {
 
-  button.next-screen {
-    display: none;
-  }
-
   .frame {
-    margin-top: -100px;
+    margin-top: -50px;
+    width: auto;
+    height: auto;
 
     img.background {
       position: relative;
       opacity: 1;
       width: 440px;
+      height: auto;
+      left: 0;
     }
 
     p {
@@ -858,30 +849,34 @@ p {
       top: 40px;
       font-weight: bold;
     }
+  }
 
-    button {
-      position: absolute;
-      left: 50%;
-      top: 95%;
-      margin-left: -115px;
-      opacity: 0;
-      cursor: auto;
+  button.next-screen {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    margin-left: -115px;
+    opacity: 0;
+    cursor: auto;
+    width: 230px;
+    height: 130px;
+    background-position: -1570px 450px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+    &:hover {
+      background-position: -1570px 193px;
     }
   }
 
-  &.OPEN {
-
-    &.COMPLETE {
-
-      button {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: zoomInDown;
-        animation-name: zoomInDown;
-      }
+  &.COMPLETE {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: zoomInDown;
+      animation-name: zoomInDown;
     }
   }
-
 }
 
 #flip {
