@@ -270,7 +270,7 @@ class Canvas extends skoash.Component {
   }
 
   isInBounds(key, type) {
-    return !this.refs[type + '-' + key].state.corners.length || !(
+    return !(
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
         [

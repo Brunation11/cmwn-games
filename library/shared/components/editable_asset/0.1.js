@@ -179,31 +179,31 @@ class EditableAsset extends Draggable {
   }
 
   checkItem() {
-    var valid;
+    this.setCorners(() => {
+      var valid;
 
-    this.setCorners();
+      if (typeof this.props.checkItem === 'function') {
+        valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
 
-    if (typeof this.props.checkItem === 'function') {
-      valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
+        if (valid) {
+          this.setState({
+            valid,
+            lastValid: new Object(this.state),
+          });
+        } else {
+          this.setState({
+            valid,
+          });
+        }
 
-      if (valid) {
-        this.setState({
-          valid,
-          lastValid: new Object(this.state),
-        });
-      } else {
-        this.setState({
-          valid,
-        });
+        if (typeof this.props.setValid === 'function') {
+          this.props.setValid(valid);
+        }
       }
-
-      if (typeof this.props.setValid === 'function') {
-        this.props.setValid(valid);
-      }
-    }
+    });
   }
 
-  setCorners() {
+  setCorners(cb) {
     var center, distance, angle, corners = [];
 
     center = {
@@ -226,7 +226,7 @@ class EditableAsset extends Draggable {
 
     this.setState({
       corners,
-    });
+    }, cb);
   }
 
   getSize() {
