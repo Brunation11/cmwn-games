@@ -12,9 +12,10 @@ html {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-body {
+html, body, body > div, body > div > div {
   position: relative;
   width: 960px;
+  height: 540px;
   margin: auto;
   font-size: 20px;
   background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
@@ -60,12 +61,23 @@ body {
     background-image: url(../media/_BKG/BKG_5.png);
   }
 
-  &.lets-clean-up:not(.QUIT-SCREEN) > .background.lets-clean-up,
-  &.select:not(.QUIT-SCREEN) > .background.select,
-  &.select.sun:not(.QUIT-SCREEN) > .background.sun,
-  &.commit:not(.QUIT-SCREEN) > .background.commit {
+  &.SCREEN-2 .background.lets-clean-up,
+  &.SCREEN-3 .background.select,
+  &.SCREEN-3.SUN .background.sun,
+  &.SCREEN-11 .background.commit {
     opacity: 1;
   }
+
+  &.MENU-quit {
+    .screen:not(#quit) {
+      opacity: 0;
+    }
+  }
+}
+
+html, body, body > div {
+  width: 100%;
+  height: 100%;
 }
 
 /* This is just to preload the images used in css. */
@@ -124,36 +136,6 @@ button {
     }
   }
 
-  &.no {
-    width: 230px;
-    height: 235px;
-    background-position: -300px 500px;
-
-    &:hover {
-      background-position: -300px 243px;
-    }
-  }
-
-  &.accept {
-    width: 230px;
-    height: 130px;
-    background-position: -1320px 450px;
-
-    &:hover {
-      background-position: -1320px 193px;
-    }
-  }
-
-  &.commit {
-    width: 230px;
-    height: 130px;
-    background-position: -1570px 450px;
-
-    &:hover {
-      background-position: -1570px 193px;
-    }
-  }
-
   &.quit-yes {
     width: 230px;
     height: 130px;
@@ -171,6 +153,22 @@ button {
 
     &:hover {
       background-position: -2080px 193px;
+    }
+  }
+}
+
+#room,
+#school,
+#ground {
+  button.next-screen {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    width: 230px;
+    height: 235px;
+    background-position: -300px 500px;
+
+    &:hover {
+      background-position: -300px 243px;
     }
   }
 }
@@ -199,6 +197,9 @@ p {
   display: none;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
+  overflow: hidden;
+  width: 960px;
+  height: 540px;
 }
 
 .screen.last {}
@@ -240,10 +241,12 @@ p {
   }
 
   .DEMO .screen .next-screen,
+  .DEMO #clean-up .close-reveal,
   .screen.COMPLETE .next-screen {
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
+    pointer-events: auto;
   }
 
   .DEMO .screen.room button.next-screen,
@@ -285,36 +288,35 @@ p {
 // the following css is specific to this game
 
 #litter-bug {
-  .frame-component {
-    .center {
-      overflow: hidden;
+  .center {
+    overflow: hidden;
 
-      .content-group {
-        overflow: visible;
+    .content-group {
+      overflow: visible;
 
-        div {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          margin: 0;
-        }
+      div {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        text-align: center;
       }
     }
+  }
 
-    .frame {
-      position: relative;
-      width: 960px;
-      height: 200px;
-      top: 0;
+  .frame {
+    position: relative;
+    width: 960px;
+    height: 200px;
+    top: 0;
 
-      img.background {
-        position: absolute;
-        width: 105%;
-        left: -2.5%;
-        opacity: 1;
-      }
+    img.background {
+      position: absolute;
+      width: 105%;
+      left: -2.5%;
+      opacity: 1;
     }
   }
 }
@@ -382,9 +384,9 @@ p {
   }
 }
 
-.screen.lets-clean-up {
+#lets-clean-up {
 
-  div {
+  div > div {
     margin: 0;
     position: absolute;
     right: 70px;
@@ -401,7 +403,7 @@ p {
 
   &.OPEN {
 
-    div {
+    div > div {
       -webkit-animation-name: flipInX;
       animation-name: flipInX;
     }
@@ -413,60 +415,111 @@ p {
   }
 }
 
-.screen.clean-up {
+#clean-up {
 
-  .slides-component {
+  .frame-component {
+    z-index: 1;
+  }
+
+  .prev-screen {
+    z-index: 1;
+  }
+
+  .COMPLETE {
+    .next-screen {
+      z-index: 1;
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
+
+  .frame {
     position: absolute;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    top: 160px;
 
-    .frame-component {
+    .content-group {
+
+      h2 {
+        margin: 0 0 15px;
+      }
+
+      p {
+        text-align: center;
+        width: 100%;
+        bottom: 20px;
+      }
+
+      button {
+        position: absolute;
+        left: 50%;
+        top: 125%;
+        margin-left: -115px;
+      }
+    }
+  }
+
+  .trash {
+    transform: translateX(0);
+  }
+
+  .reveal {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    width: 960px;
+    height: 540px;
+    transition: opacity .5s;
+
+    &.OPEN {
+      opacity: 1;
       z-index: 1;
+      pointer-events: auto;
     }
 
-    .prev-screen {
-      z-index: 1;
-    }
-
-    .COMPLETE {
-      .next-screen {
-        z-index: 1;
+    &.COMPLETE {
+      .close-reveal {
         opacity: 1;
         transform: rotate(0deg);
+        pointer-events: auto;
       }
     }
 
-    .frame {
-      position: absolute;
-      left: 0;
-      top: 160px;
-
-      .content-group {
-
-        h2 {
-          margin: 20px 0 15px;
-        }
-
-        p {
-          width: 100%;
-          bottom: 20px;
-        }
-
-        button {
-          position: absolute;
-          left: 50%;
-          top: 125%;
-          margin-left: -115px;
-        }
-      }
+    ul {
+      list-style: none;
     }
+  }
 
-    .trash {
-      transform: translateX(0);
+  .selectable-reveal {
+    .reveal {
+      display: none;
     }
+  }
+
+  .close-reveal {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-position: -125px 420px;
+    margin-right: 5px;
+    right: 0;
+    bottom: 1%;
+    opacity: 0;
+    transform: rotate(-180deg);
+    pointer-events: none;
+    transition: opacity 1s, transform 1s;
+
+    &:hover {
+      background-position: -125px 664px;
+    }
+  }
+
+  .selectable {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0;
   }
 
   .next-screen {
@@ -481,11 +534,7 @@ p {
   }
 }
 
-.screen.room {
-
-  button.next-screen {
-    display: none;
-  }
+#room {
 
   img {
     position: absolute;
@@ -503,7 +552,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 540px;
     top: 200px;
@@ -516,33 +565,26 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: bounceInUp;
         animation-name: bounceInUp;
       }
 
       &:nth-of-type(2) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.school {
-
-  button.next-screen {
-    display: none;
-  }
+#school {
 
   img {
     position: absolute;
@@ -560,7 +602,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 640px;
     bottom: 0px;
@@ -573,28 +615,22 @@ p {
     img {
 
       &:nth-of-type(2) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.ground {
-
-  button.next-screen {
-    display: none;
-  }
+#ground {
 
   img {
     position: absolute;
@@ -612,7 +648,7 @@ p {
     }
   }
 
-  button.no {
+  button.next-screen {
     position: absolute;
     left: 200px;
     bottom: 0px;
@@ -625,24 +661,34 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
+  }
 
-    &.COMPLETE {
+  &.COMPLETE {
 
-      button.no {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: bounceInLeft;
-        animation-name: bounceInLeft;
-      }
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
     }
   }
 }
 
-.screen.sing-about-it {
+.DEMO {
+  #room,
+  #school,
+  #ground {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
+    }
+  }
+}
+
+#sing-about-it {
 
   img {
     position: absolute;
@@ -654,7 +700,6 @@ p {
   &.OPEN {
 
     img {
-      -webkit-animation-name: flipInY;
       animation-name: flipInY;
     }
   }
@@ -662,28 +707,25 @@ p {
 
 #video .frame {
   width: 80%;
-  height: 100%;
-}
-
-.video-component {
-  position: absolute;
+  height: 85%;
   background-image: url(../media/_Frames/FR_2.png);
   background-size: 100% 100%;
-  top: 50px;
-  width: 100%;
 
   video {
     position: relative;
-    width: 96.2%;
+    width: 91.2%;
     max-height: 95%;
-    margin: 1.4% 1.9%;
+    margin: 4.2% 4.3%;
   }
 }
 
-.screen.good-for-you {
+#good-for-you {
+
+  .frame {
+    top: 200px;
+  }
 
   .content-group {
-
     img {
       position: absolute;
 
@@ -705,6 +747,7 @@ p {
       width: 500px;
       right: 30px;
       bottom: 50px;
+      text-align: center;
     }
   }
 
@@ -725,13 +768,10 @@ p {
   }
 }
 
-.screen.take-pledge {
-
-  button.next-screen {
-    display: none;
-  }
+#take-pledge {
 
   .frame {
+    top: 200px;
     margin-top: -40px;
   }
 
@@ -751,18 +791,29 @@ p {
       bottom: 40px;
     }
 
-    button {
+  }
+
+  button {
+    &.next-screen {
       position: absolute;
+      width: 230px;
+      height: 130px;
+      background-position: -1320px 450px;
       left: 50%;
-      top: 125%;
+      top: 70%;
       margin-left: -115px;
       opacity: 0;
       cursor: auto;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+
+      &:hover {
+        background-position: -1320px 193px;
+      }
     }
   }
 
   &.OPEN {
-
     .content-group {
 
       img {
@@ -770,32 +821,31 @@ p {
         animation-name: bounceIn;
       }
     }
+  }
 
-    &.COMPLETE {
-
-      button {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: zoomInDown;
-        animation-name: zoomInDown;
-      }
+  &.COMPLETE {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: zoomInDown;
+      animation-name: zoomInDown;
     }
   }
 }
 
-.screen.commit {
-
-  button.next-screen {
-    display: none;
-  }
+#commit {
 
   .frame {
-    margin-top: -100px;
+    margin-top: -50px;
+    width: auto;
+    height: auto;
 
     img.background {
       position: relative;
       opacity: 1;
       width: 440px;
+      height: auto;
+      left: 0;
     }
 
     p {
@@ -805,33 +855,37 @@ p {
       top: 40px;
       font-weight: bold;
     }
+  }
 
-    button {
-      position: absolute;
-      left: 50%;
-      top: 95%;
-      margin-left: -115px;
-      opacity: 0;
-      cursor: auto;
+  button.next-screen {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    margin-left: -115px;
+    opacity: 0;
+    cursor: auto;
+    width: 230px;
+    height: 130px;
+    background-position: -1570px 450px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+    &:hover {
+      background-position: -1570px 193px;
     }
   }
 
-  &.OPEN {
-
-    &.COMPLETE {
-
-      button {
-        opacity: 1;
-        cursor: pointer;
-        -webkit-animation-name: zoomInDown;
-        animation-name: zoomInDown;
-      }
+  &.COMPLETE {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      -webkit-animation-name: zoomInDown;
+      animation-name: zoomInDown;
     }
   }
-
 }
 
-.screen.flip {
+#flip {
 
   img {
     position: absolute;
