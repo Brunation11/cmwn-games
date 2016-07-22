@@ -61,7 +61,6 @@ html, body, body > div, body > div > div {
     background-image: url(../media/_BKG/BKG_5.png);
   }
 
-
   &.SCREEN-2 .background.lets-clean-up,
   &.SCREEN-3 .background.select,
   &.SCREEN-3.SUN .background.sun,
@@ -616,7 +615,6 @@ p {
     img {
 
       &:nth-of-type(2) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
@@ -627,7 +625,6 @@ p {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
-      -webkit-animation-name: bounceInLeft;
       animation-name: bounceInLeft;
     }
   }
@@ -664,7 +661,6 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: bounceInDown;
         animation-name: bounceInDown;
       }
     }
@@ -675,7 +671,18 @@ p {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
-      -webkit-animation-name: bounceInLeft;
+      animation-name: bounceInLeft;
+    }
+  }
+}
+
+.DEMO {
+  #room,
+  #school,
+  #ground {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
       animation-name: bounceInLeft;
     }
   }
@@ -693,7 +700,6 @@ p {
   &.OPEN {
 
     img {
-      -webkit-animation-name: flipInY;
       animation-name: flipInY;
     }
   }
