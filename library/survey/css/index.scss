@@ -390,14 +390,29 @@ p {
   &.READY {
     img {
       opacity: 1;
-      animation-name: slideInDown;
+
+      &.penguine-2,
+      &.magnifying-glass,
+      &.penguine-1 {
+        animation-name: slideInDown;
+      }
+
+      &.title {
+        animation-name: bounceInDown;
+      }
+
     }
 
     &.COMPLETE {
       img {
         &.title {
-        animation-name: tada;
-        animation-delay: 5s;
+          animation-name: tada;
+          // animation-iteration-count: infinite;
+          // animation-duration: 10s;
+        }
+        // animation-name: flicker;
+        // animation-delay: 0s;
+        // animation-iteration-count: 3;
       }
     }
   }
@@ -410,19 +425,199 @@ p {
 #info-all-about-you {
   img {
     position: absolute;
-    top: 140px;
-    left: 130px;
-    width: 700px;
-    margin: 0;
+
+    &.penguin-megaphone {
+      left: 0;
+      bottom: 16%;
+      width: 20%;
+    }
+
+    &.spotlight {
+      top: 0;
+      right: 10%;
+      width: 50%;
+    }
+
+    &.speech-bubble,
+    &.you {
+      opacity: 0;
+    }
   }
 
   &.READY.OPEN {
     img {
-      animation-name: zoomInDown;
+      &.penguin-megaphone,
+      &.spotlight {
+        opacity: 1;
+        animation-name: slideInRight;
+      }
+    }
+  }
+
+  &.COMPLETE {
+    img {
+      &.speech-bubble {
+        animation-name: zoomInLeft;
+        opacity: 1;
+        top: 15%;
+        left: 14%;
+        width: 35%;
+      }
+
+      &.you {
+        animation-name: bounceInDown;
+        animation-delay: 1s;
+        opacity: 1;
+        bottom: 20%;
+        right: 15%;
+        width: 40%;
+      }
     }
   }
 }
 
+#what-are-you-most-passionate-about {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame {
+      position: absolute;
+
+      &.banner {
+        width: 80%;
+        left: 9%;
+        top: 2%;
+      }
+
+      &.penguin {
+        width: 18%;
+        left: 0;
+        top: 4%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/Frames/Frame_11_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 45%;
+      height: 69%;
+      left: 11%;
+      bottom:12%;
+    }
+
+    // .dropzone {
+    ul > * {
+      display: inline-block;
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
+      background-size: 1028px 399px;
+      width: 13%;
+      height: 25%;
+
+      &:nth-child(1) {
+        background-position: 640px 118px;
+        top: 22%;
+        left: 13%;
+      }
+      &:nth-child(2) {
+        background-position: 511px 118px;
+        top: 22%;
+        left: 27%;
+      }
+      &:nth-child(3) {
+        background-position: 255px 118px;
+        top: 22%;
+        left: 41%;
+      }
+      &:nth-child(4) {
+        background-position: 386px 118px;
+        top: 44%;
+        left: 13%;
+      }
+      &:nth-child(5) {
+        background-position: -1px 118px;
+        top: 44%;
+        left: 27%;
+      }
+      &:nth-child(6) {
+        background-position: 768px 118px;
+        top: 44%;
+        left: 41%;
+      }
+      &:nth-child(7) {
+        background-position: 128px 118px;
+        top: 66%;
+        left: 20%;
+      }
+      &:nth-child(8) {
+        background-position: 897px 118px;
+        top: 66%;
+        left: 34%;
+      }
+    }
+
+    .draggable-list-item {
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
+      background-size: 1060px 411px;
+      width: 100%;
+      height: 100%;
+      top: -13px;
+      left: 0px;
+      &.DRAGGING {
+        z-index: 1;
+        width: 104%;
+        height: 104%;
+        // left: 1px;
+        &.friends {
+          background-position: 660px 270px;
+        }
+      }
+      &.friends {
+        background-position: 658px 0;
+      }
+      &.world-peace {
+        background-position: 526px 0;
+      }
+      &.sports {
+        background-position: 261px 0;
+      }
+      &.playing-games {
+        background-position: 395px 0;
+      }
+      &.looking-cool {
+        background-position: -3px 0;
+      }
+      &.school {
+        background-position: 790px 0;
+      }
+      &.celebrities {
+        background-position: 131px 0;
+      }
+      &.environment {
+        background-position: 923px 0;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 130px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
 
 #bulbs {
   img.title {
@@ -514,11 +709,27 @@ p {
   }
 }
 
-#pig {
+#pick-one {
   img {
     display: block;
     width: 640px;
     margin: 40px auto 0;
+  }
+
+  .frame {
+    background: url(../media/assets/_images/Frames/Frame_15.png);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 10%;
+    left: 3%;
+    right: 3%;
+    padding: 30px;
+
+    h1 {
+      color: #0F72B9;
+      margin: 0;
+      font-size: 3rem;
+    }
   }
 
   .selectable {
