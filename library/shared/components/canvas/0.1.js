@@ -25,6 +25,17 @@ class Canvas extends skoash.Component {
     this.setValid = this.setValid.bind(this);
   }
 
+  start() {
+    var dom = ReactDOM.findDOMNode(this);
+
+    skoash.Component.prototype.start.call(this);
+
+    this.setState({
+      width: dom.offsetWidth,
+      height: dom.offsetHeight,
+    });
+  }
+
   getItems() {
     var items, messages, self = this;
 
@@ -244,14 +255,57 @@ class Canvas extends skoash.Component {
     var self = this;
 
     return (
-      self.state[type + 's'][key].can_overlap ||
-      !self.state[type + 's'].some((item, index) =>
-        key !== index &&
-        !self.state[type + 's'][index].can_overlap &&
-        play.util.doIntersect(
-          self.refs[type + '-' + key].state.corners,
-          self.refs[type + '-' + index].state.corners
+      self.isInBounds(key, type) && (
+        self.state[type + 's'][key].can_overlap ||
+        !self.state[type + 's'].some((item, index) =>
+          key !== index &&
+          !self.state[type + 's'][index].can_overlap &&
+          skoash.util.doIntersect(
+            self.refs[type + '-' + key].state.corners,
+            self.refs[type + '-' + index].state.corners
+          )
         )
+      )
+    );
+  }
+
+  isInBounds(key, type) {
+    return !this.refs[type + '-' + key].state.corners.length || !(
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: 0},
+          {x: 0, y: this.state.height},
+          {x: -1, y: this.state.height},
+          {x: -1, y: 0}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: 0},
+          {x: this.state.width, y: 0},
+          {x: this.state.width, y: -1},
+          {x: 0, y: -1}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: this.state.width, y: 0},
+          {x: this.state.width, y: this.state.height},
+          {x: this.state.width + 1, y: this.state.height},
+          {x: this.state.width + 1, y: 0}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: this.state.height},
+          {x: this.state.width, y: this.state.height},
+          {x: this.state.width, y: this.state.height + 1},
+          {x: 0, y: this.state.height + 1}
+        ]
       )
     );
   }
