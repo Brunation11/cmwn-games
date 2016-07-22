@@ -5,8 +5,9 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import InfoAllAboutYou from './components/info_all_about_you_screen';
+import PickOneScreen from './components/pick_one_screen';
+import WhatAreYouMostPassionateAboutScreen from './components/what_are_you_most_passionate_about_screen';
 // import PigScreen from './components/pig_screen';
-// import SwitchesScreen from './components/switches_screen';
 // import InfoScreen from './components/info_screen';
 // import VideoScreen from './components/video_screen';
 // import FlipScreen from './components/flip_screen';
@@ -22,7 +23,9 @@ class Survey extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: InfoAllAboutYou
+      2: InfoAllAboutYou,
+      3: WhatAreYouMostPassionateAboutScreen,
+      4: PickOneScreen
       // 2: BulbsScreen,
       // 3: PigScreen,
       // 4: SwitchesScreen,
@@ -42,12 +45,21 @@ class Survey extends skoash.Game {
     );
   }
 
+  getBackgroundIndex(currentScreenIndex) {
+    switch (currentScreenIndex) {
+      case 0:
+        return 0;
+      default:
+        return 0;
+    }
+  }
+
   renderAssets() {
     return (
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/assets/_audio/_BKG/S_BKG_3.mp3" />
         <skoash.Audio ref="button" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+        <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_4.mp3" />
         <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
       </div>
     );
