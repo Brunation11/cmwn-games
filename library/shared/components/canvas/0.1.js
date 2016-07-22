@@ -264,7 +264,7 @@ class Canvas extends skoash.Component {
 
     return (
       self.isInBounds(key, type) && (
-        self.state[type + 's'][key].can_overlap ||
+        self.refs[type + '-' + key].state.can_overlap ||
         !self.state[type + 's'].some((item, index) =>
           key !== index &&
           !self.state[type + 's'][index].can_overlap &&
