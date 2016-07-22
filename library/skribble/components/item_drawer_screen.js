@@ -12,10 +12,6 @@ class ItemDrawerScreen extends skoash.Screen {
 
   }
 
-  bootstrap() {
-    skoash.Screen.prototype.bootstrap.call(this);
-  }
-
   selectRespond(message) {
     message = new Object(message);
     skoash.trigger('pass-data', {

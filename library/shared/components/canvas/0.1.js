@@ -65,7 +65,7 @@ class Canvas extends skoash.Component {
     messages = this.state.messages.map((item, key) => {
       var state;
 
-      if (!self.refs['item-' + key]) return item;
+      if (!self.refs['message-' + key]) return item;
 
       state = self.refs['message-' + key].state;
 

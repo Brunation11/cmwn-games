@@ -15,7 +15,7 @@ class ItemDrawer extends Selectable {
 
     items = self.props.data || [];
 
-    if (self.state.category) {
+    if (self.state.category && items[self.state.category]) {
       items = items[self.state.category].items;
     }
 
@@ -36,7 +36,7 @@ class ItemDrawer extends Selectable {
       classes,
       selectFunction,
       categoryName: '',
-      category: null,
+      category: '',
     });
 
     this.bootstrap();
@@ -184,7 +184,7 @@ class ItemDrawer extends Selectable {
 
     items = this.props.data;
 
-    if (this.state.category) {
+    if (this.state.category && items[this.state.category]) {
       items = items[this.state.category].items;
     }
 
