@@ -6,7 +6,7 @@ var TakePledgeScreen = (
     <skoash.Component ref="frame" className="frame">
       <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_1.png" />
       <skoash.Component ref="content-group" className="content-group">
-        <img pl-id="image" className="animated" src="media/S_11/img_11.2.png" />
+        <skoash.Image ref="image" className="animated" src="media/S_11/img_11.2.png" />
         <p>
           Take the Anti-Litter Pledge<br/>
           and start making the world<br/>

@@ -18,7 +18,7 @@ var CleanUpScreen = (
         <skoash.Audio type="voiceOver" src="media/S_3/VO_3.1.mp3" />
       ]}
       list={[
-        <skoash.Component ref="center" classNameName="center" type="li">
+        <skoash.Component ref="center" className="center" type="li">
           <skoash.Component ref="frame" className="frame">
             <skoash.Image ref="background" className="background" src="media/_Frames/FR_1.png" />
             <div className="content-group center">

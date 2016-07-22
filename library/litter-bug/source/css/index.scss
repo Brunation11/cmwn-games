@@ -364,19 +364,16 @@ p {
   &.OPEN {
 
     img.litterbug {
-      -webkit-animation-name: zoomInDown;
       animation-name: zoomInDown;
     }
 
     .title {
-      -webkit-animation-name: slideInLeft;
       animation-name: slideInLeft;
     }
 
     &.COMPLETE {
       
       img.symbol {
-        -webkit-animation-name: bounceIn;
         animation-name: bounceIn;
         opacity: 1;
       }
@@ -404,12 +401,10 @@ p {
   &.OPEN {
 
     div > div {
-      -webkit-animation-name: flipInX;
       animation-name: flipInX;
     }
 
     img {
-      -webkit-animation-name: zoomInDown;
       animation-name: zoomInDown;
     }
   }
@@ -441,7 +436,7 @@ p {
     .content-group {
 
       h2 {
-        margin: 0 0 15px;
+        margin: 20px 0 15px;
       }
 
       p {
@@ -756,12 +751,10 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: zoomInDown;
         animation-name: zoomInDown;
       }
 
       &:nth-of-type(2) {
-        -webkit-animation-name: bounceIn;
         animation-name: bounceIn;
       }
     }
@@ -817,7 +810,6 @@ p {
     .content-group {
 
       img {
-        -webkit-animation-name: bounceIn;
         animation-name: bounceIn;
       }
     }
@@ -827,7 +819,6 @@ p {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
-      -webkit-animation-name: zoomInDown;
       animation-name: zoomInDown;
     }
   }
@@ -879,7 +870,6 @@ p {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
-      -webkit-animation-name: zoomInDown;
       animation-name: zoomInDown;
     }
   }
@@ -920,13 +910,11 @@ p {
     img {
 
       &:nth-of-type(1) {
-        -webkit-animation-name: bounceInUp;
         animation-name: bounceInUp;
       }
 
       &:nth-of-type(2) {
         opacity: 1;
-        -webkit-animation-name: flip;
         animation-name: flip;
         animation-delay: 5s;
       }
