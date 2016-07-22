@@ -267,7 +267,7 @@ class Canvas extends skoash.Component {
         self.refs[type + '-' + key].state.can_overlap ||
         !self.state[type + 's'].some((item, index) =>
           key !== index &&
-          !self.state[type + 's'][index].can_overlap &&
+          !self.refs[type + '-' + index].state.can_overlap &&
           skoash.util.doIntersect(
             self.refs[type + '-' + key].state.corners,
             self.refs[type + '-' + index].state.corners
