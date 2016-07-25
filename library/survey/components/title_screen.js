@@ -15,5 +15,4 @@ var TitleScreen = (
 
 export default TitleScreen;
 
-// what is ref buzz controlling
-// animate play button
+// re-animate play button

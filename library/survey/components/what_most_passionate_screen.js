@@ -1,17 +1,18 @@
-import Dropzone from 'shared/components/dropzone/0.1';
+import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
 
-var WhatAreYouMostPassionateAboutScreen = (
+var WhatMostPassionateScreen = (
   <skoash.Screen
-    id="what-are-you-most-passionate-about"
+    id="what-most-passionate"
   >
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Passionate.mp3" />
     <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_3/img_s3_penguin-01.png" />
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_3/text_what_are_you_passionate_about%20copy.png" />
     <div ref="frame" className="frame animated"></div>
 
-    <Dropzone
+    <DropzoneReveal
       ref="dropzone"
-      answers={["1", "2", "3", "4", "5"]}
-      list={[
+      dropzoneMessage="friends"
+      dropzoneList={[
         <skoash.ListItem className="draggable-list-item friends animated" data-ref="friends" return correct />,
         <skoash.ListItem className="draggable-list-item world-peace animated" data-ref="world-peace" return correct />,
         <skoash.ListItem className="draggable-list-item sports animated" data-ref="sports" return correct />,
@@ -21,7 +22,8 @@ var WhatAreYouMostPassionateAboutScreen = (
         <skoash.ListItem className="draggable-list-item celebrities animated" data-ref="celebrities" return correct />,
         <skoash.ListItem className="draggable-list-item environment animated" data-ref="environment" return correct />
       ]}
-      dropzoneAssets={[
+      revealAssets={[
+        <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
         <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" pl-delay={1000} />,
         <skoash.Audio ref="world-peace" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" pl-delay={1000} />,
         <skoash.Audio ref="sports" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" pl-delay={1000} />,
@@ -37,11 +39,13 @@ var WhatAreYouMostPassionateAboutScreen = (
   </skoash.Screen>
 );
 
-export default WhatAreYouMostPassionateAboutScreen;
+export default WhatMostPassionateScreen;
 
+// (consider dropzone reveal in order to play vo's)
 // add drop zones
+// add drag/drop sounds
 // update the component to play the audio when list item is selected/dropped
 // list items need to reset if another item is put in same dropzone
-// collect the data from dropzone
 // screen should only complete once all items are in a dropzones
-// add hover/drag state
+// collect the data from dropzone
+// resize icons to better fit frame

@@ -212,7 +212,7 @@ p {
 }
 
 .screen.LEAVE {
-  opacity: 1;
+  opacity: 0;
   transform: translateX(-100%);
 }
 
@@ -262,6 +262,11 @@ p {
   }
 
 // the following css is specific to this game
+
+.dropzone-reveal ul {
+  list-style-type: none;
+}
+
 
 .reveal {
   position: absolute;
@@ -407,12 +412,7 @@ p {
       img {
         &.title {
           animation-name: tada;
-          // animation-iteration-count: infinite;
-          // animation-duration: 10s;
         }
-        // animation-name: flicker;
-        // animation-delay: 0s;
-        // animation-iteration-count: 3;
       }
     }
   }
@@ -440,9 +440,25 @@ p {
 
     &.speech-bubble,
     &.you {
+      transform:scale(0);
+      transition:transform 0.5s ease-in-out;
+    }
+
+    &.speech-bubble {
+      top: 15%;
+      left: 14%;
+      width: 35%;
+    }
+
+    &.you {
       opacity: 0;
+      bottom: 20%;
+      right: 15%;
+      width: 40%;
     }
   }
+
+
 
   &.READY.OPEN {
     img {
@@ -451,32 +467,28 @@ p {
         opacity: 1;
         animation-name: slideInRight;
       }
+
+      &.speech-bubble {
+        transform:scale(1);
+        transform-origin: 0 100%;
+        transition-delay: 3.5s;
+      }
+
+      &.you {
+        opacity: 1;
+        animation-name: bounceInDown;
+        animation-delay: 4s;
+      }
     }
   }
 
   &.COMPLETE {
     img {
-      &.speech-bubble {
-        animation-name: zoomInLeft;
-        opacity: 1;
-        top: 15%;
-        left: 14%;
-        width: 35%;
-      }
-
-      &.you {
-        animation-name: bounceInDown;
-        animation-delay: 1s;
-        opacity: 1;
-        bottom: 20%;
-        right: 15%;
-        width: 40%;
-      }
     }
   }
 }
 
-#what-are-you-most-passionate-about {
+#what-most-passionate {
   img {
   }
 
@@ -508,53 +520,59 @@ p {
       bottom:12%;
     }
 
-    // .dropzone {
     ul > * {
       display: inline-block;
       position: absolute;
       background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
-      background-size: 1028px 399px;
+      background-size: 1000px 388px;
       width: 13%;
-      height: 25%;
+      height: 23%;
 
       &:nth-child(1) {
-        background-position: 640px 118px;
-        top: 22%;
+        background-position: 625px 118px;
+        top: 21%;
         left: 13%;
       }
+
       &:nth-child(2) {
-        background-position: 511px 118px;
-        top: 22%;
+        background-position: 500px 118px;
+        top: 21%;
         left: 27%;
       }
+
       &:nth-child(3) {
-        background-position: 255px 118px;
-        top: 22%;
+        background-position: 250px 118px;
+        top: 21%;
         left: 41%;
       }
+
       &:nth-child(4) {
-        background-position: 386px 118px;
-        top: 44%;
+        background-position: 375px 118px;
+        top: 43%;
         left: 13%;
       }
+
       &:nth-child(5) {
-        background-position: -1px 118px;
-        top: 44%;
+        background-position: 0 118px;
+        top: 43%;
         left: 27%;
       }
+
       &:nth-child(6) {
-        background-position: 768px 118px;
-        top: 44%;
+        background-position: 749px 118px;
+        top: 43%;
         left: 41%;
       }
+
       &:nth-child(7) {
-        background-position: 128px 118px;
-        top: 66%;
+        background-position: 125px 118px;
+        top: 65%;
         left: 20%;
       }
+
       &:nth-child(8) {
-        background-position: 897px 118px;
-        top: 66%;
+        background-position: 875px 118px;
+        top: 65%;
         left: 34%;
       }
     }
@@ -565,41 +583,88 @@ p {
       background-size: 1060px 411px;
       width: 100%;
       height: 100%;
-      top: -13px;
+      top: -10px;
       left: 0px;
-      &.DRAGGING {
-        z-index: 1;
-        width: 104%;
-        height: 104%;
-        // left: 1px;
-        &.friends {
-          background-position: 660px 270px;
-        }
-      }
+
       &.friends {
         background-position: 658px 0;
       }
+
       &.world-peace {
         background-position: 526px 0;
       }
+
       &.sports {
         background-position: 261px 0;
       }
+
       &.playing-games {
         background-position: 395px 0;
       }
+
       &.looking-cool {
         background-position: -3px 0;
       }
+
       &.school {
         background-position: 790px 0;
       }
+
       &.celebrities {
         background-position: 131px 0;
       }
+
       &.environment {
         background-position: 923px 0;
       }
+
+      &.DRAGGING {
+        z-index: 1;
+        width: 105%;
+        height: 105%;
+        left: -2px;
+
+        &.friends {
+          background-position: 662px 270px;
+        }
+
+        &.world-peace {
+          background-position: 529px 270px;
+        }
+
+        &.sports {
+          background-position: 265px 270px;
+        }
+
+        &.playing-games {
+          background-position: 397px 270px;
+        }
+
+        &.looking-cool {
+          background-position: -1px 270px;
+        }
+
+        &.school {
+          background-position: 794px 270px;
+        }
+
+        &.celebrities {
+          background-position: 131px 270px;
+        }
+
+        &.environment {
+          background-position: 926px 270px;
+        }
+      }
+    }
+
+    .dropzone {
+      position: absolute;
+      width: 30%;
+      height: 67%;
+      border: 1px solid;
+      right: 8%;
+      top: 20%;
     }
 
     .meter {
@@ -618,6 +683,1480 @@ p {
     }
   }
 }
+
+#what-world-issues {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame {
+      position: absolute;
+
+      &.banner {
+        width: 80%;
+        left: 9%;
+        top: 2%;
+      }
+
+      &.penguin {
+        width: 15%;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/Frames/Frame_11_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 45%;
+      height: 69%;
+      left: 11%;
+      bottom:12%;
+    }
+
+    ul > * {
+      display: inline-block;
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
+      background-size: 1000px 388px;
+      width: 13%;
+      height: 23%;
+
+      &:nth-child(1) {
+        background-position: -1px 121px;
+        top: 21%;
+        left: 13%;
+      }
+
+      &:nth-child(2) {
+        background-position: 874px 121px;
+        top: 21%;
+        left: 27%;
+      }
+
+      &:nth-child(3) {
+        background-position: 749px 120px;
+        top: 21%;
+        left: 41%;
+      }
+
+      &:nth-child(4) {
+        background-position: 625px 121px;
+        top: 43%;
+        left: 13%;
+      }
+
+      &:nth-child(5) {
+        background-position: 500px 121px;
+        top: 43%;
+        left: 27%;
+      }
+
+      &:nth-child(6) {
+        background-position: 374px 121px;
+        top: 43%;
+        left: 41%;
+      }
+
+      &:nth-child(7) {
+        background-position: 250px 121px;
+        top: 65%;
+        left: 20%;
+      }
+
+      &:nth-child(8) {
+        background-position: 125px 123px;
+        top: 65%;
+        left: 34%;
+      }
+    }
+
+    .draggable-list-item {
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
+      background-size: 1060px 411px;
+      width: 100%;
+      height: 100%;
+      top: -4px;
+      left: 0px;
+
+      &.cyberbullying {
+        background-position: -2px -5px;
+      }
+
+      &.endangered-animals {
+        background-position: 926px -5px;
+      }
+
+      &.literacy {
+        background-position: 794px -5px;
+      }
+
+      &.climate-change {
+        background-position: 662px -5px;
+      }
+
+      &.poverty {
+        background-position: 530px -5px;
+      }
+
+      &.health-problems {
+        background-position: 395px -5px;
+      }
+
+      &.homelessness {
+        background-position: 264px -5px;
+      }
+
+      &.war-on-terrorism {
+        background-position: 131px -5px;
+      }
+
+      &.DRAGGING {
+        z-index: 1;
+        width: 105%;
+        height: 105%;
+        left: -2px;
+
+        &.cyberbullying {
+          background-position: -1px 265px;
+        }
+
+        &.endangered-animals {
+          background-position: 927px 265px;
+        }
+
+        &.literacy {
+          background-position: 796px 265px;
+        }
+
+        &.climate-change {
+          background-position: 662px 265px;
+        }
+
+        &.poverty {
+          background-position: 529px 265px;
+        }
+
+        &.health-problems {
+          background-position: 397px 265px;
+        }
+
+        &.homelessness {
+          background-position: 264px 265px;
+        }
+
+        &.war-on-terrorism {
+          background-position: 131px 265px;
+        }
+      }
+    }
+
+    .dropzone {
+      position: absolute;
+      width: 30%;
+      height: 67%;
+      border: 1px solid;
+      right: 8%;
+      top: 20%;
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 252px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#pick-one-powerful {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter {
+      position: absolute;
+
+      &.banner {
+        width: 94%;
+        left: 3%;
+        top: 9%;
+      }
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/Srn5spritesheets-frame5-emotions.png);
+        background-size: 1250px 625px;
+        width: 200px;
+        height: 200px;
+
+        &:nth-child(1) {
+          background-position: -58px -58px;
+          top: 41%;
+          left: 5%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -58px 251px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 881px -58px;
+          top: 41%;
+          left: 28%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -58px 251px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 563px -58px;
+          top: 41%;
+          right: 28%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -58px 251px;
+          }
+        }
+
+        &:nth-child(4) {
+          background-position: 257px -58px;
+          top: 41%;
+          right: 5%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -58px 251px;
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 374px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#qualities-buckets {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame {
+      position: absolute;
+
+      &.penguin {
+        width: 27%;
+        left: 2%;
+        top: 4%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/Frames/Frame_15.png);
+      background-size: 100% 100%;
+      width: 70%;
+      height: 85%;
+      left: 23%;
+      bottom:14%;
+    }
+
+    .draggable-list-item {
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
+      background-size: 1200px 300px;
+      width: 15%;
+      height: 27%;
+
+      &.sharing {
+        background-position: -8px -11px;
+        top: 8%;
+        left: 30%;
+      }
+
+      &.kindness {
+        background-position: -151px -11px;
+        top: 8%;
+        left: 45%;
+      }
+
+      &.rudeness {
+        background-position: 901px -11px;
+        top: 8%;
+        left: 60%;
+      }
+
+      &.being-a-bully {
+        background-position: 744px -11px;
+        top: 8%;
+        left: 75%;
+      }
+
+      &.compassion {
+        background-position: 597px 1px;
+        top: 35%;
+        left: 30%;
+      }
+
+      &.greediness {
+        background-position: 448px 2px;
+        top: 35%;
+        left: 45%;
+      }
+
+      &.being-angry {
+        background-position: 299px -5px;
+        top: 35%;
+        left: 60%;
+      }
+
+      &.friendliness {
+        background-position: 142px -2px;
+        top: 35%;
+        left: 75%;
+      }
+
+      &.DRAGGING {
+        z-index: 1;
+
+        &.sharing {
+          background-position: -2px 136px;
+        }
+
+        &.kindness {
+          background-position: -154px 138px;
+        }
+
+        &.rudeness {
+          background-position: 901px 136px;
+        }
+
+        &.being-a-bully {
+          background-position: 742px 136px;
+        }
+
+        &.compassion {
+          background-position: 598px 149px;
+        }
+
+        &.greediness {
+          background-position: 449px 153px;
+        }
+
+        &.being-angry {
+          background-position: 296px 145px;
+        }
+
+        &.friendliness {
+          background-position: 140px 148px;
+        }
+      }
+    }
+
+    .dropzone {
+      position: absolute;
+      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6_bucket.png);
+      background-size: 600px 392px;
+      background-position: -70px 340px;
+      width: 15%;
+      height: 22%;
+      left: 34%;
+      bottom: 10%;
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 496px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#emoji-bullying {
+  background: url(../media/assets/_images/_BKG/BKG_2.png) bottom center no-repeat;
+  background-size: cover;
+
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame,
+    .sub-frame {
+      position: absolute;
+
+      &.penguins {
+        width: 40%;
+        left: 2%;
+        top: 3%;
+      }
+
+      &.penguins-bullying {
+        width: 38%;
+        right: 13%;
+        top: 13%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_7/img-s7-bigger-frame.png);
+      background-size: 100% 100%;
+      width: 53%;
+      height: 81%;
+      right: 6%;
+      top:3%;
+    }
+
+    .sub-frame {
+      background: url(../media/assets/_images/S_7/img-s7-smaller-frame.png);
+      background-size: 100% 100%;
+      width: 47%;
+      height: 45%;
+      right: 9%;
+      top:7%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/Spritesheet_frame07_PolarBear.png);
+        background-size: 440px 270px;
+        width: 143px;
+        height: 133px;
+
+        &:nth-child(1) {
+          background-position: -6px 129px;
+          bottom: 22%;
+          left: 45%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -7px 265px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 289px 130px;
+          bottom: 22%;
+          left: 60%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 288px 265px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 584px 129px;
+          bottom: 22%;
+          left: 75%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 585px 266px;
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 624px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#emoji-compassion {
+  background: url(../media/assets/_images/_BKG/BKG_2.png) bottom center no-repeat;
+  background-size: cover;
+
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame,
+    .sub-frame {
+      position: absolute;
+
+      &.penguins {
+        width: 40%;
+        left: 2%;
+        top: 3%;
+      }
+
+      &.penguins-compassion {
+        width: 35%;
+        right: 15%;
+        top: -3%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_8/img-s8-bigger-frame.png);
+      background-size: 100% 100%;
+      width: 53%;
+      height: 81%;
+      right: 6%;
+      top:3%;
+    }
+
+    .sub-frame {
+      background: url(../media/assets/_images/S_8/img-s8-smaller-frame.png);
+      background-size: 100% 100%;
+      width: 47%;
+      height: 43%;
+      right: 9%;
+      top:7%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/Spritesheet_Frame08_PolarBear.png);
+        background-size: 440px 270px;
+        width: 143px;
+        height: 133px;
+
+        &:nth-child(1) {
+          background-position: -6px 134px;
+          bottom: 22%;
+          left: 45%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 292px 267px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 289px 135px;
+          bottom: 22%;
+          left: 60%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -10px 269px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 584px 134px;
+          bottom: 22%;
+          left: 75%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 585px 268px;
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 746px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#emoji-angry {
+  background: url(../media/assets/_images/_BKG/BKG_2.png) bottom center no-repeat;
+  background-size: cover;
+
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame,
+    .sub-frame {
+      position: absolute;
+
+      &.penguins {
+        width: 40%;
+        left: 2%;
+        top: 22%;
+      }
+
+      &.banner {
+        width: 38%;
+        left: 2%;
+        top: 2%;
+      }
+
+      &.penguins-angry {
+        width: 22%;
+        right: 24%;
+        top: 2%;
+      }
+
+      &.text-angry {
+        width:25%;
+        right: 20%;
+        top: 44%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_09/Frame_09_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 53%;
+      height: 81%;
+      right: 6%;
+      top:3%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_09/IMG_09_PolarBears_SpriteSheet-02.png);
+        background-size: 440px 270px;
+        width: 143px;
+        height: 133px;
+
+        &:nth-child(1) {
+          background-position: -12px 129px;
+          bottom: 19%;
+          left: 45%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -12px 264px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 283px 130px;
+          bottom: 19%;
+          left: 60%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 282px 264px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 578px 132px;
+          bottom: 19%;
+          left: 75%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 579px 268px;
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 868px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+
+#emoji-friendliness {
+  background: url(../media/assets/_images/_BKG/BKG_2.png) bottom center no-repeat;
+  background-size: cover;
+
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame,
+    .sub-frame {
+      position: absolute;
+
+      &.penguins {
+        width: 40%;
+        left: 2%;
+        top: 22%;
+      }
+
+      &.banner {
+        width: 41%;
+        left: 1%;
+        top: 1%;
+      }
+
+      &.penguins-friendly {
+        width: 37%;
+        right: 13%;
+        top: 7%;
+      }
+
+      &.text-friendly {
+        width:25%;
+        right: 20%;
+        top: 44%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_09/Frame_09_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 53%;
+      height: 81%;
+      right: 6%;
+      top:3%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_10/IMG_10_Polarbear_SpriteSheet-02.png);
+        background-size: 440px 270px;
+        width: 135px;
+        height: 132px;
+
+        &:nth-child(1) {
+          background-position: -16px 129px;
+          bottom: 19%;
+          left: 45%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -17px 267px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 283px 132px;
+          bottom: 19%;
+          left: 60%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 281px 266px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 578px 134px;
+          bottom: 19%;
+          left: 75%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 577px 269px;
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 992px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#pick-one-bullied {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .frame,
+    .meter {
+      position: absolute;
+
+      &.penguin {
+        width: 32%;
+        left: 2%;
+        top: 28%;
+      }
+
+      &.banner {
+        width: 52%;
+        left: 1%;
+        top: 3%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_11/Frame_11_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 47%;
+      height: 47%;
+      right: 15%;
+      top:34%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/Spritesheet_frame11_YesOrNo-01.png);
+        background-size: 400px 344px;
+        width: 181px;
+        height: 166px;
+
+        &:nth-child(1) {
+          background-position: -11px 172px;
+          top: 42%;
+          left: 41%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -7px 341px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 197px 172px;
+          top: 42%;
+          left: 63%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 192px 341px;
+
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 1114px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#what-did-you-do {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter {
+      position: absolute;
+
+      &.penguin {
+        width: 21%;
+        left: 9%;
+        top: 30%;
+      }
+
+      &.banner {
+        width: 46%;
+        left: 5%;
+        top: 3%;
+      }
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_12/spritesheet_frame12-01.png);
+        background-size: 1750px 174px;
+        width: 339px;
+        height: 86px;
+
+        &:nth-child(1) {
+          background-position: -15px 0px;
+          top: 3%;
+          left: 53%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -15px 88px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 1385px 0px;
+          top: 20%;
+          left: 53%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 1385px 88px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 1034px 1px;
+          top: 37%;
+          left: 53%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 1035px 88px;
+
+          }
+        }
+
+        &:nth-child(4) {
+          background-position: 683px 1px;
+          top: 54%;
+          left: 53%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 684px 88px;
+
+          }
+        }
+
+        &:nth-child(5) {
+          background-position: 339px -2px;
+          top: 71%;
+          left: 53%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 339px 85px;
+
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+#how-much-env {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .frame,
+    .sub-frame,
+    .meter {
+      position: absolute;
+
+      &.penguin {
+        width: 16%;
+        left: 0%;
+        top: 17%;
+      }
+
+      &.banner {
+        width: 36%;
+        left: 10%;
+        top: 8%;
+      }
+
+      &.text-environment {
+        width: 50%;
+        right: 14%;
+        top: 37%;
+      }
+
+      &.icon {
+        width: 15%;
+        left: 28.5%;
+        top: 52.5%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_13/Frame_13_Grey.png);
+      background-size: 100% 100%;
+      width: 75%;
+      height: 46%;
+      left: 24%;
+      top:34%;
+    }
+
+    .sub-frame {
+      background: url(../media/assets/_images/S_13/IMG_13_Rectangle.png);
+      background-size: 100% 100%;
+      width: 70%;
+      height: 29%;
+      left: 26.75%;
+      top:50%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
+        background-size: 500px 260px;
+        width: 142px;
+        height: 128px;
+
+        &:nth-child(1) {
+          background-position: -12px 1px;
+          top: 52%;
+          left: 46%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -12px 129px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 320px 0px;
+          top: 52%;
+          left: 62%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 320px 388px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 153px 2px;
+          top: 52%;
+          left: 78%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 153px 130px;
+
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 1360px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+
+#how-much-species {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .frame,
+    .sub-frame,
+    .meter {
+      position: absolute;
+
+      &.penguin {
+        width: 16%;
+        left: 0%;
+        top: 17%;
+      }
+
+      &.banner {
+        width: 36%;
+        left: 10%;
+        top: 8%;
+      }
+
+      &.text-species {
+        width: 50%;
+        right: 14%;
+        top: 37%;
+      }
+
+      &.icon {
+        width: 15%;
+        left: 28.5%;
+        top: 52.5%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_13/Frame_13_Grey.png);
+      background-size: 100% 100%;
+      width: 75%;
+      height: 46%;
+      left: 24%;
+      top:34%;
+    }
+
+    .sub-frame {
+      background: url(../media/assets/_images/S_13/IMG_13_Rectangle.png);
+      background-size: 100% 100%;
+      width: 70%;
+      height: 29%;
+      left: 26.75%;
+      top:50%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
+        background-size: 500px 260px;
+        width: 142px;
+        height: 128px;
+
+        &:nth-child(1) {
+          background-position: -12px 1px;
+          top: 52%;
+          left: 46%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -12px 129px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 320px 0px;
+          top: 52%;
+          left: 62%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 320px 388px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 153px 2px;
+          top: 52%;
+          left: 78%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 153px 130px;
+
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 1482px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+
+#how-much-water {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .frame,
+    .sub-frame,
+    .meter {
+      position: absolute;
+
+      &.penguin {
+        width: 16%;
+        left: 0%;
+        top: 17%;
+      }
+
+      &.banner {
+        width: 36%;
+        left: 10%;
+        top: 8%;
+      }
+
+      &.text-water {
+        width: 50%;
+        right: 14%;
+        top: 37%;
+      }
+
+      &.icon {
+        width: 15%;
+        left: 28.5%;
+        top: 52.5%;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/S_13/Frame_13_Grey.png);
+      background-size: 100% 100%;
+      width: 75%;
+      height: 46%;
+      left: 24%;
+      top:34%;
+    }
+
+    .sub-frame {
+      background: url(../media/assets/_images/S_13/IMG_13_Rectangle.png);
+      background-size: 100% 100%;
+      width: 70%;
+      height: 29%;
+      left: 26.75%;
+      top:50%;
+    }
+
+    .selectable-reveal {
+      ul.selectable > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
+        background-size: 500px 260px;
+        width: 142px;
+        height: 128px;
+
+        &:nth-child(1) {
+          background-position: -12px 1px;
+          top: 52%;
+          left: 46%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: -12px 129px;
+          }
+        }
+
+        &:nth-child(2) {
+          background-position: 320px 0px;
+          top: 52%;
+          left: 62%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 320px 388px;
+
+          }
+        }
+
+        &:nth-child(3) {
+          background-position: 153px 2px;
+          top: 52%;
+          left: 78%;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-position: 153px 130px;
+
+          }
+        }
+      }
+
+      .reveal {
+        display: none;
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 1606px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
 
 #bulbs {
   img.title {
@@ -705,98 +2244,6 @@ p {
       &:first-of-type:not(.HIGHLIGHTED) {
         pointer-events: none;
       }
-    }
-  }
-}
-
-#pick-one {
-  img {
-    display: block;
-    width: 640px;
-    margin: 40px auto 0;
-  }
-
-  .frame {
-    background: url(../media/assets/_images/Frames/Frame_15.png);
-    background-size: 100% 100%;
-    position: absolute;
-    top: 10%;
-    left: 3%;
-    right: 3%;
-    padding: 30px;
-
-    h1 {
-      color: #0F72B9;
-      margin: 0;
-      font-size: 3rem;
-    }
-  }
-
-  .selectable {
-    list-style: none;
-    padding: 0;
-    margin: -20px auto 0;
-    display: block;
-    width: 730px;
-
-    li {
-      display: inline-block;
-      height: 380px;
-      cursor: auto;
-      background-repeat: no-repeat;
-
-      &.pig {
-        width: 500px;
-        background-image: url(../media/S_4/img_4.2.png);
-        background-size: auto 100%;
-
-        &:hover {
-          background-position: -497px 0;
-        }
-
-        &.SELECTED {
-          background-position: -993px 0;
-        }
-      }
-
-      &.bulb {
-        width: 230px;
-        background-image: url(../media/S_4/img_4.3.png);
-        background-size: auto 100%;
-
-        &:hover {
-          background-position: -246px 0;
-        }
-
-        &.SELECTED {
-          background-position: 0 0;
-        }
-      }
-    }
-
-    &.COMPLETE {
-      pointer-events: none;
-
-      li.pig {
-        transition: opacity 1s;
-        opacity: 0.5;
-      }
-    }
-  }
-
-  &.READY.OPEN {
-    img {
-      animation-name: zoomInDown;
-    }
-
-    .pig {
-      animation-name: shake;
-      animation-duration: 3s;
-    }
-
-    .bulb {
-      animation-name: bounce;
-      animation-duration: 3s;
     }
   }
 }

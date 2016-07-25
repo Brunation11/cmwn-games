@@ -92,3 +92,7 @@ class SelectableReveal extends play.Component {
 }
 
 export default SelectableReveal;
+
+
+// all shoud have props answers
+// if any have it it would automatically complete
