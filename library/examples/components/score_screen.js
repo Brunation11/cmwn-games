@@ -1,8 +1,8 @@
 import Score from 'shared/components/score/0.1';
 
-const up = 'up';
-const down = 'down';
-const score = 'score';
+const UP = 'up';
+const DOWN = 'down';
+const SCORE = 'score';
 
 class ScoreScreenComponent extends skoash.Screen {
   constructor() {
@@ -17,19 +17,19 @@ class ScoreScreenComponent extends skoash.Screen {
   up() {
     var increment;
     if (++this.count % 3 === 0) increment = 30;
-    this.refs[score].up(increment);
+    this.refs[SCORE].up(increment);
   }
 
   down() {
-    this.refs[score].down();
+    this.refs[SCORE].down();
   }
 
   renderContent() {
     return (
       <div>
         {this.renderContentList()}
-        <button onClick={this.up}>{up}</button>
-        <button onClick={this.down}>{down}</button>
+        <button onClick={this.up}>{UP}</button>
+        <button onClick={this.down}>{DOWN}</button>
       </div>
     );
   }
@@ -40,7 +40,7 @@ var ScoreScreen = (
     id="score"
   >
     <Score
-      ref="score"
+      ref={SCORE}
       max={100}
       increment={20}
       downIncrement={10}
