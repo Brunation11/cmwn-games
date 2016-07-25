@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import _ from 'lodash';
 
 class Score extends skoash.Component {
   constructor() {
@@ -22,6 +23,7 @@ class Score extends skoash.Component {
 
   up(increment) {
     increment = increment || this.props.increment || 1;
+    if (!_.isFinite(increment)) throw 'increment must be finite';
     this.setState({
       score: this.state.score + increment
     }, this.checkComplete);
@@ -29,6 +31,7 @@ class Score extends skoash.Component {
 
   down(increment) {
     increment = increment || this.props.downIncrement || this.props.increment || 1;
+    if (!_.isFinite(increment)) throw 'increment must be finite';
     this.setState({
       score: this.state.score - increment
     }, this.checkComplete);

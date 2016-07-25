@@ -3,6 +3,9 @@ import Score from 'shared/components/score/0.1';
 const UP = 'up';
 const DOWN = 'down';
 const SCORE = 'score';
+const MAX = 100;
+const INCREMENT = 20;
+const DOWNINCREMENT = 10;
 
 class ScoreScreenComponent extends skoash.Screen {
   constructor() {
@@ -41,9 +44,9 @@ var ScoreScreen = (
   >
     <Score
       ref={SCORE}
-      max={100}
-      increment={20}
-      downIncrement={10}
+      max={MAX}
+      increment={INCREMENT}
+      downIncrement={DOWNINCREMENT}
     />
   </ScoreScreenComponent>
 );
