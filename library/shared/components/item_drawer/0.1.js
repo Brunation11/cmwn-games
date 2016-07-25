@@ -189,8 +189,8 @@ class ItemDrawer extends Selectable {
 
     if (_.isArray(items)) {
       items = items.sort(function (a, b) {
-        var aVal = a.order || Infinity;
-        var bVal = b.order || Infinity;
+        var aVal = Number(a.order) || Infinity;
+        var bVal = Number(b.order) || Infinity;
         if (aVal === bVal) return 0;
         if (aVal < bVal) return -1;
         return 1;
