@@ -4,18 +4,18 @@
  */
 import './config.game';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/frame/behavior';
-import './components/no/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-remove/behavior';
-import './components/slides/behavior';
-import './components/title/behavior';
-import './components/video/behavior';
+import 'shared/js/screen-ios-splash';
+import './source/js/components/frame/behavior';
+import './source/js/components/no/behavior';
+import './source/js/components/screen-basic/behavior';
+import './source/js/components/screen-quit/behavior';
+import './source/js/components/selectable-remove/behavior';
+import './source/js/components/slides/behavior';
+import './source/js/components/title/behavior';
+import './source/js/components/video/behavior';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+import 'shared/js/test-platform-integration';
+import 'shared/js/google-analytics';
 
 pl.game('litter-bug', function () {
 

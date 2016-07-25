@@ -3,7 +3,9 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import AudioScreen from './components/audio_screen';
+import DropzoneScreen from './components/dropzone_screen';
+// import TimerScreen from './components/timer_screen';
+// import AudioScreen from './components/audio_screen';
 // import TitleScreen from './components/title_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
@@ -22,7 +24,9 @@ class Examples extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: AudioScreen,
+      1: DropzoneScreen,
+      // 1: TimerScreen,
+      // 1: AudioScreen,
       // 1: TitleScreen,
       // 2: BulbsScreen,
       // 3: PigScreen,
@@ -33,7 +37,7 @@ class Examples extends skoash.Game {
     };
 
     this.menus = {
-      quit: QuitScreen,
+      quit: <QuitScreen />,
     };
   }
 

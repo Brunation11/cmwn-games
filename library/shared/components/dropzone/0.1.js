@@ -2,33 +2,46 @@ import Draggable from '../draggable/0.1.js';
 
 import classNames from 'classnames';
 
-class Dropzone extends play.Component {
+class Dropzone extends skoash.Component {
   constructor() {
     super();
 
-    this.state = {
-      corners: [],
-      list: [
-        <Draggable message={'drag'} dropRespond={this.boundDropRespond}>drag me!</Draggable>,
-        <Draggable message={'return'} dropRespond={this.boundDropRespond} return={true} >return</Draggable>
-      ],
-    };
+    this.dropzones = [
+      <skoash.Component answers="drag" />
+    ];
 
-    this.boundDropRespond = this.dropRespond.bind(this);
-    this.boundDragRespond = this.dragRespond.bind(this);
+    this.draggables = [
+      <Draggable message={'drag'}>drag me!</Draggable>,
+      <Draggable message={'return'} return={true} >return</Draggable>
+    ];
+
+    this.contains = [];
+
+    this.dropRespond = this.dropRespond.bind(this);
+    this.dragRespond = this.dragRespond.bind(this);
   }
 
-  setCorners() {
-    var top, left, width, height, el, corners = [];
+  prepareDropzones() {
+    var self = this;
+
+    self.dropzones.map((dropzone, key) => {
+      var dropzoneRef = this.refs[`dropzone-${key}`];
+      if (dropzoneRef) {
+        dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
+      }
+    });
+  }
+
+  getCorners(el) {
+    var top, left, width, height, corners = [];
 
     left = 0;
     top = 0;
-    el = this.refs.dropzone;
     width = el.offsetWidth;
     height = el.offsetHeight;
 
     while (el) {
-      if (el.className.indexOf('screen') !== -1) {
+      if (el.className && el.className.indexOf('screen') !== -1) {
         break;
       }
 
@@ -44,43 +57,48 @@ class Dropzone extends play.Component {
       });
     }
 
-    this.setState({
-      corners,
-    });
-
     return corners;
   }
 
-  start() {
-    var list;
-
-    list = this.props.list || this.state.list;
-
-    this.setState({
-      list,
-    });
-
-    play.Component.prototype.start.call(this);
-    this.setCorners();
+  componentWillMount() {
+    this.dropzones = this.props.dropzones || this.dropzones;
+    this.draggables = this.props.draggables || this.draggables;
   }
 
-  dragRespond() {
+  start() {
+    play.Component.prototype.start.call(this);
+    this.prepareDropzones();
+  }
+
+  dragRespond(message) {
     if (this.audio.drag) {
       this.audio.drag.play();
+    }
+
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, message);
     }
   }
 
   dropRespond(message, corners) {
-    if (play.util.doIntersect(corners, this.state.corners)) {
-      this.inBounds(message);
-    } else {
-      this.outOfBounds();
-    }
+    var self = this, isInBounds;
+
+    isInBounds = self.dropzones.some((dropzone, key) => {
+      var dropzoneRef = self.refs[`dropzone-${key}`];
+      if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
+        self.inBounds(message, key);
+        return true;
+      }
+      return false;
+    });
+
+    if (!isInBounds) self.outOfBounds();
   }
 
-  inBounds(message) {
-    if (message === this.props.message) {
-      this.correct(message);
+  inBounds(message, dropzoneKey) {
+    var dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
+    if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(message) !== -1) {
+      this.correct(message, dropzoneKey);
     } else {
       this.incorrect();
     }
@@ -93,14 +111,14 @@ class Dropzone extends play.Component {
     }
   }
 
-  correct(message) {
+  correct(message, dropzoneKey) {
     // respond to correct drop
     if (this.audio.correct) {
       this.audio.correct.play();
     }
 
     if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond(message);
+      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -113,33 +131,41 @@ class Dropzone extends play.Component {
 
   renderAssets() {
     if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
-        return (
-          <play.Audio
-            {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
-        );
-      });
+      return this.props.assets.map((asset, key) =>
+        <play.Audio
+          {...asset.props}
+          ref={asset.props['data-ref'] || ('asset-' + key)}
+          key={key}
+          data-ref={key}
+        />
+      );
     }
 
     return null;
   }
 
-  renderList() {
-    return this.state.list.map((item, key) => {
-      return (
-        <li key={key}>
-          <Draggable
-            {...item.props}
-            dragRespond={this.boundDragRespond}
-            dropRespond={this.boundDropRespond}
-          />
-        </li>
-      );
-    });
+  renderDropzones() {
+    return this.dropzones.map((component, key) =>
+      <component.type
+        {...component.props}
+        className={this.getClassNames()}
+        checkComplete={false}
+        ref={`dropzone-${key}`}
+        key={key}
+      />
+    );
+  }
+
+  renderDraggables() {
+    return this.draggables.map((item, key) =>
+      <li key={key}>
+        <Draggable
+          {...item.props}
+          dragRespond={this.dragRespond}
+          dropRespond={this.dropRespond}
+        />
+      </li>
+    );
   }
 
   getClassNames() {
@@ -152,12 +178,9 @@ class Dropzone extends play.Component {
     return (
       <div>
         {this.renderAssets()}
-        <div
-          className={this.getClassNames()}
-          ref={'dropzone'}
-        ></div>
+        {this.renderDropzones()}
         <ul>
-          {this.renderList()}
+          {this.renderDraggables()}
         </ul>
       </div>
     );

@@ -4,6 +4,8 @@
         "play": true,
         "$": true,
         "ga": true,
+        "React": true,
+        "ReactDOM": true,
         "skoash": true,
         "require": true,
         "module": true,
