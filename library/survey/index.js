@@ -4,9 +4,9 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
-import InfoAllAboutYouScreen from './components/info_all_about_you_screen';
-import WhatMostPassionateScreen from './components/what_most_passionate_screen';
-import WhatWorldIssuesScreen from './components/what_world_issues_screen';
+import InfoScreen from './components/info_screen';
+import DragNDropPassionateScreen from './components/drag_n_drop_passionate_screen';
+import DragNDropIssuesScreen from './components/drag_n_drop_issues_screen';
 import PickOnePowerfulScreen from './components/pick_one_powerful_screen';
 import QualitiesBucketsScreen from './components/qualities_buckets_screen';
 import EmojiBullyingScreen from './components/emoji_bullying_screen';
@@ -34,9 +34,9 @@ class Survey extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: InfoAllAboutYouScreen,
-      3: WhatMostPassionateScreen,
-      4: WhatWorldIssuesScreen,
+      2: InfoScreen,
+      3: DragNDropPassionateScreen,
+      4: DragNDropIssuesScreen,
       5: PickOnePowerfulScreen,
       6: QualitiesBucketsScreen,
       7: EmojiBullyingScreen,

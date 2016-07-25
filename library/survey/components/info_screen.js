@@ -1,10 +1,18 @@
 var InfoScreen = (
   <skoash.Screen
-    id="info-lets-learn"
+    id="info"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
-    <skoash.Image ref="info" className="animated" src="media/S_6/img_6.png" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_HiThere.mp3" />
+    <skoash.Image ref="penguin-megaphone" className="penguin-megaphone animated" src="media/assets/_images/s_2/img_s2_penguin-01.png" />
+    <skoash.Image ref="spotlight" className="spotlight animated" src="media/assets/_images/s_2/img-spotlight-01.png" />
+    <skoash.Image ref="speech-bubble" className='speech-bubble animated' src="media/assets/_images/s_2/img_s2_speechballoon.png" />
+    <skoash.Image ref="you" className="you animated" src="media/assets/_images/s_2/text-you-01.png" />
+    <skoash.Audio ref="you" type="sfx" src="media/assets/_audio/S_HiThere/S_2.1.mp3" complete />
   </skoash.Screen>
 );
 
 export default InfoScreen;
+
+// add second animation on you
+// add S_BU_4 when next arrow appears
+// refactor audio S_2.1 to play only after "you" has appeared

@@ -21,9 +21,13 @@ class Reveal extends play.Component {
 
     this.playAudio(message);
 
-    this.requireForComplete = this.requireForComplete.filter(item => {
-      return (item !== message) || (this.refs[message] instanceof play.Audio);
-    });
+    if (this.props.completeOnOpen) {
+      this.complete();
+    } else {
+      this.requireForComplete = this.requireForComplete.filter(item => {
+        return (item !== message) || (this.refs[message] instanceof play.Audio);
+      });
+    }
   }
 
   close() {

@@ -10,6 +10,10 @@ var PickOnePowerfulScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="very-powerful animated" data-ref="very-powerful" correct />,
         <skoash.ListItem className="not-powerful animated" data-ref="not-powerful" correct />,

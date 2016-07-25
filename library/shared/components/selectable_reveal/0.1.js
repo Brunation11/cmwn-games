@@ -57,6 +57,8 @@ class SelectableReveal extends play.Component {
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
+        completeOnSelect={this.props.selectableCompleteOnSelect}
+        checkComplete={this.props.selectableCheckComplete}
       />
     );
   }
@@ -68,6 +70,8 @@ class SelectableReveal extends play.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
+        completeOnOpen={this.props.revealCompleteOnOpen}
+        checkComplete={this.props.revealCheckComplete}
       />
     );
   }

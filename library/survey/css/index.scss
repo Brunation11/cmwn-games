@@ -422,7 +422,7 @@ p {
   }
 }
 
-#info-all-about-you {
+#info {
   img {
     position: absolute;
 
@@ -574,6 +574,23 @@ p {
         background-position: 875px 118px;
         top: 65%;
         left: 34%;
+      }
+    }
+
+    .dropzone-list-item {
+      ul > * {
+        display: inline-block;
+        position: absolute;
+        // background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
+        // background-size: 1000px 388px;
+        width: 13%;
+        height: 23%;
+        border: 1px solid;
+
+        &:nth-child(1) {
+          left: 30%;
+          top: 10%;
+        }
       }
     }
 

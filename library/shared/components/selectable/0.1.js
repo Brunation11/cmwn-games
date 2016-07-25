@@ -55,11 +55,15 @@ class Selectable extends play.Component {
       this.props.selectRespond(message);
     }
 
-    this.requireForComplete = this.requireForComplete.filter((key) => {
-      return key !== message;
-    });
+    if (this.props.completeOnSelect) {
+      this.complete();
+    } else {
+      this.requireForComplete = this.requireForComplete.filter((key) => {
+        return key !== message;
+      });
 
-    this.checkComplete();
+      this.checkComplete();
+    }
   }
 
   select(e) {

@@ -12,7 +12,7 @@ class DropzoneReveal extends play.Component {
     };
   }
 
-  correctRespond(message) {
+  correctRespond(message, dropzoneKey) {
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
@@ -21,11 +21,19 @@ class DropzoneReveal extends play.Component {
         if (typeof this.refs.reveal.open === 'function') {
           this.refs.reveal.open(message);
         }
+        this.callCorrectRespond(message, dropzoneKey);
       }
     } else {
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
+      this.callCorrectRespond(message, dropzoneKey);
+    }
+  }
+
+  callCorrectRespond(message, dropzoneKey) {
+    if (typeof this.props.correctRespond === 'function') {
+      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -57,9 +65,10 @@ class DropzoneReveal extends play.Component {
       <Dropzone
         ref="dropzone"
         message={this.props.dropzoneMessage}
-        list={this.props.dropzoneList}
+        draggables={this.props.dropzoneList}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
+        dropzones={this.props.dropzones}
       />
     );
   }
