@@ -46,9 +46,9 @@ class Examples extends skoash.Game {
   }
 
   renderAssets() {
+        // <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
     return (
       <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
         <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
