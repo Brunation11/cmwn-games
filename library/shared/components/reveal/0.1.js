@@ -72,7 +72,7 @@ class Reveal extends play.Component {
       return this.props.assets.map((asset, key) => {
         var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
-          <play.Audio
+          <asset.type
             {...asset.props}
             ref={ref}
             key={key}
@@ -91,13 +91,13 @@ class Reveal extends play.Component {
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <li
+        <li.type
           {...li.props}
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={key}
           key={key}
-        ></li>
+        />
       );
     });
   }

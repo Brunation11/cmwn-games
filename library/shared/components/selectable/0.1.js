@@ -5,14 +5,7 @@ class Selectable extends play.Component {
     super();
 
     this.state = {
-      selectClass: 'SELECTED',
       classes: {},
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
       selectFunction: this.select,
     };
   }
@@ -20,7 +13,7 @@ class Selectable extends play.Component {
   start() {
     var selectClass, selectFunction;
 
-    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+    selectClass = this.props.selectClass;
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     this.setState({
@@ -45,7 +38,7 @@ class Selectable extends play.Component {
     if (!target) return;
 
     message = target.getAttribute('data-ref');
-    classes[message] = this.state.selectClass;
+    classes[message] = this.props.selectClass;
 
     this.setState({
       classes,
@@ -83,13 +76,12 @@ class Selectable extends play.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
-
-    return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+    return this.props.list.map((li, key) => {
+      var ref = li.ref || li.props['data-ref'] || key;
       return (
-        <play.ListItem
+        <li.type
           {...li.props}
+          type="li"
           className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}
           ref={ref}
@@ -107,5 +99,15 @@ class Selectable extends play.Component {
     );
   }
 }
+
+Selectable.defaultProps = {
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+  selectClass: 'SELECTED'
+};
 
 export default Selectable;

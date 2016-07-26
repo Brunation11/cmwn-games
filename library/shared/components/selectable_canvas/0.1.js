@@ -1,38 +1,61 @@
 import classNames from 'classnames';
 
-class SelectableCanvas extends play.Component {
+import Selectable from 'shared/components/selectable/0.1';
+
+class SelectableCanvas extends Selectable {
   constructor() {
     super();
+
+    this.state = {
+      classes: {},
+      selectFunction: this.select,
+    };
+  }
+
+  bootstrap() {
+    super.bootstrap();
+
+    this.buffer = document.createElement('canvas');
+    this.bctx = this.buffer.getContext('2d');
+  }
+
+  selectHelper(e, classes) {
+    var message, target;
+
+    target = e.target.closest('LI');
+
+    if (!target) return;
+
+    message = target.getAttribute('data-ref');
+    classes[message] = this.props.selectClass;
+
+    this.setState({
+      classes,
+    });
+
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond(message);
+    }
+
+    this.requireForComplete = this.requireForComplete.filter((key) => {
+      return key !== message;
+    });
+
+    this.checkComplete();
   }
 
   getClassNames() {
-    classNames('selectable-canvas', super.getClassNames());
-  }
-
-  renderList() {
-    var list = this.props.list || this.state.list;
-
-    return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
-      return (
-        <li
-          {...li.props}
-          className={this.getClass(li, key)}
-          data-ref={ref}
-          ref={key}
-          key={key}
-        ></li>
-      );
-    });
+    return classNames('selectable-canvas', super.getClassNames());
   }
 
   render() {
     return (
-      <div className={this.getClasses()}>
-        <ul>
-          {this.renderList()}
-        </ul>
-      </div>
+      <ul
+        className={this.getClassNames()}
+        onClick={this.state.selectFunction.bind(this)}
+      >
+        {this.renderList()}
+      </ul>
     );
   }
 }
