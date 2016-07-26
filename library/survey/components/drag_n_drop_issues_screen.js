@@ -4,6 +4,10 @@ import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 var DragNDropIssuesScreen = (
   <DragNDropScreen
     id="drag-n-drop-issues"
+    dropzoneAssets={[
+      <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+    ]}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,

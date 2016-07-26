@@ -11,7 +11,7 @@ var PickOneBulliedScreen = (
 
     <SelectableReveal
       ref="selectable-reveal"
-      selectableSelectClass="HIGHLIGHTED"
+      // selectableSelectClass="HIGHLIGHTED"
       selectableCompleteOnSelect
       selectableCheckComplete={false}
       revealCompleteOnOpen

@@ -134,7 +134,7 @@ class Dropzone extends skoash.Component {
       return this.props.assets.map((asset, key) =>
         <play.Audio
           {...asset.props}
-          ref={asset.props['data-ref'] || ('asset-' + key)}
+          ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
           key={key}
           data-ref={key}
         />

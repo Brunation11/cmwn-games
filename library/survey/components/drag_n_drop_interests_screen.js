@@ -4,6 +4,10 @@ import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 var DragNDropInterestsScreen = (
   <DragNDropScreen
     id="drag-n-drop-interests"
+    dropzoneAssets={[
+      <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+    ]}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -15,14 +19,14 @@ var DragNDropInterestsScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item space animated" message="space" return />,
-      <skoash.ListItem className="draggable-list-item animals animated" message="animals" return />,
-      <skoash.ListItem className="draggable-list-item recycling animated" message="recycling" return />,
-      <skoash.ListItem className="draggable-list-item money animated" message="money" return />,
-      <skoash.ListItem className="draggable-list-item printing animated" message="printing" return />,
-      <skoash.ListItem className="draggable-list-item coding animated" message="coding" return />,
-      <skoash.ListItem className="draggable-list-item art animated" message="art" return />,
-      <skoash.ListItem className="draggable-list-item robotics animated" message="robotics" return />
+      <skoash.ListItem className="draggable-list-item space animated" message="space" />,
+      <skoash.ListItem className="draggable-list-item animals animated" message="animals" />,
+      <skoash.ListItem className="draggable-list-item recycling animated" message="recycling" />,
+      <skoash.ListItem className="draggable-list-item money animated" message="money" />,
+      <skoash.ListItem className="draggable-list-item printing animated" message="printing" />,
+      <skoash.ListItem className="draggable-list-item coding animated" message="coding" />,
+      <skoash.ListItem className="draggable-list-item art animated" message="art" />,
+      <skoash.ListItem className="draggable-list-item robotics animated" message="robotics" />
     ]}
     revealAssets={[
       <skoash.Audio ref="space" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
@@ -38,6 +42,7 @@ var DragNDropInterestsScreen = (
       <div ref="meter" className="meter animated"></div>
     ]}
   >
+
     <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_MostInterested.mp3" />
     <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_16/IMG_16_Penguins.png" />
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_16/Text_16_what%20are%20interested.png" />

@@ -1,4 +1,4 @@
-var TitleScreen = (
+ var TitleScreen = (
   <skoash.Screen
     id="title"
     checkComplete={false}

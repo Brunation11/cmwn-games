@@ -39,7 +39,7 @@ class SelectableReveal extends play.Component {
         return (
           <play.Audio
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
             key={key}
             data-ref={key}
           />
