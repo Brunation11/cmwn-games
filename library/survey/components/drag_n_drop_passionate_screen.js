@@ -1,9 +1,9 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
-var WhatMostPassionateScreen = (
+var DragNDropPassionateScreen = (
   <DragNDropScreen
-    id="what-most-passionate"
+    id="drag-n-drop-passionate"
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -46,7 +46,7 @@ var WhatMostPassionateScreen = (
   </DragNDropScreen>
 );
 
-export default WhatMostPassionateScreen;
+export default DragNDropPassionateScreen;
 
 // (consider dropzone reveal in order to play vo's)
 // add drop zones

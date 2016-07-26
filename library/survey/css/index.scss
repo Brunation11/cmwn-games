@@ -269,6 +269,7 @@ p {
 
 
 .reveal {
+  display: none;
   position: absolute;
   left: 0;
   top: 0;
@@ -488,7 +489,7 @@ p {
   }
 }
 
-#what-most-passionate {
+#drag-n-drop-passionate {
   img {
   }
 
@@ -520,168 +521,247 @@ p {
       bottom:12%;
     }
 
-    ul > * {
-      display: inline-block;
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
-      background-size: 1000px 388px;
-      width: 13%;
-      height: 23%;
-
-      &:nth-child(1) {
-        background-position: 625px 118px;
-        top: 21%;
-        left: 13%;
-      }
-
-      &:nth-child(2) {
-        background-position: 500px 118px;
-        top: 21%;
-        left: 27%;
-      }
-
-      &:nth-child(3) {
-        background-position: 250px 118px;
-        top: 21%;
-        left: 41%;
-      }
-
-      &:nth-child(4) {
-        background-position: 375px 118px;
-        top: 43%;
-        left: 13%;
-      }
-
-      &:nth-child(5) {
-        background-position: 0 118px;
-        top: 43%;
-        left: 27%;
-      }
-
-      &:nth-child(6) {
-        background-position: 749px 118px;
-        top: 43%;
-        left: 41%;
-      }
-
-      &:nth-child(7) {
-        background-position: 125px 118px;
-        top: 65%;
-        left: 20%;
-      }
-
-      &:nth-child(8) {
-        background-position: 875px 118px;
-        top: 65%;
-        left: 34%;
-      }
-    }
-
-    .dropzone-list-item {
+    .dropzone-reveal {
       ul > * {
         display: inline-block;
         position: absolute;
-        // background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
-        // background-size: 1000px 388px;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
+        background-size: 1000px 388px;
         width: 13%;
         height: 23%;
-        border: 1px solid;
 
         &:nth-child(1) {
-          left: 30%;
-          top: 10%;
+          background-position: 625px 118px;
+          top: 21%;
+          left: 13%;
+        }
+
+        &:nth-child(2) {
+          background-position: 500px 118px;
+          top: 21%;
+          left: 27%;
+        }
+
+        &:nth-child(3) {
+          background-position: 250px 118px;
+          top: 21%;
+          left: 41%;
+        }
+
+        &:nth-child(4) {
+          background-position: 375px 118px;
+          top: 43%;
+          left: 13%;
+        }
+
+        &:nth-child(5) {
+          background-position: 0 118px;
+          top: 43%;
+          left: 27%;
+        }
+
+        &:nth-child(6) {
+          background-position: 749px 118px;
+          top: 43%;
+          left: 41%;
+        }
+
+        &:nth-child(7) {
+          background-position: 125px 118px;
+          top: 65%;
+          left: 20%;
+        }
+
+        &:nth-child(8) {
+          background-position: 875px 118px;
+          top: 65%;
+          left: 34%;
         }
       }
-    }
 
-    .draggable-list-item {
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
-      background-size: 1060px 411px;
-      width: 100%;
-      height: 100%;
-      top: -10px;
-      left: 0px;
-
-      &.friends {
-        background-position: 658px 0;
-      }
-
-      &.world-peace {
-        background-position: 526px 0;
-      }
-
-      &.sports {
-        background-position: 261px 0;
-      }
-
-      &.playing-games {
-        background-position: 395px 0;
-      }
-
-      &.looking-cool {
-        background-position: -3px 0;
-      }
-
-      &.school {
-        background-position: 790px 0;
-      }
-
-      &.celebrities {
-        background-position: 131px 0;
-      }
-
-      &.environment {
-        background-position: 923px 0;
-      }
-
-      &.DRAGGING {
-        z-index: 1;
-        width: 105%;
-        height: 105%;
-        left: -2px;
+      .draggable-list-item {
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
+        background-size: 1060px 411px;
+        width: 100%;
+        height: 100%;
+        top: -10px;
+        left: 0px;
 
         &.friends {
-          background-position: 662px 270px;
+          background-position: 658px 0;
         }
 
         &.world-peace {
-          background-position: 529px 270px;
+          background-position: 526px 0;
         }
 
         &.sports {
-          background-position: 265px 270px;
+          background-position: 261px 0;
         }
 
         &.playing-games {
-          background-position: 397px 270px;
+          background-position: 395px 0;
         }
 
         &.looking-cool {
-          background-position: -1px 270px;
+          background-position: -3px 0;
         }
 
         &.school {
-          background-position: 794px 270px;
+          background-position: 790px 0;
         }
 
         &.celebrities {
-          background-position: 131px 270px;
+          background-position: 131px 0;
         }
 
         &.environment {
-          background-position: 926px 270px;
+          background-position: 923px 0;
+        }
+
+        &.DRAGGING {
+          z-index: 1;
+          width: 105%;
+          height: 105%;
+          left: -2px;
+
+          &.friends {
+            background-position: 662px 270px;
+          }
+
+          &.world-peace {
+            background-position: 529px 270px;
+          }
+
+          &.sports {
+            background-position: 265px 270px;
+          }
+
+          &.playing-games {
+            background-position: 397px 270px;
+          }
+
+          &.looking-cool {
+            background-position: -1px 270px;
+          }
+
+          &.school {
+            background-position: 794px 270px;
+          }
+
+          &.celebrities {
+            background-position: 131px 270px;
+          }
+
+          &.environment {
+            background-position: 926px 270px;
+          }
         }
       }
-    }
 
-    .dropzone {
-      position: absolute;
-      width: 30%;
-      height: 67%;
-      border: 1px solid;
-      right: 8%;
-      top: 20%;
+      div {
+        .dropzone {
+          position: absolute;
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
+          background-size: 1000px 113px;
+          width: 100px;
+          height: 102px;
+          border: 1px solid;
+
+          &:nth-child(1) {
+            background-position: -13px -6px;
+            top: 23%;
+            left: 58%;
+          }
+
+          &:nth-child(2) {
+            background-position: 862px -6px;
+            top: 23%;
+            left: 69%;
+          }
+
+          &:nth-child(3) {
+            background-position: 736px -6px;
+            top: 23%;
+            left: 80%;
+          }
+
+          &:nth-child(4) {
+            background-position: 612px -6px;
+            top: 42%;
+            left: 58%;
+          }
+
+          &:nth-child(5) {
+            background-position: 487px -6px;
+            top: 42%;
+            left: 69%;
+          }
+
+          &:nth-child(6) {
+            background-position: 364px -6px;
+            top: 42%;
+            left: 80%;
+          }
+
+          &:nth-child(7) {
+            background-position: 236px -6px;
+            top: 61%;
+            left: 63.5%;
+          }
+
+          &:nth-child(8) {
+            background-position: 115px -6px;
+            top: 61%;
+            left: 74.5%;
+          }
+
+          &.friends,
+          &.world-peace,
+          &.sports,
+          &.playing-games,
+          &.looking-cool,
+          &.school,
+          &.celebrities,
+          &.environment {
+            background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
+            background-size: 900px 127px;
+          }
+
+          &.friends {
+            background-position: 116px -14px;
+          }
+
+          &.world-peace {
+            background-position: 226px -14px;
+          }
+
+          &.sports {
+            background-position: 335px -14px;
+          }
+
+          &.playing-games {
+            background-position: 444px -14px;
+          }
+
+          &.looking-cool {
+            background-position: 556px -14px;
+          }
+
+          &.school {
+            background-position: 668px -14px;
+          }
+
+          &.celebrities {
+            background-position: 773px -14px;
+          }
+
+          &.environment {
+            background-position: 887px -10px;
+          }
+        }
+      }
     }
 
     .meter {
@@ -701,7 +781,7 @@ p {
   }
 }
 
-#what-world-issues {
+#drag-n-drop-issues {
   img {
   }
 
@@ -733,151 +813,246 @@ p {
       bottom:12%;
     }
 
-    ul > * {
-      display: inline-block;
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
-      background-size: 1000px 388px;
-      width: 13%;
-      height: 23%;
+    .dropzone-reveal {
+      ul > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
+        background-size: 1000px 388px;
+        width: 13%;
+        height: 23%;
 
-      &:nth-child(1) {
-        background-position: -1px 121px;
-        top: 21%;
-        left: 13%;
+        &:nth-child(1) {
+          background-position: -1px 121px;
+          top: 21%;
+          left: 13%;
+        }
+
+        &:nth-child(2) {
+          background-position: 874px 121px;
+          top: 21%;
+          left: 27%;
+        }
+
+        &:nth-child(3) {
+          background-position: 749px 120px;
+          top: 21%;
+          left: 41%;
+        }
+
+        &:nth-child(4) {
+          background-position: 625px 121px;
+          top: 43%;
+          left: 13%;
+        }
+
+        &:nth-child(5) {
+          background-position: 500px 121px;
+          top: 43%;
+          left: 27%;
+        }
+
+        &:nth-child(6) {
+          background-position: 374px 121px;
+          top: 43%;
+          left: 41%;
+        }
+
+        &:nth-child(7) {
+          background-position: 250px 121px;
+          top: 65%;
+          left: 20%;
+        }
+
+        &:nth-child(8) {
+          background-position: 125px 123px;
+          top: 65%;
+          left: 34%;
+        }
       }
 
-      &:nth-child(2) {
-        background-position: 874px 121px;
-        top: 21%;
-        left: 27%;
-      }
-
-      &:nth-child(3) {
-        background-position: 749px 120px;
-        top: 21%;
-        left: 41%;
-      }
-
-      &:nth-child(4) {
-        background-position: 625px 121px;
-        top: 43%;
-        left: 13%;
-      }
-
-      &:nth-child(5) {
-        background-position: 500px 121px;
-        top: 43%;
-        left: 27%;
-      }
-
-      &:nth-child(6) {
-        background-position: 374px 121px;
-        top: 43%;
-        left: 41%;
-      }
-
-      &:nth-child(7) {
-        background-position: 250px 121px;
-        top: 65%;
-        left: 20%;
-      }
-
-      &:nth-child(8) {
-        background-position: 125px 123px;
-        top: 65%;
-        left: 34%;
-      }
-    }
-
-    .draggable-list-item {
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
-      background-size: 1060px 411px;
-      width: 100%;
-      height: 100%;
-      top: -4px;
-      left: 0px;
-
-      &.cyberbullying {
-        background-position: -2px -5px;
-      }
-
-      &.endangered-animals {
-        background-position: 926px -5px;
-      }
-
-      &.literacy {
-        background-position: 794px -5px;
-      }
-
-      &.climate-change {
-        background-position: 662px -5px;
-      }
-
-      &.poverty {
-        background-position: 530px -5px;
-      }
-
-      &.health-problems {
-        background-position: 395px -5px;
-      }
-
-      &.homelessness {
-        background-position: 264px -5px;
-      }
-
-      &.war-on-terrorism {
-        background-position: 131px -5px;
-      }
-
-      &.DRAGGING {
-        z-index: 1;
-        width: 105%;
-        height: 105%;
-        left: -2px;
+      .draggable-list-item {
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
+        background-size: 1060px 411px;
+        width: 100%;
+        height: 100%;
+        top: -4px;
+        left: 0px;
 
         &.cyberbullying {
-          background-position: -1px 265px;
+          background-position: -2px -5px;
         }
 
         &.endangered-animals {
-          background-position: 927px 265px;
+          background-position: 926px -5px;
         }
 
         &.literacy {
-          background-position: 796px 265px;
+          background-position: 794px -5px;
         }
 
         &.climate-change {
-          background-position: 662px 265px;
+          background-position: 662px -5px;
         }
 
         &.poverty {
-          background-position: 529px 265px;
+          background-position: 530px -5px;
         }
 
         &.health-problems {
-          background-position: 397px 265px;
+          background-position: 395px -5px;
         }
 
         &.homelessness {
-          background-position: 264px 265px;
+          background-position: 264px -5px;
         }
 
-        &.war-on-terrorism {
-          background-position: 131px 265px;
+        &.war-and-terrorism {
+          background-position: 131px -5px;
+        }
+
+        &.DRAGGING {
+          z-index: 1;
+          width: 105%;
+          height: 105%;
+          left: -2px;
+
+          &.cyberbullying {
+            background-position: -1px 265px;
+          }
+
+          &.endangered-animals {
+            background-position: 927px 265px;
+          }
+
+          &.literacy {
+            background-position: 796px 265px;
+          }
+
+          &.climate-change {
+            background-position: 662px 265px;
+          }
+
+          &.poverty {
+            background-position: 529px 265px;
+          }
+
+          &.health-problems {
+            background-position: 397px 265px;
+          }
+
+          &.homelessness {
+            background-position: 264px 265px;
+          }
+
+          &.war-and-terrorism {
+            background-position: 131px 265px;
+          }
         }
       }
-    }
 
-    .dropzone {
-      position: absolute;
-      width: 30%;
-      height: 67%;
-      border: 1px solid;
-      right: 8%;
-      top: 20%;
+      div {
+        .dropzone {
+          position: absolute;
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
+          background-size: 2520px 285px;
+          width: 100px;
+          height: 100px;
+
+          &:nth-child(1) {
+            background-position: -6px -3px;
+            top: 23%;
+            left: 58%;
+          }
+
+          &:nth-child(2) {
+            background-position: 0 0;
+            top: 23%;
+            left: 70%;
+          }
+
+          &:nth-child(3) {
+            background-position: 0 0;
+            top: 23%;
+            left: 82%;
+          }
+
+          &:nth-child(4) {
+            background-position: 0 0;
+            top: 44%;
+            left: 58%;
+          }
+
+          &:nth-child(5) {
+            background-position: 0 0;
+            top: 44%;
+            left: 70%;
+          }
+
+          &:nth-child(6) {
+            background-position: 0 0;
+            top: 44%;
+            left: 82%;
+          }
+
+          &:nth-child(7) {
+            background-position: 0 0;
+            top: 66%;
+            left: 64%;
+          }
+
+          &:nth-child(8) {
+            background-position: 0 0;
+            top: 66%;
+            left: 76%;
+          }
+
+          &.cyberbullying,
+          &.endangered-animals,
+          &.literacy,
+          &.climate-change,
+          &.poverty,
+          &.health-problems,
+          &.homelessness,
+          &.war-and-terrorism {
+            background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png);
+            background-size: 1000px 141px;
+          }
+
+          &.cyberbullying {
+            background-position: 0 0;
+          }
+
+          &.endangered-animals {
+            background-position: 0 0;
+          }
+
+          &.literacy {
+            background-position: 0 0;
+          }
+
+          &.climate-change {
+            background-position: 0 0;
+          }
+
+          &.poverty {
+            background-position: 0 0;
+          }
+
+          &.health-problems {
+            background-position: 0 0;
+          }
+
+          &.homelessness {
+            background-position: 0 0;
+          }
+
+          &.war-and-terrorism {
+            background-position: 0 0;
+          }
+        }
+      }
     }
 
     .meter {
