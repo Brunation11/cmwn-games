@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
@@ -22,7 +23,9 @@ class SelectableCanvas extends Selectable {
 
     this.items = [];
 
-    
+    _.forIn(this.refs, component => {
+      this.items.push(component);
+    });
   }
 
   selectHelper(e, classes) {
@@ -48,6 +51,22 @@ class SelectableCanvas extends Selectable {
     });
 
     this.checkComplete();
+  }
+
+  isImageTarget(_$image, _point, _offset, _scale) {
+    var offset, pixel;
+
+    offset = _$image.offset();
+
+    this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+    this.bctx.drawImage(_$image[0], offset.left / _scale - _offset[0], offset.top / _scale - _offset[1], _$image.width(), _$image.height());
+    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
+
+    this.bctx.fillStyle = 'white';
+    this.bctx.fillRect(_point.x, _point.y, 5, 5);
+
+    // opaque pixel
+    return pixel.data[3] > 0;
   }
 
   getClassNames() {
