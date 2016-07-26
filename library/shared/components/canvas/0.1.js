@@ -28,7 +28,7 @@ class Canvas extends skoash.Component {
   start() {
     var dom = ReactDOM.findDOMNode(this);
 
-    skoash.Component.prototype.start.call(this);
+    super.start();
 
     this.setState({
       width: dom.offsetWidth,
