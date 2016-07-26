@@ -1,4 +1,4 @@
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
+import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
 
 class DragNDropScreen extends skoash.Screen {
   constructor() {
@@ -6,10 +6,15 @@ class DragNDropScreen extends skoash.Screen {
     this.correctRespond = this.correctRespond.bind(this);
   }
 
-  correctRespond(message, dropzoneKey) {
+  correctRespond(draggable, dropzoneKey) {
     var dropzone = this.refs.dropzone.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
+
+    if (dropzone.state.content) {
+      dropzone.state.content.returnToStart();
+    }
+
     dropzone.setState({
-      content: message
+      content: draggable
     });
   }
 

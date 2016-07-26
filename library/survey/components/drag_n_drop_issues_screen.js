@@ -1,4 +1,4 @@
-import Dropzone from 'shared/components/dropzone/0.1';
+import Dropzone from 'shared/components/dropzone/0.2';
 
 var WhatWorldIssuesScreen = (
   <skoash.Screen

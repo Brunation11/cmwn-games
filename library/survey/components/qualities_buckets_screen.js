@@ -1,4 +1,4 @@
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
+import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
 
 var QualitiesBucketsScreen = (
   <skoash.Screen
