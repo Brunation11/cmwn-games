@@ -4,6 +4,7 @@ import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 var DragNDropPassionateScreen = (
   <DragNDropScreen
     id="drag-n-drop-passionate"
+    centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -15,14 +16,14 @@ var DragNDropPassionateScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item friends animated" message="friends" return />,
-      <skoash.ListItem className="draggable-list-item world-peace animated" message="world-peace" return />,
-      <skoash.ListItem className="draggable-list-item sports animated" message="sports" return />,
-      <skoash.ListItem className="draggable-list-item playing-games animated" message="playing-games" return />,
-      <skoash.ListItem className="draggable-list-item looking-cool animated" message="looking-cool" return />,
-      <skoash.ListItem className="draggable-list-item school animated" message="school" return />,
-      <skoash.ListItem className="draggable-list-item celebrities animated" message="celebrities" return />,
-      <skoash.ListItem className="draggable-list-item environment animated" message="environment" return />
+      <skoash.ListItem className="draggable-list-item friends animated" message="friends" />,
+      <skoash.ListItem className="draggable-list-item world-peace animated" message="world-peace" />,
+      <skoash.ListItem className="draggable-list-item sports animated" message="sports" />,
+      <skoash.ListItem className="draggable-list-item playing-games animated" message="playing-games" />,
+      <skoash.ListItem className="draggable-list-item looking-cool animated" message="looking-cool" />,
+      <skoash.ListItem className="draggable-list-item school animated" message="school" />,
+      <skoash.ListItem className="draggable-list-item celebrities animated" message="celebrities" />,
+      <skoash.ListItem className="draggable-list-item environment animated" message="environment" />
     ]}
     revealAssets={[
       <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,

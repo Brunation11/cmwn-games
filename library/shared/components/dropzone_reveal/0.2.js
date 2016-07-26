@@ -10,6 +10,14 @@ class DropzoneReveal extends play.Component {
     this.state = {
       answers: [],
     };
+
+    this.dragRespond = this.dragRespond.bind(this);
+  }
+
+  dragRespond(draggable) {
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, draggable);
+    }
   }
 
   correctRespond(draggable, dropzoneKey) {
@@ -65,6 +73,7 @@ class DropzoneReveal extends play.Component {
     return (
       <Dropzone
         ref="dropzone"
+        dragRespond={this.dragRespond}
         message={this.props.dropzoneMessage}
         draggables={this.props.dropzoneList}
         assets={this.props.dropzoneAssets}
