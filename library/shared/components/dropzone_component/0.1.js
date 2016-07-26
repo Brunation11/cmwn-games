@@ -2,8 +2,9 @@ import classNames from 'classnames';
 
 class DropzoneComponent extends skoash.Component {
   getClassNames() {
+    var message = this.state.content ? this.state.content.props.message : '';
     return classNames(
-      this.state.content,
+      message,
       skoash.Component.prototype.getClassNames.call(this)
     );
   }

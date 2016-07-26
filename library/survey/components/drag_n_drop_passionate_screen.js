@@ -25,7 +25,6 @@ var DragNDropPassionateScreen = (
       <skoash.ListItem className="draggable-list-item environment animated" message="environment" return />
     ]}
     revealAssets={[
-      <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
       <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
       <skoash.Audio ref="world-peace" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" />,
       <skoash.Audio ref="sports" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" />,
@@ -48,11 +47,8 @@ var DragNDropPassionateScreen = (
 
 export default DragNDropPassionateScreen;
 
-// (consider dropzone reveal in order to play vo's)
-// add drop zones
 // add drag/drop sounds
-// update the component to play the audio when list item is selected/dropped
 // list items need to reset if another item is put in same dropzone
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
-// resize icons to better fit frame
+// resize draggables to easily drop in dropzones

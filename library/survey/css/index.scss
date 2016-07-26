@@ -667,7 +667,6 @@ p {
           background-size: 1000px 113px;
           width: 100px;
           height: 102px;
-          border: 1px solid;
 
           &:nth-child(1) {
             background-position: -13px -6px;
@@ -956,56 +955,56 @@ p {
         .dropzone {
           position: absolute;
           background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
-          background-size: 2520px 285px;
+          background-size: 1000px 113px;
           width: 100px;
-          height: 100px;
+          height: 102px;
 
           &:nth-child(1) {
-            background-position: -6px -3px;
+            background-position: -13px -6px;
             top: 23%;
             left: 58%;
           }
 
           &:nth-child(2) {
-            background-position: 0 0;
+            background-position: 862px -6px;
             top: 23%;
-            left: 70%;
+            left: 69%;
           }
 
           &:nth-child(3) {
-            background-position: 0 0;
+            background-position: 736px -6px;
             top: 23%;
-            left: 82%;
+            left: 80%;
           }
 
           &:nth-child(4) {
-            background-position: 0 0;
-            top: 44%;
+            background-position: 612px -6px;
+            top: 42%;
             left: 58%;
           }
 
           &:nth-child(5) {
-            background-position: 0 0;
-            top: 44%;
-            left: 70%;
+            background-position: 487px -6px;
+            top: 42%;
+            left: 69%;
           }
 
           &:nth-child(6) {
-            background-position: 0 0;
-            top: 44%;
-            left: 82%;
+            background-position: 364px -6px;
+            top: 42%;
+            left: 80%;
           }
 
           &:nth-child(7) {
-            background-position: 0 0;
-            top: 66%;
-            left: 64%;
+            background-position: 236px -6px;
+            top: 61%;
+            left: 63.5%;
           }
 
           &:nth-child(8) {
-            background-position: 0 0;
-            top: 66%;
-            left: 76%;
+            background-position: 115px -6px;
+            top: 61%;
+            left: 74.5%;
           }
 
           &.cyberbullying,
@@ -1017,39 +1016,39 @@ p {
           &.homelessness,
           &.war-and-terrorism {
             background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png);
-            background-size: 1000px 141px;
+            background-size: 850px 120px;
           }
 
           &.cyberbullying {
-            background-position: 0 0;
+            background-position: 847px -11px;
           }
 
           &.endangered-animals {
-            background-position: 0 0;
+            background-position: 734px -14px;
           }
 
           &.literacy {
-            background-position: 0 0;
+            background-position: 635px -14px;
           }
 
           &.climate-change {
-            background-position: 0 0;
+            background-position: 525px -14px;
           }
 
           &.poverty {
-            background-position: 0 0;
+            background-position: 416px -14px;
           }
 
           &.health-problems {
-            background-position: 0 0;
+            background-position: 312px -14px;
           }
 
           &.homelessness {
-            background-position: 0 0;
+            background-position: 206px -14px;
           }
 
           &.war-and-terrorism {
-            background-position: 0 0;
+            background-position: 99px -10px;
           }
         }
       }
@@ -1195,108 +1194,148 @@ p {
       bottom:14%;
     }
 
-    .draggable-list-item {
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
-      background-size: 1200px 300px;
-      width: 15%;
-      height: 27%;
+    .dropzone-reveal {
+      .draggable-list-item {
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
+        background-size: 1200px 300px;
+        width: 15%;
+        height: 27%;
 
-      &.sharing {
-        background-position: -8px -11px;
-        top: 8%;
-        left: 30%;
-      }
-
-      &.kindness {
-        background-position: -151px -11px;
-        top: 8%;
-        left: 45%;
-      }
-
-      &.rudeness {
-        background-position: 901px -11px;
-        top: 8%;
-        left: 60%;
-      }
-
-      &.being-a-bully {
-        background-position: 744px -11px;
-        top: 8%;
-        left: 75%;
-      }
-
-      &.compassion {
-        background-position: 597px 1px;
-        top: 35%;
-        left: 30%;
-      }
-
-      &.greediness {
-        background-position: 448px 2px;
-        top: 35%;
-        left: 45%;
-      }
-
-      &.being-angry {
-        background-position: 299px -5px;
-        top: 35%;
-        left: 60%;
-      }
-
-      &.friendliness {
-        background-position: 142px -2px;
-        top: 35%;
-        left: 75%;
-      }
-
-      &.DRAGGING {
-        z-index: 1;
+        &.CORRECT {
+          display: none;
+        }
 
         &.sharing {
-          background-position: -2px 136px;
+          background-position: -8px -11px;
+          top: 8%;
+          left: 30%;
         }
 
         &.kindness {
-          background-position: -154px 138px;
+          background-position: -151px -11px;
+          top: 8%;
+          left: 45%;
         }
 
         &.rudeness {
-          background-position: 901px 136px;
+          background-position: 901px -11px;
+          top: 8%;
+          left: 60%;
         }
 
         &.being-a-bully {
-          background-position: 742px 136px;
+          background-position: 744px -11px;
+          top: 8%;
+          left: 75%;
         }
 
         &.compassion {
-          background-position: 598px 149px;
+          background-position: 597px 1px;
+          top: 35%;
+          left: 30%;
         }
 
         &.greediness {
-          background-position: 449px 153px;
+          background-position: 448px 2px;
+          top: 35%;
+          left: 45%;
         }
 
         &.being-angry {
-          background-position: 296px 145px;
+          background-position: 299px -5px;
+          top: 35%;
+          left: 60%;
         }
 
         &.friendliness {
-          background-position: 140px 148px;
+          background-position: 142px -2px;
+          top: 35%;
+          left: 75%;
+        }
+
+        &.DRAGGING {
+          z-index: 1;
+
+          &.sharing {
+            background-position: -2px 136px;
+          }
+
+          &.kindness {
+            background-position: -154px 138px;
+          }
+
+          &.rudeness {
+            background-position: 901px 136px;
+          }
+
+          &.being-a-bully {
+            background-position: 742px 136px;
+          }
+
+          &.compassion {
+            background-position: 598px 149px;
+          }
+
+          &.greediness {
+            background-position: 449px 153px;
+          }
+
+          &.being-angry {
+            background-position: 296px 145px;
+          }
+
+          &.friendliness {
+            background-position: 140px 148px;
+          }
+        }
+      }
+
+      div {
+        .dropzone {
+          position: absolute;
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6_bucket.png);
+          background-size: 600px 392px;
+          width: 15%;
+          height: 22%;
+
+          &:nth-child(1) {
+            background-position: -74px -48px;
+            left: 34%;
+            bottom: 10%;
+
+            &.sharing,
+            &.kindness,
+            &.rudeness,
+            &.being-a-bully,
+            &.compassion,
+            &.greediness,
+            &.being-angry,
+            &.friendliness {
+              background-position: -74px 144px;
+            }
+          }
+
+          &:nth-child(2) {
+            background-position: 812px -48px;
+            bottom: 10%;
+            left: 54%;
+
+            &.sharing,
+            &.kindness,
+            &.rudeness,
+            &.being-a-bully,
+            &.compassion,
+            &.greediness,
+            &.being-angry,
+            &.friendliness {
+              background-position: 812px 144px;
+            }
+          }
         }
       }
     }
 
-    .dropzone {
-      position: absolute;
-      background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6_bucket.png);
-      background-size: 600px 392px;
-      background-position: -70px 340px;
-      width: 15%;
-      height: 22%;
-      left: 34%;
-      bottom: 10%;
-    }
 
     .meter {
       background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
@@ -1362,6 +1401,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 7s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/_SpriteSheet/Spritesheet_frame07_PolarBear.png);
@@ -1476,11 +1517,13 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 7s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/_SpriteSheet/Spritesheet_Frame08_PolarBear.png);
         background-size: 440px 270px;
-        width: 143px;
+        width: 142px;
         height: 133px;
 
         &:nth-child(1) {
@@ -1593,6 +1636,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 6s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/S_09/IMG_09_PolarBears_SpriteSheet-02.png);
@@ -1711,6 +1756,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 6s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/S_10/IMG_10_Polarbear_SpriteSheet-02.png);
@@ -1905,7 +1952,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: -15px 88px;
           }
         }
@@ -1917,7 +1965,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 1385px 88px;
 
           }
@@ -1930,7 +1979,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 1035px 88px;
 
           }
@@ -1943,7 +1993,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 684px 88px;
 
           }
@@ -1956,7 +2007,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 339px 85px;
 
           }
@@ -2031,6 +2083,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 4s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
@@ -2045,7 +2099,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: -12px 129px;
           }
         }
@@ -2057,7 +2112,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 320px 388px;
 
           }
@@ -2070,7 +2126,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 153px 130px;
 
           }
@@ -2156,6 +2213,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 4s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
@@ -2170,7 +2229,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: -12px 129px;
           }
         }
@@ -2182,7 +2242,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 320px 388px;
 
           }
@@ -2195,7 +2256,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 153px 130px;
 
           }
@@ -2281,6 +2343,8 @@ p {
 
     .selectable-reveal {
       ul.selectable > * {
+        animation-name: fadeIn;
+        animation-delay: 4s;
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/S_13/spritesheet_frame13-polarbear.png);
@@ -2295,7 +2359,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: -12px 129px;
           }
         }
@@ -2307,7 +2372,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 320px 388px;
 
           }
@@ -2320,7 +2386,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.HIGHLIGHTED {
             background-position: 153px 130px;
 
           }
@@ -2348,6 +2415,314 @@ p {
     }
   }
 }
+
+#drag-n-drop-interests {
+  img {
+  }
+
+  &.READY.OPEN {
+    img,
+    .meter,
+    .frame {
+      position: absolute;
+
+      &.banner {
+        width: 80%;
+        left: 9%;
+        top: 2%;
+      }
+
+      &.penguin {
+        width: 15%;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    .frame {
+      background: url(../media/assets/_images/Frames/Frame_11_GreyRectangle.png);
+      background-size: 100% 100%;
+      width: 45%;
+      height: 69%;
+      left: 11%;
+      bottom:12%;
+    }
+
+    .dropzone-reveal {
+      ul > * {
+        display: inline-block;
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png);
+        background-size: 1000px 388px;
+        width: 120px;
+        height: 112px;
+
+        &:nth-child(1) {
+          background-position: -2px 118px;
+          top: 22%;
+          left: 13%;
+        }
+
+        &:nth-child(2) {
+          background-position: 872px 117px;
+          top: 22%;
+          left: 27%;
+        }
+
+        &:nth-child(3) {
+          background-position: 745px 115px;
+          top: 22%;
+          left: 41%;
+        }
+
+        &:nth-child(4) {
+          background-position: 623px 116px;
+          top: 43%;
+          left: 13%;
+        }
+
+        &:nth-child(5) {
+          background-position: 497px 117px;
+          top: 43%;
+          left: 27%;
+        }
+
+        &:nth-child(6) {
+          background-position: 373px 118px;
+          top: 43%;
+          left: 41%;
+        }
+
+        &:nth-child(7) {
+          background-position: 250px 117px;
+          top: 64%;
+          left: 20%;
+        }
+
+        &:nth-child(8) {
+          background-position: 122px 115px;
+          top: 64%;
+          left: 34%;
+        }
+      }
+
+      .draggable-list-item {
+        position: absolute;
+        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png);
+        background-size: 1020px 395px;
+        width: 100%;
+        height: 100%;
+        top: -1px;
+        left: 0px;
+
+        &.space {
+          background-position: -1px -11px;
+        }
+
+        &.animals {
+          background-position: 891px -11px;
+        }
+
+        &.recycling {
+          background-position: 764px -12px;
+        }
+
+        &.money {
+          background-position: 636px -11px;
+        }
+
+        &.printing {
+          background-position: 510px -11px;
+        }
+
+        &.coding {
+          background-position: 381px -12px;
+        }
+
+        &.art {
+          background-position: 255px -11px;
+        }
+
+        &.robotics {
+          background-position: 126px -12px;
+        }
+
+        &.DRAGGING {
+          z-index: 1;
+          width: 105%;
+          height: 105%;
+          left: -2px;
+          border: 1px solid;
+
+          &.space {
+            background-position: -1px 250px;
+          }
+
+          &.animals {
+            background-position: 892px 250px;
+          }
+
+          &.recycling {
+            background-position: 764px 250px;
+          }
+
+          &.money {
+            background-position: 636px 250px;
+          }
+
+          &.printing {
+            background-position: 507px 250px;
+          }
+
+          &.coding {
+            background-position: 381px 250px;
+          }
+
+          &.art {
+            background-position: 255px 250px;
+          }
+
+          &.robotics {
+            background-position: 127px 250px;
+          }
+        }
+      }
+
+      div {
+        .dropzone {
+          position: absolute;
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
+          background-size: 1000px 113px;
+          width: 100px;
+          height: 102px;
+
+          &:nth-child(1) {
+            background-position: -13px -6px;
+            top: 23%;
+            left: 58%;
+          }
+
+          &:nth-child(2) {
+            background-position: 862px -6px;
+            top: 23%;
+            left: 69%;
+          }
+
+          &:nth-child(3) {
+            background-position: 736px -6px;
+            top: 23%;
+            left: 80%;
+          }
+
+          &:nth-child(4) {
+            background-position: 612px -6px;
+            top: 42%;
+            left: 58%;
+          }
+
+          &:nth-child(5) {
+            background-position: 487px -6px;
+            top: 42%;
+            left: 69%;
+          }
+
+          &:nth-child(6) {
+            background-position: 364px -6px;
+            top: 42%;
+            left: 80%;
+          }
+
+          &:nth-child(7) {
+            background-position: 236px -6px;
+            top: 61%;
+            left: 63.5%;
+          }
+
+          &:nth-child(8) {
+            background-position: 115px -6px;
+            top: 61%;
+            left: 74.5%;
+          }
+
+          &.space,
+          &.animals,
+          &.recycling,
+          &.money,
+          &.printing,
+          &.coding,
+          &.art,
+          &.robotics {
+            background: url(../media/assets/_images/_SpriteSheet/spritesheet-icons-frame16-01.png);
+            background-size: 850px 120px;
+          }
+
+          &.space {
+            background-position: 847px -11px;
+          }
+
+          &.animals {
+            background-position: 734px -14px;
+          }
+
+          &.recycling {
+            background-position: 635px -14px;
+          }
+
+          &.money {
+            background-position: 525px -14px;
+          }
+
+          &.printing {
+            background-position: 416px -14px;
+          }
+
+          &.coding {
+            background-position: 312px -14px;
+          }
+
+          &.art {
+            background-position: 206px -14px;
+          }
+
+          &.robotics {
+            background-position: 99px -10px;
+          }
+        }
+      }
+    }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 252px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
+  }
+
+  &.COMPLETE {
+    img {
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #bulbs {

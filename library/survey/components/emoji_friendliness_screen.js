@@ -4,7 +4,7 @@ var EmojiFriendlinessScreen = (
   <skoash.Screen
     id="emoji-friendliness"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendly.mp3" />
     <skoash.Image ref="penguins" className="penguins animated" src="media/assets/_images/S_10/IMG_10_PenguinsCircle.png" />
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_10/Text_10_AFriendSharesAGame.png" />
     <div ref="frame" className="frame animated"></div>
@@ -14,6 +14,10 @@ var EmojiFriendlinessScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="happy animated" data-ref="happy" correct />,
         <skoash.ListItem className="surprised animated" data-ref="surprised" correct />,
@@ -33,5 +37,5 @@ var EmojiFriendlinessScreen = (
 export default EmojiFriendlinessScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
 // save data

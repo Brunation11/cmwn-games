@@ -22,7 +22,7 @@ var DragNDropIssuesScreen = (
       <skoash.ListItem className="draggable-list-item poverty animated" message="poverty" return />,
       <skoash.ListItem className="draggable-list-item health-problems animated" message="health-problems" return />,
       <skoash.ListItem className="draggable-list-item homelessness animated" message="homelessness" return />,
-      <skoash.ListItem className="draggable-list-item war-and-terrorism animated" message="war-on-terrorism" return />
+      <skoash.ListItem className="draggable-list-item war-and-terrorism animated" message="war-and-terrorism" return />
     ]}
     revealAssets={[
       <skoash.Audio ref="cyberbullying" type="voiceOver" src="media/assets/_audio/VOs/VO_Cyberbullying.mp3" />,
@@ -32,7 +32,7 @@ var DragNDropIssuesScreen = (
       <skoash.Audio ref="poverty" type="voiceOver" src="media/assets/_audio/VOs/VO_Poverty.mp3" />,
       <skoash.Audio ref="health-problems" type="voiceOver" src="media/assets/_audio/VOs/VO_Health.mp3" />,
       <skoash.Audio ref="homelessness" type="voiceOver" src="media/assets/_audio/VOs/VO_Homelessness.mp3" />,
-      <skoash.Audio ref="war-on-terrorism" type="voiceOver" src="media/assets/_audio/VOs/VO_War.mp3" />
+      <skoash.Audio ref="war-and-terrorism" type="voiceOver" src="media/assets/_audio/VOs/VO_War.mp3" />
     ]}
     afterDropzoneList={[
       <div ref="meter" className="meter animated"></div>
@@ -47,11 +47,8 @@ var DragNDropIssuesScreen = (
 
 export default DragNDropIssuesScreen;
 
-// (consider dropzone reveal in order to play vo's)
-// add drop zones
 // add drag/drop sounds
-// update the component to play the audio when list item is selected/dropped
 // list items need to reset if another item is put in same dropzone
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
-// resize icons to better fit frame
+// resize draggables to easily drop in dropzones

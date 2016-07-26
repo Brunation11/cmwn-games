@@ -35,5 +35,5 @@ var PickOnePowerfulScreen = (
 export default PickOnePowerfulScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add select audio S_BU_1
 // save data

@@ -12,6 +12,10 @@ var PickOneBulliedScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="yes animated" data-ref="yes" correct />,
         <skoash.ListItem className="no animated" data-ref="no" correct />,
@@ -29,5 +33,5 @@ var PickOneBulliedScreen = (
 export default PickOneBulliedScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
 // save data

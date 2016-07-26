@@ -13,6 +13,10 @@ var EmojiBullyingScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="sad animated" data-ref="sad" correct />,
         <skoash.ListItem className="angry animated" data-ref="angry" correct />,
@@ -32,5 +36,5 @@ var EmojiBullyingScreen = (
 export default EmojiBullyingScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
 // save data

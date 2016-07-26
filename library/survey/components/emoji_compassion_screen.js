@@ -4,7 +4,7 @@ var EmojiCompassionScreen = (
   <skoash.Screen
     id="emoji-compassion"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Comp.mp3" />
     <skoash.Image ref="penguins" className="penguins animated" src="media/assets/_images/S_8/img-s8-main-penguins-01.png" />
     <div ref="frame" className="frame animated"></div>
     <div ref="sub-frame" className="sub-frame animated"></div>
@@ -13,6 +13,10 @@ var EmojiCompassionScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="happy animated" data-ref="happy" correct />,
         <skoash.ListItem className="no-big-deal animated" data-ref="no-big-deal" correct />,
@@ -20,7 +24,7 @@ var EmojiCompassionScreen = (
       ]}
       revealAssets={[
         <skoash.Audio ref="happy" type="voiceOver" src="media/assets/_audio/VOs/VO_Happy.mp3" />,
-        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_NoBig.mp3" />,
+        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_Confused.mp3" />,
         <skoash.Audio ref="thankful" type="voiceOver" src="media/assets/_audio/VOs/VO_Thankful.mp3" />
       ]}
     />
@@ -32,5 +36,6 @@ var EmojiCompassionScreen = (
 export default EmojiCompassionScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
+// ask val about compassion choices, sprite shows confused but invision shows no big deal
 // save data

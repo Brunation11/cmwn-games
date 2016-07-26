@@ -4,7 +4,7 @@ var EmojiAngryScreen = (
   <skoash.Screen
     id="emoji-angry"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Angry.mp3" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_BeAngry.mp3" />
     <skoash.Image ref="penguins" className="penguins animated" src="media/assets/_images/S_09/IMG_09_PenguinsCircle.png" />
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_09/Text_09_AClassmateYellsAtYou.png" />
     <div ref="frame" className="frame animated"></div>
@@ -14,6 +14,10 @@ var EmojiAngryScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="worried animated" data-ref="worried" correct />,
         <skoash.ListItem className="shocked animated" data-ref="shocked" correct />,
@@ -33,5 +37,5 @@ var EmojiAngryScreen = (
 export default EmojiAngryScreen;
 
 // edit highlighted state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
 // save data

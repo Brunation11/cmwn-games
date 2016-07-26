@@ -11,6 +11,10 @@ var WhatDidYouDoScreen = (
     <SelectableReveal
       ref="selectable-reveal"
       selectableSelectClass="HIGHLIGHTED"
+      selectableCompleteOnSelect
+      selectableCheckComplete={false}
+      revealCompleteOnOpen
+      revealCheckComplete={false}
       selectableList={[
         <skoash.ListItem className="felt-bad animated" data-ref="felt-bad" correct />,
         <skoash.ListItem className="didnt-bother animated" data-ref="didnt-bother" correct />,
@@ -32,8 +36,6 @@ var WhatDidYouDoScreen = (
 
 export default WhatDidYouDoScreen;
 
-// edit highlighted state
-// get new assets for hover state
-// screen should complete on first selection but students can still continue selecting
+// add s_BU_1 audio on select
 // save data
 // vo 2 doesnt match asset
