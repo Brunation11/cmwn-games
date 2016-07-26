@@ -17,6 +17,12 @@ class SelectableCanvas extends Selectable {
 
     this.buffer = document.createElement('canvas');
     this.bctx = this.buffer.getContext('2d');
+
+    this.el = ReactDOM.findDOMNode(this);
+
+    this.items = [];
+
+    
   }
 
   selectHelper(e, classes) {
