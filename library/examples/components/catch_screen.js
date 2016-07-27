@@ -1,5 +1,7 @@
+import Catch from 'shared/components/catch/0.1';
+import Catchable from 'shared/components/catchable/0.1';
 
-                    // {/* MILLION_MON*/}
+// {/* MILLION_MON*/}
                     // {/* TARSI */}
                     // {/* UPDRAFTS */}
                     // {/* FRAS */}
@@ -50,7 +52,23 @@ var CatchScreen = (
   <skoash.Screen
     id="catch"
   >
-    <div>
+    <Catch
+      bucket={
+        <div className="bucket" />
+      }
+      ref="catch"
+      catchables={[
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>,
+        <Catchable></Catchable>
+      ]}
+    />
+    {/* <div>
         <div className="selectable">
             <ul className="items" pl-action="select(target())">
                 <li></li>
@@ -63,7 +81,7 @@ var CatchScreen = (
                 <li></li>
             </ul>
         </div>
-    </div>
+    </div> */}
   </skoash.Screen>
 );
 
