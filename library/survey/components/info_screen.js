@@ -4,11 +4,12 @@ var InfoScreen = (
   <skoash.Screen
     id="info"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_HiThere.mp3" />
     <AudioSequence
+      ref="audio-sequence"
       checkComplete={true}
     >
-      <skoash.Audio ref="you" type="sfx" src="media/assets/_audio/S_HiThere/S_2.1.mp3" />
+      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_HiThere.mp3" />
+      <skoash.Audio ref="you" type="sfx" src="media/assets/_audio/S_HiThere/S_2.1.mp3" delay={1000} />
     </AudioSequence>
     <skoash.Image ref="penguin-megaphone" className="penguin-megaphone animated" src="media/assets/_images/s_2/img_s2_penguin-01.png" />
     <skoash.Image ref="spotlight" className="spotlight animated" src="media/assets/_images/s_2/img-spotlight-01.png" />
@@ -21,4 +22,3 @@ var InfoScreen = (
 export default InfoScreen;
 
 // add second animation on you
-// refactor audio S_2.1 to play only after "you" has appeared

@@ -40,6 +40,5 @@ var WhatDidYouDoScreen = (
 
 export default WhatDidYouDoScreen;
 
-// add s_BU_1 audio on select
 // save data
 // vo 2 doesnt match asset

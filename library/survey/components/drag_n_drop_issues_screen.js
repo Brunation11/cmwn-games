@@ -52,6 +52,5 @@ var DragNDropIssuesScreen = (
 
 export default DragNDropIssuesScreen;
 
-// add drag/drop sounds
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
