@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-class Selectable extends play.Component {
+class Selectable extends skoash.Component {
   constructor() {
     super();
 
@@ -18,16 +18,21 @@ class Selectable extends play.Component {
   }
 
   start() {
-    var selectClass, selectFunction;
+    var selectClass, selectFunction, classes = {};
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    if (this.props.selectOnStart) {
+      classes[this.props.selectOnStart] = selectClass;
+    }
 
     this.setState({
       started: true,
-      classes: {},
-      selectClass,
+      classes,
       selectFunction,
+      selectClass,
     });
 
     this.bootstrap();
@@ -55,11 +60,11 @@ class Selectable extends play.Component {
       this.props.selectRespond(message);
     }
 
-    this.requireForComplete = this.requireForComplete.filter((key) => {
-      return key !== message;
+    this.requireForComplete.map(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
     });
-
-    this.checkComplete();
   }
 
   select(e) {
@@ -73,22 +78,52 @@ class Selectable extends play.Component {
   }
 
   getClass(key) {
-    return this.state.classes[key] ? this.state.classes[key] : '';
-  }
-
-  getULClass() {
     return classNames({
-      COMPLETE: this.state.complete,
+      [this.state.classes[key] || '']: true,
     });
   }
+
+  getClassNames() {
+    return classNames({
+      selectable: true,
+      COMPLETE: this.state.complete,
+    }, this.props.className);
+  }
+
+  checkComplete() {
+    var self = this, complete;
+
+    if (this.props.checkComplete === false) return;
+
+    complete = self.requireForComplete.every(key => {
+      if (self.refs[key] instanceof Node) {
+        return true;
+      }
+      if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
+        if (typeof self.refs[key].checkComplete === 'function') {
+          self.refs[key].checkComplete();
+        }
+        return false;
+      }
+      return true;
+    });
+
+    if (complete && !self.state.complete) {
+      self.complete();
+    } else if (self.state.started && !complete && self.state.complete) {
+      self.incomplete();
+    }
+  }
+
 
   renderList() {
     var list = this.props.list || this.state.list;
 
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+      li.type = li.type || skoash.ListItem;
       return (
-        <play.ListItem
+        <li.type
           {...li.props}
           className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
           data-ref={ref}
@@ -101,7 +136,7 @@ class Selectable extends play.Component {
 
   render() {
     return (
-      <ul className={'selectable ' + this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+      <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
         {this.renderList()}
       </ul>
     );
