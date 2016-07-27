@@ -18,16 +18,21 @@ class Selectable extends skoash.Component {
   }
 
   start() {
-    var selectClass, selectFunction;
+    var selectClass, selectFunction, classes = {};
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    if (this.props.selectOnStart) {
+      classes[this.props.selectOnStart] = selectClass;
+    }
 
     this.setState({
       started: true,
-      classes: {},
-      selectClass,
+      classes,
       selectFunction,
+      selectClass,
     });
 
     this.bootstrap();
@@ -64,11 +69,11 @@ class Selectable extends skoash.Component {
       this.props.selectRespond(message);
     }
 
-    this.requireForComplete = this.requireForComplete.filter((key) => {
-      return key !== message;
+    this.requireForComplete.map(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
     });
-
-    this.checkComplete();
   }
 
   select(e) {
@@ -85,10 +90,36 @@ class Selectable extends skoash.Component {
     return classNames(li.props.className, this.state.classes[key]);
   }
 
-  getULClass() {
-    return classNames('selectable', {
+  getClassNames() {
+    return classNames({
+      selectable: true,
       COMPLETE: this.state.complete,
+    }, this.props.className);
+  }
+
+  checkComplete() {
+    var self = this, complete;
+
+    if (this.props.checkComplete === false) return;
+
+    complete = self.requireForComplete.every(key => {
+      if (self.refs[key] instanceof Node) {
+        return true;
+      }
+      if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
+        if (typeof self.refs[key].checkComplete === 'function') {
+          self.refs[key].checkComplete();
+        }
+        return false;
+      }
+      return true;
     });
+
+    if (complete && !self.state.complete) {
+      self.complete();
+    } else if (self.state.started && !complete && self.state.complete) {
+      self.incomplete();
+    }
   }
 
   renderBin() {
@@ -107,6 +138,7 @@ class Selectable extends skoash.Component {
 
     return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
+      li.type = li.type || skoash.ListItem;
       return (
         <li.type
           {...li.props}
@@ -124,7 +156,7 @@ class Selectable extends skoash.Component {
     return (
       <div>
         {this.renderBin()}
-        <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
           {this.renderList()}
         </ul>
       </div>
