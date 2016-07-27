@@ -32,6 +32,7 @@ class DragNDropScreen extends skoash.Screen {
 
     if (dropzone.state.content && draggable !== dropzone.state.content) {
       dropzone.state.content.returnToStart();
+      dropzone.state.content.markIncorrect();
     }
 
     dropzone.setState({
