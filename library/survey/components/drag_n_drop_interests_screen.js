@@ -6,7 +6,7 @@ var DragNDropInterestsScreen = (
     id="drag-n-drop-interests"
     dropzoneAssets={[
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
-      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -29,14 +29,14 @@ var DragNDropInterestsScreen = (
       <skoash.ListItem className="draggable-list-item robotics animated" message="robotics" />
     ]}
     revealAssets={[
-      <skoash.Audio ref="space" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
-      <skoash.Audio ref="animals" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" />,
-      <skoash.Audio ref="recycling" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" />,
-      <skoash.Audio ref="money" type="voiceOver" src="media/assets/_audio/VOs/VO_Playing.mp3" />,
-      <skoash.Audio ref="printing" type="voiceOver" src="media/assets/_audio/VOs/VO_Looking.mp3" />,
-      <skoash.Audio ref="coding" type="voiceOver" src="media/assets/_audio/VOs/VO_School.mp3" />,
-      <skoash.Audio ref="art" type="voiceOver" src="media/assets/_audio/VOs/VO_Celebrities.mp3" />,
-      <skoash.Audio ref="robotics" type="voiceOver" src="media/assets/_audio/VOs/VO_Environment.mp3" />
+      <skoash.Audio ref="space" type="voiceOver" src="media/assets/_audio/VOs/VO_Space.mp3" />,
+      <skoash.Audio ref="animals" type="voiceOver" src="media/assets/_audio/VOs/VO_Endangered.mp3" />,
+      <skoash.Audio ref="recycling" type="voiceOver" src="media/assets/_audio/VOs/VO_Recycling.mp3" />,
+      <skoash.Audio ref="money" type="voiceOver" src="media/assets/_audio/VOs/VO_Money.mp3" />,
+      <skoash.Audio ref="printing" type="voiceOver" src="media/assets/_audio/VOs/VO_3DPrint.mp3" />,
+      <skoash.Audio ref="coding" type="voiceOver" src="media/assets/_audio/VOs/VO_Coding.mp3" />,
+      <skoash.Audio ref="art" type="voiceOver" src="media/assets/_audio/VOs/VO_Art.mp3" />,
+      <skoash.Audio ref="robotics" type="voiceOver" src="media/assets/_audio/VOs/VO_Robotics.mp3" />
     ]}
     afterDropzoneList={[
       <div ref="meter" className="meter animated"></div>
