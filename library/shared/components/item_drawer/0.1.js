@@ -15,7 +15,7 @@ class ItemDrawer extends Selectable {
 
     items = self.props.data || [];
 
-    if (self.state.category) {
+    if (self.state.category && items[self.state.category]) {
       items = items[self.state.category].items;
     }
 
@@ -36,6 +36,7 @@ class ItemDrawer extends Selectable {
       classes,
       selectFunction,
       categoryName: '',
+      category: '',
     });
 
     this.bootstrap();
@@ -92,12 +93,6 @@ class ItemDrawer extends Selectable {
     }
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
-  }
-
   getCategory() {
     if (this.state.categoryName) {
       return this.state.categoryName;
@@ -107,6 +102,12 @@ class ItemDrawer extends Selectable {
       return this.props.categories[this.props.categories.length - 1];
     }
     return '';
+  }
+
+  getClassNames() {
+    return classNames({
+      'ANSWERED': _.values(this.state.classes).indexOf(this.state.selectClass) !== -1
+    }, this.props.className, 'item-drawer-component');
   }
 
   getULClass() {
@@ -156,7 +157,7 @@ class ItemDrawer extends Selectable {
       item.items.some(subitem => {
         if (subitem.name === '_thumb.png') {
           src = subitem.thumb || subitem.src;
-          return false;
+          return true;
         }
       });
     }
@@ -183,11 +184,12 @@ class ItemDrawer extends Selectable {
 
     items = this.props.data;
 
-    if (this.state.category) {
+    if (this.state.category && items[this.state.category]) {
       items = items[this.state.category].items;
     }
 
     if (_.isArray(items)) {
+      var compare = items;
       items = items.sort(function (a, b) {
         var aVal = Number(a.order) || Infinity;
         var bVal = Number(b.order) || Infinity;
@@ -195,6 +197,7 @@ class ItemDrawer extends Selectable {
         if (aVal < bVal) return -1;
         return 1;
       });
+      debugger;
 
       return items.map((item, key) =>
         <skoash.ListItem
@@ -228,7 +231,7 @@ class ItemDrawer extends Selectable {
 
   render() {
     return (
-      <div className={this.props.className}>
+      <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
           <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>

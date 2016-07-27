@@ -163,8 +163,8 @@ class EditableAsset extends Draggable {
       e.pageY = e.targetTouches[0].pageY;
     }
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) - (this.state.left / this.state.zoom + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) - (this.state.top / this.state.zoom + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -179,31 +179,31 @@ class EditableAsset extends Draggable {
   }
 
   checkItem() {
-    var valid;
+    this.setCorners(() => {
+      var valid;
 
-    this.setCorners();
+      if (typeof this.props.checkItem === 'function') {
+        valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
 
-    if (typeof this.props.checkItem === 'function') {
-      valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
+        if (valid) {
+          this.setState({
+            valid,
+            lastValid: new Object(this.state),
+          });
+        } else {
+          this.setState({
+            valid,
+          });
+        }
 
-      if (valid) {
-        this.setState({
-          valid,
-          lastValid: new Object(this.state),
-        });
-      } else {
-        this.setState({
-          valid,
-        });
+        if (typeof this.props.setValid === 'function') {
+          this.props.setValid(valid);
+        }
       }
-
-      if (typeof this.props.setValid === 'function') {
-        this.props.setValid(valid);
-      }
-    }
+    });
   }
 
-  setCorners() {
+  setCorners(cb) {
     var center, distance, angle, corners = [];
 
     center = {
@@ -226,7 +226,7 @@ class EditableAsset extends Draggable {
 
     this.setState({
       corners,
-    });
+    }, cb);
   }
 
   getSize() {

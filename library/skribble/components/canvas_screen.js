@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import Canvas from 'shared/components/canvas/0.1';
 import Menu from 'shared/components/menu/0.1';
 import Selectable from 'shared/components/selectable/0.1';
@@ -66,6 +68,30 @@ class CanvasScreen extends skoash.Screen {
     }
   }
 
+  mapRulesStringToNumbers(rules) {
+    if (!rules) return;
+
+    if (_.isArray(rules.items)) {
+      rules.items.forEach(item => {
+        item.state.left = parseFloat(item.state.left);
+        item.state.rotation = parseFloat(item.state.rotation);
+        item.state.scale = parseFloat(item.state.scale);
+        item.state.top = parseFloat(item.state.top);
+      });
+    }
+
+    if (_.isArray(rules.messages)) {
+      rules.messages.forEach(message => {
+        message.state.left = parseFloat(message.state.left);
+        message.state.rotation = parseFloat(message.state.rotation);
+        message.state.scale = parseFloat(message.state.scale);
+        message.state.top = parseFloat(message.state.top);
+      });
+    }
+
+    return rules;
+  }
+
   open(opts) {
     var hasAssets, background, interval;
 
@@ -76,8 +102,10 @@ class CanvasScreen extends skoash.Screen {
     }
 
     if (opts.message) {
-      hasAssets = true,
-      background = !!opts.message.rules.background,
+      hasAssets = true;
+      background = !!opts.message.rules.background;
+
+      this.mapRulesStringToNumbers(opts.message.rules);
 
       this.refs.canvas.setItems(opts.message.rules);
 

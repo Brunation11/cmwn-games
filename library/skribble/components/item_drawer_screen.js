@@ -12,10 +12,6 @@ class ItemDrawerScreen extends skoash.Screen {
 
   }
 
-  bootstrap() {
-    skoash.Screen.prototype.bootstrap.call(this);
-  }
-
   selectRespond(message) {
     message = new Object(message);
     skoash.trigger('pass-data', {
@@ -40,8 +36,6 @@ class ItemDrawerScreen extends skoash.Screen {
   open(opts) {
     var self = this;
 
-    self.updateData();
-
     skoash.trigger('getMedia', {
       path: 'skribble/menu/' + opts.categories.join('/')
     }).then(data => {
@@ -54,6 +48,9 @@ class ItemDrawerScreen extends skoash.Screen {
       leave: false,
       close: false,
       opts,
+      data: null
+    }, () => {
+      self.updateData();
     });
 
     setTimeout(() => {

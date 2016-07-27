@@ -25,11 +25,26 @@ class Canvas extends skoash.Component {
     this.setValid = this.setValid.bind(this);
   }
 
+  start() {
+    var dom = ReactDOM.findDOMNode(this);
+
+    super.start();
+
+    this.setState({
+      width: dom.offsetWidth,
+      height: dom.offsetHeight,
+    });
+  }
+
   getItems() {
     var items, messages, self = this;
 
     items = this.state.items.map((item, key) => {
-      var state = self.refs['item-' + key].state;
+      var state;
+
+      if (!self.refs['item-' + key]) return item;
+
+      state = self.refs['item-' + key].state;
 
       item.state = {
         left: _.floor(state.left, 14),
@@ -48,7 +63,11 @@ class Canvas extends skoash.Component {
     });
 
     messages = this.state.messages.map((item, key) => {
-      var state = self.refs['message-' + key].state;
+      var state;
+
+      if (!self.refs['message-' + key]) return item;
+
+      state = self.refs['message-' + key].state;
 
       item.state = {
         left: _.floor(state.left, 14),
@@ -96,13 +115,21 @@ class Canvas extends skoash.Component {
         items: [],
         messages: [],
       }, () => {
-        this.setState(message);
+        this.addItem(message.background);
+        message.items.forEach(asset => {
+          this.addItem(asset);
+        });
+        message.messages.forEach(asset => {
+          this.addItem(asset);
+        });
       });
     }
   }
 
   addItem(asset, cb) {
-    var items, messages;
+    var items, messages, index;
+
+    if (!asset) return;
 
     if (asset.asset_type === 'background') {
       this.setState({
@@ -115,25 +142,52 @@ class Canvas extends skoash.Component {
           var background = this.state.background;
           background.check = d.check;
           background.mime_type = d.mime_type; // eslint-disable-line camelcase
-          this.setState({background});
+          this.setState({
+            background
+          }, cb);
         });
-        cb(arguments);
       });
 
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
       items.push(asset);
+      index = items.indexOf(asset);
 
       this.setState({
         items,
-      }, cb);
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          items[index] = asset;
+          this.setState({
+            items
+          }, cb);
+        });
+      });
     } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
       messages.push(asset);
+      index = messages.indexOf(asset);
 
       this.setState({
         messages,
-      }, cb);
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          messages[index] = asset;
+          this.setState({
+            messages
+          }, cb);
+        });
+      });
     }
   }
 
@@ -209,14 +263,57 @@ class Canvas extends skoash.Component {
     var self = this;
 
     return (
-      self.state[type + 's'][key].can_overlap ||
-      !self.state[type + 's'].some((item, index) =>
-        key !== index &&
-        !self.state[type + 's'][index].can_overlap &&
-        play.util.doIntersect(
-          self.refs[type + '-' + key].state.corners,
-          self.refs[type + '-' + index].state.corners
+      self.isInBounds(key, type) && (
+        self.refs[type + '-' + key].state.can_overlap ||
+        !self.state[type + 's'].some((item, index) =>
+          key !== index &&
+          !self.refs[type + '-' + index].state.can_overlap &&
+          skoash.util.doIntersect(
+            self.refs[type + '-' + key].state.corners,
+            self.refs[type + '-' + index].state.corners
+          )
         )
+      )
+    );
+  }
+
+  isInBounds(key, type) {
+    return !(
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: 0},
+          {x: 0, y: this.state.height},
+          {x: -1, y: this.state.height},
+          {x: -1, y: 0}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: 0},
+          {x: this.state.width, y: 0},
+          {x: this.state.width, y: -1},
+          {x: 0, y: -1}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: this.state.width, y: 0},
+          {x: this.state.width, y: this.state.height},
+          {x: this.state.width + 1, y: this.state.height},
+          {x: this.state.width + 1, y: 0}
+        ]
+      ) ||
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: this.state.height},
+          {x: this.state.width, y: this.state.height},
+          {x: this.state.width, y: this.state.height + 1},
+          {x: 0, y: this.state.height + 1}
+        ]
       )
     );
   }
@@ -282,7 +379,7 @@ class Canvas extends skoash.Component {
   getClassNames() {
     return classNames({
       canvas: true,
-      ACTIVE: this.state.active,
+      ACTIVE: !this.props.preview && this.state.active,
     });
   }
 
