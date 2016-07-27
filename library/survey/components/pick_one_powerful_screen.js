@@ -9,11 +9,14 @@ var PickOnePowerfulScreen = (
 
     <SelectableReveal
       ref="selectable-reveal"
-      selectableSelectClass="HIGHLIGHTED"
       selectableCompleteOnSelect
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="very-powerful animated" data-ref="very-powerful" correct />,
         <skoash.ListItem className="not-powerful animated" data-ref="not-powerful" correct />,
@@ -21,10 +24,10 @@ var PickOnePowerfulScreen = (
         <skoash.ListItem className="dont-care animated" data-ref="dont-care" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="very-powerful" type="voiceOver" src="media/assets/_audio/VOs/VO_Very.mp3" />,
-        <skoash.Audio ref="not-powerful" type="voiceOver" src="media/assets/_audio/VOs/VO_DontFeel.mp3" />,
-        <skoash.Audio ref="unsure" type="voiceOver" src="media/assets/_audio/VOs/VO_Unsure.mp3" />,
-        <skoash.Audio ref="dont-care" type="voiceOver" src="media/assets/_audio/VOs/VO_DontCare.mp3" />
+        <skoash.Audio ref="very-powerful" type="voiceOver" src="media/assets/_audio/VOs/VO_Very.mp3" delay={1000} />,
+        <skoash.Audio ref="not-powerful" type="voiceOver" src="media/assets/_audio/VOs/VO_DontFeel.mp3" delay={1000} />,
+        <skoash.Audio ref="unsure" type="voiceOver" src="media/assets/_audio/VOs/VO_Unsure.mp3" delay={1000} />,
+        <skoash.Audio ref="dont-care" type="voiceOver" src="media/assets/_audio/VOs/VO_DontCare.mp3" delay={1000} />
       ]}
     />
 
@@ -35,5 +38,4 @@ var PickOnePowerfulScreen = (
 export default PickOnePowerfulScreen;
 
 // edit highlighted state
-// add select audio S_BU_1
 // save data
