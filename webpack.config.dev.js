@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.es6.js'],
     modulesDirectories: ['node_modules']
   },
   plugins: [],
@@ -17,7 +17,7 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\es6\.js$/,
       loader: 'babel-loader',
       include: path.join(__dirname, 'library/'),
       exclude: [/bower_components/, /node_modules/],

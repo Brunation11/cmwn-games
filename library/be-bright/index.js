@@ -1,8 +1,8 @@
 import config from './config.game';
 
-import Loader from 'shared/components/loader/0.1';
+import Loader from 'shared/components/loader/0.1.js';
 
-import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1.js';
 import TitleScreen from './components/title_screen';
 import BulbsScreen from './components/bulbs_screen';
 import PigScreen from './components/pig_screen';
@@ -11,7 +11,7 @@ import InfoScreen from './components/info_screen';
 import VideoScreen from './components/video_screen';
 import FlipScreen from './components/flip_screen';
 
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from 'shared/components/quit_screen/0.1.js';
 
 import 'shared/js/test-platform-integration';
 
