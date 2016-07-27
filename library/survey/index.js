@@ -19,6 +19,7 @@ import HowMuchEnvScreen from './components/how_much_env_screen';
 import HowMuchSpeciesScreen from './components/how_much_species_screen';
 import HowMuchWaterScreen from './components/how_much_water_screen';
 import DragNDropInterestsScreen from './components/drag_n_drop_interests_screen';
+import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -45,7 +46,8 @@ class Survey extends skoash.Game {
       13: HowMuchEnvScreen,
       14: HowMuchSpeciesScreen,
       15: HowMuchWaterScreen,
-      16: DragNDropInterestsScreen
+      16: DragNDropInterestsScreen,
+      17: FlipScreen
     };
 
     this.menus = {
@@ -75,7 +77,7 @@ class Survey extends skoash.Game {
         <skoash.Audio ref="button" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_4.mp3" />
         <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
-        <skoash.Audio ref="drop" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
       </div>
     );
   }

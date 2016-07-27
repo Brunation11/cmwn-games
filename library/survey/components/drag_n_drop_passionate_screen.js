@@ -6,8 +6,9 @@ var DragNDropPassionateScreen = (
     id="drag-n-drop-passionate"
     dropzoneAssets={[
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
-      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
+    centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -19,14 +20,14 @@ var DragNDropPassionateScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item friends animated" message="friends" return />,
-      <skoash.ListItem className="draggable-list-item world-peace animated" message="world-peace" return />,
-      <skoash.ListItem className="draggable-list-item sports animated" message="sports" return />,
-      <skoash.ListItem className="draggable-list-item playing-games animated" message="playing-games" return />,
-      <skoash.ListItem className="draggable-list-item looking-cool animated" message="looking-cool" return />,
-      <skoash.ListItem className="draggable-list-item school animated" message="school" return />,
-      <skoash.ListItem className="draggable-list-item celebrities animated" message="celebrities" return />,
-      <skoash.ListItem className="draggable-list-item environment animated" message="environment" return />
+      <skoash.ListItem className="draggable-list-item friends animated" message="friends" />,
+      <skoash.ListItem className="draggable-list-item world-peace animated" message="world-peace" />,
+      <skoash.ListItem className="draggable-list-item sports animated" message="sports" />,
+      <skoash.ListItem className="draggable-list-item playing-games animated" message="playing-games" />,
+      <skoash.ListItem className="draggable-list-item looking-cool animated" message="looking-cool" />,
+      <skoash.ListItem className="draggable-list-item school animated" message="school" />,
+      <skoash.ListItem className="draggable-list-item celebrities animated" message="celebrities" />,
+      <skoash.ListItem className="draggable-list-item environment animated" message="environment"  />
     ]}
     revealAssets={[
       <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
@@ -51,8 +52,5 @@ var DragNDropPassionateScreen = (
 
 export default DragNDropPassionateScreen;
 
-// add drag/drop sounds
-// list items need to reset if another item is put in same dropzone
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
-// resize draggables to easily drop in dropzones

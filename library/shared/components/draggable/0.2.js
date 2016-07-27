@@ -112,6 +112,13 @@ class Draggable extends play.Component {
     }
   }
 
+  setEnd(endX, endY) {
+    this.setState({
+      endX,
+      endY
+    });
+  }
+
   returnToStart() {
     var endX, endY;
 
