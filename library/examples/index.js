@@ -3,7 +3,8 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import ScoreScreen from './components/score_screen';
+import MatchScreen from './components/match_screen';
+// import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
 // import TimerScreen from './components/timer_screen';
 // import AudioScreen from './components/audio_screen';
@@ -25,7 +26,8 @@ class Examples extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: ScoreScreen,
+      1: MatchScreen,
+      // 1: ScoreScreen,
       // 1: DropzoneScreen,
       // 1: TimerScreen,
       // 1: AudioScreen,
@@ -50,9 +52,9 @@ class Examples extends skoash.Game {
   }
 
   renderAssets() {
+        // <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
     return (
       <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
         <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />

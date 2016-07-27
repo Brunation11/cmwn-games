@@ -42,6 +42,15 @@ class Selectable extends skoash.Component {
     });
   }
 
+  bootstrap() {
+    skoash.Component.prototype.bootstrap.call(this);
+    if (this.refs.bin) {
+      this.setState({
+        list: this.refs.bin.getAll()
+      });
+    }
+  }
+
   selectHelper(e, classes) {
     var message, target;
 
@@ -77,10 +86,8 @@ class Selectable extends skoash.Component {
     this.selectHelper(e, classes);
   }
 
-  getClass(key) {
-    return classNames({
-      [this.state.classes[key] || '']: true,
-    });
+  getClass(key, li) {
+    return classNames(li.props.className, this.state.classes[key]);
   }
 
   getClassNames() {
@@ -115,18 +122,29 @@ class Selectable extends skoash.Component {
     }
   }
 
+  renderBin() {
+    if (!this.props.bin) return null;
+
+    return (
+      <this.props.bin.type
+        {...this.props.bin.props}
+        ref={'bin'}
+      />
+    );
+  }
 
   renderList() {
     var list = this.props.list || this.state.list;
 
     return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+      var ref = li.ref || li.props['data-ref'] || key;
       li.type = li.type || skoash.ListItem;
       return (
         <li.type
           {...li.props}
-          className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
+          className={this.getClass(ref, li)}
           data-ref={ref}
+          data-message={li.props.message}
           ref={ref}
           key={key}
         />
@@ -136,9 +154,12 @@ class Selectable extends skoash.Component {
 
   render() {
     return (
-      <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-        {this.renderList()}
-      </ul>
+      <div>
+        {this.renderBin()}
+        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+          {this.renderList()}
+        </ul>
+      </div>
     );
   }
 }
