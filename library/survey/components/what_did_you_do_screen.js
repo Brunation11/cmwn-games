@@ -15,6 +15,10 @@ var WhatDidYouDoScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="felt-bad animated" data-ref="felt-bad" correct />,
         <skoash.ListItem className="didnt-bother animated" data-ref="didnt-bother" correct />,
@@ -23,11 +27,11 @@ var WhatDidYouDoScreen = (
         <skoash.ListItem className="reported-it animated" data-ref="reported-it" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="felt-bad" type="voiceOver" src="media/assets/_audio/VOs/VO_FeelBad.mp3" />,
-        <skoash.Audio ref="didnt-bother" type="voiceOver" src="media/assets/_audio/VOs/VO_Ignored.mp3" />,
-        <skoash.Audio ref="something-mean" type="voiceOver" src="media/assets/_audio/VOs/VO_SaidSomething.mp3" />,
-        <skoash.Audio ref="asked-a-friend" type="voiceOver" src="media/assets/_audio/VOs/VO_AskedFriend.mp3" />,
-        <skoash.Audio ref="reported-it" type="voiceOver" src="media/assets/_audio/VOs/VO_Reported.mp3" />
+        <skoash.Audio ref="felt-bad" type="voiceOver" src="media/assets/_audio/VOs/VO_FeelBad.mp3" delay={1000} />,
+        <skoash.Audio ref="didnt-bother" type="voiceOver" src="media/assets/_audio/VOs/VO_Ignored.mp3" delay={1000} />,
+        <skoash.Audio ref="something-mean" type="voiceOver" src="media/assets/_audio/VOs/VO_SaidSomething.mp3" delay={1000} />,
+        <skoash.Audio ref="asked-a-friend" type="voiceOver" src="media/assets/_audio/VOs/VO_AskedFriend.mp3" delay={1000} />,
+        <skoash.Audio ref="reported-it" type="voiceOver" src="media/assets/_audio/VOs/VO_Reported.mp3" delay={1000} />
       ]}
     />
 
