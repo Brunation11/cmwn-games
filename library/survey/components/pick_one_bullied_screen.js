@@ -11,18 +11,21 @@ var PickOneBulliedScreen = (
 
     <SelectableReveal
       ref="selectable-reveal"
-      // selectableSelectClass="HIGHLIGHTED"
       selectableCompleteOnSelect
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="yes animated" data-ref="yes" correct />,
         <skoash.ListItem className="no animated" data-ref="no" correct />,
       ]}
       revealAssets={[
-        <skoash.Audio ref="yes" type="voiceOver" src="media/assets/_audio/VOs/VO_Yes.mp3" />,
-        <skoash.Audio ref="no" type="voiceOver" src="media/assets/_audio/VOs/VO_No.mp3" />
+        <skoash.Audio ref="yes" type="voiceOver" src="media/assets/_audio/VOs/VO_Yes.mp3" delay={1000} />,
+        <skoash.Audio ref="no" type="voiceOver" src="media/assets/_audio/VOs/VO_No.mp3" delay={1000} />
       ]}
     />
 
@@ -33,5 +36,4 @@ var PickOneBulliedScreen = (
 export default PickOneBulliedScreen;
 
 // edit highlighted state
-// add s_BU_1 audio on select
 // save data
