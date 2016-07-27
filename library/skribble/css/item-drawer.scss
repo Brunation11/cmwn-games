@@ -1,5 +1,20 @@
 @import 'variables';
 
+.item-drawer-component {
+  button.select {
+    opacity: .7;
+    pointer-events: none;
+    transition: opacity .5s;
+  }
+
+  &.ANSWERED {
+    button.select {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+
 .item-drawer-container {
   display: inline-block;
   background-image: url(../media/_Frames/SK_frames_general.png);

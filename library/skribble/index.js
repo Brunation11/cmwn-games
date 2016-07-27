@@ -141,7 +141,11 @@ class Skribble extends skoash.Game {
     }).then(d => {
       var opts, currentOpts, hasFolders;
       opts = {
-        data: {}
+        data: {},
+        callback: () => {
+          this.refs['screen-canvas'].setMenu();
+          this.refs['screen-item-drawer'].updateData();
+        }
       };
       currentOpts = opts.data;
 

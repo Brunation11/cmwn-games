@@ -46,7 +46,7 @@ class PreviewScreen extends skoash.Screen {
     return (
       <div>
         <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          <Canvas ref={refs.canvas} />
+          <Canvas ref={refs.canvas} preview />
           <div className={classNameText.box} />
         </skoash.Component>
         <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
