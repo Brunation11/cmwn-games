@@ -20,7 +20,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class LitterBug extends skoash.Game {
   constructor() {
@@ -73,6 +73,7 @@ class LitterBug extends skoash.Game {
         <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />
         <skoash.Image ref="img-bkg-4" className="hidden" src="media/_BKG/BKG_4.png" />
         <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />
+        <div className="background default" />
         <div className="background lets-clean-up" />
         <div className="background select" />
         <div className="background sun" />

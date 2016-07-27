@@ -1,3 +1,5 @@
+@import 'variables';
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,9 +20,7 @@ html, body, body > div, body > div > div {
   height: 540px;
   margin: auto;
   font-size: 20px;
-  background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
-
+  background: $black;
 
   .background {
     opacity: 0;
@@ -34,9 +34,13 @@ html, body, body > div, body > div > div {
     background-position: center center
   }
 
+  .background.default {
+    background-image: url(../media/_BKG/BKG_1.png);
+  }
+
   .background.lets-clean-up {
-      background-image: url(../media/_BKG/BKG_2.png);
-    }
+    background-image: url(../media/_BKG/BKG_2.png);
+  }
   
   .background.select {
     background-image: url(../media/_BKG/BKG_3.png);
@@ -61,6 +65,7 @@ html, body, body > div, body > div > div {
     background-image: url(../media/_BKG/BKG_5.png);
   }
 
+  .background.default,
   &.SCREEN-2 .background.lets-clean-up,
   &.SCREEN-3 .background.select,
   &.SCREEN-3.SUN .background.sun,
