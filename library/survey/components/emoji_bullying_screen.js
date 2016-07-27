@@ -17,15 +17,19 @@ var EmojiBullyingScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="sad animated" data-ref="sad" correct />,
         <skoash.ListItem className="angry animated" data-ref="angry" correct />,
         <skoash.ListItem className="no-big-deal animated" data-ref="no-big-deal" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="sad" type="voiceOver" src="media/assets/_audio/VOs/VO_Sad.mp3" />,
-        <skoash.Audio ref="angry" type="voiceOver" src="media/assets/_audio/VOs/VO_Angry.mp3" />,
-        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_NoBig.mp3" />
+        <skoash.Audio ref="sad" type="voiceOver" src="media/assets/_audio/VOs/VO_Sad.mp3" delay={1000} />,
+        <skoash.Audio ref="angry" type="voiceOver" src="media/assets/_audio/VOs/VO_Angry.mp3" delay={1000} />,
+        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_NoBig.mp3" delay={1000} />
       ]}
     />
 
@@ -36,5 +40,4 @@ var EmojiBullyingScreen = (
 export default EmojiBullyingScreen;
 
 // edit highlighted state
-// add s_BU_1 audio on select
 // save data

@@ -18,15 +18,19 @@ var EmojiFriendlinessScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="happy animated" data-ref="happy" correct />,
         <skoash.ListItem className="surprised animated" data-ref="surprised" correct />,
         <skoash.ListItem className="confused animated" data-ref="confused" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="happy" type="voiceOver" src="media/assets/_audio/VOs/VO_Happy.mp3" />,
-        <skoash.Audio ref="surprised" type="voiceOver" src="media/assets/_audio/VOs/VO_Surprised.mp3" />,
-        <skoash.Audio ref="confused" type="voiceOver" src="media/assets/_audio/VOs/VO_Confused.mp3" />
+        <skoash.Audio ref="happy" type="voiceOver" src="media/assets/_audio/VOs/VO_Happy.mp3" delay={1000} />,
+        <skoash.Audio ref="surprised" type="voiceOver" src="media/assets/_audio/VOs/VO_Surprised.mp3" delay={1000} />,
+        <skoash.Audio ref="confused" type="voiceOver" src="media/assets/_audio/VOs/VO_Confused.mp3" delay={1000} />
       ]}
     />
 
@@ -37,5 +41,4 @@ var EmojiFriendlinessScreen = (
 export default EmojiFriendlinessScreen;
 
 // edit highlighted state
-// add s_BU_1 audio on select
 // save data

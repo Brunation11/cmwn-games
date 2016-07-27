@@ -18,15 +18,19 @@ var EmojiAngryScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="worried animated" data-ref="worried" correct />,
         <skoash.ListItem className="shocked animated" data-ref="shocked" correct />,
         <skoash.ListItem className="no-big-deal animated" data-ref="no-big-deal" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="worried" type="voiceOver" src="media/assets/_audio/VOs/VO_Worried.mp3" />,
-        <skoash.Audio ref="shocked" type="voiceOver" src="media/assets/_audio/VOs/VO_Shocked.mp3" />,
-        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_NoBig.mp3" />
+        <skoash.Audio ref="worried" type="voiceOver" src="media/assets/_audio/VOs/VO_Worried.mp3" delay={1000} />,
+        <skoash.Audio ref="shocked" type="voiceOver" src="media/assets/_audio/VOs/VO_Shocked.mp3" delay={1000} />,
+        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_NoBig.mp3" delay={1000} />
       ]}
     />
 
@@ -37,5 +41,4 @@ var EmojiAngryScreen = (
 export default EmojiAngryScreen;
 
 // edit highlighted state
-// add s_BU_1 audio on select
 // save data
