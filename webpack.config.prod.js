@@ -37,9 +37,9 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: 'babel-loader',
+      loaders: 'babel',
       include: path.join(__dirname, 'library/'),
-      exclude: [/bower_components/, /node_modules/],
+      exclude: [/node_modules/],
       query: {
           presets: ['es2015', 'react', 'stage-0']
       }
