@@ -480,13 +480,16 @@ p {
         animation-name: bounceInDown;
         animation-delay: 4s;
       }
+
+      &.COMPLETE {
+        &.you {
+          animation-name: tada;
+          animation-delay: 2s;
+        }
+      }
     }
   }
 
-  &.COMPLETE {
-    img {
-    }
-  }
 }
 
 #drag-n-drop-passionate {
