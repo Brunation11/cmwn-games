@@ -76,7 +76,7 @@ class Reveal extends play.Component {
       return this.props.assets.map((asset, key) => {
         var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
-          <play.Audio
+          <asset.type
             {...asset.props}
             ref={ref}
             key={key}
