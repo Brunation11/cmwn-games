@@ -5,20 +5,12 @@ var FlipScreen = (
       name: 'flip',
     }}
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/S_10/VO_10.1.mp3" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Finished.mp3" />
     <skoash.Audio ref="start" type="sfx" src="media/S_10/S_10.2.mp3" delay={4000} />
-    <h2>
-      Good Job!<br/>
-      Be a super Light Saver hero<br/>
-      and
-      <skoash.Image
-        ref="flip-img"
-        className="inline animated"
-        src="media/S_10/img_10.1.png"
-      />
-      that switch!
-    </h2>
-    <skoash.Image ref="stamp-img" className="stamp animated" src="media/S_10/img_10.2.png" />
+    <skoash.Image ref="frame" className="frame animated" src="media/assets/_images/S_17/IMG_17_Frame.png" />
+    <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_17/Text_17_Youfinished.png" />
+    <skoash.Image ref="confetti" className="confetti animated" src="media/assets/_images/S_17/IMG_17_Confetti.png" />
+    <skoash.Image ref="you" className="you animated" src="media/assets/_images/S_17/Text_17_You.png" />
   </skoash.Screen>
 );
 
