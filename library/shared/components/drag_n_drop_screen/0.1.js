@@ -18,10 +18,12 @@ class DragNDropScreen extends skoash.Screen {
         });
       }
     });
+
+    this.incomplete();
   }
 
   correctRespond(draggable, dropzoneKey) {
-    var dropzone, endX, endY;
+    var dropzone, endX, endY, complete = true;
     dropzone = this.refs.dropzone.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
     if (this.props.centerOnCorrect) {
@@ -38,6 +40,13 @@ class DragNDropScreen extends skoash.Screen {
     dropzone.setState({
       content: draggable
     });
+
+    _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
+      if (key.indexOf('dropzone-')) return;
+      if (!ref.state.content) complete = false;
+    });
+
+    if (complete) this.complete();
   }
 
   renderContent() {
@@ -58,5 +67,10 @@ class DragNDropScreen extends skoash.Screen {
     );
   }
 }
+
+DragNDropScreen.defaultProps = {
+  checkComplete: false,
+  checkReady: true,
+};
 
 export default DragNDropScreen;

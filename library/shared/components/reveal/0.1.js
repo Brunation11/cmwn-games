@@ -47,10 +47,10 @@ class Reveal extends play.Component {
   }
 
   playAudio(message) {
-    var messages;
+    var messages, media;
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
+    if (this.media['open-sound']) {
+      this.media['open-sound'].play();
     }
 
     if ('' + parseInt(message, 10) === message) {
@@ -60,14 +60,13 @@ class Reveal extends play.Component {
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
+        if (this.media[audio]) {
+          this.media[audio].play();
         }
       });
     } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
-      }
+      media = this.media[message] || this.media.audio.voiceOver[message];
+      if (media) media.play();
     }
   }
 

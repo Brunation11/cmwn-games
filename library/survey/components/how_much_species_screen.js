@@ -1,4 +1,3 @@
-import AudioSequence from 'shared/components/audio_sequence/0.1'
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
 var HowMuchSpeciesScreen = (
@@ -6,13 +5,13 @@ var HowMuchSpeciesScreen = (
     id="how-much-species"
   >
 
-    <AudioSequence
+    <skoash.MediaSequence
       ref="vo"
       checkComplete={true}
     >
       <skoash.Audio ref="vo-how-much" type="voiceOver" src="media/assets/_audio/VOs/VO_HowMuch.mp3" />
       <skoash.Audio ref="vo-endangered" type="voiceOver" src="media/assets/_audio/VOs/VO_EndangeredSp.mp3" />
-    </AudioSequence>
+    </skoash.MediaSequence>
 
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_13/Text_13_How%20much%20do%20you%20know.png" />
     <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_13/IMG_13_Penguins.png" />
@@ -38,27 +37,27 @@ var HowMuchSpeciesScreen = (
         <skoash.ListItem className="not-at-all animated" data-ref="not-at-all" correct />
       ]}
       revealAssets={[
-        // <AudioSequence
+        // <skoash.MediaSequence
         //   ref="a-lot"
         //   checkComplete={true}
         // >
           <skoash.Audio ref="a-lot-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALot.mp3" delay={1000} />,
           <skoash.Audio ref="a-lot-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALot.mp3" delay={1000} />,
-        // </AudioSequence>,
-        // <AudioSequence
+        // </skoash.MediaSequence>,
+        // <skoash.MediaSequence
           // ref="a-little"
           // checkComplete={true}
         // >
           <skoash.Audio ref="a-little-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALittle.mp3" delay={1000} />,
           <skoash.Audio ref="a-little-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALittle.mp3" delay={1000} />,
-        // </AudioSequence>,
-        // <AudioSequence
+        // </skoash.MediaSequence>,
+        // <skoash.MediaSequence
           // ref="a-not-at-all"
           // checkComplete={true}
         // >
           <skoash.Audio ref="not-at-all-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_NotAtAll.mp3" delay={1000} />,
           <skoash.Audio ref="not-at-all-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_NotAt.mp3" delay={1000} />
-        // </AudioSequence>
+        // </skoash.MediaSequence>
       ]}
     />
 
