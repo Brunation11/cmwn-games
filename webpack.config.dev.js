@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
-    extensions: ['', '.js', '.es6.js'],
+    extensions: ['', '.js'],
     modulesDirectories: ['node_modules']
   },
   plugins: [],
