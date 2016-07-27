@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import shortid from 'shortid';
 import classNames from 'classnames';
 
 class Randomizer extends skoash.Component {
@@ -22,7 +23,7 @@ class Randomizer extends skoash.Component {
     }
 
     while (bin.length < amount) {
-      bin.push(..._.shuffle(this.props.bin));
+      bin.concat(_.shuffle(this.props.bin));
     }
 
     if (this.props.remain) {
@@ -48,7 +49,7 @@ class Randomizer extends skoash.Component {
           {...li.props}
           data-ref={ref}
           ref={ref}
-          key={key}
+          key={shortid(key)}
         />
       );
     });
