@@ -6,8 +6,9 @@ var DragNDropIssuesScreen = (
     id="drag-n-drop-issues"
     dropzoneAssets={[
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
-      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
+    centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -19,14 +20,14 @@ var DragNDropIssuesScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item cyberbullying animated" message="cyberbullying" return />,
-      <skoash.ListItem className="draggable-list-item endangered-animals animated" message="endangered-animals" return />,
-      <skoash.ListItem className="draggable-list-item literacy animated" message="literacy" return />,
-      <skoash.ListItem className="draggable-list-item climate-change animated" message="climate-change" return />,
-      <skoash.ListItem className="draggable-list-item poverty animated" message="poverty" return />,
-      <skoash.ListItem className="draggable-list-item health-problems animated" message="health-problems" return />,
-      <skoash.ListItem className="draggable-list-item homelessness animated" message="homelessness" return />,
-      <skoash.ListItem className="draggable-list-item war-and-terrorism animated" message="war-and-terrorism" return />
+      <skoash.ListItem className="draggable-list-item cyberbullying animated" message="cyberbullying" />,
+      <skoash.ListItem className="draggable-list-item endangered-animals animated" message="endangered-animals" />,
+      <skoash.ListItem className="draggable-list-item literacy animated" message="literacy" />,
+      <skoash.ListItem className="draggable-list-item climate-change animated" message="climate-change" />,
+      <skoash.ListItem className="draggable-list-item poverty animated" message="poverty" />,
+      <skoash.ListItem className="draggable-list-item health-problems animated" message="health-problems" />,
+      <skoash.ListItem className="draggable-list-item homelessness animated" message="homelessness" />,
+      <skoash.ListItem className="draggable-list-item war-and-terrorism animated" message="war-and-terrorism" />
     ]}
     revealAssets={[
       <skoash.Audio ref="cyberbullying" type="voiceOver" src="media/assets/_audio/VOs/VO_Cyberbullying.mp3" />,
@@ -52,7 +53,5 @@ var DragNDropIssuesScreen = (
 export default DragNDropIssuesScreen;
 
 // add drag/drop sounds
-// list items need to reset if another item is put in same dropzone
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
-// resize draggables to easily drop in dropzones
