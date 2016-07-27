@@ -189,15 +189,17 @@ class ItemDrawer extends Selectable {
     }
 
     if (_.isArray(items)) {
-      var compare = items;
       items = items.sort(function (a, b) {
         var aVal = Number(a.order) || Infinity;
         var bVal = Number(b.order) || Infinity;
-        if (aVal === bVal) return 0;
+        if (aVal === bVal) {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        }
         if (aVal < bVal) return -1;
         return 1;
       });
-      debugger;
 
       return items.map((item, key) =>
         <skoash.ListItem
