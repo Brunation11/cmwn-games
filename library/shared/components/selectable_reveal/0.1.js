@@ -21,6 +21,9 @@ class SelectableReveal extends play.Component {
         }
       }
     } else {
+      if (this.props.allCorrect) {
+        if (this.audio.correct) this.audio.correct.play();
+      }
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
