@@ -20,18 +20,22 @@ var HowMuchEnvScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="a-lot animated" data-ref="a-lot" correct />,
         <skoash.ListItem className="a-little animated" data-ref="a-little" correct />,
         <skoash.ListItem className="not-at-all animated" data-ref="not-at-all" correct />
       ]}
       revealAssets={[
-        <skoash.Audio ref="a-lot" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALot.mp3" />,
-        <skoash.Audio ref="a-lot" type="voiceOver" src="media/assets/_audio/VOs/VO_ALot.mp3" />,
-        <skoash.Audio ref="a-little" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALittle.mp3" />,
-        <skoash.Audio ref="a-little" type="voiceOver" src="media/assets/_audio/VOs/VO_ALittle.mp3" />,
-        <skoash.Audio ref="not-at-all" type="voiceOver" src="media/assets/_audio/_Expressions/S_NotAtAll.mp3" />,
-        <skoash.Audio ref="not-at-all" type="voiceOver" src="media/assets/_audio/VOs/VO_NotAt.mp3" />
+        <skoash.Audio ref="a-lot" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALot.mp3" delay={1000} />,
+        <skoash.Audio ref="a-lot" type="voiceOver" src="media/assets/_audio/VOs/VO_ALot.mp3" delay={1000} />,
+        <skoash.Audio ref="a-little" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALittle.mp3" delay={1000} />,
+        <skoash.Audio ref="a-little" type="voiceOver" src="media/assets/_audio/VOs/VO_ALittle.mp3" delay={1000} />,
+        <skoash.Audio ref="not-at-all" type="voiceOver" src="media/assets/_audio/_Expressions/S_NotAtAll.mp3" delay={1000} />,
+        <skoash.Audio ref="not-at-all" type="voiceOver" src="media/assets/_audio/VOs/VO_NotAt.mp3" delay={1000} />
       ]}
     />
 
@@ -44,5 +48,4 @@ export default HowMuchEnvScreen;
 // edit highlighted state
 // add secondary vo
 // add emotion sound
-// add select sound
 // save data

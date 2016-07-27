@@ -20,6 +20,10 @@ var HowMuchWaterScreen = (
       selectableCheckComplete={false}
       revealCompleteOnOpen
       revealCheckComplete={false}
+      allCorrect
+      assets={[
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
+      ]}
       selectableList={[
         <skoash.ListItem className="a-lot animated" data-ref="a-lot" correct />,
         <skoash.ListItem className="a-little animated" data-ref="a-little" correct />,
@@ -44,5 +48,4 @@ export default HowMuchWaterScreen;
 // edit highlighted state
 // add secondary vo
 // add emotion sound
-// add select sound
 // save data
