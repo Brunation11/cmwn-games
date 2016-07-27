@@ -4,6 +4,10 @@ import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 var QualitiesBucketsScreen = (
   <DragNDropScreen
     id="qualities-buckets"
+    allCorrect
+    dropzoneAssets={[
+      <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
+    ]}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />
@@ -19,14 +23,14 @@ var QualitiesBucketsScreen = (
       <skoash.ListItem className="draggable-list-item friendliness animated" message="friendliness" return />
     ]}
     revealAssets={[
-      <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
-      <skoash.Audio ref="kindness" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" />,
-      <skoash.Audio ref="rudeness" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" />,
-      <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_Playing.mp3" />,
-      <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Looking.mp3" />,
-      <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_School.mp3" />,
-      <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_Celebrities.mp3" />,
-      <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Environment.mp3" />
+      <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Sharing.mp3" />,
+      <skoash.Audio ref="kindness" type="voiceOver" src="media/assets/_audio/VOs/VO_Kindness.mp3" />,
+      <skoash.Audio ref="rudeness" type="voiceOver" src="media/assets/_audio/VOs/VO_Rudeness.mp3" />,
+      <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingBully.mp3" />,
+      <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />,
+      <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_Greediness.mp3" />,
+      <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_Angry.mp3" />,
+      <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
     ]}
     afterDropzoneList={[
       <div ref="meter" className="meter animated"></div>
@@ -42,7 +46,6 @@ export default QualitiesBucketsScreen;
 
 // add hover state to drop zones on drop
 // edit hover state for drop zones
-// add drop sound S_6.1 when item drops in bucket
 // screen should only complete once all items are in a dropzones
 // collect the data from dropzone
 // update frame image
