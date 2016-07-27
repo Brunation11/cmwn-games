@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/library',
@@ -17,10 +18,10 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\es6\.js$/,
+      test: /\.js$/,
       loader: 'babel-loader',
       include: path.join(__dirname, 'library/'),
-      exclude: [/bower_components/, /node_modules/],
+      exclude: [/node_modules/],
       query: {
           presets: ['es2015', 'react']
       }

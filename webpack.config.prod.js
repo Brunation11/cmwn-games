@@ -1,5 +1,5 @@
-var path = require('path'),
-  webpack = require('webpack');
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/library',
@@ -37,9 +37,12 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['babel'],
+      loaders: 'babel-loader',
       include: path.join(__dirname, 'library/'),
-      exclude: [/bower_components/, /node_modules/]
+      exclude: [/bower_components/, /node_modules/],
+      query: {
+          presets: ['es2015', 'react']
+      }
     }]
   },
   postcss: function () {
