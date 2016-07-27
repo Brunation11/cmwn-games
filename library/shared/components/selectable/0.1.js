@@ -78,11 +78,13 @@ class Selectable extends play.Component {
   renderList() {
     return this.props.list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
+      var message = li.props.message || '' + key;
       return (
         <li.type
           {...li.props}
           type="li"
           className={(li.props.className ? li.props.className + ' ' : '') + this.getClass(ref)}
+          message={message}
           data-ref={ref}
           ref={ref}
           key={key}

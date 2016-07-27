@@ -24,46 +24,51 @@ class SelectableCanvas extends Selectable {
     this.items = [];
 
     _.forIn(this.refs, component => {
-      this.items.push(component);
+      if (!component.refs) return;
+      this.items.push(ReactDOM.findDOMNode(component.refs.img));
     });
   }
 
   selectHelper(e, classes) {
-    var message, target;
+    var offset, target;
 
-    target = e.target.closest('LI');
+    offset = this.el.getBoundingClientRect();
+    this.buffer.width = offset.width;
+    this.buffer.height = offset.height;
 
-    if (!target) return;
+    this.items.some((item, key) => {
+      if (this.isImageTarget(item, e, offset)) {
+        target = this.refs[key];
+        target.complete();
+        classes[key] = this.props.selectClass;
+        return true;
+      }
 
-    message = target.getAttribute('data-ref');
-    classes[message] = this.props.selectClass;
+      return false;
+    });
 
     this.setState({
       classes,
     });
 
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+    if (target && typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond(target.props.message);
     }
-
-    this.requireForComplete = this.requireForComplete.filter((key) => {
-      return key !== message;
-    });
 
     this.checkComplete();
   }
 
-  isImageTarget(_$image, _point, _offset, _scale) {
+  isImageTarget(image, e, parentOffset) {
     var offset, pixel;
 
-    offset = _$image.offset();
+    offset = image.getBoundingClientRect();
 
     this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-    this.bctx.drawImage(_$image[0], offset.left / _scale - _offset[0], offset.top / _scale - _offset[1], _$image.width(), _$image.height());
-    pixel = this.bctx.getImageData(_point.x, _point.y, 1, 1);
+    this.bctx.drawImage(image, offset.left - parentOffset.left, offset.top - parentOffset.top, offset.width, offset.height);
+    pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
 
-    this.bctx.fillStyle = 'white';
-    this.bctx.fillRect(_point.x, _point.y, 5, 5);
+    this.bctx.fillStyle = 'blue';
+    this.bctx.fillRect(e.pageX, e.pageY, 5, 5);
 
     // opaque pixel
     return pixel.data[3] > 0;
@@ -75,12 +80,14 @@ class SelectableCanvas extends Selectable {
 
   render() {
     return (
-      <ul
-        className={this.getClassNames()}
-        onClick={this.state.selectFunction.bind(this)}
-      >
-        {this.renderList()}
-      </ul>
+      <div>
+        <ul
+          className={this.getClassNames()}
+          onClick={this.state.selectFunction.bind(this)}
+        >
+          {this.renderList()}
+        </ul>
+      </div>
     );
   }
 }

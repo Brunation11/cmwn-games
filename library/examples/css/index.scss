@@ -777,6 +777,13 @@ p {
   margin-top: -270px;
   overflow: hidden;
 
+  canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
   .selectable-canvas {
     width: 960px;
     height: 540px;
@@ -855,14 +862,27 @@ p {
   }
 
   .reveal {
-    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-    .items {
+    .close-reveal {
+      bottom: 100px;
+      z-index: 2;
+    }
+
+    div {
+      background: none;
+      position: static;
+    }
+
+    ul {
       position: static;
       margin: 0;
 
       li {
         position: absolute;
+        top: 0;
         z-index: -1;
         width: 100%;
         height: 100%;
@@ -872,6 +892,15 @@ p {
         line-height: 30px;
         transition: z-index 0s .5s;
 
+        span {
+          color: black;
+        }
+
+        div {
+          position: absolute;
+          top: 0;
+        }
+
         img:not(.background) {
           display: block;
           margin: 0 auto;
@@ -879,19 +908,13 @@ p {
         }
 
         .background {
+          position: absolute;
           opacity: 1;
           z-index: -1;
-        }
-
-        div {
-          position: absolute;
-          box-sizing: border-box;
-
-          button {
-            position: absolute;
-            right: 60px;
-            top: 65px;
-          }
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
         }
 
         &.OPEN {
