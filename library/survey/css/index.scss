@@ -526,56 +526,56 @@ p {
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
-        background-size: 1000px 388px;
+        background-size: 1015px 394px;
         width: 13%;
-        height: 23%;
+        height: 22%;
 
         &:nth-child(1) {
-          background-position: 625px 118px;
-          top: 21%;
+          background-position: 633px 117px;
+          top: 22%;
           left: 13%;
         }
 
         &:nth-child(2) {
-          background-position: 500px 118px;
-          top: 21%;
+          background-position: 506px 117px;
+          top: 22%;
           left: 27%;
         }
 
         &:nth-child(3) {
-          background-position: 250px 118px;
-          top: 21%;
+          background-position: 253px 117px;
+          top: 22%;
           left: 41%;
         }
 
         &:nth-child(4) {
-          background-position: 375px 118px;
-          top: 43%;
+          background-position: 380px 117px;
+          top: 44%;
           left: 13%;
         }
 
         &:nth-child(5) {
-          background-position: 0 118px;
-          top: 43%;
+          background-position: -1px 117px;
+          top: 44%;
           left: 27%;
         }
 
         &:nth-child(6) {
-          background-position: 749px 118px;
-          top: 43%;
+          background-position: 759px 117px;
+          top: 44%;
           left: 41%;
         }
 
         &:nth-child(7) {
-          background-position: 125px 118px;
-          top: 65%;
-          left: 20%;
+          background-position: 127px 117px;
+          top: 66%;
+          left: 19.5%;
         }
 
         &:nth-child(8) {
-          background-position: 875px 118px;
-          top: 65%;
-          left: 34%;
+          background-position: 887px 117px;
+          top: 66%;
+          left: 33.5%;
         }
       }
 
@@ -585,77 +585,110 @@ p {
         background-size: 1060px 411px;
         width: 100%;
         height: 100%;
-        top: -10px;
-        left: 0px;
 
         &.friends {
-          background-position: 658px 0;
+          background-position: 658px -12px;
         }
 
         &.world-peace {
-          background-position: 526px 0;
+          background-position: 526px -12px;
         }
 
         &.sports {
-          background-position: 261px 0;
+          background-position: 261px -12px;
         }
 
         &.playing-games {
-          background-position: 395px 0;
+          background-position: 395px -12px;
         }
 
         &.looking-cool {
-          background-position: -3px 0;
+          background-position: -3px -12px;
         }
 
         &.school {
-          background-position: 790px 0;
+          background-position: 790px -12px;
         }
 
         &.celebrities {
-          background-position: 131px 0;
+          background-position: 131px -12px;
         }
 
         &.environment {
-          background-position: 923px 0;
+          background-position: 923px -12px;
         }
 
         &.DRAGGING {
           z-index: 1;
-          width: 105%;
-          height: 105%;
-          left: -2px;
+          background-size: 995px 386px;
 
           &.friends {
-            background-position: 662px 270px;
+            background-position: 622px 245px;
           }
 
           &.world-peace {
-            background-position: 529px 270px;
+            background-position: 498px 243px;
           }
 
           &.sports {
-            background-position: 265px 270px;
+            background-position: 249px 243px;
           }
 
           &.playing-games {
-            background-position: 397px 270px;
+            background-position: 373px 243px;
           }
 
           &.looking-cool {
-            background-position: -1px 270px;
+            background-position: 0 243px;
           }
 
           &.school {
-            background-position: 794px 270px;
+            background-position: 746px 243px;
           }
 
           &.celebrities {
-            background-position: 131px 270px;
+            background-position: 125px 243px;
           }
 
           &.environment {
-            background-position: 926px 270px;
+            background-position: 870px 244px;
+          }
+        }
+
+        &.CORRECT {
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
+          background-size: 1000px 141px;
+
+          &.friends {
+            background-position: 135px -14px;
+          }
+
+          &.world-peace {
+            background-position: 256px -14px;
+          }
+
+          &.sports {
+            background-position: 378px -14px;
+          }
+
+          &.playing-games {
+            background-position: 500px -14px;
+          }
+
+          &.looking-cool {
+            background-position: 623px -14px;
+          }
+
+          &.school {
+            background-position: 748px -14px;
+          }
+
+          &.celebrities {
+            background-position: 866px -14px;
+          }
+
+          &.environment {
+            background-position: 990px -10px;
           }
         }
       }
@@ -664,100 +697,56 @@ p {
         .dropzone {
           position: absolute;
           background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
-          background-size: 1000px 113px;
-          width: 100px;
-          height: 102px;
+          background-size: 1150px 130px;
+          width: 13%;
+          height: 22%;
 
           &:nth-child(1) {
             background-position: -13px -6px;
-            top: 23%;
-            left: 58%;
+            top: 22%;
+            left: 57%;
           }
 
           &:nth-child(2) {
-            background-position: 862px -6px;
-            top: 23%;
-            left: 69%;
+            background-position: 996px -6px;
+            top: 22%;
+            left: 70%;
           }
 
           &:nth-child(3) {
-            background-position: 736px -6px;
-            top: 23%;
-            left: 80%;
+            background-position: 852px -6px;
+            top: 22%;
+            left: 83%;
           }
 
           &:nth-child(4) {
-            background-position: 612px -6px;
-            top: 42%;
-            left: 58%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 57%;
           }
 
           &:nth-child(5) {
-            background-position: 487px -6px;
-            top: 42%;
-            left: 69%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 70%;
           }
 
           &:nth-child(6) {
-            background-position: 364px -6px;
-            top: 42%;
-            left: 80%;
+            background-position: 421px -6px;
+            top: 44%;
+            left: 83%;
           }
 
           &:nth-child(7) {
-            background-position: 236px -6px;
-            top: 61%;
-            left: 63.5%;
+            background-position: 276px -6px;
+            top: 66%;
+            left: 62%;
           }
 
           &:nth-child(8) {
-            background-position: 115px -6px;
-            top: 61%;
-            left: 74.5%;
-          }
-
-          &.friends,
-          &.world-peace,
-          &.sports,
-          &.playing-games,
-          &.looking-cool,
-          &.school,
-          &.celebrities,
-          &.environment {
-            background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
-            background-size: 900px 127px;
-          }
-
-          &.friends {
-            background-position: 116px -14px;
-          }
-
-          &.world-peace {
-            background-position: 226px -14px;
-          }
-
-          &.sports {
-            background-position: 335px -14px;
-          }
-
-          &.playing-games {
-            background-position: 444px -14px;
-          }
-
-          &.looking-cool {
-            background-position: 556px -14px;
-          }
-
-          &.school {
-            background-position: 668px -14px;
-          }
-
-          &.celebrities {
-            background-position: 773px -14px;
-          }
-
-          &.environment {
-            background-position: 887px -10px;
+            background-position: 135px -6px;
+            top: 66%;
+            left: 75%;
           }
         }
       }
@@ -817,56 +806,56 @@ p {
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
-        background-size: 1000px 388px;
+        background-size: 1015px 394px;
         width: 13%;
-        height: 23%;
+        height: 22%;
 
         &:nth-child(1) {
-          background-position: -1px 121px;
-          top: 21%;
+          background-position: -2px 117px;
+          top: 22%;
           left: 13%;
         }
 
         &:nth-child(2) {
-          background-position: 874px 121px;
-          top: 21%;
+          background-position: 886px 117px;
+          top: 22%;
           left: 27%;
         }
 
         &:nth-child(3) {
-          background-position: 749px 120px;
-          top: 21%;
+          background-position: 759px 117px;
+          top: 22%;
           left: 41%;
         }
 
         &:nth-child(4) {
-          background-position: 625px 121px;
-          top: 43%;
+          background-position: 634px 118px;
+          top: 44%;
           left: 13%;
         }
 
         &:nth-child(5) {
-          background-position: 500px 121px;
-          top: 43%;
+          background-position: 506px 119px;
+          top: 44%;
           left: 27%;
         }
 
         &:nth-child(6) {
-          background-position: 374px 121px;
-          top: 43%;
+          background-position: 379px 119px;
+          top: 44%;
           left: 41%;
         }
 
         &:nth-child(7) {
-          background-position: 250px 121px;
-          top: 65%;
-          left: 20%;
+          background-position: 253px 119px;
+          top: 66%;
+          left: 19.5%;
         }
 
         &:nth-child(8) {
-          background-position: 125px 123px;
-          top: 65%;
-          left: 34%;
+          background-position: 125px 121px;
+          top: 66%;
+          left: 33.5%;
         }
       }
 
@@ -876,77 +865,110 @@ p {
         background-size: 1060px 411px;
         width: 100%;
         height: 100%;
-        top: -4px;
-        left: 0px;
 
         &.cyberbullying {
-          background-position: -2px -5px;
+          background-position: -2px -12px;
         }
 
         &.endangered-animals {
-          background-position: 926px -5px;
+          background-position: 926px -12px;
         }
 
         &.literacy {
-          background-position: 794px -5px;
+          background-position: 794px -12px;
         }
 
         &.climate-change {
-          background-position: 662px -5px;
+          background-position: 662px -12px;
         }
 
         &.poverty {
-          background-position: 530px -5px;
+          background-position: 530px -12px;
         }
 
         &.health-problems {
-          background-position: 395px -5px;
+          background-position: 395px -12px;
         }
 
         &.homelessness {
-          background-position: 264px -5px;
+          background-position: 264px -12px;
         }
 
         &.war-and-terrorism {
-          background-position: 131px -5px;
+          background-position: 131px -12px;
         }
 
         &.DRAGGING {
           z-index: 1;
-          width: 105%;
-          height: 105%;
-          left: -2px;
+          background-size: 995px 386px;
 
           &.cyberbullying {
-            background-position: -1px 265px;
+            background-position: 0 243px;
           }
 
           &.endangered-animals {
-            background-position: 927px 265px;
+            background-position: 871px 243px;
           }
 
           &.literacy {
-            background-position: 796px 265px;
+            background-position: 747px 243px;
           }
 
           &.climate-change {
-            background-position: 662px 265px;
+            background-position: 622px 243px;
           }
 
           &.poverty {
-            background-position: 529px 265px;
+            background-position: 498px 243px;
           }
 
           &.health-problems {
-            background-position: 397px 265px;
+            background-position: 373px 243px;
           }
 
           &.homelessness {
-            background-position: 264px 265px;
+            background-position: 249px 242px;
           }
 
           &.war-and-terrorism {
-            background-position: 131px 265px;
+            background-position: 124px 243px;
+          }
+        }
+
+        &.CORRECT {
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png);
+          background-size: 1000px 141px;
+
+          &.cyberbullying {
+            background-position: -4px -14px;
+          }
+
+          &.endangered-animals {
+            background-position: 869px -14px;
+          }
+
+          &.literacy {
+            background-position: 750px -14px;
+          }
+
+          &.climate-change {
+            background-position: 624px -14px;
+          }
+
+          &.poverty {
+            background-position: 496px -14px;
+          }
+
+          &.health-problems {
+            background-position: 371px -14px;
+          }
+
+          &.homelessness {
+            background-position: 246px -14px;
+          }
+
+          &.war-and-terrorism {
+            background-position: 123px -10px;
           }
         }
       }
@@ -955,100 +977,56 @@ p {
         .dropzone {
           position: absolute;
           background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
-          background-size: 1000px 113px;
-          width: 100px;
-          height: 102px;
+          background-size: 1150px 130px;
+          width: 13%;
+          height: 22%;
 
           &:nth-child(1) {
             background-position: -13px -6px;
-            top: 23%;
-            left: 58%;
+            top: 22%;
+            left: 57%;
           }
 
           &:nth-child(2) {
-            background-position: 862px -6px;
-            top: 23%;
-            left: 69%;
+            background-position: 996px -6px;
+            top: 22%;
+            left: 70%;
           }
 
           &:nth-child(3) {
-            background-position: 736px -6px;
-            top: 23%;
-            left: 80%;
+            background-position: 852px -6px;
+            top: 22%;
+            left: 83%;
           }
 
           &:nth-child(4) {
-            background-position: 612px -6px;
-            top: 42%;
-            left: 58%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 57%;
           }
 
           &:nth-child(5) {
-            background-position: 487px -6px;
-            top: 42%;
-            left: 69%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 70%;
           }
 
           &:nth-child(6) {
-            background-position: 364px -6px;
-            top: 42%;
-            left: 80%;
+            background-position: 421px -6px;
+            top: 44%;
+            left: 83%;
           }
 
           &:nth-child(7) {
-            background-position: 236px -6px;
-            top: 61%;
-            left: 63.5%;
+            background-position: 276px -6px;
+            top: 66%;
+            left: 62%;
           }
 
           &:nth-child(8) {
-            background-position: 115px -6px;
-            top: 61%;
-            left: 74.5%;
-          }
-
-          &.cyberbullying,
-          &.endangered-animals,
-          &.literacy,
-          &.climate-change,
-          &.poverty,
-          &.health-problems,
-          &.homelessness,
-          &.war-and-terrorism {
-            background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png);
-            background-size: 850px 120px;
-          }
-
-          &.cyberbullying {
-            background-position: 847px -11px;
-          }
-
-          &.endangered-animals {
-            background-position: 734px -14px;
-          }
-
-          &.literacy {
-            background-position: 635px -14px;
-          }
-
-          &.climate-change {
-            background-position: 525px -14px;
-          }
-
-          &.poverty {
-            background-position: 416px -14px;
-          }
-
-          &.health-problems {
-            background-position: 312px -14px;
-          }
-
-          &.homelessness {
-            background-position: 206px -14px;
-          }
-
-          &.war-and-terrorism {
-            background-position: 99px -10px;
+            background-position: 135px -6px;
+            top: 66%;
+            left: 75%;
           }
         }
       }
@@ -1103,7 +1081,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.SELECTED {
             background-position: -58px 251px;
           }
         }
@@ -1115,7 +1094,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.SELECTED {
             background-position: -58px 251px;
 
           }
@@ -1128,7 +1108,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.SELECTED {
             background-position: -58px 251px;
           }
         }
@@ -1140,7 +1121,8 @@ p {
 
           &:hover,
           &:active,
-          &:focus {
+          &:focus,
+          &.SELECTED {
             background-position: -58px 251px;
           }
         }
@@ -2428,12 +2410,12 @@ p {
 
       &.banner {
         width: 80%;
-        left: 9%;
+        left: 11%;
         top: 2%;
       }
 
       &.penguin {
-        width: 15%;
+        width: 18%;
         left: 0;
         top: 0;
       }
@@ -2453,9 +2435,9 @@ p {
         display: inline-block;
         position: absolute;
         background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png);
-        background-size: 1000px 388px;
-        width: 120px;
-        height: 112px;
+        background-size: 1015px 394px;
+        width: 13%;
+        height: 22%;
 
         &:nth-child(1) {
           background-position: -2px 118px;
@@ -2464,45 +2446,45 @@ p {
         }
 
         &:nth-child(2) {
-          background-position: 872px 117px;
+          background-position: 887px 117px;
           top: 22%;
           left: 27%;
         }
 
         &:nth-child(3) {
-          background-position: 745px 115px;
+          background-position: 757px 115px;
           top: 22%;
           left: 41%;
         }
 
         &:nth-child(4) {
-          background-position: 623px 116px;
-          top: 43%;
+          background-position: 634px 118px;
+          top: 44%;
           left: 13%;
         }
 
         &:nth-child(5) {
-          background-position: 497px 117px;
-          top: 43%;
+          background-position: 506px 118px;
+          top: 44%;
           left: 27%;
         }
 
         &:nth-child(6) {
-          background-position: 373px 118px;
-          top: 43%;
+          background-position: 380px 118px;
+          top: 44%;
           left: 41%;
         }
 
         &:nth-child(7) {
-          background-position: 250px 117px;
-          top: 64%;
-          left: 20%;
+          background-position: 254px 118px;
+          top: 66%;
+          left: 19.5%;
         }
 
         &:nth-child(8) {
-          background-position: 122px 115px;
-          top: 64%;
-          left: 34%;
+          background-position: 126px 118px;
+          top: 66%;
+          left: 33.5%;
         }
       }
 
@@ -2520,70 +2502,104 @@ p {
         }
 
         &.animals {
-          background-position: 891px -11px;
+          background-position: 893px -12px;
         }
 
         &.recycling {
-          background-position: 764px -12px;
+          background-position: 765px -12px;
         }
 
         &.money {
-          background-position: 636px -11px;
+          background-position: 639px -11px;
         }
 
         &.printing {
-          background-position: 510px -11px;
+          background-position: 512px -11px;
         }
 
         &.coding {
-          background-position: 381px -12px;
+          background-position: 384px -12px;
         }
 
         &.art {
-          background-position: 255px -11px;
+          background-position: 257px -11px;
         }
 
         &.robotics {
-          background-position: 126px -12px;
+          background-position: 128px -12px;
         }
 
         &.DRAGGING {
           z-index: 1;
-          width: 105%;
-          height: 105%;
-          left: -2px;
-          border: 1px solid;
+          background-size: 995px 386px;
 
           &.space {
-            background-position: -1px 250px;
+            background-position: 1px 245px;
           }
 
           &.animals {
-            background-position: 892px 250px;
+            background-position: 871px 245px;
           }
 
           &.recycling {
-            background-position: 764px 250px;
+            background-position: 745px 245px;
           }
 
           &.money {
-            background-position: 636px 250px;
+            background-position: 622px 245px;
           }
 
           &.printing {
-            background-position: 507px 250px;
+            background-position: 496px 245px;
           }
 
           &.coding {
-            background-position: 381px 250px;
+            background-position: 373px 245px;
           }
 
           &.art {
-            background-position: 255px 250px;
+            background-position: 249px 245px;
           }
 
           &.robotics {
-            background-position: 127px 250px;
+            background-position: 124px 245px;
+          }
+        }
+
+        &.CORRECT {
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet-icons-frame16-01.png);
+          background-size: 1000px 141px;
+
+          &.space {
+            background-position: -3px -14px;
+          }
+
+          &.animals {
+            background-position: 869px -14px;
+          }
+
+          &.recycling {
+            background-position: 750px -14px;
+          }
+
+          &.money {
+            background-position: 624px -14px;
+          }
+
+          &.printing {
+            background-position: 495px -14px;
+          }
+
+          &.coding {
+            background-position: 371px -14px;
+          }
+
+          &.art {
+            background-position: 246px -14px;
+          }
+
+          &.robotics {
+            background-position: 121px -10px;
           }
         }
       }
@@ -2592,100 +2608,56 @@ p {
         .dropzone {
           position: absolute;
           background: url(../media/assets/_images/_SpriteSheet/spritesheet%20right%20numbers-01.png);
-          background-size: 1000px 113px;
-          width: 100px;
-          height: 102px;
+          background-size: 1150px 130px;
+          width: 13%;
+          height: 22%;
 
           &:nth-child(1) {
             background-position: -13px -6px;
-            top: 23%;
-            left: 58%;
+            top: 22%;
+            left: 57%;
           }
 
           &:nth-child(2) {
-            background-position: 862px -6px;
-            top: 23%;
-            left: 69%;
+            background-position: 996px -6px;
+            top: 22%;
+            left: 70%;
           }
 
           &:nth-child(3) {
-            background-position: 736px -6px;
-            top: 23%;
-            left: 80%;
+            background-position: 852px -6px;
+            top: 22%;
+            left: 83%;
           }
 
           &:nth-child(4) {
-            background-position: 612px -6px;
-            top: 42%;
-            left: 58%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 57%;
           }
 
           &:nth-child(5) {
-            background-position: 487px -6px;
-            top: 42%;
-            left: 69%;
+            background-position: 562px -6px;
+            top: 44%;
+            left: 70%;
           }
 
           &:nth-child(6) {
-            background-position: 364px -6px;
-            top: 42%;
-            left: 80%;
+            background-position: 421px -6px;
+            top: 44%;
+            left: 83%;
           }
 
           &:nth-child(7) {
-            background-position: 236px -6px;
-            top: 61%;
-            left: 63.5%;
+            background-position: 276px -6px;
+            top: 66%;
+            left: 62%;
           }
 
           &:nth-child(8) {
-            background-position: 115px -6px;
-            top: 61%;
-            left: 74.5%;
-          }
-
-          &.space,
-          &.animals,
-          &.recycling,
-          &.money,
-          &.printing,
-          &.coding,
-          &.art,
-          &.robotics {
-            background: url(../media/assets/_images/_SpriteSheet/spritesheet-icons-frame16-01.png);
-            background-size: 850px 120px;
-          }
-
-          &.space {
-            background-position: 847px -11px;
-          }
-
-          &.animals {
-            background-position: 734px -14px;
-          }
-
-          &.recycling {
-            background-position: 635px -14px;
-          }
-
-          &.money {
-            background-position: 525px -14px;
-          }
-
-          &.printing {
-            background-position: 416px -14px;
-          }
-
-          &.coding {
-            background-position: 312px -14px;
-          }
-
-          &.art {
-            background-position: 206px -14px;
-          }
-
-          &.robotics {
-            background-position: 99px -10px;
+            background-position: 135px -6px;
+            top: 66%;
+            left: 75%;
           }
         }
       }
@@ -2708,260 +2680,58 @@ p {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#bulbs {
-  img.title {
-    display: block;
-    width: 800px;
-    margin: 30px auto 0;
-  }
-
-  .selectable-reveal {
-    margin-top: -30px;
-
-    .selectable {
-      height: 300px;
-      width: 800px;
-      margin: 20px auto;
-      opacity: 0;
-      transition: opacity 1s 1s;
-
-      li {
-        cursor: auto;
-        opacity: 0.5;
-        transition: opacity 1s;
-        background-image: url(../media/S_3/img_3.2.png);
-        background-size: 450px;
-        background-repeat: no-repeat;
-        pointer-events: none;
-
-        &:first-of-type:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        &.HIGHLIGHTED {
-          opacity: 1;
-        }
-
-        &.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        @for $i from 1 through 4 {
-          &:nth-of-type(#{$i}) {
-            background-position: -12px 310-325*$i+px;
-
-            &.HIGHLIGHTED,
-            &:hover {
-              background-position: -237px 310-325*$i+px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.READY.OPEN {
-    img.title {
-      animation-name: zoomInDown;
-    }
-
-    .selectable-reveal {
-
-      .selectable {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.pl-game.VOICE-OVER #bulbs {
-  .selectable {
-    li {
-      pointer-events: none;
-
-      &:first-of-type:not(.HIGHLIGHTED) {
-        pointer-events: none;
-      }
-    }
-  }
-}
-
-.VOICE-OVER #pig {
-  li {
-    pointer-events: none;
-  }
-}
-
-#switches {
-  img.title {
-    display: block;
-    width: 800px;
-    margin: 30px auto 0;
-  }
-
-  .selectable-reveal {
-    margin-top: -30px;
-
-    .selectable {
-      position: relative;
-      height: 300px;
-      width: 800px;
-      margin: 20px auto;
-      opacity: 0;
-      transition: opacity 1s 1s;
-
-      li {
-        cursor: auto;
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 0;
-        opacity: 0.5;
-        transition: opacity 1s;
-        background-image: url(../media/S_5/img_5.2.png);
-        background-size: 400px;
-        background-repeat: no-repeat;
-        pointer-events: none;
-
-        &:first-of-type:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        &.HIGHLIGHTED {
-          opacity: 1;
-        }
-
-        &.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        @for $i from 1 through 5 {
-          &:nth-of-type(#{$i}) {
-            background-position: 0px 200-200*$i+px;
-            left: -150+150*$i+px;
-            top: 200-200*($i%2)+px;
-
-            &.HIGHLIGHTED,
-            &:hover {
-              background-position: -200px 200-200*$i+px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.READY.OPEN {
-    img.title {
-      animation-name: zoomInDown;
-    }
-
-    .selectable-reveal {
-      .selectable {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-#info-lets-learn {
-  img {
-    position: absolute;
-    top: 140px;
-    left: 130px;
-    width: 700px;
-    margin: 0;
-  }
-
-  &.READY.OPEN {
-    img {
-      animation-name: zoomInDown;
-    }
-  }
-}
-
 #flip {
-  h2 {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    margin: -80px 0 0;
-    text-align: center;
-    color: #fff;
-    font-weight: normal;
-
-    .inline {
-      position: relative;
-      height: 100px;
-      vertical-align: middle;
-      margin-top: -60px;
-      top: 50px;
-    }
-  }
-
-  .stamp {
-    position: relative;
-    width: 800px;
-    display: block;
-    margin: 0 auto;
-    z-index: 1;
+  img {
     opacity: 0;
+    position: absolute;
   }
 
-  &.READY.OPEN {
-    .inline {
-      animation-name: flipInX;
-      animation-duration: 3s;
-    }
+  &.READY {
+    &.OPEN {
+      img {
+        opacity: 1;
 
-    .stamp {
-      opacity: 1;
-      animation-name: stamp;
-      animation-delay: 4s;
-      animation-duration: 1s;
+        &.frame {
+          width: 88%;
+          left: 6%;
+          top: 2%;
+        }
+
+        &.banner {
+          width: 66%;
+          top: 29%;
+          left: 18%;
+        }
+
+        &.confetti {
+          width: 100%;
+        }
+
+        &.you {
+          width: 64%;
+          top: 52%;
+          left: 18%;
+        }
+
+        &.frame,
+        &.banner,
+        &.confetti {
+          animation-name: slideInDown;
+        }
+
+        &.you {
+          animation-name: bounceInDown;
+          animation-delay: 4s;
+        }
+      }
+
+      &.COMPLETE {
+        img {
+          &.you {
+            animation-name: tada;
+          }
+        }
+      }
     }
   }
 }
