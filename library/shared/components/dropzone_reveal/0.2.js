@@ -79,6 +79,7 @@ class DropzoneReveal extends play.Component {
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
         dropzones={this.props.dropzones}
+        checkComplete={this.props.checkComplete}
       />
     );
   }
