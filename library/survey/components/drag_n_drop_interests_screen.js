@@ -8,6 +8,7 @@ var DragNDropInterestsScreen = (
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
+    centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
