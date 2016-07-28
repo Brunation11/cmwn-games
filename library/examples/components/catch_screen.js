@@ -68,20 +68,6 @@ var CatchScreen = (
         <Catchable></Catchable>
       ]}
     />
-    {/* <div>
-        <div className="selectable">
-            <ul className="items" pl-action="select(target())">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
-    </div> */}
   </skoash.Screen>
 );
 

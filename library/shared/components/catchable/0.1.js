@@ -1,22 +1,35 @@
 class Catchable extends skoash.Component {
   constructor() {
     super();
+    this.state = {
+      canCatch: true
+    }
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({canCatch: props.disabled});
+  markCaught() {
+    this.setState({canCatch: false});
+    if (this.props.reCatchable) {
+      window.setTimeout(() => this.setState({canCatch: true}), 4000);
+    }
+    if (typeof this.props.onCaught === 'function') {
+      this.props.onCaught.call(this);
+    }
+  }
+
+  canCatch() {
+    return !this.props.disabled && this.state.canCatch;
   }
 
   render() {
     return (
-      <li data-ref={this.props.ref} data-test="thing"></li>
+      <li></li>
     );
   }
 }
 
 Catchable.defaultProps = {
   disabled: false,
-  good: true,
+  isCorrect: true,
   reCatchable: true
 };
 
