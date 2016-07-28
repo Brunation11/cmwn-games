@@ -1,5 +1,5 @@
-import Selectable from '../selectable/0.1.js';
-import Reveal from '../reveal/0.1.js';
+import Selectable from 'shared/components/selectable/0.1.js';
+import Reveal from 'shared/components/reveal/0.1.js';
 
 class SelectableReveal extends skoash.Component {
   constructor() {

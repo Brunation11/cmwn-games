@@ -47,8 +47,8 @@ class Carousel extends Selectable {
   }
 
   selectHelper() {
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(this.state.target);
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(this.state.list[this.props.targetIndex]);
     }
   }
 
@@ -77,10 +77,11 @@ class Carousel extends Selectable {
   }
 
   render() {
+    var onClick = this.props.clickable ? this.state.selectFunction.bind(this) : null;
     return (
       <div>
         {this.renderBin()}
-        <div className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+        <div className={this.getClassNames()} onClick={onClick}>
           {this.renderList()}
         </div>
       </div>
@@ -90,7 +91,9 @@ class Carousel extends Selectable {
 
 Carousel.defaultProps = _.merge({
   showNum: 3,
+  targetIndex: 1,
   pause: 500,
+  clickable: false
 }, Selectable.defaultProps);
 
 export default Carousel;
