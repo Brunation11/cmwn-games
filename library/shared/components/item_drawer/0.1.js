@@ -157,7 +157,7 @@ class ItemDrawer extends Selectable {
       item.items.some(subitem => {
         if (subitem.name === '_thumb.png') {
           src = subitem.thumb || subitem.src;
-          return true;
+          return null;
         }
       });
     }
