@@ -98,23 +98,23 @@ button {
 
   &.next-screen,
   &.prev-screen {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
   }
 
   &.next-screen {
-    background-position: -155px 300px;
+    background-position: -152px 305px;
 
     &:hover {
-      background-position: -155px 199px;
+      background-position: -152px 205px;
     }
   }
 
   &.prev-screen {
-    background-position: 0 300px;
+    background-position: 5px 305px;
 
     &:hover {
-      background-position: 0 199px;
+      background-position: 5px 204px;
     }
   }
 
@@ -1086,7 +1086,7 @@ p {
           &:active,
           &:focus,
           &.SELECTED {
-            background-position: -58px 251px;
+            background-position: -58px 250px;
           }
         }
 
@@ -1099,7 +1099,7 @@ p {
           &:active,
           &:focus,
           &.SELECTED {
-            background-position: -58px 251px;
+            background-position: 881px 250px;
 
           }
         }
@@ -1113,7 +1113,7 @@ p {
           &:active,
           &:focus,
           &.SELECTED {
-            background-position: -58px 251px;
+            background-position: 563px 257px;
           }
         }
 
@@ -1126,7 +1126,7 @@ p {
           &:active,
           &:focus,
           &.SELECTED {
-            background-position: -58px 251px;
+            background-position: 256px 254px;
           }
         }
       }
