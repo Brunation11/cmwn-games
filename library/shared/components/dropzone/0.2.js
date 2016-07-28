@@ -149,7 +149,7 @@ class Dropzone extends skoash.Component {
       <component.type
         {...component.props}
         className={this.getClassNames()}
-        checkComplete={false}
+        checkComplete={false || this.props.checkComplete}
         ref={`dropzone-${key}`}
         key={key}
       />
