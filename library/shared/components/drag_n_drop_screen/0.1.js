@@ -31,10 +31,11 @@ class DragNDropScreen extends skoash.Screen {
       endY = draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y;
       draggable.setEnd(endX, endY);
     }
-
-    if (dropzone.state.content && draggable !== dropzone.state.content) {
-      dropzone.state.content.returnToStart();
-      dropzone.state.content.markIncorrect();
+    if (!this.props.multipleAnswers) {
+      if (dropzone.state.content && draggable !== dropzone.state.content) {
+        dropzone.state.content.returnToStart();
+        dropzone.state.content.markIncorrect();
+      }
     }
 
     dropzone.setState({
