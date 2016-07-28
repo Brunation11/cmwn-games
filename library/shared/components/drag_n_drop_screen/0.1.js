@@ -62,6 +62,7 @@ class DragNDropScreen extends skoash.Screen {
           dropzones={this.props.dropzones}
           dropzoneList={this.props.dropzoneList}
           revealAssets={this.props.revealAssets}
+          checkComplete={this.props.checkComplete}
         />
         {this.renderContentList('afterDropzoneList')}
       </div>
