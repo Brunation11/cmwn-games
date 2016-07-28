@@ -1289,16 +1289,41 @@ p {
             left: 34%;
             bottom: 10%;
 
-            &.sharing,
-            &.kindness,
-            &.rudeness,
-            &.being-a-bully,
-            &.compassion,
-            &.greediness,
-            &.being-angry,
-            &.friendliness {
-              background-position: -74px 144px;
+            // &.sharing,
+            // &.kindness,
+            // &.rudeness,
+            // &.being-a-bully,
+            // &.compassion,
+            // &.greediness,
+            // &.being-angry,
+            // &.friendliness
+            &:hover,
+            &:focus {
+              // animation: hover 2s;
+              // animation-iteration-count: infinite;
+              // transition: background-position .25s ease-in-out;
+              background-position: -72px 146px;
             }
+
+            // @keyframes hover {
+            //   0% {
+            //     opacity: 1;
+            //   }
+            //   5% {
+            //     opacity: 0;
+            //   }
+            //   50% {
+            //     // background-position: -74px 144px;
+            //     opacity: 0;
+            //   }
+            //   95% {
+            //     opacity: 0;
+            //   }
+            //   100% {
+            //     // background-position: -74px -48px;
+            //     opacity: 1;
+            //   }
+            // }
           }
 
           &:nth-child(2) {
@@ -1306,15 +1331,17 @@ p {
             bottom: 10%;
             left: 54%;
 
-            &.sharing,
-            &.kindness,
-            &.rudeness,
-            &.being-a-bully,
-            &.compassion,
-            &.greediness,
-            &.being-angry,
-            &.friendliness {
-              background-position: 812px 144px;
+            // &.sharing,
+            // &.kindness,
+            // &.rudeness,
+            // &.being-a-bully,
+            // &.compassion,
+            // &.greediness,
+            // &.being-angry,
+            // &.friendliness
+            &:hover,
+            &:focus {
+              background-position: 814px 146px;
             }
           }
         }
@@ -2085,7 +2112,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: -12px 129px;
           }
         }
@@ -2098,7 +2125,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 320px 388px;
 
           }
@@ -2112,7 +2139,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 153px 130px;
 
           }
@@ -2215,7 +2242,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: -12px 129px;
           }
         }
@@ -2228,7 +2255,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 320px 388px;
 
           }
@@ -2242,7 +2269,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 153px 130px;
 
           }
@@ -2345,7 +2372,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: -12px 129px;
           }
         }
@@ -2358,7 +2385,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 320px 388px;
 
           }
@@ -2372,7 +2399,7 @@ p {
           &:hover,
           &:active,
           &:focus,
-          &.HIGHLIGHTED {
+          &.SELECTED {
             background-position: 153px 130px;
 
           }
