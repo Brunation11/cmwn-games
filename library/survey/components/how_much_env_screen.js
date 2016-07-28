@@ -22,7 +22,6 @@ var HowMuchEnvScreen = (
 
     <SelectableReveal
       ref="selectable-reveal"
-      selectableSelectClass="HIGHLIGHTED"
       selectableCompleteOnSelect
       selectableCheckComplete={false}
       revealCompleteOnOpen
@@ -40,26 +39,26 @@ var HowMuchEnvScreen = (
         <skoash.MediaSequence
           ref="a-lot"
           checkComplete={true}
-          playOnStart={false}
+          silentOnStart={true}
         >
-          <skoash.Audio ref="a-lot-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALot.mp3" delay={1000} />
-          <skoash.Audio ref="a-lot-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALot.mp3" delay={1000} />
+          <skoash.Audio ref="a-lot-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALot.mp3" />
+          <skoash.Audio ref="a-lot-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALot.mp3" />
         </skoash.MediaSequence>,
         <skoash.MediaSequence
           ref="a-little"
           checkComplete={true}
-          playOnStart={false}
+          silentOnStart={true}
         >
-          <skoash.Audio ref="a-little-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALittle.mp3" delay={1000} />
-          <skoash.Audio ref="a-little-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALittle.mp3" delay={1000} />
+          <skoash.Audio ref="a-little-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_ALittle.mp3" />
+          <skoash.Audio ref="a-little-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_ALittle.mp3" />
         </skoash.MediaSequence>,
         <skoash.MediaSequence
-          ref="a-not-at-all"
+          ref="not-at-all"
           checkComplete={true}
-          playOnStart={false}
+          silentOnStart={true}
         >
-          <skoash.Audio ref="not-at-all-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_NotAtAll.mp3" delay={1000} />
-          <skoash.Audio ref="not-at-all-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_NotAt.mp3" delay={1000} />
+          <skoash.Audio ref="not-at-all-expression" type="voiceOver" src="media/assets/_audio/_Expressions/S_NotAtAll.mp3" />
+          <skoash.Audio ref="not-at-all-vo" type="voiceOver" src="media/assets/_audio/VOs/VO_NotAt.mp3" />
         </skoash.MediaSequence>
       ]}
     />
