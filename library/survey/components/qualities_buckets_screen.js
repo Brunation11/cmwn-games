@@ -6,6 +6,7 @@ var QualitiesBucketsScreen = (
     id="qualities-buckets"
     allCorrect
     multipleAnswers
+    checkComplete={true}
     dropzoneAssets={[
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
     ]}
