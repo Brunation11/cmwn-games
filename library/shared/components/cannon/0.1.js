@@ -22,7 +22,7 @@ class Cannon extends skoash.Component {
     });
 
     if (typeof this.props.onReload === 'function') {
-      this.props.onReload();
+      this.props.onReload.call(this);
     }
   }
 

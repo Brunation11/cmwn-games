@@ -17,7 +17,7 @@ class CarouselCannon extends skoash.Component {
 
   onSelect(target) {
     if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect(target);
+      this.props.onSelect.call(this, target);
     }
   }
 
