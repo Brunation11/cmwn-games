@@ -4,17 +4,17 @@
  */
 import './config.game';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/reveal/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-canvas/behavior';
-import './components/selectable/behavior';
-import './components/title/behavior';
-import './components/video/behavior';
+import 'shared/js/screen-ios-splash';
+import './source/js/components/reveal/behavior';
+import './source/js/components/screen-basic/behavior';
+import './source/js/components/screen-quit/behavior';
+import './source/js/components/selectable-canvas/behavior';
+import './source/js/components/selectable/behavior';
+import './source/js/components/title/behavior';
+import './source/js/components/video/behavior';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+import 'shared/js/test-platform-integration';
+import 'shared/js/google-analytics';
 
 pl.game('meerkat-mania', function () {
 
