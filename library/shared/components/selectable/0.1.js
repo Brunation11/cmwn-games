@@ -43,7 +43,7 @@ class Selectable extends skoash.Component {
   }
 
   bootstrap() {
-    skoash.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -91,10 +91,7 @@ class Selectable extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames({
-      selectable: true,
-      COMPLETE: this.state.complete,
-    }, this.props.className);
+    return classNames('selectable', super.getClassNames());
   }
 
   checkComplete() {
