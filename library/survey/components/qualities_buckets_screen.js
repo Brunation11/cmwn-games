@@ -5,6 +5,7 @@ var QualitiesBucketsScreen = (
   <DragNDropScreen
     id="qualities-buckets"
     allCorrect
+    multipleAnswers
     dropzoneAssets={[
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
     ]}
