@@ -72,7 +72,7 @@ class Inbox extends Selectable {
 
     return items.map((item, key) => {
       var timestamp, image, name;
-      timestamp = moment(item.timestamp);
+      timestamp = moment(item.updated);
       key = 'message-' + key;
 
       friends.some(friend => {
