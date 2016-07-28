@@ -97,7 +97,7 @@ class ReadScreen extends skoash.Screen {
           </li>
         </ul>
         <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          <skoash.Image src={this.state.message.src} />
+          <skoash.Image src={this.state.message.url} />
           <div className={classNameText.box} />
         </skoash.Component>
         <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
