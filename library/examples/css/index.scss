@@ -765,7 +765,7 @@ p {
   }
 }
 
-#catch {
+#catch, .catch {
   .items {
     position: relative;
     display: block;
@@ -790,6 +790,11 @@ p {
     $tops: 100 150 50 150 100 150 100 150;
     $delays: 0 3 0 6 3 6 4 4;
     $durations: 12 10 11 10 12 12 11 12;
+
+    &.CAUGHT {
+      opacity: 0;
+      background: none;
+    }
 
     @for $i from 1 through 8 {
       &:nth-of-type(#{$i}) {
@@ -819,3 +824,4 @@ p {
     }
   }
 }
+

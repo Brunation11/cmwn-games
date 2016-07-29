@@ -3,14 +3,12 @@ class Catchable extends skoash.Component {
     super();
     this.state = {
       canCatch: true
-    }
+    };
+    this.reset = this.reset.bind(this);
   }
 
   markCaught() {
     this.setState({canCatch: false});
-    if (this.props.reCatchable) {
-      window.setTimeout(() => this.setState({canCatch: true}), 4000);
-    }
     if (typeof this.props.onCaught === 'function') {
       this.props.onCaught.call(this);
     }
@@ -20,9 +18,19 @@ class Catchable extends skoash.Component {
     return !this.props.disabled && this.state.canCatch;
   }
 
+  getClasses() {
+    return this.state.canCatch ? '' : 'CAUGHT';
+  }
+
+  reset() {
+    if (!this.props.disabled && this.props.reCatchable) {
+      this.setState({canCatch: true});
+    }
+  }
+
   render() {
     return (
-      <li></li>
+      <li className={this.getClasses()}></li>
     );
   }
 }

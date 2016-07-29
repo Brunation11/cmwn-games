@@ -14,10 +14,10 @@ class Catch extends skoash.Component {
     this.boundOnMouseMove = this.onMouseMove.bind(this);
     this.boundOnResize = this.onResize.bind(this);
     this.checkCollisions = this.checkCollisions.bind(this);
-  };
+  }
 
   componentDidMount() {
-    this.bucketNode = ReactDOM.findDOMNode(this.refs['bucket']);
+    this.bucketNode = ReactDOM.findDOMNode(this.refs.bucket);
     this.catchableNodes = _.map(this.props.catchables, function (val, key) {
       return ReactDOM.findDOMNode(this.refs[`${key}-catchable`]);
     }.bind(this));
@@ -64,6 +64,10 @@ class Catch extends skoash.Component {
     this.onResize();
     this.attachMouseEvents();
     window.addEventListener('resize', this.boundOnResize);
+    _.forEach(this.catchableNodes, function (node, key) {
+      var catchableRef = this.refs[`${key}-catchable`];
+      node.addEventListener('animationiteration', catchableRef.reset, false);
+    }.bind(this));
   }
 
   restart() {
@@ -98,31 +102,31 @@ class Catch extends skoash.Component {
     }
   }
 
-  selectCatchable(catchableNode) {
+  selectCatchable(catchableNode, key) {
     if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableNode.canCatch()) return;
     catchableNode.markCaught();
     if (catchableNode.props.isCorrect) {
-      this.correct(catchableNode);
+      this.correct(catchableNode, key);
     } else {
-      this.incorrect(catchableNode);
+      this.incorrect(catchableNode, key);
     }
   }
 
-  correct(catchable) {
+  correct(catchable, key) {
     if (this.audio.correct) {
       this.audio.correct.play();
     }
     if (typeof this.props.onCorrect === 'function') {
-      this.props.onCorrect.call(this, catchable);
+      this.props.onCorrect.call(this, catchable, key);
     }
   }
 
-  incorrect(catchable) {
+  incorrect(catchable, key) {
     if (this.audio.incorrect) {
       this.audio.incorrect.play();
     }
     if (typeof this.props.onIncorrect === 'function') {
-      this.props.onIncorrect.call(this, catchable);
+      this.props.onIncorrect.call(this, catchable, key);
     }
   }
 
@@ -136,7 +140,7 @@ class Catch extends skoash.Component {
       var bucketRect = this.bucketNode.getBoundingClientRect();
       _.forEach(this.catchableNodes, function (val, key) {
         if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
-          this.selectCatchable(this.refs[`${key}-catchable`]);
+          this.selectCatchable(this.refs[`${key}-catchable`], key);
         }
       }.bind(this));
       window.requestAnimationFrame(this.checkCollisions);
@@ -210,15 +214,23 @@ class Catch extends skoash.Component {
     );
   }
 
+  getClasses() {
+    var classes = '';
+
+    if (this.state.complete || this.props.isComplete) classes += ' COMPLETE';
+
+    return classes;
+  }
+
   render() {
     return (
-      <div ref="catch-component">
+      <div ref="catch-component" className={'catch' + this.getClasses()}>
         <ul className="items">
           {this.renderCatchables()}
         </ul>
         {this.renderBucket()}
       </div>
-    )
+    );
   }
 
 }

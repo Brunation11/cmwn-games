@@ -3,7 +3,8 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import CatchScreen from './components/catch_screen';
+import CatchReveal from './components/catch_reveal_screen';
+// import CatchScreen from './components/catch_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
 // import TimerScreen from './components/timer_screen';
@@ -11,7 +12,7 @@ import CatchScreen from './components/catch_screen';
 // import TitleScreen from './components/title_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
-// import SwitchesScreen from './components/switches_screen';
+import SwitchesScreen from './components/switches_screen';
 // import InfoScreen from './components/info_screen';
 // import VideoScreen from './components/video_screen';
 // import FlipScreen from './components/flip_screen';
@@ -26,7 +27,8 @@ class Examples extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: CatchScreen,
+      1: CatchReveal
+      //1: CatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,
       // 1: TimerScreen,
@@ -34,7 +36,7 @@ class Examples extends skoash.Game {
       // 1: TitleScreen,
       // 2: BulbsScreen,
       // 3: PigScreen,
-      // 4: SwitchesScreen,
+      //1: SwitchesScreen,
       // 5: InfoScreen,
       // 6: VideoScreen,
       // 7: FlipScreen,
