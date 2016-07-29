@@ -93,7 +93,7 @@ class CanvasScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var hasAssets, background, interval;
+    var hasAssets, background;
 
     this.setMenu();
 

@@ -131,8 +131,6 @@ class Canvas extends skoash.Component {
 
     if (!asset) return;
 
-    asset = _.clone(asset);
-
     if (asset.asset_type === 'background') {
       this.setState({
         background: asset,
