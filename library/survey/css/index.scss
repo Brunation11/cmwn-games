@@ -2758,7 +2758,8 @@ p {
       &.COMPLETE {
         img {
           &.you {
-            animation-name: tada;
+            // animation-name: tada;
+            // animation-delay: 1s;
           }
         }
       }
