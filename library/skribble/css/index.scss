@@ -103,6 +103,12 @@ html, body, body > div, body > div > div {
     }
   }
 
+  &.SCREEN-menu {
+    .menu.recipient {
+      display: none;
+    }
+  }
+
   .game-menu .help {
     display: none;
   }
