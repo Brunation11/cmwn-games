@@ -153,11 +153,13 @@ class ItemDrawer extends Selectable {
     if (item.src || item.thumb) {
       src = item.thumb || item.src;
     } else if (item.items && _.isArray(item.items)) {
-      src = item.items[0].thumb || item.items[0].src;
+      if (item.items[0]) {
+        src = item.items[0].thumb || item.items[0].src;
+      }
       item.items.some(subitem => {
         if (subitem.name === '_thumb.png') {
           src = subitem.thumb || subitem.src;
-          return null;
+          return true;
         }
       });
     }

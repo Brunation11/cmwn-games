@@ -126,24 +126,24 @@ class CanvasScreen extends skoash.Screen {
 
     skoash.trigger('save');
 
-    interval = setInterval(() => {
-      skoash.trigger('save');
-    }, 120000);
+    // interval = setInterval(() => {
+    //   skoash.trigger('save');
+    // }, 120000);
 
-    this.setState({
-      interval
-    });
+    // this.setState({
+    //   interval
+    // });
 
-    skoash.Screen.prototype.open.call(this);
+    super.open();
   }
 
   close() {
     skoash.trigger('save');
-    clearInterval(this.state.interval);
-    this.setState({
-      interval: null
-    });
-    skoash.Screen.prototype.close.call(this);
+    // clearInterval(this.state.interval);
+    // this.setState({
+    //   interval: null
+    // });
+    super.close();
   }
 
   setValid(valid) {

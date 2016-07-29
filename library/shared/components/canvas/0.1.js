@@ -131,6 +131,8 @@ class Canvas extends skoash.Component {
 
     if (!asset) return;
 
+    asset = _.clone(asset);
+
     if (asset.asset_type === 'background') {
       this.setState({
         background: asset,
@@ -147,7 +149,6 @@ class Canvas extends skoash.Component {
           }, cb);
         });
       });
-
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
       items.push(asset);
