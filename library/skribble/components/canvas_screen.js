@@ -117,9 +117,7 @@ class CanvasScreen extends skoash.Screen {
       if (opts.message.friend_to) {
         skoash.trigger('passData', {
           name: 'add-recipient',
-          message: {
-            'friend_id': opts.message.friend_to
-          }
+          message: opts.message.friend_to
         });
       }
     }

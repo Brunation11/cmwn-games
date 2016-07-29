@@ -20,6 +20,8 @@ class InboxScreen extends skoash.Screen {
 
     this.revealList = this.getRevealList();
 
+    this.readMessage = this.readMessage.bind(this);
+    this.editMessage = this.editMessage.bind(this);
   }
 
   getRevealList(inbox, outbox, saved) {
@@ -42,7 +44,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: inbox || [],
           }}
-          selectRespond={this.readMessage.bind(this)}
+          selectRespond={this.readMessage}
         />
       </li>,
       <li>
@@ -51,7 +53,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: unread || [],
           }}
-          selectRespond={this.readMessage.bind(this)}
+          selectRespond={this.readMessage}
         />
       </li>,
       <li>
@@ -60,7 +62,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: read || [],
           }}
-          selectRespond={this.readMessage.bind(this)}
+          selectRespond={this.readMessage}
         />
       </li>,
       <li>
@@ -69,7 +71,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: outbox || [],
           }}
-          selectRespond={this.readMessage.bind(this)}
+          selectRespond={this.readMessage}
         />
       </li>,
       <li>
@@ -78,7 +80,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: saved || [],
           }}
-          selectRespond={this.editMessage.bind(this)}
+          selectRespond={this.editMessage}
         />
       </li>,
     ];

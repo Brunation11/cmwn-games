@@ -197,9 +197,9 @@ class ItemDrawer extends Selectable {
       items = _.values(items);
     }
 
-    items = items.sort(function (a, b) {
-      var aVal = Number(a.order) || Infinity;
-      var bVal = Number(b.order) || Infinity;
+    return items.sort((a, b) => {
+      var aVal = typeof a.order === 'number' ? a.order : Infinity;
+      var bVal = typeof b.order === 'number' ? b.order : Infinity;
       if (aVal === bVal) {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
@@ -207,9 +207,7 @@ class ItemDrawer extends Selectable {
       }
       if (aVal < bVal) return -1;
       return 1;
-    });
-
-    return items.map((item, key) =>
+    }).map((item, key) =>
       <skoash.ListItem
         className={this.getClass(key, item)}
         ref={key}
