@@ -41,6 +41,8 @@ class ItemDrawer extends Selectable {
 
     this.bootstrap();
 
+    this.refs.list.scrollTop = 0;
+
     _.each(self.refs, ref => {
       if (typeof ref.start === 'function') ref.start();
     });
@@ -238,7 +240,7 @@ class ItemDrawer extends Selectable {
       <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
-          <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+          <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
             {this.renderList()}
           </ul>
         </div>
