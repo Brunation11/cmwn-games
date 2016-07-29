@@ -65,6 +65,8 @@ class Survey extends skoash.Game {
     switch (currentScreenIndex) {
     case 1:
       return 0;
+    case 17:
+      return 1;
     default:
       return;
     }
@@ -74,6 +76,7 @@ class Survey extends skoash.Game {
     return (
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/assets/_audio/_BKG/S_BKG_3.mp3" />
+        <skoash.Audio ref="bkg-2" type="background" src="media/assets/_audio/_BKG/S_BKG_2.mp3" />
         <skoash.Audio ref="button" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_4.mp3" />
         <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
@@ -87,6 +90,3 @@ class Survey extends skoash.Game {
 skoash.start(Survey, config.id);
 
 import 'shared/js/google-analytics';
-
-// unable to reference drag/drop audio?
-// fix css for next and previous arrows
