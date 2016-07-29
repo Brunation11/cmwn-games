@@ -3,7 +3,7 @@ import Reveal from '../reveal/0.1.js';
 
 import classNames from 'classnames';
 
-class DropzoneReveal extends play.Component {
+class DropzoneReveal extends skoash.Component {
   constructor() {
     super();
 
