@@ -84,6 +84,13 @@ class Inbox extends Selectable {
         return true;
       });
 
+      if (!name) {
+        skoash.trigger('getData', {
+          name: 'getFriend',
+          'friend_id': item.created_by,
+        });
+      }
+
       return (
         <skoash.ListItem
           className={this.getClass(key, item.unread, item.sent)}
@@ -95,8 +102,8 @@ class Inbox extends Selectable {
           <skoash.Image src={image} />
           <span className="username">{name}</span>
           <span className="timestamp">
-            <span className="date">{timestamp.format('DD.MM.YY')}</span>
-            <span className="time">{timestamp.format('h:mm:ss a')}</span>
+            <span className="date">{timestamp.format('MM.DD.YY')}</span>
+            <span className="time">{timestamp.format('h:mm a')}</span>
           </span>
           <span className={'status ' + item.status}>
             {this.getStatusText(item)}

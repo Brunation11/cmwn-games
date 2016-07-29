@@ -111,7 +111,8 @@ class Skribble extends skoash.Game {
     });
 
     this.setState({
-      recipient: {}
+      recipient: {},
+      skribbleData: null,
     });
   }
 
@@ -182,6 +183,7 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
+      'getFriend'
     ];
 
     if (names.indexOf(opts.name) === -1) {
