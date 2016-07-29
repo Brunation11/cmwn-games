@@ -327,13 +327,8 @@ p {
   }
 }
 
-.pl-game.VOICE-OVER {
-  .reveal {
-    .close-reveal {
-      opacity: .5;
-      pointer-events: none;
-    }
-  }
+.VOICE-OVER > * {
+  pointer-events: none;
 }
 
 .video {
