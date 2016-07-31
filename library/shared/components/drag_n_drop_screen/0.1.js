@@ -27,8 +27,8 @@ class DragNDropScreen extends skoash.Screen {
     dropzone = this.refs.dropzone.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
     if (this.props.centerOnCorrect) {
-      endX = draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x;
-      endY = draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y;
+      endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x) + ((draggable.state.corners[1].x - draggable.state.corners[0].x) / 2);
+      endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y) + ((draggable.state.corners[3].y - draggable.state.corners[0].y) / 2);
       draggable.setEnd(endX, endY);
     }
     if (!this.props.multipleAnswers) {
