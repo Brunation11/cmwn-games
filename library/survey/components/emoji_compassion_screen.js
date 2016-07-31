@@ -23,12 +23,12 @@ var EmojiCompassionScreen = (
       ]}
       selectableList={[
         <skoash.ListItem className="happy animated" data-ref="happy" correct />,
-        <skoash.ListItem className="no-big-deal animated" data-ref="no-big-deal" correct />,
+        <skoash.ListItem className="confused animated" data-ref="confused" correct />,
         <skoash.ListItem className="thankful animated" data-ref="thankful" correct />
       ]}
       revealAssets={[
         <skoash.Audio ref="happy" type="voiceOver" src="media/assets/_audio/VOs/VO_Happy.mp3" delay={1000} />,
-        <skoash.Audio ref="no-big-deal" type="voiceOver" src="media/assets/_audio/VOs/VO_Confused.mp3" delay={1000} />,
+        <skoash.Audio ref="confused" type="voiceOver" src="media/assets/_audio/VOs/VO_Confused.mp3" delay={1000} />,
         <skoash.Audio ref="thankful" type="voiceOver" src="media/assets/_audio/VOs/VO_Thankful.mp3" delay={1000} />
       ]}
     />
