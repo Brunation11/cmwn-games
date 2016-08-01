@@ -825,3 +825,57 @@ p {
   }
 }
 
+#runner {
+  > .center > div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .center {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    text-align: center;
+  }
+/*
+  .center.inline {
+    position: relative;
+    top: auto; left: auto;
+    bottom: auto; right: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .center::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+  .center > *:not(audio) {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    white-space: normal;
+  }*/
+
+  .flyer {
+    width: 200px;
+    height: 170px;
+    background-image: url(../media/_Images/S_FlyAcross/SP_4.1.png);
+    background-size: 1809px;
+    background-repeat: no-repeat;
+    animation: butterfly .75s steps(1) infinite;
+
+    &.GRAVITY {
+      transition-timing-function: ease-out;
+      transform: translateY(160px);
+    }
+
+    &.JUMPING {
+      
+    }
+  }
+}

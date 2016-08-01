@@ -21,7 +21,6 @@ class Catch extends skoash.Component {
     this.catchableNodes = _.map(this.props.catchables, function (val, key) {
       return ReactDOM.findDOMNode(this.refs[`${key}-catchable`]);
     }.bind(this));
-    window.catch = this;
   }
 
   attachMouseEvents() {
@@ -225,7 +224,7 @@ class Catch extends skoash.Component {
 
   render() {
     return (
-      <div ref="catch-component" className={'catch' + this.getClasses()}>
+      <div ref="catch-component" className={'catch ' + this.getClasses()}>
         <ul className="items">
           {this.renderCatchables()}
         </ul>
