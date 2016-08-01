@@ -3,7 +3,8 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import CatchReveal from './components/catch_reveal_screen';
+import RunnerReveal from './components/runner_screen';
+// import CatchReveal from './components/catch_reveal_screen';
 // import CatchScreen from './components/catch_screen';
 // import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
@@ -28,7 +29,8 @@ class Examples extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: CatchReveal
+      1: RunnerReveal
+      // 1: CatchReveal
       // 1: CatchScreen,
       // 1: MatchScreen,
       // 1: ScoreScreen,
