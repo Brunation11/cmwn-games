@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import Selectable from '../selectable/0.1';
 
 import classNames from 'classnames';
@@ -37,12 +39,13 @@ class Inbox extends Selectable {
     });
   }
 
-  getClass(key, unread, sent) {
-    return classNames({
-      [this.state.classes[key] || '']: true,
-      UNREAD: unread,
-      SENT: sent,
-    });
+  getClass(key, read) {
+    return classNames(
+      this.state.classes[key], {
+        UNREAD: this.props.friendKey === 'created_by' && !read,
+        SENT: this.props.friendKey !== 'created_by'
+      }
+    );
   }
 
   getClassNames() {
@@ -72,11 +75,11 @@ class Inbox extends Selectable {
 
     return items.map((item, key) => {
       var timestamp, image, name;
-      timestamp = moment(item.updated);
+      timestamp = moment().utc(item.updated).local();
       key = 'message-' + key;
 
       friends.some(friend => {
-        if (item.created_by === friend.friend_id) {
+        if (item[this.props.friendKey] === friend.friend_id) {
           image = friend._embedded.image ? friend._embedded.image.url : '';
           name = friend.username;
           return false;
@@ -84,9 +87,16 @@ class Inbox extends Selectable {
         return true;
       });
 
+      if (!name) {
+        skoash.trigger('getData', {
+          name: 'getFriend',
+          'friend_id': item[this.props.friendKey],
+        });
+      }
+
       return (
         <skoash.ListItem
-          className={this.getClass(key, item.unread, item.sent)}
+          className={this.getClass(key, item.read)}
           ref={key}
           data-ref={key}
           item={item}
@@ -95,8 +105,8 @@ class Inbox extends Selectable {
           <skoash.Image src={image} />
           <span className="username">{name}</span>
           <span className="timestamp">
-            <span className="date">{timestamp.format('DD.MM.YY')}</span>
-            <span className="time">{timestamp.format('h:mm:ss a')}</span>
+            <span className="date">{timestamp.format('MM.DD.YY')}</span>
+            <span className="time">{timestamp.format('h:mm a')}</span>
           </span>
           <span className={'status ' + item.status}>
             {this.getStatusText(item)}
@@ -116,5 +126,9 @@ class Inbox extends Selectable {
     );
   }
 }
+
+Inbox.defaultProps = _.merge(Selectable.defaultProps, {
+  friendKey: 'created_by'
+});
 
 export default Inbox;

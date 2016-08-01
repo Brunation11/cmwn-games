@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
 class ItemDrawerScreen extends skoash.Screen {
@@ -13,7 +15,6 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
-    message = new Object(message);
     skoash.trigger('pass-data', {
       name: 'add-item',
       message
@@ -27,6 +28,8 @@ class ItemDrawerScreen extends skoash.Screen {
       if (data[key]) data = data[key];
       if (data.items) data = data.items;
     });
+
+    data = _.values(data);
 
     this.setState({
       data,

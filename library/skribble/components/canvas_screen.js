@@ -93,7 +93,7 @@ class CanvasScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var hasAssets, background, interval;
+    var hasAssets, background;
 
     this.setMenu();
 
@@ -117,33 +117,31 @@ class CanvasScreen extends skoash.Screen {
       if (opts.message.friend_to) {
         skoash.trigger('passData', {
           name: 'add-recipient',
-          message: {
-            'friend_id': opts.message.friend_to
-          }
+          message: opts.message.friend_to
         });
       }
     }
 
     skoash.trigger('save');
 
-    interval = setInterval(() => {
-      skoash.trigger('save');
-    }, 120000);
+    // interval = setInterval(() => {
+    //   skoash.trigger('save');
+    // }, 120000);
 
-    this.setState({
-      interval
-    });
+    // this.setState({
+    //   interval
+    // });
 
-    skoash.Screen.prototype.open.call(this);
+    super.open();
   }
 
   close() {
     skoash.trigger('save');
-    clearInterval(this.state.interval);
-    this.setState({
-      interval: null
-    });
-    skoash.Screen.prototype.close.call(this);
+    // clearInterval(this.state.interval);
+    // this.setState({
+    //   interval: null
+    // });
+    super.close();
   }
 
   setValid(valid) {
@@ -204,6 +202,7 @@ class CanvasScreen extends skoash.Screen {
             ref={'canvas'}
             setValid={this.setValid}
             setHasAssets={this.setHasAssets}
+            itemMinDim={150}
           />
         </div>
         <Selectable className="menu right-menu" list={this.rightMenuList} />

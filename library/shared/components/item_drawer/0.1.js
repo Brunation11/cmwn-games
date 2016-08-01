@@ -42,6 +42,8 @@ class ItemDrawer extends Selectable {
 
     this.bootstrap();
 
+    this.refs.list.scrollTop = 0;
+
     _.each(self.refs, ref => {
       if (typeof ref.start === 'function') ref.start();
     });
@@ -126,11 +128,7 @@ class ItemDrawer extends Selectable {
   }
 
   getClass(key, item) {
-    var white = item && item.name &&
-      (
-        item.name.indexOf('_w.') !== -1 ||
-        item.name.indexOf('W.') !== -1
-      );
+    var white = item && item.name && item.name.toLowerCase().indexOf('w.') !== -1;
 
     return classNames({
       [this.state.classes[key] || '']: true,
@@ -153,12 +151,19 @@ class ItemDrawer extends Selectable {
 
     if (item.src || item.thumb) {
       src = item.thumb || item.src;
-    } else if (item.items && _.isArray(item.items)) {
-      src = item.items[0].thumb || item.items[0].src;
+    } else if (item.items) {
+      if (!_.isArray(item.items)) {
+        item.items = _.values(item.items);
+      }
+
+      if (item.items[0]) {
+        src = item.items[0].thumb || item.items[0].src;
+      }
+
       item.items.some(subitem => {
         if (subitem.name === '_thumb.png') {
           src = subitem.thumb || subitem.src;
-          return null;
+          return true;
         }
       });
     }
@@ -179,7 +184,7 @@ class ItemDrawer extends Selectable {
   }
 
   renderList() {
-    var items, listItems = [], self = this;
+    var items, self = this;
 
     if (!this.props.data) return;
 
@@ -189,47 +194,31 @@ class ItemDrawer extends Selectable {
       items = items[this.state.category].items;
     }
 
-    if (_.isArray(items)) {
-      items = items.sort(function (a, b) {
-        var aVal = Number(a.order) || Infinity;
-        var bVal = Number(b.order) || Infinity;
-        if (aVal === bVal) {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1;
-          return 0;
-        }
-        if (aVal < bVal) return -1;
-        return 1;
-      });
-
-      return items.map((item, key) =>
-        <skoash.ListItem
-          className={this.getClass(key, item)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={key}
-        >
-          {self.renderItemContent(item)}
-        </skoash.ListItem>
-      );
+    if (!_.isArray(items)) {
+      items = _.values(items);
     }
 
-    _.forIn(items, (item, key) => {
-      listItems.push(
-        <skoash.ListItem
-          className={this.getClass(key, item)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={shortid.generate()}
-        >
-          {self.renderItemContent(item)}
-        </skoash.ListItem>
-      );
-    });
-
-    return listItems;
+    return items.sort((a, b) => {
+      var aVal = typeof a.order === 'number' ? a.order : Infinity;
+      var bVal = typeof b.order === 'number' ? b.order : Infinity;
+      if (aVal === bVal) {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      }
+      if (aVal < bVal) return -1;
+      return 1;
+    }).map((item, key) =>
+      <skoash.ListItem
+        className={this.getClass(key, item)}
+        ref={key}
+        data-ref={key}
+        item={item}
+        key={shortid.generate()}
+      >
+        {self.renderItemContent(item)}
+      </skoash.ListItem>
+    );
   }
 
   render() {
@@ -237,7 +226,7 @@ class ItemDrawer extends Selectable {
       <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
-          <ul className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+          <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
             {this.renderList()}
           </ul>
         </div>

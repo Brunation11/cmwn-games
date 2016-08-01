@@ -103,6 +103,12 @@ html, body, body > div, body > div > div {
     }
   }
 
+  &.SCREEN-menu {
+    .menu.recipient {
+      display: none;
+    }
+  }
+
   .game-menu .help {
     display: none;
   }
@@ -944,7 +950,7 @@ p {
       &.username {
         left: 270px;
         top: 50%;
-        margin-top: -46px;
+        margin-top: -35px;
         font-size: 64px;
         line-height: 64px;
       }
@@ -1172,6 +1178,7 @@ p {
     padding: 0;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
 
     > li {
       height: 150px;

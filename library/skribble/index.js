@@ -111,7 +111,8 @@ class Skribble extends skoash.Game {
     });
 
     this.setState({
-      recipient: {}
+      recipient: null,
+      skribbleData: null,
     });
   }
 
@@ -139,7 +140,7 @@ class Skribble extends skoash.Game {
       name: 'getMedia',
       path
     }).then(d => {
-      var opts, currentOpts, hasFolders;
+      var opts, currentOpts;
       opts = {
         data: {},
         callback: () => {
@@ -159,20 +160,16 @@ class Skribble extends skoash.Game {
       });
 
       currentOpts[pathArray[pathArray.length - 1]] = _.clone(d);
-      hasFolders = currentOpts[pathArray[pathArray.length - 1]].items &&
-        currentOpts[pathArray[pathArray.length - 1]].items[0] &&
-        currentOpts[pathArray[pathArray.length - 1]].items[0].asset_type === 'folder';
+      currentOpts[pathArray[pathArray.length - 1]].items = {};
 
-      if (hasFolders) {
-        currentOpts[pathArray[pathArray.length - 1]].items = {};
-
-        if (d.items) {
-          d.items.forEach(item => {
-            if (item.asset_type === 'folder' && item.name) {
-              self.getMedia(path + '/' + item.name);
-            }
-          });
-        }
+      if (d.items) {
+        d.items.forEach(item => {
+          if (item.asset_type === 'folder' && item.name) {
+            self.getMedia(path + '/' + item.name);
+          } else {
+            currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
+          }
+        });
       }
 
       self.updateData(opts);
@@ -182,6 +179,7 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
+      'getFriend'
     ];
 
     if (names.indexOf(opts.name) === -1) {
