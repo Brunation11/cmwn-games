@@ -202,6 +202,7 @@ class CanvasScreen extends skoash.Screen {
             ref={'canvas'}
             setValid={this.setValid}
             setHasAssets={this.setHasAssets}
+            itemMinDim={150}
           />
         </div>
         <Selectable className="menu right-menu" list={this.rightMenuList} />

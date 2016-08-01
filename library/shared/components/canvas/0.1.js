@@ -278,40 +278,44 @@ class Canvas extends skoash.Component {
 
   isInBounds(key, type) {
     return !(
+      // box to left
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
         [
-          {x: 0, y: 0},
-          {x: 0, y: this.state.height},
-          {x: -1, y: this.state.height},
-          {x: -1, y: 0}
+          {x: 0, y: -this.state.height},
+          {x: 0, y: 2 * this.state.height},
+          {x: -this.state.width, y: 2 * this.state.height},
+          {x: -this.state.width, y: -this.state.height}
         ]
       ) ||
+      // box above
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
         [
-          {x: 0, y: 0},
-          {x: this.state.width, y: 0},
-          {x: this.state.width, y: -1},
-          {x: 0, y: -1}
+          {x: -this.state.width, y: 0},
+          {x: 2 * this.state.width, y: 0},
+          {x: 2 * this.state.width, y: -this.state.height},
+          {x: this.state.width, y: -this.state.height}
         ]
       ) ||
+      // box to right
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
         [
-          {x: this.state.width, y: 0},
-          {x: this.state.width, y: this.state.height},
-          {x: this.state.width + 1, y: this.state.height},
-          {x: this.state.width + 1, y: 0}
+          {x: this.state.width, y: -this.state.height},
+          {x: this.state.width, y: 2 * this.state.height},
+          {x: 2 * this.state.width, y: 2 * this.state.height},
+          {x: 2 * this.state.width, y: -this.state.height}
         ]
       ) ||
+      // box below
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
         [
-          {x: 0, y: this.state.height},
-          {x: this.state.width, y: this.state.height},
-          {x: this.state.width, y: this.state.height + 1},
-          {x: 0, y: this.state.height + 1}
+          {x: -this.state.width, y: this.state.height},
+          {x: 2 * this.state.width, y: this.state.height},
+          {x: 2 * this.state.width, y: 2 * this.state.height},
+          {x: -this.state.width, y: 2 * this.state.height}
         ]
       )
     );
@@ -343,6 +347,7 @@ class Canvas extends skoash.Component {
         <EditableAsset
           {...item}
           data-ref={key}
+          minDim={this.props.itemMinDim}
           deleteItem={self.deleteItem}
           checkItem={self.checkItem}
           deactivateItems={self.deactivateItems}
@@ -363,6 +368,7 @@ class Canvas extends skoash.Component {
         <EditableAsset
           {...item}
           data-ref={key}
+          minDim={this.props.messageMinDim}
           deleteItem={self.deleteItem}
           checkItem={self.checkItem}
           deactivateItems={self.deactivateItems}
