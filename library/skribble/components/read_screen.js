@@ -55,6 +55,11 @@ class ReadScreen extends skoash.Screen {
     });
 
     this.start();
+
+    skoash.trigger('getData', {
+      name: 'markAsRead',
+      'skribble_id': message.skribble_id,
+    });
   }
 
   renderSender() {

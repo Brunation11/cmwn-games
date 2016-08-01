@@ -179,7 +179,8 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
-      'getFriend'
+      'getFriend',
+      'markAsRead',
     ];
 
     if (names.indexOf(opts.name) === -1) {
