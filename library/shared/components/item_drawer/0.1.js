@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import shortid from 'shortid';
 import classNames from 'classnames';
 
 import Selectable from '../selectable/0.1';
@@ -213,7 +214,7 @@ class ItemDrawer extends Selectable {
         ref={key}
         data-ref={key}
         item={item}
-        key={key}
+        key={shortid.generate()}
       >
         {self.renderItemContent(item)}
       </skoash.ListItem>
