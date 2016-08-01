@@ -71,6 +71,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: outbox || [],
           }}
+          friendKey="friend_to"
           selectRespond={this.readMessage}
         />
       </li>,

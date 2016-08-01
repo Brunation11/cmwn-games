@@ -111,7 +111,7 @@ class Skribble extends skoash.Game {
     });
 
     this.setState({
-      recipient: {},
+      recipient: null,
       skribbleData: null,
     });
   }
