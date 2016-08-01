@@ -34,7 +34,7 @@ var WhatDidYouDoScreen = (
         <skoash.Audio ref="reported-it" type="voiceOver" src="media/assets/_audio/VOs/VO_Reported.mp3" delay={1000} />
       ]}
     />
-
+    <div ref="meter" className="meter animated"></div>
   </skoash.Screen>
 );
 

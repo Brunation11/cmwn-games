@@ -2121,6 +2121,16 @@ p {
         display: none;
       }
     }
+
+    .meter {
+      background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
+      background-size: cover;
+      background-position: 0 1234px;
+      width: 50%;
+      height: 25%;
+      left: 25%;
+      bottom:-5%;
+    }
   }
 
   &.COMPLETE {
