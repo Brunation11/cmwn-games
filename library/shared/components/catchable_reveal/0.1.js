@@ -1,7 +1,9 @@
+import _ from 'lodash';
+
 import Reveal from '../reveal/0.1.js';
 import Catch from '../catch/0.1.js';
 
-class CatchableReveal extends play.Component {
+class CatchableReveal extends skoash.Component {
   constructor() {
     super();
     this.state = {
@@ -102,9 +104,10 @@ class CatchableReveal extends play.Component {
     );
   }
 }
-CatchableReveal.defaultProps = {
+
+CatchableReveal.defaultProps = _.merge(skoash.Component.defaultProps, {
   answers: [],
   willReveal: () => true
-};
+});
 
 export default CatchableReveal;

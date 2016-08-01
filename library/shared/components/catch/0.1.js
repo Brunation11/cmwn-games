@@ -21,6 +21,7 @@ class Catch extends skoash.Component {
     this.catchableNodes = _.map(this.props.catchables, function (val, key) {
       return ReactDOM.findDOMNode(this.refs[`${key}-catchable`]);
     }.bind(this));
+    window.catch = this;
   }
 
   attachMouseEvents() {
@@ -235,9 +236,9 @@ class Catch extends skoash.Component {
 
 }
 
-Catch.defaultProps = {
+Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
   catchables: [],
   bucketInBounds: true
-};
+});
 
 export default Catch;
