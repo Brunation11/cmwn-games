@@ -194,6 +194,13 @@ class Skribble extends skoash.Game {
           data
         });
       } else {
+        if (opts.name === 'getFriend') {
+          data = {
+            user: [
+              data
+            ]
+          };
+        }
         this.updateData({data});
       }
     });

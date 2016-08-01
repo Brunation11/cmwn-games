@@ -78,13 +78,11 @@ class Inbox extends Selectable {
       timestamp = moment.utc(item.updated).local();
       key = 'message-' + key;
 
-      friends.some(friend => {
+      friends.forEach(friend => {
         if (item[this.props.friendKey] === friend.friend_id) {
           image = friend._embedded.image ? friend._embedded.image.url : '';
           name = friend.username;
-          return false;
         }
-        return true;
       });
 
       if (!name) {
