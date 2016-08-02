@@ -12,13 +12,15 @@ class Cannon extends skoash.Component {
 
   fire() {
     this.setState({
-      fire: true
+      fire: true,
+      reload: false
     });
   }
 
   reload() {
     this.setState({
-      fire: false
+      fire: false,
+      reload: true
     });
 
     if (typeof this.props.onReload === 'function') {
@@ -28,7 +30,8 @@ class Cannon extends skoash.Component {
 
   getClassNames() {
     return classNames('cannon', {
-      FIRE: this.state.fire
+      FIRE: this.state.fire,
+      RELOAD: this.state.reload
     }, super.getClassNames());
   }
 
