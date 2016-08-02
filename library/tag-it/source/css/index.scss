@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.pl-game, .skoash-game, .PAUSED {
+    transform: none !important;
+}
+
+#loader {
+    height: 540px;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -268,6 +276,9 @@ img.inline {
 }
 
 #title {
+  background-image: url(../media/_images/_BKG/BKG_1.png);  
+  background-size: cover;
+    
   .group {
     width: 960px;
     height: 540px;
@@ -275,7 +286,6 @@ img.inline {
     div {
       background-image: url(../media/_images/_Title/img_1.1.png);
       background-size: 3000px;
-      position: absolute;
     }
   }
 
@@ -292,22 +302,26 @@ img.inline {
   }
 
   .drop {
-    left: 235px;
-    bottom: 0;
+    left: 150px;
+    bottom: 50px;
+    margin-left: 235px;
   }
 
   .title {
     left: 115px;
     top: 50px;
+    position: absolute;
   }
 
   .left {
     left: 0;
+    position: absolute;
     bottom: 0;
   }
 
   .right {
     right: 0;
+    position: absolute;
     bottom: 0;
   }
 
@@ -324,23 +338,47 @@ img.inline {
       animation-name: rubberBand;
     }
   }
+    
+    .prev-screen {
+        display: none;
+    }
+    
+    .next-screen {
+        background-image: url(../media/_images/_Buttons/BU_1.png);
+        background-position: 0 0;
+        width: 300px;
+        top: 330px;
+        left: 330px;
+    }
+    
+    .next-screen:hover {
+        background-image: url(../media/_images/_Buttons/BU_1.png);
+        background-position: 0 600px;
+        width: 300px;
+        top: 330px;
+        left: 330px;
+    }
 }
 
-.screen.precious {
+#precious, #not-to-waste {
+    background-image: url(../media/_images/_BKG/BKG_2.png);
+}
+
+.precious, .not-to-waste {
   img {
-    position: absolute;
-    left: 40px;
+    position: relative;
     height: 540px;
   }
 
   .text {
-    position: absolute;
-    right: 30px;
-    top: 50%;
     transform: translateY(-50%);
     background-size: 3900px;
     width: 540px;
     height: 270px;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   p {
@@ -350,7 +388,7 @@ img.inline {
     top: 50%;
     transform: translateY(-50%);
   }
-
+    
   &.OPEN {
     img {
       animation-delay: .5s;
@@ -359,7 +397,10 @@ img.inline {
   }
 }
 
-#recycling-arts {
+#recycling-arts, #reminder { 
+  background-image: url(../media/_images/_BKG/BKG_3.png);
+  background-size: cover;
+
   .pallet {
     position: absolute;
     left: 0;
@@ -367,12 +408,13 @@ img.inline {
     width: 480px;
     height: 540px;
     background-size: 1200px;
+    background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
   }
 
   p {
     position: absolute;
     text-align: center;
-    right: 20px;
+    left: 70%;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -408,7 +450,8 @@ img.inline {
   }
 
   p {
-    text-align: center;
+    width: 70%;
+    left: 20%;
   }
 
   &.OPEN {
@@ -416,6 +459,11 @@ img.inline {
       animation-name: slideInUp;
     }
   }
+}
+
+#step-1, #step-2 {
+    background-image: url(../media/_images/_BKG/BKG_4.png);
+    background-size: cover;
 }
 
 #step-1 {
@@ -554,6 +602,7 @@ img.inline {
     background-size: 5000px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step2/img_8.1.png);
   }
 
   .collect {
@@ -628,7 +677,7 @@ img.inline {
   height: 540px
 }
 
-.frame-component.tip {
+.tip {
   position: absolute;
   left: 0;
   top: auto;
@@ -671,6 +720,7 @@ img.inline {
     background-size: 1875px;
     width: 400px;
     height: 540px;
+    background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
   }
 
   .right {
@@ -741,7 +791,15 @@ img.inline {
   }
 }
 
+#note {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;  
+}
+
 #scissors-and-paint {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   img {
     position: absolute;
     left: 0;
@@ -751,6 +809,8 @@ img.inline {
 
   p {
     padding-left: 450px;
+    text-align: center;
+    padding-top: 150px;
   }
 
   &.OPEN {
@@ -761,6 +821,9 @@ img.inline {
 }
 
 #step-3 {
+  background-image: url('../media/_images/_BKG/BKG_5.png');
+  background-size: cover;
+    
   .step {
     position: absolute;
     left: 0;
@@ -768,14 +831,16 @@ img.inline {
     background-size: 1950px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step3/img_11.1.png);
   }
 
   .text {
     background-image: url(../media/_images/S_Step3/img_11.1.png);
-    background-size: 1950px 360%;
-    background-position: -650px 0px;
+    background-size: 3000px 360%;
+    background-position: -1000px 0px;
     padding: 10px;
     margin-top: 130px;
+    text-align: center
   }
 
   p {
@@ -792,12 +857,14 @@ img.inline {
     background-position: -1300px 0px;
     width: 610px;
     height: 330px;
-    margin-top: -240px;
+    margin-top: -3%;
+    margin-left: 15%;
   }
 
   &.OPEN {
     .lids {
       animation-name: fadeInLeftBig;
+      animation-delay: 0.5s;
     }
   }
 }

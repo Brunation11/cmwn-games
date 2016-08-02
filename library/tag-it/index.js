@@ -1,123 +1,90 @@
-/**
- * Index script
- * @module
- */
-import './config.game';
+import config from './config.game';
 
-// SCREENS
+import Loader from 'shared/components/loader/0.1';
 
-// COMPONENTS
-import 'shared/js/screen-ios-splash';
-import './source/js/components/audio-sequence/behavior';
-import './source/js/components/frame/behavior';
-import './source/js/components/modal/behavior';
-import './source/js/components/multiple-choice/behavior';
-import './source/js/components/reveal/behavior';
-import './source/js/components/score/behavior';
-import './source/js/components/screen-basic/behavior';
-import './source/js/components/screen-quit/behavior';
-import './source/js/components/screen-title/behavior';
-import './source/js/components/selectable-reveal/behavior';
-import './source/js/components/selectable/behavior';
-import './source/js/components/slides/behavior';
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import TitleScreen from './components/title_screen';
+import PreciousScreen from './components/precious_screen';
+import NotToWasteScreen from './components/not_to_waste_screen';
+import RecyclingArtsScreen from './components/recycling_arts_screen';
+import ReminderScreen from './components/reminder_screen';
+import Step1Screen from './components/step_1_screen';
+import Step2Screen from './components/step_2_screen';
+import Tip1Screen from './components/tip_1_screen';
+import Tip2Screen from './components/tip_2_screen';
+import WhatNeedScreen from './components/what_need_screen';
+import NoteScreen from './components/note_screen';
+import ScissorsAndPaintScreen from './components/scissors_and_paint_screen';
+import Step3Screen from './components/step_3_screen';
+import Step4Screen from './components/step_4_screen';
 
-import 'shared/js/test-platform-integration';
-import 'shared/js/google-analytics';
+import QuitScreen from 'shared/components/quit_screen/0.1';
 
-pl.game('tag-it', function () {
+//import 'shared/js/test-platform-integration';
 
-  var audioClasses, audioScreens, k;
+class TagIt extends skoash.Game {
+  constructor() {
+    super(config);
 
-  this.changeWallpaper = function (wallpaper) {
-    this.removeClass('PRECIOUS RECYCLE STEPS SCISSORS SPREAD').addClass(wallpaper);
-  };
+    this.screens = {
+      0: iOSScreen,
+      //1: TitleScreen,
+      //1: PreciousScreen,
+      //2: NotToWasteScreen,
+      //3: RecyclingArtsScreen,
+      //4: ReminderScreen,
+      //5: Step1Screen,
+      //6: WhatFaucetScreen,
+      //7: Step2Screen,
+       // 8: Tip1Screen,
+        //9: Tip2Screen,
+      //10: WhatNeedScreen,
+        //11: NoteScreen,
+        //12: ScissorsAndPaintScreen,
+        //13: Step3Screen,
+        1: Step4Screen,
+    };
 
-  audioClasses = function () {
-    var classes = '';
-
-    this.on('audio-play', function (_event) {
-      var id = _event.target.$el[0].id;
-      id = id ? id.toUpperCase() : false;
-      classes += id + ' ';
-      this.addClass(id);
-    });
-
-    this.on('ui-close', function (_event) {
-      if (!this.is(_event.target)) return;
-      this.removeClass(classes);
-      classes = '';
-    });
-  };
-
-  audioScreens = ['step-1', 'step-2', 'what-need'];
-
-  for (k in audioScreens) {
-    this.screen(audioScreens[k], audioClasses);
+    this.menus = {
+      quit: QuitScreen,
+    };
   }
 
-  this.screen('what-faucet', function () {
-    audioClasses.call(this);
+  renderLoader() {
+    return (
+      <Loader />
+    );
+  }
+        
+  getBackgroundIndex(currentScreenIndex) {
+     switch (currentScreenIndex) {
+     case 1:
+        return 3;
+     case 5:
+        return;
+     default:
+       return 2;
+     }
+  }
 
-    this.respond('select', function (_event) {
-      this.playSound(this.audio.sfx);
-      this.select(_event.behaviorTarget);
-    });
-  });
+  renderAssets() {
+    return (
+      <div>
+        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/TI_BKG_1.mp3" />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />
+        <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" />
+        
+        <skoash.Audio ref="sfx-1" type="background" src="media/_audio/S_Precious/TI_Water.mp3" />
+        
+        <skoash.Audio ref="btn-1" type="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" />
+        <skoash.Audio ref="btn-2" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
+        <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>
+      </div>
+    );
+  }
 
-  this.screen('tips', function () {
-    var classes = '';
+}
 
-    this.on('audio-play', function (_event) {
-      var id = _event.target.$el[0].id;
-      var ids = [
-        'use-your',
-        'try-glow',
-        'use-multiple',
-        'create',
-        'personalize'
-      ];
-      if (ids.indexOf(id) === -1) return;
-      id = id ? id.toUpperCase() : false;
-      classes += id + ' ';
-      this.addClass(id);
-      if (id) this.playSound(this.audio.sfx.answer);
-    });
+skoash.start(TagIt, config.id);
 
-    this.on('ui-close', function (_event) {
-      if (!this.is(_event.target)) return;
-      this.removeClass(classes);
-      classes = '';
-    });
-  });
-
-  this.screen('flip', function () {
-    audioClasses.call(this);
-
-    this.next = function () {
-      this.game.quit.okay();
-    };
-
-    this.complete = function () {
-      var eventCategory;
-      var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-      theEvent.name = 'flip';
-      theEvent.gameData = {id: this.game.id()};
-      if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
-      eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-      ga('send', 'event', eventCategory, 'complete');
-      return this.proto();
-    };
-  });
-
-  this.exit = function () {
-    var screen, eventCategory;
-
-    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
-
-    ga('send', 'event', eventCategory, 'quit');
-
-    return this.proto();
-  };
-
-});
+import 'shared/js/google-analytics';
