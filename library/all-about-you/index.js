@@ -25,7 +25,7 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import 'shared/js/test-platform-integration';
 
-class Survey extends skoash.Game {
+class AllAboutYou extends skoash.Game {
   constructor() {
     super(config);
 
@@ -87,6 +87,6 @@ class Survey extends skoash.Game {
 
 }
 
-skoash.start(Survey, config.id);
+skoash.start(AllAboutYou, config.id);
 
 import 'shared/js/google-analytics';
