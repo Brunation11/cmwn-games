@@ -86,6 +86,12 @@ html, body, body > div, body > div > div {
     }
   }
 
+  &.SCREEN-1 {
+    .game-menu .inbox {
+      display: none;
+    }
+  }
+
   &.SCREEN-canvas,
   &.SCREEN-send {
     .game-menu .create {
@@ -94,10 +100,16 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-inbox,
-  &.SCREEN-sent,
-  &.SCREEN-read {
+  &.SCREEN-sent {
     .game-menu .save,
     .game-menu .inbox,
+    .menu.recipient {
+      display: none;
+    }
+  }
+
+  &.SCREEN-read {
+    .game-menu .save,
     .menu.recipient {
       display: none;
     }
@@ -607,14 +619,14 @@ p {
 
   .item-drawer {
     li {
-      padding: 15px 10px;
-      width: 200px;
+      padding: 15px 2px 15px 10px;
+      width: 175px;
       height: 270px;
       background-image: url(../media/_Buttons/sk_btn_selectfriend.png);
       background-size: 400px;
       background-repeat: no-repeat;
       background-position: 0 0;
-      margin: 0 25px 20px;
+      margin: 0 5px 20px;
 
       &:before {
         display: none;
@@ -1171,6 +1183,14 @@ p {
 #read {
   .menu.recipient.sender {
     display: block;
+
+    &.HIDE {
+      display: none;
+
+      & ~ .right-menu {
+        display: none;
+      }
+    }
   }
 
   .left-menu {

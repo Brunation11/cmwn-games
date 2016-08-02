@@ -28,6 +28,8 @@ class Inbox extends Selectable {
       classes,
     });
 
+    if (message.status !== 'COMPLETE') return;
+
     if (typeof this.props.selectRespond === 'function' && message) {
       this.props.selectRespond(message);
     }
@@ -90,6 +92,10 @@ class Inbox extends Selectable {
           name: 'getFriend',
           'friend_id': item[this.props.friendKey],
         });
+      }
+
+      if (this.props.friendKey === 'friend_to') {
+        item.sent = true;
       }
 
       return (

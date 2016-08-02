@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import Selectable from '../../shared/components/selectable/0.1.js';
 
 const classNameText = {
@@ -44,14 +46,24 @@ class ReadScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var message = opts.message || {};
+    var message, friends, creater;
+
+    message = opts.message || {};
+
+    friends = skoash.trigger('getState').data.user || [];
+    friends.forEach(friend => {
+      if (message.created_by === friend.friend_id) {
+        creater = friend;
+      }
+    });
 
     this.setState({
       load: true,
       open: true,
       leave: false,
       close: false,
-      message
+      message,
+      creater
     });
 
     this.start();
@@ -62,21 +74,18 @@ class ReadScreen extends skoash.Screen {
     });
   }
 
-  renderSender() {
-    var message, friends, creater, content = [];
-
-    message = this.state.message;
-
-    if (!message) return;
-
-    friends = skoash.trigger('getState').data.user || [];
-    friends.some(friend => {
-      if (message.created_by === friend.friend_id) {
-        creater = friend;
-        return false;
+  getSenderClassNames() {
+    return classNames(
+      classNameText.sender, {
+        HIDE: !this.state.creater || this.state.message.sent
       }
-      return true;
-    });
+    );
+  }
+
+  renderSender() {
+    var creater, content = [];
+
+    creater = this.state.creater;
 
     if (!creater) return;
 
@@ -94,7 +103,7 @@ class ReadScreen extends skoash.Screen {
   renderContent() {
     return (
       <div>
-        <ul className={classNameText.sender}>
+        <ul className={this.getSenderClassNames()}>
           <li>
             <span>
               {this.renderSender()}

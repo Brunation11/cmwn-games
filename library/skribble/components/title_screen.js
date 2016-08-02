@@ -16,7 +16,7 @@ var TitleScreen = (
       src="media/_Buttons/skribble-play-01.png"
     />
     <skoash.Image
-      ref="play"
+      ref="play-hover"
       className="hidden"
       src="media/_Buttons/skribble-hover.png"
     />
