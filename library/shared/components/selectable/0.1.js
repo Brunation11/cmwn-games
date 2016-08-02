@@ -69,7 +69,7 @@ class Selectable extends skoash.Component {
       this.props.selectRespond(message);
     }
 
-    this.requireForComplete.map(key => {
+    this.requireForComplete.forEach(key => {
       if (key === message && this.refs[key]) {
         this.refs[key].complete();
       }
@@ -125,7 +125,7 @@ class Selectable extends skoash.Component {
     return (
       <this.props.bin.type
         {...this.props.bin.props}
-        ref={'bin'}
+        ref="bin"
       />
     );
   }
@@ -135,7 +135,6 @@ class Selectable extends skoash.Component {
 
     return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
-      li.type = li.type || skoash.ListItem;
       return (
         <li.type
           {...li.props}

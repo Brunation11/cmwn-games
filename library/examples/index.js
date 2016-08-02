@@ -3,7 +3,8 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import CarouselScreen from './components/carousel_screen';
+import SelectableAllScreen from './components/selectable_all_screen';
+// import CarouselScreen from './components/carousel_screen';
 // import MatchScreen from './components/match_screen';
 // import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
@@ -28,7 +29,8 @@ class Examples extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: CarouselScreen,
+      1: SelectableAllScreen,
+      // 1: CarouselScreen,
       // 1: MatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,
