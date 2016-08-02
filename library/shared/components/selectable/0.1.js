@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import _ from 'lodash';
 
 class Selectable extends play.Component {
   constructor() {
@@ -87,8 +88,13 @@ class Selectable extends play.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
-
+    var list;
+    // if (this.props.randomizeList) {
+    //   list = _.shuffle(this.props.list) || _.shuffle(this.state.list);
+    // } else {
+    //   list = this.props.list || this.state.list;
+    // }
+    list = this.props.list || this.state.list;
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
