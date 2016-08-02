@@ -65,6 +65,13 @@ class Printmaster extends skoash.Game {
     };
   }
 
+  getBackgroundIndex(index) {
+    switch (true) {
+    case index === 3: return 1;
+    default: return 0;
+    }
+  }
+
   renderLoader() {
     return (
       <Loader />
@@ -75,6 +82,7 @@ class Printmaster extends skoash.Game {
     return (
       <div>
         <skoash.Audio ref="bkg-0" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
         <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />
         <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />

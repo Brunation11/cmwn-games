@@ -498,17 +498,31 @@ img.inline {
 }
 
 #info-tiny-patterns {
+  .frame {
+    background-image: url(../media/_Frame/Fr_1.png);
+    margin-top: 70px;
+    padding: 80px 60px;
+  }
+
   img {
-    width: 300px;
+    width: 240px;
     float: left;
   }
 
   p {
-    margin-top: 100px;
+    padding: 60px 0px 60px 0;
   }
 }
 
 #info-discover {
+  .frame {
+    background-image: url(../media/_Frame/Fr_1.png);
+    width: 92%;
+    padding: 20px 0 20px 90px;
+    margin-top: 80px;
+    @include clearfix;
+  }
+
   img {
     width: 300px;
     margin-left: -30px;
