@@ -4,3 +4,4 @@ node_modules
 build
 library/component-catalog
 *.swp
+Thumbs.db
