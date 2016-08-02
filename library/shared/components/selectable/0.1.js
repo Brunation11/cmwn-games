@@ -138,7 +138,7 @@ class Selectable extends skoash.Component {
       return (
         <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
+          className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
           ref={ref}

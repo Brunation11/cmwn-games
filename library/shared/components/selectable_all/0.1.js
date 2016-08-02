@@ -14,21 +14,51 @@ class SelectableAll extends Selectable {
   }
 
   start() {
-    super.start();
+    var selectClass = 'SELECTED';
+    var selectFunction = this.select;
 
+    this.setState({
+      started: true,
+      selectClass,
+      selectFunction
+    });
+
+    this.bootstrap();
+
+    Object.keys(this.refs).map(key => {
+      if (typeof this.refs[key].start === 'function') this.refs[key].start();
+    });
+  }
+
+  bootstrap() {
+    super.bootstrap();
+    if (this.refs.bin) {
+      this.setState({
+        list: this.refs.bin.getAll()
+      }, () => {setTimeout(() => {this.launch()}, 1000)});
+    } else {
+      this.launch();
+    }
+  }
+
+
+  launch() {
     var list = this.state.list;
-    var classes = this.state.classes;
+    var classes = {};
 
     for(var i = 0; i < list.length; i++) {
-      setTimeout(() => {
-        while (true) {
-          var j = Math.floor(Math.random() * list.length);
-          if (classes[j] === 'LAUNCHED') continue;
-          classes[j] = 'LAUNCHED'; break;
-        }
-        this.setState({classes});
-      }, 500);
+//      setTimeout(() => {
+          classes[i] = 'LAUNCHED';
+//        while (true) {
+//          var j = Math.floor(Math.random() * list.length);
+//          if (classes[j] === 'LAUNCHED') continue;
+//          classes[j] = 'LAUNCHED'; break;
+//        }
+//        this.setState({classes});
+//      }, 500);
     }
+    this.setState({classes});
+    debugger;
   }
 
   next(ref) {
@@ -46,12 +76,12 @@ class SelectableAll extends Selectable {
     });
   }
 
-  selectHelpe(e) {
+  selectHelper(e) {
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect();
     }
  
-    if (++selected === this.props.selectNum) this.complete();
+    if (++this.selected === this.props.selectNum) this.complete();
   }
 
   getClassNames() {
@@ -66,7 +96,7 @@ class SelectableAll extends Selectable {
       return (
         <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
+          className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
           onTransitionEnd={this.next.bind(this, ref)}

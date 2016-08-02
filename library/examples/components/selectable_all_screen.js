@@ -10,6 +10,7 @@ var SelectableAllScreen = (
     id="selectable-all"
   >
     <SelectableAll
+      ref="selectable-all"
       bin={<Randomizer
         ref="randomizer"
         bin={[
