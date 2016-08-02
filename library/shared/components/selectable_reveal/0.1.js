@@ -11,8 +11,8 @@ class SelectableReveal extends play.Component {
   }
 
   selectRespond(message) {
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
+    if (this.props.answers) {
+      if (this.props.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
         if (this.audio.correct) this.audio.correct.play();
@@ -62,6 +62,7 @@ class SelectableReveal extends play.Component {
         selectClass={this.props.selectableSelectClass}
         completeOnSelect={this.props.selectableCompleteOnSelect}
         checkComplete={this.props.selectableCheckComplete}
+        randomizeList={this.props.randomizeSelectableList}
       />
     );
   }
@@ -99,7 +100,3 @@ class SelectableReveal extends play.Component {
 }
 
 export default SelectableReveal;
-
-
-// all shoud have props answers
-// if any have it it would automatically complete
