@@ -17,6 +17,14 @@ import NoteScreen from './components/note_screen';
 import ScissorsAndPaintScreen from './components/scissors_and_paint_screen';
 import Step3Screen from './components/step_3_screen';
 import Step4Screen from './components/step_4_screen';
+import Step5Screen from './components/step_5_screen';
+import Hint1Screen from './components/hint_1_screen';
+import Step6Screen from './components/step_6_screen';
+import Step7Screen from './components/step_7_screen';
+import Hint2Screen from './components/hint_2_screen';
+import DecorateTagScreen from './components/decorate_tag_screen';
+import Step8Screen from './components/step_8_screen';
+import Hint3Screen from './components/hint_3_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -42,7 +50,15 @@ class TagIt extends skoash.Game {
         //11: NoteScreen,
         //12: ScissorsAndPaintScreen,
         //13: Step3Screen,
-        1: Step4Screen,
+        //14: Step4Screen,
+        //15: Step5Screen,
+        //16: Hint1Screen,
+        //17: Step6Screen,
+        //18: Step7Screen,
+        //19: Hint2Screen,
+        //20: DecorateTagScreen,
+        1: Step8Screen,
+        2: Hint3Screen,
     };
 
     this.menus = {

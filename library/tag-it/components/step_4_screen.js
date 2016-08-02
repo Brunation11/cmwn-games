@@ -10,7 +10,7 @@ var Step4Screen = (
         <skoash.Audio ref="step-4" type="voiceOver" src="media/_audio/S_Step4/VO_Step4.mp3" />
         <skoash.Audio ref="check-the" type="voiceOver" src="media/_audio/S_Step4/VO_CheckThe.mp3" />
     </skoash.MediaSequence>
-    <div className="step" pl-bg="media/_images/S_Step4/img_12.1.png" />
+    <div className="step" />
         <p>
             Check the faucet.<br /><br />
             Determine how your tag<br />

@@ -692,7 +692,6 @@ img.inline {
   font-weight: normal;
   line-height: $small;
   text-align: center;
-  animation: hideTip .5s forwards;
 
   p {
     font-size: $small;
@@ -864,12 +863,15 @@ img.inline {
   &.OPEN {
     .lids {
       animation-name: fadeInLeftBig;
-      animation-delay: 0.5s;
+      animation-delay: 1s;
     }
   }
 }
 
 #step-4 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .step {
     position: absolute;
     left: 0;
@@ -877,6 +879,7 @@ img.inline {
     background-size: 1350px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step4/img_12.1.png);
   }
 
   p {
@@ -889,6 +892,7 @@ img.inline {
     background-position: -450px 0px;
     padding: 20px 0;
     font-size: $medium;
+    text-align: center;
   }
 
   .faucet {
@@ -906,11 +910,15 @@ img.inline {
   &.OPEN {
     .faucet {
       animation-name: fadeInLeftBig;
+      animation-delay: 1s;
     }
   }
 }
 
 #step-5 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .step {
     position: absolute;
     left: 45px;
@@ -918,6 +926,7 @@ img.inline {
     background-size: 1575px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step5/img_13.1.png);
   }
 
   .text {
@@ -952,7 +961,15 @@ img.inline {
   }
 }
 
+#hint-1 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+}
+
 #step-6 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .step {
     position: absolute;
     left: 45px;
@@ -960,6 +977,7 @@ img.inline {
     background-size: 1350px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step6/img_14.1.png);
   }
 
   p {
@@ -972,6 +990,7 @@ img.inline {
     background-position: -450px 0px;
     padding: 10px 20px;
     font-size: $medium;
+    text-align: center;
   }
 
   .faucet {
@@ -994,6 +1013,9 @@ img.inline {
 }
 
 #step-7 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .step {
     position: absolute;
     left: 45px;
@@ -1001,6 +1023,7 @@ img.inline {
     background-size: 1800px;
     width: 320px;
     height: 130px;
+    background-image: url(../media/_images/S_Step7/img_15.1.png);
   }
 
   .text {
@@ -1033,7 +1056,15 @@ img.inline {
   }
 }
 
+#hint-2 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+}
+
 #decorate-tag {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   p {
     position: absolute;
     left: 0;
@@ -1043,6 +1074,8 @@ img.inline {
     background-size: 3900px;
     background-position: -975px 0px;
     padding: 90px 50px 0px 0px;
+    background-image: url('../media/_images/_Frames/FR_1.png');
+    text-align: center;
   }
 
   img {
@@ -1055,11 +1088,15 @@ img.inline {
   &.OPEN {
     img {
       animation-name: zoomIn;
+      animation-delay: 1.5s;
     }
   }
 }
 
 #step-8 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;    
+    
   .step {
     position: absolute;
     right: 50px;
@@ -1068,6 +1105,7 @@ img.inline {
     width: 320px;
     height: 130px;
     z-index: 1;
+    background-image: url(../media/_images/S_Step8/img_17.1.png);
   }
 
   .text {
@@ -1080,6 +1118,7 @@ img.inline {
     background-position: -975px 0px;
     padding: 220px 50px 0px 0px;
     text-align: center;
+    background-image: url(../media/_images/_Frames/FR_1.png);
   }
 
   .lid {
@@ -1099,6 +1138,11 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
   }
+}
+
+#hint-3 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
 }
 
 #select-paint {
