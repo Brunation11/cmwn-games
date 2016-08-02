@@ -2871,39 +2871,40 @@ p {
         }
 
         &.banner {
-          width: 66%;
+          width: 48%;
           top: 29%;
-          left: 18%;
+          right: 12%;
         }
 
         &.confetti {
           width: 100%;
         }
+      }
 
-        &.you {
-          width: 64%;
-          top: 52%;
-          left: 18%;
-        }
+      .flip-image {
+        position: absolute;
+        background: url(../media/assets/_images/S_17/survey%20flip%20coin%20gif/Earned_Survey-flip.gif);
+        background-size: contain;
+        width: 22%;
+        height: 70%;
+        left: 16%;
+        bottom: 10%;
+      }
 
-        &.frame,
-        &.banner,
-        &.confetti {
-          animation-name: slideInDown;
-        }
-
-        &.you {
-          animation-name: bounceInDown;
-          animation-delay: 4s;
-        }
+      .frame,
+      .banner,
+      .confetti,
+      .flip-image {
+        animation-name: slideInDown;
       }
 
       &.COMPLETE {
         img {
-          &.you {
-            // animation-name: tada;
-            // animation-delay: 1s;
-          }
+        }
+
+        .flip-image {
+          background: url(../media/assets/_images/S_17/survey%20flip%20coin%20gif/Static_Survey-flip.gif);
+          background-size: contain;
         }
       }
     }
