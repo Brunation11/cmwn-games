@@ -25,5 +25,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:ginasink/cmwn-games.git"
+  },
+  "dependencies": {
+    "shortid": "^2.2.6"
   }
 }
