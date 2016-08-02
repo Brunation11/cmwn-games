@@ -35,12 +35,6 @@ class Inbox extends Selectable {
     }
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
-  }
-
   getClass(key, read) {
     return classNames(
       this.state.classes[key], {
@@ -69,8 +63,12 @@ class Inbox extends Selectable {
 
     items = this.props.data.items;
 
-    if (this.state.category) {
-      items = items[this.state.category].items;
+    if (!items.length) {
+      return (
+        <li className="empty">
+          {this.props.emptyMessage}
+        </li>
+      );
     }
 
     friends = skoash.trigger('getState').data.user || [];

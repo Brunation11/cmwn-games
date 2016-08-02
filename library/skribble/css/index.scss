@@ -935,6 +935,22 @@ p {
           }
         }
       }
+
+      &.empty {
+        background: none;
+        height: 100%;
+
+        span {
+          display: block;
+          width: 100%;
+          text-align: center;
+          line-height: 1.2;
+          left: 0;
+          top: 50%;
+          font-size: 50px;
+          transform: translateY(-50%);
+        }
+      }
     }
 
     &.SAVED {
