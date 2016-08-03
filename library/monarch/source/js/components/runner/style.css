@@ -2,9 +2,9 @@
   width: 960px;
   height: 540px;
 }
-
+  
   .runner-component [pl-id=player] {
-    transition: transform 0.5s cubic-bezier(0, .95, 1, 1);
+    transition: transform 0.5s cubic-bezier(0, 1.14, 1, 1);
     transform: translate3d(0,0,0);
   }
 
@@ -21,7 +21,7 @@
   .runner-component .bin {
     display: none;
   }
-
+  
   .runner-component canvas {
     position: absolute;
     width: 100%;
