@@ -23,7 +23,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class AllAboutYou extends skoash.Game {
   constructor() {
@@ -71,6 +71,46 @@ class AllAboutYou extends skoash.Game {
       return;
     }
   }
+
+  emitSave(highestScreenIndex, currentScreenIndex) {
+    var data = {};
+    if (this && this.refs) {
+      _.forEach(this.refs, (screen, key) => {
+        if (key.indexOf('screen-') === -1) return;
+        if (typeof screen.collectData === 'function') {
+          data[key] = screen.collectData();
+        }
+      });
+    }
+    // console.log('in emit save');
+    // console.log(data);
+    this.emit({
+      name: 'save',
+      game: this.config.id,
+      version: this.config.version,
+      highestScreenIndex,
+      currentScreenIndex,
+      data
+    });
+  }
+
+  // componentWillMount() {
+  //   var data = {};
+
+  // }
+
+  // load(opts) {
+  //   console.log(opts)
+  //   if (this && this.refs) {
+  //     _.forEach(this.refs, (screen, key) => {
+  //       if (key.indexOf('screen-') === -1) return;
+  //       if (typeof screen.loadData === 'function') {
+  //         screenData = opts.data[key]
+  //         screen.loadData(opts);
+  //       }
+  //     });
+  //   }
+  // }
 
   renderAssets() {
     return (
