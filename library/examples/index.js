@@ -6,6 +6,9 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import RunnerReveal from './components/flyer_screen';
 // import CatchReveal from './components/catch_reveal_screen';
 // import CatchScreen from './components/catch_screen';
+// import CarouselScreen from './components/carousel_screen';
+// import MatchScreen from './components/match_screen';
+// import RolesScreen from './components/roles_screen';
 // import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
@@ -32,6 +35,8 @@ class Examples extends skoash.Game {
       1: RunnerReveal
       // 1: CatchReveal
       // 1: CatchScreen,
+      // 1: CarouselScreen,
+      // 1: RolesScreen,
       // 1: MatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,

@@ -11,8 +11,8 @@ class Catch extends skoash.Component {
       stamp: 0
     };
 
-    this.boundOnMouseMove = this.onMouseMove.bind(this);
-    this.boundOnResize = this.onResize.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onResize = this.onResize.bind(this);
     this.checkCollisions = this.checkCollisions.bind(this);
   }
 
@@ -26,9 +26,9 @@ class Catch extends skoash.Component {
   attachMouseEvents() {
     var catchRef = this.refs['catch-component'];
     if (catchRef) {
-      catchRef.addEventListener('mousemove', this.boundOnMouseMove);
-      catchRef.addEventListener('touchstart', this.boundOnMouseMove);
-      catchRef.addEventListener('touchmove', this.boundOnMouseMove);
+      catchRef.addEventListener('mousemove', this.onMouseMove);
+      catchRef.addEventListener('touchstart', this.onMouseMove);
+      catchRef.addEventListener('touchmove', this.onMouseMove);
     }
   }
 
@@ -54,16 +54,16 @@ class Catch extends skoash.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    super.start();
     this.bootstrap();
     this.checkCollisions();
   }
 
   bootstrap() {
-    play.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
     this.onResize();
     this.attachMouseEvents();
-    window.addEventListener('resize', this.boundOnResize);
+    window.addEventListener('resize', this.onResize);
     _.forEach(this.catchableNodes, function (node, key) {
       var catchableRef = this.refs[`${key}-catchable`];
       node.addEventListener('animationiteration', catchableRef.reset, false);
