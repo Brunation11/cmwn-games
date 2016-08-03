@@ -1,8 +1,8 @@
 import SelectableAll from 'shared/components/selectable_all/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 
-var onSelect = function () {
-  console.log('A jellyfish was selected');
+var onSelect = function (target) {
+  console.log('jellyfish ' + target.ref + ' was selected');
 };
 
 var SelectableAllScreen = (
@@ -41,6 +41,7 @@ var SelectableAllScreen = (
         ]}
       />}
       onSelect = {onSelect}
+      doCount={true}
     />
   </skoash.Screen>
 );

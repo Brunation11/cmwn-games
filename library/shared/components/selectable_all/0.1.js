@@ -3,24 +3,28 @@ import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
 
+const SETSTATEPAUSE = 100;
+
 class SelectableAll extends Selectable {
   constructor() {
     super();
-    var selected = 0;
-  }
-
-  componentDidMount() {
-    this.start();
   }
 
   start() {
     var selectClass = 'SELECTED';
     var selectFunction = this.select;
+    var selected, countFunction;
+    if (this.props.doCount) {
+        selected = 0;
+        countFunction = this.props.count || this.count.bind(this);
+    }
 
     this.setState({
       started: true,
       selectClass,
-      selectFunction
+      selectFunction,
+      selected,
+      countFunction,
     });
 
     this.bootstrap();
@@ -35,7 +39,7 @@ class SelectableAll extends Selectable {
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
-      }, () => {setTimeout(() => {this.launch()}, 1000)});
+      }, () => {setTimeout(() => {this.launch()}, SETSTATEPAUSE)});
     } else {
       this.launch();
     }
@@ -44,44 +48,63 @@ class SelectableAll extends Selectable {
 
   launch() {
     var list = this.state.list;
+    var indexesLeft = [...Array(list.length).keys()];
     var classes = {};
 
     for(var i = 0; i < list.length; i++) {
-//      setTimeout(() => {
-          classes[i] = 'LAUNCHED';
-//        while (true) {
-//          var j = Math.floor(Math.random() * list.length);
-//          if (classes[j] === 'LAUNCHED') continue;
-//          classes[j] = 'LAUNCHED'; break;
-//        }
-//        this.setState({classes});
-//      }, 500);
+      setTimeout(() => {
+        var j = Math.floor(Math.random() * indexesLeft.length);
+        var index = indexesLeft[j];
+        indexesLeft.splice(j, 1);
+
+        classes[index] = 'LAUNCHED';
+        this.setState({classes});
+      }, this.props.pause);
     }
     this.setState({classes});
-    debugger;
   }
 
-  next(ref) {
-    var classes, list, index;
-    list = this.state.list;
-    index = list.indexOf(ref);
+  next(key) {
+    var classes = this.state.classes;
+    var list = this.state.list;
 
-    list.splice(index, 1, this.refs.bin.get(1));
+    list.splice(key, 1, this.refs.bin.get(1)[0]);
 
-    classes[index] = 'LAUNCHED';
+    classes[key] = 'RESET';
 
     this.setState({
       list,
       classes
+    }, () => {
+      setTimeout(() => {
+        classes[key] = 'LAUNCHED';
+        this.setState({classes});
+      }, SETSTATEPAUSE);
     });
   }
 
-  selectHelper(e) {
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect();
-    }
+  count() {
+    var selected = this.state.selected;
+    this.setState({selected: selected + 1});
  
-    if (++this.selected === this.props.selectNum) this.complete();
+    if (this.state.selected === this.props.selectNum) {
+      this.complete();
+    }
+  }
+
+  selectHelper(e) {
+    var target = e.target.closest('LI');
+    if (!target) return;
+
+    var key = target.getAttribute('id');
+    var item = this.state.list[key];
+
+    if (typeof this.props.onSelect === 'function') {
+      this.props.onSelect(item);
+    }
+    if (typeof this.state.countFunction === 'function') {
+      this.state.countFunction(this);
+    }
   }
 
   getClassNames() {
@@ -99,9 +122,10 @@ class SelectableAll extends Selectable {
           className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
-          onTransitionEnd={this.next.bind(this, ref)}
+          onTransitionEnd={this.next.bind(this, key)}
           ref={ref}
           key={key}
+          id={key}
         />
       );
     });
@@ -109,7 +133,9 @@ class SelectableAll extends Selectable {
 }
 
 SelectableAll.defaultProps = _.merge({
-  selectNum:  6
+  selectNum:  6,
+  pause: 500,
+  doCount: false
 }, Selectable.defaultProps);
 
 export default SelectableAll;
