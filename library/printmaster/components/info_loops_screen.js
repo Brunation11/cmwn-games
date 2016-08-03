@@ -1,6 +1,7 @@
 var InfoLoopsScreen = (
   <skoash.Screen
     id="info-loops"
+    className="types"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_5/VO_5.1.mp3" />
     <skoash.Image ref="img" className="animated" src="media/S_5/img_5.1.gif" />

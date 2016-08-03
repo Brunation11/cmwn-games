@@ -1,6 +1,7 @@
 var InfoIDScreen = (
   <skoash.Screen
     id="info-id"
+    className="large-frame"
   >
     <skoash.MediaSequence ref="media">
       <skoash.Audio type="voiceOver" src="media/S_8/S_8.1.mp3" delay={500} />

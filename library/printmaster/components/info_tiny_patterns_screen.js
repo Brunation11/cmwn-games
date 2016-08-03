@@ -1,6 +1,7 @@
 var InfoTinyPatternsScreen = (
   <skoash.Screen
     id="info-tiny-patterns"
+    className="large-frame"
   >
     <skoash.Audio type="voiceOver" src="media/S_2/VO_2.1.mp3" pl-delay="2s" />
     <skoash.Image ref="img" className="hidden" src="media/_Frame/Fr_1.png" />

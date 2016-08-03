@@ -86,6 +86,7 @@ class Printmaster extends skoash.Game {
         <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />
         <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />
         <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />
+        <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />
         <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />
         <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />

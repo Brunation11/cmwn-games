@@ -1,6 +1,7 @@
 var InfoWhorlScreen = (
   <skoash.Screen
     id="info-whorl"
+    className="types"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
     <skoash.Image ref="img" className="animated" src="media/S_6/img_6.1.gif" />

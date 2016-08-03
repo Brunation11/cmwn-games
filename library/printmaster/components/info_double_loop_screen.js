@@ -1,6 +1,7 @@
 var InfoDoubleLoopScreen = (
   <skoash.Screen
     id="info-double-loop"
+    className="types"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_7/VO_7.1.mp3" />
     <skoash.Image ref="img" className="animated" src="media/S_7/img_7.1.gif" />

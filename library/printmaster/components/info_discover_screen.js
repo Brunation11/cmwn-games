@@ -1,6 +1,7 @@
 var InfoDiscoverScreen = (
   <skoash.Screen
     id="info-discover"
+    className="large-frame"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
     <skoash.Image ref="img" className="hidden" src="media/_Frame/Fr_1.png" />
