@@ -1,8 +1,19 @@
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
+var collectData = function() {
+  var data = {};
+  if (!this.refs || !this.refs['selectable-reveal'] || !this.refs['selectable-reveal'].refs || !this.refs['selectable-reveal'].refs.selectable) return data;
+  _.forIn(this.refs['selectable-reveal'].refs.selectable.refs , (ref, key) => {
+    if (ref.props.className.indexOf('SELECTED') === -1) return;
+    data[this.props.id] = ref.props['data-ref'];
+  });
+  return data;
+}
+
 var EmojiFriendlinessScreen = (
   <skoash.Screen
     id="emoji-friendliness"
+    collectData={collectData}
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendly.mp3" />
     <skoash.Image ref="penguins" className="penguins animated" src="media/assets/_images/S_10/IMG_10_PenguinsCircle.png" />
@@ -13,7 +24,6 @@ var EmojiFriendlinessScreen = (
 
     <SelectableReveal
       ref="selectable-reveal"
-      selectableSelectClass="HIGHLIGHTED"
       selectableCompleteOnSelect
       selectableCheckComplete={false}
       revealCompleteOnOpen
