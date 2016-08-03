@@ -146,29 +146,30 @@
 
 .selectable-all li.LAUNCHED {
     top: -200px;
+
+    &.a {
+        /* Id rather do a transform but this works better with click events. I may want to do my own hit testing. */
+        transition: top cubic-bezier(1, 0.1, 1, 1) 5s;
+    }
+    
+    &.b {
+        transition: top cubic-bezier(1, 0.1, 1, 1) 6s;
+    }
+    
+    &.c {
+        transition: top cubic-bezier(1, 0.1, 1, 1) 7s;
+    }
+    
+    &.d {
+        transition: top cubic-bezier(1, 0.1, 1, 1) 4s;
+    }
+    
+    &.e {
+        transition: top cubic-bezier(1, 0.1, 1, 1) 3s;
+    }
+    
+    &.f {
+        transition: top cubic-bezier(1, 0.1, 1, 1) 2s;
+    }
 }
 
-.selectable-all li.a {
-    /* Id rather do a transform but this works better with click events. I may want to do my own hit testing. */
-    transition: top cubic-bezier(1, 0.1, 1, 1) 5s;
-}
-
-.selectable-all li.b {
-    transition: top cubic-bezier(1, 0.1, 1, 1) 6s;
-}
-
-.selectable-all li.c {
-    transition: top cubic-bezier(1, 0.1, 1, 1) 7s;
-}
-
-.selectable-all li.d {
-    transition: top cubic-bezier(1, 0.1, 1, 1) 4s;
-}
-
-.selectable-all li.e {
-    transition: top cubic-bezier(1, 0.1, 1, 1) 3s;
-}
-
-.selectable-all li.f {
-    transition: top cubic-bezier(1, 0.1, 1, 1) 2s;
-}
