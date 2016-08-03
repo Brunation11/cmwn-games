@@ -2,8 +2,13 @@ var RecyclingArtsScreen = (
   <skoash.Screen
     id="recycling-arts"
   >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/S_RecyclingArts/VO_RecyclingArt.mp3" />
-    <skoash.Audio ref="sfx" type="sfx" src="media/_audio/S_RecyclingArts/TI_Recycling.mp3" delay={800} />
+    <skoash.MediaSequence
+       ref="audio-sequence"
+       checkComplete={true}
+    >
+        <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/S_RecyclingArts/VO_RecyclingArt.mp3" />
+        <skoash.Audio ref="sfx" type="sfx" src="media/_audio/S_RecyclingArts/TI_Recycling.mp3" />
+    </skoash.MediaSequence>
     <div className="pallet animated">
         <p>
             This is a<br />

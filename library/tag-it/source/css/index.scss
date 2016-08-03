@@ -336,6 +336,7 @@ img.inline {
   &.OPEN {
     .title {
       animation-name: rubberBand;
+      animation-delay: 2s;
     }
   }
     
@@ -361,10 +362,9 @@ img.inline {
 }
 
 #precious, #not-to-waste {
-    background-image: url(../media/_images/_BKG/BKG_2.png);
-}
+  background-image: url(../media/_images/_BKG/BKG_2.png);
+  background-size: cover;
 
-.precious, .not-to-waste {
   img {
     position: relative;
     height: 540px;
@@ -391,13 +391,13 @@ img.inline {
     
   &.OPEN {
     img {
-      animation-delay: .5s;
+      animation-delay: 1s;
       animation-name: jello;
     }
   }
 }
 
-#recycling-arts, #reminder { 
+#recycling-arts { 
   background-image: url(../media/_images/_BKG/BKG_3.png);
   background-size: cover;
 
@@ -431,17 +431,21 @@ img.inline {
 
   &.OPEN {
     .pallet {
+      animation-delay: 1s;
       animation-name: zoomInLeft;
     }
 
     .recycle {
-      animation-delay: .8s;
+      animation-delay: 2s;
       animation-name: tada;
     }
   }
 }
 
 #reminder {
+  background-image: url(../media/_images/_BKG/BKG_3.png);
+  background-size: cover;
+    
   img {
     position: absolute;
     height: 540px;
@@ -492,18 +496,16 @@ img.inline {
     left: 180px;
     bottom: 12.5%;
     width: 800px;
-    opacity: 0;
   }
 
   &.OPEN {
     img {
       animation-name: fadeInLeftBig;
     }
-  }
-
-  &.YOU-CAN {
+      
     .start {
       animation-name: fadeInRightBig;
+      animation-delay: 15s;
     }
   }
 }
@@ -645,11 +647,27 @@ img.inline {
 
   @for $i from 1 through 4 {
     $item: nth($items,$i);
-    &.#{to-upper-case($item)} {
+    &.OPEN {
       .#{$item} {
         animation-name: fadeIn#{nth($directions,$i)}Big;
       }
     }
+  }
+    
+  .step {
+    animation-delay: 0.1s;
+  }
+    
+  .container-1 {
+    animation-delay: 8.5s;
+  }
+    
+  .container-2 {
+    animation-delay: 9s;
+  }
+    
+  .container-3 {
+    animation-delay: 9.5s;
   }
 }
 
@@ -746,9 +764,10 @@ img.inline {
   ul {
     list-style-position: inside;
     padding: 0;
-    margin: 0 140px;
-    font-size: $medium;
-    width: 320px;
+    width: 400px;
+    float: right;
+    margin-top: 20%;
+    font-size: xx-large;
   }
 
   li {
@@ -769,7 +788,7 @@ img.inline {
 
   @for $i from 1 through 4 {
     $item: nth($items,$i);
-    &.#{to-upper-case($item)} {
+    &.OPEN {
       .#{$item} {
         opacity: 1;
         animation-name: slideInRight;
@@ -777,6 +796,22 @@ img.inline {
     }
   }
 
+  .lids {
+    animation-delay: 2s;
+  }
+    
+  .scissors {
+    animation-delay: 3.5s;
+  }
+    
+  .markers {
+      animation-delay: 4.5s;
+  }
+    
+  .polish {
+    animation-delay: 5.5s;
+  }
+    
   &.WHAT-NEED {
     .right div {
       animation-name: fadeInRightBig;
@@ -1136,6 +1171,7 @@ img.inline {
   &.OPEN {
     .step {
       animation-name: fadeInLeftBig;
+      animation-delay: 1s;
     }
   }
 }
@@ -1146,6 +1182,9 @@ img.inline {
 }
 
 #select-paint {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover; 
+    
   .text {
     position: absolute;
     left: 0;
@@ -1156,6 +1195,7 @@ img.inline {
     background-position: -975px 0px;
     padding: 220px 50px 0px 0px;
     text-align: center;
+    background-image: url(../media/_images/_Frames/FR_1.png);
   }
 
   img {
@@ -1168,11 +1208,20 @@ img.inline {
   &.OPEN {
     img {
       animation-name: slideInRight;
+      animation-delay: 1s;
     }
   }
 }
 
+#hint-4 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover; 
+}
+
 #step-9 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .step {
     position: absolute;
     right: 50px;
@@ -1181,6 +1230,7 @@ img.inline {
     width: 320px;
     height: 130px;
     z-index: 1;
+    background-image: url(../media/_images/S_Step9/img_19.1.png);
   }
 
   .text {
@@ -1193,6 +1243,7 @@ img.inline {
     background-position: -975px 0px;
     padding: 160px 50px 0px 0px;
     text-align: center;
+    background-image: url(../media/_images/_Frames/FR_1.png);
   }
 
   .lid {
@@ -1210,11 +1261,20 @@ img.inline {
   &.OPEN {
     .step {
       animation-name: fadeInLeftBig;
+      animation-delay: 1s;
     }
   }
 }
 
+#hint-5 {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+}
+
 #all-layers {
+  background-image: url(../media/_images/_BKG/BKG_5.png);
+  background-size: cover;
+    
   .text {
     position: absolute;
     left: 0;
@@ -1225,6 +1285,7 @@ img.inline {
     background-position: -975px 0px;
     padding: 160px 50px 0px 0px;
     text-align: center;
+    background-image: url(../media/_images/_Frames/FR_1.png);
   }
 
   img {
@@ -1236,17 +1297,20 @@ img.inline {
 }
 
 #spread-the-word {
+  background-image: url(../media/_images/_BKG/BKG_6.png);
+  background-size: cover;
+  text-align: center;
+    
   img {
     width: 800px;
     margin-top: 40px;
   }
-
-  p {
-    margin-top: -340px;
-  }
 }
 
 #tips {
+  background-image: url(../media/_images/_BKG/BKG_6.png);
+  background-size: cover;    
+    
   .tips {
     position: absolute;
     left: 60px;
@@ -1254,6 +1318,7 @@ img.inline {
     background-size: 1200px;
     width: 260px;
     height: 140px;
+    background-image: url(../media/_images/S_Tips/img_22.1.png);
   }
 
   [class^=lid-] {
@@ -1283,6 +1348,7 @@ img.inline {
     font-size: $medium;
     line-height: 65px;
     text-align: left;
+    width: 100%;
   }
 
   li {
@@ -1299,16 +1365,39 @@ img.inline {
 
   @for $i from 1 through 5 {
     $item: nth($items,$i);
-    &.#{to-upper-case($item)} {
-      .#{$item} {
-        opacity: 1;
-        animation-name: slideInRight;
-      }
+    &.OPEN {
+        .#{$item} {
+            opacity: 1;
+            animation-name: slideInRight;
+        }
     }
+  }
+
+  .use-your {
+    animation-delay: 3.5s;
+  }
+    
+  .try-glow {
+    animation-delay: 5s;
+  }
+    
+  .use-multiple {
+    animation-delay: 7s;
+  }
+    
+  .create {
+    animation-delay: 9s;
+  }
+    
+  .personalize {
+    animation-delay: 12s;
   }
 }
 
 #flip {
+  background-image: url(../media/_images/_BKG/BKG_6.png);
+  background-size: cover; 
+    
   .drop {
     position: absolute;
     top: -10px;
@@ -1318,11 +1407,14 @@ img.inline {
     background-position: -425px 0px;
     width: 400px;
     height: 540px;
+    background-image: url(../media/_images/_Flip/img_25.1.png);
+    z-index: -1;
   }
 
   p {
     font-size: $large;
-    margin-bottom: 120px;
+    margin-top: 15%;
+    text-align: center;
   }
 
   .flip {
@@ -1337,9 +1429,10 @@ img.inline {
     background-position: 0px 0px;
   }
 
-  &.FLIP {
+  &.OPEN {
     .flip {
       animation-name: rubberBand;
+      animation-delay: 3s;
     }
   }
 }

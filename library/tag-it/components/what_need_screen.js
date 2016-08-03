@@ -14,15 +14,14 @@ var WhatNeedScreen = (
     </skoash.MediaSequence>
     <div className="left animated" />
     <div className="right">
-        <div className="animated">
-            <ul>
-                <li className="lids animated"><span>The plastic lids</span></li>
-                <li className="scissors animated"><span>Utility scissors</span></li>
-                <li className="markers animated"><span>Markers</span></li>
-                <li className="polish animated"><span>Colored nail polish<br />&nbsp; (or) acrylic paint</span></li>
-            </ul>
-        </div>
+        <div className="animated" />
     </div>
+    <ul>
+        <li className="lids animated"><span>The plastic lids</span></li>
+        <li className="scissors animated"><span>Utility scissors</span></li>
+        <li className="markers animated"><span>Markers</span></li>
+        <li className="polish animated"><span>Colored nail polish<br />&nbsp; (or) acrylic paint</span></li>
+    </ul>
   </skoash.Screen>
 );
 
