@@ -6,6 +6,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import SelectableAllScreen from './components/selectable_all_screen';
 // import CarouselScreen from './components/carousel_screen';
 // import MatchScreen from './components/match_screen';
+// import RolesScreen from './components/roles_screen';
 // import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';

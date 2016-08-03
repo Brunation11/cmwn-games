@@ -76,7 +76,7 @@ class Reveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <skoash.Audio
+          <asset.type
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -97,6 +97,7 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
+          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={ref}
