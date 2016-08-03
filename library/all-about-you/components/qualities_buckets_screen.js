@@ -1,12 +1,27 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
+function collectData() {
+  var data = {};
+  if (!this.refs.dropzone || !this.refs.dropzone.refs.dropzone) return data;
+  _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key1) => {
+    if (key1.indexOf('dropzone-') === -1) return;
+    if (!ref.state.content) return;
+    data[key1] = {};
+    _.forIn(ref.state.content, (ref, key2) => {
+      data[key1][key2] = ref.props.message;
+    });
+  });
+  return data;
+}
+
 var QualitiesBucketsScreen = (
   <DragNDropScreen
     id="qualities-buckets"
     allCorrect
     multipleAnswers
     checkComplete={true}
+    collectData={collectData}
     dropzoneAssets={[
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
     ]}
