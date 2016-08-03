@@ -5,14 +5,7 @@ class Selectable extends skoash.Component {
     super();
 
     this.state = {
-      selectClass: 'SELECTED',
       classes: {},
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
       selectFunction: this.select,
     };
   }
@@ -20,8 +13,7 @@ class Selectable extends skoash.Component {
   start() {
     var selectClass, selectFunction, classes = {};
 
-    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
-
+    selectClass = this.props.selectClass;
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     if (this.props.selectOnStart) {
@@ -43,7 +35,7 @@ class Selectable extends skoash.Component {
   }
 
   bootstrap() {
-    skoash.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -59,7 +51,7 @@ class Selectable extends skoash.Component {
     if (!target) return;
 
     message = target.getAttribute('data-ref');
-    classes[message] = this.state.selectClass;
+    classes[message] = this.props.selectClass;
 
     this.setState({
       classes,
@@ -91,10 +83,7 @@ class Selectable extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames({
-      selectable: true,
-      COMPLETE: this.state.complete,
-    }, this.props.className);
+    return classNames('selectable', super.getClassNames());
   }
 
   checkComplete() {
@@ -134,15 +123,15 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
-
-    return list.map((li, key) => {
+    return this.props.list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
-      li.type = li.type || skoash.ListItem;
+      var message = li.props.message || '' + key;
       return (
         <li.type
           {...li.props}
+          type="li"
           className={this.getClass(ref, li)}
+          message={message}
           data-ref={ref}
           data-message={li.props.message}
           ref={ref}
@@ -163,5 +152,15 @@ class Selectable extends skoash.Component {
     );
   }
 }
+
+Selectable.defaultProps = {
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+  selectClass: 'SELECTED'
+};
 
 export default Selectable;
