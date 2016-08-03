@@ -1,8 +1,19 @@
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
+var collectData = function() {
+  var data = {};
+  if (!this.refs || !this.refs['selectable-reveal'] || !this.refs['selectable-reveal'].refs || !this.refs['selectable-reveal'].refs.selectable) return data;
+  _.forIn(this.refs['selectable-reveal'].refs.selectable.refs , (ref, key) => {
+    if (ref.props.className.indexOf('SELECTED') === -1) return;
+    data[this.props.id] = ref.props['data-ref'];
+  });
+  return data;
+}
+
 var PickOnePowerfulScreen = (
   <skoash.Screen
     id="pick-one-powerful"
+    collectData={collectData}
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Powerful.mp3" />
     <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_5/img-05-text-top-01.png" />
