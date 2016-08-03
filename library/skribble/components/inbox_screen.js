@@ -26,6 +26,13 @@ const sentEmptyMessage = (
     Let's get started!
   </span>
   );
+const draftsEmptyMessage = (
+  <span>
+    You don't have any drafts.<br/>
+    Start Skribbling!
+  </span>
+  );
+
 
 class InboxScreen extends skoash.Screen {
   constructor() {
@@ -110,6 +117,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: saved || [],
           }}
+          emptyMessage={draftsEmptyMessage}
           selectRespond={this.editMessage}
         />
       </li>,

@@ -31,12 +31,6 @@ class SavedMessages extends Selectable {
     }
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
-  }
-
   getClass(key) {
     return classNames({
       [this.state.classes[key] || '']: true,
@@ -82,8 +76,12 @@ class SavedMessages extends Selectable {
 
     items = self.props.data.items;
 
-    if (self.state.category) {
-      items = items[self.state.category].items;
+    if (!items.length) {
+      return (
+        <li className="empty">
+          {this.props.emptyMessage}
+        </li>
+      );
     }
 
     return items.map((item, key) => {
