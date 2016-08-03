@@ -3,7 +3,7 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import RunnerReveal from './components/runner_screen';
+import RunnerReveal from './components/flyer_screen';
 // import CatchReveal from './components/catch_reveal_screen';
 // import CatchScreen from './components/catch_screen';
 // import MatchScreen from './components/match_screen';
