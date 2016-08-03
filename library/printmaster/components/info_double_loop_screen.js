@@ -20,7 +20,6 @@ var InfoDoubleLoopScreen = (
         </div>
       </div>
     </div>
-
   </skoash.Screen>
 );
 

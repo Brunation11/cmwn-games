@@ -2,7 +2,7 @@ var InfoIDScreen = (
   <skoash.Screen
     id="info-id"
   >
-    <skoash.MediaSequence>
+    <skoash.MediaSequence ref="media">
       <skoash.Audio type="voiceOver" src="media/S_8/S_8.1.mp3" delay={500} />
       <skoash.Audio type="voiceOver" src="media/S_8/VO_8.1.mp3" />
     </skoash.MediaSequence>
