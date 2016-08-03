@@ -1,6 +1,17 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
+function collectData() {
+  var data = {};
+  if (!this.refs.dropzone || !this.refs.dropzone.refs.dropzone) return data;
+  _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
+    if (key.indexOf('dropzone-') === -1) return;
+    if (!ref.state.content) return;
+    data[key] = ref.state.content.props.message;
+  });
+  return data;
+}
+
 var DragNDropIssuesScreen = (
   <DragNDropScreen
     id="drag-n-drop-issues"
@@ -8,6 +19,7 @@ var DragNDropIssuesScreen = (
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
+    collectData={collectData}
     centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
