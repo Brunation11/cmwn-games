@@ -12,10 +12,12 @@ class DragNDropScreen extends skoash.Screen {
   dragRespond(draggable) {
     _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
       if (key.indexOf('dropzone-') === -1) return;
-      if (ref && ref.state && ref.state.content === draggable) {
-        ref.setState({
-          content: null
-        });
+      if (!this.props.multipleAnswers) {
+        if (ref && ref.state && ref.state.content === draggable) {
+          ref.setState({
+            content: null
+          });
+        }
       }
     });
 
@@ -23,7 +25,7 @@ class DragNDropScreen extends skoash.Screen {
   }
 
   correctRespond(draggable, dropzoneKey) {
-    var dropzone, endX, endY, complete = true;
+    var dropzone, endX, endY, complete = true, content;
     dropzone = this.refs.dropzone.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
     if (this.props.centerOnCorrect) {
@@ -31,16 +33,23 @@ class DragNDropScreen extends skoash.Screen {
       endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y) + ((draggable.state.corners[3].y - draggable.state.corners[0].y) / 2);
       draggable.setEnd(endX, endY);
     }
-    if (!this.props.multipleAnswers) {
+
+    if (this.props.multipleAnswers) {
+      content = dropzone.state.content || [];
+      if (content.indexOf(draggable) === -1) {
+        content.push(draggable);
+      }
+      dropzone.setState({content});
+    } else {
       if (dropzone.state.content && draggable !== dropzone.state.content) {
         dropzone.state.content.returnToStart();
         dropzone.state.content.markIncorrect();
       }
+      dropzone.setState({
+        content: draggable
+      });
     }
 
-    dropzone.setState({
-      content: draggable
-    });
 
     _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
       if (key.indexOf('dropzone-')) return;
