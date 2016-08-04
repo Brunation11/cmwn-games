@@ -1,4 +1,4 @@
-import Selectable from 'shared/components/selectable/0.1';
+import TargetSelectable from 'shared/components/target_selectable/0.1';
 
 var IdentityScreen = (
   <skoash.Screen
@@ -14,22 +14,21 @@ var IdentityScreen = (
     <skoash.Image className="hidden" src="media/S_9/img_9.6.png" />
     <skoash.Image className="hidden" src="media/S_9/img_9.7.png" />
     <skoash.Image className="hidden" src="media/S_9/img_9.9.png" />
-    <skoash.Component className="group">
-      <skoash.Component className="header">
-        <skoash.Image ref="arch" className="animated" src="media/S_9/img_9.2.png" />
-        <skoash.Image ref="loops" className="animated" src="media/S_9/img_9.3.png" />
-        <skoash.Image ref="whorl" className="animated" src="media/S_9/img_9.4.png" />
-        <skoash.Image ref="doubleloop" className="animated" src="media/S_9/img_9.5.png" />
-      </skoash.Component>
-      <Selectable
-        list={[
-          <li ref="arch" />,
-          <li ref="loops" />,
-          <li ref="whorl" />,
-          <li ref="doubleloop" />,
-        ]}
-      />
-    </skoash.Component>
+    <TargetSelectable className="group"
+      targets={[
+        <skoash.Image ref="arch" className="arch animated" src="media/S_9/img_9.2.png" />,
+        <skoash.Image ref="loops" className="loops animated" src="media/S_9/img_9.3.png" />,
+        <skoash.Image ref="whorl" className="whorl animated" src="media/S_9/img_9.4.png" />,
+        <skoash.Image ref="doubleloop" className="doubleloop animated" src="media/S_9/img_9.5.png" />,
+      ]}
+      selectableList={[
+        <li data-ref="arch" />,
+        <li data-ref="loops" />,
+        <li data-ref="whorl" />,
+        <li data-ref="doubleloop" />,
+      ]}
+      selectableSelectClass="HIGHLIGHTED"
+    />
   </skoash.Screen>
 );
 

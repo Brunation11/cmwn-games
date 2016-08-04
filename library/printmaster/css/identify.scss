@@ -1,3 +1,5 @@
+$types: arch loops whorl doubleloop;
+
 #identify {
   > div {
     white-space: normal;
@@ -30,6 +32,13 @@
     }
   }
 
+  @for $i from 1 through 4 {
+    .#{nth($types, $i)} .header img.#{nth($types, $i)} {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+  }
+
   .selectable {
     width: 800px;
     margin: 40px auto;
@@ -51,7 +60,6 @@
         background-position: -775px;
       }
 
-      $types: arch loops whorl doubleloop;
       $bkg:      8     6     7          9;
 
       @for $i from 1 through 4 {

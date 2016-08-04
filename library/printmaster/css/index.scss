@@ -231,7 +231,6 @@ p {
     right: 0;
     opacity: 0;
     transform: rotate(-180deg);
-    transition: opacity 1s, transform 1s;
   }
 
   .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
@@ -247,6 +246,7 @@ p {
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
+    transition: opacity 1s, transform 1s;
   }
 
   .screen .next-screen:hover {
