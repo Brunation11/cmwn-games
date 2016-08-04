@@ -3,28 +3,24 @@ import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
 
-const SETSTATEPAUSE = 100;
+const SET_STATE_PAUSE = 100;
 
 class SelectableAll extends Selectable {
   constructor() {
     super();
+
+    this.count = this.count.bind(this);
+
+    this.state = {
+      selectClass: 'SELECTED',
+      selectFunction: this.select,
+      selected: 0,
+    };
   }
 
   start() {
-    var selectClass = 'SELECTED';
-    var selectFunction = this.select;
-    var selected, countFunction;
-    if (this.props.doCount) {
-        selected = 0;
-        countFunction = this.props.count || this.count.bind(this);
-    }
-
     this.setState({
-      started: true,
-      selectClass,
-      selectFunction,
-      selected,
-      countFunction,
+      started: true
     });
 
     this.bootstrap();
@@ -39,7 +35,11 @@ class SelectableAll extends Selectable {
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
-      }, () => {setTimeout(() => {this.launch()}, SETSTATEPAUSE)});
+      }, () => {
+        setTimeout(() => {
+          this.launch()
+        }, SET_STATE_PAUSE)
+      });
     } else {
       this.launch();
     }
@@ -61,7 +61,6 @@ class SelectableAll extends Selectable {
         this.setState({classes});
       }, this.props.pause);
     }
-    this.setState({classes});
   }
 
   next(key) {
@@ -79,7 +78,7 @@ class SelectableAll extends Selectable {
       setTimeout(() => {
         classes[key] = 'LAUNCHED';
         this.setState({classes});
-      }, SETSTATEPAUSE);
+      }, SET_STATE_PAUSE);
     });
   }
 
@@ -102,8 +101,9 @@ class SelectableAll extends Selectable {
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect(item);
     }
-    if (typeof this.state.countFunction === 'function') {
-      this.state.countFunction(this);
+
+    if (this.props.doCount) {
+      this.count();
     }
   }
 
