@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import Selectable from 'shared/components/selectable/0.1';
 
 class MatchGame extends Selectable {
@@ -47,8 +49,8 @@ class MatchGame extends Selectable {
   }
 }
 
-MatchGame.defaultProps = {
+MatchGame.defaultProps = _.merge({
   selectClass: 'HIGHLIGHTED'
-};
+}, Selectable.defaultProps);
 
 export default MatchGame;
