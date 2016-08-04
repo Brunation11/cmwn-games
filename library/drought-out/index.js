@@ -4,18 +4,18 @@
  */
 import './config.game';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/audio-sequence/behavior';
-import './components/reveal/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-canvas-move/behavior';
-import './components/selectable-reveal/behavior';
-import './components/selectable/behavior';
-import './components/title/behavior';
+import 'shared/js/screen-ios-splash';
+import './source/js/components/audio-sequence/behavior';
+import './source/js/components/reveal/behavior';
+import './source/js/components/screen-basic/behavior';
+import './source/js/components/screen-quit/behavior';
+import './source/js/components/selectable-canvas-move/behavior';
+import './source/js/components/selectable-reveal/behavior';
+import './source/js/components/selectable/behavior';
+import './source/js/components/title/behavior';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+import 'shared/js/test-platform-integration';
+import 'shared/js/google-analytics';
 
 pl.game('drought-out', function () {
 
@@ -68,11 +68,7 @@ pl.game('drought-out', function () {
   this.screen('info-no-water', function () {
     this.startAudio = function () {
       if (!this.audio) return;
-      // Yes, infoWeedWater. This is due to an error in the framework
-      // this is not worth fixing at this point.
-      if (this.game.infoWeedWater.audio) {
-        this.game.infoWeedWater.audio.background.stop('@ALL');
-      }
+      this.audio.background.stop();
       this.audio.background.play();
       this.audio.voiceOver.play();
     };
