@@ -138,7 +138,7 @@ class Selectable extends skoash.Component {
 
     return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
-      li.type = li.type || skoash.ListItem;
+      //li.type = li.type || skoash.ListItem;
       return (
         <li.type
           {...li.props}

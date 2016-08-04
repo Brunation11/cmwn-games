@@ -451,11 +451,14 @@ img.inline {
     height: 540px;
     left: 10px;
     bottom: 0;
+    z-index: -1;
   }
 
   p {
     width: 70%;
-    left: 20%;
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 20%;
   }
 
   &.OPEN {
@@ -505,93 +508,131 @@ img.inline {
       
     .start {
       animation-name: fadeInRightBig;
-      animation-delay: 15s;
+      animation-delay: 14s;
     }
   }
 }
 
 #what-faucet {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;
+  
   .question {
     background-size: 1700px;
     width: 820px;
     height: 110px;
     margin-top: 40px;
+    text-align: center;
+    background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
   }
 
-  .selectable-component {
-    display: flex;
-    width: 720px;
-    margin: 0 auto;
+  .selectable-reveal {
+    width: 100%;      
   }
-
+    
   ul {
+    width: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-left: 5%;
   }
 
-  li {
-    position: relative;
-    width: 360px;
-    line-height: 100px;
-    font-size: $medium;
-    padding: 0 0 0 100px;
-    text-align: left;
-    cursor: pointer;
-    float: left;
-    opacity: 0;
-    transition: opacity .5s;
-
-    &:before {
-      content: "";
-      position: absolute;
-      left: -2px;
-      top: 0;
-      display: inline-block;
-      vertical-align: middle;
-      width: 100px;
-      height: 100px;
-      background-image: url(../media/_images/_Buttons/BU_1.png);
-      background-size: 3750px;
-      background-repeat: no-repeat;
-      background-position: -1500px 0px;
-    }
-
-    &:hover,
-    &.SELECTED {
-      &:before {
-        background-position: -1500px -200px;
-      }
-    }
-
-    &.SELECTED {
-      background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
-      background-size: 1700px;
-      background-repeat: no-repeat;
-      background-position: -826px 28px;
-    }
+  .text {
+    position: relative;    
   }
-
+    
   $items: kitchen shower bathroom bathtub classroom outdoor;
 
   @for $i from 1 through 6 {
     $item: nth($items,$i);
-    &.#{to-upper-case($item)} {
+    &.OPEN {
       li.#{$item} {
-        opacity: 1;
-        animation-name: slideInRight;
-      }
+        animation-name: fadeInRight;
+        position: absolute;
+        height: 100px;
+        background-image: url(../media/_images/_Buttons/BU_1.png);
+        background-size: 3750px;
+        background-repeat: no-repeat;
+        background-position: -1500px 0px;
+    
+        &:hover,
+        &.SELECTED {
+            background-position: -1500px -200px;
+        }
+      }  
     }
   }
+    
+  .kitchen {
+      animation-delay: 4s;
+      top: 30%;
+  }
 
-  &.VOICE-OVER {
-    ul {
-      pointer-events: none;
-    }
+  .kitchen::after {
+      content: "Kitchen Faucet";
+  }
+    
+  .shower, {
+      animation-delay: 7s;
+      top: 50%;
+  }
+
+  .shower::after {
+      content: "Shower Faucet";
+  }
+    
+  .bathroom {
+      animation-delay: 9.5s;
+      top: 70%;
+  }
+
+  .bathroom::after {
+      content: "Bathroom Faucet";
+  }
+    
+  .bathtub {
+      animation-delay: 13.5s;
+      top: 30%;
+      left: 50%;
+  }
+    
+  .bathtub::after {
+      content: "Bathtub Faucet";
+  }
+    
+  .classroom {
+      animation-delay: 17s;
+      top: 50%;
+      left: 50%;
+  }
+    
+  .classroom::after {
+      content: "Classroom Faucet";
+  }
+    
+  .outdoor {
+      animation-delay: 19.5s;
+      top: 70%;
+      left: 50%;
+  }
+    
+  .outdoor::after {
+      content: "Outdoor Faucet";
+  }
+  
+  ::after {
+      top: 35%;
+      font-size: xx-large;  
+      margin-left: 100px;
+      position: relative;
   }
 }
 
 #step-2 {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;
+    
   .group {
     width: 960px;
     height: 540px;
@@ -659,15 +700,15 @@ img.inline {
   }
     
   .container-1 {
-    animation-delay: 8.5s;
+    animation-delay: 8s;
   }
     
   .container-2 {
-    animation-delay: 9s;
+    animation-delay: 8.5s;
   }
     
   .container-3 {
-    animation-delay: 9.5s;
+    animation-delay: 9s;
   }
 }
 
@@ -728,6 +769,11 @@ img.inline {
   &.hint p {
     padding: 34px 10px;
   }
+}
+
+#tip-1, #tip-2 {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;
 }
 
 #what-need {
