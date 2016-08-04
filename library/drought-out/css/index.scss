@@ -36,11 +36,11 @@ html {
 body > div > div {
   position: relative;
   width: 960px;
+  height: 540px;
   margin: auto;
   font-size: 20px;
   background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
   background-size: cover;
-
 
   > .background {
     opacity: 0;
@@ -444,9 +444,9 @@ img.inline {
 
   &.READY.OPEN {
     .frame {
-      img {
+      img.TRANSLATE {
         transform: scale(1) translateX(0%) translateY(0%);
-        transition: transform .5s 13.5s;
+        transition: transform .5s;
       }
     }
   }

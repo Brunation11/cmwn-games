@@ -37,6 +37,7 @@ class DroughtOut extends skoash.Game {
   }
 
   renderAssets() {
+        
     return (
       <div>
         <skoash.Audio ref="bkg-0" type="background" src="media/S_1/S_1.1.mp3" />
