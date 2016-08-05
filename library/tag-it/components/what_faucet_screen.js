@@ -27,7 +27,6 @@ var WhatFaucetScreen = (
        ref="selectable-reveal"
        selectableCompleteOnSelect
        selectableCheckComplete={false}
-       revealCompleteOnOpen
        revealCheckComplete={false}
        allCorrect
        assets={[

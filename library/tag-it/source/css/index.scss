@@ -6,10 +6,13 @@
 }
 
 .pl-game, .skoash-game, .PAUSED {
-    transform: none !important;
+    width: 960px;
+    height: 540px;
+    transform-origin: 0px 0px 0px !important;
 }
 
 #loader {
+    width: 960px;
     height: 540px;
 }
 
@@ -17,6 +20,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   overflow: hidden;
   user-select: none;
   cursor: default;
@@ -36,33 +40,6 @@ body {
   font-size: 20px;
   background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
   background-size: cover;
-
-  .background {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    opacity: 0;
-    transition: opacity .5s;
-  }
-
-  $backgrounds: precious recycle steps scissors spread;
-
-  @for $i from 1 through 5 {
-    $background: nth($backgrounds,$i);
-
-    .background.#{$background} {
-      background-image: url(../media/_images/_BKG/BKG_#{$i+1}.png);
-    }
-
-    &.#{to-upper-case($background)} {
-      .background.#{$background} {
-        opacity: 1;
-      }
-    }
-  }
 }
 
 // preload assets
@@ -278,6 +255,7 @@ img.inline {
 #title {
   background-image: url(../media/_images/_BKG/BKG_1.png);  
   background-size: cover;
+  transition: opacity .2s;
     
   .group {
     width: 960px;
@@ -363,7 +341,8 @@ img.inline {
 
 #precious, #not-to-waste {
   background-image: url(../media/_images/_BKG/BKG_2.png);
-  background-size: cover;
+  position: absolute;
+  transition: opacity .5s;
 
   img {
     position: relative;
@@ -400,6 +379,7 @@ img.inline {
 #recycling-arts { 
   background-image: url(../media/_images/_BKG/BKG_3.png);
   background-size: cover;
+  transition: opacity .5s;
 
   .pallet {
     position: absolute;
@@ -445,6 +425,7 @@ img.inline {
 #reminder {
   background-image: url(../media/_images/_BKG/BKG_3.png);
   background-size: cover;
+  transition: opacity .5s;
     
   img {
     position: absolute;
@@ -468,12 +449,11 @@ img.inline {
   }
 }
 
-#step-1, #step-2 {
-    background-image: url(../media/_images/_BKG/BKG_4.png);
-    background-size: cover;
-}
-
 #step-1 {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;
+  transition: opacity .5s;
+    
   img {
     position: absolute;
     left: 0;
@@ -516,6 +496,7 @@ img.inline {
 #what-faucet {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
+  transition: opacity .5s;
   
   .question {
     background-size: 1700px;
@@ -632,6 +613,7 @@ img.inline {
 #step-2 {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .group {
     width: 960px;
@@ -774,9 +756,14 @@ img.inline {
 #tip-1, #tip-2 {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
+  transition: opacity .5s;
 }
 
 #what-need {
+  background-image: url(../media/_images/_BKG/BKG_4.png);
+  background-size: cover;
+  transition: opacity .5s;
+    
   .left {
     position: absolute;
     left: 0;
@@ -873,12 +860,14 @@ img.inline {
 
 #note {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;  
+  background-size: cover;
+  transition: opacity .5s;
 }
 
 #scissors-and-paint {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   img {
     position: absolute;
@@ -903,6 +892,7 @@ img.inline {
 #step-3 {
   background-image: url('../media/_images/_BKG/BKG_5.png');
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -952,6 +942,7 @@ img.inline {
 #step-4 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -999,6 +990,7 @@ img.inline {
 #step-5 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -1045,11 +1037,13 @@ img.inline {
 #hint-1 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
 }
 
 #step-6 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -1096,6 +1090,7 @@ img.inline {
 #step-7 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -1140,11 +1135,13 @@ img.inline {
 #hint-2 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
 }
 
 #decorate-tag {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   p {
     position: absolute;
@@ -1177,6 +1174,7 @@ img.inline {
 #step-8 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;    
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -1225,11 +1223,13 @@ img.inline {
 #hint-3 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
 }
 
 #select-paint {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover; 
+  transition: opacity .5s;
     
   .text {
     position: absolute;
@@ -1262,11 +1262,13 @@ img.inline {
 #hint-4 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover; 
+  transition: opacity .5s;
 }
 
 #step-9 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .step {
     position: absolute;
@@ -1315,11 +1317,13 @@ img.inline {
 #hint-5 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
 }
 
 #all-layers {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
+  transition: opacity .5s;
     
   .text {
     position: absolute;
@@ -1346,6 +1350,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_6.png);
   background-size: cover;
   text-align: center;
+  transition: opacity .5s;
     
   img {
     width: 800px;
@@ -1355,7 +1360,8 @@ img.inline {
 
 #tips {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover;    
+  background-size: cover;  
+  transition: opacity .5s;
     
   .tips {
     position: absolute;
@@ -1420,29 +1426,30 @@ img.inline {
   }
 
   .use-your {
-    animation-delay: 3.5s;
+    animation-delay: 2.5s;
   }
     
   .try-glow {
-    animation-delay: 5s;
+    animation-delay: 4s;
   }
     
   .use-multiple {
-    animation-delay: 7s;
+    animation-delay: 6s;
   }
     
   .create {
-    animation-delay: 9s;
+    animation-delay: 8s;
   }
     
   .personalize {
-    animation-delay: 12s;
+    animation-delay: 11.5s;
   }
 }
 
 #flip {
   background-image: url(../media/_images/_BKG/BKG_6.png);
   background-size: cover; 
+  transition: opacity .5s;
     
   .drop {
     position: absolute;

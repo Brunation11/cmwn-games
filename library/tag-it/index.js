@@ -45,15 +45,18 @@ class TagIt extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
+        /*
       1: TitleScreen,
       2: PreciousScreen,
       3: NotToWasteScreen,
       4: RecyclingArtsScreen,
       5: ReminderScreen,
       6: Step1Screen,
-      7: Step1Screen,
-        //7: WhatFaucetScreen,
-      8: Step2Screen,
+      7: Step1Screen,*/
+        1: TitleScreen,
+        2: TipsScreen,
+        //2: WhatFaucetScreen,
+      /*8: Step2Screen,
       9: Tip1Screen,
       10: Tip2Screen,
       11: WhatNeedScreen,
@@ -76,7 +79,7 @@ class TagIt extends skoash.Game {
       28: AllLayersScreen,
       29: SpreadTheWordScreen,
       30: TipsScreen,
-      31: FlipScreen,
+      31: FlipScreen,*/
     };
 
     this.menus = {
