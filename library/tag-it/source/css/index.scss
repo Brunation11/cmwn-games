@@ -318,25 +318,25 @@ img.inline {
     }
   }
     
-    .prev-screen {
-        display: none;
-    }
+  .prev-screen {
+    display: none;
+  }
+
+  .next-screen {
+    background-image: url(../media/_images/_Buttons/BU_1.png);
+    background-position: 0 0;
+    width: 300px;
+    top: 330px;
+    left: 330px;
+  }
     
-    .next-screen {
-        background-image: url(../media/_images/_Buttons/BU_1.png);
-        background-position: 0 0;
-        width: 300px;
-        top: 330px;
-        left: 330px;
-    }
-    
-    .next-screen:hover {
-        background-image: url(../media/_images/_Buttons/BU_1.png);
-        background-position: 0 600px;
-        width: 300px;
-        top: 330px;
-        left: 330px;
-    }
+  .next-screen:hover {
+    background-image: url(../media/_images/_Buttons/BU_1.png);
+    background-position: 0 600px;
+    width: 300px;
+    top: 330px;
+    left: 330px;
+  }
 }
 
 #precious, #not-to-waste {
@@ -347,6 +347,7 @@ img.inline {
   img {
     position: relative;
     height: 540px;
+    margin-left: 4%;
   }
 
   .text {
@@ -503,13 +504,14 @@ img.inline {
     width: 820px;
     height: 110px;
     margin-top: 40px;
+    margin-left: 6%;
     text-align: center;
     background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
   }
 
   .selectable-reveal {
     width: 100%;      
-  }
+  }   
     
   ul {
     width: 100%;
@@ -544,69 +546,77 @@ img.inline {
       }  
     }
   }
+  
+  .SELECTED::after {
+    background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
+    background-size: 1700px 800px;
+    background-repeat: no-repeat;
+    background-position: -900px 1px;
+    padding: 8px;
+  }
     
   .kitchen {
-      animation-delay: 4s;
-      top: 30%;
+    animation-delay: 4s;
+    top: 30%;
   }
 
   .kitchen::after {
-      content: "Kitchen Faucet";
+    content: "Kitchen Faucet";
   }
     
   .shower, {
-      animation-delay: 7s;
-      top: 50%;
+    animation-delay: 7s;
+    top: 50%;
   }
 
   .shower::after {
-      content: "Shower Faucet";
+    content: "Shower Faucet";
   }
     
   .bathroom {
-      animation-delay: 9.5s;
-      top: 70%;
+    animation-delay: 9.5s;
+    top: 70%;
   }
 
   .bathroom::after {
-      content: "Bathroom Faucet";
+    content: "Bathroom Faucet";
   }
     
   .bathtub {
-      animation-delay: 13.5s;
-      top: 30%;
-      left: 50%;
+    animation-delay: 13.5s;
+    top: 30%;
+    left: 50%;
   }
     
   .bathtub::after {
-      content: "Bathtub Faucet";
+    content: "Bathtub Faucet";
   }
     
   .classroom {
-      animation-delay: 17s;
-      top: 50%;
-      left: 50%;
+    animation-delay: 17s;
+    top: 50%;
+    left: 50%;
   }
     
   .classroom::after {
-      content: "Classroom Faucet";
+    content: "Classroom Faucet";
   }
     
   .outdoor {
-      animation-delay: 19.5s;
-      top: 70%;
-      left: 50%;
+    animation-delay: 19.5s;
+    top: 70%;
+    left: 50%;
   }
     
   .outdoor::after {
-      content: "Outdoor Faucet";
+    content: "Outdoor Faucet";
   }
   
   ::after {
-      top: 35%;
-      font-size: xx-large;  
-      margin-left: 100px;
-      position: relative;
+    top: 35%;
+    font-size: xx-large;  
+    margin-left: 100px;
+    position: relative;
   }
 }
 
@@ -928,7 +938,7 @@ img.inline {
     width: 610px;
     height: 330px;
     margin-top: -3%;
-    margin-left: 15%;
+    margin-left: 17%;
   }
 
   &.OPEN {

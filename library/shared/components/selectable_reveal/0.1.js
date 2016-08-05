@@ -65,6 +65,8 @@ class SelectableReveal extends skoash.Component {
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
         selectOnStart={this.props.selectOnStart}
+        completeOnSelect={this.props.selectableCompleteOnSelect}
+        checkComplete={this.props.selectableCheckComplete}
       />
     );
   }
@@ -77,6 +79,9 @@ class SelectableReveal extends skoash.Component {
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
         openOnStart={this.props.openOnStart}
+        closeRespond={this.closeRespond.bind(this)}
+        completeOnOpen={this.props.revealCompleteOnOpen}
+        checkComplete={this.props.revealCheckComplete}
       />
     );
   }

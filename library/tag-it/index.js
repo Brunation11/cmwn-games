@@ -45,18 +45,14 @@ class TagIt extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-        /*
       1: TitleScreen,
       2: PreciousScreen,
       3: NotToWasteScreen,
       4: RecyclingArtsScreen,
       5: ReminderScreen,
       6: Step1Screen,
-      7: Step1Screen,*/
-        1: TitleScreen,
-        2: TipsScreen,
-        //2: WhatFaucetScreen,
-      /*8: Step2Screen,
+      7: WhatFaucetScreen,
+      8: Step2Screen,
       9: Tip1Screen,
       10: Tip2Screen,
       11: WhatNeedScreen,
@@ -79,7 +75,7 @@ class TagIt extends skoash.Game {
       28: AllLayersScreen,
       29: SpreadTheWordScreen,
       30: TipsScreen,
-      31: FlipScreen,*/
+      31: FlipScreen,
     };
 
     this.menus = {
@@ -98,9 +94,7 @@ class TagIt extends skoash.Game {
      case 1:
         return 0;
      case 2:
-        return 3;   
-     case 5:
-        return;
+        return 1;   
      default:
        return 2;
      }
@@ -111,7 +105,7 @@ class TagIt extends skoash.Game {
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/TI_BKG_1.mp3" />
         <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />
-        <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" />
+        <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop />
         
         <skoash.Audio ref="sfx-1" type="background" src="media/_audio/S_Precious/TI_Water.mp3" />
         
