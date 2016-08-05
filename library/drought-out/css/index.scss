@@ -251,17 +251,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 .screen {
@@ -317,6 +317,7 @@ img.inline {
 
 .screen.small-frame {
   .frame {
+    background-image: url(../media/_Frames/FR_2.png);
     padding: 140px 60px;
     width: 600px;
     height: 400px;
@@ -385,7 +386,7 @@ img.inline {
     background-position: 0px -75*15-5+px;
   }
 
-  .items {
+  ul {
     display: block;
     height: auto;
     margin: 10px 0 0;
@@ -416,7 +417,7 @@ img.inline {
     }
   }
 
-  &.VOICE-OVER {
+  .VOICE-OVER & {
     li {
       pointer-events: none;
     }

@@ -1,13 +1,17 @@
 import Selectable from 'shared/components/selectable/0.1.js';
 import Reveal from 'shared/components/reveal/0.1.js';
+import _ from 'lodash';
 
 class SelectableReveal extends skoash.Component {
   constructor() {
     super();
+  }
 
-    this.state = {
-      answers: [],
-    };
+  start() {
+    super.start();
+    this.setState({
+      canSelectOnStart: this.props.canSelectOnStart
+    });
   }
 
   open(message) {
@@ -15,8 +19,8 @@ class SelectableReveal extends skoash.Component {
   }
 
   selectRespond(message) {
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
+    if (this.props.answers.length) {
+      if (this.props.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
         if (this.audio.correct) this.audio.correct.play();
@@ -65,6 +69,7 @@ class SelectableReveal extends skoash.Component {
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
         selectOnStart={this.props.selectOnStart}
+        answers={this.props.answers}
       />
     );
   }
@@ -77,6 +82,7 @@ class SelectableReveal extends skoash.Component {
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
         openOnStart={this.props.openOnStart}
+        hide = {this.props.hideReveal}
       />
     );
   }
@@ -99,5 +105,10 @@ class SelectableReveal extends skoash.Component {
     );
   }
 }
+
+SelectableReveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+  answers: [],
+  canSelectOnStart: true
+});
 
 export default SelectableReveal;

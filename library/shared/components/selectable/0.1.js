@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -51,7 +52,9 @@ class Selectable extends skoash.Component {
     if (!target) return;
 
     message = target.getAttribute('data-ref');
-    classes[message] = this.props.selectClass;
+    if (!this.props.highlightIncorrect && this.props.answers && ~this.props.answers.indexOf(message)) {
+      classes[message] = this.props.selectClass;
+    }
 
     this.setState({
       classes,
@@ -71,6 +74,12 @@ class Selectable extends skoash.Component {
   select(e) {
     var classes = [];
     this.selectHelper(e, classes);
+  }
+
+  unselect(key) {
+    var classes = this.state.classes;
+    this.state.classes[key] = this.state.classes[key].replace(this.props.selectClass, '');
+    this.setState({classes,});
   }
 
   highlight(e) {
@@ -153,7 +162,7 @@ class Selectable extends skoash.Component {
   }
 }
 
-Selectable.defaultProps = {
+Selectable.defaultProps = _.merge(skoash.Component.defaultProps, {
   list: [
     <li></li>,
     <li></li>,
@@ -161,6 +170,6 @@ Selectable.defaultProps = {
     <li></li>
   ],
   selectClass: 'SELECTED'
-};
+});
 
 export default Selectable;

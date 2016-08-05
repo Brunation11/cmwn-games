@@ -4,7 +4,9 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
+import ThinkScreen from './components/think_screen';
 import InfoNoWaterScreen from './components/info_no_water_screen';
+import InfoImpactScreen from './components/info_impact_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -17,7 +19,9 @@ class DroughtOut extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: InfoNoWaterScreen,
+      2: ThinkScreen,
+      3: InfoNoWaterScreen,
+      4: InfoImpactScreen
     };
 
     this.menus = {
@@ -37,7 +41,7 @@ class DroughtOut extends skoash.Game {
   }
 
   renderAssets() {
-        
+
     return (
       <div>
         <skoash.Audio ref="bkg-0" type="background" src="media/S_1/S_1.1.mp3" />
