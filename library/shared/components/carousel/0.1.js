@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import classNames from 'classnames';
+import shortid from 'shortid';
 
 import Selectable from 'shared/components/selectable/0.1';
 
@@ -65,12 +66,12 @@ class Carousel extends Selectable {
       return (
         <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
+          className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
           onTransitionEnd={this.next}
           ref={ref}
-          key={key}
+          key={shortid(key)}
         />
       );
     });

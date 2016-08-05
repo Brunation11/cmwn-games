@@ -23,14 +23,10 @@ var CarouselScreen = (
             bin={
               <Randomizer
                 bin={[
-                  <li ref="loops" pl-bg="media/S_10/img_10.4.png"></li>,
-                  <li ref="whorl" pl-bg="media/S_10/img_10.5.png"></li>,
-                  <li ref="arch" pl-bg="media/S_10/img_10.6.png"></li>,
-                  <li ref="doubleloops" pl-bg="media/S_10/img_10.7.png"></li>,
-                  <li ref="loops" pl-bg="media/S_10/img_10.4.png"></li>,
-                  <li ref="whorl" pl-bg="media/S_10/img_10.5.png"></li>,
-                  <li ref="arch" pl-bg="media/S_10/img_10.6.png"></li>,
-                  <li ref="doubleloops" pl-bg="media/S_10/img_10.7.png"></li>,
+                  <div ref="loops" message="loops" pl-bg="media/S_10/img_10.4.png"></div>,
+                  <div ref="whorl" message="whorl" pl-bg="media/S_10/img_10.5.png"></div>,
+                  <div ref="arch" message="arch" pl-bg="media/S_10/img_10.6.png"></div>,
+                  <div ref="doubleloops" message="doubleloops" pl-bg="media/S_10/img_10.7.png"></div>,
                 ]}
               />
             }
@@ -54,6 +50,7 @@ var CarouselScreen = (
       </Score>
     </skoash.Component>
     <Reveal
+      openOnStart="8"
       assets={[
         <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
         <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
