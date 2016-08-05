@@ -1,6 +1,7 @@
 var FlipScreen = (
   <skoash.Screen
     id="flip"
+    className="large-frame"
   >
     <skoash.Audio type="voiceOver" src="media/S_22/VO_22.1.mp3" />
     <skoash.Image className="hidden" src="media/_Frame/Fr_1.png" />

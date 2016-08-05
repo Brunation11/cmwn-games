@@ -1,6 +1,7 @@
 var InfoFurtherScreen = (
   <skoash.Screen
     id="info-further"
+    className="large-frame"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_21/VO_21.1.mp3" />
     <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />

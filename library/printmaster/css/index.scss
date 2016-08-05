@@ -749,7 +749,7 @@ img.inline {
   }
 
   .frame div {
-    opacity: 1;
+    opacity: 0;
     transition: opacity .25s;
   }
 
@@ -776,7 +776,7 @@ img.inline {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: left;
-    opacity: 0;
+    opacity: 1;
     width: 362px;
     transition: opacity 0s;
   }
@@ -799,7 +799,18 @@ img.inline {
     }
   }
 
-  &.COUNT {
+  .LETS-DUST & {
+    .frame div {
+      opacity: 1;
+      transition: opacity 0s;
+    }
+
+    div.engage {
+      opacity: 0;
+    }
+  }
+
+  .COUNT & {
     .frame div {
       opacity: 0;
     }
@@ -809,7 +820,7 @@ img.inline {
     }
   }
 
-  &.ENGAGE {
+  .ENGAGE & {
     .frame div {
       opacity: 0;
     }
@@ -920,7 +931,7 @@ img.inline {
   $items: LOTION TAPE POWDER BRUSH PAPER GLASS;
 
   @for $i from 1 through 6 {
-    &.#{nth($items,$i)} {
+    .#{nth($items,$i)} & {
       .illustration div:nth-of-type(#{$i}) {
         animation-name: fadeInRightBig;
       }
@@ -1127,6 +1138,7 @@ img.inline {
       margin: 20px auto 0;
 
       div {
+        background-image: url(../media/S_22/img_22.1.png);
         background-size: 330px;
         float: left;
         height: 130px;

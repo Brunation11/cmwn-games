@@ -1,6 +1,7 @@
 var InfoEverybodyScreen = (
   <skoash.Screen
     id="info-everybody"
+    className="large-frame"
   >
     <skoash.Audio ref="vo" type="voiceOver" src="media/S_20/VO_20.1.mp3" />
     <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />

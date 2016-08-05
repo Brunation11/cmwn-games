@@ -1,6 +1,7 @@
 var InfoStep5Screen = (
   <skoash.Screen
     id="info-step-5"
+    className="large-frame left"
   >
     <skoash.Audio type="voiceOver" src="media/S_17/VO_17.1.mp3" />
     <skoash.Image className="hidden" src="media/_Frame/Fr_1.png" />

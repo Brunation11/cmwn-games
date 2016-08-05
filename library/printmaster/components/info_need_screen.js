@@ -1,15 +1,16 @@
 var InfoNeedScreen = (
   <skoash.Screen
     id="info-need"
+    className="large-frame"
   >
     <skoash.MediaSequence ref="media">
-      <audio ref="vo" type="voiceOver" src="media/S_12/VO_12.1.mp3" pl-delay="1s" />
-      <audio ref="lotion" type="voiceOver" src="media/S_12/VO_12.2.mp3" />
-      <audio ref="tape" type="voiceOver" src="media/S_12/VO_12.3.mp3" />
-      <audio ref="powder" type="voiceOver" src="media/S_12/VO_12.4.mp3" />
-      <audio ref="brush" type="voiceOver" src="media/S_12/VO_12.5.mp3" />
-      <audio ref="paper" type="voiceOver" src="media/S_12/VO_12.6.mp3" />
-      <audio ref="glass" type="voiceOver" src="media/S_12/VO_12.7.mp3" />
+      <skoash.Audio ref="vo" type="voiceOver" src="media/S_12/VO_12.1.mp3" pl-delay="1s" />
+      <skoash.Audio ref="lotion" type="voiceOver" gameClass="LOTION" src="media/S_12/VO_12.2.mp3" />
+      <skoash.Audio ref="tape" type="voiceOver" gameClass="TAPE" src="media/S_12/VO_12.3.mp3" />
+      <skoash.Audio ref="powder" type="voiceOver" gameClass="POWDER" src="media/S_12/VO_12.4.mp3" />
+      <skoash.Audio ref="brush" type="voiceOver" gameClass="BRUSH" src="media/S_12/VO_12.5.mp3" />
+      <skoash.Audio ref="paper" type="voiceOver" gameClass="PAPER" src="media/S_12/VO_12.6.mp3" />
+      <skoash.Audio ref="glass" type="voiceOver" gameClass="GLASS" src="media/S_12/VO_12.7.mp3" />
     </skoash.MediaSequence>
     <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
     <skoash.Component ref="frame" className="frame">

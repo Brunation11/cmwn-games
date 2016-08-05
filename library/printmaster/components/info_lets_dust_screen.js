@@ -1,11 +1,12 @@
 var InfoLetsDustScreen = (
   <skoash.Screen
     id="info-lets-dust"
+    className="large-frame"
   >
     <skoash.MediaSequence ref="media">
-      <skoash.Audio ref="vo" type="voiceOver" src="media/S_11/VO_11.1.mp3" />
-      <skoash.Audio ref="count" type="voiceOver" src="media/S_11/S_11.2.mp3" />
-      <skoash.Audio ref="engage" type="voiceOver" src="media/S_11/S_11.3.mp3" />
+      <skoash.Audio ref="vo" type="voiceOver" gameClass="LETS-DUST" src="media/S_11/VO_11.1.mp3" />
+      <skoash.Audio ref="count" type="voiceOver" gameClass="COUNT" src="media/S_11/S_11.2.mp3" />
+      <skoash.Audio ref="engage" type="voiceOver" gameClass="ENGAGE" src="media/S_11/S_11.3.mp3" />
     </skoash.MediaSequence>
     <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
     <div className="frame">
