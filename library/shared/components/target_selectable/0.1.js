@@ -85,11 +85,21 @@ class TargetSelectable extends SelectableReveal {
   }
 
   renderSelectable() {
+    if (this.props.selectable) {
+      return (
+        <this.props.selectable.type
+          ref="selectable"
+          {...this.props.selectable.props}
+          selectRespond={this.selectRespond}
+        />
+      );
+    }
+
     return (
       <Selectable
         ref="selectable"
         list={this.props.selectableList}
-        selectRespond={this.selectRespond.bind(this)}
+        selectRespond={this.selectRespond}
         selectClass={this.props.selectableSelectClass}
         selectOnStart={this.props.selectOnStart}
       />
