@@ -1,27 +1,12 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
-function collectData() {
-  var data = {};
-  if (!this.refs.dropzone || !this.refs.dropzone.refs.dropzone) return data;
-  _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key1) => {
-    if (key1.indexOf('dropzone-') === -1) return;
-    if (!ref.state.content) return;
-    data[key1] = {};
-    _.forIn(ref.state.content, (ref, key2) => {
-      data[key1][key2] = ref.props.message;
-    });
-  });
-  return data;
-}
-
 var QualitiesBucketsScreen = (
   <DragNDropScreen
     id="qualities-buckets"
     allCorrect
     multipleAnswers
     checkComplete={true}
-    collectData={collectData}
     dropzoneAssets={[
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
     ]}
@@ -30,14 +15,14 @@ var QualitiesBucketsScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item sharing animated" message="sharing" return />,
-      <skoash.ListItem className="draggable-list-item kindness animated" message="kindness" return />,
-      <skoash.ListItem className="draggable-list-item rudeness animated" message="rudeness" return />,
-      <skoash.ListItem className="draggable-list-item being-a-bully animated" message="being-a-bully" return />,
-      <skoash.ListItem className="draggable-list-item compassion animated" message="compassion" return />,
-      <skoash.ListItem className="draggable-list-item greediness animated" message="greediness" return />,
-      <skoash.ListItem className="draggable-list-item being-angry animated" message="being-angry" return />,
-      <skoash.ListItem className="draggable-list-item friendliness animated" message="friendliness" return />
+      <skoash.ListItem ref="sharing" className="draggable-list-item sharing animated" message="sharing" returnOnIncorrect />,
+      <skoash.ListItem ref="kindness" className="draggable-list-item kindness animated" message="kindness" returnOnIncorrect />,
+      <skoash.ListItem ref="rudeness" className="draggable-list-item rudeness animated" message="rudeness" returnOnIncorrect />,
+      <skoash.ListItem ref="being-a-bully" className="draggable-list-item being-a-bully animated" message="being-a-bully" returnOnIncorrect />,
+      <skoash.ListItem ref="compassion" className="draggable-list-item compassion animated" message="compassion" returnOnIncorrect />,
+      <skoash.ListItem ref="greediness" className="draggable-list-item greediness animated" message="greediness" returnOnIncorrect />,
+      <skoash.ListItem ref="being-angry" className="draggable-list-item being-angry animated" message="being-angry" returnOnIncorrect />,
+      <skoash.ListItem ref="friendliness" className="draggable-list-item friendliness animated" message="friendliness" returnOnIncorrect />
     ]}
     revealAssets={[
       <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Sharing.mp3" />,
@@ -60,9 +45,3 @@ var QualitiesBucketsScreen = (
 );
 
 export default QualitiesBucketsScreen;
-
-// add hover state to drop zones on drop
-// edit hover state for drop zones
-// screen should only complete once all items are in a dropzones
-// collect the data from dropzone
-// update frame image
