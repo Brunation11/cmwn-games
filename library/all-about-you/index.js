@@ -51,7 +51,7 @@ class AllAboutYou extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: <QuitScreen><skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" delay={500} /></QuitScreen>,
     };
   }
 
@@ -82,8 +82,6 @@ class AllAboutYou extends skoash.Game {
         }
       });
     }
-    // console.log('in emit save');
-    // console.log(data);
     this.emit({
       name: 'save',
       game: this.config.id,
@@ -94,23 +92,18 @@ class AllAboutYou extends skoash.Game {
     });
   }
 
-  // componentWillMount() {
-  //   var data = {};
-
-  // }
-
-  // load(opts) {
-  //   console.log(opts)
-  //   if (this && this.refs) {
-  //     _.forEach(this.refs, (screen, key) => {
-  //       if (key.indexOf('screen-') === -1) return;
-  //       if (typeof screen.loadData === 'function') {
-  //         screenData = opts.data[key]
-  //         screen.loadData(opts);
-  //       }
-  //     });
-  //   }
-  // }
+  load(opts) {
+    var screenData;
+    if (this && this.refs) {
+      _.forEach(this.refs, (screen, key) => {
+        if (key.indexOf('screen-') === -1) return;
+        if (typeof screen.loadData === 'function') {
+          if (!opts.data) return;
+          screen.metaData = opts.data[key];
+        }
+      });
+    }
+  }
 
   renderAssets() {
     return (
