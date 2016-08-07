@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a5e9b6da3764c5cca59a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8a795a1c2a94335f2ccc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1979,6 +1979,13 @@
 	    value: function collectData() {
 	      if (typeof this.props.collectData === 'function') {
 	        return this.props.collectData.call(this);
+	      }
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      if (this.metaData && typeof this.props.loadData === 'function') {
+	        this.props.loadData.call(this, this.metaData);
 	      }
 	    }
 	  }, {
@@ -44766,6 +44773,8 @@
 	      if (typeof this.props.onOpen === 'function') {
 	        this.props.onOpen(this);
 	      }
+
+	      this.loadData();
 	    }
 	  }, {
 	    key: 'leave',
@@ -44786,6 +44795,60 @@
 	        close: true
 	      });
 	      this.stop();
+	    }
+	  }, {
+	    key: 'collectData',
+	    value: function collectData() {
+	      var _this3 = this;
+
+	      var data = {};
+	      if (!this.refs) return data;
+	      if (this.refs['selectable-reveal']) {
+	        data = [];
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _.forIn(this.refs['selectable-reveal'].refs.selectable.refs, function (ref, key) {
+	            if (_.includes(ref.props.className, 'SELECTED') || _.includes(ref.props.className, 'HIGHLIGHTED')) data.push(ref.props['data-ref']);
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          _.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, function (ref, key) {
+	            if (key.indexOf('dropzone-') === -1 || !ref.state.content) return;
+	            if (_this3.props.multipleAnswers) {
+	              data[key] = [];
+	              _.forIn(ref.state.content, function (ref2, key2) {
+	                data[key].push(ref2.props.message);
+	              });
+	            } else {
+	              data[key] = {
+	                ref: ref.state.content.props.message,
+	                state: ref.state.content.state
+	              };
+	            }
+	          });
+	        }
+	      }
+	      return data;
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      var _this4 = this;
+
+	      var loadData = {};
+	      if (!this.refs) return;
+	      if (this.refs['selectable-reveal']) {
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _.forEach(this.metaData, function (ref) {
+	            loadData[ref] = _this4.refs['selectable-reveal'].props.selectableSelectClass || _this4.refs['selectable-reveal'].refs.selectable.state.selectClass;
+	            _this4.refs['selectable-reveal'].refs.selectable.loadData = loadData;
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          this.refs['dropzone-reveal'].refs.dropzone.loadData = this.metaData;
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'getClassNames',
