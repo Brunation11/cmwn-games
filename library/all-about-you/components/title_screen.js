@@ -14,5 +14,3 @@
 );
 
 export default TitleScreen;
-
-// re-animate play button
