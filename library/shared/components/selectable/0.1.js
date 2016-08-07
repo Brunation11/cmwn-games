@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-class Selectable extends play.Component {
+class Selectable extends skoash.Component {
   constructor() {
     super();
 
@@ -18,14 +18,15 @@ class Selectable extends play.Component {
   }
 
   start() {
-    var selectClass, selectFunction;
+    var selectClass, selectFunction, classes;
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+    classes = this.loadData ? this.loadData : {};
 
     this.setState({
       started: true,
-      classes: {},
+      classes: classes,
       selectClass,
       selectFunction,
     });
