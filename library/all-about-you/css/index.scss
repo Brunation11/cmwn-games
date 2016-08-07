@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body, body > div, body > div > div {
   margin: 0;
   padding: 0;
@@ -17,7 +21,7 @@ body > div > div {
   position: relative;
   margin: auto;
   width: 960px;
-  height: 540px;
+  height: 550px;
   font-size: 36px;
   color: #fff;
   background: url(../media/assets/_images/_BKG/BKG_1-01.png) bottom center no-repeat;
@@ -143,8 +147,8 @@ p {
   top: 50%;
   left: 0;
   width: 960px;
-  height: 540px;
-  margin-top: -270px;
+  height: 550px;
+  margin-top: -275px;
   opacity: 0;
   display: none;
   transition: opacity 1s, transform 0.5s;
@@ -307,7 +311,7 @@ p {
     position: absolute;
 
     &.ice-cube {
-      width: 100%;
+      width: 101%;
     }
 
     &.penguine-1 {
@@ -338,6 +342,7 @@ p {
     &.next-screen {
       width: 160px;
       height: 100px;
+      bottom: 1%;
       background-position: 324px 312px;
 
       &:hover {
@@ -547,7 +552,6 @@ p {
         height: 50%;
         top: 25%;
         left: 25%;
-        z-index: 1;
 
         &:before {
           background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
@@ -609,7 +613,7 @@ p {
         }
 
         &.DRAGGING {
-          z-index: 2;
+          z-index: 1;
           &:before {
             background-size: 1000px 388px;
           }
@@ -667,7 +671,6 @@ p {
           &:before {
             background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
             background-size: 1000px 141px;
-            z-index: 1;
           }
 
           &.friends {
@@ -1363,35 +1366,51 @@ p {
           z-index: 1;
 
           &.sharing {
-            background-position: -2px 136px;
+            &:before {
+              background-position: -2px 136px;
+            }
           }
 
           &.kindness {
-            background-position: -154px 138px;
+            &:before {
+              background-position: -154px 138px;
+            }
           }
 
           &.rudeness {
-            background-position: 901px 136px;
+            &:before {
+              background-position: 901px 136px;
+            }
           }
 
           &.being-a-bully {
-            background-position: 742px 136px;
+            &:before {
+              background-position: 742px 136px;
+            }
           }
 
           &.compassion {
-            background-position: 598px 149px;
+            &:before {
+              background-position: 598px 149px;
+            }
           }
 
           &.greediness {
-            background-position: 449px 153px;
+            &:before {
+              background-position: 449px 153px;
+            }
           }
 
           &.being-angry {
-            background-position: 296px 145px;
+            &:before {
+              background-position: 296px 145px;
+            }
           }
 
           &.friendliness {
-            background-position: 140px 148px;
+            &:before {
+              background-position: 140px 148px;
+            }
           }
         }
       }
