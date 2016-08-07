@@ -1,44 +1,3 @@
-@keyframes flicker {
-  0% {opacity:1;}
-  10% {opacity:1;}
-  12% {opacity:0;}
-  14% {opacity:1;}
-  16% {opacity:0;}
-  18% {opacity:1;}
-  44% {opacity:1;}
-  46% {opacity:0;}
-  48% {opacity:1;}
-  50% {opacity:0;}
-  52% {opacity:1;}
-  82% {opacity:1;}
-  84% {opacity:0;}
-  86% {opacity:1;}
-  88% {opacity:0;}
-  90% {opacity:1;}
-  100% {opacity:1;}
-}
-@keyframes stamp {
-  0% {
-    opacity: 0;
-    transform: scale(4);
-  }
-  10% {
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1);
-  }
-  65% {
-    transform: scale(1.1);
-  }
-  75% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(1.1);
-  }
-}
-
 html, body, body > div, body > div > div {
   margin: 0;
   padding: 0;
@@ -588,6 +547,7 @@ p {
         height: 50%;
         top: 25%;
         left: 25%;
+        z-index: 1;
 
         &:before {
           background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
@@ -649,39 +609,57 @@ p {
         }
 
         &.DRAGGING {
-          z-index: 1;
-          background-size: 995px 386px;
+          z-index: 2;
+          &:before {
+            background-size: 1000px 388px;
+          }
 
           &.friends {
-            background-position: 622px 245px;
+            &:before {
+              background-position: 625px 245px;
+            }
           }
 
           &.world-peace {
-            background-position: 498px 243px;
+            &:before {
+              background-position: 499px 244px;
+            }
           }
 
           &.sports {
-            background-position: 249px 243px;
+            &:before {
+              background-position: 250px 245px;
+            }
           }
 
           &.playing-games {
-            background-position: 373px 243px;
+            &:before {
+              background-position: 375px 245px;
+            }
           }
 
           &.looking-cool {
-            background-position: 0 243px;
+            &:before {
+              background-position: 0 244px;
+            }
           }
 
           &.school {
-            background-position: 746px 243px;
+            &:before {
+              background-position: 749px 245px;
+            }
           }
 
           &.celebrities {
-            background-position: 125px 243px;
+            &:before {
+              background-position: 125px 244px;
+            }
           }
 
           &.environment {
-            background-position: 870px 244px;
+            &:before {
+              background-position: 874px 244px;
+            }
           }
         }
 
@@ -689,53 +667,54 @@ p {
           &:before {
             background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
             background-size: 1000px 141px;
+            z-index: 1;
           }
 
           &.friends {
             &:before {
-              background-position: 135px -14px;
+              background-position: 131px -12px;
             }
           }
 
           &.world-peace {
             &:before {
-              background-position: 256px -14px;
+              background-position: 254px -11px;
             }
           }
 
           &.sports {
             &:before {
-              background-position: 378px -14px;
+              background-position: 375px -12px;
             }
           }
 
           &.playing-games {
             &:before {
-              background-position: 500px -14px;
+              background-position: 496px -11px;
             }
           }
 
           &.looking-cool {
             &:before {
-              background-position: 623px -14px;
+              background-position: 621px -11px;
             }
           }
 
           &.school {
             &:before {
-              background-position: 748px -14px;
+              background-position: 745px -12px;
             }
           }
 
           &.celebrities {
             &:before {
-              background-position: 866px -14px;
+              background-position: 864px -12px;
             }
           }
 
           &.environment {
             &:before {
-              background-position: 990px -10px;
+              background-position: 988px -9px;
             }
           }
         }
@@ -756,43 +735,43 @@ p {
           }
 
           &:nth-child(2) {
-            background-position: 996px -6px;
+            background-position: 992px -5px;
             top: 22%;
             left: 70%;
           }
 
           &:nth-child(3) {
-            background-position: 852px -6px;
+            background-position: 849px -6px;
             top: 22%;
             left: 83%;
           }
 
           &:nth-child(4) {
-            background-position: 708px -6px;
+            background-position: 705px -5px;
             top: 44%;
             left: 57%;
           }
 
           &:nth-child(5) {
-            background-position: 562px -6px;
+            background-position: 562px -7px;
             top: 44%;
             left: 70%;
           }
 
           &:nth-child(6) {
-            background-position: 421px -6px;
+            background-position: 420px -5px;
             top: 44%;
             left: 83%;
           }
 
           &:nth-child(7) {
-            background-position: 276px -6px;
+            background-position: 273px -8px;
             top: 66%;
             left: 62%;
           }
 
           &:nth-child(8) {
-            background-position: 135px -6px;
+            background-position: 133px -6px;
             top: 66%;
             left: 75%;
           }
@@ -975,38 +954,56 @@ p {
 
         &.DRAGGING {
           z-index: 1;
-          background-size: 995px 386px;
+          &:before {
+            background-size: 995px 386px;
+          }
 
           &.cyberbullying {
-            background-position: 0 243px;
+            &:before {
+              background-position: 0 243px;
+            }
           }
 
           &.endangered-animals {
-            background-position: 871px 243px;
+            &:before {
+              background-position: 871px 243px;
+            }
           }
 
           &.literacy {
-            background-position: 747px 243px;
+            &:before {
+              background-position: 747px 243px;
+            }
           }
 
           &.climate-change {
-            background-position: 622px 243px;
+            &:before {
+              background-position: 622px 243px;
+            }
           }
 
           &.poverty {
-            background-position: 498px 243px;
+            &:before {
+              background-position: 498px 243px;
+            }
           }
 
           &.health-problems {
-            background-position: 373px 243px;
+            &:before {
+              background-position: 373px 243px;
+            }
           }
 
           &.homelessness {
-            background-position: 249px 242px;
+            &:before {
+              background-position: 249px 242px;
+            }
           }
 
           &.war-and-terrorism {
-            background-position: 124px 243px;
+            &:before {
+              background-position: 124px 244px;
+            }
           }
         }
 
@@ -1272,61 +1269,94 @@ p {
     .dropzone-reveal {
       .draggable-list-item {
         position: absolute;
-        background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
-        background-size: 1200px 300px;
-        width: 15%;
-        height: 27%;
+        width: 4%;
+        height: 8%;
+
+        &:before {
+          position: absolute;
+          content: "";
+          background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
+          background-size: 1200px 300px;
+          width: 375%;
+          height: 335%;
+          left: -150%;
+          top: -115%;
+        }
 
         &.CORRECT {
           display: none;
         }
 
         &.sharing {
-          background-position: -8px -11px;
-          top: 8%;
-          left: 30%;
+          top: 15%;
+          left: 35%;
+
+          &:before {
+            background-position: -8px -11px;
+          }
         }
 
         &.kindness {
-          background-position: -151px -11px;
-          top: 8%;
-          left: 45%;
+          top: 15%;
+          left: 50%;
+
+          &:before {
+            background-position: -151px -11px;
+          }
         }
 
         &.rudeness {
-          background-position: 901px -11px;
-          top: 8%;
-          left: 60%;
+          top: 15%;
+          left: 65%;
+
+          &:before {
+            background-position: 901px -11px;
+          }
         }
 
         &.being-a-bully {
-          background-position: 744px -11px;
-          top: 8%;
-          left: 75%;
+          top: 15%;
+          left: 80%;
+
+          &:before {
+            background-position: 744px -11px;
+          }
         }
 
         &.compassion {
-          background-position: 597px 1px;
-          top: 35%;
-          left: 30%;
+          top: 42%;
+          left: 35%;
+
+          &:before {
+            background-position: 597px 1px;
+          }
         }
 
         &.greediness {
-          background-position: 448px 2px;
-          top: 35%;
-          left: 45%;
+          top: 42%;
+          left: 50%;
+
+          &:before {
+            background-position: 448px 2px;
+          }
         }
 
         &.being-angry {
-          background-position: 299px -5px;
-          top: 35%;
-          left: 60%;
+          top: 42%;
+          left: 65%;
+
+          &:before {
+            background-position: 299px -5px;
+          }
         }
 
         &.friendliness {
-          background-position: 142px -2px;
-          top: 35%;
-          left: 75%;
+          top: 42%;
+          left: 80%;
+
+          &:before {
+            background-position: 142px -2px;
+          }
         }
 
         &.DRAGGING {
@@ -1376,59 +1406,20 @@ p {
 
           &:nth-child(1) {
             background-position: -74px -48px;
-            left: 34%;
+            left: 27%;
             bottom: 10%;
 
-            // &.sharing,
-            // &.kindness,
-            // &.rudeness,
-            // &.being-a-bully,
-            // &.compassion,
-            // &.greediness,
-            // &.being-angry,
-            // &.friendliness
             &:hover,
             &:focus {
-              // animation: hover 2s;
-              // animation-iteration-count: infinite;
-              // transition: background-position .25s ease-in-out;
               background-position: -72px 146px;
             }
-
-            // @keyframes hover {
-            //   0% {
-            //     opacity: 1;
-            //   }
-            //   5% {
-            //     opacity: 0;
-            //   }
-            //   50% {
-            //     // background-position: -74px 144px;
-            //     opacity: 0;
-            //   }
-            //   95% {
-            //     opacity: 0;
-            //   }
-            //   100% {
-            //     // background-position: -74px -48px;
-            //     opacity: 1;
-            //   }
-            // }
           }
 
           &:nth-child(2) {
-            background-position: 812px -48px;
+            background-position: 811px -48px;
             bottom: 10%;
-            left: 54%;
+            left: 57%;
 
-            // &.sharing,
-            // &.kindness,
-            // &.rudeness,
-            // &.being-a-bully,
-            // &.compassion,
-            // &.greediness,
-            // &.being-angry,
-            // &.friendliness
             &:hover,
             &:focus {
               background-position: 814px 146px;
