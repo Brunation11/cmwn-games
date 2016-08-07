@@ -1,17 +1,6 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
-function collectData() {
-  var data = {};
-  if (!this.refs.dropzone || !this.refs.dropzone.refs.dropzone) return data;
-  _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
-    if (key.indexOf('dropzone-') === -1) return;
-    if (!ref.state.content) return;
-    data[key] = ref.state.content.props.message;
-  });
-  return data;
-}
-
 var DragNDropIssuesScreen = (
   <DragNDropScreen
     id="drag-n-drop-issues"
@@ -19,27 +8,26 @@ var DragNDropIssuesScreen = (
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
-    collectData={collectData}
     centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
-      <DropzoneComponent className="dropzone-list-item lanimated" />,
+      <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />,
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item cyberbullying animated" message="cyberbullying" />,
-      <skoash.ListItem className="draggable-list-item endangered-animals animated" message="endangered-animals" />,
-      <skoash.ListItem className="draggable-list-item literacy animated" message="literacy" />,
-      <skoash.ListItem className="draggable-list-item climate-change animated" message="climate-change" />,
-      <skoash.ListItem className="draggable-list-item poverty animated" message="poverty" />,
-      <skoash.ListItem className="draggable-list-item health-problems animated" message="health-problems" />,
-      <skoash.ListItem className="draggable-list-item homelessness animated" message="homelessness" />,
-      <skoash.ListItem className="draggable-list-item war-and-terrorism animated" message="war-and-terrorism" />
+      <skoash.ListItem ref="cyberbulling" className="draggable-list-item cyberbullying animated" message="cyberbullying" returnOnIncorrect />,
+      <skoash.ListItem ref="endangered-animals" className="draggable-list-item endangered-animals animated" message="endangered-animals" returnOnIncorrect />,
+      <skoash.ListItem ref="literacy" className="draggable-list-item literacy animated" message="literacy" returnOnIncorrect />,
+      <skoash.ListItem ref="climate-change" className="draggable-list-item climate-change animated" message="climate-change" returnOnIncorrect />,
+      <skoash.ListItem ref="poverty" className="draggable-list-item poverty animated" message="poverty" returnOnIncorrect />,
+      <skoash.ListItem ref="health-problems" className="draggable-list-item health-problems animated" message="health-problems" returnOnIncorrect />,
+      <skoash.ListItem ref="homelessness" className="draggable-list-item homelessness animated" message="homelessness" returnOnIncorrect />,
+      <skoash.ListItem ref="war-and-terrorism" className="draggable-list-item war-and-terrorism animated" message="war-and-terrorism" returnOnIncorrect />
     ]}
     revealAssets={[
       <skoash.Audio ref="cyberbullying" type="voiceOver" src="media/assets/_audio/VOs/VO_Cyberbullying.mp3" />,
@@ -63,6 +51,3 @@ var DragNDropIssuesScreen = (
 );
 
 export default DragNDropIssuesScreen;
-
-// screen should only complete once all items are in a dropzones
-// collect the data from dropzone

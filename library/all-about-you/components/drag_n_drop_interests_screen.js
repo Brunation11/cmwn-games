@@ -1,17 +1,6 @@
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
-function collectData() {
-  var data = {};
-  if (!this.refs.dropzone || !this.refs.dropzone.refs.dropzone) return data;
-  _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
-    if (key.indexOf('dropzone-') === -1) return;
-    if (!ref.state.content) return;
-    data[key] = ref.state.content.props.message;
-  });
-  return data;
-}
-
 var DragNDropInterestsScreen = (
   <DragNDropScreen
     id="drag-n-drop-interests"
@@ -19,7 +8,6 @@ var DragNDropInterestsScreen = (
       <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
       <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
     ]}
-    collectData={collectData}
     centerOnCorrect={true}
     dropzones={[
       <DropzoneComponent className="dropzone-list-item animated" />,
@@ -32,14 +20,14 @@ var DragNDropInterestsScreen = (
       <DropzoneComponent className="dropzone-list-item animated" />
     ]}
     dropzoneList={[
-      <skoash.ListItem className="draggable-list-item space animated" message="space" />,
-      <skoash.ListItem className="draggable-list-item animals animated" message="animals" />,
-      <skoash.ListItem className="draggable-list-item recycling animated" message="recycling" />,
-      <skoash.ListItem className="draggable-list-item money animated" message="money" />,
-      <skoash.ListItem className="draggable-list-item printing animated" message="printing" />,
-      <skoash.ListItem className="draggable-list-item coding animated" message="coding" />,
-      <skoash.ListItem className="draggable-list-item art animated" message="art" />,
-      <skoash.ListItem className="draggable-list-item robotics animated" message="robotics" />
+      <skoash.ListItem ref="space" className="draggable-list-item space animated" message="space" returnOnIncorrect />,
+      <skoash.ListItem ref="animals" className="draggable-list-item animals animated" message="animals" returnOnIncorrect />,
+      <skoash.ListItem ref="recycling" className="draggable-list-item recycling animated" message="recycling" returnOnIncorrect />,
+      <skoash.ListItem ref="money" className="draggable-list-item money animated" message="money" returnOnIncorrect />,
+      <skoash.ListItem ref="printing" className="draggable-list-item printing animated" message="printing" returnOnIncorrect />,
+      <skoash.ListItem ref="coding" className="draggable-list-item coding animated" message="coding" returnOnIncorrect />,
+      <skoash.ListItem ref="art" className="draggable-list-item art animated" message="art" returnOnIncorrect />,
+      <skoash.ListItem ref="robotics" className="draggable-list-item robotics animated" message="robotics" returnOnIncorrect />
     ]}
     revealAssets={[
       <skoash.Audio ref="space" type="voiceOver" src="media/assets/_audio/VOs/VO_Space.mp3" />,
@@ -64,9 +52,3 @@ var DragNDropInterestsScreen = (
 );
 
 export default DragNDropInterestsScreen;
-
-// add drag/drop sounds
-// list items need to reset if another item is put in same dropzone
-// screen should only complete once all items are in a dropzones
-// collect the data from dropzone
-// resize draggables to easily drop in dropzones
