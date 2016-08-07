@@ -10,7 +10,7 @@ class DragNDropScreen extends skoash.Screen {
   }
 
   dragRespond(draggable) {
-    _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
+    _.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, (ref, key) => {
       if (key.indexOf('dropzone-') === -1) return;
       if (!this.props.multipleAnswers) {
         if (ref && ref.state && ref.state.content === draggable) {
@@ -20,13 +20,12 @@ class DragNDropScreen extends skoash.Screen {
         }
       }
     });
-
     this.incomplete();
   }
 
   correctRespond(draggable, dropzoneKey) {
     var dropzone, endX, endY, complete = true, content;
-    dropzone = this.refs.dropzone.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
+    dropzone = this.refs['dropzone-reveal'].refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
     if (this.props.centerOnCorrect) {
       endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x) + ((draggable.state.corners[1].x - draggable.state.corners[0].x) / 2);
@@ -51,7 +50,7 @@ class DragNDropScreen extends skoash.Screen {
     }
 
 
-    _.forIn(this.refs.dropzone.refs.dropzone.refs, (ref, key) => {
+    _.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, (ref, key) => {
       if (key.indexOf('dropzone-')) return;
       if (!ref.state.content) complete = false;
     });
@@ -64,7 +63,7 @@ class DragNDropScreen extends skoash.Screen {
       <div>
         {this.renderContentList()}
         <DropzoneReveal
-          ref="dropzone"
+          ref="dropzone-reveal"
           dropzoneAssets={this.props.dropzoneAssets}
           dragRespond={this.dragRespond}
           correctRespond={this.correctRespond}
