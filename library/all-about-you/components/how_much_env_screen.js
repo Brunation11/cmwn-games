@@ -1,21 +1,9 @@
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
-var collectData = function() {
-  var data = {};
-  if (!this.refs || !this.refs['selectable-reveal'] || !this.refs['selectable-reveal'].refs || !this.refs['selectable-reveal'].refs.selectable) return data;
-  _.forIn(this.refs['selectable-reveal'].refs.selectable.refs , (ref, key) => {
-    if (ref.props.className.indexOf('SELECTED') === -1) return;
-    data[this.props.id] = ref.props['data-ref'];
-  });
-  return data;
-}
-
 var HowMuchEnvScreen = (
   <skoash.Screen
     id="how-much-env"
-    collectData={collectData}
   >
-
     <skoash.MediaSequence
       ref="vo"
       checkComplete={true}
@@ -79,8 +67,3 @@ var HowMuchEnvScreen = (
 );
 
 export default HowMuchEnvScreen;
-
-// edit highlighted state
-// add secondary vo
-// add emotion sound
-// save data
