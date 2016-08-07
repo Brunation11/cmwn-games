@@ -1,4 +1,4 @@
-class Reveal extends play.Component {
+class Reveal extends skoash.Component {
   constructor() {
     super();
 
