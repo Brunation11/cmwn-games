@@ -373,8 +373,8 @@ p {
   opacity: 0;
   display: none;
   overflow: hidden;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
+  transition: opacity 1s, z-index 0s 1s;
+  z-index: -1;
 
   &:not(.COMPLETE) {
     button {
@@ -389,7 +389,8 @@ p {
 
 .screen.OPEN {
   opacity: 1;
-  transform: translateX(0);
+  z-index: 1;
+  transition: opacity 1s, z-index 0s;
 }
 
 .screen.READY {
@@ -397,8 +398,7 @@ p {
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+  opacity: 0;
 }
 
   .screen .next-screen,
