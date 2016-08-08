@@ -38,8 +38,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
-      transition: transform 1s;
       transform: translateY(-60px) scale(.6);
+      transition: transform 1s;
 
       & + div {
         transform: translateY(160px) scale(1);
