@@ -107,10 +107,7 @@ class TagIt extends skoash.Game {
         <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />
         <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop />
         
-        <skoash.Audio ref="sfx-1" type="background" src="media/_audio/S_Precious/TI_Water.mp3" />
-        
-        <skoash.Audio ref="btn-1" type="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" />
-        <skoash.Audio ref="btn-2" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
+        <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>
       </div>
     );
