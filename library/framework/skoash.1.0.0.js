@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8a795a1c2a94335f2ccc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3f7dcf526e1bac7447d9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2050,7 +2050,7 @@
 	      var ready,
 	          self = this;
 
-	      if (!this.props.checkReady) return;
+	      if (!this.props.checkReady || this.state.ready) return;
 
 	      self.requireForReady.forEach(function (key) {
 	        if (self.refs[key] && self.refs[key].state && !self.refs[key].state.ready) {
@@ -2110,11 +2110,13 @@
 	    }
 	  }, {
 	    key: 'renderContentList',
-	    value: function renderContentList(listName) {
-	      var children = [].concat(this.props[listName || 'children']);
+	    value: function renderContentList() {
+	      var listName = arguments.length <= 0 || arguments[0] === undefined ? 'children' : arguments[0];
+
+	      var children = [].concat(this.props[listName]);
 	      return children.map(function (component, key) {
 	        if (!component) return;
-	        var ref = component.ref || component.props['data-ref'] || key;
+	        var ref = component.ref || component.props['data-ref'] || listName + '-' + key;
 	        return React.createElement(component.type, _extends({}, component.props, {
 	          ref: ref,
 	          key: key
@@ -44743,8 +44745,14 @@
 	    value: function complete() {
 	      _get(Object.getPrototypeOf(Screen.prototype), 'complete', this).call(this);
 	      skoash.trigger('screenComplete', {
-	        screenID: this.props.id
+	        screenID: this.props.id,
+	        silent: this.props.silentComplete
 	      });
+
+	      if (this.audio['screen-complete']) {
+	        this.audio['screen-complete'].play();
+	      }
+
 	      if (this.props.emitOnComplete) {
 	        skoash.trigger('emit', this.props.emitOnComplete);
 	      }
@@ -44854,15 +44862,12 @@
 	    key: 'getClassNames',
 	    value: function getClassNames() {
 	      return (0, _classnames2.default)({
-	        READY: this.state.ready,
 	        LOAD: this.state.load,
-	        OPEN: this.state.open,
 	        LEAVING: this.state.leaving,
 	        LEAVE: this.state.leave,
 	        CLOSE: this.state.close,
-	        COMPLETE: this.state.complete,
 	        RETURN: this.state.return
-	      }, 'screen');
+	      }, _get(Object.getPrototypeOf(Screen.prototype), 'getClassNames', this).call(this), 'screen');
 	    }
 	  }, {
 	    key: 'renderContent',
@@ -44947,6 +44952,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 	var _lodash = __webpack_require__(313);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
@@ -44966,6 +44973,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45030,7 +45039,8 @@
 	      openMenus: [],
 	      loading: true,
 	      demo: false,
-	      data: {}
+	      data: {},
+	      classes: []
 	    };
 
 	    skoash.trigger = _this.trigger.bind(_this);
@@ -45319,7 +45329,8 @@
 	        loading: false,
 	        currentScreenIndex: currentScreenIndex,
 	        highestScreenIndex: highestScreenIndex,
-	        screenIndexArray: screenIndexArray
+	        screenIndexArray: screenIndexArray,
+	        classes: []
 	      });
 
 	      this.emitSave(highestScreenIndex, currentScreenIndex);
@@ -45527,11 +45538,16 @@
 	  }, {
 	    key: 'audioPlay',
 	    value: function audioPlay(opts) {
-	      var playingSFX, playingVO, playingBKG;
+	      var playingSFX, playingVO, playingBKG, classes;
 
 	      playingSFX = this.state.playingSFX || [];
 	      playingVO = this.state.playingVO || [];
 	      playingBKG = this.state.playingBKG || [];
+	      classes = this.state.classes || [];
+
+	      if (opts.audio.props.gameClass) {
+	        classes.push(opts.audio.props.gameClass);
+	      }
 
 	      switch (opts.audio.props.type) {
 	        case 'sfx':
@@ -45549,7 +45565,8 @@
 	      this.setState({
 	        playingSFX: playingSFX,
 	        playingVO: playingVO,
-	        playingBKG: playingBKG
+	        playingBKG: playingBKG,
+	        classes: classes
 	      });
 	    }
 	  }, {
@@ -45643,7 +45660,8 @@
 
 	  }, {
 	    key: 'screenComplete',
-	    value: function screenComplete() {
+	    value: function screenComplete(opts) {
+	      if (opts.silent) return;
 	      if (this.audio['screen-complete']) {
 	        this.audio['screen-complete'].play();
 	      }
@@ -45651,9 +45669,9 @@
 	  }, {
 	    key: 'getClassNames',
 	    value: function getClassNames() {
-	      var _classNames;
+	      var _ref;
 
-	      return (0, _classnames2.default)('pl-game', 'skoash-game', (_classNames = {
+	      return _classnames2.default.apply(undefined, ['pl-game', 'skoash-game', (_ref = {
 	        iOS: this.state.iOS,
 	        MOBILE: this.state.mobile,
 	        SFX: this.state.playingSFX.length,
@@ -45661,7 +45679,7 @@
 	        PAUSED: this.state.paused,
 	        LOADING: this.state.loading,
 	        MENU: this.state.openMenus.length
-	      }, _defineProperty(_classNames, 'MENU-' + this.state.openMenus[0], this.state.openMenus[0]), _defineProperty(_classNames, 'DEMO', this.state.demo), _defineProperty(_classNames, 'SCREEN-' + this.state.currentScreenIndex, true), _classNames));
+	      }, _defineProperty(_ref, 'MENU-' + this.state.openMenus[0], this.state.openMenus[0]), _defineProperty(_ref, 'DEMO', this.state.demo), _defineProperty(_ref, 'SCREEN-' + this.state.currentScreenIndex, true), _ref)].concat(_toConsumableArray(this.state.classes), [_get(Object.getPrototypeOf(Game.prototype), 'getClassNames', this).call(this)]));
 	    }
 	  }, {
 	    key: 'getStyles',
@@ -47598,9 +47616,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _media = __webpack_require__(321);
+	var _component = __webpack_require__(13);
 
-	var _media2 = _interopRequireDefault(_media);
+	var _component2 = _interopRequireDefault(_component);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47610,8 +47628,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MediaSequence = function (_Media) {
-	  _inherits(MediaSequence, _Media);
+	var MediaSequence = function (_Component) {
+	  _inherits(MediaSequence, _Component);
 
 	  function MediaSequence() {
 	    _classCallCheck(this, MediaSequence);
@@ -47666,7 +47684,7 @@
 	  }]);
 
 	  return MediaSequence;
-	}(_media2.default);
+	}(_component2.default);
 
 	MediaSequence.defaultProps = {
 	  type: 'div',
