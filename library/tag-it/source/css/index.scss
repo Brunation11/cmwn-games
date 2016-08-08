@@ -223,17 +223,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 // the following css is specific to this game
@@ -253,10 +253,10 @@ img.inline {
 }
 
 #title {
-  background-image: url(../media/_images/_BKG/BKG_1.png);  
+  background-image: url(../media/_images/_BKG/BKG_1.png);
   background-size: cover;
   transition: opacity .2s;
-    
+
   .group {
     width: 960px;
     height: 540px;
@@ -316,20 +316,26 @@ img.inline {
       animation-name: rubberBand;
       animation-delay: 2s;
     }
+
+    &.COMPLETE {
+      .next-screen {
+        margin-right: 5px;
+        right: 0;
+        background-image: url(../media/_images/_Buttons/BU_1.png);
+        background-position: 0 0;
+        width: 300px;
+        top: 330px;
+        left: 330px;
+        transform: rotate(360deg);
+        transition: opacity 1s, transform 1s;
+      }
+    }
   }
-    
+
   .prev-screen {
     display: none;
   }
 
-  .next-screen {
-    background-image: url(../media/_images/_Buttons/BU_1.png);
-    background-position: 0 0;
-    width: 300px;
-    top: 330px;
-    left: 330px;
-  }
-    
   .next-screen:hover {
     background-image: url(../media/_images/_Buttons/BU_1.png);
     background-position: 0 600px;
@@ -368,7 +374,7 @@ img.inline {
     top: 50%;
     transform: translateY(-50%);
   }
-    
+
   &.OPEN {
     img {
       animation-delay: 1s;
@@ -377,7 +383,7 @@ img.inline {
   }
 }
 
-#recycling-arts { 
+#recycling-arts {
   background-image: url(../media/_images/_BKG/BKG_3.png);
   background-size: cover;
   transition: opacity .5s;
@@ -427,7 +433,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_3.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   img {
     position: absolute;
     height: 540px;
@@ -454,7 +460,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   img {
     position: absolute;
     left: 0;
@@ -486,7 +492,7 @@ img.inline {
     img {
       animation-name: fadeInLeftBig;
     }
-      
+
     .start {
       animation-name: fadeInRightBig;
       animation-delay: 14s;
@@ -498,7 +504,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
   transition: opacity .5s;
-  
+
   .question {
     background-size: 1700px;
     width: 820px;
@@ -510,9 +516,9 @@ img.inline {
   }
 
   .selectable-reveal {
-    width: 100%;      
-  }   
-    
+    width: 100%;
+  }
+
   ul {
     width: 100%;
     list-style: none;
@@ -522,9 +528,9 @@ img.inline {
   }
 
   .text {
-    position: relative;    
+    position: relative;
   }
-    
+
   $items: kitchen shower bathroom bathtub classroom outdoor;
 
   @for $i from 1 through 6 {
@@ -538,15 +544,15 @@ img.inline {
         background-size: 3750px;
         background-repeat: no-repeat;
         background-position: -1500px 0px;
-    
+
         &:hover,
         &.SELECTED {
             background-position: -1500px -200px;
         }
-      }  
+      }
     }
   }
-  
+
   .SELECTED::after {
     background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
     background-size: 1700px 800px;
@@ -554,7 +560,7 @@ img.inline {
     background-position: -900px 1px;
     padding: 8px;
   }
-    
+
   .kitchen {
     animation-delay: 4s;
     top: 30%;
@@ -563,7 +569,7 @@ img.inline {
   .kitchen::after {
     content: "Kitchen Faucet";
   }
-    
+
   .shower, {
     animation-delay: 7s;
     top: 50%;
@@ -572,7 +578,7 @@ img.inline {
   .shower::after {
     content: "Shower Faucet";
   }
-    
+
   .bathroom {
     animation-delay: 9.5s;
     top: 70%;
@@ -581,40 +587,40 @@ img.inline {
   .bathroom::after {
     content: "Bathroom Faucet";
   }
-    
+
   .bathtub {
     animation-delay: 13.5s;
     top: 30%;
     left: 50%;
   }
-    
+
   .bathtub::after {
     content: "Bathtub Faucet";
   }
-    
+
   .classroom {
     animation-delay: 17s;
     top: 50%;
     left: 50%;
   }
-    
+
   .classroom::after {
     content: "Classroom Faucet";
   }
-    
+
   .outdoor {
     animation-delay: 19.5s;
     top: 70%;
     left: 50%;
   }
-    
+
   .outdoor::after {
     content: "Outdoor Faucet";
   }
-  
+
   ::after {
     top: 35%;
-    font-size: xx-large;  
+    font-size: xx-large;
     margin-left: 100px;
     position: relative;
   }
@@ -624,7 +630,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .group {
     width: 960px;
     height: 540px;
@@ -686,19 +692,19 @@ img.inline {
       }
     }
   }
-    
+
   .step {
     animation-delay: 0.1s;
   }
-    
+
   .container-1 {
     animation-delay: 8s;
   }
-    
+
   .container-2 {
     animation-delay: 8.5s;
   }
-    
+
   .container-3 {
     animation-delay: 9s;
   }
@@ -773,7 +779,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_4.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .left {
     position: absolute;
     left: 0;
@@ -842,19 +848,19 @@ img.inline {
   .lids {
     animation-delay: 2s;
   }
-    
+
   .scissors {
     animation-delay: 3.5s;
   }
-    
+
   .markers {
       animation-delay: 4.5s;
   }
-    
+
   .polish {
     animation-delay: 5.5s;
   }
-    
+
   &.WHAT-NEED {
     .right div {
       animation-name: fadeInRightBig;
@@ -878,7 +884,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   img {
     position: absolute;
     left: 0;
@@ -903,7 +909,7 @@ img.inline {
   background-image: url('../media/_images/_BKG/BKG_5.png');
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     left: 0;
@@ -953,7 +959,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     left: 0;
@@ -1001,7 +1007,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     left: 45px;
@@ -1054,7 +1060,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     left: 45px;
@@ -1101,7 +1107,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     left: 45px;
@@ -1152,7 +1158,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   p {
     position: absolute;
     left: 0;
@@ -1183,9 +1189,9 @@ img.inline {
 
 #step-8 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;    
+  background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     right: 50px;
@@ -1238,9 +1244,9 @@ img.inline {
 
 #select-paint {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover; 
+  background-size: cover;
   transition: opacity .5s;
-    
+
   .text {
     position: absolute;
     left: 0;
@@ -1271,7 +1277,7 @@ img.inline {
 
 #hint-4 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover; 
+  background-size: cover;
   transition: opacity .5s;
 }
 
@@ -1279,7 +1285,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .step {
     position: absolute;
     right: 50px;
@@ -1334,7 +1340,7 @@ img.inline {
   background-image: url(../media/_images/_BKG/BKG_5.png);
   background-size: cover;
   transition: opacity .5s;
-    
+
   .text {
     position: absolute;
     left: 0;
@@ -1361,7 +1367,7 @@ img.inline {
   background-size: cover;
   text-align: center;
   transition: opacity .5s;
-    
+
   img {
     width: 800px;
     margin-top: 40px;
@@ -1370,9 +1376,9 @@ img.inline {
 
 #tips {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover;  
+  background-size: cover;
   transition: opacity .5s;
-    
+
   .tips {
     position: absolute;
     left: 60px;
@@ -1438,19 +1444,19 @@ img.inline {
   .use-your {
     animation-delay: 2.5s;
   }
-    
+
   .try-glow {
     animation-delay: 4s;
   }
-    
+
   .use-multiple {
     animation-delay: 6s;
   }
-    
+
   .create {
     animation-delay: 8s;
   }
-    
+
   .personalize {
     animation-delay: 11.5s;
   }
@@ -1458,9 +1464,9 @@ img.inline {
 
 #flip {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover; 
+  background-size: cover;
   transition: opacity .5s;
-    
+
   .drop {
     position: absolute;
     top: -10px;
