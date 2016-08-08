@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import classNames from 'classnames';
-import shortid from 'shortid';
 
 import Selectable from 'shared/components/selectable/0.1';
 
@@ -21,8 +20,8 @@ class Carousel extends Selectable {
     classes = this.state.classes;
     list = this.state.list;
 
-    list.shift();
     list = list.concat(this.refs.bin.get(1));
+    list.shift();
     classes[0] = '';
 
     this.setState({
@@ -49,7 +48,7 @@ class Carousel extends Selectable {
 
   selectHelper() {
     if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect(this.state.list[this.props.targetIndex]);
+      this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
     }
   }
 
@@ -57,19 +56,25 @@ class Carousel extends Selectable {
     return classNames('carousel', super.getClassNames());
   }
 
+  /*
+   * shortid is intentionally not used for key here because we want to make sure
+   * that the element is transitioned and not replaced.
+   */
   renderList() {
     var list = this.props.list || this.state.list;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref, onTransitionEnd;
+      ref = li.ref || li.props['data-ref'] || key;
       li.type = li.type || skoash.Component;
+      onTransitionEnd = key === 0 ? this.next : null;
       return (
         <li.type
           {...li.props}
           className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
-          onTransitionEnd={this.next}
+          onTransitionEnd={onTransitionEnd}
           ref={ref}
           key={key}
         />

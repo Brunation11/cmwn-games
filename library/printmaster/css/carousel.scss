@@ -53,7 +53,7 @@
       }
 
       &.LEAVE,
-      &.LEAVE + div {
+      &.LEAVE ~ div {
         transition: transform 1s;
       }
 
