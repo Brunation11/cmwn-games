@@ -39,7 +39,6 @@
       background-repeat: no-repeat;
       background-position: center center;
       transform: translateY(-60px) scale(.6);
-      transition: transform 1s;
 
       & + div {
         transform: translateY(160px) scale(1);
@@ -51,6 +50,11 @@
             transform: translateY(540px) scale(.6);
           }
         }
+      }
+
+      &.LEAVE,
+      &.LEAVE + div {
+        transition: transform 1s;
       }
 
       &.LEAVE {

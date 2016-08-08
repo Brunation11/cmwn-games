@@ -71,7 +71,7 @@ class Carousel extends Selectable {
           data-message={li.props.message}
           onTransitionEnd={this.next}
           ref={ref}
-          key={shortid(key)}
+          key={key}
         />
       );
     });
