@@ -28,8 +28,6 @@ class SelectableAudio extends skoash.Component {
       }
     });
 
-    console.log(correctAnswers);
-
     if (correctAnswers.length > 0) {
       this.requireForComplete = correctAnswers;
     }
@@ -37,7 +35,6 @@ class SelectableAudio extends skoash.Component {
 
   start() {
     super.start();
-
 
     if (this.props.requireAll) {
       this.checkComplete = super.checkComplete.bind(this);
