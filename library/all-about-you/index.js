@@ -51,7 +51,11 @@ class AllAboutYou extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen><skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" delay={500} /></QuitScreen>,
+      quit: <QuitScreen
+              assets={[
+                <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
+              ]}
+            />
     };
   }
 
