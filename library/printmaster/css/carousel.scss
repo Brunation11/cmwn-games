@@ -135,10 +135,10 @@
     }
   }
 
-  $classes: loops whorls arches doubleloops whorls doubleloops arches loops;
-  $amounts:     2      3      3           2      2           3      2     3;
+  $classes: loops whorl arch doubleloops whorl doubleloops arch loops;
+  $amounts:     2     3    3           2     2           3    2     3;
 
-  @for $i from 1 through 4 {
+  @for $i from 1 through 8 {
     .#{nth($classes, $i)}.amount-#{nth($amounts, $i)} {
       img:nth-child(#{$i}) {
         opacity: 1;

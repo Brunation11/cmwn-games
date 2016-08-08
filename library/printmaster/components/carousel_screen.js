@@ -23,6 +23,7 @@ export default function (props, ref, key) {
           selectable={
             <Carousel
               className="slide"
+              clickable
               delay={400}
               bin={
                 <Randomizer

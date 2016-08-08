@@ -22,6 +22,10 @@ class TargetSelectable extends SelectableReveal {
   }
 
   selectRespond(message) {
+    if (typeof message === 'object') {
+      message = message.props.message;
+    }
+
     if (this.state.target) {
       if (this.state.target === message) {
         this.onCorrect(message);
@@ -94,6 +98,7 @@ class TargetSelectable extends SelectableReveal {
           ref="selectable"
           {...this.props.selectable.props}
           selectRespond={this.selectRespond}
+          onSelect={this.selectRespond}
         />
       );
     }
