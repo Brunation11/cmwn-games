@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b020b7b256c589352b51"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1fe8119c89ec4dfce360"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -44990,7 +44990,7 @@
 	    }
 	  }, {
 	    key: 'getState',
-	    value: function getState() {
+	    value: function getState(opts) {
 	      return this.state;
 	    }
 	  }, {
@@ -45628,15 +45628,20 @@
 	  }, {
 	    key: 'renderScreens',
 	    value: function renderScreens() {
-	      var screens, screenKeys;
-	      screens = this.props.screens || this.screens;
+	      var screens,
+	          screenKeys,
+	          self = this;
+	      screens = self.props.screens || self.screens;
 	      screenKeys = Object.keys(screens);
-	      this.screensLength = screenKeys.length;
+	      self.screensLength = screenKeys.length;
 	      return screenKeys.map(function (key, index) {
 	        var ScreenComponent, props;
-	        ScreenComponent = screens[key].type;
+	        // ScreenComponent = screens[key].type;
 	        props = screens[key].props || {};
-	        return React.createElement(ScreenComponent, _extends({}, props, { key: key, index: index, ref: 'screen-' + key }));
+	        props.data = self.state.data.screens[key];
+	        props.index = index;
+	        ScreenComponent = screens[key];
+	        return ScreenComponent(props, 'screen-' + key, key);
 	      });
 	    }
 	  }, {
