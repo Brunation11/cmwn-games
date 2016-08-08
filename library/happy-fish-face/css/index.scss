@@ -129,6 +129,7 @@ button {
 
   &.next-screen {
     background-position: -350px -50px;
+    cursor: default;
 
     &:hover {
       background-position: -350px -200px;
@@ -528,6 +529,10 @@ p {
 }
 
 #bubble-up {
+  .frame {
+    background-image: url('../media/_images/_frames/FR_1.png');
+  }
+
   .center div {
     text-align: center;
   }

@@ -8,6 +8,7 @@ import YouFeelScreen from './components/you_feel_screen';
 import WaterPollutionScreen from './components/water_pollution_screen';
 import HealthyWaterScreen from './components/healthy_water_screen';
 import CleanWaterScreen from './components/clean_water_screen';
+import BubbleUpScreen from './components/bubble_up_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -24,6 +25,7 @@ class HappyFishFace extends skoash.Game {
       3: WaterPollutionScreen,
       4: HealthyWaterScreen,
       5: CleanWaterScreen,
+      6: BubbleUpScreen,
     };
 
     this.menus = {
@@ -40,10 +42,9 @@ class HappyFishFace extends skoash.Game {
     return classNames;
   }
 
-  renderBackgrounds() {
-    return (
-      <div className="background garbage"></div>
-    );
+  getBackgroundIndex(screenIndex) {
+    if (screenIndex < 6) return 0;
+    if (screenIndex >= 6) return 1;
   }
 
   renderLoader() {
@@ -55,7 +56,9 @@ class HappyFishFace extends skoash.Game {
   renderAssets() {
     return (
       <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />
+        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" />
+        <div className="background garbage"></div>
       </div>
     );
   }
@@ -63,7 +66,6 @@ class HappyFishFace extends skoash.Game {
   render() {
     return (
       <div className={'pl-game ' + this.getClassNames()} style={this.getStyles()}>
-        {this.renderBackgrounds()}
         {this.renderLoader()}
         {this.renderAssets()}
         {this.renderMenu()}
