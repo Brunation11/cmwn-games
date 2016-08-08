@@ -317,10 +317,11 @@ img.inline {
       animation-delay: 2s;
     }
 
-    &.COMPLETE {
+    // &.COMPLETE {
       .next-screen {
         margin-right: 5px;
         right: 0;
+        opacity: 1;
         background-image: url(../media/_images/_Buttons/BU_1.png);
         background-position: 0 0;
         width: 300px;
@@ -329,7 +330,7 @@ img.inline {
         transform: rotate(360deg);
         transition: opacity 1s, transform 1s;
       }
-    }
+    // }
   }
 
   .prev-screen {

@@ -1,6 +1,7 @@
 var TitleScreen = (
   <skoash.Screen
     id="title"
+    silentComplete
   >
     <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" complete />
 
