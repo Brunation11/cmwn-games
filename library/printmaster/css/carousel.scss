@@ -132,7 +132,15 @@
       opacity: 0;
       transition: opacity 1s, transform 1s;
 
-      &.SELECTED {
+    }
+  }
+
+  $classes: loops whorls arches doubleloops whorls doubleloops arches loops;
+  $amounts:     2      3      3           2      2           3      2     3;
+
+  @for $i from 1 through 4 {
+    .#{nth($classes, $i)}.amount-#{nth($amounts, $i)} {
+      img:nth-child(#{$i}) {
         opacity: 1;
         transform: translateX(-50%) translateY(-50%) scale(1);
       }

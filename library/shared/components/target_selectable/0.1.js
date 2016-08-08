@@ -55,7 +55,8 @@ class TargetSelectable extends SelectableReveal {
   setItem(idx = 0) {
     this.setState({
       idx,
-      target: this.props.targets[idx].ref
+      target: this.props.targets[idx].ref,
+      amount: this.props.targets[idx].props.amount
     }, () => {
       if (this.state.target) {
         setTimeout(() => {
@@ -80,7 +81,9 @@ class TargetSelectable extends SelectableReveal {
       super.getClassNames(),
       'target-selectable',
       this.state.target,
-      this.props.className
+      this.props.className, {
+        ['amount-' + this.state.amount]: typeof this.state.amount === 'number',
+      }
     );
   }
 
