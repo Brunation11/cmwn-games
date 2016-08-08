@@ -1,12 +1,6 @@
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 
-var selectRespond = function (i) {
-  var ref = 'audio-' + i;
-  console.log('playing audio');
-  this.ref[ref].play();
-};
-
-var TitleScreen = (
+var YouFeelScreen = (
   <skoash.Screen
     ref="you-feel"
     id="you-feel"
@@ -28,11 +22,10 @@ var TitleScreen = (
               <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_CenterEmoji.mp3" />,
               <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_RightEmoji.mp3" />
             ]}
-            selectN={1}
           />
         </skoash.Component>
       </skoash.Component>
     </skoash.Component>
   </skoash.Screen>
 );
-export default TitleScreen;
+export default YouFeelScreen;

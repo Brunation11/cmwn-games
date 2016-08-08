@@ -462,7 +462,11 @@ p {
     margin: 10px 0 0;
   }
 
-  .items {
+  .frame {
+    background-image: url(../media/_images/_frames/FR_1.png)
+  }
+
+  .selectable {
     margin: 0;
     padding: 0;
     display: flex;
@@ -476,9 +480,18 @@ p {
     background-position: left center;
     background-size: auto 300px;
 
+    &:nth-child(1) {
+      background-image: url(../media/_images/_S_HealthyWater/img_4.2.png);
+    }
+
+    &:nth-child(2) {
+      background-image: url(../media/_images/_S_HealthyWater/img_4.3.png);
+    }
+
     &:hover,
     &.SELECTED {
       background-position: right center;
+      cursor: pointer;
     }
 
     &.SELECTED {

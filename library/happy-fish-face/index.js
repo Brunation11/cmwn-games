@@ -6,6 +6,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import YouFeelScreen from './components/you_feel_screen';
 import WaterPollutionScreen from './components/water_pollution_screen';
+import HealthyWaterScreen from './components/healthy_water_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -20,6 +21,7 @@ class HappyFishFace extends skoash.Game {
       1: TitleScreen,
       2: YouFeelScreen,
       3: WaterPollutionScreen,
+      4: HealthyWaterScreen,
     };
 
     this.menus = {

@@ -1,4 +1,4 @@
-import Selectable from 'shared/components/selectable/0.1.js';
+import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableAudio extends skoash.Component {
   constructor() {
@@ -10,48 +10,47 @@ class SelectableAudio extends skoash.Component {
   }
 
   bootstrap() {
+    super.bootstrap();
     var self = this;
-    this.requireForReady = Object.keys(this.refs);
-    this.requireForComplete = this.requireForReady.filter(ref => {
+    var correctAnswers;
+
+    // only require audio assets for complete
+    this.requireForComplete = this.requireForComplete.filter(ref => {
       if (ref.includes('asset'))
-        return this.refs[ref].checkComplete;
+        return self.refs[ref].checkComplete;
     });
 
-    this.collectMedia();
-    this.checkReady();
+    // if there are "correct" answers, only require correct answers
+    correctAnswers = this.requireForComplete.filter((ref, index) => {
+      var test = self.refs.selectable.refs[index].className;
+      if (self.refs.selectable.refs[index].className.includes('correct'))  {
+        return self.refs[ref].checkComplete;
+      }
+    });
+
+    console.log(correctAnswers);
+
+    if (correctAnswers.length > 0) {
+      this.requireForComplete = correctAnswers;
+    }
   }
 
   start() {
     super.start();
 
-    if (this.props.requireAll)
-      this.checkComplete = super.checkComplete;
+
+    if (this.props.requireAll) {
+      this.checkComplete = super.checkComplete.bind(this);
+    }
   }
 
-  selectRespond(message) {
-    this.playAudio(message);
-    if (this.props.selectN) this.count();
+  selectRespond(index) {
+    this.playAudio(index);
   }
 
-  playAudio(message) {
-    var messages;
-
-    if ('' + parseInt(message, 10) === message) {
-      message = 'asset-' + message;
-    }
-
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
-    }
-
-    if (typeof message === 'string') {
-      messages = message.split(' ');
-      messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
-        }
-      });
-    }
+  playAudio(index) {
+    var ref = 'asset-' + index;
+    this.audio[ref].play();
   }
 
   checkComplete() {
