@@ -1,4 +1,4 @@
-var createIOSSplashScreen = function (props, ref, key) {
+export default function (props, ref, key) {
   var iOSSplashScreen = (
     <skoash.Screen
       {...props}
@@ -14,6 +14,4 @@ var createIOSSplashScreen = function (props, ref, key) {
     </skoash.Screen>
   );
   return iOSSplashScreen;
-};
-
-export default createIOSSplashScreen;
+}

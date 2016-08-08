@@ -4,7 +4,7 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Score from 'shared/components/score/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
-var createCarouselScreen = function (props, ref, key) {
+export default function (props, ref, key) {
   var CarouselScreen = (
     <skoash.Screen
       {...props}
@@ -116,6 +116,4 @@ var createCarouselScreen = function (props, ref, key) {
   );
 
   return CarouselScreen;
-};
-
-export default createCarouselScreen;
+}

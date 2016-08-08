@@ -1,4 +1,4 @@
-var createTitleScreen = function (props, ref, key) {
+export default function (props, ref, key) {
   var TitleScreen = (
     <skoash.Screen
       {...props}
@@ -34,6 +34,4 @@ var createTitleScreen = function (props, ref, key) {
     </skoash.Screen>
   );
   return TitleScreen;
-};
-
-export default createTitleScreen;
+}
