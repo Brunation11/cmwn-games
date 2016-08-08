@@ -9,6 +9,7 @@ import WaterPollutionScreen from './components/water_pollution_screen';
 import HealthyWaterScreen from './components/healthy_water_screen';
 import CleanWaterScreen from './components/clean_water_screen';
 import BubbleUpScreen from './components/bubble_up_screen';
+import MultiBubblesScreen from './components/multi_bubbles_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -26,6 +27,7 @@ class HappyFishFace extends skoash.Game {
       4: HealthyWaterScreen,
       5: CleanWaterScreen,
       6: BubbleUpScreen,
+      7: MultiBubblesScreen,
     };
 
     this.menus = {
@@ -36,15 +38,10 @@ class HappyFishFace extends skoash.Game {
   getClassNames() {
     var classNames = super.getClassNames();
     var index = this.state.currentScreenIndex;
-    if (index > 1 && index < 5) {
+    if (index > 1 && index < 6) {
       classNames = classNames + ' garbage';
     }
     return classNames;
-  }
-
-  getBackgroundIndex(screenIndex) {
-    if (screenIndex < 6) return 0;
-    if (screenIndex >= 6) return 1;
   }
 
   renderLoader() {

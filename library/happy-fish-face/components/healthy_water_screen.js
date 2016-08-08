@@ -13,7 +13,7 @@ var HealthyWaterScreen = (
           <SelectableAudio
             selectableList={[
                 <li className="animated"></li>,
-                <li className="animated correct"></li>
+                <li className="animated" data-ref="correct"></li>
             ]}
             audioAssets={[
               <skoash.Audio type="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Wrong.mp3" />,

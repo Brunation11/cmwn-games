@@ -74,7 +74,7 @@ body > div > div {
     }
   }
 
-  &.garbage > .background.garbage {
+  &.garbage > div > .background.garbage {
     opacity: 1;
   }
 }
