@@ -47,8 +47,10 @@ class Selectable extends skoash.Component {
 
     message = target.getAttribute('data-ref');
 
-    if (this.state.classes[message]) {
-      delete this.state.classes[message];
+    if (this.props.allowDeselect) {
+      if (this.state.classes[message]) {
+        delete this.state.classes[message];
+      }
     } else {
       classes[message] = this.state.selectClass;
     }
