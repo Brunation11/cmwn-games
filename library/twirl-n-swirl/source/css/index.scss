@@ -33,6 +33,11 @@ img.hidden {
   display: none;
 }
 
+.pl-game, .skoash-game, .PAUSED {
+    width: 960px;
+    height: 540px;
+}
+
 #twirl-n-swirl {
   background-color: #fff;
   margin: auto;
@@ -71,7 +76,7 @@ img.hidden {
     pointer-events: auto;
   }
   
-  section {
+  .screen {
     opacity: 0;
     transform: rotateY(90deg);
     transform-origin: top left;
@@ -145,8 +150,37 @@ img.hidden {
 
 
 #title {
+  background-image: url(../media/images/background-title.png);
+  width: 960px;
+  height: 540px;
+  background-size: cover;
+    
+  .center {
+    background-image: url(../media/images/title/background.png);
+    background-size: 55%;
+    background-repeat: no-repeat;
+    margin-left: 25%;
+    opacity: 0;
+    transform: rotateY(90deg);
 
-  img[pl-id=logo] {
+    &.COMPLETE {
+      opacity: 1;
+      background-size: 75%;
+      transform: rotateY(0);
+      z-index: 1;    
+      transform-origin: top left;
+      transition: transform 2s, opacity 2s, background-size 1s;
+    }
+  }
+    
+  .logo {
+    width: 65%;
+    margin-left: -25%;
+    animation-name: fadeInUp;
+    animation-delay: 2s;
+  }
+    /*
+  .logo {
     position: relative;
     height: 500px;
     animation: fadeInUp 1s;
@@ -163,7 +197,7 @@ img.hidden {
       animation-iteration-count: 1;
       opacity: 0;
     }
-  }
+  }*/
 
   .toilet {
     position: absolute;
