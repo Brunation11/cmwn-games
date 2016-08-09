@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableAudio extends skoash.Component {
@@ -21,11 +22,10 @@ class SelectableAudio extends skoash.Component {
     });
 
     // if there are "correct" answers, only require correct answers
-    correctAnswers = this.requireForComplete.filter((ref, index) => {
-      var test = self.refs.selectable.refs[index].className;
-      if (self.refs.selectable.refs[index].className.includes('correct'))  {
-        return self.refs[ref].checkComplete;
-      }
+    correctAnswers = this.requireForComplete.filter(ref => {
+      ref = ref.split('-')[1];
+      var element = self.refs.selectable.refs[ref];
+      return (element && element.className.includes('correct'));
     });
 
     if (correctAnswers.length > 0) {
@@ -41,13 +41,19 @@ class SelectableAudio extends skoash.Component {
     }
   }
 
-  selectRespond(index) {
-    this.playAudio(index);
+  selectRespond(data) {
+    this.playAudio(data);
+
+    if (typeof this.props.selectRespond === 'function') {
+      this.props.selectRespond(data);
+    }
   }
 
-  playAudio(index) {
-    var ref = 'asset-' + index;
-    this.audio[ref].play();
+  playAudio(data) {
+    var ref = 'asset-' + data;
+    if (this.audio[ref]) {
+      this.audio[ref].play();
+    }
   }
 
   checkComplete() {
@@ -81,12 +87,14 @@ class SelectableAudio extends skoash.Component {
   renderAssets() {
     if (this.props.audioAssets) {
       return this.props.audioAssets.map((asset, key) => {
+        var dataRef = asset.props['data-ref'] || key;
+        var ref = 'asset-' + dataRef;
         return (
           <skoash.Audio
             {...asset.props}
-            ref={'asset-' + key}
+            ref={ref}
             key={key}
-            data-ref={key}
+            data-ref={dataRef}
           />
         );
       });
@@ -100,7 +108,7 @@ class SelectableAudio extends skoash.Component {
         ref="selectable"
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
-        selectClass={this.props.selectableSelectClass}
+        selectClass={this.props.selectClass}
       />
     );
   }
@@ -119,6 +127,10 @@ class SelectableAudio extends skoash.Component {
   }
 }
 
-SelectableAudio.defaultProps = skoash.Component.defaultProps;
+SelectableAudio.defaultProps = _.merge(
+  skoash.Component.defaultProps, {
+  requireAll: false,
+});
+
 
 export default SelectableAudio;

@@ -22,12 +22,12 @@ class HappyFishFace extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: YouFeelScreen,
-      3: WaterPollutionScreen,
-      4: HealthyWaterScreen,
-      5: CleanWaterScreen,
-      6: BubbleUpScreen,
-      7: MultiBubblesScreen,
+      //2: YouFeelScreen,
+      //3: WaterPollutionScreen,
+      //4: HealthyWaterScreen,
+      //5: CleanWaterScreen,
+      //6: BubbleUpScreen,
+      2: MultiBubblesScreen,
     };
 
     this.menus = {
@@ -53,8 +53,8 @@ class HappyFishFace extends skoash.Game {
   renderAssets() {
     return (
       <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" />
-        <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" />
+        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" />
         <div className="background garbage"></div>
       </div>
     );

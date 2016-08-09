@@ -45,14 +45,22 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target;
+    var message, index, target, id, list;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    message = target.getAttribute('data-ref');
-    classes[message] = this.props.selectClass;
+    index = message = target.getAttribute('data-ref');
+    if ('' + parseInt(index, 10) !== index) {
+      id = target.getAttribute('id');
+      list = this.state.list || this.props.list;
+      index = list.findIndex(li => {
+        return li.props.id === id;
+      });
+    }
+
+    classes[index] = this.props.selectClass;
 
     this.setState({
       classes,
@@ -131,7 +139,7 @@ class Selectable extends skoash.Component {
         <li.type
           {...li.props}
           type="li"
-          className={this.getClass(ref, li)}
+          className={this.getClass(key, li)}
           message={message}
           data-ref={ref}
           data-message={li.props.message}
