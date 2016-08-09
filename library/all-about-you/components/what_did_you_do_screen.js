@@ -16,6 +16,7 @@ var WhatDidYouDoScreen = (
       revealCompleteOnOpen
       revealCheckComplete={false}
       allCorrect
+      allowDeselect
       assets={[
         <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
       ]}
