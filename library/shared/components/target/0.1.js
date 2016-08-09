@@ -1,11 +1,8 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Target extends skoash.Component {
   constructor() {
     super();
-
-    this.selectRespond = this.selectRespond.bind(this);
   }
 
   start() {
@@ -29,26 +26,43 @@ class Target extends skoash.Component {
     if (this.audio.correct) this.audio.correct.play();
     if (this.audio['correct-sound']) this.audio['correct-sound'].play();
 
+    this.updateState(true);
+
     this.setTarget((this.state.idx + 1) % this.props.targets.length);
   }
 
   onIncorrect() {
     if (this.audio.incorrect) this.audio.incorrect.play();
     if (this.audio['incorrect-sound']) this.audio['incorrect-sound'].play();
+
+    this.updateState(false);
+  }
+
+  updateState(correct) {
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          correct
+        }
+      });
+    }
   }
 
   setTarget(idx = 0) {
     if (this.props.attemptTarget) {
       this.updateGameState({
         path: this.props.attemptTarget,
-        data: null
+        data: {
+          target: null
+        }
       });
     }
 
     this.setState({
       idx,
-      target: this.props.targets[idx].ref,
-      targetClass: this.props.targets[idx].props.className
+      target: this.props.targets[idx].props.name,
+      targetClass: this.props.targets[idx].props.targetClass
     });
   }
 

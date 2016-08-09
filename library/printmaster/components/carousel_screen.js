@@ -41,21 +41,29 @@ export default function (props, ref, key) {
         <Target
           attempt={_.get(props, 'data.attempt.target.ref', null)}
           attemptTarget="attempt"
+          dataTarget="score"
           targets={[
-            <skoash.Image ref="loops" amount={2} className="animated" src="media/S_10/img_10.11.png" />,
-            <skoash.Image ref="whorl" amount={3} className="animated" src="media/S_10/img_10.15.png" />,
-            <skoash.Image ref="arch" amount={3} className="animated" src="media/S_10/img_10.18.png" />,
-            <skoash.Image ref="doubleloops" amount={2} className="animated" src="media/S_10/img_10.20.png" />,
-            <skoash.Image ref="whorl" amount={2} className="animated" src="media/S_10/img_10.14.png" />,
-            <skoash.Image ref="doubleloops" amount={3} className="animated" src="media/S_10/img_10.21.png" />,
-            <skoash.Image ref="arch" amount={2} className="animated" src="media/S_10/img_10.17.png" />,
-            <skoash.Image ref="loops" amount={3} className="animated" src="media/S_10/img_10.12.png" />,
+            <skoash.Image name="loops" amount={2} targetClass="loops-2" className="animated" src="media/S_10/img_10.11.png" />,
+            <skoash.Image name="whorl" amount={3} targetClass="whorl-3" className="animated" src="media/S_10/img_10.15.png" />,
+            <skoash.Image name="arch" amount={3} targetClass="arch-3" className="animated" src="media/S_10/img_10.18.png" />,
+            <skoash.Image name="doubleloops" amount={2} targetClass="doubleloops-2" className="animated" src="media/S_10/img_10.20.png" />,
+            <skoash.Image name="whorl" amount={2} targetClass="whorl-2" className="animated" src="media/S_10/img_10.14.png" />,
+            <skoash.Image name="doubleloops" amount={3} targetClass="doubleloops-3" className="animated" src="media/S_10/img_10.21.png" />,
+            <skoash.Image name="arch" amount={2} targetClass="arch-2" className="animated" src="media/S_10/img_10.17.png" />,
+            <skoash.Image name="loops" amount={3} targetClass="loops-3" className="animated" src="media/S_10/img_10.12.png" />,
           ]}
         />
-        <Score completeDelay={1000}>
-          <div />
-          <div />
-          <div />
+        <Score
+          correct={_.get(props, 'data.score.correct', null)}
+          correctTarget="score"
+          completeDelay={1000}
+          downIncrement={0}
+        >
+          <div className="board">
+            <div />
+            <div />
+            <div />
+          </div>
         </Score>
       </skoash.Component>
       <Reveal

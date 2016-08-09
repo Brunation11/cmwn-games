@@ -22,19 +22,45 @@ class Score extends skoash.Component {
   }
 
   up(increment) {
-    increment = increment || this.props.increment || 1;
+    increment = _.isFinite(increment) ? increment :
+      _.isFinite(this.props.increment) ? this.props.increment : 1;
+
     if (!_.isFinite(increment)) throw 'increment must be finite';
+
     this.setState({
       score: this.state.score + increment
     }, this.checkComplete);
   }
 
   down(increment) {
-    increment = increment || this.props.downIncrement || this.props.increment || 1;
+    increment = _.isFinite(increment) ? increment :
+      _.isFinite(this.props.downIncrement) ? this.props.downIncrement :
+      _.isFinite(this.props.increment) ? this.props.increment : 1;
+
     if (!_.isFinite(increment)) throw 'increment must be finite';
+
     this.setState({
       score: this.state.score - increment
     }, this.checkComplete);
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.correct != null && props.correct !== this.props.correct) {
+      if (props.correct) {
+        this.up();
+      } else {
+        this.down();
+      }
+
+      if (this.props.correctTarget) {
+        this.updateGameState({
+          path: this.props.correctTarget,
+          data: {
+            correct: null
+          }
+        });
+      }
+    }
   }
 
   getClassNames() {
@@ -46,7 +72,7 @@ class Score extends skoash.Component {
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} score={this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}
