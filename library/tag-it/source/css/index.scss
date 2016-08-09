@@ -303,34 +303,24 @@ img.inline {
     bottom: 0;
   }
 
-  .play {
-    margin: 0;
-    left: 340px;
-    bottom: 90px;
-    opacity: 1;
-    transform: none;
-  }
-
   &.OPEN {
     .title {
       animation-name: rubberBand;
-      animation-delay: 2s;
+      animation-delay: 1.5s;
     }
 
-    // &.COMPLETE {
-      .next-screen {
-        margin-right: 5px;
-        right: 0;
-        opacity: 1;
-        background-image: url(../media/_images/_Buttons/BU_1.png);
-        background-position: 0 0;
-        width: 300px;
-        top: 330px;
-        left: 330px;
-        transform: rotate(360deg);
-        transition: opacity 1s, transform 1s;
-      }
-    // }
+    .next-screen {
+      margin-right: 5px;
+      right: 0;
+      opacity: 1;
+      background-image: url(../media/_images/_Buttons/BU_1.png);
+      background-position: 0 0;
+      width: 300px;
+      top: 330px;
+      left: 330px;
+      transform: rotate(360deg);
+      transition: opacity 1s, transform 1s;
+    }
   }
 
   .prev-screen {
@@ -419,12 +409,12 @@ img.inline {
 
   &.OPEN {
     .pallet {
-      animation-delay: 1s;
+      animation-delay: 0.5s;
       animation-name: zoomInLeft;
     }
 
     .recycle {
-      animation-delay: 2s;
+      animation-delay: 1s;
       animation-name: tada;
     }
   }
@@ -847,19 +837,19 @@ img.inline {
   }
 
   .lids {
-    animation-delay: 2s;
+    animation-delay: 1.5;
   }
 
   .scissors {
-    animation-delay: 3.5s;
+    animation-delay: 2s;
   }
 
   .markers {
-      animation-delay: 4.5s;
+      animation-delay: 3.5s;
   }
 
   .polish {
-    animation-delay: 5.5s;
+    animation-delay: 4.5s;
   }
 
   &.WHAT-NEED {
@@ -1183,7 +1173,7 @@ img.inline {
   &.OPEN {
     img {
       animation-name: zoomIn;
-      animation-delay: 1.5s;
+      animation-delay: 0.5s;
     }
   }
 }
