@@ -179,50 +179,57 @@ p {
   transform: translateX(-100%);
 }
 
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
-    display: block;
-    bottom: 1%;
+.screen .next-screen,
+.screen .prev-screen {
+  position: absolute;
+  visibility: visible;
+  bottom: 1%;
 
-    z-index: 2;
-  }
+  z-index: 2;
+}
 
-  .screen .next-screen {
-    margin-right: 5px;
-    right: 0;
-    opacity: 0;
-    transform: rotate(-180deg);
-    transition: opacity 1s, transform 1s;
-  }
+.screen .next-screen {
+  margin-right: 5px;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: rotate(-180deg);
+  transition: visibility 1s, opacity 1s, transform 1s;
+}
 
-  .screen.GATED .next-screen {
-    opacity: 0;
-    cursor: auto;
-    z-index: -1;
-  }
+.screen.GATED .next-screen {
+  visibility: hidden;
+  opacity: 0;
+  cursor: auto;
+  z-index: -1;
+}
 
-  .pl-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
-    z-index: 1;
-  }
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(0deg);
+  cursor: pointer;
+  z-index: 1;
+}
 
-  .screen .next-screen:hover {
+.pl-game.MENU.MENU-quit .menu .close {
+  visibility: hidden;
+}
 
-  }
+.screen .next-screen:hover {
 
-  .screen .prev-screen {
-    margin-left: 5px;
-    left: 0;
+}
 
-  }
+.screen .prev-screen {
+  margin-left: 5px;
+  left: 0;
 
-  .screen .prev-screen:hover {
+}
 
-  }
+.screen .prev-screen:hover {
+
+}
 
 // the following css is specific to this game
 
