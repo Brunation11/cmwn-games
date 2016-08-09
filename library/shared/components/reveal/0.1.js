@@ -42,7 +42,6 @@ class Reveal extends skoash.Component {
 
   start() {
     skoash.Component.prototype.start.call(this);
-    console.log('START reveal');
     this.close();
 
     if (this.props.openOnStart != null) {
@@ -75,22 +74,11 @@ class Reveal extends skoash.Component {
     }
   }
 
-  renderReveal() {
-    return (
-      <div>
-        <ul>
-          {this.renderList()}
-        </ul>
-        <button className="close-reveal" onClick={this.close.bind(this)}></button>
-      </div>
-    );
-  }
-
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <asset.type
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -111,7 +99,6 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
-          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={ref}
@@ -119,6 +106,13 @@ class Reveal extends skoash.Component {
         />
       );
     });
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.openReveal !== this.props.openReveal) {
+      console.log(props.openReveal);
+      this.open(props.openReveal);
+    }
   }
 
   getClass(li, key) {
@@ -132,16 +126,19 @@ class Reveal extends skoash.Component {
   }
 
   getClasses() {
-    return classNames({
-      hidden: this.props.hide
-    }, 'reveal', super.getClassNames());
+    return classNames('reveal', super.getClassNames());
   }
 
   render() {
     return (
       <div className={this.getClasses()}>
         {this.renderAssets()}
-        {this.renderReveal()}
+        <div>
+          <ul>
+            {this.renderList()}
+          </ul>
+          <button className="close-reveal" onClick={this.close.bind(this)}></button>
+        </div>
       </div>
     );
   }

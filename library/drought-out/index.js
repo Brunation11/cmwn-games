@@ -7,6 +7,17 @@ import TitleScreen from './components/title_screen';
 import ThinkScreen from './components/think_screen';
 import InfoNoWaterScreen from './components/info_no_water_screen';
 import InfoImpactScreen from './components/info_impact_screen';
+import InfoNeedWaterScreen from './components/info_need_water_screen';
+import InfoUseWaterScreen from './components/info_use_water_screen';
+import BalloonsScreen from './components/balloons_screen';
+import InfoEnvironmentScreen from './components/info_environment_screen';
+import InfoEnvironmentEffectsScreen from './components/info_environment_effects_screen';
+import EnvironmentEffectsScreen from './components/environment_effects_screen';
+import InfoHumanEffectsScreen from './components/info_human_effects_screen';
+import HumanEffectsScreen from './components/human_effects_screen';
+import WhatCanWeDoScreen from './components/what_can_we_do_screen';
+import InfoDrainScreen from './components/info_drain_screen';
+import InfoUsingLessScreen from './components/info_using_less_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -21,8 +32,26 @@ class DroughtOut extends skoash.Game {
       1: TitleScreen,
       2: ThinkScreen,
       3: InfoNoWaterScreen,
-      4: InfoImpactScreen
+      4: InfoImpactScreen,
+      5: InfoNeedWaterScreen,
+      6: InfoUseWaterScreen,
+      7: BalloonsScreen,
+      8: InfoEnvironmentScreen,
+      9: InfoEnvironmentEffectsScreen,
+      10: EnvironmentEffectsScreen,
+      11: InfoHumanEffectsScreen,
+      12: HumanEffectsScreen,
+      13: WhatCanWeDoScreen,
+      14: InfoDrainScreen,
+      15: InfoUsingLessScreen,
+      /*16: ShowerScreen,
+      17: ConserveScreen,
+      18: HeroScreen,
+      19: FlipScreen*/
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
+    window.g = this;
 
     this.menus = {
       quit: QuitScreen,
