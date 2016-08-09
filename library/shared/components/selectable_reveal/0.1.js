@@ -24,10 +24,8 @@ class SelectableReveal extends play.Component {
       if (this.props.allCorrect) {
         if (this.audio.correct) this.audio.correct.play();
       }
-      if (!this.allowDeselect) {
-        if (typeof this.refs.reveal.open === 'function') {
+      if (typeof this.refs.reveal.open === 'function') {
           this.refs.reveal.open(message);
-        }
       }
     }
   }
