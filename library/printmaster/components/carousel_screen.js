@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import TargetSelectable from 'shared/components/target_selectable/0.1';
+import Target from 'shared/components/target/0.1';
 import Carousel from 'shared/components/carousel/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Score from 'shared/components/score/0.1';
@@ -26,7 +26,7 @@ export default function (props, ref, key) {
           className="slide"
           clickable
           delay={400}
-          dataTarget="carousel"
+          dataTarget="attempt"
           bin={
             <Randomizer
               bin={[
@@ -38,11 +38,9 @@ export default function (props, ref, key) {
             />
           }
         />
-        {
-        /*
-        <TargetSelectable
-          selectable={
-          }
+        <Target
+          attempt={_.get(props, 'data.attempt.target.ref', null)}
+          attemptTarget="attempt"
           targets={[
             <skoash.Image ref="loops" amount={2} className="animated" src="media/S_10/img_10.11.png" />,
             <skoash.Image ref="whorl" amount={3} className="animated" src="media/S_10/img_10.15.png" />,
@@ -54,8 +52,6 @@ export default function (props, ref, key) {
             <skoash.Image ref="loops" amount={3} className="animated" src="media/S_10/img_10.12.png" />,
           ]}
         />
-        */
-        }
         <Score completeDelay={1000}>
           <div />
           <div />
