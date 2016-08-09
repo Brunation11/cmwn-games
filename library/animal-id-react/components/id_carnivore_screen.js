@@ -13,7 +13,7 @@ var IDCarnivoreScreen = (
       randomizeSelectableList
       assets={[
         <skoash.Audio ref="correct" type="sfx" src="media/audio/S_3.2.mp3" />,
-        <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" />
+        <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
         <skoash.ListItem data-ref="lion" className="lion animated" />,

@@ -13,14 +13,28 @@ html {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-body {
-  position: relative;
+html, body, body > div, body > div > div {
+  margin: 0;
+  padding: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  cursor: auto;
+}
+
+body > div > div {
+  position: relative;
   margin: auto;
-  font-size: 20px;
-  background: bottom center no-repeat;
-  background-size: cover;
-  background-image: url(../media/images/background/title.png);
+  width: 960px;
+  height: 540px;
+  font-size: 36px;
+  color: #fff;
+
+  [id^="title"] {
+    background-image: url(../media/images/background/title.png);
+    background-size: cover;
+  }
 
   [id^="info-"],
   [id^="id-"] {
@@ -28,12 +42,16 @@ body {
     background-size: cover;
   }
 
-  &.match {
+  [id^="info-match"],
+  [id^="info-detail"],
+  [id^="what-does-a-nose"] {
     background-image: url(../media/images/background/match.png);
+    background-size: cover;
   }
 
-  &.nose {
+  [id^="info-snout"] {
     background-image: url(../media/images/background/nose.png);
+    background-size: cover;
   }
 }
 
@@ -146,7 +164,7 @@ p {
   position: absolute;
   top: 47%;
   left: 0;
-  width: 100%;
+  width: 960px;
   height: 540px;
   margin-top: -270px;
   opacity: 0;
@@ -244,8 +262,8 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
   height: 8%;
   background-size: 800px 142px;
   background-position: -641px -13px;
-  transform: none;
-  transition: opacity 1s;
+//   transform: none;
+//   transition: opacity 1s;
 }
 
 .dropzone-reveal ul {
@@ -423,7 +441,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
         & > * {
           position: absolute;
           width: 48%;
-          height: 43%;
+          height: 41%;
 
           &:after {
             position: absolute;
@@ -440,7 +458,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
           &:hover,
           &:focus {
             &:after {
-              background-position: 358px -20px;
+              background-position: 340px -20px;
             }
           }
 
@@ -521,7 +539,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
         & > * {
           position: absolute;
           width: 48%;
-          height: 43%;
+          height: 41%;
 
           &:after {
             position: absolute;
@@ -538,7 +556,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
           &:hover,
           &:focus {
             &:after {
-              background-position: 358px -20px;
+              background-position: 340px -20px;
             }
           }
 
@@ -576,13 +594,13 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
           background-size: 100%;
         }
 
-        .ostrich {
-          background: url(../media/images/img_5.4.png);
+        .sloth {
+          background: url(../media/images/img_5.5.png);
           background-size: 100%;
         }
 
-        .sloth {
-          background: url(../media/images/img_5.5.png);
+        .ostrich {
+          background: url(../media/images/img_5.4.png);
           background-size: 100%;
         }
       }
@@ -622,7 +640,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
         & > * {
           position: absolute;
           width: 48%;
-          height: 43%;
+          height: 41%;
 
           &:after {
             position: absolute;
@@ -639,7 +657,7 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
           &:hover,
           &:focus {
             &:after {
-              background-position: 358px -20px;
+              background-position: 340px -20px;
             }
           }
 
@@ -696,13 +714,551 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
   }
 }
 
+#id-arachnid {
+  img {
+    position: absolute;
+  }
+
+  &.READY.OPEN {
+    img {
+      opacity: 1;
+
+      &.title {
+        width: 40%;
+        left: 3%;
+        top: 1%;
+      }
+    }
+
+    .selectable-reveal {
+      .selectable {
+        position: absolute;
+        width: 62%;
+        height: 80%;
+        top: 10%;
+        left: 19%;
+
+        & > * {
+          position: absolute;
+          width: 48%;
+          height: 41%;
+
+          &:after {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top:: -10%;
+            content: "";
+            background: url(../media/images/frame/id.png);
+            background-size: 211%;
+            background-position: 4px -20px;
+          }
+
+          &:hover,
+          &:focus {
+            &:after {
+              background-position: 340px -20px;
+            }
+          }
+
+          &:nth-child(1) {
+            top: 1%;
+            left: 0;
+          }
+
+
+          &:nth-child(2) {
+            top: 1%;
+            right: 0;
+          }
+
+
+          &:nth-child(3) {
+            top: 53%;
+            left: 0;
+          }
+
+
+          &:nth-child(4) {
+            top: 53%;
+            right: 0;
+          }
+        }
+
+        .spider {
+          background: url(../media/images/img_6.5.png);
+          background-size: 100%;
+        }
+
+        .grasshoper {
+          background: url(../media/images/img_6.3.png);
+          background-size: 100%;
+        }
+
+        .ladybug {
+          background: url(../media/images/img_6.4.png);
+          background-size: 100%;
+        }
+
+        .roach {
+          background: url(../media/images/img_6.2.png);
+          background-size: 100%;
+        }
+      }
+    }
+
+    &.COMPLETE {
+      img {
+      }
+    }
+  }
+}
+
+#id-mammal {
+  img {
+    position: absolute;
+  }
+
+  &.READY.OPEN {
+    img {
+      opacity: 1;
+
+      &.title {
+        width: 40%;
+        left: 3%;
+        top: 1%;
+      }
+    }
+
+    .selectable-reveal {
+      .selectable {
+        position: absolute;
+        width: 62%;
+        height: 80%;
+        top: 10%;
+        left: 19%;
+
+        & > * {
+          position: absolute;
+          width: 48%;
+          height: 41%;
+
+          &:after {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top:: -10%;
+            content: "";
+            background: url(../media/images/frame/id.png);
+            background-size: 211%;
+            background-position: 4px -20px;
+          }
+
+          &:hover,
+          &:focus {
+            &:after {
+              background-position: 340px -20px;
+            }
+          }
+
+          &:nth-child(1) {
+            top: 1%;
+            left: 0;
+          }
+
+
+          &:nth-child(2) {
+            top: 1%;
+            right: 0;
+          }
+
+
+          &:nth-child(3) {
+            top: 53%;
+            left: 0;
+          }
+
+
+          &:nth-child(4) {
+            top: 53%;
+            right: 0;
+          }
+        }
+
+        .dolphin {
+          background: url(../media/images/img_7.2.png);
+          background-size: 100%;
+        }
+
+        .snake {
+          background: url(../media/images/img_7.5.png);
+          background-size: 100%;
+        }
+
+        .pelican {
+          background: url(../media/images/img_7.4.png);
+          background-size: 100%;
+        }
+
+        .dragon {
+          background: url(../media/images/img_7.3.png);
+          background-size: 100%;
+        }
+      }
+    }
+
+    &.COMPLETE {
+      img {
+      }
+    }
+  }
+}
+
+#id-mollusk {
+  img {
+    position: absolute;
+  }
+
+  &.READY.OPEN {
+    img {
+      opacity: 1;
+
+      &.title {
+        width: 40%;
+        left: 3%;
+        top: 1%;
+      }
+    }
+
+    .selectable-reveal {
+      .selectable {
+        position: absolute;
+        width: 62%;
+        height: 80%;
+        top: 10%;
+        left: 19%;
+
+        & > * {
+          position: absolute;
+          width: 48%;
+          height: 41%;
+
+          &:after {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top:: -10%;
+            content: "";
+            background: url(../media/images/frame/id.png);
+            background-size: 211%;
+            background-position: 4px -20px;
+          }
+
+          &:hover,
+          &:focus {
+            &:after {
+              background-position: 340px -20px;
+            }
+          }
+
+          &:nth-child(1) {
+            top: 1%;
+            left: 0;
+          }
+
+
+          &:nth-child(2) {
+            top: 1%;
+            right: 0;
+          }
+
+
+          &:nth-child(3) {
+            top: 53%;
+            left: 0;
+          }
+
+
+          &:nth-child(4) {
+            top: 53%;
+            right: 0;
+          }
+        }
+
+        .clam {
+          background: url(../media/images/img_8.3.png);
+          background-size: 100%;
+        }
+
+        .octopus {
+          background: url(../media/images/img_8.4.png);
+          background-size: 100%;
+        }
+
+        .stingray {
+          background: url(../media/images/img_8.2.png);
+          background-size: 100%;
+        }
+
+        .scorpian {
+          background: url(../media/images/img_8.5.png);
+          background-size: 100%;
+        }
+      }
+    }
+
+    &.COMPLETE {
+      img {
+      }
+    }
+  }
+}
+
+#id-reptile {
+  img {
+    position: absolute;
+  }
+
+  &.READY.OPEN {
+    img {
+      opacity: 1;
+
+      &.title {
+        width: 40%;
+        left: 3%;
+        top: 1%;
+      }
+    }
+
+    .selectable-reveal {
+      .selectable {
+        position: absolute;
+        width: 62%;
+        height: 80%;
+        top: 10%;
+        left: 19%;
+
+        & > * {
+          position: absolute;
+          width: 48%;
+          height: 41%;
+
+          &:after {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top:: -10%;
+            content: "";
+            background: url(../media/images/frame/id.png);
+            background-size: 211%;
+            background-position: 4px -20px;
+          }
+
+          &:hover,
+          &:focus {
+            &:after {
+              background-position: 340px -20px;
+            }
+          }
+
+          &:nth-child(1) {
+            top: 1%;
+            left: 0;
+          }
+
+
+          &:nth-child(2) {
+            top: 1%;
+            right: 0;
+          }
+
+
+          &:nth-child(3) {
+            top: 53%;
+            left: 0;
+          }
+
+
+          &:nth-child(4) {
+            top: 53%;
+            right: 0;
+          }
+        }
+
+        .alligator {
+          background: url(../media/images/img_9.2.png);
+          background-size: 100%;
+        }
+
+        .buzzor {
+          background: url(../media/images/img_9.4.png);
+          background-size: 100%;
+        }
+
+        .squid {
+          background: url(../media/images/img_9.3.png);
+          background-size: 100%;
+        }
+
+        .bat {
+          background: url(../media/images/img_9.5.png);
+          background-size: 100%;
+        }
+
+      }
+    }
+
+    &.COMPLETE {
+      img {
+      }
+    }
+  }
+}
+
+#id-herbivore {
+  img {
+    position: absolute;
+  }
+
+  &.READY.OPEN {
+    img {
+      opacity: 1;
+
+      &.title {
+        width: 40%;
+        left: 3%;
+        top: 1%;
+      }
+    }
+
+    .selectable-reveal {
+      .selectable {
+        position: absolute;
+        width: 62%;
+        height: 80%;
+        top: 10%;
+        left: 19%;
+
+        & > * {
+          position: absolute;
+          width: 48%;
+          height: 41%;
+
+          &:after {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            left: -10%;
+            top:: -10%;
+            content: "";
+            background: url(../media/images/frame/id.png);
+            background-size: 211%;
+            background-position: 4px -20px;
+          }
+
+          &:hover,
+          &:focus {
+            &:after {
+              background-position: 340px -20px;
+            }
+          }
+
+          &:nth-child(1) {
+            top: 1%;
+            left: 0;
+          }
+
+
+          &:nth-child(2) {
+            top: 1%;
+            right: 0;
+          }
+
+
+          &:nth-child(3) {
+            top: 53%;
+            left: 0;
+          }
+
+
+          &:nth-child(4) {
+            top: 53%;
+            right: 0;
+          }
+        }
+
+        .deer {
+          background: url(../media/images/img_10.3.png);
+          background-size: 100%;
+        }
+
+        .possum {
+          background: url(../media/images/img_10.5.png);
+          background-size: 100%;
+        }
+
+        .tiger {
+          background: url(../media/images/img_10.4.png);
+          background-size: 100%;
+        }
+
+        .skunk {
+          background: url(../media/images/img_10.2.png);
+          background-size: 100%;
+        }
+
+      }
+    }
+
+    &.COMPLETE {
+      img {
+      }
+    }
+  }
+}
+
+#info-good-job {
+  img {
+    position: absolute;
+
+    &.banner {
+      width: 68%;
+      top: 21%;
+      left: 13%;
+    }
+  }
+
+  .frame {
+    position: absolute;
+    background: url(../media/images/frame/reveal.png);
+    background-size: contain;
+    width: 70%;
+    height: 80%;
+    top: 8%;
+    left: 15%;
+
+    h3 {
+      position: absolute;
+      top: 53%;
+      left: 20%;
+      color: #000;
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+}
 
 #info-match {
 
   h3 {
+    margin-top: 2%;
     text-shadow: 0 3px 10px #000;
     font-size: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 4%;
   }
 
   .frame {
@@ -711,10 +1267,15 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
     div {
       float: left;
       width: 50%;
+      margin-top: -8%;
 
       img {
         width: auto;
         height: 250px;
+
+        &.banner {
+          padding-top: 25px;
+        }
 
         &:nth-of-type(1) {
           height: 130px;
@@ -724,46 +1285,210 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
   }
 }
 
-#what-does-a-nose-do {
+#info-detail {
+  img {
+    position: absolute;
+
+    &.banner {
+      width: 68%;
+      top: 19%;
+      left: 13%;
+    }
+  }
+
+  .frame {
+    position: absolute;
+    background: url(../media/images/frame/reveal.png);
+    background-size: contain;
+    width: 70%;
+    height: 80%;
+    top: 8%;
+    left: 15%;
+
+    h3 {
+      position: absolute;
+      top: 43%;
+      left: 13%;
+      color: #000;
+      font-size: 1.9rem;
+      text-align: center;
+    }
+  }
+}
+
+#info-snout {
+  img {
+    position: absolute;
+
+    &.banner-1 {
+      width: 80%;
+      top: 8%;
+      left: 10%;
+    }
+
+    &.banner-2 {
+      width: 80%;
+      bottom: 12%;
+      left: 10%;
+    }
+
+  }
+
+  h2 {
+    position: absolute;
+    top: 38%;
+    left: 34%;
+    font-size: 60px;
+    margin: 20px 0 40px;
+  }
+
+  &.READY.OPEN {
+  span {
+    position: absolute;
+    background-image: url(../media/images/img_14.2.png);
+    background-size: 760px 160px;
+    background-repeat: no-repeat;
+
+    &:nth-of-type(1) {
+      background-size: 770px 160px;
+      width: 200px;
+      height: 80px;
+      bottom: 25%;
+      left: 22%;
+      background-position: -104px 0px;
+      animation-name: bounceIn;
+      animation-delay: 4.5s;
+    }
+
+    &:nth-of-type(2) {
+      background-size: 770px 160px;
+      width: 230px;
+      height: 80px;
+      bottom: 25%;
+      left: 42%;
+      background-position: -300px 0px;
+      animation-name: bounceIn;
+      animation-delay: 6s;
+    }
+
+    &:nth-of-type(3) {
+      width: 270px;
+      height: 75px;
+      bottom: 26%;
+      left: 66%;
+      background-position: -522px 0px;
+      animation-name: bounceIn;
+      animation-delay: 7.5s;
+    }
+
+    &:nth-of-type(4) {
+      width: 240px;
+      height: 80px;
+      bottom: 10%;
+      left: 13%;
+      background-position: -10px -80px;
+      animation-name: bounceIn;
+      animation-delay: 8.75s;
+    }
+
+    &:nth-of-type(5) {
+      width: 260px;
+      height: 80px;
+      bottom: 10%;
+      left: 38%;
+      background-position: -254px -80px;
+      animation-name: bounceIn;
+      animation-delay: 10s;
+    }
+
+    &:nth-of-type(6) {
+      width: 260px;
+      height: 80px;
+      bottom: 11%;
+      left: 64%;
+      background-position: -507px -72px;
+      animation-name: bounceIn;
+      animation-delay: 11s;
+    }
+  }
+  }
+}
+
+#what-does-a-nose {
 
   img {
-    width: 900px;
+    &.title {
+      width: 90%;
+      left: 5%;
+      top: 3%;
+      position: absolute;
+    }
   }
 
   h3 {
     font-size: 36px;
+    position: absolute;
+    top: 35%;
+    left: 37%;
   }
 
-  .items {
-    display: block;
 
-    li {
-      width: 200px;
-
-      img {
+  .selectable-reveal {
+    .selectable {
+      li {
+        width: 16%;
+        height: 40%;
         position: absolute;
-        left: 0;
-        top: 0;
-        width: auto;
-        max-width: 200%;
-        height: 100%;
-        opacity: 1;
-        transition: none;
-      }
 
-      .b {
-        img {
-          transform: translateX(-50%);
+        &.human {
+          background: url(../media/images/img_15.2.png);
+          background-size: cover;
+          background-position: -9px 0;
+          bottom: 8%;
+          left: 20%;
+
+          &.HIGHLIGHTED {
+            background: url(../media/images/img_15.2.png);
+            background-size: cover;
+            background-position: 162px 0;
+            animation-name: flipInX;
+          }
+        }
+
+        &.rabbit {
+          background: url(../media/images/img_15.3.png);
+          background-size: cover;
+          background-position: -9px 0;
+          bottom: 8%;
+          left: 42%;
+
+          &.HIGHLIGHTED {
+            background: url(../media/images/img_15.3.png);
+            background-size: cover;
+            background-position: 162px 0;
+            animation-name: flipInX;
+          }
+        }
+
+        &.rhino {
+          background: url(../media/images/img_15.4.png);
+          background-size: cover;
+          background-position: -9px 0;
+          bottom: 8%;
+          left: 65%;
+
+          &.HIGHLIGHTED {
+            background: url(../media/images/img_15.4.png);
+            background-size: cover;
+            background-position: 162px 0;
+            animation-name: flipInX;
+          }
         }
       }
     }
   }
 
-  .flip-card-component > ul li .side {
-    background-color: transparent;
-  }
-
-  .reveal-component {
+  .reveal {
     display: none;
   }
 }
@@ -944,106 +1669,6 @@ body:not(.DEMO) #what-does-a-nose-do {
         .next-screen {
           opacity: 1;
           cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-.screen.snout {
-
-  .frame {
-
-    h2 {
-      font-size: 60px;
-      margin: 20px 0 40px;
-    }
-
-    > div {
-      position: relative;
-      width: 760px;
-      margin: 45px auto 0;
-
-      span {
-        position: absolute;
-        display: block;
-        background-image: url(../media/images/img_14.2.png);
-        background-size: 760px 160px;
-        background-repeat: no-repeat;
-
-        &:nth-of-type(1) {
-          background-size: 770px 160px;
-          width: 200px;
-          height: 80px;
-          top: -2px;
-          left: 110px;
-          background-position: -100px 0px;
-          -webkit-animation-delay: 4.5s;
-          animation-delay: 4.5s;
-        }
-
-        &:nth-of-type(2) {
-          background-size: 770px 160px;
-          width: 230px;
-          height: 80px;
-          top: -3px;
-          left: 303px;
-          background-position: -300px 0px;
-          -webkit-animation-delay: 6s;
-          animation-delay: 6s;
-        }
-
-        &:nth-of-type(3) {
-          width: 270px;
-          height: 75px;
-          top: -2px;
-          left: 524px;
-          background-position: -520px 0px;
-          -webkit-animation-delay: 7.5s;
-          animation-delay: 7.5s;
-        }
-
-        &:nth-of-type(4) {
-          width: 240px;
-          height: 80px;
-          top: 78px;
-          left: 24px;
-          background-position: -10px -80px;
-          -webkit-animation-delay: 8.75s;
-          animation-delay: 8.75s;
-        }
-
-        &:nth-of-type(5) {
-          width: 260px;
-          height: 80px;
-          top: 78px;
-          left: 260px;
-          background-position: -250px -80px;
-          -webkit-animation-delay: 10s;
-          animation-delay: 10s;
-        }
-
-        &:nth-of-type(6) {
-          width: 260px;
-          height: 80px;
-          top: 70px;
-          left: 515px;
-          background-position: -510px -72px;
-          -webkit-animation-delay: 11s;
-          animation-delay: 11s;
-        }
-      }
-    }
-  }
-
-  &.OPEN {
-    .frame {
-
-      > div {
-
-        span {
-          -webkit-animation-name: bounceIn;
-          animation-name: bounceIn;
         }
       }
     }
