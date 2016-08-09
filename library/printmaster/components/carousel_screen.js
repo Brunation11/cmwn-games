@@ -1,8 +1,11 @@
+import _ from 'lodash';
+
 import TargetSelectable from 'shared/components/target_selectable/0.1';
 import Carousel from 'shared/components/carousel/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Score from 'shared/components/score/0.1';
 import Reveal from 'shared/components/reveal/0.1';
+
 
 export default function (props, ref, key) {
   var CarouselScreen = (
@@ -19,23 +22,26 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden score" src="media/S_10/img_10.9.png" />
       <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
       <skoash.Component className="group">
+        <Carousel
+          className="slide"
+          clickable
+          delay={400}
+          dataTarget="carousel"
+          bin={
+            <Randomizer
+              bin={[
+                <div ref="loops" message="loops" pl-bg="media/S_10/img_10.4.png"></div>,
+                <div ref="whorl" message="whorl" pl-bg="media/S_10/img_10.5.png"></div>,
+                <div ref="arch" message="arch" pl-bg="media/S_10/img_10.6.png"></div>,
+                <div ref="doubleloops" message="doubleloops" pl-bg="media/S_10/img_10.7.png"></div>,
+              ]}
+            />
+          }
+        />
+        {
+        /*
         <TargetSelectable
           selectable={
-            <Carousel
-              className="slide"
-              clickable
-              delay={400}
-              bin={
-                <Randomizer
-                  bin={[
-                    <div ref="loops" message="loops" pl-bg="media/S_10/img_10.4.png"></div>,
-                    <div ref="whorl" message="whorl" pl-bg="media/S_10/img_10.5.png"></div>,
-                    <div ref="arch" message="arch" pl-bg="media/S_10/img_10.6.png"></div>,
-                    <div ref="doubleloops" message="doubleloops" pl-bg="media/S_10/img_10.7.png"></div>,
-                  ]}
-                />
-              }
-            />
           }
           targets={[
             <skoash.Image ref="loops" amount={2} className="animated" src="media/S_10/img_10.11.png" />,
@@ -48,6 +54,8 @@ export default function (props, ref, key) {
             <skoash.Image ref="loops" amount={3} className="animated" src="media/S_10/img_10.12.png" />,
           ]}
         />
+        */
+        }
         <Score completeDelay={1000}>
           <div />
           <div />
@@ -56,6 +64,7 @@ export default function (props, ref, key) {
       </skoash.Component>
       <Reveal
         openOnStart="8"
+        openReveal={_.get(props, 'data.carousel.target.ref', null)}
         assets={[
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,

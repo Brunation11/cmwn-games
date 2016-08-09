@@ -106,6 +106,12 @@ class Reveal extends skoash.Component {
     });
   }
 
+  componentWillReceiveProps(props) {
+    if (props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
+  }
+
   getClass(li, key) {
     var classes = '';
 

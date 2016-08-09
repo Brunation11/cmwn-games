@@ -47,6 +47,15 @@ class Carousel extends Selectable {
   }
 
   selectHelper() {
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: this.state.list[this.props.targetIndex]
+        }
+      });
+    }
+
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
     }
