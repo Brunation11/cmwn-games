@@ -43,13 +43,16 @@ body > div > div {
   }
 
   [id^="info-match"],
-  [id^="info-detail"],
-  [id^="what-does-a-nose"] {
+  [id^="info-detail"] {
     background-image: url(../media/images/background/match.png);
     background-size: cover;
   }
 
-  [id^="info-snout"] {
+  [id^="info-snout"],
+  [id^="what-does-a-nose"],
+  [id^="info-sneezers"],
+  [id^="dnd-"],
+  [id^="flip"] {
     background-image: url(../media/images/background/nose.png);
     background-size: cover;
   }
@@ -130,7 +133,7 @@ button {
   }
 }
 
-body.DEMO .reveal-component .items li div .close-reveal {
+body.DEMO .reveal .items li div .close-reveal {
   opacity: 1;
   cursor: pointer;
 
@@ -245,8 +248,8 @@ p {
 // the following css is specific to this game
 // body.DEMO .screen .next-screen,
 // body.DEMO #match-game:not(.COMPLETE) .next-screen,
-// body.DEMO #match-game:not(.COMPLETE) .reveal-component ul li div .next-screen,
-// body.DEMO .screen.no-frame .frame .reveal-component .next-screen,
+// body.DEMO #match-game:not(.COMPLETE) .reveal ul li div .next-screen,
+// body.DEMO .screen.no-frame .frame .reveal .next-screen,
 // .screen.COMPLETE .next-screen {
 //   opacity: 1;
 //   display: block;
@@ -255,7 +258,8 @@ p {
 
 
 
-body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
+body > div > div:not(.DEMO) [id^="id-"]:not(.RETURN).COMPLETE .next-screen,
+body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
   bottom: 22%;
   right: 22%;
   width: 7%;
@@ -1493,6 +1497,839 @@ body:not(.DEMO) [id^="id-"].COMPLETE .next-screen {
   }
 }
 
+#info-sneezers {
+  img {
+    position: absolute;
+
+    &.banner {
+      width: 100%;
+      top: 28%;
+    }
+  }
+}
+
+#dnd-lion {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 3px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.lion {
+        background-position: 15px 14px;
+      }
+
+      &.tiger {
+        background-position: -117px 14px;
+      }
+
+      &.cat {
+        background-position: -248px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-sloth {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 320px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.pig {
+        background-position: 815px 14px;
+      }
+
+      &.mole {
+        background-position: 1483px 14px;
+      }
+
+      &.sloth {
+        background-position: 1617px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-wolf {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 2195px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.dog {
+        background-position: 2683px 14px;
+      }
+
+      &.wolf {
+        background-position: 2553px 14px;
+      }
+
+      &.cow {
+        background-position: 2817px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-elephant {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 628px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.sloth {
+        background-position: 1221px 14px;
+      }
+
+      &.ant-eater {
+        background-position: 952px 14px;
+      }
+
+      &.elephant {
+        background-position: 1080px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-dragon {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 1879px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.dragon {
+        background-position: 2421px 14px;
+      }
+
+      &.turtle {
+        background-position: 2151px 14px;
+      }
+
+      &.snake {
+        background-position: 2285px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-pig {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 942px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.mouse {
+        background-position: 546px 14px;
+      }
+
+      &.hedgehog {
+        background-position: 683px 14px;
+      }
+
+      &.pig {
+        background-position: 817px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-gorilla {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 1568px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.panda {
+        background-position: 1751px 14px;
+      }
+
+      &.gorilla {
+        background-position: 2019px 14px;
+      }
+
+      &.horse {
+        background-position: 1885px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#dnd-mule {
+  img {
+    position: absolute;
+  }
+
+  .dropzone-reveal {
+    .dropzone {
+      position: absolute;
+      list-style-type: none;
+      width: 32%;
+      height: 57%;
+      left: 21%;
+      top: 22%;
+      background: url(../media/images/img_17-24.1.png);
+      background-size: 2500px 313px;
+      background-position: 1252px 4px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 140%;
+        height: 140%;
+        left: -18%;
+        top: -18%;
+        background: url(../media/images/frame/dropzone.png);
+        background-size: contain;
+      }
+    }
+
+    div ul > * {
+      right:25%;
+      content: "";
+      width: 15%;
+      position: fixed;
+      height: 27%;
+      background: url(../media/images/frame/draggable.png);
+      background-position: 165px -25px;
+      background-size: 350px 195px;
+
+      &:nth-child(1) {
+        right: 23%;
+        top: 10%;
+      }
+
+      &:nth-child(2) {
+        right: 23%;
+        top: 37%;
+      }
+
+      &:nth-child(3) {
+        right: 23%;
+        top: 64%;
+      }
+    }
+
+    .draggable {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/img_17-24.2.png);
+      background-size: 3200px 133px;
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: url(../media/images/frame/draggable.png);
+        background-position: -21px -26px;
+        background-size: 350px 195px;
+      }
+
+      &.capibara {
+        background-position: 284px 14px;
+      }
+
+      &.goat {
+        background-position: 149px 14px;
+      }
+
+      &.mule {
+        background-position: 416px 14px;
+      }
+    }
+
+    .reveal {
+      div ul li {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#flip {
+  img {
+    position: absolute;
+
+    &.flip {
+      width: 60%;
+      left: 20%;
+      top: 20%;
+    }
+  }
+
+  h3 {
+    font-size: 36px;
+    position: absolute;
+    left: 16%;
+    text-align: center;
+    top: 15%;
+  }
+
+  &.READY.OPEN {
+    img {
+      &.flip {
+        animation: flipInX 2s;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 body:not(.DEMO) #what-does-a-nose-do {
   &.SFX,
   &.VOICE-OVER {
@@ -1605,7 +2442,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 
   .frame {
 
-    .reveal-component {
+    .reveal {
       position: static;
 
       ul {
@@ -1665,7 +2502,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 
   &.COMPLETE {
     .frame {
-      .reveal-component {
+      .reveal {
         .next-screen {
           opacity: 1;
           cursor: pointer;
@@ -1778,7 +2615,7 @@ body:not(.DEMO) #what-does-a-nose-do {
     }
   }
 
-  .reveal-component {
+  .reveal {
 
     ul {
 
@@ -1830,8 +2667,8 @@ body:not(.DEMO) #what-does-a-nose-do {
     }
   }
 
-  &:not(.COMPLETE).PLAYING .reveal-component ul li div .next-screen,
-  &:not(.COMPLETE).VOICE-OVER .reveal-component ul li div .next-screen {
+  &:not(.COMPLETE).PLAYING .reveal ul li div .next-screen,
+  &:not(.COMPLETE).VOICE-OVER .reveal ul li div .next-screen {
     opacity: 0;
     cursor: auto;
   }
@@ -1866,86 +2703,6 @@ body:not(.DEMO) #what-does-a-nose-do {
   }
 }
 
-.draggable {
-  height: inherit;
-  background: none !important;
-
-  &:before {
-    content: '';
-    background-image: url(../media/images/img_17-24.2.png);
-    background-size: 3036px;
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 20%; left: 20%;
-    width: 60%;
-    height: 60%;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-
-    background-image: url(../media/images/frame/draggable.png);
-    background-size: auto 120%;
-    background-position: left center;
-  }
-
-  $draggable-left:    0  125  248
-            375  500  625
-            750  878 1004
-           1130 1258 1384
-           1510 1635 1764
-           1892 2020 2145
-           2275 2400 2525
-           2650 2778 2904;
-
-  @for $j from 1 through 24 {
-    &.d-#{$j}:before {
-      background-position: -1*nth($draggable-left,$j)+px 0;
-    }
-  }
-}
-
-$noses: lion sloth wolf elephant dragon pig gorilla mule;
-$area-left: 0 7 1 6 2 5 3 4;
-
-@for $i from 1 through 8 {
-  #dnd-#{nth($noses,$i)} {
-    .area {
-      background-position: #{-400*nth($area-left,$i)-20+px} -20px;
-    }
-  }
-}
-
-.draggables {
-  width: 195px;
-  padding: 0;
-  margin-left: 40px;
-  display: inline-block;
-  list-style: none;
-  vertical-align: middle;
-
-  li {
-    height: 170px;
-    background: url(../media/images/frame/draggable.png) right center;
-    background-size: auto 120%;
-
-    .draggable {
-      position: relative;
-
-      &.PLUCKED {
-        &:before {
-          background-position: 95% 0;
-        }
-      }
-    }
-  }
-}
-
 .screen.screen-dropzone {
   > .next-screen {
     opacity: 0;
@@ -1960,22 +2717,6 @@ $area-left: 0 7 1 6 2 5 3 4;
       opacity: 1;
     }
   }
-}
-
-#flip {
-  h3 {
-    font-size: 36px;
-  }
-
-  .flip {
-    width: 600px;
-    margin: -140px 0;
-  }
-}
-
-.screen.OPEN .flip {
-  -webkit-animation: flipInX 2s;
-  animation: flipInX 2s;
 }
 
 .POSITIONED {
