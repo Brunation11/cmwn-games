@@ -10,7 +10,7 @@ class MultiBubblesScreenComponent extends skoash.Screen {
   }
 
   changeScore(message) {
-    if (message === 'false') {
+    if (message === 'incorrect') {
       this.refs.score.down();
     } else {
       this.refs.score.up();
@@ -22,27 +22,27 @@ class MultiBubblesScreenComponent extends skoash.Screen {
       <SelectableAudio
         ref="selectable-audio"
         selectableList={[
-          <li id="swim" data-ref="swim" className="correct"></li>,
-          <li id="runFactories" data-ref="runFactories" className="correct"></li>,
-          <li id="washFace" data-ref="washFace" className="correct"></li>,
-          <li id="drinkIt" data-ref="drinkIt" className="correct"></li>,
-          <li id="playBasketball" data-ref="false"></li>,
-          <li id="brushTeeth" data-ref="brushTeeth" className="correct"></li>,
-          <li id="tellTime" data-ref="false"></li>,
-          <li id="takeShowers" data-ref="takeShowers" className="correct"></li>,
-          <li id="cleanHouse" data-ref="cleanHouse" className="correct"></li>,
-          <li id="cook" data-ref="cook" className="correct"></li>,
-          <li id="crochet" data-ref="false"></li>,
-          <li id="growCrops" data-ref="growCrops" className="correct"></li>,
-          <li id="zipline" data-ref="false"></li>,
-          <li id="read" data-ref="false"></li>,
-          <li id="laundry" data-ref="laundry" className="correct"></li>,
-          <li id="drive" data-ref="false"></li>,
-          <li id="washDishes" data-ref="washDishes" className="correct"></li>,
-          <li id="sleep" data-ref="false"></li>,
-          <li id="tapDance" data-ref="false"></li>,
-          <li id="flyAKite" data-ref="false"></li>,
-          <li id="talk" data-ref="false"></li>,
+          <skoash.ListItem correct id="swim" data-ref="swim" />,
+          <skoash.ListItem correct id="runFactories" data-ref="runFactories" />,
+          <skoash.ListItem correct id="washFace" data-ref="washFace" />,
+          <skoash.ListItem correct id="drinkIt" data-ref="drinkIt" />,
+          <skoash.ListItem id="playBasketball" data-ref="incorrect" />,
+          <skoash.ListItem correct id="brushTeeth" data-ref="brushTeeth" />,
+          <skoash.ListItem id="tellTime" data-ref="incorrect" />,
+          <skoash.ListItem correct id="takeShowers" data-ref="takeShowers" />,
+          <skoash.ListItem correct id="cleanHouse" data-ref="cleanHouse" />,
+          <skoash.ListItem correct id="cook" data-ref="cook" />,
+          <skoash.ListItem id="crochet" data-ref="incorrect" />,
+          <skoash.ListItem correct id="growCrops" data-ref="growCrops" />,
+          <skoash.ListItem id="zipskoash.ListItemne" data-ref="incorrect" />,
+          <skoash.ListItem id="read" data-ref="incorrect" />,
+          <skoash.ListItem correct id="laundry" data-ref="laundry" />,
+          <skoash.ListItem id="drive" data-ref="incorrect" />,
+          <skoash.ListItem correct id="washDishes" data-ref="washDishes" />,
+          <skoash.ListItem id="sleep" data-ref="incorrect" />,
+          <skoash.ListItem id="tapDance" data-ref="incorrect" />,
+          <skoash.ListItem id="flyAKite" data-ref="incorrect" />,
+          <skoash.ListItem id="talk" data-ref="incorrect" />,
         ]}
         audioAssets={[
           <skoash.Audio data-ref="swim" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_Swim.mp3" />,
@@ -56,11 +56,10 @@ class MultiBubblesScreenComponent extends skoash.Screen {
           <skoash.Audio data-ref="growCrops" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_GrowCrops.mp3" />,
           <skoash.Audio data-ref="laundry" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_Laundry.mp3" />,
           <skoash.Audio data-ref="washDishes" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WashDishes.mp3" />,
-          <skoash.Audio data-ref="false" type="sfx" src="media/_audio/_S_MultiBubbles/HFF_SX_Wrong.mp3" />,
+          <skoash.Audio data-ref="incorrect" type="sfx" src="media/_audio/_S_MultiBubbles/HFF_SX_Wrong.mp3" complete />,
         ]}
         selectRespond={this.changeScore.bind(this)}
         selectClass="HIGHLIGHTED"
-        requireAll={true}
       />
     );
   }

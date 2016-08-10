@@ -11,6 +11,7 @@ import CleanWaterScreen from './components/clean_water_screen';
 import BubbleUpScreen from './components/bubble_up_screen';
 import MultiBubblesScreen from './components/multi_bubbles_screen';
 import PollutesWaterScreen from './components/pollutes_water_screen';
+import TrashScreen from './components/trash_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -29,7 +30,8 @@ class HappyFishFace extends skoash.Game {
       //5: CleanWaterScreen,
       //6: BubbleUpScreen,
       //7: MultiBubblesScreen,
-      2: PollutesWaterScreen,
+      //8: PollutesWaterScreen,
+      2: TrashScreen,
     };
 
     this.menus = {
@@ -57,6 +59,7 @@ class HappyFishFace extends skoash.Game {
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />
         <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" />
+        <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" loop />
         <div className="background garbage"></div>
       </div>
     );

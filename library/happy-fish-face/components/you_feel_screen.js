@@ -13,15 +13,16 @@ var YouFeelScreen = (
           <SelectableAudio
             ref="selectable-audio"
             selectableList={[
-              <li className="animated img-0"></li>,
-              <li className="animated img-1"></li>,
-              <li className="animated img-2"></li>
+              <skoash.ListItem className="animated img-0" />,
+              <skoash.ListItem className="animated img-1" />,
+              <skoash.ListItem className="animated img-2" />
             ]}
             audioAssets={[
               <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_LeftEmoji.mp3" />,
               <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_CenterEmoji.mp3" />,
               <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_RightEmoji.mp3" />
             ]}
+            chooseOne
           />
         </skoash.Component>
       </skoash.Component>

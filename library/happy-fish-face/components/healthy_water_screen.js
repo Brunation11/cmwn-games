@@ -12,11 +12,11 @@ var HealthyWaterScreen = (
           <skoash.Image ref="words" className="words" src="media/_images/_S_HealthyWater/img_4.1.png" />
           <SelectableAudio
             selectableList={[
-                <li className="animated"></li>,
-                <li className="animated" data-ref="correct"></li>
+                <skoash.ListItem className="animated" />,
+                <skoash.ListItem className="animated" correct />
             ]}
             audioAssets={[
-              <skoash.Audio type="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Wrong.mp3" />,
+              <skoash.Audio type="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Wrong.mp3" complete />,
               <skoash.Audio type="sfx" src="media/_audio/_S_HealthyWater/HHF_SX_Right.mp3" />
             ]}
           />

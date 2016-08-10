@@ -28,13 +28,15 @@ class Reveal extends skoash.Component {
   }
 
   close() {
+    var prevMessage = this.state.openReveal;
+
     this.setState({
       open: false,
       openReveal: '',
     });
 
     if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
+      this.props.closeRespond(prevMessage);
     }
   }
 
@@ -117,18 +119,15 @@ class Reveal extends skoash.Component {
     return classes;
   }
 
-  getClasses() {
-    var classes = '';
-
-    if (this.state.open) classes += 'OPEN';
-    if (this.state.complete) classes += ' COMPLETE';
+  getClassNames() {
+    var classes = 'reveal ' + super.getClassNames();
 
     return classes;
   }
 
   render() {
     return (
-      <div className={'reveal ' + this.getClasses()}>
+      <div className={this.getClassNames()}>
         {this.renderAssets()}
         <div>
           <ul>

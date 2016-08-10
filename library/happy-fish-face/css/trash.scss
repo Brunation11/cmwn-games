@@ -10,21 +10,19 @@
     transition: opacity .5s;
   }
 
-  .selectable-component,
-  .timer-component {
+  .selectable,
+  .timer {
     opacity: 1;
     transition: opacity .5s;
   }
 
-  .selectable-component {
+  .selectable {
 
-    .items {
-      position: relative;
-      width: 960px;
-      height: 540px;
-      margin: 0;
-      display: block;
-    }
+    position: relative;
+    width: 960px;
+    height: 540px;
+    margin: 0;
+    display: block;
 
     li {
       position: absolute;
@@ -34,12 +32,20 @@
       animation: bob 8s infinite;
       transition: opacity .5s;
 
-      &.HIGHLIGHTED {
-        opacity: 0;
-        pointer-events: none;
+      @mixin remove {
+        @for $i from 1 through 20 {
+          &:nth-child(#{$i}) {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
       }
 
-      &[pl-id=bottle] {
+      &.HIGHLIGHTED {
+        @include remove;
+      }
+
+      &#bottle {
         width: 90px;
         height: 120px;
         background-position: -40px -30px;
@@ -51,7 +57,7 @@
         }
       }
 
-      &[pl-id=cans] {
+      &#cans {
         width: 160px;
         height: 120px;
         background-position: -410px -25px;
@@ -63,7 +69,7 @@
         }
       }
 
-      &[pl-id=cleaner] {
+      &#cleaner {
         width: 100px;
         height: 120px;
         background-position: -840px -30px;
@@ -75,7 +81,7 @@
         }
       }
 
-      &[pl-id=wash] {
+      &#wash {
         width: 80px;
         height: 120px;
         background-position: -1250px -30px;
@@ -87,7 +93,7 @@
         }
       }
 
-      &[pl-id=necklace] {
+      &#necklace {
         width: 100px;
         height: 100px;
         background-position: -40px -240px;
@@ -99,7 +105,7 @@
         }
       }
 
-      &[pl-id=oil] {
+      &#oil {
         width: 100px;
         height: 120px;
         background-position: -440px -225px;
@@ -111,7 +117,7 @@
         }
       }
 
-      &[pl-id=bag] {
+      &#bag {
         width: 110px;
         height: 120px;
         background-position: -835px -230px;
@@ -123,7 +129,7 @@
         }
       }
 
-      &[pl-id=water] {
+      &#water {
         width: 100px;
         height: 120px;
         background-position: -1240px -230px;
@@ -135,7 +141,7 @@
         }
       }
 
-      &[pl-id=shoes] {
+      &#shoes {
         width: 180px;
         height: 110px;
         background-position: 0px -440px;
@@ -147,7 +153,7 @@
         }
       }
 
-      &[pl-id=soap] {
+      &#soap {
         width: 100px;
         height: 140px;
         background-position: -430px -425px;
@@ -159,7 +165,7 @@
         }
       }
 
-      &[pl-id=sauce] {
+      &#sauce {
         width: 110px;
         height: 120px;
         background-position: -835px -430px;
@@ -171,7 +177,7 @@
         }
       }
 
-      &[pl-id=beeker] {
+      &#beeker {
         width: 80px;
         height: 100px;
         background-position: -1250px -440px;
@@ -183,7 +189,7 @@
         }
       }
 
-      &[pl-id=drum] {
+      &#drum {
         width: 140px;
         height: 140px;
         background-position: -20px -620px;
@@ -195,7 +201,7 @@
         }
       }
 
-      &[pl-id=cosmetics] {
+      &#cosmetics {
         width: 100px;
         height: 70px;
         background-position: -440px -655px;
@@ -207,7 +213,7 @@
         }
       }
 
-      &[pl-id=tire] {
+      &#tire {
         width: 110px;
         height: 120px;
         background-position: -835px -630px;
@@ -219,7 +225,7 @@
         }
       }
 
-      &[pl-id=floss] {
+      &#floss {
         width: 70px;
         height: 80px;
         background-position: -1250px -640px;
@@ -231,7 +237,7 @@
         }
       }
 
-      &[pl-id=ketchup] {
+      &#ketchup {
         width: 80px;
         height: 100px;
         background-position: -50px -840px;
@@ -243,7 +249,7 @@
         }
       }
 
-      &[pl-id=bulb] {
+      &#bulb {
         width: 80px;
         height: 70px;
         background-position: -450px -855px;
@@ -255,7 +261,7 @@
         }
       }
 
-      &[pl-id=fries] {
+      &#fries {
         width: 90px;
         height: 100px;
         background-position: -845px -840px;
@@ -267,7 +273,7 @@
         }
       }
 
-      &[pl-id=soda] {
+      &#soda {
         width: 100px;
         height: 140px;
         background-position: -1240px -820px;
@@ -279,7 +285,7 @@
         }
       }
 
-      &[pl-id=coral] {
+      &#coral {
         width: 80px;
         height: 100px;
         background-position: -50px -1040px;
@@ -291,7 +297,7 @@
         }
       }
 
-      &[pl-id=crab] {
+      &#crab {
         width: 85px;
         height: 85px;
         background-position: -445px -1045px;
@@ -305,7 +311,7 @@
         }
       }
 
-      &[pl-id=turtle] {
+      &#turtle {
         width: 150px;
         height: 110px;
         background-position: -815px -1030px;
@@ -318,7 +324,7 @@
         }
       }
 
-      &[pl-id=shell] {
+      &#shell {
         width: 70px;
         height: 70px;
         background-position: -1250px -1050px;
@@ -330,7 +336,7 @@
         }
       }
 
-      &[pl-id=fish1] {
+      &#fish1 {
         width: 120px;
         height: 100px;
         background-position: -30px -1240px;
@@ -343,7 +349,7 @@
         }
       }
 
-      &[pl-id=fish2] {
+      &#fish2 {
         width: 100px;
         height: 90px;
         background-position: -440px -1245px;
@@ -356,7 +362,7 @@
         }
       }
 
-      &[pl-id=lobster] {
+      &#lobster {
         width: 140px;
         height: 110px;
         background-position: -815px -1230px;
@@ -369,7 +375,7 @@
         }
       }
 
-      &[pl-id=shell2] {
+      &#shell2 {
         width: 80px;
         height: 80px;
         background-position: -1250px -1250px;
@@ -381,7 +387,7 @@
         }
       }
 
-      &[pl-id=fish3] {
+      &#fish3 {
         width: 110px;
         height: 90px;
         background-position: -30px -1440px;
@@ -394,7 +400,7 @@
         }
       }
 
-      &[pl-id=starfish] {
+      &#starfish {
         width: 100px;
         height: 90px;
         background-position: -440px -1440px;
@@ -413,7 +419,7 @@
         }
       }
 
-      &[pl-id=octopus] {
+      &#octopus {
         width: 160px;
         height: 145px;
         background-position: -805px -1420px;
@@ -426,7 +432,7 @@
         }
       }
 
-      &[pl-id=shell3] {
+      &#shell3 {
         width: 80px;
         height: 80px;
         background-position: -1250px -1450px;
@@ -438,7 +444,7 @@
         }
       }
 
-      &[pl-id=seahorse] {
+      &#seahorse {
         width: 60px;
         height: 90px;
         background-position: -60px -1640px;
@@ -451,7 +457,7 @@
         }
       }
 
-      &[pl-id=fish4] {
+      &#fish4 {
         width: 100px;
         height: 80px;
         background-position: -440px -1645px;
@@ -464,7 +470,7 @@
         }
       }
 
-      &[pl-id=fish5] {
+      &#fish5 {
         width: 95px;
         height: 65px;
         background-position: -840px -1660px;
@@ -477,7 +483,7 @@
         }
       }
 
-      &[pl-id=jellyfish] {
+      &#jellyfish {
         width: 80px;
         height: 130px;
         background-position: -1250px -1620px;
@@ -492,7 +498,7 @@
     }
   }
 
-  .timer-component {
+  .timer {
     position: absolute;
     left: 50px;
     bottom: -10px;
@@ -504,45 +510,50 @@
       vertical-align: middle;
     }
 
-    p {
+    span {
       display: inline-block;
       vertical-align: bottom;
       padding-bottom: 18px;
       margin-left: -15px;
+      font-size: 36px;
     }
   }
 
-  .modal-component {
+  .reveal {
 
-    &.SELECTED {
-      ~ .selectable-component,
-      ~ .timer-component,
+    &.OPEN {
+      ~ .selectable,
+      ~ .timer,
       ~ .net {
         opacity: 0;
       }
     }
 
-    [pl-id=try-again] {
-      img {
-        margin-bottom: -30px;
-      }
-    }
-
-    .try-again {
+    .close-reveal {
       width: 146px;
       height: 146px;
       background-size: auto 146px;
       background-position: left center;
+      background-image: url(../media/_images/_S_GoodJob/img_10.3.png);
 
       &:hover {
         background-position: right center;
       }
     }
+
+    #tryAgain {
+      img {
+        margin-bottom: -30px;
+      }
+    }
+
+    #goodJob .close-reveal {
+        display: none;
+    }
   }
 
   &.TOUCH,
-  &.GOOD-JOB,
-  &.TRY-AGAIN {
+  &.REVEAL-OPEN {
     cursor: auto;
 
     .net {
@@ -555,7 +566,7 @@
   }
 }
 
-body:not(.DEMO) #trash.try-again {
+body:not(.DEMO) #trash.tryAgain {
   .prev-screen,
   .next-screen {
     opacity: 0;
