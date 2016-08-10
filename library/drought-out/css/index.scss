@@ -878,6 +878,7 @@ img.inline {
     height: 809px;
     left: 67px;
     bottom: -217px;
+    background-image: url(../media/S_17/img_sp_17.1.png);
     background-size: 800% 100%;
     background-repeat: no-repeat;
     -webkit-animation: swing-closed .5s steps(5) forwards;
@@ -890,6 +891,7 @@ img.inline {
     height: 378px;
     left: 278px;
     bottom: -8px;
+    background-image: url(../media/S_17/img_17.2.png);
     background-size: auto 120%;
     background-position: -50px center;
     cursor: pointer;
@@ -901,7 +903,7 @@ img.inline {
     }
   }
 
-  &.SELECTED {
+  .HIGHLIGHTED {
     #door-sprite {
       -webkit-animation: swing-open .5s steps(5) forwards;
       animation: swing-open .5s steps(5) forwards;

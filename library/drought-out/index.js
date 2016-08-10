@@ -19,7 +19,7 @@ import WhatCanWeDoScreen from './components/what_can_we_do_screen';
 import InfoDrainScreen from './components/info_drain_screen';
 import InfoUsingLessScreen from './components/info_using_less_screen';
 import ShowerScreen from './components/shower_screen';
-import ConserveScreen from ''
+import ConserveScreen from './components/conserve_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -47,8 +47,8 @@ class DroughtOut extends skoash.Game {
       14: InfoDrainScreen,
       15: InfoUsingLessScreen,
       16: ShowerScreen,
-      /*17: ConserveScreen,
-      18: HeroScreen,
+      17: ConserveScreen,
+      /*18: HeroScreen,
       19: FlipScreen*/
     };
 
