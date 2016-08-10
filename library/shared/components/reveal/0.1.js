@@ -1,17 +1,14 @@
+import _ from 'lodash';
+
 class Reveal extends skoash.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
     };
+
+    this.index = 0;
   }
 
   open(message) {
@@ -145,5 +142,14 @@ class Reveal extends skoash.Component {
     );
   }
 }
+
+Reveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+});
 
 export default Reveal;

@@ -265,7 +265,7 @@
     transition: opacity .5s, z-index 0s .5s;
     background-color: rgba(0,0,0,.3);
 
-    &.SELECTED {
+    &.OPEN {
       z-index: 1;
       opacity: 1;
       transition: opacity .5s;
@@ -273,6 +273,7 @@
 
     > div {
       position: absolute;
+      background-image: url(../media/_Frame/Fr_3.png);
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;

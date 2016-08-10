@@ -62,9 +62,9 @@ class Randomizer extends skoash.Component {
   }
 }
 
-Randomizer.defaultProps = _.merge({
+Randomizer.defaultProps = _.merge(skoash.Component.defaultProps, {
   bin: [],
   remain: false
-}, skoash.Component.defaultProps);
+});
 
 export default Randomizer;

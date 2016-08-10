@@ -154,7 +154,7 @@ button {
     }
   }
 
-  &.reveal-close {
+  &.close-reveal {
     width: 30px;
     height: 30px;
     background-position: -660px 240px;
@@ -250,17 +250,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 .screen {
@@ -502,7 +502,7 @@ img.inline {
             -webkit-animation-delay: $item*.2+1.5+s;
             animation-delay: $item*.2+1.5+s;
           }
-        } 
+        }
       }
     }
   }
@@ -1148,7 +1148,7 @@ img.inline {
           &:nth-child(#{$item}) {
             background-position: 62-(76*$item)+px center;
           }
-        } 
+        }
       }
     }
   }
@@ -1166,7 +1166,7 @@ img.inline {
           &:nth-child(#{$item}) {
             animation-delay: 2+.2*$item+s;
           }
-        } 
+        }
       }
     }
   }

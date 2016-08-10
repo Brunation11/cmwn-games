@@ -62,12 +62,6 @@ class Target extends skoash.Component {
         path: this.props.dataTarget,
         data: {
           amount,
-        }
-      });
-
-      this.updateGameState({
-        path: this.props.dataTarget,
-        data: {
           complete: false
         }
       });

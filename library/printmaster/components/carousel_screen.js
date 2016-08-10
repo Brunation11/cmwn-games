@@ -75,6 +75,7 @@ export default function (props, ref, key) {
       </skoash.Component>
       <Reveal
         openOnStart="8"
+        listLength={7}
         openReveal={_.get(props, 'data.carousel.target.ref', null)}
         assets={[
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
