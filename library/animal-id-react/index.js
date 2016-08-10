@@ -18,21 +18,16 @@ import InfoMatchScreen from './components/info_match_screen';
 import InfoDetailScreen from './components/info_detail_screen';
 import InfoSnoutScreen from './components/info_snout_screen';
 import WhatDoesANoseScreen from './components/what_does_a_nose_screen';
-// import DragNDropPassionateScreen from './components/drag_n_drop_passionate_screen';
-// import DragNDropIssuesScreen from './components/drag_n_drop_issues_screen';
-// import PickOnePowerfulScreen from './components/pick_one_powerful_screen';
-// import QualitiesBucketsScreen from './components/qualities_buckets_screen';
-// import EmojiBullyingScreen from './components/emoji_bullying_screen';
-// import EmojiCompassionScreen from './components/emoji_compassion_screen';
-// import EmojiAngryScreen from './components/emoji_angry_screen';
-// import EmojiFriendlinessScreen from './components/emoji_friendliness_screen';
-// import PickOneBulliedScreen from './components/pick_one_bullied_screen';
-// import WhatDidYouDoScreen from './components/what_did_you_do_screen';
-// import HowMuchEnvScreen from './components/how_much_env_screen';
-// import HowMuchSpeciesScreen from './components/how_much_species_screen';
-// import HowMuchWaterScreen from './components/how_much_water_screen';
-// import DragNDropInterestsScreen from './components/drag_n_drop_interests_screen';
-// import FlipScreen from './components/flip_screen';
+import InfoSneezersScreen from './components/info_sneezers_screen';
+import DNDLionScreen from './components/dnd_lion_screen';
+import DNDSlothScreen from './components/dnd_sloth_screen';
+import DNDWolfScreen from './components/dnd_wolf_screen';
+import DNDElephantScreen from './components/dnd_elephant_screen';
+import DNDDragonScreen from './components/dnd_dragon_screen';
+import DNDPigScreen from './components/dnd_pig_screen';
+import DNDGorillaScreen from './components/dnd_gorilla_screen';
+import DNDMuleScreen from './components/dnd_mule_screen';
+import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -58,22 +53,17 @@ class AnimalIDReact extends skoash.Game {
       12: InfoMatchScreen,
       13: InfoDetailScreen,
       14: InfoSnoutScreen,
-      15: WhatDoesANoseScreen
-      // 3: DragNDropPassionateScreen,
-      // 4: DragNDropIssuesScreen,
-      // 5: PickOnePowerfulScreen,
-      // 6: QualitiesBucketsScreen,
-      // 7: EmojiBullyingScreen,
-      // 8: EmojiCompassionScreen,
-      // 9: EmojiAngryScreen,
-      // 10: EmojiFriendlinessScreen,
-      // 11: PickOneBulliedScreen,
-      // 12: WhatDidYouDoScreen,
-      // 13: HowMuchEnvScreen,
-      // 14: HowMuchSpeciesScreen,
-      // 15: HowMuchWaterScreen,
-      // 16: DragNDropInterestsScreen,
-      // 17: FlipScreen
+      15: WhatDoesANoseScreen,
+      16: InfoSneezersScreen,
+      17: DNDLionScreen,
+      18: DNDSlothScreen,
+      19: DNDWolfScreen,
+      20: DNDElephantScreen,
+      21: DNDDragonScreen,
+      22: DNDPigScreen,
+      23: DNDGorillaScreen,
+      24: DNDMuleScreen,
+      25: FlipScreen
     };
 
     this.menus = {
@@ -106,6 +96,19 @@ class AnimalIDReact extends skoash.Game {
     case 12:
     case 13:
       return 3;
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+      return 4;
     default:
       return;
     }
@@ -120,6 +123,7 @@ class AnimalIDReact extends skoash.Game {
         <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/match.mp3" />
         <skoash.Audio ref="bkg-4" type="background" src="media/audio/background/nose.mp3" />
         <skoash.Audio ref="bkg-5" type="background" src="media/audio/S_11.1.mp3" />
+
         <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />
       </div>
