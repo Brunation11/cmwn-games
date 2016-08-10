@@ -15,8 +15,7 @@ export default function (props, ref, key) {
       key={key}
       id="carousel"
     >
-      <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />
-      <skoash.Audio ref="incorrect" type="sfx" src="media/S_10/S_10.4.mp3" />
+      <skoash.Image className="hidden cannon" src="media/S_10/img_10.3.png" />
       <skoash.Image className="hidden viewport" src="media/S_10/img_10.3.png" />
       <skoash.Image className="hidden target" src="media/S_10/img_10.8.png" />
       <skoash.Image className="hidden score" src="media/S_10/img_10.9.png" />
@@ -26,6 +25,7 @@ export default function (props, ref, key) {
           className="slide"
           clickable
           delay={400}
+          targetIndex={2}
           dataTarget="attempt"
           bin={
             <Randomizer
@@ -42,6 +42,7 @@ export default function (props, ref, key) {
           attempt={_.get(props, 'data.attempt.target.ref', null)}
           attemptTarget="attempt"
           dataTarget="score"
+          setTarget={_.get(props, 'data.score.complete', null)}
           targets={[
             <skoash.Image name="loops" amount={2} targetClass="loops-2" className="animated" src="media/S_10/img_10.11.png" />,
             <skoash.Image name="whorl" amount={3} targetClass="whorl-3" className="animated" src="media/S_10/img_10.15.png" />,
@@ -52,12 +53,18 @@ export default function (props, ref, key) {
             <skoash.Image name="arch" amount={2} targetClass="arch-2" className="animated" src="media/S_10/img_10.17.png" />,
             <skoash.Image name="loops" amount={3} targetClass="loops-3" className="animated" src="media/S_10/img_10.12.png" />,
           ]}
+          assets={[
+            <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />,
+            <skoash.Audio ref="incorrect" type="sfx" src="media/S_10/S_10.4.mp3" />
+          ]}
         />
         <Score
           correct={_.get(props, 'data.score.correct', null)}
           correctTarget="score"
           completeDelay={1000}
           downIncrement={0}
+          max={_.get(props, 'data.score.amount', null)}
+          resetOnComplete
         >
           <div className="board">
             <div />

@@ -27,8 +27,6 @@ class Target extends skoash.Component {
     if (this.audio['correct-sound']) this.audio['correct-sound'].play();
 
     this.updateState(true);
-
-    this.setTarget((this.state.idx + 1) % this.props.targets.length);
   }
 
   onIncorrect() {
@@ -50,25 +48,46 @@ class Target extends skoash.Component {
   }
 
   setTarget(idx = 0) {
+    var amount = this.props.targets[idx].props.amount;
+
     if (this.props.attemptTarget) {
       this.updateGameState({
         path: this.props.attemptTarget,
         data: {
-          target: null
+          target: null,
+        }
+      });
+
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          amount,
+        }
+      });
+
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          complete: false
         }
       });
     }
 
     this.setState({
       idx,
+      amount,
       target: this.props.targets[idx].props.name,
-      targetClass: this.props.targets[idx].props.targetClass
+      targetClass: this.props.targets[idx].props.targetClass,
     });
   }
 
   componentWillReceiveProps(props) {
     if (props.attempt && props.attempt !== this.props.attempt) {
       this.onChange(props.attempt);
+    }
+
+    if (props.setTarget && props.setTarget !== this.props.setTarget) {
+      this.setTarget((this.state.idx + 1) % this.props.targets.length);
     }
   }
 

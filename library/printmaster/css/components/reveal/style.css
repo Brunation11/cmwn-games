@@ -1,16 +1,16 @@
-.reveal-component {}
+.reveal {}
   
-  .reveal-component ul {
+  .reveal ul {
     position: relative;
     padding: 0;
   }
 
-    .reveal-component li {
+    .reveal li {
       list-style: none;
       opacity: 0;
       transition: opacity 0.5s;
     }
 
-    .reveal-component li.OPEN {
+    .reveal li.OPEN {
       opacity: 1;
     }

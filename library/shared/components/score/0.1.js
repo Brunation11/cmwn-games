@@ -16,6 +16,22 @@ class Score extends skoash.Component {
     if (!this.props.max) return;
     if (this.state.score >= this.props.max && !this.state.complete) {
       this.complete();
+
+      setTimeout(() => {
+        if (this.props.resetOnComplete) {
+          this.setState({
+            score: 0
+          });
+        }
+
+        this.updateGameState({
+          path: this.props.correctTarget,
+          data: {
+            complete: true
+          }
+        });
+      }, this.props.completeDelay);
+
     } else if (this.state.complete) {
       this.incomplete();
     }
@@ -72,7 +88,7 @@ class Score extends skoash.Component {
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-score={this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}
