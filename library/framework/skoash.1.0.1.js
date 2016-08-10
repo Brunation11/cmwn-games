@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "03efa569b07e808400de"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9155e931004dd31704b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1875,15 +1875,19 @@
 	  _createClass(Component, [{
 	    key: 'complete',
 	    value: function complete() {
-	      this.setState({
-	        complete: true
-	      }, function () {
-	        skoash.trigger('complete');
-	      });
+	      var _this2 = this;
 
-	      if (typeof this.props.onComplete === 'function') {
-	        this.props.onComplete.call(this, this);
-	      }
+	      setTimeout(function () {
+	        _this2.setState({
+	          complete: true
+	        }, function () {
+	          skoash.trigger('complete');
+	        });
+
+	        if (typeof _this2.props.onComplete === 'function') {
+	          _this2.props.onComplete.call(_this2, _this2);
+	        }
+	      }, this.props.completeDelay);
 	    }
 	  }, {
 	    key: 'incomplete',
@@ -1904,17 +1908,21 @@
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      this.setState({
 	        started: true
 	      }, function () {
-	        _this2.checkComplete();
+	        _this3.checkComplete();
 	      });
 
 	      _lodash2.default.each(this.refs, function (ref) {
 	        if (typeof ref.start === 'function') ref.start();
 	      });
+
+	      if (this.props.completeOnStart) {
+	        this.complete();
+	      }
 	    }
 	  }, {
 	    key: 'stop',
@@ -1974,6 +1982,11 @@
 	    key: 'bootstrap',
 	    value: function bootstrap() {
 	      var self = this;
+
+	      if (this.props.complete) {
+	        this.complete();
+	      }
+
 	      this.requireForReady = Object.keys(self.refs);
 	      this.requireForComplete = this.requireForReady.filter(function (key) {
 	        return self.refs[key].checkComplete;
@@ -1991,6 +2004,13 @@
 	    value: function collectData() {
 	      if (typeof this.props.collectData === 'function') {
 	        return this.props.collectData.call(this);
+	      }
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      if (this.metaData && typeof this.props.loadData === 'function') {
+	        this.props.loadData.call(this, this.metaData);
 	      }
 	    }
 	  }, {
@@ -2153,7 +2173,9 @@
 	  type: 'div',
 	  shouldRender: true,
 	  checkComplete: true,
-	  checkReady: true
+	  checkReady: true,
+	  completeDelay: 0,
+	  completeOnStart: false
 	};
 
 		exports.default = Component;
@@ -44870,6 +44892,10 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+	var _lodash = __webpack_require__(318);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	var _classnames = __webpack_require__(319);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -44985,9 +45011,7 @@
 	    value: function start() {
 	      var _this2 = this;
 
-	      var self = this;
-
-	      self.bootstrap();
+	      this.bootstrap();
 
 	      Object.keys(this.refs).map(function (key) {
 	        if (typeof _this2.refs[key].start === 'function') {
@@ -44995,18 +45019,16 @@
 	        }
 	      });
 
-	      self.startMedia();
+	      this.startMedia();
 
-	      self.setState({
+	      this.setState({
 	        started: true
 	      });
 
-	      self.checkComplete();
+	      this.checkComplete();
 
-	      if (typeof self.props.completeDelay === 'number') {
-	        setTimeout(function () {
-	          self.complete();
-	        }, self.props.completeDelay);
+	      if (this.props.completeOnStart) {
+	        this.complete();
 	      }
 	    }
 	  }, {
@@ -45029,19 +45051,23 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
+	      var _this3 = this;
+
 	      _get(Object.getPrototypeOf(Screen.prototype), 'complete', this).call(this);
-	      skoash.trigger('screenComplete', {
-	        screenID: this.props.id,
-	        silent: this.props.silentComplete
-	      });
+	      setTimeout(function () {
+	        skoash.trigger('screenComplete', {
+	          screenID: _this3.props.id,
+	          silent: _this3.props.silentComplete
+	        });
 
-	      if (this.audio['screen-complete']) {
-	        this.audio['screen-complete'].play();
-	      }
+	        if (_this3.audio['screen-complete']) {
+	          _this3.audio['screen-complete'].play();
+	        }
 
-	      if (this.props.emitOnComplete) {
-	        skoash.trigger('emit', this.props.emitOnComplete);
-	      }
+	        if (_this3.props.emitOnComplete) {
+	          skoash.trigger('emit', _this3.props.emitOnComplete);
+	        }
+	      }, this.props.completeDelay);
 	    }
 	  }, {
 	    key: 'open',
@@ -45067,6 +45093,8 @@
 	      if (typeof this.props.onOpen === 'function') {
 	        this.props.onOpen(this);
 	      }
+
+	      this.loadData();
 	    }
 	  }, {
 	    key: 'leave',
@@ -45087,6 +45115,60 @@
 	        close: true
 	      });
 	      this.stop();
+	    }
+	  }, {
+	    key: 'collectData',
+	    value: function collectData() {
+	      var _this4 = this;
+
+	      var data = {};
+	      if (!this.refs) return data;
+	      if (this.refs['selectable-reveal']) {
+	        data = [];
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _lodash2.default.forIn(this.refs['selectable-reveal'].refs.selectable.refs, function (ref) {
+	            if (_lodash2.default.includes(ref.props.className, 'SELECTED') || _lodash2.default.includes(ref.props.className, 'HIGHLIGHTED')) data.push(ref.props['data-ref']);
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          _lodash2.default.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, function (ref, key) {
+	            if (key.indexOf('dropzone-') === -1 || !ref.state.content) return;
+	            if (_this4.props.multipleAnswers) {
+	              data[key] = [];
+	              _lodash2.default.forIn(ref.state.content, function (ref2) {
+	                data[key].push(ref2.props.message);
+	              });
+	            } else {
+	              data[key] = {
+	                ref: ref.state.content.props.message,
+	                state: ref.state.content.state
+	              };
+	            }
+	          });
+	        }
+	      }
+	      return data;
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      var _this5 = this;
+
+	      var loadData = {};
+	      if (!this.refs) return;
+	      if (this.refs['selectable-reveal']) {
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _lodash2.default.forEach(this.metaData, function (ref) {
+	            loadData[ref] = _this5.refs['selectable-reveal'].props.selectableSelectClass || _this5.refs['selectable-reveal'].refs.selectable.state.selectClass;
+	            _this5.refs['selectable-reveal'].refs.selectable.loadData = loadData;
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          this.refs['dropzone-reveal'].refs.dropzone.loadData = this.metaData;
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'getClassNames',
@@ -45146,6 +45228,10 @@
 
 	  return Screen;
 	}(_component2.default));
+
+	Screen.defaultProps = _lodash2.default.merge(_component2.default.defaultProps, {
+	  resetOnClose: true
+	});
 
 		exports.default = Screen;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
@@ -45309,7 +45395,7 @@
 	    }
 	  }, {
 	    key: 'getState',
-	    value: function getState(opts) {
+	    value: function getState() {
 	      return this.state;
 	    }
 	  }, {
@@ -45505,7 +45591,7 @@
 	       * highestScreenIndex is the index of the highest screen reached
 	       * not the index of the highest screen that exists.
 	       */
-	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray;
+	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
 	      oldIndex = this.state.currentScreenIndex;
 	      oldScreen = this.refs['screen-' + oldIndex];
 	      if (typeof opts.index === 'number') {
@@ -45548,6 +45634,14 @@
 	          oldScreen.close();
 	        } else {
 	          oldScreen.leave();
+	        }
+
+	        if (oldScreen.props.resetOnClose) {
+	          data = _lodash2.default.cloneDeep(this.state.data);
+	          data.screens[oldIndex] = {};
+	          this.setState({
+	            data: data
+	          });
 	        }
 	      }
 
@@ -46180,7 +46274,11 @@
 	  function Audio() {
 	    _classCallCheck(this, Audio);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
+
+	    _this.complete = _this.complete.bind(_this);
+	    _this.ready = _this.ready.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Audio, [{
@@ -46289,10 +46387,10 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.audio = new _howler.Howl({
-	        src: [this.props.src],
+	        src: this.props.src,
 	        loop: this.props.loop || false,
-	        onend: this.complete.bind(this),
-	        onload: this.ready.bind(this)
+	        onend: this.complete,
+	        onload: this.ready
 	      });
 	      if (this.props.complete) {
 	        this.complete();

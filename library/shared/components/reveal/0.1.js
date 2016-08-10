@@ -119,8 +119,8 @@ class Reveal extends skoash.Component {
     var classes = '';
 
     if (li.props.className) classes += li.props.className;
-    if (this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
-    if (this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
+    if (this.state.openReveal && this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
+    if (this.state.openReveal && this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
 
     return classes;
   }

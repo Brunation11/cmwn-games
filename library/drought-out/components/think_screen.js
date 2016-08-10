@@ -54,7 +54,7 @@ export default function (props, ref, key) {
             <skoash.Audio type="voiceOver" data-ref="arid" src="media/S_2/VO_2.8.mp3" />
           ]}
           assets={[
-            <skoash.Audio type="sfx" ref="incorrect" src="media/S_2/S_2.1.mp3" />
+            <skoash.Audio type="sfx" ref="incorrect" src="media/S_2/S_2.1.mp3" complete={true} checkComplete={false} />
           ]}
            hideReveal={true}
         />

@@ -28,6 +28,13 @@ class Selectable extends skoash.Component {
       selectClass,
     });
 
+    this.updateGameState({
+      path: this.props.dataTarget,
+      data: {
+        target: null
+      }
+    });
+
     this.bootstrap();
 
     Object.keys(this.refs).map(key => {
