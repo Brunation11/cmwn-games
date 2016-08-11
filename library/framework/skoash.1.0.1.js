@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5e3845fb33b0d00c9ffb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a6375a9eabcb7a0d9beb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -44760,7 +44760,7 @@
 	      _get(Object.getPrototypeOf(Screen.prototype), 'complete', this).call(this);
 	      skoash.trigger('screenComplete', {
 	        screenID: this.props.id,
-	        silent: this.props.silentComplete
+	        silent: this.props.silentComplete || this.metaData
 	      });
 
 	      if (this.audio['screen-complete']) {
