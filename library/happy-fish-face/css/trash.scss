@@ -32,17 +32,11 @@
       animation: bob 8s infinite;
       transition: opacity .5s;
 
-      @mixin remove {
-        @for $i from 1 through 20 {
-          &:nth-child(#{$i}) {
-            opacity: 0;
-            pointer-events: none;
-          }
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}).HIGHLIGHTED {
+          opacity: 0;
+          pointer-events: none;
         }
-      }
-
-      &.HIGHLIGHTED {
-        @include remove;
       }
 
       &#bottle {
@@ -529,25 +523,24 @@
       }
     }
 
-    .close-reveal {
+    #tryAgain img {
+      margin-bottom: -30px;
+    }
+
+    button {
       width: 146px;
       height: 146px;
       background-size: auto 146px;
       background-position: left center;
       background-image: url(../media/_images/_S_GoodJob/img_10.3.png);
+      background-repeat: no-repeat;
 
       &:hover {
         background-position: right center;
       }
     }
 
-    #tryAgain {
-      img {
-        margin-bottom: -30px;
-      }
-    }
-
-    #goodJob .close-reveal {
+    #goodJob-open button {
         display: none;
     }
   }

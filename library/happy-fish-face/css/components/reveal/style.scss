@@ -1,22 +1,28 @@
 .reveal {
   opacity: 0;
-  z-index: -1;
+  height: 400px;
+  width: 620px;
+  background-image: url(../media/_images/_frames/FR_2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
 
   > div {
-    height: 400px;
-    width: 620px;
+    text-align: center;
+  }
+
+  .audio-sequence {
+    display: none;
   }
 
   ul {
-    margin: 0;
-    width: 100%;
     position: relative;
     padding: 0;
   }
 
   li {
     display: none;
-    text-align: center;
     list-style: none;
     opacity: 0;
     transition: opacity 0.5s;

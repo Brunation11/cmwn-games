@@ -5,8 +5,8 @@ import Reveal from 'shared/components/reveal/0.1';
 import AudioSequence from 'shared/components/audio_sequence/0.1';
 import Timer from 'shared/components/timer/0.1';
 
-const GOOD_JOB = '0';
-const TRY_AGAIN = '1';
+const TRY_AGAIN = '0';
+const GOOD_JOB = '1';
 
 class TrashScreenComponent extends skoash.Screen {
   constructor() {
@@ -20,16 +20,28 @@ class TrashScreenComponent extends skoash.Screen {
     }
   }
 
+  getRefs(currentRef) {
+    if (!currentRef.refs) {
+      return;
+    }
+
+    Object.keys(currentRef.refs).forEach(ref => {
+      if (ref.includes('center') || ref.includes('group')) {
+        this.getRefs(currentRef.refs[ref]);
+      } else {
+        this.refs[ref] = currentRef.refs[ref];
+      }
+    });
+  }
+
   bootstrap() {
     super.bootstrap();
 
-    if (this.refs.center && this.refs.center.refs &&
-      this.refs.center.refs.group && this.refs.center.refs.group.refs) {
-      Object.keys(this.refs.center.refs.group.refs).forEach(ref => {
-        this.refs[ref] = this.refs.center.refs.group.refs[ref];
-      });
+    var ref = this.refs['center-1'];
+    if (ref) {
+      this.getRefs(ref);
     }
- 
+
     window.addEventListener('mousemove', this.moveCursor.bind(this));
     window.addEventListener('touchstart', this.touchstart.bind(this));
   }
@@ -145,29 +157,27 @@ class TrashScreenComponent extends skoash.Screen {
         ref="reveal"
         className="center"
         closeRespond={this.closeRespond.bind(this)}
-        pl-bg
         list={[
-          <skoash.Component id="goodJob" correct>
-            <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
-            <p>
-              Take this offline.<br /> Never throw the trash in the water.
-            </p>
-          </skoash.Component>,
           <skoash.Component id="tryAgain">
             <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
             <p>
               You ran out of time!
             </p>
           </skoash.Component>,
+          <skoash.Component id="goodJob" correct>
+            <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
+            <p>
+              Take this offline.<br /> Never throw the trash in the water.
+            </p>
+          </skoash.Component>,
         ]}
         assets={[
+          <skoash.Audio id="tryAgain" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" />,
           <AudioSequence className="audio-sequence" playOnStart={false}>
             <skoash.Audio id="goodJob" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
             <skoash.Audio id="neverThrow" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
           </AudioSequence>,
-          <skoash.Audio id="tryAgain" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" />,
         ]}
-        button={<button className="try-again" onClick={this.close.bind(this)} pl-bg></button>}
       />
     );
   }
@@ -198,12 +208,14 @@ class TrashScreenComponent extends skoash.Screen {
   renderContent() {
     return (
       <div>
-        <skoash.Component ref="center" className="center">
+        <skoash.Component ref="center-1" className="center">
           <skoash.Component ref="group" className="group">
             <skoash.Image className="hidden" src="media/_images/_S_Trash/img_9.2.png" />
             {this.renderNet()}
             {this.renderSelectableAudio()}
-            {this.renderReveal()}
+            <skoash.Component ref="center-2" className="center">
+              {this.renderReveal()}
+            </skoash.Component>
             {this.renderTimer()}
           </skoash.Component>
         </skoash.Component>
