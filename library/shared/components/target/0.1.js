@@ -46,28 +46,26 @@ class Target extends skoash.Component {
         }
       });
     }
+
+    if (typeof this.props.onUpdateState === 'function') {
+      this.props.onUpdateState.call(this, correct);
+    }
   }
 
   setTarget(idx = 0) {
     var amount = this.props.targets[idx].props.amount;
 
-    if (this.props.attemptTarget) {
-      this.updateGameState({
-        path: this.props.attemptTarget,
-        data: {
-          target: null,
-        }
-      });
-    }
-
     if (this.props.dataTarget) {
       this.updateGameState({
         path: this.props.dataTarget,
         data: {
-          amount,
-          complete: false
+          amount
         }
       });
+    }
+
+    if (typeof this.props.onSetTarget === 'function') {
+      this.props.onSetTarget.call(this);
     }
 
     this.setState({

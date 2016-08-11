@@ -61,12 +61,17 @@ class Score extends skoash.Component {
       score: this.state.score + increment
     }, () => {
       this.updateGameState({
-        path: this.props.correctTarget,
+        path: this.props.dataTarget,
         data: {
           score: this.state.score
         }
       });
+
       this.checkScore();
+
+      if (typeof this.props.onUpdateScore === 'function') {
+        this.props.onUpdateScore.call(this);
+      }
     });
   }
 
@@ -76,15 +81,6 @@ class Score extends skoash.Component {
         this.up();
       } else {
         this.down();
-      }
-
-      if (this.props.correctTarget) {
-        this.updateGameState({
-          path: this.props.correctTarget,
-          data: {
-            correct: null
-          }
-        });
       }
     }
   }

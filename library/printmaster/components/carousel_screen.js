@@ -26,7 +26,14 @@ export default function (props, ref, key) {
           clickable
           delay={400}
           targetIndex={2}
-          dataTarget="attempt"
+          onSelect={function (target) {
+            this.updateGameState({
+              path: 'attempt',
+              data: {
+                target
+              }
+            });
+          }}
           bin={
             <Randomizer
               bin={[
@@ -40,8 +47,23 @@ export default function (props, ref, key) {
         />
         <Target
           attempt={_.get(props, 'data.attempt.target.ref', null)}
-          attemptTarget="attempt"
-          dataTarget="score"
+          onSetTarget={function () {
+            this.updateGameState({
+              path: 'attempt',
+              data: {
+                target: null,
+              }
+            });
+          }}
+          onUpdateState={function (correct) {
+            this.updateGameState({
+              path: 'score',
+              data: {
+                correct
+              }
+            });
+          }}
+          dataTarget="target"
           setTarget={_.get(props, 'data.revealScore.score', null)}
           complete
           checkComplete={false}
@@ -62,10 +84,18 @@ export default function (props, ref, key) {
         />
         <Score
           correct={_.get(props, 'data.score.correct', null)}
-          correctTarget="score"
+          dataTarget="score"
+          onUpdateScore={function () {
+            this.updateGameState({
+              path: 'score',
+              data: {
+                correct: null
+              }
+            });
+          }}
           completeDelay={1000}
           downIncrement={0}
-          max={_.get(props, 'data.score.amount', null)}
+          max={_.get(props, 'data.target.amount', null)}
           resetOnComplete
           multipleCompletes
           onComplete={function () {
@@ -86,11 +116,19 @@ export default function (props, ref, key) {
         <Score
           className="reveal-score"
           correct={_.get(props, 'data.revealScore.correct', null)}
-          correctTarget="revealScore"
+          dataTarget="revealScore"
           downIncrement={0}
           max={7}
           complete
           resetOnComplete
+          onUpdateScore={function () {
+            this.updateGameState({
+              path: 'revealScore',
+              data: {
+                correct: null
+              }
+            });
+          }}
         />
       </skoash.Component>
       <Reveal
