@@ -145,6 +145,7 @@ class TrashScreenComponent extends skoash.Screen {
         ref="reveal"
         className="center"
         closeRespond={this.closeRespond.bind(this)}
+        pl-bg
         list={[
           <skoash.Component id="goodJob" correct>
             <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
@@ -160,12 +161,13 @@ class TrashScreenComponent extends skoash.Screen {
           </skoash.Component>,
         ]}
         assets={[
-          <AudioSequence playOnStart={false}>
+          <AudioSequence className="audio-sequence" playOnStart={false}>
             <skoash.Audio id="goodJob" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
             <skoash.Audio id="neverThrow" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
           </AudioSequence>,
           <skoash.Audio id="tryAgain" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" />,
         ]}
+        button={<button className="try-again" onClick={this.close.bind(this)} pl-bg></button>}
       />
     );
   }
@@ -175,7 +177,7 @@ class TrashScreenComponent extends skoash.Screen {
       <Timer
         ref="timer"
         countDown={true}
-        timeout={10000}
+        timeout={3000}
         leadingContent={<skoash.Image src="media/_images/_S_Trash/img_9.1.png" />}
         onComplete={this.onTimerComplete.bind(this)}
       />

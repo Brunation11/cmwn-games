@@ -11,7 +11,7 @@ var BubbleUpScreen = (
     </AudioSequence>
     <skoash.Component className="center">
       <skoash.Component className="group">
-        <skoash.Component ref="frame" className="frame">
+        <skoash.Component ref="frame" className="frame" pl-bg>
           <skoash.Component ref="center" className="center">
             <skoash.Component>
               <skoash.Image src="media/_images/_S_BubbleUp/img_6.1.png" />

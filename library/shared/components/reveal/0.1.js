@@ -109,6 +109,15 @@ class Reveal extends skoash.Component {
     });
   }
 
+  renderButton() {
+    if (this.props.button) {
+      return this.props.button;
+    }
+    return (
+      <button className="close-reveal" onClick={this.close.bind(this)}></button>
+    );
+  }
+
   getClass(li, key) {
     var classes = '';
 
@@ -133,7 +142,7 @@ class Reveal extends skoash.Component {
           <ul>
             {this.renderList()}
           </ul>
-          <button className="close-reveal" onClick={this.close.bind(this)}></button>
+          {this.renderButton()}
         </div>
       </div>
     );
