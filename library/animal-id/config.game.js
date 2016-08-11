@@ -1,5 +1,5 @@
 var config = {
-  id: 'animal-id-react',
+  id: 'animal-id',
   version: 2,
   dimensions: {
     width: 960,

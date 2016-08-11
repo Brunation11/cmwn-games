@@ -34,7 +34,7 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import 'shared/js/test-platform-integration';
 
-class AnimalIDReact extends skoash.Game {
+class AnimalID extends skoash.Game {
   constructor() {
     super(config);
 
@@ -137,6 +137,6 @@ class AnimalIDReact extends skoash.Game {
 
 }
 
-skoash.start(AnimalIDReact, config.id);
+skoash.start(AnimalID, config.id);
 
 import 'shared/js/google-analytics';
