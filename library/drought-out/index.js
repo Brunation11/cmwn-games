@@ -20,6 +20,8 @@ import InfoDrainScreen from './components/info_drain_screen';
 import InfoUsingLessScreen from './components/info_using_less_screen';
 import ShowerScreen from './components/shower_screen';
 import ConserveScreen from './components/conserve_screen';
+import HeroScreen from './components/hero_screen';
+import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -32,7 +34,7 @@ class DroughtOut extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: ThinkScreen,
+      /*2: ThinkScreen,
       3: InfoNoWaterScreen,
       4: InfoImpactScreen,
       5: InfoNeedWaterScreen,
@@ -46,10 +48,10 @@ class DroughtOut extends skoash.Game {
       13: WhatCanWeDoScreen,
       14: InfoDrainScreen,
       15: InfoUsingLessScreen,
-      16: ShowerScreen,
-      17: ConserveScreen,
-      /*18: HeroScreen,
-      19: FlipScreen*/
+      16: ShowerScreen,*/
+      2: ConserveScreen,
+      3: HeroScreen,
+      4: FlipScreen
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));

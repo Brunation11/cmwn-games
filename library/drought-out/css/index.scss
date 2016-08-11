@@ -448,6 +448,10 @@ img.inline {
     background-position: 0px -75*15-5+px;
   }
 
+  .drought-word {
+    background-image: url(../media/S_2/sprite_2.1.png);
+  }
+
   ul {
     display: block;
     height: auto;
@@ -782,6 +786,12 @@ img.inline {
 }
 
 #shower {
+  .VOICE-OVER & {
+    li {
+      pointer-events: none;
+    }
+  }
+
   img {
     display: block;
     margin: 15px auto;
@@ -803,7 +813,6 @@ img.inline {
       margin: 0;
       width: 220px;
       height: 320px;
-      pointer-events: none;
 
       .side {
         background-size: auto 100%;
@@ -812,11 +821,6 @@ img.inline {
         &.b {
           background-position: right top;
         }
-      }
-
-      &:nth-of-type(1),
-      &.HIGHLIGHTED + li {
-        pointer-events: auto;
       }
 
       &:nth-of-type(1) .side.a:hover,
@@ -833,10 +837,15 @@ img.inline {
       }
     }
   }
+}
 
-  .VOICE-OVER & {
-    li {
-      pointer-events: none;
+.flip-card-component {
+  li {
+    pointer-events: none;
+
+    &:nth-of-type(1),
+    &.HIGHLIGHTED + li {
+      pointer-events: auto;
     }
   }
 }
@@ -848,8 +857,9 @@ img.inline {
     height: 240px;
     left: 280px;
     bottom: 40px;
+    background-image: url(../media/_Frames/FR_4.png);
 
-    .items {
+    ul {
       position: static;
       margin: 0;
 
@@ -883,6 +893,7 @@ img.inline {
     background-repeat: no-repeat;
     -webkit-animation: swing-closed .5s steps(5) forwards;
     animation: swing-closed .5s steps(5) forwards;
+    z-index: 1;
   }
 
   #door {
@@ -897,21 +908,30 @@ img.inline {
     cursor: pointer;
     opacity: 1;
     transition: opacity 0s .5s;
+    z-index: 1;
 
     &:hover {
       background-position: -516px center;
     }
   }
 
-  .HIGHLIGHTED {
-    #door-sprite {
-      -webkit-animation: swing-open .5s steps(5) forwards;
-      animation: swing-open .5s steps(5) forwards;
+  .VOICE-OVER & {
+    li {
+      pointer-events: none;
     }
+  }
 
-    #door {
-      opacity: 0;
-      transition: opacity 0s;
+  &.SELECTING {
+    .VOICE-OVER & {
+      #door-sprite {
+        -webkit-animation: swing-open .5s steps(5) forwards;
+        animation: swing-open .5s steps(5) forwards;
+      }
+
+      #door {
+        opacity: 0;
+        transition: opacity 0s;
+      }
     }
   }
 }

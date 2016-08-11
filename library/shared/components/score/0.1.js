@@ -56,18 +56,21 @@ class Score extends skoash.Component {
     this.setState({
       score: this.state.score + increment
     }, () => {
-      this.updateGameState({
-        path: this.props.correctTarget,
-        data: {
-          score: this.state.score
-        }
-      });
+      if (this.props.correctTarget) {
+        this.updateGameState({
+          path: this.props.correctTarget,
+          data: {
+            score: this.state.score
+          }
+        });
+      }
       this.checkComplete();
     });
   }
 
   componentWillReceiveProps(props) {
     if (props.correct != null && props.correct !== this.props.correct) {
+      console.log('score: ' + props.correct);
       if (props.correct) {
         this.up();
       } else {

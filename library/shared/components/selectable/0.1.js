@@ -79,7 +79,7 @@ class Selectable extends skoash.Component {
     }
 
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+      this.props.selectRespond.call(this, message);
     }
 
     this.requireForComplete.map(key => {

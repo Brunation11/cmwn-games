@@ -13,7 +13,7 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden" ref="hidden" src="media/_Frames/FR_1.png"/>
       <skoash.Component className="frame animated">
         <p>
-          What do you think of when you hear<br /> the word <span class="inline" pl-bg="media/S_2/sprite_2.1.png"/>
+          What do you think of when you hear<br /> the word <span className="inline drought-word"/>
         </p>
         <SelectableReveal
           ref="selectable-reveal"
