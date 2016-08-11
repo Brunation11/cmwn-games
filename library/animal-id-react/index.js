@@ -15,6 +15,7 @@ import IDReptileScreen from './components/id_reptile_screen';
 import IDHerbivoreScreen from './components/id_herbivore_screen';
 import InfoGoodJobScreen from './components/info_good_job_screen';
 import InfoMatchScreen from './components/info_match_screen';
+import MatchScreen from './components/match_screen';
 import InfoDetailScreen from './components/info_detail_screen';
 import InfoSnoutScreen from './components/info_snout_screen';
 import WhatDoesANoseScreen from './components/what_does_a_nose_screen';
@@ -31,7 +32,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class AnimalIDReact extends skoash.Game {
   constructor() {
@@ -51,24 +52,27 @@ class AnimalIDReact extends skoash.Game {
       10: IDHerbivoreScreen,
       11: InfoGoodJobScreen,
       12: InfoMatchScreen,
-      13: InfoDetailScreen,
-      14: InfoSnoutScreen,
-      15: WhatDoesANoseScreen,
-      16: InfoSneezersScreen,
-      17: DNDLionScreen,
-      18: DNDSlothScreen,
-      19: DNDWolfScreen,
-      20: DNDElephantScreen,
-      21: DNDDragonScreen,
-      22: DNDPigScreen,
-      23: DNDGorillaScreen,
-      24: DNDMuleScreen,
-      25: FlipScreen
+      13: MatchScreen,
+      14: InfoDetailScreen,
+      15: InfoSnoutScreen,
+      16: WhatDoesANoseScreen,
+      17: InfoSneezersScreen,
+      18: DNDLionScreen,
+      19: DNDSlothScreen,
+      20: DNDWolfScreen,
+      21: DNDElephantScreen,
+      22: DNDDragonScreen,
+      23: DNDPigScreen,
+      24: DNDGorillaScreen,
+      25: DNDMuleScreen,
+      26: FlipScreen
     };
 
     this.menus = {
       quit: <QuitScreen />,
     };
+
+    window.g = this;
   }
 
   renderLoader() {
@@ -95,8 +99,8 @@ class AnimalIDReact extends skoash.Game {
       return 5;
     case 12:
     case 13:
-      return 3;
     case 14:
+      return 3;
     case 15:
     case 16:
     case 17:
@@ -108,6 +112,7 @@ class AnimalIDReact extends skoash.Game {
     case 23:
     case 24:
     case 25:
+    case 26:
       return 4;
     default:
       return;
