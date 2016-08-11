@@ -38,12 +38,15 @@ class Carousel extends Selectable {
   }
 
   bootstrap() {
+    var list;
+    // skoash.Component is not the super here, but this is what we want
     skoash.Component.prototype.bootstrap.call(this);
-    if (this.refs.bin) {
-      this.setState({
-        list: this.refs.bin.get(this.props.showNum + 1)
-      });
-    }
+
+    list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+
+    this.setState({
+      list
+    });
   }
 
   selectHelper() {
@@ -70,9 +73,7 @@ class Carousel extends Selectable {
    * that the element is transitioned and not replaced.
    */
   renderList() {
-    var list = this.props.list || this.state.list;
-
-    return list.map((li, key) => {
+    return this.state.list.map((li, key) => {
       var ref, onTransitionEnd;
       ref = li.ref || li.props['data-ref'] || key;
       li.type = li.type || skoash.Component;

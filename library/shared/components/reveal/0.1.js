@@ -14,7 +14,7 @@ class Reveal extends skoash.Component {
   open(message) {
     this.setState({
       open: true,
-      openReveal: message,
+      openReveal: '' + message,
     });
 
     this.playAudio(message);

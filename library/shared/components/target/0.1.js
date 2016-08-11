@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Target extends skoash.Component {
@@ -80,8 +81,8 @@ class Target extends skoash.Component {
       this.onChange(props.attempt);
     }
 
-    if (props.setTarget && props.setTarget !== this.props.setTarget) {
-      this.setTarget((this.state.idx + 1) % this.props.targets.length);
+    if (_.isFinite(props.setTarget) && props.setTarget !== this.props.setTarget) {
+      this.setTarget(props.setTarget % this.props.targets.length);
     }
   }
 

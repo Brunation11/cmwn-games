@@ -42,7 +42,9 @@ export default function (props, ref, key) {
           attempt={_.get(props, 'data.attempt.target.ref', null)}
           attemptTarget="attempt"
           dataTarget="score"
-          setTarget={_.get(props, 'data.score.complete', null)}
+          setTarget={_.get(props, 'data.revealScore.score', null)}
+          complete
+          checkComplete={false}
           targets={[
             <skoash.Image name="loops" amount={2} targetClass="loops-2" className="animated" src="media/S_10/img_10.11.png" />,
             <skoash.Image name="whorl" amount={3} targetClass="whorl-3" className="animated" src="media/S_10/img_10.15.png" />,
@@ -65,6 +67,16 @@ export default function (props, ref, key) {
           downIncrement={0}
           max={_.get(props, 'data.score.amount', null)}
           resetOnComplete
+          complete
+          onComplete={function () {
+            this.updateGameState({
+              path: 'revealScore',
+              data: {
+                correct: true
+              }
+            });
+            this.incomplete();
+          }}
         >
           <div className="board">
             <div />
@@ -72,23 +84,36 @@ export default function (props, ref, key) {
             <div />
           </div>
         </Score>
+        <Score
+          className="reveal-score"
+          correct={_.get(props, 'data.revealScore.correct', null)}
+          correctTarget="revealScore"
+          downIncrement={0}
+          max={7}
+          complete
+          resetOnComplete
+        />
       </skoash.Component>
       <Reveal
-        openOnStart="8"
-        listLength={7}
-        openReveal={_.get(props, 'data.carousel.target.ref', null)}
+        openOnStart="0"
+        openReveal={_.get(props, 'data.revealScore.score', null)}
         assets={[
+          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.7.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.8.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.9.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.7.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.8.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.9.mp3" />,
+          // <skoash.Audio type="voiceOver" src="media/S_10/VO_10.10.mp3" />,
         ]}
         list={[
+          <li>
+            <p className="typing">CLICK WHEN THE PRINT</p>
+            <p className="typing">MATCHES THE DESCRIPTION</p>
+            <p className="typing">AND GET A COOL FACT!</p>
+          </li>,
           <li>
             No two fingerprints<br/>
             are the same!
@@ -98,40 +123,35 @@ export default function (props, ref, key) {
             fingerprint as someone else<br/>
             is 1 in 64 billion.
           </li>,
-          <li>
-            Fingerprints are more<br/>
-            unique than DNA.
-          </li>,
-          <li>
-            Fingerprinting is part of the<br/>
-            science of biometrics which uses<br/>
-            physical characteristics<br/>
-            as identifiers.
-          </li>,
-          <li>
-            The ridges that make up<br/>
-            fingerprints are called<br/>
-            friction ridges.
-          </li>,
-          <li>
-            Your fingerprints never change.
-          </li>,
-          <li>
-            Your fingertips contain pores<br/>
-            that attach to sweat glands.<br/>
-            The sweat is what causes you<br/>
-            to leave prints on the<br/>
-            things you touch.
-          </li>,
-          <li>
-            Fingerprinting is a technique<br/>
-            know as dactyloscopy.
-          </li>,
-          <li>
-            <p className="typing">CLICK WHEN THE PRINT</p>
-            <p className="typing">MATCHES THE DESCRIPTION</p>
-            <p className="typing">AND GET A COOL FACT!</p>
-          </li>,
+          // <li>
+          //   Fingerprints are more<br/>
+          //   unique than DNA.
+          // </li>,
+          // <li>
+          //   Fingerprinting is part of the<br/>
+          //   science of biometrics which uses<br/>
+          //   physical characteristics<br/>
+          //   as identifiers.
+          // </li>,
+          // <li>
+          //   The ridges that make up<br/>
+          //   fingerprints are called<br/>
+          //   friction ridges.
+          // </li>,
+          // <li>
+          //   Your fingerprints never change.
+          // </li>,
+          // <li>
+          //   Your fingertips contain pores<br/>
+          //   that attach to sweat glands.<br/>
+          //   The sweat is what causes you<br/>
+          //   to leave prints on the<br/>
+          //   things you touch.
+          // </li>,
+          // <li>
+          //   Fingerprinting is a technique<br/>
+          //   know as dactyloscopy.
+          // </li>,
         ]}
       />
     </skoash.Screen>

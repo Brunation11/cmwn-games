@@ -67,6 +67,8 @@ class Printmaster extends skoash.Game {
     this.menus = {
       quit: QuitScreen,
     };
+
+    window.g = this;
   }
 
   getBackgroundIndex(index) {

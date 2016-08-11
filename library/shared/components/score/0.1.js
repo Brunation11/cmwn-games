@@ -5,11 +5,15 @@ class Score extends skoash.Component {
   constructor() {
     super();
 
-    this.state = {
-      score: 0
-    };
+    this.checkScore = this.checkScore.bind(this);
+  }
 
-    this.checkComplete = this.checkComplete.bind(this);
+  bootstrap() {
+    super.bootstrap();
+
+    this.setState({
+      score: this.props.startingScore
+    });
   }
 
   complete() {
@@ -24,7 +28,7 @@ class Score extends skoash.Component {
     }, this.props.completeDelay);
   }
 
-  checkComplete() {
+  checkScore() {
     if (!this.props.max) return;
     if (this.state.score >= this.props.max && !this.state.complete) {
       this.complete();
@@ -62,7 +66,7 @@ class Score extends skoash.Component {
           score: this.state.score
         }
       });
-      this.checkComplete();
+      this.checkScore();
     });
   }
 
@@ -94,7 +98,7 @@ class Score extends skoash.Component {
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
+      <div className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}
@@ -104,5 +108,10 @@ class Score extends skoash.Component {
     );
   }
 }
+
+Score.defaultProps = _.defaults({
+  checkComplete: false,
+  startingScore: 0,
+}, skoash.Component.defaultProps);
 
 export default Score;

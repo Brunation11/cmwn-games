@@ -84,7 +84,7 @@
 
             & + div {
               transform: translateY(380px) scale(.6);
-              
+
               & + div {
                 transform: translateY(540px) scale(.6);
               }
@@ -169,6 +169,10 @@
         transition: transform 0s 1s, opacity 1s, background 0s 1s;
         opacity: 0;
       }
+    }
+
+    &.reveal-score {
+      display: none;
     }
   }
 
@@ -326,7 +330,7 @@
         width: 620px;
       }
     }
-    
+
     button {
       position: absolute;
       right: 35px;
