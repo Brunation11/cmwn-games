@@ -9,12 +9,12 @@ class QuitScreen extends skoash.Screen {
   }
 
   okay() {
-    play.trigger('quit');
+    skoash.trigger('quit');
   }
 
   cancel() {
     this.close();
-    play.trigger('menuClose', {
+    skoash.trigger('menuClose', {
       id: this.state.id,
     });
   }

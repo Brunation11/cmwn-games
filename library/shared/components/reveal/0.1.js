@@ -1,15 +1,16 @@
-class Reveal extends play.Component {
+class Reveal extends skoash.Component {
   constructor() {
     super();
 
+    this.list = [
+      <li></li>,
+      <li></li>,
+      <li></li>,
+      <li></li>
+    ];
+
     this.state = {
       openReveal: '',
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
     };
   }
 
@@ -18,7 +19,7 @@ class Reveal extends play.Component {
       open: true,
       openReveal: message,
     });
-
+    console.log(this);
     this.playAudio(message);
 
     if (this.props.completeOnOpen) {
@@ -42,8 +43,12 @@ class Reveal extends play.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.close();
+
+    if (this.props.openOnStart != null) {
+      this.open(this.props.openOnStart);
+    }
   }
 
   playAudio(message) {
@@ -54,7 +59,7 @@ class Reveal extends play.Component {
     }
 
     if ('' + parseInt(message, 10) === message) {
-      message = parseInt(message, 10);
+      message = 'asset-' + message;
     }
 
     if (typeof message === 'string') {
@@ -73,11 +78,10 @@ class Reveal extends play.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
           <asset.type
             {...asset.props}
-            ref={ref}
+            ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
             data-ref={key}
           />
@@ -89,18 +93,18 @@ class Reveal extends play.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
+    var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+      var ref = li.ref || li.props['data-ref'] || key;
       return (
-        <li
+        <li.type
           {...li.props}
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={key}
+          ref={ref}
           key={key}
-        ></li>
+        />
       );
     });
   }
