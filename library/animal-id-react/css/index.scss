@@ -43,7 +43,8 @@ body > div > div {
   }
 
   [id^="info-match"],
-  [id^="info-detail"] {
+  [id^="info-detail"],
+  [id^="match-"] {
     background-image: url(../media/images/background/match.png);
     background-size: cover;
   }
@@ -284,6 +285,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
   opacity: 0;
   z-index: -1;
   transition: opacity .5s, z-index 0s .6s;
+  // transition-delay: 1s;
 
   div {
     position: absolute;
@@ -347,7 +349,10 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
 .VOICE-OVER {
   .draggable,
-  .selectable > * {
+  .selectable > *,
+  .matchable > *,
+  .close-reveal,
+   {
     pointer-events: none;
   }
 }
@@ -1285,6 +1290,386 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
           height: 130px;
         }
       }
+    }
+  }
+}
+
+#match-game {
+  img {
+  }
+
+  .matchable-reveal {
+    .matchable > * {
+      list-style-type: none;
+      position: absolute;
+      width: 16%;
+      height: 27%;
+      background: url(../media/images/match/img_13.1.png);
+      background-size: 2700px 176px;
+      background-position: -8px -14px;
+
+      &:nth-child(1) {
+        top: 5%;
+        left: 10%;
+      }
+
+      &:nth-child(2) {
+        top: 5%;
+        left: 26%;
+      }
+
+      &:nth-child(3) {
+        top: 5%;
+        left: 42%;
+      }
+
+      &:nth-child(4) {
+        top: 5%;
+        left: 58%;
+      }
+
+      &:nth-child(5) {
+        top: 5%;
+        left: 74%;
+      }
+
+      &:nth-child(6) {
+        top: 32%;
+        left: 10%;
+      }
+
+      &:nth-child(7) {
+        top: 32%;
+        left: 26%;
+      }
+
+      &:nth-child(8) {
+        top: 32%;
+        left: 58%;
+      }
+
+      &:nth-child(9) {
+        top: 32%;
+        left: 74%;
+      }
+
+      &:nth-child(10) {
+        top: 59%;
+        left: 10%;
+      }
+
+      &:nth-child(11) {
+        top: 59%;
+        left: 26%;
+      }
+
+      &:nth-child(12) {
+        top: 59%;
+        left: 42%;
+      }
+
+      &:nth-child(13) {
+        top: 59%;
+        left: 58%;
+      }
+
+      &:nth-child(14) {
+        top: 59%;
+        left: 74%;
+      }
+
+      &.HIGHLIGHTED {
+        // animation-name: flipInX;
+
+        &.frog {
+          background-position: 2331px -14px;
+        }
+
+        &.cow {
+          background-position: 162px -14px;
+        }
+
+        &.robin {
+          background-position: 1248px -14px;
+        }
+
+        &.fox {
+          background-position: 2511px -14px;
+        }
+
+        &.dove {
+          background-position: 704px -14px;
+        }
+
+        &.humming-bird {
+          background-position: 883px -14px;
+        }
+
+        &.rhino {
+          background-position: 2147px -14px;
+        }
+
+        &.lily-pad {
+          background-position: 1064px -14px;
+        }
+
+        &.grass {
+          background-position: 523px -14px;
+        }
+
+        &.worm {
+          background-position: 1427px -14px;
+        }
+
+        &.mouse {
+          background-position: 1967px -14px;
+        }
+
+        &.cactus {
+          background-position: 1787px -14px;
+        }
+
+        &.honeysuckle {
+          background-position: 343px -14px;
+        }
+
+        &.oxpecker {
+          background-position: 1608px -14px;
+        }
+      }
+    }
+
+    .reveal {
+      & > div {
+        top: -8%;
+        margin-top: 0;
+        background-size: 100% 110%;
+      }
+
+      .thumb {
+        width: 43%;
+        top: 18%;
+        left: 28%;
+        position: absolute;
+      }
+
+      .banner {
+        width: 50%;
+        top: 49%;
+        left: 24%;
+        position: absolute;
+      }
+
+      div ul li.OPEN {
+        background: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 1;
+
+        p {
+          position: absolute;
+          text-align: center;
+          color: #000000;
+          top: 55%;
+          left: 15%;
+        }
+
+        &.frog {
+          p {
+            top: 62%;
+            left: 25%;
+          }
+        }
+
+        &.robin {
+          .thumb {
+            width: 32%;
+            top: 15%;
+            left: 38%;
+          }
+
+          p {
+            top: 62%;
+            left: 23%;
+          }
+        }
+
+        &.fox {
+          .thumb {
+            width: 33%;
+            top: 18%;
+            left: 32%;
+          }
+
+          .banner {
+            top: 42%;
+          }
+
+          p {
+            top: 56%;
+            left: 14%;
+          }
+        }
+
+        &.dove {
+          .thumb {
+            width: 25%;
+            left: 38%;
+          }
+
+          .banner {
+            width: 70%;
+            top: 48%;
+            left: 14%;
+          }
+
+          p {
+            top: 56%;
+            left: 23%;
+          }
+        }
+
+        &.cow {
+          .thumb {
+            width: 35%;
+            top: 18%;
+            left: 31%;
+          }
+
+          .banner {
+            width: 50%;
+            top: 43%;
+            left: 25%;
+          }
+
+          p {
+            top: 56%;
+            left: 23%;
+          }
+        }
+
+        &.humming-bird {
+          .thumb {
+            top: 16%;
+            left: 31%;
+          }
+
+          .banner {
+            width: 70%;
+            top: 51%;
+            left: 14%;
+          }
+
+          p {
+            top: 62%;
+            left: 21%;
+          }
+        }
+
+        &.rhino {
+          .thumb {
+            top: 16%;
+          }
+
+          .banner {
+            width: 70%;
+            top: 51%;
+            left: 14%;
+          }
+
+          p {
+            top: 62%;
+            left: 19%;
+          }
+        }
+      }
+
+      .close-reveal {
+        position: absolute;
+        width: 10%;
+        height: 8%;
+        right: 13%;
+        bottom: 11%;
+        background-position: 163px -13px;
+        background-size: 800px 142px;
+      }
+    }
+  }
+
+
+  &.READY.OPEN {
+    .matchable-reveal {
+      // .matchable > * {
+        // background-position: -8px -14px;
+
+        // &:after {
+        //   width: 100%;
+        //   height: 100%;
+        //   position: absolute;
+        //   content: "";
+        //   background: url(../media/images/match/img_13.1.png);
+        //   background-size: 2700px 176px;
+        //   animation: flipInX 1s 2s;
+        // }
+
+        // &.frog:after {
+        //   background-position: 2331px -14px;
+        // }
+
+        // &.cow:after {
+        //   background-position: 162px -14px;
+        // }
+
+        // &.robin:after {
+        //   background-position: 1248px -14px;
+        // }
+
+        // &.fox:after {
+        //   background-position: 2511px -14px;
+        // }
+
+        // &.dove:after {
+        //   background-position: 704px -14px;
+        // }
+
+        // &.humming-bird:after {
+        //   background-position: 883px -14px;
+        // }
+
+        // &.rhino:after {
+        //   background-position: 2147px -14px;
+        // }
+
+        // &.lily-pad:after {
+        //   background-position: 1064px -14px;
+        // }
+
+        // &.grass:after {
+        //   background-position: 523px -14px;
+        // }
+
+        // &.worm:after {
+        //   background-position: 1427px -14px;
+        // }
+
+        // &.mouse:after {
+        //   background-position: 1967px -14px;
+        // }
+
+        // &.cactus:after {
+        //   background-position: 1787px -14px;
+        // }
+
+        // &.honeysuckle:after {
+        //   background-position: 343px -14px;
+        // }
+
+        // &.oxpecker:after {
+        //   background-position: 1608px -14px;
+        // }
+      // }
     }
   }
 }
@@ -2512,167 +2897,167 @@ body:not(.DEMO) #what-does-a-nose-do {
   }
 }
 
-#match-game {
+// #match-game {
 
-  .frame {
-    position: static;
-  }
+//   .frame {
+//     position: static;
+//   }
 
-  .match-game-component {
+//   .match-game-component {
 
-    .bin {
-      display: none;
-    }
+//     .bin {
+//       display: none;
+//     }
 
-    .items {
-      width: 800px;
-      height: auto;
-      position: absolute;
-      padding: 0;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-60%);
-      z-index: 1;
-      flex-wrap: wrap;
+//     .items {
+//       width: 800px;
+//       height: auto;
+//       position: absolute;
+//       padding: 0;
+//       left: 50%;
+//       top: 50%;
+//       transform: translateX(-50%) translateY(-60%);
+//       z-index: 1;
+//       flex-wrap: wrap;
 
-      li {
-        width: 150px;
-        height: 150px;
+//       li {
+//         width: 150px;
+//         height: 150px;
 
-        &:nth-of-type(7) {
-          margin-right: 165px;
-        }
+//         &:nth-of-type(7) {
+//           margin-right: 165px;
+//         }
 
-        .side {
-          background-color: transparent;
-          background-image: url(../media/images/match/img_13.1.png);
-          background-position: -10px -15px;
-          background-size: 1800% 120%;
-        }
+//         .side {
+//           background-color: transparent;
+//           background-image: url(../media/images/match/img_13.1.png);
+//           background-position: -10px -15px;
+//           background-size: 1800% 120%;
+//         }
 
-        &.fox .side.b {
-          background-position: -190px -15px;
-        }
+//         &.fox .side.b {
+//           background-position: -190px -15px;
+//         }
 
-        &.frog .side.b {
-          background-position: -370px -15px;
-        }
+//         &.frog .side.b {
+//           background-position: -370px -15px;
+//         }
 
-        &.rhino .side.b {
-          background-position: -550px -15px;
-        }
+//         &.rhino .side.b {
+//           background-position: -550px -15px;
+//         }
 
-        &.mouse .side.b {
-          background-position: -730px -15px;
-        }
+//         &.mouse .side.b {
+//           background-position: -730px -15px;
+//         }
 
-        &.cactus .side.b {
-          background-position: -914px -15px;
-        }
+//         &.cactus .side.b {
+//           background-position: -914px -15px;
+//         }
 
-        &.oxpecker .side.b {
-          background-position: -1094px -15px;
-        }
+//         &.oxpecker .side.b {
+//           background-position: -1094px -15px;
+//         }
 
-        &.worm .side.b {
-          background-position: -1276px -15px;
-        }
+//         &.worm .side.b {
+//           background-position: -1276px -15px;
+//         }
 
-        &.robin .side.b {
-          background-position: -1450px -15px;
-        }
+//         &.robin .side.b {
+//           background-position: -1450px -15px;
+//         }
 
-        &.lily-pad .side.b {
-          background-position: -1637px -15px;
-        }
+//         &.lily-pad .side.b {
+//           background-position: -1637px -15px;
+//         }
 
-        &.humming-bird .side.b {
-          background-position: -1818px -15px;
-        }
+//         &.humming-bird .side.b {
+//           background-position: -1818px -15px;
+//         }
 
-        &.dove .side.b {
-          background-position: -1999px -15px;
-        }
+//         &.dove .side.b {
+//           background-position: -1999px -15px;
+//         }
 
-        &.grass .side.b {
-          background-position: -2170px -15px;
-        }
+//         &.grass .side.b {
+//           background-position: -2170px -15px;
+//         }
 
-        &.honeysuckle .side.b {
-          background-position: -2350px -15px;
-        }
+//         &.honeysuckle .side.b {
+//           background-position: -2350px -15px;
+//         }
 
-        &.cow .side.b {
-          background-position: -2543px -15px;
-        }
-      }
-    }
+//         &.cow .side.b {
+//           background-position: -2543px -15px;
+//         }
+//       }
+//     }
 
-    &.DISABLED {
-      .items {
-        pointer-events: none;
-      }
-    }
-  }
+//     &.DISABLED {
+//       .items {
+//         pointer-events: none;
+//       }
+//     }
+//   }
 
-  .reveal {
+//   .reveal {
 
-    ul {
+//     ul {
 
-      li {
+//       li {
 
-        div {
-          background: url(../media/images/frame/match.png) no-repeat;
-          background-size: 100% auto;
-          background-position: center center;
-          padding-bottom: 70%;
-          top: 45%;
-          text-align: center;
-          color: #000;
+//         div {
+//           background: url(../media/images/frame/match.png) no-repeat;
+//           background-size: 100% auto;
+//           background-position: center center;
+//           padding-bottom: 70%;
+//           top: 45%;
+//           text-align: center;
+//           color: #000;
 
-          img {
-            display: block;
-            max-width: 80%;
-            max-height: 250px;
+//           img {
+//             display: block;
+//             max-width: 80%;
+//             max-height: 250px;
 
-            &:nth-of-type(1) {
-              margin: 15% auto 0;
-            }
+//             &:nth-of-type(1) {
+//               margin: 15% auto 0;
+//             }
 
-            &:nth-of-type(2) {
-              margin: -5% auto 0;
-              max-height: 70px;
-            }
-          }
+//             &:nth-of-type(2) {
+//               margin: -5% auto 0;
+//               max-height: 70px;
+//             }
+//           }
 
-          p {
-            margin: -2% 0 0;
-            font-size: 30px;
+//           p {
+//             margin: -2% 0 0;
+//             font-size: 30px;
 
-            &.small-font {
-              font-size: 26px;
-            }
-          }
+//             &.small-font {
+//               font-size: 26px;
+//             }
+//           }
 
-          .next-screen {
-            bottom: 17%;
-            right: 13%;
-            display: block;
-            opacity: 1;
-            transition: opacity .5s;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
+//           .next-screen {
+//             bottom: 17%;
+//             right: 13%;
+//             display: block;
+//             opacity: 1;
+//             transition: opacity .5s;
+//             cursor: pointer;
+//           }
+//         }
+//       }
+//     }
+//   }
 
-  &:not(.COMPLETE).PLAYING .reveal ul li div .next-screen,
-  &:not(.COMPLETE).VOICE-OVER .reveal ul li div .next-screen {
-    opacity: 0;
-    cursor: auto;
-  }
-}
+//   &:not(.COMPLETE).PLAYING .reveal ul li div .next-screen,
+//   &:not(.COMPLETE).VOICE-OVER .reveal ul li div .next-screen {
+//     opacity: 0;
+//     cursor: auto;
+//   }
+// }
 
 .dropzone-component {
   display: inline-block;
