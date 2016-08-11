@@ -143,13 +143,13 @@ class Reveal extends skoash.Component {
   }
 }
 
-Reveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+Reveal.defaultProps = _.defaults({
   list: [
     <li></li>,
     <li></li>,
     <li></li>,
     <li></li>
   ],
-});
+}, skoash.Component.defaultProps);
 
 export default Reveal;

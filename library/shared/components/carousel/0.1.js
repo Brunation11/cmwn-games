@@ -105,11 +105,11 @@ class Carousel extends Selectable {
   }
 }
 
-Carousel.defaultProps = _.merge(Selectable.defaultProps, {
+Carousel.defaultProps = _.defaults({
   showNum: 3,
   targetIndex: 1,
   pause: 500,
   clickable: false
-});
+}, Selectable.defaultProps);
 
 export default Carousel;

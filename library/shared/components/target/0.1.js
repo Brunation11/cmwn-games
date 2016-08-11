@@ -58,7 +58,9 @@ class Target extends skoash.Component {
           target: null,
         }
       });
+    }
 
+    if (this.props.dataTarget) {
       this.updateGameState({
         path: this.props.dataTarget,
         data: {

@@ -233,7 +233,7 @@ p {
     transform: rotate(-180deg);
   }
 
-  .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+  .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
   .screen.GATED .next-screen {
     opacity: 0;
     transition: opacity 0s;

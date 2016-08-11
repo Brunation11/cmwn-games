@@ -30,9 +30,9 @@ class Score extends skoash.Component {
 
   checkScore() {
     if (!this.props.max) return;
-    if (this.state.score >= this.props.max && !this.state.complete) {
+    if (this.state.score >= this.props.max && (!this.state.complete || this.props.multipleCompletes)) {
       this.complete();
-    } else if (this.state.complete) {
+    } else if (this.state.complete && !this.props.complete) {
       this.incomplete();
     }
   }
