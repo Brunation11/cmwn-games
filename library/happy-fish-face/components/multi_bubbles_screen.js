@@ -80,7 +80,7 @@ var MultiBubblesScreen = (
     ref="multi-bubbles"
     id="multi-bubbles"
   >
-    <skoash.Audio type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" />
+    <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" />
     <div className="bubbles">
       <div></div>
       <div></div>
@@ -98,7 +98,6 @@ var MultiBubblesScreen = (
       <div></div>
     </div>
     <skoash.Image src="media/_images/_S_MultiBubbles/img_7.1.png" />
-    <skoash.Image className="hidden" src="media/_images/_S_MultiBubbles/img_7.3.png" />
     <Score
       ref="score"
       leadingContent={

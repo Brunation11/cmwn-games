@@ -5,10 +5,10 @@ var BubbleUpScreen = (
     ref="bubble-up"
     id="bubble-up"
   >
-    <AudioSequence ref="audio-sequence">
+    <skoash.MediaSequence ref="media-sequence">
       <skoash.Audio ref="vo-1" type="voiceOver" src="media/_audio/_S_BubbleUp/HFF_VO_BubbleUP.mp3" />
       <skoash.Audio ref="vo-2" type="voiceOver" src="media/_audio/_S_BubbleUp/HFF_VO_Answer.mp3" />
-    </AudioSequence>
+    </skoash.MediaSequence>
     <skoash.Component className="center">
       <skoash.Component className="group">
         <skoash.Component ref="frame" className="frame" pl-bg>

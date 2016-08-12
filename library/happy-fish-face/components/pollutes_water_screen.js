@@ -7,13 +7,13 @@ var PollutesWaterScreen = (
   >
     <skoash.Component className="center">
       <skoash.Component className="group">
-        <AudioSequence ref="audio-sequence">
+        <skoash.MediaSequence ref="media-sequence">
           <skoash.Audio ref="star-1" type="sfx" src="media/_audio/_S_PollutesWater/HFF_SX_Star_1.mp3" />
           <skoash.Audio ref="star-2" type="sfx" src="media/_audio/_S_PollutesWater/HFF_SX_Star_2.mp3" />
           <skoash.Audio ref="star-3" type="sfx" src="media/_audio/_S_PollutesWater/HFF_SX_Star_3.mp3" />
           <skoash.Audio ref="vo-1" type="voiceOver" src="media/_audio/_S_PollutesWater/HFF_VO_PollutesWater.mp3" />
           <skoash.Audio ref="vo-2" type="voiceOver" src="media/_audio/_S_PollutesWater/HFF_VO_Remove.mp3" />
-        </AudioSequence>
+        </skoash.MediaSequence>
         <skoash.Component className="frame" pl-bg>
           <skoash.Component className="stars-container">
             <div className="stars" pl-bg />
