@@ -94,12 +94,6 @@ class Selectable extends skoash.Component {
     this.selectHelper(e, classes);
   }
 
-  unselect(key) {
-    var classes = this.state.classes;
-    this.state.classes[key] = this.state.classes[key].replace(this.props.selectClass, '');
-    this.setState({classes,});
-  }
-
   highlight(e) {
     var classes = this.state.classes;
     this.selectHelper(e, classes);
