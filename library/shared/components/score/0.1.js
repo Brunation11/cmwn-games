@@ -70,7 +70,6 @@ class Score extends skoash.Component {
 
   componentWillReceiveProps(props) {
     if (props.correct != null && props.correct !== this.props.correct) {
-      console.log('score: ' + props.correct);
       if (props.correct) {
         this.up();
       } else {
