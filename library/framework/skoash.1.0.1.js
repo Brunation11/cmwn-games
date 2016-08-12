@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9155e931004dd31704b9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "129b4a83a2ffbab54370"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -46323,6 +46323,7 @@
 	      });
 
 	      this.audio.play();
+	      _get(Object.getPrototypeOf(Audio.prototype), 'play', this).call(this);
 	    }
 	  }, {
 	    key: 'pause',
@@ -46371,6 +46372,7 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
+	      console.log('complete');
 	      if (!this.props.loop) {
 	        play.trigger('audioStop', {
 	          audio: this
@@ -49162,6 +49164,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 	var _asset = __webpack_require__(323);
 
 	var _asset2 = _interopRequireDefault(_asset);
@@ -49195,7 +49199,29 @@
 	  }, {
 	    key: 'play',
 	    value: function play() {
-	      // this should be implemented per media
+	      if (this.props.playTarget) {
+	        this.updateGameState({
+	          path: this.props.playTarget,
+	          data: {
+	            playing: true
+	          }
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'complete',
+	    value: function complete() {
+	      console.log(this.props.completeTarget);
+	      if (this.props.completeTarget) {
+	        this.updateGameState({
+	          path: this.props.completeTarget,
+	          data: {
+	            playing: false,
+	            complete: true
+	          }
+	        });
+	      }
+	      _get(Object.getPrototypeOf(Media.prototype), 'complete', this).call(this);
 	    }
 	  }]);
 
@@ -49265,6 +49291,7 @@
 	    }(function () {
 	      if (this.state.playing) return;
 	      this.el.play();
+	      _get(Object.getPrototypeOf(Video.prototype), 'play', this).call(this);
 	      play.trigger('videoPlay', {
 	        video: this
 	      });

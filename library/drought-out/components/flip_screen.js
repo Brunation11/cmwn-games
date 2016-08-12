@@ -11,14 +11,7 @@ export default function (props, ref, key) {
         <skoash.Audio
           type="voiceOver"
           src="media/S_19/VO_19.1.mp3"
-          onComplete={function () {
-            this.updateGameState({
-              path: 'audio',
-              data: {
-                shaking: true
-              }
-            });
-          }}
+          completeTarget="vo"
         />
         <skoash.Audio type="sfx" src="media/S_19/S_19.2.mp3" />
       </skoash.MediaSequence>
@@ -29,7 +22,7 @@ export default function (props, ref, key) {
           You learned a lot about<br /> how to save water!<br /> Now lets work together<br /> to get the Drought Out.
         </p>
         <skoash.Image
-          className={'animated ' + (_.get(props, 'data.audio.shaking') ? 'shaking' : '')}
+          className={'animated ' + (_.get(props, 'data.vo.complete') ? 'shaking' : '')}
           src="media/S_19/img_19.1.png"
         />
 
