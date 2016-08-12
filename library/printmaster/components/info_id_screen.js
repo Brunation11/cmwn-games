@@ -6,6 +6,12 @@ export default function (props, ref, key) {
       key={key}
       id="info-id"
       className="large-frame"
+      onOpen={function () {
+        skoash.trigger('passData', {
+          name: 'typing',
+          duration: 4250,
+        });
+      }}
     >
       <skoash.MediaSequence ref="media">
         <skoash.Audio type="voiceOver" src="media/S_8/S_8.1.mp3" delay={500} />

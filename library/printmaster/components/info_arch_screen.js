@@ -6,6 +6,12 @@ export default function (props, ref, key) {
       key={key}
       id="info-arch"
       className="types"
+      onOpen={function () {
+        skoash.trigger('passData', {
+          name: 'typing',
+          duration: 500,
+        });
+      }}
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_4/VO_4.1.mp3" />
       <skoash.Image ref="image" className="animated" src="media/S_4/img_4.1.gif" />

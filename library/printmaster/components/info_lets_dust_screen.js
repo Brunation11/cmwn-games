@@ -6,6 +6,12 @@ export default function (props, ref, key) {
       key={key}
       id="info-lets-dust"
       className="large-frame"
+      onOpen={function () {
+        skoash.trigger('passData', {
+          name: 'typing',
+          duration: 1000,
+        });
+      }}
     >
       <skoash.MediaSequence ref="media">
         <skoash.Audio ref="vo" type="voiceOver" gameClass="LETS-DUST" src="media/S_11/VO_11.1.mp3" />

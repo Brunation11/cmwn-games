@@ -19,13 +19,14 @@ export default function (props, ref, key) {
       <skoash.Image ref="frame-img" className="hidden" src="media/_Frame/Fr_1.png" />
       <skoash.Component ref="frame" className="frame">
         <skoash.Image ref="title" className="title animated" src="media/S_12/img_12.1.png" />
+        <skoash.Image ref="images" className="hidden animated" src="media/S_12/img_12.2.png" />
         <div className="illustration">
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
-          <div className="animated" pl-bg="media/S_12/img_12.2.png"></div>
+          <div className="animated" />
+          <div className="animated" />
+          <div className="animated" />
+          <div className="animated" />
+          <div className="animated" />
+          <div className="animated" />
         </div>
         <ul>
           <li>Hand lotion</li>

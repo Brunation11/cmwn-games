@@ -6,6 +6,12 @@ export default function (props, ref, key) {
       key={key}
       id="info-discover"
       className="large-frame"
+      onOpen={function () {
+        skoash.trigger('passData', {
+          name: 'typing',
+          duration: 5000,
+        });
+      }}
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
       <skoash.Image ref="img" className="hidden" src="media/_Frame/Fr_1.png" />
