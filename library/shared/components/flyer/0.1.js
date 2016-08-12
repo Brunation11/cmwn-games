@@ -30,7 +30,7 @@ class Flyer extends skoash.Component {
     this.startGravity();
   }
 
-  
+
   onClick() {
     if (!this.state.started || this.state.paused) return;
     var curTranslateY = this.state.jumping ? this.state.translateY : this.getCurrentTranslateY();
@@ -64,7 +64,7 @@ class Flyer extends skoash.Component {
   }
 
   onResize() {
-    var zoom = play.trigger('getState').scale;
+    var zoom = skoash.trigger('getState').scale;
     var curRect = this.flyerNode.getBoundingClientRect();
     var containerHeight = this.flyerNode.offsetParent ? this.flyerNode.offsetParent.offsetHeight : 0;
 
@@ -186,12 +186,13 @@ class Flyer extends skoash.Component {
   }
 }
 
-Flyer.defaultProps = _.merge(skoash.Component.defaultProps, {
+Flyer.defaultProps = _.defaults({
   inBounds: true,
   bottomAnimation: false,
   jumpSize: 70,
   jumpSpeed: 6,
-  fallSpeed: 3
-});
+  fallSpeed: 3,
+  flyer: <div></div>
+}, skoash.Component.defaultProps);
 
 export default Flyer;

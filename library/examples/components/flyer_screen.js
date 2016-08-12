@@ -6,7 +6,6 @@ var FlyerScreen = (
   >
     <Flyer
       ref="flyer"
-      flyer={<div></div>}
     />
   </skoash.Screen>
 );
