@@ -41,12 +41,10 @@ class HappyFishFace extends skoash.Game {
     };
   }
 
-  getBackgroundIndex() {
-    var index = this.state.currentScreenIndex;
+  getBackgroundIndex(index) {
     if (index < 6) return 0;
     if (index < 9) return 1;
     return 2;
-
   }
 
   getClassNames() {

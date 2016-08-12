@@ -44,6 +44,12 @@ class TrashScreenComponent extends skoash.Screen {
     window.addEventListener('touchstart', this.touchstart.bind(this));
   }
 
+  start() {
+    super.start();
+
+    this.checkComplete = super.checkComplete;
+  }
+
   componentWillUnmount() {
     window.removeEventListener('mousemove', this.moveCursor);
     window.removeEventListener('touchstart', this.touchstart);
@@ -63,27 +69,23 @@ class TrashScreenComponent extends skoash.Screen {
     });
   }
 
-  reset() {
+  complete() {
+    super.complete();
     var self = this;
-    this.requireForComplete.forEach(key => {
-      var ref = self.refs[key];
-      var restartFunction = ref.restart || ref.incomplete;
-      if (typeof restartFunction === 'function') {
-        restartFunction.call(ref);
+
+    setTimeout(() => { // have to wait for state to change to complete: true
+      if (self.state.complete) {
+        self.incomplete();
+        self.checkComplete = () => {};
+        self.requireForComplete.forEach(key => {
+          var ref = self.refs[key];
+          var restartFunction = ref.restart || ref.incomplete;
+          if (typeof restartFunction === 'function') {
+            restartFunction.call(ref);
+          }
+        });
       }
-    });
-  }
-
-  next() {
-    super.next();
-
-    this.reset();
-  }
-
-  prev() {
-    super.prev();
-
-    this.reset();
+    }, 300);
   }
 
   onRevealComplete() {
@@ -245,7 +247,6 @@ class TrashScreenComponent extends skoash.Screen {
       <div>
         <skoash.Component ref="center-1" className="center">
           <skoash.Component ref="group" className="group">
-            <skoash.Image className="hidden" src="media/_images/_S_Trash/img_9.2.png" />
             {this.renderNet()}
             <skoash.Component ref="center-2" className="center">
               {this.renderReveal()}
