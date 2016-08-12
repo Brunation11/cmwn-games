@@ -16,8 +16,8 @@ var IDMolluskScreen = (
         <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
-        <skoash.ListItem data-ref="clam" className="clam animated" />,
         <skoash.ListItem className="octopus animated" />,
+        <skoash.ListItem data-ref="clam" className="clam animated" />,
         <skoash.ListItem className="stingray animated" />,
         <skoash.ListItem className="scorpian animated" />
       ]}

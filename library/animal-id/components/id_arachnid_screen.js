@@ -16,8 +16,8 @@ var IDArachnidScreen = (
         <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
-        <skoash.ListItem data-ref="spider" className="spider animated" />,
         <skoash.ListItem className="grasshoper animated" />,
+        <skoash.ListItem data-ref="spider" className="spider animated" />,
         <skoash.ListItem className="ladybug animated" />,
         <skoash.ListItem className="roach animated" />
       ]}

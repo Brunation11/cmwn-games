@@ -16,9 +16,9 @@ var IDCarnivoreScreen = (
         <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
-        <skoash.ListItem data-ref="lion" className="lion animated" />,
         <skoash.ListItem className="beaver animated" />,
         <skoash.ListItem className="gorilla animated" />,
+        <skoash.ListItem data-ref="lion" className="lion animated" />,
         <skoash.ListItem className="giraffe animated" />
       ]}
       revealList={[

@@ -16,8 +16,8 @@ var IDReptileScreen = (
         <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
-        <skoash.ListItem data-ref="alligator" className="alligator animated" />,
         <skoash.ListItem className="buzzor animated" />,
+        <skoash.ListItem data-ref="alligator" className="alligator animated" />,
         <skoash.ListItem className="squid animated" />,
         <skoash.ListItem className="bat animated" />
       ]}

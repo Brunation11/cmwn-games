@@ -16,10 +16,10 @@ var IDMammalScreen = (
         <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
       ]}
       selectableList={[
-        <skoash.ListItem data-ref="dolphin" className="dolphin animated" />,
         <skoash.ListItem className="snake animated" />,
         <skoash.ListItem className="pelican animated" />,
-        <skoash.ListItem className="dragon animated" />
+        <skoash.ListItem className="dragon animated" />,
+        <skoash.ListItem data-ref="dolphin" className="dolphin animated" />
       ]}
       revealList={[
         <skoash.ListItem data-ref="dolphin">
