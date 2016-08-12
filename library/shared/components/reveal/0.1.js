@@ -2,15 +2,14 @@ class Reveal extends skoash.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
     };
   }
 
@@ -19,7 +18,7 @@ class Reveal extends skoash.Component {
       open: true,
       openReveal: message,
     });
-    console.log(this);
+
     this.playAudio(message);
 
     if (this.props.completeOnOpen) {
@@ -45,10 +44,6 @@ class Reveal extends skoash.Component {
   start() {
     skoash.Component.prototype.start.call(this);
     this.close();
-
-    if (this.props.openOnStart != null) {
-      this.open(this.props.openOnStart);
-    }
   }
 
   playAudio(message) {
@@ -59,7 +54,7 @@ class Reveal extends skoash.Component {
     }
 
     if ('' + parseInt(message, 10) === message) {
-      message = 'asset-' + message;
+      message = parseInt(message, 10);
     }
 
     if (typeof message === 'string') {
@@ -78,10 +73,11 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
+        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
           <asset.type
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            ref={ref}
             key={key}
             data-ref={key}
           />
@@ -93,18 +89,18 @@ class Reveal extends skoash.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.list;
+    var list = this.props.list || this.state.list;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <li.type
+        <li
           {...li.props}
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={ref}
+          ref={key}
           key={key}
-        />
+        ></li>
       );
     });
   }

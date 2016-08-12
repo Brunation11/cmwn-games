@@ -142,12 +142,7 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    var list;
-    // if (this.props.randomizeList) {
-    //   list = _.shuffle(this.props.list) || _.shuffle(this.state.list);
-    // } else {
-    //   list = this.props.list || this.state.list;
-    // }
+    var list, shuffled;
     list = this.props.list || this.state.list;
     return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
