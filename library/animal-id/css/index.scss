@@ -111,7 +111,8 @@ body > div > div {
   }
 
   [id^="info-"],
-  [id^="id-"] {
+  [id^="id-"],
+  [id^="quit"] {
     background-image: url(../media/images/background/id.png);
     background-size: cover;
   }
@@ -130,6 +131,12 @@ body > div > div {
   [id^="flip"] {
     background-image: url(../media/images/background/nose.png);
     background-size: cover;
+  }
+}
+
+body > div > .MENU-quit {
+  .close {
+    display: none;
   }
 }
 
@@ -2779,7 +2786,53 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
   }
 }
 
+#quit {
+  img {
+  }
 
+  .frame {
+    background: url(../media/images/frame/reveal.png);
+    background-size: 100% 105%;
+    background-position: 0 -10px;
+    width: 66%;
+    height: 72%;
+
+    h2 {
+      position: absolute;
+      text-align: center;
+      left: 27%;
+      top: 12%;
+      color: #000000;
+    }
+
+    h3 {
+       position: absolute;
+      text-align: center;
+      left: 15%;
+      top: 48%;
+      color: #000000;
+    }
+
+    .quit-yes,
+    .quit-no {
+      width: 40%;
+      height: 24%;
+      position: absolute;
+    }
+
+    .quit-yes {
+      top: 73%;
+      left: 10%;
+      background-position: -3px -7px;
+    }
+
+    .quit-no {
+      top: 73%;
+      left: 55%;
+      background-position: -270px -7px;
+    }
+  }
+}
 
 
 
