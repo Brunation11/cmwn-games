@@ -2,7 +2,6 @@ import ClassNames from 'classnames';
 
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 import Reveal from 'shared/components/reveal/0.1';
-import AudioSequence from 'shared/components/audio_sequence/0.1';
 import Timer from 'shared/components/timer/0.1';
 
 const TRY_AGAIN = '0';
@@ -17,6 +16,7 @@ class TrashScreenComponent extends skoash.Screen {
       cursorTop: 0,
       touchstart: false,
       revealOpen: false,
+      replay: false,
     }
   }
 
@@ -24,12 +24,10 @@ class TrashScreenComponent extends skoash.Screen {
     if (!currentRef.refs) {
       return;
     }
-
-    Object.keys(currentRef.refs).forEach(ref => {
-      if (ref.includes('center') || ref.includes('group')) {
-        this.getRefs(currentRef.refs[ref]);
-      } else {
-        this.refs[ref] = currentRef.refs[ref];
+    _.each(currentRef.refs, (ref, key) => {
+      this.refs[key] = ref;
+      if (key.includes('center') || key.includes('group')) {
+        this.getRefs(ref);
       }
     });
   }
@@ -65,18 +63,50 @@ class TrashScreenComponent extends skoash.Screen {
     });
   }
 
-  onSelectableAudioComplete() {
-    this.refs.reveal.open(GOOD_JOB);
-
-    this.setState({ revealOpen: true }, () => {
-      this.refs.timer.complete();
-      this.refs.timer.stop();
+  reset() {
+    var self = this;
+    this.requireForComplete.forEach(key => {
+      var ref = self.refs[key];
+      var restartFunction = ref.restart || ref.incomplete;
+      if (typeof restartFunction === 'function') {
+        restartFunction.call(ref);
+      }
     });
+  }
 
+  next() {
+    super.next();
+
+    this.reset();
+  }
+
+  prev() {
+    super.prev();
+
+    this.reset();
+  }
+
+  onRevealComplete() {
+    if (!this.state.replay) this.setState({ replay: true });
+  }
+
+  onSelectableAudioComplete() {
+    if (!this.state.revealOpen) {
+
+      this.setState({
+        revealOpen: true,
+      }, () => {
+        this.refs['center-2'].open();
+        this.refs.reveal.open(GOOD_JOB);
+        this.refs.timer.complete();
+        this.refs.timer.stop();
+      });
+    }
   }
 
   onTimerComplete() {
     if (!this.state.revealOpen) {
+      this.refs['center-2'].open();
       this.refs.reveal.open(TRY_AGAIN);
       this.setState({ revealOpen: true });
     }
@@ -84,13 +114,17 @@ class TrashScreenComponent extends skoash.Screen {
 
   closeRespond(ref) {
     this.setState({ revealOpen: false });
+    this.refs['center-2'].close();
     if (ref === TRY_AGAIN) {
       this.refs.timer.restart();
+      this.refs['selectable-audio'].restart();
     }
   }
 
   getClassNames() {
     var classNames = '';
+    if (this.state.replay)
+      classNames += 'REPLAY ';
     if (this.state.revealOpen)
       classNames += 'REVEAL-OPEN ';
     if (this.state.touchstart)
@@ -157,6 +191,7 @@ class TrashScreenComponent extends skoash.Screen {
         ref="reveal"
         className="center"
         closeRespond={this.closeRespond.bind(this)}
+        onComplete={this.onRevealComplete.bind(this)}
         list={[
           <skoash.Component id="tryAgain">
             <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
@@ -172,11 +207,11 @@ class TrashScreenComponent extends skoash.Screen {
           </skoash.Component>,
         ]}
         assets={[
-          <skoash.Audio id="tryAgain" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" />,
-          <AudioSequence className="audio-sequence" playOnStart={false}>
-            <skoash.Audio id="goodJob" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
-            <skoash.Audio id="neverThrow" type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
-          </AudioSequence>,
+          <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3" complete />,
+          <skoash.MediaSequence className="media-sequence" silentOnStart>
+            <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
+            <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
+          </skoash.MediaSequence>,
         ]}
       />
     );
@@ -187,7 +222,7 @@ class TrashScreenComponent extends skoash.Screen {
       <Timer
         ref="timer"
         countDown={true}
-        timeout={3000}
+        timeout={90000}
         leadingContent={<skoash.Image src="media/_images/_S_Trash/img_9.1.png" />}
         onComplete={this.onTimerComplete.bind(this)}
       />
@@ -212,16 +247,18 @@ class TrashScreenComponent extends skoash.Screen {
           <skoash.Component ref="group" className="group">
             <skoash.Image className="hidden" src="media/_images/_S_Trash/img_9.2.png" />
             {this.renderNet()}
-            {this.renderSelectableAudio()}
             <skoash.Component ref="center-2" className="center">
               {this.renderReveal()}
             </skoash.Component>
             {this.renderTimer()}
+            {this.renderSelectableAudio()}
           </skoash.Component>
         </skoash.Component>
       </div>
     );
   }
+
+  
 }
 
 var TrashScreen = (

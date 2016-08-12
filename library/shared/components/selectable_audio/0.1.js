@@ -6,6 +6,20 @@ class SelectableAudio extends skoash.Component {
     super();
   }
 
+  restart() { // this might be nice as a method in skoash.Component
+    if (this.state.complete) this.incomplete();
+
+    this.requireForComplete.forEach(key => {
+      var ref = this.refs[key];
+      var restartFunction = ref.restart || ref.incomplete;
+      if (ref.props && !ref.props.complete && typeof restartFunction === 'function') {
+        restartFunction.call(ref);
+      }
+    });
+
+    if (!this.state.started) this.start();
+  }
+
   selectRespond(data) {
     var ref = 'asset-' + data;
     this.playAudio(ref);

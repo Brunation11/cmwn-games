@@ -49,6 +49,20 @@ class Reveal extends skoash.Component {
     }
   }
 
+  restart() {
+    if (this.state.complete) this.incomplete();
+
+    this.requireForComplete.forEach(key => {
+      var ref = this.refs[key];
+      var restartFunction = ref.restart || ref.incomplete;
+      if (ref.props && !ref.props.complete && typeof restartFunction === 'function') {
+        restartFunction.call(ref);
+      }
+    });
+
+    if (!this.state.started) this.start();
+  }
+
   playAudio(message) {
     var messages;
 
@@ -65,6 +79,8 @@ class Reveal extends skoash.Component {
       messages.map(audio => {
         if (this.audio[audio]) {
           this.audio[audio].play();
+        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
+          this.media[audio].play()
         }
       });
     } else {
@@ -120,22 +136,26 @@ class Reveal extends skoash.Component {
   }
 
   getClassNames() {
-    var classes = 'reveal ' + super.getClassNames();
+    var classes;
+    var open = 'none-open ';
+
+    if (this.state.open && this.refs[this.state.openReveal]) {
+      open = this.refs[this.state.openReveal].props.id + ' ';
+    }
+
+    var classes = 'reveal ' + open + super.getClassNames();
 
     return classes;
   }
 
   getID() {
-    if (this.state.open && this.refs[this.state.openReveal])
-      return `${this.refs[this.state.openReveal].props.id}-open`;
-    return 'none-open';
   }
 
   render() {
     return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
-        <div id={this.getID()}>
+        <div>
           <ul>
             {this.renderList()}
           </ul>

@@ -67,7 +67,7 @@ class HappyFishFace extends skoash.Game {
 
   render() {
     return (
-      <div className={'pl-game ' + this.getClassNames()} style={this.getStyles()}>
+      <div className={'pl-game ' + this.getClassNames()}>
         {this.renderLoader()}
         {this.renderAssets()}
         {this.renderMenu()}

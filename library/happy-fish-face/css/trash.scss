@@ -513,14 +513,14 @@
     }
   }
 
+  .group > .center.OPEN {
+    z-index: 1;
+  }
+
   .reveal {
 
-    &.OPEN {
-      ~ .selectable,
-      ~ .timer,
-      ~ .net {
-        opacity: 0;
-      }
+    &.goodJob button {
+        display: none;
     }
 
     #tryAgain img {
@@ -539,9 +539,12 @@
         background-position: right center;
       }
     }
+  }
 
-    #goodJob-open button {
-        display: none;
+  &.REVEAL-OPEN {
+    .selectable,
+    .timer {
+      opacity: 0;
     }
   }
 
@@ -556,6 +559,13 @@
 
   &.OPEN {
     opacity: 1;
+  }
+
+  &.REPLAY .next-screen {
+    opacity: 1;
+    transform: rotate(0deg);
+    cursor: pointer;
+
   }
 }
 

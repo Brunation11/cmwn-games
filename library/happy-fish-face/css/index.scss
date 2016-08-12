@@ -236,7 +236,8 @@ p {
 
 
 .pl-game.DEMO .screen .next-screen,
-.screen.COMPLETE .next-screen {
+.screen.COMPLETE .next-screen,
+.screen.RETURN .next-screen {
   opacity: 1;
   transform: rotate(0deg);
   cursor: pointer;
