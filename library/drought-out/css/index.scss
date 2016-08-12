@@ -26,6 +26,55 @@ html, body, body > div, body > div > div {
   -o-user-select: none;
   user-select: none;
   cursor: default;
+
+  [class^=background-] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: opacity .5s;
+    opacity: 0;
+  }
+
+  @for $i from 1 through 5 {
+    .background-#{$i} {
+      background-image: url(../media/_BKG/BKG_#{$i}.png);
+    }
+  }
+
+  &.SCREEN-0, &.SCREEN-1 {
+    .background-1 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-2, .SCREEN-3 {
+    .background-2 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-4, &.SCREEN-5 {
+    .background-3 {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-6, &.SCREEN-7, &.SCREEN-8  {
+    .background-4 {
+      opacity: 1;
+    }
+  }
+
+  @for $i from 9 through 19 {
+    &.SCREEN-#{$i} {
+      .background-5 {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 html {
@@ -39,48 +88,6 @@ body > div > div {
   height: 540px;
   margin: auto;
   font-size: 20px;
-  background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
-
-  > .background {
-    opacity: 0;
-    transition: opacity .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-
-    &.sun {
-      background-image: url('../media/_BKG/BKG_1.png');
-    }
-
-    &.rocks {
-      background-image: url('../media/_BKG/BKG_2.png');
-    }
-
-    &.cactus {
-      background-image: url('../media/_BKG/BKG_3.png');
-    }
-
-    &.arch {
-      background-image: url('../media/_BKG/BKG_4.png');
-    }
-
-    &.mountains {
-      background-image: url('../media/_BKG/BKG_5.png');
-    }
-  }
-
-  > .background.sun,
-  &.rocks > .background.rocks,
-  &.cactus > .background.cactus,
-  &.arch > .background.arch,
-  &.mountains > .background.mountains {
-    opacity: 1;
-  }
 }
 
 // for pre-loading assets
@@ -228,7 +235,6 @@ p {
   position: absolute;
   display: block;
   bottom: 1%;
-
   z-index: 2;
 }
 
@@ -378,6 +384,11 @@ img.inline {
       animation-name: fadeInDown;
     }
   }
+}
+
+.skoash-game.MENU-quit .screen:not(#quit) {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .reveal {
@@ -651,6 +662,7 @@ img.inline {
     &:nth-of-type(1),
     &.HIGHLIGHTED + li {
       pointer-events: auto;
+      cursor: pointer;
     }
 
     &.HIGHLIGHTED,
@@ -672,18 +684,6 @@ img.inline {
     width: 100%;
     top: 250px;
     transform: translateY(-50%);
-  }
-}
-
-
-.pl-game:not(.DEMO) .screen.VOICE-OVER {
-  .selectable-reveal-component {
-    .selectable-component {
-      li,
-      li:nth-of-type(1) {
-        pointer-events: none;
-      }
-    }
   }
 }
 
@@ -757,10 +757,10 @@ img.inline {
   }
 
   &.OPEN {
-    p {
+    p.draining {
       transform: rotate(1800deg) scale(.3);
       opacity: 0;
-      transition: transform 6s 12s, opacity 6s 12s;
+      transition: transform 6s, opacity 6s;
     }
   }
 }
@@ -891,8 +891,8 @@ img.inline {
     background-image: url(../media/S_17/img_sp_17.1.png);
     background-size: 800% 100%;
     background-repeat: no-repeat;
-    -webkit-animation: swing-closed .5s steps(5) forwards;
-    animation: swing-closed .5s steps(5) forwards;
+    -webkit-animation: swing-closed .75s steps(5) forwards;
+    animation: swing-closed .75s steps(5) forwards;
     z-index: 1;
   }
 
@@ -907,7 +907,7 @@ img.inline {
     background-position: -50px center;
     cursor: pointer;
     opacity: 1;
-    transition: opacity 0s .5s;
+    transition: opacity 0s 1s;
     z-index: 1;
 
     &:hover {
@@ -966,12 +966,12 @@ img.inline {
   }
 
   &.OPEN {
-    img {
+    img.shaking {
       -webkit-animation-name: shake;
-      -webkit-animation-delay: 9.5s;
+      -webkit-animation-delay: 0s;
       -webkit-animation-iteration-count: 3;
       animation-name: shake;
-      animation-delay: 9.5s;
+      animation-delay: 0s;
       animation-iteration-count: 3;
     }
   }
@@ -986,6 +986,7 @@ img.inline {
     box-sizing: border-box;
     padding: 100px 80px;
     color: #000;
+    background-image: url(../media/_Frames/FR_1.png);
 
     .background {
       position: absolute;

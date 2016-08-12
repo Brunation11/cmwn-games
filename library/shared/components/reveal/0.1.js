@@ -56,8 +56,6 @@ class Reveal extends skoash.Component {
       message = 'asset-' + message;
     }
 
-    console.log(this.audio);
-
     if (this.audio['open-sound']) {
       this.audio['open-sound'].play();
     }
