@@ -240,8 +240,14 @@ p {
     cursor: default;
   }
 
+  .skoash-game.MENU-quit .screen {
+    &:not(#quit) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 
-  .pl-game.DEMO .screen .next-screen,
+  .skoash-game.DEMO .screen .next-screen,
   .screen.COMPLETE .next-screen {
     opacity: 1;
     transform: rotate(0deg);
@@ -1180,6 +1186,7 @@ img.inline {
     height: 440px;
     text-align: center;
     padding: 70px 80px;
+    background-image: url(../media/_Frame/Fr_1.png);
 
     .background {
       position: absolute;
