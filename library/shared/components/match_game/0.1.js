@@ -9,21 +9,24 @@ class MatchGame extends Selectable {
   }
 
   selectHelper(e, classes) {
-    var dataRef, activeDataRef, message, target;
+    var dataRef, activeDataRef, message, target, matched;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    if (typeof this.props.onSelect === 'function') this.props.onSelect();
-
     dataRef = target.getAttribute('data-ref');
     message = target.getAttribute('data-message');
     classes[dataRef] = this.state.selectClass;
+    matched = this.state.matched || [];
+
+    if (matched.indexOf(message) !== -1) return;
+    if (typeof this.props.onSelect === 'function') this.props.onSelect();
 
     if (this.state.message) {
-      if (message === this.state.message) {
+      if (message === this.state.message && dataRef !== this.state.activeDataRef) {
         if (typeof this.props.onMatch === 'function') this.props.onMatch(message);
+        matched.push(message);
       } else {
         setTimeout(function (oldDataRef) {
           delete classes[dataRef];
@@ -40,6 +43,7 @@ class MatchGame extends Selectable {
       classes,
       message,
       activeDataRef,
+      matched,
     });
 
     this.requireForComplete = this.requireForComplete.filter((key) => {
