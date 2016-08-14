@@ -56,10 +56,15 @@ class PreviewScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <PreviewScreen
-    id="preview"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <PreviewScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="preview"
+      hideNext
+      hidePrev
+    />
+  );
+}

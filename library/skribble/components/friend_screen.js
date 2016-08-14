@@ -148,10 +148,15 @@ class FriendScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <FriendScreen
-    id="friends"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <FriendScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="friends"
+      hideNext
+      hidePrev
+    />
+  );
+}
