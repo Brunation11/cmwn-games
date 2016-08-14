@@ -224,6 +224,12 @@ body.DEMO .reveal .items li div .close-reveal {
   }
 }
 
+body > div > div:not(.VOICE-OVER) .reveal .close-reveal {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s, transform 0.5s;
+}
+
 h2 {
   font-size: 40px;
 }
@@ -294,12 +300,14 @@ p {
 
   .screen .next-screen {
     right: 5%;
+    visibility: hidden;
     opacity: 0;
     transform: rotate(-180deg);
     transition: opacity 1s, transform 1s;
   }
 
   .screen.GATED .next-screen {
+    visibility: hidden;
     opacity: 0;
     cursor: auto;
     z-index: -1;
@@ -307,6 +315,7 @@ p {
 
   .pl-game.DEMO .screen .next-screen,
   .screen.COMPLETE .next-screen {
+    visibility: visible;
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
@@ -405,7 +414,8 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
     position: absolute;
     right: 5px;
     bottom: 10px;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
     cursor: pointer;
     transition: opacity 1s;
   }
@@ -420,6 +430,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
         &.next-screen {
           right: 20%;
           bottom: 10%;
+          visibility: visible;
           opacity: 1;
           transition: opacity 1s;
         }
