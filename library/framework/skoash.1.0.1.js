@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "129b4a83a2ffbab54370"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4ea92474600f729aa51b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -46372,7 +46372,6 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
-	      console.log('complete');
 	      if (!this.props.loop) {
 	        play.trigger('audioStop', {
 	          audio: this
@@ -49211,7 +49210,6 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
-	      console.log(this.props.completeTarget);
 	      if (this.props.completeTarget) {
 	        this.updateGameState({
 	          path: this.props.completeTarget,
