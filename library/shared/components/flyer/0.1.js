@@ -34,16 +34,16 @@ class Flyer extends skoash.Component {
   onClick() {
     if (!this.state.started || this.state.paused) return;
     var curTranslateY = this.state.jumping ? this.state.translateY : this.getCurrentTranslateY();
+    var directionFactor = this.props.reverseDirection ? 1 : -1;
 
-    var translateY = curTranslateY - this.props.jumpSize;
+    var translateY = curTranslateY + this.props.jumpSize * directionFactor;
 
     // ensure inBounds
-    var maxTranslateY = (this.state.flyerHeight / 2) - (this.state.containerHeight / 2);
-    translateY = this.props.inBounds && translateY < maxTranslateY ? maxTranslateY: translateY;
+    var maxTranslateY = Math.abs((this.state.flyerHeight / 2) - (this.state.containerHeight / 2));
+    translateY = this.props.inBounds && Math.abs(translateY) > maxTranslateY ? maxTranslateY * directionFactor : translateY;
 
     // there will be no animation to detect if no change in translateY so decrement
-    if (translateY === this.state.translateY) translateY -= 1;
-
+    if (translateY === this.state.translateY) translateY = translateY + directionFactor;
 
     this.setState({
       translateY,
@@ -77,9 +77,12 @@ class Flyer extends skoash.Component {
   }
 
   startGravity() {
+    var maxTranslateY = (this.state.containerHeight / 2) - (this.state.flyerHeight / 2);
+    var directionFactor = this.props.reverseDirection ? -1 : 1;
+
     this.setState({
       falling: true,
-      translateY: 160,
+      translateY: maxTranslateY * .9 * directionFactor,
       animate: true
     });
   }
@@ -130,14 +133,16 @@ class Flyer extends skoash.Component {
   }
 
   addEventListenters() {
-    this.refs['flyer-component'].addEventListener('click', this.onClick);
-    this.refs['flyer-component'].addEventListener('transitionend', this.onJumpEnd);
+    var clickRef = this.props.clickFlyer ? 'flyer' : 'flyer-component';
+    this.refs[clickRef].addEventListener('click', this.onClick);
+    this.refs[clickRef].addEventListener('transitionend', this.onJumpEnd);
     window.addEventListener('resize', this.onResize);
   }
 
   removeEventListeners() {
-    this.refs['flyer-component'].removeEventListener('click', this.onClick);
-    this.refs['flyer-component'].removeEventListener('transitionend', this.onJumpEnd);
+    var clickRef = this.props.clickFlyer ? 'flyer' : 'flyer-component';
+    this.refs[clickRef].removeEventListener('click', this.onClick);
+    this.refs[clickRef].removeEventListener('transitionend', this.onJumpEnd);
     window.removeEventListener('resize', this.onResize);
   }
 
@@ -192,7 +197,9 @@ Flyer.defaultProps = _.defaults({
   jumpSize: 70,
   jumpSpeed: 6,
   fallSpeed: 3,
-  flyer: <div></div>
+  flyer: <div></div>,
+  clickFlyer: false,
+  reverseDirection: false
 }, skoash.Component.defaultProps);
 
 export default Flyer;
