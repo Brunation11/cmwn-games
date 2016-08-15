@@ -19,8 +19,7 @@ class Reveal extends skoash.Component {
       open: true,
       openReveal: message,
     });
-    console.log("This is the open function");
-    console.log(message);
+
     this.playAudio(message);
 
     this.requireForComplete = this.requireForComplete.filter(item => {

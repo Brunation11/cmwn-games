@@ -33,8 +33,6 @@ class DropzoneReveal extends skoash.Component {
         this.callCorrectRespond(draggable, dropzoneKey);
       }
     } else {
-      console.log("else statement");
-      console.log(this);
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
@@ -44,7 +42,6 @@ class DropzoneReveal extends skoash.Component {
 
   callCorrectRespond(draggable, dropzoneKey) {
     if (typeof this.props.correctRespond === 'function') {
-      console.log("We found the custom correctRespond");
       this.props.correctRespond.call(this, draggable, dropzoneKey);
     }
   }

@@ -100,7 +100,6 @@ class Dropzone extends skoash.Component {
       this.correct(draggable, dropzoneKey);
     } else {
       this.incorrect(draggable);
-      console.log("incorrect");
     }
   }
 

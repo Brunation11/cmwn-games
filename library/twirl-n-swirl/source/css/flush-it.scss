@@ -83,27 +83,18 @@
         &:before {
           transform: translate3d(-50%, -50%, 0) scale(1.75);
           top: 0; left: 0;
-          /*$correct: true;
-          $correctItem: nth($items,$i);
-            @debug ($correctItem);*/
-        }    
-      /*
-      @if $correct == true and #{nth($items,$i)} != $correctItem {
-        .#{nth($items,$i)}::before {
-          opacity: 0.5;
-        }      */
-      }    
+          $correct: true;
+        }
+      }   
     }
-    //$correct: false;
   }    
 
   .flush {
     position: relative;
     display: block;
-    margin: 10px auto;
     background-image: url(../media/S_6/img_6.2.png);
     background-size: 381px;
-    width: 190px; height: 190px;
+    width: 190px; height: 170px;
     position: absolute;
     top: 10px;
     left: 395px;  
@@ -189,7 +180,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 40%;
+        top: 45%;
         bottom: 0;
         right: 0;
         left: 55%;
@@ -198,14 +189,13 @@
         display: none;
         
         &.OPEN {
-            display: block;      
+          display: block;      
         }
+          
         img {
-          display: block;
           max-width: 80%;
           max-height: 70px;
           margin: 0.8em auto;
-          display: none;
         }
 
         h3 {
@@ -234,24 +224,23 @@
           margin: 0.5em auto 0;
           height: 65px;
           margin-top: 40px;
-          margin-left: 130px;
         }
       }
+        
       $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
       $background-top: 0 82 170 250 330 420 504 586 672 756 838 918 1004 1084;
       $width: 246 170 292 276 370 218 210 216 370 120 268 100 358  366;
 
-        @for $i from 1 through 14 {
-          .#{nth($items,$i)}::before {
-            width: nth($width,$i)+px;
-            background-position: 0px #{-1*nth($background-top,$i)+px};
-          }
-        }    
+      @for $i from 1 through 14 {
+        .#{nth($items,$i)}-reveal::before {
+          width: nth($width,$i)+px;
+          background-position: 0px #{-1*nth($background-top,$i)+px};
+        }
+      }    
     }
 
     .close-reveal {
       background-image: url(../media/images/buttons.png);
-      right: 0;
       background-position: -570px -60px;
       background-size: 1200px;
       width: 70px;
@@ -259,7 +248,7 @@
       margin: 40px;
       opacity: 1;
       transition: opacity 1s;
-      margin-bottom: -100px;
+      margin-bottom: -130px;
       right: -300px;
 
       &:hover,

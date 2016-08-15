@@ -33,14 +33,6 @@ class DragNDropScreen extends skoash.Screen {
       draggable.setEnd(endX, endY);
     }
       
-    if (this.props.tnsCenterOnCorrect) {
-        var width = (dropzone.corners[1].x - dropzone.corners[0].x) / 2;
-        var centeredX = endX + width;
-        var height = (dropzone.corners[2].y - dropzone.corners[1].y) / 2;
-        var centeredY = endY + height;
-        draggable.setEnd(centeredX, centeredY);
-    }  
-
     if (this.props.multipleAnswers) {
       content = dropzone.state.content || [];
       if (content.indexOf(draggable) === -1) {
@@ -56,7 +48,6 @@ class DragNDropScreen extends skoash.Screen {
         content: draggable
       });
     }
-      console.log(this);
 
     if (typeof this.refs['dropzone-reveal'].refs.reveal.open === 'function') {
       this.open(draggable.props.message);

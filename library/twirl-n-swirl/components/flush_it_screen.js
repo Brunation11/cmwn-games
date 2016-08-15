@@ -1,11 +1,4 @@
-function openReveal () {
-    
-}
-
 function correctRespond(draggable, dropzoneKey) {
-    console.log("This is the custom correctRespond");
-}
-    /*
     if (!this.refs || !this.refs.dropzone || !this.refs.dropzone.refs || !this.refs.dropzone.refs.dropzone) return;
     var dropzone, endX, endY, width, centeredX, height, centeredY, complete = true, content;
     console.log(this);
@@ -49,7 +42,7 @@ function correctRespond(draggable, dropzoneKey) {
     });
 
     if (complete) this.complete();
-}*/
+}
 
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import Draggable from 'shared/components/draggable/0.2';
@@ -63,7 +56,6 @@ var FlushItScreen = (
       ref="drag-n-drop"
       centerOnCorrect
       checkComplete
-      //tnsCenterOnCorrect
       correctRespond={correctRespond}
       multipleAnswers
     
@@ -72,7 +64,7 @@ var FlushItScreen = (
       ]}
     
       dropzoneList={[
-        <Draggable ref="wipes" className="wipes left" message="wipes" returnOnIncorrect={true} />,
+        <skoash.ListItem ref="wipes" className="wipes left" message="wipes" />,
         <skoash.ListItem ref="diapers" className="diapers left" message="diapers" />,
         <skoash.ListItem ref="paper" className="paper left" message="paper" />,
         <skoash.ListItem ref="sheets" className="sheets left" message="sheets" />,
@@ -92,7 +84,7 @@ var FlushItScreen = (
       ]}
     
       revealList={[
-        <skoash.ListItem data-ref="wipes">
+        <skoash.ListItem data-ref="wipes" className="wipes-reveal">
             <h3>
               Baby wipes are thicker and sturdier<br/ >
               than toilet paper and<br />
@@ -100,14 +92,14 @@ var FlushItScreen = (
               They are a clog waiting to happen!
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="diapers">
+        <skoash.ListItem data-ref="diapers" className="diapers-reveal">
             <h3>
               Diapers contain plastic that has<br />
               chemicals which expand when wet.<br />
               They create BIG clogs.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="paper">
+        <skoash.ListItem data-ref="paper" className="paper-reveal">
             <h3>
               Paper towels are not designed<br />
               to break down in water<br />
@@ -115,14 +107,14 @@ var FlushItScreen = (
               Flushing can cause problems.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="sheets">
+        <skoash.ListItem data-ref="sheets" className="sheets-reveal">
             <h3>
               Dryer Sheets contain synthetic<br />
               chemicals that are not<br />
               biodegradable!
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="fats">
+        <skoash.ListItem data-ref="fats" className="fats-reveal">
             <h3>
               They may seem like a liquid but<br />
               when they cool they coat the pipe like<br />
@@ -130,21 +122,21 @@ var FlushItScreen = (
               smaller and smaller.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="cosmetics">
+        <skoash.ListItem data-ref="cosmetics" className="cosmetics-reveal">
             <h3>
               Many of the ingredients in<br />
               cosmetics are toxic and shouldn’t<br />
               be in the water supply.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="bandages">
+        <skoash.ListItem data-ref="bandages" className="bandages-reveal">
             <h3>
               The plastic in band-aids<br />
               is not biodegradable.<br />
               They are bad for the environment.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="litter">
+        <skoash.ListItem data-ref="litter" className="litter-reveal">
             <h3>
               Cat litter can harbor parasites<br />
               and even toxins.<br />
@@ -153,20 +145,20 @@ var FlushItScreen = (
               NEVER be put in a toilet.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="cotton">
+        <skoash.ListItem data-ref="cotton" className="cotton-reveal">
             <h3>
               They clump together and<br />
               bend in the pipes<br />
               and create blockages.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="gum">
+        <skoash.ListItem data-ref="gum" className="gum-reveal">
             <h3>
               It’s gooey and sticky and definitely<br />
               can cause problems.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="floss">
+        <skoash.ListItem data-ref="floss" className="floss-reveal">
             <h3>
               Dental Floss is not biodegradable.<br />
               In the pipeline it can wrap<br />
@@ -174,14 +166,14 @@ var FlushItScreen = (
               monster clogs.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="hair">
+        <skoash.ListItem data-ref="hair" className="hair-reveal">
             <h3>
               Hair catches things and tangles<br />
               almost like dental floss.<br />
               It’s a big clogger!
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="meds">
+        <skoash.ListItem data-ref="meds" className="meds-reveal">
             <h3>
               This is a BIG NO!<br />
               Medications are not removed in<br />
@@ -190,7 +182,7 @@ var FlushItScreen = (
               bad for animals and people.
             </h3>
         </skoash.ListItem>,
-        <skoash.ListItem data-ref="chemicals">
+        <skoash.ListItem data-ref="chemicals" className="chemicals-reveal">
             <h3>
               Sounds surprising!<br />
               The chemicals are toxic and can<br />
@@ -204,17 +196,17 @@ var FlushItScreen = (
         <skoash.Audio ref="wipes" type="voiceOver" src="media/S_6/VO_6.3.mp3" />,
         <skoash.Audio ref="diapers" type="voiceOver" src="media/S_6/VO_6.4.mp3" />,
         <skoash.Audio ref="paper" type="voiceOver" src="media/S_6/VO_6.5.mp3" />,
-        <skoash.Audio type="sheets" type="voiceOver" src="media/S_6/VO_6.6.mp3" />,
+        <skoash.Audio ref="sheets" type="voiceOver" src="media/S_6/VO_6.6.mp3" />,
         <skoash.Audio ref="fats" type="voiceOver" src="media/S_6/VO_6.7.mp3" />,
         <skoash.Audio ref="cosmetics" type="voiceOver" src="media/S_6/VO_6.8.mp3" />,
         <skoash.Audio ref="bandanges" type="voiceOver" src="media/S_6/VO_6.9.mp3" />,
-        <skoash.Audio type="litter" type="voiceOver" src="media/S_6/VO_6.10.mp3" />,
+        <skoash.Audio ref="litter" type="voiceOver" src="media/S_6/VO_6.10.mp3" />,
         <skoash.Audio ref="cotton" type="voiceOver" src="media/S_6/VO_6.11.mp3" />,
         <skoash.Audio ref="gum" type="voiceOver" src="media/S_6/VO_6.12.mp3" />,
         <skoash.Audio ref="floss" type="voiceOver" src="media/S_6/VO_6.13.mp3" />,
         <skoash.Audio ref="hair" type="voiceOver" src="media/S_6/VO_6.14.mp3" />,
         <skoash.Audio ref="meds" type="voiceOver" src="media/S_6/VO_6.15.mp3" />,
-        <skoash.Audio type="chemicals" type="voiceOver" src="media/S_6/VO_6.16.mp3" />,
+        <skoash.Audio ref="chemicals" type="voiceOver" src="media/S_6/VO_6.16.mp3" />,
       ]}
     />
     <button className="flush"></button>
