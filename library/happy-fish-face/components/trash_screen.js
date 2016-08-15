@@ -52,8 +52,8 @@ class TrashScreenComponent extends skoash.Screen {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousemove', this.moveCursor);
-    window.removeEventListener('touchstart', this.touchstart);
+    window.removeEventListener('mousemove', this.moveCursor.bind(this));
+    window.removeEventListener('touchstart', this.touchstart.bind(this));
   }
 
   moveCursor(e) {
@@ -73,12 +73,12 @@ class TrashScreenComponent extends skoash.Screen {
   complete() {
     var self = this;
     super.complete();
-    self.checkComplete = () => {};
 
     setTimeout(() => { // have to wait for state to change to complete: true
+      self.checkComplete = () => {};
       if (self.state.complete) {
         self.incomplete();
-        self.requireForComplete.forEach(key => {
+        ['timer', 'reveal', 'selectable-audio'].forEach(key => {
           var ref = self.refs[key];
           var restartFunction = ref.restart || ref.incomplete;
           if (typeof restartFunction === 'function') {

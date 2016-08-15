@@ -27,15 +27,15 @@ class HappyFishFace extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      // 2: YouFeelScreen,
-      // 3: WaterPollutionScreen,
-      // 4: HealthyWaterScreen,
-      // 5: CleanWaterScreen,
-      // 6: BubbleUpScreen,
-      // 7: MultiBubblesScreen,
-      // 8: PollutesWaterScreen,
+      //2: YouFeelScreen,
+      //3: WaterPollutionScreen,
+      //4: HealthyWaterScreen,
+      //5: CleanWaterScreen,
+      //6: BubbleUpScreen,
+      //7: MultiBubblesScreen,
+      //8: PollutesWaterScreen,
       2: TrashScreen,
-      // 10: FlipScreen,
+      //10: FlipScreen,
     };
 
     this.menus = {

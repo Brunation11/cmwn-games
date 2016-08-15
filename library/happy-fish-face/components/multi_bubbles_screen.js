@@ -77,39 +77,42 @@ class MultiBubblesScreenComponent extends skoash.Screen {
   }
 }
 
-var MultiBubblesScreen = (
-  <MultiBubblesScreenComponent
-    ref="multi-bubbles"
-    id="multi-bubbles"
-  >
-    <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" />
-    <div className="bubbles">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <skoash.Image src="media/_images/_S_MultiBubbles/img_7.1.png" />
-    <Score
-      ref="score"
-      leadingContent={
-        <skoash.Image src="media/_images/_S_MultiBubbles/img_7.2.png" />
-      }
-      checkComplete={false}
-      increment={INCREMENT}
-      downIncrement={DECREMENT}
-    />
-  </MultiBubblesScreenComponent>
-);
+export default function (props, ref, key) {
+  return (
+    <MultiBubblesScreenComponent
+      {...props}
+      ref={ref}
+      key={key}
+      id="multi-bubbles"
+    >
+      <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" />
+      <div className="bubbles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <skoash.Image src="media/_images/_S_MultiBubbles/img_7.1.png" />
+      <Score
+        ref="score"
+        leadingContent={
+          <skoash.Image src="media/_images/_S_MultiBubbles/img_7.2.png" />
+        }
+        checkComplete={false}
+        increment={INCREMENT}
+        downIncrement={DECREMENT}
+      />
+    </MultiBubblesScreenComponent>
+  );
+}
 
-export default MultiBubblesScreen;
