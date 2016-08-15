@@ -104,11 +104,6 @@ class DroughtOut extends skoash.Game {
         <skoash.Image ref="bkg-image-3" className="hidden" src="media/_BKG/BKG_3.png" />
         <skoash.Image ref="bkg-image-4" className="hidden" src="media/_BKG/BKG_4.png" />
         <skoash.Image ref="bkg-image-5" className="hidden" src="media/_BKG/BKG_5.png" />
-        <div className="background sun"></div>
-        <div className="background rocks"></div>
-        <div className="background cactus"></div>
-        <div className="background arch"></div>
-        <div className="background mountains"></div>
       </div>
     );
   }

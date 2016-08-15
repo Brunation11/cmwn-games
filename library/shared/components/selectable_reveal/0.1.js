@@ -106,9 +106,9 @@ class SelectableReveal extends skoash.Component {
   }
 }
 
-SelectableReveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+SelectableReveal.defaultProps = _.defaults({
   answers: [],
   canSelectOnStart: true
-});
+}, skoash.Component.defaultProps);
 
 export default SelectableReveal;
