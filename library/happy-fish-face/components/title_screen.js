@@ -8,6 +8,7 @@ export default function (props, ref, key) {
       className="screen"
       checkComplete={false}
       completeDelay={2000}
+      completeOnStart
     >
       <skoash.Image ref="background" className="fish animated" src="media/_images/_title/img_1.1.png" />
       <skoash.Image ref="title" className="title animated" src="media/_images/_title/img_1.2.png" />

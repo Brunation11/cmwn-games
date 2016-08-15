@@ -1,4 +1,5 @@
-import ClassNames from 'classnames';
+import _ from 'lodash';
+import classNames from 'classnames';
 
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 import Reveal from 'shared/components/reveal/0.1';
@@ -10,14 +11,14 @@ const GOOD_JOB = '1';
 class TrashScreenComponent extends skoash.Screen {
   constructor() {
     super();
-   
+
     this.state = {
       cursorLeft: 0,
       cursorTop: 0,
       touchstart: false,
       revealOpen: false,
       replay: false,
-    }
+    };
   }
 
   getRefs(currentRef) {
@@ -70,13 +71,13 @@ class TrashScreenComponent extends skoash.Screen {
   }
 
   complete() {
-    super.complete();
     var self = this;
+    super.complete();
+    self.checkComplete = () => {};
 
     setTimeout(() => { // have to wait for state to change to complete: true
       if (self.state.complete) {
         self.incomplete();
-        self.checkComplete = () => {};
         self.requireForComplete.forEach(key => {
           var ref = self.refs[key];
           var restartFunction = ref.restart || ref.incomplete;
@@ -124,14 +125,11 @@ class TrashScreenComponent extends skoash.Screen {
   }
 
   getClassNames() {
-    var classNames = '';
-    if (this.state.replay)
-      classNames += 'REPLAY ';
-    if (this.state.revealOpen)
-      classNames += 'REVEAL-OPEN ';
-    if (this.state.touchstart)
-      classNames += 'TOUCH ';
-    return classNames + super.getClassNames();
+    return classNames({
+      REPLAY: this.state.replay,
+      'REVEAL-OPEN': this.state.revealOpen,
+      TOUCH: this.state.touchstart,
+    }, super.getClassNames());
   }
 
   renderSelectableAudio() {
@@ -233,7 +231,7 @@ class TrashScreenComponent extends skoash.Screen {
 
   renderNet() {
     return (
-      <skoash.Image ref="net" className="net" src="media/_images/_S_Trash/img_9.3.png" 
+      <skoash.Image ref="net" className="net" src="media/_images/_S_Trash/img_9.3.png"
         style={{
           left: this.state.cursorLeft,
           top: this.state.cursorTop,
@@ -258,16 +256,15 @@ class TrashScreenComponent extends skoash.Screen {
       </div>
     );
   }
-
-  
 }
 
-var TrashScreen = (
-  <TrashScreenComponent
-    ref="trash"
-    id="trash"
-  >
-  </TrashScreenComponent>
-);
-
-export default TrashScreen;
+export default function (props, ref, key) {
+  return (
+    <TrashScreenComponent
+      {...props}
+      ref={ref}
+      key={key}
+      id="trash"
+    />
+  );
+}

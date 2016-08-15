@@ -34,7 +34,7 @@ class HappyFishFace extends skoash.Game {
       // 6: BubbleUpScreen,
       // 7: MultiBubblesScreen,
       // 8: PollutesWaterScreen,
-      // 9: TrashScreen,
+      2: TrashScreen,
       // 10: FlipScreen,
     };
 
