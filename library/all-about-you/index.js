@@ -81,9 +81,12 @@ class AllAboutYou extends skoash.Game {
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
-        if (screen.metaData) return;
-        if (typeof screen.collectData === 'function') {
-          data[key] = screen.collectData();
+        if (screen.metaData) {
+          data[key] = screen.metaData;
+        } else {
+          if (typeof screen.collectData === 'function') {
+            data[key] = screen.collectData();
+          }
         }
       });
     }

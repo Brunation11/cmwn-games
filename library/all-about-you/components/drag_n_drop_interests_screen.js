@@ -31,7 +31,7 @@ var DragNDropInterestsScreen = (
     ]}
     revealAssets={[
       <skoash.Audio ref="space" type="voiceOver" src="media/assets/_audio/VOs/VO_Space.mp3" />,
-      <skoash.Audio ref="animals" type="voiceOver" src="media/assets/_audio/VOs/VO_Endangered.mp3" />,
+      <skoash.Audio ref="animals" type="voiceOver" src="media/assets/_audio/VOs/VO_Animals.mp3" />,
       <skoash.Audio ref="recycling" type="voiceOver" src="media/assets/_audio/VOs/VO_Recycling.mp3" />,
       <skoash.Audio ref="money" type="voiceOver" src="media/assets/_audio/VOs/VO_Money.mp3" />,
       <skoash.Audio ref="printing" type="voiceOver" src="media/assets/_audio/VOs/VO_3DPrint.mp3" />,
