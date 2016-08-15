@@ -6,6 +6,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import InfoQuestionScreen from './components/info_question_screen';
 import PlantScreen from './components/plant_screen';
+import FlushItScreen from './components/flush_it_screen';
 import OwnershipScreen from './components/ownership_screen';
 import FlipScreen from './components/flip_screen';
 
@@ -19,11 +20,12 @@ class TwirlNSwirl extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-      1: TitleScreen,
+      /*1: TitleScreen,
       2: InfoQuestionScreen,
       3: PlantScreen,
       4: OwnershipScreen,
-      5: FlipScreen,
+      5: FlipScreen,*/
+        1: FlushItScreen,
     };
 
     this.menus = {

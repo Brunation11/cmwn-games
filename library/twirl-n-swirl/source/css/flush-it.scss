@@ -1,9 +1,21 @@
 #flush-it {
-  .draggables {
+  background-image: url(../media/images/background.png);
+    
+  ul:nth-child(2) {
+    float: left;
+    margin-left: 60px;
+  }    
+    
+  ul:nth-child(3) {
+    float: right;      
+    margin-right: 60px;
+  }    
+  
+  ul:nth-child(2), ul:nth-child(3) {
     width: 281px;
     height: 486px;
-    margin: 0;
     padding: 30px;
+    margin-top: 8px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -19,15 +31,6 @@
       cursor: default;
     }
 
-    &.left {
-      float: left;
-      margin-left: 60px;
-    }
-    &.right {
-      float: right;
-      margin-right: 60px;
-    }
-
     li {
       display: inline-block;
       width: 100px; height: 100px;
@@ -41,46 +44,96 @@
     }
   }
 
-  .draggables,
-  [pl-id=toilet] {
-    li {
+  .draggable {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 1px solid blue;
+    margin-left: 50px;
+    margin-top: 50px;
+    
+    &:before {
+      content: "";
       background-image: url(../media/S_6/sprite_6.2.png);
       background-repeat: no-repeat;
       background-size: 250px;
-
-      $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
-      $background-left: 0 0 0 0 0 0 0 1 1 1 1 1 1 1;
-      $background-top:  0 4 1 5 2 6 3 0 1 4 2 5 3 6;
-      $width:  90 80  80 100  50  80 100 110 100 100  90  80  70  80;
-      $height: 70 80 100  70 120 110 100 100 100  80 100 110 110 110;
-
-      @for $i from 1 through 14 {
-        &[pl-id=#{nth($items,$i)}] {
-          width: nth($width,$i)+px;
-          height: nth($height,$i)+px;
-          background-position: #{-125*nth($background-left,$i)+px} #{-125*nth($background-top,$i)+px};
-        }
-      }
+      border: 1px solid green;
     }
   }
 
-  [pl-id=toilet] {
-    overflow: hidden;
-    height: 100%;
-    background-position: center top;
+  $correct: false;
+  $correctItem: noneCorrect;
+  $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
+  $background-left: 0 0 0 0 0 0 0 1 1 1 1 1 1 1;
+  $background-top:  0 4 1 5 2 6 3 0 1 4 2 5 3 6;
+  $width:  90 80  80 100  50  80 100 110 100 100  90  80  70  80;
+  $height: 70 80 100  70 120 110 100 100 100  80 100 110 110 110;
 
-    button {
-      position: relative;
-      display: block;
-      margin: 10px auto;
-      background-size: 381px;
-      width: 190px; height: 190px;
-      pointer-events: none;
-
-      &:hover,
-      &:active {
-        background-position: -190px top;
+  @for $i from 1 through 14 {
+    .#{nth($items,$i)} {
+      &:before {
+        position: absolute;
+        width: nth($width,$i)+px;
+        height: nth($height,$i)+px;
+        background-position: #{-125*nth($background-left,$i)+px} #{-125*nth($background-top,$i)+px};
+        top: -(nth($height,$i))/2+px;
+        left: -(nth($width,$i))/2+px;
       }
+      &.CORRECT {
+        &:before {
+          transform: translate3d(-50%, -50%, 0) scale(1.75);
+          top: 0; left: 0;
+          /*$correct: true;
+          $correctItem: nth($items,$i);
+            @debug ($correctItem);*/
+        }    
+      /*
+      @if $correct == true and #{nth($items,$i)} != $correctItem {
+        .#{nth($items,$i)}::before {
+          opacity: 0.5;
+        }      */
+      }    
+    }
+    //$correct: false;
+  }    
+
+  .flush {
+    position: relative;
+    display: block;
+    margin: 10px auto;
+    background-image: url(../media/S_6/img_6.2.png);
+    background-size: 381px;
+    width: 190px; height: 190px;
+    position: absolute;
+    top: 10px;
+    left: 395px;  
+
+    &:hover,
+    &:active {
+      background-position: -190px top;
+    }
+  }
+
+  .dropzone {
+    position: absolute;
+    border: 1px solid black;
+    width: 250px;
+    height: 260px;
+    left: 38%;
+    top: 40%;
+      
+    &:before {
+      content: "";
+      background-image: url(../media/S_6/img_6.1.png);
+      background-repeat: no-repeat;
+      width: 280px;
+      height: 540px;
+      position: absolute;
+      background-size: contain;
+      overflow: hidden;
+      background-position: center top;
+      top: -200px;
+      left: -15px;
     }
 
     .area {
@@ -111,26 +164,42 @@
     }
   }
 
-  [pl-id=modal-reveal] {
+  /*[pl-id=modal-reveal] {
     background-color: rgba(0,0,0,0.2);
     transition: opacity 0.5s;
-    opacity: 0;
+    opacity: 0;*/
 
-    .reveal-component {
+  .reveal {
+    display: none;
+    opacity: 0;
+      
+    &.OPEN {
       width: 500px; height: 320px;
       transition: transform 1s;
       transform: scale(0.8);
+      display: block;
+      opacity: 1;
 
       ul {
         position: static;
       }
 
       li {
+        background-image: url(../media/images/frame.png);
+        background-size: contain;
+        background-repeat: no-repeat;
         position: absolute;
-        top: 0; left: 0;
-        bottom: 0; right: 0;
-        margin: 30px;
-
+        top: 40%;
+        bottom: 0;
+        right: 0;
+        left: 55%;
+        width: 550px;
+        height: 350px;
+        display: none;
+        
+        &.OPEN {
+            display: block;      
+        }
         img {
           display: block;
           max-width: 80%;
@@ -150,13 +219,13 @@
           text-align: center;
         }
 
-        &[pl-id=gum] {
+        &.gum {
           h3 {
             margin-top: 1.5em;
           }
         }
 
-        &[pl-id]:before {
+        &::before {
           content: "";
           background-image: url(../media/S_6/sprite_6.1.png);
           background-repeat: no-repeat;
@@ -164,22 +233,24 @@
           display: block;
           margin: 0.5em auto 0;
           height: 65px;
+          margin-top: 40px;
+          margin-left: 130px;
         }
-
-        $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
-        $background-top:  0  82 170 250 330 420 504 586 672 756 838 918 1004 1084;
-        $width:         246 170 292 276 370 218 210 216 370 120 268 100  358  366;
+      }
+      $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
+      $background-top: 0 82 170 250 330 420 504 586 672 756 838 918 1004 1084;
+      $width: 246 170 292 276 370 218 210 216 370 120 268 100 358  366;
 
         @for $i from 1 through 14 {
-          &[pl-id=#{nth($items,$i)}]:before {
+          .#{nth($items,$i)}::before {
             width: nth($width,$i)+px;
             background-position: 0px #{-1*nth($background-top,$i)+px};
           }
-        }
-      }
+        }    
     }
 
-    button.close {
+    .close-reveal {
+      background-image: url(../media/images/buttons.png);
       right: 0;
       background-position: -570px -60px;
       background-size: 1200px;
@@ -188,6 +259,8 @@
       margin: 40px;
       opacity: 1;
       transition: opacity 1s;
+      margin-bottom: -100px;
+      right: -300px;
 
       &:hover,
       &:active {
@@ -207,9 +280,8 @@
         transform: scale(1);
       }
     }
-
-
   }
+  //}
 
   &.VOICE-OVER {
     [pl-id=toilet] {

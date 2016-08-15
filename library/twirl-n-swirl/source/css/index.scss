@@ -37,6 +37,10 @@ img.hidden {
   width: 960px;
   height: 540px;
   position: absolute;
+  
+  &:before, &:not(.DEMO):after {
+    z-index: 3 !important;
+  }
 }
 
 #twirl-n-swirl {
@@ -49,9 +53,9 @@ img.hidden {
 
   background: no-repeat center;
 
-  $backgrounds: title info-question plant ownership flip;
+  $backgrounds: title info-question plant flush-it ownership flip;
 
-  @for $i from 1 through 5 {
+  @for $i from 1 through 6 {
     $background: nth($backgrounds,$i);
       
     ##{$background} {
@@ -131,6 +135,21 @@ img.hidden {
         cursor: pointer;
       }
     }
+  }
+    
+  button.close {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background-image: url(../media/images/buttons.png);
+    z-index: 2;
+    background-size: 1500px;
+    background-position: -920px -70px;    
+
+    &:hover,
+    &:active {
+      background-position: -919px -280px;
+    }       
   }
 }
 
@@ -330,27 +349,22 @@ img.hidden {
   }
 }
 
-#quit {
+#quit {  
   position: absolute;
-  top: 0; right: 0;
-  width: 80px; height: 80px;
-  background-image: url(../media/images/buttons.png);
-  z-index: 1;
-  background-size: 1500px;
-  background-position: -920px -70px;    
-
-  &:hover,
-  &:active {
-    background-position: -910px -266px;
-  }    
+  left: 200px;
+  top: 75px;
+  transform: rotate(90deg);
     
-  .center .content {
+  .center {
     width: 600px;
-    height: 370px;
+    height: 400px;
     text-align: center;
+    background-image: url(../media/images/frame.png);
+        background-size: contain;
+    background-repeat: no-repeat;
 
-    h1, p {
-      text-align: center;
+    h2 {
+        margin-top: -10%;        
     }
 
     button {
@@ -360,9 +374,11 @@ img.hidden {
       width: 200px;
     }
 
-    .yes {
+    .quit-yes {
+      background-image: url(../media/images/buttons.png);
       background-position: -1050px -50px;
       height: 110px;
+      margin-right: 50px;
 
       &:hover,
       &:active {
@@ -370,7 +386,8 @@ img.hidden {
       }
     }
 
-    .no {
+    .quit-no {
+      background-image: url(../media/images/buttons.png);    
       background-position: -1290px -40px;
       width: 150px;
       height: 140px;
@@ -388,6 +405,7 @@ img.hidden {
 
     > :first-child {
       margin-top: 1.5em;
+      text-align: center;
     }
-  }
+  }   
 }

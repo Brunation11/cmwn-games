@@ -19,7 +19,8 @@ class Reveal extends skoash.Component {
       open: true,
       openReveal: message,
     });
-
+    console.log("This is the open function");
+    console.log(message);
     this.playAudio(message);
 
     this.requireForComplete = this.requireForComplete.filter(item => {
@@ -93,7 +94,7 @@ class Reveal extends skoash.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <li.type
           {...li.props}

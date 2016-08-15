@@ -1,18 +1,27 @@
-import Dropzone from '../dropzone/0.1.js';
+import Dropzone from '../dropzone/0.2.js';
 import Reveal from '../reveal/0.1.js';
 
 import classNames from 'classnames';
 
-class DropzoneReveal extends play.Component {
+class DropzoneReveal extends skoash.Component {
   constructor() {
     super();
 
     this.state = {
       answers: [],
     };
+
+    this.dragRespond = this.dragRespond.bind(this);
   }
 
-  correctRespond(message) {
+  dragRespond(draggable) {
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, draggable);
+    }
+  }
+
+  correctRespond(draggable, dropzoneKey) {
+    var message = draggable.props.message;
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
@@ -21,11 +30,22 @@ class DropzoneReveal extends play.Component {
         if (typeof this.refs.reveal.open === 'function') {
           this.refs.reveal.open(message);
         }
+        this.callCorrectRespond(draggable, dropzoneKey);
       }
     } else {
+      console.log("else statement");
+      console.log(this);
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
+      this.callCorrectRespond(draggable, dropzoneKey);
+    }
+  }
+
+  callCorrectRespond(draggable, dropzoneKey) {
+    if (typeof this.props.correctRespond === 'function') {
+      console.log("We found the custom correctRespond");
+      this.props.correctRespond.call(this, draggable, dropzoneKey);
     }
   }
 
@@ -51,17 +71,19 @@ class DropzoneReveal extends play.Component {
 
     return null;
   }
- 
+
   renderDropzone() {
     return (
       <Dropzone
         ref="dropzone"
+        dragRespond={this.dragRespond}
         message={this.props.dropzoneMessage}
         draggables={this.props.dropzoneList}
         moreDraggables={this.props.secondDropzoneList}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
         dropzones={this.props.dropzones}
+        checkComplete={this.props.checkComplete}
       />
     );
   }
