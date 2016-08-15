@@ -5,8 +5,11 @@ const INCREMENT = 10;
 const DECREMENT = 20;
 
 class MultiBubblesScreenComponent extends skoash.Screen {
-  constructor() {
-    super();
+
+  start() {
+    super.start();
+
+    if (this.state.return) this.refs.score.setScore(0);
   }
 
   changeScore(message) {
@@ -72,7 +75,6 @@ class MultiBubblesScreenComponent extends skoash.Screen {
       </div>
     );
   }
-
 }
 
 var MultiBubblesScreen = (

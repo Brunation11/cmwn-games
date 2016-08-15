@@ -10,6 +10,12 @@ class Score extends skoash.Component {
     };
   }
 
+  setScore(x) {
+    this.setState({
+      score: x
+    });
+  }
+
   checkComplete() {
     if (!this.props.checkComplete && !this.state.complete) {
       this.complete();
