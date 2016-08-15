@@ -8,6 +8,7 @@ import Reveal from 'shared/components/reveal/0.1';
 
 
 export default function (props, ref, key) {
+  console.log(props.data);
   var CarouselScreen = (
     <skoash.Screen
       {...props}
@@ -56,15 +57,16 @@ export default function (props, ref, key) {
             });
           }}
           onUpdateState={function (correct) {
+            if (!correct) return;
             this.updateGameState({
               path: 'score',
               data: {
-                correct
+                correct: _.get(props, 'data.score.correct', 0) + 1
               }
             });
           }}
           dataTarget="target"
-          setTarget={_.get(props, 'data.revealScore.score', null)}
+          setTarget={_.get(props, 'data.revealScore.score', 0)}
           complete
           checkComplete={false}
           targets={[
@@ -83,18 +85,9 @@ export default function (props, ref, key) {
           ]}
         />
         <Score
-          correct={_.get(props, 'data.score.correct', null)}
+          correct={_.get(props, 'data.score.correct', 0)}
           dataTarget="score"
-          onUpdateScore={function () {
-            this.updateGameState({
-              path: 'score',
-              data: {
-                correct: null
-              }
-            });
-          }}
           completeDelay={1000}
-          downIncrement={0}
           max={_.get(props, 'data.target.amount', null)}
           resetOnComplete
           multipleCompletes
@@ -102,7 +95,7 @@ export default function (props, ref, key) {
             this.updateGameState({
               path: 'revealScore',
               data: {
-                correct: true
+                correct: (_.get(props, 'data.revealScore.correct', 0) % 7) + 1
               }
             });
           }}
@@ -113,27 +106,10 @@ export default function (props, ref, key) {
             <div />
           </div>
         </Score>
-        <Score
-          className="reveal-score"
-          correct={_.get(props, 'data.revealScore.correct', null)}
-          dataTarget="revealScore"
-          downIncrement={0}
-          max={7}
-          complete
-          resetOnComplete
-          onUpdateScore={function () {
-            this.updateGameState({
-              path: 'revealScore',
-              data: {
-                correct: null
-              }
-            });
-          }}
-        />
       </skoash.Component>
       <Reveal
         openOnStart="0"
-        openReveal={_.get(props, 'data.revealScore.score', null)}
+        openReveal={_.get(props, 'data.revealScore.correct', 0)}
         assets={[
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,

@@ -28,11 +28,11 @@ class Score extends skoash.Component {
     }, this.props.completeDelay);
   }
 
-  checkScore() {
-    if (!this.props.max) return;
-    if (this.state.score >= this.props.max && (!this.state.complete || this.props.multipleCompletes)) {
+  checkScore(props) {
+    if (!props.max) return;
+    if (this.state.score >= props.max && (!this.state.complete || props.multipleCompletes)) {
       this.complete();
-    } else if (this.state.complete && !this.props.complete) {
+    } else if (this.state.complete && !props.complete) {
       this.incomplete();
     }
   }
@@ -67,28 +67,36 @@ class Score extends skoash.Component {
         }
       });
 
-      this.checkScore();
+      this.checkScore(this.props);
+      this.callProp('onUpdateScore');
+    });
+  }
 
-      if (typeof this.props.onUpdateScore === 'function') {
-        this.props.onUpdateScore.call(this);
-      }
+  setScore(props) {
+    var upIncrement, downIncrement, score;
+    upIncrement = _.isFinite(props.increment) ? props.increment : 1;
+    downIncrement = _.isFinite(props.downIncrement) ? props.downIncrement :
+      _.isFinite(props.increment) ? props.increment : 1;
+    score = upIncrement * props.correct - downIncrement * props.incorrect;
+    this.setState({
+      score
+    }, () => {
+      this.checkScore(props);
+      this.callProp('onUpdateScore', score);
     });
   }
 
   componentWillReceiveProps(props) {
-    if (props.correct != null && props.correct !== this.props.correct) {
-      if (props.correct) {
-        this.up();
-      } else {
-        this.down();
-      }
+    if (props.correct !== this.props.correct ||
+      props.incorrect !== this.props.incorrect) {
+      this.setScore(props);
     }
   }
 
   getClassNames() {
     return classNames(
       'score',
-      skoash.Component.prototype.getClassNames.call(this)
+      super.getClassNames()
     );
   }
 
@@ -108,6 +116,8 @@ class Score extends skoash.Component {
 Score.defaultProps = _.defaults({
   checkComplete: false,
   startingScore: 0,
+  correct: 0,
+  incorrect: 0,
 }, skoash.Component.defaultProps);
 
 export default Score;

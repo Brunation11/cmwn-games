@@ -47,9 +47,7 @@ class Target extends skoash.Component {
       });
     }
 
-    if (typeof this.props.onUpdateState === 'function') {
-      this.props.onUpdateState.call(this, correct);
-    }
+    this.callProp('onUpdateState', correct);
   }
 
   setTarget(idx = 0) {
@@ -64,9 +62,7 @@ class Target extends skoash.Component {
       });
     }
 
-    if (typeof this.props.onSetTarget === 'function') {
-      this.props.onSetTarget.call(this);
-    }
+    this.callProp('onSetTarget');
 
     this.setState({
       idx,
@@ -88,10 +84,9 @@ class Target extends skoash.Component {
 
   getClassNames() {
     return classNames(
-      super.getClassNames(),
       'target',
       this.state.targetClass,
-      this.props.className,
+      super.getClassNames(),
     );
   }
 

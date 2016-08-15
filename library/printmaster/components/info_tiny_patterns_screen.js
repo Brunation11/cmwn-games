@@ -7,7 +7,7 @@ export default function (props, ref, key) {
       id="info-tiny-patterns"
       className="large-frame"
     >
-      <skoash.Audio type="voiceOver" src="media/S_2/VO_2.1.mp3" pl-delay="2s" />
+      <skoash.Audio type="voiceOver" src="media/S_2/VO_2.1.mp3" delay={2000} />
       <skoash.Image ref="img" className="hidden" src="media/_Frame/Fr_1.png" />
       <skoash.MediaSequence>
         <skoash.Audio type="sfx" src="media/S_1/S_1.1.mp3" />
