@@ -8,7 +8,6 @@ import Reveal from 'shared/components/reveal/0.1';
 
 
 export default function (props, ref, key) {
-  console.log(props.data);
   var CarouselScreen = (
     <skoash.Screen
       {...props}
