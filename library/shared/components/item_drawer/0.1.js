@@ -9,6 +9,18 @@ class ItemDrawer extends Selectable {
     super();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    var quickCheck = _.reduce(nextState.items, (a, i) => {
+      a += i.name;
+      return a;
+    }, '');
+    var itemsChanged = nextState.quickCheck !== quickCheck;
+    if (itemsChanged) {
+      this.setState({quickCheck});
+    }
+    return itemsChanged;
+  }
+
   start() {
     var items, selectedItem, selectFunction, classes = {}, self = this;
 
