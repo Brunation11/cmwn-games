@@ -7,7 +7,7 @@ class Selectable extends skoash.Component {
 
     this.state = {
       classes: {},
-      selectFunction: this.select,
+      selectFunction: this.select
     };
   }
 
@@ -26,6 +26,13 @@ class Selectable extends skoash.Component {
       classes,
       selectFunction,
       selectClass,
+    });
+
+    this.updateGameState({
+      path: this.props.dataTarget,
+      data: {
+        target: null
+      }
     });
 
     this.bootstrap();
@@ -52,14 +59,27 @@ class Selectable extends skoash.Component {
     if (!target) return;
 
     message = target.getAttribute('data-ref');
-    classes[message] = this.props.selectClass;
+
+    if (!this.props.answers || !this.props.answers.length ||
+      this.props.highlightIncorrect || ~this.props.answers.indexOf(message)) {
+      classes[message] = this.props.selectClass;
+    }
 
     this.setState({
-      classes,
+      classes
     });
 
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: message
+        }
+      });
+    }
+
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+      this.props.selectRespond.call(this, message);
     }
 
     this.requireForComplete.map(key => {

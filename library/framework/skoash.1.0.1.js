@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "240b2b23b6dc828df75c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4ea92474600f729aa51b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1875,15 +1875,19 @@
 	  _createClass(Component, [{
 	    key: 'complete',
 	    value: function complete() {
-	      this.setState({
-	        complete: true
-	      }, function () {
-	        skoash.trigger('complete');
-	      });
+	      var _this2 = this;
 
-	      if (typeof this.props.onComplete === 'function') {
-	        this.props.onComplete.call(this, this);
-	      }
+	      setTimeout(function () {
+	        _this2.setState({
+	          complete: true
+	        }, function () {
+	          skoash.trigger('complete');
+	        });
+
+	        if (typeof _this2.props.onComplete === 'function') {
+	          _this2.props.onComplete.call(_this2, _this2);
+	        }
+	      }, this.props.completeDelay);
 	    }
 	  }, {
 	    key: 'incomplete',
@@ -1904,17 +1908,21 @@
 	  }, {
 	    key: 'start',
 	    value: function start() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      this.setState({
 	        started: true
 	      }, function () {
-	        _this2.checkComplete();
+	        _this3.checkComplete();
 	      });
 
 	      _lodash2.default.each(this.refs, function (ref) {
 	        if (typeof ref.start === 'function') ref.start();
 	      });
+
+	      if (this.props.completeOnStart) {
+	        this.complete();
+	      }
 	    }
 	  }, {
 	    key: 'stop',
@@ -1974,6 +1982,11 @@
 	    key: 'bootstrap',
 	    value: function bootstrap() {
 	      var self = this;
+
+	      if (this.props.complete) {
+	        this.complete();
+	      }
+
 	      this.requireForReady = Object.keys(self.refs);
 	      this.requireForComplete = this.requireForReady.filter(function (key) {
 	        return self.refs[key].checkComplete;
@@ -1991,6 +2004,13 @@
 	    value: function collectData() {
 	      if (typeof this.props.collectData === 'function') {
 	        return this.props.collectData.call(this);
+	      }
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      if (this.metaData && typeof this.props.loadData === 'function') {
+	        this.props.loadData.call(this, this.metaData);
 	      }
 	    }
 	  }, {
@@ -2153,7 +2173,9 @@
 	  type: 'div',
 	  shouldRender: true,
 	  checkComplete: true,
-	  checkReady: true
+	  checkReady: true,
+	  completeDelay: 0,
+	  completeOnStart: false
 	};
 
 		exports.default = Component;
@@ -44870,6 +44892,10 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+	var _lodash = __webpack_require__(318);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	var _classnames = __webpack_require__(319);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
@@ -44985,9 +45011,7 @@
 	    value: function start() {
 	      var _this2 = this;
 
-	      var self = this;
-
-	      self.bootstrap();
+	      this.bootstrap();
 
 	      Object.keys(this.refs).map(function (key) {
 	        if (typeof _this2.refs[key].start === 'function') {
@@ -44995,18 +45019,16 @@
 	        }
 	      });
 
-	      self.startMedia();
+	      this.startMedia();
 
-	      self.setState({
+	      this.setState({
 	        started: true
 	      });
 
-	      self.checkComplete();
+	      this.checkComplete();
 
-	      if (typeof self.props.completeDelay === 'number') {
-	        setTimeout(function () {
-	          self.complete();
-	        }, self.props.completeDelay);
+	      if (this.props.completeOnStart) {
+	        this.complete();
 	      }
 	    }
 	  }, {
@@ -45029,13 +45051,23 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
+	      var _this3 = this;
+
 	      _get(Object.getPrototypeOf(Screen.prototype), 'complete', this).call(this);
-	      skoash.trigger('screenComplete', {
-	        screenID: this.props.id
-	      });
-	      if (this.props.emitOnComplete) {
-	        skoash.trigger('emit', this.props.emitOnComplete);
-	      }
+	      setTimeout(function () {
+	        skoash.trigger('screenComplete', {
+	          screenID: _this3.props.id,
+	          silent: _this3.props.silentComplete
+	        });
+
+	        if (_this3.audio['screen-complete']) {
+	          _this3.audio['screen-complete'].play();
+	        }
+
+	        if (_this3.props.emitOnComplete) {
+	          skoash.trigger('emit', _this3.props.emitOnComplete);
+	        }
+	      }, this.props.completeDelay);
 	    }
 	  }, {
 	    key: 'open',
@@ -45061,6 +45093,8 @@
 	      if (typeof this.props.onOpen === 'function') {
 	        this.props.onOpen(this);
 	      }
+
+	      this.loadData();
 	    }
 	  }, {
 	    key: 'leave',
@@ -45081,6 +45115,60 @@
 	        close: true
 	      });
 	      this.stop();
+	    }
+	  }, {
+	    key: 'collectData',
+	    value: function collectData() {
+	      var _this4 = this;
+
+	      var data = {};
+	      if (!this.refs) return data;
+	      if (this.refs['selectable-reveal']) {
+	        data = [];
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _lodash2.default.forIn(this.refs['selectable-reveal'].refs.selectable.refs, function (ref) {
+	            if (_lodash2.default.includes(ref.props.className, 'SELECTED') || _lodash2.default.includes(ref.props.className, 'HIGHLIGHTED')) data.push(ref.props['data-ref']);
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          _lodash2.default.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, function (ref, key) {
+	            if (key.indexOf('dropzone-') === -1 || !ref.state.content) return;
+	            if (_this4.props.multipleAnswers) {
+	              data[key] = [];
+	              _lodash2.default.forIn(ref.state.content, function (ref2) {
+	                data[key].push(ref2.props.message);
+	              });
+	            } else {
+	              data[key] = {
+	                ref: ref.state.content.props.message,
+	                state: ref.state.content.state
+	              };
+	            }
+	          });
+	        }
+	      }
+	      return data;
+	    }
+	  }, {
+	    key: 'loadData',
+	    value: function loadData() {
+	      var _this5 = this;
+
+	      var loadData = {};
+	      if (!this.refs) return;
+	      if (this.refs['selectable-reveal']) {
+	        if (this.refs['selectable-reveal'].refs && this.refs['selectable-reveal'].refs.selectable) {
+	          _lodash2.default.forEach(this.metaData, function (ref) {
+	            loadData[ref] = _this5.refs['selectable-reveal'].props.selectableSelectClass || _this5.refs['selectable-reveal'].refs.selectable.state.selectClass;
+	            _this5.refs['selectable-reveal'].refs.selectable.loadData = loadData;
+	          });
+	        }
+	      } else if (this.refs['dropzone-reveal']) {
+	        if (this.refs['dropzone-reveal'].refs && this.refs['dropzone-reveal'].refs.dropzone) {
+	          this.refs['dropzone-reveal'].refs.dropzone.loadData = this.metaData;
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'getClassNames',
@@ -45141,6 +45229,10 @@
 	  return Screen;
 	}(_component2.default));
 
+	Screen.defaultProps = _lodash2.default.merge(_component2.default.defaultProps, {
+	  resetOnClose: true
+	});
+
 		exports.default = Screen;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
@@ -45176,6 +45268,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 	var _lodash = __webpack_require__(318);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
@@ -45193,6 +45287,8 @@
 	var _screen2 = _interopRequireDefault(_screen);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -45259,7 +45355,8 @@
 	      openMenus: [],
 	      loading: true,
 	      demo: false,
-	      data: {}
+	      data: {},
+	      classes: []
 	    };
 
 	    skoash.trigger = _this.trigger.bind(_this);
@@ -45494,7 +45591,7 @@
 	       * highestScreenIndex is the index of the highest screen reached
 	       * not the index of the highest screen that exists.
 	       */
-	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray;
+	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
 	      oldIndex = this.state.currentScreenIndex;
 	      oldScreen = this.refs['screen-' + oldIndex];
 	      if (typeof opts.index === 'number') {
@@ -45538,6 +45635,14 @@
 	        } else {
 	          oldScreen.leave();
 	        }
+
+	        if (oldScreen.props.resetOnClose) {
+	          data = _lodash2.default.cloneDeep(this.state.data);
+	          data.screens[oldIndex] = {};
+	          this.setState({
+	            data: data
+	          });
+	        }
 	      }
 
 	      if (nextScreen) {
@@ -45548,7 +45653,8 @@
 	        loading: false,
 	        currentScreenIndex: currentScreenIndex,
 	        highestScreenIndex: highestScreenIndex,
-	        screenIndexArray: screenIndexArray
+	        screenIndexArray: screenIndexArray,
+	        classes: []
 	      });
 
 	      this.emitSave(highestScreenIndex, currentScreenIndex);
@@ -45659,6 +45765,7 @@
 	        passData: this.passData,
 	        'pass-data': this.passData,
 	        'update-data': this.updateData,
+	        updateState: this.updateState,
 	        screenComplete: this.screenComplete,
 	        openMenu: this.openMenu,
 	        menuClose: this.menuClose,
@@ -45745,6 +45852,19 @@
 	      });
 	    }
 	  }, {
+	    key: 'updateState',
+	    value: function updateState(opts) {
+	      if (typeof opts.path === 'string') {
+	        opts.data = {
+	          screens: _defineProperty({}, this.state.currentScreenIndex, _defineProperty({}, opts.path, opts.data))
+	        };
+	        this.updateData(opts);
+	      } else if (_lodash2.default.isArray(opts.path)) {
+	        opts.data = _lodash2.default.setWith({}, opts.path, opts.data, Object);
+	        this.updateData(opts);
+	      }
+	    }
+	  }, {
 	    key: 'updateData',
 	    value: function updateData(opts) {
 	      var data = _lodash2.default.merge(this.state.data, opts.data);
@@ -45756,11 +45876,16 @@
 	  }, {
 	    key: 'audioPlay',
 	    value: function audioPlay(opts) {
-	      var playingSFX, playingVO, playingBKG;
+	      var playingSFX, playingVO, playingBKG, classes;
 
 	      playingSFX = this.state.playingSFX || [];
 	      playingVO = this.state.playingVO || [];
 	      playingBKG = this.state.playingBKG || [];
+	      classes = this.state.classes || [];
+
+	      if (opts.audio.props.gameClass) {
+	        classes.push(opts.audio.props.gameClass);
+	      }
 
 	      switch (opts.audio.props.type) {
 	        case 'sfx':
@@ -45778,7 +45903,8 @@
 	      this.setState({
 	        playingSFX: playingSFX,
 	        playingVO: playingVO,
-	        playingBKG: playingBKG
+	        playingBKG: playingBKG,
+	        classes: classes
 	      });
 	    }
 	  }, {
@@ -45872,7 +45998,8 @@
 
 	  }, {
 	    key: 'screenComplete',
-	    value: function screenComplete() {
+	    value: function screenComplete(opts) {
+	      if (opts.silent) return;
 	      if (this.audio['screen-complete']) {
 	        this.audio['screen-complete'].play();
 	      }
@@ -45880,9 +46007,9 @@
 	  }, {
 	    key: 'getClassNames',
 	    value: function getClassNames() {
-	      var _classNames;
+	      var _ref;
 
-	      return (0, _classnames2.default)('pl-game', 'skoash-game', (_classNames = {
+	      return _classnames2.default.apply(undefined, ['pl-game', 'skoash-game', (_ref = {
 	        iOS: this.state.iOS,
 	        MOBILE: this.state.mobile,
 	        SFX: this.state.playingSFX.length,
@@ -45890,7 +46017,7 @@
 	        PAUSED: this.state.paused,
 	        LOADING: this.state.loading,
 	        MENU: this.state.openMenus.length
-	      }, _defineProperty(_classNames, 'MENU-' + this.state.openMenus[0], this.state.openMenus[0]), _defineProperty(_classNames, 'DEMO', this.state.demo), _defineProperty(_classNames, 'SCREEN-' + this.state.currentScreenIndex, true), _classNames));
+	      }, _defineProperty(_ref, 'MENU-' + this.state.openMenus[0], this.state.openMenus[0]), _defineProperty(_ref, 'DEMO', this.state.demo), _defineProperty(_ref, 'SCREEN-' + this.state.currentScreenIndex, true), _ref)].concat(_toConsumableArray(this.state.classes), [_get(Object.getPrototypeOf(Game.prototype), 'getClassNames', this).call(this)]));
 	    }
 	  }, {
 	    key: 'getStyles',
@@ -45928,15 +46055,19 @@
 	  }, {
 	    key: 'renderScreens',
 	    value: function renderScreens() {
-	      var screens, screenKeys;
-	      screens = this.props.screens || this.screens;
+	      var screens,
+	          screenKeys,
+	          self = this;
+	      screens = self.props.screens || self.screens;
 	      screenKeys = Object.keys(screens);
-	      this.screensLength = screenKeys.length;
+	      self.screensLength = screenKeys.length;
 	      return screenKeys.map(function (key, index) {
 	        var ScreenComponent, props;
-	        ScreenComponent = screens[key].type;
 	        props = screens[key].props || {};
-	        return React.createElement(ScreenComponent, _extends({}, props, { key: key, index: index, ref: 'screen-' + key }));
+	        props.data = self.state.data.screens[key];
+	        props.index = index;
+	        ScreenComponent = screens[key];
+	        return ScreenComponent(props, 'screen-' + key, key);
 	      });
 	    }
 	  }, {
@@ -46143,7 +46274,11 @@
 	  function Audio() {
 	    _classCallCheck(this, Audio);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
+
+	    _this.complete = _this.complete.bind(_this);
+	    _this.ready = _this.ready.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Audio, [{
@@ -46253,10 +46388,10 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.audio = new _howler.Howl({
-	        src: [this.props.src],
+	        src: this.props.src,
 	        loop: this.props.loop || false,
-	        onend: this.complete.bind(this),
-	        onload: this.ready.bind(this)
+	        onend: this.complete,
+	        onload: this.ready
 	      });
 	      if (this.props.complete) {
 	        this.complete();
@@ -49075,7 +49210,6 @@
 	  }, {
 	    key: 'complete',
 	    value: function complete() {
-	      console.log(this.props.completeTarget);
 	      if (this.props.completeTarget) {
 	        this.updateGameState({
 	          path: this.props.completeTarget,
@@ -49240,9 +49374,9 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _media = __webpack_require__(326);
+	var _component = __webpack_require__(13);
 
-	var _media2 = _interopRequireDefault(_media);
+	var _component2 = _interopRequireDefault(_component);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49252,8 +49386,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MediaSequence = function (_Media) {
-	  _inherits(MediaSequence, _Media);
+	var MediaSequence = function (_Component) {
+	  _inherits(MediaSequence, _Component);
 
 	  function MediaSequence() {
 	    _classCallCheck(this, MediaSequence);
@@ -49310,7 +49444,7 @@
 	  }]);
 
 	  return MediaSequence;
-	}(_media2.default);
+	}(_component2.default);
 
 	MediaSequence.defaultProps = {
 	  type: 'div',
@@ -49575,4 +49709,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=skoash.1.0.0.js.map
+//# sourceMappingURL=skoash.1.0.1.js.map

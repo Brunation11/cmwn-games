@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 class Reveal extends skoash.Component {
   constructor() {
     super();
@@ -30,7 +32,7 @@ class Reveal extends skoash.Component {
   close() {
     this.setState({
       open: false,
-      openReveal: '',
+      openReveal: ''
     });
 
     if (typeof this.props.closeRespond === 'function') {
@@ -81,6 +83,10 @@ class Reveal extends skoash.Component {
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
             data-ref={key}
+            onComplete={() => {
+              if (typeof this.props.onAudioComplete === 'function') this.props.onAudioComplete.call(this, asset);
+              if (typeof asset.props.onComplete === 'function') asset.props.onComplete();
+            }}
           />
         );
       });
@@ -97,7 +103,6 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
-          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={ref}
@@ -107,28 +112,29 @@ class Reveal extends skoash.Component {
     });
   }
 
+  componentWillReceiveProps(props) {
+    if (props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
+  }
+
   getClass(li, key) {
     var classes = '';
 
     if (li.props.className) classes += li.props.className;
-    if (this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
-    if (this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
+    if (this.state.openReveal && this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
+    if (this.state.openReveal && this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
 
     return classes;
   }
 
   getClasses() {
-    var classes = '';
-
-    if (this.state.open) classes += 'OPEN';
-    if (this.state.complete) classes += ' COMPLETE';
-
-    return classes;
+    return classNames('reveal', super.getClassNames());
   }
 
   render() {
     return (
-      <div className={'reveal ' + this.getClasses()}>
+      <div className={this.getClasses()}>
         {this.renderAssets()}
         <div>
           <ul>
