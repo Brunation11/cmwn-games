@@ -24,7 +24,7 @@ class DragNDropScreen extends skoash.Screen {
   }
 
   correctRespond(draggable, dropzoneKey) {
-    var dropzone, endX, endY, complete = true, content;
+    var dropzone, endX, endY, complete = true, content, totalComplete = 0;
     dropzone = this.refs['dropzone-reveal'].refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
     if (this.props.centerOnCorrect) {
@@ -35,9 +35,7 @@ class DragNDropScreen extends skoash.Screen {
 
     if (this.props.multipleAnswers) {
       content = dropzone.state.content || [];
-      if (content.indexOf(draggable) === -1) {
-        content.push(draggable);
-      }
+      if (content.indexOf(draggable) === -1) content.push(draggable);
       dropzone.setState({content});
     } else {
       if (dropzone.state.content && draggable !== dropzone.state.content) {
@@ -49,10 +47,18 @@ class DragNDropScreen extends skoash.Screen {
       });
     }
 
-
     _.forIn(this.refs['dropzone-reveal'].refs.dropzone.refs, (ref, key) => {
-      if (key.indexOf('dropzone-')) return;
-      if (!ref.state.content) complete = false;
+      if (key.indexOf('dropzone-') === -1) return;
+      if (!ref.state.content) {
+        complete = false;
+        return;
+      }
+      if (this.props.multipleAnswers) {
+        totalComplete += ref.state.content.length;
+        if (totalComplete !== this.refs['dropzone-reveal'].refs.dropzone.draggables.length) {
+          complete = false;
+        }
+      }
     });
 
     if (complete) this.complete();
