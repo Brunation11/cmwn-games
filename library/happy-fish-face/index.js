@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -25,20 +27,22 @@ class HappyFishFace extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: YouFeelScreen,
-      3: WaterPollutionScreen,
-      4: HealthyWaterScreen,
-      5: CleanWaterScreen,
-      6: BubbleUpScreen,
-      7: MultiBubblesScreen,
-      8: PollutesWaterScreen,
-      9: TrashScreen,
-      10: FlipScreen,
+      // 2: YouFeelScreen,
+      // 3: WaterPollutionScreen,
+      // 4: HealthyWaterScreen,
+      // 5: CleanWaterScreen,
+      // 6: BubbleUpScreen,
+      // 7: MultiBubblesScreen,
+      // 8: PollutesWaterScreen,
+      // 9: TrashScreen,
+      // 10: FlipScreen,
     };
 
     this.menus = {
       quit: QuitScreen,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   getBackgroundIndex(index) {
