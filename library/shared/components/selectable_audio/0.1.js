@@ -1,11 +1,6 @@
-import _ from 'lodash';
 import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableAudio extends skoash.Component {
-  constructor() {
-    super();
-  }
-
   restart() { // this might be nice as a method in skoash.Component
     if (this.state.complete) this.incomplete();
 
@@ -29,7 +24,7 @@ class SelectableAudio extends skoash.Component {
     }
 
     if (this.props.chooseOne) {
-      this.requireForComplete = [ ref ];
+      this.requireForComplete = [ref];
     }
   }
 
