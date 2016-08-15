@@ -415,10 +415,13 @@ p {
   pointer-events: none;
 }
 
+
 #water-pollution {
 
   img {
     vertical-align: middle;
+    margin: 0 -20px;
+  }
 
   .words {
     width: 360px;
@@ -491,6 +494,7 @@ p {
   cursor: auto;
   pointer-events: none;
 }
+
 
 #clean-water {
   p {
