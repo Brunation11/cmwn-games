@@ -34,7 +34,7 @@ class MultiBubblesScreenComponent extends skoash.Screen {
           <skoash.ListItem correct id="cook" data-ref="cook" />,
           <skoash.ListItem id="crochet" data-ref="incorrect" />,
           <skoash.ListItem correct id="growCrops" data-ref="growCrops" />,
-          <skoash.ListItem id="zipskoash.ListItemne" data-ref="incorrect" />,
+          <skoash.ListItem id="zipline" data-ref="incorrect" />,
           <skoash.ListItem id="read" data-ref="incorrect" />,
           <skoash.ListItem correct id="laundry" data-ref="laundry" />,
           <skoash.ListItem id="drive" data-ref="incorrect" />,
