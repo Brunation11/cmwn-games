@@ -38,7 +38,7 @@ class SelectableAll extends Selectable {
       }, () => {
         setTimeout(() => {
           this.launch()
-        }, SET_STATE_PAUSE)
+        }, this.props.launchPause)
       });
     } else {
       this.launch();
@@ -78,7 +78,7 @@ class SelectableAll extends Selectable {
       setTimeout(() => {
         classes[key] = 'LAUNCHED';
         this.setState({classes});
-      }, SET_STATE_PAUSE);
+      }, this.props.launchPause);
     });
   }
 
@@ -132,10 +132,11 @@ class SelectableAll extends Selectable {
   }
 }
 
-SelectableAll.defaultProps = _.merge({
+SelectableAll.defaultProps = _.defaults({
   selectNum:  6,
   pause: 500,
-  doCount: false
-}, Selectable.defaultProps);
+  doCount: false,
+  launchPause: 100,
+});
 
 export default SelectableAll;
