@@ -165,11 +165,10 @@ p {
   left: 0; right: 0;
   opacity: 0;
   display: none;
-  transition: opacity 1s, transform 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
   transform: translateX(100%);
+  background-size: cover;
 }
-
-.screen.last {}
 
 .screen.OPEN {
   opacity: 1;
@@ -246,7 +245,6 @@ img.inline {
 
 #title {
   background-image: url(../media/_images/_BKG/BKG_1.png);
-  background-size: cover;
   transition: opacity .2s;
 
   .group {
@@ -307,18 +305,14 @@ img.inline {
   }
 
   .next-screen {
-    margin-right: 5px;
-    right: 0;
     opacity: 1;
     background-image: url(../media/_images/_Buttons/BU_1.png);
     background-position: 0 0;
     width: 300px;
     top: 330px;
     left: 330px;
-    transition: opacity 1s, transform 1s;
 
     &:hover {
-      background-image: url(../media/_images/_Buttons/BU_1.png);
       background-position: 0 600px;
       width: 300px;
       top: 330px;
@@ -334,7 +328,6 @@ img.inline {
 #precious, #not-to-waste {
   background-image: url(../media/_images/_BKG/BKG_2.png);
   position: absolute;
-  transition: opacity .5s;
 
   img {
     position: relative;
@@ -371,8 +364,6 @@ img.inline {
 
 #recycling-arts {
   background-image: url(../media/_images/_BKG/BKG_3.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .pallet {
     position: absolute;
@@ -417,8 +408,6 @@ img.inline {
 
 #reminder {
   background-image: url(../media/_images/_BKG/BKG_3.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   img {
     position: absolute;
@@ -444,8 +433,6 @@ img.inline {
 
 #step-1 {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   img {
     position: absolute;
@@ -488,8 +475,6 @@ img.inline {
 
 #what-faucet {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .question {
     background-size: 1700px;
@@ -614,8 +599,6 @@ img.inline {
 
 #step-2 {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .group {
     width: 960px;
@@ -757,14 +740,10 @@ img.inline {
 
 #tip-1, #tip-2 {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #what-need {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .left {
     position: absolute;
@@ -862,14 +841,10 @@ img.inline {
 
 #note {
   background-image: url(../media/_images/_BKG/BKG_4.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #scissors-and-paint {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   img {
     position: absolute;
@@ -893,8 +868,6 @@ img.inline {
 
 #step-3 {
   background-image: url('../media/_images/_BKG/BKG_5.png');
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -943,8 +916,6 @@ img.inline {
 
 #step-4 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -991,8 +962,6 @@ img.inline {
 
 #step-5 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -1038,14 +1007,10 @@ img.inline {
 
 #hint-1 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #step-6 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -1091,8 +1056,6 @@ img.inline {
 
 #step-7 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -1136,14 +1099,10 @@ img.inline {
 
 #hint-2 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #decorate-tag {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   p {
     position: absolute;
@@ -1175,8 +1134,6 @@ img.inline {
 
 #step-8 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -1224,14 +1181,10 @@ img.inline {
 
 #hint-3 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #select-paint {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .text {
     position: absolute;
@@ -1263,14 +1216,10 @@ img.inline {
 
 #hint-4 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #step-9 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .step {
     position: absolute;
@@ -1318,14 +1267,10 @@ img.inline {
 
 #hint-5 {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 }
 
 #all-layers {
   background-image: url(../media/_images/_BKG/BKG_5.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .text {
     position: absolute;
@@ -1350,9 +1295,7 @@ img.inline {
 
 #spread-the-word {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover;
   text-align: center;
-  transition: opacity .5s;
 
   img {
     width: 800px;
@@ -1362,8 +1305,6 @@ img.inline {
 
 #tips {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .tips {
     position: absolute;
@@ -1450,8 +1391,6 @@ img.inline {
 
 #flip {
   background-image: url(../media/_images/_BKG/BKG_6.png);
-  background-size: cover;
-  transition: opacity .5s;
 
   .drop {
     position: absolute;
