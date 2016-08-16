@@ -105,6 +105,7 @@ class AllAboutYou extends skoash.Game {
   }
 
   load(opts) {
+    opts.silent = true;
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
