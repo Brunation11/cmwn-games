@@ -134,9 +134,6 @@ class Reveal extends skoash.Component {
     return classes;
   }
 
-  getID() {
-  }
-
   render() {
     return (
       <div className={this.getClassNames()}>

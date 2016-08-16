@@ -46,8 +46,7 @@ class AudioSequence extends play.Component {
   }
 }
 
-AudioSequence.defaultProps = _.merge(
-  skoash.Component.defaultProps, {
+AudioSequence.defaultProps = _.defaults({
   playOnStart: true
 });
 
