@@ -105,15 +105,14 @@ class AllAboutYou extends skoash.Game {
   }
 
   load(opts) {
-    opts.silent = true;
-    if (this && this.refs) {
+    if (this && this.refs && opts.data) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
         if (typeof screen.loadData === 'function') {
-          if (!opts.data) return;
-          screen.metaData = opts.data[key];
-          screen.completeRefs();
-          this.screenComplete(opts);
+          if (opts.data[key] && opts.data[key].length) {
+            screen.metaData = opts.data[key];
+            screen.completeRefs();
+          }
         }
       });
     }
