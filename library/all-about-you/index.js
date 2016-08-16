@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -23,7 +25,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class AllAboutYou extends skoash.Game {
   constructor() {
@@ -57,6 +59,8 @@ class AllAboutYou extends skoash.Game {
               ]}
             />
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {
@@ -101,7 +105,6 @@ class AllAboutYou extends skoash.Game {
   }
 
   load(opts) {
-    var screenData;
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
