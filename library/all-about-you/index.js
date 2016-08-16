@@ -111,7 +111,6 @@ class AllAboutYou extends skoash.Game {
         if (typeof screen.loadData === 'function') {
           if (opts.data[key] && opts.data[key].length) {
             screen.metaData = opts.data[key];
-            screen.completeRefs();
           }
         }
       });
