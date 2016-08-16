@@ -17,7 +17,6 @@ class TrashScreenComponent extends skoash.Screen {
       cursorTop: 0,
       touchstart: false,
       revealOpen: false,
-      replay: false,
     };
   }
 
@@ -48,12 +47,18 @@ class TrashScreenComponent extends skoash.Screen {
   start() {
     super.start();
 
-    this.checkComplete = super.checkComplete;
+    this.checkComplete = super.checkComplete; // for replay
+  }
+
+  goto(index, buttonSound) {
+    super.goto(index, buttonSound);
+
+    this.refs.timer.restart();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousemove', this.moveCursor.bind(this));
-    window.removeEventListener('touchstart', this.touchstart.bind(this));
+    window.removeEventListener('mousemove', this.moveCursor);
+    window.removeEventListener('touchstart', this.touchstart);
   }
 
   moveCursor(e) {
@@ -73,24 +78,19 @@ class TrashScreenComponent extends skoash.Screen {
   complete() {
     var self = this;
     super.complete();
+    self.checkComplete = () => {};
+    // so it won't try to complete while incompleting all the refs
+
+    if (!this.state.replay) this.setState({ replay: true });
 
     setTimeout(() => { // have to wait for state to change to complete: true
-      self.checkComplete = () => {};
       if (self.state.complete) {
         self.incomplete();
         ['timer', 'reveal', 'selectable-audio'].forEach(key => {
-          var ref = self.refs[key];
-          var restartFunction = ref.restart || ref.incomplete;
-          if (typeof restartFunction === 'function') {
-            restartFunction.call(ref);
-          }
+          self.refs[key].incompleteRefs();
         });
       }
-    }, 300);
-  }
-
-  onRevealComplete() {
-    if (!this.state.replay) this.setState({ replay: true });
+    }, 500);
   }
 
   onSelectableAudioComplete() {
@@ -126,7 +126,6 @@ class TrashScreenComponent extends skoash.Screen {
 
   getClassNames() {
     return classNames({
-      REPLAY: this.state.replay,
       'REVEAL-OPEN': this.state.revealOpen,
       TOUCH: this.state.touchstart,
     }, super.getClassNames());
@@ -191,15 +190,14 @@ class TrashScreenComponent extends skoash.Screen {
         ref="reveal"
         className="center"
         closeRespond={this.closeRespond.bind(this)}
-        onComplete={this.onRevealComplete.bind(this)}
         list={[
-          <skoash.Component id="tryAgain">
+          <skoash.Component id="tryAgain" complete>
             <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
             <p>
               You ran out of time!
             </p>
           </skoash.Component>,
-          <skoash.Component id="goodJob" correct>
+          <skoash.Component id="goodJob">
             <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
             <p>
               Take this offline.<br /> Never throw the trash in the water.

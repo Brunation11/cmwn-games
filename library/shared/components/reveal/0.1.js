@@ -49,20 +49,6 @@ class Reveal extends skoash.Component {
     }
   }
 
-  restart() {
-    if (this.state.complete) this.incomplete();
-
-    this.requireForComplete.forEach(key => {
-      var ref = this.refs[key];
-      var restartFunction = ref.restart || ref.incomplete;
-      if (ref.props && !ref.props.complete && typeof restartFunction === 'function') {
-        restartFunction.call(ref);
-      }
-    });
-
-    if (!this.state.started) this.start();
-  }
-
   playAudio(message) {
     var messages;
 
