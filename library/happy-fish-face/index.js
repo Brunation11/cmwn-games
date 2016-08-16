@@ -18,7 +18,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-//import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class HappyFishFace extends skoash.Game {
   constructor() {
@@ -27,15 +27,15 @@ class HappyFishFace extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      //2: YouFeelScreen,
-      //3: WaterPollutionScreen,
-      //4: HealthyWaterScreen,
-      //5: CleanWaterScreen,
-      //6: BubbleUpScreen,
-      //7: MultiBubblesScreen,
-      //8: PollutesWaterScreen,
-      2: TrashScreen,
-      //10: FlipScreen,
+      2: YouFeelScreen,
+      3: WaterPollutionScreen,
+      4: HealthyWaterScreen,
+      5: CleanWaterScreen,
+      6: BubbleUpScreen,
+      7: MultiBubblesScreen,
+      8: PollutesWaterScreen,
+      9: TrashScreen,
+      10: FlipScreen,
     };
 
     this.menus = {
