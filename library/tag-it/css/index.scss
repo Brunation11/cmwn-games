@@ -186,55 +186,47 @@ p {
   transform: translateX(-100%);
 }
 
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    z-index: 2;
-  }
+.screen .next-screen,
+.screen .prev-screen {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  z-index: 2;
+}
 
-  .screen .next-screen {
-    margin-right: 5px;
-    right: 0;
-    opacity: 0;
-    transform: rotate(-180deg);
-    transition: opacity 1s, transform 1s;
-  }
+.screen .next-screen {
+  margin-right: 5px;
+  right: 0;
+  opacity: 0;
+  cursor: default;
+  transform: rotate(-180deg);
+  transition: opacity 1s, transform 1s;
+}
 
-  .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
-  .screen.GATED .next-screen,
-  .frame-component.GATED .next-screen {
-    opacity: 0;
-    cursor: default;
-  }
+.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+.screen.GATED .next-screen,
+.frame-component.GATED .next-screen {
+  opacity: 0;
+  cursor: default;
+}
 
 
-  .pl-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen,
-  .frame-component.COMPLETE .next-screen {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
-  }
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.frame-component.COMPLETE .next-screen {
+  opacity: 1;
+  transform: rotate(0deg);
+  cursor: pointer;
+}
 
-  .frame-component:not(.OPEN).COMPLETE .next-screen {
-    opacity: 0;
-  }
+.frame-component:not(.OPEN).COMPLETE .next-screen {
+  opacity: 0;
+}
 
-  .screen .next-screen:hover {
-
-  }
-
-  .screen .prev-screen {
-    margin-left: 5px;
-    left: 0;
-
-  }
-
-  .screen .prev-screen:hover {
-
-  }
+.screen .prev-screen {
+  margin-left: 5px;
+  left: 0;
+}
 
 // the following css is specific to this game
 
@@ -303,46 +295,39 @@ img.inline {
     bottom: 0;
   }
 
-  .play {
-    margin: 0;
-    left: 340px;
-    bottom: 90px;
-    opacity: 1;
-    transform: none;
-  }
-
   &.OPEN {
     .title {
       animation-name: rubberBand;
-      animation-delay: 2s;
+      animation-delay: 1.5s;
     }
 
-    // &.COMPLETE {
-      .next-screen {
-        margin-right: 5px;
-        right: 0;
-        opacity: 1;
-        background-image: url(../media/_images/_Buttons/BU_1.png);
-        background-position: 0 0;
-        width: 300px;
-        top: 330px;
-        left: 330px;
-        transform: rotate(360deg);
-        transition: opacity 1s, transform 1s;
-      }
-    // }
+    .next-screen {
+      transform: rotate(360deg);
+    }
+  }
+
+  .next-screen {
+    margin-right: 5px;
+    right: 0;
+    opacity: 1;
+    background-image: url(../media/_images/_Buttons/BU_1.png);
+    background-position: 0 0;
+    width: 300px;
+    top: 330px;
+    left: 330px;
+    transition: opacity 1s, transform 1s;
+
+    &:hover {
+      background-image: url(../media/_images/_Buttons/BU_1.png);
+      background-position: 0 600px;
+      width: 300px;
+      top: 330px;
+      left: 330px;
+    }
   }
 
   .prev-screen {
     display: none;
-  }
-
-  .next-screen:hover {
-    background-image: url(../media/_images/_Buttons/BU_1.png);
-    background-position: 0 600px;
-    width: 300px;
-    top: 330px;
-    left: 330px;
   }
 }
 
@@ -419,12 +404,12 @@ img.inline {
 
   &.OPEN {
     .pallet {
-      animation-delay: 1s;
+      animation-delay: 0.5s;
       animation-name: zoomInLeft;
     }
 
     .recycle {
-      animation-delay: 2s;
+      animation-delay: 1s;
       animation-name: tada;
     }
   }
@@ -847,19 +832,19 @@ img.inline {
   }
 
   .lids {
-    animation-delay: 2s;
+    animation-delay: 1.5;
   }
 
   .scissors {
-    animation-delay: 3.5s;
+    animation-delay: 2s;
   }
 
   .markers {
-      animation-delay: 4.5s;
+      animation-delay: 3.5s;
   }
 
   .polish {
-    animation-delay: 5.5s;
+    animation-delay: 4.5s;
   }
 
   &.WHAT-NEED {
@@ -1183,7 +1168,7 @@ img.inline {
   &.OPEN {
     img {
       animation-name: zoomIn;
-      animation-delay: 1.5s;
+      animation-delay: 0.5s;
     }
   }
 }
