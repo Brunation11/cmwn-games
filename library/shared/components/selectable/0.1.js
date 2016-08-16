@@ -179,8 +179,7 @@ class Selectable extends skoash.Component {
   }
 }
 
-Selectable.defaultProps = _.merge(
-  skoash.Component.defaultProps, {
+Selectable.defaultProps = _.defaults({
   list: [
     <li></li>,
     <li></li>,
