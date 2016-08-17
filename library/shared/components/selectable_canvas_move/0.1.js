@@ -147,9 +147,7 @@ class SelectableCanvasMove extends SelectableCanvas {
       classes,
     });
 
-    if (target && typeof this.props.onSelect === 'function') {
-      this.props.onSelect.call(this, target);
-    }
+    this.callProp('onSelect', target);
 
     this.checkComplete();
   }
