@@ -1428,11 +1428,11 @@ p {
           background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6_bucket.png);
           background-size: 600px 392px;
           width: 15%;
-          height: 22%;
+          height: 25%;
 
           &:nth-child(1) {
             background-position: -74px -48px;
-            left: 27%;
+            left: 37%;
             bottom: 10%;
 
             &:hover,
@@ -1444,7 +1444,7 @@ p {
           &:nth-child(2) {
             background-position: 811px -48px;
             bottom: 10%;
-            left: 57%;
+            left: 66%;
 
             &:hover,
             &:focus {

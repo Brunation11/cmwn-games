@@ -35,7 +35,7 @@ export default function (props, ref, key) {
         <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingBully.mp3" />,
         <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />,
         <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_Greediness.mp3" />,
-        <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_Angry.mp3" />,
+        <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingAngry.mp3" />,
         <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
       ]}
       afterDropzoneList={[
