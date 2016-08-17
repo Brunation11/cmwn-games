@@ -62,15 +62,15 @@ class Selectable extends skoash.Component {
       this.props.selectRespond(message);
     }
       
-    if (this.props.completeOnSelect) {
-      this.complete();
-    } else {
-        this.requireForComplete.map(key => {
-            if (key === message && this.refs[key]) {
-                this.refs[key].complete();
-            }
-        });
+    if (this.props.chooseOne) {
+      this.requireForComplete = [ message ];
     }
+
+    this.requireForComplete.map(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
+    });
   }
 
   select(e) {
@@ -158,15 +158,17 @@ class Selectable extends skoash.Component {
   }
 }
 
-Selectable.defaultProps = _.merge(
-  skoash.Component.defaultProps, {
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  selectClass: 'SELECTED'
-});
+Selectable.defaultProps = _.defaults(
+  {
+    list: [
+      <li></li>,
+      <li></li>,
+      <li></li>,
+      <li></li>
+    ],
+    selectClass: 'SELECTED'
+  },
+  skoash.Component.defaultProps
+);
 
 export default Selectable;

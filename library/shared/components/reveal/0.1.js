@@ -22,13 +22,11 @@ class Reveal extends skoash.Component {
 
     this.playAudio(message);
       
-    if (this.props.completeOnOpen) {
-      this.complete();
-    } else {
-        this.requireForComplete = this.requireForComplete.filter(item => {
-        return (item !== message) || (this.refs[message] instanceof skoash.Audio);
-        });
-    }
+    this.requireForComplete.map(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
+    });
   }
 
   close() {

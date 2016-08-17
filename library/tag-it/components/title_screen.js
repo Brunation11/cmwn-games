@@ -5,7 +5,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="title"
-      silentComplete
+      completeDelay={5000}
     >
       <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_1.mp3" complete />
   

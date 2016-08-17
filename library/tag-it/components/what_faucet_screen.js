@@ -8,6 +8,7 @@ export default function (props, ref, key) {
       key={key}
       id="what-faucet"
     >
+      <div className="question" />
       <skoash.MediaSequence
          ref="audio-sequence"
          checkComplete={true}
@@ -26,14 +27,11 @@ export default function (props, ref, key) {
           <skoash.Audio ref="outdoor-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
           <skoash.Audio ref="outdoor" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Outdoor.mp3" />
       </skoash.MediaSequence>
-      <div className="question" />
       <SelectableReveal
          ref="selectable-reveal"
-         selectableCompleteOnSelect
-         selectableCheckComplete={false}
          revealCompleteOnOpen
-         revealCheckComplete={false}
          allCorrect
+         chooseOne
          assets={[
            <skoash.Audio ref="correct" type="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" />
          ]}
