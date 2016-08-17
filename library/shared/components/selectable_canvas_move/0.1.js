@@ -6,8 +6,8 @@ import SelectableCanvas from 'shared/components/selectable_canvas/0.1';
 
 var Item = function (component, context) {
   this.position = {
-    x: 100,
-    y: 100,
+    x: component.props.x,
+    y: component.props.y,
   };
   this.margin = 0;
   this.left = 0;
@@ -29,7 +29,7 @@ var Item = function (component, context) {
   };
 
   this.render = function () {
-    this.context.drawImage(this.image, this.left, this.image.getAttribute('top') * this.image.naturalHeight / 15, this.size.width, this.size.height, this.position.x, this.position.y, this.backgroundSize.width, this.backgroundSize.height);
+    this.context.drawImage(this.image, this.left, this.component.props.backgroundTop * this.image.naturalHeight / 15, this.size.width, this.size.height, this.position.x, this.position.y, this.backgroundSize.width, this.backgroundSize.height);
   };
 
   this.hover = function () {
@@ -71,24 +71,33 @@ class SelectableCanvasMove extends SelectableCanvas {
     };
 
     this.move = this.move.bind(this);
+    this.onHover = this.onHover.bind(this);
   }
 
   bootstrap() {
     Selectable.prototype.bootstrap.call(this);
 
     this.buffer = document.createElement('canvas');
-    this.bctx = this.buffer.getContext('2d');
-
-    this.context = this.refs.canvas.getContext('2d');
 
     this.el = ReactDOM.findDOMNode(this);
 
+    this.offset = this.el.getBoundingClientRect();
+    this.refs.canvas.width = this.offset.width;
+    this.refs.canvas.height = this.offset.height;
+    this.buffer.width = this.offset.width;
+    this.buffer.height = this.offset.height;
+
+    this.bctx = this.buffer.getContext('2d');
+    this.context = this.refs.canvas.getContext('2d');
+
     this.items = [];
 
-    _.forIn(this.refs, component => {
+    _.forIn(this.refs, (component) => {
       if (!(component instanceof skoash.Image)) return;
       this.items.push(new Item(component, this.context));
     });
+
+    this.itemsReverse = _.reverse(_.clone(this.items));
   }
 
   start() {
@@ -97,13 +106,14 @@ class SelectableCanvasMove extends SelectableCanvas {
     this.isRunning = true;
     window.requestAnimationFrame(this.move);
 
-    // this.items.forEach(item => {
-    //   item.deselect();
-    // });
+    this.items.forEach(item => {
+      item.deselect();
+    });
   }
 
   move() {
     var self = this;
+    this.context.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
     _.forEach(this.items, item => {
       var y, height;
       item.position.y -= item.speed;
@@ -111,22 +121,20 @@ class SelectableCanvasMove extends SelectableCanvas {
       y = item.position.y + item.margin;
       height = item.size.height;
 
-      if (y + height < 0) item.position.y = self.height() * 1.1;
+      if (y + height < 0) item.position.y = self.offset.height * 1.1;
 
-      item.render(self.refs.canvas);
+      item.render();
     });
+
+    if (this.state.started) window.requestAnimationFrame(this.move);
   }
 
   selectHelper(e, classes) {
-    var offset, target;
-
-    offset = this.el.getBoundingClientRect();
-    this.buffer.width = offset.width;
-    this.buffer.height = offset.height;
-
-    this.items.some((item, key) => {
-      if (this.isImageTarget(item, e, offset)) {
-        target = this.refs[key];
+    var target;
+    this.itemsReverse.some((item, key) => {
+      if (this.isImageTarget(item, e)) {
+        item.select();
+        target = item.component;
         target.complete();
         classes[key] = this.props.selectClass;
         return true;
@@ -146,16 +154,25 @@ class SelectableCanvasMove extends SelectableCanvas {
     this.checkComplete();
   }
 
-  isImageTarget(item, e, parentOffset) {
-    var offset, pixel;
+  onHover(e) {
+    this.itemsReverse.forEach(item => {
+      item.unhover();
+    });
 
-    offset = {
-      left: item.left,
-      top: item.position.y,
-    };
+    this.itemsReverse.some((item) => {
+      if (this.isImageTarget(item, e)) {
+        item.hover();
+        return true;
+      }
+      return false;
+    });
+  }
+
+  isImageTarget(item, e) {
+    var pixel;
 
     this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-    this.bctx.drawImage(item.image, offset.left - parentOffset.left, offset.top - parentOffset.top, offset.width, offset.height);
+    this.bctx.drawImage(item.image, item.left, item.component.props.backgroundTop * item.image.naturalHeight / 15, item.size.width, item.size.height, item.position.x, item.position.y, item.backgroundSize.width, item.backgroundSize.height);
     pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
 
     this.bctx.fillStyle = 'blue';
@@ -178,6 +195,7 @@ class SelectableCanvasMove extends SelectableCanvas {
         <canvas
           ref="canvas"
           onClick={this.state.selectFunction.bind(this)}
+          onMouseMove={this.onHover}
         />
       </div>
     );

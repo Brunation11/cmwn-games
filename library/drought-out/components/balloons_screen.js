@@ -31,21 +31,111 @@ export default function (props, ref, key) {
         ref="selectable-canvas-move"
         selectClass="HIGHLIGHTED"
         items={[
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="b" ref="bathing" top="0" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="d" ref="drinking" top="1" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="wd" ref="washingDishes" top="4" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="s" ref="swimming" top="5" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="c" ref="canoeing" top="2" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="f" ref="factories" top="3" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="bt" ref="brushingTeeth" top="6" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="e" ref="electricity" top="7" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="g" ref="growingFood" top="11" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="ws" ref="waterSlides" top="10" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="r" ref="rafting" top="9" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="l" ref="lawns" top="12" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="k" ref="cooking" top="8" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="fl" ref="flowers" top="13" />,
-          <skoash.Image src="media/S_7/sprite_7.2.png" className="a" ref="animalFeed" top="14" />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="b"
+            ref="bathing"
+            backgroundTop={0}
+            x={120} y={540}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="d"
+            ref="drinking"
+            backgroundTop={1}
+            x={240} y={790}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="wd"
+            ref="washingDishes"
+            backgroundTop={4}
+            x={360} y={1040}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="s"
+            ref="swimming"
+            backgroundTop={5}
+            x={480} y={1290}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="c"
+            ref="canoeing"
+            backgroundTop={2}
+            x={600} y={1540}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="f"
+            ref="factories"
+            backgroundTop={3}
+            x={200} y={710}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="bt"
+            ref="brushingTeeth"
+            backgroundTop={6}
+            x={320} y={960}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="e"
+            ref="electricity"
+            backgroundTop={7}
+            x={440} y={1210}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="g"
+            ref="growingFood"
+            backgroundTop={11}
+            x={560} y={1460}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="ws"
+            ref="waterSlides"
+            backgroundTop={10}
+            x={160} y={630}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="r"
+            ref="rafting"
+            backgroundTop={9}
+            x={280} y={880}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="l"
+            ref="lawns"
+            backgroundTop={12}
+            x={400} y={1130}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="k"
+            ref="cooking"
+            backgroundTop={8}
+            x={520} y={1380}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="fl"
+            ref="flowers"
+            backgroundTop={13}
+            x={120} y={550}
+          />,
+          <skoash.Image
+            src="media/S_7/sprite_7.2.png"
+            className="a"
+            ref="animalFeed"
+            backgroundTop={14}
+            x={240} y={800}
+          />,
         ]}
       />
     </skoash.Screen>

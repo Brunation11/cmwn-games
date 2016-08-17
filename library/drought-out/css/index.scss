@@ -566,12 +566,19 @@ img.inline {
 
 #balloons {
   img {
+    position: relative;
     width: 640px;
     display: block;
     margin: 10px auto;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .selectable-canvas-move {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
     width: 960px;
     height: 540px;
 
