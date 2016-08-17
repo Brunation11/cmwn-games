@@ -21,8 +21,9 @@ class Score extends skoash.Component {
 
     setTimeout(() => {
       if (this.props.resetOnComplete) {
-        this.setState({
-          score: 0
+        this.setScore({
+          correct: 0,
+          incorrect: 0,
         });
       }
     }, this.props.completeDelay);

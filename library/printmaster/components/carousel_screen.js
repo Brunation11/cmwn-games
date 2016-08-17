@@ -47,15 +47,13 @@ export default function (props, ref, key) {
         />
         <Target
           attempt={_.get(props, 'data.attempt.target.ref', null)}
-          onSetTarget={function () {
+          onUpdateState={function (correct) {
             this.updateGameState({
               path: 'attempt',
               data: {
                 target: null,
               }
             });
-          }}
-          onUpdateState={function (correct) {
             if (!correct) return;
             this.updateGameState({
               path: 'score',
@@ -92,9 +90,15 @@ export default function (props, ref, key) {
           multipleCompletes
           onComplete={function () {
             this.updateGameState({
+              path: 'score',
+              data: {
+                correct: 0
+              }
+            });
+            this.updateGameState({
               path: 'revealScore',
               data: {
-                correct: (_.get(props, 'data.revealScore.correct', 0) % 7) + 1
+                score: (_.get(props, 'data.revealScore.score', 0) % 8) + 1
               }
             });
           }}
@@ -108,7 +112,7 @@ export default function (props, ref, key) {
       </skoash.Component>
       <Reveal
         openOnStart="0"
-        openReveal={_.get(props, 'data.revealScore.correct', 0)}
+        openReveal={_.get(props, 'data.revealScore.score', 0)}
         assets={[
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
