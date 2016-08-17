@@ -1,4 +1,4 @@
-.selectable-canvas-move-component {
+.selectable-canvas-move {
 
   &,
   canvas {
@@ -9,7 +9,7 @@
     height: 540px;
   }
 
-  [pl-id=bin] {
+  .hidden {
     display: none;
   }
 }

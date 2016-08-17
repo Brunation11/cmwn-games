@@ -30,7 +30,7 @@ export default function (props, ref, key) {
       <SelectableCanvasMove
         ref="selectable-canvas-move"
         selectClass="HIGHLIGHTED"
-        list={[
+        items={[
           <skoash.Image src="media/S_7/sprite_7.2.png" className="b" ref="bathing" top="0" />,
           <skoash.Image src="media/S_7/sprite_7.2.png" className="d" ref="drinking" top="1" />,
           <skoash.Image src="media/S_7/sprite_7.2.png" className="wd" ref="washingDishes" top="4" />,

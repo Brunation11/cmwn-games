@@ -565,11 +565,25 @@ img.inline {
 }
 
 #balloons {
-  > img {
+  img {
     width: 640px;
     display: block;
     margin: 10px auto;
   }
+
+  .selectable-canvas-move {
+    width: 960px;
+    height: 540px;
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
   .VOICE-OVER & {
     canvas {
       pointer-events: none;
