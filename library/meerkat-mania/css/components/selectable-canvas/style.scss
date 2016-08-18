@@ -1,0 +1,13 @@
+.selectable-canvas {
+  position: absolute;
+  width: 960px;
+  height: 540px;
+
+  li {
+    position: static;
+
+    img {
+      position: absolute;
+    }
+  }
+}
