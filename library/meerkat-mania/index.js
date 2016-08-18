@@ -17,7 +17,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class MeerkatMania extends skoash.Game {
   constructor() {
