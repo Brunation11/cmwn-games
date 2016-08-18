@@ -158,7 +158,7 @@ img.background {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -5;
 }
 
 .spinner {
@@ -285,6 +285,7 @@ img.background {
         width: 960px;
         left: 0;
         bottom: 0;
+        z-index: -1;
       }
 
       &:nth-of-type(2) {
@@ -300,9 +301,13 @@ img.background {
       }
     }
   }
+
+  canvas {
+    z-index: 2;
+  }
 }
 
-.screen.chemical {
+#info-chemical {
   img {
     position: absolute;
 
@@ -341,7 +346,7 @@ img.background {
     $animations: zoomInUp fadeInRightMedium fadeIn;
 
     @for $i from 1 through 3 {
-      $item: nth($items,$i);
+      $item: nth($items, $i);
 
       .#{$item} {
         animation-name: nth($animations,$i);
@@ -355,7 +360,7 @@ img.background {
   }
 }
 
-.screen.fuel-oxygen {
+#fuel-oxygen {
   img {
     position: absolute;
 
@@ -415,7 +420,7 @@ img.background {
   }
 }
 
-.screen.forrest {
+#forrest {
   div {
     position: absolute;
     left: 0;
@@ -437,7 +442,7 @@ img.background {
   }
 }
 
-.screen.alarm {
+#alarm {
   img {
     position: absolute;
 
@@ -504,7 +509,7 @@ img.background {
   }
 }
 
-.screen.who {
+#who {
   .frame-component {
     &:nth-of-type(1) {
       img {
@@ -627,7 +632,7 @@ img.background {
   }
 }
 
-.screen.men-and-women {
+#men-and-women {
   > img {
     position: absolute;
 
@@ -664,7 +669,7 @@ img.background {
   }
 }
 
-.screen.triangle {
+#triangle {
   display: flex;
 
   img.title {
@@ -757,7 +762,7 @@ img.background {
   }
 }
 
-#break-triangle.screen {
+#break-triangle {
   color: #fff;
   text-align: center;
 
@@ -801,7 +806,7 @@ img.background {
   }
 }
 
-.screen.ladder {
+#ladder {
 
   > img {
     position: absolute;
@@ -834,7 +839,7 @@ img.background {
   }
 }
 
-.screen.dress {
+#dress {
 
   .slides-component {
 
@@ -1232,7 +1237,7 @@ img.background {
   }
 }
 
-.screen.flip {
+#flip {
   h2 {
     position: absolute;
     left: 0;
