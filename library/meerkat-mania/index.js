@@ -15,9 +15,9 @@ import MoveScreen from './components/move_screen';
 import Video2Screen from './components/video_2_screen';
 import FlipScreen from './components/flip_screen';
 
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from './components/quit_screen';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class MeerkatMania extends skoash.Game {
   constructor() {
@@ -64,6 +64,7 @@ class MeerkatMania extends skoash.Game {
         <skoash.Image className="hidden" src="media/_BKG/BKG_6.png" />
         <skoash.Image className="hidden" src="media/_BKG/BKG_7.png" />
         <skoash.Image className="hidden" src="media/_BKG/BKG_8.png" />
+        <skoash.Image className="hidden" src="media/_Frames/FR_10.png" />
         <div className="background default" />
         <div className="background excel" />
         <div className="background look-out" />
