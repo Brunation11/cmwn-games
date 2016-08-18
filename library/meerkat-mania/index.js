@@ -6,6 +6,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
+import ExcelScreen from './components/excel_screen';
 import RolesScreen from './components/roles_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -19,7 +20,8 @@ class MeerkatMania extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: RolesScreen,
+      2: ExcelScreen,
+      3: RolesScreen,
     };
 
     this.menus = {
@@ -39,6 +41,7 @@ class MeerkatMania extends skoash.Game {
     return (
       <div>
         <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="close" type="sfx" src="media/_Buttons/S_Close_1.mp3" />
         <skoash.Image className="hidden" src="media/_BKG/BKG_1.png" />

@@ -6,10 +6,10 @@ export default function (props, ref, key) {
       key={key}
       id="title"
       checkComplete={false}
-      completeDelay={3000}
+      completeDelay={2000}
       completeOnStart
     >
-        <skoash.Image class="animated" src="media/S_1/img_1.1.png" />
+      <skoash.Image class="animated" src="media/S_1/img_1.1.png" />
     </skoash.Screen>
   );
 }
