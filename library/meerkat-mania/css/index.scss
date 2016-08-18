@@ -86,11 +86,12 @@ body > div > div {
   }
 
   &.SCREEN-2:not(.QUIT-SCREEN) > div > .background.excel,
-  &.look-out:not(.QUIT-SCREEN) > div > .background.look-out,
-  &.feel:not(.QUIT-SCREEN) > div > .background.feel,
-  &.movie:not(.QUIT-SCREEN) > div > .background.movie,
-  &.upload:not(.QUIT-SCREEN) > div > .background.upload,
-  &.flip:not(.QUIT-SCREEN) > div > .background.flip {
+  &.SCREEN-4:not(.QUIT-SCREEN) > div > .background.look-out,
+  &.SCREEN-5:not(.QUIT-SCREEN) > div > .background.look-out,
+  &.SCREEN-6:not(.QUIT-SCREEN) > div > .background.feel,
+  &.SCREEN-7:not(.QUIT-SCREEN) > div > .background.movie,
+  &.SCREEN-8:not(.QUIT-SCREEN) > div > .background.movie,
+  &.SCREEN-9:not(.QUIT-SCREEN) > div > .background.flip {
     opacity: 1;
   }
 }
@@ -150,16 +151,6 @@ button {
 
     &:hover {
       background-position: -195px 604px;
-    }
-  }
-
-  &.play {
-    width: 200px;
-    height: 80px;
-    background-position: -560px 235px;
-
-    &:hover {
-      background-position: -560px 104px;
     }
   }
 
@@ -711,13 +702,11 @@ p {
     }
   }
 
-  .selectable-component {
-    .items {
-      display: block;
-      width: 500px;
-      margin: 20px 0 20px auto;
-      text-align: left;
-    }
+  .selectable {
+    display: block;
+    width: 500px;
+    margin: 20px 0 20px auto;
+    text-align: left;
 
     li {
       display: inline-block;
@@ -864,7 +853,15 @@ p {
   }
 
   .next-screen {
-    display: none;
+    width: 200px;
+    height: 80px;
+    bottom: 150px;
+    right: 375px;
+    background-position: -560px 235px;
+
+    &:hover {
+      background-position: -560px 104px;
+    }
   }
 }
 
@@ -885,17 +882,12 @@ p {
       width: 90%;
       margin-top: 30px;
       opacity: 0;
-      transition: opacity .5s 4s;
-    }
-  }
+      transition: opacity .5s;
 
-  &.OPEN {
-    .flip {
-      -webkit-animation-name: rubberBand;
-      -webkit-animation-delay: 4.5s;
-      animation-name: rubberBand;
-      animation-delay: 4.5s;
-      opacity: 1;
+      &.in {
+        animation-name: rubberBand;
+        opacity: 1;
+      }
     }
   }
 }
