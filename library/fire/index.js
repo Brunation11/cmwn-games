@@ -4,6 +4,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
+import InfoChemicalScreen from './components/info_chemical_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -16,6 +17,7 @@ class Fire extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
+      2: InfoChemicalScreen,
     };
 
     this.menus = {
