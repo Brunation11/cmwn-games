@@ -501,10 +501,6 @@ img.background {
     }
   }
 
-  .next-screen {
-    display: none;
-  }
-
   &.OPEN {
     img {
 
@@ -516,116 +512,85 @@ img.background {
 }
 
 #who {
-  .frame-component {
-    &:nth-of-type(1) {
-      img {
-        position: absolute;
-        width: 840px;
-        left: 60px;
-        top: 10px;
-      }
+  img {
+    position: absolute;
+    width: 840px;
+    left: 60px;
+    top: 10px;
+  }
 
-      .multiple-choice-component {
-        ul {
-          margin: 100px 0 0 0;
-          padding: 0 0 0 40px;
-          display: flex;
-          justify-content: center;
+  .selectable-audio {
+    ul {
+      margin: 100px 0 0 0;
+      padding: 0 0 0 40px;
+      display: flex;
+      justify-content: center;
 
-          li {
-            list-style: none;
-            height: 360px;
-            background-size: auto 100%;
-            background-position: left top;
+      li {
+        list-style: none;
+        height: 360px;
+        background-size: auto 100%;
+        background-position: left top;
 
-            &:hover {
-              background-position: right top;
-            }
+        &:hover {
+          background-position: right top;
+        }
 
-            &:nth-of-type(1) {
-              width: 175px;
-              background-position: left 12px;
+        &:nth-of-type(1) {
+          width: 175px;
+          background-position: left 12px;
+          background-image: url(../media/S_6/img_6.2.png);
 
-              &:hover {
-                background-position: right 12px;
-              }
-            }
-
-            &:nth-of-type(2) {
-              width: 171px;
-              background-position: left 23px;
-
-              &:hover {
-                background-position: right 23px;
-              }
-            }
-
-            &:nth-of-type(3) {
-              width: 200px;
-            }
-
-            &:nth-of-type(4) {
-              width: 252px;
-              margin-left: -30px
-            }
+          &:hover {
+            background-position: right 12px;
           }
         }
-      }
 
-      &.OPEN {
-        .multiple-choice-component {
-          ul {
-            li {
-              animation-name: fadeInRightBig;
+        &:nth-of-type(2) {
+          width: 171px;
+          background-position: left 23px;
+          background-image: url(../media/S_6/img_6.3.png);
 
-              &:nth-of-type(1) {
-                animation-delay: 3s;
-              }
-
-              &:nth-of-type(2) {
-                animation-delay: 4s;
-              }
-
-              &:nth-of-type(3) {
-                animation-delay: 5s;
-              }
-
-              &:nth-of-type(4) {
-                animation-delay: 7s;
-              }
-            }
+          &:hover {
+            background-position: right 23px;
           }
+        }
+
+        &:nth-of-type(3) {
+          width: 200px;
+          background-image: url(../media/S_6/img_6.4.png);
+        }
+
+        &:nth-of-type(4) {
+          width: 252px;
+          margin-left: -30px;
+          background-image: url(../media/S_6/img_6.5.png);
         }
       }
     }
+  }
 
-    &:nth-of-type(2) {
-      > img {
-        position: absolute;
-        left: 110px;
-        top: 100px;
-        height: 360px;
-        z-index: 1;
-      }
-
-      div {
-        position: absolute;
-        left: 180px;
-        top: 180px;
-        padding: 40px 40px 40px 100px;
-        font-size: 30px;
-        text-align: center;
-        width: 600px;
-      }
-
-      &.OPEN {
-        >img {
-          animation-name: zoomIn;
-          animation-delay: 1s;
-        }
-
-        div {
+  &.OPEN {
+    .selectable-audio {
+      ul {
+        li {
           animation-name: fadeInRightBig;
+
+          &:nth-of-type(1) {
+            animation-delay: 3s;
+          }
+
+          &:nth-of-type(2) {
+            animation-delay: 4s;
+          }
+
+          &:nth-of-type(3) {
+            animation-delay: 5s;
+          }
+
+          &:nth-of-type(4) {
+            animation-delay: 7s;
+          }
         }
       }
     }
@@ -634,6 +599,39 @@ img.background {
   &.VOICE-OVER:not(.COMPLETE) {
     ul {
       pointer-events: none;
+    }
+  }
+}
+
+#toughest-job { // TODO
+  &:nth-of-type(2) {
+    > img {
+      position: absolute;
+      left: 110px;
+      top: 100px;
+      height: 360px;
+      z-index: 1;
+    }
+
+    div {
+      position: absolute;
+      left: 180px;
+      top: 180px;
+      padding: 40px 40px 40px 100px;
+      font-size: 30px;
+      text-align: center;
+      width: 600px;
+    }
+
+    &.OPEN {
+      >img {
+        animation-name: zoomIn;
+        animation-delay: 1s;
+      }
+
+      div {
+        animation-name: fadeInRightBig;
+      }
     }
   }
 }
