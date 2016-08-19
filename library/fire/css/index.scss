@@ -426,14 +426,18 @@ img.background {
   }
 }
 
-#forrest {
-  div.animated {
+#info-forrest {
+  div {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     padding: 40px;
     text-align: center;
+  }
+
+  img {
+    opacity: 1;
   }
 
   &.OPEN {
@@ -489,6 +493,8 @@ img.background {
     top: 250px;
     background-position: -30px -140px;
     background-size: 400px auto;
+    background-image: url(../media/S_5/img_5.3.png);
+    cursor: pointer;
 
     &:hover {
       background-position: -234px -140px;
@@ -497,12 +503,6 @@ img.background {
 
   .next-screen {
     display: none;
-  }
-
-  &:not(.COMPLETE) {
-    .push-down {
-      pointer-events: none;
-    }
   }
 
   &.OPEN {
