@@ -2,24 +2,24 @@ import AudioSequence from 'shared/components/audio_sequence/0.1';
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 
 class AlarmScreenComponent extends skoash.Screen {
-  constructor() {
-    super();
 
-    this.renderAlarmSound = this.renderAlarmSound.bind(this);
-    this.renderButton = this.renderButton.bind(this);
+  complete() {
+    this.refs['selectable-audio'].incompleteRefs();
   }
 
-  renderAlarmSound() {
-    return (
-      <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3" 
-        onComplete={this.next.bind(this)} />
-    );
-  }
-
-  renderButton() {
-    if (this.refs && this.refs['alarm-sound']) {
+  renderSelectableAudio() {
+    if (this.next) {
       return (
-        <skoash.Component className="push-down" onClick={this.refs['alarm-sound'].play} />
+        <SelectableAudio
+          ref="selectable-audio"
+          audioAssets={[
+            <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3"
+              onComplete={this.next.bind(this)}/>
+          ]}
+          selectableList={[
+            <skoash.Component className="push-down" />
+          ]}
+        />
       );
     }
   }
@@ -27,9 +27,8 @@ class AlarmScreenComponent extends skoash.Screen {
   renderContent() {
     return (
       <div>
-        {this.renderAlarmSound()}
         {this.renderContentList()}
-        {this.renderButton()}
+        {this.renderSelectableAudio.call(this)}
       </div>
     );
   }
@@ -42,6 +41,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="alarm"
+      hideNext
     >
       <AudioSequence ref="audio-sequence">
         <skoash.Audio ref="title" type="voiceOver" src="media/S_5/vo_FireBreaksOut.mp3" />

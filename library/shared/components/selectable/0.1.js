@@ -187,6 +187,6 @@ Selectable.defaultProps = _.defaults({
     <li></li>
   ],
   selectClass: 'SELECTED'
-});
+}, skoash.Component.defaultProps);
 
 export default Selectable;
