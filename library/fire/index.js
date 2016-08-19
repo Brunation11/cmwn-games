@@ -20,9 +20,10 @@ class Fire extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      //2: InfoChemicalScreen,
-      //2: InfoFuelOxygenScreen,
-      2: InfoForrestScreen,
+      2: InfoChemicalScreen,
+      3: InfoFuelOxygenScreen,
+      4: InfoForrestScreen,
+      5: AlarmScreen,
     };
 
     this.menus = {
@@ -41,8 +42,8 @@ class Fire extends skoash.Game {
   getClassNames() {
     var classNames = super.getClassNames();
     var index = this.state.currentScreenIndex;
-    if (index > 3) return classNames + ' BKG-2';
-    if (index > 4) return classNames + ' BKG-3';
+    if (index >= 4 && index < 5) return classNames + ' BKG-2';
+    if (index >= 5) return classNames + ' BKG-3';
     return classNames;
   }
 
