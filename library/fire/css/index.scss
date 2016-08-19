@@ -360,41 +360,47 @@ img.background {
   }
 }
 
-#fuel-oxygen {
+#info-fuel-oxygen {
   img {
     position: absolute;
 
-    &:nth-of-type(1) {
+    //&:nth-of-type(1) {
+    &.wood {
       width: 200px;
       left: 120px;
       top: 160px;
     }
 
-    &:nth-of-type(2) {
+    //&:nth-of-type(2) {
+    &.plus {
       width: 60px;
       left: 320px;
       top: 150px;
     }
 
-    &:nth-of-type(3) {
+    //&:nth-of-type(3) {
+    &.o2 {
       width: 200px;
       left: 380px;
       top: 150px;
     }
 
-    &:nth-of-type(4) {
+    //&:nth-of-type(4) {
+    &.equal {
       width: 60px;
       left: 570px;
       top: 160px;
     }
 
-    &:nth-of-type(5) {
+    //&:nth-of-type(5) {
+    &.fire {
       width: 300px;
       left: 600px;
       top: 30px;
     }
 
-    &:nth-of-type(6) {
+    //&:nth-of-type(6) {
+    &.words {
       width: 720px;
       left: 120px;
       top: 360px;
@@ -421,7 +427,7 @@ img.background {
 }
 
 #forrest {
-  div {
+  div.animated {
     position: absolute;
     left: 0;
     bottom: 0;

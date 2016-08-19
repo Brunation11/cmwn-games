@@ -1,4 +1,5 @@
 // USE MEDIA SEQUENCE INSTEAD
+import _ from 'lodash';
 
 class AudioSequence extends play.Component {
   constructor() {
@@ -58,8 +59,8 @@ class AudioSequence extends play.Component {
     if (next) {
 
       next.play();
-      if (typeof next.props.onPlay === 'function') {
-        next.props.onPlay();
+      if (typeof this.props.onPlay === 'function') {
+        this.props.onPlay();
       }
     }
     return next;
