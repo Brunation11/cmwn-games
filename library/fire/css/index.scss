@@ -511,6 +511,17 @@ img.background {
   }
 }
 
+.VOICE-OVER #alarm {
+  .push-down {
+    cursor: default;
+    point-events: none;
+
+    &:hover {
+      background-position: -30px -140px;
+    }
+  }
+}
+
 #who {
   img {
     position: absolute;
@@ -531,6 +542,7 @@ img.background {
         height: 360px;
         background-size: auto 100%;
         background-position: left top;
+        cursor: pointer;
 
         &:hover {
           background-position: right top;
@@ -577,28 +589,44 @@ img.background {
           animation-name: fadeInRightBig;
 
           &:nth-of-type(1) {
-            animation-delay: 3s;
+            animation-delay: 2s;
           }
 
           &:nth-of-type(2) {
-            animation-delay: 4s;
+            animation-delay: 3s;
           }
 
           &:nth-of-type(3) {
-            animation-delay: 5s;
+            animation-delay: 4s;
           }
 
           &:nth-of-type(4) {
-            animation-delay: 7s;
+            animation-delay: 5s;
           }
         }
       }
     }
   }
+}
 
-  &.VOICE-OVER:not(.COMPLETE) {
-    ul {
-      pointer-events: none;
+.VOICE-OVER #who {
+  ul {
+    pointer-events: none;
+
+    li {
+      cursor: default;
+
+      &:hover {
+        background-position: left top;
+
+        &:nth-of-type(1) {
+          background-position: left 12px;
+        }
+ 
+        &:nth-of-type(2) {
+          background-position: left 23px;
+        }
+      }
     }
   }
 }
