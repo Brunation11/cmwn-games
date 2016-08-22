@@ -11,8 +11,9 @@ class SelectableReveal extends play.Component {
   }
 
   selectRespond(message) {
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
+    var answers = this.state.answers.length ? this.state.answers : this.props.answers ? this.props.answers : [];
+    if (answers.length) {
+      if (answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
         if (this.audio.correct) this.audio.correct.play();
