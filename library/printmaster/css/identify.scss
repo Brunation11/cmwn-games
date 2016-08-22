@@ -1,9 +1,12 @@
+$types: arch loops whorl doubleloop;
+
 #identify {
-  .center {
+  > div {
     white-space: normal;
   }
 
   .header {
+    background-image: url(../media/S_9/img_9.1.png);
     position: relative;
     width: 900px;
     height: 160px;
@@ -29,7 +32,14 @@
     }
   }
 
-  .items {
+  @for $i from 1 through 4 {
+    .#{nth($types, $i)} .header img.#{nth($types, $i)} {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+  }
+
+  .selectable {
     width: 800px;
     margin: 40px auto;
 
@@ -48,6 +58,14 @@
 
       &.HIGHLIGHTED {
         background-position: -775px;
+      }
+
+      $bkg:      8     6     7          9;
+
+      @for $i from 1 through 4 {
+        &[data-ref=#{nth($types, $i)}] {
+          background-image: url(../media/S_9/img_9.#{nth($bkg, $i)}.png);
+        }
       }
     }
   }

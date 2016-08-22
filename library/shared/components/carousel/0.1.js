@@ -20,8 +20,8 @@ class Carousel extends Selectable {
     classes = this.state.classes;
     list = this.state.list;
 
-    list.shift();
     list = list.concat(this.refs.bin.get(1));
+    list.shift();
     classes[0] = '';
 
     this.setState({
@@ -38,17 +38,29 @@ class Carousel extends Selectable {
   }
 
   bootstrap() {
+    var list;
+    // skoash.Component is not the super here, but this is what we want
     skoash.Component.prototype.bootstrap.call(this);
-    if (this.refs.bin) {
-      this.setState({
-        list: this.refs.bin.get(this.props.showNum + 1)
-      });
-    }
+
+    list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+
+    this.setState({
+      list
+    });
   }
 
   selectHelper() {
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: this.state.list[this.props.targetIndex]
+        }
+      });
+    }
+
     if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect(this.state.list[this.props.targetIndex]);
+      this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
     }
   }
 
@@ -56,19 +68,23 @@ class Carousel extends Selectable {
     return classNames('carousel', super.getClassNames());
   }
 
+  /*
+   * shortid is intentionally not used for key here because we want to make sure
+   * that the element is transitioned and not replaced.
+   */
   renderList() {
-    var list = this.props.list || this.state.list;
-
-    return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+    return this.state.list.map((li, key) => {
+      var ref, onTransitionEnd;
+      ref = li.ref || li.props['data-ref'] || key;
       li.type = li.type || skoash.Component;
+      onTransitionEnd = key === 0 ? this.next : null;
       return (
         <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
+          className={this.getClass(key, li)}
           data-ref={ref}
           data-message={li.props.message}
-          onTransitionEnd={this.next}
+          onTransitionEnd={onTransitionEnd}
           ref={ref}
           key={key}
         />
@@ -89,7 +105,7 @@ class Carousel extends Selectable {
   }
 }
 
-Carousel.defaultProps = _.merge({
+Carousel.defaultProps = _.defaults({
   showNum: 3,
   targetIndex: 1,
   pause: 500,

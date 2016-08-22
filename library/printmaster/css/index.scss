@@ -154,7 +154,7 @@ button {
     }
   }
 
-  &.reveal-close {
+  &.close-reveal {
     width: 30px;
     height: 30px;
     background-position: -660px 240px;
@@ -190,6 +190,15 @@ p {
   display: none;
   transition: opacity 1s, transform 0.5s;
   transform: translateX(100%);
+
+  > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }
 
 .screen.last {}
@@ -222,36 +231,42 @@ p {
     right: 0;
     opacity: 0;
     transform: rotate(-180deg);
-    transition: opacity 1s, transform 1s;
   }
 
-  .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+  .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
   .screen.GATED .next-screen {
     opacity: 0;
     transition: opacity 0s;
     cursor: default;
   }
 
+  .skoash-game.MENU-quit .screen {
+    &:not(#quit) {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 
-  .pl-game.DEMO .screen .next-screen,
+  .skoash-game.DEMO .screen .next-screen,
   .screen.COMPLETE .next-screen {
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
+    transition: opacity 1s, transform 1s;
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 .screen {
@@ -287,6 +302,7 @@ img.inline {
 
 .screen.large-frame {
   .frame {
+    background-image: url(../media/_Frame/Fr_1.png);
     padding: 60px 75px;
     margin: 40px auto;
     width: 860px;
@@ -327,7 +343,7 @@ img.inline {
 
 .screen.types {
 
-  .center {
+  > div {
     text-align: center;
 
     > * {
@@ -340,6 +356,7 @@ img.inline {
     }
 
     .frame {
+      background-image: url(../media/_Frame/Fr_2.png);
       position: relative;
       display: inline-block;
       width: 500px;
@@ -491,7 +508,7 @@ img.inline {
             -webkit-animation-delay: $item*.2+1.5+s;
             animation-delay: $item*.2+1.5+s;
           }
-        } 
+        }
       }
     }
   }
@@ -738,7 +755,7 @@ img.inline {
   }
 
   .frame div {
-    opacity: 1;
+    opacity: 0;
     transition: opacity .25s;
   }
 
@@ -765,7 +782,7 @@ img.inline {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: left;
-    opacity: 0;
+    opacity: 1;
     width: 362px;
     transition: opacity 0s;
   }
@@ -788,7 +805,18 @@ img.inline {
     }
   }
 
-  &.COUNT {
+  .LETS-DUST & {
+    .frame div {
+      opacity: 1;
+      transition: opacity 0s;
+    }
+
+    div.engage {
+      opacity: 0;
+    }
+  }
+
+  .COUNT & {
     .frame div {
       opacity: 0;
     }
@@ -798,7 +826,7 @@ img.inline {
     }
   }
 
-  &.ENGAGE {
+  .ENGAGE & {
     .frame div {
       opacity: 0;
     }
@@ -828,6 +856,7 @@ img.inline {
 
     div {
       position: absolute;
+      background-image: url(../media/S_12/img_12.2.png);
       background-size: 400px 292px;
       background-repeat: no-repeat;
       transform: translate3d(2000px, 0, 0);
@@ -909,7 +938,7 @@ img.inline {
   $items: LOTION TAPE POWDER BRUSH PAPER GLASS;
 
   @for $i from 1 through 6 {
-    &.#{nth($items,$i)} {
+    .#{nth($items,$i)} & {
       .illustration div:nth-of-type(#{$i}) {
         animation-name: fadeInRightBig;
       }
@@ -1116,6 +1145,7 @@ img.inline {
       margin: 20px auto 0;
 
       div {
+        background-image: url(../media/S_22/img_22.1.png);
         background-size: 330px;
         float: left;
         height: 130px;
@@ -1125,7 +1155,7 @@ img.inline {
           &:nth-child(#{$item}) {
             background-position: 62-(76*$item)+px center;
           }
-        } 
+        }
       }
     }
   }
@@ -1143,7 +1173,7 @@ img.inline {
           &:nth-child(#{$item}) {
             animation-delay: 2+.2*$item+s;
           }
-        } 
+        }
       }
     }
   }
@@ -1156,6 +1186,7 @@ img.inline {
     height: 440px;
     text-align: center;
     padding: 70px 80px;
+    background-image: url(../media/_Frame/Fr_1.png);
 
     .background {
       position: absolute;

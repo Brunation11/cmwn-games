@@ -1,23 +1,20 @@
+import _ from 'lodash';
+
 class Reveal extends skoash.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
     };
+
+    this.index = 0;
   }
 
   open(message) {
     this.setState({
       open: true,
-      openReveal: message,
+      openReveal: '' + message,
     });
 
     this.playAudio(message);
@@ -106,6 +103,12 @@ class Reveal extends skoash.Component {
     });
   }
 
+  componentWillReceiveProps(props) {
+    if (props.openReveal && props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
+  }
+
   getClass(li, key) {
     var classes = '';
 
@@ -139,5 +142,14 @@ class Reveal extends skoash.Component {
     );
   }
 }
+
+Reveal.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+}, skoash.Component.defaultProps);
 
 export default Reveal;

@@ -1,18 +1,18 @@
-.selectable-component {}
+.selectable {}
   
-  .selectable-component .items {
+  .selectable {
     display: flex;
     padding: 0;
     height: 250px;
     list-style: none;
   }
 
-    .selectable-component .items li {
+    .selectable li {
       position: relative;
       width: 200px;
     }
 
-    .selectable-component .items li img {
+    .selectable li img {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
@@ -20,28 +20,28 @@
       transition: opacity 0.5s, transform 0.5s cubic-bezier(0, 0.18, 0, 1.01);
     }
 
-    .selectable-component.VOICE-OVER .items li img,
-    .VOICE-OVER .selectable-component .items li img {
+    .selectable.VOICE-OVER li img,
+    .VOICE-OVER .selectable li img {
       /* disables the :hover rules when a VO is playing. */
       pointer-events: none;
     }
 
-    .selectable-component .items li img.checked:hover,
-    .selectable-component .items li img.unchecked:hover {
+    .selectable li img.checked:hover,
+    .selectable li img.unchecked:hover {
       transform: translateY(-40px);
     }
 
-    .selectable-component .items li img.checked {
+    .selectable li img.checked {
       opacity: 1;
     }
 
-    .selectable-component .items li.HIGHLIGHTED img.checked {
+    .selectable li.HIGHLIGHTED img.checked {
       opacity: 0;
       z-index: -1;
       transform: translateY(0);
     }
 
-    .selectable-component .items li.HIGHLIGHTED img.unchecked {
+    .selectable li.HIGHLIGHTED img.unchecked {
       opacity: 1;
       transform: translateY(0);
     }
