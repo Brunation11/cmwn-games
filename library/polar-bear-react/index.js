@@ -11,7 +11,9 @@ import QuestionWhatColorScreen from './components/question_what_color_screen';
 import ChooseWhatColorScreen from './components/choose_what_color_screen';
 import AnswerWhatColorScreen from './components/answer_what_color_screen';
 import QuestionWhereScreen from './components/question_where_screen';
+import ChooseWhereScreen from './components/choose_where_screen';
 import InfoCarouselScreen from './components/info_carousel_screen';
+import ChooseCarouselScreen from './components/choose_carousel_screen';
 import InfoExperimentScreen from './components/info_experiment_screen';
 import InfoTemperatureScreen from './components/info_temperature_screen';
 import InfoLayerScreen from './components/info_layer_screen';
@@ -41,20 +43,22 @@ class PolarBearReact extends skoash.Game {
       4: ChooseWhatColorScreen,
       5: AnswerWhatColorScreen,
       6: QuestionWhereScreen,
-      7: InfoCarouselScreen,
-      8: InfoExperimentScreen,
-      9: InfoTemperatureScreen,
-      10: InfoLayerScreen,
-      11: ExperimentNeededScreen,
-      12: ExperimentStepOneScreen,
-      13: ExperimentStepTwoScreen,
-      14: ExperimentStepThreeScreen,
-      15: ExperimentStepFourScreen,
-      16: ExperimentWhichHandScreen,
-      17: ExperimentWhyWarmerScreen,
-      18: ExperimentHowWarmerScreen,
-      19: ExperimentDiscoverScreen,
-      20: FlipScreen
+      7: ChooseWhereScreen,
+      8: InfoCarouselScreen,
+      9: ChooseCarouselScreen,
+      10: InfoExperimentScreen,
+      11: InfoTemperatureScreen,
+      12: InfoLayerScreen,
+      13: ExperimentNeededScreen,
+      14: ExperimentStepOneScreen,
+      15: ExperimentStepTwoScreen,
+      16: ExperimentStepThreeScreen,
+      17: ExperimentStepFourScreen,
+      18: ExperimentWhichHandScreen,
+      19: ExperimentWhyWarmerScreen,
+      20: ExperimentHowWarmerScreen,
+      21: ExperimentDiscoverScreen,
+      22: FlipScreen
     };
 
     this.menus = {
@@ -81,8 +85,7 @@ class PolarBearReact extends skoash.Game {
     case 4:
     case 5:
     case 6:
-    case 9:
-    case 10:
+    case 7:
     case 11:
     case 12:
     case 13:
@@ -92,13 +95,17 @@ class PolarBearReact extends skoash.Game {
     case 17:
     case 18:
     case 19:
-      return 3;
-    case 7:
-    case 8:
     case 20:
+    case 21:
+      return 3;
+    case 8:
+    case 10:
+    case 22:
       return 4;
     case 2:
       return 0;
+    case 9:
+      return 1;
     default:
       return;
     }
