@@ -15,6 +15,11 @@ class SelectableReveal extends play.Component {
     if (answers.length) {
       if (answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
+        if(this.props.revealAll) {
+          if (typeof this.refs.reveal.open === 'function') {
+            this.refs.reveal.open(message);
+          }
+        }
       } else {
         if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
