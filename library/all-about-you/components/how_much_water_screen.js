@@ -1,3 +1,6 @@
+import collectData from './collect_data.js';
+import loadData from './load_data.js';
+
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
 export default function (props, ref, key) {
@@ -6,6 +9,8 @@ export default function (props, ref, key) {
       {...props}
       ref={ref}
       key={key}
+      collectData={collectData}
+      loadData={loadData}
       id="how-much-water"
     >
       <skoash.MediaSequence
