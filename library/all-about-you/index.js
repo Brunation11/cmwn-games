@@ -61,8 +61,6 @@ class AllAboutYou extends skoash.Game {
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));
-
-    window.g = this;
   }
 
   renderLoader() {
