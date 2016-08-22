@@ -9,17 +9,27 @@ class ItemDrawer extends Selectable {
     super();
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   var quickCheck = _.reduce(nextState.items, (a, i) => {
-  //     a += i.name;
-  //     return a;
-  //   }, '');
-  //   var itemsChanged = nextState.quickCheck !== quickCheck;
-  //   if (itemsChanged) {
-  //     this.setState({quickCheck});
-  //   }
-  //   return itemsChanged;
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    var items, quickCheck, itemsChanged;
+
+    items = nextProps.data || [];
+
+    if (nextState.category && items[nextState.category]) {
+      items = items[nextState.category].items;
+    }
+
+    quickCheck = _.reduce(items, (a, i) => {
+      a += i.name;
+      return a;
+    }, '');
+
+    itemsChanged = this.quickCheck !== quickCheck;
+    if (itemsChanged) {
+      this.quickCheck = quickCheck;
+    }
+
+    return itemsChanged;
+  }
 
   start() {
     var items, selectedItem, selectFunction, classes = {}, self = this;
