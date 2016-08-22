@@ -199,8 +199,8 @@ class ItemDrawer extends Selectable {
     }
 
     return items.sort((a, b) => {
-      var aVal = typeof a.order === 'number' ? a.order : Infinity;
-      var bVal = typeof b.order === 'number' ? b.order : Infinity;
+      var aVal = !_.isNaN(window.parseInt(a.order)) ? window.parseInt(a.order) : Infinity;
+      var bVal = !_.isNaN(window.parseInt(b.order)) ? window.parseInt(b.order) : Infinity;
       if (aVal === bVal) {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
