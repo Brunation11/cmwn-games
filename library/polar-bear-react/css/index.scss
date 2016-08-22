@@ -614,6 +614,54 @@ p {
   }
 }
 
+#choose-where {
+  img {
+  }
+
+  .map {
+    position: absolute;
+    background: url(../media/images/map/img_9.1.png);
+    background-size: 575px 575px;
+    background-repeat: no-repeat;
+    width: 60%;
+    height: 100%;
+    left: 23%;
+    top: 1%;
+
+    .selectable-reveal {
+      .selectable-canvas {
+        position: absolute;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+
+        li {
+          padding: 0;
+          margin: 0;
+          position: static;
+
+          img {
+            width: 100%;
+            opacity: 1;
+
+            &.border {
+              z-index: 1;
+              width: 100%;
+            }
+
+            &.labels {
+              z-index: 1;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 #info-carousel {
   img {
     position: absolute;
@@ -653,6 +701,83 @@ p {
     &.COMPLETE {
       img {
       }
+    }
+  }
+}
+
+#choose-carausel {
+  @keyframes reload {
+    0% {
+      opacity: 0;
+    }
+
+    67% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .cannon {
+    position: relative;
+    text-align: center;
+    background-image: url(../media/cannon-bears/background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 180px;
+    width: 535px;
+    display: inline-block;
+    margin-top: 2px;
+    overflow: hidden;
+
+    &.FIRE {
+      .ball {
+        /**
+         *  Normaly I would define the transition on the default rule but this way
+         *  the animation will not play when the "LAUNCHED" flag is removed.
+         */
+        transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+        transform: translateY(-100px) scale(0.3);
+      }
+    }
+
+    &.RELOAD {
+      .ball {
+        animation: reload 3s;
+      }
+    }
+
+    .ball {
+      width: 90px;
+      cursor: pointer;
+      transform: translateY(100px);
+    }
+  }
+
+  .carousel {
+    position: relative;
+    white-space: nowrap;
+
+    > * {
+      width: 100%;
+      max-height: 100%;
+      transform: translate3d(0,0,0);
+      box-sizing: border-box;
+      position: relative;
+      display: inline-block;
+      width: 250px;
+      height: 250px;
+      margin-left: 0px;
+      margin-right: 147px;
+      transition: margin 0s;
+    }
+
+    .LEAVE {
+      transition: margin 1s;
+      margin-left: -375px;
     }
   }
 }
