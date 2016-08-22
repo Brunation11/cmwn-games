@@ -87,7 +87,7 @@ class SavedMessages extends Selectable {
     }
 
     return items.map((item, key) => {
-      var timestamp = moment(item.updated);
+      var timestamp = moment.utc(item.updated).local();
       return (
         <skoash.ListItem
           className={self.getClass(key)}
