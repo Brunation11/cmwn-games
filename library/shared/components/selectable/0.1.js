@@ -38,7 +38,7 @@ class Selectable extends skoash.Component {
   bootstrap() {
     super.bootstrap();
     var self = this;
- 
+
     var correctAnswers = this.requireForComplete.filter((ref) => {
       return self.refs[ref].props.correct;
     });
@@ -187,6 +187,6 @@ Selectable.defaultProps = _.defaults({
     <li></li>
   ],
   selectClass: 'SELECTED'
-});
+}, skoash.Component.defaultProps);
 
 export default Selectable;
