@@ -26,6 +26,8 @@ import SaveMenu from './components/save_menu';
 
 import 'shared/js/test-platform-integration';
 
+const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
+
 class Skribble extends skoash.Game {
   constructor() {
     super(config);
@@ -204,7 +206,10 @@ class Skribble extends skoash.Game {
             ]
           };
         }
-        this.updateData({data});
+        this.updateData({
+          data,
+          callback: opts.callback,
+        });
       }
     });
   }
@@ -221,6 +226,8 @@ class Skribble extends skoash.Game {
   }
 
   addRecipient(recipient, cb) {
+    var src;
+
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
       delete recipient.src;
@@ -235,9 +242,31 @@ class Skribble extends skoash.Game {
         });
       }
     }
-    this.setState({
-      recipient
-    }, cb);
+
+    if (typeof recipient === 'string') {
+      this.getData({
+        name: 'getFriend',
+        'friend_id': recipient,
+        callback: () => {
+          this.addRecipient(recipient, cb);
+        }
+      });
+    } else {
+      src = recipient._embedded.image && recipient._embedded.image.url ?
+        recipient._embedded.image.url :
+        DEFAULT_PROFILE_IMAGE;
+      this.setState({
+        recipient: {
+          'user_id': recipient.friend_id,
+          name: recipient.username,
+          src,
+          // I need to get the flips earned back from the backend to do this.
+          description: '',
+          // description: friend.flips_earned + ' Flips Earned',
+          'asset_type': 'friend',
+        }
+      }, cb);
+    }
   }
 
   clickRecipient() {
