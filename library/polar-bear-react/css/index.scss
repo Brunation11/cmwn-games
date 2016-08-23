@@ -629,33 +629,18 @@ p {
     top: 1%;
 
     .selectable-reveal {
-      .selectable-canvas {
-        position: absolute;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+      .selectable-canvas li img {
         width: 100%;
-        height: 100%;
+        opacity: 1;
 
-        li {
-          padding: 0;
-          margin: 0;
-          position: static;
+        &.border {
+          z-index: 1;
+          width: 100%;
+        }
 
-          img {
-            width: 100%;
-            opacity: 1;
-
-            &.border {
-              z-index: 1;
-              width: 100%;
-            }
-
-            &.labels {
-              z-index: 1;
-              width: 100%;
-            }
-          }
+        &.labels {
+          z-index: 1;
+          width: 100%;
         }
       }
     }
