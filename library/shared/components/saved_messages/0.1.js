@@ -55,7 +55,11 @@ class SavedMessages extends Selectable {
 
     firstImg = item && item.rules && item.rules.items &&
       item.rules.items[0] && item.rules.items[0].src ?
-      item.rules.items[0].src : '';
+      item.rules.items[0].src : (
+        item && item.rules && item.rules.messages &&
+        item.rules.messages[0] && item.rules.messages[0].src ?
+        item.rules.messages[0].src : ''
+      );
 
     return (
       <div

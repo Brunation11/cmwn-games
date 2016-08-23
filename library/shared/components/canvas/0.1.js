@@ -85,6 +85,14 @@ class Canvas extends skoash.Component {
       return item;
     });
 
+    _.remove(items, n => {
+      return !n;
+    });
+
+    _.remove(messages, n => {
+      return !n;
+    });
+
     return {
       background: this.state.background,
       items,

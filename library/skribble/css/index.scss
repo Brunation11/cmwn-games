@@ -1341,6 +1341,7 @@ p {
 
   &.OPEN {
     transform: translateX(0%);
+    z-index: 3;
   }
 }
 
