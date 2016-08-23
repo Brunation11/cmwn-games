@@ -1,8 +1,16 @@
 import CarouselCannon from 'shared/components/carousel_cannon/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
+import Score from 'shared/components/score/0.1';
 
 function onSelect(target) {
-  console.log(target.props.name); // eslint-disable-line no-console
+  if (typeof this.refs.reveal.open === 'function') {
+    this.open(target.props.name);
+  }
+}
+
+function updateScore() {
+  console.log('in update score');
+  console.log(this);
 }
 
 export default function (props, ref, key) {
@@ -12,6 +20,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="choose-carousel"
+      score={updateScore()}
     >
       <CarouselCannon
         ref="carousel-cannon"
@@ -36,7 +45,21 @@ export default function (props, ref, key) {
         cannonBall={
           <skoash.Image src="media/images/cannon-bears/ball.png" />
         }
+        revealAssets={[
+          <skoash.Audio ref="fox" type="voiceOver" src="media/audio/reveal-bears/VO_1.mp3" />,
+          <skoash.Audio ref="seal" type="voiceOver" src="media/audio/reveal-bears/VO_2.mp3" />,
+          <skoash.Audio ref="ermine" type="voiceOver" src="media/audio/reveal-bears/VO_3.mp3" />,
+          <skoash.Audio ref="goat" type="voiceOver" src="media/audio/reveal-bears/VO_4.mp3" />,
+          <skoash.Audio ref="peacock" type="voiceOver" src="media/audio/reveal-bears/VO_5.mp3" />,
+          <skoash.Audio ref="dog" type="voiceOver" src="media/audio/reveal-bears/VO_6.mp3" />,
+          <skoash.Audio ref="cat" type="voiceOver" src="media/audio/reveal-bears/VO_7.mp3" />,
+          <skoash.Audio ref="hare" type="voiceOver" src="media/audio/reveal-bears/VO_8.mp3" />,
+          <skoash.Audio ref="polar" type="voiceOver" src="media/audio/reveal-bears/VO_9.mp3" />
+        ]}
         onSelect={onSelect}
+      />
+      <Score
+
       />
     </skoash.Screen>
   );
