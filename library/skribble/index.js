@@ -252,7 +252,7 @@ class Skribble extends skoash.Game {
         }
       });
     } else {
-      src = recipient._embedded.image && recipient._embedded.image.url ?
+      src = recipient && recipient._embedded && recipient._embedded.image && recipient._embedded.image.url ?
         recipient._embedded.image.url :
         DEFAULT_PROFILE_IMAGE;
       this.setState({

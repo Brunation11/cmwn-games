@@ -116,6 +116,7 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-menu {
+    .game-menu .save,
     .menu.recipient {
       display: none;
     }
@@ -363,6 +364,10 @@ p {
 
 .canvas-src { display: none; }
 
+#ios-splash:not(.OPEN) {
+  z-index: -1;
+}
+
 .screen {
   position: absolute;
   top: 50%;
@@ -374,7 +379,10 @@ p {
   display: none;
   overflow: hidden;
   transition: opacity 1s, z-index 0s 1s;
-  z-index: -1;
+
+  &:not(.OPEN) {
+    z-index: -1;
+  }
 
   &:not(.COMPLETE) {
     button {
@@ -389,7 +397,6 @@ p {
 
 .screen.OPEN {
   opacity: 1;
-  z-index: 1;
   transition: opacity 1s, z-index 0s;
 }
 
@@ -440,17 +447,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 // the following css is specific to this game
@@ -567,7 +574,6 @@ p {
     position: absolute;
     left: 20px;
     bottom: 40px;
-    z-index: -1;
 
     .bubble {
       position: absolute;
@@ -1044,7 +1050,7 @@ p {
     background-size: 3800px;
     background-repeat: no-repeat;
   }
-  
+
   .your-message-to {
     background-position: -2850px 0;
     width: 750px;
@@ -1140,7 +1146,7 @@ p {
       &.SELECTED {
         margin-left: -260px;
       }
-      
+
       &:hover {
         margin-left: -2px;
       }
@@ -1223,7 +1229,7 @@ p {
       &.SELECTED {
         margin-left: -260px;
       }
-      
+
       &:hover {
         margin-left: -2px;
       }
