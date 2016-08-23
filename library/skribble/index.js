@@ -81,7 +81,7 @@ class Skribble extends skoash.Game {
   save(e, skramble) {
     /* eslint-disable camelcase */
     var friend_to, self = this;
-    friend_to = self.state.recipient ? self.state.recipient.user_id : null;
+    friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
     var skribble = {
       'version': config.version,
       ...self.state.skribbleData,
