@@ -705,7 +705,12 @@ p {
   }
 }
 
-#choose-carausel {
+#choose-carousel {
+  .next-screen,
+  .prev-screen {
+    bottom: 18%;
+  }
+
   @keyframes reload {
     0% {
       opacity: 0;
@@ -721,17 +726,20 @@ p {
   }
 
   .cannon {
-    position: relative;
+    position: absolute;
     text-align: center;
-    background-image: url(../media/cannon-bears/background.png);
+    background-image: url(../media/images/cannon-bears/background.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
     height: 180px;
-    width: 535px;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: inline-block;
-    margin-top: 2px;
     overflow: hidden;
+
 
     &.FIRE {
       .ball {
@@ -758,8 +766,12 @@ p {
   }
 
   .carousel {
-    position: relative;
+    position: absolute;
     white-space: nowrap;
+    width: 80%;
+    top: 15%;
+    left: 10%;
+    overflow: hidden;
 
     > * {
       width: 100%;
@@ -771,13 +783,19 @@ p {
       width: 250px;
       height: 250px;
       margin-left: 0px;
-      margin-right: 147px;
+      margin-right: 45px;
       transition: margin 0s;
     }
 
     .LEAVE {
       transition: margin 1s;
-      margin-left: -375px;
+      margin-left: -274px;
+    }
+  }
+
+  .randomizer {
+    img {
+      visibility: hidden;
     }
   }
 }
