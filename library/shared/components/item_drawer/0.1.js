@@ -12,6 +12,10 @@ class ItemDrawer extends Selectable {
   shouldComponentUpdate(nextProps, nextState) {
     var items, quickCheck, itemsChanged;
 
+    if (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes)) {
+      return true;
+    }
+
     items = nextProps.data || [];
 
     if (nextState.category && items[nextState.category]) {
