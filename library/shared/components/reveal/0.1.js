@@ -25,7 +25,7 @@ class Reveal extends skoash.Component {
       this.complete();
     } else {
       this.requireForComplete = this.requireForComplete.filter(item => {
-        return (item !== message) || (this.refs[message] instanceof play.Audio);
+        return (item !== message) || (this.refs[message] instanceof skoash.Audio);
       });
     }
   }
@@ -42,8 +42,12 @@ class Reveal extends skoash.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.close();
+
+    if (this.props.openOnStart != null) {
+      this.open(this.props.openOnStart);
+    }
   }
 
   playAudio(message) {
@@ -94,13 +98,14 @@ class Reveal extends skoash.Component {
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
-        <li
+        <li.type
           {...li.props}
+          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={key}
+          ref={ref}
           key={key}
-        ></li>
+        />
       );
     });
   }

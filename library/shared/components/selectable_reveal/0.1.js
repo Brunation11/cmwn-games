@@ -1,7 +1,7 @@
-import Selectable from '../selectable/0.1.js';
-import Reveal from '../reveal/0.1.js';
+import Selectable from 'shared/components/selectable/0.1.js';
+import Reveal from 'shared/components/reveal/0.1.js';
 
-class SelectableReveal extends play.Component {
+class SelectableReveal extends skoash.Component {
   constructor() {
     super();
 
@@ -10,28 +10,32 @@ class SelectableReveal extends play.Component {
     };
   }
 
+  open(message) {
+    this.refs.reveal.open(message);
+  }
+
   selectRespond(message) {
     var answers = this.state.answers.length ? this.state.answers : this.props.answers ? this.props.answers : [];
     if (answers.length) {
       if (answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
-        if(this.props.revealAll) {
+        if (this.props.revealAll) {
           if (typeof this.refs.reveal.open === 'function') {
-            this.refs.reveal.open(message);
+            this.open(message);
           }
         }
       } else {
         if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
-          this.refs.reveal.open(message);
+          this.open(message);
         }
       }
     } else {
-      if (this.props.allCorrect) {
-        if (this.audio.correct) this.audio.correct.play();
+      if (this.props.allCorrect && this.audio.correct) {
+        this.audio.correct.play();
       }
       if (typeof this.refs.reveal.open === 'function') {
-        this.refs.reveal.open(message);
+        this.open(message);
       }
     }
   }
@@ -46,7 +50,7 @@ class SelectableReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -66,9 +70,7 @@ class SelectableReveal extends play.Component {
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
-        completeOnSelect={this.props.selectableCompleteOnSelect}
-        checkComplete={this.props.selectableCheckComplete}
-        allowDeselect={this.props.allowDeselect}
+        selectOnStart={this.props.selectOnStart}
       />
     );
   }
@@ -80,8 +82,7 @@ class SelectableReveal extends play.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
-        completeOnOpen={this.props.revealCompleteOnOpen}
-        checkComplete={this.props.revealCheckComplete}
+        openOnStart={this.props.openOnStart}
       />
     );
   }
@@ -106,7 +107,3 @@ class SelectableReveal extends play.Component {
 }
 
 export default SelectableReveal;
-
-
-// all shoud have props answers
-// if any have it it would automatically complete

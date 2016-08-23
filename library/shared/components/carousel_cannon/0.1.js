@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import Carousel from 'shared/components/carousel/0.1';
 import Cannon from 'shared/components/cannon/0.1';
+import Reveal from 'shared/components/reveal/0.1.js';
 
 class CarouselCannon extends skoash.Component {
   constructor() {
@@ -15,10 +16,37 @@ class CarouselCannon extends skoash.Component {
     this.refs.carousel.select();
   }
 
+  open(message) {
+    this.refs.reveal.open(message);
+  }
+
   onSelect(target) {
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect.call(this, target);
     }
+  }
+
+  closeRespond() {
+    if (typeof this.props.closeRespond === 'function') {
+      this.props.closeRespond();
+    }
+  }
+
+  renderAssets() {
+    if (this.props.assets) {
+      return this.props.assets.map((asset, key) => {
+        return (
+          <skoash.Audio
+            {...asset.props}
+            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+            key={key}
+            data-ref={key}
+          />
+        );
+      });
+    }
+
+    return null;
   }
 
   renderCarousel() {
@@ -41,6 +69,18 @@ class CarouselCannon extends skoash.Component {
     );
   }
 
+  renderReveal() {
+    return (
+      <Reveal
+        ref="reveal"
+        list={this.props.revealList}
+        assets={this.props.revealAssets}
+        closeRespond={this.closeRespond.bind(this)}
+        openOnStart={this.props.openOnStart}
+      />
+    );
+  }
+
   getClassNames() {
     return classNames('carousel-cannon', super.getClassNames());
   }
@@ -48,8 +88,10 @@ class CarouselCannon extends skoash.Component {
   render() {
     return (
       <div className={this.getClassNames()}>
+        {this.renderAssets()}
         {this.renderCarousel()}
         {this.renderCannon()}
+        {this.renderReveal()}
       </div>
     );
   }

@@ -82,6 +82,7 @@ class Dropzone extends skoash.Component {
 
   dropRespond(message, corners) {
     var self = this, isInBounds;
+
     isInBounds = self.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
@@ -115,6 +116,7 @@ class Dropzone extends skoash.Component {
     if (this.audio.correct) {
       this.audio.correct.play();
     }
+
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, message, dropzoneKey);
     }

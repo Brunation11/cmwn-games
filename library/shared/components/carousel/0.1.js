@@ -57,11 +57,10 @@ class Carousel extends Selectable {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
-
+    var list = this.state.list || this.props.list;
     return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
-      li.type = li.type || skoash.Component;
+      // li.type = li.type || skoash.Component;
       return (
         <li.type
           {...li.props}
@@ -89,7 +88,7 @@ class Carousel extends Selectable {
   }
 }
 
-Carousel.defaultProps = _.merge({
+Carousel.defaultProps = _.defaults({
   showNum: 3,
   targetIndex: 1,
   pause: 500,
