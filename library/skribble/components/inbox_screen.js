@@ -125,8 +125,7 @@ class InboxScreen extends skoash.Screen {
   }
 
   editMessage(message) {
-    skoash.trigger('goto', {
-      index: 'canvas',
+    skoash.trigger('loadSkribble', {
       message,
     });
   }

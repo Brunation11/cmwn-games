@@ -90,6 +90,8 @@ class Skribble extends skoash.Game {
       rules: self.getRules()
     };
 
+    console.log(self.state.skribbleData);
+
     if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
       self.emit({
         name: 'saveSkribble',
@@ -128,9 +130,21 @@ class Skribble extends skoash.Game {
       return this.getMedia(opts.path);
     case 'getRules':
       return this.getRules();
+    case 'loadSkribble':
+      return this.loadSkribble(opts);
     }
 
-    return skoash.Game.prototype.trigger.call(this, event, opts);
+    return super.trigger(event, opts);
+  }
+
+  loadSkribble(opts) {
+    this.setState({
+      skribbleData: opts.message
+    });
+    this.goto({
+      index: 'canvas',
+      ...opts
+    });
   }
 
   getMedia(path) {
