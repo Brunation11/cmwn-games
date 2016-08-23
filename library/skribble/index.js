@@ -138,10 +138,11 @@ class Skribble extends skoash.Game {
   loadSkribble(opts) {
     this.setState({
       skribbleData: opts.message
-    });
-    this.goto({
-      index: 'canvas',
-      ...opts
+    }, () => {
+      this.goto({
+        index: 'canvas',
+        ...opts
+      });
     });
   }
 
