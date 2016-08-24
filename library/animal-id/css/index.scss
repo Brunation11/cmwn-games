@@ -253,11 +253,10 @@ p {
 
 .screen {
   position: absolute;
-  top: 47%;
+  top: 0;
   left: 0;
   width: 960px;
   height: 540px;
-  margin-top: -270px;
   opacity: 0;
   display: none;
   transition: opacity 1s, transform 0.5s;
