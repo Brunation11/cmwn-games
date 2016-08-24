@@ -432,11 +432,11 @@ p {
 
   &.READY.OPEN {
     img {
-      &.penguin-megaphone,
-      &.spotlight {
-        opacity: 1;
-        animation-name: slideInRight;
-      }
+      // &.penguin-megaphone,
+      // &.spotlight {
+      //   opacity: 1;
+      //   animation-name: slideInRight;
+      // }
 
       &.speech-bubble {
         transform:scale(1);
@@ -454,8 +454,9 @@ p {
     &.COMPLETE {
       img {
         &.you {
-        animation-name: tada;
-        animation-delay: .1s;
+          z-index: 1;
+          animation-name: tada;
+          animation-delay: .1s;
         }
       }
     }
