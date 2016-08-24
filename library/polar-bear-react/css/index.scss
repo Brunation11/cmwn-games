@@ -823,13 +823,56 @@ p {
     position: absolute;
     background: url(../media/images/score-bears/background.png);
     background-size: cover;
+    background-position: -6px 0;
     width: 29%;
     height: 16%;
     top: 1%;
     left: 2%;
 
+    &.score-1 {
+      background-position: -294px 0;
+    }
+
+    &.score-2 {
+      background-position: -582px 0;
+    }
+
+    &.score-3 {
+      background-position: -870px 0;
+    }
+
+    &.score-4 {
+      background-position: -1159px 0;
+    }
+
+    &.score-5 {
+      background-position: -1446px 0;
+    }
+
     span {
       display: none;
+    }
+  }
+
+  .reveal {
+    display: inline-block;
+
+    img {
+      opacity: 0;
+      position: absolute;
+      width: 30%;
+      top: 50%;
+      left: 35%;
+    }
+
+    &.OPEN {
+      opacity: 1;
+
+      img.OPEN {
+        opacity: 1;
+        animation-name: fadeOutUp;
+        animation-delay: 1s;
+      }
     }
   }
 }
