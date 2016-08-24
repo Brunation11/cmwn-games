@@ -139,9 +139,10 @@ class Skribble extends skoash.Game {
     this.setState({
       skribbleData: opts.message
     }, () => {
+      this.refs['screen-canvas'].addItems(opts.message);
       this.goto({
         index: 'canvas',
-        ...opts
+        draft: true,
       });
     });
   }
