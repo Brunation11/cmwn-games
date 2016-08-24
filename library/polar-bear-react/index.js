@@ -62,11 +62,7 @@ class PolarBearReact extends skoash.Game {
     };
 
     this.menus = {
-      // quit: <QuitScreen
-      //         assets={[
-      //           <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
-      //         ]}
-      //       />
+      quit: QuitScreen
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));
