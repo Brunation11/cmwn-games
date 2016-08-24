@@ -1,17 +1,8 @@
+import _ from 'lodash';
+
 import CarouselCannon from 'shared/components/carousel_cannon/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Score from 'shared/components/score/0.1';
-
-function onSelect(target) {
-  if (typeof this.refs.reveal.open === 'function') {
-    this.open(target.props.name);
-  }
-}
-
-function updateScore() {
-  console.log('in update score');
-  console.log(this);
-}
 
 export default function (props, ref, key) {
   return (
@@ -20,13 +11,24 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="choose-carousel"
-      score={updateScore()}
+      completeOnStart={true}
     >
       <CarouselCannon
         ref="carousel-cannon"
+        completeOnStart={true}
+        onSelect={function (target) {
+          if (typeof this.refs.reveal.open === 'function') {
+            this.open(`${target.props.name}-vo`);
+          }
+          if (target.props.name === 'polar' && this.refs.score) {
+            if (this.refs.score.state.score < 5) this.refs.score.up(1);
+          }
+        }}
+        scoreMax={5}
         carouselBin={
           <Randomizer
             ref="randomizer"
+            completeOnStart={true}
             bin={[
               <skoash.Image name="fox" src="media/images/carousel-bears/carousel-slide-1.png" />,
               <skoash.Image name="dog" src="media/images/carousel-bears/carousel-slide-2.png" />,
@@ -45,21 +47,29 @@ export default function (props, ref, key) {
         cannonBall={
           <skoash.Image src="media/images/cannon-bears/ball.png" />
         }
-        revealAssets={[
-          <skoash.Audio ref="fox" type="voiceOver" src="media/audio/reveal-bears/VO_1.mp3" />,
-          <skoash.Audio ref="seal" type="voiceOver" src="media/audio/reveal-bears/VO_2.mp3" />,
-          <skoash.Audio ref="ermine" type="voiceOver" src="media/audio/reveal-bears/VO_3.mp3" />,
-          <skoash.Audio ref="goat" type="voiceOver" src="media/audio/reveal-bears/VO_4.mp3" />,
-          <skoash.Audio ref="peacock" type="voiceOver" src="media/audio/reveal-bears/VO_5.mp3" />,
-          <skoash.Audio ref="dog" type="voiceOver" src="media/audio/reveal-bears/VO_6.mp3" />,
-          <skoash.Audio ref="cat" type="voiceOver" src="media/audio/reveal-bears/VO_7.mp3" />,
-          <skoash.Audio ref="hare" type="voiceOver" src="media/audio/reveal-bears/VO_8.mp3" />,
-          <skoash.Audio ref="polar" type="voiceOver" src="media/audio/reveal-bears/VO_9.mp3" />
+        autoCloseReveal
+        revealList={[
+          <skoash.Image data-ref="fox" className="animated" src="media/images/reveal-bears/reveal-1.png" complete />,
+          <skoash.Image data-ref="seal" className="animated" src="media/images/reveal-bears/reveal-5.png" complete />,
+          <skoash.Image data-ref="ermine" className="animated" src="media/images/reveal-bears/reveal-4.png" complete />,
+          <skoash.Image data-ref="goat" className="animated" src="media/images/reveal-bears/reveal-6.png" complete />,
+          <skoash.Image data-ref="peacock" className="animated" src="media/images/reveal-bears/reveal-7.png" complete />,
+          <skoash.Image data-ref="dog" className="animated" src="media/images/reveal-bears/reveal-2.png" complete />,
+          <skoash.Image data-ref="cat" className="animated" src="media/images/reveal-bears/reveal-3.png" complete />,
+          <skoash.Image data-ref="hare" className="animated" src="media/images/reveal-bears/reveal-9.png" complete />,
+          <skoash.Image data-ref="polar" className="animated" src="media/images/reveal-bears/reveal-8.png" />,
         ]}
-        onSelect={onSelect}
-      />
-      <Score
-
+        revealAssets={[
+          <skoash.Audio ref="fox-vo" type="voiceOver" src="media/audio/reveal-bears/VO_1.mp3" complete />,
+          <skoash.Audio ref="seal-vo" type="voiceOver" src="media/audio/reveal-bears/VO_2.mp3" complete />,
+          <skoash.Audio ref="ermine-vo" type="voiceOver" src="media/audio/reveal-bears/VO_3.mp3" complete />,
+          <skoash.Audio ref="goat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_4.mp3" complete />,
+          <skoash.Audio ref="peacock-vo" type="voiceOver" src="media/audio/reveal-bears/VO_5.mp3" complete />,
+          <skoash.Audio ref="dog-vo" type="voiceOver" src="media/audio/reveal-bears/VO_6.mp3" complete />,
+          <skoash.Audio ref="cat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_7.mp3" complete />,
+          <skoash.Audio ref="hare-vo" type="voiceOver" src="media/audio/reveal-bears/VO_8.mp3" complete />,
+          <skoash.Audio ref="polar-vo" type="voiceOver" src="media/audio/reveal-bears/VO_9.mp3" />
+        ]}
       />
     </skoash.Screen>
   );
