@@ -4,22 +4,22 @@
  */
 import './config.game';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/audio-sequence/behavior';
-import './components/frame/behavior';
-import './components/modal/behavior';
-import './components/multiple-choice/behavior';
-import './components/reveal/behavior';
-import './components/runner/behavior';
-import './components/score/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-reveal/behavior';
-import './components/selectable/behavior';
-import './components/video/behavior';
+import 'shared/js/screen-ios-splash';
+import './source/js/components/audio-sequence/behavior';
+import './source/js/components/frame/behavior';
+import './source/js/components/modal/behavior';
+import './source/js/components/multiple-choice/behavior';
+import './source/js/components/reveal/behavior';
+import './source/js/components/runner/behavior';
+import './source/js/components/score/behavior';
+import './source/js/components/screen-basic/behavior';
+import './source/js/components/screen-quit/behavior';
+import './source/js/components/selectable-reveal/behavior';
+import './source/js/components/selectable/behavior';
+import './source/js/components/video/behavior';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+// import 'shared/js/test-platform-integration';
+import 'shared/js/google-analytics';
 
 pl.game('monarch', function () {
 
