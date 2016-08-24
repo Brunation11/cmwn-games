@@ -24,6 +24,7 @@ class Selectable extends skoash.Component {
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
 
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
     classes = this.loadData ? this.loadData : {};
 
     if (this.props.selectOnStart) {
@@ -34,8 +35,7 @@ class Selectable extends skoash.Component {
       started: true,
       classes,
       selectClass,
-      selectFunction,
-      selectClass,
+      selectFunction
     });
 
     this.bootstrap();
