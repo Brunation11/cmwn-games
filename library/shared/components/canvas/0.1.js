@@ -270,14 +270,18 @@ class Canvas extends skoash.Component {
     var self = this;
 
     return (
-      self.isInBounds(key, type) && (
-        self.refs[type + '-' + key].state.can_overlap ||
-        !self.state[type + 's'].some((item, index) =>
-          key !== index &&
-          !self.refs[type + '-' + index].state.can_overlap &&
-          skoash.util.doIntersect(
-            self.refs[type + '-' + key].state.corners,
-            self.refs[type + '-' + index].state.corners
+      !self.refs[type + '-' + key].state.corners.length ||
+      (
+        self.isInBounds(key, type) && (
+          self.refs[type + '-' + key].state.can_overlap ||
+          !self.state[type + 's'].some((item, index) =>
+            key !== index &&
+            !self.refs[type + '-' + index].state.can_overlap &&
+            self.refs[type + '-' + index].state.corners.length &&
+            skoash.util.doIntersect(
+              self.refs[type + '-' + key].state.corners,
+              self.refs[type + '-' + index].state.corners
+            )
           )
         )
       )
@@ -285,7 +289,9 @@ class Canvas extends skoash.Component {
   }
 
   isInBounds(key, type) {
-    return !(
+    return !this.state.width ||
+      !this.state.height ||
+      !(
       // box to left
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,

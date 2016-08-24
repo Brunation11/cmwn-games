@@ -47,8 +47,6 @@ class EditableAsset extends Draggable {
   }
 
   deactivate() {
-    var self = this;
-
     if (!this.state.valid) {
       this.setState({
         left: this.state.lastValid.left || this.state.left,
@@ -58,7 +56,7 @@ class EditableAsset extends Draggable {
         active: false,
       }, () => {
         setTimeout(() => {
-          self.checkItem();
+          this.checkItem();
         }, 0);
       });
     } else {
@@ -317,7 +315,9 @@ class EditableAsset extends Draggable {
       name: 'getMedia',
       'media_id': this.props.media_id
     }).then(d => {
-      this.setState(d);
+      this.setState(d, () => {
+        this.checkItem();
+      });
     });
   }
 
