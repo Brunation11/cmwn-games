@@ -618,29 +618,64 @@ p {
   img {
   }
 
+  .selectable-reveal > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    display: none;
+  }
+
   .map {
     position: absolute;
     background: url(../media/images/map/img_9.1.png);
+    background-position: 222px 1px;
     background-size: 575px 575px;
     background-repeat: no-repeat;
-    width: 60%;
+    width: 100%;
     height: 100%;
-    left: 23%;
-    top: 1%;
+    left: 0;
+    top: 0;
 
     .selectable-reveal {
-      .selectable-canvas li img {
-        width: 100%;
-        opacity: 1;
+      .selectable-canvas {
+        position: absolute;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 60%;
+        height: 100%;
+        left: 23%;
 
-        &.border {
-          z-index: 1;
-          width: 100%;
-        }
+        li {
+          padding: 0;
+          margin: 0;
+          position: static;
 
-        &.labels {
-          z-index: 1;
-          width: 100%;
+          img {
+            width: 100%;
+            opacity: 0;
+
+            &.border,
+            &.labels {
+              z-index: 1;
+              width: 100%;
+              opacity: 1;
+            }
+          }
+
+          &.HIGHLIGHTED {
+            img {
+              opacity: 1;
+            }
+          }
         }
       }
     }
@@ -1760,18 +1795,28 @@ p {
   // transition: transform .25s;
 
   .frame {
+    background: url(../media/images/bg-slide.png);
+    background-size: cover;
+    width: 72%;
+    height: 73%;
+    top: 15%;
+    left: 14%;
     position: absolute;
-    background: url(../media/assets/_images/S_17/IMG_17_Frame.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    text-align: center;
-    width: 88%;
-    height: 95%;
-    left: 6%;
-    top: 2%;
 
     h2, h3 {
-      display: none;
+      position: absolute;
+      color: #000;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    h2 {
+      top: 20%;
+    }
+
+    h3 {
+      top: 65%;
     }
 
     &:after {
@@ -1788,37 +1833,37 @@ p {
 
     .quit-yes {
       position: absolute;
-      background: url(../media/assets/assets/yesnobuttons-01.png);
-      background-size: 200px 200px;
-      background-position: -15px -23px;
+      background: url(../media/images/quit-bears/yes_a.png);
+      background-size: cover;
+      background-position: 0 0;
       width: 21%;
-      height: 32%;
-      bottom: 5%;
-      left: 25%;
+      height: 16%;
+      bottom: -5%;
+      left: 22%;
 
       &:hover,
       &:focus {
-        background: url(../media/assets/assets/yesnobuttons-03.png);
-        background-size: 200px 200px;
-        background-position: -15px -23px;
+        background: url(../media/images/quit-bears/yes_b.png);
+        background-size: cover;
+        background-position: 0 0;
       }
     }
 
     .quit-no {
       position: absolute;
-      background: url(../media/assets/assets/yesnobuttons-02.png);
-      background-size: 200px 200px;
-      background-position: -11px -17px;
+      background: url(../media/images/quit-bears/no_a.png);
+      background-size: cover;
+      background-position: 0 0;
       width: 21%;
-      height: 32%;
-      bottom: 5%;
-      left: 54%;
+      height: 16%;
+      bottom: -5%;
+      left: 57%;
 
       &:hover,
       &:focus {
-        background: url(../media/assets/assets/yesnobuttons-04.png);
-        background-size: 200px 200px;
-        background-position: -11px -17px;
+        background: url(../media/images/quit-bears/no_b.png);
+        background-size: cover;
+        background-position: 0 0;
       }
     }
   }
