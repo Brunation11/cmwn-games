@@ -432,12 +432,6 @@ p {
 
   &.READY.OPEN {
     img {
-      // &.penguin-megaphone,
-      // &.spotlight {
-      //   opacity: 1;
-      //   animation-name: slideInRight;
-      // }
-
       &.speech-bubble {
         transform:scale(1);
         transform-origin: 0 100%;
