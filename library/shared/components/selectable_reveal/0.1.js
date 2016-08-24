@@ -1,17 +1,13 @@
-import Selectable from 'shared/components/selectable/0.1.js';
-import Reveal from 'shared/components/reveal/0.1.js';
+import Selectable from '../selectable/0.1.js';
+import Reveal from '../reveal/0.1.js';
 
-class SelectableReveal extends skoash.Component {
+class SelectableReveal extends play.Component {
   constructor() {
     super();
 
     this.state = {
       answers: [],
     };
-  }
-
-  open(message) {
-    this.refs.reveal.open(message);
   }
 
   selectRespond(message) {
@@ -21,15 +17,15 @@ class SelectableReveal extends skoash.Component {
       } else {
         if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
-          this.open(message);
+          this.refs.reveal.open(message);
         }
       }
     } else {
-      if (this.props.allCorrect && this.audio.correct) {
-        this.audio.correct.play();
+      if (this.props.allCorrect) {
+        if (this.audio.correct) this.audio.correct.play();
       }
       if (typeof this.refs.reveal.open === 'function') {
-        this.open(message);
+        this.refs.reveal.open(message);
       }
     }
   }
@@ -44,7 +40,7 @@ class SelectableReveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <skoash.Audio
+          <play.Audio
             {...asset.props}
             ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -64,7 +60,9 @@ class SelectableReveal extends skoash.Component {
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
-        selectOnStart={this.props.selectOnStart}
+        completeOnSelect={this.props.selectableCompleteOnSelect}
+        checkComplete={this.props.selectableCheckComplete}
+        allowDeselect={this.props.allowDeselect}
       />
     );
   }
@@ -76,7 +74,8 @@ class SelectableReveal extends skoash.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
-        openOnStart={this.props.openOnStart}
+        completeOnOpen={this.props.revealCompleteOnOpen}
+        checkComplete={this.props.revealCheckComplete}
       />
     );
   }
@@ -101,3 +100,7 @@ class SelectableReveal extends skoash.Component {
 }
 
 export default SelectableReveal;
+
+
+// all shoud have props answers
+// if any have it it would automatically complete

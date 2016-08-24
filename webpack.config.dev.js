@@ -1,5 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/library',
@@ -19,12 +18,9 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loader: 'babel',
-      //include: path.join(__dirname, 'library'),
-      exclude: [/node_modules/],
-      query: {
-          presets: ['es2015', 'react', 'stage-0']
-      }
+      loaders: ['babel'],
+      include: path.join(__dirname, 'library/'),
+      exclude: [/bower_components/, /node_modules/]
     }]
   },
   postcss: function () {

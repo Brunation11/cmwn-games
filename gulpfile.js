@@ -65,7 +65,7 @@ gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
     var config = defineEntries(webpackDevConfig, _game);
 
-    webpack(config, function (err, stats) {
+    webpack(config).run(function (err, stats) {
       if (err) throw new gutil.PluginError('webpack:build-dev', err);
       gutil.log('[webpack:build-dev]', stats.toString({
         colors: true
