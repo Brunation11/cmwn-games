@@ -40,17 +40,17 @@ class Score extends skoash.Component {
   getClassNames() {
     return classNames(
       'score',
-      `score-${this.state.score}`,
+      `score-${this.props.correct || this.state.score}`,
       skoash.Component.prototype.getClassNames.call(this)
     );
   }
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} score={this.state.score}>
+      <div {...this.props} className={this.getClassNames()} score={this.props.correct || this.state.score}>
         {this.props.leadingContent}
         <span>
-          {this.state.score}
+          {this.props.correct || this.state.score}
         </span>
         {this.props.children}
       </div>
