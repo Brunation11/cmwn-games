@@ -636,13 +636,13 @@ p {
   .map {
     position: absolute;
     background: url(../media/images/map/img_9.1.png);
-    background-position: 222px 1px;
+    background-position: 221px 0;
     background-size: 575px 575px;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     left: 0;
-    top: 0;
+    top: 1%;
 
     .selectable-reveal {
       .selectable-canvas {
@@ -816,6 +816,20 @@ p {
   .randomizer {
     img {
       visibility: hidden;
+    }
+  }
+
+  .score {
+    position: absolute;
+    background: url(../media/images/score-bears/background.png);
+    background-size: cover;
+    width: 29%;
+    height: 16%;
+    top: 1%;
+    left: 2%;
+
+    span {
+      display: none;
     }
   }
 }
@@ -1790,10 +1804,6 @@ p {
 }
 
 #quit {
-  // margin-top: 60px;
-  // transform: translateX(-100%);
-  // transition: transform .25s;
-
   .frame {
     background: url(../media/images/bg-slide.png);
     background-size: cover;
@@ -1817,18 +1827,6 @@ p {
 
     h3 {
       top: 65%;
-    }
-
-    &:after {
-      background: url(../media/assets/_images/_QuitScreen/Quit%20Screen_Text_AreYouSure.png);
-      background-size: 100%;
-      background-repeat: no-repeat;
-      position: absolute;
-      content: "";
-      width: 70%;
-      height: 38%;
-      top: 25%;
-      left: 15%;
     }
 
     .quit-yes {
@@ -1869,6 +1867,5 @@ p {
   }
 
   &.OPEN {
-    // transform: translateX(0%);
   }
 }

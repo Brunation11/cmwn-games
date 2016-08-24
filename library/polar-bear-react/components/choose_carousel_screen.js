@@ -15,7 +15,6 @@ export default function (props, ref, key) {
     >
       <CarouselCannon
         ref="carousel-cannon"
-        completeOnStart={true}
         onSelect={function (target) {
           if (typeof this.refs.reveal.open === 'function') {
             this.open(`${target.props.name}-vo`);
@@ -29,6 +28,7 @@ export default function (props, ref, key) {
           <Randomizer
             ref="randomizer"
             completeOnStart={true}
+            checkComplete={false}
             bin={[
               <skoash.Image name="fox" src="media/images/carousel-bears/carousel-slide-1.png" />,
               <skoash.Image name="dog" src="media/images/carousel-bears/carousel-slide-2.png" />,
