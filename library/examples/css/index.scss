@@ -248,17 +248,17 @@ p {
   }
 
   .screen .next-screen:hover {
-
+    
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-
+    
   }
-
+  
   .screen .prev-screen:hover {
-
+    
   }
 
 // the following css is specific to this game
@@ -518,7 +518,7 @@ p {
         &:hover {
           background-position: -497px 0;
         }
-
+        
         &.SELECTED {
           background-position: -993px 0;
         }

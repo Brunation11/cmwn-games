@@ -1,11 +1,19 @@
 import classNames from 'classnames';
+import _ from 'lodash';
 
 class Selectable extends skoash.Component {
   constructor() {
     super();
 
     this.state = {
+      selectClass: 'SELECTED',
       classes: {},
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
       selectFunction: this.select,
     };
   }
@@ -13,8 +21,11 @@ class Selectable extends skoash.Component {
   start() {
     var selectClass, selectFunction, classes = {};
 
-    selectClass = this.props.selectClass;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+
+    classes = this.loadData ? this.loadData : {};
 
     if (this.props.selectOnStart) {
       classes[this.props.selectOnStart] = selectClass;
@@ -23,8 +34,8 @@ class Selectable extends skoash.Component {
     this.setState({
       started: true,
       classes,
-      selectFunction,
       selectClass,
+      selectFunction
     });
 
     this.bootstrap();
@@ -35,7 +46,7 @@ class Selectable extends skoash.Component {
   }
 
   bootstrap() {
-    super.bootstrap();
+    skoash.Component.prototype.bootstrap.call(this);
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -44,14 +55,24 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target;
+    var message, target, classes, selected;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
     message = target.getAttribute('data-ref');
-    classes[message] = this.props.selectClass;
+
+    if (this.state.classes[message]) {
+      delete this.state.classes[message];
+      if (_.isEmpty(this.state.classes)) {
+        this.incomplete();
+        selected = false;
+      }
+    } else {
+      classes[message] = this.state.selectClass;
+      selected = true;
+    }
 
     this.setState({
       classes,
@@ -61,11 +82,15 @@ class Selectable extends skoash.Component {
       this.props.selectRespond(message);
     }
 
-    this.requireForComplete.map(key => {
-      if (key === message && this.refs[key]) {
-        this.refs[key].complete();
-      }
-    });
+    if (this.props.completeOnSelect && selected) {
+      this.complete();
+    } else {
+      this.requireForComplete = this.requireForComplete.filter((key) => {
+        return key !== message;
+      });
+
+      this.checkComplete();
+    }
   }
 
   select(e) {
@@ -83,20 +108,26 @@ class Selectable extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames('selectable', super.getClassNames());
+    return classNames({
+      selectable: true,
+      COMPLETE: this.state.complete,
+    }, this.props.className);
   }
 
   checkComplete() {
     var self = this, complete;
 
     if (this.props.checkComplete === false) return;
-
     complete = self.requireForComplete.every(key => {
+
       if (self.refs[key] instanceof Node) {
+
         return true;
       }
       if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
+
         if (typeof self.refs[key].checkComplete === 'function') {
+
           self.refs[key].checkComplete();
         }
         return false;
@@ -123,18 +154,18 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    return this.props.list.map((li, key) => {
+    var list, shuffled;
+    list = this.props.list || this.state.list;
+    return list.map((li, key) => {
       var ref = li.ref || li.props['data-ref'] || key;
-      var message = li.props.message || '' + key;
+      // li.type = li.type || skoash.ListItem;
       return (
-        <li.type
+        <skoash.ListItem
           {...li.props}
-          type="li"
           className={this.getClass(ref, li)}
-          message={message}
           data-ref={ref}
           data-message={li.props.message}
-          ref={ref}
+          ref={li.props['data-ref'] || ref}
           key={key}
         />
       );
@@ -152,15 +183,5 @@ class Selectable extends skoash.Component {
     );
   }
 }
-
-Selectable.defaultProps = {
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  selectClass: 'SELECTED'
-};
 
 export default Selectable;

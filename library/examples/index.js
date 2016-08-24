@@ -1,5 +1,5 @@
 import config from './config.game';
-
+asdf
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
@@ -10,6 +10,8 @@ import RunnerReveal from './components/flyer_screen';
 // import MatchScreen from './components/match_screen';
 // import RolesScreen from './components/roles_screen';
 // import MatchScreen from './components/match_screen';
+
+import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
 // import TimerScreen from './components/timer_screen';
@@ -38,6 +40,7 @@ class Examples extends skoash.Game {
       // 1: CarouselScreen,
       // 1: RolesScreen,
       // 1: MatchScreen,
+      // 1: MatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,
       // 1: TimerScreen,
@@ -45,14 +48,14 @@ class Examples extends skoash.Game {
       // 1: TitleScreen,
       // 2: BulbsScreen,
       // 3: PigScreen,
-      // 1: SwitchesScreen,
+      // 4: SwitchesScreen,
       // 5: InfoScreen,
       // 6: VideoScreen,
       // 7: FlipScreen,
     };
 
     this.menus = {
-      quit: QuitScreen,
+      quit: <QuitScreen />,
     };
   }
 
