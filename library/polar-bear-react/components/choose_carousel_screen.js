@@ -11,19 +11,28 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="choose-carousel"
-      completeOnStart={true}
     >
       <CarouselCannon
         ref="carousel-cannon"
+        completeOnStart={true}
+        // checkComplete={false}
+        complete={true}
         onSelect={function (target) {
           if (typeof this.refs.reveal.open === 'function') {
             this.open(`${target.props.name}-vo`);
           }
-          if (target.props.name === 'polar' && this.refs.score) {
-            if (this.refs.score.state.score < 5) this.refs.score.up(1);
+          if (target.props.name === 'polar') {
+            var score = _.get(props, 'data.score.correct', 0);
+            if (score < 5) score += 1;
+
+            this.updateGameState({
+              path: 'score',
+              data: {
+                correct: score
+              }
+            });
           }
         }}
-        scoreMax={5}
         carouselBin={
           <Randomizer
             ref="randomizer"
@@ -49,27 +58,34 @@ export default function (props, ref, key) {
         }
         autoCloseReveal
         revealList={[
-          <skoash.Image data-ref="fox" className="animated" src="media/images/reveal-bears/reveal-1.png" complete />,
-          <skoash.Image data-ref="seal" className="animated" src="media/images/reveal-bears/reveal-5.png" complete />,
-          <skoash.Image data-ref="ermine" className="animated" src="media/images/reveal-bears/reveal-4.png" complete />,
-          <skoash.Image data-ref="goat" className="animated" src="media/images/reveal-bears/reveal-6.png" complete />,
-          <skoash.Image data-ref="peacock" className="animated" src="media/images/reveal-bears/reveal-7.png" complete />,
-          <skoash.Image data-ref="dog" className="animated" src="media/images/reveal-bears/reveal-2.png" complete />,
-          <skoash.Image data-ref="cat" className="animated" src="media/images/reveal-bears/reveal-3.png" complete />,
-          <skoash.Image data-ref="hare" className="animated" src="media/images/reveal-bears/reveal-9.png" complete />,
+          <skoash.Image data-ref="fox" className="animated" src="media/images/reveal-bears/reveal-1.png" complete={true} />,
+          <skoash.Image data-ref="seal" className="animated" src="media/images/reveal-bears/reveal-5.png" complete={true} />,
+          <skoash.Image data-ref="ermine" className="animated" src="media/images/reveal-bears/reveal-4.png" complete={true} />,
+          <skoash.Image data-ref="goat" className="animated" src="media/images/reveal-bears/reveal-6.png" complete={true} />,
+          <skoash.Image data-ref="peacock" className="animated" src="media/images/reveal-bears/reveal-7.png" complete={true} />,
+          <skoash.Image data-ref="dog" className="animated" src="media/images/reveal-bears/reveal-2.png" complete={true} />,
+          <skoash.Image data-ref="cat" className="animated" src="media/images/reveal-bears/reveal-3.png" complete={true} />,
+          <skoash.Image data-ref="hare" className="animated" src="media/images/reveal-bears/reveal-9.png" complete={true} />,
           <skoash.Image data-ref="polar" className="animated" src="media/images/reveal-bears/reveal-8.png" />,
         ]}
         revealAssets={[
-          <skoash.Audio ref="fox-vo" type="voiceOver" src="media/audio/reveal-bears/VO_1.mp3" complete />,
-          <skoash.Audio ref="seal-vo" type="voiceOver" src="media/audio/reveal-bears/VO_2.mp3" complete />,
-          <skoash.Audio ref="ermine-vo" type="voiceOver" src="media/audio/reveal-bears/VO_3.mp3" complete />,
-          <skoash.Audio ref="goat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_4.mp3" complete />,
-          <skoash.Audio ref="peacock-vo" type="voiceOver" src="media/audio/reveal-bears/VO_5.mp3" complete />,
-          <skoash.Audio ref="dog-vo" type="voiceOver" src="media/audio/reveal-bears/VO_6.mp3" complete />,
-          <skoash.Audio ref="cat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_7.mp3" complete />,
-          <skoash.Audio ref="hare-vo" type="voiceOver" src="media/audio/reveal-bears/VO_8.mp3" complete />,
+          <skoash.Audio ref="fox-vo" type="voiceOver" src="media/audio/reveal-bears/VO_1.mp3" complete={true} />,
+          <skoash.Audio ref="seal-vo" type="voiceOver" src="media/audio/reveal-bears/VO_2.mp3" complete={true} />,
+          <skoash.Audio ref="ermine-vo" type="voiceOver" src="media/audio/reveal-bears/VO_3.mp3" complete={true} />,
+          <skoash.Audio ref="goat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_4.mp3" complete={true} />,
+          <skoash.Audio ref="peacock-vo" type="voiceOver" src="media/audio/reveal-bears/VO_5.mp3" complete={true} />,
+          <skoash.Audio ref="dog-vo" type="voiceOver" src="media/audio/reveal-bears/VO_6.mp3" complete={true} />,
+          <skoash.Audio ref="cat-vo" type="voiceOver" src="media/audio/reveal-bears/VO_7.mp3" complete={true} />,
+          <skoash.Audio ref="hare-vo" type="voiceOver" src="media/audio/reveal-bears/VO_8.mp3" complete={true} />,
           <skoash.Audio ref="polar-vo" type="voiceOver" src="media/audio/reveal-bears/VO_9.mp3" />
         ]}
+      />
+      <Score
+        ref="score"
+        max={5}
+        correct={_.get(props, 'data.score.correct', 0)}
+        checkComplete={false}
+        complete={_.get(props, 'data.score.correct', 0) === 5}
       />
     </skoash.Screen>
   );
