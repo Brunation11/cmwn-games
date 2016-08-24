@@ -42,7 +42,7 @@ class Reveal extends skoash.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.close();
   }
 

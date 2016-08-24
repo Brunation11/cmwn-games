@@ -1,7 +1,7 @@
 import Selectable from '../selectable/0.1.js';
 import Reveal from '../reveal/0.1.js';
 
-class SelectableReveal extends play.Component {
+class SelectableReveal extends skoash.Component {
   constructor() {
     super();
 
@@ -10,22 +10,26 @@ class SelectableReveal extends play.Component {
     };
   }
 
+  open(message) {
+    this.refs.reveal.open(message);
+  }
+
   selectRespond(message) {
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
+    if (this.props.answers) {
+      if (this.props.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
         if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
-          this.refs.reveal.open(message);
+          this.open(message);
         }
       }
     } else {
-      if (this.props.allCorrect) {
-        if (this.audio.correct) this.audio.correct.play();
+      if (this.props.allCorrect && this.audio.correct) {
+        this.audio.correct.play();
       }
       if (typeof this.refs.reveal.open === 'function') {
-        this.refs.reveal.open(message);
+        this.open(message);
       }
     }
   }
@@ -40,7 +44,7 @@ class SelectableReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -62,6 +66,8 @@ class SelectableReveal extends play.Component {
         selectClass={this.props.selectableSelectClass}
         completeOnSelect={this.props.selectableCompleteOnSelect}
         checkComplete={this.props.selectableCheckComplete}
+        randomizeList={this.props.randomizeSelectableList}
+        selectOnStart={this.props.selectOnStart}
         allowDeselect={this.props.allowDeselect}
       />
     );
@@ -76,6 +82,7 @@ class SelectableReveal extends play.Component {
         closeRespond={this.closeRespond.bind(this)}
         completeOnOpen={this.props.revealCompleteOnOpen}
         checkComplete={this.props.revealCheckComplete}
+        openOnStart={this.props.openOnStart}
       />
     );
   }
@@ -100,7 +107,3 @@ class SelectableReveal extends play.Component {
 }
 
 export default SelectableReveal;
-
-
-// all shoud have props answers
-// if any have it it would automatically complete

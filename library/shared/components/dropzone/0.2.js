@@ -70,17 +70,6 @@ class Dropzone extends skoash.Component {
     play.Component.prototype.start.call(this);
     this.prepareDropzones();
 
-    // if (self.loadData && typeof self.loadData === 'object') {
-      // if (self.loadData.type === 'drag-n-drop') this.loadDragNDropData();
-      // if (self.loadData.type === 'multi-answer') this.loadMultiAnswerData {
-      // }
-    //     this.loadDragNDropData();
-    //   } else {
-    //     this.loadMultiAsnwerData();
-    //   }
-    // }
-
-
     if (self.loadData && typeof self.loadData === 'object') {
       _.forIn(self.loadData, (ref1, key1) => {
         if (ref1.ref && ref1.state) {
