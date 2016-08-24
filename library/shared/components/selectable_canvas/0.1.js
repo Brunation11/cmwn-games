@@ -14,27 +14,32 @@ class SelectableCanvas extends Selectable {
   }
 
   bootstrap() {
+    var offset;
+
     super.bootstrap();
 
-    this.buffer = document.createElement('canvas');
+    this.buffer = this.refs.canvas;
+    // this.buffer = document.createElement('canvas');
     this.bctx = this.buffer.getContext('2d');
 
     this.el = ReactDOM.findDOMNode(this);
+    offset = this.el.getBoundingClientRect();
+
+    this.buffer.width = offset.width;
+    this.buffer.height = offset.height;
 
     this.items = [];
 
     _.forIn(this.refs, component => {
       if (!component.refs) return;
-      this.items.push(ReactDOM.findDOMNode(component.refs.img));
+      var img = ReactDOM.findDOMNode(component.refs.img)
+      if (img) this.items.push(img);
     });
   }
 
   selectHelper(e, classes) {
     var offset, target;
-
     offset = this.el.getBoundingClientRect();
-    this.buffer.width = offset.width;
-    this.buffer.height = offset.height;
 
     this.items.some((item, key) => {
       if (this.isImageTarget(item, e, offset)) {
@@ -81,6 +86,7 @@ class SelectableCanvas extends Selectable {
   render() {
     return (
       <div>
+        <canvas ref="canvas" />
         <ul
           className={this.getClassNames()}
           onClick={this.state.selectFunction.bind(this)}
