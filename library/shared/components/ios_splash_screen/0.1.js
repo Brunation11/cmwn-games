@@ -7,6 +7,7 @@ export default function (props, ref, key) {
       id="ios-splash"
       checkComplete={false}
       completeDelay={6000}
+      nextDelay={3000}
       completeOnStart
       hidePrev
     >
