@@ -80,15 +80,20 @@ class Skribble extends skoash.Game {
 
   save(e, skramble) {
     /* eslint-disable camelcase */
-    var friend_to, self = this;
+    var friend_to, rules, self = this;
     friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
+    rules = self.getRules();
     var skribble = {
       'version': config.version,
       ...self.state.skribbleData,
       friend_to,
       skramble,
-      rules: self.getRules()
+      rules
     };
+
+    if (!rules.background && !rules.items.length && !rules.messages.length) {
+      return;
+    }
 
     if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
       self.emit({
