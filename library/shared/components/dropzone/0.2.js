@@ -66,8 +66,69 @@ class Dropzone extends skoash.Component {
   }
 
   start() {
+    var self = this, dropzone, draggable;
     play.Component.prototype.start.call(this);
     this.prepareDropzones();
+
+    if (self.loadData && typeof self.loadData === 'object') {
+      _.forIn(self.loadData, (ref1, key1) => {
+        if (ref1.ref && ref1.state) {
+          _.forIn(self.refs, (ref2, key2) => {
+            if (key2.indexOf('draggable-') === -1) return;
+            if (self.refs[key1] && ref2.props.message === ref1.ref) {
+              dropzone = self.refs[key1];
+              draggable = ref2;
+              dropzone.setState({content: draggable})
+              draggable.setState(ref1.state);
+              self.correct(draggable, key1.replace('dropzone-', ''));
+            }
+          });
+        } else {
+          _.forIn(self.loadData, (ref1, key1) => {
+            self.refs[key1].setState({content: []});
+            _.forIn(self.refs, (ref2, key2) => {
+              if (key2.indexOf('draggable-') === -1) return;
+              if (_.includes(ref1, ref2.props.message)) {
+                self.refs[key1].state.content.push(ref2);
+                ref2.markCorrect();
+              }
+            });
+          });
+        }
+      });
+    }
+  }
+
+  loadDragNDropData() {
+    var self = this, dropzone, draggable;
+    _.forIn(self.loadData, (ref1, key1) => {
+      _.forIn(self.refs, (ref2, key2) => {
+        if (key2.indexOf('draggable-') === -1) return;
+        if (self.refs[key1] && ref2.props.message === ref1.ref) {
+          dropzone = self.refs[key1];
+          draggable = ref2;
+          dropzone.setState({content: draggable})
+          draggable.setState(ref1.state);
+          self.correct(draggable, key1.replace('dropzone-', ''));
+        }
+      });
+    });
+  }
+
+  loadMultiAsnwerData() {
+    var self = this, dropzone, draggable;
+    _.forIn(self.loadData, (ref1, key1) => {
+      dropzone = self.refs[key1];
+      dropzone.setState({content: []});
+      _.forIn(self.refs, (ref2, key2) => {
+        if (key2.indexOf('draggable-') === -1) return;
+        draggable = ref2;
+        if (_.includes(ref1, draggable.props.message)) {
+          dropzone.state.content.push(draggable);
+          draggable.markCorrect();
+        }
+      });
+    });
   }
 
   dragRespond(draggable) {
@@ -91,7 +152,7 @@ class Dropzone extends skoash.Component {
       return false;
     });
 
-    if (!isInBounds) self.outOfBounds();
+    if (!isInBounds) self.outOfBounds(draggable);
   }
 
   inBounds(draggable, dropzoneKey) {
@@ -103,11 +164,12 @@ class Dropzone extends skoash.Component {
     }
   }
 
-  outOfBounds() {
+  outOfBounds(draggable) {
     // respond to out of bounds drop
     if (this.audio.out) {
       this.audio.out.play();
     }
+    this.incorrect(draggable);
   }
 
   correct(draggable, dropzoneKey) {
@@ -161,6 +223,7 @@ class Dropzone extends skoash.Component {
       <li key={key}>
         <Draggable
           {...item.props}
+          ref={"draggable-" + key}
           dragRespond={this.dragRespond}
           dropRespond={this.dropRespond}
         />

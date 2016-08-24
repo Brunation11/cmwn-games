@@ -68,6 +68,7 @@ class SelectableReveal extends skoash.Component {
         checkComplete={this.props.selectableCheckComplete}
         randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
+        allowDeselect={this.props.allowDeselect}
       />
     );
   }

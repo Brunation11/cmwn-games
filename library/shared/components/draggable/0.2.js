@@ -39,11 +39,11 @@ class Draggable extends play.Component {
     if (e.target !== this.refs.el) return;
     if (!this.shouldDrag()) return;
 
-    grabX = e.offsetX;
-    grabY = e.offsetY;
+    grabX = e.offsetX / this.state.zoom;
+    grabY = e.offsetY / this.state.zoom;
 
-    startX = endX = e.pageX - grabX;
-    startY = endY = e.pageY - grabY;
+    startX = endX = (e.pageX / this.state.zoom - grabX);
+    startY = endY = (e.pageY / this.state.zoom - grabY);
 
     if (!this.props.return) {
       startX = typeof this.state.startX === 'number' ? this.state.startX : startX;
@@ -90,8 +90,8 @@ class Draggable extends play.Component {
 
   moveEvent(e) {
     this.setState({
-      endX: e.pageX - this.state.grabX,
-      endY: e.pageY - this.state.grabY,
+      endX: (e.pageX / this.state.zoom - this.state.grabX),
+      endY: (e.pageY / this.state.zoom - this.state.grabY),
     });
   }
 
@@ -185,8 +185,8 @@ class Draggable extends play.Component {
       el = el.offsetParent;
     }
 
-    left += ((this.state.endX - this.state.startX) / this.state.zoom);
-    top += ((this.state.endY - this.state.startY) / this.state.zoom);
+    left += this.state.endX - this.state.startX;
+    top += this.state.endY - this.state.startY;
 
     for (var i = 0; i < 4; i++) {
       corners.push({
@@ -226,8 +226,8 @@ class Draggable extends play.Component {
   getStyle() {
     var x, y;
 
-    x = ((this.state.endX - this.state.startX) / this.state.zoom);
-    y = ((this.state.endY - this.state.startY) / this.state.zoom);
+    x = this.state.endX - this.state.startX;
+    y = this.state.endY - this.state.startY;
 
     return {
       transform: 'translateX(' + x + 'px) translateY(' + y + 'px)',

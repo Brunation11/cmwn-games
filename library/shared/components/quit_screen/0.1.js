@@ -19,9 +19,27 @@ class QuitScreen extends skoash.Screen {
     });
   }
 
+  renderAssets() {
+    if (this.props.assets) {
+      return this.props.assets.map((asset, key) => {
+        return (
+          <skoash.Audio
+            {...asset.props}
+            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+            key={key}
+            data-ref={key}
+          />
+        );
+      });
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <div id={this.state.id} className={'screen ' + this.getClassNames()}>
+        {this.renderAssets()}
         <div className="center">
           <div className="frame">
             <h2>Are you sure you<br/>want to quit?</h2>
