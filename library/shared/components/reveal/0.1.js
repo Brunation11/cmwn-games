@@ -14,19 +14,25 @@ class Reveal extends skoash.Component {
   }
 
   open(message) {
-    this.setState({
+    var self = this;
+    self.setState({
       open: true,
       openReveal: message,
     });
 
-    this.playAudio(message);
+    self.playAudio(message);
 
-    if (this.props.completeOnOpen) {
-      this.complete();
+    if (self.props.completeOnOpen) {
+      self.complete();
     } else {
-      this.requireForComplete = this.requireForComplete.filter(item => {
-        return (item !== message) || (this.refs[message] instanceof skoash.Audio);
+      self.requireForComplete = self.requireForComplete.filter(item => {
+        return (item !== message) || (self.refs[message] instanceof skoash.Audio);
       });
+    }
+    if (self.props.autoClose) {
+      setTimeout(function() {
+        self.close();
+      }, 2000);
     }
   }
 
