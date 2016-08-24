@@ -1,3 +1,6 @@
+import collectData from './collect_data.js';
+import loadData from './load_data.js';
+
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
@@ -7,6 +10,8 @@ export default function (props, ref, key) {
       {...props}
       ref={ref}
       key={key}
+      collectData={collectData}
+      loadData={loadData}
       id="qualities-buckets"
       allCorrect
       multipleAnswers

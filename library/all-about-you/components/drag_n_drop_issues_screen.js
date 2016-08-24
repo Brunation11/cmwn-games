@@ -1,3 +1,6 @@
+import collectData from './collect_data.js';
+import loadData from './load_data.js';
+
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
 import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
@@ -7,6 +10,8 @@ export default function (props, ref, key) {
       {...props}
       ref={ref}
       key={key}
+      collectData={collectData}
+      loadData={loadData}
       id="drag-n-drop-issues"
       dropzoneAssets={[
         <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
