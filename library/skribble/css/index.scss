@@ -154,7 +154,7 @@ button {
   cursor: pointer;
 
   background-image: url(../media/_Buttons/SK_btn_rounded.png);
-  background-size: 2000px;
+  background-size: 1950px;
   background-position: left top;
 
   &.make {
@@ -198,12 +198,22 @@ button {
   }
 
   &.suggest {
-    width: 460px;
+    width: 450px;
     height: 200px;
     background-position: -998px -500px;
 
     &:hover {
       background-position: -1498px -500px;
+    }
+  }
+
+  &.save-to-drafts {
+    width: 450px;
+    height: 200px;
+    background-position: 2px -1460px;
+
+    &:hover {
+      background-position: -498px -1460px;
     }
   }
 
@@ -699,6 +709,12 @@ p {
   button {
     display: block;
     color: #000;
+  }
+
+  > div > div:not(.send) {
+    .save-to-drafts {
+      display: none;
+    }
   }
 
   .send {
