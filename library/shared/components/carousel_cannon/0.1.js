@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Carousel from 'shared/components/carousel/0.1';
 import Cannon from 'shared/components/cannon/0.1';
 import Reveal from 'shared/components/reveal/0.1.js';
+import Score from 'shared/components/score/0.1.js';
 
 class CarouselCannon extends skoash.Component {
   constructor() {
@@ -55,6 +56,7 @@ class CarouselCannon extends skoash.Component {
         ref="carousel"
         bin={this.props.carouselBin}
         onSelect={this.onSelect}
+        completeOnStart={this.props.completeOnStart}
       />
     );
   }
@@ -77,6 +79,17 @@ class CarouselCannon extends skoash.Component {
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
         openOnStart={this.props.openOnStart}
+        autoClose={this.props.autoCloseReveal}
+      />
+    );
+  }
+
+  renderScore() {
+    return (
+      <Score
+        ref="score"
+        max={this.props.scoreMax}
+        onComplete={this.props.scoreOnComplete}
       />
     );
   }
@@ -92,6 +105,7 @@ class CarouselCannon extends skoash.Component {
         {this.renderCarousel()}
         {this.renderCannon()}
         {this.renderReveal()}
+        {this.renderScore()}
       </div>
     );
   }
