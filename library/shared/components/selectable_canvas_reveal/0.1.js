@@ -5,7 +5,7 @@ class SelectableCanvasReveal extends SelectableReveal {
   renderSelectable() {
     return (
       <SelectableCanvas
-        ref="selectable"
+        ref="selectable-canvas"
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
