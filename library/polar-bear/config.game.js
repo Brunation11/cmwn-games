@@ -1,5 +1,5 @@
 var config = {
-  id: 'polar-bear-react',
+  id: 'polar-bear',
   version: 2,
   dimensions: {
     width: 960,

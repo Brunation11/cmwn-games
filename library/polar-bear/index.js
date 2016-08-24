@@ -29,9 +29,9 @@ import ExperimentDiscoverScreen from './components/experiment_discover_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
-class PolarBearReact extends skoash.Game {
+class PolarBear extends skoash.Game {
   constructor() {
     super(config);
 
@@ -107,45 +107,6 @@ class PolarBearReact extends skoash.Game {
     }
   }
 
-  // emitSave(highestScreenIndex, currentScreenIndex) {
-  //   var data = {};
-  //   if (currentScreenIndex !== 17) return;
-  //   if (this && this.refs) {
-  //     _.forEach(this.refs, (screen, key) => {
-  //       if (key.indexOf('screen-') === -1) return;
-  //       if (screen.metaData) {
-  //         data[key] = screen.metaData;
-  //       } else {
-  //         if (typeof screen.collectData === 'function') {
-  //           data[key] = screen.collectData();
-  //         }
-  //       }
-  //     });
-  //   }
-
-  //   this.emit({
-  //     name: 'save',
-  //     game: this.config.id,
-  //     version: this.config.version,
-  //     highestScreenIndex,
-  //     currentScreenIndex,
-  //     data
-  //   });
-  // }
-
-  // load(opts) {
-  //   if (this && this.refs && opts.data) {
-  //     _.forEach(this.refs, (screen, key) => {
-  //       if (key.indexOf('screen-') === -1) return;
-  //       if (typeof screen.loadData === 'function') {
-  //         if (opts.data[key] && opts.data[key].length) {
-  //           screen.metaData = opts.data[key];
-  //         }
-  //       }
-  //     });
-  //   }
-  // }
-
   renderAssets() {
     return (
       <div>
@@ -162,6 +123,6 @@ class PolarBearReact extends skoash.Game {
 
 }
 
-skoash.start(PolarBearReact, config.id);
+skoash.start(PolarBear, config.id);
 
 import 'shared/js/google-analytics';
