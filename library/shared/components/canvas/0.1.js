@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import EditableAsset from '../editable_asset/0.1.js';
-
-import classNames from 'classnames';
 
 class Canvas extends skoash.Component {
   constructor() {
@@ -135,7 +134,7 @@ class Canvas extends skoash.Component {
   }
 
   addItem(asset, cb) {
-    var items, messages, index;
+    var items, messages, index, count;
 
     if (!asset) return;
 
@@ -157,6 +156,14 @@ class Canvas extends skoash.Component {
       });
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       items.push(asset);
       index = items.indexOf(asset);
 
@@ -177,6 +184,14 @@ class Canvas extends skoash.Component {
       });
     } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       messages.push(asset);
       index = messages.indexOf(asset);
 
@@ -417,5 +432,9 @@ class Canvas extends skoash.Component {
     );
   }
 }
+
+Canvas.defaultProps = _.defaults({
+  maxInstances: 5
+}, skoash.Component.defaultProps);
 
 export default Canvas;
