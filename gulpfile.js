@@ -34,7 +34,7 @@ function defineEntries(_config, _game) {
   config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
   config.resolve.modulesDirectories.push(__dirname + '/library/' + _game + '/source/js/'); // eslint-disable-line no-undef
-  config.entry[_game] = [_game + '/index.js'];
+  config.entry[_game] = ['./' + _game + '/index.js'];
 
   console.log(games, 'entry', config.entry); // eslint-disable-line no-console
 
@@ -65,7 +65,7 @@ gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
     var config = defineEntries(webpackDevConfig, _game);
 
-    webpack(config, function (err, stats) {
+    webpack(config).run(function (err, stats) {
       if (err) throw new gutil.PluginError('webpack:build-dev', err);
       gutil.log('[webpack:build-dev]', stats.toString({
         colors: true
@@ -81,6 +81,7 @@ gulp.task('webpack:build', function (callback) {
   games.forEach(function (_game, _index) {
     var config = defineEntries(webpackProdConfig, _game);
 
+    // run webpack
     webpack(config, function (err, stats) {
       if (err) throw new gutil.PluginError('webpack:build', err);
       gutil.log('[webpack:build]', stats.toString({

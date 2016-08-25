@@ -58,38 +58,60 @@ class Menu extends Selectable {
     if (typeof this.props.items !== 'object') return;
 
     return Object.keys(this.props.items).map((key) => {
-      var item, onClick, gotoObj, categories;
+      var item, onClick, gotoObj, categories, isFinal;
 
       categories = this.props.categories ? [].concat(this.props.categories) : [];
       categories.push(key);
 
       item = this.props.items[key];
 
-      if (!item.items || Object.prototype.toString.call(item.items) === '[object Array]') {
+      isFinal = (
+          typeof item.items !== 'object' ||
+          Object.prototype.toString.call(item.items) === '[object Array]'
+        ) || (
+          typeof self.props.lastLevel === 'number' &&
+          self.props.lastLevel === self.props.level
+        );
+
+      if (isFinal) {
         gotoObj = {
           index: 'item-drawer',
           categories,
         };
-        onClick = play.trigger.bind(null, 'goto', gotoObj);
+        onClick = skoash.trigger.bind(null, 'goto', gotoObj);
       }
 
       return (
-        <play.ListItem
+        <skoash.ListItem
           className={self.getClass(key)}
           data-ref={key}
           ref={key}
           key={key}
           onClick={onClick}
         >
-          {key}
+          <span>{key}</span>
           {(() => {
-            if (typeof item.items !== 'object' || Object.prototype.toString.call(item.items) === '[object Array]') return;
+            if (isFinal) return;
             return (
-              <Menu ref={'menu-' + key} categories={categories} items={item.items} inactive={true} />
+              <Menu
+                ref={'menu-' + key}
+                categories={categories}
+                items={item.items}
+                inactive={true}
+                level={(self.props.level || 0) + 1}
+                lastLevel={self.props.lastLevel}
+              />
             );
           })()}
-        </play.ListItem>
+        </skoash.ListItem>
       );
+    });
+  }
+
+  getClass(key) {
+    return classNames({
+      [key.replace(' ', '-')]: true,
+      [this.state.classes[key] || '']: true,
     });
   }
 
@@ -97,7 +119,7 @@ class Menu extends Selectable {
     return classNames({
       menu: true,
       ACTIVE: this.state.active,
-    });
+    }, this.props.className);
   }
 
   render() {

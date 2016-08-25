@@ -56,7 +56,7 @@ export default function (props, ref, key) {
           assets={[
             <skoash.Audio type="sfx" ref="incorrect" src="media/S_2/S_2.1.mp3" complete={true} checkComplete={false} />
           ]}
-           hideReveal={true}
+          hideReveal={true}
         />
       </skoash.Component>
     </skoash.Screen>
