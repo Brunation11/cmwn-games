@@ -2,14 +2,15 @@ class Reveal extends skoash.Component {
   constructor() {
     super();
 
+    this.list = [
+      <li></li>,
+      <li></li>,
+      <li></li>,
+      <li></li>
+    ];
+
     this.state = {
       openReveal: '',
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
     };
   }
 
@@ -44,6 +45,10 @@ class Reveal extends skoash.Component {
   start() {
     skoash.Component.prototype.start.call(this);
     this.close();
+
+    if (this.props.openOnStart != null) {
+      this.open(this.props.openOnStart);
+    }
   }
 
   playAudio(message) {
@@ -89,7 +94,7 @@ class Reveal extends skoash.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.state.list;
+    var list = this.props.list || this.list;
 
     return list.map((li, key) => {
       var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];

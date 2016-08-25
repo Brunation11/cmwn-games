@@ -34,8 +34,8 @@ class Selectable extends skoash.Component {
     this.setState({
       started: true,
       classes,
+      selectFunction,
       selectClass,
-      selectFunction
     });
 
     this.bootstrap();
