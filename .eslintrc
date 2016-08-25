@@ -2,12 +2,13 @@
     "globals": {
         "pl": true,
         "play": true,
+        "skoash": true,
         "$": true,
         "ga": true,
         "React": true,
         "ReactDOM": true,
-        "skoash": true,
-        "require": true,
+        "moment": true,
+        'require': true,
         "module": true,
         "__dirname": true,
         "autoprefixer": true

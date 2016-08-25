@@ -23,7 +23,7 @@ class Randomizer extends skoash.Component {
     }
 
     while (bin.length < amount) {
-      bin = bin.concat(_.shuffle(this.props.bin));
+      bin.concat(_.shuffle(this.props.bin));
     }
 
     if (this.props.remain) {
@@ -34,7 +34,9 @@ class Randomizer extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames('randomizer', super.getClassNames());
+    return classNames('randomizer', {
+      COMPLETE: this.state.complete,
+    });
   }
 
   renderBin() {
@@ -62,9 +64,9 @@ class Randomizer extends skoash.Component {
   }
 }
 
-Randomizer.defaultProps = _.merge({
+Randomizer.defaultProps = {
   bin: [],
   remain: false
-}, skoash.Component.defaultProps);
+};
 
 export default Randomizer;

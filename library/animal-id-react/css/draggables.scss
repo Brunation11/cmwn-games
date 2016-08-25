@@ -1,0 +1,14 @@
+.draggable {
+  position: relative;
+  cursor: grab;
+  cursor: -moz-grab;
+
+  &.DRAGGING {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+  }
+
+  &.RETURN {
+    transition: transform .5s;
+  }
+}

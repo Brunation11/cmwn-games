@@ -1,6 +1,7 @@
+import _ from 'lodash';
+
 import Selectable from 'shared/components/selectable/0.1.js';
 import Reveal from 'shared/components/reveal/0.1.js';
-import _ from 'lodash';
 
 class SelectableReveal extends skoash.Component {
   constructor() {
@@ -68,8 +69,12 @@ class SelectableReveal extends skoash.Component {
         list={this.props.selectableList}
         selectRespond={this.selectRespond.bind(this)}
         selectClass={this.props.selectableSelectClass}
+        completeOnSelect={this.props.selectableCompleteOnSelect}
+        checkComplete={this.props.selectableCheckComplete}
+        randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
         answers={this.props.answers}
+        allowDeselect={this.props.allowDeselect}
       />
     );
   }
@@ -81,6 +86,8 @@ class SelectableReveal extends skoash.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
+        completeOnOpen={this.props.revealCompleteOnOpen}
+        checkComplete={this.props.revealCheckComplete}
         openOnStart={this.props.openOnStart}
         hide = {this.props.hideReveal}
       />

@@ -82,7 +82,6 @@ class Dropzone extends skoash.Component {
 
   dropRespond(message, corners) {
     var self = this, isInBounds;
-
     isInBounds = self.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {

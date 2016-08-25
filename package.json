@@ -9,7 +9,7 @@
     "shortid": "^2.2.6"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.7",
+    "autoprefixer": "^6.3.3",
     "babel": "^5.8.29",
     "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
@@ -27,14 +27,14 @@
     "gulp-concat": "^2.6.0",
     "gulp-inject": "^3.0.0",
     "gulp-livereload": "^3.8.1",
-    "gulp-postcss": "^6.1.1",
+    "gulp-postcss": "^6.1.0",
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.9",
-    "webpack": "^1.13.1",
+    "gulp-watch": "^4.3.5",
+    "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
-    "yargs": "^4.8.1"
+    "yargs": "^3.31.0"
   },
   "author": "Max Rafferty",
   "license": "ISC",
