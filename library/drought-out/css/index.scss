@@ -439,6 +439,8 @@ img.inline {
     display: inline-block;
     width: 880px;
     margin: 0 auto;
+    position: relative;
+    z-index: -1;
   }
 
   &.OPEN {

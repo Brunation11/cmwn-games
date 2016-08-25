@@ -19,7 +19,7 @@ class Selectable extends skoash.Component {
 
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
-    classes = this.loadData ? this.loadData : {};
+    classes = this.props.loadData ? this.props.loadData : {};
 
     if (this.props.selectOnStart) {
       classes[this.props.selectOnStart] = selectClass;
@@ -56,7 +56,7 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target, classes, selected;
+    var message, target, selected;
 
     target = e.target.closest('LI');
 
@@ -66,18 +66,16 @@ class Selectable extends skoash.Component {
 
     if (!this.props.answers || !this.props.answers.length ||
       this.props.highlightIncorrect || ~this.props.answers.indexOf(message)) {
-      classes[message] = this.props.selectClass;
-    }
-
-    if (this.state.classes[message]) {
-      delete this.state.classes[message];
-      if (_.isEmpty(this.state.classes)) {
-        this.incomplete();
-        selected = false;
+      if (this.props.allowDeselect && this.state.classes[message]) {
+        delete this.state.classes[message];
+        if (_.isEmpty(this.state.classes)) {
+          this.incomplete();
+          selected = false;
+        }
+      } else {
+        classes[message] = this.state.selectClass;
+        selected = true;
       }
-    } else {
-      classes[message] = this.state.selectClass;
-      selected = true;
     }
 
     this.setState({

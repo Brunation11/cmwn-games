@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
