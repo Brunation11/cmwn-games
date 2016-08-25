@@ -47,7 +47,7 @@ class Selectable extends skoash.Component {
   }
 
   bootstrap() {
-    skoash.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -56,7 +56,7 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target, selected;
+    var message, target;
 
     target = e.target.closest('LI');
 
@@ -70,11 +70,9 @@ class Selectable extends skoash.Component {
         delete this.state.classes[message];
         if (_.isEmpty(this.state.classes)) {
           this.incomplete();
-          selected = false;
         }
       } else {
         classes[message] = this.state.selectClass;
-        selected = true;
       }
     }
 
@@ -95,15 +93,11 @@ class Selectable extends skoash.Component {
       this.props.selectRespond.call(this, message);
     }
 
-    if (this.props.completeOnSelect && selected) {
-      this.complete();
-    } else {
-      this.requireForComplete = this.requireForComplete.filter((key) => {
-        return key !== message;
-      });
-
-      this.checkComplete();
-    }
+    this.requireForComplete.forEach(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
+    });
   }
 
   select(e) {
@@ -196,5 +190,14 @@ class Selectable extends skoash.Component {
     );
   }
 }
+
+Selectable.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+}, skoash.Component.defaultProps);
 
 export default Selectable;

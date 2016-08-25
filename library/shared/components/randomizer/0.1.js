@@ -8,7 +8,7 @@ class Randomizer extends skoash.Component {
   }
 
   start() {
-    skoash.Component.prototype.start.call(this);
+    super.start();
   }
 
   getAll() {
@@ -64,9 +64,9 @@ class Randomizer extends skoash.Component {
   }
 }
 
-Randomizer.defaultProps = {
-  bin: [],
-  remain: false
-};
+// Randomizer.defaultProps = _.defaults({
+//   bin: [],
+//   remain: false
+// }, skoash.Component.defaultProps);
 
 export default Randomizer;
