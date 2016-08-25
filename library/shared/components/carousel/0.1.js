@@ -10,10 +10,6 @@ class Carousel extends Selectable {
     this.next = this.next.bind(this);
   }
 
-  componentDidMount() {
-    this.bootstrap();
-  }
-
   start() {
     super.start();
     this.next();
