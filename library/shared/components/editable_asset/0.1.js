@@ -298,7 +298,7 @@ class EditableAsset extends Draggable {
   }
 
   bootstrap() {
-    Draggable.prototype.bootstrap.call(this);
+    super.bootstrap();
 
     if (this.props.state) {
       this.setState(this.props.state);

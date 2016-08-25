@@ -12,8 +12,19 @@ pl.game.component('screen-quit', function () {
     }
   });
 
+  this.on('ready', function (_e) {
+    var ctx;
+
+    if (!this.is(_e.target)) return;
+
+    ctx = new (window.AudioContext || window.webkitAudioContext);
+    if (this.audio.sfx.sure) this.audio.sfx.sure.setContext(ctx);
+    if (this.audio.sfx.button) this.audio.sfx.button.setContext(ctx);
+  });
+
   this.on('ui-open', function (_event) {
     if (!this.is(_event.target)) return;
+    if (this.audio.sfx.sure) this.audio.sfx.sure.play();
     this.buttonSound();
     this.game.addClass('QUIT-SCREEN');
     this.removeClass('LEAVE-END');
@@ -21,6 +32,7 @@ pl.game.component('screen-quit', function () {
   });
 
   this.on('ui-leave', function () {
+    if (this.audio.sfx.sure) this.audio.sfx.sure.stop();
     this.game.removeClass('QUIT-SCREEN');
     this.game.resume();
   });
