@@ -209,10 +209,15 @@ class InboxScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <InboxScreen
-    id="inbox"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <InboxScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="inbox"
+      hideNext
+      hidePrev
+    />
+  );
+}

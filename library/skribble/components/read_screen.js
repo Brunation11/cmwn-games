@@ -18,12 +18,8 @@ class ReadScreen extends skoash.Screen {
   constructor() {
     super();
 
-    this.state = {
-      load: true,
-      message: {
-        user: {}
-      },
-    };
+    this.state.load = true;
+    this.state.message = {user: {}};
 
     this.leftMenuList = [
       <li className="inbox" onClick={this.goto.bind(this, 'inbox')}>
@@ -121,10 +117,15 @@ class ReadScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <ReadScreen
-    id="read"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <ReadScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="read"
+      hideNext
+      hidePrev
+    />
+  );
+}

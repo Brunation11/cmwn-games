@@ -238,10 +238,15 @@ class CanvasScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <CanvasScreen
-    id="canvas"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <CanvasScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="canvas"
+      hideNext
+      hidePrev
+    />
+  );
+}

@@ -129,8 +129,8 @@ class Inbox extends Selectable {
   }
 }
 
-Inbox.defaultProps = _.merge(Selectable.defaultProps, {
+Inbox.defaultProps = _.defaults({
   friendKey: 'created_by'
-});
+}, Selectable.defaultProps);
 
 export default Inbox;

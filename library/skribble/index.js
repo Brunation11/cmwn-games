@@ -48,6 +48,8 @@ class Skribble extends skoash.Game {
       quit: QuitScreen,
       save: SaveMenu,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   goto(opts) {

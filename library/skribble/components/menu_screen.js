@@ -18,10 +18,15 @@ class MenuScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <MenuScreen
-    id="menu"
-    hidePrev
-    hideNext
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <MenuScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="menu"
+      hidePrev
+      hideNext
+    />
+  );
+}
