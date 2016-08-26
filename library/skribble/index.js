@@ -273,11 +273,11 @@ class Skribble extends skoash.Game {
     } else {
       src = recipient && recipient._embedded && recipient._embedded.image && recipient._embedded.image.url ?
         recipient._embedded.image.url :
-        DEFAULT_PROFILE_IMAGE;
+        recipient.profile_image || DEFAULT_PROFILE_IMAGE;
       this.setState({
         recipient: {
-          'user_id': recipient.friend_id,
-          name: recipient.username,
+          'user_id': recipient.user_id || recipient.friend_id,
+          name: recipient.name || recipient.username,
           src,
           // I need to get the flips earned back from the backend to do this.
           description: '',
