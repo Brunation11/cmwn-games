@@ -2,6 +2,38 @@ import SelectableReveal from '../../shared/components/selectable_reveal/0.1.js';
 import Inbox from '../../shared/components/inbox/0.1.js';
 import SavedMessages from '../../shared/components/saved_messages/0.1.js';
 
+const inboxEmptyMessage = (
+  <span>
+    You haven't received any Skribbles!<br/>
+    Get started by sending some!
+  </span>
+  );
+const unreadEmptyMessage = (
+  <span>
+    You don't have any<br/>
+    unread Skribbles!
+  </span>
+  );
+const readEmptyMessage = (
+  <span>
+    You don't have any<br/>
+    read Skribbles!
+  </span>
+  );
+const sentEmptyMessage = (
+  <span>
+    You haven't sent any Skribbles.<br/>
+    Let's get started!
+  </span>
+  );
+const draftsEmptyMessage = (
+  <span>
+    You don't have any drafts.<br/>
+    Start Skribbling!
+  </span>
+  );
+
+
 class InboxScreen extends skoash.Screen {
   constructor() {
     super();
@@ -44,6 +76,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: inbox || [],
           }}
+          emptyMessage={inboxEmptyMessage}
           selectRespond={this.readMessage}
         />
       </li>,
@@ -53,15 +86,17 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: unread || [],
           }}
+          emptyMessage={unreadEmptyMessage}
           selectRespond={this.readMessage}
         />
       </li>,
       <li>
         <Inbox
-          data-ref="ready"
+          data-ref="read"
           data={{
             items: read || [],
           }}
+          emptyMessage={readEmptyMessage}
           selectRespond={this.readMessage}
         />
       </li>,
@@ -71,6 +106,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: outbox || [],
           }}
+          emptyMessage={sentEmptyMessage}
           friendKey="friend_to"
           selectRespond={this.readMessage}
         />
@@ -81,6 +117,7 @@ class InboxScreen extends skoash.Screen {
           data={{
             items: saved || [],
           }}
+          emptyMessage={draftsEmptyMessage}
           selectRespond={this.editMessage}
         />
       </li>,

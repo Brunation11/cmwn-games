@@ -28,15 +28,11 @@ class Inbox extends Selectable {
       classes,
     });
 
+    if (message.status !== 'COMPLETE') return;
+
     if (typeof this.props.selectRespond === 'function' && message) {
       this.props.selectRespond(message);
     }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
   }
 
   getClass(key, read) {
@@ -67,8 +63,12 @@ class Inbox extends Selectable {
 
     items = this.props.data.items;
 
-    if (this.state.category) {
-      items = items[this.state.category].items;
+    if (!items.length) {
+      return (
+        <li className="empty">
+          {this.props.emptyMessage}
+        </li>
+      );
     }
 
     friends = skoash.trigger('getState').data.user || [];
@@ -78,13 +78,11 @@ class Inbox extends Selectable {
       timestamp = moment.utc(item.updated).local();
       key = 'message-' + key;
 
-      friends.some(friend => {
+      friends.forEach(friend => {
         if (item[this.props.friendKey] === friend.friend_id) {
           image = friend._embedded.image ? friend._embedded.image.url : '';
           name = friend.username;
-          return false;
         }
-        return true;
       });
 
       if (!name) {
@@ -92,6 +90,10 @@ class Inbox extends Selectable {
           name: 'getFriend',
           'friend_id': item[this.props.friendKey],
         });
+      }
+
+      if (this.props.friendKey === 'friend_to') {
+        item.sent = true;
       }
 
       return (

@@ -179,7 +179,8 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
-      'getFriend'
+      'getFriend',
+      'markAsRead',
     ];
 
     if (names.indexOf(opts.name) === -1) {
@@ -194,6 +195,13 @@ class Skribble extends skoash.Game {
           data
         });
       } else {
+        if (opts.name === 'getFriend') {
+          data = {
+            user: [
+              data
+            ]
+          };
+        }
         this.updateData({data});
       }
     });

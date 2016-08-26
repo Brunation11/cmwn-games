@@ -92,11 +92,17 @@ class EditableAsset extends Draggable {
   rotate() {
     this.refs.el.parentNode.addEventListener('mousemove', this.adjustRotation);
     this.refs.el.parentNode.addEventListener('mouseup', this.offRotate);
+
+    this.refs.el.parentNode.addEventListener('touchmove', this.adjustRotation);
+    this.refs.el.parentNode.addEventListener('touchend', this.offRotate);
   }
 
   offRotate() {
     this.refs.el.parentNode.removeEventListener('mousemove', this.adjustRotation);
     this.refs.el.parentNode.removeEventListener('mouseup', this.offRotate);
+
+    this.refs.el.parentNode.removeEventListener('touchmove', this.adjustRotation);
+    this.refs.el.parentNode.removeEventListener('touchend', this.offRotate);
   }
 
   adjustRotation(e) {
@@ -142,7 +148,6 @@ class EditableAsset extends Draggable {
   scale() {
     this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
-    this.refs.el.parentNode.addEventListener('mouseout', this.offScale);
 
     this.refs.el.parentNode.addEventListener('touchmove', this.adjustScale);
     this.refs.el.parentNode.addEventListener('touchend', this.offScale);
@@ -151,7 +156,6 @@ class EditableAsset extends Draggable {
   offScale() {
     this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
-    this.refs.el.parentNode.removeEventListener('mouseout', this.offScale);
 
     this.refs.el.parentNode.removeEventListener('touchmove', this.adjustScale);
     this.refs.el.parentNode.removeEventListener('touchend', this.offScale);

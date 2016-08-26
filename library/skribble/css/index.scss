@@ -86,6 +86,12 @@ html, body, body > div, body > div > div {
     }
   }
 
+  &.SCREEN-1 {
+    .game-menu .inbox {
+      display: none;
+    }
+  }
+
   &.SCREEN-canvas,
   &.SCREEN-send {
     .game-menu .create {
@@ -94,10 +100,16 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-inbox,
-  &.SCREEN-sent,
-  &.SCREEN-read {
+  &.SCREEN-sent {
     .game-menu .save,
     .game-menu .inbox,
+    .menu.recipient {
+      display: none;
+    }
+  }
+
+  &.SCREEN-read {
+    .game-menu .save,
     .menu.recipient {
       display: none;
     }
@@ -361,8 +373,8 @@ p {
   opacity: 0;
   display: none;
   overflow: hidden;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
+  transition: opacity 1s, z-index 0s 1s;
+  z-index: -1;
 
   &:not(.COMPLETE) {
     button {
@@ -377,7 +389,8 @@ p {
 
 .screen.OPEN {
   opacity: 1;
-  transform: translateX(0);
+  z-index: 1;
+  transition: opacity 1s, z-index 0s;
 }
 
 .screen.READY {
@@ -385,8 +398,7 @@ p {
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+  opacity: 0;
 }
 
   .screen .next-screen,
@@ -607,14 +619,14 @@ p {
 
   .item-drawer {
     li {
-      padding: 15px 10px;
-      width: 200px;
+      padding: 15px 2px 15px 10px;
+      width: 175px;
       height: 270px;
       background-image: url(../media/_Buttons/sk_btn_selectfriend.png);
       background-size: 400px;
       background-repeat: no-repeat;
       background-position: 0 0;
-      margin: 0 25px 20px;
+      margin: 0 5px 20px;
 
       &:before {
         display: none;
@@ -923,6 +935,22 @@ p {
           }
         }
       }
+
+      &.empty {
+        background: none;
+        height: 100%;
+
+        span {
+          display: block;
+          width: 100%;
+          text-align: center;
+          line-height: 1.2;
+          left: 0;
+          top: 50%;
+          font-size: 50px;
+          transform: translateY(-50%);
+        }
+      }
     }
 
     &.SAVED {
@@ -1171,6 +1199,14 @@ p {
 #read {
   .menu.recipient.sender {
     display: block;
+
+    &.HIDE {
+      display: none;
+
+      & ~ .right-menu {
+        display: none;
+      }
+    }
   }
 
   .left-menu {

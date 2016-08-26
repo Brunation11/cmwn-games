@@ -393,7 +393,7 @@ class Canvas extends skoash.Component {
       <ul
         className={this.getClassNames()}
         style={this.getStyle()}
-        onClick={this.deactivateItems.bind(this)}
+        onClick={this.deactivateItems}
       >
         {this.renderItems()}
         {this.renderMessages()}
