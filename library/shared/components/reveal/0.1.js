@@ -1,23 +1,20 @@
+import _ from 'lodash';
+
 class Reveal extends skoash.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
     };
+
+    this.index = 0;
   }
 
   open(message) {
     this.setState({
       open: true,
-      openReveal: message,
+      openReveal: '' + message,
     });
 
     this.playAudio(message);
@@ -30,13 +27,15 @@ class Reveal extends skoash.Component {
   }
 
   close() {
+    var prevMessage = this.state.openReveal;
+
     this.setState({
       open: false,
       openReveal: '',
     });
 
     if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
+      this.props.closeRespond(prevMessage);
     }
   }
 
@@ -65,6 +64,8 @@ class Reveal extends skoash.Component {
       messages.map(audio => {
         if (this.audio[audio]) {
           this.audio[audio].play();
+        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
+          this.media[audio].play();
         }
       });
     } else {
@@ -99,7 +100,6 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
-          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={ref}
@@ -107,6 +107,12 @@ class Reveal extends skoash.Component {
         />
       );
     });
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.openReveal && props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
   }
 
   getClass(li, key) {
@@ -119,18 +125,22 @@ class Reveal extends skoash.Component {
     return classes;
   }
 
-  getClasses() {
-    var classes = '';
+  getClassNames() {
+    var classes;
+    var open = 'open-none ';
 
-    if (this.state.open) classes += 'OPEN';
-    if (this.state.complete) classes += ' COMPLETE';
+    if (this.state.openReveal) {
+      open = 'open-' + this.state.openReveal + ' ';
+    }
+
+    classes = 'reveal ' + open + super.getClassNames();
 
     return classes;
   }
 
   render() {
     return (
-      <div className={'reveal ' + this.getClasses()}>
+      <div className={this.getClassNames()}>
         {this.renderAssets()}
         <div>
           <ul>
@@ -142,5 +152,14 @@ class Reveal extends skoash.Component {
     );
   }
 }
+
+Reveal.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+}, skoash.Component.defaultProps);
 
 export default Reveal;

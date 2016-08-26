@@ -6,17 +6,28 @@ class AudioSequence extends play.Component {
   }
 
   start() {
+    if (!this.props.silentOnStart) this.play();
+  }
+
+  play() {
     this.setState({
       started: true
     });
 
-    if (this.refs[0]) {
+    if (this.props.playOnStart && this.refs[0]) {
       this.playingIndex = 0;
       this.refs[0].play();
     }
 
     if (this.props.checkComplete !== false) {
       this.checkComplete();
+    }
+  }
+
+  play() {
+    if (this.refs[0]) {
+      this.playingIndex = 0;
+      this.refs[0].play();
     }
   }
 
@@ -38,5 +49,10 @@ class AudioSequence extends play.Component {
     );
   }
 }
+
+AudioSequence.defaultProps = _.defaults({
+  playOnStart: true
+});
+
 
 export default AudioSequence;

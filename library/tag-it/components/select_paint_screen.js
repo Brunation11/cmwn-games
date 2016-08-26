@@ -1,9 +1,15 @@
 export default function (props, ref, key) {
+  var className = null;
+  var state = skoash.trigger('getState');
+  if (state.currentScreenIndex === 25) {
+    className = 'STAY';
+  }
   return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
+      className={className}
       id="select-paint"
     >
       <skoash.MediaSequence

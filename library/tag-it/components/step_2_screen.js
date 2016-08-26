@@ -1,4 +1,4 @@
-export default function (props, ref, key, className) {
+export default function (props, ref, key) {
   var className = null;
   var state = skoash.trigger('getState');
   if (state.currentScreenIndex >= 8 && state.currentScreenIndex <= 10) {
@@ -20,7 +20,7 @@ export default function (props, ref, key, className) {
           <skoash.Audio ref="step2" type="voiceOver" src="media/_audio/S_Step2/VO_Step2.mp3" />
           <skoash.Audio ref="collect" type="voiceOver" src="media/_audio/S_Step2/VO_CollectEmpty.mp3" />
           <skoash.Audio ref="container-1" type="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" delay={600} />
-          <skoash.Audio ref="container-2" type="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" delay={600} /> 
+          <skoash.Audio ref="container-2" type="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" delay={600} />
           <skoash.Audio ref="container-3" type="sfx" src="media/_audio/_Reveals/TI_RV_5.mp3" delay={600} />
       </skoash.MediaSequence>
       <div className="step animated" />

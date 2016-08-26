@@ -828,16 +828,24 @@ img.inline {
 
   @for $i from 1 through 4 {
     $item: nth($items,$i);
-    &.OPEN {
+    &.OPEN,
+    &.STAY {
       .#{$item} {
         opacity: 1;
         animation-name: slideInRight;
       }
     }
+
+    &.STAY {
+      .#{$item} {
+        transition: opacity 0s;
+        animation-delay: 0s;
+      }
+    }
   }
 
   .lids {
-    animation-delay: 1.5;
+    animation-delay: 1.5s;
   }
 
   .scissors {
