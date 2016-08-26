@@ -138,43 +138,43 @@ class TrashScreenComponent extends skoash.Screen {
         selectClass="HIGHLIGHTED"
         onComplete={this.onSelectableAudioComplete.bind(this)}
         selectableList={[
-          <skoash.ListItem data-ref="correct" correct id="bottle" />,
-          <skoash.ListItem data-ref="correct" correct id="cans" />,
-          <skoash.ListItem data-ref="correct" correct id="cleaner" />,
-          <skoash.ListItem data-ref="correct" correct id="wash" />,
-          <skoash.ListItem data-ref="correct" correct id="necklace" />,
-          <skoash.ListItem data-ref="correct" correct id="oil" />,
-          <skoash.ListItem data-ref="correct" correct id="bag" />,
-          <skoash.ListItem data-ref="correct" correct id="water" />,
-          <skoash.ListItem data-ref="correct" correct id="shoes" />,
-          <skoash.ListItem data-ref="correct" correct id="soap" />,
-          <skoash.ListItem data-ref="correct" correct id="sauce" />,
-          <skoash.ListItem data-ref="correct" correct id="beeker" />,
-          <skoash.ListItem data-ref="correct" correct id="drum" />,
-          <skoash.ListItem data-ref="correct" correct id="cosmetics" />,
-          <skoash.ListItem data-ref="correct" correct id="tire" />,
-          <skoash.ListItem data-ref="correct" correct id="floss" />,
-          <skoash.ListItem data-ref="correct" correct id="ketchup" />,
-          <skoash.ListItem data-ref="correct" correct id="bulb" />,
-          <skoash.ListItem data-ref="correct" correct id="fries" />,
-          <skoash.ListItem data-ref="correct" correct id="soda" />,
-          <skoash.ListItem data-ref="incorrect" id="coral" />,
-          <skoash.ListItem data-ref="incorrect" id="crab" />,
-          <skoash.ListItem data-ref="incorrect" id="turtle" />,
-          <skoash.ListItem data-ref="incorrect" id="shell" />,
-          <skoash.ListItem data-ref="incorrect" id="fish1" />,
-          <skoash.ListItem data-ref="incorrect" id="fish2" />,
-          <skoash.ListItem data-ref="incorrect" id="lobster" />,
-          <skoash.ListItem data-ref="incorrect" id="shell2" />,
-          <skoash.ListItem data-ref="incorrect" id="fish3" />,
-          <skoash.ListItem data-ref="incorrect" id="starfish" />,
-          <skoash.ListItem data-ref="incorrect" id="starfish" className="second" />,
-          <skoash.ListItem data-ref="incorrect" id="octopus" />,
-          <skoash.ListItem data-ref="incorrect" id="shell3" />,
-          <skoash.ListItem data-ref="incorrect" id="seahorse" />,
-          <skoash.ListItem data-ref="incorrect" id="fish4" />,
-          <skoash.ListItem data-ref="incorrect" id="fish5" />,
-          <skoash.ListItem data-ref="incorrect" id="jellyfish" />,
+          <skoash.ListItem correct data-ref="bottle" />,
+          <skoash.ListItem correct data-ref="cans" />,
+          <skoash.ListItem correct data-ref="cleaner" />,
+          <skoash.ListItem correct data-ref="wash" />,
+          <skoash.ListItem correct data-ref="necklace" />,
+          <skoash.ListItem correct data-ref="oil" />,
+          <skoash.ListItem correct data-ref="bag" />,
+          <skoash.ListItem correct data-ref="water" />,
+          <skoash.ListItem correct data-ref="shoes" />,
+          <skoash.ListItem correct data-ref="soap" />,
+          <skoash.ListItem correct data-ref="sauce" />,
+          <skoash.ListItem correct data-ref="beeker" />,
+          <skoash.ListItem correct data-ref="drum" />,
+          <skoash.ListItem correct data-ref="cosmetics" />,
+          <skoash.ListItem correct data-ref="tire" />,
+          <skoash.ListItem correct data-ref="floss" />,
+          <skoash.ListItem correct data-ref="ketchup" />,
+          <skoash.ListItem correct data-ref="bulb" />,
+          <skoash.ListItem correct data-ref="fries" />,
+          <skoash.ListItem correct data-ref="soda" />,
+          <skoash.ListItem data-ref="coral" />,
+          <skoash.ListItem data-ref="crab" />,
+          <skoash.ListItem data-ref="turtle" />,
+          <skoash.ListItem data-ref="shell" />,
+          <skoash.ListItem data-ref="fish1" />,
+          <skoash.ListItem data-ref="fish2" />,
+          <skoash.ListItem data-ref="lobster" />,
+          <skoash.ListItem data-ref="shell2" />,
+          <skoash.ListItem data-ref="fish3" />,
+          <skoash.ListItem data-ref="starfish" />,
+          <skoash.ListItem data-ref="starfish" className="second" />,
+          <skoash.ListItem data-ref="octopus" />,
+          <skoash.ListItem data-ref="shell3" />,
+          <skoash.ListItem data-ref="seahorse" />,
+          <skoash.ListItem data-ref="fish4" />,
+          <skoash.ListItem data-ref="fish5" />,
+          <skoash.ListItem data-ref="jellyfish" />,
         ]}
         audioAssets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/_audio/_S_Trash/HFF_SX_Right.mp3" />,
@@ -191,13 +191,13 @@ class TrashScreenComponent extends skoash.Screen {
         className="center"
         closeRespond={this.closeRespond.bind(this)}
         list={[
-          <skoash.Component id="tryAgain" complete>
+          <skoash.Component type="li" data-ref="tryAgain" complete>
             <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
             <p>
               You ran out of time!
             </p>
           </skoash.Component>,
-          <skoash.Component id="goodJob">
+          <skoash.Component type="li" data-ref="goodJob">
             <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
             <p>
               Take this offline.<br /> Never throw the trash in the water.

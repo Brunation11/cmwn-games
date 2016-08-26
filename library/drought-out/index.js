@@ -1,221 +1,117 @@
-/**
- * Index script
- * @module
- */
-import './config.game';
+import _ from 'lodash';
 
-import 'shared/js/screen-ios-splash';
-import './source/js/components/audio-sequence/behavior';
-import './source/js/components/reveal/behavior';
-import './source/js/components/screen-basic/behavior';
-import './source/js/components/screen-quit/behavior';
-import './source/js/components/selectable-canvas-move/behavior';
-import './source/js/components/selectable-reveal/behavior';
-import './source/js/components/selectable/behavior';
-import './source/js/components/title/behavior';
+import config from './config.game';
+
+import Loader from 'shared/components/loader/0.1';
+
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import TitleScreen from './components/title_screen';
+import ThinkScreen from './components/think_screen';
+import InfoNoWaterScreen from './components/info_no_water_screen';
+import InfoImpactScreen from './components/info_impact_screen';
+import InfoNeedWaterScreen from './components/info_need_water_screen';
+import InfoUseWaterScreen from './components/info_use_water_screen';
+import BalloonsScreen from './components/balloons_screen';
+import InfoEnvironmentScreen from './components/info_environment_screen';
+import InfoEnvironmentEffectsScreen from './components/info_environment_effects_screen';
+import EnvironmentEffectsScreen from './components/environment_effects_screen';
+import InfoHumanEffectsScreen from './components/info_human_effects_screen';
+import HumanEffectsScreen from './components/human_effects_screen';
+import WhatCanWeDoScreen from './components/what_can_we_do_screen';
+import InfoDrainScreen from './components/info_drain_screen';
+import InfoUsingLessScreen from './components/info_using_less_screen';
+import ShowerScreen from './components/shower_screen';
+import ConserveScreen from './components/conserve_screen';
+import HeroScreen from './components/hero_screen';
+import FlipScreen from './components/flip_screen';
+
+import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import 'shared/js/test-platform-integration';
+
+class DroughtOut extends skoash.Game {
+  constructor() {
+    super(config);
+
+    this.screens = {
+      0: iOSScreen,
+      1: TitleScreen,
+      2: ThinkScreen,
+      3: InfoNoWaterScreen,
+      4: InfoImpactScreen,
+      5: InfoNeedWaterScreen,
+      6: InfoUseWaterScreen,
+      7: BalloonsScreen,
+      8: InfoEnvironmentScreen,
+      9: InfoEnvironmentEffectsScreen,
+      10: EnvironmentEffectsScreen,
+      11: InfoHumanEffectsScreen,
+      12: HumanEffectsScreen,
+      13: WhatCanWeDoScreen,
+      14: InfoDrainScreen,
+      15: InfoUsingLessScreen,
+      16: ShowerScreen,
+      17: ConserveScreen,
+      18: HeroScreen,
+      19: FlipScreen
+    };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
+
+    this.menus = {
+      quit: QuitScreen,
+    };
+  }
+
+  renderLoader() {
+    return (
+      <Loader />
+    );
+  }
+
+  getBackgroundIndex(screenIndex) {
+    if (screenIndex < 3) return 0;
+    else if (screenIndex < 6) return 1;
+    else if (screenIndex < 9) return 2;
+    else if (screenIndex < 14) return 3;
+    else if (screenIndex === 14) return 4;
+    else if (screenIndex === 15) return 5;
+    else if (screenIndex === 16) return 6;
+    else if (screenIndex < 19) return 7;
+    else if (screenIndex === 19) return 8;
+  }
+
+  renderAssets() {
+
+    return (
+      <div>
+        <skoash.Audio ref="bkg-0" type="background" src="media/S_1/S_1.1.mp3" />
+        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" />
+        <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" />
+        <skoash.Audio ref="bkg-4" type="background" src="media/S_14/S_14.1.mp3" />
+        <skoash.Audio ref="bkg-5" type="background" src="media/S_15/S_15.1.mp3" />
+        <skoash.Audio ref="bkg-6" type="background" src="media/S_16/S_16.1.mp3" />
+        <skoash.Audio ref="bkg-7" type="background" src="media/_BKG/S_BKG_4.mp3" />
+        <skoash.Audio ref="bkg-8" type="background" src="media/S_19/S_19.1.mp3" />
+        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
+        <div className="background-1" />
+        <div className="background-2" />
+        <div className="background-3" />
+        <div className="background-4" />
+        <div className="background-5" />
+        <skoash.Image ref="bkg-image-1" className="hidden" src="media/_BKG/BKG_1.png" />
+        <skoash.Image ref="bkg-image-2" className="hidden" src="media/_BKG/BKG_2.png" />
+        <skoash.Image ref="bkg-image-3" className="hidden" src="media/_BKG/BKG_3.png" />
+        <skoash.Image ref="bkg-image-4" className="hidden" src="media/_BKG/BKG_4.png" />
+        <skoash.Image ref="bkg-image-5" className="hidden" src="media/_BKG/BKG_5.png" />
+      </div>
+    );
+  }
+
+}
+
+skoash.start(DroughtOut, config.id);
+
 import 'shared/js/google-analytics';
-
-pl.game('drought-out', function () {
-
-  var game = this;
-
-  pl.game.attachScreen = function (cb) {
-    cb.call(game);
-  };
-
-  var selectScreen = function () {
-    this.respond('select', function (_event) {
-      var vo;
-
-      if (!_event.behaviorTarget.is('li')) return;
-
-      if (_event.behaviorTarget.attr('pl-correct') == null) {
-        vo = this.audio.sfx.incorrect;
-      } else {
-        this.highlight(_event.behaviorTarget);
-        vo = this.selectable.audio.voiceOver[_event.message];
-      }
-
-      if (vo) vo.play();
-    });
-
-    this.on('ui-open', function (_e) {
-      if (!this.is(_e.target)) return;
-
-      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
-      this.deselect(this.find('.' + this.STATE.SELECTED));
-    });
-  };
-
-  this.screen('title', function () {
-    this.on('ready', function (_event) {
-      if (!this.is(_event.target)) return;
-
-      this.require('cacti');
-
-      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-    });
-
-    this.on('animationend', function (_e) {
-      if ($(_e.target).id() !== 'cacti') return;
-
-      if (!this.isComplete) this.requiredQueue.ready('cacti');
-    });
-  });
-
-  this.screen('info-no-water', function () {
-    this.startAudio = function () {
-      if (!this.audio) return;
-      this.audio.background.stop();
-      this.audio.background.play();
-      this.audio.voiceOver.play();
-    };
-  });
-
-  this.screen('think', selectScreen);
-
-  this.screen('balloons', function () {
-    this.respond('select', function (_event) {
-      var vo, sfx;
-
-      if (_event.behaviorTarget.attr('pl-incorrect') != null) {
-        vo = this.audio.sfx.incorrect;
-      } else {
-        this.highlight(_event.behaviorTarget);
-        vo = this.audio.voiceOver[_event.message];
-      }
-
-      switch (_event.message) {
-      case 'bathing':
-      case 'drinking':
-      case 'canoeing':
-      case 'factories':
-      case 'lawns':
-      case 'flowers':
-      case 'animalFeed':
-        sfx = this.audio.sfx.yellow;
-        break;
-      case 'washingDishes':
-      case 'swimming':
-      case 'brushingTeeth':
-      case 'electricity':
-        sfx = this.audio.sfx.green;
-        break;
-      case 'cooking':
-      case 'rafting':
-      case 'waterSlides':
-      case 'growingFood':
-        sfx = this.audio.sfx.red;
-        break;
-      }
-
-      if (vo) vo.play();
-      if (sfx) sfx.play();
-    });
-
-    this.on('ui-open', function (_e) {
-      if (!this.is(_e.target)) return;
-
-      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
-    });
-
-    this.startAudio = function () {};
-  });
-
-  this.screen('environment-effects', selectScreen);
-
-  this.screen('human-effects', selectScreen);
-
-  this.screen('what-can-we-do', selectScreen);
-
-  this.screen('shower', function () {
-    this.respond('select', function (_event) {
-      var vo;
-
-      if (_event.behaviorTarget.attr('pl-correct') == null) {
-        vo = this.audio.sfx.incorrect;
-      } else {
-        this.highlight(_event.behaviorTarget);
-        vo = this.audio.voiceOver[_event.message];
-      }
-
-      if (vo) vo.play();
-    });
-
-    this.on('ui-open', function (_e) {
-      if (!this.is(_e.target)) return;
-
-      this.unhighlight(this.find('.' + this.STATE.HIGHLIGHTED));
-    });
-  });
-
-  this.screen('conserve', function () {
-    var item = 0;
-
-    this.openDoor = function () {
-      if (this.shouldProceed()) {
-        this.select();
-        this.reveal.item(item);
-        this.audio.sfx.open.play();
-      }
-    };
-
-    this.on('ui-open', function (_e) {
-      var self = this;
-
-      if (!this.is(_e.target)) return;
-
-      this.length = this.reveal.find('li').length;
-
-      this.reveal.audio.voiceOver.on('ended', function () {
-        self.audio.sfx.close.play();
-        self.deselect();
-        item = (item + 1) % self.length;
-      });
-
-      if (this.isComplete) item = 0;
-    });
-
-    this.on('ui-close ui-leave', function (_e) {
-      if (!this.is(_e.target)) return;
-      this.reveal.audio.voiceOver.off('ended');
-    });
-  });
-
-  this.screen('flip', function () {
-    this.next = function () {
-      this.game.quit.okay();
-    };
-
-    this.on('ui-open', function () {
-      if (this.audio && this.audio.sfx) {
-        this.delay('9.5s', this.audio.sfx.play.bind(this.audio.sfx));
-      }
-    });
-
-    this.complete = function () {
-      var eventCategory;
-      var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-      theEvent.name = 'flip';
-      theEvent.gameData = {id: this.game.id()};
-      if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
-      eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-      ga('send', 'event', eventCategory, 'complete');
-      return this.proto();
-    };
-  });
-
-  this.exit = function () {
-    var screen, eventCategory;
-
-    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
-
-    ga('send', 'event', eventCategory, 'quit');
-
-    return this.proto();
-  };
-
-});

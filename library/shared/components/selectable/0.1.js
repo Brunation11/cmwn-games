@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -6,7 +5,14 @@ class Selectable extends skoash.Component {
     super();
 
     this.state = {
+      selectClass: 'SELECTED',
       classes: {},
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
       selectFunction: this.select,
     };
   }
@@ -14,7 +20,8 @@ class Selectable extends skoash.Component {
   start() {
     var selectClass, selectFunction, classes = {};
 
-    selectClass = this.props.selectClass;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     if (this.props.selectOnStart) {
@@ -55,31 +62,23 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var dataRef, index, target, id, list;
+    var dataRef, target, id;
     var self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    index = dataRef = target.getAttribute('data-ref');
-    id = target.getAttribute('id');
+    dataRef = target.getAttribute('data-ref');
 
-    if ('' + parseInt(index, 10) !== index) {
-      list = this.state.list || this.props.list;
-      index = list.findIndex(li => {
-        return li.props.id === id;
-      });
-    }
-
-    classes[index] = this.props.selectClass;
+    classes[dataRef] = this.state.selectClass;
 
     this.setState({
       classes,
     });
 
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(dataRef);
+      this.props.selectRespond.call(this, dataRef);
     }
 
     this.requireForComplete.map(key => {
@@ -104,7 +103,11 @@ class Selectable extends skoash.Component {
   }
 
   getClass(key, li) {
-    return classNames(li.props.className, this.state.classes[key]);
+    return classNames(
+      li.props.className,
+      this.state.classes[key],
+      this.state.classes[li.props['data-ref']]
+    );
   }
 
   getClassNames() {
@@ -148,7 +151,8 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    return this.props.list.map((li, key) => {
+    var list = this.props.list || this.state.list;
+    return list.map((li, key) => {
       var dataRef = li.props['data-ref'] || key;
       var ref = li.ref || li.props.id || dataRef;
       var message = li.props.message || '' + key;
@@ -158,8 +162,8 @@ class Selectable extends skoash.Component {
           type="li"
           className={this.getClass(key, li)}
           message={message}
+          data-message={message}
           data-ref={dataRef}
-          data-message={li.props.message}
           ref={ref}
           key={key}
         />
@@ -178,15 +182,5 @@ class Selectable extends skoash.Component {
     );
   }
 }
-
-Selectable.defaultProps = _.defaults({
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  selectClass: 'SELECTED'
-}, skoash.Component.defaultProps);
 
 export default Selectable;

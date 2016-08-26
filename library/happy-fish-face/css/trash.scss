@@ -39,7 +39,7 @@
         }
       }
 
-      &#bottle {
+      &[data-ref=bottle] {
         width: 90px;
         height: 120px;
         background-position: -40px -30px;
@@ -51,7 +51,7 @@
         }
       }
 
-      &#cans {
+      &[data-ref=cans] {
         width: 160px;
         height: 120px;
         background-position: -410px -25px;
@@ -63,7 +63,7 @@
         }
       }
 
-      &#cleaner {
+      &[data-ref=cleaner] {
         width: 100px;
         height: 120px;
         background-position: -840px -30px;
@@ -75,7 +75,7 @@
         }
       }
 
-      &#wash {
+      &[data-ref=wash] {
         width: 80px;
         height: 120px;
         background-position: -1250px -30px;
@@ -87,7 +87,7 @@
         }
       }
 
-      &#necklace {
+      &[data-ref=necklace] {
         width: 100px;
         height: 100px;
         background-position: -40px -240px;
@@ -99,7 +99,7 @@
         }
       }
 
-      &#oil {
+      &[data-ref=oil] {
         width: 100px;
         height: 120px;
         background-position: -440px -225px;
@@ -111,7 +111,7 @@
         }
       }
 
-      &#bag {
+      &[data-ref=bag] {
         width: 110px;
         height: 120px;
         background-position: -835px -230px;
@@ -123,7 +123,7 @@
         }
       }
 
-      &#water {
+      &[data-ref=water] {
         width: 100px;
         height: 120px;
         background-position: -1240px -230px;
@@ -135,7 +135,7 @@
         }
       }
 
-      &#shoes {
+      &[data-ref=shoes] {
         width: 180px;
         height: 110px;
         background-position: 0px -440px;
@@ -147,7 +147,7 @@
         }
       }
 
-      &#soap {
+      &[data-ref=soap] {
         width: 100px;
         height: 140px;
         background-position: -430px -425px;
@@ -159,7 +159,7 @@
         }
       }
 
-      &#sauce {
+      &[data-ref=sauce] {
         width: 110px;
         height: 120px;
         background-position: -835px -430px;
@@ -171,7 +171,7 @@
         }
       }
 
-      &#beeker {
+      &[data-ref=beeker] {
         width: 80px;
         height: 100px;
         background-position: -1250px -440px;
@@ -183,7 +183,7 @@
         }
       }
 
-      &#drum {
+      &[data-ref=drum] {
         width: 140px;
         height: 140px;
         background-position: -20px -620px;
@@ -195,7 +195,7 @@
         }
       }
 
-      &#cosmetics {
+      &[data-ref=cosmetics] {
         width: 100px;
         height: 70px;
         background-position: -440px -655px;
@@ -207,7 +207,7 @@
         }
       }
 
-      &#tire {
+      &[data-ref=tire] {
         width: 110px;
         height: 120px;
         background-position: -835px -630px;
@@ -219,7 +219,7 @@
         }
       }
 
-      &#floss {
+      &[data-ref=floss] {
         width: 70px;
         height: 80px;
         background-position: -1250px -640px;
@@ -231,7 +231,7 @@
         }
       }
 
-      &#ketchup {
+      &[data-ref=ketchup] {
         width: 80px;
         height: 100px;
         background-position: -50px -840px;
@@ -243,7 +243,7 @@
         }
       }
 
-      &#bulb {
+      &[data-ref=bulb] {
         width: 80px;
         height: 70px;
         background-position: -450px -855px;
@@ -255,7 +255,7 @@
         }
       }
 
-      &#fries {
+      &[data-ref=fries] {
         width: 90px;
         height: 100px;
         background-position: -845px -840px;
@@ -267,7 +267,7 @@
         }
       }
 
-      &#soda {
+      &[data-ref=soda] {
         width: 100px;
         height: 140px;
         background-position: -1240px -820px;
@@ -279,7 +279,7 @@
         }
       }
 
-      &#coral {
+      &[data-ref=coral] {
         width: 80px;
         height: 100px;
         background-position: -50px -1040px;
@@ -291,7 +291,7 @@
         }
       }
 
-      &#crab {
+      &[data-ref=crab] {
         width: 85px;
         height: 85px;
         background-position: -445px -1045px;
@@ -305,7 +305,7 @@
         }
       }
 
-      &#turtle {
+      &[data-ref=turtle] {
         width: 150px;
         height: 110px;
         background-position: -815px -1030px;
@@ -318,7 +318,7 @@
         }
       }
 
-      &#shell {
+      &[data-ref=shell] {
         width: 70px;
         height: 70px;
         background-position: -1250px -1050px;
@@ -330,7 +330,7 @@
         }
       }
 
-      &#fish1 {
+      &[data-ref=fish1] {
         width: 120px;
         height: 100px;
         background-position: -30px -1240px;
@@ -343,7 +343,7 @@
         }
       }
 
-      &#fish2 {
+      &[data-ref=fish2] {
         width: 100px;
         height: 90px;
         background-position: -440px -1245px;
@@ -356,7 +356,7 @@
         }
       }
 
-      &#lobster {
+      &[data-ref=lobster] {
         width: 140px;
         height: 110px;
         background-position: -815px -1230px;
@@ -369,7 +369,7 @@
         }
       }
 
-      &#shell2 {
+      &[data-ref=shell2] {
         width: 80px;
         height: 80px;
         background-position: -1250px -1250px;
@@ -381,7 +381,7 @@
         }
       }
 
-      &#fish3 {
+      &[data-ref=fish3] {
         width: 110px;
         height: 90px;
         background-position: -30px -1440px;
@@ -394,7 +394,7 @@
         }
       }
 
-      &#starfish {
+      &[data-ref=starfish] {
         width: 100px;
         height: 90px;
         background-position: -440px -1440px;
@@ -413,7 +413,7 @@
         }
       }
 
-      &#octopus {
+      &[data-ref=octopus] {
         width: 160px;
         height: 145px;
         background-position: -805px -1420px;
@@ -426,7 +426,7 @@
         }
       }
 
-      &#shell3 {
+      &[data-ref=shell3] {
         width: 80px;
         height: 80px;
         background-position: -1250px -1450px;
@@ -438,7 +438,7 @@
         }
       }
 
-      &#seahorse {
+      &[data-ref=seahorse] {
         width: 60px;
         height: 90px;
         background-position: -60px -1640px;
@@ -451,7 +451,7 @@
         }
       }
 
-      &#fish4 {
+      &[data-ref=fish4] {
         width: 100px;
         height: 80px;
         background-position: -440px -1645px;
@@ -464,7 +464,7 @@
         }
       }
 
-      &#fish5 {
+      &[data-ref=fish5] {
         width: 95px;
         height: 65px;
         background-position: -840px -1660px;
@@ -477,7 +477,7 @@
         }
       }
 
-      &#jellyfish {
+      &[data-ref=jellyfish] {
         width: 80px;
         height: 130px;
         background-position: -1250px -1620px;
@@ -519,11 +519,11 @@
 
   .reveal {
 
-    &.goodJob button {
-        display: none;
+    &.open-1 button {
+      display: none;
     }
 
-    #tryAgain img {
+    [data-ref=tryAgain] img {
       margin-bottom: -30px;
     }
 
