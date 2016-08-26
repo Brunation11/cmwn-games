@@ -1,0 +1,10 @@
+.randomizer {
+  display: none;
+}
+
+.selectable {
+  .HIGHLIGHTED {
+    pointer-events: none;
+    color: black;
+  }
+}

@@ -95,6 +95,8 @@ pl.game.component('screen-basic', function () {
   this.complete = function () {
     var audio;
 
+    if (this.isComplete) return;
+
     audio = (this.audio && this.audio.has('screenComplete') ? this.audio : this.game.audio);
 
     audio.sfx.play('screenComplete');

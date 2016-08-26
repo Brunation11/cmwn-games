@@ -99,7 +99,7 @@ class ItemDrawer extends Selectable {
   }
 
   selectButton() {
-    if (typeof this.props.selectRespond === 'function') {
+    if (typeof this.props.selectRespond === 'function' && this.state.message) {
       this.props.selectRespond(this.state.message);
     }
   }
