@@ -44,6 +44,16 @@ class Selectable extends skoash.Component {
 
   bootstrap() {
     super.bootstrap();
+    var self = this;
+
+    var correctAnswers = this.requireForComplete.filter((ref) => {
+      return self.refs[ref].props.correct;
+    });
+
+    if (correctAnswers.length > 0) {
+      this.requireForComplete = correctAnswers;
+    }
+
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -52,26 +62,32 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target;
+    var dataRef, target, id;
+    var self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    message = target.getAttribute('data-ref');
-    classes[message] = this.state.selectClass;
+    dataRef = target.getAttribute('data-ref');
+
+    classes[dataRef] = this.state.selectClass;
 
     this.setState({
       classes,
     });
 
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+      this.props.selectRespond.call(this, dataRef);
     }
 
-    this.requireForComplete.forEach(key => {
-      if (key === message && this.refs[key]) {
-        this.refs[key].complete();
+    this.requireForComplete.map(key => {
+      if (key === dataRef && self.refs[key]) {
+        self.refs[key].complete();
+        return;
+      } else if (key === id && self.refs[id]) {
+        self.refs[id].complete();
+        return;
       }
     });
   }
@@ -87,7 +103,11 @@ class Selectable extends skoash.Component {
   }
 
   getClass(key, li) {
-    return classNames(li.props.className, this.state.classes[key]);
+    return classNames(
+      li.props.className,
+      this.state.classes[key],
+      this.state.classes[li.props['data-ref']]
+    );
   }
 
   getClassNames() {
@@ -132,16 +152,18 @@ class Selectable extends skoash.Component {
 
   renderList() {
     var list = this.props.list || this.state.list;
-
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
-      li.type = li.type || skoash.ListItem;
+      var dataRef = li.props['data-ref'] || key;
+      var ref = li.ref || li.props.id || dataRef;
+      var message = li.props.message || '' + key;
       return (
         <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
-          data-ref={ref}
-          data-message={li.props.message}
+          type="li"
+          className={this.getClass(key, li)}
+          message={message}
+          data-message={message}
+          data-ref={dataRef}
           ref={ref}
           key={key}
         />
