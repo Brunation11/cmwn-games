@@ -97,6 +97,7 @@ export default function (props, ref, key) {
     >
       <skoash.Component className="frame left" />
       <skoash.Component className="frame right" />
+      <button ref="reveal-button" className="flush" onClick={_.get(props, (this, message)} />
     </DragNDropScreen>
   );
 }
