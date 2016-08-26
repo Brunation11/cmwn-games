@@ -22,9 +22,13 @@ class Reveal extends skoash.Component {
 
     this.playAudio(message);
 
-    this.requireForComplete = this.requireForComplete.filter(item => {
-      return (item !== message) || (this.refs[message] instanceof skoash.Audio);
-    });
+    if (this.props.completeOnOpen) {
+      this.complete();
+    } else {
+      this.requireForComplete = this.requireForComplete.filter(item => {
+        return (item !== message) || (this.refs[message] instanceof play.Audio);
+      });
+    }
   }
 
   close() {
@@ -48,33 +52,37 @@ class Reveal extends skoash.Component {
   }
 
   playAudio(message) {
-    var messages;
+    var messages, media;
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
+    if (this.media['open-sound']) {
+      this.media['open-sound'].play();
+    }
+
+    if ('' + parseInt(message, 10) === message) {
+      message = parseInt(message, 10);
     }
 
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
+        if (this.media[audio]) {
+          this.media[audio].play();
         }
       });
     } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
-      }
+      media = this.media[message] || this.media.audio.voiceOver[message];
+      if (media) media.play();
     }
   }
 
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
+        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
-          <skoash.Audio
+          <asset.type
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            ref={ref}
             key={key}
             data-ref={key}
           />
