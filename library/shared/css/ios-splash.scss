@@ -49,9 +49,13 @@ body.iOS:not(.STARTED) {
 	}
 
 	button {
-		display: none;
+		background: none;
+		margin: 0;
+		width: 200px;
+		height: 190px;
 	}
 
+	button.next-screen,
 	.ball,
 	[pl-id=ball] {
 		position: absolute;
@@ -72,6 +76,7 @@ body.iOS:not(.STARTED) {
 	}
 
 	&.OPEN {
+		button.next-screen,
 		.ball,
 		[pl-id=ball] {
 			animation: splash 6s forwards linear;
@@ -85,12 +90,15 @@ body.iOS:not(.STARTED) {
 
 #ios-splash.LEAVING,
 .pl-game.STARTED #ios-splash {
-	.ball:before,
-	[pl-id=ball]:before {
-		background-image: url(../images/ios_start_ball_anim.gif);
-		background-size: contain;
-		background-position: center center;
-		animation: none;
+	button.next-screen,
+	.ball,
+	[pl-id=ball] {
+		&:before {
+			background-image: url(../images/ios_start_ball_anim.gif);
+			background-size: contain;
+			background-position: center center;
+			animation: none;
+		}
 	}
 }
 

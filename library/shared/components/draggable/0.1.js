@@ -209,7 +209,7 @@ class Draggable extends skoash.Component {
   }
 
   bootstrap() {
-    skoash.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
 
     this.setZoom();
 
@@ -226,7 +226,7 @@ class Draggable extends skoash.Component {
   }
 
   getStyle() {
-    var x, y; // eslint-disable-line no-unused-vars
+    var x, y;
 
     x = ((this.state.endX - this.state.startX) / this.state.zoom);
     y = ((this.state.endY - this.state.startY) / this.state.zoom);
@@ -242,7 +242,7 @@ class Draggable extends skoash.Component {
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
-    }, this.props.className);
+    }, super.getClassNames());
   }
 
   render() {
