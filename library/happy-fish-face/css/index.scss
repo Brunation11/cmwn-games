@@ -234,6 +234,12 @@ p {
   cursor: default;
 }
 
+.skoash-game.MENU-quit .screen {
+  &:not(#quit) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 
 .pl-game.DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen {
@@ -243,17 +249,17 @@ p {
 }
 
 .screen .next-screen:hover {
-  
+
 }
 
 .screen .prev-screen {
   margin-left: 5px;
   left: 0;
-  
+
 }
 
 .screen .prev-screen:hover {
-  
+
 }
 
 .screen {
