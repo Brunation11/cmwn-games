@@ -51,8 +51,6 @@ pl.game('sea-turtle', function () {
 
   this.screen('globe', function () {
 
-    var onClose;
-
     /**
      * The reveal component holds the correct/incorrect splash
      * images. So its responsible for handling the multiple
@@ -160,6 +158,10 @@ pl.game('sea-turtle', function () {
   });
 
   this.screen('trash', function () {
+    this.on('ui-open', function () {
+      this.unhighlight(this.find('.HIGHLIGHTED'));
+    });
+
     this.on('ui-close', function (_e) {
       if (!this.is(_e.target)) return;
 
@@ -185,15 +187,13 @@ pl.game('sea-turtle', function () {
     };
 
     this.complete = function () {
-      var eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-
+      var eventCategory;
+      var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
+      theEvent.name = 'flip';
+      theEvent.gameData = {id: this.game.id()};
+      if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
+      eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
       ga('send', 'event', eventCategory, 'complete');
-
-      pl.game.report.flip(this, {
-        name: 'flip',
-        gameData: {id: this.game.id()}
-      });
-
       return this.proto();
     };
   });
