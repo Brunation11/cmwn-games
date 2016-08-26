@@ -24,7 +24,9 @@ class SelectableReveal extends skoash.Component {
       if (this.props.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
-        if (this.audio.correct) this.audio.correct.play();
+        if (this.audio.correct) {
+          this.audio.correct.play();
+        }
         if (typeof this.refs.reveal.open === 'function') {
           this.open(message);
         }
@@ -73,6 +75,8 @@ class SelectableReveal extends skoash.Component {
         checkComplete={this.props.selectableCheckComplete}
         randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
+        checkComplete={this.props.selectableCheckComplete}
+        chooseOne={this.props.chooseOne}
         answers={this.props.answers}
         allowDeselect={this.props.allowDeselect}
       />
@@ -89,6 +93,7 @@ class SelectableReveal extends skoash.Component {
         completeOnOpen={this.props.revealCompleteOnOpen}
         checkComplete={this.props.revealCheckComplete}
         openOnStart={this.props.openOnStart}
+        checkComplete={this.props.revealCheckComplete}
         hide = {this.props.hideReveal}
       />
     );
