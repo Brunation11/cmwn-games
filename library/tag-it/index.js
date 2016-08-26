@@ -92,16 +92,16 @@ class TagIt extends skoash.Game {
       <Loader />
     );
   }
-        
+
   getBackgroundIndex(currentScreenIndex) {
-     switch (currentScreenIndex) {
-     case 1:
-        return 0;
-     case 2:
-        return 1;   
-     default:
-       return 2;
-     }
+    switch (currentScreenIndex) {
+    case 1:
+      return 0;
+    case 2:
+      return 1;
+    default:
+      return 2;
+    }
   }
 
   getClassNames() {
@@ -121,7 +121,7 @@ class TagIt extends skoash.Game {
         <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/TI_BKG_1.mp3" />
         <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />
         <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop />
-        
+
         <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>
         <div className="background BKG-2" />
