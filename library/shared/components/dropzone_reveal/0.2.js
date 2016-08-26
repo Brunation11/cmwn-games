@@ -33,8 +33,10 @@ class DropzoneReveal extends skoash.Component {
         this.callCorrectRespond(draggable, dropzoneKey);
       }
     } else {
-      if (typeof this.refs.reveal.open === 'function') {
+      if (typeof this.refs.reveal.open === 'function' && !this.props.manualReveal) {
         this.refs.reveal.open(message);
+      } else {
+        this.setState({reveal: this.props.message});
       }
       this.callCorrectRespond(draggable, dropzoneKey);
     }
@@ -76,7 +78,6 @@ class DropzoneReveal extends skoash.Component {
         dragRespond={this.dragRespond}
         message={this.props.dropzoneMessage}
         draggables={this.props.dropzoneList}
-        moreDraggables={this.props.secondDropzoneList}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
         dropzones={this.props.dropzones}
@@ -96,6 +97,15 @@ class DropzoneReveal extends skoash.Component {
     );
   }
 
+  renderManualReveal() {
+    var open, message;
+    if (this.props.manualReveal) {
+      return (
+        <button ref="reveal-button" className="flush" onClick={this.refs.reveal.open.bind(this, message)} />
+      );
+    }
+  }
+
   getClasses() {
     return classNames({
       'dropzone-reveal': true,
@@ -109,6 +119,7 @@ class DropzoneReveal extends skoash.Component {
         {this.renderAssets()}
         {this.renderDropzone()}
         {this.renderReveal()}
+        {this.renderManualReveal()}
       </div>
     );
   }
