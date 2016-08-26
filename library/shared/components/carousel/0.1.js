@@ -24,6 +24,8 @@ class Carousel extends Selectable {
     list.shift();
     classes[0] = '';
 
+    this.enabled = true;
+
     this.setState({
       classes,
       list,
@@ -50,6 +52,8 @@ class Carousel extends Selectable {
   }
 
   selectHelper() {
+    if (!this.enabled) return;
+
     if (this.props.dataTarget) {
       this.updateGameState({
         path: this.props.dataTarget,
@@ -58,6 +62,8 @@ class Carousel extends Selectable {
         }
       });
     }
+
+    this.enabled = false;
 
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
