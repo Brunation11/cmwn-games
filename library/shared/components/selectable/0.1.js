@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -71,7 +72,13 @@ class Selectable extends skoash.Component {
 
     dataRef = target.getAttribute('data-ref');
 
-    classes[dataRef] = this.state.selectClass;
+    if (this.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else {
+      classes[dataRef] = this.state.selectClass;
+    }
+
+    if (JSON.stringify(this.state.classes) === JSON.stringify(classes)) return;
 
     this.setState({
       classes,
@@ -80,9 +87,9 @@ class Selectable extends skoash.Component {
     if (typeof this.props.selectRespond === 'function') {
       this.props.selectRespond.call(this, dataRef);
     }
-      
+
     if (this.props.chooseOne) {
-      this.requireForComplete = [ message ];
+      this.requireForComplete = [dataRef];
     }
 
     this.requireForComplete.map(key => {
@@ -102,7 +109,7 @@ class Selectable extends skoash.Component {
   }
 
   highlight(e) {
-    var classes = this.state.classes;
+    var classes = _.clone(this.state.classes);
     this.selectHelper(e, classes);
   }
 
