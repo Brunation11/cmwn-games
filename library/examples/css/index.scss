@@ -850,8 +850,18 @@ p {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: block;
+    position: relative;
 
     li {
+      position: static;
+
+      img {
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+      }
 
       &:nth-of-type(1) img {
         width: 240px;

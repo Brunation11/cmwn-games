@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -81,6 +83,8 @@ class TagIt extends skoash.Game {
     this.menus = {
       quit: QuitScreen,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {
@@ -100,6 +104,17 @@ class TagIt extends skoash.Game {
      }
   }
 
+  getClassNames() {
+    var classNames = super.getClassNames();
+    var index = this.state.currentScreenIndex;
+    if (index < 2) return classNames;
+    if (index >= 2 && index < 4) return classNames + ' BKG-2';
+    if (index >= 4 && index < 6) return classNames + ' BKG-3';
+    if (index >= 6 && index < 13) return classNames + ' BKG-4';
+    if (index >= 13 && index < 29) return classNames + ' BKG-5';
+    if (index >= 29) return classNames + ' BKG-6';
+  }
+
   renderAssets() {
     return (
       <div>
@@ -109,6 +124,11 @@ class TagIt extends skoash.Game {
         
         <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>
+        <div className="background BKG-2" />
+        <div className="background BKG-3" />
+        <div className="background BKG-4" />
+        <div className="background BKG-5" />
+        <div className="background BKG-6" />
       </div>
     );
   }
