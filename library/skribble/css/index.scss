@@ -1003,6 +1003,10 @@ p {
         margin-top: -35px;
         font-size: 64px;
         line-height: 64px;
+
+        &.long {
+          font-size: 48px;
+        }
       }
 
       &.timestamp {
