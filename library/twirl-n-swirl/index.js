@@ -41,20 +41,6 @@ class TwirlNSwirl extends skoash.Game {
     );
   }
 
-  getBackgroundIndex(currentScreenIndex) {
-    switch (currentScreenIndex) {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-      return 0;
-    default:
-      return;
-    }
-  }
-
   renderAssets() {
     return (
       <div>
