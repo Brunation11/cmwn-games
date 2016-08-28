@@ -43,7 +43,11 @@ class Reveal extends skoash.Component {
 
   start() {
     play.Component.prototype.start.call(this);
-    this.close();
+    if (this.props.start && typeof this.props.start === 'function') {
+      this.props.start.call(this);
+    } else {
+      this.close();
+    }
   }
 
   playAudio(message) {
