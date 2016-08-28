@@ -35,6 +35,10 @@ class DragNDropScreen extends skoash.Screen {
       }
     }
 
+    if (this.props.manualReveal && typeof this.props.manualReveal === 'function') {
+      this.props.manualReveal.call(this, draggable);
+    }
+
     if (this.props.multipleAnswers) {
       content = dropzone.state.content || [];
       if (content.indexOf(draggable) === -1) content.push(draggable);
@@ -79,6 +83,7 @@ class DragNDropScreen extends skoash.Screen {
         {this.renderContentList()}
         <DropzoneReveal
           ref="dropzone-reveal"
+          assets={this.props.assets}
           dropzoneAssets={this.props.dropzoneAssets}
           dragRespond={this.dragRespond}
           correctRespond={this.correctRespond}
@@ -88,6 +93,7 @@ class DragNDropScreen extends skoash.Screen {
           revealAssets={this.props.revealAssets}
           checkComplete={this.props.checkComplete}
           manualReveal={this.props.manualReveal}
+          answers={this.props.answers}
         />
         {this.renderContentList('afterDropzoneList')}
       </div>
