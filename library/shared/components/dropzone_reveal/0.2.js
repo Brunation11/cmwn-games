@@ -21,13 +21,14 @@ class DropzoneReveal extends skoash.Component {
   }
 
   correctRespond(draggable, dropzoneKey) {
-    var message = draggable.props.message;
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
+    var message = draggable.props.message, answers;
+    answers = this.props.answers ? this.props.answers : this.state.answers;
+    if (answers.length) {
+      if (answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
       } else {
         if (this.audio.correct) this.audio.correct.play();
-        if (typeof this.refs.reveal.open === 'function') {
+        if (typeof this.refs.reveal.open === 'function' && !this.props.manualReveal) {
           this.refs.reveal.open(message);
         }
         this.callCorrectRespond(draggable, dropzoneKey);
