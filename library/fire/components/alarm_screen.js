@@ -12,9 +12,9 @@ class AlarmScreenComponent extends skoash.Screen {
       return (
         <SelectableAudio
           ref="selectable-audio"
+          onComplete={this.next.bind(this)}
           audioAssets={[
-            <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3"
-              onComplete={this.next.bind(this)}/>
+            <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3"/>
           ]}
           selectableList={[
             <skoash.Component className="push-down" />
