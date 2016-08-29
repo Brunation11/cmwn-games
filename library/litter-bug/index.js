@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 import config from './config.game';
@@ -43,8 +44,10 @@ class LitterBug extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: QuitScreen,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   passData(opts) {

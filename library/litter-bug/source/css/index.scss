@@ -41,7 +41,7 @@ html, body, body > div, body > div > div {
   .background.lets-clean-up {
     background-image: url(../media/_BKG/BKG_2.png);
   }
-  
+
   .background.select {
     background-image: url(../media/_BKG/BKG_3.png);
 
@@ -267,17 +267,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 .screen {
@@ -377,7 +377,7 @@ p {
     }
 
     &.COMPLETE {
-      
+
       img.symbol {
         animation-name: bounceIn;
         opacity: 1;
@@ -820,7 +820,8 @@ p {
     }
   }
 
-  &.COMPLETE {
+  &.COMPLETE,
+  .DEMO & {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -871,7 +872,8 @@ p {
     }
   }
 
-  &.COMPLETE {
+  &.COMPLETE,
+  .DEMO & {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
