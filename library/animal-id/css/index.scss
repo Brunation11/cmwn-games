@@ -26,6 +26,18 @@
   -moz-animation:flyleft 1.5s infinite linear;
 }
 
+@keyframes cardrevealback {
+  0% {transform: rotateX(180deg);}
+  50% {transform: rotateX(0deg);}
+  100% {transform: rotateX(180deg);}
+}
+
+@keyframes cardrevealfront {
+  0% {transform: rotateX(0deg);}
+  50% {transform: rotateX(180deg);}
+  100% {transform: rotateX(0deg);}
+}
+
 $delays: 0s .5s 1s .25s 1.25s .75s;
 
 #title.COMPLETE .sparkles {
@@ -1389,15 +1401,81 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
   img {
   }
 
+  /* entire container, keeps perspective */
+  .flip-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  /*  UPDATED! flip the pane when hovered */
+  .flip-container.HIGHLIGHTED .back {
+    transform: rotateY(0deg);
+  }
+
+  .flip-container.HIGHLIGHTED .front {
+      transform: rotateY(180deg);
+  }
+
+  .flipper, .front, .back {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+  }
+
+  /* hide back of pane during swap */
+  .front, .back {
+    backface-visibility: hidden;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /*  UPDATED! front pane, placed above back */
+  .front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .back {
+    transform: rotateY(-180deg);
+  }
+
+  /*
+    Some vertical flip updates
+  */
+  .vertical.flip-container {
+    position: relative;
+  }
+
+  .vertical .back {
+    transform: rotateX(180deg);
+  }
+
+  .vertical.flip-container.HIGHLIGHTED .back {
+      transform: rotateX(0deg);
+  }
+
+  .vertical.flip-container.HIGHLIGHTED .front {
+      transform: rotateX(180deg);
+  }
+
   .matchable-reveal {
     .matchable > * {
       list-style-type: none;
       position: absolute;
       width: 16%;
       height: 27%;
-      background: url(../media/images/match/img_13.1.png);
-      background-size: 2700px 176px;
-      background-position: -8px -14px;
 
       &:nth-child(1) {
         top: 5%;
@@ -1469,68 +1547,104 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
         left: 74%;
       }
 
-      &.HIGHLIGHTED {
-        // animation-name: flipInX;
+      .front,
+      .back {
+        background: url(../media/images/match/img_13.1.png);
+        background-size: 2700px 176px;
+      }
 
-        &.frog {
+      .front {
+        background-position: -9px -16px;
+      }
+
+      &.frog {
+        .back {
           background-position: 2331px -14px;
         }
+      }
 
-        &.cow {
+      &.cow {
+        .back {
           background-position: 162px -14px;
         }
+      }
 
-        &.robin {
+      &.robin {
+        .back {
           background-position: 1248px -14px;
         }
+      }
 
-        &.fox {
+      &.fox {
+        .back {
           background-position: 2511px -14px;
         }
+      }
 
-        &.dove {
+      &.dove {
+        .back {
           background-position: 704px -14px;
         }
+      }
 
-        &.humming-bird {
+      &.humming-bird {
+        .back {
           background-position: 883px -14px;
         }
+      }
 
-        &.rhino {
+      &.rhino {
+        .back {
           background-position: 2147px -14px;
         }
+      }
 
-        &.lily-pad {
+      &.lily-pad {
+        .back {
           background-position: 1064px -14px;
         }
+      }
 
-        &.grass {
+      &.grass {
+        .back {
           background-position: 523px -14px;
         }
+      }
 
-        &.worm {
+      &.worm {
+        .back {
           background-position: 1427px -14px;
         }
+      }
 
-        &.mouse {
+      &.mouse {
+        .back {
           background-position: 1967px -14px;
         }
+      }
 
-        &.cactus {
+      &.cactus {
+        .back {
           background-position: 1787px -14px;
         }
+      }
 
-        &.honeysuckle {
+      &.honeysuckle {
+        .back {
           background-position: 343px -14px;
         }
+      }
 
-        &.oxpecker {
+      &.oxpecker {
+        .back {
           background-position: 1608px -14px;
         }
       }
     }
 
     .reveal {
+      transition-delay: 1s;
+
       & > div {
         top: -8%;
         margin-top: 0;
@@ -1692,75 +1806,17 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
   &.READY.OPEN {
     .matchable-reveal {
-      // .matchable > * {
-        // background-position: -8px -14px;
+      .matchable > * {
+        .front {
+          animation: cardrevealfront 2.5s;
+          animation-delay: 1s;
+        }
 
-        // &:after {
-        //   width: 100%;
-        //   height: 100%;
-        //   position: absolute;
-        //   content: "";
-        //   background: url(../media/images/match/img_13.1.png);
-        //   background-size: 2700px 176px;
-        //   animation: flipInX 1s 2s;
-        // }
-
-        // &.frog:after {
-        //   background-position: 2331px -14px;
-        // }
-
-        // &.cow:after {
-        //   background-position: 162px -14px;
-        // }
-
-        // &.robin:after {
-        //   background-position: 1248px -14px;
-        // }
-
-        // &.fox:after {
-        //   background-position: 2511px -14px;
-        // }
-
-        // &.dove:after {
-        //   background-position: 704px -14px;
-        // }
-
-        // &.humming-bird:after {
-        //   background-position: 883px -14px;
-        // }
-
-        // &.rhino:after {
-        //   background-position: 2147px -14px;
-        // }
-
-        // &.lily-pad:after {
-        //   background-position: 1064px -14px;
-        // }
-
-        // &.grass:after {
-        //   background-position: 523px -14px;
-        // }
-
-        // &.worm:after {
-        //   background-position: 1427px -14px;
-        // }
-
-        // &.mouse:after {
-        //   background-position: 1967px -14px;
-        // }
-
-        // &.cactus:after {
-        //   background-position: 1787px -14px;
-        // }
-
-        // &.honeysuckle:after {
-        //   background-position: 343px -14px;
-        // }
-
-        // &.oxpecker:after {
-        //   background-position: 1608px -14px;
-        // }
-      // }
+        .back {
+          animation: cardrevealback 2.5s;
+          animation-delay: 1s;
+        }
+      }
     }
   }
 }
