@@ -63,7 +63,7 @@ class LitterBug extends skoash.Game {
   getClassNames() {
     return classNames({
       'SUN': this.state.sun
-    }, skoash.Game.prototype.getClassNames.call(this));
+    }, super.getClassNames());
   }
 
   renderAssets() {
