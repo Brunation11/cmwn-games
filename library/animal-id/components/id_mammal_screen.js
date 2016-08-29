@@ -13,8 +13,6 @@ export default function (props, ref, key) {
       <SelectableReveal
         ref="selectable-reveal"
         answers={["dolphin"]}
-        selectableCheckComplete
-        randomizeSelectableList
         assets={[
           <skoash.Audio ref="correct" type="sfx" src="media/audio/S_7.4.mp3" />,
           <skoash.Audio ref="incorrect" type="sfx" src="media/audio/id-incorrect.mp3" complete />
