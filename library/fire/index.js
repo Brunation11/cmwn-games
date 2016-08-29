@@ -9,6 +9,7 @@ import InfoFuelOxygenScreen from './components/info_fuel_oxygen_screen';
 import InfoForrestScreen from './components/info_forrest_screen';
 import AlarmScreen from './components/alarm_screen';
 import WhoScreen from './components/who_screen';
+import MenAndWomenScreen from './components/men_and_women_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -25,7 +26,8 @@ class Fire extends skoash.Game {
       //3: InfoFuelOxygenScreen,
       //4: InfoForrestScreen,
       //5: AlarmScreen,
-      2: WhoScreen,
+      //6: WhoScreen,
+      2: MenAndWomenScreen,
     };
 
     this.menus = {
