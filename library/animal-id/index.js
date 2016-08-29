@@ -32,7 +32,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class AnimalID extends skoash.Game {
   constructor() {
@@ -72,7 +72,7 @@ class AnimalID extends skoash.Game {
       quit: <QuitScreen />,
     };
 
-    window.g = this;
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {
