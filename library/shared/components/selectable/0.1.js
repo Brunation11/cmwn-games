@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Selectable extends skoash.Component {
   constructor() {
@@ -25,8 +24,6 @@ class Selectable extends skoash.Component {
 
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
-    classes = this.loadData ? this.loadData : {};
-
     if (this.props.selectOnStart) {
       classes[this.props.selectOnStart] = selectClass;
     }
@@ -34,8 +31,8 @@ class Selectable extends skoash.Component {
     this.setState({
       started: true,
       classes,
+      selectFunction,
       selectClass,
-      selectFunction
     });
 
     this.bootstrap();
@@ -46,7 +43,17 @@ class Selectable extends skoash.Component {
   }
 
   bootstrap() {
-    skoash.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
+    var self = this;
+
+    var correctAnswers = this.requireForComplete.filter((ref) => {
+      return self.refs[ref].props.correct;
+    });
+
+    if (correctAnswers.length > 0) {
+      this.requireForComplete = correctAnswers;
+    }
+
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -55,42 +62,38 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var message, target, classes, selected;
+    var dataRef, target, id;
+    var self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    message = target.getAttribute('data-ref');
+    dataRef = target.getAttribute('data-ref');
 
-    if (this.state.classes[message]) {
-      delete this.state.classes[message];
-      if (_.isEmpty(this.state.classes)) {
-        this.incomplete();
-        selected = false;
-      }
-    } else {
-      classes[message] = this.state.selectClass;
-      selected = true;
-    }
+    classes[dataRef] = this.state.selectClass;
 
     this.setState({
       classes,
     });
 
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(message);
+      this.props.selectRespond.call(this, dataRef);
+    }
+      
+    if (this.props.chooseOne) {
+      this.requireForComplete = [ message ];
     }
 
-    if (this.props.completeOnSelect && selected) {
-      this.complete();
-    } else {
-      this.requireForComplete = this.requireForComplete.filter((key) => {
-        return key !== message;
-      });
-
-      this.checkComplete();
-    }
+    this.requireForComplete.map(key => {
+      if (key === dataRef && self.refs[key]) {
+        self.refs[key].complete();
+        return;
+      } else if (key === id && self.refs[id]) {
+        self.refs[id].complete();
+        return;
+      }
+    });
   }
 
   select(e) {
@@ -104,30 +107,28 @@ class Selectable extends skoash.Component {
   }
 
   getClass(key, li) {
-    return classNames(li.props.className, this.state.classes[key]);
+    return classNames(
+      li.props.className,
+      this.state.classes[key],
+      this.state.classes[li.props['data-ref']]
+    );
   }
 
   getClassNames() {
-    return classNames({
-      selectable: true,
-      COMPLETE: this.state.complete,
-    }, this.props.className);
+    return classNames('selectable', super.getClassNames());
   }
 
   checkComplete() {
     var self = this, complete;
 
     if (this.props.checkComplete === false) return;
+
     complete = self.requireForComplete.every(key => {
-
       if (self.refs[key] instanceof Node) {
-
         return true;
       }
       if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
-
         if (typeof self.refs[key].checkComplete === 'function') {
-
           self.refs[key].checkComplete();
         }
         return false;
@@ -154,18 +155,20 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    var list, shuffled;
-    list = this.props.list || this.state.list;
+    var list = this.props.list || this.state.list;
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
-      // li.type = li.type || skoash.ListItem;
+      var dataRef = li.props['data-ref'] || key;
+      var ref = li.ref || li.props.id || dataRef;
+      var message = li.props.message || '' + key;
       return (
-        <skoash.ListItem
+        <li.type
           {...li.props}
-          className={this.getClass(ref, li)}
-          data-ref={ref}
-          data-message={li.props.message}
-          ref={li.props['data-ref'] || ref}
+          type="li"
+          className={this.getClass(key, li)}
+          message={message}
+          data-message={message}
+          data-ref={dataRef}
+          ref={ref}
           key={key}
         />
       );

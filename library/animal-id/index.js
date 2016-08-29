@@ -69,7 +69,7 @@ class AnimalID extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: QuitScreen,
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));

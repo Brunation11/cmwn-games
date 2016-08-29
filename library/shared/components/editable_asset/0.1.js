@@ -11,7 +11,7 @@ class EditableAsset extends Draggable {
       height: 0,
       left: 0,
       top: 0,
-      scale: .75,
+      scale: .5,
       minScale: .1,
       maxScale: 1,
       rotation: 0,
@@ -23,13 +23,13 @@ class EditableAsset extends Draggable {
       lastValid: {},
     };
 
-    this.boundScale = this.scale.bind(this);
-    this.boundAdjustScale = this.adjustScale.bind(this);
-    this.boundOffScale = this.offScale.bind(this);
+    this.scale = this.scale.bind(this);
+    this.adjustScale = this.adjustScale.bind(this);
+    this.offScale = this.offScale.bind(this);
 
-    this.boundRotate = this.rotate.bind(this);
-    this.boundAdjustRotation = this.adjustRotation.bind(this);
-    this.boundOffRotate = this.offRotate.bind(this);
+    this.rotate = this.rotate.bind(this);
+    this.adjustRotation = this.adjustRotation.bind(this);
+    this.offRotate = this.offRotate.bind(this);
   }
 
   shouldDrag() {
@@ -42,7 +42,7 @@ class EditableAsset extends Draggable {
     });
 
     if (typeof this.props.deactivateItems === 'function') {
-      this.props.deactivateItems(this.props['data-ref'], this.props.type);
+      this.props.deactivateItems(this.props['data-ref'], this.props.asset_type);
     }
   }
 
@@ -69,6 +69,11 @@ class EditableAsset extends Draggable {
   }
 
   moveEvent(e) {
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
     this.setState({
       endX: e.pageX - this.state.grabX,
       endY: e.pageY - this.state.grabY,
@@ -80,25 +85,30 @@ class EditableAsset extends Draggable {
 
   delete() {
     if (typeof this.props.deleteItem === 'function') {
-      this.props.deleteItem(this.props['data-ref'], this.props.type);
+      this.props.deleteItem(this.props['data-ref'], this.props.asset_type);
     }
   }
 
   rotate() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offRotate);
   }
 
   offRotate() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustRotation);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffRotate);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustRotation);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offRotate);
   }
 
   adjustRotation(e) {
     var rotation, deltaX, deltaY;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
 
     rotation = Math.atan2(deltaY, deltaX) + (Math.PI / 4) % (2 * Math.PI);
 
@@ -118,7 +128,7 @@ class EditableAsset extends Draggable {
       layer,
     }, () => {
       if (typeof self.props.relayerItems === 'function') {
-        self.props.relayerItems(self.props.type);
+        self.props.relayerItems(self.props.asset_type);
       }
     });
   }
@@ -130,20 +140,33 @@ class EditableAsset extends Draggable {
   }
 
   scale() {
-    this.refs.el.parentNode.addEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.addEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
+    this.refs.el.parentNode.addEventListener('mouseout', this.offScale);
+
+    this.refs.el.parentNode.addEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.addEventListener('touchend', this.offScale);
   }
 
   offScale() {
-    this.refs.el.parentNode.removeEventListener('mousemove', this.boundAdjustScale);
-    this.refs.el.parentNode.removeEventListener('mouseup', this.boundOffScale);
+    this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
+    this.refs.el.parentNode.removeEventListener('mouseout', this.offScale);
+
+    this.refs.el.parentNode.removeEventListener('touchmove', this.adjustScale);
+    this.refs.el.parentNode.removeEventListener('touchend', this.offScale);
   }
 
   adjustScale(e) {
     var scale, deltaX, deltaY, delta, base;
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.el.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.el.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+      e.pageY = e.targetTouches[0].pageY;
+    }
+
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) - (this.state.left / this.state.zoom + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) - (this.state.top / this.state.zoom + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -158,27 +181,31 @@ class EditableAsset extends Draggable {
   }
 
   checkItem() {
-    var valid;
+    this.setCorners(() => {
+      var valid;
 
-    this.setCorners();
+      if (typeof this.props.checkItem === 'function') {
+        valid = this.props.checkItem(this.props['data-ref'], this.props.asset_type);
 
-    if (typeof this.props.checkItem === 'function') {
-      valid = this.props.checkItem(this.props['data-ref'], this.props.type);
+        if (valid) {
+          this.setState({
+            valid,
+            lastValid: new Object(this.state),
+          });
+        } else {
+          this.setState({
+            valid,
+          });
+        }
 
-      if (valid) {
-        this.setState({
-          valid,
-          lastValid: new Object(this.state),
-        });
-      } else {
-        this.setState({
-          valid,
-        });
+        if (typeof this.props.setValid === 'function') {
+          this.props.setValid(valid);
+        }
       }
-    }
+    });
   }
 
-  setCorners() {
+  setCorners(cb) {
     var center, distance, angle, corners = [];
 
     center = {
@@ -201,7 +228,7 @@ class EditableAsset extends Draggable {
 
     this.setState({
       corners,
-    });
+    }, cb);
   }
 
   getSize() {
@@ -210,20 +237,26 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var width, height, minDim, minScale;
+      var width, height, minDim, maxDim, minScale, maxScale, scale;
 
-      minDim = this.props.minDim || 100;
+      minDim = this.props.minDim || 40;
+      maxDim = this.props.maxDim || 400;
       width = image.width;
       height = image.height;
 
       minScale = Math.max(minDim / width, minDim / height);
+      maxScale = Math.min(maxDim / width, maxDim / height, this.state.maxScale);
+      scale = self.props.state && self.props.state.scale ?
+        self.props.state.scale :
+        Math.max(Math.min(self.state.scale, maxScale), minScale);
 
       self.setState({
         width,
         height,
         minScale,
-        scale: Math.max(this.state.scale, minScale),
+        scale,
       }, () => {
+        self.activate();
         self.checkItem();
       });
     };
@@ -234,13 +267,17 @@ class EditableAsset extends Draggable {
   getLayer() {
     var layer = 1000;
 
-    switch (this.props.type) {
-    case 'background':
-      layer = 1;
-      break;
-    case 'message':
-      layer = 10000;
-      break;
+    if (this.props.state && this.props.state.layer) {
+      layer = this.props.state.layer;
+    } else {
+      switch (this.props.asset_type) {
+      case 'background':
+        layer = 1;
+        break;
+      case 'message':
+        layer = 10000;
+        break;
+      }
     }
 
     this.setState({
@@ -249,8 +286,11 @@ class EditableAsset extends Draggable {
   }
 
   attachEvents() {
-    this.refs.scale.addEventListener('mousedown', this.boundScale);
-    this.refs.rotate.addEventListener('mousedown', this.boundRotate);
+    this.refs.scale.addEventListener('mousedown', this.scale);
+    this.refs.rotate.addEventListener('mousedown', this.rotate);
+
+    this.refs.scale.addEventListener('touchstart', this.scale);
+    this.refs.rotate.addEventListener('touchstart', this.rotate);
   }
 
   componentDidMount() {
@@ -258,10 +298,23 @@ class EditableAsset extends Draggable {
   }
 
   bootstrap() {
-    Draggable.prototype.bootstrap.call(this);
+    super.bootstrap();
+
+    if (this.props.state) {
+      this.setState(this.props.state);
+    }
+
     this.getSize();
     this.getLayer();
+
     this.attachEvents();
+
+    skoash.trigger('emit', {
+      name: 'getMedia',
+      'media_id': this.props.media_id
+    }).then(d => {
+      this.setState(d);
+    });
   }
 
   componentDidUpdate() {
@@ -271,8 +324,8 @@ class EditableAsset extends Draggable {
   getButtonStyle() {
     var style, transform = '';
 
-    transform += 'scale(' + (1 / this.state.scale) + ') ';
-    transform += 'rotate(' + (-this.state.rotation) + 'rad) ';
+    transform += `scale(${(1 / this.state.scale)}) `;
+    transform += `rotate(${(-this.state.rotation)}rad) `;
 
     style = {
       transform,
@@ -281,14 +334,14 @@ class EditableAsset extends Draggable {
     return style;
   }
 
-  getStyle() {
+  getAssetStyle() {
     var style, transform = '';
 
-    transform += 'scale(' + this.state.scale + ') ';
-    transform += 'rotate(' + this.state.rotation + 'rad) ';
+    transform += `scale(${this.state.scale}) `;
+    transform += `rotate(${this.state.rotation}rad) `;
 
     style = {
-      backgroundImage: 'url("' + this.props.src + '")',
+      backgroundImage: `url("${this.props.src}")`,
       width: this.state.width,
       height: this.state.height,
       left: this.state.left,
@@ -300,40 +353,68 @@ class EditableAsset extends Draggable {
     return style;
   }
 
+  getButtonsStyle() {
+    var style, transform = '';
+
+    transform += `scale(${this.state.scale}) `;
+    transform += `rotate(${this.state.rotation}rad) `;
+
+    style = {
+      width: this.state.width,
+      height: this.state.height,
+      left: this.state.left,
+      top: this.state.top,
+      transform,
+    };
+
+    return style;
+  }
+
   getClasses() {
     return classNames({
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       ACTIVE: this.state.active,
       INVALID: !this.state.valid,
-      'editable-asset': true,
-      [this.props.type]: true,
-    });
+    }, 'editable-asset', this.props.asset_type);
+  }
+
+  renderAsset() {
+    return (
+      <div
+        ref="el"
+        className="asset"
+        style={this.getAssetStyle()}
+      />
+    );
   }
 
   renderButtons() {
     return (
-      <div className={'buttons'}>
+      <div
+        className="buttons"
+        style={this.getButtonsStyle()}
+      >
         <button
           className="delete"
           style={this.getButtonStyle()}
           onClick={this.delete.bind(this)}
-        >X</button>
+        />
         <button
           ref="rotate"
           className="rotate"
           style={this.getButtonStyle()}
-        >R</button>
+        />
         <button
           className="layer"
           onClick={this.layer.bind(this)}
           style={this.getButtonStyle()}
-        >L</button>
+        />
         <button
           ref="scale"
           className="scale"
           style={this.getButtonStyle()}
-        >S</button>
+        />
       </div>
     );
   }
@@ -341,11 +422,11 @@ class EditableAsset extends Draggable {
   render() {
     return (
       <li
-        ref="el"
+        ref="li"
         className={this.getClasses()}
-        style={this.getStyle()}
         onClick={this.activate.bind(this)}
       >
+        {this.renderAsset()}
         {this.renderButtons()}
       </li>
     );

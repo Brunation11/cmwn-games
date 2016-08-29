@@ -115,6 +115,7 @@ class Dropzone extends skoash.Component {
     if (this.audio.correct) {
       this.audio.correct.play();
     }
+
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, message, dropzoneKey);
     }
