@@ -19,10 +19,8 @@ class Reveal extends skoash.Component {
 
     this.playAudio(message);
 
-    this.requireForComplete.map(key => {
-      if (key === message && this.refs[key]) {
-        this.refs[key].complete();
-      }
+    this.requireForComplete = this.requireForComplete.filter(item => {
+      return (item !== message) || (this.refs[message] instanceof play.Audio);
     });
   }
 
