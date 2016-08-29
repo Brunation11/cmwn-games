@@ -21,11 +21,11 @@ class Fire extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      2: InfoChemicalScreen,
-      3: InfoFuelOxygenScreen,
-      4: InfoForrestScreen,
-      5: AlarmScreen,
-      6: WhoScreen,
+      //2: InfoChemicalScreen,
+      //3: InfoFuelOxygenScreen,
+      //4: InfoForrestScreen,
+      //5: AlarmScreen,
+      2: WhoScreen,
     };
 
     this.menus = {

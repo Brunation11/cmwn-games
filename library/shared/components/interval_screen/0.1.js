@@ -12,7 +12,6 @@ class IntervalScreen extends skoash.Screen {
     var nextAnimation = states.find(key => {
       return !this.state[key];
     });
-    console.log(nextAnimation);
     var temp = {};
     temp[nextAnimation] = true;
     this.setState(temp);
