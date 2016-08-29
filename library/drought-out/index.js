@@ -70,7 +70,8 @@ class DroughtOut extends skoash.Game {
   }
 
   getBackgroundIndex(screenIndex) {
-    if (screenIndex < 3) return 0;
+    if (screenIndex < 2) return 0;
+    if (screenIndex === 2) return;
     else if (screenIndex < 6) return 1;
     else if (screenIndex < 9) return 2;
     else if (screenIndex < 14) return 3;
