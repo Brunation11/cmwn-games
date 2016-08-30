@@ -9,11 +9,19 @@ export default function (props, ref, key) {
       id="flip"
       className="large-frame"
     >
-      <skoash.Audio
-        type="voiceOver"
-        src="media/_audio/_flip/HFF_VO_ThankYou.mp3"
-        completeTarget="vo"
-      />
+      <skoash.MediaSequence>
+        <skoash.Audio
+          type="voiceOver"
+          src="media/_audio/_flip/HFF_VO_ThankYou.mp3"
+          completeTarget="vo"
+          sprite={[0, 3500]}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          src="media/_audio/_flip/HFF_VO_ThankYou.mp3"
+          sprite={[3500, 2000]}
+        />
+      </skoash.MediaSequence>
       <skoash.Component className="center">
         <skoash.Component className="group">
           <skoash.Component className="frame" pl-bg>

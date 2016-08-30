@@ -579,7 +579,7 @@ p {
 
   .flip-container {
     opacity: 0;
-    transition: opacity .25s;
+    transition: opacity .5s;
 
     &.show {
       opacity: 1;
