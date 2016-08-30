@@ -577,15 +577,20 @@ p {
       margin-left: -80px;
   }
 
+  .flip-container {
+    opacity: 0;
+    transition: opacity .25s;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
   &.OPEN {
     .fish {
       animation-name: title;
       animation-duration: 4s;
       animation-iteration-count: infinite;
-    }
-
-    .flip-container {
-      animation: flip-container 4s forwards;
     }
 
     .flip {
