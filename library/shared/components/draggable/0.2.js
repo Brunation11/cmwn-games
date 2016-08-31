@@ -238,6 +238,7 @@ class Draggable extends play.Component {
     return classNames({
       draggable: true,
       [this.props.className]: true,
+      [this.state.classes]: true,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,

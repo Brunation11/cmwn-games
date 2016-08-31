@@ -1643,12 +1643,16 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
     }
 
     .reveal {
-      transition-delay: 1s;
-
       & > div {
         top: -8%;
         margin-top: 0;
         background-size: 100% 110%;
+      }
+
+      .thumb,
+      .banner,
+      p {
+        opacity: 0;
       }
 
       .thumb {
@@ -1672,6 +1676,12 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
         left: 0;
         top: 0;
         opacity: 1;
+
+        .thumb,
+        .banner,
+        p {
+          opacity: 1;
+        }
 
         p {
           position: absolute;
