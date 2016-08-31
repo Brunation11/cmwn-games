@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9355d5dc0729d36e624e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "57c1f344f53daa6e9b48"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -44730,7 +44730,9 @@
 	  }, {
 	    key: 'next',
 	    value: function next() {
-	      if (this.state.leaving) return;
+	      var state = skoash.trigger('getState');
+
+	      if (this.state.leaving || !state.demo && !this.state.complete) return;
 
 	      this.setState({
 	        leaving: true
@@ -45076,8 +45078,6 @@
 	    skoash.trigger = _this.trigger.bind(_this);
 
 	    _this.attachEvents();
-
-	    window.g = _this;
 	    return _this;
 	  }
 
@@ -45098,11 +45098,11 @@
 	        self.scale();
 	      });
 	      window.addEventListener('orientationchange', function () {
-	        window.onresize();
+	        window.dispatchEvent(new Event('resize'));
 	      });
 	      if (window.parent) {
 	        window.parent.addEventListener('orientationchange', function () {
-	          window.onresize();
+	          window.dispatchEvent(new Event('orientationchange'));
 	        });
 	      }
 
@@ -45226,7 +45226,7 @@
 	      this.setState({
 	        paused: paused
 	      }, function () {
-	        _this2.state.playingBKG.map(function (audio) {
+	        _this2.state.playingBKG.forEach(function (audio) {
 	          audio[fnKey]();
 	        });
 
@@ -45439,29 +45439,26 @@
 	  }, {
 	    key: 'playBackground',
 	    value: function playBackground(currentScreenIndex) {
-	      var _this3 = this;
+	      var index, playingBKG, currentScreen;
 
-	      var index, playingBKG;
+	      if (!_lodash2.default.isFinite(currentScreenIndex)) return;
 
 	      index = this.getBackgroundIndex(currentScreenIndex);
 	      playingBKG = this.state.playingBKG;
 
-	      if (playingBKG.indexOf(this.audio.background[index]) !== -1) {
+	      currentScreen = this.refs['screen-' + currentScreenIndex];
+
+	      if (!currentScreen.props.restartBackground && playingBKG.indexOf(this.audio.background[index]) !== -1) {
 	        return;
 	      }
 
-	      playingBKG = playingBKG.filter(function (bkg) {
+	      _lodash2.default.each(playingBKG, function (bkg) {
 	        bkg.stop();
-	        return false;
 	      });
 
-	      this.setState({
-	        playingBKG: playingBKG
-	      }, function () {
-	        if (_this3.audio.background[index]) {
-	          _this3.audio.background[index].play();
-	        }
-	      });
+	      if (this.audio.background[index]) {
+	        this.audio.background[index].play();
+	      }
 	    }
 	  }, {
 	    key: 'scale',
@@ -45498,7 +45495,8 @@
 	        quit: this.quit,
 	        save: this.load,
 	        complete: this.checkComplete,
-	        incomplete: this.checkComplete
+	        incomplete: this.checkComplete,
+	        resize: this.scale
 	      };
 
 	      fn = events[event];
@@ -45601,7 +45599,7 @@
 	  }, {
 	    key: 'updateData',
 	    value: function updateData(opts) {
-	      var _this4 = this;
+	      var _this3 = this;
 
 	      var data = _lodash2.default.merge(this.state.data, opts.data);
 
@@ -45609,7 +45607,7 @@
 	        data: data
 	      }, function () {
 	        if (typeof opts.callback === 'function') {
-	          opts.callback.call(_this4);
+	          opts.callback.call(_this3);
 	        }
 	      });
 	    }
@@ -45709,17 +45707,17 @@
 	  }, {
 	    key: 'fadeBackground',
 	    value: function fadeBackground(value) {
-	      if (typeof value === 'undefined') value = .25;
-	      this.state.playingBKG.map(function (bkg) {
+	      if (typeof value !== 'number') value = .25;
+	      this.state.playingBKG.forEach(function (bkg) {
 	        bkg.setVolume(value);
 	      });
 	    }
 	  }, {
 	    key: 'raiseBackground',
 	    value: function raiseBackground(value) {
-	      if (typeof value === 'undefined') value = 1;
+	      if (typeof value !== 'number') value = 1;
 	      if (this.state.playingVO.length === 0) {
-	        this.state.playingBKG.map(function (bkg) {
+	        this.state.playingBKG.forEach(function (bkg) {
 	          bkg.setVolume(value);
 	        });
 	      }
@@ -46029,6 +46027,9 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
 
+	    _this.startCount = 0;
+	    _this.completeCount = 0;
+
 	    _this.complete = _this.complete.bind(_this);
 	    _this.ready = _this.ready.bind(_this);
 	    return _this;
@@ -46060,7 +46061,8 @@
 	      this.delayed = false;
 	      this.playing = true;
 
-	      this.audio.play();
+	      this.audio.play(this.sprite);
+	      this.startCount++;
 	      _get(Object.getPrototypeOf(Audio.prototype), 'play', this).call(this);
 	    }
 	  }, {
@@ -46077,6 +46079,10 @@
 	  }, {
 	    key: 'resume',
 	    value: function resume() {
+	      var state = skoash.trigger('getState');
+
+	      if (state.paused) return;
+
 	      if (this.delayed) {
 	        this.timeout = setTimeout(this.playAudio.bind(this), this.props.delay);
 	      }
@@ -46097,22 +46103,28 @@
 	        audio: this
 	      });
 	      this.playing = false;
-	      this.audio.stop();
+	      this.paused = false;
+	      this.audio.stop(this.sprite);
 	    }
 	  }, {
 	    key: 'setVolume',
-	    value: function setVolume(value) {
-	      this.audio.volume(value);
+	    value: function setVolume(volume) {
+	      volume = Math.min(this.props.maxVolume, Math.max(this.props.minVolume, volume));
+	      this.audio.volume(volume);
 	    }
 	  }, {
 	    key: 'increaseVolume',
-	    value: function increaseVolume(value) {
-	      this.audio.fadeIn(value);
+	    value: function increaseVolume(volume) {
+	      if (!this.playing) return;
+	      volume = Math.min(volume || this.props.volume, this.props.maxVolume);
+	      this.audio.fadeIn(volume);
 	    }
 	  }, {
 	    key: 'decreaseVolume',
-	    value: function decreaseVolume(value) {
-	      this.audio.fadeOut(value);
+	    value: function decreaseVolume(volume) {
+	      if (!this.playing) return;
+	      volume = Math.max(volume, this.props.minVolume);
+	      this.audio.fadeOut(volume);
 	    }
 	  }, {
 	    key: 'complete',
@@ -46122,6 +46134,11 @@
 	          audio: this
 	        });
 	      }
+
+	      this.completeCount++;
+
+	      if (!this.props.complete && (!this.playing || this.paused)) return;
+	      if (this.startCount > this.completeCount) return;
 
 	      this.playing = false;
 	      _get(Object.getPrototypeOf(Audio.prototype), 'complete', this).call(this);
@@ -46134,12 +46151,25 @@
 	  }, {
 	    key: 'bootstrap',
 	    value: function bootstrap() {
+	      var sprite;
+
+	      this.sprite = this.props.sprite ? 'sprite' : undefined;
+
 	      if (this.audio) return;
+
+	      if (this.props.sprite) {
+	        sprite = {
+	          sprite: this.props.sprite
+	        };
+	      }
+
 	      this.audio = new _howler.Howl({
 	        urls: [].concat(this.props.src),
 	        loop: this.props.loop,
+	        volume: this.props.volume,
 	        onend: this.complete,
-	        onload: this.ready
+	        onload: this.ready,
+	        sprite: sprite
 	      });
 	      if (this.props.complete) {
 	        this.complete();
@@ -46152,7 +46182,11 @@
 
 	Audio.defaultProps = _lodash2.default.defaults({
 	  delay: 0,
-	  loop: false
+	  loop: false,
+	  volume: 1,
+	  maxVolume: 1,
+	  minVolume: 0,
+	  sprite: undefined
 	}, _media2.default.defaultProps);
 
 		exports.default = Audio;
