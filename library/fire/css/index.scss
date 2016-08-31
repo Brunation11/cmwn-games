@@ -738,7 +738,7 @@ img.background {
         background-size: auto 100%;
         background-repeat: no-repeat;
         background-position: center center;
-        transition: opacity .5s;
+        transition: opacity .5s top .5s left .5s;
         cursor: pointer;
         z-index: 2;
 
@@ -779,7 +779,6 @@ img.background {
   .reveal {
     li.OPEN img {
       opacity: 1;
-      z-index: 1;
     }
 
     &.COMPLETE {
@@ -803,14 +802,14 @@ img.background {
     img.grey-triangle {
       top: 0;
       opacity: 1;
+      z-index: -1;
     }
   }
+}
 
-  .audio-sequence-component.VOICE-OVER {
-    display: block;
-    & + .center .draggables {
-      pointer-events: none;
-    }
+.VOICE-OVER #triangle {
+  .dropzone-reveal {
+    pointer-events: none;
   }
 }
 

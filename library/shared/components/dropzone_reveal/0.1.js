@@ -27,20 +27,9 @@ class DropzoneReveal extends skoash.Component {
     this.refs.dropzone.complete();
   }
 
-  correctRespond(message) {
-    if (this.state.answers.length) {
-      if (this.state.answers.indexOf(message) === -1) {
-        if (this.audio.incorrect) this.audio.incorrect.play();
-      } else {
-        if (this.audio.correct) this.audio.correct.play();
-        if (typeof this.refs.reveal.open === 'function') {
-          this.refs.reveal.open(message);
-        }
-      }
-    } else {
-      if (typeof this.refs.reveal.open === 'function') {
-        this.refs.reveal.open(message);
-      }
+  dropRespond(message) {
+    if (typeof this.refs.reveal.open === 'function') {
+      this.refs.reveal.open(message);
     }
   }
 
@@ -75,7 +64,8 @@ class DropzoneReveal extends skoash.Component {
         dropzones={this.props.dropzones}
         draggables={this.props.dropzoneDraggables}
         assets={this.props.dropzoneAssets}
-        correctRespond={this.correctRespond.bind(this)}
+        correctRespond={this.dropRespond.bind(this)}
+        incorrectRespond={this.dropRespond.bind(this)}
       />
     );
   }
