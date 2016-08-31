@@ -550,11 +550,16 @@ p {
 
   &.OPEN {
     .stars-container {
-      animation: stars-container 4.4s forwards;
-    }
+      background-position: 0px center;
 
-    .stars {
-      animation: stars 4s steps(2) forwards;
+      @for $i from 1 through 3 {
+        &.star-#{$i} {
+          animation: stars-#{$i} .4s forwards;
+          .stars {
+            background-position: (-363.5 * ($i - 1))+px center;
+          }
+        }
+      }
     }
   }
 }

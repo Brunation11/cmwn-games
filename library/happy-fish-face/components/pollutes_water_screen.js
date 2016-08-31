@@ -1,4 +1,13 @@
+import _ from 'lodash';
+import classNames from 'classnames';
+
 export default function (props, ref, key) {
+  var starContainerClasses = classNames({
+    'star-1': _.get(props, 'data.star-1.playing', false),
+    'star-2': _.get(props, 'data.star-2.playing', false),
+    'star-3': _.get(props, 'data.star-3.playing', false),
+  }, 'stars-container');
+
   return (
     <skoash.Screen
       {...props}
@@ -39,7 +48,7 @@ export default function (props, ref, key) {
             />
           </skoash.MediaSequence>
           <skoash.Component className="frame" pl-bg>
-            <skoash.Component className="stars-container">
+            <skoash.Component className={starContainerClasses}>
               <div className="stars" pl-bg />
             </skoash.Component>
             <skoash.Image src="media/_images/_S_PollutesWater/img_8.1.png" />
