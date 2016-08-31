@@ -131,6 +131,10 @@ class Dropzone extends skoash.Component {
     if (this.audio.incorrect) {
       this.audio.incorrect.play();
     }
+
+    if (typeof this.props.incorrectRespond === 'function') {
+      this.props.incorrectRespond.call(this, message);
+    }
   }
 
   renderAssets() {

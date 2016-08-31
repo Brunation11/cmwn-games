@@ -91,6 +91,7 @@ class Reveal extends skoash.Component {
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
+        audio = 'asset-' + audio;
         if (this.audio[audio]) {
           this.audio[audio].play();
         } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
@@ -107,11 +108,11 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
+        var ref = 'asset-';
+        ref += asset.ref || asset.props['data-ref'] || key;
         return (
           <asset.type
             {...asset.props}
-            data-ref={ref}
             ref={ref}
             key={key}
           />
