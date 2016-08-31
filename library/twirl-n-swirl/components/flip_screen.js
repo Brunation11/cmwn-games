@@ -5,6 +5,9 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="flip"
+            emitOnComplete={{
+               name: 'flip',
+            }}
         >
             <skoash.Audio ref="vo" type="voiceOver" src="media/flip/VO_8.1.mp3" />
             <skoash.Image className="toilet" src="media/S_3/img_3.1.png" />
