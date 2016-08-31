@@ -60,13 +60,15 @@ class Dropzone extends skoash.Component {
     return corners;
   }
 
-  componentWillMount() {
+  bootstrap() {
+    super.bootstrap();
+
     this.dropzones = this.props.dropzones || this.dropzones;
     this.draggables = this.props.draggables || this.draggables;
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
   }
 
@@ -100,7 +102,7 @@ class Dropzone extends skoash.Component {
     if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(message) !== -1) {
       this.correct(message, dropzoneKey);
     } else {
-      this.incorrect();
+      this.incorrect(message);
     }
   }
 
@@ -117,12 +119,14 @@ class Dropzone extends skoash.Component {
       this.audio.correct.play();
     }
 
+    this.refs[message].markCorrect();
+
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
-  incorrect() {
+  incorrect(message) {
     // respond to incorrect drop
     if (this.audio.incorrect) {
       this.audio.incorrect.play();
@@ -132,7 +136,7 @@ class Dropzone extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) =>
-        <play.Audio
+        <skoash.Audio
           {...asset.props}
           ref={asset.props['data-ref'] || ('asset-' + key)}
           key={key}
@@ -148,7 +152,7 @@ class Dropzone extends skoash.Component {
     return this.dropzones.map((component, key) =>
       <component.type
         {...component.props}
-        className={this.getClassNames()}
+        className={this.getClass()}
         checkComplete={false}
         ref={`dropzone-${key}`}
         key={key}
@@ -157,26 +161,35 @@ class Dropzone extends skoash.Component {
   }
 
   renderDraggables() {
-    return this.draggables.map((item, key) =>
-      <li key={key}>
+    return this.draggables.map((item, key) => {
+      return (
         <Draggable
           {...item.props}
+          ref={item.props.message}
+          key={key}
           dragRespond={this.dragRespond}
           dropRespond={this.dropRespond}
         />
-      </li>
+      );
+    });
+  }
+
+  getClass() {
+    return classNames(
+      'dropzone',
     );
   }
 
   getClassNames() {
-    return classNames({
-      dropzone: true,
-    });
+    return classNames(
+      'dropzone-container',
+      super.getClassNames,
+    );
   }
 
   render() {
     return (
-      <div>
+      <div className={this.getClassNames()}>
         {this.renderAssets()}
         {this.renderDropzones()}
         <ul>

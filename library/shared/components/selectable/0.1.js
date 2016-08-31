@@ -83,6 +83,7 @@ class Selectable extends skoash.Component {
       self.requireForComplete = [dataRef];
     }
 
+<<<<<<< 98b5e90699b44a858df481d738a3aa64990dd4a5
     if (self.props.dataTarget) {
       self.updateGameState({
         path: self.props.dataTarget,
@@ -93,14 +94,14 @@ class Selectable extends skoash.Component {
     }
 
     if (self.props.completeListOnClick) {
-      self.requireForComplete.map(key => {
+      self.requireForComplete.forEach(key => {
         if (key === id && self.refs[id]) {
           self.refs[id].complete();
         }
       });
     }
 
-    self.requireForComplete.map(key => {
+    self.requireForComplete.forEach(key => {
       if (key === dataRef && self.refs[key]) {
         self.refs[key].complete();
       }
