@@ -1,20 +1,11 @@
 class QuitScreen extends skoash.Screen {
-  constructor() {
-    super();
-
-    this.state = {
-      id: 'quit'
-    };
-
-  }
-
   okay() {
-    play.trigger('quit');
+    skoash.trigger('quit');
   }
 
   cancel() {
     this.close();
-    play.trigger('menuClose', {
+    skoash.trigger('menuClose', {
       id: this.state.id,
     });
   }
@@ -53,4 +44,8 @@ class QuitScreen extends skoash.Screen {
   }
 }
 
-export default QuitScreen;
+export default (
+  <QuitScreen
+    id="quit"
+  />
+);

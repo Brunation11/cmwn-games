@@ -25,11 +25,11 @@ class TwirlNSwirl extends skoash.Game {
       3: InfoPlantScreen,
       4: FlushItScreen,
       5: ResponsibleFlusherScreen,
-      6: FlipScreen,
+      6: FlipScreen
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: QuitScreen,
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));

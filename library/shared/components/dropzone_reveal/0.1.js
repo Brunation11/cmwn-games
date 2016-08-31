@@ -3,7 +3,7 @@ import Reveal from '../reveal/0.1.js';
 
 import classNames from 'classnames';
 
-class DropzoneReveal extends play.Component {
+class DropzoneReveal extends skoash.Component {
   constructor() {
     super();
 
@@ -47,7 +47,7 @@ class DropzoneReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
