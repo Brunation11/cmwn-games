@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-class Draggable extends play.Component {
+class Draggable extends skoash.Component {
   constructor() {
     super();
 
@@ -182,7 +182,7 @@ class Draggable extends play.Component {
   }
 
   bootstrap() {
-    play.Component.prototype.bootstrap.call(this);
+    super.bootstrap();
 
     this.setZoom();
 
@@ -216,7 +216,7 @@ class Draggable extends play.Component {
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
-    });
+    }, super.getClassNames());
   }
 
   render() {

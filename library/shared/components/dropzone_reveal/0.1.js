@@ -1,15 +1,30 @@
-import Dropzone from '../dropzone/0.1.js';
-import Reveal from '../reveal/0.1.js';
+import Dropzone from 'shared/components/dropzone/0.1.js';
+import Reveal from 'shared/components/reveal/0.1.js';
 
 import classNames from 'classnames';
 
-class DropzoneReveal extends play.Component {
+class DropzoneReveal extends skoash.Component {
   constructor() {
     super();
 
     this.state = {
       answers: [],
     };
+  }
+
+  bootstrap() {
+    super.bootstrap();
+    var answers;
+
+    if (this.props) {
+      answers = this.props.dropzoneDraggables.filter(asset => {
+        return (asset.props.correct && asset.props.message);
+      });
+      answers = answers.map(asset => asset.props.message);
+      this.setState({answers});
+    }
+
+    this.refs.dropzone.complete();
   }
 
   correctRespond(message) {
@@ -39,7 +54,7 @@ class DropzoneReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -56,8 +71,9 @@ class DropzoneReveal extends play.Component {
     return (
       <Dropzone
         ref="dropzone"
-        message={this.props.dropzoneMessage}
-        list={this.props.dropzoneList}
+        checkComplete={false}
+        dropzones={this.props.dropzones}
+        draggables={this.props.dropzoneDraggables}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
       />
@@ -75,19 +91,19 @@ class DropzoneReveal extends play.Component {
     );
   }
 
-  getClasses() {
-    return classNames({
-      'dropzone-reveal': true,
-      COMPLETE: this.state.complete,
-    });
+  getClassNames() {
+    return classNames(
+      'dropzone-reveal',
+      super.getClassNames(),
+    );
   }
 
   render() {
     return (
-      <div className={this.getClasses()}>
+      <div className={this.getClassNames()}>
         {this.renderAssets()}
-        {this.renderDropzone()}
         {this.renderReveal()}
+        {this.renderDropzone()}
       </div>
     );
   }

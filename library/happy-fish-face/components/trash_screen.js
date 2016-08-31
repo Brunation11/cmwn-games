@@ -191,13 +191,13 @@ class TrashScreenComponent extends skoash.Screen {
         className="center"
         closeRespond={this.closeRespond.bind(this)}
         list={[
-          <skoash.Component id="tryAgain" complete>
+          <skoash.Component ref="try-again" id="try-again" complete>
             <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
             <p>
               You ran out of time!
             </p>
           </skoash.Component>,
-          <skoash.Component id="goodJob">
+          <skoash.Component ref="good-job" id="good-job">
             <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
             <p>
               Take this offline.<br /> Never throw the trash in the water.
