@@ -22,14 +22,24 @@ export default function (props, ref, key) {
           <skoash.Audio ref="correct" type="sfx" src="media/audio/S_15.1.mp3" />
         ]}
         selectableList={[
-          <skoash.ListItem data-ref="human" className="human side b center inline animated" />,
-          <skoash.ListItem data-ref="rabbit" className="rabbit side b center inline animated" />,
-          <skoash.ListItem data-ref="rhino" className="rhino side b center inline animated" />
-        ]}
-        revealList={[
-          <skoash.ListItem data-ref="human" className="human side a center inline animated" />,
-          <skoash.ListItem data-ref="rabbit" className="rabbit side a center inline animated" />,
-          <skoash.ListItem data-ref="rhino" className="rhino side a center inline animated" />
+          <skoash.ListItem data-ref="human" className="human flip-container vertical animated">
+            <skoash.Component className="flipper">
+              <skoash.Component className="animated front" />
+              <skoash.Component className="animated back" />
+            </skoash.Component>
+          </skoash.ListItem>,
+          <skoash.ListItem data-ref="rabbit" className="rabbit flip-container vertical animated">
+            <skoash.Component className="flipper">
+              <skoash.Component className="animated front" />
+              <skoash.Component className="animated back" />
+            </skoash.Component>
+          </skoash.ListItem>,
+          <skoash.ListItem data-ref="rhino" className="rhino flip-container vertical animated">
+            <skoash.Component className="flipper">
+              <skoash.Component className="animated front" />
+              <skoash.Component className="animated back" />
+            </skoash.Component>
+          </skoash.ListItem>
         ]}
         revealAssets={[
           <skoash.Audio ref="human" type="voiceOver" src="media/audio/VO_15-2.mp3" />,

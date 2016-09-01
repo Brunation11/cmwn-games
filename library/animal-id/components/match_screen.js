@@ -140,13 +140,13 @@ export default function (props, ref, key) {
           </skoash.ListItem>
         ]}
         revealAssets={[
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-5.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-6.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-7.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-8.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-9.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-10.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/audio/VO_13-11.mp3" />
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-5.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-6.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-7.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-8.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-9.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-10.mp3" delay={1000} />,
+          <skoash.Audio type="voiceOver" src="media/audio/VO_13-11.mp3" delay={1000} />
         ]}
       />
     </skoash.Screen>
