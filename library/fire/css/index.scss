@@ -952,50 +952,62 @@ img.background {
   }
 }
 
+#female-male {
+  img {
+    width: 700px;
+    margin: 10px 130px 0;
+  }
+
+  .frame {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .selectable {
+    height: auto;
+    margin: 0;
+    justify-content: center;
+  }
+
+  li {
+    display: inline-block;
+    width: 183px;
+    height: 384px;
+    background-image: url(../media/S_11/sprite_11.2.png);
+    background-size: 1200px;
+    background-repeat: no-repeat;
+    margin: 25px;
+    cursor: pointer;
+  }
+
+  $genders: female male;
+  $animation-names: fadeInLeftBig fadeInRightBig;
+
+  @for $i from 1 through 2 {
+    li#gender-#{nth($genders,$i)} {
+      background-position: -409px 402-(422*$i)+px;
+
+      &:hover {
+        background-position: -609px 402-(422*$i)+px;
+      }
+    }
+
+    &.OPEN li:nth-of-type(#{$i}) {
+      animation-name: nth($animation-names,$i);
+    }
+  }
+}
+
+.VOICE-OVER:not(.COMPLETE) #female-male {
+  li {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
 #dress {
 
   .slides-component {
-
-    .female-male {
-
-      img {
-        width: 700px;
-        margin: 10px 130px 0;
-      }
-
-      .items {
-        height: auto;
-        margin: 0;
-        justify-content: center;
-      }
-
-      li {
-        width: 183px;
-        height: 384px;
-        background-size: 1200px;
-        background-repeat: no-repeat;
-        margin: 0 25px;
-        cursor: pointer;
-
-      }
-
-      $genders: female male;
-      $animation-names: fadeInLeftBig fadeInRightBig;
-
-      @for $i from 1 through 2 {
-        li[pl-id=gender-#{nth($genders,$i)}] {
-          background-position: -409px 402-(422*$i)+px;
-
-          &:hover {
-            background-position: -609px 402-(422*$i)+px;
-          }
-        }
-
-        &.OPEN li:nth-of-type(#{$i}) {
-          animation-name: nth($animation-names,$i);
-        }
-      }
-    }
 
     .skin-color {
 
