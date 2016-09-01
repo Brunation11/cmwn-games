@@ -921,7 +921,7 @@ img.background {
 
 #ladder {
 
-  > img {
+  > div > img {
     position: absolute;
     left: 190px;
     top: 100px;
@@ -929,7 +929,7 @@ img.background {
     z-index: 1;
   }
 
-  div {
+  > div > div {
     position: absolute;
     left: 180px;
     top: 180px;
@@ -941,12 +941,12 @@ img.background {
   }
 
   &.OPEN {
-    >img {
+    > div > img {
       animation-name: zoomIn;
       animation-delay: 1s;
     }
 
-    div {
+    > div > div {
       animation-name: fadeInRightBig;
     }
   }
