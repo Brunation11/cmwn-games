@@ -6,7 +6,7 @@ class QuitScreen extends skoash.Screen {
   cancel() {
     this.close();
     skoash.trigger('menuClose', {
-      id: this.state.id,
+      id: this.props.id,
     });
   }
 
@@ -29,7 +29,7 @@ class QuitScreen extends skoash.Screen {
 
   render() {
     return (
-      <div id={this.state.id} className={'screen ' + this.getClassNames()}>
+      <div id={this.props.id} className={'screen ' + this.getClassNames()}>
         {this.renderAssets()}
         <div className="center">
           <div className="frame">
