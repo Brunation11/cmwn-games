@@ -43,7 +43,7 @@ export default function (props, ref, key) {
           <skoash.Audio type="voiceOver" src="media/S_5/VO_5.4.mp3" delay={2000} />,
           <skoash.Audio type="voiceOver" src="media/S_5/VO_5.5.mp3" delay={2000} />,
           <skoash.Audio type="voiceOver" src="media/S_5/VO_5.6.mp3" delay={2000} />,
-          <skoash.Audio ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
+          <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
         ]}
       />
     </skoash.Screen>

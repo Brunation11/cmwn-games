@@ -18,7 +18,7 @@ class Reveal extends skoash.Component {
     });
 
     this.playAudio(message);
-      
+
     this.requireForComplete.map(key => {
       if (key === message && this.refs[key]) {
         this.refs[key].complete();
@@ -78,12 +78,13 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
+        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
           <asset.type
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            data-ref={ref}
+            ref={ref}
             key={key}
-            data-ref={key}
           />
         );
       });
