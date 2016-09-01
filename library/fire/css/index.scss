@@ -1,3 +1,5 @@
+@import 'keyframes';
+
 $white: #fff;
 $spinner-color: rgba(255,255,255,0.5);
 
@@ -834,6 +836,12 @@ img.background {
     top: 0;
     width: 400px;
     margin: 0;
+    -webkit-transform: none;
+    transform: none;
+
+    &.side {
+      opacity: 0;
+    }
   }
 
   h2 {
@@ -849,12 +857,66 @@ img.background {
     }
   }
 
-  &.OPEN {
-    .images {
-      animation-name: vanishOut;
-      animation-delay: 15s;
+  &.COMPLETE {
+
+    .fuel {
+      @include explodeOut($x: 0, $y: 200px, $name: 'explodeFuel');
+      animation-name: explodeFuel;
+    }
+
+    .heat {
+      @include explodeOut($x: -100px, $y: -100px, $name: 'explodeHeat');
+      animation-name: explodeHeat;
+    }
+
+    .air {
+      @include explodeOut($x: 100px, $y: -100px, $name: 'explodeAir');
+      animation-name: explodeAir;
+    }
+
+    .triangle,
+    .side {
+      transition: opacity .5s;
+    }
+
+    .triangle {
+      opacity: 0;
+    }
+
+    .side {
+      opacity: 1;
     }
   }
+}
+
+@mixin explodeOut($x, $y, $name: 'explodeOut') {
+  @-webkit-keyframes #{$name} {
+    0% {
+      opacity: 1;
+      -webkit-transform-origin: #{$x}, #{$y};
+      -webkit-transform: scale(1, 1);
+    }
+  
+    100% {
+      opacity: 0;
+      -webkit-transform-origin: #{$x}, #{$y};
+      -webkit-transform: scale(2, 2);
+    }
+  }
+
+  @keyframes #{$name} {
+    0% {
+      opacity: 1;
+      transform-origin: #{$x}, #{$y};
+      transform: scale(1, 1);
+    }
+  
+    100% {
+      opacity: 0;
+      transform-origin: #{$x}, #{$y};
+      transform: scale(2, 2);
+    }
+  } 
 }
 
 #ladder {

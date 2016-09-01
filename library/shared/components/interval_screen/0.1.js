@@ -5,6 +5,15 @@ class IntervalScreen extends skoash.Screen {
     super.open(opts);
 
     this.setState(this.props.states);
+
+    if (this.state.replay) {
+      this.checkComplete = null;
+      this.incomplete();
+      this.requireForComplete.forEach(ref => {
+        if (this.refs[ref].audio) this.refs[ref].incompleteRefs();
+      });
+      this.checkComplete = super.checkComplete();
+    }
   }
 
   startNextAnimation() {
