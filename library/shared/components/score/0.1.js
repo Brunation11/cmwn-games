@@ -5,7 +5,9 @@ class Score extends skoash.Component {
   constructor() {
     super();
 
-    this.checkScore = this.checkScore.bind(this);
+    this.state = {
+      score: 0
+    };
   }
 
   bootstrap() {
@@ -75,10 +77,16 @@ class Score extends skoash.Component {
 
   setScore(props) {
     var upIncrement, downIncrement, score;
-    upIncrement = _.isFinite(props.increment) ? props.increment : 1;
-    downIncrement = _.isFinite(props.downIncrement) ? props.downIncrement :
-      _.isFinite(props.increment) ? props.increment : 1;
-    score = upIncrement * props.correct - downIncrement * props.incorrect;
+
+    if (_.isFinite(props)) {
+      score = props;
+    } else {
+      upIncrement = _.isFinite(props.increment) ? props.increment : 1;
+      downIncrement = _.isFinite(props.downIncrement) ? props.downIncrement :
+        _.isFinite(props.increment) ? props.increment : 1;
+      score = upIncrement * props.correct - downIncrement * props.incorrect;
+    }
+
     this.setState({
       score
     }, () => {

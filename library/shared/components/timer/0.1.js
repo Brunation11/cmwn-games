@@ -34,10 +34,16 @@ class Timer extends skoash.Component {
     }
   }
 
+  incompleteRefs() {
+    this.restart();
+  }
+
   restart() {
+    if (this.state.complete) this.incomplete();
+
     this.setState({
       time: 0,
-      stamp: 0
+      stamp: 0,
     }, () => {
       this.start();
     });
