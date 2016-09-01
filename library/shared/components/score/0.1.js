@@ -8,8 +8,14 @@ class Score extends skoash.Component {
     this.state = {
       score: 0
     };
+  }
 
-    this.checkComplete = this.checkComplete.bind(this);
+  bootstrap() {
+    super.bootstrap();
+
+    this.setState({
+      score: this.props.startingScore
+    });
   }
 
   complete() {
@@ -17,18 +23,19 @@ class Score extends skoash.Component {
 
     setTimeout(() => {
       if (this.props.resetOnComplete) {
-        this.setState({
-          score: 0
+        this.setScore({
+          correct: 0,
+          incorrect: 0,
         });
       }
     }, this.props.completeDelay);
   }
 
-  checkComplete() {
-    if (!this.props.max) return;
-    if (this.state.score >= this.props.max && !this.state.complete) {
+  checkScore(props) {
+    if (!props.max) return;
+    if (this.state.score >= props.max && (!this.state.complete || props.multipleCompletes)) {
       this.complete();
-    } else if (this.state.complete) {
+    } else if (this.state.complete && !props.complete) {
       this.incomplete();
     }
   }
@@ -56,47 +63,55 @@ class Score extends skoash.Component {
     this.setState({
       score: this.state.score + increment
     }, () => {
-      if (this.props.correctTarget) {
-        this.updateGameState({
-          path: this.props.correctTarget,
-          data: {
-            score: this.state.score
-          }
-        });
-      }
-      this.checkComplete();
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          score: this.state.score
+        }
+      });
+
+      this.checkScore(this.props);
+      this.callProp('onUpdateScore');
+    });
+  }
+
+  setScore(props) {
+    var upIncrement, downIncrement, score;
+
+    if (_.isFinite(props)) {
+      score = props;
+    } else {
+      upIncrement = _.isFinite(props.increment) ? props.increment : 1;
+      downIncrement = _.isFinite(props.downIncrement) ? props.downIncrement :
+        _.isFinite(props.increment) ? props.increment : 1;
+      score = upIncrement * props.correct - downIncrement * props.incorrect;
+    }
+
+    this.setState({
+      score
+    }, () => {
+      this.checkScore(props);
+      this.callProp('onUpdateScore', score);
     });
   }
 
   componentWillReceiveProps(props) {
-    if (props.correct != null && props.correct !== this.props.correct) {
-      if (props.correct) {
-        this.up();
-      } else {
-        this.down();
-      }
-
-      if (this.props.correctTarget) {
-        this.updateGameState({
-          path: this.props.correctTarget,
-          data: {
-            correct: null
-          }
-        });
-      }
+    if (props.correct !== this.props.correct ||
+      props.incorrect !== this.props.incorrect) {
+      this.setScore(props);
     }
   }
 
   getClassNames() {
     return classNames(
       'score',
-      skoash.Component.prototype.getClassNames.call(this)
+      super.getClassNames()
     );
   }
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
+      <div className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}
@@ -106,5 +121,12 @@ class Score extends skoash.Component {
     );
   }
 }
+
+Score.defaultProps = _.defaults({
+  checkComplete: false,
+  startingScore: 0,
+  correct: 0,
+  incorrect: 0,
+}, skoash.Component.defaultProps);
 
 export default Score;
