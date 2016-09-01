@@ -918,6 +918,10 @@ img.inline {
     -webkit-animation: swing-closed .75s steps(5) forwards;
     animation: swing-closed .75s steps(5) forwards;
     z-index: 1;
+
+    &.open {
+      animation: swing-open .5s steps(5) forwards;
+    }
   }
 
   #door {
@@ -937,25 +941,16 @@ img.inline {
     &:hover {
       background-position: -516px center;
     }
+
+    &.open {
+      opacity: 0;
+      transition: opacity 0s;
+    }
   }
 
   .VOICE-OVER & {
     li {
       pointer-events: none;
-    }
-  }
-
-  &.SELECTING {
-    .VOICE-OVER & {
-      #door-sprite {
-        -webkit-animation: swing-open .5s steps(5) forwards;
-        animation: swing-open .5s steps(5) forwards;
-      }
-
-      #door {
-        opacity: 0;
-        transition: opacity 0s;
-      }
     }
   }
 }

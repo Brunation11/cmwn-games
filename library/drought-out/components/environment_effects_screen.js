@@ -12,27 +12,26 @@ export default function (props, ref, key) {
       id="environment-effects"
       className="bottom-frame"
     >
+      <skoash.Audio ref="start" type="voiceOver" src="media/S_10/VO_10.1.mp3"/>
       <Selectable
         ref="selectable"
         list={[
-          <li></li>,
-          <li></li>,
-          <li></li>,
-          <li></li>,
-          <li></li>
+          <skoash.Component type="li" />,
+          <skoash.Component type="li" />,
+          <skoash.Component type="li" />,
+          <skoash.Component type="li" />,
+          <skoash.Component type="li" />
         ]}
         selectClass="HIGHLIGHTED"
         className="scroll-selectable"
         dataTarget="selectable"
       />
-
       <skoash.Component ref="frame" className="frame animated">
         <skoash.Image src="media/S_10/img_10.6.png" />
-
         <DroughtReveal
           ref="reveal"
           className="scroll-reveal"
-
+          openReveal={_.get(props, 'data.selectable.target.props.data-message')}
           list={[
             <li>Less food and water</li>,
             <li>Loss of habitat<br /> for fish and wildlife</li>,
@@ -40,9 +39,6 @@ export default function (props, ref, key) {
             <li>Endangered species<br /> can face extinction</li>,
             <li>Erosion of soil</li>,
           ]}
-
-          openReveal={_.get(props, 'data.selectable.target')}
-
           assets={[
             <skoash.Audio type="voiceOver" src="media/S_10/VO_10.2.mp3" />,
             <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
@@ -52,8 +48,6 @@ export default function (props, ref, key) {
           ]}
         />
       </skoash.Component>
-
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_10/VO_10.1.mp3"/>
     </skoash.Screen>
   );
 

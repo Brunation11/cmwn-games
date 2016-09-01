@@ -88,6 +88,15 @@ class Selectable extends skoash.Component {
       classes,
     });
 
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: ref
+        }
+      });
+    }
+
     if (typeof self.props.selectRespond === 'function') {
       self.props.selectRespond.call(self, dataRef);
     }
