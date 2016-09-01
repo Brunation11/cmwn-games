@@ -186,32 +186,82 @@ body > div > div {
   font-size: 36px;
   color: #fff;
 
-  [id^="title"] {
-    background-image: url(../media/images/background/title.png);
+  .game-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
+    opacity: 0;
+    z-index: -2;
+    transition: opacity .5s;
+
+    &.title {
+      background-image: url(../media/images/background/title.png);
+    }
+
+    &.id {
+      background-image: url(../media/images/background/id.png);
+    }
+
+    &.match {
+      background-image: url(../media/images/background/match.png);
+    }
+
+    &.nose {
+      background-image: url(../media/images/background/nose.png);
+    }
   }
 
-  [id^="info-"],
-  [id^="id-"],
-  [id^="quit"] {
-    background-image: url(../media/images/background/id.png);
-    background-size: cover;
+  &.SCREEN-1 {
+    .game-background.title {
+      opacity: 1;
+      z-index: -1;
+    }
   }
 
-  [id^="info-match"],
-  [id^="info-detail"],
-  [id^="match-"] {
-    background-image: url(../media/images/background/match.png);
-    background-size: cover;
+  &.SCREEN-2,
+  &.SCREEN-3,
+  &.SCREEN-4,
+  &.SCREEN-5,
+  &.SCREEN-6,
+  &.SCREEN-7,
+  &.SCREEN-8,
+  &.SCREEN-9,
+  &.SCREEN-10,
+  &.SCREEN-11, {
+    .game-background.id {
+      opacity: 1;
+      z-index: -1;
+    }
   }
 
-  [id^="info-snout"],
-  [id^="what-does-a-nose"],
-  [id^="info-sneezers"],
-  [id^="dnd-"],
-  [id^="flip"] {
-    background-image: url(../media/images/background/nose.png);
-    background-size: cover;
+  &.SCREEN-12,
+  &.SCREEN-13,
+  &.SCREEN-14, {
+    .game-background.match {
+      opacity: 1;
+      z-index: -1;
+    }
+  }
+
+  &.SCREEN-15,
+  &.SCREEN-16,
+  &.SCREEN-17,
+  &.SCREEN-18,
+  &.SCREEN-19,
+  &.SCREEN-20,
+  &.SCREEN-21,
+  &.SCREEN-22,
+  &.SCREEN-23,
+  &.SCREEN-24,
+  &.SCREEN-25,
+  &.SCREEN-26, {
+    .game-background.nose {
+      opacity: 1;
+      z-index: -1;
+    }
   }
 }
 
