@@ -96,7 +96,7 @@ export default function (props, ref, key) {
           }}
         />
       </skoash.Component>
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_17/VO_17.1.mp3" />
+      <skoash.Audio type="voiceOver" src="media/S_17/VO_17.1.mp3" />
     </skoash.Screen>
   );
 

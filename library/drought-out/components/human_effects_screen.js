@@ -12,7 +12,7 @@ export default function (props, ref, key) {
       id="human-effects"
       className="bottom-frame"
     >
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_12/VO_12.1.mp3"/>
+      <skoash.Audio type="voiceOver" src="media/S_12/VO_12.1.mp3"/>
       <Selectable
         ref="selectable"
         list={[
