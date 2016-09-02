@@ -13,7 +13,7 @@ import MenAndWomenScreen from './components/men_and_women_screen';
 import TriangleScreen from './components/triangle_screen';
 import BreakTriangleScreen from './components/break_triangle_screen';
 import LadderScreen from './components/ladder_screen';
-import FemaleMaleScreen from './components/female_male_screen';
+import ChooseScreen from './components/choose_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -36,7 +36,7 @@ class Fire extends skoash.Game {
       //8: TriangleScreen,
       //9: BreakTriangleScreen,
       //10: LadderScreen,
-      2: FemaleMaleScreen,
+      2: ChooseScreen,
       3: FlipScreen,
     };
 
