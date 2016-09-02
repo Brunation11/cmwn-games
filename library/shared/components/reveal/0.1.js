@@ -113,7 +113,7 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.openReveal && props.openReveal !== this.props.openReveal) {
+    if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
     }
   }
