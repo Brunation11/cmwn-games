@@ -181,8 +181,6 @@ img.background {
   transform: translateX(100%);
 }
 
-.screen.last {}
-
 .screen.OPEN {
   opacity: 1;
   transform: translateX(0);
@@ -235,17 +233,9 @@ img.background {
   pointer-events: auto;
 }
 
-.screen .next-screen:hover {
-  
-}
-
 .screen .prev-screen {
   margin-left: 5px;
   left: 0;
-  
-}
-
-.screen .prev-screen:hover {
   
 }
 
@@ -952,13 +942,13 @@ img.background {
   }
 }
 
-#female-male {
+#choose {
   img {
     width: 700px;
     margin: 10px 130px 0;
   }
 
-  .frame {
+  .group {
     margin-top: 50px;
     text-align: center;
   }
@@ -984,7 +974,7 @@ img.background {
   $animation-names: fadeInLeftBig fadeInRightBig;
 
   @for $i from 1 through 2 {
-    li#gender-#{nth($genders,$i)} {
+    .female-male li#gender-#{nth($genders,$i)} {
       background-position: -409px 402-(422*$i)+px;
 
       &:hover {
@@ -992,13 +982,56 @@ img.background {
       }
     }
 
-    &.OPEN li:nth-of-type(#{$i}) {
+    &.OPEN.GENDER .female-male li:nth-of-type(#{$i}) {
       animation-name: nth($animation-names,$i);
+    }
+  }
+
+  @for $i from 1 through 3 {
+    &.female .skin-color li:nth-of-type(#{$i}) {
+      background-position: #{391-(400*$i)+px} -20px;
+
+      &:hover {
+        background-position: #{191-(400*$i)+px} -20px;
+      }
+    }
+
+    &.male .skin-color li:nth-of-type(#{$i}) {
+      background-position: #{391-(400*$i)+px} -442px;
+
+      &:hover {
+        background-position: #{191-(400*$i)+px} -442px;
+      }
+    }
+
+    &.OPEN.SKIN .skin-color li:nth-of-type(#{$i}) {
+      animation-name: lightSpeedIn;
+      animation-delay: .5*$i+s;
+    }
+  }
+
+  &.GENDER {
+    .female-male {
+      transform: translateX(0);
+    }
+
+    .skin-color {
+      transform: translateX(100%);
+    }
+  }
+
+  &.SKIN {
+    .female-male {
+      transform: translateX(-100%);
+    }
+
+    .skin-color {
+      transform: translateX(0);
     }
   }
 }
 
-.VOICE-OVER:not(.COMPLETE) #female-male {
+.VOICE-OVER #choose {
   li {
     cursor: default;
     pointer-events: none;
@@ -1008,46 +1041,6 @@ img.background {
 #dress {
 
   .slides-component {
-
-    .skin-color {
-
-      img {
-        width: 700px;
-        margin: 10px 130px 0;
-      }
-
-      .items {
-        height: auto;
-        margin: 0;
-        justify-content: center;
-      }
-
-      li {
-        width: 183px;
-        height: 384px;
-        margin: 0 25px;
-        cursor: pointer;
-        // I'm using background-image here because it can be changed depending on choices made in previous frames.
-        background-image: url(../media/S_11/sprite_11.2.png);
-        background-size: 1200px;
-      }
-
-      @for $i from 1 through 3 {
-        li:nth-of-type(#{$i}) {
-          background-position: #{391-(400*$i)+px} -20px;
-
-          &:hover {
-            background-position: #{191-(400*$i)+px} -20px;
-          }
-        }
-
-        &.OPEN li:nth-of-type(#{$i}) {
-          animation-name: lightSpeedIn;
-          animation-delay: .5*$i+s;
-        }
-      }
-    }
-
     .need {
       background-size: cover;
 
