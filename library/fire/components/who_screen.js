@@ -2,7 +2,7 @@ import SelectableAudio from 'shared/components/selectable_audio/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 import classNames from 'classnames';
 
-const REVEAL_MSG = '0';
+const REVEAL_MSG = 0;
 
 class WhoScreenComponent extends skoash.Screen {
   constructor() {
