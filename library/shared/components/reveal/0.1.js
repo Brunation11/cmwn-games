@@ -173,6 +173,8 @@ class Reveal extends skoash.Component {
       open = this.state.currentlyOpen.map(ref => {
         return 'open-' + ref;
       });
+
+      open += ' OPEN';
     }
 
     var classes = classNames(
