@@ -14,6 +14,7 @@ import TriangleScreen from './components/triangle_screen';
 import BreakTriangleScreen from './components/break_triangle_screen';
 import LadderScreen from './components/ladder_screen';
 import ChooseScreen from './components/choose_screen';
+import NeedScreen from './components/need_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -36,7 +37,8 @@ class Fire extends skoash.Game {
       //8: TriangleScreen,
       //9: BreakTriangleScreen,
       //10: LadderScreen,
-      2: ChooseScreen,
+      //11: ChooseScreen,
+      2: NeedScreen,
       3: FlipScreen,
     };
 

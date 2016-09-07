@@ -3,14 +3,21 @@
   border: solid 1px rgba(0,85,170,0.5);
 }
 
-.draggable.RETURN {
+.dropzone-container ul {
+  z-index: 1;
+}
+
+.draggable {
+  cursor: pointer;
   &.RETURN {
-  transition: transform .5s;
+    transition: transform .5s;
   }
 
-  &.DROPED {
+  &.CORRECT {
     transition: opacity .5s;
     opacity: 0;
+    cursor: default;
+    pointer-events: none;
   }
 }
 

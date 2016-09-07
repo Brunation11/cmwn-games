@@ -4,25 +4,8 @@ import Reveal from 'shared/components/reveal/0.1.js';
 import classNames from 'classnames';
 
 class DropzoneReveal extends skoash.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      answers: [],
-    };
-  }
-
   bootstrap() {
     super.bootstrap();
-    var answers;
-
-    if (this.props) {
-      answers = this.props.dropzoneDraggables.filter(asset => {
-        return (asset.props.correct && asset.props.message);
-      });
-      answers = answers.map(asset => asset.props.message);
-      this.setState({answers});
-    }
 
     this.refs.dropzone.complete();
   }
@@ -37,6 +20,10 @@ class DropzoneReveal extends skoash.Component {
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond();
     }
+  }
+
+  revealComplete() {
+    this.audio.complete.play();
   }
 
   renderAssets() {
@@ -63,6 +50,8 @@ class DropzoneReveal extends skoash.Component {
         checkComplete={false}
         dropzones={this.props.dropzones}
         draggables={this.props.dropzoneDraggables}
+        draggablesLeft={this.props.dropzoneDraggablesLeft}
+        draggablesRight={this.props.dropzoneDraggablesRight}
         assets={this.props.dropzoneAssets}
         correctRespond={this.dropRespond.bind(this)}
         incorrectRespond={this.dropRespond.bind(this)}
@@ -77,6 +66,7 @@ class DropzoneReveal extends skoash.Component {
         list={this.props.revealList}
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
+        onComplete={this.revealComplete.bind(this)}
       />
     );
   }

@@ -212,7 +212,8 @@ class Draggable extends skoash.Component {
   getClassNames() {
     return classNames({
       draggable: true,
-      [this.props.className]: true,
+      [this.props.className]: this.props.className,
+      [this.props.message]: this.props.message,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
