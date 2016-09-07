@@ -128,12 +128,13 @@ class Reveal extends skoash.Component {
   getClass(li, key) {
     var classes = '';
 
-    if (li.props.className) classes += li.props.className;
+    if (li.props.className) classes = li.props.className;
+
     if (this.state.currentlyOpen.indexOf(key) !== -1 ||
         this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
         this.state.currentlyOpen.indexOf(li.ref) !== -1
     ) {
-      classes += ' OPEN';
+      classes = classNames(classes, 'OPEN');
     }
 
     return classes;
@@ -144,11 +145,11 @@ class Reveal extends skoash.Component {
     var open = 'none-open';
 
     if (this.state.open) {
-      open = this.state.currentlyOpen.map(ref => {
-        return 'open-' + ref;
+      open = '';
+      this.state.currentlyOpen.forEach(ref => {
+        open += 'open-' + ref + ' ';
       });
-
-      open += ' OPEN';
+      open += 'OPEN';
     }
 
     var classes = classNames(

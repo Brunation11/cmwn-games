@@ -230,7 +230,7 @@ Dropzone.defaultProps = _.defaults({
   dropzones: [
       <skoash.Component answers="drag" />
   ],
-  draggablesLeft: [
+  draggables: [
       <Draggable message={'drag'}>drag me!</Draggable>,
       <Draggable message={'return'} return={true} >return</Draggable>
   ],

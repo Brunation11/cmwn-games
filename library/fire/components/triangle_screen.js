@@ -21,6 +21,9 @@ export default function (props, ref, key) {
           </skoash.MediaSequence>
           <DropzoneReveal
             ref="dropzone-reveal"
+            assets={[
+              <skoash.Audio type="sfx" data-ref="complete" src="media/S_8/S_8.3.mp3" />,
+            ]}
             dropzones={[
               <skoash.Component answers={['fuel', 'heat', 'air',]}>
                 <skoash.Image className="grey-triangle" src="media/S_8/img_8.10a.png" />
@@ -39,17 +42,16 @@ export default function (props, ref, key) {
             dropzoneAssets={[
               <skoash.Audio type="sfx" data-ref="incorrect" src="media/S_8/S_8.1.mp3" complete />,
               <skoash.Audio type="sfx" data-ref="correct" src="media/S_8/S_8.2.mp3" />,
-              <skoash.Audio type="sfx" data-ref="complete" src="media/S_8/S_8.3.mp3" />,
               <skoash.Audio type="sfx" data-ref="drag" src="media/S_8/S_8.4.mp3" />,
             ]}
             revealList={[
               <skoash.ListItem ref="fuel" correct>
                 <skoash.Image data-ref="fuel" src="media/S_8/img_8.10b.png" />
-                <skoash.Image className="side" data-ref="heatSide" src="media/S_8/img_8.10f.png" />
+                <skoash.Image className="side" data-ref="heatSide" src="media/S_8/img_8.10g.png" />
               </skoash.ListItem>,
               <skoash.ListItem ref="heat" correct>
                 <skoash.Image data-ref="heat" src="media/S_8/img_8.10c.png" />
-                <skoash.Image className="side" data-ref="fuelSide" src="media/S_8/img_8.10g.png" />
+                <skoash.Image className="side" data-ref="fuelSide" src="media/S_8/img_8.10f.png" />
               </skoash.ListItem>,
               <skoash.ListItem ref="air" correct>
                 <skoash.Image data-ref="air" src="media/S_8/img_8.10d.png" />
