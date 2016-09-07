@@ -9,13 +9,12 @@ do
   for game in $files;
   do
     games[$game]="${games[$game]} $component"
-    # echo games[$game]
     # echo ${games[$game]}
   done
   components=$components$'\n'$files$'\n\n'
 done
 echo "$components"
-echo $games
+# echo $games
 for game in ./library/**/index.js;
 do
   game=$(echo $game | sed 's/\.\/library\///g' | sed 's/\/index\.js//g')
