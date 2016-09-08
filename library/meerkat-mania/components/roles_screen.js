@@ -23,6 +23,7 @@ export default function (props, ref, key) {
         ref="selectable-canvas-reveal"
         openOnStart="6"
         openReveal={_.get(props, 'data.reveal.open', null)}
+        selectableSelectClass="HIGHLIGHTED"
         onOpen={function () {
           skoash.trigger('updateState', {
             path: 'reveal',
