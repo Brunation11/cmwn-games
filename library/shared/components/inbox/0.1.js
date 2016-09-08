@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import Selectable from '../selectable/0.1';
-
-import classNames from 'classnames';
 
 class Inbox extends Selectable {
   constructor() {
@@ -105,7 +104,9 @@ class Inbox extends Selectable {
           key={key}
         >
           <skoash.Image src={image} />
-          <span className="username">{name}</span>
+          <span className={'username' + (name.length > 15 ? ' long' : '')}>
+            {name}
+          </span>
           <span className="timestamp">
             <span className="date">{timestamp.format('MM.DD.YY')}</span>
             <span className="time">{timestamp.format('h:mm a')}</span>

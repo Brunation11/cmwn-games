@@ -116,6 +116,7 @@ html, body, body > div, body > div > div {
   }
 
   &.SCREEN-menu {
+    .game-menu .save,
     .menu.recipient {
       display: none;
     }
@@ -153,7 +154,7 @@ button {
   cursor: pointer;
 
   background-image: url(../media/_Buttons/SK_btn_rounded.png);
-  background-size: 2000px;
+  background-size: 1950px;
   background-position: left top;
 
   &.make {
@@ -197,12 +198,22 @@ button {
   }
 
   &.suggest {
-    width: 460px;
+    width: 450px;
     height: 200px;
     background-position: -998px -500px;
 
     &:hover {
       background-position: -1498px -500px;
+    }
+  }
+
+  &.save-to-drafts {
+    width: 450px;
+    height: 200px;
+    background-position: 2px -1460px;
+
+    &:hover {
+      background-position: -498px -1460px;
     }
   }
 
@@ -363,6 +374,10 @@ p {
 
 .canvas-src { display: none; }
 
+#ios-splash:not(.OPEN) {
+  z-index: -1;
+}
+
 .screen {
   position: absolute;
   top: 50%;
@@ -374,7 +389,10 @@ p {
   display: none;
   overflow: hidden;
   transition: opacity 1s, z-index 0s 1s;
-  z-index: -1;
+
+  &:not(.OPEN) {
+    z-index: -1;
+  }
 
   &:not(.COMPLETE) {
     button {
@@ -389,7 +407,6 @@ p {
 
 .screen.OPEN {
   opacity: 1;
-  z-index: 1;
   transition: opacity 1s, z-index 0s;
 }
 
@@ -440,17 +457,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 // the following css is specific to this game
@@ -549,7 +566,7 @@ p {
 
   &.INVALID {
     .right-menu {
-      opacity: 0;
+      opacity: .6;
       pointer-events: none;
     }
   }
@@ -567,7 +584,6 @@ p {
     position: absolute;
     left: 20px;
     bottom: 40px;
-    z-index: -1;
 
     .bubble {
       position: absolute;
@@ -695,6 +711,12 @@ p {
     color: #000;
   }
 
+  > div > div:not(.send) {
+    .save-to-drafts {
+      display: none;
+    }
+  }
+
   .send {
     .continue {
       display: none;
@@ -705,8 +727,8 @@ p {
 #menu {
   .otter {
     position: absolute;
-    left: 280px;
-    bottom: 80px;
+    left: -50px;
+    bottom: -140px;
   }
 
   .bubble {
@@ -981,6 +1003,10 @@ p {
         margin-top: -35px;
         font-size: 64px;
         line-height: 64px;
+
+        &.long {
+          font-size: 48px;
+        }
       }
 
       &.timestamp {
@@ -1044,7 +1070,7 @@ p {
     background-size: 3800px;
     background-repeat: no-repeat;
   }
-  
+
   .your-message-to {
     background-position: -2850px 0;
     width: 750px;
@@ -1140,7 +1166,7 @@ p {
       &.SELECTED {
         margin-left: -260px;
       }
-      
+
       &:hover {
         margin-left: -2px;
       }
@@ -1223,7 +1249,7 @@ p {
       &.SELECTED {
         margin-left: -260px;
       }
-      
+
       &:hover {
         margin-left: -2px;
       }
@@ -1335,6 +1361,7 @@ p {
 
   &.OPEN {
     transform: translateX(0%);
+    z-index: 3;
   }
 }
 

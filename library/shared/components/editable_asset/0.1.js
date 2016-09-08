@@ -1,6 +1,7 @@
-import Draggable from '../draggable/0.1.js';
-
+import _ from 'lodash';
 import classNames from 'classnames';
+
+import Draggable from '../draggable/0.1.js';
 
 class EditableAsset extends Draggable {
   constructor() {
@@ -47,8 +48,6 @@ class EditableAsset extends Draggable {
   }
 
   deactivate() {
-    var self = this;
-
     if (!this.state.valid) {
       this.setState({
         left: this.state.lastValid.left || this.state.left,
@@ -58,7 +57,7 @@ class EditableAsset extends Draggable {
         active: false,
       }, () => {
         setTimeout(() => {
-          self.checkItem();
+          this.checkItem();
         }, 0);
       });
     } else {
@@ -241,10 +240,12 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var width, height, minDim, maxDim, minScale, maxScale, scale;
+      var left, top, width, height, minDim, maxDim, minScale, maxScale, scale;
 
       minDim = this.props.minDim || 40;
       maxDim = this.props.maxDim || 400;
+      left = this.state.left;
+      top = this.state.top;
       width = image.width;
       height = image.height;
 
@@ -254,7 +255,15 @@ class EditableAsset extends Draggable {
         self.props.state.scale :
         Math.max(Math.min(self.state.scale, maxScale), minScale);
 
+      if ((!this.state.height || !this.state.width) &&
+        (!this.state.left && !this.state.top)) {
+        left = (this.props.canvasWidth - width) / 2;
+        top = (this.props.canvasHeight - height) / 2;
+      }
+
       self.setState({
+        left,
+        top,
         width,
         height,
         minScale,
@@ -317,7 +326,9 @@ class EditableAsset extends Draggable {
       name: 'getMedia',
       'media_id': this.props.media_id
     }).then(d => {
-      this.setState(d);
+      this.setState(d, () => {
+        this.checkItem();
+      });
     });
   }
 
@@ -436,5 +447,10 @@ class EditableAsset extends Draggable {
     );
   }
 }
+
+EditableAsset.defaultProps = _.defaults({
+  canvasWidth: 1280,
+  canvasHeight: 720,
+}, Draggable.defaultProps);
 
 export default EditableAsset;

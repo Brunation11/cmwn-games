@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import EditableAsset from '../editable_asset/0.1.js';
-
-import classNames from 'classnames';
 
 class Canvas extends skoash.Component {
   constructor() {
@@ -85,6 +84,14 @@ class Canvas extends skoash.Component {
       return item;
     });
 
+    _.remove(items, n => {
+      return !n;
+    });
+
+    _.remove(messages, n => {
+      return !n;
+    });
+
     return {
       background: this.state.background,
       items,
@@ -127,7 +134,7 @@ class Canvas extends skoash.Component {
   }
 
   addItem(asset, cb) {
-    var items, messages, index;
+    var items, messages, index, count;
 
     if (!asset) return;
 
@@ -149,6 +156,14 @@ class Canvas extends skoash.Component {
       });
     } else if (asset.asset_type === 'item') {
       items = this.state.items;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       items.push(asset);
       index = items.indexOf(asset);
 
@@ -169,6 +184,14 @@ class Canvas extends skoash.Component {
       });
     } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       messages.push(asset);
       index = messages.indexOf(asset);
 
@@ -262,14 +285,18 @@ class Canvas extends skoash.Component {
     var self = this;
 
     return (
-      self.isInBounds(key, type) && (
-        self.refs[type + '-' + key].state.can_overlap ||
-        !self.state[type + 's'].some((item, index) =>
-          key !== index &&
-          !self.refs[type + '-' + index].state.can_overlap &&
-          skoash.util.doIntersect(
-            self.refs[type + '-' + key].state.corners,
-            self.refs[type + '-' + index].state.corners
+      !self.refs[type + '-' + key].state.corners.length ||
+      (
+        self.isInBounds(key, type) && (
+          self.refs[type + '-' + key].state.can_overlap ||
+          !self.state[type + 's'].some((item, index) =>
+            key !== index &&
+            !self.refs[type + '-' + index].state.can_overlap &&
+            self.refs[type + '-' + index].state.corners.length &&
+            skoash.util.doIntersect(
+              self.refs[type + '-' + key].state.corners,
+              self.refs[type + '-' + index].state.corners
+            )
           )
         )
       )
@@ -277,7 +304,9 @@ class Canvas extends skoash.Component {
   }
 
   isInBounds(key, type) {
-    return !(
+    return !this.state.width ||
+      !this.state.height ||
+      !(
       // box to left
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
@@ -374,6 +403,8 @@ class Canvas extends skoash.Component {
           deactivateItems={self.deactivateItems}
           relayerItems={self.relayerItems}
           setValid={self.setValid}
+          canvasWidth={this.state.width}
+          canvasHeight={this.state.height}
           ref={'message-' + key}
           key={key}
         />
@@ -401,5 +432,9 @@ class Canvas extends skoash.Component {
     );
   }
 }
+
+Canvas.defaultProps = _.defaults({
+  maxInstances: 5
+}, skoash.Component.defaultProps);
 
 export default Canvas;

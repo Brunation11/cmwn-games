@@ -102,7 +102,7 @@ gulp.task('sass', function () {
       .pipe(sass().on('error', sass.logError))
       .pipe(concat('style.css'))
       .pipe(sourcemaps.init())
-      .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
+      .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest('./build/' + _game + '/css'))
       .pipe(livereload());
@@ -113,7 +113,7 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'])
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
-    .pipe(postcss([autoprefixer({ browsers: ['last 2 versions'] })]))
+    .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
     .pipe(livereload());
 });

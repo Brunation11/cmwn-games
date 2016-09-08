@@ -7,6 +7,8 @@ export default function (props, ref, key) {
       id="ios-splash"
       checkComplete={false}
       completeDelay={6000}
+      nextDelay={3000}
+      completeOnStart
       hidePrev
     >
       <skoash.Image className="hidden" src="../shared/images/ios_start_ball.png" />
