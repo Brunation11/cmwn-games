@@ -217,6 +217,7 @@ export default function (props, ref, key) {
       id="inbox"
       hideNext
       hidePrev
+      load
     />
   );
 }

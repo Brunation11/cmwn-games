@@ -65,6 +65,7 @@ export default function (props, ref, key) {
       id="preview"
       hideNext
       hidePrev
+      load
     />
   );
 }

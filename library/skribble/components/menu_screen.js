@@ -27,6 +27,7 @@ export default function (props, ref, key) {
       id="menu"
       hidePrev
       hideNext
+      load
     />
   );
 }
