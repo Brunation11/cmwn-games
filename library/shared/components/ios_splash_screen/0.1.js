@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  var iOSSplashScreen = (
+  return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -15,6 +15,4 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden" src="../shared/images/ios_start_ball_anim.gif" />
     </skoash.Screen>
   );
-
-  return iOSSplashScreen;
 }

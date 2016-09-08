@@ -14,7 +14,7 @@ class Dropzone extends skoash.Component {
       <Draggable message={'drag'}>drag me!</Draggable>,
       <Draggable message={'return'} return={true} >return</Draggable>
     ];
-
+      
     this.contains = [];
 
     this.dropRespond = this.dropRespond.bind(this);
@@ -180,6 +180,9 @@ class Dropzone extends skoash.Component {
         {this.renderDropzones()}
         <ul>
           {this.renderDraggables()}
+        </ul>
+        <ul>
+          {this.renderMoreDraggables()}
         </ul>
       </div>
     );
