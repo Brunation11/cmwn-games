@@ -98,7 +98,6 @@ export default function (props, ref, key) {
       id="item-drawer"
       hideNext
       hidePrev
-      load
     />
   );
 }

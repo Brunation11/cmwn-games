@@ -126,7 +126,6 @@ export default function (props, ref, key) {
       id="read"
       hideNext
       hidePrev
-      load
     />
   );
 }

@@ -164,7 +164,6 @@ export default function (props, ref, key) {
       id="friends"
       hideNext
       hidePrev
-      load
     />
   );
 }

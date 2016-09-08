@@ -8,7 +8,6 @@ export default function (props, ref, key) {
       hidePrev
       nextDelay={1000}
       nextIndex="menu"
-      load
     >
       <skoash.Image
         ref="title"

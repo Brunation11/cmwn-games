@@ -247,7 +247,6 @@ export default function (props, ref, key) {
       id="canvas"
       hideNext
       hidePrev
-      load
     />
   );
 }

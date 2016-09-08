@@ -54,7 +54,6 @@ export default function (props, ref, key) {
       id="sent"
       hideNext
       hidePrev
-      load
     />
   );
 }
