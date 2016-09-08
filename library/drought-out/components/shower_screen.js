@@ -11,9 +11,8 @@ export default function (props, ref, key) {
       key={key}
       id="shower"
     >
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_16/VO_16.1.mp3"/>
+      <skoash.Audio type="voiceOver" src="media/S_16/VO_16.1.mp3"/>
       <skoash.Image src="media/S_16/img_16.1.png"/>
-
       <p>Turn each card.</p>
       <skoash.Component className="flip-card-component bt">
         <Selectable
@@ -37,7 +36,6 @@ export default function (props, ref, key) {
           dataTarget="selectable"
         />
       </skoash.Component>
-
       <Reveal
         ref="reveal"
         hide={true}
@@ -48,7 +46,6 @@ export default function (props, ref, key) {
           <skoash.Audio ref="year" type="voiceOver" src="media/S_16/VO_16.4.mp3" />
         ]}
       />
-
     </skoash.Screen>
   );
   return ShowerScreen;
