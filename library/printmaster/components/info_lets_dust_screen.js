@@ -12,6 +12,11 @@ export default function (props, ref, key) {
           duration: 1000,
         });
       }}
+      onClose={function () {
+        skoash.trigger('passData', {
+          name: 'stopTyping',
+        });
+      }}
     >
       <skoash.MediaSequence ref="media">
         <skoash.Audio ref="vo" type="voiceOver" gameClass="LETS-DUST" src="media/S_11/VO_11.1.mp3" />

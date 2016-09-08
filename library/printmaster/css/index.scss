@@ -250,7 +250,8 @@ p {
   }
 
   .skoash-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen {
+  .screen.COMPLETE .next-screen,
+  .screen.REPLAY .next-screen {
     opacity: 1;
     pointer-events: auto;
     transform: rotate(0deg);
