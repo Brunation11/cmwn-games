@@ -4,6 +4,14 @@ import classNames from 'classnames';
 
 class ChooseScreenComponent extends skoash.Screen {
 
+  constructor() {
+    super();
+
+    this.state = {
+      slideToggle: true,
+    };
+  }
+
   getRefs(currentRef) {
     if (!currentRef.refs) {
       return;
@@ -28,9 +36,33 @@ class ChooseScreenComponent extends skoash.Screen {
     });
   }
 
+  updateGender(gender) {
+    this.updateGameState({
+      path: ['character'],
+      data: {
+        gender
+      }
+    });
+  }
+
+  updateSkin(skin) {
+    this.updateGameState({
+      path: ['character'],
+      data: {
+        skin
+      }
+    });
+  }
+
+  prevSlide() {
+    this.setState({
+      slideToggle: true,
+    });
+  }
+
   prev() {
-    if (this.state.skinColorSlide) {
-      this.setState({skinColorSlide: false});
+    if (!this.state.slideToggle) {
+      this.prevSlide();
       return;
     }
 
@@ -38,10 +70,17 @@ class ChooseScreenComponent extends skoash.Screen {
   }
 
   nextSlide(gender) {
+    this.updateGender(gender);
+
     this.setState({
-      skinColorSlide: true,
-      gender,
+      slideToggle: false,
     });
+  }
+
+  next(skin) {
+    this.updateSkin(skin);
+
+    super.next();
   }
 
   renderFemaleMale() {
@@ -49,7 +88,7 @@ class ChooseScreenComponent extends skoash.Screen {
       <skoash.Component ref="center-1" className="center female-male">
         <skoash.Component className="group">
           <Selectable
-            ref="selectable-1"
+            ref="selectable"
             list={[
               <skoash.ListItem id="gender-female" className="animated"
                 onClick={this.nextSlide.bind(this, 'female')} />,
@@ -70,11 +109,11 @@ class ChooseScreenComponent extends skoash.Screen {
             ref="selectable-2"
             list={[
               <skoash.ListItem id="skin-light" className="animated"
-                onClick={this.next.bind(this)} />,
+                onClick={this.next.bind(this, 'light')} />,
               <skoash.ListItem id="skin-medium" className="animated"
-                onClick={this.next.bind(this)} />,
+                onClick={this.next.bind(this, 'medium')} />,
               <skoash.ListItem id="skin-dark" className="animated"
-                onClick={this.next.bind(this)} />,
+                onClick={this.next.bind(this, 'dark')} />,
             ]}
           />
         </skoash.Component>
@@ -83,11 +122,16 @@ class ChooseScreenComponent extends skoash.Screen {
   }
 
   getClassNames() {
+    var data = skoash.trigger('getState').data;
+    var gender;
+    if (data.character) {
+      gender = data.character.gender;
+    }
     return classNames({
-      GENDER: !this.state.skinColorSlide,
-      SKIN: this.state.skinColorSlide,
-    }, this.state.gender,
-      super.getClassNames());
+      GENDER: this.state.slideToggle,
+      SKIN: !this.state.slideToggle,
+      [gender]: gender,
+    }, super.getClassNames());
   }
 
   renderContent() {
