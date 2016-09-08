@@ -1,12 +1,53 @@
 import Draggable from 'shared/components/draggable/0.1';
 import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
 
+class NeedScreenComponent extends skoash.Screen {
+  
+  getRefs(currentRef) {
+    if (!currentRef.refs) {
+      return;
+    }
+    _.each(currentRef.refs, (ref, key) => {
+      this.refs[key] = ref;
+      if (key.includes('children')) {
+        this.getRefs(ref);
+      }
+    });
+  }
+
+  bootstrap() {
+    super.bootstrap();
+    var ref, self = this;
+
+    ref = self.refs['children-1'];
+    if (ref) {
+      self.getRefs(ref);
+    }
+  }
+
+  open() {
+    super.open();
+
+    this.checkComplete = null;
+    this.refs['dropzone-reveal'].incompleteRefs();
+    this.incomplete();
+    this.checkComplete = super.checkComplete;
+  }
+}
+
 export default function (props, ref, key) {
+  var data = skoash.trigger('getState').data;
+  var skin, gender;
+  if (data.character) {
+    skin = data.character.gender;
+    gender = data.character.skin;
+  }
   return (
-    <skoash.Screen
+    <NeedScreenComponent
       {...props}
       ref={ref}
       key={key}
+      className={skin + ' ' + gender}
       id="need"
     >
     <skoash.MediaSequence ref="media-sequence">
@@ -43,6 +84,7 @@ export default function (props, ref, key) {
             ]}
             dropzones={[
               <skoash.Component 
+                className="body"
                 answers={[
                   'pants',
                   'jacket',
@@ -154,7 +196,7 @@ export default function (props, ref, key) {
           />
           </skoash.Component>
       </skoash.Component>
-    </skoash.Screen>
+    </NeedScreenComponent>
   );
 }
 

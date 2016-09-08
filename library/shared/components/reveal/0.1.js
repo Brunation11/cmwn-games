@@ -17,6 +17,15 @@ class Reveal extends skoash.Component {
     };
   }
 
+  incomplete() {
+    this.setState({
+      openReveal: '',
+      currentlyOpen: []
+    });
+
+    super.incomplete();
+  }
+
   open(message) {
     var self = this;
     var currentlyOpen = this.state.currentlyOpen.concat(message);

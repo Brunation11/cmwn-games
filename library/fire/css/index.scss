@@ -277,6 +277,13 @@ img.background {
   }
 }
 
+.MENU-quit .screen {
+  &:not(#quit) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
 .DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
@@ -748,7 +755,6 @@ img.background {
         background-size: auto 100%;
         background-repeat: no-repeat;
         background-position: center center;
-        transition: opacity .5s top .5s left .5s;
 
         @for $i from 1 through 7 {
           $img: $i + 2;
@@ -1127,7 +1133,6 @@ img.background {
       height: 400px;
       opacity: 0;
       transition: opacity .5s;
-      background-image: url(../media/S_12/sprite_12.5.png);
       background-repeat: no-repeat;
       background-size: 880px;
 
@@ -1135,23 +1140,84 @@ img.background {
         opacity: 1;
       }
     }
+  }
 
-    $items:   bun tank straps body boots hood pants jacket gloves mask light  axe walkie punch camera;
-    $bg-lefts:  0  220     -3  220   437  656    -3    218    439  658     0  440    220   660    440;
-    $bg-tops: 405  405   1196    0   401  402   798    800    800  800  1600 1200   1589  1592   1592;
+  $skin:    light medium dark;
+  $skin-pos:    0    220  440;
 
-    @for $i from 1 through 15 {
-      &.#{nth($items,$i)} div.#{nth($items,$i)} {
-          background-position: #{-1*nth($bg-lefts,$i)+px} #{-1*nth($bg-tops,$i)+px};
-          opacity: 1;
+  $items-f:   bun tank straps boots hood pants jacket gloves mask light  axe walkie punch camera;
+  $bg-lefts-f:  0  220     -3   437  656    -3    218    439  658     0  440    220   660    440;
+  $bg-tops-f: 405  405   1196   401  402   798    800    800  800  1600 1200   1589  1592   1592;
+
+  $items-m:   tank straps boots hood pants jacket gloves mask light  axe walkie punch camera;
+  $bg-lefts-m: 660    446     5  225   443    662      1  658    -3  222    440   220    660;
+  $bg-tops-m:    0    797   401  402   401    402    800  800  1196 1195   1194   798   1200;
+
+  &.female {
+
+    @for $i from 1 through 3 {
+      &.#{nth($skin,$i)} .dropzone div.body {
+        background-position: #{-1*nth($skin-pos,$i)+px} 0;
       }
     }
 
-    &.tank div.straps {
-      background-position: #{-1*nth($bg-lefts,3)+px} #{-1*nth($bg-tops,3)+px};
-      opacity: 1;
+    .dropzone {
+      div {
+        background-image: url(../media/S_12/sprite_12.5.png);
+
+        &.bun {
+          opacity: 1;
+        }
+      }
+
+      @for $i from 1 through 14 {
+        div.#{nth($items-f,$i)} {
+          background-position: #{-1*nth($bg-lefts-f,$i)+px} #{-1*nth($bg-tops-f,$i)+px};
+        }
+        &.#{nth($items-f,$i)} div.#{nth($items-f,$i)} {
+          opacity: 1;
+        }
+      }
+
+      &.tank div.straps {
+        opacity: 1;
+      }
+
+      &.hood div.bun,
+      &.mask div.bun {
+        opacity: 0;
+      }
     }
   }
+
+  &.male {
+
+    @for $i from 1 through 3 {
+      &.#{nth($skin,$i)} .dropzone div.body {
+        background-position: #{-1*nth($skin-pos,$i)+px} 0;
+      }
+    }
+
+    .dropzone {
+      div {
+        background-image: url(../media/S_12/sprite_12.6.png);
+      }
+
+      @for $i from 1 through 13 {
+        div.#{nth($items-m,$i)} {
+          background-position: #{-1*nth($bg-lefts-m,$i)+px} #{-1*nth($bg-tops-m,$i)+px};
+        }
+        &.#{nth($items-m,$i)} div.#{nth($items-m,$i)} {
+          opacity: 1;
+        }
+      }
+
+      &.tank div.straps {
+        opacity: 1;
+      }
+    }
+  }
+
 
   .reveal {
     position: absolute;

@@ -10,6 +10,12 @@ class DropzoneReveal extends skoash.Component {
     this.refs.dropzone.complete();
   }
 
+  incompleteRefs() {
+    super.incompleteRefs();
+
+    this.refs.dropzone.complete();
+  }
+
   dropRespond(message) {
     if (typeof this.refs.reveal.open === 'function') {
       this.refs.reveal.open(message);
@@ -23,7 +29,9 @@ class DropzoneReveal extends skoash.Component {
   }
 
   revealComplete() {
-    this.audio.complete.play();
+    if (this.audio.complete) {
+      this.audio.complete.play();
+    }
   }
 
   renderAssets() {

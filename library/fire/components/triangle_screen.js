@@ -1,16 +1,53 @@
 import Draggable from 'shared/components/draggable/0.1';
 import DropzoneReveal from 'shared/components/dropzone_reveal/0.1';
 
+class TriangleScreenComponent extends skoash.Screen {
+  
+  getRefs(currentRef) {
+    if (!currentRef.refs) {
+      return;
+    }
+    _.each(currentRef.refs, (ref, key) => {
+      this.refs[key] = ref;
+      if (key.includes('children')) {
+        this.getRefs(ref);
+      }
+    });
+  }
+
+  bootstrap() {
+    super.bootstrap();
+    var ref, self = this;
+
+    ref = self.refs['children-0'];
+    if (ref) {
+      self.getRefs(ref);
+    }
+  }
+
+  open() {
+    super.open();
+
+    if (this.state.replay) {
+      this.checkComplete = null;
+      this.refs['dropzone-reveal'].incompleteRefs();
+      this.incomplete();
+      this.checkComplete = super.checkComplete;
+    }
+  }
+}
+
+
 export default function (props, ref, key) {
   return (
-    <skoash.Screen
+    <TriangleScreenComponent
       {...props}
       ref={ref}
       key={key}
       id="triangle"
     >
-      <skoash.Component ref="center" className="center">
-        <skoash.Component ref="frame" className="frame">
+      <skoash.Component className="center">
+        <skoash.Component className="frame">
           <skoash.Image className="title" ref="title" src="media/S_8/img_8.1.png" />
           <div className="directions">
             <h3>Choose the words and drag to form a triangle</h3>
@@ -70,7 +107,7 @@ export default function (props, ref, key) {
           />
         </skoash.Component>
       </skoash.Component>
-    </skoash.Screen>
+    </TriangleScreenComponent>
   );
 }
 

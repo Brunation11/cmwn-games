@@ -17,6 +17,14 @@ class Dropzone extends skoash.Component {
     }
   }
 
+  incomplete() {
+    this.setState({
+      dropped: [],
+    });
+
+    super.incomplete();
+  }
+
   prepareDropzones() {
     var self = this;
 
@@ -83,7 +91,7 @@ class Dropzone extends skoash.Component {
       return false;
     });
 
-    if (!isInBounds) self.outOfBounds();
+    if (!isInBounds) self.outOfBounds(message);
   }
 
   inBounds(message, dropzoneKey) {
@@ -95,8 +103,10 @@ class Dropzone extends skoash.Component {
     }
   }
 
-  outOfBounds() {
+  outOfBounds(message) {
     // respond to out of bounds drop
+    this.refs[message].returnToStart();
+
     if (this.audio.out) {
       this.audio.out.play();
     }
@@ -184,7 +194,7 @@ class Dropzone extends skoash.Component {
   getClassNames() {
     return classNames(
       'dropzone-container',
-      super.getClassNames,
+      super.getClassNames(),
     );
   }
 
