@@ -1147,6 +1147,7 @@ img.inline {
       display: block;
       width: 304px;
       margin: 20px auto 0;
+      opacity: 0;
 
       div {
         background-image: url(../media/S_22/img_22.1.png);
@@ -1161,21 +1162,20 @@ img.inline {
           }
         }
       }
-    }
-  }
 
-  &.OPEN {
-    .flip {
-      animation-name: shake;
-      animation-delay: 4s;
-      animation-iteration-count: 2;
+      &.animated {
+        opacity: 1;
+        animation-name: shake;
+        animation-delay: 2s;
+        animation-iteration-count: 2;
 
-      div {
-        animation-name: fadeInRightBig;
+        div {
+          animation-name: fadeInRightBig;
 
-        @for $item from 1 through 4 {
-          &:nth-child(#{$item}) {
-            animation-delay: 2+.2*$item+s;
+          @for $item from 1 through 4 {
+            &:nth-child(#{$item}) {
+              animation-delay: .2*$item+s;
+            }
           }
         }
       }
