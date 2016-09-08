@@ -18,7 +18,7 @@ class Reveal extends skoash.Component {
     });
 
     this.playAudio(message);
-      
+
     this.requireForComplete.map(key => {
       if (key === message && this.refs[key]) {
         this.refs[key].complete();
@@ -40,11 +40,13 @@ class Reveal extends skoash.Component {
   }
 
   start() {
-    skoash.Component.prototype.start.call(this);
-    this.close();
-
+    super.start();
     if (this.props.openOnStart != null) {
       this.open(this.props.openOnStart);
+    } else if (this.props.start && typeof this.props.start === 'function') {
+      this.props.start.call(this);
+    } else {
+      this.close();
     }
   }
 
@@ -78,10 +80,11 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
+        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
           <asset.type
             {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
+            ref={ref}
             key={key}
             data-ref={key}
           />
@@ -96,13 +99,13 @@ class Reveal extends skoash.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <li.type
           {...li.props}
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={ref}
+          ref={key}
           key={key}
         />
       );
