@@ -6,6 +6,9 @@ export default function (props, ref, key) {
       key={key}
       id="flip"
       className="large-frame"
+      emitOnComplete={{
+        name: 'flip',
+      }}
     >
       <skoash.Audio type="voiceOver" src="media/S_22/VO_22.1.mp3" />
       <skoash.Image className="hidden" src="media/_Frame/Fr_1.png" />
