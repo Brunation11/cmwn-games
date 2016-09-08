@@ -41,6 +41,7 @@ export default function (props, ref, key) {
       <skoash.Component className="frame">
         <skoash.Image src="media/S_6/img_6.1.png" />
         <Selectable
+          selectClass="HIGHLIGHTED"
           selectRespond={function (target) {
             this.updateGameState({
               path: 'selection',

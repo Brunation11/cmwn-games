@@ -715,6 +715,10 @@ p {
     margin: 20px 0 20px auto;
     text-align: left;
 
+    .VOICE-OVER & {
+      pointer-events: none;
+    }
+
     li {
       display: inline-block;
       height: 50px;
