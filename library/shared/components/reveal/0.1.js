@@ -25,6 +25,8 @@ class Reveal extends skoash.Component {
     this.requireForComplete = this.requireForComplete.filter(item => {
       return (item !== message) || (this.refs[message] instanceof skoash.Audio);
     });
+
+    this.callProp('onOpen', message);
   }
 
   close() {
@@ -105,6 +107,12 @@ class Reveal extends skoash.Component {
         />
       );
     });
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
   }
 
   getClass(li, key) {
