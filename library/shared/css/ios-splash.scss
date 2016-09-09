@@ -102,7 +102,7 @@ body.iOS:not(.STARTED) {
 	}
 }
 
-.SCREEN-0 #ios-splash {
+.skoash-game #ios-splash {
 	button {
 		display: block;
 		background: none;
@@ -148,7 +148,7 @@ body.iOS:not(.STARTED) {
 	}
 }
 
-.SCREEN-0 #ios-splash.LEAVING,
+.skoash-game #ios-splash.LEAVING,
 .pl-game.STARTED #ios-splash {
 	button.next-screen,
 	.ball,

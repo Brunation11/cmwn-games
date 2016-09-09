@@ -26,6 +26,8 @@ import SaveMenu from './components/save_menu';
 
 import 'shared/js/test-platform-integration';
 
+const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
+
 class Skribble extends skoash.Game {
   constructor() {
     super(config);
@@ -33,7 +35,7 @@ class Skribble extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      'menu': MenuScreen,
+      menu: MenuScreen,
       friend: FriendScreen,
       canvas: CanvasScreen,
       'item-drawer': ItemDrawerScreen,
@@ -48,6 +50,8 @@ class Skribble extends skoash.Game {
       quit: QuitScreen,
       save: SaveMenu,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   goto(opts) {
@@ -76,15 +80,20 @@ class Skribble extends skoash.Game {
 
   save(e, skramble) {
     /* eslint-disable camelcase */
-    var friend_to, self = this;
-    friend_to = self.state.recipient ? self.state.recipient.user_id : '';
+    var friend_to, rules, self = this;
+    friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
+    rules = self.getRules();
     var skribble = {
       'version': config.version,
       ...self.state.skribbleData,
       friend_to,
       skramble,
-      rules: self.getRules()
+      rules
     };
+
+    if (!rules.background && !rules.items.length && !rules.messages.length) {
+      return;
+    }
 
     if (JSON.stringify(skribble) !== JSON.stringify(this.state.skribble)) {
       self.emit({
@@ -124,9 +133,23 @@ class Skribble extends skoash.Game {
       return this.getMedia(opts.path);
     case 'getRules':
       return this.getRules();
+    case 'loadSkribble':
+      return this.loadSkribble(opts);
     }
 
-    return skoash.Game.prototype.trigger.call(this, event, opts);
+    return super.trigger(event, opts);
+  }
+
+  loadSkribble(opts) {
+    this.setState({
+      skribbleData: opts.message
+    }, () => {
+      this.refs['screen-canvas'].addItems(opts.message);
+      this.goto({
+        index: 'canvas',
+        draft: true,
+      });
+    });
   }
 
   getMedia(path) {
@@ -179,7 +202,8 @@ class Skribble extends skoash.Game {
   getData(opts) {
     var names = [
       'getFriends',
-      'getFriend'
+      'getFriend',
+      'markAsRead',
     ];
 
     if (names.indexOf(opts.name) === -1) {
@@ -194,7 +218,17 @@ class Skribble extends skoash.Game {
           data
         });
       } else {
-        this.updateData({data});
+        if (opts.name === 'getFriend') {
+          data = {
+            user: [
+              data
+            ]
+          };
+        }
+        this.updateData({
+          data,
+          callback: opts.callback,
+        });
       }
     });
   }
@@ -211,6 +245,8 @@ class Skribble extends skoash.Game {
   }
 
   addRecipient(recipient, cb) {
+    var src;
+
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
       delete recipient.src;
@@ -225,9 +261,31 @@ class Skribble extends skoash.Game {
         });
       }
     }
-    this.setState({
-      recipient
-    }, cb);
+
+    if (typeof recipient === 'string') {
+      this.getData({
+        name: 'getFriend',
+        'friend_id': recipient,
+        callback: () => {
+          this.addRecipient(recipient, cb);
+        }
+      });
+    } else {
+      src = recipient && recipient._embedded && recipient._embedded.image && recipient._embedded.image.url ?
+        recipient._embedded.image.url :
+        recipient.profile_image || DEFAULT_PROFILE_IMAGE;
+      this.setState({
+        recipient: {
+          'user_id': recipient.user_id || recipient.friend_id,
+          name: recipient.name || recipient.username,
+          src,
+          // I need to get the flips earned back from the backend to do this.
+          description: '',
+          // description: friend.flips_earned + ' Flips Earned',
+          'asset_type': 'friend',
+        }
+      }, cb);
+    }
   }
 
   clickRecipient() {

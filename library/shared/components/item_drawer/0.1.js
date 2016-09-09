@@ -9,6 +9,32 @@ class ItemDrawer extends Selectable {
     super();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    var items, quickCheck, itemsChanged;
+
+    if (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes)) {
+      return true;
+    }
+
+    items = nextProps.data || [];
+
+    if (nextState.category && items[nextState.category]) {
+      items = items[nextState.category].items;
+    }
+
+    quickCheck = _.reduce(items, (a, i) => {
+      a += i.name;
+      return a;
+    }, '');
+
+    itemsChanged = this.quickCheck !== quickCheck;
+    if (itemsChanged) {
+      this.quickCheck = quickCheck;
+    }
+
+    return itemsChanged;
+  }
+
   start() {
     var items, selectedItem, selectFunction, classes = {}, self = this;
 
@@ -39,8 +65,6 @@ class ItemDrawer extends Selectable {
       categoryName: '',
       category: '',
     });
-
-    this.bootstrap();
 
     this.refs.list.scrollTop = 0;
 
@@ -199,8 +223,8 @@ class ItemDrawer extends Selectable {
     }
 
     return items.sort((a, b) => {
-      var aVal = typeof a.order === 'number' ? a.order : Infinity;
-      var bVal = typeof b.order === 'number' ? b.order : Infinity;
+      var aVal = !_.isNaN(window.parseInt(a.order)) ? window.parseInt(a.order) : Infinity;
+      var bVal = !_.isNaN(window.parseInt(b.order)) ? window.parseInt(b.order) : Infinity;
       if (aVal === bVal) {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;

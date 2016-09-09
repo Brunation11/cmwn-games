@@ -1,8 +1,7 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import Selectable from '../selectable/0.1';
-
-import classNames from 'classnames';
 
 class Inbox extends Selectable {
   constructor() {
@@ -28,15 +27,11 @@ class Inbox extends Selectable {
       classes,
     });
 
+    if (message.status !== 'COMPLETE') return;
+
     if (typeof this.props.selectRespond === 'function' && message) {
       this.props.selectRespond(message);
     }
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
   }
 
   getClass(key, read) {
@@ -67,8 +62,12 @@ class Inbox extends Selectable {
 
     items = this.props.data.items;
 
-    if (this.state.category) {
-      items = items[this.state.category].items;
+    if (!items.length) {
+      return (
+        <li className="empty">
+          {this.props.emptyMessage}
+        </li>
+      );
     }
 
     friends = skoash.trigger('getState').data.user || [];
@@ -78,13 +77,11 @@ class Inbox extends Selectable {
       timestamp = moment.utc(item.updated).local();
       key = 'message-' + key;
 
-      friends.some(friend => {
+      friends.forEach(friend => {
         if (item[this.props.friendKey] === friend.friend_id) {
           image = friend._embedded.image ? friend._embedded.image.url : '';
           name = friend.username;
-          return false;
         }
-        return true;
       });
 
       if (!name) {
@@ -92,6 +89,10 @@ class Inbox extends Selectable {
           name: 'getFriend',
           'friend_id': item[this.props.friendKey],
         });
+      }
+
+      if (this.props.friendKey === 'friend_to') {
+        item.sent = true;
       }
 
       return (
@@ -103,7 +104,9 @@ class Inbox extends Selectable {
           key={key}
         >
           <skoash.Image src={image} />
-          <span className="username">{name}</span>
+          <span className={'username' + (name.length > 15 ? ' long' : '')}>
+            {name}
+          </span>
           <span className="timestamp">
             <span className="date">{timestamp.format('MM.DD.YY')}</span>
             <span className="time">{timestamp.format('h:mm a')}</span>
@@ -127,8 +130,8 @@ class Inbox extends Selectable {
   }
 }
 
-Inbox.defaultProps = _.merge(Selectable.defaultProps, {
+Inbox.defaultProps = _.defaults({
   friendKey: 'created_by'
-});
+}, Selectable.defaultProps);
 
 export default Inbox;

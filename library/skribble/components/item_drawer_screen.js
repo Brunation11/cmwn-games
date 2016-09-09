@@ -89,10 +89,15 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <ItemDrawerScreen
-    id="item-drawer"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <ItemDrawerScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="item-drawer"
+      hideNext
+      hidePrev
+    />
+  );
+}
