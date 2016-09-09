@@ -84,9 +84,9 @@ class Reveal extends skoash.Component {
         return (
           <asset.type
             {...asset.props}
+            data-ref={ref}
             ref={ref}
             key={key}
-            data-ref={key}
           />
         );
       });
