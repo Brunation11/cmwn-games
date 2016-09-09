@@ -25,4 +25,4 @@ do
     components=$components$game$'\n'$(echo ${games[$game]} | xargs -n1 | sort -u)$'\n\n'
   fi
 done
-echo "$components"
+echo "$components" >> build/component-summary.txt
