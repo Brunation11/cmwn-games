@@ -14,7 +14,6 @@ export default function (props, ref, key) {
         </p>
       </div>
       <skoash.Audio ref="start" type="voiceOver" src="media/S_5/VO_5.1.mp3"/>
-
     </skoash.Screen>
   );
 

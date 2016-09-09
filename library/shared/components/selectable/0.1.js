@@ -63,42 +63,57 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var dataRef, target, id;
-    var self = this;
+    var ref, dataRef, target, id, isCorrect, self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
     dataRef = target.getAttribute('data-ref');
+    ref = this.refs[dataRef];
 
-    classes[dataRef] = this.state.selectClass;
+    isCorrect = (
+        ref && ref.props && ref.props.correct
+      ) || (
+        !this.props.answers || !this.props.answers.length ||
+        this.props.answers.indexOf(dataRef) !== -1
+      );
 
-    this.setState({
+    if (self.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else if (isCorrect) {
+      classes[dataRef] = self.state.selectClass;
+    }
+
+    self.setState({
       classes,
     });
 
-    this.callProp('selectRespond', dataRef);
-
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond.call(this, dataRef);
-    }
-
-    if (this.props.chooseOne) {
-      this.requireForComplete = [dataRef];
-    }
-
-    if (this.props.completeListOnClick) {
-      this.requireForComplete.map(key => {
-        if (key === dataRef && self.refs[key]) {
-          self.refs[key].complete();
-          return;
-        } else if (key === id && self.refs[id]) {
-          self.refs[id].complete();
-          return;
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: ref
         }
       });
     }
+
+    this.callProp('selectRespond', dataRef);
+
+    if (self.props.chooseOne) {
+      self.requireForComplete = [dataRef];
+    }
+
+    if (this.props.completeListOnClick) {
+      self.requireForComplete.map(key => {
+        if (key === dataRef && self.refs[key]) {
+          self.refs[key].complete();
+        } else if (key === id && self.refs[id]) {
+          self.refs[id].complete();
+        }
+      });
+    }
+
   }
 
   select(e) {

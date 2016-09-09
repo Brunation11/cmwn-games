@@ -8,6 +8,7 @@ export default function (props, ref, key) {
       key={key}
       id="info-no-water"
       className="large-frame"
+      restartBackground
     >
       <skoash.MediaSequence>
         <skoash.Audio

@@ -9,7 +9,7 @@ export default function (props, ref, key) {
       id="think"
       className="large-frame"
     >
-      <skoash.Audio type="voiceOver" ref="start" src="media/S_2/VO_2.1.mp3"/>
+      <skoash.Audio type="voiceOver" src="media/S_2/VO_2.1.mp3"/>
       <skoash.Image className="hidden" ref="hidden" src="media/_Frames/FR_1.png"/>
       <skoash.Component className="frame animated">
         <p>
