@@ -15,7 +15,8 @@ var argv = require('yargs').argv,
   sass = require('gulp-sass'),
   concat = require('gulp-concat'),
   livereload = require('gulp-livereload'),
-  inject = require('gulp-inject');
+  inject = require('gulp-inject'),
+  exec = require('child_process').exec;
 
 function lsd(_path) {
   return fs.readdirSync(_path).filter(function (file) {
@@ -207,3 +208,10 @@ gulp.task('watch', function () {
 });
 
 gulp.task('w', ['watch']);
+
+gulp.task('clean', function () {
+  exec('delete-invalid-files.sh', function (err, stdout, stderr) {
+    console.log(stdout); // eslint-disable-line no-console
+    console.log(stderr); // eslint-disable-line no-console
+  });
+});
