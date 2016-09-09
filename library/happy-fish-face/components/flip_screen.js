@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default function (props, ref, key) {
   return (
     <skoash.Screen
@@ -6,8 +8,23 @@ export default function (props, ref, key) {
       key={key}
       id="flip"
       className="large-frame"
+      emitOnComplete={{
+        name: 'flip',
+      }}
     >
-      <skoash.Audio type="voiceOver" src="media/_audio/_flip/HFF_VO_ThankYou.mp3" />
+      <skoash.MediaSequence>
+        <skoash.Audio
+          type="voiceOver"
+          src="media/_audio/_flip/HFF_VO_ThankYou.mp3"
+          completeTarget="vo"
+          sprite={[0, 3500]}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          src="media/_audio/_flip/HFF_VO_ThankYou.mp3"
+          sprite={[3500, 2000]}
+        />
+      </skoash.MediaSequence>
       <skoash.Component className="center">
         <skoash.Component className="group">
           <skoash.Component className="frame" pl-bg>
@@ -16,7 +33,12 @@ export default function (props, ref, key) {
               <p>
                 Let me say thank you<br /> for cleaning up<br /> with a new
               </p>
-              <skoash.Component className="flip-container">
+              <skoash.Component
+                className={
+                  'flip-container' +
+                  (_.get(props, 'data.vo.complete', false) ? ' show' : '')
+                }
+              >
                 <skoash.Image className="flip" src="media/_images/_flip/img_11.2.png" />
               </skoash.Component>
             </skoash.Component>

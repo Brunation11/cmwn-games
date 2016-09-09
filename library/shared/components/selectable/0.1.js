@@ -72,6 +72,14 @@ class Selectable extends skoash.Component {
     dataRef = target.getAttribute('data-ref');
     ref = this.refs[dataRef];
 
+    if (this.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else {
+      classes[dataRef] = this.state.selectClass;
+    }
+
+    if (JSON.stringify(this.state.classes) === JSON.stringify(classes)) return;
+
     isCorrect = (
         ref && ref.props && ref.props.correct
       ) || (
@@ -104,6 +112,10 @@ class Selectable extends skoash.Component {
       self.requireForComplete = [dataRef];
     }
 
+    if (this.props.chooseOne) {
+      this.requireForComplete = [dataRef];
+    }
+
     if (this.props.completeListOnClick) {
       self.requireForComplete.map(key => {
         if (key === dataRef && self.refs[key]) {
@@ -122,7 +134,7 @@ class Selectable extends skoash.Component {
   }
 
   highlight(e) {
-    var classes = this.state.classes;
+    var classes = _.clone(this.state.classes);
     this.selectHelper(e, classes);
   }
 
