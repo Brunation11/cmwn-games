@@ -84,10 +84,13 @@ class Printmaster extends skoash.Game {
 
   passData(opts) {
     if (opts.name === 'typing') {
+      this.media.typing.stop();
       this.media.typing.play();
       setTimeout(() => {
         this.media.typing.stop();
       }, opts.duration || 500);
+    } else if (opts.name === 'stopTyping') {
+      this.media.typing.stop();
     }
   }
 

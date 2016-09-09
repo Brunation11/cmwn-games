@@ -250,7 +250,8 @@ p {
   }
 
   .skoash-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen {
+  .screen.COMPLETE .next-screen,
+  .screen.REPLAY .next-screen {
     opacity: 1;
     pointer-events: auto;
     transform: rotate(0deg);
@@ -760,6 +761,21 @@ img.inline {
   .frame div {
     opacity: 0;
     transition: opacity .25s;
+
+    &.lets-dust {
+      opacity: 1;
+      transition: opacity 0s;
+
+      p.typing {
+        &:nth-of-type(1) {
+          animation: type .5s steps(14, end);
+        }
+
+        &:nth-of-type(2) {
+          animation: type2 1s steps(15, end);
+        }
+      }
+    }
   }
 
   h3 {
@@ -772,10 +788,8 @@ img.inline {
     opacity: 0;
     animation-duration: 1s;
 
-    @for $item from 1 through 5 {
-      &:nth-of-type(#{$item}) {
-        animation-delay: (-1+$item)+s;
-      }
+    &.count {
+      animation-name: blink;
     }
   }
 
@@ -785,62 +799,23 @@ img.inline {
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: left;
-    opacity: 1;
+    opacity: 0;
     width: 362px;
     transition: opacity 0s;
+
+    &.engaged {
+      opacity: 1;
+
+      h2 {
+        animation: type .75s steps(9, end);
+      }
+    }
   }
 
   h2 {
     margin: 0;
     font-size: 80px;
     width: 362px;
-  }
-
-  &.OPEN {
-    p.typing {
-      &:nth-of-type(1) {
-        animation: type .5s steps(14, end);
-      }
-
-      &:nth-of-type(2) {
-        animation: type2 1s steps(15, end);
-      }
-    }
-  }
-
-  .LETS-DUST & {
-    .frame div {
-      opacity: 1;
-      transition: opacity 0s;
-    }
-
-    div.engage {
-      opacity: 0;
-    }
-  }
-
-  .COUNT & {
-    .frame div {
-      opacity: 0;
-    }
-
-    h3 {
-      animation-name: blink;
-    }
-  }
-
-  .ENGAGE & {
-    .frame div {
-      opacity: 0;
-    }
-
-    div.engage {
-      opacity: 1;
-    }
-
-    h2 {
-      animation: type .75s steps(9, end);
-    }
   }
 }
 
@@ -1146,6 +1121,7 @@ img.inline {
       display: block;
       width: 304px;
       margin: 20px auto 0;
+      opacity: 0;
 
       div {
         background-image: url(../media/S_22/img_22.1.png);
@@ -1160,21 +1136,20 @@ img.inline {
           }
         }
       }
-    }
-  }
 
-  &.OPEN {
-    .flip {
-      animation-name: shake;
-      animation-delay: 4s;
-      animation-iteration-count: 2;
+      &.animated {
+        opacity: 1;
+        animation-name: shake;
+        animation-delay: 2s;
+        animation-iteration-count: 2;
 
-      div {
-        animation-name: fadeInRightBig;
+        div {
+          animation-name: fadeInRightBig;
 
-        @for $item from 1 through 4 {
-          &:nth-child(#{$item}) {
-            animation-delay: 2+.2*$item+s;
+          @for $item from 1 through 4 {
+            &:nth-child(#{$item}) {
+              animation-delay: .2*$item+s;
+            }
           }
         }
       }
