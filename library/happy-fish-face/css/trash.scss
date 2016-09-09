@@ -6,6 +6,7 @@
     position: absolute;
     pointer-events: none;
     width: 250px;
+    z-index: 1;
     opacity: 1;
     transition: opacity .5s;
   }

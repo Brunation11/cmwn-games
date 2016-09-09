@@ -230,12 +230,14 @@ p {
     margin-right: 5px;
     right: 0;
     opacity: 0;
+    pointer-events: none;
     transform: rotate(-180deg);
   }
 
   .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
   .screen.GATED .next-screen {
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0s;
     cursor: default;
   }
@@ -250,6 +252,7 @@ p {
   .skoash-game.DEMO .screen .next-screen,
   .screen.COMPLETE .next-screen {
     opacity: 1;
+    pointer-events: auto;
     transform: rotate(0deg);
     cursor: pointer;
     transition: opacity 1s, transform 1s;

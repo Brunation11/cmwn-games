@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -62,18 +63,37 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var dataRef, target, id;
-    var self = this;
+    var ref, dataRef, target, id, isCorrect, self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
     dataRef = target.getAttribute('data-ref');
+    ref = this.refs[dataRef];
 
-    classes[dataRef] = this.state.selectClass;
+    if (this.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else {
+      classes[dataRef] = this.state.selectClass;
+    }
 
-    this.setState({
+    if (JSON.stringify(this.state.classes) === JSON.stringify(classes)) return;
+
+    isCorrect = (
+        ref && ref.props && ref.props.correct
+      ) || (
+        !this.props.answers || !this.props.answers.length ||
+        this.props.answers.indexOf(dataRef) !== -1
+      );
+
+    if (self.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else if (isCorrect) {
+      classes[dataRef] = self.state.selectClass;
+    }
+
+    self.setState({
       classes,
     });
 
@@ -83,15 +103,25 @@ class Selectable extends skoash.Component {
       this.requireForComplete = [dataRef];
     }
 
-    this.requireForComplete.map(key => {
-      if (key === dataRef && self.refs[key]) {
-        self.refs[key].complete();
-        return;
-      } else if (key === id && self.refs[id]) {
-        self.refs[id].complete();
-        return;
-      }
-    });
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: ref
+        }
+      });
+    }
+
+    if (this.props.completeListOnClick) {
+      self.requireForComplete.map(key => {
+        if (key === dataRef && self.refs[key]) {
+          self.refs[key].complete();
+        } else if (key === id && self.refs[id]) {
+          self.refs[id].complete();
+        }
+      });
+    }
+
   }
 
   select(e) {
@@ -100,7 +130,7 @@ class Selectable extends skoash.Component {
   }
 
   highlight(e) {
-    var classes = this.state.classes;
+    var classes = _.clone(this.state.classes);
     this.selectHelper(e, classes);
   }
 
@@ -184,5 +214,9 @@ class Selectable extends skoash.Component {
     );
   }
 }
+
+Selectable.defaultProps = _.defaults({
+  completeListOnClick: true
+}, skoash.Component.defaultProps);
 
 export default Selectable;
