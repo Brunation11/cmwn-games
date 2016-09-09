@@ -1,6 +1,7 @@
-.reveal {
+.reveal ul {
   position: relative;
   padding: 0;
+  list-style: none;
 }
 
   .reveal li {
