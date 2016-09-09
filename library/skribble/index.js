@@ -23,6 +23,7 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 import SaveMenu from './components/save_menu';
+import CollisionWarning from './components/collision_warning';
 
 import 'shared/js/test-platform-integration';
 
@@ -49,9 +50,14 @@ class Skribble extends skoash.Game {
     this.menus = {
       quit: QuitScreen,
       save: SaveMenu,
+      collisionWarning: CollisionWarning,
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));
+
+    this.state.data.collisionWarning = {
+      show: true
+    };
   }
 
   goto(opts) {
@@ -241,7 +247,14 @@ class Skribble extends skoash.Game {
       this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
     } else if (opts.name === 'send') {
       this.send();
+    } else if (opts.name === 'showCollisionWarning') {
+      this.showCollisionWarning();
     }
+  }
+
+  showCollisionWarning() {
+    if (!this.state.data.collisionWarning.show) return;
+    this.openMenu({id: 'collisionWarning'});
   }
 
   addRecipient(recipient, cb) {

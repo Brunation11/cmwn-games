@@ -1365,6 +1365,57 @@ p {
   }
 }
 
+#collisionWarning {
+  background-color: rgba(88,189,63,.92);
+
+  &.OPEN {
+    z-index: 3;
+  }
+
+  .frame > * {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .copy {
+
+  }
+
+  button {
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+  }
+
+  .toggle-collision-warning {
+    background-image: url(../media/_CollisionWarning/spritesheet-donotshow.png);
+    background-size: 840px;
+    width: 840px;
+    height: 155px;
+    background-position: 0px -16px;
+
+    &.active {
+      background-position: 0px -130px;
+    }
+  }
+
+  .close-collision-warning {
+    background-image: url(../media/_CollisionWarning/spritesheet-ok.png);
+    background-size: 278px;
+    width: 278px;
+    height: 238px;
+
+    &:active,
+    &:hover,
+    &:focus {
+      background-position: 0px -278px;
+    }
+  }
+
+  .otter {
+    position: absolute;
+  }
+}
+
 .pl-game.PAUSED {
   &:before,
   &:after {
