@@ -11,7 +11,6 @@ do
   for game in $files;
   do
     games[$game]="${games[$game]} $component"
-    # echo ${games[$game]}
   done
   components=$components$'\n'$files$'\n\n'
 done
