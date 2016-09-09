@@ -1,12 +1,10 @@
 var config = {
-  id: 'animal-id',
-  screenSelector: '.screen',
-  componentDirectory: 'components/',
+  id: 'meerkat-mania',
+  version: 2,
   dimensions: {
     width: 960,
     ratio: 16 / 9
   },
-  shouldLoadComponentStyles: false
 };
 
 export default config;
