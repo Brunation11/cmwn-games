@@ -63,7 +63,7 @@ export default function (props, ref, key) {
             });
           }}
           dataTarget="target"
-          setTarget={_.get(props, 'data.revealScore.score', 0)}
+          setTarget={_.get(props, 'data.revealScore.score', 0) % 8}
           complete
           checkComplete={false}
           targets={[
@@ -86,6 +86,7 @@ export default function (props, ref, key) {
           dataTarget="score"
           completeDelay={1000}
           max={_.get(props, 'data.target.amount', null)}
+          complete
           resetOnComplete
           multipleCompletes
           onComplete={function () {
@@ -98,7 +99,7 @@ export default function (props, ref, key) {
             this.updateGameState({
               path: 'revealScore',
               data: {
-                score: (_.get(props, 'data.revealScore.score', 0) % 8) + 1
+                score: (_.get(props, 'data.revealScore.score', 0) % 9) + 1
               }
             });
           }}

@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -97,21 +98,22 @@ class Selectable extends skoash.Component {
       });
     }
 
-    if (typeof self.props.selectRespond === 'function') {
-      self.props.selectRespond.call(self, dataRef);
-    }
+    this.callProp('selectRespond', dataRef);
 
     if (self.props.chooseOne) {
       self.requireForComplete = [dataRef];
     }
 
-    self.requireForComplete.map(key => {
-      if (key === dataRef && self.refs[key]) {
-        self.refs[key].complete();
-      } else if (key === id && self.refs[id]) {
-        self.refs[id].complete();
-      }
-    });
+    if (this.props.completeListOnClick) {
+      self.requireForComplete.map(key => {
+        if (key === dataRef && self.refs[key]) {
+          self.refs[key].complete();
+        } else if (key === id && self.refs[id]) {
+          self.refs[id].complete();
+        }
+      });
+    }
+
   }
 
   select(e) {
@@ -204,5 +206,9 @@ class Selectable extends skoash.Component {
     );
   }
 }
+
+Selectable.defaultProps = _.defaults({
+  completeListOnClick: true
+}, skoash.Component.defaultProps);
 
 export default Selectable;
