@@ -254,7 +254,8 @@ p {
 }
 
 .pl-game.DEMO .screen .next-screen,
-.screen.COMPLETE .next-screen {
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
   opacity: 1;
   pointer-events: auto;
   transform: rotate(0deg);
@@ -477,6 +478,10 @@ img.inline {
       background-repeat: no-repeat;
       height: 42px;
       margin: 5px 40px 5px 0;
+
+      &.HIGHLIGHTED {
+        pointer-events: none;
+      }
 
       $words: dry green parched monsoon damp dusty hot no-water thirsty wet tropical arid steamy balmy swampy;
       $width: 74 120 160 174 114 119 74 180 145 84 162 88 150 128 165;
@@ -917,6 +922,10 @@ img.inline {
     -webkit-animation: swing-closed .75s steps(5) forwards;
     animation: swing-closed .75s steps(5) forwards;
     z-index: 1;
+
+    &.open {
+      animation: swing-open .5s steps(5) forwards;
+    }
   }
 
   #door {
@@ -936,25 +945,16 @@ img.inline {
     &:hover {
       background-position: -516px center;
     }
+
+    &.open {
+      opacity: 0;
+      transition: opacity 0s;
+    }
   }
 
   .VOICE-OVER & {
     li {
       pointer-events: none;
-    }
-  }
-
-  &.SELECTING {
-    .VOICE-OVER & {
-      #door-sprite {
-        -webkit-animation: swing-open .5s steps(5) forwards;
-        animation: swing-open .5s steps(5) forwards;
-      }
-
-      #door {
-        opacity: 0;
-        transition: opacity 0s;
-      }
     }
   }
 }

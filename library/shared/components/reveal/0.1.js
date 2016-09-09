@@ -19,6 +19,8 @@ class Reveal extends skoash.Component {
 
     this.playAudio(message);
 
+    this.callProp('onOpen', message);
+
     this.requireForComplete.map(key => {
       if (key === message && this.refs[key]) {
         this.refs[key].complete();
@@ -33,6 +35,12 @@ class Reveal extends skoash.Component {
       open: false,
       openReveal: '',
     });
+
+    if (this.audio['close-sound']) {
+      this.audio['close-sound'].play();
+    }
+
+    this.callProp('onClose');
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -84,9 +92,9 @@ class Reveal extends skoash.Component {
         return (
           <asset.type
             {...asset.props}
+            data-ref={ref}
             ref={ref}
             key={key}
-            data-ref={key}
           />
         );
       });
@@ -113,8 +121,12 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.openReveal && props.openReveal !== this.props.openReveal) {
+    if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
+    }
+
+    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
+      this.close();
     }
   }
 

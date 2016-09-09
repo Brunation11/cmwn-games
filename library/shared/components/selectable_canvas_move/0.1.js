@@ -14,6 +14,8 @@ var Item = function (component, context) {
   this.selected = false;
   this.speed = ((Math.random() * 5) % 3 + 2) / 2;
 
+  if (skoash.trigger('getState').mobile) this.speed *= 3;
+
   this.component = component;
   this.image = ReactDOM.findDOMNode(component);
 
