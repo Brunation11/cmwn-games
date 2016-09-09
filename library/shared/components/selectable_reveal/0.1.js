@@ -93,6 +93,8 @@ class SelectableReveal extends skoash.Component {
         checkComplete={this.props.revealCheckComplete}
         openOnStart={this.props.openOnStart}
         hide={this.props.hideReveal}
+        openReveal={this.props.openReveal}
+        onOpen={this.props.onOpen}
       />
     );
   }

@@ -26,6 +26,8 @@ class Reveal extends skoash.Component {
         this.refs[key].complete();
       }
     });
+
+    this.callProp('onOpen', message);
   }
 
   close() {

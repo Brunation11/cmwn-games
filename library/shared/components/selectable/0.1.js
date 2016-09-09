@@ -97,6 +97,12 @@ class Selectable extends skoash.Component {
       classes,
     });
 
+    this.callProp('selectRespond', dataRef);
+
+    if (this.props.chooseOne) {
+      this.requireForComplete = [dataRef];
+    }
+
     if (this.props.dataTarget) {
       this.updateGameState({
         path: this.props.dataTarget,
@@ -104,16 +110,6 @@ class Selectable extends skoash.Component {
           target: ref
         }
       });
-    }
-
-    this.callProp('selectRespond', dataRef);
-
-    if (self.props.chooseOne) {
-      self.requireForComplete = [dataRef];
-    }
-
-    if (this.props.chooseOne) {
-      this.requireForComplete = [dataRef];
     }
 
     if (this.props.completeListOnClick) {
