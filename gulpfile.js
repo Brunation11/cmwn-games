@@ -15,8 +15,7 @@ var argv = require('yargs').argv,
   sass = require('gulp-sass'),
   concat = require('gulp-concat'),
   livereload = require('gulp-livereload'),
-  inject = require('gulp-inject'),
-  shell = require('gulp-shell');
+  inject = require('gulp-inject');
 
 function lsd(_path) {
   return fs.readdirSync(_path).filter(function (file) {
@@ -208,47 +207,3 @@ gulp.task('watch', function () {
 });
 
 gulp.task('w', ['watch']);
-
-// grep -R "audio_sequence/0.1" library/**/components/*.js
-/*
- * CORE-2290
- * Create a script (or gulp task) that determines which games
- * are using which shared components and which shared components
- * are being used by which games.
- */
-gulp.task('component-summary', function (){
-  // gulp.src('library/**/components/*.js')
-  // var game = (games.length === 1) ? games[0] : '**';
-
-  // return gulp.src(path.join('./library', game, 'components/*.js'), {read: false})
-  // return gulp.src('./library/shared/components/**/*.js', {read: false})
-  return gulp.src('./library/shared/components/**/*.js', {read: false})
-    .pipe(shell([
-      'echo <%= f(file.path) %>',
-      // '<%= f(file.path) %>',
-      // 'ls -l <%= file.path %>',
-      'grep -R "<%= f(file.path) %>" library/**/components/*.js',
-      // 'grep -R "<%= f(file.path) %>" ' + path.join('./library', game, 'components/*.js')
-    ], {
-      templateData: {
-        f: function (s) {
-          var c = s.split('library/shared/components/')[1].split('.js')[0];
-          return c;
-          // if (s.indexOf('library/' + game) !== -1) return game;
-          // return gulp.src(path.join('./library', game, 'components/*.js'), {read: false})
-          //   .pipe(shell([
-          //     'grep -R "audio_sequence/0.1" <%= f(file.path) %>'
-          //   ], {
-          //     templateData: {
-          //       f: function (s) {
-          //         var c = s.split('library/shared/components/')[1].split('.js')[0];
-          //         // return c;
-          //         return gulp.src(path.join('./library', game, 'components/*.js'), {read: false})
-          //           .pipe();
-          //       }
-          //     }
-          //   }));
-        }
-      }
-    }));
-});
