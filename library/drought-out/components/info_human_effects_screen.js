@@ -7,7 +7,7 @@ export default function (props, ref, key) {
       id="info-human-effects"
       className="large-frame"
     >
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_11/VO_11.1.mp3"/>
+      <skoash.Audio type="voiceOver" src="media/S_11/VO_11.1.mp3"/>
       <skoash.Component className="frame animated">
         <p>
           Drought is very<br /> bad for<br /> humans too.
