@@ -55,25 +55,25 @@ games = (function () {
 
 nolivereload = argv.nolr;
 
-buildDevTask = ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs'];
+buildDevTask = ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs', 'clean'];
 gulp.task('default', buildDevTask);
 gulp.task('build-dev', buildDevTask);
 
 // Production build
-buildTask = ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs'];
+buildTask = ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs', 'clean'];
 gulp.task('build', buildTask);
 gulp.task('b', buildTask);
 
 gulp.task('webpack:build-dev', function (callback) {
-  games.forEach(function (_game, _index) {
-    var config = defineEntries(webpackDevConfig, _game);
+  games.forEach(function (game, index) {
+    var config = defineEntries(webpackDevConfig, game);
 
     webpack(config).run(function (err, stats) {
       if (err) throw new gutil.PluginError('webpack:build-dev', err);
       gutil.log('[webpack:build-dev]', stats.toString({
         colors: true
       }));
-      if (_index === games.length - 1) {
+      if (index === games.length - 1) {
         callback();
       }
     });
@@ -81,8 +81,8 @@ gulp.task('webpack:build-dev', function (callback) {
 });
 
 gulp.task('webpack:build', function (callback) {
-  games.forEach(function (_game, _index) {
-    var config = defineEntries(webpackProdConfig, _game);
+  games.forEach(function (game, index) {
+    var config = defineEntries(webpackProdConfig, game);
 
     // run webpack
     webpack(config, function (err, stats) {
@@ -90,7 +90,7 @@ gulp.task('webpack:build', function (callback) {
       gutil.log('[webpack:build]', stats.toString({
         colors: true
       }));
-      if (_index === games.length - 1) {
+      if (index === games.length - 1) {
         callback();
       }
     });
@@ -98,16 +98,16 @@ gulp.task('webpack:build', function (callback) {
 });
 
 gulp.task('sass', function () {
-  games.forEach(function (_game) {
+  games.forEach(function (game) {
     gulp
-      .src(['./library/' + _game + '/**/*.scss',
-          './library/' + _game + '/**/*.css'])
+      .src(['./library/' + game + '/**/*.scss',
+          './library/' + game + '/**/*.css'])
       .pipe(sass().on('error', sass.logError))
       .pipe(concat('style.css'))
       .pipe(sourcemaps.init())
       .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest('./build/' + _game + '/css'))
+      .pipe(gulp.dest('./build/' + game + '/css'))
       .pipe(livereload());
   });
 
@@ -122,9 +122,9 @@ gulp.task('sass', function () {
 });
 
 gulp.task('copy-index', function () {
-  games.forEach(function (_game) {
+  games.forEach(function (game) {
     gulp
-      .src(path.join('./library', _game, 'index.html'))
+      .src(path.join('./library', game, 'index.html'))
       // include the following code where you want the livereload script to be injected
       /*
         <!-- inject:livereload -->
@@ -136,11 +136,11 @@ gulp.task('copy-index', function () {
           if (livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
         }
       }))
-      .pipe(gulp.dest('./build/' + _game));
+      .pipe(gulp.dest('./build/' + game));
 
     gulp
-      .src(path.join('./library', _game, 'source/screens/*'))
-      .pipe(gulp.dest('./build/' + _game + '/screens'));
+      .src(path.join('./library', game, 'source/screens/*'))
+      .pipe(gulp.dest('./build/' + game + '/screens'));
   });
 });
 
@@ -151,10 +151,10 @@ gulp.task('copy-framework', function () {
 });
 
 gulp.task('copy-media', ['copy-index'], function () {
-  games.forEach(function (_game) {
+  games.forEach(function (game) {
     gulp
-      .src(path.join( './library', _game, 'media/**/*' ))
-      .pipe( gulp.dest(path.join( './build', _game, 'media' )) );
+      .src(path.join( './library', game, 'media/**/*' ))
+      .pipe( gulp.dest(path.join( './build', game, 'media' )) );
   });
 
   gulp
@@ -167,18 +167,18 @@ gulp.task('copy-media', ['copy-index'], function () {
 });
 
 gulp.task('copy-components', ['copy-media'], function () {
-  games.forEach(function (_game) {
+  games.forEach(function (game) {
     gulp
-      .src(path.join( './library', _game, 'source/js/components/**/*.html' ))
-      .pipe( gulp.dest(path.join( './build', _game, 'components' )) );
+      .src(path.join( './library', game, 'source/js/components/**/*.html' ))
+      .pipe( gulp.dest(path.join( './build', game, 'components' )) );
   });
 });
 
 gulp.task('copy-thumbs', ['copy-components'], function () {
-  games.forEach(function (_game) {
+  games.forEach(function (game) {
     gulp
-      .src(path.join( './library', _game, 'thumb.jpg' ))
-      .pipe( gulp.dest('./build/' + _game) );
+      .src(path.join( './library', game, 'thumb.jpg' ))
+      .pipe( gulp.dest('./build/' + game) );
   });
 });
 
