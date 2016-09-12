@@ -9,7 +9,7 @@ export default function (props, ref, key) {
         //   <skoash.Audio ref="1" type="sfx" src="media/S_1/S_1.2.mp3" />
         // </skoash.MediaSequence>
         // <skoash.Image ref="img" className="scanner animated" src="media/S_1/img_1.1.gif" />
-  var TitleScreen = (
+  return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -33,5 +33,4 @@ export default function (props, ref, key) {
       </skoash.Component>
     </skoash.Screen>
   );
-  return TitleScreen;
 }
