@@ -16,7 +16,9 @@ var argv = require('yargs').argv,
   concat = require('gulp-concat'),
   livereload = require('gulp-livereload'),
   inject = require('gulp-inject'),
-  exec = require('child_process').exec;
+  exec = require('child_process').exec,
+  buildDevTask,
+  buildTask;
 
 function lsd(_path) {
   return fs.readdirSync(_path).filter(function (file) {
@@ -53,14 +55,14 @@ games = (function () {
 
 nolivereload = argv.nolr;
 
-gulp.task('default', ['build-dev']);
-
-gulp.task('build-dev', ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
+buildDevTask = ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs'];
+gulp.task('default', buildDevTask);
+gulp.task('build-dev', buildDevTask);
 
 // Production build
-gulp.task('build', ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs']);
-
-gulp.task('b', ['build']);
+buildTask = ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs'];
+gulp.task('build', buildTask);
+gulp.task('b', buildTask);
 
 gulp.task('webpack:build-dev', function (callback) {
   games.forEach(function (_game, _index) {
@@ -180,19 +182,9 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
   });
 });
 
-// To specify what game you'd like to copy play components into call gulp play-components --game game-name
-// Replace game-name with the name of the game
-gulp.task('play-components', function () {
-  games.forEach(function (_game) {
-    gulp
-      .src( './node_modules/js-interactive-library/components/**/*' )
-      .pipe( gulp.dest(path.join( './library', _game, 'source/js/components' )) );
-  });
-});
-
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
-gulp.task('watch', function () {
+function watchTask() {
   if (!nolivereload) livereload.listen();
   var game = (games.length > 1) ? '**' : games[0];
   watch([
@@ -205,13 +197,14 @@ gulp.task('watch', function () {
     'library/' + game + '/**/*.html'], function () {
     gulp.start('build-dev');
   });
-});
+}
+gulp.task('watch', watchTask);
+gulp.task('w', watchTask);
 
-gulp.task('w', ['watch']);
-
-gulp.task('clean', function () {
+function cleanTask() {
   exec('delete-invalid-files.sh', function (err, stdout, stderr) {
     console.log(stdout); // eslint-disable-line no-console
     console.log(stderr); // eslint-disable-line no-console
   });
-});
+}
+gulp.task('clean', cleanTask);

@@ -4,5 +4,6 @@ for file in ./build/**/* ./build/**/**/* ./build/**/**/**/* ./build/**/**/**/**/
   # pat="^.*[^A-Za-z0-9\/\._\\\-]+.*$"
   if [[ $file =~ $pat ]]; then
     echo $file
+    rm -fr "$file"
   fi
 done
