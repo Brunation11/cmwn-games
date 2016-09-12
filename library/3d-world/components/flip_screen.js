@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function (props, ref, key) {
       // <skoash.MediaSequence>
       //   <skoash.Audio
@@ -30,16 +28,11 @@ export default function (props, ref, key) {
       <div className="frame">
         <div>
           <p>
-            You've just fingerprinted your way<br/>
-            to a brand new
+            Now you’ve learned about <span>3D PRINTING…</span>
           </p>
-          <div className={'flip' +
-            (_.get(props, 'data.vo.complete') ? ' animated' : '')}>
-            <div className="animated" />
-            <div className="animated" />
-            <div className="animated" />
-            <div className="animated" />
-          </div>
+          <p>
+            Let’s print you out a new <span>FLIP</span>
+          </p>
         </div>
       </div>
 
