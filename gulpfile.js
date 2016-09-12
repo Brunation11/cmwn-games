@@ -55,6 +55,9 @@ games = (function () {
 
 nolivereload = argv.nolr;
 
+// the clean task still does not always run last
+// this should be updated to make sure clean gets run after all other tasks
+// here and in the production build
 buildDevTask = ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs', 'clean'];
 gulp.task('default', buildDevTask);
 gulp.task('build-dev', buildDevTask);
