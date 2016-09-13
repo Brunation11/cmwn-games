@@ -16,9 +16,25 @@ class DropzoneReveal extends skoash.Component {
     this.refs.dropzone.complete();
   }
 
+  correctRespond(message, dropzoneKey) {
+    this.dropRespond(message);
+
+    this.callCorrectRespond(message, dropzoneKey);
+  }
+
+  incorrectRespond(message, dropzoneKey) {
+    this.dropRespond(message);
+  }
+
   dropRespond(message) {
     if (typeof this.refs.reveal.open === 'function') {
       this.refs.reveal.open(message);
+    }
+  }
+    
+  callCorrectRespond(message, dropzoneKey) {
+    if (typeof this.props.correctRespond === 'function') {
+      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -61,8 +77,8 @@ class DropzoneReveal extends skoash.Component {
         draggablesLeft={this.props.dropzoneDraggablesLeft}
         draggablesRight={this.props.dropzoneDraggablesRight}
         assets={this.props.dropzoneAssets}
-        correctRespond={this.dropRespond.bind(this)}
-        incorrectRespond={this.dropRespond.bind(this)}
+        correctRespond={this.correctRespond.bind(this)}
+        incorrectRespond={this.incorrectRespond.bind(this)}
       />
     );
   }

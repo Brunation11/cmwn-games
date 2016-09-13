@@ -6,7 +6,14 @@ class Selectable extends skoash.Component {
     super();
 
     this.state = {
+      selectClass: 'SELECTED',
       classes: {},
+      list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+      ],
       selectFunction: this.select,
     };
   }
@@ -16,7 +23,8 @@ class Selectable extends skoash.Component {
 
     var selectClass, selectFunction, classes = {};
 
-    selectClass = this.props.selectClass;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     if (this.props.selectOnStart) {
@@ -34,7 +42,7 @@ class Selectable extends skoash.Component {
   bootstrap() {
     super.bootstrap();
     var self = this;
- 
+
     var correctAnswers = this.requireForComplete.filter((ref) => {
       return self.refs[ref].props.correct;
     });
@@ -51,31 +59,63 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var dataRef, index, target, id, list;
-    var self = this;
+    var ref, dataRef, target, id, isCorrect, self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
-    index = dataRef = target.getAttribute('data-ref');
-    id = target.getAttribute('id');
+    dataRef = target.getAttribute('data-ref');
+    ref = this.refs[dataRef];
 
-    if ('' + parseInt(index, 10) !== index) {
-      list = this.state.list || this.props.list;
-      index = list.findIndex(li => {
-        return li.props.id === id;
-      });
+    if (this.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else {
+      classes[dataRef] = this.state.selectClass;
     }
 
-    classes[index] = this.props.selectClass;
+    if (JSON.stringify(this.state.classes) === JSON.stringify(classes)) return;
 
-    this.setState({
+    isCorrect = (
+        ref && ref.props && ref.props.correct
+      ) || (
+        !this.props.answers || !this.props.answers.length ||
+        this.props.answers.indexOf(dataRef) !== -1
+      );
+
+    if (self.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else if (isCorrect) {
+      classes[dataRef] = self.state.selectClass;
+    }
+
+    self.setState({
       classes,
     });
 
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(dataRef);
+    this.callProp('selectRespond', dataRef);
+
+    if (this.props.chooseOne) {
+      this.requireForComplete = [dataRef];
+    }
+
+    if (this.props.dataTarget) {
+      this.updateGameState({
+        path: this.props.dataTarget,
+        data: {
+          target: ref
+        }
+      });
+    }
+
+    if (this.props.completeListOnClick) {
+      self.requireForComplete.map(key => {
+        if (key === dataRef && self.refs[key]) {
+          self.refs[key].complete();
+        } else if (key === id && self.refs[id]) {
+          self.refs[id].complete();
+        }
+      });
     }
 
     this.requireForComplete.forEach(key => {
@@ -93,12 +133,16 @@ class Selectable extends skoash.Component {
   }
 
   highlight(e) {
-    var classes = this.state.classes;
+    var classes = _.clone(this.state.classes);
     this.selectHelper(e, classes);
   }
 
   getClass(key, li) {
-    return classNames(li.props.className, this.state.classes[key]);
+    return classNames(
+      li.props.className,
+      this.state.classes[key],
+      this.state.classes[li.props['data-ref']]
+    );
   }
 
   getClassNames() {
@@ -142,7 +186,8 @@ class Selectable extends skoash.Component {
   }
 
   renderList() {
-    return this.props.list.map((li, key) => {
+    var list = this.props.list || this.state.list;
+    return list.map((li, key) => {
       var dataRef = li.props['data-ref'] || key;
       var ref = li.ref || li.props.id || dataRef;
       var message = li.props.message || '' + key;
@@ -152,8 +197,8 @@ class Selectable extends skoash.Component {
           type="li"
           className={this.getClass(key, li)}
           message={message}
+          data-message={message}
           data-ref={dataRef}
-          data-message={li.props.message}
           ref={ref}
           key={key}
         />
@@ -174,13 +219,7 @@ class Selectable extends skoash.Component {
 }
 
 Selectable.defaultProps = _.defaults({
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  selectClass: 'SELECTED'
+  completeListOnClick: true
 }, skoash.Component.defaultProps);
 
 export default Selectable;

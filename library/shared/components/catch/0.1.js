@@ -224,7 +224,7 @@ class Catch extends skoash.Component {
 
   render() {
     return (
-      <div ref="catch-component" className={'catch' + this.getClasses()}>
+      <div ref="catch-component" className={'catch ' + this.getClasses()}>
         <ul className="items">
           {this.renderCatchables()}
         </ul>

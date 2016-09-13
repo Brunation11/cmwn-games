@@ -59,7 +59,7 @@
     $hover-tops: -50 -41 -40 -50 -285 -275 -265 -265 -520 -510 -500 -500 -750 -740 -750 -975 -965 -985 -1220 -1210 -1220;
 
     @for $i from 1 through 21 {
-      &[id=#{nth($items,$i)}] {
+      &[data-ref=#{nth($items,$i)}] {
         width: nth($widths,$i)+px;
         height: nth($heights,$i)+px;
         left: nth($lefts,$i)+px;

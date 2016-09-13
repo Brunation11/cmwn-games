@@ -215,6 +215,13 @@ class Dropzone extends skoash.Component {
         </ul>
       );
     }
+    if (this.props.moreDraggables) { // TODO: refactor out moreDraggables -> draggablesRight AIM 9/13/16
+      draggablesRight = (
+        <ul>
+          {this.renderDraggables('moreDraggables')}
+        </ul>
+      );
+    }
     if (this.props.draggablesRight) {
       draggablesRight = (
         <ul>

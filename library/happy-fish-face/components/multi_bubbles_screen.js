@@ -9,14 +9,17 @@ class MultiBubblesScreenComponent extends skoash.Screen {
   start() {
     super.start();
 
-    if (this.state.return) this.refs.score.setScore(0);
+    if (this.state.replay) this.refs.score.setScore(0);
+
+    this.changeScore = this.changeScore.bind(this);
   }
 
   changeScore(message) {
-    if (message === 'incorrect') {
-      this.refs.score.down();
-    } else {
+    var component = this.refs['selectable-audio'].refs.selectable.refs[message];
+    if (component && component.props.correct) {
       this.refs.score.up();
+    } else {
+      this.refs.score.down();
     }
   }
 
@@ -25,27 +28,27 @@ class MultiBubblesScreenComponent extends skoash.Screen {
       <SelectableAudio
         ref="selectable-audio"
         selectableList={[
-          <skoash.ListItem correct id="swim" data-ref="swim" />,
-          <skoash.ListItem correct id="runFactories" data-ref="runFactories" />,
-          <skoash.ListItem correct id="washFace" data-ref="washFace" />,
-          <skoash.ListItem correct id="drinkIt" data-ref="drinkIt" />,
-          <skoash.ListItem id="playBasketball" data-ref="incorrect" />,
-          <skoash.ListItem correct id="brushTeeth" data-ref="brushTeeth" />,
-          <skoash.ListItem id="tellTime" data-ref="incorrect" />,
-          <skoash.ListItem correct id="takeShowers" data-ref="takeShowers" />,
-          <skoash.ListItem correct id="cleanHouse" data-ref="cleanHouse" />,
-          <skoash.ListItem correct id="cook" data-ref="cook" />,
-          <skoash.ListItem id="crochet" data-ref="incorrect" />,
-          <skoash.ListItem correct id="growCrops" data-ref="growCrops" />,
-          <skoash.ListItem id="zipline" data-ref="incorrect" />,
-          <skoash.ListItem id="read" data-ref="incorrect" />,
-          <skoash.ListItem correct id="laundry" data-ref="laundry" />,
-          <skoash.ListItem id="drive" data-ref="incorrect" />,
-          <skoash.ListItem correct id="washDishes" data-ref="washDishes" />,
-          <skoash.ListItem id="sleep" data-ref="incorrect" />,
-          <skoash.ListItem id="tapDance" data-ref="incorrect" />,
-          <skoash.ListItem id="flyAKite" data-ref="incorrect" />,
-          <skoash.ListItem id="talk" data-ref="incorrect" />,
+          <skoash.ListItem correct data-ref="swim" />,
+          <skoash.ListItem correct data-ref="runFactories" />,
+          <skoash.ListItem correct data-ref="washFace" />,
+          <skoash.ListItem correct data-ref="drinkIt" />,
+          <skoash.ListItem data-ref="playBasketball" />,
+          <skoash.ListItem correct data-ref="brushTeeth" />,
+          <skoash.ListItem data-ref="tellTime" />,
+          <skoash.ListItem correct data-ref="takeShowers" />,
+          <skoash.ListItem correct data-ref="cleanHouse" />,
+          <skoash.ListItem correct data-ref="cook" />,
+          <skoash.ListItem data-ref="crochet" />,
+          <skoash.ListItem correct data-ref="growCrops" />,
+          <skoash.ListItem data-ref="zipline" />,
+          <skoash.ListItem data-ref="read" />,
+          <skoash.ListItem correct data-ref="laundry" />,
+          <skoash.ListItem data-ref="drive" />,
+          <skoash.ListItem correct data-ref="washDishes" />,
+          <skoash.ListItem data-ref="sleep" />,
+          <skoash.ListItem data-ref="tapDance" />,
+          <skoash.ListItem data-ref="flyAKite" />,
+          <skoash.ListItem data-ref="talk" />,
         ]}
         audioAssets={[
           <skoash.Audio data-ref="swim" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_Swim.mp3" />,
@@ -61,7 +64,7 @@ class MultiBubblesScreenComponent extends skoash.Screen {
           <skoash.Audio data-ref="washDishes" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WashDishes.mp3" />,
           <skoash.Audio data-ref="incorrect" type="sfx" src="media/_audio/_S_MultiBubbles/HFF_SX_Wrong.mp3" complete />,
         ]}
-        selectRespond={this.changeScore.bind(this)}
+        selectRespond={this.changeScore}
         selectClass="HIGHLIGHTED"
       />
     );
@@ -109,6 +112,7 @@ export default function (props, ref, key) {
           <skoash.Image src="media/_images/_S_MultiBubbles/img_7.2.png" />
         }
         checkComplete={false}
+        complete
         increment={INCREMENT}
         downIncrement={DECREMENT}
       />

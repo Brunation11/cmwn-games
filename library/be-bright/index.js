@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -33,6 +35,8 @@ class BeBright extends skoash.Game {
     this.menus = {
       quit: QuitScreen,
     };
+
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {

@@ -1,20 +1,16 @@
 import classNames from 'classnames';
+import _ from 'lodash';
 
 class Reveal extends skoash.Component {
   constructor() {
     super();
 
-    this.list = [
-      <li></li>,
-      <li></li>,
-      <li></li>,
-      <li></li>
-    ];
-
     this.state = {
       openReveal: '',
       currentlyOpen: []
     };
+
+    this.index = 0;
   }
 
   incomplete() {
@@ -27,21 +23,23 @@ class Reveal extends skoash.Component {
   }
 
   open(message) {
-    var self = this;
     var currentlyOpen = this.state.currentlyOpen.concat(message);
 
     this.setState({
       open: true,
-      openReveal: message,
       currentlyOpen,
+      openReveal: '' + message,
     });
 
     this.playAudio(message);
 
-    this.requireForComplete.forEach(item => {
-      if (item === message && self.refs[item]) self.refs[item].complete(); 
-    });
+    this.callProp('onOpen', message);
 
+    this.requireForComplete.forEach(key => {
+      if (key === message && this.refs[key]) {
+        this.refs[key].complete();
+      }
+    });
   }
 
   close() {
@@ -55,17 +53,25 @@ class Reveal extends skoash.Component {
       currentlyOpen,
     });
 
+    if (this.audio['close-sound']) {
+      this.audio['close-sound'].play();
+    }
+
+    this.callProp('onClose');
+
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
     }
   }
 
   start() {
-    skoash.Component.prototype.start.call(this);
-    this.close();
-
+    super.start();
     if (this.props.openOnStart != null) {
       this.open(this.props.openOnStart);
+    } else if (this.props.start && typeof this.props.start === 'function') {
+      this.props.start.call(this);
+    } else {
+      this.close();
     }
   }
 
@@ -87,7 +93,7 @@ class Reveal extends skoash.Component {
         if (this.audio[audio]) {
           this.audio[audio].play();
         } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
-          this.media[audio].play()
+          this.media[audio].play();
         }
       });
     } else {
@@ -101,13 +107,13 @@ class Reveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         var ref = 'asset-';
-        ref += asset.props['data-ref'] || key;
+        ref += asset.ref || asset.props['data-ref'] || key;
         return (
           <asset.type
             {...asset.props}
+            data-ref={ref}
             ref={ref}
             key={key}
-            data-ref={key}
           />
         );
       });
@@ -117,21 +123,30 @@ class Reveal extends skoash.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.list;
+    var list = this.props.list;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <li.type
           {...li.props}
-          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={ref}
+          ref={key}
           key={key}
         />
       );
     });
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
+      this.open(props.openReveal);
+    }
+
+    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
+      this.close();
+    }
   }
 
   getClass(li, key) {
@@ -151,7 +166,7 @@ class Reveal extends skoash.Component {
 
   getClassNames() {
     var classes;
-    var open = 'none-open';
+    var open = 'open-none ';
 
     if (this.state.open) {
       open = '';
@@ -184,5 +199,14 @@ class Reveal extends skoash.Component {
     );
   }
 }
+
+Reveal.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+}, skoash.Component.defaultProps);
 
 export default Reveal;
