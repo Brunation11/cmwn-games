@@ -5,7 +5,6 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import ImagineScreen from './components/imagine_screen';
-import AlreadyExistsScreen from './components/already_exists_screen';
 import LetsLearnScreen from './components/lets_learn_screen';
 import VideoScreen from './components/video_screen';
 import ManyMaterialsScreen from './components/many_materials_screen';
@@ -33,17 +32,16 @@ var ThreeDWorld = (
       0: iOSScreen,
       1: TitleScreen,
       2: ImagineScreen,
-      3: AlreadyExistsScreen,
-      4: LetsLearnScreen,
-      5: VideoScreen,
-      6: ManyMaterialsScreen,
-      7: SortGameScreen,
-      8: HelpTheWorldScreen,
-      9: BunchOfProblemsScreen,
-      10: PrinterScreen,
-      11: NowTheYouLearnedScreen,
-      12: ListScreen,
-      13: FlipScreen,
+      3: LetsLearnScreen,
+      4: VideoScreen,
+      5: ManyMaterialsScreen,
+      6: SortGameScreen,
+      7: HelpTheWorldScreen,
+      8: BunchOfProblemsScreen,
+      9: PrinterScreen,
+      10: NowTheYouLearnedScreen,
+      11: ListScreen,
+      12: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
