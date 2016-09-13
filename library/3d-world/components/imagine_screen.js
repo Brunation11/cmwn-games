@@ -18,17 +18,31 @@ export default function (props, ref, key) {
         className="hidden"
         src="media/_sprites/spritesheet-minion-characters_.png"
       />
+      <skoash.Image
+        className="hidden"
+        src="media/03-05/img-speechballoon.png"
+      />
       <div className="right">
         <div className="words">
-          <div>
-            Imagine a magical item
-          </div>
-          <div>
-            that can make anything
-          </div>
-          <div>
-            you can think of!
-          </div>
+          <skoash.Image
+            className="text imagine"
+            src="media/03-05/text-01.png"
+          />
+          <skoash.Image
+            className="text already"
+            src="media/03-05/text-01.png"
+          />
+          {/*
+            <div>
+              Imagine a magical item
+            </div>
+            <div>
+              that can make anything
+            </div>
+            <div>
+              you can think of!
+            </div>
+          */}
         </div>
         <div className="minion" />
       </div>

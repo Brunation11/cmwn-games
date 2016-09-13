@@ -310,6 +310,38 @@ p {
   .answer {
     opacity: 0;
   }
+
+  .right {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .words {
+    position: relative;
+    background-image: url(../media/03-05/img-speechballoon.png);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    width: 320px;
+    height: 160px;
+    margin-top: 60px;
+  }
+
+  .text {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .minion {
+    background-image: url(../media/_sprites/spritesheet-minion-characters_.png);
+    background-position: -120px -240px;
+    background-size: 3000px;
+    width: 320px;
+    height: 320px;
+  }
 }
 
 #flip {
