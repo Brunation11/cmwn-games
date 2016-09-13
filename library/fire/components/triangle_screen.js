@@ -28,12 +28,10 @@ class TriangleScreenComponent extends skoash.Screen {
   open() {
     super.open();
 
-    if (this.state.replay) {
-      this.checkComplete = null;
-      this.refs['dropzone-reveal'].incompleteRefs();
-      this.incomplete();
-      this.checkComplete = super.checkComplete;
-    }
+    this.checkComplete = null;
+    this.refs['dropzone-reveal'].incompleteRefs();
+    this.incomplete();
+    this.checkComplete = super.checkComplete;
   }
 }
 

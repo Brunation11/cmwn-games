@@ -136,13 +136,14 @@ class Reveal extends skoash.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+      var dataRef = li.props['data-ref'] || key;
+      var ref = li.ref || dataRef;
       return (
         <li.type
           {...li.props}
           type="li"
           className={this.getClass(li, key)}
-          data-ref={ref}
+          data-ref={dataRef}
           ref={ref}
           key={key}
         />
