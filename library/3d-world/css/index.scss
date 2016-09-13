@@ -99,23 +99,31 @@ button {
 
   &.next-screen,
   &.prev-screen {
-    width: 165px;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 2;
+    width: 150px;
     height: 45px;
   }
 
   &.next-screen {
-    background-position: -340px -55px;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    background-position: -180px -5px;
 
     &:hover {
-      background-position: -340px -205px;
+      background-position: -180px -60px;
     }
   }
 
   &.prev-screen {
-    background-position: -195px -55px;
+    display: none;
+    background-position: -340px -5px;
 
     &:hover {
-      background-position: -195px -205px;
+      background-position: -340px -60px;
     }
   }
 
@@ -203,20 +211,6 @@ p {
   opacity: 1;
   transform: translateX(-100%);
 }
-
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    z-index: 2;
-  }
-
-  .screen .next-screen {
-    right: 0;
-    opacity: 0;
-    pointer-events: none;
-  }
 
   .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
   .screen.GATED .next-screen {

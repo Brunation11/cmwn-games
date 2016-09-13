@@ -69,8 +69,14 @@ var ThreeDWorld = (
     ]}
     getBackgroundIndex={(index) => {
       switch (true) {
-      case index === 3: return 1;
-      default: return 0;
+      case index === 0: return;
+      case index === 1: return 0;
+      case index <= 3: return 1;
+      case index <= 6: return 2;
+      case index === 7: return 3;
+      case index <= 9: return 4;
+      case index === 10: return 5;
+      default: return 2;
       }
     }}
   />

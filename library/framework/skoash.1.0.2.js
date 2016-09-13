@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2b7d88dada01de6f16d8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2d38c9604b05de3ba33a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1759,10 +1759,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Keeping window.play for now as to not break games.
-	// Once the games are fixed, I will remove this.
-	// TDOD - AW 2016-06-25
-	window.play = window.skoash = {
+	window.skoash = {
 	  Component: _component2.default,
 	  Screen: _screen2.default,
 	  Game: _game2.default,
@@ -47668,7 +47665,7 @@
 	    value: function play() {
 	      // this should be implemented per media
 	      // and the class that extends media should
-	      // call super.play() inside if its play method
+	      // call super.play() inside of its play method
 	      if (this.props.playTarget) {
 	        this.updateGameState({
 	          path: this.props.playTarget,
@@ -47933,29 +47930,17 @@
 /* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _redboxReact2 = __webpack_require__(14);
-
-	var _redboxReact3 = _interopRequireDefault(_redboxReact2);
-
-	var _reactTransformCatchErrors3 = __webpack_require__(177);
-
-	var _reactTransformCatchErrors4 = _interopRequireDefault(_reactTransformCatchErrors3);
-
-	var _react2 = __webpack_require__(15);
-
-	var _react3 = _interopRequireDefault(_react2);
-
-	var _reactTransformHmr3 = __webpack_require__(178);
-
-	var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _lodash = __webpack_require__(318);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
 
 	var _component = __webpack_require__(13);
 
@@ -47969,39 +47954,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _components = {
-	  ListItem: {
-	    displayName: 'ListItem'
-	  }
-	};
-
-	var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
-	  filename: '/Users/adamwalzer/Sites/js-interactive-library/src/components/list_item.js',
-	  components: _components,
-	  locals: [module],
-	  imports: [_react3.default]
-	});
-
-	var _reactTransformCatchErrors2 = (0, _reactTransformCatchErrors4.default)({
-	  filename: '/Users/adamwalzer/Sites/js-interactive-library/src/components/list_item.js',
-	  components: _components,
-	  locals: [],
-	  imports: [_react3.default, _redboxReact3.default]
-	});
-
-	function _wrapComponent(id) {
-	  return function (Component) {
-	    return _reactTransformHmr2(_reactTransformCatchErrors2(Component, id), id);
-	  };
-	}
-
-	var ListItem = _wrapComponent('ListItem')(function (_Component) {
+	var ListItem = function (_Component) {
 	  _inherits(ListItem, _Component);
 
 	  function ListItem() {
 	    _classCallCheck(this, ListItem);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ListItem).call(this));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ListItem).apply(this, arguments));
 	  }
 
 	  _createClass(ListItem, [{
@@ -48011,23 +47970,17 @@
 	        this.complete();
 	      }
 	    }
-	  }, {
-	    key: 'checkComplete',
-	    value: function checkComplete() {
-	      // list items should not check for being complete
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement('li', this.props);
-	    }
 	  }]);
 
 	  return ListItem;
-	}(_component2.default));
+	}(_component2.default);
+
+	ListItem.defaultProps = _lodash2.default.defaults({
+	  checkComplete: false,
+	  type: 'li'
+	}, _component2.default.defaultProps);
 
 		exports.default = ListItem;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ },
 /* 330 */
@@ -48106,15 +48059,10 @@
 
 	var _do_intersect2 = _interopRequireDefault(_do_intersect);
 
-	var _floor = __webpack_require__(334);
-
-	var _floor2 = _interopRequireDefault(_floor);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var util = {
-	  doIntersect: _do_intersect2.default,
-	  floor: _floor2.default
+	  doIntersect: _do_intersect2.default
 	};
 
 		exports.default = util;
@@ -48195,22 +48143,6 @@
 	};
 
 	exports.default = doIntersect;
-
-/***/ },
-/* 334 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var floor = function floor(a, b) {
-	  var c = b ? Math.pow(10, b) : 1;
-	  return Math.floor(a * c) / c;
-	};
-
-	exports.default = floor;
 
 /***/ }
 /******/ ]);
