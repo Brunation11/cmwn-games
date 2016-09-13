@@ -14,7 +14,9 @@ class Dropzone extends skoash.Component {
       <Draggable message={'drag'}>drag me!</Draggable>,
       <Draggable message={'return'} return={true} >return</Draggable>
     ];
-      
+
+    this.moreDraggables = [];
+
     this.contains = [];
 
     this.dropRespond = this.dropRespond.bind(this);
@@ -63,10 +65,11 @@ class Dropzone extends skoash.Component {
   componentWillMount() {
     this.dropzones = this.props.dropzones || this.dropzones;
     this.draggables = this.props.draggables || this.draggables;
+    this.moreDraggables = this.props.moreDraggables || this.moreDraggables;
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
   }
 
@@ -157,6 +160,18 @@ class Dropzone extends skoash.Component {
 
   renderDraggables() {
     return this.draggables.map((item, key) =>
+      <li key={key}>
+        <Draggable
+          {...item.props}
+          dragRespond={this.dragRespond}
+          dropRespond={this.dropRespond}
+        />
+      </li>
+    );
+  }
+
+  renderMoreDraggables() {
+    return this.moreDraggables.map((item, key) =>
       <li key={key}>
         <Draggable
           {...item.props}

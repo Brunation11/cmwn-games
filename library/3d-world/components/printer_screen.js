@@ -16,7 +16,9 @@ export default function (props, ref, key) {
       id="printer"
     >
       <Target
-
+        targets={[
+          <skoash.Component />
+        ]}
       />
       <Dropzone
 

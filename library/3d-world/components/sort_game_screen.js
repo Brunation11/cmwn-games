@@ -30,7 +30,9 @@ export default function (props, ref, key) {
           />
         }
       />
-      <Catch />
+      <Catch
+        bucket={<div />}
+      />
       <Reveal
         openOnStart="0"
         list={[

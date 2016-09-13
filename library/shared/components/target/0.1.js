@@ -104,4 +104,8 @@ class Target extends skoash.Component {
   }
 }
 
+Target.defaultProps = _.defaults({
+  targets: [<skoash.Component />],
+}, skoash.Component.defaultProps);
+
 export default Target;
