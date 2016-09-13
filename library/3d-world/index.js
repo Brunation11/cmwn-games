@@ -13,27 +13,21 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 // import 'shared/js/test-platform-integration';
 
 class TheeDWorld extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
-      0: iOSScreen,
-      1: TitleScreen,
-      2: FlipScreen,
-    };
-
-    this.state.data.screens = _.map(this.screens, () => ({}));
-
-    this.menus = {
-      quit: QuitScreen,
-    };
-  }
+  // AW - I'm leaving this here for now in case there are any necessary game extensions
 }
 
 var TheeDWorldGame = (
   <TheeDWorld
     config={config}
     loader={<Loader />}
+    screens={{
+      0: iOSScreen,
+      1: TitleScreen,
+      2: FlipScreen,
+    }}
+    menus={{
+      quit: QuitScreen,
+    }}
     assets={[
       // <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
       // <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
