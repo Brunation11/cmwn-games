@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 class AudioSequence extends skoash.Component {
   constructor() {
     super();
@@ -21,13 +23,6 @@ class AudioSequence extends skoash.Component {
 
     if (this.props.checkComplete !== false) {
       this.checkComplete();
-    }
-  }
-
-  play() {
-    if (this.refs[0]) {
-      this.playingIndex = 0;
-      this.refs[0].play();
     }
   }
 
