@@ -6,7 +6,19 @@ export default function (props, ref, key) {
       key={key}
       id="imagine"
     >
-      <skoash.Component>
+      <skoash.Image
+        className="question"
+        src="media/_Animations/frame2-wand.gif"
+      />
+      <skoash.Image
+        className="answer"
+        src="media/_Animations/frame3-wandandprinter.gif"
+      />
+      <skoash.Image
+        className="hidden"
+        src="media/_sprites/spritesheet-minion-characters_.png"
+      />
+      <div className="right">
         <div className="words">
           <div>
             Imagine a magical item
@@ -18,7 +30,8 @@ export default function (props, ref, key) {
             you can think of!
           </div>
         </div>
-      </skoash.Component>
+        <div className="minion" />
+      </div>
     </skoash.Screen>
   );
 }
