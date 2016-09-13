@@ -26,7 +26,7 @@ class DropzoneReveal extends skoash.Component {
     this.dropRespond(message);
   }
 
-  dropRespond(message) {
+  dropRespond(message, incorrect) {
     if (typeof this.refs.reveal.open === 'function') {
       this.refs.reveal.open(message);
     }
