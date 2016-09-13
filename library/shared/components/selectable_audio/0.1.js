@@ -2,23 +2,17 @@ import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableAudio extends skoash.Component {
 
-  selectRespond(data) {
-    var ref = 'asset-' + data;
-
-    if (this.refs.selectable.refs[data].props.correct) {
-      this.playAudio('asset-correct');
-    } else {
-      this.playAudio('asset-incorrect');
-    }
+  selectRespond(ref) {
+    var audioRef = 'asset-' + ref;
 
     this.playAudio(ref);
 
     if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond.call(this, data);
+      this.props.selectRespond.call(this, ref);
     }
 
     if (this.props.chooseOne) {
-      this.requireForComplete = [ref];
+      this.requireForComplete = [audioRef];
     }
   }
 
