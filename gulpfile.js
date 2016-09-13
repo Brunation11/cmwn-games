@@ -205,9 +205,11 @@ gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
 
 function cleanTask() {
-  exec('delete-invalid-files.sh', function (err, stdout, stderr) {
-    console.log(stdout); // eslint-disable-line no-console
-    console.log(stderr); // eslint-disable-line no-console
-  });
+  if (process.platform !== 'win32') { // stupid windows
+    exec('delete-invalid-files.sh', function (err, stdout, stderr) {
+      console.log(stdout); // eslint-disable-line no-console
+      console.log(stderr); // eslint-disable-line no-console
+    });
+  }
 }
 gulp.task('clean', cleanTask);
