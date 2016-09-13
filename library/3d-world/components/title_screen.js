@@ -1,6 +1,5 @@
 export default function (props, ref, key) {
       // <skoash.Audio ref="screen-complete" type="sfx" src="media/S_1/S_1.3.mp3" complete />
-      // <skoash.Image ref="bkg" className="hidden" src="media/S_1/img_1.2.png" />
         // <skoash.MediaSequence
         //   ref="media"
         //   loop
@@ -16,21 +15,8 @@ export default function (props, ref, key) {
       key={key}
       id="title"
     >
-      <skoash.Component ref="title">
-        <div className="title">
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-          <div className="animated" />
-        </div>
-      </skoash.Component>
+      <skoash.Image src="media/_title/3D-printer3.gif" />
+
     </skoash.Screen>
   );
 }

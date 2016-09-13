@@ -26,7 +26,7 @@ body, body > div, .skoash-game {
   height: 100%;
   margin: auto;
   font-size: 20px;
-  background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
+  background: url(../media/_backgrounds/bg-02.jpg) bottom center no-repeat;
   background-size: cover;
 
 
@@ -79,29 +79,28 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url(../media/_Button/BU_1.png);
-  background-size: auto 300px;
+  background-image: url(../media/_Sprites/spritesheet-mainbtns-.png);
+  background-size: 1020px;
   background-position: left top;
 
   &.close {
-    width: 36px;
-    height: 36px;
-    background-position: -508px -58px;
+    width: 165px;
+    height: 45px;
+    background-position: -340px -5px;
     position: absolute;
     right: 0;
     top: 0;
-    margin: 5px;
     z-index: 2;
 
     &:hover {
-      background-position: -508px -208px;
+      background-position: -340px -60px;
     }
   }
 
   &.next-screen,
   &.prev-screen {
-    width: 70px;
-    height: 40px;
+    width: 165px;
+    height: 45px;
   }
 
   &.next-screen {
@@ -209,17 +208,14 @@ p {
   .screen .prev-screen {
     position: absolute;
     display: block;
-    bottom: 1%;
-    margin-bottom: 5px;
+    bottom: 0;
     z-index: 2;
   }
 
   .screen .next-screen {
-    margin-right: 5px;
     right: 0;
     opacity: 0;
     pointer-events: none;
-    transform: rotate(-180deg);
   }
 
   .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
@@ -283,7 +279,25 @@ p {
 }
 
 #title {
-  text-align: center;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .prev-screen {
+    display: none;
+  }
+
+  .next-screen {
+    width: 165px;
+    background-position: 0px -5px;
+
+    &:hover {
+      background-position: 0px -60px;
+    }
+  }
 }
 
 #flip {
