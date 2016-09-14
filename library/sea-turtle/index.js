@@ -6,10 +6,10 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-//import TitleScreen from './components/title_screen';
+import TitleScreen from './components/title_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
+//import 'shared/js/test-platform-integration';
 
 class SeaTurtle extends skoash.Game {
   constructor() {
@@ -17,7 +17,7 @@ class SeaTurtle extends skoash.Game {
 
     this.screens = {
       0: iOSScreen,
-//      1: TitleScreen,
+      1: TitleScreen,
     };
 
     this.menus = {
@@ -36,6 +36,7 @@ class SeaTurtle extends skoash.Game {
   renderAssets() {
     return (
       <div>
+        <skoash.Audio ref="bkg-1" type="background" src="media/audio/SO_1.1.mp3" />
       </div>
     );
   }

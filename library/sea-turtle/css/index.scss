@@ -18,9 +18,10 @@ html {
   cursor: default;
 }
 
-body {
+body > div > div {
   position: relative;
   width: 960px;
+  height: 540px;
   margin: auto;
 }
 
@@ -135,99 +136,103 @@ img.hidden {
   transform: translateX(-100%);
 }
 
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
-    display: block;
-    width: 70px; height: 70px;
+.screen .next-screen,
+.screen .prev-screen {
+  position: absolute;
+  display: block;
+  width: 70px; height: 70px;
 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    bottom: 1%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  bottom: 1%;
 
-    z-index: 2;
-  }
+  z-index: 2;
+}
 
-  .screen .next-screen {
-    margin-top: 5px;
-    margin-right: 5px;
-    right: 4%;
+.screen .next-screen {
+  margin-top: 5px;
+  margin-right: 5px;
+  right: 4%;
 
-    background-image: url(../media/images/buttons/next.png);
-    transform: translateX(50%);
-    transition: opacity 1s;
-  }
+  background-image: url(../media/images/buttons/next.png);
+  transform: translateX(50%);
+  transition: opacity 1s;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
 
-  .screen.GATED .next-screen {
-    opacity: 0;
-    cursor: default;
-  }
+.screen.GATED .next-screen {
+  opacity: 0;
+  cursor: default;
+}
 
-  .screen.COMPLETE .next-screen,
-  .DEMO .screen .next-screen {
-    opacity: 1;
-    cursor: pointer;
-  }
+.screen.COMPLETE .next-screen,
+.DEMO .screen .next-screen {
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
 
-  .screen .next-screen:hover {
-    background-image: url(../media/images/buttons/next-hover.png);
-  }
+.screen .next-screen:hover {
+  background-image: url(../media/images/buttons/next-hover.png);
+}
 
-  .screen .prev-screen {
-    margin-top: 5px;
-    margin-left: 10px;
-    left: 4%;
-    background-image: url(../media/images/buttons/prev.png);
-    transform: translateX(-50%);
-  }
+.screen .prev-screen {
+  margin-top: 5px;
+  margin-left: 10px;
+  left: 4%;
+  background-image: url(../media/images/buttons/prev.png);
+  transform: translateX(-50%);
+}
   
-  .screen .prev-screen:hover {
-    background-image: url(../media/images/buttons/prev-hover.png);
-  }
+.screen .prev-screen:hover {
+  background-image: url(../media/images/buttons/prev-hover.png);
+}
 
 .screen.no-frame {
   overflow: hidden;
 }
 
-  .screen.no-frame .frame {
-    width: 70%;
-    height: 100%;
-    text-align: center;
-  }
+.screen.no-frame .frame {
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
 
-    .screen.no-frame .frame img.background {
-      height: 100%;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.screen.no-frame .frame img.background {
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-    .screen.no-frame .frame .center > div {
-      text-align: center;
-    }
+.screen.no-frame .frame .center > div {
+  text-align: center;
+}
 
 .screen.no-frame.jelly {}
 
-  .screen.no-frame.jelly .frame img.background {
-    transform: translateX(-48%);
-  }
+.screen.no-frame.jelly .frame img.background {
+  transform: translateX(-48%);
+}
 
-  .screen.no-frame.jelly .frame .content-group div {
-    margin-top: 50%;
-    transform: translateY(-70%);
-  }
+.screen.no-frame.jelly .frame .content-group div {
+  margin-top: 50%;
+  transform: translateY(-70%);
+}
 
-  .screen.no-frame.jelly .frame .content-group img {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 100%;
-  }
+.screen.no-frame.jelly .frame .content-group img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+}
 
-  .screen.no-frame.jelly .frame h2 {
-    margin: 6% 0 6%;
-  }
+.screen.no-frame.jelly .frame h2 {
+  margin: 6% 0 6%;
+}
 
 #video .frame {
   width: 760px;
