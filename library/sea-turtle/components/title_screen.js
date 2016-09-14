@@ -12,7 +12,6 @@ export default function (props, ref, key) {
       <skoash.Audio type="background" src="media/audio/SO_1.1.mp3" />
       <skoash.Component className="center">
         <skoash.Component className="content-group">
-          <button className="play next-screen" pl-action="screen.next()"></button>
           <skoash.Image className="animated tada" src="media/images/title.png" />
         </skoash.Component>
         <skoash.Component className="bubbles">
