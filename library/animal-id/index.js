@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -36,11 +34,10 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import 'shared/js/test-platform-integration';
 
-class AnimalID extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var AnimalID = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: InfoWelcomeScreen,
@@ -68,87 +65,46 @@ class AnimalID extends skoash.Game {
       24: DNDGorillaScreen,
       25: DNDMuleScreen,
       26: FlipScreen
-    };
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
+    }}
+    loader={<Loader />}
+    getBackgroundIndex={i => {
+      switch (true) {
+      case i === 0: return;
+      case i === 1: return 0;
+      case i <= 10: return 2;
+      case i === 11: return 5;
+      case i <= 14: return 3;
+      case i <= 26: return 4;
+      default: return;
+      }
+    }}
+    assets={[
+      <skoash.Audio ref="bkg-0" type="background" src="media/audio/title.mp3" />,
+      <skoash.Audio ref="bkg-1" type="background" src="media/audio/background/BKG_3.mp3" />,
+      <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" loop />,
+      <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/match.mp3" />,
+      <skoash.Audio ref="bkg-4" type="background" src="media/audio/background/nose.mp3" />,
+      <skoash.Audio ref="bkg-5" type="background" src="media/audio/S_11.1.mp3" />,
 
-    this.state.data.screens = _.map(this.screens, () => ({}));
-  }
+      <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
+      <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />,
 
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
+      <skoash.Image className="hidden" src="media/images/background/title.png" />,
+      <skoash.Image className="hidden" src="media/images/background/id.png" />,
+      <skoash.Image className="hidden" src="media/images/background/match.png" />,
+      <skoash.Image className="hidden" src="media/images/background/nose.png" />,
 
-  getBackgroundIndex(currentScreenIndex) {
-    switch (currentScreenIndex) {
-    case 1:
-      return 0;
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-      return 2;
-    case 11:
-      return 5;
-    case 12:
-    case 13:
-    case 14:
-      return 3;
-    case 15:
-    case 16:
-    case 17:
-    case 18:
-    case 19:
-    case 20:
-    case 21:
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-      return 4;
-    default:
-      return;
-    }
-  }
+      <div className="game-background title" />,
+      <div className="game-background id" />,
+      <div className="game-background match" />,
+      <div className="game-background nose" />,
+    ]}
+  />
+);
 
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-0" type="background" src="media/audio/title.mp3" />
-        <skoash.Audio ref="bkg-1" type="background" src="media/audio/background/BKG_3.mp3" />
-        <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" loop />
-        <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/match.mp3" />
-        <skoash.Audio ref="bkg-4" type="background" src="media/audio/background/nose.mp3" />
-        <skoash.Audio ref="bkg-5" type="background" src="media/audio/S_11.1.mp3" />
-
-        <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />
-
-        <skoash.Image className="hidden" src="media/images/background/title.png" />
-        <skoash.Image className="hidden" src="media/images/background/id.png" />
-        <skoash.Image className="hidden" src="media/images/background/match.png" />
-        <skoash.Image className="hidden" src="media/images/background/nose.png" />
-
-        <div className="game-background title" />
-        <div className="game-background id" />
-        <div className="game-background match" />
-        <div className="game-background nose" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(AnimalID, config.id);
+skoash.start(AnimalID);
 
 import 'shared/js/google-analytics';
