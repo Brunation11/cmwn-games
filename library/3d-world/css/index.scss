@@ -30,7 +30,7 @@ body, body > div, .skoash-game {
   background-size: cover;
 
 
-  .background-component {
+  .game-background {
     opacity: 0;
     transition: opacity .5s;
     position: absolute;
@@ -39,15 +39,23 @@ body, body > div, .skoash-game {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center center
+    background-position: center center;
+
+    &.bkg-02 {
+      background-image: url(../media/_backgrounds/bg-02.jpg);
+    }
+    &.bkg-03 {
+      background-image: url(../media/_backgrounds/bg-03-game1-congratulations.jpg);
+    }
+    &.bkg-04 {
+      background-image: url(../media/_backgrounds/bg-04-game2-.jpg);
+    }
   }
 
-  > .background-component.sun,
-  &.rocks > .background-component.rocks,
-  &.cactus > .background-component.cactus,
-  &.arch > .background-component.arch,
-  &.mountains > .background-component.mountains {
-    opacity: 1;
+  &.SCREEN-2 {
+    .game-background.bkg-02 {
+      opacity: 1;
+    }
   }
 }
 
