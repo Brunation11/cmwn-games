@@ -309,6 +309,7 @@ p {
     left: 0;
     top: 0;
     width: 100%;
+    display: none;
   }
 
   .question {
@@ -349,6 +350,12 @@ p {
     background-size: 3000px;
     width: 320px;
     height: 320px;
+  }
+
+  &.OPEN {
+    .question {
+      display: block;
+    }
   }
 }
 

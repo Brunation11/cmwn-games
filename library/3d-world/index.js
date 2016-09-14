@@ -65,7 +65,7 @@ var ThreeDWorld = (
       <div className="game-background bkg-03" />,
       <div className="game-background bkg-04" />,
     ]}
-    getBackgroundIndex={(index) => {
+    getBackgroundIndex={index => {
       switch (true) {
       case index === 0: return;
       case index === 1: return 0;
