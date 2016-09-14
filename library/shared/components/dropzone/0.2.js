@@ -67,7 +67,7 @@ class Dropzone extends skoash.Component {
 
   start() {
     var self = this, dropzone, draggable;
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.prepareDropzones();
 
     if (self.loadData && typeof self.loadData === 'object') {
