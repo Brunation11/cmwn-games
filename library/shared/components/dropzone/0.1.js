@@ -14,7 +14,7 @@ class Dropzone extends skoash.Component {
       <Draggable message={'drag'}>drag me!</Draggable>,
       <Draggable message={'return'} return={true} >return</Draggable>
     ];
-      
+
     this.contains = [];
 
     this.dropRespond = this.dropRespond.bind(this);
@@ -66,7 +66,7 @@ class Dropzone extends skoash.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.prepareDropzones();
   }
 
@@ -131,7 +131,7 @@ class Dropzone extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) =>
-        <play.Audio
+        <skoash.Audio
           {...asset.props}
           ref={asset.props['data-ref'] || ('asset-' + key)}
           key={key}

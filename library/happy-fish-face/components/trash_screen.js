@@ -62,7 +62,7 @@ class TrashScreenComponent extends skoash.Screen {
   }
 
   moveCursor(e) {
-    var zoom = skoash.trigger('getState').scale;
+    var zoom = this.props.gameState.scale;
     this.setState({
       cursorLeft: e.clientX / zoom - 50,
       cursorTop: e.clientY / zoom - 65,
