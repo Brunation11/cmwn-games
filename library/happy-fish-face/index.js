@@ -38,6 +38,7 @@ var HappyFishFace = (
       quit: QuitScreen,
     }}
     getBackgroundIndex={index => {
+      if (index === 0) return;
       if (index < 6) return 0;
       if (index < 9) return 1;
       return 2;
