@@ -62,6 +62,6 @@ var HappyFishFace = (
   />
 );
 
-skoash.start(HappyFishFace, config.id);
+skoash.start(HappyFishFace);
 
 import 'shared/js/google-analytics';
