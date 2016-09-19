@@ -56,12 +56,12 @@ export default function (props, ref, key) {
             </skoash.Component>,
           ]}
           revealAssets={[
-            <skoash.Audio ref="vo-1" type="voiceOver" src="media/audio/map/VO_9.2.mp3" delay={500} />,
-            <skoash.Audio ref="vo-2" type="voiceOver" src="media/audio/map/VO_9.6.mp3" delay={500} />,
-            <skoash.Audio ref="vo-3" type="voiceOver" src="media/audio/map/VO_9.3.mp3" delay={500} />,
-            <skoash.Audio ref="vo-4" type="voiceOver" src="media/audio/map/VO_9.5.mp3" delay={500} />,
-            <skoash.Audio ref="vo-5" type="voiceOver" src="media/audio/map/VO_9.1.mp3" delay={500} />,
-            <skoash.Audio ref="vo-6" type="voiceOver" src="media/audio/map/VO_9.4.mp3" delay={500} />
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.2.mp3" delay={500} />,
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.6.mp3" delay={500} />,
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.3.mp3" delay={500} />,
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.5.mp3" delay={500} />,
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.1.mp3" delay={500} />,
+            <skoash.Audio type="voiceOver" src="media/audio/map/VO_9.4.mp3" delay={500} />
           ]}
         />
       </skoash.Component>

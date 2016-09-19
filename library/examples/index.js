@@ -1,15 +1,14 @@
 import config from './config.game';
-
 import Loader from 'shared/components/loader/0.1';
 
-import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import SelectableAllScreen from './components/selectable_all_screen';
+// import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+// import SelectableAllScreen from './components/selectable_all_screen';
+// import RunnerReveal from './components/flyer_screen';
 // import CatchReveal from './components/catch_reveal_screen';
 // import CatchScreen from './components/catch_screen';
 // import CarouselScreen from './components/carousel_screen';
 // import MatchScreen from './components/match_screen';
 // import RolesScreen from './components/roles_screen';
-// import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
 // import TimerScreen from './components/timer_screen';
@@ -31,13 +30,14 @@ class Examples extends skoash.Game {
     super(config);
 
     this.screens = {
-      0: iOSScreen,
-      1: SelectableAllScreen,
+      // 0: iOSScreen,
+      // 1: SelectableAllScreen,
       // 1: CarouselScreen,
       // 1: CatchReveal
       // 1: CatchScreen,
       // 1: CarouselScreen,
       // 1: RolesScreen,
+      // 1: RunnerReveal
       // 1: MatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,
@@ -64,7 +64,6 @@ class Examples extends skoash.Game {
   }
 
   renderAssets() {
-        // <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
     return (
       <div>
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
