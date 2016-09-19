@@ -1,8 +1,9 @@
-import EditableAsset from '../editable_asset/0.1.js';
-
+import _ from 'lodash';
 import classNames from 'classnames';
 
-class Canvas extends play.Component {
+import EditableAsset from '../editable_asset/0.1.js';
+
+class Canvas extends skoash.Component {
   constructor() {
     super();
 
@@ -13,34 +14,201 @@ class Canvas extends play.Component {
       offsetX: 0,
       offsetY: 0,
       active: false,
+      valid: true,
     };
 
-    this.boundDeleteItem = this.deleteItem.bind(this);
-    this.boundCheckItem = this.checkItem.bind(this);
-    this.boundDeactivateItems = this.deactivateItems.bind(this);
-    this.boundRelayerItems = this.relayerItems.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.checkItem = this.checkItem.bind(this);
+    this.deactivateItems = this.deactivateItems.bind(this);
+    this.relayerItems = this.relayerItems.bind(this);
+    this.setValid = this.setValid.bind(this);
   }
 
-  addItem(asset) {
-    var items, messages;
+  start() {
+    var dom = ReactDOM.findDOMNode(this);
 
-    if (asset.type === 'background') {
+    super.start();
+
+    this.setState({
+      width: dom.offsetWidth,
+      height: dom.offsetHeight,
+    });
+  }
+
+  getItems() {
+    var items, messages, self = this;
+
+    items = this.state.items.map((item, key) => {
+      var state;
+
+      if (!self.refs['item-' + key]) return item;
+
+      state = self.refs['item-' + key].state;
+
+      item.state = {
+        left: _.floor(state.left, 14),
+        top: _.floor(state.top, 14),
+        scale: _.floor(state.scale, 14),
+        rotation: _.floor(state.rotation, 14),
+        layer: state.layer,
+        valid: state.valid,
+        corners: state.corners,
+      };
+
+      item.check = state.check;
+      item.mime_type = state.mime_type; // eslint-disable-line camelcase
+
+      return item;
+    });
+
+    messages = this.state.messages.map((item, key) => {
+      var state;
+
+      if (!self.refs['message-' + key]) return item;
+
+      state = self.refs['message-' + key].state;
+
+      item.state = {
+        left: _.floor(state.left, 14),
+        top: _.floor(state.top, 14),
+        scale: _.floor(state.scale, 14),
+        rotation: _.floor(state.rotation, 14),
+        layer: state.layer,
+        valid: state.valid,
+        corners: state.corners,
+      };
+
+      item.check = state.check;
+      item.mime_type = state.mime_type; // eslint-disable-line camelcase
+
+      return item;
+    });
+
+    _.remove(items, n => {
+      return !n;
+    });
+
+    _.remove(messages, n => {
+      return !n;
+    });
+
+    return {
+      background: this.state.background,
+      items,
+      messages,
+    };
+  }
+
+  reset() {
+    this.setState({
+      background: null,
+      items: [],
+      messages: []
+    });
+  }
+
+  setItems(message) {
+    if (message) {
+      /*
+       *
+       * This makes sure the EditableAssets get cleared.
+       *
+       * This prevents the new assets from inheriting
+       * state from the old assets.
+       *
+       */
+      this.setState({
+        background: null,
+        items: [],
+        messages: [],
+      }, () => {
+        this.addItem(message.background);
+        message.items.forEach(asset => {
+          this.addItem(asset);
+        });
+        message.messages.forEach(asset => {
+          this.addItem(asset);
+        });
+      });
+    }
+  }
+
+  addItem(asset, cb) {
+    var items, messages, index, count;
+
+    if (!asset) return;
+
+    if (asset.asset_type === 'background') {
       this.setState({
         background: asset,
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          var background = this.state.background;
+          background.check = d.check;
+          background.mime_type = d.mime_type; // eslint-disable-line camelcase
+          this.setState({
+            background
+          }, cb);
+        });
       });
-    } else if (asset.type === 'item') {
+    } else if (asset.asset_type === 'item') {
       items = this.state.items;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       items.push(asset);
+      index = items.indexOf(asset);
 
       this.setState({
         items,
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          items[index] = asset;
+          this.setState({
+            items
+          }, cb);
+        });
       });
-    } else if (asset.type === 'message') {
+    } else if (asset.asset_type === 'message') {
       messages = this.state.messages;
+
+      count = _.reduce(items, (c, v) => {
+        if (asset.src === v.src) c++;
+        return c;
+      }, 1);
+
+      if (count > this.props.maxInstances) return;
+
       messages.push(asset);
+      index = messages.indexOf(asset);
 
       this.setState({
         messages,
+      }, () => {
+        skoash.trigger('emit', {
+          name: 'getMedia',
+          'media_id': asset.media_id
+        }).then(d => {
+          asset.check = d.check;
+          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+          messages[index] = asset;
+          this.setState({
+            messages
+          }, cb);
+        });
       });
     }
   }
@@ -58,7 +226,7 @@ class Canvas extends play.Component {
 
   deactivateItems(exclude, type) {
     if (typeof exclude === 'object' && exclude.target) {
-      if (exclude.target.tagName !== 'UL') {
+      if (exclude.target.tagName !== 'LI') {
         return;
       }
       this.setState({
@@ -114,30 +282,89 @@ class Canvas extends play.Component {
   }
 
   checkItem(key, type) {
-    var intersects = false, self = this;
+    var self = this;
 
-    if (this.state[type + 's'][key].canOverlap) {
-      return true;
-    }
+    return (
+      !self.refs[type + '-' + key].state.corners.length ||
+      (
+        self.isInBounds(key, type) && (
+          self.refs[type + '-' + key].state.can_overlap ||
+          !self.state[type + 's'].some((item, index) =>
+            key !== index &&
+            !self.refs[type + '-' + index].state.can_overlap &&
+            self.refs[type + '-' + index].state.corners.length &&
+            skoash.util.doIntersect(
+              self.refs[type + '-' + key].state.corners,
+              self.refs[type + '-' + index].state.corners
+            )
+          )
+        )
+      )
+    );
+  }
 
-    this.state[type + 's'].some((item, index) => {
-      if (key === index) return;
-      if (this.state[type + 's'][index].canOverlap) return;
-      intersects = play.util.doIntersect(
-        self.refs[type + '-' + key].state.corners,
-        self.refs[type + '-' + index].state.corners
-      );
-      return intersects;
+  isInBounds(key, type) {
+    return !this.state.width ||
+      !this.state.height ||
+      !(
+      // box to left
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: 0, y: -this.state.height},
+          {x: 0, y: 2 * this.state.height},
+          {x: -this.state.width, y: 2 * this.state.height},
+          {x: -this.state.width, y: -this.state.height}
+        ]
+      ) ||
+      // box above
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: -this.state.width, y: 0},
+          {x: 2 * this.state.width, y: 0},
+          {x: 2 * this.state.width, y: -this.state.height},
+          {x: this.state.width, y: -this.state.height}
+        ]
+      ) ||
+      // box to right
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: this.state.width, y: -this.state.height},
+          {x: this.state.width, y: 2 * this.state.height},
+          {x: 2 * this.state.width, y: 2 * this.state.height},
+          {x: 2 * this.state.width, y: -this.state.height}
+        ]
+      ) ||
+      // box below
+      skoash.util.doIntersect(
+        this.refs[type + '-' + key].state.corners,
+        [
+          {x: -this.state.width, y: this.state.height},
+          {x: 2 * this.state.width, y: this.state.height},
+          {x: 2 * this.state.width, y: 2 * this.state.height},
+          {x: -this.state.width, y: 2 * this.state.height}
+        ]
+      )
+    );
+  }
+
+  setValid(valid) {
+    this.setState({
+      valid
     });
 
-    return !intersects;
+    if (typeof this.props.setValid === 'function') {
+      this.props.setValid(valid);
+    }
   }
 
   getStyle() {
     if (!this.state.background) return;
 
     return {
-      backgroundImage: 'url("' + this.state.background.src + '")',
+      backgroundImage: `url(${this.state.background.src})`,
     };
   }
 
@@ -149,10 +376,12 @@ class Canvas extends play.Component {
         <EditableAsset
           {...item}
           data-ref={key}
-          deleteItem={self.boundDeleteItem}
-          checkItem={self.boundCheckItem}
-          deactivateItems={self.boundDeactivateItems}
-          relayerItems={self.boundRelayerItems}
+          minDim={this.props.itemMinDim}
+          deleteItem={self.deleteItem}
+          checkItem={self.checkItem}
+          deactivateItems={self.deactivateItems}
+          relayerItems={self.relayerItems}
+          setValid={self.setValid}
           ref={'item-' + key}
           key={key}
         />
@@ -168,10 +397,14 @@ class Canvas extends play.Component {
         <EditableAsset
           {...item}
           data-ref={key}
-          deleteItem={self.boundDeleteItem}
-          checkItem={self.boundCheckItem}
-          deactivateItems={self.boundDeactivateItems}
-          relayerItems={self.boundRelayerItems}
+          minDim={this.props.messageMinDim}
+          deleteItem={self.deleteItem}
+          checkItem={self.checkItem}
+          deactivateItems={self.deactivateItems}
+          relayerItems={self.relayerItems}
+          setValid={self.setValid}
+          canvasWidth={this.state.width}
+          canvasHeight={this.state.height}
           ref={'message-' + key}
           key={key}
         />
@@ -182,7 +415,7 @@ class Canvas extends play.Component {
   getClassNames() {
     return classNames({
       canvas: true,
-      ACTIVE: this.state.active,
+      ACTIVE: !this.props.preview && this.state.active,
     });
   }
 
@@ -191,7 +424,7 @@ class Canvas extends play.Component {
       <ul
         className={this.getClassNames()}
         style={this.getStyle()}
-        onClick={this.deactivateItems.bind(this)}
+        onClick={this.deactivateItems}
       >
         {this.renderItems()}
         {this.renderMessages()}
@@ -199,5 +432,9 @@ class Canvas extends play.Component {
     );
   }
 }
+
+Canvas.defaultProps = _.defaults({
+  maxInstances: 5
+}, skoash.Component.defaultProps);
 
 export default Canvas;

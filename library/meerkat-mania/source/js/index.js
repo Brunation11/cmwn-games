@@ -1,154 +1,83 @@
-/**
- * Index script
- * @module
- */
-import './config.game';
+import _ from 'lodash';
 
-import '../../../shared/js/screen-ios-splash';
-import './components/reveal/behavior';
-import './components/screen-basic/behavior';
-import './components/screen-quit/behavior';
-import './components/selectable-canvas/behavior';
-import './components/selectable/behavior';
-import './components/title/behavior';
-import './components/video/behavior';
+import config from './config.game';
 
-import '../../../shared/js/test-platform-integration';
-import '../../../shared/js/google-analytics';
+import Loader from 'shared/components/loader/0.1';
 
-pl.game('meerkat-mania', function () {
+import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+import TitleScreen from './components/title_screen';
+import ExcelScreen from './components/excel_screen';
+import RolesScreen from './components/roles_screen';
+import LookOutScreen from './components/look_out_screen';
+import VideoScreen from './components/video_screen';
+import FeelScreen from './components/feel_screen';
+import MoveScreen from './components/move_screen';
+import Video2Screen from './components/video_2_screen';
+import FlipScreen from './components/flip_screen';
 
-  var videoScreen = function () {
-    this.on('ui-open', function () {
-      setTimeout(function () {
-        this.video.start();
-      }.bind(this), 250);
-    });
+import QuitScreen from './components/quit_screen';
 
-    this.on('ui-close', function () {
-      this.video.pause();
-      if (this.game.bgSound) this.game.bgSound.play();
-    });
-  };
+import 'shared/js/test-platform-integration';
 
-  this.screen('title', function () {
+class MeerkatMania extends skoash.Game {
+  constructor() {
+    super(config);
 
-    this.on('ui-open', function (_event) {
-      if (this === _event.targetScope) {
-        this.title.start();
-      }
-    });
-
-    this.on('ready', function (_event) {
-      if (!this.is(_event.target)) return;
-
-      if (this.game.iosSplash.state(this.STATE.READY)) this.game.iosSplash.splash();
-    });
-
-    this.startAudio = function () {
-      this.title.audio.background.play();
-      this.title.audio.voiceOver.play();
+    this.screens = {
+      0: iOSScreen,
+      1: TitleScreen,
+      2: ExcelScreen,
+      3: RolesScreen,
+      4: LookOutScreen,
+      5: VideoScreen,
+      6: FeelScreen,
+      7: MoveScreen,
+      8: Video2Screen,
+      9: FlipScreen,
     };
 
-    this.stopAudio = function () {
-      this.title.audio.voiceOver.stop('@ALL');
+    this.menus = {
+      quit: QuitScreen,
     };
 
-  });
+    this.state.data.screens = _.map(this.screens, () => ({}));
+  }
 
-  this.screen('roles', function () {
+  renderLoader() {
+    return (
+      <Loader />
+    );
+  }
 
-    this.respond('select', function (_event) {
-      var index = _event.message;
+  renderAssets() {
+    return (
+      <div>
+        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+        <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
+        <skoash.Audio ref="bkg-3" type="background" src="media/S_13/S_13.1.mp3" />
+        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+        <skoash.Audio ref="close" type="sfx" src="media/_Buttons/S_Close_1.mp3" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_1.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_2.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_4.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_5.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_6.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_7.png" />
+        <skoash.Image className="hidden" src="media/_BKG/BKG_8.png" />
+        <skoash.Image className="hidden" src="media/_Frames/FR_10.png" />
+        <div className="background default" />
+        <div className="background excel" />
+        <div className="background look-out" />
+        <div className="background feel" />
+        <div className="background movie" />
+        <div className="background upload" />
+        <div className="background flip" />
+      </div>
+    );
+  }
 
-      if (Number.isInteger(index) && ~index) {
-        this.highlight(_event.behaviorTarget);
-        this.selectableCanvas.activate(_event.behaviorTarget);
-        this.reveal.item(index);
-        // if(this.audio.sfx.correct) this.audio.sfx.correct.play();
-      }
-    });
+}
 
-    this.respond('closeAll', function (didClose) {
-      if (didClose) this.selectableCanvas.deactivateAll();
-    });
+skoash.start(MeerkatMania, config.id);
 
-    this.start = function () {
-      this.selectableCanvas.deactivateAll();
-      this.selectableCanvas.unhighlightAll();
-      this.reveal.item(6);
-    };
-  });
-
-  this.screen('video', videoScreen);
-  this.screen('video-2', videoScreen);
-
-  this.screen('feel', function () {
-
-    this.on('ui-open', function (_event) {
-      if (!this.is(_event.target)) return;
-
-      this.selectable.audio.voiceOver.on('ended', function () {
-        this.complete();
-      }.bind(this.selectable));
-    });
-
-    this.on('ui-close ui-leave', function () {
-      this.selectable.audio.voiceOver.off('ended');
-    });
-
-    this.respond('select', function (_event) {
-      var index, stateMethod;
-
-      index = _event.message;
-      stateMethod = this.properties.selectState || 'select';
-
-      if (~index) {
-        this[stateMethod](_event.behaviorTarget);
-        this.audio.sfx.play('correct');
-        this.selectable.audio.voiceOver.play(index);
-      }
-    });
-  });
-
-  /**
-   * Adds Flip screen behavior to send game completion to GA.
-   */
-  this.screen('flip', function () {
-    this.next = function () {
-      this.game.quit.okay();
-    };
-
-    this.on('ui-open', function () {
-      this.delay('4.5s', function () {
-        if (this.audio.sfx.flip && this.state(this.STATE.OPEN)) this.audio.sfx.flip.play();
-      });
-    });
-
-    this.complete = function () {
-      var eventCategory;
-      var theEvent = new Event('game-event', {bubbles: true, cancelable: false});
-      theEvent.name = 'flip';
-      theEvent.gameData = {id: this.game.id()};
-      if (window.frameElement) window.frameElement.dispatchEvent(theEvent);
-      eventCategory = (['game', this.game.id(), this.id() + '(' + (this.index() + 1) + ')']).join(' ');
-      ga('send', 'event', eventCategory, 'complete');
-      return this.proto();
-    };
-  });
-
-  /**
-   * When the game exits submit a GA (Google Analytics) event.
-   * @override
-   */
-  this.exit = function () {
-    var screen, eventCategory;
-
-    screen = this.findOwn(pl.game.config('screenSelector') + '.OPEN:not(#quit)').scope();
-    eventCategory = (['game', this.id(), screen.id() + '(' + (screen.index() + 1) + ')']).join(' ');
-
-    ga('send', 'event', eventCategory, 'quit');
-
-    return this.proto();
-  };
-});
+import 'shared/js/google-analytics';

@@ -1,4 +1,4 @@
-class Loader extends play.Component {
+class Loader extends skoash.Component {
   constructor() {
     super();
 
