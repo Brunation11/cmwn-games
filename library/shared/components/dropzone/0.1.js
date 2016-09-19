@@ -172,16 +172,28 @@ class Dropzone extends skoash.Component {
 
   renderDraggables(draggables) {
     return this.props[draggables].map((item, key) => {
+      var message = this.props.message || key;
       return (
-        <Draggable
-          {...item.props}
-          ref={item.props.message}
-          key={key}
-          dragRespond={this.dragRespond}
-          dropRespond={this.dropRespond}
-        />
+        <li key={key} className={this.getDraggableClass(message)}>
+          <Draggable
+            {...item.props}
+            ref={message}
+            message={message}
+            key={key}
+            dragRespond={this.dragRespond}
+            dropRespond={this.dropRespond}
+          />
+        </li>
       );
     });
+  }
+
+  getDraggableClass(message) {
+    var classes = '';
+    if (this.state.dropped.indexOf(message) !== -1) {
+      classes += 'DROPPED';
+    }
+    return classes;
   }
 
   getClass() {

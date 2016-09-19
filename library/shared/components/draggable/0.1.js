@@ -48,7 +48,7 @@ class Draggable extends skoash.Component {
   startEvent(e, cb) {
     var pageX, pageY, rect, startX, startY, endX, endY, grabX, grabY;
 
-    if (e.target !== this.refs.el) return;
+    if (e.currentTarget !== this.refs.el) return;
     if (!this.shouldDrag()) return;
 
     if (e.targetTouches && e.targetTouches[0]) {

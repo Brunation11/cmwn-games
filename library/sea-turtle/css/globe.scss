@@ -40,73 +40,73 @@
   100% {transform:translateY(0px)}
 }
 
-#globe {
-  > .center {
-    bottom: 100px;
+.VOICE-OVER:not(.DEMO):not(.REPLAY):not(.COMPLETE) {
+  .dropzone-reveal {
+    cursor: default;
+    pointer-events: none;
   }
+}
 
-  [pl-id=characters] {
+#globe {
+  .dropzone-container {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 100%;
-
-    &.DISABLED .draggables [pl-draggable] {
-      cursor: default;
-    }
 
     .background {
-      display: block;
-      width: 100%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
 
     ul {
       position: absolute;
-      top: 0; bottom: 0;
-      left: 0; right: 0;
-      padding: 0;
+      bottom: 0;
+      width: 100%;
+      height: 102px;
       margin: 0;
+      padding: 0;
       text-align: center;
       list-style: none;
+      background-image: url(../media/images/globe/background-tray.png);
+      z-index: 1;
+
+      &.DISABLED .draggables [pl-draggable] {
+        cursor: default;
+      }
 
       li {
         position: relative;
         display: inline-block;
         width: 75px; height: 70px;
         margin-top: 15px;
+        transform: rotate(0deg);
 
-        .state {
+        .draggable {
           position: absolute;
+          top: 0; left: 0;
           width: 100%; height: 100%;
           transition: opacity 0.5s;
           background-repeat: no-repeat;
           background-size: 300px;
           background-image: url("../media/images/globe/sprite_4.2.png");
+          cursor: pointer;
 
-          &.active,
-          &.inactive {
+          &.CORRECT {
             opacity: 0;
           }
-        }
 
-        &.ACTIVE,
-        &.DISABLED {
-          .state { opacity: 0; }
-        }
-
-        &.ACTIVE .state.active {
-          opacity: 1;
-          z-index: 1;
-        }
-
-
-        &.DISABLED .state.inactive {
-          opacity: 1;
-          z-index: 1;
+          &.RETURN {
+            transition: transform .5s;
+          }
         }
 
         $background-top: 0 -85 -160 -240 -325 -395 -485 -565 -640 -720;
 
-        @for $i from 1 through 10{
+        @for $i from 1 through 10 {
           &:nth-of-type(#{$i}){
             @if $i == 7 {
               width: 80px;
@@ -120,10 +120,26 @@
             @if $i == 10 {
               width: 85px;
             }
-            @for $j from 1 through 3{
-              div:nth-of-type(#{$j}){
-                background-position: -304+(100*$j)+px nth($background-top, $i)+5+px;
-              }
+
+            .draggable {
+              background-position: -304+(300)+px nth($background-top, $i)+5+px;
+            }
+
+            &:before {
+              position: fixed;
+              top: 0;
+              left: 0;
+              content: ' ';
+              width: 100%;
+              height: 100%;
+              background-repeat: no-repeat;
+              background-size: 300px;
+              background-image: url("../media/images/globe/sprite_4.2.png");
+              background-position: -304+(100)+px nth($background-top, $i)+5+px;
+            }
+
+            &.DROPPED:before {
+              background-position: -304+(200)+px nth($background-top, $i)+5+px;
             }
           }
         }
@@ -131,8 +147,12 @@
     }
   }
 
-  .dropzone-component {
-    float: left;
+  .dropzone {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0 15px;
+    background-image: url(../media/images/globe/sprite_4.1.png);
     background-repeat: no-repeat;
     background-position: -440px -450px;
     background-size: 900px;
@@ -198,18 +218,19 @@
     }
   }
 
-  .frame {
-    position: relative;
+  .reveal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     overflow: hidden;
-    margin: 15px auto;
-    float: left;
+    margin: 15px;
 
     .background {
       display: block;
       height: 400px;
     }
 
-    .reveal-component .items {
+    ul {
       position: static;
       margin: 0;
 
@@ -230,7 +251,7 @@
           margin-right: 1em;
         }
 
-        &[pl-id=well-done] {
+        #well-done {
           .group div {
             width: 430px;
             height: 120px;

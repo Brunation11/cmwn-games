@@ -20,10 +20,11 @@
   vertical-align: middle;
   height: 100%;
 }
-  .center > * {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: left;
-    white-space: normal;
-  }
+
+.center > * {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  white-space: normal;
+}

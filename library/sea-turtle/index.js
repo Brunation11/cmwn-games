@@ -9,6 +9,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
 import InfoGlobeScreen from './components/info_globe_screen';
+import GlobeScreen from './components/globe_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 //import 'shared/js/test-platform-integration';
@@ -21,7 +22,8 @@ class SeaTurtle extends skoash.Game {
       0: iOSScreen,
       1: TitleScreen,
       //2: VideoScreen,
-      2: InfoGlobeScreen,
+      //3: InfoGlobeScreen,
+      2: GlobeScreen,
     };
 
     this.menus = {

@@ -50,7 +50,7 @@ class DropzoneReveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <skoash.Audio
+          <asset.type
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -87,6 +87,10 @@ class DropzoneReveal extends skoash.Component {
         assets={this.props.revealAssets}
         closeRespond={this.closeRespond.bind(this)}
         onComplete={this.revealComplete.bind(this)}
+        onOpen={this.props.onOpen}
+        openOnStart={this.props.openOnStart}
+        openReveal={this.props.openReveal}
+        closeReveal={this.props.closeReveal}
       />
     );
   }
