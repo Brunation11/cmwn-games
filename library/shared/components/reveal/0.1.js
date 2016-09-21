@@ -103,7 +103,7 @@ class Reveal extends skoash.Component {
         return (
           <asset.type
             {...asset.props}
-            data-ref={ref}
+            data-ref={key}
             ref={ref}
             key={key}
           />
@@ -125,7 +125,7 @@ class Reveal extends skoash.Component {
           type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
-          ref={ref}
+          ref={key}
           key={key}
         />
       );
