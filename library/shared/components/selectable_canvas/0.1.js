@@ -14,7 +14,6 @@ class SelectableCanvas extends Selectable {
   }
 
   bootstrap() {
-// <<<<<<< HEAD
     var offset;
 
     super.bootstrap();
@@ -28,14 +27,6 @@ class SelectableCanvas extends Selectable {
 
     this.buffer.width = offset.width;
     this.buffer.height = offset.height;
-// =======
-    // super.bootstrap();
-
-    // this.buffer = document.createElement('canvas');
-    // this.bctx = this.buffer.getContext('2d');
-
-    // this.el = ReactDOM.findDOMNode(this);
-// >>>>>>> rc
 
     this.items = [];
 
@@ -47,7 +38,7 @@ class SelectableCanvas extends Selectable {
   }
 
   selectHelper(e, classes) {
-    var offset, target;
+    var offset, target, dataRef;
 
     offset = this.el.getBoundingClientRect();
     this.buffer.width = offset.width;
@@ -55,7 +46,8 @@ class SelectableCanvas extends Selectable {
 
     this.items.some((item, key) => {
       if (this.isImageTarget(item, e, offset)) {
-        target = this.refs[key];
+        dataRef = item.getAttribute('data-ref');
+        target = this.refs[dataRef] || this.refs[key];
         target.complete();
         classes[key] = this.props.selectClass;
         return true;
