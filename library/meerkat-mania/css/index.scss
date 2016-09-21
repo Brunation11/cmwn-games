@@ -287,6 +287,24 @@ p {
   }
 }
 
+.SFX:not(.DEMO),
+.VOICE-OVER:not(.DEMO) {
+  .draggable,
+  .selectable *,
+  .selectable-reveal *,
+  .reveal * {
+    pointer-events: none;
+  }
+}
+
+.VOICE-OVER:not(.DEMO) {
+  .reveal {
+    .close-reveal {
+      visibility: hidden;
+    }
+  }
+}
+
 // the following css is specific to this game
 
 .frame {
@@ -503,12 +521,6 @@ p {
       right: 70px;
       z-index: 2;
       opacity: 1;
-
-      .VOICE-OVER:not(.DEMO) & {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0s;
-      }
     }
 
     > div > .close-reveal {
@@ -667,13 +679,6 @@ p {
       cursor: pointer;
     }
   }
-
-  &.VOICE-OVER {
-    .close-reveal {
-      opacity: 0;
-      cursor: auto;
-    }
-  }
 }
 
 .DEMO {
@@ -714,10 +719,6 @@ p {
     width: 500px;
     margin: 20px 0 20px auto;
     text-align: left;
-
-    .VOICE-OVER & {
-      pointer-events: none;
-    }
 
     li {
       display: inline-block;
@@ -830,15 +831,6 @@ p {
         &:hover {
           background-position: -199px 0;
         }
-      }
-    }
-  }
-
-  &.SFX,
-  &.VOICE-OVER {
-    .selectable-component {
-      li {
-        pointer-events: none;
       }
     }
   }
