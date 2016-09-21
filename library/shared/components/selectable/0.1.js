@@ -79,7 +79,6 @@ class Selectable extends skoash.Component {
       self.requireForComplete = [dataRef];
     }
 
-<<<<<<< 98b5e90699b44a858df481d738a3aa64990dd4a5
     if (self.props.dataTarget) {
       self.updateGameState({
         path: self.props.dataTarget,
