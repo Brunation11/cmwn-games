@@ -220,8 +220,10 @@ class Draggable extends skoash.Component {
   }
 
   setZoom() {
-    this.setState({
-      zoom: skoash.trigger('getState').scale,
+    skoash.trigger('getState').then(state => {
+      this.setState({
+        zoom: state.scale,
+      });
     });
   }
 

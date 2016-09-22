@@ -1,5 +1,6 @@
+import _ from 'lodash';
+
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
-import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
@@ -28,14 +29,14 @@ export default function (props, ref, key) {
         draggable.setEnd(endX, endY);
       }}
       multipleAnswers={true}
-      answers={["wipes", "diapers", "paper", "sheets", "fats", "cosmetics", "bandages", "litter", "cotton", "gum", "floss", "hair", "meds", "chemicals"]}
+      answers={['wipes', 'diapers', 'paper', 'sheets', 'fats', 'cosmetics', 'bandages', 'litter', 'cotton', 'gum', 'floss', 'hair', 'meds', 'chemicals']}
       manualReveal={function (draggable) {
         var self = this;
         self.updateGameState({
           path: 'reveal',
           data: {
             message: draggable.props.message,
-            open: function() {
+            open: function () {
               if (self.refs['dropzone-reveal'].audio.flush) self.refs['dropzone-reveal'].audio.flush.play();
               self.refs['dropzone-reveal'].refs.reveal.open(draggable.props.message);
               draggable.setState({classes: 'flush'});
@@ -44,7 +45,7 @@ export default function (props, ref, key) {
         });
       }}
       dropzones={[
-        <DropzoneComponent className="animated" />
+        <skoash.Component className="animated" />
       ]}
       dropzoneList={[
         <skoash.ListItem ref="wipes" className="wipes animated" message="wipes" returnOnIncorrect />,
@@ -135,7 +136,7 @@ export default function (props, ref, key) {
       <Reveal
         ref="reveal"
         start={function () {
-          this.open('intro')
+          this.open('intro');
         }}
         assets={[
           <skoash.Audio ref="intro" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
