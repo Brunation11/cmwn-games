@@ -6,14 +6,6 @@ import classNames from 'classnames';
 class DropzoneReveal extends skoash.Component {
   bootstrap() {
     super.bootstrap();
-
-    this.refs.dropzone.complete();
-  }
-
-  incompleteRefs() {
-    super.incompleteRefs();
-
-    this.refs.dropzone.complete();
   }
 
   correctRespond(message, dropzoneKey) {
@@ -67,7 +59,6 @@ class DropzoneReveal extends skoash.Component {
     return (
       <Dropzone
         ref="dropzone"
-        checkComplete={false}
         dropzones={this.props.dropzones}
         draggables={this.props.dropzoneDraggables}
         draggablesLeft={this.props.dropzoneDraggablesLeft}
@@ -75,6 +66,7 @@ class DropzoneReveal extends skoash.Component {
         assets={this.props.dropzoneAssets}
         correctRespond={this.dropRespond.bind(this)}
         incorrectRespond={this.dropRespond.bind(this)}
+        onComplete={this.props.onDropzoneComplete}
       />
     );
   }

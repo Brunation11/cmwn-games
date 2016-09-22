@@ -17,6 +17,25 @@ class Dropzone extends skoash.Component {
     }
   }
 
+  bootstrap() {
+    super.bootstrap();
+    var answerRefs = [];
+    var self = this;
+
+    this.props.dropzones.forEach((item, key) => {
+      if (item.props.answers) {
+        answerRefs = answerRefs.concat(item.props.answers.map(item => { return '' + item; }));
+      }
+    });
+
+    if (answerRefs.length > 0) {
+      self.requireForComplete.forEach(item => {
+        if (answerRefs.indexOf(item) === -1)
+          self.refs[item].complete();
+      });
+    }
+  }
+
   incomplete() {
     this.setState({
       dropped: [],
@@ -101,6 +120,7 @@ class Dropzone extends skoash.Component {
     } else {
       this.incorrect(message);
     }
+    this.refs[message].complete();
   }
 
   outOfBounds(message) {
@@ -116,7 +136,7 @@ class Dropzone extends skoash.Component {
     // respond to correct drop
 
     var dropped = this.state.dropped;
-    dropped = dropped.concat(message);
+    dropped = dropped.concat('dropped-' + message);
     this.setState({
       dropped,
     });
@@ -163,7 +183,6 @@ class Dropzone extends skoash.Component {
       <component.type
         {...component.props}
         className={this.getClass()}
-        checkComplete={false}
         ref={`dropzone-${key}`}
         key={key}
       />
@@ -172,7 +191,7 @@ class Dropzone extends skoash.Component {
 
   renderDraggables(draggables) {
     return this.props[draggables].map((item, key) => {
-      var message = this.props.message || key;
+      var message = item.message || key;
       return (
         <li key={key} className={this.getDraggableClass(message)}>
           <Draggable
@@ -182,6 +201,7 @@ class Dropzone extends skoash.Component {
             key={key}
             dragRespond={this.dragRespond}
             dropRespond={this.dropRespond}
+            checkComplete={false}
           />
         </li>
       );

@@ -224,10 +224,6 @@ class Draggable extends skoash.Component {
     return corners;
   }
 
-  componentDidMount() {
-    this.bootstrap();
-  }
-
   bootstrap() {
     super.bootstrap();
 

@@ -74,10 +74,6 @@
       background-image: url(../media/images/globe/background-tray.png);
       z-index: 1;
 
-      &.DISABLED .draggables [pl-draggable] {
-        cursor: default;
-      }
-
       li {
         position: relative;
         display: inline-block;
@@ -97,6 +93,8 @@
 
           &.CORRECT {
             opacity: 0;
+            cursor: default;
+            pointer-events: none;
           }
 
           &.RETURN {
@@ -171,40 +169,13 @@
         background-image: url("../media/images/globe/sprite_4.3.png");
         background-size: auto 150px;
 
-        &.show {
-          opacity: 1;
-
-          &:nth-of-type(1),
-          &:nth-of-type(4),
-          &:nth-of-type(7),
-          &:nth-of-type(9),
-          &:nth-of-type(10) {
-            transform: translateY(-10%);
-            animation: bob 4s infinite;
-          }
-
-          &:nth-of-type(2),
-          &:nth-of-type(3),
-          &:nth-of-type(5) {
-            animation: anchor 4s forwards;
-          }
-
-          &:nth-of-type(6) {
-            animation: crab 4s infinite;
-          }
-
-          &:nth-of-type(8) {
-            animation: lifesaver 4s forwards;
-          }
-        }
-
         $left: 240  66 140  80 240 210 140 136  30 56;
         $top:   90 270 280 190 250 186 120  20 130 70;
         $width:  62 62 62 62 62 62 62 62 62 72;
         $height: 48 44 60 50 62 36 44 62 44 42;
         $background-left: 0 75 150 225 300  0 75 150 225 300;
         $background-top:  0  0   0   0   0 75 75  75  75  75;
-
+  
         @for $i from 1 through 10{
           &:nth-of-type(#{$i}){
             left: nth($left, $i)+px;
@@ -215,6 +186,38 @@
           }
         }
       }
+    }
+
+    $bobItems: 1, 4, 7, 9, 10;
+    $anchorItems: 2, 3, 5;
+    $crab: 6;
+    $lifesaver: 8;
+
+    @for $i from 1 through 10 {
+      &.dropped-#{$i - 1} .area div:nth-of-type(#{$i}) {
+        opacity: 1;
+      }
+    }
+
+    @for $i from 1 through 5 {
+      &.dropped-#{nth($bobItems, $i) - 1} .area div:nth-of-type(#{nth($bobItems, $i)}) {
+        transform: translateY(-10%);
+        animation: bob 4s infinite;
+      }
+    }
+
+    @for $i from 1 through 3 {
+      &.dropped-#{nth($anchorItems, $i) - 1} .area div:nth-of-type(#{nth($anchorItems, $i)}) {
+        animation: anchor 4s forwards;
+      }
+    }
+
+    &.dropped-#{$crab - 1} .area div:nth-of-type(#{$crab}) {
+      animation: crab 4s infinite;
+    }
+
+    &.dropped-#{$lifesaver - 1} .area div:nth-of-type(#{$lifesaver}) {
+      animation: lifesaver 4s forwards;
     }
   }
 
@@ -269,7 +272,8 @@
       }
     }
 
-    .OPEN ~ #instruction {
+    &.COMPLETE #instruction,
+    &:not(.open-none) #instruction {
       opacity: 0;
       z-index: -1;
     }
@@ -327,12 +331,6 @@
 
       li.SELECTED::before {
         background-position: 0px -5px;
-      }
-    }
-
-    #well-done {
-      img {
-        width: 100%;
       }
     }
   }
