@@ -61,7 +61,7 @@ class SelectableCanvas extends Selectable {
     });
 
     if (target && typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(target.props.message);
+      this.props.selectRespond.call(this, target.props.message);
     }
 
     this.checkComplete();
