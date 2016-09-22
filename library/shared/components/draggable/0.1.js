@@ -235,6 +235,7 @@ class Draggable extends skoash.Component {
 
     return {
       transform: `translateX(${x}px) translateY(${y}px)`,
+      WebkitTransform: `translateX(${x}px) translateY(${y}px)`,
     };
   }
 
