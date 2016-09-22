@@ -54,13 +54,17 @@ class Reveal extends skoash.Component {
   }
 
   close() {
-    var prevMessage = this.state.openReveal;
-    var currentlyOpen = this.state.currentlyOpen;
+    var prevMessage, currentlyOpen, openReveal;
+
+    prevMessage = this.state.openReveal;
+    currentlyOpen = this.state.currentlyOpen;
     currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
+    var open = currentlyOpen.length > 0;
+    openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
 
     this.setState({
-      open: false,
-      openReveal: '',
+      open,
+      openReveal,
       currentlyOpen,
     });
 
@@ -156,8 +160,14 @@ class Reveal extends skoash.Component {
       this.open(props.openReveal);
     }
 
-    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
-      this.close();
+    if (props.closeReveal !== this.props.closeReveal) {
+      if (props.closeReveal === true) {
+        this.close();
+      } else if (Number.isInteger(props.closeReveal)) {
+        for (var i = 0; i < props.closeReveal; i++) {
+          this.close();
+        }
+      }
     }
   }
 
