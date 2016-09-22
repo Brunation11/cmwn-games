@@ -1,18 +1,13 @@
 import _ from 'lodash';
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
+
+import Dropzone from 'shared/components/dropzone/0.2';
 import Reveal from 'shared/components/reveal/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
-  function dragRespond() {
-    _.forIn(this.refs.dropzone.refs, (r, k) => {
-      if (k.indexOf('dropzone-') === -1) return;
-    });
-    this.incomplete();
-  }
-
   function correctRespond(draggable, dropzoneKey) {
     var dropzone, complete = true, content, totalComplete = 0, self = this;
-    dropzone = self.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
+    dropzone = self.refs[`dropzone-${dropzoneKey}`];
 
     var endX, endY;
     // position draggable 0 0 at dropzone 0 0
@@ -28,14 +23,9 @@ export default function (props, ref, key) {
     draggable.setEnd(endX, endY);
 
     self.updateGameState({
-      path: 'reveal',
+      path: 'dropzone',
       data: {
-        message: draggable.props.message,
-        open: function () {
-          if (self.audio.flush) self.audio.flush.play();
-          self.refs.reveal.open(draggable.props.message);
-          draggable.setState({classes: 'flush'});
-        }
+        correct: draggable.props.message,
       }
     });
 
@@ -43,7 +33,7 @@ export default function (props, ref, key) {
     if (content.indexOf(draggable) === -1) content.push(draggable);
     dropzone.setState({content});
 
-    _.forIn(self.refs.dropzone.refs, (r, k) => {
+    _.forIn(self.refs, (r, k) => {
       if (k.indexOf('dropzone-') === -1) return;
       if (!r.state.content) {
         complete = false;
@@ -51,12 +41,30 @@ export default function (props, ref, key) {
       }
 
       totalComplete += r.state.content.length;
-      if (totalComplete !== self.refs.dropzone.draggables.length) {
+      if (totalComplete !== self.draggables.length) {
         complete = false;
       }
     });
 
     if (complete) self.complete();
+  }
+
+  function flush() {
+    skoash.trigger('updateState', {
+      path: 'reveal',
+      data: {
+        open: 'flush'
+      }
+    });
+  }
+
+  function openReveal() {
+    this.updateGameState({
+      path: 'openReveal',
+      data: _.get(props, 'data.dropzone.correct')
+    });
+
+    // draggable.setState({classes: 'flush'});
   }
 
   function manualReveal(draggable) {
@@ -82,20 +90,17 @@ export default function (props, ref, key) {
     >
       <skoash.Component className="frame left" />
       <skoash.Component className="frame right" />
-
-      <DropzoneReveal
-        ref="dropzone-reveal"
+      <Dropzone
         assets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.1.mp3" />,
-          <skoash.Audio data-ref="flush" type="sfx" src="media/S_6/S_6.2.mp3" />
         ]}
-        dragRespond={dragRespond}
         correctRespond={correctRespond}
         manualReveal={manualReveal}
         dropzones={[
-          <skoash.ListItem className={`${_.get(props, 'data.reveal.message')} animated`} />
+          <skoash.Component className={`${_.get(props, 'data.reveal.message')} animated`} />
         ]}
-        dropzoneList={[
+        answers={['wipes', 'diapers', 'paper', 'sheets', 'fats', 'cosmetics', 'bandages', 'litter', 'cotton', 'gum', 'floss', 'hair', 'meds', 'chemicals']}
+        draggables={[
           <skoash.ListItem ref="wipes" className="wipes animated" message="wipes" returnOnIncorrect />,
           <skoash.ListItem ref="diapers" className="diapers animated" message="diapers" returnOnIncorrect />,
           <skoash.ListItem ref="paper" className="paper animated" message="paper" returnOnIncorrect />,
@@ -111,7 +116,15 @@ export default function (props, ref, key) {
           <skoash.ListItem ref="meds" className="meds animated" message="meds" returnOnIncorrect />,
           <skoash.ListItem ref="chemicals" className="chemicals animated" message="chemicals" returnOnIncorrect />
         ]}
-        revealList={[
+      />
+      <Reveal
+        openOnStart="intro"
+        openTarget="reveal"
+        openReveal={_.get(props, 'data.openReveal')}
+        list={[
+          <skoash.ListItem data-ref="intro" className="animated intro reveal">
+            <h3>Drag and drop items into the toilet<br /> and flush to find out what<br />happens when you send<br />the wrong things down the drain.</h3>
+          </skoash.ListItem>,
           <skoash.ListItem data-ref="wipes" className="animated wipes reveal">
               <h3>Baby wipes are thicker and sturdier<br />than toilet paper and<br />do not break down easily.<br />They are a clog waiting to happen!</h3>
           </skoash.ListItem>,
@@ -156,46 +169,38 @@ export default function (props, ref, key) {
               <h3>Sounds surprising!<br />The chemicals are toxic and can<br />damage animals, humans,<br />and the environment.</h3>
           </skoash.ListItem>
         ]}
-        revealAssets={[
-          <skoash.Audio ref="wipes" type="voiceOver" src="media/S_6/VO_6.3.mp3" delay={3000} />,
-          <skoash.Audio ref="diapers" type="voiceOver" src="media/S_6/VO_6.4.mp3" delay={3000} />,
-          <skoash.Audio ref="paper" type="voiceOver" src="media/S_6/VO_6.5.mp3" delay={3000} />,
-          <skoash.Audio ref="sheets" type="voiceOver" src="media/S_6/VO_6.6.mp3" delay={3000} />,
-          <skoash.Audio ref="fats" type="voiceOver" src="media/S_6/VO_6.7.mp3" delay={3000} />,
-          <skoash.Audio ref="cosmetics" type="voiceOver" src="media/S_6/VO_6.8.mp3" delay={3000} />,
-          <skoash.Audio ref="bandages" type="voiceOver" src="media/S_6/VO_6.9.mp3" delay={3000} />,
-          <skoash.Audio ref="litter" type="voiceOver" src="media/S_6/VO_6.10.mp3" delay={3000} />,
-          <skoash.Audio ref="cotton" type="voiceOver" src="media/S_6/VO_6.11.mp3" delay={3000} />,
-          <skoash.Audio ref="gum" type="voiceOver" src="media/S_6/VO_6.12.mp3" delay={3000} />,
-          <skoash.Audio ref="floss" type="voiceOver" src="media/S_6/VO_6.13.mp3" delay={3000} />,
-          <skoash.Audio ref="hair" type="voiceOver" src="media/S_6/VO_6.14.mp3" delay={3000} />,
-          <skoash.Audio ref="meds" type="voiceOver" src="media/S_6/VO_6.15.mp3" delay={3000} />,
-          <skoash.Audio ref="chemicals" type="voiceOver" src="media/S_6/VO_6.16.mp3" delay={3000} />
-        ]}
-        answers={['wipes', 'diapers', 'paper', 'sheets', 'fats', 'cosmetics', 'bandages', 'litter', 'cotton', 'gum', 'floss', 'hair', 'meds', 'chemicals']}
       />
-
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open')}
+      >
+        <skoash.Audio
+          ref="flush"
+          type="sfx"
+          src="media/S_6/S_6.2.mp3"
+          onComplete={openReveal}
+          playTarget="flush"
+          completeTarget="flush"
+        />
+        <skoash.Audio ref="intro" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
+        <skoash.Audio ref="wipes" type="voiceOver" src="media/S_6/VO_6.3.mp3" />
+        <skoash.Audio ref="diapers" type="voiceOver" src="media/S_6/VO_6.4.mp3" />
+        <skoash.Audio ref="paper" type="voiceOver" src="media/S_6/VO_6.5.mp3" />
+        <skoash.Audio ref="sheets" type="voiceOver" src="media/S_6/VO_6.6.mp3" />
+        <skoash.Audio ref="fats" type="voiceOver" src="media/S_6/VO_6.7.mp3" />
+        <skoash.Audio ref="cosmetics" type="voiceOver" src="media/S_6/VO_6.8.mp3" />
+        <skoash.Audio ref="bandages" type="voiceOver" src="media/S_6/VO_6.9.mp3" />
+        <skoash.Audio ref="litter" type="voiceOver" src="media/S_6/VO_6.10.mp3" />
+        <skoash.Audio ref="cotton" type="voiceOver" src="media/S_6/VO_6.11.mp3" />
+        <skoash.Audio ref="gum" type="voiceOver" src="media/S_6/VO_6.12.mp3" />
+        <skoash.Audio ref="floss" type="voiceOver" src="media/S_6/VO_6.13.mp3" />
+        <skoash.Audio ref="hair" type="voiceOver" src="media/S_6/VO_6.14.mp3" />
+        <skoash.Audio ref="meds" type="voiceOver" src="media/S_6/VO_6.15.mp3" />
+        <skoash.Audio ref="chemicals" type="voiceOver" src="media/S_6/VO_6.16.mp3" />
+      </MediaCollection>
       <button
         ref="reveal-button"
         className="flush"
-        onClick={
-          _.get(props, 'data.reveal.open', null)
-        }
-      />
-
-      <Reveal
-        ref="reveal"
-        start={function () {
-          this.open('intro-vo');
-        }}
-        assets={[
-          <skoash.Audio ref="intro-vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
-        ]}
-        list={[
-          <skoash.ListItem data-ref="intro" className="animated intro reveal">
-            <h3>Drag and drop items into the toilet<br /> and flush to find out what<br />happens when you send<br />the wrong things down the drain.</h3>
-          </skoash.ListItem>
-        ]}
+        onClick={flush}
       />
     </skoash.Screen>
   );

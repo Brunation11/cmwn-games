@@ -80,7 +80,7 @@ class Draggable extends skoash.Component {
     });
 
     if (typeof this.props.dragRespond === 'function') {
-      this.props.dragRespond(this);
+      this.props.dragRespond.call(this, this);
     }
 
     if (typeof cb === 'function') {
@@ -182,7 +182,7 @@ class Draggable extends skoash.Component {
     corners = this.setCorners();
 
     if (typeof this.props.dropRespond === 'function') {
-      this.props.dropRespond(this, corners);
+      this.props.dropRespond.call(this, this, corners);
     }
   }
 
