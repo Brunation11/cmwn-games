@@ -289,10 +289,8 @@ p {
 
 .SFX:not(.DEMO),
 .VOICE-OVER:not(.DEMO) {
-  .draggable,
-  .selectable *,
-  .selectable-reveal *,
-  .reveal * {
+  #roles > div,
+  #feel > div {
     pointer-events: none;
   }
 }
@@ -617,7 +615,7 @@ p {
           div {
             width: 580px;
             height: 310px;
-            padding: 50px 35px 100px 35px;
+            padding: 20px 35px 100px 35px;
             margin: 0px 150px;
           }
 
