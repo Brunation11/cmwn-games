@@ -64,13 +64,11 @@ export default function (props, ref, key) {
   }
 
   function onStart() {
-    if (this.state.complete) {
-      _.forEach(this.refs.dropzone.refs, (r, k) => {
-        if (k.indexOf('draggable-') !== -1) {
-          r.markIncorrect();
-        }
-      });
-    }
+    _.forEach(this.refs.dropzone.refs, (r, k) => {
+      if (k.indexOf('draggable-') !== -1) {
+        r.markIncorrect();
+      }
+    });
   }
 
   function getClassNames() {
