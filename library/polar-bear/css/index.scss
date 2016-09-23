@@ -296,8 +296,10 @@ p {
   }
 }
 
-.VOICE-OVER {
+.VOICE-OVER,
+.SFX {
   .draggable,
+  .selectable-canvas,
   .selectable > * {
     pointer-events: none;
   }
