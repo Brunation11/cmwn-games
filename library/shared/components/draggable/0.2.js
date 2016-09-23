@@ -260,11 +260,10 @@ class Draggable extends skoash.Component {
   getClassNames() {
     return classNames({
       draggable: true,
-      [this.state.classes]: true,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
-    }, super.getClassNames());
+    }, this.state.classes, super.getClassNames());
   }
 
   render() {

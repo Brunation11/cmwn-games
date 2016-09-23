@@ -377,23 +377,27 @@ p {
     }
   }
 
+  .logo {
+    width: 60%;
+    margin-left: -31%;
+    margin-top: -4%;
+  }
+
   &.OPEN {
     .logo {
-      width: 60%;
-      margin-left: -31%;
-      margin-top: -4%;
       animation-name: fadeInUp;
       animation-delay: 1s;
     }
   }
-    &.LEAVING {
-      .logo {
-         animation-name: flushTitle;
-         animation-duration: 3s;
-         animation-iteration-count: 1;
-         opacity: 0;
-      }
+
+  &.LEAVING {
+    .logo {
+       animation-name: flushTitle;
+       animation-duration: 3s;
+       animation-iteration-count: 1;
+       opacity: 0;
     }
+  }
 
   .next-screen {
     background-position: 0px 6px;
@@ -406,7 +410,6 @@ p {
     }
   }
 }
-
 
 #info-question {
   img {
@@ -772,15 +775,24 @@ p {
         background-size: 200px 698px;
       }
 
-      &.CORRECT:after {
-        width: 400%;
-        height: 400%;
-        top: -150%;
-        left: -150%;
-        background-size: 300px 1047px;
-      }
+      &.CORRECT {
+        pointer-events: none;
 
-      &.flush:after {
+        &:after {
+          width: 400%;
+          height: 400%;
+          top: -150%;
+          left: -150%;
+          background-size: 300px 1047px;
+        }
+      }
+    }
+  }
+
+  .dropzone {
+    $items: wipes diapers paper sheets fats cosmetics bandages litter cotton gum floss hair meds chemicals;
+    @for $i from 1 through 14 {
+      &.#{nth($items, $i)} + ul li > div.#{nth($items, $i)}:after {
         animation-name: flushTitle;
         animation-duration: 3s;
         animation-iteration-count: 1;
@@ -827,7 +839,7 @@ p {
     display: inline-block;
     transition-property: opacity;
     transition-duration: 2s;
-    transition-delay: 4s;
+    transition-delay: 0s;
 
     > div {
       height: 100%;
@@ -846,7 +858,7 @@ p {
         background-size: 55%;
         background-position: 210px 137px;
         animation-name: fadeIn;
-        animation-delay: 3s;
+        animation-delay: 0s;
 
         &.intro {
           animation: none;
@@ -921,7 +933,7 @@ p {
         }
 
         &.hair:after {
-          background-position: 159px 982px;
+          background-position: 164px 462px;
         }
 
         &.meds:after {

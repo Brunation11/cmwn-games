@@ -68,7 +68,7 @@ class Dropzone extends skoash.Component {
 
   start() {
     var self = this, dropzone, draggable;
-    skoash.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
 
     if (self.loadData && typeof self.loadData === 'object') {
@@ -233,9 +233,7 @@ class Dropzone extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames({
-      dropzone: true,
-    });
+    return classNames('dropzone', super.getClassNames());
   }
 
   render() {

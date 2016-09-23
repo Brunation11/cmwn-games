@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import classNames from 'classnames';
 
 import Dropzone from 'shared/components/dropzone/0.2';
 import Reveal from 'shared/components/reveal/0.1';
@@ -6,11 +7,10 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
   function correctRespond(draggable, dropzoneKey) {
-    var dropzone, dropzoneRect, complete = true, content, totalComplete = 0, self = this;
-    dropzone = self.refs[`dropzone-${dropzoneKey}`];
+    var dropzone, dropzoneRect, endX, endY;
+    dropzone = this.refs[`dropzone-${dropzoneKey}`];
     dropzoneRect = ReactDOM.findDOMNode(dropzone).getBoundingClientRect();
 
-    var endX, endY;
     // position draggable 0 0 at dropzone 0 0
     endX = dropzoneRect.left / draggable.state.zoom;
     endY = dropzoneRect.top / draggable.state.zoom;
@@ -23,31 +23,12 @@ export default function (props, ref, key) {
     // reset draggable end position
     draggable.setEnd(endX, endY);
 
-    self.updateGameState({
+    this.updateGameState({
       path: 'dropzone',
       data: {
         correct: draggable.props.message,
       }
     });
-
-    content = dropzone.state.content || [];
-    if (content.indexOf(draggable) === -1) content.push(draggable);
-    dropzone.setState({content});
-
-    _.forIn(self.refs, (r, k) => {
-      if (k.indexOf('dropzone-') === -1) return;
-      if (!r.state.content) {
-        complete = false;
-        return;
-      }
-
-      totalComplete += r.state.content.length;
-      if (totalComplete !== self.draggables.length) {
-        complete = false;
-      }
-    });
-
-    if (complete) self.complete();
   }
 
   function flush() {
@@ -57,6 +38,13 @@ export default function (props, ref, key) {
         open: 'flush'
       }
     });
+
+    skoash.trigger('updateState', {
+      path: 'flushed',
+      data: {
+        [_.get(props, 'data.dropzone.correct')]: true
+      }
+    });
   }
 
   function openReveal() {
@@ -64,22 +52,29 @@ export default function (props, ref, key) {
       path: 'openReveal',
       data: _.get(props, 'data.dropzone.correct')
     });
-
-    // draggable.setState({classes: 'flush'});
   }
 
-  function manualReveal(draggable) {
+  function onClose() {
     this.updateGameState({
-      path: 'reveal',
+      path: 'dropzone',
       data: {
-        message: draggable.props.message,
-        open: function () {
-          if (this.audio.flush) this.audio.flush.play();
-          this.refs.reveal.open(draggable.props.message);
-          draggable.setState({classes: 'flush'});
-        }
+        correct: false
       }
     });
+  }
+
+  function onStart() {
+    if (this.state.complete) {
+      _.forEach(this.refs.dropzone.refs, (r, k) => {
+        if (k.indexOf('draggable-') !== -1) {
+          r.markIncorrect();
+        }
+      });
+    }
+  }
+
+  function getClassNames() {
+    return classNames(_.get(props, 'data.flushed', false));
   }
 
   return (
@@ -88,15 +83,19 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="flush-it"
+      onStart={onStart}
     >
       <skoash.Component className="frame left" />
       <skoash.Component className="frame right" />
       <Dropzone
+        ref="dropzone"
+        className={getClassNames()}
+        complete
+        checkComplete={false}
         assets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.1.mp3" />,
         ]}
         correctRespond={correctRespond}
-        manualReveal={manualReveal}
         dropzones={[
           <skoash.Component className={`${_.get(props, 'data.reveal.message')} animated`} />
         ]}
@@ -122,6 +121,7 @@ export default function (props, ref, key) {
         openOnStart="intro"
         openTarget="reveal"
         openReveal={_.get(props, 'data.openReveal')}
+        onClose={onClose}
         list={[
           <skoash.ListItem data-ref="intro" className="animated intro reveal">
             <h3>Drag and drop items into the toilet<br /> and flush to find out what<br />happens when you send<br />the wrong things down the drain.</h3>
