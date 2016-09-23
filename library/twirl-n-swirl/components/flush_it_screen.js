@@ -6,13 +6,14 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
   function correctRespond(draggable, dropzoneKey) {
-    var dropzone, complete = true, content, totalComplete = 0, self = this;
+    var dropzone, dropzoneRect, complete = true, content, totalComplete = 0, self = this;
     dropzone = self.refs[`dropzone-${dropzoneKey}`];
+    dropzoneRect = ReactDOM.findDOMNode(dropzone).getBoundingClientRect();
 
     var endX, endY;
     // position draggable 0 0 at dropzone 0 0
-    endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x);
-    endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y);
+    endX = dropzoneRect.left / draggable.state.zoom;
+    endY = dropzoneRect.top / draggable.state.zoom;
     // shift draggable 0 0 to dropzone 50% 50%
     endX += ((dropzone.corners[1].x - dropzone.corners[0].x) / 2);
     endY += ((dropzone.corners[3].y - dropzone.corners[0].y) / 2);
