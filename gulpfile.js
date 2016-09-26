@@ -9,6 +9,7 @@ var argv = require('yargs').argv,
   path = require('path'),
   games,
   nolivereload,
+  development,
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
@@ -17,7 +18,6 @@ var argv = require('yargs').argv,
   livereload = require('gulp-livereload'),
   inject = require('gulp-inject'),
   exec = require('child_process').exec,
-  buildDevTask,
   buildTask;
 
 function lsd(_path) {
@@ -55,42 +55,28 @@ games = (function () {
 
 nolivereload = argv.nolr;
 
+development = argv.development || argv.dev || argv.d;
+
 // the clean task still does not always run last
 // this should be updated to make sure clean gets run after all other tasks
-// here and in the production build
-buildDevTask = ['sass', 'webpack:build-dev', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs', 'clean'];
-gulp.task('default', buildDevTask);
-gulp.task('build-dev', buildDevTask);
-
 // Production build
 buildTask = ['sass', 'webpack:build', 'copy-index', 'copy-framework', 'copy-media', 'copy-components', 'copy-thumbs', 'clean'];
+gulp.task('default', buildTask);
 gulp.task('build', buildTask);
 gulp.task('b', buildTask);
 
-gulp.task('webpack:build-dev', function (callback) {
-  games.forEach(function (game, index) {
-    var config = defineEntries(webpackDevConfig, game);
-
-    webpack(config).run(function (err, stats) {
-      if (err) throw new gutil.PluginError('webpack:build-dev', err);
-      gutil.log('[webpack:build-dev]', stats.toString({
-        colors: true
-      }));
-      if (index === games.length - 1) {
-        callback();
-      }
-    });
-  });
-});
-
 gulp.task('webpack:build', function (callback) {
   games.forEach(function (game, index) {
-    var config = defineEntries(webpackProdConfig, game);
+    var webpackConfig, name, config;
+
+    webpackConfig = development ? webpackDevConfig : webpackProdConfig;
+    name = 'webpack:build' + (development ? '-dev' : '');
+    config = defineEntries(webpackConfig, game);
 
     // run webpack
     webpack(config, function (err, stats) {
-      if (err) throw new gutil.PluginError('webpack:build', err);
-      gutil.log('[webpack:build]', stats.toString({
+      if (err) throw new gutil.PluginError(name, err);
+      gutil.log(`[${name}]`, stats.toString({
         colors: true
       }));
       if (index === games.length - 1) {
@@ -141,6 +127,7 @@ gulp.task('copy-index', function () {
       }))
       .pipe(gulp.dest('./build/' + game));
 
+    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp
       .src(path.join('./library', game, 'source/screens/*'))
       .pipe(gulp.dest('./build/' + game + '/screens'));
@@ -155,15 +142,18 @@ gulp.task('copy-framework', function () {
 
 gulp.task('copy-media', ['copy-index'], function () {
   games.forEach(function (game) {
+    // This can be removed once media for every game is transferred to the media server.
     gulp
       .src(path.join( './library', game, 'media/**/*' ))
       .pipe( gulp.dest(path.join( './build', game, 'media' )) );
   });
 
+  // This can be removed once fonts for every game are transferred to the media server.
   gulp
     .src(['./library/shared/fonts/*'])
     .pipe(gulp.dest('./build/shared/fonts'));
 
+  // This can be removed once shared images games are transferred to the media server.
   gulp
     .src(['./library/shared/images/*'])
     .pipe(gulp.dest('./build/shared/images'));
@@ -171,6 +161,7 @@ gulp.task('copy-media', ['copy-index'], function () {
 
 gulp.task('copy-components', ['copy-media'], function () {
   games.forEach(function (game) {
+    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp
       .src(path.join( './library', game, 'source/js/components/**/*.html' ))
       .pipe( gulp.dest(path.join( './build', game, 'components' )) );
@@ -179,6 +170,7 @@ gulp.task('copy-components', ['copy-media'], function () {
 
 gulp.task('copy-thumbs', ['copy-components'], function () {
   games.forEach(function (game) {
+    // This can be removed once thumbs for each game are moved to the media server.
     gulp
       .src(path.join( './library', game, 'thumb.jpg' ))
       .pipe( gulp.dest('./build/' + game) );
@@ -190,6 +182,7 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
 function watchTask() {
   if (!nolivereload) livereload.listen();
   var game = (games.length > 1) ? '**' : games[0];
+  development = true;
   watch([
     '../js-interactive-library/build/play.js',
     'library/framework/*',
@@ -198,7 +191,7 @@ function watchTask() {
     'library/' + game + '/**/*.scss',
     'library/' + game + '/**/*.css',
     'library/' + game + '/**/*.html'], function () {
-    gulp.start('build-dev');
+    gulp.start('build');
   });
 }
 gulp.task('watch', watchTask);
