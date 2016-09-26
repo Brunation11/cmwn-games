@@ -5,6 +5,15 @@ import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 import Draggable from 'shared/components/draggable/0.1';
 
+class GlobeScreenComponent extends skoash.Screen {
+
+  open() {
+    super.open();
+
+    this.refs['dropzone-reveal'].incompleteRefs();
+  }
+}
+
 export default function (props, ref, key) {
   var closeReveal = function (close, callback) {
     if (!Number.isInteger(close)) close = true;
@@ -50,23 +59,11 @@ export default function (props, ref, key) {
   }
 
   return (
-    <skoash.Screen
+    <GlobeScreenComponent
       {...props}
       ref={ref}
       key={key}
       id="globe"
-      onOpen={() => {
-        if (_.get(props, 'screen.replay', null) === null) return;
-        // TODO: make screen incomplete on replay || find some other way to make replayable
-      }}
-      onComplete={() => {
-        skoash.trigger('updateState', {
-          path: 'screen',
-          data: {
-            replay: true,
-          },
-        });
-      }}
     >
       <DropzoneReveal
         ref="dropzone-reveal"
@@ -112,17 +109,6 @@ export default function (props, ref, key) {
                 <skoash.ListItem correct><h4>To their place of birth</h4></skoash.ListItem>,
               ]}
               selectRespond={_.bind(selectRespond, undefined, _, '2')}
-            />
-          </skoash.Component>,
-          <skoash.Component type="li">
-            <h3>Why do Sea Turtles<br />come onto land?</h3>
-            <Selectable
-              list={[
-                <skoash.ListItem><h4>To get some sun</h4></skoash.ListItem>,
-                <skoash.ListItem correct><h4>To lay eggs</h4></skoash.ListItem>,
-                <skoash.ListItem><h4>Circus work</h4></skoash.ListItem>,
-              ]}
-              selectRespond={_.bind(selectRespond, undefined, _, '1')}
             />
           </skoash.Component>,
           <skoash.Component type="li">
@@ -213,6 +199,17 @@ export default function (props, ref, key) {
               selectRespond={_.bind(selectRespond, undefined, _, '1')}
             />
           </skoash.Component>,
+          <skoash.Component type="li">
+            <h3>Why do Sea Turtles<br />come onto land?</h3>
+            <Selectable
+              list={[
+                <skoash.ListItem><h4>To get some sun</h4></skoash.ListItem>,
+                <skoash.ListItem correct><h4>To lay eggs</h4></skoash.ListItem>,
+                <skoash.ListItem><h4>Circus work</h4></skoash.ListItem>,
+              ]}
+              selectRespond={_.bind(selectRespond, undefined, _, '1')}
+            />
+          </skoash.Component>,
           <skoash.Component type="li" ref="open-on-start" id="open-on-start" className="center">
             <h3>Click and drag icons into<br />the globe to get a question!<br />
             Answer correctly to<br />fill the globe.</h3>
@@ -238,7 +235,7 @@ export default function (props, ref, key) {
           <skoash.Audio type="sfx" ref="correct" src="media/audio/SO_Right.mp3" />,
           <skoash.Audio type="sfx" ref="incorrect-1" complete src="media/audio/SO_Wrong.mp3" />,
           <skoash.Audio type="sfx" ref="incorrect-2" complete src="media/audio/SO_Wrong.mp3" />,
-          <skoash.Image className="background" src="media/images/globe/background-reveal.png" />,
+          <skoash.Image className="background" src="media/images/globe/background-reveal.png" checkComplete={false} completeOnStart />,
         ]}
       />
       <Reveal
@@ -246,7 +243,6 @@ export default function (props, ref, key) {
         list={[
           <skoash.Component type="li" ref="well-done" id="well-done" className="center">
             <div className="group" align="center">
-              <div pl-bg="media/images/globe/sprite_4.1.png"></div>
               <h3>Great job! Now let’s take a look at<br /> Sea Turtle risks!</h3>
             </div>
           </skoash.Component>,
@@ -256,6 +252,6 @@ export default function (props, ref, key) {
           <skoash.Image className="background" src="media/images/globe/background-reveal.png" />,
         ]}
       />
-    </skoash.Screen>
+    </GlobeScreenComponent>
   );
 }
