@@ -121,7 +121,7 @@ gulp.task('copy-index', function () {
           .src(indexPath)
           // include the following code where you want the livereload script to be injected
           /*
-            <!-- inject:livereload -->
+            <!-- inject:js -->
             <!-- endinject -->
           */
           .pipe(inject(gulp.src('./library/shared/livereload.js'), {
@@ -135,7 +135,7 @@ gulp.task('copy-index', function () {
         gulp
           .src('./library/shared/templates/index.html')
           .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-            starttag: '<!-- inject:title -->',
+            starttag: '<!-- inject:head -->',
             transform: function (filePath, file) {
               var s, config, title;
               s = file.contents.toString('utf8');
@@ -145,31 +145,18 @@ gulp.task('copy-index', function () {
             }
           }))
           .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-            starttag: '<!-- inject:div -->',
+            starttag: '<!-- inject:body -->',
             transform: function (filePath, file) {
-              var s, config;
+              var s, config, min;
               s = file.contents.toString('utf8');
               config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')'); // eslint-disable-line no-eval
-              return `<div id="${config.id}"></div>`;
-            }
-          }))
-          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-            starttag: '<!-- inject:react -->',
-            transform: function () {
-              var min = debug ? '' : '.min';
+              min = debug ? '' : '.min';
               return (
+                `<div id="${config.id}"></div>\n  ` +
                 `<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js"></script>\n  ` +
-                `<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js"></script>`
+                `<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js"></script>\n  ` +
+                `<script type="text/javascript" src="../framework/skoash.${config.skoash}.js"></script>`
               );
-            }
-          }))
-          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-            starttag: '<!-- inject:skoash -->',
-            transform: function (filePath, file) {
-              var s, config;
-              s = file.contents.toString('utf8');
-              config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')'); // eslint-disable-line no-eval
-              return `<script type="text/javascript" src="../framework/skoash.${config.skoash}.js"></script>`;
             }
           }))
           .pipe(inject(gulp.src('./library/shared/livereload.js'), {
