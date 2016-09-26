@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function (props, ref, key) {
   var letsDust = _.get(props, 'data.vo.playing') ? 'lets-dust' : '';
   var count5 = _.get(props, 'data.count5.playing') ? 'count' : '';

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import SelectableCanvasReveal from 'shared/components/selectable_canvas_reveal/0.1';
 
 export default function (props, ref, key) {

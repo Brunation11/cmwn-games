@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import MediaCollection from 'shared/components/media_collection/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 

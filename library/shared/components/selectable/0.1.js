@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {

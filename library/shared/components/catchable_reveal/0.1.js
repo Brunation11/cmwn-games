@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Reveal from '../reveal/0.1.js';
 import Catch from '../catch/0.1.js';
 

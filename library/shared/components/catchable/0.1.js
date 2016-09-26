@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Catchable extends skoash.Component {
   constructor() {
     super();

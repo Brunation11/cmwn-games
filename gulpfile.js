@@ -12,6 +12,7 @@ var _ = require('lodash'),
   nolivereload,
   development,
   debug,
+  local,
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
@@ -58,6 +59,7 @@ games = (function () {
 nolivereload = argv.nolr;
 development = argv.development || argv.dev;
 debug = argv.debug;
+local = argv.local || argv.l;
 
 // the clean task still does not always run last
 // this should be updated to make sure clean gets run after all other tasks
@@ -121,7 +123,7 @@ gulp.task('copy-index', function () {
           .src(indexPath)
           // include the following code where you want the livereload script to be injected
           /*
-            <!-- inject:js -->
+            <!-- inject:livereload -->
             <!-- endinject -->
           */
           .pipe(inject(gulp.src('./library/shared/livereload.js'), {
@@ -144,6 +146,12 @@ gulp.task('copy-index', function () {
               return `<title>${title}</title>`;
             }
           }))
+          .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {
+            starttag: '<!-- inject:integration -->',
+            transform: function (filePath, file) {
+              if (!local) return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+            }
+          }))
           .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
             starttag: '<!-- inject:body -->',
             transform: function (filePath, file) {
@@ -159,10 +167,16 @@ gulp.task('copy-index', function () {
               );
             }
           }))
-          .pipe(inject(gulp.src('./library/shared/livereload.js'), {
+          .pipe(inject(gulp.src('./library/shared/js/livereload.js'), {
             starttag: '<!-- inject:livereload -->',
             transform: function (filePath, file) {
-              if (livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
+              if (livereload.server) return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+            }
+          }))
+          .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
+            starttag: '<!-- inject:ga -->',
+            transform: function (filePath, file) {
+              return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
             }
           }))
           .pipe(gulp.dest('./build/' + game));

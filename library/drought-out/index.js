@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -26,8 +24,6 @@ import HeroScreen from './components/hero_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
-
-import 'shared/js/test-platform-integration';
 
 class DroughtOut extends skoash.Game {
   constructor() {
@@ -114,5 +110,3 @@ class DroughtOut extends skoash.Game {
 }
 
 skoash.start(DroughtOut, config.id);
-
-import 'shared/js/google-analytics';

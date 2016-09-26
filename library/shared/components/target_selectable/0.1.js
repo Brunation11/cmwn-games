@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import SelectableReveal from 'shared/components/selectable_reveal/0.1.js';
