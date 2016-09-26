@@ -1,4 +1,5 @@
-var argv = require('yargs').argv,
+var _ = require('lodash'),
+  argv = require('yargs').argv,
   gulp = require('gulp'),
   watch = require('gulp-watch'),
   gutil = require('gulp-util'),
@@ -10,6 +11,7 @@ var argv = require('yargs').argv,
   games,
   nolivereload,
   development,
+  debug,
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
@@ -54,8 +56,8 @@ games = (function () {
 }());
 
 nolivereload = argv.nolr;
-
-development = argv.development || argv.dev || argv.d;
+development = argv.development || argv.dev;
+debug = argv.debug;
 
 // the clean task still does not always run last
 // this should be updated to make sure clean gets run after all other tasks
@@ -112,20 +114,74 @@ gulp.task('sass', function () {
 
 gulp.task('copy-index', function () {
   games.forEach(function (game) {
-    gulp
-      .src(path.join('./library', game, 'index.html'))
-      // include the following code where you want the livereload script to be injected
-      /*
-        <!-- inject:livereload -->
-        <!-- endinject -->
-      */
-      .pipe(inject(gulp.src('./livereload.js'), {
-        starttag: '<!-- inject:livereload -->',
-        transform: function (filePath, file) {
-          if (livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
-        }
-      }))
-      .pipe(gulp.dest('./build/' + game));
+    var indexPath = path.join('./library', game, 'index.html');
+    fs.stat(indexPath, function (err) {
+      if (err == null) {
+        gulp
+          .src(indexPath)
+          // include the following code where you want the livereload script to be injected
+          /*
+            <!-- inject:livereload -->
+            <!-- endinject -->
+          */
+          .pipe(inject(gulp.src('./library/shared/livereload.js'), {
+            starttag: '<!-- inject:livereload -->',
+            transform: function (filePath, file) {
+              if (livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
+            }
+          }))
+          .pipe(gulp.dest('./build/' + game));
+      } else {
+        gulp
+          .src('./library/shared/templates/index.html')
+          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
+            starttag: '<!-- inject:title -->',
+            transform: function (filePath, file) {
+              var s, config, title;
+              s = file.contents.toString('utf8');
+              config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')'); // eslint-disable-line no-eval
+              title = config.title || _.startCase(config.id);
+              return `<title>${title}</title>`;
+            }
+          }))
+          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
+            starttag: '<!-- inject:div -->',
+            transform: function (filePath, file) {
+              var s, config;
+              s = file.contents.toString('utf8');
+              config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')'); // eslint-disable-line no-eval
+              return `<div id="${config.id}"></div>`;
+            }
+          }))
+          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
+            starttag: '<!-- inject:react -->',
+            transform: function () {
+              var min = debug ? '' : '.min';
+              return (
+                `<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js"></script>\n  ` +
+                `<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js"></script>`
+              );
+            }
+          }))
+          .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
+            starttag: '<!-- inject:skoash -->',
+            transform: function (filePath, file) {
+              var s, config;
+              s = file.contents.toString('utf8');
+              config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')'); // eslint-disable-line no-eval
+              return `<script type="text/javascript" src="../framework/skoash.${config.skoash}.js"></script>`;
+            }
+          }))
+          .pipe(inject(gulp.src('./library/shared/livereload.js'), {
+            starttag: '<!-- inject:livereload -->',
+            transform: function (filePath, file) {
+              if (livereload.server) return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
+            }
+          }))
+          .pipe(gulp.dest('./build/' + game));
+      }
+    });
+
 
     // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp

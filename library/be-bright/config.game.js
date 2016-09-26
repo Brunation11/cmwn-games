@@ -1,4 +1,4 @@
-export default {
+var config = {
   id: 'be-bright',
   version: 2,
   skoash: '1.0.1',
@@ -7,3 +7,5 @@ export default {
     ratio: 16 / 9
   },
 };
+
+export default config;
