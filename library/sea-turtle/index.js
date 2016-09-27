@@ -9,7 +9,8 @@ import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
 import InfoGlobeScreen from './components/info_globe_screen';
 import GlobeScreen from './components/globe_screen';
-import InfoTrash from './components/info_trash_screen';
+import InfoTrashScreen from './components/info_trash_screen';
+import TrashScreen from './components/trash_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 //import 'shared/js/test-platform-integration';
@@ -24,7 +25,8 @@ class SeaTurtle extends skoash.Game {
       //2: VideoScreen,
       //3: InfoGlobeScreen,
       //4: GlobeScreen,
-      2: InfoTrash,
+      //5: InfoTrashScreen,
+      2: TrashScreen,
     };
 
     this.menus = {

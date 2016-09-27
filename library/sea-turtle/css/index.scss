@@ -212,8 +212,6 @@ img.hidden {
   text-align: center;
 }
 
-.screen.no-frame.jelly {}
-
 .screen.no-frame.jelly .frame img.background {
   transform: translateX(-48%);
 }
@@ -437,4 +435,30 @@ section.OPEN .flip {
   }
 }
 
+#trash {
 
+  .turtle {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 355px;
+    height: 595px;
+    background-size: 1110px;
+    background-image: url(../media/images/trash/sprite_6.1.png);
+  }
+
+  .cursor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: opacity .5s;
+    pointer-events: none;
+    z-index: 1;
+    width: 355px;
+    height: 595px;
+    background-size: 1110px;
+    background-position: -740px 0;
+    background-image: url(../media/images/trash/sprite_6.1.png);
+  }
+}
