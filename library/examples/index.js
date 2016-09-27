@@ -1,20 +1,14 @@
 import config from './config.game';
-asdf
 import Loader from 'shared/components/loader/0.1';
 
-import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-<<<<<<< HEAD
-=======
-import RunnerReveal from './components/flyer_screen';
->>>>>>> 3a36afa9b77884ffe05f7b416e779101f5e9eec3
+// import iOSScreen from 'shared/components/ios_splash_screen/0.1';
+// import SelectableAllScreen from './components/selectable_all_screen';
+// import RunnerReveal from './components/flyer_screen';
 // import CatchReveal from './components/catch_reveal_screen';
 // import CatchScreen from './components/catch_screen';
 // import CarouselScreen from './components/carousel_screen';
 // import MatchScreen from './components/match_screen';
 // import RolesScreen from './components/roles_screen';
-// import MatchScreen from './components/match_screen';
-
-import MatchScreen from './components/match_screen';
 // import ScoreScreen from './components/score_screen';
 // import DropzoneScreen from './components/dropzone_screen';
 // import TimerScreen from './components/timer_screen';
@@ -22,7 +16,7 @@ import MatchScreen from './components/match_screen';
 // import TitleScreen from './components/title_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
-import SwitchesScreen from './components/switches_screen';
+// import SwitchesScreen from './components/switches_screen';
 // import InfoScreen from './components/info_screen';
 // import VideoScreen from './components/video_screen';
 // import FlipScreen from './components/flip_screen';
@@ -36,16 +30,14 @@ class Examples extends skoash.Game {
     super(config);
 
     this.screens = {
-      0: iOSScreen,
-<<<<<<< HEAD
-=======
-      1: RunnerReveal
->>>>>>> 3a36afa9b77884ffe05f7b416e779101f5e9eec3
+      // 0: iOSScreen,
+      // 1: SelectableAllScreen,
+      // 1: CarouselScreen,
       // 1: CatchReveal
       // 1: CatchScreen,
       // 1: CarouselScreen,
-      // 1: RolesScreen
-      // 1: MatchScreen,
+      // 1: RolesScreen,
+      // 1: RunnerReveal
       // 1: MatchScreen,
       // 1: ScoreScreen,
       // 1: DropzoneScreen,
@@ -54,18 +46,14 @@ class Examples extends skoash.Game {
       // 1: TitleScreen,
       // 2: BulbsScreen,
       // 3: PigScreen,
-<<<<<<< HEAD
-      1: SwitchesScreen,
-=======
-      // 4: SwitchesScreen,
->>>>>>> 3a36afa9b77884ffe05f7b416e779101f5e9eec3
+      // 1: SwitchesScreen,
       // 5: InfoScreen,
       // 6: VideoScreen,
       // 7: FlipScreen,
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: QuitScreen,
     };
   }
 
@@ -76,7 +64,6 @@ class Examples extends skoash.Game {
   }
 
   renderAssets() {
-        // <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
     return (
       <div>
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />

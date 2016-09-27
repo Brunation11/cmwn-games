@@ -23,26 +23,34 @@ class Reveal extends skoash.Component {
   }
 
   open(message) {
+    var self = this;
     var currentlyOpen = this.state.currentlyOpen.concat(message);
 
-    this.setState({
+    self.setState({
       open: true,
       currentlyOpen,
       openReveal: '' + message,
     });
 
-    this.playAudio(message);
+    self.playAudio(message);
 
-    this.callProp('onOpen', message);
+    if (self.props.completeOnOpen) {
+      self.complete();
+    } else {
+      self.requireForComplete.map(key => {
+        if (key === message && self.refs[key]) {
+          self.refs[key].complete();
+        }
+      });
+    }
 
-    this.requireForComplete.forEach(key => {
-      if (key === message && this.refs[key]) {
-        this.refs[key].complete();
-      }
-      if (key === message && this.props.list[key]) {
-        this.props.list[key].complete();
-      }
-    });
+    if (self.props.autoClose) {
+      setTimeout(function() {
+        self.close();
+      }, 2000);
+    }
+
+    self.callProp('onOpen', message);
   }
 
   close() {
@@ -134,6 +142,7 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
+          type="li"
           className={this.getClass(li, key)}
           data-ref={dataRef}
           ref={ref}

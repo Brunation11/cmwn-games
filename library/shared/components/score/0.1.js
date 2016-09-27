@@ -8,6 +8,13 @@ class Score extends skoash.Component {
     this.state = {
       score: 0
     };
+
+    this.checkComplete = this.checkComplete.bind(this);
+  }
+
+  checkComplete() {
+    if (!this.props.max) return;
+    if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) && !this.state.complete) this.complete();
   }
 
   bootstrap() {
@@ -41,20 +48,24 @@ class Score extends skoash.Component {
   }
 
   up(increment) {
-    increment = _.isFinite(increment) ? increment :
-      _.isFinite(this.props.increment) ? this.props.increment : 1;
-
+    increment = _.isFinite(increment) ? increment : _.isFinite(this.props.increment) ? this.props.increment : 1;
     if (!_.isFinite(increment)) throw 'increment must be finite';
+
+    this.setState({
+      score: this.state.score + increment
+    }, this.checkComplete);
 
     this.updateScore(increment);
   }
 
   down(increment) {
-    increment = _.isFinite(increment) ? increment :
-      _.isFinite(this.props.downIncrement) ? this.props.downIncrement :
-      _.isFinite(this.props.increment) ? this.props.increment : 1;
+    increment = _.isFinite(increment) ? increment : _.isFinite(this.props.downIncrement) ? this.props.downIncrement : _.isFinite(this.props.increment) ? this.props.increment : 1;
 
     if (!_.isFinite(increment)) throw 'increment must be finite';
+
+    this.setState({
+      score: this.state.score - increment
+    }, this.checkComplete);
 
     this.updateScore(-1 * increment);
   }
@@ -105,16 +116,17 @@ class Score extends skoash.Component {
   getClassNames() {
     return classNames(
       'score',
+      `score-${this.props.correct || this.state.score}`,
       super.getClassNames()
     );
   }
 
   render() {
     return (
-      <div className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.props.correct || this.state.score}>
         {this.props.leadingContent}
         <span>
-          {this.state.score}
+          {this.props.correct || this.state.score}
         </span>
         {this.props.children}
       </div>
