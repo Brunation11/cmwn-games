@@ -1,6 +1,7 @@
-import Draggable from '../draggable/0.1.js';
-
+import _ from 'lodash';
 import classNames from 'classnames';
+
+import Draggable from '../draggable/0.1.js';
 
 class EditableAsset extends Draggable {
   constructor() {
@@ -47,8 +48,6 @@ class EditableAsset extends Draggable {
   }
 
   deactivate() {
-    var self = this;
-
     if (!this.state.valid) {
       this.setState({
         left: this.state.lastValid.left || this.state.left,
@@ -58,7 +57,7 @@ class EditableAsset extends Draggable {
         active: false,
       }, () => {
         setTimeout(() => {
-          self.checkItem();
+          this.checkItem();
         }, 0);
       });
     } else {
@@ -92,11 +91,17 @@ class EditableAsset extends Draggable {
   rotate() {
     this.refs.el.parentNode.addEventListener('mousemove', this.adjustRotation);
     this.refs.el.parentNode.addEventListener('mouseup', this.offRotate);
+
+    this.refs.el.parentNode.addEventListener('touchmove', this.adjustRotation);
+    this.refs.el.parentNode.addEventListener('touchend', this.offRotate);
   }
 
   offRotate() {
     this.refs.el.parentNode.removeEventListener('mousemove', this.adjustRotation);
     this.refs.el.parentNode.removeEventListener('mouseup', this.offRotate);
+
+    this.refs.el.parentNode.removeEventListener('touchmove', this.adjustRotation);
+    this.refs.el.parentNode.removeEventListener('touchend', this.offRotate);
   }
 
   adjustRotation(e) {
@@ -142,7 +147,6 @@ class EditableAsset extends Draggable {
   scale() {
     this.refs.el.parentNode.addEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.addEventListener('mouseup', this.offScale);
-    this.refs.el.parentNode.addEventListener('mouseout', this.offScale);
 
     this.refs.el.parentNode.addEventListener('touchmove', this.adjustScale);
     this.refs.el.parentNode.addEventListener('touchend', this.offScale);
@@ -151,7 +155,6 @@ class EditableAsset extends Draggable {
   offScale() {
     this.refs.el.parentNode.removeEventListener('mousemove', this.adjustScale);
     this.refs.el.parentNode.removeEventListener('mouseup', this.offScale);
-    this.refs.el.parentNode.removeEventListener('mouseout', this.offScale);
 
     this.refs.el.parentNode.removeEventListener('touchmove', this.adjustScale);
     this.refs.el.parentNode.removeEventListener('touchend', this.offScale);
@@ -237,10 +240,12 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var width, height, minDim, maxDim, minScale, maxScale, scale;
+      var left, top, width, height, minDim, maxDim, minScale, maxScale, scale;
 
       minDim = this.props.minDim || 40;
       maxDim = this.props.maxDim || 400;
+      left = this.state.left;
+      top = this.state.top;
       width = image.width;
       height = image.height;
 
@@ -250,7 +255,15 @@ class EditableAsset extends Draggable {
         self.props.state.scale :
         Math.max(Math.min(self.state.scale, maxScale), minScale);
 
+      if ((!this.state.height || !this.state.width) &&
+        (!this.state.left && !this.state.top)) {
+        left = (this.props.canvasWidth - width) / 2;
+        top = (this.props.canvasHeight - height) / 2;
+      }
+
       self.setState({
+        left,
+        top,
         width,
         height,
         minScale,
@@ -313,7 +326,9 @@ class EditableAsset extends Draggable {
       name: 'getMedia',
       'media_id': this.props.media_id
     }).then(d => {
-      this.setState(d);
+      this.setState(d, () => {
+        this.checkItem();
+      });
     });
   }
 
@@ -321,11 +336,11 @@ class EditableAsset extends Draggable {
     this.attachEvents();
   }
 
-  getButtonStyle() {
+  getButtonStyle(extraRotation = 0) {
     var style, transform = '';
 
     transform += `scale(${(1 / this.state.scale)}) `;
-    transform += `rotate(${(-this.state.rotation)}rad) `;
+    transform += `rotate(${(-this.state.rotation - extraRotation)}rad) `;
 
     style = {
       transform,
@@ -413,7 +428,7 @@ class EditableAsset extends Draggable {
         <button
           ref="scale"
           className="scale"
-          style={this.getButtonStyle()}
+          style={this.getButtonStyle(1.5708)}
         />
       </div>
     );
@@ -432,5 +447,10 @@ class EditableAsset extends Draggable {
     );
   }
 }
+
+EditableAsset.defaultProps = _.defaults({
+  canvasWidth: 1280,
+  canvasHeight: 720,
+}, Draggable.defaultProps);
 
 export default EditableAsset;

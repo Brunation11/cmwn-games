@@ -56,6 +56,29 @@ class CanvasScreen extends skoash.Screen {
     }
   }
 
+  addItems(message) {
+    var hasAssets, background;
+
+    hasAssets = true;
+    background = !!message.rules.background;
+
+    this.mapRulesStringToNumbers(message.rules);
+
+    this.refs.canvas.setItems(message.rules);
+
+    this.setState({
+      hasAssets,
+      background,
+    });
+
+    if (message.friend_to) {
+      skoash.trigger('passData', {
+        name: 'add-recipient',
+        message: message.friend_to
+      });
+    }
+  }
+
   setMenu() {
     var menu, state;
     state = skoash.trigger('getState');
@@ -92,37 +115,14 @@ class CanvasScreen extends skoash.Screen {
     return rules;
   }
 
-  open(opts) {
-    var hasAssets, background;
-
+  open(opts = {}) {
     this.setMenu();
 
     if (this.refs && this.refs.menu) {
       this.refs.menu.deactivate();
     }
 
-    if (opts.message) {
-      hasAssets = true;
-      background = !!opts.message.rules.background;
-
-      this.mapRulesStringToNumbers(opts.message.rules);
-
-      this.refs.canvas.setItems(opts.message.rules);
-
-      this.setState({
-        hasAssets,
-        background,
-      });
-
-      if (opts.message.friend_to) {
-        skoash.trigger('passData', {
-          name: 'add-recipient',
-          message: opts.message.friend_to
-        });
-      }
-    }
-
-    skoash.trigger('save');
+    if (!opts.draft) skoash.trigger('save');
 
     // interval = setInterval(() => {
     //   skoash.trigger('save');
@@ -238,10 +238,15 @@ class CanvasScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <CanvasScreen
-    id="canvas"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <CanvasScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="canvas"
+      hideNext
+      hidePrev
+    />
+  );
+}

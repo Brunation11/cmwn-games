@@ -6,7 +6,7 @@ export default function (props, ref, key) {
       key={key}
       id="move"
     >
-      <skoash.Audio ref="start" type="sfx" src="media/S_7/S_7.1.mp3" />
+      <skoash.Audio ref="start" type="sfx" src="media/S_7/S_7.1.mp3" complete />
       <skoash.Audio type="voiceOver" src="media/S_7/VO_7.1.mp3" />
       <skoash.Component className="frame">
         <skoash.Image className="background" src="media/_Frames/FR_10.png" />

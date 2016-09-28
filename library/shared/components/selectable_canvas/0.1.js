@@ -14,23 +14,31 @@ class SelectableCanvas extends Selectable {
   }
 
   bootstrap() {
+    var offset;
+
     super.bootstrap();
 
+    this.buffer = this.refs.canvas || document.createElement('canvas');
     this.buffer = document.createElement('canvas');
     this.bctx = this.buffer.getContext('2d');
 
     this.el = ReactDOM.findDOMNode(this);
+    offset = this.el.getBoundingClientRect();
+
+    this.buffer.width = offset.width;
+    this.buffer.height = offset.height;
 
     this.items = [];
 
     _.forIn(this.refs, component => {
       if (!component.refs) return;
-      this.items.push(ReactDOM.findDOMNode(component.refs.img));
+      var img = ReactDOM.findDOMNode(component.refs.img)
+      if (img) this.items.push(img);
     });
   }
 
   selectHelper(e, classes) {
-    var offset, target;
+    var offset, target, dataRef;
 
     offset = this.el.getBoundingClientRect();
     this.buffer.width = offset.width;
@@ -38,7 +46,8 @@ class SelectableCanvas extends Selectable {
 
     this.items.some((item, key) => {
       if (this.isImageTarget(item, e, offset)) {
-        target = this.refs[key];
+        dataRef = item.getAttribute('data-ref');
+        target = this.refs[dataRef] || this.refs[key];
         target.complete();
         classes[key] = this.props.selectClass;
         return true;
@@ -52,7 +61,7 @@ class SelectableCanvas extends Selectable {
     });
 
     if (target && typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond(target.props.message);
+      this.props.selectRespond.call(this, target.props.message);
     }
 
     this.checkComplete();
@@ -81,6 +90,7 @@ class SelectableCanvas extends Selectable {
   render() {
     return (
       <div>
+        <canvas ref="canvas" />
         <ul
           className={this.getClassNames()}
           onClick={this.state.selectFunction.bind(this)}

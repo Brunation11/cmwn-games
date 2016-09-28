@@ -31,12 +31,6 @@ class SavedMessages extends Selectable {
     }
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      category: null,
-    });
-  }
-
   getClass(key) {
     return classNames({
       [this.state.classes[key] || '']: true,
@@ -61,7 +55,11 @@ class SavedMessages extends Selectable {
 
     firstImg = item && item.rules && item.rules.items &&
       item.rules.items[0] && item.rules.items[0].src ?
-      item.rules.items[0].src : '';
+      item.rules.items[0].src : (
+        item && item.rules && item.rules.messages &&
+        item.rules.messages[0] && item.rules.messages[0].src ?
+        item.rules.messages[0].src : ''
+      );
 
     return (
       <div
@@ -82,8 +80,12 @@ class SavedMessages extends Selectable {
 
     items = self.props.data.items;
 
-    if (self.state.category) {
-      items = items[self.state.category].items;
+    if (!items.length) {
+      return (
+        <li className="empty">
+          {this.props.emptyMessage}
+        </li>
+      );
     }
 
     return items.map((item, key) => {
@@ -99,7 +101,7 @@ class SavedMessages extends Selectable {
           {self.renderThumb(item)}
           <span className="timestamp">
             <span className="date">{timestamp.format('MM.DD.YY')}</span>
-            <span className="time">{timestamp.format('h:mm:ss a')}</span>
+            <span className="time">{timestamp.format('h:mm a')}</span>
           </span>
         </skoash.ListItem>
       );
