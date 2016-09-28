@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -19,11 +17,10 @@ import QuitScreen from './components/quit_screen';
 
 import 'shared/js/test-platform-integration';
 
-class MeerkatMania extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var MeerkatMania = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: ExcelScreen,
@@ -34,50 +31,36 @@ class MeerkatMania extends skoash.Game {
       7: MoveScreen,
       8: Video2Screen,
       9: FlipScreen,
-    };
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
+    }}
+    loader={<Loader />}
+    assets={[
+      <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
+      <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />,
+      <skoash.Audio ref="bkg-3" type="background" src="media/S_13/S_13.1.mp3" />,
+      <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
+      <skoash.Audio ref="close" type="sfx" src="media/_Buttons/S_Close_1.mp3" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_1.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_2.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_4.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_5.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_6.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_7.png" />,
+      <skoash.Image className="hidden" src="media/_BKG/BKG_8.png" />,
+      <skoash.Image className="hidden" src="media/_Frames/FR_10.png" />,
+      <div className="background default" />,
+      <div className="background excel" />,
+      <div className="background look-out" />,
+      <div className="background feel" />,
+      <div className="background movie" />,
+      <div className="background upload" />,
+      <div className="background flip" />,
+    ]}
+  />
+);
 
-    this.state.data.screens = _.map(this.screens, () => ({}));
-  }
-
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
-        <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
-        <skoash.Audio ref="bkg-3" type="background" src="media/S_13/S_13.1.mp3" />
-        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="close" type="sfx" src="media/_Buttons/S_Close_1.mp3" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_1.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_2.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_4.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_5.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_6.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_7.png" />
-        <skoash.Image className="hidden" src="media/_BKG/BKG_8.png" />
-        <skoash.Image className="hidden" src="media/_Frames/FR_10.png" />
-        <div className="background default" />
-        <div className="background excel" />
-        <div className="background look-out" />
-        <div className="background feel" />
-        <div className="background movie" />
-        <div className="background upload" />
-        <div className="background flip" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(MeerkatMania, config.id);
+skoash.start(MeerkatMania);
 
 import 'shared/js/google-analytics';
