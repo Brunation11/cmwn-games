@@ -51,16 +51,16 @@ export default function (props, ref, key) {
             });
           }}
           list={[
-            <li ref="safe" />,
-            <li ref="loved" />,
-            <li ref="supported" />,
-            <li ref="important" />,
-            <li ref="included" />,
-            <li ref="valued" />,
-            <li ref="grateful" />,
-            <li ref="happy" />,
-            <li ref="secure" />,
-            <li ref="worthwhile" />,
+            <li data-ref="safe" />,
+            <li data-ref="loved" />,
+            <li data-ref="supported" />,
+            <li data-ref="important" />,
+            <li data-ref="included" />,
+            <li data-ref="valued" />,
+            <li data-ref="grateful" />,
+            <li data-ref="happy" />,
+            <li data-ref="secure" />,
+            <li data-ref="worthwhile" />,
           ]}
         />
       </skoash.Component>
