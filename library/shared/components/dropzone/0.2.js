@@ -1,6 +1,7 @@
-import Draggable from '../draggable/0.2.js';
-
+import _ from 'lodash';
 import classNames from 'classnames';
+
+import Draggable from '../draggable/0.2.js';
 
 class Dropzone extends skoash.Component {
   constructor() {
@@ -67,7 +68,7 @@ class Dropzone extends skoash.Component {
 
   start() {
     var self = this, dropzone, draggable;
-    play.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
 
     if (self.loadData && typeof self.loadData === 'object') {
@@ -78,19 +79,19 @@ class Dropzone extends skoash.Component {
             if (self.refs[key1] && ref2.props.message === ref1.ref) {
               dropzone = self.refs[key1];
               draggable = ref2;
-              dropzone.setState({content: draggable})
+              dropzone.setState({content: draggable});
               draggable.setState(ref1.state);
               self.correct(draggable, key1.replace('dropzone-', ''));
             }
           });
         } else {
-          _.forIn(self.loadData, (ref1, key1) => {
-            self.refs[key1].setState({content: []});
-            _.forIn(self.refs, (ref2, key2) => {
-              if (key2.indexOf('draggable-') === -1) return;
-              if (_.includes(ref1, ref2.props.message)) {
-                self.refs[key1].state.content.push(ref2);
-                ref2.markCorrect();
+          _.forIn(self.loadData, (ref2, key2) => {
+            self.refs[key2].setState({content: []});
+            _.forIn(self.refs, (ref3, key3) => {
+              if (key3.indexOf('draggable-') === -1) return;
+              if (_.includes(ref2, ref3.props.message)) {
+                self.refs[key2].state.content.push(ref3);
+                ref3.markCorrect();
               }
             });
           });
@@ -107,7 +108,7 @@ class Dropzone extends skoash.Component {
         if (self.refs[key1] && ref2.props.message === ref1.ref) {
           dropzone = self.refs[key1];
           draggable = ref2;
-          dropzone.setState({content: draggable})
+          dropzone.setState({content: draggable});
           draggable.setState(ref1.state);
           self.correct(draggable, key1.replace('dropzone-', ''));
         }
@@ -223,7 +224,7 @@ class Dropzone extends skoash.Component {
       <li key={key}>
         <Draggable
           {...item.props}
-          ref={"draggable-" + key}
+          ref={'draggable-' + key}
           dragRespond={this.dragRespond}
           dropRespond={this.dropRespond}
         />
@@ -232,9 +233,7 @@ class Dropzone extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames({
-      dropzone: true,
-    });
+    return classNames('dropzone', super.getClassNames());
   }
 
   render() {

@@ -14,11 +14,10 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import 'shared/js/test-platform-integration';
 
-class TwirlNSwirl extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var TwirlNSwirl = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: InfoQuestionScreen,
@@ -26,34 +25,19 @@ class TwirlNSwirl extends skoash.Game {
       4: FlushItScreen,
       5: ResponsibleFlusherScreen,
       6: FlipScreen
-    };
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
+    }}
+    loader={<Loader />}
+    assets={[
+      <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />,
+      <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
+      <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />,
+    ]}
+  />
+);
 
-    this.state.data.screens = _.map(this.screens, () => ({}));
-  }
-
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/audio/title/background.mp3" />
-
-        <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/screen-complete.mp3" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(TwirlNSwirl, config.id);
+skoash.start(TwirlNSwirl);
 
 import 'shared/js/google-analytics';
