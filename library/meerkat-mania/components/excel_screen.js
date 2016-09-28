@@ -11,7 +11,10 @@ export default function (props, ref, key) {
       <skoash.Component className="frame">
         <skoash.Image className="background" src="media/_Frames/FR_1.png" />
         <p>
-          Meerkats excel as team players and everyone<br/>in the large Meerkat family, called a mob,<br/>participates in foraging for food,<br/>sentry duty and care of babies.
+          Meerkats excel as team players and everyone<br/>
+          in the large Meerkat family, called a mob,<br/>
+          participates in foraging for food,<br/>
+          sentry duty and care of babies.
         </p>
       </skoash.Component>
     </skoash.Screen>

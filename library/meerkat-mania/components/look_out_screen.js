@@ -14,7 +14,11 @@ export default function (props, ref, key) {
       <skoash.Component className="frame">
         <skoash.Image className="background" src="media/_Frames/FR_8.png" />
         <p>
-          We meerkats really<br/>look out for each other.<br/>We make sure everyone<br/>is safe and has<br/>everything they need.
+          We meerkats really<br/>
+          look out for each other.<br/>
+          We make sure everyone<br/>
+          is safe and has<br/>
+          everything they need.
         </p>
       </skoash.Component>
     </skoash.Screen>
