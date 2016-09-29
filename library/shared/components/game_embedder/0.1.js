@@ -7,6 +7,7 @@ class GameEmbedder extends skoash.Component {
     document.domain = 'localhost';
 
     this.respond = this.respond.bind(this);
+    this.onLoad = this.onLoad.bind(this);
   }
 
   bootstrap() {
@@ -17,7 +18,6 @@ class GameEmbedder extends skoash.Component {
   }
 
   respond(opts) {
-    console.log(opts);
     if (opts.complete) {
       this.complete();
     } else if (opts.updateGameState) {
@@ -25,9 +25,16 @@ class GameEmbedder extends skoash.Component {
     }
   }
 
+  onLoad() {
+    this.emitEvent({
+      name: 'focus',
+    });
+
+    this.props.onLoad.call(this);
+  }
+
   emitEvent(data) {
     var e = new Event('skoash-event');
-    e.type = 'skoash-event';
     e.name = data.name;
     e.data = data;
     this.gameNode.contentWindow.dispatchEvent(e);
@@ -38,6 +45,7 @@ class GameEmbedder extends skoash.Component {
       <iframe
         {...this.props}
         ref="game"
+        onLoad={this.onLoad}
       />
     );
   }
@@ -46,6 +54,7 @@ class GameEmbedder extends skoash.Component {
 GameEmbedder.defaultProps = _.defaults({
   complete: false,
   checkComplete: false,
+  onLoad: _.identity,
 }, skoash.Component.defaultProps);
 
 export default GameEmbedder;
