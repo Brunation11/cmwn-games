@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "84cc1aa2d3d1d2296e9d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a879ff8b6f49163b79f4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21765,13 +21765,13 @@
 	  }, {
 	    key: 'incompleteRefs',
 	    value: function incompleteRefs() {
-	      this.incomplete();
-
 	      _lodash2.default.forEach(this.refs, function (ref) {
 	        if (typeof ref.incompleteRefs === 'function') {
 	          ref.incompleteRefs();
 	        }
 	      });
+
+	      this.incomplete();
 	    }
 	  }, {
 	    key: 'ready',
