@@ -29,20 +29,18 @@ function lsd(_path) {
   });
 }
 
-function defineEntries(_config, _game) {
+function defineEntries(config, game) {
   // modify some webpack config options
-  var config;
-
-  config = Object.create(_config);
+  config = Object.create(config);
 
   config.resolve = Object.create(config.resolve);
   config.entry = {};
   config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
-  config.resolve.modulesDirectories.push(__dirname + '/library/' + _game + '/source/js/'); // eslint-disable-line no-undef
-  config.entry[_game] = ['./' + _game + '/index.js'];
+  config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/source/js/'); // eslint-disable-line no-undef
+  config.entry[game] = ['./' + game + '/index.js'];
 
-  console.log(games, 'entry', config.entry); // eslint-disable-line no-console
+  gutil.log(games, 'entry', config.entry);
 
   return config;
 }
@@ -256,8 +254,8 @@ gulp.task('w', watchTask);
 
 function cleanTask() {
   exec('delete-invalid-files.sh', function (err, stdout, stderr) {
-    console.log(stdout); // eslint-disable-line no-console
-    console.log(stderr); // eslint-disable-line no-console
+    gutil.log(stdout);
+    gutil.log(stderr);
   });
 }
 gulp.task('clean', cleanTask);
