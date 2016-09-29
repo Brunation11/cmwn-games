@@ -61,14 +61,14 @@ export default function (props, ref, key) {
           <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
         ]}
         dropzones={[
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item lanimated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />,
-          <DropzoneComponent className="dropzone-list-item animated" />
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item lanimated" />,
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item animated" />,
+          <skoash.Component className="dropzone-list-item animated" />
         ]}
         dropzoneList={[
           <skoash.ListItem ref="space" className="draggable-list-item space animated" message="space" returnOnIncorrect />,

@@ -2,7 +2,6 @@ import collectData from './collect_data.js';
 import loadData from './load_data.js';
 
 import DragNDropScreen from 'shared/components/drag_n_drop_screen/0.1';
-import DropzoneComponent from 'shared/components/dropzone_component/0.1';
 
 export default function (props, ref, key) {
   return (
@@ -20,8 +19,8 @@ export default function (props, ref, key) {
         <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
       ]}
       dropzones={[
-        <DropzoneComponent className="dropzone-list-item animated" />,
-        <DropzoneComponent className="dropzone-list-item animated" />
+        <skoash.Component className="dropzone-list-item animated" />,
+        <skoash.Component className="dropzone-list-item animated" />
       ]}
       dropzoneList={[
         <skoash.ListItem ref="sharing" className="draggable-list-item sharing animated" message="sharing" returnOnIncorrect />,
