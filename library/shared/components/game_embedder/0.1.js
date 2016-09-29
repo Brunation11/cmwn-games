@@ -4,8 +4,6 @@ class GameEmbedder extends skoash.Component {
   constructor() {
     super();
 
-    document.domain = 'localhost';
-
     this.respond = this.respond.bind(this);
     this.onLoad = this.onLoad.bind(this);
   }
