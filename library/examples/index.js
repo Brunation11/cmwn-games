@@ -24,8 +24,6 @@ import GameScreen from './components/game_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
-
 class Examples extends skoash.Game {
   constructor() {
     super(config);
@@ -78,5 +76,3 @@ class Examples extends skoash.Game {
 }
 
 skoash.start(Examples, config.id);
-
-import 'shared/js/google-analytics';

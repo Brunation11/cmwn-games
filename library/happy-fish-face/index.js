@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -17,8 +15,6 @@ import TrashScreen from './components/trash_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
-
-import 'shared/js/test-platform-integration';
 
 class HappyFishFace extends skoash.Game {
   constructor() {
@@ -83,5 +79,3 @@ class HappyFishFace extends skoash.Game {
 }
 
 skoash.start(HappyFishFace, config.id);
-
-import 'shared/js/google-analytics';
