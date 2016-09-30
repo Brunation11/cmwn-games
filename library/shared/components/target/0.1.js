@@ -47,11 +47,16 @@ class Target extends skoash.Component {
       });
     }
 
-    this.callProp('onUpdateState', correct);
+    this.props.onUpdateState.call(this, correct);
   }
 
   setTarget(idx = 0) {
-    var amount = this.props.targets[idx].props.amount;
+    var amount;
+
+    if (this.props.loop) idx = idx % this.props.targets.length;
+    if (idx >= this.props.targets.length) return;
+
+    amount = this.props.targets[idx].props.amount;
 
     if (this.props.dataTarget) {
       this.updateGameState({
@@ -62,7 +67,7 @@ class Target extends skoash.Component {
       });
     }
 
-    this.callProp('onSetTarget');
+    this.props.onSetTarget.call();
 
     this.setState({
       idx,
@@ -73,12 +78,14 @@ class Target extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.attempt && props.attempt !== this.props.attempt) {
       this.onChange(props.attempt);
     }
 
     if (_.isFinite(props.setTarget) && props.setTarget !== this.props.setTarget) {
-      this.setTarget(props.setTarget % this.props.targets.length);
+      this.setTarget(props.setTarget);
     }
   }
 
@@ -103,5 +110,11 @@ class Target extends skoash.Component {
     );
   }
 }
+
+Target.defaultProps = _.defaults({
+  onUpdateState: _.identity,
+  onSetTarget: _.identity,
+  loop: false,
+}, skoash.Component.defaultProps);
 
 export default Target;

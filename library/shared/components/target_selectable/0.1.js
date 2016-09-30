@@ -47,7 +47,7 @@ class TargetSelectable extends SelectableReveal {
     this.refs.selectable.setState({
       classes
     }, () => {
-      this.setItem((this.state.idx + 1) % this.props.targets.length);
+      this.setItem(this.state.idx + 1);
       this.refs.selectable.requireForComplete.forEach(key => {
         if (key === message && this.refs.selectable.refs[key]) {
           this.refs.selectable.refs[key].complete();
@@ -62,6 +62,10 @@ class TargetSelectable extends SelectableReveal {
   }
 
   setItem(idx = 0) {
+
+    if (this.props.loop) idx = idx % this.props.targets.length;
+    if (idx >= this.props.targets.length) return;
+
     this.setState({
       idx,
       target: this.props.targets[idx].ref,
@@ -138,5 +142,9 @@ class TargetSelectable extends SelectableReveal {
     );
   }
 }
+
+TargetSelectable.defaultProps = _.defaults({
+  loop: false,
+}, SelectableReveal.defaultProps);
 
 export default TargetSelectable;
