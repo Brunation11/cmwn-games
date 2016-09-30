@@ -85,105 +85,105 @@ export default function (props, ref, key) {
             className="b"
             data-ref="bathing"
             backgroundTop={0}
-            x={120} y={540}
+            x={192} y={540}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="d"
             data-ref="drinking"
             backgroundTop={1}
-            x={240} y={790}
+            x={384} y={790}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="wd"
             data-ref="washingDishes"
             backgroundTop={4}
-            x={360} y={1040}
+            x={576} y={1040}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="s"
             data-ref="swimming"
             backgroundTop={5}
-            x={480} y={1290}
+            x={768} y={1290}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="c"
             data-ref="canoeing"
             backgroundTop={2}
-            x={600} y={1540}
+            x={960} y={1540}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="f"
             data-ref="factories"
             backgroundTop={3}
-            x={200} y={710}
+            x={320} y={710}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="bt"
             data-ref="brushingTeeth"
             backgroundTop={6}
-            x={320} y={960}
+            x={512} y={960}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="e"
             data-ref="electricity"
             backgroundTop={7}
-            x={440} y={1210}
+            x={704} y={1210}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="g"
             data-ref="growingFood"
             backgroundTop={11}
-            x={560} y={1460}
+            x={896} y={1460}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="ws"
             data-ref="waterSlides"
             backgroundTop={10}
-            x={160} y={630}
+            x={256} y={630}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="r"
             data-ref="rafting"
             backgroundTop={9}
-            x={280} y={880}
+            x={448} y={880}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="l"
             data-ref="lawns"
             backgroundTop={12}
-            x={400} y={1130}
+            x={640} y={1130}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="k"
             data-ref="cooking"
             backgroundTop={8}
-            x={520} y={1380}
+            x={832} y={1380}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="fl"
             data-ref="flowers"
             backgroundTop={13}
-            x={120} y={550}
+            x={192} y={550}
           />,
           <skoash.Image
             src="media/S_7/sprite_7.2.png"
             className="a"
             data-ref="animalFeed"
             backgroundTop={14}
-            x={240} y={800}
+            x={384} y={800}
           />,
         ]}
       />

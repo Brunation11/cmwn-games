@@ -48,7 +48,7 @@ class CatchableReveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}

@@ -99,9 +99,9 @@ class DragNDropScreen extends skoash.Screen {
   }
 }
 
-DragNDropScreen.defaultProps = {
+DragNDropScreen.defaultProps = _.defaults({
   checkComplete: false,
   checkReady: true,
-};
+}, skoash.Screen.defaultProps);
 
 export default DragNDropScreen;

@@ -1,4 +1,4 @@
-class AudioSequence extends play.Component {
+class AudioSequence extends skoash.Component {
   constructor() {
     super();
 

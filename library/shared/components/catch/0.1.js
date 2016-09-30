@@ -38,7 +38,7 @@ class Catch extends skoash.Component {
   }
 
   onResize() {
-    var zoom = play.trigger('getState').scale;
+    var zoom = skoash.trigger('getState').scale;
     var edges = this.getEdges(this.bucketNode);
     var bucketWidth = edges.right - edges.left;
     var leftBound = this.bucketNode.offsetParent ? this.bucketNode.offsetParent.offsetWidth - bucketWidth : 0;
