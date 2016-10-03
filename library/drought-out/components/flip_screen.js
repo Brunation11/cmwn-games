@@ -15,7 +15,6 @@ export default function (props, ref, key) {
         />
         <skoash.Audio type="sfx" src="media/S_19/S_19.2.mp3" />
       </skoash.MediaSequence>
-
       <skoash.Component className="frame animated">
         <h3>Thank you.</h3>
         <p>
@@ -25,7 +24,6 @@ export default function (props, ref, key) {
           className={'animated ' + (_.get(props, 'data.vo.complete') ? 'shaking' : '')}
           src="media/S_19/img_19.1.png"
         />
-
       </skoash.Component>
     </skoash.Screen>
   );

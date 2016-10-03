@@ -123,6 +123,7 @@
   }
 
   &.ACTIVE {
+    z-index: 3;
 
     > li {
       max-height: 0px;

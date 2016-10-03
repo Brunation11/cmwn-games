@@ -57,6 +57,7 @@ export default function (props, ref, key) {
           />,
         ]}
         selectableSelectClass="HIGHLIGHTED"
+        completeListOnClick={false}
       />
     </skoash.Screen>
   );

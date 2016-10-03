@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Reveal extends skoash.Component {
   constructor() {
     super();
@@ -12,18 +10,40 @@ class Reveal extends skoash.Component {
   }
 
   open(message) {
-    this.setState({
+    var self = this;
+    self.setState({
       open: true,
       openReveal: '' + message,
     });
 
-    this.playAudio(message);
+    self.playAudio(message);
 
-    this.requireForComplete.map(key => {
-      if (key === message && this.refs[key]) {
-        this.refs[key].complete();
-      }
-    });
+    if (self.props.completeOnOpen) {
+      self.complete();
+    } else {
+      self.requireForComplete.map(key => {
+        if (key === message && self.refs[key]) {
+          self.refs[key].complete();
+        }
+      });
+    }
+
+    if (self.props.autoClose) {
+      setTimeout(function () {
+        self.close();
+      }, 2000);
+    }
+
+    if (this.props.openTarget) {
+      this.updateGameState({
+        path: this.props.openTarget,
+        data: {
+          open: '' + message
+        }
+      });
+    }
+
+    self.callProp('onOpen', message);
   }
 
   close() {
@@ -33,6 +53,12 @@ class Reveal extends skoash.Component {
       open: false,
       openReveal: '',
     });
+
+    if (this.audio['close-sound']) {
+      this.audio['close-sound'].play();
+    }
+
+    this.callProp('onClose');
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -84,9 +110,9 @@ class Reveal extends skoash.Component {
         return (
           <asset.type
             {...asset.props}
+            data-ref={key}
             ref={ref}
             key={key}
-            data-ref={key}
           />
         );
       });
@@ -103,6 +129,7 @@ class Reveal extends skoash.Component {
       return (
         <li.type
           {...li.props}
+          type="li"
           className={this.getClass(li, key)}
           data-ref={ref}
           ref={key}
@@ -113,8 +140,12 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.openReveal && props.openReveal !== this.props.openReveal) {
+    if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
+    }
+
+    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
+      this.close();
     }
   }
 

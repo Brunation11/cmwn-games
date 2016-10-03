@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -29,8 +27,6 @@ import InfoFurtherScreen from './components/info_further_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
-
-import 'shared/js/test-platform-integration';
 
 class Printmaster extends skoash.Game {
   constructor() {
@@ -67,8 +63,6 @@ class Printmaster extends skoash.Game {
     this.menus = {
       quit: QuitScreen,
     };
-
-    window.g = this;
   }
 
   getBackgroundIndex(index) {
@@ -86,10 +80,13 @@ class Printmaster extends skoash.Game {
 
   passData(opts) {
     if (opts.name === 'typing') {
+      this.media.typing.stop();
       this.media.typing.play();
       setTimeout(() => {
         this.media.typing.stop();
       }, opts.duration || 500);
+    } else if (opts.name === 'stopTyping') {
+      this.media.typing.stop();
     }
   }
 
@@ -113,5 +110,3 @@ class Printmaster extends skoash.Game {
 }
 
 skoash.start(Printmaster, config.id);
-
-import 'shared/js/google-analytics';

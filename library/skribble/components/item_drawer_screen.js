@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
 class ItemDrawerScreen extends skoash.Screen {
@@ -89,10 +87,15 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <ItemDrawerScreen
-    id="item-drawer"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <ItemDrawerScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="item-drawer"
+      hideNext
+      hidePrev
+    />
+  );
+}

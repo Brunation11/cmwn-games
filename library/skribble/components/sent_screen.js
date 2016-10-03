@@ -45,10 +45,15 @@ class SentScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <SentScreen
-    id="sent"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <SentScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="sent"
+      hideNext
+      hidePrev
+    />
+  );
+}
