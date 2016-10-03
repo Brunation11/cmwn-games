@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import MediaCollection from 'shared/components/media_collection/0.1';
 import SelectableCanvasMove from 'shared/components/selectable_canvas_move/0.1';
 

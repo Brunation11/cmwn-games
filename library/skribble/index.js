@@ -3,8 +3,6 @@
  * @module
  */
 
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -23,8 +21,6 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 import SaveMenu from './components/save_menu';
-
-import 'shared/js/test-platform-integration';
 
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
@@ -366,5 +362,3 @@ class Skribble extends skoash.Game {
 }
 
 skoash.start(Skribble, config.id);
-
-import 'shared/js/google-analytics';

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import DroughtReveal from './drought_reveal';
 

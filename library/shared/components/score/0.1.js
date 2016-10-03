@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Score extends skoash.Component {
   constructor() {

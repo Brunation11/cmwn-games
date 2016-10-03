@@ -28,8 +28,6 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
-
 var Printmaster = (
   <skoash.Game
     config={config}
@@ -95,5 +93,3 @@ var Printmaster = (
 );
 
 skoash.start(Printmaster);
-
-import 'shared/js/google-analytics';

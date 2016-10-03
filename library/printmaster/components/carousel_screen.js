@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Target from 'shared/components/target/0.1';
 import Carousel from 'shared/components/carousel/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
 
 class DragNDropScreen extends skoash.Screen {

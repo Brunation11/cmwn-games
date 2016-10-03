@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Catchable from 'shared/components/catchable/0.1';
 
 
