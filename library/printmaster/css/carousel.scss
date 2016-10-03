@@ -22,6 +22,10 @@
     background-size: contain;
     background-position: center center;
 
+    &.disable {
+      pointer-events: none;
+    }
+
     &:before {
       content: "";
       position: absolute;

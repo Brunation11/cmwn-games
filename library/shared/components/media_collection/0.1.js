@@ -6,6 +6,8 @@ class MediaCollection extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.play && props.play !== this.props.play) {
       this.play(props.play);
     }
