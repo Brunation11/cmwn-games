@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import EditableAsset from '../editable_asset/0.1.js';

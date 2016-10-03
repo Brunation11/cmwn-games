@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Reveal extends skoash.Component {
   constructor() {
     super();
@@ -31,9 +29,18 @@ class Reveal extends skoash.Component {
     }
 
     if (self.props.autoClose) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.close();
       }, 2000);
+    }
+
+    if (this.props.openTarget) {
+      this.updateGameState({
+        path: this.props.openTarget,
+        data: {
+          open: '' + message
+        }
+      });
     }
 
     self.callProp('onOpen', message);

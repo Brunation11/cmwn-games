@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 

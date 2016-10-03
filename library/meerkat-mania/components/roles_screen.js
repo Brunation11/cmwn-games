@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import MediaCollection from 'shared/components/media_collection/0.1';
 import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 import SelectableCanvas from 'shared/components/selectable_canvas/0.1';

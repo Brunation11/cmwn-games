@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Flyer extends skoash.Component {
   constructor() {
     super();

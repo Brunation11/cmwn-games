@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Reveal from '../reveal/0.1.js';
 import Catch from '../catch/0.1.js';
 
@@ -50,7 +48,7 @@ class CatchableReveal extends skoash.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
