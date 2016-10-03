@@ -62,6 +62,7 @@ export default function (props, ref, key) {
           });
         }}
         completeListOnClick={true}
+        chooseOne
         allowDeselect
         list={[
           <skoash.ListItem className="very-powerful animated" data-ref="very-powerful" />,
