@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import shortid from 'shortid';
 import classNames from 'classnames';
 

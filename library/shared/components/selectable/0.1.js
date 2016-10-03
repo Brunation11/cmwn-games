@@ -5,14 +5,7 @@ class Selectable extends skoash.Component {
     super();
 
     this.state = {
-      selectClass: 'SELECTED',
       classes: {},
-      list: [
-        <li></li>,
-        <li></li>,
-        <li></li>,
-        <li></li>
-      ],
       selectFunction: this.select,
     };
   }
@@ -21,7 +14,6 @@ class Selectable extends skoash.Component {
     var selectClass, selectFunction, classes = {};
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
-
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     if (this.props.selectOnStart) {
@@ -44,6 +36,7 @@ class Selectable extends skoash.Component {
 
   bootstrap() {
     super.bootstrap();
+
     var self = this;
 
     var correctAnswers = this.requireForComplete.filter((ref) => {
@@ -62,36 +55,53 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var dataRef, target, id;
-    var self = this;
+    var ref, dataRef, target, id, isCorrect, self = this;
 
     target = e.target.closest('LI');
 
     if (!target) return;
 
     dataRef = target.getAttribute('data-ref');
+    ref = self.refs[dataRef];
 
-    classes[dataRef] = this.state.selectClass;
+    isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
 
-    this.setState({
+    if (self.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else if (isCorrect) {
+      classes[dataRef] = self.state.selectClass;
+    }
+
+    self.setState({
       classes,
     });
 
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond.call(this, dataRef);
-    }
-      
-    if (this.props.chooseOne) {
-      this.requireForComplete = [ message ];
+    self.callProp('selectRespond', dataRef);
+
+    if (self.props.chooseOne) {
+      self.requireForComplete = [dataRef];
     }
 
-    this.requireForComplete.map(key => {
+    if (self.props.dataTarget) {
+      self.updateGameState({
+        path: self.props.dataTarget,
+        data: {
+          target: ref
+        }
+      });
+    }
+
+    if (self.props.completeListOnClick) {
+      self.requireForComplete.map(key => {
+        if (key === id && self.refs[id]) {
+          self.refs[id].complete();
+        }
+      });
+    }
+
+    self.requireForComplete.map(key => {
       if (key === dataRef && self.refs[key]) {
         self.refs[key].complete();
-        return;
-      } else if (key === id && self.refs[id]) {
-        self.refs[id].complete();
-        return;
       }
     });
   }
@@ -149,7 +159,7 @@ class Selectable extends skoash.Component {
     return (
       <this.props.bin.type
         {...this.props.bin.props}
-        ref={'bin'}
+        ref="bin"
       />
     );
   }
@@ -186,5 +196,16 @@ class Selectable extends skoash.Component {
     );
   }
 }
+
+Selectable.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+  selectClass: 'SELECTED',
+  completeListOnClick: true
+}, skoash.Component.defaultProps);
 
 export default Selectable;

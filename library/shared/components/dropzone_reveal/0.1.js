@@ -12,7 +12,7 @@ class DropzoneReveal extends skoash.Component {
     };
   }
 
-  correctRespond(message, dropzoneKey) {
+  correctRespond(message) {
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
@@ -21,19 +21,11 @@ class DropzoneReveal extends skoash.Component {
         if (typeof this.refs.reveal.open === 'function') {
           this.refs.reveal.open(message);
         }
-        this.callCorrectRespond(message, dropzoneKey);
       }
     } else {
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
-      this.callCorrectRespond(message, dropzoneKey);
-    }
-  }
-
-  callCorrectRespond(message, dropzoneKey) {
-    if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -65,10 +57,9 @@ class DropzoneReveal extends skoash.Component {
       <Dropzone
         ref="dropzone"
         message={this.props.dropzoneMessage}
-        draggables={this.props.dropzoneList}
+        list={this.props.dropzoneList}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
-        dropzones={this.props.dropzones}
       />
     );
   }

@@ -14,10 +14,8 @@ class SendScreen extends skoash.Screen {
   constructor() {
     super();
 
-    this.state = {
-      load: true,
-      recipient: {},
-    };
+    this.state.load = true;
+    this.state.recipient = {};
 
     this.rightMenuList = [
       <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
@@ -79,10 +77,15 @@ class SendScreen extends skoash.Screen {
   }
 }
 
-export default (
-  <SendScreen
-    id="send"
-    hideNext
-    hidePrev
-  />
-);
+export default function (props, ref, key) {
+  return (
+    <SendScreen
+      {...props}
+      ref={ref}
+      key={key}
+      id="send"
+      hideNext
+      hidePrev
+    />
+  );
+}

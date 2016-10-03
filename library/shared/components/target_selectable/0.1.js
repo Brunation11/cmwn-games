@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import SelectableReveal from 'shared/components/selectable_reveal/0.1.js';
@@ -48,6 +47,11 @@ class TargetSelectable extends SelectableReveal {
       classes
     }, () => {
       this.setItem((this.state.idx + 1) % this.props.targets.length);
+      this.refs.selectable.requireForComplete.forEach(key => {
+        if (key === message && this.refs.selectable.refs[key]) {
+          this.refs.selectable.refs[key].complete();
+        }
+      });
     });
   }
 
@@ -110,6 +114,7 @@ class TargetSelectable extends SelectableReveal {
         selectRespond={this.selectRespond}
         selectClass={this.props.selectableSelectClass}
         selectOnStart={this.props.selectOnStart}
+        completeListOnClick={this.props.completeListOnClick}
       />
     );
   }

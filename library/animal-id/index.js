@@ -32,8 +32,6 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
-
 class AnimalID extends skoash.Game {
   constructor() {
     super(config);
@@ -69,10 +67,10 @@ class AnimalID extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen />,
+      quit: QuitScreen,
     };
 
-    window.g = this;
+    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {
@@ -131,6 +129,16 @@ class AnimalID extends skoash.Game {
 
         <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />
+
+        <skoash.Image className="hidden" src="media/images/background/title.png" />
+        <skoash.Image className="hidden" src="media/images/background/id.png" />
+        <skoash.Image className="hidden" src="media/images/background/match.png" />
+        <skoash.Image className="hidden" src="media/images/background/nose.png" />
+
+        <div className="game-background title" />
+        <div className="game-background id" />
+        <div className="game-background match" />
+        <div className="game-background nose" />
       </div>
     );
   }
@@ -138,5 +146,3 @@ class AnimalID extends skoash.Game {
 }
 
 skoash.start(AnimalID, config.id);
-
-import 'shared/js/google-analytics';

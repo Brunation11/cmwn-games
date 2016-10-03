@@ -1,4 +1,4 @@
-class AudioSequence extends play.Component {
+class AudioSequence extends skoash.Component {
   constructor() {
     super();
 
@@ -6,10 +6,6 @@ class AudioSequence extends play.Component {
   }
 
   start() {
-    if (!this.props.silentOnStart) this.play();
-  }
-
-  play() {
     this.setState({
       started: true
     });
