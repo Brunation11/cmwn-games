@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function () {
   var data = {};
   if (!this.refs) return data;

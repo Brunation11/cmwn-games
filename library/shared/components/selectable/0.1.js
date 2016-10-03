@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -57,7 +56,7 @@ class Selectable extends skoash.Component {
 
   selectHelper(e, classes) {
     var ref, dataRef, target, isCorrect, self = this;
-    console.log('self', self);
+
     target = e.target.closest('LI');
 
     if (!target) return;

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -24,8 +22,6 @@ import DragNDropInterestsScreen from './components/drag_n_drop_interests_screen'
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from './components/quit_screen';
-
-import 'shared/js/test-platform-integration';
 
 class AllAboutYou extends skoash.Game {
   constructor() {
@@ -129,5 +125,3 @@ class AllAboutYou extends skoash.Game {
 }
 
 skoash.start(AllAboutYou, config.id);
-
-import 'shared/js/google-analytics';
