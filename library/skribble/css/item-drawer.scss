@@ -134,12 +134,12 @@
   &.backgrounds {
     li {
       width: 480px;
-      height: 280px;
+      height: 330px;
       background-image: url(../media/_Frames/SK_frames_Background.png);
       background-size: 560px;
       background-repeat: no-repeat;
       background-position: 0px -370px;
-      margin: 0 0 20px;
+      margin: 0;
 
       &:before {
         background-image: url(../media/_Frames/SK_frames_Background.png);
@@ -149,7 +149,8 @@
       }
 
       img {
-        max-width: 95%;
+        max-width: 107%;
+        margin: 1% 0 0 -5%;
 
         &:only-child {
           max-width: 110%;
