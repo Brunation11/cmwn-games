@@ -46,7 +46,9 @@ export default function (props, ref, key) {
   }
 
   function init() {
-    play('', 0);
+    setTimeout(() => {
+      play('', 0);
+    }, 100);
   }
 
   return (
