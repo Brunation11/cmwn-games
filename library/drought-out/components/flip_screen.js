@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function (props, ref, key) {
   var FlipScreen = (
     <skoash.Screen

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import DroughtReveal from './drought_reveal';
 
@@ -31,7 +29,7 @@ export default function (props, ref, key) {
         <DroughtReveal
           ref="reveal"
           className="scroll-reveal"
-          openReveal={_.get(props, 'data.selectable.target')}
+          openReveal={_.get(props, 'data.selectable.target.props.data-message')}
           list={[
             <li>Health problems from<br /> dust and bad water</li>,
             <li>Threats to homes and lives<br /> from forest fires</li>,

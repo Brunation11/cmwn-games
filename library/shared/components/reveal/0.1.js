@@ -45,9 +45,18 @@ class Reveal extends skoash.Component {
     }
 
     if (self.props.autoClose) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.close();
       }, 2000);
+    }
+
+    if (this.props.openTarget) {
+      this.updateGameState({
+        path: this.props.openTarget,
+        data: {
+          open: '' + message
+        }
+      });
     }
 
     self.callProp('onOpen', message);
@@ -122,7 +131,7 @@ class Reveal extends skoash.Component {
         return (
           <asset.type
             {...asset.props}
-            data-ref={ref}
+            data-ref={key}
             ref={ref}
             key={key}
           />

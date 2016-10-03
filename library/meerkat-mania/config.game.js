@@ -1,5 +1,5 @@
 var config = {
-  id: 'drought-out',
+  id: 'meerkat-mania',
   version: 2,
   dimensions: {
     width: 960,

@@ -5,6 +5,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="video-2"
+      startDelay={0}
     >
       <skoash.Component className="center">
         <skoash.Component className="frame">
