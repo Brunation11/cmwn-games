@@ -28,7 +28,7 @@ class Dropzone extends skoash.Component {
   prepareDropzones() {
     var self = this;
 
-    this.dropzones.map((dropzone, key) => {
+    this.props.dropzones.map((dropzone, key) => {
       var dropzoneRef = this.refs[`dropzone-${key}`];
       if (dropzoneRef) {
         dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
@@ -66,14 +66,6 @@ class Dropzone extends skoash.Component {
 
   start() {
     super.start();
-    var moreDraggables;
-
-    this.dropzones = this.props.dropzones;
-    this.draggables = this.draggables || this.draggablesLeft;
-
-    if (moreDraggables = this.props.draggablesRight || this.props.moreDraggables) {
-      this.draggables = this.draggables.concat(moreDraggables);
-    }
 
     this.prepareDropzones();
   }
@@ -91,7 +83,7 @@ class Dropzone extends skoash.Component {
   dropRespond(message, corners) {
     var self = this, isInBounds;
 
-    isInBounds = self.dropzones.some((dropzone, key) => {
+    isInBounds = self.props.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
         self.inBounds(message, key);
@@ -168,7 +160,7 @@ class Dropzone extends skoash.Component {
   }
 
   renderDropzones() {
-    return this.dropzones.map((component, key) =>
+    return this.props.dropzones.map((component, key) =>
       <component.type
         {...component.props}
         className={this.getClass()}
@@ -180,7 +172,7 @@ class Dropzone extends skoash.Component {
   }
 
   renderDraggables(draggables) {
-    return this[draggables].map((item, key) => {
+    return this.props[draggables].map((item, key) => {
       return (
         <Draggable
           {...item.props}
@@ -208,17 +200,33 @@ class Dropzone extends skoash.Component {
   }
 
   render() {
-    var draggablesLeft, draggablesRight;
+    var draggablesLeft, draggablesRight, leftList, rightList;
 
-    draggablesLeft = this.props.draggables || this.props.draggablesLeft;
-    draggablesRight = this.props.draggablesRight || this.props.moreDraggables;
+    draggablesLeft = this.props.draggablesLeft ? 'draggablesLeft' : 'draggables';
+    draggablesRight = this.props.draggablesRight ? 'draggablesRight' : 'moreDraggables';
+
+    if (this.props[draggablesLeft]) {
+      leftList = (
+        <ul>
+          {this.renderDraggables.call(this, draggablesLeft)}
+        </ul>
+      )
+    }
+
+    if (this.props[draggablesRight]) {
+      rightList = (
+        <ul>
+          {this.renderDraggables.call(this, draggablesRight)}
+        </ul>
+      )
+    }
 
     return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
-        {this.renderDraggables(draggablesLeft)}
+        {leftList}
         {this.renderDropzones()}
-        {this.renderDraggables(draggablesRight)}
+        {rightList}
       </div>
     );
   }
