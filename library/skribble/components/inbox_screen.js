@@ -57,7 +57,7 @@ class InboxScreen extends skoash.Screen {
   }
 
   getRevealList(inbox, outbox, saved) {
-    var read, unread;
+    var read, unread, props = this.props || {};
 
     inbox = inbox || [];
 
@@ -78,7 +78,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={inboxEmptyMessage}
           selectRespond={this.readMessage}
-          gameState={this.props.gameState}
+          gameState={props.gameState}
         />
       </li>,
       <li>
@@ -89,7 +89,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={unreadEmptyMessage}
           selectRespond={this.readMessage}
-          gameState={this.props.gameState}
+          gameState={props.gameState}
         />
       </li>,
       <li>
@@ -100,7 +100,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={readEmptyMessage}
           selectRespond={this.readMessage}
-          gameState={this.props.gameState}
+          gameState={props.gameState}
         />
       </li>,
       <li>
@@ -112,7 +112,7 @@ class InboxScreen extends skoash.Screen {
           emptyMessage={sentEmptyMessage}
           friendKey="friend_to"
           selectRespond={this.readMessage}
-          gameState={this.props.gameState}
+          gameState={props.gameState}
         />
       </li>,
       <li>
