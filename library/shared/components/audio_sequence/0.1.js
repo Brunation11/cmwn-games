@@ -1,7 +1,7 @@
 // USE MEDIA SEQUENCE INSTEAD
 import _ from 'lodash';
 
-class AudioSequence extends play.Component {
+class AudioSequence extends skoash.Component {
   constructor() {
     super();
 

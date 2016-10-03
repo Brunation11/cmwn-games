@@ -17,14 +17,14 @@ export default function (props, ref, key) {
       key={key}
       id="break-triangle"
       className={_.get(props, 'data.states.open', null)}
-      onOpen={
+      onOpen={() => {
         skoash.trigger('updateState', {
           path: 'states',
           data: {
             open: null,
           },
         })
-      }
+      }}
     >
       <skoash.MediaSequence
         ref="audio-sequence"

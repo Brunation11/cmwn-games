@@ -1,4 +1,3 @@
-import AudioSequence from 'shared/components/audio_sequence/0.1';
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 
 export default function (props, ref, key) {
@@ -16,10 +15,10 @@ export default function (props, ref, key) {
         });
       }}
     >
-      <AudioSequence ref="audio-sequence">
+      <skoash.MediaSequence ref="media-sequence">
         <skoash.Audio ref="title" type="voiceOver" src="media/S_5/vo_FireBreaksOut.mp3" />
         <skoash.Audio ref="directions" type="voiceOver" src="media/S_5/vo_ClickAndShowYouKnow.mp3" />
-      </AudioSequence>
+      </skoash.MediaSequence>
       <p>Click and show you know.</p>
       <skoash.Image className="animated" src="media/S_5/img_5.1.png" />
       <skoash.Image className="animated" src="media/S_5/img_5.2.png" />
