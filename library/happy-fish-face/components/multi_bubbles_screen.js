@@ -1,5 +1,6 @@
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 import Score from 'shared/components/score/0.1';
+import Repeater from 'shared/components/repeater/0.1';
 
 const INCREMENT = 10;
 const DECREMENT = 20;
@@ -89,22 +90,7 @@ export default function (props, ref, key) {
       id="multi-bubbles"
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/_audio/_S_MultiBubbles/HFF_VO_WhatCan.mp3" />
-      <div className="bubbles">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <Repeater className="bubbles" ammount={14} />
       <skoash.Image src="media/_images/_S_MultiBubbles/img_7.1.png" />
       <Score
         ref="score"
