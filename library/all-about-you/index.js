@@ -23,9 +23,9 @@ import HowMuchWaterScreen from './components/how_much_water_screen';
 import DragNDropInterestsScreen from './components/drag_n_drop_interests_screen';
 import FlipScreen from './components/flip_screen';
 
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from './components/quit_screen';
 
-import 'shared/js/test-platform-integration';
+// import 'shared/js/test-platform-integration';
 
 class AllAboutYou extends skoash.Game {
   constructor() {
@@ -53,11 +53,7 @@ class AllAboutYou extends skoash.Game {
     };
 
     this.menus = {
-      quit: <QuitScreen
-              assets={[
-                <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
-              ]}
-            />
+      quit: QuitScreen
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));
@@ -82,7 +78,7 @@ class AllAboutYou extends skoash.Game {
 
   emitSave(highestScreenIndex, currentScreenIndex) {
     var data = {};
-    if (currentScreenIndex !== 17) return;
+    // if (currentScreenIndex !== 17) return;
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
@@ -111,7 +107,7 @@ class AllAboutYou extends skoash.Game {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
         if (typeof screen.loadData === 'function') {
-          if (opts.data[key] && opts.data[key].length) {
+          if (opts.data[key] && !_.isEmpty(opts.data[key])) {
             screen.metaData = opts.data[key];
           }
         }

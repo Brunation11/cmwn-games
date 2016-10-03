@@ -66,7 +66,7 @@ class Dropzone extends skoash.Component {
   }
 
   start() {
-    play.Component.prototype.start.call(this);
+    skoash.Component.prototype.start.call(this);
     this.prepareDropzones();
   }
 
@@ -82,6 +82,7 @@ class Dropzone extends skoash.Component {
 
   dropRespond(message, corners) {
     var self = this, isInBounds;
+
     isInBounds = self.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
@@ -115,6 +116,7 @@ class Dropzone extends skoash.Component {
     if (this.audio.correct) {
       this.audio.correct.play();
     }
+
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, message, dropzoneKey);
     }
@@ -130,7 +132,7 @@ class Dropzone extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) =>
-        <play.Audio
+        <skoash.Audio
           {...asset.props}
           ref={asset.props['data-ref'] || ('asset-' + key)}
           key={key}
@@ -179,6 +181,9 @@ class Dropzone extends skoash.Component {
         {this.renderDropzones()}
         <ul>
           {this.renderDraggables()}
+        </ul>
+        <ul>
+          {this.renderMoreDraggables()}
         </ul>
       </div>
     );

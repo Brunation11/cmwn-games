@@ -6,16 +6,19 @@ class SelectableScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
-    var audio, correct;
+    var audio, correct, incorrect;
     audio = this.audio[message];
     correct = this.audio.correct;
+    incorrect = this.audio.incorrect;
 
     if (audio) {
       audio.play();
     }
 
-    if (correct && this.props.answers && ~this.props.answers.indexOf(message)) {
-      correct.play();
+    if (this.props.answers && ~this.props.answers.indexOf(message)) {
+      if (correct) correct.play();
+    } else if (this.props.answers && incorrect) {
+      incorrect.play();
     }
 
     if (typeof this.props.selectRespond === 'function') {

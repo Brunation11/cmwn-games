@@ -1,0 +1,28 @@
+class SaveMenu extends skoash.Screen {
+  cancel() {
+    this.close();
+    skoash.trigger('menuClose', {
+      id: this.state.id,
+    });
+  }
+
+  render() {
+    return (
+      <div id={this.props.id} className={this.getClassNames()}>
+        <div className="center">
+          <div className="frame">
+            <button className="quit-saved" onClick={this.cancel.bind(this)}></button>
+            <h2>Your progress</h2>
+            <h2>has been saved</h2>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default (
+  <SaveMenu
+    id="save"
+  />
+);

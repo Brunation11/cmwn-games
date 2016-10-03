@@ -3,11 +3,12 @@ import _ from 'lodash';
 import collectData from './collect_data.js';
 import loadData from './load_data.js';
 
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
+import MediaCollection from 'shared/components/media_collection/0.1';
+import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
   function dragRespond(draggable) {
-    _.forIn(this.refs.dropzone.refs, (ref2, key2) => {
+    _.forIn(this.refs, (ref2, key2) => {
       if (key2.indexOf('dropzone-') === -1) return;
       if (ref2 && ref2.state && ref2.state.content === draggable) ref2.setState({content: null});
     });
@@ -15,13 +16,10 @@ export default function (props, ref, key) {
   }
 
   function correctRespond(draggable, dropzoneKey) {
-    var dropzone, endX, endY, complete = true;
-    dropzone = this.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
+    var dropzone, message, complete = true;
 
-    endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x) + ((draggable.state.corners[1].x - draggable.state.corners[0].x) / 2);
-    endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y) + ((draggable.state.corners[3].y - draggable.state.corners[0].y) / 2);
-
-    draggable.setEnd(endX, endY);
+    dropzone = this.refs[`dropzone-${dropzoneKey}`];
+    message = draggable.props.message;
 
     if (dropzone.state.content && draggable !== dropzone.state.content) {
       dropzone.state.content.returnToStart();
@@ -30,7 +28,14 @@ export default function (props, ref, key) {
 
     dropzone.setState({content: draggable});
 
-    _.forIn(this.refs.dropzone.refs, (ref3, key3) => {
+    this.updateGameState({
+      path: 'reveal',
+      data: {
+        open: message
+      }
+    });
+
+    _.forIn(this.refs, (ref3, key3) => {
       if (key3.indexOf('dropzone-') === -1) return;
       if (!ref3.state.content) return complete = false;
     });
@@ -52,11 +57,33 @@ export default function (props, ref, key) {
       <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_3/text_what_are_you_passionate_about%20copy.png" />
       <div ref="frame" className="frame animated"></div>
 
-      <DropzoneReveal
-        ref="dropzone-reveal"
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open', null)}
+        onPlay={function () {
+          this.updateGameState({
+            path: 'reveal',
+            data: {
+              open: null
+            }
+          });
+        }}
+      >
+        <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />
+        <skoash.Audio ref="world-peace" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" />
+        <skoash.Audio ref="sports" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" />
+        <skoash.Audio ref="playing-games" type="voiceOver" src="media/assets/_audio/VOs/VO_Playing.mp3" />
+        <skoash.Audio ref="looking-cool" type="voiceOver" src="media/assets/_audio/VOs/VO_Looking.mp3" />
+        <skoash.Audio ref="school" type="voiceOver" src="media/assets/_audio/VOs/VO_School.mp3" />
+        <skoash.Audio ref="celebrities" type="voiceOver" src="media/assets/_audio/VOs/VO_Celebrities.mp3" />
+        <skoash.Audio ref="environment" type="voiceOver" src="media/assets/_audio/VOs/VO_Environment.mp3" />
+      </MediaCollection>
+
+      <Dropzone
+        ref="dropzone"
+        centerOnCorrect
         dragRespond={dragRespond}
         correctRespond={correctRespond}
-        dropzoneAssets={[
+        assets={[
           <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
           <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
         ]}
@@ -70,7 +97,7 @@ export default function (props, ref, key) {
           <skoash.Component className="dropzone-list-item animated" />,
           <skoash.Component className="dropzone-list-item animated" />
         ]}
-        dropzoneList={[
+        draggables={[
           <skoash.ListItem ref="friends" className="draggable-list-item friends animated" message="friends" returnOnIncorrect />,
           <skoash.ListItem ref="world-peace" className="draggable-list-item world-peace animated" message="world-peace" returnOnIncorrect />,
           <skoash.ListItem ref="sports" className="draggable-list-item sports animated" message="sports" returnOnIncorrect />,
@@ -80,18 +107,7 @@ export default function (props, ref, key) {
           <skoash.ListItem ref="celebrities" className="draggable-list-item celebrities animated" message="celebrities" returnOnIncorrect />,
           <skoash.ListItem ref="environment" className="draggable-list-item environment animated" message="environment" returnOnIncorrect />
         ]}
-        revealAssets={[
-          <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />,
-          <skoash.Audio ref="world-peace" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldP.mp3" />,
-          <skoash.Audio ref="sports" type="voiceOver" src="media/assets/_audio/VOs/VO_Sports.mp3" />,
-          <skoash.Audio ref="playing-games" type="voiceOver" src="media/assets/_audio/VOs/VO_Playing.mp3" />,
-          <skoash.Audio ref="looking-cool" type="voiceOver" src="media/assets/_audio/VOs/VO_Looking.mp3" />,
-          <skoash.Audio ref="school" type="voiceOver" src="media/assets/_audio/VOs/VO_School.mp3" />,
-          <skoash.Audio ref="celebrities" type="voiceOver" src="media/assets/_audio/VOs/VO_Celebrities.mp3" />,
-          <skoash.Audio ref="environment" type="voiceOver" src="media/assets/_audio/VOs/VO_Environment.mp3" />
-        ]}
       />
-
       <div ref="meter" className="meter animated"></div>
     </skoash.Screen>
   );

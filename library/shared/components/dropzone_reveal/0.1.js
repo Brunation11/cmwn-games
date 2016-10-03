@@ -3,7 +3,7 @@ import Reveal from '../reveal/0.1.js';
 
 import classNames from 'classnames';
 
-class DropzoneReveal extends play.Component {
+class DropzoneReveal extends skoash.Component {
   constructor() {
     super();
 
@@ -12,7 +12,7 @@ class DropzoneReveal extends play.Component {
     };
   }
 
-  correctRespond(message, dropzoneKey) {
+  correctRespond(message) {
     if (this.state.answers.length) {
       if (this.state.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
@@ -21,19 +21,11 @@ class DropzoneReveal extends play.Component {
         if (typeof this.refs.reveal.open === 'function') {
           this.refs.reveal.open(message);
         }
-        this.callCorrectRespond(message, dropzoneKey);
       }
     } else {
       if (typeof this.refs.reveal.open === 'function') {
         this.refs.reveal.open(message);
       }
-      this.callCorrectRespond(message, dropzoneKey);
-    }
-  }
-
-  callCorrectRespond(message, dropzoneKey) {
-    if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond.call(this, message, dropzoneKey);
     }
   }
 
@@ -47,7 +39,7 @@ class DropzoneReveal extends play.Component {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
         return (
-          <play.Audio
+          <skoash.Audio
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
             key={key}
@@ -65,10 +57,9 @@ class DropzoneReveal extends play.Component {
       <Dropzone
         ref="dropzone"
         message={this.props.dropzoneMessage}
-        draggables={this.props.dropzoneList}
+        list={this.props.dropzoneList}
         assets={this.props.dropzoneAssets}
         correctRespond={this.correctRespond.bind(this)}
-        dropzones={this.props.dropzones}
       />
     );
   }
