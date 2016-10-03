@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
@@ -19,11 +18,9 @@ class Carousel extends Selectable {
     var classes, list;
     classes = this.state.classes;
     list = this.state.list;
-
     list = list.concat(this.refs.bin.get(1));
     list.shift();
     classes[0] = '';
-
     this.enabled = true;
 
     this.setState({
@@ -79,7 +76,8 @@ class Carousel extends Selectable {
    * that the element is transitioned and not replaced.
    */
   renderList() {
-    return this.state.list.map((li, key) => {
+    var list = this.state.list || this.props.list;
+    return list.map((li, key) => {
       var ref, onTransitionEnd;
       ref = li.ref || li.props['data-ref'] || key;
       onTransitionEnd = key === 0 ? this.next : null;

@@ -16,8 +16,6 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-import 'shared/js/test-platform-integration';
-
 var HappyFishFace = (
   <skoash.Game
     config={config}
@@ -64,5 +62,3 @@ var HappyFishFace = (
 );
 
 skoash.start(HappyFishFace);
-
-import 'shared/js/google-analytics';

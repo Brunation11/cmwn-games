@@ -12,6 +12,11 @@ export default function (props, ref, key) {
           duration: 4250,
         });
       }}
+      onClose={function () {
+        skoash.trigger('passData', {
+          name: 'stopTyping',
+        });
+      }}
     >
       <skoash.MediaSequence ref="media">
         <skoash.Audio type="voiceOver" src="media/S_8/S_8.1.mp3" delay={500} />

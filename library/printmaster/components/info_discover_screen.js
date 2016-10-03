@@ -12,6 +12,11 @@ export default function (props, ref, key) {
           duration: 5000,
         });
       }}
+      onClose={function () {
+        skoash.trigger('passData', {
+          name: 'stopTyping',
+        });
+      }}
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
       <skoash.Image ref="img" className="hidden" src="media/_Frame/Fr_1.png" />

@@ -6,10 +6,6 @@ class AudioSequence extends skoash.Component {
   }
 
   start() {
-    if (!this.props.silentOnStart) this.play();
-  }
-
-  play() {
     this.setState({
       started: true
     });

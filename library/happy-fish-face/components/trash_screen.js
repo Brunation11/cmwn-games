@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
