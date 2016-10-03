@@ -65,6 +65,7 @@ export default function (props, ref, key) {
           });
         }}
         completeListOnClick={true}
+        chooseOne
         allowDeselect
         list={[
           <skoash.ListItem className="felt-bad animated" data-ref="felt-bad" />,
