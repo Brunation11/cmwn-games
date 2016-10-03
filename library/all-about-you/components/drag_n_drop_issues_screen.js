@@ -83,7 +83,7 @@ export default function (props, ref, key) {
         centerOnCorrect
         dragRespond={dragRespond}
         correctRespond={correctRespond}
-        dropzoneAssets={[
+        assets={[
           <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
           <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
         ]}

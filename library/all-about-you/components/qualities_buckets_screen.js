@@ -3,23 +3,32 @@ import _ from 'lodash';
 import collectData from './collect_data.js';
 import loadData from './load_data.js';
 
-import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
+import MediaCollection from 'shared/components/media_collection/0.1';
+import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
   function correctRespond(draggable, dropzoneKey) {
-    var dropzone, complete = true, content, totalComplete = 0;
-    dropzone = this.refs.dropzone.refs[`dropzone-${dropzoneKey}`];
+    var dropzone, complete = true, content, totalComplete = 0, message;
+    dropzone = this.refs[`dropzone-${dropzoneKey}`];
     content = dropzone.state.content || [];
+    message = draggable.props.message;
 
     if (content.indexOf(draggable) === -1) content.push(draggable);
 
     dropzone.setState({content});
 
-    _.forIn(this.refs.dropzone.refs, (ref2, key2) => {
+    this.updateGameState({
+      path: 'reveal',
+      data: {
+        open: message
+      }
+    });
+
+    _.forIn(this.refs, (ref2, key2) => {
       if (key2.indexOf('dropzone-') === -1) return;
       if (!ref2.state.content) return complete = false;
       totalComplete += ref2.state.content.length;
-      if (totalComplete !== this.refs.dropzone.draggables.length) complete = false;
+      if (totalComplete !== this.draggables.length) complete = false;
     });
 
     if (complete) this.complete();
@@ -38,17 +47,38 @@ export default function (props, ref, key) {
       <div ref="frame" className="frame animated"></div>
       <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_6/img_06_penguin-01.png" />
 
-      <DropzoneReveal
-        ref="dropzone-reveal"
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open', null)}
+        onPlay={function () {
+          this.updateGameState({
+            path: 'reveal',
+            data: {
+              open: null
+            }
+          });
+        }}
+      >
+        <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Sharing.mp3" />
+        <skoash.Audio ref="kindness" type="voiceOver" src="media/assets/_audio/VOs/VO_Kindness.mp3" />
+        <skoash.Audio ref="rudeness" type="voiceOver" src="media/assets/_audio/VOs/VO_Rudeness.mp3" />
+        <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingBully.mp3" />
+        <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />
+        <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_Greediness.mp3" />
+        <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingAngry.mp3" />
+        <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
+      </MediaCollection>
+
+      <Dropzone
+        ref="dropzone"
         correctRespond={correctRespond}
-        dropzoneAssets={[
+        assets={[
           <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
         ]}
         dropzones={[
           <skoash.Component className="dropzone-list-item animated" />,
           <skoash.Component className="dropzone-list-item animated" />
         ]}
-        dropzoneList={[
+        draggables={[
           <skoash.ListItem ref="sharing" className="draggable-list-item sharing animated" message="sharing" returnOnIncorrect />,
           <skoash.ListItem ref="kindness" className="draggable-list-item kindness animated" message="kindness" returnOnIncorrect />,
           <skoash.ListItem ref="rudeness" className="draggable-list-item rudeness animated" message="rudeness" returnOnIncorrect />,
@@ -57,16 +87,6 @@ export default function (props, ref, key) {
           <skoash.ListItem ref="greediness" className="draggable-list-item greediness animated" message="greediness" returnOnIncorrect />,
           <skoash.ListItem ref="being-angry" className="draggable-list-item being-angry animated" message="being-angry" returnOnIncorrect />,
           <skoash.ListItem ref="friendliness" className="draggable-list-item friendliness animated" message="friendliness" returnOnIncorrect />
-        ]}
-        revealAssets={[
-          <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Sharing.mp3" />,
-          <skoash.Audio ref="kindness" type="voiceOver" src="media/assets/_audio/VOs/VO_Kindness.mp3" />,
-          <skoash.Audio ref="rudeness" type="voiceOver" src="media/assets/_audio/VOs/VO_Rudeness.mp3" />,
-          <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingBully.mp3" />,
-          <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />,
-          <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_Greediness.mp3" />,
-          <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingAngry.mp3" />,
-          <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
         ]}
       />
       <div ref="meter" className="meter animated"></div>
