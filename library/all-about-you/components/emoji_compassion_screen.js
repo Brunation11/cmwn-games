@@ -64,6 +64,7 @@ export default function (props, ref, key) {
           });
         }}
         completeListOnClick={true}
+        chooseOne
         allowDeselect
         list={[
           <skoash.ListItem className="happy animated" data-ref="happy" />,
