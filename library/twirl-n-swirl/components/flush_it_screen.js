@@ -87,7 +87,7 @@ export default function (props, ref, key) {
       <Dropzone
         ref="dropzone"
         className={getClassNames()}
-        complete
+        completeOnStart
         checkComplete={false}
         assets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.1.mp3" />,
