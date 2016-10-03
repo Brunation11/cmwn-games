@@ -58,7 +58,7 @@ class Skribble extends skoash.Game {
       }
     }
 
-    skoash.Game.prototype.goto.call(this, opts);
+    super.goto(opts);
   }
 
   ready() {
@@ -67,7 +67,7 @@ class Skribble extends skoash.Game {
       this.getData({name: 'getFriends'});
     }
 
-    skoash.Game.prototype.ready.call(this);
+    super.ready();
   }
 
   getRules() {

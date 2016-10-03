@@ -20,7 +20,7 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   updateData(d) {
-    var data = d ? d : skoash.trigger('getState').data.menu.items;
+    var data = d ? d : this.props.gameState.data.menu.items;
 
     this.state.opts.categories.forEach(key => {
       if (data[key]) data = data[key];

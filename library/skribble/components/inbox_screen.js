@@ -78,6 +78,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={inboxEmptyMessage}
           selectRespond={this.readMessage}
+          gameState={this.props.gameState}
         />
       </li>,
       <li>
@@ -88,6 +89,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={unreadEmptyMessage}
           selectRespond={this.readMessage}
+          gameState={this.props.gameState}
         />
       </li>,
       <li>
@@ -98,6 +100,7 @@ class InboxScreen extends skoash.Screen {
           }}
           emptyMessage={readEmptyMessage}
           selectRespond={this.readMessage}
+          gameState={this.props.gameState}
         />
       </li>,
       <li>
@@ -109,6 +112,7 @@ class InboxScreen extends skoash.Screen {
           emptyMessage={sentEmptyMessage}
           friendKey="friend_to"
           selectRespond={this.readMessage}
+          gameState={this.props.gameState}
         />
       </li>,
       <li>
@@ -140,7 +144,7 @@ class InboxScreen extends skoash.Screen {
   updateData() {
     var data, inbox, outbox, saved;
 
-    data = skoash.trigger('getState').data;
+    data = this.props.gameState.data;
     inbox = data.received;
     outbox = data.sent;
     saved = data.draft;

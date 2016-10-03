@@ -23,7 +23,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   updateData(d) {
-    var data = d && d.user ? d.user : skoash.trigger('getState').data.user || [];
+    var data = d && d.user ? d.user : this.props.gameState.data.user || [];
 
     data = data.map(friend => {
       var src = friend._embedded.image && friend._embedded.image.url ?
@@ -56,7 +56,7 @@ class FriendScreen extends skoash.Screen {
       self.updateData.call(self, data);
     });
 
-    recipient = skoash.trigger('getState').recipient;
+    recipient = this.props.gameState.recipient;
 
     self.setState({
       load: true,
