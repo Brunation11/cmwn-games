@@ -25,7 +25,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from './components/quit_screen';
 
-// import 'shared/js/test-platform-integration';
+import 'shared/js/test-platform-integration';
 
 class AllAboutYou extends skoash.Game {
   constructor() {
@@ -122,8 +122,6 @@ class AllAboutYou extends skoash.Game {
         <skoash.Audio ref="bkg-2" type="background" src="media/assets/_audio/_BKG/S_BKG_2.mp3" />
         <skoash.Audio ref="button" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_4.mp3" />
-        <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
-        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
       </div>
     );
   }
