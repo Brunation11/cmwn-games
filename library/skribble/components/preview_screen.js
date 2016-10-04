@@ -36,10 +36,10 @@ class PreviewScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var rules = skoash.trigger('getRules');
-    this.refs[refs.box].refs[refs.canvas].setItems(rules);
-
-    skoash.Screen.prototype.open.call(this, opts);
+    skoash.trigger('getRules').then(rules => {
+      this.refs[refs.box].refs[refs.canvas].setItems(rules);
+      super.open(opts);
+    });
   }
 
   renderContent() {

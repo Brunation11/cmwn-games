@@ -1,8 +1,3 @@
-/**
- * Index script
- * @module
- */
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -48,6 +43,9 @@ class Skribble extends skoash.Game {
     };
 
     this.state.data.screens = _.map(this.screens, () => ({}));
+
+    this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
+    this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
   }
 
   goto(opts) {
@@ -63,8 +61,8 @@ class Skribble extends skoash.Game {
 
   ready() {
     if (!this.state.ready) {
-      this.getMedia();
-      this.getData({name: 'getFriends'});
+      this.getMediaOnReady();
+      this.getFriends();
     }
 
     super.ready();
@@ -163,8 +161,8 @@ class Skribble extends skoash.Game {
       opts = {
         data: {},
         callback: () => {
-          this.refs['screen-canvas'].setMenu();
-          this.refs['screen-item-drawer'].updateData();
+          self.refs['screen-canvas'].setMenu();
+          self.refs['screen-item-drawer'].updateData();
         }
       };
       currentOpts = opts.data;
@@ -214,13 +212,6 @@ class Skribble extends skoash.Game {
           data
         });
       } else {
-        if (opts.name === 'getFriend') {
-          data = {
-            user: [
-              data
-            ]
-          };
-        }
         this.updateData({
           data,
           callback: opts.callback,
