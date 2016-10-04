@@ -19,46 +19,7 @@ import SaveMenu from './components/save_menu';
 
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
-class Skribble extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
-      0: iOSScreen,
-      1: TitleScreen,
-      menu: MenuScreen,
-      friend: FriendScreen,
-      canvas: CanvasScreen,
-      'item-drawer': ItemDrawerScreen,
-      inbox: InboxScreen,
-      preview: PreviewScreen,
-      send: SendScreen,
-      sent: SentScreen,
-      read: ReadScreen,
-    };
-
-    this.menus = {
-      quit: QuitScreen,
-      save: SaveMenu,
-    };
-
-    this.state.data.screens = _.map(this.screens, () => ({}));
-
-    this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
-    this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
-  }
-
-  goto(opts) {
-    if (opts.index === 'send') {
-      if (!this.state.recipient || !this.state.recipient.name) {
-        opts.index = 'friend';
-        opts.goto = 'send';
-      }
-    }
-
-    super.goto(opts);
-  }
-
+class SkribbleGame extends skoash.Game {
   ready() {
     if (!this.state.ready) {
       this.getMediaOnReady();
@@ -220,17 +181,6 @@ class Skribble extends skoash.Game {
     });
   }
 
-  passData(opts) {
-    if (opts.name === 'add-item') {
-      this.refs['screen-canvas'].addItem(opts.message);
-      this.goto({ index: 'canvas' });
-    } else if (opts.name === 'add-recipient') {
-      this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
-    } else if (opts.name === 'send') {
-      this.send();
-    }
-  }
-
   addRecipient(recipient, cb) {
     var src;
 
@@ -294,25 +244,6 @@ class Skribble extends skoash.Game {
     this.openMenu({id: 'save'});
   }
 
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <div className="background-1" />
-        <div className="background-2" />
-        <div className="background-3" />
-        <div className="background-4" />
-        <div className="background-5" />
-        <div className="background-6" />
-      </div>
-    );
-  }
-
   renderRecipient() {
     var recipient = this.state.recipient, content = [];
 
@@ -328,28 +259,81 @@ class Skribble extends skoash.Game {
 
     return content;
   }
-
-  renderMenu() {
-    return (
-      <div>
-        <div className="game-menu">
-          <button className="save" onClick={this.saveButton.bind(this)} />
-          <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
-          <button className="create" onClick={this.create.bind(this)} />
-          <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
-          <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
-        </div>
-        <ul className="menu recipient">
-          <li onClick={this.clickRecipient.bind(this)}>
-            <span>
-              {this.renderRecipient()}
-            </span>
-          </li>
-        </ul>
-      </div>
-    );
-  }
-
 }
 
-skoash.start(Skribble, config.id);
+var Skribble = (
+  <SkribbleGame
+    config={config}
+    screens={{
+      0: iOSScreen,
+      1: TitleScreen,
+      menu: MenuScreen,
+      friend: FriendScreen,
+      canvas: CanvasScreen,
+      'item-drawer': ItemDrawerScreen,
+      inbox: InboxScreen,
+      preview: PreviewScreen,
+      send: SendScreen,
+      sent: SentScreen,
+      read: ReadScreen,
+    }}
+    menus={{
+      quit: QuitScreen,
+      save: SaveMenu,
+    }}
+    loader={<Loader />}
+    assets={[
+      <div className="background-1" />,
+      <div className="background-2" />,
+      <div className="background-3" />,
+      <div className="background-4" />,
+      <div className="background-5" />,
+      <div className="background-6" />,
+    ]}
+    onBootstrap={function () {
+      this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
+      this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
+    }}
+    renderMenu={function () {
+      return (
+        <div>
+          <div className="game-menu">
+            <button className="save" onClick={this.saveButton.bind(this)} />
+            <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+            <button className="create" onClick={this.create.bind(this)} />
+            <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
+            <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+          </div>
+          <ul className="menu recipient">
+            <li onClick={this.clickRecipient.bind(this)}>
+              <span>
+                {this.renderRecipient()}
+              </span>
+            </li>
+          </ul>
+        </div>
+      );
+    }}
+    getGotoOpts={function (opts) {
+      if (opts.index === 'send') {
+        if (!this.state.recipient || !this.state.recipient.name) {
+          opts.index = 'friend';
+          opts.goto = 'send';
+        }
+      }
+      return opts;
+    }}
+    passData={function (opts) {
+      if (opts.name === 'add-item') {
+        this.refs['screen-canvas'].addItem(opts.message);
+        this.goto({ index: 'canvas' });
+      } else if (opts.name === 'add-recipient') {
+        this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
+      } else if (opts.name === 'send') {
+        this.send();
+      }
+    }}
+  />
+);
+
+skoash.start(Skribble);

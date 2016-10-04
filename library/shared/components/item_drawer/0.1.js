@@ -4,10 +4,6 @@ import classNames from 'classnames';
 import Selectable from '../selectable/0.1';
 
 class ItemDrawer extends Selectable {
-  constructor() {
-    super();
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     var items, quickCheck, itemsChanged;
 
