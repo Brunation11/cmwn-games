@@ -46,7 +46,7 @@ class Target extends skoash.Component {
       });
     }
 
-    this.callProp('onUpdateState', correct);
+    this.props.onUpdateState.call(this, correct);
   }
 
   setTarget(idx = 0) {
@@ -61,7 +61,7 @@ class Target extends skoash.Component {
       });
     }
 
-    this.callProp('onSetTarget');
+    this.props.onSetTarget.call(this);
 
     this.setState({
       idx,
@@ -102,5 +102,10 @@ class Target extends skoash.Component {
     );
   }
 }
+
+Target.defaultProps = _.defaults({
+  onUpdateState: _.identity,
+  onSetTarget: _.identity,
+}, skoash.Component.defaultProps)
 
 export default Target;

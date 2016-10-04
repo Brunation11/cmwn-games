@@ -76,7 +76,8 @@ class Selectable extends skoash.Component {
       classes,
     });
 
-    self.callProp('selectRespond', dataRef);
+    self.props.selectRespond.call(self, dataRef);
+    self.props.onSelect.call(self, dataRef);
 
     if (self.props.chooseOne) {
       self.requireForComplete = [dataRef];
@@ -205,7 +206,9 @@ Selectable.defaultProps = _.defaults({
     <li></li>
   ],
   selectClass: 'SELECTED',
-  completeListOnClick: true
+  completeListOnClick: true,
+  selectRespond: _.identity,
+  onSelect: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Selectable;

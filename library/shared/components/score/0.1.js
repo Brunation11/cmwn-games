@@ -81,7 +81,7 @@ class Score extends skoash.Component {
       });
 
       this.checkScore(this.props);
-      this.callProp('onUpdateScore');
+      this.props.onUpdateScore.call(this, this.state.score);
     });
   }
 
@@ -101,7 +101,7 @@ class Score extends skoash.Component {
       score
     }, () => {
       this.checkScore(props);
-      this.callProp('onUpdateScore', score);
+      this.props.onUpdateScore.call(this, score);
     });
   }
 
@@ -138,6 +138,7 @@ Score.defaultProps = _.defaults({
   startingScore: 0,
   correct: 0,
   incorrect: 0,
+  onUpdateScore: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Score;
