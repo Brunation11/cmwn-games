@@ -1,13 +1,25 @@
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
-import skoash.Screen from 'shared/components/custom_cursor_screen/0.1';
+import CustomCursorScreen from 'shared/components/custom_cursor_screen/0.1';
+
+class TrashScreenComponent extends CustomCursorScreen {
+  open() {
+    super.open();
+
+    this.checkComplete = null;
+    this.refs['selectable-audio'].incompleteRefs();
+    this.incomplete();
+    this.checkComplete = super.checkComplete;
+  }
+}
 
 export default function (props, ref, key) {
   return (
-    <skoash.Screen
+    <TrashScreenComponent
       {...props}
       ref={ref}
       key={key}
       id="trash"
+      cursor={<skoash.Image src="media/images/trash/sprite_6.1.png" />}
     >
       <skoash.Component className="turtle" />
       <SelectableAudio
@@ -102,9 +114,9 @@ export default function (props, ref, key) {
         ]}
         audioAssets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/audio/trash/answer-correct.mp3" />,
-          <skoash.Audio data-ref="incorrect" type="sfx" src="media/audio/trash/answer-incorrect.mp3" />,
+          <skoash.Audio data-ref="incorrect" type="sfx" src="media/audio/trash/answer-incorrect.mp3" complete />,
         ]}
       />
-    </skoash.Screen>
+    </TrashScreenComponent>
   );
 }

@@ -41,7 +41,7 @@ class CustomCursorScreen extends skoash.Screen {
       ref = cursor.ref || ref;
     }
     return (
-      <skoash.Image
+      <div
         {...props}
         ref={ref}
         className={className}
@@ -63,3 +63,5 @@ class CustomCursorScreen extends skoash.Screen {
     );
   }
 }
+
+export default CustomCursorScreen;
