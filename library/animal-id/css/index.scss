@@ -444,6 +444,7 @@ p {
   }
 
   .pl-game.DEMO .screen .next-screen,
+  .screen.REPLAY .next-screen,
   .screen.COMPLETE .next-screen {
     visibility: visible;
     opacity: 1;
@@ -1939,74 +1940,65 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
   }
 
   &.READY.OPEN {
-  span {
-    position: absolute;
-    background-image: url(../media/images/img_14.2.png);
-    background-size: 760px 160px;
-    background-repeat: no-repeat;
+    span {
+      position: absolute;
+      background-image: url(../media/images/img_14.2.png);
+      background-size: 760px 160px;
+      background-repeat: no-repeat;
+      opacity: 0;
 
-    &:nth-of-type(1) {
-      background-size: 770px 160px;
-      width: 200px;
-      height: 80px;
-      bottom: 25%;
-      left: 22%;
-      background-position: -104px 0px;
-      animation-name: bounceIn;
-      animation-delay: 4.5s;
-    }
+      &.animate {
+        animation-name: bounceIn;
+      }
 
-    &:nth-of-type(2) {
-      background-size: 770px 160px;
-      width: 230px;
-      height: 80px;
-      bottom: 25%;
-      left: 42%;
-      background-position: -300px 0px;
-      animation-name: bounceIn;
-      animation-delay: 6s;
-    }
+      &:nth-of-type(1) {
+        width: 190px;
+        height: 80px;
+        bottom: 25%;
+        left: 22%;
+        background-position: -104px 0px;
+      }
 
-    &:nth-of-type(3) {
-      width: 270px;
-      height: 75px;
-      bottom: 26%;
-      left: 66%;
-      background-position: -522px 0px;
-      animation-name: bounceIn;
-      animation-delay: 7.5s;
-    }
+      &:nth-of-type(2) {
+        width: 230px;
+        height: 80px;
+        bottom: 25%;
+        left: 42%;
+        background-position: -300px 0px;
+      }
 
-    &:nth-of-type(4) {
-      width: 240px;
-      height: 80px;
-      bottom: 10%;
-      left: 13%;
-      background-position: -10px -80px;
-      animation-name: bounceIn;
-      animation-delay: 8.75s;
-    }
+      &:nth-of-type(3) {
+        width: 270px;
+        height: 75px;
+        bottom: 26%;
+        left: 66%;
+        background-position: -522px 0px;
+      }
 
-    &:nth-of-type(5) {
-      width: 260px;
-      height: 80px;
-      bottom: 10%;
-      left: 38%;
-      background-position: -254px -80px;
-      animation-name: bounceIn;
-      animation-delay: 10s;
-    }
+      &:nth-of-type(4) {
+        width: 240px;
+        height: 80px;
+        bottom: 10%;
+        left: 13%;
+        background-position: -10px -80px;
+      }
 
-    &:nth-of-type(6) {
-      width: 260px;
-      height: 80px;
-      bottom: 11%;
-      left: 64%;
-      background-position: -507px -72px;
-      animation-name: bounceIn;
-      animation-delay: 11s;
+      &:nth-of-type(5) {
+        width: 260px;
+        height: 80px;
+        bottom: 10%;
+        left: 38%;
+        background-position: -254px -80px;
+      }
+
+      &:nth-of-type(6) {
+        width: 260px;
+        height: 80px;
+        bottom: 11%;
+        left: 64%;
+        background-position: -507px -72px;
+      }
     }
-  }
   }
 }
 
