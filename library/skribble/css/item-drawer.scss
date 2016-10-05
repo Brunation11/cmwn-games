@@ -25,7 +25,7 @@
   width: 1065px;
   height: 836px;
   margin: 20px 0px 20px 120px;
-  padding: 40px;
+  padding: 25px;
 
   h2 {
     text-transform: uppercase;
@@ -40,8 +40,6 @@
 .item-drawer {
   padding: 0;
   margin: 0;
-  height: 100%;
-  overflow: auto;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

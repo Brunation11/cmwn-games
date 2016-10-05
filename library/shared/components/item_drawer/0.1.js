@@ -1,7 +1,8 @@
 import shortid from 'shortid';
 import classNames from 'classnames';
 
-import Selectable from '../selectable/0.1';
+import Selectable from 'shared/components/selectable/0.1';
+import ScrollArea from 'shared/components/scroll_area/0.1';
 
 class ItemDrawer extends Selectable {
   shouldComponentUpdate(nextProps, nextState) {
@@ -62,8 +63,6 @@ class ItemDrawer extends Selectable {
       categoryName: '',
       category: '',
     });
-
-    this.refs.list.scrollTop = 0;
 
     _.each(self.refs, ref => {
       if (typeof ref.start === 'function') ref.start();
@@ -251,14 +250,20 @@ class ItemDrawer extends Selectable {
       <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
-          <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
-            {this.renderList()}
-          </ul>
+          <ScrollArea img={this.props.scrollbarImg}>
+            <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+              {this.renderList()}
+            </ul>
+          </ScrollArea>
         </div>
         {this.renderButtons()}
       </div>
     );
   }
 }
+
+ItemDrawer.defaultProps = _.defaults({
+  scrollbarImg: ''
+}, Selectable.defaultProps);
 
 export default ItemDrawer;
