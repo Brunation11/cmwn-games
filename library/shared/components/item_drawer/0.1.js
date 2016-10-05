@@ -231,7 +231,9 @@ class ItemDrawer extends Selectable {
       }
       if (aVal < bVal) return -1;
       return 1;
-    }).map((item, key) =>
+    }).filter(item =>
+      item.name !== '_thumb.png'
+    ).map((item, key) =>
       <skoash.ListItem
         className={this.getClass(key, item)}
         ref={key}
