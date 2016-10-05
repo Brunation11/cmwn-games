@@ -250,7 +250,7 @@ class ItemDrawer extends Selectable {
       <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
-          <ScrollArea img={this.props.scrollbarImg}>
+          <ScrollArea ref="scroll-area" img={this.props.scrollbarImg}>
             <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
               {this.renderList()}
             </ul>

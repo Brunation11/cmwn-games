@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 
+const IMAGE = 'image';
 const AREA = 'area';
 const CONTENT = 'content';
 const SCROLLBAR = 'scrollbar';
@@ -10,7 +11,7 @@ class ScrollArea extends skoash.Component {
     super();
 
     this.state = _.defaults({
-      scrollerTop: 0,
+      startY: 0,
       endY: 0,
       zoom: 1,
     }, this.state);
@@ -42,7 +43,7 @@ class ScrollArea extends skoash.Component {
     this[AREA].addEventListener('scroll', e => {
       var areaScrollTop, endY;
 
-      if (!e.target) return;
+      if (!e.target || this.dragging) return;
 
       areaScrollTop = e.target.scrollTop;
       endY = (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight) * (areaScrollTop / (this[CONTENT].offsetHeight - this[AREA].offsetHeight));
@@ -74,27 +75,35 @@ class ScrollArea extends skoash.Component {
   }
 
   startEvent(e, cb) {
-    var rect, startY, endY, grabY;
+    var startY, endY;
 
     if (e.target !== this[SCROLLER]) return;
 
-    if (e.targetTouches && e.targetTouches[0]) {
-      rect = e.target.getBoundingClientRect();
-      e = e.targetTouches[0];
-      e.offsetY = e.pageY - rect.top;
-    }
+    this.dragging = true;
 
-    grabY = e.offsetY / this.state.zoom;
-    startY = this[SCROLLBAR].getBoundingClientRect().top;
-    endY = (e.pageY / this.state.zoom - grabY);
+    e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
+
+    endY = this.getEndY(e);
+    startY = this.state.startY || endY;
 
     this.setState({
       startY,
-      grabY,
       endY,
     });
 
     if (typeof cb === 'function') cb.call(this);
+  }
+
+  getEndY(e) {
+    return Math.min(
+      Math.max(
+        e.pageY / this.state.zoom,
+        this.state.startY
+      ),
+      this.state.startY +
+      this[SCROLLBAR].getBoundingClientRect().height / this.state.zoom -
+      this.props.scrollbarHeight
+    );
   }
 
   attachMouseEvents() {
@@ -108,24 +117,15 @@ class ScrollArea extends skoash.Component {
   }
 
   moveEvent(e) {
-    var endY, areaScrollTop;
+    var endY;
 
     e = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0] : e;
 
-    endY = Math.min(
-      Math.max(
-        e.pageY / this.state.zoom - this.state.grabY,
-        this.state.startY
-      ),
-      this.state.startY +
-      this[SCROLLBAR].getBoundingClientRect().height / this.state.zoom -
-      this.props.scrollbarHeight
-    );
+    endY = this.getEndY(e);
 
-    areaScrollTop = endY * (this[CONTENT].offsetHeight - this[AREA].offsetHeight) /
+    this[AREA].scrollTop = (endY - this.state.startY) *
+      (this[CONTENT].offsetHeight - this[AREA].offsetHeight) /
       (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight);
-
-    this[AREA].scrollTop = areaScrollTop;
 
     this.setState({
       endY,
@@ -133,10 +133,12 @@ class ScrollArea extends skoash.Component {
   }
 
   mouseUp() {
+    this.dragging = false;
     this.detachMouseEvents();
   }
 
   touchEnd() {
+    this.dragging = false;
     this.detachTouchEvents();
   }
 
@@ -166,7 +168,7 @@ class ScrollArea extends skoash.Component {
 
     return (
       <this.props.type {...this.props} className={this.getClassNames()}>
-        <skoash.Image className="hidden" src={this.props.img} />
+        <skoash.Image ref={IMAGE} className="hidden" src={this.props.img} />
         <div ref={AREA} className={AREA}>
           <div ref={CONTENT} className={CONTENT}>
             {this.renderContentList()}
