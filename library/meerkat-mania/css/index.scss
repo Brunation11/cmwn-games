@@ -85,13 +85,13 @@ body > div > div {
     background-image: url(../media/_BKG/BKG_8.png);
   }
 
-  &.SCREEN-2:not(.MENU-quit) > div > .background.excel,
-  &.SCREEN-4:not(.MENU-quit) > div > .background.look-out,
-  &.SCREEN-5:not(.MENU-quit) > div > .background.look-out,
-  &.SCREEN-6:not(.MENU-quit) > div > .background.feel,
-  &.SCREEN-7:not(.MENU-quit) > div > .background.movie,
-  &.SCREEN-8:not(.MENU-quit) > div > .background.movie,
-  &.SCREEN-9:not(.MENU-quit) > div > .background.flip {
+  &.SCREEN-2:not(.MENU-quit) > .background.excel,
+  &.SCREEN-4:not(.MENU-quit) > .background.look-out,
+  &.SCREEN-5:not(.MENU-quit) > .background.look-out,
+  &.SCREEN-6:not(.MENU-quit) > .background.feel,
+  &.SCREEN-7:not(.MENU-quit) > .background.movie,
+  &.SCREEN-8:not(.MENU-quit) > .background.movie,
+  &.SCREEN-9:not(.MENU-quit) > .background.flip {
     opacity: 1;
   }
 
