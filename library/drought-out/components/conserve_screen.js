@@ -48,7 +48,7 @@ export default function (props, ref, key) {
       <skoash.Component ref="frame" className="frame animated">
         <Reveal
           ref="reveal"
-          openReveal={'' + _.get(props, 'data.reveal.index')}
+          openReveal={'' + _.get(props, 'data.reveal.index', '')}
           closeReveal={_.get(props, 'data.reveal.close')}
           onOpen={function () {
             this.updateGameState({
@@ -89,8 +89,8 @@ export default function (props, ref, key) {
             <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.9.mp3" />,
             <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.10.mp3" />,
             <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.11.mp3" />,
-            <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Reveals/S_RV_1.mp3" />,
-            <skoash.Audio data-ref="close-sound" type="sfx" src="media/_Reveals/S_RV_2.mp3" delay={500} />
+            <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Reveals/S_RV_1.mp3" onPlay={() => {console.error('open')}} />,
+            <skoash.Audio data-ref="close-sound" type="sfx" src="media/_Reveals/S_RV_2.mp3" delay={500} onPlay={() => {console.error('close')}} />
           ]}
           onAudioComplete={function (asset) {
             if (asset.props.type === 'voiceOver' && this.audio['close-sound']) this.audio['close-sound'].play();
