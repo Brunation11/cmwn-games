@@ -14,7 +14,7 @@ class Dropzone extends skoash.Component {
 
     this.state = {
       dropped: [],
-    }
+    };
   }
 
   incomplete() {
@@ -210,7 +210,7 @@ class Dropzone extends skoash.Component {
         <ul>
           {this.renderDraggables.call(this, draggablesLeft)}
         </ul>
-      )
+      );
     }
 
     if (this.props[draggablesRight]) {
@@ -218,7 +218,7 @@ class Dropzone extends skoash.Component {
         <ul>
           {this.renderDraggables.call(this, draggablesRight)}
         </ul>
-      )
+      );
     }
 
     return (
@@ -237,11 +237,11 @@ export default Dropzone;
 
 Dropzone.defaultProps = _.defaults({
   dropzones: [
-      <skoash.Component answers="drag" />
+    <skoash.Component answers="drag" />
   ],
   draggables: [
-      <Draggable message={'drag'}>drag me!</Draggable>,
-      <Draggable message={'return'} return={true} >return</Draggable>
+    <Draggable message={'drag'}>drag me!</Draggable>,
+    <Draggable message={'return'} return={true} >return</Draggable>
   ],
 }, skoash.Component.defaultProps);
 
