@@ -66,7 +66,7 @@ class Dropzone extends skoash.Component {
   }
 
   start() {
-    skoash.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
   }
 
