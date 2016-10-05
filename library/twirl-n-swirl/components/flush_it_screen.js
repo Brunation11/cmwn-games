@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import Dropzone from 'shared/components/dropzone/0.2';
@@ -88,7 +87,7 @@ export default function (props, ref, key) {
       <Dropzone
         ref="dropzone"
         className={getClassNames()}
-        complete
+        completeOnStart
         checkComplete={false}
         assets={[
           <skoash.Audio data-ref="correct" type="sfx" src="media/S_6/S_6.1.mp3" />,
@@ -114,6 +113,11 @@ export default function (props, ref, key) {
           <skoash.ListItem ref="meds" className="meds animated" message="meds" returnOnIncorrect />,
           <skoash.ListItem ref="chemicals" className="chemicals animated" message="chemicals" returnOnIncorrect />
         ]}
+      />
+      <button
+        ref="reveal-button"
+        className="flush"
+        onClick={flush}
       />
       <Reveal
         openOnStart="intro"
@@ -196,11 +200,6 @@ export default function (props, ref, key) {
         <skoash.Audio ref="meds" type="voiceOver" src="media/S_6/VO_6.15.mp3" />
         <skoash.Audio ref="chemicals" type="voiceOver" src="media/S_6/VO_6.16.mp3" />
       </MediaCollection>
-      <button
-        ref="reveal-button"
-        className="flush"
-        onClick={flush}
-      />
     </skoash.Screen>
   );
 }
