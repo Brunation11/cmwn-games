@@ -13,6 +13,7 @@ import InfoTrashScreen from './components/info_trash_screen';
 import TrashScreen from './components/trash_screen';
 import InfoKeepGoingScreen from './components/info_keep_going_screen';
 import InfoJellyScreen from './components/info_jelly_screen';
+import JellyfishScreen from './components/jellyfish_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 //import 'shared/js/test-platform-integration';
@@ -30,7 +31,8 @@ class SeaTurtle extends skoash.Game {
       //5: InfoTrashScreen,
       //6: TrashScreen,
       //7: InfoKeepGoingScreen,
-      2: InfoJellyScreen,
+      //8: InfoJellyScreen,
+      2: JellyfishScreen,
     };
 
     this.menus = {
