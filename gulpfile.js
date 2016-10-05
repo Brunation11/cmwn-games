@@ -253,9 +253,9 @@ gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
 
 function cleanTask() {
-//  exec('delete-invalid-files.sh', function (err, stdout, stderr) {
-//    gutil.log(stdout);
-//    gutil.log(stderr);
-//  });
+  exec('delete-invalid-files.sh', function (err, stdout, stderr) {
+    gutil.log(stdout);
+    gutil.log(stderr);
+  });
 }
 gulp.task('clean', cleanTask);

@@ -18,12 +18,9 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loader: ['babel'],
-//      include: path.join(__dirname, 'library/'),
-      exclude: [/bower_components/, /node_modules/],
-      query: {
-          presets: ['es2015', 'react', 'stage-0']
-      },
+      loaders: ['babel'],
+      include: path.join(__dirname, 'library/'),
+      exclude: [/bower_components/, /node_modules/]
     }]
   },
   postcss: function () {
