@@ -31,9 +31,10 @@ class ItemDrawer extends Selectable {
   }
 
   start() {
-    var items, selectedItem, selectFunction, classes = {}, self = this;
+    var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
 
-    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+    selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     items = self.props.data || [];
 
@@ -45,17 +46,18 @@ class ItemDrawer extends Selectable {
 
     _.each(items, (item, key) => {
       if (self.props.selectedItem && JSON.stringify(item) === selectedItem) {
-        classes[key] = self.state.selectClass;
+        classes[key] = selectClass;
       }
     });
 
     if (this.props.selectOnStart) {
-      classes[this.props.selectOnStart] = this.state.selectClass;
+      classes[this.props.selectOnStart] = selectClass;
     }
 
     this.setState({
       started: true,
       classes,
+      selectClass,
       selectFunction,
       categoryName: '',
       category: '',
