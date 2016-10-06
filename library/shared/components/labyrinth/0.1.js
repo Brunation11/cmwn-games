@@ -38,16 +38,21 @@ class Labyrinth extends skoash.Component {
 
     hasTrue = _.some(this.props.input, v => v);
 
-    if (!this.isColliding(playerX, playerY)) {
+    if (this.isColliding(playerX, playerY)) {
+      if (hasTrue) window.requestAnimationFrame(this.update);
+      this.props.onCollide.call(this);
+    } else if (this.isCollidingEnemy(playerX, playerY)) {
+      // do something
+    } else {
+      if (this.isCollidingItem(playerX, playerY)) {
+        // do something
+      }
       this.setState({
         playerX,
         playerY,
       }, () => {
         if (hasTrue) window.requestAnimationFrame(this.update);
       });
-    } else {
-      if (hasTrue) window.requestAnimationFrame(this.update);
-      this.props.onCollide.call(this);
     }
   }
 
@@ -71,6 +76,14 @@ class Labyrinth extends skoash.Component {
       // left
       !this[CONTEXT].getImageData(x, y + (playerOffset.height / this.props.scale / 2), 1, 1).data[0]
     );
+  }
+
+  isCollidingItem() {
+    return false;
+  }
+
+  isCollidingEnemy() {
+    return false;
   }
 
   getPlayerStyle() {
@@ -107,7 +120,7 @@ class Labyrinth extends skoash.Component {
           src={this.props.img}
         />
         {this.renderContentList('items')}
-        {this.renderContentList('enimies')}
+        {this.renderContentList('enemies')}
         <div
           ref={PLAYER}
           className={PLAYER}
@@ -127,7 +140,7 @@ Labyrinth.defaultProps = _.defaults({
   speed: 1,
   scale: 1,
   items: [],
-  enimies: [],
+  enemies: [],
   onCollide: _.identity,
 }, skoash.Component.defaultProps);
 
