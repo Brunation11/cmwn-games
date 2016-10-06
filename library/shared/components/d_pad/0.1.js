@@ -7,35 +7,49 @@ const RIGHT = 'right';
 
 class DPad extends skoash.Component {
   bootstrap() {
-    var mousedown, mouseup;
+    var mousedown, mouseup, keydown;
 
     super.bootstrap();
 
     this.DOM = ReactDOM.findDOMNode(this);
 
     mousedown = e => {
-      if (!e.target) return;
-      this.updateGameState({
-        path: this.props.outputTarget,
-        data: {
-          ref: e.target.getAttribute('data-ref')
-        }
-      });
+      this.updateRef(e.target.getAttribute('data-ref'));
     };
 
-    mouseup = e => {
-      if (!e.target) return;
-      this.updateGameState({
-        path: this.props.outputTarget,
-        data: {
-          ref: null
-        }
-      });
+    mouseup = () => {
+      this.updateRef(null);
     };
 
     this.DOM.addEventListener('mousedown', mousedown);
     this.DOM.addEventListener('mouseup', mouseup);
     this.DOM.addEventListener('mouseout', mouseup);
+
+    keydown = (e) => {
+      var ref = null;
+      if (e.keyCode === 37) {
+        ref = 'left';
+      } else if (e.keyCode === 38) {
+        ref = 'up';
+      } else if (e.keyCode === 39) {
+        ref = 'right';
+      } else if (e.keyCode === 40) {
+        ref = 'down';
+      }
+      this.updateRef(ref);
+    };
+
+    window.addEventListener('keydown', keydown);
+    window.addEventListener('keyup', mouseup);
+  }
+
+  updateRef(ref) {
+    this.updateGameState({
+      path: this.props.outputTarget,
+      data: {
+        ref
+      }
+    });
   }
 
   getClassNames() {
