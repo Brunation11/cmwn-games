@@ -40,11 +40,10 @@
   100% {transform:translateY(0px)}
 }
 
-.VOICE-OVER:not(.DEMO):not(.REPLAY):not(.COMPLETE) {
-  .dropzone-reveal {
-    cursor: default;
-    pointer-events: none;
-  }
+.reveal.OPEN ~ .dropzone-container,
+.VOICE-OVER:not(.DEMO):not(.REPLAY):not(.COMPLETE) .dropzone-reveal {
+  cursor: default;
+  pointer-events: none;
 }
 
 #globe {
@@ -301,6 +300,7 @@
       li {
         position: relative;
         list-style: none;
+        cursor: pointer;
 
         &.SELECTED {
           background-image: url(../media/images/globe/sprite_4.4.png);
@@ -331,22 +331,6 @@
 
       li.SELECTED::before {
         background-position: 0px -5px;
-      }
-    }
-  }
-
-  &.VOICE-OVER,
-  .reveal.OPEN ~ .dropzone-container {
-    cursor: default;
-    pointer-events: none;
-  }
-}
-
-.DEMO {
-  #globe.VOICE-OVER {
-    .draggables {
-      li {
-        pointer-events: auto;
       }
     }
   }

@@ -49,7 +49,7 @@ class Dropzone extends skoash.Component {
 
     this.props.dropzones.map((dropzone, key) => {
       var dropzoneRef = this.refs[`dropzone-${key}`];
-      if (dropzoneRef) {
+      if (ReactDOM.findDOMNode(dropzoneRef)) {
         dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
       }
     });

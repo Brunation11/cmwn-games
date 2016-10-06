@@ -26,15 +26,15 @@ class SeaTurtle extends skoash.Game {
     this.screens = {
       0: iOSScreen,
       1: TitleScreen,
-      //2: VideoScreen,
-      //3: InfoGlobeScreen,
-      //4: GlobeScreen,
-      //5: InfoTrashScreen,
-      //6: TrashScreen,
-      //7: InfoKeepGoingScreen,
-      //8: InfoJellyScreen,
-      //9: JellyfishScreen,
-      2: FlipScreen,
+      2: VideoScreen,
+      3: InfoGlobeScreen,
+      4: GlobeScreen,
+      5: InfoTrashScreen,
+      6: TrashScreen,
+      7: InfoKeepGoingScreen,
+      8: InfoJellyScreen,
+      9: JellyfishScreen,
+      10: FlipScreen,
     };
 
     this.menus = {

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import _ from 'lodash';
 
 class Reveal extends skoash.Component {
@@ -6,16 +7,29 @@ class Reveal extends skoash.Component {
 
     this.state = {
       openReveal: '',
+      currentlyOpen: []
     };
 
     this.index = 0;
   }
 
+  incomplete() {
+    this.setState({
+      openReveal: '',
+      currentlyOpen: []
+    });
+
+    super.incomplete();
+  }
+
   open(message) {
     var self = this;
+    var currentlyOpen = this.state.currentlyOpen.concat(message);
+
     self.setState({
       open: true,
-      openReveal: '' + message,
+      openReveal: message,
+      currentlyOpen,
     });
 
     self.playAudio(message);
@@ -23,7 +37,7 @@ class Reveal extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
+      self.requireForComplete.forEach(key => {
         if (key === message && self.refs[key]) {
           self.refs[key].complete();
         }
@@ -31,20 +45,36 @@ class Reveal extends skoash.Component {
     }
 
     if (self.props.autoClose) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.close();
       }, 2000);
+    }
+
+    if (this.props.openTarget) {
+      this.updateGameState({
+        path: this.props.openTarget,
+        data: {
+          open: '' + message
+        }
+      });
     }
 
     self.callProp('onOpen', message);
   }
 
   close() {
-    var prevMessage = this.state.openReveal;
+    var prevMessage, currentlyOpen, openReveal, open;
+
+    prevMessage = this.state.openReveal;
+    currentlyOpen = this.state.currentlyOpen;
+    currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
+    open = currentlyOpen.length > 0;
+    openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
 
     this.setState({
-      open: false,
-      openReveal: '',
+      open,
+      openReveal,
+      currentlyOpen,
     });
 
     if (this.audio['close-sound']) {
@@ -70,28 +100,29 @@ class Reveal extends skoash.Component {
   }
 
   playAudio(message) {
-    var messages;
+    var messages, self = this;
 
     if ('' + parseInt(message, 10) === message) {
       message = 'asset-' + message;
     }
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
+    if (self.audio['open-sound']) {
+      self.audio['open-sound'].play();
     }
 
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
-        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
-          this.media[audio].play();
+        audio = 'asset-' + audio;
+        if (self.audio[audio]) {
+          self.audio[audio].play();
+        } else if (self.media[audio] && typeof self.media[audio].play === 'function') {
+          self.media[audio].play();
         }
       });
     } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
+      if (self.audio.voiceOver[message]) {
+        self.audio.voiceOver[message].play();
       }
     }
   }
@@ -99,11 +130,12 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
+        var ref = 'asset-';
+        ref += asset.ref || asset.props['data-ref'] || key;
         return (
           <asset.type
             {...asset.props}
-            data-ref={ref}
+            data-ref={key}
             ref={ref}
             key={key}
           />
@@ -118,13 +150,14 @@ class Reveal extends skoash.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
+      var dataRef = li.props['data-ref'] || key;
+      var ref = li.ref || dataRef;
       return (
         <li.type
           {...li.props}
           type="li"
           className={this.getClass(li, key)}
-          data-ref={ref}
+          data-ref={dataRef}
           ref={ref}
           key={key}
         />
@@ -137,30 +170,49 @@ class Reveal extends skoash.Component {
       this.open(props.openReveal);
     }
 
-    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
-      this.close();
+    if (props.closeReveal !== this.props.closeReveal) {
+      if (props.closeReveal === true) {
+        this.close();
+      } else if (Number.isInteger(props.closeReveal)) {
+        for (var i = 0; i < props.closeReveal; i++) {
+          this.close();
+        }
+      }
     }
   }
 
   getClass(li, key) {
     var classes = '';
 
-    if (li.props.className) classes += li.props.className;
-    if (this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
-    if (this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
+    if (li.props.className) classes = li.props.className;
+
+    if (this.state.currentlyOpen.indexOf(key) !== -1 ||
+        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
+        this.state.currentlyOpen.indexOf(li.ref) !== -1
+    ) {
+      classes = classNames(classes, 'OPEN');
+    }
 
     return classes;
   }
 
   getClassNames() {
     var classes;
-    var open = 'open-none ';
+    var open = 'open-none';
 
-    if (this.state.openReveal) {
-      open = 'open-' + this.state.openReveal + ' ';
+    if (this.state.open) {
+      open = '';
+      this.state.currentlyOpen.forEach(ref => {
+        open += 'open-' + ref + ' ';
+      });
+      open += 'OPEN';
     }
 
-    classes = 'reveal ' + open + super.getClassNames();
+    var classes = classNames(
+      'reveal',
+      open,
+      super.getClassNames(),
+    );
 
     return classes;
   }

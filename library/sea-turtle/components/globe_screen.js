@@ -6,7 +6,6 @@ import Reveal from 'shared/components/reveal/0.1';
 import Draggable from 'shared/components/draggable/0.1';
 
 class GlobeScreenComponent extends skoash.Screen {
-
   open() {
     super.open();
 
@@ -53,7 +52,7 @@ export default function (props, ref, key) {
       openReveal('reveal', incorrectAudio, () => {
         setTimeout(() => {
           closeReveal()
-        }, 100);
+        }, 1000);
       });
     }
   }
