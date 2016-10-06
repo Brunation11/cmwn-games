@@ -10,11 +10,12 @@ export default function (props, ref, key) {
       id="labyrinth-screen"
     >
       <Labyrinth
-        img="media/labyrinth/img.png"
+        img="media/labyrinth/map.png"
         map="media/labyrinth/map.png"
         input={_.get(props, 'data.d-pad.ref')}
         startX={100}
         startY={150}
+        scale={_.get(props, 'gameState.scale', 1)}
       />
       <DPad />
     </skoash.Screen>

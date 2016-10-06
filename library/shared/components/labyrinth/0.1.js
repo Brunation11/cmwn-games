@@ -4,6 +4,8 @@ const MAP = 'map';
 const CANVAS = 'canvas';
 const IMAGE = 'image';
 const PLAYER = 'player';
+const BUFFER = 'buffer';
+const CONTEXT = 'context';
 
 class Labyrinth extends skoash.Component {
   constructor() {
@@ -12,33 +14,61 @@ class Labyrinth extends skoash.Component {
     this.update = this.update.bind(this);
   }
 
-  bootstrap() {
-    super.bootstrap();
+  onReady() {
+    this[IMAGE] = ReactDOM.findDOMNode(this.refs[IMAGE]);
+    this[MAP] = ReactDOM.findDOMNode(this.refs[MAP]);
+    this[PLAYER] = ReactDOM.findDOMNode(this.refs[PLAYER]);
+    this[BUFFER] = ReactDOM.findDOMNode(this.refs[CANVAS]);
 
-    this[CANVAS] = ReactDOM.findDOMNode(this.refs[CANVAS]);
+    this[CONTEXT] = this[BUFFER].getContext('2d');
 
     this.setState({
       playerX: this.props.startX,
       playerY: this.props.startY,
     });
-
-    window.requestAnimationFrame(this.update);
   }
 
   update() {
     var playerX = this.state.playerX, playerY = this.state.playerY;
 
-    switch (this.props.input) {
-    case 'up': playerY -= this.props.speed; break;
-    case 'down': playerY += this.props.speed; break;
-    case 'left': playerX -= this.props.speed; break;
-    case 'right': playerX += this.props.speed; break;
-    }
+    if (this.props.input === 'up') playerY -= this.props.speed;
+    if (this.props.input === 'down') playerY += this.props.speed;
+    if (this.props.input === 'left') playerX -= this.props.speed;
+    if (this.props.input === 'right') playerX += this.props.speed;
 
-    this.setState({
-      playerX,
-      playerY,
-    });
+    if (!this.isColliding(playerX, playerY)) {
+      this.setState({
+        playerX,
+        playerY,
+      }, () => {
+        if (this.props.input) window.requestAnimationFrame(this.update);
+      });
+    } else {
+      if (this.props.input) window.requestAnimationFrame(this.update);
+      this.props.onCollide.call(this);
+    }
+  }
+
+  isColliding(x, y) {
+    var offset, playerOffset;
+    offset = this[IMAGE].getBoundingClientRect();
+    playerOffset = this[PLAYER].getBoundingClientRect();
+
+    this[BUFFER].width = offset.width / this.props.scale;
+    this[BUFFER].height = offset.height / this.props.scale;
+    this[CONTEXT].clearRect(0, 0, this[BUFFER].width, this[BUFFER].height);
+    this[CONTEXT].drawImage(this[MAP], 0, 0, this[BUFFER].width, this[BUFFER].height);
+
+    return (
+      // top
+      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y, 1, 1).data[0] ||
+      // right
+      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale), y + (playerOffset.width / this.props.scale / 2), 1, 1).data[0] ||
+      // bottom
+      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y + (playerOffset.height / this.props.scale), 1, 1).data[0] ||
+      // left
+      !this[CONTEXT].getImageData(x, y + (playerOffset.height / this.props.scale / 2), 1, 1).data[0]
+    );
   }
 
   getPlayerStyle() {
@@ -48,6 +78,12 @@ class Labyrinth extends skoash.Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    if (props.input && props.input !== this.props.input) {
+      window.requestAnimationFrame(this.update);
+    }
+  }
+
   getClassNames() {
     return classNames('labyrinth', super.getClassNames());
   }
@@ -55,14 +91,14 @@ class Labyrinth extends skoash.Component {
   render() {
     return (
       <div {...this.props} className={this.getClassNames()}>
+        <canvas
+          ref={CANVAS}
+          className={CANVAS}
+        />
         <skoash.Image
           ref={MAP}
           className={MAP}
           src={this.props.map}
-        />
-        <canvas
-          ref={CANVAS}
-          className={CANVAS}
         />
         <skoash.Image
           ref={IMAGE}
@@ -85,7 +121,9 @@ Labyrinth.defaultProps = _.defaults({
   input: null,
   startX: 0,
   startY: 0,
-  speed: 5,
+  speed: 1,
+  scale: 1,
+  onCollide: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Labyrinth;
