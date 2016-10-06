@@ -67,7 +67,7 @@ class SeaTurtle extends skoash.Game {
         <skoash.Audio ref="bkg-1" type="background" src="media/audio/SO_1.1.mp3" />
         <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/1.mp3" loop />
         <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/3.mp3" loop />
-        <skoash.Audio ref="bkg-4" type="background" src="media/audio/SO_7.1.mp3" loop />
+        <skoash.Audio ref="bkg-4" type="background" src="media/audio/SO_7.1.mp3" />
         <skoash.Audio ref="bkg-5" type="background" src="media/audio/background/3.mp3" loop />
         <skoash.Audio ref="bkg-6" type="background" src="media/audio/background/3.mp3" loop />
         <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
