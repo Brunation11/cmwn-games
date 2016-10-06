@@ -19,17 +19,18 @@ class SelectableAll extends Selectable {
 
   bootstrap() {
     super.bootstrap();
+    var self = this;
 
-    if (this.refs.bin) {
-      this.setState({
-        list: this.refs.bin.getAll()
+    if (self.refs.bin) {
+      self.setState({
+        list: self.refs.bin.getAll()
       }, () => {
         setTimeout(() => {
-          this.launch()
-        }, this.props.launchPause)
+          self.launch()
+        }, self.props.launchPause)
       });
     } else {
-      this.launch();
+      self.launch();
     }
   }
 
@@ -38,12 +39,8 @@ class SelectableAll extends Selectable {
     var list, indicesLeft, classes, self = this;
     list = self.state.list;
 
-    //if (!list) setTimeout(this.launch.call(this), 100);
-    if (list.length === 0) return;
-
     indicesLeft = [...Array(list.length).keys()];
     classes = {};
-
 
     for(var i = 0; i < list.length; i++) {
       setTimeout(() => {
@@ -86,16 +83,17 @@ class SelectableAll extends Selectable {
     }
   }
 
-  selectHelper(e) {
-    var target = e.target.closest('LI');
+  selectHelper(e, classes) {
+    super.selectHelper(e, classes);
+    var target, dataRef;
+
+    target = e.target.closest('LI');
+
     if (!target) return;
 
-    var key = target.getAttribute('id');
-    var item = this.state.list[key];
+    dataRef = target.getAttribute('data-ref');
 
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect(item);
-    }
+    this.next(dataRef);
 
     if (this.props.doCount) {
       this.count();
@@ -107,17 +105,19 @@ class SelectableAll extends Selectable {
     if (!list) return;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+      var ref = li.ref || li.props['data-ref'] ||  key;
+      var message = li.props.message || '' + key;
       return (
         <li.type
           {...li.props}
+          type="li"
           className={this.getClass(key, li)}
-          data-ref={ref}
-          data-message={li.props.message}
+          message={message}
+          data-message={message}
+          data-ref={key}
           onTransitionEnd={this.next.bind(this, key)}
           ref={ref}
           key={key}
-          id={key}
         />
       );
     });

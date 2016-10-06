@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import classNames from 'classnames';
 
 class Reveal extends skoash.Component {
   constructor() {
@@ -7,29 +6,16 @@ class Reveal extends skoash.Component {
 
     this.state = {
       openReveal: '',
-      currentlyOpen: []
     };
 
     this.index = 0;
   }
 
-  incomplete() {
-    this.setState({
-      openReveal: '',
-      currentlyOpen: []
-    });
-
-    super.incomplete();
-  }
-
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
-
-    this.setState({
+    self.setState({
       open: true,
-      openReveal: message,
-      currentlyOpen,
+      openReveal: '' + message,
     });
 
     self.playAudio(message);
@@ -37,7 +23,7 @@ class Reveal extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.forEach(key => {
+      self.requireForComplete.map(key => {
         if (key === message && self.refs[key]) {
           self.refs[key].complete();
         }
@@ -54,18 +40,11 @@ class Reveal extends skoash.Component {
   }
 
   close() {
-    var prevMessage, currentlyOpen, openReveal;
-
-    prevMessage = this.state.openReveal;
-    currentlyOpen = this.state.currentlyOpen;
-    currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
-    var open = currentlyOpen.length > 0;
-    openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
+    var prevMessage = this.state.openReveal;
 
     this.setState({
-      open,
-      openReveal,
-      currentlyOpen,
+      open: false,
+      openReveal: '',
     });
 
     if (this.audio['close-sound']) {
@@ -104,7 +83,6 @@ class Reveal extends skoash.Component {
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        audio = 'asset-' + audio;
         if (this.audio[audio]) {
           this.audio[audio].play();
         } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
@@ -121,11 +99,11 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = 'asset-';
-        ref += asset.ref || asset.props['data-ref'] || key;
+        var ref = asset.ref || asset.props['data-ref'] || ('asset-' + key);
         return (
           <asset.type
             {...asset.props}
+            data-ref={ref}
             ref={ref}
             key={key}
           />
@@ -140,14 +118,13 @@ class Reveal extends skoash.Component {
     var list = this.props.list || this.list;
 
     return list.map((li, key) => {
-      var dataRef = li.props['data-ref'] || key;
-      var ref = li.ref || dataRef;
+      var ref = li.props['data-ref'] == null ? key : li.props['data-ref'];
       return (
         <li.type
           {...li.props}
           type="li"
           className={this.getClass(li, key)}
-          data-ref={dataRef}
+          data-ref={ref}
           ref={ref}
           key={key}
         />
@@ -160,49 +137,30 @@ class Reveal extends skoash.Component {
       this.open(props.openReveal);
     }
 
-    if (props.closeReveal !== this.props.closeReveal) {
-      if (props.closeReveal === true) {
-        this.close();
-      } else if (Number.isInteger(props.closeReveal)) {
-        for (var i = 0; i < props.closeReveal; i++) {
-          this.close();
-        }
-      }
+    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
+      this.close();
     }
   }
 
   getClass(li, key) {
     var classes = '';
 
-    if (li.props.className) classes = li.props.className;
-
-    if (this.state.currentlyOpen.indexOf(key) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.ref) !== -1
-    ) {
-      classes = classNames(classes, 'OPEN');
-    }
+    if (li.props.className) classes += li.props.className;
+    if (this.state.openReveal.indexOf(key) !== -1) classes += ' OPEN';
+    if (this.state.openReveal.indexOf(li.props['data-ref']) !== -1) classes += ' OPEN';
 
     return classes;
   }
 
   getClassNames() {
     var classes;
-    var open = 'open-none';
+    var open = 'open-none ';
 
-    if (this.state.open) {
-      open = '';
-      this.state.currentlyOpen.forEach(ref => {
-        open += 'open-' + ref + ' ';
-      });
-      open += 'OPEN';
+    if (this.state.openReveal) {
+      open = 'open-' + this.state.openReveal + ' ';
     }
 
-    var classes = classNames(
-      'reveal',
-      open,
-      super.getClassNames(),
-    );
+    classes = 'reveal ' + open + super.getClassNames();
 
     return classes;
   }
