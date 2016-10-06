@@ -10,16 +10,17 @@ class DPad extends skoash.Component {
     super();
 
     this.mousedown = this.mousedown.bind(this);
-    this.clear = this.clear.bind(this);
+    this.mouseup = this.mouseup.bind(this);
     this.keydown = this.keydown.bind(this);
+    this.keyup = this.keyup.bind(this);
   }
 
   mousedown(e) {
     this.updateRef(e.target.getAttribute('data-ref'));
   }
 
-  clear() {
-    this.updateRef(null);
+  mouseup(e) {
+    this.updateRef(e.target.getAttribute('data-ref'), false);
   }
 
   keydown(e) {
@@ -36,25 +37,38 @@ class DPad extends skoash.Component {
     this.updateRef(ref);
   }
 
+  keyup(e) {
+    var ref = null;
+    if (e.keyCode === 37) {
+      ref = 'left';
+    } else if (e.keyCode === 38) {
+      ref = 'up';
+    } else if (e.keyCode === 39) {
+      ref = 'right';
+    } else if (e.keyCode === 40) {
+      ref = 'down';
+    }
+    this.updateRef(ref, false);
+  }
+
   bootstrap() {
     super.bootstrap();
 
     this.DOM = ReactDOM.findDOMNode(this);
 
     this.DOM.addEventListener('mousedown', this.mousedown);
-    this.DOM.addEventListener('clear', this.clear);
-    this.DOM.addEventListener('mouseout', this.clear);
-
+    this.DOM.addEventListener('mouseup', this.mouseup);
+    this.DOM.addEventListener('mouseout', this.mouseup);
 
     window.addEventListener('keydown', this.keydown);
-    window.addEventListener('keyup', this.clear);
+    window.addEventListener('keyup', this.keyup);
   }
 
-  updateRef(ref) {
+  updateRef(ref, isDown = true) {
     this.updateGameState({
       path: this.props.outputTarget,
       data: {
-        ref
+        [ref]: isDown
       }
     });
   }

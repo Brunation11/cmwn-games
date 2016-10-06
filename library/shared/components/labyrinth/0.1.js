@@ -11,7 +11,7 @@ class Labyrinth extends skoash.Component {
   constructor() {
     super();
 
-    this.update = this.update.bind(this);
+    this.update = _.debounce(this.update.bind(this), 10);
   }
 
   onReady() {
@@ -29,22 +29,24 @@ class Labyrinth extends skoash.Component {
   }
 
   update() {
-    var playerX = this.state.playerX, playerY = this.state.playerY;
+    var hasTrue, playerX = this.state.playerX, playerY = this.state.playerY;
 
-    if (this.props.input === 'up') playerY -= this.props.speed;
-    if (this.props.input === 'down') playerY += this.props.speed;
-    if (this.props.input === 'left') playerX -= this.props.speed;
-    if (this.props.input === 'right') playerX += this.props.speed;
+    if (this.props.input.up) playerY -= this.props.speed;
+    if (this.props.input.down) playerY += this.props.speed;
+    if (this.props.input.left) playerX -= this.props.speed;
+    if (this.props.input.right) playerX += this.props.speed;
+
+    hasTrue = _.some(this.props.input, v => v);
 
     if (!this.isColliding(playerX, playerY)) {
       this.setState({
         playerX,
         playerY,
       }, () => {
-        if (this.props.input) window.requestAnimationFrame(this.update);
+        if (hasTrue) window.requestAnimationFrame(this.update);
       });
     } else {
-      if (this.props.input) window.requestAnimationFrame(this.update);
+      if (hasTrue) window.requestAnimationFrame(this.update);
       this.props.onCollide.call(this);
     }
   }
@@ -79,9 +81,8 @@ class Labyrinth extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.input && props.input !== this.props.input) {
-      window.requestAnimationFrame(this.update);
-    }
+    super.componentWillReceiveProps(props);
+    window.requestAnimationFrame(this.update);
   }
 
   getClassNames() {
@@ -118,7 +119,7 @@ class Labyrinth extends skoash.Component {
 Labyrinth.defaultProps = _.defaults({
   img: '',
   map: '',
-  input: null,
+  input: {},
   startX: 0,
   startY: 0,
   speed: 1,

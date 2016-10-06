@@ -12,7 +12,7 @@ export default function (props, ref, key) {
       <Labyrinth
         img="media/labyrinth/map.png"
         map="media/labyrinth/map.png"
-        input={_.get(props, 'data.d-pad.ref')}
+        input={_.get(props, 'data.d-pad', {})}
         startX={100}
         startY={150}
         scale={_.get(props, 'gameState.scale', 1)}
