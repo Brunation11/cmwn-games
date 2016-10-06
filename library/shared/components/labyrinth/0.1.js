@@ -106,6 +106,8 @@ class Labyrinth extends skoash.Component {
           className={IMAGE}
           src={this.props.img}
         />
+        {this.renderContentList('items')}
+        {this.renderContentList('enimies')}
         <div
           ref={PLAYER}
           className={PLAYER}
@@ -124,6 +126,8 @@ Labyrinth.defaultProps = _.defaults({
   startY: 0,
   speed: 1,
   scale: 1,
+  items: [],
+  enimies: [],
   onCollide: _.identity,
 }, skoash.Component.defaultProps);
 
