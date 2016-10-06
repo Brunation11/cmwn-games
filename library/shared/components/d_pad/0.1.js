@@ -94,8 +94,6 @@ class DPad extends skoash.Component {
 }
 
 DPad.defaultProps = _.defaults({
-  img: '',
-  map: '',
   outputTarget: 'd-pad',
 }, skoash.Component.defaultProps);
 
