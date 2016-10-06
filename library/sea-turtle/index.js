@@ -14,6 +14,7 @@ import TrashScreen from './components/trash_screen';
 import InfoKeepGoingScreen from './components/info_keep_going_screen';
 import InfoJellyScreen from './components/info_jelly_screen';
 import JellyfishScreen from './components/jellyfish_screen';
+import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 //import 'shared/js/test-platform-integration';
@@ -32,7 +33,8 @@ class SeaTurtle extends skoash.Game {
       //6: TrashScreen,
       //7: InfoKeepGoingScreen,
       //8: InfoJellyScreen,
-      2: JellyfishScreen,
+      //9: JellyfishScreen,
+      2: FlipScreen,
     };
 
     this.menus = {
@@ -50,10 +52,11 @@ class SeaTurtle extends skoash.Game {
 
   getBackgroundIndex(index) {
     if (index < 2) return 0;
-    if (index > 2 && index < 5) return 1;
+    if (index >= 3 && index < 5) return 1;
     if (index >= 5 && index < 7) return 2;
-    if (index == 7) return 3;
-    if (index == 8) return 4;
+    if (index === 7) return 3;
+    if (index >= 8 && index < 10) return 4;
+    if (index === 10) return 5;
     
     return -1;
   }
@@ -66,6 +69,7 @@ class SeaTurtle extends skoash.Game {
         <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/3.mp3" loop />
         <skoash.Audio ref="bkg-4" type="background" src="media/audio/SO_7.1.mp3" loop />
         <skoash.Audio ref="bkg-5" type="background" src="media/audio/background/3.mp3" loop />
+        <skoash.Audio ref="bkg-6" type="background" src="media/audio/background/3.mp3" loop />
         <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />
         <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/button-next-activated.mp3" />
       </div>
