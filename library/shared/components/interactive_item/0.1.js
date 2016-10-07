@@ -18,11 +18,11 @@ class InteractiveItem extends skoash.Component {
   }
 
   interact(opts = {}) {
-    this.props.onInteract.call(this, opts);
+    this.canInteract() && this.props.onInteract.call(this, opts);
   }
 
   canInteract() {
-    return this.props.canInteract.call(this);
+    return this.state.enabled && this.props.canInteract.call(this);
   }
 
   bootstrap() {

@@ -3,17 +3,16 @@ import DPad from 'shared/components/d_pad/0.1';
 import IteractiveItem from 'shared/components/interactive_item/0.1';
 
 export default function (props, ref, key) {
-  var itemInteract, itemCanInteract, getItemClassNames, enemyInteract, getEnemyClassNames;
+  var itemInteract, getItemClassNames, enemyInteract, getEnemyClassNames;
+
+  const PLAYER = 'player';
 
   itemInteract = function () {
     this.complete();
+    this.disable();
     this.setState({
       caught: true,
     });
-  };
-
-  itemCanInteract = function () {
-    return !this.state.caught;
   };
 
   getItemClassNames = function () {
@@ -52,7 +51,9 @@ export default function (props, ref, key) {
         scale={_.get(props, 'gameState.scale', 1)}
         onReady={function () {
           setInterval(() => {
+            var offset = this[PLAYER].getBoundingClientRect();
             _.each(this.enemies, enemy => {
+              if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
               Math.random() < .5 ? enemy.disable() : enemy.enable();
             });
           }, 2000);
@@ -62,21 +63,18 @@ export default function (props, ref, key) {
             className="item-1"
             checkComplete={false}
             onInteract={itemInteract}
-            canInteract={itemCanInteract}
             getClassNames={getItemClassNames}
           />,
           <IteractiveItem
             className="item-2"
             checkComplete={false}
             onInteract={itemInteract}
-            canInteract={itemCanInteract}
             getClassNames={getItemClassNames}
           />,
           <IteractiveItem
             className="item-3"
             checkComplete={false}
             onInteract={itemInteract}
-            canInteract={itemCanInteract}
             getClassNames={getItemClassNames}
           />,
         ]}
