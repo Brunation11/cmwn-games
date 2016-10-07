@@ -29,7 +29,10 @@ class SkribbleGame extends skoash.Game {
     super.ready();
   }
 
-  getRules() {
+  getRules(opts = {}) {
+    if (typeof opts.respond === 'function') {
+      return opts.respond(this.refs['screen-canvas'].getData());
+    }
     return this.refs['screen-canvas'].getData();
   }
 
@@ -87,7 +90,7 @@ class SkribbleGame extends skoash.Game {
     case 'getMedia':
       return this.getMedia(opts.path);
     case 'getRules':
-      return this.getRules();
+      return this.getRules(opts);
     case 'loadSkribble':
       return this.loadSkribble(opts);
     }
