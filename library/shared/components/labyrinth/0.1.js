@@ -51,7 +51,6 @@ class Labyrinth extends skoash.Component {
     item = this.getCollidingObject(this.items, playerX, playerY);
 
     if (this.isColliding(playerX, playerY)) {
-      if (hasTrue) window.requestAnimationFrame(this.update);
       this.props.onCollide.call(this);
     } else if (enemy) {
       this.props.onCollideEnemy.call(this, enemy);
