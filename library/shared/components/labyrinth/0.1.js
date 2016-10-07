@@ -26,10 +26,20 @@ class Labyrinth extends skoash.Component {
       playerX: this.props.startX,
       playerY: this.props.startY,
     });
+
+    this.items = [];
+    this.enemies = [];
+    _.each(this.refs, (ref, key) => {
+      if (!key.indexOf('items-')) {
+        this.items.push(ref);
+      } else if (!key.indexOf('enemies-')) {
+        this.enemies.push(ref);
+      }
+    });
   }
 
   update() {
-    var hasTrue, playerX = this.state.playerX, playerY = this.state.playerY;
+    var hasTrue, enemy, item, playerX = this.state.playerX, playerY = this.state.playerY;
 
     if (this.props.input.up) playerY -= this.props.speed;
     if (this.props.input.down) playerY += this.props.speed;
@@ -37,15 +47,17 @@ class Labyrinth extends skoash.Component {
     if (this.props.input.right) playerX += this.props.speed;
 
     hasTrue = _.some(this.props.input, v => v);
+    enemy = this.getCollidingObject(this.enemies, playerX, playerY);
+    item = this.getCollidingObject(this.items, playerX, playerY);
 
     if (this.isColliding(playerX, playerY)) {
       if (hasTrue) window.requestAnimationFrame(this.update);
       this.props.onCollide.call(this);
-    } else if (this.isCollidingEnemy(playerX, playerY)) {
-      // do something
+    } else if (enemy) {
+      this.props.onCollideEnemy.call(this, enemy);
     } else {
-      if (this.isCollidingItem(playerX, playerY)) {
-        // do something
+      if (item) {
+        this.props.onCollideItem.call(this, item);
       }
       this.setState({
         playerX,
@@ -78,12 +90,32 @@ class Labyrinth extends skoash.Component {
     );
   }
 
-  isCollidingItem() {
-    return false;
-  }
+  getCollidingObject(objects, playerX, playerY) {
+    var item, offset;
+    offset = this[PLAYER].getBoundingClientRect();
 
-  isCollidingEnemy() {
-    return false;
+    _.some(objects, i => {
+      var itemOffset, intersects = false;
+      itemOffset = i.DOM.getBoundingClientRect();
+      intersects = skoash.util.doIntersect([
+        {x: playerX, y: playerY},
+        {x: playerX + offset.width, y: playerY},
+        {x: playerX + offset.width, y: playerY + offset.height},
+        {x: playerX, y: playerY + offset.height},
+      ], [
+        {x: itemOffset.left / this.props.scale, y: itemOffset.top / this.props.scale},
+        {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: itemOffset.top / this.props.scale},
+        {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
+        {x: itemOffset.left / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
+      ]);
+      if (intersects) {
+        item = i;
+        return true;
+      }
+      return false;
+    });
+
+    return item;
   }
 
   getPlayerStyle() {
@@ -142,6 +174,12 @@ Labyrinth.defaultProps = _.defaults({
   items: [],
   enemies: [],
   onCollide: _.identity,
+  onCollideEnemy: function (enemy) {
+    enemy.interact();
+  },
+  onCollideItem: function (item) {
+    item.interact();
+  },
 }, skoash.Component.defaultProps);
 
 export default Labyrinth;
