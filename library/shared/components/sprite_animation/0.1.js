@@ -33,7 +33,8 @@ class SpriteAnimation extends skoash.Component {
   }
 
   getStyle() {
-    var animation = `${this.uniqueID}${this.state.animate ? '' : '-back'} ${this.props.duration}s steps(${this.props.frames - 1}) forwards`;
+    var animation = `${this.uniqueID}${this.state.animate ? '' : '-back'} ` +
+      `${this.props.duration}s steps(${this.props.frames - 1}) forwards`;
 
     return {
       backgroundImage: `url(${this.props.src})`,
