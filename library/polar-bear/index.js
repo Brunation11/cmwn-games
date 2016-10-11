@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -28,8 +26,6 @@ import ExperimentHowWarmerScreen from './components/experiment_how_warmer_screen
 import ExperimentDiscoverScreen from './components/experiment_discover_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
-
-// import 'shared/js/test-platform-integration';
 
 class PolarBear extends skoash.Game {
   constructor() {
@@ -124,5 +120,3 @@ class PolarBear extends skoash.Game {
 }
 
 skoash.start(PolarBear, config.id);
-
-import 'shared/js/google-analytics';

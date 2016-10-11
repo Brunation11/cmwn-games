@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
@@ -236,8 +235,10 @@ class Draggable extends skoash.Component {
   }
 
   setZoom() {
-    this.setState({
-      zoom: skoash.trigger('getState').scale,
+    skoash.trigger('getState').then(state => {
+      this.setState({
+        zoom: state.scale,
+      });
     });
   }
 
@@ -249,6 +250,7 @@ class Draggable extends skoash.Component {
 
     return {
       transform: `translateX(${x}px) translateY(${y}px)`,
+      WebkitTransform: `translateX(${x}px) translateY(${y}px)`,
     };
   }
 

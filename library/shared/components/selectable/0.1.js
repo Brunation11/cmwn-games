@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
@@ -73,7 +72,7 @@ class Selectable extends skoash.Component {
       classes,
     });
 
-    self.callProp('selectRespond', dataRef);
+    self.props.selectRespond.call(this, dataRef);
 
     if (self.props.chooseOne) {
       self.requireForComplete = [dataRef];

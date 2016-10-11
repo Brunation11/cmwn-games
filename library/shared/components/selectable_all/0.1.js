@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
@@ -77,7 +76,7 @@ class SelectableAll extends Selectable {
   count() {
     var selected = this.state.selected;
     this.setState({selected: selected + 1});
- 
+
     if (this.state.selected === this.props.selectNum) {
       this.complete();
     }

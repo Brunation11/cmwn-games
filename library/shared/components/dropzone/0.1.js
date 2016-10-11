@@ -14,7 +14,7 @@ class Dropzone extends skoash.Component {
 
     this.state = {
       dropped: [],
-    }
+    };
   }
 
   bootstrap() {
@@ -101,7 +101,7 @@ class Dropzone extends skoash.Component {
   dropRespond(message, corners) {
     var self = this, isInBounds;
 
-    isInBounds = this.props.dropzones.some((dropzone, key) => {
+    isInBounds = self.props.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
         self.inBounds(message, key);

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
@@ -18,10 +16,10 @@ export default function (props, ref, key) {
           ref="selectable-card"
           className="flip-card-component"
           list={[
-            <li correct={true}>
+            <skoash.Component type="li" correct={true} message="conservation">
               <div className="side b center inline"></div>
               <div className="side a center inline"></div>
-            </li>
+            </skoash.Component>
           ]}
           selectClass="HIGHLIGHTED"
           dataTarget="selectable"
@@ -30,7 +28,7 @@ export default function (props, ref, key) {
       <Reveal
         ref="reveal"
         hide={true}
-        openReveal={_.get(props, 'data.selectable.target')}
+        openReveal={_.get(props, 'data.selectable.target.props.message')}
         assets={[
           <skoash.Audio ref="conservation" type="voiceOver" src="media/S_13/VO_13.2.mp3" />
         ]}

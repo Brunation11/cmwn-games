@@ -77,11 +77,11 @@ class Reveal extends skoash.Component {
       currentlyOpen,
     });
 
-    if (this.audio['close-sound']) {
+    if (!opts.silent && this.audio['close-sound']) {
       this.audio['close-sound'].play();
     }
 
-    this.callProp('onClose');
+    this.props.onClose.call(this);
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -95,12 +95,14 @@ class Reveal extends skoash.Component {
     } else if (this.props.start && typeof this.props.start === 'function') {
       this.props.start.call(this);
     } else {
-      this.close();
+      this.close({silent: true});
     }
   }
 
   playAudio(message) {
     var messages, self = this;
+
+    if (!message) return;
 
     if ('' + parseInt(message, 10) === message) {
       message = 'asset-' + message;
@@ -147,7 +149,7 @@ class Reveal extends skoash.Component {
   }
 
   renderList() {
-    var list = this.props.list || this.list;
+    var list = this.props.list;
 
     return list.map((li, key) => {
       var dataRef = li.props['data-ref'] || key;
@@ -166,6 +168,8 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
     }
@@ -239,6 +243,8 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  onOpen: _.identity,
+  onClose: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

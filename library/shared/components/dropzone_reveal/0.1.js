@@ -64,9 +64,9 @@ class DropzoneReveal extends skoash.Component {
         draggablesLeft={this.props.dropzoneDraggablesLeft}
         draggablesRight={this.props.dropzoneDraggablesRight}
         assets={this.props.dropzoneAssets}
-        correctRespond={this.dropRespond.bind(this)}
-        incorrectRespond={this.dropRespond.bind(this)}
         onComplete={this.props.onDropzoneComplete}
+        correctRespond={this.correctRespond.bind(this)}
+        incorrectRespond={this.incorrectRespond.bind(this)}
       />
     );
   }

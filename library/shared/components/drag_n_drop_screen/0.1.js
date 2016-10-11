@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import DropzoneReveal from 'shared/components/dropzone_reveal/0.2';
 
 class DragNDropScreen extends skoash.Screen {
@@ -101,9 +99,9 @@ class DragNDropScreen extends skoash.Screen {
   }
 }
 
-DragNDropScreen.defaultProps = {
+DragNDropScreen.defaultProps = _.defaults({
   checkComplete: false,
   checkReady: true,
-};
+}, skoash.Screen.defaultProps);
 
 export default DragNDropScreen;
