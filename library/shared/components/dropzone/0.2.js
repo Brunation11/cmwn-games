@@ -46,11 +46,11 @@ class Dropzone extends skoash.Component {
         break;
       }
 
-      left += el.offsetLeft || 0 ;
+      left += el.offsetLeft || 0;
       top += el.offsetTop || 0;
       el = el.offsetParent;
     }
-    console.log('in get corners', this);
+
     for (var i = 0; i < 4; i++) {
       corners.push({
         x: left + width * (i === 1 || i === 2 ? 1 : 0),
@@ -143,14 +143,10 @@ class Dropzone extends skoash.Component {
   }
 
   dropRespond(draggable, corners) {
-    console.log('in droprespond');
-    console.log('draggable', draggable.state.corners);
     var self = this, isInBounds;
     isInBounds = self.dropzones.some((dropzone, key) => {
       var dropzoneRef = self.refs[`dropzone-${key}`];
-      console.log('dropzone', dropzoneRef.corners);
       if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
-        console.log('do intersect');
         self.inBounds(draggable, key);
         return true;
       }

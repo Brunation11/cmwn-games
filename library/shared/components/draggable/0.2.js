@@ -205,8 +205,8 @@ class Draggable extends skoash.Component {
       el = el.offsetParent;
     }
 
-    left += ((this.state.endX - this.state.startX));
-    top += ((this.state.endY - this.state.startY));
+    left += ((this.state.endX - this.state.startX) / this.state.zoom);
+    top += ((this.state.endY - this.state.startY) / this.state.zoom);
 
     for (var i = 0; i < 4; i++) {
       corners.push({
