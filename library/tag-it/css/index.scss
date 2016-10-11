@@ -38,8 +38,6 @@ body > div > div {
   height: 100%;
   margin: 0;
   font-size: 20px;
-  background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
 
   .background {
     opacity: 0;
@@ -51,17 +49,80 @@ body > div > div {
     height: 100%;
     background-size: cover;
     background-position: center center;
-
-    @for $i from 2 through 6 {
-      &.BKG-#{$i} {
-        background-image: url(../media/_images/_BKG/BKG_#{$i}.png);
-      }
-    }
+    background-repeat: no-repeat;
   }
 
-  @for $i from 2 through 6 {
-    &.BKG-#{$i} > div > .BKG-#{$i} {
-      opacity: 1;
+  > div > .background {
+    max-width: 960px;
+    max-height: 540px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .background.default {
+    opacity: 1;
+    background-image: url(../media/_images/_BKG/BKG_1.png);
+  }
+
+  .background.bkg_2 {
+    background-image: url(../media/_images/_BKG/BKG_2.png);
+  }
+
+  .background.bkg_3 {
+    background-image: url(../media/_images/_BKG/BKG_3.png);
+  }
+
+  .background.bkg_4 {
+    background-image: url(../media/_images/_BKG/BKG_4.png);
+  }
+
+  .background.bkg_5 {
+    background-image: url(../media/_images/_BKG/BKG_5.png);
+  }
+
+  .background.bkg_6 {
+    background-image: url(../media/_images/_BKG/BKG_6.png);
+  }
+
+  &.SCREEN-2:not(.MENU-quit) > .background.bkg_2,
+  &.SCREEN-3:not(.MENU-quit) > .background.bkg_2,
+  &.SCREEN-4:not(.MENU-quit) > .background.bkg_3,
+  &.SCREEN-5:not(.MENU-quit) > .background.bkg_3,
+  &.SCREEN-6:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-7:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-8:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-9:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-10:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-11:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-12:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-13:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-14:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-15:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-16:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-17:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-18:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-19:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-20:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-21:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-22:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-23:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-24:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-25:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-26:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-27:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-28:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-29:not(.MENU-quit) > .background.bkg_6,
+  &.SCREEN-30:not(.MENU-quit) > .background.bkg_6,
+  &.SCREEN-31:not(.MENU-quit) > .background.bkg_6 {
+    opacity: 1;
+  }
+
+
+// 037297120  18005318877
+
+  &.MENU-quit {
+    .screen:not(#quit) {
+      opacity: 0;
     }
   }
 }
@@ -790,6 +851,7 @@ img.inline {
     width: 607px;
     height: 540px;
     padding-left: 70px;
+    z-index: -1;
 
     div {
       background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
