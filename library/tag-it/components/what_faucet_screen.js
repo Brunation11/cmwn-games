@@ -1,4 +1,5 @@
-import SelectableReveal from 'shared/components/selectable_reveal/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
+import Selectable from 'shared/components/selectable/0.1';
 
 export default function (props, ref, key) {
   return (
@@ -13,37 +14,56 @@ export default function (props, ref, key) {
          ref="audio-sequence"
          checkComplete={true}
       >
-          <skoash.Audio ref="what-faucet" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_WhatFaucet.mp3" />
-          <skoash.Audio ref="kitchen-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="kitchen" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Kitchen.mp3" />
-          <skoash.Audio ref="shower-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="shower" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Shower.mp3" />
-          <skoash.Audio ref="bathroom-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="bathroom" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Bathroom.mp3" />
-          <skoash.Audio ref="bathtub-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="bathtub" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Bathtub.mp3" />
-          <skoash.Audio ref="classroom-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="classroom" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Classroom.mp3" />
-          <skoash.Audio ref="outdoor-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
-          <skoash.Audio ref="outdoor" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Outdoor.mp3" />
+        <skoash.Audio ref="what-faucet" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_WhatFaucet.mp3" />
+        <skoash.Audio ref="kitchen-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="kitchen" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Kitchen.mp3" />
+        <skoash.Audio ref="shower-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="shower" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Shower.mp3" />
+        <skoash.Audio ref="bathroom-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="bathroom" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Bathroom.mp3" />
+        <skoash.Audio ref="bathtub-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="bathtub" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Bathtub.mp3" />
+        <skoash.Audio ref="classroom-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="classroom" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Classroom.mp3" />
+        <skoash.Audio ref="outdoor-sfx" type="sfx" src="media/_audio/_Reveals/TI_RV_3.mp3" />
+        <skoash.Audio ref="outdoor" type="voiceOver" src="media/_audio/S_WhatFaucet/VO_Outdoor.mp3" />
       </skoash.MediaSequence>
-      <SelectableReveal
-         ref="selectable-reveal"
-         revealCompleteOnOpen
-         allCorrect
-         chooseOne
-         assets={[
-           <skoash.Audio ref="correct" type="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" />
-         ]}
-         selectableList={[
-           <skoash.ListItem className="kitchen animated" data-ref="kitchen" correct />,
-           <skoash.ListItem className="shower animated" data-ref="shower" correct />,
-           <skoash.ListItem className="bathroom animated" data-ref="bathroom" correct />,
-           <skoash.ListItem className="bathtub animated" data-ref="bathtub" correct />,
-           <skoash.ListItem className="classroom animated" data-ref="classroom" correct />,
-           <skoash.ListItem className="outdoor animated" data-ref="outdoor" correct />,
-         ]}
-       />
+
+      <MediaCollection
+        play={_.get(props, 'data.selection.target', null)}
+        onPlay={function () {
+          this.media.correct.play();
+
+          this.updateGameState({
+            path: 'selection',
+            data: {
+              target: null
+            }
+          });
+        }}
+      >
+        <skoash.Audio ref="correct" type="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" />
+      </MediaCollection>
+
+      <Selectable
+        chooseOne
+        selectRespond={function (target) {
+          this.updateGameState({
+            path: 'selection',
+            data: {
+              target
+            }
+          });
+        }}
+        list={[
+          <skoash.ListItem className="kitchen animated" data-ref="kitchen" correct />,
+          <skoash.ListItem className="shower animated" data-ref="shower" correct />,
+          <skoash.ListItem className="bathroom animated" data-ref="bathroom" correct />,
+          <skoash.ListItem className="bathtub animated" data-ref="bathtub" correct />,
+          <skoash.ListItem className="classroom animated" data-ref="classroom" correct />,
+          <skoash.ListItem className="outdoor animated" data-ref="outdoor" correct />
+        ]}
+      />
     </skoash.Screen>
   );
 }
