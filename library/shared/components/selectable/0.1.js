@@ -72,7 +72,7 @@ class Selectable extends skoash.Component {
       classes,
     });
 
-    self.props.selectRespond.call(this, dataRef);
+    self.callProp('selectRespond', dataRef);
 
     if (self.props.chooseOne) {
       self.requireForComplete = [dataRef];

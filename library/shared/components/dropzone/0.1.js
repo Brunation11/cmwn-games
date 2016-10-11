@@ -34,6 +34,8 @@ class Dropzone extends skoash.Component {
           self.refs[item].complete();
       });
     }
+
+    this.answerRefs = answerRefs;
   }
 
   incomplete() {
@@ -42,6 +44,13 @@ class Dropzone extends skoash.Component {
     });
 
     super.incomplete();
+
+    if (this.answerRefs.length > 0) {
+      this.requireForComplete.forEach(item => {
+        if (this.answerRefs.indexOf(item) === -1)
+          this.refs[item].complete();
+      });
+    }
   }
 
   prepareDropzones() {
@@ -185,13 +194,14 @@ class Dropzone extends skoash.Component {
         className={this.getClass()}
         ref={`dropzone-${key}`}
         key={key}
+        checkComplete={false}
       />
     );
   }
 
   renderDraggables(draggables) {
     return this.props[draggables].map((item, key) => {
-      var message = item.message || key;
+      var message = item.props.message || key;
       return (
         <li key={key} className={this.getDraggableClass(message)}>
           <Draggable
@@ -233,7 +243,7 @@ class Dropzone extends skoash.Component {
   render() {
     var draggablesLeft, draggablesRight, left;
 
-    left = this.props.draggables ? 'draggables' : 'draggablesLeft';
+    left = this.props.draggablesLeft ? 'draggablesLeft' : 'draggables';
     if (this.props[left]) {
       draggablesLeft = (
         <ul>

@@ -62,7 +62,7 @@ class Reveal extends skoash.Component {
     self.callProp('onOpen', message);
   }
 
-  close() {
+  close(opts = {}) {
     var prevMessage, currentlyOpen, openReveal, open;
 
     prevMessage = this.state.openReveal;
@@ -102,31 +102,21 @@ class Reveal extends skoash.Component {
   playAudio(message) {
     var messages, self = this;
 
-    if (!message) return;
-
-    if ('' + parseInt(message, 10) === message) {
-      message = 'asset-' + message;
-    }
+    message += '';
 
     if (self.audio['open-sound']) {
       self.audio['open-sound'].play();
     }
 
-    if (typeof message === 'string') {
-      messages = message.split(' ');
-      messages.map(audio => {
-        audio = 'asset-' + audio;
-        if (self.audio[audio]) {
-          self.audio[audio].play();
-        } else if (self.media[audio] && typeof self.media[audio].play === 'function') {
-          self.media[audio].play();
-        }
-      });
-    } else {
-      if (self.audio.voiceOver[message]) {
-        self.audio.voiceOver[message].play();
+    messages = message.split(' ');
+    messages.map(audio => {
+      audio = 'asset-' + audio;
+      if (self.audio[audio]) {
+        self.audio[audio].play();
+      } else if (self.media[audio] && typeof self.media[audio].play === 'function') {
+        self.media[audio].play();
       }
-    }
+    });
   }
 
   renderAssets() {

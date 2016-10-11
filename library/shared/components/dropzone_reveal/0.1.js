@@ -16,11 +16,11 @@ class DropzoneReveal extends skoash.Component {
     }
   }
 
-  incorrectRespond(message, dropzoneKey) {
+  incorrectRespond(message) {
     this.dropRespond(message);
   }
 
-  dropRespond(message, incorrect) {
+  dropRespond(message) {
     if (typeof this.refs.reveal.open === 'function') {
       this.refs.reveal.open(message);
     }
@@ -64,9 +64,9 @@ class DropzoneReveal extends skoash.Component {
         draggablesLeft={this.props.dropzoneDraggablesLeft}
         draggablesRight={this.props.dropzoneDraggablesRight}
         assets={this.props.dropzoneAssets}
-        onComplete={this.props.onDropzoneComplete}
         correctRespond={this.correctRespond.bind(this)}
         incorrectRespond={this.incorrectRespond.bind(this)}
+        onComplete={this.props.onDropzoneComplete}
       />
     );
   }
