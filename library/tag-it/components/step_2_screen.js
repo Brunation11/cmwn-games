@@ -1,15 +1,14 @@
+import ClasssNames from 'classnames';
+
 export default function (props, ref, key) {
-  var className = null;
-  var state = skoash.trigger('getState');
-  if (state.currentScreenIndex >= 8 && state.currentScreenIndex <= 10) {
-    className = 'STAY';
-  }
   return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
-      className={className}
+      className={ClasssNames({
+        STAY: props.gameState.currentScreenIndex >= 8 && props.gameState.currentScreenIndex <= 10
+      })}
       id="step-2"
     >
       <skoash.MediaSequence
