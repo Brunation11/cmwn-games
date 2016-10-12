@@ -55,7 +55,7 @@ class Selectable extends skoash.Component {
   }
 
   selectHelper(e, classes) {
-    var ref, dataRef, target, id, isCorrect, self = this;
+    var ref, dataRef, target, isCorrect, self = this;
 
     target = e.target.closest('LI');
 
@@ -66,10 +66,12 @@ class Selectable extends skoash.Component {
 
     isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
 
-    if (self.props.allowDeselect && classes[dataRef]) {
-      delete classes[dataRef];
-    } else if (isCorrect) {
-      classes[dataRef] = self.state.selectClass;
+    if (isCorrect) {
+      if (self.props.allowDeselect && self.state.classes[dataRef]) {
+        delete classes[dataRef];
+      } else {
+        classes[dataRef] = self.state.selectClass;
+      }
     }
 
     self.setState({
@@ -91,23 +93,19 @@ class Selectable extends skoash.Component {
       });
     }
 
-    if (self.props.completeListOnClick) {
-      self.requireForComplete.map(key => {
-        if (key === id && self.refs[id]) {
-          self.refs[id].complete();
-        }
-      });
-    }
-
     self.requireForComplete.map(key => {
       if (key === dataRef && self.refs[key]) {
-        self.refs[key].complete();
+        if (!_.isEmpty(classes)) {
+          self.refs[key].complete();
+        } else {
+          self.refs[key].incomplete();
+        }
       }
     });
   }
 
   select(e) {
-    var classes = [];
+    var classes = {};
     this.selectHelper(e, classes);
   }
 
