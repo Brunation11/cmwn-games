@@ -11,6 +11,8 @@ class Selectable extends skoash.Component {
   }
 
   start() {
+    super.start();
+
     var selectClass, selectFunction, classes = {};
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
@@ -25,12 +27,6 @@ class Selectable extends skoash.Component {
       classes,
       selectFunction,
       selectClass,
-    });
-
-    this.bootstrap();
-
-    Object.keys(this.refs).map(key => {
-      if (typeof this.refs[key].start === 'function') this.refs[key].start();
     });
   }
 
@@ -78,7 +74,7 @@ class Selectable extends skoash.Component {
       classes,
     });
 
-    self.callProp('selectRespond', dataRef);
+    self.props.selectRespond.call(this, dataRef);
 
     if (self.props.chooseOne) {
       self.requireForComplete = [dataRef];
