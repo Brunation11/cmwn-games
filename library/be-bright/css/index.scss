@@ -694,8 +694,15 @@ p {
     left: 300px;
     padding-top: 20px;
     font-size: 68px;
-    line-height: 64px;
+    line-height: 0.955;
     font-weight: bold;
+    color: rgb(244, 234, 43);
+    // text-shadow: -5px 5px #8ebbcd;
+    text-shadow:
+      -4px -4px 0 #105e31,
+      4px -4px 0 #105e31,
+      -4px 4px 0 #105e31,
+      4px 4px 0 #105e31;
 
     div {
       $margin-lefts: 0 40 80 20;
