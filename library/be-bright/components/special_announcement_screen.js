@@ -7,7 +7,7 @@ export default function (props, ref, key) {
       id="special-announcement-screen"
     >
       <skoash.Image className="hidden" src="media/_images/frame.specialannouncement.png" />
-      <skoash.Component className="frame">
+      <skoash.Component className="labyrinth-frame">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <div>Special</div>

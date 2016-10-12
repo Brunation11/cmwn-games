@@ -7,6 +7,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="switches"
+      className="reveal-screen"
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_5/VO_5.1.mp3" />
       <skoash.Image ref="title" className="title animated" src="media/S_5/img_5.1.png" />
