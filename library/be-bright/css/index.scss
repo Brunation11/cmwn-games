@@ -690,29 +690,55 @@ p {
   }
 
   .copy {
+    $stroke: 4;
+    $margin-lefts: 0 40 80 20;
+    $yellow: rgb(244, 234, 43);
+    $green: #105e31;
+
     position: absolute;
     left: 300px;
     padding-top: 20px;
     font-size: 68px;
     line-height: 0.955;
     font-weight: bold;
-    color: rgb(244, 234, 43);
-    // text-shadow: -5px 5px #8ebbcd;
-    text-shadow:
-      -4px -4px 0 #105e31,
-      4px -4px 0 #105e31,
-      -4px 4px 0 #105e31,
-      4px 4px 0 #105e31;
+    color: $yellow;
 
     div {
-      $margin-lefts: 0 40 80 20;
+      position: relative;
 
       @for $i from 1 through 4 {
-        &:nth-of-type(#{$i}) {
+        &:nth-of-type(#{$i * 2}) {
+          margin-left: #{nth($margin-lefts, $i) - 10}px;
+        }
+
+        &:nth-of-type(#{$i * 2 - 1}) {
           margin-left: #{nth($margin-lefts, $i)}px;
         }
       }
 
+      &:nth-of-type(2n-1) {
+        z-index: 1;
+        text-shadow:
+          -#{$stroke}px -#{$stroke}px 0 $green,
+          #{$stroke}px -#{$stroke}px 0 $green,
+          -#{$stroke}px #{$stroke}px 0 $green,
+          #{$stroke}px #{$stroke}px 0 $green;
+      }
+
+      &:nth-of-type(2n) {
+        margin-top: -56px;
+        color: #8ebbcd;
+        text-shadow: none;
+      }
+
+      &:nth-of-type(2n+5) {
+        color: $green;
+        text-shadow:
+          -#{$stroke}px -#{$stroke}px 0 $yellow,
+          #{$stroke}px -#{$stroke}px 0 $yellow,
+          -#{$stroke}px #{$stroke}px 0 $yellow,
+          #{$stroke}px #{$stroke}px 0 $yellow;
+      }
     }
   }
 

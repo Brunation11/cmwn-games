@@ -11,8 +11,12 @@ export default function (props, ref, key) {
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <div>Special</div>
+          <div>Special</div>
+          <div>Announcement!</div>
           <div>Announcement!</div>
           <div>Calling all</div>
+          <div>Calling all</div>
+          <div>Eco-Heroes!!</div>
           <div>Eco-Heroes!!</div>
         </div>
       </skoash.Component>
