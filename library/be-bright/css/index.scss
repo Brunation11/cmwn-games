@@ -1,43 +1,5 @@
-@keyframes flicker {
-  0% {opacity:1;}
-  10% {opacity:1;}
-  12% {opacity:0;}
-  14% {opacity:1;}
-  16% {opacity:0;}
-  18% {opacity:1;}
-  44% {opacity:1;}
-  46% {opacity:0;}
-  48% {opacity:1;}
-  50% {opacity:0;}
-  52% {opacity:1;}
-  82% {opacity:1;}
-  84% {opacity:0;}
-  86% {opacity:1;}
-  88% {opacity:0;}
-  90% {opacity:1;}
-  100% {opacity:1;}
-}
-@keyframes stamp {
-  0% {
-    opacity: 0;
-    transform: scale(4);
-  }
-  10% {
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1);
-  }
-  65% {
-    transform: scale(1.1);
-  }
-  75% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(1.1);
-  }
-}
+@import 'keyframes';
+@import 'mixins';
 
 html, body, body > div, body > div > div {
   margin: 0;
@@ -718,11 +680,7 @@ p {
 
       &:nth-of-type(2n-1) {
         z-index: 1;
-        text-shadow:
-          -#{$stroke}px -#{$stroke}px 0 $green,
-          #{$stroke}px -#{$stroke}px 0 $green,
-          -#{$stroke}px #{$stroke}px 0 $green,
-          #{$stroke}px #{$stroke}px 0 $green;
+        @include text-stroke($stroke, $green);
       }
 
       &:nth-of-type(2n) {
@@ -733,11 +691,7 @@ p {
 
       &:nth-of-type(2n+5) {
         color: $green;
-        text-shadow:
-          -#{$stroke}px -#{$stroke}px 0 $yellow,
-          #{$stroke}px -#{$stroke}px 0 $yellow,
-          -#{$stroke}px #{$stroke}px 0 $yellow,
-          #{$stroke}px #{$stroke}px 0 $yellow;
+        @include text-stroke($stroke, $yellow);
       }
     }
   }
