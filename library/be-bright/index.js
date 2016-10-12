@@ -35,6 +35,8 @@ var BeBright = (
     }}
     loader={<Loader />}
     assets={[
+      <skoash.Image className="background bkg-1" src="media/_BKG/BKG_1.png" />,
+      <skoash.Image className="background bkg-2" src="media/_images/bkg02.png" />,
       <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
       <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
       <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />,
