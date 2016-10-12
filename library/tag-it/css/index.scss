@@ -551,6 +551,7 @@ img.inline {
     left: 180px;
     bottom: 12.5%;
     width: 800px;
+    opacity: 0;
   }
 
   &.OPEN {
@@ -558,9 +559,8 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
 
-    .start {
+    .start.animated {
       animation-name: fadeInRightBig;
-      animation-delay: 14s;
     }
   }
 }
@@ -595,7 +595,6 @@ img.inline {
 
   &.OPEN {
     li {
-      animation-name: fadeInRight;
       position: absolute;
       height: 100px;
       background-image: url(../media/_images/_Buttons/BU_1.png);
@@ -603,6 +602,11 @@ img.inline {
       background-repeat: no-repeat;
       background-position: -1500px 0px;
       cursor: pointer;
+      opacity: 0;
+
+      &.animated {
+        animation-name: fadeInRight;
+      }
 
       &:hover,
       &.SELECTED {
@@ -625,7 +629,6 @@ img.inline {
   }
 
   .kitchen {
-    animation-delay: 4s;
     top: 30%;
   }
 
@@ -634,7 +637,6 @@ img.inline {
   }
 
   .shower, {
-    animation-delay: 7s;
     top: 50%;
   }
 
@@ -643,7 +645,6 @@ img.inline {
   }
 
   .bathroom {
-    animation-delay: 9.5s;
     top: 70%;
   }
 
@@ -652,7 +653,6 @@ img.inline {
   }
 
   .bathtub {
-    animation-delay: 13.5s;
     top: 30%;
     left: 50%;
   }
@@ -662,7 +662,6 @@ img.inline {
   }
 
   .classroom {
-    animation-delay: 17s;
     top: 50%;
     left: 50%;
   }
@@ -672,7 +671,6 @@ img.inline {
   }
 
   .outdoor {
-    animation-delay: 19.5s;
     top: 70%;
     left: 50%;
   }
@@ -732,6 +730,7 @@ img.inline {
           background-position: #{-1000*$i+px} 0px;
           width: nth($widths,$i)+px;
           height: nth($heights,$i)+px;
+          opacity: 0;
         }
       }
     }
@@ -747,7 +746,7 @@ img.inline {
   @for $i from 1 through 4 {
     $item: nth($items,$i);
     &.OPEN, &.STAY {
-      .#{$item} {
+      .#{$item}.animated {
         animation-name: fadeIn#{nth($directions,$i)}Big;
       }
     }
@@ -755,18 +754,6 @@ img.inline {
 
   .step {
     animation-delay: 0.1s;
-  }
-
-  .container-1 {
-    animation-delay: 8s;
-  }
-
-  .container-2 {
-    animation-delay: 8.5s;
-  }
-
-  .container-3 {
-    animation-delay: 9s;
   }
 
   &.LEAVE {
@@ -874,7 +861,6 @@ img.inline {
 
   li {
     opacity: 0;
-    transition: opacity .5s;
 
     span {
       position: relative;
@@ -890,36 +876,12 @@ img.inline {
 
   @for $i from 1 through 4 {
     $item: nth($items,$i);
-    &.OPEN,
-    &.STAY {
-      .#{$item} {
+    &.OPEN, &.STAY {
+      .#{$item}.animated {
         opacity: 1;
         animation-name: slideInRight;
       }
     }
-
-    &.STAY {
-      .#{$item} {
-        transition: opacity 0s;
-        animation-delay: 0s;
-      }
-    }
-  }
-
-  .lids {
-    animation-delay: 1.5s;
-  }
-
-  .scissors {
-    animation-delay: 2s;
-  }
-
-  .markers {
-      animation-delay: 3.5s;
-  }
-
-  .polish {
-    animation-delay: 4.5s;
   }
 
   &.WHAT-NEED {
@@ -1410,7 +1372,6 @@ img.inline {
 
   li {
     opacity: 0;
-    transition: opacity .5s;
   }
 
   span {
@@ -1423,31 +1384,11 @@ img.inline {
   @for $i from 1 through 5 {
     $item: nth($items,$i);
     &.OPEN {
-        .#{$item} {
-            opacity: 1;
-            animation-name: slideInRight;
-        }
+      .#{$item}.animated {
+        opacity: 1;
+        animation-name: slideInRight;
+      }
     }
-  }
-
-  .use-your {
-    animation-delay: 2.5s;
-  }
-
-  .try-glow {
-    animation-delay: 4s;
-  }
-
-  .use-multiple {
-    animation-delay: 6s;
-  }
-
-  .create {
-    animation-delay: 8s;
-  }
-
-  .personalize {
-    animation-delay: 11.5s;
   }
 }
 
