@@ -1,12 +1,16 @@
-import ClasssNames from 'classnames';
+import ClassNames from 'classnames';
 
 export default function (props, ref, key) {
+  function getClassNames(ref2) {
+    return ClassNames(ref2, {animated: _.get(props, `data[${ref2}].playing`)});
+  }
+
   return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
-      className={ClasssNames({
+      className={ClassNames({
         STAY: props.gameState.currentScreenIndex === 12
       })}
       id="what-need"
@@ -15,21 +19,48 @@ export default function (props, ref, key) {
          ref="vo"
          checkComplete={true}
       >
-          <skoash.Audio ref="what-need" type="voiceOver" src="media/_audio/S_WhatNeed/VO_WhatNeed.mp3" />
-          <skoash.Audio ref="lids" type="voiceOver" src="media/_audio/S_WhatNeed/VO_Lids.mp3" />
-          <skoash.Audio ref="scissors" type="voiceOver" src="media/_audio/S_WhatNeed/VO_Scissors.mp3" />
-          <skoash.Audio ref="markers" type="voiceOver" src="media/_audio/S_WhatNeed/VO_Markers.mp3" />
-          <skoash.Audio ref="polish" type="voiceOver" src="media/_audio/S_WhatNeed/VO_Polish.mp3" />
+          <skoash.Audio
+            type="voiceOver"
+            src="media/_audio/S_WhatNeed/VO_WhatNeed.mp3"
+          />
+          <skoash.Audio
+            playTarget="lids"
+            type="voiceOver"
+            src="media/_audio/S_WhatNeed/VO_Lids.mp3"
+          />
+          <skoash.Audio
+            playTarget="scissors"
+            type="voiceOver"
+            src="media/_audio/S_WhatNeed/VO_Scissors.mp3"
+          />
+          <skoash.Audio
+            playTarget="markers"
+            type="voiceOver"
+            src="media/_audio/S_WhatNeed/VO_Markers.mp3"
+          />
+          <skoash.Audio
+            playTarget="polish"
+            type="voiceOver"
+            src="media/_audio/S_WhatNeed/VO_Polish.mp3"
+          />
       </skoash.MediaSequence>
       <div className="left animated" />
       <div className="right">
           <div className="animated" />
       </div>
       <ul>
-          <li className="lids animated"><span>The plastic lids</span></li>
-          <li className="scissors animated"><span>Utility scissors</span></li>
-          <li className="markers animated"><span>Markers</span></li>
-          <li className="polish animated"><span>Colored nail polish<br />&nbsp; (or) acrylic paint</span></li>
+          <li className={getClassNames('lids')}>
+            <span>The plastic lids</span>
+          </li>
+          <li className={getClassNames('scissors')}>
+            <span>Utility scissors</span>
+          </li>
+          <li className={getClassNames('markers')}>
+            <span>Markers</span>
+          </li>
+          <li className={getClassNames('polish')}>
+            <span>Colored nail polish<br />&nbsp; (or) acrylic paint</span>
+          </li>
       </ul>
     </skoash.Screen>
   );
