@@ -28,11 +28,10 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-class Printmaster extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var Printmaster = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: InfoTinyPatternsScreen,
@@ -56,57 +55,41 @@ class Printmaster extends skoash.Game {
       20: InfoEverybodyScreen,
       21: InfoFurtherScreen,
       22: FlipScreen,
-    };
-
-    this.state.data.screens = _.map(this.screens, () => ({}));
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
-  }
-
-  getBackgroundIndex(index) {
-    switch (true) {
-    case index === 3: return 1;
-    default: return 0;
-    }
-  }
-
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  passData(opts) {
-    if (opts.name === 'typing') {
-      this.media.typing.stop();
-      this.media.typing.play();
-      setTimeout(() => {
+    }}
+    getBackgroundIndex={index => {
+      switch (true) {
+      case index === 3: return 1;
+      default: return 0;
+      }
+    }}
+    loader={<Loader />}
+    passData={opts => {
+      if (opts.name === 'typing') {
         this.media.typing.stop();
-      }, opts.duration || 500);
-    } else if (opts.name === 'stopTyping') {
-      this.media.typing.stop();
-    }
-  }
+        this.media.typing.play();
+        setTimeout(() => {
+          this.media.typing.stop();
+        }, opts.duration || 500);
+      } else if (opts.name === 'stopTyping') {
+        this.media.typing.stop();
+      }
+    }}
+    assets={[
+      <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />,
+      <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />,
+      <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />,
+      <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />,
+      <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />,
+      <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />,
+      <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />,
+      <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />,
+      <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />,
+      <skoash.Audio ref="typing" type="sfx" src="media/S_3/S_3.1.mp3" />,
+    ]}
+  />
+);
 
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
-        <skoash.Audio ref="bkg-2" type="background" src="media/_BKG/S_BKG_2.mp3" loop />
-        <skoash.Audio ref="bkg-3" type="background" src="media/_BKG/S_BKG_3.mp3" loop />
-        <skoash.Audio ref="bkg-4" type="background" src="media/_BKG/S_BKG_4.mp3" loop />
-        <skoash.Audio ref="bkg-5" type="background" src="media/S_12/S_12.1.mp3" />
-        <skoash.Audio ref="bkg-6" type="background" src="media/S_22/S_22.1.mp3" />
-        <skoash.Image ref="img-bkg" className="hidden" src="media/_BKG/BKG_1.png" />
-        <skoash.Audio ref="button" type="sfx" src="media/_Button/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Button/S_BU_2.mp3" />
-        <skoash.Audio ref="typing" type="sfx" src="media/S_3/S_3.1.mp3" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(Printmaster, config.id);
+skoash.start(Printmaster);

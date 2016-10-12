@@ -20,7 +20,7 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
       <skoash.Component className="group">
         <Carousel
-          className="slide"
+          className={'slide' + (_.get(props, 'data.revealScore.score', 0) === 7 ? ' disable' : '')}
           clickable
           delay={400}
           targetIndex={2}
@@ -61,8 +61,8 @@ export default function (props, ref, key) {
             });
           }}
           dataTarget="target"
-          setTarget={_.get(props, 'data.revealScore.score', 0) % 8}
-          complete
+          setTarget={_.get(props, 'data.revealScore.score', 0)}
+          completeOnStart
           checkComplete={false}
           targets={[
             <skoash.Image name="loops" amount={2} targetClass="loops-2" className="animated" src="media/S_10/img_10.11.png" />,
@@ -72,7 +72,6 @@ export default function (props, ref, key) {
             <skoash.Image name="whorl" amount={2} targetClass="whorl-2" className="animated" src="media/S_10/img_10.14.png" />,
             <skoash.Image name="doubleloops" amount={3} targetClass="doubleloops-3" className="animated" src="media/S_10/img_10.21.png" />,
             <skoash.Image name="arch" amount={2} targetClass="arch-2" className="animated" src="media/S_10/img_10.17.png" />,
-            <skoash.Image name="loops" amount={3} targetClass="loops-3" className="animated" src="media/S_10/img_10.12.png" />,
           ]}
           assets={[
             <skoash.Audio ref="correct" type="sfx" src="media/S_10/S_10.3.mp3" />,
@@ -97,7 +96,7 @@ export default function (props, ref, key) {
             this.updateGameState({
               path: 'revealScore',
               data: {
-                score: (_.get(props, 'data.revealScore.score', 0) % 9) + 1
+                score: _.get(props, 'data.revealScore.score', 0) + 1
               }
             });
           }}
@@ -114,7 +113,6 @@ export default function (props, ref, key) {
         openReveal={_.get(props, 'data.revealScore.score', 0)}
         assets={[
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.1.mp3" />,
-          <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
           <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />,
@@ -128,10 +126,6 @@ export default function (props, ref, key) {
             <p className="typing">CLICK WHEN THE PRINT</p>
             <p className="typing">MATCHES THE DESCRIPTION</p>
             <p className="typing">AND GET A COOL FACT!</p>
-          </li>,
-          <li>
-            No two fingerprints<br/>
-            are the same!
           </li>,
           <li>
             The chance of having the same<br/>
