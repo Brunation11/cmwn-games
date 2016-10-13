@@ -680,7 +680,6 @@ p {
 }
 
 $stroke: 4;
-$margin-lefts: 0 40 80 20;
 $yellow: rgb(244, 234, 43);
 $green: #105e31;
 
@@ -697,6 +696,7 @@ $green: #105e31;
     div {
       position: relative;
 
+      $margin-lefts: 0 40 80 20;
       @for $i from 1 through 4 {
         &:nth-of-type(#{$i * 2}) {
           margin-left: #{nth($margin-lefts, $i) - 10}px;
@@ -739,8 +739,10 @@ $green: #105e31;
     background-size: 380px;
     margin-left: 22px;
 
-    @for $i from 0 through 3 {
-
+    @for $i from 1 through 4 {
+      &.score-#{$i * 10} {
+        background-position: -#{($i - 1) * 93}px 0;
+      }
     }
 
     &:before {
