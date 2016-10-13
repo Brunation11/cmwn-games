@@ -15,6 +15,8 @@ class Timer extends skoash.Component {
   checkComplete() {
     var time = Date.now();
 
+    if (!this.props.checkComplete) return window.requestAnimationFrame(this.checkComplete);
+
     if (!this.state.started || this.state.paused) return;
 
     if (time >= this.state.stamp) {
@@ -70,6 +72,14 @@ class Timer extends skoash.Component {
       }, () => {
         this.start();
       });
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.restart && props.restart !== this.props.restart) {
+      this.restart();
     }
   }
 

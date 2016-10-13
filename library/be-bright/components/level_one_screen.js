@@ -6,7 +6,23 @@ import Timer from 'shared/components/timer/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
-  var itemInteract, enemyInteract, getEnemyClassNames, onTimerComplete, onCloseReveal;
+  var onScreenOpen,
+    itemInteract,
+    enemyInteract,
+    getEnemyClassNames,
+    onLabyrinthReady,
+    onLabyrinthComplete,
+    onTimerComplete,
+    onCloseReveal;
+
+  onScreenOpen = function () {
+    this.updateGameState({
+      path: 'timer',
+      data: {
+        restart: true,
+      },
+    });
+  };
 
   itemInteract = function () {
     this.complete();
@@ -33,16 +49,51 @@ export default function (props, ref, key) {
     return {HIT: this.state.hit};
   };
 
+  onLabyrinthReady = function () {
+    setInterval(() => {
+      var offset = {
+        width: this.player.offsetWidth,
+        height: this.player.offsetHeight,
+      };
+      _.each(this.enemies, enemy => {
+        if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
+        Math.random() < .5 ? enemy.disable() : enemy.enable();
+      });
+    }, 4000);
+  };
+
+  onLabyrinthComplete = function () {
+    this.updateGameState({
+      path: 'openReveal',
+      data: '1',
+    });
+    this.updateGameState({
+      path: 'timer',
+      data: {
+        start: false,
+        complete: true,
+      },
+    });
+  };
+
   onTimerComplete = function () {
-    // if (!this.state.revealOpen) {
-    //   this.refs['center-2'].open();
-    //   this.refs.reveal.open(TRY_AGAIN);
-    //   this.setState({ revealOpen: true });
-    // }
+    if (_.get(props, 'data.openReveal') === '1') return;
+    this.updateGameState({
+      path: 'openReveal',
+      data: '2',
+    });
   };
 
   onCloseReveal = function (prevMessage) {
-    if (prevMessage === '1') {
+    if (prevMessage === '0') {
+      this.updateGameState({
+        path: 'timer',
+        data: {
+          start: true,
+          restart: false,
+        },
+      });
+    } else if (prevMessage === '1') {
       skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
     }
   };
@@ -53,9 +104,56 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="labyrinth-level-one-screen"
+      onOpen={onScreenOpen}
     >
       <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
       <skoash.Image className="hidden" src="media/_images/sprites.meter.png" />
+      <Reveal
+        openOnStart="0"
+        openReveal={_.get(props, 'data.openReveal')}
+        onClose={onCloseReveal}
+        list={[
+          <skoash.Component className="labyrinth-frame">
+            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+            <div className="copy">
+              <p>
+                Move Mr. Eco<br/>
+                by using the arrow keys<br/>
+                and help him<br/>
+                turn off the lights!
+              </p>
+              <div className="reveal-arrows">
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            </div>
+          </skoash.Component>,
+          <skoash.Component className="labyrinth-frame level-up">
+            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+            <div className="copy">
+              <p>
+                <h2>Level up!</h2>
+                <h2>Level up!</h2>
+                <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
+                before you leave and making sure all the lights are out.
+              </p>
+            </div>
+          </skoash.Component>,
+          <skoash.Component className="labyrinth-frame try-again">
+            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+            <div className="copy">
+              <p>
+                <h2>Level up!</h2>
+                <h2>Level up!</h2>
+                <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
+                before you leave and making sure all the lights are out.
+              </p>
+            </div>
+          </skoash.Component>
+        ]}
+      />
       <skoash.Component className="left">
         <skoash.Image className="avatar" src="media/_images/mr.eco.avatar.png" />
         <Score
@@ -70,19 +168,10 @@ export default function (props, ref, key) {
         input={_.get(props, 'data.d-pad', {})}
         startX={245}
         startY={380}
+        speed={2}
         scale={_.get(props, 'gameState.scale', 1)}
-        onReady={function () {
-          setInterval(() => {
-            var offset = {
-              width: this.player.offsetWidth,
-              height: this.player.offsetHeight,
-            };
-            _.each(this.enemies, enemy => {
-              if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
-              Math.random() < .5 ? enemy.disable() : enemy.enable();
-            });
-          }, 4000);
-        }}
+        onReady={onLabyrinthReady}
+        onComplete={onLabyrinthComplete}
         items={[
           <IteractiveItem
             className="item-1"
@@ -136,6 +225,9 @@ export default function (props, ref, key) {
             return time;
           }}
           onComplete={onTimerComplete}
+          checkComplete={_.get(props, 'data.timer.start', false)}
+          restart={_.get(props, 'data.timer.restart', false)}
+          complete={_.get(props, 'data.timer.complete', false)}
         />
         <h3>
           TURN OFF
@@ -146,41 +238,6 @@ export default function (props, ref, key) {
         </p>
       </skoash.Component>
       <DPad />
-      <Reveal
-        openOnStart="1"
-        onClose={onCloseReveal}
-        list={[
-          <skoash.Component className="labyrinth-frame">
-            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
-            <div className="copy">
-              <p>
-                Move Mr. Eco<br/>
-                by using the arrow keys<br/>
-                and help him<br/>
-                turn off the lights!
-              </p>
-              <div className="reveal-arrows">
-                <div />
-                <div />
-                <div />
-                <div />
-              </div>
-            </div>
-          </skoash.Component>,
-          <skoash.Component className="labyrinth-frame level-up">
-            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
-            <div className="copy">
-              <h2>
-                Level up!
-              </h2>
-              <p>
-                <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
-                before you leave and making sure all the lights are out.
-              </p>
-            </div>
-          </skoash.Component>
-        ]}
-      />
     </skoash.Screen>
   );
 }

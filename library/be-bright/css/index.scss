@@ -682,6 +682,7 @@ p {
 $stroke: 4;
 $yellow: rgb(244, 234, 43);
 $green: #105e31;
+$grey: #8ebbcd;
 
 #special-announcement-screen {
   .copy {
@@ -714,7 +715,7 @@ $green: #105e31;
 
       &:nth-of-type(2n) {
         margin-top: -56px;
-        color: #8ebbcd;
+        color: $grey;
         text-shadow: none;
       }
 
@@ -933,6 +934,35 @@ $green: #105e31;
     background-image: url(../media/_images/frame.yellow.png);
     color: #000;
 
+    &.level-up {
+      background-image: url(../media/_images/frame.lvlup.png);
+
+      h2 {
+        position: relative;
+        margin: 0;
+        font-size: 100px;
+        line-height: 1;
+        margin: -90px 0 20px -10px;
+        color: $grey;
+        text-shadow: none;
+
+        &:nth-of-type(1) {
+          z-index: 1;
+          margin: 0;
+          color: $yellow;
+          @include text-stroke(4, $green);
+        }
+      }
+
+      p {
+        color: $yellow;
+        @include text-stroke(2, $green);
+        font-size: 20px;
+        text-align: left;
+        padding-left: 320px;
+      }
+    }
+
     p {
       padding: 60px 0 40px 200px;
       text-align: center;
@@ -973,6 +1003,12 @@ $green: #105e31;
     top: 0;
     width: 960px;
     height: 540px;
+    transition: opacity .5s, z-index 0s .5s;
+
+    &.OPEN {
+      z-index: 1;
+      transition: opacity .5s, z-index 0s;
+    }
 
     ul {
       margin: 0;
@@ -1003,6 +1039,18 @@ $green: #105e31;
 
     &:hover {
       background-position: -1220px -355px;
+    }
+  }
+
+  .open-1 {
+    .close-reveal {
+      width: 370px;
+      height: 100px;
+      background-position: -1500px -80px;
+
+      &:hover {
+        background-position: -1500px -358px;
+      }
     }
   }
 }
