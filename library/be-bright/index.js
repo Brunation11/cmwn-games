@@ -4,7 +4,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import TitleScreen from './components/title_screen';
-// import BulbsScreen from './components/bulbs_screen';
+import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import SwitchesScreen from './components/switches_screen';
 // import InfoScreen from './components/info_screen';
@@ -22,7 +22,7 @@ var BeBright = (
       0: iOSScreen,
       1: LevelOneScreen,
       // 1: TitleScreen,
-      // 2: BulbsScreen,
+      2: BulbsScreen,
       // 3: PigScreen,
       // 4: SwitchesScreen,
       // 5: InfoScreen,

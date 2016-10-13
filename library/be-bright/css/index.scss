@@ -968,12 +968,32 @@ $green: #105e31;
   }
 
   .reveal {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 960px;
+    height: 540px;
+
+    ul {
+      margin: 0;
+      position: absolute;
+      width: 960px;
+      height: 540px;
+    }
+
+    li {
+      display: none;
+      transition: display 0s 1s;
+
+      &.OPEN {
+        display: block;
+      }
+    }
   }
 
   .close-reveal {
     position: absolute;
-    bottom: 15px;
+    bottom: 75px;
     right: 100px;
     width: 190px;
     height: 100px;

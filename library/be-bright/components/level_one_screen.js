@@ -6,7 +6,7 @@ import Timer from 'shared/components/timer/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
-  var itemInteract, enemyInteract, getEnemyClassNames;
+  var itemInteract, enemyInteract, getEnemyClassNames, onTimerComplete, onCloseReveal;
 
   itemInteract = function () {
     this.complete();
@@ -31,6 +31,20 @@ export default function (props, ref, key) {
 
   getEnemyClassNames = function () {
     return {HIT: this.state.hit};
+  };
+
+  onTimerComplete = function () {
+    // if (!this.state.revealOpen) {
+    //   this.refs['center-2'].open();
+    //   this.refs.reveal.open(TRY_AGAIN);
+    //   this.setState({ revealOpen: true });
+    // }
+  };
+
+  onCloseReveal = function (prevMessage) {
+    if (prevMessage === '1') {
+      skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+    }
   };
 
   return (
@@ -116,6 +130,12 @@ export default function (props, ref, key) {
           countDown
           timeout={30000}
           leadingContent="TIME LEFT"
+          getTime={function () {
+            var time = this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+            time = time < 10 ? '0' + time : time;
+            return time;
+          }}
+          onComplete={onTimerComplete}
         />
         <h3>
           TURN OFF
@@ -127,7 +147,8 @@ export default function (props, ref, key) {
       </skoash.Component>
       <DPad />
       <Reveal
-        // openOnStart="0"
+        openOnStart="1"
+        onClose={onCloseReveal}
         list={[
           <skoash.Component className="labyrinth-frame">
             <skoash.Image className="eco" src="media/_images/mr.eco.png" />
@@ -144,6 +165,18 @@ export default function (props, ref, key) {
                 <div />
                 <div />
               </div>
+            </div>
+          </skoash.Component>,
+          <skoash.Component className="labyrinth-frame level-up">
+            <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+            <div className="copy">
+              <h2>
+                Level up!
+              </h2>
+              <p>
+                <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
+                before you leave and making sure all the lights are out.
+              </p>
             </div>
           </skoash.Component>
         ]}
