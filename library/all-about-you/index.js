@@ -74,7 +74,7 @@ class AllAboutYou extends skoash.Game {
 
   emitSave(highestScreenIndex, currentScreenIndex) {
     var data = {};
-    // if (currentScreenIndex !== 17) return;
+    if (currentScreenIndex !== 17) return;
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;
