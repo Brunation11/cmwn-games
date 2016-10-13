@@ -54,8 +54,8 @@ export default function (props, ref, key) {
         img="media/_images/floor.plan.png"
         map="media/_images/floor.plan-BW.png"
         input={_.get(props, 'data.d-pad', {})}
-        startX={215}
-        startY={350}
+        startX={235}
+        startY={370}
         scale={_.get(props, 'gameState.scale', 1)}
         onReady={function () {
           setInterval(() => {
@@ -67,47 +67,47 @@ export default function (props, ref, key) {
           }, 2000);
         }}
         items={[
-          <IteractiveItem
-            className="item-1"
-            checkComplete={false}
-            onInteract={itemInteract}
-            getClassNames={getItemClassNames}
-          />,
-          <IteractiveItem
-            className="item-2"
-            checkComplete={false}
-            onInteract={itemInteract}
-            getClassNames={getItemClassNames}
-          />,
-          <IteractiveItem
-            className="item-3"
-            checkComplete={false}
-            onInteract={itemInteract}
-            getClassNames={getItemClassNames}
-          />,
-          <IteractiveItem
-            className="item-4"
-            checkComplete={false}
-            onInteract={itemInteract}
-            getClassNames={getItemClassNames}
-          />,
+          // <IteractiveItem
+          //   className="item-1"
+          //   checkComplete={false}
+          //   onInteract={itemInteract}
+          //   getClassNames={getItemClassNames}
+          // />,
+          // <IteractiveItem
+          //   className="item-2"
+          //   checkComplete={false}
+          //   onInteract={itemInteract}
+          //   getClassNames={getItemClassNames}
+          // />,
+          // <IteractiveItem
+          //   className="item-3"
+          //   checkComplete={false}
+          //   onInteract={itemInteract}
+          //   getClassNames={getItemClassNames}
+          // />,
+          // <IteractiveItem
+          //   className="item-4"
+          //   checkComplete={false}
+          //   onInteract={itemInteract}
+          //   getClassNames={getItemClassNames}
+          // />,
         ]}
         enemies={[
-          <IteractiveItem
-            className="enemy-1"
-            onInteract={enemyInteract}
-            getClassNames={getEnemyClassNames}
-          />,
-          <IteractiveItem
-            className="enemy-2"
-            onInteract={enemyInteract}
-            getClassNames={getEnemyClassNames}
-          />,
-          <IteractiveItem
-            className="enemy-3"
-            onInteract={enemyInteract}
-            getClassNames={getEnemyClassNames}
-          />,
+          // <IteractiveItem
+          //   className="enemy-1"
+          //   onInteract={enemyInteract}
+          //   getClassNames={getEnemyClassNames}
+          // />,
+          // <IteractiveItem
+          //   className="enemy-2"
+          //   onInteract={enemyInteract}
+          //   getClassNames={getEnemyClassNames}
+          // />,
+          // <IteractiveItem
+          //   className="enemy-3"
+          //   onInteract={enemyInteract}
+          //   getClassNames={getEnemyClassNames}
+          // />,
         ]}
       />
       <DPad />
