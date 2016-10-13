@@ -760,8 +760,8 @@ $green: #105e31;
 
   .labyrinth {
     position: absolute;
-    left: 200px;
-    top: 0;
+    left: 180px;
+    top: 40px;
     width: 500px;
 
     .player {
@@ -851,39 +851,117 @@ $green: #105e31;
     }
   }
 
-  .labyrinth-frame {
-    background-image: url(../media/_images/frame.yellow.png);
-    color: #000;
+  .level-container {
+    position: absolute;
+    left: 700px;
+    top: 0;
+
+    .level {
+      width: 170px;
+      margin-bottom: -25px;
+
+      & + span {
+        font-size: 78px;
+      }
+    }
+
+    span {
+      font-weight: bold;
+      color: $yellow;
+      @include text-stroke($stroke, $green);
+    }
+
+    > span {
+      margin-top: -30px;
+    }
+
+    .timer {
+      font-weight: bold;
+      text-shadow: 1px 6px 8px #000;
+
+      span {
+        margin-left: 10px;
+        &:before {
+          content: '0:';
+        }
+      }
+    }
+
+    h3 {
+      text-shadow: 1px 6px 8px #000;
+    }
+
+    h3,
+    p {
+      text-align: center;
+    }
   }
 
-  p {
-    padding: 60px 0 40px 200px;
-    text-align: center;
-    font-size: 48px;
-    line-height: 44px;
-  }
-
-  .reveal-arrows {
-    position: relative;
-    margin-left: 430px;
-    height: 110px;
+  .d-pad {
+    position: absolute;
+    left: 720px;
+    top: 320px;
+    width: 200px;
+    height: 140px;
 
     div {
       position: absolute;
       background-image: url(../media/_sprites/sprites.arrowkeys.png);
-      background-size: 400px;
-      width: 54px;
-      height: 54px;
+      background-size: 500px;
+      width: 72px;
+      height: 72px;
 
-      $left-position: 23 123 223 327;
-      $lefts: 0 1 2 1;
-      $tops: 1 0 1 1;
+      $left-position: 151 28 406 276;
+      $lefts: 1 0 1 2;
+      $tops: 0 1 1 1;
 
       @for $i from 1 through 4 {
         &:nth-of-type(#{$i}) {
-          background-position: -#{nth($left-position, $i)}px -17px;
-          left: #{nth($lefts, $i) * 55}px;
-          top: #{nth($tops, $i) * 54}px;
+          background-position: -#{nth($left-position, $i)}px -18px;
+          left: #{nth($lefts, $i) * 68}px;
+          top: #{nth($tops, $i) * 68}px;
+
+          &:hover {
+            background-position: -#{nth($left-position, $i)}px -126px;
+          }
+        }
+      }
+    }
+  }
+
+  .labyrinth-frame {
+    background-image: url(../media/_images/frame.yellow.png);
+    color: #000;
+
+    p {
+      padding: 60px 0 40px 200px;
+      text-align: center;
+      font-size: 48px;
+      line-height: 44px;
+    }
+
+    .reveal-arrows {
+      position: relative;
+      margin-left: 430px;
+      height: 110px;
+
+      div {
+        position: absolute;
+        background-image: url(../media/_sprites/sprites.arrowkeys.png);
+        background-size: 400px;
+        width: 54px;
+        height: 54px;
+
+        $left-position: 23 123 223 327;
+        $lefts: 0 1 2 1;
+        $tops: 1 0 1 1;
+
+        @for $i from 1 through 4 {
+          &:nth-of-type(#{$i}) {
+            background-position: -#{nth($left-position, $i)}px -17px;
+            left: #{nth($lefts, $i) * 55}px;
+            top: #{nth($tops, $i) * 54}px;
+          }
         }
       }
     }

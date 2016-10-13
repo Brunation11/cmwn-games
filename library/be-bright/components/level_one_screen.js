@@ -2,6 +2,7 @@ import Score from 'shared/components/score/0.1';
 import Labyrinth from 'shared/components/labyrinth/0.1';
 import DPad from 'shared/components/d_pad/0.1';
 import IteractiveItem from 'shared/components/interactive_item/0.1';
+import Timer from 'shared/components/timer/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
@@ -66,7 +67,7 @@ export default function (props, ref, key) {
               if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
               Math.random() < .5 ? enemy.disable() : enemy.enable();
             });
-          }, 2000);
+          }, 4000);
         }}
         items={[
           <IteractiveItem
@@ -108,6 +109,22 @@ export default function (props, ref, key) {
           />,
         ]}
       />
+      <skoash.Component className="level-container">
+        <skoash.Image className="level" src="media/_images/text.level.png" />
+        <span>1</span>
+        <Timer
+          countDown
+          timeout={30000}
+          leadingContent="TIME LEFT"
+        />
+        <h3>
+          TURN OFF
+        </h3>
+        <p>
+          the lights that other<br/>
+          people leave on!
+        </p>
+      </skoash.Component>
       <DPad />
       <Reveal
         // openOnStart="0"
