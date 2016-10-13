@@ -28,6 +28,12 @@ class Selectable extends skoash.Component {
       selectFunction,
       selectClass,
     });
+
+    if (this.loadData && typeof this.loadData === 'object') {
+      _.forIn(this.loadData, (ref, key) => {
+        this.loadSelectedData(ref, key);
+      });
+    }
   }
 
   bootstrap() {
@@ -50,14 +56,33 @@ class Selectable extends skoash.Component {
     }
   }
 
+  loadSelectedData(ref, key) {
+    var classes = this.state.classes;
+    classes[key] = ref;
+
+    this.setState({classes});
+
+    if (this.props.chooseOne) this.requireForComplete = [key];
+
+    this.requireForComplete.map(key2 => {
+      if (key2 === key && this.refs[key2]) {
+        if (!_.isEmpty(classes)) {
+          this.refs[key2].complete();
+        } else {
+          this.refs[key2].incomplete();
+        }
+      }
+    });
+  }
+
   selectHelper(e, classes) {
     var ref, dataRef, target, isCorrect, self = this;
 
     target = e.target.closest('LI');
+    dataRef = target.getAttribute('data-ref');
 
     if (!target) return;
 
-    dataRef = target.getAttribute('data-ref');
     ref = self.refs[dataRef];
 
     isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
