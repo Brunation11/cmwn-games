@@ -1,7 +1,40 @@
 import Score from 'shared/components/score/0.1';
+import Labyrinth from 'shared/components/labyrinth/0.1';
+import DPad from 'shared/components/d_pad/0.1';
+import IteractiveItem from 'shared/components/interactive_item/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
+  var itemInteract, getItemClassNames, enemyInteract, getEnemyClassNames;
+
+  itemInteract = function () {
+    this.complete();
+    this.disable();
+    this.setState({
+      caught: true,
+    });
+  };
+
+  getItemClassNames = function () {
+    return {CAUGHT: this.state.caught};
+  };
+
+  enemyInteract = function () {
+    this.setState({
+      hit: true,
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          hit: false
+        });
+      }, 1000);
+    });
+  };
+
+  getEnemyClassNames = function () {
+    return {HIT: this.state.hit};
+  };
+
   return (
     <skoash.Screen
       {...props}
@@ -17,6 +50,67 @@ export default function (props, ref, key) {
           increment={10}
         />
       </skoash.Component>
+      <Labyrinth
+        img="media/_images/floor.plan.png"
+        map="media/_images/floor.plan-BW.png"
+        input={_.get(props, 'data.d-pad', {})}
+        startX={215}
+        startY={350}
+        scale={_.get(props, 'gameState.scale', 1)}
+        onReady={function () {
+          setInterval(() => {
+            var offset = this.player.getBoundingClientRect();
+            _.each(this.enemies, enemy => {
+              if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
+              Math.random() < .5 ? enemy.disable() : enemy.enable();
+            });
+          }, 2000);
+        }}
+        items={[
+          <IteractiveItem
+            className="item-1"
+            checkComplete={false}
+            onInteract={itemInteract}
+            getClassNames={getItemClassNames}
+          />,
+          <IteractiveItem
+            className="item-2"
+            checkComplete={false}
+            onInteract={itemInteract}
+            getClassNames={getItemClassNames}
+          />,
+          <IteractiveItem
+            className="item-3"
+            checkComplete={false}
+            onInteract={itemInteract}
+            getClassNames={getItemClassNames}
+          />,
+          <IteractiveItem
+            className="item-4"
+            checkComplete={false}
+            onInteract={itemInteract}
+            getClassNames={getItemClassNames}
+          />,
+        ]}
+        enemies={[
+          <IteractiveItem
+            className="enemy-1"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
+          <IteractiveItem
+            className="enemy-2"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
+          <IteractiveItem
+            className="enemy-3"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
+        ]}
+      />
+      <DPad />
       <Reveal
         // openOnStart="0"
         list={[
