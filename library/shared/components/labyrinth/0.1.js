@@ -91,7 +91,10 @@ class Labyrinth extends skoash.Component {
 
   getCollidingObject(objects, playerX, playerY) {
     var item, offset;
-    offset = this[PLAYER].getBoundingClientRect();
+    offset = {
+      width: this[PLAYER].offsetWidth,
+      height: this[PLAYER].offsetHeight,
+    };
 
     _.some(objects, i => {
       if (i.canInteract() && this.doIntersect(playerX, playerY, offset, i)) {
@@ -105,17 +108,23 @@ class Labyrinth extends skoash.Component {
   }
 
   doIntersect(playerX, playerY, offset, item) {
-    var itemOffset = item.DOM.getBoundingClientRect();
+    var itemOffset = {
+      left: item.DOM.offsetLeft,
+      top: item.DOM.offsetTop,
+      width: item.DOM.offsetWidth,
+      height: item.DOM.offsetHeight,
+    };
+
     return skoash.util.doIntersect([
       {x: playerX, y: playerY},
       {x: playerX + offset.width, y: playerY},
       {x: playerX + offset.width, y: playerY + offset.height},
       {x: playerX, y: playerY + offset.height},
     ], [
-      {x: itemOffset.left / this.props.scale, y: itemOffset.top / this.props.scale},
-      {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: itemOffset.top / this.props.scale},
-      {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
-      {x: itemOffset.left / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
+      {x: itemOffset.left, y: itemOffset.top},
+      {x: (itemOffset.left + itemOffset.width), y: itemOffset.top},
+      {x: (itemOffset.left + itemOffset.width), y: (itemOffset.top + itemOffset.height)},
+      {x: itemOffset.left, y: (itemOffset.top + itemOffset.height)},
     ]);
   }
 

@@ -5,18 +5,15 @@ import IteractiveItem from 'shared/components/interactive_item/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
-  var itemInteract, getItemClassNames, enemyInteract, getEnemyClassNames;
+  var itemInteract, enemyInteract, getEnemyClassNames;
 
   itemInteract = function () {
     this.complete();
     this.disable();
-    this.setState({
-      caught: true,
+    this.updateGameState({
+      path: 'correct',
+      data: _.get(props, 'data.correct', 0) + 1,
     });
-  };
-
-  getItemClassNames = function () {
-    return {CAUGHT: this.state.caught};
   };
 
   enemyInteract = function () {
@@ -48,18 +45,23 @@ export default function (props, ref, key) {
         <skoash.Image className="avatar" src="media/_images/mr.eco.avatar.png" />
         <Score
           increment={10}
+          max={40}
+          correct={_.get(props, 'data.correct', 0)}
         />
       </skoash.Component>
       <Labyrinth
         img="media/_images/floor.plan.png"
         map="media/_images/floor.plan-BW.png"
         input={_.get(props, 'data.d-pad', {})}
-        startX={235}
-        startY={370}
+        startX={245}
+        startY={380}
         scale={_.get(props, 'gameState.scale', 1)}
         onReady={function () {
           setInterval(() => {
-            var offset = this.player.getBoundingClientRect();
+            var offset = {
+              width: this.player.offsetWidth,
+              height: this.player.offsetHeight,
+            };
             _.each(this.enemies, enemy => {
               if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
               Math.random() < .5 ? enemy.disable() : enemy.enable();
@@ -67,47 +69,43 @@ export default function (props, ref, key) {
           }, 2000);
         }}
         items={[
-          // <IteractiveItem
-          //   className="item-1"
-          //   checkComplete={false}
-          //   onInteract={itemInteract}
-          //   getClassNames={getItemClassNames}
-          // />,
-          // <IteractiveItem
-          //   className="item-2"
-          //   checkComplete={false}
-          //   onInteract={itemInteract}
-          //   getClassNames={getItemClassNames}
-          // />,
-          // <IteractiveItem
-          //   className="item-3"
-          //   checkComplete={false}
-          //   onInteract={itemInteract}
-          //   getClassNames={getItemClassNames}
-          // />,
-          // <IteractiveItem
-          //   className="item-4"
-          //   checkComplete={false}
-          //   onInteract={itemInteract}
-          //   getClassNames={getItemClassNames}
-          // />,
+          <IteractiveItem
+            className="item-1"
+            checkComplete={false}
+            onInteract={itemInteract}
+          />,
+          <IteractiveItem
+            className="item-2"
+            checkComplete={false}
+            onInteract={itemInteract}
+          />,
+          <IteractiveItem
+            className="item-3"
+            checkComplete={false}
+            onInteract={itemInteract}
+          />,
+          <IteractiveItem
+            className="item-4"
+            checkComplete={false}
+            onInteract={itemInteract}
+          />,
         ]}
         enemies={[
-          // <IteractiveItem
-          //   className="enemy-1"
-          //   onInteract={enemyInteract}
-          //   getClassNames={getEnemyClassNames}
-          // />,
-          // <IteractiveItem
-          //   className="enemy-2"
-          //   onInteract={enemyInteract}
-          //   getClassNames={getEnemyClassNames}
-          // />,
-          // <IteractiveItem
-          //   className="enemy-3"
-          //   onInteract={enemyInteract}
-          //   getClassNames={getEnemyClassNames}
-          // />,
+          <IteractiveItem
+            className="enemy-1"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
+          <IteractiveItem
+            className="enemy-2"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
+          <IteractiveItem
+            className="enemy-3"
+            onInteract={enemyInteract}
+            getClassNames={getEnemyClassNames}
+          />,
         ]}
       />
       <DPad />
