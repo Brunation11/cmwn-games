@@ -145,10 +145,8 @@ export default function (props, ref, key) {
             <skoash.Image className="eco" src="media/_images/mr.eco.png" />
             <div className="copy">
               <p>
-                <h2>Level up!</h2>
-                <h2>Level up!</h2>
-                <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
-                before you leave and making sure all the lights are out.
+                Sorry,<br/>
+                Try Again!
               </p>
             </div>
           </skoash.Component>
