@@ -3,6 +3,7 @@ import Labyrinth from 'shared/components/labyrinth/0.1';
 import DPad from 'shared/components/d_pad/0.1';
 import IteractiveItem from 'shared/components/interactive_item/0.1';
 import Timer from 'shared/components/timer/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
@@ -77,12 +78,13 @@ export default function (props, ref, key) {
     });
   };
 
-  onOpenReveal = function () {
+  onOpenReveal = function (message) {
     this.updateGameState({
       path: 'game',
       data: {
         stop: true,
         start: false,
+        vo: 'children-' + message,
       },
     });
   };
@@ -128,6 +130,13 @@ export default function (props, ref, key) {
     >
       <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
       <skoash.Image className="hidden" src="media/_sprites/sprites.meter.png" />
+      <MediaCollection
+        play={_.get(props, 'data.game.vo')}
+      >
+        <skoash.Audio type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />
+        <skoash.Audio type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />
+        <skoash.Audio type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" />
+      </MediaCollection>
       <Reveal
         openOnStart="0"
         openReveal={_.get(props, 'data.openReveal')}

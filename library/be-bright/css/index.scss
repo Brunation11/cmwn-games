@@ -309,6 +309,7 @@ p {
 
 .pl-game.VOICE-OVER {
   .reveal {
+    button,
     .close-reveal {
       opacity: .5;
       pointer-events: none;
@@ -733,6 +734,7 @@ $grey: #8ebbcd;
   }
 
   .score {
+    position: relative;
     width: 100px;
     height: 400px;
     background-image: url(../media/_sprites/sprites.meter.png);
@@ -748,12 +750,27 @@ $grey: #8ebbcd;
 
     &:before {
       content: 'score';
+      position: absolute;
       display: block;
+      left: 0;
+      top: -40px;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
       color: $green;
       @include text-stroke($stroke, $yellow);
     }
 
     span {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: -10px;
+      width: 100%;
+      text-align: center;
+      font-size: 72px;
+      font-weight: bold;
       color: $yellow;
       @include text-stroke($stroke, $green);
     }
