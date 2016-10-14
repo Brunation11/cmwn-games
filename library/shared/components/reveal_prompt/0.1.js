@@ -15,7 +15,7 @@ export default class RevealPrompt extends skoash.Component {
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
 
-    if (nextProps.openReveal != null && nextProps.openReveal !== this.props.openReveal) {
+    if (nextProps.openReveal && nextProps.openReveal !== this.props.openReveal) {
       this.open(nextProps.openReveal);
     }
 

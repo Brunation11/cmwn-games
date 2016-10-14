@@ -963,6 +963,30 @@ $grey: #8ebbcd;
       }
     }
 
+    &.try-again {
+      background-image: url(../media/_images/frame.sorry.png);
+
+      p {
+        font-size: 78px;
+        line-height: 1;
+        padding-left: 300px;
+      }
+
+      button {
+        width: 270px;
+        height: 100px;
+        margin-left: 310px;
+        background-image: url(../media/_sprites/sprites.btns.png);
+        background-size: 3375px;
+        background-position: -1930px -78px;
+
+        &:hover {
+          background-position: -1930px -350px;
+        }
+      }
+    }
+
+
     p {
       padding: 60px 0 40px 200px;
       text-align: center;
@@ -1050,6 +1074,19 @@ $grey: #8ebbcd;
 
       &:hover {
         background-position: -1500px -358px;
+      }
+    }
+  }
+
+  .open-2 {
+    .close-reveal {
+      width: 230px;
+      height: 100px;
+      bottom: 130px;
+      background-position: -2320px -70px;
+
+      &:hover {
+        background-position: -2322px -346px;
       }
     }
   }

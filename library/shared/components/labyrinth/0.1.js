@@ -38,6 +38,20 @@ class Labyrinth extends skoash.Component {
     });
   }
 
+  start() {
+    super.start();
+
+    this.setState({
+      playerX: this.props.startX,
+      playerY: this.props.startY,
+    });
+
+    this.incompleteRefs();
+
+    _.each(this.items, item => item.enable());
+    _.each(this.enemies, enemy => enemy.enable());
+  }
+
   update() {
     var hasTrue, enemy, item, playerX = this.state.playerX, playerY = this.state.playerY;
 

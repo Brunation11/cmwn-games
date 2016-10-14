@@ -6,23 +6,15 @@ import Timer from 'shared/components/timer/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key) {
-  var onScreenOpen,
-    itemInteract,
+  var itemInteract,
     enemyInteract,
     getEnemyClassNames,
     onLabyrinthReady,
     onLabyrinthComplete,
     onTimerComplete,
-    onCloseReveal;
-
-  onScreenOpen = function () {
-    this.updateGameState({
-      path: 'timer',
-      data: {
-        restart: true,
-      },
-    });
-  };
+    onOpenReveal,
+    onCloseReveal,
+    tryAgain;
 
   itemInteract = function () {
     this.complete();
@@ -51,7 +43,9 @@ export default function (props, ref, key) {
 
   onLabyrinthReady = function () {
     setInterval(() => {
-      var offset = {
+      var offset;
+      if (_.get(props, 'data.game.stop', false)) return;
+      offset = {
         width: this.player.offsetWidth,
         height: this.player.offsetHeight,
       };
@@ -68,9 +62,8 @@ export default function (props, ref, key) {
       data: '1',
     });
     this.updateGameState({
-      path: 'timer',
+      path: 'game',
       data: {
-        start: false,
         complete: true,
       },
     });
@@ -84,18 +77,46 @@ export default function (props, ref, key) {
     });
   };
 
+  onOpenReveal = function () {
+    this.updateGameState({
+      path: 'game',
+      data: {
+        stop: true,
+        start: false,
+      },
+    });
+  };
+
   onCloseReveal = function (prevMessage) {
-    if (prevMessage === '0') {
-      this.updateGameState({
-        path: 'timer',
-        data: {
-          start: true,
-          restart: false,
-        },
-      });
-    } else if (prevMessage === '1') {
+    if (prevMessage === '2' && !_.get(props, 'data.closeReveal')) return;
+
+    this.updateGameState({
+      path: 'game',
+      data: {
+        stop: false,
+        start: true,
+        restart: false,
+      },
+    });
+    this.updateGameState({
+      path: 'closeReveal',
+      data: false,
+    });
+    this.updateGameState({
+      path: 'openReveal',
+      data: false,
+    });
+
+    if (prevMessage === '1') {
       skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
     }
+  };
+
+  tryAgain = function () {
+    skoash.trigger('updateState', {
+      path: 'closeReveal',
+      data: true,
+    });
   };
 
   return (
@@ -104,13 +125,14 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="labyrinth-level-one-screen"
-      onOpen={onScreenOpen}
     >
       <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
-      <skoash.Image className="hidden" src="media/_images/sprites.meter.png" />
+      <skoash.Image className="hidden" src="media/_sprites/sprites.meter.png" />
       <Reveal
         openOnStart="0"
         openReveal={_.get(props, 'data.openReveal')}
+        closeReveal={_.get(props, 'data.closeReveal')}
+        onOpen={onOpenReveal}
         onClose={onCloseReveal}
         list={[
           <skoash.Component className="labyrinth-frame">
@@ -148,6 +170,7 @@ export default function (props, ref, key) {
                 Sorry,<br/>
                 Try Again!
               </p>
+              <button onClick={tryAgain} />
             </div>
           </skoash.Component>
         ]}
@@ -168,6 +191,7 @@ export default function (props, ref, key) {
         startY={380}
         speed={2}
         scale={_.get(props, 'gameState.scale', 1)}
+        start={_.get(props, 'data.game.start', false)}
         onReady={onLabyrinthReady}
         onComplete={onLabyrinthComplete}
         items={[
@@ -223,9 +247,9 @@ export default function (props, ref, key) {
             return time;
           }}
           onComplete={onTimerComplete}
-          checkComplete={_.get(props, 'data.timer.start', false)}
-          restart={_.get(props, 'data.timer.restart', false)}
-          complete={_.get(props, 'data.timer.complete', false)}
+          checkComplete={_.get(props, 'data.game.start', false)}
+          restart={_.get(props, 'data.game.start', false)}
+          complete={_.get(props, 'data.game.complete', false)}
         />
         <h3>
           TURN OFF
@@ -235,7 +259,10 @@ export default function (props, ref, key) {
           people leave on!
         </p>
       </skoash.Component>
-      <DPad />
+      <DPad
+        start={_.get(props, 'data.game.start', false)}
+        stop={_.get(props, 'data.game.stop', false)}
+      />
     </skoash.Screen>
   );
 }

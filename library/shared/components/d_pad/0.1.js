@@ -55,6 +55,10 @@ class DPad extends skoash.Component {
     super.bootstrap();
 
     this.DOM = ReactDOM.findDOMNode(this);
+  }
+
+  start() {
+    super.start();
 
     this.DOM.addEventListener('mousedown', this.mousedown);
     this.DOM.addEventListener('mouseup', this.mouseup);
@@ -62,6 +66,27 @@ class DPad extends skoash.Component {
 
     window.addEventListener('keydown', this.keydown);
     window.addEventListener('keyup', this.keyup);
+  }
+
+  stop() {
+    super.stop();
+
+    this.DOM.removeEventListener('mousedown', this.mousedown);
+    this.DOM.removeEventListener('mouseup', this.mouseup);
+    this.DOM.removeEventListener('mouseout', this.mouseup);
+
+    window.removeEventListener('keydown', this.keydown);
+    window.removeEventListener('keyup', this.keyup);
+
+    this.updateGameState({
+      path: this.props.outputTarget,
+      data: {
+        up: false,
+        down: false,
+        left: false,
+        right: false,
+      }
+    });
   }
 
   updateRef(ref, isDown = true) {
