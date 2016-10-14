@@ -91,7 +91,9 @@ export default class RevealPrompt extends skoash.Component {
     return ClassNames(
       {
         [li.props.className]: li.props.className,
-        OPEN: this.state.openReveal.indexOf(key) !== -1 || this.state.openReveal.indexOf(li.props['data-ref']) !== -1
+        OPEN: this.state.openReveal.indexOf(key) !== -1 ||
+          this.state.openReveal.indexOf(li.props['data-ref']) !== -1 ||
+          this.state.openReveal.indexOf(li.ref) !== -1
       }
     );
   }

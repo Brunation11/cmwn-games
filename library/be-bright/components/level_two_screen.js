@@ -2,42 +2,23 @@ import LabyrinthScreenComponent from './labyrinth_screen_component';
 
 export default function (props, ref, key) {
   return LabyrinthScreenComponent(props, ref, key, {
-    id: 'labyrinth-level-one-screen',
-    levelNumber: 1,
-    itemsCount: 4,
-    enemiesCount: 3,
-    openOnStart: 'instructions',
+    id: 'labyrinth-level-two-screen',
+    levelNumber: 2,
+    itemsCount: 6,
+    enemiesCount: 4,
     vos: [
-      <skoash.Audio ref="instructions" type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />,
-      <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />,
+      <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp2.mp3" />,
       <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
     ],
     revealList: [
-      <skoash.Component ref="instructions" className="labyrinth-frame">
-        <skoash.Image className="eco" src="media/_images/mr.eco.png" />
-        <div className="copy">
-          <p>
-            Move Mr. Eco<br/>
-            by using the arrow keys<br/>
-            and help him<br/>
-            turn off the lights!
-          </p>
-          <div className="reveal-arrows">
-            <div />
-            <div />
-            <div />
-            <div />
-          </div>
-        </div>
-      </skoash.Component>,
       <skoash.Component ref="level-up" className="labyrinth-frame level-up">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <p>
             <h2>Level up!</h2>
             <h2>Level up!</h2>
-            <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
-            before you leave and making sure all the lights are out.
+            <span>ECO-TIP:</span> Use notes to create reminders<br/>
+            to help your family remember to flip that switch.
           </p>
         </div>
       </skoash.Component>,

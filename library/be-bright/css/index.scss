@@ -985,6 +985,78 @@ $grey: #8ebbcd;
       }
     }
 
+    &.win {
+      background-image: url(../media/_images/frame.win.png);
+      width: 960px;
+      height: 540px;
+      margin: 0;
+
+      .eco {
+        width: 470px;
+        left: -60px;
+        bottom: -140px;
+      }
+
+      .trophy {
+        position: absolute;
+        left: 300px;
+        top: 290px;
+        width: 300px;
+      }
+
+      .hog {
+        position: absolute;
+        right: 71px;
+        bottom: 71px;
+        width: 200px;
+        height: 200px;
+        background-image: url(../media/_images/energyhog.greyscale.png);
+        background-size: 220px;
+      }
+
+      p {
+        font-size: 34px;
+        line-height: 44px;
+        padding-left: 300px;
+        color: $yellow;
+        @include text-stroke(4, $green);
+
+        img {
+          display: block;
+
+          &:nth-of-type(1) {
+            width: 500px;
+            margin-left: 70px;
+            margin-bottom: -40px;
+          }
+
+          &:nth-of-type(2) {
+            width: 360px;
+            margin-left: 110px;
+            margin-bottom: -20px;
+          }
+        }
+
+        div {
+          &:nth-of-type(1) {
+            margin-left: -130px;
+          }
+        }
+      }
+
+      button {
+        width: 270px;
+        height: 100px;
+        margin-left: 310px;
+        background-image: url(../media/_sprites/sprites.btns.png);
+        background-size: 3375px;
+        background-position: -1930px -78px;
+
+        &:hover {
+          background-position: -1930px -350px;
+        }
+      }
+    }
 
     p {
       padding: 60px 0 40px 200px;
@@ -1065,7 +1137,7 @@ $grey: #8ebbcd;
     }
   }
 
-  .open-1 {
+  .open-level-up {
     .close-reveal {
       width: 370px;
       height: 100px;
@@ -1077,7 +1149,7 @@ $grey: #8ebbcd;
     }
   }
 
-  .open-2 {
+  .open-try-again {
     .close-reveal {
       width: 230px;
       height: 100px;
@@ -1111,6 +1183,60 @@ $grey: #8ebbcd;
           top: #{nth($enemy-tops, $i)}px;
         }
       }
+    }
+  }
+}
+
+#labyrinth-level-two-screen {
+  .labyrinth {
+    .interactive-item {
+      $item-lefts: 110  50  75 280 280 430;
+      $item-tops:   80 220 380 225 365 315;
+      @for $i from 1 through 6 {
+        &.item-#{$i} {
+          left: #{nth($item-lefts, $i)}px;
+          top: #{nth($item-tops, $i)}px;
+        }
+      }
+
+      $enemy-lefts: 100 230 230 385;
+      $enemy-tops:  220 240 100 280;
+      @for $i from 1 through 4 {
+        &.enemy-#{$i} {
+          left: #{nth($enemy-lefts, $i)}px;
+          top: #{nth($enemy-tops, $i)}px;
+        }
+      }
+    }
+  }
+}
+
+#labyrinth-level-three-screen {
+  .labyrinth {
+    .interactive-item {
+      $item-lefts: 110  50  75 280 280 430;
+      $item-tops:   80 220 380 225 365 315;
+      @for $i from 1 through 6 {
+        &.item-#{$i} {
+          left: #{nth($item-lefts, $i)}px;
+          top: #{nth($item-tops, $i)}px;
+        }
+      }
+
+      $enemy-lefts: 100 230 230 385;
+      $enemy-tops:  220 240 100 280;
+      @for $i from 1 through 4 {
+        &.enemy-#{$i} {
+          left: #{nth($enemy-lefts, $i)}px;
+          top: #{nth($enemy-tops, $i)}px;
+        }
+      }
+    }
+  }
+
+  .open-level-up {
+    .close-reveal {
+      display: none;
     }
   }
 }
