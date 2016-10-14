@@ -728,7 +728,7 @@ $grey: #8ebbcd;
   }
 }
 
-#labyrinth-level-one-screen {
+[id*='abyrinth-level-'] {
   .avatar {
     width: 143px;
   }
@@ -830,15 +830,6 @@ $grey: #8ebbcd;
         }
       }
 
-      $item-lefts: 100 280  75 430;
-      $item-tops:  100 230 380 315;
-      @for $i from 1 through 4 {
-        &.item-#{$i} {
-          left: #{nth($item-lefts, $i)}px;
-          top: #{nth($item-tops, $i)}px;
-        }
-      }
-
       &[class*='enemy-'] {
         &:before {
           background-position: -150px -10px;
@@ -855,15 +846,6 @@ $grey: #8ebbcd;
             animation: enemy-disapear .5s;
             opacity: 0;
           }
-        }
-      }
-
-      $enemy-lefts: 70 230  55;
-      $enemy-tops: 160 260 340;
-      @for $i from 1 through 3 {
-        &.enemy-#{$i} {
-          left: #{nth($enemy-lefts, $i)}px;
-          top: #{nth($enemy-tops, $i)}px;
         }
       }
     }
@@ -1104,6 +1086,30 @@ $grey: #8ebbcd;
 
       &:hover {
         background-position: -2322px -346px;
+      }
+    }
+  }
+}
+
+#labyrinth-level-one-screen {
+  .labyrinth {
+    .interactive-item {
+      $item-lefts: 100 280  75 430;
+      $item-tops:  100 230 380 315;
+      @for $i from 1 through 4 {
+        &.item-#{$i} {
+          left: #{nth($item-lefts, $i)}px;
+          top: #{nth($item-tops, $i)}px;
+        }
+      }
+
+      $enemy-lefts: 70 230  55;
+      $enemy-tops: 160 260 340;
+      @for $i from 1 through 3 {
+        &.enemy-#{$i} {
+          left: #{nth($enemy-lefts, $i)}px;
+          top: #{nth($enemy-tops, $i)}px;
+        }
       }
     }
   }

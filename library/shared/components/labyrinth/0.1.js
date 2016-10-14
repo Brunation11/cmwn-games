@@ -55,6 +55,8 @@ class Labyrinth extends skoash.Component {
   update() {
     var hasTrue, enemy, item, playerX = this.state.playerX, playerY = this.state.playerY;
 
+    if (!this[PLAYER]) return;
+
     if (this.props.input.up) playerY -= this.props.speed;
     if (this.props.input.down) playerY += this.props.speed;
     if (this.props.input.left) playerX -= this.props.speed;
@@ -65,6 +67,7 @@ class Labyrinth extends skoash.Component {
     item = this.getCollidingObject(this.items, playerX, playerY);
 
     if (this.isColliding(playerX, playerY)) {
+      if (this.media.collide) this.media.collide.play();
       this.props.onCollide.call(this);
     } else if (enemy) {
       this.props.onCollideEnemy.call(this, enemy);
@@ -175,6 +178,7 @@ class Labyrinth extends skoash.Component {
           className={IMAGE}
           src={this.props.img}
         />
+        {this.renderContentList('assets')}
         {this.renderContentList('items')}
         {this.renderContentList('enemies')}
         <div

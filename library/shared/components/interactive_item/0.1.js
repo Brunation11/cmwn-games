@@ -10,15 +10,24 @@ class InteractiveItem extends skoash.Component {
   }
 
   enable() {
+    if (this.state.enabled) return;
     this.setState({enabled: true});
+    if (this.media.enable) this.media.enable.play();
+    return this.props.onEnable.call(this);
   }
 
   disable() {
+    if (!this.state.enabled) return;
     this.setState({enabled: false});
+    if (this.media.disable) this.media.disable.play();
+    return this.props.onDisable.call(this);
   }
 
   interact(opts = {}) {
-    this.canInteract() && this.props.onInteract.call(this, opts);
+    if (this.canInteract()) {
+      this.props.onInteract.call(this, opts);
+      if (this.media.interact) this.media.interact.play();
+    }
   }
 
   canInteract() {
@@ -39,6 +48,8 @@ class InteractiveItem extends skoash.Component {
 }
 
 InteractiveItem.defaultProps = _.defaults({
+  onEnable: _.identity,
+  onDisable: _.identity,
   onInteract: _.identity,
   canInteract: () => true,
 }, skoash.Component.defaultProps);
