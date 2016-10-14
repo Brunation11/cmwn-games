@@ -10,6 +10,7 @@ export default function (props, ref, key) {
   var itemInteract,
     enemyInteract,
     getEnemyClassNames,
+    onPlaySFX,
     onLabyrinthReady,
     onLabyrinthComplete,
     onTimerComplete,
@@ -23,6 +24,12 @@ export default function (props, ref, key) {
     this.updateGameState({
       path: 'correct',
       data: _.get(props, 'data.correct', 0) + 1,
+    });
+    this.updateGameState({
+      path: 'game',
+      data: {
+        sfx: 'light-capture',
+      },
     });
   };
 
@@ -40,6 +47,15 @@ export default function (props, ref, key) {
 
   getEnemyClassNames = function () {
     return {HIT: this.state.hit};
+  };
+
+  onPlaySFX = function () {
+    this.updateGameState({
+      path: 'game',
+      data: {
+        sfx: '',
+      },
+    });
   };
 
   onLabyrinthReady = function () {
@@ -90,7 +106,10 @@ export default function (props, ref, key) {
   };
 
   onCloseReveal = function (prevMessage) {
-    if (prevMessage === '2' && !_.get(props, 'data.closeReveal')) return;
+    if (prevMessage === '2' && !_.get(props, 'data.closeReveal')) {
+      skoash.trigger('quit');
+      return;
+    }
 
     this.updateGameState({
       path: 'game',
@@ -107,6 +126,10 @@ export default function (props, ref, key) {
     this.updateGameState({
       path: 'openReveal',
       data: false,
+    });
+    this.updateGameState({
+      path: 'correct',
+      data: 0,
     });
 
     if (prevMessage === '1') {
@@ -135,7 +158,13 @@ export default function (props, ref, key) {
       >
         <skoash.Audio type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />
         <skoash.Audio type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />
-        <skoash.Audio type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" />
+        <skoash.Audio type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />
+      </MediaCollection>
+      <MediaCollection
+        play={_.get(props, 'data.game.sfx')}
+        onPlay={onPlaySFX}
+      >
+        <skoash.Audio ref="light-capture" type="sfx" src="media/_sounds/_effects/LightCapture.mp3" />
       </MediaCollection>
       <Reveal
         openOnStart="0"
@@ -271,6 +300,9 @@ export default function (props, ref, key) {
       <DPad
         start={_.get(props, 'data.game.start', false)}
         stop={_.get(props, 'data.game.stop', false)}
+        assets={[
+          <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
+        ]}
       />
     </skoash.Screen>
   );

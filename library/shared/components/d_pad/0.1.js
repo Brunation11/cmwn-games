@@ -9,6 +9,8 @@ class DPad extends skoash.Component {
   constructor() {
     super();
 
+    this.keys = {};
+
     this.mousedown = this.mousedown.bind(this);
     this.mouseup = this.mouseup.bind(this);
     this.keydown = this.keydown.bind(this);
@@ -78,6 +80,7 @@ class DPad extends skoash.Component {
     window.removeEventListener('keydown', this.keydown);
     window.removeEventListener('keyup', this.keyup);
 
+    this.keys = {};
     this.updateGameState({
       path: this.props.outputTarget,
       data: {
@@ -90,6 +93,9 @@ class DPad extends skoash.Component {
   }
 
   updateRef(ref, isDown = true) {
+    if (this.keys[ref] === isDown) return;
+    if (isDown && this.media.keydown) this.media.keydown.play();
+    this.keys[ref] = isDown;
     this.updateGameState({
       path: this.props.outputTarget,
       data: {
