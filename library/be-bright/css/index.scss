@@ -230,7 +230,6 @@ p {
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
-    z-index: 1;
   }
 
   .screen .next-screen:hover {
@@ -736,7 +735,7 @@ $grey: #8ebbcd;
   .score {
     position: relative;
     width: 100px;
-    height: 400px;
+    height: 380px;
     background-image: url(../media/_sprites/sprites.meter.png);
     background-repeat: no-repeat;
     background-size: 380px;
@@ -1231,18 +1230,18 @@ $grey: #8ebbcd;
 #labyrinth-level-three-screen {
   .labyrinth {
     .interactive-item {
-      $item-lefts: 110  50  75 280 280 430;
-      $item-tops:   80 220 380 225 365 315;
-      @for $i from 1 through 6 {
+      $item-lefts: 110  50  75 280 280 430 240;
+      $item-tops:   80 220 380 205 365 315   5;
+      @for $i from 1 through 7 {
         &.item-#{$i} {
           left: #{nth($item-lefts, $i)}px;
           top: #{nth($item-tops, $i)}px;
         }
       }
 
-      $enemy-lefts: 100 230 230 385;
-      $enemy-tops:  220 240 100 280;
-      @for $i from 1 through 4 {
+      $enemy-lefts: 100 250 270 405  35 215;
+      $enemy-tops:  140 240 100 270 350 310;
+      @for $i from 1 through 6 {
         &.enemy-#{$i} {
           left: #{nth($enemy-lefts, $i)}px;
           top: #{nth($enemy-tops, $i)}px;

@@ -6,8 +6,8 @@ export default function (props, ref, key) {
   return LabyrinthScreenComponent(props, ref, key, {
     id: 'labyrinth-level-three-screen',
     levelNumber: 3,
-    itemsCount: 6,
-    enemiesCount: 4,
+    itemsCount: 7,
+    enemiesCount: 6,
     vos: [
       <skoash.MediaSequence ref="level-up" silentOnStart>
         <skoash.Audio
@@ -19,13 +19,13 @@ export default function (props, ref, key) {
           type="voiceOver"
           playTarget="thanks"
           src="media/_sounds/_vos/YouWon.mp3"
-          sprite={[2000, 3000]}
+          sprite={[2000, 2750]}
         />
         <skoash.Audio
           type="voiceOver"
           playTarget="caring"
           src="media/_sounds/_vos/YouWon.mp3"
-          sprite={[5000, 2000]}
+          sprite={[4750, 2000]}
         />
       </skoash.MediaSequence>,
       <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
