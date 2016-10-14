@@ -40,6 +40,7 @@ export default function (props, ref, key, opts = {}) {
   };
 
   onLabyrinthStart = function () {
+    clearInterval(this.interval);
     this.interval = setInterval(() => {
       var offset;
       if (_.get(props, 'data.game.stop', false)) return;
@@ -186,7 +187,7 @@ export default function (props, ref, key, opts = {}) {
         input={_.get(props, 'data.d-pad', {})}
         startX={245}
         startY={380}
-        speed={2}
+        speed={4}
         scale={_.get(props, 'gameState.scale', 1)}
         start={_.get(props, 'data.game.start', false)}
         onStart={onLabyrinthStart}

@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import LabyrinthScreenComponent from './labyrinth_screen_component';
 
 export default function (props, ref, key) {
@@ -7,7 +9,7 @@ export default function (props, ref, key) {
     itemsCount: 6,
     enemiesCount: 4,
     vos: [
-      <skoash.MediaSequence ref="level-up" playOnStart={false}>
+      <skoash.MediaSequence ref="level-up" silentOnStart>
         <skoash.Audio
           type="voiceOver"
           src="media/_sounds/_vos/YouWon.mp3"
@@ -17,7 +19,7 @@ export default function (props, ref, key) {
           type="voiceOver"
           playTarget="thanks"
           src="media/_sounds/_vos/YouWon.mp3"
-          sprite={[2000, 5000]}
+          sprite={[2000, 3000]}
         />
         <skoash.Audio
           type="voiceOver"
@@ -33,13 +35,16 @@ export default function (props, ref, key) {
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <skoash.Image className="trophy" src="media/_images/win.trophy.png" />
         <skoash.Image className="hidden" src="media/_images/energyhog.greyscale.png" />
-        <div className="hog" />
+        <div className={classNames('hog', {
+          blur: _.get(props, 'data.thanks.playing'),
+          hide: _.get(props, 'data.caring.playing'),
+        })} />
         <div className="copy">
           <p>
             <skoash.Image src="media/_images/text.congrats.png" />
             <skoash.Image src="media/_images/text.youvewon.png" />
-            <div className={_.get(props, 'data.thanks.playing') ? 'display' : ''}>Thanks for being an Eco-Hero</div>
-            <div className={_.get(props, 'data.caring.playing') ? 'display' : ''}>and caring about the environment!</div>
+            <div className={classNames({display: _.get(props, 'data.thanks.playing')})}>Thanks for being an Eco-Hero</div>
+            <div className={classNames({display: _.get(props, 'data.caring.playing')})}>and caring about the environment!</div>
           </p>
         </div>
       </skoash.Component>,

@@ -1012,6 +1012,16 @@ $grey: #8ebbcd;
         height: 200px;
         background-image: url(../media/_images/energyhog.greyscale.png);
         background-size: 220px;
+        opacity: 1;
+        transition: filter .5s, opacity .5s;
+
+        &.blur {
+          filter: blur(10px);
+        }
+
+        &.hide {
+          opacity: 0;
+        }
       }
 
       p {
@@ -1038,6 +1048,13 @@ $grey: #8ebbcd;
         }
 
         div {
+          opacity: 0;
+          transition: opacity .5s;
+
+          &.display {
+            opacity: 1;
+          }
+
           &:nth-of-type(1) {
             margin-left: -130px;
           }
