@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1.js';
 import Reveal from 'shared/components/reveal/0.1.js';
 
@@ -23,10 +21,13 @@ class SelectableReveal extends skoash.Component {
     if (this.props.answers.length) {
       if (this.props.answers.indexOf(message) === -1) {
         if (this.audio.incorrect) this.audio.incorrect.play();
-      } else {
-        if (this.audio.correct) {
-          this.audio.correct.play();
+        if (this.props.revealAll) {
+          if (typeof this.refs.reveal.open === 'function') {
+            this.open(message);
+          }
         }
+      } else {
+        if (this.audio.correct) this.audio.correct.play();
         if (typeof this.refs.reveal.open === 'function') {
           this.open(message);
         }
@@ -76,7 +77,7 @@ class SelectableReveal extends skoash.Component {
         randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
         chooseOne={this.props.chooseOne}
-        answers={this.props.answers}
+        // answers={this.props.answers}
         allowDeselect={this.props.allowDeselect}
       />
     );
@@ -93,6 +94,8 @@ class SelectableReveal extends skoash.Component {
         checkComplete={this.props.revealCheckComplete}
         openOnStart={this.props.openOnStart}
         hide={this.props.hideReveal}
+        openReveal={this.props.openReveal}
+        onOpen={this.props.onOpen}
       />
     );
   }

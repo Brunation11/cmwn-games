@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Target from 'shared/components/target/0.1';
 import Carousel from 'shared/components/carousel/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
@@ -22,7 +20,7 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden reveal" src="media/_Frame/Fr_3.png" />
       <skoash.Component className="group">
         <Carousel
-          className="slide"
+          className={'slide' + (_.get(props, 'data.revealScore.score', 0) === 8 ? ' disable' : '')}
           clickable
           delay={400}
           targetIndex={2}
@@ -64,7 +62,7 @@ export default function (props, ref, key) {
           }}
           dataTarget="target"
           setTarget={_.get(props, 'data.revealScore.score', 0)}
-          complete
+          completeOnStart
           checkComplete={false}
           targets={[
             <skoash.Image name="loops" amount={2} targetClass="loops-2" className="animated" src="media/S_10/img_10.11.png" />,
@@ -86,6 +84,7 @@ export default function (props, ref, key) {
           dataTarget="score"
           completeDelay={1000}
           max={_.get(props, 'data.target.amount', null)}
+          complete
           resetOnComplete
           multipleCompletes
           onComplete={function () {
@@ -98,7 +97,7 @@ export default function (props, ref, key) {
             this.updateGameState({
               path: 'revealScore',
               data: {
-                score: (_.get(props, 'data.revealScore.score', 0) % 8) + 1
+                score: _.get(props, 'data.revealScore.score', 0) + 1
               }
             });
           }}

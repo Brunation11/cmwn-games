@@ -41,7 +41,7 @@ html, body, body > div, body > div > div {
   .background.lets-clean-up {
     background-image: url(../media/_BKG/BKG_2.png);
   }
-  
+
   .background.select {
     background-image: url(../media/_BKG/BKG_3.png);
 
@@ -162,6 +162,21 @@ button {
   }
 }
 
+@media(max-width: 601px) {
+  button {
+    &.close {
+      width: 50px;
+      height: 50px;
+      background-size: auto 525px;
+      background-position: -231px 435px;
+
+      &:hover {
+        background-position: -231px 165px;
+      }
+    }
+  }
+}
+
 #room,
 #school,
 #ground {
@@ -236,6 +251,7 @@ p {
     margin-right: 5px;
     right: 0;
     opacity: 0;
+    pointer-events: none;
     transform: rotate(-180deg);
     transition: opacity 1s, transform 1s;
   }
@@ -247,7 +263,8 @@ p {
 
   .DEMO .screen .next-screen,
   .DEMO #clean-up .close-reveal,
-  .screen.COMPLETE .next-screen {
+  .screen.COMPLETE .next-screen,
+  .screen.REPLAY .next-screen {
     opacity: 1;
     transform: rotate(0deg);
     cursor: pointer;
@@ -267,17 +284,17 @@ p {
   }
 
   .screen .next-screen:hover {
-    
+
   }
 
   .screen .prev-screen {
     margin-left: 5px;
     left: 0;
-    
+
   }
-  
+
   .screen .prev-screen:hover {
-    
+
   }
 
 .screen {
@@ -377,7 +394,7 @@ p {
     }
 
     &.COMPLETE {
-      
+
       img.symbol {
         animation-name: bounceIn;
         opacity: 1;
@@ -820,7 +837,8 @@ p {
     }
   }
 
-  &.COMPLETE {
+  &.COMPLETE,
+  .DEMO & {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -871,7 +889,8 @@ p {
     }
   }
 
-  &.COMPLETE {
+  &.COMPLETE,
+  .DEMO & {
     button.next-screen {
       opacity: 1;
       cursor: pointer;

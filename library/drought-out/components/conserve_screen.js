@@ -1,9 +1,16 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
+  var closeReveal = function () {
+    this.updateGameState({
+      path: 'reveal',
+      data: {
+        close: true
+      }
+    });
+  };
+
   var ConserveScreen = (
     <skoash.Screen
       {...props}
@@ -12,15 +19,19 @@ export default function (props, ref, key) {
       id="conserve"
       className={_.get(props, 'data.selectable.target') ? 'SELECTING' : null}
     >
-
       <skoash.Image src="media/S_17/img_17.1.png" />
-
-      <div id="door-sprite"></div>
-
+      <skoash.Image className="hidden" src="media/_Frames/FR_4.png" />
+      <skoash.Image className="hidden" src="media/S_17/img_sp_17.1.png" />
+      <skoash.Image className="hidden" src="media/S_17/img_sp_17.2.png" />
+      <div id="door-sprite" className={
+        _.get(props, 'data.reveal.open') ? 'open' : ''
+      }></div>
       <Selectable
         ref="selectable"
         list={[
-          <li id="door" />
+          <li id="door" className={
+            _.get(props, 'data.reveal.open') ? 'open' : ''
+          } />
         ]}
         dataTarget="selectable"
         selectRespond={function () {
@@ -34,12 +45,29 @@ export default function (props, ref, key) {
           });
         }}
       />
-
       <skoash.Component ref="frame" className="frame animated">
-
         <Reveal
           ref="reveal"
-
+          openReveal={'' + _.get(props, 'data.reveal.index', '')}
+          closeReveal={_.get(props, 'data.reveal.close')}
+          onOpen={function () {
+            this.updateGameState({
+              path: 'reveal',
+              data: {
+                open: true,
+                close: false,
+              }
+            });
+          }}
+          onClose={function () {
+            this.updateGameState({
+              path: 'reveal',
+              data: {
+                open: false,
+                close: false,
+              }
+            });
+          }}
           list={[
             <li>Don't let the water<br /> run while<br /> washing dishes</li>,
             <li>Don't let the water<br /> run continuously while<br /> brushing your teeth</li>,
@@ -51,31 +79,25 @@ export default function (props, ref, key) {
             <li>Wash the car in the grass<br /> instead of the driveway</li>,
             <li>Sweep sidewalks instead<br /> of hosing them</li>
           ]}
-
-          openReveal={'' + _.get(props, 'data.reveal.index')}
-
           assets={[
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.2.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.3.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.4.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.5.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.6.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.7.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.9.mp3"  />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.10.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_17/VO_17.11.mp3" />,
-            <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Reveals/S_RV_1.mp3" />,
-            <skoash.Audio data-ref="close-sound" type="sfx" src="media/_Reveals/S_RV_2.mp3" delay={500} />
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.2.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.3.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.4.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.5.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.6.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.7.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.9.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.10.mp3" />,
+            <skoash.Audio onComplete={closeReveal} type="voiceOver" src="media/S_17/VO_17.11.mp3" />,
+            <skoash.Audio data-ref="open-sound" type="sfx" src="media/_Reveals/S_RV_1.mp3" onPlay={() => {console.error('open')}} />,
+            <skoash.Audio data-ref="close-sound" type="sfx" src="media/_Reveals/S_RV_2.mp3" delay={500} onPlay={() => {console.error('close')}} />
           ]}
-
           onAudioComplete={function (asset) {
             if (asset.props.type === 'voiceOver' && this.audio['close-sound']) this.audio['close-sound'].play();
           }}
         />
-
       </skoash.Component>
-      <skoash.Audio ref="start" type="voiceOver" src="media/S_17/VO_17.1.mp3" />
-
+      <skoash.Audio type="voiceOver" src="media/S_17/VO_17.1.mp3" />
     </skoash.Screen>
   );
 

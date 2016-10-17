@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Flyer extends skoash.Component {
   constructor() {
     super();
@@ -64,15 +62,17 @@ class Flyer extends skoash.Component {
   }
 
   onResize() {
-    var zoom = skoash.trigger('getState').scale;
-    var curRect = this.flyerNode.getBoundingClientRect();
-    var containerHeight = this.flyerNode.offsetParent ? this.flyerNode.offsetParent.offsetHeight : 0;
+    skoash.trigger('getState').then(state => {
+      var zoom = state.scale;
+      var curRect = this.flyerNode.getBoundingClientRect();
+      var containerHeight = this.flyerNode.offsetParent ? this.flyerNode.offsetParent.offsetHeight : 0;
 
-    this.setState({
-      zoom,
-      containerHeight,
-      flyerHeight: (curRect.bottom - curRect.top) / zoom,
-      initialOffsetY: curRect.top - this.state.translateY * zoom
+      this.setState({
+        zoom,
+        containerHeight,
+        flyerHeight: (curRect.bottom - curRect.top) / zoom,
+        initialOffsetY: curRect.top - this.state.translateY * zoom
+      });
     });
   }
 

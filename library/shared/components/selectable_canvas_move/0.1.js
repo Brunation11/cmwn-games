@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
@@ -147,7 +146,7 @@ class SelectableCanvasMove extends SelectableCanvas {
       classes,
     });
 
-    this.callProp('onSelect', target);
+    this.props.onSelect.call(this, target);
 
     this.checkComplete();
   }
@@ -201,7 +200,8 @@ class SelectableCanvasMove extends SelectableCanvas {
 }
 
 SelectableCanvasMove.defaultProps = _.defaults({
-  items: []
+  items: [],
+  onSelect: _.identity,
 }, SelectableCanvas.defaultProps);
 
 export default SelectableCanvasMove;

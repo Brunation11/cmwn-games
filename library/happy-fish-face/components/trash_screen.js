@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
@@ -62,7 +61,7 @@ class TrashScreenComponent extends skoash.Screen {
   }
 
   moveCursor(e) {
-    var zoom = skoash.trigger('getState').scale;
+    var zoom = this.props.gameState.scale;
     this.setState({
       cursorLeft: e.clientX / zoom - 50,
       cursorTop: e.clientY / zoom - 65,
@@ -95,7 +94,6 @@ class TrashScreenComponent extends skoash.Screen {
 
   onSelectableAudioComplete() {
     if (!this.state.revealOpen) {
-
       this.setState({
         revealOpen: true,
       }, () => {
@@ -120,7 +118,8 @@ class TrashScreenComponent extends skoash.Screen {
     this.refs['center-2'].close();
     if (ref === TRY_AGAIN) {
       this.refs.timer.restart();
-      this.refs['selectable-audio'].restart();
+      this.refs['selectable-audio'].start();
+      this.refs['selectable-audio'].incompleteRefs();
     }
   }
 

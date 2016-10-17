@@ -1,22 +1,21 @@
-class AudioSequence extends play.Component {
+// USE MEDIA SEQUENCE INSTEAD
+import _ from 'lodash';
+
+class AudioSequence extends skoash.Component {
   constructor() {
     super();
 
+    this.playingIndex = 0;
     this.playNext = this.playNext.bind(this);
   }
 
   start() {
-    if (!this.props.silentOnStart) this.play();
-  }
-
-  play() {
     this.setState({
       started: true
     });
 
-    if (this.props.playOnStart && this.refs[0]) {
-      this.playingIndex = 0;
-      this.refs[0].play();
+    if (this.props.playOnStart) {
+      this.play();
     }
 
     if (this.props.checkComplete !== false) {
@@ -24,16 +23,47 @@ class AudioSequence extends play.Component {
     }
   }
 
+  getInterval() {
+    if (typeof this.props.playInterval === 'number') {
+      return this.props.playInterval;
+    }
+
+    if (typeof this.props.playInterval === 'object') {
+      return this.props.playInterval[this.playingIndex - 1];
+    }
+
+    return;
+  }
+
+  playInterval(lastInterval) {
+    var interval = this.getInterval();
+    if (!interval) interval = lastInterval;
+
+    setTimeout(() => {
+      if (this.playNext()) {
+        this.playInterval(interval);
+      }
+    }, interval);
+  }
+
   play() {
-    if (this.refs[0]) {
-      this.playingIndex = 0;
-      this.refs[0].play();
+    this.playingIndex = 0;
+    this.playNext();
+    if (this.props.playInterval) { // TODO: make media sequence play on interval too 8/19/16 AIM
+      this.playInterval();
     }
   }
 
   playNext() {
-    var next = this.refs[++this.playingIndex];
-    if (next) next.play();
+    var next = this.refs[this.playingIndex++];
+    if (next) {
+
+      next.play();
+      if (typeof this.props.onPlay === 'function') {
+        this.props.onPlay();
+      }
+    }
+    return next;
   }
 
   renderContentList() {
@@ -44,7 +74,7 @@ class AudioSequence extends play.Component {
         {...component.props}
         ref={key}
         key={key}
-        onComplete={self.playNext}
+        onComplete={!this.props.playInterval ? self.playNext.bind(self) : null}
       />
     );
   }
@@ -52,7 +82,7 @@ class AudioSequence extends play.Component {
 
 AudioSequence.defaultProps = _.defaults({
   playOnStart: true
-});
+}, skoash.Component.defaultProps);
 
 
 export default AudioSequence;

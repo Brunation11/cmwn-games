@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Canvas from 'shared/components/canvas/0.1';
 import Menu from 'shared/components/menu/0.1';
 import Selectable from 'shared/components/selectable/0.1';
@@ -80,8 +78,7 @@ class CanvasScreen extends skoash.Screen {
   }
 
   setMenu() {
-    var menu, state;
-    state = skoash.trigger('getState');
+    var menu, state = this.props.gameState;
 
     if (state && state.data && state.data.menu) {
       menu = state.data.menu;

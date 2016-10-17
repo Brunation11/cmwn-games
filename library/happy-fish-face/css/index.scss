@@ -234,8 +234,15 @@ p {
   cursor: default;
 }
 
+.skoash-game.MENU-quit .screen {
+  &:not(#quit) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 
 .pl-game.DEMO .screen .next-screen,
+.screen.REPLAY .next-screen,
 .screen.COMPLETE .next-screen {
   opacity: 1;
   transform: rotate(0deg);
@@ -243,17 +250,17 @@ p {
 }
 
 .screen .next-screen:hover {
-  
+
 }
 
 .screen .prev-screen {
   margin-left: 5px;
   left: 0;
-  
+
 }
 
 .screen .prev-screen:hover {
-  
+
 }
 
 .screen {
@@ -544,11 +551,16 @@ p {
 
   &.OPEN {
     .stars-container {
-      animation: stars-container 4.4s forwards;
-    }
+      background-position: 0px center;
 
-    .stars {
-      animation: stars 4s steps(2) forwards;
+      @for $i from 1 through 3 {
+        &.star-#{$i} {
+          animation: stars-#{$i} .4s forwards;
+          .stars {
+            background-position: (-363.5 * ($i - 1))+px center;
+          }
+        }
+      }
     }
   }
 }
@@ -571,15 +583,20 @@ p {
       margin-left: -80px;
   }
 
+  .flip-container {
+    opacity: 0;
+    transition: opacity .5s;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
   &.OPEN {
     .fish {
       animation-name: title;
       animation-duration: 4s;
       animation-iteration-count: infinite;
-    }
-
-    .flip-container {
-      animation: flip-container 4s forwards;
     }
 
     .flip {

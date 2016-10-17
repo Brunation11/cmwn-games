@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -38,8 +36,6 @@ import TipsScreen from './components/tips_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
-
-import 'shared/js/test-platform-integration';
 
 class TagIt extends skoash.Game {
   constructor() {
@@ -136,5 +132,3 @@ class TagIt extends skoash.Game {
 }
 
 skoash.start(TagIt, config.id);
-
-import 'shared/js/google-analytics';

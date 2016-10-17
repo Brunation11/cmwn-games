@@ -1,3 +1,5 @@
+import Repeater from 'shared/components/repeater/0.1';
+
 export default function (props, ref, key) {
   return (
     <skoash.Screen
@@ -13,22 +15,7 @@ export default function (props, ref, key) {
             <skoash.Image className="words" src="media/_images/_S_WaterPollution/img_3.1.png" />
             <skoash.Image className="fish" src="media/_images/_S_WaterPollution/img_3.2.png" />
           </skoash.Component>
-        <div className="bubbles">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        <Repeater className="bubbles" amount={14} />
         </skoash.Component>
       </skoash.Component>
     </skoash.Screen>

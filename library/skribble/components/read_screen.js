@@ -46,7 +46,7 @@ class ReadScreen extends skoash.Screen {
 
     message = opts.message || {};
 
-    friends = skoash.trigger('getState').data.user || [];
+    friends = this.props.gameState.data.user || [];
     friends.forEach(friend => {
       if (message.created_by === friend.friend_id) {
         creater = friend;
