@@ -6,6 +6,8 @@ export default function (props, ref, key) {
     levelNumber: 2,
     itemsCount: 6,
     enemiesCount: 4,
+    disableChance: .75,
+    disableInterval: 4000,
     vos: [
       <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp2.mp3" />,
       <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,

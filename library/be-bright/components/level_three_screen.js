@@ -8,6 +8,8 @@ export default function (props, ref, key) {
     levelNumber: 3,
     itemsCount: 7,
     enemiesCount: 6,
+    disableChance: .75,
+    disableInterval: 2000,
     vos: [
       <skoash.MediaSequence ref="level-up" silentOnStart>
         <skoash.Audio

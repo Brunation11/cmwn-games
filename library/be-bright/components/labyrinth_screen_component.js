@@ -50,9 +50,9 @@ export default function (props, ref, key, opts = {}) {
       };
       _.each(this.enemies, enemy => {
         if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
-        Math.random() < .75 ? enemy.disable() : enemy.enable();
+        Math.random() < opts.disableChance ? enemy.disable() : enemy.enable();
       });
-    }, 4000);
+    }, opts.disableInterval);
   };
 
   onLabyrinthStop = function () {

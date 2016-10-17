@@ -1204,6 +1204,15 @@ $grey: #8ebbcd;
 }
 
 #labyrinth-level-two-screen {
+  .score {
+    $level-two-scores: 0 1 1 2 2 3;
+    @for $i from 1 through 6 {
+      &.score-#{$i * 10} {
+        background-position: -#{nth($level-two-scores, $i) * 93}px 0;
+      }
+    }
+  }
+
   .labyrinth {
     .interactive-item {
       $item-lefts: 110  50  75 280 280 430;
@@ -1228,6 +1237,15 @@ $grey: #8ebbcd;
 }
 
 #labyrinth-level-three-screen {
+  .score {
+    $level-three-scores: 0 0 1 1 2 2 3;
+    @for $i from 1 through 7 {
+      &.score-#{$i * 10} {
+        background-position: -#{nth($level-three-scores, $i) * 93}px 0;
+      }
+    }
+  }
+
   .labyrinth {
     .interactive-item {
       $item-lefts: 110  50  75 280 280 430 240;
