@@ -12,6 +12,7 @@ class Score extends skoash.Component {
   }
 
   checkComplete() {
+    if (!this.props.checkComplete || !this.state.ready || !this.requireForComplete) return;
     if (!this.props.max) return;
     if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) && !this.state.complete) this.complete();
   }
@@ -50,21 +51,12 @@ class Score extends skoash.Component {
     increment = _.isFinite(increment) ? increment : _.isFinite(this.props.increment) ? this.props.increment : 1;
     if (!_.isFinite(increment)) throw 'increment must be finite';
 
-    this.setState({
-      score: this.state.score + increment
-    }, this.checkComplete);
-
     this.updateScore(increment);
   }
 
   down(increment) {
     increment = _.isFinite(increment) ? increment : _.isFinite(this.props.downIncrement) ? this.props.downIncrement : _.isFinite(this.props.increment) ? this.props.increment : 1;
-
     if (!_.isFinite(increment)) throw 'increment must be finite';
-
-    this.setState({
-      score: this.state.score - increment
-    }, this.checkComplete);
 
     this.updateScore(-1 * increment);
   }
@@ -106,6 +98,8 @@ class Score extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.correct !== this.props.correct ||
       props.incorrect !== this.props.incorrect) {
       this.setScore(props);

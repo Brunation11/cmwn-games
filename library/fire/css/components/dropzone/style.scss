@@ -1,0 +1,22 @@
+.dropzone-container .dropzone {
+  width: 300px; height: 200px;
+}
+
+.dropzone-container ul {
+  z-index: 1;
+}
+
+.draggable {
+  cursor: pointer;
+  &.RETURN {
+    transition: transform .5s;
+  }
+
+  &.CORRECT {
+    transition: opacity .5s;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+

@@ -13,6 +13,8 @@ export default class RevealPrompt extends skoash.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    super.componentWillReceiveProps(nextProps);
+
     if (nextProps.openReveal != null && nextProps.openReveal !== this.props.openReveal) {
       this.open(nextProps.openReveal);
     }
@@ -52,7 +54,7 @@ export default class RevealPrompt extends skoash.Component {
     }
 
     if (self.props.autoClose) {
-      setTimeout(function() {
+      setTimeout(function () {
         self.close();
       }, 2000);
     }
@@ -71,7 +73,7 @@ export default class RevealPrompt extends skoash.Component {
 
   renderList() {
     return this.props.list.map((li, key) => {
-      var ref = li.props['ref'] == null ? key : li.props['ref'];
+      var ref = li.props.ref == null ? key : li.props.ref;
       return (
         <li.type
           {...li.props}

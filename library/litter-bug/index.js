@@ -20,11 +20,10 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-class LitterBug extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var LitterBug = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: LetsCleanUpScreen,
@@ -38,48 +37,32 @@ class LitterBug extends skoash.Game {
       10: TakePledgeScreen,
       11: CommitScreen,
       12: FlipScreen,
-    };
+    }}
+    menus={{
+      quit: QuitScreen,
+    }}
+    loader={<Loader />}
+    assets={[
+      <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>,
+      <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
+      <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />,
+      <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />,
+      <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />,
+      <skoash.Image ref="img-bkg-4" className="hidden" src="media/_BKG/BKG_4.png" />,
+      <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
+      <div className="background default" />,
+      <div className="background lets-clean-up" />,
+      <div className="background select" />,
+      <div className="background sun" />,
+      <div className="background commit" />,
+    ]}
+    passData={function (opts) {
+      this.setState(opts);
+    }}
+    getClassNames={function () {
+      return classNames({'SUN': this.state.sun});
+    }}
+  />
+);
 
-    this.menus = {
-      quit: <QuitScreen />,
-    };
-  }
-
-  passData(opts) {
-    this.setState(opts);
-  }
-
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  getClassNames() {
-    return classNames({
-      'SUN': this.state.sun
-    }, skoash.Game.prototype.getClassNames.call(this));
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>
-        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />
-        <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />
-        <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />
-        <skoash.Image ref="img-bkg-4" className="hidden" src="media/_BKG/BKG_4.png" />
-        <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />
-        <div className="background default" />
-        <div className="background lets-clean-up" />
-        <div className="background select" />
-        <div className="background sun" />
-        <div className="background commit" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(LitterBug, config.id);
+skoash.start(LitterBug);
