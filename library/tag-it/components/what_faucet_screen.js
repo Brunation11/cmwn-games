@@ -6,7 +6,10 @@ import Selectable from 'shared/components/selectable/0.1';
 
 export default function (props, ref, key) {
   function getClassNames(ref2) {
-    return ClassNames(ref2, {animated: _.get(props, `data[${ref2}].playing`)});
+    return ClassNames(ref2, {
+      animated: _.get(props, `data[${ref2}].playing`),
+      selectable: _.get(props, 'data[\'media-sequence\'].complete'),
+      });
   }
 
   return (
@@ -18,8 +21,16 @@ export default function (props, ref, key) {
     >
       <div className="question" />
       <skoash.MediaSequence
-         ref="audio-sequence"
-         checkComplete={true}
+        ref="audio-sequence"
+        checkComplete={true}
+        onComplete={() => {
+          skoash.trigger('updateState', {
+            path: 'media-sequence',
+            data: {
+              complete: true
+            }
+          });
+        }}
       >
         <skoash.Audio
           ref="what-faucet"

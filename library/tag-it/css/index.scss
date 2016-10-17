@@ -467,6 +467,7 @@ img.inline {
     height: 540px;
     background-size: 1200px;
     background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
+    z-index: -1;
   }
 
   p {
@@ -601,11 +602,16 @@ img.inline {
       background-size: 3750px;
       background-repeat: no-repeat;
       background-position: -1500px 0px;
-      cursor: pointer;
+      pointer-events: none;
       opacity: 0;
 
       &.animated {
         animation-name: fadeInRight;
+      }
+
+      &.selectable {
+        cursor: pointer;
+        pointer-events: auto;
       }
 
       &:hover,
@@ -896,6 +902,12 @@ img.inline {
       animation-name: slideInLeft;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #scissors-and-paint {
@@ -1054,6 +1066,12 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #step-6 {
@@ -1140,6 +1158,12 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #decorate-tag {
@@ -1216,6 +1240,12 @@ img.inline {
       animation-delay: 1s;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #select-paint {
@@ -1244,6 +1274,12 @@ img.inline {
     img {
       animation-name: slideInRight;
       animation-delay: 1s;
+    }
+  }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
     }
   }
 }
@@ -1290,6 +1326,12 @@ img.inline {
     .step {
       animation-name: fadeInLeftBig;
       animation-delay: 1s;
+    }
+  }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
     }
   }
 }
