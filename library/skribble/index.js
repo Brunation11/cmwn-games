@@ -21,14 +21,6 @@ import CollisionWarning from './components/collision_warning';
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
 class SkribbleGame extends skoash.Game {
-  constructor(props) {
-    super(props);
-
-    this.state.data.collisionWarning = {
-      show: true
-    };
-  }
-
   ready() {
     if (!this.state.ready) {
       this.getMediaOnReady();
@@ -311,6 +303,10 @@ var Skribble = (
     onBootstrap={function () {
       this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
       this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
+
+      this.state.data.collisionWarning = {
+        show: true
+      };
     }}
     renderMenu={function () {
       return (
