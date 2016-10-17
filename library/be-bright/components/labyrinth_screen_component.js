@@ -160,7 +160,7 @@ export default function (props, ref, key, opts = {}) {
       <skoash.Image className="hidden" src="media/_images/frame.lvlup.png" />
       <skoash.Image className="hidden" src="media/_images/frame.sorry.png" />
       <skoash.Image className="hidden" src="media/_images/frame.win.png" />
-      <skoash.Image className="hidden" src="media/_sprites/sprites.meter.png" />
+      <skoash.Image className="hidden" src="media/_images/inside.meter.png" />
       <MediaCollection
         play={_.get(props, 'data.game.vo')}
         children={opts.vos}
