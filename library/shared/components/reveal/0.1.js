@@ -34,16 +34,16 @@ class Reveal extends skoash.Component {
       }, 2000);
     }
 
-    if (this.props.openTarget) {
-      this.updateGameState({
-        path: this.props.openTarget,
+    if (self.props.openTarget) {
+      self.updateGameState({
+        path: self.props.openTarget,
         data: {
           open: '' + message
         }
       });
     }
 
-    self.callProp('onOpen', message);
+    self.props.onOpen.call(self, message);
   }
 
   close() {
@@ -58,7 +58,7 @@ class Reveal extends skoash.Component {
       this.audio['close-sound'].play();
     }
 
-    this.callProp('onClose');
+    this.props.onClose.call();
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -194,6 +194,8 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  onOpen: _.identity,
+  onClose: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Reveal;
