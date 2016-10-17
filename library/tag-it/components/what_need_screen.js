@@ -2,7 +2,9 @@ import ClassNames from 'classnames';
 
 export default function (props, ref, key) {
   function getClassNames(ref2) {
-    return ClassNames(ref2, {animated: _.get(props, `data[${ref2}].playing`)});
+    var animated = _.get(props, `data[${ref2}].playing`) ||
+      props.gameState.currentScreenIndex === 12;
+    return ClassNames(ref2, {animated});
   }
 
   return (
