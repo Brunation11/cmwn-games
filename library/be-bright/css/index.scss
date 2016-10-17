@@ -175,7 +175,6 @@ p {
   opacity: 0;
   display: none;
   transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
 
   &:not(.COMPLETE) {
     button {
@@ -190,7 +189,6 @@ p {
 
 .screen.OPEN {
   opacity: 1;
-  transform: translateX(0);
 }
 
 .screen.READY {
@@ -198,8 +196,7 @@ p {
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+  opacity: 0;
 }
 
   .screen .next-screen,
