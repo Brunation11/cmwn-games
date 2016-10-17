@@ -731,16 +731,22 @@ $grey: #8ebbcd;
 
   .score {
     position: relative;
-    width: 100px;
-    height: 380px;
-    background-image: url(../media/_sprites/sprites.meter.png);
+    width: 80px;
+    height: 360px;
+    background-image: url(../media/_images/inside.meter.png);
     background-repeat: no-repeat;
-    background-size: 380px;
+    background-color: #fff;
+    background-size: 80px 360px;
+    border: 10px solid $yellow;
+    border-radius: 50px;
     margin-left: 22px;
+    -webkit-transition: background-position .5s cubic-bezier(.53,0,.63,1);
+    transition: background-position .5s cubic-bezier(.53,-0.56,.63,1.74);
 
-    @for $i from 1 through 4 {
+
+    @for $i from 0 through 4 {
       &.score-#{$i * 10} {
-        background-position: -#{($i - 1) * 93}px 0;
+        background-position: 0px #{360 - 360 * ($i / 4)}px;
       }
     }
 
@@ -748,7 +754,7 @@ $grey: #8ebbcd;
       content: 'score';
       position: absolute;
       display: block;
-      left: 0;
+      left: -6px;
       top: -40px;
       width: 100%;
       text-align: center;
@@ -1202,10 +1208,9 @@ $grey: #8ebbcd;
 
 #labyrinth-level-two-screen {
   .score {
-    $level-two-scores: 0 1 1 2 2 3;
-    @for $i from 1 through 6 {
+    @for $i from 0 through 6 {
       &.score-#{$i * 10} {
-        background-position: -#{nth($level-two-scores, $i) * 93}px 0;
+        background-position: 0px #{360 - 360 * ($i / 6)}px;
       }
     }
   }
@@ -1235,10 +1240,9 @@ $grey: #8ebbcd;
 
 #labyrinth-level-three-screen {
   .score {
-    $level-three-scores: 0 0 1 1 2 2 3;
-    @for $i from 1 through 7 {
+    @for $i from 0 through 7 {
       &.score-#{$i * 10} {
-        background-position: -#{nth($level-three-scores, $i) * 93}px 0;
+        background-position: 0px #{360 - 360 * ($i / 7)}px;
       }
     }
   }
