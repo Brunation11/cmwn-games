@@ -41,7 +41,7 @@ export default class RevealPrompt extends skoash.Component {
       openReveal: '' + message,
     });
 
-    self.props.onOpen.call(this, message);
+    self.props.onOpen.call(self, message);
 
     if (self.props.completeOnOpen) {
       self.complete();
@@ -122,6 +122,12 @@ export default class RevealPrompt extends skoash.Component {
 }
 
 RevealPrompt.defaultProps = _.defaults({
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
   onOpen: _.identity,
   onClose: _.identity,
 }, skoash.Component.defaultProps);
