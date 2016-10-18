@@ -174,7 +174,7 @@ p {
   margin-top: -270px;
   opacity: 0;
   display: none;
-  transition: opacity 1s, transform 0.5s;
+  transition: opacity 1s, transform 0.5s, z-index 0s 1s;
 
   &:not(.COMPLETE) {
     button {
@@ -189,6 +189,13 @@ p {
 
 .screen.OPEN {
   opacity: 1;
+}
+
+#ios-splash.CLOSE,
+#ios-splash.LEAVE,
+.screen.LEAVE,
+.screen.CLOSE {
+  z-index: -1;
 }
 
 .screen.READY {
@@ -273,6 +280,11 @@ p {
     li {
       margin: 0;
       height: 100%;
+      display: none;
+
+      &.OPEN {
+        display: block;
+      }
 
       p {
         position: absolute;
