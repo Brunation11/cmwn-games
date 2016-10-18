@@ -79,7 +79,7 @@ class ItemDrawer extends Selectable {
     if (!this.refs[key]) return;
 
     type = this.refs[key].props.item.asset_type;
-    if (!type) return;
+    // if (!type) return;
 
     if (type === 'folder') {
       categoryName = this.refs[key].props.item.name;
@@ -89,7 +89,7 @@ class ItemDrawer extends Selectable {
       });
     } else {
       message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+      classes[key] = this.props.selectClass;
 
       this.setState({
         message,

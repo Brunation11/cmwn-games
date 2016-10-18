@@ -19,7 +19,7 @@ class Inbox extends Selectable {
     if (!this.refs[key]) return;
 
     message = this.refs[key].props.item;
-    classes[key] = this.state.selectClass;
+    classes[key] = this.props.selectClass;
 
     this.setState({
       message,
