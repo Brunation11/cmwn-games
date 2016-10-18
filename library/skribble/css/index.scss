@@ -711,13 +711,13 @@ p {
     color: #000;
   }
 
-  > div > div:not(.send) {
+  > div > div:not(.goto-send) {
     .save-to-drafts {
       display: none;
     }
   }
 
-  .send {
+  .goto-send {
     .continue {
       display: none;
     }

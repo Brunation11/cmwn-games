@@ -34,6 +34,8 @@ class ItemDrawer extends Selectable {
   start() {
     var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
 
+    skoash.Component.prototype.start.call(this);
+
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 

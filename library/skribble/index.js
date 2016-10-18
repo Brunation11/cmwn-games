@@ -236,7 +236,8 @@ class SkribbleGame extends skoash.Game {
 
   clickRecipient() {
     this.goto({
-      index: 'friend'
+      index: 'friend',
+      goto: this.state.currentScreenIndex,
     });
   }
 
@@ -244,7 +245,10 @@ class SkribbleGame extends skoash.Game {
     if (this.state.recipient) {
       this.goto({index: 'canvas'});
     } else {
-      this.goto({index: 'friend'});
+      this.goto({
+        index: 'friend',
+        goto: 'canvas',
+      });
     }
   }
 
@@ -262,8 +266,8 @@ class SkribbleGame extends skoash.Game {
       content.push(<span className="name">{recipient.name}</span>);
     }
 
-    if (recipient.profile_image) {
-      content.push(<img className="profile-image" src={recipient.profile_image} />);
+    if (recipient.src) {
+      content.push(<img className="profile-image" src={recipient.src} />);
     }
 
     return content;
