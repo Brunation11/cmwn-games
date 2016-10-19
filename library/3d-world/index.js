@@ -45,7 +45,17 @@ var ThreeDWorld = (
       quit: QuitScreen,
     }}
     assets={[
-      <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'f/ac19578747dc6bfa3c17987119174ad2'} />,
+      // <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'f/ac19578747dc6bfa3c17987119174ad2'} />,
+      // <skoash.Audio ref="next" type="sfx" src={ENVIRONMENT.MEDIA + 'f/47c9ce409fbdf96f811b286d21687d10'} />,
+      // <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'f/ac19578747dc6bfa3c17987119174ad2'} />,
+      // <skoash.Audio ref="screen-complete" type="sfx" src={ENVIRONMENT.MEDIA + 'f/0429cd3874bc8c57103be9e9bf778d21'} />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/e5575d4ba4f554fdf4766d9407661343'} loop />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/5601630b0aa9fd96e77a5b4f95bd6b68'} loop />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/ce54e87d81c29921ab4e8c74b4ec71f7'} loop />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/6682dfd1c93c73bfeb23e12023aba66b'} loop />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/c46b1e6e36c0f3d2114c48bf75f8f25b'} loop />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'f/bb980bb844b8a774ec7042b5e7e2f588'} loop />,
+      <skoash.Audio ref="button" type="sfx" src="media/_sounds/Back.mp3" />,
       <skoash.Audio ref="next" type="sfx" src="media/_sounds/Next.mp3" />,
       <skoash.Audio ref="back" type="sfx" src="media/_sounds/Back.mp3" />,
       <skoash.Audio ref="screen-complete" type="sfx" src="media/_sounds/NextAppear.mp3" />,
