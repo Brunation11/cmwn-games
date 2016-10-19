@@ -8,10 +8,6 @@ class ItemDrawer extends Selectable {
   shouldComponentUpdate(nextProps, nextState) {
     var items, quickCheck, itemsChanged;
 
-    if (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes)) {
-      return true;
-    }
-
     items = nextProps.data || [];
 
     if (nextState.category && items[nextState.category]) {
@@ -28,13 +24,11 @@ class ItemDrawer extends Selectable {
       this.quickCheck = quickCheck;
     }
 
-    return itemsChanged;
+    return itemsChanged || (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes));
   }
 
   start() {
     var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
-
-    skoash.Component.prototype.start.call(this);
 
     selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
     selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
@@ -81,7 +75,7 @@ class ItemDrawer extends Selectable {
     if (!this.refs[key]) return;
 
     type = this.refs[key].props.item.asset_type;
-    // if (!type) return;
+    if (!type) return;
 
     if (type === 'folder') {
       categoryName = this.refs[key].props.item.name;
@@ -265,7 +259,7 @@ class ItemDrawer extends Selectable {
 }
 
 ItemDrawer.defaultProps = _.defaults({
-  scrollbarImg: ''
+  scrollbarImg: '',
 }, Selectable.defaultProps);
 
 export default ItemDrawer;
