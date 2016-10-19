@@ -45,7 +45,7 @@ var ThreeDWorld = (
       quit: QuitScreen,
     }}
     assets={[
-      <skoash.Audio ref="button" type="sfx" src="media/_sounds/Back.mp3" />,
+      <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'f/ac19578747dc6bfa3c17987119174ad2'} />,
       <skoash.Audio ref="next" type="sfx" src="media/_sounds/Next.mp3" />,
       <skoash.Audio ref="back" type="sfx" src="media/_sounds/Back.mp3" />,
       <skoash.Audio ref="screen-complete" type="sfx" src="media/_sounds/NextAppear.mp3" />,
