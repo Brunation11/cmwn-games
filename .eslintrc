@@ -9,7 +9,8 @@
         'require': true,
         "module": true,
         "__dirname": true,
-        "autoprefixer": true
+        "autoprefixer": true,
+        "ENVIRONMENT": true
     },
     "parser": "babel-eslint",
     "plugins": [

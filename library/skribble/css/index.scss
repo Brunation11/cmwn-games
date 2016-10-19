@@ -1472,6 +1472,58 @@ p {
   }
 }
 
+#limitWarning {
+  background-color: rgba(120, 41, 187, .6);
+
+  &.OPEN {
+    z-index: 3;
+  }
+
+  .screen-content {
+    > div {
+      position: absolute;
+      left: 420px;
+      top: 170px;
+      font-family : 'CMWN';
+      font-size : 70px;
+      line-height : 75px;
+      letter-spacing : -0.7px;
+      color : #fff;
+      text-align: center;
+      text-shadow: #000 5px 5px 0;
+    }
+  }
+
+  .otter {
+    position: absolute;
+    left: -400px;
+    top: -160px;
+    width: 1300px;
+    z-index: 1;
+  }
+
+  .sign {
+    position: absolute;
+    left: 260px;
+    top: 0;
+  }
+
+  button {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 795px;
+    top: 510px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c');
+
+    &:hover {
+      background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28');
+    }
+  }
+}
+
 .pl-game.PAUSED {
   &:before,
   &:after {

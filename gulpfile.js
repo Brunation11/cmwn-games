@@ -17,6 +17,7 @@ var _ = require('lodash'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   sass = require('gulp-sass'),
+  header = require('gulp-header'),
   concat = require('gulp-concat'),
   livereload = require('gulp-livereload'),
   inject = require('gulp-inject'),
@@ -94,9 +95,11 @@ gulp.task('sass', function () {
   var varsPath = './library/shared/css/' + env + '-variables.scss';
   games.forEach(function (game) {
     gulp
-      .src([varsPath,
-          './library/' + game + '/**/*.scss',
-          './library/' + game + '/**/*.css'])
+      .src([
+        './library/' + game + '/**/*.scss',
+        './library/' + game + '/**/*.css'
+      ])
+      .pipe(header(fs.readFileSync(varsPath, 'utf8')))
       .pipe(sass().on('error', sass.logError))
       .pipe(concat('style.css'))
       .pipe(sourcemaps.init())
@@ -107,9 +110,11 @@ gulp.task('sass', function () {
   });
 
   gulp
-    .src([varsPath,
-        './library/shared/css/**/*.scss',
-        './library/shared/css/**/*.css'])
+    .src([
+      './library/shared/css/**/*.scss',
+      './library/shared/css/**/*.css'
+    ])
+    .pipe(header(fs.readFileSync(varsPath, 'utf8')))
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))

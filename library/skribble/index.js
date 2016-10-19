@@ -17,6 +17,7 @@ import ReadScreen from './components/read_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
+import LimitWarning from './components/limit_warning';
 
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
@@ -298,6 +299,7 @@ var Skribble = (
       quit: QuitScreen,
       save: SaveMenu,
       collisionWarning: CollisionWarning,
+      limitWarning: LimitWarning,
     }}
     loader={<Loader />}
     assets={[
