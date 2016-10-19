@@ -18,8 +18,6 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-// import 'shared/js/test-platform-integration';
-
 class ThreeDWorldGame extends skoash.Game {
   // AW - I'm leaving this here for now in case there are any necessary game extensions
 }
@@ -81,5 +79,3 @@ var ThreeDWorld = (
 );
 
 skoash.start(ThreeDWorld);
-
-import 'shared/js/google-analytics';
