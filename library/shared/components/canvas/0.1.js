@@ -436,7 +436,7 @@ class Canvas extends skoash.Component {
 }
 
 Canvas.defaultProps = _.defaults({
-  maxInstances: 1,
+  maxInstances: 5,
   setValid: _.identity,
 }, skoash.Component.defaultProps);
 
