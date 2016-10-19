@@ -10,7 +10,7 @@ var _ = require('lodash'),
   path = require('path'),
   games,
   nolivereload,
-  development,
+  env,
   debug,
   local,
   sourcemaps = require('gulp-sourcemaps'),
@@ -31,14 +31,16 @@ function lsd(_path) {
 
 function defineEntries(config, game) {
   // modify some webpack config options
+  var varsPath = './shared/js/' + env + '-variables.js';
+
   config = Object.create(config);
 
   config.resolve = Object.create(config.resolve);
   config.entry = {};
   config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
-  config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/source/js/'); // eslint-disable-line no-undef
-  config.entry[game] = ['./' + game + '/index.js'];
+  config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/components/'); // eslint-disable-line no-undef
+  config.entry[game] = [varsPath, './' + game + '/index.js'];
 
   gutil.log(games, 'entry', config.entry);
 
@@ -55,7 +57,7 @@ games = (function () {
 }());
 
 nolivereload = argv.nolr;
-development = argv.development || argv.dev;
+env = argv.environment || argv.env || 'prod';
 debug = argv.debug;
 local = argv.local || argv.l;
 
@@ -71,8 +73,8 @@ gulp.task('webpack:build', function (callback) {
   games.forEach(function (game, index) {
     var webpackConfig, name, config;
 
-    webpackConfig = development ? webpackDevConfig : webpackProdConfig;
-    name = 'webpack:build' + (development ? '-dev' : '');
+    webpackConfig = env === 'dev' ? webpackDevConfig : webpackProdConfig;
+    name = 'webpack:build' + (env === 'dev' ? '-dev' : '');
     config = defineEntries(webpackConfig, game);
 
     // run webpack
@@ -89,9 +91,11 @@ gulp.task('webpack:build', function (callback) {
 });
 
 gulp.task('sass', function () {
+  var varsPath = './library/shared/css/' + env + '-variables.scss';
   games.forEach(function (game) {
     gulp
-      .src(['./library/' + game + '/**/*.scss',
+      .src([varsPath,
+          './library/' + game + '/**/*.scss',
           './library/' + game + '/**/*.css'])
       .pipe(sass().on('error', sass.logError))
       .pipe(concat('style.css'))
@@ -103,7 +107,8 @@ gulp.task('sass', function () {
   });
 
   gulp
-    .src(['./library/shared/css/**/*.scss',
+    .src([varsPath,
+        './library/shared/css/**/*.scss',
         './library/shared/css/**/*.css'])
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
@@ -181,7 +186,6 @@ gulp.task('copy-index', function () {
       }
     });
 
-
     // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp
       .src(path.join('./library', game, 'source/screens/*'))
@@ -237,9 +241,8 @@ gulp.task('copy-thumbs', ['copy-components'], function () {
 function watchTask() {
   if (!nolivereload) livereload.listen();
   var game = (games.length > 1) ? '**' : games[0];
-  development = true;
+  env = 'dev';
   watch([
-    '../js-interactive-library/build/play.js',
     'library/framework/*',
     'library/shared/**/*',
     'library/' + game + '/**/*.js',
@@ -253,7 +256,8 @@ gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
 
 function cleanTask() {
-  if (process.platform !== 'win32') { // TODO: write alternative for windows 9/13/16 AIM
+  // TODO: write alternative for windows 9/13/16 AIM
+  if (process.platform !== 'win32') { // eslint-disable-line no-undef
     exec('delete-invalid-files.sh', function (err, stdout, stderr) {
       console.log(stdout); // eslint-disable-line no-console
       console.log(stderr); // eslint-disable-line no-console
