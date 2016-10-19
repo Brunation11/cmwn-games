@@ -1,5 +1,3 @@
-import AudioSequence from 'shared/components/audio_sequence/0.1';
-
 export default function (props, ref, key) {
   return (
     <skoash.Screen
@@ -14,7 +12,7 @@ export default function (props, ref, key) {
       </skoash.MediaSequence>
       <skoash.Component className="center">
         <skoash.Component className="group">
-          <skoash.Component ref="frame" className="frame" pl-bg>
+          <skoash.Component ref="frame" className="frame">
             <skoash.Component ref="center" className="center">
               <skoash.Component>
                 <skoash.Image src="media/_images/_S_BubbleUp/img_6.1.png" />

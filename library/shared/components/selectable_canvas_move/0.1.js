@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 import Selectable from 'shared/components/selectable/0.1';
@@ -13,8 +12,6 @@ var Item = function (component, context) {
   this.left = 0;
   this.selected = false;
   this.speed = ((Math.random() * 5) % 3 + 2) / 2;
-
-  if (skoash.trigger('getState').mobile) this.speed *= 3;
 
   this.component = component;
   this.image = ReactDOM.findDOMNode(component);
@@ -149,7 +146,7 @@ class SelectableCanvasMove extends SelectableCanvas {
       classes,
     });
 
-    this.callProp('onSelect', target);
+    this.props.onSelect.call(this, target);
 
     this.checkComplete();
   }
@@ -203,7 +200,8 @@ class SelectableCanvasMove extends SelectableCanvas {
 }
 
 SelectableCanvasMove.defaultProps = _.defaults({
-  items: []
+  items: [],
+  onSelect: _.identity,
 }, SelectableCanvas.defaultProps);
 
 export default SelectableCanvasMove;

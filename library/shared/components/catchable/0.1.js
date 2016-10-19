@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Catchable extends skoash.Component {
   constructor() {
     super();
@@ -37,10 +35,10 @@ class Catchable extends skoash.Component {
   }
 }
 
-Catchable.defaultProps = _.merge(skoash.Component.defaultProps, {
+Catchable.defaultProps = _.defaults({
   disabled: false,
   isCorrect: true,
   reCatchable: true
-});
+}, skoash.Component.defaultProps);
 
 export default Catchable;

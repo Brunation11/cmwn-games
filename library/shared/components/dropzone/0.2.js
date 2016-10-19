@@ -68,7 +68,7 @@ class Dropzone extends skoash.Component {
 
   start() {
     var self = this, dropzone, draggable;
-    play.Component.prototype.start.call(this);
+    super.start();
     this.prepareDropzones();
 
     if (self.loadData && typeof self.loadData === 'object') {
@@ -85,13 +85,15 @@ class Dropzone extends skoash.Component {
             }
           });
         } else {
-          ref1.setState({content: []});
-          _.forIn(self.refs, (ref2, key2) => {
-            if (key2.indexOf('draggable-') === -1) return;
-            if (_.includes(ref1, ref2.props.message)) {
-              self.refs[key1].state.content.push(ref2);
-              ref2.markCorrect();
-            }
+          _.forIn(self.loadData, (ref2, key2) => {
+            self.refs[key2].setState({content: []});
+            _.forIn(self.refs, (ref3, key3) => {
+              if (key3.indexOf('draggable-') === -1) return;
+              if (_.includes(ref2, ref3.props.message)) {
+                self.refs[key2].state.content.push(ref3);
+                ref3.markCorrect();
+              }
+            });
           });
         }
       });
@@ -231,9 +233,7 @@ class Dropzone extends skoash.Component {
   }
 
   getClassNames() {
-    return classNames({
-      dropzone: true,
-    });
+    return classNames('dropzone', super.getClassNames());
   }
 
   render() {
