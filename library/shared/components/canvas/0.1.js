@@ -354,9 +354,7 @@ class Canvas extends skoash.Component {
       valid
     });
 
-    if (typeof this.props.setValid === 'function') {
-      this.props.setValid(valid);
-    }
+    this.props.setValid.call(this, valid);
   }
 
   getStyle() {
@@ -433,7 +431,8 @@ class Canvas extends skoash.Component {
 }
 
 Canvas.defaultProps = _.defaults({
-  maxInstances: 5
+  maxInstances: 5,
+  setValid: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Canvas;

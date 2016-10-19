@@ -190,6 +190,10 @@ class SkribbleGame extends skoash.Game {
     this.openMenu({id: 'collisionWarning'});
   }
 
+  showLimitWarning() {
+    this.openMenu({id: 'limitWarning'});
+  }
+
   addRecipient(recipient, cb) {
     var src;
 
@@ -351,6 +355,8 @@ var Skribble = (
         this.send();
       } else if (opts.name === 'showCollisionWarning') {
         this.showCollisionWarning();
+      } else if (opts.name === 'showLimitWarning') {
+        this.showLimitWarning();
       }
     }}
   />

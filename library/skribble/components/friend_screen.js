@@ -15,7 +15,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
-    skoash.trigger('pass-data', {
+    skoash.trigger('passData', {
       name: 'add-recipient',
       goto: this.state.opts.goto,
       message
