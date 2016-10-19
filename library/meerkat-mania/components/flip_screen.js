@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function (props, ref, key) {
   return (
     <skoash.Screen
@@ -7,6 +5,9 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="flip"
+      emitOnComplete={{
+        name: 'flip',
+      }}
     >
       <skoash.MediaSequence>
         <skoash.Audio type="voiceOver" src="media/S_13/VO_13-1.mp3" />

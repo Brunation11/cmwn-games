@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function (props, ref, key) {
   var FlipScreen = (
     <skoash.Screen
@@ -8,6 +6,9 @@ export default function (props, ref, key) {
       key={key}
       id="flip"
       className="large-frame"
+      emitOnComplete={{
+        name: 'flip',
+      }}
     >
       <skoash.MediaSequence>
         <skoash.Audio
@@ -31,4 +32,3 @@ export default function (props, ref, key) {
   );
   return FlipScreen;
 }
-

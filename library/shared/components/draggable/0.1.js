@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
@@ -24,6 +23,13 @@ class Draggable extends skoash.Component {
 
   shouldDrag() {
     return true;
+  }
+
+  incomplete() {
+    this.markIncorrect();
+    this.returnToStart();
+
+    super.incomplete();
   }
 
   markCorrect() {
@@ -58,6 +64,13 @@ class Draggable extends skoash.Component {
 
     startX = endX = e.pageX - grabX;
     startY = endY = e.pageY - grabY;
+
+    if (!this.state.firstX) {
+      this.setState({
+        firstX: startX,
+        firstY: startY,
+      });
+    }
 
     if (!this.props.return) {
       startX = _.isFinite(this.state.grabX) ?
@@ -118,20 +131,26 @@ class Draggable extends skoash.Component {
     });
   }
 
+  returnToStart() {
+    if (this.state.firstX) {
+      this.setState({
+        dragging: false,
+        return: true,
+        endX: this.state.firstX,
+        endY: this.state.firstY,
+      });
+    }
+  }
+
   endEvent(cb) {
     this.dropRespond();
 
     if (this.props.return) {
-      this.setState({
-        dragging: false,
-        return: this.props.return,
-        endX: this.state.startX,
-        endY: this.state.startY,
-      });
+      this.returnToStart();
     } else {
       this.setState({
         dragging: false,
-        return: this.props.return,
+        return: this.state.return,
       });
     }
 
@@ -220,8 +239,10 @@ class Draggable extends skoash.Component {
   }
 
   setZoom() {
-    this.setState({
-      zoom: skoash.trigger('getState').scale,
+    skoash.trigger('getState').then(state => {
+      this.setState({
+        zoom: state.scale,
+      });
     });
   }
 
@@ -233,12 +254,15 @@ class Draggable extends skoash.Component {
 
     return {
       transform: `translateX(${x}px) translateY(${y}px)`,
+      WebkitTransform: `translateX(${x}px) translateY(${y}px)`,
     };
   }
 
   getClassNames() {
     return classNames({
       draggable: true,
+      [this.props.className]: this.props.className,
+      [this.props.message]: this.props.message,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,

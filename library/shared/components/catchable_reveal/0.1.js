@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Reveal from '../reveal/0.1.js';
 import Catch from '../catch/0.1.js';
 
@@ -105,9 +103,9 @@ class CatchableReveal extends skoash.Component {
   }
 }
 
-CatchableReveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+CatchableReveal.defaultProps = _.defaults({
   answers: [],
   willReveal: () => true
-});
+}, skoash.Component.defaultProps);
 
 export default CatchableReveal;

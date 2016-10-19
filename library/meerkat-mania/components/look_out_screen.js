@@ -10,6 +10,7 @@ export default function (props, ref, key) {
         <skoash.Audio type="sfx" src="media/S_4/S_4.1.mp3" />
         <skoash.Audio type="voiceOver" src="media/S_4/VO_4.1.mp3" />
       </skoash.MediaSequence>
+
       <skoash.Component className="frame">
         <skoash.Image className="background" src="media/_Frames/FR_8.png" />
         <p>

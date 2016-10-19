@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
 class ItemDrawerScreen extends skoash.Screen {
@@ -22,7 +20,7 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   updateData(d) {
-    var data = d ? d : skoash.trigger('getState').data.menu.items;
+    var data = d ? d : this.props.gameState.data.menu.items;
 
     this.state.opts.categories.forEach(key => {
       if (data[key]) data = data[key];
@@ -79,6 +77,7 @@ class ItemDrawerScreen extends skoash.Screen {
       <div>
         <ItemDrawer
           ref="drawer"
+          scrollbarImg="./media/_Buttons/sk_btn_slider.png"
           selectRespond={this.selectRespond.bind(this)}
           cancelRespond={this.cancelRespond}
           categories={this.state.opts.categories}
