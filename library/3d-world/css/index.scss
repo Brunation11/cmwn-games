@@ -1,8 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-$media-server: $media-server + 'Games/3DWorld/';
-
 @font-face {
   font-family: 'Molot';
   src: url('../media/' + 'Fonts/Molot.eot'); /* IE9 Compat Modes */
@@ -454,6 +452,77 @@ p {
       background-repeat: no-repeat;
       background-size: 2200px;
       background-position: -730px 0;
+    }
+  }
+}
+
+#sort-game {
+  .reveal {
+    ul {
+      list-style: none;
+    }
+
+    li {
+      display: none;
+      position: absolute;
+
+      &.OPEN {
+        display: block;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -15px;
+        bottom: 0;
+        width: 250px;
+        height: 445px;
+        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+        background-size: 2400px;
+        background-position: -600px 0;
+        background-repeat: no-repeat;
+      }
+
+      &[data-ref="in-this-game"] {
+        width: 800px;
+        height: 500px;
+
+        .frame {
+          position: absolute;
+          z-index: -1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .balloon {
+          position: absolute;
+          left: 30px;
+          top: 50px;
+          width: 600px;
+        }
+
+        .bins {
+          position: absolute;
+          left: 180px;
+          top: 270px;
+          width: 370px;
+        }
+
+        .words {
+          position: absolute;
+          left: 100px;
+          top: 100px;
+          color: $green;
+          font-size: 28px;
+        }
+      }
+    }
+
+    .close-reveal {
+
     }
   }
 }

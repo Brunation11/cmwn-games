@@ -1,3 +1,5 @@
+
+
 import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catch from 'shared/components/catch/0.1';
@@ -6,8 +8,6 @@ import Catchable from 'shared/components/catchable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
-  var nextReveal = function () {
-  };
   var closeReveal = function () {
   };
 
@@ -34,31 +34,46 @@ export default function (props, ref, key) {
         bucket={<div />}
       />
       <Reveal
-        openOnStart="0"
+        openOnStart="in-this-game"
         list={[
-          <skoash.Component type="li">
-            <div>
-              In this game, you will sort items
+          <skoash.Component ref="in-this-game" type="li">
+            <skoash.Image
+              className="frame"
+              src={ENVIRONMENT.MEDIA + 'Frames/ins.green.frame.png'}
+            />
+            <skoash.Image
+              className="balloon"
+              src={ENVIRONMENT.MEDIA + 'ImageAssets/img.quit.png'}
+            />
+            <skoash.Image
+              className="bins"
+              src={ENVIRONMENT.MEDIA + 'ImageAssets/ins.bins.png'}
+            />
+            <skoash.Image
+              className="hidden"
+              src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+            />
+            <div className="words">
+              <div>
+                In this game, you will sort items
+              </div>
+              <div>
+                dropped from the 3D printer
+              </div>
+              <div>
+                by the material it is made from.
+              </div>
+              <div className="line">
+              </div>
+              <div>
+                Use the arrow keys to drop
+              </div>
+              <div>
+                the items into the correct bin.
+              </div>
             </div>
-            <div>
-              dropped from the 3D printer
-            </div>
-            <div>
-              by the material it is made from.
-            </div>
-            <div className="line">
-            </div>
-            <div>
-              Use the arrow keys to drop
-            </div>
-            <div>
-              the items into the correct bin.
-            </div>
-            <button onClick={nextReveal}>
-              Next
-            </button>
           </skoash.Component>,
-          <skoash.Component type="li">
+          <skoash.Component ref="be-sure" type="li">
             <div>
               Be sure to collect enough points
             </div>
