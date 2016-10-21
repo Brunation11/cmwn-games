@@ -1,6 +1,15 @@
 @import 'variables';
 @import 'mixins';
 
+$media-server: $media-server + 'Games/3DWorld/';
+
+@font-face {
+  font-family: 'Molot';
+  src: url($media-server + 'Fonts/Molot.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,7 +25,7 @@ html, body {
 }
 
 html {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Molot", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
   color: $text-color;
 }
 
@@ -310,30 +319,36 @@ p {
     top: 0;
     width: 100%;
     display: none;
-  }
 
-  .question {
-
-  }
-
-  .answer {
-    opacity: 0;
+    &.show {
+      display: block;
+    }
   }
 
   .right {
     position: absolute;
     right: 0;
-    top: 0;
-  }
-
-  .words {
-    position: relative;
+    top: 70px;
     background-image: url(../media/03-05/img-speechballoon.png);
     background-repeat: no-repeat;
     background-size: 300px;
+  }
+
+  .words {
+    position: absolute;
     width: 320px;
-    height: 160px;
-    margin-top: 60px;
+    margin-top: 70px;
+    color: #006d05;
+    font-size: 18px;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    font-family: "Molot";
+    opacity: 0;
+    transition: opacity .5s;
+
+    &.show {
+      opacity: 1;
+    }
   }
 
   .text {
@@ -348,13 +363,42 @@ p {
     background-image: url(../media/_sprites/spritesheet-minion-characters_.png);
     background-position: -120px -240px;
     background-size: 3000px;
+    margin-top: 140px;
     width: 320px;
     height: 320px;
   }
+}
 
-  &.OPEN {
-    .question {
+#lets-learn {
+  .balloon {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    width: 900px;
+  }
+
+  .words {
+    position: absolute;
+    color: #006d05;
+    font-size: 52px;
+    text-transform: uppercase;
+    font-family: "Molot";
+    left: 165px;
+    top: 130px;
+  }
+
+  .screen-content {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 500px;
+      height: 410px;
       display: block;
+      background-image: url($media-server + 'SpritesAnimations/sprite.closeupminion.png');
+      background-repeat: no-repeat;
+      background-size: 2200px;
     }
   }
 }
