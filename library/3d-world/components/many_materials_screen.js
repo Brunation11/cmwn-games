@@ -6,6 +6,14 @@ export default function (props, ref, key) {
       key={key}
       id="many-materials"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.closeupminion.png'}
+      />
+      <skoash.Image
+        className="balloon"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/speech.balloon.frame7.png'}
+      />
       <skoash.Component>
         <div className="words">
           <div>
