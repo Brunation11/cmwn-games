@@ -54,10 +54,13 @@ export default function (props, ref, key) {
         <Score
           max={100}
           increment={10}
-        />
+        >
+          <div />
+        </Score>
         <Timer
           countDown
           timeout={60000}
+          leadingContent="TIME LEFT"
           getTime={function () {
             var timeLeft, minutesLeft, secondsLeft;
             timeLeft = this.props.timeout / 1000 - this.state.time;

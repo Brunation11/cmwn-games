@@ -457,6 +457,81 @@ p {
 }
 
 #sort-game {
+  .left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 540px;
+
+    .score {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-top: 50px;
+
+      &:after {
+        content: '';
+        background-color: #7e7e7e;
+        position: absolute;
+        width: 10px;
+        height: 330px;
+        border-radius: 10px;
+        bottom: 25px;
+        left: 25px;
+        opacity: .6;
+      }
+
+      div {
+        position: relative;
+        width: 50px;
+        margin: 0 auto;
+
+        &:before {
+          content: '';
+          display: block;
+          background-color: #424242;
+          border: 6px solid #fff;
+          border-radius: 50px;
+          height: 360px;
+          width: 40px;
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 6px;
+          left: 6px;
+          border-radius: 50px;
+          background-color: $green;
+          height: 0px;
+          width: 40px;
+          -webkit-transition: height .5s cubic-bezier(.53,0,.63,1);
+          transition: height .5s cubic-bezier(.53,-0.56,.63,1.74);
+        }
+      }
+
+      @for $i from 0 through 10 {
+        &.score-#{$i * 10} {
+          div:after {
+            height: #{$i * 36}px;
+          }
+        }
+      }
+    }
+  }
+
+  .timer {
+    font-size: 14px;
+    font-weight: normal;
+
+    span {
+      display: block;
+      font-size: 28px;
+    }
+  }
+
   .reveal {
     ul {
       list-style: none;
