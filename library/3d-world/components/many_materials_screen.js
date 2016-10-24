@@ -6,6 +6,10 @@ export default function (props, ref, key) {
       key={key}
       id="many-materials"
     >
+      <skoash.Audio
+        type="voiceOver"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_wow.mp3'}
+      />
       <skoash.Image
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.closeupminion.png'}
