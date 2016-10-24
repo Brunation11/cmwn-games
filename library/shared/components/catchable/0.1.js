@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 class Catchable extends skoash.Component {
   constructor() {
     super();
@@ -18,8 +20,10 @@ class Catchable extends skoash.Component {
     return !this.props.disabled && this.state.canCatch;
   }
 
-  getClasses() {
-    return this.state.canCatch ? '' : 'CAUGHT';
+  getClassNames() {
+    return classNames('catchable', {
+      CAUGHT: !this.state.canCatch
+    }, super.getClassNames());
   }
 
   reset() {
@@ -30,7 +34,7 @@ class Catchable extends skoash.Component {
 
   render() {
     return (
-      <li className={this.getClasses()}></li>
+      <li className={this.getClassNames()} />
     );
   }
 }

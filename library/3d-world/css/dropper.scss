@@ -1,0 +1,13 @@
+.dropper {
+  position: absolute;
+
+  .catchable {
+    position: absolute;
+    top: 0px;
+    transition: top .5s;
+
+    &.go {
+      top: 100px;
+    }
+  }
+}

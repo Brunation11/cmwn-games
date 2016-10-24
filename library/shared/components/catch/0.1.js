@@ -1,6 +1,5 @@
 import Catchable from 'shared/components/catchable/0.1';
 
-
 class Catch extends skoash.Component {
   constructor() {
     super();
@@ -236,9 +235,9 @@ class Catch extends skoash.Component {
 
 }
 
-Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
+Catch.defaultProps = _.defaults({
   catchables: [],
   bucketInBounds: true
-});
+}, skoash.Component.defaultProps);
 
 export default Catch;

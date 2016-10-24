@@ -3,17 +3,17 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import TitleScreen from './components/title_screen';
-import ImagineScreen from './components/imagine_screen';
-import LetsLearnScreen from './components/lets_learn_screen';
-import VideoScreen from './components/video_screen';
-import ManyMaterialsScreen from './components/many_materials_screen';
+// import TitleScreen from './components/title_screen';
+// import ImagineScreen from './components/imagine_screen';
+// import LetsLearnScreen from './components/lets_learn_screen';
+// import VideoScreen from './components/video_screen';
+// import ManyMaterialsScreen from './components/many_materials_screen';
 import SortGameScreen from './components/sort_game_screen';
-import HelpTheWorldScreen from './components/help_the_world_screen';
-import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
-import PrinterScreen from './components/printer_screen';
-import NowTheYouLearnedScreen from './components/now_that_you_learned_screen';
-import ListScreen from './components/list_screen';
+// import HelpTheWorldScreen from './components/help_the_world_screen';
+// import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
+// import PrinterScreen from './components/printer_screen';
+// import NowTheYouLearnedScreen from './components/now_that_you_learned_screen';
+// import ListScreen from './components/list_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -30,18 +30,18 @@ var ThreeDWorld = (
     loader={<Loader />}
     screens={{
       0: iOSScreen,
-      1: TitleScreen,
-      2: ImagineScreen,
-      3: LetsLearnScreen,
-      4: VideoScreen,
-      5: ManyMaterialsScreen,
-      6: SortGameScreen,
-      7: HelpTheWorldScreen,
-      8: BunchOfProblemsScreen,
-      9: PrinterScreen,
-      10: NowTheYouLearnedScreen,
-      11: ListScreen,
-      12: FlipScreen,
+      // 1: TitleScreen,
+      // 2: ImagineScreen,
+      // 3: LetsLearnScreen,
+      // 4: VideoScreen,
+      // 5: ManyMaterialsScreen,
+      1: SortGameScreen,
+      // 7: HelpTheWorldScreen,
+      // 8: BunchOfProblemsScreen,
+      // 9: PrinterScreen,
+      // 10: NowTheYouLearnedScreen,
+      // 11: ListScreen,
+      2: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
