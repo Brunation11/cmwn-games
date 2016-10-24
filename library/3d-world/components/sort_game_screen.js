@@ -1,14 +1,20 @@
+import classNames from 'classnames';
 
-
+import MediaCollection from 'shared/components/media_collection/0.1';
 import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catch from 'shared/components/catch/0.1';
 import Catchable from 'shared/components/catchable/0.1';
-
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
   var closeReveal = function () {
+    skoash.trigger('updateState', {
+      path: 'reveal',
+      data: {
+        close: true,
+      }
+    });
   };
 
   return (
@@ -18,6 +24,27 @@ export default function (props, ref, key) {
       key={key}
       id="sort-game"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/thick.border.png'}
+      />
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open')}
+      >
+        <skoash.MediaSequence
+          ref="in-this"
+        >
+          <skoash.Audio
+            type="voiceOver"
+            completeTarget="in-this"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_in_this.mp3'}
+          />
+          <skoash.Audio
+            type="voiceOver"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_be_sure.mp3'}
+          />
+        </skoash.MediaSequence>
+      </MediaCollection>
       <Dropper
         bin={
           <Randomizer
@@ -34,9 +61,11 @@ export default function (props, ref, key) {
         bucket={<div />}
       />
       <Reveal
-        openOnStart="in-this-game"
+        openOnStart="in-this"
+        openTarget="reveal"
+        closeReveal={_.get(props, 'data.reveal.close', false)}
         list={[
-          <skoash.Component ref="in-this-game" type="li">
+          <skoash.Component ref="in-this" type="li">
             <skoash.Image
               className="frame"
               src={ENVIRONMENT.MEDIA + 'Frames/ins.green.frame.png'}
@@ -53,7 +82,11 @@ export default function (props, ref, key) {
               className="hidden"
               src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
             />
-            <div className="words">
+            <div
+              className={classNames('words', 'in-this-game', {
+                show: !_.get(props, 'data.in-this.complete', false)
+              })}
+            >
               <div>
                 In this game, you will sort items
               </div>
@@ -63,26 +96,29 @@ export default function (props, ref, key) {
               <div>
                 by the material it is made from.
               </div>
-              <div className="line">
+              <div className="line" />
+              <div>
+                Slide the printer head to
               </div>
               <div>
-                Use the arrow keys to drop
+                drop items into the correct bin.
+              </div>
+            </div>
+            <div
+              className={classNames('words', 'be-sure', {
+                show: _.get(props, 'data.in-this.complete', false)
+              })}
+            >
+              <div>
+                Be sure to collect enough points
               </div>
               <div>
-                the items into the correct bin.
+                before the timer runs out!
               </div>
+              <button onClick={closeReveal}>
+                Start Game
+              </button>
             </div>
-          </skoash.Component>,
-          <skoash.Component ref="be-sure" type="li">
-            <div>
-              Be sure to collect enough points
-            </div>
-            <div>
-              before the timer runs out!
-            </div>
-            <button onClick={closeReveal}>
-              Start Game
-            </button>
           </skoash.Component>,
           <skoash.Component
             ref="even-food"

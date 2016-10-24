@@ -54,7 +54,8 @@ class Reveal extends skoash.Component {
       self.updateGameState({
         path: self.props.openTarget,
         data: {
-          open: '' + message
+          open: '' + message,
+          close: false,
         }
       });
     }

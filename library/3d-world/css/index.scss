@@ -484,7 +484,13 @@ p {
         background-repeat: no-repeat;
       }
 
-      &[data-ref="in-this-game"] {
+      .line {
+        background-image: url($media-server + 'ImageAssets/thick.border.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      &[data-ref="in-this"] {
         width: 800px;
         height: 500px;
 
@@ -514,9 +520,36 @@ p {
         .words {
           position: absolute;
           left: 100px;
-          top: 100px;
+          top: 180px;
           color: $green;
           font-size: 28px;
+          opacity: 0;
+          transition: opacity .5s;
+          transform: translateY(-50%);
+
+          &.show {
+            opacity: 1;
+          }
+
+          &.be-sure {
+            button {
+              background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
+              background-position: 0 0;
+              width: 250px;
+              height: 60px;
+              margin-top: 10px;
+
+              &:hover {
+                background-position: 0 60px;
+              }
+            }
+          }
+        }
+
+        .line {
+          width: 110%;
+          margin-left: -5%;
+          height: 10px;
         }
       }
     }
