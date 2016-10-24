@@ -1,10 +1,15 @@
 import classNames from 'classnames';
 
 import MediaCollection from 'shared/components/media_collection/0.1';
+
+import Score from 'shared/components/score/0.1';
+import Timer from 'shared/components/timer/0.1';
+
 import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catch from 'shared/components/catch/0.1';
 import Catchable from 'shared/components/catchable/0.1';
+
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
@@ -45,21 +50,41 @@ export default function (props, ref, key) {
           />
         </skoash.MediaSequence>
       </MediaCollection>
-      <Dropper
-        bin={
-          <Randomizer
-            bin={[
-              <Catchable />,
-              <Catchable />,
-              <Catchable />,
-              <Catchable />,
-            ]}
-          />
-        }
-      />
-      <Catch
-        bucket={<div />}
-      />
+      <skoash.Component className="left">
+        <Score
+          max={100}
+          increment={10}
+        />
+        <Timer
+          countDown
+          timeout={60000}
+          getTime={function () {
+            var timeLeft, minutesLeft, secondsLeft;
+            timeLeft = this.props.timeout / 1000 - this.state.time;
+            minutesLeft = Math.floor(timeLeft / 60);
+            secondsLeft = timeLeft % 60;
+            secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+            return `${minutesLeft}:${secondsLeft}`;
+          }}
+        />
+      </skoash.Component>
+      <skoash.Component className="main">
+        <Dropper
+          bin={
+            <Randomizer
+              bin={[
+                <Catchable />,
+                <Catchable />,
+                <Catchable />,
+                <Catchable />,
+              ]}
+            />
+          }
+        />
+        <Catch
+          bucket={<div />}
+        />
+      </skoash.Component>
       <Reveal
         openOnStart="in-this"
         openTarget="reveal"

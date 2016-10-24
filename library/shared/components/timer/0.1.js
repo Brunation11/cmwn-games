@@ -15,6 +15,8 @@ class Timer extends skoash.Component {
   checkComplete() {
     var time = Date.now();
 
+    if (!this.props.checkComplete) return window.requestAnimationFrame(this.checkComplete);
+
     if (!this.state.started || this.state.paused) return;
 
     if (time >= this.state.stamp) {
@@ -73,6 +75,14 @@ class Timer extends skoash.Component {
     }
   }
 
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.restart && props.restart !== this.props.restart) {
+      this.restart();
+    }
+  }
+
   getClassNames() {
     return classNames(
       'timer',
@@ -81,7 +91,7 @@ class Timer extends skoash.Component {
   }
 
   render() {
-    var time = this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+    var time = this.props.getTime.call(this);
     return (
       <div {...this.props} className={this.getClassNames()} time={time}>
         {this.props.leadingContent}
@@ -93,5 +103,14 @@ class Timer extends skoash.Component {
     );
   }
 }
+
+Timer.defaultProps = _.defaults({
+  getTime: function () {
+    return this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+  },
+  leadingContent: '',
+  timeout: 60000,
+  countDown: false,
+}, skoash.Component.defaultProps);
 
 export default Timer;
