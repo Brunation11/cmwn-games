@@ -7,7 +7,7 @@ import Timer from 'shared/components/timer/0.1';
 
 import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
-import Catch from 'shared/components/catch/0.1';
+import Catch from 'shared/components/catch/0.2';
 import Catchable from 'shared/components/catchable/0.1';
 
 import Reveal from 'shared/components/reveal/0.1';
@@ -156,7 +156,11 @@ export default function (props, ref, key) {
           </div>
         </Dropper>
         <Catch
-          bucket={<div />}
+          bucket={[
+            <div className="plastic" message="plastic" />,
+            <div className="metal" message="metal" />,
+            <div className="other" message="other" />,
+          ]}
         />
       </skoash.Component>
       <Reveal

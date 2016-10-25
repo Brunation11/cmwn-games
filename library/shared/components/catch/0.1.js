@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import Catchable from 'shared/components/catchable/0.1';
 
 class Catch extends skoash.Component {
@@ -14,10 +16,19 @@ class Catch extends skoash.Component {
     this.checkCollisions = this.checkCollisions.bind(this);
   }
 
-  componentDidMount() {
+  bootstrap() {
+    super.bootstrap();
+    this.onResize();
+    this.attachMouseEvents();
+    window.addEventListener('resize', this.onResize);
+
     this.bucketNode = ReactDOM.findDOMNode(this.refs.bucket);
     this.catchableNodes = _.map(this.props.catchables, function (val, key) {
       return ReactDOM.findDOMNode(this.refs[`${key}-catchable`]);
+    }.bind(this));
+    _.forEach(this.catchableNodes, function (node, key) {
+      var catchableRef = this.refs[`${key}-catchable`];
+      node.addEventListener('animationiteration', catchableRef.reset, false);
     }.bind(this));
   }
 
@@ -57,17 +68,6 @@ class Catch extends skoash.Component {
     super.start();
     this.bootstrap();
     this.checkCollisions();
-  }
-
-  bootstrap() {
-    super.bootstrap();
-    this.onResize();
-    this.attachMouseEvents();
-    window.addEventListener('resize', this.onResize);
-    _.forEach(this.catchableNodes, function (node, key) {
-      var catchableRef = this.refs[`${key}-catchable`];
-      node.addEventListener('animationiteration', catchableRef.reset, false);
-    }.bind(this));
   }
 
   restart() {
@@ -214,17 +214,13 @@ class Catch extends skoash.Component {
     );
   }
 
-  getClasses() {
-    var classes = '';
-
-    if (this.state.complete || this.props.isComplete) classes += ' COMPLETE';
-
-    return classes;
+  getClassNames() {
+    return classNames('catch', super.getClassNames());
   }
 
   render() {
     return (
-      <div ref="catch-component" className={'catch' + this.getClasses()}>
+      <div ref="catch-component" className={this.getClassNames()}>
         <ul className="items">
           {this.renderCatchables()}
         </ul>
@@ -237,7 +233,8 @@ class Catch extends skoash.Component {
 
 Catch.defaultProps = _.defaults({
   catchables: [],
-  bucketInBounds: true
+  bucketInBounds: true,
+  bucket: <div />,
 }, skoash.Component.defaultProps);
 
 export default Catch;

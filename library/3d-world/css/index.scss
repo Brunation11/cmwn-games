@@ -650,6 +650,29 @@ p {
     }
   }
 
+  .catch {
+    div {
+      position: absolute;
+      top: 392px;
+      width: 170px;
+      height: 130px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game1.bins.png');
+      background-repeat: no-repeat;
+      background-size: 600px;
+    }
+
+    $bins: plastic metal other;
+    $lefts: 40 300 560;
+    $background-lefts: 0 215 430;
+
+    @for $i from 1 through 3 {
+      .#{nth($bins, $i)} {
+        left: #{nth($lefts, $i)}px;
+        background-position: -#{nth($background-lefts, $i)}px 0;
+      }
+    }
+  }
+
   .reveal {
     ul {
       list-style: none;
