@@ -589,13 +589,13 @@ p {
 
     &.right {
       .right {
-        @for $i from 1 through 3 {
-          div {
-            border-left-color: #10ce0e;
-          }
+        div {
+          border-left-color: #10ce0e;
+        }
 
+        @for $i from 1 through 3 {
           div:nth-of-type(#{$i}) {
-            animation: blink .75s #{$i * .25}s infinite;
+            animation: arrow-blink .75s #{$i * .25}s infinite;
           }
         }
       }
@@ -603,13 +603,13 @@ p {
 
     &.left {
       .left {
-        @for $i from 1 through 3 {
-          div {
-            border-right-color: #10ce0e;
-          }
+        div {
+          border-right-color: #10ce0e;
+        }
 
+        @for $i from 1 through 3 {
           div:nth-of-type(#{$i}) {
-            animation: blink .75s #{$i * .25}s infinite;
+            animation: arrow-blink .75s #{$i * .25}s infinite;
           }
         }
       }
