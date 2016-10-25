@@ -38,6 +38,7 @@ export default function (props, ref, key) {
       >
         <skoash.MediaSequence
           ref="in-this"
+          silentOnStart
         >
           <skoash.Audio
             type="voiceOver"
@@ -72,6 +73,18 @@ export default function (props, ref, key) {
         />
       </skoash.Component>
       <skoash.Component className="main">
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.bins.png'}
+        />
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.png'}
+        />
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.printer.png'}
+        />
         <Dropper
           bin={
             <Randomizer
@@ -83,13 +96,26 @@ export default function (props, ref, key) {
               ]}
             />
           }
-        />
+          leftBound={70}
+          rightBound={820}
+        >
+          <div className="left">
+            <div />
+            <div />
+            <div />
+          </div>
+          <div className="right">
+            <div />
+            <div />
+            <div />
+          </div>
+        </Dropper>
         <Catch
           bucket={<div />}
         />
       </skoash.Component>
       <Reveal
-        openOnStart="in-this"
+        // openOnStart="in-this"
         openTarget="reveal"
         closeReveal={_.get(props, 'data.reveal.close', false)}
         list={[

@@ -532,6 +532,28 @@ p {
     }
   }
 
+  .main {
+    background-color: #4c6c7a;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 760px;
+    height: 520px;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+  }
+
+  .dropper {
+    left: 305px;
+    width: 150px;
+    height: 100px;
+
+    .el {
+      background-image: url($media-server + 'SpritesAnimations/sprite.game1.printer.png');
+      background-size: 150px;
+    }
+  }
+
   .reveal {
     ul {
       list-style: none;

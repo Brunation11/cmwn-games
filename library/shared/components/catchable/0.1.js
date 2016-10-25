@@ -34,7 +34,7 @@ class Catchable extends skoash.Component {
 
   render() {
     return (
-      <li className={this.getClassNames()} />
+      <li {...this.props} className={this.getClassNames()} />
     );
   }
 }

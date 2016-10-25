@@ -11,17 +11,19 @@ class Dropper extends Draggable {
 
     this.state = _.defaults({
       items: [],
+      itemEndXs: [],
+      direction: '',
     }, this.state);
   }
 
-  start() {
-    super.start();
-    this.next();
-  }
-
   next() {
-    var items = this.state.items;
+    var items, index, itemEndXs;
+
+    if (!this.state.started) return;
+
+    items = this.state.items;
     items = items.concat(this.refs.bin.get(1));
+    index = items.length - 1;
 
     this.setState({
       items,
@@ -31,18 +33,50 @@ class Dropper extends Draggable {
         if (!item) return;
         item.addClassName(this.props.prepClasses[i]);
         if (i === this.props.prepClasses.length - 1) {
+          itemEndXs = this.state.itemEndXs;
+          itemEndXs[index] = this.state.endX;
           ReactDOM.findDOMNode(item).addEventListener('transitionend', () => {
-            items = this.state.items.splice(items.length - 1, 1);
+            items = this.state.items;
+            delete items[index];
             this.setState({
               items
             });
           });
+        } else if (i === this.props.prepClasses.length) {
+          this.next();
         }
       };
-      for (let i = 0; i < this.props.prepClasses.length; i++) {
+      for (let i = 0; i <= this.props.prepClasses.length; i++) {
         setTimeout(timeoutFunction.bind(this, i), i * this.props.prepTimeout);
       }
     });
+  }
+
+  moveEvent(e) {
+    var endX;
+
+    if (e.targetTouches && e.targetTouches[0]) {
+      e.pageX = e.targetTouches[0].pageX;
+    }
+
+    endX = Math.min(Math.max(e.pageX - this.state.grabX, this.props.leftBound), this.props.rightBound);
+
+    this.setState({
+      endX,
+      direction: endX > this.state.endX ? 'right' : 'left'
+    });
+  }
+
+  getItemStyle(key) {
+    var endX, x;
+
+    endX = this.state.itemEndXs[key] || this.state.endX;
+    x = ((endX - this.state.startX) / this.state.zoom);
+
+    return {
+      transform: `translateX(${x}px)`,
+      WebkitTransform: `translateX(${x}px)`,
+    };
   }
 
   getStyle() {
@@ -55,7 +89,7 @@ class Dropper extends Draggable {
   }
 
   getClassNames() {
-    return classNames('dropper', super.getClassNames());
+    return classNames('dropper', this.state.direction, super.getClassNames());
   }
 
   /*
@@ -64,11 +98,12 @@ class Dropper extends Draggable {
    */
   renderItems() {
     return _.map(this.state.items, (item, key) => {
-      var ref, onTransitionEnd;
-      ref = 'items-' + key;
+      var ref = 'items-' + key;
+      if (!item) return null;
       return (
         <item.type
           {...item.props}
+          style={this.getItemStyle(key)}
           data-ref={ref}
           data-message={item.props.message}
           ref={ref}
@@ -90,15 +125,19 @@ class Dropper extends Draggable {
   render() {
     return (
       <div
-        ref="el"
         className={this.getClassNames()}
-        style={this.getStyle()}
       >
         {this.renderBin()}
+        <div
+          ref="el"
+          className="el"
+          style={this.getStyle()}
+        >
+          {this.renderContentList()}
+        </div>
         <ul className="items">
           {this.renderItems()}
         </ul>
-        {this.renderContentList()}
       </div>
     );
   }
@@ -114,6 +153,11 @@ Dropper.defaultProps = _.defaults({
       ]}
     />
   ),
+  onStart: function () {
+    this.next();
+  },
+  leftBound: 0,
+  rightBound: 800,
 }, Draggable.defaultProps);
 
 export default Dropper;

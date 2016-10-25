@@ -1,6 +1,22 @@
 .dropper {
   position: absolute;
 
+  .track {
+    background-color: #34515c;
+  }
+
+  .el {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .randomizer {
+    display: none;
+  }
+
   .catchable {
     position: absolute;
     top: 0px;
