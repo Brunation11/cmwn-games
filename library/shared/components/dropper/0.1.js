@@ -145,7 +145,7 @@ class Dropper extends Draggable {
 
 Dropper.defaultProps = _.defaults({
   prepClasses: ['ready', 'set', 'go'],
-  prepTimeout: 250,
+  prepTimeout: 500,
   bin: (
     <Randomizer
       bin={[

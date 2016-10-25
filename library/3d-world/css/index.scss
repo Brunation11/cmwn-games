@@ -552,6 +552,102 @@ p {
       background-image: url($media-server + 'SpritesAnimations/sprite.game1.printer.png');
       background-size: 150px;
     }
+
+    .left,
+    .right {
+      position: absolute;
+      display: flex;
+      width: 80px;
+      height: 50px;
+      top: 20px;
+
+      div {
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        margin: 6px;
+        transition: border .5s;
+      }
+    }
+
+    .left {
+      left: -40px;
+      flex-direction: row-reverse;
+
+      div {
+        border-right: 10px solid black;
+      }
+    }
+
+    .right {
+      left: 95px;
+
+      div {
+        border-left: 10px solid black;
+      }
+    }
+
+    &.right {
+      .right {
+        @for $i from 1 through 3 {
+          div {
+            border-left-color: #10ce0e;
+          }
+
+          div:nth-of-type(#{$i}) {
+            animation: blink .75s #{$i * .25}s infinite;
+          }
+        }
+      }
+    }
+
+    &.left {
+      .left {
+        @for $i from 1 through 3 {
+          div {
+            border-right-color: #10ce0e;
+          }
+
+          div:nth-of-type(#{$i}) {
+            animation: blink .75s #{$i * .25}s infinite;
+          }
+        }
+      }
+    }
+
+    .catchable {
+      transition: top 1s, height .25s;
+      top: 60px;
+      left: 20px;
+      width: 100px;
+      height: 0px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game1.png');
+      background-size: 1200px;
+
+      &.starting {
+        height: 40px;
+      }
+
+      &.ready {
+        height: 50px;
+      }
+
+      &.set {
+        height: 100px;
+      }
+
+      &.go {
+        top: 550px;
+        height: 100px;
+      }
+
+      $catchables: milk shoes cup box glasses whistle car lego silver slinky gears nails;
+      @for $i from 1 through 12 {
+        &.#{nth($catchables, $i)} {
+          background-position: #{($i - 1) * 100}px 0;
+        }
+      }
+    }
   }
 
   .reveal {

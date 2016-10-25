@@ -86,13 +86,58 @@ export default function (props, ref, key) {
           src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.printer.png'}
         />
         <Dropper
+          propClasses={['starting', 'ready', 'set', 'go']}
           bin={
             <Randomizer
               bin={[
-                <Catchable />,
-                <Catchable />,
-                <Catchable />,
-                <Catchable />,
+                <Catchable
+                  className="milk"
+                  message="other"
+                />,
+                <Catchable
+                  className="shoes"
+                  message="other"
+                />,
+                <Catchable
+                  className="cup"
+                  message="plastic"
+                />,
+                <Catchable
+                  className="box"
+                  message="other"
+                />,
+                <Catchable
+                  className="glasses"
+                  message="metal"
+                />,
+                <Catchable
+                  className="whistle"
+                  message="metal"
+                />,
+                <Catchable
+                  className="car"
+                  message="metal"
+                />,
+                <Catchable
+                  className="lego"
+                  message="plastic"
+                />,
+                <Catchable
+                  className="silver"
+                  message="metal"
+                />,
+                <Catchable
+                  className="slinky"
+                  message="metal"
+                />,
+                <Catchable
+                  className="gears"
+                  message="metal"
+                />,
+                <Catchable
+                  className="nails"
+                  message="metal"
+                />,
               ]}
             />
           }
