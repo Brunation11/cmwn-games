@@ -157,10 +157,11 @@ export default function (props, ref, key) {
         </Dropper>
         <Catch
           bucket={[
-            <div className="plastic" message="plastic" />,
-            <div className="metal" message="metal" />,
-            <div className="other" message="other" />,
+            <skoash.Component className="plastic" message="plastic" />,
+            <skoash.Component className="metal" message="metal" />,
+            <skoash.Component className="other" message="other" />,
           ]}
+          catchableRefs={_.get(props, 'data.dropper.refs', [])}
         />
       </skoash.Component>
       <Reveal

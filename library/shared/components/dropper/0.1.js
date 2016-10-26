@@ -14,12 +14,14 @@ class Dropper extends Draggable {
       itemEndXs: [],
       direction: '',
     }, this.state);
+
+    this.next = this.next.bind(this);
   }
 
   next() {
     var items, index, itemEndXs;
 
-    if (!this.state.started) return;
+    if (!this.state.started) return window.requestAnimationFrame(this.next);
 
     items = this.state.items;
     items = items.concat(this.refs.bin.get(1));
@@ -43,12 +45,20 @@ class Dropper extends Draggable {
             });
           });
         } else if (i === this.props.prepClasses.length) {
-          this.next();
+          window.requestAnimationFrame(this.next);
         }
       };
+
       for (let i = 0; i <= this.props.prepClasses.length; i++) {
         setTimeout(timeoutFunction.bind(this, i), i * this.props.prepTimeout);
       }
+
+      this.updateGameState({
+        path: this.props.refsTarget,
+        data: {
+          refs: _.filter(this.refs, (v, k) => !k.indexOf('items-')),
+        }
+      });
     });
   }
 
@@ -158,6 +168,7 @@ Dropper.defaultProps = _.defaults({
   },
   leftBound: 0,
   rightBound: 800,
+  refsTarget: 'dropper',
 }, Draggable.defaultProps);
 
 export default Dropper;
