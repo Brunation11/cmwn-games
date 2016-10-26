@@ -54,6 +54,8 @@ games = (function () {
   return lsd('./library');
 }());
 
+// In order for livereload to work, you should run gulp on the host machine
+// unless you have native docker installed.
 nolivereload = argv.nolr;
 development = argv.development || argv.dev;
 debug = argv.debug;
