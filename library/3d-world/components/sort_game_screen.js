@@ -55,6 +55,8 @@ export default function (props, ref, key) {
         <Score
           max={100}
           increment={10}
+          correct={_.get(props, 'data.score.correct', 0)}
+          incorrect={_.get(props, 'data.score.incorrect', 0)}
         >
           <div />
         </Score>
@@ -162,6 +164,30 @@ export default function (props, ref, key) {
             <skoash.Component className="other" message="other" />,
           ]}
           catchableRefs={_.get(props, 'data.dropper.refs', [])}
+          onCorrect={function (bucketRef) {
+            bucketRef.addClassName('correct');
+            setTimeout(() => {
+              bucketRef.removeClassName('correct');
+            }, 1000);
+            this.updateGameState({
+              path: 'score',
+              data: {
+                correct: _.get(props, 'data.score.correct', 0) + 1,
+              },
+            });
+          }}
+          onIncorrect={function (bucketRef) {
+            bucketRef.addClassName('incorrect');
+            setTimeout(() => {
+              bucketRef.removeClassName('incorrect');
+            }, 1000);
+            this.updateGameState({
+              path: 'score',
+              data: {
+                incorrect: _.get(props, 'data.score.incorrect', 0) + 1,
+              },
+            });
+          }}
         />
       </skoash.Component>
       <Reveal

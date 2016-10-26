@@ -644,7 +644,7 @@ p {
       $catchables: milk shoes cup box glasses whistle car lego silver slinky gears nails;
       @for $i from 1 through 12 {
         &.#{nth($catchables, $i)} {
-          background-position: #{($i - 1) * 100}px 0;
+          background-position: #{($i - 1) * -100}px 0;
         }
       }
     }

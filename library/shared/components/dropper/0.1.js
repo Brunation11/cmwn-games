@@ -32,19 +32,22 @@ class Dropper extends Draggable {
     }, () => {
       var timeoutFunction = i => {
         var item = this.refs['items-' + (items.length - 1)];
-        if (!item) return;
-        item.addClassName(this.props.prepClasses[i]);
-        if (i === this.props.prepClasses.length - 1) {
-          itemEndXs = this.state.itemEndXs;
-          itemEndXs[index] = this.state.endX;
-          ReactDOM.findDOMNode(item).addEventListener('transitionend', () => {
-            items = this.state.items;
-            delete items[index];
-            this.setState({
-              items
+        if (item) {
+          item.addClassName(this.props.prepClasses[i]);
+          if (i === this.props.prepClasses.length - 1) {
+            itemEndXs = this.state.itemEndXs;
+            itemEndXs[index] = this.state.endX;
+            ReactDOM.findDOMNode(item).addEventListener('transitionend', () => {
+              items = this.state.items;
+              delete items[index];
+              this.setState({
+                items
+              });
             });
-          });
-        } else if (i === this.props.prepClasses.length) {
+          }
+        }
+
+        if (i === this.props.prepClasses.length) {
           window.requestAnimationFrame(this.next);
         }
       };
