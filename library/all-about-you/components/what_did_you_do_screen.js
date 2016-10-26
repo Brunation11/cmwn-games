@@ -45,7 +45,7 @@ export default function (props, ref, key) {
           });
         }}
       >
-        <skoash.Audio ref="felt-bad" type="voiceOver" src="media/assets/_audio/VOs/VO_IveNeverBeenBullied.mp3" complete delay={1000} />
+        <skoash.Audio ref="never-bullied" type="voiceOver" src="media/assets/_audio/VOs/VO_IveNeverBeenBullied.mp3" complete delay={1000} />
           <skoash.Audio ref="didnt-bother" type="voiceOver" src="media/assets/_audio/VOs/VO_DidntBotherMe.mp3" complete delay={1000} />
           <skoash.Audio ref="something-mean" type="voiceOver" src="media/assets/_audio/VOs/VO_SaidSomething.mp3" complete delay={1000} />
           <skoash.Audio ref="asked-a-friend" type="voiceOver" src="media/assets/_audio/VOs/VO_AskedFriend.mp3" complete delay={1000} />
@@ -68,7 +68,7 @@ export default function (props, ref, key) {
         chooseOne
         allowDeselect
         list={[
-          <skoash.ListItem className="felt-bad animated" data-ref="felt-bad" />,
+          <skoash.ListItem className="never-bullied animated" data-ref="never-bullied" />,
           <skoash.ListItem className="didnt-bother animated" data-ref="didnt-bother" />,
           <skoash.ListItem className="something-mean animated" data-ref="something-mean" />,
           <skoash.ListItem className="asked-a-friend animated" data-ref="asked-a-friend" />,

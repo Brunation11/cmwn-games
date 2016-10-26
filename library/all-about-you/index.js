@@ -34,17 +34,17 @@ class AllAboutYou extends skoash.Game {
       3: DragNDropPassionateScreen,
       4: DragNDropIssuesScreen,
       5: PickOnePowerfulScreen,
-      6: QualitiesBucketsScreen,
-      7: EmojiBullyingScreen,
-      8: EmojiCompassionScreen,
-      9: EmojiAngryScreen,
-      10: EmojiFriendlinessScreen,
-      11: PickOneBulliedScreen,
-      12: WhatDidYouDoScreen,
-      13: HowMuchEnvScreen,
-      14: HowMuchSpeciesScreen,
-      15: HowMuchWaterScreen,
-      16: DragNDropInterestsScreen,
+      6: EmojiBullyingScreen,
+      7: EmojiCompassionScreen,
+      8: EmojiAngryScreen,
+      9: EmojiFriendlinessScreen,
+      10: PickOneBulliedScreen,
+      11: WhatDidYouDoScreen,
+      12: HowMuchEnvScreen,
+      13: HowMuchSpeciesScreen,
+      14: HowMuchWaterScreen,
+      15: DragNDropInterestsScreen,
+      16: QualitiesBucketsScreen,
       17: FlipScreen
     };
 
@@ -74,7 +74,7 @@ class AllAboutYou extends skoash.Game {
 
   emitSave(highestScreenIndex, currentScreenIndex) {
     var data = {};
-    // if (currentScreenIndex !== 17) return;
+    if (currentScreenIndex !== 17) return;
     if (this && this.refs) {
       _.forEach(this.refs, (screen, key) => {
         if (key.indexOf('screen-') === -1) return;

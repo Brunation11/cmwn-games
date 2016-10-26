@@ -75,8 +75,8 @@ export default function (props, ref, key) {
           <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
         ]}
         dropzones={[
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />
+          <skoash.Component className="dropzone-list-item animated" multipleAnswers />,
+          <skoash.Component className="dropzone-list-item animated" multipleAnswers />
         ]}
         draggables={[
           <skoash.ListItem ref="sharing" className="draggable-list-item sharing animated" message="sharing" returnOnIncorrect />,
