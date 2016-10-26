@@ -62,7 +62,7 @@ export default function (props, ref, key) {
         </Score>
         <Timer
           countDown
-          timeout={60000}
+          timeout={180000}
           leadingContent="TIME LEFT"
           getTime={function () {
             var timeLeft, minutesLeft, secondsLeft;
