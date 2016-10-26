@@ -10,8 +10,9 @@ class Dropper extends Draggable {
     super();
 
     this.state = _.defaults({
-      items: [],
-      itemEndXs: [],
+      items: {},
+      itemCount: 0,
+      itemEndXs: {},
       direction: '',
     }, this.state);
 
@@ -19,41 +20,45 @@ class Dropper extends Draggable {
   }
 
   next() {
-    var items, index, itemEndXs;
+    var items, index;
 
-    if (!this.state.started) return window.requestAnimationFrame(this.next);
+    if (!this.state.started || !this.props.on) return;
 
+    index = this.state.itemCount;
     items = this.state.items;
-    items = items.concat(this.refs.bin.get(1));
-    index = items.length - 1;
+    items[index] = this.refs.bin.get(1)[0];
 
     this.setState({
       items,
+      itemCount: index + 1,
     }, () => {
       var timeoutFunction = i => {
-        var item = this.refs['items-' + (items.length - 1)];
-        if (item) {
-          item.addClassName(this.props.prepClasses[i]);
+        var itemRef, itemEndXs;
+        itemRef = this.refs['items-' + index];
+        if (itemRef) {
+          itemRef.addClassName(this.props.prepClasses[i]);
+          this.props.onAddClassName.call(this, this.props.prepClasses[i]);
           if (i === this.props.prepClasses.length - 1) {
             itemEndXs = this.state.itemEndXs;
             itemEndXs[index] = this.state.endX;
-            ReactDOM.findDOMNode(item).addEventListener('transitionend', () => {
+            ReactDOM.findDOMNode(itemRef).addEventListener('transitionend', () => {
               items = this.state.items;
               delete items[index];
               this.setState({
-                items
+                items,
+                itemEndXs
               });
             });
           }
         }
 
-        if (i === this.props.prepClasses.length) {
-          window.requestAnimationFrame(this.next);
-        }
+        if (i === this.props.prepClasses.length) this.next();
       };
 
       for (let i = 0; i <= this.props.prepClasses.length; i++) {
-        setTimeout(timeoutFunction.bind(this, i), i * this.props.prepTimeout);
+        setTimeout(() => {
+          timeoutFunction(i);
+        }, i * this.props.prepTimeout);
       }
 
       this.updateGameState({
@@ -78,6 +83,14 @@ class Dropper extends Draggable {
       endX,
       direction: endX > this.state.endX ? 'right' : 'left'
     });
+  }
+
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.on === true && props.on !== this.props.on) {
+      this.start();
+    }
   }
 
   getItemStyle(key) {
@@ -172,6 +185,7 @@ Dropper.defaultProps = _.defaults({
   leftBound: 0,
   rightBound: 800,
   refsTarget: 'dropper',
+  on: true,
 }, Draggable.defaultProps);
 
 export default Dropper;

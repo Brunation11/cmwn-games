@@ -13,11 +13,39 @@ import Catchable from 'shared/components/catchable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
-  var closeReveal = function () {
+  var closeReveal, onCloseReveal;
+
+  closeReveal = function () {
     skoash.trigger('updateState', {
       path: 'reveal',
       data: {
         close: true,
+      }
+    });
+  };
+
+  onCloseReveal = function () {
+    this.updateGameState({
+      path: 'game',
+      data: {
+        stop: false,
+        start: true,
+        restart: false,
+      },
+    });
+    this.updateGameState({
+      path: 'closeReveal',
+      data: false,
+    });
+    this.updateGameState({
+      path: 'openReveal',
+      data: false,
+    });
+    this.updateGameState({
+      path: 'score',
+      data: {
+        correct: 0,
+        incorrect: 0,
       }
     });
   };
@@ -51,12 +79,35 @@ export default function (props, ref, key) {
           />
         </skoash.MediaSequence>
       </MediaCollection>
+      <MediaCollection
+        play={_.get(props, 'data.sfx.playing')}
+      >
+        <skoash.Audio
+          type="voiceOver"
+          completeTarget="sfx"
+          ref="print"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/print_item.mp3'}
+          sprite={[0, 500]}
+        />
+      </MediaCollection>
       <skoash.Component className="left">
         <Score
           max={100}
           increment={10}
           correct={_.get(props, 'data.score.correct', 0)}
           incorrect={_.get(props, 'data.score.incorrect', 0)}
+          onComplete={function () {
+            this.updateGameState({
+              path: 'openReveal',
+              data: 'level-up',
+            });
+            this.updateGameState({
+              path: 'game',
+              data: {
+                complete: true,
+              },
+            });
+          }}
         >
           <div />
         </Score>
@@ -72,6 +123,10 @@ export default function (props, ref, key) {
             secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
             return `${minutesLeft}:${secondsLeft}`;
           }}
+          stop={_.get(props, 'data.game.complete', false)}
+          complete={_.get(props, 'data.game.complete', false)}
+          checkComplete={_.get(props, 'data.game.start', false)}
+          restart={_.get(props, 'data.game.start', false)}
         />
       </skoash.Component>
       <skoash.Component className="main">
@@ -87,10 +142,29 @@ export default function (props, ref, key) {
           className="hidden"
           src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.printer.png'}
         />
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'ImageAssets/plus.png'}
+        />
         <Dropper
+          leftBound={70}
+          rightBound={820}
+          on={_.get(props, 'data.game.start', false)}
+          stop={_.get(props, 'data.game.complete', false)}
           propClasses={['starting', 'ready', 'set', 'go']}
+          onAddClassName={function (className) {
+            if (className === 'go') return;
+            this.updateGameState({
+              path: 'sfx',
+              data: {
+                playing: 'print'
+              }
+            });
+          }}
           bin={
             <Randomizer
+              completeOnStart
+              checkComplete={false}
               bin={[
                 <Catchable
                   className="milk"
@@ -143,8 +217,6 @@ export default function (props, ref, key) {
               ]}
             />
           }
-          leftBound={70}
-          rightBound={820}
         >
           <div className="left">
             <div />
@@ -188,12 +260,26 @@ export default function (props, ref, key) {
               },
             });
           }}
+          assets={[
+            <skoash.Audio
+              type="voiceOver"
+              ref="correct"
+              src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct.mp3'}
+            />,
+            <skoash.Audio
+              type="voiceOver"
+              ref="incorrect"
+              src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect.mp3'}
+            />,
+          ]}
         />
       </skoash.Component>
       <Reveal
-        // openOnStart="in-this"
+        openOnStart="in-this"
         openTarget="reveal"
+        openReveal={_.get(props, 'data.openReveal', false)}
         closeReveal={_.get(props, 'data.reveal.close', false)}
+        onClose={onCloseReveal}
         list={[
           <skoash.Component ref="in-this" type="li">
             <skoash.Image
@@ -251,7 +337,7 @@ export default function (props, ref, key) {
             </div>
           </skoash.Component>,
           <skoash.Component
-            ref="even-food"
+            ref="level-up"
             type="li"
           >
             <h3>
