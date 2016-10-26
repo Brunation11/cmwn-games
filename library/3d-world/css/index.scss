@@ -735,20 +735,6 @@ p {
         display: block;
       }
 
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: -15px;
-        bottom: 0;
-        width: 250px;
-        height: 445px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-        background-size: 2400px;
-        background-position: -600px 0;
-        background-repeat: no-repeat;
-      }
-
       .line {
         background-image: url($media-server + 'ImageAssets/thick.border.png');
         background-repeat: no-repeat;
@@ -758,6 +744,20 @@ p {
       &[data-ref="in-this"] {
         width: 800px;
         height: 500px;
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: -15px;
+          bottom: 0;
+          width: 250px;
+          height: 445px;
+          background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+          background-size: 2400px;
+          background-position: -600px 0;
+          background-repeat: no-repeat;
+        }
 
         .frame {
           position: absolute;
