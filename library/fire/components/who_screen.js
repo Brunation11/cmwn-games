@@ -10,14 +10,10 @@ class WhoScreenComponent extends skoash.Screen {
   open(opts) {
     super.open(opts);
 
-    if (this.state.replay) {
-      this.checkComplete = null;
-      this.incomplete();
-      ['selectable-audio', 'reveal'].forEach(ref => {
-        this.refs[ref].incompleteRefs()
-      });
-      this.checkComplete = super.checkComplete;
-    }
+    this.checkComplete = null;
+    this.incomplete();
+    this.refs['selectable-audio'].incompleteRefs();
+    this.checkComplete = super.checkComplete;
   }
 }
 

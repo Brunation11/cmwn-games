@@ -1,0 +1,26 @@
+.reveal > div > ul {
+  position: relative;
+  padding: 0;
+}
+
+.reveal .close-reveal {
+  cursor: pointer;
+}
+
+.VOICE-OVER:not(.DEMO) .reveal .close-reveal {
+  cursor: default;
+  pointer-events: none;
+}
+
+.reveal > div > ul > li,
+.reveal .close-reveal {
+  list-style: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.reveal > div > ul > li.OPEN,
+.reveal.OPEN .close-reveal {
+  opacity: 1;
+  z-index: 1;
+}

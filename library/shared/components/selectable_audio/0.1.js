@@ -23,12 +23,10 @@ class SelectableAudio extends skoash.Component {
 
     component = this.refs.selectable.refs[ref];
 
-    if (component) {
-      if (component.props.correct) {
-        this.audio['asset-correct'] && this.audio['asset-correct'].play();
-      } else {
-        this.audio['asset-incorrect'] && this.audio['asset-incorrect'].play();
-      }
+    if (component && component.props && component.props.correct) {
+      this.audio['asset-correct'] && this.audio['asset-correct'].play();
+    } else {
+      this.audio['asset-incorrect'] && this.audio['asset-incorrect'].play();
     }
   }
 

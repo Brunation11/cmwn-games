@@ -47,7 +47,7 @@ class Draggable extends skoash.Component {
   startEvent(e, cb) {
     var pageX, pageY, rect, startX, startY, endX, endY, grabX, grabY;
 
-    if (e.target !== this.refs.el) return;
+    if (e.currentTarget !== this.refs.el) return;
     if (!this.shouldDrag()) return;
 
     if (e.targetTouches && e.targetTouches[0]) {
@@ -223,10 +223,6 @@ class Draggable extends skoash.Component {
     return corners;
   }
 
-  componentDidMount() {
-    this.bootstrap();
-  }
-
   bootstrap() {
     super.bootstrap();
 
@@ -239,10 +235,9 @@ class Draggable extends skoash.Component {
   }
 
   setZoom() {
-    skoash.trigger('getState').then(state => {
-      this.setState({
-        zoom: state.scale,
-      });
+    var state = skoash.trigger('getState');
+   this.setState({
+      zoom: state.scale,
     });
   }
 
