@@ -202,9 +202,8 @@ class Reveal extends skoash.Component {
     if (this.state.open) {
       open = '';
       this.state.currentlyOpen.forEach(ref => {
-        open += 'open-' + ref + ' ';
+        open += 'open-' + ref;
       });
-      open += 'OPEN';
     }
 
     classes = classNames(

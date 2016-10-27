@@ -14,6 +14,7 @@ export default function (props, ref, key, opts = {}) {
   var onCloseReveal,
     onScoreComplete,
     getTime,
+    onTimerComplete,
     onAddClassName,
     onCorrectCatch,
     onIncorrectCatch;
@@ -33,7 +34,7 @@ export default function (props, ref, key, opts = {}) {
     });
     this.updateGameState({
       path: 'openReveal',
-      data: false,
+      data: null,
     });
     this.updateGameState({
       path: 'score',
@@ -64,6 +65,20 @@ export default function (props, ref, key, opts = {}) {
     secondsLeft = timeLeft % 60;
     secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
     return `${minutesLeft}:${secondsLeft}`;
+  };
+
+  onTimerComplete = function () {
+    if (_.get(props, 'data.openReveal') === 'level-up') return;
+    this.updateGameState({
+      path: 'openReveal',
+      data: 'try-again',
+    });
+    this.updateGameState({
+      path: 'game',
+      data: {
+        start: false,
+      },
+    });
   };
 
   onAddClassName = function (className) {
@@ -140,6 +155,7 @@ export default function (props, ref, key, opts = {}) {
           complete={_.get(props, 'data.game.complete', false)}
           checkComplete={_.get(props, 'data.game.start', false)}
           restart={_.get(props, 'data.game.start', false)}
+          onComplete={onTimerComplete}
         />
       </skoash.Component>
       <skoash.Component className="main">
@@ -163,6 +179,7 @@ export default function (props, ref, key, opts = {}) {
           leftBound={70}
           rightBound={820}
           on={_.get(props, 'data.game.start', false)}
+          start={_.get(props, 'data.game.start', false)}
           stop={_.get(props, 'data.game.complete', false)}
           propClasses={['starting', 'ready', 'set', 'go']}
           onAddClassName={onAddClassName}

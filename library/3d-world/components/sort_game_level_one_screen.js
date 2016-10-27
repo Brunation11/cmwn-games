@@ -33,7 +33,13 @@ export default function (props, ref, key) {
           type="voiceOver"
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_did_you1.mp3'}
         />
-      </skoash.MediaSequence>
+      </skoash.MediaSequence>,
+      <skoash.Audio
+        type="voiceOver"
+        ref="try-again"
+        complete
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_try_again.mp3'}
+      />,
     ],
     sfx: [
       <skoash.Audio
@@ -134,9 +140,24 @@ export default function (props, ref, key) {
         ref="try-again"
         type="li"
       >
+        <skoash.Image
+          className="minion"
+          src={ENVIRONMENT.MEDIA + 'ImageAssets/try.again.minion.png'}
+        />
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'Frames/try.again.frame.png'}
+        />
+        <skoash.Image
+          className="hidden"
+          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.nav.png'}
+        />
         <div>
-          You didn\’t win this time —<br/>
-          but don\’t worry, you have another chance!
+          <h3>
+            TRY AGAIN
+          </h3>
+          {'You didn\'t win this time —'}<br/>
+          {'but don\'t worry, you have another chance!'}
         </div>
       </skoash.Component>,
     ]
