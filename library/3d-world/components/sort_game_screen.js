@@ -340,14 +340,21 @@ export default function (props, ref, key) {
             ref="level-up"
             type="li"
           >
+            <skoash.Image
+              className="minion"
+              src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+            />
             <h3>
-              Did You Know?
+              LEVEL UP
             </h3>
+            <h4>
+              Did You Know?
+            </h4>
             <div>
               Even food can be 3D printed!<br/>
               While still in the experimental stages,<br/>
-              NASA hopes one day to print food<br/>
-              in space!
+              NASA hopes one day<br/>
+              to print food in space!
             </div>
           </skoash.Component>,
           <skoash.Component
