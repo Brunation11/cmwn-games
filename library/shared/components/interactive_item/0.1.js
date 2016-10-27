@@ -1,5 +1,12 @@
 import classNames from 'classnames';
 
+/*
+ * InteractiveItem is meant to be used whenever you have one item colliding with another.
+ * Colliding with an InteractiveItem will be considering interacting with it.
+ * Interacting with it will invoke it's onInteract prop.
+ * This item's ability to interact can be disabled and enabled.
+ * A canInteract prop can also be passed into this component.
+ */
 class InteractiveItem extends skoash.Component {
   constructor() {
     super();
@@ -48,9 +55,9 @@ class InteractiveItem extends skoash.Component {
 }
 
 InteractiveItem.defaultProps = _.defaults({
-  onEnable: _.identity,
-  onDisable: _.identity,
-  onInteract: _.identity,
+  onEnable: _.noop,
+  onDisable: _.noop,
+  onInteract: _.noop,
   canInteract: () => true,
 }, skoash.Component.defaultProps);
 

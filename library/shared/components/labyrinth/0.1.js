@@ -11,7 +11,8 @@ class Labyrinth extends skoash.Component {
   constructor() {
     super();
 
-    this.update = _.debounce(this.update.bind(this), 10);
+    this.update = _.throttle(this.update.bind(this), 10);
+    this.playCollideSound = _.throttle(this.playCollideSound.bind(this), 500);
   }
 
   onReady() {
@@ -67,7 +68,7 @@ class Labyrinth extends skoash.Component {
     item = this.getCollidingObject(this.items, playerX, playerY);
 
     if (this.isColliding(playerX, playerY)) {
-      if (this.media.collide) this.media.collide.play();
+      this.playCollideSound();
       this.props.onCollide.call(this);
     } else if (enemy) {
       this.props.onCollideEnemy.call(this, enemy);
@@ -106,22 +107,17 @@ class Labyrinth extends skoash.Component {
     );
   }
 
+  playCollideSound() {
+    this.playMedia('collide');
+  }
+
   getCollidingObject(objects, playerX, playerY) {
-    var item, offset;
-    offset = {
+    var offset = {
       width: this[PLAYER].offsetWidth,
       height: this[PLAYER].offsetHeight,
     };
 
-    _.some(objects, i => {
-      if (i.canInteract() && this.doIntersect(playerX, playerY, offset, i)) {
-        item = i;
-        return true;
-      }
-      return false;
-    });
-
-    return item;
+    return _.find(objects, i => i.canInteract() && this.doIntersect(playerX, playerY, offset, i));
   }
 
   doIntersect(playerX, playerY, offset, item) {
@@ -201,7 +197,7 @@ Labyrinth.defaultProps = _.defaults({
   scale: 1,
   items: [],
   enemies: [],
-  onCollide: _.identity,
+  onCollide: _.noop,
   onCollideEnemy: function (enemy) {
     enemy.interact();
   },

@@ -9,6 +9,7 @@ import Reveal from 'shared/components/reveal_prompt/0.1';
 export default function (props, ref, key, opts = {}) {
   var itemInteract,
     enemyInteract,
+    enemyDisable,
     onLabyrinthStart,
     onLabyrinthStop,
     onLabyrinthComplete,
@@ -37,6 +38,23 @@ export default function (props, ref, key, opts = {}) {
         });
       }, 1000);
     });
+  };
+
+  enemyDisable = function () {
+    this.updateGameState({
+      path: 'game',
+      data: {
+        sfx: 'disable',
+      },
+    });
+    setTimeout(() => {
+      this.updateGameState({
+        path: 'game',
+        data: {
+          sfx: null,
+        },
+      });
+    }, 500);
   };
 
   onLabyrinthStart = function () {
@@ -141,8 +159,8 @@ export default function (props, ref, key, opts = {}) {
       <IteractiveItem
         className={'enemy-' + (i + 1)}
         onInteract={enemyInteract}
+        onDisable={enemyDisable}
         children={[
-          <skoash.Audio ref="disable" type="sfx" src="media/_sounds/_effects/HogDisappear.mp3" complete />,
           <skoash.Audio ref="interact" type="sfx" src="media/_sounds/_effects/EnergyHog.mp3" complete />,
         ]}
       />
@@ -164,6 +182,12 @@ export default function (props, ref, key, opts = {}) {
       <MediaCollection
         play={_.get(props, 'data.game.vo')}
         children={opts.vos}
+      />
+      <MediaCollection
+        play={_.get(props, 'data.game.sfx')}
+        children={[
+          <skoash.Audio ref="disable" type="sfx" src="media/_sounds/_effects/HogDisappear.mp3" complete />,
+        ]}
       />
       <Reveal
         openOnStart={opts.openOnStart}
@@ -187,7 +211,7 @@ export default function (props, ref, key, opts = {}) {
         input={_.get(props, 'data.d-pad', {})}
         startX={245}
         startY={380}
-        speed={4}
+        speed={2}
         scale={_.get(props, 'gameState.scale', 1)}
         start={_.get(props, 'data.game.start', false)}
         onStart={onLabyrinthStart}

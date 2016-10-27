@@ -10,6 +10,11 @@ const DOWNKEY = 40;
 const LEFTKEY = 37;
 const RIGHTKEY = 39;
 
+const AKEY = 65;
+const DKEY = 68;
+const SKEY = 83;
+const WKEY = 87;
+
 class DPad extends skoash.Component {
   constructor() {
     super();
@@ -32,13 +37,13 @@ class DPad extends skoash.Component {
 
   keydown(e) {
     var ref = null;
-    if (e.keyCode === LEFTKEY) {
+    if (e.keyCode === LEFTKEY || e.keyCode === AKEY) {
       ref = LEFT;
-    } else if (e.keyCode === UPKEY) {
+    } else if (e.keyCode === UPKEY || e.keyCode === WKEY) {
       ref = UP;
-    } else if (e.keyCode === RIGHTKEY) {
+    } else if (e.keyCode === RIGHTKEY || e.keyCode === DKEY) {
       ref = RIGHT;
-    } else if (e.keyCode === DOWNKEY) {
+    } else if (e.keyCode === DOWNKEY || e.keyCode === SKEY) {
       ref = DOWN;
     }
     this.updateRef(ref);
