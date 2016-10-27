@@ -78,6 +78,19 @@ export default function (props, ref, key) {
             src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_be_sure.mp3'}
           />
         </skoash.MediaSequence>
+        <skoash.MediaSequence
+          ref="level-up"
+          silentOnStart
+        >
+          <skoash.Audio
+            type="voiceOver"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/level_up.mp3'}
+          />
+          <skoash.Audio
+            type="voiceOver"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_did_you1.mp3'}
+          />
+        </skoash.MediaSequence>
       </MediaCollection>
       <MediaCollection
         play={_.get(props, 'data.sfx.playing')}
@@ -230,6 +243,8 @@ export default function (props, ref, key) {
           </div>
         </Dropper>
         <Catch
+          completeOnStart
+          checkComplete={false}
           bucket={[
             <skoash.Component className="plastic" message="plastic" />,
             <skoash.Component className="metal" message="metal" />,
@@ -341,7 +356,7 @@ export default function (props, ref, key) {
             type="li"
           >
             <skoash.Image
-              className="minion"
+              className="hidden"
               src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
             />
             <h3>
