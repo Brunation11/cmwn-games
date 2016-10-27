@@ -26,7 +26,11 @@ class Reveal extends skoash.Component {
     var self = this;
     var currentlyOpen = this.state.currentlyOpen;
 
-    if (currentlyOpen.indexOf(message) === -1) currentlyOpen = currentlyOpen.concat(message);
+    if (!this.props.allowMultipleOpen) {
+      currentlyOpen = [message];
+    } else if (currentlyOpen.indexOf(message) === -1) {
+      currentlyOpen = currentlyOpen.concat(message);
+    }
 
     self.setState({
       open: true,
@@ -234,6 +238,7 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  allowMultipleOpen: false,
   onOpen: _.identity,
   onClose: _.identity,
 }, skoash.Component.defaultProps);

@@ -456,7 +456,7 @@ p {
   }
 }
 
-#sort-game {
+[id*='sort-game'] {
   .left {
     position: absolute;
     left: 0;

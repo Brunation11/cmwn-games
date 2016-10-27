@@ -8,7 +8,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import LetsLearnScreen from './components/lets_learn_screen';
 // import VideoScreen from './components/video_screen';
 // import ManyMaterialsScreen from './components/many_materials_screen';
-import SortGameScreen from './components/sort_game_screen';
+import SortGameLevelOneScreen from './components/sort_game_level_one_screen';
 // import HelpTheWorldScreen from './components/help_the_world_screen';
 // import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
 // import PrinterScreen from './components/printer_screen';
@@ -35,7 +35,7 @@ var ThreeDWorld = (
       // 3: LetsLearnScreen,
       // 4: VideoScreen,
       // 5: ManyMaterialsScreen,
-      1: SortGameScreen,
+      1: SortGameLevelOneScreen,
       // 7: HelpTheWorldScreen,
       // 8: BunchOfProblemsScreen,
       // 9: PrinterScreen,
