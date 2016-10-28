@@ -1148,6 +1148,18 @@ p {
         }
       }
     }
+
+    .close-reveal {
+      position: absolute;
+      left: 460px;
+      top: 500px;
+      width: 280px;
+      height: 50px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.gallerynav..png');
+      background-repeat: no-repeat;
+      background-size: 550px;
+      background-position: 0 0;
+    }
   }
 }
 
