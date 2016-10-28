@@ -29,10 +29,8 @@ class Randomizer extends skoash.Component {
   }
 
   renderBin() {
-    var bin = this.props.bin || [];
-
-    return bin.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] || key;
+    return _.map(this.props.bin, (li, key) => {
+      var ref = li.ref || (li.props && li.props['data-ref']) || key;
       return (
         <li.type
           {...li.props}

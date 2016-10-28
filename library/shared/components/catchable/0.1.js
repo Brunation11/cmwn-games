@@ -15,10 +15,9 @@ class Catchable extends skoash.Component {
   }
 
   markCaught() {
+    if (!this.state.ready) return;
     this.setState({canCatch: false});
-    if (typeof this.props.onCaught === 'function') {
-      this.props.onCaught.call(this);
-    }
+    this.props.onCaught.call(this);
   }
 
   canCatch() {
@@ -32,7 +31,7 @@ class Catchable extends skoash.Component {
   }
 
   reset() {
-    if (!this.props.disabled && this.props.reCatchable) {
+    if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
       this.setState({canCatch: true});
     }
   }
@@ -47,7 +46,8 @@ class Catchable extends skoash.Component {
 Catchable.defaultProps = _.defaults({
   disabled: false,
   isCorrect: true,
-  reCatchable: true
+  reCatchable: true,
+  onCaught: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Catchable;
