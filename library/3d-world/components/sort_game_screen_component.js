@@ -288,27 +288,3 @@ export default function (props, ref, key, opts = {}) {
     </skoash.Screen>
   );
 }
-
-// list={[
-//   <skoash.Component
-//     ref="congratulations"
-//     type="li"
-//   >
-//     <div>
-//       CONGRATULATIONS!
-//     </div>
-//     <div>
-//       YOU’VE
-//     </div>
-//     <div>
-//       WON
-//     </div>
-//     <div>
-//       THE
-//     </div>
-//     <div>
-//       GAME
-//     </div>
-//   </skoash.Component>
-// ]}
-
