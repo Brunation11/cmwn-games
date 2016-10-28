@@ -20,9 +20,11 @@ export default function (props, ref, key) {
           <skoash.Component />
         ]}
       />
+      {/*
       <Dropzone
 
       />
+      */}
       <Reveal
         list={[
           <skoash.Component

@@ -11,6 +11,7 @@ import ManyMaterialsScreen from './components/many_materials_screen';
 import SortGameLevelOneScreen from './components/sort_game_level_one_screen';
 import SortGameLevelTwoScreen from './components/sort_game_level_two_screen';
 import SortGameLevelThreeScreen from './components/sort_game_level_three_screen';
+import CongratulationsScreen from './components/congratulations_screen';
 import HelpTheWorldScreen from './components/help_the_world_screen';
 import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
 import PrinterScreen from './components/printer_screen';
@@ -22,12 +23,8 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 ENVIRONMENT.MEDIA += 'Games/3DWorld/';
 
-class ThreeDWorldGame extends skoash.Game {
-  // AW - I'm leaving this here for now in case there are any necessary game extensions
-}
-
 var ThreeDWorld = (
-  <ThreeDWorldGame
+  <skoash.Game
     config={config}
     loader={<Loader />}
     screens={{
@@ -40,12 +37,13 @@ var ThreeDWorld = (
       6: SortGameLevelOneScreen,
       7: SortGameLevelTwoScreen,
       8: SortGameLevelThreeScreen,
-      9: HelpTheWorldScreen,
-      10: BunchOfProblemsScreen,
-      11: PrinterScreen,
-      12: NowTheYouLearnedScreen,
-      13: ListScreen,
-      14: FlipScreen,
+      9: CongratulationsScreen,
+      10: HelpTheWorldScreen,
+      11: BunchOfProblemsScreen,
+      12: PrinterScreen,
+      13: NowTheYouLearnedScreen,
+      14: ListScreen,
+      15: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
