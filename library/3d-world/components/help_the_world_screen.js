@@ -1,5 +1,6 @@
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
   return (
@@ -17,12 +18,51 @@ export default function (props, ref, key) {
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.realworldgallery.png'}
       />
+      <skoash.Audio
+        type="voiceOver"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_and_many.mp3'}
+      />
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open')}
+      >
+        <skoash.Audio
+          type="voiceOver"
+          ref="designer"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Product_Designers.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="architect"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Architects.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="surgeon"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Surgeons.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="engineer"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Engineers.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="dentist"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Dentists.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="artist"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Artists.mp3'}
+        />
+      </MediaCollection>
       <div>
         …and many ways to help the world<br/>
         with the wonderful things you create!<br/>
         Click on the image to expand.
       </div>
       <Selectable
+        dataTarget="selectable"
         selectClass="HIGHLIGHTED"
         list={[
           <skoash.Component
@@ -52,6 +92,8 @@ export default function (props, ref, key) {
         ]}
       />
       <Reveal
+        openTarget="reveal"
+        openReveal={_.get(props, 'data.selectable.target.props.data-ref')}
         list={[
           <skoash.Component
             type="li"

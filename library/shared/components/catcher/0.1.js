@@ -1,11 +1,13 @@
-import shortid from 'shortid';
-
 import Catch from 'shared/components/catch/0.1';
 
 class Catcher extends Catch {
   bootstrap() {
     skoash.Component.prototype.bootstrap.call(this);
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+  }
 
+  onReady() {
     this.bucketNodes = _.reduce(this.refs, (a, v, k) => {
       if (k.indexOf('buckets-')) return a;
       a[k] = ReactDOM.findDOMNode(v);
@@ -24,10 +26,10 @@ class Catcher extends Catch {
 
   checkCollisions() {
     if (!this.state.started || this.state.paused) return;
-
     _.each(this.bucketNodes, (bucketNode, bucketRefKey) => {
       var bucketRect = bucketNode.getBoundingClientRect();
       _.each(this.props.catchableRefs, catchableRef => {
+        if (!catchableRef.DOMNode) debugger;
         if (this.isColliding(bucketRect, catchableRef.DOMNode.getBoundingClientRect())) {
           this.selectCatchable(this.refs[bucketRefKey], catchableRef);
         }
@@ -63,7 +65,7 @@ class Catcher extends Catch {
         {...bucket.props}
         ref={'buckets-' + key}
         style={this.getStyle()}
-        key={shortid(key)}
+        key={key}
       />
     );
   }

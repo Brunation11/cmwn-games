@@ -19,10 +19,10 @@ class Dropper extends Draggable {
     this.next = this.next.bind(this);
   }
 
-  next() {
+  next(on) {
     var items, index;
 
-    if (!this.state.started || !this.props.on) return;
+    if (!this.state.started || (!this.props.on && !on)) return;
 
     index = this.state.itemCount;
     items = this.state.items;
@@ -89,7 +89,7 @@ class Dropper extends Draggable {
     super.componentWillReceiveProps(props);
 
     if (props.on === true && props.on !== this.props.on) {
-      this.start();
+      this.next(true);
     }
   }
 

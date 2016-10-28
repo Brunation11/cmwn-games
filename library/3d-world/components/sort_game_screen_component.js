@@ -255,6 +255,7 @@ export default function (props, ref, key, opts = {}) {
         <Catcher
           completeOnStart
           checkComplete={false}
+          start={_.get(props, 'data.game.start', false)}
           bucket={[
             <skoash.Component className="plastic" message="plastic" />,
             <skoash.Component className="metal" message="metal" />,
