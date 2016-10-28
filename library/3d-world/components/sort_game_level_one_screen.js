@@ -6,6 +6,8 @@ export default function (props, ref, key) {
   return SortGameScreenComponent(props, ref, key, {
     id: 'sort-game-level-one',
     timeout: 60000,
+    prepTimeout: 1000,
+    openOnStart: 'in-this',
     vos: [
       <skoash.MediaSequence
         ref="in-this"

@@ -181,7 +181,8 @@ export default function (props, ref, key, opts = {}) {
           on={_.get(props, 'data.game.start', false)}
           start={_.get(props, 'data.game.start', false)}
           stop={_.get(props, 'data.game.complete', false)}
-          propClasses={['starting', 'ready', 'set', 'go']}
+          prepClasses={['starting', 'ready', 'set', 'go']}
+          prepTimeout={opts.prepTimeout}
           onAddClassName={onAddClassName}
           bin={
             <Randomizer
@@ -277,7 +278,7 @@ export default function (props, ref, key, opts = {}) {
         />
       </skoash.Component>
       <Reveal
-        openOnStart="in-this"
+        openOnStart={opts.openOnStart}
         openTarget="reveal"
         openReveal={_.get(props, 'data.openReveal', false)}
         closeReveal={_.get(props, 'data.reveal.close', false)}
@@ -289,125 +290,6 @@ export default function (props, ref, key, opts = {}) {
 }
 
 // list={[
-//   <skoash.Component ref="in-this" type="li">
-//     <skoash.Image
-//       className="frame"
-//       src={ENVIRONMENT.MEDIA + 'Frames/ins.green.frame.png'}
-//     />
-//     <skoash.Image
-//       className="balloon"
-//       src={ENVIRONMENT.MEDIA + 'ImageAssets/img.quit.png'}
-//     />
-//     <skoash.Image
-//       className="bins"
-//       src={ENVIRONMENT.MEDIA + 'ImageAssets/ins.bins.png'}
-//     />
-//     <skoash.Image
-//       className="hidden"
-//       src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
-//     />
-//     <div
-//       className={classNames('words', 'in-this-game', {
-//         show: !_.get(props, 'data.in-this.complete', false)
-//       })}
-//     >
-//       <div>
-//         In this game, you will sort items
-//       </div>
-//       <div>
-//         dropped from the 3D printer
-//       </div>
-//       <div>
-//         by the material it is made from.
-//       </div>
-//       <div className="line" />
-//       <div>
-//         Slide the printer head to
-//       </div>
-//       <div>
-//         drop items into the correct bin.
-//       </div>
-//     </div>
-//     <div
-//       className={classNames('words', 'be-sure', {
-//         show: _.get(props, 'data.in-this.complete', false)
-//       })}
-//     >
-//       <div>
-//         Be sure to collect enough points
-//       </div>
-//       <div>
-//         before the timer runs out!
-//       </div>
-//       <button onClick={closeReveal}>
-//         Start Game
-//       </button>
-//     </div>
-//   </skoash.Component>,
-//   <skoash.Component
-//     ref="level-up"
-//     type="li"
-//   >
-//     <skoash.Image
-//       className="hidden"
-//       src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
-//     />
-//     <h3>
-//       LEVEL UP
-//     </h3>
-//     <h4>
-//       Did You Know?
-//     </h4>
-//     <div>
-//       Even food can be 3D printed!<br/>
-//       While still in the experimental stages,<br/>
-//       NASA hopes one day<br/>
-//       to print food in space!
-//     </div>
-//   </skoash.Component>,
-//   <skoash.Component
-//     ref="many-materials"
-//     type="li"
-//   >
-//     <div>
-//       Wow, there are many materials you can use
-//     </div>
-//     <div>
-//       to make things with a 3D printer!
-//     </div>
-//     <div>
-//       The most common are plastic and metal,
-//     </div>
-//     <div>
-//       but other materials can be used.
-//     </div>
-//   </skoash.Component>,
-//   <skoash.Component
-//     ref="environment"
-//     type="li"
-//   >
-//     <h3>
-//       Did You Know?
-//     </h3>
-//     <div>
-//       3D printing can be better<br/>
-//       for the environment than standard<br/>
-//       manufacturing, because there is<br/>
-//       much less waste!
-//     </div>
-//   </skoash.Component>,
-//   <skoash.Component
-//     ref="try-again"
-//     type="li"
-//   >
-//     <div>
-//       You didn\’t win this time —<br/>
-//       but don\’t worry, you have another chance!
-//     </div>
-//     <button onClick={closeReveal}>
-//       Back to Game
-//     </button>
-//   </skoash.Component>,
 //   <skoash.Component
 //     ref="congratulations"
 //     type="li"

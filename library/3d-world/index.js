@@ -9,6 +9,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import VideoScreen from './components/video_screen';
 // import ManyMaterialsScreen from './components/many_materials_screen';
 import SortGameLevelOneScreen from './components/sort_game_level_one_screen';
+import SortGameLevelTwoScreen from './components/sort_game_level_two_screen';
+import SortGameLevelThreeScreen from './components/sort_game_level_three_screen';
 // import HelpTheWorldScreen from './components/help_the_world_screen';
 // import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
 // import PrinterScreen from './components/printer_screen';
@@ -36,12 +38,14 @@ var ThreeDWorld = (
       // 4: VideoScreen,
       // 5: ManyMaterialsScreen,
       1: SortGameLevelOneScreen,
+      2: SortGameLevelTwoScreen,
+      3: SortGameLevelThreeScreen,
       // 7: HelpTheWorldScreen,
       // 8: BunchOfProblemsScreen,
       // 9: PrinterScreen,
       // 10: NowTheYouLearnedScreen,
       // 11: ListScreen,
-      2: FlipScreen,
+      4: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
