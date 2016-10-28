@@ -9,6 +9,14 @@ export default function (props, ref, key) {
       key={key}
       id="help-the-world"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.realworldgallery.png'}
+      />
       <div>
         …and many ways to help the world<br/>
         with the wonderful things you create!<br/>
