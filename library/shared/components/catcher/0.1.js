@@ -29,7 +29,6 @@ class Catcher extends Catch {
     _.each(this.bucketNodes, (bucketNode, bucketRefKey) => {
       var bucketRect = bucketNode.getBoundingClientRect();
       _.each(this.props.catchableRefs, catchableRef => {
-        if (!catchableRef.DOMNode) debugger;
         if (this.isColliding(bucketRect, catchableRef.DOMNode.getBoundingClientRect())) {
           this.selectCatchable(this.refs[bucketRefKey], catchableRef);
         }
