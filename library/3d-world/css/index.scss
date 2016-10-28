@@ -1007,25 +1007,25 @@ p {
 #help-the-world {
   $green: #81fe46;
   $dark-green: #315a16;
-  .screen-content {
-    > div:nth-of-type(1) {
-      position: relative;
-      color: $green;
-      font-size: 32px;
-      padding: 56px 50px 50px 120px;
-      border-bottom: 12px solid $green;
+  $jobs: designer surgeon engineer dentist artist architect;
 
-      &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 200px;
-        height: 200px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-        background-size: 2200px;
-        background-position: -1905px -180px;
-      }
+  .header {
+    position: relative;
+    color: $green;
+    font-size: 32px;
+    padding: 56px 50px 50px 120px;
+    border-bottom: 12px solid $green;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      height: 200px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+      background-size: 2200px;
+      background-position: -1905px -180px;
     }
   }
 
@@ -1047,7 +1047,6 @@ p {
       background-image: url($media-server + 'SpritesAnimations/sprite.realworldgallery.png');
       background-size: 6000px;
 
-      $jobs: designer surgeon engineer dentist artist architect;
       $background-lefts:       340 1340 2340 3340 4340 5340;
       $background-tops:         77   76   77   77   81   77;
       $background-hover-tops:  397  396  397  397  397  397;
@@ -1062,8 +1061,92 @@ p {
           }
         }
       }
+    }
+  }
 
+  .reveal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .5s, z-index 0 .5s;
 
+    &.OPEN {
+      z-index: 1;
+      opacity: 1;
+      transition: opacity .5s, z-index 0;
+    }
+
+    li {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      transition: display 0s .5s;
+      background-image: url(../media/_backgrounds/title-.jpg);
+      color: $green;
+
+      &.OPEN {
+        display: block;
+      }
+
+      h3 {
+        position: absolute;
+        font-size: 72px;
+        text-align: left;
+        left: 200px;
+        top: 40px;
+      }
+
+      div {
+        position: absolute;
+        font-size: 36px;
+        text-align: left;
+        left: 200px;
+        top: 140px;
+        text-transform: lowercase;
+        font-family: "Source Sans Pro";
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 322px;
+        width: 200px;
+        height: 200px;
+        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+        background-size: 2200px;
+        background-position: -1905px -180px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 310px;
+        border-top: 12px solid $green;
+        background-image: url($media-server + 'SpritesAnimations/sprite.realworldgallery.png');
+        background-size: 6000px;
+      }
+
+      $background-lefts:  0 1000 2000 3000 4000 5000;
+      $background-tops: 640  640  640  640  640  640;
+      @for $i from 1 through 6 {
+        &[data-ref=#{nth($jobs, $i)}] {
+          &:after {
+            background-position: -#{nth($background-lefts, $i)}px -#{nth($background-tops, $i)}px;
+          }
+        }
+      }
     }
   }
 }

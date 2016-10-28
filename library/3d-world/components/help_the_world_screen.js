@@ -56,7 +56,7 @@ export default function (props, ref, key) {
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Artists.mp3'}
         />
       </MediaCollection>
-      <div>
+      <div className="header">
         …and many ways to help the world<br/>
         with the wonderful things you create!<br/>
         Click on the image to expand.
