@@ -1,5 +1,6 @@
 import Target from 'shared/components/target/0.1';
-import Dropzone from 'shared/components/dropzone/0.1';
+import Dropzone from 'shared/components/dropzone/0.3';
+import Draggable from 'shared/components/draggable/0.3';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
@@ -20,11 +21,18 @@ export default function (props, ref, key) {
           <skoash.Component />
         ]}
       />
-      {/*
       <Dropzone
-
+        dropped={_.get(props, 'data.draggable.dropped')}
+        dropzones={[
+          <skoash.Component answers="tire" />
+        ]}
       />
-      */}
+      <skoash.Component>
+        <Draggable
+          returnOnIncorrect
+          message="tire"
+        />
+      </skoash.Component>
       <Reveal
         list={[
           <skoash.Component
