@@ -83,6 +83,7 @@ class Draggable extends skoash.Component {
     this.updateGameState({
       path: this.props.draggableTarget,
       data: {
+        dragging: this,
         dropped: null
       },
     });
@@ -127,7 +128,6 @@ class Draggable extends skoash.Component {
     } else {
       this.setState({
         dragging: false,
-        return: this.props.return,
       });
     }
 
@@ -154,7 +154,7 @@ class Draggable extends skoash.Component {
 
     this.setState({
       dragging: false,
-      return: this.props.return,
+      return: true,
       endX,
       endY,
     });
@@ -182,6 +182,7 @@ class Draggable extends skoash.Component {
     this.updateGameState({
       path: this.props.draggableTarget,
       data: {
+        dragging: null,
         dropped: this
       },
     });

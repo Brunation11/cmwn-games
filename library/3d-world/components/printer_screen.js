@@ -1,5 +1,8 @@
+import classNames from 'classnames';
+
 import Target from 'shared/components/target/0.1';
 import Dropzone from 'shared/components/dropzone/0.3';
+import Slider from 'shared/components/slider/0.1';
 import Draggable from 'shared/components/draggable/0.3';
 import Reveal from 'shared/components/reveal/0.1';
 
@@ -27,12 +30,42 @@ export default function (props, ref, key) {
           <skoash.Component answers="tire" />
         ]}
       />
-      <skoash.Component>
-        <Draggable
-          returnOnIncorrect
-          message="tire"
-        />
-      </skoash.Component>
+      <Slider
+        className={classNames({
+          overflow: _.get(props, 'data.draggable.dragging')
+        })}
+      >
+        <skoash.Component>
+          <Draggable
+            returnOnIncorrect
+            message="tire"
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+        </skoash.Component>
+        <skoash.Component>
+          <Draggable
+            returnOnIncorrect
+            message="tire"
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+          <Draggable
+            returnOnIncorrect
+          />
+        </skoash.Component>
+      </Slider>
       <Reveal
         list={[
           <skoash.Component
