@@ -1040,6 +1040,10 @@ p {
     margin: 0;
     background-color: $dark-green;
 
+    .VOICE-OVER & {
+      pointer-events: none;
+    }
+
     li {
       width: 33.2%;
       height: 49.8%;
@@ -1074,6 +1078,10 @@ p {
     z-index: -1;
     opacity: 0;
     transition: opacity .5s, z-index 0 .5s;
+
+    .VOICE-OVER & {
+      pointer-events: none;
+    }
 
     &.OPEN {
       z-index: 1;
@@ -1114,6 +1122,29 @@ p {
         font-family: "Source Sans Pro";
       }
 
+      button {
+        position: absolute;
+        left: 750px;
+        top: 470px;
+        width: 190px;
+        height: 40px;
+        background-image: url($media-server + 'SpritesAnimations/sprite.gallerynav.png');
+        background-repeat: no-repeat;
+        background-size: 550px;
+        background-position: -315px 0;
+        z-index: 1;
+        opacity: 1;
+        transition: opacity .5s;
+
+        .VOICE-OVER & {
+          opacity: 0;
+        }
+
+        &:hover {
+          background-position: -315px -41px;
+        }
+      }
+
       &:before {
         content: '';
         position: absolute;
@@ -1152,13 +1183,17 @@ p {
     .close-reveal {
       position: absolute;
       left: 460px;
-      top: 500px;
+      top: 470px;
       width: 280px;
-      height: 50px;
-      background-image: url($media-server + 'SpritesAnimations/sprite.gallerynav..png');
+      height: 40px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.gallerynav.png');
       background-repeat: no-repeat;
       background-size: 550px;
       background-position: 0 0;
+
+      &:hover {
+        background-position: 0 -41px;
+      }
     }
   }
 }
