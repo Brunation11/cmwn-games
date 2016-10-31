@@ -60,7 +60,7 @@ class Draggable extends skoash.Component {
     startX = endX = (e.pageX / this.state.zoom - grabX);
     startY = endY = (e.pageY / this.state.zoom - grabY);
 
-    if (!this.props.return) {
+    if (!this.props.return && !this.props.returnOnIncorrect) {
       startX = _.isFinite(this.state.grabX) ?
         this.state.startX + this.state.grabX - grabX :
         startX;
@@ -236,6 +236,7 @@ class Draggable extends skoash.Component {
     return (
       <div
         className={this.getClassNames()}
+        data-message={this.props.message}
         style={this.getStyle()}
         children={this.props.children}
       />
