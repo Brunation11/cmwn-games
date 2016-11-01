@@ -1,32 +1,40 @@
-import Target from 'shared/components/target/0.1';
+import Target from 'shared/components/target/0.2';
 import Dropzone from 'shared/components/dropzone/0.3';
 import Slider from 'shared/components/slider/0.1';
 import Draggable from 'shared/components/draggable/0.3';
 import Reveal from 'shared/components/reveal/0.1';
 
+var startGame = function () {
+};
+var closeReveal = function () {
+};
+
+const objects = [
+  'umbrella',
+  'glasses',
+  'tire',
+  'shovel',
+  'link',
+  'button',
+  'boots',
+  'gloves',
+  'whistle',
+  'cup',
+  'phone',
+  'piece',
+  'tooth',
+  'ball',
+];
+
+const targets = [
+  'tire',
+  'link',
+  'cup',
+  'phone',
+  'tooth',
+];
+
 export default function (props, ref, key) {
-  var startGame = function () {
-  };
-  var closeReveal = function () {
-  };
-
-  const objects = [
-    'umbrella',
-    'glasses',
-    'tire',
-    'shovel',
-    'link',
-    'button',
-    'boots',
-    'gloves',
-    'whistle',
-    'fan',
-    'cup',
-    'piece',
-    'tooth',
-    'ball',
-  ];
-
   return (
     <skoash.Screen
       {...props}
@@ -42,15 +50,29 @@ export default function (props, ref, key) {
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.png'}
       />
-      <Target
-        targets={[
-          <skoash.Component />
-        ]}
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.printer.png'}
       />
+      <skoash.Component className="targets">
+        <div>
+          What <span>ITEM</span> can<br/>
+          solve this problem?
+        </div>
+        <Target
+          targets={[
+            <skoash.Component name={targets[0]} />,
+            <skoash.Component name={targets[1]} />,
+            <skoash.Component name={targets[2]} />,
+            <skoash.Component name={targets[3]} />,
+            <skoash.Component name={targets[4]} />,
+          ]}
+        />
+      </skoash.Component>
       <Dropzone
         dropped={_.get(props, 'data.draggable.dropped')}
         dropzones={[
-          <skoash.Component answers="tire" />
+          <skoash.Component answers={_.get(props, 'data.target.object.props.name')} />
         ]}
       />
       <skoash.Component className="bottom">

@@ -1217,11 +1217,47 @@ p {
 }
 
 #printer {
-  .target {
+  .targets {
     position: absolute;
-    width: 200px;
-    height: 200px;
-    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+    font-family: "Source Sans Pro";
+    background-image: url($media-server + 'ImageAssets/img.leftbox.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 30px;
+
+    span {
+      color: #8ce34e;
+      text-decoration: underline;
+    }
+  }
+
+  .target {
+    div {
+      height: 150px;
+      margin: 10px 0;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.brokenobj.png');
+      background-repeat: no-repeat;
+      background-size: 1200px;
+      background-position: 0 0;
+      // display: none;
+      // opacity: 0;
+      transition: opacity .5s;
+    }
+
+    $targets: tire link cup phone tooth;
+    @for $i from 1 through 5 {
+      $target: nth($targets, $i);
+      &.#{$target} [name=#{$target}] {
+        display: block;
+        opacity: 1;
+      }
+
+      [name=#{$target}] {
+        background-position: #{10 - 245 * ($i - 1)}px 0;
+      }
+    }
   }
 
   .reveal {
@@ -1343,7 +1379,7 @@ p {
 
     $messages: umbrella glasses tire shovel
                link button boots gloves
-               whistle fan cup piece
+               whistle cup phone piece
                tooth ball;
     @for $i from 1 through 14 {
       &[data-message=#{nth($messages, $i)}]:before {

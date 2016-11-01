@@ -106,10 +106,6 @@ class Dropzone extends skoash.Component {
     droppedDOM = dropped.DOMNode || ReactDOM.findDOMNode(dropped);
     corners = this.getCorners(droppedDOM);
 
-    if (skoash.util.doIntersect(corners, this.corners)) {
-      return this.inBounds(dropped);
-    }
-
     dropzone = _.find(this.props.dropzones, (value, key) => {
       var dropzoneRef = this.refs[`dropzone-${key}`];
       if (skoash.util.doIntersect(corners, this.dropzoneCorners[key])) {
