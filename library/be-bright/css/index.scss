@@ -736,6 +736,47 @@ $grey: #8ebbcd;
   }
 }
 
+#leaving-house, #defeat-hog {
+  .eco {
+    width: 360px;
+    position: absolute;
+    bottom: -5px;
+    left: -15px;
+  }
+
+  .text {
+    background-image: url(../media/_images/speech.balloon.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: absolute;
+    right: -40px;
+    top: -20px;
+    width: 680px;
+    height: 420px;
+    font-size: 33px;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+    color: #000;
+
+    div {
+      position: relative;
+      margin-top: 85px;
+      margin-left: 25px;
+    }
+  }
+}
+
+#defeat-hog {
+  .text div {
+    margin-top: 100px
+  }
+
+}
+
+
 [id*='abyrinth-level-'] {
   .avatar {
     width: 143px;

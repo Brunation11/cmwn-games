@@ -10,6 +10,8 @@ import SwitchesScreen from './components/switches_screen';
 import InfoScreen from './components/info_screen';
 import VideoScreen from './components/video_screen';
 import SpecialAnnouncementScreen from './components/special_announcement_screen';
+import LeavingHouseScreen from './components/leaving_house_screen';
+import DefeatHogScreen from './components/defeat_hog_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
@@ -23,16 +25,18 @@ var BeBright = (
     screens={{
       0: iOSScreen,
       1: TitleScreen,
-      2: BulbsScreen,
-      3: PigScreen,
-      4: SwitchesScreen,
-      5: InfoScreen,
-      6: VideoScreen,
-      7: SpecialAnnouncementScreen,
-      8: LevelOneScreen,
-      9: LevelTwoScreen,
-      10: LevelThreeScreen,
-      11: FlipScreen,
+      //2: BulbsScreen,
+      //3: PigScreen,
+      //4: SwitchesScreen,
+      //5: InfoScreen,
+      //6: VideoScreen,
+      //7: SpecialAnnouncementScreen,
+      2: LeavingHouseScreen,
+      3: DefeatHogScreen,
+      //8: LevelOneScreen,
+      //9: LevelTwoScreen,
+      //10: LevelThreeScreen,
+      //11: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
