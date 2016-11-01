@@ -142,12 +142,12 @@ class InboxScreen extends skoash.Screen {
   }
 
   updateData() {
-    var data, inbox, outbox, saved;
+    var skribbles, inbox, outbox, saved;
 
-    data = this.props.gameState.data;
-    inbox = data.received;
-    outbox = data.sent;
-    saved = data.draft;
+    skribbles = this.props.gameState.data.skribbles;
+    inbox = skribbles.received;
+    outbox = skribbles.sent;
+    saved = skribbles.draft;
 
     this.revealList = this.getRevealList(inbox, outbox, saved);
 
@@ -158,25 +158,38 @@ class InboxScreen extends skoash.Screen {
     });
   }
 
+  updateGameData(data, status) {
+    var opts = {
+      path: ['skribbles'],
+      data: {
+        [status]: data.skribble
+      },
+      callback: () => {
+        this.updateData();
+      }
+    };
+    this.updateGameState(opts);
+  }
+
   open() {
     var self = this;
 
     skoash.trigger('getData', {
       status: 'received',
-    }).then(() => {
-      self.updateData();
+    }).then(data => {
+      self.updateGameData(data, 'received');
     });
 
     skoash.trigger('getData', {
       status: 'sent',
-    }).then(() => {
-      self.updateData();
+    }).then(data => {
+      self.updateGameData(data, 'sent');
     });
 
     skoash.trigger('getData', {
       status: 'draft',
-    }).then(() => {
-      self.updateData();
+    }).then(data => {
+      self.updateGameData(data, 'draft');
     });
 
     self.setState({

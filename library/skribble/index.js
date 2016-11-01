@@ -171,18 +171,10 @@ class SkribbleGame extends skoash.Game {
     }
 
     return this.emit(opts).then(data => {
-      if (opts.status) {
-        data[opts.status] = data.skribble;
-        delete data.skribble;
-        this.updateData({
-          data
-        });
-      } else {
-        this.updateData({
-          data,
-          callback: opts.callback,
-        });
-      }
+      this.updateData({
+        data,
+        callback: opts.callback,
+      });
     });
   }
 
