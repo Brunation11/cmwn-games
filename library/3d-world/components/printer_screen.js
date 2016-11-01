@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import Target from 'shared/components/target/0.1';
 import Dropzone from 'shared/components/dropzone/0.3';
 import Slider from 'shared/components/slider/0.1';
@@ -12,6 +10,23 @@ export default function (props, ref, key) {
   var closeReveal = function () {
   };
 
+  const objects = [
+    'umbrella',
+    'glasses',
+    'tire',
+    'shovel',
+    'link',
+    'button',
+    'boots',
+    'gloves',
+    'whistle',
+    'fan',
+    'cup',
+    'piece',
+    'tooth',
+    'ball',
+  ];
+
   return (
     <skoash.Screen
       {...props}
@@ -19,6 +34,14 @@ export default function (props, ref, key) {
       key={key}
       id="printer"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.carouselarrow.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.png'}
+      />
       <Target
         targets={[
           <skoash.Component />
@@ -30,39 +53,70 @@ export default function (props, ref, key) {
           <skoash.Component answers="tire" />
         ]}
       />
-      <Slider
-        className={classNames({
-          overflow: _.get(props, 'data.draggable.dragging')
-        })}
-      >
+      <Slider>
         <skoash.Component>
           <Draggable
             returnOnIncorrect
-            message="tire"
+            message={objects[0]}
           />
           <Draggable
             returnOnIncorrect
+            message={objects[1]}
           />
           <Draggable
             returnOnIncorrect
+            message={objects[2]}
           />
           <Draggable
             returnOnIncorrect
+            message={objects[3]}
           />
         </skoash.Component>
         <skoash.Component>
           <Draggable
             returnOnIncorrect
+            message={objects[4]}
+          />
+          <Draggable
+            returnOnIncorrect
+            message={objects[5]}
+          />
+          <Draggable
+            returnOnIncorrect
+            message={objects[6]}
+          />
+          <Draggable
+            returnOnIncorrect
+            message={objects[7]}
+          />
+        </skoash.Component>
+        <skoash.Component>
+          <Draggable
+            returnOnIncorrect
+            message={objects[8]}
             message="tire"
           />
           <Draggable
             returnOnIncorrect
+            message={objects[9]}
           />
           <Draggable
             returnOnIncorrect
+            message={objects[10]}
           />
           <Draggable
             returnOnIncorrect
+            message={objects[11]}
+          />
+        </skoash.Component>
+        <skoash.Component>
+          <Draggable
+            returnOnIncorrect
+            message={objects[12]}
+          />
+          <Draggable
+            returnOnIncorrect
+            message={objects[13]}
           />
         </skoash.Component>
       </Slider>

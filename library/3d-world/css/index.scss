@@ -1240,27 +1240,43 @@ p {
   }
 
   .slider {
-    border: 2px solid black;
     position: absolute;
     display: flex;
+    align-items: center;
     left: 100px;
     top: 400px;
     width: 600px;
     height: 150px;
 
     button {
-      background: gray;
       width: 50px;
       height: 50px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.carouselarrow.png');
+      background-repeat: no-repeat;
+      background-size: 100px;
+
+      $directions: prev next;
+      @for $i from 1 through 2 {
+        &.#{nth($directions, $i)}-slide {
+          background-position: -#{50 * ($i - 1)}px 0;
+
+          &:hover {
+            background-position: -#{50 * ($i - 1)}px -60px;
+          }
+        }
+      }
     }
 
     .area {
-      border: 2px solid green;
       position: relative;
       display: inline-block;
       width: 500px;
       height: 100%;
       overflow: hidden;
+
+      &:hover {
+        overflow: visible;
+      }
     }
 
     .content {
@@ -1281,29 +1297,49 @@ p {
         transition: opacity .5s;
       }
     }
-
-    &.overflow {
-      .area {
-        overflow: visible;
-      }
-    }
   }
 
   .draggable {
+    position: relative;
     display: inline-block;
-    width: 100px;
-    height: 100px;
-    border: 2px solid blue;
+    width: 101px;
+    height: 101px;
     transition: opacity .5s;
+    margin: 15px;
 
     &.CORRECT {
       opacity: 0;
     }
 
-    $messages: umbrella glasses tire shouvel
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 101px;
+      height: 101px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.png');
+      background-repeat: no-repeat;
+      background-size: 3000px;
+    }
+
+    $messages: umbrella glasses tire shovel
                link button boots gloves
                whistle fan cup piece
                tooth ball;
+    @for $i from 1 through 14 {
+      &[data-message=#{nth($messages, $i)}]:before {
+        background-position: -#{56 + 215 * ($i - 1)}px -53px;
+      }
+
+      &[data-message=#{nth($messages, $i)}]:hover:before {
+        width: 130px;
+        height: 122px;
+        background-position: -#{40 + 215 * ($i - 1)}px -255px;
+      }
+    }
   }
 }
 
