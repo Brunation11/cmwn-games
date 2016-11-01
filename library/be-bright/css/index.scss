@@ -1198,7 +1198,7 @@ $grey: #8ebbcd;
   .labyrinth {
     .interactive-item {
       $item-lefts: 100 280  75 430;
-      $item-tops:  100 230 380 315;
+      $item-tops:  100 220 380 315;
       @for $i from 1 through 4 {
         &.item-#{$i} {
           left: #{nth($item-lefts, $i)}px;
