@@ -8,27 +8,17 @@ class ItemDrawer extends Selectable {
   shouldComponentUpdate(nextProps, nextState) {
     var items, quickCheck, itemsChanged;
 
-    if (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes)) {
-      return true;
-    }
-
     items = nextProps.data || [];
-
     if (nextState.category && items[nextState.category]) {
       items = items[nextState.category].items;
     }
 
-    quickCheck = _.reduce(items, (a, i) => {
-      a += i.name;
-      return a;
-    }, '');
+    quickCheck = _.reduce(items, (a, i) => a + i.name, '');
 
     itemsChanged = this.quickCheck !== quickCheck;
-    if (itemsChanged) {
-      this.quickCheck = quickCheck;
-    }
+    if (itemsChanged) this.quickCheck = quickCheck;
 
-    return itemsChanged;
+    return itemsChanged || (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes));
   }
 
   start() {
@@ -89,7 +79,7 @@ class ItemDrawer extends Selectable {
       });
     } else {
       message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+      classes[key] = this.props.selectClass;
 
       this.setState({
         message,
@@ -263,7 +253,7 @@ class ItemDrawer extends Selectable {
 }
 
 ItemDrawer.defaultProps = _.defaults({
-  scrollbarImg: ''
+  scrollbarImg: '',
 }, Selectable.defaultProps);
 
 export default ItemDrawer;

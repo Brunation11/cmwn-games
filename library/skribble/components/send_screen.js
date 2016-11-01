@@ -42,7 +42,7 @@ class SendScreen extends skoash.Screen {
   }
 
   send() {
-    skoash.trigger('pass-data', {
+    skoash.trigger('passData', {
       name: 'send',
     });
   }

@@ -24,7 +24,8 @@ class Reveal extends skoash.Component {
 
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
+    var currentlyOpen = this.props.openMultiple ?
+      this.state.currentlyOpen.concat(message) : [message];
 
     self.setState({
       open: true,
@@ -180,9 +181,9 @@ class Reveal extends skoash.Component {
 
     if (li.props.className) classes = li.props.className;
 
-    if (this.state.currentlyOpen.indexOf(key) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.ref) !== -1
+    if (this.state.currentlyOpen.indexOf('' + key) !== -1 ||
+        this.state.currentlyOpen.indexOf('' + li.props['data-ref']) !== -1 ||
+        this.state.currentlyOpen.indexOf('' + li.ref) !== -1
     ) {
       classes = classNames(classes, 'OPEN');
     }
@@ -234,6 +235,7 @@ Reveal.defaultProps = _.defaults({
   ],
   onOpen: _.identity,
   onClose: _.identity,
+  openMultiple: true,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

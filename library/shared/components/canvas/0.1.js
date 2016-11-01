@@ -161,7 +161,12 @@ class Canvas extends skoash.Component {
         return c;
       }, 1);
 
-      if (count > this.props.maxInstances) return;
+      if (count > this.props.maxInstances) {
+        skoash.trigger('openMenu', {
+          id: 'limitWarning'
+        });
+        return;
+      }
 
       items.push(asset);
       index = items.indexOf(asset);
@@ -354,9 +359,7 @@ class Canvas extends skoash.Component {
       valid
     });
 
-    if (typeof this.props.setValid === 'function') {
-      this.props.setValid(valid);
-    }
+    this.props.setValid.call(this, valid);
   }
 
   getStyle() {
@@ -433,7 +436,8 @@ class Canvas extends skoash.Component {
 }
 
 Canvas.defaultProps = _.defaults({
-  maxInstances: 5
+  maxInstances: 5,
+  setValid: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Canvas;

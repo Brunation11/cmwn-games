@@ -1,0 +1,25 @@
+export default (
+  <skoash.Screen
+    id="limitWarning"
+    hidePrev
+    hideNext
+  >
+    <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'f/a479811171cf084bf86af4eac1f6dc28'} />
+    <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'f/027b30f0d279ef41cd30eff22323051c'} />
+    <skoash.Image className="otter" src={ENVIRONMENT.MEDIA + 'f/e7c3a0ab64b457334e7be868609ee512'} />
+    <skoash.Image className="sign" src={ENVIRONMENT.MEDIA + 'f/7434453a4692d4be9e898b6b8787c108'} />
+    <div>
+      WARNING:<br/>
+      You have exceeded the number of times<br/>
+      you can use this item in your message.<br/>
+      Please press ok to continue game.
+    </div>
+    <button
+      onClick={function () {
+        skoash.trigger('menuClose', {
+          id: 'limitWarning',
+        });
+      }}
+    />
+  </skoash.Screen>
+);

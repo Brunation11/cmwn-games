@@ -16,6 +16,8 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 import SaveMenu from './components/save_menu';
+import CollisionWarning from './components/collision_warning';
+import LimitWarning from './components/limit_warning';
 
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
@@ -169,19 +171,20 @@ class SkribbleGame extends skoash.Game {
     }
 
     return this.emit(opts).then(data => {
-      if (opts.status) {
-        data[opts.status] = data.skribble;
-        delete data.skribble;
-        this.updateData({
-          data
-        });
-      } else {
-        this.updateData({
-          data,
-          callback: opts.callback,
-        });
-      }
+      this.updateData({
+        data,
+        callback: opts.callback,
+      });
     });
+  }
+
+  showCollisionWarning() {
+    if (!this.state.data.collisionWarning.show) return;
+    this.openMenu({id: 'collisionWarning'});
+  }
+
+  showLimitWarning() {
+    this.openMenu({id: 'limitWarning'});
   }
 
   addRecipient(recipient, cb) {
@@ -230,7 +233,8 @@ class SkribbleGame extends skoash.Game {
 
   clickRecipient() {
     this.goto({
-      index: 'friend'
+      index: 'friend',
+      goto: this.state.currentScreenIndex,
     });
   }
 
@@ -238,7 +242,10 @@ class SkribbleGame extends skoash.Game {
     if (this.state.recipient) {
       this.goto({index: 'canvas'});
     } else {
-      this.goto({index: 'friend'});
+      this.goto({
+        index: 'friend',
+        goto: 'canvas',
+      });
     }
   }
 
@@ -256,8 +263,8 @@ class SkribbleGame extends skoash.Game {
       content.push(<span className="name">{recipient.name}</span>);
     }
 
-    if (recipient.profile_image) {
-      content.push(<img className="profile-image" src={recipient.profile_image} />);
+    if (recipient.src) {
+      content.push(<img className="profile-image" src={recipient.src} />);
     }
 
     return content;
@@ -283,6 +290,8 @@ var Skribble = (
     menus={{
       quit: QuitScreen,
       save: SaveMenu,
+      collisionWarning: CollisionWarning,
+      limitWarning: LimitWarning,
     }}
     loader={<Loader />}
     assets={[
@@ -296,6 +305,10 @@ var Skribble = (
     onBootstrap={function () {
       this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
       this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
+
+      this.state.data.collisionWarning = {
+        show: true
+      };
     }}
     renderMenu={function () {
       return (
@@ -334,6 +347,10 @@ var Skribble = (
         this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
       } else if (opts.name === 'send') {
         this.send();
+      } else if (opts.name === 'showCollisionWarning') {
+        this.showCollisionWarning();
+      } else if (opts.name === 'showLimitWarning') {
+        this.showLimitWarning();
       }
     }}
   />

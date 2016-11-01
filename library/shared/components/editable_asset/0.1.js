@@ -200,9 +200,7 @@ class EditableAsset extends Draggable {
           });
         }
 
-        if (typeof this.props.setValid === 'function') {
-          this.props.setValid(valid);
-        }
+        this.props.setValid.call(this, valid);
       }
     });
   }
@@ -450,6 +448,7 @@ class EditableAsset extends Draggable {
 EditableAsset.defaultProps = _.defaults({
   canvasWidth: 1280,
   canvasHeight: 720,
+  setValid: _.identity,
 }, Draggable.defaultProps);
 
 export default EditableAsset;

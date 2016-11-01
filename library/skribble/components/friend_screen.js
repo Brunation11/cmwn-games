@@ -15,7 +15,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
-    skoash.trigger('pass-data', {
+    skoash.trigger('passData', {
       name: 'add-recipient',
       goto: this.state.opts.goto,
       message
@@ -56,7 +56,7 @@ class FriendScreen extends skoash.Screen {
       self.updateData.call(self, data);
     });
 
-    recipient = this.props.gameState.recipient;
+    recipient = self.props.gameState.recipient;
 
     self.setState({
       load: true,
@@ -126,14 +126,15 @@ class FriendScreen extends skoash.Screen {
           data={this.state.data}
           selectedItem={this.state.recipient}
           buttons={this.buttons}
-          complete={true}
-          className={this.state.opts.goto}
+          completeOnStart={true}
+          checkComplete={false}
+          className={'goto-' + this.state.opts.goto}
         />
       );
     }
 
     return (
-      <div className={this.state.opts.goto}>
+      <div className={'goto-' + this.state.opts.goto}>
         <div className="item-drawer-container">
           <div className="suggest-friends-buttons">
             <button className="continue" onClick={this.selectRespond.bind(this, {})} />
