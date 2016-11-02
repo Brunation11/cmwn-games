@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
@@ -56,30 +54,12 @@ export default function (props, ref, key) {
     revealList: [
       <skoash.Component ref="instructions" className="instructions" type="li">
         <skoash.Image
-          className="frame"
-          src={'media/_assets/Frames/ins.green.frame.png'}
-        />
-        <skoash.Image
-          className="balloon"
-          src={'media/_assets/ImageAssets/img.quit.png'}
-        />
-        <skoash.Image
-          className="bins"
-          src={'media/_assets/ImageAssets/ins.bins.png'}
-        />
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.minion.png'}
+          className="hideen"
+          src={'media/_assets/_sprites/sprites.game2.2-01.png'}
         />
         <div>
-          <skoash.Image
-            className="instructions"
-            src={'media/_assets/SpritesAnimations/sprite.minion.png'}
-          />
-          <skoash.Image
-            className="words"
-            src={'media/_assets/SpritesAnimations/sprite.minion.png'}
-          />
+          <div className="instructions" />
+          <div className="words" />
           <button
             onClick={function () {
               skoash.trigger('updateState', {

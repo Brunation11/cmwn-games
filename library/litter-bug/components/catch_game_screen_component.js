@@ -126,7 +126,11 @@ export default function (props, ref, key, opts = {}) {
     >
       <skoash.Image
         className="hidden"
-        src={'media/_assets/ImageAssets/thick.border.png'}
+        src={'media/_assets/_images/thick.border.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={'media/_assets/_sprites/sprites.game2.2-01.png'}
       />
       <MediaCollection
         play={_.get(props, 'data.reveal.open')}
@@ -185,7 +189,7 @@ export default function (props, ref, key, opts = {}) {
         />
         <skoash.Image
           className="hidden"
-          src={'media/_assets/ImageAssets/plus.png'}
+          src={'media/_assets/_images/plus.png'}
         />
         <Dropper
           leftBound={70}

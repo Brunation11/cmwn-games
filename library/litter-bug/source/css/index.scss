@@ -900,6 +900,11 @@ p {
 }
 
 [id*='catch-game'] {
+  background-image: url(../media/_assets/_sprites/sprites.game2.3-01-min.jpg);
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  background-position: 0 0;
+
   .bottom {
     position: absolute;
     left: 0;
@@ -976,7 +981,6 @@ p {
   }
 
   .main {
-    background-color: #4c6c7a;
     position: absolute;
     left: 100px;
     top: 20px;
@@ -984,6 +988,10 @@ p {
     height: 520px;
     border-radius: 16px 16px 0 0;
     overflow: hidden;
+  }
+
+  .randomizer {
+    display: none;
   }
 
   .dropper {
@@ -1156,9 +1164,11 @@ p {
     width: 100%;
     height: 100%;
     z-index: -1;
+    opacity: 0;
     transition: opacity .5s, z-index 0s .5s;
 
     &.OPEN {
+      opacity: 1;
       z-index: 1;
       transition: opacity .5s, z-index 0s;
     }
@@ -1171,8 +1181,10 @@ p {
     li {
       display: none;
       position: absolute;
-      left: 80px;
-      top: 20px;
+      left: 0;
+      top: 0;
+      width: 960px;
+      height: 540px;
 
       &.OPEN {
         display: block;
@@ -1184,84 +1196,53 @@ p {
         background-size: 100% 100%;
       }
 
-      &[data-ref="in-this"] {
-        width: 800px;
-        height: 500px;
+      &.instructions {
 
-        &:after {
-          content: '';
-          display: block;
+        > div {
           position: absolute;
-          right: -15px;
-          bottom: 0;
-          width: 250px;
-          height: 445px;
-          background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-          background-size: 2400px;
-          background-position: -600px 0;
-          background-repeat: no-repeat;
-        }
-
-        .frame {
-          position: absolute;
-          z-index: -1;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-        }
-
-        .balloon {
-          position: absolute;
-          left: 30px;
+          left: 80px;
           top: 50px;
-          width: 600px;
+          width: 800px;
+          height: 440px;
+          border: 4px solid #000;
+          border-radius: 20px;
+          background-color: #70a51f;
         }
 
-        .bins {
-          position: absolute;
-          left: 180px;
-          top: 270px;
-          width: 370px;
+        .instructions,
+        .words {
+          position: relative;
+          background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
+          background-repeat: no-repeat;
+          background-size: 6000px;
+          margin: 0 auto;
+        }
+
+        .instructions {
+          height: 115px;
+          width: 510px;
+          background-position: -120px -60px;
         }
 
         .words {
-          position: absolute;
-          left: 100px;
-          top: 180px;
-          color: green;
-          font-size: 28px;
-          opacity: 0;
-          transition: opacity .5s;
-          transform: translateY(-50%);
-
-          &.show {
-            opacity: 1;
-          }
-
-          &.be-sure {
-            button {
-              background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
-              background-position: 0 0;
-              width: 250px;
-              height: 60px;
-              margin-top: 10px;
-
-              &:hover {
-                background-position: 0 60px;
-              }
-
-              .VOICE-OVER & {
-                pointer-events: none;
-              }
-            }
-          }
+          height: 220px;
+          width: 800px;
+          background-position: -720px -5px;
         }
 
-        .line {
-          width: 110%;
-          margin-left: -5%;
-          height: 10px;
+        button {
+          display: block;
+          margin: 0 auto;
+          width: 200px;
+          height: 100px;
+          background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
+          background-repeat: no-repeat;
+          background-size: 3000px;
+          background-position: -2070px -117px;
+
+          &:hover {
+            background-position: -2070px -450px;
+          }
         }
       }
 
@@ -1365,36 +1346,16 @@ p {
 
     .close-reveal {
       position: absolute;
-      left: 680px;
-      top: 30px;
-      width: 170px;
-      height: 40px;
-      background-position: -510px 0;
+      left: 830px;
+      top: 60px;
+      width: 50px;
+      height: 50px;
+      background-size: 2500px;
+      background-position: -118px -118px;
       z-index: 1;
 
       &:hover {
-        background-position: -510px -54px;
-      }
-    }
-
-    &.open-level-up {
-      .close-reveal {
-        display: none;
-      }
-    }
-
-    &.open-try-again {
-      .close-reveal {
-        background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
-        background-position: -760px 0;
-        left: 350px;
-        top: 280px;
-        width: 260px;
-        height: 60px;
-
-        &:hover {
-          background-position: -760px -57px;
-        }
+        background-position: -118px -396px;
       }
     }
   }
