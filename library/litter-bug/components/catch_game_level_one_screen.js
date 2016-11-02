@@ -5,9 +5,10 @@ import CatchGameScreenComponent from './catch_game_screen_component';
 export default function (props, ref, key) {
   return CatchGameScreenComponent(props, ref, key, {
     id: 'catch-game-level-one',
+    level: 1,
     timeout: 60000,
     prepTimeout: 1000,
-    openOnStart: 'in-this',
+    openOnStart: 'instructions',
     vos: [
       // <skoash.MediaSequence
       //   ref="in-this"
@@ -53,7 +54,7 @@ export default function (props, ref, key) {
       // />
     ],
     revealList: [
-      <skoash.Component ref="in-this" type="li">
+      <skoash.Component ref="instructions" className="instructions" type="li">
         <skoash.Image
           className="frame"
           src={'media/_assets/Frames/ins.green.frame.png'}
@@ -70,39 +71,15 @@ export default function (props, ref, key) {
           className="hidden"
           src={'media/_assets/SpritesAnimations/sprite.minion.png'}
         />
-        <div
-          className={classNames('words', 'in-this-game', {
-            show: !_.get(props, 'data.in-this.complete', false)
-          })}
-        >
-          <div>
-            In this game, you will sort items
-          </div>
-          <div>
-            dropped from the 3D printer
-          </div>
-          <div>
-            by the material it is made from.
-          </div>
-          <div className="line" />
-          <div>
-            Slide the printer head to
-          </div>
-          <div>
-            drop items into the correct bin.
-          </div>
-        </div>
-        <div
-          className={classNames('words', 'be-sure', {
-            show: _.get(props, 'data.in-this.complete', false)
-          })}
-        >
-          <div>
-            Be sure to collect enough points
-          </div>
-          <div>
-            before the timer runs out!
-          </div>
+        <div>
+          <skoash.Image
+            className="instructions"
+            src={'media/_assets/SpritesAnimations/sprite.minion.png'}
+          />
+          <skoash.Image
+            className="words"
+            src={'media/_assets/SpritesAnimations/sprite.minion.png'}
+          />
           <button
             onClick={function () {
               skoash.trigger('updateState', {
@@ -112,34 +89,22 @@ export default function (props, ref, key) {
                 }
               });
             }}
-          >
-            Start Game
-          </button>
+          />
         </div>
       </skoash.Component>,
       <skoash.Component
         ref="level-up"
+        className="level-up"
         type="li"
       >
         <skoash.Image
           className="hidden"
           src={'media/_assets/SpritesAnimations/sprite.minion.png'}
         />
-        <h3>
-          LEVEL UP
-        </h3>
-        <h4>
-          Did You Know?
-        </h4>
-        <div>
-          Even food can be 3D printed!<br/>
-          While still in the experimental stages,<br/>
-          NASA hopes one day<br/>
-          to print food in space!
-        </div>
       </skoash.Component>,
       <skoash.Component
         ref="try-again"
+        className="try-again"
         type="li"
       >
         <skoash.Image
@@ -154,13 +119,6 @@ export default function (props, ref, key) {
           className="hidden"
           src={'media/_assets/SpritesAnimations/sprite.nav.png'}
         />
-        <div>
-          <h3>
-            TRY AGAIN
-          </h3>
-          {'You didn\'t win this time —'}<br/>
-          {'but don\'t worry, you have another chance!'}
-        </div>
       </skoash.Component>,
     ]
   });

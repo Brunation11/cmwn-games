@@ -136,13 +136,25 @@ export default function (props, ref, key, opts = {}) {
         play={_.get(props, 'data.sfx.playing')}
         children={opts.sfx}
       />
-      <skoash.Component className="left">
+      <skoash.Component className="bottom">
+        <div className="level">
+          {opts.level}
+        </div>
         <Score
+          className="mr-eco-score"
           max={100}
           increment={10}
           correct={_.get(props, 'data.score.correct', 0)}
-          incorrect={_.get(props, 'data.score.incorrect', 0)}
           onComplete={onScoreComplete}
+        >
+          <div />
+        </Score>
+        <Score
+          className="litter-bug-score"
+          max={100}
+          increment={10}
+          correct={_.get(props, 'data.score.incorrect', 0)}
+          onComplete={onTimerComplete}
         >
           <div />
         </Score>
@@ -241,25 +253,13 @@ export default function (props, ref, key, opts = {}) {
             />
           }
         >
-          <div className="left">
-            <div />
-            <div />
-            <div />
-          </div>
-          <div className="right">
-            <div />
-            <div />
-            <div />
-          </div>
         </Dropper>
         <Catcher
           completeOnStart
           checkComplete={false}
           start={_.get(props, 'data.game.start', false)}
           bucket={[
-            <skoash.Component className="plastic" message="plastic" />,
-            <skoash.Component className="metal" message="metal" />,
-            <skoash.Component className="other" message="other" />,
+            <skoash.Component className="mr-eco" message="trash" />,
           ]}
           catchableRefs={_.get(props, 'data.dropper.refs', [])}
           onCorrect={onCorrectCatch}
