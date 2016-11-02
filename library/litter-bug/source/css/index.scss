@@ -536,12 +536,26 @@ p {
     }
   }
 
+  &.OPEN {
+
+      .banner {
+        top: 2000%;
+      }
+
+      .avatar {
+        bottom: 2000%;
+      }
+  }
+
   &.OPEN.STARTED {
+
     .banner {
+      top: 0%;
       animation-name: bounceInUp;
     }
 
     .avatar {
+      bottom: 0%;
       animation-name: bounceInDown;
     }
   }
@@ -595,8 +609,16 @@ p {
     }
   }
 
+  &.OPEN {
+
+      .banner {
+        bottom: 2000%;
+      }
+  }
+
   &.OPEN.STARTED {
     .banner {
+      bottom: 0%;
       animation-name: bounceInDown;
     }
   }
@@ -650,8 +672,16 @@ p {
     }
   }
 
+  &.OPEN {
+
+      .banner {
+          top: 2000%;
+      }
+  }
+
   &.OPEN.STARTED {
     .banner {
+      top: 0%;
       animation-name: bounceInDown;
     }
   }
@@ -706,8 +736,8 @@ p {
 
   .banner {
     position: absolute;
-    width: 20%;
-    height: 20%;
+    right: 20%;
+    bottom: 17%;
     left: 20%;
     top: 20%;
     background-position: 0 0;
