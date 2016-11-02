@@ -126,7 +126,7 @@ export default function (props, ref, key, opts = {}) {
     >
       <skoash.Image
         className="hidden"
-        src={ENVIRONMENT.MEDIA + 'ImageAssets/thick.border.png'}
+        src={'media/_assets/ImageAssets/thick.border.png'}
       />
       <MediaCollection
         play={_.get(props, 'data.reveal.open')}
@@ -161,19 +161,19 @@ export default function (props, ref, key, opts = {}) {
       <skoash.Component className="main">
         <skoash.Image
           className="hidden"
-          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.bins.png'}
+          src={'media/_assets/SpritesAnimations/sprite.game1.bins.png'}
         />
         <skoash.Image
           className="hidden"
-          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.png'}
+          src={'media/_assets/SpritesAnimations/sprite.game1.png'}
         />
         <skoash.Image
           className="hidden"
-          src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game1.printer.png'}
+          src={'media/_assets/SpritesAnimations/sprite.game1.printer.png'}
         />
         <skoash.Image
           className="hidden"
-          src={ENVIRONMENT.MEDIA + 'ImageAssets/plus.png'}
+          src={'media/_assets/ImageAssets/plus.png'}
         />
         <Dropper
           leftBound={70}
@@ -265,16 +265,16 @@ export default function (props, ref, key, opts = {}) {
           onCorrect={onCorrectCatch}
           onIncorrect={onIncorrectCatch}
           assets={[
-            <skoash.Audio
-              type="voiceOver"
-              ref="correct"
-              src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct.mp3'}
-            />,
-            <skoash.Audio
-              type="voiceOver"
-              ref="incorrect"
-              src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect.mp3'}
-            />,
+            // <skoash.Audio
+            //   type="voiceOver"
+            //   ref="correct"
+            //   src={'media/_assets/SoundAssets/effects/Correct.mp3'}
+            // />,
+            // <skoash.Audio
+            //   type="voiceOver"
+            //   ref="incorrect"
+            //   src={'media/_assets/SoundAssets/effects/Incorrect.mp3'}
+            // />,
           ]}
         />
       </skoash.Component>
