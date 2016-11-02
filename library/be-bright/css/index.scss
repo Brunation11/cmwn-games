@@ -736,7 +736,7 @@ $grey: #8ebbcd;
   }
 }
 
-[id*='abyrinth-level-'] {
+[id*='labyrinth-level-'] {
   .avatar {
     width: 143px;
   }
@@ -797,8 +797,8 @@ $grey: #8ebbcd;
     width: 500px;
 
     .player {
-      width: 20px;
-      height: 20px;
+      width: 10px;
+      height: 10px;
 
       &:before {
         content: '';
@@ -806,8 +806,8 @@ $grey: #8ebbcd;
         display: block;
         width: 80px;
         height: 80px;
-        left: -30px;
-        top: -30px;
+        left: -35px;
+        top: -35px;
         background-image: url(../media/_sprites/sprites.game2elem.png);
         background-repeat: no-repeat;
         background-size: 400px;
@@ -895,9 +895,6 @@ $grey: #8ebbcd;
 
       span {
         margin-left: 10px;
-        &:before {
-          content: '0:';
-        }
       }
     }
 
