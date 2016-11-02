@@ -16,6 +16,7 @@ import VideoScreen from './components/video_screen';
 import GoodForYouScreen from './components/good_for_you_screen';
 import TakePledgeScreen from './components/take_pledge_screen';
 import CommitScreen from './components/commit_screen';
+import CatchGameLevelOne from './components/catch_game_level_one_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -36,7 +37,8 @@ var LitterBug = (
       9: GoodForYouScreen,
       10: TakePledgeScreen,
       11: CommitScreen,
-      12: FlipScreen,
+      12: CatchGameLevelOne,
+      13: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
