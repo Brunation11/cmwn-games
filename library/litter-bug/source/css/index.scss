@@ -498,47 +498,55 @@ p {
 }
 
 #room {
-
-  img {
+  .banner,
+  .avatar {
     position: absolute;
+    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background-size: 6000px 565px;
+  }
 
-    &:nth-of-type(1) {
-      width: 360px;
-      left: 100px;
-      top: 10px;
-    }
+  .banner {
+    top: 0%;
+    right: 2%;
+    width: 67%;
+    height: 30%;
+    background-position: -179px 360px;
+  }
 
-    &:nth-of-type(2) {
-      width: 540px;
-      right: 40px;
-      top: 10px;
-    }
+  .avatar {
+    bottom: 0;
+    left: 0%;
+    width: 40%;
+    height: 100%;
+    background-position: -3290px -5px;
   }
 
   button.next-screen {
     position: absolute;
-    left: 540px;
-    top: 200px;
+    left: 46%;
+    bottom: 7%;
     opacity: 0;
     cursor: auto;
+    background-position: -1200px -17px;
+    width: 34%;
+    height: 64%;
+
+    &:hover {
+      background-position: -1200px 373px;
+    }
   }
 
-  &.OPEN {
+  &.OPEN.STARTED {
+    .banner {
+      animation-name: bounceInUp;
+    }
 
-    img {
-
-      &:nth-of-type(1) {
-        animation-name: bounceInUp;
-      }
-
-      &:nth-of-type(2) {
-        animation-name: bounceInDown;
-      }
+    .avatar {
+      animation-name: bounceInDown;
     }
   }
 
   &.COMPLETE {
-
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -548,43 +556,52 @@ p {
 }
 
 #school {
-
-  img {
+  .banner,
+  .avatar {
     position: absolute;
+    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background-size: 6000px 565px;
+  }
 
-    &:nth-of-type(1) {
-      width: 960px;
-      left: 0;
-      bottom: 0;
-    }
+  .banner {
+    bottom: 10%;
+    left: 8%;
+    width: 67%;
+    height: 40%;
+    background-position: -1249px 390px;
+    z-index: 1;
+  }
 
-    &:nth-of-type(2) {
-      width: 400px;
-      left: 150px;
-      bottom: 40px;
-    }
+  .avatar {
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-position: -4003px -5px;
   }
 
   button.next-screen {
     position: absolute;
-    left: 640px;
-    bottom: 0px;
+    left: 63%;
+    bottom: 2%;
     opacity: 0;
     cursor: auto;
+    background-position: -1200px -17px;
+    width: 34%;
+    height: 64%;
+
+    &:hover {
+      background-position: -1200px 373px;
+    }
   }
 
-  &.OPEN {
-
-    img {
-
-      &:nth-of-type(2) {
-        animation-name: bounceInDown;
-      }
+  &.OPEN.STARTED {
+    .banner {
+      animation-name: bounceInDown;
     }
   }
 
   &.COMPLETE {
-
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -594,43 +611,52 @@ p {
 }
 
 #ground {
-
-  img {
+  .banner,
+  .avatar {
     position: absolute;
+    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background-size: 6000px 565px;
+  }
 
-    &:nth-of-type(1) {
-      width: 500px;
-      left: 80px;
-      top: 0;
-    }
+  .banner {
+    top: 0;
+    left: 8%;
+    width: 51%;
+    height: 40%;
+    background-position: -2253px 390px;
+    z-index: 1;
+  }
 
-    &:nth-of-type(2) {
-      width: 720px;
-      right: 0;
-      bottom: 0;
-    }
+  .avatar {
+    bottom: 0;
+    right: 0%;
+    width: 90%;
+    height: 100%;
+    background-position: -5025px -5px;
   }
 
   button.next-screen {
     position: absolute;
-    left: 200px;
-    bottom: 0px;
+    left: 15%;
+    bottom: -3%;
     opacity: 0;
     cursor: auto;
+    background-position: -1200px -17px;
+    width: 34%;
+    height: 64%;
+
+    &:hover {
+      background-position: -1200px 373px;
+    }
   }
 
-  &.OPEN {
-
-    img {
-
-      &:nth-of-type(1) {
-        animation-name: bounceInDown;
-      }
+  &.OPEN.STARTED {
+    .banner {
+      animation-name: bounceInDown;
     }
   }
 
   &.COMPLETE {
-
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -652,12 +678,39 @@ p {
 }
 
 #sing-about-it {
-
-  img {
+  .mr-eco {
     position: absolute;
-    width: 500px;
-    left: 230px;
-    top: 30px;
+    width: 37%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+    background-size: 850px 624px;
+    background-position: -70px 0;
+  }
+
+  .dancers,
+  .banner {
+    background: url(../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png);
+    background-size: 4000px 340px;
+    position: absolute;
+  }
+
+  .dancers {
+    width: 611px;
+    height: 20%;
+    bottom: 0;
+    right: 0px;
+    background-position: -713px 226px;
+  }
+
+  .banner {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    left: 20%;
+    top: 20%;
+    background-position: 0 0;
   }
 
   &.OPEN {
