@@ -130,6 +130,7 @@ RevealPrompt.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
-  onOpen: _.identity,
-  onClose: _.identity,
+  onOpen: _.noop,
+  onClose: _.noop,
+  closeDelay: 0,
 }, skoash.Component.defaultProps);

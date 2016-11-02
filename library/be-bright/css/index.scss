@@ -944,6 +944,58 @@ $grey: #8ebbcd;
     background-image: url(../media/_images/frame.yellow.png);
     color: #000;
 
+    &.instructions {
+      button {
+        position: absolute;
+        bottom: 11px;
+        right: 30px;
+        width: 190px;
+        height: 100px;
+        background-image: url(../media/_sprites/sprites.btns.png);
+        background-size: 3375px;
+        background-position: -1220px -80px;
+
+        &:hover {
+          background-position: -1220px -355px;
+        }
+      }
+    }
+
+    &.count-down {
+      .count {
+        position: absolute;
+        left: 500px;
+        top: 60px;
+        width: 200px;
+        text-align: center;
+      }
+
+      .number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #fff;
+        font-size: 260px;
+        opacity: 0;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        $numbers: one two three;
+        @for $i from 1 through 3 {
+          &.#{nth($numbers, $i)} {
+            animation-delay: #{$i - 1}s
+          }
+        }
+      }
+
+      &.OPEN {
+        .number {
+          animation-name: number-flash;
+        }
+      }
+    }
+
     &.level-up {
       background-image: url(../media/_images/frame.lvlup.png);
 
@@ -1162,6 +1214,13 @@ $grey: #8ebbcd;
 
     &:hover {
       background-position: -1220px -355px;
+    }
+  }
+
+  .open-instructions,
+  .open-count-down {
+    .close-reveal {
+      display: none;
     }
   }
 
