@@ -6,16 +6,15 @@ export default function (props, ref, key) {
       key={key}
       id="lets-clean-up"
     >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/S_2/VO_2.1.mp3" />
-      <div className="animated">
-        <h3>Litter is trash.</h3>
-        <p>
-          Paper, cans, and bottles on the ground<br/>
-          make a mess and can hurt wildlife<br/>
-          and the environment.
-        </p>
+      <skoash.MediaSequence ref="media-sequence">
+        <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/LitterIsTrash.mp3" />
+        <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/PaperCansBottles.mp3" />
+        <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/LetsCleanUp.mp3" />
+      </skoash.MediaSequence>
+      <div className="copy animated">
+          Litter is trash<br />Paper, cans, and bottles on the ground<br/>make a mess and can hurt wildlife<br/>and the environment.
       </div>
-      <skoash.Image ref="image" className="animated" src="media/S_2/img_2.1.png" />
+      <skoash.Image ref="image" className="banner animated" src="media/_assets/_images/lets.clean.up.png" />
     </skoash.Screen>
   );
 }
