@@ -73,7 +73,7 @@ export default class RevealPrompt extends skoash.Component {
 
   renderList() {
     return this.props.list.map((li, key) => {
-      var ref = li.props.ref == null ? key : li.props.ref;
+      var ref = li.ref == null ? key : li.ref;
       return (
         <li.type
           {...li.props}
