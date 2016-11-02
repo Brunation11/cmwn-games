@@ -14,16 +14,12 @@ class Menu extends Selectable {
   }
 
   deactivate() {
-    var self = this;
-
     this.setState({
       active: false,
     });
 
-    Object.keys(this.refs).map(key => {
-      if (typeof self.refs[key].deactivate === 'function') {
-        self.refs[key].deactivate();
-      }
+    _.each(this.refs, ref => {
+      _.invoke(ref, 'deactivate');
     });
   }
 
@@ -67,7 +63,10 @@ class Menu extends Selectable {
 
       isFinal = (
           typeof item.items !== 'object' ||
-          Object.prototype.toString.call(item.items) === '[object Array]'
+          (
+            Object.prototype.toString.call(item.items) === '[object Array]' &&
+            item.items[0]
+          )
         ) || (
           typeof self.props.lastLevel === 'number' &&
           self.props.lastLevel === self.props.level

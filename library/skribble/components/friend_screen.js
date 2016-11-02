@@ -164,6 +164,8 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="friends"
+      completeOnStart
+      checkComplete={false}
       hideNext
       hidePrev
     />

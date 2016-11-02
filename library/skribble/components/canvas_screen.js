@@ -145,12 +145,6 @@ class CanvasScreen extends skoash.Screen {
     this.setState({
       valid
     });
-
-    if (!valid) {
-      skoash.trigger('passData', {
-        name: 'showCollisionWarning'
-      });
-    }
   }
 
   setHasAssets(hasAssets) {

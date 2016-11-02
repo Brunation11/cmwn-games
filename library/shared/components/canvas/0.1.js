@@ -255,6 +255,12 @@ class Canvas extends skoash.Component {
         this.refs['message-' + key].deactivate();
       }
     });
+
+    if (!this.state.valid) {
+      skoash.trigger('passData', {
+        name: 'showCollisionWarning'
+      });
+    }
   }
 
   relayerItems(type) {

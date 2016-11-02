@@ -19,7 +19,7 @@ import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
 import LimitWarning from './components/limit_warning';
 
-const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
+const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
   ready() {
@@ -149,12 +149,10 @@ class SkribbleGame extends skoash.Game {
         d.items.forEach(item => {
           if (item.asset_type === 'folder' && item.name) {
             self.getMedia(path + '/' + item.name);
-          } else {
-            currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
           }
+          currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
         });
       }
-
       self.updateData(opts);
     });
   }
@@ -192,7 +190,6 @@ class SkribbleGame extends skoash.Game {
 
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
-      delete recipient.src;
     } else if (typeof recipient === 'string') {
       if (this.state.data && this.state.data.user) {
         this.state.data.user.some(friend => {
