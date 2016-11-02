@@ -28,7 +28,7 @@ class SendScreen extends skoash.Screen {
   }
 
   open() {
-    var recipient = skoash.trigger('getState').recipient || {};
+    var recipient = this.props.gameState.recipient || {};
 
     this.setState({
       load: true,
