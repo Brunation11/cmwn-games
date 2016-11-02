@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class Repeater extends skoash.Component {
   renderContentList() {
     var a = [];

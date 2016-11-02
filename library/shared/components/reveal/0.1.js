@@ -50,9 +50,9 @@ class Reveal extends skoash.Component {
       }, 2000);
     }
 
-    if (this.props.openTarget) {
-      this.updateGameState({
-        path: this.props.openTarget,
+    if (self.props.openTarget) {
+      self.updateGameState({
+        path: self.props.openTarget,
         data: {
           open: '' + message
         }
@@ -164,6 +164,8 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
     }
@@ -189,8 +191,7 @@ class Reveal extends skoash.Component {
   }
 
   getClassNames() {
-    var classes;
-    var open = 'open-none ';
+    var classes, open = 'open-none ';
 
     if (this.state.open) {
       open = '';
