@@ -38,8 +38,12 @@ html, body, body > div, body > div > div {
     background-image: url(../media/_BKG/BKG_1.png);
   }
 
+  .background.title {
+    background-image: url(../media/_assets/_animations/Litterbug-titlescreen.gif);
+  }
+
   .background.lets-clean-up {
-    background-image: url(../media/_BKG/BKG_2.png);
+    background-image: url(../media/_assets/_images/BKG.4.jpg);
   }
 
   .background.select {
@@ -66,6 +70,7 @@ html, body, body > div, body > div > div {
   }
 
   .background.default,
+  &.SCREEN-1 .background.title,
   &.SCREEN-2 .background.lets-clean-up,
   &.SCREEN-3 .background.select,
   &.SCREEN-3.SUN .background.sun,
@@ -100,44 +105,45 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url(../media/_Buttons/BU_1.png);
-  background-size: auto 500px;
+  background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
+  background-size: 3500px 778px;
   background-position: left top;
 
   &.close {
-    width: 30px;
-    height: 30px;
-    background-position: -231px 407px;
+    width: 60px;
+    height: 60px;
+    background-position: 2862px 529px;
     position: absolute;
     right: 0;
     top: 0;
     margin: 5px;
     z-index: 2;
+    background-size: 3000px 667px;
 
     &:hover {
-      background-position: -231px 150px;
+      background-position: 2862px 196px;
     }
   }
 
   &.next-screen,
   &.prev-screen {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
 
   &.next-screen {
-    background-position: -125px 420px;
+    background-position: 2562px 617px;
 
     &:hover {
-      background-position: -125px 664px;
+      background-position: 2562px 228px;
     }
   }
 
   &.prev-screen {
-    background-position: -30px 420px;
+    background-position: 2950px 617px;
 
     &:hover {
-      background-position: -30px 664px;
+      background-position: 2950px 228px;
     }
   }
 
@@ -343,90 +349,30 @@ p {
   }
 }
 
-#title {
-
-  button {
-    &.prev-screen {
-      display: none;
-    }
-  }
-
-  img.symbol {
-    position: absolute;
-    left: 100px;
-    top: 20px;
-    width: 420px;
-    opacity: 0;
-    transition: opacity 0s 1s;
-  }
-
-  img.litterbug {
-    position: absolute;
-    left: 360px;
-    bottom: 0px;
-    width: 500px;
-  }
-
-  .title {
-    position: absolute;
-    left: 150px;
-    bottom: 0px;
-
-    img {
-      width: 400px;
-      display: block;
-      margin-bottom: -30px;
-
-      &:nth-of-type(2) {
-        width: 700px;
-      }
-    }
-  }
-
-  &.OPEN {
-
-    img.litterbug {
-      animation-name: zoomInDown;
-    }
-
-    .title {
-      animation-name: slideInLeft;
-    }
-
-    &.COMPLETE {
-
-      img.symbol {
-        animation-name: bounceIn;
-        opacity: 1;
-      }
-    }
-  }
-}
-
 #lets-clean-up {
 
-  div > div {
-    margin: 0;
+  .copy {
     position: absolute;
-    right: 70px;
-    top: 80px;
+    left: 55%;
+    width: 75%;
+    transform: translateX(-50%);
     text-align: center;
+    color: #fff;
+    font-size: 40px;
+    top: 10%;
+    font-weight: 700;
   }
 
-  img {
+  .banner {
     position: absolute;
-    right: 40px;
-    bottom: 0;
-    width: 640px;
+    left: 55%;
+    bottom: 28%;
+    width: 70%;
+    transform: translateX(-50%);
   }
 
   &.OPEN {
-
-    div > div {
-      animation-name: flipInX;
-    }
-
-    img {
+    .banner {
       animation-name: zoomInDown;
     }
   }
