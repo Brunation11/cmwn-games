@@ -17,7 +17,9 @@ export default function (props, ref, key, opts = {}) {
     onTimerComplete,
     onAddClassName,
     onCorrectCatch,
-    onIncorrectCatch;
+    onIncorrectCatch,
+    onMove,
+    bin;
 
   onCloseReveal = function () {
     this.updateGameState({
@@ -62,6 +64,7 @@ export default function (props, ref, key, opts = {}) {
     var timeLeft, minutesLeft, secondsLeft;
     timeLeft = this.props.timeout / 1000 - this.state.time;
     minutesLeft = Math.floor(timeLeft / 60);
+    minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
     secondsLeft = timeLeft % 60;
     secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
     return `${minutesLeft}:${secondsLeft}`;
@@ -117,6 +120,43 @@ export default function (props, ref, key, opts = {}) {
     });
   };
 
+  onMove = function (e) {
+    var rect, styles;
+
+    if (e.target !== this.refs.catcher) return;
+
+    if (e.targetTouches && e.targetTouches[0]) {
+      rect = e.target.getBoundingClientRect();
+      e = e.targetTouches[0];
+      e.offsetY = e.pageY - rect.top;
+    }
+
+    styles = this.state.styles;
+
+    styles[0] = {
+      top: Math.min(e.offsetY, 360),
+    };
+
+    this.setState({
+      styles,
+    });
+  };
+
+  bin = [];
+  for (let i = 0; i < opts.bin.length; i++) {
+    for (let j = 0; j < opts.rows; j++) {
+      bin.push(
+        <Catchable
+          className={opts.bin[i].className}
+          message={opts.bin[i].message}
+          style={{
+            top: 400 * (j + .5) / opts.rows,
+          }}
+        />
+      );
+    }
+  }
+
   return (
     <skoash.Screen
       {...props}
@@ -126,7 +166,15 @@ export default function (props, ref, key, opts = {}) {
     >
       <skoash.Image
         className="hidden"
+        src={'media/_assets/_sprites/sprites.game2.4-01.png'}
+      />
+      <skoash.Image
+        className="hidden"
         src={'media/_assets/_images/thick.border.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={'media/_assets/_sprites/sprites.game2.1-01.png'}
       />
       <skoash.Image
         className="hidden"
@@ -177,18 +225,6 @@ export default function (props, ref, key, opts = {}) {
       <skoash.Component className="main">
         <skoash.Image
           className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.game1.bins.png'}
-        />
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.game1.png'}
-        />
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.game1.printer.png'}
-        />
-        <skoash.Image
-          className="hidden"
           src={'media/_assets/_images/plus.png'}
         />
         <Dropper
@@ -197,63 +233,14 @@ export default function (props, ref, key, opts = {}) {
           on={_.get(props, 'data.game.start', false)}
           start={_.get(props, 'data.game.start', false)}
           stop={_.get(props, 'data.game.complete', false)}
-          prepClasses={['starting', 'ready', 'set', 'go']}
+          prepClasses={['ready', 'go']}
           prepTimeout={opts.prepTimeout}
           onAddClassName={onAddClassName}
           bin={
             <Randomizer
               completeOnStart
               checkComplete={false}
-              bin={[
-                <Catchable
-                  className="milk"
-                  message="other"
-                />,
-                <Catchable
-                  className="shoes"
-                  message="other"
-                />,
-                <Catchable
-                  className="cup"
-                  message="plastic"
-                />,
-                <Catchable
-                  className="box"
-                  message="other"
-                />,
-                <Catchable
-                  className="glasses"
-                  message="metal"
-                />,
-                <Catchable
-                  className="whistle"
-                  message="metal"
-                />,
-                <Catchable
-                  className="car"
-                  message="metal"
-                />,
-                <Catchable
-                  className="lego"
-                  message="plastic"
-                />,
-                <Catchable
-                  className="silver"
-                  message="metal"
-                />,
-                <Catchable
-                  className="slinky"
-                  message="metal"
-                />,
-                <Catchable
-                  className="gears"
-                  message="metal"
-                />,
-                <Catchable
-                  className="nails"
-                  message="metal"
-                />,
-              ]}
+              bin={bin}
             />
           }
         >
@@ -262,6 +249,8 @@ export default function (props, ref, key, opts = {}) {
           completeOnStart
           checkComplete={false}
           start={_.get(props, 'data.game.start', false)}
+          moveBuckets
+          onMove={onMove}
           bucket={[
             <skoash.Component className="mr-eco" message="trash" />,
           ]}

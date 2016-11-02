@@ -93,16 +93,16 @@ class Dropper extends Draggable {
     }
   }
 
-  getItemStyle(key) {
+  getItemStyle(key, style) {
     var endX, x;
 
     endX = this.state.itemEndXs[key] || this.state.endX;
     x = ((endX - this.state.startX) / this.state.zoom);
 
-    return {
+    return _.defaults({
       transform: `translateX(${x}px)`,
       WebkitTransform: `translateX(${x}px)`,
-    };
+    }, style);
   }
 
   getStyle() {
@@ -129,7 +129,7 @@ class Dropper extends Draggable {
       return (
         <item.type
           {...item.props}
-          style={this.getItemStyle(key)}
+          style={this.getItemStyle(key, item.props.style)}
           data-ref={ref}
           data-message={item.props.message}
           ref={ref}

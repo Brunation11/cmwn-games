@@ -1,4 +1,3 @@
-import shortid from 'shortid';
 import classNames from 'classnames';
 
 class Randomizer extends skoash.Component {
@@ -38,7 +37,7 @@ class Randomizer extends skoash.Component {
           {...li.props}
           data-ref={ref}
           ref={ref}
-          key={shortid(key)}
+          key={key}
         />
       );
     });

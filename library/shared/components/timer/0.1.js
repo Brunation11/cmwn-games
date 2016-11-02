@@ -15,6 +15,8 @@ class Timer extends skoash.Component {
   checkComplete() {
     var time = Date.now();
 
+    if (!this.props.checkComplete) return window.requestAnimationFrame(this.checkComplete);
+
     if (!this.state.started || this.state.paused) return;
 
     if (time >= this.state.stamp) {
@@ -39,6 +41,7 @@ class Timer extends skoash.Component {
   }
 
   restart() {
+    if (!this.state.ready) return;
     if (this.state.complete) this.incomplete();
 
     this.setState({
@@ -50,38 +53,42 @@ class Timer extends skoash.Component {
   }
 
   stop() {
+    if (!this.state.started) return;
     this.setState({
       started: false
     });
   }
 
   pause() {
-    if (this.state.started) {
-      this.setState({
-        paused: true
-      });
-    }
+    if (!this.state.started) return;
+    this.setState({
+      paused: true
+    });
   }
 
   resume() {
-    if (this.state.paused) {
-      this.setState({
-        paused: false
-      }, () => {
-        this.start();
-      });
+    if (!this.state.paused) return;
+    this.setState({
+      paused: false
+    }, () => {
+      this.start();
+    });
+  }
+
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.restart && props.restart !== this.props.restart) {
+      this.restart();
     }
   }
 
   getClassNames() {
-    return classNames(
-      'timer',
-      skoash.Component.prototype.getClassNames.call(this)
-    );
+    return classNames('timer', super.getClassNames());
   }
 
   render() {
-    var time = this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+    var time = this.props.getTime.call(this);
     return (
       <div {...this.props} className={this.getClassNames()} time={time}>
         {this.props.leadingContent}
@@ -93,5 +100,14 @@ class Timer extends skoash.Component {
     );
   }
 }
+
+Timer.defaultProps = _.defaults({
+  getTime: function () {
+    return this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+  },
+  leadingContent: '',
+  timeout: 60000,
+  countDown: false,
+}, skoash.Component.defaultProps);
 
 export default Timer;

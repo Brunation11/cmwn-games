@@ -4,6 +4,65 @@ export default function (props, ref, key) {
   return CatchGameScreenComponent(props, ref, key, {
     id: 'catch-game-level-one',
     level: 1,
+    rows: 3,
+    bin: [
+      {
+        className: 'mushroom',
+        message: ''
+      },
+      {
+        className: 'banana',
+        message: 'trash'
+      },
+      {
+        className: 'paper',
+        message: 'trash'
+      },
+      {
+        className: 'dog',
+        message: ''
+      },
+      {
+        className: 'battery',
+        message: 'trash'
+      },
+      {
+        className: 'duck',
+        message: ''
+      },
+      {
+        className: 'squirrel',
+        message: ''
+      },
+      {
+        className: 'tire',
+        message: 'trash'
+      },
+      {
+        className: 'blue-flower',
+        message: ''
+      },
+      {
+        className: 'yellow-flower',
+        message: ''
+      },
+      {
+        className: 'red-flower',
+        message: ''
+      },
+      {
+        className: 'purple-flower',
+        message: ''
+      },
+      {
+        className: 'glass',
+        message: 'trash'
+      },
+      {
+        className: 'plastic',
+        message: 'trash'
+      },
+    ],
     timeout: 60000,
     prepTimeout: 1000,
     openOnStart: 'instructions',

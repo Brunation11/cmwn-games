@@ -1,10 +1,31 @@
+import classNames from 'classnames';
+
 import Catch from 'shared/components/catch/0.1';
 
 class Catcher extends Catch {
+  constructor(props) {
+    super(props);
+
+    this.state = _.defaults({
+      styles: [],
+    }, this.state);
+
+    this.moveEvent = this.moveEvent.bind(this);
+  }
+
   bootstrap() {
     skoash.Component.prototype.bootstrap.call(this);
     window.addEventListener('resize', this.onResize);
     this.onResize();
+
+    if (this.props.moveBuckets) {
+      window.addEventListener('mousemove', this.moveEvent);
+      window.addEventListener('touchmove', this.moveEvent);
+    }
+  }
+
+  moveEvent(e) {
+    this.props.onMove.call(this, e);
   }
 
   onReady() {
@@ -58,12 +79,16 @@ class Catcher extends Catch {
     this.props.onIncorrect.call(this, bucketRef, catchableRef);
   }
 
+  getClassNames() {
+    return classNames('catcher', super.getClassNames());
+  }
+
   renderBucket() {
     return _.map([].concat(this.props.bucket), (bucket, key) =>
       <bucket.type
         {...bucket.props}
         ref={'buckets-' + key}
-        style={this.getStyle()}
+        style={this.state.styles[key]}
         key={key}
       />
     );
@@ -71,12 +96,17 @@ class Catcher extends Catch {
 
   render() {
     return (
-      <div className={this.getClassNames()}>
+      <div ref="catcher" className={this.getClassNames()}>
         {this.renderContentList('assets')}
         {this.renderBucket()}
       </div>
     );
   }
 }
+
+Catcher.defaultProps = _.defaults({
+  moveBuckets: false,
+  onMove: _.noop,
+}, skoash.Component.defaultProps);
 
 export default Catcher;
