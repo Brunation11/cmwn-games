@@ -59,6 +59,26 @@ class Catcher extends Catch {
     window.requestAnimationFrame(this.checkCollisions);
   }
 
+  isColliding(bucketRect, catchRect) {
+    var bucketCorners = [], catchableCorners = [];
+
+    for (let i = 0; i < 4; i++) {
+      bucketCorners.push({
+        x: bucketRect.left + bucketRect.width * (i === 1 || i === 2 ? 1 : 0),
+        y: bucketRect.top + bucketRect.height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    for (let i = 0; i < 4; i++) {
+      catchableCorners.push({
+        x: catchRect.left + catchRect.width * (i === 1 || i === 2 ? 1 : 0),
+        y: catchRect.top + catchRect.height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    return skoash.util.doIntersect(bucketCorners, catchableCorners);
+  }
+
   selectCatchable(bucketRef, catchableRef) {
     if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableRef.canCatch()) return;
     catchableRef.markCaught();
