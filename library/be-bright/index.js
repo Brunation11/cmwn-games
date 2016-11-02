@@ -31,12 +31,12 @@ var BeBright = (
       //5: InfoScreen,
       //6: VideoScreen,
       //7: SpecialAnnouncementScreen,
-      2: LeavingHouseScreen,
-      3: DefeatHogScreen,
-      //8: LevelOneScreen,
-      //9: LevelTwoScreen,
-      //10: LevelThreeScreen,
-      //11: FlipScreen,
+      //8: LeavingHouseScreen,
+      //9: DefeatHogScreen,
+      //10: LevelOneScreen,
+      //11: LevelTwoScreen,
+      //12: LevelThreeScreen,
+      2: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
