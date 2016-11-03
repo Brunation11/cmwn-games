@@ -54,7 +54,8 @@ class Randomizer extends skoash.Component {
 
 Randomizer.defaultProps = _.defaults({
   bin: [],
-  remain: false
+  remain: false,
+  shouldComponentUpdate: () => false,
 }, skoash.Component.defaultProps);
 
 export default Randomizer;
