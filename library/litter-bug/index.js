@@ -30,7 +30,7 @@ var LitterBug = (
     config={config}
     screens={{
       0: iOSScreen,
-      // 1: TitleScreen,
+      1: TitleScreen,
       2: CatchGameLevelOne,
       3: CatchGameLevelTwo,
       4: CatchGameLevelThree,
@@ -46,7 +46,7 @@ var LitterBug = (
       14: GoodForYouScreen,
       15: TakePledgeScreen,
       16: CommitScreen,
-      1: FlipScreen,
+      17: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
