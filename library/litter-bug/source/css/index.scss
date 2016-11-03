@@ -940,7 +940,7 @@ p {
       position: relative;
       display: inline-block;
       vertical-align: middle;
-      width: 200px;
+      width: 190px;
       height: 80px;
       padding-left: 40px;
       z-index: 1;
@@ -1034,10 +1034,29 @@ p {
     display: inline-block;
     font-size: 14px;
     font-weight: normal;
+    width: 200px;
+    vertical-align: middle;
+    height: 60px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: 90px;
+      height: 50px;
+      vertical-align: middle;
+      background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
+      background-repeat: no-repeat;
+      background-size: 500px;
+      background-position: -307px -30px;
+    }
 
     span {
-      display: block;
-      font-size: 28px;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 32px;
+      color: #f5fd37;
+      @include text-stroke(3, #000);
     }
   }
 
