@@ -9,7 +9,7 @@ import Score from 'shared/components/score/0.1';
 const CONFIG = {
   LVL: 1,
   POINTS: 100,
-  TIMER: 3000,
+  TIMER: 30000,
 };
 
 export default function (props, ref, key) {
@@ -21,9 +21,14 @@ export default function (props, ref, key) {
       id="clean-up-game-lvl-1"
     >
       <MediaCollection
-        play={_.get(props, 'data.reveal.open', null)}
+        play={_.get(props, 'data.reveal.play', null)}
         onPlay={function () {
-          // this.media.correct.play();
+          this.updateGameState({
+            path: 'reveal',
+            data: {
+              play: null
+            }
+          });
 
           this.updateGameState({
             path: 'reveal',
@@ -31,18 +36,47 @@ export default function (props, ref, key) {
               open: null
             }
           });
+
+          if (_.get(props, 'data.reveal.play')) {
+            this.updateGameState({
+              path: 'game',
+              data: {
+                complete: true
+              }
+            });
+          }
         }}
       >
-        <skoash.Audio ref="complete" type="voiceOver" src="media/_assets/_sounds/_vos/YouHaveGreat.mp3" />
-        <skoash.Audio ref="try-again" type="voiceOver" src="media/_assets/_sounds/_vos/LevelLost.mp3" complete />
+        <skoash.MediaSequence ref="complete" silentOnStart>
+          <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Level1.mp3" />
+          <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/Wow.mp3" />
+          <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/YouHaveGreat.mp3" />
+        </skoash.MediaSequence>
+        <skoash.MediaSequence ref="try-again" silentOnStart complete>
+          <skoash.Audio ref="vo-4" type="voiceOver" src="media/_assets/_sounds/_vos/LevelLost.mp3" complete />
+          <skoash.Audio ref="vo-5" type="voiceOver" src="media/_assets/_sounds/_vos/OhNo.mp3" complete />
+          <skoash.Audio ref="vo-6" type="voiceOver" src="media/_assets/_sounds/_vos/ParkStill.mp3" complete />
+        </skoash.MediaSequence>
+        <skoash.MediaSequence ref="throw" silentOnStart>
+          <skoash.Audio ref="vo-7" type="voiceOver" src="media/_assets/_sounds/_effects/FastSwish.mp3" />
+          <skoash.Audio ref="vo-8" type="voiceOver" src="media/_assets/_sounds/_effects/WinPoints.mp3" />
+        </skoash.MediaSequence>
       </MediaCollection>
 
       <RevealPrompt
         ref="reveal"
         openReveal={_.get(props, 'data.reveal.open', null)}
+        onClose={function () {
+          this.updateGameState({
+            path: 'game',
+            data: {
+              start: true
+            }
+          });
+        }}
         list={[
           <skoash.Component data-ref="complete">
-            <skoash.Component className="frame">
+            <skoash.Component className="frame complete-lvl-1">
               <div className="banner" />
               <div className="banner-2" />
               <span>
@@ -65,24 +99,25 @@ export default function (props, ref, key) {
       <Carousel
         ref="carousel"
         completeOnStart={true}
-        complete={true}
+        checkComplete={false}
         showNum={5}
         targetIndex={2}
         selected={_.get(props, 'data.cannon.fire')}
         onSelect={function (target) {
           var score = _.get(props, 'data.score.points', 0);
           var classes = this.state.classes;
-          classes[target.props['data-ref']] = 'SELECTED';
+          classes[target.props['data-key']] = 'SELECTED';
 
           this.setState({
             classes
           }, () => {
             setTimeout(() => {
-              classes[target.props['data-ref']] = '';
+              classes[target.props['data-key']] = '';
             }, 1000);
           });
 
           if (score < CONFIG.POINTS) score += target.props.value;
+
           this.updateGameState({
             path: 'score',
             data: {
@@ -90,11 +125,18 @@ export default function (props, ref, key) {
             }
           });
 
-          if (score >= CONFIG.POINTS) {
+          if (score >= CONFIG.POINTS & !_.get(props, 'data.game.complete')) {
             this.updateGameState({
               path: 'reveal',
               data: {
                 open: 'complete'
+              }
+            });
+
+            this.updateGameState({
+              path: 'reveal',
+              data: {
+                play: 'complete'
               }
             });
 
@@ -112,10 +154,10 @@ export default function (props, ref, key) {
             completeOnStart={true}
             checkComplete={false}
             bin={[
-              <skoash.Component className="five" data-ref="five" name="five" value={5} />,
-              <skoash.Component className="ten" data-ref="ten" name="ten" value={10} />,
-              <skoash.Component className="twenty" data-ref="twenty" name="twenty" value={20} />,
-              <skoash.Component className="thirty" data-ref="thirty" name="thirty" value={30} />,
+              <skoash.Component className="five" name="five" value={5} complete />,
+              <skoash.Component className="ten" name="ten" value={10} complete />,
+              <skoash.Component className="twenty" name="twenty" value={20} complete />,
+              <skoash.Component className="thirty" name="thirty" value={30} complete />,
             ]}
           />
         }
@@ -123,6 +165,8 @@ export default function (props, ref, key) {
 
       <Cannon
         ref="cannon"
+        completeOnStart={true}
+        checkComplete={false}
         reverseReload={true}
         showNum={4}
         bin={
@@ -131,17 +175,25 @@ export default function (props, ref, key) {
             completeOnStart={true}
             checkComplete={false}
             bin={[
-              <skoash.Component className="plastic-bottle" />,
-              <skoash.Component className="soda-can" />,
-              <skoash.Component className="banana-peal" />,
-              <skoash.Component className="glass-bottle" />,
-              <skoash.Component className="crumbled-paper" />,
-              <skoash.Component className="tuna-can" />,
-              <skoash.Component className="tire" />,
-              <skoash.Component className="battery" />,
+              <skoash.Component className="plastic-bottle" complete />,
+              <skoash.Component className="soda-can" complete />,
+              <skoash.Component className="banana-peal" complete />,
+              <skoash.Component className="glass-bottle" complete />,
+              <skoash.Component className="crumbled-paper" complete />,
+              <skoash.Component className="tuna-can" complete />,
+              <skoash.Component className="tire" complete />,
+              <skoash.Component className="battery" complete/>,
             ]}
           />
         }
+        onFire={function () {
+          this.updateGameState({
+            path: 'reveal',
+            data: {
+              play: 'throw'
+            }
+          });
+        }}
         onReload={function () {
           this.updateGameState({
             path: 'cannon',
@@ -163,6 +215,7 @@ export default function (props, ref, key) {
             countDown={true}
             timeout={CONFIG.TIMER}
             complete={_.get(props, 'data.game.complete', false)}
+            restart={_.get(props, 'data.game.start', false)}
             onComplete={function () {
               if (_.get(props, 'data.reveal.open')) return;
               if (_.get(props, 'data.score.points', 0) < 100) {
@@ -174,11 +227,18 @@ export default function (props, ref, key) {
                 });
 
                 this.updateGameState({
+                  path: 'reveal',
+                  data: {
+                    play: 'try-again'
+                  }
+                });
+
+                this.updateGameState({
                   path: 'score',
                   data: {
                     points: 0
                   }
-                })
+                });
               }
             }}
           />

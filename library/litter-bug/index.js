@@ -9,6 +9,7 @@ import TitleScreen from './components/title_screen';
 import LetsCleanUpScreen from './components/lets_clean_up_screen';
 import CleanUpGameLvl1Screen from './components/clean_up_game_lvl1_screen';
 import CleanUpGameLvl2Screen from './components/clean_up_game_lvl2_screen';
+import CleanUpGameLvl3Screen from './components/clean_up_game_lvl3_screen';
 import CleanUpScreen from './components/clean_up_screen';
 import RoomScreen from './components/room_screen';
 import SchoolScreen from './components/school_screen';
@@ -28,19 +29,20 @@ var LitterBug = (
     screens={{
       0: iOSScreen,
       1: TitleScreen,
-      2: LetsCleanUpScreen,
-      3: CleanUpScreen,
-      4: RoomScreen,
-      5: SchoolScreen,
-      6: GroundScreen,
-      7: SingAboutItScreen,
-      8: VideoScreen,
-      9: CleanUpGameLvl1Screen,
-      10: CleanUpGameLvl1Screen,
-      11: GoodForYouScreen,
-      12: TakePledgeScreen,
-      13: CommitScreen,
-      14: FlipScreen,
+      2: CleanUpGameLvl1Screen,
+      3: CleanUpGameLvl2Screen,
+      4: CleanUpGameLvl3Screen,
+      // 2: LetsCleanUpScreen,
+      // 3: CleanUpScreen,
+      // 4: RoomScreen,
+      // 5: SchoolScreen,
+      // 6: GroundScreen,
+      // 7: SingAboutItScreen,
+      // 8: VideoScreen,
+      // 12: GoodForYouScreen,
+      // 13: TakePledgeScreen,
+      // 14: CommitScreen,
+      // 15: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,

@@ -7,7 +7,7 @@ import Timer from 'shared/components/timer/0.1';
 import Score from 'shared/components/score/0.1';
 
 const CONFIG = {
-  LVL: 2,
+  LVL: 3,
   POINTS: 100,
   TIMER: 30000,
 };
@@ -18,9 +18,9 @@ export default function (props, ref, key) {
       {...props}
       ref={ref}
       key={key}
-      id="clean-up-game-lvl-2"
+      id="clean-up-game-lvl-3"
     >
-      <MediaCollection
+            <MediaCollection
         play={_.get(props, 'data.reveal.play', null)}
         onPlay={function () {
           this.updateGameState({
@@ -47,10 +47,9 @@ export default function (props, ref, key) {
           }
         }}
       >
-        <skoash.MediaSequence ref="complete-lvl" silentOnStart>
-          <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Level2.mp3" />
-          <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/AmazingJob.mp3" />
-          <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/ThankYouCaring.mp3" />
+        <skoash.MediaSequence ref="complete" silentOnStart>
+          <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Level3.mp3" />
+          <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/ParkClean.mp3" />
         </skoash.MediaSequence>
         <skoash.MediaSequence ref="try-again" silentOnStart complete>
           <skoash.Audio ref="vo-4" type="voiceOver" src="media/_assets/_sounds/_vos/LevelLost.mp3" complete />
@@ -68,12 +67,12 @@ export default function (props, ref, key) {
         openReveal={_.get(props, 'data.reveal.open', null)}
         list={[
           <skoash.Component data-ref="complete">
-            <skoash.Component className="frame complete-lvl-2">
+            <skoash.Component className="frame complete-lvl-3">
               <div className="banner" />
-              <div className="banner-2" />
               <span>
-                Thank you for caring so much<br />about the environment!
+                The park is now clean<br />You are an
               </span>
+              <div className="banner-2" />
             </skoash.Component>
           </skoash.Component>,
           <skoash.Component data-ref="try-again">

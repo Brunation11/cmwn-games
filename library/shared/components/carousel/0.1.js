@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import shortid from 'shortid';
 
 import Selectable from 'shared/components/selectable/0.1';
 
@@ -68,6 +69,7 @@ class Carousel extends Selectable {
 
     this.enabled = false;
 
+
     if (typeof this.props.onSelect === 'function') {
       this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
     }
@@ -96,6 +98,7 @@ class Carousel extends Selectable {
           onTransitionEnd={onTransitionEnd}
           ref={ref}
           key={key}
+          data-key={shortid(key)}
         />
       );
     });
