@@ -917,7 +917,7 @@ $grey: #8ebbcd;
   }
 }
 
-#leaving-house, #defeat-hog, #flip {
+#flip {
   .eco, .flip {
     width: 360px;
     position: absolute;
@@ -1510,15 +1510,31 @@ $grey: #8ebbcd;
 
 #flip {
   .flip {
+    width: 360px;
+    position: absolute;
     bottom: 30px;
     left: 30px;
   }
 
   .text {
-    line-height: 1;
+    background-image: url(../media/_images/speech.balloon.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: absolute;
+    right: -40px;
+    top: -20px;
+    width: 680px;
+    height: 420px;
     font-size: 40px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    color: #000;
 
-    div {
+    div, h2 {
+      position: relative;
       margin-top: 60px;
       margin-left: 0;
     }
@@ -1527,6 +1543,7 @@ $grey: #8ebbcd;
       padding: 0;
       margin: 0 100px 0 0;
     }
+
   }
 
   .inline {

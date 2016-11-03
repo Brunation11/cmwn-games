@@ -9,8 +9,6 @@ import PigScreen from './components/pig_screen';
 import InfoScreen from './components/info_screen';
 import VideoScreen from './components/video_screen';
 import SpecialAnnouncementScreen from './components/special_announcement_screen';
-import LeavingHouseScreen from './components/leaving_house_screen';
-import DefeatHogScreen from './components/defeat_hog_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
@@ -29,12 +27,10 @@ var BeBright = (
       4: InfoScreen,
       5: VideoScreen,
       6: SpecialAnnouncementScreen,
-      7: LeavingHouseScreen,
-      8: DefeatHogScreen,
-      9: LevelOneScreen,
-      10: LevelTwoScreen,
-      11: LevelThreeScreen,
-      12: FlipScreen,
+      7: LevelOneScreen,
+      8: LevelTwoScreen,
+      9: LevelThreeScreen,
+      10: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
