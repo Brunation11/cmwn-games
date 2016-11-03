@@ -241,10 +241,6 @@ export default function (props, ref, key, opts = {}) {
         />
       </skoash.Component>
       <skoash.Component className="main">
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/_images/plus.png'}
-        />
         <Dropper
           leftBound={70}
           rightBound={820}
@@ -277,16 +273,16 @@ export default function (props, ref, key, opts = {}) {
           onCorrect={onCorrectCatch}
           onIncorrect={onIncorrectCatch}
           assets={[
-            // <skoash.Audio
-            //   type="voiceOver"
-            //   ref="correct"
-            //   src={'media/_assets/SoundAssets/effects/Correct.mp3'}
-            // />,
-            // <skoash.Audio
-            //   type="voiceOver"
-            //   ref="incorrect"
-            //   src={'media/_assets/SoundAssets/effects/Incorrect.mp3'}
-            // />,
+            <skoash.Audio
+              type="voiceOver"
+              ref="correct"
+              src="media/_assets/_sounds/_effects/WinPoints.mp3"
+            />,
+            <skoash.Audio
+              type="voiceOver"
+              ref="incorrect"
+              src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+            />,
           ]}
         />
       </skoash.Component>
