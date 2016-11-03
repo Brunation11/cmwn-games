@@ -7,6 +7,8 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import LetsCleanUpScreen from './components/lets_clean_up_screen';
+import CleanUpGameLvl1Screen from './components/clean_up_game_lvl1_screen';
+import CleanUpGameLvl2Screen from './components/clean_up_game_lvl2_screen';
 import CleanUpScreen from './components/clean_up_screen';
 import RoomScreen from './components/room_screen';
 import SchoolScreen from './components/school_screen';
@@ -33,10 +35,12 @@ var LitterBug = (
       6: GroundScreen,
       7: SingAboutItScreen,
       8: VideoScreen,
-      9: GoodForYouScreen,
-      10: TakePledgeScreen,
-      11: CommitScreen,
-      12: FlipScreen,
+      9: CleanUpGameLvl1Screen,
+      10: CleanUpGameLvl1Screen,
+      11: GoodForYouScreen,
+      12: TakePledgeScreen,
+      13: CommitScreen,
+      14: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
@@ -45,14 +49,10 @@ var LitterBug = (
     assets={[
       <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>,
       <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
-      // <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />,
-      // <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />,
-      // <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />,
-      // <skoash.Image ref="img-bkg-4" className="hidden" src="media/_assets/_images/BKG.4.jpg" />,
-      // <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
       <div className="background default" />,
       <div className="background title" />,
       <div className="background lets-clean-up" />,
+      <div className="background clean-up-game" />,
       <div className="background select" />,
       <div className="background sun" />,
       <div className="background commit" />,
