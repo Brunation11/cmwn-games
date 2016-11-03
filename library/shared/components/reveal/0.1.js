@@ -77,7 +77,7 @@ class Reveal extends skoash.Component {
       this.audio['close-sound'].play();
     }
 
-    this.props.onClose.call(this);
+    this.props.onClose.call(this, prevMessage);
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);

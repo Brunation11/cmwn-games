@@ -11,7 +11,8 @@ import Catchable from 'shared/components/catchable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key, opts = {}) {
-  var onCloseReveal,
+  var onOpenReveal,
+    onCloseReveal,
     onScoreComplete,
     getTime,
     onTimerComplete,
@@ -21,7 +22,18 @@ export default function (props, ref, key, opts = {}) {
     onMove,
     bin;
 
-  onCloseReveal = function () {
+  onOpenReveal = function () {
+    this.updateGameState({
+      path: 'game',
+      data: {
+        stop: true,
+        start: false,
+        restart: false,
+      },
+    });
+  };
+
+  onCloseReveal = function (prevMessage) {
     this.updateGameState({
       path: 'game',
       data: {
@@ -31,8 +43,10 @@ export default function (props, ref, key, opts = {}) {
       },
     });
     this.updateGameState({
-      path: 'closeReveal',
-      data: false,
+      path: 'reveal',
+      data: {
+        close: false,
+      }
     });
     this.updateGameState({
       path: 'openReveal',
@@ -45,6 +59,10 @@ export default function (props, ref, key, opts = {}) {
         incorrect: 0,
       }
     });
+
+    if (prevMessage === 'level-up') {
+      skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+    }
   };
 
   onScoreComplete = function () {
@@ -170,15 +188,15 @@ export default function (props, ref, key, opts = {}) {
       />
       <skoash.Image
         className="hidden"
-        src={'media/_assets/_images/thick.border.png'}
-      />
-      <skoash.Image
-        className="hidden"
         src={'media/_assets/_sprites/sprites.game2.1-01.png'}
       />
       <skoash.Image
         className="hidden"
         src={'media/_assets/_sprites/sprites.game2.2-01.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={'media/_assets/_sprites/sprites.mr.eco-01.png'}
       />
       <MediaCollection
         play={_.get(props, 'data.reveal.open')}
@@ -206,6 +224,7 @@ export default function (props, ref, key, opts = {}) {
           max={100}
           increment={10}
           correct={_.get(props, 'data.score.incorrect', 0)}
+          complete={_.get(props, 'data.game.complete', false)}
           onComplete={onTimerComplete}
         >
           <div />
@@ -249,6 +268,7 @@ export default function (props, ref, key, opts = {}) {
           completeOnStart
           checkComplete={false}
           start={_.get(props, 'data.game.start', false)}
+          canCatch={_.get(props, 'data.game.start', false)}
           moveBuckets
           onMove={onMove}
           bucket={[
@@ -277,6 +297,7 @@ export default function (props, ref, key, opts = {}) {
         openReveal={_.get(props, 'data.openReveal', false)}
         closeReveal={_.get(props, 'data.reveal.close', false)}
         onClose={onCloseReveal}
+        onOpen={onOpenReveal}
         list={opts.revealList}
       />
     </skoash.Screen>

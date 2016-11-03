@@ -919,6 +919,7 @@ p {
       display: inline-block;
       font-size: 48px;
       color: #f5fd37;
+      margin-right: 30px;
       @include text-stroke(3, #000);
 
       &:before {
@@ -941,6 +942,35 @@ p {
       vertical-align: middle;
       width: 200px;
       height: 80px;
+      padding-left: 40px;
+      z-index: 1;
+
+      &.litter-bug-score {
+        &:before {
+          background-position: -122px -24px;
+        }
+
+        div {
+          &:after {
+            background-color: #e24419;
+          }
+        }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        z-index: 2;
+        background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
+        background-repeat: no-repeat;
+        background-size: 500px;
+        background-position: -20px -24px;
+      }
 
       &:after {
         content: '';
@@ -949,9 +979,10 @@ p {
         width: 140px;
         height: 6px;
         border-radius: 10px;
-        bottom: 20px;
-        left: 11px;
+        bottom: 35px;
+        left: 51px;
         opacity: .6;
+        z-index: 1;
       }
 
       span {
@@ -962,7 +993,7 @@ p {
         position: relative;
         width: 200px;
         height: 29px;
-        padding-top: 40px;
+        padding-top: 25px;
 
         &:before {
           content: '';
@@ -1039,13 +1070,18 @@ p {
 
     .catchable {
       position: absolute;
-      transition: left 6s linear;
+      transition: opacity .5s, left 6s linear;
       top: 60px;
       left: 980px;
       width: 100px;
       height: 100px;
       background-image: url('../media/_assets/_sprites/sprites.game2.1-01.png');
       background-size: 1400px;
+      opacity: 1;
+
+      &.CAUGHT {
+        opacity: 0;
+      }
 
       &.go {
         left: -100px;
@@ -1120,7 +1156,6 @@ p {
       }
 
       &.instructions {
-
         > div {
           position: absolute;
           left: 80px;
@@ -1169,99 +1204,109 @@ p {
         }
       }
 
-      &[data-ref="level-up"] {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(83, 31, 139, .8);
-        background-image: url($media-server + 'Frames/green.frame.png');
-        background-repeat: no-repeat;
-        background-position: 200px 120px;
-        background-size: 720px;
-        padding: 200px 120px 80px 300px;
+      &.level-up {
 
         &:before {
           content: '';
+        }
+
+        > div {
           position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 250px;
-          height: 350px;
-          background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+          left: 80px;
+          top: 50px;
+          width: 800px;
+          height: 440px;
+          border: 4px solid #000;
+          border-radius: 20px;
+          background-color: #70a51f;
+        }
+
+        .congratulations,
+        .level-up {
+          position: relative;
+          background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
           background-repeat: no-repeat;
-          background-position: -1130px 2px;
-          background-size: 1800px;
+          background-size: 6000px;
+          margin: 0 auto;
         }
 
-        h3 {
-          position: absolute;
-          left: 200px;
-          top: 20px;
-          color: #26992b;
-          font-size: 132px;
-          @include text-stroke(2, #fff);
-          letter-spacing: 5px;
+        .congratulations {
+          height: 115px;
+          width: 650px;
+          background-position: -1550px -60px;
+          margin-top: 80px;
         }
 
-        h4 {
-          font-family: 'Source Sans Pro';
-          text-transform: uppercase;
-          font-size: 48px;
-          text-decoration: underline;
-          margin: 5px 0 15px 0;
-          text-align: left;
-          text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);
-        }
-
-        div {
-          font-family: 'Source Sans Pro';
-          text-align: left;
-          font-size: 28px;
-          text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35);
+        .level-up {
+          height: 150px;
+          width: 610px;
+          background-position: -2320px -45px;
         }
       }
 
-      &[data-ref="try-again"] {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(83, 31, 139, .8);
+      &.try-again {
+        background-color: rgba(243, 157, 201, .6);
 
-        .minion {
+        &:before {
+          content: '';
+          display: block;
           position: absolute;
-          left: 140px;
-          top: 410px;
-          width: 320px;
-        }
-
-        div {
-          position: absolute;
-          left: 120px;
-          top: 10px;
-          width: 740px;
-          height: 600px;
-          font-family: 'Source Sans Pro';
-          font-size: 32px;
-          background-image: url($media-server + 'Frames/try.again.frame.png');
-          background-size: contain;
+          left: -77px;
+          bottom: -15px;
+          width: 330px;
+          height: 500px;
+          background-image: url(../media/_assets/_images/litterbug_.png);
           background-repeat: no-repeat;
-          transform: rotate(180deg);
-          transform-origin: 50% 100%;
-          transition: transform 1s;
+          background-position: left bottom;
+          background-size: contain;
+          transform: scale3D(-1, 1, 1);
+          z-index: 1;
         }
 
-        h3 {
-          font-family: 'Molot';
-          font-size: 132px;
-          color: #26992b;
-          @include text-stroke(2, #fff);
+        > div {
+          position: absolute;
+          left: 80px;
+          top: 50px;
+          width: 800px;
+          height: 440px;
+          border: 4px solid #000;
+          border-radius: 20px;
+          background-color: #4a6f11;
         }
 
-        &.OPEN {
-          div {
-            transform: rotate(0deg);
+        .try-again,
+        .words {
+          position: relative;
+          background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
+          background-repeat: no-repeat;
+          background-size: 6000px;
+          margin: 0 auto;
+        }
+
+        .try-again {
+          height: 115px;
+          width: 370px;
+          background-position: -3190px -60px;
+        }
+
+        .words {
+          height: 210px;
+          width: 800px;
+          background-position: -3720px -15px;
+        }
+
+        button {
+          display: block;
+          margin: 0 auto;
+          width: 200px;
+          height: 100px;
+          background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
+          background-repeat: no-repeat;
+          background-size: 3000px;
+          background-position: -2400px -117px;
+
+          &:hover {
+            background-position: -2400px -450px;
           }
         }
       }

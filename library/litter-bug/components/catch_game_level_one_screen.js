@@ -5,6 +5,9 @@ export default function (props, ref, key) {
     id: 'catch-game-level-one',
     level: 1,
     rows: 3,
+    timeout: 60000,
+    prepTimeout: 1000,
+    openOnStart: 'instructions',
     bin: [
       {
         className: 'mushroom',
@@ -63,9 +66,6 @@ export default function (props, ref, key) {
         message: 'trash'
       },
     ],
-    timeout: 60000,
-    prepTimeout: 1000,
-    openOnStart: 'instructions',
     vos: [
       // <skoash.MediaSequence
       //   ref="in-this"
@@ -111,7 +111,11 @@ export default function (props, ref, key) {
       // />
     ],
     revealList: [
-      <skoash.Component ref="instructions" className="instructions" type="li">
+      <skoash.Component
+        ref="instructions"
+        className="instructions"
+        type="li"
+      >
         <div>
           <div className="instructions" />
           <div className="words" />
@@ -132,28 +136,30 @@ export default function (props, ref, key) {
         className="level-up"
         type="li"
       >
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.minion.png'}
-        />
+        <div>
+          <div className="congratulations" />
+          <div className="level-up" />
+        </div>
       </skoash.Component>,
       <skoash.Component
         ref="try-again"
         className="try-again"
         type="li"
       >
-        <skoash.Image
-          className="minion"
-          src={'media/_assets/ImageAssets/try.again.minion.png'}
-        />
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/Frames/try.again.frame.png'}
-        />
-        <skoash.Image
-          className="hidden"
-          src={'media/_assets/SpritesAnimations/sprite.nav.png'}
-        />
+        <div>
+          <div className="try-again" />
+          <div className="words" />
+          <button
+            onClick={function () {
+              skoash.trigger('updateState', {
+                path: 'reveal',
+                data: {
+                  close: true,
+                }
+              });
+            }}
+          />
+        </div>
       </skoash.Component>,
     ]
   });

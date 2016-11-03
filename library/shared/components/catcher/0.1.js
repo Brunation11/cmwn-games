@@ -80,7 +80,7 @@ class Catcher extends Catch {
   }
 
   selectCatchable(bucketRef, catchableRef) {
-    if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableRef.canCatch()) return;
+    if (!this.state.started || this.state.paused || !this.state.canCatch || !this.props.canCatch || !catchableRef.canCatch()) return;
     catchableRef.markCaught();
     if (catchableRef.props.message === bucketRef.props.message) {
       this.correct(bucketRef, catchableRef);
@@ -127,6 +127,7 @@ class Catcher extends Catch {
 Catcher.defaultProps = _.defaults({
   moveBuckets: false,
   onMove: _.noop,
+  canCatch: true,
 }, skoash.Component.defaultProps);
 
 export default Catcher;
