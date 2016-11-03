@@ -9,6 +9,12 @@ class Carousel extends Selectable {
     this.next = this.next.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selected) {
+      this.select();
+    }
+  }
+
   start() {
     super.start();
     this.next();

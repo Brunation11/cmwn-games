@@ -10,6 +10,8 @@ import CatchGameLevelOne from './components/catch_game_level_one_screen';
 import CatchGameLevelTwo from './components/catch_game_level_two_screen';
 import CatchGameLevelThree from './components/catch_game_level_three_screen';
 import LetsCleanUpScreen from './components/lets_clean_up_screen';
+import CleanUpGameLvl1Screen from './components/clean_up_game_lvl1_screen';
+import CleanUpGameLvl2Screen from './components/clean_up_game_lvl2_screen';
 import CleanUpScreen from './components/clean_up_screen';
 import RoomScreen from './components/room_screen';
 import SchoolScreen from './components/school_screen';
@@ -39,10 +41,12 @@ var LitterBug = (
       9: GroundScreen,
       10: SingAboutItScreen,
       11: VideoScreen,
-      12: GoodForYouScreen,
-      13: TakePledgeScreen,
-      14: CommitScreen,
-      15: FlipScreen,
+      12: CleanUpGameLvl1Screen,
+      13: CleanUpGameLvl2Screen,
+      14: GoodForYouScreen,
+      15: TakePledgeScreen,
+      16: CommitScreen,
+      17: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
@@ -83,6 +87,7 @@ var LitterBug = (
       <div className="background default" />,
       <div className="background title" />,
       <div className="background lets-clean-up" />,
+      <div className="background clean-up-game" />,
       <div className="background select" />,
       <div className="background sun" />,
       <div className="background commit" />,

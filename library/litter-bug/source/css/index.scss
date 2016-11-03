@@ -51,6 +51,10 @@ body > div > div {
       background-image: url('../media/_assets/_images/BKG.4.jpg');
     }
 
+    &.clean-up-game {
+      background-image: url('../media/_assets/_images/BKG.2.png');
+    }
+
     &.select {
       background-image: url('../media/_BKG/BKG_3.png');
 
@@ -79,9 +83,12 @@ body > div > div {
   .background.default,
   &.SCREEN-1 .background.title,
   &.SCREEN-2 .background.lets-clean-up,
-  &.SCREEN-3 .background.select,
+  &.SCREEN-3 .background.clean-up-game,
   &.SCREEN-3.SUN .background.sun,
-  &.SCREEN-11 .background.commit {
+  &.SCREEN-9 .background.clean-up-game,
+  &.SCREEN-10 .background.clean-up-game,
+  &.SCREEN-11 .background.clean-up-game,
+  &.SCREEN-12 .background.commit {
     opacity: 1;
   }
 
@@ -413,7 +420,6 @@ p {
 }
 
 #lets-clean-up {
-
   .copy {
     position: absolute;
     left: 55%;
@@ -437,6 +443,886 @@ p {
   &.OPEN {
     .banner {
       animation-name: zoomInDown;
+    }
+  }
+}
+
+#clean-up-game-lvl-1 {
+  @keyframes reload {
+    0% {
+      opacity: 0;
+    }
+
+    67% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  // @keyframes fire {
+  //   50% {
+  //     transform: translateY(-700%) scale(0.75);
+  //   }
+
+  //   100% {
+  //     transform: translateY(-600%) scale(0.3);
+  //   }
+  // }
+
+  &.READY {
+    .cannon {
+      position: absolute;
+      text-align: center;
+      // background-image: url(../media/images/cannon-bears/background.png);
+      // background-position: center center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      overflow: hidden;
+      border: 1px solid green;
+      z-index: 1;
+
+      &.FIRE {
+        .LOADED {
+          /**
+           *  Normaly I would define the transition on the default rule but this way
+           *  the animation will not play when the "LAUNCHED" flag is removed.
+           */
+          transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+          transform: translateY(-600%) scale(0.3);
+        }
+      }
+
+      &.RELOAD {
+        .LOADED {
+          animation: reload 3s;
+        }
+      }
+
+      .ammo-container {
+        position: absolute;
+        width: 30%;
+        height: 15%;
+        bottom: 2%;
+        left: 10%;
+        background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+        background-position: -334px 122px;
+        background-size: 1600px 163px;
+      }
+
+      .ammo {
+        width: 5%;
+        height: 8%;
+        bottom: 5%;
+        display: inline;
+        position: absolute;
+        background: url(../media/_assets/_sprites/sprites.game1.1.png);
+        background-size: 1000px 292px;
+
+        &:nth-of-type(1) {
+          left: 11%;
+        }
+
+        &:nth-of-type(2) {
+          left: 11%;
+        }
+
+        &:nth-of-type(3) {
+          left: 16%;
+        }
+
+        &:nth-of-type(4) {
+          left: 21%;
+        }
+
+        &:nth-of-type(5) {
+         left: 26%;
+        }
+
+        &:nth-of-type(6) {
+          left: 32%;
+          width: 7%;
+          height: 13%;
+          bottom: 3%;
+
+          &.plastic-bottle {
+            background-position: 224px 179px;
+          }
+
+          &.soda-can {
+            background-position: -26px 180px;
+          }
+
+          &.banana-peal {
+            background-position: -153px 182px;
+          }
+
+          &.glass-bottle {
+            background-position: 99px 178px;
+          }
+
+          &.crumbled-paper {
+            background-position: 723px 181px;
+          }
+
+          &.tuna-can {
+            background-position: 597px 178px;
+          }
+
+          &.tire {
+            background-position: 472px 180px;
+          }
+
+          &.battery {
+            background-position: 347px 179px;
+          }
+        }
+
+        &.plastic-bottle {
+          background-position: 211px 72px;
+        }
+
+        &.soda-can {
+          background-position: -40px 73px;
+        }
+
+        &.banana-peal {
+          background-position: -165px 73px;
+        }
+
+        &.glass-bottle {
+          background-position: 85px 73px;
+        }
+
+        &.crumbled-paper {
+          background-position: 710px 72px;
+        }
+
+        &.tuna-can {
+          background-position: 587px 72px;
+        }
+
+        &.tire {
+          background-position: 460px 72px;
+        }
+
+        &.battery {
+          background-position: 334px 72px;
+        }
+      }
+    }
+
+    .carousel {
+      position: absolute;
+      white-space: nowrap;
+      width: 80%;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+
+      > * {
+        transform: translate3d(0,0,0);
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        width: 20%;
+        height: 36%;
+        transition: margin 0s;
+        background: url(../media/_assets/_sprites/sprites.game1.2-01.png);
+        background-size: 150px 390px;
+        background-position: 0 0;
+
+        &.SELECTED {
+          background-position: 0 190px;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 70%;
+          height: 50%;
+          left: 15%;
+          top: 25%;
+          background: url(../media/_assets/_sprites/sprites.game1.numbers.png);
+          background-size: 425px 102px;
+        }
+
+        &.five:after {
+          background-position: -2px -8px;
+        }
+
+        &.ten:after {
+          background-position: 319px -8px;
+        }
+
+        &.twenty:after {
+          background-position: 213px -8px;
+        }
+
+        &.thirty:after {
+          background-position: 106px -8px;
+        }
+      }
+
+      .LEAVE {
+        transition: margin 1s;
+        margin-left: -20%;
+      }
+    }
+
+    .randomizer {
+      img {
+        visibility: hidden;
+      }
+    }
+
+    .level {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 7%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .score {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 41%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .timer {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 73%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .grass {
+      position: absolute;
+      width: 100%;
+      height: 70%;
+      bottom: 0;
+      background: url(../media/_assets/_images/game1_grass.png);
+      background-size: contain;
+      content: '';
+      background-position: 0 50px;
+      background-repeat: no-repeat;
+    }
+
+    .stats {
+      position: absolute;
+      width: 30%;
+      bottom: 0;
+      right: 10%;
+      height: 27%;
+      background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+      background-position: -16px 133px;
+      background-size: 1600px 163px;
+    }
+  }
+
+  &.STARTED {
+    .reveal {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: opacity .5s;
+
+      li {
+        opacity: 0;
+      }
+
+      &.OPEN {
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+
+        *.OPEN {
+          opacity: 1;
+
+          .frame {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+            border: 5px solid #000;
+            border-radius: 30px;
+
+            &:after {
+              position: absolute;
+              width: 33%;
+              height: 81%;
+              top: 30%;
+              left: -14%;
+              background: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+              background-position: 5px 0;
+              content: '';
+              background-size: 500px 367px;
+            }
+          }
+        }
+
+        &.open-complete {
+          .frame {
+            background: #B7DB40;
+
+            .banner {
+              width: 76%;
+              left: 50%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 20%;
+              top: 5%;
+              background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
+              background-size: 3200px 83px;
+              background-position: -667px 2px;
+              background-repeat: no-repeat;
+            }
+
+            .banner-2 {
+              width: 76%;
+              left: 55%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 36%;
+              top: 25%;
+              background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
+              background-size: 3000px 159px;
+              background-position: -167px 2px;
+              background-repeat: no-repeat;
+            }
+
+            span {
+              position: absolute;
+              top: 60%;
+              font-size: 39px;
+              font-weight: 600;
+              left: 18%;
+            }
+          }
+        }
+
+        &.open-try-again {
+          .frame {
+            background: #6D8326;
+
+            .banner {
+              width: 76%;
+              left: 50%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 20%;
+              top: 5%;
+              background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
+              background-size: 3200px 83px;
+              background-position: -2587px 2px;
+              background-repeat: no-repeat;
+            }
+
+            .banner-2 {
+              width: 76%;
+              left: 55%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 36%;
+              top: 25%;
+              background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
+              background-size: 3000px 159px;
+              background-position: -2426px 2px;
+              background-repeat: no-repeat;
+            }
+
+            span {
+              position: absolute;
+              top: 60%;
+              font-size: 39px;
+              font-weight: 600;
+              left: 18%;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      &.COMPLETE {
+        .close-reveal {
+          opacity: 1;
+          transform: rotate(0deg);
+          pointer-events: auto;
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+#clean-up-game-lvl-2 {
+  @keyframes reload {
+    0% {
+      opacity: 0;
+    }
+
+    67% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  // @keyframes fire {
+  //   50% {
+  //     transform: translateY(-700%) scale(0.75);
+  //   }
+
+  //   100% {
+  //     transform: translateY(-600%) scale(0.3);
+  //   }
+  // }
+
+  &.READY {
+    .cannon {
+      position: absolute;
+      text-align: center;
+      // background-image: url(../media/images/cannon-bears/background.png);
+      // background-position: center center;
+      // background-repeat: no-repeat;
+      // background-size: contain;
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      overflow: hidden;
+      border: 1px solid green;
+      z-index: 1;
+
+      &.FIRE {
+        .LOADED {
+          /**
+           *  Normaly I would define the transition on the default rule but this way
+           *  the animation will not play when the "LAUNCHED" flag is removed.
+           */
+          transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+          transform: translateY(-600%) scale(0.3);
+        }
+      }
+
+      &.RELOAD {
+        .LOADED {
+          animation: reload 3s;
+        }
+      }
+
+      .ammo-container {
+        position: absolute;
+        width: 30%;
+        height: 15%;
+        bottom: 2%;
+        left: 10%;
+        background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+        background-position: -334px 122px;
+        background-size: 1600px 163px;
+      }
+
+      .ammo {
+        width: 5%;
+        height: 8%;
+        bottom: 5%;
+        display: inline;
+        position: absolute;
+        background: url(../media/_assets/_sprites/sprites.game1.1.png);
+        background-size: 1000px 292px;
+
+        &:nth-of-type(1) {
+          left: 11%;
+        }
+
+        &:nth-of-type(2) {
+          left: 11%;
+        }
+
+        &:nth-of-type(3) {
+          left: 16%;
+        }
+
+        &:nth-of-type(4) {
+          left: 21%;
+        }
+
+        &:nth-of-type(5) {
+         left: 26%;
+        }
+
+        &:nth-of-type(6) {
+          left: 32%;
+          width: 7%;
+          height: 13%;
+          bottom: 3%;
+
+          &.plastic-bottle {
+            background-position: 224px 179px;
+          }
+
+          &.soda-can {
+            background-position: -26px 180px;
+          }
+
+          &.banana-peal {
+            background-position: -153px 182px;
+          }
+
+          &.glass-bottle {
+            background-position: 99px 178px;
+          }
+
+          &.crumbled-paper {
+            background-position: 723px 181px;
+          }
+
+          &.tuna-can {
+            background-position: 597px 178px;
+          }
+
+          &.tire {
+            background-position: 472px 180px;
+          }
+
+          &.battery {
+            background-position: 347px 179px;
+          }
+        }
+
+        &.plastic-bottle {
+          background-position: 211px 72px;
+        }
+
+        &.soda-can {
+          background-position: -40px 73px;
+        }
+
+        &.banana-peal {
+          background-position: -165px 73px;
+        }
+
+        &.glass-bottle {
+          background-position: 85px 73px;
+        }
+
+        &.crumbled-paper {
+          background-position: 710px 72px;
+        }
+
+        &.tuna-can {
+          background-position: 587px 72px;
+        }
+
+        &.tire {
+          background-position: 460px 72px;
+        }
+
+        &.battery {
+          background-position: 334px 72px;
+        }
+      }
+    }
+
+    .carousel {
+      position: absolute;
+      white-space: nowrap;
+      width: 80%;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+
+      > * {
+        transform: translate3d(0,0,0);
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        width: 20%;
+        height: 36%;
+        transition: margin 0s;
+        background: url(../media/_assets/_sprites/sprites.game1.2-01.png);
+        background-size: 150px 390px;
+        background-position: 0 0;
+
+        &.SELECTED {
+          background-position: 0 190px;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 70%;
+          height: 50%;
+          left: 15%;
+          top: 25%;
+          background: url(../media/_assets/_sprites/sprites.game1.numbers.png);
+          background-size: 425px 102px;
+        }
+
+        &.five:after {
+          background-position: -2px -8px;
+        }
+
+        &.ten:after {
+          background-position: 319px -8px;
+        }
+
+        &.twenty:after {
+          background-position: 213px -8px;
+        }
+
+        &.thirty:after {
+          background-position: 106px -8px;
+        }
+      }
+
+      .LEAVE {
+        transition: margin 1s;
+        margin-left: -20%;
+      }
+    }
+
+    .randomizer {
+      img {
+        visibility: hidden;
+      }
+    }
+
+    .level {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 7%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .score {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 41%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .timer {
+      position: absolute;
+      width: 19%;
+      height: 35%;
+      top: 0;
+      top: 47%;
+      left: 73%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .grass {
+      position: absolute;
+      width: 100%;
+      height: 70%;
+      bottom: 0;
+      background: url(../media/_assets/_images/game1_grass.png);
+      background-size: contain;
+      content: '';
+      background-position: 0 50px;
+      background-repeat: no-repeat;
+    }
+
+    .stats {
+      position: absolute;
+      width: 30%;
+      bottom: 0;
+      right: 10%;
+      height: 27%;
+      background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+      background-position: -16px 133px;
+      background-size: 1600px 163px;
+    }
+  }
+
+  &.STARTED {
+    .reveal {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: opacity .5s;
+
+      li {
+        opacity: 0;
+      }
+
+      &.OPEN {
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+
+        *.OPEN {
+          opacity: 1;
+
+          .frame {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+            border: 5px solid #000;
+            border-radius: 30px;
+
+            &:after {
+              position: absolute;
+              width: 33%;
+              height: 81%;
+              top: 30%;
+              left: -14%;
+              background: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+              background-position: 5px 0;
+              content: '';
+              background-size: 500px 367px;
+            }
+          }
+        }
+
+        &.open-complete {
+          .frame {
+            background: #B7DB40;
+
+            .banner {
+              width: 76%;
+              left: 50%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 20%;
+              top: 5%;
+              background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
+              background-size: 3200px 83px;
+              background-position: -667px 2px;
+              background-repeat: no-repeat;
+            }
+
+            .banner-2 {
+              width: 76%;
+              left: 55%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 36%;
+              top: 25%;
+              background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
+              background-size: 3000px 159px;
+              background-position: -167px 2px;
+              background-repeat: no-repeat;
+            }
+
+            span {
+              position: absolute;
+              top: 60%;
+              font-size: 39px;
+              font-weight: 600;
+              left: 18%;
+            }
+          }
+        }
+
+        &.open-try-again {
+          .frame {
+            background: #6D8326;
+
+            .banner {
+              width: 76%;
+              left: 50%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 20%;
+              top: 5%;
+              background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
+              background-size: 3200px 83px;
+              background-position: -2587px 2px;
+              background-repeat: no-repeat;
+            }
+
+            .banner-2 {
+              width: 76%;
+              left: 55%;
+              transform: translateX(-50%);
+              position: absolute;
+              height: 36%;
+              top: 25%;
+              background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
+              background-size: 3000px 159px;
+              background-position: -2426px 2px;
+              background-repeat: no-repeat;
+            }
+
+            span {
+              position: absolute;
+              top: 60%;
+              font-size: 39px;
+              font-weight: 600;
+              left: 18%;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      &.COMPLETE {
+        .close-reveal {
+          opacity: 1;
+          transform: rotate(0deg);
+          pointer-events: auto;
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
     }
   }
 }
