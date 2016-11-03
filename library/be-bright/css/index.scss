@@ -277,6 +277,7 @@ $grey: #8ebbcd;
     height: 251px;
     margin-top: -120px;
     background-size: 100% 100%;
+    background-image: url(../media/_frames/FR_1.png);
   }
 
   ul {
@@ -441,7 +442,6 @@ $grey: #8ebbcd;
     display: inline-block;
     width: 800px;
     margin: 10px auto 0;
-    font-family: Source Sans Pro;
     font-weight: bold;
     font-size: 60px;
     letter-spacing: -1px;
@@ -528,7 +528,6 @@ $grey: #8ebbcd;
       top: 20px;
 
       p {
-        font-family: Source Sans Pro;
         font-size: 35px;
         font-weight: bold;
       }
@@ -707,7 +706,6 @@ $grey: #8ebbcd;
     text-align: center;
 
     div {
-      font-family: Source Sans Pro;
       font-weight: bold;
       font-size: 70px;
       letter-spacing: -1.5px;
@@ -885,19 +883,59 @@ $grey: #8ebbcd;
 }
 
 #info-lets-learn {
-  img {
+  .info {
     position: absolute;
-    top: 140px;
-    left: 130px;
-    width: 700px;
+    top: 110px;
+    left: 0;
+    width: 100%;
     margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+
+    div {
+      width: 100%;
+      transform: translateX(-50%);
+
+      &:nth-of-type(1) {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        color: $dark-green;
+        @include text-stroke($stroke, $dark-green);
+
+        .turn-off {
+          opacity: 0;
+        }
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 0;
+        left: 50.3%;
+        color: $yellow;
+        @include text-stroke($stroke, $outline-green);
+      }
+    }
+
+    span {
+      font-size: 100px;
+    }
+  }
+
+  .turn-off {
+    width: 700px;
+    margin: -10px 0 -50px 0;
   }
 
   &.READY.OPEN {
-    img {
+    .info {
       animation-name: zoomInDown;
     }
   }
+
 }
 
 .labyrinth-frame {

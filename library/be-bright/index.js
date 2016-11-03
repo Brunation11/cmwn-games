@@ -26,9 +26,9 @@ var BeBright = (
       0: iOSScreen,
       1: TitleScreen,
       //2: BulbsScreen,
-      2: PigScreen,
+      //3: PigScreen,
       //4: SwitchesScreen,
-      //5: InfoScreen,
+      2: InfoScreen,
       //6: VideoScreen,
       //7: SpecialAnnouncementScreen,
       //8: LeavingHouseScreen,
@@ -36,7 +36,7 @@ var BeBright = (
       //10: LevelOneScreen,
       //11: LevelTwoScreen,
       //12: LevelThreeScreen,
-      //13: FlipScreen,
+      3: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,

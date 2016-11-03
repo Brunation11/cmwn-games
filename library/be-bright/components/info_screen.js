@@ -7,7 +7,18 @@ export default function (props, ref, key) {
       id="info-lets-learn"
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_6/VO_6.1.mp3" />
-      <skoash.Image ref="info" className="animated" src="media/S_6/img_6.png" />
+      <skoash.Component className="info animated">
+        <div>
+          Let's learn Mr. Eco's Super Special<br />
+          <skoash.Image src="media/_animation/animation.lightsoff.gif" className="turn-off" /><br />
+          <span>Saver Move</span>
+        </div>
+        <div>
+          Let's learn Mr. Eco's Super Special<br />
+          <skoash.Image src="media/_animation/animation.lightsoff.gif" className="turn-off" /><br />
+          <span>Saver Move</span>
+        </div>
+      </skoash.Component>
     </skoash.Screen>
   );
 }
