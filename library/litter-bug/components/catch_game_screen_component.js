@@ -174,22 +174,6 @@ export default function (props, ref, key, opts = {}) {
       key={key}
       id={opts.id}
     >
-      <skoash.Image
-        className="hidden"
-        src={'media/_assets/_sprites/sprites.game2.4-01.png'}
-      />
-      <skoash.Image
-        className="hidden"
-        src={'media/_assets/_sprites/sprites.game2.1-01.png'}
-      />
-      <skoash.Image
-        className="hidden"
-        src={'media/_assets/_sprites/sprites.game2.2-01.png'}
-      />
-      <skoash.Image
-        className="hidden"
-        src={'media/_assets/_sprites/sprites.mr.eco-01.png'}
-      />
       <MediaCollection
         play={_.get(props, 'data.reveal.open')}
         children={opts.vos}
@@ -204,7 +188,7 @@ export default function (props, ref, key, opts = {}) {
         </div>
         <Score
           className="mr-eco-score"
-          max={100}
+          max={10}
           increment={10}
           correct={_.get(props, 'data.score.correct', 0)}
           onComplete={onScoreComplete}
@@ -213,7 +197,7 @@ export default function (props, ref, key, opts = {}) {
         </Score>
         <Score
           className="litter-bug-score"
-          max={100}
+          max={10}
           increment={10}
           correct={_.get(props, 'data.score.incorrect', 0)}
           complete={_.get(props, 'data.game.complete', false)}

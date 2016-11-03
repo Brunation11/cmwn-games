@@ -72,6 +72,10 @@ export default function (props, ref, key) {
       >
         <skoash.Audio
           type="voiceOver"
+          src={'media/_assets/_sounds/_effects/WinTheGame1.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
           src={'media/_assets/_sounds/_vos/YouveWon.mp3'}
         />
         <skoash.Audio
