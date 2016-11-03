@@ -1,27 +1,32 @@
 @import 'variables';
 @import 'mixins';
+// scss-lint:disable SelectorDepth, PropertySortOrder, NestingDepth, ColorVariable, SelectorFormat, IdSelector, QualifyingElement
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  user-drag: none;
+html,
+body {
   cursor: default;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  user-drag: none;
+  user-select: none;
 }
 
 html {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-html, body, body > div, body > div > div {
-  position: relative;
-  width: 960px;
+html,
+body,
+body > div,
+body > div > div {
+  background: transparent;
+  font-size: 20px;
   height: 540px;
   margin: auto;
-  font-size: 20px;
-  background: transparent;
+  position: relative;
+  width: 960px;
 
   .background {
     opacity: 0;
@@ -32,42 +37,43 @@ html, body, body > div, body > div > div {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center center
-  }
+    background-position: center center;
 
-  .background.default {
-    background-image: url(../media/_BKG/BKG_1.png);
-  }
-
-  .background.title {
-    background-image: url(../media/_assets/_animations/Litterbug-titlescreen.gif);
-  }
-
-  .background.lets-clean-up {
-    background-image: url(../media/_assets/_images/BKG.4.jpg);
-  }
-
-  .background.select {
-    background-image: url(../media/_BKG/BKG_3.png);
-
-    &:before {
-      content: "";
-      position: absolute;
-      background: #000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .2;
+    &.default {
+      background-image: url('../media/_BKG/BKG_1.png');
     }
-  }
 
-  .background.sun {
-    background-image: url(../media/_BKG/BKG_4.png);
-  }
+    &.title {
+      background-image: url('../media/_assets/_animations/Litterbug-titlescreen.gif');
+    }
 
-  .background.commit {
-    background-image: url(../media/_BKG/BKG_5.png);
+    &.lets-clean-up {
+      background-image: url('../media/_assets/_images/BKG.4.jpg');
+    }
+
+    &.select {
+      background-image: url('../media/_BKG/BKG_3.png');
+
+      &:before {
+        content: '';
+        position: absolute;
+        background: #000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .2;
+      }
+    }
+
+    &.sun {
+      background-image: url('../media/_BKG/BKG_4.png');
+    }
+
+    &.commit {
+      background-image: url('../media/_assets/_images/BKG.3.png');
+    }
+
   }
 
   .background.default,
@@ -79,6 +85,7 @@ html, body, body > div, body > div > div {
     opacity: 1;
   }
 
+
   &.MENU-quit {
     .screen:not(#quit) {
       opacity: 0;
@@ -86,18 +93,70 @@ html, body, body > div, body > div > div {
   }
 }
 
-html, body, body > div {
+@mixin flyright {
+  animation: flyright 1.5s infinite linear;
+}
+
+@mixin flyleft {
+  animation: flyleft 1.5s infinite linear;
+}
+
+$delays: 0s .5s 1s .25s 1.25s .75s;
+
+.sparkles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+
+  div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: left;
+    transform: rotate(0deg);
+    transition: transform 1s, opacity 1s;
+
+    &:before {
+      content: '\02736';
+      color: #efc300;
+    }
+
+    @for $i from 1 through 40 {
+      &:nth-of-type(#{$i}) {
+        $left: (-4 * $i) % 65 + 15;
+        $top: (-1 * $i) % 12 + 6;
+        left: percentage($left / 100);
+        top: percentage($top / 100);
+        @if $left > 45 {
+          @include flyright;
+        } @else {
+          @include flyleft;
+        }
+        animation-delay: nth($delays, ($i % 6) + 1);
+      }
+    }
+  }
+}
+
+html,
+body,
+body > div {
   width: 100%;
   height: 100%;
 }
 
-/* This is just to preload the images used in css. */
+// This is just to preload the images used in css. */
 #asset-bin { display: none; }
 
 button {
   margin: 0;
   padding: 0;
-  border: none;
+  border: 0;
 
   font-family: inherit;
   font-size: inherit;
@@ -106,7 +165,7 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
+  background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
   background-size: 3500px 778px;
   background-position: left top;
 
@@ -218,35 +277,42 @@ p {
 
 .screen {
   position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   opacity: 0;
   display: none;
-  transition: opacity 1s, transform 0.5s;
+  transition: opacity 1s, transform .5s;
   transform: translateX(100%);
   overflow: hidden;
   width: 960px;
   height: 540px;
-}
 
-.screen.last {}
+  &.OPEN {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
-.screen.OPEN {
-  opacity: 1;
-  transform: translateX(0);
-}
+  &.READY {
+    display: block;
+  }
 
-.screen.READY {
-  display: block;
-}
+  &.LEAVE {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
 
-.screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
-}
+  &.no-frame {
+    color: #fff;
 
-  .screen .next-screen,
-  .screen .prev-screen {
+    .frame {
+      text-align: center;
+    }
+  }
+
+  .next-screen,
+  .prev-screen {
     position: absolute;
     display: block;
     bottom: 1%;
@@ -254,7 +320,12 @@ p {
     z-index: 2;
   }
 
-  .screen .next-screen {
+  .prev-screen {
+    margin-left: 5px;
+    left: 0;
+  }
+
+  .next-screen {
     margin-right: 5px;
     right: 0;
     opacity: 0;
@@ -263,54 +334,45 @@ p {
     transition: opacity 1s, transform 1s;
   }
 
-  .screen.GATED .next-screen {
+  &.GATED .next-screen {
     opacity: 0;
     cursor: default;
   }
+}
 
-  .DEMO .screen .next-screen,
-  .DEMO #clean-up .close-reveal,
-  .screen.COMPLETE .next-screen,
-  .screen.REPLAY .next-screen {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
-    pointer-events: auto;
-  }
 
-  .DEMO .screen.room button.next-screen,
-  .DEMO .screen.school button.next-screen,
-  .DEMO .screen.ground button.next-screen,
-  .DEMO .screen.take-pledge button.next-screen,
-  .DEMO .screen.commit button.next-screen {
-    display: block;
-  }
 
-  .DEMO .screen.clean-up .next-screen {
-    z-index: 0;
-  }
+.DEMO .screen .next-screen,
+.DEMO #clean-up .close-reveal,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+  opacity: 1;
+  transform: rotate(0deg);
+  cursor: pointer;
+  pointer-events: auto;
+}
 
-  .screen .next-screen:hover {
+.DEMO .screen.room button.next-screen,
+.DEMO .screen.school button.next-screen,
+.DEMO .screen.ground button.next-screen,
+.DEMO .screen.take-pledge button.next-screen,
+.DEMO .screen.commit button.next-screen {
+  display: block;
+}
 
-  }
-
-  .screen .prev-screen {
-    margin-left: 5px;
-    left: 0;
-
-  }
-
-  .screen .prev-screen:hover {
-
-  }
-
-.screen {
-  &.no-frame {
-    color: #fff;
-
-    .frame {
-      text-align: center;
+.DEMO {
+  #room,
+  #school,
+  #ground {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
     }
+  }
+
+  .screen.clean-up .next-screen {
+    z-index: 0;
   }
 }
 
@@ -502,7 +564,7 @@ p {
   .banner,
   .avatar {
     position: absolute;
-    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background: url('../media/_assets/_sprites/sprites.questions-01.png');
     background-size: 6000px 565px;
   }
 
@@ -537,15 +599,30 @@ p {
     }
   }
 
-  &.OPEN.STARTED {
+  &.OPEN {
+
     .banner {
-      animation-name: bounceInUp;
+      top: 2000%;
     }
 
     .avatar {
-      animation-name: bounceInDown;
+      bottom: 2000%;
+    }
+
+    &.STARTED {
+
+      .banner {
+        top: 0%;
+        animation-name: bounceInUp;
+      }
+
+      .avatar {
+        bottom: 0%;
+        animation-name: bounceInDown;
+      }
     }
   }
+
 
   &.COMPLETE {
     button.next-screen {
@@ -560,7 +637,7 @@ p {
   .banner,
   .avatar {
     position: absolute;
-    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background: url('../media/_assets/_sprites/sprites.questions-01.png');
     background-size: 6000px 565px;
   }
 
@@ -596,11 +673,20 @@ p {
     }
   }
 
-  &.OPEN.STARTED {
+  &.OPEN {
+
     .banner {
-      animation-name: bounceInDown;
+      bottom: 2000%;
+    }
+
+    &.STARTED {
+      .banner {
+        bottom: 0%;
+        animation-name: bounceInDown;
+      }
     }
   }
+
 
   &.COMPLETE {
     button.next-screen {
@@ -615,7 +701,7 @@ p {
   .banner,
   .avatar {
     position: absolute;
-    background: url(../media/_assets/_sprites/sprites.questions-01.png);
+    background: url('../media/_assets/_sprites/sprites.questions-01.png');
     background-size: 6000px 565px;
   }
 
@@ -651,25 +737,22 @@ p {
     }
   }
 
-  &.OPEN.STARTED {
+  &.OPEN {
+
     .banner {
-      animation-name: bounceInDown;
+      top: 2000%;
+    }
+
+    &.STARTED {
+      .banner {
+        top: 0%;
+        animation-name: bounceInDown;
+      }
     }
   }
+
 
   &.COMPLETE {
-    button.next-screen {
-      opacity: 1;
-      cursor: pointer;
-      animation-name: bounceInLeft;
-    }
-  }
-}
-
-.DEMO {
-  #room,
-  #school,
-  #ground {
     button.next-screen {
       opacity: 1;
       cursor: pointer;
@@ -685,14 +768,14 @@ p {
     height: 100%;
     left: 0;
     top: 0;
-    background: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+    background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
     background-size: 850px 624px;
     background-position: -70px 0;
   }
 
   .dancers,
   .banner {
-    background: url(../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png);
+    background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
     background-size: 4000px 340px;
     position: absolute;
   }
@@ -701,14 +784,14 @@ p {
     width: 611px;
     height: 20%;
     bottom: 0;
-    right: 0px;
+    right: 0;
     background-position: -713px 226px;
   }
 
   .banner {
     position: absolute;
-    width: 20%;
-    height: 20%;
+    right: 20%;
+    bottom: 17%;
     left: 20%;
     top: 20%;
     background-position: 0 0;
@@ -725,7 +808,7 @@ p {
 #video .frame {
   width: 80%;
   height: 85%;
-  background-image: url(../media/_Frames/FR_2.png);
+  background-image: url('../media/_Frames/FR_2.png');
   background-size: 100% 100%;
 
   video {
@@ -738,34 +821,44 @@ p {
 
 #good-for-you {
 
-  .frame {
-    top: 200px;
+  &.COMPLETE .sparkles {
+    opacity: 1;
   }
 
-  .content-group {
-    img {
-      position: absolute;
+  .mr-eco {
+    position: absolute;
+    width: 514px;
+    height: 105%;
+    left: -157px;
+    top: 18px;
+    bottom: 0;
+    background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+    background-size: 388px;
+    transform: scale(.88) rotate(-5.6deg);
+  }
 
-      &:nth-of-type(1) {
-        width: 500px;
-        right: 30px;
-        bottom: 140px;
-      }
+  .banner,
+  .banner2 {
+    background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
+    background-size: 4000px 340px;
+    position: absolute;
+    transform: scaleX(1.073) scaleY(1.069);
+  }
 
-      &:nth-of-type(2) {
-        width: 400px;
-        left: 40px;
-        top: -70px;
-      }
-    }
+  .banner {
+    right: 4%;
+    bottom: 17%;
+    left: 21%;
+    top: 25%;
+    background-position: 60% 0;
+  }
 
-    p {
-      position: absolute;
-      width: 500px;
-      right: 30px;
-      bottom: 50px;
-      text-align: center;
-    }
+  .banner2 {
+    width: 60%;
+    height: 42%;
+    left: 30.7%;
+    top: -7.4%;
+    background-position: 41% 0;
   }
 
   &.OPEN {
@@ -785,45 +878,46 @@ p {
 
 #take-pledge {
 
-  .frame {
-    top: 200px;
-    margin-top: -40px;
+  .mr-eco {
+    position: absolute;
+    width: 514px;
+    height: 105%;
+    left: -157px;
+    top: 18px;
+    bottom: 0;
+    background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+    background-size: 388px;
+    transform: scale(.88) rotate(-5.6deg);
   }
 
-  .content-group {
-
-    img {
-      position: absolute;
-      width: 400px;
-      left: 40px;
-      top: -70px;
-    }
-
-    p {
-      position: absolute;
-      width: 500px;
-      right: 30px;
-      bottom: 40px;
-    }
-
+  .banner {
+    background: url('../media/_assets/_images/text-antilitter.png') no-repeat;
+    background-size: 798px;
+    position: absolute;
+    transform: scaleX(.87) scaleY(.87);
+    left: 111px;
+    top: 84px;
+    background-position: 60% 0;
+    width: 800px;
+    height: 700px;
   }
 
   button {
     &.next-screen {
       position: absolute;
-      width: 230px;
-      height: 130px;
-      background-position: -1320px 450px;
-      left: 50%;
-      top: 70%;
-      margin-left: -115px;
+      width: 336px;
+      height: 170px;
+      background-position: -1973px -109px;
+      left: 31.9%;
+      top: 64.55%;
       opacity: 0;
       cursor: auto;
       animation-duration: 1s;
       animation-fill-mode: both;
+      transform: scaleX(.87) scaleY(.88);
 
       &:hover {
-        background-position: -1320px 193px;
+        background-position: -1973px 280px;
       }
     }
   }
@@ -849,43 +943,69 @@ p {
 
 #commit {
 
-  .frame {
-    margin-top: -50px;
-    width: auto;
-    height: auto;
 
-    img.background {
-      position: relative;
-      opacity: 1;
-      width: 440px;
-      height: auto;
-      left: 0;
-    }
-
-    p {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 40px;
-      font-weight: bold;
-    }
+  .banner {
+    background: url('../media/_assets/_images/NEVER.png') no-repeat;
+    background-size: 150px;
+    position: absolute;
+    left: 200px;
+    top: 24px;
+    background-position: 60% 0;
+    width: 800px;
+    height: 700px;
   }
 
   button.next-screen {
     position: absolute;
-    left: 50%;
-    top: 70%;
-    margin-left: -115px;
+    left: 35.5%;
+    top: 66.6%;
     opacity: 0;
     cursor: auto;
-    width: 230px;
-    height: 130px;
-    background-position: -1570px 450px;
+    width: 272px;
+    height: 151px;
+    background-position: -1611px -109px;
     animation-duration: 1s;
     animation-fill-mode: both;
+    transform: scale(.88);
 
     &:hover {
-      background-position: -1570px 193px;
+      background-position: -1611px 280px;
+    }
+  }
+
+  .pledge {
+    position: absolute;
+    left: 352px;
+    top: 25px;
+    font-size: 44px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    color: #fff;
+    text-shadow: -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;
+    width: 590px;
+
+    .never {
+      padding: 69px;
+    }
+
+    .spacerA {
+      padding-left: 28px;
+    }
+
+    .spacerB {
+      padding-left: 11.5px;
+    }
+
+    .spacer1 {
+      padding-left: 49px;
+    }
+
+    .spacer2 {
+      padding-left: 93px;
+    }
+
+    .spacer3 {
+      padding-left: 223px;
     }
   }
 
@@ -1464,12 +1584,6 @@ p {
       }
     }
 
-    &.COMPLETE {
-
-      img {
-
-      }
-    }
   }
 }
 
