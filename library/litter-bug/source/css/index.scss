@@ -212,6 +212,8 @@ button {
   &.quit-yes {
     width: 230px;
     height: 130px;
+    background-image: url(../media/_Buttons/BU_1.png);
+    background-size: auto 500px;
     background-position: -1820px 450px;
 
     &:hover {
@@ -222,6 +224,8 @@ button {
   &.quit-no {
     width: 230px;
     height: 130px;
+    background-image: url(../media/_Buttons/BU_1.png);
+    background-size: auto 500px;
     background-position: -2080px 450px;
 
     &:hover {
@@ -2506,13 +2510,18 @@ p {
 
   .frame {
     text-align: center;
+    background-image: url(../media/_assets/_frames/frame_quit.frame.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 30px 0 0;
+    margin-top: -100px;
 
     h2 {
       margin: 0;
     }
 
     button {
-      margin: 20px 10px;
+      margin: 70px 10px 20px;
     }
   }
 }
