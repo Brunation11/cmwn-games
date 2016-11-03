@@ -13,6 +13,7 @@ export default function (props, ref, key, opts = {}) {
     onLabyrinthStart,
     onLabyrinthStop,
     onLabyrinthComplete,
+    getTime,
     onTimerComplete,
     onOpenReveal,
     onCloseReveal,
@@ -88,6 +89,15 @@ export default function (props, ref, key, opts = {}) {
         complete: true,
       },
     });
+  };
+
+  getTime = function () {
+    var timeLeft, minutesLeft, secondsLeft;
+    timeLeft = this.props.timeout / 1000 - this.state.time;
+    minutesLeft = Math.floor(timeLeft / 60);
+    secondsLeft = timeLeft % 60;
+    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+    return `${minutesLeft}:${secondsLeft}`;
   };
 
   onTimerComplete = function () {
@@ -209,8 +219,8 @@ export default function (props, ref, key, opts = {}) {
         img="media/_images/floor.plan.png"
         map="media/_images/floor.plan-BW.png"
         input={_.get(props, 'data.d-pad', {})}
-        startX={245}
-        startY={380}
+        startX={250}
+        startY={385}
         speed={2}
         scale={_.get(props, 'gameState.scale', 1)}
         start={_.get(props, 'data.game.start', false)}
@@ -228,13 +238,9 @@ export default function (props, ref, key, opts = {}) {
         <span>{opts.levelNumber}</span>
         <Timer
           countDown
-          timeout={30000}
+          timeout={90000}
           leadingContent="TIME LEFT"
-          getTime={function () {
-            var time = this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
-            time = time < 10 ? '0' + time : time;
-            return time;
-          }}
+          getTime={getTime}
           onComplete={onTimerComplete}
           checkComplete={_.get(props, 'data.game.start', false)}
           restart={_.get(props, 'data.game.start', false)}
