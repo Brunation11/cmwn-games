@@ -58,6 +58,10 @@ var LitterBug = (
       <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
       <skoash.Image
         className="hidden"
+        src="media/_assets/_images/BKG.5.png"
+      />,
+      <skoash.Image
+        className="hidden"
         src={'media/_assets/_sprites/sprites.game2.1-01.png'}
       />,
       <skoash.Image

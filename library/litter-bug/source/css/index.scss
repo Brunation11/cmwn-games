@@ -1271,6 +1271,21 @@ p {
       transition: opacity .5s, z-index 0s;
     }
 
+    &.open-level-up {
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .4;
+        background-image: url(../media/_assets/_images/BKG.5.png);
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+
     ul {
       list-style: none;
       margin: 0;

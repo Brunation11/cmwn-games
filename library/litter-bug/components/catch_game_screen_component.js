@@ -188,7 +188,7 @@ export default function (props, ref, key, opts = {}) {
         </div>
         <Score
           className="mr-eco-score"
-          max={10}
+          max={100}
           increment={10}
           correct={_.get(props, 'data.score.correct', 0)}
           onComplete={onScoreComplete}
@@ -197,7 +197,7 @@ export default function (props, ref, key, opts = {}) {
         </Score>
         <Score
           className="litter-bug-score"
-          max={10}
+          max={100}
           increment={10}
           correct={_.get(props, 'data.score.incorrect', 0)}
           complete={_.get(props, 'data.game.complete', false)}
