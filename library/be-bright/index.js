@@ -25,8 +25,8 @@ var BeBright = (
     screens={{
       0: iOSScreen,
       1: TitleScreen,
-      2: BulbsScreen,
-      //3: PigScreen,
+      //2: BulbsScreen,
+      2: PigScreen,
       //4: SwitchesScreen,
       //5: InfoScreen,
       //6: VideoScreen,

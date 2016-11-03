@@ -255,7 +255,7 @@ p {
 $stroke: 4;
 $yellow: rgb(244, 234, 43);
 $green: #105e31;
-$bulbs-green: #006D30;
+$outline-green: #006D30;
 $dark-green: #5A5601;
 $grey: #8ebbcd;
 
@@ -431,7 +431,7 @@ $grey: #8ebbcd;
         top: 0;
         left: 7px;
         color: $yellow;
-        @include text-stroke($stroke, $bulbs-green);
+        @include text-stroke($stroke, $outline-green);
       }
 
     }
@@ -560,7 +560,7 @@ $grey: #8ebbcd;
         background-position: left;
 
         li {
-          background-image: url(../media/_images/frame4.smoke.png);
+          background-image: url(../media/_images/frame5.smoke.png);
         }
       }
 
@@ -669,10 +669,20 @@ $grey: #8ebbcd;
 }
 
 #pig {
-  img {
+
+  .title {
     display: block;
-    width: 640px;
-    margin: 40px auto 0;
+    margin: 30px auto;
+    text-align: center;
+
+    div {
+      font-family: Source Sans Pro;
+      font-weight: bold;
+      font-size: 70px;
+      letter-spacing: -1.5px;
+      color: #F4EA2B;
+      @include text-stroke($stroke, $outline-green);
+    }
   }
 
   .selectable {
@@ -685,34 +695,35 @@ $grey: #8ebbcd;
     li {
       display: inline-block;
       height: 380px;
-      cursor: auto;
+      cursor: pointer;
+      margin: 0 40px;
+      background-image: url(../media/_sprites/sprites.who.png);
       background-repeat: no-repeat;
+      background-size: 600px;
 
       &.pig {
-        width: 500px;
-        background-image: url(../media/S_4/img_4.2.png);
-        background-size: auto 100%;
+        width: 300px;
 
         &:hover {
-          background-position: -497px 0;
+          background-position: 0px -400px;
         }
 
         &.SELECTED {
-          background-position: -993px 0;
+          background-position: 0px -400px;
         }
       }
 
       &.bulb {
-        width: 230px;
-        background-image: url(../media/S_4/img_4.3.png);
-        background-size: auto 100%;
+          width: 250px;
+          float: right;
+          background-position: top right;
 
         &:hover {
-          background-position: -246px 0;
+          background-position: -340px -390px;
         }
 
         &.SELECTED {
-          background-position: 0 0;
+          background-position: -340px -390px;
         }
       }
     }
@@ -720,17 +731,21 @@ $grey: #8ebbcd;
 
   &.COMPLETE:not(.REPLAY) {
     .selectable {
-      pointer-events: none;
 
-      li.pig {
-        transition: opacity 1s;
-        opacity: 0.5;
+      li {
+        pointer-events: none;
+        cursor: auto;
+
+        &.pig {
+          transition: opacity 1s;
+          opacity: 0.5;
+        }
       }
     }
   }
 
   &.READY.OPEN {
-    img {
+    .title {
       animation-name: zoomInDown;
     }
 
@@ -748,6 +763,7 @@ $grey: #8ebbcd;
   .VOICE-OVER & {
     li {
       pointer-events: none;
+      cursor: auto;
     }
   }
 }
