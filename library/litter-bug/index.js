@@ -30,7 +30,7 @@ var LitterBug = (
     config={config}
     screens={{
       0: iOSScreen,
-      1: TitleScreen,
+      // 1: TitleScreen,
       2: CatchGameLevelOne,
       3: CatchGameLevelTwo,
       4: CatchGameLevelThree,
@@ -46,7 +46,7 @@ var LitterBug = (
       14: GoodForYouScreen,
       15: TakePledgeScreen,
       16: CommitScreen,
-      17: FlipScreen,
+      1: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
@@ -60,6 +60,10 @@ var LitterBug = (
       <skoash.Image ref="img-bkg-3" className="hidden" src="media/_BKG/BKG_3.png" />,
       <skoash.Image ref="img-bkg-4" className="hidden" src="media/_assets/_images/BKG.4.jpg" />,
       <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
+      <skoash.Image
+        className="hidden"
+        src="media/_assets/_images/BKG.3.png"
+      />,
       <skoash.Image
         className="hidden"
         src="media/_assets/_images/BKG.5.png"

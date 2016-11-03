@@ -81,14 +81,14 @@ body > div > div {
   }
 
   .background.default,
-  &.SCREEN-1 .background.title,
+  &.SCREEN-title .background.title,
   &.SCREEN-2 .background.lets-clean-up,
   &.SCREEN-3 .background.clean-up-game,
   &.SCREEN-3.SUN .background.sun,
   &.SCREEN-9 .background.clean-up-game,
   &.SCREEN-10 .background.clean-up-game,
   &.SCREEN-11 .background.clean-up-game,
-  &.SCREEN-12 .background.commit {
+  &.SCREEN-commit .background.commit {
     opacity: 1;
   }
 
@@ -2442,49 +2442,68 @@ p {
 
 #flip {
 
-  img {
-    position: absolute;
-
-    &:nth-of-type(1) {
-      width: 460px;
-      left: 80px;
-      top: 20px;
-    }
-
-    &:nth-of-type(2) {
-      width: 300px;
-      right: 60px;
-      top: 280px;
-      opacity: 0;
-      transition: opacity 1s 5s;
+  .screen-content {
+    div {
+      position: absolute;
     }
   }
 
-  p {
-    position: absolute;
-    width: 460px;
+  .words,
+  .flip {
+    background-image: url(../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png);
+    background-repeat: no-repeat;
+    background-size: 4500px;
+  }
+
+  .words {
+    left: 0;
+    top: 0;
+    width: 660px;
+    height: 290px;
+    background-position: -3030px -40px;
+  }
+
+  .flip-container {
+    left: 50px;
+    top: 280px;
+    width: 330px;
+    height: 220px;
+    animation-delay: 5s;
+  }
+
+  .flip {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: -3960px -80px;
+    opacity: 0;
+    transition: opacity .5s 5s;
+  }
+
+  .mr-eco {
     right: 0;
-    top: 80px;
-    font-size: 34px;
-    text-align: center;
-    font-weight: bold;
+    bottom: 0;
+    width: 325px;
+    height: 500px;
+    background-image: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+    background-repeat: no-repeat;
+    background-size: 700px;
+    background-position: -360px 0px;
   }
 
   &.OPEN {
-
-    img {
-
-      &:nth-of-type(1) {
-        animation-name: bounceInUp;
-      }
-
-      &:nth-of-type(2) {
-        opacity: 1;
-        animation-name: flip;
-        animation-delay: 5s;
-      }
+    .flip-container {
+      animation-name: flip;
     }
 
+    .flip {
+      opacity: 1;
+    }
+
+    .mr-eco {
+      animation-name: bounceInUp;
+    }
   }
 }
 
