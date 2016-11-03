@@ -70,7 +70,7 @@ body > div > div {
     }
   
     &.commit {
-      background-image: url('../media/_BKG/BKG_5.png');
+      background-image: url('../media/_assets/_images/BKG.3.png');
     }
   
   }
@@ -826,13 +826,14 @@ p {
 
   .mr-eco {
     position: absolute;
-    width: 40%;
+    width: 514px;
     height: 105%;
-    left: -149px;
-    top: 23px;
-    background: url('../media/_assets/_images/mr.eco.png');
-    background-size: cover;
-    transform: scale(.88) rotate(-6deg);
+    left: -157px;
+    top: 18px;
+    bottom: 0;
+    background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+    background-size: 388px;
+    transform: scale(.88) rotate(-5.6deg);
   }
 
   .banner,
@@ -876,45 +877,46 @@ p {
 
 #take-pledge {
 
-  .frame {
-    top: 200px;
-    margin-top: -40px;
+  .mr-eco {
+    position: absolute;
+    width: 514px;
+    height: 105%;
+    left: -157px;
+    top: 18px;
+    bottom: 0;
+    background: url('../media/_assets/_images/mr.eco.png') no-repeat;
+    background-size: 388px;
+    transform: scale(.88) rotate(-5.6deg);
   }
 
-  .content-group {
-
-    img {
-      position: absolute;
-      width: 400px;
-      left: 40px;
-      top: -70px;
-    }
-
-    p {
-      position: absolute;
-      width: 500px;
-      right: 30px;
-      bottom: 40px;
-    }
-
+  .banner {
+    background: url('../media/_assets/_images/text-antilitter.png') no-repeat;
+    background-size: 798px;
+    position: absolute;
+    transform: scaleX(.87) scaleY(.87);
+    left: 111px;
+    top: 84px;
+    background-position: 60% 0;
+    width: 800px;
+    height: 700px;
   }
 
   button {
     &.next-screen {
       position: absolute;
-      width: 230px;
-      height: 130px;
-      background-position: -1320px 450px;
-      left: 50%;
-      top: 70%;
-      margin-left: -115px;
+      width: 336px;
+      height: 170px;
+      background-position: -1973px -109px;
+      left: 31.9%;
+      top: 64.55%;
       opacity: 0;
       cursor: auto;
       animation-duration: 1s;
       animation-fill-mode: both;
+      transform: scaleX(.87) scaleY(.88);
 
       &:hover {
-        background-position: -1320px 193px;
+        background-position: -1973px 280px;
       }
     }
   }
@@ -940,43 +942,69 @@ p {
 
 #commit {
 
-  .frame {
-    margin-top: -50px;
-    width: auto;
-    height: auto;
 
-    img.background {
-      position: relative;
-      opacity: 1;
-      width: 440px;
-      height: auto;
-      left: 0;
-    }
-
-    p {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 40px;
-      font-weight: bold;
-    }
+  .banner {
+    background: url('../media/_assets/_images/NEVER.png') no-repeat;
+    background-size: 150px;
+    position: absolute;
+    left: 200px;
+    top: 24px;
+    background-position: 60% 0;
+    width: 800px;
+    height: 700px;
   }
 
   button.next-screen {
     position: absolute;
-    left: 50%;
-    top: 70%;
-    margin-left: -115px;
+    left: 35.5%;
+    top: 66.6%;
     opacity: 0;
     cursor: auto;
-    width: 230px;
-    height: 130px;
-    background-position: -1570px 450px;
+    width: 272px;
+    height: 151px;
+    background-position: -1611px -109px;
     animation-duration: 1s;
     animation-fill-mode: both;
+    transform: scale(.88);
 
     &:hover {
-      background-position: -1570px 193px;
+      background-position: -1611px 280px;
+    }
+  }
+
+  .pledge {
+    position: absolute;
+    left: 352px;
+    top: 25px;
+    font-size: 44px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    color: #fff;
+    text-shadow: -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;
+    width: 590px;
+
+    .never {
+      padding: 69px;
+    }
+
+    .spacerA {
+      padding-left: 28px;
+    }
+
+    .spacerB {
+      padding-left: 11.5px;
+    }
+    
+    .spacer1 {
+      padding-left: 49px;
+    }
+
+    .spacer2 {
+      padding-left: 93px;
+    }
+    
+    .spacer3 {
+      padding-left: 223px;
     }
   }
 

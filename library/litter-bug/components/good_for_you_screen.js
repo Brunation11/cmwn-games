@@ -1,4 +1,3 @@
-import Repeater from 'shared/components/repeater/0.1';
 export default function (props, ref, key) {
   return (
     <skoash.Screen
