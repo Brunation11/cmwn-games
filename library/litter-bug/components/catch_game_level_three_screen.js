@@ -93,7 +93,7 @@ export default function (props, ref, key) {
     revealList: [
       <skoash.Component
         ref="level-up"
-        className="level-up"
+        className="level-up youve-won"
         type="li"
       >
         <div>

@@ -1233,6 +1233,16 @@ p {
 
         &:before {
           content: '';
+          display: block;
+          position: absolute;
+          left: -100px;
+          bottom: 0;
+          z-index: 1;
+          width: 300px;
+          height: 400px;
+          background-image: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+          background-size: 600px;
+          background-position: 0 0;
         }
 
         > div {
@@ -1266,6 +1276,37 @@ p {
           height: 150px;
           width: 610px;
           background-position: -2320px -45px;
+        }
+      }
+
+      &.youve-won {
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: -100px;
+          bottom: -10px;
+          z-index: 1;
+          width: 400px;
+          height: 500px;
+          background-image: url(../media/_assets/_images/litterbug_.png);
+          background-repeat: no-repeat;
+          background-position: left bottom;
+          background-size: contain;
+        }
+
+        .congratulations {
+          height: 115px;
+          width: 530px;
+          background-position: -4610px -60px;
+          margin-top: 10px;
+        }
+
+        .level-up {
+          height: 250px;
+          width: 580px;
+          background-position: -5330px 10px;
+          margin-top: 10px;
         }
       }
 
@@ -1368,6 +1409,10 @@ p {
 
 #catch-game-level-two {
   background-position: -960px 0;
+
+  .reveal li.level-up > div {
+    background-color: #f1f64e;
+  }
 }
 
 #catch-game-level-three {
