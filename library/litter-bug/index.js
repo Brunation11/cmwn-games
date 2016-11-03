@@ -5,7 +5,10 @@ import config from './config.game';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-// import TitleScreen from './components/title_screen';
+import TitleScreen from './components/title_screen';
+import CatchGameLevelOne from './components/catch_game_level_one_screen';
+import CatchGameLevelTwo from './components/catch_game_level_two_screen';
+import CatchGameLevelThree from './components/catch_game_level_three_screen';
 // import LetsCleanUpScreen from './components/lets_clean_up_screen';
 // import CleanUpScreen from './components/clean_up_screen';
 // import RoomScreen from './components/room_screen';
@@ -16,9 +19,6 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import GoodForYouScreen from './components/good_for_you_screen';
 // import TakePledgeScreen from './components/take_pledge_screen';
 // import CommitScreen from './components/commit_screen';
-import CatchGameLevelOne from './components/catch_game_level_one_screen';
-import CatchGameLevelTwo from './components/catch_game_level_two_screen';
-import CatchGameLevelThree from './components/catch_game_level_three_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -28,7 +28,10 @@ var LitterBug = (
     config={config}
     screens={{
       0: iOSScreen,
-      // 1: TitleScreen,
+      1: TitleScreen,
+      2: CatchGameLevelOne,
+      3: CatchGameLevelTwo,
+      4: CatchGameLevelThree,
       // 2: LetsCleanUpScreen,
       // 3: CleanUpScreen,
       // 4: RoomScreen,
@@ -39,10 +42,7 @@ var LitterBug = (
       // 9: GoodForYouScreen,
       // 10: TakePledgeScreen,
       // 11: CommitScreen,
-      1: CatchGameLevelOne,
-      2: CatchGameLevelTwo,
-      3: CatchGameLevelThree,
-      4: FlipScreen,
+      5: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
@@ -58,15 +58,19 @@ var LitterBug = (
       <skoash.Image ref="img-bkg-5" className="hidden" src="media/_BKG/BKG_5.png" />,
       <skoash.Image
         className="hidden"
-        src={'media/_assets/_sprites/sprites.game2.4-01.png'}
-      />,
-      <skoash.Image
-        className="hidden"
         src={'media/_assets/_sprites/sprites.game2.1-01.png'}
       />,
       <skoash.Image
         className="hidden"
         src={'media/_assets/_sprites/sprites.game2.2-01.png'}
+      />,
+      <skoash.Image
+        className="hidden"
+        src={'media/_assets/_sprites/sprites.game2.3-01-min.jpg'}
+      />,
+      <skoash.Image
+        className="hidden"
+        src={'media/_assets/_sprites/sprites.game2.4-01.png'}
       />,
       <skoash.Image
         className="hidden"
