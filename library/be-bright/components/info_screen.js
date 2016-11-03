@@ -10,12 +10,12 @@ export default function (props, ref, key) {
       <skoash.Component className="info animated">
         <div>
           Let's learn Mr. Eco's Super Special<br />
-          <skoash.Image src="media/_animation/animation.lightsoff.gif" className="turn-off" /><br />
+          <skoash.Image src="media/_animation/animation.lightsoff-LOOP.gif" className="turn-off" /><br />
           <span>Saver Move</span>
         </div>
         <div>
           Let's learn Mr. Eco's Super Special<br />
-          <skoash.Image src="media/_animation/animation.lightsoff.gif" className="turn-off" /><br />
+          <skoash.Image src="media/_animation/animation.lightsoff-LOOP.gif" className="turn-off" /><br />
           <span>Saver Move</span>
         </div>
       </skoash.Component>

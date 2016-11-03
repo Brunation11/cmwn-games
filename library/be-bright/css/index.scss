@@ -115,22 +115,24 @@ button {
   }
 
   &.quit-yes {
+    background-image: url(../media/_sprites/sprites.btns.png);
     width: 230px;
-    height: 230px;
-    background-position: -1830px 495px;
+    height: 240px;
+    background-position: -5894px -9px;
 
     &:hover {
-      background-position: -1830px 251px;
+      background-position: -5894px -251px;
     }
   }
 
   &.quit-no {
+    background-image: url(../media/_sprites/sprites.btns.png);
     width: 230px;
-    height: 230px;
-    background-position: -2080px 495px;
+    height: 240px;
+    background-position: -6272px -9px;
 
     &:hover {
-      background-position: -2080px 251px;
+      background-position: -6278px -249px;
     }
   }
 }
@@ -254,6 +256,7 @@ p {
 
 $stroke: 4;
 $yellow: rgb(244, 234, 43);
+$yellow-2: #F4EA2B;
 $green: #105e31;
 $outline-green: #006D30;
 $dark-green: #5A5601;
@@ -709,7 +712,7 @@ $grey: #8ebbcd;
       font-weight: bold;
       font-size: 70px;
       letter-spacing: -1.5px;
-      color: #F4EA2B;
+      color: $yellow-2;
       @include text-stroke($stroke, $outline-green);
     }
   }
@@ -793,91 +796,6 @@ $grey: #8ebbcd;
     li {
       pointer-events: none;
       cursor: auto;
-    }
-  }
-}
-
-
-#switches {
-  img.title {
-    display: block;
-    width: 800px;
-    margin: 30px auto 0;
-  }
-
-  .selectable-reveal {
-    margin-top: -30px;
-
-    .selectable {
-      position: relative;
-      height: 300px;
-      width: 800px;
-      margin: 20px auto;
-      opacity: 0;
-      transition: opacity 1s 1s;
-
-      li {
-        cursor: auto;
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 0;
-        opacity: 0.5;
-        transition: opacity 1s;
-        background-image: url(../media/S_5/img_5.2.png);
-        background-size: 400px;
-        background-repeat: no-repeat;
-        pointer-events: none;
-
-        &:first-of-type:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        &.HIGHLIGHTED {
-          opacity: 1;
-        }
-
-        &.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        @for $i from 1 through 5 {
-          &:nth-of-type(#{$i}) {
-            background-position: 0px 200-200*$i+px;
-            left: -150+150*$i+px;
-            top: 200-200*($i%2)+px;
-
-            &.HIGHLIGHTED,
-            &:hover {
-              background-position: -200px 200-200*$i+px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.READY.OPEN {
-    img.title {
-      animation-name: zoomInDown;
-    }
-
-    .selectable-reveal {
-      .selectable {
-        opacity: 1;
-      }
     }
   }
 }
@@ -1627,6 +1545,13 @@ $grey: #8ebbcd;
 
     h2 {
       margin: 0;
+      font-weight: bold;
+      color: $yellow-2;      
+      @include text-stroke($stroke, $outline-green);
+    }
+
+    h3 {
+      color: #000;
     }
 
     button {

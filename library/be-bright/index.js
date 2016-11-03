@@ -6,7 +6,6 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import BulbsScreen from './components/bulbs_screen';
 import PigScreen from './components/pig_screen';
-import SwitchesScreen from './components/switches_screen';
 import InfoScreen from './components/info_screen';
 import VideoScreen from './components/video_screen';
 import SpecialAnnouncementScreen from './components/special_announcement_screen';
@@ -25,18 +24,17 @@ var BeBright = (
     screens={{
       0: iOSScreen,
       1: TitleScreen,
-      //2: BulbsScreen,
-      //3: PigScreen,
-      //4: SwitchesScreen,
-      2: InfoScreen,
-      //6: VideoScreen,
-      //7: SpecialAnnouncementScreen,
-      //8: LeavingHouseScreen,
-      //9: DefeatHogScreen,
-      //10: LevelOneScreen,
-      //11: LevelTwoScreen,
-      //12: LevelThreeScreen,
-      3: FlipScreen,
+      2: BulbsScreen,
+      3: PigScreen,
+      4: InfoScreen,
+      5: VideoScreen,
+      6: SpecialAnnouncementScreen,
+      7: LeavingHouseScreen,
+      8: DefeatHogScreen,
+      9: LevelOneScreen,
+      10: LevelTwoScreen,
+      11: LevelThreeScreen,
+      12: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,
