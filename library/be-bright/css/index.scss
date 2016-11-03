@@ -344,23 +344,54 @@ $grey: #8ebbcd;
   img {
     position: absolute;
 
+    &.eco {
+      width: 370px;
+      left: -50px;
+      bottom: -10px;
+    }
+
+    &.hog {
+      width: 430px;
+      right: -40px;
+      bottom: 0;
+    }
+
     &.bulb {
-      width: 400px;
-      left: 280px;
-      top: 20px;
+      width: 200px;
+      left: 385px;
+      top: 100px;
+
+      &.glow {
+        width: 293px;
+        left: 339px;
+        top: 53px;
+      }
     }
 
     &.presents {
-      width: 200px;
-      left: 140px;
-      top: 210px;
+      width: 340px;
+      left: 323px;
+      top: 2px;
+
+      &.glow {
+        width: 364px;
+        left: 311px;
+        top: -12px;
+      }
     }
 
     &.title {
       width: 700px;
       left: 130px;
-      top: 300px;
+      top: 355px;
+
+      &.glow {
+        width: 741px;
+        left: 109px;
+        top: 336px;
+      }
     }
+
   }
 
   .prev-screen {
@@ -387,11 +418,11 @@ $grey: #8ebbcd;
     }
 
     &.COMPLETE {
-      img {
-        animation-name: flicker;
+      .glow {
+        animation-name: toggle;
         animation-duration: 2s;
         animation-delay: 0s;
-        animation-iteration-count: 3;
+        animation-iteration-count: infinite;
       }
     }
   }
