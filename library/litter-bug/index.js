@@ -17,6 +17,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import TakePledgeScreen from './components/take_pledge_screen';
 // import CommitScreen from './components/commit_screen';
 import CatchGameLevelOne from './components/catch_game_level_one_screen';
+import CatchGameLevelTwo from './components/catch_game_level_two_screen';
+import CatchGameLevelThree from './components/catch_game_level_three_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -38,7 +40,9 @@ var LitterBug = (
       // 10: TakePledgeScreen,
       // 11: CommitScreen,
       1: CatchGameLevelOne,
-      2: FlipScreen,
+      2: CatchGameLevelTwo,
+      3: CatchGameLevelThree,
+      4: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,

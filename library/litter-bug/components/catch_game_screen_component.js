@@ -160,7 +160,7 @@ export default function (props, ref, key, opts = {}) {
           className={opts.bin[i].className}
           message={opts.bin[i].message}
           style={{
-            top: 400 * (j + .5) / opts.rows,
+            top: 400 * (j + .4) / opts.rows,
           }}
         />
       );
