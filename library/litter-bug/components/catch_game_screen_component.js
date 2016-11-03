@@ -232,7 +232,6 @@ export default function (props, ref, key, opts = {}) {
         <Timer
           countDown
           timeout={opts.timeout}
-          leadingContent="TIME LEFT"
           getTime={getTime}
           stop={_.get(props, 'data.game.complete', false)}
           complete={_.get(props, 'data.game.complete', false)}

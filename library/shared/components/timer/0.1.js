@@ -48,7 +48,7 @@ class Timer extends skoash.Component {
       time: 0,
       stamp: 0,
     }, () => {
-      this.start();
+      this.checkComplete();
     });
   }
 
@@ -71,7 +71,7 @@ class Timer extends skoash.Component {
     this.setState({
       paused: false
     }, () => {
-      this.start();
+      this.checkComplete();
     });
   }
 
