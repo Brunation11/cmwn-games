@@ -9,10 +9,8 @@ import TitleScreen from './components/title_screen';
 import CatchGameLevelOne from './components/catch_game_level_one_screen';
 import CatchGameLevelTwo from './components/catch_game_level_two_screen';
 import CatchGameLevelThree from './components/catch_game_level_three_screen';
-import LetsCleanUpScreen from './components/lets_clean_up_screen';
 import CleanUpGameLvl1Screen from './components/clean_up_game_lvl1_screen';
 import CleanUpGameLvl2Screen from './components/clean_up_game_lvl2_screen';
-import CleanUpScreen from './components/clean_up_screen';
 import RoomScreen from './components/room_screen';
 import SchoolScreen from './components/school_screen';
 import GroundScreen from './components/ground_screen';
@@ -34,19 +32,17 @@ var LitterBug = (
       2: CatchGameLevelOne,
       3: CatchGameLevelTwo,
       4: CatchGameLevelThree,
-      5: LetsCleanUpScreen,
-      6: CleanUpScreen,
-      7: RoomScreen,
-      8: SchoolScreen,
-      9: GroundScreen,
-      10: SingAboutItScreen,
-      11: VideoScreen,
-      12: CleanUpGameLvl1Screen,
-      13: CleanUpGameLvl2Screen,
-      14: GoodForYouScreen,
-      15: TakePledgeScreen,
-      16: CommitScreen,
-      17: FlipScreen,
+      5: RoomScreen,
+      6: SchoolScreen,
+      7: GroundScreen,
+      8: SingAboutItScreen,
+      9: VideoScreen,
+      10: GoodForYouScreen,
+      11: CleanUpGameLvl1Screen,
+      12: CleanUpGameLvl2Screen,
+      13: TakePledgeScreen,
+      14: CommitScreen,
+      15: FlipScreen,
     }}
     menus={{
       quit: QuitScreen,

@@ -82,12 +82,7 @@ body > div > div {
 
   .background.default,
   &.SCREEN-title .background.title,
-  &.SCREEN-2 .background.lets-clean-up,
-  &.SCREEN-3 .background.clean-up-game,
-  &.SCREEN-3.SUN .background.sun,
-  &.SCREEN-9 .background.clean-up-game,
-  &.SCREEN-10 .background.clean-up-game,
-  &.SCREEN-11 .background.clean-up-game,
+  &[class*=SCREEN-clean-up-game] .background.clean-up-game,
   &.SCREEN-commit .background.commit {
     opacity: 1;
   }
