@@ -66,11 +66,19 @@ export default function (props, ref, key) {
       },
     ],
     vos: [
-      <skoash.Audio
-        type="voiceOver"
+      <skoash.MediaSequence
         ref="level-up"
-        src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
-      />,
+        silentOnStart
+      >
+        <skoash.Audio
+          type="voiceOver"
+          src={'media/_assets/_sounds/_effects/LevelUp.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
+        />
+      </skoash.MediaSequence>,
       <skoash.MediaSequence
         ref="try-again"
         silentOnStart
@@ -78,18 +86,21 @@ export default function (props, ref, key) {
         <skoash.Audio
           type="voiceOver"
           complete
+          src={'media/_assets/_sounds/_effects/TryAgain.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          complete
           src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
         />
         <skoash.Audio
           type="voiceOver"
-          ref="try-again"
           complete
           src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
         />
       </skoash.MediaSequence>,
     ],
-    sfx: [
-    ],
+    sfx: [],
     revealList: [
       <skoash.Component
         ref="level-up"

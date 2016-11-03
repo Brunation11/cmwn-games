@@ -86,18 +86,21 @@ export default function (props, ref, key) {
         <skoash.Audio
           type="voiceOver"
           complete
+          src={'media/_assets/_sounds/_effects/TryAgain.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          complete
           src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
         />
         <skoash.Audio
           type="voiceOver"
-          ref="try-again"
           complete
           src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
         />
       </skoash.MediaSequence>,
     ],
-    sfx: [
-    ],
+    sfx: [],
     revealList: [
       <skoash.Component
         ref="level-up"
