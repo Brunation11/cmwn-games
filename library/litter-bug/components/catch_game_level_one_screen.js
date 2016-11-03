@@ -5,7 +5,7 @@ export default function (props, ref, key) {
     id: 'catch-game-level-one',
     level: 1,
     rows: 3,
-    timeout: 60000,
+    timeout: 120000,
     prepTimeout: 1000,
     openOnStart: 'instructions',
     bin: [
@@ -67,46 +67,47 @@ export default function (props, ref, key) {
       },
     ],
     vos: [
-      // <skoash.MediaSequence
-      //   ref="in-this"
-      //   silentOnStart
-      // >
-        // <skoash.Audio
-        //   type="voiceOver"
-        //   completeTarget="in-this"
-        //   src={'media/_assets/SoundAssets/vos/VO_in_this.mp3'}
-        // />
-        // <skoash.Audio
-        //   type="voiceOver"
-        //   src={'media/_assets/SoundAssets/vos/VO_be_sure.mp3'}
-        // />
-      // </skoash.MediaSequence>,
-      // <skoash.MediaSequence
-      //   ref="level-up"
-      //   silentOnStart
-      // >
-        // <skoash.Audio
-        //   type="voiceOver"
-        //   src={'media/_assets/SoundAssets/effects/level_up.mp3'}
-        // />
-        // <skoash.Audio
-        //   type="voiceOver"
-        //   src={'media/_assets/SoundAssets/vos/VO_did_you1.mp3'}
-        // />
-      // </skoash.MediaSequence>,
-      // <skoash.Audio
-      //   type="voiceOver"
-      //   ref="try-again"
-      //   complete
-      //   src={'media/_assets/SoundAssets/vos/VO_try_again.mp3'}
-      // />,
+      <skoash.MediaSequence
+        ref="instructions"
+        silentOnStart
+      >
+        <skoash.Audio
+          type="voiceOver"
+          src={'media/_assets/_sounds/_vos/Instructions.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          src={'media/_assets/_sounds/_vos/PickUpLitter.mp3'}
+        />
+      </skoash.MediaSequence>,
+      <skoash.Audio
+        type="voiceOver"
+        ref="level-up"
+        src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
+      />,
+      <skoash.MediaSequence
+        ref="try-again"
+        silentOnStart
+      >
+        <skoash.Audio
+          type="voiceOver"
+          complete
+          src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref="try-again"
+          complete
+          src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
+        />
+      </skoash.MediaSequence>,
     ],
     sfx: [
       // <skoash.Audio
       //   type="voiceOver"
       //   completeTarget="sfx"
       //   ref="print"
-      //   src={'media/_assets/SoundAssets/effects/print_item.mp3'}
+      //   src={'media/_assets/_sounds/_effects/print_item.mp3'}
       //   sprite={[0, 500]}
       // />
     ],

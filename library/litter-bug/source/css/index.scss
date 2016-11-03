@@ -1216,9 +1216,15 @@ p {
           background-repeat: no-repeat;
           background-size: 3000px;
           background-position: -2070px -117px;
+          transition: opacity .5s;
 
           &:hover {
             background-position: -2070px -450px;
+          }
+
+          .VOICE-OVER:not(.DEMO) & {
+            opacity: .6;
+            pointer-events: none;
           }
         }
       }
@@ -1323,9 +1329,15 @@ p {
           background-repeat: no-repeat;
           background-size: 3000px;
           background-position: -2400px -117px;
+          transition: opacity .5s;
 
           &:hover {
             background-position: -2400px -450px;
+          }
+
+          .VOICE-OVER:not(.DEMO) & {
+            opacity: .6;
+            pointer-events: none;
           }
         }
       }
@@ -1340,9 +1352,15 @@ p {
       background-size: 2500px;
       background-position: -118px -118px;
       z-index: 1;
+      transition: opacity .5s;
 
       &:hover {
         background-position: -118px -396px;
+      }
+
+      .VOICE-OVER:not(.DEMO) & {
+        opacity: .6;
+        pointer-events: none;
       }
     }
   }

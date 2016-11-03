@@ -28,7 +28,6 @@ export default function (props, ref, key, opts = {}) {
       data: {
         stop: true,
         start: false,
-        restart: false,
       },
     });
   };
@@ -39,7 +38,6 @@ export default function (props, ref, key, opts = {}) {
       data: {
         stop: false,
         start: true,
-        restart: false,
       },
     });
     this.updateGameState({
@@ -93,12 +91,6 @@ export default function (props, ref, key, opts = {}) {
     this.updateGameState({
       path: 'openReveal',
       data: 'try-again',
-    });
-    this.updateGameState({
-      path: 'game',
-      data: {
-        start: false,
-      },
     });
   };
 
@@ -276,7 +268,7 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Audio
               type="voiceOver"
               ref="correct"
-              src="media/_assets/_sounds/_effects/WinPoints.mp3"
+              src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
             />,
             <skoash.Audio
               type="voiceOver"

@@ -15,7 +15,7 @@ class Timer extends skoash.Component {
   checkComplete() {
     var time = Date.now();
 
-    if (!this.props.checkComplete) return window.requestAnimationFrame(this.checkComplete);
+    if (!this.props.checkComplete) return;
 
     if (!this.state.started || this.state.paused) return;
 
@@ -48,7 +48,11 @@ class Timer extends skoash.Component {
       time: 0,
       stamp: 0,
     }, () => {
-      this.checkComplete();
+      if (this.state.started) {
+        this.checkComplete();
+      } else {
+        this.start();
+      }
     });
   }
 
@@ -71,7 +75,11 @@ class Timer extends skoash.Component {
     this.setState({
       paused: false
     }, () => {
-      this.checkComplete();
+      if (this.state.started) {
+        this.checkComplete();
+      } else {
+        this.start();
+      }
     });
   }
 
