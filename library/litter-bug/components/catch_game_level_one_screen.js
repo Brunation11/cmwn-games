@@ -112,10 +112,6 @@ export default function (props, ref, key) {
     ],
     revealList: [
       <skoash.Component ref="instructions" className="instructions" type="li">
-        <skoash.Image
-          className="hideen"
-          src={'media/_assets/_sprites/sprites.game2.2-01.png'}
-        />
         <div>
           <div className="instructions" />
           <div className="words" />
