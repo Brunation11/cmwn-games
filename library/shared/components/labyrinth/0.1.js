@@ -92,6 +92,9 @@ class Labyrinth extends skoash.Component {
 
     this[BUFFER].width = offset.width / this.props.scale;
     this[BUFFER].height = offset.height / this.props.scale;
+
+    if (!this[BUFFER].width || !this[BUFFER].height) return false;
+
     this[CONTEXT].clearRect(0, 0, this[BUFFER].width, this[BUFFER].height);
     this[CONTEXT].drawImage(this[MAP], 0, 0, this[BUFFER].width, this[BUFFER].height);
 
@@ -116,6 +119,8 @@ class Labyrinth extends skoash.Component {
       width: this[PLAYER].offsetWidth,
       height: this[PLAYER].offsetHeight,
     };
+
+    if (!offset.width || !offset.height) return;
 
     return _.find(objects, i => i.canInteract() && this.doIntersect(playerX, playerY, offset, i));
   }

@@ -956,7 +956,7 @@ $grey: #8ebbcd;
   }
 }
 
-[id*='abyrinth-level-'] {
+[id*='labyrinth-level-'] {
   .avatar {
     width: 143px;
   }
@@ -1017,8 +1017,8 @@ $grey: #8ebbcd;
     width: 500px;
 
     .player {
-      width: 20px;
-      height: 20px;
+      width: 10px;
+      height: 10px;
 
       &:before {
         content: '';
@@ -1026,8 +1026,8 @@ $grey: #8ebbcd;
         display: block;
         width: 80px;
         height: 80px;
-        left: -30px;
-        top: -30px;
+        left: -35px;
+        top: -35px;
         background-image: url(../media/_sprites/sprites.game2elem.png);
         background-repeat: no-repeat;
         background-size: 400px;
@@ -1115,9 +1115,6 @@ $grey: #8ebbcd;
 
       span {
         margin-left: 10px;
-        &:before {
-          content: '0:';
-        }
       }
     }
 
@@ -1166,6 +1163,58 @@ $grey: #8ebbcd;
   .labyrinth-frame {
     background-image: url(../media/_images/frame.yellow.png);
     color: #000;
+
+    &.instructions {
+      button {
+        position: absolute;
+        bottom: 11px;
+        right: 30px;
+        width: 190px;
+        height: 100px;
+        background-image: url(../media/_sprites/sprites.btns.png);
+        background-size: 3375px;
+        background-position: -1220px -80px;
+
+        &:hover {
+          background-position: -1220px -355px;
+        }
+      }
+    }
+
+    &.count-down {
+      .count {
+        position: absolute;
+        left: 500px;
+        top: 60px;
+        width: 200px;
+        text-align: center;
+      }
+
+      .number {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #fff;
+        font-size: 260px;
+        opacity: 0;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        $numbers: one two three;
+        @for $i from 1 through 3 {
+          &.#{nth($numbers, $i)} {
+            animation-delay: #{$i - 1}s
+          }
+        }
+      }
+
+      &.OPEN {
+        .number {
+          animation-name: number-flash;
+        }
+      }
+    }
 
     &.level-up {
       background-image: url(../media/_images/frame.lvlup.png);
@@ -1388,6 +1437,13 @@ $grey: #8ebbcd;
     }
   }
 
+  .open-instructions,
+  .open-count-down {
+    .close-reveal {
+      display: none;
+    }
+  }
+
   .open-level-up {
     .close-reveal {
       width: 370px;
@@ -1563,7 +1619,7 @@ $grey: #8ebbcd;
     h2 {
       margin: 0;
       font-weight: bold;
-      color: $yellow-2;      
+      color: $yellow-2;
       @include text-stroke($stroke, $outline-green);
     }
 
