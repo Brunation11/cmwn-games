@@ -13,6 +13,16 @@ const CONFIG = {
 };
 
 export default function (props, ref, key) {
+  var getTime = function () {
+    var timeLeft, minutesLeft, secondsLeft;
+    timeLeft = this.props.timeout / 1000 - this.state.time;
+    minutesLeft = Math.floor(timeLeft / 60);
+    minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
+    secondsLeft = timeLeft % 60;
+    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+    return `${minutesLeft}:${secondsLeft}`;
+  };
+
   return (
     <skoash.Screen
       {...props}
@@ -20,7 +30,7 @@ export default function (props, ref, key) {
       key={key}
       id="clean-up-game-lvl-3"
     >
-            <MediaCollection
+      <MediaCollection
         play={_.get(props, 'data.reveal.play', null)}
         onPlay={function () {
           this.updateGameState({
@@ -36,15 +46,6 @@ export default function (props, ref, key) {
               open: null
             }
           });
-
-          if (_.get(props, 'data.reveal.play')) {
-            this.updateGameState({
-              path: 'game',
-              data: {
-                complete: true
-              }
-            });
-          }
         }}
       >
         <skoash.MediaSequence ref="complete" silentOnStart>
@@ -65,6 +66,24 @@ export default function (props, ref, key) {
       <RevealPrompt
         ref="reveal"
         openReveal={_.get(props, 'data.reveal.open', null)}
+        onOpen={function () {
+          this.updateGameState({
+            path: 'game',
+            data: {
+              stop: true,
+              start: false,
+            },
+          });
+        }}
+        onClose={function () {
+          this.updateGameState({
+            path: 'game',
+            data: {
+              stop: false,
+              start: true,
+            },
+          });
+        }}
         list={[
           <skoash.Component data-ref="complete">
             <skoash.Component className="frame complete-lvl-3">
@@ -205,11 +224,14 @@ export default function (props, ref, key) {
             ref="timer"
             countDown={true}
             timeout={CONFIG.TIMER}
+            getTime={getTime}
+            stop={_.get(props, 'data.game.complete', false)}
             complete={_.get(props, 'data.game.complete', false)}
+            checkComplete={_.get(props, 'data.game.start', false)}
             restart={_.get(props, 'data.game.start', false)}
             onComplete={function () {
               if (_.get(props, 'data.reveal.open')) return;
-              if (_.get(props, 'data.score.points', 0) < 100) {
+              if (_.get(props, 'data.score.points', 0) < CONFIG.POINTS) {
                 this.updateGameState({
                   path: 'reveal',
                   data: {
@@ -239,7 +261,7 @@ export default function (props, ref, key) {
             max={CONFIG.POINTS}
             correct={_.get(props, 'data.score.points', 0)}
             checkComplete={false}
-            complete={_.get(props, 'data.score.points', 0) === 100}
+            complete={_.get(props, 'data.score.points', 0) === CONFIG.POINTS}
           />
         </skoash.Component>
       </skoash.Component>
