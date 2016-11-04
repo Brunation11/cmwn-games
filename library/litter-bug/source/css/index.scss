@@ -584,7 +584,24 @@ p {
 
       &.RELOAD {
         .LOADED {
-          animation: reload 3s;
+          animation: reload .5s;
+        }
+      }
+
+      .launch-button {
+        position: absolute;
+        width: 10%;
+        height: 18%;
+        bottom: .5%;
+        left: 9%;
+        background: url(../media/_assets/_sprites/sprites.game1.7.png);
+        background-position: 0 0;
+        background-size: 100%;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-position: 0 97px;
         }
       }
 
@@ -607,6 +624,7 @@ p {
         position: absolute;
         background: url(../media/_assets/_sprites/sprites.game1.1.png);
         background-size: 1000px 292px;
+        pointer-events: none;
 
         &:nth-of-type(1) {
           left: 25%;

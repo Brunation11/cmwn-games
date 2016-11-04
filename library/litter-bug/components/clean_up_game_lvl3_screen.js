@@ -8,7 +8,7 @@ import Score from 'shared/components/score/0.1';
 
 const CONFIG = {
   LVL: 3,
-  POINTS: 100,
+  POINTS: 500,
   TIMER: 30000,
 };
 
@@ -178,6 +178,8 @@ export default function (props, ref, key) {
         completeOnStart={true}
         checkComplete={false}
         reverseReload={true}
+        launchButton={true}
+        reloadTime={2000}
         showNum={4}
         bin={
           <Randomizer

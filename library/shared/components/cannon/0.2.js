@@ -57,7 +57,7 @@ class Cannon extends skoash.Component {
       setTimeout(() => {
         this.reload();
         this.next();
-      }, 2000);
+      }, this.props.reloadTime);
     });
 
     if (typeof this.props.onFire === 'function') {
@@ -115,10 +115,18 @@ class Cannon extends skoash.Component {
           data-ref={ref}
           key={key}
           className={this.getClass(key, li)}
-          onClick={this.fire}
+          onClick={this.props.launchButton ? '' : this.fire}
         />
       );
     });
+  }
+
+  renderLaunchButton() {
+    if (!this.props.launchButton) return;
+
+    return (
+      <div className="launch-button" onClick={this.fire} />
+    );
   }
 
   render() {
@@ -127,6 +135,7 @@ class Cannon extends skoash.Component {
         {this.renderBin()}
         <div className="ammo-container" />
         {this.renderAmmo()}
+        {this.renderLaunchButton()}
       </div>
     );
   }
