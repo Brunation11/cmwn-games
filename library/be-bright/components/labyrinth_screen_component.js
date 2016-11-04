@@ -238,7 +238,7 @@ export default function (props, ref, key, opts = {}) {
         <span>{opts.levelNumber}</span>
         <Timer
           countDown
-          timeout={30000}
+          timeout={60000}
           leadingContent="TIME LEFT"
           getTime={getTime}
           onComplete={onTimerComplete}
