@@ -17,6 +17,8 @@ export default function (props, ref, key, opts = {}) {
     getTime,
     onTimerComplete,
     onAddClassName,
+    onTransitionEnd,
+    onPlaySFX,
     onCorrectCatch,
     onIncorrectCatch,
     onMove,
@@ -104,6 +106,31 @@ export default function (props, ref, key, opts = {}) {
     });
   };
 
+  onTransitionEnd = function (item) {
+    if (props.gameState.paused || item.props.message !== 'trash' || !item.state.canCatch) return;
+    this.updateGameState({
+      path: 'score',
+      data: {
+        litter: _.get(props, 'data.score.litter', 0) + 1,
+      },
+    });
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        playing: 'miss',
+      }
+    });
+  };
+
+  onPlaySFX = function () {
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        playing: null,
+      }
+    });
+  };
+
   onCorrectCatch = function (bucketRef) {
     bucketRef.addClassName('correct');
     setTimeout(() => {
@@ -181,6 +208,7 @@ export default function (props, ref, key, opts = {}) {
       <MediaCollection
         play={_.get(props, 'data.sfx.playing')}
         children={opts.sfx}
+        onPlay={onPlaySFX}
       />
       <skoash.Component className="bottom">
         <div className="level">
@@ -191,6 +219,7 @@ export default function (props, ref, key, opts = {}) {
           max={100}
           increment={10}
           correct={_.get(props, 'data.score.correct', 0)}
+          incorrect={_.get(props, 'data.score.incorrect', 0)}
           onComplete={onScoreComplete}
         >
           <div />
@@ -199,7 +228,7 @@ export default function (props, ref, key, opts = {}) {
           className="litter-bug-score"
           max={100}
           increment={10}
-          correct={_.get(props, 'data.score.incorrect', 0)}
+          correct={_.get(props, 'data.score.litter', 0)}
           complete={_.get(props, 'data.game.complete', false)}
           onComplete={onTimerComplete}
         >
@@ -226,6 +255,7 @@ export default function (props, ref, key, opts = {}) {
           prepClasses={['ready', 'go']}
           prepTimeout={opts.prepTimeout}
           onAddClassName={onAddClassName}
+          onTransitionEnd={onTransitionEnd}
           bin={
             <Randomizer
               completeOnStart

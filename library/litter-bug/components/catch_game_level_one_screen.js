@@ -114,7 +114,13 @@ export default function (props, ref, key) {
         />
       </skoash.MediaSequence>,
     ],
-    sfx: [],
+    sfx: [
+      <skoash.Audio
+        type="sfx"
+        ref="miss"
+        src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+      />,
+    ],
     revealList: [
       <skoash.Component
         ref="instructions"

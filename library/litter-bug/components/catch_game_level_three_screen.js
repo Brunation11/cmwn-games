@@ -6,7 +6,7 @@ export default function (props, ref, key) {
     level: 3,
     rows: 5,
     timeout: 120000,
-    prepTimeout: 1000,
+    prepTimeout: 400,
     bin: [
       {
         className: 'mushroom',
@@ -104,7 +104,13 @@ export default function (props, ref, key) {
         />
       </skoash.MediaSequence>,
     ],
-    sfx: [],
+    sfx: [
+      <skoash.Audio
+        type="sfx"
+        ref="miss"
+        src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+      />,
+    ],
     revealList: [
       <skoash.Component
         ref="level-up"

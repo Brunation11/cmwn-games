@@ -43,6 +43,7 @@ class Dropper extends Draggable {
             itemEndXs[index] = this.state.endX;
             ReactDOM.findDOMNode(itemRef).addEventListener('transitionend', () => {
               items = this.state.items;
+              this.props.onTransitionEnd.call(this, itemRef);
               delete items[index];
               this.setState({
                 items,
@@ -186,6 +187,7 @@ Dropper.defaultProps = _.defaults({
   rightBound: 800,
   refsTarget: 'dropper',
   on: true,
+  onTransitionEnd: _.noop,
 }, Draggable.defaultProps);
 
 export default Dropper;

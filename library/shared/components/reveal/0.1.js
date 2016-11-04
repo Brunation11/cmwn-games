@@ -240,6 +240,7 @@ Reveal.defaultProps = _.defaults({
   ],
   onOpen: _.noop,
   onClose: _.noop,
+  allowMultipleOpen: false,
 }, skoash.Component.defaultProps);
 
 export default Reveal;
