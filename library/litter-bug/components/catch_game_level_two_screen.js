@@ -105,6 +105,7 @@ export default function (props, ref, key) {
         type="sfx"
         ref="miss"
         src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+        complete
       />,
     ],
     revealList: [

@@ -6,9 +6,9 @@ class Randomizer extends skoash.Component {
   }
 
   get(amount = 1) {
-    var bin = [];
+    var items, bin = [];
 
-    if (this.props.remain) {
+    if (this.props.remain && this.state.bin) {
       bin = this.state.bin;
     }
 
@@ -16,11 +16,13 @@ class Randomizer extends skoash.Component {
       bin = bin.concat(_.shuffle(this.props.bin));
     }
 
+    items = bin.splice(0, amount);
+
     if (this.props.remain) {
       this.setState({bin});
     }
 
-    return bin.slice(0, amount);
+    return items;
   }
 
   getClassNames() {

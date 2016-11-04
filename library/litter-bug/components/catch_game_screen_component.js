@@ -107,7 +107,8 @@ export default function (props, ref, key, opts = {}) {
   };
 
   onTransitionEnd = function (item) {
-    if (props.gameState.paused || item.props.message !== 'trash' || !item.state.canCatch) return;
+    if (_.get(props, 'data.reveal.open') || props.gameState.paused ||
+      item.props.message !== 'trash' || !item.state.canCatch) return;
     this.updateGameState({
       path: 'score',
       data: {
@@ -261,6 +262,7 @@ export default function (props, ref, key, opts = {}) {
               completeOnStart
               checkComplete={false}
               bin={bin}
+              remain
             />
           }
         >
