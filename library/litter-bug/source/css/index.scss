@@ -2975,6 +2975,14 @@ p {
     background-position: -360px 0px;
   }
 
+  .earned {
+    display: none;
+    position: absolute;
+    left: 388px;
+    top: 110px;
+    width: 200px;
+  }
+
   &.OPEN {
     .flip-container {
       animation-name: flip;
@@ -2986,6 +2994,12 @@ p {
 
     .mr-eco {
       animation-name: bounceInUp;
+    }
+  }
+
+  &.COMPLETE {
+    .earned {
+      display: inline-block;
     }
   }
 }

@@ -17,6 +17,7 @@ export default function (props, ref, key) {
         <div className="flip" />
       </div>
       <div className="mr-eco animated" />
+      <skoash.Image className="earned" src="media/_assets/_animations/LitterbugEarnedFlips.gif" />
     </skoash.Screen>
   );
 }
