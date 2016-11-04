@@ -8,8 +8,8 @@ import Score from 'shared/components/score/0.1';
 
 const CONFIG = {
   LVL: 1,
-  POINTS: 350,
-  TIMER: 30000,
+  POINTS: 100,
+  TIMER: 60000,
 };
 
 export default function (props, ref, key) {
