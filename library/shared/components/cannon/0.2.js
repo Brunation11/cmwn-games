@@ -56,14 +56,14 @@ class Cannon extends skoash.Component {
     }, () => {
       setTimeout(() => {
         this.reload();
-      }, 500);
+        this.next();
+      }, 2000);
     });
 
     if (typeof this.props.onFire === 'function') {
       this.props.onFire.call(this);
     }
 
-    this.next();
   }
 
   reload() {
