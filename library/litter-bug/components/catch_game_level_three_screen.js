@@ -126,6 +126,10 @@ export default function (props, ref, key) {
         })}
         type="li"
       >
+        <skoash.Image
+          className="hidden"
+          src={'media/_assets/_images/litterbug_.png'}
+        />
         <div>
           <div className="congratulations" />
           <div className="level-up" />
