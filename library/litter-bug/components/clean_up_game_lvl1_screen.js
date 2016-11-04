@@ -94,7 +94,7 @@ export default function (props, ref, key) {
         }}
         list={[
           <skoash.Component data-ref="instructions">
-            <skoash.Component className="frame instructions">
+            <skoash.Component className="frame instructions-lvl-1">
               <div className="banner" />
               <span>
                 Toss the litter in the cans to<br />clean up by clicking, aiming,<br />and letting go!
@@ -102,7 +102,7 @@ export default function (props, ref, key) {
               <span>
                 Get
               </span>
-              <skoash.Image className="hundred" src="media/_assets/_images/100pts.png" />
+              <div className="hundred" />
               <span>
                 points before the time
               </span>

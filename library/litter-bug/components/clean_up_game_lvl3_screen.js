@@ -30,6 +30,12 @@ export default function (props, ref, key) {
       key={key}
       id="clean-up-game-lvl-3"
     >
+      <skoash.MediaSequence ref="instructions">
+        <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Instructions.mp3" />
+        <skoash.Audio ref="vo-2" type="voiceOver" src="media/_assets/_sounds/_vos/TossLitter.mp3" />
+        <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/Get200.mp3" />
+      </skoash.MediaSequence>
+
       <MediaCollection
         play={_.get(props, 'data.reveal.play', null)}
         onPlay={function () {
@@ -49,22 +55,23 @@ export default function (props, ref, key) {
         }}
       >
         <skoash.MediaSequence ref="complete" silentOnStart>
-          <skoash.Audio ref="vo-1" type="voiceOver" src="media/_assets/_sounds/_vos/Level3.mp3" />
-          <skoash.Audio ref="vo-3" type="voiceOver" src="media/_assets/_sounds/_vos/ParkClean.mp3" />
+          <skoash.Audio ref="vo-4" type="voiceOver" src="media/_assets/_sounds/_vos/Level3.mp3" />
+          <skoash.Audio ref="vo-5" type="voiceOver" src="media/_assets/_sounds/_vos/ParkClean.mp3" />
         </skoash.MediaSequence>
         <skoash.MediaSequence ref="try-again" silentOnStart complete>
-          <skoash.Audio ref="vo-4" type="voiceOver" src="media/_assets/_sounds/_vos/LevelLost.mp3" complete />
-          <skoash.Audio ref="vo-5" type="voiceOver" src="media/_assets/_sounds/_vos/OhNo.mp3" complete />
-          <skoash.Audio ref="vo-6" type="voiceOver" src="media/_assets/_sounds/_vos/ParkStill.mp3" complete />
+          <skoash.Audio ref="vo-6" type="voiceOver" src="media/_assets/_sounds/_vos/LevelLost.mp3" complete />
+          <skoash.Audio ref="vo-7" type="voiceOver" src="media/_assets/_sounds/_vos/OhNo.mp3" complete />
+          <skoash.Audio ref="vo-8" type="voiceOver" src="media/_assets/_sounds/_vos/ParkStill.mp3" complete />
         </skoash.MediaSequence>
         <skoash.MediaSequence ref="throw" silentOnStart>
-          <skoash.Audio ref="vo-7" type="voiceOver" src="media/_assets/_sounds/_effects/FastSwish.mp3" />
-          <skoash.Audio ref="vo-8" type="voiceOver" src="media/_assets/_sounds/_effects/WinPoints.mp3" />
+          <skoash.Audio ref="vo-9" type="voiceOver" src="media/_assets/_sounds/_effects/FastSwish.mp3" />
+          <skoash.Audio ref="vo-10" type="voiceOver" src="media/_assets/_sounds/_effects/WinPoints.mp3" />
         </skoash.MediaSequence>
       </MediaCollection>
 
       <RevealPrompt
         ref="reveal"
+        openOnStart="instructions"
         openReveal={_.get(props, 'data.reveal.open', null)}
         onOpen={function () {
           this.updateGameState({
@@ -85,6 +92,24 @@ export default function (props, ref, key) {
           });
         }}
         list={[
+          <skoash.Component data-ref="instructions">
+            <skoash.Component className="frame instructions-lvl-3">
+              <div className="banner" />
+              <span>
+                Toss the litter in the cans to<br />clean up by clicking, aiming,<br />and letting go!
+              </span>
+              <span>
+                Get
+              </span>
+              <div className="hundred" />
+              <span>
+                points before the time
+              </span>
+              <span>
+                runs out to win!
+              </span>
+            </skoash.Component>
+          </skoash.Component>,
           <skoash.Component data-ref="complete">
             <skoash.Component className="frame complete-lvl-3">
               <div className="banner" />
