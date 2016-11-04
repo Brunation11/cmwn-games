@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
@@ -82,6 +83,11 @@ export default function (props, ref, key) {
           type="voiceOver"
           src={'media/_assets/_sounds/_vos/YouvePickedUp.mp3'}
         />
+        <skoash.Audio
+          type="sfx"
+          playTarget="fall"
+          src={'media/_assets/_sounds/_effects/Litterbugfall.mp3'}
+        />
       </skoash.MediaSequence>,
       <skoash.MediaSequence
         ref="try-again"
@@ -115,7 +121,9 @@ export default function (props, ref, key) {
     revealList: [
       <skoash.Component
         ref="level-up"
-        className="level-up youve-won"
+        className={classNames('level-up', 'youve-won', {
+          fall: _.get(props, 'data.fall.playing')
+        })}
         type="li"
       >
         <div>

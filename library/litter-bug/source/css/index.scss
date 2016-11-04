@@ -289,24 +289,20 @@ p {
   right: 0;
   opacity: 0;
   display: none;
-  transition: opacity 1s, transform .5s;
-  transform: translateX(100%);
+  transition: opacity .5s, z-index 0s 1s;
+  z-index: -1;
   overflow: hidden;
   width: 960px;
   height: 540px;
 
   &.OPEN {
     opacity: 1;
-    transform: translateX(0);
+    z-index: 1;
+    transition: opacity .5s, z-index 0s;
   }
 
   &.READY {
     display: block;
-  }
-
-  &.LEAVE {
-    opacity: 1;
-    transform: translateX(-100%);
   }
 
   &.no-frame {
@@ -2814,6 +2810,9 @@ p {
           z-index: 1;
           width: 400px;
           height: 500px;
+          transform: rotate(0deg);
+          transform-origin: 50% 75%;
+          transition: transform .5s;
           background-image: url(../media/_assets/_images/litterbug_.png);
           background-repeat: no-repeat;
           background-position: left bottom;
@@ -2832,6 +2831,12 @@ p {
           width: 580px;
           background-position: -5330px 10px;
           margin-top: 10px;
+        }
+
+        &.fall {
+          &:after {
+            transform: rotate(-90deg);
+          }
         }
       }
 
