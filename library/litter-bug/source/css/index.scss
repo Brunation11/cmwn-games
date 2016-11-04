@@ -2586,7 +2586,9 @@ p {
 
     .catchable {
       position: absolute;
-      transition: opacity .5s, left 6s linear;
+      transition: opacity .5s;
+      animation-duration: 6s;
+      animation-timing-function: linear;
       top: 60px;
       left: 980px;
       width: 100px;
@@ -2600,7 +2602,11 @@ p {
       }
 
       &.go {
-        left: -100px;
+        animation-name: catchable;
+      }
+
+      .PAUSED & {
+        animation-play-state: paused;
       }
 
       $catchables: mushroom banana paper dog battery duck squirrel tire blue-flower yellow-flower red-flower purple-flower glass plastic;

@@ -107,7 +107,7 @@ export default function (props, ref, key, opts = {}) {
   };
 
   onTransitionEnd = function (item) {
-    if (_.get(props, 'data.reveal.open') || props.gameState.paused ||
+    if (_.get(props, 'data.openReveal') || props.gameState.paused ||
       item.props.message !== 'trash' || !item.state.canCatch) return;
     this.updateGameState({
       path: 'score',

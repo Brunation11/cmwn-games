@@ -22,7 +22,7 @@ class Dropper extends Draggable {
   next(on) {
     var items, index;
 
-    if (!this.state.started || (!this.props.on && !on)) return;
+    if (!this.state.started || (!this.props.on && !on) || this.props.gameState.paused) return;
 
     index = this.state.itemCount;
     items = this.state.items;
@@ -33,7 +33,7 @@ class Dropper extends Draggable {
       itemCount: index + 1,
     }, () => {
       var timeoutFunction = i => {
-        var itemRef, itemEndXs;
+        var itemRef, itemDOM, itemEndXs, onTransitionEnd;
         itemRef = this.refs['items-' + index];
         if (itemRef) {
           itemRef.addClassName(this.props.prepClasses[i]);
@@ -41,7 +41,7 @@ class Dropper extends Draggable {
           if (i === this.props.prepClasses.length - 1) {
             itemEndXs = this.state.itemEndXs;
             itemEndXs[index] = this.state.endX;
-            ReactDOM.findDOMNode(itemRef).addEventListener('transitionend', () => {
+            onTransitionEnd = () => {
               items = this.state.items;
               this.props.onTransitionEnd.call(this, itemRef);
               delete items[index];
@@ -49,7 +49,10 @@ class Dropper extends Draggable {
                 items,
                 itemEndXs
               });
-            });
+            };
+            itemDOM = ReactDOM.findDOMNode(itemRef);
+            itemDOM.addEventListener('transitionend', onTransitionEnd);
+            itemDOM.addEventListener('animationend', onTransitionEnd);
           }
         }
 
@@ -181,6 +184,9 @@ Dropper.defaultProps = _.defaults({
     />
   ),
   onStart: function () {
+    this.next();
+  },
+  onResume: function () {
     this.next();
   },
   leftBound: 0,
