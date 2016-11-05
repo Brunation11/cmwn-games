@@ -50,11 +50,11 @@ var LitterBug = (
       quit: QuitScreen,
     }}
     loader={<Loader />}
-    getBackgroundIndex={function (currentIndex) {
-      switch (currentIndex) {
-      case 11:
-      case 12:
-      case 13:
+    getBackgroundIndex={function (index, id) {
+      switch (id) {
+      case 'clean-up-game-lvl-1':
+      case 'clean-up-game-lvl-2':
+      case 'clean-up-game-lvl-3':
         return 1;
       default:
         return 0;
