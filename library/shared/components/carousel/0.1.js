@@ -11,7 +11,9 @@ class Carousel extends Selectable {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selected) {
+    super.componentWillReceiveProps(nextProps);
+
+    if (nextProps.selected && nextProps.selected !== this.props.selected) {
       this.select();
     }
   }
@@ -69,10 +71,7 @@ class Carousel extends Selectable {
 
     this.enabled = false;
 
-
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
-    }
+    this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
   }
 
   getClassNames() {
@@ -121,7 +120,8 @@ Carousel.defaultProps = _.defaults({
   showNum: 3,
   targetIndex: 1,
   pause: 500,
-  clickable: false
+  clickable: false,
+  onSelect: _.noop,
 }, Selectable.defaultProps);
 
 export default Carousel;

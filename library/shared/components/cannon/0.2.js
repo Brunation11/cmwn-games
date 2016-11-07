@@ -1,14 +1,12 @@
 import classNames from 'classnames';
 
-const BALL = 'ball';
-
 class Cannon extends skoash.Component {
   constructor() {
     super();
 
     this.state = {
       classes: {}
-    }
+    };
 
     this.fire = this.fire.bind(this);
     this.reload = this.reload.bind(this);
@@ -60,10 +58,7 @@ class Cannon extends skoash.Component {
       }, this.props.reloadTime);
     });
 
-    if (typeof this.props.onFire === 'function') {
-      this.props.onFire.call(this);
-    }
-
+    this.props.onFire.call(this);
   }
 
   reload() {
@@ -72,9 +67,7 @@ class Cannon extends skoash.Component {
       reload: true
     });
 
-    if (typeof this.props.onReload === 'function') {
-      this.props.onReload.call(this);
-    }
+    this.props.onReload.call(this);
   }
 
   getClassNames() {
@@ -115,7 +108,6 @@ class Cannon extends skoash.Component {
           data-ref={ref}
           key={key}
           className={this.getClass(key, li)}
-          onClick={this.props.launchButton ? '' : this.fire}
         />
       );
     });
@@ -149,7 +141,9 @@ Cannon.defaultProps = _.defaults({
     <li></li>,
     <li></li>,
     <li></li>
-  ]
+  ],
+  onReload: _.noop,
+  onFire: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Cannon;

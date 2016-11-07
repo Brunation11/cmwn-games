@@ -556,6 +556,8 @@ p {
       // }
 
       &.FIRE {
+        pointer-events: none;
+
         .LOADED {
           /**
            *  Normaly I would define the transition on the default rule but this way

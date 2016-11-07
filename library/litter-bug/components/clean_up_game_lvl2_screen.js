@@ -231,6 +231,12 @@ export default function (props, ref, key) {
               play: 'throw'
             }
           });
+          this.updateGameState({
+            path: 'cannon',
+            data: {
+              fire: false
+            }
+          });
         }}
         onReload={function () {
           this.updateGameState({
