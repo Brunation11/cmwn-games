@@ -267,9 +267,12 @@ var Skribble = (
       this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
       this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
 
-      this.state.data.collisionWarning = {
-        show: true
-      };
+      this.updateState({
+        path: ['collisionWarning'],
+        data: {
+          show: true
+        }
+      });
     }}
     onReady={function () {
       this.getMediaOnReady();
