@@ -124,17 +124,9 @@ class ItemDrawer extends Selectable {
   }
 
   getULClass() {
-    var categories = '';
-
-    if (this.props.categories) {
-      categories = this.props.categories.join(' ');
-    }
-
-    return classNames({
-      'item-drawer': true,
-      [categories]: true,
+    return classNames('item-drawer', {
       COMPLETE: this.state.complete,
-    });
+    }, this.props.categories ? this.props.categories.join(' ') : '');
   }
 
   getClass(key, item) {
