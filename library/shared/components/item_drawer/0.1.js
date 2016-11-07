@@ -107,8 +107,8 @@ class ItemDrawer extends Selectable {
   }
 
   getCategory() {
-    if (this.state.categoryName) {
-      return this.state.categoryName;
+    if (this.state.categoryName || this.props.categoryName) {
+      return this.state.categoryName || this.props.categoryName;
     }
 
     if (this.props.categories && this.props.categories.length) {

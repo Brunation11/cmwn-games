@@ -81,6 +81,7 @@ class ItemDrawerScreen extends skoash.Screen {
           selectRespond={this.selectRespond.bind(this)}
           cancelRespond={this.cancelRespond}
           categories={this.state.opts.categories}
+          categoryName={this.state.opts.categoryName}
           data={this.state.data}
         />
       </div>

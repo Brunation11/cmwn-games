@@ -65,7 +65,7 @@ class Menu extends Selectable {
           typeof item.items !== 'object' ||
           (
             Object.prototype.toString.call(item.items) === '[object Array]' &&
-            item.items[0]
+            item.items[0] && !item.items[0].items
           )
         ) || (
           typeof self.props.lastLevel === 'number' &&
@@ -76,6 +76,7 @@ class Menu extends Selectable {
         gotoObj = {
           index: 'item-drawer',
           categories,
+          categoryName: item.name,
         };
         onClick = skoash.trigger.bind(null, 'goto', gotoObj);
       }
@@ -88,7 +89,7 @@ class Menu extends Selectable {
           key={key}
           onClick={onClick}
         >
-          <span>{key}</span>
+          <span>{item.name || key}</span>
           {(() => {
             if (isFinal) return;
             return (
