@@ -238,7 +238,7 @@ class Catch extends skoash.Component {
 
 Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
   catchables: [],
-  bucketInBounds: true
+  bucketInBounds: true,
 });
 
 export default Catch;
