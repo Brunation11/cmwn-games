@@ -160,11 +160,8 @@ class ItemDrawer extends Selectable {
       }
 
       if (!src) {
-        item.items.some(subitem => {
-          if (subitem.name === '_thumb') {
-            src = subitem.thumb || subitem.src;
-            return true;
-          }
+        src = _.find(item.items, subitem => {
+          if (subitem.name === '_thumb') return subitem.thumb || subitem.src;
         });
       }
     }
@@ -210,7 +207,7 @@ class ItemDrawer extends Selectable {
       if (aVal < bVal) return -1;
       return 1;
     }).filter(item =>
-      item.name !== '_thumb.png'
+      item.name !== '_thumb'
     ).map((item, key) =>
       <skoash.ListItem
         className={this.getClass(key, item)}
