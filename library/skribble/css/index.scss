@@ -593,6 +593,12 @@ p {
       transition: opacity .5s 2s, z-index 0s 2.5s;
     }
   }
+
+  &.REPLAY {
+    &:after {
+      display: none;
+    }
+  }
 }
 
 #friends {
