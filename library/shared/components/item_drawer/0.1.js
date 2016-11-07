@@ -138,11 +138,8 @@ class ItemDrawer extends Selectable {
   }
 
   getClass(key, item) {
-    var white = item && item.name && item.name.toLowerCase()[item.name.length - 1] === 'w';
-
-    return classNames({
-      [this.state.classes[key] || '']: true,
-      white
+    return classNames(this.state.classes[key] || '', {
+      white: item && item.name && item.name.toLowerCase()[item.name.length - 1] === 'w',
     });
   }
 
