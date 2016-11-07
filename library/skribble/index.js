@@ -250,6 +250,12 @@ var Skribble = (
     }}
     loader={<Loader />}
     assets={[
+      <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Antipation-Otter3.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/proud-of-you2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Peeking-through-Otter2.gif" />,
       <div className="background-1" />,
       <div className="background-2" />,
       <div className="background-3" />,

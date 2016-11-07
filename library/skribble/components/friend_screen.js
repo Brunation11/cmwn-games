@@ -86,9 +86,10 @@ class FriendScreen extends skoash.Screen {
   }
 
   renderOtter() {
-    var copy, src;
+    var copy, src, imageSrc;
 
     src = 'One';
+    imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
     copy = (
       <span>
         Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
@@ -97,6 +98,7 @@ class FriendScreen extends skoash.Screen {
 
     if (this.state.data && this.state.data.length) {
       src = 'Two';
+      imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
       copy = (
         <span>
           Let me find a friend<br/> to send your message to.
@@ -106,7 +108,7 @@ class FriendScreen extends skoash.Screen {
 
     return (
       <div className={'otter-container ' + src}>
-        <skoash.Image className="otter" src={`media/_Otter/Otter_Static_Greeting${src}.png`} />
+        <skoash.Image className="otter" src={imageSrc} />
         <div className="bubble">
           {copy}
         </div>
