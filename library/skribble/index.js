@@ -22,15 +22,6 @@ import LimitWarning from './components/limit_warning';
 const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
-  ready() {
-    if (!this.state.ready) {
-      this.getMediaOnReady();
-      this.getFriends();
-    }
-
-    super.ready();
-  }
-
   getRules(opts = {}) {
     if (typeof opts.respond === 'function') {
       return opts.respond(this.refs['screen-canvas'].getData());
@@ -38,7 +29,7 @@ class SkribbleGame extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(e, skramble) {
+  save(skramble) {
     /* eslint-disable camelcase */
     var friend_to, rules, self = this;
     friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
@@ -71,7 +62,7 @@ class SkribbleGame extends skoash.Game {
   }
 
   send() {
-    this.save(null, true);
+    this.save(true);
 
     this.refs['screen-canvas'].reset();
     this.goto({
@@ -83,21 +74,6 @@ class SkribbleGame extends skoash.Game {
       recipient: null,
       skribbleData: null,
     });
-  }
-
-  trigger(event, opts) {
-    switch (event) {
-    case 'save':
-      return this.save();
-    case 'getMedia':
-      return this.getMedia(opts.path);
-    case 'getRules':
-      return this.getRules(opts);
-    case 'loadSkribble':
-      return this.loadSkribble(opts);
-    }
-
-    return super.trigger(event, opts);
   }
 
   loadSkribble(opts) {
@@ -115,6 +91,7 @@ class SkribbleGame extends skoash.Game {
   getMedia(path) {
     var pathArray, self = this;
 
+    if (typeof path === 'object') path = path.path;
     path = path || 'skribble/menu';
     pathArray = path.split('/');
     pathArray.shift();
@@ -154,25 +131,6 @@ class SkribbleGame extends skoash.Game {
         });
       }
       self.updateData(opts);
-    });
-  }
-
-  getData(opts) {
-    var names = [
-      'getFriends',
-      'getFriend',
-      'markAsRead',
-    ];
-
-    if (names.indexOf(opts.name) === -1) {
-      opts.name = 'getData';
-    }
-
-    return this.emit(opts).then(data => {
-      this.updateData({
-        data,
-        callback: opts.callback,
-      });
     });
   }
 
@@ -307,6 +265,10 @@ var Skribble = (
         show: true
       };
     }}
+    onReady={function () {
+      this.getMediaOnReady();
+      this.getFriends();
+    }}
     renderMenu={function () {
       return (
         <div>
@@ -349,6 +311,31 @@ var Skribble = (
       } else if (opts.name === 'showLimitWarning') {
         this.showLimitWarning();
       }
+    }}
+    getTriggerEvents={function (opts = {}) {
+      opts.save = this.save;
+      opts.getMedia = this.getMedia;
+      opts.getRules = this.getRules;
+      opts.loadSkribble = this.loadSkribble;
+      return opts;
+    }}
+    getData={function (opts) {
+      var names = [
+        'getFriends',
+        'getFriend',
+        'markAsRead',
+      ];
+
+      if (names.indexOf(opts.name) === -1) {
+        opts.name = 'getData';
+      }
+
+      return this.emit(opts).then(data => {
+        this.updateData({
+          data,
+          callback: opts.callback,
+        });
+      });
     }}
   />
 );
