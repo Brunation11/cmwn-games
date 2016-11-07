@@ -81,23 +81,17 @@ class Catcher extends skoash.Component {
   checkCollisions() {
     var time = Date.now();
     if (!this.state.started || this.state.paused) return;
-    if (time >= this.state.stamp) {
-      this.setState({
-        stamp: time + 1000
-      });
-      var bucketRect = this.bucketNode.getBoundingClientRect();
-      var limitRect = this.limitNode.getBoundingClientRect();
-      _.forEach(this.catchableNodes, function (val, key) {
-        if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
-          this.selectCatchable(this.refs[`${key}-catchable`], key);
-        } else if (this.isColliding(limitRect, val.getBoundingClientRect())) {
-          this.incorrect(this.refs[`${key}-catchable`], key);
-        }
-      }.bind(this));
-      window.requestAnimationFrame(this.checkCollisions);
-    } else {
-      window.requestAnimationFrame(this.checkCollisions);
-    }
+    var bucketRect = this.bucketNode.getBoundingClientRect();
+    var limitRect = this.limitNode.getBoundingClientRect();
+    _.forEach(this.catchableNodes, function (val, key) {
+      if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
+        this.selectCatchable(this.refs[`${key}-catchable`], key);
+      } else if (this.isColliding(limitRect, val.getBoundingClientRect())) {
+        this.incorrect(this.refs[`${key}-catchable`], key);
+      }
+    }.bind(this));
+
+    window.requestAnimationFrame(this.checkCollisions);
   }
 
   start() {

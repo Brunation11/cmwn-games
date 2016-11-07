@@ -10,7 +10,7 @@ import TitleScreen from './components/title_screen';
 // import ResponsibleFlusherScreen from './components/responsible_flusher_screen';
 // import FlipScreen from './components/flip_screen';
 import InfoCatchGame from './components/info_catch_game';
-import CatchGameLvl1 from './components/catch_game_screen';
+import CatchGameLvlOneScreen from './components/catch_game_lvl_one_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -19,9 +19,9 @@ var TwirlNSwirl = (
     config={config}
     screens={{
       0: iOSScreen,
-      1: InfoCatchGame,
-      2: CatchGameLvl1,
-      3: TitleScreen,
+      // 1: InfoCatchGame,
+      1: CatchGameLvlOneScreen,
+      // 2: TitleScreen,
       // 2: InfoQuestionScreen,
       // 3: InfoPlantScreen,
       // 4: FlushItScreen,
