@@ -54,6 +54,14 @@ export default function (props, ref, key) {
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'ImageAssets/img.printer.png'}
       />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.leftbox.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.brokenobj.png'}
+      />
       <skoash.Component className="targets">
         <div>
           What <span>ITEM</span> can<br/>
