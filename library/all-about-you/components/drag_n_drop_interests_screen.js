@@ -55,9 +55,12 @@ export default function (props, ref, key) {
       <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_MostInterested.mp3" />
       <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_16/IMG_16_Penguins.png" />
       <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_16/Text_16_what%20are%20interested.png" />
-      <div ref="frame" className="frame animated"></div>
+      <skoash.Component ref="frame" className="frame animated" />
 
       <MediaCollection
+        ref="media-collection"
+        complete={true}
+        checkComplete={false}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({
@@ -84,8 +87,8 @@ export default function (props, ref, key) {
         dragRespond={dragRespond}
         correctRespond={correctRespond}
         assets={[
-          <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />,
-          <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
+          <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" complete />,
+          <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" complete />
         ]}
         dropzones={[
           <skoash.Component className="dropzone-list-item animated" />,
@@ -108,7 +111,7 @@ export default function (props, ref, key) {
           <skoash.ListItem ref="robotics" className="draggable-list-item robotics animated" message="robotics" returnOnIncorrect />
         ]}
       />
-      <div ref="meter" className="meter animated"></div>
+      <skoash.Component ref="meter" className="meter animated" />
     </skoash.Screen>
   );
 }

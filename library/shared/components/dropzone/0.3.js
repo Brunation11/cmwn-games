@@ -69,6 +69,7 @@ class Dropzone extends skoash.Component {
     var self = this;
     super.start();
     this.prepareDropzones();
+    if (this.state.dataLoaded) return;
     if (self.loadData && typeof self.loadData === 'object') {
       _.forIn(self.loadData, (ref, key) => {
         if (ref.ref && ref.state) {
@@ -77,6 +78,7 @@ class Dropzone extends skoash.Component {
           this.loadMultiAsnwerData();
         }
       });
+      this.setState({dataLoaded: true});
     }
   }
 
