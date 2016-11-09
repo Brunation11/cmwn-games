@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -57,7 +55,7 @@ class SeaTurtle extends skoash.Game {
     if (index === 7) return 3;
     if (index >= 8 && index < 10) return 4;
     if (index === 10) return 5;
-    
+
     return -1;
   }
 
