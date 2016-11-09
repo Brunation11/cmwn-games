@@ -9,7 +9,6 @@ export default function (props, ref, key) {
       completeOnStart
       completeDelay={2000}
     >
-      <skoash.Audio type="background" src="media/audio/SO_1.1.mp3" />
       <skoash.Component className="center">
         <skoash.Component className="content-group">
           <skoash.Image className="animated tada" src="media/images/title.png" />
