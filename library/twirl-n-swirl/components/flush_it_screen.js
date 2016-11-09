@@ -31,6 +31,8 @@ export default function (props, ref, key) {
   }
 
   function flush() {
+    if (!_.get(props, 'data.dropzone.correct')) return;
+
     skoash.trigger('updateState', {
       path: 'reveal',
       data: {
@@ -71,7 +73,9 @@ export default function (props, ref, key) {
   }
 
   function getClassNames() {
-    return classNames(_.get(props, 'data.flushed', false));
+    return classNames(_.get(props, 'data.flushed', false), {
+      'disable': _.get(props, 'data.dropzone.correct'),
+    });
   }
 
   return (
@@ -98,25 +102,27 @@ export default function (props, ref, key) {
         ]}
         answers={['wipes', 'diapers', 'paper', 'sheets', 'fats', 'cosmetics', 'bandages', 'litter', 'cotton', 'gum', 'floss', 'hair', 'meds', 'chemicals']}
         draggables={[
-          <skoash.ListItem ref="wipes" className="wipes animated" message="wipes" returnOnIncorrect />,
-          <skoash.ListItem ref="diapers" className="diapers animated" message="diapers" returnOnIncorrect />,
-          <skoash.ListItem ref="paper" className="paper animated" message="paper" returnOnIncorrect />,
-          <skoash.ListItem ref="sheets" className="sheets animated" message="sheets" returnOnIncorrect />,
-          <skoash.ListItem ref="fats" className="fats animated" message="fats" returnOnIncorrect />,
-          <skoash.ListItem ref="cosmetics" className="cosmetics animated" message="cosmetics" returnOnIncorrect />,
-          <skoash.ListItem ref="bandages" className="bandages animated" message="bandages" returnOnIncorrect />,
-          <skoash.ListItem ref="litter" className="litter animated" message="litter" returnOnIncorrect />,
-          <skoash.ListItem ref="cotton" className="cotton animated" message="cotton" returnOnIncorrect />,
-          <skoash.ListItem ref="gum" className="gum animated" message="gum" returnOnIncorrect />,
-          <skoash.ListItem ref="floss" className="floss animated" message="floss" returnOnIncorrect />,
-          <skoash.ListItem ref="hair" className="hair animated" message="hair" returnOnIncorrect />,
-          <skoash.ListItem ref="meds" className="meds animated" message="meds" returnOnIncorrect />,
-          <skoash.ListItem ref="chemicals" className="chemicals animated" message="chemicals" returnOnIncorrect />
+          <skoash.ListItem ref="wipes" className="wipes animated" message="wipes" />,
+          <skoash.ListItem ref="diapers" className="diapers animated" message="diapers" />,
+          <skoash.ListItem ref="paper" className="paper animated" message="paper" />,
+          <skoash.ListItem ref="sheets" className="sheets animated" message="sheets" />,
+          <skoash.ListItem ref="fats" className="fats animated" message="fats" />,
+          <skoash.ListItem ref="cosmetics" className="cosmetics animated" message="cosmetics" />,
+          <skoash.ListItem ref="bandages" className="bandages animated" message="bandages" />,
+          <skoash.ListItem ref="litter" className="litter animated" message="litter" />,
+          <skoash.ListItem ref="cotton" className="cotton animated" message="cotton" />,
+          <skoash.ListItem ref="gum" className="gum animated" message="gum" />,
+          <skoash.ListItem ref="floss" className="floss animated" message="floss" />,
+          <skoash.ListItem ref="hair" className="hair animated" message="hair" />,
+          <skoash.ListItem ref="meds" className="meds animated" message="meds" />,
+          <skoash.ListItem ref="chemicals" className="chemicals animated" message="chemicals" />
         ]}
       />
       <button
         ref="reveal-button"
-        className="flush"
+        className={classNames('flush', {
+          'disable': !_.get(props, 'data.dropzone.correct'),
+        })}
         onClick={flush}
       />
       <Reveal
