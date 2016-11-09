@@ -40,7 +40,8 @@
   100% {transform:translateY(0px)}
 }
 
-.reveal.OPEN ~ .dropzone-container {
+.reveal.OPEN ~ .dropzone-container,
+.VOICE-OVER:not(.DEMO):not(.REPLAY):not(.COMPLETE) .dropzone-reveal {
   cursor: default;
   pointer-events: none;
 }

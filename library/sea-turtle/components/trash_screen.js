@@ -23,7 +23,7 @@ export default function (props, ref, key) {
     >
       <skoash.Component className="turtle" />
       <SelectableAudio
-        ref='selectable-audio'
+        ref="selectable-audio"
         className="center"
         selectClass="HIGHLIGHTED"
         selectableList={[

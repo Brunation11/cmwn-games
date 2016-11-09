@@ -83,7 +83,7 @@ img.hidden {
 }
 
 .canvas-src {
-  display: none; 
+  display: none;
 }
 
 .screen {
@@ -161,7 +161,7 @@ img.hidden {
   background-image: url(../media/images/buttons/prev.png);
   transform: translateX(-50%);
 }
-  
+
 .screen .prev-screen:hover {
   background-image: url(../media/images/buttons/prev-hover.png);
 }
@@ -256,7 +256,7 @@ section.OPEN .flip {
       background-image: url(../media/images/buttons/play-hover.png);
     }
   }
-  
+
   img.background {
     min-width: 100%;
     min-height: 100%;
@@ -298,94 +298,94 @@ section.OPEN .flip {
       width: 40px;
       height: 40px;
       border-radius: 20px;
-  
+
       -webkit-box-shadow: 0px 0px 5px 2px rgba(75,190,200,1);
       -moz-box-shadow: 0px 0px 5px 2px rgba(75,190,200,1);
       box-shadow: 0px 0px 5px 2px rgba(75,190,200,1);
-  
+
       background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
       background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(75,190,200,.2)), to(rgba(255,255,255,.7)));
       background:gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
       background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
-  
+
       animation:bubbleUp 8s infinite linear;
       -webkit-animation:bubbleUp 8s infinite linear;
       -o-animation:bubbleUp 8s infinite linear;
       -moz-animation:bubbleUp 8s infinite linear;
-  
+
       &:nth-of-type(1) {
         animation-delay: 0s;
         left: 10%;
       }
-    
+
       &:nth-of-type(2) {
         animation-delay: 1s;
         left: 50%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(3) {
         animation-delay: .5s;
         left: 75%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(4) {
         animation-delay: 1.5s;
         left: 30%;
       }
-    
+
       &:nth-of-type(5) {
         animation-delay: 2s;
         left: 60%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(6) {
         animation-delay: 2.5s;
         left: 90%;
       }
-    
+
       &:nth-of-type(7) {
         animation-delay: 3s;
         left: 20%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(8) {
         animation-delay: 3.5s;
         left: 45%;
       }
-    
+
       &:nth-of-type(9) {
         animation-delay: 4s;
         left: 68%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(10) {
         animation-delay: 5s;
         left: 40%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(11) {
         animation-delay: 5.5s;
         left: 77%;
       }
-    
+
       &:nth-of-type(12) {
         animation-delay: 6s;
         left: 86%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(13) {
         animation-delay: 7s;
         left: 35%;
         z-index: -1;
       }
-    
+
       &:nth-of-type(14) {
         animation-delay: 7.5s;
         left: 65%;
@@ -404,13 +404,20 @@ section.OPEN .flip {
     background-size: 100% 100%;
     top: 40px;
     width: 760px;
-  
+
     video {
       position: relative;
       width: 95%;
       max-height: 95%;
       margin: 2.2% 2.5% 1.4%;
     }
+  }
+}
+
+#info-jelly {
+  h2 {
+    font-size: 32px;
+    margin-bottom: 100px;
   }
 }
 
@@ -439,8 +446,8 @@ section.OPEN .flip {
     }
 
     .quit-yes {
-      height: 150px; 
-      width: 180px; 
+      height: 150px;
+      width: 180px;
       background-image: url(../media/images/quit-sea-turtle/yes.png);
       background-size: 100%;
 
