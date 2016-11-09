@@ -1201,7 +1201,7 @@ $grey: #8ebbcd;
         animation-duration: 1s;
         animation-fill-mode: forwards;
 
-        $numbers: one two three;
+        $numbers: three two one;
         @for $i from 1 through 3 {
           &.#{nth($numbers, $i)} {
             animation-delay: #{$i - 1}s
