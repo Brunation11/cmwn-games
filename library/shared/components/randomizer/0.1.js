@@ -2,14 +2,6 @@ import shortid from 'shortid';
 import classNames from 'classnames';
 
 class Randomizer extends skoash.Component {
-  constructor() {
-    super();
-  }
-
-  start() {
-    super.start();
-  }
-
   getAll() {
     return _.shuffle(this.props.bin);
   }
