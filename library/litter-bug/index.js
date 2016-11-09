@@ -99,6 +99,7 @@ var LitterBug = (
       />,
       <div className="background default" />,
       <div className="background title" />,
+      <div className="background catch-game" />,
       <div className="background lets-clean-up" />,
       <div className="background clean-up-game" />,
       <div className="background select" />,

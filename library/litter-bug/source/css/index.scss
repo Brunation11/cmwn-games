@@ -38,6 +38,7 @@ body > div > div {
     height: 100%;
     background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
 
     &.default {
       background-image: url('../media/_BKG/BKG_1.png');
@@ -45,6 +46,12 @@ body > div > div {
 
     &.title {
       background-image: url('../media/_assets/_animations/Litterbug-titlescreen.gif');
+    }
+
+    &.catch-game {
+      background-image: url(../media/_assets/_sprites/sprites.game2.3-01-min.jpg);
+      background-size: 300% 100%;
+      background-position: 0 0;
     }
 
     &.lets-clean-up {
@@ -80,11 +87,21 @@ body > div > div {
 
   }
 
+  &.SCREEN-catch-game-level-two .background.catch-game {
+    background-position: -960px 0;
+  }
+
+  &.SCREEN-catch-game-level-three .background.catch-game {
+    background-position: -1920px 0;
+  }
+
   .background.default,
   &.SCREEN-title .background.title,
+  &[class*=SCREEN-catch-game] .background.catch-game,
   &[class*=SCREEN-clean-up-game] .background.clean-up-game,
   &.SCREEN-commit .background.commit {
     opacity: 1;
+    transition: opacity .25s;
   }
 
 
@@ -1775,11 +1792,6 @@ p {
 }
 
 [id*='catch-game'] {
-  background-image: url(../media/_assets/_sprites/sprites.game2.3-01-min.jpg);
-  background-repeat: no-repeat;
-  background-size: 300% 100%;
-  background-position: 0 0;
-
   .bottom {
     position: absolute;
     left: 0;
@@ -2302,14 +2314,6 @@ p {
       display: none;
     }
   }
-}
-
-#catch-game-level-two {
-  background-position: -960px 0;
-}
-
-#catch-game-level-three {
-  background-position: -1920px 0;
 }
 
 #flip {
