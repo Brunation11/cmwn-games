@@ -25,7 +25,7 @@ export default function (props, ref, key) {
       },
       callback,
     });
-  }
+  };
 
   var openReveal = function (path, open, callback) {
     skoash.trigger('updateState', {
@@ -36,7 +36,7 @@ export default function (props, ref, key) {
       },
       callback,
     });
-  }
+  };
 
   var selectRespond = function (answer, correctAnswer) {
     if (answer === correctAnswer) {
@@ -51,11 +51,11 @@ export default function (props, ref, key) {
       incorrectAudio += answer > 0 ? '' + answer : '' + correctAnswer; // 1 or 2
       openReveal('reveal', incorrectAudio, () => {
         setTimeout(() => {
-          closeReveal()
+          closeReveal();
         }, 1000);
       });
     }
-  }
+  };
 
   return (
     <GlobeScreenComponent
@@ -219,17 +219,17 @@ export default function (props, ref, key) {
           <skoash.Component type="li" ref="correct" id="correct" />,
         ]}
         revealAssets={[
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.2.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.3.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.4.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.5.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.6.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.7.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.8.mp3"  />,
-          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.9.mp3"  />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.2.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.3.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.4.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.5.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.6.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.7.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.8.mp3" />,
+          <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.9.mp3" />,
           <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.10.mp3" />,
           <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.11.mp3" />,
-          <skoash.Audio type="voiceOver" ref="open-on-start" src="media/audio/globe/VO_4.1.mp3" 
+          <skoash.Audio type="voiceOver" ref="open-on-start" src="media/audio/globe/VO_4.1.mp3"
             onComplete={closeReveal} />,
           <skoash.Audio type="sfx" ref="correct" src="media/audio/SO_Right.mp3" />,
           <skoash.Audio type="sfx" ref="incorrect-1" complete src="media/audio/SO_Wrong.mp3" />,

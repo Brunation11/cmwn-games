@@ -174,7 +174,7 @@
         $height: 48 44 60 50 62 36 44 62 44 42;
         $background-left: 0 75 150 225 300  0 75 150 225 300;
         $background-top:  0  0   0   0   0 75 75  75  75  75;
-  
+
         @for $i from 1 through 10{
           &:nth-of-type(#{$i}){
             left: nth($left, $i)+px;

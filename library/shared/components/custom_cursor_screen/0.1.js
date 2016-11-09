@@ -8,20 +8,33 @@ class CustomCursorScreen extends skoash.Screen {
       touchstart: false,
       revealOpen: false,
     };
+
+    this.zoom = 1;
+
+    this.moveCursor = this.moveCursor.bind(this);
+    this.touchstart = this.touchstart.bind(this);
+    this.resize = this.resize.bind(this);
   }
 
   bootstrap() {
     super.bootstrap();
 
-    window.addEventListener('mousemove', this.moveCursor.bind(this));
-    window.addEventListener('touchstart', this.touchstart.bind(this));
+    window.addEventListener('mousemove', this.moveCursor);
+    window.addEventListener('touchstart', this.touchstart);
+
+    window.addEventListener('resize', this.resize);
+  }
+
+  resize() {
+    skoash.trigger('getState').then(state => {
+      this.zoom = state.scale;
+    });
   }
 
   moveCursor(e) {
-    var zoom = skoash.trigger('getState').scale;
     this.setState({
-      cursorLeft: e.clientX / zoom - 50,
-      cursorTop: e.clientY / zoom - 65,
+      cursorLeft: e.clientX / this.zoom - 50,
+      cursorTop: e.clientY / this.zoom - 65,
     });
   }
 
@@ -30,7 +43,7 @@ class CustomCursorScreen extends skoash.Screen {
       touchstart: true
     });
   }
- 
+
   renderCursor() {
     var cursor, className, ref, props = [];
     cursor = this.props.cursor;
@@ -53,7 +66,6 @@ class CustomCursorScreen extends skoash.Screen {
     );
   }
 
-  
   renderContent() {
     return (
       <div>

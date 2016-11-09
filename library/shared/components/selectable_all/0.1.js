@@ -25,8 +25,8 @@ class SelectableAll extends Selectable {
         list: self.refs.bin.getAll()
       }, () => {
         setTimeout(() => {
-          self.launch()
-        }, self.props.launchPause)
+          self.launch();
+        }, self.props.launchPause);
       });
     } else {
       self.launch();
@@ -41,7 +41,7 @@ class SelectableAll extends Selectable {
     indicesLeft = [...Array(list.length).keys()];
     classes = {};
 
-    for(var i = 0; i < list.length; i++) {
+    for (var i = 0; i < list.length; i++) {
       setTimeout(() => {
         var j = Math.floor(Math.random() * indicesLeft.length);
         var index = indicesLeft[j];
@@ -104,7 +104,7 @@ class SelectableAll extends Selectable {
     if (!list) return;
 
     return list.map((li, key) => {
-      var ref = li.ref || li.props['data-ref'] ||  key;
+      var ref = li.ref || li.props['data-ref'] || key;
       var message = li.props.message || '' + key;
       return (
         <li.type
@@ -135,7 +135,7 @@ class SelectableAll extends Selectable {
 }
 
 SelectableAll.defaultProps = _.defaults({
-  selectNum:  6,
+  selectNum: 6,
   pause: 500,
   doCount: false,
   launchPause: 100,
