@@ -133,7 +133,7 @@ class Dropzone extends skoash.Component {
 
   inBounds(draggable, dropzoneKey) {
     var dropzoneRef;
-    if (this.refs && this.refs.indexOf('dropzone-') !== -1) {
+    if (this.refs && this.refs[`dropzone-${dropzoneKey}`]) {
       dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
       if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(draggable.props.message) !== -1) {
         this.correct(draggable, dropzoneKey);
