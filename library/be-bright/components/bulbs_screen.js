@@ -9,8 +9,19 @@ export default function (props, ref, key) {
       id="bulbs"
       className="reveal-screen"
     >
+      <skoash.Image src="media/_images/frame3.lightning.png" className="hidden" />
+      <skoash.Image src="media/_sprites/sprites.why.png" className="hidden" />
+      <skoash.Image src="media/_images/frame4.smoke.png" className="hidden" />
+      <skoash.Image src="media/_images/frame5.smoke.png" className="hidden" />
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />
-      <skoash.Image ref="title" className="title animated" src="media/S_3/img_3.1.png" />
+      <div className="title animated">
+        <div>
+          Why does Mr. Eco want you to turn off the lights?
+        </div>
+        <div>
+          Why does Mr. Eco want you to turn off the lights?
+        </div>
+      </div>
       <SelectableReveal
         ref="selectable-reveal"
         selectableList={[
@@ -32,6 +43,31 @@ export default function (props, ref, key) {
           </li>,
           <li>
             <p>Leaving the lights on when<br/> you don’t need them costs money!</p>
+            <div className="dollars">
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+            </div>
+            <div className="dollars">
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+            </div>
+            <div className="dollars">
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+            </div>
+            <div className="dollars">
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+            </div>
+            <div className="dollars">
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+              <skoash.Image src="media/_images/dollar.sign.png" />
+            </div>
           </li>
         ]}
         revealAssets={[

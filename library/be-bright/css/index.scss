@@ -115,22 +115,24 @@ button {
   }
 
   &.quit-yes {
+    background-image: url(../media/_sprites/sprites.btns.png);
     width: 230px;
-    height: 230px;
-    background-position: -1830px 495px;
+    height: 240px;
+    background-position: -5894px -9px;
 
     &:hover {
-      background-position: -1830px 251px;
+      background-position: -5894px -251px;
     }
   }
 
   &.quit-no {
+    background-image: url(../media/_sprites/sprites.btns.png);
     width: 230px;
-    height: 230px;
-    background-position: -2080px 495px;
+    height: 240px;
+    background-position: -6272px -9px;
 
     &:hover {
-      background-position: -2080px 251px;
+      background-position: -6278px -249px;
     }
   }
 }
@@ -252,6 +254,14 @@ p {
 
 // the following css is specific to this game
 
+$stroke: 4;
+$yellow: rgb(244, 234, 43);
+$yellow-2: #F4EA2B;
+$green: #105e31;
+$outline-green: #006D30;
+$dark-green: #5A5601;
+$grey: #8ebbcd;
+
 .reveal-screen .reveal {
   position: absolute;
   left: 0;
@@ -262,15 +272,15 @@ p {
   z-index: -1;
   transition: opacity .5s, z-index 0s .6s;
 
-  div {
+  > div {
     position: absolute;
     left: 0;
     top: 50%;
     width: 100%;
-    height: 240px;
+    height: 251px;
     margin-top: -120px;
-    background-image: url(../media/_Frames/FR_1.png);
     background-size: 100% 100%;
+    background-image: url(../media/_frames/FR_1.png);
   }
 
   ul {
@@ -338,23 +348,54 @@ p {
   img {
     position: absolute;
 
+    &.eco {
+      width: 370px;
+      left: -50px;
+      bottom: -10px;
+    }
+
+    &.hog {
+      width: 430px;
+      right: -40px;
+      bottom: 0;
+    }
+
     &.bulb {
-      width: 400px;
-      left: 280px;
-      top: 20px;
+      width: 200px;
+      left: 385px;
+      top: 100px;
+
+      &.glow {
+        width: 293px;
+        left: 339px;
+        top: 53px;
+      }
     }
 
     &.presents {
-      width: 200px;
-      left: 140px;
-      top: 210px;
+      width: 340px;
+      left: 323px;
+      top: 2px;
+
+      &.glow {
+        width: 364px;
+        left: 311px;
+        top: -12px;
+      }
     }
 
     &.title {
       width: 700px;
       left: 130px;
-      top: 300px;
+      top: 355px;
+
+      &.glow {
+        width: 741px;
+        left: 109px;
+        top: 336px;
+      }
     }
+
   }
 
   .prev-screen {
@@ -381,11 +422,11 @@ p {
     }
 
     &.COMPLETE {
-      img {
-        animation-name: flicker;
+      .glow {
+        animation-name: toggle;
         animation-duration: 2s;
         animation-delay: 0s;
-        animation-iteration-count: 3;
+        animation-iteration-count: infinite;
       }
     }
   }
@@ -396,14 +437,42 @@ p {
 }
 
 #bulbs {
-  img.title {
-    display: block;
+
+  .title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
     width: 800px;
-    margin: 30px auto 0;
+    margin: 10px auto 0;
+    font-weight: bold;
+    font-size: 60px;
+    letter-spacing: -1px;
+    text-align: center;
+
+    div {
+
+      &:nth-of-type(1) {
+        position: relative;
+        top: 6px;
+        left: 0;
+        color: $dark-green;
+        @include text-stroke($stroke, $dark-green);
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 0;
+        left: 7px;
+        color: $yellow;
+        @include text-stroke($stroke, $outline-green);
+      }
+
+    }
   }
 
   .selectable-reveal {
-    margin-top: -30px;
+    margin-top: -20px;
 
     .selectable {
       height: 300px;
@@ -457,6 +526,153 @@ p {
         }
       }
     }
+
+    .reveal {
+      top: 20px;
+
+      p {
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      &.open-0 > div {
+        background-image: url(../media/_images/frame3.lightning.png);
+        background-size: 100% 100%;
+        background-position: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border-color: $yellow;
+        border-width: 8px 0;
+        border-style: solid;
+
+        p {
+          color: #FFF;
+        }
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+          opacity: 0.7;
+          z-index: -1;
+        }
+      }
+
+      &.open-1 > div,
+      &.open-2 > div,
+      &.open-3 > div {
+        background-image: url(../media/_sprites/sprites.why.png);
+        background-size: auto 100%;
+
+        li {
+          background-size: 80% 80%;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        p {
+          color: #000;
+        }
+      }
+
+      &.open-1 > div {
+        background-position: right;
+
+        li {
+          background-image: url(../media/_images/frame4.smoke.png);
+        }
+      }
+
+      &.open-2 > div {
+        background-position: left;
+
+        li {
+          background-image: url(../media/_images/frame5.smoke.png);
+        }
+      }
+
+      &.open-3 > div {
+        background-position: center;
+        overflow: hidden;
+
+        .dollars {
+          position: absolute;
+
+          img {
+            position: relative;
+
+            &:nth-of-type(1) {
+              transform: rotate(-10deg);
+            }
+
+            &:nth-of-type(3) {
+              transform: rotate(10deg);
+            }
+          }
+
+          &:nth-of-type(1) {
+            top: 20px;
+            left: 50px;
+            transform: rotate(-10deg);
+
+            img {
+              width: 100px;
+              margin-right: -57px;
+            }
+          }
+
+          &:nth-of-type(2) {
+            top: 150px;
+            left: 20px;
+            transform: rotate(5deg);
+
+            img {
+              width: 60px;
+              margin-right: -34px;
+            }
+          }
+
+          &:nth-of-type(3) {
+            top: -40px;
+            right: 120px;
+            transform: rotate(-10deg);
+
+            img {
+              width: 120px;
+              margin-right: -68px;
+            }
+          }
+
+          &:nth-of-type(4) {
+            top: 90px;
+            right: 120px;
+            transform: rotate(15deg);
+
+            img {
+              width: 70px;
+              margin-right: -40px;
+            }
+          }
+
+          &:nth-of-type(5) {
+            top: 180px;
+            right: 170px;
+            transform: rotate(-18deg);
+
+            img {
+              width: 40px;
+              margin-right: -23px;
+            }
+          }
+        }
+      }
+    }
   }
 
   &.READY.OPEN {
@@ -486,10 +702,19 @@ p {
 }
 
 #pig {
-  img {
+
+  .title {
     display: block;
-    width: 640px;
-    margin: 40px auto 0;
+    margin: 30px auto;
+    text-align: center;
+
+    div {
+      font-weight: bold;
+      font-size: 70px;
+      letter-spacing: -1.5px;
+      color: $yellow-2;
+      @include text-stroke($stroke, $outline-green);
+    }
   }
 
   .selectable {
@@ -502,34 +727,35 @@ p {
     li {
       display: inline-block;
       height: 380px;
-      cursor: auto;
+      cursor: pointer;
+      margin: 0 40px;
+      background-image: url(../media/_sprites/sprites.who.png);
       background-repeat: no-repeat;
+      background-size: 600px;
 
       &.pig {
-        width: 500px;
-        background-image: url(../media/S_4/img_4.2.png);
-        background-size: auto 100%;
+        width: 300px;
 
         &:hover {
-          background-position: -497px 0;
+          background-position: 0px -400px;
         }
 
         &.SELECTED {
-          background-position: -993px 0;
+          background-position: 0px -400px;
         }
       }
 
       &.bulb {
-        width: 230px;
-        background-image: url(../media/S_4/img_4.3.png);
-        background-size: auto 100%;
+          width: 250px;
+          float: right;
+          background-position: top right;
 
         &:hover {
-          background-position: -246px 0;
+          background-position: -340px -390px;
         }
 
         &.SELECTED {
-          background-position: 0 0;
+          background-position: -340px -390px;
         }
       }
     }
@@ -537,17 +763,21 @@ p {
 
   &.COMPLETE:not(.REPLAY) {
     .selectable {
-      pointer-events: none;
 
-      li.pig {
-        transition: opacity 1s;
-        opacity: 0.5;
+      li {
+        pointer-events: none;
+        cursor: auto;
+
+        &.pig {
+          transition: opacity 1s;
+          opacity: 0.5;
+        }
       }
     }
   }
 
   &.READY.OPEN {
-    img {
+    .title {
       animation-name: zoomInDown;
     }
 
@@ -565,109 +795,65 @@ p {
   .VOICE-OVER & {
     li {
       pointer-events: none;
-    }
-  }
-}
-
-
-#switches {
-  img.title {
-    display: block;
-    width: 800px;
-    margin: 30px auto 0;
-  }
-
-  .selectable-reveal {
-    margin-top: -30px;
-
-    .selectable {
-      position: relative;
-      height: 300px;
-      width: 800px;
-      margin: 20px auto;
-      opacity: 0;
-      transition: opacity 1s 1s;
-
-      li {
-        cursor: auto;
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 0;
-        opacity: 0.5;
-        transition: opacity 1s;
-        background-image: url(../media/S_5/img_5.2.png);
-        background-size: 400px;
-        background-repeat: no-repeat;
-        pointer-events: none;
-
-        &:first-of-type:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        &.HIGHLIGHTED {
-          opacity: 1;
-        }
-
-        &.HIGHLIGHTED + li:not(.HIGHLIGHTED) {
-          opacity: 1;
-          cursor: pointer;
-          pointer-events: auto;
-
-          &:hover {
-            animation-name: bounce;
-          }
-        }
-
-        @for $i from 1 through 5 {
-          &:nth-of-type(#{$i}) {
-            background-position: 0px 200-200*$i+px;
-            left: -150+150*$i+px;
-            top: 200-200*($i%2)+px;
-
-            &.HIGHLIGHTED,
-            &:hover {
-              background-position: -200px 200-200*$i+px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.READY.OPEN {
-    img.title {
-      animation-name: zoomInDown;
-    }
-
-    .selectable-reveal {
-      .selectable {
-        opacity: 1;
-      }
+      cursor: auto;
     }
   }
 }
 
 #info-lets-learn {
-  img {
+  .info {
     position: absolute;
-    top: 140px;
-    left: 130px;
-    width: 700px;
+    top: 110px;
+    left: 0;
+    width: 100%;
     margin: 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+
+    div {
+      width: 100%;
+      transform: translateX(-50%);
+
+      &:nth-of-type(1) {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        color: $dark-green;
+        @include text-stroke($stroke, $dark-green);
+
+        .turn-off {
+          opacity: 0;
+        }
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 0;
+        left: 50.3%;
+        color: $yellow;
+        @include text-stroke($stroke, $outline-green);
+      }
+    }
+
+    span {
+      font-size: 100px;
+    }
+  }
+
+  .turn-off {
+    width: 700px;
+    margin: -10px 0 -50px 0;
   }
 
   &.READY.OPEN {
-    img {
+    .info {
       animation-name: zoomInDown;
     }
   }
+
 }
 
 .labyrinth-frame {
@@ -687,11 +873,6 @@ p {
     left: -5px;
   }
 }
-
-$stroke: 4;
-$yellow: rgb(244, 234, 43);
-$green: #105e31;
-$grey: #8ebbcd;
 
 #special-announcement-screen {
   .copy {
@@ -733,6 +914,45 @@ $grey: #8ebbcd;
         @include text-stroke($stroke, $yellow);
       }
     }
+  }
+}
+
+#flip {
+  .eco, .flip {
+    width: 360px;
+    position: absolute;
+    bottom: -5px;
+    left: -15px;
+  }
+
+  .text {
+    background-image: url(../media/_images/speech.balloon.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: absolute;
+    right: -40px;
+    top: -20px;
+    width: 680px;
+    height: 420px;
+    font-size: 33px;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+    color: #000;
+
+    div, h2 {
+      position: relative;
+      margin-top: 85px;
+      margin-left: 25px;
+    }
+  }
+}
+
+#defeat-hog {
+  .text div {
+    margin-top: 100px
   }
 }
 
@@ -981,7 +1201,7 @@ $grey: #8ebbcd;
         animation-duration: 1s;
         animation-fill-mode: forwards;
 
-        $numbers: one two three;
+        $numbers: three two one;
         @for $i from 1 through 3 {
           &.#{nth($numbers, $i)} {
             animation-delay: #{$i - 1}s
@@ -1345,47 +1565,47 @@ $grey: #8ebbcd;
 }
 
 #flip {
-  h2 {
+  .flip {
+    width: 360px;
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    margin: -80px 0 0;
+    bottom: 30px;
+    left: 30px;
+  }
+
+  .text {
+    background-image: url(../media/_images/speech.balloon.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: absolute;
+    right: -40px;
+    top: -20px;
+    width: 680px;
+    height: 420px;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1;
     text-align: center;
-    color: #fff;
-    font-weight: normal;
+    color: #000;
 
-    .inline {
+    div, h2 {
       position: relative;
-      height: 100px;
-      vertical-align: middle;
-      margin-top: -60px;
-      top: 50px;
+      margin-top: 60px;
+      margin-left: 0;
     }
+
+    h1 {
+      padding: 0;
+      margin: 0 100px 0 0;
+    }
+
   }
 
-  .stamp {
-    position: relative;
-    width: 800px;
-    display: block;
-    margin: 0 auto;
-    z-index: 1;
-    opacity: 0;
-  }
-
-  &.READY.OPEN {
-    .inline {
-      animation-name: flipInX;
-      animation-duration: 3s;
-    }
-
-    .stamp {
-      opacity: 1;
-      animation-name: stamp;
-      animation-delay: 4s;
-      animation-duration: 1s;
-    }
+  .inline {
+    height: 135px;
+    vertical-align: top;
+    margin: 5px 0 -20px 10px;
   }
 }
 
@@ -1398,6 +1618,13 @@ $grey: #8ebbcd;
 
     h2 {
       margin: 0;
+      font-weight: bold;
+      color: $yellow-2;
+      @include text-stroke($stroke, $outline-green);
+    }
+
+    h3 {
+      color: #000;
     }
 
     button {

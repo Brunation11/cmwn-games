@@ -24,6 +24,13 @@
   90% {opacity:1;}
   100% {opacity:1;}
 }
+@keyframes toggle {
+  0% {opacity:1;}
+  48% {opacity:1;}
+  50% {opacity:0;}
+  98% {opacity:0;}
+  100% {opacity:1;}
+}
 @keyframes stamp {
   0% {
     opacity: 0;
