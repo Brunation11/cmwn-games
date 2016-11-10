@@ -1,5 +1,8 @@
-.reveal {}
-  
+.reveal {
+  opacity: 0;
+  transition: opacity .5s;
+}
+
   .reveal ul {
     position: relative;
     padding: 0;
@@ -7,10 +10,9 @@
 
     .reveal li {
       list-style: none;
-      opacity: 0;
       transition: opacity 0.5s;
     }
 
-    .reveal li.OPEN {
+    .reveal.OPEN {
       opacity: 1;
     }

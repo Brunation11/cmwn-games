@@ -15,3 +15,7 @@ html {
 img.hidden {
   display: none;
 }
+
+.screen:not(.READY) > div {
+  display: none;
+}

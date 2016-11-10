@@ -15,7 +15,7 @@ export default class RevealPrompt extends skoash.Component {
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
 
-    if (nextProps.openReveal != null && nextProps.openReveal !== this.props.openReveal) {
+    if (nextProps.openReveal && nextProps.openReveal !== this.props.openReveal) {
       this.open(nextProps.openReveal);
     }
 
@@ -41,7 +41,7 @@ export default class RevealPrompt extends skoash.Component {
       openReveal: '' + message,
     });
 
-    self.props.onOpen.call(this, message);
+    self.props.onOpen.call(self, message);
 
     if (self.props.completeOnOpen) {
       self.complete();
@@ -91,7 +91,9 @@ export default class RevealPrompt extends skoash.Component {
     return ClassNames(
       {
         [li.props.className]: li.props.className,
-        OPEN: this.state.openReveal.indexOf(key) !== -1 || this.state.openReveal.indexOf(li.props['data-ref']) !== -1
+        OPEN: this.state.openReveal.indexOf(key) !== -1 ||
+          this.state.openReveal.indexOf(li.props['data-ref']) !== -1 ||
+          this.state.openReveal.indexOf(li.ref) !== -1
       }
     );
   }
@@ -122,6 +124,13 @@ export default class RevealPrompt extends skoash.Component {
 }
 
 RevealPrompt.defaultProps = _.defaults({
-  onOpen: _.identity,
-  onClose: _.identity,
+  list: [
+    <li></li>,
+    <li></li>,
+    <li></li>,
+    <li></li>
+  ],
+  onOpen: _.noop,
+  onClose: _.noop,
+  closeDelay: 0,
 }, skoash.Component.defaultProps);

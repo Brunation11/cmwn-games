@@ -66,7 +66,7 @@ class Target extends skoash.Component {
       });
     }
 
-    this.props.onSetTarget.call();
+    this.props.onSetTarget.call(this);
 
     this.setState({
       idx,
