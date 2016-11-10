@@ -1,0 +1,32 @@
+#quit {
+  .frame {
+    width: 720px;
+    height: 440px;
+    text-align: center;
+    padding: 70px 80px;
+    // background-image: url(../media/_Frame/Fr_1.png);
+
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 40px;
+    }
+
+    h3 {
+      margin: 20px 0 10px;
+      font-size: 30px;
+    }
+
+    button {
+      margin: 20px 10px;
+    }
+  }
+}

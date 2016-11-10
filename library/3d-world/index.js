@@ -14,8 +14,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import CongratulationsScreen from './components/congratulations_screen';
 // import HelpTheWorldScreen from './components/help_the_world_screen';
 // import BunchOfProblemsScreen from './components/bunch_of_problems_screen';
-import PrinterScreen from './components/printer_screen';
-// import NowTheYouLearnedScreen from './components/now_that_you_learned_screen';
+// import PrinterScreen from './components/printer_screen';
+import NowTheYouLearnedScreen from './components/now_that_you_learned_screen';
 // import ListScreen from './components/list_screen';
 import FlipScreen from './components/flip_screen';
 
@@ -40,8 +40,8 @@ var ThreeDWorld = (
       // 9: CongratulationsScreen,
       // 10: HelpTheWorldScreen,
       // 11: BunchOfProblemsScreen,
-      1: PrinterScreen,
-      // 13: NowTheYouLearnedScreen,
+      // 1: PrinterScreen,
+      1: NowTheYouLearnedScreen,
       // 14: ListScreen,
       2: FlipScreen,
     }}

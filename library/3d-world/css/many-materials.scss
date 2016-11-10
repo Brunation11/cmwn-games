@@ -1,0 +1,37 @@
+@import 'variables';
+
+#many-materials {
+  color: $green;
+
+  .balloon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 960px;
+  }
+
+  .words {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 36px;
+    width: 100%;
+    transform: translateX(-47.5%) translateY(-25%);
+  }
+
+  .screen-content {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 210px;
+      top: 0;
+      width: 600px;
+      height: 410px;
+      display: block;
+      background-image: url($media-server + 'SpritesAnimations/sprite.closeupminion.png');
+      background-repeat: no-repeat;
+      background-size: 2200px;
+      background-position: -730px 0;
+    }
+  }
+}

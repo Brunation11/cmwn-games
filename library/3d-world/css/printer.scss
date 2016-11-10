@@ -1,0 +1,185 @@
+#printer {
+  .targets {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    font-family: "Source Sans Pro";
+    background-image: url($media-server + 'ImageAssets/img.leftbox.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 30px;
+
+    span {
+      color: #8ce34e;
+      text-decoration: underline;
+    }
+  }
+
+  .target {
+    div {
+      height: 150px;
+      margin: 10px 0;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.brokenobj.png');
+      background-repeat: no-repeat;
+      background-size: 1200px;
+      background-position: 0 0;
+      display: none;
+      opacity: 0;
+      transition: opacity .5s;
+    }
+
+    $targets: tire link cup phone tooth;
+    @for $i from 1 through 5 {
+      $target: nth($targets, $i);
+      &.#{$target} [name=#{$target}] {
+        display: block;
+        opacity: 1;
+      }
+
+      [name=#{$target}] {
+        background-position: #{10 - 245 * ($i - 1)}px 0;
+      }
+    }
+  }
+
+  .reveal {
+    display: none;
+  }
+
+  .dropzones {
+    position: absolute;
+    left: 200px;
+    top: 0;
+    width: 830px;
+    height: 540px;
+    padding: 90px 230px 220px 200px;
+    background-image: url($media-server + 'ImageAssets/img.printer.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    > div {
+      width: 100%;
+      height: 100%;
+
+      $objects: umbrella glasses tire shovel link button boots gloves whistle cup phone piece tooth ball;
+      @for $i from 1 through 14 {
+
+      }
+    }
+  }
+
+  .bottom {
+    position: absolute;
+    left: 240px;
+    top: 370px;
+    font-family: "Source Sans Pro";
+
+    span {
+      color: #8ce34e;
+      text-decoration: underline;
+    }
+  }
+
+  .slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 600px;
+    height: 150px;
+
+    button {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      z-index: 1;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.carouselarrow.png');
+      background-repeat: no-repeat;
+      background-size: 100px;
+
+      $directions: prev next;
+      @for $i from 1 through 2 {
+        &.#{nth($directions, $i)}-slide {
+          background-position: -#{50 * ($i - 1)}px 0;
+
+          &:hover {
+            background-position: -#{50 * ($i - 1)}px -60px;
+          }
+        }
+      }
+    }
+
+    .area {
+      position: relative;
+      display: inline-block;
+      width: 500px;
+      height: 100%;
+      overflow: hidden;
+
+      &:hover {
+        overflow: visible;
+      }
+    }
+
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      transition: margin .5s;
+
+      > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        transition: opacity .5s;
+      }
+    }
+  }
+
+  .draggable {
+    position: relative;
+    display: inline-block;
+    width: 101px;
+    height: 101px;
+    transition: opacity .5s;
+    margin: 15px;
+
+    &.CORRECT {
+      opacity: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 101px;
+      height: 101px;
+      background-image: url($media-server + 'SpritesAnimations/sprite.game2.png');
+      background-repeat: no-repeat;
+      background-size: 3000px;
+    }
+
+    $messages: umbrella glasses tire shovel
+               link button boots gloves
+               whistle cup phone piece
+               tooth ball;
+    @for $i from 1 through 14 {
+      &[data-message=#{nth($messages, $i)}]:before {
+        background-position: -#{56 + 215 * ($i - 1)}px -53px;
+      }
+
+      &[data-message=#{nth($messages, $i)}]:hover:before {
+        width: 130px;
+        height: 122px;
+        background-position: -#{40 + 215 * ($i - 1)}px -255px;
+      }
+    }
+  }
+}

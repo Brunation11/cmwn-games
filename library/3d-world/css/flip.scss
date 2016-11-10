@@ -1,0 +1,55 @@
+#flip {
+  .frame {
+
+    > div {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+    }
+
+    p {
+      font-size: 36px;
+      line-height: 1.3;
+    }
+
+    .flip {
+      display: block;
+      width: 304px;
+      margin: 20px auto 0;
+      opacity: 0;
+
+      div {
+        // background-image: url(../media/S_22/img_22.1.png);
+        background-size: 330px;
+        float: left;
+        height: 130px;
+        width: 76px;
+
+        @for $item from 1 through 4 {
+          &:nth-child(#{$item}) {
+            background-position: 62-(76*$item)+px center;
+          }
+        }
+      }
+
+      &.animated {
+        opacity: 1;
+        animation-name: shake;
+        animation-delay: 2s;
+        animation-iteration-count: 2;
+
+        div {
+          animation-name: fadeInRightBig;
+
+          @for $item from 1 through 4 {
+            &:nth-child(#{$item}) {
+              animation-delay: .2*$item+s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
