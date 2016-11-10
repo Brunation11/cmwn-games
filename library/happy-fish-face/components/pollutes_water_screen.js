@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import classNames from 'classnames';
 
 export default function (props, ref, key) {

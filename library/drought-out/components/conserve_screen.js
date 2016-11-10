@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
@@ -22,6 +20,9 @@ export default function (props, ref, key) {
       className={_.get(props, 'data.selectable.target') ? 'SELECTING' : null}
     >
       <skoash.Image src="media/S_17/img_17.1.png" />
+      <skoash.Image className="hidden" src="media/_Frames/FR_4.png" />
+      <skoash.Image className="hidden" src="media/S_17/img_sp_17.1.png" />
+      <skoash.Image className="hidden" src="media/S_17/img_sp_17.2.png" />
       <div id="door-sprite" className={
         _.get(props, 'data.reveal.open') ? 'open' : ''
       }></div>

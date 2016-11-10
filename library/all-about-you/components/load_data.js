@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function () {
   var loadData = {};
   if (!this.refs || !this.metaData) return;
