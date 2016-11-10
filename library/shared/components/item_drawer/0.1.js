@@ -5,22 +5,6 @@ import Selectable from 'shared/components/selectable/0.1';
 import ScrollArea from 'shared/components/scroll_area/0.1';
 
 class ItemDrawer extends Selectable {
-  shouldComponentUpdate(nextProps, nextState) {
-    var items, quickCheck, itemsChanged;
-
-    items = nextProps.data || [];
-    if (nextState.category && items[nextState.category]) {
-      items = items[nextState.category].items;
-    }
-
-    quickCheck = _.reduce(items, (a, i) => a + i.name, '');
-
-    itemsChanged = this.quickCheck !== quickCheck;
-    if (itemsChanged) this.quickCheck = quickCheck;
-
-    return itemsChanged || (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes));
-  }
-
   start() {
     var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
 
@@ -240,6 +224,21 @@ class ItemDrawer extends Selectable {
 
 ItemDrawer.defaultProps = _.defaults({
   scrollbarImg: '',
+  shouldComponentUpdate: function (nextProps, nextState) {
+    var items, quickCheck, itemsChanged;
+
+    items = nextProps.data || [];
+    if (nextState.category && items[nextState.category]) {
+      items = items[nextState.category].items;
+    }
+
+    quickCheck = _.reduce(items, (a, i) => a + i.name, '');
+
+    itemsChanged = this.quickCheck !== quickCheck;
+    if (itemsChanged) this.quickCheck = quickCheck;
+
+    return itemsChanged || (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes));
+  },
 }, Selectable.defaultProps);
 
 export default ItemDrawer;
