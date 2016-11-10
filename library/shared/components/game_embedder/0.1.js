@@ -60,7 +60,7 @@ class GameEmbedder extends skoash.Component {
 GameEmbedder.defaultProps = _.defaults({
   complete: false,
   checkComplete: false,
-  onLoad: _.identity,
+  onLoad: _.noop,
 }, skoash.Component.defaultProps);
 
 export default GameEmbedder;

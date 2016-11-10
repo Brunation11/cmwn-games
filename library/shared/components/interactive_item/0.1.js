@@ -39,7 +39,7 @@ class InteractiveItem extends skoash.Component {
 }
 
 InteractiveItem.defaultProps = _.defaults({
-  onInteract: _.identity,
+  onInteract: _.noop,
   canInteract: () => true,
 }, skoash.Component.defaultProps);
 

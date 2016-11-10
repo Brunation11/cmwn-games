@@ -232,8 +232,8 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
-  onOpen: _.identity,
-  onClose: _.identity,
+  onOpen: _.noop,
+  onClose: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

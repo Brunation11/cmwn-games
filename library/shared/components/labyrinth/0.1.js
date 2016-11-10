@@ -174,7 +174,7 @@ Labyrinth.defaultProps = _.defaults({
   scale: 1,
   items: [],
   enemies: [],
-  onCollide: _.identity,
+  onCollide: _.noop,
   onCollideEnemy: function (enemy) {
     enemy.interact();
   },
