@@ -1278,6 +1278,11 @@ p {
     > div {
       width: 100%;
       height: 100%;
+
+      $objects: umbrella glasses tire shovel link button boots gloves whistle cup phone piece tooth ball;
+      @for $i from 1 through 14 {
+
+      }
     }
   }
 
