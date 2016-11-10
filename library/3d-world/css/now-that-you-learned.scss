@@ -1,0 +1,19 @@
+@import 'variables';
+
+#now-that-you-learned {
+  font-family: 'Source Sans Pro';
+  font-size: 46px;
+
+  .screen-content div {
+    padding-top: 60px;
+  }
+
+  span {
+    color: $green;
+    font-weight: bold;
+  }
+
+  &:after {
+    content: '';
+  }
+}
