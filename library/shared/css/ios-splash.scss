@@ -45,13 +45,18 @@ body.iOS:not(.STARTED) {
 
 	&.OPEN {
 		transform: none;
-		opacity: 1;	
+		opacity: 1;
 	}
 
 	button {
-		display: none;
+		background: none;
+		margin: 0;
+		width: 200px;
+		height: 190px;
 	}
 
+	button.next-screen,
+	.ball,
 	[pl-id=ball] {
 		position: absolute;
 		left: 0;
@@ -71,6 +76,8 @@ body.iOS:not(.STARTED) {
 	}
 
 	&.OPEN {
+		button.next-screen,
+		.ball,
 		[pl-id=ball] {
 			animation: splash 6s forwards linear;
 
@@ -81,11 +88,76 @@ body.iOS:not(.STARTED) {
 	}
 }
 
+#ios-splash.LEAVING,
 .pl-game.STARTED #ios-splash {
-	[pl-id=ball]:before {
-		background-image: url(../images/ios_start_ball_anim.gif);
-		background-size: contain;
-		background-position: center center;
-		animation: none;
+	button.next-screen,
+	.ball,
+	[pl-id=ball] {
+		&:before {
+			background-image: url(../images/ios_start_ball_anim.gif);
+			background-size: contain;
+			background-position: center center;
+			animation: none;
+		}
+	}
+}
+
+.skoash-game #ios-splash {
+	button {
+		display: block;
+		background: none;
+		margin: 0;
+		width: 200px;
+		height: 190px;
+	}
+
+	button.next-screen,
+	.ball,
+	[pl-id=ball] {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200px;
+		height: 190px;
+		margin: 0;
+		opacity: 1;
+		transform: translate(100px,-300px);
+
+		&:before {
+			content: "";
+			display: block;
+			width: 200px;
+			height: 190px;
+			background-image: url(../images/ios_start_ball.png);
+			background-repeat: no-repeat;
+			background-size: 1250px;
+			background-position: 70px 70px;
+		}
+	}
+
+	&.OPEN {
+		button.next-screen,
+		.ball,
+		[pl-id=ball] {
+			animation: splash 6s forwards linear;
+
+			&:before {
+				animation: splash-bg 6s steps(1) forwards;
+			}
+		}
+	}
+}
+
+.skoash-game #ios-splash.LEAVING,
+.pl-game.STARTED #ios-splash {
+	button.next-screen,
+	.ball,
+	[pl-id=ball] {
+		&:before {
+			background-image: url(../images/ios_start_ball_anim.gif);
+			background-size: contain;
+			background-position: center center;
+			animation: none;
+		}
 	}
 }

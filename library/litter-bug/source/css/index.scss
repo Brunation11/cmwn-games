@@ -1,900 +1,969 @@
+@import 'variables';
+
 html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	overflow: hidden;
-	user-select: none;
-	user-drag: none;
-	cursor: default;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  user-drag: none;
+  cursor: default;
 }
 
 html {
-	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-body {
-	position: relative;
-	width: 960px;
-	margin: auto;
-	font-size: 20px;
-	background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-	background-size: cover;
+html, body, body > div, body > div > div {
+  position: relative;
+  width: 960px;
+  height: 540px;
+  margin: auto;
+  font-size: 20px;
+  background: transparent;
 
+  .background {
+    opacity: 0;
+    transition: opacity .5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center
+  }
 
-	.background {
-		opacity: 0;
-		transition: opacity .5s;
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-size: cover;
-		background-position: center center
-	}
+  .background.default {
+    background-image: url(../media/_BKG/BKG_1.png);
+  }
 
-	.background.lets-clean-up {
-			background-image: url(../media/_BKG/BKG_2.png);
-		}
-	
-	.background.select {
-		background-image: url(../media/_BKG/BKG_3.png);
+  .background.lets-clean-up {
+    background-image: url(../media/_BKG/BKG_2.png);
+  }
 
-		&:before {
-			content: "";
-			position: absolute;
-			background: #000;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			opacity: .2;
-		}
-	}
+  .background.select {
+    background-image: url(../media/_BKG/BKG_3.png);
 
-	.background.sun {
-		background-image: url(../media/_BKG/BKG_4.png);
-	}
+    &:before {
+      content: "";
+      position: absolute;
+      background: #000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .2;
+    }
+  }
 
-	.background.commit {
-		background-image: url(../media/_BKG/BKG_5.png);
-	}
+  .background.sun {
+    background-image: url(../media/_BKG/BKG_4.png);
+  }
 
-	&.lets-clean-up:not(.QUIT-SCREEN) > .background.lets-clean-up,
-	&.select:not(.QUIT-SCREEN) > .background.select,
-	&.select.sun:not(.QUIT-SCREEN) > .background.sun,
-	&.commit:not(.QUIT-SCREEN) > .background.commit {
-		opacity: 1;
-	}
+  .background.commit {
+    background-image: url(../media/_BKG/BKG_5.png);
+  }
+
+  .background.default,
+  &.SCREEN-2 .background.lets-clean-up,
+  &.SCREEN-3 .background.select,
+  &.SCREEN-3.SUN .background.sun,
+  &.SCREEN-11 .background.commit {
+    opacity: 1;
+  }
+
+  &.MENU-quit {
+    .screen:not(#quit) {
+      opacity: 0;
+    }
+  }
+}
+
+html, body, body > div {
+  width: 100%;
+  height: 100%;
 }
 
 /* This is just to preload the images used in css. */
 #asset-bin { display: none; }
 
 button {
-	margin: 0;
-	padding: 0;
-	border: none;
+  margin: 0;
+  padding: 0;
+  border: none;
 
-	font-family: inherit;
-	font-size: inherit;
-	color: transparent;
-	background-color: transparent;
-	outline: none;
-	cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: transparent;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 
-	background-image: url(../media/_Buttons/BU_1.png);
-	background-size: auto 500px;
-	background-position: left top;
+  background-image: url(../media/_Buttons/BU_1.png);
+  background-size: auto 500px;
+  background-position: left top;
 
-	&.close {
-		width: 30px;
-		height: 30px;
-		background-position: -231px 407px;
-		position: absolute;
-		right: 0;
-		top: 0;
-		margin: 5px;
-		z-index: 2;
+  &.close {
+    width: 30px;
+    height: 30px;
+    background-position: -231px 407px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    z-index: 2;
 
-		&:hover {
-			background-position: -231px 150px;
-		}
-	}
+    &:hover {
+      background-position: -231px 150px;
+    }
+  }
 
-	&.next-screen,
-	&.prev-screen {
-		width: 60px;
-		height: 60px;
-	}
+  &.next-screen,
+  &.prev-screen {
+    width: 60px;
+    height: 60px;
+  }
 
-	&.next-screen {
-		background-position: -125px 420px;
+  &.next-screen {
+    background-position: -125px 420px;
 
-		&:hover {
-			background-position: -125px 664px;
-		}
-	}
+    &:hover {
+      background-position: -125px 664px;
+    }
+  }
 
-	&.prev-screen {
-		background-position: -30px 420px;
+  &.prev-screen {
+    background-position: -30px 420px;
 
-		&:hover {
-			background-position: -30px 664px;
-		}
-	}
+    &:hover {
+      background-position: -30px 664px;
+    }
+  }
 
-	&.no {
-		width: 230px;
-		height: 235px;
-		background-position: -300px 500px;
+  &.quit-yes {
+    width: 230px;
+    height: 130px;
+    background-position: -1820px 450px;
 
-		&:hover {
-			background-position: -300px 243px;
-		}
-	}
+    &:hover {
+      background-position: -1820px 193px;
+    }
+  }
 
-	&.accept {
-		width: 230px;
-		height: 130px;
-		background-position: -1320px 450px;
+  &.quit-no {
+    width: 230px;
+    height: 130px;
+    background-position: -2080px 450px;
 
-		&:hover {
-			background-position: -1320px 193px;
-		}
-	}
+    &:hover {
+      background-position: -2080px 193px;
+    }
+  }
+}
 
-	&.commit {
-		width: 230px;
-		height: 130px;
-		background-position: -1570px 450px;
+@media(max-width: 601px) {
+  button {
+    &.close {
+      width: 50px;
+      height: 50px;
+      background-size: auto 525px;
+      background-position: -231px 435px;
 
-		&:hover {
-			background-position: -1570px 193px;
-		}
-	}
+      &:hover {
+        background-position: -231px 165px;
+      }
+    }
+  }
+}
 
-	&.quit-yes {
-		width: 230px;
-		height: 130px;
-		background-position: -1820px 450px;
+#room,
+#school,
+#ground {
+  button.next-screen {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    width: 230px;
+    height: 235px;
+    background-position: -300px 500px;
 
-		&:hover {
-			background-position: -1820px 193px;
-		}
-	}
-
-	&.quit-no {
-		width: 230px;
-		height: 130px;
-		background-position: -2080px 450px;
-
-		&:hover {
-			background-position: -2080px 193px;
-		}
-	}
+    &:hover {
+      background-position: -300px 243px;
+    }
+  }
 }
 
 h2 {
-	font-size: 40px;
+  font-size: 40px;
 }
 
 h3 {
-	font-size: 30px;
-	margin: 0;
+  font-size: 30px;
+  margin: 0;
 }
 
 p {
-	font-size: 28px;
-	margin: 0;
+  font-size: 28px;
+  margin: 0;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-	position: absolute;
-	top: 0; bottom: 0;
-	left: 0; right: 0;
-	opacity: 0;
-	display: none;
-	transition: opacity 1s, transform 0.5s;
-	transform: translateX(100%);
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s, transform 0.5s;
+  transform: translateX(100%);
+  overflow: hidden;
+  width: 960px;
+  height: 540px;
 }
 
 .screen.last {}
 
 .screen.OPEN {
-	opacity: 1;
-	transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .screen.READY {
-	display: block;
+  display: block;
 }
 
 .screen.LEAVE {
-	opacity: 1;
-	transform: translateX(-100%);
+  opacity: 1;
+  transform: translateX(-100%);
 }
 
-	.screen .next-screen,
-	.screen .prev-screen {
-		position: absolute;
-		display: block;
-		bottom: 1%;
+  .screen .next-screen,
+  .screen .prev-screen {
+    position: absolute;
+    display: block;
+    bottom: 1%;
 
-		z-index: 2;
-	}
+    z-index: 2;
+  }
 
-	.screen .next-screen {
-		margin-right: 5px;
-		right: 0;
-		opacity: 0;
-		transform: rotate(-180deg);
-		transition: opacity 1s, transform 1s;
-	}
+  .screen .next-screen {
+    margin-right: 5px;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+  }
 
-	.screen.GATED .next-screen {
-		opacity: 0;
-		cursor: default;
-	}
+  .screen.GATED .next-screen {
+    opacity: 0;
+    cursor: default;
+  }
 
-	.DEMO .screen .next-screen,
-	.screen.COMPLETE .next-screen {
-		opacity: 1;
-		transform: rotate(0deg);
-		cursor: pointer;
-	}
+  .DEMO .screen .next-screen,
+  .DEMO #clean-up .close-reveal,
+  .screen.COMPLETE .next-screen,
+  .screen.REPLAY .next-screen {
+    opacity: 1;
+    transform: rotate(0deg);
+    cursor: pointer;
+    pointer-events: auto;
+  }
 
-	.DEMO .screen.room button.next-screen,
-	.DEMO .screen.school button.next-screen,
-	.DEMO .screen.ground button.next-screen,
-	.DEMO .screen.take-pledge button.next-screen,
-	.DEMO .screen.commit button.next-screen {
-		display: block;
-	}
+  .DEMO .screen.room button.next-screen,
+  .DEMO .screen.school button.next-screen,
+  .DEMO .screen.ground button.next-screen,
+  .DEMO .screen.take-pledge button.next-screen,
+  .DEMO .screen.commit button.next-screen {
+    display: block;
+  }
 
-	.DEMO .screen.clean-up .next-screen {
-		z-index: 0;
-	}
+  .DEMO .screen.clean-up .next-screen {
+    z-index: 0;
+  }
 
-	.screen .next-screen:hover {
-		
-	}
+  .screen .next-screen:hover {
 
-	.screen .prev-screen {
-		margin-left: 5px;
-		left: 0;
-		
-	}
-	
-	.screen .prev-screen:hover {
-		
-	}
+  }
+
+  .screen .prev-screen {
+    margin-left: 5px;
+    left: 0;
+
+  }
+
+  .screen .prev-screen:hover {
+
+  }
 
 .screen {
-	&.no-frame {
-		color: #fff;
+  &.no-frame {
+    color: #fff;
 
-		.frame {
-			text-align: center;
-		}
-	}
+    .frame {
+      text-align: center;
+    }
+  }
 }
 
 // the following css is specific to this game
 
-.frame-component {
-	.center {
-		overflow: hidden;
+#litter-bug {
+  .center {
+    overflow: hidden;
 
-		.content-group {
-			overflow: visible;
+    .content-group {
+      overflow: visible;
 
-			div {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				margin: 0;
-			}
-		}
-	}
+      div {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        text-align: center;
+      }
+    }
+  }
 
-	.frame {
-		position: relative;
-		width: 960px;
-		height: 200px;
+  .frame {
+    position: relative;
+    width: 960px;
+    height: 200px;
+    top: 0;
 
-		img.background {
-			position: absolute;
-			width: 105%;
-			left: -2.5%;
-			opacity: 1;
-		}
-	}
+    img.background {
+      position: absolute;
+      width: 105%;
+      left: -2.5%;
+      opacity: 1;
+    }
+  }
 }
 
 #title {
 
-	button {
-		&.prev-screen {
-			display: none;
-		}
-	}
+  button {
+    &.prev-screen {
+      display: none;
+    }
+  }
 
-	img.symbol {
-		position: absolute;
-		left: 100px;
-		top: 20px;
-		width: 420px;
-		opacity: 0;
-		transition: opacity 0s 1s;
-	}
+  img.symbol {
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 420px;
+    opacity: 0;
+    transition: opacity 0s 1s;
+  }
 
-	img.litterbug {
-		position: absolute;
-		left: 360px;
-		bottom: 0px;
-		width: 500px;
-	}
+  img.litterbug {
+    position: absolute;
+    left: 360px;
+    bottom: 0px;
+    width: 500px;
+  }
 
-	.title {
-		position: absolute;
-		left: 150px;
-		bottom: 0px;
+  .title {
+    position: absolute;
+    left: 150px;
+    bottom: 0px;
 
-		img {
-			width: 400px;
-			display: block;
-			margin-bottom: -30px;
+    img {
+      width: 400px;
+      display: block;
+      margin-bottom: -30px;
 
-			&:nth-of-type(2) {
-				width: 700px;
-			}
-		}
-	}
+      &:nth-of-type(2) {
+        width: 700px;
+      }
+    }
+  }
 
-	&.OPEN {
+  &.OPEN {
 
-		img.litterbug {
-			-webkit-animation-name: zoomInDown;
-			animation-name: zoomInDown;
-		}
+    img.litterbug {
+      animation-name: zoomInDown;
+    }
 
-		.title {
-			-webkit-animation-name: slideInLeft;
-			animation-name: slideInLeft;
-		}
+    .title {
+      animation-name: slideInLeft;
+    }
 
-		&.COMPLETE {
-			
-			img.symbol {
-				-webkit-animation-name: bounceIn;
-				animation-name: bounceIn;
-				opacity: 1;
-			}
-		}
-	}
+    &.COMPLETE {
+
+      img.symbol {
+        animation-name: bounceIn;
+        opacity: 1;
+      }
+    }
+  }
 }
 
-.screen.lets-clean-up {
+#lets-clean-up {
 
-	div {
-		margin: 0;
-		position: absolute;
-		right: 70px;
-		top: 80px;
-		text-align: center;
-	}
+  div > div {
+    margin: 0;
+    position: absolute;
+    right: 70px;
+    top: 80px;
+    text-align: center;
+  }
 
-	img {
-		position: absolute;
-		right: 40px;
-		bottom: 0;
-		width: 640px;
-	}
+  img {
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+    width: 640px;
+  }
 
-	&.OPEN {
+  &.OPEN {
 
-		div {
-			-webkit-animation-name: flipInX;
-			animation-name: flipInX;
-		}
+    div > div {
+      animation-name: flipInX;
+    }
 
-		img {
-			-webkit-animation-name: zoomInDown;
-			animation-name: zoomInDown;
-		}
-	}
+    img {
+      animation-name: zoomInDown;
+    }
+  }
 }
 
-.screen.clean-up {
+#clean-up {
 
-	.slides-component {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
+  .frame-component {
+    z-index: 1;
+  }
 
-		.frame-component {
-			z-index: 1;
-		}
+  .prev-screen {
+    z-index: 1;
+  }
 
-		.prev-screen {
-			z-index: 1;
-		}
+  .COMPLETE {
+    .next-screen {
+      z-index: 1;
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
 
-		.COMPLETE {
-			.next-screen {
-				z-index: 1;
-				opacity: 1;
-				transform: rotate(0deg);
-			}
-		}
+  .frame {
+    position: absolute;
+    left: 0;
+    top: 160px;
 
-		.frame {
-			position: absolute;
-			left: 0;
-			top: 160px;
+    .content-group {
 
-			.content-group {
+      h2 {
+        margin: 20px 0 15px;
+      }
 
-				h2 {
-					margin: 20px 0 15px;
-				}
+      p {
+        text-align: center;
+        width: 100%;
+        bottom: 20px;
+      }
 
-				p {
-					width: 100%;
-					bottom: 20px;
-				}
+      button {
+        position: absolute;
+        left: 50%;
+        top: 125%;
+        margin-left: -115px;
+      }
+    }
+  }
 
-				button {
-					position: absolute;
-					left: 50%;
-					top: 125%;
-					margin-left: -115px;
-				}
-			}
-		}
+  .trash {
+    transform: translateX(0);
+  }
 
-		.trash {
-			transform: translateX(0);
-		}
-	}
+  .reveal {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    width: 960px;
+    height: 540px;
+    transition: opacity .5s;
 
-	.next-screen {
-		z-index: -1;
-	}
+    &.OPEN {
+      opacity: 1;
+      z-index: 1;
+      pointer-events: auto;
+    }
 
-	&.COMPLETE {
-		.next-screen {
-			z-index: 1;
-			opacity: 1;
-		}
-	}
+    &.COMPLETE {
+      .close-reveal {
+        opacity: 1;
+        transform: rotate(0deg);
+        pointer-events: auto;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+  }
+
+  .selectable-reveal {
+    .reveal {
+      display: none;
+    }
+  }
+
+  .close-reveal {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-position: -125px 420px;
+    margin-right: 5px;
+    right: 0;
+    bottom: 1%;
+    opacity: 0;
+    transform: rotate(-180deg);
+    pointer-events: none;
+    transition: opacity 1s, transform 1s;
+
+    &:hover {
+      background-position: -125px 664px;
+    }
+  }
+
+  .selectable {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+  }
+
+  .next-screen {
+    z-index: -1;
+  }
+
+  &.COMPLETE {
+    .next-screen {
+      z-index: 1;
+      opacity: 1;
+    }
+  }
 }
 
-.screen.room {
+#room {
 
-	button.next-screen {
-		display: none;
-	}
+  img {
+    position: absolute;
 
-	img {
-		position: absolute;
+    &:nth-of-type(1) {
+      width: 360px;
+      left: 100px;
+      top: 10px;
+    }
 
-		&:nth-of-type(1) {
-			width: 360px;
-			left: 100px;
-			top: 10px;
-		}
+    &:nth-of-type(2) {
+      width: 540px;
+      right: 40px;
+      top: 10px;
+    }
+  }
 
-		&:nth-of-type(2) {
-			width: 540px;
-			right: 40px;
-			top: 10px;
-		}
-	}
+  button.next-screen {
+    position: absolute;
+    left: 540px;
+    top: 200px;
+    opacity: 0;
+    cursor: auto;
+  }
 
-	button.no {
-		position: absolute;
-		left: 540px;
-		top: 200px;
-		opacity: 0;
-		cursor: auto;
-	}
+  &.OPEN {
 
-	&.OPEN {
+    img {
 
-		img {
+      &:nth-of-type(1) {
+        animation-name: bounceInUp;
+      }
 
-			&:nth-of-type(1) {
-				-webkit-animation-name: bounceInUp;
-				animation-name: bounceInUp;
-			}
+      &:nth-of-type(2) {
+        animation-name: bounceInDown;
+      }
+    }
+  }
 
-			&:nth-of-type(2) {
-				-webkit-animation-name: bounceInDown;
-				animation-name: bounceInDown;
-			}
-		}
+  &.COMPLETE {
 
-		&.COMPLETE {
-
-			button.no {
-				opacity: 1;
-				cursor: pointer;
-				-webkit-animation-name: bounceInLeft;
-				animation-name: bounceInLeft;
-			}
-		}
-	}
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
+    }
+  }
 }
 
-.screen.school {
+#school {
 
-	button.next-screen {
-		display: none;
-	}
+  img {
+    position: absolute;
 
-	img {
-		position: absolute;
+    &:nth-of-type(1) {
+      width: 960px;
+      left: 0;
+      bottom: 0;
+    }
 
-		&:nth-of-type(1) {
-			width: 960px;
-			left: 0;
-			bottom: 0;
-		}
+    &:nth-of-type(2) {
+      width: 400px;
+      left: 150px;
+      bottom: 40px;
+    }
+  }
 
-		&:nth-of-type(2) {
-			width: 400px;
-			left: 150px;
-			bottom: 40px;
-		}
-	}
+  button.next-screen {
+    position: absolute;
+    left: 640px;
+    bottom: 0px;
+    opacity: 0;
+    cursor: auto;
+  }
 
-	button.no {
-		position: absolute;
-		left: 640px;
-		bottom: 0px;
-		opacity: 0;
-		cursor: auto;
-	}
+  &.OPEN {
 
-	&.OPEN {
+    img {
 
-		img {
+      &:nth-of-type(2) {
+        animation-name: bounceInDown;
+      }
+    }
+  }
 
-			&:nth-of-type(2) {
-				-webkit-animation-name: bounceInDown;
-				animation-name: bounceInDown;
-			}
-		}
+  &.COMPLETE {
 
-		&.COMPLETE {
-
-			button.no {
-				opacity: 1;
-				cursor: pointer;
-				-webkit-animation-name: bounceInLeft;
-				animation-name: bounceInLeft;
-			}
-		}
-	}
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
+    }
+  }
 }
 
-.screen.ground {
+#ground {
 
-	button.next-screen {
-		display: none;
-	}
+  img {
+    position: absolute;
 
-	img {
-		position: absolute;
+    &:nth-of-type(1) {
+      width: 500px;
+      left: 80px;
+      top: 0;
+    }
 
-		&:nth-of-type(1) {
-			width: 500px;
-			left: 80px;
-			top: 0;
-		}
+    &:nth-of-type(2) {
+      width: 720px;
+      right: 0;
+      bottom: 0;
+    }
+  }
 
-		&:nth-of-type(2) {
-			width: 720px;
-			right: 0;
-			bottom: 0;
-		}
-	}
+  button.next-screen {
+    position: absolute;
+    left: 200px;
+    bottom: 0px;
+    opacity: 0;
+    cursor: auto;
+  }
 
-	button.no {
-		position: absolute;
-		left: 200px;
-		bottom: 0px;
-		opacity: 0;
-		cursor: auto;
-	}
+  &.OPEN {
 
-	&.OPEN {
+    img {
 
-		img {
+      &:nth-of-type(1) {
+        animation-name: bounceInDown;
+      }
+    }
+  }
 
-			&:nth-of-type(1) {
-				-webkit-animation-name: bounceInDown;
-				animation-name: bounceInDown;
-			}
-		}
+  &.COMPLETE {
 
-		&.COMPLETE {
-
-			button.no {
-				opacity: 1;
-				cursor: pointer;
-				-webkit-animation-name: bounceInLeft;
-				animation-name: bounceInLeft;
-			}
-		}
-	}
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
+    }
+  }
 }
 
-.screen.sing-about-it {
+.DEMO {
+  #room,
+  #school,
+  #ground {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: bounceInLeft;
+    }
+  }
+}
 
-	img {
-		position: absolute;
-		width: 500px;
-		left: 230px;
-		top: 30px;
-	}
+#sing-about-it {
 
-	&.OPEN {
+  img {
+    position: absolute;
+    width: 500px;
+    left: 230px;
+    top: 30px;
+  }
 
-		img {
-			-webkit-animation-name: flipInY;
-			animation-name: flipInY;
-		}
-	}
+  &.OPEN {
+
+    img {
+      animation-name: flipInY;
+    }
+  }
 }
 
 #video .frame {
-	width: 80%;
-	height: 100%;
+  width: 80%;
+  height: 85%;
+  background-image: url(../media/_Frames/FR_2.png);
+  background-size: 100% 100%;
+
+  video {
+    position: relative;
+    width: 91.2%;
+    max-height: 95%;
+    margin: 4.2% 4.3%;
+  }
 }
 
-.video-component {
-	position: absolute;
-	background-image: url(../media/_Frames/FR_2.png);
-	background-size: 100% 100%;
-	top: 50px;
-	width: 100%;
+#good-for-you {
 
-	video {
-		position: relative;
-		width: 96.2%;
-		max-height: 95%;
-		margin: 1.4% 1.9%;
-	}
+  .frame {
+    top: 200px;
+  }
+
+  .content-group {
+    img {
+      position: absolute;
+
+      &:nth-of-type(1) {
+        width: 500px;
+        right: 30px;
+        bottom: 140px;
+      }
+
+      &:nth-of-type(2) {
+        width: 400px;
+        left: 40px;
+        top: -70px;
+      }
+    }
+
+    p {
+      position: absolute;
+      width: 500px;
+      right: 30px;
+      bottom: 50px;
+      text-align: center;
+    }
+  }
+
+  &.OPEN {
+
+    img {
+
+      &:nth-of-type(1) {
+        animation-name: zoomInDown;
+      }
+
+      &:nth-of-type(2) {
+        animation-name: bounceIn;
+      }
+    }
+  }
 }
 
-.screen.good-for-you {
+#take-pledge {
 
-	.content-group {
+  .frame {
+    top: 200px;
+    margin-top: -40px;
+  }
 
-		img {
-			position: absolute;
+  .content-group {
 
-			&:nth-of-type(1) {
-				width: 500px;
-				right: 30px;
-				bottom: 140px;
-			}
+    img {
+      position: absolute;
+      width: 400px;
+      left: 40px;
+      top: -70px;
+    }
 
-			&:nth-of-type(2) {
-				width: 400px;
-				left: 40px;
-				top: -70px;
-			}
-		}
+    p {
+      position: absolute;
+      width: 500px;
+      right: 30px;
+      bottom: 40px;
+    }
 
-		p {
-			position: absolute;
-			width: 500px;
-			right: 30px;
-			bottom: 50px;
-		}
-	}
+  }
 
-	&.OPEN {
+  button {
+    &.next-screen {
+      position: absolute;
+      width: 230px;
+      height: 130px;
+      background-position: -1320px 450px;
+      left: 50%;
+      top: 70%;
+      margin-left: -115px;
+      opacity: 0;
+      cursor: auto;
+      animation-duration: 1s;
+      animation-fill-mode: both;
 
-		img {
+      &:hover {
+        background-position: -1320px 193px;
+      }
+    }
+  }
 
-			&:nth-of-type(1) {
-				-webkit-animation-name: zoomInDown;
-				animation-name: zoomInDown;
-			}
+  &.OPEN {
+    .content-group {
 
-			&:nth-of-type(2) {
-				-webkit-animation-name: bounceIn;
-				animation-name: bounceIn;
-			}
-		}
-	}
+      img {
+        animation-name: bounceIn;
+      }
+    }
+  }
+
+  &.COMPLETE,
+  .DEMO & {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: zoomInDown;
+    }
+  }
 }
 
-.screen.take-pledge {
+#commit {
 
-	button.next-screen {
-		display: none;
-	}
+  .frame {
+    margin-top: -50px;
+    width: auto;
+    height: auto;
 
-	.frame {
-		margin-top: -40px;
-	}
+    img.background {
+      position: relative;
+      opacity: 1;
+      width: 440px;
+      height: auto;
+      left: 0;
+    }
 
-	.content-group {
+    p {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 40px;
+      font-weight: bold;
+    }
+  }
 
-		img {
-			position: absolute;
-			width: 400px;
-			left: 40px;
-			top: -70px;
-		}
+  button.next-screen {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    margin-left: -115px;
+    opacity: 0;
+    cursor: auto;
+    width: 230px;
+    height: 130px;
+    background-position: -1570px 450px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 
-		p {
-			position: absolute;
-			width: 500px;
-			right: 30px;
-			bottom: 40px;
-		}
+    &:hover {
+      background-position: -1570px 193px;
+    }
+  }
 
-		button {
-			position: absolute;
-			left: 50%;
-			top: 125%;
-			margin-left: -115px;
-			opacity: 0;
-			cursor: auto;
-		}
-	}
-
-	&.OPEN {
-
-		.content-group {
-
-			img {
-				-webkit-animation-name: bounceIn;
-				animation-name: bounceIn;
-			}
-		}
-
-		&.COMPLETE {
-
-			button {
-				opacity: 1;
-				cursor: pointer;
-				-webkit-animation-name: zoomInDown;
-				animation-name: zoomInDown;
-			}
-		}
-	}
+  &.COMPLETE,
+  .DEMO & {
+    button.next-screen {
+      opacity: 1;
+      cursor: pointer;
+      animation-name: zoomInDown;
+    }
+  }
 }
 
-.screen.commit {
+#flip {
 
-	button.next-screen {
-		display: none;
-	}
+  img {
+    position: absolute;
 
-	.frame {
-		margin-top: -100px;
+    &:nth-of-type(1) {
+      width: 460px;
+      left: 80px;
+      top: 20px;
+    }
 
-		img.background {
-			position: relative;
-			opacity: 1;
-			width: 440px;
-		}
+    &:nth-of-type(2) {
+      width: 300px;
+      right: 60px;
+      top: 280px;
+      opacity: 0;
+      transition: opacity 1s 5s;
+    }
+  }
 
-		p {
-			position: absolute;
-			width: 100%;
-			text-align: center;
-			top: 40px;
-			font-weight: bold;
-		}
+  p {
+    position: absolute;
+    width: 460px;
+    right: 0;
+    top: 80px;
+    font-size: 34px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-		button {
-			position: absolute;
-			left: 50%;
-			top: 95%;
-			margin-left: -115px;
-			opacity: 0;
-			cursor: auto;
-		}
-	}
+  &.OPEN {
 
-	&.OPEN {
+    img {
 
-		&.COMPLETE {
+      &:nth-of-type(1) {
+        animation-name: bounceInUp;
+      }
 
-			button {
-				opacity: 1;
-				cursor: pointer;
-				-webkit-animation-name: zoomInDown;
-				animation-name: zoomInDown;
-			}
-		}
-	}
+      &:nth-of-type(2) {
+        opacity: 1;
+        animation-name: flip;
+        animation-delay: 5s;
+      }
+    }
 
-}
+    &.COMPLETE {
 
-.screen.flip {
+      img {
 
-	img {
-		position: absolute;
-
-		&:nth-of-type(1) {
-			width: 460px;
-			left: 80px;
-			top: 20px;
-		}
-
-		&:nth-of-type(2) {
-			width: 300px;
-			right: 60px;
-			top: 280px;
-			opacity: 0;
-			transition: opacity 1s 5s;
-		}
-	}
-
-	p {
-		position: absolute;
-		width: 460px;
-		right: 0;
-		top: 80px;
-		font-size: 34px;
-		text-align: center;
-		font-weight: bold;
-	}
-
-	&.OPEN {
-
-		img {
-
-			&:nth-of-type(1) {
-				-webkit-animation-name: bounceInUp;
-				animation-name: bounceInUp;
-			}
-
-			&:nth-of-type(2) {
-				opacity: 1;
-				-webkit-animation-name: flip;
-				animation-name: flip;
-				animation-delay: 5s;
-			}
-		}
-
-		&.COMPLETE {
-
-			img {
-
-			}
-		}
-	}
+      }
+    }
+  }
 }
 
 #quit {
 
-	.frame {
-		text-align: center;
+  .frame {
+    text-align: center;
 
-		h2 {
-			margin: 0;
-		}
+    h2 {
+      margin: 0;
+    }
 
-		button {
-			margin: 20px 10px;
-		}
-	}
+    button {
+      margin: 20px 10px;
+    }
+  }
 }

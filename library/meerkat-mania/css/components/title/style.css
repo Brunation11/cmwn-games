@@ -1,0 +1,14 @@
+#title img.background {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#title .center img {
+  width: 70%;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+#title .center img.animated {
+  opacity: 1;
+}
