@@ -46,9 +46,9 @@ export default function (props, ref, key) {
               src="media/_audio/_S_PollutesWater/HFF_VO_Remove.mp3"
             />
           </skoash.MediaSequence>
-          <skoash.Component className="frame" pl-bg>
+          <skoash.Component className="frame">
             <skoash.Component className={starContainerClasses}>
-              <div className="stars" pl-bg />
+              <div className="stars" />
             </skoash.Component>
             <skoash.Image src="media/_images/_S_PollutesWater/img_8.1.png" />
             <p>

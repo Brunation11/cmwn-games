@@ -1,0 +1,13 @@
+version: '2'
+services:
+  nginx:
+    image: cmwn/games-nginx:0.1
+    container_name: cmwn_games_web
+    hostname: "games-local"
+    domainname: "changemyworldnow.com"
+    ports:
+      - "443:443"
+    volumes:
+      - ./:/var/www/
+  node:
+    image: cmwn/front-node:6-wheezy

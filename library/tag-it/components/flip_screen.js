@@ -5,6 +5,9 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="flip"
+      emitOnComplete={{
+        name: 'flip',
+      }}
     >
       <skoash.MediaSequence
          ref="audio-sequence"
@@ -17,7 +20,7 @@ export default function (props, ref, key) {
       <p>
           Thank you for conserving water!<br />
           Every drop counts.
-      </p>    
+      </p>
       <div className="flip animated" />
     </skoash.Screen>
   );
