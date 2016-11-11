@@ -21,6 +21,7 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
+window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/3DWorld/';
 
 var ThreeDWorld = (
