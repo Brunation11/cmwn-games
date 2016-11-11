@@ -10,10 +10,22 @@ export default function (props, ref, key) {
       key={key}
       id="list"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.notepad.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
+      />
       <Repeater
         className="draggables"
         amount={13}
-        item={<Draggable />}
+        item={<Draggable return />}
         props={[
           {message: 'shoe'},
           {message: 'lego'},
