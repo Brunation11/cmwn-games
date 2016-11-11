@@ -3,13 +3,18 @@ import Draggable from 'shared/components/draggable/0.3';
 import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
-  var onDrag;
+  var onDrag, testComplete;
 
   onDrag = function () {
     this.setState({
       correct: false,
       return: false,
     });
+  };
+
+  testComplete = function () {
+    if (this.refs['dropzone-0'].contains.length) this.complete();
+    else this.incomplete();
   };
 
   return (
@@ -30,6 +35,10 @@ export default function (props, ref, key) {
       <skoash.Image
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
+      />
+      <skoash.Audio
+        type="voiceOver"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_and.mp3'}
       />
       <Repeater
         className="draggables"
@@ -56,7 +65,11 @@ export default function (props, ref, key) {
         ]}
       />
       <Dropzone
+        checkComplete={false}
+        onDrag={testComplete}
+        onCorrect={testComplete}
         dropped={_.get(props, 'data.draggable.dropped')}
+        dragging={_.get(props, 'data.draggable.dragging')}
         dropzones={[
           <skoash.Component>
             <span>LIST OF ITEMS</span>

@@ -1,24 +1,10 @@
 import classNames from 'classnames';
 
 class Dropzone extends skoash.Component {
-  constructor() {
-    super();
-
-    this.contains = [];
-  }
-
-  bootstrap() {
-    super.bootstrap();
-
-    this.DOMNode = ReactDOM.findDOMNode(this);
-  }
-
   start() {
     var self = this, dropzone, draggable;
 
     super.start();
-
-    self.corners = self.getCorners(self.DOMNode);
 
     self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
       self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
@@ -120,6 +106,19 @@ class Dropzone extends skoash.Component {
     }
   }
 
+  onDrag(dragging) {
+    _.each(this.props.dropzones, (value, key) => {
+      var index, dropzoneRef, contains;
+      dropzoneRef = this.refs[`dropzone-${key}`];
+      contains = dropzoneRef.contains || [];
+      index = contains.indexOf(dragging);
+      if (~index) contains.splice(index, 1);
+      dropzoneRef.contains = contains;
+    });
+
+    this.props.onDrag.call(this, dragging);
+  }
+
   inBounds(dropped, dropzoneRef) {
     if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(dropped.props.message) !== -1) {
       this.correct(dropped, dropzoneRef);
@@ -138,6 +137,9 @@ class Dropzone extends skoash.Component {
     // respond to correct drop
     dropped.markCorrect();
     this.playMedia('correct');
+
+    dropzoneRef.contains = (dropzoneRef.contains || []).concat(dropped);
+
     this.props.onCorrect.call(this, dropped, dropzoneRef);
   }
 
@@ -153,6 +155,10 @@ class Dropzone extends skoash.Component {
 
     if (props.dropped && props.dropped !== this.props.dropped) {
       this.onDrop(props.dropped);
+    }
+
+    if (props.dragging && props.dragging !== this.props.dragging) {
+      this.onDrag(props.dragging);
     }
   }
 
@@ -184,6 +190,7 @@ Dropzone.defaultProps = _.defaults({
   dropzones: [<skoash.Component />],
   onCorrect: _.noop,
   onIncorrect: _.noop,
+  onDrag: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Dropzone;
