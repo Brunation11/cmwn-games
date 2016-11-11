@@ -1,15 +1,14 @@
+import ClasssNames from 'classnames';
+
 export default function (props, ref, key) {
-  var className = null;
-  var state = skoash.trigger('getState');
-  if (state.currentScreenIndex === 23) {
-    className = 'STAY';
-  }
   return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
-      className={className}
+      className={ClasssNames({
+        STAY: props.gameState.currentScreenIndex === 23
+      })}
       id="step-8"
     >
       <skoash.MediaSequence

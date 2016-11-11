@@ -25,7 +25,7 @@
   width: 1065px;
   height: 836px;
   margin: 20px 0px 20px 120px;
-  padding: 40px;
+  padding: 25px;
 
   h2 {
     text-transform: uppercase;
@@ -40,8 +40,6 @@
 .item-drawer {
   padding: 0;
   margin: 0;
-  height: 100%;
-  overflow: auto;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -134,12 +132,12 @@
   &.backgrounds {
     li {
       width: 480px;
-      height: 280px;
+      height: 330px;
       background-image: url(../media/_Frames/SK_frames_Background.png);
       background-size: 560px;
       background-repeat: no-repeat;
       background-position: 0px -370px;
-      margin: 0 0 20px;
+      margin: 0;
 
       &:before {
         background-image: url(../media/_Frames/SK_frames_Background.png);
@@ -149,7 +147,8 @@
       }
 
       img {
-        max-width: 95%;
+        max-width: 107%;
+        margin: 1% 0 0 -5%;
 
         &:only-child {
           max-width: 110%;

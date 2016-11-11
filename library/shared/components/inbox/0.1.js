@@ -69,7 +69,7 @@ class Inbox extends Selectable {
       );
     }
 
-    friends = skoash.trigger('getState').data.user || [];
+    friends = _.get(this.props.gameState, 'data.user', []);
 
     return items.map((item, key) => {
       var timestamp, image, name;
@@ -130,7 +130,8 @@ class Inbox extends Selectable {
 }
 
 Inbox.defaultProps = _.defaults({
-  friendKey: 'created_by'
+  friendKey: 'created_by',
+  gameState: {},
 }, Selectable.defaultProps);
 
 export default Inbox;

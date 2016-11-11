@@ -31,7 +31,7 @@ class SelectableCanvas extends Selectable {
 
     _.forIn(this.refs, component => {
       if (!component.refs) return;
-      var img = ReactDOM.findDOMNode(component.refs.img)
+      var img = ReactDOM.findDOMNode(component.refs.img);
       if (img) this.items.push(img);
     });
   }
