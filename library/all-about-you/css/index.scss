@@ -2920,7 +2920,7 @@ ul {
 
     .quit-yes {
       position: absolute;
-      background: url(../media/assets/assets/yesnobuttons-01.png);
+      background: url(../media/assets/_images/_QuitScreen/yesnobuttons-01.png);
       background-size: 200px 200px;
       background-position: -15px -23px;
       width: 21%;
@@ -2930,7 +2930,7 @@ ul {
 
       &:hover,
       &:focus {
-        background: url(../media/assets/assets/yesnobuttons-03.png);
+        background: url(../media/assets/_images/_QuitScreen/yesnobuttons-03.png);
         background-size: 200px 200px;
         background-position: -15px -23px;
       }
@@ -2938,7 +2938,7 @@ ul {
 
     .quit-no {
       position: absolute;
-      background: url(../media/assets/assets/yesnobuttons-02.png);
+      background: url(../media/assets/_images/_QuitScreen/yesnobuttons-02.png);
       background-size: 200px 200px;
       background-position: -11px -17px;
       width: 21%;
@@ -2948,7 +2948,7 @@ ul {
 
       &:hover,
       &:focus {
-        background: url(../media/assets/assets/yesnobuttons-04.png);
+        background: url(../media/assets/_images/_QuitScreen/yesnobuttons-04.png);
         background-size: 200px 200px;
         background-position: -11px -17px;
       }
