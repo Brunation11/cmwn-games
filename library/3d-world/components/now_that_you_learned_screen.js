@@ -6,6 +6,18 @@ export default function (props, ref, key) {
       key={key}
       id="now-that-you-learned"
     >
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.nav.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+      />
+      <skoash.Audio
+        type="voiceOver"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_make_a.mp3'}
+      />
       <div>
         Now that you’ve learned<br/>
         so much about <span>3D PRINTING</span><br/>
