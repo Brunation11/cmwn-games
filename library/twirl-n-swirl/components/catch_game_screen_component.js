@@ -85,6 +85,13 @@ export default function (props, ref, key, opts = {}) {
       }
     });
 
+    this.updateGameState({
+      path: 'score',
+      data: {
+        points: 0
+      }
+    });
+
     if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
     this.updateGameState({
@@ -169,7 +176,7 @@ export default function (props, ref, key, opts = {}) {
     this.updateGameState({
       path: 'sfx',
       data: {
-        play: 'incorrect',
+        play: 'incorrect-miss',
       }
     });
   };
@@ -252,7 +259,7 @@ export default function (props, ref, key, opts = {}) {
     this.updateGameState({
       path: 'sfx',
       data: {
-        play: 'incorrect',
+        play: 'incorrect-catch',
       }
     });
   };
@@ -271,6 +278,7 @@ export default function (props, ref, key, opts = {}) {
       ref={ref}
       key={key}
       id={opts.id}
+      onStart={opts.onStart}
     >
       <skoash.Component className="misc">
         <skoash.Component
@@ -323,12 +331,13 @@ export default function (props, ref, key, opts = {}) {
         onPlay={SFXOnPlay}
       >
         <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
+        <skoash.Audio ref="incorrect-miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
         <skoash.MediaSequence ref="correct" silentOnStart>
-          <skoash.Audio ref="catch" type="sfx" src="media/audio/basketCatch.mp3" complete />
+          <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
           <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
         </skoash.MediaSequence>
-        <skoash.MediaSequence ref="incorrect" silentOnStart>
-          <skoash.Audio ref="catch" type="sfx" src="media/audio/basketCatch.mp3" complete />
+        <skoash.MediaSequence ref="incorrect-catch" silentOnStart>
+          <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
           <skoash.Audio ref="lose" type="sfx" src="media/audio/LoosePoints.mp3" complete />
         </skoash.MediaSequence>
       </MediaCollection>

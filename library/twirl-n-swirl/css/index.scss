@@ -432,11 +432,6 @@
   }
 
   .reveal {
-
-    &.OPEN {
-      z-index: 2;
-    }
-
     > div {
       height: 100%;
       margin-top: 0;
@@ -456,6 +451,7 @@
       top: 50%;
       text-align: center;
       margin-top: 0;
+      opacity: 0;
     }
 
     .close-reveal {
@@ -680,6 +676,14 @@
           box-shadow: none;
           background-position: 308px 138px;
         }
+      }
+    }
+
+    &.OPEN {
+      z-index: 2;
+
+      .frame {
+        opacity: 1;
       }
     }
   }

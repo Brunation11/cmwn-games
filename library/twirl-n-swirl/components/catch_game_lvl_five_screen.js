@@ -91,7 +91,7 @@ export default function (props, ref, key) {
         <skoash.Component className="frame">
           <skoash.Component className="banner" />
           <span>
-            You are getting good at<br />identifying things that are<br />harmful for the environment!
+            You've saved the fish!
           </span>
         </skoash.Component>
       </skoash.Component>,
