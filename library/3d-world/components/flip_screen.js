@@ -1,19 +1,4 @@
 export default function (props, ref, key) {
-      // <skoash.MediaSequence>
-      //   <skoash.Audio
-      //     type="voiceOver"
-      //     src="media/S_22/VO_22.1.mp3"
-      //     sprite={[0, 2000]}
-      //     completeTarget="vo"
-      //   />
-      //   <skoash.Audio
-      //     type="voiceOver"
-      //     src="media/S_22/VO_22.1.mp3"
-      //     sprite={[2000, 4000]}
-      //   />
-      // </skoash.MediaSequence>
-      // <skoash.Image className="hidden" src="media/_Frame/Fr_1.png" />
-      // <skoash.Image className="hidden" src="media/S_22/img_22.1.png" />
   return (
     <skoash.Screen
       {...props}
@@ -25,17 +10,17 @@ export default function (props, ref, key) {
         name: 'flip',
       }}
     >
-      <div className="frame">
-        <div>
-          <p>
-            Now you’ve learned about <span>3D PRINTING…</span>
-          </p>
-          <p>
-            Let’s print you out a new <span>FLIP</span>
-          </p>
-        </div>
-      </div>
-
+      <skoash.Audio
+        type="voiceOver"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Flip.mp3'}
+      />
+      <p className="now">
+        Now you’ve learned about <span>3D PRINTING</span><span>…</span>
+      </p>
+      <p className="lets">
+        Let’s print you out<br/>
+        a new <span>FLIP</span>
+      </p>
     </skoash.Screen>
   );
 }
