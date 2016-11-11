@@ -25,20 +25,20 @@ var TwirlNSwirl = (
     config={config}
     screens={{
       0: iOSScreen,
-      1: TitleScreen,
-      2: InfoQuestionScreen,
-      3: InfoPlantScreen,
-      4: FlushItScreen,
-      5: ResponsibleFlusherScreen,
-      6: InfoReleasedScreen,
-      7: LetsCleanUpScreen,
-      8: CatchGameLvlOneScreen,
-      9: CatchGameLvlTwoScreen,
-      10: CatchGameLvlThreeScreen,
-      11: CatchGameLvlFourScreen,
-      12: CatchGameLvlFiveScreen,
-      13: MakeADifferenceScreen,
-      14: FlipScreen
+      // 1: TitleScreen,
+      // 2: InfoQuestionScreen,
+      // 3: InfoPlantScreen,
+      // 4: FlushItScreen,
+      // 5: ResponsibleFlusherScreen,
+      // 6: InfoReleasedScreen,
+      // 7: LetsCleanUpScreen,
+      1: CatchGameLvlOneScreen,
+      2: CatchGameLvlTwoScreen,
+      3: CatchGameLvlThreeScreen,
+      4: CatchGameLvlFourScreen,
+      5: CatchGameLvlFiveScreen,
+      // 13: MakeADifferenceScreen,
+      // 14: FlipScreen
     }}
     menus={{
       quit: QuitScreen,

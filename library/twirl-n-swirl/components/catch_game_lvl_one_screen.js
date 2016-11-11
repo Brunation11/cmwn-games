@@ -4,7 +4,7 @@ export default function (props, ref, key) {
   return CatchGameScreenComponent(props, ref, key, {
     id: 'catch-game-lvl-1',
     level: 1,
-    timeout: 12000,
+    timeout: 60000,
     dropTimeout: 1000,
     dropSpeed: 'slow',
     openOnStart: 'instructions',
@@ -16,22 +16,6 @@ export default function (props, ref, key) {
     },
     dropPoints: ['left', 'right'],
     bin: [
-      // {
-      //   className: 'fish',
-      //   message: ''
-      // },
-      // {
-      //   className: 'turtle',
-      //   message: ''
-      // },
-      // {
-      //   className: 'frog',
-      //   message: ''
-      // },
-      // {
-      //   className: 'plant',
-      //   message: ''
-      // },
       {
         className: 'trash floss',
         message: 'trash'

@@ -50,6 +50,13 @@ export default function (props, ref, key, opts = {}) {
   };
 
   scoreOnComplete = function () {
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        countdown: null
+      }
+    });
+
     if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
     this.updateGameState({
@@ -71,19 +78,19 @@ export default function (props, ref, key, opts = {}) {
   };
 
   timerOnComplete = function () {
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        countdown: null
+      }
+    });
+
     if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
     this.updateGameState({
       path: 'reveal',
       data: {
         open: 'try-again'
-      }
-    });
-
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        countdown: null
       }
     });
   };

@@ -5,7 +5,7 @@ export default function (props, ref, key) {
     id: 'catch-game-lvl-2',
     level: 2,
     timeout: 60000,
-    dropTimeout: 2000,
+    dropTimeout: 1500,
     dropSpeed: 'medium',
     rows: 3,
     points: {
@@ -19,18 +19,6 @@ export default function (props, ref, key) {
         className: 'fish',
         message: ''
       },
-      // {
-      //   className: 'turtle',
-      //   message: ''
-      // },
-      // {
-      //   className: 'frog',
-      //   message: ''
-      // },
-      // {
-      //   className: 'plant',
-      //   message: ''
-      // },
       {
         className: 'trash floss',
         message: 'trash'
@@ -77,10 +65,12 @@ export default function (props, ref, key) {
         <skoash.Audio
           type="sfx"
           src="media/audio/LevelFail.mp3"
+          complete
         />
         <skoash.Audio
           type="voiceOver"
           src="media/audio/try-again.mp3"
+          complete
         />
       </skoash.MediaSequence>
     ],

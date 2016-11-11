@@ -251,144 +251,150 @@
       z-index: 1;
     }
 
-    .catchable {
-      position: absolute;
-      transition: opacity .5s;
-      animation-name: catchable;
-      animation-timing-function: linear;
-      top: -100%;
-      width: 15%;
-      height: 50%;
-      background: url(../media/S_6/sprite_6.2.png);
-      background-size: 275px 960px;
-      opacity: 1;
-
-      &.slow {
-        animation-duration: 4s;
-      }
-
-      &.medium {
-        animation-duration: 3s;
-      }
-
-      &.fast {
-        animation-duration: 2s;
-      }
-
-      &.turtle {
-        background-image: url(../media/images/turtle.png);
-        background-size: contain;
-        background-position: 0 15px;
-        background-repeat: no-repeat;
-      }
-
-      &.frog {
-        background-image: url(../media/images/frog.png);
-        background-size: contain;
-        background-position: 0 15px;
-        background-repeat: no-repeat;
-      }
-
-      &.fish {
-        background-image: url(../media/images/sprite_fish.png);
-        background-position: 380px 15px;
-        background-size: 750px 282px;
-      }
-
-      &.plant {
-        background-image: url(../media/images/plants.png);
-        background-position: -81px 0px;
-        background-size: 750px 129px;
-        background-repeat: no-repeat;
-      }
-
-      &.floss {
-        background-position: 156px 700px;
-      }
-
-      &.medicine {
-        background-position: 166px 554px;
-      }
-
-      &.diaper {
-        background-position: 27px 435px;
-      }
-
-      &.bandaid {
-        background-position: 17px 552px;
-      }
-
-      &.oil {
-        background-position: 42px 686px;
-      }
-
-      &.gum {
-        background-position: 156px 428px;
-      }
-
-      &.left {
-        left: 14%;
-      }
-
-      &.center {
-        left: 43%;
-      }
-
-      &.right {
-        left: 71%;
-      }
-
-      &.correct:after {
+    &.STARTED {
+      .catchable {
         position: absolute;
-        content: "+5";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: right;
-        color: #fff;
-        font-size: 50px;
-        font-weight: 600
-      }
-
-      &.incorrect:after {
-        position: absolute;
-        content: "-10";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: right;
-        color: orange;
-        font-size: 50px;
-        font-weight: 600
-      }
-
-      &.trash:not(.CAUGHT):after {
-        position: absolute;
-        content: "-10";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: right;
-        color: orange;
-        font-size: 50px;
-        font-weight: 600;
         transition: opacity .5s;
-        opacity: 0;
-        animation-name: incorrectCatchable;
-        animation-duration: 6s;
-      }
+        animation-name: catchable;
+        animation-timing-function: linear;
+        top: -100%;
+        width: 15%;
+        height: 50%;
+        background: url(../media/S_6/sprite_6.2.png);
+        background-size: 275px 960px;
+        opacity: 1;
 
-      .PAUSED & {
-        animation-play-state: paused;
-      }
+        &.slow {
+          animation-duration: 5s;
+        }
 
-      $catchables: mushroom banana paper dog battery duck squirrel tire blue-flower yellow-flower red-flower purple-flower glass plastic;
-      @for $i from 1 through 14 {
-        &.#{nth($catchables, $i)} {
-          background-position: #{($i - 1) * -100}px 0;
+        &.medium {
+          animation-duration: 4s;
+        }
+
+        &.fast {
+          animation-duration: 3s;
+        }
+
+        &.turtle {
+          background-image: url(../media/images/turtle.png);
+          background-size: contain;
+          background-position: 0 15px;
+          background-repeat: no-repeat;
+        }
+
+        &.frog {
+          background-image: url(../media/images/frog.png);
+          background-size: contain;
+          background-position: 0 15px;
+          background-repeat: no-repeat;
+        }
+
+        &.fish {
+          background-image: url(../media/images/sprite_fish.png);
+          background-position: 380px 15px;
+          background-size: 750px 282px;
+        }
+
+        &.plant {
+          background-image: url(../media/images/plants.png);
+          background-position: -81px 0px;
+          background-size: 750px 129px;
+          background-repeat: no-repeat;
+        }
+
+        &.floss {
+          background-position: 156px 700px;
+        }
+
+        &.medicine {
+          background-position: 166px 554px;
+        }
+
+        &.diaper {
+          background-position: 27px 435px;
+        }
+
+        &.bandaid {
+          background-position: 17px 552px;
+        }
+
+        &.oil {
+          background-position: 42px 686px;
+        }
+
+        &.gum {
+          background-position: 156px 428px;
+        }
+
+        &.left {
+          left: 14%;
+        }
+
+        &.center {
+          left: 43%;
+        }
+
+        &.right {
+          left: 71%;
+        }
+
+        &.correct:after {
+          position: absolute;
+          content: "+5";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: #fff;
+          font-size: 50px;
+          font-weight: 600
+        }
+
+        &.incorrect:after {
+          position: absolute;
+          content: "-10";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: orange;
+          font-size: 50px;
+          font-weight: 600
+        }
+
+        &.trash:not(.CAUGHT):after {
+          position: absolute;
+          content: "-10";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: orange;
+          font-size: 50px;
+          font-weight: 600;
+          transition: opacity .5s;
+          opacity: 0;
+          animation-name: incorrectCatchable;
+        }
+
+        &.trash.slow:not(.CAUGHT):after {
+          animation-duration: 5s;
+        }
+
+        &.trash.medium:not(.CAUGHT):after {
+          animation-duration: 4s;
+        }
+
+        &.trash.fast:not(.CAUGHT):after {
+          animation-duration: 3s;
+        }
+
+        .PAUSED & {
+          animation-play-state: paused;
         }
       }
     }
@@ -557,7 +563,7 @@
         transform: translateX(-50%);
         top: 35%;
         background: url(../media/images/sprites-levelup.png);
-        background-position: 8px -26px;
+        background-position: 1790px -26px;
         background-size: 2250px 292px;
       }
 
@@ -581,7 +587,7 @@
         transform: translateX(-50%);
         top: 35%;
         background: url(../media/images/sprites-levelup.png);
-        background-position: 8px -26px;
+        background-position: 1340px -26px;
         background-size: 2250px 292px;
       }
 
@@ -605,7 +611,7 @@
         transform: translateX(-50%);
         top: 35%;
         background: url(../media/images/sprites-levelup.png);
-        background-position: 8px -26px;
+        background-position: 890px -26px;
         background-size: 2250px 292px;
       }
 
@@ -629,7 +635,7 @@
         transform: translateX(-50%);
         top: 35%;
         background: url(../media/images/sprites-levelup.png);
-        background-position: 8px -26px;
+        background-position: 445px -26px;
         background-size: 2250px 292px;
       }
 
@@ -791,11 +797,7 @@ body > div > div {
   &.SCREEN-3 .background.bkg-3,
   &.SCREEN-6 .background.bkg-4,
   &.SCREEN-7 .background.bkg-2,
-  &.SCREEN-8 .background.bkg-5,
-  &.SCREEN-9 .background.bkg-5,
-  &.SCREEN-10 .background.bkg-5,
-  &.SCREEN-11 .background.bkg-5,
-  &.SCREEN-12 .background.bkg-5,
+  &[class*="catch-game-lvl"] .background.bkg-5,
   &.SCREEN-13 .background.bkg-2,
   &.SCREEN-14 .background.bkg-6 {
     opacity: 1;
@@ -1227,6 +1229,14 @@ p {
       left: -29%;
       top: -95%;
     }
+
+    &.disable {
+      pointer-events: none;
+
+      & + ul {
+        pointer-events: none;
+      }
+    }
   }
 
   ul li {
@@ -1494,10 +1504,8 @@ p {
 
     > div {
       position: absolute;
-      content: "";
       width: 100%;
       height: 100%;
-      // background-color: blue;
 
       &:after {
         position: absolute;
@@ -1508,6 +1516,8 @@ p {
         top: -100%;
         background: url(../media/S_6/sprite_6.2.png);
         background-size: 200px 698px;
+        opacity: 1;
+        transition: opacity .25s .25s;
       }
 
       &.CORRECT {
@@ -1566,6 +1576,10 @@ p {
 
     &:hover {
       background-position: 135px -11px;
+    }
+
+    &.disable {
+      pointer-events: none;
     }
   }
 
