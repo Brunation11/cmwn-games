@@ -5,7 +5,6 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="flip"
-      className="large-frame"
       emitOnComplete={{
         name: 'flip',
       }}
