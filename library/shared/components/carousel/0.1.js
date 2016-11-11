@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import shortid from 'shortid';
 
 import Selectable from 'shared/components/selectable/0.1';
 
@@ -7,6 +8,14 @@ class Carousel extends Selectable {
     super();
 
     this.next = this.next.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    super.componentWillReceiveProps(nextProps);
+
+    if (nextProps.selected && nextProps.selected !== this.props.selected) {
+      this.select();
+    }
   }
 
   start() {
@@ -62,9 +71,7 @@ class Carousel extends Selectable {
 
     this.enabled = false;
 
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
-    }
+    this.props.onSelect.call(this, this.state.list[this.props.targetIndex]);
   }
 
   getClassNames() {
@@ -90,6 +97,7 @@ class Carousel extends Selectable {
           onTransitionEnd={onTransitionEnd}
           ref={ref}
           key={key}
+          data-key={shortid(key)}
         />
       );
     });
@@ -112,7 +120,8 @@ Carousel.defaultProps = _.defaults({
   showNum: 3,
   targetIndex: 1,
   pause: 500,
-  clickable: false
+  clickable: false,
+  onSelect: _.noop,
 }, Selectable.defaultProps);
 
 export default Carousel;
