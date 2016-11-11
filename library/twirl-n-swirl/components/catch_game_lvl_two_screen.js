@@ -2,12 +2,11 @@ import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
   return CatchGameScreenComponent(props, ref, key, {
-    id: 'catch-game-lvl-1',
-    level: 1,
-    timeout: 12000,
-    dropTimeout: 1000,
-    dropSpeed: 'slow',
-    openOnStart: 'instructions',
+    id: 'catch-game-lvl-2',
+    level: 2,
+    timeout: 60000,
+    dropTimeout: 2000,
+    dropSpeed: 'medium',
     rows: 3,
     points: {
       goal: 50,
@@ -16,10 +15,10 @@ export default function (props, ref, key) {
     },
     dropPoints: ['left', 'right'],
     bin: [
-      // {
-      //   className: 'fish',
-      //   message: ''
-      // },
+      {
+        className: 'fish',
+        message: ''
+      },
       // {
       //   className: 'turtle',
       //   message: ''
@@ -59,14 +58,6 @@ export default function (props, ref, key) {
     ],
     vos: [
       <skoash.MediaSequence
-        ref="instructions"
-      >
-        <skoash.Audio
-          type="voiceOver"
-          src="media/audio/CatchtoWin.mp3"
-        />
-      </skoash.MediaSequence>,
-      <skoash.MediaSequence
         ref="level-complete"
         silentOnStart
       >
@@ -76,7 +67,7 @@ export default function (props, ref, key) {
         />
         <skoash.Audio
           type="voiceOver"
-          src="media/audio/lvl-1-complete.mp3"
+          src="media/audio/lvl-2-complete.mp3"
         />
       </skoash.MediaSequence>,
       <skoash.MediaSequence
@@ -86,33 +77,19 @@ export default function (props, ref, key) {
         <skoash.Audio
           type="sfx"
           src="media/audio/LevelFail.mp3"
-          complete
         />
         <skoash.Audio
           type="voiceOver"
           src="media/audio/try-again.mp3"
-          complete
         />
       </skoash.MediaSequence>
     ],
     revealPromptList: [
-      <skoash.Component data-ref="instructions">
-        <skoash.Component className="frame">
-          <skoash.Image className="fish-left" src="media/images/fish-ins.png" />
-          <skoash.Component className="fish-right" />
-          <span>
-            Catch the pollutants by<br />using the arrow keys or<br />swiping the touch screen.
-          </span>
-          <span>
-            Be sure not to catch any<br />animals or plants.
-          </span>
-        </skoash.Component>
-      </skoash.Component>,
-      <skoash.Component data-ref="level-complete" className="level-one-complete">
+      <skoash.Component data-ref="level-complete" className="level-two-complete">
         <skoash.Component className="frame">
           <skoash.Component className="banner" />
           <span>
-            Good Job! You are on the way<br />to saving fish lives!
+            You are getting good at<br />identifying things that are<br />harmful for the environment!
           </span>
         </skoash.Component>
       </skoash.Component>,
