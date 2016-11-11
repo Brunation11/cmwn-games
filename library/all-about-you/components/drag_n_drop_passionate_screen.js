@@ -8,10 +8,22 @@ import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
   function dragRespond(draggable) {
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        play: 'drag'
+      }
+    });
+
     _.forIn(this.refs, (ref2, key2) => {
       if (key2.indexOf('dropzone-') === -1) return;
-      if (ref2 && ref2.state && ref2.state.content === draggable) ref2.setState({content: null});
+      if (ref2 && ref2.state && ref2.state.content === draggable) {
+        ref2.setState({
+          content: null
+        });
+      }
     });
+
     this.incomplete();
   }
 
@@ -26,18 +38,31 @@ export default function (props, ref, key) {
       dropzone.state.content.markIncorrect();
     }
 
-    dropzone.setState({content: draggable});
-
-    this.updateGameState({
-      path: 'reveal',
-      data: {
-        open: message
-      }
+    dropzone.setState({
+      content: draggable
     });
+
+    if (!this.loadData) {
+      this.updateGameState({
+        path: 'sfx',
+        data: {
+          play: 'correct'
+        }
+      });
+
+      this.updateGameState({
+        path: 'reveal',
+        data: {
+          open: message
+        }
+      });
+    }
 
     _.forIn(this.refs, (ref3, key3) => {
       if (key3.indexOf('dropzone-') === -1) return;
-      if (!ref3.state.content) return complete = false;
+      if (!ref3.state.content) {
+        return complete = false;
+      }
     });
 
     if (complete) this.complete();
@@ -58,9 +83,25 @@ export default function (props, ref, key) {
       <skoash.Component ref="frame" className="frame animated" />
 
       <MediaCollection
+        ref="sfx-collection"
+        complete={_.get(props, 'data.game.complete', false)}
+        play={_.get(props, 'data.sfx.play', null)}
+        onPlay={function () {
+          this.updateGameState({
+            path: 'sfx',
+            data: {
+              play: null
+            }
+          });
+        }}
+      >
+        <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
+      </MediaCollection>
+
+      <MediaCollection
         ref="media-collection"
-        complete={true}
-        checkComplete={false}
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({
@@ -86,19 +127,15 @@ export default function (props, ref, key) {
         centerOnCorrect
         dragRespond={dragRespond}
         correctRespond={correctRespond}
-        assets={[
-          <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" complete />,
-          <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" complete />
-        ]}
         dropzones={[
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />,
-          <skoash.Component className="dropzone-list-item animated" />
+          <skoash.Component className="1 dropzone-list-item animated" />,
+          <skoash.Component className="2 dropzone-list-item animated" />,
+          <skoash.Component className="3 dropzone-list-item animated" />,
+          <skoash.Component className="4 dropzone-list-item animated" />,
+          <skoash.Component className="5 dropzone-list-item animated" />,
+          <skoash.Component className="6 dropzone-list-item animated" />,
+          <skoash.Component className="7 dropzone-list-item animated" />,
+          <skoash.Component className="8 dropzone-list-item animated" />
         ]}
         draggables={[
           <skoash.ListItem ref="friends" className="draggable-list-item friends animated" message="friends" returnOnIncorrect />,

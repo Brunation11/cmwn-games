@@ -32,6 +32,7 @@ export default function (props, ref, key) {
       <skoash.Image ref="icon" className="icon animated" src="media/assets/_images/S_13/IMG_13_Plant.png" />
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.correct', null)}
         onPlay={function () {
           this.updateGameState({
@@ -46,6 +47,7 @@ export default function (props, ref, key) {
       </MediaCollection>
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({
