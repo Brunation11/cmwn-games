@@ -17,7 +17,9 @@ export default function (props, ref, key) {
       <skoash.Audio ref="saver" type="voiceOver" src="media/S_4/VO_4.2.mp3" />
       <skoash.Audio ref="pig" type="voiceOver" src="media/S_4/S_4.1.mp3" complete />
       <skoash.Audio ref="correct" type="sfx" src="media/S_4/S_4.2.mp3" />
-      <skoash.Image ref="title" className="animated" src="media/S_4/img_4.1.png" />
+      <skoash.Component ref="title" className="title animated" >
+        <div>Who do you want to be?</div>
+      </skoash.Component>
     </SelectableScreen>
   );
 }
