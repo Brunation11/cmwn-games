@@ -216,6 +216,10 @@ p {
     right: 0;
     text-align: center;
     transition: opacity .5s;
+
+    .VOICE-OVER:not(.DEMO) & {
+      pointer-events: none;
+    }
   }
 
   &.OPEN {

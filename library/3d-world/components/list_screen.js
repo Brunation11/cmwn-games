@@ -1,3 +1,4 @@
+import MediaCollection from 'shared/components/media_collection/0.1';
 import Repeater from 'shared/components/repeater/0.2';
 import Draggable from 'shared/components/draggable/0.3';
 import Dropzone from 'shared/components/dropzone/0.3';
@@ -9,6 +10,12 @@ export default function (props, ref, key) {
     this.setState({
       correct: false,
       return: false,
+    });
+    this.updateGameState({
+      path: 'sfx',
+      data: {
+        playing: 'drag',
+      },
     });
   };
 
@@ -36,10 +43,24 @@ export default function (props, ref, key) {
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
       />
+      <skoash.Image
+        className="arrows"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.greenarrows.png'}
+      />
       <skoash.Audio
         type="voiceOver"
         src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_and.mp3'}
       />
+      <MediaCollection
+        play={_.get(props, 'data.sfx.playing')}
+      >
+        <skoash.Audio
+          ref="drag"
+          type="sfx"
+          completeTarget="sfx"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Drag.mp3'}
+        />
+      </MediaCollection>
       <Repeater
         className="draggables"
         amount={13}
