@@ -37,11 +37,10 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-class TagIt extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var TagIt = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       1: TitleScreen,
       2: PreciousScreen,
@@ -74,61 +73,41 @@ class TagIt extends skoash.Game {
       29: SpreadTheWordScreen,
       30: TipsScreen,
       31: FlipScreen,
-    };
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
-
-    this.state.data.screens = _.map(this.screens, () => ({}));
-  }
-
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  getBackgroundIndex(currentScreenIndex) {
-    switch (currentScreenIndex) {
-    case 1:
-      return 0;
-    case 2:
-      return 1;
-    default:
-      return 2;
-    }
-  }
-
-  getClassNames() {
-    var classNames = super.getClassNames();
-    var index = this.state.currentScreenIndex;
-    if (index < 2) return classNames;
-    if (index >= 2 && index < 4) return classNames + ' BKG-2';
-    if (index >= 4 && index < 6) return classNames + ' BKG-3';
-    if (index >= 6 && index < 13) return classNames + ' BKG-4';
-    if (index >= 13 && index < 29) return classNames + ' BKG-5';
-    if (index >= 29) return classNames + ' BKG-6';
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/TI_BKG_1.mp3" />
-        <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />
-        <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop />
-
-        <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>
-        <div className="background BKG-2" />
-        <div className="background BKG-3" />
-        <div className="background BKG-4" />
-        <div className="background BKG-5" />
-        <div className="background BKG-6" />
-      </div>
-    );
-  }
-
-}
+    }}
+    loader={<Loader />}
+    getBackgroundIndex={function (index) {
+      switch (index) {
+      case 1:
+        return 0;
+      case 2:
+        return 1;
+      default:
+        return 2;
+      }
+    }}
+    assets={[
+      <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/TI_BKG_1.mp3" />,
+      <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/TI_BKG_2.mp3" />,
+      <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/TI_BKG_3.mp3" loop />,
+      <skoash.Audio ref="button" type="sfx" src="media/_audio/_Buttons/TI_BU_2.mp3" />,
+      <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_Buttons/TI_BU_3.mp3"/>,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_1.png" />,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_2.png" />,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_3.png" />,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_4.png" />,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_5.png" />,
+      <skoash.Image className="hidden" src="media/_images/_BKG/BKG_6.png" />,
+      <div className="background default" />,
+      <div className="background bkg_2" />,
+      <div className="background bkg_3" />,
+      <div className="background bkg_4" />,
+      <div className="background bkg_5" />,
+      <div className="background bkg_6" />
+    ]}
+  />
+);
 
 skoash.start(TagIt, config.id);
