@@ -29,7 +29,7 @@ export default function (props, ref, key) {
           </skoash.ListItem>
         ]}
         revealAssets={[
-          <skoash.Audio ref="dolphin" type="voiceOver" src="media/audio/VO_7-2.mp3" />
+          <skoash.Audio ref="dolphin" type="voiceOver" src="media/audio/VO_7-2.mp3" delay={2000} />
         ]}
       />
     </skoash.Screen>
