@@ -90,20 +90,12 @@ export default function (props, ref, key) {
   };
 
   onTransitionEnd = _.throttle(function () {
-    // reset();
-    // skoash.trigger('updateState', {
-    //   path: 'setTarget',
-    //   data: _.get(props, 'data.setTarget', 0) + 1,
-    // });
-  }, 500);
-
-  window.reset = () => {
     reset();
     skoash.trigger('updateState', {
       path: 'setTarget',
       data: _.get(props, 'data.setTarget', 0) + 1,
     });
-  };
+  }, 500);
 
   return (
     <skoash.Screen

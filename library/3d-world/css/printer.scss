@@ -76,7 +76,7 @@
         background-repeat: no-repeat;
         background-position: 0 bottom;
         background-size: 2800px;
-        transition: left .5s, bottom .5s;
+        transition: left .5s, bottom .5s, transform .5s;
       }
 
       $objects: umbrella glasses tire shovel link bucket boots gloves whistle cup phone piece tooth ball;
@@ -91,9 +91,9 @@
       }
 
       $answers: tire link cup phone tooth;
-      $lefts:    260  330 376   260   380;
-      $bottoms:   60   80 117    60    74;
-      $scales:   1.2    1  .5   1.2    .3;
+      $lefts:    260  330 376   346   380;
+      $bottoms:   60   80 117    80    74;
+      $scales:   1.2    1  .5  1.25    .3;
       &.transition {
         @for $i from 1 through 5 {
           &.#{nth($answers, $i)}:before {
