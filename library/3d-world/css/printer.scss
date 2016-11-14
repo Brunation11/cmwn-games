@@ -59,13 +59,49 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    > div {
+    div {
+      position: relative;
       width: 100%;
       height: 100%;
 
-      $objects: umbrella glasses tire shovel link button boots gloves whistle cup phone piece tooth ball;
-      @for $i from 1 through 14 {
+      &:before {
+        content: '';
+        display: none;
+        position: absolute;
+        left: 117px;
+        bottom: 55px;
+        width: 200px;
+        height: 120px;
+        background-image: url($media-server + 'SpritesAnimations/sprite.game2.completeitems.png');
+        background-repeat: no-repeat;
+        background-position: 0 bottom;
+        background-size: 2800px;
+        transition: left .5s, bottom .5s;
+      }
 
+      $objects: umbrella glasses tire shovel link bucket boots gloves whistle cup phone piece tooth ball;
+      $obj-nums:       6       7    1      8    2      9    10     11      12   3     4    13     5   14;
+      @for $i from 1 through 14 {
+        $object: nth($objects, $i);
+        $num: nth($obj-nums, $i) - 1;
+        &.#{$object}:before {
+          display: block;
+          background-position: -#{200 * $num}px bottom;
+        }
+      }
+
+      $answers: tire link cup phone tooth;
+      $lefts:    260  260 260   260   260;
+      $bottoms:   60   60  60    60    60;
+      $scales:   1.2  1.2 1.2   1.2   1.2;
+      &.transition {
+        @for $i from 1 through 5 {
+          &.#{nth($answers, $i)}:before {
+            left: -#{nth($lefts, $i)}px;
+            bottom: #{nth($bottoms, $i)}px;
+            transform: scale(#{nth($scales, $i)});
+          }
+        }
       }
     }
   }
@@ -169,22 +205,22 @@
       height: 101px;
       background-image: url($media-server + 'SpritesAnimations/game-2-sprites.png');
       background-repeat: no-repeat;
-      background-size: 3000px;
+      background-size: 2800px;
     }
 
     $messages: umbrella glasses tire shovel
-               link button boots gloves
+               link bucket boots gloves
                whistle cup phone piece
                tooth ball;
     @for $i from 1 through 14 {
       &[data-message=#{nth($messages, $i)}]:before {
-        background-position: -#{56 + 215 * ($i - 1)}px -53px;
+        background-position: -#{50 + 200 * ($i - 1)}px -48px;
       }
 
       &[data-message=#{nth($messages, $i)}]:hover:before {
         width: 130px;
         height: 124px;
-        background-position: -#{40 + 215 * ($i - 1)}px -253px;
+        background-position: -#{35 + 200 * ($i - 1)}px -235px;
       }
     }
   }

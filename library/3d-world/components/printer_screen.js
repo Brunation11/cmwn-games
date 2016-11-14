@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import MediaCollection from 'shared/components/media_collection/0.1';
 import Target from 'shared/components/target/0.2';
 import Dropzone from 'shared/components/dropzone/0.3';
@@ -11,7 +13,7 @@ const objects = [
   'tire',
   'shovel',
   'link',
-  'button',
+  'bucket',
   'boots',
   'gloves',
   'whistle',
@@ -34,13 +36,14 @@ export default function (props, ref, key) {
   var startGame,
     closeReveal,
     onCorrect,
-    onPrinted;
+    onPrinted,
+    reset,
+    onTransitionEnd;
 
   startGame = _.noop;
   closeReveal = _.noop;
 
-  onCorrect = function (dropped, dropzoneRef) {
-    dropzoneRef.addClassName(dropped.props.message);
+  onCorrect = function (dropped) {
     skoash.trigger('updateState', {
       path: 'printed',
       data: dropped,
@@ -55,20 +58,42 @@ export default function (props, ref, key) {
 
   onPrinted = function () {
     var dropped = _.get(props, 'data.printed');
+
     if (dropped.props.message === _.get(props, 'data.target.object.props.name')) {
       dropped.markCorrect();
+      skoash.trigger('updateState', {
+        path: 'transition',
+        data: true,
+      });
     } else {
       dropped.markIncorrect();
+      reset();
     }
-    skoash.trigger('updateState', {
-      path: 'printed',
-      data: null,
-    });
+
     skoash.trigger('updateState', {
       path: 'sfx',
       data: {
         playing: false,
       },
+    });
+  };
+
+  reset = function () {
+    skoash.trigger('updateState', {
+      path: 'printed',
+      data: null,
+    });
+    skoash.trigger('updateState', {
+      path: 'transition',
+      data: false,
+    });
+  };
+
+  onTransitionEnd = function () {
+    reset();
+    skoash.trigger('updateState', {
+      path: 'setTarget',
+      data: _.get(props, 'data.setTarget', 0) + 1,
     });
   };
 
@@ -110,17 +135,20 @@ export default function (props, ref, key) {
             type="sfx"
             playTarget="layer1"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+            sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer2"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+            sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer3"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             onComplete={onPrinted}
+            sprite={[0, 1700]}
           />
         </skoash.MediaSequence>
       </MediaCollection>
@@ -130,6 +158,7 @@ export default function (props, ref, key) {
           solve this problem?
         </div>
         <Target
+          setTarget={_.get(props, 'data.setTarget', 0)}
           targets={[
             <skoash.Component name={targets[0]} />,
             <skoash.Component name={targets[1]} />,
@@ -142,7 +171,13 @@ export default function (props, ref, key) {
       <Dropzone
         dropped={_.get(props, 'data.draggable.dropped')}
         dropzones={[
-          <skoash.Component answers={objects} />
+          <skoash.Component
+            answers={objects}
+            className={classNames(_.get(props, 'data.printed.props.message'), {
+              transition: _.get(props, 'data.transition'),
+            })}
+            onTransitionEnd={onTransitionEnd}
+          />
         ]}
         onCorrect={onCorrect}
       />
