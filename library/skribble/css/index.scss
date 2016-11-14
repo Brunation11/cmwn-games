@@ -515,6 +515,19 @@ p {
 }
 
 #canvas {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -80px;
+    width: 800px;
+    height: 800px;
+    z-index: 1;
+    background: none;
+    transition: none;
+  }
+
   button {
     color: #000;
   }
@@ -570,6 +583,22 @@ p {
       pointer-events: none;
     }
   }
+
+  &.OPEN {
+    &:after {
+      opacity: 0;
+      z-index: -1;
+      background: url(../media/_Otter/joyful-otter_2.gif) no-repeat;
+      background-size: contain;
+      transition: opacity .5s 2s, z-index 0s 2.5s;
+    }
+  }
+
+  &.REPLAY {
+    &:after {
+      display: none;
+    }
+  }
 }
 
 #friends {
@@ -611,9 +640,12 @@ p {
     }
 
     &.Two {
+      bottom: -120px;
+
       img {
-        width: 480px;
-        margin-left: -20px;
+        width: 1000px;
+        margin-left: -310px;
+        margin-top: -280px;
       }
 
       .bubble {
@@ -1031,8 +1063,8 @@ p {
     position: absolute;
 
     .otter {
-      margin: 140px 0 0 10px;
-      width: 470px;
+      margin: -20px 0 0 -220px;
+      width: 840px;
     }
 
     .bubble {
@@ -1110,6 +1142,7 @@ p {
     width: 400px;
     height: 300px;
     background-image: url(../media/_Otter/Otter_Static4.png);
+    // background-image: url(../media/_Otter/Peeking-through-Otter2.gif);
     background-size: 700px;
     background-position: 52px 0;
     height: 480px;

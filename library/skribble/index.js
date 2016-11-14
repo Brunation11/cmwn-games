@@ -19,18 +19,9 @@ import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
 import LimitWarning from './components/limit_warning';
 
-const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
+const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
-  ready() {
-    if (!this.state.ready) {
-      this.getMediaOnReady();
-      this.getFriends();
-    }
-
-    super.ready();
-  }
-
   getRules(opts = {}) {
     if (typeof opts.respond === 'function') {
       return opts.respond(this.refs['screen-canvas'].getData());
@@ -38,7 +29,7 @@ class SkribbleGame extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(e, skramble) {
+  save(skramble) {
     /* eslint-disable camelcase */
     var friend_to, rules, self = this;
     friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
@@ -71,7 +62,7 @@ class SkribbleGame extends skoash.Game {
   }
 
   send() {
-    this.save(null, true);
+    this.save(true);
 
     this.refs['screen-canvas'].reset();
     this.goto({
@@ -83,21 +74,6 @@ class SkribbleGame extends skoash.Game {
       recipient: null,
       skribbleData: null,
     });
-  }
-
-  trigger(event, opts) {
-    switch (event) {
-    case 'save':
-      return this.save();
-    case 'getMedia':
-      return this.getMedia(opts.path);
-    case 'getRules':
-      return this.getRules(opts);
-    case 'loadSkribble':
-      return this.loadSkribble(opts);
-    }
-
-    return super.trigger(event, opts);
   }
 
   loadSkribble(opts) {
@@ -115,6 +91,7 @@ class SkribbleGame extends skoash.Game {
   getMedia(path) {
     var pathArray, self = this;
 
+    if (typeof path === 'object') path = path.path;
     path = path || 'skribble/menu';
     pathArray = path.split('/');
     pathArray.shift();
@@ -149,32 +126,11 @@ class SkribbleGame extends skoash.Game {
         d.items.forEach(item => {
           if (item.asset_type === 'folder' && item.name) {
             self.getMedia(path + '/' + item.name);
-          } else {
-            currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
           }
+          currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
         });
       }
-
       self.updateData(opts);
-    });
-  }
-
-  getData(opts) {
-    var names = [
-      'getFriends',
-      'getFriend',
-      'markAsRead',
-    ];
-
-    if (names.indexOf(opts.name) === -1) {
-      opts.name = 'getData';
-    }
-
-    return this.emit(opts).then(data => {
-      this.updateData({
-        data,
-        callback: opts.callback,
-      });
     });
   }
 
@@ -192,7 +148,6 @@ class SkribbleGame extends skoash.Game {
 
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
-      delete recipient.src;
     } else if (typeof recipient === 'string') {
       if (this.state.data && this.state.data.user) {
         this.state.data.user.some(friend => {
@@ -295,6 +250,12 @@ var Skribble = (
     }}
     loader={<Loader />}
     assets={[
+      <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Antipation-Otter3.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/proud-of-you2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Peeking-through-Otter2.gif" />,
       <div className="background-1" />,
       <div className="background-2" />,
       <div className="background-3" />,
@@ -306,9 +267,16 @@ var Skribble = (
       this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
       this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
 
-      this.state.data.collisionWarning = {
-        show: true
-      };
+      this.updateState({
+        path: ['collisionWarning'],
+        data: {
+          show: true
+        }
+      });
+    }}
+    onReady={function () {
+      this.getMediaOnReady();
+      this.getFriends();
     }}
     renderMenu={function () {
       return (
@@ -352,6 +320,31 @@ var Skribble = (
       } else if (opts.name === 'showLimitWarning') {
         this.showLimitWarning();
       }
+    }}
+    getTriggerEvents={function (opts = {}) {
+      opts.save = this.save;
+      opts.getMedia = this.getMedia;
+      opts.getRules = this.getRules;
+      opts.loadSkribble = this.loadSkribble;
+      return opts;
+    }}
+    getData={function (opts) {
+      var names = [
+        'getFriends',
+        'getFriend',
+        'markAsRead',
+      ];
+
+      if (names.indexOf(opts.name) === -1) {
+        opts.name = 'getData';
+      }
+
+      return this.emit(opts).then(data => {
+        this.updateData({
+          data,
+          callback: opts.callback,
+        });
+      });
     }}
   />
 );
