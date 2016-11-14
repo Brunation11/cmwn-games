@@ -91,9 +91,9 @@
       }
 
       $answers: tire link cup phone tooth;
-      $lefts:    260  260 260   260   260;
-      $bottoms:   60   60  60    60    60;
-      $scales:   1.2  1.2 1.2   1.2   1.2;
+      $lefts:    260  330 376   260   380;
+      $bottoms:   60   80 117    60    74;
+      $scales:   1.2    1  .5   1.2    .3;
       &.transition {
         @for $i from 1 through 5 {
           &.#{nth($answers, $i)}:before {
