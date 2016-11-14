@@ -150,6 +150,10 @@
     transition: opacity .5s;
     margin: 15px;
 
+    &.DRAGGING {
+      z-index: 3;
+    }
+
     &.CORRECT {
       opacity: 0;
     }
@@ -163,7 +167,7 @@
       transform: translateX(-50%) translateY(-50%);
       width: 101px;
       height: 101px;
-      background-image: url($media-server + 'SpritesAnimations/sprite.game2.png');
+      background-image: url($media-server + 'SpritesAnimations/game-2-sprites.png');
       background-repeat: no-repeat;
       background-size: 3000px;
     }
@@ -179,8 +183,8 @@
 
       &[data-message=#{nth($messages, $i)}]:hover:before {
         width: 130px;
-        height: 122px;
-        background-position: -#{40 + 215 * ($i - 1)}px -255px;
+        height: 124px;
+        background-position: -#{40 + 215 * ($i - 1)}px -253px;
       }
     }
   }
