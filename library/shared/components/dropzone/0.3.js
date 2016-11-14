@@ -69,8 +69,9 @@ class Dropzone extends skoash.Component {
     var self = this;
     super.start();
     this.prepareDropzones();
-    if (this.state.dataLoaded) return;
+
     if (self.loadData && typeof self.loadData === 'object') {
+      this.setState({loadingData: true});
       _.forIn(self.loadData, (ref, key) => {
         if (ref.ref && ref.state) {
           this.loadDragNDropData(ref, key);
@@ -79,9 +80,7 @@ class Dropzone extends skoash.Component {
         }
       });
 
-      this.setState({
-        dataLoaded: true
-      });
+      this.setState({loadingData: false});
 
       this.updateGameState({
         path: 'game',
@@ -120,7 +119,7 @@ class Dropzone extends skoash.Component {
   }
 
   dragRespond(draggable) {
-    if (this.audio.drag && !this.loadData) {
+    if (this.audio.drag && !this.state.loadingData) {
       this.audio.drag.play();
     }
 
@@ -167,7 +166,7 @@ class Dropzone extends skoash.Component {
     // respond to correct drop
     draggable.markCorrect();
 
-    if (this.audio.correct && !this.loadData) {
+    if (this.audio.correct && !this.state.loadingData) {
       this.audio.correct.play();
     }
 
