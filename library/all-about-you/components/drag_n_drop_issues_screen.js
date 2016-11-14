@@ -65,7 +65,7 @@ export default function (props, ref, key) {
       }
     });
 
-    if (complete) this.complete();
+    if (complete || _.get(props, 'data.game.complete', false)) this.complete();
   }
 
   return (

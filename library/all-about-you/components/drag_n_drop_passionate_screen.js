@@ -42,7 +42,7 @@ export default function (props, ref, key) {
       content: draggable
     });
 
-    if (!this.state.loadingData) {
+    if (!this.state.loadingData && !this.state.loadedData) {
       this.updateGameState({
         path: 'sfx',
         data: {
@@ -65,7 +65,7 @@ export default function (props, ref, key) {
       }
     });
 
-    if (complete) this.complete();
+    if (complete || _.get(props, 'data.game.complete', false)) this.complete();
   }
 
   return (

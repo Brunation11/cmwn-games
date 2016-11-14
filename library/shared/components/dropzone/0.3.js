@@ -71,16 +71,24 @@ class Dropzone extends skoash.Component {
     this.prepareDropzones();
 
     if (self.loadData && typeof self.loadData === 'object') {
-      this.setState({loadingData: true});
-      _.forIn(self.loadData, (ref, key) => {
-        if (ref.ref && ref.state) {
-          this.loadDragNDropData(ref, key);
-        } else {
-          this.loadMultiAnswerData(ref, key);
-        }
-      });
+      if (!this.state.loadedData) {
+        this.setState({
+          loadingData: true
+        }, () => {
+          _.forIn(self.loadData, (ref, key) => {
+            if (ref.ref && ref.state) {
+              this.loadDragNDropData(ref, key);
+            } else {
+              this.loadMultiAnswerData(ref, key);
+            }
+          });
 
-      this.setState({loadingData: false});
+          this.setState({
+            loadingData: false,
+            loadedData: true
+          });
+        });
+      }
 
       this.updateGameState({
         path: 'game',

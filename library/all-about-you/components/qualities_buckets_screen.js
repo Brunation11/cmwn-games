@@ -7,15 +7,6 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
-  function dragRespond(draggable) {
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'drag'
-      }
-    });
-  };
-
   function correctRespond(draggable, dropzoneKey) {
     var dropzone, complete = true, content, totalComplete = 0, message;
     dropzone = this.refs[`dropzone-${dropzoneKey}`];
@@ -51,7 +42,7 @@ export default function (props, ref, key) {
       if (totalComplete !== this.draggables.length) complete = false;
     });
 
-    if (complete) this.complete();
+    if (complete || _.get(props, 'data.game.complete', false)) this.complete();
   }
 
   return (
@@ -63,7 +54,7 @@ export default function (props, ref, key) {
       loadData={loadData}
       id="qualities-buckets"
     >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_DropBuckets.mp3" />
+      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Buckets.mp3" />
       <div ref="frame" className="frame animated"></div>
       <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_6/img_06_penguin-01.png" />
 
@@ -80,7 +71,6 @@ export default function (props, ref, key) {
           });
         }}
       >
-        <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
         <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
       </MediaCollection>
 
