@@ -28,7 +28,14 @@ export default function (props, ref, key) {
       content
     });
 
-    if (!this.loadData) {
+    if (!this.state.loadingData) {
+      this.updateGameState({
+        path: 'sfx',
+        data: {
+          play: 'correct'
+        }
+      });
+
       this.updateGameState({
         path: 'reveal',
         data: {

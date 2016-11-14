@@ -42,7 +42,7 @@ export default function (props, ref, key) {
       content: draggable
     });
 
-    if (!this.loadData) {
+    if (!this.state.loadingData) {
       this.updateGameState({
         path: 'sfx',
         data: {
