@@ -24,7 +24,13 @@ class Reveal extends skoash.Component {
 
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
+    var currentlyOpen = this.state.currentlyOpen;
+
+    if (!this.props.allowMultipleOpen) {
+      currentlyOpen = [message];
+    } else if (currentlyOpen.indexOf(message) === -1) {
+      currentlyOpen = currentlyOpen.concat(message);
+    }
 
     self.setState({
       open: true,
@@ -50,16 +56,16 @@ class Reveal extends skoash.Component {
       }, 2000);
     }
 
-    if (this.props.openTarget) {
-      this.updateGameState({
-        path: this.props.openTarget,
+    if (self.props.openTarget) {
+      self.updateGameState({
+        path: self.props.openTarget,
         data: {
           open: '' + message
         }
       });
     }
 
-    self.callProp('onOpen', message);
+    self.props.onOpen.call(self, message);
   }
 
   close(opts = {}) {
@@ -77,7 +83,7 @@ class Reveal extends skoash.Component {
       this.audio['close-sound'].play();
     }
 
-    this.callProp('onClose');
+    this.props.onClose.call(this, prevMessage);
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -164,6 +170,8 @@ class Reveal extends skoash.Component {
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.openReveal != null && props.openReveal !== this.props.openReveal) {
       this.open(props.openReveal);
     }
@@ -189,8 +197,7 @@ class Reveal extends skoash.Component {
   }
 
   getClassNames() {
-    var classes;
-    var open = 'open-none ';
+    var classes, open = 'open-none ';
 
     if (this.state.open) {
       open = '';
@@ -200,7 +207,7 @@ class Reveal extends skoash.Component {
       open += 'OPEN';
     }
 
-    var classes = classNames(
+    classes = classNames(
       'reveal',
       open,
       super.getClassNames(),
@@ -231,6 +238,9 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  onOpen: _.noop,
+  onClose: _.noop,
+  allowMultipleOpen: false,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

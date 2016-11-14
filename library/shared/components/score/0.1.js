@@ -12,6 +12,7 @@ class Score extends skoash.Component {
   }
 
   checkComplete() {
+    if (!this.props.checkComplete || !this.state.ready || !this.requireForComplete) return;
     if (!this.props.max) return;
     if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) && !this.state.complete) this.complete();
   }
@@ -50,21 +51,12 @@ class Score extends skoash.Component {
     increment = _.isFinite(increment) ? increment : _.isFinite(this.props.increment) ? this.props.increment : 1;
     if (!_.isFinite(increment)) throw 'increment must be finite';
 
-    this.setState({
-      score: this.state.score + increment
-    }, this.checkComplete);
-
     this.updateScore(increment);
   }
 
   down(increment) {
     increment = _.isFinite(increment) ? increment : _.isFinite(this.props.downIncrement) ? this.props.downIncrement : _.isFinite(this.props.increment) ? this.props.increment : 1;
-
     if (!_.isFinite(increment)) throw 'increment must be finite';
-
-    this.setState({
-      score: this.state.score - increment
-    }, this.checkComplete);
 
     this.updateScore(-1 * increment);
   }
@@ -81,7 +73,7 @@ class Score extends skoash.Component {
       });
 
       this.checkScore(this.props);
-      this.callProp('onUpdateScore');
+      this.props.onUpdateScore.call(this, this.state.score);
     });
   }
 
@@ -101,11 +93,13 @@ class Score extends skoash.Component {
       score
     }, () => {
       this.checkScore(props);
-      this.callProp('onUpdateScore', score);
+      this.props.onUpdateScore.call(this, score);
     });
   }
 
   componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
     if (props.correct !== this.props.correct ||
       props.incorrect !== this.props.incorrect) {
       this.setScore(props);
@@ -115,17 +109,17 @@ class Score extends skoash.Component {
   getClassNames() {
     return classNames(
       'score',
-      `score-${this.props.correct || this.state.score}`,
+      `score-${this.state.score}`,
       super.getClassNames()
     );
   }
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.props.correct || this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.state.score}>
         {this.props.leadingContent}
         <span>
-          {this.props.correct || this.state.score}
+          {this.state.score}
         </span>
         {this.props.children}
       </div>
@@ -138,6 +132,7 @@ Score.defaultProps = _.defaults({
   startingScore: 0,
   correct: 0,
   incorrect: 0,
+  onUpdateScore: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Score;

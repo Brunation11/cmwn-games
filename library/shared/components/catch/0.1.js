@@ -38,17 +38,19 @@ class Catch extends skoash.Component {
   }
 
   onResize() {
-    var zoom = skoash.trigger('getState').scale;
-    var edges = this.getEdges(this.bucketNode);
-    var bucketWidth = edges.right - edges.left;
-    var leftBound = this.bucketNode.offsetParent ? this.bucketNode.offsetParent.offsetWidth - bucketWidth : 0;
+    skoash.trigger('getState').then(state => {
+      var zoom = state.scale;
+      var edges = this.getEdges(this.bucketNode);
+      var bucketWidth = edges.right - edges.left;
+      var leftBound = this.bucketNode.offsetParent ? this.bucketNode.offsetParent.offsetWidth - bucketWidth : 0;
 
-    this.setState({
-      bucketTop: edges.top,
-      bucketBottom: edges.bottom,
-      bucketWidth,
-      leftBound,
-      zoom
+      this.setState({
+        bucketTop: edges.top,
+        bucketBottom: edges.bottom,
+        bucketWidth,
+        leftBound,
+        zoom
+      });
     });
   }
 
@@ -236,7 +238,7 @@ class Catch extends skoash.Component {
 
 Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
   catchables: [],
-  bucketInBounds: true
+  bucketInBounds: true,
 });
 
 export default Catch;

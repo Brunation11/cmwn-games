@@ -1,13 +1,10 @@
 import shortid from 'shortid';
 import classNames from 'classnames';
 
-import Selectable from '../selectable/0.1';
+import Selectable from 'shared/components/selectable/0.1';
+import ScrollArea from 'shared/components/scroll_area/0.1';
 
 class ItemDrawer extends Selectable {
-  constructor() {
-    super();
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     var items, quickCheck, itemsChanged;
 
@@ -35,9 +32,10 @@ class ItemDrawer extends Selectable {
   }
 
   start() {
-    var items, selectedItem, selectFunction, classes = {}, self = this;
+    var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
 
-    selectFunction = this.state.selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
+    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+    selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
     items = self.props.data || [];
 
@@ -49,23 +47,22 @@ class ItemDrawer extends Selectable {
 
     _.each(items, (item, key) => {
       if (self.props.selectedItem && JSON.stringify(item) === selectedItem) {
-        classes[key] = self.state.selectClass;
+        classes[key] = selectClass;
       }
     });
 
     if (this.props.selectOnStart) {
-      classes[this.props.selectOnStart] = this.state.selectClass;
+      classes[this.props.selectOnStart] = selectClass;
     }
 
     this.setState({
       started: true,
       classes,
+      selectClass,
       selectFunction,
       categoryName: '',
       category: '',
     });
-
-    this.refs.list.scrollTop = 0;
 
     _.each(self.refs, ref => {
       if (typeof ref.start === 'function') ref.start();
@@ -183,12 +180,14 @@ class ItemDrawer extends Selectable {
         src = item.items[0].thumb || item.items[0].src;
       }
 
-      item.items.some(subitem => {
-        if (subitem.name === '_thumb.png') {
-          src = subitem.thumb || subitem.src;
-          return true;
-        }
-      });
+      if (!src) {
+        item.items.some(subitem => {
+          if (subitem.name === '_thumb.png') {
+            src = subitem.thumb || subitem.src;
+            return true;
+          }
+        });
+      }
     }
 
     if (src) {
@@ -231,7 +230,9 @@ class ItemDrawer extends Selectable {
       }
       if (aVal < bVal) return -1;
       return 1;
-    }).map((item, key) =>
+    }).filter(item =>
+      item.name !== '_thumb.png'
+    ).map((item, key) =>
       <skoash.ListItem
         className={this.getClass(key, item)}
         ref={key}
@@ -249,14 +250,20 @@ class ItemDrawer extends Selectable {
       <div className={this.getClassNames()}>
         <div className="item-drawer-container">
           <h2>{this.getCategory()}</h2>
-          <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
-            {this.renderList()}
-          </ul>
+          <ScrollArea ref="scroll-area" img={this.props.scrollbarImg}>
+            <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
+              {this.renderList()}
+            </ul>
+          </ScrollArea>
         </div>
         {this.renderButtons()}
       </div>
     );
   }
 }
+
+ItemDrawer.defaultProps = _.defaults({
+  scrollbarImg: ''
+}, Selectable.defaultProps);
 
 export default ItemDrawer;

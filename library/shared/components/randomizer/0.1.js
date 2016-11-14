@@ -1,23 +1,14 @@
-import shortid from 'shortid';
 import classNames from 'classnames';
 
 class Randomizer extends skoash.Component {
-  constructor() {
-    super();
-  }
-
-  start() {
-    super.start();
-  }
-
   getAll() {
     return _.shuffle(this.props.bin);
   }
 
   get(amount = 1) {
-    var bin = [];
+    var items, bin = [];
 
-    if (this.props.remain) {
+    if (this.props.remain && this.state.bin) {
       bin = this.state.bin;
     }
 
@@ -25,11 +16,13 @@ class Randomizer extends skoash.Component {
       bin = bin.concat(_.shuffle(this.props.bin));
     }
 
+    items = bin.splice(0, amount);
+
     if (this.props.remain) {
       this.setState({bin});
     }
 
-    return bin.slice(0, amount);
+    return items;
   }
 
   getClassNames() {
@@ -46,7 +39,7 @@ class Randomizer extends skoash.Component {
           {...li.props}
           data-ref={ref}
           ref={ref}
-          key={shortid(key)}
+          key={key}
         />
       );
     });
@@ -63,7 +56,8 @@ class Randomizer extends skoash.Component {
 
 Randomizer.defaultProps = _.defaults({
   bin: [],
-  remain: false
+  remain: false,
+  shouldComponentUpdate: () => false,
 }, skoash.Component.defaultProps);
 
 export default Randomizer;

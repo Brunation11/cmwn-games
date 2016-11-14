@@ -149,7 +149,6 @@ button {
 }
 
 body.DEMO .reveal-component .items li div .close-reveal {
-  opacity: 1;
   cursor: pointer;
 
   &:hover {
@@ -259,10 +258,6 @@ p {
   left: 1%;
 }
 
-.screen .prev-screen:hover {
-
-}
-
 // the following css is specific to this game
 
 .dropzone + ul {
@@ -319,19 +314,24 @@ p {
     position: absolute;
     right: 5px;
     bottom: 10px;
-    opacity: 1;
     cursor: pointer;
-    transition: opacity 1s;
+    opacity: 0;
+    transition: opacity 3s, z-index 0s .6s;
   }
 
   &.OPEN {
     opacity: 1;
     z-index: 1;
     transition: opacity .5s;
+
+    .close-reveal {
+      opacity: 1;
+    }
   }
 }
 
-.VOICE-OVER:not(.DEMO) {
+.VOICE-OVER:not(.DEMO),
+.SFX:not(.DEMO) {
   .draggable,
   .selectable > * {
     pointer-events: none;
@@ -829,8 +829,7 @@ p {
     top: 3%;
     z-index: 1;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-position: 135px -11px;
     }
   }
@@ -964,43 +963,8 @@ p {
       height: 10%;
       z-index: 1;
       background-position: 777px -82px;
-      transition: visibility 1s;
     }
   }
-
-  // .intro.OPEN {
-  //   position: absolute;
-  //   display: inline-block;
-  //   width: 100%;
-  //   height: 100%;
-  //   top: 0;
-  //   left: 50%;
-  //   transform: translateX(-50%);
-  //   background: rgba(0, 0, 0, 0.25) url(../media/images/frame.png) no-repeat;
-  //   background-size: 55%;
-  //   background-position: 210px 137px;
-  //   z-index: 1;
-
-  //   h3 {
-  //     text-align: center;
-  //     color: #000;
-  //     font-size: 25px;
-  //     top: 42%;
-  //     left: 30%;
-  //     position: absolute;
-  //   }
-
-  //   .close-reveal {
-  //     position: absolute;
-  //     left: 65%;
-  //     top: 70%;
-  //     width: 7%;
-  //     height: 10%;
-  //     z-index: 1;
-  //     background-position: 777px -82px;
-  //     transition: visibility 1s;
-  //   }
-  // }
 }
 
 #responsible-flusher {
