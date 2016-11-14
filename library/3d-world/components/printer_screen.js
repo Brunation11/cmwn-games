@@ -33,15 +33,39 @@ const targets = [
 ];
 
 export default function (props, ref, key) {
-  var startGame,
+  var onStart,
+    startGame,
     closeReveal,
     onCorrect,
     onPrinted,
     reset,
     onTransitionEnd;
 
-  startGame = _.noop;
-  closeReveal = _.noop;
+  onStart = function () {
+    _.each(this.refs.bottom.refs.slider.refs, slide => {
+      _.each(slide.refs, draggable => {
+        draggable.markIncorrect();
+      });
+    });
+  };
+
+  startGame = function () {
+    skoash.trigger('updateState', {
+      path: 'reveal',
+      data: {
+        open: 'drag-it-here',
+      },
+    });
+  };
+
+  closeReveal = function () {
+    skoash.trigger('updateState', {
+      path: 'reveal',
+      data: {
+        close: true,
+      },
+    });
+  };
 
   onCorrect = function (dropped) {
     skoash.trigger('updateState', {
@@ -68,14 +92,13 @@ export default function (props, ref, key) {
     } else {
       dropped.markIncorrect();
       reset();
+      skoash.trigger('updateState', {
+        path: 'sfx',
+        data: {
+          playing: 'incorrect',
+        },
+      });
     }
-
-    skoash.trigger('updateState', {
-      path: 'sfx',
-      data: {
-        playing: false,
-      },
-    });
   };
 
   reset = function () {
@@ -89,13 +112,20 @@ export default function (props, ref, key) {
     });
   };
 
-  onTransitionEnd = _.throttle(function () {
-    reset();
+  onTransitionEnd = function () {
+    if (!_.get(props, 'data.transition')) return;
+    if (_.get(props, 'data.setTarget', 0) < 4) reset();
     skoash.trigger('updateState', {
       path: 'setTarget',
       data: _.get(props, 'data.setTarget', 0) + 1,
     });
-  }, 500);
+    skoash.trigger('updateState', {
+      path: 'sfx',
+      data: {
+        playing: 'correct',
+      },
+    });
+  };
 
   return (
     <skoash.Screen
@@ -103,6 +133,7 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="printer"
+      onStart={onStart}
     >
       <skoash.Image
         className="hidden"
@@ -134,23 +165,37 @@ export default function (props, ref, key) {
           <skoash.Audio
             type="sfx"
             playTarget="layer1"
+            completeTarget="layer1"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer2"
+            completeTarget="layer2"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer3"
+            completeTarget="layer3"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             onComplete={onPrinted}
             sprite={[0, 1700]}
           />
         </skoash.MediaSequence>
+        <skoash.Audio
+          type="sfx"
+          ref="correct"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct2.mp3'}
+        />
+        <skoash.Audio
+          type="sfx"
+          ref="incorrect"
+          complete
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect2.mp3'}
+        />
       </MediaCollection>
       <skoash.Component className="targets">
         <div>
@@ -159,6 +204,8 @@ export default function (props, ref, key) {
         </div>
         <Target
           setTarget={_.get(props, 'data.setTarget', 0)}
+          checkComplete={false}
+          complete={_.get(props, 'data.setTarget', 0) > 4}
           targets={[
             <skoash.Component name={targets[0]} />,
             <skoash.Component name={targets[1]} />,
@@ -175,17 +222,20 @@ export default function (props, ref, key) {
             answers={objects}
             className={classNames(_.get(props, 'data.printed.props.message'), {
               transition: _.get(props, 'data.transition'),
+              layer1: _.get(props, 'data.layer1.playing'),
+              layer2: _.get(props, 'data.layer2.playing'),
+              layer3: _.get(props, 'data.layer3.playing'),
             })}
             onTransitionEnd={onTransitionEnd}
           />
         ]}
         onCorrect={onCorrect}
       />
-      <skoash.Component className="bottom">
+      <skoash.Component ref="bottom" className="bottom">
         <div>
           <span>DRAG AND DROP</span> the item onto the printer above
         </div>
-        <Slider>
+        <Slider ref="slider">
           <skoash.Component>
             <Draggable
               returnOnIncorrect
@@ -235,7 +285,6 @@ export default function (props, ref, key) {
               returnOnIncorrect
               stayOnCorrect={false}
               message={objects[8]}
-              message="tire"
             />
             <Draggable
               returnOnIncorrect
@@ -268,6 +317,10 @@ export default function (props, ref, key) {
         </Slider>
       </skoash.Component>
       <Reveal
+        openTarget="reveal"
+        openOnStart="instructions"
+        openReveal={_.get(props, 'data.reveal.open')}
+        closeReveal={_.get(props, 'data.reveal.close')}
         list={[
           <skoash.Component
             type="li"
@@ -281,13 +334,12 @@ export default function (props, ref, key) {
               3D printer that is the solution<br/>
               for each situation.
             </div>
-            <button onClick={startGame}>
-              Start Game
-            </button>
+            <button onClick={startGame} />
           </skoash.Component>,
           <skoash.Component
             type="li"
             data-ref="drag-it-here"
+            onClick={closeReveal}
           >
             <div>
               Drag it here.<br/>
@@ -352,7 +404,7 @@ export default function (props, ref, key) {
               TRY<br/>
               AGAIN
             </h3>
-            <button onClick={startGame}>
+            <button onClick={closeReveal}>
               Start Game
             </button>
           </skoash.Component>,
