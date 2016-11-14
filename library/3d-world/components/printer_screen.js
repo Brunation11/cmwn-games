@@ -65,6 +65,12 @@ export default function (props, ref, key) {
         close: true,
       },
     });
+
+    if (_.get(props, 'data.setTarget', 0) > 4) {
+      skoash.trigger('goto', {
+        index: parseInt(props.index, 10) + 1,
+      });
+    }
   };
 
   onCorrect = function (dropped) {
@@ -114,16 +120,22 @@ export default function (props, ref, key) {
 
   onTransitionEnd = function () {
     if (!_.get(props, 'data.transition')) return;
-    if (_.get(props, 'data.setTarget', 0) < 4) reset();
-    skoash.trigger('updateState', {
-      path: 'setTarget',
-      data: _.get(props, 'data.setTarget', 0) + 1,
-    });
     skoash.trigger('updateState', {
       path: 'sfx',
       data: {
         playing: 'correct',
       },
+    });
+    skoash.trigger('updateState', {
+      path: 'reveal',
+      data: {
+        open: _.get(props, 'data.printed.props.message'),
+      },
+    });
+    if (_.get(props, 'data.setTarget', 0) < 4) reset();
+    skoash.trigger('updateState', {
+      path: 'setTarget',
+      data: _.get(props, 'data.setTarget', 0) + 1,
     });
   };
 
@@ -154,6 +166,18 @@ export default function (props, ref, key) {
       <skoash.Image
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.brokenobj.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.winframe.png'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
+      />
+      <skoash.Image
+        className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.sparkle.png'}
       />
       <MediaCollection
         play={_.get(props, 'data.sfx.playing')}
@@ -195,6 +219,40 @@ export default function (props, ref, key) {
           ref="incorrect"
           complete
           src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect2.mp3'}
+        />
+      </MediaCollection>
+      <MediaCollection
+        play={_.get(props, 'data.reveal.open')}
+      >
+        <skoash.Audio
+          type="voiceOver"
+          ref="instructions"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_item.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref={targets[0]}
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level1_great.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref={targets[1]}
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level2_amazing.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref={targets[2]}
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level3_excellent.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref={targets[3]}
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level4_one_more.mp3'}
+        />
+        <skoash.Audio
+          type="voiceOver"
+          ref={targets[4]}
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level5_wizard.mp3'}
         />
       </MediaCollection>
       <skoash.Component className="targets">
@@ -347,7 +405,10 @@ export default function (props, ref, key) {
               to continue.
             </div>
           </skoash.Component>,
-          <skoash.Component type="li">
+          <skoash.Component
+            type="li"
+            ref={targets[0]}
+          >
             <h3>
               GREAT JOB!
             </h3>
@@ -355,11 +416,12 @@ export default function (props, ref, key) {
               Let’s see if you can<br/>
               figure out this next one!
             </div>
-            <button onClick={closeReveal}>
-              Continue
-            </button>
+            <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component type="li">
+          <skoash.Component
+            type="li"
+            ref={targets[1]}
+          >
             <h3>
               YOU HAVE AMAZING<br/>
               PROBLEM-SOLVING<br/>
@@ -368,11 +430,12 @@ export default function (props, ref, key) {
             <div>
               But this one might be harder…
             </div>
-            <button onClick={closeReveal}>
-              Continue
-            </button>
+            <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component type="li">
+          <skoash.Component
+            type="li"
+            ref={targets[2]}
+          >
             <h3>
               EXCELLENT<br/>
               WORK!
@@ -380,11 +443,12 @@ export default function (props, ref, key) {
             <div>
               Can you solve this next one?
             </div>
-            <button onClick={closeReveal}>
-              Continue
-            </button>
+            <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component type="li">
+          <skoash.Component
+            type="li"
+            ref={targets[3]}
+          >
             <h3>
               YOU’VE DONE<br/>
               IT AGAIN!
@@ -392,9 +456,22 @@ export default function (props, ref, key) {
             <div>
               Just one more to go!
             </div>
-            <button onClick={closeReveal}>
-              Continue
-            </button>
+            <button onClick={closeReveal} />
+          </skoash.Component>,
+          <skoash.Component
+            type="li"
+            ref={targets[4]}
+          >
+            <h3>
+              YOU’RE A<br/>
+              3D PRINTING<br/>
+              WIZARD
+            </h3>
+            <div>
+              and have solved all the problems!<br/>
+              Thanks for playing!
+            </div>
+            <button onClick={closeReveal} />
           </skoash.Component>,
           <skoash.Component
             type="li"
@@ -404,9 +481,7 @@ export default function (props, ref, key) {
               TRY<br/>
               AGAIN
             </h3>
-            <button onClick={closeReveal}>
-              Start Game
-            </button>
+            <button onClick={closeReveal} />
           </skoash.Component>,
         ]}
       />
