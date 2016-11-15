@@ -136,11 +136,11 @@ class SkribbleGame extends skoash.Game {
 
   showCollisionWarning() {
     if (!this.state.data.collisionWarning.show) return;
-    this.openMenu({id: 'collisionWarning'});
+    this.navigator.openMenu({id: 'collisionWarning'});
   }
 
   showLimitWarning() {
-    this.openMenu({id: 'limitWarning'});
+    this.navigator.openMenu({id: 'limitWarning'});
   }
 
   addRecipient(recipient, cb) {
@@ -206,7 +206,7 @@ class SkribbleGame extends skoash.Game {
 
   saveButton() {
     this.save();
-    this.openMenu({id: 'save'});
+    this.navigator.openMenu({id: 'save'});
   }
 
   renderRecipient() {
@@ -285,8 +285,8 @@ var Skribble = (
             <button className="save" onClick={this.saveButton.bind(this)} />
             <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
             <button className="create" onClick={this.create.bind(this)} />
-            <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
-            <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+            <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
+            <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
           </div>
           <ul className="menu recipient">
             <li onClick={this.clickRecipient.bind(this)}>
