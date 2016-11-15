@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   context: __dirname + '/library',
   entry: null,
-  devtool: 'source-map',
+  devtool: 'cheap-module-inline-source-map',
   resolve: {
     root: [path.resolve(__dirname, 'library'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js'],
@@ -21,7 +21,7 @@ module.exports = {
       loader: ['babel'],
       exclude: [/bower_components/, /node_modules/],
       query: {
-          presets: ['es2015', 'react', 'stage-0']
+        presets: ['es2015', 'react', 'stage-0']
       }
     }]
   },

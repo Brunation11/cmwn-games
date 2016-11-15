@@ -1,8 +1,9 @@
 class MediaCollection extends skoash.Component {
   play(ref) {
-    if (this.refs[ref]) this.refs[ref].play();
-
-    this.props.onPlay.call(this, ref);
+    if (this.refs[ref]) {
+      this.refs[ref].play();
+      this.props.onPlay.call(this, ref);
+    }
   }
 
   componentWillReceiveProps(props) {

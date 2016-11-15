@@ -11,7 +11,8 @@ class Labyrinth extends skoash.Component {
   constructor() {
     super();
 
-    this.update = _.debounce(this.update.bind(this), 10);
+    this.update = _.throttle(this.update.bind(this), 10);
+    this.playCollideSound = _.throttle(this.playCollideSound.bind(this), 500);
   }
 
   onReady() {
@@ -38,8 +39,24 @@ class Labyrinth extends skoash.Component {
     });
   }
 
+  start() {
+    super.start();
+
+    this.setState({
+      playerX: this.props.startX,
+      playerY: this.props.startY,
+    });
+
+    this.incompleteRefs();
+
+    _.each(this.items, item => item.enable());
+    _.each(this.enemies, enemy => enemy.enable());
+  }
+
   update() {
     var hasTrue, enemy, item, playerX = this.state.playerX, playerY = this.state.playerY;
+
+    if (!this[PLAYER]) return;
 
     if (this.props.input.up) playerY -= this.props.speed;
     if (this.props.input.down) playerY += this.props.speed;
@@ -51,6 +68,7 @@ class Labyrinth extends skoash.Component {
     item = this.getCollidingObject(this.items, playerX, playerY);
 
     if (this.isColliding(playerX, playerY)) {
+      this.playCollideSound();
       this.props.onCollide.call(this);
     } else if (enemy) {
       this.props.onCollideEnemy.call(this, enemy);
@@ -74,6 +92,9 @@ class Labyrinth extends skoash.Component {
 
     this[BUFFER].width = offset.width / this.props.scale;
     this[BUFFER].height = offset.height / this.props.scale;
+
+    if (!this[BUFFER].width || !this[BUFFER].height) return false;
+
     this[CONTEXT].clearRect(0, 0, this[BUFFER].width, this[BUFFER].height);
     this[CONTEXT].drawImage(this[MAP], 0, 0, this[BUFFER].width, this[BUFFER].height);
 
@@ -89,33 +110,39 @@ class Labyrinth extends skoash.Component {
     );
   }
 
+  playCollideSound() {
+    this.playMedia('collide');
+  }
+
   getCollidingObject(objects, playerX, playerY) {
-    var item, offset;
-    offset = this[PLAYER].getBoundingClientRect();
+    var offset = {
+      width: this[PLAYER].offsetWidth,
+      height: this[PLAYER].offsetHeight,
+    };
 
-    _.some(objects, i => {
-      if (i.canInteract() && this.doIntersect(playerX, playerY, offset, i)) {
-        item = i;
-        return true;
-      }
-      return false;
-    });
+    if (!offset.width || !offset.height) return;
 
-    return item;
+    return _.find(objects, i => i.canInteract() && this.doIntersect(playerX, playerY, offset, i));
   }
 
   doIntersect(playerX, playerY, offset, item) {
-    var itemOffset = item.DOM.getBoundingClientRect();
+    var itemOffset = {
+      left: item.DOM.offsetLeft,
+      top: item.DOM.offsetTop,
+      width: item.DOM.offsetWidth,
+      height: item.DOM.offsetHeight,
+    };
+
     return skoash.util.doIntersect([
       {x: playerX, y: playerY},
       {x: playerX + offset.width, y: playerY},
       {x: playerX + offset.width, y: playerY + offset.height},
       {x: playerX, y: playerY + offset.height},
     ], [
-      {x: itemOffset.left / this.props.scale, y: itemOffset.top / this.props.scale},
-      {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: itemOffset.top / this.props.scale},
-      {x: (itemOffset.left + itemOffset.width) / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
-      {x: itemOffset.left / this.props.scale, y: (itemOffset.top + itemOffset.height) / this.props.scale},
+      {x: itemOffset.left, y: itemOffset.top},
+      {x: (itemOffset.left + itemOffset.width), y: itemOffset.top},
+      {x: (itemOffset.left + itemOffset.width), y: (itemOffset.top + itemOffset.height)},
+      {x: itemOffset.left, y: (itemOffset.top + itemOffset.height)},
     ]);
   }
 
@@ -152,6 +179,7 @@ class Labyrinth extends skoash.Component {
           className={IMAGE}
           src={this.props.img}
         />
+        {this.renderContentList('assets')}
         {this.renderContentList('items')}
         {this.renderContentList('enemies')}
         <div
