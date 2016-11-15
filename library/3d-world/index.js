@@ -50,6 +50,8 @@ var ThreeDWorld = (
       quit: QuitScreen,
     }}
     assets={[
+      <skoash.Font name="Molot" />,
+      <skoash.Font name="Source Sans Pro" />,
       <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
       <skoash.Audio ref="next" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Next.mp3'} />,
       <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
@@ -61,11 +63,12 @@ var ThreeDWorld = (
       <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG4.mp3'} loop />,
       <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG5.mp3'} loop />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.jpg'} />,
-      <skoash.Image className="hidden" src="media/_backgrounds/bg-03-game1-congratulations.jpg" />,
-      <skoash.Image className="hidden" src="media/_backgrounds/bg-04-game2-.jpg" />,
+      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bk.1.jpg'} />,
+      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'} />,
+      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.win.jpg'} />,
       <div className="background bkg-imagine" />,
       <div className="background bkg-congratulations" />,
-      <div className="background bkg-04" />,
+      <div className="background bkg-printer" />,
     ]}
     getBackgroundIndex={(index, id) => {
       switch (id) {

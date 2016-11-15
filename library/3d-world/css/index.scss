@@ -3,9 +3,9 @@
 
 @font-face {
   font-family: 'Molot';
-  src: url('../media/' + 'Fonts/Molot.eot'); /* IE9 Compat Modes */
-  src: url('../media/' + 'Fonts/Molot.woff') format('woff'), /* Modern Browsers */
-       url('../media/' + 'Fonts/Molot.ttf')  format('truetype'); /* Safari, Android, iOS */
+  src: url($media-server + 'Fonts/Molot.eot'); /* IE9 Compat Modes */
+  src: url($media-server + 'Fonts/Molot.woff') format('woff'), /* Modern Browsers */
+       url($media-server + 'Fonts/Molot.ttf')  format('truetype'); /* Safari, Android, iOS */
   font-style:   normal;
   font-weight:  400;
 }
@@ -35,7 +35,7 @@ body, body > div, .skoash-game {
   height: 100%;
   margin: auto;
   font-size: 20px;
-  background: url(../media/_backgrounds/title-.jpg) bottom center no-repeat;
+  background: url($media_server + 'ImageAssets/bk.1.jpg') bottom center no-repeat;
   background-size: cover;
 
 
@@ -54,10 +54,10 @@ body, body > div, .skoash-game {
       background-image: url($media_server + 'ImageAssets/bkg.jpg');
     }
     &.bkg-congratulations {
-      background-image: url(../media/_backgrounds/bg-03-game1-congratulations.jpg);
+      background-image: url($media_server + 'ImageAssets/bkg.win.jpg');
     }
-    &.bkg-04 {
-      background-image: url(../media/_backgrounds/bg-04-game2-.jpg);
+    &.bkg-printer {
+      background-image: url($media_server + 'ImageAssets/bkg.2.jpg');
     }
   }
 
@@ -69,6 +69,12 @@ body, body > div, .skoash-game {
 
   &.SCREEN-congratulations {
     .background.bkg-congratulations {
+      opacity: 1;
+    }
+  }
+
+  &.SCREEN-printer {
+    .background.bkg-printer {
       opacity: 1;
     }
   }
