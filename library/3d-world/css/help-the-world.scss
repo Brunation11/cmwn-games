@@ -174,10 +174,6 @@
           }
         }
       }
-
-      &[data-ref=surgeon] {
-
-      }
     }
 
     .close-reveal {
@@ -190,9 +186,14 @@
       background-repeat: no-repeat;
       background-size: 550px;
       background-position: 0 0;
+      transition: opacity .5s;
 
       &:hover {
         background-position: 0 -41px;
+      }
+
+      .VOICE-OVER & {
+        opacity: 0;
       }
     }
   }

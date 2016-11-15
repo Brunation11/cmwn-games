@@ -108,21 +108,22 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url(../media/_Sprites/spritesheet-mainbtns-.png);
-  background-size: 1020px;
+  background-image: url($media-server + 'SpritesAnimations/sprite.main.btns.png');
+  background-repeat: no-repeat;
+  background-size: 1200px;
   background-position: left top;
 
   &.close {
     width: 40px;
     height: 45px;
-    background-position: -468px -5px;
+    background-position: -410px -5px;
     position: absolute;
     right: 0;
     top: 0;
     z-index: 2;
 
     &:hover {
-      background-position: -468px -60px;
+      background-position: -410px -53px;
     }
   }
 
@@ -132,7 +133,7 @@ button {
     display: block;
     bottom: 0;
     z-index: 2;
-    width: 50px;
+    width: 45px;
     height: 45px;
   }
 
@@ -140,41 +141,43 @@ button {
     right: 0;
     opacity: 0;
     pointer-events: none;
-    background-position: -282px -5px;
+    background-position: -250px -5px;
 
     &:hover {
-      background-position: -282px -60px;
+      background-position: -250px -53px;
     }
   }
 
   &.prev-screen {
-    display: none;
-    background-position: -340px -5px;
+    background-position: -250px -3px;
+    transform: rotate(180deg);
 
     &:hover {
-      background-position: -340px -60px;
+      background-position: -250px -51px;
     }
   }
 
   &.quit-yes {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 387px 344px;
+    width: 150px;
+    height: 60px;
+    background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
+    background-size: 300px;
+    background-position: 0px 0px;
 
     &:hover {
-      background-position: 387px 144px;
+      background-position: 0px -66px;
     }
   }
 
   &.quit-no {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 187px 344px;
+    width: 150px;
+    height: 60px;
+    background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
+    background-size: 300px;
+    background-position: -150px 0px;
 
     &:hover {
-      background-position: 187px 144px;
+      background-position: -150px -66px;
     }
   }
 
@@ -275,14 +278,3 @@ p {
     margin-left: 5px;
     left: 0;
   }
-
-// the following css is specific to this game
-
-.frame {
-  position: relative;
-  text-align: center;
-  font-size: 40px;
-  line-height: 1.2;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
