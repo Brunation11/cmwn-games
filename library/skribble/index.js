@@ -339,7 +339,7 @@ var Skribble = (
         opts.name = 'getData';
       }
 
-      return this.emit(opts).then(data => {
+      return this.eventManager.emit(opts).then(data => {
         this.updateData({
           data,
           callback: opts.callback,
