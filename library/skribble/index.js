@@ -65,7 +65,7 @@ class SkribbleGame extends skoash.Game {
     this.save(true);
 
     this.refs['screen-canvas'].reset();
-    this.goto({
+    this.navigator.goto({
       index: 'sent',
       recipient: this.state.recipient,
     });
@@ -81,7 +81,7 @@ class SkribbleGame extends skoash.Game {
       skribbleData: opts.message
     }, () => {
       this.refs['screen-canvas'].addItems(opts.message);
-      this.goto({
+      this.navigator.goto({
         index: 'canvas',
         draft: true,
       });
@@ -187,7 +187,7 @@ class SkribbleGame extends skoash.Game {
   }
 
   clickRecipient() {
-    this.goto({
+    this.navigator.goto({
       index: 'friend',
       goto: this.state.currentScreenIndex,
     });
@@ -195,9 +195,9 @@ class SkribbleGame extends skoash.Game {
 
   create() {
     if (this.state.recipient) {
-      this.goto({index: 'canvas'});
+      this.navigator.goto({index: 'canvas'});
     } else {
-      this.goto({
+      this.navigator.goto({
         index: 'friend',
         goto: 'canvas',
       });
@@ -283,7 +283,7 @@ var Skribble = (
         <div>
           <div className="game-menu">
             <button className="save" onClick={this.saveButton.bind(this)} />
-            <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+            <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
             <button className="create" onClick={this.create.bind(this)} />
             <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
             <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
@@ -310,9 +310,9 @@ var Skribble = (
     passData={function (opts) {
       if (opts.name === 'add-item') {
         this.refs['screen-canvas'].addItem(opts.message);
-        this.goto({ index: 'canvas' });
+        this.navigator.goto({ index: 'canvas' });
       } else if (opts.name === 'add-recipient') {
-        this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
+        this.addRecipient(opts.message, this.navigator.goto.bind(this, { index: opts.goto || 'canvas' }));
       } else if (opts.name === 'send') {
         this.send();
       } else if (opts.name === 'showCollisionWarning') {
