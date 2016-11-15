@@ -136,7 +136,8 @@ export default function (props, ref, key) {
               Architects
             </h3>
             <div>
-              create plans for housing that will be 3D printed!
+              create plans for housing that will<br/>
+              be 3D printed!
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
@@ -148,7 +149,8 @@ export default function (props, ref, key) {
               Surgeon
             </h3>
             <div>
-              turn x-rays into 3D models and repair injured body parts!
+              turn x-rays into 3D models<br/>
+              and repair injured body parts!
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
@@ -185,7 +187,8 @@ export default function (props, ref, key) {
               Artists
             </h3>
             <div>
-              express themselves through the magic of 3D printing!
+              express themselves through the magic<br/>
+              of 3D printing!
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,

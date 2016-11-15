@@ -109,11 +109,13 @@
       div {
         position: absolute;
         font-size: 36px;
+        line-height: 36px;
         text-align: left;
         left: 200px;
         top: 140px;
-        text-transform: lowercase;
         font-family: "Source Sans Pro";
+        transform: translateY(-50%);
+        margin-top: 20px;
       }
 
       button {
@@ -171,6 +173,10 @@
             background-position: -#{nth($background-lefts, $i)}px -#{nth($background-tops, $i)}px;
           }
         }
+      }
+
+      &[data-ref=surgeon] {
+
       }
     }
 

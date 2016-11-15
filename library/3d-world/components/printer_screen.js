@@ -173,6 +173,10 @@ export default function (props, ref, key) {
       />
       <skoash.Image
         className="hidden"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/img.popup.png'}
+      />
+      <skoash.Image
+        className="hidden"
         src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
       />
       <skoash.Image
