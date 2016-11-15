@@ -23,33 +23,23 @@ export default function (props, ref, key) {
         className={classNames('question', {
           'show': !_.get(props, 'data.imagine.complete')
         })}
-        src="media/_Animations/frame2-wand.gif"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.gif'}
       />
       <skoash.Image
         className={classNames('answer', {
           'show': _.get(props, 'data.imagine.complete')
         })}
-        src="media/_Animations/frame3-wandandprinter.gif"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.and.printer_.gif'}
       />
       <skoash.Image
         className="hidden"
-        src="media/_sprites/spritesheet-minion-characters_.png"
+        src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
       />
       <skoash.Image
         className="hidden"
-        src="media/03-05/img-speechballoon.png"
+        src={ENVIRONMENT.MEDIA + 'ImageAssets/intro.speech.balloon.png'}
       />
       <div className="right">
-        {/*
-          <skoash.Image
-            className="text imagine"
-            src="media/03-05/text-01.png"
-          />
-          <skoash.Image
-            className="text already"
-            src="media/03-05/text-01.png"
-          />
-        */}
         <div
           className={classNames('words', 'imagine', {
             'show': !_.get(props, 'data.imagine.complete')
