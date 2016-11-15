@@ -39,7 +39,7 @@ body, body > div, .skoash-game {
   background-size: cover;
 
 
-  .game-background {
+  .background {
     opacity: 0;
     transition: opacity .5s;
     position: absolute;
@@ -50,10 +50,10 @@ body, body > div, .skoash-game {
     background-size: cover;
     background-position: center center;
 
-    &.bkg-02 {
-      background-image: url(../media/_backgrounds/bg-02.jpg);
+    &.bkg-imagine {
+      background-image: url($media_server + 'ImageAssets/bkg.jpg');
     }
-    &.bkg-03 {
+    &.bkg-congratulations {
       background-image: url(../media/_backgrounds/bg-03-game1-congratulations.jpg);
     }
     &.bkg-04 {
@@ -61,14 +61,14 @@ body, body > div, .skoash-game {
     }
   }
 
-  &.SCREEN-2 {
-    .game-background.bkg-02 {
+  &.SCREEN-imagine {
+    .background.bkg-imagine {
       opacity: 1;
     }
   }
 
   &.SCREEN-congratulations {
-    .game-background.bkg-03 {
+    .background.bkg-congratulations {
       opacity: 1;
     }
   }

@@ -60,23 +60,30 @@ var ThreeDWorld = (
       <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG3.mp3'} loop />,
       <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG4.mp3'} loop />,
       <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG5.mp3'} loop />,
-      <skoash.Image className="hidden" src="media/_backgrounds/bg-02.jpg" />,
+      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.jpg'} />,
       <skoash.Image className="hidden" src="media/_backgrounds/bg-03-game1-congratulations.jpg" />,
       <skoash.Image className="hidden" src="media/_backgrounds/bg-04-game2-.jpg" />,
-      <skoash.Image className="hidden" src="media/_backgrounds/title-.jpg" />,
-      <div className="game-background bkg-02" />,
-      <div className="game-background bkg-03" />,
-      <div className="game-background bkg-04" />,
+      <div className="background bkg-imagine" />,
+      <div className="background bkg-congratulations" />,
+      <div className="background bkg-04" />,
     ]}
-    getBackgroundIndex={index => {
-      switch (true) {
-      case index === 0: return;
-      case index === 1: return 0;
-      case index <= 3: return 1;
-      case index <= 6: return 2;
-      case index === 7: return 3;
-      case index <= 9: return 4;
-      case index === 10: return 5;
+    getBackgroundIndex={(index, id) => {
+      switch (id) {
+      case 'ios-splash': return;
+      case 'title': return 0;
+      case 'imageine':
+      case 'lets-learn':
+        return 1;
+      case 'sort-game-level-one':
+      case 'sort-game-level-two':
+      case 'sort-game-level-three':
+      case 'congratulations':
+        return 3;
+      case 'help-the-world':
+      case 'bunch-of-problems':
+        return 4;
+      case 'printer':
+        return 5;
       default: return 2;
       }
     }}
