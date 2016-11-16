@@ -96,7 +96,7 @@ class SkribbleGame extends skoash.Game {
     pathArray = path.split('/');
     pathArray.shift();
 
-    return self.emit({
+    return self.eventManager.emit({
       name: 'getMedia',
       path
     }).then(d => {
