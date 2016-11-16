@@ -73,6 +73,13 @@ class Selectable extends skoash.Component {
         }
       }
     });
+
+    this.updateGameState({
+      path: 'game',
+      data: {
+        complete: true
+      }
+    });
   }
 
   selectHelper(e, classes) {

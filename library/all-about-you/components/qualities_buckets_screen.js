@@ -15,14 +15,25 @@ export default function (props, ref, key) {
 
     if (content.indexOf(draggable) === -1) content.push(draggable);
 
-    dropzone.setState({content});
-
-    this.updateGameState({
-      path: 'reveal',
-      data: {
-        open: message
-      }
+    dropzone.setState({
+      content
     });
+
+    if (!this.state.loadingData) {
+      this.updateGameState({
+        path: 'sfx',
+        data: {
+          play: 'correct'
+        }
+      });
+
+      this.updateGameState({
+        path: 'reveal',
+        data: {
+          open: message
+        }
+      });
+    }
 
     _.forIn(this.refs, (ref2, key2) => {
       if (key2.indexOf('dropzone-') === -1) return;
@@ -31,7 +42,7 @@ export default function (props, ref, key) {
       if (totalComplete !== this.draggables.length) complete = false;
     });
 
-    if (complete) this.complete();
+    if (complete || _.get(props, 'data.game.complete', false)) this.complete();
   }
 
   return (
@@ -43,11 +54,28 @@ export default function (props, ref, key) {
       loadData={loadData}
       id="qualities-buckets"
     >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_DropBuckets.mp3" />
+      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Buckets.mp3" />
       <div ref="frame" className="frame animated"></div>
       <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_6/img_06_penguin-01.png" />
 
       <MediaCollection
+        ref="sfx-collection"
+        complete={_.get(props, 'data.game.complete', false)}
+        play={_.get(props, 'data.sfx.play', null)}
+        onPlay={function () {
+          this.updateGameState({
+            path: 'sfx',
+            data: {
+              play: null
+            }
+          });
+        }}
+      >
+        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
+      </MediaCollection>
+
+      <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({
@@ -71,9 +99,6 @@ export default function (props, ref, key) {
       <Dropzone
         ref="dropzone"
         correctRespond={correctRespond}
-        assets={[
-          <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
-        ]}
         dropzones={[
           <skoash.Component className="dropzone-list-item animated" multipleAnswers />,
           <skoash.Component className="dropzone-list-item animated" multipleAnswers />

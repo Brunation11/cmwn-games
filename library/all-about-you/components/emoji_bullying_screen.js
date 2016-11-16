@@ -23,6 +23,7 @@ export default function (props, ref, key) {
       <skoash.Image ref="penguins-bullying" className="penguins-bullying animated" src="media/assets/_images/S_7/img-s7-bullying-penguins.png" />
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.correct', null)}
         onPlay={function () {
           this.updateGameState({
@@ -37,6 +38,7 @@ export default function (props, ref, key) {
       </MediaCollection>
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({

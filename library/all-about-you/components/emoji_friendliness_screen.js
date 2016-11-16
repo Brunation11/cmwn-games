@@ -24,6 +24,7 @@ export default function (props, ref, key) {
       <skoash.Image ref="text-friendly" className="text-friendly animated" src="media/assets/_images/S_10/Text_10_Friendliness.png" />
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.correct', null)}
         onPlay={function () {
           this.updateGameState({
@@ -38,6 +39,7 @@ export default function (props, ref, key) {
       </MediaCollection>
 
       <MediaCollection
+        complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
           this.updateGameState({

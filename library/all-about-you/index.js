@@ -51,8 +51,6 @@ class AllAboutYou extends skoash.Game {
     this.menus = {
       quit: QuitScreen
     };
-
-    this.state.data.screens = _.map(this.screens, () => ({}));
   }
 
   renderLoader() {
