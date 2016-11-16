@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 #many-materials {
   color: $dark-green;
@@ -17,6 +18,10 @@
     font-size: 36px;
     width: 100%;
     transform: translateX(-47.5%) translateY(-25%);
+
+    $widths: 830 640 760 630;
+    $steps: 30;
+    @include typing($widths, $steps);
   }
 
   .screen-content {

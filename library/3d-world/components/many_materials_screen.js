@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export default function (props, ref, key) {
   return (
     <skoash.Screen
@@ -5,11 +7,28 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="many-materials"
+      onStart={function () {
+        this.updateGameState({
+          path: 'start',
+          data: true,
+        });
+      }}
     >
       <skoash.Audio
         type="voiceOver"
         src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_wow.mp3'}
       />
+      <skoash.MediaSequence>
+        <skoash.Audio
+          type="sfx"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+        />
+        <skoash.Audio
+          type="sfx"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+          sprite={[0, 1000]}
+        />
+      </skoash.MediaSequence>
       <skoash.Image
         className="hidden"
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.closeupminion.png'}
@@ -19,18 +38,30 @@ export default function (props, ref, key) {
         src={ENVIRONMENT.MEDIA + 'ImageAssets/speech.balloon.frame7.png'}
       />
       <skoash.Component>
-        <div className="words">
+        <div
+          className={classNames('words', {
+            start: _.get(props, 'data.start'),
+          })}
+        >
           <div>
-            Wow, there are many materials you can use
+            <p>
+              Wow, there are many materials you can use
+            </p>
           </div>
           <div>
-            to make things with a 3D printer!
+            <p>
+              to make things with a 3D printer!
+            </p>
           </div>
           <div>
-            The most common are plastic and metal,
+            <p>
+              The most common are plastic and metal,
+            </p>
           </div>
           <div>
-            but other materials can be used.
+            <p>
+              but other materials can be used.
+            </p>
           </div>
         </div>
       </skoash.Component>

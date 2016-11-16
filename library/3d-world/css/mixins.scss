@@ -42,7 +42,7 @@
   text-shadow: text-stroke($size, $color, $correction);
 }
 
-@mixin typing($widths) {
+@mixin typing($widths, $steps: 20) {
   div {
     margin: 0 auto;
     text-align: left;
@@ -73,7 +73,7 @@
         }
 
         p {
-          animation: type#{$i} #{$i * 1.25}s steps(20, end);
+          animation: type#{$i} #{$i * 1.25}s steps($steps, end);
         }
       }
     }
