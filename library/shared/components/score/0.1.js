@@ -132,7 +132,7 @@ Score.defaultProps = _.defaults({
   startingScore: 0,
   correct: 0,
   incorrect: 0,
-  onUpdateScore: _.identity,
+  onUpdateScore: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Score;

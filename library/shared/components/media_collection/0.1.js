@@ -16,7 +16,7 @@ class MediaCollection extends skoash.Component {
 }
 
 MediaCollection.defaultProps = _.defaults({
-  onPlay: _.identity,
+  onPlay: _.noop,
 }, skoash.Component.defaultProps);
 
 export default MediaCollection;
