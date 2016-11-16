@@ -8,6 +8,11 @@ export default function (props, ref, key) {
       key={key}
       id="imagine"
     >
+      <skoash.Audio
+        type="sfx"
+        ref="start"
+        src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/animation_appear.mp3'}
+      />
       <skoash.MediaSequence>
         <skoash.Audio
           type="voiceOver"
