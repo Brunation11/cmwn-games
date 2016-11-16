@@ -237,7 +237,8 @@ ItemDrawer.defaultProps = _.defaults({
     itemsChanged = this.quickCheck !== quickCheck;
     if (itemsChanged) this.quickCheck = quickCheck;
 
-    return itemsChanged || (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes));
+    return itemsChanged || nextProps.categoryName !== this.props.categoryName ||
+      JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes);
   },
 }, Selectable.defaultProps);
 

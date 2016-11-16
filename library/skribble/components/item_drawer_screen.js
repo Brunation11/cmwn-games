@@ -35,15 +35,7 @@ class ItemDrawerScreen extends skoash.Screen {
   }
 
   open(opts) {
-    var self = this;
-
-    skoash.trigger('getMedia', {
-      path: 'skribble/menu/' + opts.categories.join('/')
-    }).then(data => {
-      self.updateData(data);
-    });
-
-    self.setState({
+    this.setState({
       load: true,
       open: true,
       leave: false,
@@ -51,13 +43,11 @@ class ItemDrawerScreen extends skoash.Screen {
       opts,
       data: null
     }, () => {
-      self.updateData();
+      this.updateData();
     });
 
     setTimeout(() => {
-      if (!self.state.started) {
-        self.start();
-      }
+      if (!this.state.started) this.start();
     }, 250);
   }
 
