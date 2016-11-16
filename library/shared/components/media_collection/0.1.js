@@ -1,8 +1,9 @@
 class MediaCollection extends skoash.Component {
   play(ref) {
-    if (this.refs[ref]) this.refs[ref].play();
-
-    this.props.onPlay.call(this, ref);
+    if (this.refs[ref]) {
+      this.refs[ref].play();
+      this.props.onPlay.call(this, ref);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -15,7 +16,7 @@ class MediaCollection extends skoash.Component {
 }
 
 MediaCollection.defaultProps = _.defaults({
-  onPlay: _.identity,
+  onPlay: _.noop,
 }, skoash.Component.defaultProps);
 
 export default MediaCollection;

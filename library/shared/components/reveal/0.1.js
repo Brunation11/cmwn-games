@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Reveal extends skoash.Component {
   constructor() {
@@ -112,7 +111,6 @@ class Reveal extends skoash.Component {
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        audio = 'asset-' + audio;
         if (this.audio[audio]) {
           this.audio[audio].play();
         } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
@@ -129,8 +127,7 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = 'asset-';
-        ref += asset.ref || asset.props['data-ref'] || key;
+        var ref = asset.ref || asset.props['data-ref'] || 'asset-' + key;
         return (
           <asset.type
             {...asset.props}
@@ -181,9 +178,10 @@ class Reveal extends skoash.Component {
 
     if (li.props.className) classes = li.props.className;
 
-    if (this.state.currentlyOpen.indexOf('' + key) !== -1 ||
-        this.state.currentlyOpen.indexOf('' + li.props['data-ref']) !== -1 ||
-        this.state.currentlyOpen.indexOf('' + li.ref) !== -1
+    if (this.state.currentlyOpen.indexOf(key) !== -1 ||
+        this.state.currentlyOpen.indexOf('' + key) !== -1 ||
+        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
+        this.state.currentlyOpen.indexOf(li.ref) !== -1
     ) {
       classes = classNames(classes, 'OPEN');
     }
@@ -233,9 +231,9 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
-  onOpen: _.identity,
-  onClose: _.identity,
   openMultiple: true,
+  onOpen: _.noop,
+  onClose: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Reveal;
