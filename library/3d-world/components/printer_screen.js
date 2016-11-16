@@ -104,17 +104,21 @@ export default function (props, ref, key) {
           playing: 'incorrect',
         },
       });
+      skoash.trigger('updateState', {
+        path: 'reveal',
+        data: {
+          open: 'try-again',
+        },
+      });
     }
   };
 
   reset = function () {
-    skoash.trigger('updateState', {
-      path: 'printed',
-      data: null,
-    });
-    skoash.trigger('updateState', {
-      path: 'transition',
-      data: false,
+    _.each(['printed', 'transition', 'layer1', 'layer2', 'layer3'], (v) => {
+      skoash.trigger('updateState', {
+        path: v,
+        data: false,
+      });
     });
   };
 
@@ -193,21 +197,18 @@ export default function (props, ref, key) {
           <skoash.Audio
             type="sfx"
             playTarget="layer1"
-            completeTarget="layer1"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer2"
-            completeTarget="layer2"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             sprite={[0, 1700]}
           />
           <skoash.Audio
             type="sfx"
             playTarget="layer3"
-            completeTarget="layer3"
             src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
             onComplete={onPrinted}
             sprite={[0, 1700]}

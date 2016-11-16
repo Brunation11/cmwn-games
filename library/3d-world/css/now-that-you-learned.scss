@@ -14,15 +14,15 @@
   }
 
   .next-screen {
-    width: 200px;
-    height: 60px;
+    width: 230px;
+    height: 70px;
     right: 380px;
     bottom: 170px;
     background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
-    background-position: -285px 0;
+    background-position: -335px 0;
 
     &:hover {
-      background-position: -285px -60px;
+      background-position: -335px -72px;
     }
   }
 

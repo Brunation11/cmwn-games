@@ -73,7 +73,7 @@
         background-repeat: no-repeat;
         background-position: 0 bottom;
         background-size: 2800px;
-        transition: height .5s, left .5s, bottom .5s, transform .5s;
+        transition: height .25s, left .5s, bottom .5s, transform .5s;
       }
 
       $heights: 60 80 120;
@@ -389,6 +389,23 @@
 
         button {
           margin-top: 30px;
+        }
+      }
+
+      &[data-ref=try-again] {
+        h3 {
+          font-size: 90px;
+          color: $white;
+          @include text-stroke(6, $purple);
+        }
+
+        button {
+          margin-top: 40px;
+          background-position: -390px 0;
+
+          &:hover {
+            background-position: -390px -86px;
+          }
         }
       }
     }
