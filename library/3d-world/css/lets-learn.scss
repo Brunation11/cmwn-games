@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 #lets-learn {
   .balloon {
@@ -16,6 +17,9 @@
     font-family: "Molot";
     left: 165px;
     top: 130px;
+
+    $widths: 580 530 401;
+    @include typing($widths);
   }
 
   .screen-content {

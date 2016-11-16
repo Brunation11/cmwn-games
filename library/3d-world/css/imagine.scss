@@ -47,7 +47,7 @@
       @include typing($widths);
     }
 
-    &.show {
+    &.start {
       opacity: 1;
     }
   }
