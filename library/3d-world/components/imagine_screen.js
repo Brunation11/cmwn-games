@@ -15,6 +15,17 @@ export default function (props, ref, key) {
       />
       <skoash.MediaSequence>
         <skoash.Audio
+          type="sfx"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+        />
+        <skoash.Audio
+          type="sfx"
+          src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/text_type.mp3'}
+          sprite={[0, 2000]}
+        />
+      </skoash.MediaSequence>
+      <skoash.MediaSequence>
+        <skoash.Audio
           type="voiceOver"
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_imagine.mp3'}
           completeTarget="imagine"
@@ -51,13 +62,19 @@ export default function (props, ref, key) {
           })}
         >
           <div>
-            Imagine a magical item
+            <p>
+              Imagine a magical item
+            </p>
           </div>
           <div>
-            that can make anything
+            <p>
+              that can make anything
+            </p>
           </div>
           <div>
-            you can think of!_
+            <p>
+              you can think of!
+            </p>
           </div>
         </div>
         <div
@@ -66,10 +83,14 @@ export default function (props, ref, key) {
           })}
         >
           <div>
-            It already exists today.
+            <p>
+              It already exists today.
+            </p>
           </div>
           <div>
-            It's called 3D printing!_
+            <p>
+              It's called 3D printing!
+            </p>
           </div>
         </div>
         <div className="minion" />

@@ -41,3 +41,37 @@
 @mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
   text-shadow: text-stroke($size, $color, $correction);
 }
+
+@mixin typing($widths) {
+  div {
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+      position: relative;
+      display: inline-block;
+      font-size: inherit;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  @for $i from 1 through length($widths) {
+    div:nth-of-type(#{$i}) {
+      width: #{nth($widths, $i)}px;
+
+      &:after {
+        content: ' _';
+        position: relative;
+        text-align: middle;
+        animation: type#{$i}after #{$i * 1.25}s forwards;
+      }
+    }
+
+    &.show div:nth-of-type(#{$i}) p {
+      animation: type#{$i} #{$i * 1.25}s steps(20, end);
+    }
+  }
+}

@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'mixins';
+@import 'keyframes';
 
 #imagine {
   .question,
@@ -34,6 +36,16 @@
     font-family: "Molot";
     opacity: 0;
     transition: opacity .5s;
+
+    &.imagine {
+      $widths: 215 222 164;
+      @include typing($widths);
+    }
+
+    &.exists {
+      $widths: 220 214;
+      @include typing($widths);
+    }
 
     &.show {
       opacity: 1;
