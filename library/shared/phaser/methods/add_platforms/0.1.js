@@ -11,21 +11,19 @@ export default function (platformOpts = {}, optsArray) {
     this.platforms.enableBody = platformOpts.enableBody;
   }
 
-  // Here we create the ground.
-  var ground = this.platforms.create(0, this.game.world.height - 64, 'ground');
+  _.each(optsArray, opts => {
+    var platform;
 
-  //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-  ground.scale.setTo(5, 2);
+    opts = _.defaults(opts, {
+      immovable: true,
+      scale: [1, 1],
+      left: 0,
+      top: 0,
+      image: 'ground',
+    });
 
-  //  This stops it from falling away when you jump on it
-  ground.body.immovable = true;
-
-  //  Now let's create two ledges
-  var ledge = this.platforms.create(400, 400, 'ground');
-
-  ledge.body.immovable = true;
-
-  ledge = this.platforms.create(-150, 250, 'ground');
-
-  ledge.body.immovable = true;
+    platform = this.platforms.create(opts.left, opts.top, opts.image);
+    platform.scale.setTo(...opts.scale);
+    platform.body.immovable = opts.immovable;
+  });
 }

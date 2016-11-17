@@ -13,7 +13,24 @@ export default function () {
   this.game.add.sprite(800, 0, 'sky');
   this.game.add.sprite(1600, 0, 'sky');
 
-  addPlatforms.call(this);
+  addPlatforms.call(this, {}, [
+    {
+      scale: [5, 2],
+      left: 0,
+      top: this.game.world.height - 64,
+      image: 'ground',
+    },
+    {
+      left: 400,
+      top: 400,
+      image: 'ground',
+    },
+    {
+      left: -150,
+      top: 250,
+      image: 'ground',
+    },
+  ]);
 
   // The player and its settings
   this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude');
