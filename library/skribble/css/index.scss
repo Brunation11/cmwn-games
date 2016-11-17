@@ -867,8 +867,23 @@ p {
     height: 750px;
 
     > div,
-    li > div {
+    li {
       height: 100%;
+
+      &.empty {
+        min-height: 720px;
+      }
+    }
+
+    ul li > div {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      ul {
+        min-height: 100%;
+        height: auto;
+      }
     }
 
     ul {
@@ -1549,10 +1564,10 @@ p {
     top: 510px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c');
+    background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c.png');
 
     &:hover {
-      background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28');
+      background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28.png');
     }
   }
 }

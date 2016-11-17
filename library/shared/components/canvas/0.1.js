@@ -230,12 +230,15 @@ class Canvas extends skoash.Component {
 
   deactivateItems(exclude, type) {
     if (typeof exclude === 'object' && exclude.target) {
-      if (exclude.target.tagName !== 'LI') {
-        return;
-      }
+      if (exclude.target.tagName !== 'LI') return;
       this.setState({
         active: false,
       });
+      if (!this.state.valid) {
+        skoash.trigger('passData', {
+          name: 'showCollisionWarning'
+        });
+      }
     }
 
     if (typeof exclude === 'number') {
@@ -255,12 +258,6 @@ class Canvas extends skoash.Component {
         this.refs['message-' + key].deactivate();
       }
     });
-
-    if (!this.state.valid) {
-      skoash.trigger('passData', {
-        name: 'showCollisionWarning'
-      });
-    }
   }
 
   relayerItems(type) {

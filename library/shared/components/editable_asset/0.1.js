@@ -167,8 +167,8 @@ class EditableAsset extends Draggable {
       e.pageY = e.targetTouches[0].pageY;
     }
 
-    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) - (this.state.left / this.state.zoom + this.state.width / 2);
-    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) - (this.state.top / this.state.zoom + this.state.height / 2);
+    deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) - (this.state.left + this.state.width / 2);
+    deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) - (this.state.top + this.state.height / 2);
 
     delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
     base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -237,7 +237,7 @@ class EditableAsset extends Draggable {
     image = new Image();
 
     image.onload = () => {
-      var left, top, width, height, minDim, maxDim, minScale, maxScale, scale;
+      var offset, left, top, width, height, minDim, maxDim, minScale, maxScale, scale;
 
       minDim = this.props.minDim || 40;
       maxDim = this.props.maxDim || 400;
@@ -258,9 +258,15 @@ class EditableAsset extends Draggable {
         top = (this.props.canvasHeight - height) / 2;
       }
 
+      offset = this.refs.el.getBoundingClientRect();
+
       self.setState({
         left,
         top,
+        startX: offset.left,
+        startY: offset.top,
+        grabX: (width / 2) * scale,
+        grabY: (height / 2) * scale,
         width,
         height,
         minScale,

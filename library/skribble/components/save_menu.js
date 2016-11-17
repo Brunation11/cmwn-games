@@ -24,5 +24,6 @@ class SaveMenu extends skoash.Screen {
 export default (
   <SaveMenu
     id="save"
+    load
   />
 );
