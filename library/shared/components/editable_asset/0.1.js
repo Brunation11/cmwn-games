@@ -66,38 +66,6 @@ class EditableAsset extends Draggable {
     }
   }
 
-  startEvent(e, cb) {
-    var startX, startY, endX, endY;
-
-    if (e.target !== this.refs.el) return;
-    if (!this.shouldDrag()) return;
-
-    if (e.targetTouches && e.targetTouches[0]) e = e.targetTouches[0];
-
-    startX = endX = e.pageX;
-    startY = endY = e.pageY;
-    startX = _.isFinite(this.state.startX) ? this.state.startX : startX;
-    startY = _.isFinite(this.state.start) ? this.state.startY : startY;
-
-    this.setState({
-      dragging: true,
-      return: false,
-      startX,
-      startY,
-      endX,
-      endY,
-    });
-
-    if (typeof this.props.dragRespond === 'function') {
-      this.props.dragRespond(this.props.message);
-    }
-
-    if (typeof cb === 'function') {
-      cb.call(this);
-    }
-  }
-
-
   moveEvent(e) {
     if (e.targetTouches && e.targetTouches[0]) {
       e.pageX = e.targetTouches[0].pageX;
@@ -105,10 +73,10 @@ class EditableAsset extends Draggable {
     }
 
     this.setState({
-      endX: e.pageX,
-      endY: e.pageY,
-      left: ((e.pageX - this.state.startX) / this.state.zoom),
-      top: ((e.pageY - this.state.startY) / this.state.zoom),
+      endX: e.pageX - this.state.grabX,
+      endY: e.pageY - this.state.grabY,
+      left: ((e.pageX - this.state.grabX - this.state.startX) / this.state.zoom),
+      top: ((e.pageY - this.state.grabY - this.state.startY) / this.state.zoom),
     });
     this.checkItem();
   }
