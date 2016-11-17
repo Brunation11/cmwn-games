@@ -867,8 +867,23 @@ p {
     height: 750px;
 
     > div,
-    li > div {
+    li {
       height: 100%;
+
+      &.empty {
+        min-height: 720px;
+      }
+    }
+
+    ul li > div {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      ul {
+        min-height: 100%;
+        height: auto;
+      }
     }
 
     ul {

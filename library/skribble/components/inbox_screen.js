@@ -59,7 +59,7 @@ class InboxScreen extends skoash.Screen {
   getRevealList(inbox, outbox, saved) {
     var read, unread, props = this.props || {};
 
-    inbox = inbox || [];
+    inbox = inbox || this.state.inbox || [];
 
     read = inbox.filter(item => {
       return item.read;
@@ -69,12 +69,15 @@ class InboxScreen extends skoash.Screen {
       return !item.read;
     });
 
+    outbox = outbox || this.state.outbox || [];
+    saved = saved || this.state.saved || [];
+
     return [
       <li>
         <Inbox
           data-ref="inbox"
           data={{
-            items: inbox || [],
+            items: inbox,
           }}
           emptyMessage={inboxEmptyMessage}
           selectRespond={this.readMessage}
@@ -85,7 +88,7 @@ class InboxScreen extends skoash.Screen {
         <Inbox
           data-ref="unread"
           data={{
-            items: unread || [],
+            items: unread,
           }}
           emptyMessage={unreadEmptyMessage}
           selectRespond={this.readMessage}
@@ -96,7 +99,7 @@ class InboxScreen extends skoash.Screen {
         <Inbox
           data-ref="read"
           data={{
-            items: read || [],
+            items: read,
           }}
           emptyMessage={readEmptyMessage}
           selectRespond={this.readMessage}
@@ -107,7 +110,7 @@ class InboxScreen extends skoash.Screen {
         <Inbox
           data-ref="outbox"
           data={{
-            items: outbox || [],
+            items: outbox,
           }}
           emptyMessage={sentEmptyMessage}
           friendKey="friend_to"
@@ -119,7 +122,7 @@ class InboxScreen extends skoash.Screen {
         <SavedMessages
           data-ref="saved"
           data={{
-            items: saved || [],
+            items: saved,
           }}
           emptyMessage={draftsEmptyMessage}
           selectRespond={this.editMessage}
