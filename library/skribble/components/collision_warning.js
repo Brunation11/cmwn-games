@@ -49,5 +49,6 @@ class CollisionWarning extends skoash.Screen {
 export default (
   <CollisionWarning
     id="collisionWarning"
+    load
   />
 );

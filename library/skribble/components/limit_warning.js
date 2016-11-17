@@ -1,6 +1,7 @@
 export default (
   <skoash.Screen
     id="limitWarning"
+    load
     hidePrev
     hideNext
   >
