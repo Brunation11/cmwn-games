@@ -139,9 +139,7 @@ class ItemDrawer extends Selectable {
         item.items = _.values(item.items);
       }
 
-      thumb = _.find(item.items, subitem => {
-        if (subitem.name === '_thumb') return true;
-      });
+      thumb = _.find(item.items, subitem => subitem.name === '_thumb');
 
       if (thumb) src = thumb.thumb || thumb.src;
 
