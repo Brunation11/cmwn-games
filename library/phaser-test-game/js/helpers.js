@@ -1,9 +1,9 @@
 export default {
   onBump: function () {
     if (this.player.body.velocity.y > 0) {
-      this.bump.play();
+      this.audio.bump.play();
     } else if (this.player.body.velocity.y < -75) {
-      this.slam.play();
+      this.audio.slam.play();
     }
   },
   collectStar: function (p, star) {

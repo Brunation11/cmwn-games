@@ -93,11 +93,8 @@ export default function () {
   this.lives = 3,
   this.livesText = this.game.add.text(this.game.camera.view.width - 166, 16, `Lives: ${this.lives}`, { fontSize: '32px', fill: '#000' });
 
-  this.helpers.mousedown = this.helpers.mousedown.bind(this);
-  this.helpers.mouseup = this.helpers.mouseup.bind(this);
-  this.helpers.mouseover = this.helpers.mouseover.bind(this);
-  this.helpers.mouseout = this.helpers.mouseout.bind(this);
-
-  this.bump = this.game.add.audio('bump');
-  this.slam = this.game.add.audio('slam');
+  this.audio = {
+    bump: this.game.add.audio('bump'),
+    slam: this.game.add.audio('slam'),
+  };
 }
