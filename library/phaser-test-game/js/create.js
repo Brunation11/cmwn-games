@@ -1,36 +1,32 @@
+import setGameStage from 'shared/phaser/methods/set_game_stage/0.1';
 import addPlatforms from 'shared/phaser/methods/add_platforms/0.1';
+import randomizePlatforms from 'shared/phaser/methods/randomize_platforms/0.1';
 
 export default function () {
   this.controller = {};
 
-  //  We're going to be using physics, so enable the Arcade Physics system
-  this.game.physics.startSystem(Phaser.Physics.ARCADE);
-  this.game.stage.disableVisibilityChange = true;
-  this.game.world.setBounds(0, 0, 2000, 600);
+  setGameStage.call(this);
 
   //  A simple background for our this.game
   this.game.add.sprite(0, 0, 'sky');
   this.game.add.sprite(800, 0, 'sky');
   this.game.add.sprite(1600, 0, 'sky');
 
-  addPlatforms.call(this, {}, [
-    {
-      scale: [5, 2],
-      left: 0,
-      top: this.game.world.height - 64,
-      image: 'ground',
-    },
-    {
-      left: 400,
-      top: 400,
-      image: 'ground',
-    },
-    {
-      left: -150,
-      top: 250,
-      image: 'ground',
-    },
+  let platformOpts = randomizePlatforms(_.times(4, () => ({ image: 'ground' })), [
+    [400, 400],
+    [-150, 250],
+    [800, 400],
+    [650, 250],
   ]);
+
+  platformOpts.unshift({
+    scale: [5, 2],
+    left: 0,
+    top: this.game.world.height - 64,
+    image: 'ground',
+  });
+
+  addPlatforms.call(this, {}, platformOpts);
 
   // The player and its settings
   this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude');
@@ -56,9 +52,9 @@ export default function () {
   this.stars.enableBody = true;
 
   //  Here we'll create 12 of them evenly spaced apart
-  for (var i = 0; i < 11; i++) {
+  for (let i = 0; i < 11; i++) {
     //  Create a star inside of the 'this.stars' group
-    var star = this.stars.create(i * 70, 0, 'star');
+    let star = this.stars.create(i * 70, 0, 'star');
 
     //  Let gravity do its thing
     star.body.gravity.y = 12;
@@ -77,8 +73,7 @@ export default function () {
 
   this.diamonds.enableBody = true;
 
-  var diamond = this.diamonds.create(200, 200, 'diamond');
-
+  let diamond = this.diamonds.create(200, 200, 'diamond');
   diamond.body.immovable = true;
   diamond.body.collideWorldBounds = true;
   diamond.body.bounce.x = 1;
@@ -87,7 +82,7 @@ export default function () {
 
   this.spikes.enableBody = true;
 
-  var spike = this.spikes.create(300, 300, 'diamond');
+  let spike = this.spikes.create(300, 300, 'diamond');
   spike.angle += 180;
   spike.anchor.setTo(0.5, 0.5);
   spike.body.immovable = true;
@@ -102,42 +97,6 @@ export default function () {
   this.helpers.mouseup = this.helpers.mouseup.bind(this);
   this.helpers.mouseover = this.helpers.mouseover.bind(this);
   this.helpers.mouseout = this.helpers.mouseout.bind(this);
-
-  var upButton = this.game.add.button(600, 400, 'star', this.helpers.mousedown, this, 2, 1, 0);
-
-  upButton.onInputOver.add(this.helpers.mouseover, this);
-  upButton.onInputOut.add(this.helpers.mouseout, this);
-  upButton.onInputUp.add(this.helpers.mouseup, this);
-  upButton.onInputDown.add(this.helpers.mousedown, this);
-  upButton.scale.setTo(4, 4);
-  upButton.data = {id: 'up'};
-
-  var leftButton = this.game.add.button(500, 500, 'star', this.helpers.mousedown, this, 2, 1, 0);
-
-  leftButton.onInputOver.add(this.helpers.mouseover, this);
-  leftButton.onInputOut.add(this.helpers.mouseout, this);
-  leftButton.onInputUp.add(this.helpers.mouseup, this);
-  leftButton.onInputDown.add(this.helpers.mousedown, this);
-  leftButton.scale.setTo(4, 4);
-  leftButton.data = {id: 'left'};
-
-  var downButton = this.game.add.button(600, 500, 'star', this.helpers.mousedown, this, 2, 1, 0);
-
-  downButton.onInputOver.add(this.helpers.mouseover, this);
-  downButton.onInputOut.add(this.helpers.mouseout, this);
-  downButton.onInputUp.add(this.helpers.mouseup, this);
-  downButton.onInputDown.add(this.helpers.mousedown, this);
-  downButton.scale.setTo(4, 4);
-  downButton.data = {id: 'down'};
-
-  var rightButton = this.game.add.button(700, 500, 'star', this.helpers.mousedown, this, 2, 1, 0);
-
-  rightButton.onInputOver.add(this.helpers.mouseover, this);
-  rightButton.onInputOut.add(this.helpers.mouseout, this);
-  rightButton.onInputUp.add(this.helpers.mouseup, this);
-  rightButton.onInputDown.add(this.helpers.mousedown, this);
-  rightButton.scale.setTo(4, 4);
-  rightButton.data = {id: 'right'};
 
   this.bump = this.game.add.audio('bump');
   this.slam = this.game.add.audio('slam');

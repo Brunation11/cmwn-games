@@ -1,4 +1,4 @@
-export default function (platformOpts = {}, optsArray) {
+export default function (platformOpts = {}, optsArray = []) {
   platformOpts = _.defaults(platformOpts, {
     enableBody: true,
   });

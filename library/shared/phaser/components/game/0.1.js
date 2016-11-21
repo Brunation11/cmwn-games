@@ -1,12 +1,21 @@
 class Game {
-  constructor(preload = _.noop, create = _.noop, update = _.noop, helpers = {}) {
-    preload = preload.bind(this);
-    create = create.bind(this);
-    update = update.bind(this);
+  constructor(opts = {}) {
+    opts.preload = (opts.preload || _.noop).bind(this);
+    opts.create = (opts.create || _.noop).bind(this);
+    opts.update = (opts.update || _.noop).bind(this);
 
-    this.helpers = helpers;
+    opts = _.defaults(opts, {
+      width: 960,
+      height: 540,
+      renderer: Phaser.CANVAS,
+      parent: '',
+      helpers: {},
+      state: { preload: opts.preload, create: opts.create, update: opts.update },
+    });
 
-    this.game = new Phaser.Game(800, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
+    this.helpers = opts.helpers;
+
+    this.game = new Phaser.Game(opts.width, opts.height, opts.renderer, opts.parent, opts.state);
 
     this.attachEvents();
   }

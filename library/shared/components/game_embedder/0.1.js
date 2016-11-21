@@ -2,14 +2,6 @@ class GameEmbedder extends skoash.Component {
   constructor() {
     super();
 
-    /*
-     * For testing purposes, in order for skoash to be able to communicate
-     * with the embedded game, you may want to include `document.domain = 'localhost';`
-     * in both this component and the game you're embedding.
-     * In production you may want to include `document.domain = 'changemyworldnow.com';`
-     * in the embedded game since it will be included in the skoash game.
-     */
-
     this.respond = this.respond.bind(this);
     this.onLoad = this.onLoad.bind(this);
   }
@@ -38,10 +30,12 @@ class GameEmbedder extends skoash.Component {
   }
 
   pause() {
+    super.pause();
     this.emitEvent({ name: 'pause' });
   }
 
   resume() {
+    super.resume();
     this.emitEvent({ name: 'resume' });
   }
 
