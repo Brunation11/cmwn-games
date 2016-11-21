@@ -1,6 +1,7 @@
 import setGameStage from 'shared/phaser/methods/set_game_stage/0.1';
-import addPlatforms from 'shared/phaser/methods/add_platforms/0.1';
-import randomizePlatforms from 'shared/phaser/methods/randomize_platforms/0.1';
+import addItems from 'shared/phaser/methods/add_items/0.1';
+import addPlayer from 'shared/phaser/methods/add_player/0.1';
+import randomizeLocations from 'shared/phaser/methods/randomize_locations/0.1';
 
 export default function () {
   this.controller = {};
@@ -12,7 +13,9 @@ export default function () {
   this.game.add.sprite(800, 0, 'sky');
   this.game.add.sprite(1600, 0, 'sky');
 
-  let platformOpts = randomizePlatforms(_.times(4, () => ({ image: 'ground' })), [
+  this.cursors = this.game.input.keyboard.createCursorKeys();
+
+  let platformOpts = randomizeLocations(_.times(4, () => ({})), [
     [400, 400],
     [-150, 250],
     [800, 400],
@@ -23,69 +26,38 @@ export default function () {
     scale: [5, 2],
     left: 0,
     top: this.game.world.height - 64,
-    image: 'ground',
   });
 
-  addPlatforms.call(this, {}, platformOpts);
+  addItems.call(this, {
+    group: 'platforms', defaultOpts: {image: 'ground', collideWorldBounds: false}
+  }, platformOpts);
 
-  // The player and its settings
-  this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude');
+  addItems.call(this, {
+    group: 'stars', defaultOpts: {image: 'star', gravityY: 12, immovable: false}
+  }, _.times(11, i => ({
+    left: i * 70,
+    bounceY: 0.7 + Math.random() * 0.2,
+  })));
 
-  //  We need to enable physics on the player
-  this.game.physics.arcade.enable(this.player);
+  addItems.call(this, {group: 'healths'}, [
+    { left: 11 * 70, top: 0, image: 'health' }
+  ]);
 
-  //  Player physics properties. Give the little guy a slight bounce.
-  this.player.body.bounce.y = 0.2;
-  this.player.body.gravity.y = 300;
-  this.player.body.collideWorldBounds = true;
-  this.player.body.checkCollision.up = true;
-  this.player.body.checkCollision.down = true;
+  addItems.call(this, {group: 'diamonds'}, [
+    { left: 200, top: 200, image: 'diamond'}
+  ]);
 
-  //  Our two animations, walking left and right.
-  this.player.animations.add('left', [0, 1, 2, 3], 10, true);
-  this.player.animations.add('right', [5, 6, 7, 8], 10, true);
+  addItems.call(this, {group: 'spikes'}, [
+    { left: 300, top: 300, image: 'diamond', angle: 180, anchor: [0.5, 0.5]}
+  ]);
 
-  this.cursors = this.game.input.keyboard.createCursorKeys();
-
-  this.stars = this.game.add.group();
-
-  this.stars.enableBody = true;
-
-  //  Here we'll create 12 of them evenly spaced apart
-  for (let i = 0; i < 11; i++) {
-    //  Create a star inside of the 'this.stars' group
-    let star = this.stars.create(i * 70, 0, 'star');
-
-    //  Let gravity do its thing
-    star.body.gravity.y = 12;
-
-    //  This just gives each star a slightly random bounce value
-    star.body.bounce.y = 0.7 + Math.random() * 0.2;
-  }
-
-  this.healths = this.game.add.group();
-
-  this.healths.enableBody = true;
-
-  this.healths.create(11 * 70, 0, 'health');
-
-  this.diamonds = this.game.add.group();
-
-  this.diamonds.enableBody = true;
-
-  let diamond = this.diamonds.create(200, 200, 'diamond');
-  diamond.body.immovable = true;
-  diamond.body.collideWorldBounds = true;
-  diamond.body.bounce.x = 1;
-
-  this.spikes = this.game.add.group();
-
-  this.spikes.enableBody = true;
-
-  let spike = this.spikes.create(300, 300, 'diamond');
-  spike.angle += 180;
-  spike.anchor.setTo(0.5, 0.5);
-  spike.body.immovable = true;
+  addPlayer.call(this, {
+    left: 32,
+    top: this.game.world.height - 150,
+    image: 'dude',
+    bounceY: 0.2,
+    gravityY: 300,
+  });
 
   this.score = 0,
   this.scoreText = this.game.add.text(16, 16, `Score: ${this.score}`, { fontSize: '32px', fill: '#000' });

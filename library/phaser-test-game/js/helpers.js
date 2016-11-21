@@ -46,14 +46,4 @@ export default {
   rideDiamond: function (p, diamond) {
     diamond.body.velocity.x = (diamond.body.velocity.x === Math.abs(diamond.body.velocity.x)) ? 100 : -100;
   },
-  mouseup: function (button) {
-    this.controller[button.data.id] = false;
-  },
-  mousedown: function (button) {
-    this.controller[button.data.id] = true;
-  },
-  mouseover: function () {
-  },
-  mouseout: function () {
-  },
 };
