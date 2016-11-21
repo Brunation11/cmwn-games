@@ -130,7 +130,7 @@ class ItemDrawer extends Selectable {
   }
 
   renderItemContent(item) {
-    var content = [], src;
+    var content = [], thumb, src;
 
     if (item.src || item.thumb) {
       src = item.thumb || item.src;
@@ -139,15 +139,13 @@ class ItemDrawer extends Selectable {
         item.items = _.values(item.items);
       }
 
-      if (item.items[0]) {
-        src = item.items[0].thumb || item.items[0].src;
-      }
+      thumb = _.find(item.items, subitem => {
+        if (subitem.name === '_thumb') return true;
+      });
 
-      if (!src) {
-        src = _.find(item.items, subitem => {
-          if (subitem.name === '_thumb') return subitem.thumb || subitem.src;
-        });
-      }
+      if (thumb) src = thumb.thumb || thumb.src;
+
+      if (!src && item.items[0]) src = item.items[0].thumb || item.items[0].src;
     }
 
     if (src) {
