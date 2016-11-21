@@ -216,8 +216,8 @@ Selectable.defaultProps = _.defaults({
   ],
   selectClass: 'SELECTED',
   completeListOnClick: true,
-  selectRespond: _.identity,
-  onSelect: _.identity,
+  selectRespond: _.noop,
+  onSelect: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Selectable;

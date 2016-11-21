@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Reveal extends skoash.Component {
   constructor() {
@@ -237,8 +236,8 @@ Reveal.defaultProps = _.defaults({
     <li></li>
   ],
   allowMultipleOpen: false,
-  onOpen: _.identity,
-  onClose: _.identity,
+  onOpen: _.noop,
+  onClose: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Reveal;
