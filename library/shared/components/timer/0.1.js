@@ -106,8 +106,9 @@ class Timer extends skoash.Component {
 
 Timer.defaultProps = _.defaults({
   getTime: function () {
-    return this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+    return moment(this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time).format(this.props.format);
   },
+  format: 'm:ss',
 }, skoash.Component.defaultProps);
 
 export default Timer;
