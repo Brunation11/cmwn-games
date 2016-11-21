@@ -1,12 +1,20 @@
+import loadAssets from 'shared/phaser/methods/load_assets/0.1';
+
 export default function () {
-  this.game.load.image('sky', 'media/sky.png');
-  this.game.load.image('ground', 'media/platform.png');
-  this.game.load.image('star', 'media/star.png');
-  this.game.load.image('health', 'media/firstaid.png');
-  this.game.load.image('diamond', 'media/diamond.png');
+  loadAssets.call(this, 'image', [
+    ['sky', 'media/sky.png'],
+    ['ground', 'media/platform.png'],
+    ['star', 'media/star.png'],
+    ['health', 'media/firstaid.png'],
+    ['diamond', 'media/diamond.png'],
+  ]);
 
-  this.game.load.spritesheet('dude', 'media/dude.png', 32, 48);
+  loadAssets.call(this, 'spritesheet', [
+    ['dude', 'media/dude.png', 32, 48],
+  ]);
 
-  this.game.load.audio('bump', 'media/bump.mp3');
-  this.game.load.audio('slam', 'media/slam.mp3');
+  loadAssets.call(this, 'audio', [
+    ['bump', 'media/bump.mp3'],
+    ['slam', 'media/slam.mp3'],
+  ]);
 }
