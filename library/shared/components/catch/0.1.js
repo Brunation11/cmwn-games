@@ -1,5 +1,6 @@
-import Catchable from 'shared/components/catchable/0.1';
+import classNames from 'classnames';
 
+import Catchable from 'shared/components/catchable/0.1';
 
 class Catch extends skoash.Component {
   constructor() {
@@ -7,7 +8,6 @@ class Catch extends skoash.Component {
 
     this.state = {
       canCatch: true,
-      stamp: 0
     };
 
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -15,10 +15,19 @@ class Catch extends skoash.Component {
     this.checkCollisions = this.checkCollisions.bind(this);
   }
 
-  componentDidMount() {
+  bootstrap() {
+    super.bootstrap();
+    this.onResize();
+    this.attachMouseEvents();
+    window.addEventListener('resize', this.onResize);
+
     this.bucketNode = ReactDOM.findDOMNode(this.refs.bucket);
     this.catchableNodes = _.map(this.props.catchables, function (val, key) {
       return ReactDOM.findDOMNode(this.refs[`${key}-catchable`]);
+    }.bind(this));
+    _.forEach(this.catchableNodes, function (node, key) {
+      var catchableRef = this.refs[`${key}-catchable`];
+      node.addEventListener('animationiteration', catchableRef.reset, false);
     }.bind(this));
   }
 
@@ -55,28 +64,12 @@ class Catch extends skoash.Component {
   }
 
   start() {
-    super.start();
+    super.start(this.checkCollisions);
     this.bootstrap();
-    this.checkCollisions();
-  }
-
-  bootstrap() {
-    super.bootstrap();
-    this.onResize();
-    this.attachMouseEvents();
-    window.addEventListener('resize', this.onResize);
-    _.forEach(this.catchableNodes, function (node, key) {
-      var catchableRef = this.refs[`${key}-catchable`];
-      node.addEventListener('animationiteration', catchableRef.reset, false);
-    }.bind(this));
   }
 
   restart() {
-    this.setState({
-      stamp: 0
-    }, () => {
-      this.checkCollisions();
-    });
+    this.checkCollisions();
   }
 
   stop() {
@@ -117,37 +110,25 @@ class Catch extends skoash.Component {
     if (this.audio.correct) {
       this.audio.correct.play();
     }
-    if (typeof this.props.onCorrect === 'function') {
-      this.props.onCorrect.call(this, catchable, key);
-    }
+    this.props.onCorrect.call(this, catchable, key);
   }
 
   incorrect(catchable, key) {
     if (this.audio.incorrect) {
       this.audio.incorrect.play();
     }
-    if (typeof this.props.onIncorrect === 'function') {
-      this.props.onIncorrect.call(this, catchable, key);
-    }
+    this.props.onIncorrect.call(this, catchable, key);
   }
 
   checkCollisions() {
-    var time = Date.now();
     if (!this.state.started || this.state.paused) return;
-    if (time >= this.state.stamp) {
-      this.setState({
-        stamp: time + 1000
-      });
-      var bucketRect = this.bucketNode.getBoundingClientRect();
-      _.forEach(this.catchableNodes, function (val, key) {
-        if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
-          this.selectCatchable(this.refs[`${key}-catchable`], key);
-        }
-      }.bind(this));
-      window.requestAnimationFrame(this.checkCollisions);
-    } else {
-      window.requestAnimationFrame(this.checkCollisions);
-    }
+    var bucketRect = this.bucketNode.getBoundingClientRect();
+    _.forEach(this.catchableNodes, function (val, key) {
+      if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
+        this.selectCatchable(this.refs[`${key}-catchable`], key);
+      }
+    }.bind(this));
+    window.requestAnimationFrame(this.checkCollisions);
   }
 
   isColliding(bucketRect, catchRect) {
@@ -215,17 +196,13 @@ class Catch extends skoash.Component {
     );
   }
 
-  getClasses() {
-    var classes = '';
-
-    if (this.state.complete || this.props.isComplete) classes += ' COMPLETE';
-
-    return classes;
+  getClassNames() {
+    return classNames('catch', super.getClassNames());
   }
 
   render() {
     return (
-      <div ref="catch-component" className={'catch' + this.getClasses()}>
+      <div ref="catch-component" className={this.getClassNames()}>
         <ul className="items">
           {this.renderCatchables()}
         </ul>
@@ -236,9 +213,12 @@ class Catch extends skoash.Component {
 
 }
 
-Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
+Catch.defaultProps = _.defaults({
   catchables: [],
-  bucketInBounds: true
-});
+  bucketInBounds: true,
+  bucket: <skoash.Component />,
+  onCorrect: _.identity,
+  onIncorrect: _.identity,
+}, skoash.Component.defaultProps);
 
 export default Catch;

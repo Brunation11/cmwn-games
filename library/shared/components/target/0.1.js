@@ -111,8 +111,9 @@ class Target extends skoash.Component {
 }
 
 Target.defaultProps = _.defaults({
-  onUpdateState: _.identity,
-  onSetTarget: _.identity,
+  targets: [<skoash.Component />],
+  onUpdateState: _.noop,
+  onSetTarget: _.noop,
   loop: false,
 }, skoash.Component.defaultProps);
 

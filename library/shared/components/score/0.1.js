@@ -116,7 +116,7 @@ class Score extends skoash.Component {
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.props.correct || this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}

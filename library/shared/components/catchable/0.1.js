@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 class Catchable extends skoash.Component {
   constructor() {
     super();
@@ -7,30 +9,36 @@ class Catchable extends skoash.Component {
     this.reset = this.reset.bind(this);
   }
 
+  bootstrap() {
+    super.bootstrap();
+    this.DOMNode = ReactDOM.findDOMNode(this);
+  }
+
   markCaught() {
+    if (!this.state.ready) return;
     this.setState({canCatch: false});
-    if (typeof this.props.onCaught === 'function') {
-      this.props.onCaught.call(this);
-    }
+    this.props.onCaught.call(this);
   }
 
   canCatch() {
     return !this.props.disabled && this.state.canCatch;
   }
 
-  getClasses() {
-    return this.state.canCatch ? '' : 'CAUGHT';
+  getClassNames() {
+    return classNames('catchable', {
+      CAUGHT: !this.state.canCatch
+    }, super.getClassNames());
   }
 
   reset() {
-    if (!this.props.disabled && this.props.reCatchable) {
+    if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
       this.setState({canCatch: true});
     }
   }
 
   render() {
     return (
-      <li className={this.getClasses()}></li>
+      <li {...this.props} className={this.getClassNames()} />
     );
   }
 }
@@ -38,7 +46,8 @@ class Catchable extends skoash.Component {
 Catchable.defaultProps = _.defaults({
   disabled: false,
   isCorrect: true,
-  reCatchable: true
+  reCatchable: true,
+  onCaught: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Catchable;

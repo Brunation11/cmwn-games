@@ -24,7 +24,13 @@ class Reveal extends skoash.Component {
 
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
+    var currentlyOpen = this.state.currentlyOpen;
+
+    if (!this.props.allowMultipleOpen) {
+      currentlyOpen = [message];
+    } else if (currentlyOpen.indexOf(message) === -1) {
+      currentlyOpen = currentlyOpen.concat(message);
+    }
 
     self.setState({
       open: true,
@@ -54,7 +60,8 @@ class Reveal extends skoash.Component {
       self.updateGameState({
         path: self.props.openTarget,
         data: {
-          open: '' + message
+          open: '' + message,
+          close: false,
         }
       });
     }
@@ -146,14 +153,13 @@ class Reveal extends skoash.Component {
     var list = this.props.list;
 
     return list.map((li, key) => {
-      var dataRef = li.props['data-ref'] || key;
-      var ref = li.ref || dataRef;
+      var ref = li.ref || li.props['data-ref'] || key;
       return (
         <li.type
           {...li.props}
           type="li"
           className={this.getClass(li, key)}
-          data-ref={dataRef}
+          data-ref={ref}
           ref={ref}
           key={key}
         />
@@ -195,9 +201,8 @@ class Reveal extends skoash.Component {
     if (this.state.open) {
       open = '';
       this.state.currentlyOpen.forEach(ref => {
-        open += 'open-' + ref + ' ';
+        open += 'open-' + ref;
       });
-      open += 'OPEN';
     }
 
     classes = classNames(
@@ -231,6 +236,7 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  allowMultipleOpen: false,
   onOpen: _.identity,
   onClose: _.identity,
 }, skoash.Component.defaultProps);
