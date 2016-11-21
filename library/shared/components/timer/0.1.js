@@ -86,7 +86,7 @@ class Timer extends skoash.Component {
   getClassNames() {
     return classNames(
       'timer',
-      skoash.Component.prototype.getClassNames.call(this)
+      super.getClassNames()
     );
   }
 
