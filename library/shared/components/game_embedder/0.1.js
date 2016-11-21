@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 class GameEmbedder extends skoash.Component {
   constructor() {
     super();
@@ -39,11 +37,30 @@ class GameEmbedder extends skoash.Component {
     this.props.onLoad.call(this);
   }
 
+  pause() {
+    this.emitEvent({ name: 'pause' });
+  }
+
+  resume() {
+    this.emitEvent({ name: 'resume' });
+  }
+
   emitEvent(data) {
     var e = new Event('skoash-event');
     e.name = data.name;
     e.data = data;
     this.gameNode.contentWindow.dispatchEvent(e);
+  }
+
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.controller) {
+      this.emitEvent({
+        name: 'controller-update',
+        controller: props.controller,
+      });
+    }
   }
 
   render() {

@@ -13,16 +13,16 @@ class Game {
 
   attachEvents() {
     window.addEventListener('skoash-event', (e) => {
-      if (e.data.target && e.data.target.id === 'pause') {
-        if (e.name === 'mousedown') {
-          this.game.paused = !this.game.paused;
-        }
-      } else {
-        if (e.name === 'mousedown') {
-          this.controller[e.data.target.id] = true;
-        } else if (e.name === 'mouseup') {
-          this.controller[e.data.target.id] = false;
-        }
+      switch (e.name) {
+      case 'controller-update':
+        this.controller = e.data.controller;
+        break;
+      case 'pause':
+        this.game.paused = true;
+        break;
+      case 'resume':
+        this.game.paused = false;
+        break;
       }
     }, false);
 

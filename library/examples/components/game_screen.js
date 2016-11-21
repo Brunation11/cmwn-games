@@ -11,6 +11,7 @@ export default function (props, ref, key) {
     >
       <GameEmbedder
         src="../phaser-test-game/index.html"
+        controller={_.get(props, 'data.d-pad')}
       />
       <DPad />
     </skoash.Screen>

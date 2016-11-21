@@ -26,11 +26,10 @@ import GameScreen from './components/game_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-class Examples extends skoash.Game {
-  constructor() {
-    super(config);
-
-    this.screens = {
+var Examples = (
+  <skoash.Game
+    config={config}
+    screens={{
       0: iOSScreen,
       // 1: LabyrinthScreen,
       // 1: SpriteScreen,
@@ -54,29 +53,17 @@ class Examples extends skoash.Game {
       // 5: InfoScreen,
       // 6: VideoScreen,
       // 7: FlipScreen,
-    };
-
-    this.menus = {
+    }}
+    menus={{
       quit: QuitScreen,
-    };
-  }
+    }}
+    loader={<Loader />}
+    assets={[
+      <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
+      <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />,
+      <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
+    ]}
+  />
+);
 
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
-
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
-        <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />
-      </div>
-    );
-  }
-
-}
-
-skoash.start(Examples, config.id);
+skoash.start(Examples);
