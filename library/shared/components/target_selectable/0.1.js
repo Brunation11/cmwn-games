@@ -47,10 +47,8 @@ class TargetSelectable extends SelectableReveal {
       classes
     }, () => {
       this.setItem(this.state.idx + 1);
-      this.refs.selectable.requireForComplete.forEach(key => {
-        if (key === message && this.refs.selectable.refs[key]) {
-          this.refs.selectable.refs[key].complete();
-        }
+      _.each(this.refs.selectable.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     });
   }
