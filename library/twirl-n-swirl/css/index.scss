@@ -1,3 +1,83 @@
+@keyframes catchable {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 75%;
+    opacity: 0;
+  }
+}
+
+@keyframes incorrectCatchable {
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fishLeft {
+  0% {
+    left: -20%;
+  }
+
+  49% {
+    left: 120%;
+    transform: none;
+  }
+
+  50% {
+    transform:scaleX(-1);
+
+  }
+
+  100% {
+    transform:scaleX(-1);
+    left: -20%;
+  }
+}
+
+@keyframes fishRight {
+  0% {
+    right: -20%;
+  }
+
+  49% {
+    right: 120%;
+    transform: none;
+  }
+
+  50% {
+    transform:scaleX(-1);
+
+  }
+
+  100% {
+    transform:scaleX(-1);
+    right: -20%;
+  }
+}
+
 @keyframes flush {
   0% {
     transform: translate3d(-50%, -50%, 0) scale(1.75) rotate(0deg);
@@ -22,6 +102,12 @@
   100% {
     transform: rotate(720deg) scale(.3);
     opacity: 0;
+  }
+}
+
+@keyframes moveSlideshow {
+  100% {
+    transform: translateY(100%);
   }
 }
 
@@ -51,20 +137,70 @@ body > div > div {
   height: 540px;
   font-size: 36px;
   color: #fff;
-  background: url(../media/images/background-title.png) bottom center no-repeat;
-  background-size: cover;
 
-  [id*="question"],
-  [id*="responsible"],
-  [id*="flush"],
-  [id*="flip"] {
-    background: url(../media/images/background.png) bottom center no-repeat;
-    background-size: cover;
+  .background {
+    opacity: 0;
+    transition: opacity .5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &.bkg-1 {
+      background: url('../media/images/background-title.png'); //blue tile
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
+    &.bkg-2 {
+      background-image: url('../media/images/background.png'); // white tile
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
+    &.bkg-3 {
+      background-image: url('../media/images/background-plant.png');// plant
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
+    &.bkg-4 {
+      background-image: url('../media/images/background-released.png');// released
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
+    &.bkg-5 {
+      background-image: url('../media/images/background-catcher.png');// catch game
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
+    &.bkg-6 {
+      background-image: url('../media/images/background-flip.png');//flip
+      background-size: cover;
+      background-position: center center no-repeat;
+    }
+
   }
 
-  [id*="plant"] {
-    background: url(../media/images/background-plant.png) bottom center no-repeat;
-    background-size: cover;
+  .background.bkg-1,
+  &.SCREEN-2 .background.bkg-2,
+  &.SCREEN-3 .background.bkg-3,
+  &.SCREEN-6 .background.bkg-4,
+  &.SCREEN-7 .background.bkg-2,
+  &[class*="catch-game-lvl"] .background.bkg-5,
+  &.SCREEN-13 .background.bkg-2,
+  &.SCREEN-14 .background.bkg-6 {
+    opacity: 1;
+  }
+
+
+  &.MENU-quit {
+    .screen:not(#quit) {
+      opacity: 0;
+    }
   }
 }
 
@@ -179,15 +315,17 @@ p {
 
 .screen {
   position: absolute;
-  top: 50%;
+  top: 0;
+  bottom: 0;
   left: 0;
-  width: 960px;
-  height: 540px;
-  margin-top: -270px;
+  right: 0;
   opacity: 0;
   display: none;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
+  transition: opacity .5s, z-index 0s 1s;
+  z-index: -1;
+  overflow: hidden;
+  width: 960px;
+  height: 540px;
 
   &:not(.COMPLETE) {
     button {
@@ -196,79 +334,68 @@ p {
       }
     }
   }
+
+  &.OPEN {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity .5s, z-index 0s;
+  }
+
+  &.READY {
+    display: block;
+  }
+
+  &.GATED .next-screen {
+    visibility: hidden;
+    opacity: 0;
+    cursor: auto;
+    z-index: -1;
+  }
+
+  .next-screen,
+  .prev-screen {
+    position: absolute;
+    visibility: visible;
+    bottom: 2%;
+    z-index: 2;
+  }
+
+  .next-screen {
+    right: 1%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+  }
 }
 
-.screen.last {}
-
-.screen.OPEN {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.screen.READY {
-  display: block;
-}
-
-.screen.LEAVE {
-  opacity: 0;
-  transform: translateX(-100%);
-}
-
-.screen .next-screen,
-.screen .prev-screen {
-  position: absolute;
+.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+  transform: rotate(0deg) translate3d(0px, 0px, 0px);
+  pointer-events: auto;
   visibility: visible;
-  bottom: 2%;
-
+  opacity: 1;
+  cursor: pointer;
   z-index: 2;
 }
 
-.screen .next-screen {
-  right: 1%;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 1s, opacity 1s;
-}
-
-.screen.GATED .next-screen {
-  visibility: hidden;
-  opacity: 0;
-  cursor: auto;
-  z-index: -1;
-}
-
-.pl-game.DEMO .screen .next-screen,
-.screen.COMPLETE .next-screen {
-  visibility: visible;
-  opacity: 1;
-  // transform: rotate(0deg);
-  cursor: pointer;
-  z-index: 1;
-}
-
-.pl-game.MENU.MENU-quit .menu .close {
+.MENU.MENU-quit .menu .close {
   visibility: hidden;
 }
 
-.screen .next-screen:hover {
-
-}
 
 .screen .prev-screen {
   left: 1%;
 }
 
 // the following css is specific to this game
-
 .dropzone + ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-
 .reveal {
-  display: none;
   position: absolute;
   left: 0;
   top: 0;
@@ -285,7 +412,6 @@ p {
     width: 100%;
     height: 240px;
     margin-top: -120px;
-    // background-image: url(../media/_Frames/FR_1.png);
     background-size: 100% 100%;
   }
 
@@ -316,16 +442,18 @@ p {
     bottom: 10px;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 3s, z-index 0s .6s;
+    visibility: hidden;
+    transition: opacity .5s ease .5s, visibility .25s ease .25s, z-index 0s .6s;
   }
 
   &.OPEN {
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
     transition: opacity .5s;
 
     .close-reveal {
       opacity: 1;
+      visibility: visible;
     }
   }
 }
@@ -343,6 +471,7 @@ p {
   &:not(.DEMO) {
     .reveal {
       .close-reveal {
+        opacity: 0;
         visibility: hidden;
       }
     }
@@ -458,7 +587,8 @@ p {
   }
 }
 
-#info-plant {
+#info-plant,
+#info-released {
   h2 {
     width: 700px;
     margin: 20px auto;
@@ -973,13 +1103,15 @@ p {
       top: 70%;
       width: 7%;
       height: 10%;
-      z-index: 1;
+      z-index: 2;
       background-position: 777px -82px;
     }
   }
 }
 
-#responsible-flusher {
+#responsible-flusher,
+#lets-clean-up,
+#make-a-difference {
   img {
     position: absolute;
 
@@ -1005,19 +1137,650 @@ p {
     width: 50%;
     top: 6%;
     right: 7%;
-    font-size: 1.4em;
     text-align: center;
 
     p {
       position: absolute;
       top: 18%;
-      left: 15%;
-      font-size: 28px;
+      left: 8%;
       color: #000;
+      font-weight: 600;
+      font-size: 33px;
     }
   }
 }
 
+#lets-clean-up {
+  img.banner {
+    top: 54%;
+    left: 9%;
+  }
+}
+
+#make-a-difference {
+  img.banner {
+    width: 40%;
+    top: 58%;
+    left: 27%;
+  }
+
+  .message p {
+    left: 8%;
+    font-weight: 600;
+    font-size: 31px;
+  }
+}
+
+[id*="catch-game"] {
+  .misc {
+    * {
+      position: absolute;
+      width: 20%;
+      height: 21%;
+      background: url(../media/images/sprite_fish.png);
+      background-size: 750px 282px;
+      animation-iteration-count: infinite;
+
+      .PAUSED & {
+        animation-play-state: paused;
+      }
+    }
+
+    .fish-1 {
+      background-position: 0px 10px;
+      width: 16%;
+      animation-duration: 30s;
+      bottom: 20%;
+      left: -20%;
+      animation-name: fishLeft;
+
+      &.sad {
+        background-position: 0px 142px;
+      }
+    }
+
+    .fish-2 {
+      background-position: 584px 4px;
+      animation-duration: 25s;
+      animation-delay: 1s;
+      bottom: 10%;
+      right: -20%;
+      animation-name: fishRight;
+
+      &.sad {
+        background-position: 584px 137px;
+      }
+    }
+
+    .fish-3 {
+      background-position: 403px 0;
+      animation-duration: 20s;
+      animation-delay: 2s;
+      bottom: 14%;
+      left: -20%;
+      animation-name: fishLeft;
+
+      &.sad {
+        background-position: 403px 131px;
+      }
+    }
+
+    .fish-4 {
+      background-position: 193px 7px;
+      animation-duration: 15s;
+      animation-delay: 3s;
+      bottom: 8%;
+      right: -20%;
+      animation-name: fishRight;
+
+      &.sad {
+        background-position: 193px 140px;
+      }
+    }
+  }
+
+  .drop-points {
+    .pipe {
+      position: absolute;
+      width: 30%;
+      height: 65%;
+      top: 0;
+      background: url(../media/images/pipe.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      &.left {
+        left: 4%;
+      }
+
+      &.center {
+        left: 33%;
+      }
+
+      &.right {
+        right: 10%;
+      }
+    }
+  }
+
+  .score {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 22%;
+    height: 10%;
+    text-align: center;
+    color: #7AF2FF;
+    font-weight: 600;
+    font-size: 40px;
+
+    &:after {
+      position: absolute;
+      top: -80%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../media/images/sprites-level.png);
+      background-size: 1184px;
+      content: '';
+    }
+
+    &.lvl-1:after {
+      background-position: -16px -49px;
+    }
+
+    &.lvl-2:after {
+      background-position: -251px -49px;
+    }
+
+    &.lvl-3:after {
+      background-position: -492px -49px;
+    }
+
+    &.lvl-4:after {
+      background-position: -729px -49px;
+    }
+
+    &.lvl-5:after {
+      background-position: -963px -49px;
+    }
+  }
+
+  .timer {
+    position: absolute;
+    top: 9%;
+    right: 1%;
+    color: #7AF2FF;
+    font-weight: 900;
+    font-size: 40px;
+
+    span {
+      text-shadow: 0px 5px 10px #000;
+    }
+  }
+
+  .dropper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .randomizer {
+      display: none;
+    }
+
+    .items {
+      position: absolute;
+      top: 5%;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      height: 50%;
+      width: 100%;
+      overflow: visible;
+      list-style-type: none;
+      z-index: 1;
+    }
+
+    &.STARTED {
+      .catchable {
+        position: absolute;
+        transition: opacity .5s;
+        animation-name: catchable;
+        animation-timing-function: linear;
+        top: -100%;
+        width: 15%;
+        height: 50%;
+        background: url(../media/S_6/sprite_6.2.png);
+        background-size: 275px 960px;
+        opacity: 1;
+
+        &.slow {
+          animation-duration: 5s;
+        }
+
+        &.medium {
+          animation-duration: 4s;
+        }
+
+        &.fast {
+          animation-duration: 3s;
+        }
+
+        &.turtle {
+          background-image: url(../media/images/turtle.png);
+          background-size: contain;
+          background-position: 0 15px;
+          background-repeat: no-repeat;
+        }
+
+        &.frog {
+          background-image: url(../media/images/frog.png);
+          background-size: contain;
+          background-position: 0 15px;
+          background-repeat: no-repeat;
+        }
+
+        &.fish {
+          background-image: url(../media/images/sprite_fish.png);
+          background-position: 380px 15px;
+          background-size: 750px 282px;
+        }
+
+        &.plant {
+          background-image: url(../media/images/plants.png);
+          background-position: -81px 0px;
+          background-size: 750px 129px;
+          background-repeat: no-repeat;
+        }
+
+        &.floss {
+          background-position: 156px 700px;
+        }
+
+        &.medicine {
+          background-position: 166px 554px;
+        }
+
+        &.diaper {
+          background-position: 27px 435px;
+        }
+
+        &.bandaid {
+          background-position: 17px 552px;
+        }
+
+        &.oil {
+          background-position: 42px 686px;
+        }
+
+        &.gum {
+          background-position: 156px 428px;
+        }
+
+        &.left {
+          left: 14%;
+        }
+
+        &.center {
+          left: 43%;
+        }
+
+        &.right {
+          left: 71%;
+        }
+
+        &.correct:after {
+          position: absolute;
+          content: "+5";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: #fff;
+          font-size: 50px;
+          font-weight: 600
+        }
+
+        &.incorrect:after {
+          position: absolute;
+          content: "-10";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: orange;
+          font-size: 50px;
+          font-weight: 600
+        }
+
+        &.trash:not(.CAUGHT):after {
+          position: absolute;
+          content: "-10";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          text-align: right;
+          color: orange;
+          font-size: 50px;
+          font-weight: 600;
+          transition: opacity .5s;
+          opacity: 0;
+          animation-name: incorrectCatchable;
+        }
+
+        &.trash.slow:not(.CAUGHT):after {
+          animation-duration: 5s;
+        }
+
+        &.trash.medium:not(.CAUGHT):after {
+          animation-duration: 4s;
+        }
+
+        &.trash.fast:not(.CAUGHT):after {
+          animation-duration: 3s;
+        }
+
+        .PAUSED & {
+          animation-play-state: paused;
+        }
+      }
+    }
+  }
+
+  .catcher {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .bucket {
+      position: absolute;
+      pointer-events: none;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%);
+      width: 5%;
+      height: 5%;
+
+      &:before {
+        position: absolute;
+        pointer-events: none;
+        left: -150%;
+        top: -50%;
+        width: 400%;
+        height: 400%;
+        background: url(../media/images/basket.png);
+        background-position: center -45px;
+        background-size: 130%;
+        content: '';
+      }
+    }
+  }
+
+  .reveal {
+    > div {
+      height: 100%;
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+
+    .frame {
+      background: url(../media/images/frame.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      position: absolute;
+      height: 80%;
+      top: 50%;
+      text-align: center;
+      margin-top: 0;
+      opacity: 0;
+    }
+
+    .close-reveal {
+      display: none;
+    }
+
+    &.open-instructions {
+      .fish-left {
+        position: absolute;
+        width: 13%;
+        left: 11%;
+        top: 9%;
+      }
+
+      .fish-right {
+        position: absolute;
+        width: 22%;
+        height: 29%;
+        left: 514px;
+        top: 388px;
+        overflow: hidden;
+
+        &:after {
+          position: absolute;
+          width: 120%;
+          height: 120%;
+          left: -10%;
+          top: -10%;
+          background: url(../media/images/sprite_fish.png);
+          content: '';
+          background-position: 346px -3px;
+          transform: rotate(11deg);
+        }
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+
+      span:nth-of-type(1) {
+        top: 12%;
+      }
+
+      span:nth-of-type(2) {
+        top: 48%;
+      }
+
+      .close-reveal {
+        display: block;
+        left: 50%;
+        bottom: 18%;
+        transform: translateX(-50%);
+        width: 25%;
+        height: 18%;
+        background: url(../media/images/sprite_main_nav.png);
+        background-position: 684px 149px;
+        background-size: 1500px 427px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          border: 0;
+          box-shadow: none;
+          background-position: 682px 374px;
+        }
+      }
+    }
+
+    .level-one-complete {
+      .banner {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+        background: url(../media/images/sprites-levelup.png);
+        background-position: 8px -26px;
+        background-size: 2250px 292px;
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+    }
+
+    .level-two-complete {
+      .banner {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+        background: url(../media/images/sprites-levelup.png);
+        background-position: 1790px -26px;
+        background-size: 2250px 292px;
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+    }
+
+    .level-three-complete {
+      .banner {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+        background: url(../media/images/sprites-levelup.png);
+        background-position: 1340px -26px;
+        background-size: 2250px 292px;
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+    }
+
+    .level-four-complete {
+      .banner {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+        background: url(../media/images/sprites-levelup.png);
+        background-position: 890px -26px;
+        background-size: 2250px 292px;
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+    }
+
+    .level-five-complete {
+      .banner {
+        position: absolute;
+        width: 60%;
+        height: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+        background: url(../media/images/sprites-levelup.png);
+        background-position: 445px -26px;
+        background-size: 2250px 292px;
+      }
+
+      span {
+        position: absolute;
+        color: #000;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+    }
+
+    &.open-try-again {
+      span {
+        position: absolute;
+        color: #000;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        font-weight: 600;
+      }
+
+      .close-reveal {
+        display: block;
+        left: 50%;
+        bottom: 20%;
+        transform: translateX(-50%);
+        width: 28%;
+        height: 18%;
+        background: url(../media/images/sprite_main_nav.png);
+        background-position: 310px 368px;
+        background-size: 1500px 427px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          border: 0;
+          box-shadow: none;
+          background-position: 308px 138px;
+        }
+      }
+    }
+
+    &.OPEN {
+      z-index: 2;
+
+      .frame {
+        opacity: 1;
+      }
+    }
+  }
+}
 
 #flip {
   img {
@@ -1029,16 +1792,17 @@ p {
       left: 23%;
     }
 
-    &.toilet {
-      bottom: 0;
-      left: 0;
-      width: 50%;
-    }
-
     &.flip {
       width: 46%;
       top: 48%;
       left: 27%;
+    }
+
+    &.flip-coin {
+      width: 30%;
+      bottom: 0;
+      left: 0;
+      border: 1px solid;
     }
   }
 
@@ -1126,3 +1890,4 @@ p {
     }
   }
 }
+

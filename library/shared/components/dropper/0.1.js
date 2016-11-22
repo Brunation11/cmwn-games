@@ -11,6 +11,7 @@ class Dropper extends Draggable {
 
     this.state = _.defaults({
       items: {},
+      classes: [],
       itemCount: 0,
       itemEndXs: {},
       direction: '',
@@ -20,16 +21,19 @@ class Dropper extends Draggable {
   }
 
   next(on) {
-    var items, index;
+    var items, index, classes;
 
     if (!this.state.started || (!this.props.on && !on) || this.props.gameState.paused) return;
 
     index = this.state.itemCount;
     items = this.state.items;
+
     items[index] = this.refs.bin.get(1)[0];
+    if (typeof this.props.getClassNames === 'function') classes = this.props.getClassNames.call(this);
 
     this.setState({
       items,
+      classes,
       itemCount: index + 1,
     }, () => {
       var timeoutFunction = i => {
@@ -134,6 +138,7 @@ class Dropper extends Draggable {
         <item.type
           {...item.props}
           style={this.getItemStyle(key, item.props.style)}
+          className={`${item.props.className} ${this.state.classes[key]}`}
           data-ref={ref}
           data-message={item.props.message}
           ref={ref}

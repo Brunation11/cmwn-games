@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ddffbb4bbd05db7026d2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae3ccd45461ac3e8ab02"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1727,35 +1727,35 @@
 
 	var _game2 = _interopRequireDefault(_game);
 
-	var _image = __webpack_require__(320);
+	var _image = __webpack_require__(321);
 
 	var _image2 = _interopRequireDefault(_image);
 
-	var _audio = __webpack_require__(322);
+	var _audio = __webpack_require__(323);
 
 	var _audio2 = _interopRequireDefault(_audio);
 
-	var _video = __webpack_require__(325);
+	var _video = __webpack_require__(326);
 
 	var _video2 = _interopRequireDefault(_video);
 
-	var _media_sequence = __webpack_require__(326);
+	var _media_sequence = __webpack_require__(327);
 
 	var _media_sequence2 = _interopRequireDefault(_media_sequence);
 
-	var _list_item = __webpack_require__(327);
+	var _list_item = __webpack_require__(328);
 
 	var _list_item2 = _interopRequireDefault(_list_item);
 
-	var _start = __webpack_require__(328);
+	var _start = __webpack_require__(329);
 
 	var _start2 = _interopRequireDefault(_start);
 
-	var _trigger = __webpack_require__(329);
+	var _trigger = __webpack_require__(330);
 
 	var _trigger2 = _interopRequireDefault(_trigger);
 
-	var _util = __webpack_require__(330);
+	var _util = __webpack_require__(331);
 
 	var _util2 = _interopRequireDefault(_util);
 
@@ -21741,9 +21741,7 @@
 	    key: 'completeRefs',
 	    value: function completeRefs() {
 	      _.forEach(this.refs, function (ref) {
-	        if (typeof ref.completeRefs === 'function') {
-	          ref.completeRefs();
-	        }
+	        _.invoke(ref, 'completeRefs');
 	      });
 
 	      this.complete({ silent: true });
@@ -21752,9 +21750,7 @@
 	    key: 'incompleteRefs',
 	    value: function incompleteRefs() {
 	      _.forEach(this.refs, function (ref) {
-	        if (typeof ref.incompleteRefs === 'function') {
-	          ref.incompleteRefs();
-	        }
+	        _.invoke(ref, 'incompleteRefs');
 	      });
 
 	      this.incomplete();
@@ -21784,7 +21780,7 @@
 	      }, function () {
 	        _this5.checkComplete();
 	        _.each(_this5.refs, function (ref) {
-	          if (typeof ref.start === 'function') ref.start();
+	          _.invoke(ref, 'start');
 	        });
 
 	        if (_this5.props.completeOnStart) _this5.complete();
@@ -21803,9 +21799,7 @@
 	        started: false
 	      }, function () {
 	        _.each(_this6.refs, function (ref) {
-	          if (ref && typeof ref.stop === 'function') {
-	            ref.stop();
-	          }
+	          _.invoke(ref, 'stop');
 	        });
 
 	        _this6.props.onStop.call(_this6);
@@ -21815,7 +21809,7 @@
 	    key: 'pause',
 	    value: function pause() {
 	      _.each(this.refs, function (ref) {
-	        if (typeof ref.pause === 'function') ref.pause();
+	        _.invoke(ref, 'pause');
 	      });
 
 	      this.props.onPause.call(this);
@@ -21824,7 +21818,7 @@
 	    key: 'resume',
 	    value: function resume() {
 	      _.each(this.refs, function (ref) {
-	        if (typeof ref.resume === 'function') ref.resume();
+	        _.invoke(ref, 'resume');
 	      });
 
 	      this.props.onResume.call(this);
@@ -21852,13 +21846,6 @@
 	      });
 	    }
 	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      if (this.props.completeIncorrect && !this.props.correct) {
-	        this.complete();
-	      }
-	    }
-	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.bootstrap();
@@ -21869,6 +21856,10 @@
 	      var _this9 = this;
 
 	      if (!this.props.bootstrap) return;
+
+	      if (this.props.completeIncorrect && !this.props.correct || this.props.complete) {
+	        this.complete();
+	      }
 
 	      this.requireForReady = Object.keys(this.refs);
 	      this.requireForComplete = this.requireForReady.filter(function (key) {
@@ -21922,6 +21913,7 @@
 	      // TODO: remove this after making sure components reference
 	      // this.media.audio and this.media.video instead of
 	      // this.audio and this.video directly
+	      // this is done for the framework but should be checked in games
 	      self.audio = self.media.audio;
 	      self.video = self.media.video;
 	    }
@@ -21954,51 +21946,39 @@
 	  }, {
 	    key: 'checkReady',
 	    value: function checkReady() {
-	      var ready,
-	          self = this;
+	      var ready;
 
-	      if (!self.props.checkReady || !this.props.ignoreReady && self.state.ready) return;
+	      if (!this.props.checkReady || !this.props.ignoreReady && this.state.ready) return;
 
-	      _.forEach(self.requireForReady, function (key) {
-	        if (self.refs[key] && self.refs[key].state && !self.refs[key].state.ready) {
-	          self.refs[key].bootstrap();
-	        }
+	      _.each(this.refs, function (ref) {
+	        if (!_.get(ref, 'state.ready')) _.invoke(ref, 'checkReady');
 	      });
 
-	      ready = _.every(self.requireForReady, function (key) {
-	        return self.refs[key] && (!self.refs[key].state || self.refs[key].state && self.refs[key].state.ready);
+	      ready = _.every(this.refs, function (ref) {
+	        return ref && (!ref.state || ref.state && ref.state.ready);
 	      });
 
-	      if (ready) self.ready();
+	      if (ready) this.ready();
 	    }
 	  }, {
 	    key: 'checkComplete',
 	    value: function checkComplete() {
-	      var self = this,
-	          complete;
+	      var complete;
 
-	      if (!self.props.checkComplete || !self.state.ready || !self.requireForComplete) return;
+	      if (!this.props.checkComplete || !this.state.ready || !this.requireForComplete) return;
 
-	      _.forEach(self.requireForComplete, function (key) {
-	        if (self.refs[key] && typeof self.refs[key].checkComplete === 'function') {
-	          self.refs[key].checkComplete();
-	        }
+	      _.each(this.refs, function (ref) {
+	        return _.invoke(ref, 'checkComplete');
 	      });
 
-	      complete = _.every(self.requireForComplete, function (key) {
-	        if (self.refs[key] instanceof Node) {
-	          return true;
-	        }
-	        if (!self.refs[key] || !self.refs[key].state || self.refs[key].state && !self.refs[key].state.complete) {
-	          return false;
-	        }
-	        return true;
+	      complete = _.every(this.refs, function (ref) {
+	        return ref instanceof Node || !ref || !ref.state || ref.state && ref.state.complete;
 	      });
 
-	      if (complete && !self.state.complete) {
-	        self.complete();
-	      } else if (self.state.started && !complete && self.state.complete) {
-	        self.incomplete();
+	      if (complete && !this.state.complete) {
+	        this.complete();
+	      } else if (this.state.started && !complete && this.state.complete) {
+	        this.incomplete();
 	      }
 	    }
 	  }, {
@@ -22057,14 +22037,12 @@
 
 	      var listName = arguments.length <= 0 || arguments[0] === undefined ? 'children' : arguments[0];
 
-	      var children = [].concat(this.props[listName]);
-	      return children.map(function (component, key) {
+	      return _.map([].concat(this.props[listName]), function (component, key) {
 	        if (!component) return;
-	        var ref = component.ref || component.props && component.props['data-ref'] || listName + '-' + key;
 	        return React.createElement(component.type, _extends({
 	          gameState: _this10.props.gameState
 	        }, component.props, {
-	          ref: ref,
+	          ref: component.ref || component.props && component.props['data-ref'] || listName + '-' + key,
 	          key: key
 	        }));
 	      });
@@ -28630,13 +28608,13 @@
 	    value: function next() {
 	      var state = this.props.gameState;
 
-	      if (this.state.leaving || !state.demo && !this.state.complete && !this.state.replay) return;
+	      if (!this.state.started || this.state.leaving || !state.demo && !this.state.complete && !this.state.replay) return;
 
 	      this.setState({
 	        leaving: true
 	      });
 
-	      setTimeout(this.goto.bind(this, this.props.nextIndex || this.props.index + 1, this.audio.button), this.props.nextDelay || 0);
+	      setTimeout(this.goto.bind(this, this.props.nextIndex || this.props.index + 1, this.media.audio.button), this.props.nextDelay || 0);
 	    }
 	  }, {
 	    key: 'prev',
@@ -28688,18 +28666,13 @@
 	    key: 'startMedia',
 	    value: function startMedia() {
 	      if (this.video[0]) {
-	        this.video[0].play();
-	      } else if (this.audio.voiceOver[0]) {
-	        this.audio.voiceOver[0].play();
+	        this.playMedia('video.0');
+	      } else if (this.media.audio.voiceOver[0]) {
+	        this.playMedia('audio.voiceOver.0');
 	      }
 
-	      if (this.audio.start) {
-	        this.audio.start.play();
-	      }
-
-	      if (this.props.playOnStart && this.refs[this.props.playOnStart]) {
-	        this.refs[this.props.playOnStart].play();
-	      }
+	      this.playMedia('start');
+	      this.playMedia(this.props.playOnStart);
 	    }
 	  }, {
 	    key: 'complete',
@@ -28715,9 +28688,7 @@
 	          silent: opts.silent || _this4.props.silentComplete
 	        });
 
-	        if (_this4.audio['screen-complete']) {
-	          _this4.audio['screen-complete'].play();
-	        }
+	        _this4.playMedia('screen-complete');
 
 	        if (_this4.props.emitOnComplete) {
 	          skoash.trigger('emit', _this4.props.emitOnComplete);
@@ -28903,6 +28874,10 @@
 
 	var _media_manager2 = _interopRequireDefault(_media_manager);
 
+	var _navigator = __webpack_require__(320);
+
+	var _navigator2 = _interopRequireDefault(_navigator);
+
 	var _component = __webpack_require__(171);
 
 	var _component2 = _interopRequireDefault(_component);
@@ -28983,6 +28958,8 @@
 	    });
 
 	    _attach_events2.default.call(_this);
+	    _this.mediaManager = new _media_manager2.default(_this);
+	    _this.navigator = new _navigator2.default(_this);
 	    return _this;
 	  }
 
@@ -28991,7 +28968,7 @@
 	    value: function getState() {
 	      var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-	      if (typeof opts.respond === 'function') opts.respond(this.state);
+	      _.invoke(opts, 'respond', this.state);
 	    }
 	  }, {
 	    key: 'demo',
@@ -29005,10 +28982,10 @@
 	    value: function onKeyDown(e) {
 	      if (e.keyCode === 78) {
 	        // n for next
-	        this.goto({ index: this.state.currentScreenIndex + 1 });
+	        this.navigator.goto({ index: this.state.currentScreenIndex + 1 });
 	      } else if (e.keyCode === 66) {
 	        // b for back
-	        this.goto({ index: this.state.currentScreenIndex - 1 });
+	        this.navigator.goto({ index: this.state.currentScreenIndex - 1 });
 	      } else if (e.altKey && e.ctrlKey && e.keyCode === 68) {
 	        // alt + ctrl + d
 	        this.demo();
@@ -29031,6 +29008,8 @@
 	      if (!self.state.iOS) {
 	        self.state.currentScreenIndex = 1;
 	      }
+
+	      self.screensLength = Object.keys(self.screens).length;
 
 	      self.requireForReady = Object.keys(self.refs);
 	      self.requireForComplete = self.requireForReady.filter(function (key) {
@@ -29063,7 +29042,7 @@
 	          _this2.checkReady();
 
 	          if (goto) {
-	            _this2.goto({
+	            _this2.navigator.goto({
 	              index: currentScreenIndex,
 	              load: true,
 	              silent: true
@@ -29078,27 +29057,26 @@
 	    value: function ready() {
 	      var _this3 = this;
 
-	      if (!this.state.ready) {
-	        this.setState({
-	          ready: true
-	        }, function () {
-	          _this3.emit({
-	            name: 'ready',
-	            game: _this3.config.id
-	          });
-	          _this3.goto({
-	            index: _this3.state.currentScreenIndex,
-	            silent: true
-	          });
+	      if (this.state.ready) return;
+	      this.setState({
+	        ready: true
+	      }, function () {
+	        _this3.emit({
+	          name: 'ready',
+	          game: _this3.config.id
 	        });
-	      }
+	        _this3.navigator.goto({
+	          index: _this3.state.currentScreenIndex,
+	          silent: true
+	        });
+	        _this3.onReady.call(_this3);
+	        _this3.props.onReady.call(_this3);
+	      });
 	    }
 	  }, {
 	    key: 'resume',
 	    value: function resume() {
-	      if (this.state.playingVO.length) {
-	        _media_manager2.default.fadeBackground.call(this);
-	      }
+	      if (this.state.playingVO.length) this.mediaManager.fadeBackground();
 	      this.setPause(false);
 	    }
 	  }, {
@@ -29115,8 +29093,7 @@
 	    value: function setPause(paused) {
 	      var _this4 = this;
 
-	      var openScreen,
-	          fnKey = paused ? 'pause' : 'resume';
+	      var fnKey = paused ? 'pause' : 'resume';
 
 	      this.setState({
 	        paused: paused
@@ -29125,134 +29102,13 @@
 	          audio[fnKey]();
 	        });
 
-	        openScreen = _this4.refs['screen-' + _this4.state.currentScreenIndex];
-	        if (openScreen && typeof openScreen[fnKey] === 'function') {
-	          openScreen[fnKey]();
-	        }
+	        _.invoke(_this4.refs['screen-' + _this4.state.currentScreenIndex], fnKey);
 	      });
-	    }
-	  }, {
-	    key: 'goBack',
-	    value: function goBack() {
-	      var screenIndexArray, index;
-	      screenIndexArray = this.state.screenIndexArray;
-	      screenIndexArray.pop();
-	      index = screenIndexArray.pop();
-
-	      this.goto({ index: index });
 	    }
 	  }, {
 	    key: 'goto',
 	    value: function goto(opts) {
-	      /*
-	       * highestScreenIndex is the index of the highest screen reached
-	       * not the index of the highest screen that exists.
-	       */
-	      var oldScreen, prevScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
-
-	      opts = this.props.getGotoOpts.call(this, opts);
-
-	      oldIndex = this.state.currentScreenIndex;
-	      oldScreen = this.refs['screen-' + oldIndex];
-
-	      if (typeof opts.index === 'number') {
-	        if (opts.index > this.screensLength - 1) {
-	          return this.quit();
-	        }
-	        currentScreenIndex = Math.min(this.screensLength - 1, Math.max(0, opts.index));
-	        highestScreenIndex = Math.max(this.state.highestScreenIndex, currentScreenIndex);
-	        nextScreen = this.refs['screen-' + (currentScreenIndex + 1)];
-	        prevScreen = this.refs['screen-' + (currentScreenIndex - 1)];
-	      } else if (typeof opts.index === 'string') {
-	        currentScreenIndex = opts.index;
-	        highestScreenIndex = this.state.highestScreenIndex;
-	      }
-
-	      newScreen = this.refs['screen-' + currentScreenIndex];
-
-	      if (!this.shouldGoto(oldScreen, newScreen, opts)) return;
-
-	      data = this.closeOldScreen(oldScreen, newScreen, opts, oldIndex);
-	      screenIndexArray = this.openNewScreen(newScreen, currentScreenIndex, opts);
-
-	      if (prevScreen) prevScreen.replay();
-	      if (nextScreen) nextScreen.load();
-	      if (!opts.load) this.emitSave(highestScreenIndex, currentScreenIndex);
-	      _media_manager2.default.playBackground.call(this, currentScreenIndex);
-
-	      this.setState({
-	        loading: false,
-	        currentScreenIndex: currentScreenIndex,
-	        highestScreenIndex: highestScreenIndex,
-	        screenIndexArray: screenIndexArray,
-	        classes: [],
-	        data: data
-	      });
-	    }
-	  }, {
-	    key: 'shouldGoto',
-	    value: function shouldGoto(oldScreen, newScreen, opts) {
-	      if (!opts.load && oldScreen && oldScreen.state && oldScreen.state.opening) {
-	        return false;
-	      }
-
-	      if (oldScreen.props.index < newScreen.props.index) {
-	        if (!opts.load && !this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay)) {
-	          return false;
-	        }
-	      }
-
-	      if (oldScreen.props.index > newScreen.props.index) {
-	        if (newScreen.props.index === 0) {
-	          return false;
-	        }
-	      }
-
-	      return true;
-	    }
-	  }, {
-	    key: 'openNewScreen',
-	    value: function openNewScreen(newScreen, currentScreenIndex, opts) {
-	      var screenIndexArray = this.state.screenIndexArray;
-	      if (newScreen) {
-	        // this should only be dropped into for non-linear screens
-	        if (!newScreen.state.load || !newScreen.state.ready) {
-	          this.loadScreens(currentScreenIndex, false);
-	        }
-	        screenIndexArray.push(currentScreenIndex);
-	        newScreen.open(opts);
-	      }
-	      return screenIndexArray;
-	    }
-	  }, {
-	    key: 'closeOldScreen',
-	    value: function closeOldScreen(oldScreen, newScreen, opts, oldIndex) {
-	      var back,
-	          buttonSound,
-	          data = _.cloneDeep(this.state.data);
-	      if (oldScreen && oldScreen !== newScreen) {
-	        if (oldScreen.props.index > newScreen.props.index) {
-	          back = true;
-	          oldScreen.close();
-	        } else {
-	          oldScreen.leave();
-	        }
-
-	        if (!opts.silent) {
-	          if (opts.buttonSound && typeof opts.buttonSound.play === 'function') {
-	            buttonSound = opts.buttonSound;
-	          } else if (this.audio.button) {
-	            buttonSound = this.audio.next || this.audio.button;
-	            if (back) buttonSound = this.audio.back || this.audio.button;
-	          }
-	          if (buttonSound) buttonSound.play();
-	        }
-
-	        if (oldScreen.props.resetOnClose) {
-	          data.screens[oldIndex] = {};
-	        }
-	      }
-	      return data;
+	      this.navigator.goto(opts);
 	    }
 	  }, {
 	    key: 'emitSave',
@@ -29269,7 +29125,7 @@
 	  }, {
 	    key: 'openMenu',
 	    value: function openMenu(opts) {
-	      var menu, openMenus, screen;
+	      var menu, openMenus;
 
 	      menu = this.refs['menu-' + opts.id];
 
@@ -29277,19 +29133,18 @@
 	        menu.open();
 	        openMenus = this.state.openMenus || [];
 	        openMenus.push(opts.id);
-	        if (this.media.button) this.media.button.play();
+	        this.playMedia('button');
 	        this.setState({
 	          openMenus: openMenus
 	        });
 	      }
 
-	      screen = this.refs['screen-' + this.state.currentScreenIndex];
-	      if (screen) screen.pause();
+	      _.invoke(this.refs['screen-' + this.state.currentScreenIndex], 'pause');
 	    }
 	  }, {
 	    key: 'menuClose',
 	    value: function menuClose(opts) {
-	      var menu, openMenus, screen;
+	      var menu, openMenus;
 
 	      menu = this.refs['menu-' + opts.id];
 
@@ -29297,14 +29152,15 @@
 	        menu.close();
 	        openMenus = this.state.openMenus || [];
 	        openMenus.splice(opts.id, 1);
-	        if (this.media.button) this.media.button.play();
+	        this.playMedia('button');
 	        this.setState({
 	          openMenus: openMenus
 	        });
 	      }
 
-	      screen = this.refs['screen-' + this.state.currentScreenIndex];
-	      if (screen && !openMenus.length) screen.resume();
+	      if (!openMenus.length) {
+	        _.invoke(this.refs['screen-' + this.state.currentScreenIndex], 'resume');
+	      }
 	    }
 
 	    // Remove this method after refactoring games that override it.
@@ -29312,8 +29168,8 @@
 
 	  }, {
 	    key: 'getBackgroundIndex',
-	    value: function getBackgroundIndex(index) {
-	      return this.props.getBackgroundIndex.call(this, index);
+	    value: function getBackgroundIndex(index, id) {
+	      return this.props.getBackgroundIndex.call(this, index, id);
 	    }
 	  }, {
 	    key: 'scale',
@@ -29325,16 +29181,15 @@
 	  }, {
 	    key: 'trigger',
 	    value: function trigger(event, opts) {
-	      var events, fn;
-
-	      events = {
-	        goto: this.goto,
-	        goBack: this.goBack,
-	        audioPlay: _media_manager2.default.audioPlay,
-	        audioStop: _media_manager2.default.audioStop,
-	        videoPlay: _media_manager2.default.videoPlay,
-	        videoStop: _media_manager2.default.videoStop,
+	      _.invoke(this.props.getTriggerEvents.call(this, {
+	        goto: this.navigator.goto,
+	        goBack: this.navigator.goBack,
+	        audioPlay: this.mediaManager.audioPlay,
+	        audioStop: this.mediaManager.audioStop,
+	        videoPlay: this.mediaManager.videoPlay,
+	        videoStop: this.mediaManager.videoStop,
 	        demo: this.demo,
+	        'toggle-demo-mode': this.demo,
 	        getData: this.getData,
 	        passData: this.passData,
 	        updateData: this.updateData,
@@ -29351,12 +29206,7 @@
 	        ready: this.checkReady,
 	        resize: this.scale,
 	        getGame: this.getGame
-	      };
-
-	      fn = events[event];
-	      if (typeof fn === 'function') {
-	        return fn.call(this, opts);
-	      }
+	      })[event], 'call', this, opts);
 	    }
 	  }, {
 	    key: 'emit',
@@ -29369,14 +29219,8 @@
 	        var event;
 
 	        if ((typeof gameData === 'undefined' ? 'undefined' : _typeof(gameData)) !== 'object') return;
-
-	        if (!gameData.game) {
-	          gameData.game = self.config.id;
-	        }
-
-	        if (!gameData.version) {
-	          gameData.version = self.config.version;
-	        }
+	        if (!gameData.game) gameData.game = self.config.id;
+	        if (!gameData.version) gameData.version = self.config.version;
 
 	        event = new Event('game-event', { bubbles: true, cancelable: false });
 
@@ -29386,9 +29230,7 @@
 	          resolve(data);
 	        };
 
-	        if (window.frameElement) {
-	          window.frameElement.dispatchEvent(event);
-	        }
+	        if (window.frameElement) window.frameElement.dispatchEvent(event);
 	      });
 
 	      p.then(function (d) {
@@ -29401,14 +29243,13 @@
 	    key: 'getGame',
 	    value: function getGame(opts) {
 	      if (this.config.id === opts.id) {
-	        opts.respond(this);
+	        _.invoke(opts, 'respond', this);
 	      }
 	    }
 	  }, {
 	    key: 'getData',
 	    value: function getData(opts) {
-	      opts.name = 'getData';
-	      return this.emit(opts);
+	      this.props.getData.call(this, opts);
 	    }
 	  }, {
 	    key: 'passData',
@@ -29458,19 +29299,13 @@
 	      this.setState({
 	        data: data
 	      }, function () {
-	        if (typeof opts.callback === 'function') {
-	          opts.callback.call(_this5);
-	        }
+	        _.invoke(opts.callback, 'call', _this5);
 	      });
 	    }
 	  }, {
 	    key: 'checkComplete',
 	    value: function checkComplete() {
-	      var openScreen = this.refs['screen-' + this.state.currentScreenIndex];
-
-	      if (openScreen && typeof openScreen.checkComplete === 'function') {
-	        openScreen.checkComplete();
-	      }
+	      _.invoke(this.refs['screen-' + this.state.currentScreenIndex], 'checkComplete');
 	    }
 
 	    // this method takes in an opts method with screenID
@@ -29479,9 +29314,7 @@
 	    key: 'screenComplete',
 	    value: function screenComplete(opts) {
 	      if (opts.silent) return;
-	      if (this.audio['screen-complete']) {
-	        this.audio['screen-complete'].play();
-	      }
+	      this.playMedia('screen-complete');
 	    }
 	  }, {
 	    key: 'getClassNames',
@@ -29521,28 +29354,24 @@
 	  }, {
 	    key: 'renderScreens',
 	    value: function renderScreens() {
-	      var screenKeys,
-	          self = this;
-	      screenKeys = Object.keys(self.screens);
-	      self.screensLength = screenKeys.length;
-	      return screenKeys.map(function (key, index) {
-	        var ScreenComponent, props;
-	        props = self.screens[key].props || {};
-	        props.data = self.state.data.screens[key];
-	        props.gameState = self.state;
+	      var _this6 = this;
+
+	      return _.map(Object.keys(this.screens), function (key, index) {
+	        var props = _this6.screens[key].props || {};
+	        props.data = _this6.state.data.screens[key];
+	        props.gameState = _this6.state;
 	        props.index = index;
-	        ScreenComponent = self.screens[key];
-	        return ScreenComponent(props, 'screen-' + key, key);
+	        return _this6.screens[key](props, 'screen-' + key, key);
 	      });
 	    }
 	  }, {
 	    key: 'renderMenuScreens',
 	    value: function renderMenuScreens() {
-	      var _this6 = this;
+	      var _this7 = this;
 
 	      return _.map(this.menus, function (Menu, key) {
 	        return React.createElement(Menu.type, _extends({}, Menu.props, {
-	          gameState: _this6.state,
+	          gameState: _this7.state,
 	          key: key,
 	          index: key,
 	          ref: 'menu-' + key
@@ -29592,7 +29421,12 @@
 	    );
 	  },
 	  getGotoOpts: _.identity, // don't change to _.noop
-	  triggerReady: false
+	  getTriggerEvents: _.identity, // don't change to _.noop
+	  triggerReady: false,
+	  getData: function getData(opts) {
+	    opts.name = 'getData';
+	    return this.emit(opts);
+	  }
 	}, _component2.default.defaultProps);
 
 		exports.default = Game;
@@ -29611,20 +29445,7 @@
 	exports.default = function () {
 	  var _this = this;
 
-	  window.addEventListener('load', window.focus);
-	  window.addEventListener('focus', function () {
-	    _this.resume();
-	  });
-	  window.addEventListener('blur', function () {
-	    var node = document.activeElement.parentNode;
-	    while (node != null) {
-	      if (node === _this.DOMNode) {
-	        return;
-	      }
-	      node = node.parentNode;
-	    }
-	    _this.pause();
-	  });
+	  var onblur, onfocusout, hidden;
 
 	  window.addEventListener('resize', function () {
 	    _this.scale();
@@ -29649,6 +29470,48 @@
 	  window.addEventListener('trigger', function (e) {
 	    _this.trigger(e.name, e.opts);
 	  });
+
+	  window.addEventListener('load', window.focus);
+	  window.addEventListener('focus', function () {
+	    _this.resume();
+	  });
+
+	  onblur = function onblur() {
+	    var node = document.activeElement.parentNode;
+	    while (node != null) {
+	      if (node === _this.DOMNode) {
+	        return;
+	      }
+	      node = node.parentNode;
+	    }
+	    _this.pause();
+	  };
+
+	  onfocusout = function onfocusout() {
+	    _this.pause();
+	  };
+
+	  window.addEventListener('blur', onblur);
+
+	  // code from http://stackoverflow.com/questions/1060008/is-there-a-way-to-detect-if-a-browser-window-is-not-currently-active
+	  hidden = 'hidden';
+
+	  // Standards:
+	  if (hidden in document) {
+	    document.addEventListener('visibilitychange', onfocusout);
+	  } else if ((hidden = 'mozHidden') in document) {
+	    document.addEventListener('mozvisibilitychange', onfocusout);
+	  } else if ((hidden = 'webkitHidden') in document) {
+	    document.addEventListener('webkitvisibilitychange', onfocusout);
+	  } else if ((hidden = 'msHidden') in document) {
+	    document.addEventListener('msvisibilitychange', onfocusout);
+	  } else if ('onfocusin' in document) {
+	    // IE 9 and lower:
+	    document.onfocusin = document.onfocusout = onfocusout;
+	  } else {
+	    // All others:
+	    window.onpageshow = window.onpagehide = window.onfocus = window.onblur = onfocusout;
+	  }
 	};
 
 /***/ },
@@ -29714,139 +29577,310 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var mediaManager = {
-	  audioPlay: function audioPlay(opts) {
-	    var playingSFX, playingVO, playingBKG, classes;
 
-	    playingSFX = this.state.playingSFX || [];
-	    playingVO = this.state.playingVO || [];
-	    playingBKG = this.state.playingBKG || [];
-	    classes = this.state.classes || [];
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	    if (opts.audio.props.gameClass) {
-	      classes.push(opts.audio.props.gameClass);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var MediaManager = function () {
+	  function MediaManager(game) {
+	    _classCallCheck(this, MediaManager);
+
+	    this.audioPlay = this.audioPlay.bind(game);
+	    this.audioStop = this.audioStop.bind(game);
+	    this.videoPlay = this.videoPlay.bind(game);
+	    this.videoStop = this.videoStop.bind(game);
+	    this.fadeBackground = this.fadeBackground.bind(game);
+	    this.raiseBackground = this.raiseBackground.bind(game);
+	    this.playBackground = this.playBackground.bind(game);
+	  }
+
+	  _createClass(MediaManager, [{
+	    key: 'audioPlay',
+	    value: function audioPlay(opts) {
+	      var playingSFX, playingVO, playingBKG, classes;
+
+	      playingSFX = this.state.playingSFX || [];
+	      playingVO = this.state.playingVO || [];
+	      playingBKG = this.state.playingBKG || [];
+	      classes = this.state.classes || [];
+
+	      if (opts.audio.props.gameClass) {
+	        classes.push(opts.audio.props.gameClass);
+	      }
+
+	      switch (opts.audio.props.type) {
+	        case 'sfx':
+	          playingSFX.push(opts.audio);
+	          break;
+	        case 'voiceOver':
+	          playingVO.push(opts.audio);
+	          this.mediaManager.fadeBackground();
+	          break;
+	        case 'background':
+	          playingBKG.push(opts.audio);
+	          break;
+	      }
+
+	      this.setState({
+	        playingSFX: playingSFX,
+	        playingVO: playingVO,
+	        playingBKG: playingBKG,
+	        classes: classes
+	      });
 	    }
+	  }, {
+	    key: 'audioStop',
+	    value: function audioStop(opts) {
+	      var playingSFX, playingVO, playingBKG, index;
 
-	    switch (opts.audio.props.type) {
-	      case 'sfx':
-	        playingSFX.push(opts.audio);
-	        break;
-	      case 'voiceOver':
-	        playingVO.push(opts.audio);
-	        mediaManager.fadeBackground.call(this);
-	        break;
-	      case 'background':
-	        playingBKG.push(opts.audio);
-	        break;
+	      playingSFX = this.state.playingSFX || [];
+	      playingVO = this.state.playingVO || [];
+	      playingBKG = this.state.playingBKG || [];
+
+	      switch (opts.audio.props.type) {
+	        case 'sfx':
+	          index = playingSFX.indexOf(opts.audio);
+	          index !== -1 && playingSFX.splice(index, 1);
+	          break;
+	        case 'voiceOver':
+	          index = playingVO.indexOf(opts.audio);
+	          index !== -1 && playingVO.splice(index, 1);
+	          if (!playingVO.length) {
+	            this.mediaManager.raiseBackground();
+	          }
+	          break;
+	        case 'background':
+	          index = playingBKG.indexOf(opts.audio);
+	          index !== -1 && playingBKG.splice(index, 1);
+	          break;
+	      }
+
+	      this.setState({
+	        playingSFX: playingSFX,
+	        playingVO: playingVO,
+	        playingBKG: playingBKG
+	      });
 	    }
+	  }, {
+	    key: 'videoPlay',
+	    value: function videoPlay(opts) {
+	      var playingVideo = this.state.playingVideo;
 
-	    this.setState({
-	      playingSFX: playingSFX,
-	      playingVO: playingVO,
-	      playingBKG: playingBKG,
-	      classes: classes
-	    });
-	  },
-	  audioStop: function audioStop(opts) {
-	    var playingSFX, playingVO, playingBKG, index;
+	      if (playingVideo) {
+	        playingVideo.stop();
+	      }
 
-	    playingSFX = this.state.playingSFX || [];
-	    playingVO = this.state.playingVO || [];
-	    playingBKG = this.state.playingBKG || [];
+	      playingVideo = opts.video;
 
-	    switch (opts.audio.props.type) {
-	      case 'sfx':
-	        index = playingSFX.indexOf(opts.audio);
-	        index !== -1 && playingSFX.splice(index, 1);
-	        break;
-	      case 'voiceOver':
-	        index = playingVO.indexOf(opts.audio);
-	        index !== -1 && playingVO.splice(index, 1);
-	        if (!playingVO.length) {
-	          mediaManager.raiseBackground.call(this);
-	        }
-	        break;
-	      case 'background':
-	        index = playingBKG.indexOf(opts.audio);
-	        index !== -1 && playingBKG.splice(index, 1);
-	        break;
+	      this.mediaManager.fadeBackground(0);
+
+	      this.setState({
+	        playingVideo: playingVideo
+	      });
 	    }
+	  }, {
+	    key: 'videoStop',
+	    value: function videoStop() {
+	      this.mediaManager.raiseBackground(1);
 
-	    this.setState({
-	      playingSFX: playingSFX,
-	      playingVO: playingVO,
-	      playingBKG: playingBKG
-	    });
-	  },
-	  videoPlay: function videoPlay(opts) {
-	    var playingVideo = this.state.playingVideo;
-
-	    if (playingVideo) {
-	      playingVideo.stop();
+	      this.setState({
+	        playingVideo: null
+	      });
 	    }
+	  }, {
+	    key: 'fadeBackground',
+	    value: function fadeBackground() {
+	      var value = arguments.length <= 0 || arguments[0] === undefined ? .25 : arguments[0];
 
-	    playingVideo = opts.video;
-
-	    mediaManager.fadeBackground.call(this, 0);
-
-	    this.setState({
-	      playingVideo: playingVideo
-	    });
-	  },
-	  videoStop: function videoStop() {
-	    mediaManager.raiseBackground.call(this, 1);
-
-	    this.setState({
-	      playingVideo: null
-	    });
-	  },
-	  fadeBackground: function fadeBackground() {
-	    var value = arguments.length <= 0 || arguments[0] === undefined ? .25 : arguments[0];
-
-	    _.forEach(this.state.playingBKG, function (bkg) {
-	      bkg.setVolume(value);
-	    });
-	  },
-	  raiseBackground: function raiseBackground() {
-	    var value = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
-
-	    if (this.state.playingVO.length === 0 && !this.state.playingVideo) {
 	      _.forEach(this.state.playingBKG, function (bkg) {
 	        bkg.setVolume(value);
 	      });
 	    }
-	  },
-	  playBackground: function playBackground(currentScreenIndex) {
-	    var index, playingBKG, currentScreen;
+	  }, {
+	    key: 'raiseBackground',
+	    value: function raiseBackground() {
+	      var value = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
 
-	    if (!_.isFinite(currentScreenIndex)) return;
-
-	    // re-factor to index = this.props.getBackgroundIndex.call(this, index);
-	    // after games that override it have be re-factored
-	    // all-about-you, polar-bear, tag-it
-	    index = this.getBackgroundIndex(currentScreenIndex);
-	    playingBKG = this.state.playingBKG;
-
-	    currentScreen = this.refs['screen-' + currentScreenIndex];
-
-	    if (!currentScreen.props.restartBackground && playingBKG.indexOf(this.audio.background[index]) !== -1) {
-	      return;
+	      if (this.state.playingVO.length === 0 && !this.state.playingVideo) {
+	        _.forEach(this.state.playingBKG, function (bkg) {
+	          bkg.setVolume(value);
+	        });
+	      }
 	    }
+	  }, {
+	    key: 'playBackground',
+	    value: function playBackground(currentScreenIndex, currentScreenID) {
+	      var index, playingBKG, currentScreen;
 
-	    _.each(playingBKG, function (bkg) {
-	      bkg.stop();
-	    });
+	      if (!_.isFinite(currentScreenIndex)) return;
 
-	    if (this.audio.background[index]) {
-	      this.audio.background[index].play();
+	      // re-factor to index = this.props.getBackgroundIndex.call(this, index);
+	      // after games that override it have be re-factored
+	      // all-about-you, polar-bear, tag-it
+	      index = this.getBackgroundIndex(currentScreenIndex, currentScreenID);
+	      playingBKG = this.state.playingBKG;
+
+	      currentScreen = this.refs['screen-' + currentScreenIndex];
+
+	      if (!currentScreen.props.restartBackground && playingBKG.indexOf(this.media.audio.background[index]) !== -1) {
+	        return;
+	      }
+
+	      _.each(playingBKG, function (bkg) {
+	        bkg.stop();
+	      });
+
+	      this.playMedia('audio.background.' + index);
 	    }
-	  }
-	};
+	  }]);
 
-		exports.default = mediaManager;
+	  return MediaManager;
+	}();
+
+		exports.default = MediaManager;
 
 /***/ },
 /* 320 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Navigator = function () {
+	  function Navigator(game) {
+	    _classCallCheck(this, Navigator);
+
+	    this.goto = this.goto.bind(game);
+	    this.shouldGoto = this.shouldGoto.bind(game);
+	    this.openNewScreen = this.openNewScreen.bind(game);
+	    this.closeOldScreen = this.closeOldScreen.bind(game);
+	    this.goBack = this.goBack.bind(game);
+	  }
+
+	  _createClass(Navigator, [{
+	    key: 'goto',
+	    value: function goto(opts) {
+	      /*
+	       * highestScreenIndex is the index of the highest screen reached
+	       * not the index of the highest screen that exists.
+	       */
+	      var oldScreen, prevScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
+
+	      opts = this.props.getGotoOpts.call(this, opts);
+
+	      oldIndex = this.state.currentScreenIndex;
+	      oldScreen = this.refs['screen-' + oldIndex];
+
+	      if (typeof opts.index === 'number') {
+	        if (opts.index > this.screensLength - 1) {
+	          return this.quit();
+	        }
+	        currentScreenIndex = Math.min(this.screensLength - 1, Math.max(0, opts.index));
+	        highestScreenIndex = Math.max(this.state.highestScreenIndex, currentScreenIndex);
+	        nextScreen = this.refs['screen-' + (currentScreenIndex + 1)];
+	        prevScreen = this.refs['screen-' + (currentScreenIndex - 1)];
+	      } else if (typeof opts.index === 'string') {
+	        currentScreenIndex = opts.index;
+	        highestScreenIndex = this.state.highestScreenIndex;
+	      }
+
+	      newScreen = this.refs['screen-' + currentScreenIndex];
+
+	      if (!this.navigator.shouldGoto(oldScreen, newScreen, opts)) return;
+
+	      data = this.navigator.closeOldScreen(oldScreen, newScreen, opts, oldIndex);
+	      screenIndexArray = this.navigator.openNewScreen(newScreen, currentScreenIndex, opts);
+
+	      _.invoke(prevScreen, 'replay');
+	      _.invoke(nextScreen, 'load');
+	      if (!opts.load) this.emitSave(highestScreenIndex, currentScreenIndex);
+	      this.mediaManager.playBackground(currentScreenIndex, newScreen.props.id);
+
+	      this.setState({
+	        loading: false,
+	        currentScreenIndex: currentScreenIndex,
+	        highestScreenIndex: highestScreenIndex,
+	        screenIndexArray: screenIndexArray,
+	        classes: [],
+	        data: data
+	      });
+	    }
+	  }, {
+	    key: 'shouldGoto',
+	    value: function shouldGoto(oldScreen, newScreen, opts) {
+	      return !(!opts.load && oldScreen && oldScreen.state && oldScreen.state.opening || oldScreen.props.index < newScreen.props.index && !opts.load && !this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay) || oldScreen.props.index > newScreen.props.index && newScreen.props.index === 0);
+	    }
+	  }, {
+	    key: 'openNewScreen',
+	    value: function openNewScreen(newScreen, currentScreenIndex, opts) {
+	      var screenIndexArray = this.state.screenIndexArray;
+	      if (newScreen) {
+	        // this should only be dropped into for non-linear screens
+	        if (!newScreen.state.load || !newScreen.state.ready) {
+	          this.loadScreens(currentScreenIndex, false);
+	        }
+	        screenIndexArray.push(currentScreenIndex);
+	        newScreen.open(opts);
+	      }
+	      return screenIndexArray;
+	    }
+	  }, {
+	    key: 'closeOldScreen',
+	    value: function closeOldScreen(oldScreen, newScreen, opts, oldIndex) {
+	      var back,
+	          buttonSound,
+	          data = _.cloneDeep(this.state.data);
+	      if (oldScreen && oldScreen !== newScreen) {
+	        if (oldScreen.props.index > newScreen.props.index) {
+	          back = true;
+	          oldScreen.close();
+	        } else {
+	          oldScreen.leave();
+	        }
+
+	        if (!opts.silent) {
+	          if (opts.buttonSound && typeof opts.buttonSound.play === 'function') {
+	            buttonSound = opts.buttonSound;
+	          } else if (this.media.audio.button) {
+	            buttonSound = this.media.audio.next || this.media.audio.button;
+	            if (back) buttonSound = this.media.audio.back || this.media.audio.button;
+	          }
+	          if (buttonSound) buttonSound.play();
+	        }
+
+	        if (oldScreen.props.resetOnClose) {
+	          data.screens[oldIndex] = {};
+	        }
+	      }
+	      return data;
+	    }
+	  }, {
+	    key: 'goBack',
+	    value: function goBack() {
+	      var screenIndexArray, index;
+	      screenIndexArray = this.state.screenIndexArray;
+	      screenIndexArray.pop();
+	      index = screenIndexArray.pop();
+
+	      this.navigator.goto({ index: index });
+	    }
+	  }]);
+
+	  return Navigator;
+	}();
+
+		exports.default = Navigator;
+
+/***/ },
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29859,7 +29893,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _asset = __webpack_require__(321);
+	var _asset = __webpack_require__(322);
 
 	var _asset2 = _interopRequireDefault(_asset);
 
@@ -29888,18 +29922,8 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState({
-	        complete: true
+	        complete: this.props.complete
 	      });
-	    }
-	  }, {
-	    key: 'ready',
-	    value: function ready() {
-	      if (!this.state.error) {
-	        this.setState({
-	          ready: true,
-	          complete: this.props.complete
-	        });
-	      }
 	    }
 	  }, {
 	    key: 'error',
@@ -29920,16 +29944,13 @@
 	}(_asset2.default);
 
 	Image.defaultProps = _.defaults({
-	  shouldRender: true,
-	  bootstrap: true,
-	  checkReady: true,
 	  complete: true
 	}, _asset2.default.defaultProps);
 
 		exports.default = Image;
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29968,16 +29989,14 @@
 	}(_component2.default);
 
 	Asset.defaultProps = _.defaults({
-	  bootstrap: false,
 	  checkComplete: false,
-	  checkReady: false,
-	  shouldRender: false
+	  checkReady: false
 	}, _component2.default.defaultProps);
 
 		exports.default = Asset;
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29990,9 +30009,9 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _howler = __webpack_require__(323);
+	var _howler = __webpack_require__(324);
 
-	var _media = __webpack_require__(324);
+	var _media = __webpack_require__(325);
 
 	var _media2 = _interopRequireDefault(_media);
 
@@ -30132,7 +30151,7 @@
 	      if (!this.props.complete && (!this.playing || this.paused)) return;
 	      if (this.startCount > this.completeCount) return;
 
-	      this.playing = false;
+	      if (!this.props.loop) this.playing = false;
 	      _get(Object.getPrototypeOf(Audio.prototype), 'complete', this).call(this);
 	    }
 	  }, {
@@ -30176,16 +30195,14 @@
 	  maxVolume: 1,
 	  minVolume: 0,
 	  playThrottle: 100,
-	  sprite: undefined,
-	  shouldComponentUpdate: function shouldComponentUpdate() {
-	    return false;
-	  }
+	  shouldRender: false,
+	  sprite: undefined
 	}, _media2.default.defaultProps);
 
 		exports.default = Audio;
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -31543,7 +31560,7 @@
 
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31556,7 +31573,7 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _asset = __webpack_require__(321);
+	var _asset = __webpack_require__(322);
 
 	var _asset2 = _interopRequireDefault(_asset);
 
@@ -31627,17 +31644,19 @@
 	  bootstrap: false,
 	  checkComplete: false,
 	  checkReady: false,
-	  shouldRender: false,
 	  completeDelay: 0,
 	  completeOnStart: false,
 	  silentOnStart: true,
+	  shouldComponentUpdate: function shouldComponentUpdate() {
+	    return false;
+	  },
 	  onPlay: _.noop
 	}, _asset2.default.defaultProps);
 
 		exports.default = Media;
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31652,7 +31671,7 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _media = __webpack_require__(324);
+	var _media = __webpack_require__(325);
 
 	var _media2 = _interopRequireDefault(_media);
 
@@ -31680,7 +31699,7 @@
 	  _createClass(Video, [{
 	    key: 'play',
 	    value: function play() {
-	      if (this.playing) return;
+	      if (this.playing && !this.paused) return;
 	      /*
 	       * In order for videos to play on mobile devices,
 	       * the screen must have prop.startDelay=0
@@ -31691,6 +31710,7 @@
 	        video: this
 	      });
 	      this.playing = true;
+	      this.paused = false;
 	    }
 	  }, {
 	    key: 'start',
@@ -31715,7 +31735,6 @@
 	  }, {
 	    key: 'resume',
 	    value: function resume() {
-	      this.paused = false;
 	      this.play();
 	    }
 	  }, {
@@ -31754,7 +31773,7 @@
 		exports.default = Video;
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31858,7 +31877,7 @@
 		exports.default = MediaSequence;
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31900,7 +31919,7 @@
 		exports.default = ListItem;
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31911,7 +31930,7 @@
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	var start = function start(Game, id) {
+	exports.default = function (Game, id) {
 	  var el;
 
 	  id = id || _.get(Game, 'props.config.id');
@@ -31927,12 +31946,10 @@
 	  Game = (typeof Game === 'undefined' ? 'undefined' : _typeof(Game)) === 'object' ? Game : React.createElement(Game, null);
 
 	  ReactDOM.render(Game, el);
-	};
-
-	exports.default = start;
+		};
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31956,7 +31973,7 @@
 		};
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31965,20 +31982,18 @@
 	  value: true
 	});
 
-	var _do_intersect = __webpack_require__(331);
+	var _do_intersect = __webpack_require__(332);
 
 	var _do_intersect2 = _interopRequireDefault(_do_intersect);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var util = {
+	exports.default = {
 	  doIntersect: _do_intersect2.default
-	};
-
-		exports.default = util;
+		};
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31997,7 +32012,8 @@
 	 * @param b an array of connected points [{x:, y:}, {x:, y:},...] that form a closed polygon
 	 * @return true if there is any intersection between the 2 polygons, false otherwise
 	 */
-	var doIntersect = function doIntersect(a, b) {
+
+	exports.default = function (a, b) {
 	  var polygons = [a, b];
 	  var minA, maxA, projected, i, i1, j, minB, maxB;
 
@@ -32051,8 +32067,6 @@
 	  }
 	  return true;
 	};
-
-	exports.default = doIntersect;
 
 /***/ }
 /******/ ]);
