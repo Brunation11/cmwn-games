@@ -1342,6 +1342,7 @@ p {
       overflow: visible;
       list-style-type: none;
       z-index: 1;
+      pointer-events: none;
     }
 
     &.STARTED {
