@@ -22,9 +22,9 @@ class Timer extends skoash.Component {
     if (time >= this.state.stamp) {
       this.setState({
         stamp: time + 1000,
-        time: this.state.time + 1
+        time: this.state.time + 1000
       }, () => {
-        if (this.state.time * 1000 >= this.props.timeout) {
+        if (this.state.time >= this.props.timeout) {
           this.complete();
           this.stop();
         } else {
@@ -86,7 +86,7 @@ class Timer extends skoash.Component {
   getClassNames() {
     return classNames(
       'timer',
-      skoash.Component.prototype.getClassNames.call(this)
+      super.getClassNames()
     );
   }
 
@@ -106,8 +106,9 @@ class Timer extends skoash.Component {
 
 Timer.defaultProps = _.defaults({
   getTime: function () {
-    return this.props.countDown ? this.props.timeout / 1000 - this.state.time : this.state.time;
+    return moment(this.props.countDown ? this.props.timeout - this.state.time : this.state.time).format(this.props.format);
   },
+  format: 'm:ss',
 }, skoash.Component.defaultProps);
 
 export default Timer;
