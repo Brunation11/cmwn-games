@@ -11,7 +11,9 @@ export default function (props, ref, key) {
         src={ENVIRONMENT.MEDIA + 'ImageAssets/vid.scrn.png'}
       />
       <skoash.Component>
-
+        <skoash.Video
+          src="https://res.cloudinary.com/changemyworldnow/video/upload/v1479831566/3D_Printing_FINAL_FILE_SMALLER_pfzv84.mp4"
+        />
       </skoash.Component>
     </skoash.Screen>
   );
