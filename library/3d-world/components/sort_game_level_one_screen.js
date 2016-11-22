@@ -5,7 +5,7 @@ import SortGameScreenComponent from './sort_game_screen_component';
 export default function (props, ref, key) {
   return SortGameScreenComponent(props, ref, key, {
     id: 'sort-game-level-one',
-    timeout: 60000,
+    timeout: 6000,
     prepTimeout: 1000,
     openOnStart: 'in-this',
     vos: [

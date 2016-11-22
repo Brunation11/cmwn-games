@@ -490,14 +490,14 @@
     &.open-try-again {
       .close-reveal {
         background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
-        background-position: -760px 0;
-        left: 350px;
+        background-position: -910px 0;
+        left: 338px;
         top: 280px;
-        width: 260px;
-        height: 60px;
+        width: 284px;
+        height: 70px;
 
         &:hover {
-          background-position: -760px -57px;
+          background-position: -910px -69px;
         }
       }
     }
