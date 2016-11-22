@@ -4,7 +4,7 @@
   .screen-content {
     > div {
       background-image: url($media-server + 'ImageAssets/vid.scrn.png');
-      background-size: contain;
+      background-size: 78% 100%;
       background-position: center center;
       background-repeat: no-repeat;
       position: absolute;
@@ -14,5 +14,9 @@
       height: 100%;
       padding: 100px 100px 40px 100px;
     }
+  }
+
+  video {
+    width: 94%;
   }
 }
