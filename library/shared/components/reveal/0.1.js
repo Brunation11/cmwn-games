@@ -71,9 +71,7 @@ class Reveal extends skoash.Component {
       currentlyOpen,
     });
 
-    if (!opts.silent && this.audio['close-sound']) {
-      this.audio['close-sound'].play();
-    }
+    if (!opts.silent) this.playMedia('close-sound');
 
     this.props.onClose.call(this);
 
@@ -102,22 +100,16 @@ class Reveal extends skoash.Component {
 
     if (!message) return;
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
-    }
+    this.playMedia('open-sound');
 
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
-        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
-          this.media[audio].play();
-        }
+        this.playMedia(audio);
       });
     } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
+      if (this.media.audio.voiceOver[message]) {
+        this.media.audio.voiceOver[message].play();
       }
     }
   }
