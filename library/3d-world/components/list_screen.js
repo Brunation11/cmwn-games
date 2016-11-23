@@ -4,27 +4,27 @@ import Draggable from 'shared/components/draggable/0.3';
 import Dropzone from 'shared/components/dropzone/0.4';
 
 export default function (props, ref, key) {
-  var onDrag, testComplete;
+    var onDrag, testComplete;
 
-  onDrag = function () {
-    this.setState({
-      correct: false,
-      return: false,
-    });
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        playing: 'drag',
-      },
-    });
-  };
+    onDrag = function () {
+        this.setState({
+            correct: false,
+            return: false,
+        });
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'drag',
+            },
+        });
+    };
 
-  testComplete = function () {
-    if (this.refs['dropzone-0'].contains.length) this.complete();
-    else this.incomplete();
-  };
+    testComplete = function () {
+        if (this.refs['dropzone-0'].contains.length) this.complete();
+        else this.incomplete();
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -92,7 +92,7 @@ export default function (props, ref, key) {
         dropped={_.get(props, 'data.draggable.dropped')}
         dragging={_.get(props, 'data.draggable.dragging')}
         dropzones={[
-          <skoash.Component>
+            <skoash.Component>
             <span>LIST OF ITEMS</span>
           </skoash.Component>
         ]}

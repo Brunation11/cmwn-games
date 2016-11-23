@@ -1,19 +1,19 @@
 class QuitScreen extends skoash.Screen {
-  okay() {
-    skoash.trigger('quit');
-  }
+    okay() {
+        skoash.trigger('quit');
+    }
 
-  cancel() {
-    this.close();
-    skoash.trigger('menuClose', {
-      id: this.props.id,
-    });
-  }
+    cancel() {
+        this.close();
+        skoash.trigger('menuClose', {
+            id: this.props.id,
+        });
+    }
 
-  renderAssets() {
-    if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
-        return (
+    renderAssets() {
+        if (this.props.assets) {
+            return this.props.assets.map((asset, key) => {
+                return (
           <skoash.Audio
             {...asset.props}
             ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
@@ -21,14 +21,14 @@ class QuitScreen extends skoash.Screen {
             data-ref={key}
           />
         );
-      });
+            });
+        }
+
+        return null;
     }
 
-    return null;
-  }
-
-  render() {
-    return (
+    render() {
+        return (
       <div id={this.props.id} className={'screen ' + this.getClassNames()}>
         {this.renderAssets()}
         <div className="center">
@@ -41,14 +41,14 @@ class QuitScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default (
   <QuitScreen
     id="quit"
     assets={[
-      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
+        <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Quit.mp3" />
     ]}
   />
 );

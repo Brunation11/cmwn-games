@@ -11,14 +11,14 @@ var CatchScreen = (
       }
       ref="catch"
       catchables={[
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>,
-        <Catchable></Catchable>
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>,
+          <Catchable></Catchable>
       ]}
     />
   </skoash.Screen>

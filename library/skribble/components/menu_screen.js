@@ -1,6 +1,6 @@
 class MenuScreen extends skoash.Screen {
-  renderContent() {
-    return (
+    renderContent() {
+        return (
       <div>
         <skoash.Image className="hidden" src="media/_Background/SK_BKG_1.png" />
         <skoash.Image className="otter" src="media/_Otter/Waving_Otter2.gif" />
@@ -11,18 +11,18 @@ class MenuScreen extends skoash.Screen {
         </div>
         <div className="buttons">
           <button className="make" onClick={this.goto.bind(this, {
-            index: 'friend',
-            goto: 'canvas',
+              index: 'friend',
+              goto: 'canvas',
           })} />
           <button className="read" onClick={this.goto.bind(this, 'inbox')} />
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <MenuScreen
       {...props}
       ref={ref}

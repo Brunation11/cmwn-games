@@ -6,120 +6,120 @@ import Selectable from 'shared/components/selectable/0.1';
 import classNames from 'classnames';
 
 class CanvasScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      load: true,
-      menu: {},
-      valid: true,
-    };
+        this.state = {
+            load: true,
+            menu: {},
+            valid: true,
+        };
 
-    this.rightMenuList = [
-      <li className="preview" onClick={this.preview.bind(this)}>
+        this.rightMenuList = [
+            <li className="preview" onClick={this.preview.bind(this)}>
         <span />
       </li>,
-      <li className="send" onClick={this.send.bind(this)}>
+            <li className="send" onClick={this.send.bind(this)}>
         <span />
       </li>
-    ];
+        ];
 
-    this.setValid = this.setValid.bind(this);
-    this.closeReveal = this.closeReveal.bind(this);
-    this.setHasAssets = this.setHasAssets.bind(this);
-  }
+        this.setValid = this.setValid.bind(this);
+        this.closeReveal = this.closeReveal.bind(this);
+        this.setHasAssets = this.setHasAssets.bind(this);
+    }
 
-  getData() {
-    return this.refs.canvas.getItems();
-  }
+    getData() {
+        return this.refs.canvas.getItems();
+    }
 
-  reset() {
-    this.refs.canvas.reset();
-    this.setState({
-      background: false,
-      hasAssets: false,
-    });
-  }
+    reset() {
+        this.refs.canvas.reset();
+        this.setState({
+            background: false,
+            hasAssets: false,
+        });
+    }
 
-  addItem(message) {
-    if (message) {
-      this.setState({
-        hasAssets: true,
-        background: this.state.background ||
+    addItem(message) {
+        if (message) {
+            this.setState({
+                hasAssets: true,
+                background: this.state.background ||
               message.asset_type === 'background',
-      });
-      this.refs.canvas.addItem(message, () => {
-        skoash.trigger('save');
-      });
-    }
-  }
-
-  addItems(message) {
-    var hasAssets, background;
-
-    hasAssets = true;
-    background = !!message.rules.background;
-
-    this.mapRulesStringToNumbers(message.rules);
-
-    this.refs.canvas.setItems(message.rules);
-
-    this.setState({
-      hasAssets,
-      background,
-    });
-
-    if (message.friend_to) {
-      skoash.trigger('passData', {
-        name: 'add-recipient',
-        message: message.friend_to
-      });
-    }
-  }
-
-  setMenu() {
-    var menu, state = this.props.gameState;
-
-    if (state && state.data && state.data.menu) {
-      menu = state.data.menu;
-      this.setState({
-        menu,
-      });
-    }
-  }
-
-  mapRulesStringToNumbers(rules) {
-    if (!rules) return;
-
-    if (_.isArray(rules.items)) {
-      rules.items.forEach(item => {
-        item.state.left = parseFloat(item.state.left);
-        item.state.rotation = parseFloat(item.state.rotation);
-        item.state.scale = parseFloat(item.state.scale);
-        item.state.top = parseFloat(item.state.top);
-      });
+            });
+            this.refs.canvas.addItem(message, () => {
+                skoash.trigger('save');
+            });
+        }
     }
 
-    if (_.isArray(rules.messages)) {
-      rules.messages.forEach(message => {
-        message.state.left = parseFloat(message.state.left);
-        message.state.rotation = parseFloat(message.state.rotation);
-        message.state.scale = parseFloat(message.state.scale);
-        message.state.top = parseFloat(message.state.top);
-      });
+    addItems(message) {
+        var hasAssets, background;
+
+        hasAssets = true;
+        background = !!message.rules.background;
+
+        this.mapRulesStringToNumbers(message.rules);
+
+        this.refs.canvas.setItems(message.rules);
+
+        this.setState({
+            hasAssets,
+            background,
+        });
+
+        if (message.friend_to) {
+            skoash.trigger('passData', {
+                name: 'add-recipient',
+                message: message.friend_to
+            });
+        }
     }
 
-    return rules;
-  }
+    setMenu() {
+        var menu, state = this.props.gameState;
 
-  open(opts = {}) {
-    this.setMenu();
-
-    if (this.refs && this.refs.menu) {
-      this.refs.menu.deactivate();
+        if (state && state.data && state.data.menu) {
+            menu = state.data.menu;
+            this.setState({
+                menu,
+            });
+        }
     }
 
-    if (!opts.draft) skoash.trigger('save');
+    mapRulesStringToNumbers(rules) {
+        if (!rules) return;
+
+        if (_.isArray(rules.items)) {
+            rules.items.forEach(item => {
+                item.state.left = parseFloat(item.state.left);
+                item.state.rotation = parseFloat(item.state.rotation);
+                item.state.scale = parseFloat(item.state.scale);
+                item.state.top = parseFloat(item.state.top);
+            });
+        }
+
+        if (_.isArray(rules.messages)) {
+            rules.messages.forEach(message => {
+                message.state.left = parseFloat(message.state.left);
+                message.state.rotation = parseFloat(message.state.rotation);
+                message.state.scale = parseFloat(message.state.scale);
+                message.state.top = parseFloat(message.state.top);
+            });
+        }
+
+        return rules;
+    }
+
+    open(opts = {}) {
+        this.setMenu();
+
+        if (this.refs && this.refs.menu) {
+            this.refs.menu.deactivate();
+        }
+
+        if (!opts.draft) skoash.trigger('save');
 
     // interval = setInterval(() => {
     //   skoash.trigger('save');
@@ -129,62 +129,62 @@ class CanvasScreen extends skoash.Screen {
     //   interval
     // });
 
-    super.open();
-  }
+        super.open();
+    }
 
-  close() {
-    skoash.trigger('save');
+    close() {
+        skoash.trigger('save');
     // clearInterval(this.state.interval);
     // this.setState({
     //   interval: null
     // });
-    super.close();
-  }
-
-  setValid(valid) {
-    this.setState({
-      valid
-    });
-  }
-
-  setHasAssets(hasAssets) {
-    this.setState({
-      hasAssets
-    });
-  }
-
-  send() {
-    if (!this.state.valid) return;
-    this.goto('send');
-  }
-
-  preview() {
-    if (!this.state.valid) return;
-    this.goto('preview');
-  }
-
-  closeReveal() {
-    if (this.refs && this.refs.reveal) {
-      this.refs.reveal.close();
+        super.close();
     }
-  }
 
-  getContainerClasses() {
-    return classNames({
-      'canvas-container': true,
-      BACKGROUND: this.state.background,
-    });
-  }
+    setValid(valid) {
+        this.setState({
+            valid
+        });
+    }
 
-  getClassNames() {
-    return classNames({
-      'HAS-ASSETS': this.state.hasAssets,
-      'INVALID': !this.state.valid,
-    }, skoash.Screen.prototype.getClassNames.call(this));
-  }
+    setHasAssets(hasAssets) {
+        this.setState({
+            hasAssets
+        });
+    }
 
-  renderContent() {
-    return (
+    send() {
+        if (!this.state.valid) return;
+        this.goto('send');
+    }
+
+    preview() {
+        if (!this.state.valid) return;
+        this.goto('preview');
+    }
+
+    closeReveal() {
+        if (this.refs && this.refs.reveal) {
+            this.refs.reveal.close();
+        }
+    }
+
+    getContainerClasses() {
+        return classNames({
+            'canvas-container': true,
+            BACKGROUND: this.state.background,
+        });
+    }
+
+    getClassNames() {
+        return classNames({
+            'HAS-ASSETS': this.state.hasAssets,
+            'INVALID': !this.state.valid,
+        }, skoash.Screen.prototype.getClassNames.call(this));
+    }
+
+    renderContent() {
+        return (
       <div>
         <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
         <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
@@ -232,11 +232,11 @@ class CanvasScreen extends skoash.Screen {
           ]}
         />
     */
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <CanvasScreen
       {...props}
       ref={ref}

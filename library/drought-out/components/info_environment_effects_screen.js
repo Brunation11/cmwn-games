@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  var InfoEnvironmentEffectsScreen = (
+    var InfoEnvironmentEffectsScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -17,5 +17,5 @@ export default function (props, ref, key) {
     </skoash.Screen>
   );
 
-  return InfoEnvironmentEffectsScreen;
+    return InfoEnvironmentEffectsScreen;
 }

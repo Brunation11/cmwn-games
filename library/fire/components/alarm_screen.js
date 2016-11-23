@@ -1,18 +1,18 @@
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 
 export default function (props, ref, key) {
-  var state = skoash.trigger('getState');
-  var currentScreenIndex = state.currentScreenIndex;
-  return (
+    var state = skoash.trigger('getState');
+    var currentScreenIndex = state.currentScreenIndex;
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="alarm"
       onComplete={() => {
-        skoash.trigger('goto', {
-          index: currentScreenIndex + 1,
-        });
+          skoash.trigger('goto', {
+              index: currentScreenIndex + 1,
+          });
       }}
     >
       <skoash.MediaSequence ref="media-sequence">
@@ -26,10 +26,10 @@ export default function (props, ref, key) {
       <SelectableAudio
         ref="selectable-audio"
         audioAssets={[
-          <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3"/>
+            <skoash.Audio ref="alarm-sound" type="sfx" src="media/S_5/S_5.1.mp3"/>
         ]}
         selectableList={[
-          <skoash.Component className="push-down" correct />
+            <skoash.Component className="push-down" correct />
         ]}
       />
     </skoash.Screen>

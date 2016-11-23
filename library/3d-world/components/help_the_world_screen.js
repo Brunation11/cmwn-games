@@ -3,27 +3,27 @@ import Reveal from 'shared/components/reveal/0.1';
 import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
-  var nextPhoto;
+    var nextPhoto;
 
-  const jobs = [
-    'designer',
-    'architect',
-    'surgeon',
-    'engineer',
-    'dentist',
-    'artist',
-  ];
+    const jobs = [
+        'designer',
+        'architect',
+        'surgeon',
+        'engineer',
+        'dentist',
+        'artist',
+    ];
 
-  nextPhoto = function () {
-    skoash.trigger('updateState', {
-      path: 'selectable',
-      data: {
-        select: jobs[(jobs.indexOf(_.get(props, 'data.selectable.target.props.data-ref')) + 1) % jobs.length]
-      }
-    });
-  };
+    nextPhoto = function () {
+        skoash.trigger('updateState', {
+            path: 'selectable',
+            data: {
+                select: jobs[(jobs.indexOf(_.get(props, 'data.selectable.target.props.data-ref')) + 1) % jobs.length]
+            }
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -86,27 +86,27 @@ export default function (props, ref, key) {
         selectClass="HIGHLIGHTED"
         select={_.get(props, 'data.selectable.select')}
         list={[
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[0]}
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[1]}
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[2]}
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[3]}
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[4]}
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[5]}
           />,
@@ -116,7 +116,7 @@ export default function (props, ref, key) {
         openTarget="reveal"
         openReveal={_.get(props, 'data.selectable.target.props.data-ref')}
         list={[
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[0]}
           >
@@ -128,7 +128,7 @@ export default function (props, ref, key) {
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[1]}
           >
@@ -141,7 +141,7 @@ export default function (props, ref, key) {
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[2]}
           >
@@ -154,7 +154,7 @@ export default function (props, ref, key) {
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[3]}
           >
@@ -167,7 +167,7 @@ export default function (props, ref, key) {
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[4]}
           >
@@ -179,7 +179,7 @@ export default function (props, ref, key) {
             </div>
             <button className="next-photo" onClick={nextPhoto} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref={jobs[5]}
           >

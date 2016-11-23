@@ -1,59 +1,59 @@
 import Selectable from '../../shared/components/selectable/0.1.js';
 
 const classNameText = {
-  yourMessageTo: 'your-message-to',
-  isReady: 'is-ready',
-  changeFriend: 'change-friend',
-  character: 'character',
-  gift: 'gift',
-  header: 'header',
-  username: 'username',
+    yourMessageTo: 'your-message-to',
+    isReady: 'is-ready',
+    changeFriend: 'change-friend',
+    character: 'character',
+    gift: 'gift',
+    header: 'header',
+    username: 'username',
 };
 
 class SendScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state.load = true;
-    this.state.recipient = {};
+        this.state.load = true;
+        this.state.recipient = {};
 
-    this.rightMenuList = [
-      <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
+        this.rightMenuList = [
+            <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
         <span />
       </li>,
-      <li className="send" onClick={this.send}>
+            <li className="send" onClick={this.send}>
         <span />
       </li>
-    ];
-  }
+        ];
+    }
 
-  open() {
-    var recipient = this.props.gameState.recipient || {};
+    open() {
+        var recipient = this.props.gameState.recipient || {};
 
-    this.setState({
-      load: true,
-      open: true,
-      leave: false,
-      close: false,
-      recipient
-    });
+        this.setState({
+            load: true,
+            open: true,
+            leave: false,
+            close: false,
+            recipient
+        });
 
-    this.start();
-  }
+        this.start();
+    }
 
-  send() {
-    skoash.trigger('passData', {
-      name: 'send',
-    });
-  }
+    send() {
+        skoash.trigger('passData', {
+            name: 'send',
+        });
+    }
 
-  renderContent() {
-    var changeFriendClick = this.goto.bind(this, {
-      index: 'friend',
-      goto: 'send',
-    });
+    renderContent() {
+        var changeFriendClick = this.goto.bind(this, {
+            index: 'friend',
+            goto: 'send',
+        });
 
-    return (
+        return (
       <div>
         <div className={classNameText.header}>
           <span className={classNameText.yourMessageTo} />
@@ -74,11 +74,11 @@ class SendScreen extends skoash.Screen {
         <Selectable className="menu right-menu" list={this.rightMenuList} />
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <SendScreen
       {...props}
       ref={ref}

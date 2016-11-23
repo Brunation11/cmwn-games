@@ -3,110 +3,110 @@ import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
 class FriendScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      load: true,
-      complete: true,
-      recipient: {},
-      opts: {},
-    };
-  }
+        this.state = {
+            load: true,
+            complete: true,
+            recipient: {},
+            opts: {},
+        };
+    }
 
-  selectRespond(message) {
-    skoash.trigger('passData', {
-      name: 'add-recipient',
-      goto: this.state.opts.goto,
-      message
-    });
-  }
+    selectRespond(message) {
+        skoash.trigger('passData', {
+            name: 'add-recipient',
+            goto: this.state.opts.goto,
+            message
+        });
+    }
 
-  updateData(d) {
-    var data = d && d.user ? d.user : this.props.gameState.data.user || [];
+    updateData(d) {
+        var data = d && d.user ? d.user : this.props.gameState.data.user || [];
 
-    data = data.map(friend => {
-      var src = friend._embedded.image && friend._embedded.image.url ?
+        data = data.map(friend => {
+            var src = friend._embedded.image && friend._embedded.image.url ?
         friend._embedded.image.url :
         DEFAULT_PROFILE_IMAGE;
-      return {
-        'user_id': friend.friend_id,
-        name: friend.username,
-        src,
+            return {
+                'user_id': friend.friend_id,
+                name: friend.username,
+                src,
         // I need to get the flips earned back from the backend to do this.
-        description: '',
+                description: '',
         // description: friend.flips_earned + ' Flips Earned',
-        'asset_type': 'friend',
-      };
-    });
+                'asset_type': 'friend',
+            };
+        });
 
-    this.setState({
-      data,
-    });
-  }
-
-  open(opts) {
-    var recipient, self = this;
-
-    self.updateData();
-
-    skoash.trigger('getData', {
-      name: 'getFriends'
-    }).then(data => {
-      self.updateData.call(self, data);
-    });
-
-    recipient = self.props.gameState.recipient;
-
-    self.setState({
-      load: true,
-      open: true,
-      leave: false,
-      close: false,
-      recipient,
-      opts,
-    }, () => {
-      self.refs.drawer && self.refs.drawer.start();
-    });
-
-    if (!self.state.started) {
-      self.start();
+        this.setState({
+            data,
+        });
     }
-  }
 
-  suggestFriends() {
-    window.open(window.location.origin.replace('games-', '') + '/friends/suggested');
-  }
+    open(opts) {
+        var recipient, self = this;
 
-  save() {
-    skoash.trigger('goto', {
-      index: 'canvas',
-    });
-    skoash.trigger('openMenu', {id: 'save'});
-  }
+        self.updateData();
 
-  renderOtter() {
-    var copy, src, imageSrc;
+        skoash.trigger('getData', {
+            name: 'getFriends'
+        }).then(data => {
+            self.updateData.call(self, data);
+        });
 
-    src = 'One';
-    imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
-    copy = (
+        recipient = self.props.gameState.recipient;
+
+        self.setState({
+            load: true,
+            open: true,
+            leave: false,
+            close: false,
+            recipient,
+            opts,
+        }, () => {
+            self.refs.drawer && self.refs.drawer.start();
+        });
+
+        if (!self.state.started) {
+            self.start();
+        }
+    }
+
+    suggestFriends() {
+        window.open(window.location.origin.replace('games-', '') + '/friends/suggested');
+    }
+
+    save() {
+        skoash.trigger('goto', {
+            index: 'canvas',
+        });
+        skoash.trigger('openMenu', {id: 'save'});
+    }
+
+    renderOtter() {
+        var copy, src, imageSrc;
+
+        src = 'One';
+        imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
+        copy = (
       <span>
         Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
       </span>
     );
 
-    if (this.state.data && this.state.data.length) {
-      src = 'Two';
-      imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
-      copy = (
+        if (this.state.data && this.state.data.length) {
+            src = 'Two';
+            imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
+            copy = (
         <span>
           Let me find a friend<br/> to send your message to.
         </span>
       );
-    }
+        }
 
-    return (
+        return (
       <div className={'otter-container ' + src}>
         <skoash.Image className="otter" src={imageSrc} />
         <div className="bubble">
@@ -114,11 +114,11 @@ class FriendScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 
-  renderFriends() {
-    if (this.state.data && this.state.data.length) {
-      return (
+    renderFriends() {
+        if (this.state.data && this.state.data.length) {
+            return (
         <ItemDrawer
           ref="drawer"
           scrollbarImg="./media/_Buttons/sk_btn_slider.png"
@@ -133,9 +133,9 @@ class FriendScreen extends skoash.Screen {
           className={'goto-' + this.state.opts.goto}
         />
       );
-    }
+        }
 
-    return (
+        return (
       <div className={'goto-' + this.state.opts.goto}>
         <div className="item-drawer-container">
           <div className="suggest-friends-buttons">
@@ -146,21 +146,21 @@ class FriendScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 
-  renderContent() {
-    return (
+    renderContent() {
+        return (
       <div>
         <div className="header" />
         {this.renderOtter()}
         {this.renderFriends()}
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <FriendScreen
       {...props}
       ref={ref}

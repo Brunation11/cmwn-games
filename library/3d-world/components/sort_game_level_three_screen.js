@@ -1,12 +1,12 @@
 import SortGameScreenComponent from './sort_game_screen_component';
 
 export default function (props, ref, key) {
-  return SortGameScreenComponent(props, ref, key, {
-    id: 'sort-game-level-one',
-    timeout: 60000,
-    prepTimeout: 500,
-    vos: [
-      <skoash.MediaSequence
+    return SortGameScreenComponent(props, ref, key, {
+        id: 'sort-game-level-one',
+        timeout: 60000,
+        prepTimeout: 500,
+        vos: [
+            <skoash.MediaSequence
         ref="level-up"
         silentOnStart
       >
@@ -19,24 +19,24 @@ export default function (props, ref, key) {
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_did_you3.mp3'}
         />
       </skoash.MediaSequence>,
-      <skoash.Audio
+            <skoash.Audio
         type="voiceOver"
         ref="try-again"
         complete
         src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_try_again.mp3'}
       />,
-    ],
-    sfx: [
-      <skoash.Audio
+        ],
+        sfx: [
+            <skoash.Audio
         type="voiceOver"
         completeTarget="sfx"
         ref="print"
         src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/print_item.mp3'}
         sprite={[0, 500]}
       />
-    ],
-    revealList: [
-      <skoash.Component
+        ],
+        revealList: [
+            <skoash.Component
         ref="level-up"
         type="li"
       >
@@ -57,7 +57,7 @@ export default function (props, ref, key) {
           much less waste!
         </div>
       </skoash.Component>,
-      <skoash.Component
+            <skoash.Component
         ref="try-again"
         type="li"
       >
@@ -81,6 +81,6 @@ export default function (props, ref, key) {
           {'but don\'t worry, you have another chance!'}
         </div>
       </skoash.Component>,
-    ]
-  });
+        ]
+    });
 }

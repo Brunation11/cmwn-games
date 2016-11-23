@@ -1,13 +1,13 @@
 export default function (props, ref, key) {
-  var letsDust = _.get(props, 'data.vo.playing') ? 'lets-dust' : '';
-  var count5 = _.get(props, 'data.count5.playing') ? 'count' : '';
-  var count4 = _.get(props, 'data.count4.playing') ? 'count' : '';
-  var count3 = _.get(props, 'data.count3.playing') ? 'count' : '';
-  var count2 = _.get(props, 'data.count2.playing') ? 'count' : '';
-  var count1 = _.get(props, 'data.count1.playing') ? 'count' : '';
-  var engaged = _.get(props, 'data.engage.playing') ? ' engaged' : '';
+    var letsDust = _.get(props, 'data.vo.playing') ? 'lets-dust' : '';
+    var count5 = _.get(props, 'data.count5.playing') ? 'count' : '';
+    var count4 = _.get(props, 'data.count4.playing') ? 'count' : '';
+    var count3 = _.get(props, 'data.count3.playing') ? 'count' : '';
+    var count2 = _.get(props, 'data.count2.playing') ? 'count' : '';
+    var count1 = _.get(props, 'data.count1.playing') ? 'count' : '';
+    var engaged = _.get(props, 'data.engage.playing') ? ' engaged' : '';
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -15,15 +15,15 @@ export default function (props, ref, key) {
       id="info-lets-dust"
       className="large-frame"
       onOpen={function () {
-        skoash.trigger('passData', {
-          name: 'typing',
-          duration: 1000,
-        });
+          skoash.trigger('passData', {
+              name: 'typing',
+              duration: 1000,
+          });
       }}
       onClose={function () {
-        skoash.trigger('passData', {
-          name: 'stopTyping',
-        });
+          skoash.trigger('passData', {
+              name: 'stopTyping',
+          });
       }}
     >
       <skoash.MediaSequence ref="media">

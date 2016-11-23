@@ -1,17 +1,17 @@
 import classNames from 'classnames';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="many-materials"
       onStart={function () {
-        this.updateGameState({
-          path: 'start',
-          data: true,
-        });
+          this.updateGameState({
+              path: 'start',
+              data: true,
+          });
       }}
     >
       <skoash.Audio
@@ -40,7 +40,7 @@ export default function (props, ref, key) {
       <skoash.Component>
         <div
           className={classNames('words', {
-            start: _.get(props, 'data.start'),
+              start: _.get(props, 'data.start'),
           })}
         >
           <div>

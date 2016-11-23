@@ -1,7 +1,7 @@
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -14,14 +14,14 @@ export default function (props, ref, key) {
         <skoash.Image ref="banner" className="banner animated" src="media/images/Img_23.1.png" />
         <SelectableReveal
           ref="selectable-reveal"
-          answers={["warm"]}
+          answers={['warm']}
           assets={[
-            <skoash.Audio ref="correct" type="sfx" src="media/audio/answer-correct.mp3" />,
-            <skoash.Audio ref="incorrect" type="sfx" src="media/audio/answer-incorrect.mp3" complete />
+              <skoash.Audio ref="correct" type="sfx" src="media/audio/answer-correct.mp3" />,
+              <skoash.Audio ref="incorrect" type="sfx" src="media/audio/answer-incorrect.mp3" complete />
           ]}
           selectableList={[
-            <skoash.ListItem className="cold animated" data-ref="cold" />,
-            <skoash.ListItem className="warm animated" data-ref="warm" />
+              <skoash.ListItem className="cold animated" data-ref="cold" />,
+              <skoash.ListItem className="warm animated" data-ref="warm" />
           ]}
         />
       </skoash.Component>

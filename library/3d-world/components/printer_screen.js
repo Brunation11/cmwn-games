@@ -8,142 +8,142 @@ import Draggable from 'shared/components/draggable/0.3';
 import Reveal from 'shared/components/reveal/0.1';
 
 const objects = [
-  'umbrella',
-  'glasses',
-  'tire',
-  'shovel',
-  'link',
-  'bucket',
-  'boots',
-  'gloves',
-  'whistle',
-  'cup',
-  'phone',
-  'piece',
-  'tooth',
-  'ball',
+    'umbrella',
+    'glasses',
+    'tire',
+    'shovel',
+    'link',
+    'bucket',
+    'boots',
+    'gloves',
+    'whistle',
+    'cup',
+    'phone',
+    'piece',
+    'tooth',
+    'ball',
 ];
 
 const targets = [
-  'tire',
-  'link',
-  'cup',
-  'phone',
-  'tooth',
+    'tire',
+    'link',
+    'cup',
+    'phone',
+    'tooth',
 ];
 
 export default function (props, ref, key) {
-  var onStart,
-    startGame,
-    closeReveal,
-    onCorrect,
-    onPrinted,
-    reset,
-    onTransitionEnd;
+    var onStart,
+        startGame,
+        closeReveal,
+        onCorrect,
+        onPrinted,
+        reset,
+        onTransitionEnd;
 
-  onStart = function () {
-    _.each(this.refs.bottom.refs.slider.refs, slide => {
-      _.each(slide.refs, draggable => {
-        draggable.markIncorrect();
-      });
-    });
-  };
+    onStart = function () {
+        _.each(this.refs.bottom.refs.slider.refs, slide => {
+            _.each(slide.refs, draggable => {
+                draggable.markIncorrect();
+            });
+        });
+    };
 
-  startGame = function () {
-    skoash.trigger('updateState', {
-      path: 'reveal',
-      data: {
-        open: 'drag-it-here',
-      },
-    });
-  };
+    startGame = function () {
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                open: 'drag-it-here',
+            },
+        });
+    };
 
-  closeReveal = function () {
-    skoash.trigger('updateState', {
-      path: 'reveal',
-      data: {
-        close: true,
-      },
-    });
+    closeReveal = function () {
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                close: true,
+            },
+        });
 
-    if (_.get(props, 'data.setTarget', 0) > 4) {
-      skoash.trigger('goto', {
-        index: parseInt(props.index, 10) + 1,
-      });
-    }
-  };
+        if (_.get(props, 'data.setTarget', 0) > 4) {
+            skoash.trigger('goto', {
+                index: parseInt(props.index, 10) + 1,
+            });
+        }
+    };
 
-  onCorrect = function (dropped) {
-    skoash.trigger('updateState', {
-      path: 'printed',
-      data: dropped,
-    });
-    skoash.trigger('updateState', {
-      path: 'sfx',
-      data: {
-        playing: 'print'
-      },
-    });
-  };
+    onCorrect = function (dropped) {
+        skoash.trigger('updateState', {
+            path: 'printed',
+            data: dropped,
+        });
+        skoash.trigger('updateState', {
+            path: 'sfx',
+            data: {
+                playing: 'print'
+            },
+        });
+    };
 
-  onPrinted = function () {
-    var dropped = _.get(props, 'data.printed');
+    onPrinted = function () {
+        var dropped = _.get(props, 'data.printed');
 
-    if (dropped.props.message === _.get(props, 'data.target.object.props.name')) {
-      dropped.markCorrect();
-      skoash.trigger('updateState', {
-        path: 'transition',
-        data: true,
-      });
-    } else {
-      dropped.markIncorrect();
-      reset();
-      skoash.trigger('updateState', {
-        path: 'sfx',
-        data: {
-          playing: 'incorrect',
-        },
-      });
-      skoash.trigger('updateState', {
-        path: 'reveal',
-        data: {
-          open: 'try-again',
-        },
-      });
-    }
-  };
+        if (dropped.props.message === _.get(props, 'data.target.object.props.name')) {
+            dropped.markCorrect();
+            skoash.trigger('updateState', {
+                path: 'transition',
+                data: true,
+            });
+        } else {
+            dropped.markIncorrect();
+            reset();
+            skoash.trigger('updateState', {
+                path: 'sfx',
+                data: {
+                    playing: 'incorrect',
+                },
+            });
+            skoash.trigger('updateState', {
+                path: 'reveal',
+                data: {
+                    open: 'try-again',
+                },
+            });
+        }
+    };
 
-  reset = function () {
-    _.each(['printed', 'transition', 'layer1', 'layer2', 'layer3'], (v) => {
-      skoash.trigger('updateState', {
-        path: v,
-        data: false,
-      });
-    });
-  };
+    reset = function () {
+        _.each(['printed', 'transition', 'layer1', 'layer2', 'layer3'], (v) => {
+            skoash.trigger('updateState', {
+                path: v,
+                data: false,
+            });
+        });
+    };
 
-  onTransitionEnd = function () {
-    if (!_.get(props, 'data.transition')) return;
-    skoash.trigger('updateState', {
-      path: 'sfx',
-      data: {
-        playing: 'correct',
-      },
-    });
-    skoash.trigger('updateState', {
-      path: 'reveal',
-      data: {
-        open: _.get(props, 'data.printed.props.message'),
-      },
-    });
-    if (_.get(props, 'data.setTarget', 0) < 4) reset();
-    skoash.trigger('updateState', {
-      path: 'setTarget',
-      data: _.get(props, 'data.setTarget', 0) + 1,
-    });
-  };
+    onTransitionEnd = function () {
+        if (!_.get(props, 'data.transition')) return;
+        skoash.trigger('updateState', {
+            path: 'sfx',
+            data: {
+                playing: 'correct',
+            },
+        });
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                open: _.get(props, 'data.printed.props.message'),
+            },
+        });
+        if (_.get(props, 'data.setTarget', 0) < 4) reset();
+        skoash.trigger('updateState', {
+            path: 'setTarget',
+            data: _.get(props, 'data.setTarget', 0) + 1,
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -270,24 +270,24 @@ export default function (props, ref, key) {
           checkComplete={false}
           complete={_.get(props, 'data.setTarget', 0) > 4}
           targets={[
-            <skoash.Component name={targets[0]} />,
-            <skoash.Component name={targets[1]} />,
-            <skoash.Component name={targets[2]} />,
-            <skoash.Component name={targets[3]} />,
-            <skoash.Component name={targets[4]} />,
+              <skoash.Component name={targets[0]} />,
+              <skoash.Component name={targets[1]} />,
+              <skoash.Component name={targets[2]} />,
+              <skoash.Component name={targets[3]} />,
+              <skoash.Component name={targets[4]} />,
           ]}
         />
       </skoash.Component>
       <Dropzone
         dropped={_.get(props, 'data.draggable.dropped')}
         dropzones={[
-          <skoash.Component
+            <skoash.Component
             answers={objects}
             className={classNames(_.get(props, 'data.printed.props.message'), {
-              transition: _.get(props, 'data.transition'),
-              layer1: _.get(props, 'data.layer1.playing'),
-              layer2: _.get(props, 'data.layer2.playing'),
-              layer3: _.get(props, 'data.layer3.playing'),
+                transition: _.get(props, 'data.transition'),
+                layer1: _.get(props, 'data.layer1.playing'),
+                layer2: _.get(props, 'data.layer2.playing'),
+                layer3: _.get(props, 'data.layer3.playing'),
             })}
             onTransitionEnd={onTransitionEnd}
           />
@@ -385,7 +385,7 @@ export default function (props, ref, key) {
         openReveal={_.get(props, 'data.reveal.open')}
         closeReveal={_.get(props, 'data.reveal.close')}
         list={[
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref="instructions"
           >
@@ -399,7 +399,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={startGame} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref="drag-it-here"
             onClick={closeReveal}
@@ -410,7 +410,7 @@ export default function (props, ref, key) {
               to continue.
             </div>
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             ref={targets[0]}
           >
@@ -423,7 +423,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             ref={targets[1]}
           >
@@ -437,7 +437,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             ref={targets[2]}
           >
@@ -450,7 +450,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             ref={targets[3]}
           >
@@ -463,7 +463,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             ref={targets[4]}
           >
@@ -478,7 +478,7 @@ export default function (props, ref, key) {
             </div>
             <button onClick={closeReveal} />
           </skoash.Component>,
-          <skoash.Component
+            <skoash.Component
             type="li"
             data-ref="try-again"
           >

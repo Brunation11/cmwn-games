@@ -1,13 +1,13 @@
 class SaveMenu extends skoash.Screen {
-  cancel() {
-    this.close();
-    skoash.trigger('menuClose', {
-      id: this.props.id,
-    });
-  }
+    cancel() {
+        this.close();
+        skoash.trigger('menuClose', {
+            id: this.props.id,
+        });
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div id={this.props.id} className={this.getClassNames()}>
         <div className="center">
           <div className="frame">
@@ -18,7 +18,7 @@ class SaveMenu extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default (

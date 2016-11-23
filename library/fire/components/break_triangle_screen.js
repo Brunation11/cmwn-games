@@ -1,16 +1,16 @@
 export default function (props, ref, key) {
 
-  function animate(name) {
-    var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
-    skoash.trigger('updateState', {
-      path: 'states',
-      data: {
-        open,
-      },
-    });
-  }
+    function animate(name) {
+        var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
+        skoash.trigger('updateState', {
+            path: 'states',
+            data: {
+                open,
+            },
+        });
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -18,12 +18,12 @@ export default function (props, ref, key) {
       id="break-triangle"
       className={_.get(props, 'data.states.open', null)}
       onOpen={() => {
-        skoash.trigger('updateState', {
-          path: 'states',
-          data: {
-            open: null,
-          },
-        })
+          skoash.trigger('updateState', {
+              path: 'states',
+              data: {
+                  open: null,
+              },
+          });
       }}
     >
       <skoash.MediaSequence

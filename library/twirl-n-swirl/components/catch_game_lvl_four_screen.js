@@ -1,59 +1,59 @@
 import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
-  return CatchGameScreenComponent(props, ref, key, {
-    id: 'catch-game-lvl-4',
-    level: 4,
-    timeout: 60000,
-    dropTimeout: 1500,
-    dropSpeed: 'fast',
-    rows: 3,
-    points: {
-      goal: 50,
-      correct: 5,
-      incorrect: -10
-    },
-    dropPoints: ['left', 'center', 'right'],
-    bin: [
-      {
-        className: 'fish',
-        message: ''
-      },
-      {
-        className: 'turtle',
-        message: ''
-      },
-      {
-        className: 'frog',
-        message: ''
-      },
-      {
-        className: 'trash floss',
-        message: 'trash'
-      },
-      {
-        className: 'trash medicine',
-        message: 'trash'
-      },
-      {
-        className: 'trash diaper',
-        message: 'trash'
-      },
-      {
-        className: 'trash bandaid',
-        message: 'trash'
-      },
-      {
-        className: 'trash oil',
-        message: 'trash'
-      },
-      {
-        className: 'trash gum',
-        message: 'trash'
-      }
-    ],
-    vos: [
-      <skoash.MediaSequence
+    return CatchGameScreenComponent(props, ref, key, {
+        id: 'catch-game-lvl-4',
+        level: 4,
+        timeout: 60000,
+        dropTimeout: 1500,
+        dropSpeed: 'fast',
+        rows: 3,
+        points: {
+            goal: 50,
+            correct: 5,
+            incorrect: -10
+        },
+        dropPoints: ['left', 'center', 'right'],
+        bin: [
+            {
+                className: 'fish',
+                message: ''
+            },
+            {
+                className: 'turtle',
+                message: ''
+            },
+            {
+                className: 'frog',
+                message: ''
+            },
+            {
+                className: 'trash floss',
+                message: 'trash'
+            },
+            {
+                className: 'trash medicine',
+                message: 'trash'
+            },
+            {
+                className: 'trash diaper',
+                message: 'trash'
+            },
+            {
+                className: 'trash bandaid',
+                message: 'trash'
+            },
+            {
+                className: 'trash oil',
+                message: 'trash'
+            },
+            {
+                className: 'trash gum',
+                message: 'trash'
+            }
+        ],
+        vos: [
+            <skoash.MediaSequence
         ref="level-complete"
         silentOnStart
       >
@@ -66,7 +66,7 @@ export default function (props, ref, key) {
           src="media/audio/lvl-4-complete.mp3"
         />
       </skoash.MediaSequence>,
-      <skoash.MediaSequence
+            <skoash.MediaSequence
         ref="try-again"
         silentOnStart
       >
@@ -81,9 +81,9 @@ export default function (props, ref, key) {
           complete
         />
       </skoash.MediaSequence>
-    ],
-    revealPromptList: [
-      <skoash.Component data-ref="level-complete" className="level-four-complete">
+        ],
+        revealPromptList: [
+            <skoash.Component data-ref="level-complete" className="level-four-complete">
         <skoash.Component className="frame">
           <skoash.Component className="banner" />
           <span>
@@ -91,13 +91,13 @@ export default function (props, ref, key) {
           </span>
         </skoash.Component>
       </skoash.Component>,
-      <skoash.Component data-ref="try-again">
+            <skoash.Component data-ref="try-again">
         <skoash.Component className="frame">
           <span>
             The water is polluted<br />and the fish are sad!<br />But you have another chance<br />to save the day and clean their water.
           </span>
         </skoash.Component>
       </skoash.Component>
-    ]
- });
+        ]
+    });
 }

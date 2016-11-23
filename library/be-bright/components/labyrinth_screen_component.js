@@ -7,177 +7,177 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Reveal from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key, opts = {}) {
-  var itemInteract,
-    enemyInteract,
-    enemyDisable,
-    onLabyrinthStart,
-    onLabyrinthStop,
-    onLabyrinthComplete,
-    getTime,
-    onTimerComplete,
-    onOpenReveal,
-    onCloseReveal,
-    items = [],
-    enemies = [];
+    var itemInteract,
+        enemyInteract,
+        enemyDisable,
+        onLabyrinthStart,
+        onLabyrinthStop,
+        onLabyrinthComplete,
+        getTime,
+        onTimerComplete,
+        onOpenReveal,
+        onCloseReveal,
+        items = [],
+        enemies = [];
 
-  itemInteract = function () {
-    this.complete();
-    this.disable();
-    this.updateGameState({
-      path: 'correct',
-      data: _.get(props, 'data.correct', 0) + 1,
-    });
-  };
-
-  enemyInteract = function () {
-    this.setState({
-      hit: true,
-    }, () => {
-      setTimeout(() => {
-        this.setState({
-          hit: false
+    itemInteract = function () {
+        this.complete();
+        this.disable();
+        this.updateGameState({
+            path: 'correct',
+            data: _.get(props, 'data.correct', 0) + 1,
         });
-      }, 1000);
-    });
-  };
+    };
 
-  enemyDisable = function () {
-    this.updateGameState({
-      path: 'game',
-      data: {
-        sfx: 'disable',
-      },
-    });
-    setTimeout(() => {
-      this.updateGameState({
-        path: 'game',
-        data: {
-          sfx: null,
-        },
-      });
-    }, 500);
-  };
+    enemyInteract = function () {
+        this.setState({
+            hit: true,
+        }, () => {
+            setTimeout(() => {
+                this.setState({
+                    hit: false
+                });
+            }, 1000);
+        });
+    };
 
-  onLabyrinthStart = function () {
-    clearInterval(this.interval);
-    this.interval = setInterval(() => {
-      var offset;
-      if (_.get(props, 'data.game.stop', false)) return;
-      offset = {
-        width: this.player.offsetWidth,
-        height: this.player.offsetHeight,
-      };
-      _.each(this.enemies, enemy => {
-        if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
-        Math.random() < opts.disableChance ? enemy.disable() : enemy.enable();
-      });
-    }, opts.disableInterval);
-  };
+    enemyDisable = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                sfx: 'disable',
+            },
+        });
+        setTimeout(() => {
+            this.updateGameState({
+                path: 'game',
+                data: {
+                    sfx: null,
+                },
+            });
+        }, 500);
+    };
 
-  onLabyrinthStop = function () {
-    clearInterval(this.interval);
-  };
+    onLabyrinthStart = function () {
+        clearInterval(this.interval);
+        this.interval = setInterval(() => {
+            var offset;
+            if (_.get(props, 'data.game.stop', false)) return;
+            offset = {
+                width: this.player.offsetWidth,
+                height: this.player.offsetHeight,
+            };
+            _.each(this.enemies, enemy => {
+                if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
+                Math.random() < opts.disableChance ? enemy.disable() : enemy.enable();
+            });
+        }, opts.disableInterval);
+    };
 
-  onLabyrinthComplete = function () {
-    this.updateGameState({
-      path: 'openReveal',
-      data: 'level-up',
-    });
-    this.updateGameState({
-      path: 'game',
-      data: {
-        complete: true,
-      },
-    });
-  };
+    onLabyrinthStop = function () {
+        clearInterval(this.interval);
+    };
 
-  getTime = function () {
-    var timeLeft, minutesLeft, secondsLeft;
-    timeLeft = this.props.timeout / 1000 - this.state.time;
-    minutesLeft = Math.floor(timeLeft / 60);
-    secondsLeft = timeLeft % 60;
-    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-    return `${minutesLeft}:${secondsLeft}`;
-  };
+    onLabyrinthComplete = function () {
+        this.updateGameState({
+            path: 'openReveal',
+            data: 'level-up',
+        });
+        this.updateGameState({
+            path: 'game',
+            data: {
+                complete: true,
+            },
+        });
+    };
 
-  onTimerComplete = function () {
-    if (_.get(props, 'data.openReveal') === 'level-up') return;
-    this.updateGameState({
-      path: 'openReveal',
-      data: 'try-again',
-    });
-  };
+    getTime = function () {
+        var timeLeft, minutesLeft, secondsLeft;
+        timeLeft = this.props.timeout / 1000 - this.state.time;
+        minutesLeft = Math.floor(timeLeft / 60);
+        secondsLeft = timeLeft % 60;
+        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+        return `${minutesLeft}:${secondsLeft}`;
+    };
 
-  onOpenReveal = function (message) {
-    this.updateGameState({
-      path: 'game',
-      data: {
-        stop: true,
-        start: false,
-        vo: message,
-      },
-    });
-  };
+    onTimerComplete = function () {
+        if (_.get(props, 'data.openReveal') === 'level-up') return;
+        this.updateGameState({
+            path: 'openReveal',
+            data: 'try-again',
+        });
+    };
 
-  onCloseReveal = function (prevMessage) {
-    if (prevMessage === 'try-again' && !_.get(props, 'data.closeReveal')) {
-      skoash.trigger('quit');
-      return;
-    }
+    onOpenReveal = function (message) {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: true,
+                start: false,
+                vo: message,
+            },
+        });
+    };
 
-    this.updateGameState({
-      path: 'game',
-      data: {
-        stop: false,
-        start: true,
-        restart: false,
-      },
-    });
-    this.updateGameState({
-      path: 'closeReveal',
-      data: false,
-    });
-    this.updateGameState({
-      path: 'openReveal',
-      data: false,
-    });
-    this.updateGameState({
-      path: 'correct',
-      data: 0,
-    });
+    onCloseReveal = function (prevMessage) {
+        if (prevMessage === 'try-again' && !_.get(props, 'data.closeReveal')) {
+            skoash.trigger('quit');
+            return;
+        }
 
-    if (prevMessage === 'level-up') {
-      skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-    }
-  };
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: false,
+                start: true,
+                restart: false,
+            },
+        });
+        this.updateGameState({
+            path: 'closeReveal',
+            data: false,
+        });
+        this.updateGameState({
+            path: 'openReveal',
+            data: false,
+        });
+        this.updateGameState({
+            path: 'correct',
+            data: 0,
+        });
 
-  for (let i = 0; i < opts.itemsCount; i++) {
-    items.push(
+        if (prevMessage === 'level-up') {
+            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+        }
+    };
+
+    for (let i = 0; i < opts.itemsCount; i++) {
+        items.push(
       <IteractiveItem
         className={'item-' + (i + 1)}
         checkComplete={false}
         onInteract={itemInteract}
         children={[
-          <skoash.Audio ref="interact" type="sfx" src="media/_sounds/_effects/LightCapture.mp3" complete />,
+            <skoash.Audio ref="interact" type="sfx" src="media/_sounds/_effects/LightCapture.mp3" complete />,
         ]}
       />
     );
-  }
+    }
 
-  for (let i = 0; i < opts.enemiesCount; i++) {
-    enemies.push(
+    for (let i = 0; i < opts.enemiesCount; i++) {
+        enemies.push(
       <IteractiveItem
         className={'enemy-' + (i + 1)}
         onInteract={enemyInteract}
         onDisable={enemyDisable}
         children={[
-          <skoash.Audio ref="interact" type="sfx" src="media/_sounds/_effects/EnergyHog.mp3" complete />,
+            <skoash.Audio ref="interact" type="sfx" src="media/_sounds/_effects/EnergyHog.mp3" complete />,
         ]}
       />
     );
-  }
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -196,7 +196,7 @@ export default function (props, ref, key, opts = {}) {
       <MediaCollection
         play={_.get(props, 'data.game.sfx')}
         children={[
-          <skoash.Audio ref="disable" type="sfx" src="media/_sounds/_effects/HogDisappear.mp3" complete />,
+            <skoash.Audio ref="disable" type="sfx" src="media/_sounds/_effects/HogDisappear.mp3" complete />,
         ]}
       />
       <Reveal
@@ -228,7 +228,7 @@ export default function (props, ref, key, opts = {}) {
         onStop={onLabyrinthStop}
         onComplete={onLabyrinthComplete}
         assets={[
-          <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
+            <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
         ]}
         items={items}
         enemies={enemies}
@@ -258,7 +258,7 @@ export default function (props, ref, key, opts = {}) {
         start={_.get(props, 'data.game.start', false)}
         stop={_.get(props, 'data.game.stop', false)}
         assets={[
-          <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
+            <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
         ]}
       />
     </skoash.Screen>

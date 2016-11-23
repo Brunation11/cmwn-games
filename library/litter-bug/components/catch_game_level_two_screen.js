@@ -1,72 +1,72 @@
 import CatchGameScreenComponent from './catch_game_screen_component';
 
 export default function (props, ref, key) {
-  return CatchGameScreenComponent(props, ref, key, {
-    id: 'catch-game-level-two',
-    level: 2,
-    rows: 4,
-    timeout: 120000,
-    prepTimeout: 500,
-    bin: [
-      {
-        className: 'mushroom',
-        message: ''
-      },
-      {
-        className: 'banana',
-        message: 'trash'
-      },
-      {
-        className: 'paper',
-        message: 'trash'
-      },
-      {
-        className: 'dog',
-        message: ''
-      },
-      {
-        className: 'battery',
-        message: 'trash'
-      },
-      {
-        className: 'duck',
-        message: ''
-      },
-      {
-        className: 'squirrel',
-        message: ''
-      },
-      {
-        className: 'tire',
-        message: 'trash'
-      },
-      {
-        className: 'blue-flower',
-        message: ''
-      },
-      {
-        className: 'yellow-flower',
-        message: ''
-      },
-      {
-        className: 'red-flower',
-        message: ''
-      },
-      {
-        className: 'purple-flower',
-        message: ''
-      },
-      {
-        className: 'glass',
-        message: 'trash'
-      },
-      {
-        className: 'plastic',
-        message: 'trash'
-      },
-    ],
-    vos: [
-      <skoash.MediaSequence
+    return CatchGameScreenComponent(props, ref, key, {
+        id: 'catch-game-level-two',
+        level: 2,
+        rows: 4,
+        timeout: 120000,
+        prepTimeout: 500,
+        bin: [
+            {
+                className: 'mushroom',
+                message: ''
+            },
+            {
+                className: 'banana',
+                message: 'trash'
+            },
+            {
+                className: 'paper',
+                message: 'trash'
+            },
+            {
+                className: 'dog',
+                message: ''
+            },
+            {
+                className: 'battery',
+                message: 'trash'
+            },
+            {
+                className: 'duck',
+                message: ''
+            },
+            {
+                className: 'squirrel',
+                message: ''
+            },
+            {
+                className: 'tire',
+                message: 'trash'
+            },
+            {
+                className: 'blue-flower',
+                message: ''
+            },
+            {
+                className: 'yellow-flower',
+                message: ''
+            },
+            {
+                className: 'red-flower',
+                message: ''
+            },
+            {
+                className: 'purple-flower',
+                message: ''
+            },
+            {
+                className: 'glass',
+                message: 'trash'
+            },
+            {
+                className: 'plastic',
+                message: 'trash'
+            },
+        ],
+        vos: [
+            <skoash.MediaSequence
         ref="level-up"
         silentOnStart
       >
@@ -79,7 +79,7 @@ export default function (props, ref, key) {
           src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
         />
       </skoash.MediaSequence>,
-      <skoash.MediaSequence
+            <skoash.MediaSequence
         ref="try-again"
         silentOnStart
       >
@@ -99,17 +99,17 @@ export default function (props, ref, key) {
           src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
         />
       </skoash.MediaSequence>,
-    ],
-    sfx: [
-      <skoash.Audio
+        ],
+        sfx: [
+            <skoash.Audio
         type="sfx"
         ref="miss"
         src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
         complete
       />,
-    ],
-    revealList: [
-      <skoash.Component
+        ],
+        revealList: [
+            <skoash.Component
         ref="level-up"
         className="level-up"
         type="li"
@@ -119,7 +119,7 @@ export default function (props, ref, key) {
           <div className="level-up" />
         </div>
       </skoash.Component>,
-      <skoash.Component
+            <skoash.Component
         ref="try-again"
         className="try-again"
         type="li"
@@ -129,16 +129,16 @@ export default function (props, ref, key) {
           <div className="words" />
           <button
             onClick={function () {
-              skoash.trigger('updateState', {
-                path: 'reveal',
-                data: {
-                  close: true,
-                }
-              });
+                skoash.trigger('updateState', {
+                    path: 'reveal',
+                    data: {
+                        close: true,
+                    }
+                });
             }}
           />
         </div>
       </skoash.Component>,
-    ]
-  });
+        ]
+    });
 }

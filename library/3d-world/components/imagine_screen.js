@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -37,13 +37,13 @@ export default function (props, ref, key) {
       </skoash.MediaSequence>
       <skoash.Image
         className={classNames('question', {
-          show: !_.get(props, 'data.imagine.complete')
+            show: !_.get(props, 'data.imagine.complete')
         })}
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.gif'}
       />
       <skoash.Image
         className={classNames('answer', {
-          show: _.get(props, 'data.imagine.complete')
+            show: _.get(props, 'data.imagine.complete')
         })}
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/wand.and.printer_.gif'}
       />
@@ -58,7 +58,7 @@ export default function (props, ref, key) {
       <div className="right">
         <div
           className={classNames('words', 'imagine', {
-            start: !_.get(props, 'data.imagine.complete')
+              start: !_.get(props, 'data.imagine.complete')
           })}
         >
           <div>
@@ -79,7 +79,7 @@ export default function (props, ref, key) {
         </div>
         <div
           className={classNames('words', 'exists', {
-            start: _.get(props, 'data.imagine.complete')
+              start: _.get(props, 'data.imagine.complete')
           })}
         >
           <div>

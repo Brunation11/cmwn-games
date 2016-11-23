@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}

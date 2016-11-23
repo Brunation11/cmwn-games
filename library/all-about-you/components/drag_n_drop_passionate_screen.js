@@ -7,68 +7,68 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
-  function dragRespond(draggable) {
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'drag'
-      }
-    });
-
-    _.forIn(this.refs, (ref2, key2) => {
-      if (key2.indexOf('dropzone-') === -1) return;
-      if (ref2 && ref2.state && ref2.state.content === draggable) {
-        ref2.setState({
-          content: null
+    function dragRespond(draggable) {
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'drag'
+            }
         });
-      }
-    });
 
-    this.incomplete();
-  }
+        _.forIn(this.refs, (ref2, key2) => {
+            if (key2.indexOf('dropzone-') === -1) return;
+            if (ref2 && ref2.state && ref2.state.content === draggable) {
+                ref2.setState({
+                    content: null
+                });
+            }
+        });
 
-  function correctRespond(draggable, dropzoneKey) {
-    var dropzone, message, complete = true;
-
-    dropzone = this.refs[`dropzone-${dropzoneKey}`];
-    message = draggable.props.message;
-
-    if (dropzone.state.content && draggable !== dropzone.state.content) {
-      dropzone.state.content.returnToStart();
-      dropzone.state.content.markIncorrect();
+        this.incomplete();
     }
 
-    dropzone.setState({
-      content: draggable
-    });
+    function correctRespond(draggable, dropzoneKey) {
+        var dropzone, message, complete = true;
 
-    if (!this.state.loadingData && !this.state.loadedData) {
-      this.updateGameState({
-        path: 'sfx',
-        data: {
-          play: 'correct'
-        }
-      });
+        dropzone = this.refs[`dropzone-${dropzoneKey}`];
+        message = draggable.props.message;
 
-      this.updateGameState({
-        path: 'reveal',
-        data: {
-          open: message
+        if (dropzone.state.content && draggable !== dropzone.state.content) {
+            dropzone.state.content.returnToStart();
+            dropzone.state.content.markIncorrect();
         }
-      });
+
+        dropzone.setState({
+            content: draggable
+        });
+
+        if (!this.state.loadingData && !this.state.loadedData) {
+            this.updateGameState({
+                path: 'sfx',
+                data: {
+                    play: 'correct'
+                }
+            });
+
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: message
+                }
+            });
+        }
+
+        _.forIn(this.refs, (ref3, key3) => {
+            if (key3.indexOf('dropzone-') === -1) return;
+            if (!ref3.state.content) {
+                return complete = false;
+            }
+        });
+
+        if (complete || _.get(props, 'data.game.complete', false)) this.complete();
     }
 
-    _.forIn(this.refs, (ref3, key3) => {
-      if (key3.indexOf('dropzone-') === -1) return;
-      if (!ref3.state.content) {
-        return complete = false;
-      }
-    });
-
-    if (complete || _.get(props, 'data.game.complete', false)) this.complete();
-  }
-
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -87,12 +87,12 @@ export default function (props, ref, key) {
         complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.sfx.play', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'sfx',
-            data: {
-              play: null
-            }
-          });
+            this.updateGameState({
+                path: 'sfx',
+                data: {
+                    play: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
@@ -104,12 +104,12 @@ export default function (props, ref, key) {
         complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              open: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="friends" type="voiceOver" src="media/assets/_audio/VOs/VO_Friends.mp3" />
@@ -128,24 +128,24 @@ export default function (props, ref, key) {
         dragRespond={dragRespond}
         correctRespond={correctRespond}
         dropzones={[
-          <skoash.Component className="1 dropzone-list-item animated" />,
-          <skoash.Component className="2 dropzone-list-item animated" />,
-          <skoash.Component className="3 dropzone-list-item animated" />,
-          <skoash.Component className="4 dropzone-list-item animated" />,
-          <skoash.Component className="5 dropzone-list-item animated" />,
-          <skoash.Component className="6 dropzone-list-item animated" />,
-          <skoash.Component className="7 dropzone-list-item animated" />,
-          <skoash.Component className="8 dropzone-list-item animated" />
+            <skoash.Component className="1 dropzone-list-item animated" />,
+            <skoash.Component className="2 dropzone-list-item animated" />,
+            <skoash.Component className="3 dropzone-list-item animated" />,
+            <skoash.Component className="4 dropzone-list-item animated" />,
+            <skoash.Component className="5 dropzone-list-item animated" />,
+            <skoash.Component className="6 dropzone-list-item animated" />,
+            <skoash.Component className="7 dropzone-list-item animated" />,
+            <skoash.Component className="8 dropzone-list-item animated" />
         ]}
         draggables={[
-          <skoash.ListItem ref="friends" className="draggable-list-item friends animated" message="friends" returnOnIncorrect />,
-          <skoash.ListItem ref="world-peace" className="draggable-list-item world-peace animated" message="world-peace" returnOnIncorrect />,
-          <skoash.ListItem ref="sports" className="draggable-list-item sports animated" message="sports" returnOnIncorrect />,
-          <skoash.ListItem ref="playing-games" className="draggable-list-item playing-games animated" message="playing-games" returnOnIncorrect />,
-          <skoash.ListItem ref="looking-cool" className="draggable-list-item looking-cool animated" message="looking-cool" returnOnIncorrect />,
-          <skoash.ListItem ref="school" className="draggable-list-item school animated" message="school" returnOnIncorrect />,
-          <skoash.ListItem ref="celebrities" className="draggable-list-item celebrities animated" message="celebrities" returnOnIncorrect />,
-          <skoash.ListItem ref="environment" className="draggable-list-item environment animated" message="environment" returnOnIncorrect />
+            <skoash.ListItem ref="friends" className="draggable-list-item friends animated" message="friends" returnOnIncorrect />,
+            <skoash.ListItem ref="world-peace" className="draggable-list-item world-peace animated" message="world-peace" returnOnIncorrect />,
+            <skoash.ListItem ref="sports" className="draggable-list-item sports animated" message="sports" returnOnIncorrect />,
+            <skoash.ListItem ref="playing-games" className="draggable-list-item playing-games animated" message="playing-games" returnOnIncorrect />,
+            <skoash.ListItem ref="looking-cool" className="draggable-list-item looking-cool animated" message="looking-cool" returnOnIncorrect />,
+            <skoash.ListItem ref="school" className="draggable-list-item school animated" message="school" returnOnIncorrect />,
+            <skoash.ListItem ref="celebrities" className="draggable-list-item celebrities animated" message="celebrities" returnOnIncorrect />,
+            <skoash.ListItem ref="environment" className="draggable-list-item environment animated" message="environment" returnOnIncorrect />
         ]}
       />
       <skoash.Component ref="meter" className="meter animated" />

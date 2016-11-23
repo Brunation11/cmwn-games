@@ -10,269 +10,269 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Timer from 'shared/components/timer/0.1';
 
 export default function (props, ref, key, opts = {}) {
-  var bin = [],
-      SFXOnPlay,
-      scoreOnComplete,
-      timerGetTime,
-      timerOnComplete,
-      timerOnCheckComplete,
-      revealPromptOnOpen,
-      revealPromptOnClose,
-      dropperGetClassNames,
-      dropperOnAddClassName,
-      dropperOnTransitionEnd,
-      catcherOnMove,
-      catcherOnCorrect,
-      catcherOnIncorrect,
-      renderDropPoints;
+    var bin = [],
+        SFXOnPlay,
+        scoreOnComplete,
+        timerGetTime,
+        timerOnComplete,
+        timerOnCheckComplete,
+        revealPromptOnOpen,
+        revealPromptOnClose,
+        dropperGetClassNames,
+        dropperOnAddClassName,
+        dropperOnTransitionEnd,
+        catcherOnMove,
+        catcherOnCorrect,
+        catcherOnIncorrect,
+        renderDropPoints;
 
-  for (let i = 0; i < opts.bin.length; i++) {
-    for (let j = 0; j < opts.rows; j++) {
-      bin.push(
+    for (let i = 0; i < opts.bin.length; i++) {
+        for (let j = 0; j < opts.rows; j++) {
+            bin.push(
         <Catchable
           className={`${opts.bin[i].className} ${opts.dropSpeed}`}
           message={opts.bin[i].message}
           style={{
-            top: 400 * (j + .4) / opts.rows,
+              top: 400 * (j + .4) / opts.rows,
           }}
         />
       );
-    }
-  }
-
-  SFXOnPlay = function (ref) {
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: null
-      }
-    });
-  };
-
-  scoreOnComplete = function () {
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        countdown: null
-      }
-    });
-
-    if (_.get(props, 'data.reveal.open') === 'level-complete') return;
-
-    this.updateGameState({
-      path: 'reveal',
-      data: {
-        open: 'try-again'
-      }
-    });
-  };
-
-  timerGetTime = function () {
-    var timeLeft, minutesLeft, secondsLeft;
-    timeLeft = this.props.timeout / 1000 - this.state.time;
-    minutesLeft = Math.floor(timeLeft / 60);
-    minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-    secondsLeft = timeLeft % 60;
-    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-    return `${minutesLeft}:${secondsLeft}`;
-  };
-
-  timerOnComplete = function () {
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        countdown: null
-      }
-    });
-
-    this.updateGameState({
-      path: 'score',
-      data: {
-        points: 0
-      }
-    });
-
-    if (_.get(props, 'data.reveal.open') === 'level-complete') return;
-
-    this.updateGameState({
-      path: 'reveal',
-      data: {
-        open: 'try-again'
-      }
-    });
-  };
-
-  timerOnCheckComplete = function () {
-    if (_.get(props, 'data.sfx.countdown') === 'countdown') return;
-    if ((this.props.timeout - (this.state.time * 1000)) <= 10000) {
-      this.updateGameState({
-        path: 'sfx',
-        data: {
-          countdown: 'countdown'
         }
-      });
-    }
-  };
-
-  revealPromptOnOpen = function () {
-    this.updateGameState({
-      path: 'game',
-      data: {
-        stop: true,
-        start: false
-      }
-    });
-  };
-
-  revealPromptOnClose = function () {
-    this.updateGameState({
-      path: 'game',
-      data: {
-        stop: false,
-        start: true
-      }
-    });
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'button'
-      }
-    });
-    this.updateGameState({
-      path: 'reveal',
-      data: {
-        open: null
-      }
-    });
-  };
-
-  dropperGetClassNames = function () {
-    var index = this.state.itemCount;
-    var classes = this.state.classes;
-    classes[index] = _.sample(opts.dropPoints);
-    return classes;
-  };
-
-  dropperOnAddClassName = function (className) {
-    if (className === 'go') return;
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'drop'
-      }
-    });
-  };
-
-  dropperOnTransitionEnd = function (item) {
-    if (_.get(props, 'data.reveal.open') || props.gameState.paused ||
-      item.props.message !== 'trash' || !item.state.canCatch) return;
-
-    this.updateGameState({
-      path: 'score',
-      data: {
-        points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
-      },
-    });
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'incorrect-miss',
-      }
-    });
-  };
-
-  catcherOnMove = function (e) {
-    var rect, styles;
-    if (e.target !== this.refs.catcher) return;
-    if (e.targetTouches && e.targetTouches[0]) {
-      rect = e.target.getBoundingClientRect();
-      e = e.targetTouches[0];
-      e.offsetX = e.pageX - rect.left;
     }
 
-    styles = this.state.styles;
-
-    styles[0] = {
-      left: e.offsetX,
+    SFXOnPlay = function (ref) {
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: null
+            }
+        });
     };
 
-    this.setState({
-      styles,
-    });
-  };
+    scoreOnComplete = function () {
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                countdown: null
+            }
+        });
 
-  catcherOnCorrect = function (bucketRef, catchableRef) {
-    bucketRef.addClassName('correct');
-    catchableRef.addClassName('correct');
+        if (_.get(props, 'data.reveal.open') === 'level-complete') return;
 
-    setTimeout(() => {
-      bucketRef.removeClassName('correct');
-    }, 1000);
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'try-again'
+            }
+        });
+    };
 
-    this.updateGameState({
-      path: 'score',
-      data: {
-        points: _.get(props, 'data.score.points', 0) + opts.points.correct,
-      },
-    });
+    timerGetTime = function () {
+        var timeLeft, minutesLeft, secondsLeft;
+        timeLeft = this.props.timeout / 1000 - this.state.time;
+        minutesLeft = Math.floor(timeLeft / 60);
+        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
+        secondsLeft = timeLeft % 60;
+        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+        return `${minutesLeft}:${secondsLeft}`;
+    };
 
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'correct',
-      }
-    });
+    timerOnComplete = function () {
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                countdown: null
+            }
+        });
 
-    if (_.get(props, 'data.score.points') >= opts.points.goal) {
-      this.updateGameState({
-        path: 'game',
-        data: {
-          complete: true,
-          start: false,
-          stop: true
+        this.updateGameState({
+            path: 'score',
+            data: {
+                points: 0
+            }
+        });
+
+        if (_.get(props, 'data.reveal.open') === 'level-complete') return;
+
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'try-again'
+            }
+        });
+    };
+
+    timerOnCheckComplete = function () {
+        if (_.get(props, 'data.sfx.countdown') === 'countdown') return;
+        if ((this.props.timeout - (this.state.time * 1000)) <= 10000) {
+            this.updateGameState({
+                path: 'sfx',
+                data: {
+                    countdown: 'countdown'
+                }
+            });
         }
-      });
+    };
 
-      this.updateGameState({
-        path: 'reveal',
-        data: {
-          open: 'level-complete'
+    revealPromptOnOpen = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: true,
+                start: false
+            }
+        });
+    };
+
+    revealPromptOnClose = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: false,
+                start: true
+            }
+        });
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'button'
+            }
+        });
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: null
+            }
+        });
+    };
+
+    dropperGetClassNames = function () {
+        var index = this.state.itemCount;
+        var classes = this.state.classes;
+        classes[index] = _.sample(opts.dropPoints);
+        return classes;
+    };
+
+    dropperOnAddClassName = function (className) {
+        if (className === 'go') return;
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'drop'
+            }
+        });
+    };
+
+    dropperOnTransitionEnd = function (item) {
+        if (_.get(props, 'data.reveal.open') || props.gameState.paused ||
+      item.props.message !== 'trash' || !item.state.canCatch) return;
+
+        this.updateGameState({
+            path: 'score',
+            data: {
+                points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
+            },
+        });
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'incorrect-miss',
+            }
+        });
+    };
+
+    catcherOnMove = function (e) {
+        var rect, styles;
+        if (e.target !== this.refs.catcher) return;
+        if (e.targetTouches && e.targetTouches[0]) {
+            rect = e.target.getBoundingClientRect();
+            e = e.targetTouches[0];
+            e.offsetX = e.pageX - rect.left;
         }
-      });
-    }
-  };
 
-  catcherOnIncorrect = function (bucketRef, catchableRef) {
-    bucketRef.addClassName('incorrect');
-    catchableRef.addClassName('incorrect');
+        styles = this.state.styles;
 
-    setTimeout(() => {
-      bucketRef.removeClassName('incorrect');
-    }, 1000);
-    this.updateGameState({
-      path: 'score',
-      data: {
-        points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
-      },
-    });
+        styles[0] = {
+            left: e.offsetX,
+        };
 
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        play: 'incorrect-catch',
-      }
-    });
-  };
+        this.setState({
+            styles,
+        });
+    };
 
-  renderDropPoints = function () {
-    return _.map(opts.dropPoints, (val) => {
-      return (
+    catcherOnCorrect = function (bucketRef, catchableRef) {
+        bucketRef.addClassName('correct');
+        catchableRef.addClassName('correct');
+
+        setTimeout(() => {
+            bucketRef.removeClassName('correct');
+        }, 1000);
+
+        this.updateGameState({
+            path: 'score',
+            data: {
+                points: _.get(props, 'data.score.points', 0) + opts.points.correct,
+            },
+        });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'correct',
+            }
+        });
+
+        if (_.get(props, 'data.score.points') >= opts.points.goal) {
+            this.updateGameState({
+                path: 'game',
+                data: {
+                    complete: true,
+                    start: false,
+                    stop: true
+                }
+            });
+
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'level-complete'
+                }
+            });
+        }
+    };
+
+    catcherOnIncorrect = function (bucketRef, catchableRef) {
+        bucketRef.addClassName('incorrect');
+        catchableRef.addClassName('incorrect');
+
+        setTimeout(() => {
+            bucketRef.removeClassName('incorrect');
+        }, 1000);
+        this.updateGameState({
+            path: 'score',
+            data: {
+                points: _.get(props, 'data.score.points', 0) + opts.points.incorrect,
+            },
+        });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                play: 'incorrect-catch',
+            }
+        });
+    };
+
+    renderDropPoints = function () {
+        return _.map(opts.dropPoints, (val) => {
+            return (
         <skoash.Component className={`pipe ${val}`} />
       );
-    });
-  }
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -283,29 +283,29 @@ export default function (props, ref, key, opts = {}) {
       <skoash.Component className="misc">
         <skoash.Component
           className={classNames(
-            "fish-1", {
-              sad: _.get(props, 'data.sfx.countdown')
+            'fish-1', {
+                sad: _.get(props, 'data.sfx.countdown')
             }
           )}
         />
         <skoash.Component
           className={classNames(
-            "fish-2", {
-              sad: _.get(props, 'data.sfx.countdown')
+            'fish-2', {
+                sad: _.get(props, 'data.sfx.countdown')
             }
           )}
         />
         <skoash.Component
           className={classNames(
-            "fish-3", {
-              sad: _.get(props, 'data.sfx.countdown')
+            'fish-3', {
+                sad: _.get(props, 'data.sfx.countdown')
             }
           )}
         />
         <skoash.Component
           className={classNames(
-            "fish-4", {
-              sad: _.get(props, 'data.sfx.countdown')
+            'fish-4', {
+                sad: _.get(props, 'data.sfx.countdown')
             }
           )}
         />
@@ -403,7 +403,7 @@ export default function (props, ref, key, opts = {}) {
         moveBuckets
         onMove={catcherOnMove}
         bucket={[
-          <skoash.Component className="bucket" message="trash" />,
+            <skoash.Component className="bucket" message="trash" />,
         ]}
         catchableRefs={_.get(props, 'data.dropper.refs', [])}
         onCorrect={catcherOnCorrect}

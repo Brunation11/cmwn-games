@@ -2,18 +2,18 @@ import SelectableAudio from 'shared/components/selectable_audio/0.1';
 import CustomCursorScreen from 'shared/components/custom_cursor_screen/0.1';
 
 class TrashScreenComponent extends CustomCursorScreen {
-  open() {
-    super.open();
+    open() {
+        super.open();
 
-    this.checkComplete = null;
-    this.refs['selectable-audio'].incompleteRefs();
-    this.incomplete();
-    this.checkComplete = super.checkComplete;
-  }
+        this.checkComplete = null;
+        this.refs['selectable-audio'].incompleteRefs();
+        this.incomplete();
+        this.checkComplete = super.checkComplete;
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <TrashScreenComponent
       {...props}
       ref={ref}
@@ -27,94 +27,94 @@ export default function (props, ref, key) {
         className="center"
         selectClass="HIGHLIGHTED"
         selectableList={[
-          <skoash.ListItem className="bag" correct>
+            <skoash.ListItem className="bag" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="milk" correct>
+            <skoash.ListItem className="milk" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="milk2" correct>
+            <skoash.ListItem className="milk2" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="shrimp">
+            <skoash.ListItem className="shrimp">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="shrimp2">
+            <skoash.ListItem className="shrimp2">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="seaweed">
+            <skoash.ListItem className="seaweed">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="bottle" correct>
+            <skoash.ListItem className="bottle" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="paper" correct>
+            <skoash.ListItem className="paper" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="paper2" correct>
+            <skoash.ListItem className="paper2" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="jar" correct>
+            <skoash.ListItem className="jar" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="lobster">
+            <skoash.ListItem className="lobster">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="glassbottle" correct>
+            <skoash.ListItem className="glassbottle" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="soda" correct>
+            <skoash.ListItem className="soda" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="soda2" correct>
+            <skoash.ListItem className="soda2" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="shell">
+            <skoash.ListItem className="shell">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="spike">
+            <skoash.ListItem className="spike">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="box" correct>
+            <skoash.ListItem className="box" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="box2" correct>
+            <skoash.ListItem className="box2" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="shell2">
+            <skoash.ListItem className="shell2">
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="can" correct>
+            <skoash.ListItem className="can" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
-          <skoash.ListItem className="canholder" correct>
+            <skoash.ListItem className="canholder" correct>
             <div />
             <div className="hover" />
           </skoash.ListItem>,
         ]}
         audioAssets={[
-          <skoash.Audio data-ref="correct" type="sfx" src="media/audio/trash/answer-correct.mp3" />,
-          <skoash.Audio data-ref="incorrect" type="sfx" src="media/audio/trash/answer-incorrect.mp3" complete />,
+            <skoash.Audio data-ref="correct" type="sfx" src="media/audio/trash/answer-correct.mp3" />,
+            <skoash.Audio data-ref="incorrect" type="sfx" src="media/audio/trash/answer-incorrect.mp3" complete />,
         ]}
       />
     </TrashScreenComponent>

@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import SortGameScreenComponent from './sort_game_screen_component';
 
 export default function (props, ref, key) {
-  return SortGameScreenComponent(props, ref, key, {
-    id: 'sort-game-level-one',
-    timeout: 60000,
-    prepTimeout: 1000,
-    openOnStart: 'in-this',
-    vos: [
-      <skoash.MediaSequence
+    return SortGameScreenComponent(props, ref, key, {
+        id: 'sort-game-level-one',
+        timeout: 60000,
+        prepTimeout: 1000,
+        openOnStart: 'in-this',
+        vos: [
+            <skoash.MediaSequence
         ref="in-this"
         silentOnStart
       >
@@ -23,7 +23,7 @@ export default function (props, ref, key) {
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_be_sure.mp3'}
         />
       </skoash.MediaSequence>,
-      <skoash.MediaSequence
+            <skoash.MediaSequence
         ref="level-up"
         silentOnStart
       >
@@ -36,24 +36,24 @@ export default function (props, ref, key) {
           src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_did_you1.mp3'}
         />
       </skoash.MediaSequence>,
-      <skoash.Audio
+            <skoash.Audio
         type="voiceOver"
         ref="try-again"
         complete
         src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_try_again.mp3'}
       />,
-    ],
-    sfx: [
-      <skoash.Audio
+        ],
+        sfx: [
+            <skoash.Audio
         type="voiceOver"
         completeTarget="sfx"
         ref="print"
         src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/print_item.mp3'}
         sprite={[0, 500]}
       />
-    ],
-    revealList: [
-      <skoash.Component ref="in-this" type="li">
+        ],
+        revealList: [
+            <skoash.Component ref="in-this" type="li">
         <skoash.Image
           className="frame"
           src={ENVIRONMENT.MEDIA + 'Frames/ins.green.frame.png'}
@@ -72,7 +72,7 @@ export default function (props, ref, key) {
         />
         <div
           className={classNames('words', 'in-this-game', {
-            show: !_.get(props, 'data.in-this.complete', false)
+              show: !_.get(props, 'data.in-this.complete', false)
           })}
         >
           <div>
@@ -94,7 +94,7 @@ export default function (props, ref, key) {
         </div>
         <div
           className={classNames('words', 'be-sure', {
-            show: _.get(props, 'data.in-this.complete', false)
+              show: _.get(props, 'data.in-this.complete', false)
           })}
         >
           <div>
@@ -105,19 +105,19 @@ export default function (props, ref, key) {
           </div>
           <button
             onClick={function () {
-              skoash.trigger('updateState', {
-                path: 'reveal',
-                data: {
-                  close: true,
-                }
-              });
+                skoash.trigger('updateState', {
+                    path: 'reveal',
+                    data: {
+                        close: true,
+                    }
+                });
             }}
           >
             Start Game
           </button>
         </div>
       </skoash.Component>,
-      <skoash.Component
+            <skoash.Component
         ref="level-up"
         type="li"
       >
@@ -138,7 +138,7 @@ export default function (props, ref, key) {
           to print food in space!
         </div>
       </skoash.Component>,
-      <skoash.Component
+            <skoash.Component
         ref="try-again"
         type="li"
       >
@@ -162,6 +162,6 @@ export default function (props, ref, key) {
           {'but don\'t worry, you have another chance!'}
         </div>
       </skoash.Component>,
-    ]
-  });
+        ]
+    });
 }

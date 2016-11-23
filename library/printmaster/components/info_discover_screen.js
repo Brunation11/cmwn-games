@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -7,15 +7,15 @@ export default function (props, ref, key) {
       id="info-discover"
       className="large-frame"
       onOpen={function () {
-        skoash.trigger('passData', {
-          name: 'typing',
-          duration: 5000,
-        });
+          skoash.trigger('passData', {
+              name: 'typing',
+              duration: 5000,
+          });
       }}
       onClose={function () {
-        skoash.trigger('passData', {
-          name: 'stopTyping',
-        });
+          skoash.trigger('passData', {
+              name: 'stopTyping',
+          });
       }}
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/S_3/VO_3.1.mp3" />

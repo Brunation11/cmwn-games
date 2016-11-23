@@ -1,7 +1,7 @@
 import TargetSelectable from 'shared/components/target_selectable/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -23,34 +23,34 @@ export default function (props, ref, key) {
       <skoash.Image className="hidden" src="media/S_9/img_9.9.png" />
       <TargetSelectable className="group"
         assets={[
-          <skoash.Audio ref="correct" type="sfx" src="media/S_9/S_9.1.mp3" />,
-          <skoash.Audio ref="correct-sound" type="sfx" src="media/S_9/S_9.3.mp3" />,
-          <skoash.Audio ref="incorrect" complete type="sfx" src="media/S_9/S_9.2.mp3" />,
-          <skoash.Audio ref="incorrect-sound" complete type="sfx" src="media/S_9/S_9.4.mp3" />,
+            <skoash.Audio ref="correct" type="sfx" src="media/S_9/S_9.1.mp3" />,
+            <skoash.Audio ref="correct-sound" type="sfx" src="media/S_9/S_9.3.mp3" />,
+            <skoash.Audio ref="incorrect" complete type="sfx" src="media/S_9/S_9.2.mp3" />,
+            <skoash.Audio ref="incorrect-sound" complete type="sfx" src="media/S_9/S_9.4.mp3" />,
         ]}
         targets={[
-          <skoash.Image ref="arch" className="arch animated" src="media/S_9/img_9.2.png" />,
-          <skoash.Image ref="loops" className="loops animated" src="media/S_9/img_9.3.png" />,
-          <skoash.Image ref="whorl" className="whorl animated" src="media/S_9/img_9.4.png" />,
-          <skoash.Image ref="doubleloop" className="doubleloop animated" src="media/S_9/img_9.5.png" />,
+            <skoash.Image ref="arch" className="arch animated" src="media/S_9/img_9.2.png" />,
+            <skoash.Image ref="loops" className="loops animated" src="media/S_9/img_9.3.png" />,
+            <skoash.Image ref="whorl" className="whorl animated" src="media/S_9/img_9.4.png" />,
+            <skoash.Image ref="doubleloop" className="doubleloop animated" src="media/S_9/img_9.5.png" />,
         ]}
         selectableList={[
-          <skoash.Component
+            <skoash.Component
             type="li"
             checkComplete={false}
             data-ref="arch"
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             checkComplete={false}
             data-ref="loops"
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             checkComplete={false}
             data-ref="whorl"
           />,
-          <skoash.Component
+            <skoash.Component
             type="li"
             checkComplete={false}
             data-ref="doubleloop"

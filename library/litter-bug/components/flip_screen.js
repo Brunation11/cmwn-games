@@ -1,12 +1,12 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="flip"
       emitOnComplete={{
-        name: 'flip',
+          name: 'flip',
       }}
     >
       <skoash.Image className="hidden" src="media/_assets/_sprites/sprites.mr.eco-01.png" />

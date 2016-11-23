@@ -1,69 +1,69 @@
 import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
 
 class ItemDrawerScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      opts: {
-        categories: [],
-      },
-    };
+        this.state = {
+            opts: {
+                categories: [],
+            },
+        };
 
-  }
-
-  selectRespond(message) {
-    skoash.trigger('passData', {
-      name: 'add-item',
-      message
-    });
-  }
-
-  updateData(d) {
-    var data = d ? d : this.props.gameState.data.menu.items;
-
-    this.state.opts.categories.forEach(key => {
-      if (data[key]) data = data[key];
-      if (data.items) data = data.items;
-    });
-
-    data = _.values(data);
-
-    this.setState({
-      data,
-    });
-  }
-
-  open(opts) {
-    this.setState({
-      load: true,
-      open: true,
-      leave: false,
-      close: false,
-      opts,
-      data: null
-    }, () => {
-      this.updateData();
-    });
-
-    setTimeout(() => {
-      if (!this.state.started) this.start();
-    }, 250);
-  }
-
-  cancelRespond() {
-    if (this.state.category) {
-      this.setState({
-        category: '',
-        categoryName: '',
-      });
-    } else {
-      skoash.trigger('goto', {index: 'canvas'});
     }
-  }
 
-  renderContent() {
-    return (
+    selectRespond(message) {
+        skoash.trigger('passData', {
+            name: 'add-item',
+            message
+        });
+    }
+
+    updateData(d) {
+        var data = d ? d : this.props.gameState.data.menu.items;
+
+        this.state.opts.categories.forEach(key => {
+            if (data[key]) data = data[key];
+            if (data.items) data = data.items;
+        });
+
+        data = _.values(data);
+
+        this.setState({
+            data,
+        });
+    }
+
+    open(opts) {
+        this.setState({
+            load: true,
+            open: true,
+            leave: false,
+            close: false,
+            opts,
+            data: null
+        }, () => {
+            this.updateData();
+        });
+
+        setTimeout(() => {
+            if (!this.state.started) this.start();
+        }, 250);
+    }
+
+    cancelRespond() {
+        if (this.state.category) {
+            this.setState({
+                category: '',
+                categoryName: '',
+            });
+        } else {
+            skoash.trigger('goto', {index: 'canvas'});
+        }
+    }
+
+    renderContent() {
+        return (
       <div>
         <ItemDrawer
           ref="drawer"
@@ -76,11 +76,11 @@ class ItemDrawerScreen extends skoash.Screen {
         />
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <ItemDrawerScreen
       {...props}
       ref={ref}

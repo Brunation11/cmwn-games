@@ -2,7 +2,7 @@ import Selectable from 'shared/components/selectable/0.1';
 import DroughtReveal from './drought_reveal';
 
 export default function (props, ref, key) {
-  var EnvironmentEffectsScreen = (
+    var EnvironmentEffectsScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -14,11 +14,11 @@ export default function (props, ref, key) {
       <Selectable
         ref="selectable"
         list={[
-          <skoash.Component type="li" />,
-          <skoash.Component type="li" />,
-          <skoash.Component type="li" />,
-          <skoash.Component type="li" />,
-          <skoash.Component type="li" />
+            <skoash.Component type="li" />,
+            <skoash.Component type="li" />,
+            <skoash.Component type="li" />,
+            <skoash.Component type="li" />,
+            <skoash.Component type="li" />
         ]}
         selectClass="HIGHLIGHTED"
         className="scroll-selectable"
@@ -31,23 +31,23 @@ export default function (props, ref, key) {
           className="scroll-reveal"
           openReveal={_.get(props, 'data.selectable.target.props.data-message')}
           list={[
-            <li>Less food and water</li>,
-            <li>Loss of habitat<br /> for fish and wildlife</li>,
-            <li>More forest fires occur</li>,
-            <li>Endangered species<br /> can face extinction</li>,
-            <li>Erosion of soil</li>,
+              <li>Less food and water</li>,
+              <li>Loss of habitat<br /> for fish and wildlife</li>,
+              <li>More forest fires occur</li>,
+              <li>Endangered species<br /> can face extinction</li>,
+              <li>Erosion of soil</li>,
           ]}
           assets={[
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.2.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
-            <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />
+              <skoash.Audio type="voiceOver" src="media/S_10/VO_10.2.mp3" />,
+              <skoash.Audio type="voiceOver" src="media/S_10/VO_10.3.mp3" />,
+              <skoash.Audio type="voiceOver" src="media/S_10/VO_10.4.mp3" />,
+              <skoash.Audio type="voiceOver" src="media/S_10/VO_10.5.mp3" />,
+              <skoash.Audio type="voiceOver" src="media/S_10/VO_10.6.mp3" />
           ]}
         />
       </skoash.Component>
     </skoash.Screen>
   );
 
-  return EnvironmentEffectsScreen;
+    return EnvironmentEffectsScreen;
 }

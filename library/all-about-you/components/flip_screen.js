@@ -1,12 +1,12 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="flip"
       emitOnComplete={{
-        name: 'flip',
+          name: 'flip',
       }}
     >
       <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Finished.mp3" />

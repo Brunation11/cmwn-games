@@ -7,7 +7,7 @@ import collectData from './collect_data.js';
 import loadData from './load_data.js';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -35,12 +35,12 @@ export default function (props, ref, key) {
         complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.correct', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              correct: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    correct: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
@@ -50,12 +50,12 @@ export default function (props, ref, key) {
         complete={_.get(props, 'data.game.complete', false)}
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              open: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: null
+                }
+            });
         }}
       >
         <skoash.MediaSequence
@@ -87,21 +87,21 @@ export default function (props, ref, key) {
       <Selectable
         ref="selectable"
         selectRespond={function (message) {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              correct: 'correct',
-              open: message
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    correct: 'correct',
+                    open: message
+                }
+            });
         }}
         completeListOnClick={true}
         chooseOne
         allowDeselect
         list={[
-          <skoash.ListItem className="a-lot animated" data-ref="a-lot" />,
-          <skoash.ListItem className="a-little animated" data-ref="a-little" />,
-          <skoash.ListItem className="not-at-all animated" data-ref="not-at-all" />
+            <skoash.ListItem className="a-lot animated" data-ref="a-lot" />,
+            <skoash.ListItem className="a-little animated" data-ref="a-little" />,
+            <skoash.ListItem className="not-at-all animated" data-ref="not-at-all" />
         ]}
       />
       <div ref="meter" className="meter animated"></div>

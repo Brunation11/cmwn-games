@@ -2,7 +2,7 @@ import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
-  var ShowerScreen = (
+    var ShowerScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -17,15 +17,15 @@ export default function (props, ref, key) {
           ref="selectable-card"
           className="flip-card-component"
           list={[
-            <skoash.Component type="li" correct={true} message="day">
+              <skoash.Component type="li" correct={true} message="day">
               <div className="side b center inline"></div>
               <div className="side a center inline"></div>
             </skoash.Component>,
-            <skoash.Component type="li" correct={true} message="week">
+              <skoash.Component type="li" correct={true} message="week">
               <div className="side b center inline"></div>
               <div className="side a center inline"></div>
             </skoash.Component>,
-            <skoash.Component type="li" correct={true} message="year">
+              <skoash.Component type="li" correct={true} message="year">
               <div className="side b center inline"></div>
               <div className="side a center inline"></div>
             </skoash.Component>
@@ -39,12 +39,12 @@ export default function (props, ref, key) {
         hide={true}
         openReveal={_.get(props, 'data.selectable.target.props.message')}
         assets={[
-          <skoash.Audio ref="day" type="voiceOver" src="media/S_16/VO_16.2.mp3" />,
-          <skoash.Audio ref="week" type="voiceOver" src="media/S_16/VO_16.3.mp3" />,
-          <skoash.Audio ref="year" type="voiceOver" src="media/S_16/VO_16.4.mp3" />
+            <skoash.Audio ref="day" type="voiceOver" src="media/S_16/VO_16.2.mp3" />,
+            <skoash.Audio ref="week" type="voiceOver" src="media/S_16/VO_16.3.mp3" />,
+            <skoash.Audio ref="year" type="voiceOver" src="media/S_16/VO_16.4.mp3" />
         ]}
       />
     </skoash.Screen>
   );
-  return ShowerScreen;
+    return ShowerScreen;
 }

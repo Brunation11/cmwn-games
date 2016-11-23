@@ -7,23 +7,23 @@ import Timer from 'shared/components/timer/0.1';
 import Score from 'shared/components/score/0.1';
 
 const CONFIG = {
-  LVL: 3,
-  POINTS: 200,
-  TIMER: 60000,
+    LVL: 3,
+    POINTS: 200,
+    TIMER: 60000,
 };
 
 export default function (props, ref, key) {
-  var getTime = function () {
-    var timeLeft, minutesLeft, secondsLeft;
-    timeLeft = this.props.timeout / 1000 - this.state.time;
-    minutesLeft = Math.floor(timeLeft / 60);
-    minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-    secondsLeft = timeLeft % 60;
-    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-    return `${minutesLeft}:${secondsLeft}`;
-  };
+    var getTime = function () {
+        var timeLeft, minutesLeft, secondsLeft;
+        timeLeft = this.props.timeout / 1000 - this.state.time;
+        minutesLeft = Math.floor(timeLeft / 60);
+        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
+        secondsLeft = timeLeft % 60;
+        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+        return `${minutesLeft}:${secondsLeft}`;
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -39,19 +39,19 @@ export default function (props, ref, key) {
       <MediaCollection
         play={_.get(props, 'data.reveal.play', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              play: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    play: null
+                }
+            });
 
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              open: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: null
+                }
+            });
         }}
       >
         <skoash.MediaSequence ref="complete" silentOnStart>
@@ -74,25 +74,25 @@ export default function (props, ref, key) {
         openOnStart="instructions"
         openReveal={_.get(props, 'data.reveal.open', null)}
         onOpen={function () {
-          this.updateGameState({
-            path: 'game',
-            data: {
-              stop: true,
-              start: false,
-            },
-          });
+            this.updateGameState({
+                path: 'game',
+                data: {
+                    stop: true,
+                    start: false,
+                },
+            });
         }}
         onClose={function () {
-          this.updateGameState({
-            path: 'game',
-            data: {
-              stop: false,
-              start: true,
-            },
-          });
+            this.updateGameState({
+                path: 'game',
+                data: {
+                    stop: false,
+                    start: true,
+                },
+            });
         }}
         list={[
-          <skoash.Component data-ref="instructions">
+            <skoash.Component data-ref="instructions">
             <skoash.Component className="frame instructions-lvl-3">
               <div className="banner" />
               <span>
@@ -110,7 +110,7 @@ export default function (props, ref, key) {
               </span>
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="complete">
+            <skoash.Component data-ref="complete">
             <skoash.Component className="frame complete-lvl-3">
               <div className="banner" />
               <span>
@@ -119,7 +119,7 @@ export default function (props, ref, key) {
               <div className="banner-2" />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="try-again">
+            <skoash.Component data-ref="try-again">
             <skoash.Component className="frame">
               <div className="banner" />
               <div className="banner-2" />
@@ -139,49 +139,49 @@ export default function (props, ref, key) {
         targetIndex={2}
         selected={_.get(props, 'data.cannon.fire')}
         onSelect={function (target) {
-          var score = _.get(props, 'data.score.points', 0);
-          var classes = this.state.classes;
-          classes[target.props['data-key']] = 'SELECTED';
+            var score = _.get(props, 'data.score.points', 0);
+            var classes = this.state.classes;
+            classes[target.props['data-key']] = 'SELECTED';
 
-          this.setState({
-            classes
-          }, () => {
-            setTimeout(() => {
-              classes[target.props['data-key']] = '';
-            }, 1000);
-          });
+            this.setState({
+                classes
+            }, () => {
+                setTimeout(() => {
+                    classes[target.props['data-key']] = '';
+                }, 1000);
+            });
 
-          if (score < CONFIG.POINTS) score += target.props.value;
+            if (score < CONFIG.POINTS) score += target.props.value;
 
-          this.updateGameState({
-            path: 'score',
-            data: {
-              points: score
+            this.updateGameState({
+                path: 'score',
+                data: {
+                    points: score
+                }
+            });
+
+            if (score >= CONFIG.POINTS & !_.get(props, 'data.game.complete')) {
+                this.updateGameState({
+                    path: 'reveal',
+                    data: {
+                        open: 'complete'
+                    }
+                });
+
+                this.updateGameState({
+                    path: 'reveal',
+                    data: {
+                        play: 'complete'
+                    }
+                });
+
+                this.updateGameState({
+                    path: 'game',
+                    data: {
+                        complete: true
+                    }
+                });
             }
-          });
-
-          if (score >= CONFIG.POINTS & !_.get(props, 'data.game.complete')) {
-            this.updateGameState({
-              path: 'reveal',
-              data: {
-                open: 'complete'
-              }
-            });
-
-            this.updateGameState({
-              path: 'reveal',
-              data: {
-                play: 'complete'
-              }
-            });
-
-            this.updateGameState({
-              path: 'game',
-              data: {
-                complete: true
-              }
-            });
-          }
         }}
         bin={
           <Randomizer
@@ -189,10 +189,10 @@ export default function (props, ref, key) {
             completeOnStart={true}
             checkComplete={false}
             bin={[
-              <skoash.Component className="five" name="five" value={5} complete />,
-              <skoash.Component className="ten" name="ten" value={10} complete />,
-              <skoash.Component className="twenty" name="twenty" value={20} complete />,
-              <skoash.Component className="thirty" name="thirty" value={30} complete />,
+                <skoash.Component className="five" name="five" value={5} complete />,
+                <skoash.Component className="ten" name="ten" value={10} complete />,
+                <skoash.Component className="twenty" name="twenty" value={20} complete />,
+                <skoash.Component className="thirty" name="thirty" value={30} complete />,
             ]}
           />
         }
@@ -212,38 +212,38 @@ export default function (props, ref, key) {
             completeOnStart={true}
             checkComplete={false}
             bin={[
-              <skoash.Component className="plastic-bottle" complete />,
-              <skoash.Component className="soda-can" complete />,
-              <skoash.Component className="banana-peal" complete />,
-              <skoash.Component className="glass-bottle" complete />,
-              <skoash.Component className="crumbled-paper" complete />,
-              <skoash.Component className="tuna-can" complete />,
-              <skoash.Component className="tire" complete />,
-              <skoash.Component className="battery" complete/>,
+                <skoash.Component className="plastic-bottle" complete />,
+                <skoash.Component className="soda-can" complete />,
+                <skoash.Component className="banana-peal" complete />,
+                <skoash.Component className="glass-bottle" complete />,
+                <skoash.Component className="crumbled-paper" complete />,
+                <skoash.Component className="tuna-can" complete />,
+                <skoash.Component className="tire" complete />,
+                <skoash.Component className="battery" complete/>,
             ]}
           />
         }
         onFire={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              play: 'throw'
-            }
-          });
-          this.updateGameState({
-            path: 'cannon',
-            data: {
-              fire: false
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    play: 'throw'
+                }
+            });
+            this.updateGameState({
+                path: 'cannon',
+                data: {
+                    fire: false
+                }
+            });
         }}
         onReload={function () {
-          this.updateGameState({
-            path: 'cannon',
-            data: {
-              fire: true
-            }
-          });
+            this.updateGameState({
+                path: 'cannon',
+                data: {
+                    fire: true
+                }
+            });
         }}
       />
 
@@ -263,29 +263,29 @@ export default function (props, ref, key) {
             checkComplete={_.get(props, 'data.game.start', false)}
             restart={_.get(props, 'data.game.start', false)}
             onComplete={function () {
-              if (_.get(props, 'data.reveal.open')) return;
-              if (_.get(props, 'data.score.points', 0) < CONFIG.POINTS) {
-                this.updateGameState({
-                  path: 'reveal',
-                  data: {
-                    open: 'try-again'
-                  }
-                });
+                if (_.get(props, 'data.reveal.open')) return;
+                if (_.get(props, 'data.score.points', 0) < CONFIG.POINTS) {
+                    this.updateGameState({
+                        path: 'reveal',
+                        data: {
+                            open: 'try-again'
+                        }
+                    });
 
-                this.updateGameState({
-                  path: 'reveal',
-                  data: {
-                    play: 'try-again'
-                  }
-                });
+                    this.updateGameState({
+                        path: 'reveal',
+                        data: {
+                            play: 'try-again'
+                        }
+                    });
 
-                this.updateGameState({
-                  path: 'score',
-                  data: {
-                    points: 0
-                  }
-                });
-              }
+                    this.updateGameState({
+                        path: 'score',
+                        data: {
+                            points: 0
+                        }
+                    });
+                }
             }}
           />
 

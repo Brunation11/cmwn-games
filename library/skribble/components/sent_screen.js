@@ -1,33 +1,33 @@
 const classNameText = {
-  character: 'character',
-  header: 'header',
-  yourMessageTo: 'your-message-to',
-  username: 'username',
-  isReady: 'is-ready',
-  buttons: 'buttons',
-  createAnother: 'create-another',
-  inbox: 'inbox',
+    character: 'character',
+    header: 'header',
+    yourMessageTo: 'your-message-to',
+    username: 'username',
+    isReady: 'is-ready',
+    buttons: 'buttons',
+    createAnother: 'create-another',
+    inbox: 'inbox',
 };
 
 const text = {
-  yourMessageTo: 'YOUR MESSAGE TO:',
-  hasBeenSent: 'IS BEING SENT!',
+    yourMessageTo: 'YOUR MESSAGE TO:',
+    hasBeenSent: 'IS BEING SENT!',
 };
 
 class SentScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      load: true,
-      opts: {
-        recipient: {}
-      },
-    };
-  }
+        this.state = {
+            load: true,
+            opts: {
+                recipient: {}
+            },
+        };
+    }
 
-  renderContent() {
-    return (
+    renderContent() {
+        return (
       <div>
         <div className={classNameText.character} />
         <div className={classNameText.header}>
@@ -42,11 +42,11 @@ class SentScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <SentScreen
       {...props}
       ref={ref}

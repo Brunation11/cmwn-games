@@ -1,7 +1,7 @@
 import SelectableReveal from 'shared/components/selectable_reveal/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -16,23 +16,23 @@ export default function (props, ref, key) {
           selectableSelectClass="HIGHLIGHTED"
           allCorrect
           assets={[
-            <skoash.Audio ref="correct" type="sfx" src="media/audio/answer-correct.mp3" />
+              <skoash.Audio ref="correct" type="sfx" src="media/audio/answer-correct.mp3" />
           ]}
           selectableList={[
-            <skoash.ListItem className="feet animated" data-ref="feet">
+              <skoash.ListItem className="feet animated" data-ref="feet">
               <h3>Fur between<br />pads keep<br />feet warm</h3>
             </skoash.ListItem>,
-            <skoash.ListItem className="ears animated" data-ref="ears">
+              <skoash.ListItem className="ears animated" data-ref="ears">
               <h3>Small ears<br />prevent<br />heat loss</h3>
             </skoash.ListItem>,
-            <skoash.ListItem className="coat animated" data-ref="coat">
+              <skoash.ListItem className="coat animated" data-ref="coat">
               <h3>Wooly undercoat<br />traps<br />body heat</h3>
             </skoash.ListItem>
           ]}
           revealAssets={[
-            <skoash.Audio ref="feet" type="voiceOver" src="media/audio/features-bears/feet.mp3" delay={1000} />,
-            <skoash.Audio ref="ears" type="voiceOver" src="media/audio/features-bears/ears.mp3" delay={1000} />,
-            <skoash.Audio ref="coat" type="voiceOver" src="media/audio/features-bears/coat.mp3" delay={1000} />
+              <skoash.Audio ref="feet" type="voiceOver" src="media/audio/features-bears/feet.mp3" delay={1000} />,
+              <skoash.Audio ref="ears" type="voiceOver" src="media/audio/features-bears/ears.mp3" delay={1000} />,
+              <skoash.Audio ref="coat" type="voiceOver" src="media/audio/features-bears/coat.mp3" delay={1000} />
           ]}
         />
       </skoash.Component>

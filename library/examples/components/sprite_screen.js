@@ -1,23 +1,23 @@
 import SpriteAnimation from 'shared/components/sprite_animation/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="sprite-screen"
       onStart={function () {
-        if (this.interval) return;
-        this.interval = setInterval(() => {
-          this.updateGameState({
-            path: 'animate',
-            data: !_.get(this.props, 'data.animate', false)
-          });
-        }, 3000);
+          if (this.interval) return;
+          this.interval = setInterval(() => {
+              this.updateGameState({
+                  path: 'animate',
+                  data: !_.get(this.props, 'data.animate', false)
+              });
+          }, 3000);
       }}
       onStop={function () {
-        clearInterval(this.interval);
+          clearInterval(this.interval);
       }}
     >
       <SpriteAnimation

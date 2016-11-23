@@ -1,19 +1,19 @@
 import ClassNames from 'classnames';
 
 export default function (props, ref, key) {
-  function getClassNames(ref2) {
-    var animated = _.get(props, `data[${ref2}].playing`) ||
+    function getClassNames(ref2) {
+        var animated = _.get(props, `data[${ref2}].playing`) ||
       (props.gameState.currentScreenIndex > 8 && props.gameState.currentScreenIndex <= 10);
-    return ClassNames(ref2, {animated});
-  }
+        return ClassNames(ref2, {animated});
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       className={ClassNames({
-        STAY: props.gameState.currentScreenIndex > 8 && props.gameState.currentScreenIndex <= 10
+          STAY: props.gameState.currentScreenIndex > 8 && props.gameState.currentScreenIndex <= 10
       })}
       id="step-2"
     >

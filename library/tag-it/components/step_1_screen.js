@@ -2,11 +2,11 @@ import _ from 'lodash';
 import ClassNames from 'classnames';
 
 export default function (props, ref, key) {
-  function getClassNames(ref2) {
-    return ClassNames(ref2, {animated: _.get(props, `data[${ref2}].playing`)});
-  }
+    function getClassNames(ref2) {
+        return ClassNames(ref2, {animated: _.get(props, `data[${ref2}].playing`)});
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}

@@ -1,16 +1,16 @@
 import _ from 'lodash';
 
 export default function (props, ref, key) {
-  var snout, schnoz, sniffer, snuffer, whiffer, snoot;
+    var snout, schnoz, sniffer, snuffer, whiffer, snoot;
 
-  snout = 'animated' + (_.get(props, 'data.snout.playing') ? ' animate' : '');
-  schnoz = 'animated' + (_.get(props, 'data.schnoz.playing') ? ' animate' : '');
-  sniffer = 'animated' + (_.get(props, 'data.sniffer.playing') ? ' animate' : '');
-  snuffer = 'animated' + (_.get(props, 'data.snuffer.playing') ? ' animate' : '');
-  whiffer = 'animated' + (_.get(props, 'data.whiffer.playing') ? ' animate' : '');
-  snoot = 'animated' + (_.get(props, 'data.snoot.playing') ? ' animate' : '');
+    snout = 'animated' + (_.get(props, 'data.snout.playing') ? ' animate' : '');
+    schnoz = 'animated' + (_.get(props, 'data.schnoz.playing') ? ' animate' : '');
+    sniffer = 'animated' + (_.get(props, 'data.sniffer.playing') ? ' animate' : '');
+    snuffer = 'animated' + (_.get(props, 'data.snuffer.playing') ? ' animate' : '');
+    whiffer = 'animated' + (_.get(props, 'data.whiffer.playing') ? ' animate' : '');
+    snoot = 'animated' + (_.get(props, 'data.snoot.playing') ? ' animate' : '');
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}

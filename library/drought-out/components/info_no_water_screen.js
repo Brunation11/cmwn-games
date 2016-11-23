@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  var InfoNoWaterScreen = (
+    var InfoNoWaterScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -33,6 +33,6 @@ export default function (props, ref, key) {
       </skoash.Component>
     </skoash.Screen>
   );
-  return InfoNoWaterScreen;
+    return InfoNoWaterScreen;
 }
 

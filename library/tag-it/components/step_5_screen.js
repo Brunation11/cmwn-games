@@ -1,13 +1,13 @@
 import ClasssNames from 'classnames';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       className={ClasssNames({
-        STAY: props.gameState.currentScreenIndex === 17
+          STAY: props.gameState.currentScreenIndex === 17
       })}
       id="step-5"
     >

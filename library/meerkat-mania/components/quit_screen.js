@@ -1,17 +1,17 @@
 class QuitScreen extends skoash.Screen {
-  okay() {
-    skoash.trigger('quit');
-  }
+    okay() {
+        skoash.trigger('quit');
+    }
 
-  cancel() {
-    this.close();
-    skoash.trigger('menuClose', {
-      id: this.state.id,
-    });
-  }
+    cancel() {
+        this.close();
+        skoash.trigger('menuClose', {
+            id: this.state.id,
+        });
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div id={this.props.id} className={this.getClassNames()}>
         <skoash.Audio ref="vo" type="voiceOver" src="media/S_Quit/VO_QuitScreen.mp3" />
         <div className="center">
@@ -24,7 +24,7 @@ class QuitScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default (

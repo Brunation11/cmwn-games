@@ -2,7 +2,7 @@ import MatchGame from 'shared/components/match_game/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 
 function onMatch(message) {
-  console.log(message); // eslint-disable-line no-console
+    console.log(message); // eslint-disable-line no-console
 }
 
 var MatchScreen = (
@@ -15,7 +15,7 @@ var MatchScreen = (
       bin={
         <Randomizer
           bin={[
-            <li className="flip-card tb" ref="A" message="0">
+              <li className="flip-card tb" ref="A" message="0">
               <div className="side a">
                 a
               </div>
@@ -23,7 +23,7 @@ var MatchScreen = (
                 A
               </div>
             </li>,
-            <li className="flip-card tb" ref="B" message="0">
+              <li className="flip-card tb" ref="B" message="0">
               <div className="side a">
                 b
               </div>
@@ -31,7 +31,7 @@ var MatchScreen = (
                 B
               </div>
             </li>,
-            <li className="flip-card tb" ref="C" message="1">
+              <li className="flip-card tb" ref="C" message="1">
               <div className="side a">
                 c
               </div>
@@ -39,7 +39,7 @@ var MatchScreen = (
                 C
               </div>
             </li>,
-            <li className="flip-card tb" ref="D" message="1">
+              <li className="flip-card tb" ref="D" message="1">
               <div className="side a">
                 d
               </div>
@@ -47,7 +47,7 @@ var MatchScreen = (
                 D
               </div>
             </li>,
-            <li className="flip-card tb" ref="E" message="2">
+              <li className="flip-card tb" ref="E" message="2">
               <div className="side a">
                 e
               </div>
@@ -55,7 +55,7 @@ var MatchScreen = (
                 E
               </div>
             </li>,
-            <li className="flip-card tb" ref="F" message="2">
+              <li className="flip-card tb" ref="F" message="2">
               <div className="side a">
                 f
               </div>

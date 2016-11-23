@@ -3,16 +3,16 @@ import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 import SelectableCanvas from 'shared/components/selectable_canvas/0.1';
 
 export default function (props, ref, key) {
-  var closeReveal = function () {
-    skoash.trigger('updateState', {
-      path: 'reveal',
-      data: {
-        open: ''
-      }
-    });
-  };
+    var closeReveal = function () {
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                open: ''
+            }
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -24,12 +24,12 @@ export default function (props, ref, key) {
       <MediaCollection
         play={_.get(props, 'data.reveal.open', null)}
         onPlay={function () {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              open: null
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="sentry" type="voiceOver" src="media/S_3/VO_3.2.mp3" />
@@ -45,7 +45,7 @@ export default function (props, ref, key) {
         openOnStart="intro"
         openReveal={_.get(props, 'data.reveal.open', null)}
         list={[
-          <skoash.Component data-ref="intro">
+            <skoash.Component data-ref="intro">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_1.png" />
               <span>
@@ -54,7 +54,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="sentry">
+            <skoash.Component data-ref="sentry">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_2.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.2.png" />
@@ -64,7 +64,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="pup">
+            <skoash.Component data-ref="pup">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_3.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.4.png" />
@@ -74,7 +74,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="babysitter">
+            <skoash.Component data-ref="babysitter">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_4.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.6.png" />
@@ -84,7 +84,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="gatherer">
+            <skoash.Component data-ref="gatherer">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_5.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.8.png" />
@@ -94,7 +94,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="alpha-male">
+            <skoash.Component data-ref="alpha-male">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_6.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.10.png" />
@@ -104,7 +104,7 @@ export default function (props, ref, key) {
               <button className="close-reveal" onClick={closeReveal} />
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component data-ref="alpha-female">
+            <skoash.Component data-ref="alpha-female">
             <skoash.Component>
               <skoash.Image ref="bkg" className="background" src="media/_Frames/FR_7.png" />
               <skoash.Image ref="img" src="media/S_3/img_3.12.png" />
@@ -120,30 +120,30 @@ export default function (props, ref, key) {
       <SelectableCanvas
         selectClass="HIGHLIGHTED"
         selectRespond={function (message) {
-          this.updateGameState({
-            path: 'reveal',
-            data: {
-              open: message
-            }
-          });
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: message
+                }
+            });
         }}
         list={[
-          <skoash.Component ref="sentry" data-ref="sentry" message="sentry">
+            <skoash.Component ref="sentry" data-ref="sentry" message="sentry">
             <skoash.Image ref="img" data-ref="sentry" message="sentry" src="media/S_3/img_3.1.png" />
           </skoash.Component>,
-          <skoash.Component ref="pup" data-ref="pup" message="pup">
+            <skoash.Component ref="pup" data-ref="pup" message="pup">
             <skoash.Image ref="img" data-ref="pup" message="pup" src="media/S_3/img_3.3.png" />
           </skoash.Component>,
-          <skoash.Component ref="babysitter" data-ref="babysitter" message="babysitter">
+            <skoash.Component ref="babysitter" data-ref="babysitter" message="babysitter">
             <skoash.Image ref="img" data-ref="babysitter" message="babysitter" src="media/S_3/img_3.5.png" />
           </skoash.Component>,
-          <skoash.Component ref="gatherer" data-ref="gatherer" message="gatherer">
+            <skoash.Component ref="gatherer" data-ref="gatherer" message="gatherer">
             <skoash.Image ref="img" data-ref="gatherer" message="gatherer" src="media/S_3/img_3.7.png" />
           </skoash.Component>,
-          <skoash.Component ref="alpha-male" data-ref="alpha-male" message="alpha-male">
+            <skoash.Component ref="alpha-male" data-ref="alpha-male" message="alpha-male">
             <skoash.Image ref="img" data-ref="alpha-male" message="alpha-male" src="media/S_3/img_3.9.png" />
           </skoash.Component>,
-          <skoash.Component ref="alpha-female" data-ref="alpha-female" message="alpha-female">
+            <skoash.Component ref="alpha-female" data-ref="alpha-female" message="alpha-female">
             <skoash.Image ref="img" data-ref="alpha-female" message="alpha-female" src="media/S_3/img_3.11.png" />
           </skoash.Component>,
         ]}

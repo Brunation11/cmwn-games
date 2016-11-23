@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  var InfoHumanEffectsScreen = (
+    var InfoHumanEffectsScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -17,5 +17,5 @@ export default function (props, ref, key) {
     </skoash.Screen>
   );
 
-  return InfoHumanEffectsScreen;
+    return InfoHumanEffectsScreen;
 }

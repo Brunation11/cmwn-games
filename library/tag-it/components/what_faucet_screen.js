@@ -5,14 +5,14 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 
 export default function (props, ref, key) {
-  function getClassNames(ref2) {
-    return ClassNames(ref2, {
-      animated: _.get(props, `data[${ref2}].playing`),
-      selectable: _.get(props, 'data[\'media-sequence\'].complete'),
-      });
-  }
+    function getClassNames(ref2) {
+        return ClassNames(ref2, {
+            animated: _.get(props, `data[${ref2}].playing`),
+            selectable: _.get(props, 'data[\'media-sequence\'].complete'),
+        });
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -24,12 +24,12 @@ export default function (props, ref, key) {
         ref="audio-sequence"
         checkComplete={true}
         onComplete={() => {
-          skoash.trigger('updateState', {
-            path: 'media-sequence',
-            data: {
-              complete: true
-            }
-          });
+            skoash.trigger('updateState', {
+                path: 'media-sequence',
+                data: {
+                    complete: true
+                }
+            });
         }}
       >
         <skoash.Audio
@@ -96,14 +96,14 @@ export default function (props, ref, key) {
       <MediaCollection
         play={_.get(props, 'data.selection.target', null)}
         onPlay={function () {
-          this.media.correct.play();
+            this.media.correct.play();
 
-          this.updateGameState({
-            path: 'selection',
-            data: {
-              target: null
-            }
-          });
+            this.updateGameState({
+                path: 'selection',
+                data: {
+                    target: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="correct" type="sfx" src="media/_audio/_Reveals/TI_RV_4.mp3" />
@@ -112,20 +112,20 @@ export default function (props, ref, key) {
       <Selectable
         chooseOne
         selectRespond={function (target) {
-          this.updateGameState({
-            path: 'selection',
-            data: {
-              target
-            }
-          });
+            this.updateGameState({
+                path: 'selection',
+                data: {
+                    target
+                }
+            });
         }}
         list={[
-          <skoash.ListItem className={getClassNames('kitchen')} correct />,
-          <skoash.ListItem className={getClassNames('shower')} correct />,
-          <skoash.ListItem className={getClassNames('bathroom')} correct />,
-          <skoash.ListItem className={getClassNames('bathtub')} correct />,
-          <skoash.ListItem className={getClassNames('classroom')} correct />,
-          <skoash.ListItem className={getClassNames('outdoor')} correct/>
+            <skoash.ListItem className={getClassNames('kitchen')} correct />,
+            <skoash.ListItem className={getClassNames('shower')} correct />,
+            <skoash.ListItem className={getClassNames('bathroom')} correct />,
+            <skoash.ListItem className={getClassNames('bathtub')} correct />,
+            <skoash.ListItem className={getClassNames('classroom')} correct />,
+            <skoash.ListItem className={getClassNames('outdoor')} correct/>
         ]}
       />
     </skoash.Screen>

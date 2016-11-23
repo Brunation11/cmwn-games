@@ -35,82 +35,82 @@ const draftsEmptyMessage = (
 
 
 class InboxScreen extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      load: true,
-    };
+        this.state = {
+            load: true,
+        };
 
-    this.selectableList = [
-      <li />,
-      <li />,
-      <li />,
-      <li />,
-      <li />,
-    ];
+        this.selectableList = [
+            <li />,
+            <li />,
+            <li />,
+            <li />,
+            <li />,
+        ];
 
-    this.revealList = this.getRevealList();
+        this.revealList = this.getRevealList();
 
-    this.readMessage = this.readMessage.bind(this);
-    this.editMessage = this.editMessage.bind(this);
-  }
+        this.readMessage = this.readMessage.bind(this);
+        this.editMessage = this.editMessage.bind(this);
+    }
 
-  getRevealList(inbox, outbox, saved) {
-    var read, unread, props = this.props || {};
+    getRevealList(inbox, outbox, saved) {
+        var read, unread, props = this.props || {};
 
-    inbox = inbox || this.state.inbox || [];
+        inbox = inbox || this.state.inbox || [];
 
-    read = inbox.filter(item => {
-      return item.read;
-    });
+        read = inbox.filter(item => {
+            return item.read;
+        });
 
-    unread = inbox.filter((item) => {
-      return !item.read;
-    });
+        unread = inbox.filter((item) => {
+            return !item.read;
+        });
 
-    outbox = outbox || this.state.outbox || [];
-    saved = saved || this.state.saved || [];
+        outbox = outbox || this.state.outbox || [];
+        saved = saved || this.state.saved || [];
 
-    return [
-      <li>
+        return [
+            <li>
         <Inbox
           data-ref="inbox"
           data={{
-            items: inbox,
+              items: inbox,
           }}
           emptyMessage={inboxEmptyMessage}
           selectRespond={this.readMessage}
           gameState={props.gameState}
         />
       </li>,
-      <li>
+            <li>
         <Inbox
           data-ref="unread"
           data={{
-            items: unread,
+              items: unread,
           }}
           emptyMessage={unreadEmptyMessage}
           selectRespond={this.readMessage}
           gameState={props.gameState}
         />
       </li>,
-      <li>
+            <li>
         <Inbox
           data-ref="read"
           data={{
-            items: read,
+              items: read,
           }}
           emptyMessage={readEmptyMessage}
           selectRespond={this.readMessage}
           gameState={props.gameState}
         />
       </li>,
-      <li>
+            <li>
         <Inbox
           data-ref="outbox"
           data={{
-            items: outbox,
+              items: outbox,
           }}
           emptyMessage={sentEmptyMessage}
           friendKey="friend_to"
@@ -118,99 +118,99 @@ class InboxScreen extends skoash.Screen {
           gameState={props.gameState}
         />
       </li>,
-      <li>
+            <li>
         <SavedMessages
           data-ref="saved"
           data={{
-            items: saved,
+              items: saved,
           }}
           emptyMessage={draftsEmptyMessage}
           selectRespond={this.editMessage}
         />
       </li>,
-    ];
-  }
+        ];
+    }
 
-  editMessage(message) {
-    skoash.trigger('loadSkribble', {
-      message,
-    });
-  }
+    editMessage(message) {
+        skoash.trigger('loadSkribble', {
+            message,
+        });
+    }
 
-  readMessage(message) {
-    skoash.trigger('goto', {
-      index: 'read',
-      message,
-    });
-  }
+    readMessage(message) {
+        skoash.trigger('goto', {
+            index: 'read',
+            message,
+        });
+    }
 
-  updateData() {
-    var skribbles, inbox, outbox, saved;
+    updateData() {
+        var skribbles, inbox, outbox, saved;
 
-    skribbles = this.props.gameState.data.skribbles;
-    inbox = skribbles.received;
-    outbox = skribbles.sent;
-    saved = skribbles.draft;
+        skribbles = this.props.gameState.data.skribbles;
+        inbox = skribbles.received;
+        outbox = skribbles.sent;
+        saved = skribbles.draft;
 
-    this.revealList = this.getRevealList(inbox, outbox, saved);
+        this.revealList = this.getRevealList(inbox, outbox, saved);
 
-    this.setState({
-      inbox,
-      outbox,
-      saved,
-    });
-  }
+        this.setState({
+            inbox,
+            outbox,
+            saved,
+        });
+    }
 
-  updateGameData(data, status) {
-    var opts = {
-      path: ['skribbles'],
-      data: {
-        [status]: data.skribble
-      },
-      callback: () => {
-        this.updateData();
-      }
-    };
-    this.updateGameState(opts);
-  }
+    updateGameData(data, status) {
+        var opts = {
+            path: ['skribbles'],
+            data: {
+                [status]: data.skribble
+            },
+            callback: () => {
+                this.updateData();
+            }
+        };
+        this.updateGameState(opts);
+    }
 
-  open() {
-    var self = this;
+    open() {
+        var self = this;
 
-    skoash.trigger('getData', {
-      status: 'received',
-    }).then(data => {
-      self.updateGameData(data, 'received');
-    });
+        skoash.trigger('getData', {
+            status: 'received',
+        }).then(data => {
+            self.updateGameData(data, 'received');
+        });
 
-    skoash.trigger('getData', {
-      status: 'sent',
-    }).then(data => {
-      self.updateGameData(data, 'sent');
-    });
+        skoash.trigger('getData', {
+            status: 'sent',
+        }).then(data => {
+            self.updateGameData(data, 'sent');
+        });
 
-    skoash.trigger('getData', {
-      status: 'draft',
-    }).then(data => {
-      self.updateGameData(data, 'draft');
-    });
+        skoash.trigger('getData', {
+            status: 'draft',
+        }).then(data => {
+            self.updateGameData(data, 'draft');
+        });
 
-    self.setState({
-      load: true,
-      open: true,
-      leave: false,
-      close: false,
-    });
+        self.setState({
+            load: true,
+            open: true,
+            leave: false,
+            close: false,
+        });
 
-    setTimeout(() => {
-      if (!self.state.started) {
-        self.start();
-      }
-    }, 250);
-  }
+        setTimeout(() => {
+            if (!self.state.started) {
+                self.start();
+            }
+        }, 250);
+    }
 
-  renderContent() {
-    return (
+    renderContent() {
+        return (
       <div>
         <div className="center">
           <div className="frame">
@@ -225,11 +225,11 @@ class InboxScreen extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default function (props, ref, key) {
-  return (
+    return (
     <InboxScreen
       {...props}
       ref={ref}

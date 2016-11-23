@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -7,7 +7,7 @@ export default function (props, ref, key) {
       id="flip"
       className="large-frame"
       emitOnComplete={{
-        name: 'flip',
+          name: 'flip',
       }}
     >
       <skoash.MediaSequence>

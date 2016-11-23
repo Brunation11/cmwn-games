@@ -1,16 +1,16 @@
 export default function (props, ref, key) {
 
-  function animate(name) {
-    var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
-    skoash.trigger('updateState', {
-      path: 'states',
-      data: {
-        open,
-      },
-    });
-  }
+    function animate(name) {
+        var open = _.get(props, 'data.states.open', null) === null ? name : open + ' ' + name;
+        skoash.trigger('updateState', {
+            path: 'states',
+            data: {
+                open,
+            },
+        });
+    }
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}

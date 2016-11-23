@@ -2,7 +2,7 @@ import GameEmbedder from 'shared/components/game_embedder/0.1';
 import DPad from 'shared/components/d_pad/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}

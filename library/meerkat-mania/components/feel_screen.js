@@ -2,7 +2,7 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -14,14 +14,14 @@ export default function (props, ref, key) {
       <MediaCollection
         play={_.get(props, 'data.selection.target', null)}
         onPlay={function () {
-          this.media.correct.play();
+            this.media.correct.play();
 
-          this.updateGameState({
-            path: 'selection',
-            data: {
-              target: null
-            }
-          });
+            this.updateGameState({
+                path: 'selection',
+                data: {
+                    target: null
+                }
+            });
         }}
       >
         <skoash.Audio ref="correct" type="sfx" src="media/S_6/S_6.2.mp3" />
@@ -41,24 +41,24 @@ export default function (props, ref, key) {
         <Selectable
           selectClass="HIGHLIGHTED"
           selectRespond={function (target) {
-            this.updateGameState({
-              path: 'selection',
-              data: {
-                target
-              }
-            });
+              this.updateGameState({
+                  path: 'selection',
+                  data: {
+                      target
+                  }
+              });
           }}
           list={[
-            <li data-ref="safe" />,
-            <li data-ref="loved" />,
-            <li data-ref="supported" />,
-            <li data-ref="important" />,
-            <li data-ref="included" />,
-            <li data-ref="valued" />,
-            <li data-ref="grateful" />,
-            <li data-ref="happy" />,
-            <li data-ref="secure" />,
-            <li data-ref="worthwhile" />,
+              <li data-ref="safe" />,
+              <li data-ref="loved" />,
+              <li data-ref="supported" />,
+              <li data-ref="important" />,
+              <li data-ref="included" />,
+              <li data-ref="valued" />,
+              <li data-ref="grateful" />,
+              <li data-ref="happy" />,
+              <li data-ref="secure" />,
+              <li data-ref="worthwhile" />,
           ]}
         />
       </skoash.Component>

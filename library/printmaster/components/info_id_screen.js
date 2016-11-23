@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -7,15 +7,15 @@ export default function (props, ref, key) {
       id="info-id"
       className="large-frame"
       onOpen={function () {
-        skoash.trigger('passData', {
-          name: 'typing',
-          duration: 4250,
-        });
+          skoash.trigger('passData', {
+              name: 'typing',
+              duration: 4250,
+          });
       }}
       onClose={function () {
-        skoash.trigger('passData', {
-          name: 'stopTyping',
-        });
+          skoash.trigger('passData', {
+              name: 'stopTyping',
+          });
       }}
     >
       <skoash.MediaSequence ref="media">

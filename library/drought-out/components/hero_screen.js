@@ -1,5 +1,5 @@
 export default function (props, ref, key) {
-  var HeroScreen = (
+    var HeroScreen = (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -18,6 +18,6 @@ export default function (props, ref, key) {
       </skoash.Component>
     </skoash.Screen>
   );
-  return HeroScreen;
+    return HeroScreen;
 }
 

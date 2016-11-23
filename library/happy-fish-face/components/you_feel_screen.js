@@ -1,7 +1,7 @@
 import SelectableAudio from 'shared/components/selectable_audio/0.1';
 
 export default function (props, ref, key) {
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -17,14 +17,14 @@ export default function (props, ref, key) {
               ref="selectable-audio"
               completeDelay={1000}
               selectableList={[
-                <skoash.ListItem className="animated img-0" pl-bg />,
-                <skoash.ListItem className="animated img-1" pl-bg />,
-                <skoash.ListItem className="animated img-2" pl-bg />
+                  <skoash.ListItem className="animated img-0" pl-bg />,
+                  <skoash.ListItem className="animated img-1" pl-bg />,
+                  <skoash.ListItem className="animated img-2" pl-bg />
               ]}
               audioAssets={[
-                <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_LeftEmoji.mp3" />,
-                <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_CenterEmoji.mp3" />,
-                <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_RightEmoji.mp3" />
+                  <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_LeftEmoji.mp3" />,
+                  <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_CenterEmoji.mp3" />,
+                  <skoash.Audio type="sfx" src="media/_audio/_S_YouFeel/HFF_SX_RightEmoji.mp3" />
               ]}
               chooseOne
             />

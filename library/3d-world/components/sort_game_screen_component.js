@@ -11,113 +11,113 @@ import Catchable from 'shared/components/catchable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key, opts = {}) {
-  var onCloseReveal,
-    onScoreComplete,
-    getTime,
-    onTimerComplete,
-    onAddClassName,
-    onCorrectCatch,
-    onIncorrectCatch;
+    var onCloseReveal,
+        onScoreComplete,
+        getTime,
+        onTimerComplete,
+        onAddClassName,
+        onCorrectCatch,
+        onIncorrectCatch;
 
-  onCloseReveal = function () {
-    this.updateGameState({
-      path: 'game',
-      data: {
-        stop: false,
-        start: true,
-        restart: false,
-      },
-    });
-    this.updateGameState({
-      path: 'closeReveal',
-      data: false,
-    });
-    this.updateGameState({
-      path: 'openReveal',
-      data: null,
-    });
-    this.updateGameState({
-      path: 'score',
-      data: {
-        correct: 0,
-        incorrect: 0,
-      }
-    });
-  };
+    onCloseReveal = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: false,
+                start: true,
+                restart: false,
+            },
+        });
+        this.updateGameState({
+            path: 'closeReveal',
+            data: false,
+        });
+        this.updateGameState({
+            path: 'openReveal',
+            data: null,
+        });
+        this.updateGameState({
+            path: 'score',
+            data: {
+                correct: 0,
+                incorrect: 0,
+            }
+        });
+    };
 
-  onScoreComplete = function () {
-    this.updateGameState({
-      path: 'openReveal',
-      data: 'level-up',
-    });
-    this.updateGameState({
-      path: 'game',
-      data: {
-        complete: true,
-      },
-    });
-  };
+    onScoreComplete = function () {
+        this.updateGameState({
+            path: 'openReveal',
+            data: 'level-up',
+        });
+        this.updateGameState({
+            path: 'game',
+            data: {
+                complete: true,
+            },
+        });
+    };
 
-  getTime = function () {
-    var timeLeft, minutesLeft, secondsLeft;
-    timeLeft = this.props.timeout / 1000 - this.state.time;
-    minutesLeft = Math.floor(timeLeft / 60);
-    secondsLeft = timeLeft % 60;
-    secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-    return `${minutesLeft}:${secondsLeft}`;
-  };
+    getTime = function () {
+        var timeLeft, minutesLeft, secondsLeft;
+        timeLeft = this.props.timeout / 1000 - this.state.time;
+        minutesLeft = Math.floor(timeLeft / 60);
+        secondsLeft = timeLeft % 60;
+        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+        return `${minutesLeft}:${secondsLeft}`;
+    };
 
-  onTimerComplete = function () {
-    if (_.get(props, 'data.openReveal') === 'level-up') return;
-    this.updateGameState({
-      path: 'openReveal',
-      data: 'try-again',
-    });
-    this.updateGameState({
-      path: 'game',
-      data: {
-        start: false,
-      },
-    });
-  };
+    onTimerComplete = function () {
+        if (_.get(props, 'data.openReveal') === 'level-up') return;
+        this.updateGameState({
+            path: 'openReveal',
+            data: 'try-again',
+        });
+        this.updateGameState({
+            path: 'game',
+            data: {
+                start: false,
+            },
+        });
+    };
 
-  onAddClassName = function (className) {
-    if (className === 'go') return;
-    this.updateGameState({
-      path: 'sfx',
-      data: {
-        playing: 'print'
-      }
-    });
-  };
+    onAddClassName = function (className) {
+        if (className === 'go') return;
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'print'
+            }
+        });
+    };
 
-  onCorrectCatch = function (bucketRef) {
-    bucketRef.addClassName('correct');
-    setTimeout(() => {
-      bucketRef.removeClassName('correct');
-    }, 1000);
-    this.updateGameState({
-      path: 'score',
-      data: {
-        correct: _.get(props, 'data.score.correct', 0) + 1,
-      },
-    });
-  };
+    onCorrectCatch = function (bucketRef) {
+        bucketRef.addClassName('correct');
+        setTimeout(() => {
+            bucketRef.removeClassName('correct');
+        }, 1000);
+        this.updateGameState({
+            path: 'score',
+            data: {
+                correct: _.get(props, 'data.score.correct', 0) + 1,
+            },
+        });
+    };
 
-  onIncorrectCatch = function (bucketRef) {
-    bucketRef.addClassName('incorrect');
-    setTimeout(() => {
-      bucketRef.removeClassName('incorrect');
-    }, 1000);
-    this.updateGameState({
-      path: 'score',
-      data: {
-        incorrect: _.get(props, 'data.score.incorrect', 0) + 1,
-      },
-    });
-  };
+    onIncorrectCatch = function (bucketRef) {
+        bucketRef.addClassName('incorrect');
+        setTimeout(() => {
+            bucketRef.removeClassName('incorrect');
+        }, 1000);
+        this.updateGameState({
+            path: 'score',
+            data: {
+                incorrect: _.get(props, 'data.score.incorrect', 0) + 1,
+            },
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
@@ -189,51 +189,51 @@ export default function (props, ref, key, opts = {}) {
               completeOnStart
               checkComplete={false}
               bin={[
-                <Catchable
+                  <Catchable
                   className="milk"
                   message="other"
                 />,
-                <Catchable
+                  <Catchable
                   className="shoes"
                   message="other"
                 />,
-                <Catchable
+                  <Catchable
                   className="cup"
                   message="plastic"
                 />,
-                <Catchable
+                  <Catchable
                   className="box"
                   message="other"
                 />,
-                <Catchable
+                  <Catchable
                   className="glasses"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="whistle"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="car"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="lego"
                   message="plastic"
                 />,
-                <Catchable
+                  <Catchable
                   className="silver"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="slinky"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="gears"
                   message="metal"
                 />,
-                <Catchable
+                  <Catchable
                   className="nails"
                   message="metal"
                 />,
@@ -257,20 +257,20 @@ export default function (props, ref, key, opts = {}) {
           checkComplete={false}
           start={_.get(props, 'data.game.start', false)}
           bucket={[
-            <skoash.Component className="plastic" message="plastic" />,
-            <skoash.Component className="metal" message="metal" />,
-            <skoash.Component className="other" message="other" />,
+              <skoash.Component className="plastic" message="plastic" />,
+              <skoash.Component className="metal" message="metal" />,
+              <skoash.Component className="other" message="other" />,
           ]}
           catchableRefs={_.get(props, 'data.dropper.refs', [])}
           onCorrect={onCorrectCatch}
           onIncorrect={onIncorrectCatch}
           assets={[
-            <skoash.Audio
+              <skoash.Audio
               type="voiceOver"
               ref="correct"
               src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Correct.mp3'}
             />,
-            <skoash.Audio
+              <skoash.Audio
               type="voiceOver"
               ref="incorrect"
               src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect.mp3'}

@@ -1,37 +1,37 @@
 import classNames from 'classnames';
 
 class CollisionWarning extends skoash.Screen {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.cancel = this.cancel.bind(this);
-    this.toggle = this.toggle.bind(this);
-  }
+        this.cancel = this.cancel.bind(this);
+        this.toggle = this.toggle.bind(this);
+    }
 
-  cancel() {
-    this.close();
-    skoash.trigger('menuClose', {
-      id: this.props.id,
-    });
-  }
+    cancel() {
+        this.close();
+        skoash.trigger('menuClose', {
+            id: this.props.id,
+        });
+    }
 
-  toggle() {
-    this.updateGameState({
-      path: ['collisionWarning'],
-      data: {
-        show: !_.get(this.props.gameState, 'data.collisionWarning.show')
-      }
-    });
-  }
+    toggle() {
+        this.updateGameState({
+            path: ['collisionWarning'],
+            data: {
+                show: !_.get(this.props.gameState, 'data.collisionWarning.show')
+            }
+        });
+    }
 
-  getToggleClassNames() {
-    return classNames('toggle-collision-warning', {
-      active: !_.get(this.props.gameState, 'data.collisionWarning.show')
-    });
-  }
+    getToggleClassNames() {
+        return classNames('toggle-collision-warning', {
+            active: !_.get(this.props.gameState, 'data.collisionWarning.show')
+        });
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div id={this.props.id} className={this.getClassNames()}>
         <div className="center">
           <div className="frame">
@@ -43,7 +43,7 @@ class CollisionWarning extends skoash.Screen {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default (

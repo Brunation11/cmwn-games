@@ -2,36 +2,36 @@ import Dropzone from 'shared/components/dropzone/0.1';
 import Draggable from 'shared/components/draggable/0.1';
 
 var dragRespond = function (message) {
-  var self = this;
+    var self = this;
 
-  self.dropzones.map((dropzone, key) => {
-    var dropzoneRef, contains, index;
+    self.dropzones.map((dropzone, key) => {
+        var dropzoneRef, contains, index;
 
-    dropzoneRef = self.refs[`dropzone-${key}`];
-    contains = self.contains[key] || [];
-    index = contains.indexOf(message);
-    if (~index) contains.splice(index, 1);
-    self.contains[key] = contains;
+        dropzoneRef = self.refs[`dropzone-${key}`];
+        contains = self.contains[key] || [];
+        index = contains.indexOf(message);
+        if (~index) contains.splice(index, 1);
+        self.contains[key] = contains;
 
-    if (!contains.length) {
-      dropzoneRef.incomplete();
-      self.checkComplete();
-    }
-  });
+        if (!contains.length) {
+            dropzoneRef.incomplete();
+            self.checkComplete();
+        }
+    });
 };
 
 var correctRespond = function (message, dropzoneKey) {
-  var dropzoneRef, contains;
+    var dropzoneRef, contains;
 
-  dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
-  contains = this.contains[dropzoneKey] || [];
+    dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
+    contains = this.contains[dropzoneKey] || [];
 
-  contains.push(message);
-  this.contains[dropzoneKey] = contains;
+    contains.push(message);
+    this.contains[dropzoneKey] = contains;
 
-  if (contains.length) {
-    dropzoneRef.complete();
-  }
+    if (contains.length) {
+        dropzoneRef.complete();
+    }
 };
 
 var AudioScreen = (
@@ -43,20 +43,20 @@ var AudioScreen = (
       correctRespond={correctRespond}
       dragRespond={dragRespond}
       dropzones={[
-        <skoash.Component>
+          <skoash.Component>
           <span>A</span>
         </skoash.Component>,
-        <skoash.Component>
+          <skoash.Component>
           <span>B</span>
         </skoash.Component>,
-        <skoash.Component>
+          <skoash.Component>
           <span>C</span>
         </skoash.Component>,
       ]}
       draggables={[
-        <Draggable message={1}>1</Draggable>,
-        <Draggable message={2}>2</Draggable>,
-        <Draggable message={3}>3</Draggable>,
+          <Draggable message={1}>1</Draggable>,
+          <Draggable message={2}>2</Draggable>,
+          <Draggable message={3}>3</Draggable>,
       ]}
     />
   </skoash.Screen>

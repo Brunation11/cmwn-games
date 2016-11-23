@@ -1,35 +1,35 @@
 import LabyrinthScreenComponent from './labyrinth_screen_component';
 
 export default function (props, ref, key) {
-  var onCloseInstructions = function () {
-    skoash.trigger('updateState', {
-      path: 'openReveal',
-      data: 'count-down',
-    });
+    var onCloseInstructions = function () {
+        skoash.trigger('updateState', {
+            path: 'openReveal',
+            data: 'count-down',
+        });
 
-    setTimeout(() => {
-      skoash.trigger('updateState', {
-        path: 'closeReveal',
-        data: true,
-      });
-    }, 3000);
-  };
+        setTimeout(() => {
+            skoash.trigger('updateState', {
+                path: 'closeReveal',
+                data: true,
+            });
+        }, 3000);
+    };
 
-  return LabyrinthScreenComponent(props, ref, key, {
-    id: 'labyrinth-level-one-screen',
-    levelNumber: 1,
-    itemsCount: 4,
-    enemiesCount: 3,
-    disableChance: .75,
-    disableInterval: 4000,
-    openOnStart: 'instructions',
-    vos: [
-      <skoash.Audio ref="instructions" type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />,
-      <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />,
-      <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
-    ],
-    revealList: [
-      <skoash.Component ref="instructions" className="labyrinth-frame instructions">
+    return LabyrinthScreenComponent(props, ref, key, {
+        id: 'labyrinth-level-one-screen',
+        levelNumber: 1,
+        itemsCount: 4,
+        enemiesCount: 3,
+        disableChance: .75,
+        disableInterval: 4000,
+        openOnStart: 'instructions',
+        vos: [
+            <skoash.Audio ref="instructions" type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />,
+            <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />,
+            <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
+        ],
+        revealList: [
+            <skoash.Component ref="instructions" className="labyrinth-frame instructions">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <p>
@@ -49,7 +49,7 @@ export default function (props, ref, key) {
           />
         </div>
       </skoash.Component>,
-      <skoash.Component ref="count-down" className="labyrinth-frame count-down">
+            <skoash.Component ref="count-down" className="labyrinth-frame count-down">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="count">
           <div>READY</div>
@@ -58,7 +58,7 @@ export default function (props, ref, key) {
           <div className="number three">3</div>
         </div>
       </skoash.Component>,
-      <skoash.Component ref="level-up" className="labyrinth-frame level-up">
+            <skoash.Component ref="level-up" className="labyrinth-frame level-up">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <p>
@@ -69,7 +69,7 @@ export default function (props, ref, key) {
           </p>
         </div>
       </skoash.Component>,
-      <skoash.Component ref="try-again" className="labyrinth-frame try-again">
+            <skoash.Component ref="try-again" className="labyrinth-frame try-again">
         <skoash.Image className="eco" src="media/_images/mr.eco.png" />
         <div className="copy">
           <p>
@@ -78,14 +78,14 @@ export default function (props, ref, key) {
           </p>
           <button
             onClick={function () {
-              skoash.trigger('updateState', {
-                path: 'closeReveal',
-                data: true,
-              });
+                skoash.trigger('updateState', {
+                    path: 'closeReveal',
+                    data: true,
+                });
             }}
           />
         </div>
       </skoash.Component>
-    ],
-  });
+        ],
+    });
 }

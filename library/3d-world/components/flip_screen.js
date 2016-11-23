@@ -1,26 +1,26 @@
 import classNames from 'classnames';
 
 export default function (props, ref, key) {
-  var onTransitionEnd;
+    var onTransitionEnd;
 
-  onTransitionEnd = function () {
-    if (!_.get(props, 'data.layer2.complete')) return;
-    skoash.trigger('updateState', {
-      path: 'flip',
-      data: {
-        complete: true,
-      },
-    });
-  };
+    onTransitionEnd = function () {
+        if (!_.get(props, 'data.layer2.complete')) return;
+        skoash.trigger('updateState', {
+            path: 'flip',
+            data: {
+                complete: true,
+            },
+        });
+    };
 
-  return (
+    return (
     <skoash.Screen
       {...props}
       ref={ref}
       key={key}
       id="flip"
       emitOnComplete={{
-        name: 'flip',
+          name: 'flip',
       }}
     >
       <skoash.MediaSequence>
@@ -48,7 +48,7 @@ export default function (props, ref, key) {
       />
       <skoash.Image
         className={classNames('earned-flip', {
-          show: _.get(props, 'data.flip.complete'),
+            show: _.get(props, 'data.flip.complete'),
         })}
         src={ENVIRONMENT.MEDIA + 'SpritesAnimations/3D-World_Earned_Flip.gif'}
       />
@@ -64,10 +64,10 @@ export default function (props, ref, key) {
         checkComplete={false}
         complete={_.get(props, 'data.flip.complete')}
         className={classNames('static-flip', {
-          layer1: _.get(props, 'data.layer1.playing'),
-          layer2: _.get(props, 'data.layer2.playing') || _.get(props, 'data.layer2.complete'),
-          move: _.get(props, 'data.layer2.complete'),
-          hide: _.get(props, 'data.flip.complete'),
+            layer1: _.get(props, 'data.layer1.playing'),
+            layer2: _.get(props, 'data.layer2.playing') || _.get(props, 'data.layer2.complete'),
+            move: _.get(props, 'data.layer2.complete'),
+            hide: _.get(props, 'data.flip.complete'),
         })}
         onTransitionEnd={onTransitionEnd}
       />
