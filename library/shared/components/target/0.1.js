@@ -23,15 +23,15 @@ class Target extends skoash.Component {
   }
 
   onCorrect() {
-    if (this.audio.correct) this.audio.correct.play();
-    if (this.audio['correct-sound']) this.audio['correct-sound'].play();
+    this.playMedia('correct');
+    this.playMedia('correct-sound');
 
     this.updateState(true);
   }
 
   onIncorrect() {
-    if (this.audio.incorrect) this.audio.incorrect.play();
-    if (this.audio['incorrect-sound']) this.audio['incorrect-sound'].play();
+    this.playMedia('incorrect');
+    this.playMedia('incorrect-sound');
 
     this.updateState(false);
   }

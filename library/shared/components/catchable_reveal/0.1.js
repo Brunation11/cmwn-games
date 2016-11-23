@@ -14,7 +14,7 @@ class CatchableReveal extends skoash.Component {
     this.setState({caughtCount: this.state.caughtCount + 1});
     if (this.props.answers.length) {
       if (this.props.answers.indexOf(key) === -1) {
-        if (this.audio.incorrect) this.audio.incorrect.play();
+        this.playMedia('incorrect');
       } else {
         if (willReveal && typeof this.refs.reveal.open === 'function') {
           this.openReveal(key);
@@ -30,7 +30,7 @@ class CatchableReveal extends skoash.Component {
   openReveal(message) {
     var revealMessage;
     this.refs.catch.setState({canCatch: false});
-    if (this.audio.correct) this.audio.correct.play();
+    this.playMedia('correct');
     revealMessage = typeof this.props.getMessage === 'function' ? this.props.getMessage.call(this, message) : message;
     this.refs.reveal.open(revealMessage);
   }
