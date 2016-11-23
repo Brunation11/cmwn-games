@@ -266,8 +266,8 @@ function cleanTask() {
   // TODO: write alternative for windows 9/13/16 AIM
   if (process.platform !== 'win32') { // eslint-disable-line no-undef
     exec('delete-invalid-files.sh', function (err, stdout, stderr) {
-      console.log(stdout); // eslint-disable-line no-console
-      console.log(stderr); // eslint-disable-line no-console
+      gutil.log(stdout);
+      gutil.log(stderr);
     });
   }
 }

@@ -24,7 +24,13 @@ class Reveal extends skoash.Component {
 
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
+    var currentlyOpen = this.state.currentlyOpen;
+
+    if (!this.props.allowMultipleOpen) {
+      currentlyOpen = [message];
+    } else if (currentlyOpen.indexOf(message) === -1) {
+      currentlyOpen = currentlyOpen.concat(message);
+    }
 
     self.setState({
       open: true,
@@ -77,7 +83,7 @@ class Reveal extends skoash.Component {
 
     if (!opts.silent) this.playMedia('close-sound');
 
-    this.props.onClose.call(this);
+    this.props.onClose.call(this, prevMessage);
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -243,6 +249,7 @@ Reveal.defaultProps = _.defaults({
   ],
   onOpen: _.noop,
   onClose: _.noop,
+  allowMultipleOpen: false,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

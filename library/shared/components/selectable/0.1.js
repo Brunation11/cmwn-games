@@ -101,7 +101,8 @@ class Selectable extends skoash.Component {
     return classNames(
       li.props.className,
       this.state.classes[key],
-      this.state.classes[li.props['data-ref']]
+      this.state.classes[li.props['data-ref']],
+      this.state.classes[li.props['data-key']]
     );
   }
 

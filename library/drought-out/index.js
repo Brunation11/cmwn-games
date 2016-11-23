@@ -57,14 +57,14 @@ var DroughtOut = (
     getBackgroundIndex={screenIndex => {
       if (screenIndex < 2) return 0;
       if (screenIndex === 2) return;
-      else if (screenIndex < 6) return 1;
-      else if (screenIndex < 9) return 2;
-      else if (screenIndex < 14) return 3;
-      else if (screenIndex === 14) return 4;
-      else if (screenIndex === 15) return 5;
-      else if (screenIndex === 16) return 6;
-      else if (screenIndex < 19) return 7;
-      else if (screenIndex === 19) return 8;
+      if (screenIndex < 6) return 1;
+      if (screenIndex < 9) return 2;
+      if (screenIndex < 14) return 3;
+      if (screenIndex === 14) return 4;
+      if (screenIndex === 15) return 5;
+      if (screenIndex === 16) return 6;
+      if (screenIndex < 19) return 7;
+      if (screenIndex === 19) return 8;
     }}
     assets={[
       <skoash.Audio ref="bkg-0" type="background" src="media/S_1/S_1.1.mp3" />,
