@@ -75,7 +75,7 @@ class SelectableReveal extends skoash.Component {
         randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
         chooseOne={this.props.chooseOne}
-        // answers={this.props.answers}
+        answers={this.props.answers}
         allowDeselect={this.props.allowDeselect}
       />
     );

@@ -22,23 +22,23 @@ export default function (props, ref, key) {
           case 'lawns':
           case 'flowers':
           case 'animalFeed':
-            sfx = this.media.yellow;
+            sfx = 'yellow';
             break;
           case 'washingDishes':
           case 'swimming':
           case 'brushingTeeth':
           case 'electricity':
-            sfx = this.audio.green;
+            sfx = 'green';
             break;
           case 'cooking':
           case 'rafting':
           case 'waterSlides':
           case 'growingFood':
-            sfx = this.media.red;
+            sfx = 'red';
             break;
           }
 
-          if (sfx) sfx.play();
+          this.playMedia(sfx);
 
           this.updateGameState({
             path: 'selection',
@@ -48,24 +48,99 @@ export default function (props, ref, key) {
           });
         }}
       >
-        <skoash.Audio ref="yellow" type="sfx" src="media/S_7/S_7.1.mp3" />
-        <skoash.Audio ref="green" type="sfx" src="media/S_7/S_7.2.mp3" />
-        <skoash.Audio ref="red" type="sfx" src="media/S_7/S_7.3.mp3" />
-        <skoash.Audio ref="bathing" type="voiceOver" src="media/S_7/VO_7.1.mp3" />
-        <skoash.Audio ref="drinking" type="voiceOver" src="media/S_7/VO_7.2.mp3" />
-        <skoash.Audio ref="washingDishes" type="voiceOver" src="media/S_7/VO_7.3.mp3" />
-        <skoash.Audio ref="swimming" type="voiceOver" src="media/S_7/VO_7.4.mp3" />
-        <skoash.Audio ref="canoeing" type="voiceOver" src="media/S_7/VO_7.5.mp3" />
-        <skoash.Audio ref="factories" type="voiceOver" src="media/S_7/VO_7.6.mp3" />
-        <skoash.Audio ref="brushingTeeth" type="voiceOver" src="media/S_7/VO_7.7.mp3" />
-        <skoash.Audio ref="electricity" type="voiceOver" src="media/S_7/VO_7.8.mp3" />
-        <skoash.Audio ref="growingFood" type="voiceOver" src="media/S_7/VO_7.9.mp3" />
-        <skoash.Audio ref="waterSlides" type="voiceOver" src="media/S_7/VO_7.10.mp3" />
-        <skoash.Audio ref="rafting" type="voiceOver" src="media/S_7/VO_7.11.mp3" />
-        <skoash.Audio ref="lawns" type="voiceOver" src="media/S_7/VO_7.12.mp3" />
-        <skoash.Audio ref="cooking" type="voiceOver" src="media/S_7/VO_7.13.mp3" />
-        <skoash.Audio ref="flowers" type="voiceOver" src="media/S_7/VO_7.14.mp3" />
-        <skoash.Audio ref="animalFeed" type="voiceOver" src="media/S_7/VO_7.15.mp3" />
+        <skoash.Audio
+          ref="yellow"
+          type="sfx"
+          src="media/S_7/S_7.1.mp3"
+          volume={.6}
+        />
+        <skoash.Audio
+          ref="green"
+          type="sfx"
+          src="media/S_7/S_7.2.mp3"
+          volume={.4}
+        />
+        <skoash.Audio
+          ref="red"
+          type="sfx"
+          src="media/S_7/S_7.3.mp3"
+          volume={.4}
+        />
+        <skoash.Audio
+          ref="bathing"
+          type="voiceOver"
+          src="media/S_7/VO_7.1.mp3"
+        />
+        <skoash.Audio
+          ref="drinking"
+          type="voiceOver"
+          src="media/S_7/VO_7.2.mp3"
+        />
+        <skoash.Audio
+          ref="washingDishes"
+          type="voiceOver"
+          src="media/S_7/VO_7.3.mp3"
+        />
+        <skoash.Audio
+          ref="swimming"
+          type="voiceOver"
+          src="media/S_7/VO_7.4.mp3"
+        />
+        <skoash.Audio
+          ref="canoeing"
+          type="voiceOver"
+          src="media/S_7/VO_7.5.mp3"
+        />
+        <skoash.Audio
+          ref="factories"
+          type="voiceOver"
+          src="media/S_7/VO_7.6.mp3"
+        />
+        <skoash.Audio
+          ref="brushingTeeth"
+          type="voiceOver"
+          src="media/S_7/VO_7.7.mp3"
+        />
+        <skoash.Audio
+          ref="electricity"
+          type="voiceOver"
+          src="media/S_7/VO_7.8.mp3"
+        />
+        <skoash.Audio
+          ref="growingFood"
+          type="voiceOver"
+          src="media/S_7/VO_7.9.mp3"
+        />
+        <skoash.Audio
+          ref="waterSlides"
+          type="voiceOver"
+          src="media/S_7/VO_7.10.mp3"
+        />
+        <skoash.Audio
+          ref="rafting"
+          type="voiceOver"
+          src="media/S_7/VO_7.11.mp3"
+        />
+        <skoash.Audio
+          ref="lawns"
+          type="voiceOver"
+          src="media/S_7/VO_7.12.mp3"
+        />
+        <skoash.Audio
+          ref="cooking"
+          type="voiceOver"
+          src="media/S_7/VO_7.13.mp3"
+        />
+        <skoash.Audio
+          ref="flowers"
+          type="voiceOver"
+          src="media/S_7/VO_7.14.mp3"
+        />
+        <skoash.Audio
+          ref="animalFeed"
+          type="voiceOver"
+          src="media/S_7/VO_7.15.mp3"
+        />
       </MediaCollection>
       <skoash.Image src="media/S_7/img_7.16.png" />
       <SelectableCanvasMove
