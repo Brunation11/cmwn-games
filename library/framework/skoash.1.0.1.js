@@ -1,6 +1,5 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	var parentHotUpdateCallback = this["webpackHotUpdate"];
-<<<<<<< HEAD
 /******/ 	this["webpackHotUpdate"] = 
 /******/ 	function webpackHotUpdateCallback(chunkId, moreModules) { // eslint-disable-line no-unused-vars
 /******/ 		hotAddUpdateChunk(chunkId, moreModules);
@@ -532,539 +531,6 @@
 /******/ 		hotSetStatus("idle");
 /******/ 		callback(null, outdatedModules);
 /******/ 	}
-=======
-/******/ 	this["webpackHotUpdate"] = 
-/******/ 	function webpackHotUpdateCallback(chunkId, moreModules) { // eslint-disable-line no-unused-vars
-/******/ 		hotAddUpdateChunk(chunkId, moreModules);
-/******/ 		if(parentHotUpdateCallback) parentHotUpdateCallback(chunkId, moreModules);
-/******/ 	}
-/******/ 	
-/******/ 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
-/******/ 		var head = document.getElementsByTagName("head")[0];
-/******/ 		var script = document.createElement("script");
-/******/ 		script.type = "text/javascript";
-/******/ 		script.charset = "utf-8";
-/******/ 		script.src = __webpack_require__.p + "" + chunkId + "." + hotCurrentHash + ".hot-update.js";
-/******/ 		head.appendChild(script);
-/******/ 	}
-/******/ 	
-/******/ 	function hotDownloadManifest(callback) { // eslint-disable-line no-unused-vars
-/******/ 		if(typeof XMLHttpRequest === "undefined")
-/******/ 			return callback(new Error("No browser support"));
-/******/ 		try {
-/******/ 			var request = new XMLHttpRequest();
-/******/ 			var requestPath = __webpack_require__.p + "" + hotCurrentHash + ".hot-update.json";
-/******/ 			request.open("GET", requestPath, true);
-/******/ 			request.timeout = 10000;
-/******/ 			request.send(null);
-/******/ 		} catch(err) {
-/******/ 			return callback(err);
-/******/ 		}
-/******/ 		request.onreadystatechange = function() {
-/******/ 			if(request.readyState !== 4) return;
-/******/ 			if(request.status === 0) {
-/******/ 				// timeout
-/******/ 				callback(new Error("Manifest request to " + requestPath + " timed out."));
-/******/ 			} else if(request.status === 404) {
-/******/ 				// no update available
-/******/ 				callback();
-/******/ 			} else if(request.status !== 200 && request.status !== 304) {
-/******/ 				// other failure
-/******/ 				callback(new Error("Manifest request to " + requestPath + " failed."));
-/******/ 			} else {
-/******/ 				// success
-/******/ 				try {
-/******/ 					var update = JSON.parse(request.responseText);
-/******/ 				} catch(e) {
-/******/ 					callback(e);
-/******/ 					return;
-/******/ 				}
-/******/ 				callback(null, update);
-/******/ 			}
-/******/ 		};
-/******/ 	}
-
-/******/ 	
-/******/ 	
-/******/ 	// Copied from https://github.com/facebook/react/blob/bef45b0/src/shared/utils/canDefineProperty.js
-/******/ 	var canDefineProperty = false;
-/******/ 	try {
-/******/ 		Object.defineProperty({}, "x", {
-/******/ 			get: function() {}
-/******/ 		});
-/******/ 		canDefineProperty = true;
-/******/ 	} catch(x) {
-/******/ 		// IE will fail on defineProperty
-/******/ 	}
-/******/ 	
-/******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d8360a9a2f7231489cc5"; // eslint-disable-line no-unused-vars
-/******/ 	var hotCurrentModuleData = {};
-/******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
-/******/ 	
-/******/ 	function hotCreateRequire(moduleId) { // eslint-disable-line no-unused-vars
-/******/ 		var me = installedModules[moduleId];
-/******/ 		if(!me) return __webpack_require__;
-/******/ 		var fn = function(request) {
-/******/ 			if(me.hot.active) {
-/******/ 				if(installedModules[request]) {
-/******/ 					if(installedModules[request].parents.indexOf(moduleId) < 0)
-/******/ 						installedModules[request].parents.push(moduleId);
-/******/ 					if(me.children.indexOf(request) < 0)
-/******/ 						me.children.push(request);
-/******/ 				} else hotCurrentParents = [moduleId];
-/******/ 			} else {
-/******/ 				console.warn("[HMR] unexpected require(" + request + ") from disposed module " + moduleId);
-/******/ 				hotCurrentParents = [];
-/******/ 			}
-/******/ 			return __webpack_require__(request);
-/******/ 		};
-/******/ 		for(var name in __webpack_require__) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(__webpack_require__, name)) {
-/******/ 				if(canDefineProperty) {
-/******/ 					Object.defineProperty(fn, name, (function(name) {
-/******/ 						return {
-/******/ 							configurable: true,
-/******/ 							enumerable: true,
-/******/ 							get: function() {
-/******/ 								return __webpack_require__[name];
-/******/ 							},
-/******/ 							set: function(value) {
-/******/ 								__webpack_require__[name] = value;
-/******/ 							}
-/******/ 						};
-/******/ 					}(name)));
-/******/ 				} else {
-/******/ 					fn[name] = __webpack_require__[name];
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		function ensure(chunkId, callback) {
-/******/ 			if(hotStatus === "ready")
-/******/ 				hotSetStatus("prepare");
-/******/ 			hotChunksLoading++;
-/******/ 			__webpack_require__.e(chunkId, function() {
-/******/ 				try {
-/******/ 					callback.call(null, fn);
-/******/ 				} finally {
-/******/ 					finishChunkLoading();
-/******/ 				}
-/******/ 	
-/******/ 				function finishChunkLoading() {
-/******/ 					hotChunksLoading--;
-/******/ 					if(hotStatus === "prepare") {
-/******/ 						if(!hotWaitingFilesMap[chunkId]) {
-/******/ 							hotEnsureUpdateChunk(chunkId);
-/******/ 						}
-/******/ 						if(hotChunksLoading === 0 && hotWaitingFiles === 0) {
-/******/ 							hotUpdateDownloaded();
-/******/ 						}
-/******/ 					}
-/******/ 				}
-/******/ 			});
-/******/ 		}
-/******/ 		if(canDefineProperty) {
-/******/ 			Object.defineProperty(fn, "e", {
-/******/ 				enumerable: true,
-/******/ 				value: ensure
-/******/ 			});
-/******/ 		} else {
-/******/ 			fn.e = ensure;
-/******/ 		}
-/******/ 		return fn;
-/******/ 	}
-/******/ 	
-/******/ 	function hotCreateModule(moduleId) { // eslint-disable-line no-unused-vars
-/******/ 		var hot = {
-/******/ 			// private stuff
-/******/ 			_acceptedDependencies: {},
-/******/ 			_declinedDependencies: {},
-/******/ 			_selfAccepted: false,
-/******/ 			_selfDeclined: false,
-/******/ 			_disposeHandlers: [],
-/******/ 	
-/******/ 			// Module API
-/******/ 			active: true,
-/******/ 			accept: function(dep, callback) {
-/******/ 				if(typeof dep === "undefined")
-/******/ 					hot._selfAccepted = true;
-/******/ 				else if(typeof dep === "function")
-/******/ 					hot._selfAccepted = dep;
-/******/ 				else if(typeof dep === "object")
-/******/ 					for(var i = 0; i < dep.length; i++)
-/******/ 						hot._acceptedDependencies[dep[i]] = callback;
-/******/ 				else
-/******/ 					hot._acceptedDependencies[dep] = callback;
-/******/ 			},
-/******/ 			decline: function(dep) {
-/******/ 				if(typeof dep === "undefined")
-/******/ 					hot._selfDeclined = true;
-/******/ 				else if(typeof dep === "number")
-/******/ 					hot._declinedDependencies[dep] = true;
-/******/ 				else
-/******/ 					for(var i = 0; i < dep.length; i++)
-/******/ 						hot._declinedDependencies[dep[i]] = true;
-/******/ 			},
-/******/ 			dispose: function(callback) {
-/******/ 				hot._disposeHandlers.push(callback);
-/******/ 			},
-/******/ 			addDisposeHandler: function(callback) {
-/******/ 				hot._disposeHandlers.push(callback);
-/******/ 			},
-/******/ 			removeDisposeHandler: function(callback) {
-/******/ 				var idx = hot._disposeHandlers.indexOf(callback);
-/******/ 				if(idx >= 0) hot._disposeHandlers.splice(idx, 1);
-/******/ 			},
-/******/ 	
-/******/ 			// Management API
-/******/ 			check: hotCheck,
-/******/ 			apply: hotApply,
-/******/ 			status: function(l) {
-/******/ 				if(!l) return hotStatus;
-/******/ 				hotStatusHandlers.push(l);
-/******/ 			},
-/******/ 			addStatusHandler: function(l) {
-/******/ 				hotStatusHandlers.push(l);
-/******/ 			},
-/******/ 			removeStatusHandler: function(l) {
-/******/ 				var idx = hotStatusHandlers.indexOf(l);
-/******/ 				if(idx >= 0) hotStatusHandlers.splice(idx, 1);
-/******/ 			},
-/******/ 	
-/******/ 			//inherit from previous dispose call
-/******/ 			data: hotCurrentModuleData[moduleId]
-/******/ 		};
-/******/ 		return hot;
-/******/ 	}
-/******/ 	
-/******/ 	var hotStatusHandlers = [];
-/******/ 	var hotStatus = "idle";
-/******/ 	
-/******/ 	function hotSetStatus(newStatus) {
-/******/ 		hotStatus = newStatus;
-/******/ 		for(var i = 0; i < hotStatusHandlers.length; i++)
-/******/ 			hotStatusHandlers[i].call(null, newStatus);
-/******/ 	}
-/******/ 	
-/******/ 	// while downloading
-/******/ 	var hotWaitingFiles = 0;
-/******/ 	var hotChunksLoading = 0;
-/******/ 	var hotWaitingFilesMap = {};
-/******/ 	var hotRequestedFilesMap = {};
-/******/ 	var hotAvailibleFilesMap = {};
-/******/ 	var hotCallback;
-/******/ 	
-/******/ 	// The update info
-/******/ 	var hotUpdate, hotUpdateNewHash;
-/******/ 	
-/******/ 	function toModuleId(id) {
-/******/ 		var isNumber = (+id) + "" === id;
-/******/ 		return isNumber ? +id : id;
-/******/ 	}
-/******/ 	
-/******/ 	function hotCheck(apply, callback) {
-/******/ 		if(hotStatus !== "idle") throw new Error("check() is only allowed in idle status");
-/******/ 		if(typeof apply === "function") {
-/******/ 			hotApplyOnUpdate = false;
-/******/ 			callback = apply;
-/******/ 		} else {
-/******/ 			hotApplyOnUpdate = apply;
-/******/ 			callback = callback || function(err) {
-/******/ 				if(err) throw err;
-/******/ 			};
-/******/ 		}
-/******/ 		hotSetStatus("check");
-/******/ 		hotDownloadManifest(function(err, update) {
-/******/ 			if(err) return callback(err);
-/******/ 			if(!update) {
-/******/ 				hotSetStatus("idle");
-/******/ 				callback(null, null);
-/******/ 				return;
-/******/ 			}
-/******/ 	
-/******/ 			hotRequestedFilesMap = {};
-/******/ 			hotAvailibleFilesMap = {};
-/******/ 			hotWaitingFilesMap = {};
-/******/ 			for(var i = 0; i < update.c.length; i++)
-/******/ 				hotAvailibleFilesMap[update.c[i]] = true;
-/******/ 			hotUpdateNewHash = update.h;
-/******/ 	
-/******/ 			hotSetStatus("prepare");
-/******/ 			hotCallback = callback;
-/******/ 			hotUpdate = {};
-/******/ 			var chunkId = 0;
-/******/ 			{ // eslint-disable-line no-lone-blocks
-/******/ 				/*globals chunkId */
-/******/ 				hotEnsureUpdateChunk(chunkId);
-/******/ 			}
-/******/ 			if(hotStatus === "prepare" && hotChunksLoading === 0 && hotWaitingFiles === 0) {
-/******/ 				hotUpdateDownloaded();
-/******/ 			}
-/******/ 		});
-/******/ 	}
-/******/ 	
-/******/ 	function hotAddUpdateChunk(chunkId, moreModules) { // eslint-disable-line no-unused-vars
-/******/ 		if(!hotAvailibleFilesMap[chunkId] || !hotRequestedFilesMap[chunkId])
-/******/ 			return;
-/******/ 		hotRequestedFilesMap[chunkId] = false;
-/******/ 		for(var moduleId in moreModules) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-/******/ 				hotUpdate[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 		if(--hotWaitingFiles === 0 && hotChunksLoading === 0) {
-/******/ 			hotUpdateDownloaded();
-/******/ 		}
-/******/ 	}
-/******/ 	
-/******/ 	function hotEnsureUpdateChunk(chunkId) {
-/******/ 		if(!hotAvailibleFilesMap[chunkId]) {
-/******/ 			hotWaitingFilesMap[chunkId] = true;
-/******/ 		} else {
-/******/ 			hotRequestedFilesMap[chunkId] = true;
-/******/ 			hotWaitingFiles++;
-/******/ 			hotDownloadUpdateChunk(chunkId);
-/******/ 		}
-/******/ 	}
-/******/ 	
-/******/ 	function hotUpdateDownloaded() {
-/******/ 		hotSetStatus("ready");
-/******/ 		var callback = hotCallback;
-/******/ 		hotCallback = null;
-/******/ 		if(!callback) return;
-/******/ 		if(hotApplyOnUpdate) {
-/******/ 			hotApply(hotApplyOnUpdate, callback);
-/******/ 		} else {
-/******/ 			var outdatedModules = [];
-/******/ 			for(var id in hotUpdate) {
-/******/ 				if(Object.prototype.hasOwnProperty.call(hotUpdate, id)) {
-/******/ 					outdatedModules.push(toModuleId(id));
-/******/ 				}
-/******/ 			}
-/******/ 			callback(null, outdatedModules);
-/******/ 		}
-/******/ 	}
-/******/ 	
-/******/ 	function hotApply(options, callback) {
-/******/ 		if(hotStatus !== "ready") throw new Error("apply() is only allowed in ready status");
-/******/ 		if(typeof options === "function") {
-/******/ 			callback = options;
-/******/ 			options = {};
-/******/ 		} else if(options && typeof options === "object") {
-/******/ 			callback = callback || function(err) {
-/******/ 				if(err) throw err;
-/******/ 			};
-/******/ 		} else {
-/******/ 			options = {};
-/******/ 			callback = callback || function(err) {
-/******/ 				if(err) throw err;
-/******/ 			};
-/******/ 		}
-/******/ 	
-/******/ 		function getAffectedStuff(module) {
-/******/ 			var outdatedModules = [module];
-/******/ 			var outdatedDependencies = {};
-/******/ 	
-/******/ 			var queue = outdatedModules.slice();
-/******/ 			while(queue.length > 0) {
-/******/ 				var moduleId = queue.pop();
-/******/ 				var module = installedModules[moduleId];
-/******/ 				if(!module || module.hot._selfAccepted)
-/******/ 					continue;
-/******/ 				if(module.hot._selfDeclined) {
-/******/ 					return new Error("Aborted because of self decline: " + moduleId);
-/******/ 				}
-/******/ 				if(moduleId === 0) {
-/******/ 					return;
-/******/ 				}
-/******/ 				for(var i = 0; i < module.parents.length; i++) {
-/******/ 					var parentId = module.parents[i];
-/******/ 					var parent = installedModules[parentId];
-/******/ 					if(parent.hot._declinedDependencies[moduleId]) {
-/******/ 						return new Error("Aborted because of declined dependency: " + moduleId + " in " + parentId);
-/******/ 					}
-/******/ 					if(outdatedModules.indexOf(parentId) >= 0) continue;
-/******/ 					if(parent.hot._acceptedDependencies[moduleId]) {
-/******/ 						if(!outdatedDependencies[parentId])
-/******/ 							outdatedDependencies[parentId] = [];
-/******/ 						addAllToSet(outdatedDependencies[parentId], [moduleId]);
-/******/ 						continue;
-/******/ 					}
-/******/ 					delete outdatedDependencies[parentId];
-/******/ 					outdatedModules.push(parentId);
-/******/ 					queue.push(parentId);
-/******/ 				}
-/******/ 			}
-/******/ 	
-/******/ 			return [outdatedModules, outdatedDependencies];
-/******/ 		}
-/******/ 	
-/******/ 		function addAllToSet(a, b) {
-/******/ 			for(var i = 0; i < b.length; i++) {
-/******/ 				var item = b[i];
-/******/ 				if(a.indexOf(item) < 0)
-/******/ 					a.push(item);
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// at begin all updates modules are outdated
-/******/ 		// the "outdated" status can propagate to parents if they don't accept the children
-/******/ 		var outdatedDependencies = {};
-/******/ 		var outdatedModules = [];
-/******/ 		var appliedUpdate = {};
-/******/ 		for(var id in hotUpdate) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(hotUpdate, id)) {
-/******/ 				var moduleId = toModuleId(id);
-/******/ 				var result = getAffectedStuff(moduleId);
-/******/ 				if(!result) {
-/******/ 					if(options.ignoreUnaccepted)
-/******/ 						continue;
-/******/ 					hotSetStatus("abort");
-/******/ 					return callback(new Error("Aborted because " + moduleId + " is not accepted"));
-/******/ 				}
-/******/ 				if(result instanceof Error) {
-/******/ 					hotSetStatus("abort");
-/******/ 					return callback(result);
-/******/ 				}
-/******/ 				appliedUpdate[moduleId] = hotUpdate[moduleId];
-/******/ 				addAllToSet(outdatedModules, result[0]);
-/******/ 				for(var moduleId in result[1]) {
-/******/ 					if(Object.prototype.hasOwnProperty.call(result[1], moduleId)) {
-/******/ 						if(!outdatedDependencies[moduleId])
-/******/ 							outdatedDependencies[moduleId] = [];
-/******/ 						addAllToSet(outdatedDependencies[moduleId], result[1][moduleId]);
-/******/ 					}
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// Store self accepted outdated modules to require them later by the module system
-/******/ 		var outdatedSelfAcceptedModules = [];
-/******/ 		for(var i = 0; i < outdatedModules.length; i++) {
-/******/ 			var moduleId = outdatedModules[i];
-/******/ 			if(installedModules[moduleId] && installedModules[moduleId].hot._selfAccepted)
-/******/ 				outdatedSelfAcceptedModules.push({
-/******/ 					module: moduleId,
-/******/ 					errorHandler: installedModules[moduleId].hot._selfAccepted
-/******/ 				});
-/******/ 		}
-/******/ 	
-/******/ 		// Now in "dispose" phase
-/******/ 		hotSetStatus("dispose");
-/******/ 		var queue = outdatedModules.slice();
-/******/ 		while(queue.length > 0) {
-/******/ 			var moduleId = queue.pop();
-/******/ 			var module = installedModules[moduleId];
-/******/ 			if(!module) continue;
-/******/ 	
-/******/ 			var data = {};
-/******/ 	
-/******/ 			// Call dispose handlers
-/******/ 			var disposeHandlers = module.hot._disposeHandlers;
-/******/ 			for(var j = 0; j < disposeHandlers.length; j++) {
-/******/ 				var cb = disposeHandlers[j];
-/******/ 				cb(data);
-/******/ 			}
-/******/ 			hotCurrentModuleData[moduleId] = data;
-/******/ 	
-/******/ 			// disable module (this disables requires from this module)
-/******/ 			module.hot.active = false;
-/******/ 	
-/******/ 			// remove module from cache
-/******/ 			delete installedModules[moduleId];
-/******/ 	
-/******/ 			// remove "parents" references from all children
-/******/ 			for(var j = 0; j < module.children.length; j++) {
-/******/ 				var child = installedModules[module.children[j]];
-/******/ 				if(!child) continue;
-/******/ 				var idx = child.parents.indexOf(moduleId);
-/******/ 				if(idx >= 0) {
-/******/ 					child.parents.splice(idx, 1);
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// remove outdated dependency from module children
-/******/ 		for(var moduleId in outdatedDependencies) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(outdatedDependencies, moduleId)) {
-/******/ 				var module = installedModules[moduleId];
-/******/ 				var moduleOutdatedDependencies = outdatedDependencies[moduleId];
-/******/ 				for(var j = 0; j < moduleOutdatedDependencies.length; j++) {
-/******/ 					var dependency = moduleOutdatedDependencies[j];
-/******/ 					var idx = module.children.indexOf(dependency);
-/******/ 					if(idx >= 0) module.children.splice(idx, 1);
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// Not in "apply" phase
-/******/ 		hotSetStatus("apply");
-/******/ 	
-/******/ 		hotCurrentHash = hotUpdateNewHash;
-/******/ 	
-/******/ 		// insert new code
-/******/ 		for(var moduleId in appliedUpdate) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(appliedUpdate, moduleId)) {
-/******/ 				modules[moduleId] = appliedUpdate[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// call accept handlers
-/******/ 		var error = null;
-/******/ 		for(var moduleId in outdatedDependencies) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(outdatedDependencies, moduleId)) {
-/******/ 				var module = installedModules[moduleId];
-/******/ 				var moduleOutdatedDependencies = outdatedDependencies[moduleId];
-/******/ 				var callbacks = [];
-/******/ 				for(var i = 0; i < moduleOutdatedDependencies.length; i++) {
-/******/ 					var dependency = moduleOutdatedDependencies[i];
-/******/ 					var cb = module.hot._acceptedDependencies[dependency];
-/******/ 					if(callbacks.indexOf(cb) >= 0) continue;
-/******/ 					callbacks.push(cb);
-/******/ 				}
-/******/ 				for(var i = 0; i < callbacks.length; i++) {
-/******/ 					var cb = callbacks[i];
-/******/ 					try {
-/******/ 						cb(outdatedDependencies);
-/******/ 					} catch(err) {
-/******/ 						if(!error)
-/******/ 							error = err;
-/******/ 					}
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// Load self accepted modules
-/******/ 		for(var i = 0; i < outdatedSelfAcceptedModules.length; i++) {
-/******/ 			var item = outdatedSelfAcceptedModules[i];
-/******/ 			var moduleId = item.module;
-/******/ 			hotCurrentParents = [moduleId];
-/******/ 			try {
-/******/ 				__webpack_require__(moduleId);
-/******/ 			} catch(err) {
-/******/ 				if(typeof item.errorHandler === "function") {
-/******/ 					try {
-/******/ 						item.errorHandler(err);
-/******/ 					} catch(err) {
-/******/ 						if(!error)
-/******/ 							error = err;
-/******/ 					}
-/******/ 				} else if(!error)
-/******/ 					error = err;
-/******/ 			}
-/******/ 		}
-/******/ 	
-/******/ 		// handle errors in accept handlers and self accepted module load
-/******/ 		if(error) {
-/******/ 			hotSetStatus("fail");
-/******/ 			return callback(error);
-/******/ 		}
-/******/ 	
-/******/ 		hotSetStatus("idle");
-/******/ 		callback(null, outdatedModules);
-/******/ 	}
->>>>>>> 93f6517868a2916da902290d03c2b192832687c2
 
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2432,13 +1898,13 @@
 	  }, {
 	    key: 'completeRefs',
 	    value: function completeRefs() {
+	      this.complete({ silent: true });
+
 	      _lodash2.default.forEach(this.refs, function (ref) {
 	        if (typeof ref.completeRefs === 'function') {
 	          ref.completeRefs();
 	        }
 	      });
-
-	      this.complete({ silent: true });
 	    }
 	  }, {
 	    key: 'incompleteRefs',
@@ -45100,10 +44566,6 @@
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-<<<<<<< HEAD
-!function(){"use strict";function n(){for(var t=[],e=0;e<arguments.length;e++){var r=arguments[e];if(r){var o=typeof r;if("string"===o||"number"===o)t.push(r);else if(Array.isArray(r))t.push(n.apply(null,r));else if("object"===o)for(var u in r)i.call(r,u)&&r[u]&&t.push(u)}}return t.join(" ")}var i={}.hasOwnProperty;"undefined"!=typeof t&&t.exports?t.exports=n:(r=[],o=function(){return n}.apply(e,r),!(void 0!==o&&(t.exports=o)))}()},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),c=function d(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:d(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},s=n(1),f=r(s),l=n(2),p=r(l),h=function(t){function e(){return o(this,e),i(this,Object.getPrototypeOf(e).apply(this,arguments))}return u(e,t),a(e,[{key:"bootstrap",value:function(){this.props.bootstrap&&c(Object.getPrototypeOf(e.prototype),"bootstrap",this).call(this)}}]),e}(p["default"]);h.defaultProps=f["default"].defaults({bootstrap:!1,checkComplete:!1,checkReady:!1,shouldRender:!1},p["default"].defaultProps),e["default"]=h},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),c=function d(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:d(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},s=n(1),f=r(s),l=n(4),p=r(l),h=function(t){function e(){return o(this,e),i(this,Object.getPrototypeOf(e).apply(this,arguments))}return u(e,t),a(e,[{key:"start",value:function(){this.props.silentOnStart||this.play()}},{key:"play",value:function(){this.props.playTarget&&this.updateGameState({path:this.props.playTarget,data:{playing:!0}})}},{key:"complete",value:function(){this.props.completeTarget&&this.updateGameState({path:this.props.completeTarget,data:{playing:!1,complete:!0}}),c(Object.getPrototypeOf(e.prototype),"complete",this).call(this)}}]),e}(p["default"]);h.defaultProps=f["default"].defaults({bootstrap:!1,checkComplete:!1,checkReady:!1,shouldRender:!1,completeDelay:0,completeOnStart:!1,silentOnStart:!0},p["default"].defaultProps),e["default"]=h},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol?"symbol":typeof t},c=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),s=function _(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:_(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},f=n(1),l=r(f),p=n(3),h=r(p),d=n(2),v=r(d),y=function(t){function e(){o(this,e);var t=i(this,Object.getPrototypeOf(e).call(this));return t.state={ready:!1,open:!1,leaving:!1,leave:!1,close:!0,complete:!1,load:!1},t}return u(e,t),c(e,[{key:"goto",value:function(t,e){"string"==typeof t||"number"==typeof t?skoash.trigger("goto",{index:t,buttonSound:e}):"object"===("undefined"==typeof t?"undefined":a(t))&&(t.buttonSound=t.buttonSound||e,skoash.trigger("goto",t))}},{key:"back",value:function(){skoash.trigger("goBack")}},{key:"next",value:function(){this.state.leaving||(this.setState({leaving:!0}),setTimeout(this["goto"].bind(this,this.props.nextIndex||this.props.index+1,this.audio.button),this.props.nextDelay||0))}},{key:"prev",value:function(){this["goto"](this.props.prevIndex||this.props.index-1)}},{key:"load",value:function(){var t=this;t.state.load||t.setState({load:!0,ready:!1},function(){t.bootstrap()})}},{key:"start",value:function(){var t=this;this.bootstrap(),Object.keys(this.refs).map(function(e){"function"==typeof t.refs[e].start&&t.refs[e].start()}),this.startMedia(),this.setState({started:!0}),this.checkComplete(),this.props.completeOnStart&&this.complete()}},{key:"startMedia",value:function(){this.video[0]?this.video[0].play():this.audio.voiceOver[0]&&this.audio.voiceOver[0].play(),this.audio.start&&this.audio.start.play(),this.props.playOnStart&&this.refs[this.props.playOnStart]&&this.refs[this.props.playOnStart].play()}},{key:"complete",value:function(){var t=this,n=arguments.length<=0||void 0===arguments[0]?{}:arguments[0];s(Object.getPrototypeOf(e.prototype),"complete",this).call(this,n),setTimeout(function(){skoash.trigger("screenComplete",{screenID:t.props.id,silent:n.silent||t.props.silentComplete}),t.audio["screen-complete"]&&t.audio["screen-complete"].play(),t.props.emitOnComplete&&skoash.trigger("emit",t.props.emitOnComplete)},this.props.completeDelay)}},{key:"open",value:function(t){var e=this;e.setState({load:!0,open:!0,opening:!0,leaving:!1,leave:!1,close:!1,replay:this.state.complete||this.state.replay,opts:t}),setTimeout(function(){e.state.started||(e.start(),e.setState({opening:!1}))},this.props.startDelay),"function"==typeof this.props.onOpen&&this.props.onOpen(this),this.loadData()}},{key:"leave",value:function(){this.setState({open:!1,leave:!0,close:!1}),this.stop()}},{key:"close",value:function(){this.setState({open:!1,leave:!1,close:!0}),this.stop()}},{key:"collectData",value:function(){return this.callProp("collectData")}},{key:"loadData",value:function(){return this.callProp("loadData")}},{key:"getClassNames",value:function(){return(0,h["default"])({LOAD:this.state.load,LEAVING:this.state.leaving,LEAVE:this.state.leave,CLOSE:this.state.close,REPLAY:this.state.replay},s(Object.getPrototypeOf(e.prototype),"getClassNames",this).call(this),"screen")}},{key:"renderContent",value:function(){return React.createElement("div",null,this.renderContentList())}},{key:"renderScreen",value:function(){return this.state.load?this.renderContent():null}},{key:"renderPrevButton",value:function(){return this.props.hidePrev?void 0:React.createElement("button",{className:"prev-screen",onClick:this.prev.bind(this)})}},{key:"renderNextButton",value:function(){return this.props.hideNext?void 0:React.createElement("button",{className:"next-screen",onClick:this.next.bind(this)})}},{key:"render",value:function(){return React.createElement("div",{id:this.props.id,className:this.getClassNames()},this.renderScreen(),this.renderPrevButton(),this.renderNextButton())}}]),e}(v["default"]);y.defaultProps=l["default"].defaults({resetOnClose:!0,startDelay:250},v["default"].defaultProps),e["default"]=y},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}Object.defineProperty(e,"__esModule",{value:!0});var o=n(2),i=r(o),u=n(6),a=r(u),c=n(9),s=r(c),f=n(10),l=r(f),p=n(8),h=r(p),d=n(13),v=r(d),y=n(12),_=r(y),g=n(11),m=r(g),b=n(16),w=r(b),k=n(17),O=r(k);window.play=window.skoash={Component:i["default"],Screen:a["default"],Game:s["default"],Image:l["default"],Audio:h["default"],MediaSequence:_["default"],Video:v["default"],ListItem:m["default"],start:w["default"],util:O["default"]},e["default"]=window.skoash},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),c=function v(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:v(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},s=n(1),f=r(s),l=n(18),p=n(5),h=r(p),d=function(t){function e(){o(this,e);var t=i(this,Object.getPrototypeOf(e).call(this));return t.startCount=0,t.completeCount=0,t.complete=t.complete.bind(t),t.ready=t.ready.bind(t),t}return u(e,t),a(e,[{key:"play",value:function(){var t=skoash.trigger("getState");this.state.ready?(skoash.trigger("audioPlay",{audio:this}),this.delayed=!0,t.paused||(this.timeout=setTimeout(this.playAudio.bind(this),this.props.delay))):this.bootstrap()}},{key:"playAudio",value:function(){this.paused||(this.delayed=!1,this.playing=!0,this.audio.play(),this.startCount++,c(Object.getPrototypeOf(e.prototype),"play",this).call(this))}},{key:"pause",value:function(){this.delayed&&clearTimeout(this.timeout),this.playing&&(this.audio.pause(),this.paused=!0)}},{key:"resume",value:function(){this.delayed&&(this.timeout=setTimeout(this.playAudio.bind(this),this.props.delay)),this.paused&&(this.paused=!1,this.playAudio())}},{key:"stop",value:function(){this.delayed&&clearTimeout(this.timeout),this.audio&&(skoash.trigger("audioStop",{audio:this}),this.playing=!1,this.audio.stop())}},{key:"setVolume",value:function(t){this.audio.volume(t)}},{key:"increaseVolume",value:function(t){this.audio.fadeIn(t)}},{key:"decreaseVolume",value:function(t){this.audio.fadeOut(t)}},{key:"complete",value:function(){this.props.loop||skoash.trigger("audioStop",{audio:this}),this.completeCount++,(this.props.complete||this.playing&&!this.paused)&&(this.startCount>this.completeCount||(this.playing=!1,c(Object.getPrototypeOf(e.prototype),"complete",this).call(this)))}},{key:"shouldComponentUpdate",value:function(){return!1}},{key:"bootstrap",value:function(){this.audio||(this.audio=new l.Howl({urls:[].concat(this.props.src),loop:this.props.loop,onend:this.complete,onload:this.ready}),this.props.complete&&this.complete())}}]),e}(h["default"]);d.defaultProps=f["default"].defaults({delay:0,loop:!1},h["default"].defaultProps),e["default"]=d},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t){if(Array.isArray(t)){for(var e=0,n=Array(t.length);e<t.length;e++)n[e]=t[e];return n}return Array.from(t)}function i(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function u(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function c(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var s=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},f="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol?"symbol":typeof t},l=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),p=function k(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:k(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},h=n(1),d=r(h),v=n(3),y=r(v),_=n(2),g=r(_),m=n(6),b=r(m),w=function(t){function e(t){u(this,e);var n=a(this,Object.getPrototypeOf(e).call(this));return n.config=t,n.screens={0:React.createElement(b["default"],null)},n.menus={Screen:b["default"]},n.state={currentScreenIndex:0,highestScreenIndex:0,screenIndexArray:[],playingSFX:[],playingVO:[],playingBKG:[],playingVideo:null,openMenus:[],loading:!0,demo:!1,data:{},classes:[]},skoash.trigger=n.trigger.bind(n),n.attachEvents(),n}return c(e,t),l(e,[{key:"attachEvents",value:function(){var t=this;window.addEventListener("load",window.focus),window.addEventListener("focus",function(){t.resume()}),window.addEventListener("blur",function(){t.pause()}),window.addEventListener("resize",function(){t.scale()}),window.addEventListener("orientationchange",function(){window.onresize()}),window.parent&&window.parent.addEventListener("orientationchange",function(){window.onresize()}),window.addEventListener("keydown",function(e){t.onKeyUp(e)}),window.addEventListener("platform-event",function(e){t.trigger(e.name,e.gameData)})}},{key:"getState",value:function(){return this.state}},{key:"demo",value:function n(){var n=!this.state.demo;this.setState({demo:n})}},{key:"onKeyUp",value:function(t){39===t.keyCode?this["goto"]({index:this.state.currentScreenIndex+1}):37===t.keyCode?this["goto"]({index:this.state.currentScreenIndex-1}):t.altKey&&t.ctrlKey&&68===t.keyCode&&this.demo()}},{key:"componentWillMount",value:function(){this.emit({name:"init"}),this.detechDevice(),this.scale()}},{key:"bootstrap",value:function(){var t=this;t.state.iOS||(t.state.currentScreenIndex=1),t.requireForReady=Object.keys(t.refs),t.requireForComplete=t.requireForReady.filter(function(e){return!t.refs[e].state||!t.refs[e].state.complete}),t.collectMedia(),t.loadScreens()}},{key:"loadScreens",value:function(){var t,e,n=this;t=this.refs["screen-"+this.state.currentScreenIndex],e=this.refs["screen-"+this.state.currentScreenIndex+1],t&&t.load(),e&&e.load(),setTimeout(function(){n.checkReady()},0)}},{key:"ready",value:function(){this.state.ready||(this.emit({name:"ready",game:this.config.id}),this.setState({ready:!0}),this["goto"]({index:this.state.currentScreenIndex,silent:!0}))}},{key:"resume",value:function(){this.setPause(!1)}},{key:"pause",value:function(){this.setPause(!0)}},{key:"setPause",value:function(t){var e,n=this,r=t?"pause":"resume";this.setState({paused:t},function(){n.state.playingBKG.map(function(t){t[r]()}),e=n.refs["screen-"+n.state.currentScreenIndex],e&&"function"==typeof e[r]&&e[r]()})}},{key:"detechDevice",value:function(){this.setState({iOS:this.iOS(),mobile:this.mobileOrTablet()})}},{key:"iOS",value:function(){var t=["iPad Simulator","iPhone Simulator","iPod Simulator","iPad","iPhone","iPod"];if(navigator.platform)for(;t.length;)if(navigator.platform===t.pop())return!0;return!1}},{key:"mobileOrTablet",value:function(){var t=!1;return function(e){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(e)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(e.substr(0,4)))&&(t=!0)}(navigator.userAgent||navigator.vendor||window.opera),t}},{key:"goBack",value:function(){var t,e;t=this.state.screenIndexArray,t.pop(),e=t.pop(),this["goto"]({index:e})}},{key:"goto",value:function(t){var e,n,r,o,i,u,a,c;if(c=this.state.data,n=this.state.currentScreenIndex,e=this.refs["screen-"+n],!(e&&e.state&&e.state.opening)){if("number"==typeof t.index){if(t.index>this.screensLength-1)return this.quit();r=Math.min(this.screensLength-1,Math.max(0,t.index)),i=this.refs["screen-"+(r+1)],u=Math.max(this.state.highestScreenIndex,r)}else"string"==typeof t.index&&(r=t.index,u=this.state.highestScreenIndex);o=this.refs["screen-"+r],a=this.state.screenIndexArray,e.props.index<o.props.index&&!this.state.demo&&!e.state.complete&&!e.state.replay||e.props.index>o.props.index&&0===o.props.index||(o&&(o.state.load&&o.state.ready||this.loadScreens(),a.push(r),o.open(t)),e&&e!==o&&(e.props.index>o.props.index?e.close():e.leave(),e.props.resetOnClose&&(c=d["default"].cloneDeep(this.state.data),c.screens[n]={})),i&&i.load(),this.setState({loading:!1,currentScreenIndex:r,highestScreenIndex:u,screenIndexArray:a,classes:[],data:c}),this.emitSave(u,r),t.silent||(t.buttonSound&&"function"==typeof t.buttonSound.play?t.buttonSound.play():this.audio.button&&this.audio.button.play()),this.playBackground(r))}}},{key:"emitSave",value:function(t,e){this.emit({name:"save",game:this.config.id,version:this.config.version,highestScreenIndex:t,currentScreenIndex:e})}},{key:"openMenu",value:function(t){var e,n,r;e=this.refs["menu-"+t.id],e&&(e.open(),n=this.state.openMenus||[],n.push(t.id),this.media.button&&this.media.button.play(),this.setState({openMenus:n})),r=this.refs["screen-"+this.state.currentScreenIndex],r&&r.pause()}},{key:"menuClose",value:function(t){var e,n;e=this.state.openMenus||[],e.splice(t.id,1),this.media.button&&this.media.button.play(),this.setState({openMenus:e}),n=this.refs["screen-"+this.state.currentScreenIndex],n&&!e.length&&n.resume()}},{key:"getBackgroundIndex",value:function(){return 0}},{key:"playBackground",value:function(t){var e,n,r,o=this;d["default"].isFinite(t)&&(e=this.getBackgroundIndex(t),n=this.state.playingBKG,r=this.refs["screen-"+t],(r.props.restartBackground||-1===n.indexOf(this.audio.background[e]))&&(n=n.filter(function(t){return t.stop(),!1}),this.setState({playingBKG:n},function(){o.audio.background[e]&&o.audio.background[e].play()})))}},{key:"scale",value:function(){this.setState({scale:window.innerWidth/this.config.dimensions.width})}},{key:"trigger",value:function(t,e){var n,r;return n={"goto":this["goto"],goBack:this.goBack,audioPlay:this.audioPlay,audioStop:this.audioStop,videoPlay:this.videoPlay,videoStop:this.videoStop,demo:this.demo,"toggle-demo-mode":this.demo,getData:this.getData,"get-data":this.getData,passData:this.passData,"pass-data":this.passData,"update-data":this.updateData,updateState:this.updateState,screenComplete:this.screenComplete,openMenu:this.openMenu,menuClose:this.menuClose,getState:this.getState,emit:this.emit,quit:this.quit,save:this.load,complete:this.checkComplete,incomplete:this.checkComplete},r=n[t],"function"==typeof r?r.call(this,e):void 0}},{key:"emit",value:function(t){var e,n=this;return e=new Promise(function(e){var r;"object"===("undefined"==typeof t?"undefined":f(t))&&(t.game||(t.game=n.config.id),t.version||(t.version=n.config.version),r=new Event("game-event",{bubbles:!0,cancelable:!1}),r.name=t.name,r.gameData=t,r.respond=function(t){e(t)},window.frameElement&&window.frameElement.dispatchEvent(r))}),e.then(function(t){n.trigger(t.name,t)}),e}},{key:"getData",value:function(t){return t.name="getData",this.emit(t)}},{key:"passData",value:function(){"function"==typeof this.props.passData&&this.props.passData.apply(this,arguments)}},{key:"load",value:function(t){}},{key:"quit",value:function(){this.emit({name:"exit",game:this.config.id})}},{key:"updateState",value:function(t){"string"==typeof t.path?(t.data={screens:i({},this.state.currentScreenIndex,i({},t.path,t.data))},this.updateData(t)):d["default"].isArray(t.path)&&(t.data=d["default"].setWith({},t.path,t.data,Object),this.updateData(t))}},{key:"updateData",value:function(t){var e=this,n=d["default"].merge(this.state.data,t.data);this.setState({data:n},function(){"function"==typeof t.callback&&t.callback.call(e)})}},{key:"audioPlay",value:function(t){var e,n,r,o;switch(e=this.state.playingSFX||[],n=this.state.playingVO||[],r=this.state.playingBKG||[],o=this.state.classes||[],t.audio.props.gameClass&&o.push(t.audio.props.gameClass),t.audio.props.type){case"sfx":e.push(t.audio);break;case"voiceOver":n.push(t.audio),this.fadeBackground();break;case"background":r.push(t.audio)}this.setState({playingSFX:e,playingVO:n,playingBKG:r,classes:o})}},{key:"audioStop",value:function(t){var e,n,r,o;switch(e=this.state.playingSFX||[],n=this.state.playingVO||[],r=this.state.playingBKG||[],t.audio.props.type){case"sfx":o=e.indexOf(t.audio),-1!==o&&e.splice(o,1);break;case"voiceOver":o=n.indexOf(t.audio),-1!==o&&n.splice(o,1),n.length||this.raiseBackground();break;case"background":o=r.indexOf(t.audio),-1!==o&&r.splice(o,1)}this.setState({playingSFX:e,playingVO:n,playingBKG:r})}},{key:"videoPlay",value:function(t){var e=this.state.playingVideo;e&&e.stop(),e=t.video,this.fadeBackground(0),this.setState({playingVideo:e})}},{key:"videoStop",value:function(){this.raiseBackground(1),this.setState({playingVideo:null})}},{key:"fadeBackground",value:function(t){"undefined"==typeof t&&(t=.25),this.state.playingBKG.map(function(e){e.setVolume(t)})}},{key:"raiseBackground",value:function(t){"undefined"==typeof t&&(t=1),0===this.state.playingVO.length&&this.state.playingBKG.map(function(e){e.setVolume(t)})}},{key:"checkComplete",value:function(){var t=this.refs["screen-"+this.state.currentScreenIndex];t&&"function"==typeof t.checkComplete&&t.checkComplete()}},{key:"screenComplete",value:function(t){t.silent||this.audio["screen-complete"]&&this.audio["screen-complete"].play()}},{key:"getClassNames",value:function(){var t;return y["default"].apply(void 0,["pl-game","skoash-game",(t={iOS:this.state.iOS,MOBILE:this.state.mobile,SFX:this.state.playingSFX.length,"VOICE-OVER":this.state.playingVO.length,PAUSED:this.state.paused,LOADING:this.state.loading,MENU:this.state.openMenus.length},i(t,"MENU-"+this.state.openMenus[0],this.state.openMenus[0]),i(t,"DEMO",this.state.demo),i(t,"SCREEN-"+this.state.currentScreenIndex,!0),t)].concat(o(this.state.classes),[p(Object.getPrototypeOf(e.prototype),"getClassNames",this).call(this)]))}},{key:"getStyles",value:function(){var t,e;return t="scale3d("+this.state.scale+","+this.state.scale+",1)",e="50% 0px 0px",this.state.scale<1&&(e="0px 0px 0px"),{transform:t,WebkitTransform:t,transformOrigin:e,WebkitTransformOrigin:e}}},{key:"renderLoader",value:function(){return null}},{key:"renderAssets",value:function(){return null}},{key:"renderMenu",value:function(){return React.createElement("div",{className:"menu"},React.createElement("button",{className:"close",onClick:this.openMenu.bind(this,{id:"quit"})}))}},{key:"renderScreens",value:function(){var t,e,n=this;return t=n.props.screens||n.screens,e=Object.keys(t),n.screensLength=e.length,e.map(function(e,r){var o,i;return i=t[e].props||{},i.data=n.state.data.screens[e],i.index=r,(o=t[e])(i,"screen-"+e,e)})}},{key:"renderMenuScreens",value:function(){return d["default"].map(this.menus,function(t,e){return React.createElement(t.type,s({},t.props,{key:e,index:e,ref:"menu-"+e}))})}},{key:"render",value:function(){return React.createElement("div",{className:this.getClassNames(),style:this.getStyles()},this.renderLoader(),this.renderAssets(),this.renderMenu(),this.renderScreens(),this.renderMenuScreens())}}]),e}(g["default"]);e["default"]=w},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},c=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),s=n(1),f=r(s),l=n(4),p=r(l),h=function(t){function e(){return o(this,e),i(this,Object.getPrototypeOf(e).call(this))}return u(e,t),c(e,[{key:"componentDidMount",value:function(){this.setState({complete:!0})}},{key:"ready",value:function(){this.state.error||this.setState({ready:!0,complete:!this.props.incomplete})}},{key:"error",value:function(){this.setState({error:!0,ready:!1})}},{key:"render",value:function(){return React.createElement("img",a({},this.props,{onLoad:this.ready.bind(this),onError:this.error.bind(this),draggable:!1}))}}]),e}(p["default"]);h.defaultProps=f["default"].assign(p["default"].defaultProps,{shouldRender:!0,bootstrap:!0,checkReady:!0}),e["default"]=h},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),c=n(2),s=r(c),f=function(t){function e(){return o(this,e),i(this,Object.getPrototypeOf(e).call(this))}return u(e,t),a(e,[{key:"componentWillMount",value:function(){this.props.correct||this.complete()}},{key:"checkComplete",value:function(){}},{key:"render",value:function(){return React.createElement("li",this.props)}}]),e}(s["default"]);e["default"]=f},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},c=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),s=n(2),f=r(s),l=function(t){function e(){o(this,e);var t=i(this,Object.getPrototypeOf(e).call(this));return t.playNext=t.playNext.bind(t),t}return u(e,t),c(e,[{key:"start",value:function(){this.props.silentOnStart||this.play()}},{key:"play",value:function(){this.setState({started:!0}),this.refs[0]&&(this.playingIndex=0,this.refs[0].play()),this.props.checkComplete!==!1&&this.checkComplete()}},{key:"playNext",value:function(){var t=this.refs[++this.playingIndex];t&&this.state.started&&t.play()}},{key:"renderContentList",value:function(){var t=this,e=[].concat(this.props.children);
-return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n,key:n,onComplete:function(){t.playNext(),"function"==typeof e.props.onComplete&&e.props.onComplete.call(this,this)}}))})}}]),e}(f["default"]);l.defaultProps={type:"div",shouldRender:!0,bootstrap:!0,checkReady:!0,checkComplete:!0,silentOnStart:!1},e["default"]=l},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function u(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}Object.defineProperty(e,"__esModule",{value:!0});var a=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},c=function(){function t(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}return function(e,n,r){return n&&t(e.prototype,n),r&&t(e,r),e}}(),s=function h(t,e,n){null===t&&(t=Function.prototype);var r=Object.getOwnPropertyDescriptor(t,e);if(void 0===r){var o=Object.getPrototypeOf(t);return null===o?void 0:h(o,e,n)}if("value"in r)return r.value;var i=r.get;if(void 0!==i)return i.call(n)},f=n(5),l=r(f),p=function(t){function e(){return o(this,e),i(this,Object.getPrototypeOf(e).call(this))}return u(e,t),c(e,[{key:"play",value:function(t){function e(){return t.apply(this,arguments)}return e.toString=function(){return t.toString()},e}(function(){this.state.playing||(this.el.play(),s(Object.getPrototypeOf(e.prototype),"play",this).call(this),play.trigger("videoPlay",{video:this}),this.setState({playing:!0}))})},{key:"start",value:function(){this.play()}},{key:"stop",value:function(){this.el.pause(),play.trigger("videoStop",{video:this}),this.setState({playing:!1})}},{key:"pause",value:function(){this.el.pause(),this.setState({paused:!0})}},{key:"resume",value:function(){this.setState({paused:!1},this.play.bind(this))}},{key:"complete",value:function(){this.props.loop||play.trigger("videoStop",{video:this}),this.setState({playing:!1}),s(Object.getPrototypeOf(e.prototype),"complete",this).call(this)}},{key:"componentDidMount",value:function(){this.el=ReactDOM.findDOMNode(this)}},{key:"render",value:function(){return React.createElement("video",a({},this.props,{onCanPlay:this.ready.bind(this),onEnded:this.complete.bind(this),preload:"auto",controls:!0}))}}]),e}(l["default"]);e["default"]=p},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t,e){var n,r,o,i,u,a,c,s,f=[t,e];for(i=0;i<f.length;i++){var l=f[i];for(u=0;u<l.length;u++){var p=(u+1)%l.length,h=l[u],d=l[p],v={x:d.y-h.y,y:h.x-d.x};for(n=r=void 0,a=0;a<t.length;a++)o=v.x*t[a].x+v.y*t[a].y,("undefined"==typeof n||n>o)&&(n=o),("undefined"==typeof r||o>r)&&(r=o);for(c=s=void 0,a=0;a<e.length;a++)o=v.x*e[a].x+v.y*e[a].y,("undefined"==typeof c||c>o)&&(c=o),("undefined"==typeof s||o>s)&&(s=o);if(c>r||n>s)return!1}}return!0};e["default"]=n},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t,e){var n=e?Math.pow(10,e):1;return Math.floor(t*n)/n};e["default"]=n},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol?"symbol":typeof t},r=function(t,e){var r;r=document.getElementById(e),r||(r=document.createElement("DIV"),r.id=e,document.body.appendChild(r)),t="object"===("undefined"==typeof t?"undefined":n(t))?t:React.createElement(t,null),ReactDOM.render(t,r)};e["default"]=r},function(t,e,n){"use strict";function r(t){return t&&t.__esModule?t:{"default":t}}Object.defineProperty(e,"__esModule",{value:!0});var o=n(14),i=r(o),u=n(15),a=r(u),c={doIntersect:i["default"],floor:a["default"]};e["default"]=c},function(t,e,n){var r;/*!
-=======
 	/* global define */
 
 	(function () {
@@ -45268,9 +44730,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'next',
 	    value: function next() {
-	      var state = skoash.trigger('getState');
-
-	      if (this.state.leaving || !state.demo && !this.state.complete && !this.state.replay) return;
+	      if (this.state.leaving) return;
 
 	      this.setState({
 	        leaving: true
@@ -45296,22 +44756,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	          self.bootstrap();
 	        });
 	      }
-	    }
-	  }, {
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      _get(Object.getPrototypeOf(Screen.prototype), 'bootstrap', this).call(this);
-
-	      if (this.props.load) this.load();
-	    }
-	  }, {
-	    key: 'replay',
-	    value: function replay() {
-	      var _replay = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
-
-	      this.setState({
-	        replay: _replay
-	      });
 	    }
 	  }, {
 	    key: 'start',
@@ -45397,10 +44841,10 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	      setTimeout(function () {
 	        if (!self.state.started) {
 	          self.start();
+	          self.setState({
+	            opening: false
+	          });
 	        }
-	        self.setState({
-	          opening: false
-	        });
 	      }, this.props.startDelay);
 
 	      if (typeof this.props.onOpen === 'function') {
@@ -45632,6 +45076,8 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	    skoash.trigger = _this.trigger.bind(_this);
 
 	    _this.attachEvents();
+
+	    window.g = _this;
 	    return _this;
 	  }
 
@@ -45652,11 +45098,11 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	        self.scale();
 	      });
 	      window.addEventListener('orientationchange', function () {
-	        window.dispatchEvent(new Event('resize'));
+	        window.onresize();
 	      });
 	      if (window.parent) {
 	        window.parent.addEventListener('orientationchange', function () {
-	          window.dispatchEvent(new Event('orientationchange'));
+	          window.onresize();
 	        });
 	      }
 
@@ -45723,33 +45169,19 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	    }
 	  }, {
 	    key: 'loadScreens',
-	    value: function loadScreens(currentScreenIndex) {
-	      var _this2 = this;
+	    value: function loadScreens() {
+	      var firstScreen,
+	          secondScreen,
+	          self = this;
 
-	      var goto = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
-
-	      var firstScreen, secondScreen;
-
-	      if (!_lodash2.default.isFinite(currentScreenIndex)) currentScreenIndex = this.state.currentScreenIndex;
-
-	      firstScreen = this.refs['screen-' + currentScreenIndex];
-	      secondScreen = this.refs['screen-' + currentScreenIndex + 1];
+	      firstScreen = this.refs['screen-' + this.state.currentScreenIndex];
+	      secondScreen = this.refs['screen-' + this.state.currentScreenIndex + 1];
 
 	      if (firstScreen) firstScreen.load();
 	      if (secondScreen) secondScreen.load();
 
 	      setTimeout(function () {
-	        if (!_this2.state.ready) {
-	          _this2.checkReady();
-	        }
-
-	        if (goto) {
-	          _this2.goto({
-	            index: currentScreenIndex,
-	            load: true,
-	            silent: true
-	          });
-	        }
+	        self.checkReady();
 	      }, 0);
 	    }
 	  }, {
@@ -45786,7 +45218,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'setPause',
 	    value: function setPause(paused) {
-	      var _this3 = this;
+	      var _this2 = this;
 
 	      var openScreen,
 	          fnKey = paused ? 'pause' : 'resume';
@@ -45794,11 +45226,11 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	      this.setState({
 	        paused: paused
 	      }, function () {
-	        _this3.state.playingBKG.forEach(function (audio) {
+	        _this2.state.playingBKG.map(function (audio) {
 	          audio[fnKey]();
 	        });
 
-	        openScreen = _this3.refs['screen-' + _this3.state.currentScreenIndex];
+	        openScreen = _this2.refs['screen-' + _this2.state.currentScreenIndex];
 	        if (openScreen && typeof openScreen[fnKey] === 'function') {
 	          openScreen[fnKey]();
 	        }
@@ -45869,12 +45301,14 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	       * highestScreenIndex is the index of the highest screen reached
 	       * not the index of the highest screen that exists.
 	       */
-	      var oldScreen, prevScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
+	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
 
 	      data = this.state.data;
+
 	      oldIndex = this.state.currentScreenIndex;
 	      oldScreen = this.refs['screen-' + oldIndex];
-	      if (!opts.load && oldScreen && oldScreen.state && oldScreen.state.opening) {
+
+	      if (oldScreen && oldScreen.state && oldScreen.state.opening) {
 	        return;
 	      }
 
@@ -45890,11 +45324,10 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	        highestScreenIndex = this.state.highestScreenIndex;
 	      }
 	      newScreen = this.refs['screen-' + currentScreenIndex];
-	      prevScreen = this.refs['screen-' + (currentScreenIndex - 1)];
 	      screenIndexArray = this.state.screenIndexArray;
 
 	      if (oldScreen.props.index < newScreen.props.index) {
-	        if (!opts.load && !this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay)) {
+	        if (!this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay)) {
 	          return;
 	        }
 	      }
@@ -45908,13 +45341,11 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	      if (newScreen) {
 	        // this should never be dropped into
 	        if (!newScreen.state.load || !newScreen.state.ready) {
-	          this.loadScreens(currentScreenIndex, false);
+	          this.loadScreens();
 	        }
 	        screenIndexArray.push(currentScreenIndex);
 	        newScreen.open(opts);
 	      }
-
-	      if (prevScreen) prevScreen.replay();
 
 	      if (oldScreen && oldScreen !== newScreen) {
 	        if (oldScreen.props.index > newScreen.props.index) {
@@ -45942,9 +45373,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	        data: data
 	      });
 
-	      if (!opts.load) {
-	        this.emitSave(highestScreenIndex, currentScreenIndex);
-	      }
+	      this.emitSave(highestScreenIndex, currentScreenIndex);
 
 	      if (!opts.silent) {
 	        if (opts.buttonSound && typeof opts.buttonSound.play === 'function') {
@@ -45959,7 +45388,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'emitSave',
 	    value: function emitSave(highestScreenIndex, currentScreenIndex) {
-	      if (highestScreenIndex < 2) return;
 	      this.emit({
 	        name: 'save',
 	        game: this.config.id,
@@ -46011,26 +45439,29 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'playBackground',
 	    value: function playBackground(currentScreenIndex) {
-	      var index, playingBKG, currentScreen;
+	      var _this3 = this;
 
-	      if (!_lodash2.default.isFinite(currentScreenIndex)) return;
+	      var index, playingBKG;
 
 	      index = this.getBackgroundIndex(currentScreenIndex);
 	      playingBKG = this.state.playingBKG;
 
-	      currentScreen = this.refs['screen-' + currentScreenIndex];
-
-	      if (!currentScreen.props.restartBackground && playingBKG.indexOf(this.audio.background[index]) !== -1) {
+	      if (playingBKG.indexOf(this.audio.background[index]) !== -1) {
 	        return;
 	      }
 
-	      _lodash2.default.each(playingBKG, function (bkg) {
+	      playingBKG = playingBKG.filter(function (bkg) {
 	        bkg.stop();
+	        return false;
 	      });
 
-	      if (this.audio.background[index]) {
-	        this.audio.background[index].play();
-	      }
+	      this.setState({
+	        playingBKG: playingBKG
+	      }, function () {
+	        if (_this3.audio.background[index]) {
+	          _this3.audio.background[index].play();
+	        }
+	      });
 	    }
 	  }, {
 	    key: 'scale',
@@ -46067,8 +45498,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	        quit: this.quit,
 	        save: this.load,
 	        complete: this.checkComplete,
-	        incomplete: this.checkComplete,
-	        resize: this.scale
+	        incomplete: this.checkComplete
 	      };
 
 	      fn = events[event];
@@ -46081,6 +45511,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	    value: function emit(gameData) {
 	      var p,
 	          self = this;
+
 	      p = new Promise(function (resolve) {
 	        var event;
 
@@ -46129,16 +45560,22 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	    }
 	  }, {
 	    key: 'load',
-	    value: function load(opts) {
-	      if (opts.game === this.config.id && opts.version === this.config.version && opts.highestScreenIndex) {
-	        if (opts.highestScreenIndex === this.screensLength - 1) return;
-	        this.loadScreens(opts.highestScreenIndex);
-	        for (var i = 0; i < opts.highestScreenIndex - 1; i++) {
-	          if (this.refs['screen-' + i]) {
-	            this.refs['screen-' + i].completeRefs();
-	          }
-	        }
-	      }
+	    value: function load(opts) {// eslint-disable-line no-unused-vars
+	      // AW 20160823
+	      // I'm removing this for now since it doesn't work properly.
+	      // I will fix it when it is priority.
+	      // if (opts.game === this.config.id && opts.highestScreenIndex) {
+	      //   this.setState({
+	      //     currentScreenIndex: opts.highestScreenIndex
+	      //   }, () => {
+	      //     this.loadScreens();
+	      //     for (var i = 0; i < opts.highestScreenIndex; i++) {
+	      //       if (this.refs['screen-' + i]) {
+	      //         this.refs['screen-' + i].completeRefs();
+	      //       }
+	      //     }
+	      //   });
+	      // }
 	    }
 	  }, {
 	    key: 'quit',
@@ -46272,17 +45709,17 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'fadeBackground',
 	    value: function fadeBackground(value) {
-	      if (typeof value !== 'number') value = .25;
-	      this.state.playingBKG.forEach(function (bkg) {
+	      if (typeof value === 'undefined') value = .25;
+	      this.state.playingBKG.map(function (bkg) {
 	        bkg.setVolume(value);
 	      });
 	    }
 	  }, {
 	    key: 'raiseBackground',
 	    value: function raiseBackground(value) {
-	      if (typeof value !== 'number') value = 1;
+	      if (typeof value === 'undefined') value = 1;
 	      if (this.state.playingVO.length === 0) {
-	        this.state.playingBKG.forEach(function (bkg) {
+	        this.state.playingBKG.map(function (bkg) {
 	          bkg.setVolume(value);
 	        });
 	      }
@@ -46325,20 +45762,15 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'getStyles',
 	    value: function getStyles() {
-	      var transform, transformOrigin;
-
-	      transform = 'scale3d(' + this.state.scale + ',' + this.state.scale + ',1)';
-	      transformOrigin = '50% 0px 0px';
+	      var transformOrigin = '50% 0px 0px';
 
 	      if (this.state.scale < 1) {
 	        transformOrigin = '0px 0px 0px';
 	      }
 
 	      return {
-	        transform: transform,
-	        WebkitTransform: transform,
-	        transformOrigin: transformOrigin,
-	        WebkitTransformOrigin: transformOrigin
+	        transform: 'scale3d(' + this.state.scale + ',' + this.state.scale + ',1)',
+	        transformOrigin: transformOrigin
 	      };
 	    }
 	  }, {
@@ -46381,15 +45813,8 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'renderMenuScreens',
 	    value: function renderMenuScreens() {
-	      var _this5 = this;
-
 	      return _lodash2.default.map(this.menus, function (Menu, key) {
-	        return React.createElement(Menu.type, _extends({}, Menu.props, {
-	          gameState: _this5.state,
-	          key: key,
-	          index: key,
-	          ref: 'menu-' + key
-	        }));
+	        return React.createElement(Menu.type, _extends({}, Menu.props, { key: key, index: key, ref: 'menu-' + key }));
 	      });
 	    }
 	  }, {
@@ -46599,9 +46024,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
 
-	    _this.startCount = 0;
-	    _this.completeCount = 0;
-
 	    _this.complete = _this.complete.bind(_this);
 	    _this.ready = _this.ready.bind(_this);
 	    return _this;
@@ -46633,8 +46055,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	      this.delayed = false;
 	      this.playing = true;
 
-	      this.audio.play(this.sprite);
-	      this.startCount++;
+	      this.audio.play();
 	      _get(Object.getPrototypeOf(Audio.prototype), 'play', this).call(this);
 	    }
 	  }, {
@@ -46651,10 +46072,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'resume',
 	    value: function resume() {
-	      var state = skoash.trigger('getState');
-
-	      if (state.paused) return;
-
 	      if (this.delayed) {
 	        this.timeout = setTimeout(this.playAudio.bind(this), this.props.delay);
 	      }
@@ -46666,7 +46083,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'stop',
 	    value: function stop() {
-	      if (this.delayed && this.timeout) {
+	      if (this.delayed) {
 	        clearTimeout(this.timeout);
 	      }
 
@@ -46675,28 +46092,22 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	        audio: this
 	      });
 	      this.playing = false;
-	      this.paused = false;
-	      this.audio.stop(this.sprite);
+	      this.audio.stop();
 	    }
 	  }, {
 	    key: 'setVolume',
-	    value: function setVolume(volume) {
-	      volume = Math.min(this.props.maxVolume, Math.max(this.props.minVolume, volume));
-	      this.audio.volume(volume);
+	    value: function setVolume(value) {
+	      this.audio.volume(value);
 	    }
 	  }, {
 	    key: 'increaseVolume',
-	    value: function increaseVolume(volume) {
-	      if (!this.playing) return;
-	      volume = Math.min(volume || this.props.volume, this.props.maxVolume);
-	      this.audio.fadeIn(volume);
+	    value: function increaseVolume(value) {
+	      this.audio.fadeIn(value);
 	    }
 	  }, {
 	    key: 'decreaseVolume',
-	    value: function decreaseVolume(volume) {
-	      if (!this.playing) return;
-	      volume = Math.max(volume, this.props.minVolume);
-	      this.audio.fadeOut(volume);
+	    value: function decreaseVolume(value) {
+	      this.audio.fadeOut(value);
 	    }
 	  }, {
 	    key: 'complete',
@@ -46706,11 +46117,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	          audio: this
 	        });
 	      }
-
-	      this.completeCount++;
-
-	      if (!this.props.complete && (!this.playing || this.paused)) return;
-	      if (this.startCount > this.completeCount) return;
 
 	      this.playing = false;
 	      _get(Object.getPrototypeOf(Audio.prototype), 'complete', this).call(this);
@@ -46723,25 +46129,12 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'bootstrap',
 	    value: function bootstrap() {
-	      var sprite;
-
-	      this.sprite = this.props.sprite ? 'sprite' : undefined;
-
 	      if (this.audio) return;
-
-	      if (this.props.sprite) {
-	        sprite = {
-	          sprite: this.props.sprite
-	        };
-	      }
-
 	      this.audio = new _howler.Howl({
 	        urls: [].concat(this.props.src),
 	        loop: this.props.loop,
-	        volume: this.props.volume,
 	        onend: this.complete,
-	        onload: this.ready,
-	        sprite: sprite
+	        onload: this.ready
 	      });
 	      if (this.props.complete) {
 	        this.complete();
@@ -46754,11 +46147,7 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 
 	Audio.defaultProps = _lodash2.default.defaults({
 	  delay: 0,
-	  loop: false,
-	  volume: 1,
-	  maxVolume: 1,
-	  minVolume: 0,
-	  sprite: undefined
+	  loop: false
 	}, _media2.default.defaultProps);
 
 		exports.default = Audio;
@@ -46768,7 +46157,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
->>>>>>> 7270539e1c9a16e9e5e4809d7df509f5b2621150
 	 *  howler.js v1.1.29
 	 *  howlerjs.com
 	 *
@@ -48174,9 +47562,6 @@ return e.map(function(e,n){return React.createElement(e.type,a({},e.props,{ref:n
 	  }, {
 	    key: 'play',
 	    value: function play() {
-	      // this should be implemented per media
-	      // and the class that extends media should
-	      // call super.play() inside if its play method
 	      if (this.props.playTarget) {
 	        this.updateGameState({
 	          path: this.props.playTarget,

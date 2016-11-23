@@ -80,23 +80,31 @@ class SelectableCanvasMove extends SelectableCanvas {
 
     this.el = ReactDOM.findDOMNode(this);
 
-    this.offset = this.el.getBoundingClientRect();
-    this.refs.canvas.width = this.offset.width;
-    this.refs.canvas.height = this.offset.height;
-    this.buffer.width = this.offset.width;
-    this.buffer.height = this.offset.height;
+    this.setDimensions();
 
     this.bctx = this.buffer.getContext('2d');
     this.context = this.refs.canvas.getContext('2d');
 
     this.items = [];
 
-    _.forIn(this.refs, (component) => {
-      if (!(component instanceof skoash.Image)) return;
-      this.items.push(new Item(component, this.context));
+    _.forIn(this.refs, item => {
+      if (!(item instanceof skoash.Image)) return;
+      this.items.push(new Item(item, this.context));
     });
 
     this.itemsReverse = _.reverse(_.clone(this.items));
+  }
+
+  setDimensions() {
+    this.offset = this.el.getBoundingClientRect();
+    this.refs.canvas.width = this.offset.width;
+    this.refs.canvas.height = this.offset.height;
+    this.buffer.width = this.offset.width;
+    this.buffer.height = this.offset.height;
+  }
+
+  componentDidUpdate() {
+    this.setDimensions();
   }
 
   start() {
@@ -104,28 +112,24 @@ class SelectableCanvasMove extends SelectableCanvas {
 
     this.isRunning = true;
     window.requestAnimationFrame(this.move);
-
-    this.items.forEach(item => {
-      item.deselect();
-    });
+    _.each(this.items, item => item.deselect());
   }
 
   move() {
-    var self = this;
     this.context.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
-    _.forEach(this.items, item => {
+    _.each(this.items, item => {
       var y, height;
       item.position.y -= item.speed;
 
       y = item.position.y + item.margin;
       height = item.size.height;
 
-      if (y + height < 0) item.position.y = self.offset.height * 1.1;
+      if (y + height < 0) item.position.y = this.offset.height * 1.1;
 
       item.render();
     });
 
-    if (this.state.started) window.requestAnimationFrame(this.move);
+    if (this.isRunning) window.requestAnimationFrame(this.move);
   }
 
   selectHelper(e, classes) {
