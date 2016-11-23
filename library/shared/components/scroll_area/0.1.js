@@ -27,6 +27,16 @@ class ScrollArea extends skoash.Component {
     this.touchEnd = this.touchEnd.bind(this);
   }
 
+  start() {
+    super.start(() => {
+      this[AREA].scrollTop = 0;
+      this.setState({
+        startY: 0,
+        endY: 0,
+      });
+    });
+  }
+
   bootstrap() {
     super.bootstrap();
 

@@ -21,5 +21,3 @@ export default function (props, ref, key) {
     </skoash.Screen>
   );
 }
-
-// add second animation on you

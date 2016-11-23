@@ -7,3 +7,4 @@ library/component-catalog
 *.swp
 Thumbs.db
 **/*.swp
+**/*.swo

@@ -1,10 +1,31 @@
+import classNames from 'classnames';
+
 import Catch from 'shared/components/catch/0.1';
 
 class Catcher extends Catch {
+  constructor(props) {
+    super(props);
+
+    this.state = _.defaults({
+      styles: [],
+    }, this.state);
+
+    this.moveEvent = this.moveEvent.bind(this);
+  }
+
   bootstrap() {
     skoash.Component.prototype.bootstrap.call(this);
     window.addEventListener('resize', this.onResize);
     this.onResize();
+
+    if (this.props.moveBuckets) {
+      window.addEventListener('mousemove', this.moveEvent);
+      window.addEventListener('touchmove', this.moveEvent);
+    }
+  }
+
+  moveEvent(e) {
+    this.props.onMove.call(this, e);
   }
 
   onReady() {
@@ -38,8 +59,28 @@ class Catcher extends Catch {
     window.requestAnimationFrame(this.checkCollisions);
   }
 
+  isColliding(bucketRect, catchRect) {
+    var bucketCorners = [], catchableCorners = [];
+
+    for (let i = 0; i < 4; i++) {
+      bucketCorners.push({
+        x: bucketRect.left + bucketRect.width * (i === 1 || i === 2 ? 1 : 0),
+        y: bucketRect.top + bucketRect.height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    for (let i = 0; i < 4; i++) {
+      catchableCorners.push({
+        x: catchRect.left + catchRect.width * (i === 1 || i === 2 ? 1 : 0),
+        y: catchRect.top + catchRect.height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    return skoash.util.doIntersect(bucketCorners, catchableCorners);
+  }
+
   selectCatchable(bucketRef, catchableRef) {
-    if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableRef.canCatch()) return;
+    if (!this.state.started || this.state.paused || !this.state.canCatch || !this.props.canCatch || !catchableRef.canCatch()) return;
     catchableRef.markCaught();
     if (catchableRef.props.message === bucketRef.props.message) {
       this.correct(bucketRef, catchableRef);
@@ -58,12 +99,16 @@ class Catcher extends Catch {
     this.props.onIncorrect.call(this, bucketRef, catchableRef);
   }
 
+  getClassNames() {
+    return classNames('catcher', super.getClassNames());
+  }
+
   renderBucket() {
     return _.map([].concat(this.props.bucket), (bucket, key) =>
       <bucket.type
         {...bucket.props}
         ref={'buckets-' + key}
-        style={this.getStyle()}
+        style={this.state.styles[key]}
         key={key}
       />
     );
@@ -71,12 +116,18 @@ class Catcher extends Catch {
 
   render() {
     return (
-      <div className={this.getClassNames()}>
+      <div ref="catcher" className={this.getClassNames()}>
         {this.renderContentList('assets')}
         {this.renderBucket()}
       </div>
     );
   }
 }
+
+Catcher.defaultProps = _.defaults({
+  moveBuckets: false,
+  onMove: _.noop,
+  canCatch: true,
+}, skoash.Component.defaultProps);
 
 export default Catcher;

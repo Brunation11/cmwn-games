@@ -1,196 +1,275 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
+import Draggable from '../draggable/0.3.js';
+
 class Dropzone extends skoash.Component {
-  start() {
-    var self = this, dropzone, draggable;
+  constructor() {
+    super();
 
-    super.start();
+    this.dropzones = [
+      <skoash.Component answers="drag" />
+    ];
 
-    self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
-      self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
-    );
+    this.draggables = [
+      <Draggable message={'drag'}>drag me!</Draggable>,
+      <Draggable message={'return'} return={true} >return</Draggable>
+    ];
 
-    if (self.loadData && typeof self.loadData === 'object') {
-      _.forIn(self.loadData, (ref1, key1) => {
-        if (ref1.ref && ref1.state) {
-          _.forIn(self.refs, (ref2, key2) => {
-            if (key2.indexOf('draggable-') === -1) return;
-            if (self.refs[key1] && ref2.props.message === ref1.ref) {
-              dropzone = self.refs[key1];
-              draggable = ref2;
-              dropzone.setState({content: draggable});
-              draggable.setState(ref1.state);
-              self.correct(draggable, key1.replace('dropzone-', ''));
-            }
-          });
-        } else {
-          _.forIn(self.loadData, (ref2, key2) => {
-            self.refs[key2].setState({content: []});
-            _.forIn(self.refs, (ref3, key3) => {
-              if (key3.indexOf('draggable-') === -1) return;
-              if (_.includes(ref2, ref3.props.message)) {
-                self.refs[key2].state.content.push(ref3);
-                ref3.markCorrect();
-              }
-            });
-          });
-        }
-      });
-    }
+    this.contains = [];
+
+    this.dropRespond = this.dropRespond.bind(this);
+    this.dragRespond = this.dragRespond.bind(this);
   }
 
-  loadDragNDropData() {
-    var self = this, dropzone, draggable;
-    _.forIn(self.loadData, (ref1, key1) => {
-      _.forIn(self.refs, (ref2, key2) => {
-        if (key2.indexOf('draggable-') === -1) return;
-        if (self.refs[key1] && ref2.props.message === ref1.ref) {
-          dropzone = self.refs[key1];
-          draggable = ref2;
-          dropzone.setState({content: draggable});
-          draggable.setState(ref1.state);
-          self.correct(draggable, key1.replace('dropzone-', ''));
-        }
-      });
-    });
-  }
+  prepareDropzones() {
+    var self = this;
 
-  loadMultiAsnwerData() {
-    var self = this, dropzone, draggable;
-    _.forIn(self.loadData, (ref1, key1) => {
-      dropzone = self.refs[key1];
-      dropzone.setState({content: []});
-      _.forIn(self.refs, (ref2, key2) => {
-        if (key2.indexOf('draggable-') === -1) return;
-        draggable = ref2;
-        if (_.includes(ref1, draggable.props.message)) {
-          dropzone.state.content.push(draggable);
-          draggable.markCorrect();
-        }
-      });
+    self.dropzones.map((dropzone, key) => {
+      var dropzoneRef = this.refs[`dropzone-${key}`];
+      if (dropzoneRef) {
+        dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
+      }
     });
   }
 
   getCorners(el) {
-    var offset, corners = [];
+    var top, left, width, height, corners = [];
 
-    offset = el.getBoundingClientRect();
+    left = 0;
+    top = 0;
+    width = el.offsetWidth;
+    height = el.offsetHeight;
 
+    while (el) {
+      if (el.className && el.className.indexOf('screen') !== -1) {
+        break;
+      }
+
+      left += el.offsetLeft || 0 ;
+      top += el.offsetTop || 0;
+      el = el.offsetParent;
+    }
     for (var i = 0; i < 4; i++) {
       corners.push({
-        x: offset.left + offset.width * (i === 1 || i === 2 ? 1 : 0),
-        y: offset.top + offset.height * (i > 1 ? 1 : 0),
+        x: left + width * (i === 1 || i === 2 ? 1 : 0),
+        y: top + height * (i > 1 ? 1 : 0),
       });
     }
 
     return corners;
   }
 
-  onDrop(dropped) {
-    var droppedDOM, corners, dropzoneRef;
+  componentWillMount() {
+    this.dropzones = this.props.dropzones || this.dropzones;
+    this.draggables = this.props.draggables || this.draggables;
+  }
 
-    droppedDOM = dropped.DOMNode || ReactDOM.findDOMNode(dropped);
-    corners = this.getCorners(droppedDOM);
+  start() {
+    var self = this;
+    super.start();
+    this.prepareDropzones();
 
-    dropzoneRef = _.reduce(this.props.dropzones, (a, v, k) => {
-      if (skoash.util.doIntersect(corners, this.dropzoneCorners[k])) {
-        return this.refs[`dropzone-${k}`];
+    if (self.loadData && typeof self.loadData === 'object') {
+      if (!this.state.loadedData) {
+        this.setState({
+          loadingData: true
+        }, () => {
+          _.forIn(self.loadData, (ref, key) => {
+            if (ref.ref && ref.state) {
+              this.loadDragNDropData(ref, key);
+            } else {
+              this.loadMultiAnswerData(ref, key);
+            }
+          });
+
+          this.setState({
+            loadingData: false,
+            loadedData: true
+          });
+        });
       }
-      return a;
-    }, false);
 
-    if (dropzoneRef) {
-      this.inBounds(dropped, dropzoneRef);
-    } else {
-      this.outOfBounds(dropped);
+      this.updateGameState({
+        path: 'game',
+        data: {
+          complete: true
+        }
+      });
     }
   }
 
-  onDrag(dragging) {
-    _.each(this.props.dropzones, (value, key) => {
-      var index, dropzoneRef, contains;
-      dropzoneRef = this.refs[`dropzone-${key}`];
-      contains = dropzoneRef.contains || [];
-      index = contains.indexOf(dragging);
-      if (~index) contains.splice(index, 1);
-      dropzoneRef.contains = contains;
+  loadDragNDropData(ref, key) {
+    var dropzone, draggable;
+    _.forIn(this.refs, (ref2, key2) => {
+      if (key2.indexOf('draggable-') === -1) return;
+      if (this.refs[key] && ref2.props.message === ref.ref) {
+        dropzone = this.refs[key];
+        draggable = ref2;
+        dropzone.setState({
+          content: draggable
+        });
+        draggable.setState(ref.state);
+        this.correct(draggable, key.replace('dropzone-', ''));
+      }
+    });
+  }
+
+  loadMultiAnswerData(ref, key) {
+    var draggable;
+    _.forIn(this.refs, (ref2, key2) => {
+      if (key2.indexOf('draggable-') === -1) return;
+      if (_.includes(ref, ref2.props.message)) {
+        draggable = ref2;
+        this.correct(draggable, key.replace('dropzone-', ''));
+      }
+    });
+  }
+
+  dragRespond(draggable) {
+    if (this.audio.drag && !this.state.loadingData) {
+      this.audio.drag.play();
+    }
+
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, draggable);
+    }
+  }
+
+  dropRespond(draggable, corners) {
+    var self = this, isInBounds;
+    isInBounds = self.dropzones.some((dropzone, key) => {
+      var dropzoneRef = self.refs[`dropzone-${key}`];
+      if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
+        self.inBounds(draggable, key);
+        return true;
+      }
+      return false;
     });
 
-    this.props.onDrag.call(this, dragging);
+    if (!isInBounds) self.outOfBounds(draggable);
   }
 
-  inBounds(dropped, dropzoneRef) {
-    if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(dropped.props.message) !== -1) {
-      this.correct(dropped, dropzoneRef);
-    } else {
-      this.incorrect(dropped, dropzoneRef);
+  inBounds(draggable, dropzoneKey) {
+    var dropzoneRef;
+    if (this.refs && this.refs[`dropzone-${dropzoneKey}`]) {
+      dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
+      if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(draggable.props.message) !== -1) {
+        this.correct(draggable, dropzoneKey);
+      } else {
+        this.incorrect(draggable);
+      }
     }
   }
 
-  outOfBounds(dropped) {
-    // respond to an out of bounds drop
-    this.playMedia('out');
-    this.incorrect(dropped);
+  outOfBounds(draggable) {
+    // respond to out of bounds drop
+    if (this.audio.out) {
+      this.audio.out.play();
+    }
+    this.incorrect(draggable);
   }
 
-  correct(dropped, dropzoneRef) {
+  correct(draggable, dropzoneKey) {
     // respond to correct drop
-    dropped.markCorrect();
-    this.playMedia('correct');
+    draggable.markCorrect();
 
-    dropzoneRef.contains = (dropzoneRef.contains || []).concat(dropped);
+    if (this.audio.correct && !this.state.loadingData) {
+      this.audio.correct.play();
+    }
 
-    this.props.onCorrect.call(this, dropped, dropzoneRef);
+    if (this.props.centerOnCorrect) {
+      this.center(draggable, dropzoneKey);
+    }
+    if (typeof this.props.correctRespond === 'function') {
+      this.props.correctRespond.call(this, draggable, dropzoneKey);
+    }
   }
 
-  incorrect(dropped, dropzoneRef) {
+  center(draggable, dropzoneKey) {
+    var dropzone, endX, endY;
+    dropzone = this.refs[`dropzone-${dropzoneKey}`];
+    if (draggable.state.endX && draggable.state.endY && draggable.state.corners) {
+      // position draggable at 0 0 of screen
+      endX = draggable.state.endX - draggable.state.corners[0].x;
+      endY = draggable.state.endY - draggable.state.corners[0].y;
+      // move element 0 0 to 0 0 of dropzone
+      endX += dropzone.corners[0].x;
+      endY += dropzone.corners[0].y;
+      // move element 0 0 to 50% 50% of dropzone
+      endX += (dropzone.corners[1].x - dropzone.corners[0].x) / 2;
+      endY += (dropzone.corners[3].y - dropzone.corners[0].y) / 2;
+      // move element by 50% 50% of self
+      endX -= (draggable.state.corners[1].x - draggable.state.corners[0].x) / 2;
+      endY -= (draggable.state.corners[3].y - draggable.state.corners[0].y) / 2;
+
+      draggable.setEnd(endX, endY);
+    }
+  }
+
+  incorrect(draggable) {
     // respond to incorrect drop
-    dropped.markIncorrect();
-    this.playMedia('incorrect');
-    this.props.onIncorrect.call(this, dropped, dropzoneRef);
+    draggable.markIncorrect();
+    if (this.audio.incorrect) {
+      this.audio.incorrect.play();
+    }
   }
 
-  componentWillReceiveProps(props) {
-    super.componentWillReceiveProps(props);
-
-    if (props.dropped && props.dropped !== this.props.dropped) {
-      this.onDrop(props.dropped);
+  renderAssets() {
+    if (this.props.assets) {
+      return this.props.assets.map((asset, key) =>
+        <asset.type
+          {...asset.props}
+          ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+          key={key}
+          data-ref={key}
+        />
+      );
     }
 
-    if (props.dragging && props.dragging !== this.props.dragging) {
-      this.onDrag(props.dragging);
-    }
+    return null;
   }
 
   renderDropzones() {
-    return _.map(this.props.dropzones, (component, key) =>
+    return this.dropzones.map((component, key) =>
       <component.type
         {...component.props}
+        className={this.getClassNames(component)}
+        checkComplete={false || this.props.checkComplete}
         ref={`dropzone-${key}`}
         key={key}
       />
     );
   }
 
-  getClassNames() {
-    return classNames('dropzones', super.getClassNames());
+  renderDraggables() {
+    return this.draggables.map((item, key) =>
+      <li key={key}>
+        <Draggable
+          {...item.props}
+          ref={'draggable-' + key}
+          dragRespond={this.dragRespond}
+          dropRespond={this.dropRespond}
+        />
+      </li>
+    );
+  }
+
+  getClassNames(dropzone) {
+    return classNames('dropzone', dropzone.props.className, super.getClassNames());
   }
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()}>
-        {this.renderContentList('assets')}
+      <div>
+        {this.renderAssets()}
         {this.renderDropzones()}
+        <ul>
+          {this.renderDraggables()}
+        </ul>
       </div>
     );
   }
 }
-
-Dropzone.defaultProps = _.defaults({
-  dropzones: [<skoash.Component />],
-  onCorrect: _.noop,
-  onIncorrect: _.noop,
-  onDrag: _.noop,
-}, skoash.Component.defaultProps);
 
 export default Dropzone;

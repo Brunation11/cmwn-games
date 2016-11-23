@@ -96,6 +96,17 @@ class ReadScreen extends skoash.Screen {
     return content;
   }
 
+  renderBoxContent() {
+    var url = _.get(this.state, 'message.url');
+
+    if (!url) return null;
+
+    return [
+      <skoash.Image src={this.state.message.url} />,
+      <div className={classNameText.box} />,
+    ];
+  }
+
   renderContent() {
     return (
       <div>
@@ -107,8 +118,7 @@ class ReadScreen extends skoash.Screen {
           </li>
         </ul>
         <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          <skoash.Image src={this.state.message.url} />
-          <div className={classNameText.box} />
+          {this.renderBoxContent()}
         </skoash.Component>
         <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
         <Selectable className={classNameText.rightMenu} list={this.rightMenuList} />

@@ -11,6 +11,7 @@ class Dropper extends Draggable {
 
     this.state = _.defaults({
       items: {},
+      classes: [],
       itemCount: 0,
       itemEndXs: {},
       direction: '',
@@ -20,20 +21,23 @@ class Dropper extends Draggable {
   }
 
   next(on) {
-    var items, index;
+    var items, index, classes;
 
-    if (!this.state.started || (!this.props.on && !on)) return;
+    if (!this.state.started || (!this.props.on && !on) || this.props.gameState.paused) return;
 
     index = this.state.itemCount;
     items = this.state.items;
+
     items[index] = this.refs.bin.get(1)[0];
+    if (typeof this.props.getClassNames === 'function') classes = this.props.getClassNames.call(this);
 
     this.setState({
       items,
+      classes,
       itemCount: index + 1,
     }, () => {
       var timeoutFunction = i => {
-        var itemRef, itemEndXs;
+        var itemRef, itemDOM, itemEndXs, onTransitionEnd;
         itemRef = this.refs['items-' + index];
         if (itemRef) {
           itemRef.addClassName(this.props.prepClasses[i]);
@@ -41,14 +45,18 @@ class Dropper extends Draggable {
           if (i === this.props.prepClasses.length - 1) {
             itemEndXs = this.state.itemEndXs;
             itemEndXs[index] = this.state.endX;
-            ReactDOM.findDOMNode(itemRef).addEventListener('transitionend', () => {
+            onTransitionEnd = () => {
               items = this.state.items;
+              this.props.onTransitionEnd.call(this, itemRef);
               delete items[index];
               this.setState({
                 items,
                 itemEndXs
               });
-            });
+            };
+            itemDOM = ReactDOM.findDOMNode(itemRef);
+            itemDOM.addEventListener('transitionend', onTransitionEnd);
+            itemDOM.addEventListener('animationend', onTransitionEnd);
           }
         }
 
@@ -93,16 +101,16 @@ class Dropper extends Draggable {
     }
   }
 
-  getItemStyle(key) {
+  getItemStyle(key, style) {
     var endX, x;
 
     endX = this.state.itemEndXs[key] || this.state.endX;
     x = ((endX - this.state.startX) / this.state.zoom);
 
-    return {
+    return _.defaults({
       transform: `translateX(${x}px)`,
       WebkitTransform: `translateX(${x}px)`,
-    };
+    }, style);
   }
 
   getStyle() {
@@ -129,7 +137,8 @@ class Dropper extends Draggable {
       return (
         <item.type
           {...item.props}
-          style={this.getItemStyle(key)}
+          style={this.getItemStyle(key, item.props.style)}
+          className={`${item.props.className} ${this.state.classes[key]}`}
           data-ref={ref}
           data-message={item.props.message}
           ref={ref}
@@ -182,10 +191,14 @@ Dropper.defaultProps = _.defaults({
   onStart: function () {
     this.next();
   },
+  onResume: function () {
+    this.next();
+  },
   leftBound: 0,
   rightBound: 800,
   refsTarget: 'dropper',
   on: true,
+  onTransitionEnd: _.noop,
 }, Draggable.defaultProps);
 
 export default Dropper;

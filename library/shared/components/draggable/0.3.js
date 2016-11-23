@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import classNames from 'classnames';
 
 class Draggable extends skoash.Component {
@@ -17,12 +18,10 @@ class Draggable extends skoash.Component {
 
     this.touchStart = this.touchStart.bind(this);
     this.touchEnd = this.touchEnd.bind(this);
-
-    this.setZoom = this.setZoom.bind(this);
   }
 
   shouldDrag() {
-    return this.props.shouldDrag.call(this);
+    return true;
   }
 
   markCorrect() {
@@ -44,7 +43,7 @@ class Draggable extends skoash.Component {
   startEvent(e, cb) {
     var rect, startX, startY, endX, endY, grabX, grabY;
 
-    if (e.target !== this.DOMNode) return;
+    if (e.target !== this.refs.el) return;
     if (!this.shouldDrag()) return;
 
     if (e.targetTouches && e.targetTouches[0]) {
@@ -60,7 +59,7 @@ class Draggable extends skoash.Component {
     startX = endX = (e.pageX / this.state.zoom - grabX);
     startY = endY = (e.pageY / this.state.zoom - grabY);
 
-    if (!this.state.return) {
+    if (!this.props.return) {
       startX = _.isFinite(this.state.grabX) ?
         this.state.startX + this.state.grabX - grabX :
         startX;
@@ -80,17 +79,13 @@ class Draggable extends skoash.Component {
       endY,
     });
 
-    this.updateGameState({
-      path: this.props.draggableTarget,
-      data: {
-        dragging: this,
-        dropped: null
-      },
-    });
+    if (typeof this.props.dragRespond === 'function') {
+      this.props.dragRespond.call(this, this);
+    }
 
-    this.props.onDrag.call(this, this);
-
-    if (typeof cb === 'function') cb.call(this);
+    if (typeof cb === 'function') {
+      cb.call(this);
+    }
   }
 
   attachMouseEvents() {
@@ -121,17 +116,20 @@ class Draggable extends skoash.Component {
   }
 
   endEvent(cb) {
-    this.onDrop();
+    this.dropRespond();
 
     if (this.props.return) {
       this.returnToStart();
     } else {
       this.setState({
         dragging: false,
+        return: this.props.return,
       });
     }
 
-    if (typeof cb === 'function') cb.call(this);
+    if (typeof cb === 'function') {
+      cb.call(this);
+    }
   }
 
   setEnd(endX, endY) {
@@ -142,21 +140,19 @@ class Draggable extends skoash.Component {
   }
 
   returnToStart() {
-    var endX, endY, doReturn;
+    var endX, endY;
 
     if (this.props.stayOnCorrect && this.state.correct) {
       endX = this.state.endX;
       endY = this.state.endY;
-      doReturn = false;
     } else {
       endX = this.state.startX;
       endY = this.state.startY;
-      doReturn = true;
     }
 
     this.setState({
       dragging: false,
-      return: doReturn,
+      return: this.props.return,
       endX,
       endY,
     });
@@ -180,16 +176,54 @@ class Draggable extends skoash.Component {
     this.endEvent(this.detachTouchEvents);
   }
 
-  onDrop() {
-    this.updateGameState({
-      path: this.props.draggableTarget,
-      data: {
-        dragging: null,
-        dropped: this
-      },
+  dropRespond() {
+    var corners;
+
+    corners = this.setCorners();
+
+    if (typeof this.props.dropRespond === 'function') {
+      this.props.dropRespond.call(this, this, corners);
+    }
+  }
+
+  setCorners() {
+    var top, left, width, height, el, corners = [];
+
+    left = 0;
+    top = 0;
+    el = this.refs.el;
+    width = el.offsetWidth;
+    height = el.offsetHeight;
+
+    while (el) {
+      if (el.className.indexOf('screen') !== -1) {
+        break;
+      }
+
+      left += el.offsetLeft || 0;
+      top += el.offsetTop || 0;
+      el = el.offsetParent;
+    }
+
+    left += ((this.state.endX - this.state.startX));
+    top += ((this.state.endY - this.state.startY));
+
+    for (var i = 0; i < 4; i++) {
+      corners.push({
+        x: left + width * (i === 1 || i === 2 ? 1 : 0),
+        y: top + height * (i > 1 ? 1 : 0),
+      });
+    }
+
+    this.setState({
+      corners,
     });
 
-    this.props.onDrop.call(this, this);
+    return corners;
+  }
+
+  componentDidMount() {
+    this.bootstrap();
   }
 
   bootstrap() {
@@ -197,12 +231,10 @@ class Draggable extends skoash.Component {
 
     this.setZoom();
 
-    this.DOMNode = ReactDOM.findDOMNode(this);
+    this.refs.el.addEventListener('mousedown', this.mouseDown);
+    this.refs.el.addEventListener('touchstart', this.touchStart);
 
-    this.DOMNode.addEventListener('mousedown', this.mouseDown);
-    this.DOMNode.addEventListener('touchstart', this.touchStart);
-
-    window.addEventListener('resize', this.setZoom);
+    window.addEventListener('resize', this.setZoom.bind(this));
   }
 
   setZoom() {
@@ -214,46 +246,35 @@ class Draggable extends skoash.Component {
   }
 
   getStyle() {
-    var x, y, transform;
+    var x, y;
 
     x = this.state.endX - this.state.startX;
     y = this.state.endY - this.state.startY;
-    transform = `translateX(${x}px) translateY(${y}px)`;
 
     return {
-      transform,
-      WebkitTransform: transform,
+      transform: `translateX(${x}px) translateY(${y}px)`,
+      WebkitTransform: `translateX(${x}px) translateY(${y}px)`,
     };
   }
 
   getClassNames() {
     return classNames({
+      draggable: true,
       DRAGGING: this.state.dragging,
       RETURN: this.state.return,
       CORRECT: this.state.correct,
-    }, 'draggable', this.state.classes, super.getClassNames());
+    }, this.state.classes, super.getClassNames());
   }
 
   render() {
     return (
       <div
+        ref="el"
         className={this.getClassNames()}
-        data-message={this.props.message}
         style={this.getStyle()}
-        children={this.props.children}
-      />
+      >{this.props.children}</div>
     );
   }
 }
-
-Draggable.defaultProps = _.defaults({
-  draggableTarget: 'draggable',
-  shouldDrag: () => true,
-  return: false,
-  returnOnIncorrect: false,
-  stayOnCorrect: true,
-  onDrop: _.noop,
-  onDrag: _.noop,
-}, skoash.Component.defaultProps);
 
 export default Draggable;
