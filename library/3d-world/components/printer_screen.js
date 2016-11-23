@@ -4,7 +4,7 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Target from 'shared/components/target/0.2';
 import Dropzone from 'shared/components/dropzone/0.4';
 import Slider from 'shared/components/slider/0.1';
-import Draggable from 'shared/components/draggable/0.3';
+import Draggable from 'shared/components/draggable/0.4';
 import Reveal from 'shared/components/reveal/0.1';
 
 const objects = [

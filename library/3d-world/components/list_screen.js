@@ -1,6 +1,6 @@
 import MediaCollection from 'shared/components/media_collection/0.1';
 import Repeater from 'shared/components/repeater/0.2';
-import Draggable from 'shared/components/draggable/0.3';
+import Draggable from 'shared/components/draggable/0.4';
 import Dropzone from 'shared/components/dropzone/0.4';
 
 export default function (props, ref, key) {
