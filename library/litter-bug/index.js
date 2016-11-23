@@ -62,7 +62,12 @@ var LitterBug = (
     }}
     assets={[
         <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop/>,
-        <skoash.Audio ref="bkg-2" type="background" src="media/_assets/_sounds/_effects/GameThemeMusic%202.mp3" loop/>,
+        <skoash.Audio
+            ref="bkg-2"
+            type="background"
+            src="media/_assets/_sounds/_effects/GameThemeMusic%202.mp3"
+            loop
+        />,
         <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
         <skoash.Image ref="img-bkg-1" className="hidden" src="media/_BKG/BKG_1.png" />,
         <skoash.Image ref="img-bkg-2" className="hidden" src="media/_BKG/BKG_2.png" />,

@@ -21,10 +21,12 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
+var ThreeDWorld;
+
 window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/3DWorld/';
 
-var ThreeDWorld = (
+ThreeDWorld = (
   <skoash.Game
     config={config}
     loader={<Loader />}
@@ -55,8 +57,16 @@ var ThreeDWorld = (
         <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
         <skoash.Audio ref="next" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Next.mp3'} />,
         <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Back.mp3'} />,
-        <skoash.Audio ref="screen-complete" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/NextAppear.mp3'} />,
-        <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/TitleScreen.mp3'} loop />,
+        <skoash.Audio
+            ref="screen-complete"
+            type="sfx"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/NextAppear.mp3'}
+        />,
+        <skoash.Audio
+            type="background"
+            src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/TitleScreen.mp3'}
+            loop
+        />,
         <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
         <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG2.mp3'} loop />,
         <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG3.mp3'} loop />,

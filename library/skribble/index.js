@@ -19,6 +19,8 @@ import SaveMenu from './components/save_menu';
 import CollisionWarning from './components/collision_warning';
 import LimitWarning from './components/limit_warning';
 
+var Skribble;
+
 const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
@@ -30,11 +32,15 @@ class SkribbleGame extends skoash.Game {
     }
 
     save(skramble) {
-    /* eslint-disable camelcase */
-        var friend_to, rules, self = this;
-        friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
+        /* eslint-disable camelcase */
+        var friend_to;
+        var rules;
+        var skribble;
+        var self = this;
+        friend_to = self.state.recipient && self.state.recipient.user_id ?
+            self.state.recipient.user_id : null;
         rules = self.getRules();
-        var skribble = {
+        skribble = {
             'version': config.version,
             ...self.state.skribbleData,
             friend_to,
@@ -58,7 +64,7 @@ class SkribbleGame extends skoash.Game {
                 });
             });
         }
-    /* eslint-enable camelcase */
+        /* eslint-enable camelcase */
     }
 
     send() {
@@ -89,7 +95,8 @@ class SkribbleGame extends skoash.Game {
     }
 
     getMedia(path) {
-        var pathArray, self = this;
+        var pathArray;
+        var self = this;
 
         if (typeof path === 'object') path = path.path;
         path = path || 'skribble/menu';
@@ -100,7 +107,8 @@ class SkribbleGame extends skoash.Game {
             name: 'getMedia',
             path
         }).then(d => {
-            var opts, currentOpts;
+            var opts;
+            var currentOpts;
             opts = {
                 data: {},
                 callback: () => {
@@ -169,9 +177,10 @@ class SkribbleGame extends skoash.Game {
                 }
             });
         } else {
-            src = recipient && recipient._embedded && recipient._embedded.image && recipient._embedded.image.url ?
-        recipient._embedded.image.url :
-        recipient.profile_image || DEFAULT_PROFILE_IMAGE;
+            src = recipient && recipient._embedded && recipient._embedded.image &&
+                recipient._embedded.image.url ?
+                recipient._embedded.image.url :
+                recipient.profile_image || DEFAULT_PROFILE_IMAGE;
             this.setState({
                 recipient: {
                     'user_id': recipient.user_id || recipient.friend_id,
@@ -210,7 +219,8 @@ class SkribbleGame extends skoash.Game {
     }
 
     renderRecipient() {
-        var recipient = this.state.recipient, content = [];
+        var recipient = this.state.recipient;
+        var content = [];
 
         if (!recipient) return;
 
@@ -226,7 +236,7 @@ class SkribbleGame extends skoash.Game {
     }
 }
 
-var Skribble = (
+Skribble = (
   <SkribbleGame
     config={config}
     screens={{

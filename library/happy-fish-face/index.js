@@ -48,7 +48,11 @@ var HappyFishFace = (
         <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" loop />,
         <skoash.Audio ref="button" type="sfx" src="media/_audio/_buttons/HFF_SX_BU1.mp3" />,
         <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_buttons/HFF_SX_BU2.mp3" />,
-        <skoash.Image ref="multibubbles-hidden" className="hidden" src="media/_images/_S_MultiBubbles/img_7.3.png" />,
+        <skoash.Image
+            ref="multibubbles-hidden"
+            className="hidden"
+            src="media/_images/_S_MultiBubbles/img_7.3.png"
+        />,
         <skoash.Image ref="trash-hidden" className="hidden" src="media/_images/_S_Trash/img_9.2.png" />,
         <div className="background garbage"></div>,
     ]}
