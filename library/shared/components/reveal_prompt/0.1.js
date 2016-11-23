@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import ClassNames from 'classnames';
 
 export default class RevealPrompt extends skoash.Component {
@@ -46,10 +45,8 @@ export default class RevealPrompt extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 

@@ -28,26 +28,10 @@ class Selectable extends skoash.Component {
       selectFunction,
       selectClass,
     });
-
-    if (this.loadData && typeof this.loadData === 'object') {
-      _.forIn(this.loadData, (ref, key) => {
-        this.loadSelectedData(ref, key);
-      });
-    }
   }
 
   bootstrap() {
     super.bootstrap();
-
-    var self = this;
-
-    var correctAnswers = this.requireForComplete.filter((ref) => {
-      return self.refs[ref].props.correct;
-    });
-
-    if (correctAnswers.length > 0) {
-      this.requireForComplete = correctAnswers;
-    }
 
     if (this.refs.bin) {
       this.setState({
@@ -56,50 +40,22 @@ class Selectable extends skoash.Component {
     }
   }
 
-  loadSelectedData(ref, key) {
-    var classes = this.state.classes;
-    classes[key] = ref;
-
-    this.setState({classes});
-
-    if (this.props.chooseOne) this.requireForComplete = [key];
-
-    this.requireForComplete.map(key2 => {
-      if (key2 === key && this.refs[key2]) {
-        if (!_.isEmpty(classes)) {
-          this.refs[key2].complete();
-        } else {
-          this.refs[key2].incomplete();
-        }
-      }
-    });
-
-    this.updateGameState({
-      path: 'game',
-      data: {
-        complete: true
-      }
-    });
-  }
-
   selectHelper(e, classes) {
-    var ref, dataRef, target, isCorrect, self = this;
+    var ref, dataRef, target, id, isCorrect, self = this;
 
     target = e.target.closest('LI');
-    dataRef = target.getAttribute('data-ref');
 
     if (!target) return;
 
+    dataRef = target.getAttribute('data-ref');
     ref = self.refs[dataRef];
 
     isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
 
-    if (isCorrect) {
-      if (self.props.allowDeselect && self.state.classes[dataRef]) {
-        delete classes[dataRef];
-      } else {
-        classes[dataRef] = self.state.selectClass;
-      }
+    if (self.props.allowDeselect && classes[dataRef]) {
+      delete classes[dataRef];
+    } else if (isCorrect) {
+      classes[dataRef] = self.state.selectClass;
     }
 
     self.setState({
@@ -109,9 +65,7 @@ class Selectable extends skoash.Component {
     self.props.selectRespond.call(self, dataRef);
     self.props.onSelect.call(self, dataRef);
 
-    if (self.props.chooseOne) {
-      self.requireForComplete = [dataRef];
-    }
+    if (self.props.chooseOne) self.complete();
 
     if (self.props.dataTarget) {
       self.updateGameState({
@@ -122,19 +76,19 @@ class Selectable extends skoash.Component {
       });
     }
 
-    self.requireForComplete.map(key => {
-      if (key === dataRef && self.refs[key]) {
-        if (!_.isEmpty(classes)) {
-          self.refs[key].complete();
-        } else {
-          self.refs[key].incomplete();
-        }
-      }
+    if (self.props.completeListOnClick) {
+      _.each(self.refs, (r, k) => {
+        if (k === id) _.invoke(r, 'complete');
+      });
+    }
+
+    _.each(self.refs, (r, k) => {
+      if (k === dataRef) _.invoke(r, 'complete');
     });
   }
 
   select(e) {
-    var classes = {};
+    var classes = [];
     this.selectHelper(e, classes);
   }
 
@@ -153,31 +107,6 @@ class Selectable extends skoash.Component {
 
   getClassNames() {
     return classNames('selectable', super.getClassNames());
-  }
-
-  checkComplete() {
-    var self = this, complete;
-
-    if (this.props.checkComplete === false) return;
-
-    complete = self.requireForComplete.every(key => {
-      if (self.refs[key] instanceof Node) {
-        return true;
-      }
-      if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
-        if (typeof self.refs[key].checkComplete === 'function') {
-          self.refs[key].checkComplete();
-        }
-        return false;
-      }
-      return true;
-    });
-
-    if (complete && !self.state.complete) {
-      self.complete();
-    } else if (self.state.started && !complete && self.state.complete) {
-      self.incomplete();
-    }
   }
 
   renderBin() {
@@ -233,8 +162,8 @@ Selectable.defaultProps = _.defaults({
   ],
   selectClass: 'SELECTED',
   completeListOnClick: true,
-  selectRespond: _.identity,
-  onSelect: _.identity,
+  selectRespond: _.noop,
+  onSelect: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Selectable;
