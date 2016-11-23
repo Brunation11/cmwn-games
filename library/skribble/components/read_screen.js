@@ -42,7 +42,9 @@ class ReadScreen extends skoash.Screen {
     }
 
     open(opts) {
-        var message, friends, creater;
+        var message;
+        var friends;
+        var creater;
 
         message = opts.message || {};
 
@@ -79,7 +81,8 @@ class ReadScreen extends skoash.Screen {
     }
 
     renderSender() {
-        var creater, content = [];
+        var creater;
+        var content = [];
 
         creater = this.state.creater;
 
@@ -109,33 +112,33 @@ class ReadScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <ul className={this.getSenderClassNames()}>
-          <li>
-            <span>
-              {this.renderSender()}
-            </span>
-          </li>
-        </ul>
-        <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          {this.renderBoxContent()}
-        </skoash.Component>
-        <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
-        <Selectable className={classNameText.rightMenu} list={this.rightMenuList} />
-      </div>
-    );
+            <div>
+                <ul className={this.getSenderClassNames()}>
+                    <li>
+                        <span>
+                            {this.renderSender()}
+                        </span>
+                    </li>
+                </ul>
+                <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
+                    {this.renderBoxContent()}
+                </skoash.Component>
+                <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
+                <Selectable className={classNameText.rightMenu} list={this.rightMenuList} />
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <ReadScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="read"
-      hideNext
-      hidePrev
-    />
-  );
+        <ReadScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="read"
+            hideNext
+            hidePrev
+        />
+    );
 }

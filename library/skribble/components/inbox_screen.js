@@ -57,7 +57,9 @@ class InboxScreen extends skoash.Screen {
     }
 
     getRevealList(inbox, outbox, saved) {
-        var read, unread, props = this.props || {};
+        var read;
+        var unread;
+        var props = this.props || {};
 
         inbox = inbox || this.state.inbox || [];
 
@@ -74,60 +76,60 @@ class InboxScreen extends skoash.Screen {
 
         return [
             <li>
-        <Inbox
-          data-ref="inbox"
-          data={{
-              items: inbox,
-          }}
-          emptyMessage={inboxEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
+                <Inbox
+                    data-ref="inbox"
+                    data={{
+                        items: inbox,
+                    }}
+                    emptyMessage={inboxEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
             <li>
-        <Inbox
-          data-ref="unread"
-          data={{
-              items: unread,
-          }}
-          emptyMessage={unreadEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
+                <Inbox
+                    data-ref="unread"
+                    data={{
+                        items: unread,
+                    }}
+                    emptyMessage={unreadEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
             <li>
-        <Inbox
-          data-ref="read"
-          data={{
-              items: read,
-          }}
-          emptyMessage={readEmptyMessage}
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
+                <Inbox
+                    data-ref="read"
+                    data={{
+                        items: read,
+                    }}
+                    emptyMessage={readEmptyMessage}
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
             <li>
-        <Inbox
-          data-ref="outbox"
-          data={{
-              items: outbox,
-          }}
-          emptyMessage={sentEmptyMessage}
-          friendKey="friend_to"
-          selectRespond={this.readMessage}
-          gameState={props.gameState}
-        />
-      </li>,
+                <Inbox
+                    data-ref="outbox"
+                    data={{
+                        items: outbox,
+                    }}
+                    emptyMessage={sentEmptyMessage}
+                    friendKey="friend_to"
+                    selectRespond={this.readMessage}
+                    gameState={props.gameState}
+                />
+            </li>,
             <li>
-        <SavedMessages
-          data-ref="saved"
-          data={{
-              items: saved,
-          }}
-          emptyMessage={draftsEmptyMessage}
-          selectRespond={this.editMessage}
-        />
-      </li>,
+                <SavedMessages
+                    data-ref="saved"
+                    data={{
+                        items: saved,
+                    }}
+                    emptyMessage={draftsEmptyMessage}
+                    selectRespond={this.editMessage}
+                />
+            </li>,
         ];
     }
 
@@ -145,7 +147,10 @@ class InboxScreen extends skoash.Screen {
     }
 
     updateData() {
-        var skribbles, inbox, outbox, saved;
+        var skribbles;
+        var inbox;
+        var outbox;
+        var saved;
 
         skribbles = this.props.gameState.data.skribbles;
         inbox = skribbles.received;
@@ -211,32 +216,32 @@ class InboxScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <div className="center">
-          <div className="frame">
-            <SelectableReveal
-              ref={'selectableReveal'}
-              selectableList={this.selectableList}
-              revealList={this.revealList}
-              selectOnStart={'0'}
-              openOnStart={'0'}
-            />
-          </div>
-        </div>
-      </div>
-    );
+            <div>
+                <div className="center">
+                    <div className="frame">
+                        <SelectableReveal
+                            ref={'selectableReveal'}
+                            selectableList={this.selectableList}
+                            revealList={this.revealList}
+                            selectOnStart={'0'}
+                            openOnStart={'0'}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <InboxScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="inbox"
-      hideNext
-      hidePrev
-    />
-  );
+        <InboxScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="inbox"
+            hideNext
+            hidePrev
+        />
+    );
 }

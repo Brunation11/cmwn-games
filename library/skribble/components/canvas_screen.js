@@ -17,11 +17,11 @@ class CanvasScreen extends skoash.Screen {
 
         this.rightMenuList = [
             <li className="preview" onClick={this.preview.bind(this)}>
-        <span />
-      </li>,
+                <span />
+            </li>,
             <li className="send" onClick={this.send.bind(this)}>
-        <span />
-      </li>
+                <span />
+            </li>
         ];
 
         this.setValid = this.setValid.bind(this);
@@ -55,7 +55,8 @@ class CanvasScreen extends skoash.Screen {
     }
 
     addItems(message) {
-        var hasAssets, background;
+        var hasAssets;
+        var background;
 
         hasAssets = true;
         background = !!message.rules.background;
@@ -78,7 +79,8 @@ class CanvasScreen extends skoash.Screen {
     }
 
     setMenu() {
-        var menu, state = this.props.gameState;
+        var menu;
+        var state = this.props.gameState;
 
         if (state && state.data && state.data.menu) {
             menu = state.data.menu;
@@ -121,23 +123,11 @@ class CanvasScreen extends skoash.Screen {
 
         if (!opts.draft) skoash.trigger('save');
 
-    // interval = setInterval(() => {
-    //   skoash.trigger('save');
-    // }, 120000);
-
-    // this.setState({
-    //   interval
-    // });
-
         super.open();
     }
 
     close() {
         skoash.trigger('save');
-    // clearInterval(this.state.interval);
-    // this.setState({
-    //   interval: null
-    // });
         super.close();
     }
 
@@ -185,65 +175,65 @@ class CanvasScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-        <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
-        <Menu
-          ref={'menu'}
-          items={this.state.menu.items}
-          level={0}
-          lastLevel={1}
-        />
-        <div className={this.getContainerClasses()}>
-          <Canvas
-            ref={'canvas'}
-            setValid={this.setValid}
-            setHasAssets={this.setHasAssets}
-            itemMinDim={150}
-          />
-        </div>
-        <Selectable className="menu right-menu" list={this.rightMenuList} />
-      </div>
-    );
-    // move this back up below the Selectable when there is an instructional help video
-    /*
-        <Reveal
-          ref="reveal"
-          openOnStart="0"
-          list={[
-            <li>
-              <skoash.Image className="otter" src={'media/_Otter/joyful-otter_2.gif'} />
-              <div className="bubble">
-                Welcome to your canvas!<br/><br/>
-                Would you like me<br/>
-                to show you around?
-                <div className="buttons">
-                  <button
-                    className="yes"
-                    onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
-                  />
-                  <button
-                    className="no"
-                    onClick={this.closeReveal}
-                  />
-                </div>
+              <div>
+                    <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
+                    <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+                    <Menu
+                          ref={'menu'}
+                          items={this.state.menu.items}
+                          level={0}
+                          lastLevel={1}
+                    />
+                    <div className={this.getContainerClasses()}>
+                          <Canvas
+                                ref={'canvas'}
+                                setValid={this.setValid}
+                                setHasAssets={this.setHasAssets}
+                                itemMinDim={150}
+                          />
+                    </div>
+                    <Selectable className="menu right-menu" list={this.rightMenuList} />
               </div>
-            </li>
-          ]}
-        />
-    */
+        );
+        // move this back up below the Selectable when there is an instructional help video
+        /*
+            <Reveal
+              ref="reveal"
+              openOnStart="0"
+              list={[
+                <li>
+                  <skoash.Image className="otter" src={'media/_Otter/joyful-otter_2.gif'} />
+                  <div className="bubble">
+                    Welcome to your canvas!<br/><br/>
+                    Would you like me<br/>
+                    to show you around?
+                    <div className="buttons">
+                      <button
+                        className="yes"
+                        onClick={skoash.trigger.bind(null, 'openMenu', {id: 'help'})}
+                      />
+                      <button
+                        className="no"
+                        onClick={this.closeReveal}
+                      />
+                    </div>
+                  </div>
+                </li>
+              ]}
+            />
+        */
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <CanvasScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="canvas"
-      hideNext
-      hidePrev
-    />
-  );
+        <CanvasScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="canvas"
+            hideNext
+            hidePrev
+        />
+    );
 }

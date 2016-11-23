@@ -27,15 +27,15 @@ class FriendScreen extends skoash.Screen {
 
         data = data.map(friend => {
             var src = friend._embedded.image && friend._embedded.image.url ?
-        friend._embedded.image.url :
-        DEFAULT_PROFILE_IMAGE;
+                friend._embedded.image.url :
+                DEFAULT_PROFILE_IMAGE;
             return {
                 'user_id': friend.friend_id,
                 name: friend.username,
                 src,
-        // I need to get the flips earned back from the backend to do this.
+                // I need to get the flips earned back from the backend to do this.
                 description: '',
-        // description: friend.flips_earned + ' Flips Earned',
+                // description: friend.flips_earned + ' Flips Earned',
                 'asset_type': 'friend',
             };
         });
@@ -46,7 +46,8 @@ class FriendScreen extends skoash.Screen {
     }
 
     open(opts) {
-        var recipient, self = this;
+        var recipient;
+        var self = this;
 
         self.updateData();
 
@@ -86,90 +87,96 @@ class FriendScreen extends skoash.Screen {
     }
 
     renderOtter() {
-        var copy, src, imageSrc;
+        var copy;
+        var src;
+        var imageSrc;
 
         src = 'One';
         imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
         copy = (
-      <span>
-        Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
-      </span>
-    );
+            <span>
+                Don't have<br/>
+                friends yet?<br/><br/>
+                Let me suggest<br/>
+                some for you.
+            </span>
+        );
 
         if (this.state.data && this.state.data.length) {
             src = 'Two';
             imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
             copy = (
-        <span>
-          Let me find a friend<br/> to send your message to.
-        </span>
-      );
+                <span>
+                    Let me find a friend<br/>
+                    to send your message to.
+                </span>
+            );
         }
 
         return (
-      <div className={'otter-container ' + src}>
-        <skoash.Image className="otter" src={imageSrc} />
-        <div className="bubble">
-          {copy}
-        </div>
-      </div>
-    );
+            <div className={'otter-container ' + src}>
+                <skoash.Image className="otter" src={imageSrc} />
+                <div className="bubble">
+                    {copy}
+                </div>
+            </div>
+        );
     }
 
     renderFriends() {
         if (this.state.data && this.state.data.length) {
             return (
-        <ItemDrawer
-          ref="drawer"
-          scrollbarImg="./media/_Buttons/sk_btn_slider.png"
-          selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.back}
-          categories={this.state.opts.categories}
-          data={this.state.data}
-          selectedItem={this.state.recipient}
-          buttons={this.buttons}
-          completeOnStart={true}
-          checkComplete={false}
-          className={'goto-' + this.state.opts.goto}
-        />
-      );
+                <ItemDrawer
+                    ref="drawer"
+                    scrollbarImg="./media/_Buttons/sk_btn_slider.png"
+                    selectRespond={this.selectRespond.bind(this)}
+                    cancelRespond={this.back}
+                    categories={this.state.opts.categories}
+                    data={this.state.data}
+                    selectedItem={this.state.recipient}
+                    buttons={this.buttons}
+                    completeOnStart={true}
+                    checkComplete={false}
+                    className={'goto-' + this.state.opts.goto}
+                />
+            );
         }
 
         return (
-      <div className={'goto-' + this.state.opts.goto}>
-        <div className="item-drawer-container">
-          <div className="suggest-friends-buttons">
-            <button className="continue" onClick={this.selectRespond.bind(this, {})} />
-            <button className="suggest" onClick={this.suggestFriends} />
-            <button className="save-to-drafts" onClick={this.save} />
-          </div>
-        </div>
-      </div>
-    );
+            <div className={'goto-' + this.state.opts.goto}>
+                <div className="item-drawer-container">
+                    <div className="suggest-friends-buttons">
+                        <button className="continue" onClick={this.selectRespond.bind(this, {})} />
+                        <button className="suggest" onClick={this.suggestFriends} />
+                        <button className="save-to-drafts" onClick={this.save} />
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     renderContent() {
         return (
-      <div>
-        <div className="header" />
-        {this.renderOtter()}
-        {this.renderFriends()}
-      </div>
-    );
+            <div>
+                <div className="header" />
+                {this.renderOtter()}
+                {this.renderFriends()}
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <FriendScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="friends"
-      completeOnStart
-      checkComplete={false}
-      hideNext
-      hidePrev
-    />
-  );
+        <FriendScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="friends"
+            completeOnStart
+            checkComplete={false}
+            hideNext
+            hidePrev
+        />
+    );
 }
