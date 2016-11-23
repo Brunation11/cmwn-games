@@ -7,6 +7,8 @@ const MAX = 100;
 const INCREMENT = 20;
 const DOWNINCREMENT = 10;
 
+var ScoreScreen;
+
 class ScoreScreenComponent extends skoash.Screen {
     constructor() {
         super();
@@ -38,17 +40,17 @@ class ScoreScreenComponent extends skoash.Screen {
     }
 }
 
-var ScoreScreen = (
-  <ScoreScreenComponent
-    id="score"
-  >
-    <Score
-      ref={SCORE}
-      max={MAX}
-      increment={INCREMENT}
-      downIncrement={DOWNINCREMENT}
-    />
-  </ScoreScreenComponent>
+ScoreScreen = (
+    <ScoreScreenComponent
+        id="score"
+    >
+        <Score
+            ref={SCORE}
+            max={MAX}
+            increment={INCREMENT}
+            downIncrement={DOWNINCREMENT}
+        />
+    </ScoreScreenComponent>
 );
 
 export default ScoreScreen;
