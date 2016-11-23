@@ -10,21 +10,21 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Timer from 'shared/components/timer/0.1';
 
 export default function (props, ref, key, opts = {}) {
-    var bin = [],
-        SFXOnPlay,
-        scoreOnComplete,
-        timerGetTime,
-        timerOnComplete,
-        timerOnCheckComplete,
-        revealPromptOnOpen,
-        revealPromptOnClose,
-        dropperGetClassNames,
-        dropperOnAddClassName,
-        dropperOnTransitionEnd,
-        catcherOnMove,
-        catcherOnCorrect,
-        catcherOnIncorrect,
-        renderDropPoints;
+    var bin = [];
+    var SFXOnPlay;
+    var scoreOnComplete;
+    var timerGetTime;
+    var timerOnComplete;
+    var timerOnCheckComplete;
+    var revealPromptOnOpen;
+    var revealPromptOnClose;
+    var dropperGetClassNames;
+    var dropperOnAddClassName;
+    var dropperOnTransitionEnd;
+    var catcherOnMove;
+    var catcherOnCorrect;
+    var catcherOnIncorrect;
+    var renderDropPoints;
 
     for (let i = 0; i < opts.bin.length; i++) {
         for (let j = 0; j < opts.rows; j++) {
@@ -40,7 +40,7 @@ export default function (props, ref, key, opts = {}) {
         }
     }
 
-    SFXOnPlay = function (ref) {
+    SFXOnPlay = function () {
         this.updateGameState({
             path: 'sfx',
             data: {
@@ -68,7 +68,9 @@ export default function (props, ref, key, opts = {}) {
     };
 
     timerGetTime = function () {
-        var timeLeft, minutesLeft, secondsLeft;
+        var timeLeft;
+        var minutesLeft;
+        var secondsLeft;
         timeLeft = this.props.timeout / 1000 - this.state.time;
         minutesLeft = Math.floor(timeLeft / 60);
         minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
@@ -182,7 +184,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     catcherOnMove = function (e) {
-        var rect, styles;
+        var rect;
+        var styles;
         if (e.target !== this.refs.catcher) return;
         if (e.targetTouches && e.targetTouches[0]) {
             rect = e.target.getBoundingClientRect();
@@ -322,7 +325,13 @@ export default function (props, ref, key, opts = {}) {
         play={_.get(props, 'data.sfx.countdown', null)}
         onPlay={SFXOnPlay}
       >
-        <skoash.Audio ref="countdown" type="sfx" src="media/audio/Timer_Last10Sec.mp3" silentOnStart complete />
+        <skoash.Audio
+            ref="countdown"
+            type="sfx"
+            src="media/audio/Timer_Last10Sec.mp3"
+            silentOnStart
+            complete
+        />
       </MediaCollection>
 
 

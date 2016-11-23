@@ -23,7 +23,10 @@ export default function (props, ref, key) {
     ];
 
     function correctRespond(draggable, dropzoneKey) {
-        var dropzone, dropzoneRect, endX, endY;
+        var dropzone;
+        var dropzoneRect;
+        var endX;
+        var endY;
         dropzone = this.refs[`dropzone-${dropzoneKey}`];
         dropzoneRect = ReactDOM.findDOMNode(dropzone).getBoundingClientRect();
 
@@ -119,20 +122,90 @@ export default function (props, ref, key) {
         ]}
         answers={answers}
         draggables={[
-            <skoash.ListItem ref={answers[0]} className="wipes animated" message="wipes" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[1]} className="diapers animated" message="diapers" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[2]} className="paper animated" message="paper" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[3]} className="sheets animated" message="sheets" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[4]} className="fats animated" message="fats" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[5]} className="cosmetics animated" message="cosmetics" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[6]} className="bandages animated" message="bandages" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[7]} className="litter animated" message="litter" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[8]} className="cotton animated" message="cotton" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[9]} className="gum animated" message="gum" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[10]} className="floss animated" message="floss" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[11]} className="hair animated" message="hair" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[12]} className="meds animated" message="meds" returnOnIncorrect />,
-            <skoash.ListItem ref={answers[13]} className="chemicals animated" message="chemicals" returnOnIncorrect />
+            <skoash.ListItem
+                ref={answers[0]}
+                className="wipes animated"
+                message="wipes"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[1]}
+                className="diapers animated"
+                message="diapers"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[2]}
+                className="paper animated"
+                message="paper"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[3]}
+                className="sheets animated"
+                message="sheets"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[4]}
+                className="fats animated"
+                message="fats"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[5]}
+                className="cosmetics animated"
+                message="cosmetics"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[6]}
+                className="bandages animated"
+                message="bandages"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[7]}
+                className="litter animated"
+                message="litter"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[8]}
+                className="cotton animated"
+                message="cotton"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[9]}
+                className="gum animated"
+                message="gum"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[10]}
+                className="floss animated"
+                message="floss"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[11]}
+                className="hair animated"
+                message="hair"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[12]}
+                className="meds animated"
+                message="meds"
+                returnOnIncorrect
+            />,
+            <skoash.ListItem
+                ref={answers[13]}
+                className="chemicals animated"
+                message="chemicals"
+                returnOnIncorrect
+            />
         ]}
       />
       <button
@@ -149,50 +222,118 @@ export default function (props, ref, key) {
         onClose={onClose}
         list={[
             <skoash.ListItem data-ref="intro" className="animated intro reveal">
-            <h3>Drag and drop items into the toilet<br /> and flush to find out what<br />happens when you send<br />the wrong things down the drain.</h3>
+            <h3>
+                Drag and drop items into the toilet<br />
+                and flush to find out what<br />
+                happens when you send<br />
+                the wrong things down the drain.
+            </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[0]} className="animated wipes reveal">
-              <h3>Baby wipes are thicker and sturdier<br />than toilet paper and<br />do not break down easily.<br />They are a clog waiting to happen!</h3>
+              <h3>
+                  Baby wipes are thicker and sturdier<br />
+                  than toilet paper and<br />
+                  do not break down easily.<br />
+                  They are a clog waiting to happen!
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[1]} className="animated diapers reveal">
-              <h3>Diapers contain plastic that has<br />chemicals which expand when wet.<br />They create BIG clogs.</h3>
+              <h3>
+                  Diapers contain plastic that has<br />
+                  chemicals which expand when wet.<br />
+                  They create BIG clogs.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[2]} className="animated paper reveal">
-              <h3>Paper towels are not designed<br />to break down in water<br />like toilet paper.<br />Flushing can cause problems.</h3>
+              <h3>
+                  Paper towels are not designed<br />
+                  to break down in water<br />
+                  like toilet paper.<br />
+                  Flushing can cause problems.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[3]} className="animated sheets reveal">
-              <h3>Dryer Sheets contain synthetic<br />chemicals that are not<br />biodegradable!</h3>
+              <h3>
+                  Dryer Sheets contain synthetic<br />
+                  chemicals that are not<br />
+                  biodegradable!
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[4]} className="animated fats reveal">
-              <h3>They may seem like a liquid but<br />when they cool they coat the pipe like<br />wax making the pipe opening<br />smaller and smaller.</h3>
+              <h3>
+                  They may seem like a liquid but<br />
+                  when they cool they coat the pipe like<br />
+                  wax making the pipe opening<br />
+                  smaller and smaller.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[5]} className="animated cosmetics reveal">
-              <h3>Many of the ingredients in<br />cosmetics are toxic and shouldn’t<br />be in the water supply.</h3>
+              <h3>
+                  Many of the ingredients in<br />
+                  cosmetics are toxic and shouldn’t<br />
+                  be in the water supply.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[6]} className="animated bandages reveal">
-              <h3>The plastic in band-aids<br />is not biodegradable.<br />They are bad for the environment.</h3>
+              <h3>
+                  The plastic in band-aids<br />
+                  is not biodegradable.<br />
+                  They are bad for the environment.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[7]} className="animated litter reveal">
-              <h3>Cat litter can harbor parasites<br />and even toxins.<br />
-                Litter is made from clay and<br />sand which should<br />NEVER be put in a toilet.</h3>
+              <h3>
+                  Cat litter can harbor parasites<br />
+                  and even toxins.<br />
+                  Litter is made from clay and<br />
+                  sand which should<br />
+                  NEVER be put in a toilet.
+            </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[8]} className="animated cotton reveal">
-              <h3>They clump together and<br />bend in the pipes<br />and create blockages.</h3>
+              <h3>
+                  They clump together and<br />
+                  bend in the pipes<br />
+                  and create blockages.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[9]} className="animated gum reveal">
-              <h3>It’s gooey and sticky and definitely<br />can cause problems.</h3>
+              <h3>
+                  It’s gooey and sticky and definitely<br />
+                  can cause problems.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[10]} className="animated floss reveal">
-              <h3>Dental Floss is not biodegradable.<br />In the pipeline it can wrap<br />around other objects and create<br />monster clogs.</h3>
+              <h3>
+                  Dental Floss is not biodegradable.<br />
+                  In the pipeline it can wrap<br />
+                  around other objects and create<br />
+                  monster clogs.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[11]} className="animated hair reveal">
-              <h3>Hair catches things and tangles<br />almost like dental floss.<br />It’s a big clogger!</h3>
+              <h3>
+                  Hair catches things and tangles<br />
+                  almost like dental floss.<br />
+                  It’s a big clogger!
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[12]} className="animated meds reveal">
-              <h3>This is a BIG NO!<br />Medications are not removed in<br />treatment plants and contaminate<br />water supplies. They are very<br />bad for animals and people.</h3>
+              <h3>
+                  This is a BIG NO!<br />
+                  Medications are not removed in<br />
+                  treatment plants and contaminate<br />
+                  water supplies. They are very<br />
+                  bad for animals and people.
+              </h3>
           </skoash.ListItem>,
             <skoash.ListItem data-ref={answers[13]} className="animated chemicals reveal">
-              <h3>Sounds surprising!<br />The chemicals are toxic and can<br />damage animals, humans,<br />and the environment.</h3>
+              <h3>
+                  Sounds surprising!<br />
+                  The chemicals are toxic and can<br />
+                  damage animals, humans,<br />
+                  and the environment.
+              </h3>
           </skoash.ListItem>
         ]}
       />
