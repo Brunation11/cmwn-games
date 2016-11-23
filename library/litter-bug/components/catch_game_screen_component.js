@@ -11,18 +11,18 @@ import Catchable from 'shared/components/catchable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key, opts = {}) {
-    var onOpenReveal,
-        onCloseReveal,
-        onScoreComplete,
-        getTime,
-        onTimerComplete,
-        onAddClassName,
-        onTransitionEnd,
-        onPlaySFX,
-        onCorrectCatch,
-        onIncorrectCatch,
-        onMove,
-        bin;
+    var onOpenReveal;
+    var onCloseReveal;
+    var onScoreComplete;
+    var getTime;
+    var onTimerComplete;
+    var onAddClassName;
+    var onTransitionEnd;
+    var onPlaySFX;
+    var onCorrectCatch;
+    var onIncorrectCatch;
+    var onMove;
+    var bin;
 
     onOpenReveal = function () {
         this.updateGameState({
@@ -79,7 +79,9 @@ export default function (props, ref, key, opts = {}) {
     };
 
     getTime = function () {
-        var timeLeft, minutesLeft, secondsLeft;
+        var timeLeft;
+        var minutesLeft;
+        var secondsLeft;
         timeLeft = this.props.timeout / 1000 - this.state.time;
         minutesLeft = Math.floor(timeLeft / 60);
         minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
@@ -159,7 +161,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onMove = function (e) {
-        var rect, styles;
+        var rect;
+        var styles;
 
         if (e.target !== this.refs.catcher) return;
 
