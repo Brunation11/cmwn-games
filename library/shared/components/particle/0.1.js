@@ -13,14 +13,12 @@ class Particle {
     this.x += this.velocityX;
     this.velocityY *= delta.vy;
     this.velocityX *= delta.vx;
-    if(this.alpha < 0) {
-      this.alpha = 0;
-    }
+    if (this.alpha < 0) this.alpha = 0;
     context.globalAlpha = this.alpha;
     context.save();
     context.translate(this.x, this.y);
     context.scale(this.size, this.size);
-    context.drawImage(image, -image.width/2, -image.height/2);
+    context.drawImage(image, -image.width / 2, -image.height / 2);
     context.restore();
     this.alpha *= delta.alpha;
     this.size += delta.size;

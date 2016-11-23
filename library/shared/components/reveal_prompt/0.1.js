@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import ClassNames from 'classnames';
 
 export default class RevealPrompt extends skoash.Component {
@@ -15,7 +14,7 @@ export default class RevealPrompt extends skoash.Component {
   componentWillReceiveProps(nextProps) {
     super.componentWillReceiveProps(nextProps);
 
-    if (nextProps.openReveal != null && nextProps.openReveal !== this.props.openReveal) {
+    if (nextProps.openReveal && nextProps.openReveal !== this.props.openReveal) {
       this.open(nextProps.openReveal);
     }
 
@@ -46,10 +45,8 @@ export default class RevealPrompt extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 
@@ -91,7 +88,9 @@ export default class RevealPrompt extends skoash.Component {
     return ClassNames(
       {
         [li.props.className]: li.props.className,
-        OPEN: this.state.openReveal.indexOf(key) !== -1 || this.state.openReveal.indexOf(li.props['data-ref']) !== -1
+        OPEN: this.state.openReveal.indexOf(key) !== -1 ||
+          this.state.openReveal.indexOf(li.props['data-ref']) !== -1 ||
+          this.state.openReveal.indexOf(li.ref) !== -1
       }
     );
   }
@@ -128,6 +127,7 @@ RevealPrompt.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
-  onOpen: _.identity,
-  onClose: _.identity,
+  onOpen: _.noop,
+  onClose: _.noop,
+  closeDelay: 0,
 }, skoash.Component.defaultProps);

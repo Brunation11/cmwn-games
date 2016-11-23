@@ -10,8 +10,8 @@ export default function (props, ref, key) {
       <skoash.Image ref="image" className="animated" src="media/_images/S_Precious/img_2.1.png" />
       <div className="text">
           <p>
-              Water is one of <br /> 
-              the world's most precious<br /> 
+              Water is one of <br />
+              the world's most precious<br />
               limited resources!
           </p>
       </div>

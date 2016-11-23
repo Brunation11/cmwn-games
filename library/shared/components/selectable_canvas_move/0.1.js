@@ -205,7 +205,7 @@ class SelectableCanvasMove extends SelectableCanvas {
 
 SelectableCanvasMove.defaultProps = _.defaults({
   items: [],
-  onSelect: _.identity,
+  onSelect: _.noop,
 }, SelectableCanvas.defaultProps);
 
 export default SelectableCanvasMove;

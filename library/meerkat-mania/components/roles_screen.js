@@ -125,7 +125,7 @@ export default function (props, ref, key) {
             data: {
               open: message
             }
-          })
+          });
         }}
         list={[
           <skoash.Component ref="sentry" data-ref="sentry" message="sentry">
