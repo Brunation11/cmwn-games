@@ -34,8 +34,8 @@ class Reveal extends skoash.Component {
 
     self.setState({
       open: true,
+      openReveal: message,
       currentlyOpen,
-      openReveal: '' + message,
     });
 
     self.playAudio(message);
@@ -67,13 +67,17 @@ class Reveal extends skoash.Component {
   }
 
   close(opts = {}) {
-    var prevMessage = this.state.openReveal;
-    var currentlyOpen = this.state.currentlyOpen;
+    var prevMessage, currentlyOpen, openReveal, open;
+
+    prevMessage = this.state.openReveal;
+    currentlyOpen = this.state.currentlyOpen;
     currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
+    open = currentlyOpen.length > 0;
+    openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
 
     this.setState({
-      open: false,
-      openReveal: '',
+      open,
+      openReveal,
       currentlyOpen,
     });
 
@@ -98,14 +102,23 @@ class Reveal extends skoash.Component {
   }
 
   playAudio(message) {
-    var messages;
+    var messages, self = this;
 
-    if ('' + parseInt(message, 10) === message) {
-      message = 'asset-' + message;
+    message += '';
+
+<<<<<<< HEAD
+    if (self.audio['open-sound']) {
+      self.audio['open-sound'].play();
     }
 
-    if (!message) return;
-
+    messages = message.split(' ');
+    messages.map(audio => {
+      audio = 'asset-' + audio;
+      if (self.audio[audio]) {
+        self.audio[audio].play();
+      } else if (self.media[audio] && typeof self.media[audio].play === 'function') {
+        self.media[audio].play();
+=======
     this.playMedia('open-sound');
 
     if (typeof message === 'string') {
@@ -116,8 +129,9 @@ class Reveal extends skoash.Component {
     } else {
       if (this.media.audio.voiceOver[message]) {
         this.media.audio.voiceOver[message].play();
+>>>>>>> 06493fdacd220fcd966f6b6b01e0cd981f067919
       }
-    }
+    });
   }
 
   renderAssets() {
@@ -164,8 +178,14 @@ class Reveal extends skoash.Component {
       this.open(props.openReveal);
     }
 
-    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
-      this.close();
+    if (props.closeReveal !== this.props.closeReveal) {
+      if (props.closeReveal === true) {
+        this.close();
+      } else if (Number.isInteger(props.closeReveal)) {
+        for (var i = 0; i < props.closeReveal; i++) {
+          this.close();
+        }
+      }
     }
   }
 
