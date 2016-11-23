@@ -9,17 +9,6 @@ class Catchable extends skoash.Component {
     this.reset = this.reset.bind(this);
   }
 
-  complete() {
-    setTimeout(() => {
-      this.setState({
-        complete: true,
-      }, () => {
-        skoash.trigger('complete');
-        this.props.onComplete.call(this, this);
-      });
-    }, this.props.completeDelay);
-  }
-
   bootstrap() {
     super.bootstrap();
     this.DOMNode = ReactDOM.findDOMNode(this);

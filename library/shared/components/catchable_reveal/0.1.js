@@ -103,9 +103,9 @@ class CatchableReveal extends skoash.Component {
   }
 }
 
-CatchableReveal.defaultProps = _.merge(skoash.Component.defaultProps, {
+CatchableReveal.defaultProps = _.defaults({
   answers: [],
   willReveal: () => true
-});
+}, skoash.Component.defaultProps);
 
 export default CatchableReveal;

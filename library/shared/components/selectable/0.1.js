@@ -43,11 +43,16 @@ class Selectable extends skoash.Component {
   selectHelper(e, classes) {
     var ref, dataRef, target, id, isCorrect, self = this;
 
-    target = e.target.closest('LI');
+    if (typeof e === 'string') {
+      dataRef = e;
+    } else {
+      target = e.target.closest('LI');
 
-    if (!target) return;
+      if (!target) return;
 
-    dataRef = target.getAttribute('data-ref');
+      dataRef = target.getAttribute('data-ref');
+    }
+
     ref = self.refs[dataRef];
 
     isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
