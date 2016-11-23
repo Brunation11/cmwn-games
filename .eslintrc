@@ -10,6 +10,7 @@
         "module": true,
         "__dirname": true,
         "autoprefixer": true,
+        "Phaser": true,
         "ENVIRONMENT": true
     },
     "parser": "babel-eslint",

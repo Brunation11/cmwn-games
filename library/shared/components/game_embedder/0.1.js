@@ -1,16 +1,6 @@
-import _ from 'lodash';
-
 class GameEmbedder extends skoash.Component {
   constructor() {
     super();
-
-    /*
-     * For testing purposes, in order for skoash to be able to communicate
-     * with the embedded game, you may want to include `document.domain = 'localhost';`
-     * in both this component and the game you're embedding.
-     * In production you may want to include `document.domain = 'changemyworldnow.com';`
-     * in the embedded game since it will be included in the skoash game.
-     */
 
     this.respond = this.respond.bind(this);
     this.onLoad = this.onLoad.bind(this);
@@ -39,11 +29,32 @@ class GameEmbedder extends skoash.Component {
     this.props.onLoad.call(this);
   }
 
+  pause() {
+    super.pause();
+    this.emitEvent({ name: 'pause' });
+  }
+
+  resume() {
+    super.resume();
+    this.emitEvent({ name: 'resume' });
+  }
+
   emitEvent(data) {
     var e = new Event('skoash-event');
     e.name = data.name;
     e.data = data;
     this.gameNode.contentWindow.dispatchEvent(e);
+  }
+
+  componentWillReceiveProps(props) {
+    super.componentWillReceiveProps(props);
+
+    if (props.controller) {
+      this.emitEvent({
+        name: 'controller-update',
+        controller: props.controller,
+      });
+    }
   }
 
   render() {
