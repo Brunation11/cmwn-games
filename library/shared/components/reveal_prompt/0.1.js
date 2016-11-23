@@ -45,10 +45,8 @@ export default class RevealPrompt extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 
@@ -72,7 +70,7 @@ export default class RevealPrompt extends skoash.Component {
 
   renderList() {
     return this.props.list.map((li, key) => {
-      var ref = li.props.ref == null ? key : li.props.ref;
+      var ref = li.ref == null ? key : li.ref;
       return (
         <li.type
           {...li.props}

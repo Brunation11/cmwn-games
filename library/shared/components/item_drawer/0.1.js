@@ -5,32 +5,6 @@ import Selectable from 'shared/components/selectable/0.1';
 import ScrollArea from 'shared/components/scroll_area/0.1';
 
 class ItemDrawer extends Selectable {
-  shouldComponentUpdate(nextProps, nextState) {
-    var items, quickCheck, itemsChanged;
-
-    if (JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes)) {
-      return true;
-    }
-
-    items = nextProps.data || [];
-
-    if (nextState.category && items[nextState.category]) {
-      items = items[nextState.category].items;
-    }
-
-    quickCheck = _.reduce(items, (a, i) => {
-      a += i.name;
-      return a;
-    }, '');
-
-    itemsChanged = this.quickCheck !== quickCheck;
-    if (itemsChanged) {
-      this.quickCheck = quickCheck;
-    }
-
-    return itemsChanged;
-  }
-
   start() {
     var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
 
@@ -89,7 +63,7 @@ class ItemDrawer extends Selectable {
       });
     } else {
       message = this.refs[key].props.item;
-      classes[key] = this.state.selectClass;
+      classes[key] = this.props.selectClass;
 
       this.setState({
         message,
@@ -117,8 +91,8 @@ class ItemDrawer extends Selectable {
   }
 
   getCategory() {
-    if (this.state.categoryName) {
-      return this.state.categoryName;
+    if (this.state.categoryName || this.props.categoryName) {
+      return this.state.categoryName || this.props.categoryName;
     }
 
     if (this.props.categories && this.props.categories.length) {
@@ -134,25 +108,14 @@ class ItemDrawer extends Selectable {
   }
 
   getULClass() {
-    var categories = '';
-
-    if (this.props.categories) {
-      categories = this.props.categories.join(' ');
-    }
-
-    return classNames({
-      'item-drawer': true,
-      [categories]: true,
+    return classNames('item-drawer', {
       COMPLETE: this.state.complete,
-    });
+    }, this.props.categories ? this.props.categories.join(' ') : '');
   }
 
   getClass(key, item) {
-    var white = item && item.name && item.name.toLowerCase().indexOf('w.') !== -1;
-
-    return classNames({
-      [this.state.classes[key] || '']: true,
-      white
+    return classNames(this.state.classes[key] || '', {
+      white: item && item.name && item.name.toLowerCase()[item.name.length - 1] === 'w',
     });
   }
 
@@ -167,7 +130,7 @@ class ItemDrawer extends Selectable {
   }
 
   renderItemContent(item) {
-    var content = [], src;
+    var content = [], thumb, src;
 
     if (item.src || item.thumb) {
       src = item.thumb || item.src;
@@ -176,18 +139,11 @@ class ItemDrawer extends Selectable {
         item.items = _.values(item.items);
       }
 
-      if (item.items[0]) {
-        src = item.items[0].thumb || item.items[0].src;
-      }
+      thumb = _.find(item.items, subitem => subitem.name === '_thumb');
 
-      if (!src) {
-        item.items.some(subitem => {
-          if (subitem.name === '_thumb.png') {
-            src = subitem.thumb || subitem.src;
-            return true;
-          }
-        });
-      }
+      if (thumb) src = thumb.thumb || thumb.src;
+
+      if (!src && item.items[0]) src = item.items[0].thumb || item.items[0].src;
     }
 
     if (src) {
@@ -231,7 +187,7 @@ class ItemDrawer extends Selectable {
       if (aVal < bVal) return -1;
       return 1;
     }).filter(item =>
-      item.name !== '_thumb.png'
+      item.name !== '_thumb'
     ).map((item, key) =>
       <skoash.ListItem
         className={this.getClass(key, item)}
@@ -263,7 +219,23 @@ class ItemDrawer extends Selectable {
 }
 
 ItemDrawer.defaultProps = _.defaults({
-  scrollbarImg: ''
+  scrollbarImg: '',
+  shouldComponentUpdate: function (nextProps, nextState) {
+    var items, quickCheck, itemsChanged;
+
+    items = nextProps.data || [];
+    if (nextState.category && items[nextState.category]) {
+      items = items[nextState.category].items;
+    }
+
+    quickCheck = _.reduce(items, (a, i) => a + i.name, '');
+
+    itemsChanged = this.quickCheck !== quickCheck;
+    if (itemsChanged) this.quickCheck = quickCheck;
+
+    return itemsChanged || nextProps.categoryName !== this.props.categoryName ||
+      JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes);
+  },
 }, Selectable.defaultProps);
 
 export default ItemDrawer;

@@ -20,22 +20,20 @@ class SelectableReveal extends skoash.Component {
   selectRespond(message) {
     if (this.props.answers.length) {
       if (this.props.answers.indexOf(message) === -1) {
-        if (this.audio.incorrect) this.audio.incorrect.play();
+        this.playMedia('incorrect');
         if (this.props.revealAll) {
           if (typeof this.refs.reveal.open === 'function') {
             this.open(message);
           }
         }
       } else {
-        if (this.audio.correct) this.audio.correct.play();
+        this.playMedia('correct');
         if (typeof this.refs.reveal.open === 'function') {
           this.open(message);
         }
       }
     } else {
-      if (this.props.allCorrect && this.audio.correct) {
-        this.audio.correct.play();
-      }
+      if (this.props.allCorrect) this.playMedia('correct');
       if (typeof this.refs.reveal.open === 'function') {
         this.open(message);
       }
@@ -77,7 +75,7 @@ class SelectableReveal extends skoash.Component {
         randomizeList={this.props.randomizeSelectableList}
         selectOnStart={this.props.selectOnStart}
         chooseOne={this.props.chooseOne}
-        // answers={this.props.answers}
+        answers={this.props.answers}
         allowDeselect={this.props.allowDeselect}
       />
     );
@@ -96,6 +94,7 @@ class SelectableReveal extends skoash.Component {
         hide={this.props.hideReveal}
         openReveal={this.props.openReveal}
         onOpen={this.props.onOpen}
+        openMultiple={false}
       />
     );
   }

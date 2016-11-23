@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import _ from 'lodash';
 
 class Reveal extends skoash.Component {
   constructor() {
@@ -24,12 +23,13 @@ class Reveal extends skoash.Component {
 
   open(message) {
     var self = this;
-    var currentlyOpen = this.state.currentlyOpen.concat(message);
+    var currentlyOpen = this.props.openMultiple ?
+      this.state.currentlyOpen.concat(message) : [message];
 
     self.setState({
       open: true,
+      openReveal: message,
       currentlyOpen,
-      openReveal: '' + message,
     });
 
     self.playAudio(message);
@@ -37,10 +37,8 @@ class Reveal extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 
@@ -63,21 +61,23 @@ class Reveal extends skoash.Component {
   }
 
   close(opts = {}) {
-    var prevMessage = this.state.openReveal;
-    var currentlyOpen = this.state.currentlyOpen;
+    var prevMessage, currentlyOpen, openReveal, open;
+
+    prevMessage = this.state.openReveal;
+    currentlyOpen = this.state.currentlyOpen;
     currentlyOpen.splice(currentlyOpen.indexOf(prevMessage), 1);
+    open = currentlyOpen.length > 0;
+    openReveal = open ? currentlyOpen[currentlyOpen.length - 1] : '';
 
     this.setState({
-      open: false,
-      openReveal: '',
+      open,
+      openReveal,
       currentlyOpen,
     });
 
-    if (!opts.silent && this.audio['close-sound']) {
-      this.audio['close-sound'].play();
-    }
+    if (!opts.silent) this.playMedia('close-sound');
 
-    this.props.onClose.call(this);
+    this.props.onClose.call(this, prevMessage);
 
     if (typeof this.props.closeRespond === 'function') {
       this.props.closeRespond(prevMessage);
@@ -98,30 +98,14 @@ class Reveal extends skoash.Component {
   playAudio(message) {
     var messages;
 
-    if ('' + parseInt(message, 10) === message) {
-      message = 'asset-' + message;
-    }
+    message += '';
 
-    if (!message) return;
+    this.playMedia('open-sound');
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
-    }
-
-    if (typeof message === 'string') {
-      messages = message.split(' ');
-      messages.map(audio => {
-        if (this.audio[audio]) {
-          this.audio[audio].play();
-        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
-          this.media[audio].play();
-        }
-      });
-    } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
-      }
-    }
+    messages = message.split(' ');
+    messages.map(audio => {
+      this.playMedia(audio);
+    });
   }
 
   renderAssets() {
@@ -168,8 +152,14 @@ class Reveal extends skoash.Component {
       this.open(props.openReveal);
     }
 
-    if (props.closeReveal === true && props.closeReveal !== this.props.closeReveal) {
-      this.close();
+    if (props.closeReveal !== this.props.closeReveal) {
+      if (props.closeReveal === true) {
+        this.close();
+      } else if (Number.isInteger(props.closeReveal)) {
+        for (var i = 0; i < props.closeReveal; i++) {
+          this.close();
+        }
+      }
     }
   }
 
@@ -231,8 +221,10 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
+  openMultiple: true,
   onOpen: _.noop,
   onClose: _.noop,
+  allowMultipleOpen: false,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

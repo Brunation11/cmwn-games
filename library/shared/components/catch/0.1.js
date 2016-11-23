@@ -114,18 +114,14 @@ class Catch extends skoash.Component {
   }
 
   correct(catchable, key) {
-    if (this.audio.correct) {
-      this.audio.correct.play();
-    }
+    this.playMedia('correct');
     if (typeof this.props.onCorrect === 'function') {
       this.props.onCorrect.call(this, catchable, key);
     }
   }
 
   incorrect(catchable, key) {
-    if (this.audio.incorrect) {
-      this.audio.incorrect.play();
-    }
+    this.playMedia('incorrect');
     if (typeof this.props.onIncorrect === 'function') {
       this.props.onIncorrect.call(this, catchable, key);
     }
@@ -238,7 +234,7 @@ class Catch extends skoash.Component {
 
 Catch.defaultProps = _.merge(skoash.Component.defaultProps, {
   catchables: [],
-  bucketInBounds: true
+  bucketInBounds: true,
 });
 
 export default Catch;

@@ -12,7 +12,7 @@ class Score extends skoash.Component {
   }
 
   checkComplete() {
-    if (!this.props.checkComplete || !this.state.ready || !this.requireForComplete) return;
+    if (!this.props.checkComplete || !this.state.ready) return;
     if (!this.props.max) return;
     if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) && !this.state.complete) this.complete();
   }
@@ -116,7 +116,7 @@ class Score extends skoash.Component {
 
   render() {
     return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.props.correct || this.state.score}>
+      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.state.score}>
         {this.props.leadingContent}
         <span>
           {this.state.score}

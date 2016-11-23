@@ -17,12 +17,40 @@ class Dropzone extends skoash.Component {
     };
   }
 
+  bootstrap() {
+    super.bootstrap();
+    var answerRefs = [];
+    var self = this;
+
+    this.props.dropzones.forEach((item, key) => {
+      if (item.props.answers) {
+        answerRefs = answerRefs.concat(item.props.answers.map(item => { return '' + item; }));
+      }
+    });
+
+    if (answerRefs.length > 0) {
+      self.requireForComplete.forEach(item => {
+        if (answerRefs.indexOf(item) === -1)
+          self.refs[item].complete();
+      });
+    }
+
+    this.answerRefs = answerRefs;
+  }
+
   incomplete() {
     this.setState({
       dropped: [],
     });
 
     super.incomplete();
+
+    if (this.answerRefs.length > 0) {
+      this.requireForComplete.forEach(item => {
+        if (this.answerRefs.indexOf(item) === -1)
+          this.refs[item].complete();
+      });
+    }
   }
 
   prepareDropzones() {
@@ -30,8 +58,9 @@ class Dropzone extends skoash.Component {
 
     this.props.dropzones.map((dropzone, key) => {
       var dropzoneRef = this.refs[`dropzone-${key}`];
-      if (dropzoneRef) {
-        dropzoneRef.corners = self.getCorners(ReactDOM.findDOMNode(dropzoneRef));
+      var dropzoneDOM = ReactDOM.findDOMNode(dropzoneRef);
+      if (dropzoneDOM) {
+        dropzoneRef.corners = self.getCorners(dropzoneDOM);
       }
     });
   }
@@ -66,14 +95,11 @@ class Dropzone extends skoash.Component {
 
   start() {
     super.start();
-
     this.prepareDropzones();
   }
 
   dragRespond(message) {
-    if (this.audio.drag) {
-      this.audio.drag.play();
-    }
+    this.playMedia('drag');
 
     if (typeof this.props.dragRespond === 'function') {
       this.props.dragRespond.call(this, message);
@@ -102,29 +128,26 @@ class Dropzone extends skoash.Component {
     } else {
       this.incorrect(message);
     }
+    this.refs[message].complete();
   }
 
   outOfBounds(message) {
     // respond to out of bounds drop
     this.refs[message].returnToStart();
 
-    if (this.audio.out) {
-      this.audio.out.play();
-    }
+    this.playMedia('out');
   }
 
   correct(message, dropzoneKey) {
     // respond to correct drop
 
     var dropped = this.state.dropped;
-    dropped = dropped.concat(message);
+    dropped = dropped.concat('dropped-' + message);
     this.setState({
       dropped,
     });
 
-    if (this.audio.correct) {
-      this.audio.correct.play();
-    }
+    this.playMedia('correct');
 
     this.refs[message].markCorrect();
 
@@ -135,9 +158,7 @@ class Dropzone extends skoash.Component {
 
   incorrect(message) {
     // respond to incorrect drop
-    if (this.audio.incorrect) {
-      this.audio.incorrect.play();
-    }
+    this.playMedia('incorrect');
 
     if (typeof this.props.incorrectRespond === 'function') {
       this.props.incorrectRespond.call(this, message);
@@ -164,25 +185,38 @@ class Dropzone extends skoash.Component {
       <component.type
         {...component.props}
         className={this.getClass()}
-        checkComplete={false}
         ref={`dropzone-${key}`}
         key={key}
+        checkComplete={false}
       />
     );
   }
 
   renderDraggables(draggables) {
     return this.props[draggables].map((item, key) => {
+      var message = item.props.message || key;
       return (
-        <Draggable
-          {...item.props}
-          ref={item.props.message}
-          key={key}
-          dragRespond={this.dragRespond}
-          dropRespond={this.dropRespond}
-        />
+        <li key={key} className={this.getDraggableClass(message)}>
+          <Draggable
+            {...item.props}
+            ref={message}
+            message={message}
+            key={key}
+            dragRespond={this.dragRespond}
+            dropRespond={this.dropRespond}
+            checkComplete={false}
+          />
+        </li>
       );
     });
+  }
+
+  getDraggableClass(message) {
+    var classes = '';
+    if (this.state.dropped.indexOf(message) !== -1) {
+      classes += 'DROPPED';
+    }
+    return classes;
   }
 
   getClass() {
@@ -200,33 +234,29 @@ class Dropzone extends skoash.Component {
   }
 
   render() {
-    var draggablesLeft, draggablesRight, leftList, rightList;
+    var draggablesLeft, draggablesRight, left;
 
-    draggablesLeft = this.props.draggablesLeft ? 'draggablesLeft' : 'draggables';
-    draggablesRight = this.props.draggablesRight ? 'draggablesRight' : 'moreDraggables';
-
-    if (this.props[draggablesLeft]) {
-      leftList = (
+    left = this.props.draggablesLeft ? 'draggablesLeft' : 'draggables';
+    if (this.props[left]) {
+      draggablesLeft = (
         <ul>
-          {this.renderDraggables.call(this, draggablesLeft)}
+          {this.renderDraggables(left)}
         </ul>
       );
     }
-
-    if (this.props[draggablesRight]) {
-      rightList = (
+    if (this.props.draggablesRight) {
+      draggablesRight = (
         <ul>
-          {this.renderDraggables.call(this, draggablesRight)}
+          {this.renderDraggables('draggablesRight')}
         </ul>
       );
     }
-
     return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
-        {leftList}
+        {draggablesLeft}
         {this.renderDropzones()}
-        {rightList}
+        {draggablesRight}
       </div>
     );
   }
