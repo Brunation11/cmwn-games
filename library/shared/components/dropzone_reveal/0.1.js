@@ -31,7 +31,7 @@ class DropzoneReveal extends skoash.Component {
       this.refs.reveal.open(message);
     }
   }
-    
+
   callCorrectRespond(message, dropzoneKey) {
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, message, dropzoneKey);
@@ -45,9 +45,7 @@ class DropzoneReveal extends skoash.Component {
   }
 
   revealComplete() {
-    if (this.audio.complete) {
-      this.audio.complete.play();
-    }
+    this.playMedia('complete');
   }
 
   renderAssets() {

@@ -133,9 +133,7 @@ class Dropzone extends skoash.Component {
   }
 
   dragRespond(draggable) {
-    if (this.audio.drag) {
-      this.audio.drag.play();
-    }
+    this.playMedia('drag');
 
     if (typeof this.props.dragRespond === 'function') {
       this.props.dragRespond.call(this, draggable);
@@ -167,18 +165,14 @@ class Dropzone extends skoash.Component {
 
   outOfBounds(draggable) {
     // respond to out of bounds drop
-    if (this.audio.out) {
-      this.audio.out.play();
-    }
+    this.playMedia('out');
     this.incorrect(draggable);
   }
 
   correct(draggable, dropzoneKey) {
     // respond to correct drop
     draggable.markCorrect();
-    if (this.audio.correct) {
-      this.audio.correct.play();
-    }
+    this.playMedia('correct');
     if (typeof this.props.correctRespond === 'function') {
       this.props.correctRespond.call(this, draggable, dropzoneKey);
     }
@@ -187,9 +181,7 @@ class Dropzone extends skoash.Component {
   incorrect(draggable) {
     // respond to incorrect drop
     draggable.markIncorrect();
-    if (this.audio.incorrect) {
-      this.audio.incorrect.play();
-    }
+    this.playMedia('incorrect');
   }
 
   renderAssets() {
