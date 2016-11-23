@@ -8,7 +8,11 @@ import Dropzone from 'shared/components/dropzone/0.3';
 
 export default function (props, ref, key) {
     function correctRespond(draggable, dropzoneKey) {
-        var dropzone, complete = true, content, totalComplete = 0, message;
+        var dropzone;
+        var complete = true;
+        var content;
+        var totalComplete = 0;
+        var message;
         dropzone = this.refs[`dropzone-${dropzoneKey}`];
         content = dropzone.state.content || [];
         message = draggable.props.message;
@@ -46,75 +50,151 @@ export default function (props, ref, key) {
     }
 
     return (
-    <skoash.Screen
-      {...props}
-      ref={ref}
-      key={key}
-      collectData={collectData}
-      loadData={loadData}
-      id="qualities-buckets"
-    >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Buckets.mp3" />
-      <div ref="frame" className="frame animated"></div>
-      <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_6/img_06_penguin-01.png" />
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            collectData={collectData}
+            loadData={loadData}
+            id="qualities-buckets"
+        >
+            <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_Buckets.mp3" />
+            <div ref="frame" className="frame animated"></div>
+            <skoash.Image
+                ref="penguin"
+                className="penguin animated"
+                src="media/assets/_images/S_6/img_06_penguin-01.png"
+            />
 
-      <MediaCollection
-        ref="sfx-collection"
-        complete={_.get(props, 'data.game.complete', false)}
-        play={_.get(props, 'data.sfx.play', null)}
-        onPlay={function () {
-            this.updateGameState({
-                path: 'sfx',
-                data: {
-                    play: null
-                }
-            });
-        }}
-      >
-        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
-      </MediaCollection>
+            <MediaCollection
+                ref="sfx-collection"
+                complete={_.get(props, 'data.game.complete', false)}
+                play={_.get(props, 'data.sfx.play', null)}
+                onPlay={function () {
+                    this.updateGameState({
+                        path: 'sfx',
+                        data: {
+                            play: null
+                        }
+                    });
+                }}
+            >
+            <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/S_DropBuckets/S_6.1.mp3" />
+            </MediaCollection>
 
-      <MediaCollection
-        complete={_.get(props, 'data.game.complete', false)}
-        play={_.get(props, 'data.reveal.open', null)}
-        onPlay={function () {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: null
-                }
-            });
-        }}
-      >
-        <skoash.Audio ref="sharing" type="voiceOver" src="media/assets/_audio/VOs/VO_Sharing.mp3" />
-        <skoash.Audio ref="kindness" type="voiceOver" src="media/assets/_audio/VOs/VO_Kindness.mp3" />
-        <skoash.Audio ref="rudeness" type="voiceOver" src="media/assets/_audio/VOs/VO_Rudeness.mp3" />
-        <skoash.Audio ref="being-a-bully" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingBully.mp3" />
-        <skoash.Audio ref="compassion" type="voiceOver" src="media/assets/_audio/VOs/VO_Compassion.mp3" />
-        <skoash.Audio ref="greediness" type="voiceOver" src="media/assets/_audio/VOs/VO_Greediness.mp3" />
-        <skoash.Audio ref="being-angry" type="voiceOver" src="media/assets/_audio/VOs/VO_BeingAngry.mp3" />
-        <skoash.Audio ref="friendliness" type="voiceOver" src="media/assets/_audio/VOs/VO_Friendliness.mp3" />
-      </MediaCollection>
+            <MediaCollection
+                complete={_.get(props, 'data.game.complete', false)}
+                play={_.get(props, 'data.reveal.open', null)}
+                onPlay={function () {
+                    this.updateGameState({
+                        path: 'reveal',
+                        data: {
+                            open: null
+                        }
+                    });
+                }}
+            >
+                <skoash.Audio
+                    ref="sharing"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Sharing.mp3"
+                />
+                <skoash.Audio
+                    ref="kindness"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Kindness.mp3"
+                />
+                <skoash.Audio
+                    ref="rudeness"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Rudeness.mp3"
+                />
+                <skoash.Audio
+                    ref="being-a-bully"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_BeingBully.mp3"
+                />
+                <skoash.Audio
+                    ref="compassion"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Compassion.mp3"
+                />
+                <skoash.Audio
+                    ref="greediness"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Greediness.mp3"
+                />
+                <skoash.Audio
+                    ref="being-angry"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_BeingAngry.mp3"
+                />
+                <skoash.Audio
+                    ref="friendliness"
+                    type="voiceOver"
+                    src="media/assets/_audio/VOs/VO_Friendliness.mp3"
+                />
+            </MediaCollection>
 
-      <Dropzone
-        ref="dropzone"
-        correctRespond={correctRespond}
-        dropzones={[
-            <skoash.Component className="dropzone-list-item animated" multipleAnswers />,
-            <skoash.Component className="dropzone-list-item animated" multipleAnswers />
-        ]}
-        draggables={[
-            <skoash.ListItem ref="sharing" className="draggable-list-item sharing animated" message="sharing" returnOnIncorrect />,
-            <skoash.ListItem ref="kindness" className="draggable-list-item kindness animated" message="kindness" returnOnIncorrect />,
-            <skoash.ListItem ref="rudeness" className="draggable-list-item rudeness animated" message="rudeness" returnOnIncorrect />,
-            <skoash.ListItem ref="being-a-bully" className="draggable-list-item being-a-bully animated" message="being-a-bully" returnOnIncorrect />,
-            <skoash.ListItem ref="compassion" className="draggable-list-item compassion animated" message="compassion" returnOnIncorrect />,
-            <skoash.ListItem ref="greediness" className="draggable-list-item greediness animated" message="greediness" returnOnIncorrect />,
-            <skoash.ListItem ref="being-angry" className="draggable-list-item being-angry animated" message="being-angry" returnOnIncorrect />,
-            <skoash.ListItem ref="friendliness" className="draggable-list-item friendliness animated" message="friendliness" returnOnIncorrect />
-        ]}
-      />
-      <div ref="meter" className="meter animated"></div>
-    </skoash.Screen>
-  );
+            <Dropzone
+                ref="dropzone"
+                correctRespond={correctRespond}
+                dropzones={[
+                    <skoash.Component className="dropzone-list-item animated" multipleAnswers />,
+                    <skoash.Component className="dropzone-list-item animated" multipleAnswers />
+                ]}
+                draggables={[
+                    <skoash.ListItem
+                        ref="sharing"
+                        className="draggable-list-item sharing animated"
+                        message="sharing"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="kindness"
+                        className="draggable-list-item kindness animated"
+                        message="kindness"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="rudeness"
+                        className="draggable-list-item rudeness animated"
+                        message="rudeness"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="being-a-bully"
+                        className="draggable-list-item being-a-bully animated"
+                        message="being-a-bully"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="compassion"
+                        className="draggable-list-item compassion animated"
+                        message="compassion"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="greediness"
+                        className="draggable-list-item greediness animated"
+                        message="greediness"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="being-angry"
+                        className="draggable-list-item being-angry animated"
+                        message="being-angry"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="friendliness"
+                        className="draggable-list-item friendliness animated"
+                        message="friendliness"
+                        returnOnIncorrect
+                    />
+                ]}
+            />
+            <div ref="meter" className="meter animated"></div>
+        </skoash.Screen>
+    );
 }
