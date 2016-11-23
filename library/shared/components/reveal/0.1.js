@@ -43,10 +43,8 @@ class Reveal extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.map(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 
@@ -79,9 +77,7 @@ class Reveal extends skoash.Component {
       currentlyOpen,
     });
 
-    if (!opts.silent && this.audio['close-sound']) {
-      this.audio['close-sound'].play();
-    }
+    if (!opts.silent) this.playMedia('close-sound');
 
     this.props.onClose.call(this, prevMessage);
 
@@ -110,23 +106,16 @@ class Reveal extends skoash.Component {
 
     if (!message) return;
 
-    if (this.audio['open-sound']) {
-      this.audio['open-sound'].play();
-    }
+    this.playMedia('open-sound');
 
     if (typeof message === 'string') {
       messages = message.split(' ');
       messages.map(audio => {
-        audio = 'asset-' + audio;
-        if (this.audio[audio]) {
-          this.audio[audio].play();
-        } else if (this.media[audio] && typeof this.media[audio].play === 'function') {
-          this.media[audio].play();
-        }
+        this.playMedia(audio);
       });
     } else {
-      if (this.audio.voiceOver[message]) {
-        this.audio.voiceOver[message].play();
+      if (this.media.audio.voiceOver[message]) {
+        this.media.audio.voiceOver[message].play();
       }
     }
   }
@@ -134,8 +123,7 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = 'asset-';
-        ref += asset.ref || asset.props['data-ref'] || key;
+        var ref = asset.ref || asset.props['data-ref'] || 'asset-' + key;
         return (
           <asset.type
             {...asset.props}
@@ -187,6 +175,7 @@ class Reveal extends skoash.Component {
     if (li.props.className) classes = li.props.className;
 
     if (this.state.currentlyOpen.indexOf(key) !== -1 ||
+        this.state.currentlyOpen.indexOf('' + key) !== -1 ||
         this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
         this.state.currentlyOpen.indexOf(li.ref) !== -1
     ) {

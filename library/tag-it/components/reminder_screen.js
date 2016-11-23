@@ -10,7 +10,7 @@ export default function (props, ref, key) {
       <skoash.Image className="animated" src="media/_images/S_Reminder/img_5.1.png" />
       <p>
         You're going to make reminder<br />
-        tags to help you and your<br /> 
+        tags to help you and your<br />
         family remember to save<br />
         the planet by not wasting water!
       </p>
