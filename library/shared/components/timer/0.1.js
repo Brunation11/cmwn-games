@@ -28,6 +28,7 @@ class Timer extends skoash.Component {
           this.complete();
           this.stop();
         } else {
+          if (typeof this.props.onCheckComplete === 'function') this.props.onCheckComplete.call(this);
           window.requestAnimationFrame(this.checkComplete);
         }
       });
