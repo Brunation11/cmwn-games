@@ -50,50 +50,54 @@ export default function (props, ref, key) {
         ],
         vos: [
             <skoash.MediaSequence
-        ref="level-complete"
-        silentOnStart
-      >
-        <skoash.Audio
-          type="sfx"
-          src="media/audio/LevelComplete.mp3"
-        />
-        <skoash.Audio
-          type="voiceOver"
-          src="media/audio/lvl-3-complete.mp3"
-        />
-      </skoash.MediaSequence>,
+                ref="level-complete"
+                silentOnStart
+            >
+                <skoash.Audio
+                    type="sfx"
+                    src="media/audio/LevelComplete.mp3"
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src="media/audio/lvl-3-complete.mp3"
+                />
+            </skoash.MediaSequence>,
             <skoash.MediaSequence
-        ref="try-again"
-        silentOnStart
-      >
-        <skoash.Audio
-          type="sfx"
-          src="media/audio/LevelFail.mp3"
-          complete
-        />
-        <skoash.Audio
-          type="voiceOver"
-          src="media/audio/try-again.mp3"
-          complete
-        />
-      </skoash.MediaSequence>
+                ref="try-again"
+                silentOnStart
+            >
+                <skoash.Audio
+                    type="sfx"
+                    src="media/audio/LevelFail.mp3"
+                    complete
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src="media/audio/try-again.mp3"
+                    complete
+                />
+            </skoash.MediaSequence>
         ],
         revealPromptList: [
             <skoash.Component data-ref="level-complete" className="level-three-complete">
-        <skoash.Component className="frame">
-          <skoash.Component className="banner" />
-          <span>
-            You're halfway there! Thanks for<br />being a responsible flusher!
-          </span>
-        </skoash.Component>
-      </skoash.Component>,
+                <skoash.Component className="frame">
+                    <skoash.Component className="banner" />
+                    <span>
+                        You're halfway there! Thanks for<br />
+                        being a responsible flusher!
+                    </span>
+                </skoash.Component>
+            </skoash.Component>,
             <skoash.Component data-ref="try-again">
-        <skoash.Component className="frame">
-          <span>
-            The water is polluted<br />and the fish are sad!<br />But you have another chance<br />to save the day and clean their water.
-          </span>
-        </skoash.Component>
-      </skoash.Component>
+                <skoash.Component className="frame">
+                    <span>
+                        The water is polluted<br />
+                        and the fish are sad!<br />
+                        But you have another chance<br />
+                        to save the day and clean their water.
+                    </span>
+                </skoash.Component>
+            </skoash.Component>
         ]
     });
 }
