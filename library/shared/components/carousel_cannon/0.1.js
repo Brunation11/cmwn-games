@@ -58,6 +58,8 @@ class CarouselCannon extends skoash.Component {
         completeOnStart={this.props.completeOnStart}
         checkComplete={this.props.checkComplete}
         complete={this.props.complete}
+        showNum={this.props.showNum}
+        targetIndex={this.props.targetIndex}
       />
     );
   }
