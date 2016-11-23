@@ -38,8 +38,6 @@ body > div > div {
   height: 100%;
   margin: 0;
   font-size: 20px;
-  background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
 
   .background {
     opacity: 0;
@@ -51,17 +49,80 @@ body > div > div {
     height: 100%;
     background-size: cover;
     background-position: center center;
-
-    @for $i from 2 through 6 {
-      &.BKG-#{$i} {
-        background-image: url(../media/_images/_BKG/BKG_#{$i}.png);
-      }
-    }
+    background-repeat: no-repeat;
   }
 
-  @for $i from 2 through 6 {
-    &.BKG-#{$i} > div > .BKG-#{$i} {
-      opacity: 1;
+  > div > .background {
+    max-width: 960px;
+    max-height: 540px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .background.default {
+    opacity: 1;
+    background-image: url(../media/_images/_BKG/BKG_1.png);
+  }
+
+  .background.bkg_2 {
+    background-image: url(../media/_images/_BKG/BKG_2.png);
+  }
+
+  .background.bkg_3 {
+    background-image: url(../media/_images/_BKG/BKG_3.png);
+  }
+
+  .background.bkg_4 {
+    background-image: url(../media/_images/_BKG/BKG_4.png);
+  }
+
+  .background.bkg_5 {
+    background-image: url(../media/_images/_BKG/BKG_5.png);
+  }
+
+  .background.bkg_6 {
+    background-image: url(../media/_images/_BKG/BKG_6.png);
+  }
+
+  &.SCREEN-2:not(.MENU-quit) > .background.bkg_2,
+  &.SCREEN-3:not(.MENU-quit) > .background.bkg_2,
+  &.SCREEN-4:not(.MENU-quit) > .background.bkg_3,
+  &.SCREEN-5:not(.MENU-quit) > .background.bkg_3,
+  &.SCREEN-6:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-7:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-8:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-9:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-10:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-11:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-12:not(.MENU-quit) > .background.bkg_4,
+  &.SCREEN-13:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-14:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-15:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-16:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-17:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-18:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-19:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-20:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-21:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-22:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-23:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-24:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-25:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-26:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-27:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-28:not(.MENU-quit) > .background.bkg_5,
+  &.SCREEN-29:not(.MENU-quit) > .background.bkg_6,
+  &.SCREEN-30:not(.MENU-quit) > .background.bkg_6,
+  &.SCREEN-31:not(.MENU-quit) > .background.bkg_6 {
+    opacity: 1;
+  }
+
+
+// 037297120  18005318877
+
+  &.MENU-quit {
+    .screen:not(#quit) {
+      opacity: 0;
     }
   }
 }
@@ -406,6 +467,7 @@ img.inline {
     height: 540px;
     background-size: 1200px;
     background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
+    z-index: -1;
   }
 
   p {
@@ -490,6 +552,7 @@ img.inline {
     left: 180px;
     bottom: 12.5%;
     width: 800px;
+    opacity: 0;
   }
 
   &.OPEN {
@@ -497,9 +560,8 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
 
-    .start {
+    .start.animated {
       animation-name: fadeInRightBig;
-      animation-delay: 14s;
     }
   }
 }
@@ -534,14 +596,23 @@ img.inline {
 
   &.OPEN {
     li {
-      animation-name: fadeInRight;
       position: absolute;
       height: 100px;
       background-image: url(../media/_images/_Buttons/BU_1.png);
       background-size: 3750px;
       background-repeat: no-repeat;
       background-position: -1500px 0px;
-      cursor: pointer;
+      pointer-events: none;
+      opacity: 0;
+
+      &.animated {
+        animation-name: fadeInRight;
+      }
+
+      &.selectable {
+        cursor: pointer;
+        pointer-events: auto;
+      }
 
       &:hover,
       &.SELECTED {
@@ -564,7 +635,6 @@ img.inline {
   }
 
   .kitchen {
-    animation-delay: 4s;
     top: 30%;
   }
 
@@ -573,7 +643,6 @@ img.inline {
   }
 
   .shower, {
-    animation-delay: 7s;
     top: 50%;
   }
 
@@ -582,7 +651,6 @@ img.inline {
   }
 
   .bathroom {
-    animation-delay: 9.5s;
     top: 70%;
   }
 
@@ -591,7 +659,6 @@ img.inline {
   }
 
   .bathtub {
-    animation-delay: 13.5s;
     top: 30%;
     left: 50%;
   }
@@ -601,7 +668,6 @@ img.inline {
   }
 
   .classroom {
-    animation-delay: 17s;
     top: 50%;
     left: 50%;
   }
@@ -611,7 +677,6 @@ img.inline {
   }
 
   .outdoor {
-    animation-delay: 19.5s;
     top: 70%;
     left: 50%;
   }
@@ -671,6 +736,7 @@ img.inline {
           background-position: #{-1000*$i+px} 0px;
           width: nth($widths,$i)+px;
           height: nth($heights,$i)+px;
+          opacity: 0;
         }
       }
     }
@@ -686,7 +752,7 @@ img.inline {
   @for $i from 1 through 4 {
     $item: nth($items,$i);
     &.OPEN, &.STAY {
-      .#{$item} {
+      .#{$item}.animated {
         animation-name: fadeIn#{nth($directions,$i)}Big;
       }
     }
@@ -694,18 +760,6 @@ img.inline {
 
   .step {
     animation-delay: 0.1s;
-  }
-
-  .container-1 {
-    animation-delay: 8s;
-  }
-
-  .container-2 {
-    animation-delay: 8.5s;
-  }
-
-  .container-3 {
-    animation-delay: 9s;
   }
 
   &.LEAVE {
@@ -778,6 +832,7 @@ img.inline {
     width: 400px;
     height: 540px;
     background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+    z-index: -1;
   }
 
   .right {
@@ -790,6 +845,7 @@ img.inline {
     width: 607px;
     height: 540px;
     padding-left: 70px;
+    z-index: -1;
 
     div {
       background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
@@ -812,7 +868,6 @@ img.inline {
 
   li {
     opacity: 0;
-    transition: opacity .5s;
 
     span {
       position: relative;
@@ -828,36 +883,12 @@ img.inline {
 
   @for $i from 1 through 4 {
     $item: nth($items,$i);
-    &.OPEN,
-    &.STAY {
-      .#{$item} {
+    &.OPEN, &.STAY {
+      .#{$item}.animated {
         opacity: 1;
         animation-name: slideInRight;
       }
     }
-
-    &.STAY {
-      .#{$item} {
-        transition: opacity 0s;
-        animation-delay: 0s;
-      }
-    }
-  }
-
-  .lids {
-    animation-delay: 1.5s;
-  }
-
-  .scissors {
-    animation-delay: 2s;
-  }
-
-  .markers {
-      animation-delay: 3.5s;
-  }
-
-  .polish {
-    animation-delay: 4.5s;
   }
 
   &.WHAT-NEED {
@@ -869,6 +900,12 @@ img.inline {
   &.OPEN {
     .left {
       animation-name: slideInLeft;
+    }
+  }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
     }
   }
 }
@@ -1029,6 +1066,12 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #step-6 {
@@ -1115,6 +1158,12 @@ img.inline {
       animation-name: fadeInLeftBig;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #decorate-tag {
@@ -1191,6 +1240,12 @@ img.inline {
       animation-delay: 1s;
     }
   }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
+    }
+  }
 }
 
 #select-paint {
@@ -1219,6 +1274,12 @@ img.inline {
     img {
       animation-name: slideInRight;
       animation-delay: 1s;
+    }
+  }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
     }
   }
 }
@@ -1265,6 +1326,12 @@ img.inline {
     .step {
       animation-name: fadeInLeftBig;
       animation-delay: 1s;
+    }
+  }
+
+  &.LEAVE {
+    button {
+      opacity: 0;
     }
   }
 }
@@ -1348,7 +1415,6 @@ img.inline {
 
   li {
     opacity: 0;
-    transition: opacity .5s;
   }
 
   span {
@@ -1361,31 +1427,11 @@ img.inline {
   @for $i from 1 through 5 {
     $item: nth($items,$i);
     &.OPEN {
-        .#{$item} {
-            opacity: 1;
-            animation-name: slideInRight;
-        }
+      .#{$item}.animated {
+        opacity: 1;
+        animation-name: slideInRight;
+      }
     }
-  }
-
-  .use-your {
-    animation-delay: 2.5s;
-  }
-
-  .try-glow {
-    animation-delay: 4s;
-  }
-
-  .use-multiple {
-    animation-delay: 6s;
-  }
-
-  .create {
-    animation-delay: 8s;
-  }
-
-  .personalize {
-    animation-delay: 11.5s;
   }
 }
 

@@ -6,16 +6,14 @@ class MatchableReveal extends SelectableReveal {
     super();
   }
 
-  selectRespond(message=null) {
+  selectRespond(message = null) {
     if (message && typeof this.refs.reveal.open === 'function') {
       this.open(message);
     }
   }
 
   onSelect() {
-    if (this.audio.correct) {
-      this.audio.correct.play();
-    }
+    this.playMedia('correct');
   }
 
   renderMatchable() {

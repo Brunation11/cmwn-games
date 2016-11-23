@@ -33,16 +33,6 @@ class Selectable extends skoash.Component {
   bootstrap() {
     super.bootstrap();
 
-    var self = this;
-
-    var correctAnswers = this.requireForComplete.filter((ref) => {
-      return self.refs[ref].props.correct;
-    });
-
-    if (correctAnswers.length > 0) {
-      this.requireForComplete = correctAnswers;
-    }
-
     if (this.refs.bin) {
       this.setState({
         list: this.refs.bin.getAll()
@@ -75,9 +65,7 @@ class Selectable extends skoash.Component {
     self.props.selectRespond.call(self, dataRef);
     self.props.onSelect.call(self, dataRef);
 
-    if (self.props.chooseOne) {
-      self.requireForComplete = [dataRef];
-    }
+    if (self.props.chooseOne) self.complete();
 
     if (self.props.dataTarget) {
       self.updateGameState({
@@ -89,17 +77,13 @@ class Selectable extends skoash.Component {
     }
 
     if (self.props.completeListOnClick) {
-      self.requireForComplete.map(key => {
-        if (key === id && self.refs[id]) {
-          self.refs[id].complete();
-        }
+      _.each(self.refs, (r, k) => {
+        if (k === id) _.invoke(r, 'complete');
       });
     }
 
-    self.requireForComplete.map(key => {
-      if (key === dataRef && self.refs[key]) {
-        self.refs[key].complete();
-      }
+    _.each(self.refs, (r, k) => {
+      if (k === dataRef) _.invoke(r, 'complete');
     });
   }
 
@@ -124,31 +108,6 @@ class Selectable extends skoash.Component {
 
   getClassNames() {
     return classNames('selectable', super.getClassNames());
-  }
-
-  checkComplete() {
-    var self = this, complete;
-
-    if (this.props.checkComplete === false) return;
-
-    complete = self.requireForComplete.every(key => {
-      if (self.refs[key] instanceof Node) {
-        return true;
-      }
-      if (!self.refs[key].state || (self.refs[key].state && !self.refs[key].state.complete)) {
-        if (typeof self.refs[key].checkComplete === 'function') {
-          self.refs[key].checkComplete();
-        }
-        return false;
-      }
-      return true;
-    });
-
-    if (complete && !self.state.complete) {
-      self.complete();
-    } else if (self.state.started && !complete && self.state.complete) {
-      self.incomplete();
-    }
   }
 
   renderBin() {
@@ -204,8 +163,8 @@ Selectable.defaultProps = _.defaults({
   ],
   selectClass: 'SELECTED',
   completeListOnClick: true,
-  selectRespond: _.identity,
-  onSelect: _.identity,
+  selectRespond: _.noop,
+  onSelect: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Selectable;
