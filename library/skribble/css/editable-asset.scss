@@ -58,6 +58,11 @@
   &.ACTIVE {
     cursor: grab;
     cursor: -moz-grab;
+    z-index: 999999;
+
+    &:before {
+      z-index: 999999;
+    }
 
     .buttons {
       z-index: 1000000;

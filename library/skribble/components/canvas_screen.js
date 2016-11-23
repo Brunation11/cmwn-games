@@ -212,7 +212,7 @@ class CanvasScreen extends skoash.Screen {
           openOnStart="0"
           list={[
             <li>
-              <skoash.Image className="otter" src={'media/_Otter/Otter_Static_GreetingTwo.png'} />
+              <skoash.Image className="otter" src={'media/_Otter/joyful-otter_2.gif'} />
               <div className="bubble">
                 Welcome to your canvas!<br/><br/>
                 Would you like me<br/>

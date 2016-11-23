@@ -515,6 +515,19 @@ p {
 }
 
 #canvas {
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -80px;
+    width: 800px;
+    height: 800px;
+    z-index: 1;
+    background: none;
+    transition: none;
+  }
+
   button {
     color: #000;
   }
@@ -570,6 +583,22 @@ p {
       pointer-events: none;
     }
   }
+
+  &.OPEN {
+    &:after {
+      opacity: 0;
+      z-index: -1;
+      background: url(../media/_Otter/joyful-otter_2.gif) no-repeat;
+      background-size: contain;
+      transition: opacity .5s 2s, z-index 0s 2.5s;
+    }
+  }
+
+  &.REPLAY {
+    &:after {
+      display: none;
+    }
+  }
 }
 
 #friends {
@@ -611,9 +640,12 @@ p {
     }
 
     &.Two {
+      bottom: -120px;
+
       img {
-        width: 480px;
-        margin-left: -20px;
+        width: 1000px;
+        margin-left: -310px;
+        margin-top: -280px;
       }
 
       .bubble {
@@ -711,13 +743,13 @@ p {
     color: #000;
   }
 
-  > div > div:not(.send) {
+  > div > div:not(.goto-send) {
     .save-to-drafts {
       display: none;
     }
   }
 
-  .send {
+  .goto-send {
     .continue {
       display: none;
     }
@@ -835,8 +867,23 @@ p {
     height: 750px;
 
     > div,
-    li > div {
+    li {
       height: 100%;
+
+      &.empty {
+        min-height: 720px;
+      }
+    }
+
+    ul li > div {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      ul {
+        min-height: 100%;
+        height: auto;
+      }
     }
 
     ul {
@@ -1031,8 +1078,8 @@ p {
     position: absolute;
 
     .otter {
-      margin: 140px 0 0 10px;
-      width: 470px;
+      margin: -20px 0 0 -220px;
+      width: 840px;
     }
 
     .bubble {
@@ -1110,6 +1157,7 @@ p {
     width: 400px;
     height: 300px;
     background-image: url(../media/_Otter/Otter_Static4.png);
+    // background-image: url(../media/_Otter/Peeking-through-Otter2.gif);
     background-size: 700px;
     background-position: 52px 0;
     height: 480px;
@@ -1414,6 +1462,113 @@ p {
   &.OPEN {
     transform: translateX(0%);
     z-index: 3;
+  }
+}
+
+#collisionWarning {
+  background-color: rgba(88,189,63,.92);
+
+  &.OPEN {
+    z-index: 3;
+  }
+
+  .frame > * {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .copy {
+
+  }
+
+  button {
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+  }
+
+  .toggle-collision-warning {
+    background-image: url(../media/_CollisionWarning/spritesheet-donotshow.png);
+    background-size: 840px;
+    width: 840px;
+    height: 155px;
+    background-position: 0px -16px;
+
+    &.active {
+      background-position: 0px -130px;
+    }
+  }
+
+  .close-collision-warning {
+    background-image: url(../media/_CollisionWarning/spritesheet-ok.png);
+    background-size: 278px;
+    width: 278px;
+    height: 238px;
+
+    &:active,
+    &:hover,
+    &:focus {
+      background-position: 0px -278px;
+    }
+  }
+
+  .otter {
+    position: absolute;
+    bottom: -170px;
+    left: -200px;
+    width: 900px;
+    z-index: -1;
+  }
+}
+
+#limitWarning {
+  background-color: rgba(120, 41, 187, .6);
+
+  &.OPEN {
+    z-index: 3;
+  }
+
+  .screen-content {
+    > div {
+      position: absolute;
+      left: 420px;
+      top: 170px;
+      font-family : 'CMWN';
+      font-size : 70px;
+      line-height : 75px;
+      letter-spacing : -0.7px;
+      color : #fff;
+      text-align: center;
+      text-shadow: #000 5px 5px 0;
+    }
+  }
+
+  .otter {
+    position: absolute;
+    left: -400px;
+    top: -160px;
+    width: 1300px;
+    z-index: 1;
+  }
+
+  .sign {
+    position: absolute;
+    left: 260px;
+    top: 0;
+  }
+
+  button {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 795px;
+    top: 510px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c.png');
+
+    &:hover {
+      background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28.png');
+    }
   }
 }
 

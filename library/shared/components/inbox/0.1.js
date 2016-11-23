@@ -19,7 +19,7 @@ class Inbox extends Selectable {
     if (!this.refs[key]) return;
 
     message = this.refs[key].props.item;
-    classes[key] = this.state.selectClass;
+    classes[key] = this.props.selectClass;
 
     this.setState({
       message,
@@ -71,12 +71,14 @@ class Inbox extends Selectable {
 
     friends = _.get(this.props.gameState, 'data.user', []);
 
-    return items.map((item, key) => {
+    return _.map(items, (item, key) => {
       var timestamp, image, name;
       timestamp = moment.utc(item.updated).local();
       key = 'message-' + key;
 
-      friends.forEach(friend => {
+      if (item[this.props.friendKey] == null) return null;
+
+      _.each(friends, friend => {
         if (item[this.props.friendKey] === friend.friend_id) {
           image = friend._embedded.image ? friend._embedded.image.url : '';
           name = friend.username;
@@ -88,6 +90,7 @@ class Inbox extends Selectable {
           name: 'getFriend',
           'friend_id': item[this.props.friendKey],
         });
+        name = '';
       }
 
       if (this.props.friendKey === 'friend_to') {

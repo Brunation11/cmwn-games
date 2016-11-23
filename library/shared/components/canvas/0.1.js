@@ -161,7 +161,12 @@ class Canvas extends skoash.Component {
         return c;
       }, 1);
 
-      if (count > this.props.maxInstances) return;
+      if (count > this.props.maxInstances) {
+        skoash.trigger('openMenu', {
+          id: 'limitWarning'
+        });
+        return;
+      }
 
       items.push(asset);
       index = items.indexOf(asset);
@@ -225,12 +230,15 @@ class Canvas extends skoash.Component {
 
   deactivateItems(exclude, type) {
     if (typeof exclude === 'object' && exclude.target) {
-      if (exclude.target.tagName !== 'LI') {
-        return;
-      }
+      if (exclude.target.tagName !== 'LI') return;
       this.setState({
         active: false,
       });
+      if (!this.state.valid) {
+        skoash.trigger('passData', {
+          name: 'showCollisionWarning'
+        });
+      }
     }
 
     if (typeof exclude === 'number') {
@@ -354,9 +362,7 @@ class Canvas extends skoash.Component {
       valid
     });
 
-    if (typeof this.props.setValid === 'function') {
-      this.props.setValid(valid);
-    }
+    this.props.setValid.call(this, valid);
   }
 
   getStyle() {
@@ -433,7 +439,8 @@ class Canvas extends skoash.Component {
 }
 
 Canvas.defaultProps = _.defaults({
-  maxInstances: 5
+  maxInstances: 5,
+  setValid: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Canvas;
