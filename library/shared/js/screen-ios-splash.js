@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 pl.game.component('screen-ios-splash', function () {
 
     this.on('ready', function (_e) {
@@ -49,3 +50,4 @@ pl.game.component('screen-ios-splash', function () {
         this.addClass('FINISHED');
     });
 });
+/* eslint-enable no-undef */
