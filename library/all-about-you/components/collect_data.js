@@ -5,7 +5,8 @@ export default function () {
     if (this.refs.selectable) {
         data = [];
         _.forIn(this.refs.selectable.refs, (ref) => {
-            if (_.includes(ref.props.className, 'SELECTED') || _.includes(ref.props.className, 'HIGHLIGHTED')) {
+            if (_.includes(ref.props.className, 'SELECTED') ||
+                _.includes(ref.props.className, 'HIGHLIGHTED')) {
                 data.push(ref.props['data-ref']);
             }
         });

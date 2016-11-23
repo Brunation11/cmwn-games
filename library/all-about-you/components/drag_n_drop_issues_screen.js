@@ -28,7 +28,9 @@ export default function (props, ref, key) {
     }
 
     function correctRespond(draggable, dropzoneKey) {
-        var dropzone, message, complete = true;
+        var dropzone;
+        var message;
+        var complete = true;
 
         dropzone = this.refs[`dropzone-${dropzoneKey}`];
         message = draggable.props.message;
@@ -69,86 +71,170 @@ export default function (props, ref, key) {
     }
 
     return (
-    <skoash.Screen
-      {...props}
-      ref={ref}
-      key={key}
-      collectData={collectData}
-      loadData={loadData}
-      id="drag-n-drop-issues"
-    >
-      <skoash.Audio ref="vo" type="voiceOver" src="media/assets/_audio/VOs/VO_WorldIssues.mp3" />
-      <skoash.Image ref="penguin" className="penguin animated" src="media/assets/_images/S_4/img_s4_penguin-01.png" />
-      <skoash.Image ref="banner" className="banner animated" src="media/assets/_images/S_4/text-worldissues-01.png" />
-      <skoash.Component ref="frame" className="frame animated" />
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            collectData={collectData}
+            loadData={loadData}
+            id="drag-n-drop-issues"
+        >
+            <skoash.Audio
+                ref="vo"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_WorldIssues.mp3"
+            />
+            <skoash.Image
+                ref="penguin"
+                className="penguin animated"
+                src="media/assets/_images/S_4/img_s4_penguin-01.png"
+            />
+            <skoash.Image
+                ref="banner"
+                className="banner animated"
+                src="media/assets/_images/S_4/text-worldissues-01.png"
+            />
+            <skoash.Component ref="frame" className="frame animated" />
 
-      <MediaCollection
-        ref="sfx-collection"
-        complete={_.get(props, 'data.game.complete', false)}
-        play={_.get(props, 'data.sfx.play', null)}
-        onPlay={function () {
-            this.updateGameState({
-                path: 'sfx',
-                data: {
-                    play: null
-                }
-            });
-        }}
-      >
-        <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
-        <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
-      </MediaCollection>
+            <MediaCollection
+                ref="sfx-collection"
+                complete={_.get(props, 'data.game.complete', false)}
+                play={_.get(props, 'data.sfx.play', null)}
+                onPlay={function () {
+                    this.updateGameState({
+                        path: 'sfx',
+                        data: {
+                            play: null
+                        }
+                    });
+                }}
+            >
+                <skoash.Audio ref="drag" type="sfx" src="media/assets/_audio/_Buttons/S_BU_2.mp3" />
+                <skoash.Audio ref="correct" type="sfx" src="media/assets/_audio/_Buttons/S_BU_3.mp3" />
+            </MediaCollection>
 
-      <MediaCollection
-        ref="media-collection"
-        complete={_.get(props, 'data.game.complete', false)}
-        play={_.get(props, 'data.reveal.open', null)}
-        onPlay={function () {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: null
-                }
-            });
-        }}
-      >
-        <skoash.Audio ref="cyberbullying" type="voiceOver" src="media/assets/_audio/VOs/VO_Cyberbullying.mp3" />
-        <skoash.Audio ref="endangered-animals" type="voiceOver" src="media/assets/_audio/VOs/VO_Endangered.mp3" />
-        <skoash.Audio ref="literacy" type="voiceOver" src="media/assets/_audio/VOs/VO_Literacy.mp3" />
-        <skoash.Audio ref="climate-change" type="voiceOver" src="media/assets/_audio/VOs/VO_Climate.mp3" />
-        <skoash.Audio ref="poverty" type="voiceOver" src="media/assets/_audio/VOs/VO_Poverty.mp3" />
-        <skoash.Audio ref="health-problems" type="voiceOver" src="media/assets/_audio/VOs/VO_Health.mp3" />
-        <skoash.Audio ref="homelessness" type="voiceOver" src="media/assets/_audio/VOs/VO_Homelessness.mp3" />
-        <skoash.Audio ref="safety" type="voiceOver" src="media/assets/_audio/VOs/VO_Safety.mp3" />
-      </MediaCollection>
+            <MediaCollection
+                ref="media-collection"
+                complete={_.get(props, 'data.game.complete', false)}
+                play={_.get(props, 'data.reveal.open', null)}
+                onPlay={function () {
+                    this.updateGameState({
+                        path: 'reveal',
+                        data: {
+                            open: null
+                        }
+                    });
+                }}
+            >
+            <skoash.Audio
+                ref="cyberbullying"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_Cyberbullying.mp3"
+            />
+            <skoash.Audio
+                ref="endangered-animals"
+                 type="voiceOver"
+                 src="media/assets/_audio/VOs/VO_Endangered.mp3"
+                />
+            <skoash.Audio
+                ref="literacy"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_Literacy.mp3"
+            />
+            <skoash.Audio
+                ref="climate-change"
+                 type="voiceOver"
+                 src="media/assets/_audio/VOs/VO_Climate.mp3"
+                />
+            <skoash.Audio
+                ref="poverty"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_Poverty.mp3"
+            />
+            <skoash.Audio
+                ref="health-problems"
+                 type="voiceOver"
+                 src="media/assets/_audio/VOs/VO_Health.mp3"
+                />
+            <skoash.Audio
+                ref="homelessness"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_Homelessness.mp3"
+            />
+            <skoash.Audio
+                ref="safety"
+                type="voiceOver"
+                src="media/assets/_audio/VOs/VO_Safety.mp3"
+            />
+            </MediaCollection>
 
-      <Dropzone
-        ref="dropzone"
-        centerOnCorrect
-        dragRespond={dragRespond}
-        correctRespond={correctRespond}
-        dropzones={[
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />,
-            <skoash.Component className="dropzone-list-item animated" />
-        ]}
-        draggables={[
-            <skoash.ListItem ref="cyberbulling" className="draggable-list-item cyberbullying animated" message="cyberbullying" returnOnIncorrect />,
-            <skoash.ListItem ref="endangered-animals" className="draggable-list-item endangered-animals animated" message="endangered-animals" returnOnIncorrect />,
-            <skoash.ListItem ref="literacy" className="draggable-list-item literacy animated" message="literacy" returnOnIncorrect />,
-            <skoash.ListItem ref="climate-change" className="draggable-list-item climate-change animated" message="climate-change" returnOnIncorrect />,
-            <skoash.ListItem ref="poverty" className="draggable-list-item poverty animated" message="poverty" returnOnIncorrect />,
-            <skoash.ListItem ref="health-problems" className="draggable-list-item health-problems animated" message="health-problems" returnOnIncorrect />,
-            <skoash.ListItem ref="homelessness" className="draggable-list-item homelessness animated" message="homelessness" returnOnIncorrect />,
-            <skoash.ListItem ref="safety" className="draggable-list-item safety animated" message="safety" returnOnIncorrect />
-        ]}
-      />
-      <skoash.Component ref="meter" className="meter animated" />
-    </skoash.Screen>
-  );
+            <Dropzone
+                ref="dropzone"
+                centerOnCorrect
+                dragRespond={dragRespond}
+                correctRespond={correctRespond}
+                dropzones={[
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />,
+                    <skoash.Component className="dropzone-list-item animated" />
+                ]}
+                draggables={[
+                    <skoash.ListItem
+                        ref="cyberbulling"
+                        className="draggable-list-item cyberbullying animated"
+                        message="cyberbullying"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="endangered-animals"
+                        className="draggable-list-item endangered-animals animated"
+                        message="endangered-animals"
+                         returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="literacy"
+                        className="draggable-list-item literacy animated"
+                        message="literacy"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="climate-change"
+                        className="draggable-list-item climate-change animated"
+                        message="climate-change"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="poverty"
+                        className="draggable-list-item poverty animated"
+                        message="poverty"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="health-problems"
+                        className="draggable-list-item health-problems animated"
+                        message="health-problems"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="homelessness"
+                        className="draggable-list-item homelessness animated"
+                        message="homelessness"
+                        returnOnIncorrect
+                    />,
+                    <skoash.ListItem
+                        ref="safety"
+                        className="draggable-list-item safety animated"
+                        message="safety"
+                        returnOnIncorrect
+                    />
+                ]}
+            />
+  <skoash.Component ref="meter" className="meter animated" />
+        </skoash.Screen>
+    );
 }
