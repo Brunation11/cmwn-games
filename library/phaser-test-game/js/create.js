@@ -8,7 +8,7 @@ export default function () {
 
     setGameStage.call(this);
 
-  //  A simple background for our this.game
+    //  A simple background for our this.game
     this.game.add.sprite(0, 0, 'sky');
     this.game.add.sprite(800, 0, 'sky');
     this.game.add.sprite(1600, 0, 'sky');
@@ -60,10 +60,11 @@ export default function () {
     });
 
     this.score = 0,
-  this.scoreText = this.game.add.text(16, 16, `Score: ${this.score}`, { fontSize: '32px', fill: '#000' });
+    this.scoreText = this.game.add.text(16, 16, `Score: ${this.score}`, { fontSize: '32px', fill: '#000' });
 
     this.lives = 3,
-  this.livesText = this.game.add.text(this.game.camera.view.width - 166, 16, `Lives: ${this.lives}`, { fontSize: '32px', fill: '#000' });
+    this.livesText = this.game.add.text(this.game.camera.view.width - 166, 16, `Lives: ${this.lives}`,
+        { fontSize: '32px', fill: '#000' });
 
     this.audio = {
         bump: this.game.add.audio('bump'),

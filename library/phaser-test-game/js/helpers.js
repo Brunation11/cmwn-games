@@ -9,10 +9,10 @@ export default {
     collectStar: function (p, star) {
         var e;
 
-    // Removes the star from the screen
+        // Removes the star from the screen
         star.kill();
 
-    //  Add and update the score
+        //  Add and update the score
         this.score += 10;
         this.scoreText.text = 'Score: ' + this.score;
 
@@ -44,6 +44,7 @@ export default {
         }, 1000);
     },
     rideDiamond: function (p, diamond) {
-        diamond.body.velocity.x = (diamond.body.velocity.x === Math.abs(diamond.body.velocity.x)) ? 100 : -100;
+        diamond.body.velocity.x = (diamond.body.velocity.x === Math.abs(diamond.body.velocity.x)) ?
+            100 : -100;
     },
 };

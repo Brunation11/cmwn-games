@@ -24,7 +24,8 @@ export default function () {
     });
 
     if (this.isComplete) {
-        this.game.camera.x = Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);
+        this.game.camera.x =
+            Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);
 
         this.scoreText.x = this.game.camera.x + 16;
         this.livesText.x = this.game.camera.x + this.game.camera.view.width - 166;
