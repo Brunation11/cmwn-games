@@ -38,8 +38,8 @@ class TargetSelectable extends SelectableReveal {
 
   onCorrect(message) {
     var classes;
-    if (this.audio.correct) this.audio.correct.play();
-    if (this.audio['correct-sound']) this.audio['correct-sound'].play();
+    this.playMedia('correct');
+    this.playMedia('correct-sound');
 
     classes = this.refs.selectable.state.classes;
     classes[message] = 'SELECTED';
@@ -47,17 +47,15 @@ class TargetSelectable extends SelectableReveal {
       classes
     }, () => {
       this.setItem(this.state.idx + 1);
-      this.refs.selectable.requireForComplete.forEach(key => {
-        if (key === message && this.refs.selectable.refs[key]) {
-          this.refs.selectable.refs[key].complete();
-        }
+      _.each(this.refs.selectable.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     });
   }
 
   onIncorrect() {
-    if (this.audio.incorrect) this.audio.incorrect.play();
-    if (this.audio['incorrect-sound']) this.audio['incorrect-sound'].play();
+    this.playMedia('incorrect');
+    this.playMedia('incorrect-sound');
   }
 
   setItem(idx = 0) {

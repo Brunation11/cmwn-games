@@ -25,9 +25,9 @@ class DropzoneReveal extends skoash.Component {
     answers = this.props.answers ? this.props.answers : this.state.answers;
     if (answers.length) {
       if (answers.indexOf(message) === -1) {
-        if (this.audio.incorrect) this.audio.incorrect.play();
+        this.playMedia('incorrect');
       } else {
-        if (this.audio.correct) this.audio.correct.play();
+        this.playMedia('correct');
         if (typeof this.refs.reveal.open === 'function' && !this.props.manualReveal) {
           this.refs.reveal.open(message);
         }

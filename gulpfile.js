@@ -206,7 +206,7 @@ gulp.task('copy-framework', function () {
     .pipe(gulp.dest('./build/framework'));
 });
 
-gulp.task('copy-media', ['copy-index'], function () {
+gulp.task('copy-media', function () {
   games.forEach(function (game) {
     // This can be removed once media for every game is transferred to the media server.
     gulp
@@ -225,7 +225,7 @@ gulp.task('copy-media', ['copy-index'], function () {
     .pipe(gulp.dest('./build/shared/images'));
 });
 
-gulp.task('copy-components', ['copy-media'], function () {
+gulp.task('copy-components', function () {
   games.forEach(function (game) {
     // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp
@@ -234,7 +234,7 @@ gulp.task('copy-components', ['copy-media'], function () {
   });
 });
 
-gulp.task('copy-thumbs', ['copy-components'], function () {
+gulp.task('copy-thumbs', function () {
   games.forEach(function (game) {
     // This can be removed once thumbs for each game are moved to the media server.
     gulp

@@ -44,8 +44,8 @@ class MatchGame extends Selectable {
       matched,
     });
 
-    this.requireForComplete = this.requireForComplete.filter((key) => {
-      return key !== message;
+    _.each(this.refs, (ref, key) => {
+      if (key === message) ref.complete();
     });
 
     this.checkComplete();

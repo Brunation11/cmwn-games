@@ -33,9 +33,7 @@ class DropzoneReveal extends skoash.Component {
   }
 
   revealComplete() {
-    if (this.audio.complete) {
-      this.audio.complete.play();
-    }
+    this.playMedia('complete');
   }
 
   renderAssets() {

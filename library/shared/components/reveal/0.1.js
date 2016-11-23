@@ -37,10 +37,8 @@ class Reveal extends skoash.Component {
     if (self.props.completeOnOpen) {
       self.complete();
     } else {
-      self.requireForComplete.forEach(key => {
-        if (key === message && self.refs[key]) {
-          self.refs[key].complete();
-        }
+      _.each(self.refs, (ref, key) => {
+        if (ref && key === message) ref.complete();
       });
     }
 
@@ -77,9 +75,7 @@ class Reveal extends skoash.Component {
       currentlyOpen,
     });
 
-    if (!opts.silent && this.audio['close-sound']) {
-      this.audio['close-sound'].play();
-    }
+    if (!opts.silent) this.playMedia('close-sound');
 
     this.props.onClose.call(this);
 
@@ -104,6 +100,7 @@ class Reveal extends skoash.Component {
 
     message += '';
 
+<<<<<<< HEAD
     if (self.audio['open-sound']) {
       self.audio['open-sound'].play();
     }
@@ -115,6 +112,18 @@ class Reveal extends skoash.Component {
         self.audio[audio].play();
       } else if (self.media[audio] && typeof self.media[audio].play === 'function') {
         self.media[audio].play();
+=======
+    this.playMedia('open-sound');
+
+    if (typeof message === 'string') {
+      messages = message.split(' ');
+      messages.map(audio => {
+        this.playMedia(audio);
+      });
+    } else {
+      if (this.media.audio.voiceOver[message]) {
+        this.media.audio.voiceOver[message].play();
+>>>>>>> 06493fdacd220fcd966f6b6b01e0cd981f067919
       }
     });
   }
@@ -122,8 +131,7 @@ class Reveal extends skoash.Component {
   renderAssets() {
     if (this.props.assets) {
       return this.props.assets.map((asset, key) => {
-        var ref = 'asset-';
-        ref += asset.ref || asset.props['data-ref'] || key;
+        var ref = asset.ref || asset.props['data-ref'] || 'asset-' + key;
         return (
           <asset.type
             {...asset.props}
@@ -181,6 +189,7 @@ class Reveal extends skoash.Component {
     if (li.props.className) classes = li.props.className;
 
     if (this.state.currentlyOpen.indexOf(key) !== -1 ||
+        this.state.currentlyOpen.indexOf('' + key) !== -1 ||
         this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
         this.state.currentlyOpen.indexOf(li.ref) !== -1
     ) {
@@ -232,8 +241,8 @@ Reveal.defaultProps = _.defaults({
     <li></li>,
     <li></li>
   ],
-  onOpen: _.identity,
-  onClose: _.identity,
+  onOpen: _.noop,
+  onClose: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Reveal;

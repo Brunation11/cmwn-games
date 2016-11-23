@@ -3,8 +3,6 @@ import Selectable from 'shared/components/selectable/0.1';
 class SelectableAudio extends skoash.Component {
 
   selectRespond(ref) {
-    var audioRef = 'asset-' + ref;
-
     this.playAudio(ref);
 
     if (typeof this.props.selectRespond === 'function') {
@@ -12,21 +10,27 @@ class SelectableAudio extends skoash.Component {
     }
 
     if (this.props.chooseOne) {
-      this.requireForComplete = [audioRef];
+      this.complete();
     }
+  }
+
+  checkComplete() {
+    if (!this.props.chooseOne) super.checkComplete();
   }
 
   playAudio(ref) {
     var component;
 
-    this.audio['asset-' + ref] && this.audio['asset-' + ref].play();
+    this.playMedia('asset-' + ref);
 
     component = this.refs.selectable.refs[ref];
 
-    if (component && component.props && component.props.correct) {
-      this.audio['asset-correct'] && this.audio['asset-correct'].play();
-    } else {
-      this.audio['asset-incorrect'] && this.audio['asset-incorrect'].play();
+    if (component) {
+      if (component.props.correct) {
+        this.playMedia('asset-correct');
+      } else {
+        this.playMedia('asset-incorrect');
+      }
     }
   }
 

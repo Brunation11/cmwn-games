@@ -15,6 +15,7 @@ export default function (props, ref, key) {
             <skoash.Image ref="title" src="media/_images/_S_YouFeel/img_2.1.png" />
             <SelectableAudio
               ref="selectable-audio"
+              completeDelay={1000}
               selectableList={[
                 <skoash.ListItem className="animated img-0" pl-bg />,
                 <skoash.ListItem className="animated img-1" pl-bg />,
