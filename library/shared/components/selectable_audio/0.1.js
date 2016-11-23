@@ -2,44 +2,44 @@ import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableAudio extends skoash.Component {
 
-  selectRespond(ref) {
-    this.playAudio(ref);
+    selectRespond(ref) {
+        this.playAudio(ref);
 
-    if (typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond.call(this, ref);
+        if (typeof this.props.selectRespond === 'function') {
+            this.props.selectRespond.call(this, ref);
+        }
+
+        if (this.props.chooseOne) {
+            this.complete();
+        }
     }
 
-    if (this.props.chooseOne) {
-      this.complete();
+    checkComplete() {
+        if (!this.props.chooseOne) super.checkComplete();
     }
-  }
 
-  checkComplete() {
-    if (!this.props.chooseOne) super.checkComplete();
-  }
+    playAudio(ref) {
+        var component;
 
-  playAudio(ref) {
-    var component;
+        this.playMedia('asset-' + ref);
 
-    this.playMedia('asset-' + ref);
+        component = this.refs.selectable.refs[ref];
 
-    component = this.refs.selectable.refs[ref];
-
-    if (component) {
-      if (component.props.correct) {
-        this.playMedia('asset-correct');
-      } else {
-        this.playMedia('asset-incorrect');
-      }
+        if (component) {
+            if (component.props.correct) {
+                this.playMedia('asset-correct');
+            } else {
+                this.playMedia('asset-incorrect');
+            }
+        }
     }
-  }
 
-  renderAssets() {
-    if (this.props.audioAssets) {
-      return this.props.audioAssets.map((asset, key) => {
-        var dataRef = asset.props['data-ref'] || key;
-        var ref = 'asset-' + dataRef;
-        return (
+    renderAssets() {
+        if (this.props.audioAssets) {
+            return this.props.audioAssets.map((asset, key) => {
+                var dataRef = asset.props['data-ref'] || key;
+                var ref = 'asset-' + dataRef;
+                return (
           <skoash.Audio
             {...asset.props}
             ref={ref}
@@ -47,13 +47,13 @@ class SelectableAudio extends skoash.Component {
             data-ref={dataRef}
           />
         );
-      });
+            });
+        }
+        return null;
     }
-    return null;
-  }
 
-  renderSelectable() {
-    return (
+    renderSelectable() {
+        return (
       <Selectable
         ref="selectable"
         list={this.props.selectableList}
@@ -61,20 +61,20 @@ class SelectableAudio extends skoash.Component {
         selectClass={this.props.selectClass}
       />
     );
-  }
+    }
 
-  getClassNames() {
-    return 'selectable-audio ' + super.getClassNames();
-  }
+    getClassNames() {
+        return 'selectable-audio ' + super.getClassNames();
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
         {this.renderSelectable()}
       </div>
     );
-  }
+    }
 }
 
 export default SelectableAudio;

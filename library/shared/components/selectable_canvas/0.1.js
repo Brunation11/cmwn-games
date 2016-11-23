@@ -3,91 +3,91 @@ import classNames from 'classnames';
 import Selectable from 'shared/components/selectable/0.1';
 
 class SelectableCanvas extends Selectable {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      classes: {},
-      selectFunction: this.select,
-    };
-  }
-
-  bootstrap() {
-    var offset;
-
-    super.bootstrap();
-
-    this.buffer = this.refs.canvas || document.createElement('canvas');
-    this.buffer = document.createElement('canvas');
-    this.bctx = this.buffer.getContext('2d');
-
-    this.el = ReactDOM.findDOMNode(this);
-    offset = this.el.getBoundingClientRect();
-
-    this.buffer.width = offset.width;
-    this.buffer.height = offset.height;
-
-    this.items = [];
-
-    _.forIn(this.refs, component => {
-      if (!component.refs) return;
-      var img = ReactDOM.findDOMNode(component.refs.img);
-      if (img) this.items.push(img);
-    });
-  }
-
-  selectHelper(e, classes) {
-    var offset, target, dataRef;
-
-    offset = this.el.getBoundingClientRect();
-    this.buffer.width = offset.width;
-    this.buffer.height = offset.height;
-
-    this.items.some((item, key) => {
-      if (this.isImageTarget(item, e, offset)) {
-        dataRef = item.getAttribute('data-ref');
-        target = this.refs[dataRef] || this.refs[key];
-        target.complete();
-        classes[key] = this.props.selectClass;
-        return true;
-      }
-
-      return false;
-    });
-
-    this.setState({
-      classes,
-    });
-
-    if (target && typeof this.props.selectRespond === 'function') {
-      this.props.selectRespond.call(this, target.props.message);
+        this.state = {
+            classes: {},
+            selectFunction: this.select,
+        };
     }
 
-    this.checkComplete();
-  }
+    bootstrap() {
+        var offset;
 
-  isImageTarget(image, e, parentOffset) {
-    var offset, pixel;
+        super.bootstrap();
 
-    offset = image.getBoundingClientRect();
+        this.buffer = this.refs.canvas || document.createElement('canvas');
+        this.buffer = document.createElement('canvas');
+        this.bctx = this.buffer.getContext('2d');
 
-    this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-    this.bctx.drawImage(image, offset.left - parentOffset.left, offset.top - parentOffset.top, offset.width, offset.height);
-    pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
+        this.el = ReactDOM.findDOMNode(this);
+        offset = this.el.getBoundingClientRect();
 
-    this.bctx.fillStyle = 'blue';
-    this.bctx.fillRect(e.pageX, e.pageY, 5, 5);
+        this.buffer.width = offset.width;
+        this.buffer.height = offset.height;
+
+        this.items = [];
+
+        _.forIn(this.refs, component => {
+            if (!component.refs) return;
+            var img = ReactDOM.findDOMNode(component.refs.img);
+            if (img) this.items.push(img);
+        });
+    }
+
+    selectHelper(e, classes) {
+        var offset, target, dataRef;
+
+        offset = this.el.getBoundingClientRect();
+        this.buffer.width = offset.width;
+        this.buffer.height = offset.height;
+
+        this.items.some((item, key) => {
+            if (this.isImageTarget(item, e, offset)) {
+                dataRef = item.getAttribute('data-ref');
+                target = this.refs[dataRef] || this.refs[key];
+                target.complete();
+                classes[key] = this.props.selectClass;
+                return true;
+            }
+
+            return false;
+        });
+
+        this.setState({
+            classes,
+        });
+
+        if (target && typeof this.props.selectRespond === 'function') {
+            this.props.selectRespond.call(this, target.props.message);
+        }
+
+        this.checkComplete();
+    }
+
+    isImageTarget(image, e, parentOffset) {
+        var offset, pixel;
+
+        offset = image.getBoundingClientRect();
+
+        this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+        this.bctx.drawImage(image, offset.left - parentOffset.left, offset.top - parentOffset.top, offset.width, offset.height);
+        pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
+
+        this.bctx.fillStyle = 'blue';
+        this.bctx.fillRect(e.pageX, e.pageY, 5, 5);
 
     // opaque pixel
-    return pixel.data[3] > 0;
-  }
+        return pixel.data[3] > 0;
+    }
 
-  getClassNames() {
-    return classNames('selectable-canvas', super.getClassNames());
-  }
+    getClassNames() {
+        return classNames('selectable-canvas', super.getClassNames());
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div>
         <canvas ref="canvas" />
         <ul
@@ -98,7 +98,7 @@ class SelectableCanvas extends Selectable {
         </ul>
       </div>
     );
-  }
+    }
 }
 
 export default SelectableCanvas;

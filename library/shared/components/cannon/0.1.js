@@ -3,40 +3,40 @@ import classNames from 'classnames';
 const BALL = 'ball';
 
 class Cannon extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.fire = this.fire.bind(this);
-    this.reload = this.reload.bind(this);
-  }
-
-  fire() {
-    this.setState({
-      fire: true,
-      reload: false
-    });
-  }
-
-  reload() {
-    this.setState({
-      fire: false,
-      reload: true
-    });
-
-    if (typeof this.props.onReload === 'function') {
-      this.props.onReload.call(this);
+        this.fire = this.fire.bind(this);
+        this.reload = this.reload.bind(this);
     }
-  }
 
-  getClassNames() {
-    return classNames('cannon', {
-      FIRE: this.state.fire,
-      RELOAD: this.state.reload
-    }, super.getClassNames());
-  }
+    fire() {
+        this.setState({
+            fire: true,
+            reload: false
+        });
+    }
 
-  renderBall() {
-    return (
+    reload() {
+        this.setState({
+            fire: false,
+            reload: true
+        });
+
+        if (typeof this.props.onReload === 'function') {
+            this.props.onReload.call(this);
+        }
+    }
+
+    getClassNames() {
+        return classNames('cannon', {
+            FIRE: this.state.fire,
+            RELOAD: this.state.reload
+        }, super.getClassNames());
+    }
+
+    renderBall() {
+        return (
       <this.props.ball.type
         {...this.props.ball.props}
         className={BALL}
@@ -44,15 +44,15 @@ class Cannon extends skoash.Component {
         onTransitionEnd={this.reload}
       />
     );
-  }
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className={this.getClassNames()} onClick={this.fire}>
         {this.renderBall()}
       </div>
     );
-  }
+    }
 }
 
 export default Cannon;

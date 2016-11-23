@@ -2,54 +2,54 @@ import Selectable from 'shared/components/selectable/0.1.js';
 import Reveal from 'shared/components/reveal/0.1.js';
 
 class SelectableReveal extends skoash.Component {
-  constructor() {
-    super();
-  }
-
-  start() {
-    super.start();
-    this.setState({
-      canSelectOnStart: this.props.canSelectOnStart
-    });
-  }
-
-  open(message) {
-    this.refs.reveal.open(message);
-  }
-
-  selectRespond(message) {
-    if (this.props.answers.length) {
-      if (this.props.answers.indexOf(message) === -1) {
-        this.playMedia('incorrect');
-        if (this.props.revealAll) {
-          if (typeof this.refs.reveal.open === 'function') {
-            this.open(message);
-          }
-        }
-      } else {
-        this.playMedia('correct');
-        if (typeof this.refs.reveal.open === 'function') {
-          this.open(message);
-        }
-      }
-    } else {
-      if (this.props.allCorrect) this.playMedia('correct');
-      if (typeof this.refs.reveal.open === 'function') {
-        this.open(message);
-      }
+    constructor() {
+        super();
     }
-  }
 
-  closeRespond() {
-    if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
+    start() {
+        super.start();
+        this.setState({
+            canSelectOnStart: this.props.canSelectOnStart
+        });
     }
-  }
 
-  renderAssets() {
-    if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
-        return (
+    open(message) {
+        this.refs.reveal.open(message);
+    }
+
+    selectRespond(message) {
+        if (this.props.answers.length) {
+            if (this.props.answers.indexOf(message) === -1) {
+                this.playMedia('incorrect');
+                if (this.props.revealAll) {
+                    if (typeof this.refs.reveal.open === 'function') {
+                        this.open(message);
+                    }
+                }
+            } else {
+                this.playMedia('correct');
+                if (typeof this.refs.reveal.open === 'function') {
+                    this.open(message);
+                }
+            }
+        } else {
+            if (this.props.allCorrect) this.playMedia('correct');
+            if (typeof this.refs.reveal.open === 'function') {
+                this.open(message);
+            }
+        }
+    }
+
+    closeRespond() {
+        if (typeof this.props.closeRespond === 'function') {
+            this.props.closeRespond();
+        }
+    }
+
+    renderAssets() {
+        if (this.props.assets) {
+            return this.props.assets.map((asset, key) => {
+                return (
           <skoash.Audio
             {...asset.props}
             ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
@@ -57,14 +57,14 @@ class SelectableReveal extends skoash.Component {
             data-ref={key}
           />
         );
-      });
+            });
+        }
+
+        return null;
     }
 
-    return null;
-  }
-
-  renderSelectable() {
-    return (
+    renderSelectable() {
+        return (
       <Selectable
         ref="selectable"
         list={this.props.selectableList}
@@ -79,10 +79,10 @@ class SelectableReveal extends skoash.Component {
         allowDeselect={this.props.allowDeselect}
       />
     );
-  }
+    }
 
-  renderReveal() {
-    return (
+    renderReveal() {
+        return (
       <Reveal
         ref="reveal"
         list={this.props.revealList}
@@ -97,30 +97,30 @@ class SelectableReveal extends skoash.Component {
         openMultiple={false}
       />
     );
-  }
+    }
 
-  getClasses() {
-    var classes = '';
+    getClasses() {
+        var classes = '';
 
-    if (this.state.complete) classes += ' COMPLETE';
+        if (this.state.complete) classes += ' COMPLETE';
 
-    return classes;
-  }
+        return classes;
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className={'selectable-reveal' + this.getClasses()}>
         {this.renderAssets()}
         {this.renderSelectable()}
         {this.renderReveal()}
       </div>
     );
-  }
+    }
 }
 
 SelectableReveal.defaultProps = _.defaults({
-  answers: [],
-  canSelectOnStart: true
+    answers: [],
+    canSelectOnStart: true
 }, skoash.Component.defaultProps);
 
 export default SelectableReveal;

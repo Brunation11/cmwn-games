@@ -3,111 +3,111 @@ import classNames from 'classnames';
 import EditableAsset from '../editable_asset/0.1.js';
 
 class Canvas extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      background: null,
-      items: [],
-      messages: [],
-      offsetX: 0,
-      offsetY: 0,
-      active: false,
-      valid: true,
-    };
+        this.state = {
+            background: null,
+            items: [],
+            messages: [],
+            offsetX: 0,
+            offsetY: 0,
+            active: false,
+            valid: true,
+        };
 
-    this.deleteItem = this.deleteItem.bind(this);
-    this.checkItem = this.checkItem.bind(this);
-    this.deactivateItems = this.deactivateItems.bind(this);
-    this.relayerItems = this.relayerItems.bind(this);
-    this.setValid = this.setValid.bind(this);
-  }
+        this.deleteItem = this.deleteItem.bind(this);
+        this.checkItem = this.checkItem.bind(this);
+        this.deactivateItems = this.deactivateItems.bind(this);
+        this.relayerItems = this.relayerItems.bind(this);
+        this.setValid = this.setValid.bind(this);
+    }
 
-  start() {
-    var dom = ReactDOM.findDOMNode(this);
+    start() {
+        var dom = ReactDOM.findDOMNode(this);
 
-    super.start();
+        super.start();
 
-    this.setState({
-      width: dom.offsetWidth,
-      height: dom.offsetHeight,
-    });
-  }
+        this.setState({
+            width: dom.offsetWidth,
+            height: dom.offsetHeight,
+        });
+    }
 
-  getItems() {
-    var items, messages, self = this;
+    getItems() {
+        var items, messages, self = this;
 
-    items = this.state.items.map((item, key) => {
-      var state;
+        items = this.state.items.map((item, key) => {
+            var state;
 
-      if (!self.refs['item-' + key]) return item;
+            if (!self.refs['item-' + key]) return item;
 
-      state = self.refs['item-' + key].state;
+            state = self.refs['item-' + key].state;
 
-      item.state = {
-        left: _.floor(state.left, 14),
-        top: _.floor(state.top, 14),
-        scale: _.floor(state.scale, 14),
-        rotation: _.floor(state.rotation, 14),
-        layer: state.layer,
-        valid: state.valid,
-        corners: state.corners,
-      };
+            item.state = {
+                left: _.floor(state.left, 14),
+                top: _.floor(state.top, 14),
+                scale: _.floor(state.scale, 14),
+                rotation: _.floor(state.rotation, 14),
+                layer: state.layer,
+                valid: state.valid,
+                corners: state.corners,
+            };
 
-      item.check = state.check;
-      item.mime_type = state.mime_type; // eslint-disable-line camelcase
+            item.check = state.check;
+            item.mime_type = state.mime_type; // eslint-disable-line camelcase
 
-      return item;
-    });
+            return item;
+        });
 
-    messages = this.state.messages.map((item, key) => {
-      var state;
+        messages = this.state.messages.map((item, key) => {
+            var state;
 
-      if (!self.refs['message-' + key]) return item;
+            if (!self.refs['message-' + key]) return item;
 
-      state = self.refs['message-' + key].state;
+            state = self.refs['message-' + key].state;
 
-      item.state = {
-        left: _.floor(state.left, 14),
-        top: _.floor(state.top, 14),
-        scale: _.floor(state.scale, 14),
-        rotation: _.floor(state.rotation, 14),
-        layer: state.layer,
-        valid: state.valid,
-        corners: state.corners,
-      };
+            item.state = {
+                left: _.floor(state.left, 14),
+                top: _.floor(state.top, 14),
+                scale: _.floor(state.scale, 14),
+                rotation: _.floor(state.rotation, 14),
+                layer: state.layer,
+                valid: state.valid,
+                corners: state.corners,
+            };
 
-      item.check = state.check;
-      item.mime_type = state.mime_type; // eslint-disable-line camelcase
+            item.check = state.check;
+            item.mime_type = state.mime_type; // eslint-disable-line camelcase
 
-      return item;
-    });
+            return item;
+        });
 
-    _.remove(items, n => {
-      return !n;
-    });
+        _.remove(items, n => {
+            return !n;
+        });
 
-    _.remove(messages, n => {
-      return !n;
-    });
+        _.remove(messages, n => {
+            return !n;
+        });
 
-    return {
-      background: this.state.background,
-      items,
-      messages,
-    };
-  }
+        return {
+            background: this.state.background,
+            items,
+            messages,
+        };
+    }
 
-  reset() {
-    this.setState({
-      background: null,
-      items: [],
-      messages: []
-    });
-  }
+    reset() {
+        this.setState({
+            background: null,
+            items: [],
+            messages: []
+        });
+    }
 
-  setItems(message) {
-    if (message) {
+    setItems(message) {
+        if (message) {
       /*
        *
        * This makes sure the EditableAssets get cleared.
@@ -116,182 +116,182 @@ class Canvas extends skoash.Component {
        * state from the old assets.
        *
        */
-      this.setState({
-        background: null,
-        items: [],
-        messages: [],
-      }, () => {
-        this.addItem(message.background);
-        message.items.forEach(asset => {
-          this.addItem(asset);
-        });
-        message.messages.forEach(asset => {
-          this.addItem(asset);
-        });
-      });
-    }
-  }
-
-  addItem(asset, cb) {
-    var items, messages, index, count;
-
-    if (!asset) return;
-
-    if (asset.asset_type === 'background') {
-      this.setState({
-        background: asset,
-      }, () => {
-        skoash.trigger('emit', {
-          name: 'getMedia',
-          'media_id': asset.media_id
-        }).then(d => {
-          var background = this.state.background;
-          background.check = d.check;
-          background.mime_type = d.mime_type; // eslint-disable-line camelcase
-          this.setState({
-            background
-          }, cb);
-        });
-      });
-    } else if (asset.asset_type === 'item') {
-      items = this.state.items;
-
-      count = _.reduce(items, (c, v) => {
-        if (asset.src === v.src) c++;
-        return c;
-      }, 1);
-
-      if (count > this.props.maxInstances) {
-        skoash.trigger('openMenu', {
-          id: 'limitWarning'
-        });
-        return;
-      }
-
-      items.push(asset);
-      index = items.indexOf(asset);
-
-      this.setState({
-        items,
-      }, () => {
-        skoash.trigger('emit', {
-          name: 'getMedia',
-          'media_id': asset.media_id
-        }).then(d => {
-          asset.check = d.check;
-          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
-          items[index] = asset;
-          this.setState({
-            items
-          }, cb);
-        });
-      });
-    } else if (asset.asset_type === 'message') {
-      messages = this.state.messages;
-
-      count = _.reduce(items, (c, v) => {
-        if (asset.src === v.src) c++;
-        return c;
-      }, 1);
-
-      if (count > this.props.maxInstances) return;
-
-      messages.push(asset);
-      index = messages.indexOf(asset);
-
-      this.setState({
-        messages,
-      }, () => {
-        skoash.trigger('emit', {
-          name: 'getMedia',
-          'media_id': asset.media_id
-        }).then(d => {
-          asset.check = d.check;
-          asset.mime_type = d.mime_type; // eslint-disable-line camelcase
-          messages[index] = asset;
-          this.setState({
-            messages
-          }, cb);
-        });
-      });
-    }
-  }
-
-  deleteItem(key, type) {
-    var items;
-
-    items = this.state[type + 's'];
-    delete items[key];
-
-    this.setState({
-      [type + 's']: items,
-    });
-  }
-
-  deactivateItems(exclude, type) {
-    if (typeof exclude === 'object' && exclude.target) {
-      if (exclude.target.tagName !== 'LI') return;
-      this.setState({
-        active: false,
-      });
-      if (!this.state.valid) {
-        skoash.trigger('passData', {
-          name: 'showCollisionWarning'
-        });
-      }
+            this.setState({
+                background: null,
+                items: [],
+                messages: [],
+            }, () => {
+                this.addItem(message.background);
+                message.items.forEach(asset => {
+                    this.addItem(asset);
+                });
+                message.messages.forEach(asset => {
+                    this.addItem(asset);
+                });
+            });
+        }
     }
 
-    if (typeof exclude === 'number') {
-      this.setState({
-        active: true,
-      });
+    addItem(asset, cb) {
+        var items, messages, index, count;
+
+        if (!asset) return;
+
+        if (asset.asset_type === 'background') {
+            this.setState({
+                background: asset,
+            }, () => {
+                skoash.trigger('emit', {
+                    name: 'getMedia',
+                    'media_id': asset.media_id
+                }).then(d => {
+                    var background = this.state.background;
+                    background.check = d.check;
+                    background.mime_type = d.mime_type; // eslint-disable-line camelcase
+                    this.setState({
+                        background
+                    }, cb);
+                });
+            });
+        } else if (asset.asset_type === 'item') {
+            items = this.state.items;
+
+            count = _.reduce(items, (c, v) => {
+                if (asset.src === v.src) c++;
+                return c;
+            }, 1);
+
+            if (count > this.props.maxInstances) {
+                skoash.trigger('openMenu', {
+                    id: 'limitWarning'
+                });
+                return;
+            }
+
+            items.push(asset);
+            index = items.indexOf(asset);
+
+            this.setState({
+                items,
+            }, () => {
+                skoash.trigger('emit', {
+                    name: 'getMedia',
+                    'media_id': asset.media_id
+                }).then(d => {
+                    asset.check = d.check;
+                    asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+                    items[index] = asset;
+                    this.setState({
+                        items
+                    }, cb);
+                });
+            });
+        } else if (asset.asset_type === 'message') {
+            messages = this.state.messages;
+
+            count = _.reduce(items, (c, v) => {
+                if (asset.src === v.src) c++;
+                return c;
+            }, 1);
+
+            if (count > this.props.maxInstances) return;
+
+            messages.push(asset);
+            index = messages.indexOf(asset);
+
+            this.setState({
+                messages,
+            }, () => {
+                skoash.trigger('emit', {
+                    name: 'getMedia',
+                    'media_id': asset.media_id
+                }).then(d => {
+                    asset.check = d.check;
+                    asset.mime_type = d.mime_type; // eslint-disable-line camelcase
+                    messages[index] = asset;
+                    this.setState({
+                        messages
+                    }, cb);
+                });
+            });
+        }
     }
 
-    this.state.items.map((item, key) => {
-      if ((key !== exclude || type !== 'item') && this.refs['item-' + key]) {
-        this.refs['item-' + key].deactivate();
-      }
-    });
+    deleteItem(key, type) {
+        var items;
 
-    this.state.messages.map((item, key) => {
-      if ((key !== exclude || type !== 'message') && this.refs['message-' + key]) {
-        this.refs['message-' + key].deactivate();
-      }
-    });
-  }
+        items = this.state[type + 's'];
+        delete items[key];
 
-  relayerItems(type) {
-    var layers = [];
+        this.setState({
+            [type + 's']: items,
+        });
+    }
 
-    this.state[type + 's'].map((item, key) => {
-      var layer;
+    deactivateItems(exclude, type) {
+        if (typeof exclude === 'object' && exclude.target) {
+            if (exclude.target.tagName !== 'LI') return;
+            this.setState({
+                active: false,
+            });
+            if (!this.state.valid) {
+                skoash.trigger('passData', {
+                    name: 'showCollisionWarning'
+                });
+            }
+        }
 
-      layer = this.refs[type + '-' + key].state.layer;
+        if (typeof exclude === 'number') {
+            this.setState({
+                active: true,
+            });
+        }
 
-      if (layers.indexOf(layer) === -1) {
-        layers.push(layer);
-      }
-    });
+        this.state.items.map((item, key) => {
+            if ((key !== exclude || type !== 'item') && this.refs['item-' + key]) {
+                this.refs['item-' + key].deactivate();
+            }
+        });
 
-    layers.sort((a, b) => {
-      return a < b;
-    });
+        this.state.messages.map((item, key) => {
+            if ((key !== exclude || type !== 'message') && this.refs['message-' + key]) {
+                this.refs['message-' + key].deactivate();
+            }
+        });
+    }
 
-    this.state[type + 's'].map((item, key) => {
-      var oldLayer, newLayer;
+    relayerItems(type) {
+        var layers = [];
 
-      oldLayer = this.refs[type + '-' + key].state.layer;
-      newLayer = (type === 'message') ? 10000 : 1000;
-      newLayer = newLayer - layers.indexOf(oldLayer);
+        this.state[type + 's'].map((item, key) => {
+            var layer;
 
-      this.refs[type + '-' + key].relayer(newLayer);
-    });
-  }
+            layer = this.refs[type + '-' + key].state.layer;
 
-  checkItem(key, type) {
-    var self = this;
+            if (layers.indexOf(layer) === -1) {
+                layers.push(layer);
+            }
+        });
 
-    return (
+        layers.sort((a, b) => {
+            return a < b;
+        });
+
+        this.state[type + 's'].map((item, key) => {
+            var oldLayer, newLayer;
+
+            oldLayer = this.refs[type + '-' + key].state.layer;
+            newLayer = (type === 'message') ? 10000 : 1000;
+            newLayer = newLayer - layers.indexOf(oldLayer);
+
+            this.refs[type + '-' + key].relayer(newLayer);
+        });
+    }
+
+    checkItem(key, type) {
+        var self = this;
+
+        return (
       !self.refs[type + '-' + key].state.corners.length ||
       (
         self.isInBounds(key, type) && (
@@ -308,76 +308,76 @@ class Canvas extends skoash.Component {
         )
       )
     );
-  }
+    }
 
-  isInBounds(key, type) {
-    return !this.state.width ||
+    isInBounds(key, type) {
+        return !this.state.width ||
       !this.state.height ||
       !(
       // box to left
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
-        [
+          [
           {x: 0, y: -this.state.height},
           {x: 0, y: 2 * this.state.height},
           {x: -this.state.width, y: 2 * this.state.height},
           {x: -this.state.width, y: -this.state.height}
-        ]
+          ]
       ) ||
       // box above
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
-        [
+          [
           {x: -this.state.width, y: 0},
           {x: 2 * this.state.width, y: 0},
           {x: 2 * this.state.width, y: -this.state.height},
           {x: this.state.width, y: -this.state.height}
-        ]
+          ]
       ) ||
       // box to right
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
-        [
+          [
           {x: this.state.width, y: -this.state.height},
           {x: this.state.width, y: 2 * this.state.height},
           {x: 2 * this.state.width, y: 2 * this.state.height},
           {x: 2 * this.state.width, y: -this.state.height}
-        ]
+          ]
       ) ||
       // box below
       skoash.util.doIntersect(
         this.refs[type + '-' + key].state.corners,
-        [
+          [
           {x: -this.state.width, y: this.state.height},
           {x: 2 * this.state.width, y: this.state.height},
           {x: 2 * this.state.width, y: 2 * this.state.height},
           {x: -this.state.width, y: 2 * this.state.height}
-        ]
+          ]
       )
     );
-  }
+    }
 
-  setValid(valid) {
-    this.setState({
-      valid
-    });
+    setValid(valid) {
+        this.setState({
+            valid
+        });
 
-    this.props.setValid.call(this, valid);
-  }
+        this.props.setValid.call(this, valid);
+    }
 
-  getStyle() {
-    if (!this.state.background) return;
+    getStyle() {
+        if (!this.state.background) return;
 
-    return {
-      backgroundImage: `url(${this.state.background.src})`,
-    };
-  }
+        return {
+            backgroundImage: `url(${this.state.background.src})`,
+        };
+    }
 
-  renderItems() {
-    var self = this;
+    renderItems() {
+        var self = this;
 
-    return this.state.items.map((item, key) => {
-      return (
+        return this.state.items.map((item, key) => {
+            return (
         <EditableAsset
           {...item}
           data-ref={key}
@@ -391,14 +391,14 @@ class Canvas extends skoash.Component {
           key={key}
         />
       );
-    });
-  }
+        });
+    }
 
-  renderMessages() {
-    var self = this;
+    renderMessages() {
+        var self = this;
 
-    return this.state.messages.map((item, key) => {
-      return (
+        return this.state.messages.map((item, key) => {
+            return (
         <EditableAsset
           {...item}
           data-ref={key}
@@ -414,18 +414,18 @@ class Canvas extends skoash.Component {
           key={key}
         />
       );
-    });
-  }
+        });
+    }
 
-  getClassNames() {
-    return classNames({
-      canvas: true,
-      ACTIVE: !this.props.preview && this.state.active,
-    });
-  }
+    getClassNames() {
+        return classNames({
+            canvas: true,
+            ACTIVE: !this.props.preview && this.state.active,
+        });
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <ul
         className={this.getClassNames()}
         style={this.getStyle()}
@@ -435,12 +435,12 @@ class Canvas extends skoash.Component {
         {this.renderMessages()}
       </ul>
     );
-  }
+    }
 }
 
 Canvas.defaultProps = _.defaults({
-  maxInstances: 5,
-  setValid: _.identity,
+    maxInstances: 5,
+    setValid: _.identity,
 }, skoash.Component.defaultProps);
 
 export default Canvas;

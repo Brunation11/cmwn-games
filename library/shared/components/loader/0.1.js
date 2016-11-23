@@ -1,11 +1,11 @@
 class Loader extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-  }
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div id="loader" className="center">
         <div className="group">
           <h2>Loading!</h2>
@@ -17,7 +17,7 @@ class Loader extends skoash.Component {
         </div>
       </div>
     );
-  }
+    }
 }
 
 export default Loader;

@@ -4,42 +4,42 @@ import Reveal from 'shared/components/reveal/0.1.js';
 import classNames from 'classnames';
 
 class DropzoneReveal extends skoash.Component {
-  bootstrap() {
-    super.bootstrap();
-  }
-
-  correctRespond(message, dropzoneKey) {
-    this.dropRespond(message);
-
-    if (typeof this.props.correctRespond === 'function') {
-      this.props.correctRespond.call(this, message, dropzoneKey);
+    bootstrap() {
+        super.bootstrap();
     }
-  }
 
-  incorrectRespond(message) {
-    this.dropRespond(message);
-  }
+    correctRespond(message, dropzoneKey) {
+        this.dropRespond(message);
 
-  dropRespond(message) {
-    if (typeof this.refs.reveal.open === 'function') {
-      this.refs.reveal.open(message);
+        if (typeof this.props.correctRespond === 'function') {
+            this.props.correctRespond.call(this, message, dropzoneKey);
+        }
     }
-  }
 
-  closeRespond() {
-    if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
+    incorrectRespond(message) {
+        this.dropRespond(message);
     }
-  }
 
-  revealComplete() {
-    this.playMedia('complete');
-  }
+    dropRespond(message) {
+        if (typeof this.refs.reveal.open === 'function') {
+            this.refs.reveal.open(message);
+        }
+    }
 
-  renderAssets() {
-    if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
-        return (
+    closeRespond() {
+        if (typeof this.props.closeRespond === 'function') {
+            this.props.closeRespond();
+        }
+    }
+
+    revealComplete() {
+        this.playMedia('complete');
+    }
+
+    renderAssets() {
+        if (this.props.assets) {
+            return this.props.assets.map((asset, key) => {
+                return (
           <asset.type
             {...asset.props}
             ref={asset.props['data-ref'] || ('asset-' + key)}
@@ -47,14 +47,14 @@ class DropzoneReveal extends skoash.Component {
             data-ref={key}
           />
         );
-      });
+            });
+        }
+
+        return null;
     }
 
-    return null;
-  }
-
-  renderDropzone() {
-    return (
+    renderDropzone() {
+        return (
       <Dropzone
         ref="dropzone"
         dropzones={this.props.dropzones}
@@ -67,10 +67,10 @@ class DropzoneReveal extends skoash.Component {
         onComplete={this.props.onDropzoneComplete}
       />
     );
-  }
+    }
 
-  renderReveal() {
-    return (
+    renderReveal() {
+        return (
       <Reveal
         ref="reveal"
         list={this.props.revealList}
@@ -83,24 +83,24 @@ class DropzoneReveal extends skoash.Component {
         closeReveal={this.props.closeReveal}
       />
     );
-  }
+    }
 
-  getClassNames() {
-    return classNames(
+    getClassNames() {
+        return classNames(
       'dropzone-reveal',
       super.getClassNames(),
     );
-  }
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
         {this.renderReveal()}
         {this.renderDropzone()}
       </div>
     );
-  }
+    }
 }
 
 export default DropzoneReveal;
