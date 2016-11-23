@@ -15,7 +15,7 @@ class FriendScreen extends skoash.Screen {
   }
 
   selectRespond(message) {
-    skoash.trigger('pass-data', {
+    skoash.trigger('passData', {
       name: 'add-recipient',
       goto: this.state.opts.goto,
       message
@@ -56,7 +56,7 @@ class FriendScreen extends skoash.Screen {
       self.updateData.call(self, data);
     });
 
-    recipient = this.props.gameState.recipient;
+    recipient = self.props.gameState.recipient;
 
     self.setState({
       load: true,
@@ -86,9 +86,10 @@ class FriendScreen extends skoash.Screen {
   }
 
   renderOtter() {
-    var copy, src;
+    var copy, src, imageSrc;
 
     src = 'One';
+    imageSrc = 'media/_Otter/Otter_Static_GreetingOne.png';
     copy = (
       <span>
         Don't have<br/> friends yet?<br/><br/> Let me suggest<br/> some for you.
@@ -97,6 +98,7 @@ class FriendScreen extends skoash.Screen {
 
     if (this.state.data && this.state.data.length) {
       src = 'Two';
+      imageSrc = 'media/_Otter/Open-wide-Otter2.gif';
       copy = (
         <span>
           Let me find a friend<br/> to send your message to.
@@ -106,7 +108,7 @@ class FriendScreen extends skoash.Screen {
 
     return (
       <div className={'otter-container ' + src}>
-        <skoash.Image className="otter" src={`media/_Otter/Otter_Static_Greeting${src}.png`} />
+        <skoash.Image className="otter" src={imageSrc} />
         <div className="bubble">
           {copy}
         </div>
@@ -126,14 +128,15 @@ class FriendScreen extends skoash.Screen {
           data={this.state.data}
           selectedItem={this.state.recipient}
           buttons={this.buttons}
-          complete={true}
-          className={this.state.opts.goto}
+          completeOnStart={true}
+          checkComplete={false}
+          className={'goto-' + this.state.opts.goto}
         />
       );
     }
 
     return (
-      <div className={this.state.opts.goto}>
+      <div className={'goto-' + this.state.opts.goto}>
         <div className="item-drawer-container">
           <div className="suggest-friends-buttons">
             <button className="continue" onClick={this.selectRespond.bind(this, {})} />
@@ -163,6 +166,8 @@ export default function (props, ref, key) {
       ref={ref}
       key={key}
       id="friends"
+      completeOnStart
+      checkComplete={false}
       hideNext
       hidePrev
     />

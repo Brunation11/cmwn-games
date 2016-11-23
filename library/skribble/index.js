@@ -16,19 +16,12 @@ import ReadScreen from './components/read_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 import SaveMenu from './components/save_menu';
+import CollisionWarning from './components/collision_warning';
+import LimitWarning from './components/limit_warning';
 
-const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
+const DEFAULT_PROFILE_IMAGE = '';
 
 class SkribbleGame extends skoash.Game {
-  ready() {
-    if (!this.state.ready) {
-      this.getMediaOnReady();
-      this.getFriends();
-    }
-
-    super.ready();
-  }
-
   getRules(opts = {}) {
     if (typeof opts.respond === 'function') {
       return opts.respond(this.refs['screen-canvas'].getData());
@@ -36,7 +29,7 @@ class SkribbleGame extends skoash.Game {
     return this.refs['screen-canvas'].getData();
   }
 
-  save(e, skramble) {
+  save(skramble) {
     /* eslint-disable camelcase */
     var friend_to, rules, self = this;
     friend_to = self.state.recipient && self.state.recipient.user_id ? self.state.recipient.user_id : null;
@@ -69,10 +62,10 @@ class SkribbleGame extends skoash.Game {
   }
 
   send() {
-    this.save(null, true);
+    this.save(true);
 
     this.refs['screen-canvas'].reset();
-    this.goto({
+    this.navigator.goto({
       index: 'sent',
       recipient: this.state.recipient,
     });
@@ -83,27 +76,12 @@ class SkribbleGame extends skoash.Game {
     });
   }
 
-  trigger(event, opts) {
-    switch (event) {
-    case 'save':
-      return this.save();
-    case 'getMedia':
-      return this.getMedia(opts.path);
-    case 'getRules':
-      return this.getRules(opts);
-    case 'loadSkribble':
-      return this.loadSkribble(opts);
-    }
-
-    return super.trigger(event, opts);
-  }
-
   loadSkribble(opts) {
     this.setState({
       skribbleData: opts.message
     }, () => {
       this.refs['screen-canvas'].addItems(opts.message);
-      this.goto({
+      this.navigator.goto({
         index: 'canvas',
         draft: true,
       });
@@ -113,11 +91,12 @@ class SkribbleGame extends skoash.Game {
   getMedia(path) {
     var pathArray, self = this;
 
+    if (typeof path === 'object') path = path.path;
     path = path || 'skribble/menu';
     pathArray = path.split('/');
     pathArray.shift();
 
-    return self.emit({
+    return self.eventManager.emit({
       name: 'getMedia',
       path
     }).then(d => {
@@ -147,41 +126,21 @@ class SkribbleGame extends skoash.Game {
         d.items.forEach(item => {
           if (item.asset_type === 'folder' && item.name) {
             self.getMedia(path + '/' + item.name);
-          } else {
-            currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
           }
+          currentOpts[pathArray[pathArray.length - 1]].items[item.name] = item;
         });
       }
-
       self.updateData(opts);
     });
   }
 
-  getData(opts) {
-    var names = [
-      'getFriends',
-      'getFriend',
-      'markAsRead',
-    ];
+  showCollisionWarning() {
+    if (!this.state.data.collisionWarning.show) return;
+    this.navigator.openMenu({id: 'collisionWarning'});
+  }
 
-    if (names.indexOf(opts.name) === -1) {
-      opts.name = 'getData';
-    }
-
-    return this.emit(opts).then(data => {
-      if (opts.status) {
-        data[opts.status] = data.skribble;
-        delete data.skribble;
-        this.updateData({
-          data
-        });
-      } else {
-        this.updateData({
-          data,
-          callback: opts.callback,
-        });
-      }
-    });
+  showLimitWarning() {
+    this.navigator.openMenu({id: 'limitWarning'});
   }
 
   addRecipient(recipient, cb) {
@@ -189,7 +148,6 @@ class SkribbleGame extends skoash.Game {
 
     if (recipient.src) {
       recipient.profile_image = recipient.src; // eslint-disable-line camelcase
-      delete recipient.src;
     } else if (typeof recipient === 'string') {
       if (this.state.data && this.state.data.user) {
         this.state.data.user.some(friend => {
@@ -229,22 +187,26 @@ class SkribbleGame extends skoash.Game {
   }
 
   clickRecipient() {
-    this.goto({
-      index: 'friend'
+    this.navigator.goto({
+      index: 'friend',
+      goto: this.state.currentScreenIndex,
     });
   }
 
   create() {
     if (this.state.recipient) {
-      this.goto({index: 'canvas'});
+      this.navigator.goto({index: 'canvas'});
     } else {
-      this.goto({index: 'friend'});
+      this.navigator.goto({
+        index: 'friend',
+        goto: 'canvas',
+      });
     }
   }
 
   saveButton() {
     this.save();
-    this.openMenu({id: 'save'});
+    this.navigator.openMenu({id: 'save'});
   }
 
   renderRecipient() {
@@ -256,8 +218,8 @@ class SkribbleGame extends skoash.Game {
       content.push(<span className="name">{recipient.name}</span>);
     }
 
-    if (recipient.profile_image) {
-      content.push(<img className="profile-image" src={recipient.profile_image} />);
+    if (recipient.src) {
+      content.push(<img className="profile-image" src={recipient.src} />);
     }
 
     return content;
@@ -283,9 +245,17 @@ var Skribble = (
     menus={{
       quit: QuitScreen,
       save: SaveMenu,
+      collisionWarning: CollisionWarning,
+      limitWarning: LimitWarning,
     }}
     loader={<Loader />}
     assets={[
+      <skoash.Image className="hidden" src="media/_Otter/Waving_Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Open-wide-Otter2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/joyful-otter_2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Antipation-Otter3.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/proud-of-you2.gif" />,
+      <skoash.Image className="hidden" src="media/_Otter/Peeking-through-Otter2.gif" />,
       <div className="background-1" />,
       <div className="background-2" />,
       <div className="background-3" />,
@@ -296,16 +266,27 @@ var Skribble = (
     onBootstrap={function () {
       this.getFriends = _.throttle(this.getData.bind(this, {name: 'getFriends'}), 1000);
       this.getMediaOnReady = _.throttle(this.getMedia.bind(this), 1000);
+
+      this.updateState({
+        path: ['collisionWarning'],
+        data: {
+          show: true
+        }
+      });
+    }}
+    onReady={function () {
+      this.getMediaOnReady();
+      this.getFriends();
     }}
     renderMenu={function () {
       return (
         <div>
           <div className="game-menu">
             <button className="save" onClick={this.saveButton.bind(this)} />
-            <button className="inbox" onClick={this.goto.bind(this, {index: 'inbox'})} />
+            <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
             <button className="create" onClick={this.create.bind(this)} />
-            <button className="help" onClick={this.openMenu.bind(this, {id: 'help'})} />
-            <button className="close" onClick={this.openMenu.bind(this, {id: 'quit'})} />
+            <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
+            <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
           </div>
           <ul className="menu recipient">
             <li onClick={this.clickRecipient.bind(this)}>
@@ -329,12 +310,41 @@ var Skribble = (
     passData={function (opts) {
       if (opts.name === 'add-item') {
         this.refs['screen-canvas'].addItem(opts.message);
-        this.goto({ index: 'canvas' });
+        this.navigator.goto({ index: 'canvas' });
       } else if (opts.name === 'add-recipient') {
-        this.addRecipient(opts.message, this.goto.bind(this, { index: opts.goto || 'canvas' }));
+        this.addRecipient(opts.message, this.navigator.goto.bind(this, { index: opts.goto || 'canvas' }));
       } else if (opts.name === 'send') {
         this.send();
+      } else if (opts.name === 'showCollisionWarning') {
+        this.showCollisionWarning();
+      } else if (opts.name === 'showLimitWarning') {
+        this.showLimitWarning();
       }
+    }}
+    getTriggerEvents={function (opts = {}) {
+      opts.save = this.save;
+      opts.getMedia = this.getMedia;
+      opts.getRules = this.getRules;
+      opts.loadSkribble = this.loadSkribble;
+      return opts;
+    }}
+    getData={function (opts) {
+      var names = [
+        'getFriends',
+        'getFriend',
+        'markAsRead',
+      ];
+
+      if (names.indexOf(opts.name) === -1) {
+        opts.name = 'getData';
+      }
+
+      return this.eventManager.emit(opts).then(data => {
+        this.updateData({
+          data,
+          callback: opts.callback,
+        });
+      });
     }}
   />
 );

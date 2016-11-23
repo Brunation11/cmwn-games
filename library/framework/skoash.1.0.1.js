@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d8360a9a2f7231489cc5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7aa1b50cbef11084e765"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -1898,13 +1898,13 @@
 	  }, {
 	    key: 'completeRefs',
 	    value: function completeRefs() {
+	      this.complete({ silent: true });
+
 	      _lodash2.default.forEach(this.refs, function (ref) {
 	        if (typeof ref.completeRefs === 'function') {
 	          ref.completeRefs();
 	        }
 	      });
-
-	      this.complete({ silent: true });
 	    }
 	  }, {
 	    key: 'incompleteRefs',
@@ -44730,9 +44730,7 @@
 	  }, {
 	    key: 'next',
 	    value: function next() {
-	      var state = skoash.trigger('getState');
-
-	      if (this.state.leaving || !state.demo && !this.state.complete && !this.state.replay) return;
+	      if (this.state.leaving) return;
 
 	      this.setState({
 	        leaving: true
@@ -44758,22 +44756,6 @@
 	          self.bootstrap();
 	        });
 	      }
-	    }
-	  }, {
-	    key: 'bootstrap',
-	    value: function bootstrap() {
-	      _get(Object.getPrototypeOf(Screen.prototype), 'bootstrap', this).call(this);
-
-	      if (this.props.load) this.load();
-	    }
-	  }, {
-	    key: 'replay',
-	    value: function replay() {
-	      var _replay = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
-
-	      this.setState({
-	        replay: _replay
-	      });
 	    }
 	  }, {
 	    key: 'start',
@@ -44859,10 +44841,10 @@
 	      setTimeout(function () {
 	        if (!self.state.started) {
 	          self.start();
+	          self.setState({
+	            opening: false
+	          });
 	        }
-	        self.setState({
-	          opening: false
-	        });
 	      }, this.props.startDelay);
 
 	      if (typeof this.props.onOpen === 'function') {
@@ -45094,6 +45076,8 @@
 	    skoash.trigger = _this.trigger.bind(_this);
 
 	    _this.attachEvents();
+
+	    window.g = _this;
 	    return _this;
 	  }
 
@@ -45114,11 +45098,11 @@
 	        self.scale();
 	      });
 	      window.addEventListener('orientationchange', function () {
-	        window.dispatchEvent(new Event('resize'));
+	        window.onresize();
 	      });
 	      if (window.parent) {
 	        window.parent.addEventListener('orientationchange', function () {
-	          window.dispatchEvent(new Event('orientationchange'));
+	          window.onresize();
 	        });
 	      }
 
@@ -45185,33 +45169,19 @@
 	    }
 	  }, {
 	    key: 'loadScreens',
-	    value: function loadScreens(currentScreenIndex) {
-	      var _this2 = this;
+	    value: function loadScreens() {
+	      var firstScreen,
+	          secondScreen,
+	          self = this;
 
-	      var goto = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
-
-	      var firstScreen, secondScreen;
-
-	      if (!_lodash2.default.isFinite(currentScreenIndex)) currentScreenIndex = this.state.currentScreenIndex;
-
-	      firstScreen = this.refs['screen-' + currentScreenIndex];
-	      secondScreen = this.refs['screen-' + currentScreenIndex + 1];
+	      firstScreen = this.refs['screen-' + this.state.currentScreenIndex];
+	      secondScreen = this.refs['screen-' + this.state.currentScreenIndex + 1];
 
 	      if (firstScreen) firstScreen.load();
 	      if (secondScreen) secondScreen.load();
 
 	      setTimeout(function () {
-	        if (!_this2.state.ready) {
-	          _this2.checkReady();
-	        }
-
-	        if (goto) {
-	          _this2.goto({
-	            index: currentScreenIndex,
-	            load: true,
-	            silent: true
-	          });
-	        }
+	        self.checkReady();
 	      }, 0);
 	    }
 	  }, {
@@ -45248,7 +45218,7 @@
 	  }, {
 	    key: 'setPause',
 	    value: function setPause(paused) {
-	      var _this3 = this;
+	      var _this2 = this;
 
 	      var openScreen,
 	          fnKey = paused ? 'pause' : 'resume';
@@ -45256,11 +45226,11 @@
 	      this.setState({
 	        paused: paused
 	      }, function () {
-	        _this3.state.playingBKG.forEach(function (audio) {
+	        _this2.state.playingBKG.map(function (audio) {
 	          audio[fnKey]();
 	        });
 
-	        openScreen = _this3.refs['screen-' + _this3.state.currentScreenIndex];
+	        openScreen = _this2.refs['screen-' + _this2.state.currentScreenIndex];
 	        if (openScreen && typeof openScreen[fnKey] === 'function') {
 	          openScreen[fnKey]();
 	        }
@@ -45331,12 +45301,14 @@
 	       * highestScreenIndex is the index of the highest screen reached
 	       * not the index of the highest screen that exists.
 	       */
-	      var oldScreen, prevScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
+	      var oldScreen, oldIndex, currentScreenIndex, newScreen, nextScreen, highestScreenIndex, screenIndexArray, data;
 
 	      data = this.state.data;
+
 	      oldIndex = this.state.currentScreenIndex;
 	      oldScreen = this.refs['screen-' + oldIndex];
-	      if (!opts.load && oldScreen && oldScreen.state && oldScreen.state.opening) {
+
+	      if (oldScreen && oldScreen.state && oldScreen.state.opening) {
 	        return;
 	      }
 
@@ -45352,11 +45324,10 @@
 	        highestScreenIndex = this.state.highestScreenIndex;
 	      }
 	      newScreen = this.refs['screen-' + currentScreenIndex];
-	      prevScreen = this.refs['screen-' + (currentScreenIndex - 1)];
 	      screenIndexArray = this.state.screenIndexArray;
 
 	      if (oldScreen.props.index < newScreen.props.index) {
-	        if (!opts.load && !this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay)) {
+	        if (!this.state.demo && !(oldScreen.state.complete || oldScreen.state.replay)) {
 	          return;
 	        }
 	      }
@@ -45370,13 +45341,11 @@
 	      if (newScreen) {
 	        // this should never be dropped into
 	        if (!newScreen.state.load || !newScreen.state.ready) {
-	          this.loadScreens(currentScreenIndex, false);
+	          this.loadScreens();
 	        }
 	        screenIndexArray.push(currentScreenIndex);
 	        newScreen.open(opts);
 	      }
-
-	      if (prevScreen) prevScreen.replay();
 
 	      if (oldScreen && oldScreen !== newScreen) {
 	        if (oldScreen.props.index > newScreen.props.index) {
@@ -45404,9 +45373,7 @@
 	        data: data
 	      });
 
-	      if (!opts.load) {
-	        this.emitSave(highestScreenIndex, currentScreenIndex);
-	      }
+	      this.emitSave(highestScreenIndex, currentScreenIndex);
 
 	      if (!opts.silent) {
 	        if (opts.buttonSound && typeof opts.buttonSound.play === 'function') {
@@ -45421,7 +45388,6 @@
 	  }, {
 	    key: 'emitSave',
 	    value: function emitSave(highestScreenIndex, currentScreenIndex) {
-	      if (highestScreenIndex < 2) return;
 	      this.emit({
 	        name: 'save',
 	        game: this.config.id,
@@ -45473,26 +45439,29 @@
 	  }, {
 	    key: 'playBackground',
 	    value: function playBackground(currentScreenIndex) {
-	      var index, playingBKG, currentScreen;
+	      var _this3 = this;
 
-	      if (!_lodash2.default.isFinite(currentScreenIndex)) return;
+	      var index, playingBKG;
 
 	      index = this.getBackgroundIndex(currentScreenIndex);
 	      playingBKG = this.state.playingBKG;
 
-	      currentScreen = this.refs['screen-' + currentScreenIndex];
-
-	      if (!currentScreen.props.restartBackground && playingBKG.indexOf(this.audio.background[index]) !== -1) {
+	      if (playingBKG.indexOf(this.audio.background[index]) !== -1) {
 	        return;
 	      }
 
-	      _lodash2.default.each(playingBKG, function (bkg) {
+	      playingBKG = playingBKG.filter(function (bkg) {
 	        bkg.stop();
+	        return false;
 	      });
 
-	      if (this.audio.background[index]) {
-	        this.audio.background[index].play();
-	      }
+	      this.setState({
+	        playingBKG: playingBKG
+	      }, function () {
+	        if (_this3.audio.background[index]) {
+	          _this3.audio.background[index].play();
+	        }
+	      });
 	    }
 	  }, {
 	    key: 'scale',
@@ -45529,8 +45498,7 @@
 	        quit: this.quit,
 	        save: this.load,
 	        complete: this.checkComplete,
-	        incomplete: this.checkComplete,
-	        resize: this.scale
+	        incomplete: this.checkComplete
 	      };
 
 	      fn = events[event];
@@ -45543,6 +45511,7 @@
 	    value: function emit(gameData) {
 	      var p,
 	          self = this;
+
 	      p = new Promise(function (resolve) {
 	        var event;
 
@@ -45591,16 +45560,22 @@
 	    }
 	  }, {
 	    key: 'load',
-	    value: function load(opts) {
-	      if (opts.game === this.config.id && opts.version === this.config.version && opts.highestScreenIndex) {
-	        if (opts.highestScreenIndex === this.screensLength - 1) return;
-	        this.loadScreens(opts.highestScreenIndex);
-	        for (var i = 0; i < opts.highestScreenIndex - 1; i++) {
-	          if (this.refs['screen-' + i]) {
-	            this.refs['screen-' + i].completeRefs();
-	          }
-	        }
-	      }
+	    value: function load(opts) {// eslint-disable-line no-unused-vars
+	      // AW 20160823
+	      // I'm removing this for now since it doesn't work properly.
+	      // I will fix it when it is priority.
+	      // if (opts.game === this.config.id && opts.highestScreenIndex) {
+	      //   this.setState({
+	      //     currentScreenIndex: opts.highestScreenIndex
+	      //   }, () => {
+	      //     this.loadScreens();
+	      //     for (var i = 0; i < opts.highestScreenIndex; i++) {
+	      //       if (this.refs['screen-' + i]) {
+	      //         this.refs['screen-' + i].completeRefs();
+	      //       }
+	      //     }
+	      //   });
+	      // }
 	    }
 	  }, {
 	    key: 'quit',
@@ -45734,17 +45709,17 @@
 	  }, {
 	    key: 'fadeBackground',
 	    value: function fadeBackground(value) {
-	      if (typeof value !== 'number') value = .25;
-	      this.state.playingBKG.forEach(function (bkg) {
+	      if (typeof value === 'undefined') value = .25;
+	      this.state.playingBKG.map(function (bkg) {
 	        bkg.setVolume(value);
 	      });
 	    }
 	  }, {
 	    key: 'raiseBackground',
 	    value: function raiseBackground(value) {
-	      if (typeof value !== 'number') value = 1;
+	      if (typeof value === 'undefined') value = 1;
 	      if (this.state.playingVO.length === 0) {
-	        this.state.playingBKG.forEach(function (bkg) {
+	        this.state.playingBKG.map(function (bkg) {
 	          bkg.setVolume(value);
 	        });
 	      }
@@ -45787,20 +45762,15 @@
 	  }, {
 	    key: 'getStyles',
 	    value: function getStyles() {
-	      var transform, transformOrigin;
-
-	      transform = 'scale3d(' + this.state.scale + ',' + this.state.scale + ',1)';
-	      transformOrigin = '50% 0px 0px';
+	      var transformOrigin = '50% 0px 0px';
 
 	      if (this.state.scale < 1) {
 	        transformOrigin = '0px 0px 0px';
 	      }
 
 	      return {
-	        transform: transform,
-	        WebkitTransform: transform,
-	        transformOrigin: transformOrigin,
-	        WebkitTransformOrigin: transformOrigin
+	        transform: 'scale3d(' + this.state.scale + ',' + this.state.scale + ',1)',
+	        transformOrigin: transformOrigin
 	      };
 	    }
 	  }, {
@@ -45843,15 +45813,8 @@
 	  }, {
 	    key: 'renderMenuScreens',
 	    value: function renderMenuScreens() {
-	      var _this5 = this;
-
 	      return _lodash2.default.map(this.menus, function (Menu, key) {
-	        return React.createElement(Menu.type, _extends({}, Menu.props, {
-	          gameState: _this5.state,
-	          key: key,
-	          index: key,
-	          ref: 'menu-' + key
-	        }));
+	        return React.createElement(Menu.type, _extends({}, Menu.props, { key: key, index: key, ref: 'menu-' + key }));
 	      });
 	    }
 	  }, {
@@ -46061,9 +46024,6 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Audio).call(this));
 
-	    _this.startCount = 0;
-	    _this.completeCount = 0;
-
 	    _this.complete = _this.complete.bind(_this);
 	    _this.ready = _this.ready.bind(_this);
 	    return _this;
@@ -46095,8 +46055,7 @@
 	      this.delayed = false;
 	      this.playing = true;
 
-	      this.audio.play(this.sprite);
-	      this.startCount++;
+	      this.audio.play();
 	      _get(Object.getPrototypeOf(Audio.prototype), 'play', this).call(this);
 	    }
 	  }, {
@@ -46113,10 +46072,6 @@
 	  }, {
 	    key: 'resume',
 	    value: function resume() {
-	      var state = skoash.trigger('getState');
-
-	      if (state.paused) return;
-
 	      if (this.delayed) {
 	        this.timeout = setTimeout(this.playAudio.bind(this), this.props.delay);
 	      }
@@ -46128,7 +46083,7 @@
 	  }, {
 	    key: 'stop',
 	    value: function stop() {
-	      if (this.delayed && this.timeout) {
+	      if (this.delayed) {
 	        clearTimeout(this.timeout);
 	      }
 
@@ -46137,28 +46092,22 @@
 	        audio: this
 	      });
 	      this.playing = false;
-	      this.paused = false;
-	      this.audio.stop(this.sprite);
+	      this.audio.stop();
 	    }
 	  }, {
 	    key: 'setVolume',
-	    value: function setVolume(volume) {
-	      volume = Math.min(this.props.maxVolume, Math.max(this.props.minVolume, volume));
-	      this.audio.volume(volume);
+	    value: function setVolume(value) {
+	      this.audio.volume(value);
 	    }
 	  }, {
 	    key: 'increaseVolume',
-	    value: function increaseVolume(volume) {
-	      if (!this.playing) return;
-	      volume = Math.min(volume || this.props.volume, this.props.maxVolume);
-	      this.audio.fadeIn(volume);
+	    value: function increaseVolume(value) {
+	      this.audio.fadeIn(value);
 	    }
 	  }, {
 	    key: 'decreaseVolume',
-	    value: function decreaseVolume(volume) {
-	      if (!this.playing) return;
-	      volume = Math.max(volume, this.props.minVolume);
-	      this.audio.fadeOut(volume);
+	    value: function decreaseVolume(value) {
+	      this.audio.fadeOut(value);
 	    }
 	  }, {
 	    key: 'complete',
@@ -46168,11 +46117,6 @@
 	          audio: this
 	        });
 	      }
-
-	      this.completeCount++;
-
-	      if (!this.props.complete && (!this.playing || this.paused)) return;
-	      if (this.startCount > this.completeCount) return;
 
 	      this.playing = false;
 	      _get(Object.getPrototypeOf(Audio.prototype), 'complete', this).call(this);
@@ -46185,25 +46129,12 @@
 	  }, {
 	    key: 'bootstrap',
 	    value: function bootstrap() {
-	      var sprite;
-
-	      this.sprite = this.props.sprite ? 'sprite' : undefined;
-
 	      if (this.audio) return;
-
-	      if (this.props.sprite) {
-	        sprite = {
-	          sprite: this.props.sprite
-	        };
-	      }
-
 	      this.audio = new _howler.Howl({
 	        urls: [].concat(this.props.src),
 	        loop: this.props.loop,
-	        volume: this.props.volume,
 	        onend: this.complete,
-	        onload: this.ready,
-	        sprite: sprite
+	        onload: this.ready
 	      });
 	      if (this.props.complete) {
 	        this.complete();
@@ -46216,11 +46147,7 @@
 
 	Audio.defaultProps = _lodash2.default.defaults({
 	  delay: 0,
-	  loop: false,
-	  volume: 1,
-	  maxVolume: 1,
-	  minVolume: 0,
-	  sprite: undefined
+	  loop: false
 	}, _media2.default.defaultProps);
 
 		exports.default = Audio;
@@ -47635,9 +47562,6 @@
 	  }, {
 	    key: 'play',
 	    value: function play() {
-	      // this should be implemented per media
-	      // and the class that extends media should
-	      // call super.play() inside if its play method
 	      if (this.props.playTarget) {
 	        this.updateGameState({
 	          path: this.props.playTarget,

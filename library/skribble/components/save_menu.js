@@ -2,7 +2,7 @@ class SaveMenu extends skoash.Screen {
   cancel() {
     this.close();
     skoash.trigger('menuClose', {
-      id: this.state.id,
+      id: this.props.id,
     });
   }
 
@@ -24,5 +24,6 @@ class SaveMenu extends skoash.Screen {
 export default (
   <SaveMenu
     id="save"
+    load
   />
 );

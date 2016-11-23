@@ -275,7 +275,9 @@ class Draggable extends skoash.Component {
         ref="el"
         className={this.getClassNames()}
         style={this.getStyle()}
-      >{this.props.children}</div>
+      >
+        {this.renderContentList()}
+      </div>
     );
   }
 }
