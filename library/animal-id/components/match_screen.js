@@ -3,10 +3,10 @@ import MatchableReveal from 'shared/components/match_reveal/0.1';
 export default function (props, ref, key) {
     return (
         <skoash.Screen
-          {...props}
-          ref={ref}
-          key={key}
-          id="match-game"
+            {...props}
+            ref={ref}
+            key={key}
+            id="match-game"
         >
             <MatchableReveal
                 ref="matchable-reveal"

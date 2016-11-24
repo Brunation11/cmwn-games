@@ -25,13 +25,13 @@ export default function (props, ref, key) {
                 ]}
                 revealList={[
                     <skoash.ListItem data-ref="clam">
-                    <h3>
-                        A mollusk is an invertebrate<br/>
-                        animal (no spine) that lives in water<br/>
-                        or damp areas and usually has<br/>
-                        an external shell.
-                    </h3>
-                  </skoash.ListItem>
+                        <h3>
+                            A mollusk is an invertebrate<br/>
+                            animal (no spine) that lives in water<br/>
+                            or damp areas and usually has<br/>
+                            an external shell.
+                        </h3>
+                    </skoash.ListItem>
                 ]}
                 revealAssets={[
                     <skoash.Audio ref="clam" type="voiceOver" src="media/audio/VO_8-2.mp3" />
