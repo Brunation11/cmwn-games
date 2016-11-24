@@ -9,13 +9,13 @@ export default function (props, ref, key) {
             key={key}
             id="video"
         >
-          <skoash.Image
-              className="hidden"
-              src={ENVIRONMENT.MEDIA + 'ImageAssets/vid.scrn.png'}
-          />
-          <skoash.Component>
-              <skoash.Video src={src} />
-          </skoash.Component>
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/vid.scrn.png'}
+            />
+            <skoash.Component>
+                <skoash.Video src={src} />
+            </skoash.Component>
         </skoash.Screen>
     );
 }
