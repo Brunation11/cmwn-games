@@ -17,8 +17,8 @@ export default function (props, ref, key) {
             id="how-much-water"
         >
             <skoash.MediaSequence
-              ref="vo"
-              checkComplete={true}
+                ref="vo"
+                checkComplete={true}
             >
                 <skoash.Audio
                     ref="vo-how-much"
