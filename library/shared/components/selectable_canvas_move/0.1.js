@@ -28,7 +28,17 @@ var Item = function (component, context) {
     };
 
     this.render = function () {
-        this.context.drawImage(this.image, this.left, this.component.props.backgroundTop * this.image.naturalHeight / 15, this.size.width, this.size.height, this.position.x, this.position.y, this.backgroundSize.width, this.backgroundSize.height);
+        this.context.drawImage(
+            this.image,
+            this.left,
+            this.component.props.backgroundTop * this.image.naturalHeight / 15,
+            this.size.width,
+            this.size.height,
+            this.position.x,
+            this.position.y,
+            this.backgroundSize.width,
+            this.backgroundSize.height
+        );
     };
 
     this.hover = function () {
@@ -118,7 +128,8 @@ class SelectableCanvasMove extends SelectableCanvas {
     move() {
         this.context.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
         _.each(this.items, item => {
-            var y, height;
+            var y;
+            var height;
             item.position.y -= item.speed;
 
             y = item.position.y + item.margin;
@@ -173,7 +184,17 @@ class SelectableCanvasMove extends SelectableCanvas {
         var pixel;
 
         this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-        this.bctx.drawImage(item.image, item.left, item.component.props.backgroundTop * item.image.naturalHeight / 15, item.size.width, item.size.height, item.position.x, item.position.y, item.backgroundSize.width, item.backgroundSize.height);
+        this.bctx.drawImage(
+            item.image,
+            item.left,
+            item.component.props.backgroundTop * item.image.naturalHeight / 15,
+            item.size.width,
+            item.size.height,
+            item.position.x,
+            item.position.y,
+            item.backgroundSize.width,
+            item.backgroundSize.height
+        );
         pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
 
         this.bctx.fillStyle = 'blue';

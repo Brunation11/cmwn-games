@@ -11,9 +11,11 @@ class Selectable extends skoash.Component {
     }
 
     start() {
-        super.start();
+        var selectClass;
+        var selectFunction;
+        var classes = this.state.classes;
 
-        var selectClass, selectFunction, classes = this.state.classes;
+        super.start();
 
         selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
         selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
@@ -41,7 +43,12 @@ class Selectable extends skoash.Component {
     }
 
     selectHelper(e, classes) {
-        var ref, dataRef, target, id, isCorrect, self = this;
+        var ref;
+        var dataRef;
+        var target;
+        var id;
+        var isCorrect;
+        var self = this;
 
         if (typeof e === 'string') {
             dataRef = e;
@@ -55,7 +62,9 @@ class Selectable extends skoash.Component {
 
         ref = self.refs[dataRef];
 
-        isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
+        isCorrect = (ref && ref.props && ref.props.correct) ||
+            (!self.props.answers || !self.props.answers.length ||
+                self.props.answers.indexOf(dataRef) !== -1);
 
         if (self.props.allowDeselect && classes[dataRef]) {
             delete classes[dataRef];

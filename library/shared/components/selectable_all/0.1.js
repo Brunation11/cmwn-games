@@ -1,8 +1,4 @@
-import classNames from 'classnames';
-
 import Selectable from 'shared/components/selectable/0.1';
-
-const SET_STATE_PAUSE = 100;
 
 class SelectableAll extends Selectable {
     constructor() {
@@ -17,8 +13,8 @@ class SelectableAll extends Selectable {
     }
 
     bootstrap() {
-        super.bootstrap();
         var self = this;
+        super.bootstrap();
 
         if (self.refs.bin) {
             self.setState({
@@ -35,13 +31,16 @@ class SelectableAll extends Selectable {
 
 
     launch() {
-        var list, indicesLeft, classes, self = this;
+        var list;
+        var indicesLeft;
+        var classes;
+        var self = this;
         list = self.state.list;
 
         indicesLeft = [...Array(list.length).keys()];
         classes = {};
 
-        for (var i = 0; i < list.length; i++) {
+        for (let i = 0; i < list.length; i++) {
             setTimeout(() => {
                 var j = Math.floor(Math.random() * indicesLeft.length);
                 var index = indicesLeft[j];
@@ -83,8 +82,9 @@ class SelectableAll extends Selectable {
     }
 
     selectHelper(e, classes) {
+        var target;
+        var dataRef;
         super.selectHelper(e, classes);
-        var target, dataRef;
 
         target = e.target.closest('LI');
 

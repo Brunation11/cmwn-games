@@ -30,14 +30,16 @@ class SelectableCanvas extends Selectable {
         this.items = [];
 
         _.forIn(this.refs, component => {
-            if (!component.refs) return;
             var img = ReactDOM.findDOMNode(component.refs.img);
+            if (!component.refs) return;
             if (img) this.items.push(img);
         });
     }
 
     selectHelper(e, classes) {
-        var offset, target, dataRef;
+        var offset;
+        var target;
+        var dataRef;
 
         offset = this.el.getBoundingClientRect();
         this.buffer.width = offset.width;
@@ -67,12 +69,19 @@ class SelectableCanvas extends Selectable {
     }
 
     isImageTarget(image, e, parentOffset) {
-        var offset, pixel;
+        var offset;
+        var pixel;
 
         offset = image.getBoundingClientRect();
 
         this.bctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
-        this.bctx.drawImage(image, offset.left - parentOffset.left, offset.top - parentOffset.top, offset.width, offset.height);
+        this.bctx.drawImage(
+            image,
+            offset.left - parentOffset.left,
+            offset.top - parentOffset.top,
+            offset.width,
+            offset.height
+        );
         pixel = this.bctx.getImageData(e.pageX, e.pageY, 1, 1);
 
         this.bctx.fillStyle = 'blue';

@@ -28,7 +28,8 @@ class Slider extends skoash.Component {
         var currentSlide;
 
         if (this.props.loop) {
-            currentSlide = (this.state.currentSlide + increment + this.props.children.length) % this.props.children.length;
+            currentSlide = (this.state.currentSlide + increment + this.props.children.length) %
+                this.props.children.length;
         } else {
             currentSlide = Math.max(this.state.currentSlide + increment, 0);
         }
@@ -51,8 +52,9 @@ class Slider extends skoash.Component {
     renderContentList(listName = 'children') {
         var children = [].concat(this.props[listName]);
         return children.map((component, key) => {
+            var ref;
+            var opacity;
             if (!component) return;
-            var ref, opacity;
             ref = component.ref || (component.props && component.props['data-ref']) || listName + '-' + key;
             opacity = key === this.state.currentSlide ? 1 : 0;
             return (

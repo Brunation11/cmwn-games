@@ -75,7 +75,7 @@ class TargetSelectable extends SelectableReveal {
                     });
                 }, 450);
 
-                for (var i = 3; i < 8; i++) {
+                for (let i = 3; i < 8; i++) {
                     setTimeout(() => {
                         _.forEach(this.list, node => {
                             node.style.order = Math.round(20 * Math.random());

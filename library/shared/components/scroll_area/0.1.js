@@ -51,12 +51,14 @@ class ScrollArea extends skoash.Component {
         this[AREA].scrollTop = 0;
 
         this[AREA].addEventListener('scroll', e => {
-            var areaScrollTop, endY;
+            var areaScrollTop;
+            var endY;
 
             if (!e.target || this.dragging) return;
 
             areaScrollTop = e.target.scrollTop;
-            endY = (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight) * (areaScrollTop / (this[CONTENT].offsetHeight - this[AREA].offsetHeight));
+            endY = (this[SCROLLBAR].offsetHeight - this.props.scrollbarHeight) *
+                (areaScrollTop / (this[CONTENT].offsetHeight - this[AREA].offsetHeight));
 
             this.setState({
                 startY: 0,
@@ -85,7 +87,8 @@ class ScrollArea extends skoash.Component {
     }
 
     startEvent(e, cb) {
-        var startY, endY;
+        var startY;
+        var endY;
 
         if (e.target !== this[SCROLLER]) return;
 

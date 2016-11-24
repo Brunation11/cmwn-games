@@ -14,7 +14,8 @@ class Score extends skoash.Component {
     checkComplete() {
         if (!this.props.checkComplete || !this.state.ready) return;
         if (!this.props.max) return;
-        if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) && !this.state.complete) this.complete();
+        if ((this.state.score >= this.props.max || this.props.correct >= this.props.max) &&
+            !this.state.complete) this.complete();
     }
 
     bootstrap() {
@@ -48,14 +49,16 @@ class Score extends skoash.Component {
     }
 
     up(increment) {
-        increment = _.isFinite(increment) ? increment : _.isFinite(this.props.increment) ? this.props.increment : 1;
+        increment = _.isFinite(increment) ? increment : _.isFinite(this.props.increment) ?
+            this.props.increment : 1;
         if (!_.isFinite(increment)) throw 'increment must be finite';
 
         this.updateScore(increment);
     }
 
     down(increment) {
-        increment = _.isFinite(increment) ? increment : _.isFinite(this.props.downIncrement) ? this.props.downIncrement : _.isFinite(this.props.increment) ? this.props.increment : 1;
+        increment = _.isFinite(increment) ? increment : _.isFinite(this.props.downIncrement) ?
+            this.props.downIncrement : _.isFinite(this.props.increment) ? this.props.increment : 1;
         if (!_.isFinite(increment)) throw 'increment must be finite';
 
         this.updateScore(-1 * increment);
@@ -78,7 +81,9 @@ class Score extends skoash.Component {
     }
 
     setScore(props) {
-        var upIncrement, downIncrement, score;
+        var upIncrement;
+        var downIncrement;
+        var score;
 
         if (_.isFinite(props)) {
             score = props;
@@ -116,14 +121,20 @@ class Score extends skoash.Component {
 
     render() {
         return (
-      <div {...this.props} className={this.getClassNames()} data-max={this.props.max} data-score={this.state.score} score={this.state.score}>
-        {this.props.leadingContent}
-        <span>
-          {this.state.score}
-        </span>
-        {this.props.children}
-      </div>
-    );
+            <div
+                {...this.props}
+                className={this.getClassNames()}
+                data-max={this.props.max}
+                data-score={this.state.score}
+                score={this.state.score}
+            >
+                {this.props.leadingContent}
+                <span>
+                    {this.state.score}
+                </span>
+                {this.props.children}
+            </div>
+        );
     }
 }
 

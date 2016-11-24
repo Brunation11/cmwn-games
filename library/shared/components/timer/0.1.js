@@ -28,7 +28,9 @@ class Timer extends skoash.Component {
                     this.complete();
                     this.stop();
                 } else {
-                    if (typeof this.props.onCheckComplete === 'function') this.props.onCheckComplete.call(this);
+                    if (typeof this.props.onCheckComplete === 'function') {
+                        this.props.onCheckComplete.call(this);
+                    }
                     window.requestAnimationFrame(this.checkComplete);
                 }
             });
@@ -112,7 +114,8 @@ class Timer extends skoash.Component {
 
 Timer.defaultProps = _.defaults({
     getTime: function () {
-        return moment(this.props.countDown ? this.props.timeout - this.state.time : this.state.time).format(this.props.format);
+        return moment(this.props.countDown ? this.props.timeout - this.state.time :
+            this.state.time).format(this.props.format);
     },
     format: 'm:ss',
     leadingContent: '',
