@@ -199,113 +199,113 @@ export default function (props, ref, key, opts = {}) {
     }
 
     return (
-    <skoash.Screen
-      {...props}
-      ref={ref}
-      key={key}
-      id={opts.id}
-    >
-      <MediaCollection
-        play={_.get(props, 'data.reveal.open')}
-        children={opts.vos}
-      />
-      <MediaCollection
-        play={_.get(props, 'data.sfx.playing')}
-        children={opts.sfx}
-        onPlay={onPlaySFX}
-      />
-      <skoash.Component className="bottom">
-        <div className="level">
-          {opts.level}
-        </div>
-        <Score
-          className="mr-eco-score"
-          max={100}
-          increment={10}
-          correct={_.get(props, 'data.score.correct', 0)}
-          incorrect={_.get(props, 'data.score.incorrect', 0)}
-          onComplete={onScoreComplete}
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            id={opts.id}
         >
-          <div />
-        </Score>
-        <Score
-          className="litter-bug-score"
-          max={100}
-          increment={10}
-          correct={_.get(props, 'data.score.litter', 0)}
-          complete={_.get(props, 'data.game.complete', false)}
-          onComplete={onTimerComplete}
-        >
-          <div />
-        </Score>
-        <Timer
-          countDown
-          timeout={opts.timeout}
-          getTime={getTime}
-          stop={_.get(props, 'data.game.complete', false)}
-          complete={_.get(props, 'data.game.complete', false)}
-          checkComplete={_.get(props, 'data.game.start', false)}
-          restart={_.get(props, 'data.game.start', false)}
-          onComplete={onTimerComplete}
-        />
-      </skoash.Component>
-      <skoash.Component className="main">
-        <Dropper
-          leftBound={70}
-          rightBound={820}
-          on={_.get(props, 'data.game.start', false)}
-          start={_.get(props, 'data.game.start', false)}
-          stop={_.get(props, 'data.game.complete', false)}
-          prepClasses={['ready', 'go']}
-          prepTimeout={opts.prepTimeout}
-          onAddClassName={onAddClassName}
-          onTransitionEnd={onTransitionEnd}
-          bin={
-            <Randomizer
-              completeOnStart
-              checkComplete={false}
-              bin={bin}
-              remain
+            <MediaCollection
+                play={_.get(props, 'data.reveal.open')}
+                children={opts.vos}
             />
-          }
-        >
-        </Dropper>
-        <Catcher
-          completeOnStart
-          checkComplete={false}
-          start={_.get(props, 'data.game.start', false)}
-          canCatch={_.get(props, 'data.game.start', false)}
-          moveBuckets
-          onMove={onMove}
-          bucket={[
-              <skoash.Component className="mr-eco" message="trash" />,
-          ]}
-          catchableRefs={_.get(props, 'data.dropper.refs', [])}
-          onCorrect={onCorrectCatch}
-          onIncorrect={onIncorrectCatch}
-          assets={[
-              <skoash.Audio
-              type="voiceOver"
-              ref="correct"
-              src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
-            />,
-              <skoash.Audio
-              type="voiceOver"
-              ref="incorrect"
-              src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
-            />,
-          ]}
-        />
-      </skoash.Component>
-      <Reveal
-        openOnStart={opts.openOnStart}
-        openTarget="reveal"
-        openReveal={_.get(props, 'data.openReveal', false)}
-        closeReveal={_.get(props, 'data.reveal.close', false)}
-        onClose={onCloseReveal}
-        onOpen={onOpenReveal}
-        list={opts.revealList}
-      />
-    </skoash.Screen>
-  );
+            <MediaCollection
+                play={_.get(props, 'data.sfx.playing')}
+                children={opts.sfx}
+                onPlay={onPlaySFX}
+            />
+            <skoash.Component className="bottom">
+                <div className="level">
+                    {opts.level}
+                </div>
+                <Score
+                    className="mr-eco-score"
+                    max={100}
+                    increment={10}
+                    correct={_.get(props, 'data.score.correct', 0)}
+                    incorrect={_.get(props, 'data.score.incorrect', 0)}
+                    onComplete={onScoreComplete}
+                >
+                    <div />
+                </Score>
+                <Score
+                    className="litter-bug-score"
+                    max={100}
+                    increment={10}
+                    correct={_.get(props, 'data.score.litter', 0)}
+                    complete={_.get(props, 'data.game.complete', false)}
+                    onComplete={onTimerComplete}
+                >
+                    <div />
+                </Score>
+                <Timer
+                    countDown
+                    timeout={opts.timeout}
+                    getTime={getTime}
+                    stop={_.get(props, 'data.game.complete', false)}
+                    complete={_.get(props, 'data.game.complete', false)}
+                    checkComplete={_.get(props, 'data.game.start', false)}
+                    restart={_.get(props, 'data.game.start', false)}
+                    onComplete={onTimerComplete}
+                />
+            </skoash.Component>
+            <skoash.Component className="main">
+                <Dropper
+                    leftBound={70}
+                    rightBound={820}
+                    on={_.get(props, 'data.game.start', false)}
+                    start={_.get(props, 'data.game.start', false)}
+                    stop={_.get(props, 'data.game.complete', false)}
+                    prepClasses={['ready', 'go']}
+                    prepTimeout={opts.prepTimeout}
+                    onAddClassName={onAddClassName}
+                    onTransitionEnd={onTransitionEnd}
+                    bin={
+                        <Randomizer
+                            completeOnStart
+                            checkComplete={false}
+                            bin={bin}
+                            remain
+                        />
+                    }
+                >
+                </Dropper>
+                <Catcher
+                    completeOnStart
+                    checkComplete={false}
+                    start={_.get(props, 'data.game.start', false)}
+                    canCatch={_.get(props, 'data.game.start', false)}
+                    moveBuckets
+                    onMove={onMove}
+                    bucket={[
+                        <skoash.Component className="mr-eco" message="trash" />,
+                    ]}
+                    catchableRefs={_.get(props, 'data.dropper.refs', [])}
+                    onCorrect={onCorrectCatch}
+                    onIncorrect={onIncorrectCatch}
+                    assets={[
+                        <skoash.Audio
+                            type="voiceOver"
+                            ref="correct"
+                            src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
+                        />,
+                        <skoash.Audio
+                            type="voiceOver"
+                            ref="incorrect"
+                            src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+                        />,
+                    ]}
+                />
+            </skoash.Component>
+            <Reveal
+                openOnStart={opts.openOnStart}
+                openTarget="reveal"
+                openReveal={_.get(props, 'data.openReveal', false)}
+                closeReveal={_.get(props, 'data.reveal.close', false)}
+                onClose={onCloseReveal}
+                onOpen={onOpenReveal}
+                list={opts.revealList}
+            />
+        </skoash.Screen>
+    );
 }

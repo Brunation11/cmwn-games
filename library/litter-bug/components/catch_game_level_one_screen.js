@@ -68,111 +68,111 @@ export default function (props, ref, key) {
         ],
         vos: [
             <skoash.MediaSequence
-        ref="instructions"
-        silentOnStart
-      >
-        <skoash.Audio
-          type="voiceOver"
-          src={'media/_assets/_sounds/_vos/Instructions.mp3'}
-        />
-        <skoash.Audio
-          type="voiceOver"
-          src={'media/_assets/_sounds/_vos/PickUpLitter.mp3'}
-        />
-      </skoash.MediaSequence>,
+                ref="instructions"
+                silentOnStart
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    src={'media/_assets/_sounds/_vos/Instructions.mp3'}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={'media/_assets/_sounds/_vos/PickUpLitter.mp3'}
+                />
+            </skoash.MediaSequence>,
             <skoash.MediaSequence
-        ref="level-up"
-        silentOnStart
-      >
-        <skoash.Audio
-          type="voiceOver"
-          src={'media/_assets/_sounds/_effects/LevelUp.mp3'}
-        />
-        <skoash.Audio
-          type="voiceOver"
-          src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
-        />
-      </skoash.MediaSequence>,
+                ref="level-up"
+                silentOnStart
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    src={'media/_assets/_sounds/_effects/LevelUp.mp3'}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={'media/_assets/_sounds/_vos/Congratulations.mp3'}
+                />
+            </skoash.MediaSequence>,
             <skoash.MediaSequence
-        ref="try-again"
-        silentOnStart
-      >
-        <skoash.Audio
-          type="voiceOver"
-          complete
-          src={'media/_assets/_sounds/_effects/TryAgain.mp3'}
-        />
-        <skoash.Audio
-          type="voiceOver"
-          complete
-          src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
-        />
-        <skoash.Audio
-          type="voiceOver"
-          complete
-          src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
-        />
-      </skoash.MediaSequence>,
+                ref="try-again"
+                silentOnStart
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    complete
+                    src={'media/_assets/_sounds/_effects/TryAgain.mp3'}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    complete
+                    src={'media/_assets/_sounds/_vos/TryAgain.mp3'}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    complete
+                    src={'media/_assets/_sounds/_vos/YouDidntWin.mp3'}
+                />
+            </skoash.MediaSequence>,
         ],
         sfx: [
             <skoash.Audio
-        type="sfx"
-        ref="miss"
-        src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
-        complete
-      />,
+                type="sfx"
+                ref="miss"
+                src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
+                complete
+            />,
         ],
         revealList: [
             <skoash.Component
-        ref="instructions"
-        className="instructions"
-        type="li"
-      >
-        <div>
-          <div className="instructions" />
-          <div className="words" />
-          <button
-            onClick={function () {
-                skoash.trigger('updateState', {
-                    path: 'reveal',
-                    data: {
-                        close: true,
-                    }
-                });
-            }}
-          />
-        </div>
-      </skoash.Component>,
+                ref="instructions"
+                className="instructions"
+                type="li"
+            >
+                <div>
+                    <div className="instructions" />
+                    <div className="words" />
+                    <button
+                        onClick={function () {
+                            skoash.trigger('updateState', {
+                                path: 'reveal',
+                                data: {
+                                    close: true,
+                                }
+                            });
+                        }}
+                    />
+                </div>
+            </skoash.Component>,
             <skoash.Component
-        ref="level-up"
-        className="level-up"
-        type="li"
-      >
-        <div>
-          <div className="congratulations" />
-          <div className="level-up" />
-        </div>
-      </skoash.Component>,
+                ref="level-up"
+                className="level-up"
+                type="li"
+            >
+                <div>
+                  <div className="congratulations" />
+                  <div className="level-up" />
+                </div>
+            </skoash.Component>,
             <skoash.Component
-        ref="try-again"
-        className="try-again"
-        type="li"
-      >
-        <div>
-          <div className="try-again" />
-          <div className="words" />
-          <button
-            onClick={function () {
-                skoash.trigger('updateState', {
-                    path: 'reveal',
-                    data: {
-                        close: true,
-                    }
-                });
-            }}
-          />
-        </div>
-      </skoash.Component>,
+                ref="try-again"
+                className="try-again"
+                type="li"
+            >
+                <div>
+                    <div className="try-again" />
+                    <div className="words" />
+                    <button
+                      onClick={function () {
+                          skoash.trigger('updateState', {
+                              path: 'reveal',
+                              data: {
+                                  close: true,
+                              }
+                          });
+                      }}
+                    />
+                </div>
+            </skoash.Component>,
         ]
     });
 }
