@@ -5,15 +5,14 @@ import Score from 'shared/components/score/0.1';
 export default function (props, ref, key) {
     return (
         <skoash.Screen
-              {...props}
-              ref={ref}
-              key={key}
-              id="choose-carousel"
+            {...props}
+            ref={ref}
+            key={key}
+            id="choose-carousel"
         >
             <CarouselCannon
                 ref="carousel-cannon"
                 completeOnStart={true}
-                // checkComplete={false}
                 complete={true}
                 onSelect={function (target) {
                     var score;
