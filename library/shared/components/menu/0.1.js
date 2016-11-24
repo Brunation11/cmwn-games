@@ -24,7 +24,12 @@ class Menu extends Selectable {
     }
 
     onClick(e) {
-        var li, ul, dom, message, active = false, classes = [];
+        var li;
+        var ul;
+        var dom;
+        var message;
+        var active = false;
+        var classes = [];
 
         li = e.target.closest('LI');
 
@@ -54,7 +59,11 @@ class Menu extends Selectable {
         if (typeof this.props.items !== 'object') return;
 
         return Object.keys(this.props.items).map((key) => {
-            var item, onClick, gotoObj, categories, isFinal;
+            var item;
+            var onClick;
+            var gotoObj;
+            var categories;
+            var isFinal;
 
             categories = this.props.categories ? [].concat(this.props.categories) : [];
             categories.push(key);

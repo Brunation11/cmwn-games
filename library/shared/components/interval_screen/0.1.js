@@ -2,10 +2,10 @@ import _ from 'lodash';
 
 class IntervalScreen extends skoash.Screen {
     open(opts) {
-        super.open(opts);
-
         var self = this;
         var audioSequence;
+
+        super.open(opts);
 
         this.setState(this.props.states);
 
@@ -44,8 +44,8 @@ class IntervalScreen extends skoash.Screen {
         var self = this;
         var children = [].concat(this.props[listName]);
         return children.map((component, key) => {
-            if (!component) return;
             var ref = component.ref || component.props['data-ref'] || listName + '-' + key;
+            if (!component) return;
             if (component.type.name === 'AudioSequence') { // does not work for media sequence yet
                 return (
           <component.type

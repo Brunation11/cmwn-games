@@ -54,7 +54,11 @@ class Labyrinth extends skoash.Component {
     }
 
     update() {
-        var hasTrue, enemy, item, playerX = this.state.playerX, playerY = this.state.playerY;
+        var hasTrue;
+        var enemy;
+        var item;
+        var playerX = this.state.playerX;
+        var playerY = this.state.playerY;
 
         if (!this[PLAYER]) return;
 
@@ -86,7 +90,8 @@ class Labyrinth extends skoash.Component {
     }
 
     isColliding(x, y) {
-        var offset, playerOffset;
+        var offset;
+        var playerOffset;
         offset = this[IMAGE].getBoundingClientRect();
         playerOffset = this[PLAYER].getBoundingClientRect();
 
@@ -99,15 +104,17 @@ class Labyrinth extends skoash.Component {
         this[CONTEXT].drawImage(this[MAP], 0, 0, this[BUFFER].width, this[BUFFER].height);
 
         return (
-      // top
-      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y, 1, 1).data[0] ||
-      // right
-      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale), y + (playerOffset.width / this.props.scale / 2), 1, 1).data[0] ||
-      // bottom
-      !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y + (playerOffset.height / this.props.scale), 1, 1).data[0] ||
-      // left
-      !this[CONTEXT].getImageData(x, y + (playerOffset.height / this.props.scale / 2), 1, 1).data[0]
-    );
+            // top
+            !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y, 1, 1).data[0] ||
+            // right
+            !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale), y +
+                (playerOffset.width / this.props.scale / 2), 1, 1).data[0] ||
+            // bottom
+            !this[CONTEXT].getImageData(x + (playerOffset.width / this.props.scale / 2), y +
+                (playerOffset.height / this.props.scale), 1, 1).data[0] ||
+            // left
+            !this[CONTEXT].getImageData(x, y + (playerOffset.height / this.props.scale / 2), 1, 1).data[0]
+        );
     }
 
     playCollideSound() {

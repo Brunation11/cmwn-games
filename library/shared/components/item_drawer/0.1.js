@@ -6,7 +6,12 @@ import ScrollArea from 'shared/components/scroll_area/0.1';
 
 class ItemDrawer extends Selectable {
     start() {
-        var items, selectedItem, selectClass, selectFunction, classes = {}, self = this;
+        var items;
+        var selectedItem;
+        var selectClass;
+        var selectFunction;
+        var classes = {};
+        var self = this;
 
         selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
         selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
@@ -44,7 +49,12 @@ class ItemDrawer extends Selectable {
     }
 
     selectHelper(e) {
-        var li, message, key, type, categoryName, classes = [];
+        var li;
+        var message;
+        var key;
+        var type;
+        var categoryName;
+        var classes = [];
 
         li = e.target.closest('LI');
         if (!li) return;
@@ -130,7 +140,9 @@ class ItemDrawer extends Selectable {
     }
 
     renderItemContent(item) {
-        var content = [], thumb, src;
+        var content = [];
+        var thumb;
+        var src;
 
         if (item.src || item.thumb) {
             src = item.thumb || item.src;
@@ -162,7 +174,8 @@ class ItemDrawer extends Selectable {
     }
 
     renderList() {
-        var items, self = this;
+        var items;
+        var self = this;
 
         if (!this.props.data) return;
 
@@ -203,25 +216,31 @@ class ItemDrawer extends Selectable {
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        <div className="item-drawer-container">
-          <h2>{this.getCategory()}</h2>
-          <ScrollArea ref="scroll-area" img={this.props.scrollbarImg}>
-            <ul ref="list" className={this.getULClass()} onClick={this.state.selectFunction.bind(this)}>
-              {this.renderList()}
-            </ul>
-          </ScrollArea>
-        </div>
-        {this.renderButtons()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                <div className="item-drawer-container">
+                    <h2>{this.getCategory()}</h2>
+                    <ScrollArea ref="scroll-area" img={this.props.scrollbarImg}>
+                        <ul
+                            ref="list"
+                            className={this.getULClass()}
+                            onClick={this.state.selectFunction.bind(this)}
+                        >
+                            {this.renderList()}
+                        </ul>
+                    </ScrollArea>
+                </div>
+                {this.renderButtons()}
+            </div>
+        );
     }
 }
 
 ItemDrawer.defaultProps = _.defaults({
     scrollbarImg: '',
     shouldComponentUpdate: function (nextProps, nextState) {
-        var items, quickCheck, itemsChanged;
+        var items;
+        var quickCheck;
+        var itemsChanged;
 
         items = nextProps.data || [];
         if (nextState.category && items[nextState.category]) {
@@ -234,7 +253,7 @@ ItemDrawer.defaultProps = _.defaults({
         if (itemsChanged) this.quickCheck = quickCheck;
 
         return itemsChanged || nextProps.categoryName !== this.props.categoryName ||
-      JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes);
+            JSON.stringify(this.state.classes) !== JSON.stringify(nextState.classes);
     },
 }, Selectable.defaultProps);
 

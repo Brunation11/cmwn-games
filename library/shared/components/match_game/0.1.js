@@ -7,7 +7,11 @@ class MatchGame extends Selectable {
     }
 
     selectHelper(e, classes) {
-        var dataRef, activeDataRef, message, target, matched;
+        var dataRef;
+        var activeDataRef;
+        var message;
+        var target;
+        var matched;
 
         target = e.target.closest('LI');
 

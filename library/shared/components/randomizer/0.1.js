@@ -6,7 +6,8 @@ class Randomizer extends skoash.Component {
     }
 
     get(amount = 1) {
-        var items, bin = [];
+        var items;
+        var bin = [];
 
         if (this.props.remain && this.state.bin) {
             bin = this.state.bin;

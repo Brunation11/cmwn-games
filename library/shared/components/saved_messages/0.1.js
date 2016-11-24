@@ -8,7 +8,10 @@ class SavedMessages extends Selectable {
     }
 
     selectHelper(e) {
-        var li, message, key, classes = [];
+        var li;
+        var message;
+        var key;
+        var classes = [];
 
         li = e.target.closest('LI');
 
@@ -47,7 +50,8 @@ class SavedMessages extends Selectable {
     }
 
     renderThumb(item) {
-        var firstImg, background;
+        var firstImg;
+        var background;
 
         background = item && item.rules && item.rules.background &&
       item.rules.background.src ? item.rules.background.src :
@@ -74,7 +78,8 @@ class SavedMessages extends Selectable {
     }
 
     renderList() {
-        var items, self = this;
+        var items;
+        var self = this;
 
         if (!self.props.data || !self.props.data.items) return;
 

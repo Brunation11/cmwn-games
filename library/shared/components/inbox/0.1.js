@@ -8,7 +8,10 @@ class Inbox extends Selectable {
     }
 
     selectHelper(e) {
-        var li, message, key, classes = [];
+        var li;
+        var message;
+        var key;
+        var classes = [];
 
         li = e.target.closest('LI');
 
@@ -55,7 +58,8 @@ class Inbox extends Selectable {
     }
 
     renderList() {
-        var items, friends;
+        var items;
+        var friends;
 
         if (!this.props.data || !this.props.data.items) return;
 
@@ -63,16 +67,18 @@ class Inbox extends Selectable {
 
         if (!items.length) {
             return (
-        <li className="empty">
-          {this.props.emptyMessage}
-        </li>
-      );
+                <li className="empty">
+                    {this.props.emptyMessage}
+                </li>
+            );
         }
 
         friends = _.get(this.props.gameState, 'data.user', []);
 
         return _.map(items, (item, key) => {
-            var timestamp, image, name;
+            var timestamp;
+            var image;
+            var name;
             timestamp = moment.utc(item.updated).local();
             key = 'message-' + key;
 
@@ -98,37 +104,37 @@ class Inbox extends Selectable {
             }
 
             return (
-        <skoash.ListItem
-          className={this.getClass(key, item.read)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={key}
-        >
-          <skoash.Image src={image} />
-          <span className={'username' + (name.length > 15 ? ' long' : '')}>
-            {name}
-          </span>
-          <span className="timestamp">
-            <span className="date">{timestamp.format('MM.DD.YY')}</span>
-            <span className="time">{timestamp.format('h:mm a')}</span>
-          </span>
-          <span className={'status ' + item.status}>
-            {this.getStatusText(item)}
-          </span>
-        </skoash.ListItem>
-      );
+                <skoash.ListItem
+                    className={this.getClass(key, item.read)}
+                    ref={key}
+                    data-ref={key}
+                    item={item}
+                    key={key}
+                >
+                    <skoash.Image src={image} />
+                    <span className={'username' + (name.length > 15 ? ' long' : '')}>
+                        {name}
+                    </span>
+                    <span className="timestamp">
+                        <span className="date">{timestamp.format('MM.DD.YY')}</span>
+                        <span className="time">{timestamp.format('h:mm a')}</span>
+                    </span>
+                    <span className={'status ' + item.status}>
+                        {this.getStatusText(item)}
+                    </span>
+                </skoash.ListItem>
+            );
         });
     }
 
     render() {
         return (
-      <div>
-        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-      </div>
-    );
+            <div>
+                <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 

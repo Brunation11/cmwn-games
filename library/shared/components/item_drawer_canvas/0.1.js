@@ -25,16 +25,19 @@ class ItemDrawerCanvas extends skoash.Component {
             items: [
                 {
                     type: 'background',
-                    src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnfpzoD-_HTIGH37ncMqaYiqjOI4MrXSPSTCyAHbJdSsc6O9vP',
+                    src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSnfpzoD-' +
+                        '_HTIGH37ncMqaYiqjOI4MrXSPSTCyAHbJdSsc6O9vP',
                 },
                 {
                     type: 'background',
-                    src: 'http://g-ecx.images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
+                    src: 'http://g-ecx.images-amazon.com/images/G/01/img15/pet-products/small-tiles' +
+                        '/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg',
                 },
                 {
                     type: 'item',
                     canOverlap: false,
-                    src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQPKYvInvRcKyePsdWpEQc40hcLDfLlEcRk2ho2ETWmZppiVoEGQA',
+                    src: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:' +
+                        'ANd9GcQPKYvInvRcKyePsdWpEQc40hcLDfLlEcRk2ho2ETWmZppiVoEGQA',
                 },
                 {
                     type: 'item',
@@ -44,7 +47,8 @@ class ItemDrawerCanvas extends skoash.Component {
                 {
                     type: 'item',
                     canOverlap: false,
-                    src: 'https://pbs.twimg.com/profile_images/378800000674268962/06ce58cab26c3a0daf80cf57e5acb29b_400x400.jpeg',
+                    src: 'https://pbs.twimg.com/profile_images/378800000674268962/' +
+                        '06ce58cab26c3a0daf80cf57e5acb29b_400x400.jpeg',
                 },
                 {
                     type: 'item',
@@ -54,7 +58,8 @@ class ItemDrawerCanvas extends skoash.Component {
                 {
                     type: 'item',
                     canOverlap: true,
-                    src: 'http://clipartix.com/wp-content/uploads/2016/05/Top-hat-hat-clip-art-free-clip-art-microsoft-clip-art-christmas.png',
+                    src: 'http://clipartix.com/wp-content/uploads/2016/05/' +
+                        'Top-hat-hat-clip-art-free-clip-art-microsoft-clip-art-christmas.png',
                 },
                 {
                     type: 'message',
@@ -72,10 +77,10 @@ class ItemDrawerCanvas extends skoash.Component {
 
     renderCanvas() {
         return (
-      <Canvas
-        ref="canvas"
-      />
-    );
+            <Canvas
+                ref="canvas"
+            />
+        );
     }
 
     getClasses() {
@@ -88,11 +93,11 @@ class ItemDrawerCanvas extends skoash.Component {
 
     render() {
         return (
-      <div className={'item-drawer-canvas' + this.getClasses()}>
-        {this.renderDrawer()}
-        {this.renderCanvas()}
-      </div>
-    );
+            <div className={'item-drawer-canvas' + this.getClasses()}>
+                {this.renderDrawer()}
+                {this.renderCanvas()}
+            </div>
+        );
     }
 }
 

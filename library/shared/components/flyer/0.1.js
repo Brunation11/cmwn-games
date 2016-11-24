@@ -30,17 +30,23 @@ class Flyer extends skoash.Component {
 
 
     onClick() {
+        var curTranslateY;
+        var directionFactor;
+        var translateY;
+        var maxTranslateY;
+
         if (!this.state.started || this.state.paused) return;
-        var curTranslateY = this.state.jumping ? this.state.translateY : this.getCurrentTranslateY();
-        var directionFactor = this.props.reverseDirection ? 1 : -1;
+        curTranslateY = this.state.jumping ? this.state.translateY : this.getCurrentTranslateY();
+        directionFactor = this.props.reverseDirection ? 1 : -1;
 
-        var translateY = curTranslateY + this.props.jumpSize * directionFactor;
+        translateY = curTranslateY + this.props.jumpSize * directionFactor;
 
-    // ensure inBounds
-        var maxTranslateY = Math.abs((this.state.flyerHeight / 2) - (this.state.containerHeight / 2));
-        translateY = this.props.inBounds && Math.abs(translateY) > maxTranslateY ? maxTranslateY * directionFactor : translateY;
+        // ensure inBounds
+        maxTranslateY = Math.abs((this.state.flyerHeight / 2) - (this.state.containerHeight / 2));
+        translateY = this.props.inBounds && Math.abs(translateY) > maxTranslateY ?
+            maxTranslateY * directionFactor : translateY;
 
-    // there will be no animation to detect if no change in translateY so decrement
+        // there will be no animation to detect if no change in translateY so decrement
         if (translateY === this.state.translateY) translateY = translateY + directionFactor;
 
         this.setState({
@@ -155,39 +161,43 @@ class Flyer extends skoash.Component {
     }
 
     getStyle() {
-    // calculate speed of transition based on distance to be traveled & speed prop
-        var transitionDist = this.flyerNode ? Math.abs(this.getCurrentTranslateY() - this.state.translateY) : this.props.jumpSize;
-        var transitionMillisecs = this.state.jumping ? transitionDist * this.props.jumpSpeed : transitionDist * this.props.fallSpeed;
-        var transitionTimingFunction = this.state.jumping ? 'cubic-bezier(.03,1.13,1,.99)' : 'cubic-bezier(.16,0,.68,.05)';
+        // calculate speed of transition based on distance to be traveled & speed prop
+        var transitionDist = this.flyerNode ?
+            Math.abs(this.getCurrentTranslateY() - this.state.translateY) : this.props.jumpSize;
+        var transitionMillisecs = this.state.jumping ?
+            transitionDist * this.props.jumpSpeed : transitionDist * this.props.fallSpeed;
+        var transitionTimingFunction = this.state.jumping ?
+            'cubic-bezier(.03,1.13,1,.99)' : 'cubic-bezier(.16,0,.68,.05)';
 
         return {
             transitionTimingFunction,
             transitionDuration: `${transitionMillisecs}ms`,
             transitionProperty: 'transform',
             transform: `translateY(${this.state.translateY}px)`,
-            animationPlayState: (!this.state.started || this.state.paused || !this.state.animate) ? 'paused' : 'running'
+            animationPlayState: (!this.state.started || this.state.paused || !this.state.animate) ?
+                'paused' : 'running'
         };
     }
 
     renderFlyer() {
         return (
-      <div className="center inline">
-        <this.props.flyer.type
-          {...this.props.flyer.props}
-          ref="flyer"
-          className="flyer"
-          style={this.getStyle()}
-        />
-      </div>
-    );
+            <div className="center inline">
+                <this.props.flyer.type
+                    {...this.props.flyer.props}
+                    ref="flyer"
+                    className="flyer"
+                    style={this.getStyle()}
+                />
+            </div>
+        );
     }
 
     render() {
         return (
-      <div ref="flyer-component" className={this.getClasses()}>
-        {this.renderFlyer()}
-      </div>
-    );
+            <div ref="flyer-component" className={this.getClasses()}>
+                {this.renderFlyer()}
+            </div>
+        );
     }
 }
 
