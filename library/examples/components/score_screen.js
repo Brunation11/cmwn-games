@@ -31,12 +31,12 @@ class ScoreScreenComponent extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        {this.renderContentList()}
-        <button onClick={this.up}>{UP}</button>
-        <button onClick={this.down}>{DOWN}</button>
-      </div>
-    );
+            <div>
+                {this.renderContentList()}
+                <button onClick={this.up}>{UP}</button>
+                <button onClick={this.down}>{DOWN}</button>
+            </div>
+        );
     }
 }
 

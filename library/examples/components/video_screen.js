@@ -3,14 +3,11 @@ const src = 'https://res.cloudinary.com/changemyworldnow/video/upload/v145503701
 
 var VideoScreen = (
     <skoash.Screen
-      id="video-screen"
+        id="video-screen"
     >
         <skoash.Component ref="center" className="center">
             <skoash.Component ref="frame" className="frame video">
-                <skoash.Video
-                    ref="video"
-                    src={src}
-                />
+                <skoash.Video ref="video" src={src} />
             </skoash.Component>
         </skoash.Component>
     </skoash.Screen>
