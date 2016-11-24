@@ -2,12 +2,14 @@ import classNames from 'classnames';
 
 class Dropzone extends skoash.Component {
     start() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
 
         super.start();
 
         self.dropzoneCorners = _.map(self.props.dropzones, (value, key) =>
-      self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
+            self.getCorners(ReactDOM.findDOMNode(self.refs[`dropzone-${key}`]))
     );
 
         if (self.loadData && typeof self.loadData === 'object') {
@@ -40,7 +42,9 @@ class Dropzone extends skoash.Component {
     }
 
     loadDragNDropData() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
         _.forIn(self.loadData, (ref1, key1) => {
             _.forIn(self.refs, (ref2, key2) => {
                 if (key2.indexOf('draggable-') === -1) return;
@@ -56,7 +60,9 @@ class Dropzone extends skoash.Component {
     }
 
     loadMultiAsnwerData() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
         _.forIn(self.loadData, (ref1, key1) => {
             dropzone = self.refs[key1];
             dropzone.setState({content: []});
@@ -72,11 +78,12 @@ class Dropzone extends skoash.Component {
     }
 
     getCorners(el) {
-        var offset, corners = [];
+        var offset;
+        var corners = [];
 
         offset = el.getBoundingClientRect();
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             corners.push({
                 x: offset.left + offset.width * (i === 1 || i === 2 ? 1 : 0),
                 y: offset.top + offset.height * (i > 1 ? 1 : 0),
@@ -87,7 +94,9 @@ class Dropzone extends skoash.Component {
     }
 
     onDrop(dropped) {
-        var droppedDOM, corners, dropzoneRef;
+        var droppedDOM;
+        var corners;
+        var dropzoneRef;
 
         droppedDOM = dropped.DOMNode || ReactDOM.findDOMNode(dropped);
         corners = this.getCorners(droppedDOM);
@@ -108,7 +117,9 @@ class Dropzone extends skoash.Component {
 
     onDrag(dragging) {
         _.each(this.props.dropzones, (value, key) => {
-            var index, dropzoneRef, contains;
+            var index;
+            var dropzoneRef;
+            var contains;
             dropzoneRef = this.refs[`dropzone-${key}`];
             contains = dropzoneRef.contains || [];
             index = contains.indexOf(dragging);
@@ -164,12 +175,12 @@ class Dropzone extends skoash.Component {
 
     renderDropzones() {
         return _.map(this.props.dropzones, (component, key) =>
-      <component.type
-        {...component.props}
-        ref={`dropzone-${key}`}
-        key={key}
-      />
-    );
+            <component.type
+                {...component.props}
+                ref={`dropzone-${key}`}
+                key={key}
+            />
+        );
     }
 
     getClassNames() {
@@ -178,11 +189,11 @@ class Dropzone extends skoash.Component {
 
     render() {
         return (
-      <div {...this.props} className={this.getClassNames()}>
-        {this.renderContentList('assets')}
-        {this.renderDropzones()}
-      </div>
-    );
+            <div {...this.props} className={this.getClassNames()}>
+                {this.renderContentList('assets')}
+                {this.renderDropzones()}
+            </div>
+        );
     }
 }
 

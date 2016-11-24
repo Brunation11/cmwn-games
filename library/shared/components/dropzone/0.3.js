@@ -34,7 +34,11 @@ class Dropzone extends skoash.Component {
     }
 
     getCorners(el) {
-        var top, left, width, height, corners = [];
+        var top;
+        var left;
+        var width;
+        var height;
+        var corners = [];
 
         left = 0;
         top = 0;
@@ -50,7 +54,7 @@ class Dropzone extends skoash.Component {
             top += el.offsetTop || 0;
             el = el.offsetParent;
         }
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             corners.push({
                 x: left + width * (i === 1 || i === 2 ? 1 : 0),
                 y: top + height * (i > 1 ? 1 : 0),
@@ -100,7 +104,8 @@ class Dropzone extends skoash.Component {
     }
 
     loadDragNDropData(ref, key) {
-        var dropzone, draggable;
+        var dropzone;
+        var draggable;
         _.forIn(this.refs, (ref2, key2) => {
             if (key2.indexOf('draggable-') === -1) return;
             if (this.refs[key] && ref2.props.message === ref.ref) {
@@ -137,7 +142,8 @@ class Dropzone extends skoash.Component {
     }
 
     dropRespond(draggable, corners) {
-        var self = this, isInBounds;
+        var self = this;
+        var isInBounds;
         isInBounds = self.dropzones.some((dropzone, key) => {
             var dropzoneRef = self.refs[`dropzone-${key}`];
             if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
@@ -154,7 +160,8 @@ class Dropzone extends skoash.Component {
         var dropzoneRef;
         if (this.refs && this.refs[`dropzone-${dropzoneKey}`]) {
             dropzoneRef = this.refs[`dropzone-${dropzoneKey}`];
-            if (!dropzoneRef.props.answers || dropzoneRef.props.answers.indexOf(draggable.props.message) !== -1) {
+            if (!dropzoneRef.props.answers ||
+                dropzoneRef.props.answers.indexOf(draggable.props.message) !== -1) {
                 this.correct(draggable, dropzoneKey);
             } else {
                 this.incorrect(draggable);
@@ -163,7 +170,7 @@ class Dropzone extends skoash.Component {
     }
 
     outOfBounds(draggable) {
-    // respond to out of bounds drop
+        // respond to out of bounds drop
         if (this.audio.out) {
             this.audio.out.play();
         }
@@ -171,7 +178,7 @@ class Dropzone extends skoash.Component {
     }
 
     correct(draggable, dropzoneKey) {
-    // respond to correct drop
+        // respond to correct drop
         draggable.markCorrect();
 
         if (this.audio.correct && !this.state.loadingData) {
@@ -187,19 +194,21 @@ class Dropzone extends skoash.Component {
     }
 
     center(draggable, dropzoneKey) {
-        var dropzone, endX, endY;
+        var dropzone;
+        var endX;
+        var endY;
         dropzone = this.refs[`dropzone-${dropzoneKey}`];
         if (draggable.state.endX && draggable.state.endY && draggable.state.corners) {
-      // position draggable at 0 0 of screen
+            // position draggable at 0 0 of screen
             endX = draggable.state.endX - draggable.state.corners[0].x;
             endY = draggable.state.endY - draggable.state.corners[0].y;
-      // move element 0 0 to 0 0 of dropzone
+            // move element 0 0 to 0 0 of dropzone
             endX += dropzone.corners[0].x;
             endY += dropzone.corners[0].y;
-      // move element 0 0 to 50% 50% of dropzone
+            // move element 0 0 to 50% 50% of dropzone
             endX += (dropzone.corners[1].x - dropzone.corners[0].x) / 2;
             endY += (dropzone.corners[3].y - dropzone.corners[0].y) / 2;
-      // move element by 50% 50% of self
+            // move element by 50% 50% of self
             endX -= (draggable.state.corners[1].x - draggable.state.corners[0].x) / 2;
             endY -= (draggable.state.corners[3].y - draggable.state.corners[0].y) / 2;
 
@@ -218,13 +227,13 @@ class Dropzone extends skoash.Component {
     renderAssets() {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) =>
-        <asset.type
-          {...asset.props}
-          ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
-          key={key}
-          data-ref={key}
-        />
-      );
+                <asset.type
+                    {...asset.props}
+                    ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+                    key={key}
+                    data-ref={key}
+                />
+            );
         }
 
         return null;
@@ -232,27 +241,27 @@ class Dropzone extends skoash.Component {
 
     renderDropzones() {
         return this.dropzones.map((component, key) =>
-      <component.type
-        {...component.props}
-        className={this.getClassNames(component)}
-        checkComplete={false || this.props.checkComplete}
-        ref={`dropzone-${key}`}
-        key={key}
-      />
-    );
+            <component.type
+                {...component.props}
+                className={this.getClassNames(component)}
+                checkComplete={false || this.props.checkComplete}
+                ref={`dropzone-${key}`}
+                key={key}
+            />
+        );
     }
 
     renderDraggables() {
         return this.draggables.map((item, key) =>
-      <li key={key}>
-        <Draggable
-          {...item.props}
-          ref={'draggable-' + key}
-          dragRespond={this.dragRespond}
-          dropRespond={this.dropRespond}
-        />
-      </li>
-    );
+            <li key={key}>
+                <Draggable
+                    {...item.props}
+                    ref={'draggable-' + key}
+                    dragRespond={this.dragRespond}
+                    dropRespond={this.dropRespond}
+                />
+            </li>
+        );
     }
 
     getClassNames(dropzone) {
@@ -261,14 +270,14 @@ class Dropzone extends skoash.Component {
 
     render() {
         return (
-      <div>
-        {this.renderAssets()}
-        {this.renderDropzones()}
-        <ul>
-          {this.renderDraggables()}
-        </ul>
-      </div>
-    );
+            <div>
+                {this.renderAssets()}
+                {this.renderDropzones()}
+                <ul>
+                    {this.renderDraggables()}
+                </ul>
+            </div>
+        );
     }
 }
 

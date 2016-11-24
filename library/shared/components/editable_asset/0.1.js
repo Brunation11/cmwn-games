@@ -104,15 +104,19 @@ class EditableAsset extends Draggable {
     }
 
     adjustRotation(e) {
-        var rotation, deltaX, deltaY;
+        var rotation;
+        var deltaX;
+        var deltaY;
 
         if (e.targetTouches && e.targetTouches[0]) {
             e.pageX = e.targetTouches[0].pageX;
             e.pageY = e.targetTouches[0].pageY;
         }
 
-        deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) - (this.state.left + this.state.width / 2);
-        deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) - (this.state.top + this.state.height / 2);
+        deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft) -
+            (this.state.left + this.state.width / 2);
+        deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop) -
+            (this.state.top + this.state.height / 2);
 
         rotation = Math.atan2(deltaY, deltaX) + (Math.PI / 4) % (2 * Math.PI);
 
@@ -124,7 +128,8 @@ class EditableAsset extends Draggable {
     }
 
     layer() {
-        var layer, self = this;
+        var layer;
+        var self = this;
 
         layer = this.state.layer - 1;
 
@@ -160,15 +165,21 @@ class EditableAsset extends Draggable {
     }
 
     adjustScale(e) {
-        var scale, deltaX, deltaY, delta, base;
+        var scale;
+        var deltaX;
+        var deltaY;
+        var delta;
+        var base;
 
         if (e.targetTouches && e.targetTouches[0]) {
             e.pageX = e.targetTouches[0].pageX;
             e.pageY = e.targetTouches[0].pageY;
         }
 
-        deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) - (this.state.left + this.state.width / 2);
-        deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) - (this.state.top + this.state.height / 2);
+        deltaX = (e.pageX / this.state.zoom) - (this.refs.li.offsetParent.offsetLeft / this.state.zoom) -
+            (this.state.left + this.state.width / 2);
+        deltaY = (e.pageY / this.state.zoom) - (this.refs.li.offsetParent.offsetTop / this.state.zoom) -
+            (this.state.top + this.state.height / 2);
 
         delta = Math.pow(Math.pow(deltaX, 2) + Math.pow(deltaY, 2), .5);
         base = Math.pow(Math.pow(this.state.width / 2, 2) + Math.pow(this.state.height / 2, 2), .5);
@@ -206,16 +217,20 @@ class EditableAsset extends Draggable {
     }
 
     setCorners(cb) {
-        var center, distance, angle, corners = [];
+        var center;
+        var distance;
+        var angle;
+        var corners = [];
 
         center = {
             x: this.state.left + this.state.width / 2,
             y: this.state.top + this.state.height / 2,
         };
 
-        distance = Math.pow(Math.pow(this.state.width * this.state.scale / 2, 2) + Math.pow(this.state.height * this.state.scale / 2, 2), .5);
+        distance = Math.pow(Math.pow(this.state.width * this.state.scale / 2, 2) +
+            Math.pow(this.state.height * this.state.scale / 2, 2), .5);
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             angle = this.state.rotation;
             angle += (i < 2 ? 0 : Math.PI);
             angle += Math.pow(-1, i) * Math.atan2(this.state.height, this.state.width);
@@ -232,12 +247,22 @@ class EditableAsset extends Draggable {
     }
 
     getSize() {
-        var image, self = this;
+        var image;
+        var self = this;
 
         image = new Image();
 
         image.onload = () => {
-            var offset, left, top, width, height, minDim, maxDim, minScale, maxScale, scale;
+            var offset;
+            var left;
+            var top;
+            var width;
+            var height;
+            var minDim;
+            var maxDim;
+            var minScale;
+            var maxScale;
+            var scale;
 
             minDim = this.props.minDim || 40;
             maxDim = this.props.maxDim || 400;
@@ -249,11 +274,10 @@ class EditableAsset extends Draggable {
             minScale = Math.max(minDim / width, minDim / height);
             maxScale = Math.min(maxDim / width, maxDim / height, this.state.maxScale);
             scale = self.props.state && self.props.state.scale ?
-        self.props.state.scale :
-        Math.max(Math.min(self.state.scale, maxScale), minScale);
+                self.props.state.scale :
+                Math.max(Math.min(self.state.scale, maxScale), minScale);
 
-            if ((!this.state.height || !this.state.width) &&
-        (!this.state.left && !this.state.top)) {
+            if ((!this.state.height || !this.state.width) && (!this.state.left && !this.state.top)) {
                 left = (this.props.canvasWidth - width) / 2;
                 top = (this.props.canvasHeight - height) / 2;
             }
@@ -340,7 +364,8 @@ class EditableAsset extends Draggable {
     }
 
     getButtonStyle(extraRotation = 0) {
-        var style, transform = '';
+        var style;
+        var transform = '';
 
         transform += `scale(${(1 / this.state.scale)}) `;
         transform += `rotate(${(-this.state.rotation - extraRotation)}rad) `;
@@ -353,7 +378,8 @@ class EditableAsset extends Draggable {
     }
 
     getAssetStyle() {
-        var style, transform = '';
+        var style;
+        var transform = '';
 
         transform += `scale(${this.state.scale}) `;
         transform += `rotate(${this.state.rotation}rad) `;
@@ -372,7 +398,8 @@ class EditableAsset extends Draggable {
     }
 
     getButtonsStyle() {
-        var style, transform = '';
+        var style;
+        var transform = '';
 
         transform += `scale(${this.state.scale}) `;
         transform += `rotate(${this.state.rotation}rad) `;
@@ -399,55 +426,55 @@ class EditableAsset extends Draggable {
 
     renderAsset() {
         return (
-      <div
-        ref="el"
-        className="asset"
-        style={this.getAssetStyle()}
-      />
-    );
+            <div
+                ref="el"
+                className="asset"
+                style={this.getAssetStyle()}
+            />
+        );
     }
 
     renderButtons() {
         return (
-      <div
-        className="buttons"
-        style={this.getButtonsStyle()}
-      >
-        <button
-          className="delete"
-          style={this.getButtonStyle()}
-          onClick={this.delete.bind(this)}
-        />
-        <button
-          ref="rotate"
-          className="rotate"
-          style={this.getButtonStyle()}
-        />
-        <button
-          className="layer"
-          onClick={this.layer.bind(this)}
-          style={this.getButtonStyle()}
-        />
-        <button
-          ref="scale"
-          className="scale"
-          style={this.getButtonStyle(1.5708)}
-        />
-      </div>
-    );
+            <div
+                className="buttons"
+                style={this.getButtonsStyle()}
+            >
+                <button
+                    className="delete"
+                    style={this.getButtonStyle()}
+                    onClick={this.delete.bind(this)}
+                />
+                <button
+                    ref="rotate"
+                    className="rotate"
+                    style={this.getButtonStyle()}
+                />
+                <button
+                    className="layer"
+                    onClick={this.layer.bind(this)}
+                    style={this.getButtonStyle()}
+                />
+                <button
+                    ref="scale"
+                    className="scale"
+                    style={this.getButtonStyle(1.5708)}
+                />
+            </div>
+        );
     }
 
     render() {
         return (
-      <li
-        ref="li"
-        className={this.getClasses()}
-        onClick={this.activate.bind(this)}
-      >
-        {this.renderAsset()}
-        {this.renderButtons()}
-      </li>
-    );
+            <li
+                ref="li"
+                className={this.getClasses()}
+                onClick={this.activate.bind(this)}
+            >
+                {this.renderAsset()}
+                {this.renderButtons()}
+            </li>
+        );
     }
 }
 
