@@ -7,8 +7,8 @@ export default function (props, ref, key) {
             id="info"
         >
             <skoash.MediaSequence
-              ref="audio-sequence"
-              checkComplete={true}
+                ref="audio-sequence"
+                checkComplete={true}
             >
                 <skoash.Audio
                     ref="vo"
