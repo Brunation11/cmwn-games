@@ -41,10 +41,10 @@ class TriangleScreenComponent extends skoash.Screen {
 export default function (props, ref, key) {
     return (
         <TriangleScreenComponent
-          {...props}
-          ref={ref}
-          key={key}
-          id="triangle"
+            {...props}
+            ref={ref}
+            key={key}
+            id="triangle"
         >
             <skoash.Component className="center">
                 <skoash.Component className="frame">
