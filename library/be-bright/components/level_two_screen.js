@@ -14,33 +14,33 @@ export default function (props, ref, key) {
         ],
         revealList: [
             <skoash.Component ref="level-up" className="labyrinth-frame level-up">
-        <skoash.Image className="eco" src="media/_images/mr.eco.png" />
-        <div className="copy">
-          <p>
-            <h2>Level up!</h2>
-            <h2>Level up!</h2>
-            <span>ECO-TIP:</span> Use notes to create reminders<br/>
-            to help your family remember to flip that switch.
-          </p>
-        </div>
-      </skoash.Component>,
+                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <div className="copy">
+                    <p>
+                        <h2>Level up!</h2>
+                        <h2>Level up!</h2>
+                        <span>ECO-TIP:</span> Use notes to create reminders<br/>
+                        to help your family remember to flip that switch.
+                    </p>
+                </div>
+            </skoash.Component>,
             <skoash.Component ref="try-again" className="labyrinth-frame try-again">
-        <skoash.Image className="eco" src="media/_images/mr.eco.png" />
-        <div className="copy">
-          <p>
-            Sorry,<br/>
-            Try Again!
-          </p>
-          <button
-            onClick={function () {
-                skoash.trigger('updateState', {
-                    path: 'closeReveal',
-                    data: true,
-                });
-            }}
-          />
-        </div>
-      </skoash.Component>
+                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <div className="copy">
+                    <p>
+                        Sorry,<br/>
+                        Try Again!
+                    </p>
+                    <button
+                        onClick={function () {
+                            skoash.trigger('updateState', {
+                                path: 'closeReveal',
+                                data: true,
+                            });
+                        }}
+                    />
+                </div>
+            </skoash.Component>
         ],
     });
 }
