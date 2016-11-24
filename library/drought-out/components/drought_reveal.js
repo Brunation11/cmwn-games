@@ -13,12 +13,12 @@ class DroughtReveal extends Reveal {
 
     renderReveal() {
         return (
-      <div className="reveal">
-        <ul>
-          {super.renderList()}
-        </ul>
-      </div>
-    );
+            <div className="reveal">
+                <ul>
+                    {super.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 
