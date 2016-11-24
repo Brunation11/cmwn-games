@@ -45,7 +45,10 @@ class CustomCursorScreen extends skoash.Screen {
     }
 
     renderCursor() {
-        var cursor, className, ref, props = [];
+        var cursor;
+        var className;
+        var ref;
+        var props = [];
         cursor = this.props.cursor;
         className = ref = 'cursor';
         if (cursor && cursor.props) {
@@ -54,25 +57,25 @@ class CustomCursorScreen extends skoash.Screen {
             ref = cursor.ref || ref;
         }
         return (
-      <div
-        {...props}
-        ref={ref}
-        className={className}
-        style={{
-            left: this.state.cursorLeft,
-            top: this.state.cursorTop,
-        }}
-      />
-    );
+            <div
+                {...props}
+                ref={ref}
+                className={className}
+                style={{
+                    left: this.state.cursorLeft,
+                    top: this.state.cursorTop,
+                }}
+            />
+        );
     }
 
     renderContent() {
         return (
-      <div>
-        {this.renderCursor()}
-        {this.renderContentList()}
-      </div>
-    );
+            <div>
+                {this.renderCursor()}
+                {this.renderContentList()}
+            </div>
+        );
     }
 }
 

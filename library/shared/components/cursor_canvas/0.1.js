@@ -13,16 +13,19 @@ class CursorCanvas extends skoash.Component {
     }
 
     bootstrap() {
+        var context;
+        var image;
+        var updateCanvas;
+
         super.bootstrap();
-        var context, image, updateCanvas;
 
         if (this.refs.canvas && this.refs.particle) {
             context = this.refs.canvas.getContext('2d');
             image = ReactDOM.findDOMNode(this.refs.particle);
             updateCanvas = window.setInterval(
-        this.draw.bind(this, context, image),
-        this.props.interval
-      );
+                this.draw.bind(this, context, image),
+                this.props.interval
+            );
 
             this.setState({
                 updateCanvas,
@@ -47,7 +50,12 @@ class CursorCanvas extends skoash.Component {
     }
 
     draw(context, image) {
-        var p, particle, particles, gameWidth, gameHeight, scale;
+        var p;
+        var particle;
+        var particles;
+        var gameWidth;
+        var gameHeight;
+        var scale;
 
         if (typeof this.props.particle === 'function') {
             p = this.props.particle();
@@ -75,7 +83,7 @@ class CursorCanvas extends skoash.Component {
         context.globalAlpha = 1;
         context.clearRect(0, 0, gameWidth, gameHeight);
 
-        for (var i = 0; i < particles.length; i++) {
+        for (let i = 0; i < particles.length; i++) {
             particles[i].update(context, image, p.delta);
         }
         this.setState({ particles });
@@ -83,11 +91,11 @@ class CursorCanvas extends skoash.Component {
 
     render() {
         return (
-      <div className="cursor">
-        <skoash.Image ref="particle" id="particle" src={this.props.src} hidden />
-        <canvas ref="canvas" id="canvas" width="960" height="540" />
-      </div>
-    );
+            <div className="cursor">
+                <skoash.Image ref="particle" id="particle" src={this.props.src} hidden />
+                <canvas ref="canvas" id="canvas" width="960" height="540" />
+            </div>
+        );
     }
 }
 

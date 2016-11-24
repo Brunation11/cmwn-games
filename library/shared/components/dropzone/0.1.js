@@ -29,20 +29,20 @@ class Dropzone extends skoash.Component {
     }
 
     bootstrap() {
-        super.bootstrap();
         var answerRefs = [];
         var self = this;
 
-        this.props.dropzones.forEach((item, key) => {
+        super.bootstrap();
+
+        this.props.dropzones.forEach(item => {
             if (item.props.answers) {
-                answerRefs = answerRefs.concat(item.props.answers.map(item => { return '' + item; }));
+                answerRefs = answerRefs.concat(item.props.answers.map(answer => { return '' + answer; }));
             }
         });
 
         if (answerRefs.length > 0) {
             self.requireForComplete.forEach(item => {
-                if (answerRefs.indexOf(item) === -1)
-                    self.refs[item].complete();
+                if (answerRefs.indexOf(item) === -1) self.refs[item].complete();
             });
         }
 
@@ -58,8 +58,7 @@ class Dropzone extends skoash.Component {
 
         if (this.answerRefs.length > 0) {
             this.requireForComplete.forEach(item => {
-                if (this.answerRefs.indexOf(item) === -1)
-                    this.refs[item].complete();
+                if (this.answerRefs.indexOf(item) === -1) this.refs[item].complete();
             });
         }
     }
@@ -77,7 +76,11 @@ class Dropzone extends skoash.Component {
     }
 
     getCorners(el) {
-        var top, left, width, height, corners = [];
+        var top;
+        var left;
+        var width;
+        var height;
+        var corners = [];
 
         left = 0;
         top = 0;
@@ -94,7 +97,7 @@ class Dropzone extends skoash.Component {
             el = el.offsetParent;
         }
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             corners.push({
                 x: left + width * (i === 1 || i === 2 ? 1 : 0),
                 y: top + height * (i > 1 ? 1 : 0),
@@ -124,7 +127,8 @@ class Dropzone extends skoash.Component {
     }
 
     dropRespond(message, corners) {
-        var self = this, isInBounds;
+        var self = this;
+        var isInBounds;
 
         isInBounds = self.props.dropzones.some((dropzone, key) => {
             var dropzoneRef = self.refs[`dropzone-${key}`];
@@ -185,13 +189,13 @@ class Dropzone extends skoash.Component {
     renderAssets() {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) =>
-        <skoash.Audio
-          {...asset.props}
-          ref={asset.props['data-ref'] || ('asset-' + key)}
-          key={key}
-          data-ref={key}
-        />
-      );
+                <skoash.Audio
+                    {...asset.props}
+                    ref={asset.props['data-ref'] || ('asset-' + key)}
+                    key={key}
+                    data-ref={key}
+                />
+            );
         }
 
         return null;
@@ -199,32 +203,32 @@ class Dropzone extends skoash.Component {
 
     renderDropzones() {
         return this.props.dropzones.map((component, key) =>
-      <component.type
-        {...component.props}
-        className={this.getClass()}
-        ref={`dropzone-${key}`}
-        key={key}
-        checkComplete={false}
-      />
-    );
+            <component.type
+                {...component.props}
+                className={this.getClass()}
+                ref={`dropzone-${key}`}
+                key={key}
+                checkComplete={false}
+            />
+        );
     }
 
     renderDraggables(draggables) {
         return this.props[draggables].map((item, key) => {
             var message = item.props.message || key;
             return (
-        <li key={key} className={this.getDraggableClass(message)}>
-          <Draggable
-            {...item.props}
-            ref={message}
-            message={message}
-            key={key}
-            dragRespond={this.dragRespond}
-            dropRespond={this.dropRespond}
-            checkComplete={false}
-          />
-        </li>
-      );
+                <li key={key} className={this.getDraggableClass(message)}>
+                    <Draggable
+                        {...item.props}
+                        ref={message}
+                        message={message}
+                        key={key}
+                        dragRespond={this.dragRespond}
+                        dropRespond={this.dropRespond}
+                        checkComplete={false}
+                    />
+                </li>
+            );
         });
     }
 
@@ -263,7 +267,9 @@ class Dropzone extends skoash.Component {
     }
 
     render() {
-        var draggablesLeft, draggablesRight, left;
+        var draggablesLeft;
+        var draggablesRight;
+        var left;
 
         left = this.props.draggablesLeft ? 'draggablesLeft' : 'draggables';
         if (this.props[left]) {
@@ -281,13 +287,13 @@ class Dropzone extends skoash.Component {
       );
         }
         return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        {draggablesLeft}
-        {this.renderDropzones()}
-        {draggablesRight}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                {draggablesLeft}
+                {this.renderDropzones()}
+                {draggablesRight}
+            </div>
+        );
     }
 }
 

@@ -51,7 +51,8 @@ class Catch extends skoash.Component {
             var zoom = state.scale;
             var edges = this.getEdges(this.bucketNode);
             var bucketWidth = edges.right - edges.left;
-            var leftBound = this.bucketNode.offsetParent ? this.bucketNode.offsetParent.offsetWidth - bucketWidth : 0;
+            var leftBound = this.bucketNode.offsetParent ?
+                this.bucketNode.offsetParent.offsetWidth - bucketWidth : 0;
 
             this.setState({
                 bucketTop: edges.top,
@@ -97,7 +98,8 @@ class Catch extends skoash.Component {
     }
 
     selectCatchable(catchableNode, key) {
-        if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableNode.canCatch()) return;
+        if (!this.state.started || this.state.paused || !this.state.canCatch ||
+            !catchableNode.canCatch()) return;
         catchableNode.markCaught();
         if (catchableNode.props.isCorrect) {
             this.correct(catchableNode, key);
@@ -117,8 +119,8 @@ class Catch extends skoash.Component {
     }
 
     checkCollisions() {
-        if (!this.state.started || this.state.paused) return;
         var bucketRect = this.bucketNode.getBoundingClientRect();
+        if (!this.state.started || this.state.paused) return;
         _.forEach(this.catchableNodes, function (val, key) {
             if (this.isColliding(bucketRect, val.getBoundingClientRect())) {
                 this.selectCatchable(this.refs[`${key}-catchable`], key);
@@ -135,7 +137,10 @@ class Catch extends skoash.Component {
     }
 
     getEdges(el) {
-        var top, left, width, height;
+        var top;
+        var left;
+        var width;
+        var height;
 
         left = 0;
         top = 0;
@@ -174,22 +179,22 @@ class Catch extends skoash.Component {
 
     renderBucket() {
         return (
-      <this.props.bucket.type
-        {...this.props.bucket.props}
-        ref="bucket"
-        style={this.getStyle()}
-      />
-    );
+            <this.props.bucket.type
+                {...this.props.bucket.props}
+                ref="bucket"
+                style={this.getStyle()}
+            />
+        );
     }
 
     renderCatchables() {
         return this.props.catchables.map((item, key) =>
-      <Catchable
-        {...item.props}
-        key={key}
-        ref={`${key}-catchable`}
-      />
-    );
+            <Catchable
+                {...item.props}
+                key={key}
+                ref={`${key}-catchable`}
+            />
+        );
     }
 
     getClassNames() {
@@ -198,13 +203,13 @@ class Catch extends skoash.Component {
 
     render() {
         return (
-      <div ref="catch-component" className={this.getClassNames()}>
-        <ul className="items">
-          {this.renderCatchables()}
-        </ul>
-        {this.renderBucket()}
-      </div>
-    );
+            <div ref="catch-component" className={this.getClassNames()}>
+                <ul className="items">
+                    {this.renderCatchables()}
+                </ul>
+                {this.renderBucket()}
+            </div>
+        );
     }
 
 }

@@ -34,7 +34,11 @@ class Dropzone extends skoash.Component {
     }
 
     getCorners(el) {
-        var top, left, width, height, corners = [];
+        var top;
+        var left;
+        var width;
+        var height;
+        var corners = [];
 
         left = 0;
         top = 0;
@@ -51,7 +55,7 @@ class Dropzone extends skoash.Component {
             el = el.offsetParent;
         }
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             corners.push({
                 x: left + width * (i === 1 || i === 2 ? 1 : 0),
                 y: top + height * (i > 1 ? 1 : 0),
@@ -67,7 +71,9 @@ class Dropzone extends skoash.Component {
     }
 
     start() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
         super.start();
         this.prepareDropzones();
 
@@ -101,7 +107,9 @@ class Dropzone extends skoash.Component {
     }
 
     loadDragNDropData() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
         _.forIn(self.loadData, (ref1, key1) => {
             _.forIn(self.refs, (ref2, key2) => {
                 if (key2.indexOf('draggable-') === -1) return;
@@ -117,7 +125,9 @@ class Dropzone extends skoash.Component {
     }
 
     loadMultiAsnwerData() {
-        var self = this, dropzone, draggable;
+        var self = this;
+        var dropzone;
+        var draggable;
         _.forIn(self.loadData, (ref1, key1) => {
             dropzone = self.refs[key1];
             dropzone.setState({content: []});
@@ -141,7 +151,8 @@ class Dropzone extends skoash.Component {
     }
 
     dropRespond(draggable, corners) {
-        var self = this, isInBounds;
+        var self = this;
+        var isInBounds;
         isInBounds = self.dropzones.some((dropzone, key) => {
             var dropzoneRef = self.refs[`dropzone-${key}`];
             if (skoash.util.doIntersect(corners, dropzoneRef.corners)) {
@@ -187,13 +198,13 @@ class Dropzone extends skoash.Component {
     renderAssets() {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) =>
-        <asset.type
-          {...asset.props}
-          ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
-          key={key}
-          data-ref={key}
-        />
-      );
+                <asset.type
+                    {...asset.props}
+                    ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+                    key={key}
+                    data-ref={key}
+                />
+            );
         }
 
         return null;
@@ -201,27 +212,27 @@ class Dropzone extends skoash.Component {
 
     renderDropzones() {
         return this.dropzones.map((component, key) =>
-      <component.type
-        {...component.props}
-        className={this.getClassNames()}
-        checkComplete={false || this.props.checkComplete}
-        ref={`dropzone-${key}`}
-        key={key}
-      />
-    );
+            <component.type
+                {...component.props}
+                className={this.getClassNames()}
+                checkComplete={false || this.props.checkComplete}
+                ref={`dropzone-${key}`}
+                key={key}
+            />
+        );
     }
 
     renderDraggables() {
         return this.draggables.map((item, key) =>
-      <li key={key}>
-        <Draggable
-          {...item.props}
-          ref={'draggable-' + key}
-          dragRespond={this.dragRespond}
-          dropRespond={this.dropRespond}
-        />
-      </li>
-    );
+            <li key={key}>
+                <Draggable
+                    {...item.props}
+                    ref={'draggable-' + key}
+                    dragRespond={this.dragRespond}
+                    dropRespond={this.dropRespond}
+                />
+            </li>
+        );
     }
 
     getClassNames() {
@@ -230,14 +241,14 @@ class Dropzone extends skoash.Component {
 
     render() {
         return (
-      <div>
-        {this.renderAssets()}
-        {this.renderDropzones()}
-        <ul>
-          {this.renderDraggables()}
-        </ul>
-      </div>
-    );
+            <div>
+                {this.renderAssets()}
+                {this.renderDropzones()}
+                <ul>
+                    {this.renderDraggables()}
+                </ul>
+            </div>
+        );
     }
 }
 

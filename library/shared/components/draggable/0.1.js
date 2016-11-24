@@ -45,7 +45,15 @@ class Draggable extends skoash.Component {
     }
 
     startEvent(e, cb) {
-        var pageX, pageY, rect, startX, startY, endX, endY, grabX, grabY;
+        var pageX;
+        var pageY;
+        var rect;
+        var startX;
+        var startY;
+        var endX;
+        var endY;
+        var grabX;
+        var grabY;
 
         if (e.target !== this.refs.el) return;
         if (!this.shouldDrag()) return;
@@ -188,7 +196,12 @@ class Draggable extends skoash.Component {
     }
 
     setCorners() {
-        var top, left, width, height, el, corners = [];
+        var top;
+        var left;
+        var width;
+        var height;
+        var el;
+        var corners = [];
 
         left = 0;
         top = 0;
@@ -209,7 +222,7 @@ class Draggable extends skoash.Component {
         left += ((this.state.endX - this.state.startX) / this.state.zoom);
         top += ((this.state.endY - this.state.startY) / this.state.zoom);
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             corners.push({
                 x: left + width * (i === 1 || i === 2 ? 1 : 0),
                 y: top + height * (i > 1 ? 1 : 0),
@@ -247,7 +260,8 @@ class Draggable extends skoash.Component {
     }
 
     getStyle() {
-        var x, y;
+        var x;
+        var y;
 
         x = ((this.state.endX - this.state.startX) / this.state.zoom);
         y = ((this.state.endY - this.state.startY) / this.state.zoom);
@@ -271,14 +285,14 @@ class Draggable extends skoash.Component {
 
     render() {
         return (
-      <div
-        ref="el"
-        className={this.getClassNames()}
-        style={this.getStyle()}
-      >
-        {this.renderContentList()}
-      </div>
-    );
+            <div
+                ref="el"
+                className={this.getClassNames()}
+                style={this.getStyle()}
+            >
+                {this.renderContentList()}
+            </div>
+        );
     }
 }
 

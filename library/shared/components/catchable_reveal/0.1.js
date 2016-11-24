@@ -31,7 +31,8 @@ class CatchableReveal extends skoash.Component {
         var revealMessage;
         this.refs.catch.setState({canCatch: false});
         this.playMedia('correct');
-        revealMessage = typeof this.props.getMessage === 'function' ? this.props.getMessage.call(this, message) : message;
+        revealMessage = typeof this.props.getMessage === 'function' ?
+            this.props.getMessage.call(this, message) : message;
         this.refs.reveal.open(revealMessage);
     }
 
@@ -48,13 +49,13 @@ class CatchableReveal extends skoash.Component {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) => {
                 return (
-          <skoash.Audio
-            {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
-        );
+                    <skoash.Audio
+                        {...asset.props}
+                        ref={asset.props['data-ref'] || ('asset-' + key)}
+                        key={key}
+                        data-ref={key}
+                    />
+                );
             });
         }
 
@@ -63,25 +64,25 @@ class CatchableReveal extends skoash.Component {
 
     renderCatchable() {
         return (
-      <Catch
-        ref="catch"
-        bucket={this.props.bucket}
-        catchables={this.props.catchables}
-        onCorrect={this.onCorrect.bind(this)}
-        isComplete={true}
-      />
-    );
+            <Catch
+                ref="catch"
+                bucket={this.props.bucket}
+                catchables={this.props.catchables}
+                onCorrect={this.onCorrect.bind(this)}
+                isComplete={true}
+            />
+        );
     }
 
     renderReveal() {
         return (
-      <Reveal
-        ref="reveal"
-        list={this.props.revealList}
-        assets={this.props.revealAssets}
-        closeRespond={this.closeRespond.bind(this)}
-      />
-    );
+            <Reveal
+                ref="reveal"
+                list={this.props.revealList}
+                assets={this.props.revealAssets}
+                closeRespond={this.closeRespond.bind(this)}
+            />
+        );
     }
 
     getClasses() {
@@ -94,12 +95,12 @@ class CatchableReveal extends skoash.Component {
 
     render() {
         return (
-      <div className={'catchable-reveal' + this.getClasses()}>
-        {this.renderAssets()}
-        {this.renderCatchable()}
-        {this.renderReveal()}
-      </div>
-    );
+            <div className={'catchable-reveal' + this.getClasses()}>
+                {this.renderAssets()}
+                {this.renderCatchable()}
+                {this.renderReveal()}
+            </div>
+        );
     }
 }
 

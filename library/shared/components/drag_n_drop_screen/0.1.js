@@ -22,7 +22,10 @@ class DragNDropScreen extends skoash.Screen {
     }
 
     correctRespond(draggable, dropzoneKey) {
-        var dropzone, complete = true, content, totalComplete = 0;
+        var dropzone;
+        var complete = true;
+        var content;
+        var totalComplete = 0;
         dropzone = this.refs['dropzone-reveal'].refs.dropzone.refs[`dropzone-${dropzoneKey}`];
 
         if (this.props.centerOnCorrect) {
@@ -69,33 +72,35 @@ class DragNDropScreen extends skoash.Screen {
     }
 
     centerOnCorrect(draggable, dropzone) {
-        var endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x) + ((draggable.state.corners[1].x - draggable.state.corners[0].x) / 2);
-        var endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y) + ((draggable.state.corners[3].y - draggable.state.corners[0].y) / 2);
+        var endX = (draggable.state.endX - draggable.state.corners[0].x + dropzone.corners[0].x) +
+            ((draggable.state.corners[1].x - draggable.state.corners[0].x) / 2);
+        var endY = (draggable.state.endY - draggable.state.corners[0].y + dropzone.corners[0].y) +
+            ((draggable.state.corners[3].y - draggable.state.corners[0].y) / 2);
         draggable.setEnd(endX, endY);
     }
 
 
     renderContent() {
         return (
-      <div>
-        {this.renderContentList()}
-        <DropzoneReveal
-          ref="dropzone-reveal"
-          assets={this.props.assets}
-          dropzoneAssets={this.props.dropzoneAssets}
-          dragRespond={this.dragRespond}
-          correctRespond={this.correctRespond}
-          dropzones={this.props.dropzones}
-          dropzoneList={this.props.dropzoneList}
-          revealList={this.props.revealList}
-          revealAssets={this.props.revealAssets}
-          checkComplete={this.props.checkComplete}
-          manualReveal={this.props.manualReveal}
-          answers={this.props.answers}
-        />
-        {this.renderContentList('afterDropzoneList')}
-      </div>
-    );
+            <div>
+                {this.renderContentList()}
+                <DropzoneReveal
+                    ref="dropzone-reveal"
+                    assets={this.props.assets}
+                    dropzoneAssets={this.props.dropzoneAssets}
+                    dragRespond={this.dragRespond}
+                    correctRespond={this.correctRespond}
+                    dropzones={this.props.dropzones}
+                    dropzoneList={this.props.dropzoneList}
+                    revealList={this.props.revealList}
+                    revealAssets={this.props.revealAssets}
+                    checkComplete={this.props.checkComplete}
+                    manualReveal={this.props.manualReveal}
+                    answers={this.props.answers}
+                />
+                {this.renderContentList('afterDropzoneList')}
+            </div>
+        );
     }
 }
 

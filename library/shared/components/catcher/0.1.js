@@ -60,7 +60,8 @@ class Catcher extends Catch {
     }
 
     isColliding(bucketRect, catchRect) {
-        var bucketCorners = [], catchableCorners = [];
+        var bucketCorners = [];
+        var catchableCorners = [];
 
         for (let i = 0; i < 4; i++) {
             bucketCorners.push({
@@ -80,7 +81,8 @@ class Catcher extends Catch {
     }
 
     selectCatchable(bucketRef, catchableRef) {
-        if (!this.state.started || this.state.paused || !this.state.canCatch || !this.props.canCatch || !catchableRef.canCatch()) return;
+        if (!this.state.started || this.state.paused || !this.state.canCatch ||
+            !this.props.canCatch || !catchableRef.canCatch()) return;
         catchableRef.markCaught();
         if (catchableRef.props.message === bucketRef.props.message) {
             this.correct(bucketRef, catchableRef);
@@ -105,22 +107,22 @@ class Catcher extends Catch {
 
     renderBucket() {
         return _.map([].concat(this.props.bucket), (bucket, key) =>
-      <bucket.type
-        {...bucket.props}
-        ref={'buckets-' + key}
-        style={this.state.styles[key]}
-        key={key}
-      />
-    );
+            <bucket.type
+                {...bucket.props}
+                ref={'buckets-' + key}
+                style={this.state.styles[key]}
+                key={key}
+            />
+        );
     }
 
     render() {
         return (
-      <div ref="catcher" className={this.getClassNames()}>
-        {this.renderContentList('assets')}
-        {this.renderBucket()}
-      </div>
-    );
+            <div ref="catcher" className={this.getClassNames()}>
+                {this.renderContentList('assets')}
+                {this.renderBucket()}
+            </div>
+        );
     }
 }
 

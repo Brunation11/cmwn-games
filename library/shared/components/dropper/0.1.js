@@ -21,7 +21,9 @@ class Dropper extends Draggable {
     }
 
     next(on) {
-        var items, index, classes;
+        var items;
+        var index;
+        var classes;
 
         if (!this.state.started || (!this.props.on && !on) || this.props.gameState.paused) return;
 
@@ -37,7 +39,10 @@ class Dropper extends Draggable {
             itemCount: index + 1,
         }, () => {
             var timeoutFunction = i => {
-                var itemRef, itemDOM, itemEndXs, onTransitionEnd;
+                var itemRef;
+                var itemDOM;
+                var itemEndXs;
+                var onTransitionEnd;
                 itemRef = this.refs['items-' + index];
                 if (itemRef) {
                     itemRef.addClassName(this.props.prepClasses[i]);
@@ -102,7 +107,8 @@ class Dropper extends Draggable {
     }
 
     getItemStyle(key, style) {
-        var endX, x;
+        var endX;
+        var x;
 
         endX = this.state.itemEndXs[key] || this.state.endX;
         x = ((endX - this.state.startX) / this.state.zoom);
@@ -126,55 +132,55 @@ class Dropper extends Draggable {
         return classNames('dropper', this.state.direction, super.getClassNames());
     }
 
-  /*
-   * shortid is intentionally not used for key here because we want to make sure
-   * that the element is transitioned and not replaced.
-   */
+    /*
+     * shortid is intentionally not used for key here because we want to make sure
+     * that the element is transitioned and not replaced.
+     */
     renderItems() {
         return _.map(this.state.items, (item, key) => {
             var ref = 'items-' + key;
             if (!item) return null;
             return (
-        <item.type
-          {...item.props}
-          style={this.getItemStyle(key, item.props.style)}
-          className={`${item.props.className} ${this.state.classes[key]}`}
-          data-ref={ref}
-          data-message={item.props.message}
-          ref={ref}
-          key={key}
-        />
-      );
+                <item.type
+                    {...item.props}
+                    style={this.getItemStyle(key, item.props.style)}
+                    className={`${item.props.className} ${this.state.classes[key]}`}
+                    data-ref={ref}
+                    data-message={item.props.message}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
     renderBin() {
         return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
     }
 
     render() {
         return (
-      <div
-        className={this.getClassNames()}
-      >
-        {this.renderBin()}
-        <div
-          ref="el"
-          className="el"
-          style={this.getStyle()}
-        >
-          {this.renderContentList()}
-        </div>
-        <ul className="items">
-          {this.renderItems()}
-        </ul>
-      </div>
-    );
+            <div
+                className={this.getClassNames()}
+            >
+                {this.renderBin()}
+                <div
+                    ref="el"
+                    className="el"
+                    style={this.getStyle()}
+                >
+                    {this.renderContentList()}
+                </div>
+                <ul className="items">
+                    {this.renderItems()}
+                </ul>
+            </div>
+        );
     }
 }
 
@@ -182,12 +188,12 @@ Dropper.defaultProps = _.defaults({
     prepClasses: ['ready', 'set', 'go'],
     prepTimeout: 1000,
     bin: (
-    <Randomizer
-      bin={[
-          <Catchable />,
-      ]}
-    />
-  ),
+        <Randomizer
+            bin={[
+                <Catchable />,
+            ]}
+        />
+    ),
     onStart: function () {
         this.next();
     },

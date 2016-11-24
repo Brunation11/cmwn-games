@@ -39,7 +39,8 @@ class Catcher extends Catch {
     }
 
     selectCatchable(bucketRef, catchableRef) {
-        if (!this.state.started || this.state.paused || !this.state.canCatch || !catchableRef.canCatch()) return;
+        if (!this.state.started || this.state.paused ||
+            !this.state.canCatch || !catchableRef.canCatch()) return;
         catchableRef.markCaught();
         if (catchableRef.props.message === bucketRef.props.message) {
             this.correct(bucketRef, catchableRef);
@@ -60,22 +61,22 @@ class Catcher extends Catch {
 
     renderBucket() {
         return _.map([].concat(this.props.bucket), (bucket, key) =>
-      <bucket.type
-        {...bucket.props}
-        ref={'buckets-' + key}
-        style={this.getStyle()}
-        key={key}
-      />
-    );
+            <bucket.type
+                {...bucket.props}
+                ref={'buckets-' + key}
+                style={this.getStyle()}
+                key={key}
+            />
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderContentList('assets')}
-        {this.renderBucket()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderContentList('assets')}
+                {this.renderBucket()}
+            </div>
+        );
     }
 }
 

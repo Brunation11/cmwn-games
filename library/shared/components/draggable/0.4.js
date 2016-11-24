@@ -42,7 +42,13 @@ class Draggable extends skoash.Component {
     }
 
     startEvent(e, cb) {
-        var rect, startX, startY, endX, endY, grabX, grabY;
+        var rect;
+        var startX;
+        var startY;
+        var endX;
+        var endY;
+        var grabX;
+        var grabY;
 
         if (e.target !== this.DOMNode) return;
         if (!this.shouldDrag()) return;
@@ -142,7 +148,9 @@ class Draggable extends skoash.Component {
     }
 
     returnToStart() {
-        var endX, endY, doReturn;
+        var endX;
+        var endY;
+        var doReturn;
 
         if (this.props.stayOnCorrect && this.state.correct) {
             endX = this.state.endX;
@@ -214,7 +222,9 @@ class Draggable extends skoash.Component {
     }
 
     getStyle() {
-        var x, y, transform;
+        var x;
+        var y;
+        var transform;
 
         x = this.state.endX - this.state.startX;
         y = this.state.endY - this.state.startY;
@@ -236,13 +246,13 @@ class Draggable extends skoash.Component {
 
     render() {
         return (
-      <div
-        className={this.getClassNames()}
-        data-message={this.props.message}
-        style={this.getStyle()}
-        children={this.props.children}
-      />
-    );
+            <div
+                className={this.getClassNames()}
+                data-message={this.props.message}
+                style={this.getStyle()}
+                children={this.props.children}
+            />
+        );
     }
 }
 

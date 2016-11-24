@@ -13,9 +13,11 @@ class Cannon extends skoash.Component {
     }
 
     bootstrap() {
+        var list;
+
         super.bootstrap();
 
-        var list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+        list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
 
         this.setState({
             list
@@ -28,7 +30,8 @@ class Cannon extends skoash.Component {
     }
 
     next() {
-        var classes, list;
+        var classes;
+        var list;
         classes = this.state.classes;
         list = this.state.list;
         if (this.props.reverseReload) {
@@ -79,21 +82,21 @@ class Cannon extends skoash.Component {
 
     getClass(key, li) {
         return classNames(
-      'ammo',
-      li.props.className,
-      this.state.classes[key]
-    );
+            'ammo',
+            li.props.className,
+            this.state.classes[key]
+        );
     }
 
     renderBin() {
         if (!this.props.bin) return null;
 
         return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
     }
 
     renderAmmo() {
@@ -102,14 +105,14 @@ class Cannon extends skoash.Component {
             var ref;
             ref = li.ref || li.props['data-ref'] || key;
             return (
-        <li.type
-          {...li.props}
-          ref={ref}
-          data-ref={ref}
-          key={key}
-          className={this.getClass(key, li)}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    ref={ref}
+                    data-ref={ref}
+                    key={key}
+                    className={this.getClass(key, li)}
+                />
+            );
         });
     }
 
@@ -117,19 +120,19 @@ class Cannon extends skoash.Component {
         if (!this.props.launchButton) return;
 
         return (
-      <div className="launch-button" onClick={this.fire} />
-    );
+            <div className="launch-button" onClick={this.fire} />
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderBin()}
-        <div className="ammo-container" />
-        {this.renderAmmo()}
-        {this.renderLaunchButton()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderBin()}
+                <div className="ammo-container" />
+                {this.renderAmmo()}
+                {this.renderLaunchButton()}
+            </div>
+        );
     }
 }
 

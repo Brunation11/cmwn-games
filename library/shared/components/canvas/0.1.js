@@ -35,7 +35,9 @@ class Canvas extends skoash.Component {
     }
 
     getItems() {
-        var items, messages, self = this;
+        var items;
+        var messages;
+        var self = this;
 
         items = this.state.items.map((item, key) => {
             var state;
@@ -108,14 +110,14 @@ class Canvas extends skoash.Component {
 
     setItems(message) {
         if (message) {
-      /*
-       *
-       * This makes sure the EditableAssets get cleared.
-       *
-       * This prevents the new assets from inheriting
-       * state from the old assets.
-       *
-       */
+            /*
+             *
+             * This makes sure the EditableAssets get cleared.
+             *
+             * This prevents the new assets from inheriting
+             * state from the old assets.
+             *
+             */
             this.setState({
                 background: null,
                 items: [],
@@ -133,7 +135,10 @@ class Canvas extends skoash.Component {
     }
 
     addItem(asset, cb) {
-        var items, messages, index, count;
+        var items;
+        var messages;
+        var index;
+        var count;
 
         if (!asset) return;
 
@@ -278,7 +283,8 @@ class Canvas extends skoash.Component {
         });
 
         this.state[type + 's'].map((item, key) => {
-            var oldLayer, newLayer;
+            var oldLayer;
+            var newLayer;
 
             oldLayer = this.refs[type + '-' + key].state.layer;
             newLayer = (type === 'message') ? 10000 : 1000;
@@ -292,22 +298,22 @@ class Canvas extends skoash.Component {
         var self = this;
 
         return (
-      !self.refs[type + '-' + key].state.corners.length ||
-      (
-        self.isInBounds(key, type) && (
-          self.refs[type + '-' + key].state.can_overlap ||
-          !self.state[type + 's'].some((item, index) =>
-            key !== index &&
-            !self.refs[type + '-' + index].state.can_overlap &&
-            self.refs[type + '-' + index].state.corners.length &&
-            skoash.util.doIntersect(
-              self.refs[type + '-' + key].state.corners,
-              self.refs[type + '-' + index].state.corners
+            !self.refs[type + '-' + key].state.corners.length ||
+            (
+                self.isInBounds(key, type) && (
+                    self.refs[type + '-' + key].state.can_overlap ||
+                    !self.state[type + 's'].some((item, index) =>
+                        key !== index &&
+                        !self.refs[type + '-' + index].state.can_overlap &&
+                        self.refs[type + '-' + index].state.corners.length &&
+                        skoash.util.doIntersect(
+                            self.refs[type + '-' + key].state.corners,
+                            self.refs[type + '-' + index].state.corners
+                        )
+                    )
+                )
             )
-          )
-        )
-      )
-    );
+        );
     }
 
     isInBounds(key, type) {

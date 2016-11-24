@@ -20,7 +20,8 @@ class Dropper extends Draggable {
     }
 
     next(on) {
-        var items, index;
+        var items;
+        var index;
 
         if (!this.state.started || (!this.props.on && !on)) return;
 
@@ -33,7 +34,8 @@ class Dropper extends Draggable {
             itemCount: index + 1,
         }, () => {
             var timeoutFunction = i => {
-                var itemRef, itemEndXs;
+                var itemRef;
+                var itemEndXs;
                 itemRef = this.refs['items-' + index];
                 if (itemRef) {
                     itemRef.addClassName(this.props.prepClasses[i]);
@@ -94,7 +96,8 @@ class Dropper extends Draggable {
     }
 
     getItemStyle(key) {
-        var endX, x;
+        var endX;
+        var x;
 
         endX = this.state.itemEndXs[key] || this.state.endX;
         x = ((endX - this.state.startX) / this.state.zoom);
@@ -141,31 +144,31 @@ class Dropper extends Draggable {
 
     renderBin() {
         return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
     }
 
     render() {
         return (
-      <div
-        className={this.getClassNames()}
-      >
-        {this.renderBin()}
-        <div
-          ref="el"
-          className="el"
-          style={this.getStyle()}
-        >
-          {this.renderContentList()}
-        </div>
-        <ul className="items">
-          {this.renderItems()}
-        </ul>
-      </div>
-    );
+            <div
+                className={this.getClassNames()}
+            >
+                {this.renderBin()}
+                <div
+                    ref="el"
+                    className="el"
+                    style={this.getStyle()}
+                >
+                    {this.renderContentList()}
+                </div>
+                <ul className="items">
+                    {this.renderItems()}
+                </ul>
+            </div>
+        );
     }
 }
 
@@ -173,12 +176,12 @@ Dropper.defaultProps = _.defaults({
     prepClasses: ['ready', 'set', 'go'],
     prepTimeout: 1000,
     bin: (
-    <Randomizer
-      bin={[
-          <Catchable />,
-      ]}
-    />
-  ),
+        <Randomizer
+            bin={[
+                <Catchable />,
+            ]}
+        />
+    ),
     onStart: function () {
         this.next();
     },

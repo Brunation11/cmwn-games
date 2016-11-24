@@ -24,7 +24,8 @@ class Carousel extends Selectable {
     }
 
     next() {
-        var classes, list;
+        var classes;
+        var list;
         classes = this.state.classes;
         list = this.state.list;
         list = list.concat(this.refs.bin.get(1));
@@ -47,7 +48,7 @@ class Carousel extends Selectable {
 
     bootstrap() {
         var list;
-    // skoash.Component is not the super here, but this is what we want
+        // skoash.Component is not the super here, but this is what we want
         skoash.Component.prototype.bootstrap.call(this);
 
         list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
@@ -85,34 +86,35 @@ class Carousel extends Selectable {
     renderList() {
         var list = this.state.list || this.props.list;
         return list.map((li, key) => {
-            var ref, onTransitionEnd;
+            var ref;
+            var onTransitionEnd;
             ref = li.ref || li.props['data-ref'] || key;
             onTransitionEnd = key === 0 ? this.next : null;
             return (
-        <li.type
-          {...li.props}
-          className={this.getClass(key, li)}
-          data-ref={ref}
-          data-message={li.props.message}
-          onTransitionEnd={onTransitionEnd}
-          ref={ref}
-          key={key}
-          data-key={shortid(key)}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    className={this.getClass(key, li)}
+                    data-ref={ref}
+                    data-message={li.props.message}
+                    onTransitionEnd={onTransitionEnd}
+                    ref={ref}
+                    key={key}
+                    data-key={shortid(key)}
+                />
+            );
         });
     }
 
     render() {
         var onClick = this.props.clickable ? this.state.selectFunction.bind(this) : null;
         return (
-      <div>
-        {this.renderBin()}
-        <div className={this.getClassNames()} onClick={onClick}>
-          {this.renderList()}
-        </div>
-      </div>
-    );
+            <div>
+                {this.renderBin()}
+                <div className={this.getClassNames()} onClick={onClick}>
+                    {this.renderList()}
+                </div>
+            </div>
+        );
     }
 }
 
