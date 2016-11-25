@@ -175,25 +175,25 @@ class CanvasScreen extends skoash.Screen {
 
     renderContent() {
         return (
-              <div>
-                    <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
-                    <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
-                    <Menu
-                          ref={'menu'}
-                          items={this.state.menu.items}
-                          level={0}
-                          lastLevel={1}
-                    />
-                    <div className={this.getContainerClasses()}>
-                          <Canvas
-                                ref={'canvas'}
-                                setValid={this.setValid}
-                                setHasAssets={this.setHasAssets}
-                                itemMinDim={150}
-                          />
-                    </div>
-                    <Selectable className="menu right-menu" list={this.rightMenuList} />
-              </div>
+            <div>
+                <skoash.Image className="hidden" src="media/_Frames/SK_frames_canvas.png" />
+                <skoash.Image className="hidden" src="media/_Buttons/SK_btn_friend.png" />
+                <Menu
+                      ref={'menu'}
+                      items={this.state.menu.items}
+                      level={0}
+                      lastLevel={1}
+                />
+                <div className={this.getContainerClasses()}>
+                      <Canvas
+                            ref={'canvas'}
+                            setValid={this.setValid}
+                            setHasAssets={this.setHasAssets}
+                            itemMinDim={150}
+                      />
+                </div>
+                <Selectable className="menu right-menu" list={this.rightMenuList} />
+            </div>
         );
         // move this back up below the Selectable when there is an instructional help video
         /*

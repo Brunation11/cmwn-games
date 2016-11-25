@@ -64,30 +64,30 @@ class ItemDrawerScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <ItemDrawer
-          ref="drawer"
-          scrollbarImg="./media/_Buttons/sk_btn_slider.png"
-          selectRespond={this.selectRespond.bind(this)}
-          cancelRespond={this.cancelRespond}
-          categories={this.state.opts.categories}
-          categoryName={this.state.opts.categoryName}
-          data={this.state.data}
-        />
-      </div>
-    );
+            <div>
+                <ItemDrawer
+                    ref="drawer"
+                    scrollbarImg="./media/_Buttons/sk_btn_slider.png"
+                    selectRespond={this.selectRespond.bind(this)}
+                    cancelRespond={this.cancelRespond}
+                    categories={this.state.opts.categories}
+                    categoryName={this.state.opts.categoryName}
+                    data={this.state.data}
+                />
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <ItemDrawerScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="item-drawer"
-      hideNext
-      hidePrev
-    />
-  );
+        <ItemDrawerScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="item-drawer"
+            hideNext
+            hidePrev
+        />
+    );
 }

@@ -19,11 +19,11 @@ class SendScreen extends skoash.Screen {
 
         this.rightMenuList = [
             <li className="edit-right" onClick={this.goto.bind(this, 'canvas')}>
-        <span />
-      </li>,
+                <span />
+            </li>,
             <li className="send" onClick={this.send}>
-        <span />
-      </li>
+                <span />
+            </li>
         ];
     }
 
@@ -54,38 +54,38 @@ class SendScreen extends skoash.Screen {
         });
 
         return (
-      <div>
-        <div className={classNameText.header}>
-          <span className={classNameText.yourMessageTo} />
-          <span className={classNameText.username}>{this.state.recipient.name}</span>
-          <br/>
-          <span className={classNameText.isReady} />
-          <button className={classNameText.changeFriend} onClick={changeFriendClick} />
-        </div>
-        <div className={classNameText.character}>
-          <skoash.Image className="otter" src="media/_Otter/proud-of-you2.gif" />
-          <div className="bubble">
-            Are you sure<br/>
-            you are ready to<br/>
-            send your message?
-          </div>
-        </div>
-        <div className={classNameText.gift} />
-        <Selectable className="menu right-menu" list={this.rightMenuList} />
-      </div>
-    );
+            <div>
+                <div className={classNameText.header}>
+                    <span className={classNameText.yourMessageTo} />
+                    <span className={classNameText.username}>{this.state.recipient.name}</span>
+                    <br/>
+                    <span className={classNameText.isReady} />
+                    <button className={classNameText.changeFriend} onClick={changeFriendClick} />
+                </div>
+                <div className={classNameText.character}>
+                    <skoash.Image className="otter" src="media/_Otter/proud-of-you2.gif" />
+                    <div className="bubble">
+                        Are you sure<br/>
+                        you are ready to<br/>
+                        send your message?
+                    </div>
+                </div>
+                <div className={classNameText.gift} />
+                <Selectable className="menu right-menu" list={this.rightMenuList} />
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <SendScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="send"
-      hideNext
-      hidePrev
-    />
-  );
+        <SendScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="send"
+            hideNext
+            hidePrev
+        />
+    );
 }

@@ -28,32 +28,38 @@ class SentScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <div className={classNameText.character} />
-        <div className={classNameText.header}>
-          <span className={classNameText.yourMessageTo}>{text.yourMessageTo}</span>
-          <span className={classNameText.username}>{this.state.opts.recipient.name}</span>
-          <br/>
-          <span className={classNameText.isReady}>{text.hasBeenSent}</span>
-        </div>
-        <div className={classNameText.buttons}>
-          <button className={classNameText.createAnother} onClick={this.goto.bind(this, 'friend')} />
-          <button className={classNameText.inbox} onClick={this.goto.bind(this, 'inbox')} />
-        </div>
-      </div>
-    );
+            <div>
+                <div className={classNameText.character} />
+                <div className={classNameText.header}>
+                    <span className={classNameText.yourMessageTo}>{text.yourMessageTo}</span>
+                    <span className={classNameText.username}>{this.state.opts.recipient.name}</span>
+                    <br/>
+                    <span className={classNameText.isReady}>{text.hasBeenSent}</span>
+                </div>
+                <div className={classNameText.buttons}>
+                    <button
+                        className={classNameText.createAnother}
+                        onClick={this.goto.bind(this, 'friend')}
+                    />
+                    <button
+                        className={classNameText.inbox}
+                        onClick={this.goto.bind(this, 'inbox')}
+                    />
+                </div>
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <SentScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="sent"
-      hideNext
-      hidePrev
-    />
-  );
+        <SentScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="sent"
+            hideNext
+            hidePrev
+        />
+    );
 }

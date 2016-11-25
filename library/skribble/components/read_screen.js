@@ -23,14 +23,14 @@ class ReadScreen extends skoash.Screen {
 
         this.leftMenuList = [
             <li className="inbox" onClick={this.goto.bind(this, 'inbox')}>
-        <span />
-      </li>
+                <span />
+            </li>
         ];
 
         this.rightMenuList = [
             <li className="reply" onClick={this.reply.bind(this)}>
-        <span />
-      </li>
+                <span />
+            </li>
         ];
     }
 

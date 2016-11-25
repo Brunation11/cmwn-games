@@ -32,23 +32,29 @@ class CollisionWarning extends skoash.Screen {
 
     render() {
         return (
-      <div id={this.props.id} className={this.getClassNames()}>
-        <div className="center">
-          <div className="frame">
-            <skoash.Image className="copy" src="media/_CollisionWarning/text-youmustnotoverlapimgs.png" />
-            <button className={this.getToggleClassNames()} onClick={this.toggle}></button>
-            <button className="close-collision-warning" onClick={this.cancel}></button>
-            <skoash.Image className="otter" src="media/_CollisionWarning/Peeking-through-Otter.gif" />
-          </div>
-        </div>
-      </div>
-    );
+            <div id={this.props.id} className={this.getClassNames()}>
+                <div className="center">
+                    <div className="frame">
+                        <skoash.Image
+                            className="copy"
+                            src="media/_CollisionWarning/text-youmustnotoverlapimgs.png"
+                        />
+                        <button className={this.getToggleClassNames()} onClick={this.toggle}></button>
+                        <button className="close-collision-warning" onClick={this.cancel}></button>
+                        <skoash.Image
+                            className="otter"
+                            src="media/_CollisionWarning/Peeking-through-Otter.gif"
+                        />
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
 export default (
-  <CollisionWarning
-    id="collisionWarning"
-    load
-  />
+    <CollisionWarning
+        id="collisionWarning"
+        load
+    />
 );

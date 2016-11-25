@@ -8,22 +8,22 @@ class SaveMenu extends skoash.Screen {
 
     render() {
         return (
-      <div id={this.props.id} className={this.getClassNames()}>
-        <div className="center">
-          <div className="frame">
-            <button className="quit-saved" onClick={this.cancel.bind(this)}></button>
-            <h2>Your progress</h2>
-            <h2>has been saved</h2>
-          </div>
-        </div>
-      </div>
-    );
+            <div id={this.props.id} className={this.getClassNames()}>
+                <div className="center">
+                    <div className="frame">
+                        <button className="quit-saved" onClick={this.cancel.bind(this)}></button>
+                        <h2>Your progress</h2>
+                        <h2>has been saved</h2>
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
 
 export default (
-  <SaveMenu
-    id="save"
-    load
-  />
+    <SaveMenu
+        id="save"
+        load
+    />
 );

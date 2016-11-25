@@ -3,35 +3,35 @@ import Inbox from '../../shared/components/inbox/0.1.js';
 import SavedMessages from '../../shared/components/saved_messages/0.1.js';
 
 const inboxEmptyMessage = (
-  <span>
-    You haven't received any Skribbles!<br/>
-    Get started by sending some!
-  </span>
-  );
+    <span>
+        You haven't received any Skribbles!<br/>
+        Get started by sending some!
+    </span>
+);
 const unreadEmptyMessage = (
-  <span>
-    You don't have any<br/>
-    unread Skribbles!
-  </span>
-  );
+    <span>
+        You don't have any<br/>
+        unread Skribbles!
+    </span>
+);
 const readEmptyMessage = (
-  <span>
-    You don't have any<br/>
-    read Skribbles!
-  </span>
-  );
+    <span>
+        You don't have any<br/>
+        read Skribbles!
+    </span>
+);
 const sentEmptyMessage = (
-  <span>
-    You haven't sent any Skribbles.<br/>
-    Let's get started!
-  </span>
-  );
+    <span>
+        You haven't sent any Skribbles.<br/>
+        Let's get started!
+    </span>
+);
 const draftsEmptyMessage = (
-  <span>
-    You don't have any drafts.<br/>
-    Start Skribbling!
-  </span>
-  );
+    <span>
+        You don't have any drafts.<br/>
+        Start Skribbling!
+    </span>
+);
 
 
 class InboxScreen extends skoash.Screen {

@@ -290,23 +290,23 @@ Skribble = (
     }}
     renderMenu={function () {
         return (
-        <div>
-          <div className="game-menu">
-            <button className="save" onClick={this.saveButton.bind(this)} />
-            <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
-            <button className="create" onClick={this.create.bind(this)} />
-            <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
-            <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
-          </div>
-          <ul className="menu recipient">
-            <li onClick={this.clickRecipient.bind(this)}>
-              <span>
-                {this.renderRecipient()}
-              </span>
-            </li>
-          </ul>
-        </div>
-      );
+            <div>
+                <div className="game-menu">
+                    <button className="save" onClick={this.saveButton.bind(this)} />
+                    <button className="inbox" onClick={this.navigator.goto.bind(this, {index: 'inbox'})} />
+                    <button className="create" onClick={this.create.bind(this)} />
+                    <button className="help" onClick={this.navigator.openMenu.bind(this, {id: 'help'})} />
+                    <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
+                </div>
+                <ul className="menu recipient">
+                    <li onClick={this.clickRecipient.bind(this)}>
+                        <span>
+                            {this.renderRecipient()}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        );
     }}
     getGotoOpts={function (opts) {
         if (opts.index === 'send') {

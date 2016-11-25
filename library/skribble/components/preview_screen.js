@@ -25,14 +25,14 @@ class PreviewScreen extends skoash.Screen {
 
         this.leftMenuList = [
             <li className="edit" onClick={this.goto.bind(this, 'canvas')}>
-        <span />
-      </li>,
+                <span />
+            </li>,
         ];
 
         this.rightMenuList = [
             <li className="send" onClick={this.goto.bind(this, 'send')}>
-        <span />
-      </li>
+                <span />
+            </li>
         ];
     }
 
@@ -45,31 +45,31 @@ class PreviewScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
-          <Canvas ref={refs.canvas} preview />
-          <Repeater
-            className="sparkles"
-            amount={40}
-          />
-          <div className={classNameText.box} />
-        </skoash.Component>
-        <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
-        <Selectable className={classNameText.rightMenu} list={this.rightMenuList} />
-      </div>
-    );
+            <div>
+                <skoash.Component ref={refs.box} className={classNameText.skribbleBox}>
+                    <Canvas ref={refs.canvas} preview />
+                    <Repeater
+                        className="sparkles"
+                        amount={40}
+                    />
+                    <div className={classNameText.box} />
+                </skoash.Component>
+                <Selectable className={classNameText.leftMenu} list={this.leftMenuList} />
+                <Selectable className={classNameText.rightMenu} list={this.rightMenuList} />
+            </div>
+        );
     }
 }
 
 export default function (props, ref, key) {
     return (
-    <PreviewScreen
-      {...props}
-      ref={ref}
-      key={key}
-      id="preview"
-      hideNext
-      hidePrev
-    />
-  );
+        <PreviewScreen
+            {...props}
+            ref={ref}
+            key={key}
+            id="preview"
+            hideNext
+            hidePrev
+        />
+    );
 }
