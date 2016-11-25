@@ -29,14 +29,14 @@ export default function (props, ref, key, opts = {}) {
     for (let i = 0; i < opts.bin.length; i++) {
         for (let j = 0; j < opts.rows; j++) {
             bin.push(
-        <Catchable
-          className={`${opts.bin[i].className} ${opts.dropSpeed}`}
-          message={opts.bin[i].message}
-          style={{
-              top: 400 * (j + .4) / opts.rows,
-          }}
-        />
-      );
+                <Catchable
+                    className={`${opts.bin[i].className} ${opts.dropSpeed}`}
+                    message={opts.bin[i].message}
+                    style={{
+                            top: 400 * (j + .4) / opts.rows,
+                    }}
+                />
+            );
         }
     }
 
@@ -270,154 +270,154 @@ export default function (props, ref, key, opts = {}) {
     renderDropPoints = function () {
         return _.map(opts.dropPoints, (val) => {
             return (
-        <skoash.Component className={`pipe ${val}`} />
-      );
+                <skoash.Component className={`pipe ${val}`} />
+            );
         });
     };
 
     return (
-    <skoash.Screen
-      {...props}
-      ref={ref}
-      key={key}
-      id={opts.id}
-      onStart={opts.onStart}
-    >
-      <skoash.Component className="misc">
-        <skoash.Component
-          className={classNames(
-            'fish-1', {
-                sad: _.get(props, 'data.sfx.countdown')
-            }
-          )}
-        />
-        <skoash.Component
-          className={classNames(
-            'fish-2', {
-                sad: _.get(props, 'data.sfx.countdown')
-            }
-          )}
-        />
-        <skoash.Component
-          className={classNames(
-            'fish-3', {
-                sad: _.get(props, 'data.sfx.countdown')
-            }
-          )}
-        />
-        <skoash.Component
-          className={classNames(
-            'fish-4', {
-                sad: _.get(props, 'data.sfx.countdown')
-            }
-          )}
-        />
-      </skoash.Component>
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            id={opts.id}
+            onStart={opts.onStart}
+        >
+            <skoash.Component className="misc">
+                <skoash.Component
+                    className={classNames(
+                        'fish-1', {
+                            sad: _.get(props, 'data.sfx.countdown')
+                        }
+                    )}
+                />
+                <skoash.Component
+                    className={classNames(
+                        'fish-2', {
+                            sad: _.get(props, 'data.sfx.countdown')
+                        }
+                    )}
+                />
+                <skoash.Component
+                    className={classNames(
+                        'fish-3', {
+                            sad: _.get(props, 'data.sfx.countdown')
+                        }
+                    )}
+                />
+                <skoash.Component
+                    className={classNames(
+                        'fish-4', {
+                            sad: _.get(props, 'data.sfx.countdown')
+                        }
+                    )}
+                />
+            </skoash.Component>
 
-      <skoash.Component className="drop-points" children={renderDropPoints()} />
+            <skoash.Component className="drop-points" children={renderDropPoints()} />
 
-      <MediaCollection
-        play={_.get(props, 'data.reveal.open')}
-        children={opts.vos}
-      />
+            <MediaCollection
+                play={_.get(props, 'data.reveal.open')}
+                children={opts.vos}
+            />
 
-      <MediaCollection
-        play={_.get(props, 'data.sfx.countdown', null)}
-        onPlay={SFXOnPlay}
-      >
-        <skoash.Audio
-            ref="countdown"
-            type="sfx"
-            src="media/audio/Timer_Last10Sec.mp3"
-            silentOnStart
-            complete
-        />
-      </MediaCollection>
+            <MediaCollection
+                play={_.get(props, 'data.sfx.countdown', null)}
+                onPlay={SFXOnPlay}
+            >
+                <skoash.Audio
+                    ref="countdown"
+                    type="sfx"
+                    src="media/audio/Timer_Last10Sec.mp3"
+                    silentOnStart
+                    complete
+                />
+            </MediaCollection>
 
 
-      <MediaCollection
-        play={_.get(props, 'data.sfx.play', null)}
-        onPlay={SFXOnPlay}
-      >
-        <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
-        <skoash.Audio ref="incorrect-miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
-        <skoash.MediaSequence ref="correct" silentOnStart>
-          <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
-          <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
-        </skoash.MediaSequence>
-        <skoash.MediaSequence ref="incorrect-catch" silentOnStart>
-          <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
-          <skoash.Audio ref="lose" type="sfx" src="media/audio/LoosePoints.mp3" complete />
-        </skoash.MediaSequence>
-      </MediaCollection>
+            <MediaCollection
+                play={_.get(props, 'data.sfx.play', null)}
+                onPlay={SFXOnPlay}
+            >
+                <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" silentOnStart complete />
+                <skoash.Audio ref="incorrect-miss" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                <skoash.MediaSequence ref="correct" silentOnStart>
+                    <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
+                    <skoash.Audio ref="earn" type="sfx" src="media/audio/GainPoints.mp3" complete />
+                </skoash.MediaSequence>
+                <skoash.MediaSequence ref="incorrect-catch" silentOnStart>
+                    <skoash.Audio ref="catch" type="sfx" src="media/audio/basket.mp3" complete />
+                    <skoash.Audio ref="lose" type="sfx" src="media/audio/LoosePoints.mp3" complete />
+                </skoash.MediaSequence>
+            </MediaCollection>
 
-      <Score
-        ref="score"
-        className={`score lvl-${opts.level}`}
-        max={opts.points}
-        correct={_.get(props, 'data.score.points', 0)}
-        checkComplete={false}
-        complete={_.get(props, 'data.game.complete', false)}
-        onComplete={scoreOnComplete}
-      />
+            <Score
+                ref="score"
+                className={`score lvl-${opts.level}`}
+                max={opts.points}
+                correct={_.get(props, 'data.score.points', 0)}
+                checkComplete={false}
+                complete={_.get(props, 'data.game.complete', false)}
+                onComplete={scoreOnComplete}
+            />
 
-      <Timer
-        ref="timer"
-        countDown={true}
-        timeout={opts.timeout}
-        getTime={timerGetTime}
-        stop={_.get(props, 'data.game.complete', false)}
-        complete={_.get(props, 'data.game.complete', false)}
-        checkComplete={_.get(props, 'data.game.start', false)}
-        onCheckComplete={timerOnCheckComplete}
-        restart={_.get(props, 'data.game.start', false)}
-        onComplete={timerOnComplete}
-      />
+            <Timer
+                ref="timer"
+                countDown={true}
+                timeout={opts.timeout}
+                getTime={timerGetTime}
+                stop={_.get(props, 'data.game.complete', false)}
+                complete={_.get(props, 'data.game.complete', false)}
+                checkComplete={_.get(props, 'data.game.start', false)}
+                onCheckComplete={timerOnCheckComplete}
+                restart={_.get(props, 'data.game.start', false)}
+                onComplete={timerOnComplete}
+            />
 
-      <RevealPrompt
-        ref="reveal-prompt"
-        openOnStart={opts.openOnStart}
-        onOpen={revealPromptOnOpen}
-        onClose={revealPromptOnClose}
-        openReveal={_.get(props, 'data.reveal.open', null)}
-        list={opts.revealPromptList}
-      />
+            <RevealPrompt
+                ref="reveal-prompt"
+                openOnStart={opts.openOnStart}
+                onOpen={revealPromptOnOpen}
+                onClose={revealPromptOnClose}
+                openReveal={_.get(props, 'data.reveal.open', null)}
+                list={opts.revealPromptList}
+            />
 
-      <Dropper
-        leftBound={70}
-        rightBound={820}
-        on={_.get(props, 'data.game.start', false)}
-        start={_.get(props, 'data.game.start', false)}
-        stop={_.get(props, 'data.game.complete', false)}
-        prepClasses={['ready', 'go']}
-        prepTimeout={opts.dropTimeout}
-        getClassNames={dropperGetClassNames}
-        onAddClassName={dropperOnAddClassName}
-        onTransitionEnd={dropperOnTransitionEnd}
-        bin={
-          <Randomizer
-            completeOnStart
-            checkComplete={false}
-            bin={bin}
-            remain
-          />
-        }
-      />
+            <Dropper
+                leftBound={70}
+                rightBound={820}
+                on={_.get(props, 'data.game.start', false)}
+                start={_.get(props, 'data.game.start', false)}
+                stop={_.get(props, 'data.game.complete', false)}
+                prepClasses={['ready', 'go']}
+                prepTimeout={opts.dropTimeout}
+                getClassNames={dropperGetClassNames}
+                onAddClassName={dropperOnAddClassName}
+                onTransitionEnd={dropperOnTransitionEnd}
+                bin={
+                    <Randomizer
+                        completeOnStart
+                        checkComplete={false}
+                        bin={bin}
+                        remain
+                    />
+                }
+            />
 
-      <Catcher
-        completeOnStart
-        checkComplete={false}
-        start={_.get(props, 'data.game.start', false)}
-        canCatch={_.get(props, 'data.game.start', false)}
-        moveBuckets
-        onMove={catcherOnMove}
-        bucket={[
-            <skoash.Component className="bucket" message="trash" />,
-        ]}
-        catchableRefs={_.get(props, 'data.dropper.refs', [])}
-        onCorrect={catcherOnCorrect}
-        onIncorrect={catcherOnIncorrect}
-      />
-    </skoash.Screen>
-  );
+            <Catcher
+                completeOnStart
+                checkComplete={false}
+                start={_.get(props, 'data.game.start', false)}
+                canCatch={_.get(props, 'data.game.start', false)}
+                moveBuckets
+                onMove={catcherOnMove}
+                bucket={[
+                    <skoash.Component className="bucket" message="trash" />,
+                ]}
+                catchableRefs={_.get(props, 'data.dropper.refs', [])}
+                onCorrect={catcherOnCorrect}
+                onIncorrect={catcherOnIncorrect}
+            />
+        </skoash.Screen>
+    );
 }
