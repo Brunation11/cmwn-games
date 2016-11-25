@@ -74,7 +74,6 @@ buildTask = [
     'copy-framework',
     'copy-media',
     'copy-components',
-    'copy-thumbs',
     'clean'
 ];
 gulp.task('default', buildTask);
@@ -265,28 +264,42 @@ gulp.task('copy-components', function () {
     });
 });
 
-gulp.task('copy-thumbs', function () {
-    games.forEach(function (game) {
-        // This can be removed once thumbs for each game are moved to the media server.
-        gulp
-        .src(path.join( './library', game, 'thumb.jpg' ))
-        .pipe( gulp.dest('./build/' + game) );
-    });
-});
-
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 function watchTask() {
     var game = (games.length > 1) ? '**' : games[0];
     env = 'dev';
     if (!nolivereload) livereload.listen();
+
     watch([
         'library/framework/*',
-        'library/shared/**/*',
+    ], function () {
+        gulp.start('copy-framework');
+    });
+
+    watch([
         'library/' + game + '/**/*.js',
+    ], function () {
+        gulp.start('webpack:build');
+    });
+
+    watch([
         'library/' + game + '/**/*.scss',
         'library/' + game + '/**/*.css',
-        'library/' + game + '/**/*.html'], function () {
+    ], function () {
+        gulp.start('sass');
+    });
+
+    watch([
+        'library/' + game + '/media/**/*',
+    ], function () {
+        gulp.start('copy-media');
+    });
+
+    watch([
+        'library/shared/**/*',
+        'library/' + game + '/**/*.html',
+    ], function () {
         gulp.start('build');
     });
 }
