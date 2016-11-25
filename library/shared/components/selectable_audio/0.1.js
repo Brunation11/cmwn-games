@@ -40,13 +40,13 @@ class SelectableAudio extends skoash.Component {
                 var dataRef = asset.props['data-ref'] || key;
                 var ref = 'asset-' + dataRef;
                 return (
-          <skoash.Audio
-            {...asset.props}
-            ref={ref}
-            key={key}
-            data-ref={dataRef}
-          />
-        );
+                    <skoash.Audio
+                        {...asset.props}
+                        ref={ref}
+                        key={key}
+                        data-ref={dataRef}
+                    />
+                );
             });
         }
         return null;
@@ -54,13 +54,13 @@ class SelectableAudio extends skoash.Component {
 
     renderSelectable() {
         return (
-      <Selectable
-        ref="selectable"
-        list={this.props.selectableList}
-        selectRespond={this.selectRespond.bind(this)}
-        selectClass={this.props.selectClass}
-      />
-    );
+            <Selectable
+                ref="selectable"
+                list={this.props.selectableList}
+                selectRespond={this.selectRespond.bind(this)}
+                selectClass={this.props.selectClass}
+            />
+        );
     }
 
     getClassNames() {
@@ -69,11 +69,11 @@ class SelectableAudio extends skoash.Component {
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        {this.renderSelectable()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                {this.renderSelectable()}
+            </div>
+        );
     }
 }
 

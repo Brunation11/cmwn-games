@@ -88,55 +88,55 @@ class TargetSelectable extends SelectableReveal {
 
     getClassNames() {
         return classNames(
-      super.getClassNames(),
-      'target-selectable',
-      this.state.target,
-      this.props.className, {
-          ['amount-' + this.state.amount]: typeof this.state.amount === 'number',
-      }
-    );
+            super.getClassNames(),
+            'target-selectable',
+            this.state.target,
+            this.props.className, {
+                ['amount-' + this.state.amount]: typeof this.state.amount === 'number',
+            }
+        );
     }
 
     renderSelectable() {
         if (this.props.selectable) {
             return (
-        <this.props.selectable.type
-          ref="selectable"
-          {...this.props.selectable.props}
-          selectRespond={this.selectRespond}
-          onSelect={this.selectRespond}
-        />
-      );
+                <this.props.selectable.type
+                    ref="selectable"
+                    {...this.props.selectable.props}
+                    selectRespond={this.selectRespond}
+                    onSelect={this.selectRespond}
+                />
+            );
         }
 
         return (
-      <Selectable
-        ref="selectable"
-        list={this.props.selectableList}
-        selectRespond={this.selectRespond}
-        selectClass={this.props.selectableSelectClass}
-        selectOnStart={this.props.selectOnStart}
-        completeListOnClick={this.props.completeListOnClick}
-      />
-    );
+            <Selectable
+                ref="selectable"
+                list={this.props.selectableList}
+                selectRespond={this.selectRespond}
+                selectClass={this.props.selectableSelectClass}
+                selectOnStart={this.props.selectOnStart}
+                completeListOnClick={this.props.completeListOnClick}
+            />
+        );
     }
 
     renderTargets() {
         return (
-      <div className="header">
-        {this.renderContentList('targets')}
-      </div>
-    );
+            <div className="header">
+                {this.renderContentList('targets')}
+            </div>
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        {this.renderTargets()}
-        {this.renderSelectable()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                {this.renderTargets()}
+                {this.renderSelectable()}
+            </div>
+        );
     }
 }
 

@@ -50,13 +50,13 @@ class SelectableReveal extends skoash.Component {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) => {
                 return (
-          <skoash.Audio
-            {...asset.props}
-            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
-        );
+                    <skoash.Audio
+                        {...asset.props}
+                        ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+                        key={key}
+                        data-ref={key}
+                    />
+                );
             });
         }
 
@@ -65,38 +65,38 @@ class SelectableReveal extends skoash.Component {
 
     renderSelectable() {
         return (
-      <Selectable
-        ref="selectable"
-        list={this.props.selectableList}
-        selectRespond={this.selectRespond.bind(this)}
-        selectClass={this.props.selectableSelectClass}
-        completeOnSelect={this.props.selectableCompleteOnSelect}
-        checkComplete={this.props.selectableCheckComplete}
-        randomizeList={this.props.randomizeSelectableList}
-        selectOnStart={this.props.selectOnStart}
-        chooseOne={this.props.chooseOne}
-        answers={this.props.answers}
-        allowDeselect={this.props.allowDeselect}
-      />
-    );
+            <Selectable
+                ref="selectable"
+                list={this.props.selectableList}
+                selectRespond={this.selectRespond.bind(this)}
+                selectClass={this.props.selectableSelectClass}
+                completeOnSelect={this.props.selectableCompleteOnSelect}
+                checkComplete={this.props.selectableCheckComplete}
+                randomizeList={this.props.randomizeSelectableList}
+                selectOnStart={this.props.selectOnStart}
+                chooseOne={this.props.chooseOne}
+                answers={this.props.answers}
+                allowDeselect={this.props.allowDeselect}
+            />
+        );
     }
 
     renderReveal() {
         return (
-      <Reveal
-        ref="reveal"
-        list={this.props.revealList}
-        assets={this.props.revealAssets}
-        closeRespond={this.closeRespond.bind(this)}
-        completeOnOpen={this.props.revealCompleteOnOpen}
-        checkComplete={this.props.revealCheckComplete}
-        openOnStart={this.props.openOnStart}
-        hide={this.props.hideReveal}
-        openReveal={this.props.openReveal}
-        onOpen={this.props.onOpen}
-        openMultiple={false}
-      />
-    );
+            <Reveal
+                ref="reveal"
+                list={this.props.revealList}
+                assets={this.props.revealAssets}
+                closeRespond={this.closeRespond.bind(this)}
+                completeOnOpen={this.props.revealCompleteOnOpen}
+                checkComplete={this.props.revealCheckComplete}
+                openOnStart={this.props.openOnStart}
+                hide={this.props.hideReveal}
+                openReveal={this.props.openReveal}
+                onOpen={this.props.onOpen}
+                openMultiple={false}
+            />
+        );
     }
 
     getClasses() {
@@ -109,12 +109,12 @@ class SelectableReveal extends skoash.Component {
 
     render() {
         return (
-      <div className={'selectable-reveal' + this.getClasses()}>
-        {this.renderAssets()}
-        {this.renderSelectable()}
-        {this.renderReveal()}
-      </div>
-    );
+            <div className={'selectable-reveal' + this.getClasses()}>
+                {this.renderAssets()}
+                {this.renderSelectable()}
+                {this.renderReveal()}
+            </div>
+        );
     }
 }
 

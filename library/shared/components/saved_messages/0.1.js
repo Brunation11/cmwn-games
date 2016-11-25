@@ -66,15 +66,15 @@ class SavedMessages extends Selectable {
       );
 
         return (
-      <div
-        className="thumbnail"
-        style={{
-            backgroundImage: `url(${background})`
-        }}
-      >
-        <skoash.Image src={firstImg} />
-      </div>
-    );
+            <div
+                className="thumbnail"
+                style={{
+                    backgroundImage: `url(${background})`
+                }}
+            >
+                <skoash.Image src={firstImg} />
+            </div>
+        );
     }
 
     renderList() {
@@ -87,40 +87,40 @@ class SavedMessages extends Selectable {
 
         if (!items.length) {
             return (
-        <li className="empty">
-          {this.props.emptyMessage}
-        </li>
-      );
+                <li className="empty">
+                    {this.props.emptyMessage}
+                </li>
+            );
         }
 
         return items.map((item, key) => {
             var timestamp = moment.utc(item.updated).local();
             return (
-        <skoash.ListItem
-          className={self.getClass(key)}
-          ref={key}
-          data-ref={key}
-          item={item}
-          key={key}
-        >
-          {self.renderThumb(item)}
-          <span className="timestamp">
-            <span className="date">{timestamp.format('MM.DD.YY')}</span>
-            <span className="time">{timestamp.format('h:mm a')}</span>
-          </span>
-        </skoash.ListItem>
-      );
+                <skoash.ListItem
+                    className={self.getClass(key)}
+                    ref={key}
+                    data-ref={key}
+                    item={item}
+                    key={key}
+                >
+                    {self.renderThumb(item)}
+                    <span className="timestamp">
+                        <span className="date">{timestamp.format('MM.DD.YY')}</span>
+                        <span className="time">{timestamp.format('h:mm a')}</span>
+                    </span>
+                </skoash.ListItem>
+            );
         });
     }
 
     render() {
         return (
-      <div>
-        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-      </div>
-    );
+            <div>
+                <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 

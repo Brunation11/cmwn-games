@@ -2,10 +2,6 @@ import Selectable from 'shared/components/selectable/0.1';
 import classNames from 'classnames';
 
 class MatchGame extends Selectable {
-    constructor() {
-        super();
-    }
-
     selectHelper(e, classes) {
         var dataRef;
         var activeDataRef;

@@ -210,17 +210,17 @@ class SelectableCanvasMove extends SelectableCanvas {
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        <div className="items hidden">
-          {this.renderContentList('items')}
-        </div>
-        <canvas
-          ref="canvas"
-          onClick={this.state.selectFunction.bind(this)}
-          onMouseMove={this.onHover}
-        />
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                <div className="items hidden">
+                    {this.renderContentList('items')}
+                </div>
+                <canvas
+                    ref="canvas"
+                    onClick={this.state.selectFunction.bind(this)}
+                    onMouseMove={this.onHover}
+                />
+            </div>
+        );
     }
 }
 

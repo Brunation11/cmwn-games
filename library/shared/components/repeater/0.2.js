@@ -3,12 +3,12 @@ class Repeater extends skoash.Component {
         var a = [];
         for (let i = 0; i < this.props.amount; i++) {
             a.push(
-        <this.props.item.type
-          key={i}
-          {...this.props.item.props}
-          {...this.props.props[i]}
-        />
-      );
+                <this.props.item.type
+                    key={i}
+                    {...this.props.item.props}
+                    {...this.props.props[i]}
+                />
+            );
         }
         return a;
     }

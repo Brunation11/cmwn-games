@@ -34,22 +34,22 @@ class Randomizer extends skoash.Component {
         return _.map(this.props.bin, (li, key) => {
             var ref = li.ref || (li.props && li.props['data-ref']) || key;
             return (
-        <li.type
-          {...li.props}
-          data-ref={ref}
-          ref={ref}
-          key={key}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    data-ref={ref}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
     render() {
         return (
-      <ul className={this.getClassNames()}>
-        {this.renderBin()}
-      </ul>
-    );
+            <ul className={this.getClassNames()}>
+                {this.renderBin()}
+            </ul>
+        );
     }
 }
 

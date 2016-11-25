@@ -180,25 +180,25 @@ class ScrollArea extends skoash.Component {
         if (!this.props.shouldRender) return null;
 
         return (
-      <this.props.type {...this.props} className={this.getClassNames()}>
-        <skoash.Image ref={IMAGE} className="hidden" src={this.props.img} />
-        <div ref={AREA} className={AREA}>
-          <div ref={CONTENT} className={CONTENT}>
-            {this.renderContentList()}
-          </div>
-        </div>
-        <div
-          ref={SCROLLBAR}
-          className={SCROLLBAR}
-        >
-          <div
-            ref={SCROLLER}
-            className={SCROLLER}
-            style={this.getScrollerStyle()}
-          />
-        </div>
-      </this.props.type>
-    );
+            <this.props.type {...this.props} className={this.getClassNames()}>
+                <skoash.Image ref={IMAGE} className="hidden" src={this.props.img} />
+                <div ref={AREA} className={AREA}>
+                    <div ref={CONTENT} className={CONTENT}>
+                        {this.renderContentList()}
+                    </div>
+                </div>
+                <div
+                    ref={SCROLLBAR}
+                    className={SCROLLBAR}
+                >
+                    <div
+                        ref={SCROLLER}
+                        className={SCROLLER}
+                        style={this.getScrollerStyle()}
+                    />
+                </div>
+            </this.props.type>
+        );
     }
 }
 

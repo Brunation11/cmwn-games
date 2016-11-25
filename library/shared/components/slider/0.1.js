@@ -58,17 +58,17 @@ class Slider extends skoash.Component {
             ref = component.ref || (component.props && component.props['data-ref']) || listName + '-' + key;
             opacity = key === this.state.currentSlide ? 1 : 0;
             return (
-        <component.type
-          gameState={this.props.gameState}
-          {...component.props}
-          ref={ref}
-          key={key}
-          style={{
-              left: (key * 100) + '%',
-              opacity
-          }}
-        />
-      );
+                <component.type
+                    gameState={this.props.gameState}
+                    {...component.props}
+                    ref={ref}
+                    key={key}
+                    style={{
+                        left: (key * 100) + '%',
+                        opacity
+                    }}
+                />
+            );
         });
     }
 
@@ -76,19 +76,19 @@ class Slider extends skoash.Component {
         if (!this.props.shouldRender) return null;
 
         return (
-      <this.props.type {...this.props} className={this.getClassNames()}>
-        <button className="prev-slide" onClick={this.prev} />
-        <div className={AREA}>
-          <div
-            className={CONTENT}
-            style={this.getContentStyle()}
-          >
-            {this.renderContentList()}
-          </div>
-        </div>
-        <button className="next-slide" onClick={this.next} />
-      </this.props.type>
-    );
+            <this.props.type {...this.props} className={this.getClassNames()}>
+                <button className="prev-slide" onClick={this.prev} />
+                <div className={AREA}>
+                    <div
+                        className={CONTENT}
+                        style={this.getContentStyle()}
+                    >
+                        {this.renderContentList()}
+                    </div>
+                </div>
+                <button className="next-slide" onClick={this.next} />
+            </this.props.type>
+        );
     }
 }
 

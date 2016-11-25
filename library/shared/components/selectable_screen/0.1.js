@@ -21,15 +21,15 @@ class SelectableScreen extends skoash.Screen {
 
     renderContent() {
         return (
-      <div>
-        {this.renderContentList()}
-        <Selectable
-          ref="selectable"
-          selectRespond={this.selectRespond.bind(this)}
-          list={this.props.selectableList}
-        />
-      </div>
-    );
+            <div>
+                {this.renderContentList()}
+                <Selectable
+                    ref="selectable"
+                    selectRespond={this.selectRespond.bind(this)}
+                    list={this.props.selectableList}
+                />
+            </div>
+        );
     }
 }
 

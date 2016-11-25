@@ -18,25 +18,25 @@ class MatchableReveal extends SelectableReveal {
 
     renderMatchable() {
         return (
-      <Matchable
-        ref="matchable"
-        list={this.props.matchableList}
-        onMatch={this.selectRespond.bind(this)}
-        onSelect={this.onSelect.bind(this)}
-        checkComplete={this.props.matchableCheckComplete}
-        randomizeList={this.props.randomizeMatchableList}
-      />
-    );
+            <Matchable
+                ref="matchable"
+                list={this.props.matchableList}
+                onMatch={this.selectRespond.bind(this)}
+                onSelect={this.onSelect.bind(this)}
+                checkComplete={this.props.matchableCheckComplete}
+                randomizeList={this.props.randomizeMatchableList}
+            />
+        );
     }
 
     render() {
         return (
-      <div className={'matchable-reveal ' + this.getClasses()}>
-        {this.renderAssets()}
-        {this.renderMatchable()}
-        {this.renderReveal()}
-      </div>
-    );
+            <div className={'matchable-reveal ' + this.getClasses()}>
+                {this.renderAssets()}
+                {this.renderMatchable()}
+                {this.renderReveal()}
+            </div>
+        );
     }
 }
 export default MatchableReveal;

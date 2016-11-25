@@ -107,30 +107,30 @@ class SelectableAll extends Selectable {
             var ref = li.ref || li.props['data-ref'] || key;
             var message = li.props.message || '' + key;
             return (
-        <li.type
-          {...li.props}
-          type="li"
-          className={this.getClass(key, li)}
-          message={message}
-          data-message={message}
-          data-ref={key}
-          onTransitionEnd={this.next.bind(this, key)}
-          ref={ref}
-          key={key}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    type="li"
+                    className={this.getClass(key, li)}
+                    message={message}
+                    data-message={message}
+                    data-ref={key}
+                    onTransitionEnd={this.next.bind(this, key)}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
     render() {
         return (
-      <div className="selectable-all">
-        {this.renderBin()}
-        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-      </div>
-    );
+            <div className="selectable-all">
+                {this.renderBin()}
+                <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 

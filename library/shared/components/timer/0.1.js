@@ -101,14 +101,14 @@ class Timer extends skoash.Component {
     render() {
         var time = this.props.getTime.call(this);
         return (
-      <div {...this.props} className={this.getClassNames()} time={time}>
-        {this.props.leadingContent}
-        <span>
-          {time}
-        </span>
-        {this.props.children}
-      </div>
-    );
+            <div {...this.props} className={this.getClassNames()} time={time}>
+                {this.props.leadingContent}
+                <span>
+                    {time}
+                </span>
+                {this.props.children}
+            </div>
+        );
     }
 }
 

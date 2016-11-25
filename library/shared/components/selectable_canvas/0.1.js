@@ -97,16 +97,16 @@ class SelectableCanvas extends Selectable {
 
     render() {
         return (
-      <div>
-        <canvas ref="canvas" />
-        <ul
-          className={this.getClassNames()}
-          onClick={this.state.selectFunction.bind(this)}
-        >
-          {this.renderList()}
-        </ul>
-      </div>
-    );
+            <div>
+                <canvas ref="canvas" />
+                <ul
+                    className={this.getClassNames()}
+                    onClick={this.state.selectFunction.bind(this)}
+                >
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 

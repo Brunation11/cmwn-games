@@ -47,18 +47,18 @@ class Target extends skoash.Component {
 
     getClassNames() {
         return classNames(
-      'target',
-      super.getClassNames(),
-      _.get(this.state, 'target.props.name')
-    );
+            'target',
+            super.getClassNames(),
+            _.get(this.state, 'target.props.name')
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderContentList('targets')}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderContentList('targets')}
+            </div>
+        );
     }
 }
 

@@ -37,21 +37,21 @@ class Cannon extends skoash.Component {
 
     renderBall() {
         return (
-      <this.props.ball.type
-        {...this.props.ball.props}
-        className={BALL}
-        ref={BALL}
-        onTransitionEnd={this.reload}
-      />
-    );
+            <this.props.ball.type
+                {...this.props.ball.props}
+                className={BALL}
+                ref={BALL}
+                onTransitionEnd={this.reload}
+            />
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()} onClick={this.fire}>
-        {this.renderBall()}
-      </div>
-    );
+            <div className={this.getClassNames()} onClick={this.fire}>
+                {this.renderBall()}
+            </div>
+        );
     }
 }
 

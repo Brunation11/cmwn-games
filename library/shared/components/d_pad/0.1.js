@@ -120,17 +120,17 @@ class DPad extends skoash.Component {
 
     render() {
         return (
-      <div
-        {...this.props}
-        className={this.getClassNames()}
-      >
-        {this.renderContentList('assets')}
-        <div data-ref={UP} className={UP} />
-        <div data-ref={LEFT} className={LEFT} />
-        <div data-ref={DOWN} className={DOWN} />
-        <div data-ref={RIGHT} className={RIGHT} />
-      </div>
-    );
+            <div
+                {...this.props}
+                className={this.getClassNames()}
+            >
+                {this.renderContentList('assets')}
+                <div data-ref={UP} className={UP} />
+                <div data-ref={LEFT} className={LEFT} />
+                <div data-ref={DOWN} className={DOWN} />
+                <div data-ref={RIGHT} className={RIGHT} />
+            </div>
+        );
     }
 }
 

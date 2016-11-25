@@ -52,37 +52,37 @@ class SpriteAnimation extends skoash.Component {
 
     render() {
         return (
-      <div>
-        {/*
-        */}
-        <style>
-          {
-            `@keyframes ${this.uniqueID} {\n` +
-            '  0% {\n' +
-            '    background-position: 0px center;\n' +
-            '  }\n' +
-            '  100% {\n' +
-            `    background-position: -${this.sprite.offsetWidth * (this.props.frames - 1)}px center;\n` +
-            '  }\n' +
-            '}\n' +
-            `@keyframes ${this.uniqueID}-back {\n` +
-            '  0% {\n' +
-            `    background-position: -${this.sprite.offsetWidth * (this.props.frames - 1)}px center;\n` +
-            '  }\n' +
-            '  100% {\n' +
-            '    background-position: 0px center;\n' +
-            '  }\n' +
-            '}\n'
-          }
-        </style>
-        <div
-          {...this.props}
-          ref="sprite"
-          className={this.getClassNames()}
-          style={this.getStyle()}
-        />
-      </div>
-    );
+            <div>
+                <style>
+                    {
+                        `@keyframes ${this.uniqueID} {\n` +
+                        '    0% {\n' +
+                        '        background-position: 0px center;\n' +
+                        '    }\n' +
+                        '    100% {\n' +
+                        '        background-position: -' +
+                            `${this.sprite.offsetWidth * (this.props.frames - 1)}px center;\n` +
+                        '    }\n' +
+                        '}\n' +
+                        `@keyframes ${this.uniqueID}-back {\n` +
+                        '    0% {\n' +
+                        '        background-position: -' +
+                            `${this.sprite.offsetWidth * (this.props.frames - 1)}px center;\n` +
+                        '    }\n' +
+                        '    100% {\n' +
+                        '        background-position: 0px center;\n' +
+                        '    }\n' +
+                        '}\n'
+                    }
+                </style>
+                <div
+                    {...this.props}
+                    ref="sprite"
+                    className={this.getClassNames()}
+                    style={this.getStyle()}
+                />
+            </div>
+        );
     }
 }
 

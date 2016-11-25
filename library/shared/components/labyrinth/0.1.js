@@ -171,31 +171,31 @@ class Labyrinth extends skoash.Component {
 
     render() {
         return (
-      <div {...this.props} className={this.getClassNames()}>
-        <canvas
-          ref={CANVAS}
-          className={CANVAS}
-        />
-        <skoash.Image
-          ref={MAP}
-          className={MAP}
-          src={this.props.map}
-        />
-        <skoash.Image
-          ref={IMAGE}
-          className={IMAGE}
-          src={this.props.img}
-        />
-        {this.renderContentList('assets')}
-        {this.renderContentList('items')}
-        {this.renderContentList('enemies')}
-        <div
-          ref={PLAYER}
-          className={PLAYER}
-          style={this.getPlayerStyle()}
-        />
-      </div>
-    );
+            <div {...this.props} className={this.getClassNames()}>
+                <canvas
+                    ref={CANVAS}
+                    className={CANVAS}
+                />
+                <skoash.Image
+                    ref={MAP}
+                    className={MAP}
+                    src={this.props.map}
+                />
+                <skoash.Image
+                    ref={IMAGE}
+                    className={IMAGE}
+                    src={this.props.img}
+                />
+                {this.renderContentList('assets')}
+                {this.renderContentList('items')}
+                {this.renderContentList('enemies')}
+                <div
+                    ref={PLAYER}
+                    className={PLAYER}
+                    style={this.getPlayerStyle()}
+                />
+            </div>
+        );
     }
 }
 

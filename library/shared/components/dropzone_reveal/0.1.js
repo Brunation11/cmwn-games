@@ -40,13 +40,13 @@ class DropzoneReveal extends skoash.Component {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) => {
                 return (
-          <asset.type
-            {...asset.props}
-            ref={asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
-        );
+                    <asset.type
+                        {...asset.props}
+                        ref={asset.props['data-ref'] || ('asset-' + key)}
+                        key={key}
+                        data-ref={key}
+                    />
+                );
             });
         }
 
@@ -55,51 +55,51 @@ class DropzoneReveal extends skoash.Component {
 
     renderDropzone() {
         return (
-      <Dropzone
-        ref="dropzone"
-        dropzones={this.props.dropzones}
-        draggables={this.props.dropzoneDraggables}
-        draggablesLeft={this.props.dropzoneDraggablesLeft}
-        draggablesRight={this.props.dropzoneDraggablesRight}
-        assets={this.props.dropzoneAssets}
-        correctRespond={this.correctRespond.bind(this)}
-        incorrectRespond={this.incorrectRespond.bind(this)}
-        onComplete={this.props.onDropzoneComplete}
-      />
-    );
+            <Dropzone
+                ref="dropzone"
+                dropzones={this.props.dropzones}
+                draggables={this.props.dropzoneDraggables}
+                draggablesLeft={this.props.dropzoneDraggablesLeft}
+                draggablesRight={this.props.dropzoneDraggablesRight}
+                assets={this.props.dropzoneAssets}
+                correctRespond={this.correctRespond.bind(this)}
+                incorrectRespond={this.incorrectRespond.bind(this)}
+                onComplete={this.props.onDropzoneComplete}
+            />
+        );
     }
 
     renderReveal() {
         return (
-      <Reveal
-        ref="reveal"
-        list={this.props.revealList}
-        assets={this.props.revealAssets}
-        closeRespond={this.closeRespond.bind(this)}
-        onComplete={this.revealComplete.bind(this)}
-        onOpen={this.props.onOpen}
-        openOnStart={this.props.openOnStart}
-        openReveal={this.props.openReveal}
-        closeReveal={this.props.closeReveal}
-      />
-    );
+            <Reveal
+                ref="reveal"
+                list={this.props.revealList}
+                assets={this.props.revealAssets}
+                closeRespond={this.closeRespond.bind(this)}
+                onComplete={this.revealComplete.bind(this)}
+                onOpen={this.props.onOpen}
+                openOnStart={this.props.openOnStart}
+                openReveal={this.props.openReveal}
+                closeReveal={this.props.closeReveal}
+            />
+        );
     }
 
     getClassNames() {
         return classNames(
-      'dropzone-reveal',
-      super.getClassNames(),
-    );
+            'dropzone-reveal',
+            super.getClassNames(),
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        {this.renderReveal()}
-        {this.renderDropzone()}
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                {this.renderReveal()}
+                {this.renderDropzone()}
+            </div>
+        );
     }
 }
 

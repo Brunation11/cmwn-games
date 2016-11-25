@@ -59,12 +59,12 @@ class GameEmbedder extends skoash.Component {
 
     render() {
         return (
-      <iframe
-        {...this.props}
-        ref="game"
-        onLoad={this.onLoad}
-      />
-    );
+            <iframe
+                {...this.props}
+                ref="game"
+                onLoad={this.onLoad}
+            />
+        );
     }
 }
 

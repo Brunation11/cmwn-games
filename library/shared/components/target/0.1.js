@@ -90,23 +90,23 @@ class Target extends skoash.Component {
 
     getClassNames() {
         return classNames(
-      'target',
-      this.state.targetClass,
-      super.getClassNames(),
-    );
+            'target',
+            this.state.targetClass,
+            super.getClassNames(),
+        );
     }
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        <div className="assets">
-          {this.renderContentList('assets')}
-        </div>
-        <div className="targets">
-          {this.renderContentList('targets')}
-        </div>
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                <div className="assets">
+                    {this.renderContentList('assets')}
+                </div>
+                <div className="targets">
+                    {this.renderContentList('targets')}
+                </div>
+            </div>
+        );
     }
 }
 

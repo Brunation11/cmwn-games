@@ -204,16 +204,16 @@ class Reveal extends skoash.Component {
 
     render() {
         return (
-      <div className={this.getClassNames()}>
-        {this.renderAssets()}
-        <div>
-          <ul>
-            {this.renderList()}
-          </ul>
-          <button className="close-reveal" onClick={this.close.bind(this)}></button>
-        </div>
-      </div>
-    );
+            <div className={this.getClassNames()}>
+                {this.renderAssets()}
+                <div>
+                    <ul>
+                        {this.renderList()}
+                    </ul>
+                    <button className="close-reveal" onClick={this.close.bind(this)}></button>
+                </div>
+            </div>
+        );
     }
 }
 

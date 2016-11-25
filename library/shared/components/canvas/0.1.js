@@ -318,49 +318,49 @@ class Canvas extends skoash.Component {
 
     isInBounds(key, type) {
         return !this.state.width ||
-      !this.state.height ||
-      !(
-      // box to left
-      skoash.util.doIntersect(
-        this.refs[type + '-' + key].state.corners,
-          [
-          {x: 0, y: -this.state.height},
-          {x: 0, y: 2 * this.state.height},
-          {x: -this.state.width, y: 2 * this.state.height},
-          {x: -this.state.width, y: -this.state.height}
-          ]
-      ) ||
-      // box above
-      skoash.util.doIntersect(
-        this.refs[type + '-' + key].state.corners,
-          [
-          {x: -this.state.width, y: 0},
-          {x: 2 * this.state.width, y: 0},
-          {x: 2 * this.state.width, y: -this.state.height},
-          {x: this.state.width, y: -this.state.height}
-          ]
-      ) ||
-      // box to right
-      skoash.util.doIntersect(
-        this.refs[type + '-' + key].state.corners,
-          [
-          {x: this.state.width, y: -this.state.height},
-          {x: this.state.width, y: 2 * this.state.height},
-          {x: 2 * this.state.width, y: 2 * this.state.height},
-          {x: 2 * this.state.width, y: -this.state.height}
-          ]
-      ) ||
-      // box below
-      skoash.util.doIntersect(
-        this.refs[type + '-' + key].state.corners,
-          [
-          {x: -this.state.width, y: this.state.height},
-          {x: 2 * this.state.width, y: this.state.height},
-          {x: 2 * this.state.width, y: 2 * this.state.height},
-          {x: -this.state.width, y: 2 * this.state.height}
-          ]
-      )
-    );
+            !this.state.height ||
+            !(
+            // box to left
+            skoash.util.doIntersect(
+                this.refs[type + '-' + key].state.corners,
+                [
+                    {x: 0, y: -this.state.height},
+                    {x: 0, y: 2 * this.state.height},
+                    {x: -this.state.width, y: 2 * this.state.height},
+                    {x: -this.state.width, y: -this.state.height}
+                ]
+            ) ||
+            // box above
+            skoash.util.doIntersect(
+                this.refs[type + '-' + key].state.corners,
+                [
+                    {x: -this.state.width, y: 0},
+                    {x: 2 * this.state.width, y: 0},
+                    {x: 2 * this.state.width, y: -this.state.height},
+                    {x: this.state.width, y: -this.state.height}
+                ]
+            ) ||
+            // box to right
+            skoash.util.doIntersect(
+                this.refs[type + '-' + key].state.corners,
+                [
+                    {x: this.state.width, y: -this.state.height},
+                    {x: this.state.width, y: 2 * this.state.height},
+                    {x: 2 * this.state.width, y: 2 * this.state.height},
+                    {x: 2 * this.state.width, y: -this.state.height}
+                ]
+            ) ||
+            // box below
+            skoash.util.doIntersect(
+                this.refs[type + '-' + key].state.corners,
+                [
+                    {x: -this.state.width, y: this.state.height},
+                    {x: 2 * this.state.width, y: this.state.height},
+                    {x: 2 * this.state.width, y: 2 * this.state.height},
+                    {x: -this.state.width, y: 2 * this.state.height}
+                ]
+            )
+        );
     }
 
     setValid(valid) {
@@ -384,19 +384,19 @@ class Canvas extends skoash.Component {
 
         return this.state.items.map((item, key) => {
             return (
-        <EditableAsset
-          {...item}
-          data-ref={key}
-          minDim={this.props.itemMinDim}
-          deleteItem={self.deleteItem}
-          checkItem={self.checkItem}
-          deactivateItems={self.deactivateItems}
-          relayerItems={self.relayerItems}
-          setValid={self.setValid}
-          ref={'item-' + key}
-          key={key}
-        />
-      );
+                <EditableAsset
+                    {...item}
+                    data-ref={key}
+                    minDim={this.props.itemMinDim}
+                    deleteItem={self.deleteItem}
+                    checkItem={self.checkItem}
+                    deactivateItems={self.deactivateItems}
+                    relayerItems={self.relayerItems}
+                    setValid={self.setValid}
+                    ref={'item-' + key}
+                    key={key}
+                />
+            );
         });
     }
 
@@ -405,21 +405,21 @@ class Canvas extends skoash.Component {
 
         return this.state.messages.map((item, key) => {
             return (
-        <EditableAsset
-          {...item}
-          data-ref={key}
-          minDim={this.props.messageMinDim}
-          deleteItem={self.deleteItem}
-          checkItem={self.checkItem}
-          deactivateItems={self.deactivateItems}
-          relayerItems={self.relayerItems}
-          setValid={self.setValid}
-          canvasWidth={this.state.width}
-          canvasHeight={this.state.height}
-          ref={'message-' + key}
-          key={key}
-        />
-      );
+                <EditableAsset
+                    {...item}
+                    data-ref={key}
+                    minDim={this.props.messageMinDim}
+                    deleteItem={self.deleteItem}
+                    checkItem={self.checkItem}
+                    deactivateItems={self.deactivateItems}
+                    relayerItems={self.relayerItems}
+                    setValid={self.setValid}
+                    canvasWidth={this.state.width}
+                    canvasHeight={this.state.height}
+                    ref={'message-' + key}
+                    key={key}
+                />
+            );
         });
     }
 
@@ -432,21 +432,21 @@ class Canvas extends skoash.Component {
 
     render() {
         return (
-      <ul
-        className={this.getClassNames()}
-        style={this.getStyle()}
-        onClick={this.deactivateItems}
-      >
-        {this.renderItems()}
-        {this.renderMessages()}
-      </ul>
-    );
+            <ul
+                className={this.getClassNames()}
+                style={this.getStyle()}
+                onClick={this.deactivateItems}
+            >
+                {this.renderItems()}
+                {this.renderMessages()}
+            </ul>
+        );
     }
 }
 
 Canvas.defaultProps = _.defaults({
     maxInstances: 5,
-    setValid: _.identity,
+    setValid: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Canvas;

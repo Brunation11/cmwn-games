@@ -48,22 +48,22 @@ class IntervalScreen extends skoash.Screen {
             if (!component) return;
             if (component.type.name === 'AudioSequence') { // does not work for media sequence yet
                 return (
-          <component.type
-            {...component.props}
-            ref={ref}
-            key={key}
-            playInterval={self.props.interval}
-            onPlay={self.startNextAnimation.bind(this)}
-          />
-        );
+                    <component.type
+                        {...component.props}
+                        ref={ref}
+                        key={key}
+                        playInterval={self.props.interval}
+                        onPlay={self.startNextAnimation.bind(this)}
+                    />
+                );
             }
             return (
-        <component.type
-          {...component.props}
-          ref={ref}
-          key={key}
-        />
-      );
+                <component.type
+                    {...component.props}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 }

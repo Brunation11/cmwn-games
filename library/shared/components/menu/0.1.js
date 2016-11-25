@@ -133,13 +133,13 @@ class Menu extends Selectable {
 
     render() {
         return (
-      <ul
-        className={this.getClassNames()}
-        onClick={this.onClick.bind(this)}
-      >
-        {this.renderItems()}
-      </ul>
-    );
+            <ul
+                className={this.getClassNames()}
+                onClick={this.onClick.bind(this)}
+            >
+                {this.renderItems()}
+            </ul>
+        );
     }
 }
 

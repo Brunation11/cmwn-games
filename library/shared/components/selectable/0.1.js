@@ -128,11 +128,11 @@ class Selectable extends skoash.Component {
         if (!this.props.bin) return null;
 
         return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
     }
 
     renderList() {
@@ -142,29 +142,29 @@ class Selectable extends skoash.Component {
             var ref = li.ref || li.props.id || dataRef;
             var message = li.props.message || '' + key;
             return (
-        <li.type
-          {...li.props}
-          type="li"
-          className={this.getClass(key, li)}
-          message={message}
-          data-message={message}
-          data-ref={dataRef}
-          ref={ref}
-          key={key}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    type="li"
+                    className={this.getClass(key, li)}
+                    message={message}
+                    data-message={message}
+                    data-ref={dataRef}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
     render() {
         return (
-      <div>
-        {this.renderBin()}
-        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-      </div>
-    );
+            <div>
+                {this.renderBin()}
+                <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
     }
 }
 
