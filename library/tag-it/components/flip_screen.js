@@ -6,7 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="flip"
             emitOnComplete={{
-                    name: 'flip',
+                name: 'flip',
             }}
         >
             <skoash.MediaSequence

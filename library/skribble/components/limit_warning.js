@@ -17,9 +17,9 @@ export default (
         </div>
         <button
             onClick={function () {
-                    skoash.trigger('menuClose', {
-                            id: 'limitWarning',
-                    });
+                skoash.trigger('menuClose', {
+                    id: 'limitWarning',
+                });
             }}
         />
     </skoash.Screen>

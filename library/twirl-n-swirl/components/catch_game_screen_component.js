@@ -33,7 +33,7 @@ export default function (props, ref, key, opts = {}) {
                     className={`${opts.bin[i].className} ${opts.dropSpeed}`}
                     message={opts.bin[i].message}
                     style={{
-                            top: 400 * (j + .4) / opts.rows,
+                        top: 400 * (j + .4) / opts.rows,
                     }}
                 />
             );
