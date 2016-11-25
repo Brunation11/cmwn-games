@@ -55,8 +55,8 @@ class AllAboutYou extends skoash.Game {
 
     renderLoader() {
         return (
-      <Loader />
-    );
+            <Loader />
+        );
     }
 
     getBackgroundIndex(currentScreenIndex) {
@@ -111,13 +111,29 @@ class AllAboutYou extends skoash.Game {
 
     renderAssets() {
         return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/assets/_audio/_BKG/S_BKG_3.mp3" />
-        <skoash.Audio ref="bkg-2" type="background" src="media/assets/_audio/_BKG/S_BKG_2.mp3" />
-        <skoash.Audio ref="button" type="sfx" src="media/assets/_audio/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/assets/_audio/_Buttons/S_BU_4.mp3" />
-      </div>
-    );
+            <div>
+                <skoash.Audio
+                    ref="bkg-1"
+                    type="background"
+                    src="media/assets/_audio/_BKG/S_BKG_3.mp3"
+                />
+                <skoash.Audio
+                    ref="bkg-2"
+                    type="background"
+                    src="media/assets/_audio/_BKG/S_BKG_2.mp3"
+                />
+                <skoash.Audio
+                    ref="button"
+                    type="sfx"
+                    src="media/assets/_audio/_Buttons/S_BU_1.mp3"
+                />
+                <skoash.Audio
+                    ref="screen-complete"
+                    type="sfx"
+                    src="media/assets/_audio/_Buttons/S_BU_4.mp3"
+                />
+            </div>
+        );
     }
 
 }

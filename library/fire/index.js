@@ -51,8 +51,8 @@ class Fire extends skoash.Game {
 
     renderLoader() {
         return (
-      <Loader />
-    );
+            <Loader />
+        );
     }
 
     getClassNames() {
@@ -65,14 +65,14 @@ class Fire extends skoash.Game {
 
     renderAssets() {
         return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
-        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
-        <div className="background BKG-2" />
-        <div className="background BKG-3" />
-      </div>
-    );
+            <div>
+                <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+                <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
+                <div className="background BKG-2" />
+                <div className="background BKG-3" />
+            </div>
+        );
     }
 
 }
