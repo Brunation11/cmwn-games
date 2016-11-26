@@ -64,8 +64,6 @@ env = argv.environment || argv.env || 'prod';
 debug = argv.debug;
 local = argv.local || argv.l;
 
-// the clean task still does not always run last
-// this should be updated to make sure clean gets run after all other tasks
 // Production build
 buildTask = [
     'sass',
@@ -141,11 +139,6 @@ gulp.task('copy-index', function () {
             if (err == null) {
                 gulp
                 .src(indexPath)
-                // include the following code where you want the livereload script to be injected
-                /*
-                  <!-- inject:livereload -->
-                  <!-- endinject -->
-                 */
                 .pipe(inject(gulp.src('./library/shared/livereload.js'), {
                     starttag: '<!-- inject:livereload -->',
                     transform: function (filePath, file) {
