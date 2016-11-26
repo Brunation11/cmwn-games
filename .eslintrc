@@ -6,7 +6,7 @@
         "React": true,
         "ReactDOM": true,
         "moment": true,
-        'require': true,
+        "require": true,
         "module": true,
         "__dirname": true,
         "autoprefixer": true,

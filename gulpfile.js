@@ -23,6 +23,9 @@ var livereload = require('gulp-livereload');
 var inject = require('gulp-inject');
 var exec = require('child_process').exec;
 var buildTask;
+var eslint = require('gulp-eslint');
+var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
+var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 
 function lsd(_path) {
     return fs.readdirSync(_path).filter(function (file) {
@@ -315,3 +318,26 @@ function cleanTask() {
     }
 }
 gulp.task('clean', cleanTask);
+
+/*·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´Lint Tasks`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·*/
+gulp.task('lint', ['lint-js', 'lint-config']);
+gulp.task('lint-js', function () {
+    return gulp.src(['library/**/*.js', '!library/**/*.test.js'])
+        // eslint() attaches the lint output to the eslint property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint(eslintConfigJs))
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        .pipe(eslint.format('stylish', fs.createWriteStream('jslint.log')))
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
+});
+gulp.task('lint-config', function () {
+    return gulp.src(['gulpfile.js', 'webpack.config.dev.js', 'webpack.config.prod.js'])
+        .pipe(eslint(_.defaultsDeep(eslintConfigConfig, eslintConfigJs)))
+        .pipe(eslint.format())
+        .pipe(eslint.format('stylish', fs.createWriteStream('configlint.log')))
+        .pipe(eslint.failAfterError());
+});
