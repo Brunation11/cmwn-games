@@ -272,6 +272,7 @@ function watchTask() {
 
     watch([
         'library/' + game + '/**/*.js',
+        'library/shared/**/*.js',
     ], function () {
         gulp.start('webpack:build');
     });
@@ -279,6 +280,8 @@ function watchTask() {
     watch([
         'library/' + game + '/**/*.scss',
         'library/' + game + '/**/*.css',
+        'library/shared/**/*.scss',
+        'library/shared/**/*.css',
     ], function () {
         gulp.start('sass');
     });
@@ -290,8 +293,11 @@ function watchTask() {
     });
 
     watch([
-        'library/shared/**/*',
         'library/' + game + '/**/*.html',
+        'library/shared/**/*',
+        '!library/shared/**/*.js',
+        '!library/shared/**/*.scss',
+        '!library/shared/**/*.css',
     ], function () {
         gulp.start('build');
     });
