@@ -32,7 +32,7 @@ do
 
     echo "[pre-push] Running lint"
     docker-compose run -T --rm node gulp lint --color >> push.log 2>&1
-
+    echo $?
     if [ $? != 0 ]; then
         echo "[91m[pre-push] failed: build failed linting[0m"
         cat configlint.log 2>/dev/null
