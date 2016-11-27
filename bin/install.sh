@@ -35,7 +35,7 @@ cat <<EOF
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!                                                    !!
 !!  You're all set and ready to go.  In order to hit  !!
-!!  api-local.changemyworldnow.com, you need to add   !!
+!!  games-local.changemyworldnow.com, you need to add !!
 !!  the following to your /etc/hosts file:            !!
 !!                                                    !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
