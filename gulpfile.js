@@ -305,7 +305,6 @@ function watchTask() {
         gulp.start('build');
     });
 }
-
 gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
 
