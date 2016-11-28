@@ -1,59 +1,59 @@
 #catch, .catch {
-  .items {
-    position: relative;
-    display: block;
-    margin: 0;
-    width: 960px;
-    height: 540px;
-    list-style: none;
-  }
-
-  li {
-    position: absolute;
-    background-image: url(../media/S_FloatingWeed/IMG_6.1.png);
-    background-size: 100%;
-    width: 100px;
-    height: 100px;
-    animation-name: float;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    cursor: default;
-
-    $lefts: 150 250 300 350 450 550 650 700;
-    $tops: 100 150 50 150 100 150 100 150;
-    $delays: 0 3 0 6 3 6 4 4;
-    $durations: 12 10 11 10 12 12 11 12;
-
-    &.CAUGHT {
-      opacity: 0;
-      background: none;
+    .items {
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 960px;
+        height: 540px;
+        list-style: none;
     }
 
-    @for $i from 1 through 8 {
-      &:nth-of-type(#{$i}) {
-        left: nth($lefts,$i)+px;
-        top: -1*nth($tops,$i)+px;
-        animation-duration: nth($durations,$i)+s;
-        animation-delay: nth($delays,$i)+s;
-      }
-    }
-  }
+    li {
+        position: absolute;
+        background-image: url(../media/S_FloatingWeed/IMG_6.1.png);
+        background-size: 100%;
+        width: 100px;
+        height: 100px;
+        animation-name: float;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        cursor: default;
 
-  .bucket {
-    position: absolute;
-    bottom: 20px;
-    left: 10px;
-    height: 80px;
-    width: 140px;
-    display: block;
-    background-color: black;
-  }
+        $lefts: 150 250 300 350 450 550 650 700;
+        $tops: 100 150 50 150 100 150 100 150;
+        $delays: 0 3 0 6 3 6 4 4;
+        $durations: 12 10 11 10 12 12 11 12;
 
-  &.COMPLETE {
-    .selectable-component {
-      .items {
-        pointer-events: none;
-      }
+        &.CAUGHT {
+            opacity: 0;
+            background: none;
+        }
+
+        @for $i from 1 through 8 {
+            &:nth-of-type(#{$i}) {
+                left: nth($lefts,$i)+px;
+                top: -1*nth($tops,$i)+px;
+                animation-duration: nth($durations,$i)+s;
+                animation-delay: nth($delays,$i)+s;
+            }
+        }
     }
-  }
+
+    .bucket {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        height: 80px;
+        width: 140px;
+        display: block;
+        background-color: black;
+    }
+
+    &.COMPLETE {
+        .selectable-component {
+            .items {
+                pointer-events: none;
+            }
+        }
+    }
 }

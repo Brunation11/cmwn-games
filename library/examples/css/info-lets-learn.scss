@@ -1,15 +1,15 @@
 #info-lets-learn {
-  img {
-    position: absolute;
-    top: 140px;
-    left: 130px;
-    width: 700px;
-    margin: 0;
-  }
-
-  &.READY.OPEN {
     img {
-      animation-name: zoomInDown;
+        position: absolute;
+        top: 140px;
+        left: 130px;
+        width: 700px;
+        margin: 0;
     }
-  }
+
+    &.READY.OPEN {
+        img {
+            animation-name: zoomInDown;
+        }
+    }
 }

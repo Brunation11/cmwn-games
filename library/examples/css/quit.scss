@@ -1,21 +1,21 @@
 #quit {
-  margin-top: 60px;
-  transform: translateX(-100%);
-  transition: transform .25s;
+    margin-top: 60px;
+    transform: translateX(-100%);
+    transition: transform .25s;
 
-  .frame {
-    text-align: center;
+    .frame {
+        text-align: center;
 
-    h2 {
-      margin: 0;
+        h2 {
+            margin: 0;
+        }
+
+        button {
+            margin: 20px 10px;
+        }
     }
 
-    button {
-      margin: 20px 10px;
+    &.OPEN {
+        transform: translateX(0%);
     }
-  }
-
-  &.OPEN {
-    transform: translateX(0%);
-  }
 }

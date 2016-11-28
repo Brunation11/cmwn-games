@@ -1,15 +1,15 @@
 .draggable {
-  position: relative;
-  cursor: grab;
-  cursor: -moz-grab;
-  border: 2px solid blue;
+    position: relative;
+    cursor: grab;
+    cursor: -moz-grab;
+    border: 2px solid blue;
 
-  &.DRAGGING {
-    cursor: grabbing;
-    cursor: -moz-grabbing;
-  }
+    &.DRAGGING {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+    }
 
-  &.RETURN {
-    transition: transform .5s;
-  }
+    &.RETURN {
+        transition: transform .5s;
+    }
 }

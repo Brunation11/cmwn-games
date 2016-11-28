@@ -1,13 +1,13 @@
 @mixin powder($blur: 15px) {
-  font-family: "Powderfinger";
-  text-shadow: 0px 0px $blur #32c4f3;
-  font-weight: normal;
+    font-family: "Powderfinger";
+    text-shadow: 0px 0px $blur #32c4f3;
+    font-weight: normal;
 }
 
 @mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }

@@ -1,60 +1,60 @@
 #title {
-  img {
-    position: absolute;
-
-    &.bulb {
-      width: 400px;
-      left: 280px;
-      top: 20px;
-    }
-
-    &.presents {
-      width: 200px;
-      left: 140px;
-      top: 210px;
-    }
-
-    &.title {
-      width: 700px;
-      left: 130px;
-      top: 300px;
-    }
-  }
-
-  .prev-screen {
-    display: none;
-  }
-
-  &.READY {
     img {
-      opacity: 1;
+        position: absolute;
 
-      &.bulb {
-        animation-name: bounceInUp;
-      }
+        &.bulb {
+            width: 400px;
+            left: 280px;
+            top: 20px;
+        }
 
-      &.presents {
-        animation-name: bounceInLeft;
-        animation-delay: 1s;
-      }
+        &.presents {
+            width: 200px;
+            left: 140px;
+            top: 210px;
+        }
 
-      &.title {
-        animation-name: bounceInUp;
-        animation-delay: 2s;
-      }
+        &.title {
+            width: 700px;
+            left: 130px;
+            top: 300px;
+        }
     }
 
-    &.COMPLETE {
-      img {
-        animation-name: flicker;
-        animation-duration: 2s;
-        animation-delay: 0s;
-        animation-iteration-count: 3;
-      }
+    .prev-screen {
+        display: none;
     }
-  }
 
-  &.CLOSE {
-    transform: translateX(0%);
-  }
+    &.READY {
+        img {
+            opacity: 1;
+
+            &.bulb {
+                animation-name: bounceInUp;
+            }
+
+            &.presents {
+                animation-name: bounceInLeft;
+                animation-delay: 1s;
+            }
+
+            &.title {
+                animation-name: bounceInUp;
+                animation-delay: 2s;
+            }
+        }
+
+        &.COMPLETE {
+            img {
+                animation-name: flicker;
+                animation-duration: 2s;
+                animation-delay: 0s;
+                animation-iteration-count: 3;
+            }
+        }
+    }
+
+    &.CLOSE {
+        transform: translateX(0%);
+    }
 }

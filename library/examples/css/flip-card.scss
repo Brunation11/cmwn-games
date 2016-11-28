@@ -1,125 +1,125 @@
 .selectable {
-  .flip-card {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 150px;
-    height: 250px;
-    margin: 0 5px;
-    perspective: 500px;
-    cursor: pointer;
+    .flip-card {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        width: 150px;
+        height: 250px;
+        margin: 0 5px;
+        perspective: 500px;
+        cursor: pointer;
 
-    .side {
-      position: absolute;
-      top: 0;
-      left: 0;
-      max-height: 100%;
-      border-radius: 8px;
-      transition: transform 0.5s;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      overflow: hidden;
-
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-    }
-
-    &.lr {
-      .side {
-        &.a {
-          transform: rotateY(0deg);
-        }
-
-        &.b {
-          transform: rotateY(-180deg);
-        }
-      }
-
-      &.HIGHLIGHTED {
         .side {
-          &.a {
-            transform: rotateY(180deg);
-          }
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-height: 100%;
+            border-radius: 8px;
+            transition: transform 0.5s;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            overflow: hidden;
 
-          &.b {
-            transform: rotateY(0deg);
-          }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
         }
-      }
+
+        &.lr {
+            .side {
+                &.a {
+                    transform: rotateY(0deg);
+                }
+
+                &.b {
+                    transform: rotateY(-180deg);
+                }
+            }
+
+            &.HIGHLIGHTED {
+                .side {
+                    &.a {
+                        transform: rotateY(180deg);
+                    }
+
+                    &.b {
+                        transform: rotateY(0deg);
+                    }
+                }
+            }
+        }
+
+        &.rl {
+            .side {
+                .a {
+                    transform: rotateY(0deg);
+                }
+
+                .b {
+                    transform: rotateY(180deg);
+                }
+            }
+
+            &.HIGHLIGHTED {
+                .side {
+                    &.a {
+                        transform: rotateY(-180deg);
+                    }
+
+                    &.b {
+                        transform: rotateY(0deg);
+                    }
+                }
+            }
+        }
+
+        &.tb {
+            .side {
+                &.a {
+                    transform: rotateX(0deg);
+                }
+
+                &.b {
+                    transform: rotateX(180deg);
+                }
+            }
+
+            &.HIGHLIGHTED {
+                .side {
+                    &.a {
+                        transform: rotateX(-180deg);
+                    }
+
+                    &.b {
+                        transform: rotateX(0deg);
+                    }
+                }
+            }
+        }
+
+        &.bt {
+            .side {
+                &.a {
+                    transform: rotateX(0deg);
+                }
+
+                &.b {
+                    transform: rotateX(-180deg);
+                }
+            }
+
+            &.HIGHLIGHTED {
+                .side {
+                    &.a {
+                        transform: rotateX(180deg);
+                    }
+
+                    &.b {
+                        transform: rotateX(0deg);
+                    }
+                }
+            }
+        }
     }
-
-    &.rl {
-      .side {
-        .a {
-          transform: rotateY(0deg);
-        }
-
-        .b {
-          transform: rotateY(180deg);
-        }
-      }
-
-      &.HIGHLIGHTED {
-        .side {
-          &.a {
-            transform: rotateY(-180deg);
-          }
-
-          &.b {
-            transform: rotateY(0deg);
-          }
-        }
-      }
-    }
-
-    &.tb {
-      .side {
-        &.a {
-          transform: rotateX(0deg);
-        }
-
-        &.b {
-          transform: rotateX(180deg);
-        }
-      }
-
-      &.HIGHLIGHTED {
-        .side {
-          &.a {
-            transform: rotateX(-180deg);
-          }
-
-          &.b {
-            transform: rotateX(0deg);
-          }
-        }
-      }
-    }
-
-    &.bt {
-      .side {
-        &.a {
-          transform: rotateX(0deg);
-        }
-
-        &.b {
-          transform: rotateX(-180deg);
-        }
-      }
-
-      &.HIGHLIGHTED {
-        .side {
-          &.a {
-            transform: rotateX(180deg);
-          }
-
-          &.b {
-            transform: rotateX(0deg);
-          }
-        }
-      }
-    }
-  }
 }

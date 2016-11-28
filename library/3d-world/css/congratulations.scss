@@ -2,38 +2,38 @@
 @import 'mixins';
 
 #congratulations {
-  .screen-content {
-    &:before {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      left: 260px;
-      bottom: 0;
-      width: 440px;
-      height: 400px;
-      background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-      background-size: 2200px;
-      background-position: -880px 0;
-    }
-
-    div {
-      position: absolute;
-      font-size: 100px;
-
-      $colors: $purple $green $green $purple $purple;
-      $strokes: 2 3 3 2 2;
-      $stroke-colors: $white $black $black $white $white;
-      $lefts: 60  50 620  90 630;
-      $tops:  40 150 150 260 260;
-
-      @for $i from 1 through 5 {
-        &:nth-of-type(#{$i}) {
-          left: #{nth($lefts, $i)}px;
-          top: #{nth($tops, $i)}px;
-          color: nth($colors, $i);
-          @include text-stroke(nth($strokes, $i), nth($stroke-colors, $i));
+    .screen-content {
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            left: 260px;
+            bottom: 0;
+            width: 440px;
+            height: 400px;
+            background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+            background-size: 2200px;
+            background-position: -880px 0;
         }
-      }
+
+        div {
+            position: absolute;
+            font-size: 100px;
+
+            $colors: $purple $green $green $purple $purple;
+            $strokes: 2 3 3 2 2;
+            $stroke-colors: $white $black $black $white $white;
+            $lefts: 60    50 620    90 630;
+            $tops:    40 150 150 260 260;
+
+            @for $i from 1 through 5 {
+                &:nth-of-type(#{$i}) {
+                    left: #{nth($lefts, $i)}px;
+                    top: #{nth($tops, $i)}px;
+                    color: nth($colors, $i);
+                    @include text-stroke(nth($strokes, $i), nth($stroke-colors, $i));
+                }
+            }
+        }
     }
-  }
 }

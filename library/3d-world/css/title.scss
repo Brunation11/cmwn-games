@@ -1,23 +1,23 @@
 @import 'variables';
 
 #title {
-  img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  .prev-screen {
-    display: none;
-  }
-
-  .next-screen {
-    width: 165px;
-    background-position: 0px -5px;
-
-    &:hover {
-      background-position: 0px -53px;
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
     }
-  }
+
+    .prev-screen {
+        display: none;
+    }
+
+    .next-screen {
+        width: 165px;
+        background-position: 0px -5px;
+
+        &:hover {
+            background-position: 0px -53px;
+        }
+    }
 }

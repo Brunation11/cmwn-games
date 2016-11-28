@@ -1,579 +1,579 @@
 #trash {
-  opacity: 0;
-  cursor: none;
-
-  .net {
-    position: absolute;
-    pointer-events: none;
-    width: 250px;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity .5s;
-  }
-
-  .selectable,
-  .timer {
-    opacity: 1;
-    transition: opacity .5s;
-  }
-
-  .selectable {
-
-    position: relative;
-    width: 960px;
-    height: 540px;
-    margin: 0;
-    display: block;
-
-    li {
-      position: absolute;
-      background-image: url('../media/_images/_S_Trash/img_9.2.png');
-      background-size: 1600px;
-      background-repeat: no-repeat;
-      animation: bob 8s infinite;
-      transition: opacity .5s;
-
-      @for $i from 1 through 20 {
-        &:nth-child(#{$i}).HIGHLIGHTED {
-          opacity: 0;
-          pointer-events: none;
-        }
-      }
-
-      &[data-ref=bottle] {
-        width: 90px;
-        height: 120px;
-        background-position: -40px -30px;
-        top: 280px;
-        left: 860px;
-
-        &:hover {
-          background-position: -240px -30px;
-        }
-      }
-
-      &[data-ref=cans] {
-        width: 160px;
-        height: 120px;
-        background-position: -410px -25px;
-        top: 200px;
-        left: 10px;
-
-        &:hover {
-          background-position: -610px -25px;
-        }
-      }
-
-      &[data-ref=cleaner] {
-        width: 100px;
-        height: 120px;
-        background-position: -840px -30px;
-        top: 200px;
-        left: 230px;
-
-        &:hover {
-          background-position: -1040px -30px;
-        }
-      }
-
-      &[data-ref=wash] {
-        width: 80px;
-        height: 120px;
-        background-position: -1250px -30px;
-        top: 300px;
-        left: 340px;
-
-        &:hover {
-          background-position: -1450px -30px;
-        }
-      }
-
-      &[data-ref=necklace] {
-        width: 100px;
-        height: 100px;
-        background-position: -40px -240px;
-        top: 390px;
-        left: 570px;
-
-        &:hover {
-          background-position: -240px -240px;
-        }
-      }
-
-      &[data-ref=oil] {
-        width: 100px;
-        height: 120px;
-        background-position: -440px -225px;
-        top: 280px;
-        left: 670px;
-
-        &:hover {
-          background-position: -640px -225px;
-        }
-      }
-
-      &[data-ref=bag] {
-        width: 110px;
-        height: 120px;
-        background-position: -835px -230px;
-        top: 180px;
-        left: 320px;
-
-        &:hover {
-          background-position: -1035px -230px;
-        }
-      }
-
-      &[data-ref=water] {
-        width: 100px;
-        height: 120px;
-        background-position: -1240px -230px;
-        top: 300px;
-        left: 20px;
-
-        &:hover {
-          background-position: -1440px -230px;
-        }
-      }
-
-      &[data-ref=shoes] {
-        width: 180px;
-        height: 110px;
-        background-position: 0px -440px;
-        top: 110px;
-        left: 180px;
-
-        &:hover {
-          background-position: -200px -440px;
-        }
-      }
-
-      &[data-ref=soap] {
-        width: 100px;
-        height: 140px;
-        background-position: -430px -425px;
-        top: 80px;
-        left: 440px;
-
-        &:hover {
-          background-position: -630px -425px;
-        }
-      }
-
-      &[data-ref=sauce] {
-        width: 110px;
-        height: 120px;
-        background-position: -835px -430px;
-        top: 190px;
-        left: 500px;
-
-        &:hover {
-          background-position: -1035px -430px;
-        }
-      }
-
-      &[data-ref=beeker] {
-        width: 80px;
-        height: 100px;
-        background-position: -1250px -440px;
-        top: 220px;
-        left: 740px;
-
-        &:hover {
-          background-position: -1450px -440px;
-        }
-      }
-
-      &[data-ref=drum] {
-        width: 140px;
-        height: 140px;
-        background-position: -20px -620px;
-        top: 140px;
-        left: 780px;
-
-        &:hover {
-          background-position: -220px -620px;
-        }
-      }
-
-      &[data-ref=cosmetics] {
-        width: 100px;
-        height: 70px;
-        background-position: -440px -655px;
-        top: 30px;
-        left: 780px;
-
-        &:hover {
-          background-position: -640px -655px;
-        }
-      }
-
-      &[data-ref=tire] {
-        width: 110px;
-        height: 120px;
-        background-position: -835px -630px;
-        top: 390px;
-        left: 260px;
-
-        &:hover {
-          background-position: -1035px -630px;
-        }
-      }
-
-      &[data-ref=floss] {
-        width: 70px;
-        height: 80px;
-        background-position: -1250px -640px;
-        top: 60px;
-        left: 160px;
-
-        &:hover {
-          background-position: -1450px -640px;
-        }
-      }
-
-      &[data-ref=ketchup] {
-        width: 80px;
-        height: 100px;
-        background-position: -50px -840px;
-        top: 430px;
-        left: 720px;
-
-        &:hover {
-          background-position: -250px -840px;
-        }
-      }
-
-      &[data-ref=bulb] {
-        width: 80px;
-        height: 70px;
-        background-position: -450px -855px;
-        top: 90px;
-        left: 870px;
-
-        &:hover {
-          background-position: -650px -855px;
-        }
-      }
-
-      &[data-ref=fries] {
-        width: 90px;
-        height: 100px;
-        background-position: -845px -840px;
-        top: 100px;
-        left: 620px;
-
-        &:hover {
-          background-position: -1045px -840px;
-        }
-      }
-
-      &[data-ref=soda] {
-        width: 100px;
-        height: 140px;
-        background-position: -1240px -820px;
-        top: 400px;
-        left: 860px;
-
-        &:hover {
-          background-position: -1440px -820px;
-        }
-      }
-
-      &[data-ref=coral] {
-        width: 80px;
-        height: 100px;
-        background-position: -50px -1040px;
-        top: 40px;
-        left: 50px;
-
-        &:hover {
-          background-position: -250px -1040px;
-        }
-      }
-
-      &[data-ref=crab] {
-        width: 85px;
-        height: 85px;
-        background-position: -445px -1045px;
-        top: 180px;
-        left: 120px;
-        transform-origin: 150px 0;
-        animation: crab 8s infinite linear;
-
-        &:hover {
-          background-position: -645px -1045px;
-        }
-      }
-
-      &[data-ref=turtle] {
-        width: 150px;
-        height: 110px;
-        background-position: -815px -1030px;
-        top: 100px;
-        left: -200px;
-        animation: turtle 8s infinite linear;
-
-        &:hover {
-          background-position: -1015px -1030px;
-        }
-      }
-
-      &[data-ref=shell] {
-        width: 70px;
-        height: 70px;
-        background-position: -1250px -1050px;
-        top: 460px;
-        left: 370px;
-
-        &:hover {
-          background-position: -1450px -1050px;
-        }
-      }
-
-      &[data-ref=fish1] {
-        width: 120px;
-        height: 100px;
-        background-position: -30px -1240px;
-        top: 40px;
-        left: 1160px;
-        animation: swim-left 6s infinite linear;
-
-        &:hover {
-          background-position: -230px -1240px;
-        }
-      }
-
-      &[data-ref=fish2] {
-        width: 100px;
-        height: 90px;
-        background-position: -440px -1245px;
-        top: 180px;
-        left: 1160px;
-        animation: swim-left 5s infinite linear;
-
-        &:hover {
-          background-position: -640px -1245px;
-        }
-      }
-
-      &[data-ref=lobster] {
-        width: 140px;
-        height: 110px;
-        background-position: -815px -1230px;
-        top: 0px;
-        left: 600px;
-        animation: lobster 8s infinite;
-
-        &:hover {
-          background-position: -1015px -1230px;
-        }
-      }
-
-      &[data-ref=shell2] {
-        width: 80px;
-        height: 80px;
-        background-position: -1250px -1250px;
-        top: 465px;
-        left: 790px;
-
-        &:hover {
-          background-position: -1450px -1250px;
-        }
-      }
-
-      &[data-ref=fish3] {
-        width: 110px;
-        height: 90px;
-        background-position: -30px -1440px;
-        top: 40px;
-        left: -200px;
-        animation: swim-right 7s infinite linear;
-
-        &:hover {
-          background-position: -230px -1440px;
-        }
-      }
-
-      &[data-ref=starfish] {
-        width: 100px;
-        height: 90px;
-        background-position: -440px -1440px;
-        top: 0px;
-        left: 110px;
-        animation: seahorse 7s infinite linear;
-
-        &:hover {
-          background-position: -640px -1440px;
-        }
-
-        &.second {
-          top: 370px;
-          left: 780px;
-          animation: starfish 5s infinite linear;
-        }
-      }
-
-      &[data-ref=octopus] {
-        width: 160px;
-        height: 145px;
-        background-position: -805px -1420px;
-        top: 20px;
-        left: 310px;
-        animation: octopus 5s infinite;
-
-        &:hover {
-          background-position: -1005px -1420px;
-        }
-      }
-
-      &[data-ref=shell3] {
-        width: 80px;
-        height: 80px;
-        background-position: -1250px -1450px;
-        top: 345px;
-        left: 530px;
-
-        &:hover {
-          background-position: -1450px -1450px;
-        }
-      }
-
-      &[data-ref=seahorse] {
-        width: 60px;
-        height: 90px;
-        background-position: -60px -1640px;
-        top: 330px;
-        left: 200px;
-        animation: seahorse 5s infinite linear;
-
-        &:hover {
-          background-position: -260px -1640px;
-        }
-      }
-
-      &[data-ref=fish4] {
-        width: 100px;
-        height: 80px;
-        background-position: -440px -1645px;
-        top: 390px;
-        left: -200px;
-        animation: swim-right 4s infinite linear;
-
-        &:hover {
-          background-position: -640px -1645px;
-        }
-      }
-
-      &[data-ref=fish5] {
-        width: 95px;
-        height: 65px;
-        background-position: -840px -1660px;
-        top: 280px;
-        left: 1160px;
-        animation: swim-left 8s infinite linear;
-
-        &:hover {
-          background-position: -1040px -1655px;
-        }
-      }
-
-      &[data-ref=jellyfish] {
-        width: 80px;
-        height: 130px;
-        background-position: -1250px -1620px;
-        top: 640px;
-        left: 430px;
-        animation: swim-up 6s infinite linear;
-
-        &:hover {
-          background-position: -1450px -1620px;
-        }
-      }
-    }
-  }
-
-  .timer {
-    position: absolute;
-    left: 50px;
-    bottom: -10px;
-    color: #fff;
-
-    img {
-      width: 180px;
-      margin: 0;
-      vertical-align: middle;
-    }
-
-    span {
-      display: inline-block;
-      vertical-align: bottom;
-      padding-bottom: 18px;
-      margin-left: -15px;
-      font-size: 36px;
-    }
-  }
-
-  .group > .center.OPEN {
-    z-index: 1;
-  }
-
-  .reveal {
-
-    &.open-1 button {
-      display: none;
-    }
-
-    [data-ref=tryAgain] img {
-      margin-bottom: -30px;
-    }
-
-    button {
-      width: 146px;
-      height: 146px;
-      background-size: auto 146px;
-      background-position: left center;
-      background-image: url(../media/_images/_S_GoodJob/img_10.3.png);
-      background-repeat: no-repeat;
-
-      &:hover {
-        background-position: right center;
-      }
-    }
-  }
-
-  &.REVEAL-OPEN {
-    .selectable,
-    .timer {
-      opacity: 0;
-    }
-  }
-
-  &.TOUCH,
-  &.REVEAL-OPEN {
-    cursor: auto;
+    opacity: 0;
+    cursor: none;
 
     .net {
-      opacity: 0;
+        position: absolute;
+        pointer-events: none;
+        width: 250px;
+        z-index: 1;
+        opacity: 1;
+        transition: opacity .5s;
     }
-  }
 
-  &.OPEN {
-    opacity: 1;
-  }
+    .selectable,
+    .timer {
+        opacity: 1;
+        transition: opacity .5s;
+    }
 
-  &.REPLAY .next-screen {
-    opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
+    .selectable {
 
-  }
+        position: relative;
+        width: 960px;
+        height: 540px;
+        margin: 0;
+        display: block;
+
+        li {
+            position: absolute;
+            background-image: url('../media/_images/_S_Trash/img_9.2.png');
+            background-size: 1600px;
+            background-repeat: no-repeat;
+            animation: bob 8s infinite;
+            transition: opacity .5s;
+
+            @for $i from 1 through 20 {
+                &:nth-child(#{$i}).HIGHLIGHTED {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+
+            &[data-ref=bottle] {
+                width: 90px;
+                height: 120px;
+                background-position: -40px -30px;
+                top: 280px;
+                left: 860px;
+
+                &:hover {
+                    background-position: -240px -30px;
+                }
+            }
+
+            &[data-ref=cans] {
+                width: 160px;
+                height: 120px;
+                background-position: -410px -25px;
+                top: 200px;
+                left: 10px;
+
+                &:hover {
+                    background-position: -610px -25px;
+                }
+            }
+
+            &[data-ref=cleaner] {
+                width: 100px;
+                height: 120px;
+                background-position: -840px -30px;
+                top: 200px;
+                left: 230px;
+
+                &:hover {
+                    background-position: -1040px -30px;
+                }
+            }
+
+            &[data-ref=wash] {
+                width: 80px;
+                height: 120px;
+                background-position: -1250px -30px;
+                top: 300px;
+                left: 340px;
+
+                &:hover {
+                    background-position: -1450px -30px;
+                }
+            }
+
+            &[data-ref=necklace] {
+                width: 100px;
+                height: 100px;
+                background-position: -40px -240px;
+                top: 390px;
+                left: 570px;
+
+                &:hover {
+                    background-position: -240px -240px;
+                }
+            }
+
+            &[data-ref=oil] {
+                width: 100px;
+                height: 120px;
+                background-position: -440px -225px;
+                top: 280px;
+                left: 670px;
+
+                &:hover {
+                    background-position: -640px -225px;
+                }
+            }
+
+            &[data-ref=bag] {
+                width: 110px;
+                height: 120px;
+                background-position: -835px -230px;
+                top: 180px;
+                left: 320px;
+
+                &:hover {
+                    background-position: -1035px -230px;
+                }
+            }
+
+            &[data-ref=water] {
+                width: 100px;
+                height: 120px;
+                background-position: -1240px -230px;
+                top: 300px;
+                left: 20px;
+
+                &:hover {
+                    background-position: -1440px -230px;
+                }
+            }
+
+            &[data-ref=shoes] {
+                width: 180px;
+                height: 110px;
+                background-position: 0px -440px;
+                top: 110px;
+                left: 180px;
+
+                &:hover {
+                    background-position: -200px -440px;
+                }
+            }
+
+            &[data-ref=soap] {
+                width: 100px;
+                height: 140px;
+                background-position: -430px -425px;
+                top: 80px;
+                left: 440px;
+
+                &:hover {
+                    background-position: -630px -425px;
+                }
+            }
+
+            &[data-ref=sauce] {
+                width: 110px;
+                height: 120px;
+                background-position: -835px -430px;
+                top: 190px;
+                left: 500px;
+
+                &:hover {
+                    background-position: -1035px -430px;
+                }
+            }
+
+            &[data-ref=beeker] {
+                width: 80px;
+                height: 100px;
+                background-position: -1250px -440px;
+                top: 220px;
+                left: 740px;
+
+                &:hover {
+                    background-position: -1450px -440px;
+                }
+            }
+
+            &[data-ref=drum] {
+                width: 140px;
+                height: 140px;
+                background-position: -20px -620px;
+                top: 140px;
+                left: 780px;
+
+                &:hover {
+                    background-position: -220px -620px;
+                }
+            }
+
+            &[data-ref=cosmetics] {
+                width: 100px;
+                height: 70px;
+                background-position: -440px -655px;
+                top: 30px;
+                left: 780px;
+
+                &:hover {
+                    background-position: -640px -655px;
+                }
+            }
+
+            &[data-ref=tire] {
+                width: 110px;
+                height: 120px;
+                background-position: -835px -630px;
+                top: 390px;
+                left: 260px;
+
+                &:hover {
+                    background-position: -1035px -630px;
+                }
+            }
+
+            &[data-ref=floss] {
+                width: 70px;
+                height: 80px;
+                background-position: -1250px -640px;
+                top: 60px;
+                left: 160px;
+
+                &:hover {
+                    background-position: -1450px -640px;
+                }
+            }
+
+            &[data-ref=ketchup] {
+                width: 80px;
+                height: 100px;
+                background-position: -50px -840px;
+                top: 430px;
+                left: 720px;
+
+                &:hover {
+                    background-position: -250px -840px;
+                }
+            }
+
+            &[data-ref=bulb] {
+                width: 80px;
+                height: 70px;
+                background-position: -450px -855px;
+                top: 90px;
+                left: 870px;
+
+                &:hover {
+                    background-position: -650px -855px;
+                }
+            }
+
+            &[data-ref=fries] {
+                width: 90px;
+                height: 100px;
+                background-position: -845px -840px;
+                top: 100px;
+                left: 620px;
+
+                &:hover {
+                    background-position: -1045px -840px;
+                }
+            }
+
+            &[data-ref=soda] {
+                width: 100px;
+                height: 140px;
+                background-position: -1240px -820px;
+                top: 400px;
+                left: 860px;
+
+                &:hover {
+                    background-position: -1440px -820px;
+                }
+            }
+
+            &[data-ref=coral] {
+                width: 80px;
+                height: 100px;
+                background-position: -50px -1040px;
+                top: 40px;
+                left: 50px;
+
+                &:hover {
+                    background-position: -250px -1040px;
+                }
+            }
+
+            &[data-ref=crab] {
+                width: 85px;
+                height: 85px;
+                background-position: -445px -1045px;
+                top: 180px;
+                left: 120px;
+                transform-origin: 150px 0;
+                animation: crab 8s infinite linear;
+
+                &:hover {
+                    background-position: -645px -1045px;
+                }
+            }
+
+            &[data-ref=turtle] {
+                width: 150px;
+                height: 110px;
+                background-position: -815px -1030px;
+                top: 100px;
+                left: -200px;
+                animation: turtle 8s infinite linear;
+
+                &:hover {
+                    background-position: -1015px -1030px;
+                }
+            }
+
+            &[data-ref=shell] {
+                width: 70px;
+                height: 70px;
+                background-position: -1250px -1050px;
+                top: 460px;
+                left: 370px;
+
+                &:hover {
+                    background-position: -1450px -1050px;
+                }
+            }
+
+            &[data-ref=fish1] {
+                width: 120px;
+                height: 100px;
+                background-position: -30px -1240px;
+                top: 40px;
+                left: 1160px;
+                animation: swim-left 6s infinite linear;
+
+                &:hover {
+                    background-position: -230px -1240px;
+                }
+            }
+
+            &[data-ref=fish2] {
+                width: 100px;
+                height: 90px;
+                background-position: -440px -1245px;
+                top: 180px;
+                left: 1160px;
+                animation: swim-left 5s infinite linear;
+
+                &:hover {
+                    background-position: -640px -1245px;
+                }
+            }
+
+            &[data-ref=lobster] {
+                width: 140px;
+                height: 110px;
+                background-position: -815px -1230px;
+                top: 0px;
+                left: 600px;
+                animation: lobster 8s infinite;
+
+                &:hover {
+                    background-position: -1015px -1230px;
+                }
+            }
+
+            &[data-ref=shell2] {
+                width: 80px;
+                height: 80px;
+                background-position: -1250px -1250px;
+                top: 465px;
+                left: 790px;
+
+                &:hover {
+                    background-position: -1450px -1250px;
+                }
+            }
+
+            &[data-ref=fish3] {
+                width: 110px;
+                height: 90px;
+                background-position: -30px -1440px;
+                top: 40px;
+                left: -200px;
+                animation: swim-right 7s infinite linear;
+
+                &:hover {
+                    background-position: -230px -1440px;
+                }
+            }
+
+            &[data-ref=starfish] {
+                width: 100px;
+                height: 90px;
+                background-position: -440px -1440px;
+                top: 0px;
+                left: 110px;
+                animation: seahorse 7s infinite linear;
+
+                &:hover {
+                    background-position: -640px -1440px;
+                }
+
+                &.second {
+                    top: 370px;
+                    left: 780px;
+                    animation: starfish 5s infinite linear;
+                }
+            }
+
+            &[data-ref=octopus] {
+                width: 160px;
+                height: 145px;
+                background-position: -805px -1420px;
+                top: 20px;
+                left: 310px;
+                animation: octopus 5s infinite;
+
+                &:hover {
+                    background-position: -1005px -1420px;
+                }
+            }
+
+            &[data-ref=shell3] {
+                width: 80px;
+                height: 80px;
+                background-position: -1250px -1450px;
+                top: 345px;
+                left: 530px;
+
+                &:hover {
+                    background-position: -1450px -1450px;
+                }
+            }
+
+            &[data-ref=seahorse] {
+                width: 60px;
+                height: 90px;
+                background-position: -60px -1640px;
+                top: 330px;
+                left: 200px;
+                animation: seahorse 5s infinite linear;
+
+                &:hover {
+                    background-position: -260px -1640px;
+                }
+            }
+
+            &[data-ref=fish4] {
+                width: 100px;
+                height: 80px;
+                background-position: -440px -1645px;
+                top: 390px;
+                left: -200px;
+                animation: swim-right 4s infinite linear;
+
+                &:hover {
+                    background-position: -640px -1645px;
+                }
+            }
+
+            &[data-ref=fish5] {
+                width: 95px;
+                height: 65px;
+                background-position: -840px -1660px;
+                top: 280px;
+                left: 1160px;
+                animation: swim-left 8s infinite linear;
+
+                &:hover {
+                    background-position: -1040px -1655px;
+                }
+            }
+
+            &[data-ref=jellyfish] {
+                width: 80px;
+                height: 130px;
+                background-position: -1250px -1620px;
+                top: 640px;
+                left: 430px;
+                animation: swim-up 6s infinite linear;
+
+                &:hover {
+                    background-position: -1450px -1620px;
+                }
+            }
+        }
+    }
+
+    .timer {
+        position: absolute;
+        left: 50px;
+        bottom: -10px;
+        color: #fff;
+
+        img {
+            width: 180px;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: bottom;
+            padding-bottom: 18px;
+            margin-left: -15px;
+            font-size: 36px;
+        }
+    }
+
+    .group > .center.OPEN {
+        z-index: 1;
+    }
+
+    .reveal {
+
+        &.open-1 button {
+            display: none;
+        }
+
+        [data-ref=tryAgain] img {
+            margin-bottom: -30px;
+        }
+
+        button {
+            width: 146px;
+            height: 146px;
+            background-size: auto 146px;
+            background-position: left center;
+            background-image: url(../media/_images/_S_GoodJob/img_10.3.png);
+            background-repeat: no-repeat;
+
+            &:hover {
+                background-position: right center;
+            }
+        }
+    }
+
+    &.REVEAL-OPEN {
+        .selectable,
+        .timer {
+            opacity: 0;
+        }
+    }
+
+    &.TOUCH,
+    &.REVEAL-OPEN {
+        cursor: auto;
+
+        .net {
+            opacity: 0;
+        }
+    }
+
+    &.OPEN {
+        opacity: 1;
+    }
+
+    &.REPLAY .next-screen {
+        opacity: 1;
+        transform: rotate(0deg);
+        cursor: pointer;
+
+    }
 }
 
 body:not(.DEMO) #trash.tryAgain {
-  .prev-screen,
-  .next-screen {
-    opacity: 0;
-    pointer-events: none;
-  }
+    .prev-screen,
+    .next-screen {
+        opacity: 0;
+        pointer-events: none;
+    }
 }

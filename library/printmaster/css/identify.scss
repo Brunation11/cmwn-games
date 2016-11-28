@@ -1,79 +1,79 @@
 $types: arch loops whorl doubleloop;
 
 #identify {
-  > div {
-    white-space: normal;
-  }
-
-  .header {
-    background-image: url(../media/S_9/img_9.1.png);
-    position: relative;
-    width: 900px;
-    height: 160px;
-    margin: 0 auto;
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    img {
-      position: absolute;
-      left: 50%;
-      top: 55%;
-      max-width: 600px;
-      max-height: 170px;
-      transform: translateX(-50%) translateY(-50%) scale(.5);
-      opacity: 0;
-      transition: opacity 1s, transform 1s;
-
-      &.SELECTED {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-50%) scale(1);
-      }
+    > div {
+        white-space: normal;
     }
-  }
 
-  @for $i from 1 through 4 {
-    .#{nth($types, $i)} .header img.#{nth($types, $i)} {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-50%) scale(1);
-    }
-  }
+    .header {
+        background-image: url(../media/S_9/img_9.1.png);
+        position: relative;
+        width: 900px;
+        height: 160px;
+        margin: 0 auto;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
 
-  .selectable {
-    width: 800px;
-    margin: 40px auto;
+        img {
+            position: absolute;
+            left: 50%;
+            top: 55%;
+            max-width: 600px;
+            max-height: 170px;
+            transform: translateX(-50%) translateY(-50%) scale(.5);
+            opacity: 0;
+            transition: opacity 1s, transform 1s;
 
-    li {
-      background-size: 1000px 250px;
-      background-position: -25px;
-      cursor: pointer;
-
-      &:hover {
-        background-position: -275px;
-      }
-
-      &.SELECTED {
-        background-position: -525px;
-      }
-
-      &.HIGHLIGHTED {
-        background-position: -775px;
-      }
-
-      $bkg:      8     6     7          9;
-
-      @for $i from 1 through 4 {
-        &[data-ref=#{nth($types, $i)}] {
-          background-image: url(../media/S_9/img_9.#{nth($bkg, $i)}.png);
+            &.SELECTED {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-50%) scale(1);
+            }
         }
-      }
     }
-  }
 
-  &.PLAYING,
-  .selectable-component.COMPLETE {
-    .items {
-      pointer-events: none;
+    @for $i from 1 through 4 {
+        .#{nth($types, $i)} .header img.#{nth($types, $i)} {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-50%) scale(1);
+        }
     }
-  }
+
+    .selectable {
+        width: 800px;
+        margin: 40px auto;
+
+        li {
+            background-size: 1000px 250px;
+            background-position: -25px;
+            cursor: pointer;
+
+            &:hover {
+                background-position: -275px;
+            }
+
+            &.SELECTED {
+                background-position: -525px;
+            }
+
+            &.HIGHLIGHTED {
+                background-position: -775px;
+            }
+
+            $bkg:            8         6         7                    9;
+
+            @for $i from 1 through 4 {
+                &[data-ref=#{nth($types, $i)}] {
+                    background-image: url(../media/S_9/img_9.#{nth($bkg, $i)}.png);
+                }
+            }
+        }
+    }
+
+    &.PLAYING,
+    .selectable-component.COMPLETE {
+        .items {
+            pointer-events: none;
+        }
+    }
 }

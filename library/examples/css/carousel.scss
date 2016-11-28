@@ -1,23 +1,23 @@
 .carousel {
-  position: relative;
-  white-space: nowrap;
-
-  > * {
-    width: 100%;
-    max-height: 100%;
-    transform: translate3d(0,0,0);
-    box-sizing: border-box;
     position: relative;
-    display: inline-block;
-    width: 250px;
-    height: 250px;
-    margin-left: 0px;
-    margin-right: 147px;
-    transition: margin 0s;
-  }
+    white-space: nowrap;
 
-  .LEAVE {
-    transition: margin 1s;
-    margin-left: -375px;
-  }
+    > * {
+        width: 100%;
+        max-height: 100%;
+        transform: translate3d(0,0,0);
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        width: 250px;
+        height: 250px;
+        margin-left: 0px;
+        margin-right: 147px;
+        transition: margin 0s;
+    }
+
+    .LEAVE {
+        transition: margin 1s;
+        margin-left: -375px;
+    }
 }

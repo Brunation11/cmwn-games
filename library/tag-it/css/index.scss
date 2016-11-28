@@ -2,1338 +2,1338 @@
 @import 'mixins';
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .pl-game, .skoash-game, .PAUSED {
-    width: 960px;
-    height: 540px;
-    transform-origin: 0px 0px 0px !important;
+        width: 960px;
+        height: 540px;
+        transform-origin: 0px 0px 0px !important;
 }
 
 #loader {
-    width: 960px;
-    height: 540px;
+        width: 960px;
+        height: 540px;
 }
 
 html, body, body > div, body > div > div {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  user-select: none;
-  cursor: default;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    cursor: default;
 }
 
 html {
-  font-family: $default-font;
-  font-weight: bold;
-  color: $text-color;
+    font-family: $default-font;
+    font-weight: bold;
+    color: $text-color;
 }
 
 body > div > div {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  font-size: 20px;
-
-  .background {
-    opacity: 0;
-    transition: opacity .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
+    margin: 0;
+    font-size: 20px;
 
-  > div > .background {
-    max-width: 960px;
-    max-height: 540px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .background.default {
-    opacity: 1;
-    background-image: url(../media/_images/_BKG/BKG_1.png);
-  }
-
-  .background.bkg_2 {
-    background-image: url(../media/_images/_BKG/BKG_2.png);
-  }
-
-  .background.bkg_3 {
-    background-image: url(../media/_images/_BKG/BKG_3.png);
-  }
-
-  .background.bkg_4 {
-    background-image: url(../media/_images/_BKG/BKG_4.png);
-  }
-
-  .background.bkg_5 {
-    background-image: url(../media/_images/_BKG/BKG_5.png);
-  }
-
-  .background.bkg_6 {
-    background-image: url(../media/_images/_BKG/BKG_6.png);
-  }
-
-  &.SCREEN-2:not(.MENU-quit) > .background.bkg_2,
-  &.SCREEN-3:not(.MENU-quit) > .background.bkg_2,
-  &.SCREEN-4:not(.MENU-quit) > .background.bkg_3,
-  &.SCREEN-5:not(.MENU-quit) > .background.bkg_3,
-  &.SCREEN-6:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-7:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-8:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-9:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-10:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-11:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-12:not(.MENU-quit) > .background.bkg_4,
-  &.SCREEN-13:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-14:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-15:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-16:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-17:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-18:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-19:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-20:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-21:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-22:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-23:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-24:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-25:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-26:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-27:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-28:not(.MENU-quit) > .background.bkg_5,
-  &.SCREEN-29:not(.MENU-quit) > .background.bkg_6,
-  &.SCREEN-30:not(.MENU-quit) > .background.bkg_6,
-  &.SCREEN-31:not(.MENU-quit) > .background.bkg_6 {
-    opacity: 1;
-  }
-
-
-// 037297120  18005318877
-
-  &.MENU-quit {
-    .screen:not(#quit) {
-      opacity: 0;
+    .background {
+        opacity: 0;
+        transition: opacity .5s;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
     }
-  }
+
+    > div > .background {
+        max-width: 960px;
+        max-height: 540px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .background.default {
+        opacity: 1;
+        background-image: url(../media/_images/_BKG/BKG_1.png);
+    }
+
+    .background.bkg_2 {
+        background-image: url(../media/_images/_BKG/BKG_2.png);
+    }
+
+    .background.bkg_3 {
+        background-image: url(../media/_images/_BKG/BKG_3.png);
+    }
+
+    .background.bkg_4 {
+        background-image: url(../media/_images/_BKG/BKG_4.png);
+    }
+
+    .background.bkg_5 {
+        background-image: url(../media/_images/_BKG/BKG_5.png);
+    }
+
+    .background.bkg_6 {
+        background-image: url(../media/_images/_BKG/BKG_6.png);
+    }
+
+    &.SCREEN-2:not(.MENU-quit) > .background.bkg_2,
+    &.SCREEN-3:not(.MENU-quit) > .background.bkg_2,
+    &.SCREEN-4:not(.MENU-quit) > .background.bkg_3,
+    &.SCREEN-5:not(.MENU-quit) > .background.bkg_3,
+    &.SCREEN-6:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-7:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-8:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-9:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-10:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-11:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-12:not(.MENU-quit) > .background.bkg_4,
+    &.SCREEN-13:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-14:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-15:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-16:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-17:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-18:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-19:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-20:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-21:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-22:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-23:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-24:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-25:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-26:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-27:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-28:not(.MENU-quit) > .background.bkg_5,
+    &.SCREEN-29:not(.MENU-quit) > .background.bkg_6,
+    &.SCREEN-30:not(.MENU-quit) > .background.bkg_6,
+    &.SCREEN-31:not(.MENU-quit) > .background.bkg_6 {
+        opacity: 1;
+    }
+
+
+// 037297120    18005318877
+
+    &.MENU-quit {
+        .screen:not(#quit) {
+            opacity: 0;
+        }
+    }
 }
 
 // preload assets
 #asset-bin {
-  display: none;
+    display: none;
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  font-family: inherit;
-  font-size: inherit;
-  color: transparent;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: transparent;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
 
-  background-image: url(../media/_images/_Buttons/BU_1.png);
-  background-size: 3750px;
+    background-image: url(../media/_images/_Buttons/BU_1.png);
+    background-size: 3750px;
 
-  &.close {
-    width: 58px;
-    height: 58px;
-    background-position: -1135px -10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px;
-    z-index: 2;
+    &.close {
+        width: 58px;
+        height: 58px;
+        background-position: -1135px -10px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 5px;
+        z-index: 2;
 
-    &:hover {
-      background-position: -1135px -210px;
+        &:hover {
+            background-position: -1135px -210px;
+        }
     }
-  }
 
-  &.next-screen,
-  &.prev-screen {
-    width: 90px;
-    height: 120px;
-  }
-
-  &.next-screen {
-    background-position: -760px 0px;
-
-    &:hover {
-      background-position: -760px -200px;
+    &.next-screen,
+    &.prev-screen {
+        width: 90px;
+        height: 120px;
     }
-  }
 
-  &.prev-screen {
-    background-position: -385px 0px;
+    &.next-screen {
+        background-position: -760px 0px;
 
-    &:hover {
-      background-position: -385px -200px;
+        &:hover {
+            background-position: -760px -200px;
+        }
     }
-  }
 
-  &.play {
-    width: 280px;
-    height: 120px;
-    background-position: 0px 0px;
+    &.prev-screen {
+        background-position: -385px 0px;
 
-    &:hover {
-      background-position: 0px -200px;
+        &:hover {
+            background-position: -385px -200px;
+        }
     }
-  }
 
-  &.quit-yes {
-    width: 300px;
-    height: 160px;
-    background-size: auto 400px;
-    background-position: -3000px 0px;
+    &.play {
+        width: 280px;
+        height: 120px;
+        background-position: 0px 0px;
 
-    &:hover {
-      background-position: -3000px -200px;
+        &:hover {
+            background-position: 0px -200px;
+        }
     }
-  }
 
-  &.quit-no {
-    width: 300px;
-    height: 160px;
-    background-size: auto 400px;
-    background-position: -3380px 0px;
+    &.quit-yes {
+        width: 300px;
+        height: 160px;
+        background-size: auto 400px;
+        background-position: -3000px 0px;
 
-    &:hover {
-      background-position: -3380px -200px;
+        &:hover {
+            background-position: -3000px -200px;
+        }
     }
-  }
 
-  &.reveal-close {
-    width: 30px;
-    height: 30px;
-    background-position: -660px 240px;
-    transition: opacity 1s;
+    &.quit-no {
+        width: 300px;
+        height: 160px;
+        background-size: auto 400px;
+        background-position: -3380px 0px;
 
-    &:hover {
-      background-position: -660px 390px;
+        &:hover {
+            background-position: -3380px -200px;
+        }
     }
-  }
+
+    &.reveal-close {
+        width: 30px;
+        height: 30px;
+        background-position: -660px 240px;
+        transition: opacity 1s;
+
+        &:hover {
+            background-position: -660px 390px;
+        }
+    }
 }
 
 h2 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 h3 {
-  font-size: 36px;
-  margin: 0;
+    font-size: 36px;
+    margin: 0;
 }
 
 p {
-  font-size: 36px;
-  margin: 0;
+    font-size: 36px;
+    margin: 0;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
-  opacity: 0;
-  display: none;
-  transition: opacity 0.5s, transform 0.5s;
-  transform: translateX(100%);
-  background-size: cover;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateX(100%);
+    background-size: cover;
 }
 
 .screen.OPEN,
 .screen.STAY {
-  opacity: 1;
-  transform: translateX(0);
-  z-index: 1;
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 1;
 }
 
 .screen.READY {
-  display: block;
+    display: block;
 }
 
 .screen.LEAVE:not(.STAY) {
-  opacity: 1;
-  transform: translateX(-100%);
+    opacity: 1;
+    transform: translateX(-100%);
 }
 
 .screen .next-screen,
 .screen .prev-screen {
-  position: absolute;
-  display: block;
-  bottom: 0;
-  z-index: 2;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    z-index: 2;
 }
 
 .screen .next-screen {
-  margin-right: 5px;
-  right: 0;
-  opacity: 0;
-  cursor: default;
-  pointer-events: none;
-  transform: rotate(-180deg);
-  transition: opacity 1s, transform 1s;
+    margin-right: 5px;
+    right: 0;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
 }
 
 .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
 .screen.GATED .next-screen,
 .frame-component.GATED .next-screen {
-  opacity: 0;
-  cursor: default;
+    opacity: 0;
+    cursor: default;
 }
 
 
 .pl-game.DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen,
 .frame-component.COMPLETE .next-screen {
-  opacity: 1;
-  transform: rotate(0deg);
-  cursor: pointer;
-  pointer-events: auto;
+    opacity: 1;
+    transform: rotate(0deg);
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .frame-component:not(.OPEN).COMPLETE .next-screen {
-  opacity: 0;
+    opacity: 0;
 }
 
 .screen .prev-screen {
-  margin-left: 5px;
-  left: 0;
+    margin-left: 5px;
+    left: 0;
 }
 
 // the following css is specific to this game
 
 .frame {
-  position: relative;
-  text-align: center;
-  font-size: 40px;
-  line-height: 1.2;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    line-height: 1.2;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 img.inline {
-  height: 56px;
-  vertical-align: middle;
+    height: 56px;
+    vertical-align: middle;
 }
 
 #title {
-  transition: opacity .2s;
+    transition: opacity .2s;
 
-  .group {
-    width: 960px;
-    height: 540px;
+    .group {
+        width: 960px;
+        height: 540px;
 
-    div {
-      background-image: url(../media/_images/_Title/img_1.1.png);
-      background-size: 3000px;
+        div {
+            background-image: url(../media/_images/_Title/img_1.1.png);
+            background-size: 3000px;
+        }
     }
-  }
 
-  $items: title left right drop;
-  $widths:  730 315 315 490;
-  $heights: 230 300 300 540;
+    $items: title left right drop;
+    $widths:    730 315 315 490;
+    $heights: 230 300 300 540;
 
-  @for $i from 1 through 4 {
-    .#{nth($items,$i)} {
-      width: nth($widths,$i)+px;
-      height: nth($heights,$i)+px;
-      background-position: #{750-(750*$i)+px} 0px;
+    @for $i from 1 through 4 {
+        .#{nth($items,$i)} {
+            width: nth($widths,$i)+px;
+            height: nth($heights,$i)+px;
+            background-position: #{750-(750*$i)+px} 0px;
+        }
     }
-  }
 
-  .drop {
-    left: 150px;
-    bottom: 50px;
-    margin-left: 235px;
-  }
+    .drop {
+        left: 150px;
+        bottom: 50px;
+        margin-left: 235px;
+    }
 
-  .title {
-    left: 115px;
-    top: 50px;
-    position: absolute;
-  }
-
-  .left {
-    left: 0;
-    position: absolute;
-    bottom: 0;
-  }
-
-  .right {
-    right: 0;
-    position: absolute;
-    bottom: 0;
-  }
-
-  &.OPEN {
     .title {
-      animation-name: rubberBand;
-      animation-delay: 1.5s;
+        left: 115px;
+        top: 50px;
+        position: absolute;
+    }
+
+    .left {
+        left: 0;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .right {
+        right: 0;
+        position: absolute;
+        bottom: 0;
+    }
+
+    &.OPEN {
+        .title {
+            animation-name: rubberBand;
+            animation-delay: 1.5s;
+        }
+
+        .next-screen {
+            margin-right: 5px;
+            right: 0;
+            opacity: 1;
+            background-image: url(../media/_images/_Buttons/BU_1.png);
+            background-position: 0 0;
+            width: 300px;
+            top: 330px;
+            left: 330px;
+            transform: rotate(360deg);
+            transition: opacity 1s, transform 1s;
+        }
     }
 
     .next-screen {
-      margin-right: 5px;
-      right: 0;
-      opacity: 1;
-      background-image: url(../media/_images/_Buttons/BU_1.png);
-      background-position: 0 0;
-      width: 300px;
-      top: 330px;
-      left: 330px;
-      transform: rotate(360deg);
-      transition: opacity 1s, transform 1s;
+        opacity: 1;
+        background-image: url(../media/_images/_Buttons/BU_1.png);
+        background-position: 0 0;
+        width: 300px;
+        top: 330px;
+        left: 330px;
     }
-  }
 
-  .next-screen {
-    opacity: 1;
-    background-image: url(../media/_images/_Buttons/BU_1.png);
-    background-position: 0 0;
-    width: 300px;
-    top: 330px;
-    left: 330px;
-  }
+    &.COMPLETE .next-screen:hover {
+        background-position: 0 600px;
+        width: 300px;
+        top: 330px;
+        left: 330px;
+    }
 
-  &.COMPLETE .next-screen:hover {
-    background-position: 0 600px;
-    width: 300px;
-    top: 330px;
-    left: 330px;
-  }
-
-  .prev-screen {
-    display: none;
-  }
+    .prev-screen {
+        display: none;
+    }
 }
 
 #precious, #not-to-waste {
-  position: absolute;
-
-  img {
-    position: relative;
-    height: 540px;
-    margin-left: 4%;
-  }
-
-  .text {
-    transform: translateY(-50%);
-    background-size: 3900px;
-    width: 540px;
-    height: 270px;
     position: absolute;
-    top: 50%;
-    left: 40%;
-    background-color: rgba(255, 255, 255, 0.5);
-  }
 
-  p {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  &.OPEN {
     img {
-      animation-delay: 1s;
-      animation-name: jello;
+        position: relative;
+        height: 540px;
+        margin-left: 4%;
     }
-  }
+
+    .text {
+        transform: translateY(-50%);
+        background-size: 3900px;
+        width: 540px;
+        height: 270px;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    p {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.OPEN {
+        img {
+            animation-delay: 1s;
+            animation-name: jello;
+        }
+    }
 }
 
 #recycling-arts {
 
-  .pallet {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 480px;
-    height: 540px;
-    background-size: 1200px;
-    background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
-    z-index: -1;
-  }
-
-  p {
-    position: absolute;
-    text-align: center;
-    left: 70%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .recycle {
-    background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
-    background-size: 1200px;
-    background-position: 600px 0px;
-    display: inline-block;
-    width: 600px;
-    height: 110px;
-    margin: -5px auto -15px;
-  }
-
-  &.OPEN {
     .pallet {
-      animation-delay: 0.5s;
-      animation-name: zoomInLeft;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 480px;
+        height: 540px;
+        background-size: 1200px;
+        background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
+        z-index: -1;
+    }
+
+    p {
+        position: absolute;
+        text-align: center;
+        left: 70%;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .recycle {
-      animation-delay: 1s;
-      animation-name: tada;
+        background-image: url(../media/_images/S_RecyclingArts/img_4.1.png);
+        background-size: 1200px;
+        background-position: 600px 0px;
+        display: inline-block;
+        width: 600px;
+        height: 110px;
+        margin: -5px auto -15px;
     }
-  }
+
+    &.OPEN {
+        .pallet {
+            animation-delay: 0.5s;
+            animation-name: zoomInLeft;
+        }
+
+        .recycle {
+            animation-delay: 1s;
+            animation-name: tada;
+        }
+    }
 }
 
 #reminder {
 
-  img {
-    position: absolute;
-    height: 540px;
-    left: 10px;
-    bottom: 0;
-    z-index: -1;
-  }
-
-  p {
-    width: 70%;
-    text-align: center;
-    margin-top: 20%;
-    margin-left: 20%;
-  }
-
-  &.OPEN {
     img {
-      animation-name: slideInUp;
+        position: absolute;
+        height: 540px;
+        left: 10px;
+        bottom: 0;
+        z-index: -1;
     }
-  }
+
+    p {
+        width: 70%;
+        text-align: center;
+        margin-top: 20%;
+        margin-left: 20%;
+    }
+
+    &.OPEN {
+        img {
+            animation-name: slideInUp;
+        }
+    }
 }
 
 #step-1 {
 
-  img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 300px;
-  }
-
-  p {
-    position: absolute;
-    text-align: center;
-    font-size: $medium;
-  }
-
-  .count {
-    left: 0;
-    top: 160px;
-    width: 800px;
-  }
-
-  .start {
-    color: $white;
-    font-weight: normal;
-    left: 180px;
-    bottom: 12.5%;
-    width: 800px;
-    opacity: 0;
-  }
-
-  &.OPEN {
     img {
-      animation-name: fadeInLeftBig;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 300px;
     }
 
-    .start.animated {
-      animation-name: fadeInRightBig;
+    p {
+        position: absolute;
+        text-align: center;
+        font-size: $medium;
     }
-  }
+
+    .count {
+        left: 0;
+        top: 160px;
+        width: 800px;
+    }
+
+    .start {
+        color: $white;
+        font-weight: normal;
+        left: 180px;
+        bottom: 12.5%;
+        width: 800px;
+        opacity: 0;
+    }
+
+    &.OPEN {
+        img {
+            animation-name: fadeInLeftBig;
+        }
+
+        .start.animated {
+            animation-name: fadeInRightBig;
+        }
+    }
 }
 
 #what-faucet {
 
-  .question {
-    background-size: 1700px;
-    width: 820px;
-    height: 110px;
-    margin-top: 40px;
-    margin-left: 6%;
-    text-align: center;
-    background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
-  }
-
-  .selectable-reveal {
-    width: 100%;
-  }
-
-  ul {
-    width: 100%;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left: 5%;
-  }
-
-  .text {
-    position: relative;
-  }
-
-  &.OPEN {
-    li {
-      position: absolute;
-      height: 100px;
-      background-image: url(../media/_images/_Buttons/BU_1.png);
-      background-size: 3750px;
-      background-repeat: no-repeat;
-      background-position: -1500px 0px;
-      pointer-events: none;
-      opacity: 0;
-
-      &.animated {
-        animation-name: fadeInRight;
-      }
-
-      &.selectable {
-        cursor: pointer;
-        pointer-events: auto;
-      }
-
-      &:hover,
-      &.SELECTED {
-          background-position: -1500px -200px;
-      }
+    .question {
+        background-size: 1700px;
+        width: 820px;
+        height: 110px;
+        margin-top: 40px;
+        margin-left: 6%;
+        text-align: center;
+        background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
     }
-  }
 
-  .STARTED:not(.COMPLETE) ~ .selectable-reveal li {
-    cursor: default;
-    pointer-events: none;
-  }
+    .selectable-reveal {
+        width: 100%;
+    }
 
-  .SELECTED::after {
-    background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
-    background-size: 1700px 800px;
-    background-repeat: no-repeat;
-    background-position: -900px 1px;
-    padding: 8px;
-  }
+    ul {
+        width: 100%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-left: 5%;
+    }
 
-  .kitchen {
-    top: 30%;
-  }
+    .text {
+        position: relative;
+    }
 
-  .kitchen::after {
-    content: "Kitchen Faucet";
-  }
+    &.OPEN {
+        li {
+            position: absolute;
+            height: 100px;
+            background-image: url(../media/_images/_Buttons/BU_1.png);
+            background-size: 3750px;
+            background-repeat: no-repeat;
+            background-position: -1500px 0px;
+            pointer-events: none;
+            opacity: 0;
 
-  .shower, {
-    top: 50%;
-  }
+            &.animated {
+                animation-name: fadeInRight;
+            }
 
-  .shower::after {
-    content: "Shower Faucet";
-  }
+            &.selectable {
+                cursor: pointer;
+                pointer-events: auto;
+            }
 
-  .bathroom {
-    top: 70%;
-  }
+            &:hover,
+            &.SELECTED {
+                    background-position: -1500px -200px;
+            }
+        }
+    }
 
-  .bathroom::after {
-    content: "Bathroom Faucet";
-  }
+    .STARTED:not(.COMPLETE) ~ .selectable-reveal li {
+        cursor: default;
+        pointer-events: none;
+    }
 
-  .bathtub {
-    top: 30%;
-    left: 50%;
-  }
+    .SELECTED::after {
+        background-image: url(../media/_images/S_WhatFaucet/img_7.1.png);
+        background-size: 1700px 800px;
+        background-repeat: no-repeat;
+        background-position: -900px 1px;
+        padding: 8px;
+    }
 
-  .bathtub::after {
-    content: "Bathtub Faucet";
-  }
+    .kitchen {
+        top: 30%;
+    }
 
-  .classroom {
-    top: 50%;
-    left: 50%;
-  }
+    .kitchen::after {
+        content: "Kitchen Faucet";
+    }
 
-  .classroom::after {
-    content: "Classroom Faucet";
-  }
+    .shower, {
+        top: 50%;
+    }
 
-  .outdoor {
-    top: 70%;
-    left: 50%;
-  }
+    .shower::after {
+        content: "Shower Faucet";
+    }
 
-  .outdoor::after {
-    content: "Outdoor Faucet";
-  }
+    .bathroom {
+        top: 70%;
+    }
 
-  ::after {
-    top: 35%;
-    font-size: xx-large;
-    margin-left: 100px;
-    position: relative;
-  }
+    .bathroom::after {
+        content: "Bathroom Faucet";
+    }
+
+    .bathtub {
+        top: 30%;
+        left: 50%;
+    }
+
+    .bathtub::after {
+        content: "Bathtub Faucet";
+    }
+
+    .classroom {
+        top: 50%;
+        left: 50%;
+    }
+
+    .classroom::after {
+        content: "Classroom Faucet";
+    }
+
+    .outdoor {
+        top: 70%;
+        left: 50%;
+    }
+
+    .outdoor::after {
+        content: "Outdoor Faucet";
+    }
+
+    ::after {
+        top: 35%;
+        font-size: xx-large;
+        margin-left: 100px;
+        position: relative;
+    }
 }
 
 #step-2 {
 
-  .group {
-    width: 960px;
-    height: 540px;
-  }
+    .group {
+        width: 960px;
+        height: 540px;
+    }
 
-  .step {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-size: 5000px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step2/img_8.1.png);
-  }
+    .step {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: 5000px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step2/img_8.1.png);
+    }
 
-  .collect {
-    text-align: center;
-    margin-top: 120px;
-  }
+    .collect {
+        text-align: center;
+        margin-top: 120px;
+    }
 
-  .images {
-    width: 900px;
-    margin: 0 auto;
-    text-align: center;
+    .images {
+        width: 900px;
+        margin: 0 auto;
+        text-align: center;
 
-    div {
-      display: inline-block;
-      background-image: url(../media/_images/S_Step2/img_8.1.png);
-      background-size: 5000px;
-      width: 240px;
-      height: 240px;
-      opacity: 0;
+        div {
+            display: inline-block;
+            background-image: url(../media/_images/S_Step2/img_8.1.png);
+            background-size: 5000px;
+            width: 240px;
+            height: 240px;
+            opacity: 0;
 
-      $widths:  240 300 210;
-      $heights: 190 200 220;
+            $widths:    240 300 210;
+            $heights: 190 200 220;
 
-      @for $i from 1 through 3 {
-        &:nth-of-type(#{$i}) {
-          background-position: #{-1000*$i+px} 0px;
-          width: nth($widths,$i)+px;
-          height: nth($heights,$i)+px;
-          opacity: 0;
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    background-position: #{-1000*$i+px} 0px;
+                    width: nth($widths,$i)+px;
+                    height: nth($heights,$i)+px;
+                    opacity: 0;
+                }
+            }
         }
-      }
     }
-  }
 
-  .size {
-    padding: 14px 10px;
-  }
-
-  $items: step container-1 container-2 container-3;
-  $directions: Left Right Right Right;
-
-  @for $i from 1 through 4 {
-    $item: nth($items,$i);
-    &.OPEN, &.STAY {
-      .#{$item}.animated {
-        animation-name: fadeIn#{nth($directions,$i)}Big;
-      }
+    .size {
+        padding: 14px 10px;
     }
-  }
 
-  .step {
-    animation-delay: 0.1s;
-  }
+    $items: step container-1 container-2 container-3;
+    $directions: Left Right Right Right;
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    @for $i from 1 through 4 {
+        $item: nth($items,$i);
+        &.OPEN, &.STAY {
+            .#{$item}.animated {
+                animation-name: fadeIn#{nth($directions,$i)}Big;
+            }
+        }
     }
-  }
+
+    .step {
+        animation-delay: 0.1s;
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 .frame-component.LEAVE {
-  transform: none;
+    transform: none;
 
-  button {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .5s;
-  }
+    button {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .5s;
+    }
 }
 
 .pl-game.DEMO {
-  .frame-component.LEAVE {
-    button {
-      opacity: 0;
-      pointer-events: none;
+    .frame-component.LEAVE {
+        button {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
-  }
 }
 
 .tip {
-  position: absolute;
-  left: 0;
-  top: auto;
-  bottom: 0;
-  width: 960px;
-  height: 100px;
-  background-image: url(../media/_images/S_Step2/img_8.1.png);
-  background-size: 5000px 240%;
-  background-repeat: no-repeat;
-  background-position: -4000px 0px;
-  color: $white;
-  font-weight: normal;
-  line-height: $small;
-  text-align: center;
+    position: absolute;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    width: 960px;
+    height: 100px;
+    background-image: url(../media/_images/S_Step2/img_8.1.png);
+    background-size: 5000px 240%;
+    background-repeat: no-repeat;
+    background-position: -4000px 0px;
+    color: $white;
+    font-weight: normal;
+    line-height: $small;
+    text-align: center;
 
-  p {
-    font-size: $small;
-    padding: 10px;
-    bottom: 8px;
-  }
+    p {
+        font-size: $small;
+        padding: 10px;
+        bottom: 8px;
+    }
 
-  &.OPEN {
-    animation: showTip .5s forwards;
-  }
+    &.OPEN {
+        animation: showTip .5s forwards;
+    }
 
-  &.LEAVE {
-    animation: leaveTip .5s forwards;
-  }
+    &.LEAVE {
+        animation: leaveTip .5s forwards;
+    }
 
-  &.hint p {
-    padding: 34px 10px;
-  }
+    &.hint p {
+        padding: 34px 10px;
+    }
 }
 
 #what-need {
 
-  .left {
-    position: absolute;
-    left: 0;
-    background-size: 1875px;
-    width: 400px;
-    height: 540px;
-    background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
-    z-index: -1;
-  }
-
-  .right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
-    background-size: 1875px;
-    background-position: -1250px 0px;
-    width: 607px;
-    height: 540px;
-    padding-left: 70px;
-    z-index: -1;
-
-    div {
-      background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
-      background-size: 1875px;
-      background-position: -640px 0px;
-      width: 535px;
-      height: 110px;
-      margin: 40px auto 25px;
-    }
-  }
-
-  ul {
-    list-style-position: inside;
-    padding: 0;
-    width: 400px;
-    float: right;
-    margin-top: 20%;
-    font-size: xx-large;
-  }
-
-  li {
-    opacity: 0;
-
-    span {
-      position: relative;
-      left: -15px;
-    }
-  }
-
-  .tip {
-    padding: 24px 10px;
-  }
-
-  $items: lids scissors markers polish;
-
-  @for $i from 1 through 4 {
-    $item: nth($items,$i);
-    &.OPEN, &.STAY {
-      .#{$item}.animated {
-        opacity: 1;
-        animation-name: slideInRight;
-      }
-    }
-  }
-
-  &.WHAT-NEED {
-    .right div {
-      animation-name: fadeInRightBig;
-    }
-  }
-
-  &.OPEN {
     .left {
-      animation-name: slideInLeft;
+        position: absolute;
+        left: 0;
+        background-size: 1875px;
+        width: 400px;
+        height: 540px;
+        background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+        z-index: -1;
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    .right {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+        background-size: 1875px;
+        background-position: -1250px 0px;
+        width: 607px;
+        height: 540px;
+        padding-left: 70px;
+        z-index: -1;
+
+        div {
+            background-image: url(../media/_images/S_WhatNeed/img_9.1.png);
+            background-size: 1875px;
+            background-position: -640px 0px;
+            width: 535px;
+            height: 110px;
+            margin: 40px auto 25px;
+        }
     }
-  }
+
+    ul {
+        list-style-position: inside;
+        padding: 0;
+        width: 400px;
+        float: right;
+        margin-top: 20%;
+        font-size: xx-large;
+    }
+
+    li {
+        opacity: 0;
+
+        span {
+            position: relative;
+            left: -15px;
+        }
+    }
+
+    .tip {
+        padding: 24px 10px;
+    }
+
+    $items: lids scissors markers polish;
+
+    @for $i from 1 through 4 {
+        $item: nth($items,$i);
+        &.OPEN, &.STAY {
+            .#{$item}.animated {
+                opacity: 1;
+                animation-name: slideInRight;
+            }
+        }
+    }
+
+    &.WHAT-NEED {
+        .right div {
+            animation-name: fadeInRightBig;
+        }
+    }
+
+    &.OPEN {
+        .left {
+            animation-name: slideInLeft;
+        }
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #scissors-and-paint {
 
-  img {
-    position: absolute;
-    left: 0;
-    top: 40px;
-    width: 500px;
-  }
-
-  p {
-    padding-left: 450px;
-    text-align: center;
-    padding-top: 150px;
-  }
-
-  &.OPEN {
     img {
-      animation-name: zoomIn;
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 500px;
     }
-  }
+
+    p {
+        padding-left: 450px;
+        text-align: center;
+        padding-top: 150px;
+    }
+
+    &.OPEN {
+        img {
+            animation-name: zoomIn;
+        }
+    }
 }
 
 #step-3 {
 
-  .step {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-size: 1950px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step3/img_11.1.png);
-  }
-
-  .text {
-    background-image: url(../media/_images/S_Step3/img_11.1.png);
-    background-size: 3000px 360%;
-    background-position: -1000px 0px;
-    padding: 10px;
-    margin-top: 130px;
-    text-align: center
-  }
-
-  p {
-    font-size: $medium;
-  }
-
-  span {
-    font-size: $small;
-  }
-
-  .lids {
-    background-image: url(../media/_images/S_Step3/img_11.1.png);
-    background-size: 1950px;
-    background-position: -1300px 0px;
-    width: 610px;
-    height: 330px;
-    margin-top: -3%;
-    margin-left: 17%;
-  }
-
-  &.OPEN {
-    .lids {
-      animation-name: fadeInLeftBig;
-      animation-delay: 1s;
+    .step {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: 1950px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step3/img_11.1.png);
     }
-  }
+
+    .text {
+        background-image: url(../media/_images/S_Step3/img_11.1.png);
+        background-size: 3000px 360%;
+        background-position: -1000px 0px;
+        padding: 10px;
+        margin-top: 130px;
+        text-align: center
+    }
+
+    p {
+        font-size: $medium;
+    }
+
+    span {
+        font-size: $small;
+    }
+
+    .lids {
+        background-image: url(../media/_images/S_Step3/img_11.1.png);
+        background-size: 1950px;
+        background-position: -1300px 0px;
+        width: 610px;
+        height: 330px;
+        margin-top: -3%;
+        margin-left: 17%;
+    }
+
+    &.OPEN {
+        .lids {
+            animation-name: fadeInLeftBig;
+            animation-delay: 1s;
+        }
+    }
 }
 
 #step-4 {
 
-  .step {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-size: 1350px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step4/img_12.1.png);
-  }
-
-  p {
-    position: absolute;
-    left: 50px;
-    top: 160px;
-    width: 400px;
-    background-image: url(../media/_images/S_Step4/img_12.1.png);
-    background-size: 1350px 190%;
-    background-position: -450px 0px;
-    padding: 20px 0;
-    font-size: $medium;
-    text-align: center;
-  }
-
-  .faucet {
-    position: absolute;
-    right: 50px;
-    top: 80px;
-    width: 450px;
-    height: 380px;
-    background-image: url(../media/_images/S_Step4/img_12.1.png);
-    background-size: 1350px;
-    background-repeat: no-repeat;
-    background-position: -900px 0px;
-  }
-
-  &.OPEN {
-    .faucet {
-      animation-name: fadeInLeftBig;
-      animation-delay: 1s;
+    .step {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: 1350px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step4/img_12.1.png);
     }
-  }
+
+    p {
+        position: absolute;
+        left: 50px;
+        top: 160px;
+        width: 400px;
+        background-image: url(../media/_images/S_Step4/img_12.1.png);
+        background-size: 1350px 190%;
+        background-position: -450px 0px;
+        padding: 20px 0;
+        font-size: $medium;
+        text-align: center;
+    }
+
+    .faucet {
+        position: absolute;
+        right: 50px;
+        top: 80px;
+        width: 450px;
+        height: 380px;
+        background-image: url(../media/_images/S_Step4/img_12.1.png);
+        background-size: 1350px;
+        background-repeat: no-repeat;
+        background-position: -900px 0px;
+    }
+
+    &.OPEN {
+        .faucet {
+            animation-name: fadeInLeftBig;
+            animation-delay: 1s;
+        }
+    }
 }
 
 #step-5 {
 
-  .step {
-    position: absolute;
-    left: 45px;
-    top: 0;
-    background-size: 1575px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step5/img_13.1.png);
-  }
-
-  .text {
-    position: absolute;
-    left: 50px;
-    top: 110px;
-    width: 530px;
-    background-image: url(../media/_images/S_Step5/img_13.1.png);
-    background-size: 1575px 190%;
-    background-position: -525px 0px;
-    padding: 10px 20px;
-    font-size: $small;
-    line-height: 30px;
-    text-align: left;
-  }
-
-  .lid {
-    position: absolute;
-    right: 0;
-    top: 60px;
-    width: 315px;
-    height: 380px;
-    background-image: url(../media/_images/S_Step5/img_13.1.png);
-    background-size: 1575px;
-    background-position: -1040px 0px;
-  }
-
-  &.OPEN {
     .step {
-      animation-name: fadeInLeftBig;
+        position: absolute;
+        left: 45px;
+        top: 0;
+        background-size: 1575px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step5/img_13.1.png);
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    .text {
+        position: absolute;
+        left: 50px;
+        top: 110px;
+        width: 530px;
+        background-image: url(../media/_images/S_Step5/img_13.1.png);
+        background-size: 1575px 190%;
+        background-position: -525px 0px;
+        padding: 10px 20px;
+        font-size: $small;
+        line-height: 30px;
+        text-align: left;
     }
-  }
+
+    .lid {
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 315px;
+        height: 380px;
+        background-image: url(../media/_images/S_Step5/img_13.1.png);
+        background-size: 1575px;
+        background-position: -1040px 0px;
+    }
+
+    &.OPEN {
+        .step {
+            animation-name: fadeInLeftBig;
+        }
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #step-6 {
 
-  .step {
-    position: absolute;
-    left: 45px;
-    top: 0;
-    background-size: 1350px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step6/img_14.1.png);
-  }
-
-  p {
-    position: absolute;
-    left: 50px;
-    top: 130px;
-    width: 420px;
-    background-image: url(../media/_images/S_Step6/img_14.1.png);
-    background-size: 1350px 140%;
-    background-position: -450px 0px;
-    padding: 10px 20px;
-    font-size: $medium;
-    text-align: center;
-  }
-
-  .faucet {
-    position: absolute;
-    right: 60px;
-    top: 40px;
-    width: 450px;
-    height: 430px;
-    background-image: url(../media/_images/S_Step6/img_14.1.png);
-    background-repeat: no-repeat;
-    background-size: 1350px;
-    background-position: -900px 0px;
-  }
-
-  &.OPEN {
     .step {
-      animation-name: fadeInLeftBig;
+        position: absolute;
+        left: 45px;
+        top: 0;
+        background-size: 1350px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step6/img_14.1.png);
     }
-  }
+
+    p {
+        position: absolute;
+        left: 50px;
+        top: 130px;
+        width: 420px;
+        background-image: url(../media/_images/S_Step6/img_14.1.png);
+        background-size: 1350px 140%;
+        background-position: -450px 0px;
+        padding: 10px 20px;
+        font-size: $medium;
+        text-align: center;
+    }
+
+    .faucet {
+        position: absolute;
+        right: 60px;
+        top: 40px;
+        width: 450px;
+        height: 430px;
+        background-image: url(../media/_images/S_Step6/img_14.1.png);
+        background-repeat: no-repeat;
+        background-size: 1350px;
+        background-position: -900px 0px;
+    }
+
+    &.OPEN {
+        .step {
+            animation-name: fadeInLeftBig;
+        }
+    }
 }
 
 #step-7 {
 
-  .step {
-    position: absolute;
-    left: 45px;
-    top: 0;
-    background-size: 1800px;
-    width: 320px;
-    height: 130px;
-    background-image: url(../media/_images/S_Step7/img_15.1.png);
-  }
-
-  .text {
-    position: absolute;
-    left: 50px;
-    top: 130px;
-    width: 580px;
-    background-image: url(../media/_images/S_Step7/img_15.1.png);
-    background-size: 1800px 180%;
-    background-position: -600px 0px;
-    padding: 10px 20px;
-    font-size: $medium;
-  }
-
-  .lid {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 275px;
-    height: 540px;
-    background-image: url(../media/_images/S_Step7/img_15.1.png);
-    background-size: 1800px;
-    background-position: -1200px 0px;
-  }
-
-  &.OPEN {
     .step {
-      animation-name: fadeInLeftBig;
+        position: absolute;
+        left: 45px;
+        top: 0;
+        background-size: 1800px;
+        width: 320px;
+        height: 130px;
+        background-image: url(../media/_images/S_Step7/img_15.1.png);
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    .text {
+        position: absolute;
+        left: 50px;
+        top: 130px;
+        width: 580px;
+        background-image: url(../media/_images/S_Step7/img_15.1.png);
+        background-size: 1800px 180%;
+        background-position: -600px 0px;
+        padding: 10px 20px;
+        font-size: $medium;
     }
-  }
+
+    .lid {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 275px;
+        height: 540px;
+        background-image: url(../media/_images/S_Step7/img_15.1.png);
+        background-size: 1800px;
+        background-position: -1200px 0px;
+    }
+
+    &.OPEN {
+        .step {
+            animation-name: fadeInLeftBig;
+        }
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #decorate-tag {
 
-  p {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 610px;
-    height: 540px;
-    background-size: 3900px;
-    background-position: -975px 0px;
-    padding: 90px 50px 0px 0px;
-    background-image: url('../media/_images/_Frames/FR_1.png');
-    text-align: center;
-  }
-
-  img {
-    position: absolute;
-    right: 0;
-    top: 20px;
-    width: 480px;
-  }
-
-  &.OPEN {
-    img {
-      animation-name: zoomIn;
-      animation-delay: 0.5s;
+    p {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 610px;
+        height: 540px;
+        background-size: 3900px;
+        background-position: -975px 0px;
+        padding: 90px 50px 0px 0px;
+        background-image: url('../media/_images/_Frames/FR_1.png');
+        text-align: center;
     }
-  }
+
+    img {
+        position: absolute;
+        right: 0;
+        top: 20px;
+        width: 480px;
+    }
+
+    &.OPEN {
+        img {
+            animation-name: zoomIn;
+            animation-delay: 0.5s;
+        }
+    }
 }
 
 #step-8 {
 
-  .step {
-    position: absolute;
-    right: 50px;
-    top: 0;
-    background-size: 950px;
-    width: 320px;
-    height: 130px;
-    z-index: 1;
-    background-image: url(../media/_images/S_Step8/img_17.1.png);
-  }
-
-  .text {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 610px;
-    height: 540px;
-    background-size: 3900px;
-    background-position: -975px 0px;
-    padding: 220px 50px 0px 0px;
-    text-align: center;
-    background-image: url(../media/_images/_Frames/FR_1.png);
-  }
-
-  .lid {
-    position: absolute;
-    right: 0;
-    top: 100px;
-    width: 460px;
-    height: 360px;
-    background-image: url(../media/_images/S_Step8/img_17.1.png);
-    background-repeat: no-repeat;
-    background-size: 950px;
-    background-position: -475px 0px;
-  }
-
-  &.OPEN {
     .step {
-      animation-name: fadeInLeftBig;
-      animation-delay: 1s;
+        position: absolute;
+        right: 50px;
+        top: 0;
+        background-size: 950px;
+        width: 320px;
+        height: 130px;
+        z-index: 1;
+        background-image: url(../media/_images/S_Step8/img_17.1.png);
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 610px;
+        height: 540px;
+        background-size: 3900px;
+        background-position: -975px 0px;
+        padding: 220px 50px 0px 0px;
+        text-align: center;
+        background-image: url(../media/_images/_Frames/FR_1.png);
     }
-  }
+
+    .lid {
+        position: absolute;
+        right: 0;
+        top: 100px;
+        width: 460px;
+        height: 360px;
+        background-image: url(../media/_images/S_Step8/img_17.1.png);
+        background-repeat: no-repeat;
+        background-size: 950px;
+        background-position: -475px 0px;
+    }
+
+    &.OPEN {
+        .step {
+            animation-name: fadeInLeftBig;
+            animation-delay: 1s;
+        }
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #select-paint {
 
-  .text {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 610px;
-    height: 540px;
-    background-size: 3900px;
-    background-position: -975px 0px;
-    padding: 220px 50px 0px 0px;
-    text-align: center;
-    background-image: url(../media/_images/_Frames/FR_1.png);
-  }
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 610px;
+        height: 540px;
+        background-size: 3900px;
+        background-position: -975px 0px;
+        padding: 220px 50px 0px 0px;
+        text-align: center;
+        background-image: url(../media/_images/_Frames/FR_1.png);
+    }
 
-  img {
-    position: absolute;
-    right: -2px;
-    top: 40px;
-    height: 400px;
-  }
-
-  &.OPEN {
     img {
-      animation-name: slideInRight;
-      animation-delay: 1s;
+        position: absolute;
+        right: -2px;
+        top: 40px;
+        height: 400px;
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    &.OPEN {
+        img {
+            animation-name: slideInRight;
+            animation-delay: 1s;
+        }
     }
-  }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #step-9 {
 
-  .step {
-    position: absolute;
-    right: 50px;
-    top: 0;
-    background-size: 700px;
-    width: 320px;
-    height: 130px;
-    z-index: 1;
-    background-image: url(../media/_images/S_Step9/img_19.1.png);
-  }
-
-  .text {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 610px;
-    height: 540px;
-    background-size: 3900px;
-    background-position: -975px 0px;
-    padding: 160px 50px 0px 0px;
-    text-align: center;
-    background-image: url(../media/_images/_Frames/FR_1.png);
-  }
-
-  .lid {
-    position: absolute;
-    right: 50px;
-    top: 110px;
-    width: 350px;
-    height: 360px;
-    background-image: url(../media/_images/S_Step9/img_19.1.png);
-    background-repeat: no-repeat;
-    background-size: 700px;
-    background-position: -350px 0px;
-  }
-
-  &.OPEN {
     .step {
-      animation-name: fadeInLeftBig;
-      animation-delay: 1s;
+        position: absolute;
+        right: 50px;
+        top: 0;
+        background-size: 700px;
+        width: 320px;
+        height: 130px;
+        z-index: 1;
+        background-image: url(../media/_images/S_Step9/img_19.1.png);
     }
-  }
 
-  &.LEAVE {
-    button {
-      opacity: 0;
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 610px;
+        height: 540px;
+        background-size: 3900px;
+        background-position: -975px 0px;
+        padding: 160px 50px 0px 0px;
+        text-align: center;
+        background-image: url(../media/_images/_Frames/FR_1.png);
     }
-  }
+
+    .lid {
+        position: absolute;
+        right: 50px;
+        top: 110px;
+        width: 350px;
+        height: 360px;
+        background-image: url(../media/_images/S_Step9/img_19.1.png);
+        background-repeat: no-repeat;
+        background-size: 700px;
+        background-position: -350px 0px;
+    }
+
+    &.OPEN {
+        .step {
+            animation-name: fadeInLeftBig;
+            animation-delay: 1s;
+        }
+    }
+
+    &.LEAVE {
+        button {
+            opacity: 0;
+        }
+    }
 }
 
 #hint-5 {
@@ -1341,170 +1341,170 @@ img.inline {
 
 #all-layers {
 
-  .text {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 610px;
-    height: 540px;
-    background-size: 3900px;
-    background-position: -975px 0px;
-    padding: 160px 50px 0px 0px;
-    text-align: center;
-    background-image: url(../media/_images/_Frames/FR_1.png);
-  }
+    .text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 610px;
+        height: 540px;
+        background-size: 3900px;
+        background-position: -975px 0px;
+        padding: 160px 50px 0px 0px;
+        text-align: center;
+        background-image: url(../media/_images/_Frames/FR_1.png);
+    }
 
-  img {
-    position: absolute;
-    right: 100px;
-    top: 50px;
-    width: 400px;
-  }
+    img {
+        position: absolute;
+        right: 100px;
+        top: 50px;
+        width: 400px;
+    }
 }
 
 #spread-the-word {
-  text-align: center;
+    text-align: center;
 
-  img {
-    width: 800px;
-    margin-top: 40px;
-  }
+    img {
+        width: 800px;
+        margin-top: 40px;
+    }
 }
 
 #tips {
 
-  .tips {
-    position: absolute;
-    left: 60px;
-    top: 0;
-    background-size: 1200px;
-    width: 260px;
-    height: 140px;
-    background-image: url(../media/_images/S_Tips/img_22.1.png);
-  }
-
-  [class^=lid-] {
-    position: absolute;
-    background-image: url(../media/_images/S_Tips/img_22.1.png);
-    background-repeat: no-repeat;
-    background-size: 1200px;
-    width: 200px;
-    height: 200px;
-  }
-
-  @for $i from 1 through 3 {
-    .lid-#{$i} {
-      background-position: -290*$i+px 0px;
-      left: 190+(180*$i)+px;
-      top: -40+(80*$i)+px;
+    .tips {
+        position: absolute;
+        left: 60px;
+        top: 0;
+        background-size: 1200px;
+        width: 260px;
+        height: 140px;
+        background-image: url(../media/_images/S_Tips/img_22.1.png);
     }
-  }
 
-  ul {
-    position: absolute;
-    left: 70px;
-    top: 130px;
-    list-style-position: inside;
-    padding: 0;
-    margin: 0 auto;
-    font-size: $medium;
-    line-height: 65px;
-    text-align: left;
-    width: 100%;
-  }
-
-  li {
-    opacity: 0;
-  }
-
-  span {
-    position: relative;
-    left: -15px;
-  }
-
-  $items: use-your try-glow use-multiple create personalize;
-
-  @for $i from 1 through 5 {
-    $item: nth($items,$i);
-    &.OPEN {
-      .#{$item}.animated {
-        opacity: 1;
-        animation-name: slideInRight;
-      }
+    [class^=lid-] {
+        position: absolute;
+        background-image: url(../media/_images/S_Tips/img_22.1.png);
+        background-repeat: no-repeat;
+        background-size: 1200px;
+        width: 200px;
+        height: 200px;
     }
-  }
+
+    @for $i from 1 through 3 {
+        .lid-#{$i} {
+            background-position: -290*$i+px 0px;
+            left: 190+(180*$i)+px;
+            top: -40+(80*$i)+px;
+        }
+    }
+
+    ul {
+        position: absolute;
+        left: 70px;
+        top: 130px;
+        list-style-position: inside;
+        padding: 0;
+        margin: 0 auto;
+        font-size: $medium;
+        line-height: 65px;
+        text-align: left;
+        width: 100%;
+    }
+
+    li {
+        opacity: 0;
+    }
+
+    span {
+        position: relative;
+        left: -15px;
+    }
+
+    $items: use-your try-glow use-multiple create personalize;
+
+    @for $i from 1 through 5 {
+        $item: nth($items,$i);
+        &.OPEN {
+            .#{$item}.animated {
+                opacity: 1;
+                animation-name: slideInRight;
+            }
+        }
+    }
 }
 
 #flip {
 
-  .drop {
-    position: absolute;
-    top: -10px;
-    left: 280px;
-    background-size: 850px;
-    background-repeat: no-repeat;
-    background-position: -425px 0px;
-    width: 400px;
-    height: 540px;
-    background-image: url(../media/_images/_Flip/img_25.1.png);
-    z-index: -1;
-  }
-
-  p {
-    font-size: $large;
-    margin-top: 15%;
-    text-align: center;
-  }
-
-  .flip {
-    position: absolute;
-    left: 330px;
-    top: 270px;
-    width: 330px;
-    height: 170px;
-    background-image: url(../media/_images/_Flip/img_25.1.png);
-    background-size: 850px;
-    background-repeat: no-repeat;
-    background-position: 0px 0px;
-  }
-
-  &.OPEN {
-    .flip {
-      animation-name: rubberBand;
-      animation-delay: 3s;
+    .drop {
+        position: absolute;
+        top: -10px;
+        left: 280px;
+        background-size: 850px;
+        background-repeat: no-repeat;
+        background-position: -425px 0px;
+        width: 400px;
+        height: 540px;
+        background-image: url(../media/_images/_Flip/img_25.1.png);
+        z-index: -1;
     }
-  }
+
+    p {
+        font-size: $large;
+        margin-top: 15%;
+        text-align: center;
+    }
+
+    .flip {
+        position: absolute;
+        left: 330px;
+        top: 270px;
+        width: 330px;
+        height: 170px;
+        background-image: url(../media/_images/_Flip/img_25.1.png);
+        background-size: 850px;
+        background-repeat: no-repeat;
+        background-position: 0px 0px;
+    }
+
+    &.OPEN {
+        .flip {
+            animation-name: rubberBand;
+            animation-delay: 3s;
+        }
+    }
 }
 
 #quit {
 
-  .frame {
-    width: 810px;
-    height: 440px;
-    text-align: center;
-    padding: 70px 80px;
+    .frame {
+        width: 810px;
+        height: 440px;
+        text-align: center;
+        padding: 70px 80px;
 
-    .background {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+        .background {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    h2 {
-      margin: 0;
-      font-size: $large;
-    }
+        h2 {
+            margin: 0;
+            font-size: $large;
+        }
 
-    h3 {
-      margin: 20px 0 10px;
-      font-size: $medium;
-    }
+        h3 {
+            margin: 20px 0 10px;
+            font-size: $medium;
+        }
 
-    button {
-      margin: 20px 10px;
+        button {
+            margin: 20px 10px;
+        }
     }
-  }
 }

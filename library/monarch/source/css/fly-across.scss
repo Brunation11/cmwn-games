@@ -1,24 +1,24 @@
 #fly-across {
-  > .center > div {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
+    > .center > div {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
 
-  img.hidden {
-    display: none;
-  }
+    img.hidden {
+        display: none;
+    }
 
-  [pl-id=player] {
-    width: 200px;
-    height: 170px;
-    background-image: url(../media/_Images/S_FlyAcross/SP_4.1.png);
-    background-size: 1809px;
-    background-repeat: no-repeat;
-    animation: butterfly .75s steps(1) infinite;
-  }
+    [pl-id=player] {
+        width: 200px;
+        height: 170px;
+        background-image: url(../media/_Images/S_FlyAcross/SP_4.1.png);
+        background-size: 1809px;
+        background-repeat: no-repeat;
+        animation: butterfly .75s steps(1) infinite;
+    }
 
-  .board {
-    cursor: pointer;
-  }
+    .board {
+        cursor: pointer;
+    }
 }
