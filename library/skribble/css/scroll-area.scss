@@ -1,8 +1,10 @@
+@import 'variables';
+
 .scroll-area {
     position: relative;
-    padding-right: 30px;
-    cursor: auto;
     border: 0;
+    cursor: auto;
+    padding-right: 30px;
     height: 100%;
 
     .area {
@@ -14,31 +16,33 @@
         position: absolute;
         top: 0;
         right: 0;
-        height: 100%;
         width: 30px;
+        height: 100%;
 
         &::before {
-            content: '';
             display: block;
-            height: 100%;
-            width: 10px;
             position: absolute;
-            left: -4px;
             top: 0;
+            left: -4px;
             border-radius: 5px;
-            background-color: rgba(0, 0, 0, .7);
+            background-color: $transparent-black;
+            width: 10px;
+            height: 100%;
+            content: '';
         }
     }
 
     .scroller {
-        position: absolute;
-        left: -37px;
-        top: 0;
         display: block;
+        position: absolute;
+        top: 0;
+        left: -37px;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+
         width: 80px;
         height: 100px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 }

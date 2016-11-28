@@ -295,23 +295,17 @@ section.OPEN .flip {
         div {
             position: absolute;
             bottom: -10%;
-            width: 40px;
-            height: 40px;
+            animation: bubbleUp 8s infinite linear;
             border-radius: 20px;
+            box-shadow: 0 0 5px 2px rgba(75, 190, 200, 1);
 
-            -webkit-box-shadow: 0 0 5px 2px rgba(75,190,200,1);
-            -moz-box-shadow: 0 0 5px 2px rgba(75,190,200,1);
-            box-shadow: 0 0 5px 2px rgba(75,190,200,1);
-
-            background:-moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
-            background:-webkit-gradient(radial, center center, 0, center center, 100, from(rgba(75,190,200,.2)), to(rgba(255,255,255,.7)));
-            background:gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+            background: -moz-radial-gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
+            background: -webkit-gradient(radial, center center, 0, center center, 100, from(rgba(75,190,200,.2)), to(rgba(255,255,255,.7)));
+            background: gradient(center 45deg, circle closest-corner, rgba(75,190,200,0), rgba(75,190,200,.1), rgba(75,190,200,.3), rgba(255,255,255,.7));
             background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0) 0%, rgba(9,133,167,0.1) 51%, rgba(9,133,167,0.3) 71%, rgba(9,133,167,.7) 100%);
 
-            animation:bubbleUp 8s infinite linear;
-            -webkit-animation:bubbleUp 8s infinite linear;
-            -o-animation:bubbleUp 8s infinite linear;
-            -moz-animation:bubbleUp 8s infinite linear;
+            width: 40px;
+            height: 40px;
 
             &:nth-of-type(1) {
                 animation-delay: 0s;
