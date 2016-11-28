@@ -7,8 +7,8 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import MeetTheTeamScreen from './components/meet_the_team_screen';
-import InfoLetsSeeScreen from 'components/info_lets_see_screen';
-import DingDongScreen from 'components/ding_dong_screen';
+import InfoLetsSeeScreen from './components/info_lets_see_screen';
+import DingDongScreen from './components/ding_dong_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -30,8 +30,8 @@ SafetyFirst = (
         loader={<Loader />}
         screens={{
             0: iOSScreen,
-            1: TitleScreen,
-            2: MeetTheTeamScreen,
+            // 1: TitleScreen,
+            1: MeetTheTeamScreen,
             3: InfoLetsSeeScreen,
             4: DingDongScreen
             // 2: BulbsScreen,
