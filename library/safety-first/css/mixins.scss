@@ -1,3 +1,11 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 // code from https://github.com/hudochenkov/sass-text-stroke
 @function text-stroke($size: 2, $color: #fff, $correction: 0) {
   $radius: $size - $correction;
@@ -32,4 +40,42 @@
 
 @mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
   text-shadow: text-stroke($size, $color, $correction);
+}
+
+@mixin typing($widths, $steps: 20) {
+  div {
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+
+    p {
+      position: relative;
+      display: inline-block;
+      font-size: inherit;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  @for $i from 1 through length($widths) {
+    div:nth-of-type(#{$i}) {
+      width: #{nth($widths, $i)}px;
+    }
+
+    &.start {
+      div:nth-of-type(#{$i}) {
+        &:after {
+          content: ' _';
+          position: relative;
+          text-align: middle;
+          animation: type#{$i}after #{$i * 1.25}s forwards;
+        }
+
+        p {
+          animation: type#{$i} #{$i * 1.25}s steps($steps, end);
+        }
+      }
+    }
+  }
 }
