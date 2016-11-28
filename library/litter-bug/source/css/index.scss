@@ -1,14 +1,13 @@
 @import 'variables';
 @import 'mixins';
-// scss-lint:disable SelectorDepth, PropertySortOrder, NestingDepth, ColorVariable, SelectorFormat, IdSelector, QualifyingElement
 
 html,
 body {
-    cursor: default;
-    height: 100%;
     margin: 0;
-    overflow: hidden;
+    cursor: default;
     padding: 0;
+    height: 100%;
+    overflow: hidden;
     user-drag: none;
     user-select: none;
 }
@@ -21,24 +20,26 @@ html,
 body,
 body > div,
 body > div > div {
-    background: transparent;
-    font-size: 20px;
-    height: 540px;
-    margin: auto;
     position: relative;
+    margin: auto;
+    background: transparent;
     width: 960px;
+    height: 540px;
+    font-size: 20px;
 
     .background {
-        opacity: 0;
-        transition: opacity .5s;
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
 
         &.default {
             background-image: url('../media/_BKG/BKG_1.png');
@@ -49,9 +50,9 @@ body > div > div {
         }
 
         &.catch-game {
-            background-image: url(../media/_assets/_sprites/sprites.game2.3-01-min.jpg);
-            background-size: 300% 100%;
+            background-image: url('../media/_assets/_sprites/sprites.game2.3-01-min.jpg');
             background-position: 0 0;
+            background-size: 300% 100%;
         }
 
         &.lets-clean-up {
@@ -66,14 +67,14 @@ body > div > div {
             background-image: url('../media/_BKG/BKG_3.png');
 
             &::before {
-                content: '';
                 position: absolute;
-                background: #000;
-                left: 0;
                 top: 0;
+                left: 0;
+                opacity: .2;
+                background: $black;
                 width: 100%;
                 height: 100%;
-                opacity: .2;
+                content: '';
             }
         }
 
@@ -100,8 +101,8 @@ body > div > div {
     &[class *=SCREEN-catch-game] .background.catch-game,
     &[class *=SCREEN-clean-up-game] .background.clean-up-game,
     &.SCREEN-commit .background.commit {
-        opacity: 1;
         transition: opacity .25s;
+        opacity: 1;
     }
 
 
@@ -124,38 +125,41 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
 
 .sparkles {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
+    transition: opacity 1s;
+    opacity: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1s;
 
     div {
         position: absolute;
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        text-align: left;
         transform: rotate(0deg);
         transition: transform 1s, opacity 1s;
+        width: 100px;
+        height: 100px;
+        text-align: left;
+        line-height: 100px;
 
         &::before {
+            color: $yellow;
             content: '\02736';
-            color: #efc300;
         }
 
         @for $i from 1 through 40 {
             &:nth-of-type(#{$i}) {
                 $left: (-4 * $i) % 65 + 15;
                 $top: (-1 * $i) % 12 + 6;
-                left: percentage($left / 100);
+
                 top: percentage($top / 100);
+                left: percentage($left / 100);
+
                 @if $left > 45 {
                     @include flyright;
                 } @else {
                     @include flyleft;
                 }
+
                 animation-delay: nth($delays, ($i % 6) + 1);
             }
         }
@@ -174,30 +178,31 @@ body > div {
 
 button {
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
 
+    background-color: transparent;
+    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+    background-position: left top;
+    background-size: 3500px 778px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
 
-    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
-    background-size: 3500px 778px;
-    background-position: left top;
 
     &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: 2862px 529px;
+        background-size: 3000px 667px;
         width: 60px;
         height: 60px;
-        background-position: 2862px 529px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 5px;
-        z-index: 2;
-        background-size: 3000px 667px;
 
         &:hover {
             background-position: 2862px 196px;
@@ -227,11 +232,11 @@ button {
     }
 
     &.quit-yes {
+        background-image: url('../media/_Buttons/BU_1.png');
+        background-position: -1820px 450px;
+        background-size: auto 500px;
         width: 230px;
         height: 130px;
-        background-image: url(../media/_Buttons/BU_1.png);
-        background-size: auto 500px;
-        background-position: -1820px 450px;
 
         &:hover {
             background-position: -1820px 193px;
@@ -239,11 +244,11 @@ button {
     }
 
     &.quit-no {
+        background-image: url('../media/_Buttons/BU_1.png');
+        background-position: -2080px 450px;
+        background-size: auto 500px;
         width: 230px;
         height: 130px;
-        background-image: url(../media/_Buttons/BU_1.png);
-        background-size: auto 500px;
-        background-position: -2080px 450px;
 
         &:hover {
             background-position: -2080px 193px;
@@ -254,10 +259,10 @@ button {
 @media(max-width: 601px) {
     button {
         &.close {
+            background-position: -231px 435px;
+            background-size: auto 525px;
             width: 50px;
             height: 50px;
-            background-size: auto 525px;
-            background-position: -231px 435px;
 
             &:hover {
                 background-position: -231px 165px;
@@ -272,9 +277,9 @@ button {
     button.next-screen {
         animation-duration: 1s;
         animation-fill-mode: both;
+        background-position: -300px 500px;
         width: 230px;
         height: 235px;
-        background-position: -300px 500px;
 
         &:hover {
             background-position: -300px 243px;
@@ -287,13 +292,13 @@ h2 {
 }
 
 h3 {
-    font-size: 30px;
     margin: 0;
+    font-size: 30px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 .canvas-src { display: none; }
@@ -544,7 +549,7 @@ p {
     .cannon {
         position: absolute;
         text-align: center;
-        // background-image: url(../media/images/cannon-bears/background.png);
+        // background-image: url('../media/images/cannon-bears/background.png');
         // background-position: center center;
         // background-repeat: no-repeat;
         // background-size: contain;
@@ -1816,7 +1821,7 @@ p {
                 margin-left: 80px;
                 width: 120px;
                 height: 80px;
-                background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
+                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
                 background-repeat: no-repeat;
                 background-size: 600px;
                 background-position: -240px -30px;
@@ -1853,7 +1858,7 @@ p {
                 width: 60px;
                 height: 60px;
                 z-index: 2;
-                background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
+                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
                 background-repeat: no-repeat;
                 background-size: 500px;
                 background-position: -20px -24px;
@@ -1926,16 +1931,18 @@ p {
         height: 60px;
 
         &::before {
-            content: '';
             display: inline-block;
             position: relative;
+
+            background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+            background-repeat: no-repeat;
+            background-position: -307px -30px;
+            background-size: 500px;
+
             width: 90px;
             height: 50px;
             vertical-align: middle;
-            background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
-            background-repeat: no-repeat;
-            background-size: 500px;
-            background-position: -307px -30px;
+            content: '';
         }
 
         span {
@@ -1976,16 +1983,16 @@ p {
 
         .catchable {
             position: absolute;
+            top: 60px;
+            left: 980px;
             transition: opacity .5s;
             animation-duration: 6s;
             animation-timing-function: linear;
-            top: 60px;
-            left: 980px;
-            width: 100px;
-            height: 100px;
+            opacity: 1;
             background-image: url('../media/_assets/_sprites/sprites.game2.1-01.png');
             background-size: 1400px;
-            opacity: 1;
+            width: 100px;
+            height: 100px;
 
             &.CAUGHT {
                 opacity: 0;
@@ -2030,7 +2037,7 @@ p {
                 top: -15px;
                 width: 100px;
                 height: 105px;
-                background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
+                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
                 background-size: 500px;
                 background-position: -400px 0;
             }
@@ -2048,36 +2055,36 @@ p {
         transition: opacity .5s, z-index 0s .5s;
 
         &.OPEN {
+            transition: opacity .5s, z-index 0s;
             opacity: 1;
             z-index: 1;
-            transition: opacity .5s, z-index 0s;
         }
 
         &.open-level-up {
             &::before {
-                content: '';
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
+                opacity: .4;
+                background-image: url('../media/_assets/_images/BKG.5.png');
+                background-position: center center;
+                background-size: cover;
                 width: 100%;
                 height: 100%;
-                opacity: .4;
-                background-image: url(../media/_assets/_images/BKG.5.png);
-                background-size: cover;
-                background-position: center center;
+                content: '';
             }
         }
 
         ul {
-            list-style: none;
             margin: 0;
+            list-style: none;
         }
 
         li {
             display: none;
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
             width: 960px;
             height: 540px;
 
@@ -2094,46 +2101,48 @@ p {
             &.instructions {
                 > div {
                     position: absolute;
-                    left: 80px;
                     top: 50px;
-                    width: 800px;
-                    height: 440px;
+                    left: 80px;
                     border: 4px solid #000;
                     border-radius: 20px;
                     background-color: #f1f64e;
+                    width: 800px;
+                    height: 440px;
                 }
 
                 .instructions,
                 .words {
                     position: relative;
-                    background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
+                    margin: 0 auto;
+                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
-                    margin: 0 auto;
                 }
 
                 .instructions {
-                    height: 115px;
-                    width: 510px;
                     background-position: -120px -60px;
+                    width: 510px;
+                    height: 115px;
                 }
 
                 .words {
-                    height: 220px;
-                    width: 800px;
                     background-position: -720px -5px;
+                    width: 800px;
+                    height: 220px;
                 }
 
                 button {
                     display: block;
+                    transition: opacity .5s;
                     margin: 0 auto;
+
+                    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -2070px -117px;
+                    background-size: 3000px;
+
                     width: 200px;
                     height: 100px;
-                    background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
-                    background-repeat: no-repeat;
-                    background-size: 3000px;
-                    background-position: -2070px -117px;
-                    transition: opacity .5s;
 
                     &:hover {
                         background-position: -2070px -450px;
@@ -2149,70 +2158,72 @@ p {
             &.level-up {
 
                 &::before {
-                    content: '';
                     display: block;
                     position: absolute;
-                    left: -100px;
                     bottom: 0;
+                    left: -100px;
                     z-index: 1;
-                    width: 300px;
-                    height: 400px;
-                    background-image: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+                    background-image: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
                     background-size: 600px;
                     background-position: 0 0;
+                    width: 300px;
+                    height: 400px;
+                    content: '';
                 }
 
                 > div {
                     position: absolute;
-                    left: 80px;
                     top: 50px;
-                    width: 800px;
-                    height: 440px;
+                    left: 80px;
                     border: 4px solid #000;
                     border-radius: 20px;
                     background-color: #f1f64e;
+                    width: 800px;
+                    height: 440px;
                 }
 
                 .congratulations,
                 .level-up {
                     position: relative;
-                    background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
+                    margin: 0 auto;
+                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
-                    margin: 0 auto;
                 }
 
                 .congratulations {
-                    height: 115px;
-                    width: 650px;
-                    background-position: -1550px -60px;
                     margin-top: 80px;
+                    background-position: -1550px -60px;
+                    width: 650px;
+                    height: 115px;
                 }
 
                 .level-up {
-                    height: 150px;
-                    width: 610px;
                     background-position: -2320px -45px;
+                    width: 610px;
+                    height: 150px;
                 }
             }
 
             &.youve-won {
                 &::after {
-                    content: '';
                     display: block;
                     position: absolute;
                     right: -100px;
                     bottom: -10px;
-                    z-index: 1;
-                    width: 400px;
-                    height: 500px;
                     transform: rotate(0deg);
-                    transform-origin: 50% 75%;
                     transition: transform .5s;
-                    background-image: url(../media/_assets/_images/litterbug_.png);
+                    z-index: 1;
+
+                    background-image: url('../media/_assets/_images/litterbug_.png');
                     background-repeat: no-repeat;
                     background-position: left bottom;
                     background-size: contain;
+
+                    width: 400px;
+                    height: 500px;
+                    content: '';
+                    transform-origin: 50% 75%;
                 }
 
                 .congratulations {
@@ -2223,10 +2234,10 @@ p {
                 }
 
                 .level-up {
-                    height: 250px;
-                    width: 580px;
-                    background-position: -5330px 10px;
                     margin-top: 10px;
+                    background-position: -5330px 10px;
+                    width: 580px;
+                    height: 250px;
                 }
 
                 &.fall {
@@ -2240,63 +2251,68 @@ p {
                 background-color: rgba(243, 157, 201, .6);
 
                 &::before {
-                    content: '';
                     display: block;
                     position: absolute;
-                    left: -157px;
                     bottom: -15px;
-                    width: 400px;
-                    height: 500px;
-                    background-image: url(../media/_assets/_images/litterbug_.png);
+                    left: -157px;
+                    transform: scale3d(-1, 1, 1);
+                    z-index: 1;
+
+                    background-image: url('../media/_assets/_images/litterbug_.png');
                     background-repeat: no-repeat;
                     background-position: left bottom;
                     background-size: contain;
-                    transform: scale3D(-1, 1, 1);
-                    z-index: 1;
+
+                    width: 400px;
+                    height: 500px;
+                    content: '';
                 }
 
                 > div {
                     position: absolute;
-                    left: 80px;
                     top: 50px;
+                    left: 80px;
+                    border: 4px solid $black;
+                    border-radius: 20px;
+                    background-color: $green;
                     width: 800px;
                     height: 440px;
-                    border: 4px solid #000;
-                    border-radius: 20px;
-                    background-color: #4a6f11;
                 }
 
                 .try-again,
                 .words {
                     position: relative;
-                    background-image: url(../media/_assets/_sprites/sprites.game2.2-01.png);
+                    margin: 0 auto;
+
+                    background-image: url('../media/_assets/_sprites/sprites.game2.2-01.png');
                     background-repeat: no-repeat;
                     background-size: 6000px;
-                    margin: 0 auto;
                 }
 
                 .try-again {
-                    height: 115px;
-                    width: 370px;
                     background-position: -3190px -60px;
+                    width: 370px;
+                    height: 115px;
                 }
 
                 .words {
-                    height: 210px;
-                    width: 800px;
                     background-position: -3720px -15px;
+                    width: 800px;
+                    height: 210px;
                 }
 
                 button {
                     display: block;
+                    transition: opacity .5s;
                     margin: 0 auto;
+
+                    background-image: url('../media/_assets/_sprites/main.nav.btns-01.png');
+                    background-repeat: no-repeat;
+                    background-position: -2400px -117px;
+                    background-size: 3000px;
+
                     width: 200px;
                     height: 100px;
-                    background-image: url(../media/_assets/_sprites/main.nav.btns-01.png);
-                    background-repeat: no-repeat;
-                    background-size: 3000px;
-                    background-position: -2400px -117px;
-                    transition: opacity .5s;
 
                     &:hover {
                         background-position: -2400px -450px;
@@ -2326,53 +2342,53 @@ p {
 
     .words,
     .flip {
-        background-image: url(../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png);
+        background-image: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
         background-repeat: no-repeat;
         background-size: 4500px;
     }
 
     .words {
-        left: 0;
         top: 0;
+        left: 0;
+        background-position: -3030px -40px;
         width: 660px;
         height: 290px;
-        background-position: -3030px -40px;
     }
 
     .flip-container {
-        left: 50px;
         top: 280px;
+        left: 50px;
+        animation-delay: 5s;
         width: 330px;
         height: 220px;
-        animation-delay: 5s;
     }
 
     .flip {
-        left: 0;
         top: 0;
+        left: 0;
+        transition: opacity .5s 5s;
+        opacity: 0;
+        background-position: -3960px -80px;
         width: 100%;
         height: 100%;
-        background-position: -3960px -80px;
-        opacity: 0;
-        transition: opacity .5s 5s;
     }
 
     .mr-eco {
         right: 0;
         bottom: 0;
+        background-image: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+        background-repeat: no-repeat;
+        background-position: -360px 0;
+        background-size: 700px;
         width: 325px;
         height: 500px;
-        background-image: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
-        background-repeat: no-repeat;
-        background-size: 700px;
-        background-position: -360px 0;
     }
 
     .earned {
         display: none;
         position: absolute;
-        left: 388px;
         top: 110px;
+        left: 388px;
         width: 200px;
     }
 
@@ -2400,12 +2416,12 @@ p {
 #quit {
 
     .frame {
-        text-align: center;
-        background-image: url(../media/_assets/_frames/frame_quit.frame.png);
+        margin-top: -100px;
+        background-image: url('../media/_assets/_frames/frame_quit.frame.png');
         background-repeat: no-repeat;
         background-size: 100%;
         padding: 30px 0 0;
-        margin-top: -100px;
+        text-align: center;
 
         h2 {
             margin: 0;

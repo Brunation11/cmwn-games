@@ -1,5 +1,7 @@
+@import 'variables';
+
 // code from https://github.com/hudochenkov/sass-text-stroke
-@function text-stroke($size: 2, $color: #fff, $correction: 0) {
+@function text-stroke($size: 2, $color: $white, $correction: 0) {
     $radius: $size - $correction;
     $stroke: ();
 
@@ -30,6 +32,6 @@
     @return $stroke;
 }
 
-@mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
+@mixin text-stroke($size: 2, $color: $white, $correction: 0) {
     text-shadow: text-stroke($size, $color, $correction);
 }
