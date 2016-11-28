@@ -4,7 +4,9 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
-import MeetTheTeam from './components/meet_the_team';
+import MeetTheTeamScreen from './components/meet_the_team_screen';
+import InfoLetsSeeScreen from 'components/info_lets_see_screen';
+import DingDongScreen from 'components/ding_dong_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -27,7 +29,9 @@ var SafetyFirst = (
     screens={{
       0: iOSScreen,
       1: TitleScreen,
-      2: MeetTheTeam
+      2: MeetTheTeamScreen,
+      3: InfoLetsSeeScreen,
+      4: DingDongScreen
       // 2: BulbsScreen,
       // 3: PigScreen,
       // 4: InfoScreen,
@@ -43,18 +47,14 @@ var SafetyFirst = (
     }}
     assets={[
       <skoash.Font name="Source Sans Pro" />,
-      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
-      // <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
-      // <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
+      <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
+      <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
+      <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.dooropened.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.doorclosed.jpg'} />,
-
-      //
-      // <skoash.Audio ref="next" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Next.mp3'} />,
-      // <skoash.Audio ref="screen-complete" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/NextAppear.mp3'} />,
     ]}
   />
 );
