@@ -27,43 +27,43 @@ import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var Examples = (
-  <skoash.Game
-    config={config}
-    screens={{
-      0: iOSScreen,
-      1: GameScreen,
-      2: LabyrinthScreen,
-      3: SpriteScreen,
-      4: SelectableAllScreen,
-      5: CarouselScreen,
-      6: CatchReveal,
-      7: CatchScreen,
-      8: CarouselScreen,
-      9: RolesScreen,
-      10: RunnerReveal,
-      11: MatchScreen,
-      12: ScoreScreen,
-      13: DropzoneScreen,
-      14: TimerScreen,
-      15: AudioScreen,
-      16: TitleScreen,
-      17: BulbsScreen,
-      18: PigScreen,
-      19: SwitchesScreen,
-      20: InfoScreen,
-      21: VideoScreen,
-      22: FlipScreen,
-    }}
-    menus={{
-      quit: QuitScreen,
-    }}
-    loader={<Loader />}
-    assets={[
-      <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
-      <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />,
-      <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
-    ]}
-  />
+    <skoash.Game
+        config={config}
+        screens={{
+            0: iOSScreen,
+            1: GameScreen,
+            2: LabyrinthScreen,
+            3: SpriteScreen,
+            4: SelectableAllScreen,
+            5: CarouselScreen,
+            6: CatchReveal,
+            7: CatchScreen,
+            8: CarouselScreen,
+            9: RolesScreen,
+            10: RunnerReveal,
+            11: MatchScreen,
+            12: ScoreScreen,
+            13: DropzoneScreen,
+            14: TimerScreen,
+            15: AudioScreen,
+            16: TitleScreen,
+            17: BulbsScreen,
+            18: PigScreen,
+            19: SwitchesScreen,
+            20: InfoScreen,
+            21: VideoScreen,
+            22: FlipScreen,
+        }}
+        menus={{
+            quit: QuitScreen,
+        }}
+        loader={<Loader />}
+        assets={[
+            <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />,
+            <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />,
+            <skoash.Audio ref="correct" type="sfx" src="media/_Buttons/S_BU_3.mp3" />,
+        ]}
+    />
 );
 
 skoash.start(Examples);

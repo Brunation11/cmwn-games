@@ -1,1 +1,6 @@
 build
+library/framework
+google-analytics.js
+library/**/**/**/behavior.js
+
+library/monarch

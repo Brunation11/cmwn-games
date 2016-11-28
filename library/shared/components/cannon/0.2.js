@@ -1,149 +1,152 @@
 import classNames from 'classnames';
 
 class Cannon extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      classes: {}
-    };
+        this.state = {
+            classes: {}
+        };
 
-    this.fire = this.fire.bind(this);
-    this.reload = this.reload.bind(this);
-  }
-
-  bootstrap() {
-    super.bootstrap();
-
-    var list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
-
-    this.setState({
-      list
-    });
-  }
-
-  start() {
-    super.start();
-    this.next();
-  }
-
-  next() {
-    var classes, list;
-    classes = this.state.classes;
-    list = this.state.list;
-    if (this.props.reverseReload) {
-      list = this.refs.bin.get(1).concat(list);
-      list.pop();
-    } else {
-      list = list.concat(this.refs.bin.get(1));
-      list.shift();
+        this.fire = this.fire.bind(this);
+        this.reload = this.reload.bind(this);
     }
-    classes[this.state.list.length - 1] = 'LOADED';
-    this.enabled = true;
 
-    this.setState({
-      classes,
-      list
-    });
-  }
+    bootstrap() {
+        var list;
 
-  fire() {
-    this.setState({
-      fire: true,
-      reload: false
-    }, () => {
-      setTimeout(() => {
-        this.reload();
+        super.bootstrap();
+
+        list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+
+        this.setState({
+            list
+        });
+    }
+
+    start() {
+        super.start();
         this.next();
-      }, this.props.reloadTime);
-    });
+    }
 
-    this.props.onFire.call(this);
-  }
+    next() {
+        var classes;
+        var list;
+        classes = this.state.classes;
+        list = this.state.list;
+        if (this.props.reverseReload) {
+            list = this.refs.bin.get(1).concat(list);
+            list.pop();
+        } else {
+            list = list.concat(this.refs.bin.get(1));
+            list.shift();
+        }
+        classes[this.state.list.length - 1] = 'LOADED';
+        this.enabled = true;
 
-  reload() {
-    this.setState({
-      fire: false,
-      reload: true
-    });
+        this.setState({
+            classes,
+            list
+        });
+    }
 
-    this.props.onReload.call(this);
-  }
+    fire() {
+        this.setState({
+            fire: true,
+            reload: false
+        }, () => {
+            setTimeout(() => {
+                this.reload();
+                this.next();
+            }, this.props.reloadTime);
+        });
 
-  getClassNames() {
-    return classNames('cannon', {
-      FIRE: this.state.fire,
-      RELOAD: this.state.reload
-    }, super.getClassNames());
-  }
+        this.props.onFire.call(this);
+    }
 
-  getClass(key, li) {
-    return classNames(
-      'ammo',
-      li.props.className,
-      this.state.classes[key]
-    );
-  }
+    reload() {
+        this.setState({
+            fire: false,
+            reload: true
+        });
 
-  renderBin() {
-    if (!this.props.bin) return null;
+        this.props.onReload.call(this);
+    }
 
-    return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
-  }
+    getClassNames() {
+        return classNames('cannon', {
+            FIRE: this.state.fire,
+            RELOAD: this.state.reload
+        }, super.getClassNames());
+    }
 
-  renderAmmo() {
-    var list = this.state.list || this.props.list;
-    return list.map((li, key) => {
-      var ref;
-      ref = li.ref || li.props['data-ref'] || key;
-      return (
-        <li.type
-          {...li.props}
-          ref={ref}
-          data-ref={ref}
-          key={key}
-          className={this.getClass(key, li)}
-        />
-      );
-    });
-  }
+    getClass(key, li) {
+        return classNames(
+            'ammo',
+            li.props.className,
+            this.state.classes[key]
+        );
+    }
 
-  renderLaunchButton() {
-    if (!this.props.launchButton) return;
+    renderBin() {
+        if (!this.props.bin) return null;
 
-    return (
-      <div className="launch-button" onClick={this.fire} />
-    );
-  }
+        return (
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
+    }
 
-  render() {
-    return (
-      <div className={this.getClassNames()}>
-        {this.renderBin()}
-        <div className="ammo-container" />
-        {this.renderAmmo()}
-        {this.renderLaunchButton()}
-      </div>
-    );
-  }
+    renderAmmo() {
+        var list = this.state.list || this.props.list;
+        return list.map((li, key) => {
+            var ref;
+            ref = li.ref || li.props['data-ref'] || key;
+            return (
+                <li.type
+                    {...li.props}
+                    ref={ref}
+                    data-ref={ref}
+                    key={key}
+                    className={this.getClass(key, li)}
+                />
+            );
+        });
+    }
+
+    renderLaunchButton() {
+        if (!this.props.launchButton) return;
+
+        return (
+            <div className="launch-button" onClick={this.fire} />
+        );
+    }
+
+    render() {
+        return (
+            <div className={this.getClassNames()}>
+                {this.renderBin()}
+                <div className="ammo-container" />
+                {this.renderAmmo()}
+                {this.renderLaunchButton()}
+            </div>
+        );
+    }
 }
 
 Cannon.defaultProps = _.defaults({
-  showNum: 3,
-  reverseReload: false,
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  onReload: _.noop,
-  onFire: _.noop,
+    showNum: 3,
+    reverseReload: false,
+    list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+    ],
+    onReload: _.noop,
+    onFire: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Cannon;

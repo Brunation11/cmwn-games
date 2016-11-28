@@ -22,58 +22,58 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 import 'shared/js/test-platform-integration';
 
 class Fire extends skoash.Game {
-  constructor() {
-    super(config);
+    constructor() {
+        super(config);
 
-    this.screens = {
-      0: iOSScreen,
-      1: TitleScreen,
-      2: InfoChemicalScreen,
-      3: InfoFuelOxygenScreen,
-      4: InfoForrestScreen,
-      5: AlarmScreen,
-      6: WhoScreen,
-      7: MenAndWomenScreen,
-      8: TriangleScreen,
-      9: BreakTriangleScreen,
-      10: LadderScreen,
-      11: ChooseScreen,
-      12: NeedScreen,
-      13: FlipScreen,
-    };
+        this.screens = {
+            0: iOSScreen,
+            1: TitleScreen,
+            2: InfoChemicalScreen,
+            3: InfoFuelOxygenScreen,
+            4: InfoForrestScreen,
+            5: AlarmScreen,
+            6: WhoScreen,
+            7: MenAndWomenScreen,
+            8: TriangleScreen,
+            9: BreakTriangleScreen,
+            10: LadderScreen,
+            11: ChooseScreen,
+            12: NeedScreen,
+            13: FlipScreen,
+        };
 
-    this.menus = {
-      quit: QuitScreen,
-    };
+        this.menus = {
+            quit: QuitScreen,
+        };
 
-    this.state.data.screens = _.map(this.screens, () => ({}));
-  }
+        this.state.data.screens = _.map(this.screens, () => ({}));
+    }
 
-  renderLoader() {
-    return (
-      <Loader />
-    );
-  }
+    renderLoader() {
+        return (
+            <Loader />
+        );
+    }
 
-  getClassNames() {
-    var classNames = super.getClassNames();
-    var index = this.state.currentScreenIndex;
-    if (index >= 4 && index < 5) return classNames + ' BKG-2';
-    if (index >= 5) return classNames + ' BKG-3';
-    return classNames;
-  }
+    getClassNames() {
+        var classNames = super.getClassNames();
+        var index = this.state.currentScreenIndex;
+        if (index >= 4 && index < 5) return classNames + ' BKG-2';
+        if (index >= 5) return classNames + ' BKG-3';
+        return classNames;
+    }
 
-  renderAssets() {
-    return (
-      <div>
-        <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
-        <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
-        <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
-        <div className="background BKG-2" />
-        <div className="background BKG-3" />
-      </div>
-    );
-  }
+    renderAssets() {
+        return (
+            <div>
+                <skoash.Audio ref="bkg-1" type="background" src="media/_BKG/S_BKG_1.mp3" loop />
+                <skoash.Audio ref="button" type="sfx" src="media/_Buttons/S_BU_1.mp3" />
+                <skoash.Audio ref="screen-complete" type="sfx" src="media/_Buttons/S_BU_2.mp3" />
+                <div className="background BKG-2" />
+                <div className="background BKG-3" />
+            </div>
+        );
+    }
 
 }
 

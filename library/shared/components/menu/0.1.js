@@ -3,65 +3,74 @@ import Selectable from '../selectable/0.1.js';
 import classNames from 'classnames';
 
 class Menu extends Selectable {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      active: false,
-      selectClass: 'SELECTED',
-      classes: {},
-    };
-  }
-
-  deactivate() {
-    this.setState({
-      active: false,
-    });
-
-    _.each(this.refs, ref => {
-      _.invoke(ref, 'deactivate');
-    });
-  }
-
-  onClick(e) {
-    var li, ul, dom, message, active = false, classes = [];
-
-    li = e.target.closest('LI');
-
-    if (!li) return;
-
-    ul = li.closest('UL');
-    dom = ReactDOM.findDOMNode(this); // eslint-disable-line no-undef
-
-    if (ul !== dom) return;
-
-    message = li.getAttribute('data-ref');
-
-    if (this.state.classes[message] !== this.state.selectClass) {
-      classes[message] = this.state.selectClass;
-      active = !this.props.inactive;
+        this.state = {
+            active: false,
+            selectClass: 'SELECTED',
+            classes: {},
+        };
     }
 
-    this.setState({
-      classes,
-      active,
-    });
-  }
+    deactivate() {
+        this.setState({
+            active: false,
+        });
 
-  renderItems() {
-    var self = this;
+        _.each(this.refs, ref => {
+            _.invoke(ref, 'deactivate');
+        });
+    }
 
-    if (typeof this.props.items !== 'object') return;
+    onClick(e) {
+        var li;
+        var ul;
+        var dom;
+        var message;
+        var active = false;
+        var classes = [];
 
-    return Object.keys(this.props.items).map((key) => {
-      var item, onClick, gotoObj, categories, isFinal;
+        li = e.target.closest('LI');
 
-      categories = this.props.categories ? [].concat(this.props.categories) : [];
-      categories.push(key);
+        if (!li) return;
 
-      item = this.props.items[key];
+        ul = li.closest('UL');
+        dom = ReactDOM.findDOMNode(this); // eslint-disable-line no-undef
 
-      isFinal = (
+        if (ul !== dom) return;
+
+        message = li.getAttribute('data-ref');
+
+        if (this.state.classes[message] !== this.state.selectClass) {
+            classes[message] = this.state.selectClass;
+            active = !this.props.inactive;
+        }
+
+        this.setState({
+            classes,
+            active,
+        });
+    }
+
+    renderItems() {
+        var self = this;
+
+        if (typeof this.props.items !== 'object') return;
+
+        return Object.keys(this.props.items).map((key) => {
+            var item;
+            var onClick;
+            var gotoObj;
+            var categories;
+            var isFinal;
+
+            categories = this.props.categories ? [].concat(this.props.categories) : [];
+            categories.push(key);
+
+            item = this.props.items[key];
+
+            isFinal = (
           typeof item.items !== 'object' ||
           (
             Object.prototype.toString.call(item.items) === '[object Array]' &&
@@ -72,16 +81,16 @@ class Menu extends Selectable {
           self.props.lastLevel === self.props.level
         );
 
-      if (isFinal) {
-        gotoObj = {
-          index: 'item-drawer',
-          categories,
-          categoryName: item.name,
-        };
-        onClick = skoash.trigger.bind(null, 'goto', gotoObj);
-      }
+            if (isFinal) {
+                gotoObj = {
+                    index: 'item-drawer',
+                    categories,
+                    categoryName: item.name,
+                };
+                onClick = skoash.trigger.bind(null, 'goto', gotoObj);
+            }
 
-      return (
+            return (
         <skoash.ListItem
           className={self.getClass(key)}
           data-ref={key}
@@ -91,8 +100,8 @@ class Menu extends Selectable {
         >
           <span>{item.name || key}</span>
           {(() => {
-            if (isFinal) return;
-            return (
+              if (isFinal) return;
+              return (
               <Menu
                 ref={'menu-' + key}
                 categories={categories}
@@ -105,33 +114,33 @@ class Menu extends Selectable {
           })()}
         </skoash.ListItem>
       );
-    });
-  }
+        });
+    }
 
-  getClass(key) {
-    return classNames({
-      [key.replace(' ', '-')]: true,
-      [this.state.classes[key] || '']: true,
-    });
-  }
+    getClass(key) {
+        return classNames({
+            [key.replace(' ', '-')]: true,
+            [this.state.classes[key] || '']: true,
+        });
+    }
 
-  getClassNames() {
-    return classNames({
-      menu: true,
-      ACTIVE: this.state.active,
-    }, this.props.className);
-  }
+    getClassNames() {
+        return classNames({
+            menu: true,
+            ACTIVE: this.state.active,
+        }, this.props.className);
+    }
 
-  render() {
-    return (
-      <ul
-        className={this.getClassNames()}
-        onClick={this.onClick.bind(this)}
-      >
-        {this.renderItems()}
-      </ul>
-    );
-  }
+    render() {
+        return (
+            <ul
+                className={this.getClassNames()}
+                onClick={this.onClick.bind(this)}
+            >
+                {this.renderItems()}
+            </ul>
+        );
+    }
 }
 
 export default Menu;
