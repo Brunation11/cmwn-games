@@ -73,18 +73,18 @@
     }
 
     .menu {
-        padding-top: 0;
+        display: flex;
         position: relative;
-        max-height: 0;
         bottom: auto;
-        width: 340px;
+        flex-direction: column;
+        justify-content: space-between;
         margin: -20px 20px 20px;
         background-image: url(../media/_Frames/SK_frames_canvas.png);
         background-size: 5100px;
+        padding-top: 0;
+        width: 340px;
+        max-height: 0;
         list-style: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
 
         li {
             margin: 0;
@@ -99,20 +99,19 @@
 
             span {
                 display: block;
+                margin-left: 34px;
+                border-radius: 0;
+                background-image: url(../media/_Buttons/SK_btn_catergorymenu.png);
+                background-repeat: no-repeat;
+                background-position: -10px -10px;
+                background-size: 600px;
                 width: 280px;
                 height: 84px;
-                line-height: 80px;
-                border-radius: 0;
-                margin-left: 34px;
-                font-size: 40px;
                 text-align: center;
-                background-size: 600px;
-                background-repeat: no-repeat;
-                background-image: url(../media/_Buttons/SK_btn_catergorymenu.png);
-                background-position: -10px -10px;
+                text-transform: uppercase;
+                line-height: 80px;
                 color: $black;
                 font-size: 40px;
-                text-transform: uppercase;
             }
 
             &:hover span {

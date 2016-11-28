@@ -229,22 +229,22 @@ p {
         height: 540px;
 
         &::before {
-            content: '';
             display: block;
-            height: 540px;
-            background-image: radial-gradient(circle 900px at 50% 70%, white, yellow, lightyellow, aqua);
             opacity: 0;
+            background-image: radial-gradient(circle 900px at 50% 70%, $white, $yellow, $lightyellow, $aqua);
+            height: 540px;
+            content: '';
         }
     }
 
     button {
 
         &.next-screen {
-            width: 155px;
-            height: 145px;
             right: 10px;
             bottom: 10px;
             background-position: -15px -10px;
+            width: 155px;
+            height: 145px;
 
             &:hover {
                 background-position: -15px -198px;
@@ -257,42 +257,42 @@ p {
     }
 
     .branch {
-        left: 0;
         top: 0;
+        left: 0;
         width: 960px;
     }
 
     .monarch {
-        left: -60px;
         top: -50px;
+        left: -60px;
         width: 560px;
     }
 
     .pupa {
-        left: 320px;
         top: 250px;
+        left: 320px;
         width: 200px;
 
         &.SHAKE {
-            transform-origin: 50% 80px;
             animation-name: swing;
+            transform-origin: 50% 80px;
         }
     }
 
     .caterpillar {
-        left: 560px;
         top: 80px;
+        left: 560px;
         width: 400px;
     }
 
     .title {
-        left: 160px;
         top: 200px;
+        left: 160px;
         width: 640px;
     }
 
     &.OPEN {
-        .group:before {
+        .group::before {
             animation: sun 4s infinite;
         }
     }
@@ -300,8 +300,8 @@ p {
 
 #video-mon {
     .video-component {
-        padding: 18px 20px 12px 18px;
         background-size: 100% 100%;
+        padding: 18px 20px 12px 18px;
     }
 }
 
@@ -311,14 +311,14 @@ p {
     }
 
     .copy {
-        left: 80px;
         top: 120px;
+        left: 80px;
         width: 800px;
     }
 
     .flowers {
-        left: 60px;
         bottom: 0;
+        left: 60px;
         width: 860px;
     }
 }
@@ -326,8 +326,8 @@ p {
 #catch-milkweed {
     .copy {
         position: absolute;
-        left: 80px;
         top: 180px;
+        left: 80px;
         width: 800px;
     }
 
@@ -336,15 +336,17 @@ p {
         animation: cross 6s infinite;
 
         &::before {
-            content: '';
             display: block;
-            width: 200px;
-            height: 200px;
+            animation: milkweed .4s steps(1) infinite;
+
             background-image: url('../media/_Images/S_CatchMilkweed/IMG_5.2.png');
-            background-size: 875px;
             background-repeat: no-repeat;
             background-position: 0 0;
-            animation: milkweed .4s steps(1) infinite;
+            background-size: 875px;
+
+            width: 200px;
+            height: 200px;
+            content: '';
         }
     }
 }
@@ -352,8 +354,8 @@ p {
 #floating-weed {
     .selectable-component {
         .items {
-            position: relative;
             display: block;
+            position: relative;
             margin: 0;
             width: 960px;
             height: 540px;
@@ -380,8 +382,8 @@ p {
 
             @for $i from 1 through 8 {
                 &:nth-of-type(#{$i}) {
-                    left: nth($lefts, $i) + px;
                     top: -1 * nth($tops, $i) + px;
+                    left: nth($lefts, $i) + px;
                     animation-duration: nth($durations, $i) + s;
                     animation-delay: nth($delays, $i) + s;
                 }
@@ -400,34 +402,34 @@ p {
 
 .modal-component {
     position: absolute;
-    left: 130px;
     top: 0;
-    width: 700px;
-    height: 460px;
+    left: 130px;
+    transition: opacity .5s, z-index 0s .5s;
     opacity: 0;
     z-index: -1;
-    transition: opacity .5s, z-index 0s .5s;
+    width: 700px;
+    height: 460px;
 
     &.SELECTED {
+        transition: opacity .5s, z-index 0s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s, z-index 0s;
     }
 
     .items {
-        margin: 0;
         position: static;
+        margin: 0;
     }
 
     li {
-        text-align: center;
         position: absolute;
-        left: 50%;
         top: 50%;
-        width: 400px;
+        left: 50%;
         transform: translateX(-50%) translateY(-50%);
-        opacity: 0;
         transition: none;
+        opacity: 0;
+        width: 400px;
+        text-align: center;
 
         &.SELECTED {
             opacity: 1;
@@ -436,54 +438,54 @@ p {
 
     .reveal-close {
         position: absolute;
-        right: 120px;
         top: 80px;
+        right: 120px;
     }
 }
 
 #fly-3000-miles {
     img {
         position: absolute;
-        left: 0;
         bottom: 0;
+        left: 0;
         width: 540px;
     }
 
     p {
         position: absolute;
-        text-align: center;
-        width: 600px;
-        left: 300px;
         top: 110px;
+        left: 300px;
+        width: 600px;
+        text-align: center;
     }
 }
 
 #migration-vid {
     img {
         position: absolute;
-        width: 700px;
-        left: 130px;
         top: 10px;
+        left: 130px;
+        width: 700px;
     }
 
     .video-component {
         margin-top: 50px;
-        padding: 18px 20px 12px 18px;
         background-size: 100% 100%;
+        padding: 18px 20px 12px 18px;
     }
 }
 
 #four-generations {
     img {
         position: absolute;
-        width: 800px;
-        left: 80px;
         top: 10px;
+        left: 80px;
+        width: 800px;
     }
 
     .reveal-component {
-        margin-left: 25px;
         margin-top: 80px;
+        margin-left: 25px;
         width: 800px;
         height: 380px;
 
@@ -493,13 +495,13 @@ p {
         }
 
         li {
-            text-align: center;
             position: absolute;
-            left: 50%;
             top: 50%;
+            left: 50%;
             transform: translateX(-50%) translateY(-50%);
-            opacity: 0;
             transition: none;
+            opacity: 0;
+            text-align: center;
 
             &.SELECTED {
                 opacity: 1;
@@ -509,21 +511,21 @@ p {
 
     .selectable-component {
         .items {
-            margin: -60px auto 0;
-            width: 680px;
-            justify-content: space-between;
             align-items: center;
-            height: 140px;
+            justify-content: space-between;
+            margin: -60px auto 0;
             padding: 0 34px 30px 30px;
+            width: 680px;
+            height: 140px;
         }
 
         li {
             background-image: url('../media/_Images/S_4Generations/IMG_9.3.png');
             background-repeat: no-repeat;
             background-size: 580px;
-            height: 70px;
-            width: 60px;
             cursor: pointer;
+            width: 60px;
+            height: 70px;
             pointer-events: none;
 
             $background-lefts: 0 170 346 522;
@@ -564,8 +566,8 @@ p {
 
     .flip-container {
         position: relative;
-        text-align: center;
         margin-top: -20px;
+        text-align: center;
     }
 
     .flip {
@@ -574,21 +576,21 @@ p {
 
     .monarch {
         position: absolute;
-        width: 100px;
-        left: 40px;
         top: 0;
+        left: 40px;
+        width: 100px;
     }
 
     .pupa {
         position: absolute;
-        width: 70px;
-        left: 310px;
         top: 132px;
+        left: 310px;
         z-index: -1;
+        width: 70px;
 
         &.SHAKE {
-            transform-origin: 50% 10px;
             animation-name: swing;
+            transform-origin: 50% 10px;
         }
     }
 
@@ -604,18 +606,18 @@ p {
 #quit {
 
     .frame {
+        padding: 70px 80px;
         width: 720px;
         height: 440px;
         text-align: center;
-        padding: 70px 80px;
 
         .background {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            z-index: -1;
             width: 100%;
             height: 100%;
-            z-index: -1;
         }
 
         h2 {

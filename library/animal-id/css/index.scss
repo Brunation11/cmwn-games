@@ -67,8 +67,8 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
             color: #efc300;
         }
 
-        @for $i from 1 through 40{
-            &:nth-of-type(#{$i}){
+        @for $i from 1 through 40 {
+            &:nth-of-type(#{$i}) {
                 $left: (-4 * $i) % 65 + 15;
                 $top: (-1 * $i) % 12 + 6;
                 left: percentage($left / 100);
@@ -3129,7 +3129,7 @@ body:not(.DEMO) #what-does-a-nose-do {
                 position: absolute;
                 bottom: 12%;
                 right: 10%;
-                transform: scale(0.6);
+                transform: scale(.6);
                 opacity: 0;
                 transition: opacity .5s;
             }

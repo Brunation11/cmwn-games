@@ -37,8 +37,8 @@
 }
 
 @keyframes turtle {
-    0% {transform: translateX(0px) translateY(-20px); opacity:0;}
-    2% {transform: translateX(0px) translateY(-20px); opacity:1;}
+    0% {transform: translateX(0) translateY(-20px); opacity:0;}
+    2% {transform: translateX(0) translateY(-20px); opacity:1;}
     20% {transform: translateX(250px) translateY(20px);}
     40% {transform: translateX(500px) translateY(-20px);}
     60% {transform: translateX(750px) translateY(20px);}
@@ -48,40 +48,40 @@
 }
 
 @keyframes octopus {
-    0% {transform: translateX(0px) translateY(0px);}
+    0% {transform: translateX(0) translateY(0);}
     25% {transform: translateX(100px) translateY(100px);}
-    50% {transform: translateX(0px) translateY(200px);}
+    50% {transform: translateX(0) translateY(200px);}
     75% {transform: translateX(-100px) translateY(100px);}
-    100% {transform: translateX(0px) translateY(0px);}
+    100% {transform: translateX(0) translateY(0);}
 }
 
 @keyframes lobster {
-    0% {transform: translateX(0px) translateY(0px);}
+    0% {transform: translateX(0) translateY(0);}
     25% {transform: translateX(-100px) translateY(100px);}
-    50% {transform: translateX(0px) translateY(200px);}
+    50% {transform: translateX(0) translateY(200px);}
     75% {transform: translateX(100px) translateY(100px);}
-    100% {transform: translateX(0px) translateY(0px);}
+    100% {transform: translateX(0) translateY(0);}
 }
 
 @keyframes seahorse {
-    0% {transform: translateX(0px) translateY(0px);}
+    0% {transform: translateX(0) translateY(0);}
     25% {transform: translateX(50px) translateY(50px);}
-    50% {transform: translateX(0px) translateY(100px);}
+    50% {transform: translateX(0) translateY(100px);}
     75% {transform: translateX(-50px) translateY(50px);}
-    100% {transform: translateX(0px) translateY(0px);}
+    100% {transform: translateX(0) translateY(0);}
 }
 
 @keyframes starfish {
-    0% {transform: translateX(0px) translateY(0px);}
+    0% {transform: translateX(0) translateY(0);}
     25% {transform: translateX(-50px) translateY(50px);}
-    50% {transform: translateX(0px) translateY(100px);}
+    50% {transform: translateX(0) translateY(100px);}
     75% {transform: translateX(50px) translateY(50px);}
-    100% {transform: translateX(0px) translateY(0px);}
+    100% {transform: translateX(0) translateY(0);}
 }
 
 @keyframes swim-right {
-    0% {transform: translateX(0px) translateY(-20px) scaleX(-1); opacity:0;}
-    2% {transform: translateX(0px) translateY(-20px) scaleX(-1); opacity:1;}
+    0% {transform: translateX(0) translateY(-20px) scaleX(-1); opacity:0;}
+    2% {transform: translateX(0) translateY(-20px) scaleX(-1); opacity:1;}
     20% {transform: translateX(250px) translateY(20px) scaleX(-1);}
     40% {transform: translateX(500px) translateY(-20px) scaleX(-1);}
     60% {transform: translateX(750px) translateY(20px) scaleX(-1);}
@@ -91,8 +91,8 @@
 }
 
 @keyframes swim-left {
-    0% {transform: translateX(0px) translateY(-20px); opacity:0;}
-    2% {transform: translateX(0px) translateY(-20px); opacity:1;}
+    0% {transform: translateX(0) translateY(-20px); opacity:0;}
+    2% {transform: translateX(0) translateY(-20px); opacity:1;}
     20% {transform: translateX(-250px) translateY(20px);}
     40% {transform: translateX(-500px) translateY(-20px);}
     60% {transform: translateX(-750px) translateY(20px);}
@@ -102,8 +102,8 @@
 }
 
 @keyframes swim-up {
-    0% {transform: translateY(0px); opacity:0;}
-    2% {transform: translateY(0px); opacity:1;}
+    0% {transform: translateY(0); opacity:0;}
+    2% {transform: translateY(0); opacity:1;}
     98% {transform: translateY(-840px); opacity: 1;}
     100% {transform: translateY(-840px); opacity: 0;}
 }

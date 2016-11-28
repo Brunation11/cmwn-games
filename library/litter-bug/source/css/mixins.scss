@@ -21,8 +21,8 @@
                 $y: $i + .5;
             }
 
-            @if ($x*$x + $y*$y <= $radius*$radius) {
-                $stroke: append($stroke, $i*1px $k*1px 0 $color, comma);
+            @if ($x * $x + $y * $y <= $radius * $radius) {
+                $stroke: append($stroke, $i * 1px $k * 1px 0 $color, comma);
             }
         }
     }

@@ -46,7 +46,7 @@
         $z: 0 -1 -1 0 -1 0 -1 0 -1 -1 0 -1 -1 0;
 
         @for $i from 1 through 14{
-            &:nth-of-type(#{$i}){
+            &:nth-of-type(#{$i}) {
                 animation-delay: nth($delays, $i) + s;
                 left: nth($offsets, $i) +%;
                 z-index: nth($z, $i);

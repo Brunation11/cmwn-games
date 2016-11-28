@@ -56,7 +56,7 @@
 @keyframes enemy-disapear {
     0% {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
     }
     20% {
         opacity: .8;
@@ -76,6 +76,6 @@
     }
     100% {
         opacity: 0;
-        transform: translateY(0px);
+        transform: translateY(0);
     }
 }

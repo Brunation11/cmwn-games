@@ -46,7 +46,7 @@ body > div > div {
     }
 
     .background.bkg-1,
-    &[class*='SCREEN-labyrinth'] .background.bkg-2 {
+    &[class *='SCREEN-labyrinth'] .background.bkg-2 {
         opacity: 1;
     }
 }
@@ -516,11 +516,11 @@ $grey: #8ebbcd;
 
                 @for $i from 1 through 4 {
                     &:nth-of-type(#{$i}) {
-                        background-position: -12px 310-325*$i+ px;
+                        background-position: -12px 310-325* $i + px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -237px 310-325*$i+ px;
+                            background-position: -237px 310-325* $i + px;
                         }
                     }
                 }
@@ -1048,7 +1048,7 @@ $grey: #8ebbcd;
                 background-size: 400px;
             }
 
-            &[class*='item-'] {
+            &[class *='item-'] {
                 &::before {
                     background-position: -285px -10px;
                     width: 100px;
@@ -1064,7 +1064,7 @@ $grey: #8ebbcd;
                 }
             }
 
-            &[class*='enemy-'] {
+            &[class *='enemy-'] {
                 &::before {
                     background-position: -150px -10px;
                     width: 100px;

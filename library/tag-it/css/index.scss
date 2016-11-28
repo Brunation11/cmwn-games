@@ -352,7 +352,7 @@ img.inline {
         .#{nth($items, $i)} {
             width: nth($widths, $i) + px;
             height: nth($heights, $i) + px;
-            background-position: #{750-(750*$i) + px} 0;
+            background-position: #{750-(750 * $i) + px} 0;
         }
     }
 
@@ -733,7 +733,7 @@ img.inline {
 
             @for $i from 1 through 3 {
                 &:nth-of-type(#{$i}) {
-                    background-position: #{-1000*$i+ px} 0;
+                    background-position: #{-1000 * $i + px} 0;
                     width: nth($widths, $i) + px;
                     height: nth($heights, $i) + px;
                     opacity: 0;
@@ -790,19 +790,19 @@ img.inline {
 
 .tip {
     position: absolute;
-    left: 0;
     top: auto;
     bottom: 0;
-    width: 960px;
-    height: 100px;
+    left: 0;
     background-image: url(../media/_images/S_Step2/img_8.1.png);
-    background-size: 5000px 240%;
     background-repeat: no-repeat;
     background-position: -4000px 0;
+    background-size: 5000px 240%;
+    width: 960px;
+    height: 100px;
+    text-align: center;
+    line-height: $small;
     color: $white;
     font-weight: normal;
-    line-height: $small;
-    text-align: center;
 
     p {
         font-size: $small;
@@ -1394,9 +1394,9 @@ img.inline {
 
     @for $i from 1 through 3 {
         .lid-#{$i} {
-            background-position: -290*$i+ px 0;
-            left: 190+(180*$i) + px;
-            top: -40+(80*$i) + px;
+            background-position: -290 * $i + px 0;
+            left: 190 + (180 * $i) + px;
+            top: -40 + (80 * $i) + px;
         }
     }
 

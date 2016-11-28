@@ -180,7 +180,7 @@
         }
     }
 
-    [class*='2'] + .score {
+    [class *='2'] + .score {
         width: 340px;
         background-position: -210px;
 
@@ -203,7 +203,7 @@
         }
     }
 
-    [class*='3'] + .score {
+    [class *='3'] + .score {
 
         .board {
             div {
@@ -222,28 +222,28 @@
         }
     }
 
-    [class*=loops] + .score {
+    [class *=loops] + .score {
 
         .board div {
             background-image: url(../media/S_10/img_10.4.png)
         }
     }
 
-    [class*=whorl] + .score {
+    [class *=whorl] + .score {
 
         .board div {
             background-image: url(../media/S_10/img_10.5.png)
         }
     }
 
-    [class*=arch] + .score {
+    [class *=arch] + .score {
 
         .board div {
             background-image: url(../media/S_10/img_10.6.png)
         }
     }
 
-    [class*=doubleloop] + .score {
+    [class *=doubleloop] + .score {
 
         .board div {
             background-image: url(../media/S_10/img_10.7.png)

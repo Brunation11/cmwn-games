@@ -89,7 +89,7 @@
     }
 
     100% {
-        transform: translate3d(-50%, -50%, 0) scale(0.2) rotate(720deg);
+        transform: translate3d(-50%, -50%, 0) scale(.2) rotate(720deg);
     }
 }
 
@@ -190,7 +190,7 @@ body > div > div {
     &.SCREEN-3 .background.bkg-3,
     &.SCREEN-6 .background.bkg-4,
     &.SCREEN-7 .background.bkg-2,
-    &[class*='catch-game-lvl'] .background.bkg-5,
+    &[class *='catch-game-lvl'] .background.bkg-5,
     &.SCREEN-13 .background.bkg-2,
     &.SCREEN-14 .background.bkg-6 {
         opacity: 1;
@@ -206,16 +206,16 @@ body > div > div {
 
 button {
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
+    background: url(../media/images/buttons.png);
+    background-color: transparent;
+    background-size: 1500px 427px;
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    background: url(../media/images/buttons.png);
-    background-size: 1500px 427px;
 
     &.close {
         width: 6%;
@@ -371,7 +371,7 @@ p {
 .DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
-    transform: rotate(0deg) translate3d(0px, 0, 0);
+    transform: rotate(0deg) translate3d(0, 0, 0);
     pointer-events: auto;
     visibility: visible;
     opacity: 1;
@@ -988,18 +988,18 @@ p {
             margin: 0;
 
             li.reveal.OPEN {
-                position: absolute;
                 display: inline-block;
-                width: 100%;
-                height: 100%;
+                position: absolute;
                 top: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(0, 0, 0, .25) url(../media/images/frame.png) no-repeat;
-                background-size: 55%;
-                background-position: 210px 137px;
                 animation-name: fadeIn;
                 animation-delay: 0s;
+                background: rgba(0, 0, 0, .25) url(../media/images/frame.png) no-repeat;
+                background-position: 210px 137px;
+                background-size: 55%;
+                width: 100%;
+                height: 100%;
 
                 &.intro {
                     animation: none;
@@ -1533,19 +1533,19 @@ p {
         }
 
         .frame {
-            background: url(../media/images/frame.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            width: 80%;
+            position: absolute;
+            top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
-            position: absolute;
-            height: 80%;
-            top: 50%;
-            text-align: center;
-            margin-top: 0;
             opacity: 0;
+            margin-top: 0;
+            background: url(../media/images/frame.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 80%;
+            height: 80%;
+            text-align: center;
         }
 
         .close-reveal {

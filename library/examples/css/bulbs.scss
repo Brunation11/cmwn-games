@@ -50,11 +50,11 @@
 
                 @for $i from 1 through 4 {
                     &:nth-of-type(#{$i}) {
-                        background-position: -12px 310-325*$i+ px;
+                        background-position: -12px 310-325* $i + px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -237px 310-325*$i+ px;
+                            background-position: -237px 310-325* $i + px;
                         }
                     }
                 }
