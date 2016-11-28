@@ -25,7 +25,7 @@ html, body {
 }
 
 html {
-    font-family: "Molot", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Molot', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
     color: $text-color;
 }
 
@@ -99,7 +99,7 @@ img {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -162,10 +162,10 @@ button {
         height: 60px;
         background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
         background-size: 300px;
-        background-position: 0px 0px;
+        background-position: 0 0;
 
         &:hover {
-            background-position: 0px -66px;
+            background-position: 0 -66px;
         }
     }
 
@@ -174,7 +174,7 @@ button {
         height: 60px;
         background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
         background-size: 300px;
-        background-position: -150px 0px;
+        background-position: -150px 0;
 
         &:hover {
             background-position: -150px -66px;

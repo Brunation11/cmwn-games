@@ -11,7 +11,7 @@
         height: 100%;
         list-style: none;
         opacity: 0;
-        transition: opacity 0.5s;
+        transition: opacity .5s;
         z-index: 0;
 
         &.OPEN {

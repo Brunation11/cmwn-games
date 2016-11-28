@@ -5,28 +5,29 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
+    cursor: default;
     padding: 0;
     height: 100%;
     overflow: hidden;
     user-select: none;
-    cursor: default;
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
     color: $text-color;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
     font-size: $medium;
 }
 
 body {
     position: relative;
+    margin: auto;
+    background: url('../media/_Images/_BKG/BKG_1.png') bottom center no-repeat;
+    background-size: cover;
     width: 100%;
     height: 100%;
-    margin: auto;
-    background: url(../media/_Images/_BKG/BKG_1.png) bottom center no-repeat;
-    background-size: cover;
 
 }
 
@@ -41,29 +42,30 @@ body {
 
 button {
     margin: 0;
-    padding: 0;
-    border: none;
+    outline: none;
+    border: 0;
 
+    background-color: transparent;
+    background-image: url('../media/_Images/_Buttons/MON_BU_1.png');
+    background-position: left top;
+    background-size: 1485px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
 
-    background-image: url(../media/_Images/_Buttons/MON_BU_1.png);
-    background-size: 1485px;
-    background-position: left top;
 
     &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -608px -22px;
         width: 36px;
         height: 36px;
-        background-position: -608px -22px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 5px;
-        z-index: 2;
 
         &:hover {
             background-position: -606px -192px;
@@ -93,10 +95,10 @@ button {
     }
 
     &.quit-yes {
+        background-position: 807px -10px;
+        background-size: auto 400px;
         width: 240px;
         height: 130px;
-        background-size: auto 400px;
-        background-position: 807px -10px;
 
         &:hover {
             background-position: 807px -190px;
@@ -104,10 +106,10 @@ button {
     }
 
     &.quit-no {
+        background-position: 507px -12px;
+        background-size: auto 400px;
         width: 240px;
         height: 130px;
-        background-size: auto 400px;
-        background-position: 507px -12px;
 
         &:hover {
             background-position: 506px -190px;
@@ -115,10 +117,10 @@ button {
     }
 
     &.reveal-close {
+        transition: opacity 1s;
+        background-position: -1310px -30px;
         width: 60px;
         height: 55px;
-        background-position: -1310px -30px;
-        transition: opacity 1s;
 
         &:hover {
             background-position: -1310px -205px;
@@ -131,32 +133,32 @@ h2 {
 }
 
 h3 {
-    font-size: 36px;
     margin: 0;
+    font-size: 36px;
 }
 
 p {
-    font-size: 36px;
     margin: 0;
+    font-size: 36px;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
@@ -164,61 +166,52 @@ p {
 }
 
 .screen.LEAVE {
-    opacity: 1;
     transform: translateX(-100%);
+    opacity: 1;
 }
 
-    .screen .next-screen,
-    .screen .prev-screen {
-        position: absolute;
-        display: block;
-        bottom: 1%;
-        margin-bottom: 5px;
-        z-index: 2;
-    }
+.screen .next-screen,
+.screen .prev-screen {
+    display: block;
+    position: absolute;
+    bottom: 1%;
+    z-index: 2;
+    margin-bottom: 5px;
+}
 
-    .screen .next-screen {
-        margin-right: 5px;
-        right: 0;
-        opacity: 0;
-        transform: rotate(-180deg);
-        transition: opacity 1s, transform 1s;
-    }
+.screen .next-screen {
+    right: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 0;
+    margin-right: 5px;
+}
 
-    .pl-game:not(.DEMO) .screen.SFX .reveal-close,
-    .pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
-    .screen.GATED .next-screen {
-        opacity: 0;
-        cursor: default;
-        transition: none;
-    }
+.pl-game:not(.DEMO) .screen.SFX .reveal-close,
+.pl-game:not(.DEMO) .screen.VOICE-OVER .reveal-close,
+.screen.GATED .next-screen {
+    transition: none;
+    opacity: 0;
+    cursor: default;
+}
 
 
-    .pl-game.DEMO .screen .next-screen,
-    .screen.COMPLETE .next-screen {
-        opacity: 1;
-        transform: rotate(0deg);
-        cursor: pointer;
-        transition: opacity .5s;
-    }
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen {
+    transform: rotate(0deg);
+    transition: opacity .5s;
+    opacity: 1;
+    cursor: pointer;
+}
 
-    .screen .next-screen:hover {
-
-    }
-
-    .screen .prev-screen {
-        margin-left: 5px;
-        left: 0;
-
-    }
-
-    .screen .prev-screen:hover {
-
-    }
+.screen .prev-screen {
+    left: 0;
+    margin-left: 5px;
+}
 
 .screen {
     &.no-frame {
-        color: #fff;
+        color: $white;
 
         .frame {
             text-align: center;
@@ -235,8 +228,8 @@ p {
         width: 960px;
         height: 540px;
 
-        &:before {
-            content: "";
+        &::before {
+            content: '';
             display: block;
             height: 540px;
             background-image: radial-gradient(circle 900px at 50% 70%, white, yellow, lightyellow, aqua);
@@ -342,15 +335,15 @@ p {
         position: absolute;
         animation: cross 6s infinite;
 
-        &:before {
-            content: "";
+        &::before {
+            content: '';
             display: block;
             width: 200px;
             height: 200px;
-            background-image: url(../media/_Images/S_CatchMilkweed/IMG_5.2.png);
+            background-image: url('../media/_Images/S_CatchMilkweed/IMG_5.2.png');
             background-size: 875px;
             background-repeat: no-repeat;
-            background-position: 0px 0px;
+            background-position: 0 0;
             animation: milkweed .4s steps(1) infinite;
         }
     }
@@ -368,14 +361,17 @@ p {
 
         li {
             position: absolute;
-            background-image: url(../media/_Images/S_FloatingWeed/IMG_6.1.png);
+
+            animation-name: float;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+
+            background-image: url('../media/_Images/S_FloatingWeed/IMG_6.1.png');
             background-size: 100%;
+
+            cursor: pointer;
             width: 100px;
             height: 100px;
-            animation-name: float;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-            cursor: pointer;
 
             $lefts:        150 250 300 350 450 550 650 700;
             $tops:         100 150 50 150 100 150 100 150;
@@ -384,10 +380,10 @@ p {
 
             @for $i from 1 through 8 {
                 &:nth-of-type(#{$i}) {
-                    left: nth($lefts,$i)+px;
-                    top: -1*nth($tops,$i)+px;
-                    animation-duration: nth($durations,$i)+s;
-                    animation-delay: nth($delays,$i)+s;
+                    left: nth($lefts, $i) + px;
+                    top: -1 * nth($tops, $i) + px;
+                    animation-duration: nth($durations, $i) + s;
+                    animation-delay: nth($delays, $i) + s;
                 }
             }
         }
@@ -522,7 +518,7 @@ p {
         }
 
         li {
-            background-image: url(../media/_Images/S_4Generations/IMG_9.3.png);
+            background-image: url('../media/_Images/S_4Generations/IMG_9.3.png');
             background-repeat: no-repeat;
             background-size: 580px;
             height: 70px;
@@ -534,11 +530,11 @@ p {
 
             @for $i from 1 through 4 {
                 &:nth-of-type(#{$i}) {
-                    background-position: -1*nth($background-lefts,$i)+px 0px;
+                    background-position: -1 * nth($background-lefts, $i) + px 0;
 
                     &.HIGHLIGHTED,
                     &:hover {
-                        background-position: #{-1*nth($background-lefts,$i)+px} -115px;
+                        background-position: #{-1 * nth($background-lefts, $i) + px} -115px;
                     }
                 }
             }

@@ -44,8 +44,8 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
         transform: rotate(0deg);
         transition: transform 1s, opacity 1s;
 
-        &:before {
-            content: "\02736";
+        &::before {
+            content: '\02736';
             color: #efc300;
         }
 

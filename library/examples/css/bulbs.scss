@@ -17,7 +17,7 @@
 
             li {
                 cursor: auto;
-                opacity: 0.5;
+                opacity: .5;
                 transition: opacity 1s;
                 background-image: url(../media/S_3/img_3.2.png);
                 background-size: 450px;
@@ -50,11 +50,11 @@
 
                 @for $i from 1 through 4 {
                     &:nth-of-type(#{$i}) {
-                        background-position: -12px 310-325*$i+px;
+                        background-position: -12px 310-325*$i+ px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -237px 310-325*$i+px;
+                            background-position: -237px 310-325*$i+ px;
                         }
                     }
                 }

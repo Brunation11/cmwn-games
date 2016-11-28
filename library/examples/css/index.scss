@@ -10,7 +10,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -27,7 +27,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -143,7 +143,7 @@ p {
     margin-top: -270px;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 
     &:not(.COMPLETE) {

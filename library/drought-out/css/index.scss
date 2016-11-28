@@ -78,7 +78,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "CMWN", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'CMWN', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
     color: $text-color;
 }
 
@@ -102,7 +102,7 @@ img.hidden {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -209,7 +209,7 @@ p {
     right: 0;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 }
 
@@ -400,7 +400,7 @@ img.inline {
         li {
             list-style: none;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity .5s;
 
             &.OPEN {
                 opacity: 1;
@@ -459,7 +459,7 @@ img.inline {
         width: 330px;
         background-size: 650px;
         background-repeat: no-repeat;
-        background-position: 0px -75*15-5+px;
+        background-position: 0 -75*15-5+ px;
     }
 
     .drought-word {
@@ -488,13 +488,13 @@ img.inline {
             $background-top: 10 11 12 0 1 2 3 4 5 6 7 8 9 13 14;
 
             @for $i from 1 through 15 {
-                &.#{nth($words,$i)} {
-                    width: nth($width,$i)+px;
-                    background-position: 0px -75*nth($background-top,$i)-5+px;
+                &.#{nth($words, $i)} {
+                    width: nth($width, $i) + px;
+                    background-position: 0 -75* nth($background-top, $i)-5+ px;
 
                     &.HIGHLIGHTED,
                     &:hover {
-                        background-position: -325px -75*nth($background-top,$i)-5+px;
+                        background-position: -325px -75* nth($background-top, $i)-5+ px;
                     }
                 }
             }

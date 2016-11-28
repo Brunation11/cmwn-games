@@ -21,7 +21,7 @@
             top: 50px;
         }
         .left {
-            left: 0px;
+            left: 0;
             top: 100px;
         }
         .down {
@@ -40,7 +40,7 @@
         background-color: blue;
     }
 
-    [class*="item-"] {
+    [class*='item-'] {
         position: absolute;
         width: 20px;
         height: 20px;
@@ -63,7 +63,7 @@
         }
     }
 
-    [class*="enemy-"] {
+    [class*='enemy-'] {
         position: absolute;
         width: 30px;
         height: 30px;

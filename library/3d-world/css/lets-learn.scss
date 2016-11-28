@@ -14,7 +14,7 @@
         color: $dark-green;
         font-size: 52px;
         text-transform: uppercase;
-        font-family: "Molot";
+        font-family: 'Molot';
         left: 165px;
         top: 130px;
 
@@ -23,7 +23,7 @@
     }
 
     .screen-content {
-        &:after {
+        &::after {
             content: '';
             position: absolute;
             left: 0;

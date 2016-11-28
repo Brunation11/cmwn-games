@@ -29,9 +29,9 @@
         .ball {
             /**
              *    Normaly I would define the transition on the default rule but this way
-             *    the animation will not play when the "LAUNCHED" flag is removed.
+             *    the animation will not play when the 'LAUNCHED' flag is removed.
              */
-            transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+            transition: transform .5s cubic-bezier(0, 0, .2, 1);
             transform: translateY(-100px) scale(0.3);
         }
     }

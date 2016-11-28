@@ -31,10 +31,10 @@
 
         @for $i from 1 through 8 {
             &:nth-of-type(#{$i}) {
-                left: nth($lefts,$i)+px;
-                top: -1*nth($tops,$i)+px;
-                animation-duration: nth($durations,$i)+s;
-                animation-delay: nth($delays,$i)+s;
+                left: nth($lefts, $i) + px;
+                top: -1 * nth($tops, $i) + px;
+                animation-duration: nth($durations, $i) + s;
+                animation-delay: nth($delays, $i) + s;
             }
         }
     }

@@ -10,15 +10,15 @@
             $y: $i;
 
             @if $k > 0 {
-                $x: $k - 0.5;
+                $x: $k - .5;
             } @elseif $k < 0 {
-                $x: $k + 0.5;
+                $x: $k + .5;
             }
 
             @if $i > 0 {
-                $y: $i - 0.5;
+                $y: $i - .5;
             } @elseif $i < 0 {
-                $y: $i + 0.5;
+                $y: $i + .5;
             }
 
             @if ($x*$x + $y*$y <= $radius*$radius) {

@@ -14,7 +14,7 @@ body {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 html,
@@ -65,7 +65,7 @@ body > div > div {
         &.select {
             background-image: url('../media/_BKG/BKG_3.png');
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 background: #000;
@@ -140,7 +140,7 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
         transform: rotate(0deg);
         transition: transform 1s, opacity 1s;
 
-        &:before {
+        &::before {
             content: '\02736';
             color: #efc300;
         }
@@ -335,7 +335,7 @@ p {
         position: absolute;
         display: block;
         bottom: 1%;
-        transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0, 0);
         z-index: 2;
     }
 
@@ -349,7 +349,7 @@ p {
         right: 0;
         opacity: 0;
         pointer-events: none;
-        transform: rotate(-180deg) translate3d(0px, 0px, 0px);
+        transform: rotate(-180deg) translate3d(0px, 0, 0);
         transition: opacity 1s, transform 1s;
     }
 
@@ -364,7 +364,7 @@ p {
     .screen.COMPLETE .next-screen,
     .screen.REPLAY .next-screen {
         opacity: 1;
-        transform: rotate(0deg) translate3d(0px, 0px, 0px);
+        transform: rotate(0deg) translate3d(0px, 0, 0);
         cursor: pointer;
         pointer-events: auto;
     }
@@ -390,7 +390,7 @@ p {
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
     opacity: 1;
-    transform: rotate(0deg) translate3d(0px, 0px, 0px);
+    transform: rotate(0deg) translate3d(0px, 0, 0);
     cursor: pointer;
     pointer-events: auto;
 }
@@ -558,7 +558,7 @@ p {
         border: 1px solid green;
         z-index: 1;
 
-        // &:after {
+        // &::after {
         //     position: absolute;
         //     content: '';
         //     width: 12%;
@@ -577,12 +577,12 @@ p {
             .LOADED {
                 /**
                  *    Normaly I would define the transition on the default rule but this way
-                 *    the animation will not play when the "LAUNCHED" flag is removed.
+                 *    the animation will not play when the 'LAUNCHED' flag is removed.
                  */
-                transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+                transition: transform .5s cubic-bezier(0, 0, .2, 1);
                 animation: fire 2s;
 
-                &:before {
+                &::before {
                     position: absolute;
                     content: '';
                     width: 200%;
@@ -595,8 +595,8 @@ p {
 
             }
 
-            // &:after {
-            //     animation: throw 0.1s steps(4);
+            // &::after {
+            //     animation: throw .1s steps(4);
             // }
         }
 
@@ -762,7 +762,7 @@ p {
             //     background-position: 0 190px;
             // }
 
-            &:after {
+            &::after {
                 content: '';
                 position: absolute;
                 width: 70%;
@@ -859,7 +859,7 @@ p {
         background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
         background-position: -16px 133px;
         background-size: 1600px 163px;
-        transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0, 0);
     }
 
     .reveal {
@@ -894,7 +894,7 @@ p {
                     border: 5px solid #000;
                     border-radius: 30px;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 33%;
                         height: 81%;
@@ -909,7 +909,7 @@ p {
             }
 
             &.open-instructions {
-                background: rgba(183, 219, 64, 0.6);
+                background: rgba(183, 219, 64, .6);
 
                 .frame.instructions-lvl-1,
                 .frame.instructions-lvl-2,
@@ -991,7 +991,7 @@ p {
             }
 
             &.open-complete {
-                background: rgba(183, 219, 64, 0.6);
+                background: rgba(183, 219, 64, .6);
 
                 .frame.complete-lvl-1 {
                     background: #B7DB40;
@@ -1109,7 +1109,7 @@ p {
             }
 
             &.open-try-again {
-                background: rgba(255, 0, 0, 0.6);
+                background: rgba(255, 0, 0, .6);
 
                 .frame {
                     background: #6D8326;
@@ -1157,7 +1157,7 @@ p {
             &.open-try-again {
                 .close-reveal {
                     opacity: 1;
-                    transform: rotate(0deg) translate3d(0px, 0px, 0px);
+                    transform: rotate(0deg) translate3d(0px, 0, 0);
                     pointer-events: auto;
                     position: absolute;
                     right: 12%;
@@ -1193,7 +1193,7 @@ p {
         .SCREEN-clean-up-game-lvl-3:not(.DEMO) & {
             .next-screen {
                 opacity: 1;
-                transform: rotate(0deg) translate3d(0px, 0px, 0px);
+                transform: rotate(0deg) translate3d(0px, 0, 0);
                 pointer-events: auto;
                 position: absolute;
                 right: 12%;
@@ -1227,7 +1227,7 @@ p {
         .next-screen {
             z-index: 1;
             opacity: 1;
-            transform: rotate(0deg) translate3d(0px, 0px, 0px);
+            transform: rotate(0deg) translate3d(0px, 0, 0);
         }
     }
 
@@ -1279,7 +1279,7 @@ p {
         &.COMPLETE {
             .close-reveal {
                 opacity: 1;
-                transform: rotate(0deg) translate3d(0px, 0px, 0px);
+                transform: rotate(0deg) translate3d(0px, 0, 0);
                 pointer-events: auto;
             }
         }
@@ -1304,7 +1304,7 @@ p {
         right: 0;
         bottom: 1%;
         opacity: 0;
-        transform: rotate(-180deg) translate3d(0px, 0px, 0px);
+        transform: rotate(-180deg) translate3d(0px, 0, 0);
         pointer-events: none;
         transition: opacity 1s, transform 1s;
 
@@ -1809,7 +1809,7 @@ p {
             margin-right: 30px;
             @include text-stroke(3, #000);
 
-            &:before {
+            &::before {
                 content: '';
                 vertical-align: middle;
                 display: inline-block;
@@ -1833,18 +1833,18 @@ p {
             z-index: 1;
 
             &.litter-bug-score {
-                &:before {
+                &::before {
                     background-position: -122px -24px;
                 }
 
                 div {
-                    &:after {
+                    &::after {
                         background-color: #e24419;
                     }
                 }
             }
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 display: block;
@@ -1859,7 +1859,7 @@ p {
                 background-position: -20px -24px;
             }
 
-            &:after {
+            &::after {
                 content: '';
                 background-color: #f9f9f9;
                 position: absolute;
@@ -1882,7 +1882,7 @@ p {
                 height: 29px;
                 padding-top: 25px;
 
-                &:before {
+                &::before {
                     content: '';
                     display: block;
                     background-color: #fff;
@@ -1892,7 +1892,7 @@ p {
                     width: 160px;
                 }
 
-                &:after {
+                &::after {
                     content: '';
                     display: block;
                     position: absolute;
@@ -1900,7 +1900,7 @@ p {
                     left: 3px;
                     border-radius: 50px;
                     background-color: green;
-                    width: 0px;
+                    width: 0;
                     height: 20px;
                     -webkit-transition: width .5s cubic-bezier(.53,0,.63,1);
                     transition: width .5s cubic-bezier(.53,-0.56,.63,1.74);
@@ -1925,7 +1925,7 @@ p {
         vertical-align: middle;
         height: 60px;
 
-        &:before {
+        &::before {
             content: '';
             display: inline-block;
             position: relative;
@@ -2023,7 +2023,7 @@ p {
             width: 50px;
             height: 75px;
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 left: -50px;
@@ -2032,7 +2032,7 @@ p {
                 height: 105px;
                 background-image: url(../media/_assets/_sprites/sprites.game2.4-01.png);
                 background-size: 500px;
-                background-position: -400px 0px;
+                background-position: -400px 0;
             }
         }
     }
@@ -2054,7 +2054,7 @@ p {
         }
 
         &.open-level-up {
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 left: 0;
@@ -2148,7 +2148,7 @@ p {
 
             &.level-up {
 
-                &:before {
+                &::before {
                     content: '';
                     display: block;
                     position: absolute;
@@ -2197,7 +2197,7 @@ p {
             }
 
             &.youve-won {
-                &:after {
+                &::after {
                     content: '';
                     display: block;
                     position: absolute;
@@ -2230,7 +2230,7 @@ p {
                 }
 
                 &.fall {
-                    &:after {
+                    &::after {
                         transform: rotate(-90deg);
                     }
                 }
@@ -2239,7 +2239,7 @@ p {
             &.try-again {
                 background-color: rgba(243, 157, 201, .6);
 
-                &:before {
+                &::before {
                     content: '';
                     display: block;
                     position: absolute;
@@ -2365,7 +2365,7 @@ p {
         background-image: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
         background-repeat: no-repeat;
         background-size: 700px;
-        background-position: -360px 0px;
+        background-position: -360px 0;
     }
 
     .earned {

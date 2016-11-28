@@ -62,8 +62,8 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
         transform: rotate(0deg);
         transition: transform 1s, opacity 1s;
 
-        &:before {
-            content: "\02736";
+        &::before {
+            content: '\02736';
             color: #efc300;
         }
 
@@ -106,7 +106,7 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
 
 /* flip speed goes here */
 .flipper {
-    transition: 0.6s;
+    transition: .6s;
     transform-style: preserve-3d;
 
     position: relative;
@@ -115,7 +115,7 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
 /* hide back of pane during swap */
 .front, .back {
     backface-visibility: hidden;
-    transition: 0.6s;
+    transition: .6s;
     transform-style: preserve-3d;
 
     position: absolute;
@@ -165,7 +165,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 html, body, body > div, body > div > div {
@@ -276,7 +276,7 @@ button {
     z-index: 1;
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -330,7 +330,7 @@ button {
     }
 
     &.no {
-        background-position: -280px 0px;
+        background-position: -280px 0;
 
         &:hover {
             background-position: -280px -114px;
@@ -338,7 +338,7 @@ button {
     }
 
     &.yes {
-        background-position: -5px 0px;
+        background-position: -5px 0;
 
         &:hover {
             background-position: -5px -114px;
@@ -358,7 +358,7 @@ body.DEMO .reveal .items li div .close-reveal {
 body > div > div:not(.VOICE-OVER) .reveal .close-reveal {
     visibility: visible;
     opacity: 1;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
 }
 
 h2 {
@@ -390,7 +390,7 @@ p {
     height: 540px;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 
     &:not(.COMPLETE) {
@@ -480,8 +480,8 @@ p {
 
 
 
-body > div > div:not(.DEMO) [id^="id-"]:not(.RETURN).COMPLETE .next-screen,
-body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
+body > div > div:not(.DEMO) [id^='id-']:not(.RETURN).COMPLETE .next-screen,
+body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     bottom: 22%;
     right: 22%;
     width: 7%;
@@ -594,7 +594,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
         &.next-screen {
             width: 200px;
             height: 100px;
-            background-position: -540px 0px;
+            background-position: -540px 0;
             transform: translateX(0);
 
             &:hover {
@@ -675,13 +675,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -689,7 +689,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -773,13 +773,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -787,7 +787,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -874,13 +874,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -888,7 +888,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -975,13 +975,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -989,7 +989,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -1076,13 +1076,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -1090,7 +1090,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -1177,13 +1177,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -1191,7 +1191,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -1278,13 +1278,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -1292,7 +1292,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -1380,13 +1380,13 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                     width: 48%;
                     height: 41%;
 
-                    &:after {
+                    &::after {
                         position: absolute;
                         width: 120%;
                         height: 120%;
                         left: -10%;
                         top:: -10%;
-                        content: "";
+                        content: '';
                         background: url(../media/images/frame/id.png);
                         background-size: 211%;
                         background-position: 4px -20px;
@@ -1394,7 +1394,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
                     &:hover,
                     &:focus {
-                        &:after {
+                        &::after {
                             background-position: 340px -20px;
                         }
                     }
@@ -1956,7 +1956,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                 height: 80px;
                 bottom: 25%;
                 left: 22%;
-                background-position: -104px 0px;
+                background-position: -104px 0;
             }
 
             &:nth-of-type(2) {
@@ -1964,7 +1964,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                 height: 80px;
                 bottom: 25%;
                 left: 42%;
-                background-position: -300px 0px;
+                background-position: -300px 0;
             }
 
             &:nth-of-type(3) {
@@ -1972,7 +1972,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
                 height: 75px;
                 bottom: 26%;
                 left: 66%;
-                background-position: -522px 0px;
+                background-position: -522px 0;
             }
 
             &:nth-of-type(4) {
@@ -2115,9 +2115,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 3px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2129,7 +2129,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2160,9 +2160,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2213,9 +2213,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 320px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2227,7 +2227,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2258,9 +2258,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2311,9 +2311,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 2195px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2325,7 +2325,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2356,9 +2356,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2409,9 +2409,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 628px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2423,7 +2423,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2454,9 +2454,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2507,9 +2507,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 1879px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2521,7 +2521,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2552,9 +2552,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2605,9 +2605,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 942px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2619,7 +2619,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2650,9 +2650,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2703,9 +2703,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 1568px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2717,7 +2717,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2748,9 +2748,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -2801,9 +2801,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background-size: 2500px 313px;
             background-position: 1252px 4px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 140%;
                 height: 140%;
                 left: -18%;
@@ -2815,7 +2815,7 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
 
         div ul > * {
             right:25%;
-            content: "";
+            content: '';
             width: 15%;
             position: fixed;
             height: 27%;
@@ -2846,9 +2846,9 @@ body > div > div:not(.DEMO) [id^="dnd-"]:not(.RETURN).COMPLETE .next-screen {
             background: url(../media/images/img_17-24.2.png);
             background-size: 3200px 133px;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 100%;
                 height: 100%;
                 background: url(../media/images/frame/draggable.png);
@@ -3015,9 +3015,9 @@ body:not(.DEMO) #what-does-a-nose-do {
                     position: relative;
                 }
 
-                &:before,
-                &:after {
-                    content: "";
+                &::before,
+                &::after {
+                    content: '';
                     display: block;
                     position: absolute;
                     left: -9%;
@@ -3029,14 +3029,14 @@ body:not(.DEMO) #what-does-a-nose-do {
                     z-index: 1;
                 }
 
-                &:after {
+                &::after {
                     background-position: 107% 0;
                     opacity: 0;
                     transition: opacity .4s;
                 }
 
                 &:hover {
-                    &:after {
+                    &::after {
                         opacity: 1;
                     }
                 }
@@ -3064,7 +3064,7 @@ body:not(.DEMO) #what-does-a-nose-do {
                 li {
                     cursor: auto;
                     &:hover {
-                        &:after {
+                        &::after {
                             opacity: 0;
                         }
                     }
@@ -3326,8 +3326,8 @@ body:not(.DEMO) #what-does-a-nose-do {
             display: none;
         }
 
-        &:after {
-            content: "";
+        &::after {
+            content: '';
             background-image: url(../media/images/frame/dropzone.png);
             background-size: 100% 100%;
             width: 140%;
@@ -3387,7 +3387,7 @@ body:not(.DEMO) #what-does-a-nose-do {
     opacity: 0;
     /* One of the rare times I'll use important. This is to override an inline style. */
     transform: translate3d(0,0,0) !important;
-    transition: transform 0.5s cubic-bezier(0, 0.18, 0, 1.01), opacity 1s;
+    transition: transform .5s cubic-bezier(0, .18, 0, 1.01), opacity 1s;
 }
 
 .draggable-helper.RETURN.PLUCKED {

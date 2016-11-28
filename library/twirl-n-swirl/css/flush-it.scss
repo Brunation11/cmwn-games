@@ -26,7 +26,7 @@
 //         text-align: center;
 
 //         &.DISABLED li {
-//             opacity: 0.5;
+//             opacity: .5;
 //             pointer-events: none;
 //             cursor: default;
 //         }
@@ -52,8 +52,8 @@
 //         margin-left: 50px;
 //         margin-top: 50px;
 
-//         &:before {
-//             content: "";
+//         &::before {
+//             content: '';
 //             background-image: url(../media/S_6/sprite_6.2.png);
 //             background-repeat: no-repeat;
 //             background-size: 250px;
@@ -70,17 +70,17 @@
 //     $height: 70 80 100    70 120 110 100 100 100    80 100 110 110 110;
 
 //     @for $i from 1 through 14 {
-//         .#{nth($items,$i)} {
-//             &:before {
+//         .#{nth($items, $i)} {
+//             &::before {
 //                 position: absolute;
-//                 width: nth($width,$i)+px;
-//                 height: nth($height,$i)+px;
-//                 background-position: #{-125*nth($background-left,$i)+px} #{-125*nth($background-top,$i)+px};
-//                 top: -(nth($height,$i))/2+px;
-//                 left: -(nth($width,$i))/2+px;
+//                 width: nth($width, $i) + px;
+//                 height: nth($height, $i) + px;
+//                 background-position: #{-125* nth($background-left, $i) + px} #{-125* nth($background-top, $i) + px};
+//                 top: -(nth($height, $i))/2+ px;
+//                 left: -(nth($width, $i))/2+ px;
 //             }
 //             &.CORRECT {
-//                 &:before {
+//                 &::before {
 //                     transform: translate3d(-50%, -50%, 0) scale(1.75);
 //                     top: 0; left: 0;
 //                     $correct: true;
@@ -113,8 +113,8 @@
 //         left: 38%;
 //         top: 40%;
 
-//         &:before {
-//             content: "";
+//         &::before {
+//             content: '';
 //             background-image: url(../media/S_6/img_6.1.png);
 //             background-repeat: no-repeat;
 //             width: 280px;
@@ -157,7 +157,7 @@
 
 //     /*[pl-id=modal-reveal] {
 //         background-color: rgba(0,0,0,0.2);
-//         transition: opacity 0.5s;
+//         transition: opacity .5s;
 //         opacity: 0;*/
 
 //     .reveal {
@@ -195,12 +195,12 @@
 //                 img {
 //                     max-width: 80%;
 //                     max-height: 70px;
-//                     margin: 0.8em auto;
+//                     margin: .8em auto;
 //                 }
 
 //                 h3 {
-//                     margin-top: 0.5em;
-//                     margin-bottom: 0.5em;
+//                     margin-top: .5em;
+//                     margin-bottom: .5em;
 //                 }
 
 //                 > * {
@@ -216,12 +216,12 @@
 //                 }
 
 //                 &::before {
-//                     content: "";
+//                     content: '';
 //                     background-image: url(../media/S_6/sprite_6.1.png);
 //                     background-repeat: no-repeat;
 //                     background-size: 400px;
 //                     display: block;
-//                     margin: 0.5em auto 0;
+//                     margin: .5em auto 0;
 //                     height: 65px;
 //                     margin-top: 40px;
 //                 }
@@ -232,9 +232,9 @@
 //             $width: 246 170 292 276 370 218 210 216 370 120 268 100 358    366;
 
 //             @for $i from 1 through 14 {
-//                 .#{nth($items,$i)}-reveal::before {
-//                     width: nth($width,$i)+px;
-//                     background-position: 0px #{-1*nth($background-top,$i)+px};
+//                 .#{nth($items, $i)}-reveal::before {
+//                     width: nth($width, $i) + px;
+//                     background-position: 0 #{-1 * nth($background-top, $i) + px};
 //                 }
 //             }
 //         }

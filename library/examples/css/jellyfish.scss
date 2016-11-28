@@ -36,7 +36,7 @@
                 margin: 0;
                 opacity: 0;
                 cursor: default;
-                transition: opacity 0.5s;
+                transition: opacity .5s;
             }
         }
     }
@@ -47,8 +47,8 @@
                 &.SELECTED {
                     z-index: 1;
 
-                    &:before {
-                        content: "";
+                    &::before {
+                        content: '';
                         position: fixed;
                         left: -1000%;
                         top: -1000%;
@@ -147,27 +147,27 @@
 
         &.a {
                 /* Id rather do a transform but this works better with click events. I may want to do my own hit testing. */
-                transition: top cubic-bezier(1, 0.1, 1, 1) 5s;
+                transition: top cubic-bezier(1, .1, 1, 1) 5s;
         }
 
         &.b {
-                transition: top cubic-bezier(1, 0.1, 1, 1) 6s;
+                transition: top cubic-bezier(1, .1, 1, 1) 6s;
         }
 
         &.c {
-                transition: top cubic-bezier(1, 0.1, 1, 1) 7s;
+                transition: top cubic-bezier(1, .1, 1, 1) 7s;
         }
 
         &.d {
-                transition: top cubic-bezier(1, 0.1, 1, 1) 4s;
+                transition: top cubic-bezier(1, .1, 1, 1) 4s;
         }
 
         &.e {
-                transition: top cubic-bezier(1, 0.1, 1, 1) 3s;
+                transition: top cubic-bezier(1, .1, 1, 1) 3s;
         }
 
         &.f {
-                transition: top cubic-bezier(1, 0.1, 1, 1) 2s;
+                transition: top cubic-bezier(1, .1, 1, 1) 2s;
         }
 }
 

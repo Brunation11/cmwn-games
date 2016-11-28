@@ -84,10 +84,10 @@
                     position: absolute;
                     top: 0; left: 0;
                     width: 100%; height: 100%;
-                    transition: opacity 0.5s;
+                    transition: opacity .5s;
                     background-repeat: no-repeat;
                     background-size: 300px;
-                    background-image: url("../media/images/globe/sprite_4.2.png");
+                    background-image: url('../media/images/globe/sprite_4.2.png');
                     cursor: pointer;
 
                     &.CORRECT {
@@ -119,10 +119,10 @@
                         }
 
                         .draggable {
-                            background-position: -304+(300)+px nth($background-top, $i)+5+px;
+                            background-position: -304+(300) + px nth($background-top, $i) +5+ px;
                         }
 
-                        &:before {
+                        &::before {
                             position: fixed;
                             top: 0;
                             left: 0;
@@ -131,12 +131,12 @@
                             height: 100%;
                             background-repeat: no-repeat;
                             background-size: 300px;
-                            background-image: url("../media/images/globe/sprite_4.2.png");
-                            background-position: -304+(100)+px nth($background-top, $i)+5+px;
+                            background-image: url('../media/images/globe/sprite_4.2.png');
+                            background-position: -304+(100) + px nth($background-top, $i) +5+ px;
                         }
 
                         &.DROPPED:before {
-                            background-position: -304+(200)+px nth($background-top, $i)+5+px;
+                            background-position: -304+(200) + px nth($background-top, $i) +5+ px;
                         }
                     }
                 }
@@ -165,7 +165,7 @@
                 transition: opacity .5s;
                 width: 18%;
                 position: absolute;
-                background-image: url("../media/images/globe/sprite_4.3.png");
+                background-image: url('../media/images/globe/sprite_4.3.png');
                 background-size: auto 150px;
 
                 $left: 240    66 140    80 240 210 140 136    30 56;
@@ -177,11 +177,11 @@
 
                 @for $i from 1 through 10{
                     &:nth-of-type(#{$i}){
-                        left: nth($left, $i)+px;
-                        top: nth($top, $i)+px;
-                        width: nth($width, $i)+px;
-                        height: nth($height, $i)+px;
-                        background-position: -1*nth($background-left, $i)+5+px nth($background-top, $i)+5+px;
+                        left: nth($left, $i) + px;
+                        top: nth($top, $i) + px;
+                        width: nth($width, $i) + px;
+                        height: nth($height, $i) + px;
+                        background-position: -1 * nth($background-left, $i) +5+ px nth($background-top, $i) +5+ px;
                     }
                 }
             }
@@ -321,7 +321,7 @@
                 position: absolute;
                 left: -30px;
                 width: 60px; height: 100%;
-                content: "";
+                content: '';
                 background-repeat: no-repeat;
                 background-image: url(../media/images/globe/sprite_4.4.png);
                 background-size: auto 40px;
@@ -330,7 +330,7 @@
             }
 
             li.SELECTED::before {
-                background-position: 0px -5px;
+                background-position: 0 -5px;
             }
         }
     }

@@ -14,7 +14,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -31,7 +31,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -151,7 +151,7 @@ p {
     margin-top: -270px;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 
     &:not(.COMPLETE) {
@@ -411,7 +411,7 @@ ul {
         &.speech-bubble,
         &.you {
             transform:scale(0);
-            transition:transform 0.5s ease-in-out;
+            transition:transform .5s ease-in-out;
         }
 
         &.speech-bubble {
@@ -554,11 +554,11 @@ ul {
             top: 25%;
             left: 25%;
 
-            &:before {
+            &::before {
                 background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_leftbuttons-01.png);
                 background-size: 1060px 411px;
                 position: absolute;
-                content: "";
+                content: '';
                 width: 200%;
                 height: 200%;
                 top: -50%;
@@ -566,158 +566,158 @@ ul {
             }
 
             &.friends {
-                &:before {
+                &::before {
                     background-position: 658px -12px;
                 }
             }
 
             &.world-peace {
-                &:before {
+                &::before {
                     background-position: 526px -12px;
                 }
             }
 
             &.sports {
-                &:before {
+                &::before {
                     background-position: 261px -12px;
                 }
             }
 
             &.playing-games {
-                &:before {
+                &::before {
                     background-position: 395px -12px;
                 }
             }
 
             &.looking-cool {
-                &:before {
+                &::before {
                     background-position: -3px -12px;
                 }
             }
 
             &.school {
-                &:before {
+                &::before {
                     background-position: 790px -12px;
                 }
             }
 
             &.celebrities {
-                &:before {
+                &::before {
                     background-position: 131px -12px;
                 }
             }
 
             &.environment {
-                &:before {
+                &::before {
                     background-position: 923px -12px;
                 }
             }
 
             &.DRAGGING {
                 z-index: 1;
-                &:before {
+                &::before {
                     background-size: 1000px 388px;
                 }
 
                 &.friends {
-                    &:before {
+                    &::before {
                         background-position: 625px 245px;
                     }
                 }
 
                 &.world-peace {
-                    &:before {
+                    &::before {
                         background-position: 499px 244px;
                     }
                 }
 
                 &.sports {
-                    &:before {
+                    &::before {
                         background-position: 250px 245px;
                     }
                 }
 
                 &.playing-games {
-                    &:before {
+                    &::before {
                         background-position: 375px 245px;
                     }
                 }
 
                 &.looking-cool {
-                    &:before {
+                    &::before {
                         background-position: 0 244px;
                     }
                 }
 
                 &.school {
-                    &:before {
+                    &::before {
                         background-position: 749px 245px;
                     }
                 }
 
                 &.celebrities {
-                    &:before {
+                    &::before {
                         background-position: 125px 244px;
                     }
                 }
 
                 &.environment {
-                    &:before {
+                    &::before {
                         background-position: 874px 244px;
                     }
                 }
             }
 
             &.CORRECT {
-                &:before {
+                &::before {
                     background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_passion.png);
                     background-size: 1000px 141px;
                 }
 
                 &.friends {
-                    &:before {
+                    &::before {
                         background-position: 132px -12px;
                     }
                 }
 
                 &.world-peace {
-                    &:before {
+                    &::before {
                         background-position: 254px -12px;
                     }
                 }
 
                 &.sports {
-                    &:before {
+                    &::before {
                         background-position: 376px -12px;
                     }
                 }
 
                 &.playing-games {
-                    &:before {
+                    &::before {
                         background-position: 497px -12px;
                     }
                 }
 
                 &.looking-cool {
-                    &:before {
+                    &::before {
                         background-position: 620px -11px;
                     }
                 }
 
                 &.school {
-                    &:before {
+                    &::before {
                         background-position: 746px -12px;
                     }
                 }
 
                 &.celebrities {
-                    &:before {
+                    &::before {
                         background-position: 863px -12px;
                     }
                 }
 
                 &.environment {
-                    &:before {
+                    &::before {
                         background-position: 988px -10px;
                     }
                 }
@@ -895,11 +895,11 @@ ul {
             top: 25%;
             left: 25%;
 
-            &:before {
+            &::before {
                 background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame4_leftbuttons-01-01.png);
                 background-size: 1060px 411px;
                 position: absolute;
-                content: "";
+                content: '';
                 width: 200%;
                 height: 200%;
                 top: -50%;
@@ -907,158 +907,158 @@ ul {
             }
 
             &.cyberbullying {
-                &:before {
+                &::before {
                     background-position: -2px -12px;
                 }
             }
 
             &.endangered-animals {
-                &:before {
+                &::before {
                     background-position: 926px -12px;
                 }
             }
 
             &.literacy {
-                &:before {
+                &::before {
                     background-position: 794px -12px;
                 }
             }
 
             &.climate-change {
-                &:before {
+                &::before {
                     background-position: 662px -12px;
                 }
             }
 
             &.poverty {
-                &:before {
+                &::before {
                     background-position: 530px -12px;
                 }
             }
 
             &.health-problems {
-                &:before {
+                &::before {
                     background-position: 395px -12px;
                 }
             }
 
             &.homelessness {
-                &:before {
+                &::before {
                     background-position: 264px -12px;
                 }
             }
 
             &.safety {
-                &:before {
+                &::before {
                     background-position: 132px -15px;
                 }
             }
 
             &.DRAGGING {
                 z-index: 1;
-                &:before {
+                &::before {
                     background-size: 995px 386px;
                 }
 
                 &.cyberbullying {
-                    &:before {
+                    &::before {
                         background-position: 0 243px;
                     }
                 }
 
                 &.endangered-animals {
-                    &:before {
+                    &::before {
                         background-position: 871px 243px;
                     }
                 }
 
                 &.literacy {
-                    &:before {
+                    &::before {
                         background-position: 747px 243px;
                     }
                 }
 
                 &.climate-change {
-                    &:before {
+                    &::before {
                         background-position: 622px 243px;
                     }
                 }
 
                 &.poverty {
-                    &:before {
+                    &::before {
                         background-position: 498px 243px;
                     }
                 }
 
                 &.health-problems {
-                    &:before {
+                    &::before {
                         background-position: 373px 243px;
                     }
                 }
 
                 &.homelessness {
-                    &:before {
+                    &::before {
                         background-position: 249px 242px;
                     }
                 }
 
                 &.safety {
-                    &:before {
+                    &::before {
                         background-position: 124px 244px;
                     }
                 }
             }
 
             &.CORRECT {
-                &:before {
+                &::before {
                     background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame3_worldissues-01.png);
                     background-size: 1000px 141px;
                 }
 
                 &.cyberbullying {
-                    &:before {
+                    &::before {
                         background-position: -2px -8px;
                     }
                 }
 
                 &.endangered-animals {
-                    &:before {
+                    &::before {
                         background-position: 869px -7px;
                     }
                 }
 
                 &.literacy {
-                    &:before {
+                    &::before {
                         background-position: 751px -10px;
                     }
                 }
 
                 &.climate-change {
-                    &:before {
+                    &::before {
                         background-position: 625px -14px;
                     }
                 }
 
                 &.poverty {
-                    &:before {
+                    &::before {
                         background-position: 495px -10px;
                     }
                 }
 
                 &.health-problems {
-                    &:before {
+                    &::before {
                         background-position: 374px -14px;
                     }
                 }
 
                 &.homelessness {
-                    &:before {
+                    &::before {
                         background-position: 247px -8px;
                     }
                 }
 
                 &.safety {
-                    &:before {
+                    &::before {
                         background-position: 127px -9px;
                     }
                 }
@@ -1266,9 +1266,9 @@ ul {
             width: 4%;
             height: 8%;
 
-            &:before {
+            &::before {
                 position: absolute;
-                content: "";
+                content: '';
                 background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame6-01.png);
                 background-size: 1200px 300px;
                 width: 375%;
@@ -1285,7 +1285,7 @@ ul {
                 top: 15%;
                 left: 35%;
 
-                &:before {
+                &::before {
                     background-position: -8px -11px;
                 }
             }
@@ -1294,7 +1294,7 @@ ul {
                 top: 15%;
                 left: 50%;
 
-                &:before {
+                &::before {
                     background-position: -151px -11px;
                 }
             }
@@ -1303,7 +1303,7 @@ ul {
                 top: 15%;
                 left: 65%;
 
-                &:before {
+                &::before {
                     background-position: 901px -11px;
                 }
             }
@@ -1312,7 +1312,7 @@ ul {
                 top: 15%;
                 left: 80%;
 
-                &:before {
+                &::before {
                     background-position: 744px -11px;
                 }
             }
@@ -1321,7 +1321,7 @@ ul {
                 top: 42%;
                 left: 35%;
 
-                &:before {
+                &::before {
                     background-position: 597px 1px;
                 }
             }
@@ -1330,7 +1330,7 @@ ul {
                 top: 42%;
                 left: 50%;
 
-                &:before {
+                &::before {
                     background-position: 448px 2px;
                 }
             }
@@ -1339,7 +1339,7 @@ ul {
                 top: 42%;
                 left: 65%;
 
-                &:before {
+                &::before {
                     background-position: 299px -5px;
                 }
             }
@@ -1348,7 +1348,7 @@ ul {
                 top: 42%;
                 left: 80%;
 
-                &:before {
+                &::before {
                     background-position: 142px -2px;
                 }
             }
@@ -1357,49 +1357,49 @@ ul {
                 z-index: 1;
 
                 &.sharing {
-                    &:before {
+                    &::before {
                         background-position: -2px 136px;
                     }
                 }
 
                 &.kindness {
-                    &:before {
+                    &::before {
                         background-position: -154px 138px;
                     }
                 }
 
                 &.rudeness {
-                    &:before {
+                    &::before {
                         background-position: 901px 136px;
                     }
                 }
 
                 &.being-a-bully {
-                    &:before {
+                    &::before {
                         background-position: 742px 136px;
                     }
                 }
 
                 &.compassion {
-                    &:before {
+                    &::before {
                         background-position: 598px 149px;
                     }
                 }
 
                 &.greediness {
-                    &:before {
+                    &::before {
                         background-position: 449px 153px;
                     }
                 }
 
                 &.being-angry {
-                    &:before {
+                    &::before {
                         background-position: 296px 145px;
                     }
                 }
 
                 &.friendliness {
-                    &:before {
+                    &::before {
                         background-position: 140px 148px;
                     }
                 }
@@ -1783,7 +1783,7 @@ ul {
         .meter {
             background: url(../media/assets/_images/_SpriteSheet/Spritesheet_progressionmeter-01.png);
             background-size: cover;
-            background-position: 0px 738px;
+            background-position: 0 738px;
             width: 50%;
             height: 25%;
             left: 25%;
@@ -2030,7 +2030,7 @@ ul {
             height: 86px;
 
             &:nth-child(1) {
-                background-position: -15px 0px;
+                background-position: -15px 0;
                 top: 3%;
                 left: 53%;
 
@@ -2043,7 +2043,7 @@ ul {
             }
 
             &:nth-child(2) {
-                background-position: 1385px 0px;
+                background-position: 1385px 0;
                 top: 20%;
                 left: 53%;
 
@@ -2194,7 +2194,7 @@ ul {
             }
 
             &:nth-child(2) {
-                background-position: 320px 0px;
+                background-position: 320px 0;
                 top: 52%;
                 left: 62%;
 
@@ -2318,7 +2318,7 @@ ul {
             }
 
             &:nth-child(2) {
-                background-position: 320px 0px;
+                background-position: 320px 0;
                 top: 52%;
                 left: 62%;
 
@@ -2442,7 +2442,7 @@ ul {
             }
 
             &:nth-child(2) {
-                background-position: 320px 0px;
+                background-position: 320px 0;
                 top: 52%;
                 left: 62%;
 
@@ -2583,11 +2583,11 @@ ul {
             top: 25%;
             left: 25%;
 
-            &:before {
+            &::before {
                 background: url(../media/assets/_images/_SpriteSheet/spritesheet_frame16-01.png);
                 background-size: 1020px 395px;
                 position: absolute;
-                content: "";
+                content: '';
                 width: 200%;
                 height: 200%;
                 top: -50%;
@@ -2595,158 +2595,158 @@ ul {
             }
 
             &.space {
-                &:before {
+                &::before {
                     background-position: -1px -11px;
                 }
             }
 
             &.animals {
-                &:before {
+                &::before {
                     background-position: 893px -12px;
                 }
             }
 
             &.recycling {
-                &:before {
+                &::before {
                     background-position: 765px -12px;
                 }
             }
 
             &.money {
-                &:before {
+                &::before {
                     background-position: 639px -11px;
                 }
             }
 
             &.printing {
-                &:before {
+                &::before {
                     background-position: 512px -11px;
                 }
             }
 
             &.coding {
-                &:before {
+                &::before {
                     background-position: 384px -12px;
                 }
             }
 
             &.art {
-                &:before {
+                &::before {
                     background-position: 257px -11px;
                 }
             }
 
             &.robotics {
-                &:before {
+                &::before {
                     background-position: 128px -12px;
                 }
             }
 
             &.DRAGGING {
                 z-index: 1;
-                &:before {
+                &::before {
                     background-size: 1000px 388px;
                 }
 
                 &.space {
-                    &:before {
+                    &::before {
                         background-position: 0 247px;
                     }
                 }
 
                 &.animals {
-                    &:before {
+                    &::before {
                         background-position: 875px 247px;
                     }
                 }
 
                 &.recycling {
-                    &:before {
+                    &::before {
                         background-position: 749px 247px;
                     }
                 }
 
                 &.money {
-                    &:before {
+                    &::before {
                         background-position: 624px 247px;
                     }
                 }
 
                 &.printing {
-                    &:before {
+                    &::before {
                         background-position: 498px 246px;
                     }
                 }
 
                 &.coding {
-                    &:before {
+                    &::before {
                         background-position: 374px 246px;
                     }
                 }
 
                 &.art {
-                    &:before {
+                    &::before {
                         background-position: 250px 246px;
                     }
                 }
 
                 &.robotics {
-                    &:before {
+                    &::before {
                         background-position: 125px 248px;
                     }
                 }
             }
 
             &.CORRECT {
-                &:before {
+                &::before {
                     background: url(../media/assets/_images/_SpriteSheet/spritesheet-icons-frame16-01.png);
                     background-size: 1000px 141px;
                 }
 
                 &.space {
-                    &:before {
+                    &::before {
                         background-position: -3px -14px;
                     }
                 }
 
                 &.animals {
-                    &:before {
+                    &::before {
                         background-position: 869px -14px;
                     }
                 }
 
                 &.recycling {
-                    &:before {
+                    &::before {
                         background-position: 750px -14px;
                     }
                 }
 
                 &.money {
-                    &:before {
+                    &::before {
                         background-position: 624px -14px;
                     }
                 }
 
                 &.printing {
-                    &:before {
+                    &::before {
                         background-position: 495px -14px;
                     }
                 }
 
                 &.coding {
-                    &:before {
+                    &::before {
                         background-position: 371px -14px;
                     }
                 }
 
                 &.art {
-                    &:before {
+                    &::before {
                         background-position: 246px -14px;
                     }
                 }
 
                 &.robotics {
-                    &:before {
+                    &::before {
                         background-position: 121px -10px;
                     }
                 }
@@ -2906,12 +2906,12 @@ ul {
             display: none;
         }
 
-        &:after {
+        &::after {
             background: url(../media/assets/_images/_QuitScreen/Quit%20Screen_Text_AreYouSure.png);
             background-size: 100%;
             background-repeat: no-repeat;
             position: absolute;
-            content: "";
+            content: '';
             width: 70%;
             height: 38%;
             top: 25%;

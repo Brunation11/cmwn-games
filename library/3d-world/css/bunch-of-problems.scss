@@ -2,7 +2,7 @@
 
 #bunch-of-problems {
     .screen-content {
-        &:after {
+        &::after {
             content: '';
             display: block;
             position: absolute;

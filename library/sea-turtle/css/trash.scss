@@ -77,7 +77,7 @@
             $correct: 1 2 3 7 8 9 10 12 13 14 17 18 20 21;
 
             @for $i from 1 through 14 {
-                li:nth-of-type(#{nth($correct,$i)}).HIGHLIGHTED {
+                li:nth-of-type(#{nth($correct, $i)}).HIGHLIGHTED {
                     pointer-events: none;
 
                     &:hover div,
@@ -110,16 +110,16 @@
 
                 @for $i from 1 through 21 {
                     &.#{nth($class, $i)} {
-                        left: nth($left, $i)+%;
-                        top: nth($top, $i)+%;
+                        left: nth($left, $i) +%;
+                        top: nth($top, $i) +%;
 
                         div {
-                            width: nth($width, $i)+px;
-                            height: nth($height, $i)+px;
-                            background-position: 0px nth($background-top, $i)*-1+px;
+                            width: nth($width, $i) + px;
+                            height: nth($height, $i) + px;
+                            background-position: 0 nth($background-top, $i)*-1+ px;
 
                             &.hover {
-                                background-position: -162px nth($background-top, $i)*-1+px;
+                                background-position: -162px nth($background-top, $i)*-1+ px;
                             }
                         }
                     }

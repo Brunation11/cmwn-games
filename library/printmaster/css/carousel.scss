@@ -26,8 +26,8 @@
             pointer-events: none;
         }
 
-        &:before {
-            content: "";
+        &::before {
+            content: '';
             position: absolute;
             z-index: 1;
             left: 0;
@@ -43,7 +43,7 @@
         }
 
         &:hover {
-            &:before {
+            &::before {
                 background-position: right top;
             }
         }
@@ -180,7 +180,7 @@
         }
     }
 
-    [class*="2"] + .score {
+    [class*='2'] + .score {
         width: 340px;
         background-position: -210px;
 
@@ -203,7 +203,7 @@
         }
     }
 
-    [class*="3"] + .score {
+    [class*='3'] + .score {
 
         .board {
             div {
@@ -251,7 +251,7 @@
     }
 
     @for $i from 1 through 3 {
-        .score[data-score="#{$i}"] {
+        .score[data-score='#{$i}'] {
             @for $j from 1 through $i {
                 .board div:nth-of-type(#{$j}) {
                     transition: transform 1s, opacity 1s, background 0s 1s;

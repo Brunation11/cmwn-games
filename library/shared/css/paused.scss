@@ -19,8 +19,8 @@ $background-color: rgba(84,194,242,.7);
 }
 
 .pl-game.PAUSED:not(.DEMO) {
-    &:before {
-        content: "";
+    &::before {
+        content: '';
         position: absolute;
         background-color: $background-color;
         display: block;
@@ -31,10 +31,10 @@ $background-color: rgba(84,194,242,.7);
         z-index: 2;
     }
 
-    &:after {
-        content: "PAUSED...";
+    &::after {
+        content: 'PAUSED...';
         position: absolute;
-        font-family: "CMWN", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+        font-family: 'CMWN', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
         color: $text-color;
         font-size: 72px;
         top: 50%;

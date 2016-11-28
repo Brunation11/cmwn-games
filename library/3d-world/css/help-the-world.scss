@@ -10,7 +10,7 @@
         padding: 56px 50px 50px 120px;
         border-bottom: 12px solid $green;
 
-        &:before {
+        &::before {
             content: '';
             position: absolute;
             left: 0;
@@ -114,7 +114,7 @@
                 text-align: left;
                 left: 200px;
                 top: 140px;
-                font-family: "Source Sans Pro";
+                font-family: 'Source Sans Pro';
                 transform: translateY(-50%);
                 margin-top: 20px;
             }
@@ -142,7 +142,7 @@
                 }
             }
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 left: 0;
@@ -154,7 +154,7 @@
                 background-position: -1905px -180px;
             }
 
-            &:after {
+            &::after {
                 content: '';
                 position: absolute;
                 left: 0;
@@ -170,7 +170,7 @@
             $background-tops: 640    640    640    640    640    640;
             @for $i from 1 through 6 {
                 &[data-ref=#{nth($jobs, $i)}] {
-                    &:after {
+                    &::after {
                         background-position: -#{nth($background-lefts, $i)}px -#{nth($background-tops, $i)}px;
                     }
                 }

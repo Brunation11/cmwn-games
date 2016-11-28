@@ -13,7 +13,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -54,7 +54,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -176,7 +176,7 @@ p {
     margin-top: -270px;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s, z-index 0s 1s;
+    transition: opacity 1s, transform .5s, z-index 0s 1s;
 
     &:not(.COMPLETE) {
         button {
@@ -483,7 +483,7 @@ $grey: #8ebbcd;
 
             li {
                 cursor: auto;
-                opacity: 0.5;
+                opacity: .5;
                 transition: opacity 1s;
                 background-image: url(../media/S_3/img_3.2.png);
                 background-size: 450px;
@@ -516,11 +516,11 @@ $grey: #8ebbcd;
 
                 @for $i from 1 through 4 {
                     &:nth-of-type(#{$i}) {
-                        background-position: -12px 310-325*$i+px;
+                        background-position: -12px 310-325*$i+ px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -237px 310-325*$i+px;
+                            background-position: -237px 310-325*$i+ px;
                         }
                     }
                 }
@@ -550,7 +550,7 @@ $grey: #8ebbcd;
                     color: #FFF;
                 }
 
-                &:before {
+                &::before {
                     content: '';
                     display: block;
                     position: absolute;
@@ -559,7 +559,7 @@ $grey: #8ebbcd;
                     width: 100%;
                     height: 100%;
                     background-color: #000;
-                    opacity: 0.7;
+                    opacity: .7;
                     z-index: -1;
                 }
             }
@@ -737,11 +737,11 @@ $grey: #8ebbcd;
                 width: 300px;
 
                 &:hover {
-                    background-position: 0px -400px;
+                    background-position: 0 -400px;
                 }
 
                 &.SELECTED {
-                    background-position: 0px -400px;
+                    background-position: 0 -400px;
                 }
             }
 
@@ -770,7 +770,7 @@ $grey: #8ebbcd;
 
                 &.pig {
                     transition: opacity 1s;
-                    opacity: 0.5;
+                    opacity: .5;
                 }
             }
         }
@@ -880,7 +880,7 @@ $grey: #8ebbcd;
         left: 300px;
         padding-top: 20px;
         font-size: 68px;
-        line-height: 0.955;
+        line-height: .955;
         font-weight: bold;
         color: $yellow;
 
@@ -978,11 +978,11 @@ $grey: #8ebbcd;
 
         @for $i from 0 through 4 {
             &.score-#{$i * 10} {
-                background-position: 0px #{360 - 360 * ($i / 4)}px;
+                background-position: 0 #{360 - 360 * ($i / 4)}px;
             }
         }
 
-        &:before {
+        &::before {
             content: 'score';
             position: absolute;
             display: block;
@@ -1020,7 +1020,7 @@ $grey: #8ebbcd;
             width: 10px;
             height: 10px;
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 display: block;
@@ -1040,7 +1040,7 @@ $grey: #8ebbcd;
             width: 50px;
             height: 50px;
 
-            &:before {
+            &::before {
                 content: '';
                 position: absolute;
                 background-image: url(../media/_sprites/sprites.game2elem.png);
@@ -1049,7 +1049,7 @@ $grey: #8ebbcd;
             }
 
             &[class*='item-'] {
-                &:before {
+                &::before {
                     background-position: -285px -10px;
                     width: 100px;
                     height: 100px;
@@ -1058,14 +1058,14 @@ $grey: #8ebbcd;
                 }
 
                 &.COMPLETE {
-                    &:before {
+                    &::before {
                         background-position: -285px -135px;
                     }
                 }
             }
 
             &[class*='enemy-'] {
-                &:before {
+                &::before {
                     background-position: -150px -10px;
                     width: 100px;
                     height: 100px;
@@ -1076,7 +1076,7 @@ $grey: #8ebbcd;
                 }
 
                 &:not(.ENABLED) {
-                    &:before {
+                    &::before {
                         animation: enemy-disapear .5s;
                         opacity: 0;
                     }
@@ -1498,7 +1498,7 @@ $grey: #8ebbcd;
     .score {
         @for $i from 0 through 6 {
             &.score-#{$i * 10} {
-                background-position: 0px #{360 - 360 * ($i / 6)}px;
+                background-position: 0 #{360 - 360 * ($i / 6)}px;
             }
         }
     }
@@ -1530,7 +1530,7 @@ $grey: #8ebbcd;
     .score {
         @for $i from 0 through 7 {
             &.score-#{$i * 10} {
-                background-position: 0px #{360 - 360 * ($i / 7)}px;
+                background-position: 0 #{360 - 360 * ($i / 7)}px;
             }
         }
     }

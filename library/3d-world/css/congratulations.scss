@@ -3,7 +3,7 @@
 
 #congratulations {
     .screen-content {
-        &:before {
+        &::before {
             content: '';
             position: absolute;
             z-index: 1;

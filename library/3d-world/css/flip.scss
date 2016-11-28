@@ -1,7 +1,7 @@
 @import 'variables';
 
 #flip {
-    font-family: "Source Sans Pro";
+    font-family: 'Source Sans Pro';
 
     .printer {
         position: absolute;
@@ -27,7 +27,7 @@
         left: 470px;
         bottom: 270px;
         width: 80px;
-        height: 0px;
+        height: 0;
         transition: height .25s, left 1s linear, bottom 1s cubic-bezier(.69,.05,.96,.53), transform 1s;
         z-index: 1;
         background-image: url($media-server-base + 'Flips/3D%20world/3DW-%20Static%20Image%20Flip/3DW.EarnedFlip.png');

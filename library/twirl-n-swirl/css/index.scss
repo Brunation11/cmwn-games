@@ -127,7 +127,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -190,7 +190,7 @@ body > div > div {
     &.SCREEN-3 .background.bkg-3,
     &.SCREEN-6 .background.bkg-4,
     &.SCREEN-7 .background.bkg-2,
-    &[class*="catch-game-lvl"] .background.bkg-5,
+    &[class*='catch-game-lvl'] .background.bkg-5,
     &.SCREEN-13 .background.bkg-2,
     &.SCREEN-14 .background.bkg-6 {
         opacity: 1;
@@ -207,7 +207,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
     font-family: inherit;
     font-size: inherit;
     color: transparent;
@@ -371,7 +371,7 @@ p {
 .DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
-    transform: rotate(0deg) translate3d(0px, 0px, 0px);
+    transform: rotate(0deg) translate3d(0px, 0, 0);
     pointer-events: auto;
     visibility: visible;
     opacity: 1;
@@ -529,13 +529,13 @@ p {
     }
 
     .next-screen {
-        background-position: 0px 6px;
+        background-position: 0 6px;
         width: 240px;
         height: 208px;
         z-index: 1;
 
         &:hover {
-                background-position: 0px -207px;
+                background-position: 0 -207px;
         }
     }
 }
@@ -610,9 +610,9 @@ p {
         left: 40%;
         // border: 1px solid black;
 
-        &:before {
+        &::before {
             position: absolute;
-            content: "";
+            content: '';
             background: url(../media/S_6/img_6.1.png);
             background-size: 90%;
             background-repeat: no-repeat;
@@ -642,7 +642,7 @@ p {
             left: 14%;
 
             div.wipes {
-                &:after {
+                &::after {
                     background-position: 10px 11px;
                 }
 
@@ -657,7 +657,7 @@ p {
             left: 25%;
 
             div.diapers {
-                &:after {
+                &::after {
                     background-position: 12px 305px;
                 }
 
@@ -672,7 +672,7 @@ p {
             left: 14%;
 
             div.paper {
-                &:after {
+                &::after {
                     height: 440%;
                     top: -170%;
                     background-position: 9px -79px;
@@ -691,7 +691,7 @@ p {
             left: 25%;
 
             div.sheets {
-                &:after {
+                &::after {
                     width: 340%;
                     left: -120%;
                     background-position: 13px 211px;
@@ -710,7 +710,7 @@ p {
             left: 14%;
 
             div.fats {
-                &:after {
+                &::after {
                     height: 370%;
                     top: -135%;
                     background-position: 21px 497px;
@@ -729,7 +729,7 @@ p {
             left: 25%;
 
             div.cosmetics {
-                &:after {
+                &::after {
                     height: 400%;
                     top: -150%;
                     background-position: 9px 108px;
@@ -748,7 +748,7 @@ p {
             left: 19%;
 
             div.bandages {
-                &:after {
+                &::after {
                     width: 340%;
                     left: -120%;
                     background-position: 11px 400px;
@@ -767,7 +767,7 @@ p {
             left: 71%;
 
             div.litter {
-                &:after {
+                &::after {
                     width: 360%;
                     left: -130%;
                     height: 370%;
@@ -780,7 +780,7 @@ p {
                     left: -190%;
                     height: 490%;
                     top: -195%;
-                    background-position: 153px 0px;
+                    background-position: 153px 0;
                 }
             }
         }
@@ -790,7 +790,7 @@ p {
             left: 82%;
 
             div.cotton {
-                &:after {
+                &::after {
                     width: 320%;
                     left: -110%;
                     background-position: 105px 600px;
@@ -809,7 +809,7 @@ p {
             left: 71%;
 
             div.gum {
-                &:after {
+                &::after {
                     background-position: 107px 310px;
                 }
 
@@ -824,7 +824,7 @@ p {
             left: 82%;
 
             div.floss {
-                &:after {
+                &::after {
                     height: 330%;
                     top: -115%;
                     background-position: 109px 505px;
@@ -843,7 +843,7 @@ p {
             left: 71%;
 
             div.hair {
-                &:after {
+                &::after {
                     height: 380%;
                     top: -140%;
                     background-position: 113px 207px;
@@ -862,7 +862,7 @@ p {
             left: 82%;
 
             div.meds {
-                &:after {
+                &::after {
                     height: 380%;
                     top: -140%;
                     background-position: 114px 406px;
@@ -881,7 +881,7 @@ p {
             left: 76%;
 
             div.chemicals {
-                &:after {
+                &::after {
                     height: 370%;
                     top: -135%;
                     background-position: 115px 109px;
@@ -900,9 +900,9 @@ p {
             width: 100%;
             height: 100%;
 
-            &:after {
+            &::after {
                 position: absolute;
-                content: "";
+                content: '';
                 width: 300%;
                 height: 300%;
                 left: -100%;
@@ -916,7 +916,7 @@ p {
             &.CORRECT {
                 pointer-events: none;
 
-                &:after {
+                &::after {
                     width: 400%;
                     height: 400%;
                     top: -150%;
@@ -995,7 +995,7 @@ p {
                 top: 0;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(0, 0, 0, 0.25) url(../media/images/frame.png) no-repeat;
+                background: rgba(0, 0, 0, .25) url(../media/images/frame.png) no-repeat;
                 background-size: 55%;
                 background-position: 210px 137px;
                 animation-name: fadeIn;
@@ -1013,13 +1013,13 @@ p {
                         position: absolute;
                     }
 
-                    &:after{
+                    &::after{
                         content: none;
                     }
                 }
 
-                &:after {
-                    content: "";
+                &::after {
+                    content: '';
                     position: absolute;
                     width: 45%;
                     height: 15%;
@@ -1171,7 +1171,7 @@ p {
     }
 }
 
-[id*="catch-game"] {
+[id*='catch-game'] {
     .misc {
         * {
             position: absolute;
@@ -1187,7 +1187,7 @@ p {
         }
 
         .fish-1 {
-            background-position: 0px 10px;
+            background-position: 0 10px;
             width: 16%;
             animation-duration: 30s;
             bottom: 20%;
@@ -1195,7 +1195,7 @@ p {
             animation-name: fishLeft;
 
             &.sad {
-                background-position: 0px 142px;
+                background-position: 0 142px;
             }
         }
 
@@ -1274,7 +1274,7 @@ p {
         font-weight: 600;
         font-size: 40px;
 
-        &:after {
+        &::after {
             position: absolute;
             top: -80%;
             left: 0;
@@ -1315,7 +1315,7 @@ p {
         font-size: 40px;
 
         span {
-            text-shadow: 0px 5px 10px #000;
+            text-shadow: 0 5px 10px #000;
         }
     }
 
@@ -1392,7 +1392,7 @@ p {
 
                 &.plant {
                     background-image: url(../media/images/plants.png);
-                    background-position: -81px 0px;
+                    background-position: -81px 0;
                     background-size: 750px 129px;
                     background-repeat: no-repeat;
                 }
@@ -1435,7 +1435,7 @@ p {
 
                 &.correct:after {
                     position: absolute;
-                    content: "+5";
+                    content: '+5';
                     top: 0;
                     left: 0;
                     width: 100%;
@@ -1448,7 +1448,7 @@ p {
 
                 &.incorrect:after {
                     position: absolute;
-                    content: "-10";
+                    content: '-10';
                     top: 0;
                     left: 0;
                     width: 100%;
@@ -1461,7 +1461,7 @@ p {
 
                 &.trash:not(.CAUGHT):after {
                     position: absolute;
-                    content: "-10";
+                    content: '-10';
                     top: 0;
                     left: 0;
                     width: 100%;
@@ -1510,7 +1510,7 @@ p {
             width: 5%;
             height: 5%;
 
-            &:before {
+            &::before {
                 position: absolute;
                 pointer-events: none;
                 left: -150%;
@@ -1568,7 +1568,7 @@ p {
                 top: 388px;
                 overflow: hidden;
 
-                &:after {
+                &::after {
                     position: absolute;
                     width: 120%;
                     height: 120%;

@@ -17,7 +17,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -59,7 +59,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -177,7 +177,7 @@ img.background {
     left: 0; right: 0;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 }
 
@@ -319,10 +319,10 @@ img.background {
         height: 240px;
         right: 20px;
         bottom: 0;
-        background-position: 0px 0px;
+        background-position: 0 0;
 
         &:hover {
-            background-position: 0px 249px;
+            background-position: 0 249px;
         }
     }
 
@@ -400,7 +400,7 @@ img.background {
             $item: nth($items, $i);
 
             .#{$item} {
-                animation-name: nth($animations,$i);
+                animation-name: nth($animations, $i);
                 animation-play-state: paused;
             }
 
@@ -463,10 +463,10 @@ img.background {
         $animations: bounceInDown fadeInRightMedium fadeInDown fadeInRightMedium zoomInUp fadeIn;
 
         @for $i from 1 through 5 {
-            $item: nth($items,$i);
+            $item: nth($items, $i);
 
             .#{$item} {
-                animation-name: nth($animations,$i);
+                animation-name: nth($animations, $i);
                 animation-play-state: paused;
             }
 
@@ -517,7 +517,7 @@ img.background {
 
         &:nth-of-type(3) {
             width: 960px;
-            left: 0px;
+            left: 0;
             bottom: -100px;
         }
     }
@@ -770,7 +770,7 @@ img.background {
     .reveal, .dropzone {
         position: absolute;
         right: 0;
-        border: none;
+        border: 0;
         width: 400px;
         height: 360px;
         margin-top: 20px;
@@ -866,7 +866,7 @@ img.background {
     $items: fuel heat air;
 
     @for $i from 1 through 3 {
-        $item: nth($items,$i);
+        $item: nth($items, $i);
         &.#{to-upper-case($item)} .#{$item} {
             animation-name: pulse;
         }
@@ -999,39 +999,39 @@ img.background {
     $animation-names: fadeInLeftBig fadeInRightBig;
 
     @for $i from 1 through 2 {
-        .female-male li#gender-#{nth($genders,$i)} {
-            background-position: -409px 402-(422*$i)+px;
+        .female-male li#gender-#{nth($genders, $i)} {
+            background-position: -409px 402-(422*$i) + px;
 
             &:hover {
-                background-position: -609px 402-(422*$i)+px;
+                background-position: -609px 402-(422*$i) + px;
             }
         }
 
         &.OPEN.GENDER .female-male li:nth-of-type(#{$i}) {
-            animation-name: nth($animation-names,$i);
+            animation-name: nth($animation-names, $i);
         }
     }
 
     @for $i from 1 through 3 {
         &.female .skin-color li:nth-of-type(#{$i}) {
-            background-position: #{391-(400*$i)+px} -20px;
+            background-position: #{391-(400*$i) + px} -20px;
 
             &:hover {
-                background-position: #{191-(400*$i)+px} -20px;
+                background-position: #{191-(400*$i) + px} -20px;
             }
         }
 
         &.male .skin-color li:nth-of-type(#{$i}) {
-            background-position: #{391-(400*$i)+px} -442px;
+            background-position: #{391-(400*$i) + px} -442px;
 
             &:hover {
-                background-position: #{191-(400*$i)+px} -442px;
+                background-position: #{191-(400*$i) + px} -442px;
             }
         }
 
         &.OPEN.SKIN .skin-color li:nth-of-type(#{$i}) {
             animation-name: lightSpeedIn;
-            animation-delay: .5*$i+s;
+            animation-delay: .5*$i+ s;
         }
     }
 
@@ -1104,15 +1104,15 @@ img.background {
 
             @for $i from 1 through 12 {
 
-                .#{nth($items,$i)} {
-                    width: nth($widths,$i)+px;
-                    height: nth($heights,$i)+px;
+                .#{nth($items, $i)} {
+                    width: nth($widths, $i) + px;
+                    height: nth($heights, $i) + px;
                     display: inline-block;
                     background-image: url(../media/S_12/sprite_12.3.png) !important;
                     background-repeat: no-repeat;
                     background-size: 500px;
                     vertical-align: middle;
-                    background-position: #{-4-(122*nth($background-lefts,$i))+px} #{-3-(109*nth($background-tops,$i))+px};
+                    background-position: #{-4-(122* nth($background-lefts, $i)) + px} #{-3-(109* nth($background-tops, $i)) + px};
                 }
             }
         }
@@ -1158,8 +1158,8 @@ img.background {
     &.female {
 
         @for $i from 1 through 3 {
-            &.#{nth($skin,$i)} .dropzone div.body {
-                background-position: #{-1*nth($skin-pos,$i)+px} 0;
+            &.#{nth($skin, $i)} .dropzone div.body {
+                background-position: #{-1 * nth($skin-pos, $i) + px} 0;
             }
         }
 
@@ -1173,10 +1173,10 @@ img.background {
             }
 
             @for $i from 1 through 14 {
-                div.#{nth($items-f,$i)} {
-                    background-position: #{-1*nth($bg-lefts-f,$i)+px} #{-1*nth($bg-tops-f,$i)+px};
+                div.#{nth($items-f, $i)} {
+                    background-position: #{-1 * nth($bg-lefts-f, $i) + px} #{-1 * nth($bg-tops-f, $i) + px};
                 }
-                &.dropped-#{nth($items-f,$i)} div.#{nth($items-f,$i)} {
+                &.dropped-#{nth($items-f, $i)} div.#{nth($items-f, $i)} {
                     opacity: 1;
                 }
             }
@@ -1195,8 +1195,8 @@ img.background {
     &.male {
 
         @for $i from 1 through 3 {
-            &.#{nth($skin,$i)} .dropzone div.body {
-                background-position: #{-1*nth($skin-pos,$i)+px} 0;
+            &.#{nth($skin, $i)} .dropzone div.body {
+                background-position: #{-1 * nth($skin-pos, $i) + px} 0;
             }
         }
 
@@ -1206,10 +1206,10 @@ img.background {
             }
 
             @for $i from 1 through 13 {
-                div.#{nth($items-m,$i)} {
-                    background-position: #{-1*nth($bg-lefts-m,$i)+px} #{-1*nth($bg-tops-m,$i)+px};
+                div.#{nth($items-m, $i)} {
+                    background-position: #{-1 * nth($bg-lefts-m, $i) + px} #{-1 * nth($bg-tops-m, $i) + px};
                 }
-                &.dropped-#{nth($items-m,$i)} div.#{nth($items-m,$i)} {
+                &.dropped-#{nth($items-m, $i)} div.#{nth($items-m, $i)} {
                     opacity: 1;
                 }
             }
@@ -1246,8 +1246,8 @@ img.background {
             height: 100%;
             padding: 60px 40px;
 
-            &:before {
-                content: "";
+            &::before {
+                content: '';
                 display: block;
                 margin: 10px auto;
                 height: 50px;
@@ -1261,8 +1261,8 @@ img.background {
 
             @for $i from 1 through 12 {
                 &:nth-of-type(#{$i}):before {
-                    width: nth($widths,$i)+px;
-                    background-position: #{-440*nth($background-lefts,$i)+px} #{-66*nth($background-tops,$i)+px}
+                    width: nth($widths, $i) + px;
+                    background-position: #{-440* nth($background-lefts, $i) + px} #{-66* nth($background-tops, $i) + px}
                 }
             }
         }

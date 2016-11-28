@@ -31,7 +31,7 @@
                 left: #{nth($lefts, $i)}px;
                 top: #{nth($tops, $i)}px;
 
-                &:before {
+                &::before {
                     content: nth($content, $i);
                 }
             }

@@ -14,7 +14,7 @@ html, body, body > div, body > div > div {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
@@ -31,7 +31,7 @@ body > div > div {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -153,7 +153,7 @@ p {
     margin-top: -270px;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 
     &:not(.COMPLETE) {
@@ -767,9 +767,9 @@ p {
             .ball {
                 /**
                  *    Normaly I would define the transition on the default rule but this way
-                 *    the animation will not play when the "LAUNCHED" flag is removed.
+                 *    the animation will not play when the 'LAUNCHED' flag is removed.
                  */
-                transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+                transition: transform .5s cubic-bezier(0, 0, .2, 1);
                 transform: translateY(-100px) scale(0.3);
             }
         }
@@ -804,7 +804,7 @@ p {
             display: inline-block;
             width: 250px;
             height: 250px;
-            margin-left: 0px;
+            margin-left: 0;
             margin-right: 45px;
             transition: margin 0s;
         }
@@ -1438,9 +1438,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/hands-bears/left_b.png);
@@ -1464,9 +1464,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/hands-bears/right_b.png);
@@ -1522,9 +1522,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/shortening-bears/shortening_b.png);
@@ -1548,9 +1548,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/shortening-bears/bag_b.png);
@@ -1606,9 +1606,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/cold-bears/cold_b.png);
@@ -1632,9 +1632,9 @@ p {
 
             &:hover,
             &.SELECTED {
-                &:after {
+                &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     width: 100%;
                     height: 100%;
                     background-image: url(../media/images/cold-bears/warm_b.png);

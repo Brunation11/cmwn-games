@@ -70,7 +70,7 @@
     }
 
     .words {
-        font-family: "Source Sans Pro";
+        font-family: 'Source Sans Pro';
         position: absolute;
         left: 0;
         bottom: 0;
@@ -85,7 +85,7 @@
         }
     }
 
-    &:after {
+    &::after {
         content: '';
         position: absolute;
         left: 405px;

@@ -63,8 +63,8 @@ body.iOS:not(.STARTED) {
 		top: 0;
 		transform: translate(100px,-300px);
 
-		&:before {
-			content: "";
+		&::before {
+			content: '';
 			display: block;
 			width: 200px;
 			height: 190px;
@@ -81,7 +81,7 @@ body.iOS:not(.STARTED) {
 		[pl-id=ball] {
 			animation: splash 6s forwards linear;
 
-			&:before {
+			&::before {
 				animation: splash-bg 6s steps(1) forwards;
 			}
 		}
@@ -93,7 +93,7 @@ body.iOS:not(.STARTED) {
 	button.next-screen,
 	.ball,
 	[pl-id=ball] {
-		&:before {
+		&::before {
 			background-image: url(../images/ios_start_ball_anim.gif);
 			background-size: contain;
 			background-position: center center;
@@ -123,8 +123,8 @@ body.iOS:not(.STARTED) {
 		opacity: 1;
 		transform: translate(100px,-300px);
 
-		&:before {
-			content: "";
+		&::before {
+			content: '';
 			display: block;
 			width: 200px;
 			height: 190px;
@@ -141,7 +141,7 @@ body.iOS:not(.STARTED) {
 		[pl-id=ball] {
 			animation: splash 6s forwards linear;
 
-			&:before {
+			&::before {
 				animation: splash-bg 6s steps(1) forwards;
 			}
 		}
@@ -153,7 +153,7 @@ body.iOS:not(.STARTED) {
 	button.next-screen,
 	.ball,
 	[pl-id=ball] {
-		&:before {
+		&::before {
 			background-image: url(../images/ios_start_ball_anim.gif);
 			background-size: contain;
 			background-position: center center;

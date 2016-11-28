@@ -25,7 +25,7 @@
     }
 
     .screen-content {
-        &:after {
+        &::after {
             content: '';
             position: absolute;
             left: 210px;

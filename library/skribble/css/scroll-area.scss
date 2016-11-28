@@ -2,7 +2,7 @@
     position: relative;
     padding-right: 30px;
     cursor: auto;
-    border: none;
+    border: 0;
     height: 100%;
 
     .area {
@@ -17,7 +17,7 @@
         height: 100%;
         width: 30px;
 
-        &:before {
+        &::before {
             content: '';
             display: block;
             height: 100%;

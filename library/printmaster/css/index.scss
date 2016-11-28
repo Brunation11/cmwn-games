@@ -28,7 +28,7 @@ html, body {
 }
 
 html {
-    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
     color: $text-color;
 }
 
@@ -82,7 +82,7 @@ img {
 button {
     margin: 0;
     padding: 0;
-    border: none;
+    border: 0;
 
     font-family: inherit;
     font-size: inherit;
@@ -188,7 +188,7 @@ p {
     left: 0; right: 0;
     opacity: 0;
     display: none;
-    transition: opacity 1s, transform 0.5s;
+    transition: opacity 1s, transform .5s;
     transform: translateX(100%);
 
     > div {
@@ -481,11 +481,11 @@ img.inline {
                         width: 90px;
                     }
                     $top: 0;
-                    $position: -(75*$item)+$offset+px $top+px;
+                    $position: -(75*$item) +$offset+ px $top+ px;
                     @if $item > 5 {
                         $top: 120;
                         $offset: 433;
-                        $position: -(75*$item)+$offset+px $top+px;
+                        $position: -(75*$item) +$offset+ px $top+ px;
                     }
                     background-position: $position;
                 }
@@ -509,8 +509,8 @@ img.inline {
 
                 @for $item from 1 through 11 {
                     &:nth-child(#{$item}) {
-                        -webkit-animation-delay: $item*.2+1.5+s;
-                        animation-delay: $item*.2+1.5+s;
+                        -webkit-animation-delay: $item*.2+1.5+ s;
+                        animation-delay: $item*.2+1.5+ s;
                     }
                 }
             }
@@ -916,7 +916,7 @@ img.inline {
     $items: LOTION TAPE POWDER BRUSH PAPER GLASS;
 
     @for $i from 1 through 6 {
-        .#{nth($items,$i)} & {
+        .#{nth($items, $i)} & {
             .illustration div:nth-of-type(#{$i}) {
                 animation-name: fadeInRightBig;
             }
@@ -1023,7 +1023,7 @@ img.inline {
     }
 
     p {
-        margin-top: 0px;
+        margin-top: 0;
     }
 }
 
@@ -1132,7 +1132,7 @@ img.inline {
 
                 @for $item from 1 through 4 {
                     &:nth-child(#{$item}) {
-                        background-position: 62-(76*$item)+px center;
+                        background-position: 62-(76*$item) + px center;
                     }
                 }
             }
@@ -1148,7 +1148,7 @@ img.inline {
 
                     @for $item from 1 through 4 {
                         &:nth-child(#{$item}) {
-                            animation-delay: .2*$item+s;
+                            animation-delay: .2*$item+ s;
                         }
                     }
                 }

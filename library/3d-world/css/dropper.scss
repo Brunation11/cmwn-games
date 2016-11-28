@@ -23,7 +23,7 @@
 
     .catchable {
         position: absolute;
-        top: 0px;
+        top: 0;
         transition: top .5s;
 
         &.go {
