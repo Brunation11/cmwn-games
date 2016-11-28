@@ -1,11 +1,11 @@
 .reveal {
     opacity: 0;
-    height: 400px;
-    width: 620px;
-    background-image: url(../media/_images/_frames/FR_2.png);
-    background-size: contain;
+    background-image: url('../media/_images/_frames/FR_2.png');
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: contain;
+    width: 620px;
+    height: 400px;
     text-align: center;
 
     > div {
@@ -23,9 +23,9 @@
 
     li {
         display: none;
-        list-style: none;
+        transition: opacity .5s;
         opacity: 0;
-        transition: opacity 0.5s;
+        list-style: none;
 
         &.OPEN {
             display: block;
@@ -42,7 +42,7 @@
     }
 
     &.OPEN {
-        z-index: 1;
         opacity: 1;
+        z-index: 1;
     }
 }

@@ -14,9 +14,9 @@
 }
 
 .reveal li {
-    list-style: none;
+    transition: opacity .5s;
     opacity: 0;
-    transition: opacity 0.5s;
+    list-style: none;
 }
 
 .reveal li.OPEN {

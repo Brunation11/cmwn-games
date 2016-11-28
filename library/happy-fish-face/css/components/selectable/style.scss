@@ -11,10 +11,11 @@
 
     li img {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%;
+        top: 0;
+        left: 0;
+        transition: opacity .5s, transform .5s cubic-bezier(0, .18, 0, 1.01);
         opacity: 0;
-        transition: opacity 0.5s, transform 0.5s cubic-bezier(0, 0.18, 0, 1.01);
+        width: 100%;
     }
 
     li img.checked:hover,
@@ -27,14 +28,14 @@
     }
 
     li.HIGHLIGHTED img.checked {
+        transform: translateY(0);
         opacity: 0;
         z-index: -1;
-        transform: translateY(0);
     }
 
     li.HIGHLIGHTED img.unchecked {
-        opacity: 1;
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
