@@ -1,53 +1,53 @@
 import classNames from 'classnames';
 
 class Catchable extends skoash.Component {
-  constructor() {
-    super();
-    this.state = {
-      canCatch: true
-    };
-    this.reset = this.reset.bind(this);
-  }
-
-  bootstrap() {
-    super.bootstrap();
-    this.DOMNode = ReactDOM.findDOMNode(this);
-  }
-
-  markCaught() {
-    if (!this.state.ready) return;
-    this.setState({canCatch: false});
-    this.props.onCaught.call(this);
-  }
-
-  canCatch() {
-    return !this.props.disabled && this.state.canCatch;
-  }
-
-  getClassNames() {
-    return classNames('catchable', {
-      CAUGHT: !this.state.canCatch
-    }, super.getClassNames());
-  }
-
-  reset() {
-    if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
-      this.setState({canCatch: true});
+    constructor() {
+        super();
+        this.state = {
+            canCatch: true
+        };
+        this.reset = this.reset.bind(this);
     }
-  }
 
-  render() {
-    return (
-      <li {...this.props} className={this.getClassNames()} />
-    );
-  }
+    bootstrap() {
+        super.bootstrap();
+        this.DOMNode = ReactDOM.findDOMNode(this);
+    }
+
+    markCaught() {
+        if (!this.state.ready) return;
+        this.setState({canCatch: false});
+        this.props.onCaught.call(this);
+    }
+
+    canCatch() {
+        return !this.props.disabled && this.state.canCatch;
+    }
+
+    getClassNames() {
+        return classNames('catchable', {
+            CAUGHT: !this.state.canCatch
+        }, super.getClassNames());
+    }
+
+    reset() {
+        if (this.state.ready && !this.props.disabled && this.props.reCatchable) {
+            this.setState({canCatch: true});
+        }
+    }
+
+    render() {
+        return (
+            <li {...this.props} className={this.getClassNames()} />
+        );
+    }
 }
 
 Catchable.defaultProps = _.defaults({
-  disabled: false,
-  isCorrect: true,
-  reCatchable: true,
-  onCaught: _.noop,
+    disabled: false,
+    isCorrect: true,
+    reCatchable: true,
+    onCaught: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Catchable;

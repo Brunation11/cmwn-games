@@ -5,10 +5,10 @@ import update from './js/update';
 import helpers from './js/helpers';
 
 new Game({
-  width: 800,
-  height: 600,
-  preload,
-  create,
-  update,
-  helpers
+    width: 800,
+    height: 600,
+    preload,
+    create,
+    update,
+    helpers
 });
