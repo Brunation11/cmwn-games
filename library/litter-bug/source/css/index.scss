@@ -304,23 +304,23 @@ p {
 .canvas-src { display: none; }
 
 .screen {
+    display: none;
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    opacity: 0;
-    display: none;
     transition: opacity .5s, z-index 0s 1s;
+    opacity: 0;
     z-index: -1;
-    overflow: hidden;
     width: 960px;
     height: 540px;
+    overflow: hidden;
 
     &.OPEN {
+        transition: opacity .5s, z-index 0s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s, z-index 0s;
     }
 
     &.READY {
@@ -328,7 +328,7 @@ p {
     }
 
     &.no-frame {
-        color: #fff;
+        color: $white;
 
         .frame {
             text-align: center;
@@ -337,25 +337,25 @@ p {
 
     .next-screen,
     .prev-screen {
-        position: absolute;
         display: block;
+        position: absolute;
         bottom: 1%;
         transform: translate3d(0, 0, 0);
         z-index: 2;
     }
 
     .prev-screen {
-        margin-left: 5px;
         left: 0;
+        margin-left: 5px;
     }
 
     .next-screen {
-        margin-right: 5px;
         right: 0;
-        opacity: 0;
-        pointer-events: none;
         transform: rotate(-180deg) translate3d(0, 0, 0);
         transition: opacity 1s, transform 1s;
+        opacity: 0;
+        margin-right: 5px;
+        pointer-events: none;
     }
 
     &.GATED .next-screen {
@@ -364,38 +364,34 @@ p {
     }
 }
 
-    .DEMO .screen .next-screen,
-    .DEMO #clean-up .close-reveal,
-    .screen.COMPLETE .next-screen,
-    .screen.REPLAY .next-screen {
-        opacity: 1;
-        transform: rotate(0deg) translate3d(0, 0, 0);
-        cursor: pointer;
-        pointer-events: auto;
-    }
+.DEMO .screen .next-screen,
+.DEMO #clean-up .close-reveal,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
 
-    .DEMO .screen.room button.next-screen,
-    .DEMO .screen.school button.next-screen,
-    .DEMO .screen.ground button.next-screen,
-    .DEMO .screen.take-pledge button.next-screen,
-    .DEMO .screen.commit button.next-screen {
-        display: block;
-    }
+.DEMO .screen.room button.next-screen,
+.DEMO .screen.school button.next-screen,
+.DEMO .screen.ground button.next-screen,
+.DEMO .screen.take-pledge button.next-screen,
+.DEMO .screen.commit button.next-screen {
+    display: block;
+}
 
-    .DEMO .screen.clean-up .next-screen {
-        z-index: 0;
-    }
-
-    .screen .next-screen:hover {
-
-    }
+.DEMO .screen.clean-up .next-screen {
+    z-index: 0;
+}
 
 .DEMO .screen .next-screen,
 .DEMO #clean-up .close-reveal,
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
-    opacity: 1;
     transform: rotate(0deg) translate3d(0, 0, 0);
+    opacity: 1;
     cursor: pointer;
     pointer-events: auto;
 }
@@ -413,9 +409,9 @@ p {
     #school,
     #ground {
         button.next-screen {
+            animation-name: bounceInLeft;
             opacity: 1;
             cursor: pointer;
-            animation-name: bounceInLeft;
         }
     }
 
@@ -435,11 +431,11 @@ p {
 
             div {
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
+                margin: 0;
                 width: 100%;
                 height: 100%;
-                margin: 0;
                 text-align: center;
             }
         }
@@ -447,15 +443,15 @@ p {
 
     .frame {
         position: relative;
+        top: 0;
         width: 960px;
         height: 200px;
-        top: 0;
 
         img.background {
             position: absolute;
-            width: 105%;
             left: -2.5%;
             opacity: 1;
+            width: 105%;
         }
     }
 }
@@ -463,22 +459,22 @@ p {
 #lets-clean-up {
     .copy {
         position: absolute;
-        left: 55%;
-        width: 75%;
-        transform: translateX(-50%);
-        text-align: center;
-        color: #fff;
-        font-size: 40px;
         top: 10%;
+        left: 55%;
+        transform: translateX(-50%);
+        width: 75%;
+        text-align: center;
+        color: $white;
+        font-size: 40px;
         font-weight: 700;
     }
 
     .banner {
         position: absolute;
-        left: 55%;
         bottom: 28%;
-        width: 70%;
+        left: 55%;
         transform: translateX(-50%);
+        width: 70%;
     }
 
     &.OPEN {
@@ -493,18 +489,18 @@ p {
 #clean-up-game-lvl-3 {
     @keyframes reload {
         0% {
-            opacity: 0;
             visibility: hidden;
+            opacity: 0;
         }
 
         67% {
-            opacity: 0;
             visibility: hidden;
+            opacity: 0;
         }
 
         100% {
-            opacity: 1;
             visibility: visible;
+            opacity: 1;
         }
     }
 
@@ -547,34 +543,17 @@ p {
     }
 
     .cannon {
+        display: inline-block;
         position: absolute;
-        text-align: center;
-        // background-image: url('../media/images/cannon-bears/background.png');
-        // background-position: center center;
-        // background-repeat: no-repeat;
-        // background-size: contain;
-        height: 100%;
-        width: 100%;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        display: inline-block;
-        overflow: hidden;
-        border: 1px solid green;
         z-index: 1;
-
-        // &::after {
-        //     position: absolute;
-        //     content: '';
-        //     width: 12%;
-        //     height: 23%;
-        //     bottom: 0;
-        //     background: url(../media/_assets/_sprites/sprites.hands.png);
-        //     background-position: left center;
-        //     background-size: 500px 125px;
-        //     background-repeat: no-repeat;
-        //     left: 25%;
-        // }
+        border: 1px solid $bright-green;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
 
         &.FIRE {
             pointer-events: none;
@@ -589,20 +568,15 @@ p {
 
                 &::before {
                     position: absolute;
-                    content: '';
+                    top: -50%;
+                    left: -50%;
+                    animation: points 2s;
+                    opacity: 0;
                     width: 200%;
                     height: 200%;
-                    left: -50%;
-                    top: -50%;
-                    opacity: 0;
-                    animation: points 2s;
+                    content: '';
                 }
-
             }
-
-            // &::after {
-            //     animation: throw .1s steps(4);
-            // }
         }
 
         &.RELOAD {
@@ -613,13 +587,15 @@ p {
 
         .launch-button {
             position: absolute;
-            width: 10%;
-            height: 18%;
             bottom: .5%;
             left: 9%;
-            background: url(../media/_assets/_sprites/sprites.game1.7.png);
+
+            background: url('../media/_assets/_sprites/sprites.game1.7.png');
             background-position: 0 0;
             background-size: 100%;
+
+            width: 10%;
+            height: 18%;
 
             &:hover,
             &:focus,
@@ -630,23 +606,25 @@ p {
 
         .ammo-container {
             position: absolute;
-            width: 30%;
-            height: 15%;
             bottom: 2%;
             left: 24%;
-            background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+
+            background: url('../media/_assets/_sprites/sprites.game1.4-01.png');
             background-position: -334px 122px;
             background-size: 1600px 163px;
+
+            width: 30%;
+            height: 15%;
         }
 
         .ammo {
-            width: 5%;
-            height: 8%;
-            bottom: 5%;
             display: inline;
             position: absolute;
-            background: url(../media/_assets/_sprites/sprites.game1.1.png);
+            bottom: 5%;
+            background: url('../media/_assets/_sprites/sprites.game1.1.png');
             background-size: 1000px 292px;
+            width: 5%;
+            height: 8%;
             pointer-events: none;
 
             &:nth-of-type(1) {
@@ -666,14 +644,14 @@ p {
             }
 
             &:nth-of-type(5) {
-             left: 40%;
+                left: 40%;
             }
 
             &:nth-of-type(6) {
+                bottom: 3%;
                 left: 46%;
                 width: 7%;
                 height: 13%;
-                bottom: 3%;
 
                 &.plastic-bottle {
                     background-position: 224px 179px;
@@ -744,53 +722,55 @@ p {
 
     .carousel {
         position: absolute;
-        white-space: nowrap;
-        width: 80%;
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
+        width: 80%;
         overflow: hidden;
+        white-space: nowrap;
 
         > * {
-            transform: translate3d(0,0,0);
-            box-sizing: border-box;
-            position: relative;
             display: inline-block;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+            transition: margin 0s;
+
+            background: url('../media/_assets/_sprites/sprites.game1.2-01.png');
+            background-position: 0 0;
+            background-size: 150px 390px;
+
             width: 20%;
             height: 36%;
-            transition: margin 0s;
-            background: url(../media/_assets/_sprites/sprites.game1.2-01.png);
-            background-size: 150px 390px;
-            background-position: 0 0;
+            box-sizing: border-box;
 
             // &.SELECTED {
             //     background-position: 0 190px;
             // }
 
             &::after {
-                content: '';
                 position: absolute;
+                top: 25%;
+                left: 15%;
+                background: url('../media/_assets/_sprites/sprites.game1.numbers.png');
+                background-size: 425px 102px;
                 width: 70%;
                 height: 50%;
-                left: 15%;
-                top: 25%;
-                background: url(../media/_assets/_sprites/sprites.game1.numbers.png);
-                background-size: 425px 102px;
+                content: '';
             }
 
-            &.five:after {
+            &.five::after {
                 background-position: -2px -8px;
             }
 
-            &.ten:after {
+            &.ten::after {
                 background-position: 319px -8px;
             }
 
-            &.twenty:after {
+            &.twenty::after {
                 background-position: 213px -8px;
             }
 
-            &.thirty:after {
+            &.thirty::after {
                 background-position: 106px -8px;
             }
         }
@@ -809,74 +789,75 @@ p {
 
     .level {
         position: absolute;
-        width: 19%;
-        height: 35%;
-        top: 0;
         top: 49%;
         left: 7%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
         text-align: center;
         font-size: 1.25rem;
-        transform: translate3d(1px, 1px, 1px);
     }
 
     .score {
         position: absolute;
-        width: 19%;
-        height: 35%;
-        top: 0;
         top: 49%;
         left: 41%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
         text-align: center;
         font-size: 1.25rem;
-        transform: translate3d(1px, 1px, 1px);
     }
 
     .timer {
         position: absolute;
-        width: 19%;
-        height: 35%;
-        top: 0;
         top: 47%;
         left: 74%;
+        transform: translate3d(1px, 1px, 1px);
+        width: 19%;
+        height: 35%;
         text-align: center;
         font-size: 1.25rem;
-        transform: translate3d(1px, 1px, 1px);
     }
 
     .grass {
         position: absolute;
+        bottom: 0;
+
+        background: url('../media/_assets/_images/game1_grass.png');
+        background-repeat: no-repeat;
+        background-position: 0 50px;
+        background-size: contain;
+
         width: 100%;
         height: 70%;
-        bottom: 0;
-        background: url(../media/_assets/_images/game1_grass.png);
-        background-size: contain;
         content: '';
-        background-position: 0 50px;
-        background-repeat: no-repeat;
     }
 
     .stats {
         position: absolute;
-        width: 30%;
-        bottom: 0;
         right: 10%;
-        height: 27%;
-        background: url(../media/_assets/_sprites/sprites.game1.4-01.png);
+        bottom: 0;
+        transform: translate3d(0, 0, 0);
+
+        background: url('../media/_assets/_sprites/sprites.game1.4-01.png');
         background-position: -16px 133px;
         background-size: 1600px 163px;
-        transform: translate3d(0, 0, 0);
+
+        width: 30%;
+        height: 27%;
     }
 
     .reveal {
         position: absolute;
-        opacity: 0;
-        z-index: -1;
-        pointer-events: none;
-        width: 100%;
-        height: 100%;
         top: 0;
         left: 0;
         transition: opacity .5s;
+        opacity: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
 
         li {
             opacity: 0;
@@ -892,93 +873,97 @@ p {
 
                 .frame {
                     position: absolute;
+                    top: 10%;
+                    left: 10%;
+                    border: 5px solid $black;
+                    border-radius: 30px;
                     width: 80%;
                     height: 80%;
-                    left: 10%;
-                    top: 10%;
-                    border: 5px solid #000;
-                    border-radius: 30px;
 
                     &::after {
                         position: absolute;
-                        width: 33%;
-                        height: 81%;
                         top: 30%;
                         left: -14%;
-                        background: url(../media/_assets/_sprites/sprites.mr.eco-01.png);
+
+                        background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
                         background-position: 5px 0;
-                        content: '';
                         background-size: 500px 367px;
+
+                        width: 33%;
+                        height: 81%;
+                        content: '';
                     }
                 }
             }
 
             &.open-instructions {
-                background: rgba(183, 219, 64, .6);
+                background: $transparent-lime;
 
                 .frame.instructions-lvl-1,
                 .frame.instructions-lvl-2,
                 .frame.instructions-lvl-3 {
-                    background: #F5FD37;
+                    background: $bright-yellow;
 
                     .banner {
-                        width: 76%;
+                        position: absolute;
+                        top: 5%;
                         left: 49%;
                         transform: translateX(-50%);
-                        position: absolute;
-                        height: 20%;
-                        top: 5%;
-                        background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
-                        background-size: 3200px 83px;
-                        background-position: -37px 2px;
+
+                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
                         background-repeat: no-repeat;
+                        background-position: -37px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
                     }
 
                     .hundred {
                         position: absolute;
                         top: 68%;
                         left: 28%;
+                        background: url('../media/_assets/_sprites/sprites.game1.8.png');
+                        background-size: 300px 68px;
                         width: 12%;
                         height: 14%;
-                        background: url(../media/_assets/_sprites/sprites.game1.8.png);
-                        background-size: 300px 68px;
                     }
 
                     span:nth-of-type(1) {
                         position: absolute;
                         top: 30%;
-                        font-size: 43px;
-                        font-weight: 600;
                         left: 19%;
                         width: 77%;
                         text-align: center;
+                        font-size: 43px;
+                        font-weight: 600;
                     }
 
                     span:nth-of-type(2) {
                         position: absolute;
                         top: 69%;
-                        font-size: 43px;
-                        font-weight: 600;
                         left: 19%;
                         width: 10%;
+                        font-size: 43px;
+                        font-weight: 600;
                     }
 
                     span:nth-of-type(3) {
                         position: absolute;
                         top: 69%;
-                        font-size: 43px;
-                        font-weight: 600;
                         left: 41%;
                         width: 61%;
+                        font-size: 43px;
+                        font-weight: 600;
                     }
 
                     span:nth-of-type(4) {
                         position: absolute;
                         top: 81%;
-                        font-size: 43px;
-                        font-weight: 600;
                         left: 38%;
                         width: 61%;
+                        font-size: 43px;
+                        font-weight: 600;
                     }
                 }
 
@@ -996,162 +981,178 @@ p {
             }
 
             &.open-complete {
-                background: rgba(183, 219, 64, .6);
+                background: $transparent-lime;
 
                 .frame.complete-lvl-1 {
-                    background: #B7DB40;
+                    background: $lime;
 
                     .banner {
-                        width: 76%;
+                        position: absolute;
+                        top: 5%;
                         left: 50%;
                         transform: translateX(-50%);
-                        position: absolute;
-                        height: 20%;
-                        top: 5%;
-                        background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
-                        background-size: 3200px 83px;
-                        background-position: -667px 2px;
+
+                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
                         background-repeat: no-repeat;
+                        background-position: -667px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
                     }
 
                     .banner-2 {
-                        width: 76%;
+                        position: absolute;
+                        top: 25%;
                         left: 55%;
                         transform: translateX(-50%);
-                        position: absolute;
-                        height: 36%;
-                        top: 25%;
-                        background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
-                        background-size: 3000px 159px;
-                        background-position: -167px 2px;
+
+                        background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
                         background-repeat: no-repeat;
+                        background-position: -167px 2px;
+                        background-size: 3000px 159px;
+
+                        width: 76%;
+                        height: 36%;
                     }
 
                     span {
                         position: absolute;
                         top: 60%;
+                        left: 20%;
                         font-size: 39px;
                         font-weight: 600;
-                        left: 20%;
                     }
                 }
             }
 
             .frame.complete-lvl-2 {
-                background: #B7DB40;
+                background: $lime;
 
                 .banner {
-                    width: 78%;
+                    position: absolute;
+                    top: 5%;
                     left: 50%;
                     transform: translateX(-50%);
-                    position: absolute;
-                    height: 20%;
-                    top: 5%;
-                    background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
-                    background-size: 3200px 83px;
-                    background-position: -1300px 2px;
+
+                    background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
                     background-repeat: no-repeat;
+                    background-position: -1300px 2px;
+                    background-size: 3200px 83px;
+
+                    width: 78%;
+                    height: 20%;
                 }
 
                 .banner-2 {
-                    width: 76%;
+                    position: absolute;
+                    top: 25%;
                     left: 55%;
                     transform: translateX(-50%);
-                    position: absolute;
-                    height: 36%;
-                    top: 25%;
-                    background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
-                    background-size: 2500px 133px;
-                    background-position: -647px 2px;
+
+                    background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
                     background-repeat: no-repeat;
+                    background-position: -647px 2px;
+                    background-size: 2500px 133px;
+
+                    width: 76%;
+                    height: 36%;
                 }
 
                 span {
                     position: absolute;
                     top: 60%;
+                    left: 20%;
                     font-size: 39px;
                     font-weight: 600;
-                    left: 20%;
                 }
             }
 
             .frame.complete-lvl-3 {
-                background: #B7DB40;
+                background: $lime;
 
                 .banner {
-                    width: 85%;
+                    position: absolute;
+                    top: 5%;
                     left: 50%;
                     transform: translateX(-50%);
-                    position: absolute;
-                    height: 20%;
-                    top: 5%;
-                    background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
-                    background-size: 3200px 83px;
-                    background-position: -1911px 2px;
+
+                    background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
                     background-repeat: no-repeat;
+                    background-position: -1911px 2px;
+                    background-size: 3200px 83px;
+
+                    width: 85%;
+                    height: 20%;
                 }
 
                 .banner-2 {
-                    width: 76%;
+                    position: absolute;
+                    top: 60%;
                     left: 55%;
                     transform: translateX(-50%);
-                    position: absolute;
-                    height: 36%;
-                    top: 60%;
-                    background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
-                    background-size: 3000px 159px;
-                    background-position: -1617px 2px;
+
+                    background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
                     background-repeat: no-repeat;
+                    background-position: -1617px 2px;
+                    background-size: 3000px 159px;
+
+                    width: 76%;
+                    height: 36%;
                 }
 
                 span {
                     position: absolute;
                     top: 27%;
+                    left: 20%;
                     font-size: 60px;
                     font-weight: 600;
-                    left: 20%;
                 }
             }
 
             &.open-try-again {
-                background: rgba(255, 0, 0, .6);
+                background: $transparent-red;
 
                 .frame {
-                    background: #6D8326;
+                    background: $olive;
 
                     .banner {
-                        width: 76%;
+                        position: absolute;
+                        top: 5%;
                         left: 50%;
                         transform: translateX(-50%);
-                        position: absolute;
-                        height: 20%;
-                        top: 5%;
-                        background: url(../media/_assets/_sprites/sprites.game1.3-01.png);
-                        background-size: 3200px 83px;
-                        background-position: -2587px 2px;
+
+                        background: url('../media/_assets/_sprites/sprites.game1.3-01.png');
                         background-repeat: no-repeat;
+                        background-position: -2587px 2px;
+                        background-size: 3200px 83px;
+
+                        width: 76%;
+                        height: 20%;
                     }
 
                     .banner-2 {
-                        width: 76%;
+                        position: absolute;
+                        top: 25%;
                         left: 55%;
                         transform: translateX(-50%);
-                        position: absolute;
-                        height: 36%;
-                        top: 25%;
-                        background: url(../media/_assets/_sprites/sprites.game1.6-01.png);
-                        background-size: 3000px 159px;
-                        background-position: -2426px 2px;
+
+                        background: url('../media/_assets/_sprites/sprites.game1.6-01.png');
                         background-repeat: no-repeat;
+                        background-position: -2426px 2px;
+                        background-size: 3000px 159px;
+
+                        width: 76%;
+                        height: 36%;
                     }
 
                     span {
                         position: absolute;
                         top: 60%;
+                        left: 20%;
+                        color: $white;
                         font-size: 39px;
                         font-weight: 600;
-                        left: 20%;
-                        color: #fff;
                     }
                 }
             }
@@ -1161,16 +1162,16 @@ p {
             &.open-instructions,
             &.open-try-again {
                 .close-reveal {
-                    opacity: 1;
-                    transform: rotate(0deg) translate3d(0, 0, 0);
-                    pointer-events: auto;
                     position: absolute;
                     right: 12%;
-                    width: 15%;
-                    height: 14%;
                     bottom: 10%;
+                    transform: rotate(0deg) translate3d(0, 0, 0);
+                    opacity: 1;
                     background-position: 209px -103px;
                     background-size: 2500px 556px;
+                    width: 15%;
+                    height: 14%;
+                    pointer-events: auto;
 
                     .VOICE-OVER:not(.DEMO) & {
                         opacity: .5;
@@ -1187,8 +1188,8 @@ p {
         }
 
         ul {
-            list-style: none;
             padding: 0;
+            list-style: none;
         }
     }
 
@@ -1197,16 +1198,16 @@ p {
         .SCREEN-clean-up-game-lvl-2:not(.DEMO) &,
         .SCREEN-clean-up-game-lvl-3:not(.DEMO) & {
             .next-screen {
-                opacity: 1;
-                transform: rotate(0deg) translate3d(0, 0, 0);
-                pointer-events: auto;
                 position: absolute;
                 right: 12%;
-                width: 15%;
-                height: 14%;
                 bottom: 10%;
+                transform: rotate(0deg) translate3d(0, 0, 0);
+                opacity: 1;
                 background-position: 209px -103px;
                 background-size: 2500px 556px;
+                width: 15%;
+                height: 14%;
+                pointer-events: auto;
 
                 &:hover,
                 &:focus,
@@ -1230,16 +1231,16 @@ p {
 
     .COMPLETE {
         .next-screen {
-            z-index: 1;
-            opacity: 1;
             transform: rotate(0deg) translate3d(0, 0, 0);
+            opacity: 1;
+            z-index: 1;
         }
     }
 
     .frame {
         position: absolute;
-        left: 0;
         top: 160px;
+        left: 0;
 
         .content-group {
 
@@ -1248,15 +1249,15 @@ p {
             }
 
             p {
-                text-align: center;
-                width: 100%;
                 bottom: 20px;
+                width: 100%;
+                text-align: center;
             }
 
             button {
                 position: absolute;
-                left: 50%;
                 top: 125%;
+                left: 50%;
                 margin-left: -115px;
             }
         }
@@ -1268,12 +1269,12 @@ p {
 
     .reveal {
         position: absolute;
+        transition: opacity .5s;
         opacity: 0;
         z-index: -1;
-        pointer-events: none;
         width: 960px;
         height: 540px;
-        transition: opacity .5s;
+        pointer-events: none;
 
         &.OPEN {
             opacity: 1;
@@ -1283,8 +1284,8 @@ p {
 
         &.COMPLETE {
             .close-reveal {
-                opacity: 1;
                 transform: rotate(0deg) translate3d(0, 0, 0);
+                opacity: 1;
                 pointer-events: auto;
             }
         }
@@ -1302,16 +1303,16 @@ p {
 
     .close-reveal {
         position: absolute;
-        width: 60px;
-        height: 60px;
-        background-position: -125px 420px;
-        margin-right: 5px;
         right: 0;
         bottom: 1%;
-        opacity: 0;
         transform: rotate(-180deg) translate3d(0, 0, 0);
-        pointer-events: none;
         transition: opacity 1s, transform 1s;
+        opacity: 0;
+        margin-right: 5px;
+        background-position: -125px 420px;
+        width: 60px;
+        height: 60px;
+        pointer-events: none;
 
         &:hover {
             background-position: -125px 664px;
@@ -1319,10 +1320,10 @@ p {
     }
 
     .selectable {
+        margin: 0;
         width: 100%;
         height: 100%;
         list-style: none;
-        margin: 0;
     }
 
     .next-screen {
@@ -1331,8 +1332,8 @@ p {
 
     &.COMPLETE {
         .next-screen {
-            z-index: 1;
             opacity: 1;
+            z-index: 1;
         }
     }
 }
@@ -1348,26 +1349,26 @@ p {
     .banner {
         top: 0%;
         right: 2%;
+        background-position: -179px 360px;
         width: 67%;
         height: 30%;
-        background-position: -179px 360px;
     }
 
     .avatar {
         bottom: 0;
         left: 0%;
+        background-position: -3290px -5px;
         width: 40%;
         height: 100%;
-        background-position: -3290px -5px;
     }
 
     button.next-screen {
         position: absolute;
-        left: 46%;
         bottom: 7%;
+        left: 46%;
         opacity: 0;
-        cursor: auto;
         background-position: -1200px -17px;
+        cursor: auto;
         width: 34%;
         height: 64%;
 
@@ -1403,9 +1404,9 @@ p {
 
     &.COMPLETE {
         button.next-screen {
+            animation-name: bounceInLeft;
             opacity: 1;
             cursor: pointer;
-            animation-name: bounceInLeft;
         }
     }
 }
@@ -1421,27 +1422,27 @@ p {
     .banner {
         bottom: 10%;
         left: 8%;
+        z-index: 1;
+        background-position: -1249px 390px;
         width: 67%;
         height: 40%;
-        background-position: -1249px 390px;
-        z-index: 1;
     }
 
     .avatar {
         bottom: 0;
         left: 0%;
+        background-position: -4003px -5px;
         width: 100%;
         height: 100%;
-        background-position: -4003px -5px;
     }
 
     button.next-screen {
         position: absolute;
-        left: 63%;
         bottom: 2%;
+        left: 63%;
         opacity: 0;
-        cursor: auto;
         background-position: -1200px -17px;
+        cursor: auto;
         width: 34%;
         height: 64%;
 
@@ -1467,9 +1468,9 @@ p {
 
     &.COMPLETE {
         button.next-screen {
+            animation-name: bounceInLeft;
             opacity: 1;
             cursor: pointer;
-            animation-name: bounceInLeft;
         }
     }
 }
@@ -1485,27 +1486,27 @@ p {
     .banner {
         top: 0;
         left: 8%;
+        z-index: 1;
+        background-position: -2253px 390px;
         width: 51%;
         height: 40%;
-        background-position: -2253px 390px;
-        z-index: 1;
     }
 
     .avatar {
-        bottom: 0;
         right: 0%;
+        bottom: 0;
+        background-position: -5025px -5px;
         width: 90%;
         height: 100%;
-        background-position: -5025px -5px;
     }
 
     button.next-screen {
         position: absolute;
-        left: 15%;
         bottom: -3%;
+        left: 15%;
         opacity: 0;
-        cursor: auto;
         background-position: -1200px -17px;
+        cursor: auto;
         width: 34%;
         height: 64%;
 
@@ -1531,9 +1532,9 @@ p {
 
     &.COMPLETE {
         button.next-screen {
+            animation-name: bounceInLeft;
             opacity: 1;
             cursor: pointer;
-            animation-name: bounceInLeft;
         }
     }
 }
@@ -1541,36 +1542,38 @@ p {
 #sing-about-it {
     .mr-eco {
         position: absolute;
+        top: 0;
+        left: 0;
+
+        background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
+        background-position: -70px 0;
+        background-size: 850px 624px;
+
         width: 37%;
         height: 100%;
-        left: 0;
-        top: 0;
-        background: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
-        background-size: 850px 624px;
-        background-position: -70px 0;
     }
 
     .dancers,
     .banner {
+        position: absolute;
         background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
         background-size: 4000px 340px;
-        position: absolute;
     }
 
     .dancers {
+        right: 0;
+        bottom: 0;
+        background-position: -713px 226px;
         width: 611px;
         height: 20%;
-        bottom: 0;
-        right: 0;
-        background-position: -713px 226px;
     }
 
     .banner {
         position: absolute;
+        top: 20%;
         right: 20%;
         bottom: 17%;
         left: 20%;
-        top: 20%;
         background-position: 0 0;
     }
 
@@ -1583,16 +1586,16 @@ p {
 }
 
 #video .frame {
-    width: 80%;
-    height: 85%;
     background-image: url('../media/_Frames/FR_2.png');
     background-size: 100% 100%;
+    width: 80%;
+    height: 85%;
 
     video {
         position: relative;
+        margin: 4.2% 4.3%;
         width: 91.2%;
         max-height: 95%;
-        margin: 4.2% 4.3%;
     }
 }
 
@@ -1604,38 +1607,38 @@ p {
 
     .mr-eco {
         position: absolute;
-        width: 514px;
-        height: 105%;
-        left: -157px;
         top: 18px;
         bottom: 0;
+        left: -157px;
+        transform: scale(.88) rotate(-5.6deg);
         background: url('../media/_assets/_images/mr.eco.png') no-repeat;
         background-size: 388px;
-        transform: scale(.88) rotate(-5.6deg);
+        width: 514px;
+        height: 105%;
     }
 
     .banner,
     .banner2 {
-        background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
-        background-size: 4000px 340px;
         position: absolute;
         transform: scaleX(1.073) scaleY(1.069);
+        background: url('../media/_assets/_sprites/sprites.sing.thankyou.flip-01.png');
+        background-size: 4000px 340px;
     }
 
     .banner {
+        top: 25%;
         right: 4%;
         bottom: 17%;
         left: 21%;
-        top: 25%;
         background-position: 60% 0;
     }
 
     .banner2 {
+        top: -7.4%;
+        left: 30.7%;
+        background-position: 41% 0;
         width: 60%;
         height: 42%;
-        left: 30.7%;
-        top: -7.4%;
-        background-position: 41% 0;
     }
 
     &.OPEN {
@@ -1657,24 +1660,26 @@ p {
 
     .mr-eco {
         position: absolute;
-        width: 514px;
-        height: 105%;
-        left: -157px;
         top: 18px;
         bottom: 0;
+        left: -157px;
+        transform: scale(.88) rotate(-5.6deg);
         background: url('../media/_assets/_images/mr.eco.png') no-repeat;
         background-size: 388px;
-        transform: scale(.88) rotate(-5.6deg);
+        width: 514px;
+        height: 105%;
     }
 
     .banner {
-        background: url('../media/_assets/_images/text-antilitter.png') no-repeat;
-        background-size: 798px;
         position: absolute;
-        transform: scaleX(.87) scaleY(.87);
-        left: 111px;
         top: 84px;
+        left: 111px;
+        transform: scaleX(.87) scaleY(.87);
+
+        background: url('../media/_assets/_images/text-antilitter.png') no-repeat;
         background-position: 60% 0;
+        background-size: 798px;
+
         width: 800px;
         height: 700px;
     }
@@ -1682,16 +1687,16 @@ p {
     button {
         &.next-screen {
             position: absolute;
-            width: 336px;
-            height: 170px;
-            background-position: -1973px -109px;
-            left: 31.9%;
             top: 64.55%;
-            opacity: 0;
-            cursor: auto;
+            left: 31.9%;
+            transform: scaleX(.87) scaleY(.88);
             animation-duration: 1s;
             animation-fill-mode: both;
-            transform: scaleX(.87) scaleY(.88);
+            opacity: 0;
+            background-position: -1973px -109px;
+            cursor: auto;
+            width: 336px;
+            height: 170px;
 
             &:hover {
                 background-position: -1973px 280px;
@@ -1711,9 +1716,9 @@ p {
     &.COMPLETE,
     .DEMO & {
         button.next-screen {
+            animation-name: zoomInDown;
             opacity: 1;
             cursor: pointer;
-            animation-name: zoomInDown;
         }
     }
 }
@@ -1722,28 +1727,28 @@ p {
 
 
     .banner {
-        background: url('../media/_assets/_images/NEVER.png') no-repeat;
-        background-size: 150px;
         position: absolute;
-        left: 200px;
         top: 24px;
+        left: 200px;
+        background: url('../media/_assets/_images/NEVER.png') no-repeat;
         background-position: 60% 0;
+        background-size: 150px;
         width: 800px;
         height: 700px;
     }
 
     button.next-screen {
         position: absolute;
-        left: 35.5%;
         top: 66.6%;
+        left: 35.5%;
+        transform: scale(.88);
+        animation-duration: 1s;
+        animation-fill-mode: both;
         opacity: 0;
+        background-position: -1611px -109px;
         cursor: auto;
         width: 272px;
         height: 151px;
-        background-position: -1611px -109px;
-        animation-duration: 1s;
-        animation-fill-mode: both;
-        transform: scale(.88);
 
         &:hover {
             background-position: -1611px 280px;
@@ -1752,14 +1757,14 @@ p {
 
     .pledge {
         position: absolute;
-        left: 352px;
         top: 25px;
+        left: 352px;
+        width: 590px;
+        text-shadow: -1px -1px 0 $black, 1px -1px 0 $black, -1px 1px 0 $black;
+        letter-spacing: .5px;
+        color: $white;
         font-size: 44px;
         font-weight: bold;
-        letter-spacing: .5px;
-        color: #fff;
-        text-shadow: -1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;
-        width: 590px;
 
         .never {
             padding: 69px;
@@ -1789,9 +1794,9 @@ p {
     &.COMPLETE,
     .DEMO & {
         button.next-screen {
+            animation-name: zoomInDown;
             opacity: 1;
             cursor: pointer;
-            animation-name: zoomInDown;
         }
     }
 }
@@ -1799,43 +1804,45 @@ p {
 [id*='catch-game'] {
     .bottom {
         position: absolute;
-        left: 0;
         bottom: 0;
+        left: 0;
         width: 960px;
         height: 80px;
         vertical-align: middle;
 
         .level {
-            @include text-stroke(3, #000);
-            position: relative;
-            vertical-align: middle;
+            @include text-stroke(3, $black);
             display: inline-block;
-            font-size: 48px;
-            color: #f5fd37;
+            position: relative;
             margin-right: 30px;
+            vertical-align: middle;
+            color: $bright-yellow;
+            font-size: 48px;
 
             &::before {
-                content: '';
-                vertical-align: middle;
                 display: inline-block;
                 margin-left: 80px;
-                width: 120px;
-                height: 80px;
+
                 background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
                 background-repeat: no-repeat;
-                background-size: 600px;
                 background-position: -240px -30px;
+                background-size: 600px;
+
+                width: 120px;
+                height: 80px;
+                vertical-align: middle;
+                content: '';
             }
         }
 
         .score {
-            position: relative;
             display: inline-block;
-            vertical-align: middle;
+            position: relative;
+            z-index: 1;
+            padding-left: 40px;
             width: 190px;
             height: 80px;
-            padding-left: 40px;
-            z-index: 1;
+            vertical-align: middle;
 
             &.litter-bug-score {
                 &::before {
@@ -1844,37 +1851,39 @@ p {
 
                 div {
                     &::after {
-                        background-color: #e24419;
+                        background-color: $orange;
                     }
                 }
             }
 
             &::before {
-                content: '';
-                position: absolute;
                 display: block;
-                left: 0;
+                position: absolute;
                 top: 0;
-                width: 60px;
-                height: 60px;
+                left: 0;
                 z-index: 2;
+
                 background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
                 background-repeat: no-repeat;
-                background-size: 500px;
                 background-position: -20px -24px;
+                background-size: 500px;
+
+                width: 60px;
+                height: 60px;
+                content: '';
             }
 
             &::after {
-                content: '';
-                background-color: #f9f9f9;
                 position: absolute;
-                width: 140px;
-                height: 6px;
-                border-radius: 10px;
                 bottom: 35px;
                 left: 51px;
                 opacity: .6;
                 z-index: 1;
+                border-radius: 10px;
+                background-color: $light-grey;
+                width: 140px;
+                height: 6px;
+                content: '';
             }
 
             span {
@@ -1883,38 +1892,42 @@ p {
 
             div {
                 position: relative;
+                padding-top: 25px;
                 width: 200px;
                 height: 29px;
-                padding-top: 25px;
 
                 &::before {
-                    content: '';
                     display: block;
-                    background-color: #fff;
-                    border: 3px solid #000;
+                    border: 3px solid $black;
                     border-radius: 50px;
-                    height: 20px;
+                    background-color: $white;
                     width: 160px;
+                    height: 20px;
+                    content: '';
                 }
 
                 &::after {
-                    content: '';
                     display: block;
                     position: absolute;
                     bottom: 6px;
                     left: 3px;
+
+                    // scss-lint:disable VendorPrefix
+                    -webkit-transition: width .5s cubic-bezier(.53, 0, .63, 1);
+                    // scss-lint:enable VendorPrefix
+                    transition: width .5s cubic-bezier(.53, -.56, .63, 1.74);
+
                     border-radius: 50px;
-                    background-color: green;
+                    background-color: $bright-green;
                     width: 0;
                     height: 20px;
-                    -webkit-transition: width .5s cubic-bezier(.53,0,.63,1);
-                    transition: width .5s cubic-bezier(.53,-0.56,.63,1.74);
+                    content: '';
                 }
             }
 
             @for $i from 0 through 10 {
                 &.score-#{$i * 10} {
-                    div:after {
+                    div::after {
                         width: #{$i * 16}px;
                     }
                 }
@@ -1924,11 +1937,11 @@ p {
 
     .timer {
         display: inline-block;
+        width: 200px;
+        height: 60px;
+        vertical-align: middle;
         font-size: 14px;
         font-weight: normal;
-        width: 200px;
-        vertical-align: middle;
-        height: 60px;
 
         &::before {
             display: inline-block;
@@ -1946,21 +1959,21 @@ p {
         }
 
         span {
-            @include text-stroke(3, #000);
+            @include text-stroke(3, $black);
             display: inline-block;
             vertical-align: middle;
+            color: $bright-yellow;
             font-size: 32px;
-            color: #f5fd37;
         }
     }
 
     .main {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        border-radius: 16px 16px 0 0;
         width: 960px;
         height: 460px;
-        border-radius: 16px 16px 0 0;
         overflow: hidden;
     }
 
@@ -1970,14 +1983,14 @@ p {
 
     .dropper {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
 
         .items {
-            padding: 0;
             margin: 0;
+            padding: 0;
             list-style: none;
         }
 
@@ -2017,42 +2030,44 @@ p {
 
     .catcher {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
 
         .mr-eco {
             position: absolute;
-            pointer-events: none;
-            left: 70px;
             top: 200px;
+            left: 70px;
             width: 50px;
             height: 75px;
+            pointer-events: none;
 
             &::before {
-                content: '';
                 position: absolute;
-                left: -50px;
                 top: -15px;
+                left: -50px;
+
+                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
+                background-position: -400px 0;
+                background-size: 500px;
+
                 width: 100px;
                 height: 105px;
-                background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
-                background-size: 500px;
-                background-position: -400px 0;
+                content: '';
             }
         }
     }
 
     .reveal {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        transition: opacity .5s, z-index 0s .5s;
+        opacity: 0;
+        z-index: -1;
         width: 100%;
         height: 100%;
-        z-index: -1;
-        opacity: 0;
-        transition: opacity .5s, z-index 0s .5s;
 
         &.OPEN {
             transition: opacity .5s, z-index 0s;
@@ -2103,9 +2118,9 @@ p {
                     position: absolute;
                     top: 50px;
                     left: 80px;
-                    border: 4px solid #000;
+                    border: 4px solid $black;
                     border-radius: 20px;
-                    background-color: #f1f64e;
+                    background-color: $light-yellow;
                     width: 800px;
                     height: 440px;
                 }
@@ -2163,9 +2178,11 @@ p {
                     bottom: 0;
                     left: -100px;
                     z-index: 1;
+
                     background-image: url('../media/_assets/_sprites/sprites.mr.eco-01.png');
-                    background-size: 600px;
                     background-position: 0 0;
+                    background-size: 600px;
+
                     width: 300px;
                     height: 400px;
                     content: '';
@@ -2175,9 +2192,9 @@ p {
                     position: absolute;
                     top: 50px;
                     left: 80px;
-                    border: 4px solid #000;
+                    border: 4px solid $black;
                     border-radius: 20px;
-                    background-color: #f1f64e;
+                    background-color: $light-yellow;
                     width: 800px;
                     height: 440px;
                 }
@@ -2227,10 +2244,10 @@ p {
                 }
 
                 .congratulations {
-                    height: 115px;
-                    width: 530px;
-                    background-position: -4610px -60px;
                     margin-top: 10px;
+                    background-position: -4610px -60px;
+                    width: 530px;
+                    height: 115px;
                 }
 
                 .level-up {
@@ -2248,7 +2265,7 @@ p {
             }
 
             &.try-again {
-                background-color: rgba(243, 157, 201, .6);
+                background-color: $overlay-red;
 
                 &::before {
                     display: block;

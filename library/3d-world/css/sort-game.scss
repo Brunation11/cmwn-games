@@ -59,7 +59,7 @@
 
             @for $i from 0 through 10 {
                 &.score-#{$i * 10} {
-                    div:after {
+                    div::after {
                         height: #{$i * 36}px;
                     }
                 }
