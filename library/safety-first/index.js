@@ -43,9 +43,9 @@ var SafetyFirst = (
     }}
     assets={[
       <skoash.Font name="Source Sans Pro" />,
-      <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
-      <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
-      <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
+      // <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
+      // <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
+      // <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'} />,
       <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'} />,
