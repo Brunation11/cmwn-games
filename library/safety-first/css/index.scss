@@ -108,7 +108,7 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url($media-server + 'SpritesAnimations/sprites.mainnav.png');
+  background-image: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
   background-repeat: no-repeat;
   background-size: 1400px;
   background-position: left top;
