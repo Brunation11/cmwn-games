@@ -82,22 +82,23 @@ export default function (props, ref, key) {
         openReveal={_.get(props, 'data.reveal.open', null)}
         list={[
           <skoash.Component className={answers[0]} ref={answers[0]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
             <skoash.Component className="frame">
               <span>
                 I'll show you who you should<br />and shouldn't let into your house<br />when you're alone!
               </span>
             </skoash.Component>
           </skoash.Component>,
-
           <skoash.Component className={answers[1]} ref={answers[1]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
             <skoash.Component className="frame">
               <span>
                 Police officers care about your safety!<br />Us K-9's will teach you some things<br />that will help keep you safe.
               </span>
             </skoash.Component>
           </skoash.Component>,
-
           <skoash.Component className={answers[2]} ref={answers[2]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
             <skoash.Component className="frame">
               <span>
                 I'll give you safety tips for both<br />on your way to school or just<br />hanging out at home!
