@@ -1,0 +1,20 @@
+@import 'variables';
+
+#title {
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .next-screen {
+    width: 15%;
+    height: 25%;
+    background-position: -26px 2px;
+
+    &:hover {
+      background-position: -26px -141px;
+    }
+  }
+}
