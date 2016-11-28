@@ -28,7 +28,9 @@ export default function (props, ref, key) {
           this.play(_.get(props, 'data.reveal.open'));
         }}
       >
-        <skoash.Audio ref="correct" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/DarkBark.mp3'} />
+        {
+        // <skoash.Audio ref="correct" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/DarkBark.mp3'} />
+        }
         <skoash.MediaSequence
           ref={answers[0]}
           silentOnStart
@@ -63,9 +65,15 @@ export default function (props, ref, key) {
           });
         }}
         list={[
-          <li data-ref={answers[0]} className="barkley" />,
-          <li data-ref={answers[1]} className="shepherd" />,
-          <li data-ref={answers[2]} className="wolf" />
+          <skoash.ListItem data-ref={answers[0]} className={answers[0]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
+          </skoash.ListItem>,
+          <skoash.ListItem data-ref={answers[1]} className={answers[1]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
+          </skoash.ListItem>,
+          <skoash.ListItem data-ref={answers[2]} className={answers[2]}>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
+          </skoash.ListItem>
         ]}
       />
 
@@ -73,21 +81,27 @@ export default function (props, ref, key) {
         ref="reveal"
         openReveal={_.get(props, 'data.reveal.open', null)}
         list={[
-          <skoash.Component className={answers[0]} data-ref={answers[0]}>
+          <skoash.Component className={answers[0]} ref={answers[0]}>
             <skoash.Component className="frame">
               <span>
                 I'll show you who you should<br />and shouldn't let into your house<br />when you're alone!
               </span>
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component className={answers[1]} data-ref={answers[1]}>
+
+          <skoash.Component className={answers[1]} ref={answers[1]}>
             <skoash.Component className="frame">
-              Police officers care about your safety!<br />Us K-9's will teach you some things<br />that will help keep you safe.
+              <span>
+                Police officers care about your safety!<br />Us K-9's will teach you some things<br />that will help keep you safe.
+              </span>
             </skoash.Component>
           </skoash.Component>,
-          <skoash.Component className={answers[2]} data-ref={answers[2]}>
+
+          <skoash.Component className={answers[2]} ref={answers[2]}>
             <skoash.Component className="frame">
-              I'll give you safety tips for both<br />on your way to school or just<br />hanging out at home!
+              <span>
+                I'll give you safety tips for both<br />on your way to school or just<br />hanging out at home!
+              </span>
             </skoash.Component>
           </skoash.Component>
         ]}
