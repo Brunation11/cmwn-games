@@ -335,10 +335,10 @@ button {
             &.#{nth($classes, $i)} {
                 $left: 70 - (80 * $i);
 
-                background-position: ($left+ px) -10px;
+                background-position: ($left + px) -10px;
 
                 &:hover {
-                    background-position: ($left+ px) -89px;
+                    background-position: ($left + px) -89px;
                 }
             }
         }

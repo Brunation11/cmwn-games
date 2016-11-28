@@ -481,11 +481,11 @@ img.inline {
                         width: 90px;
                     }
                     $top: 0;
-                    $position: -(75* $item) +$offset+ px $top+ px;
+                    $position: -(75* $item) +$offset + px $top+ px;
                     @if $item > 5 {
                         $top: 120;
                         $offset: 433;
-                        $position: -(75* $item) +$offset+ px $top+ px;
+                        $position: -(75* $item) +$offset + px $top+ px;
                     }
                     background-position: $position;
                 }
