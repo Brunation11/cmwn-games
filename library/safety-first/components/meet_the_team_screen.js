@@ -114,8 +114,10 @@ export default function (props, ref, key) {
                 ref="reveal"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
-                    <skoash.Component className={answers[0]} ref={answers[0]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
+                    <skoash.Component ref={answers[0]}>
+                        <skoash.Component className={answers[0]}>
+                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
+                        </skoash.Component>
                         <skoash.Component className="frame">
                             <span>
                                 I'll show you who you should<br />
@@ -124,8 +126,10 @@ export default function (props, ref, key) {
                             </span>
                         </skoash.Component>
                     </skoash.Component>,
-                    <skoash.Component className={answers[1]} ref={answers[1]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
+                    <skoash.Component ref={answers[1]}>
+                        <skoash.Component className={answers[1]}>
+                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
+                        </skoash.Component>
                         <skoash.Component className="frame">
                             <span>
                                 Police officers care about your safety!<br />
@@ -134,8 +138,10 @@ export default function (props, ref, key) {
                             </span>
                         </skoash.Component>
                     </skoash.Component>,
-                    <skoash.Component className={answers[2]} ref={answers[2]}>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
+                    <skoash.Component ref={answers[2]}>
+                        <skoash.Component className={answers[2]}>
+                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
+                        </skoash.Component>
                         <skoash.Component className="frame">
                             <span>
                                 I'll give you safety tips for both<br />
