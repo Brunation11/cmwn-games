@@ -3,12 +3,18 @@ linters:
     DuplicateProperty:
         ignore_consecutive: true
         severity: error
+    IdSelector:
+        enabled: false
     Indentation:
         width: 4
         severity: error
     SelectorDepth:
         max_depth: 4
         severity: error
+    SelectorFormat:
+        enabled: false
+    Comment:
+        enabled: false
     NestingDepth:
         max_depth: 4
         severity: error
@@ -65,6 +71,8 @@ linters:
         severity: error
     LeadingZero:
         severity: error
+    MergeableSelector:
+        enabled: false
     NameFormat:
         severity: error
     PlaceholderInExtend:
@@ -73,6 +81,8 @@ linters:
         severity: error
     PseudoElement:
         severity: error
+    QualifyingElement:
+        enabled: false
     Shorthand:
         severity: error
     SingleLinePerProperty:
