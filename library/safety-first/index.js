@@ -1,3 +1,5 @@
+var SafetyFirst;
+
 import config from './config.game';
 
 import Loader from 'shared/components/loader/0.1';
@@ -22,41 +24,68 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/SafetyFirst/';
 
-var SafetyFirst = (
-  <skoash.Game
-    config={config}
-    loader={<Loader />}
-    screens={{
-      0: iOSScreen,
-      1: TitleScreen,
-      2: MeetTheTeamScreen,
-      3: InfoLetsSeeScreen,
-      4: DingDongScreen
-      // 2: BulbsScreen,
-      // 3: PigScreen,
-      // 4: InfoScreen,
-      // 5: VideoScreen,
-      // 6: SpecialAnnouncementScreen,
-      // 7: LevelOneScreen,
-      // 8: LevelTwoScreen,
-      // 9: LevelThreeScreen,
-      // 10: FlipScreen,
-    }}
-    menus={{
-      quit: QuitScreen,
-    }}
-    assets={[
-      <skoash.Font name="Source Sans Pro" />,
-      <skoash.Audio type="background" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'} loop />,
-      <skoash.Audio ref="button" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
-      <skoash.Audio ref="back" type="sfx" src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'} />,
-      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'} />,
-      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'} />,
-      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'} />,
-      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.dooropened.jpg'} />,
-      <skoash.Image className="hidden" src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.doorclosed.jpg'} />,
-    ]}
-  />
+SafetyFirst = (
+    <skoash.Game
+        config={config}
+        loader={<Loader />}
+        screens={{
+            0: iOSScreen,
+            1: TitleScreen,
+            2: MeetTheTeamScreen,
+            3: InfoLetsSeeScreen,
+            4: DingDongScreen
+            // 2: BulbsScreen,
+            // 3: PigScreen,
+            // 4: InfoScreen,
+            // 5: VideoScreen,
+            // 6: SpecialAnnouncementScreen,
+            // 7: LevelOneScreen,
+            // 8: LevelTwoScreen,
+            // 9: LevelThreeScreen,
+            // 10: FlipScreen,
+        }}
+        menus={{
+            quit: QuitScreen,
+        }}
+        assets={[
+            <skoash.Font name="Source Sans Pro" />,
+            <skoash.Audio
+                type="background"
+                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'}
+            />,
+            <skoash.Audio
+                ref="back"
+                type="sfx"
+                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.dooropened.jpg'}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.doorclosed.jpg'}
+            />,
+        ]}
+    />
 );
 
 skoash.start(SafetyFirst);
