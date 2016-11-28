@@ -1,18 +1,20 @@
+$grey: #eee;
+
 .selectable-component.flip-card,
 .flip-card-component {
 
     ul {
         text-align: center;
 
-         li {
-            position: relative;
+        li {
             display: inline block;
-            vertical-align: top;
+            position: relative;
+            margin: 0 5px;
+            cursor: pointer;
             width: 150px;
             height: 250px;
-            margin: 0 5px;
+            vertical-align: top;
             perspective: 500px;
-            cursor: pointer;
         }
 
         &.HIGHLIGHTED {
@@ -21,16 +23,15 @@
 
         .side {
             position: absolute;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
+            transition: transform .5s;
+            border-radius: 8px;
             width: inherit;
             max-height: 100%;
-
-            color: #eee;
-            border-radius: 8px;
-            transition: transform 0.5s;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
             overflow: hidden;
+            color: $grey;
+            backface-visibility: hidden;
 
             img {
                 max-width: 100%;
@@ -42,7 +43,7 @@
     /* Left to Right (Default) */
     &.lr ul li .side.b,
     ul li.lr .side.b {
-        transform: rotateY( 180deg);
+        transform: rotateY(180deg);
     }
 
     &.lr ul li.HIGHLIGHTED .side.a,

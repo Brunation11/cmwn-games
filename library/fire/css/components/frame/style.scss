@@ -11,14 +11,16 @@
 
     .content-group {
         position: absolute;
-        top: 0; bottom: 0;
-        left: 0; right: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         margin: 12px;
     }
 
     .content-group > * {
-        margin-left: 2em;
         margin-right: 2em;
+        margin-left: 2em;
         text-align: center;
     }
 }

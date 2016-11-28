@@ -9,14 +9,14 @@ linters:
         width: 4
         severity: error
     SelectorDepth:
-        max_depth: 4
+        max_depth: 6
         severity: error
     SelectorFormat:
         enabled: false
     Comment:
         enabled: false
     NestingDepth:
-        max_depth: 4
+        max_depth: 6
         severity: error
     TrailingZero:
         enabled: true
