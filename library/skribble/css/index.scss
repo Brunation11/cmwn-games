@@ -9,30 +9,33 @@ img.hidden {
     display: none;
 }
 
-html, body, body > div, body > div > div {
+html,
+body,
+body > div,
+body > div > div {
     margin: 0;
+    cursor: auto;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: auto;
 
     [class^=background-] {
         position: absolute;
-        left: 0;
         top: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
+        left: 0;
         transition: opacity .5s;
         opacity: 0;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
     }
 
     @for $i from 1 through 6 {
         .background-#{$i} {
-            background-image: url(../media/_Background/SK_BKG_#{$i}.png);
+            background-image: url(`../media/_Background/SK_BKG_#{$i}.png`);
         }
     }
 
@@ -134,12 +137,11 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
+    background-size: cover;
     width: 1600px;
     height: 900px;
+    color: $black;
     font-size: 36px;
-    color: #000;
-    // background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-    background-size: cover;
 }
 
 button {
@@ -148,7 +150,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url(../media/_Buttons/SK_btn_rounded.png);
+    background-image: url('../media/_Buttons/SK_btn_rounded.png');
     background-position: left top;
     background-size: 1950px;
 
@@ -157,11 +159,10 @@ button {
     font-family: inherit;
     font-size: inherit;
 
-
     &.make {
+        background-position: 0 0;
         width: 450px;
         height: 210px;
-        background-position: 0 0;
 
         &:hover {
             background-position: -500px 0;
@@ -169,9 +170,9 @@ button {
     }
 
     &.read {
+        background-position: 0 -240px;
         width: 450px;
         height: 210px;
-        background-position: 0 -240px;
 
         &:hover {
             background-position: -500px -240px;
@@ -179,9 +180,9 @@ button {
     }
 
     &.select {
+        background-position: -996px -740px;
         width: 360px;
         height: 180px;
-        background-position: -996px -740px;
 
         &:hover {
             background-position: -1496px -740px;
@@ -189,9 +190,9 @@ button {
     }
 
     &.continue {
+        background-position: -996px -1240px;
         width: 360px;
         height: 180px;
-        background-position: -996px -1240px;
 
         &:hover {
             background-position: -1496px -1240px;
@@ -199,9 +200,9 @@ button {
     }
 
     &.suggest {
+        background-position: -998px -500px;
         width: 450px;
         height: 200px;
-        background-position: -998px -500px;
 
         &:hover {
             background-position: -1498px -500px;
@@ -209,9 +210,9 @@ button {
     }
 
     &.save-to-drafts {
+        background-position: 2px -1460px;
         width: 450px;
         height: 200px;
-        background-position: 2px -1460px;
 
         &:hover {
             background-position: -498px -1460px;
@@ -219,9 +220,9 @@ button {
     }
 
     &.cancel {
+        background-position: -996px -990px;
         width: 360px;
         height: 180px;
-        background-position: -996px -990px;
 
         &:hover {
             background-position: -1496px -990px;
@@ -229,9 +230,9 @@ button {
     }
 
     &.change-friend {
+        background-position: 0 -750px;
         width: 230px;
         height: 100px;
-        background-position: 0 -750px;
 
         &:hover {
             background-position: -500px -750px;
@@ -239,9 +240,9 @@ button {
     }
 
     &.create-another {
+        background-position: -995px 0;
         width: 460px;
         height: 210px;
-        background-position: -995px 0;
 
         &:hover {
             background-position: -1495px 0;
@@ -249,9 +250,9 @@ button {
     }
 
     &.inbox {
+        background-position: -995px -250px;
         width: 460px;
         height: 210px;
-        background-position: -995px -250px;
 
         &:hover {
             background-position: -1495px -250px;
@@ -260,9 +261,9 @@ button {
 
     &.quit-yes,
     &.yes {
+        background-position: 0 -1000px;
         width: 230px;
         height: 100px;
-        background-position: 0 -1000px;
 
         &:hover {
             background-position: -500px -1000px;
@@ -271,9 +272,9 @@ button {
 
     &.quit-no,
     &.no {
+        background-position: 0 -1250px;
         width: 230px;
         height: 100px;
-        background-position: 0 -1250px;
 
         &:hover {
             background-position: -500px -1250px;
@@ -303,9 +304,9 @@ button {
     }
 
     &.close-reveal {
+        background-position: -450px 840px;
         width: 55px;
         height: 50px;
-        background-position: -450px 840px;
 
         &.ENABLED:hover {
             background-position: -450px 1352px;
@@ -321,13 +322,14 @@ button {
 
     button {
         float: left;
+        margin: 5px;
+
+        background-image: url('../media/_Buttons/SK_btn_topnav.png');
+        background-size: 400px;
+
+        cursor: pointer;
         width: 65px;
         height: 65px;
-        margin: 5px;
-        cursor: pointer;
-
-        background-image: url(../media/_Buttons/SK_btn_topnav.png);
-        background-size: 400px;
 
         $classes: save create inbox help close;
 
@@ -359,13 +361,13 @@ h2 {
 }
 
 h3 {
-    font-size: 30px;
     margin: 0;
+    font-size: 30px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
@@ -380,16 +382,16 @@ p {
 }
 
 .screen {
+    display: none;
     position: absolute;
     top: 50%;
     left: 0;
+    transition: opacity 1s, z-index 0s 1s;
+    opacity: 0;
+    margin-top: -450px;
     width: 1600px;
     height: 900px;
-    margin-top: -450px;
-    opacity: 0;
-    display: none;
     overflow: hidden;
-    transition: opacity 1s, z-index 0s 1s;
 
     &:not(.OPEN) {
         z-index: -1;
@@ -404,11 +406,9 @@ p {
     }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transition: opacity 1s, z-index 0s;
+    opacity: 1;
 }
 
 .screen.READY {
@@ -419,66 +419,58 @@ p {
     opacity: 0;
 }
 
-    .screen .next-screen,
-    .screen .prev-screen {
-        position: absolute;
-        display: block;
-        bottom: 1%;
+.screen .next-screen,
+.screen .prev-screen {
+    display: block;
+    position: absolute;
+    bottom: 1%;
 
-        z-index: 2;
-    }
+    z-index: 2;
+}
 
-    .screen .next-screen {
-        margin-right: 5px;
-        right: 0;
+.screen .next-screen {
+    right: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 0;
+    margin-right: 5px;
+}
+
+.screen.GATED .next-screen {
+    opacity: 0;
+    z-index: -1;
+    cursor: auto;
+}
+
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen {
+    transform: rotate(0deg);
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.pl-game.MENU-quit .screen {
+    &:not(#quit):not(#save) {
         opacity: 0;
-        transform: rotate(-180deg);
-        transition: opacity 1s, transform 1s;
+        pointer-events: none;
     }
+}
 
-    .screen.GATED .next-screen {
-        opacity: 0;
-        cursor: auto;
-        z-index: -1;
-    }
+.screen .prev-screen {
+    left: 0;
+    margin-left: 5px;
 
-    .pl-game.DEMO .screen .next-screen,
-    .screen.COMPLETE .next-screen {
-        opacity: 1;
-        transform: rotate(0deg);
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .pl-game.MENU-quit .screen {
-        &:not(#quit):not(#save) {
-            opacity: 0;
-            pointer-events: none;
-        }
-    }
-
-    .screen .next-screen:hover {
-
-    }
-
-    .screen .prev-screen {
-        margin-left: 5px;
-        left: 0;
-
-    }
-
-    .screen .prev-screen:hover {
-
-    }
+}
 
 // the following css is specific to this game
 
 .header {
-    background-image: url(../media/_Headers/SK_headers.png);
-    background-size: 3800px;
-    height: 140px;
-    width: 900px;
     margin: 0 auto;
+    background-image: url('../media/_Headers/SK_headers.png');
+    background-size: 3800px;
+    width: 900px;
+    height: 140px;
 }
 
 #title {
@@ -494,62 +486,62 @@ p {
 
     img {
         position: absolute;
-        width: 90%;
-        left: 50%;
         top: 50%;
+        left: 50%;
         transform: translateX(-50%) translateY(-50%);
+        width: 90%;
     }
 
     .next-screen {
-        background-image: url(../media/_Buttons/skribble-play-01.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center center;
         margin: 0 90px 70px 0;
+        background-image: url('../media/_Buttons/skribble-play-01.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
         width: 400px;
         height: 180px;
 
         &:hover {
-            background-image: url(../media/_Buttons/skribble-hover.png);
+            background-image: url('../media/_Buttons/skribble-hover.png');
         }
     }
 }
 
 #canvas {
     &::after {
-        content: '';
         display: block;
         position: absolute;
         right: 0;
         bottom: -80px;
-        width: 800px;
-        height: 800px;
+        transition: none;
         z-index: 1;
         background: none;
-        transition: none;
+        width: 800px;
+        height: 800px;
+        content: '';
     }
 
     button {
-        color: #000;
+        color: $black;
     }
 
     .editable-asset {
         button {
-            color: #fff;
+            color: $white;
         }
     }
 
     .right-menu {
         display: none;
-        opacity: 1;
         transition: opacity .5s;
+        opacity: 1;
     }
 
     .reveal {
         li {
+            z-index: 3;
             width: 1600px;
             height: 900px;
-            z-index: 3;
 
             img {
                 position: absolute;
@@ -562,7 +554,7 @@ p {
                 top: 10px;
                 left: 690px;
 
-                background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+                background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
                 background-repeat: no-repeat;
                 background-position: -1010px -20px;
                 background-size: 1500px;
@@ -589,11 +581,11 @@ p {
 
     &.OPEN {
         &::after {
+            transition: opacity .5s 2s, z-index 0s 2.5s;
             opacity: 0;
             z-index: -1;
-            background: url(../media/_Otter/joyful-otter_2.gif) no-repeat;
+            background: url('../media/_Otter/joyful-otter_2.gif') no-repeat;
             background-size: contain;
-            transition: opacity .5s 2s, z-index 0s 2.5s;
         }
     }
 
@@ -607,19 +599,19 @@ p {
 #friends {
     .header {
         position: absolute;
-        left: 50%;
         top: 0;
+        left: 50%;
         transform: translateX(-50%);
     }
 
     .otter-container {
         position: absolute;
-        left: 20px;
         bottom: 40px;
+        left: 20px;
 
         .bubble {
             position: absolute;
-            background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+            background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
             background-repeat: no-repeat;
             background-size: 1500px;
             text-align: center;
@@ -634,11 +626,11 @@ p {
             }
 
             .bubble {
-                left: -30px;
                 top: -260px;
-                width: 350px;
+                left: -30px;
                 background-position: -70px -540px;
                 padding: 60px 50px 110px 70px;
+                width: 350px;
             }
         }
 
@@ -646,14 +638,14 @@ p {
             bottom: -120px;
 
             img {
-                width: 1000px;
-                margin-left: -310px;
                 margin-top: -280px;
+                margin-left: -310px;
+                width: 1000px;
             }
 
             .bubble {
-                left: -20px;
                 top: -260px;
+                left: -20px;
                 background-position: -70px -540px;
                 padding: 110px 30px 150px 35px;
             }
@@ -663,21 +655,21 @@ p {
     .item-drawer-container {
         display: block;
         margin: 0 auto 0 270px;
-        width: 1120px;
         background-position: -10px 0;
         padding: 280px 210px 50px 110px;
+        width: 1120px;
     }
 
     .item-drawer {
         li {
+            margin: 0 5px 20px;
+            background-image: url('../media/_Buttons/sk_btn_selectfriend.png');
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 400px;
             padding: 15px 2px 15px 10px;
             width: 175px;
             height: 270px;
-            background-image: url(../media/_Buttons/sk_btn_selectfriend.png);
-            background-size: 400px;
-            background-repeat: no-repeat;
-            background-position: 0 0;
-            margin: 0 5px 20px;
 
             &::before {
                 display: none;
@@ -723,13 +715,13 @@ p {
     }
 
     .suggest-friends-buttons {
-        width: 108%;
         margin-top: -20px;
+        width: 108%;
 
         .continue {
+            background-position: 2px -500px;
             width: 460px;
             height: 200px;
-            background-position: 2px -500px;
 
             &:hover {
                 background-position: -498px -500px;
@@ -743,7 +735,7 @@ p {
 
     button {
         display: block;
-        color: #000;
+        color: $black;
     }
 
     > div > div:not(.goto-send) {
@@ -762,8 +754,8 @@ p {
 #menu {
     .otter {
         position: absolute;
-        left: -50px;
         bottom: -140px;
+        left: -50px;
     }
 
     .bubble {
@@ -771,7 +763,7 @@ p {
         top: 80px;
         left: 450px;
 
-        background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
         background-repeat: no-repeat;
         background-position: -380px -380px;
         background-size: 1125px;
@@ -783,14 +775,14 @@ p {
 
     .buttons {
         position: absolute;
-        left: 75%;
         top: 50%;
+        left: 75%;
         transform: translateX(-50%) translateY(-50%);
     }
 
     button {
         display: block;
-        color: #000;
+        color: $black;
     }
 }
 
@@ -810,45 +802,45 @@ p {
 
     button {
         display: block;
-        color: #000;
+        color: $black;
     }
 
     .name {
-        position: absolute;
         display: block;
-        width: 100%;
-        left: 0;
+        position: absolute;
         bottom: 5px;
+        left: 0;
+        width: 100%;
     }
 }
 
 #inbox {
     button {
         display: block;
-        color: #000;
+        color: $black;
     }
 
     .selectable-reveal {
-        background-image: url(../media/_Frames/SK_frames_general.png);
-        background-size: 7000px;
+        background-image: url('../media/_Frames/SK_frames_general.png');
         background-position: -3500px 0;
+        background-size: 7000px;
         width: 1300px;
         height: 860px;
     }
 
     .selectable {
+        display: flex;
         margin: 0;
         padding: 0 0 0 70px;
-        list-style: none;
-        display: flex;
         height: 80px;
+        list-style: none;
 
         li {
-            width: 138px;
             margin-right: 6px;
-            background-image: url(../media/_Buttons/SK_btn_inbox.png);
-            background-size: 684px;
+            background-image: url('../media/_Buttons/SK_btn_inbox.png');
             background-position: 0 -82px;
+            background-size: 684px;
+            width: 138px;
 
             @for $i from 1 through 5 {
                 $left: 136.5 - 136.5 * $i;
@@ -867,9 +859,9 @@ p {
     .reveal {
         margin: 0;
         padding: 20px;
-        list-style: none;
         width: 100%;
         height: 750px;
+        list-style: none;
 
         > div,
         li {
@@ -886,8 +878,8 @@ p {
             overflow-y: auto;
 
             ul {
-                min-height: 100%;
                 height: auto;
+                min-height: 100%;
             }
         }
 
@@ -906,15 +898,21 @@ p {
         flex-direction: column;
         justify-content: flex-start;
 
+        img {
+            &[src=''] {
+                display: none;
+            }
+        }
+
         li {
             position: relative;
-            height: 160px;
             opacity: 1;
-            background-color: transparent;
-            background-image: url(../media/_Buttons/SK_btn_messages.png);
-            background-size: 2600px;
-            background-position: -30px -414px;
             margin: 0;
+            background-color: transparent;
+            background-image: url('../media/_Buttons/SK_btn_messages.png');
+            background-position: -30px -414px;
+            background-size: 2600px;
+            height: 160px;
 
             .status {
                 display: none;
@@ -960,47 +958,43 @@ p {
             }
 
             &.DRAFT {
+                margin-bottom: 20px;
                 background-image: none;
                 width: 360px;
                 height: 250px;
-                margin-bottom: 20px;
 
                 .thumbnail {
                     position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: contain;
+                    padding-bottom: 66.25%;
                     width: 100%;
                     height: 0;
-                    padding-bottom: 66.25%;
-                    left: 0;
-                    top: 0;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: center center;
 
                     img {
-                        width: auto;
-                        height: auto;
-                        max-width: 80%;
-                        max-height: 80%;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
                         margin: 0;
                         background-color: transparent;
-                        left: 50%;
-                        top: 50%;
-                        transform: translateX(-50%) translateY(-50%);
-
-                        &[src=''] {
-                            display: none;
-                        }
+                        width: auto;
+                        max-width: 80%;
+                        height: auto;
+                        max-height: 80%;
                     }
                 }
 
                 .timestamp {
-                    width: 100%;
-                    left: 0;
-                    bottom: 0;
+                    display: flex;
                     top: auto;
                     right: auto;
-                    display: flex;
+                    bottom: 0;
+                    left: 0;
                     justify-content: space-between;
+                    width: 100%;
 
                     .date,
                     .time {
@@ -1016,13 +1010,13 @@ p {
 
                 span {
                     display: block;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
                     width: 100%;
                     text-align: center;
                     line-height: 1.2;
-                    left: 0;
-                    top: 50%;
                     font-size: 50px;
-                    transform: translateY(-50%);
                 }
             }
         }
@@ -1035,26 +1029,26 @@ p {
 
         img {
             position: absolute;
+            top: 22px;
+            left: 160px;
+            background-color: $white;
             width: 92px;
             height: 92px;
-            left: 160px;
-            top: 22px;
-            background-color: $white;
         }
 
         span {
             position: absolute;
-            font-size: 32px;
+            text-shadow: 3px 3px 1px $middle-transparent-black;
             line-height: 40px;
-            color: #fff;
-            text-shadow: 3px 3px 1px rgba(0, 0, 0, .6);
+            color: $white;
+            font-size: 32px;
 
             &.username {
-                left: 270px;
                 top: 50%;
+                left: 270px;
                 margin-top: -35px;
-                font-size: 64px;
                 line-height: 64px;
+                font-size: 64px;
 
                 &.long {
                     font-size: 48px;
@@ -1062,16 +1056,16 @@ p {
             }
 
             &.timestamp {
-                right: 26px;
-                top: 50%;
-                margin-top: -50px;
                 display: inline-block;
+                top: 50%;
+                right: 26px;
+                margin-top: -50px;
             }
 
             &.date,
             &.time {
-                position: relative;
                 display: block;
+                position: relative;
                 text-align: center;
             }
         }
@@ -1092,7 +1086,7 @@ p {
             top: -80px;
             left: 110px;
 
-            background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+            background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
             background-repeat: no-repeat;
             background-position: -70px -540px;
             background-size: 1500px;
@@ -1104,25 +1098,25 @@ p {
     }
 
     .header {
+        margin-top: 10px;
         background: none;
         width: auto;
         height: auto;
         text-align: center;
-        margin-top: 10px;
 
         span {
             display: inline-block;
             height: 100px;
-            line-height: 100px;
             vertical-align: middle;
+            line-height: 100px;
         }
     }
 
     .your-message-to,
     .is-ready {
-        background-image: url(../media/_Headers/SK_headers.png);
-        background-size: 3800px;
+        background-image: url('../media/_Headers/SK_headers.png');
         background-repeat: no-repeat;
+        background-size: 3800px;
     }
 
     .your-message-to {
@@ -1131,9 +1125,9 @@ p {
     }
 
     .username {
+        text-shadow: 3px 3px 1px $middle-transparent-black;
         color: $white;
         font-size: 54px;
-        text-shadow: 3px 3px 1px rgba(0, 0, 0, .6);
     }
 
     .is-ready {
@@ -1142,50 +1136,48 @@ p {
     }
 
     .change-friend {
-        vertical-align: middle;
-        margin-left: -230px;
         transform: translateX(240px);
+        margin-left: -230px;
+        vertical-align: middle;
     }
 
     .gift {
-        background-image: url(../media/_Frames/SK_frames_messagebox.png);
-        background-size: 2600px;
+        margin: 0 auto;
+        background-image: url('../media/_Frames/SK_frames_messagebox.png');
         background-repeat: no-repeat;
         background-position: -40px -80px;
+        background-size: 2600px;
         width: 670px;
         height: 620px;
-        margin: 0 auto;
     }
 }
 
 #sent {
     .character {
         margin: 0 auto;
-        width: 400px;
-        height: 300px;
-        background-image: url(../media/_Otter/Otter_Static4.png);
-        // background-image: url(../media/_Otter/Peeking-through-Otter2.gif);
-        background-size: 700px;
+        background-image: url('../media/_Otter/Otter_Static4.png');
         background-position: 52px 0;
+        background-size: 700px;
+        width: 400px;
         height: 480px;
     }
 
     .header {
-        background-image: url(../media/_Frames/SK_frames_general.png);
-        background-size: 6450px;
+        margin-top: -35px;
+        background-image: url('../media/_Frames/SK_frames_general.png');
         background-repeat: no-repeat;
         background-position: -4825px 0;
+        background-size: 6450px;
+        padding: 40px 0;
         width: auto;
         height: auto;
         text-align: center;
-        margin-top: -35px;
-        padding: 40px 0;
 
         span {
             display: inline-block;
             height: 60px;
-            line-height: 60px;
             vertical-align: middle;
+            line-height: 60px;
             color: $white;
             font-size: 54px;
         }
@@ -1208,11 +1200,11 @@ p {
 
 #preview {
     .left-menu {
-        height: auto;
-        padding: 0;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1;
+        padding: 0;
+        height: auto;
 
         > li {
             height: 150px;
@@ -1231,8 +1223,8 @@ p {
 
 .skribble-box {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 
@@ -1265,7 +1257,7 @@ p {
         z-index: 1;
         margin: 100px auto;
 
-        background-image: url(../media/_Frames/SK_frames_messagebox.png);
+        background-image: url('../media/_Frames/SK_frames_messagebox.png');
         background-repeat: no-repeat;
         background-position: -40px -80px;
         background-size: 2600px;
@@ -1276,28 +1268,28 @@ p {
 
     .sparkles {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        animation-duration: 5s;
+        animation-delay: 1.5s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        z-index: 1;
         width: 100%;
         height: 100%;
-        z-index: 1;
-        opacity: 0;
-        animation-duration: 5s;
-        animation-fill-mode: forwards;
-        animation-delay: 1.5s;
 
         div {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            text-align: left;
             transform: rotate(0deg);
             transition: transform 1s, opacity 1s;
+            width: 100px;
+            height: 100px;
+            text-align: left;
+            line-height: 100px;
 
             &::before {
+                color: $yellow;
                 content: '\02736';
-                color: #efc300;
             }
 
             $delays: 0s .5s 1s .25s 1.25s .75s;
@@ -1306,13 +1298,16 @@ p {
                 &:nth-of-type(#{$i}) {
                     $left: (-10 * $i) % 85 + 5;
                     $top: (-15 * $i) % 80 + 10;
-                    left: percentage($left / 100);
+
                     top: percentage($top / 100);
+                    left: percentage($left / 100);
+
                     @if $left > 45 {
                         animation: flyright 1.5s infinite linear;
                     } @else {
                         animation: flyleft 1.5s infinite linear;
                     }
+
                     animation-delay: nth($delays, ($i % 6) + 1);
                 }
             }
@@ -1342,18 +1337,18 @@ p {
         &.HIDE {
             display: none;
 
-            & ~ .right-menu {
+            ~ .right-menu {
                 display: none;
             }
         }
     }
 
     .left-menu {
+        top: 50%;
+        z-index: 1;
+        transform: translateY(-50%);
         height: auto;
         padding: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1;
 
         > li {
             height: 150px;
@@ -1373,13 +1368,13 @@ p {
 #flip {
     h2 {
         position: absolute;
-        left: 0;
         top: 50%;
+        left: 0;
         transform: translateY(-50%);
-        width: 100%;
         margin: -80px 0 0;
+        width: 100%;
         text-align: center;
-        color: #fff;
+        color: $white;
         font-weight: normal;
     }
 }
@@ -1389,28 +1384,29 @@ p {
     transition: transform .25s;
 
     .frame {
-        background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
+        margin-top: -320px;
+        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
         background-repeat: no-repeat;
-        background-size: 1700px;
-        text-align: center;
-        font-size: 40px;
         background-position: -1130px -20px;
+        background-size: 1700px;
         padding: 120px 60px 140px 40px;
         text-align: center;
-        margin-top: -320px;
+        font-size: 40px;
 
         &::after {
-            content: '';
+            display: block;
             position: absolute;
-            background-image: url(../media/_Otter/Otter_Static_GreetingOne.png);
-            background-size: contain;
+            top: 400px;
+            left: 500px;
+
+            background-image: url('../media/_Otter/Otter_Static_GreetingOne.png');
             background-repeat: no-repeat;
             background-position: top left;
-            display: block;
+            background-size: contain;
+
             width: 600px;
             height: 400px;
-            left: 500px;
-            top: 400px;
+            content: '';
         }
 
         h2 {
@@ -1432,29 +1428,32 @@ p {
     transition: transform .25s;
 
     .frame {
-        background-image: url(../media/_Frames/SK_frames_speechbubbles.png);
-        background-repeat: no-repeat;
-        background-size: 1700px;
-        text-align: center;
-        font-size: 40px;
-        background-position: 0 0;
-        padding: 120px 90px 180px 130px;
-        text-align: center;
         margin-top: -320px;
         margin-left: -680px;
 
+        background-image: url('../media/_Frames/SK_frames_speechbubbles.png');
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 1700px;
+
+        padding: 120px 90px 180px 130px;
+        text-align: center;
+        font-size: 40px;
+
         &::after {
-            content: '';
+            display: block;
             position: absolute;
-            background-image: url(../media/_Otter/Otter_Static_peeringOverText.png);
-            background-size: contain;
+            top: 400px;
+            left: -100px;
+
+            background-image: url('../media/_Otter/Otter_Static_peeringOverText.png');
             background-repeat: no-repeat;
             background-position: top left;
-            display: block;
+            background-size: contain;
+
             width: 600px;
             height: 400px;
-            left: -100px;
-            top: 400px;
+            content: '';
         }
 
         h2 {
@@ -1464,11 +1463,11 @@ p {
 
         button {
             margin: 20px 10px 20px 260px;
-            width: 45px;
-            height: 45px;
-            background-image: url(../media/_Frames/SK_frames_canvas.png);
+            background-image: url('../media/_Frames/SK_frames_canvas.png');
             background-position: -1666px 0;
             background-size: 2500px;
+            width: 45px;
+            height: 45px;
         }
     }
 
@@ -1479,7 +1478,7 @@ p {
 }
 
 #collisionWarning {
-    background-color: rgba(88,189,63,.92);
+    background-color: $green-overlay;
 
     &.OPEN {
         z-index: 3;
@@ -1490,21 +1489,17 @@ p {
         margin: 0 auto;
     }
 
-    .copy {
-
-    }
-
     button {
         background-repeat: no-repeat;
         background-position: 0 0;
     }
 
     .toggle-collision-warning {
-        background-image: url(../media/_CollisionWarning/spritesheet-donotshow.png);
+        background-image: url('../media/_CollisionWarning/spritesheet-donotshow.png');
+        background-position: 0 -16px;
         background-size: 840px;
         width: 840px;
         height: 155px;
-        background-position: 0 -16px;
 
         &.active {
             background-position: 0 -130px;
@@ -1512,7 +1507,7 @@ p {
     }
 
     .close-collision-warning {
-        background-image: url(../media/_CollisionWarning/spritesheet-ok.png);
+        background-image: url('../media/_CollisionWarning/spritesheet-ok.png');
         background-size: 278px;
         width: 278px;
         height: 238px;
@@ -1528,13 +1523,13 @@ p {
         position: absolute;
         bottom: -170px;
         left: -200px;
-        width: 900px;
         z-index: -1;
+        width: 900px;
     }
 }
 
 #limitWarning {
-    background-color: rgba(120, 41, 187, .6);
+    background-color: $purple-overlay;
 
     &.OPEN {
         z-index: 3;
@@ -1543,51 +1538,46 @@ p {
     .screen-content {
         > div {
             position: absolute;
-            left: 420px;
             top: 170px;
-            font-family : 'CMWN';
-            font-size : 70px;
-            line-height : 75px;
-            letter-spacing : -0.7px;
-            color : #fff;
+            left: 420px;
             text-align: center;
-            text-shadow: #000 5px 5px 0;
+            text-shadow: $black 5px 5px 0;
+            line-height: 75px;
+            letter-spacing: -.7px;
+            color: $white;
+            font-family: 'CMWN';
+            font-size: 70px;
         }
     }
 
     .otter {
         position: absolute;
-        left: -400px;
         top: -160px;
-        width: 1300px;
+        left: -400px;
         z-index: 1;
+        width: 1300px;
     }
 
     .sign {
         position: absolute;
-        left: 260px;
         top: 0;
+        left: 260px;
     }
 
     button {
         position: absolute;
+        top: 510px;
+        left: 795px;
+
+        background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+
         width: 300px;
         height: 300px;
-        left: 795px;
-        top: 510px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-image: url($media-server + 'f/027b30f0d279ef41cd30eff22323051c.png');
 
         &:hover {
             background-image: url($media-server + 'f/a479811171cf084bf86af4eac1f6dc28.png');
         }
-    }
-}
-
-.pl-game.PAUSED {
-    &::before,
-    &::after {
-        display: none !important;
     }
 }
