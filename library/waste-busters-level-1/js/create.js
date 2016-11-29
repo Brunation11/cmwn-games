@@ -23,6 +23,6 @@ export default function () {
         bounceY: 0.2,
         gravityY: 300,
         rightFrames: [0, 1, 2, 3],
-        scale: [.25, .25],
+        scale: [.2, .2],
     });
 }

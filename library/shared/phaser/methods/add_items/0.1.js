@@ -31,6 +31,7 @@ export default function (groupOpts = {}, optsArray = []) {
         opts = _.defaults(opts, groupOpts.defaultOpts);
 
         let item = this[groupOpts.group].create(opts.left, opts.top, opts.image);
+
         item.scale.setTo(...opts.scale);
         if (opts.crop) {
             item.crop(new Phaser.Rectangle(...opts.crop));

@@ -61,19 +61,19 @@ export default {
         ];
 
         let bodies = [
-            [240, 48, 0, 44],
-            [350, 48, 0, 44],
-            [645, 48, 0, 44],
+            [200, 28, 0, 44],
+            [310, 28, 0, 44],
+            [605, 28, 0, 44],
         ];
 
         let locations = [
+            // [100, 100],
+            // [350, 200],
             [100, 300],
-            [200, 100],
         ];
 
-        _.each(locations, (location, k) => {
-            let i = k % crops.length;
-            // let i = _.random(crops.length - 1);
+        _.each(locations, location => {
+            let i = _.random(crops.length - 1);
             platformOpts.push({
                 left: location[0],
                 top: location[1],
