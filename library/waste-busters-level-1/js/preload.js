@@ -4,10 +4,11 @@ export default function () {
     loadAssets.call(this, 'image', [
     ['sky', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.sky.jpg'],
     ['clouds', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.clouds.jpg'],
+    ['ground', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.ground.png'],
     ]);
 
     loadAssets.call(this, 'spritesheet', [
-    ['dude', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 32, 48],
+    ['turtle', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 390, 396],
     ]);
 
     loadAssets.call(this, 'audio', [

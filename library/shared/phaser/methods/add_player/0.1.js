@@ -16,6 +16,7 @@ export default function (opts = {}) {
         rightFrames: [5, 6, 7, 8],
         rightFrameRate: 10,
         rightLoop: true,
+        scale: [1, 1],
     });
 
   // The player and its settings
@@ -29,6 +30,7 @@ export default function (opts = {}) {
     this.player.body.bounce.y = opts.bounceY;
     this.player.body.gravity.x = opts.gravityX;
     this.player.body.gravity.y = opts.gravityY;
+    this.player.scale.setTo(...opts.scale);
     this.player.body.collideWorldBounds = opts.collideWorldBounds;
     this.player.body.checkCollision.up = opts.checkCollisionUp;
     this.player.body.checkCollision.down = opts.checkCollisionDown;
