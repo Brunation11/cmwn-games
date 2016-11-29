@@ -9,13 +9,13 @@ body,
 body > div,
 body > div > div {
     margin: 0;
+    cursor: auto;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: auto;
 }
 
 html {
@@ -27,8 +27,8 @@ body > div > div {
     margin: auto;
     width: 960px;
     height: 540px;
-    font-size: 36px;
     color: $white;
+    font-size: 36px;
 
     .background {
         position: absolute;
@@ -100,13 +100,13 @@ button {
     font-size: inherit;
 
     &.close {
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        z-index: 2;
+        background-position: 562px 353px;
         width: 6%;
         height: 12%;
-        background-position: 562px 353px;
-        position: absolute;
-        right: 1%;
-        top: 1%;
-        z-index: 2;
 
         &:hover {
             background-position: 562px 140px;
@@ -136,9 +136,9 @@ button {
     }
 
     &.close-reveal {
+        background-position: -225px 420px;
         width: 55px;
         height: 50px;
-        background-position: -225px 420px;
 
         &.ENABLED:hover {
             background-position: -225px 676px;
@@ -146,9 +146,9 @@ button {
     }
 
     &.quit-yes {
+        background-position: -1830px 495px;
         width: 230px;
         height: 230px;
-        background-position: -1830px 495px;
 
         &:hover {
             background-position: -1830px 251px;
@@ -156,9 +156,9 @@ button {
     }
 
     &.quit-no {
+        background-position: -2080px 495px;
         width: 230px;
         height: 230px;
-        background-position: -2080px 495px;
 
         &:hover {
             background-position: -2080px 251px;
@@ -179,13 +179,13 @@ h2 {
 }
 
 h3 {
-    font-size: 30px;
     margin: 0;
+    font-size: 30px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
@@ -196,18 +196,18 @@ p {
 .canvas-src { display: none; }
 
 .screen {
+    display: none;
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    opacity: 0;
-    display: none;
     transition: opacity .5s, z-index 0s 1s;
+    opacity: 0;
     z-index: -1;
-    overflow: hidden;
     width: 960px;
     height: 540px;
+    overflow: hidden;
 
     &:not(.COMPLETE) {
         button {
@@ -218,9 +218,9 @@ p {
     }
 
     &.OPEN {
+        transition: opacity .5s, z-index 0s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s, z-index 0s;
     }
 
     &.READY {
@@ -230,23 +230,23 @@ p {
     &.GATED .next-screen {
         visibility: hidden;
         opacity: 0;
-        cursor: auto;
         z-index: -1;
+        cursor: auto;
     }
 
     .next-screen,
     .prev-screen {
         position: absolute;
-        visibility: visible;
         bottom: 2%;
+        visibility: visible;
         z-index: 2;
     }
 
     .next-screen {
         right: 1%;
+        transition: visibility 1s, opacity 1s;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 1s, opacity 1s;
     }
 }
 
@@ -254,11 +254,11 @@ p {
 .screen.COMPLETE .next-screen,
 .screen.REPLAY .next-screen {
     transform: rotate(0deg) translate3d(0, 0, 0);
-    pointer-events: auto;
     visibility: visible;
     opacity: 1;
-    cursor: pointer;
     z-index: 2;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .MENU.MENU-quit .menu .close {
@@ -272,29 +272,29 @@ p {
 
 // the following css is specific to this game
 .dropzone + ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
+    list-style-type: none;
 }
 
 .reveal {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    transition: opacity .5s, z-index 0s .6s;
     opacity: 0;
     z-index: -1;
-    transition: opacity .5s, z-index 0s .6s;
+    width: 100%;
+    height: 100%;
 
     div {
         position: absolute;
-        left: 0;
         top: 50%;
-        width: 100%;
-        height: 240px;
+        left: 0;
         margin-top: -120px;
         background-size: 100% 100%;
+        width: 100%;
+        height: 240px;
     }
 
     ul {
@@ -306,8 +306,8 @@ p {
             height: 100%;
 
             p {
-                position: absolute;
                 display: block;
+                position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
                 width: 100%;
@@ -322,20 +322,20 @@ p {
         position: absolute;
         right: 5px;
         bottom: 10px;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
         transition: opacity .5s ease .5s, visibility .25s ease .25s, z-index 0s .6s;
+        visibility: hidden;
+        opacity: 0;
+        cursor: pointer;
     }
 
     &.OPEN {
+        transition: opacity .5s;
         opacity: 1;
         z-index: 2;
-        transition: opacity .5s;
 
         .close-reveal {
-            opacity: 1;
             visibility: visible;
+            opacity: 1;
         }
     }
 }
@@ -353,8 +353,8 @@ p {
     &:not(.DEMO) {
         .reveal {
             .close-reveal {
-                opacity: 0;
                 visibility: hidden;
+                opacity: 0;
             }
         }
     }
@@ -371,27 +371,28 @@ p {
 
 #title {
     .center {
-        background-image: url('../media/images/title/background.png');
-        background-size: 55%;
-        background-repeat: no-repeat;
-        margin-left: 20%;
-        opacity: 0;
         transform: rotateY(90deg);
+        opacity: 0;
+        margin-left: 20%;
+
+        background-image: url('../media/images/title/background.png');
+        background-repeat: no-repeat;
+        background-size: 55%;
 
         &.COMPLETE {
-            opacity: 1;
-            background-size: 71%;
             transform: rotateY(0);
-            z-index: 1;
-            transform-origin: top left;
             transition: transform 2s, opacity 2s, background-size 1s;
+            opacity: 1;
+            z-index: 1;
+            background-size: 71%;
+            transform-origin: top left;
         }
     }
 
     .logo {
-        width: 60%;
-        margin-left: -31%;
         margin-top: -4%;
+        margin-left: -31%;
+        width: 60%;
     }
 
     &.OPEN {
@@ -411,10 +412,10 @@ p {
     }
 
     .next-screen {
+        z-index: 1;
         background-position: 0 6px;
         width: 240px;
         height: 208px;
-        z-index: 1;
 
         &:hover {
             background-position: 0 -207px;
@@ -435,15 +436,15 @@ p {
 
     .message {
         position: absolute;
-        background-image: url('../media/images/frame.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 46%;
-        width: 40%;
         top: 6%;
         right: 10%;
-        font-size: 1.4em;
+        background-image: url('../media/images/frame.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 40%;
+        height: 46%;
         text-align: center;
+        font-size: 1.4em;
 
         h3 {
             position: absolute;
@@ -454,14 +455,14 @@ p {
     }
 
     .next-screen {
-        background: url('../media/S_3/img_3.2.png');
-        background-size: cover;
-        background-position: 1px -3px;
-        width: 25%;
-        height: 44%;
         right: 18%;
         bottom: 7%;
         z-index: 1;
+        background: url('../media/S_3/img_3.2.png');
+        background-position: 1px -3px;
+        background-size: cover;
+        width: 25%;
+        height: 44%;
 
         &:hover {
             background-position: 238px 0;
@@ -472,34 +473,33 @@ p {
 #info-plant,
 #info-released {
     h2 {
-        width: 700px;
         margin: 20px auto;
+        width: 700px;
         text-align: center;
-        font-size: 30px;
         color: $black;
+        font-size: 30px;
     }
 }
 
 #flush-it {
     .dropzone {
         position: absolute;
-        width: 20%;
-        height: 41%;
         top: 38%;
         left: 40%;
-        // border: 1px solid black;
+        width: 20%;
+        height: 41%;
 
         &::before {
             position: absolute;
-            content: '';
+            top: -95%;
+            left: -29%;
             background: url('../media/S_6/img_6.1.png');
-            background-size: 90%;
             background-repeat: no-repeat;
             background-position: 13px 0;
+            background-size: 90%;
             width: 159%;
             height: 246%;
-            left: -29%;
-            top: -95%;
+            content: '';
         }
 
         &.disable {
@@ -552,15 +552,15 @@ p {
 
             div.paper {
                 &::after {
-                    height: 440%;
                     top: -170%;
                     background-position: 9px -79px;
+                    height: 440%;
                 }
 
                 &.CORRECt::after {
-                    width: 440%;
                     left: -170%;
                     background-position: 10px -151px;
+                    width: 440%;
                 }
             }
         }
@@ -571,15 +571,15 @@ p {
 
             div.sheets {
                 &::after {
-                    width: 340%;
                     left: -120%;
                     background-position: 13px 211px;
+                    width: 340%;
                 }
 
                 &.CORRECt::after {
-                    width: 440%;
                     left: -170%;
                     background-position: 2px 306px;
+                    width: 440%;
                 }
             }
         }
@@ -590,15 +590,15 @@ p {
 
             div.fats {
                 &::after {
-                    height: 370%;
                     top: -135%;
                     background-position: 21px 497px;
+                    height: 370%;
                 }
 
                 &.CORRECt::after {
-                    height: 570%;
                     top: -235%;
                     background-position: 25px 746px;
+                    height: 570%;
                 }
             }
         }
@@ -609,15 +609,15 @@ p {
 
             div.cosmetics {
                 &::after {
-                    height: 400%;
                     top: -150%;
                     background-position: 9px 108px;
+                    height: 400%;
                 }
 
                 &.CORRECt::after {
-                    height: 540%;
                     top: -220%;
                     background-position: 4px 149px;
+                    height: 540%;
                 }
             }
         }
@@ -628,15 +628,15 @@ p {
 
             div.bandages {
                 &::after {
-                    width: 340%;
                     left: -120%;
                     background-position: 11px 400px;
+                    width: 340%;
                 }
 
                 &.CORRECt::after {
-                    width: 440%;
                     left: -170%;
                     background-position: 0 589px;
+                    width: 440%;
                 }
             }
         }
@@ -647,19 +647,19 @@ p {
 
             div.litter {
                 &::after {
-                    width: 360%;
-                    left: -130%;
-                    height: 370%;
                     top: -135%;
+                    left: -130%;
                     background-position: 111px 9px;
+                    width: 360%;
+                    height: 370%;
                 }
 
                 &.CORRECt::after {
-                    width: 480%;
-                    left: -190%;
-                    height: 490%;
                     top: -195%;
+                    left: -190%;
                     background-position: 153px 0;
+                    width: 480%;
+                    height: 490%;
                 }
             }
         }
@@ -670,15 +670,15 @@ p {
 
             div.cotton {
                 &::after {
-                    width: 320%;
                     left: -110%;
                     background-position: 105px 600px;
+                    width: 320%;
                 }
 
                 &.CORRECt::after {
-                    width: 440%;
                     left: -170%;
                     background-position: 150px 891px;
+                    width: 440%;
                 }
             }
         }
@@ -704,15 +704,15 @@ p {
 
             div.floss {
                 &::after {
-                    height: 330%;
                     top: -115%;
                     background-position: 109px 505px;
+                    height: 330%;
                 }
 
                 &.CORRECt::after {
-                    height: 440%;
                     top: -160%;
                     background-position: 151px 745px;
+                    height: 440%;
                 }
             }
         }
@@ -723,15 +723,15 @@ p {
 
             div.hair {
                 &::after {
-                    height: 380%;
                     top: -140%;
                     background-position: 113px 207px;
+                    height: 380%;
                 }
 
                 &.CORRECt::after {
-                    height: 510%;
                     top: -205%;
                     background-position: 159px 297px;
+                    height: 510%;
                 }
             }
         }
@@ -742,15 +742,15 @@ p {
 
             div.meds {
                 &::after {
-                    height: 380%;
                     top: -140%;
                     background-position: 114px 406px;
+                    height: 380%;
                 }
 
                 &.CORRECt::after {
-                    height: 500%;
                     top: -210%;
                     background-position: 160px 596px;
+                    height: 500%;
                 }
             }
         }
@@ -761,15 +761,15 @@ p {
 
             div.chemicals {
                 &::after {
-                    height: 370%;
                     top: -135%;
                     background-position: 115px 109px;
+                    height: 370%;
                 }
 
                 &.CORRECt::after {
-                    height: 490%;
                     top: -205%;
                     background-position: 162px 150px;
+                    height: 490%;
                 }
             }
         }
@@ -781,26 +781,26 @@ p {
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 300%;
-                height: 300%;
-                left: -100%;
                 top: -100%;
+                left: -100%;
+                transition: opacity .25s .25s;
+                opacity: 1;
                 background: url('../media/S_6/sprite_6.2.png');
                 background-size: 200px 698px;
-                opacity: 1;
-                transition: opacity .25s .25s;
+                width: 300%;
+                height: 300%;
+                content: '';
             }
 
             &.CORRECT {
                 pointer-events: none;
 
                 &::after {
-                    width: 400%;
-                    height: 400%;
                     top: -150%;
                     left: -150%;
                     background-size: 300px 1047px;
+                    width: 400%;
+                    height: 400%;
                 }
             }
         }
@@ -820,11 +820,11 @@ p {
 
     .frame {
         position: absolute;
-        width: 28%;
-        height: 88%;
+        top: 1%;
         background: url('../media/images/frame-tall.png');
         background-size: cover;
-        top: 1%;
+        width: 28%;
+        height: 88%;
 
         &.left {
             left: 7%;
@@ -837,14 +837,16 @@ p {
 
     button.flush {
         position: absolute;
+        top: 3%;
+        left: 43%;
+        z-index: 1;
+
         background: url('../media/S_6/img_6.2.png');
-        background-size: 210%;
         background-position: -3px -11px;
+        background-size: 210%;
+
         width: 14%;
         height: 22%;
-        left: 43%;
-        top: 3%;
-        z-index: 1;
 
         &:hover {
             background-position: 135px -11px;
@@ -862,9 +864,9 @@ p {
         transition-delay: 0s;
 
         > div {
-            height: 100%;
             top: 0;
             margin: 0;
+            height: 100%;
 
             li.reveal.OPEN {
                 display: inline-block;
@@ -884,12 +886,12 @@ p {
                     animation: none;
 
                     h3 {
+                        position: absolute;
+                        top: 52%;
+                        left: 49%;
                         text-align: center;
                         color: $black;
                         font-size: 25px;
-                        top: 52%;
-                        left: 49%;
-                        position: absolute;
                     }
 
                     &::after {
@@ -898,14 +900,14 @@ p {
                 }
 
                 &::after {
-                    content: '';
                     position: absolute;
-                    width: 45%;
-                    height: 15%;
                     top: 32%;
                     left: 27%;
                     background: url('../media/S_6/sprite_6.1.png');
                     background-size: cover;
+                    width: 45%;
+                    height: 15%;
+                    content: '';
                 }
 
                 &.wipes::after {
@@ -966,24 +968,24 @@ p {
 
                 h3 {
                     position: absolute;
-                    width: 80%;
                     top: 57%;
                     left: 49%;
                     transform: translateX(-50%) translateY(-50%);
-                    font-size: 22px;
-                    color: $black;
+                    width: 80%;
                     text-align: center;
+                    color: $black;
+                    font-size: 22px;
                 }
             }
         }
 
         .close-reveal {
-            left: 65%;
             top: 70%;
-            width: 7%;
-            height: 10%;
+            left: 65%;
             z-index: 2;
             background-position: 777px -82px;
+            width: 7%;
+            height: 10%;
         }
     }
 }
@@ -995,9 +997,9 @@ p {
         position: absolute;
 
         &.banner {
-            width: 80%;
             top: 62%;
             left: 10%;
+            width: 80%;
         }
 
         &.toilet {
@@ -1009,13 +1011,13 @@ p {
 
     .message {
         position: absolute;
-        background-image: url('../media/images/frame.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 56%;
-        width: 50%;
         top: 6%;
         right: 7%;
+        background-image: url('../media/images/frame.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 50%;
+        height: 56%;
         text-align: center;
 
         p {
@@ -1023,8 +1025,8 @@ p {
             top: 18%;
             left: 8%;
             color: $black;
-            font-weight: 600;
             font-size: 33px;
+            font-weight: 600;
         }
     }
 }
@@ -1038,15 +1040,15 @@ p {
 
 #make-a-difference {
     img.banner {
-        width: 40%;
         top: 58%;
         left: 27%;
+        width: 40%;
     }
 
     .message p {
         left: 8%;
-        font-weight: 600;
         font-size: 31px;
+        font-weight: 600;
     }
 }
 
@@ -1054,11 +1056,11 @@ p {
     .misc {
         * {
             position: absolute;
-            width: 20%;
-            height: 21%;
+            animation-iteration-count: infinite;
             background: url('../media/images/sprite_fish.png');
             background-size: 750px 282px;
-            animation-iteration-count: infinite;
+            width: 20%;
+            height: 21%;
 
             .PAUSED & {
                 animation-play-state: paused;
@@ -1066,12 +1068,12 @@ p {
         }
 
         .fish-1 {
-            background-position: 0 10px;
-            width: 16%;
-            animation-duration: 30s;
             bottom: 20%;
             left: -20%;
             animation-name: fishLeft;
+            animation-duration: 30s;
+            background-position: 0 10px;
+            width: 16%;
 
             &.sad {
                 background-position: 0 142px;
@@ -1079,12 +1081,12 @@ p {
         }
 
         .fish-2 {
-            background-position: 584px 4px;
+            right: -20%;
+            bottom: 10%;
+            animation-name: fishRight;
             animation-duration: 25s;
             animation-delay: 1s;
-            bottom: 10%;
-            right: -20%;
-            animation-name: fishRight;
+            background-position: 584px 4px;
 
             &.sad {
                 background-position: 584px 137px;
@@ -1095,9 +1097,9 @@ p {
             bottom: 14%;
             left: -20%;
 
+            animation-name: fishLeft;
             animation-duration: 20s;
             animation-delay: 2s;
-            animation-name: fishLeft;
 
             background-position: 403px 0;
 
@@ -1107,8 +1109,8 @@ p {
         }
 
         .fish-4 {
-            bottom: 8%;
             right: -20%;
+            bottom: 8%;
 
             animation-name: fishRight;
             animation-duration: 15s;
@@ -1194,8 +1196,8 @@ p {
         top: 9%;
         right: 1%;
         color: $blue;
-        font-weight: 900;
         font-size: 40px;
+        font-weight: 900;
 
         span {
             text-shadow: 0 5px 10px $black;
