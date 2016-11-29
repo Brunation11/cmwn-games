@@ -1,16 +1,21 @@
+@import 'variables';
+
 * {
     box-sizing: border-box;
 }
 
-html, body, body > div, body > div > div {
+html,
+body,
+body > div,
+body > div > div {
     margin: 0;
+    cursor: auto;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: auto;
 }
 
 html {
@@ -20,39 +25,39 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
+    background: url('../media/images/background.png') bottom center no-repeat;
+    background-size: cover;
     width: 960px;
     height: 540px;
+    color: $white;
     font-size: 36px;
-    color: #fff;
-    background: url(../media/images/background.png) bottom center no-repeat;
-    background-size: cover;
 }
 
 button {
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
 
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
 
     &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 10px;
+        background: url('../media/images/button-quit.png');
+        background-size: contain;
         width: 40px;
         height: 40px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 10px;
-        z-index: 2;
-        background: url(../media/images/button-quit.png);
-        background-size: contain;
 
         &:hover {
-            background: url(../media/images/button-quit-hover.png);
+            background: url('../media/images/button-quit-hover.png');
             background-size: contain;
         }
     }
@@ -64,29 +69,29 @@ button {
     }
 
     &.next-screen {
-        background: url(../media/images/button-next.png);
+        background: url('../media/images/button-next.png');
         background-size: contain;
 
         &:hover {
-            background: url(../media/images/button-next-hover.png);
+            background: url('../media/images/button-next-hover.png');
             background-size: contain;
         }
     }
 
     &.prev-screen {
-        background: url(../media/images/button-prev.png);
+        background: url('../media/images/button-prev.png');
         background-size: contain;
 
         &:hover {
-            background: url(../media/images/button-prev-hover.png);
+            background: url('../media/images/button-prev-hover.png');
             background-size: contain;
         }
     }
 
     &.close-reveal {
+        background-position: -225px 420px;
         width: 55px;
         height: 50px;
-        background-position: -225px 420px;
 
         &.ENABLED:hover {
             background-position: -225px 676px;
@@ -94,9 +99,9 @@ button {
     }
 
     &.quit-yes {
+        background-position: -1830px 495px;
         width: 230px;
         height: 230px;
-        background-position: -1830px 495px;
 
         &:hover {
             background-position: -1830px 251px;
@@ -104,9 +109,9 @@ button {
     }
 
     &.quit-no {
+        background-position: -2080px 495px;
         width: 230px;
         height: 230px;
-        background-position: -2080px 495px;
 
         &:hover {
             background-position: -2080px 251px;
@@ -128,13 +133,13 @@ h2 {
 }
 
 h3 {
-    font-size: 20px;
     margin: 0;
+    font-size: 20px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
@@ -145,16 +150,16 @@ p {
 .canvas-src { display: none; }
 
 .screen {
+    display: none;
     position: absolute;
     top: 50%;
     left: 0;
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
+    margin-top: -270px;
     width: 960px;
     height: 540px;
-    margin-top: -270px;
-    opacity: 0;
-    display: none;
-    transition: opacity 1s, transform .5s;
-    transform: translateX(100%);
 
     &:not(.COMPLETE) {
         button {
@@ -165,11 +170,9 @@ p {
     }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
@@ -177,57 +180,48 @@ p {
 }
 
 .screen.LEAVE {
-    opacity: 0;
     transform: translateX(-100%);
+    opacity: 0;
 }
 
 .screen .next-screen,
 .screen .prev-screen {
     position: absolute;
-    visibility: visible;
     bottom: 42%;
-
+    visibility: visible;
     z-index: 2;
+
 }
 
 .screen .next-screen {
     right: 11%;
+    transition: visibility 1s, opacity 1s;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s, opacity 1s;
 }
 
 .screen.GATED .next-screen {
     visibility: hidden;
     opacity: 0;
-    cursor: auto;
     z-index: -1;
+    cursor: auto;
 }
 
 .pl-game.DEMO .screen .next-screen,
 .screen.COMPLETE .next-screen {
+    transform: rotate(0deg);
     visibility: visible;
     opacity: 1;
-    transform: rotate(0deg);
-    cursor: pointer;
     z-index: 1;
+    cursor: pointer;
 }
 
 .pl-game.MENU.MENU-quit .menu .close {
     visibility: hidden;
 }
 
-.screen .next-screen:hover {
-
-}
-
 .screen .prev-screen {
     left: 12%;
-
-}
-
-.screen .prev-screen:hover {
-
 }
 
 // the following css is specific to this game
@@ -240,23 +234,22 @@ p {
 .reveal {
     display: none;
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    transition: opacity .5s, z-index 0s .6s;
     opacity: 0;
     z-index: -1;
-    transition: opacity .5s, z-index 0s .6s;
+    width: 100%;
+    height: 100%;
 
     div {
         position: absolute;
-        left: 0;
         top: 50%;
+        left: 0;
+        margin-top: -120px;
+        background-size: 100% 100%;
         width: 100%;
         height: 240px;
-        margin-top: -120px;
-        // background-image: url(../media/_Frames/FR_1.png);
-        background-size: 100% 100%;
     }
 
     ul {
@@ -268,13 +261,13 @@ p {
             height: 100%;
 
             p {
-                position: absolute;
                 display: block;
+                position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
                 width: 100%;
                 text-align: center;
-                color: #000;
+                color: $black;
             }
 
         }
@@ -284,15 +277,15 @@ p {
         position: absolute;
         right: 5px;
         bottom: 10px;
+        transition: opacity 1s;
         opacity: 1;
         cursor: pointer;
-        transition: opacity 1s;
     }
 
     &.OPEN {
+        transition: opacity .5s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s;
     }
 }
 
@@ -306,7 +299,7 @@ p {
 }
 
 .video {
-    background: url(../media/_Frames/FR_2.png) center center no-repeat;
+    background: url('../media/_Frames/FR_2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -319,41 +312,31 @@ p {
         position: absolute;
 
         &.title {
-            width: 70%;
-            left: 15%;
             top: 8%;
+            left: 15%;
             animation-name: slideInRight;
             animation-delay: 1.5s;
+            width: 70%;
         }
     }
 
     button {
         &.next-screen {
+            right: 3%;
+            bottom: 1%;
+            background: url('../media/images/button-play.png');
+            background-size: contain;
             width: 120px;
             height: 68px;
-            bottom: 1%;
-            right: 3%;
-            background: url(../media/images/button-play.png);
-            background-size: contain;
 
             &:hover {
-                background: url(../media/images/button-play-hover.png);
+                background: url('../media/images/button-play-hover.png');
                 background-size: contain;
             }
         }
 
         &.prev-screen {
             display: none;
-        }
-    }
-
-    &.READY {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 
@@ -367,27 +350,27 @@ p {
         position: absolute;
 
         &.bear {
-            bottom: 11px;
             right: 13px;
+            bottom: 11px;
             width: 50%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
-            width: 50%;
-            text-align: center;
             position: absolute;
             left: 3%;
+            width: 50%;
+            text-align: center;
+            color: $black;
 
             &:nth-of-type(1) {
                 top: 20%;
@@ -395,16 +378,6 @@ p {
 
             &:nth-of-type(2) {
                 top: 48%;
-            }
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
             }
         }
     }
@@ -422,31 +395,21 @@ p {
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 44%;
+            left: 53%;
             width: 50%;
             text-align: center;
-            position: absolute;
-            left: 53%;
-            top: 44%;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            color: $black;
         }
     }
 }
@@ -463,43 +426,43 @@ p {
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 44%;
+            left: 53%;
             width: 50%;
             text-align: center;
-            position: absolute;
-            left: 53%;
-            top: 44%;
+            color: $black;
         }
     }
 
     .selectable-reveal {
         .selectable {
             position: absolute;
+            top: -9%;
+            left: 70%;
             width: 30%;
             height: 100%;
-            left: 70%;
-            top: -9%;
 
 
             li {
                 position: absolute;
+                background: url('../media/images/button-radio.png');
+                background-repeat: no-repeat;
+                background-position: top left;
+                background-size: contain;
+                padding-left: 46px;
                 width: 70%;
                 height: 10%;
-                background: url(../media/images/button-radio.png);
-                background-size: contain;
-                background-position: top left;
-                background-repeat: no-repeat;
-                padding-left: 46px;
-                color: #000;
+                color: $black;
 
                 &.white {
                     top: 25%;
@@ -514,21 +477,11 @@ p {
                 }
 
                 &.SELECTED {
-                    background: url(../media/images/button-radio-selected.png);
-                    background-size: contain;
-                    background-position: top left;
+                    background: url('../media/images/button-radio-selected.png');
                     background-repeat: no-repeat;
+                    background-position: top left;
+                    background-size: contain;
                 }
-            }
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
             }
         }
     }
@@ -546,31 +499,21 @@ p {
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 35%;
+            left: 53%;
             width: 50%;
             text-align: center;
-            position: absolute;
-            left: 53%;
-            top: 35%;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            color: $black;
         }
     }
 }
@@ -587,39 +530,26 @@ p {
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 44%;
+            left: 53%;
             width: 50%;
             text-align: center;
-            position: absolute;
-            left: 53%;
-            top: 44%;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            color: $black;
         }
     }
 }
 
 #choose-where {
-    img {
-    }
-
     .selectable-reveal > div {
         position: absolute;
         width: 100%;
@@ -627,56 +557,60 @@ p {
     }
 
     canvas {
+        display: none;
         position: absolute;
+        z-index: 2;
         width: 100%;
         height: 100%;
-        z-index: 2;
         pointer-events: none;
-        display: none;
     }
 
     .map {
         position: absolute;
-        background: url(../media/images/map/img_9.1.png);
+        top: 1%;
+        left: 0;
+        background: url('../media/images/map/img_9.1.png');
+        background-repeat: no-repeat;
         background-position: 221px 0;
         background-size: 575px 575px;
-        background-repeat: no-repeat;
         width: 100%;
         height: 100%;
-        left: 0;
-        top: 1%;
 
         .selectable-reveal {
             .selectable-canvas {
                 position: absolute;
-                list-style-type: none;
-                padding: 0;
+                left: 23%;
                 margin: 0;
+                padding: 0;
                 width: 60%;
                 height: 100%;
-                left: 23%;
+                list-style-type: none;
 
                 li {
-                    padding: 0;
-                    margin: 0;
                     position: static;
+                    margin: 0;
+                    padding: 0;
 
                     img {
-                        width: 100%;
                         opacity: 0;
+                        width: 100%;
 
+                        // scss-lint:disable NestingDepth
                         &.border,
                         &.labels {
+                            opacity: 1;
                             z-index: 1;
                             width: 100%;
-                            opacity: 1;
                         }
+                        // scss-lint:enable NestingDepth
                     }
 
                     &.HIGHLIGHTED {
+                        // scss-lint:disable NestingDepth
                         img {
                             opacity: 1;
                         }
+                        // scss-lint:enable NestingDepth
                     }
                 }
             }
@@ -690,39 +624,29 @@ p {
 
         &.banner {
             top: 20%;
-            width: 60%;
             left: 50%;
             transform: translateX(-50%);
+            width: 60%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
-            width: 50%;
-            text-align: center;
             position: absolute;
+            top: 55%;
             left: 50%;
             transform: translateX(-50%);
-            top: 55%;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            width: 50%;
+            text-align: center;
+            color: $black;
         }
     }
 }
@@ -748,19 +672,19 @@ p {
     }
 
     .cannon {
+        display: inline-block;
         position: absolute;
-        text-align: center;
-        background-image: url(../media/images/cannon-bears/background.png);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 180px;
-        width: 100%;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        display: inline-block;
+        background-image: url('../media/images/cannon-bears/background.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        width: 100%;
+        height: 180px;
         overflow: hidden;
+        text-align: center;
 
 
         &.FIRE {
@@ -769,8 +693,8 @@ p {
                  *    Normaly I would define the transition on the default rule but this way
                  *    the animation will not play when the 'LAUNCHED' flag is removed.
                  */
-                transition: transform .5s cubic-bezier(0, 0, .2, 1);
                 transform: translateY(-100px) scale(.3);
+                transition: transform .5s cubic-bezier(0, 0, .2, 1);
             }
         }
 
@@ -781,32 +705,31 @@ p {
         }
 
         .ball {
-            width: 90px;
-            cursor: pointer;
             transform: translateY(100px);
+            cursor: pointer;
+            width: 90px;
         }
     }
 
     .carousel {
         position: absolute;
-        white-space: nowrap;
-        width: 80%;
         top: 15%;
         left: 10%;
+        width: 80%;
         overflow: hidden;
+        white-space: nowrap;
 
         > * {
-            width: 100%;
-            max-height: 100%;
-            transform: translate3d(0,0,0);
-            box-sizing: border-box;
-            position: relative;
             display: inline-block;
+            position: relative;
+            transform: translate3d(0, 0, 0);
+            transition: margin 0s;
+            margin-right: 45px;
+            margin-left: 0;
             width: 250px;
             height: 250px;
-            margin-left: 0;
-            margin-right: 45px;
-            transition: margin 0s;
+            max-height: 100%;
+            box-sizing: border-box;
         }
 
         .LEAVE {
@@ -823,13 +746,13 @@ p {
 
     .score {
         position: absolute;
-        background: url(../media/images/score-bears/background.png);
-        background-size: cover;
-        background-position: -6px 0;
-        width: 29%;
-        height: 16%;
         top: 1%;
         left: 2%;
+        background: url('../media/images/score-bears/background.png');
+        background-position: -6px 0;
+        background-size: cover;
+        width: 29%;
+        height: 16%;
 
         &.score-1 {
             background-position: -294px 0;
@@ -860,20 +783,20 @@ p {
         display: inline-block;
 
         img {
-            opacity: 0;
             position: absolute;
-            width: 30%;
             top: 50%;
             left: 35%;
+            opacity: 0;
+            width: 30%;
         }
 
         &.OPEN {
             opacity: 1;
 
             img.OPEN {
-                opacity: 1;
                 animation-name: fadeOutUp;
                 animation-delay: 1s;
+                opacity: 1;
             }
         }
     }
@@ -885,40 +808,30 @@ p {
 
         &.banner {
             top: 20%;
-            width: 60%;
             left: 50%;
             transform: translateX(-50%);
+            width: 60%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
-            width: 50%;
-            text-align: center;
             position: absolute;
+            top: 65%;
             left: 50%;
             transform: translateX(-50%);
-            top: 65%;
+            width: 50%;
+            text-align: center;
+            color: $black;
             font-size: 30px;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -935,32 +848,22 @@ p {
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 30%;
+            left: 46%;
             width: 50%;
             text-align: center;
-            position: absolute;
-            left: 46%;
-            top: 30%;
+            color: $black;
             font-size: 25px;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -972,39 +875,29 @@ p {
         &.bear {
             top: -33%;
             left: 50%;
-            width: 63%;
             transform: translateX(-50%);
+            width: 63%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 55%;
+            color: $black;
             font-size: 25px;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -1016,19 +909,19 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 63%;
             transform: translateX(-50%);
+            width: 63%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .item {
             width: 15%;
@@ -1060,12 +953,11 @@ p {
         }
 
         p {
-            color: #000;
+            position: absolute;
             width: 60%;
             text-align: center;
-            position: absolute;
+            color: $black;
             font-size: 20px;
-            text-align: center;
 
             &.bowl {
                 top: 40%;
@@ -1096,27 +988,17 @@ p {
 
     .print {
         position: absolute;
-        width: 23%;
-        height: 7%;
         bottom: 3%;
         left: 50%;
         transform: translateX(-50%);
-        background: url(../media/images/S_15/Img_15.7b.png) no-repeat center;
+        background: url('../media/images/S_15/Img_15.7b.png') no-repeat center;
         background-size: 100%;
         cursor: pointer;
+        width: 23%;
+        height: 7%;
 
         &:hover {
-            background-image: url(../media/images/S_15/Img_15.7a.png);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            background-image: url('../media/images/S_15/Img_15.7a.png');
         }
     }
 }
@@ -1128,19 +1010,19 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 40%;
             transform: translateX(-50%);
+            width: 40%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .item {
             width: 15%;
@@ -1162,12 +1044,11 @@ p {
         }
 
         p {
-            color: #000;
+            position: absolute;
             width: 60%;
             text-align: center;
-            position: absolute;
+            color: $black;
             font-size: 20px;
-            text-align: center;
 
             &.bowl {
                 top: 50%;
@@ -1186,24 +1067,14 @@ p {
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 70%;
+            color: $black;
             font-size: 25px;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -1215,19 +1086,19 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 42%;
             transform: translateX(-50%);
+            width: 42%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .item {
             width: 15%;
@@ -1244,12 +1115,11 @@ p {
         }
 
         p {
-            color: #000;
+            position: absolute;
             width: 60%;
             text-align: center;
-            position: absolute;
+            color: $black;
             font-size: 20px;
-            text-align: center;
 
             &.oil {
                 top: 40%;
@@ -1269,24 +1139,14 @@ p {
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 60%;
+            color: $black;
             font-size: 25px;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -1298,52 +1158,41 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 45%;
             transform: translateX(-50%);
+            width: 45%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
 
         p {
-            color: #000;
-            width: 80%;
-            text-align: center;
             position: absolute;
-            font-size: 20px;
-            text-align: center;
             top: 44%;
             left: 50%;
             transform: translateX(-50%);
+            width: 80%;
+            text-align: center;
+            color: $black;
+            font-size: 20px;
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 30%;
+            color: $black;
             font-size: 25px;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -1355,52 +1204,41 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 45%;
             transform: translateX(-50%);
+            width: 45%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
 
         p {
-            color: #000;
-            width: 80%;
-            text-align: center;
             position: absolute;
-            font-size: 20px;
-            text-align: center;
             top: 50%;
             left: 50%;
             transform: translateX(-50%);
+            width: 80%;
+            text-align: center;
+            color: $black;
+            font-size: 20px;
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 36%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 36%;
+            color: $black;
             font-size: 25px;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
         }
     }
 }
@@ -1412,78 +1250,68 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 90%;
             transform: translateX(-50%);
+            width: 90%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .left {
             position: absolute;
-            width: 50%;
-            height: 100%;
             bottom: 10%;
-            background-image: url(../media/images/hands-bears/left_a.png);
-            background-size: 95%;
+            background-image: url('../media/images/hands-bears/left_a.png');
             background-repeat: no-repeat;
             background-position: bottom right;
+            background-size: 95%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/hands-bears/left_b.png');
+                    background-repeat: no-repeat;
+                    background-position: bottom right;
+                    background-size: 95%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/hands-bears/left_b.png);
-                    background-size: 95%;
-                    background-position: bottom right;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
             }
         }
 
         .right {
             position: absolute;
-            width: 50%;
-            height: 100%;
-            left: 50%;
             bottom: 10%;
-            background-image: url(../media/images/hands-bears/right_a.png);
-            background-size: 95%;
+            left: 50%;
+            background-image: url('../media/images/hands-bears/right_a.png');
             background-repeat: no-repeat;
             background-position: bottom left;
+            background-size: 95%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/hands-bears/right_b.png');
+                    background-repeat: no-repeat;
+                    background-position: bottom left;
+                    background-size: 95%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/hands-bears/right_b.png);
-                    background-size: 95%;
-                    background-position: bottom left;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
-            }
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
             }
         }
     }
@@ -1496,78 +1324,68 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 90%;
             transform: translateX(-50%);
+            width: 90%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .oil {
             position: absolute;
-            width: 50%;
-            height: 100%;
             bottom: 10%;
-            background-image: url(../media/images/shortening-bears/shortening_a.png);
-            background-size: 80%;
+            background-image: url('../media/images/shortening-bears/shortening_a.png');
             background-repeat: no-repeat;
             background-position: right 150px;
+            background-size: 80%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/shortening-bears/shortening_b.png');
+                    background-repeat: no-repeat;
+                    background-position: right 150px;
+                    background-size: 80%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/shortening-bears/shortening_b.png);
-                    background-size: 80%;
-                    background-position: right 150px;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
             }
         }
 
         .bag {
             position: absolute;
-            width: 50%;
-            height: 100%;
-            left: 50%;
             bottom: 10%;
-            background-image: url(../media/images/shortening-bears/bag_a.png);
-            background-size: 80%;
+            left: 50%;
+            background-image: url('../media/images/shortening-bears/bag_a.png');
             background-repeat: no-repeat;
             background-position: bottom left;
+            background-size: 80%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/shortening-bears/bag_b.png');
+                    background-repeat: no-repeat;
+                    background-position: bottom left;
+                    background-size: 80%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/shortening-bears/bag_b.png);
-                    background-size: 80%;
-                    background-position: bottom left;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
-            }
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
             }
         }
     }
@@ -1580,89 +1398,79 @@ p {
         &.banner {
             top: 38%;
             left: 50%;
-            width: 70%;
             transform: translateX(-50%);
+            width: 70%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .cold {
             position: absolute;
-            width: 50%;
-            height: 100%;
             bottom: 5%;
-            background-image: url(../media/images/cold-bears/cold_a.png);
-            background-size: 55%;
+            background-image: url('../media/images/cold-bears/cold_a.png');
             background-repeat: no-repeat;
             background-position: 100px 238px;
+            background-size: 55%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/cold-bears/cold_b.png');
+                    background-repeat: no-repeat;
+                    background-position: 100px 237px;
+                    background-size: 55%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/cold-bears/cold_b.png);
-                    background-size: 55%;
-                    background-position: 100px 237px;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
             }
         }
 
         .warm {
             position: absolute;
-            width: 50%;
-            height: 100%;
-            left: 50%;
             bottom: 5%;
-            background-image: url(../media/images/cold-bears/warm_a.png);
-            background-size: 55%;
+            left: 50%;
+            background-image: url('../media/images/cold-bears/warm_a.png');
             background-repeat: no-repeat;
             background-position: 50px 250px;
+            background-size: 55%;
+            width: 50%;
+            height: 100%;
 
             &:hover,
             &.SELECTED {
                 &::after {
                     position: absolute;
-                    content: '';
+                    background-image: url('../media/images/cold-bears/warm_b.png');
+                    background-repeat: no-repeat;
+                    background-position: 45px 250px;
+                    background-size: 55%;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../media/images/cold-bears/warm_b.png);
-                    background-size: 55%;
-                    background-position: 45px 250px;
-                    background-repeat: no-repeat;
+                    content: '';
                 }
             }
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 12%;
-            transform: translateX(-50%);
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            color: $black;
         }
     }
 }
@@ -1674,35 +1482,35 @@ p {
         &.banner {
             top: -18%;
             left: 50%;
-            width: 95%;
             transform: translateX(-50%);
+            width: 95%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         .feet {
             position: absolute;
-            width: 25%;
-            height: 44%;
             top: 27%;
             left: 10%;
-            background-image: url(../media/images/features-bears/feet_a.png);
-            background-size: contain;
-            background-repeat: no-repeat;
             transition: top .5s;
+            background-image: url('../media/images/features-bears/feet_a.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 25%;
+            height: 44%;
 
             &:hover {
-                background-image: url(../media/images/features-bears/feet_b.png);
-                background-size: contain;
+                background-image: url('../media/images/features-bears/feet_b.png');
                 background-repeat: no-repeat;
+                background-size: contain;
             }
 
             &.HIGHLIGHTED {
@@ -1716,20 +1524,20 @@ p {
 
         .ears {
             position: absolute;
-            width: 25%;
-            height: 44%;
+            top: 27%;
             left: 50%;
             transform: translateX(-50%);
-            top: 27%;
-            background-image: url(../media/images/features-bears/ears_a.png);
-            background-size: contain;
-            background-repeat: no-repeat;
             transition: top .5s;
+            background-image: url('../media/images/features-bears/ears_a.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 25%;
+            height: 44%;
 
             &:hover {
-                background-image: url(../media/images/features-bears/ears_b.png);
-                background-size: contain;
+                background-image: url('../media/images/features-bears/ears_b.png');
                 background-repeat: no-repeat;
+                background-size: contain;
             }
 
             &.HIGHLIGHTED {
@@ -1743,19 +1551,19 @@ p {
 
         .coat {
             position: absolute;
+            top: 27%;
+            right: 10%;
+            transition: top .5s;
+            background-image: url('../media/images/features-bears/coat_a.png');
+            background-repeat: no-repeat;
+            background-size: contain;
             width: 25%;
             height: 44%;
-            right: 10%;
-            top: 27%;
-            background-image: url(../media/images/features-bears/coat_a.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            transition: top .5s;
 
             &:hover {
-                background-image: url(../media/images/features-bears/coat_b.png);
-                background-size: contain;
+                background-image: url('../media/images/features-bears/coat_b.png');
                 background-repeat: no-repeat;
+                background-size: contain;
             }
 
             &.HIGHLIGHTED {
@@ -1768,25 +1576,15 @@ p {
         }
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 95%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 1s ease-in;
+            opacity: 0;
             width: 100%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 95%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 1s ease-in;
-        }
-    }
-
-    &.READY.OPEN {
-        img {
-        }
-
-        &.COMPLETE {
-            img {
-            }
+            color: $black;
         }
     }
 }
@@ -1798,50 +1596,47 @@ p {
         &.banner {
             top: -12%;
             left: 50%;
-            width: 65%;
             transform: translateX(-50%);
+            width: 65%;
         }
 
         &.flip {
             top: 50%;
             left: 31%;
-            width: 40%;
-            opacity: 0;
             transform: rotate(-180deg);
             transition: opacity 1s, transform 1s;
+            opacity: 0;
+            width: 40%;
         }
     }
 
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
         h3 {
-            color: #000;
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60%;
             text-align: center;
-            position: absolute;
-            left: 50%;
-            top: 12%;
+            color: $black;
             font-size: 30px;
-            transform: translateX(-50%);
         }
     }
 
     &.READY.OPEN {
-        img {
-        }
-
         &.COMPLETE {
             img {
                 &.flip {
-                    opacity: 1;
                     transform: rotate(0deg);
+                    opacity: 1;
                 }
             }
         }
@@ -1850,20 +1645,21 @@ p {
 
 #quit {
     .frame {
-        background: url(../media/images/bg-slide.png);
+        position: absolute;
+        top: 15%;
+        left: 14%;
+        background: url('../media/images/bg-slide.png');
         background-size: cover;
         width: 72%;
         height: 73%;
-        top: 15%;
-        left: 14%;
-        position: absolute;
 
-        h2, h3 {
+        h2,
+        h3 {
             position: absolute;
-            color: #000;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
+            color: $black;
         }
 
         h2 {
@@ -1876,41 +1672,38 @@ p {
 
         .quit-yes {
             position: absolute;
-            background: url(../media/images/quit-bears/yes_a.png);
-            background-size: cover;
-            background-position: 0 0;
-            width: 21%;
-            height: 16%;
             bottom: -5%;
             left: 22%;
+            background: url('../media/images/quit-bears/yes_a.png');
+            background-position: 0 0;
+            background-size: cover;
+            width: 21%;
+            height: 16%;
 
             &:hover,
             &:focus {
-                background: url(../media/images/quit-bears/yes_b.png);
-                background-size: cover;
+                background: url('../media/images/quit-bears/yes_b.png');
                 background-position: 0 0;
+                background-size: cover;
             }
         }
 
         .quit-no {
             position: absolute;
-            background: url(../media/images/quit-bears/no_a.png);
-            background-size: cover;
-            background-position: 0 0;
-            width: 21%;
-            height: 16%;
             bottom: -5%;
             left: 57%;
+            background: url('../media/images/quit-bears/no_a.png');
+            background-position: 0 0;
+            background-size: cover;
+            width: 21%;
+            height: 16%;
 
             &:hover,
             &:focus {
-                background: url(../media/images/quit-bears/no_b.png);
-                background-size: cover;
+                background: url('../media/images/quit-bears/no_b.png');
                 background-position: 0 0;
+                background-size: cover;
             }
         }
-    }
-
-    &.OPEN {
     }
 }

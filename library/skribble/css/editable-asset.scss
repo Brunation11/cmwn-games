@@ -1,15 +1,19 @@
+@import 'variables';
+
 .editable-asset {
-    list-style: none;
     position: absolute;
-    background-size: contain;
+    margin: 0;
+
     background-repeat: no-repeat;
     background-position: center center;
-    margin: 0;
+    background-size: contain;
+
+    cursor: pointer;
     padding: 0;
     width: 100%;
     height: 100%;
+    list-style: none;
     transform-origin: 50% 50%;
-    cursor: pointer;
 
     .asset {
         position: absolute;
@@ -17,25 +21,25 @@
 
     .buttons {
         position: absolute;
-        opacity: 0;
-        pointer-events: none;
-        border: 6px solid black;
         transition: opacity .5s, border .5s;
+        opacity: 0;
+        border: 6px solid $black;
+        pointer-events: none;
     }
 
     button {
         display: block;
         position: absolute;
-        font-size: 12px;
-        color: #fff;
+        opacity: 0;
+        margin: -22.5px 0 0 -22.5px;
         border-radius: 50%;
+        background-image: url('../media/_Frames/SK_frames_canvas.png');
+        background-size: 2500px;
         width: 45px;
         height: 45px;
+        color: $white;
+        font-size: 12px;
         transform-origin: 22.5px 22.5px;
-        margin: -22.5px 0 0 -22.5px;
-        background-image: url(../media/_Frames/SK_frames_canvas.png);
-        background-size: 2500px;
-        opacity: 0;
 
         $left: 1666 2034 1666 2034;
         $top:         0    343    343        0;
@@ -56,9 +60,11 @@
     }
 
     &.ACTIVE {
-        cursor: grab;
-        cursor: -moz-grab;
         z-index: 999999;
+        cursor: grab;
+        //scss-lint:disable VendorPrefix
+        cursor: -moz-grab;
+        //scss-lint:enable VendorPrefix
 
         &::before {
             z-index: 999999;
@@ -76,19 +82,21 @@
 
     &.DRAGGING {
         cursor: grabbing;
+        //scss-lint:disable VendorPrefix
         cursor: -moz-grabbing;
+        //scss-lint:enable VendorPrefix
     }
 
     &.INVALID {
-        .asset:before {
-            content: '';
+        .asset::before {
             display: block;
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            background-color: $red-overlay;
             width: 100%;
             height: 100%;
-            background-color: rgba(250, 25, 25, .6);
+            content: '';
         }
     }
 }

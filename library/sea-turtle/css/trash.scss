@@ -1,8 +1,3 @@
-@-webkit-keyframes bob {
-    0% {transform: translateY(-10%);}
-    50% {transform: translateY(10%);}
-}
-
 @keyframes bob {
     0% {transform: translateY(-10%);}
     50% {transform: translateY(10%);}
@@ -11,31 +6,31 @@
 #trash {
     .cursor {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         transition: opacity .5s;
-        pointer-events: none;
         z-index: 1;
+        background-image: url('../media/images/trash/sprite_6.1.png');
+        background-position: -740px 0;
+        background-size: 1110px;
         width: 355px;
         height: 595px;
-        background-size: 1110px;
-        background-position: -740px 0;
-        background-image: url(../media/images/trash/sprite_6.1.png);
+        pointer-events: none;
     }
 
     .turtle {
         position: absolute;
-        left: 0;
         top: 10%;
+        left: 0;
+        background-image: url('../media/images/trash/sprite_6.1.png');
+        background-size: 1110px;
         width: 355px;
         height: 595px;
-        background-size: 1110px;
-        background-image: url(../media/images/trash/sprite_6.1.png);
     }
 
     .selectable-audio {
-        height: 100%;
         width: 100%;
+        height: 100%;
 
         > div {
             width: 100%;
@@ -44,23 +39,22 @@
         }
 
         .selectable {
+            position: relative;
             width: 100%;
             height: 100%;
-            position: relative;
             vertical-align: middle;
 
             li {
                 position: absolute;
-                list-style: none;
                 transform: translateY(-10%);
-                -webkit-animation: bob 8s infinite;
                 animation: bob 8s infinite;
+                list-style: none;
             }
 
             li img {
                 position: relative;
-                max-width: 150px;
                 transition: opacity .5s;
+                max-width: 150px;
             }
 
             li .hover {
@@ -93,7 +87,7 @@
                 list-style: none;
 
                 div {
-                    background-image: url(../media/images/trash/sprite_6.2.png);
+                    background-image: url('../media/images/trash/sprite_6.2.png');
                     background-size: 325px;
                 }
 
@@ -104,23 +98,25 @@
                         shell2 can canholder;
                 $width:    150 100 100 120 120 100 110 70 70 85 150 110 80 80 120 85 130 130 120 120 120;
                 $height: 150 120 120    75    75 100 110 75 75 85    80 120 90 90 110 70 150 150 110 110    90;
-                $background-top: 164*6 164*7-10 164*7-10 0 0 164* 1 164*9-10 164* 14-24 164* 14-24
-                                 164*5-10 164*2 164* 15-30 164* 13-20 164* 13-20 164*8-15 164*3 164* 10-20 164* 10-20
-                                 164*8-15 164* 11-10 164* 12-10;
+                $background-top: 164 * 6 164 * 7 - 10 164 * 7 - 10 0 0 164 * 1 164 * 9 - 10 164 * 14 - 24 164 * 14 - 24
+                                 164 * 5 - 10 164 * 2 164 * 15 - 30 164 * 13 - 20 164 * 13 - 20 164 * 8 - 15 164 * 3 164 * 10 - 20 164 * 10 - 20
+                                 164 * 8 - 15 164 * 11 - 10 164 * 12 - 10;
 
                 @for $i from 1 through 21 {
                     &.#{nth($class, $i)} {
-                        left: nth($left, $i) +%;
-                        top: nth($top, $i) +%;
+                        // top: nth($top, $i) + %;
+                        // left: nth($left, $i) + %;
 
                         div {
+                            background-position: 0 nth($background-top, $i) * -1 + px;
                             width: nth($width, $i) + px;
                             height: nth($height, $i) + px;
-                            background-position: 0 nth($background-top, $i)*-1+ px;
 
+                            // scss-lint:disable NestingDepth
                             &.hover {
-                                background-position: -162px nth($background-top, $i)*-1+ px;
+                                background-position: -162px nth($background-top, $i) * -1 + px;
                             }
+                            // scss-lint:enable NestingDepth
                         }
                     }
                 }

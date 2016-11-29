@@ -1,26 +1,26 @@
 .canvas {
     position: relative;
+    z-index: 1;
     margin: 0;
-    padding: 0;
     border-radius: 80px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 0;
     width: 1280px;
     height: 720px;
     overflow: hidden;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
 }
 
 .canvas-container {
     position: absolute;
-    left: 126px;
     top: 60px;
-    padding: 30px;
-    background-image: url(../media/_Frames/SK_frames_canvas.png);
+    left: 126px;
+    z-index: 1;
+    background-image: url('../media/_Frames/SK_frames_canvas.png');
     background-repeat: no-repeat;
     background-size: 4080px;
-    z-index: 1;
+    padding: 30px;
 
     &.BACKGROUND {
         background-image: none;

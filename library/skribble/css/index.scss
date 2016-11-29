@@ -1345,10 +1345,10 @@ p {
 
     .left-menu {
         top: 50%;
-        z-index: 1;
         transform: translateY(-50%);
-        height: auto;
+        z-index: 1;
         padding: 0;
+        height: auto;
 
         > li {
             height: 150px;

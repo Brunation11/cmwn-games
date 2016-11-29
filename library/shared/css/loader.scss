@@ -1,33 +1,38 @@
+$spinner-color: rgba(0, 0, 0, .5);
+
 #loader {
-	transition: opacity .5s;
-	opacity: 0;
-	z-index: -1;
+    transition: opacity .5s;
+    opacity: 0;
+    z-index: -1;
 
-	.group > .spinner {
-		width: 80px; height: 80px;
-		margin: auto;
-		animation: pulse .5s infinite;
-	}
+    .group > .spinner {
+        animation: pulse .5s infinite;
+        margin: auto;
+        width: 80px;
+        height: 80px;
+    }
 
-	.spinner {
-		position: relative;
-		width: 60%; height: 60%;
-		background: rgba(0,0,0,0.5);
-		border-radius: 50px;
+    .spinner {
+        position: relative;
+        border-radius: 50px;
+        background: $spinner-color;
+        width: 60%;
+        height: 60%;
 
-		& > .spinner {
-			position: absolute;
-			top: 20%; left: 20%;
-		}
-	}
+        > .spinner {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+        }
+    }
 
-	&.OPEN {
-		opacity: 1;
-	}
+    &.OPEN {
+        opacity: 1;
+    }
 
 }
 
 .LOADING #loader {
-	opacity: 1;
-	z-index: 1;
+    opacity: 1;
+    z-index: 1;
 }

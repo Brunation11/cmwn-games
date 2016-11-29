@@ -12,33 +12,35 @@
     }
 
     .carousel {
-        width: 400px;
-        height: 540px;
-        margin: 0;
-        padding: 0;
         position: relative;
         z-index: 1;
-        background-image: url(../media/S_10/img_10.3.png);
-        background-size: contain;
+        margin: 0;
+        background-image: url('../media/S_10/img_10.3.png');
         background-position: center center;
+        background-size: contain;
+        padding: 0;
+        width: 400px;
+        height: 540px;
 
         &.disable {
             pointer-events: none;
         }
 
         &::before {
-            content: '';
             position: absolute;
-            z-index: 1;
-            left: 0;
             top: 100px;
+            left: 0;
+            z-index: 1;
+
+            background-image: url('../media/S_10/img_10.2.png');
+            background-repeat: no-repeat;
+            background-position: left top;
+            background-size: 750px 440px;
+
+            cursor: pointer;
             width: 375px;
             height: 440px;
-            background-image: url(../media/S_10/img_10.2.png);
-            background-size: 750px 440px;
-            background-position: left top;
-            background-repeat: no-repeat;
-            cursor: pointer;
+            content: '';
             pointer-events: none;
         }
 
@@ -49,24 +51,24 @@
         }
 
         div {
+            display: block;
             position: absolute;
             top: 0;
             left: 100px;
-            display: block;
-            width: 210px;
-            height: 210px;
-            background-size: contain;
+            transform: translateY(-60px) scale(.6);
             background-repeat: no-repeat;
             background-position: center center;
-            transform: translateY(-60px) scale(.6);
+            background-size: contain;
+            width: 210px;
+            height: 210px;
 
-            & + div {
+            + div {
                 transform: translateY(160px) scale(1);
 
-                & + div {
+                + div {
                     transform: translateY(380px) scale(.6);
 
-                    & + div {
+                    + div {
                         transform: translateY(540px) scale(.6);
                     }
                 }
@@ -80,19 +82,21 @@
             &.LEAVE {
                 transform: translateY(-220px) scale(.6);
 
-                & + div {
+                + div {
                     transform: translateY(-60px) scale(.6);
 
-                    & + div {
+                    + div {
                         transform: translateY(160px) scale(1);
 
-                        & + div {
+                        // scss-lint:disable NestingDepth
+                        + div {
                             transform: translateY(380px) scale(.6);
 
-                            & + div {
+                            s+ div {
                                 transform: translateY(540px) scale(.6);
                             }
                         }
+                        // scss-lint:enable NestingDepth
                     }
                 }
             }
@@ -102,7 +106,7 @@
 
             @for $i from 1 through 4 {
                 &[data-message=#{nth($types, $i)}] {
-                    background-image: url(../media/S_10/img_10.#{$i + 3}.png);
+                    background-image: url('../media/S_10/img_10.#{$i + 3}.png');
                 }
             }
         }
@@ -110,24 +114,24 @@
 
     .target {
         position: absolute;
-        right: 30px;
         top: 0;
+        right: 30px;
+        background-image: url('../media/S_10/img_10.8.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
         width: 500px;
         height: 160px;
-        background-image: url(../media/S_10/img_10.8.png);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
 
         img {
             position: absolute;
-            left: 50%;
             top: 50%;
+            left: 50%;
             transform: translateX(-50%) translateY(-50%) scale(.5);
+            transition: opacity 1s, transform 1s;
+            opacity: 0;
             max-width: 460px;
             max-height: 100px;
-            opacity: 0;
-            transition: opacity 1s, transform 1s;
         }
 
         $classes: loops whorl arch doubleloops whorl doubleloops arch loops;
@@ -136,8 +140,8 @@
         @for $i from 1 through 8 {
             &.#{nth($classes, $i)}-#{nth($amounts, $i)} {
                 img:nth-child(#{$i}) {
-                    opacity: 1;
                     transform: translateX(-50%) translateY(-50%) scale(1);
+                    opacity: 1;
                 }
             }
         }
@@ -145,33 +149,33 @@
 
     .score {
         position: absolute;
-        right: 280px;
         top: 205px;
+        right: 280px;
+        transform: translateX(50%);
+        background-image: url('../media/S_10/img_10.9.png');
+        background-repeat: no-repeat;
+        background-position: -565px;
+        background-size: 1075px 250px;
         width: 500px;
         height: 250px;
-        background-image: url(../media/S_10/img_10.9.png);
-        background-repeat: no-repeat;
-        background-size: 1075px 250px;
-        background-position: -565px;
-        transform: translateX(50%);
 
         span {
             display: none;
         }
 
         .board {
-            padding: 30px 20px;
             display: flex;
+            padding: 30px 20px;
 
             div {
-                width: 200px;
-                height: 190px;
-                margin: 0 20px;
-                background-size: 90px auto;
-                background-position: center center;
-                background-repeat: no-repeat;
                 transition: transform 0s 1s, opacity 1s, background 0s 1s;
                 opacity: 0;
+                margin: 0 20px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 90px auto;
+                width: 200px;
+                height: 190px;
             }
         }
 
@@ -181,8 +185,8 @@
     }
 
     [class *='2'] + .score {
-        width: 340px;
         background-position: -210px;
+        width: 340px;
 
         .board {
             div {
@@ -225,28 +229,28 @@
     [class *=loops] + .score {
 
         .board div {
-            background-image: url(../media/S_10/img_10.4.png)
+            background-image: url('../media/S_10/img_10.4.png');
         }
     }
 
     [class *=whorl] + .score {
 
         .board div {
-            background-image: url(../media/S_10/img_10.5.png)
+            background-image: url('../media/S_10/img_10.5.png');
         }
     }
 
     [class *=arch] + .score {
 
         .board div {
-            background-image: url(../media/S_10/img_10.6.png)
+            background-image: url('../media/S_10/img_10.6.png');
         }
     }
 
     [class *=doubleloop] + .score {
 
         .board div {
-            background-image: url(../media/S_10/img_10.7.png)
+            background-image: url('../media/S_10/img_10.7.png');
         }
     }
 
@@ -254,8 +258,8 @@
         .score[data-score='#{$i}'] {
             @for $j from 1 through $i {
                 .board div:nth-of-type(#{$j}) {
-                    transition: transform 1s, opacity 1s, background 0s 1s;
                     transform: translateX(0%) translateY(0%) scale(1);
+                    transition: transform 1s, opacity 1s, background 0s 1s;
                     opacity: 1;
                 }
             }
@@ -264,32 +268,32 @@
 
     .reveal {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        transition: opacity .5s, z-index 0s .5s;
+        opacity: 0;
+        z-index: -1;
+        background-color: $transparent-black;
         width: 100%;
         height: 100%;
-        z-index: -1;
-        opacity: 0;
-        transition: opacity .5s, z-index 0s .5s;
-        background-color: rgba(0,0,0,.3);
 
         &.OPEN {
-            z-index: 1;
-            opacity: 1;
             transition: opacity .5s;
+            opacity: 1;
+            z-index: 1;
         }
 
         > div {
             position: absolute;
-            background-image: url(../media/_Frame/Fr_3.png);
-            background-size: contain;
+            top: 50%;
+            left: 130px;
+            margin-top: -200px;
+            background-image: url('../media/_Frame/Fr_3.png');
             background-repeat: no-repeat;
             background-position: center center;
+            background-size: contain;
             width: 700px;
             height: 400px;
-            left: 130px;
-            top: 50%;
-            margin-top: -200px;
         }
 
         ul {
@@ -297,17 +301,17 @@
 
             li {
                 position: absolute;
-                transition: opacity .5s;
-                left: 50%;
                 top: 50%;
-                width: 600px;
+                left: 50%;
                 transform: translateX(-50%) translateY(-50%);
+                transition: opacity .5s;
+                width: 600px;
                 text-align: center;
                 font-size: 36px;
 
                 p {
-                    padding: 0 10px;
                     @include powder;
+                    padding: 0 10px;
 
                     &:nth-of-type(1) {
                         margin: 0 75px;
@@ -337,8 +341,8 @@
 
         button {
             position: absolute;
-            right: 35px;
             top: 35px;
+            right: 35px;
         }
     }
 

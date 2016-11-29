@@ -6,46 +6,46 @@ $types: arch loops whorl doubleloop;
     }
 
     .header {
-        background-image: url(../media/S_9/img_9.1.png);
         position: relative;
-        width: 900px;
-        height: 160px;
         margin: 0 auto;
+        background-image: url('../media/S_9/img_9.1.png');
+        background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
-        background-repeat: no-repeat;
+        width: 900px;
+        height: 160px;
 
         img {
             position: absolute;
-            left: 50%;
             top: 55%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) scale(.5);
+            transition: opacity 1s, transform 1s;
+            opacity: 0;
             max-width: 600px;
             max-height: 170px;
-            transform: translateX(-50%) translateY(-50%) scale(.5);
-            opacity: 0;
-            transition: opacity 1s, transform 1s;
 
             &.SELECTED {
-                opacity: 1;
                 transform: translateX(-50%) translateY(-50%) scale(1);
+                opacity: 1;
             }
         }
     }
 
     @for $i from 1 through 4 {
         .#{nth($types, $i)} .header img.#{nth($types, $i)} {
-            opacity: 1;
             transform: translateX(-50%) translateY(-50%) scale(1);
+            opacity: 1;
         }
     }
 
     .selectable {
-        width: 800px;
         margin: 40px auto;
+        width: 800px;
 
         li {
-            background-size: 1000px 250px;
             background-position: -25px;
+            background-size: 1000px 250px;
             cursor: pointer;
 
             &:hover {
@@ -60,11 +60,11 @@ $types: arch loops whorl doubleloop;
                 background-position: -775px;
             }
 
-            $bkg:            8         6         7                    9;
+            $bkg: 8 6 7 9;
 
             @for $i from 1 through 4 {
                 &[data-ref=#{nth($types, $i)}] {
-                    background-image: url(../media/S_9/img_9.#{nth($bkg, $i)}.png);
+                    background-image: url(`../media/S_9/img_9.#{nth($bkg, $i)}.png`);
                 }
             }
         }
