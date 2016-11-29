@@ -1,3 +1,5 @@
+@import 'variables';
+
 @font-face {
     font-family: 'CMWN';
     src: url('../media/fonts/CMWN_Jade.eot'); /* IE9 Compat Modes */
@@ -5,84 +7,87 @@
              url('../media/fonts/CMWN_Jade.woff') format('woff'), /* Modern Browsers */
              url('../media/fonts/CMWN_Jade.ttf')    format('truetype'), /* Safari, Android, iOS */
              url('../media/fonts/CMWN_Jade.svg#4012903f3d164196860fdbc893b3e032') format('svg'); /* Legacy iOS */
-    font-style:     normal;
-    font-weight:    400;
+    font-style: normal;
+    font-weight: 400;
 }
 
 * {
     box-sizing: border-box;
 }
 
-html, body, body > div, body > div > div {
+html,
+body,
+body > div,
+body > div > div {
     margin: 0;
+    cursor: default;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: default;
 }
 
 html {
+    color: $brown;
     font-family: 'CMWN', 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
-    color: #452914;
 }
 
 body > div > div {
     position: relative;
+    margin: auto;
     width: 960px;
     height: 540px;
-    margin: auto;
     font-size: 20px;
 
     .background {
-        opacity: 0;
-        transition: opacity .5s;
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
     }
 
     > div > .background {
-        max-width: 960px;
-        max-height: 540px;
         top: 50%;
         transform: translateY(-50%);
+        max-width: 960px;
+        max-height: 540px;
     }
 
     .background.default {
         opacity: 1;
-        background-image: url(../media/_BKG/BKG_1.png);
+        background-image: url('../media/_BKG/BKG_1.png');
     }
 
     .background.excel {
-        background-image: url(../media/_BKG/BKG_2.png);
+        background-image: url('../media/_BKG/BKG_2.png');
     }
 
     .background.look-out {
-        background-image: url(../media/_BKG/BKG_4.png);
+        background-image: url('../media/_BKG/BKG_4.png');
     }
 
     .background.feel {
-        background-image: url(../media/_BKG/BKG_5.png);
+        background-image: url('../media/_BKG/BKG_5.png');
     }
 
     .background.movie {
-        background-image: url(../media/_BKG/BKG_6.png);
+        background-image: url('../media/_BKG/BKG_6.png');
     }
 
     .background.upload {
-        background-image: url(../media/_BKG/BKG_7.png);
+        background-image: url('../media/_BKG/BKG_7.png');
     }
 
     .background.flip {
-        background-image: url(../media/_BKG/BKG_8.png);
+        background-image: url('../media/_BKG/BKG_8.png');
     }
 
     &.SCREEN-2:not(.MENU-quit) > .background.excel,
@@ -109,29 +114,29 @@ body > div > div {
 
 button {
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
 
+    background-color: transparent;
+    background-image: url('../media/_Buttons/BU_1.png');
+    background-position: left top;
+    background-size: auto 250px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-
-    background-image: url(../media/_Buttons/BU_1.png);
-    background-size: auto 250px;
-    background-position: left top;
 
     &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -436px 214px;
         width: 40px;
         height: 40px;
-        background-position: -436px 214px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 5px;
-        z-index: 2;
 
         &:hover {
             background-position: -436px 83px;
@@ -161,9 +166,9 @@ button {
     }
 
     &.quit-yes {
+        background-position: 330px 490px;
         width: 170px;
         height: 90px;
-        background-position: 330px 490px;
 
         &:hover {
             background-position: 330px 360px;
@@ -171,9 +176,9 @@ button {
     }
 
     &.quit-no {
+        background-position: 170px 490px;
         width: 170px;
         height: 90px;
-        background-position: 170px 490px;
 
         &:hover {
             background-position: 170px 360px;
@@ -181,9 +186,9 @@ button {
     }
 
     &.close-reveal {
+        background-position: -503px 463px;
         width: 40px;
         height: 40px;
-        background-position: -503px 463px;
 
         &:hover {
             background-position: -503px 333px;
@@ -196,32 +201,32 @@ h2 {
 }
 
 h3 {
-    font-size: 36px;
     margin: 0;
+    font-size: 36px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    opacity: 0;
     display: none;
-    transition: opacity 1s, transform .5s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
@@ -229,57 +234,47 @@ p {
 }
 
 .screen.LEAVE {
-    opacity: 1;
     transform: translateX(-100%);
+    opacity: 1;
 }
 
-    .screen .next-screen,
-    .screen .prev-screen {
-        position: absolute;
-        display: block;
-        bottom: 1%;
+.screen .next-screen,
+.screen .prev-screen {
+    display: block;
+    position: absolute;
+    bottom: 1%;
+    z-index: 2;
+}
 
-        z-index: 2;
-    }
+.screen .next-screen {
+    right: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 0;
+    margin-right: 5px;
+}
 
-    .screen .next-screen {
-        margin-right: 5px;
-        right: 0;
-        opacity: 0;
-        transform: rotate(-180deg);
-        transition: opacity 1s, transform 1s;
-    }
+.screen.GATED .next-screen {
+    opacity: 0;
+    cursor: default;
+}
 
-    .screen.GATED .next-screen {
-        opacity: 0;
-        cursor: default;
-    }
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg);
+    opacity: 1;
+    cursor: pointer;
+}
 
-    .pl-game.DEMO .screen .next-screen,
-    .screen.COMPLETE .next-screen,
-    .screen.REPLAY .next-screen {
-        opacity: 1;
-        transform: rotate(0deg);
-        cursor: pointer;
-    }
-
-    .screen .next-screen:hover {
-
-    }
-
-    .screen .prev-screen {
-        margin-left: 5px;
-        left: 0;
-
-    }
-
-    .screen .prev-screen:hover {
-
-    }
+.screen .prev-screen {
+    left: 0;
+    margin-left: 5px;
+}
 
 .screen {
     &.no-frame {
-        color: #fff;
+        color: $white;
 
         .frame {
             text-align: center;
@@ -310,10 +305,10 @@ p {
     text-align: center;
 
     .background {
+        top: 0;
+        left: 0;
         opacity: 1;
         z-index: -1;
-        left: 0;
-        top: 0;
         width: 100%;
         height: 100%;
     }
@@ -328,11 +323,11 @@ p {
 
             div {
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
+                margin: 0;
                 width: 100%;
                 height: 100%;
-                margin: 0;
             }
         }
     }
@@ -344,9 +339,9 @@ p {
 
         img.background {
             position: absolute;
-            width: 105%;
             left: -2.5%;
             opacity: 1;
+            width: 105%;
         }
     }
 }
@@ -360,11 +355,11 @@ p {
         }
 
         &.next-screen {
-            width: 180px;
-            height: 100px;
             right: 100px;
             bottom: 80px;
             background-position: -10px 494px;
+            width: 180px;
+            height: 100px;
 
             &:hover {
                 background-position: -10px 614px;
@@ -375,13 +370,12 @@ p {
 
     img {
         display: inline-block;
-        width: 800px;
         margin: 60px auto;
+        width: 800px;
     }
 
     &.OPEN {
         img {
-            -webkit-animation-name: rubberBand;
             animation-name: rubberBand;
         }
     }
@@ -389,98 +383,98 @@ p {
 
 #excel {
     .frame {
+        margin-bottom: 520px;
+        margin-left: 200px;
         width: 680px;
         height: 240px;
-        margin-left: 200px;
-        margin-bottom: 520px;
 
         p {
             padding: 50px 40px 40px;
-            font-size: 28px;
             line-height: 32px;
+            font-size: 28px;
         }
     }
 }
 
 #roles {
-    background-image: url(../media/_BKG/BKG_3.png);
-    background-size: contain;
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    width: 960px;
-    height: 540px;
     position: relative;
     top: 50%;
     margin-top: -270px;
+    background-image: url('../media/_BKG/BKG_3.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+    width: 960px;
+    height: 540px;
     overflow: hidden;
 
     canvas {
         position: absolute;
+        z-index: -1;
         width: 100%;
         height: 100%;
-        z-index: -1;
     }
 
     .selectable-canvas {
-        width: 960px;
-        height: 540px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
         display: block;
         position: relative;
+        margin: 0;
+        padding: 0;
+        width: 960px;
+        height: 540px;
+        list-style: none;
 
         li {
             position: static;
 
             img {
-                left: auto;
-                right: auto;
                 top: auto;
+                right: auto;
                 bottom: auto;
+                left: auto;
             }
 
             &:nth-of-type(1) img {
-                width: 240px;
-                left: 0;
                 bottom: 0;
+                left: 0;
+                width: 240px;
             }
 
             &:nth-of-type(2) img {
-                width: 183px;
-                left: 174px;
                 bottom: 9px;
+                left: 174px;
+                width: 183px;
             }
 
             &:nth-of-type(3) img {
-                width: 332px;
-                left: 65px;
                 bottom: 165px;
+                left: 65px;
+                width: 332px;
             }
 
             &:nth-of-type(4) img {
-                width: 285px;
-                left: 314px;
                 bottom: -24px;
+                left: 314px;
+                width: 285px;
             }
 
             &:nth-of-type(5) img {
-                width: 215px;
-                left: 523px;
                 bottom: -5px;
+                left: 523px;
+                width: 215px;
             }
 
             &:nth-of-type(6) img {
-                width: 255px;
-                left: 692px;
                 bottom: -4px;
+                left: 692px;
+                width: 255px;
             }
 
             img {
                 position: absolute;
+                transition: opacity .5s;
                 opacity: 0;
                 z-index: 1;
-                transition: opacity .5s;
             }
 
             &.HIGHLIGHTED img {
@@ -490,15 +484,15 @@ p {
             &.ACTIVE {
 
                 &::before {
-                    content: '';
                     display: block;
                     position: absolute;
-                    left: 0;
                     top: 0;
+                    left: 0;
+                    z-index: 2;
+                    background-color: $transparent-black;
                     width: 100%;
                     height: 100%;
-                    background-color: rgba(0,0,0,.4);
-                    z-index: 2;
+                    content: '';
                 }
 
                 img {
@@ -517,8 +511,8 @@ p {
             position: absolute;
             top: 70px;
             right: 70px;
-            z-index: 2;
             opacity: 1;
+            z-index: 2;
         }
 
         > div > .close-reveal {
@@ -526,8 +520,8 @@ p {
         }
 
         div {
-            background: none;
             position: static;
+            background: none;
         }
 
         ul {
@@ -537,17 +531,17 @@ p {
             li {
                 position: absolute;
                 top: 0;
+                transition: z-index 0s .5s;
+                opacity: 0;
                 z-index: -1;
                 width: 100%;
                 height: 100%;
-                opacity: 0;
                 text-align: center;
-                font-size: 34px;
                 line-height: 40px;
-                transition: z-index 0s .5s;
+                font-size: 34px;
 
                 span {
-                    color: black;
+                    color: $black;
                 }
 
                 div {
@@ -563,132 +557,132 @@ p {
 
                 .background {
                     position: absolute;
-                    opacity: 1;
-                    z-index: -1;
                     top: 0;
                     left: 0;
+                    opacity: 1;
+                    z-index: -1;
                     width: 100%;
                     height: 100%;
                 }
 
                 &.OPEN {
-                    z-index: 2;
-                    opacity: 1;
                     transition: z-index 0s;
+                    opacity: 1;
+                    z-index: 2;
                 }
 
                 &:nth-of-type(1) div {
+                    margin: 130px 140px;
+                    padding: 100px 70px 50px 50px;
                     width: 640px;
                     height: 280px;
-                    padding: 100px 70px 50px 50px;
-                    margin: 130px 140px;
 
                     button {
-                        right: 60px;
                         top: 60px;
+                        right: 60px;
                     }
                 }
 
                 &:nth-of-type(2) {
                     background: none;
-                    font-size: 25px;
                     line-height: 30px;
+                    font-size: 25px;
 
                     div {
+                        margin: 0 110px;
+                        padding: 40px 45px 50px 100px;
                         width: 650px;
                         height: 260px;
-                        padding: 40px 45px 50px 100px;
-                        margin: 0 110px;
                     }
 
                     button {
-                        right: 45px;
                         top: 35px;
+                        right: 45px;
                     }
                 }
 
                 &:nth-of-type(3) {
                     background: none;
-                    font-size: 25px;
                     line-height: 28px;
+                    font-size: 25px;
 
                     div {
+                        margin: 0 150px;
+                        padding: 20px 35px 100px;
                         width: 580px;
                         height: 310px;
-                        padding: 20px 35px 100px 35px;
-                        margin: 0 150px;
                     }
 
                     .close-reveal {
-                        right: 35px;
                         top: 40px;
+                        right: 35px;
                     }
                 }
 
                 &:nth-of-type(4) {
                     background: none;
-                    font-size: 25px;
                     line-height: 30px;
+                    font-size: 25px;
 
                     div {
+                        margin: 190px 100px;
+                        padding: 30px 40px 30px 30px;
                         width: 570px;
                         height: 260px;
-                        padding: 30px 40px 30px 30px;
-                        margin: 190px 100px;
                     }
 
                     .close-reveal {
-                        right: 40px;
                         top: 65px;
+                        right: 40px;
                     }
                 }
 
                 &:nth-of-type(5) {
                     background: none;
-                    font-size: 22px;
                     line-height: 30px;
+                    font-size: 22px;
 
                     div {
+                        margin: 20px 0;
+                        padding: 50px 60px 40px 30px;
                         width: 460px;
                         height: 350px;
-                        padding: 50px 60px 40px 30px;
-                        margin: 20px 0;
                     }
 
                     .close-reveal {
-                        right: 65px;
                         top: 35px;
+                        right: 65px;
                     }
                 }
 
                 &:nth-of-type(6) {
                     background: none;
-                    font-size: 20px;
                     line-height: 27px;
+                    font-size: 20px;
 
                     div {
+                        margin: 0 30px;
+                        padding: 50px 40px 60px;
                         width: 580px;
                         height: 290px;
-                        padding: 50px 40px 60px 40px;
-                        margin: 0 30px;
                     }
 
                     .close-reveal {
-                        right: 40px;
                         top: 35px;
+                        right: 40px;
                     }
                 }
 
                 &:nth-of-type(7) {
                     background: none;
-                    font-size: 20px;
                     line-height: 24px;
+                    font-size: 20px;
 
                     div {
+                        margin: 0 240px;
+                        padding: 50px 90px 30px 40px;
                         width: 550px;
                         height: 260px;
-                        padding: 50px 90px 30px 40px;
-                        margin: 0 240px;
                     }
 
                     .close-reveal {
@@ -701,8 +695,8 @@ p {
     }
 
     .close-reveal {
-        opacity: 0;
         transition: opacity .5s;
+        opacity: 0;
         cursor: auto;
     }
 
@@ -727,15 +721,15 @@ p {
 
 #look-out {
     .frame {
+        margin-top: 40px;
+        margin-left: 300px;
         width: 500px;
         height: 400px;
-        margin-left: 300px;
-        margin-top: 40px;
 
         p {
             padding: 90px 40px 40px;
-            font-size: 36px;
             line-height: 40px;
+            font-size: 36px;
         }
     }
 }
@@ -749,21 +743,21 @@ p {
 
     .selectable {
         display: block;
-        width: 500px;
         margin: 20px 0 20px auto;
+        width: 500px;
         text-align: left;
 
         li {
             display: inline-block;
-            height: 50px;
-            background-size: auto 100%;
-            background-repeat: no-repeat;
-            margin-right: 20px;
             margin-top: 8px;
+            margin-right: 20px;
+            background-repeat: no-repeat;
+            background-size: auto 100%;
             cursor: pointer;
+            height: 50px;
 
             &:nth-of-type(1) {
-                background-image: url(../media/S_6/img_6.2.png);
+                background-image: url('../media/S_6/img_6.2.png');
                 width: 100px;
 
                 &.HIGHLIGHTED,
@@ -773,7 +767,7 @@ p {
             }
 
             &:nth-of-type(2) {
-                background-image: url(../media/S_6/img_6.3.png);
+                background-image: url('../media/S_6/img_6.3.png');
                 width: 130px;
 
                 &.HIGHLIGHTED,
@@ -783,7 +777,7 @@ p {
             }
 
             &:nth-of-type(3) {
-                background-image: url(../media/S_6/img_6.4.png);
+                background-image: url('../media/S_6/img_6.4.png');
                 width: 180px;
 
                 &.HIGHLIGHTED,
@@ -793,9 +787,9 @@ p {
             }
 
             &:nth-of-type(4) {
-                background-image: url(../media/S_6/img_6.5.png);
-                width: 175px;
                 margin-left: 45px;
+                background-image: url('../media/S_6/img_6.5.png');
+                width: 175px;
 
                 &.HIGHLIGHTED,
                 &:hover {
@@ -804,7 +798,7 @@ p {
             }
 
             &:nth-of-type(5) {
-                background-image: url(../media/S_6/img_6.11.png);
+                background-image: url('../media/S_6/img_6.11.png');
                 width: 175px;
 
                 &.HIGHLIGHTED,
@@ -814,9 +808,9 @@ p {
             }
 
             &:nth-of-type(6) {
-                background-image: url(../media/S_6/img_6.6.png);
-                width: 140px;
                 margin-left: 135px;
+                background-image: url('../media/S_6/img_6.6.png');
+                width: 140px;
 
                 &.HIGHLIGHTED,
                 &:hover {
@@ -825,7 +819,7 @@ p {
             }
 
             &:nth-of-type(7) {
-                background-image: url(../media/S_6/img_6.10.png);
+                background-image: url('../media/S_6/img_6.10.png');
                 width: 165px;
 
                 &.HIGHLIGHTED,
@@ -835,9 +829,9 @@ p {
             }
 
             &:nth-of-type(8) {
-                background-image: url(../media/S_6/img_6.7.png);
-                width: 125px;
                 margin-left: 165px;
+                background-image: url('../media/S_6/img_6.7.png');
+                width: 125px;
 
                 &.HIGHLIGHTED,
                 &:hover {
@@ -846,7 +840,7 @@ p {
             }
 
             &:nth-of-type(9) {
-                background-image: url(../media/S_6/img_6.9.png);
+                background-image: url('../media/S_6/img_6.9.png');
                 width: 145px;
 
                 &.HIGHLIGHTED,
@@ -856,9 +850,9 @@ p {
             }
 
             &:nth-of-type(10) {
-                background-image: url(../media/S_6/img_6.8.png);
-                width: 200px;
                 margin-left: 220px;
+                background-image: url('../media/S_6/img_6.8.png');
+                width: 200px;
 
                 &.HIGHLIGHTED,
                 &:hover {
@@ -872,10 +866,10 @@ p {
 #move {
     .frame {
         position: relative;
-        width: 800px;
-        height: 500px;
         margin: 0 auto;
         padding: 120px 80px;
+        width: 800px;
+        height: 500px;
         box-sizing: border-box;
 
         p {
@@ -883,17 +877,17 @@ p {
         }
 
         img:not(.background) {
-            width: 100%;
             margin-bottom: 60px;
+            width: 100%;
         }
     }
 
     .next-screen {
+        right: 375px;
+        bottom: 150px;
+        background-position: -560px 235px;
         width: 200px;
         height: 80px;
-        bottom: 150px;
-        right: 375px;
-        background-position: -560px 235px;
 
         &:hover {
             background-position: -560px 104px;
@@ -903,22 +897,22 @@ p {
 
 #flip {
     .frame {
+        margin: 0 60px 0 auto;
+        padding: 100px 80px;
         width: 500px;
         height: 540px;
-        margin: 0 60px 0 auto;
         box-sizing: border-box;
-        padding: 100px 80px;
 
         p {
-            font-size: 36px;
             line-height: 40px;
+            font-size: 36px;
         }
 
         .flip {
-            width: 90%;
-            margin-top: 30px;
-            opacity: 0;
             transition: opacity .5s;
+            opacity: 0;
+            margin-top: 30px;
+            width: 90%;
 
             &.in {
                 animation-name: rubberBand;
@@ -931,14 +925,14 @@ p {
 #quit {
 
     .frame {
+        background-image: url('../media/_Frames/FR_10.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 100px 80px;
         width: 740px;
         height: 540px;
         text-align: center;
         box-sizing: border-box;
-        padding: 100px 80px;
-        background-image: url(../media/_Frames/FR_10.png);
-        background-size: contain;
-        background-repeat: no-repeat;
 
         h2 {
             margin: 0;
