@@ -25,51 +25,7 @@ export default function () {
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
-    let backgroundGroundOpts = [
-        {
-            left: 0,
-            crop: [20, 0, 400, 200],
-        },
-        {
-            left: 400,
-            crop: [860, 0, 400, 200],
-        },
-        // {
-        //     left: 697,
-        //     crop: [545, 0, 200, 200],
-        // },
-    ];
-
-    addItems.call(this, {
-        group: 'platformViews', enableBody: false, defaultOpts: {
-            top: 370,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
-    }, backgroundGroundOpts);
-
-    let groundOpts = [
-        {
-            left: 0,
-            crop: [20, 60, 400, 200],
-        },
-        {
-            left: 400,
-            crop: [860, 60, 400, 200],
-        },
-        // {
-        //     left: 697,
-        //     crop: [545, 60, 200, 200],
-        // },
-    ];
-
-    addItems.call(this, {
-        group: 'platforms', defaultOpts: {
-            top: 430,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
-    }, groundOpts);
+    this.helpers.makeGround.call(this);
 
     addPlayer.call(this, {
         left: 32,
