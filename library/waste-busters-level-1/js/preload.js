@@ -5,6 +5,7 @@ export default function () {
     ['sky', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.sky.jpg'],
     ['clouds', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.clouds.png'],
     ['ground', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.ground.png'],
+    ['platforms', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.platform.png'],
     ]);
 
     loadAssets.call(this, 'spritesheet', [

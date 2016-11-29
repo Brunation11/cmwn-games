@@ -49,6 +49,13 @@ export default function (groupOpts = {}, optsArray = []) {
             item.body.bounce.y = opts.bounceY;
             item.body.gravity.x = opts.gravityX;
             item.body.gravity.y = opts.gravityY;
+
+            if (opts.body) {
+                item.body.width = opts.body[0];
+                item.body.height = opts.body[1];
+                item.body.offset.x = opts.body[2];
+                item.body.offset.y = opts.body[3];
+            }
         }
     });
 }

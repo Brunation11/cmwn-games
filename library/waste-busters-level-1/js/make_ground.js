@@ -15,43 +15,35 @@ export default function () {
         [1405, 0, 200, 200],
     ];
 
+    let bodies = [
+        [380, 140, 0, 60],
+        [200, 140, 0, 60],
+        [380, 140, 0, 60],
+        [200, 140, 0, 60],
+    ];
+
     while (left < this.game.world.width) {
         random = _.random(random > 1 || left > this.game.world.width - 400 ?
             crops.length / 2 - 1 : crops.length - 1);
         let crop = crops[random];
+        let body = bodies[random];
 
         if (random < 2) {
-            backgroundGroundOpts.push({
-                left,
-                crop,
-            });
-
             groundOpts.push({
                 left,
-                crop: [crop[0], 60, crop[2], crop[3]],
+                crop,
+                body,
             });
         } else {
-            backgroundWaterOpts.push({
-                left,
-                crop,
-            });
-
             waterOpts.push({
                 left,
-                crop: [crop[0], 60, crop[2], crop[3]],
+                crop,
+                body,
             });
         }
 
         left += crop[2] - 3;
     }
-
-    addItems.call(this, {
-        group: 'groundViews', enableBody: false, defaultOpts: {
-            top: 370,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
-    }, backgroundGroundOpts);
 
     addItems.call(this, {
         group: 'ground', defaultOpts: {
@@ -60,14 +52,6 @@ export default function () {
             image: 'ground',
         }
     }, groundOpts);
-
-    addItems.call(this, {
-        group: 'waterViews', enableBody: false, defaultOpts: {
-            top: 370,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
-    }, backgroundWaterOpts);
 
     addItems.call(this, {
         group: 'water', defaultOpts: {

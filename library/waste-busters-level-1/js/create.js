@@ -1,5 +1,4 @@
 import setGameStage from 'shared/phaser/methods/set_game_stage/0.1';
-import addItems from 'shared/phaser/methods/add_items/0.1';
 // import randomizeLocations from 'shared/phaser/methods/randomize_locations/0.1';
 import addPlayer from 'shared/phaser/methods/add_player/0.1';
 
@@ -11,32 +10,11 @@ export default function () {
         height: 540,
     });
 
-    //  A simple background for our this.game
-    addItems.call(this, {
-        group: 'sky', enableBody: false, defaultOpts: {collideWorldBounds: false}
-    }, [
-        {
-            left: 0,
-            top: 0,
-            image: 'sky',
-            scale: [.5, .5],
-        }
-    ]);
-
-    addItems.call(this, {
-        group: 'clouds', enableBody: false, defaultOpts: {collideWorldBounds: false}
-    }, [
-        {
-            left: 0,
-            top: 0,
-            image: 'clouds',
-            scale: [.5, .5],
-        }
-    ]);
-
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
+    this.helpers.makeBackground.call(this);
     this.helpers.makeGround.call(this);
+    this.helpers.makePlatforms.call(this);
 
     addPlayer.call(this, {
         left: 32,
