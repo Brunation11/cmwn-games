@@ -2,9 +2,7 @@ import addItems from 'shared/phaser/methods/add_items/0.1';
 
 export default function () {
     var left = 0;
-    var backgroundGroundOpts = [];
     var groundOpts = [];
-    var backgroundWaterOpts = [];
     var waterOpts = [];
     var random = 2;
 
