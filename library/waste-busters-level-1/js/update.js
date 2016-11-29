@@ -4,6 +4,8 @@ import movePlayer from 'shared/phaser/methods/move_player/0.1';
 export default function () {
 
     addResponses.call(this, 'collide', [
+    [this.player, this.ground, this.helpers.onBump],
+    [this.player, this.water, this.helpers.hitWater],
     [this.player, this.platforms, this.helpers.onBump],
     [this.stars, this.platforms],
     [this.player, this.diamonds, this.helpers.rideDiamond],

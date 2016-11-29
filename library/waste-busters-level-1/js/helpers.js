@@ -11,10 +11,26 @@ export default {
     },
     rideDiamond: function () {
     },
+    hitWater: function (p) {
+        if (this.isHit) return;
+        this.isHit = true;
+        p.body.velocity.y = -200;
+
+        // this.lives -= 1;
+        // this.livesText.text = `Lives: ${this.lives}`;
+
+        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ? -1 : 1) * 200;
+
+        setTimeout(() => {
+            this.isHit = false;
+        }, 1000);
+    },
     makeGround: function () {
         var left = 0;
         var backgroundGroundOpts = [];
         var groundOpts = [];
+        var backgroundWaterOpts = [];
+        var waterOpts = [];
         var random = 2;
 
         let crops = [
@@ -28,63 +44,61 @@ export default {
             random = _.random(random > 1 ? crops.length / 2 - 1 : crops.length - 1);
             let crop = crops[random];
 
-            backgroundGroundOpts.push({
-                left,
-                crop,
-            });
+            if (random < 2) {
+                backgroundGroundOpts.push({
+                    left,
+                    crop,
+                });
 
-            groundOpts.push({
-                left,
-                crop: [crop[0], 60, crop[2], crop[3]],
-            });
+                groundOpts.push({
+                    left,
+                    crop: [crop[0], 60, crop[2], crop[3]],
+                });
+            } else {
+                backgroundWaterOpts.push({
+                    left,
+                    crop,
+                });
+
+                waterOpts.push({
+                    left,
+                    crop: [crop[0], 60, crop[2], crop[3]],
+                });
+            }
 
             left += crop[2] - 3;
         }
 
-        // let backgroundGroundOpts = [
-        //     {
-        //         left: 0,
-        //         crop: [20, 0, 380, 200],
-        //     },
-        //     {
-        //         left: 377,
-        //         crop: [860, 0, 380, 200],
-        //     },
-        //     {
-        //         left: 754,
-        //         crop: [545, 0, 200, 200],
-        //     },
-        // ];
-
         addItems.call(this, {
-            group: 'platformViews', enableBody: false, defaultOpts: {
+            group: 'groundViews', enableBody: false, defaultOpts: {
                 top: 370,
                 collideWorldBounds: false,
                 image: 'ground',
             }
         }, backgroundGroundOpts);
 
-        // let groundOpts = [
-        //     {
-        //         left: 0,
-        //         crop: [20, 60, 380, 200],
-        //     },
-        //     {
-        //         left: 377,
-        //         crop: [860, 60, 380, 200],
-        //     },
-        //     {
-        //         left: 754,
-        //         crop: [545, 60, 200, 200],
-        //     },
-        // ];
-
         addItems.call(this, {
-            group: 'platforms', defaultOpts: {
+            group: 'ground', defaultOpts: {
                 top: 430,
                 collideWorldBounds: false,
                 image: 'ground',
             }
         }, groundOpts);
+
+        addItems.call(this, {
+            group: 'waterViews', enableBody: false, defaultOpts: {
+                top: 370,
+                collideWorldBounds: false,
+                image: 'ground',
+            }
+        }, backgroundWaterOpts);
+
+        addItems.call(this, {
+            group: 'water', defaultOpts: {
+                top: 430,
+                collideWorldBounds: false,
+                image: 'ground',
+            }
+        }, waterOpts);
     }
 };

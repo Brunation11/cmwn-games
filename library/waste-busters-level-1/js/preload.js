@@ -3,7 +3,7 @@ import loadAssets from 'shared/phaser/methods/load_assets/0.1';
 export default function () {
     loadAssets.call(this, 'image', [
     ['sky', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.sky.jpg'],
-    ['clouds', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.clouds.jpg'],
+    ['clouds', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.clouds.png'],
     ['ground', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.ground.png'],
     ]);
 
