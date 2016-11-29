@@ -27,4 +27,7 @@ export default function () {
 
     this.game.camera.x =
         Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);
+
+    // this.clouds.children[0].position.x = -.25 * this.game.camera.x;
+    this.clouds.children[0].position.x = -.25 * this.player.body.center.x;
 }

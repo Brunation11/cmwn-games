@@ -23,6 +23,17 @@ export default function () {
         }
     ]);
 
+    addItems.call(this, {
+        group: 'clouds', enableBody: false, defaultOpts: {collideWorldBounds: false}
+    }, [
+        {
+            left: 0,
+            top: 0,
+            image: 'clouds',
+            scale: [.5, .5],
+        }
+    ]);
+
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
     this.helpers.makeGround.call(this);
