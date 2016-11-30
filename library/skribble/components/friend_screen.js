@@ -1,4 +1,4 @@
-import ItemDrawer from '../../shared/components/item_drawer/0.1.js';
+import ItemDrawer from 'shared/components/item_drawer/0.1.js';
 
 const DEFAULT_PROFILE_IMAGE = 'https://changemyworldnow.com/ff50fa329edc8a1d64add63c839fe541.png';
 
@@ -76,7 +76,12 @@ class FriendScreen extends skoash.Screen {
     }
 
     suggestFriends() {
-        window.open(window.location.origin.replace('games-', '') + '/friends/suggested');
+        window.open(
+            window.location.origin
+            .replace('games-', '')
+            .replace('games.', '') +
+            '/friends/suggested'
+        );
     }
 
     save() {
