@@ -20,10 +20,9 @@ export default function (groupOpts = {}, optsArray = []) {
     });
 
     if (!this[groupOpts.group]) {
-        //  The platforms group contains the ground and the 2 ledges we can jump on
+        // create the group we will be adding the items to
         this[groupOpts.group] = this.game.add.group();
-
-        //  We will enable physics for any object that is created in this group
+        // enable physics for any object that is created in this group
         this[groupOpts.group].enableBody = groupOpts.enableBody;
     }
 
@@ -52,10 +51,14 @@ export default function (groupOpts = {}, optsArray = []) {
             item.body.gravity.y = opts.gravityY;
 
             if (opts.body) {
-                item.body.width = opts.body[0];
-                item.body.height = opts.body[1];
-                item.body.offset.x = opts.body[2];
-                item.body.offset.y = opts.body[3];
+                // defer here to prevent item.scale from overriding body size
+                // we might want to find a better way to do this
+                setTimeout(() => {
+                    item.body.width = opts.body[0] * opts.scale[0];
+                    item.body.height = opts.body[1] * opts.scale[1];
+                    item.body.offset.x = opts.body[2] * opts.scale[0];
+                    item.body.offset.y = opts.body[3] * opts.scale[1];
+                }, 100);
             }
         }
     });

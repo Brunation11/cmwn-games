@@ -30,4 +30,5 @@ export default function () {
 
     // this.clouds.children[0].position.x = -.25 * this.game.camera.x;
     this.clouds.children[0].position.x = -.25 * this.player.body.center.x;
+    this.clouds.children[1].position.x = 2975.5 - .25 * this.player.body.center.x;
 }

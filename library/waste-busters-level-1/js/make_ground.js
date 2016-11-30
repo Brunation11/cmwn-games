@@ -7,10 +7,10 @@ export default function () {
     var random = 2;
 
     let crops = [
-        [20, 0, 380, 200],
-        [545, 0, 200, 200],
-        [865, 0, 380, 200],
-        [1405, 0, 200, 200],
+        [20, 0, 380, 210],
+        [545, 0, 200, 210],
+        [865, 0, 380, 210],
+        [1405, 0, 200, 210],
     ];
 
     let bodies = [
@@ -43,19 +43,17 @@ export default function () {
         left += crop[2] - 3;
     }
 
+    let defaultOpts = {
+        top: 330,
+        collideWorldBounds: false,
+        image: 'ground',
+    };
+
     addItems.call(this, {
-        group: 'ground', defaultOpts: {
-            top: 430,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
+        group: 'ground', defaultOpts
     }, groundOpts);
 
     addItems.call(this, {
-        group: 'water', defaultOpts: {
-            top: 430,
-            collideWorldBounds: false,
-            image: 'ground',
-        }
+        group: 'water', defaultOpts
     }, waterOpts);
 }

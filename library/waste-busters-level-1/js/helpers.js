@@ -1,5 +1,6 @@
 import addItems from 'shared/phaser/methods/add_items/0.1';
 import makeGround from './make_ground';
+import makePlatforms from './make_platforms';
 
 export default {
     onBump: function () {
@@ -20,7 +21,7 @@ export default {
         // this.lives -= 1;
         // this.livesText.text = `Lives: ${this.lives}`;
 
-        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ? -1 : 1) * 200;
+        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ? 1 : -1) * 200;
 
         setTimeout(() => {
             this.isHit = false;
@@ -28,66 +29,29 @@ export default {
     },
     makeBackground: function () {
         addItems.call(this, {
-            group: 'sky', enableBody: false, defaultOpts: {collideWorldBounds: false}
-        }, [
-            {
-                left: 0,
+            group: 'sky', enableBody: false, defaultOpts: {
+                collideWorldBounds: false,
                 top: 0,
                 image: 'sky',
                 scale: [.5, .5],
             }
+        }, [
+            { left: 0 },
+            { left: 2975.5 }
         ]);
 
         addItems.call(this, {
-            group: 'clouds', enableBody: false, defaultOpts: {collideWorldBounds: false}
-        }, [
-            {
-                left: 0,
+            group: 'clouds', enableBody: false, defaultOpts: {
+                collideWorldBounds: false,
                 top: 0,
                 image: 'clouds',
                 scale: [.5, .5],
             }
+        }, [
+            { left: 0 },
+            { left: 2975.5 }
         ]);
     },
     makeGround,
-    makePlatforms: function () {
-        var platformOpts = [];
-
-        // 1936 x 96 pixels
-        let crops = [
-            [200, 0, 240, 96],
-            [790, 0, 350, 96],
-            [1290, 0, 645, 96],
-        ];
-
-        let bodies = [
-            [200, 28, 0, 44],
-            [310, 28, 0, 44],
-            [605, 28, 0, 44],
-        ];
-
-        let locations = [
-            // [100, 100],
-            // [350, 200],
-            [100, 300],
-        ];
-
-        _.each(locations, location => {
-            let i = _.random(crops.length - 1);
-            platformOpts.push({
-                left: location[0],
-                top: location[1],
-                crop: crops[i],
-                body: bodies[i],
-            });
-        });
-
-        addItems.call(this, {
-            group: 'platforms', defaultOpts: {
-                top: 300,
-                collideWorldBounds: false,
-                image: 'platforms',
-            }
-        }, platformOpts);
-    }
+    makePlatforms,
 };

@@ -6,7 +6,7 @@ import helpers from './js/helpers';
 
 ENVIRONMENT.MEDIA += 'Games/WasteBusters/';
 
-new Game({
+window.game = new Game({
     width: 960,
     height: 540,
     preload,
