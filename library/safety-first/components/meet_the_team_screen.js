@@ -38,7 +38,6 @@ export default function (props, ref, key) {
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DogBark.mp3`}
                     onComplete={function () {
-                        console.log('here');
                         this.updateGameState({
                             path: 'reveal',
                             data: {

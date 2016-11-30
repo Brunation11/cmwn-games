@@ -30,10 +30,10 @@ SafetyFirst = (
         loader={<Loader />}
         screens={{
             0: iOSScreen,
-            // 1: TitleScreen,
-            // 2: MeetTheTeamScreen,
-            1: InfoLetsSeeScreen,
-            2: DingDongScreen
+            1: TitleScreen,
+            2: MeetTheTeamScreen,
+            3: InfoLetsSeeScreen,
+            4: DingDongScreen
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,

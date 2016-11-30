@@ -11,7 +11,10 @@ export default function (props, ref, key) {
                 type="sfx"
                 src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DoorbellLong.mp3`}
             />
-            <skoash.Image className="animated infinite" src={`${ENVIRONMENT.MEDIA}ImageAssets/ding.dong.png`} />
+            <skoash.Image
+                className="animated infinite"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/ding.dong.png`}
+            />
         </skoash.Screen>
     );
 }
