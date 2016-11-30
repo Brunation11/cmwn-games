@@ -1301,14 +1301,14 @@ img.background {
         position: absolute;
         top: 260px;
         left: 350px;
+        // scss-lint:disable VendorPrefix PropertySortOrder
         animation: burn 1.5s linear infinite alternate;
-        // scss-lint:disable VendorPrefix
         -moz-animation: none;
-        // scss-lint:enable VendorPrefix
+        // scss-lint:enable VendorPrefix PropertySortOrder
         margin: 0;
         width: 260px;
-        font-size: 145px;
         color: transparent;
+        font-size: 145px;
     }
 
     &.OPEN {
@@ -1322,19 +1322,19 @@ img.background {
 #quit {
 
     .frame {
-        text-align: center;
-        width: 960px;
+        background-image: url('../media/_Frames/FR_6.png');
         background-size: 100% 100%;
         padding: 30px;
-        background-image: url('../media/_Frames/FR_6.png');
+        width: 960px;
+        text-align: center;
 
         .background {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
+            z-index: -1;
             width: 100%;
             height: 100%;
-            z-index: -1;
         }
 
         h2 {
