@@ -31,9 +31,9 @@ SafetyFirst = (
         screens={{
             0: iOSScreen,
             // 1: TitleScreen,
-            1: MeetTheTeamScreen,
-            3: InfoLetsSeeScreen,
-            4: DingDongScreen
+            // 2: MeetTheTeamScreen,
+            1: InfoLetsSeeScreen,
+            2: DingDongScreen
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,
@@ -65,23 +65,23 @@ SafetyFirst = (
                 src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'}
             />,
             <skoash.Image
-                className="hidden"
+                className="background bkg2"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'}
             />,
             <skoash.Image
-                className="hidden"
+                className="background bkg3"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
             />,
             <skoash.Image
-                className="hidden"
+                className="background bkghome"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'}
             />,
             <skoash.Image
-                className="hidden"
+                className="background dooropened"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.dooropened.jpg'}
             />,
             <skoash.Image
-                className="hidden"
+                className="background doorclosed"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.doorclosed.jpg'}
             />,
         ]}
