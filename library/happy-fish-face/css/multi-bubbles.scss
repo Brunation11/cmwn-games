@@ -1,41 +1,43 @@
+@import 'variables';
+
 #multi-bubbles {
     .group {
-        text-align: center;
         width: 960px;
         height: 540px;
+        text-align: center;
     }
 
     img {
-        width: 840px;
         margin: -30px auto;
+        width: 840px;
     }
 
     .items {
+        display: block;
         position: absolute;
-        left: 50%;
         top: 50%;
+        left: 50%;
+        margin: -270px -480px;
         width: 960px;
         height: 540px;
-        margin: -270px -480px;
-        display: block;
     }
 
     li {
         position: absolute;
-        cursor: pointer;
-        animation: bob 6s infinite;
         transition: opacity .5s;
+        animation: bob 6s infinite;
+        cursor: pointer;
 
         &::before {
-            content: '';
             display: block;
+            top: 0;
+            left: 0;
             background-image: url('../media/_images/_S_MultiBubbles/img_7.3.png');
-            background-size: 1602px;
             background-repeat: no-repeat;
+            background-size: 1602px;
             width: 100%;
             height: 100%;
-            left: 0;
-            top: 0;
+            content: '';
         }
 
         &.HIGHLIGHTED {
@@ -60,16 +62,16 @@
 
         @for $i from 1 through 21 {
             &[data-ref=#{nth($items, $i)}] {
+                top: nth($tops, $i) + px;
+                left: nth($lefts, $i) + px;
                 width: nth($widths, $i) + px;
                 height: nth($heights, $i) + px;
-                left: nth($lefts, $i) + px;
-                top: nth($tops, $i) + px;
 
                 &::before {
                     background-position: #{nth($background-lefts, $i) + px} #{nth($background-tops, $i) + px};
                 }
 
-                &:hover:before {
+                &:hover::before {
                     background-position: #{nth($hover-lefts, $i) + px} #{nth($hover-tops, $i) + px};
                 }
             }
@@ -78,27 +80,27 @@
 
     .score {
         position: absolute;
-        left: 50px;
         bottom: 0;
-        color: #fff;
+        left: 50px;
+        color: $white;
 
         img {
-            width: 180px;
             margin: 0;
+            width: 180px;
             vertical-align: middle;
         }
 
         span {
             display: inline-block;
-            vertical-align: bottom;
-            padding-bottom: 4px;
             margin-left: -15px;
+            padding-bottom: 4px;
+            vertical-align: bottom;
             font-size: 36px;
         }
     }
 }
 
-.VOICE-OVER #multi-bubbles ul{
+.VOICE-OVER #multi-bubbles ul {
     cursor: auto;
     pointer-events: none;
 }
