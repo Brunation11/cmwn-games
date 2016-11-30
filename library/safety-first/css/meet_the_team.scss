@@ -57,18 +57,34 @@
       background-image: url('#{$media-server}SpritesAnimations/sprites.labels.png');
       background-size: 301%;
     }
+
+    &.HIGHLIGHTED {
+      opacity: .75;
+    }
   }
 
   .barkley::before {
     background-image: url('#{$media-server}ImageAssets/officer.barkley.png');
   }
 
+  .barkley::after {
+    background-position: 0 0;
+  }
+
   .shepherd::before {
     background-image: url('#{$media-server}ImageAssets/officer.shepherd.png');
   }
 
+  .shepherd::after {
+    background-position: 193px 0;
+  }
+
   .wolf::before {
     background-image: url('#{$media-server}ImageAssets/officer.wolf.png');
+  }
+
+  .wolf::after {
+    background-position: 386px 0;
   }
 
   .selectable {
@@ -115,7 +131,22 @@
 
     .barkley {
       height: 45%;
-      left: 20%;
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20%;
+    }
+
+    .shepherd {
+      height: 45%;
+      left: 40%;
+      top: 40%;
+      width: 20%;
+    }
+
+    .wolf {
+      height: 45%;
+      left: 65%;
       top: 50%;
       transform: translateY(-50%);
       width: 20%;
@@ -145,21 +176,59 @@
       }
     }
 
+    &.open-shepherd {
+      .frame {
+        background-size: auto 100%;
+        top: 5%;
+        transform: translateX(-50%);
+        left: 50%;
+        width: 57%;
+        height: 34%;
+        background-position: 1060px 0;
+
+        span {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          transform: translateY(-75%);
+        }
+      }
+    }
+
+    &.open-wolf {
+      .frame {
+        background-size: auto 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 40%;
+        width: 47%;
+        height: 34%;
+        background-position: 450px 0;
+
+        span {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 96%;
+          transform: translateY(-60%);
+        }
+      }
+    }
+
     button.close-reveal {
       position: absolute;
       display: block;
       bottom: 2%;
-      z-index: 2;
+      z-index: 3;
       width: 80px;
       height: 50px;
       right: 1%;
-      opacity: 0;
-      pointer-events: none;
       background-position: -665px -43px;
       transition: opacity 1s;
 
       &:hover {
-        background-position: -660px 390px;
+        background-position: -667px -187px;
       }
     }
   }
