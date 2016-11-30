@@ -25,18 +25,42 @@ export default function (props, ref, key) {
             </skoash.Component>
 
             <MediaCollection
-                play={_.get(props, 'data.reveal.open') ? 'correct' : ''}
+                play={_.get(props, 'data.sfx')}
                 onPlay={function () {
-                    this.play(_.get(props, 'data.reveal.open'));
+                    this.updateGameState({
+                        path: 'sfx',
+                        data: ''
+                    });
                 }}
             >
-                {
-                // <skoash.Audio
-                    // ref="correct"
-                    // type="sfx"
-                    // src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DarkBark.mp3`}
-                // />
-                }
+                <skoash.Audio
+                    ref="correct"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DogBark.mp3`}
+                    onComplete={function () {
+                        console.log('here');
+                        this.updateGameState({
+                            path: 'reveal',
+                            data: {
+                                open: _.get(props, 'data.selectable.target')
+                            }
+                        });
+                    }}
+                />
+            </MediaCollection>
+
+
+            <MediaCollection
+                play={_.get(props, 'data.reveal.open')}
+                onPlay={function () {
+                    this.updateGameState({
+                        path: 'reveal',
+                        data: {
+                            open: ''
+                        }
+                    });
+                }}
+            >
                 <skoash.MediaSequence
                     ref={answers[0]}
                     silentOnStart
@@ -91,9 +115,13 @@ export default function (props, ref, key) {
                 selectClass="HIGHLIGHTED"
                 selectRespond={function (target) {
                     this.updateGameState({
-                        path: 'reveal',
+                        path: 'sfx',
+                        data: 'correct'
+                    });
+                    this.updateGameState({
+                        path: 'selectable',
                         data: {
-                            open: target
+                            target: target
                         }
                     });
                 }}
