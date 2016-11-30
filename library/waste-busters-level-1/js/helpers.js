@@ -11,9 +11,9 @@ export default {
     collectBags: function (player, bag) {
         // Removes the bag from the screen
         bag.kill();
-
-        //  Add and update the bagCount
+        //  update the bagCount
         this.data.bagCount++;
+        //  emit event with data to skoash game
         this.emitEvent(this.data);
     },
     stay: function (a) {
