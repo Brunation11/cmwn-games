@@ -14,20 +14,19 @@ export default function () {
     [this.player, this.platforms, this.helpers.onBump],
     [this.player, this.bushes, this.helpers.onBump],
     [this.player, this.enemies, this.helpers.onBump],
-    [this.player, this.recycling, this.helpers.onBump],
     [this.player, this.obstacles, this.helpers.onBump],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.enemies, this.ground, this.helpers.stay],
     [this.enemies, this.platforms, this.helpers.stay],
-    [this.recycling, this.ground, this.helpers.stay],
-    [this.recycling, this.platforms, this.helpers.stay],
+    [this.bags, this.ground, this.helpers.stay],
+    [this.bags, this.platforms, this.helpers.stay],
     [this.obstacles, this.ground, this.helpers.stay],
     [this.obstacles, this.platforms, this.helpers.stay],
     ]);
 
     addResponses.call(this, 'overlap', [
-    [this.player, this.recycling, this.helpers.collectRecycling],
+    [this.player, this.bags, this.helpers.collectBags],
     [this.player, this.hearts, this.helpers.collectHeart],
     ]);
 

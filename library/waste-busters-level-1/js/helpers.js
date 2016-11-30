@@ -8,7 +8,13 @@ export default {
     },
     collectHeart: function () {
     },
-    collectRecycling: function () {
+    collectBags: function (player, bag) {
+        // Removes the bag from the screen
+        bag.kill();
+
+        //  Add and update the bagCount
+        this.data.bagCount++;
+        this.emitEvent(this.data);
     },
     stay: function (a) {
         a.body.gravity.y = 0;

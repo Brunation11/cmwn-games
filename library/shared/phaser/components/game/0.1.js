@@ -37,6 +37,14 @@ class Game {
 
         document.domain = 'changemyworldnow.com';
     }
+
+    emitEvent(opts) {
+        var e = new Event('game-event');
+        _.each(opts, (v, k) => {
+            e[k] = v;
+        });
+        if (window.frameElement) window.frameElement.dispatchEvent(e);
+    }
 }
 
 export default Game;

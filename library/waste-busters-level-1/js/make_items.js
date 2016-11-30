@@ -26,6 +26,7 @@ export default function () {
         }, generalDefaultProps),
         snake: _.defaults({
             crop: crops[2],
+            body: [115, 20, 20, 50],
         }, generalDefaultProps),
         bag: _.defaults({
             crop: crops[3],
@@ -43,19 +44,20 @@ export default function () {
         squareBush: 'bushes',
         roundBush: 'bushes',
         snake: 'enemies',
-        bag: 'recycling',
+        bag: 'bags',
         rock: 'obstacles',
         stump: 'obstacles',
     };
 
-    var objects = _.shuffle([
-        'squareBush',
-        'roundBush',
-        'snake',
-        'bag',
-        'rock',
-        'stump',
-    ]);
+    var objects = _.shuffle([]
+        .concat(_.times(1, () => 'squareBush'))
+        .concat(_.times(1, () => 'roundBush'))
+        .concat(_.times(0, () => 'snake'))
+        .concat(_.times(5, () => 'bag'))
+        .concat(_.times(5, () => ''))
+        .concat(_.times(1, () => 'rock'))
+        .concat(_.times(1, () => 'stump'))
+    );
 
     var locations = {
         squareBush: [],
@@ -68,10 +70,34 @@ export default function () {
 
     _.every(this.platforms.children, platform => {
         var object = objects.shift();
-        locations[object].push({
-            top: platform.top - 50,
-            left: platform.left + 30,
-        });
+        if (locations[object]) {
+            locations[object].push({
+                top: platform.top - 50,
+                left: platform.left + 30,
+            });
+        }
+        return objects.length;
+    });
+
+    objects = objects.concat(_.shuffle([]
+        .concat(_.times(1, () => 'squareBush'))
+        .concat(_.times(1, () => 'roundBush'))
+        .concat(_.times(2, () => 'snake'))
+        .concat(_.times(5, () => 'bag'))
+        .concat(_.times(1, () => 'rock'))
+        .concat(_.times(1, () => 'stump'))
+    ));
+
+    objects.unshift('');
+
+    _.every(this.ground.children, platform => {
+        var object = objects.shift();
+        if (locations[object]) {
+            locations[object].push({
+                top: platform.top - 50,
+                left: platform.left + 30,
+            });
+        }
         return objects.length;
     });
 

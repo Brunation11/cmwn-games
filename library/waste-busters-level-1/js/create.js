@@ -27,4 +27,8 @@ export default function () {
         rightFrames: [0, 1, 2, 3],
         scale: [.15, .15],
     });
+
+    this.data = {
+        bagCount: 0,
+    };
 }
