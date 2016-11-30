@@ -4,14 +4,14 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="info-lets-see"
+            id="ding-dong"
         >
             <skoash.Audio
                 ref="ding-dong"
                 type="sfx"
                 src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DoorbellLong.mp3`}
             />
-            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/ding.dong.png`} />
+            <skoash.Image className="animated infinite" src={`${ENVIRONMENT.MEDIA}ImageAssets/ding.dong.png`} />
         </skoash.Screen>
     );
 }
