@@ -194,10 +194,10 @@ gulp.task('copy-index', function () {
                             `<div id="${config.id}"></div>\n  ` +
                             '<script type="text/javascript" ' +
                             `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
-                            `</script>\n  ` +
+                            '</script>\n  ' +
                             '<script type="text/javascript" ' +
                             `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
-                            `</script>\n  ` +
+                            '</script>\n  ' +
                             '<script type="text/javascript" ' +
                             `src="../framework/skoash.${config.skoash}.js"></script>`
                         );
