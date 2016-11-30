@@ -32,12 +32,22 @@ export default function () {
         [650, 1 * h],
         [1350, 1 * h],
         [1400, 3 * h],
+        [1700, 2 * h],
+        [1900, 1 * h],
+        [2050, 3 * h],
+        [2300, 2 * h],
+        [2550, 3 * h],
+        [2800, 2 * h],
+        [3000, 3 * h],
+        [3300, 2 * h],
     ];
 
     addPlatform([130, 1 * h], 0);
     addPlatform([350, 2 * h], 1);
     addPlatform([950, 2 * h], 2);
     addPlatform([1050, 3 * h], 0);
+    addPlatform([2650, 1 * h], 2);
+    addPlatform([3600, 3 * h], 0);
 
     _.each(locations, location => {
         addPlatform(location, _.random(crops.length - 1));

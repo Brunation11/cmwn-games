@@ -1,6 +1,7 @@
-import addItems from 'shared/phaser/methods/add_items/0.1';
+import makeBackground from './make_background';
 import makeGround from './make_ground';
 import makePlatforms from './make_platforms';
+import makeItems from './make_items';
 
 export default {
     onBump: function () {
@@ -27,31 +28,8 @@ export default {
             this.isHit = false;
         }, 1000);
     },
-    makeBackground: function () {
-        addItems.call(this, {
-            group: 'sky', enableBody: false, defaultOpts: {
-                collideWorldBounds: false,
-                top: 0,
-                image: 'sky',
-                scale: [.5, .5],
-            }
-        }, [
-            { left: 0 },
-            { left: 2975.5 }
-        ]);
-
-        addItems.call(this, {
-            group: 'clouds', enableBody: false, defaultOpts: {
-                collideWorldBounds: false,
-                top: 0,
-                image: 'clouds',
-                scale: [.5, .5],
-            }
-        }, [
-            { left: 0 },
-            { left: 2975.5 }
-        ]);
-    },
+    makeBackground,
     makeGround,
     makePlatforms,
+    makeItems,
 };
