@@ -3,29 +3,37 @@
 #info-lets-see {
     .frame {
         position: absolute;
-        width: 80%;
+        width: 90%;
         height: 80%;
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         background: url('#{$media-server}ImageAssets/frame.quit.png');
-        background-size: 100%;
+        background-size: 100% 100%;
 
         &::after {
             position: absolute;
             content: '';
-            width: 100%;
-            height: 20%;
-            top: 0;
-            right: 0;
-            background: url('#{$media-server}SpritesAnimations/sprite.h1.png');
-            background-position: 0 0;
+            width: 70%;
+            height: 55%;
+            top: 10%;
+            right: 3%;
+            background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
+            background-position: -10px 0;
+            background-size: auto 100%;
+        }
+
+        span {
+            position: absolute;
+            top: 65%;
+            font-size: 35px;
+            right: 13%;
         }
     }
 
     img {
-        width: 20%;
-        height: 40%;
+        position: absolute;
+        width: 35%;
         bottom: 0;
         left: 0;
     }
