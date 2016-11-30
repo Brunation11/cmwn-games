@@ -11,270 +11,246 @@
 // }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  user-drag: none;
-  cursor: default;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    user-drag: none;
+    cursor: default;
 }
 
 html {
-  font-family: "Molot", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
-  // color: $text-color;
+    font-family: "Molot", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body, body > div, .skoash-game {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  font-size: 20px;
-  background: url($media_server + 'ImageAssets/bkg.3.jpg') bottom center no-repeat;
-  background-size: cover;
-
-
-  .background {
-    opacity: 0;
-    transition: opacity .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
     width: 100%;
     height: 100%;
+    margin: auto;
+    font-size: 20px;
+    background: url($media_server + 'ImageAssets/bkg.3.jpg') bottom center no-repeat;
     background-size: cover;
-    background-position: center center;
 
-    &.bkg-imagine {
-      // background-image: url($media_server + 'ImageAssets/bkg.jpg');
-    }
-    &.bkg-congratulations {
-      // background-image: url($media_server + 'ImageAssets/bkg.win.jpg');
-    }
-    &.bkg-printer {
-      // background-image: url($media_server + 'ImageAssets/bkg.2.jpg');
-    }
-  }
 
-  &.SCREEN-imagine {
-    .background.bkg-imagine {
-      opacity: 1;
+    .background {
+        opacity: 0;
+        transition: opacity .5s;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
     }
-  }
 
-  &.SCREEN-congratulations {
-    .background.bkg-congratulations {
-      opacity: 1;
+    &.SCREEN-info-lets-see .background.doorclosed,
+    &.SCREEN-ding-dong .background.doorclosed {
+        opacity: 1;
     }
-  }
-
-  &.SCREEN-printer {
-    .background.bkg-printer {
-      opacity: 1;
-    }
-  }
 }
 
 .skoash-game {
-  width: 960px;
-  height: 540px;
+    width: 960px;
+    height: 540px;
 }
 
 // preload assets
 #asset-bin {
-  display: none;
+    display: none;
 }
 
 img {
-  &.hidden {
-    display: none;
-  }
+    &.hidden {
+        display: none;
+    }
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
+    margin: 0;
+    padding: 0;
+    border: none;
 
-  font-family: inherit;
-  font-size: inherit;
-  color: transparent;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: transparent;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
 
-  background-image: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
-  background-repeat: no-repeat;
-  background-size: 1400px;
-  background-position: left top;
+    background-image: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
+    background-repeat: no-repeat;
+    background-size: 1400px;
+    background-position: left top;
 
-  &.close {
-    width: 50px;
-    height: 50px;
-    background-position: -276px -44px;
-    position: absolute;
-    right: 1%;
-    top: 1%;
-    z-index: 2;
+    &.close {
+        width: 50px;
+        height: 50px;
+        background-position: -276px -44px;
+        position: absolute;
+        right: 1%;
+        top: 1%;
+        z-index: 2;
 
-    &:hover {
-      background-position: -276px -185px;
+        &:hover {
+            background-position: -276px -185px;
+        }
     }
-  }
 
-  &.next-screen,
-  &.prev-screen {
-    position: absolute;
-    display: block;
-    bottom: 2%;
-    z-index: 2;
-    width: 80px;
-    height: 50px;
-  }
-
-  &.next-screen {
-    right: 1%;
-    opacity: 0;
-    pointer-events: none;
-    background-position: -665px -43px;
-
-    &:hover {
-      background-position: -250px -53px;
+    &.next-screen,
+    &.prev-screen {
+        position: absolute;
+        display: block;
+        bottom: 2%;
+        z-index: 2;
+        width: 80px;
+        height: 50px;
     }
-  }
 
-  &.prev-screen {
-    left: 1%;
-    background-position: -459px -43px;
+    &.next-screen {
+        right: 1%;
+        opacity: 0;
+        pointer-events: none;
+        background-position: -665px -43px;
 
-    &:hover {
-      background-position: -250px -51px;
+        &:hover {
+            background-position: -667px -187px;
+        }
     }
-  }
 
-  &.quit-yes {
-    width: 150px;
-    height: 60px;
-    // background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
-    background-size: 300px;
-    background-position: 0px 0px;
+    &.prev-screen {
+        left: 1%;
+        background-position: -459px -43px;
 
-    &:hover {
-      background-position: 0px -66px;
+        &:hover {
+            background-position: -461px -186px;
+        }
     }
-  }
 
-  &.quit-no {
-    width: 150px;
-    height: 60px;
-    // background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
-    background-size: 300px;
-    background-position: -150px 0px;
+    &.quit-yes {
+        width: 150px;
+        height: 60px;
+        // background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
+        background-size: 300px;
+        background-position: 0px 0px;
 
-    &:hover {
-      background-position: -150px -66px;
+        &:hover {
+            background-position: 0px -66px;
+        }
     }
-  }
 
-  &.close-reveal {
-    width: 30px;
-    height: 30px;
-    background-position: -660px 240px;
-    transition: opacity 1s;
+    &.quit-no {
+        width: 150px;
+        height: 60px;
+        // background-image: url($media-server + 'SpritesAnimations/sprite.quit.png');
+        background-size: 300px;
+        background-position: -150px 0px;
 
-    &:hover {
-      background-position: -660px 390px;
+        &:hover {
+            background-position: -150px -66px;
+        }
     }
-  }
+
+    &.close-reveal {
+        width: 30px;
+        height: 30px;
+        background-position: -660px 240px;
+        transition: opacity 1s;
+
+        &:hover {
+            background-position: -660px 390px;
+        }
+    }
 }
 
 h2 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 h3 {
-  font-size: 36px;
-  margin: 0;
+    font-size: 36px;
+    margin: 0;
 }
 
 p {
-  font-size: 36px;
-  margin: 0;
+    font-size: 36px;
+    margin: 0;
 }
 
 .screen {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity .5s, z-index 0 .5s;
-
-  .screen-content {
     position: absolute;
-    display: none;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
     opacity: 0;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    transition: opacity .5s;
+    z-index: -1;
+    transition: opacity .5s, z-index 0 .5s;
 
-    .VOICE-OVER:not(.DEMO) & {
-      pointer-events: none;
-    }
-  }
-
-  &.OPEN {
-    opacity: 1;
-    z-index: 1;
-    transition: opacity .5s, z-index 0;
-  }
-
-  &.READY {
     .screen-content {
-      display: block;
-      opacity: 1;
-    }
-  }
+        position: absolute;
+        display: none;
+        opacity: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        transition: opacity .5s;
 
-  &.LEAVE {
-    opacity: 0;
-  }
+        .VOICE-OVER:not(.DEMO) & {
+            pointer-events: none;
+        }
+    }
+
+    &.OPEN {
+        opacity: 1;
+        z-index: 1;
+        transition: opacity .5s, z-index 0;
+    }
+
+    &.READY {
+        .screen-content {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    &.LEAVE {
+        opacity: 0;
+    }
 }
 
-  .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
-  .screen.GATED .next-screen {
+.skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
+.screen.GATED .next-screen {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0s;
     cursor: default;
-  }
+}
 
-  .skoash-game.MENU-quit .screen {
+.skoash-game.MENU-quit .screen {
     &:not(#quit) {
-      opacity: 0;
-      pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
     }
-  }
+}
 
-  .skoash-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen,
-  .screen.REPLAY .next-screen {
+.skoash-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
     opacity: 1;
     pointer-events: auto;
     transform: rotate(0deg);
     cursor: pointer;
     transition: opacity 1s, transform 1s;
-  }
+}
 
-  .screen .prev-screen {
+.screen .prev-screen {
     margin-left: 5px;
     left: 0;
-  }
+}
