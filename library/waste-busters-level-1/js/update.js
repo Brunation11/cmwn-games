@@ -3,18 +3,32 @@ import movePlayer from 'shared/phaser/methods/move_player/0.1';
 
 export default function () {
 
+    if (!this.shouldUpdate) {
+        setTimeout(() => this.shouldUpdate = true, 100);
+        return;
+    }
+
     addResponses.call(this, 'collide', [
     [this.player, this.ground, this.helpers.onBump],
     [this.player, this.water, this.helpers.hitWater],
     [this.player, this.platforms, this.helpers.onBump],
-    [this.stars, this.platforms],
-    [this.player, this.diamonds, this.helpers.rideDiamond],
-    [this.player, this.spikes, this.helpers.hitSpike],
+    [this.player, this.bushes, this.helpers.onBump],
+    [this.player, this.enemies, this.helpers.onBump],
+    [this.player, this.recycling, this.helpers.onBump],
+    [this.player, this.obstacles, this.helpers.onBump],
+    [this.bushes, this.ground, this.helpers.stay],
+    [this.bushes, this.platforms, this.helpers.stay],
+    [this.enemies, this.ground, this.helpers.stay],
+    [this.enemies, this.platforms, this.helpers.stay],
+    [this.recycling, this.ground, this.helpers.stay],
+    [this.recycling, this.platforms, this.helpers.stay],
+    [this.obstacles, this.ground, this.helpers.stay],
+    [this.obstacles, this.platforms, this.helpers.stay],
     ]);
 
     addResponses.call(this, 'overlap', [
-    [this.player, this.stars, this.helpers.collectStar],
-    [this.player, this.healths, this.helpers.collectHealth],
+    [this.player, this.recycling, this.helpers.collectRecycling],
+    [this.player, this.hearts, this.helpers.collectHeart],
     ]);
 
     movePlayer.call(this, {

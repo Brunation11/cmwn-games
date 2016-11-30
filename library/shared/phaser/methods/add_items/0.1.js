@@ -58,7 +58,7 @@ export default function (groupOpts = {}, optsArray = []) {
                     item.body.height = opts.body[1] * opts.scale[1];
                     item.body.offset.x = opts.body[2] * opts.scale[0];
                     item.body.offset.y = opts.body[3] * opts.scale[1];
-                }, 100);
+                }, 0);
             }
         }
     });

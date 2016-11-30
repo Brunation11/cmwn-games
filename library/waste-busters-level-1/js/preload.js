@@ -6,6 +6,8 @@ export default function () {
     ['clouds', ENVIRONMENT.MEDIA + 'ImageAssets/game.1.bkg.clouds.png'],
     ['ground', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.ground.png'],
     ['platforms', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.platform.png'],
+    // 930 x 140 pixels
+    ['items', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.5.png'],
     ]);
 
     loadAssets.call(this, 'spritesheet', [

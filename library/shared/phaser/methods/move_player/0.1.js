@@ -7,7 +7,7 @@ export default function (opts) {
         stopFrame: 4,
     });
 
-  //  Reset the players velocity (movement)
+    //  Reset the players velocity (movement)
     if (this.isHit) return;
     this.player.body.velocity.x = 0;
 

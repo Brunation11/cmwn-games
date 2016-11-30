@@ -6,13 +6,13 @@ import makeItems from './make_items';
 export default {
     onBump: function () {
     },
-    collectStar: function () {
+    collectHeart: function () {
     },
-    collectHealth: function () {
+    collectRecycling: function () {
     },
-    hitSpike: function () {
-    },
-    rideDiamond: function () {
+    stay: function (a) {
+        a.body.gravity.y = 0;
+        a.body.velocity.y = 0;
     },
     hitWater: function (p) {
         if (this.isHit) return;

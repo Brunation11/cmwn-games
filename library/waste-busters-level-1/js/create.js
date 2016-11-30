@@ -16,6 +16,7 @@ export default function () {
     this.helpers.makeBackground.call(this);
     this.helpers.makeGround.call(this);
     this.helpers.makePlatforms.call(this);
+    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,

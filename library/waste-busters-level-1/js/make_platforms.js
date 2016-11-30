@@ -1,32 +1,30 @@
 import addItems from 'shared/phaser/methods/add_items/0.1';
 
 export default function () {
-    var h = 80;
-    var platformOpts = [];
+    const h = 80;
 
-    function addPlatform(location, i) {
-        platformOpts.push({
-            left: location[0],
-            top: location[1],
-            crop: crops[i],
-            body: bodies[i],
-        });
-    }
-
-    // 1936 x 96 pixels
-    let crops = [
+    const crops = [
         [200, 0, 240, 96],
         [790, 0, 350, 96],
         [1290, 0, 645, 96],
     ];
 
-    let bodies = [
+    const bodies = [
         [200, 28, 0, 80],
         [310, 28, 0, 80],
         [605, 28, 0, 80],
     ];
 
-    let locations = [
+    const platformParams = [
+        [[130, 1 * h], 0],
+        [[350, 2 * h], 1],
+        [[950, 2 * h], 2],
+        [[1050, 3 * h], 0],
+        [[2650, 1 * h], 2],
+        [[3600, 3 * h], 0],
+    ];
+
+    const locations = [
         [100, 3 * h],
         [600, 3 * h],
         [650, 1 * h],
@@ -42,12 +40,20 @@ export default function () {
         [3300, 2 * h],
     ];
 
-    addPlatform([130, 1 * h], 0);
-    addPlatform([350, 2 * h], 1);
-    addPlatform([950, 2 * h], 2);
-    addPlatform([1050, 3 * h], 0);
-    addPlatform([2650, 1 * h], 2);
-    addPlatform([3600, 3 * h], 0);
+    var platformOpts = [];
+
+    function addPlatform(location, i) {
+        platformOpts.push({
+            left: location[0],
+            top: location[1],
+            crop: crops[i],
+            body: bodies[i],
+        });
+    }
+
+    _.each(platformParams, params => {
+        addPlatform(...params);
+    });
 
     _.each(locations, location => {
         addPlatform(location, _.random(crops.length - 1));
