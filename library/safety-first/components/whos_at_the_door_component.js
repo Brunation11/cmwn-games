@@ -2,9 +2,9 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 
-export default function (props, ref, key, opts={}) {
-    var sfxOnComplete,
-        selectRespond
+export default function (props, ref, key, opts = {}) {
+    var sfxOnComplete;
+    var selectRespond;
 
     sfxOnComplete = function () {
         this.updateGameState({
@@ -13,7 +13,7 @@ export default function (props, ref, key, opts={}) {
                 open: _.get(props, 'data.selectable.target')
             }
         });
-    }
+    };
 
     selectRespond = function () {
         this.updateGameState({
@@ -22,7 +22,7 @@ export default function (props, ref, key, opts={}) {
                 target: target
             }
         });
-    }
+    };
 
     return (
         <skoash.Screen
