@@ -15,6 +15,7 @@ export default function () {
         gravityY: 12,
         body: [115, 100, 20, 50],
         scale: [.5, .5],
+        collideWorldBounds: false,
     };
 
     const defaultProps = {
@@ -38,30 +39,23 @@ export default function () {
             crop: crops[5],
             body: [115, 120, 20, 50],
         }, generalDefaultProps),
-        heart: _.defaults({
+        heart: {
             image: 'heart',
-            crop: undefined,
-            gravityY: 0,
             scale: [.15, .15],
-        }),
-        recycle: _.defaults({
+        },
+        recycle: {
             image: 'recycle',
-            crop: undefined,
-            gravityY: 0,
             scale: [.15, .15],
-        }),
-        raibowRecycle: _.defaults({
+        },
+        raibowRecycle: {
             image: 'rainbowRecycle',
-            crop: undefined,
-            gravityY: 0,
             scale: [.15, .15],
-        }),
-        truck: _.defaults({
+        },
+        truck: {
             image: 'truck',
-            crop: undefined,
             scale: [.5, .5],
             collideWorldBounds: false,
-        }),
+        },
     };
 
     const groups = {
