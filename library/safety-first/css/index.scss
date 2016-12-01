@@ -51,7 +51,8 @@ body, body > div, .skoash-game {
     }
 
     &.SCREEN-info-lets-see .background.doorclosed,
-    &.SCREEN-ding-dong .background.doorclosed {
+    &.SCREEN-ding-dong .background.doorclosed,
+    &.SCREEN-whos-at-the-door-grandpa .background.doorclosed {
         opacity: 1;
     }
 }
