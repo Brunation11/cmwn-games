@@ -24,13 +24,26 @@ export default function () {
         image: 'turtle',
         bounceY: 0.2,
         gravityY: 400,
-        body: [415, 446, 50, 100],
+        body: [315, 396, 100, 150],
         rightFrames: [6, 7, 8, 9, 10, 11],
         leftFrames: [5, 4, 3, 2, 1, 0],
         scale: [.15, .15],
+        checkCollisionUp: false,
     });
 
     this.data = {
+        hits: 0,
         bagCount: 0,
+        score: 0,
+        lives: 1,
+        trucks: 0,
     };
+
+    //  emit event with data to skoash game
+    this.emitEvent({
+        updateGameState: {
+            path: 'data',
+            data: this.data
+        }
+    });
 }

@@ -38,6 +38,24 @@ export default function () {
             crop: crops[5],
             body: [115, 120, 20, 50],
         }, generalDefaultProps),
+        heart: _.defaults({
+            image: 'heart',
+            crop: undefined,
+            gravityY: 0,
+            scale: [.15, .15],
+        }),
+        recycle: _.defaults({
+            image: 'recycle',
+            crop: undefined,
+            gravityY: 0,
+            scale: [.15, .15],
+        }),
+        raibowRecycle: _.defaults({
+            image: 'rainbowRecycle',
+            crop: undefined,
+            gravityY: 0,
+            scale: [.15, .15],
+        }),
     };
 
     const groups = {
@@ -47,16 +65,22 @@ export default function () {
         bag: 'bags',
         rock: 'obstacles',
         stump: 'obstacles',
+        heart: 'hearts',
+        recycle: 'recycles',
+        raibowRecycle: 'rainbowRecycles',
     };
 
     var objects = _.shuffle([]
-        .concat(_.times(1, () => 'squareBush'))
-        .concat(_.times(1, () => 'roundBush'))
-        .concat(_.times(0, () => 'snake'))
-        .concat(_.times(5, () => 'bag'))
-        .concat(_.times(5, () => ''))
-        .concat(_.times(1, () => 'rock'))
-        .concat(_.times(1, () => 'stump'))
+        // .concat(_.times(1, () => 'squareBush'))
+        // .concat(_.times(1, () => 'roundBush'))
+        // .concat(_.times(0, () => 'snake'))
+        // .concat(_.times(5, () => 'bag'))
+        // .concat(_.times(5, () => ''))
+        // .concat(_.times(1, () => 'rock'))
+        // .concat(_.times(1, () => 'stump'))
+        .concat(_.times(1, () => 'heart'))
+        .concat(_.times(1, () => 'recycle'))
+        .concat(_.times(1, () => 'raibowRecycle'))
     );
 
     var locations = {
@@ -66,6 +90,9 @@ export default function () {
         bag: [],
         rock: [],
         stump: [],
+        heart: [],
+        recycle: [],
+        raibowRecycle: [],
     };
 
     _.every(this.platforms.children, platform => {
@@ -105,5 +132,20 @@ export default function () {
         addItems.call(this, {
             group: groups[key], defaultOpts: defaultProps[key]
         }, locationArray);
+    });
+
+    _.each(this.hearts.children, heart => {
+        heart.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+        heart.animations.play('spin');
+    });
+
+    _.each(this.recycles.children, recycle => {
+        recycle.animations.add('spin', [0, 1, 2, 3, 4], 10, true);
+        recycle.animations.play('spin');
+    });
+
+    _.each(this.rainbowRecycles.children, recycle => {
+        recycle.animations.add('spin', [0, 1, 2, 3], 10, true);
+        recycle.animations.play('spin');
     });
 }

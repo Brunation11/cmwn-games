@@ -30,22 +30,26 @@ export default function (props, ref, key) {
             >
                 <Score
                     className="life"
+                    correct={4 - _.get(props, 'data.data.hits') || 0}
                 />
                 <Score
                     className="bags"
-                    correct={_.get(props, 'data.data.bagCount', 0)}
+                    correct={_.get(props, 'data.data.bagCount')}
                 />
                 <Score
                     className="level-score"
+                    correct={_.get(props, 'data.data.score')}
                 />
                 <skoash.Component
                     className={classNames('level', 'level-1')}
                 />
                 <Score
                     className="lives"
+                    correct={_.get(props, 'data.data.lives')}
                 />
                 <Score
                     className="trucks"
+                    correct={_.get(props, 'data.data.trucks')}
                 />
                 <DPad />
             </skoash.Component>

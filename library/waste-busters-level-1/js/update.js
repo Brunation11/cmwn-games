@@ -28,6 +28,8 @@ export default function () {
     addResponses.call(this, 'overlap', [
     [this.player, this.bags, this.helpers.collectBags],
     [this.player, this.hearts, this.helpers.collectHeart],
+    [this.player, this.recycles, this.helpers.collectRecycling],
+    [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
     ]);
 
     movePlayer.call(this, {

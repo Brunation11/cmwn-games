@@ -6,7 +6,45 @@ import makeItems from './make_items';
 export default {
     onBump: function () {
     },
-    collectHeart: function () {
+    collectRecycling: function (player, recyclying) {
+        // Removes the recyclying from the screen
+        recyclying.kill();
+        //  update the lives
+        this.data.score += 100;
+        //  emit event with data to skoash game
+        this.emitEvent({
+            updateGameState: {
+                path: 'data',
+                data: this.data
+            }
+        });
+    },
+    collectRainbowRecycling: function (player, recyclying) {
+        // Removes the recyclying from the screen
+        recyclying.kill();
+        //  update the lives
+        this.data.score += 300;
+        //  emit event with data to skoash game
+        this.emitEvent({
+            updateGameState: {
+                path: 'data',
+                data: this.data
+            }
+        });
+    },
+    collectHeart: function (player, heart) {
+        if (this.data.lives === 3) return;
+        // Removes the heart from the screen
+        heart.kill();
+        //  update the lives
+        this.data.lives++;
+        //  emit event with data to skoash game
+        this.emitEvent({
+            updateGameState: {
+                path: 'data',
+                data: this.data
+            }
+        });
     },
     collectBags: function (player, bag) {
         if (this.data.bagCount === 5) return;
