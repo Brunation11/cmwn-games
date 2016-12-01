@@ -16,6 +16,8 @@ import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
+ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/HappyFishFace/';
+
 var HappyFishFace = (
     <skoash.Game
         config={config}
@@ -23,13 +25,13 @@ var HappyFishFace = (
             0: iOSScreen,
             1: TitleScreen,
             2: YouFeelScreen,
-            3: WaterPollutionScreen,
-            4: HealthyWaterScreen,
-            5: CleanWaterScreen,
-            6: BubbleUpScreen,
-            7: MultiBubblesScreen,
-            8: PollutesWaterScreen,
-            9: TrashScreen,
+            //3: WaterPollutionScreen,
+            //4: HealthyWaterScreen,
+            //5: CleanWaterScreen,
+            //6: BubbleUpScreen,
+            //7: MultiBubblesScreen,
+            //8: PollutesWaterScreen,
+            //9: TrashScreen,
             10: FlipScreen,
         }}
         menus={{

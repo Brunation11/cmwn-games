@@ -382,32 +382,45 @@ p {
     width: 100%;
   }
 
+  .frame > div {
+    position: absolute;
+    left: 50%;
+    bottom: 61px;
+    transform: translateX(-50%);
+  }
+
   .selectable {
     margin: -10px;
-    height: 200px;
+    height: 270px;
     justify-content: center;
   }
 
   li {
-    background-size: auto 200px;
-    background-position: left center;
+    width: 300px;
+    margin: 0 -50px;
+    background-size: auto;
+    background-position-y: 64px;
+    background-repeat: no-repeat;
     cursor: pointer;
 
     &.img-0 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.2.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -755px;
     }
 
     &.img-1 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.3.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -27px;
     }
 
     &.img-2 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.4.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: center;
     }
 
     &.SELECTED,
     &:hover {
-      background-position: right center;
+        background-position-y: -188px;
     }
 
     &.SELECTED {
