@@ -7,8 +7,7 @@ import LevelOneScreen from './components/level_one_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-ENVIRONMENT.MEDIA_BASE = ENVIRONMENT.MEDIA;
-ENVIRONMENT.MEDIA += 'Games/WasteBusters/';
+ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/WasteBusters/';
 
 let wasteBusters = (
     <skoash.Game
