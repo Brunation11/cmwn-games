@@ -1,39 +1,44 @@
 @keyframes flicker {
-    0% {opacity:1;}
-    10% {opacity:1;}
-    12% {opacity:0;}
-    14% {opacity:1;}
-    16% {opacity:0;}
-    18% {opacity:1;}
-    44% {opacity:1;}
-    46% {opacity:0;}
-    48% {opacity:1;}
-    50% {opacity:0;}
-    52% {opacity:1;}
-    82% {opacity:1;}
-    84% {opacity:0;}
-    86% {opacity:1;}
-    88% {opacity:0;}
-    90% {opacity:1;}
-    100% {opacity:1;}
+    0% {opacity: 1;}
+    10% {opacity: 1;}
+    12% {opacity: 0;}
+    14% {opacity: 1;}
+    16% {opacity: 0;}
+    18% {opacity: 1;}
+    44% {opacity: 1;}
+    46% {opacity: 0;}
+    48% {opacity: 1;}
+    50% {opacity: 0;}
+    52% {opacity: 1;}
+    82% {opacity: 1;}
+    84% {opacity: 0;}
+    86% {opacity: 1;}
+    88% {opacity: 0;}
+    90% {opacity: 1;}
+    100% {opacity: 1;}
 }
 @keyframes stamp {
     0% {
-        opacity: 0;
         transform: scale(4);
+        opacity: 0;
     }
+
     10% {
         opacity: 1;
     }
+
     60% {
         transform: scale(1);
     }
+
     65% {
         transform: scale(1.1);
     }
+
     75% {
         transform: scale(1.1);
     }
+
     80% {
         transform: scale(1.1);
     }
@@ -64,40 +69,66 @@
 }
 
 @keyframes cross {
-    0% {left:150px;top:-100px;opacity:0;}
-    2% {left:150px;top:-100px;opacity:1;}
-    98% {left:750px;top:600px;opacity:1;}
-    100% {left:750px;top:600px;opacity:0;}
+    0% {
+        top: -100px;
+        left: 150px;
+        opacity: 0;
+    }
+
+    2% {
+        top: -100px;
+        left: 150px;
+        opacity: 1;
+    }
+
+    98% {
+        top: 600px;
+        left: 750px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 600px;
+        left: 750px;
+        opacity: 0;
+    }
 }
 
 @keyframes float {
     0% {
         transform: translateX(0) translateY(0);
-        opacity:0;
+        opacity: 0;
     }
+
     2% {
         transform: translateX(0) translateY(0);
-        opacity:1;
+        opacity: 1;
     }
+
     20% {
         transform: translateX(50px) translateY(140px) rotate(45deg);
     }
+
     40% {
         transform: translateX(0) translateY(280px);
     }
+
     60% {
         transform: translateX(50px) translateY(420px) rotate(45deg);
     }
+
     80% {
         transform: translateX(0) translateY(560px);
     }
+
     98% {
         transform: translateX(0) translateY(700px);
-        opacity:1;
+        opacity: 1;
     }
+
     100% {
         transform: translateX(0) translateY(700px);
-        opacity:0;
+        opacity: 0;
     }
 }
 

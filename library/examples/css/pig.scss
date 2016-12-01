@@ -1,27 +1,27 @@
 #pig {
     img {
         display: block;
-        width: 640px;
         margin: 40px auto 0;
+        width: 640px;
     }
 
     .selectable {
-        list-style: none;
-        padding: 0;
-        margin: -20px auto 0;
         display: block;
+        margin: -20px auto 0;
+        padding: 0;
         width: 730px;
+        list-style: none;
 
         li {
             display: inline-block;
-            height: 380px;
-            cursor: auto;
             background-repeat: no-repeat;
+            cursor: auto;
+            height: 380px;
 
             &.pig {
-                width: 500px;
-                background-image: url(../media/S_4/img_4.2.png);
+                background-image: url('../media/S_4/img_4.2.png');
                 background-size: auto 100%;
+                width: 500px;
 
                 &:hover {
                     background-position: -497px 0;
@@ -33,9 +33,9 @@
             }
 
             &.bulb {
-                width: 230px;
-                background-image: url(../media/S_4/img_4.3.png);
+                background-image: url('../media/S_4/img_4.3.png');
                 background-size: auto 100%;
+                width: 230px;
 
                 &:hover {
                     background-position: -246px 0;

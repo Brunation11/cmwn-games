@@ -1,12 +1,18 @@
-html, body, body > div, body > div > div {
+$black: #000;
+$white: #fff;
+
+html,
+body,
+body > div,
+body > div > div {
     margin: 0;
+    cursor: auto;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: auto;
 }
 
 html {
@@ -16,39 +22,39 @@ html {
 body > div > div {
     position: relative;
     margin: auto;
+    background: url('../media/_BKG/BKG_1.png') bottom center no-repeat;
+    background-size: cover;
     width: 960px;
     height: 540px;
+    color: $white;
     font-size: 36px;
-    color: #fff;
-    background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-    background-size: cover;
 }
 
 button {
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
 
+    background-color: transparent;
+    background-image: url('../media/_Buttons/BU_1.png');
+    background-position: left top;
+    background-size: auto 500px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-
-    background-image: url(../media/_Buttons/BU_1.png);
-    background-size: auto 500px;
-    background-position: left top;
 
     &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -310px 410px;
         width: 35px;
         height: 35px;
-        background-position: -310px 410px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 5px;
-        z-index: 2;
 
         &:hover {
             background-position: -310px 165px;
@@ -78,9 +84,9 @@ button {
     }
 
     &.close-reveal {
+        background-position: -225px 420px;
         width: 55px;
         height: 50px;
-        background-position: -225px 420px;
 
         &.ENABLED:hover {
             background-position: -225px 676px;
@@ -88,9 +94,9 @@ button {
     }
 
     &.quit-yes {
+        background-position: -1830px 495px;
         width: 230px;
         height: 230px;
-        background-position: -1830px 495px;
 
         &:hover {
             background-position: -1830px 251px;
@@ -98,9 +104,9 @@ button {
     }
 
     &.quit-no {
+        background-position: -2080px 495px;
         width: 230px;
         height: 230px;
-        background-position: -2080px 495px;
 
         &:hover {
             background-position: -2080px 251px;
@@ -122,29 +128,29 @@ h2 {
 }
 
 h3 {
-    font-size: 30px;
     margin: 0;
+    font-size: 30px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
 .canvas-src { display: none; }
 
 .screen {
+    display: none;
     position: absolute;
     top: 50%;
     left: 0;
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
+    margin-top: -270px;
     width: 960px;
     height: 540px;
-    margin-top: -270px;
-    opacity: 0;
-    display: none;
-    transition: opacity 1s, transform .5s;
-    transform: translateX(100%);
 
     &:not(.COMPLETE) {
         button {
@@ -155,11 +161,9 @@ p {
     }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
@@ -167,76 +171,66 @@ p {
 }
 
 .screen.LEAVE {
-    opacity: 1;
     transform: translateX(-100%);
+    opacity: 1;
 }
 
-    .screen .next-screen,
-    .screen .prev-screen {
-        position: absolute;
-        display: block;
-        bottom: 1%;
+.screen .next-screen,
+.screen .prev-screen {
+    display: block;
+    position: absolute;
+    bottom: 1%;
+    z-index: 2;
+}
 
-        z-index: 2;
-    }
+.screen .next-screen {
+    right: 0;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 0;
+    margin-right: 5px;
+}
 
-    .screen .next-screen {
-        margin-right: 5px;
-        right: 0;
-        opacity: 0;
-        transform: rotate(-180deg);
-        transition: opacity 1s, transform 1s;
-    }
+.screen.GATED .next-screen {
+    opacity: 0;
+    z-index: -1;
+    cursor: auto;
+}
 
-    .screen.GATED .next-screen {
-        opacity: 0;
-        cursor: auto;
-        z-index: -1;
-    }
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen {
+    transform: rotate(0deg);
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
+}
 
-    .pl-game.DEMO .screen .next-screen,
-    .screen.COMPLETE .next-screen {
-        opacity: 1;
-        transform: rotate(0deg);
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .screen .next-screen:hover {
-
-    }
-
-    .screen .prev-screen {
-        margin-left: 5px;
-        left: 0;
-
-    }
-
-    .screen .prev-screen:hover {
-
-    }
+.screen .prev-screen {
+    left: 0;
+    margin-left: 5px;
+}
 
 // the following css is specific to this game
 
 .reveal {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    transition: opacity .5s, z-index 0s .6s;
     opacity: 0;
     z-index: -1;
-    transition: opacity .5s, z-index 0s .6s;
+    width: 100%;
+    height: 100%;
 
     div {
         position: absolute;
-        left: 0;
         top: 50%;
+        left: 0;
+        margin-top: -120px;
+        background-image: url('../media/_Frames/FR_1.png');
+        background-size: 100% 100%;
         width: 100%;
         height: 240px;
-        margin-top: -120px;
-        background-image: url(../media/_Frames/FR_1.png);
-        background-size: 100% 100%;
     }
 
     ul {
@@ -248,13 +242,13 @@ p {
             height: 100%;
 
             p {
-                position: absolute;
                 display: block;
+                position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
                 width: 100%;
                 text-align: center;
-                color: #000;
+                color: $black;
             }
 
         }
@@ -264,15 +258,15 @@ p {
         position: absolute;
         right: 5px;
         bottom: 10px;
+        transition: opacity 1s;
         opacity: 1;
         cursor: pointer;
-        transition: opacity 1s;
     }
 
     &.OPEN {
+        transition: opacity .5s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s;
     }
 }
 
@@ -286,7 +280,7 @@ p {
 }
 
 .video {
-    background: url(../media/_Frames/FR_2.png) center center no-repeat;
+    background: url('../media/_Frames/FR_2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {

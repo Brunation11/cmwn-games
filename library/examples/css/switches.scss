@@ -1,8 +1,8 @@
 #switches {
     img.title {
         display: block;
-        width: 800px;
         margin: 30px auto 0;
+        width: 800px;
     }
 
     .selectable-reveal {
@@ -10,23 +10,23 @@
 
         .selectable {
             position: relative;
-            height: 300px;
-            width: 800px;
-            margin: 20px auto;
-            opacity: 0;
             transition: opacity 1s 1s;
+            opacity: 0;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
 
             li {
-                cursor: auto;
                 position: absolute;
+                top: 0;
+                transition: opacity 1s;
+                opacity: .5;
+                background-image: url('../media/S_5/img_5.2.png');
+                background-repeat: no-repeat;
+                background-size: 400px;
+                cursor: auto;
                 width: 200px;
                 height: 200px;
-                top: 0;
-                opacity: .5;
-                transition: opacity 1s;
-                background-image: url(../media/S_5/img_5.2.png);
-                background-size: 400px;
-                background-repeat: no-repeat;
                 pointer-events: none;
 
                 &:first-of-type:not(.HIGHLIGHTED) {
@@ -55,13 +55,13 @@
 
                 @for $i from 1 through 5 {
                     &:nth-of-type(#{$i}) {
-                        background-position: 0 200-200 * $i + px;
-                        left: -150 +150 * $i + px;
-                        top: 200-200 * ($i%2) + px;
+                        top: 200 - 200 * ($i % 2) + px;
+                        left: -150 + 150 * $i + px;
+                        background-position: 0 200 - 200 * $i + px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -200px 200-200 * $i + px;
+                            background-position: -200px 200 - 200 * $i + px;
                         }
                     }
                 }

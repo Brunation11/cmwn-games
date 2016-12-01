@@ -1,3 +1,8 @@
+$black: #000;
+$blue: #00f;
+$red: #f00;
+$green: #008000;
+
 #labyrinth-screen {
     .labyrinth {
         .image {
@@ -11,42 +16,45 @@
 
         div {
             position: absolute;
-            border: 2px solid black;
+            border: 2px solid $black;
             width: 50px;
             height: 50px;
         }
 
         .up {
-            left: 50px;
             top: 50px;
-        }
-        .left {
-            left: 0;
-            top: 100px;
-        }
-        .down {
             left: 50px;
-            top: 100px;
         }
-        .right {
-            left: 100px;
+
+        .left {
             top: 100px;
+            left: 0;
+        }
+
+        .down {
+            top: 100px;
+            left: 50px;
+        }
+
+        .right {
+            top: 100px;
+            left: 100px;
         }
     }
 
     .player {
+        background-color: $blue;
         width: 15px;
         height: 15px;
-        background-color: blue;
     }
 
     [class *='item-'] {
         position: absolute;
+        transition: opacity .5s;
+        opacity: 1;
+        background-color: $green;
         width: 20px;
         height: 20px;
-        background-color: green;
-        opacity: 1;
-        transition: opacity .5s;
 
         &.CAUGHT {
             opacity: 0;
@@ -58,18 +66,18 @@
 
     @for $i from 1 through 3 {
         .item-#{$i} {
-            left: #{nth($lefts, $i)}px;
             top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
         }
     }
 
     [class *='enemy-'] {
         position: absolute;
+        transition: opacity .5s;
+        opacity: 0;
+        background-color: $red;
         width: 30px;
         height: 30px;
-        background-color: red;
-        opacity: 0;
-        transition: opacity .5s;
 
         &.ENABLED {
             opacity: 1;
@@ -85,8 +93,8 @@
 
     @for $i from 1 through 3 {
         .enemy-#{$i} {
-            left: #{nth($lefts, $i)}px;
             top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
         }
     }
 }
