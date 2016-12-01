@@ -15,7 +15,7 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
-    selectRespond = function () {
+    selectRespond = function (target) {
         this.updateGameState({
             path: 'selectable',
             data: {
@@ -90,7 +90,7 @@ export default function (props, ref, key, opts = {}) {
             <Selectable
                 ref="selectable"
                 selectClass="HIGHLIGHTED"
-                selectRespond={selectRespond}
+                selectRespond={selectRespond.bind(target)}
                 list={[
                     <skoash.ListItem data-ref="yes" className="yes-btn" />,
                     <skoash.ListItem data-ref="no" className="no-btn" />
