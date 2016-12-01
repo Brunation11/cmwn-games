@@ -1,27 +1,27 @@
 #bulbs {
     img.title {
         display: block;
-        width: 800px;
         margin: 30px auto 0;
+        width: 800px;
     }
 
     .selectable-reveal {
         margin-top: -30px;
 
         .selectable {
-            height: 300px;
-            width: 800px;
-            margin: 20px auto;
-            opacity: 0;
             transition: opacity 1s 1s;
+            opacity: 0;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
 
             li {
-                cursor: auto;
-                opacity: .5;
                 transition: opacity 1s;
-                background-image: url(../media/S_3/img_3.2.png);
-                background-size: 450px;
+                opacity: .5;
+                background-image: url('../media/S_3/img_3.2.png');
                 background-repeat: no-repeat;
+                background-size: 450px;
+                cursor: auto;
                 pointer-events: none;
 
                 &:first-of-type:not(.HIGHLIGHTED) {
@@ -50,11 +50,11 @@
 
                 @for $i from 1 through 4 {
                     &:nth-of-type(#{$i}) {
-                        background-position: -12px 310-325* $i + px;
+                        background-position: -12px 310 - 325 * $i + px;
 
                         &.HIGHLIGHTED,
                         &:hover {
-                            background-position: -237px 310-325* $i + px;
+                            background-position: -237px 310 - 325 * $i + px;
                         }
                     }
                 }

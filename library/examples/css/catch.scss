@@ -1,7 +1,10 @@
-#catch, .catch {
+$black: #000;
+
+#catch,
+.catch {
     .items {
-        position: relative;
         display: block;
+        position: relative;
         margin: 0;
         width: 960px;
         height: 540px;
@@ -10,14 +13,14 @@
 
     li {
         position: absolute;
-        background-image: url(../media/S_FloatingWeed/IMG_6.1.png);
+        animation-name: float;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        background-image: url('../media/S_FloatingWeed/IMG_6.1.png');
         background-size: 100%;
+        cursor: default;
         width: 100px;
         height: 100px;
-        animation-name: float;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        cursor: default;
 
         $lefts: 150 250 300 350 450 550 650 700;
         $tops: 100 150 50 150 100 150 100 150;
@@ -31,8 +34,8 @@
 
         @for $i from 1 through 8 {
             &:nth-of-type(#{$i}) {
-                left: nth($lefts, $i) + px;
                 top: -1 * nth($tops, $i) + px;
+                left: nth($lefts, $i) + px;
                 animation-duration: nth($durations, $i) + s;
                 animation-delay: nth($delays, $i) + s;
             }
@@ -40,13 +43,13 @@
     }
 
     .bucket {
+        display: block;
         position: absolute;
         bottom: 20px;
         left: 10px;
-        height: 80px;
+        background-color: $black;
         width: 140px;
-        display: block;
-        background-color: black;
+        height: 80px;
     }
 
     &.COMPLETE {

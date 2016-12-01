@@ -1,24 +1,23 @@
 .selectable {
     .flip-card {
-        position: relative;
         display: inline-block;
-        vertical-align: top;
+        position: relative;
+        margin: 0 5px;
+        cursor: pointer;
         width: 150px;
         height: 250px;
-        margin: 0 5px;
+        vertical-align: top;
         perspective: 500px;
-        cursor: pointer;
 
         .side {
             position: absolute;
             top: 0;
             left: 0;
-            max-height: 100%;
-            border-radius: 8px;
             transition: transform .5s;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+            border-radius: 8px;
+            max-height: 100%;
             overflow: hidden;
+            backface-visibility: hidden;
 
             img {
                 max-width: 100%;

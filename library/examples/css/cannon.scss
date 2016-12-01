@@ -13,17 +13,17 @@
 }
 
 .cannon {
-    position: relative;
-    text-align: center;
-    background-image: url(../media/cannon-bears/background.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 180px;
-    width: 535px;
     display: inline-block;
+    position: relative;
     margin-top: 2px;
+    background-image: url('../media/cannon-bears/background.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 535px;
+    height: 180px;
     overflow: hidden;
+    text-align: center;
 
     &.FIRE {
         .ball {
@@ -31,8 +31,8 @@
              *    Normaly I would define the transition on the default rule but this way
              *    the animation will not play when the 'LAUNCHED' flag is removed.
              */
-            transition: transform .5s cubic-bezier(0, 0, .2, 1);
             transform: translateY(-100px) scale(.3);
+            transition: transform .5s cubic-bezier(0, 0, .2, 1);
         }
     }
 
@@ -43,8 +43,8 @@
     }
 
     .ball {
-        width: 90px;
-        cursor: pointer;
         transform: translateY(100px);
+        cursor: pointer;
+        width: 90px;
     }
 }
