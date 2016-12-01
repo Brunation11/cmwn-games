@@ -90,7 +90,9 @@ export default function (props, ref, key, opts = {}) {
             <Selectable
                 ref="selectable"
                 selectClass="HIGHLIGHTED"
-                selectRespond={selectRespond(target)}
+                selectRespond={function (target) {
+                    selectRespond(target);
+                }}
                 list={[
                     <skoash.ListItem data-ref="yes" className="yes-btn" />,
                     <skoash.ListItem data-ref="no" className="no-btn" />
