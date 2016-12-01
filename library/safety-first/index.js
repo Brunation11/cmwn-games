@@ -9,6 +9,7 @@ import TitleScreen from './components/title_screen';
 import MeetTheTeamScreen from './components/meet_the_team_screen';
 import InfoLetsSeeScreen from './components/info_lets_see_screen';
 import DingDongScreen from './components/ding_dong_screen';
+import WhosAtTheDoorGrandpa from './components/whos_at_the_door_grandpa_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -30,10 +31,11 @@ SafetyFirst = (
         loader={<Loader />}
         screens={{
             0: iOSScreen,
-            1: TitleScreen,
-            2: MeetTheTeamScreen,
-            3: InfoLetsSeeScreen,
-            4: DingDongScreen
+            // 1: TitleScreen,
+            // 2: MeetTheTeamScreen,
+            // 3: InfoLetsSeeScreen,
+            // 4: DingDongScreen
+            1: WhosAtTheDoorGrandpa
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,
