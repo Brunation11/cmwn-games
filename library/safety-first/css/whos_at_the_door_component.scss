@@ -1,0 +1,120 @@
+@import 'variables';
+
+[id*='whos-at-the-door'] {
+    .frame {
+        position: absolute;
+        width: 47%;
+        height: 82%;
+        left: 2%;
+        top: 50%;
+        transform: translateY(-55%);
+        background: url('#{$media-server}SpritesAnimations/sprites.dogsinframes.png');
+        background-size: auto 100%;
+
+        &.grandpa {
+            background-position: -27px 0;
+        }
+
+        &.delivery-person {
+            background-position: -3711px 0;
+        }
+
+        &.sister {
+            background-position: -464px 0;
+        }
+
+        &.new-neighbor {
+            background-position: -1391px 0;
+        }
+
+        &.mother {
+            background-position: -926px 0;
+        }
+
+        &.brother {
+            background-position: -1391px 0;
+        }
+
+        &.gas-man {
+            background-position: -2776px 0;
+        }
+
+        &.close-friend {
+            background-position: -2314px 0;
+        }
+
+        &.person-with-flat {
+            background-position: -3241px 0;
+        }
+
+        &.cable-person {
+            background-position: -4171px 0;
+        }
+
+        &.relative {
+            background-position: -4637px 0;
+        }
+
+        span {
+            position: absolute;
+            bottom: -9%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: $color-yellow;
+            font-size: 60px;
+            font-weight: 900;
+            font-style: italic;
+        }
+    }
+
+    .banner {
+        right: 4%;
+        top: 5%;
+        width: 46%;
+        height: 41%;
+        background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
+        background-position: -632px 0;
+        background-size: auto 100%;
+        position: absolute;
+
+        &::after {
+            width: 100%;
+            position: absolute;
+            content: '';
+            height: 102%;
+            background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
+            background-position: -1254px 0;
+            background-size: auto 100%;
+            bottom: -56%;
+            left: 0;
+        }
+    }
+
+    .yes-btn,
+    .no-btn {
+        position: absolute;
+        width: 25%;
+        height: 31%;
+        background: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
+        background-size: auto 200%;
+        top: 54%;
+    }
+
+    .yes-btn {
+        background-position: -965px 4px;
+        left: 49%;
+
+        &:hover {
+            background-position: -965px -165px;
+        }
+    }
+
+    .no-btn {
+        background-position: -1212px 4px;
+        left: 74%;
+
+        &:hover {
+            background-position: -1212px -165px;
+        }
+    }
+}
