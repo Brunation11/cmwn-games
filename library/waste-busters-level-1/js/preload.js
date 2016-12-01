@@ -19,6 +19,8 @@ export default function () {
     ['recycle', ENVIRONMENT.MEDIA + 'SpritesAnimations/recycle-01.png', 345, 310],
     // 1380 x 310 pixels
     ['rainbowRecycle', ENVIRONMENT.MEDIA + 'SpritesAnimations/rainbow.recycle-01.png', 345, 310],
+    // 5750 x 286 pixels
+    ['truck', ENVIRONMENT.MEDIA + 'SpritesAnimations/truck.png', 575, 286],
     ]);
 
     loadAssets.call(this, 'audio', [

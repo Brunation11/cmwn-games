@@ -56,6 +56,12 @@ export default function () {
             gravityY: 0,
             scale: [.15, .15],
         }),
+        truck: _.defaults({
+            image: 'truck',
+            crop: undefined,
+            scale: [.5, .5],
+            collideWorldBounds: false,
+        }),
     };
 
     const groups = {
@@ -68,16 +74,20 @@ export default function () {
         heart: 'hearts',
         recycle: 'recycles',
         raibowRecycle: 'rainbowRecycles',
+        truck: 'trucks',
     };
 
+    var truckNumber = 1;
+    var truckTotal = 3;
+
     var objects = _.shuffle([]
-        // .concat(_.times(1, () => 'squareBush'))
-        // .concat(_.times(1, () => 'roundBush'))
-        // .concat(_.times(0, () => 'snake'))
-        // .concat(_.times(5, () => 'bag'))
-        // .concat(_.times(5, () => ''))
-        // .concat(_.times(1, () => 'rock'))
-        // .concat(_.times(1, () => 'stump'))
+        .concat(_.times(1, () => 'squareBush'))
+        .concat(_.times(1, () => 'roundBush'))
+        .concat(_.times(0, () => 'snake'))
+        .concat(_.times(15, () => 'bag'))
+        .concat(_.times(5, () => ''))
+        .concat(_.times(1, () => 'rock'))
+        .concat(_.times(1, () => 'stump'))
         .concat(_.times(1, () => 'heart'))
         .concat(_.times(1, () => 'recycle'))
         .concat(_.times(1, () => 'raibowRecycle'))
@@ -93,6 +103,7 @@ export default function () {
         heart: [],
         recycle: [],
         raibowRecycle: [],
+        truck: [],
     };
 
     _.every(this.platforms.children, platform => {
@@ -110,7 +121,7 @@ export default function () {
         .concat(_.times(1, () => 'squareBush'))
         .concat(_.times(1, () => 'roundBush'))
         .concat(_.times(2, () => 'snake'))
-        .concat(_.times(5, () => 'bag'))
+        .concat(_.times(0, () => 'bag'))
         .concat(_.times(1, () => 'rock'))
         .concat(_.times(1, () => 'stump'))
     ));
@@ -118,7 +129,16 @@ export default function () {
     objects.unshift('');
 
     _.every(this.ground.children, platform => {
-        var object = objects.shift();
+        var object;
+        if (platform.left > this.game.world.width * truckNumber / (truckTotal + 1)) {
+            locations.truck.push({
+                top: platform.top - 50,
+                left: platform.left,
+            });
+            truckNumber++;
+            return true;
+        }
+        object = objects.shift();
         if (locations[object]) {
             locations[object].push({
                 top: platform.top - 50,
@@ -147,5 +167,12 @@ export default function () {
     _.each(this.rainbowRecycles.children, recycle => {
         recycle.animations.add('spin', [0, 1, 2, 3], 10, true);
         recycle.animations.play('spin');
+    });
+
+    _.each(this.trucks.children, truck => {
+        var drive = truck.animations.add('drive', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, false);
+        drive.onComplete.add(() => {
+            truck.body.velocity.x = 200;
+        });
     });
 }

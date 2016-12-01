@@ -13,8 +13,8 @@ export default function () {
     [this.player, this.water, this.helpers.hitWater],
     [this.player, this.platforms, this.helpers.onBump],
     [this.player, this.bushes, this.helpers.onBump],
-    [this.player, this.enemies, this.helpers.onBump],
-    [this.player, this.obstacles, this.helpers.onBump],
+    [this.player, this.enemies, this.helpers.htiEnemy],
+    [this.player, this.obstacles, this.helpers.hitObstacle],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.enemies, this.ground, this.helpers.stay],
@@ -30,6 +30,7 @@ export default function () {
     [this.player, this.hearts, this.helpers.collectHeart],
     [this.player, this.recycles, this.helpers.collectRecycling],
     [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
+    [this.player, this.trucks, this.helpers.loadTruck],
     ]);
 
     movePlayer.call(this, {
