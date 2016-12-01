@@ -106,7 +106,7 @@ class Score extends skoash.Component {
         super.componentWillReceiveProps(props);
 
         if (props.correct !== this.props.correct ||
-      props.incorrect !== this.props.incorrect) {
+            props.incorrect !== this.props.incorrect) {
             this.setScore(props);
         }
     }

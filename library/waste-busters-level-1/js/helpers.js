@@ -9,12 +9,18 @@ export default {
     collectHeart: function () {
     },
     collectBags: function (player, bag) {
+        if (this.data.bagCount === 5) return;
         // Removes the bag from the screen
         bag.kill();
         //  update the bagCount
         this.data.bagCount++;
         //  emit event with data to skoash game
-        this.emitEvent(this.data);
+        this.emitEvent({
+            updateGameState: {
+                path: 'data',
+                data: this.data
+            }
+        });
     },
     stay: function (a) {
         a.body.gravity.y = 0;

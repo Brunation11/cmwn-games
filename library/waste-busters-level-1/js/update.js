@@ -35,7 +35,7 @@ export default function () {
         downSpeed: 500,
         leftSpeed: -150,
         rightSpeed: 150,
-        stopFrame: 4,
+        stopFrame: 6,
     });
 
     this.game.camera.x =

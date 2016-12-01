@@ -11,7 +11,8 @@ export default function () {
     ]);
 
     loadAssets.call(this, 'spritesheet', [
-    ['turtle', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 390, 396],
+    // 6180 x 646 pixels
+    ['turtle', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 515, 646],
     ]);
 
     loadAssets.call(this, 'audio', [

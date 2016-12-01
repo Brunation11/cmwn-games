@@ -17,7 +17,7 @@ class GameEmbedder extends skoash.Component {
         if (opts.complete) {
             this.complete();
         } else if (opts.updateGameState) {
-            this.updateGameState(opts);
+            this.updateGameState(opts.updateGameState);
         }
     }
 

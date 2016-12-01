@@ -24,7 +24,9 @@ export default function () {
         image: 'turtle',
         bounceY: 0.2,
         gravityY: 400,
-        rightFrames: [0, 1, 2, 3],
+        body: [415, 446, 50, 100],
+        rightFrames: [6, 7, 8, 9, 10, 11],
+        leftFrames: [5, 4, 3, 2, 1, 0],
         scale: [.15, .15],
     });
 
