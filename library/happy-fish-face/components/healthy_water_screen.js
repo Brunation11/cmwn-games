@@ -1,4 +1,14 @@
-import SelectableAudio from 'shared/components/selectable_audio/0.1';
+import Selectable from 'shared/components/selectable/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
+
+var playAudio = function (ref) {
+    this.updateGameState({
+        path: 'media',
+        data: {
+            play: ref
+        }
+    });
+};
 
 export default function (props, ref, key) {
     return (
@@ -11,31 +21,37 @@ export default function (props, ref, key) {
             <skoash.Audio
                 ref="vo"
                 type="voiceOver"
-                src="media/_audio/_S_HealthyWater/HFF_VO_HealthyWater.mp3"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/HealthyWater.mp3`}
             />
+            <MediaCollection
+                play={_.get(props, 'data.media.play', null)}
+            >
+                <skoash.Audio
+                    ref="wrong"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
+                    complete
+                />
+                <skoash.Audio
+                    ref="right"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Right.mp3`}
+                />
+            </MediaCollection>
             <skoash.Component ref="center" className="center">
                 <skoash.Component ref="group" className="group">
                     <skoash.Component ref="frame" className="frame">
                         <skoash.Image
                             ref="words"
                             className="words"
-                            src="media/_images/_S_HealthyWater/img_4.1.png"
+                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_4.1.png`}
                         />
-                        <SelectableAudio
-                            selectableList={[
-                                <skoash.ListItem className="animated" />,
-                                <skoash.ListItem className="animated" correct />
-                            ]}
-                            audioAssets={[
-                                <skoash.Audio
-                                    type="sfx"
-                                    src="media/_audio/_S_HealthyWater/HHF_SX_Wrong.mp3"
-                                    complete
-                                />,
-                                <skoash.Audio
-                                    type="sfx"
-                                    src="media/_audio/_S_HealthyWater/HHF_SX_Right.mp3"
-                                />
+                        <Selectable
+                            ref="selectable"
+                            selectRespond={playAudio}
+                            list={[
+                                <skoash.ListItem data-ref="wrong" className="animated" />,
+                                <skoash.ListItem data-ref="right" className="animated" correct />
                             ]}
                         />
                     </skoash.Component>

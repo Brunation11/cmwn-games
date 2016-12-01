@@ -5,7 +5,7 @@ var playAudio = function (ref) {
     this.updateGameState({
         path: 'media',
         data: {
-            open: `children-${ref}`
+            play: `children-${ref}`
         }
     });
 };
@@ -34,7 +34,7 @@ export default function (props, ref, key) {
                 src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/YouFeel.mp3`}
             />
             <MediaCollection
-                play={_.get(props, 'data.media.open', null)}
+                play={_.get(props, 'data.media.play', null)}
                 complete={_.get(props, 'data.media.complete', false)}
                 onPlay={completeMC}
             >

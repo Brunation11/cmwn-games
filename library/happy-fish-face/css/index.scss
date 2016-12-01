@@ -484,22 +484,23 @@ p {
 
   li {
     list-style: none;
-    width: 300px;
-    height: 300px;
-    background-position: left center;
-    background-size: auto 300px;
+    width: 250px;
+    height: 250px;
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
+    background-position-y: top;
+    background-size: 500px;
 
     &:nth-child(1) {
-      background-image: url(../media/_images/_S_HealthyWater/img_4.2.png);
+        background-position-x: left;
     }
 
     &:nth-child(2) {
-      background-image: url(../media/_images/_S_HealthyWater/img_4.3.png);
+        background-position-x: right;
     }
 
     &:hover,
     &.SELECTED {
-      background-position: right center;
+      background-position-y: bottom;
       cursor: pointer;
     }
 
