@@ -2828,11 +2828,11 @@ body:not(.DEMO) #what-does-a-nose-do {
             position: absolute;
             top: 50%;
             left: 50%;
-            flex-wrap: wrap;
             transform: translateX(-50%) translateY(-50%);
             z-index: 1;
             width: 70%;
             height: auto;
+            flex-wrap: wrap;
 
             li {
                 margin: 10px 18px;

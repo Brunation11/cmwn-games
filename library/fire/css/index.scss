@@ -578,9 +578,9 @@ img.background {
     .selectable-audio {
         ul {
             display: flex;
-            justify-content: center;
             margin: 100px 0 0;
             padding: 0 0 0 40px;
+            justify-content: center;
 
             li {
                 background-position: left top;
@@ -960,9 +960,9 @@ img.background {
     }
 
     .selectable {
-        justify-content: center;
         margin: 0;
         height: auto;
+        justify-content: center;
     }
 
     li {
@@ -1058,22 +1058,22 @@ img.background {
     .dropzone-container ul {
         display: inline-flex;
         position: relative;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: space-around;
         background-image: url('../media/_Frames/FR_4.png');
         background-size: 100% 100%;
         padding: 10px;
         width: 200px;
         height: 360px;
         vertical-align: middle;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-around;
 
         li {
             display: inline-flex;
-            flex-direction: column;
-            justify-content: space-around;
             margin-bottom: 10px;
             list-style: none;
+            flex-direction: column;
+            justify-content: space-around;
 
             $items:                     pants jacket hood boots mask gloves tank walkie axe light camera punch;
             $background-lefts:        0            1        2         3        0            1        2            3     0         1            2         3;

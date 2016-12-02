@@ -25,14 +25,14 @@
 
     .selectable {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         margin: 0;
         background-color: $dark-green;
         padding: 0;
         width: 100%;
         height: 310px;
         list-style: none;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
         .VOICE-OVER & {
             pointer-events: none;

@@ -39,10 +39,10 @@
 
 .item-drawer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 
     li {
         display: inline-block;
