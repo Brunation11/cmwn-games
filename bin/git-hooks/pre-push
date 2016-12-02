@@ -36,6 +36,7 @@ do
     if [ $? != 0 ]; then
         echo "[91m[pre-push] failed: build failed linting[0m"
         cat configlint.log 2>/dev/null
+        ./pretty_print_scss_log.js
         cat jslint.log 2>/dev/null
         git checkout $current_branch
         exit 157
@@ -43,6 +44,8 @@ do
 
     echo "" > configlint.log
     echo "" > jslint.log
+    echo "" > scsslint.json
+    echo "" > push_test.log
 
     git checkout $current_branch
     echo "[92m[pre-push] success: build passed[0m"

@@ -322,7 +322,7 @@ function cleanTask() {
 gulp.task('clean', cleanTask);
 
 /*·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´Lint Tasks`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·*/
-gulp.task('lint', ['lint-js', 'lint-config']);
+gulp.task('lint', ['lint-js', 'lint-config', 'lint-scss']);
 gulp.task('lint-js', function () {
     return gulp.src(['library/**/*.js', '!library/**/*.test.js'])
         // eslint() attaches the lint output to the eslint property
