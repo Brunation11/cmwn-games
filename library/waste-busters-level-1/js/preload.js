@@ -8,6 +8,8 @@ export default function () {
     ['platforms', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.platform.png'],
     // 930 x 140 pixels
     ['items', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.5.png'],
+    // 1246 x 100 pixels
+    ['logs', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.logs.png'],
     ]);
 
     loadAssets.call(this, 'spritesheet', [
@@ -23,6 +25,8 @@ export default function () {
     ['rainbowRecycle', ENVIRONMENT.MEDIA + 'SpritesAnimations/rainbow.recycle-01.png', 345, 310],
     // 5750 x 286 pixels
     ['truck', ENVIRONMENT.MEDIA + 'SpritesAnimations/truck.png', 575, 286],
+    // 1751 x 253 pixels
+    ['door', ENVIRONMENT.MEDIA + 'SpritesAnimations/door.open.png', 250, 253],
     ]);
 
     loadAssets.call(this, 'audio', [

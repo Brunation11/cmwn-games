@@ -79,7 +79,7 @@ export default function () {
         .concat(_.times(1, () => 'roundBush'))
         .concat(_.times(0, () => 'snake'))
         .concat(_.times(15, () => 'bag'))
-        .concat(_.times(5, () => ''))
+        .concat(_.times(10, () => ''))
         .concat(_.times(1, () => 'rock'))
         .concat(_.times(1, () => 'stump'))
         .concat(_.times(1, () => 'heart'))
@@ -100,14 +100,20 @@ export default function () {
         truck: [],
     };
 
-    _.every(this.platforms.children, platform => {
+    var placeObject = function (platform, up, over) {
         var object = objects.shift();
         if (locations[object]) {
             locations[object].push({
-                top: platform.top - 50,
-                left: platform.left + 30,
+                top: platform.top - up,
+                left: platform.left + over,
             });
         }
+    };
+
+    _.every(this.platforms.children, platform => {
+        placeObject(platform, 50, 30);
+        if (platform.width > 120) placeObject(platform, 50, 80);
+        if (platform.width > 200) placeObject(platform, 50, 130);
         return objects.length;
     });
 
