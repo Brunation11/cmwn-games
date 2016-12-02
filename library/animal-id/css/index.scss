@@ -1,44 +1,6 @@
-@keyframes flyright {
-    0% {transform:rotate(0deg);opacity:0;}
-    20% {transform:rotate(36deg);opacity:1;}
-    50% {transform:rotate(90deg);opacity:1;}
-    100% {transform:rotate(180deg);opacity:0;}
-}
+@import 'variables';
+@import 'keyframes';
 
-@keyframes flyleft {
-    0% {transform:rotate(180deg);opacity:0;}
-    20% {transform:rotate(144deg);opacity:1;}
-    50% {transform:rotate(90deg);opacity:1;}
-    100% {transform:rotate(0deg);opacity:0;}
-}
-
-@mixin flyright {
-    animation:flyright 1.5s infinite linear;
-    -webkit-animation:flyright 1.5s infinite linear;
-    -o-animation:flyright 1.5s infinite linear;
-    -moz-animation:flyright 1.5s infinite linear;
-}
-
-@mixin flyleft {
-    animation:flyleft 1.5s infinite linear;
-    -webkit-animation:flyleft 1.5s infinite linear;
-    -o-animation:flyleft 1.5s infinite linear;
-    -moz-animation:flyleft 1.5s infinite linear;
-}
-
-@keyframes cardrevealback {
-    0% {transform: rotateX(180deg);}
-    50% {transform: rotateX(0deg);}
-    100% {transform: rotateX(180deg);}
-}
-
-@keyframes cardrevealfront {
-    0% {transform: rotateX(0deg);}
-    50% {transform: rotateX(180deg);}
-    100% {transform: rotateX(0deg);}
-}
-
-$delays: 0s .5s 1s .25s 1.25s .75s;
 
 #title.COMPLETE .sparkles {
     opacity: 1;
@@ -46,33 +8,34 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
 
 .sparkles {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
+    transition: opacity 1s;
+    opacity: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1s;
 
     div {
         position: absolute;
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        text-align: left;
         transform: rotate(0deg);
         transition: transform 1s, opacity 1s;
+        width: 100px;
+        height: 100px;
+        text-align: left;
+        line-height: 100px;
 
         &::before {
+            color: $yellow;
             content: '\02736';
-            color: #efc300;
         }
 
+        $delays: 0s .5s 1s .25s 1.25s .75s;
         @for $i from 1 through 40 {
             &:nth-of-type(#{$i}) {
-                $left: (-4 * $i) % 65 + 15;
                 $top: (-1 * $i) % 12 + 6;
-                left: percentage($left / 100);
+                $left: (-4 * $i) % 65 + 15;
                 top: percentage($top / 100);
+                left: percentage($left / 100);
                 @if $left > 45 {
                     @include flyright;
                 } @else {
@@ -99,34 +62,35 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
     transform: rotateY(180deg);
 }
 
-.flipper, .front, .back {
+.flipper,
+.front,
+.back {
     width: 100%;
     height: 100%;
 }
 
 /* flip speed goes here */
 .flipper {
+    position: relative;
     transition: .6s;
     transform-style: preserve-3d;
-
-    position: relative;
 }
 
 /* hide back of pane during swap */
-.front, .back {
-    backface-visibility: hidden;
-    transition: .6s;
-    transform-style: preserve-3d;
-
+.front,
+.back {
     position: absolute;
     top: 0;
     left: 0;
+    transition: .6s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 /*    UPDATED! front pane, placed above back */
 .front {
-    z-index: 2;
     transform: rotateY(0deg);
+    z-index: 2;
 }
 
 /* back, initially hidden pane */
@@ -153,29 +117,22 @@ $delays: 0s .5s 1s .25s 1.25s .75s;
     transform: rotateX(180deg);
 }
 
-html, body, body > div, body > div > div {
+html {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+html,
+body,
+body > div,
+body > div > div {
     margin: 0;
+    cursor: auto;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     user-select: none;
     user-drag: none;
-    cursor: auto;
-}
-
-html {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-html, body, body > div, body > div > div {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    user-select: none;
-    cursor: auto;
 }
 
 body > div > div {
@@ -183,34 +140,34 @@ body > div > div {
     margin: auto;
     width: 960px;
     height: 540px;
+    color: $white;
     font-size: 36px;
-    color: #fff;
 
     .game-background {
         position: absolute;
-        left: 0;
         top: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
+        left: 0;
+        transition: opacity .5s;
         opacity: 0;
         z-index: -2;
-        transition: opacity .5s;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
 
         &.title {
-            background-image: url(../media/images/background/title.png);
+            background-image: url('../media/images/background/title.png');
         }
 
         &.id {
-            background-image: url(../media/images/background/id.png);
+            background-image: url('../media/images/background/id.png');
         }
 
         &.match {
-            background-image: url(../media/images/background/match.png);
+            background-image: url('../media/images/background/match.png');
         }
 
         &.nose {
-            background-image: url(../media/images/background/nose.png);
+            background-image: url('../media/images/background/nose.png');
         }
     }
 
@@ -275,25 +232,25 @@ button {
     position: absolute;
     z-index: 1;
     margin: 0;
-    padding: 0;
+    outline: none;
     border: 0;
 
+    background-color: transparent;
+    background-image: url('../media/images/button.png');
+    background-position: left top;
+    background-size: 1230px 218px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
     font-family: inherit;
     font-size: inherit;
-    color: transparent;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-
-    background-image: url(../media/images/button.png);
-    background-size: 1230px 218px;
-    background-position: left top;
 
     &.close {
         right: 3%;
+        background-position: -1165px -30px;
         width: 60px;
         height: 60px;
-        background-position: -1165px -30px;
 
         &:hover {
             background-position: -1165px -143px;
@@ -356,9 +313,9 @@ body.DEMO .reveal .items li div .close-reveal {
 }
 
 body > div > div:not(.VOICE-OVER) .reveal .close-reveal {
+    transition: opacity 1s, transform .5s;
     visibility: visible;
     opacity: 1;
-    transition: opacity 1s, transform .5s;
 }
 
 h2 {
@@ -366,13 +323,13 @@ h2 {
 }
 
 h3 {
-    font-size: 30px;
     margin: 0;
+    font-size: 30px;
 }
 
 p {
-    font-size: 28px;
     margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
@@ -383,15 +340,15 @@ p {
 .canvas-src { display: none; }
 
 .screen {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
     width: 960px;
     height: 540px;
-    opacity: 0;
-    display: none;
-    transition: opacity 1s, transform .5s;
-    transform: translateX(100%);
 
     &:not(.COMPLETE) {
         button {
@@ -402,11 +359,9 @@ p {
     }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
@@ -414,82 +369,56 @@ p {
 }
 
 .screen.LEAVE {
-    opacity: 0;
     transform: translateX(-100%);
+    opacity: 0;
 }
 
+.screen .next-screen,
+.screen .prev-screen {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+}
 
-    .screen .next-screen,
-    .screen .prev-screen {
-        position: absolute;
-        display: block;
-        bottom: 0;
+.screen .next-screen {
+    right: 5%;
+    transform: rotate(-180deg);
+    transition: opacity 1s, transform 1s;
+    visibility: hidden;
+    opacity: 0;
+}
 
-        z-index: 2;
-    }
+.screen.GATED .next-screen {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+    cursor: auto;
+}
 
-    .screen .next-screen {
-        right: 5%;
-        visibility: hidden;
-        opacity: 0;
-        transform: rotate(-180deg);
-        transition: opacity 1s, transform 1s;
-    }
+.pl-game.DEMO .screen .next-screen,
+.screen.REPLAY .next-screen,
+.screen.COMPLETE .next-screen {
+    transform: rotate(0deg);
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    cursor: pointer;
+}
 
-    .screen.GATED .next-screen {
-        visibility: hidden;
-        opacity: 0;
-        cursor: auto;
-        z-index: -1;
-    }
-
-    .pl-game.DEMO .screen .next-screen,
-    .screen.REPLAY .next-screen,
-    .screen.COMPLETE .next-screen {
-        visibility: visible;
-        opacity: 1;
-        transform: rotate(0deg);
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .screen .next-screen:hover {
-
-    }
-
-    .screen .prev-screen {
-        margin-left: 5px;
-        left: 5%;
-
-    }
-
-    .screen .prev-screen:hover {
-
-    }
-
-// the following css is specific to this game
-// body.DEMO .screen .next-screen,
-// body.DEMO #match-game:not(.COMPLETE) .next-screen,
-// body.DEMO #match-game:not(.COMPLETE) .reveal ul li div .next-screen,
-// body.DEMO .screen.no-frame .frame .reveal .next-screen,
-// .screen.COMPLETE .next-screen {
-//     opacity: 1;
-//     display: block;
-//     cursor: pointer;
-// }
-
-
+.screen .prev-screen {
+    left: 5%;
+    margin-left: 5px;
+}
 
 body > div > div:not(.DEMO) [id^='id-']:not(.RETURN).COMPLETE .next-screen,
 body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
-    bottom: 22%;
     right: 22%;
+    bottom: 22%;
+    background-position: -641px -13px;
+    background-size: 800px 142px;
     width: 7%;
     height: 8%;
-    background-size: 800px 142px;
-    background-position: -641px -13px;
-//     transform: none;
-//     transition: opacity 1s;
 }
 
 .dropzone-reveal ul {
@@ -499,24 +428,23 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
 .reveal {
     position: absolute;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    transition: opacity .5s, z-index 0s .6s;
     opacity: 0;
     z-index: -1;
-    transition: opacity .5s, z-index 0s .6s;
-    // transition-delay: 1s;
+    width: 100%;
+    height: 100%;
 
     div {
         position: absolute;
-        left: 10%;
         top: 22%;
+        left: 10%;
+        margin-top: -120px;
+        background-image: url('../media/images/frame/reveal.png');
+        background-size: 100% 100%;
         width: 80%;
         height: 100%;
-        margin-top: -120px;
-        background-image: url(../media/images/frame/reveal.png);
-        background-size: 100% 100%;
     }
 
     ul {
@@ -528,14 +456,14 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
             height: 100%;
 
             h3 {
-                z-index: 10;
-                position: absolute;
                 display: block;
+                position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
+                z-index: 10;
                 width: 100%;
                 text-align: center;
-                color: #000;
+                color: $black;
             }
 
         }
@@ -545,25 +473,25 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
         right: 5px;
         bottom: 10px;
+        transition: opacity 1s;
         visibility: hidden;
         opacity: 0;
         cursor: pointer;
-        transition: opacity 1s;
     }
 
     &.OPEN {
+        transition: opacity .5s;
         opacity: 1;
         z-index: 1;
-        transition: opacity .5s;
 
         &.COMPLETE {
             button {
                 &.next-screen {
                     right: 20%;
                     bottom: 10%;
+                    transition: opacity 1s;
                     visibility: visible;
                     opacity: 1;
-                    transition: opacity 1s;
                 }
             }
         }
@@ -574,14 +502,13 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .draggable,
     .selectable > *,
     .matchable > *,
-    .close-reveal,
-     {
+    .close-reveal {
         pointer-events: none;
     }
 }
 
 .video {
-    background: url(../media/_Frames/FR_2.png) center center no-repeat;
+    background: url('../media/_Frames/FR_2.png') center center no-repeat;
     background-size: 100% 100%;
 
     video {
@@ -592,10 +519,10 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #title {
     button {
         &.next-screen {
+            transform: translateX(0);
+            background-position: -540px 0;
             width: 200px;
             height: 100px;
-            background-position: -540px 0;
-            transform: translateX(0);
 
             &:hover {
                 background-position: -540px -113px;
@@ -611,9 +538,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.title {
-            width: 700px;
-            left: 130px;
             top: 10%;
+            left: 130px;
+            width: 700px;
         }
     }
 
@@ -627,11 +554,6 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
             }
 
         }
-
-        &.COMPLETE {
-            img {
-            }
-        }
     }
 }
 
@@ -640,8 +562,8 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.banner {
-            width: 100%;
             top: 15%;
+            width: 100%;
         }
     }
 }
@@ -649,96 +571,86 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-carnivore {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .lion {
-                    background: url(../media/images/img_3.2.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .beaver {
-                    background: url(../media/images/img_3.3.png);
-                    background-size: 100%;
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .gorilla {
-                    background: url(../media/images/img_3.4.png);
-                    background-size: 100%;
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .giraffe {
-                    background: url(../media/images/img_3.5.png);
-                    background-size: 100%;
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .lion {
+                background: url('../media/images/img_3.2.png');
+                background-size: 100%;
+            }
+
+            .beaver {
+                background: url('../media/images/img_3.3.png');
+                background-size: 100%;
+            }
+
+            .gorilla {
+                background: url('../media/images/img_3.4.png');
+                background-size: 100%;
+            }
+
+            .giraffe {
+                background: url('../media/images/img_3.5.png');
+                background-size: 100%;
             }
         }
     }
@@ -747,99 +659,89 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-marsupial {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .koala {
-                    background: url(../media/images/img_5.3.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .beaver {
-                    background: url(../media/images/img_5.2.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .sloth {
-                    background: url(../media/images/img_5.5.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .ostrich {
-                    background: url(../media/images/img_5.4.png);
-                    background-size: 100%;
+
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .koala {
+                background: url('../media/images/img_5.3.png');
+                background-size: 100%;
+            }
+
+            .beaver {
+                background: url('../media/images/img_5.2.png');
+                background-size: 100%;
+            }
+
+            .sloth {
+                background: url('../media/images/img_5.5.png');
+                background-size: 100%;
+            }
+
+            .ostrich {
+                background: url('../media/images/img_5.4.png');
+                background-size: 100%;
             }
         }
     }
@@ -848,99 +750,89 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-rodant {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .chipmunk {
-                    background: url(../media/images/img_4.3.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .kangaroo {
-                    background: url(../media/images/img_4.2.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .cow {
-                    background: url(../media/images/img_4.4.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .falcon {
-                    background: url(../media/images/img_4.5.png);
-                    background-size: 100%;
+
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .chipmunk {
+                background: url('../media/images/img_4.3.png');
+                background-size: 100%;
+            }
+
+            .kangaroo {
+                background: url('../media/images/img_4.2.png');
+                background-size: 100%;
+            }
+
+            .cow {
+                background: url('../media/images/img_4.4.png');
+                background-size: 100%;
+            }
+
+            .falcon {
+                background: url('../media/images/img_4.5.png');
+                background-size: 100%;
             }
         }
     }
@@ -949,99 +841,89 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-arachnid {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .spider {
-                    background: url(../media/images/img_6.5.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .grasshoper {
-                    background: url(../media/images/img_6.3.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .ladybug {
-                    background: url(../media/images/img_6.4.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .roach {
-                    background: url(../media/images/img_6.2.png);
-                    background-size: 100%;
+
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .spider {
+                background: url('../media/images/img_6.5.png');
+                background-size: 100%;
+            }
+
+            .grasshoper {
+                background: url('../media/images/img_6.3.png');
+                background-size: 100%;
+            }
+
+            .ladybug {
+                background: url('../media/images/img_6.4.png');
+                background-size: 100%;
+            }
+
+            .roach {
+                background: url('../media/images/img_6.2.png');
+                background-size: 100%;
             }
         }
     }
@@ -1050,99 +932,89 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-mammal {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .dolphin {
-                    background: url(../media/images/img_7.2.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .snake {
-                    background: url(../media/images/img_7.5.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .pelican {
-                    background: url(../media/images/img_7.4.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .dragon {
-                    background: url(../media/images/img_7.3.png);
-                    background-size: 100%;
+
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .dolphin {
+                background: url('../media/images/img_7.2.png');
+                background-size: 100%;
+            }
+
+            .snake {
+                background: url('../media/images/img_7.5.png');
+                background-size: 100%;
+            }
+
+            .pelican {
+                background: url('../media/images/img_7.4.png');
+                background-size: 100%;
+            }
+
+            .dragon {
+                background: url('../media/images/img_7.3.png');
+                background-size: 100%;
             }
         }
     }
@@ -1151,99 +1023,89 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-mollusk {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .clam {
-                    background: url(../media/images/img_8.3.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .octopus {
-                    background: url(../media/images/img_8.4.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .stingray {
-                    background: url(../media/images/img_8.2.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .scorpian {
-                    background: url(../media/images/img_8.5.png);
-                    background-size: 100%;
+
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
                 }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .clam {
+                background: url('../media/images/img_8.3.png');
+                background-size: 100%;
+            }
+
+            .octopus {
+                background: url('../media/images/img_8.4.png');
+                background-size: 100%;
+            }
+
+            .stingray {
+                background: url('../media/images/img_8.2.png');
+                background-size: 100%;
+            }
+
+            .scorpian {
+                background: url('../media/images/img_8.5.png');
+                background-size: 100%;
             }
         }
     }
@@ -1252,101 +1114,91 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-reptile {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .alligator {
-                    background: url(../media/images/img_9.2.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .buzzor {
-                    background: url(../media/images/img_9.4.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .squid {
-                    background: url(../media/images/img_9.3.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .bat {
-                    background: url(../media/images/img_9.5.png);
-                    background-size: 100%;
-                }
 
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
+                }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .alligator {
+                background: url('../media/images/img_9.2.png');
+                background-size: 100%;
             }
+
+            .buzzor {
+                background: url('../media/images/img_9.4.png');
+                background-size: 100%;
+            }
+
+            .squid {
+                background: url('../media/images/img_9.3.png');
+                background-size: 100%;
+            }
+
+            .bat {
+                background: url('../media/images/img_9.5.png');
+                background-size: 100%;
+            }
+
         }
     }
 }
@@ -1354,101 +1206,91 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 #id-herbivore {
     img {
         position: absolute;
+        opacity: 1;
+
+        &.title {
+            top: 1%;
+            left: 3%;
+            width: 40%;
+        }
     }
 
-    &.READY.OPEN {
-        img {
-            opacity: 1;
+    .selectable-reveal {
+        .selectable {
+            position: absolute;
+            top: 10%;
+            left: 19%;
+            width: 62%;
+            height: 80%;
 
-            &.title {
-                width: 40%;
-                left: 3%;
-                top: 1%;
-            }
-        }
-
-        .selectable-reveal {
-            .selectable {
+            > * {
                 position: absolute;
-                width: 62%;
-                height: 80%;
-                top: 10%;
-                left: 19%;
+                width: 48%;
+                height: 41%;
 
-                & > * {
+                &::after {
                     position: absolute;
-                    width: 48%;
-                    height: 41%;
+                    top: -10%;
+                    left: -10%;
+                    background: url('../media/images/frame/id.png');
+                    background-position: 4px -20px;
+                    background-size: 211%;
+                    width: 120%;
+                    height: 120%;
+                    content: '';
+                }
 
+                &:hover,
+                &:focus {
                     &::after {
-                        position: absolute;
-                        width: 120%;
-                        height: 120%;
-                        left: -10%;
-                        top:: -10%;
-                        content: '';
-                        background: url(../media/images/frame/id.png);
-                        background-size: 211%;
-                        background-position: 4px -20px;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        &::after {
-                            background-position: 340px -20px;
-                        }
-                    }
-
-                    &:nth-child(1) {
-                        top: 1%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(2) {
-                        top: 1%;
-                        right: 0;
-                    }
-
-
-                    &:nth-child(3) {
-                        top: 53%;
-                        left: 0;
-                    }
-
-
-                    &:nth-child(4) {
-                        top: 53%;
-                        right: 0;
+                        background-position: 340px -20px;
                     }
                 }
 
-                .deer {
-                    background: url(../media/images/img_10.3.png);
-                    background-size: 100%;
+                &:nth-child(1) {
+                    top: 1%;
+                    left: 0;
                 }
 
-                .possum {
-                    background: url(../media/images/img_10.5.png);
-                    background-size: 100%;
+
+                &:nth-child(2) {
+                    top: 1%;
+                    right: 0;
                 }
 
-                .tiger {
-                    background: url(../media/images/img_10.4.png);
-                    background-size: 100%;
+
+                &:nth-child(3) {
+                    top: 53%;
+                    left: 0;
                 }
 
-                .skunk {
-                    background: url(../media/images/img_10.2.png);
-                    background-size: 100%;
-                }
 
+                &:nth-child(4) {
+                    top: 53%;
+                    right: 0;
+                }
             }
-        }
 
-        &.COMPLETE {
-            img {
+            .deer {
+                background: url('../media/images/img_10.3.png');
+                background-size: 100%;
             }
+
+            .possum {
+                background: url('../media/images/img_10.5.png');
+                background-size: 100%;
+            }
+
+            .tiger {
+                background: url('../media/images/img_10.4.png');
+                background-size: 100%;
+            }
+
+            .skunk {
+                background: url('../media/images/img_10.2.png');
+                background-size: 100%;
+            }
+
         }
     }
 }
@@ -1458,28 +1300,28 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.banner {
-            width: 68%;
             top: 21%;
             left: 13%;
+            width: 68%;
         }
     }
 
     .frame {
         position: absolute;
-        background: url(../media/images/frame/reveal.png);
+        top: 8%;
+        left: 15%;
+        background: url('../media/images/frame/reveal.png');
         background-size: contain;
         width: 70%;
         height: 80%;
-        top: 8%;
-        left: 15%;
 
         h3 {
             position: absolute;
             top: 53%;
             left: 20%;
-            color: #000;
-            font-size: 2rem;
             text-align: center;
+            color: $black;
+            font-size: 2rem;
         }
     }
 }
@@ -1488,9 +1330,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
     h3 {
         margin-top: 2%;
-        text-shadow: 0 3px 10px #000;
-        font-size: 40px;
         margin-bottom: 4%;
+        text-shadow: 0 3px 10px $black;
+        font-size: 40px;
     }
 
     .frame {
@@ -1498,8 +1340,8 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         div {
             float: left;
-            width: 50%;
             margin-top: -8%;
+            width: 50%;
 
             img {
                 width: auto;
@@ -1518,15 +1360,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 }
 
 #match-game {
-    img {
-    }
-
     .matchable-reveal {
         .matchable > * {
-            list-style-type: none;
             position: absolute;
             width: 16%;
             height: 27%;
+            list-style-type: none;
 
             &:nth-child(1) {
                 top: 5%;
@@ -1600,7 +1439,7 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
             .front,
             .back {
-                background: url(../media/images/match/img_13.1.png);
+                background: url('../media/images/match/img_13.1.png');
                 background-size: 2700px 176px;
             }
 
@@ -1694,7 +1533,7 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         }
 
         .reveal {
-            & > div {
+            > div {
                 top: -8%;
                 margin-top: 0;
                 background-size: 100% 110%;
@@ -1707,27 +1546,28 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
             }
 
             .thumb {
-                width: 43%;
+                position: absolute;
                 top: 18%;
                 left: 28%;
-                position: absolute;
+                width: 43%;
             }
 
             .banner {
-                width: 50%;
+                position: absolute;
                 top: 49%;
                 left: 24%;
-                position: absolute;
+                width: 50%;
             }
 
             div ul li.OPEN {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
 
+                // scss-lint:disable SelectorDepth
                 .thumb,
                 .banner,
                 p {
@@ -1736,10 +1576,10 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
                 p {
                     position: absolute;
-                    text-align: center;
-                    color: #000000;
                     top: 55%;
                     left: 15%;
+                    text-align: center;
+                    color: $black000;
                 }
 
                 &.frog {
@@ -1751,9 +1591,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
                 &.robin {
                     .thumb {
-                        width: 32%;
                         top: 15%;
                         left: 38%;
+                        width: 32%;
                     }
 
                     p {
@@ -1764,9 +1604,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
                 &.fox {
                     .thumb {
-                        width: 33%;
                         top: 18%;
                         left: 32%;
+                        width: 33%;
                     }
 
                     .banner {
@@ -1781,14 +1621,14 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
                 &.dove {
                     .thumb {
-                        width: 25%;
                         left: 38%;
+                        width: 25%;
                     }
 
                     .banner {
-                        width: 70%;
                         top: 48%;
                         left: 14%;
+                        width: 70%;
                     }
 
                     p {
@@ -1799,15 +1639,15 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
                 &.cow {
                     .thumb {
-                        width: 35%;
                         top: 18%;
                         left: 31%;
+                        width: 35%;
                     }
 
                     .banner {
-                        width: 50%;
                         top: 43%;
                         left: 25%;
+                        width: 50%;
                     }
 
                     p {
@@ -1823,9 +1663,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
                     }
 
                     .banner {
-                        width: 70%;
                         top: 51%;
                         left: 14%;
+                        width: 70%;
                     }
 
                     p {
@@ -1840,9 +1680,9 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
                     }
 
                     .banner {
-                        width: 70%;
                         top: 51%;
                         left: 14%;
+                        width: 70%;
                     }
 
                     p {
@@ -1850,16 +1690,17 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
                         left: 19%;
                     }
                 }
+                // scss-lint:enable SelectorDepth
             }
 
             .close-reveal {
                 position: absolute;
-                width: 10%;
-                height: 8%;
                 right: 13%;
                 bottom: 11%;
                 background-position: 163px -13px;
                 background-size: 800px 142px;
+                width: 10%;
+                height: 8%;
             }
         }
     }
@@ -1887,28 +1728,28 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.banner {
-            width: 68%;
             top: 19%;
             left: 13%;
+            width: 68%;
         }
     }
 
     .frame {
         position: absolute;
-        background: url(../media/images/frame/reveal.png);
+        top: 8%;
+        left: 15%;
+        background: url('../media/images/frame/reveal.png');
         background-size: contain;
         width: 70%;
         height: 80%;
-        top: 8%;
-        left: 15%;
 
         h3 {
             position: absolute;
             top: 43%;
             left: 13%;
-            color: #000;
-            font-size: 1.9rem;
             text-align: center;
+            color: $black;
+            font-size: 1.9rem;
         }
     }
 }
@@ -1918,15 +1759,15 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.banner-1 {
-            width: 80%;
             top: 8%;
             left: 10%;
+            width: 80%;
         }
 
         &.banner-2 {
-            width: 80%;
             bottom: 12%;
             left: 10%;
+            width: 80%;
         }
 
     }
@@ -1935,68 +1776,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
         top: 38%;
         left: 34%;
-        font-size: 60px;
         margin: 20px 0 40px;
+        font-size: 60px;
     }
 
     &.READY.OPEN {
         span {
             position: absolute;
-            background-image: url(../media/images/img_14.2.png);
-            background-size: 760px 160px;
-            background-repeat: no-repeat;
             opacity: 0;
+            background-image: url('../media/images/img_14.2.png');
+            background-repeat: no-repeat;
+            background-size: 760px 160px;
 
             &.animate {
                 animation-name: bounceIn;
             }
 
             &:nth-of-type(1) {
-                width: 190px;
-                height: 80px;
                 bottom: 25%;
                 left: 22%;
                 background-position: -104px 0;
+                width: 190px;
+                height: 80px;
             }
 
             &:nth-of-type(2) {
-                width: 230px;
-                height: 80px;
                 bottom: 25%;
                 left: 42%;
                 background-position: -300px 0;
+                width: 230px;
+                height: 80px;
             }
 
             &:nth-of-type(3) {
-                width: 270px;
-                height: 75px;
                 bottom: 26%;
                 left: 66%;
                 background-position: -522px 0;
+                width: 270px;
+                height: 75px;
             }
 
             &:nth-of-type(4) {
-                width: 240px;
-                height: 80px;
                 bottom: 10%;
                 left: 13%;
                 background-position: -10px -80px;
+                width: 240px;
+                height: 80px;
             }
 
             &:nth-of-type(5) {
-                width: 260px;
-                height: 80px;
                 bottom: 10%;
                 left: 38%;
                 background-position: -254px -80px;
+                width: 260px;
+                height: 80px;
             }
 
             &:nth-of-type(6) {
-                width: 260px;
-                height: 80px;
                 bottom: 11%;
                 left: 64%;
                 background-position: -507px -72px;
+                width: 260px;
+                height: 80px;
             }
         }
     }
@@ -2006,42 +1847,42 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
     img {
         &.title {
-            width: 90%;
-            left: 5%;
-            top: 3%;
             position: absolute;
+            top: 3%;
+            left: 5%;
+            width: 90%;
         }
     }
 
     h3 {
-        font-size: 36px;
         position: absolute;
         top: 35%;
         left: 37%;
+        font-size: 36px;
     }
 
 
     .selectable-reveal {
         .selectable {
             li {
+                position: absolute;
                 width: 16%;
                 height: 40%;
-                position: absolute;
 
                 &.human {
                     bottom: 8%;
                     left: 20%;
 
                     .front {
-                        background: url(../media/images/img_15.2.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.2.png');
                         background-position: -9px 0;
+                        background-size: cover;
                     }
 
                     .back {
-                        background: url(../media/images/img_15.2.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.2.png');
                         background-position: 162px 0;
+                        background-size: cover;
                     }
                 }
 
@@ -2050,15 +1891,15 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
                     left: 42%;
 
                     .front {
-                        background: url(../media/images/img_15.3.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.3.png');
                         background-position: -9px 0;
+                        background-size: cover;
                     }
 
                     .back {
-                        background: url(../media/images/img_15.3.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.3.png');
                         background-position: 162px 0;
+                        background-size: cover;
                     }
                 }
 
@@ -2067,15 +1908,15 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
                     left: 65%;
 
                     .front {
-                        background: url(../media/images/img_15.4.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.4.png');
                         background-position: -9px 0;
+                        background-size: cover;
                     }
 
                     .back {
-                        background: url(../media/images/img_15.4.png);
-                        background-size: cover;
+                        background: url('../media/images/img_15.4.png');
                         background-position: 162px 0;
+                        background-size: cover;
                     }
                 }
             }
@@ -2092,8 +1933,8 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.banner {
-            width: 100%;
             top: 28%;
+            width: 100%;
         }
     }
 }
@@ -2106,68 +1947,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 3px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 3px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.lion {
@@ -2185,12 +2026,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2204,68 +2045,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 320px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 320px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.pig {
@@ -2283,12 +2124,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2302,68 +2143,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 2195px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 2195px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.dog {
@@ -2381,12 +2222,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2400,68 +2241,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 628px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 628px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.sloth {
@@ -2479,12 +2320,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2498,68 +2339,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 1879px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 1879px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.dragon {
@@ -2577,12 +2418,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2596,68 +2437,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 942px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 942px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.mouse {
@@ -2675,12 +2516,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2694,68 +2535,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 1568px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 1568px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.panda {
@@ -2773,12 +2614,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2792,68 +2633,68 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     .dropzone-reveal {
         .dropzone {
             position: absolute;
-            list-style-type: none;
+            top: 22%;
+            left: 21%;
+            background: url('../media/images/img_17-24.1.png');
+            background-position: 1252px 4px;
+            background-size: 2500px 313px;
             width: 32%;
             height: 57%;
-            left: 21%;
-            top: 22%;
-            background: url(../media/images/img_17-24.1.png);
-            background-size: 2500px 313px;
-            background-position: 1252px 4px;
+            list-style-type: none;
 
             &::after {
                 position: absolute;
-                content: '';
+                top: -18%;
+                left: -18%;
+                background: url('../media/images/frame/dropzone.png');
+                background-size: contain;
                 width: 140%;
                 height: 140%;
-                left: -18%;
-                top: -18%;
-                background: url(../media/images/frame/dropzone.png);
-                background-size: contain;
+                content: '';
             }
         }
 
         div ul > * {
-            right:25%;
-            content: '';
-            width: 15%;
             position: fixed;
-            height: 27%;
-            background: url(../media/images/frame/draggable.png);
+            right: 25%;
+            background: url('../media/images/frame/draggable.png');
             background-position: 165px -25px;
             background-size: 350px 195px;
+            width: 15%;
+            height: 27%;
+            content: '';
 
             &:nth-child(1) {
-                right: 23%;
                 top: 10%;
+                right: 23%;
             }
 
             &:nth-child(2) {
-                right: 23%;
                 top: 37%;
+                right: 23%;
             }
 
             &:nth-child(3) {
-                right: 23%;
                 top: 64%;
+                right: 23%;
             }
         }
 
         .draggable {
             position: absolute;
+            background: url('../media/images/img_17-24.2.png');
+            background-size: 3200px 133px;
             width: 100%;
             height: 100%;
-            background: url(../media/images/img_17-24.2.png);
-            background-size: 3200px 133px;
 
             &::after {
                 position: absolute;
-                content: '';
-                width: 100%;
-                height: 100%;
-                background: url(../media/images/frame/draggable.png);
+                background: url('../media/images/frame/draggable.png');
                 background-position: -21px -26px;
                 background-size: 350px 195px;
+                width: 100%;
+                height: 100%;
+                content: '';
             }
 
             &.capibara {
@@ -2871,12 +2712,12 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 
         .reveal {
             div ul li {
+                top: 0;
+                left: 0;
+                opacity: 1;
                 background: none;
                 width: 100%;
                 height: 100%;
-                left: 0;
-                top: 0;
-                opacity: 1;
             }
         }
     }
@@ -2887,18 +2728,18 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
         position: absolute;
 
         &.flip {
-            width: 60%;
-            left: 20%;
             top: 20%;
+            left: 20%;
+            width: 60%;
         }
     }
 
     h3 {
-        font-size: 36px;
         position: absolute;
+        top: 15%;
         left: 16%;
         text-align: center;
-        top: 15%;
+        font-size: 36px;
     }
 
     &.READY.OPEN {
@@ -2911,37 +2752,34 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
 }
 
 #quit {
-    img {
-    }
-
     .frame {
-        background: url(../media/images/frame/reveal.png);
-        background-size: 100% 105%;
+        background: url('../media/images/frame/reveal.png');
         background-position: 0 -10px;
+        background-size: 100% 105%;
         width: 66%;
         height: 72%;
 
         h2 {
             position: absolute;
-            text-align: center;
-            left: 27%;
             top: 12%;
-            color: #000000;
+            left: 27%;
+            text-align: center;
+            color: $black000;
         }
 
         h3 {
-             position: absolute;
-            text-align: center;
-            left: 15%;
+            position: absolute;
             top: 48%;
-            color: #000000;
+            left: 15%;
+            text-align: center;
+            color: $black000;
         }
 
         .quit-yes,
         .quit-no {
+            position: absolute;
             width: 40%;
             height: 24%;
-            position: absolute;
         }
 
         .quit-yes {
@@ -2958,14 +2796,6 @@ body > div > div:not(.DEMO) [id^='dnd-']:not(.RETURN).COMPLETE .next-screen {
     }
 }
 
-
-
-
-
-
-
-
-
 body:not(.DEMO) #what-does-a-nose-do {
     &.SFX,
     &.VOICE-OVER {
@@ -2978,8 +2808,8 @@ body:not(.DEMO) #what-does-a-nose-do {
 .screen.screen-id {
     .frame {
         position: absolute;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         text-align: left;
@@ -2990,49 +2820,49 @@ body:not(.DEMO) #what-does-a-nose-do {
 
         img {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
         }
 
         .items {
-            width: 70%;
-            height: auto;
             position: absolute;
-            left: 50%;
             top: 50%;
+            left: 50%;
+            flex-wrap: wrap;
             transform: translateX(-50%) translateY(-50%);
             z-index: 1;
-            flex-wrap: wrap;
+            width: 70%;
+            height: auto;
 
             li {
-                width: 300px;
                 margin: 10px 18px;
                 cursor: pointer;
+                width: 300px;
                 max-height: 200px;
 
                 img {
-                    opacity: 1;
                     position: relative;
+                    opacity: 1;
                 }
 
                 &::before,
                 &::after {
-                    content: '';
                     display: block;
                     position: absolute;
-                    left: -9%;
                     top: -16%;
+                    left: -9%;
+                    z-index: 1;
+                    background: url('../media/images/frame/id.png') no-repeat;
+                    background-size: 200% 100%;
                     width: 130%;
                     height: 125%;
-                    background: url(../media/images/frame/id.png) no-repeat;
-                    background-size: 200% 100%;
-                    z-index: 1;
+                    content: '';
                 }
 
                 &::after {
-                    background-position: 107% 0;
-                    opacity: 0;
                     transition: opacity .4s;
+                    opacity: 0;
+                    background-position: 107% 0;
                 }
 
                 &:hover {
@@ -3063,10 +2893,13 @@ body:not(.DEMO) #what-does-a-nose-do {
             .items {
                 li {
                     cursor: auto;
+
                     &:hover {
+                        // scss-lint:disable NestingDepth
                         &::after {
                             opacity: 0;
                         }
+                        // scss-lint:enable NestingDepth
                     }
                 }
             }
@@ -3088,50 +2921,50 @@ body:not(.DEMO) #what-does-a-nose-do {
 
             li {
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
+                transition: z-index 0s .5s, opacity .5s;
+                z-index: -1;
                 width: 100%;
                 height: 100%;
-                z-index: -1;
-                transition: z-index 0s .5s, opacity .5s;
 
                 div {
-                    background: url(../media/images/frame/reveal.png) no-repeat;
-                    background-size: 100% auto;
-                    background-position: center center;
                     position: absolute;
+                    top: 50%;
+                    left: 10%;
+                    transform: translateY(-50%);
+                    background: url('../media/images/frame/reveal.png') no-repeat;
+                    background-position: center center;
+                    background-size: 100% auto;
+                    padding-bottom: 50%;
                     width: 80%;
                     height: 0;
-                    padding-bottom: 50%;
-                    left: 10%;
-                    top: 50%;
-                    transform: translateY(-50%);
 
                     h3 {
                         position: absolute;
-                        left: 50%;
                         top: 50%;
-                        width: 80%;
+                        left: 50%;
                         transform: translateX(-50%) translateY(-50%);
+                        width: 80%;
                         text-align: center;
-                        color: #000;
+                        color: $black;
                     }
                 }
 
                 &.OPEN {
-                    z-index: 1;
                     transition: z-index 0s, opacity .5s;
+                    z-index: 1;
                 }
             }
 
             .next-screen {
-                float: none;
                 position: absolute;
-                bottom: 12%;
                 right: 10%;
+                bottom: 12%;
+                float: none;
                 transform: scale(.6);
-                opacity: 0;
                 transition: opacity .5s;
+                opacity: 0;
             }
         }
     }
@@ -3181,7 +3014,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 
 //                 .side {
 //                     background-color: transparent;
-//                     background-image: url(../media/images/match/img_13.1.png);
+//                     background-image: url('../media/images/match/img_13.1.png');
 //                     background-position: -10px -15px;
 //                     background-size: 1800% 120%;
 //                 }
@@ -3264,7 +3097,7 @@ body:not(.DEMO) #what-does-a-nose-do {
 //                     padding-bottom: 70%;
 //                     top: 45%;
 //                     text-align: center;
-//                     color: #000;
+//                     color: $black;
 
 //                     img {
 //                         display: block;
@@ -3317,24 +3150,24 @@ body:not(.DEMO) #what-does-a-nose-do {
     .area {
         position: relative;
         border-radius: 50%;
+        background-image: url('../media/images/img_17-24.1.png');
+        background-size: 3200px;
         width: 350px;
         height: 350px;
-        background-size: 3200px;
-        background-image: url(../media/images/img_17-24.1.png);
 
         img {
             display: none;
         }
 
         &::after {
-            content: '';
-            background-image: url(../media/images/frame/dropzone.png);
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            background-image: url('../media/images/frame/dropzone.png');
             background-size: 100% 100%;
             width: 140%;
             height: 140%;
-            position: absolute;
-            left: -20%;
-            top: -20%;
+            content: '';
         }
     }
 }
@@ -3361,7 +3194,8 @@ body:not(.DEMO) #what-does-a-nose-do {
 
 .POSITIONED.absolute {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
 }
 
 .PLUCKED {
@@ -3369,14 +3203,20 @@ body:not(.DEMO) #what-does-a-nose-do {
 }
 
 .draggables [pl-draggable] {
+    // scss-lint:disable VendorPrefix
     cursor: -webkit-grab;
+    // scss-lint:enable VendorPrefix
+    cursor: grab;
 }
 
 .draggables .DRAG-START,
 .draggables .DRAGGING,
 .draggable-helper {
     z-index: 1;
+    // scss-lint:disable VendorPrefix
     cursor: -webkit-grabbing;
+    // scss-lint:enable VendorPrefix
+    cursor: grabbing;
 }
 
 .draggable-helper.PLUCKED {
@@ -3384,10 +3224,12 @@ body:not(.DEMO) #what-does-a-nose-do {
 }
 
 .draggable-helper.RETURN {
-    opacity: 0;
     /* One of the rare times I'll use important. This is to override an inline style. */
-    transform: translate3d(0,0,0) !important;
+    // scss-lint:disable ImportantRule
+    transform: translate3d(0, 0, 0) !important;
+    // scss-lint:enable ImportantRule
     transition: transform .5s cubic-bezier(0, .18, 0, 1.01), opacity 1s;
+    opacity: 0;
 }
 
 .draggable-helper.RETURN.PLUCKED {
@@ -3395,6 +3237,6 @@ body:not(.DEMO) #what-does-a-nose-do {
 }
 
 .draggable-helper.DROPED {
-    opacity: 0;
     transition: opacity 1s;
+    opacity: 0;
 }

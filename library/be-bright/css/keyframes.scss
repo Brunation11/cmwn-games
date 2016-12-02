@@ -1,53 +1,58 @@
 @keyframes number-flash {
-    0% {opacity:0;}
-    10% {opacity:1;}
-    90% {opacity:1;}
-    100% {opacity:0;}
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 @keyframes flicker {
-    0% {opacity:1;}
-    10% {opacity:1;}
-    12% {opacity:0;}
-    14% {opacity:1;}
-    16% {opacity:0;}
-    18% {opacity:1;}
-    44% {opacity:1;}
-    46% {opacity:0;}
-    48% {opacity:1;}
-    50% {opacity:0;}
-    52% {opacity:1;}
-    82% {opacity:1;}
-    84% {opacity:0;}
-    86% {opacity:1;}
-    88% {opacity:0;}
-    90% {opacity:1;}
-    100% {opacity:1;}
+    0% {opacity: 1;}
+    10% {opacity: 1;}
+    12% {opacity: 0;}
+    14% {opacity: 1;}
+    16% {opacity: 0;}
+    18% {opacity: 1;}
+    44% {opacity: 1;}
+    46% {opacity: 0;}
+    48% {opacity: 1;}
+    50% {opacity: 0;}
+    52% {opacity: 1;}
+    82% {opacity: 1;}
+    84% {opacity: 0;}
+    86% {opacity: 1;}
+    88% {opacity: 0;}
+    90% {opacity: 1;}
+    100% {opacity: 1;}
 }
 @keyframes toggle {
-    0% {opacity:1;}
-    48% {opacity:1;}
-    50% {opacity:0;}
-    98% {opacity:0;}
-    100% {opacity:1;}
+    0% {opacity: 1;}
+    48% {opacity: 1;}
+    50% {opacity: 0;}
+    98% {opacity: 0;}
+    100% {opacity: 1;}
 }
 @keyframes stamp {
     0% {
-        opacity: 0;
         transform: scale(4);
+        opacity: 0;
     }
+
     10% {
         opacity: 1;
     }
+
     60% {
         transform: scale(1);
     }
+
     65% {
         transform: scale(1.1);
     }
+
     75% {
         transform: scale(1.1);
     }
+
     80% {
         transform: scale(1.1);
     }
@@ -55,27 +60,32 @@
 
 @keyframes enemy-disapear {
     0% {
+        transform: translateY(0);
         opacity: 1;
-        transform: translateY(0);
     }
+
     20% {
+        transform: translateY(-20px);
         opacity: .8;
-        transform: translateY(-20px);
     }
+
     40% {
+        transform: translateY(20px);
         opacity: .6;
-        transform: translateY(20px);
     }
+
     60% {
-        opacity: .4;
         transform: translateY(-20px);
+        opacity: .4;
     }
+
     80% {
-        opacity: .2;
         transform: translateY(20px);
+        opacity: .2;
     }
+
     100% {
-        opacity: 0;
         transform: translateY(0);
+        opacity: 0;
     }
 }
