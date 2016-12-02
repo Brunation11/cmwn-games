@@ -66,7 +66,17 @@ export default {
         bag.kill();
         //  update the bagCount
         this.data.bagCount++;
+        this.helpers.updatePlayer.call(this);
         this.helpers.emitData.call(this);
+    },
+    updatePlayer: function () {
+        if (this.data.bagCount === 5) {
+            this.player.loadTexture('turtle5', 0);
+        } else if (this.data.bagCount >= 3) {
+            this.player.loadTexture('turtle3', 0);
+        } else {
+            this.player.loadTexture('turtle', 0);
+        }
     },
     stay: function (a) {
         a.body.gravity.y = 0;
@@ -78,6 +88,7 @@ export default {
         truck.animations.play('drive');
         this.data.bagCount = 0;
         this.data.trucks++;
+        this.helpers.updatePlayer.call(this);
         this.helpers.emitData.call(this);
     },
     makeBackground,

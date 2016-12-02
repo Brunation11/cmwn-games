@@ -4,6 +4,10 @@ import create from './js/create';
 import update from './js/update';
 import helpers from './js/helpers';
 
+import optsArray from './js/opts';
+
+var opts = optsArray[location.search.split('v=')[1] - 1 || 0];
+
 ENVIRONMENT.MEDIA += 'Games/WasteBusters/';
 
 window.game = new Game({
@@ -12,5 +16,6 @@ window.game = new Game({
     preload,
     create,
     update,
-    helpers
+    helpers,
+    opts,
 });

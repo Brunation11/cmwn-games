@@ -12,7 +12,9 @@ export default function () {
 
     loadAssets.call(this, 'spritesheet', [
     // 6180 x 646 pixels
-    ['turtle', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 515, 646],
+    ['turtle', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.0.png', 515, 645],
+    ['turtle3', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.3.png', 515, 645],
+    ['turtle5', ENVIRONMENT.MEDIA + 'SpritesAnimations/turtle.walk.5.png', 515, 645],
     // 1830 x 276 pixels
     ['heart', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.hearts.png', 305, 276],
     // 1726 x 310 pixels

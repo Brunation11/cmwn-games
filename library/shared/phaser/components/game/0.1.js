@@ -14,6 +14,7 @@ class Game {
         });
 
         this.helpers = opts.helpers;
+        this.opts = opts.opts;
 
         this.game = new Phaser.Game(opts.width, opts.height, opts.renderer, opts.parent, opts.state);
 
