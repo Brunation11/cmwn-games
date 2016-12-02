@@ -18,7 +18,7 @@ export default function (props, ref, key) {
                 className="hidden"
             />
             <GameEmbedder
-                src="../waste-busters-level-1/index.html?v=1"
+                src="../waste-busters-phaser/index.html?v=1"
                 controller={_.get(props, 'data.d-pad')}
             />
             <Timer
