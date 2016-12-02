@@ -1,23 +1,25 @@
 #flyer {
-  > .center > div {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
+    > .center > div {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
 
-  .center {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    text-align: center;
-  }
+    .center {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+    }
 
-  .flyer {
-    width: 200px;
-    height: 170px;
-    background-image: url(../media/_Images/S_FlyAcross/SP_4.1.png);
-    background-size: 1809px;
-    background-repeat: no-repeat;
-    animation: butterfly .75s steps(1) infinite;
-  }
+    .flyer {
+        animation: butterfly .75s steps(1) infinite;
+        background-image: url('../media/_Images/S_FlyAcross/SP_4.1.png');
+        background-repeat: no-repeat;
+        background-size: 1809px;
+        width: 200px;
+        height: 170px;
+    }
 }

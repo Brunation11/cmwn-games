@@ -1,10 +1,12 @@
+$black: #000;
+
 .randomizer {
-  display: none;
+    display: none;
 }
 
 .selectable {
-  .HIGHLIGHTED {
-    pointer-events: none;
-    color: black;
-  }
+    .HIGHLIGHTED {
+        color: $black;
+        pointer-events: none;
+    }
 }

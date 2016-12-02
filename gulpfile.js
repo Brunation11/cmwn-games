@@ -26,6 +26,8 @@ var buildTask;
 var eslint = require('gulp-eslint');
 var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
 var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
+var scsslint = require('gulp-scss-lint');
+var stylish = require('gulp-scss-lint-stylish2');
 
 function lsd(_path) {
     return fs.readdirSync(_path).filter(function (file) {
@@ -322,7 +324,7 @@ function cleanTask() {
 gulp.task('clean', cleanTask);
 
 /*·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´Lint Tasks`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·•·.·´`·.·*/
-gulp.task('lint', ['lint-js', 'lint-config']);
+gulp.task('lint', ['lint-js', 'lint-config', 'lint-scss']);
 gulp.task('lint-js', function () {
     return gulp.src(['library/**/*.js', '!library/**/*.test.js'])
         // eslint() attaches the lint output to the eslint property
@@ -342,4 +344,14 @@ gulp.task('lint-config', function () {
         .pipe(eslint.format())
         .pipe(eslint.format('stylish', fs.createWriteStream('configlint.log')))
         .pipe(eslint.failAfterError());
+});
+gulp.task('lint-scss', function () {
+    var reporter = stylish();
+    return gulp.src(['library/**/*.scss'])
+        .pipe(scsslint({
+            customReport: reporter.issues,
+            reporterOutput: 'scsslint.json',
+        }))
+        .pipe(reporter.printSummary)
+        .pipe(scsslint.failReporter());
 });
