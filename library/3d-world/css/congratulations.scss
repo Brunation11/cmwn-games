@@ -4,16 +4,16 @@
 #congratulations {
     .screen-content {
         &::before {
-            content: '';
             position: absolute;
-            z-index: 1;
-            left: 260px;
             bottom: 0;
+            left: 260px;
+            z-index: 1;
+            background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+            background-position: -880px 0;
+            background-size: 2200px;
             width: 440px;
             height: 400px;
-            background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-            background-size: 2200px;
-            background-position: -880px 0;
+            content: '';
         }
 
         div {
@@ -28,10 +28,12 @@
 
             @for $i from 1 through 5 {
                 &:nth-of-type(#{$i}) {
-                    left: #{nth($lefts, $i)}px;
-                    top: #{nth($tops, $i)}px;
-                    color: nth($colors, $i);
                     @include text-stroke(nth($strokes, $i), nth($stroke-colors, $i));
+                    top: #{nth($tops, $i)}px;
+                    left: #{nth($lefts, $i)}px;
+                    // scss-lint:disable VariableForProperty
+                    color: nth($colors, $i);
+                    // scss-lint:enable VariableForProperty
                 }
             }
         }

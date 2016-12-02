@@ -14,12 +14,12 @@
     }
 
     .next-screen {
-        width: 230px;
-        height: 70px;
         right: 380px;
         bottom: 170px;
         background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
         background-position: -335px 0;
+        width: 230px;
+        height: 70px;
 
         &:hover {
             background-position: -335px -72px;
@@ -27,14 +27,14 @@
     }
 
     &::after {
-        content: '';
         position: absolute;
-        left: 405px;
         bottom: 0;
+        left: 405px;
+        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+        background-position: -1905px -180px;
+        background-size: 2200px;
         width: 150px;
         height: 200px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
-        background-size: 2200px;
-        background-position: -1905px -180px;
+        content: '';
     }
 }

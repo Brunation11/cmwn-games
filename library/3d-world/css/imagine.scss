@@ -5,11 +5,11 @@
 #imagine {
     .question,
     .answer {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
         display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
 
         &.show {
             display: block;
@@ -18,8 +18,8 @@
 
     .right {
         position: absolute;
-        right: 0;
         top: 70px;
+        right: 0;
         background-image: url($media-server + 'ImageAssets/intro.speech.balloon.png');
         background-repeat: no-repeat;
         background-size: 300px;
@@ -27,15 +27,15 @@
 
     .words {
         position: absolute;
-        width: 320px;
-        margin-top: 70px;
-        color: $imagine-green;
-        font-size: 18px;
         transform: translateY(-50%);
-        text-transform: uppercase;
-        font-family: 'Molot';
-        opacity: 0;
         transition: opacity .5s;
+        opacity: 0;
+        margin-top: 70px;
+        width: 320px;
+        text-transform: uppercase;
+        color: $imagine-green;
+        font-family: 'Molot';
+        font-size: 18px;
 
         &.imagine {
             $widths: 215 222 164;
@@ -54,17 +54,17 @@
 
     .text {
         position: absolute;
-        width: 80%;
-        left: 50%;
         top: 50%;
+        left: 50%;
         transform: translateX(-50%) translateY(-50%);
+        width: 80%;
     }
 
     .minion {
+        margin-top: 140px;
         background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
         background-position: -120px -240px;
         background-size: 3000px;
-        margin-top: 140px;
         width: 320px;
         height: 320px;
     }
