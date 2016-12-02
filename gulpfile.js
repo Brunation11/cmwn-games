@@ -351,5 +351,5 @@ gulp.task('lint-scss', function () {
             reporterOutput: 'scsslint.json',
             maxBuffer: 300000000,
         }))
-        .pipe(scsslint.failReporter('E'));
+        .pipe(scsslint.failReporter());
 });
