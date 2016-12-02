@@ -8,3 +8,4 @@ library/component-catalog
 Thumbs.db
 **/*.swp
 **/*.swo
+scsslint.json

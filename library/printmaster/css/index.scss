@@ -2,1191 +2,1169 @@
 @import 'mixins';
 
 @font-face {
-  font-family: 'Powderfinger';
-  src: url('../media/_Fonts/powderfinger/POWDRFT_.eot'); /* IE9 Compat Modes */
-  src: url('../media/_Fonts/powderfinger/POWDRFT_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-     url('../media/_Fonts/powderfinger/POWDRFT_.woff') format('woff'), /* Modern Browsers */
-     url('../media/_Fonts/powderfinger/POWDRFT_.ttf')  format('truetype'), /* Safari, Android, iOS */
-     url('../media/_Fonts/powderfinger/POWDRFT_.svg#10f6fe65355d8d8834bd6b1900d3311e') format('svg'); /* Legacy iOS */
+    font-family: 'Powderfinger';
+    src: url('../media/_Fonts/powderfinger/POWDRFT_.eot'); /* IE9 Compat Modes */
+    src: url('../media/_Fonts/powderfinger/POWDRFT_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../media/_Fonts/powderfinger/POWDRFT_.woff') format('woff'), /* Modern Browsers */
+         url('../media/_Fonts/powderfinger/POWDRFT_.ttf')    format('truetype'), /* Safari, Android, iOS */
+         url('../media/_Fonts/powderfinger/POWDRFT_.svg#10f6fe65355d8d8834bd6b1900d3311e') format('svg'); /* Legacy iOS */
 
-  font-style:   normal;
-  font-weight:  400;
+    font-style: normal;
+    font-weight: 400;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  user-drag: none;
-  cursor: default;
+html,
+body {
+    margin: 0;
+    cursor: default;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    user-drag: none;
 }
 
 html {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
-  color: $text-color;
+    color: $text-color;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
-body, body > div, .skoash-game {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  font-size: 20px;
-  background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
-
-
-  .background-component {
-    opacity: 0;
-    transition: opacity .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
+body,
+body > div,
+.skoash-game {
+    position: relative;
+    margin: auto;
+    background: url('../media/_BKG/BKG_1.png') bottom center no-repeat;
+    background-size: cover;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center
-  }
+    font-size: 20px;
 
-  > .background-component.sun,
-  &.rocks > .background-component.rocks,
-  &.cactus > .background-component.cactus,
-  &.arch > .background-component.arch,
-  &.mountains > .background-component.mountains {
-    opacity: 1;
-  }
+
+    .background-component {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    > .background-component.sun,
+    &.rocks > .background-component.rocks,
+    &.cactus > .background-component.cactus,
+    &.arch > .background-component.arch,
+    &.mountains > .background-component.mountains {
+        opacity: 1;
+    }
 }
 
 .skoash-game {
-  width: 960px;
-  height: 540px;
+    width: 960px;
+    height: 540px;
 }
 
 // preload assets
 #asset-bin {
-  display: none;
+    display: none;
 }
 
 img {
-  &.hidden {
-    display: none;
-  }
+    &.hidden {
+        display: none;
+    }
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
+    margin: 0;
+    outline: none;
+    border: 0;
 
-  font-family: inherit;
-  font-size: inherit;
-  color: transparent;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+    background-color: transparent;
+    background-image: url('../media/_Button/BU_1.png');
+    background-position: left top;
+    background-size: auto 300px;
 
-  background-image: url(../media/_Button/BU_1.png);
-  background-size: auto 300px;
-  background-position: left top;
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
 
-  &.close {
-    width: 36px;
-    height: 36px;
-    background-position: -508px -58px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px;
-    z-index: 2;
 
-    &:hover {
-      background-position: -508px -208px;
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -508px -58px;
+        width: 36px;
+        height: 36px;
+
+        &:hover {
+            background-position: -508px -208px;
+        }
     }
-  }
 
-  &.next-screen,
-  &.prev-screen {
-    width: 70px;
-    height: 40px;
-  }
-
-  &.next-screen {
-    background-position: -340px -55px;
-
-    &:hover {
-      background-position: -340px -205px;
+    &.next-screen,
+    &.prev-screen {
+        width: 70px;
+        height: 40px;
     }
-  }
 
-  &.prev-screen {
-    background-position: -195px -55px;
+    &.next-screen {
+        background-position: -340px -55px;
 
-    &:hover {
-      background-position: -195px -205px;
+        &:hover {
+            background-position: -340px -205px;
+        }
     }
-  }
 
-  &.quit-yes {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 387px 344px;
+    &.prev-screen {
+        background-position: -195px -55px;
 
-    &:hover {
-      background-position: 387px 144px;
+        &:hover {
+            background-position: -195px -205px;
+        }
     }
-  }
 
-  &.quit-no {
-    width: 170px;
-    height: 90px;
-    background-size: auto 400px;
-    background-position: 187px 344px;
+    &.quit-yes {
+        background-position: 387px 344px;
+        background-size: auto 400px;
+        width: 170px;
+        height: 90px;
 
-    &:hover {
-      background-position: 187px 144px;
+        &:hover {
+            background-position: 387px 144px;
+        }
     }
-  }
 
-  &.close-reveal {
-    width: 30px;
-    height: 30px;
-    background-position: -660px 240px;
-    transition: opacity 1s;
+    &.quit-no {
+        background-position: 187px 344px;
+        background-size: auto 400px;
+        width: 170px;
+        height: 90px;
 
-    &:hover {
-      background-position: -660px 390px;
+        &:hover {
+            background-position: 187px 144px;
+        }
     }
-  }
+
+    &.close-reveal {
+        transition: opacity 1s;
+        background-position: -660px 240px;
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+            background-position: -660px 390px;
+        }
+    }
 }
 
 h2 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 h3 {
-  font-size: 36px;
-  margin: 0;
+    margin: 0;
+    font-size: 36px;
 }
 
 p {
-  font-size: 36px;
-  margin: 0;
+    margin: 0;
+    font-size: 36px;
 }
 
 .canvas-src { display: none; }
 
 .screen {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 0; right: 0;
-  opacity: 0;
-  display: none;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
-
-  > div {
+    display: none;
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    text-align: center;
-  }
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
+
+    > div {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+    }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-  opacity: 1;
-  transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
-  display: block;
+    display: block;
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 1;
 }
 
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
+.screen .next-screen,
+.screen .prev-screen {
     display: block;
+    position: absolute;
     bottom: 1%;
-    margin-bottom: 5px;
     z-index: 2;
-  }
+    margin-bottom: 5px;
+}
 
-  .screen .next-screen {
-    margin-right: 5px;
+.screen .next-screen {
     right: 0;
-    opacity: 0;
-    pointer-events: none;
     transform: rotate(-180deg);
-  }
-
-  .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
-  .screen.GATED .next-screen {
     opacity: 0;
+    margin-right: 5px;
     pointer-events: none;
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
+.screen.GATED .next-screen {
     transition: opacity 0s;
+    opacity: 0;
     cursor: default;
-  }
+    pointer-events: none;
+}
 
-  .skoash-game.MENU-quit .screen {
+.skoash-game.MENU-quit .screen {
     &:not(#quit) {
-      opacity: 0;
-      pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
     }
-  }
+}
 
-  .skoash-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen,
-  .screen.REPLAY .next-screen {
-    opacity: 1;
-    pointer-events: auto;
+.skoash-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
     transform: rotate(0deg);
-    cursor: pointer;
     transition: opacity 1s, transform 1s;
-  }
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
 
-  .screen .next-screen:hover {
-
-  }
-
-  .screen .prev-screen {
-    margin-left: 5px;
+.screen .prev-screen {
     left: 0;
-
-  }
-
-  .screen .prev-screen:hover {
-
-  }
+    margin-left: 5px;
+}
 
 .screen {
-  &.no-frame {
-    color: #fff;
+    &.no-frame {
+        color: $text-color;
 
-    .frame {
-      text-align: center;
+        .frame {
+            text-align: center;
+        }
     }
-  }
 }
 
 // the following css is specific to this game
 
 .frame {
-  position: relative;
-  text-align: center;
-  font-size: 40px;
-  line-height: 1.2;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 40px;
 }
 
 img.inline {
-  height: 56px;
-  vertical-align: middle;
+    height: 56px;
+    vertical-align: middle;
 }
 
 .typing {
-  white-space: nowrap;
-  overflow: hidden;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .screen.large-frame {
-  .frame {
-    background-image: url(../media/_Frame/Fr_1.png);
-    padding: 60px 75px;
-    margin: 40px auto;
-    width: 860px;
-    height: 460px;
-    text-align: center;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-
-    p:only-child {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-    }
-
-    img:only-child {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-
-    .title {
-      max-height: 100px;
-      margin-top: -30px;
-    }
-  }
-
-  &.OPEN {
     .frame {
-      -webkit-animation-name: fadeInDown;
-      animation-name: fadeInDown;
+        margin: 40px auto;
+        background-image: url('../media/_Frame/Fr_1.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        padding: 60px 75px;
+        width: 860px;
+        height: 460px;
+        text-align: center;
+
+        p:only-child {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        img:only-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .title {
+            margin-top: -30px;
+            max-height: 100px;
+        }
     }
-  }
+
+    &.OPEN {
+        .frame {
+            animation-name: fadeInDown;
+        }
+    }
 }
 
 .screen.types {
 
-  > div {
-    text-align: center;
+    > div {
+        text-align: center;
 
-    > * {
-      vertical-align: middle;
+        > * {
+            vertical-align: middle;
+        }
+
+        > img {
+            margin: 60px 0;
+            width: 340px;
+        }
+
+        .frame {
+            display: inline-block;
+            position: relative;
+            margin: 60px 0 60px 20px;
+            background-image: url('../media/_Frame/Fr_2.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            width: 500px;
+            height: 435px;
+            text-align: center;
+
+            div {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                padding: 60px;
+                width: 100%;
+            }
+
+            > div {
+                height: 396px;
+                overflow: hidden;
+            }
+
+            span {
+                display: inline-block;
+            }
+
+            h2 {
+                @include powder;
+                margin: 0 0 10px;
+                padding: 0 20px;
+                letter-spacing: 4px;
+                font-size: 72px;
+            }
+
+            p {
+                font-size: 32px;
+            }
+        }
     }
 
-    > img {
-      width: 340px;
-      margin: 60px 0;
+    &.OPEN {
+        .frame {
+            span {
+                animation-name: flash;
+                animation-delay: 1s;
+                animation-iteration-count: 2;
+            }
+
+            h2 {
+                animation: type .5s steps(4, end);
+            }
+
+            p {
+                animation-name: fadeInUpBig;
+                animation-delay: .5s;
+            }
+        }
     }
-
-    .frame {
-      background-image: url(../media/_Frame/Fr_2.png);
-      position: relative;
-      display: inline-block;
-      width: 500px;
-      height: 435px;
-      margin: 60px 0 60px 20px;
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-      text-align: center;
-
-      div {
-        position: absolute;
-        padding: 60px;
-        left: 0;
-        top: 50%;
-        width: 100%;
-        transform: translateY(-50%);
-      }
-
-      > div {
-        height: 396px;
-        overflow: hidden;
-      }
-
-      span {
-        display: inline-block;
-      }
-
-      h2 {
-        margin: 0 0 10px 0;
-        font-size: 72px;
-        letter-spacing: 4px;
-        padding: 0 20px;
-        @include powder;
-      }
-
-      p {
-        font-size: 32px;
-      }
-    }
-  }
-
-  &.OPEN {
-    .frame {
-      span {
-        animation-name: flash;
-        animation-delay: 1s;
-        animation-iteration-count: 2;
-      }
-
-      h2 {
-        animation: type .5s steps(4, end);
-      }
-
-      p {
-        animation-name: fadeInUpBig;
-        animation-delay: .5s;
-      }
-    }
-  }
 }
 
 #title {
-  text-align: center;
+    text-align: center;
 
-  button {
-    &.prev-screen {
-      display: none;
-    }
-
-    &.next-screen {
-      width: 100px;
-      height: 78px;
-      right: 10px;
-      bottom: 10px;
-      background-position: -25px -39px;
-
-      &:hover {
-        background-position: -25px -189px;
-      }
-    }
-  }
-
-  .scanner {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 40px 0;
-    width: 320px;
-  }
-
-  .title {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 40px 0 40px 40px;
-    width: 485px;
-
-    div {
-      background-image: url(../media/S_1/img_1.2.png);
-      background-size: 480px;
-      float: left;
-      height: 120px;
-      width: 75px;
-
-      @for $item from 1 through 11 {
-        $offset: 58;
-        &:nth-child(#{$item}) {
-          @if $item == 1 {
-            $offset: 66;
-            width: 83px;
-          }
-          @if $item == 5 {
-            width: 120px;
-          }
-          @if $item == 6 {
-            margin-left: 8px;
-          }
-          @if $item == 11 {
-            width: 90px;
-          }
-          $top: 0;
-          $position: -(75*$item)+$offset+px $top+px;
-          @if $item > 5 {
-            $top: 120;
-            $offset: 433;
-            $position: -(75*$item)+$offset+px $top+px;
-          }
-          background-position: $position;
+    button {
+        &.prev-screen {
+            display: none;
         }
-      }
-    }
-  }
 
-  &.OPEN {
-    img.scanner {
-      -webkit-animation-name: fadeInLeftBig;
-      -webkit-animation-delay: 1.5s;
-      animation-name: fadeInLeftBig;
-      animation-delay: 1.5s;
+        &.next-screen {
+            right: 10px;
+            bottom: 10px;
+            background-position: -25px -39px;
+            width: 100px;
+            height: 78px;
+
+            &:hover {
+                background-position: -25px -189px;
+            }
+        }
+    }
+
+    .scanner {
+        display: inline-block;
+        margin: 40px 0;
+        width: 320px;
+        vertical-align: middle;
     }
 
     .title {
+        display: inline-block;
+        margin: 40px 0 40px 40px;
+        width: 485px;
+        vertical-align: middle;
 
-      div {
-        -webkit-animation-name: fadeInRightBig;
-        animation-name: fadeInRightBig;
+        div {
+            float: left;
+            background-image: url('../media/S_1/img_1.2.png');
+            background-size: 480px;
+            width: 75px;
+            height: 120px;
 
-        @for $item from 1 through 11 {
-          &:nth-child(#{$item}) {
-            -webkit-animation-delay: $item*.2+1.5+s;
-            animation-delay: $item*.2+1.5+s;
-          }
+            @for $item from 1 through 11 {
+                $offset: 58;
+
+                &:nth-child(#{$item}) {
+                    @if $item == 1 {
+                        $offset: 66;
+                        width: 83px;
+                    }
+                    @if $item == 5 {
+                        width: 120px;
+                    }
+                    @if $item == 6 {
+                        margin-left: 8px;
+                    }
+                    @if $item == 11 {
+                        width: 90px;
+                    }
+                    $top: 0;
+                    $position: -(75 * $item) + $offset + px $top + px;
+                    @if $item > 5 {
+                        $top: 120;
+                        $offset: 433;
+                        $position: -(75 * $item) + $offset + px $top + px;
+                    }
+                    background-position: $position;
+                }
+            }
         }
-      }
     }
-  }
+
+    &.OPEN {
+        img.scanner {
+            animation-name: fadeInLeftBig;
+            animation-delay: 1.5s;
+        }
+
+        .title {
+
+            div {
+                animation-name: fadeInRightBig;
+
+                @for $item from 1 through 11 {
+                    &:nth-child(#{$item}) {
+                        animation-delay: $item * .2 + 1.5 + s;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #info-tiny-patterns {
-  img {
-    width: 300px;
-    float: left;
-  }
+    img {
+        float: left;
+        width: 300px;
+    }
 
-  p {
-    margin-top: 100px;
-  }
+    p {
+        margin-top: 100px;
+    }
 }
 
 #info-discover {
-  img {
-    width: 300px;
-    margin-left: -30px;
-    float: left;
-  }
-
-  .frame div {
-    float: left;
-    width: 490px;
-    margin: 60px -20px 0 -40px;
-    text-align: center;
-  }
-
-  p {
-    position: relative;
-    transform: none;
-    white-space: nowrap;
-    overflow: hidden;
-    padding: 0 10px;
-    opacity: 1;
-  }
-
-  span {
-    @include powder(10px);
-    position: relative;
-    display: inline-block;
-
-    &:nth-of-type(1),
-    &:nth-of-type(1) p {
-      width: 410px;
+    img {
+        float: left;
+        margin-left: -30px;
+        width: 300px;
     }
 
-    &:nth-of-type(2),
-    &:nth-of-type(2) p {
-      width: 451px;
+    .frame div {
+        float: left;
+        margin: 60px -20px 0 -40px;
+        width: 490px;
+        text-align: center;
     }
 
-    &:nth-of-type(3),
-    &:nth-of-type(3) p {
-      width: 495px;
+    p {
+        position: relative;
+        transform: none;
+        opacity: 1;
+        padding: 0 10px;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
-    &:nth-of-type(4),
-    &:nth-of-type(4) p {
-      width: 387px;
-    }
-  }
-
-  &.OPEN {
     span {
-      &:nth-of-type(1) p {
-        animation: type 1.25s steps(18, end);
-      }
+        @include powder(10px);
+        display: inline-block;
+        position: relative;
 
-      &:nth-of-type(2) p {
-        animation: type2 2.5s steps(20, end);
-      }
+        &:nth-of-type(1),
+        &:nth-of-type(1) p {
+            width: 410px;
+        }
 
-      &:nth-of-type(3) p {
-        animation: type3 3.75s steps(22, end);
-      }
+        &:nth-of-type(2),
+        &:nth-of-type(2) p {
+            width: 451px;
+        }
 
-      &:nth-of-type(4) p {
-        animation: type4 5s steps(17, end);
-      }
+        &:nth-of-type(3),
+        &:nth-of-type(3) p {
+            width: 495px;
+        }
+
+        &:nth-of-type(4),
+        &:nth-of-type(4) p {
+            width: 387px;
+        }
     }
-  }
+
+    &.OPEN {
+        span {
+            &:nth-of-type(1) p {
+                animation: type 1.25s steps(18, end);
+            }
+
+            &:nth-of-type(2) p {
+                animation: type2 2.5s steps(20, end);
+            }
+
+            &:nth-of-type(3) p {
+                animation: type3 3.75s steps(22, end);
+            }
+
+            &:nth-of-type(4) p {
+                animation: type4 5s steps(17, end);
+            }
+        }
+    }
 }
 
 #info-arch {
-  span,
-  h2 {
-    width: 220px;
-  }
+    span,
+    h2 {
+        width: 220px;
+    }
 }
 
 #info-loops {
-  span,
-  h2 {
-    width: 260px;
-  }
-
-  &.OPEN {
-    .frame {
-      h2 {
-        animation: type .5s steps(5, end);
-      }
+    span,
+    h2 {
+        width: 260px;
     }
-  }
+
+    &.OPEN {
+        .frame {
+            h2 {
+                animation: type .5s steps(5, end);
+            }
+        }
+    }
 }
 
 #info-whorl {
-  span,
-  h2 {
-    width: 260px;
-  }
-
-  &.OPEN {
-    .frame {
-      h2 {
-        animation: type .5s steps(5, end);
-      }
+    span,
+    h2 {
+        width: 260px;
     }
-  }
+
+    &.OPEN {
+        .frame {
+            h2 {
+                animation: type .5s steps(5, end);
+            }
+        }
+    }
 }
 
 #info-double-loop {
-  span,
-  h2 {
-    width: 380px;
-    font-size: 46px;
-  }
-
-  &.OPEN {
-    .frame {
-      h2 {
-        animation: type .5s steps(11, end);
-      }
+    span,
+    h2 {
+        width: 380px;
+        font-size: 46px;
     }
-  }
+
+    &.OPEN {
+        .frame {
+            h2 {
+                animation: type .5s steps(11, end);
+            }
+        }
+    }
 }
 
 #info-id {
-  span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 357px;
-    opacity: 1;
-    transition: opacity 0s 1.75s;
-  }
-
-  h2 {
-    font-size: 72px;
-    margin: 0;
-    width: 357px;
-  }
-
-  p {
-    position: relative;
-    text-align: left;
-    letter-spacing: 1.5px;
-    font-size: 40px;
-    opacity: 1;
-    padding: 0 10px;
-    @include powder;
-
-    &:nth-of-type(1) {
-      margin: 0;
-      width: 384px;
-    }
-
-    &:nth-of-type(2) {
-      margin: 0 10px;
-      width: 364px;
-    }
-  }
-
-  .frame .center {
-    div {
-      width: 364px;
-      opacity: 0;
-      transition: opacity 0s 1.75s;
-    }
-  }
-
-  &.OPEN {
     span {
-      opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: opacity 0s 1.75s;
+        opacity: 1;
+        width: 357px;
     }
 
     h2 {
-      animation: type2 1s steps(11, end);
-    }
-
-    .center {
-      div {
-        opacity: 1;
-      }
+        margin: 0;
+        width: 357px;
+        font-size: 72px;
     }
 
     p {
-      &:nth-of-type(1) {
-        animation: type 1.25s steps(16, end);
-        animation-delay: 1.75s;
-      }
+        @include powder;
+        position: relative;
+        opacity: 1;
+        padding: 0 10px;
+        text-align: left;
+        letter-spacing: 1.5px;
+        font-size: 40px;
 
-      &:nth-of-type(2) {
-        animation: type2 2.5s steps(15, end);
-        animation-delay: 1.75s;
-      }
-    }
-  }
-}
-
-#info-lets-dust {
-  p.typing {
-    letter-spacing: 1.5px;
-    font-size: 58px;
-    opacity: 1;
-    padding: 0 10px;
-    @include powder;
-
-    &:nth-of-type(1) {
-      margin: 100px 90px 0;
-      width: 530px;
-    }
-
-    &:nth-of-type(2) {
-      margin: 0 115px;
-      width: 480px;
-    }
-  }
-
-  .frame > p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    margin: 0;
-    font-size: 72px;
-    opacity: 0;
-    animation-delay: 7s;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-  }
-
-  .frame div {
-    opacity: 0;
-    transition: opacity .25s;
-
-    &.lets-dust {
-      opacity: 1;
-      transition: opacity 0s;
-
-      p.typing {
         &:nth-of-type(1) {
-          animation: type .5s steps(14, end);
+            margin: 0;
+            width: 384px;
         }
 
         &:nth-of-type(2) {
-          animation: type2 1s steps(15, end);
+            margin: 0 10px;
+            width: 364px;
         }
-      }
     }
-  }
 
-  h3 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 188px;
-    @include powder;
-    opacity: 0;
-    animation-duration: 1s;
-
-    &.count {
-      animation-name: blink;
+    .frame .center {
+        div {
+            transition: opacity 0s 1.75s;
+            opacity: 0;
+            width: 364px;
+        }
     }
-  }
 
-  div.engage {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    text-align: left;
-    opacity: 0;
-    width: 362px;
-    transition: opacity 0s;
+    &.OPEN {
+        span {
+            opacity: 0;
+        }
 
-    &.engaged {
-      opacity: 1;
+        h2 {
+            animation: type2 1s steps(11, end);
+        }
 
-      h2 {
-        animation: type .75s steps(9, end);
-      }
+        .center {
+            div {
+                opacity: 1;
+            }
+        }
+
+        p {
+            &:nth-of-type(1) {
+                animation: type 1.25s steps(16, end);
+                animation-delay: 1.75s;
+            }
+
+            &:nth-of-type(2) {
+                animation: type2 2.5s steps(15, end);
+                animation-delay: 1.75s;
+            }
+        }
     }
-  }
+}
 
-  h2 {
-    margin: 0;
-    font-size: 80px;
-    width: 362px;
-  }
+#info-lets-dust {
+    p.typing {
+        @include powder;
+        opacity: 1;
+        padding: 0 10px;
+        letter-spacing: 1.5px;
+        font-size: 58px;
+
+        &:nth-of-type(1) {
+            margin: 100px 90px 0;
+            width: 530px;
+        }
+
+        &:nth-of-type(2) {
+            margin: 0 115px;
+            width: 480px;
+        }
+    }
+
+    .frame > p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation-duration: .5s;
+        animation-delay: 7s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        margin: 0;
+        font-size: 72px;
+    }
+
+    .frame div {
+        transition: opacity .25s;
+        opacity: 0;
+
+        &.lets-dust {
+            transition: opacity 0s;
+            opacity: 1;
+
+            p.typing {
+                &:nth-of-type(1) {
+                    animation: type .5s steps(14, end);
+                }
+
+                &:nth-of-type(2) {
+                    animation: type2 1s steps(15, end);
+                }
+            }
+        }
+    }
+
+    h3 {
+        @include powder;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation-duration: 1s;
+        opacity: 0;
+        font-size: 188px;
+
+        &.count {
+            animation-name: blink;
+        }
+    }
+
+    div.engage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: opacity 0s;
+        opacity: 0;
+        width: 362px;
+        text-align: left;
+
+        &.engaged {
+            opacity: 1;
+
+            h2 {
+                animation: type .75s steps(9, end);
+            }
+        }
+    }
+
+    h2 {
+        margin: 0;
+        width: 362px;
+        font-size: 80px;
+    }
 }
 
 #info-need {
-  .title {
-    width: 700px;
-    margin-top: -30px;
-  }
-
-  .illustration {
-    position: relative;
-    float: right;
-    width: 400px;
-    height: 292px;
-    margin-top: -30px;
-
-    div {
-      position: absolute;
-      background-image: url(../media/S_12/img_12.2.png);
-      background-size: 400px 292px;
-      background-repeat: no-repeat;
-      transform: translate3d(2000px, 0, 0);
-
-      &:nth-of-type(1) {
-        background-position: left top;
-        left: 0;
-        top: 0;
-        width: 110px;
-        height: 140px;
-      }
-
-      &:nth-of-type(2) {
-        background-position: -110px top;
-        left: 110px;
-        top: 0;
-        width: 110px;
-        height: 110px;
-      }
-
-      &:nth-of-type(3) {
-        background-position: -220px top;
-        left: 220px;
-        top: 0;
-        width: 85px;
-        height: 130px;
-      }
-
-      &:nth-of-type(4) {
-        background-position: -305px top;
-        left: 305px;
-        top: 0;
-        width: 90px;
-        height: 130px;
-      }
-
-      &:nth-of-type(5) {
-        background-position: -160px -130px;
-        left: 160px;
-        top: 130px;
-        width: 140px;
-        height: 160px;
-      }
-
-      &:nth-of-type(6) {
-        background-position: -298px -130px;
-        left: 298px;
-        top: 130px;
-        width: 100px;
-        height: 160px;
-      }
-    }
-  }
-
-  ul {
-    text-align: left;
-    font-size: 34px;
-    margin-top: -20px;
-    white-space: nowrap;
-  }
-
-  li {
-    opacity: 0;
-  }
-
-  span {
-    display: block;
-    font-size: 24px;
-    padding-left: 45px;
-  }
-
-  &.OPEN {
     .title {
-      -webkit-animation-name: fadeInDownBig;
-      animation-name: fadeInDownBig;
+        margin-top: -30px;
+        width: 700px;
     }
-  }
 
-  $items: LOTION TAPE POWDER BRUSH PAPER GLASS;
+    .illustration {
+        position: relative;
+        float: right;
+        margin-top: -30px;
+        width: 400px;
+        height: 292px;
 
-  @for $i from 1 through 6 {
-    .#{nth($items,$i)} & {
-      .illustration div:nth-of-type(#{$i}) {
-        animation-name: fadeInRightBig;
-      }
+        div {
+            position: absolute;
+            transform: translate3d(2000px, 0, 0);
+            background-image: url('../media/S_12/img_12.2.png');
+            background-repeat: no-repeat;
+            background-size: 400px 292px;
 
-      li:nth-of-type(#{$i}) {
-        opacity: 1;
-        transition: opacity .5s;
-      }
+            &:nth-of-type(1) {
+                top: 0;
+                left: 0;
+                background-position: left top;
+                width: 110px;
+                height: 140px;
+            }
+
+            &:nth-of-type(2) {
+                top: 0;
+                left: 110px;
+                background-position: -110px top;
+                width: 110px;
+                height: 110px;
+            }
+
+            &:nth-of-type(3) {
+                top: 0;
+                left: 220px;
+                background-position: -220px top;
+                width: 85px;
+                height: 130px;
+            }
+
+            &:nth-of-type(4) {
+                top: 0;
+                left: 305px;
+                background-position: -305px top;
+                width: 90px;
+                height: 130px;
+            }
+
+            &:nth-of-type(5) {
+                top: 130px;
+                left: 160px;
+                background-position: -160px -130px;
+                width: 140px;
+                height: 160px;
+            }
+
+            &:nth-of-type(6) {
+                top: 130px;
+                left: 298px;
+                background-position: -298px -130px;
+                width: 100px;
+                height: 160px;
+            }
+        }
     }
-  }
+
+    ul {
+        margin-top: -20px;
+        text-align: left;
+        white-space: nowrap;
+        font-size: 34px;
+    }
+
+    li {
+        opacity: 0;
+    }
+
+    span {
+        display: block;
+        padding-left: 45px;
+        font-size: 24px;
+    }
+
+    &.OPEN {
+        .title {
+            animation-name: fadeInDownBig;
+        }
+    }
+
+    $items: LOTION TAPE POWDER BRUSH PAPER GLASS;
+
+    @for $i from 1 through 6 {
+        .#{nth($items, $i)} & {
+            .illustration div:nth-of-type(#{$i}) {
+                animation-name: fadeInRightBig;
+            }
+
+            li:nth-of-type(#{$i}) {
+                transition: opacity .5s;
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .large-frame.right {
-  .illustration {
-    float: right;
-    max-height: 100%;
-  }
-
-  .frame div {
-    float: left;
-    width: 500px;
-  }
-
-  &.OPEN {
-    .title {
-      -webkit-animation-name: fadeInDownBig;
-      animation-name: fadeInDownBig;
-    }
-
     .illustration {
-      -webkit-animation-name: fadeInRightBig;
-      -webkit-animation-delay: 2s;
-      animation-name: fadeInRightBig;
-      animation-delay: 2s;
+        float: right;
+        max-height: 100%;
     }
-  }
+
+    .frame div {
+        float: left;
+        width: 500px;
+    }
+
+    &.OPEN {
+        .title {
+            animation-name: fadeInDownBig;
+        }
+
+        .illustration {
+            animation-name: fadeInRightBig;
+            animation-delay: 2s;
+        }
+    }
 }
 
 .large-frame.left {
-  .illustration {
-    float: left;
-    max-height: 100%;
-  }
-
-  .frame div {
-    float: right;
-    width: 500px;
-  }
-
-  &.OPEN {
-    .title {
-      -webkit-animation-name: fadeInDownBig;
-      animation-name: fadeInDownBig;
-    }
-
     .illustration {
-      -webkit-animation-name: fadeInLeftBig;
-      -webkit-animation-delay: 2s;
-      animation-name: fadeInLeftBig;
-      animation-delay: 2s;
+        float: left;
+        max-height: 100%;
     }
-  }
+
+    .frame div {
+        float: right;
+        width: 500px;
+    }
+
+    &.OPEN {
+        .title {
+            animation-name: fadeInDownBig;
+        }
+
+        .illustration {
+            animation-name: fadeInLeftBig;
+            animation-delay: 2s;
+        }
+    }
 }
 
 #info-step-1 {
-  p {
-    margin-top: -10px;
-  }
+    p {
+        margin-top: -10px;
+    }
 }
 
 #info-step-2 {
-  .illustration {
-    width: 380px;
-  }
-
-  p {
-    margin-top: -30px;
-  }
-
-  &.OPEN {
-    .title {
-      -webkit-animation-name: fadeInDownBig;
-      animation-name: fadeInDownBig;
-    }
-
     .illustration {
-      -webkit-animation-name: fadeInUpBig;
-      -webkit-animation-delay: 2s;
-      animation-name: fadeInUpBig;
-      animation-delay: 2s;
-    }
-  }
-}
-
-#info-step-3 {
-  .illustration {
-    max-width: 300px;
-    margin: 20px 0;
-  }
-
-  .frame div {
-    width: 410px;
-    padding: 30px 0;
-  }
-
-  p {
-    margin-top: 0px;
-  }
-}
-
-#info-step-4 {
-  .illustration {
-    max-width: 300px;
-    margin: 60px 0;
-  }
-
-  .frame div {
-    width: 410px;
-    padding: 30px 0;
-  }
-
-  p {
-    margin-top: -20px;
-  }
-}
-
-#info-step-5 {
-  .illustration {
-    max-width: 300px;
-    margin: 20px 0;
-  }
-
-  .frame div {
-    width: 410px;
-    padding: 30px 0;
-  }
-
-  p {
-    margin-top: -20px;
-  }
-}
-
-#info-step-6 {
-  .illustration {
-    max-width: 250px;
-    margin: 40px 0;
-  }
-
-  .frame div {
-    width: 460px;
-    padding: 0;
-  }
-
-  p {
-    margin-top: -30px;
-  }
-}
-
-#info-step-7 {
-  .illustration {
-    max-width: 300px;
-    margin: -25px auto 30px;
-    display: block;
-  }
-
-  p {
-    margin-top: -30px;
-  }
-
-  &.OPEN {
-    .title {
-      -webkit-animation-name: fadeInLeftBig;
-      animation-name: fadeInLeftBig;
-    }
-
-    .illustration {
-      -webkit-animation-name: fadeInRightBig;
-      -webkit-animation-delay: 2s;
-      animation-name: fadeInRightBig;
-      animation-delay: 2s;
-    }
-  }
-}
-
-#flip {
-  .frame {
-
-    > div {
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
+        width: 380px;
     }
 
     p {
-      font-size: 36px;
-      line-height: 1.3;
+        margin-top: -30px;
     }
 
-    .flip {
-      display: block;
-      width: 304px;
-      margin: 20px auto 0;
-      opacity: 0;
-
-      div {
-        background-image: url(../media/S_22/img_22.1.png);
-        background-size: 330px;
-        float: left;
-        height: 130px;
-        width: 76px;
-
-        @for $item from 1 through 4 {
-          &:nth-child(#{$item}) {
-            background-position: 62-(76*$item)+px center;
-          }
+    &.OPEN {
+        .title {
+            animation-name: fadeInDownBig;
         }
-      }
 
-      &.animated {
-        opacity: 1;
-        animation-name: shake;
-        animation-delay: 2s;
-        animation-iteration-count: 2;
+        .illustration {
+            animation-name: fadeInUpBig;
+            animation-delay: 2s;
+        }
+    }
+}
 
-        div {
-          animation-name: fadeInRightBig;
+#info-step-3 {
+    .illustration {
+        margin: 20px 0;
+        max-width: 300px;
+    }
 
-          @for $item from 1 through 4 {
-            &:nth-child(#{$item}) {
-              animation-delay: .2*$item+s;
+    .frame div {
+        padding: 30px 0;
+        width: 410px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+}
+
+#info-step-4 {
+    .illustration {
+        margin: 60px 0;
+        max-width: 300px;
+    }
+
+    .frame div {
+        padding: 30px 0;
+        width: 410px;
+    }
+
+    p {
+        margin-top: -20px;
+    }
+}
+
+#info-step-5 {
+    .illustration {
+        margin: 20px 0;
+        max-width: 300px;
+    }
+
+    .frame div {
+        padding: 30px 0;
+        width: 410px;
+    }
+
+    p {
+        margin-top: -20px;
+    }
+}
+
+#info-step-6 {
+    .illustration {
+        margin: 40px 0;
+        max-width: 250px;
+    }
+
+    .frame div {
+        padding: 0;
+        width: 460px;
+    }
+
+    p {
+        margin-top: -30px;
+    }
+}
+
+#info-step-7 {
+    .illustration {
+        display: block;
+        margin: -25px auto 30px;
+        max-width: 300px;
+    }
+
+    p {
+        margin-top: -30px;
+    }
+
+    &.OPEN {
+        .title {
+            animation-name: fadeInLeftBig;
+        }
+
+        .illustration {
+            animation-name: fadeInRightBig;
+            animation-delay: 2s;
+        }
+    }
+}
+
+#flip {
+    .frame {
+
+        > div {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        p {
+            line-height: 1.3;
+            font-size: 36px;
+        }
+
+        .flip {
+            display: block;
+            opacity: 0;
+            margin: 20px auto 0;
+            width: 304px;
+
+            div {
+                float: left;
+                background-image: url('../media/S_22/img_22.1.png');
+                background-size: 330px;
+                width: 76px;
+                height: 130px;
+
+                @for $item from 1 through 4 {
+                    &:nth-child(#{$item}) {
+                        background-position: 62 - (76 * $item) + px center;
+                    }
+                }
             }
-          }
+
+            &.animated {
+                animation-name: shake;
+                animation-delay: 2s;
+                animation-iteration-count: 2;
+                opacity: 1;
+
+                div {
+                    animation-name: fadeInRightBig;
+
+                    @for $item from 1 through 4 {
+                        &:nth-child(#{$item}) {
+                            animation-delay: .2 * $item + s;
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
 
 #quit {
 
-  .frame {
-    width: 720px;
-    height: 440px;
-    text-align: center;
-    padding: 70px 80px;
-    background-image: url(../media/_Frame/Fr_1.png);
+    .frame {
+        background-image: url('../media/_Frame/Fr_1.png');
+        padding: 70px 80px;
+        width: 720px;
+        height: 440px;
+        text-align: center;
 
-    .background {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
 
-    h2 {
-      margin: 0;
-      font-size: 40px;
-    }
+        h2 {
+            margin: 0;
+            font-size: 40px;
+        }
 
-    h3 {
-      margin: 20px 0 10px;
-      font-size: 30px;
-    }
+        h3 {
+            margin: 20px 0 10px;
+            font-size: 30px;
+        }
 
-    button {
-      margin: 20px 10px;
+        button {
+            margin: 20px 10px;
+        }
     }
-  }
 }

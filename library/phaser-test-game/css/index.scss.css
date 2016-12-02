@@ -1,57 +1,57 @@
 html {
-  overflow: hidden;
+    overflow: hidden;
 }
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 iframe {
-  display: block;
-  border: none;
-  width: 100%;
-  height: 100%;
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 100%;
 }
 .wrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1200px;
-  height: 675px;
-  transform: scale(.8);
-  transform-origin: 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1200px;
+    height: 675px;
+    transform: scale(.8);
+    transform-origin: 0 0;
 }
 #controller {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 200px;
-  height: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 200px;
 }
 #controller div {
-  position: absolute;
-  border: 2px solid black;
-  width: 50px;
-  height: 50px;
+    position: absolute;
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
 }
 #up {
-  left: 50px;
-  top: 50px;
+    left: 50px;
+    top: 50px;
 }
 #left {
-  left: 0px;
-  top: 100px;
+    left: 0;
+    top: 100px;
 }
 #down {
-  left: 50px;
-  top: 100px;
+    left: 50px;
+    top: 100px;
 }
 #right {
-  left: 100px;
-  top: 100px;
+    left: 100px;
+    top: 100px;
 }
 #pause {
-  left: 50px;
-  top: 150px;
+    left: 50px;
+    top: 150px;
 }
