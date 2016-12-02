@@ -350,5 +350,6 @@ gulp.task('lint-scss', function () {
             customReport: reporter.issues,
             reporterOutput: 'scsslint.json',
         }))
+        .pipe(reporter.printSummary)
         .pipe(scsslint.failReporter());
 });
