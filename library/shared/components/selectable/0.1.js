@@ -48,6 +48,7 @@ class Selectable extends skoash.Component {
         var target;
         var id;
         var isCorrect;
+        var shouldSelect;
         var self = this;
 
         if (typeof e === 'string') {
@@ -63,12 +64,14 @@ class Selectable extends skoash.Component {
         ref = self.refs[dataRef];
 
         isCorrect = (ref && ref.props && ref.props.correct) ||
-            (!self.props.answers || !self.props.answers.length ||
+            (self.props.answers && self.props.answers.length && 
                 self.props.answers.indexOf(dataRef) !== -1);
+
+        shouldSelect = (ref && ref.props && ref.props.select);
 
         if (self.props.allowDeselect && classes[dataRef]) {
             delete classes[dataRef];
-        } else if (isCorrect) {
+        } else if (isCorrect || shouldSelect) {
             classes[dataRef] = self.state.selectClass;
         }
 
@@ -76,7 +79,7 @@ class Selectable extends skoash.Component {
             classes,
         });
 
-        self.props.selectRespond.call(self, dataRef);
+        self.props.selectRespond.call(self, dataRef, isCorrect);
         self.props.onSelect.call(self, dataRef);
 
         if (self.props.chooseOne) self.complete();

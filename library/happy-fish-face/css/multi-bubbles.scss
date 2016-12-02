@@ -5,9 +5,12 @@
     height: 540px;
   }
 
-  img {
+  .clean-water {
+    position: absolute;
+    top: 0;
+    left: 50%;
     width: 840px;
-    margin: -30px auto;
+    transform: translateX(-50%);
   }
 
   .items {
@@ -29,6 +32,7 @@
     &:before {
       content: "";
       display: block;
+      //background-image: url($media-server-game + 'SpritesAnimations/IMG_7.1.png');
       background-image: url('../media/_images/_S_MultiBubbles/img_7.3.png');
       background-size: 1602px;
       background-repeat: no-repeat;
