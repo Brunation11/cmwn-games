@@ -2,436 +2,438 @@
 @import 'mixins';
 
 #printer {
-  .targets {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    font-family: "Source Sans Pro";
-    background-image: url($media-server + 'ImageAssets/img.leftbox.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding: 30px;
-
-    span {
-      color: #8ce34e;
-      text-decoration: underline;
-    }
-  }
-
-  .target {
-    div {
-      height: 150px;
-      margin: 10px 0;
-      background-image: url($media-server + 'SpritesAnimations/sprite.game2.brokenobj.png');
-      background-repeat: no-repeat;
-      background-size: 1200px;
-      background-position: 0 0;
-      display: none;
-      opacity: 0;
-      transition: opacity .5s;
-    }
-
-    $targets: tire link cup phone tooth;
-    @for $i from 1 through 5 {
-      $target: nth($targets, $i);
-      &.#{$target} [name=#{$target}] {
-        display: block;
-        opacity: 1;
-      }
-
-      [name=#{$target}] {
-        background-position: #{10 - 245 * ($i - 1)}px 0;
-      }
-    }
-  }
-
-  .dropzones {
-    position: absolute;
-    left: 200px;
-    top: 0;
-    width: 830px;
-    height: 540px;
-    padding: 90px 230px 220px 200px;
-    background-image: url($media-server + 'ImageAssets/img.printer.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    div {
-      position: relative;
-      width: 100%;
-      height: 100%;
-
-      &:before {
-        content: '';
-        display: none;
+    .targets {
         position: absolute;
-        left: 117px;
-        bottom: 55px;
-        width: 200px;
-        height: 0;
-        background-image: url($media-server + 'SpritesAnimations/sprite.game2.completeitems.png');
-        background-repeat: no-repeat;
-        background-position: 0 bottom;
-        background-size: 2800px;
-        transition: height .25s, left .5s, bottom .5s, transform .5s;
-      }
-
-      $heights: 60 80 120;
-      @for $i from 1 through 3 {
-        &.layer#{$i}:before {
-          height: #{nth($heights, $i)}px;
-        }
-      }
-
-      $objects: umbrella glasses tire shovel link bucket boots gloves whistle cup phone piece tooth ball;
-      $obj-nums:       6       7    1      8    2      9    10     11      12   3     4    13     5   14;
-      @for $i from 1 through 14 {
-        $object: nth($objects, $i);
-        $num: nth($obj-nums, $i) - 1;
-        &.#{$object}:before {
-          display: block;
-          background-position: -#{200 * $num}px bottom;
-        }
-      }
-
-      &.transition {
-        &:before {
-          height: 120px;
-        }
-
-        $answers: tire link cup phone tooth;
-        $lefts:    260  330 376   346   380;
-        $bottoms:   60   80 117    80    74;
-        $scales:   1.2    1  .5  1.25    .3;
-        @for $i from 1 through 5 {
-          &.#{nth($answers, $i)}:before {
-            left: -#{nth($lefts, $i)}px;
-            bottom: #{nth($bottoms, $i)}px;
-            transform: scale(#{nth($scales, $i)});
-          }
-        }
-      }
-    }
-  }
-
-  .bottom {
-    position: absolute;
-    left: 240px;
-    top: 370px;
-    font-family: "Source Sans Pro";
-
-    span {
-      color: #8ce34e;
-      text-decoration: underline;
-    }
-  }
-
-  .slider {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 600px;
-    height: 150px;
-
-    button {
-      position: relative;
-      width: 50px;
-      height: 50px;
-      z-index: 1;
-      background-image: url($media-server + 'SpritesAnimations/sprite.game2.carouselarrow.png');
-      background-repeat: no-repeat;
-      background-size: 100px;
-
-      $directions: prev next;
-      @for $i from 1 through 2 {
-        &.#{nth($directions, $i)}-slide {
-          background-position: -#{50 * ($i - 1)}px 0;
-
-          &:hover {
-            background-position: -#{50 * ($i - 1)}px -60px;
-          }
-        }
-      }
-    }
-
-    .area {
-      position: relative;
-      display: inline-block;
-      width: 500px;
-      height: 100%;
-      overflow: hidden;
-
-      &:hover {
-        overflow: visible;
-      }
-    }
-
-    .content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-wrap: nowrap;
-      transition: margin .5s;
-
-      > div {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        transition: opacity .5s;
-      }
-    }
-  }
-
-  .draggable {
-    position: relative;
-    display: inline-block;
-    width: 101px;
-    height: 101px;
-    transition: opacity .5s;
-    margin: 15px;
-
-    &.DRAGGING {
-      z-index: 3;
-    }
-
-    &.CORRECT {
-      opacity: 0;
-    }
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      width: 101px;
-      height: 101px;
-      background-image: url($media-server + 'SpritesAnimations/game-2-sprites.png');
-      background-repeat: no-repeat;
-      background-size: 2800px;
-    }
-
-    $messages: umbrella glasses tire shovel
-               link bucket boots gloves
-               whistle cup phone piece
-               tooth ball;
-    @for $i from 1 through 14 {
-      &[data-message=#{nth($messages, $i)}]:before {
-        background-position: -#{50 + 200 * ($i - 1)}px -48px;
-      }
-
-      &[data-message=#{nth($messages, $i)}]:hover:before {
-        width: 130px;
-        height: 124px;
-        background-position: -#{35 + 200 * ($i - 1)}px -235px;
-      }
-    }
-  }
-
-  .reveal {
-    display: none;
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: rgba(25, 37, 19, .4);
-    transition: opacity .5s, z-index 0s .5s;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 0 0;
-
-    &.OPEN {
-      display: block;
-      opacity: 1;
-      z-index: 1;
-      transition: opacity .5s, z-index 0s;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      display: none;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 500px;
-      height: 400px;
-      transform: translateX(-50%) translateY(-50%);
-      background-image: url($media-server + 'ImageAssets/img.popup.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      padding: 35px 55px 60px 50px;
-      margin-left: 5px;
-      text-align: left;
-
-      &.OPEN {
-        display: block;
-      }
-
-      h3 {
-        font-size: 72px;
-        line-height: 1;
-        color: $green;
-        @include text-stroke(3, $purple);
-      }
-
-      span {
-        color: $green;
-        text-decoration: underline;
-      }
-
-      div {
-        font-family: 'Source Sans Pro';
-        font-weight: bold;
-        font-size: 28px;
-      }
-
-      button {
-        background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
-        background-repeat: no-repeat;
-        background-size: 1400px;
-        margin-top: 45px;
-        width: 270px;
-        height: 80px;
-        background-position: -740px 0;
-
-        &:hover {
-          background-position: -740px -84px;
-        }
-      }
-
-      &[data-ref=instructions] {
-        h3 {
-          font-size: 58px;
-          @include text-stroke(2, $dark-green);
-        }
-
-        button {
-          background-position: -395px 0;
-
-          &:hover {
-            background-position: -395px -84px;
-          }
-        }
-      }
-
-      &[data-ref=drag-it-here] {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(25, 37, 19, .4);
-        background-image: url($media-server + 'ImageAssets/img.guide.png');
-        background-size: 400px;
-        background-position: 380px 0;
-        padding: 330px 50px 50px 270px;
-        text-align: center;
-
-        div {
-          font-size: 24px;
-        }
-      }
-
-      &[data-ref=tire] {
-        button {
-          margin-top: 65px;
-        }
-      }
-
-      &[data-ref=link] {
-        h3 {
-          font-size: 42px;
-        }
-
-        button {
-          margin-top: 35px;
-        }
-      }
-
-      &[data-ref=cup] {
-        h3 {
-          font-size: 64px;
-        }
-
-        button {
-          margin-top: 35px;
-        }
-      }
-
-      &[data-ref=phone] {
-        h3 {
-          font-size: 64px;
-        }
-
-        button {
-          margin-top: 35px;
-        }
-      }
-
-      &[data-ref=tooth] {
-        width: 600px;
-        height: 500px;
-        background-image: url($media-server + 'ImageAssets/img.winframe.png');
-
-        h3 {
-          font-size: 68px;
-        }
-
-        button {
-          margin-top: 30px;
-        }
-      }
-
-      &[data-ref=try-again] {
-        h3 {
-          font-size: 90px;
-          color: $white;
-          @include text-stroke(6, $purple);
-        }
-
-        button {
-          margin-top: 40px;
-          background-position: -390px 0;
-
-          &:hover {
-            background-position: -390px -86px;
-          }
-        }
-      }
-    }
-
-    &.open-tire,
-    &.open-link,
-    &.open-cup,
-    &.open-phone,
-    &.open-tooth {
-      &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url($media-server + 'ImageAssets/bkg.3.jpg');
+        background-image: url($media-server + 'ImageAssets/img.leftbox.png');
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: 0 0;
-        opacity: .4;
-      }
+        padding: 30px;
+        width: 300px;
+        height: 300px;
+        font-family: 'Source Sans Pro';
+
+        span {
+            text-decoration: underline;
+            color: $printer-color;
+        }
     }
 
-    &.open-tooth {
-      background-image: url($media-server + 'ImageAssets/img.sparkle.png');
+    .target {
+        div {
+            display: none;
+            transition: opacity .5s;
+            opacity: 0;
+            margin: 10px 0;
+            background-image: url($media-server + 'SpritesAnimations/sprite.game2.brokenobj.png');
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: 1200px;
+            height: 150px;
+        }
+
+        $targets: tire link cup phone tooth;
+        @for $i from 1 through 5 {
+            $target: nth($targets, $i);
+
+            &.#{$target} [name=#{$target}] {
+                display: block;
+                opacity: 1;
+            }
+
+            [name=#{$target}] {
+                background-position: #{10 - 245 * ($i - 1)}px 0;
+            }
+        }
     }
-  }
+
+    .dropzones {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        background-image: url($media-server + 'ImageAssets/img.printer.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 90px 230px 220px 200px;
+        width: 830px;
+        height: 540px;
+
+        div {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                display: none;
+                position: absolute;
+                bottom: 55px;
+                left: 117px;
+                transition: height .25s, left .5s, bottom .5s, transform .5s;
+                background-image: url($media-server + 'SpritesAnimations/sprite.game2.completeitems.png');
+                background-repeat: no-repeat;
+                background-position: 0 bottom;
+                background-size: 2800px;
+                width: 200px;
+                height: 0;
+                content: '';
+            }
+
+            $heights: 60 80 120;
+            @for $i from 1 through 3 {
+                &.layer#{$i}:before {
+                    height: #{nth($heights, $i)}px;
+                }
+            }
+
+            $objects: umbrella glasses tire shovel link bucket boots gloves whistle cup phone piece tooth ball;
+            $obj-nums:             6             7        1            8        2            9        10         11            12     3         4        13         5     14;
+            @for $i from 1 through 14 {
+                $object: nth($objects, $i);
+                $num: nth($obj-nums, $i) - 1;
+
+                &.#{$object}:before {
+                    display: block;
+                    background-position: -#{200 * $num}px bottom;
+                }
+            }
+
+            &.transition {
+                &::before {
+                    height: 120px;
+                }
+
+                $answers: tire link cup phone tooth;
+                $lefts:        260    330 376     346     380;
+                $bottoms:     60     80 117        80        74;
+                $scales:     1.2        1    .5    1.25        .3;
+                @for $i from 1 through 5 {
+                    &.#{nth($answers, $i)}:before {
+                        bottom: #{nth($bottoms, $i)}px;
+                        left: -#{nth($lefts, $i)}px;
+                        transform: scale(#{nth($scales, $i)});
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom {
+        position: absolute;
+        top: 370px;
+        left: 240px;
+        font-family: 'Source Sans Pro';
+
+        span {
+            text-decoration: underline;
+            color: $printer-color;
+        }
+    }
+
+    .slider {
+        display: flex;
+        position: relative;
+        width: 600px;
+        height: 150px;
+        align-items: center;
+
+        button {
+            position: relative;
+            z-index: 1;
+            background-image: url($media-server + 'SpritesAnimations/sprite.game2.carouselarrow.png');
+            background-repeat: no-repeat;
+            background-size: 100px;
+            width: 50px;
+            height: 50px;
+
+            $directions: prev next;
+            @for $i from 1 through 2 {
+                &.#{nth($directions, $i)}-slide {
+                    background-position: -#{50 * ($i - 1)}px 0;
+
+                    &:hover {
+                        background-position: -#{50 * ($i - 1)}px -60px;
+                    }
+                }
+            }
+        }
+
+        .area {
+            display: inline-block;
+            position: relative;
+            width: 500px;
+            height: 100%;
+            overflow: hidden;
+
+            &:hover {
+                overflow: visible;
+            }
+        }
+
+        .content {
+            display: flex;
+            position: relative;
+            transition: margin .5s;
+            width: 100%;
+            height: 100%;
+            flex-wrap: nowrap;
+
+            > div {
+                display: flex;
+                position: absolute;
+                transition: opacity .5s;
+                width: 100%;
+                height: 100%;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    .draggable {
+        display: inline-block;
+        position: relative;
+        transition: opacity .5s;
+        margin: 15px;
+        width: 101px;
+        height: 101px;
+
+        &.DRAGGING {
+            z-index: 3;
+        }
+
+        &.CORRECT {
+            opacity: 0;
+        }
+
+        &::before {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-image: url($media-server + 'SpritesAnimations/game-2-sprites.png');
+            background-repeat: no-repeat;
+            background-size: 2800px;
+            width: 101px;
+            height: 101px;
+            content: '';
+        }
+
+        $messages: umbrella glasses tire shovel
+                             link bucket boots gloves
+                             whistle cup phone piece
+                             tooth ball;
+        @for $i from 1 through 14 {
+            &[data-message=#{nth($messages, $i)}]:before {
+                background-position: -#{50 + 200 * ($i - 1)}px -48px;
+            }
+
+            &[data-message=#{nth($messages, $i)}]:hover:before {
+                background-position: -#{35 + 200 * ($i - 1)}px -235px;
+                width: 130px;
+                height: 124px;
+            }
+        }
+    }
+
+    .reveal {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s, z-index 0s .5s;
+        opacity: 0;
+        z-index: -1;
+        background-color: $printer-reveal-background;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+
+        &.OPEN {
+            display: block;
+            transition: opacity .5s, z-index 0s;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            margin-left: 5px;
+            background-image: url($media-server + 'ImageAssets/img.popup.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding: 35px 55px 60px 50px;
+            width: 500px;
+            height: 400px;
+            text-align: left;
+
+            &.OPEN {
+                display: block;
+            }
+
+            h3 {
+                @include text-stroke(3, $purple);
+                line-height: 1;
+                color: $green;
+                font-size: 72px;
+            }
+
+            span {
+                text-decoration: underline;
+                color: $green;
+            }
+
+            div {
+                font-family: 'Source Sans Pro';
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            button {
+                margin-top: 45px;
+                background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
+                background-repeat: no-repeat;
+                background-position: -740px 0;
+                background-size: 1400px;
+                width: 270px;
+                height: 80px;
+
+                &:hover {
+                    background-position: -740px -84px;
+                }
+            }
+
+            &[data-ref=instructions] {
+                h3 {
+                    @include text-stroke(2, $dark-green);
+                    font-size: 58px;
+                }
+
+                button {
+                    background-position: -395px 0;
+
+                    &:hover {
+                        background-position: -395px -84px;
+                    }
+                }
+            }
+
+            &[data-ref=drag-it-here] {
+                background-color: $printer-reveal-background;
+                background-image: url($media-server + 'ImageAssets/img.guide.png');
+                background-position: 380px 0;
+                background-size: 400px;
+                padding: 330px 50px 50px 270px;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+
+                div {
+                    font-size: 24px;
+                }
+            }
+
+            &[data-ref=tire] {
+                button {
+                    margin-top: 65px;
+                }
+            }
+
+            &[data-ref=link] {
+                h3 {
+                    font-size: 42px;
+                }
+
+                button {
+                    margin-top: 35px;
+                }
+            }
+
+            &[data-ref=cup] {
+                h3 {
+                    font-size: 64px;
+                }
+
+                button {
+                    margin-top: 35px;
+                }
+            }
+
+            &[data-ref=phone] {
+                h3 {
+                    font-size: 64px;
+                }
+
+                button {
+                    margin-top: 35px;
+                }
+            }
+
+            &[data-ref=tooth] {
+                background-image: url($media-server + 'ImageAssets/img.winframe.png');
+                width: 600px;
+                height: 500px;
+
+                h3 {
+                    font-size: 68px;
+                }
+
+                button {
+                    margin-top: 30px;
+                }
+            }
+
+            &[data-ref=try-again] {
+                h3 {
+                    @include text-stroke(6, $purple);
+                    color: $white;
+                    font-size: 90px;
+                }
+
+                button {
+                    margin-top: 40px;
+                    background-position: -390px 0;
+
+                    &:hover {
+                        background-position: -390px -86px;
+                    }
+                }
+            }
+        }
+
+        &.open-tire,
+        &.open-link,
+        &.open-cup,
+        &.open-phone,
+        &.open-tooth {
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: .4;
+                background-image: url($media-server + 'ImageAssets/bkg.3.jpg');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                background-size: contain;
+                width: 100%;
+                height: 100%;
+                content: '';
+            }
+        }
+
+        &.open-tooth {
+            background-image: url($media-server + 'ImageAssets/img.sparkle.png');
+        }
+    }
 }

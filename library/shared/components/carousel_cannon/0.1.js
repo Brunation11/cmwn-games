@@ -5,52 +5,50 @@ import Cannon from 'shared/components/cannon/0.1';
 import Reveal from 'shared/components/reveal/0.1.js';
 
 class CarouselCannon extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.onReload = this.onReload.bind(this);
-    this.onSelect = this.onSelect.bind(this);
-  }
-
-  onReload() {
-    this.refs.carousel.select();
-  }
-
-  open(message) {
-    this.refs.reveal.open(message);
-  }
-
-  onSelect(target) {
-    if (typeof this.props.onSelect === 'function') {
-      this.props.onSelect.call(this, target);
+        this.onReload = this.onReload.bind(this);
+        this.onSelect = this.onSelect.bind(this);
     }
-  }
 
-  closeRespond() {
-    if (typeof this.props.closeRespond === 'function') {
-      this.props.closeRespond();
+    onReload() {
+        this.refs.carousel.select();
     }
-  }
 
-  renderAssets() {
-    if (this.props.assets) {
-      return this.props.assets.map((asset, key) => {
+    open(message) {
+        this.refs.reveal.open(message);
+    }
+
+    onSelect(target) {
+        if (typeof this.props.onSelect === 'function') {
+            this.props.onSelect.call(this, target);
+        }
+    }
+
+    closeRespond() {
+        if (typeof this.props.closeRespond === 'function') {
+            this.props.closeRespond();
+        }
+    }
+
+    renderAssets() {
+        if (!this.props.assets) return null;
+
+        return this.props.assets.map((asset, key) => {
+            return (
+                <skoash.Audio
+                    {...asset.props}
+                    ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
+                    key={key}
+                    data-ref={key}
+                />
+            );
+        });
+    }
+
+    renderCarousel() {
         return (
-          <skoash.Audio
-            {...asset.props}
-            ref={asset.ref || asset.props['data-ref'] || ('asset-' + key)}
-            key={key}
-            data-ref={key}
-          />
-        );
-      });
-    }
-
-    return null;
-  }
-
-  renderCarousel() {
-    return (
       <Carousel
         ref="carousel"
         bin={this.props.carouselBin}
@@ -62,20 +60,20 @@ class CarouselCannon extends skoash.Component {
         targetIndex={this.props.targetIndex}
       />
     );
-  }
+    }
 
-  renderCannon() {
-    return (
+    renderCannon() {
+        return (
       <Cannon
         ref="cannon"
         ball={this.props.cannonBall}
         onReload={this.onReload}
       />
     );
-  }
+    }
 
-  renderReveal() {
-    return (
+    renderReveal() {
+        return (
       <Reveal
         ref="reveal"
         list={this.props.revealList}
@@ -85,14 +83,14 @@ class CarouselCannon extends skoash.Component {
         autoClose={this.props.autoCloseReveal}
       />
     );
-  }
+    }
 
-  getClassNames() {
-    return classNames('carousel-cannon', super.getClassNames());
-  }
+    getClassNames() {
+        return classNames('carousel-cannon', super.getClassNames());
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className={this.getClassNames()}>
         {this.renderAssets()}
         {this.renderCarousel()}
@@ -100,7 +98,7 @@ class CarouselCannon extends skoash.Component {
         {this.renderReveal()}
       </div>
     );
-  }
+    }
 }
 
 export default CarouselCannon;

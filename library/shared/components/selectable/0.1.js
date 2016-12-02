@@ -1,175 +1,184 @@
 import classNames from 'classnames';
 
 class Selectable extends skoash.Component {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.state = {
-      classes: {},
-      selectFunction: this.select,
-    };
-  }
-
-  start() {
-    super.start();
-
-    var selectClass, selectFunction, classes = this.state.classes;
-
-    selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
-    selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
-
-    if (this.props.selectOnStart) {
-      classes[this.props.selectOnStart] = selectClass;
+        this.state = {
+            classes: {},
+            selectFunction: this.select,
+        };
     }
 
-    this.setState({
-      started: true,
-      classes,
-      selectFunction,
-      selectClass,
-    });
-  }
+    start() {
+        var selectClass;
+        var selectFunction;
+        var classes = this.state.classes;
 
-  bootstrap() {
-    super.bootstrap();
+        super.start();
 
-    if (this.refs.bin) {
-      this.setState({
-        list: this.refs.bin.getAll()
-      });
-    }
-  }
+        selectClass = this.props.selectClass || this.state.selectClass || 'SELECTED';
+        selectFunction = selectClass === 'HIGHLIGHTED' ? this.highlight : this.select;
 
-  selectHelper(e, classes) {
-    var ref, dataRef, target, id, isCorrect, self = this;
-
-    if (typeof e === 'string') {
-      dataRef = e;
-    } else {
-      target = e.target.closest('LI');
-
-      if (!target) return;
-
-      dataRef = target.getAttribute('data-ref');
-    }
-
-    ref = self.refs[dataRef];
-
-    isCorrect = (ref && ref.props && ref.props.correct) || (!self.props.answers || !self.props.answers.length || self.props.answers.indexOf(dataRef) !== -1);
-
-    if (self.props.allowDeselect && classes[dataRef]) {
-      delete classes[dataRef];
-    } else if (isCorrect) {
-      classes[dataRef] = self.state.selectClass;
-    }
-
-    self.setState({
-      classes,
-    });
-
-    self.props.selectRespond.call(self, dataRef);
-    self.props.onSelect.call(self, dataRef);
-
-    if (self.props.chooseOne) self.complete();
-
-    if (self.props.dataTarget) {
-      self.updateGameState({
-        path: self.props.dataTarget,
-        data: {
-          target: ref
+        if (this.props.selectOnStart) {
+            classes[this.props.selectOnStart] = selectClass;
         }
-      });
+
+        this.setState({
+            started: true,
+            classes,
+            selectFunction,
+            selectClass,
+        });
     }
 
-    if (self.props.completeListOnClick) {
-      _.each(self.refs, (r, k) => {
-        if (k === id) _.invoke(r, 'complete');
-      });
+    bootstrap() {
+        super.bootstrap();
+
+        if (this.refs.bin) {
+            this.setState({
+                list: this.refs.bin.getAll()
+            });
+        }
     }
 
-    _.each(self.refs, (r, k) => {
-      if (k === dataRef) _.invoke(r, 'complete');
-    });
-  }
+    selectHelper(e, classes) {
+        var ref;
+        var dataRef;
+        var target;
+        var id;
+        var isCorrect;
+        var self = this;
 
-  select(e) {
-    var classes = [];
-    this.selectHelper(e, classes);
-  }
+        if (typeof e === 'string') {
+            dataRef = e;
+        } else {
+            target = e.target.closest('LI');
 
-  highlight(e) {
-    var classes = this.state.classes;
-    this.selectHelper(e, classes);
-  }
+            if (!target) return;
 
-  getClass(key, li) {
-    return classNames(
+            dataRef = target.getAttribute('data-ref');
+        }
+
+        ref = self.refs[dataRef];
+
+        isCorrect = (ref && ref.props && ref.props.correct) ||
+            (!self.props.answers || !self.props.answers.length ||
+                self.props.answers.indexOf(dataRef) !== -1);
+
+        if (self.props.allowDeselect && classes[dataRef]) {
+            delete classes[dataRef];
+        } else if (isCorrect) {
+            classes[dataRef] = self.state.selectClass;
+        }
+
+        self.setState({
+            classes,
+        });
+
+        self.props.selectRespond.call(self, dataRef);
+        self.props.onSelect.call(self, dataRef);
+
+        if (self.props.chooseOne) self.complete();
+
+        if (self.props.dataTarget) {
+            self.updateGameState({
+                path: self.props.dataTarget,
+                data: {
+                    target: ref
+                }
+            });
+        }
+
+        if (self.props.completeListOnClick) {
+            _.each(self.refs, (r, k) => {
+                if (k === id) _.invoke(r, 'complete');
+            });
+        }
+
+        _.each(self.refs, (r, k) => {
+            if (k === dataRef) _.invoke(r, 'complete');
+        });
+    }
+
+    select(e) {
+        var classes = [];
+        this.selectHelper(e, classes);
+    }
+
+    highlight(e) {
+        var classes = this.state.classes;
+        this.selectHelper(e, classes);
+    }
+
+    getClass(key, li) {
+        return classNames(
       li.props.className,
       this.state.classes[key],
       this.state.classes[li.props['data-ref']],
       this.state.classes[li.props['data-key']]
     );
-  }
+    }
 
-  getClassNames() {
-    return classNames('selectable', super.getClassNames());
-  }
+    getClassNames() {
+        return classNames('selectable', super.getClassNames());
+    }
 
-  renderBin() {
-    if (!this.props.bin) return null;
+    renderBin() {
+        if (!this.props.bin) return null;
 
-    return (
-      <this.props.bin.type
-        {...this.props.bin.props}
-        ref="bin"
-      />
-    );
-  }
+        return (
+            <this.props.bin.type
+                {...this.props.bin.props}
+                ref="bin"
+            />
+        );
+    }
 
-  renderList() {
-    var list = this.props.list || this.state.list;
-    return list.map((li, key) => {
-      var dataRef = li.props['data-ref'] || key;
-      var ref = li.ref || li.props.id || dataRef;
-      var message = li.props.message || '' + key;
-      return (
-        <li.type
-          {...li.props}
-          type="li"
-          className={this.getClass(key, li)}
-          message={message}
-          data-message={message}
-          data-ref={dataRef}
-          ref={ref}
-          key={key}
-        />
-      );
-    });
-  }
+    renderList() {
+        var list = this.props.list || this.state.list;
+        return list.map((li, key) => {
+            var dataRef = li.props['data-ref'] || key;
+            var ref = li.ref || li.props.id || dataRef;
+            var message = li.props.message || '' + key;
+            return (
+                <li.type
+                    {...li.props}
+                    type="li"
+                    className={this.getClass(key, li)}
+                    message={message}
+                    data-message={message}
+                    data-ref={dataRef}
+                    ref={ref}
+                    key={key}
+                />
+            );
+        });
+    }
 
-  render() {
-    return (
-      <div>
-        {this.renderBin()}
-        <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
-          {this.renderList()}
-        </ul>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                {this.renderBin()}
+                <ul className={this.getClassNames()} onClick={this.state.selectFunction.bind(this)}>
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
+    }
 }
 
 Selectable.defaultProps = _.defaults({
-  list: [
-    <li></li>,
-    <li></li>,
-    <li></li>,
-    <li></li>
-  ],
-  selectClass: 'SELECTED',
-  completeListOnClick: true,
-  selectRespond: _.noop,
-  onSelect: _.noop,
+    list: [
+        <li></li>,
+        <li></li>,
+        <li></li>,
+        <li></li>
+    ],
+    selectClass: 'SELECTED',
+    completeListOnClick: true,
+    selectRespond: _.noop,
+    onSelect: _.noop,
 }, skoash.Component.defaultProps);
 
 export default Selectable;

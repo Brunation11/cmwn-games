@@ -1,295 +1,289 @@
-html, body, body > div, body > div > div {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  user-select: none;
-  user-drag: none;
-  cursor: auto;
+$black: #000;
+$white: #fff;
+
+html,
+body,
+body > div,
+body > div > div {
+    margin: 0;
+    cursor: auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+    user-drag: none;
 }
 
 html {
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body > div > div {
-  position: relative;
-  margin: auto;
-  width: 960px;
-  height: 540px;
-  font-size: 36px;
-  color: #fff;
-  background: url(../media/_BKG/BKG_1.png) bottom center no-repeat;
-  background-size: cover;
+    position: relative;
+    margin: auto;
+    background: url('../media/_BKG/BKG_1.png') bottom center no-repeat;
+    background-size: cover;
+    width: 960px;
+    height: 540px;
+    color: $white;
+    font-size: 36px;
 }
 
 button {
-  margin: 0;
-  padding: 0;
-  border: none;
+    margin: 0;
+    outline: none;
+    border: 0;
 
-  font-family: inherit;
-  font-size: inherit;
-  color: transparent;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+    background-color: transparent;
+    background-image: url('../media/_Buttons/BU_1.png');
+    background-position: left top;
+    background-size: auto 500px;
 
-  background-image: url(../media/_Buttons/BU_1.png);
-  background-size: auto 500px;
-  background-position: left top;
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
 
-  &.close {
-    width: 35px;
-    height: 35px;
-    background-position: -310px 410px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 5px;
-    z-index: 2;
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        margin: 5px;
+        background-position: -310px 410px;
+        width: 35px;
+        height: 35px;
 
-    &:hover {
-      background-position: -310px 165px;
+        &:hover {
+            background-position: -310px 165px;
+        }
     }
-  }
 
-  &.next-screen,
-  &.prev-screen {
-    width: 80px;
-    height: 60px;
-  }
-
-  &.next-screen {
-    background-position: -120px 420px;
-
-    &:hover {
-      background-position: -120px 676px;
+    &.next-screen,
+    &.prev-screen {
+        width: 80px;
+        height: 60px;
     }
-  }
 
-  &.prev-screen {
-    background-position: -15px 420px;
+    &.next-screen {
+        background-position: -120px 420px;
 
-    &:hover {
-      background-position: -15px 676px;
+        &:hover {
+            background-position: -120px 676px;
+        }
     }
-  }
 
-  &.close-reveal {
-    width: 55px;
-    height: 50px;
-    background-position: -225px 420px;
+    &.prev-screen {
+        background-position: -15px 420px;
 
-    &.ENABLED:hover {
-      background-position: -225px 676px;
+        &:hover {
+            background-position: -15px 676px;
+        }
     }
-  }
 
-  &.quit-yes {
-    width: 230px;
-    height: 230px;
-    background-position: -1830px 495px;
+    &.close-reveal {
+        background-position: -225px 420px;
+        width: 55px;
+        height: 50px;
 
-    &:hover {
-      background-position: -1830px 251px;
+        &.ENABLED:hover {
+            background-position: -225px 676px;
+        }
     }
-  }
 
-  &.quit-no {
-    width: 230px;
-    height: 230px;
-    background-position: -2080px 495px;
+    &.quit-yes {
+        background-position: -1830px 495px;
+        width: 230px;
+        height: 230px;
 
-    &:hover {
-      background-position: -2080px 251px;
+        &:hover {
+            background-position: -1830px 251px;
+        }
     }
-  }
+
+    &.quit-no {
+        background-position: -2080px 495px;
+        width: 230px;
+        height: 230px;
+
+        &:hover {
+            background-position: -2080px 251px;
+        }
+    }
 }
 
 body.DEMO .reveal-component .items li div .close-reveal {
-  opacity: 1;
-  cursor: pointer;
+    opacity: 1;
+    cursor: pointer;
 
-  &:hover {
-    background-position: -225px 676px;
-  }
+    &:hover {
+        background-position: -225px 676px;
+    }
 }
 
 h2 {
-  font-size: 40px;
+    font-size: 40px;
 }
 
 h3 {
-  font-size: 30px;
-  margin: 0;
+    margin: 0;
+    font-size: 30px;
 }
 
 p {
-  font-size: 28px;
-  margin: 0;
+    margin: 0;
+    font-size: 28px;
 }
 
 // preload game assets
 .canvas-src { display: none; }
 
 .screen {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 960px;
-  height: 540px;
-  margin-top: -270px;
-  opacity: 0;
-  display: none;
-  transition: opacity 1s, transform 0.5s;
-  transform: translateX(100%);
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateX(100%);
+    transition: opacity 1s, transform .5s;
+    opacity: 0;
+    margin-top: -270px;
+    width: 960px;
+    height: 540px;
 
-  &:not(.COMPLETE) {
-    button {
-      &.next-screen {
-        cursor: auto;
-      }
+    &:not(.COMPLETE) {
+        button {
+            &.next-screen {
+                cursor: auto;
+            }
+        }
     }
-  }
 }
 
-.screen.last {}
-
 .screen.OPEN {
-  opacity: 1;
-  transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .screen.READY {
-  display: block;
+    display: block;
 }
 
 .screen.LEAVE {
-  opacity: 1;
-  transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity: 1;
 }
 
-  .screen .next-screen,
-  .screen .prev-screen {
-    position: absolute;
+.screen .next-screen,
+.screen .prev-screen {
     display: block;
+    position: absolute;
     bottom: 1%;
-
     z-index: 2;
-  }
+}
 
-  .screen .next-screen {
-    margin-right: 5px;
+.screen .next-screen {
     right: 0;
-    opacity: 0;
     transform: rotate(-180deg);
     transition: opacity 1s, transform 1s;
-  }
-
-  .screen.GATED .next-screen {
     opacity: 0;
-    cursor: auto;
+    margin-right: 5px;
+}
+
+.screen.GATED .next-screen {
+    opacity: 0;
     z-index: -1;
-  }
+    cursor: auto;
+}
 
-  .pl-game.DEMO .screen .next-screen,
-  .screen.COMPLETE .next-screen {
-    opacity: 1;
+.pl-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen {
     transform: rotate(0deg);
-    cursor: pointer;
+    opacity: 1;
     z-index: 1;
-  }
+    cursor: pointer;
+}
 
-  .screen .next-screen:hover {
-
-  }
-
-  .screen .prev-screen {
-    margin-left: 5px;
+.screen .prev-screen {
     left: 0;
-
-  }
-
-  .screen .prev-screen:hover {
-
-  }
+    margin-left: 5px;
+}
 
 // the following css is specific to this game
 
 .reveal {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity .5s, z-index 0s .6s;
-
-  div {
     position: absolute;
+    top: 0;
     left: 0;
-    top: 50%;
+    transition: opacity .5s, z-index 0s .6s;
+    opacity: 0;
+    z-index: -1;
     width: 100%;
-    height: 240px;
-    margin-top: -120px;
-    background-image: url(../media/_Frames/FR_1.png);
-    background-size: 100% 100%;
-  }
-
-  ul {
-    margin: 0;
     height: 100%;
 
-    li {
-      margin: 0;
-      height: 100%;
-
-      p {
+    div {
         position: absolute;
-        display: block;
         top: 50%;
-        transform: translateY(-50%);
+        left: 0;
+        margin-top: -120px;
+        background-image: url('../media/_Frames/FR_1.png');
+        background-size: 100% 100%;
         width: 100%;
-        text-align: center;
-        color: #000;
-      }
-
+        height: 240px;
     }
-  }
 
-  .close-reveal {
-    position: absolute;
-    right: 5px;
-    bottom: 10px;
-    opacity: 1;
-    cursor: pointer;
-    transition: opacity 1s;
-  }
+    ul {
+        margin: 0;
+        height: 100%;
 
-  &.OPEN {
-    opacity: 1;
-    z-index: 1;
-    transition: opacity .5s;
-  }
+        li {
+            margin: 0;
+            height: 100%;
+
+            p {
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+                color: $black;
+            }
+
+        }
+    }
+
+    .close-reveal {
+        position: absolute;
+        right: 5px;
+        bottom: 10px;
+        transition: opacity 1s;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    &.OPEN {
+        transition: opacity .5s;
+        opacity: 1;
+        z-index: 1;
+    }
 }
 
 .pl-game.VOICE-OVER {
-  .reveal {
-    .close-reveal {
-      opacity: .5;
-      pointer-events: none;
+    .reveal {
+        .close-reveal {
+            opacity: .5;
+            pointer-events: none;
+        }
     }
-  }
 }
 
 .video {
-  background: url(../media/_Frames/FR_2.png) center center no-repeat;
-  background-size: 100% 100%;
+    background: url('../media/_Frames/FR_2.png') center center no-repeat;
+    background-size: 100% 100%;
 
-  video {
-    margin: 15px 15px 34px;
-  }
+    video {
+        margin: 15px 15px 34px;
+    }
 }

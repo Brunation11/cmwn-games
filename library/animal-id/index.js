@@ -33,74 +33,74 @@ import FlipScreen from './components/flip_screen';
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var AnimalID = (
-  <skoash.Game
-    config={config}
-    screens={{
-      0: iOSScreen,
-      1: TitleScreen,
-      2: InfoWelcomeScreen,
-      3: IDCarnivoreScreen,
-      4: IDMarsupialScreen,
-      5: IDRodantScreen,
-      6: IDArachnidScreen,
-      7: IDMammalScreen,
-      8: IDMolluskScreen,
-      9: IDReptileScreen,
-      10: IDHerbivoreScreen,
-      11: InfoGoodJobScreen,
-      12: InfoMatchScreen,
-      13: MatchScreen,
-      14: InfoDetailScreen,
-      15: InfoSnoutScreen,
-      16: WhatDoesANoseScreen,
-      17: InfoSneezersScreen,
-      18: DNDLionScreen,
-      19: DNDSlothScreen,
-      20: DNDWolfScreen,
-      21: DNDElephantScreen,
-      22: DNDDragonScreen,
-      23: DNDPigScreen,
-      24: DNDGorillaScreen,
-      25: DNDMuleScreen,
-      26: FlipScreen
-    }}
-    menus={{
-      quit: QuitScreen,
-    }}
-    loader={<Loader />}
-    getBackgroundIndex={i => {
-      switch (true) {
-      case i === 0: return;
-      case i === 1: return 0;
-      case i <= 10: return 2;
-      case i === 11: return 5;
-      case i <= 14: return 3;
-      case i <= 26: return 4;
-      default: return;
-      }
-    }}
-    assets={[
-      <skoash.Audio ref="bkg-0" type="background" src="media/audio/title.mp3" />,
-      <skoash.Audio ref="bkg-1" type="background" src="media/audio/background/BKG_3.mp3" />,
-      <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" loop />,
-      <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/match.mp3" />,
-      <skoash.Audio ref="bkg-4" type="background" src="media/audio/background/nose.mp3" />,
-      <skoash.Audio ref="bkg-5" type="background" src="media/audio/S_11.1.mp3" />,
+    <skoash.Game
+        config={config}
+        screens={{
+            0: iOSScreen,
+            1: TitleScreen,
+            2: InfoWelcomeScreen,
+            3: IDCarnivoreScreen,
+            4: IDMarsupialScreen,
+            5: IDRodantScreen,
+            6: IDArachnidScreen,
+            7: IDMammalScreen,
+            8: IDMolluskScreen,
+            9: IDReptileScreen,
+            10: IDHerbivoreScreen,
+            11: InfoGoodJobScreen,
+            12: InfoMatchScreen,
+            13: MatchScreen,
+            14: InfoDetailScreen,
+            15: InfoSnoutScreen,
+            16: WhatDoesANoseScreen,
+            17: InfoSneezersScreen,
+            18: DNDLionScreen,
+            19: DNDSlothScreen,
+            20: DNDWolfScreen,
+            21: DNDElephantScreen,
+            22: DNDDragonScreen,
+            23: DNDPigScreen,
+            24: DNDGorillaScreen,
+            25: DNDMuleScreen,
+            26: FlipScreen
+        }}
+        menus={{
+            quit: QuitScreen,
+        }}
+        loader={<Loader />}
+        getBackgroundIndex={i => {
+            switch (true) {
+                case i === 0: return;
+                case i === 1: return 0;
+                case i <= 10: return 2;
+                case i === 11: return 5;
+                case i <= 14: return 3;
+                case i <= 26: return 4;
+                default: return;
+            }
+        }}
+        assets={[
+            <skoash.Audio ref="bkg-0" type="background" src="media/audio/title.mp3" />,
+            <skoash.Audio ref="bkg-1" type="background" src="media/audio/background/BKG_3.mp3" />,
+            <skoash.Audio ref="bkg-2" type="background" src="media/audio/background/id.mp3" loop />,
+            <skoash.Audio ref="bkg-3" type="background" src="media/audio/background/match.mp3" />,
+            <skoash.Audio ref="bkg-4" type="background" src="media/audio/background/nose.mp3" />,
+            <skoash.Audio ref="bkg-5" type="background" src="media/audio/S_11.1.mp3" />,
 
-      <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
-      <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />,
+            <skoash.Audio ref="button" type="sfx" src="media/audio/button.mp3" />,
+            <skoash.Audio ref="screen-complete" type="sfx" src="media/audio/complete.mp3" />,
 
-      <skoash.Image className="hidden" src="media/images/background/title.png" />,
-      <skoash.Image className="hidden" src="media/images/background/id.png" />,
-      <skoash.Image className="hidden" src="media/images/background/match.png" />,
-      <skoash.Image className="hidden" src="media/images/background/nose.png" />,
+            <skoash.Image className="hidden" src="media/images/background/title.png" />,
+            <skoash.Image className="hidden" src="media/images/background/id.png" />,
+            <skoash.Image className="hidden" src="media/images/background/match.png" />,
+            <skoash.Image className="hidden" src="media/images/background/nose.png" />,
 
-      <div className="game-background title" />,
-      <div className="game-background id" />,
-      <div className="game-background match" />,
-      <div className="game-background nose" />,
-    ]}
-  />
+            <div className="game-background title" />,
+            <div className="game-background id" />,
+            <div className="game-background match" />,
+            <div className="game-background nose" />,
+        ]}
+    />
 );
 
 skoash.start(AnimalID);

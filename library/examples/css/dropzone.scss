@@ -1,19 +1,23 @@
+$red: #f00;
+$black: #000;
+$blue: #00f;
+
 #dropzone {
-  font-size: 20px;
+    font-size: 20px;
 
-  .dropzone {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    border: 2px solid red;
+    .dropzone {
+        display: inline-block;
+        border: 2px solid $red;
+        width: 100px;
+        height: 100px;
 
-    &.COMPLETE {
-      border-color: black;
+        &.COMPLETE {
+            border-color: $black;
+        }
     }
-  }
 
-  .draggable {
-    display: inline-block;
-    border: 2px solid blue;
-  }
+    .draggable {
+        display: inline-block;
+        border: 2px solid $blue;
+    }
 }

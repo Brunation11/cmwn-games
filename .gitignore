@@ -2,9 +2,10 @@
 **/.DS_Store
 node_modules
 build
-build.log
+*.log
 library/component-catalog
 *.swp
 Thumbs.db
 **/*.swp
 **/*.swo
+scsslint.json

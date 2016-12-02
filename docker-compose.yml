@@ -10,4 +10,9 @@ services:
     volumes:
       - ./:/var/www/
   node:
-    image: cmwn/front-node:6-wheezy
+    container_name: cmwn_games_node
+    build: ./docker/node
+    environment:
+      DOCKER_HOST_IP: "192.168.99.101"
+    volumes:
+      - ./:/var/www/

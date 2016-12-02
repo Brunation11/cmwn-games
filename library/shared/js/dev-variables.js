@@ -1,3 +1,3 @@
 window.ENVIRONMENT = {
-  MEDIA: 'https://media-staging.changemyworldnow.com/f/'
+    MEDIA: 'https://media-staging.changemyworldnow.com/f/'
 };
