@@ -1,3 +1,5 @@
+import addItems from 'shared/phaser/methods/add_items/0.1';
+
 import makeBackground from './make_background';
 import makeGround from './make_ground';
 import makePlatforms from './make_platforms';
@@ -13,7 +15,12 @@ export default {
             }
         });
     },
-    onBump: function () {
+    onBump: function (player) {
+        if (this.data.complete) {
+            this.helpers.stay.call(this, player);
+            player.body.collideWorldBounds = false;
+            this.helpers.emitData.call(this);
+        }
     },
     hitEnemy: function (p) {
         this.helpers.hitSomething.call(this, p);
@@ -89,10 +96,31 @@ export default {
         this.data.bagCount = 0;
         this.data.trucks++;
         this.helpers.updatePlayer.call(this);
+        if (this.data.trucks === 3) this.doors.children[0].animations.play('open');
         this.helpers.emitData.call(this);
     },
     makeBackground,
     makeGround,
     makePlatforms,
     makeItems,
+    makeDoor: function () {
+        addItems.call(this, {
+            group: 'doors'
+        }, [{
+            image: 'door',
+            gravityY: 100,
+            body: [200, 200, 25, 25],
+            scale: [.5, .5],
+            collideWorldBounds: false,
+            left: this.game.world.width - 90,
+            // left: 200,
+            top: 0,
+        }]);
+
+        this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
+    },
+    exit: function () {
+        this.data.complete = true;
+        this.player.body.velocity.x = 0;
+    }
 };

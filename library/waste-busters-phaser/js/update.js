@@ -23,6 +23,7 @@ export default function () {
     [this.bags, this.platforms, this.helpers.stay],
     [this.obstacles, this.ground, this.helpers.stay],
     [this.obstacles, this.platforms, this.helpers.stay],
+    [this.doors, this.ground, this.helpers.stay],
     ]);
 
     addResponses.call(this, 'overlap', [
@@ -31,15 +32,23 @@ export default function () {
     [this.player, this.recycles, this.helpers.collectRecycling],
     [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
     [this.player, this.trucks, this.helpers.loadTruck],
+    [this.player, this.doors, this.helpers.exit],
     ]);
 
-    movePlayer.call(this, {
-        upSpeed: -350,
-        downSpeed: 500,
-        leftSpeed: -150,
-        rightSpeed: 150,
-        stopFrame: 6,
-    });
+    if (!this.data.complete) {
+        movePlayer.call(this, {
+            upSpeed: -350,
+            downSpeed: 500,
+            leftSpeed: -150,
+            rightSpeed: 150,
+            stopFrame: 6,
+        });
+    } else {
+        this.player.body.velocity.x = 150;
+        this.player.body.collideWorldBounds = false;
+        this.player.animations.play('right');
+        this.game.physics.arcade.enable(this.player);
+    }
 
     this.game.camera.x =
         Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);

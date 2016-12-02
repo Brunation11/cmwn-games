@@ -17,6 +17,7 @@ export default function () {
     this.helpers.makeGround.call(this);
     this.helpers.makePlatforms.call(this);
     this.helpers.makeItems.call(this);
+    this.helpers.makeDoor.call(this);
 
     addPlayer.call(this, {
         left: 32,
