@@ -349,7 +349,6 @@ gulp.task('lint-scss', function () {
         .pipe(scsslint({
             customReport: reporter.issues,
             reporterOutput: 'scsslint.json',
-            maxBuffer: 300000000,
         }))
         .pipe(reporter.printSummary)
         .pipe(scsslint.failReporter());
