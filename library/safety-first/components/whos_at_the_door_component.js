@@ -10,17 +10,15 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: 'reveal',
             data: {
-                open: _.get(props, 'data.selectable.target')
+                open: opts.id
             }
         });
     };
 
     selectRespond = function (target) {
         this.updateGameState({
-            path: 'selectable',
-            data: {
-                target: target
-            }
+            path: 'sfx',
+            data: target
         });
     };
 
@@ -58,13 +56,17 @@ export default function (props, ref, key, opts = {}) {
                     ref="yes"
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/Yes.mp3`}
-                    onComplete={sfxOnComplete}
+                    onComplete={function () {
+                        sfxOnComplete.call(this)
+                    }}
                 />
                 <skoash.Audio
                     ref="no"
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/No.mp3`}
-                    onComplete={sfxOnComplete}
+                    onComplete={function () {
+                        sfxOnComplete.call(this)
+                    }}
                 />
             </MediaCollection>
 
@@ -91,7 +93,7 @@ export default function (props, ref, key, opts = {}) {
                 ref="selectable"
                 selectClass="HIGHLIGHTED"
                 selectRespond={function (target) {
-                    selectRespond(target);
+                    selectRespond.call(this, target);
                 }}
                 list={[
                     <skoash.ListItem data-ref="yes" className="yes-btn" />,
