@@ -5,6 +5,7 @@ import Selectable from 'shared/components/selectable/0.1';
 export default function (props, ref, key, opts = {}) {
     var sfxOnComplete;
     var selectRespond;
+    var screenComplete;
 
     sfxOnComplete = function () {
         this.updateGameState({
@@ -22,18 +23,40 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
+    screenComplete = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                complete: true
+            }
+        });
+    }
+
     return (
         <skoash.Screen
             {...props}
             ref={ref}
             key={key}
             id={`whos-at-the-door-${opts.id}`}
+            complete={_.get(props, 'data.game.complete')}
         >
-            <skoash.Audio
-                ref="intro"
-                type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WhosAtDoor.mp3`}
-            />
+            <skoash.MediaSequence>
+                <skoash.Audio
+                    ref="intro"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/Doorbell.mp3`}
+                />
+                <skoash.Audio
+                    ref="intro"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Grandpa.mp3`}
+                />
+                <skoash.Audio
+                    ref="intro"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WhosAtDoor.mp3`}
+                />
+            </skoash.MediaSequence>
 
             <skoash.Component className={`frame ${opts.id}`}>
                 <span>
@@ -86,6 +109,9 @@ export default function (props, ref, key, opts = {}) {
                     ref={opts.id}
                     type="voiceOver"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.vo}.mp3`}
+                    onComplete={function () {
+                        screenComplete.call(this)
+                    }}
                 />
             </MediaCollection>
 
@@ -115,8 +141,9 @@ export default function (props, ref, key, opts = {}) {
                             <span>
                                 {opts.copy}
                             </span>
-                            <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.fullbody.png`} />
                         </skoash.Component>
+                        <skoash.Image className="barklines" src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.barklines.png`} />
+                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.fullbody.png`} />
                     </skoash.Component>
                 ]}
             />
