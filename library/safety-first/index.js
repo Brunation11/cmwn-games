@@ -10,6 +10,8 @@ import MeetTheTeamScreen from './components/meet_the_team_screen';
 import InfoLetsSeeScreen from './components/info_lets_see_screen';
 import DingDongScreen from './components/ding_dong_screen';
 import WhosAtTheDoorGrandpa from './components/whos_at_the_door_grandpa_screen';
+import WhosAtTheDoorDeliveryPerson from './components/whos_at_the_door_delivery_person_screen';
+import WhosAtTheDoorSister from './components/whos_at_the_door_sister_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -35,7 +37,9 @@ SafetyFirst = (
             // 2: MeetTheTeamScreen,
             // 3: InfoLetsSeeScreen,
             // 4: DingDongScreen
-            1: WhosAtTheDoorGrandpa
+            // 1: WhosAtTheDoorGrandpa,
+            // 1: WhosAtTheDoorDeliveryPerson
+            1: WhosAtTheDoorSister
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,
