@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 [id*=phaser] {
     iframe {
@@ -31,8 +32,26 @@
 
     .bottom {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        bottom: 10px;
+        left: 2%;
+        border-radius: 20px;
+        background-color: $grass;
+        padding: 10px 20px;
+        width: 96%;
+
+        > div {
+            float: left;
+            width: 33.33%;
+        }
+    }
+
+    .score {
+        &.life {
+            @include score-meter(4, $bright-green);
+        }
+
+        &.bags {
+            @include score-meter(5, $light-purple);
+        }
     }
 }

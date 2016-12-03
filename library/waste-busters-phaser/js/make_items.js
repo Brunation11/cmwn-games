@@ -113,7 +113,7 @@ export default function () {
     _.every(this.platforms.children, platform => {
         placeObject(platform, 50, 30);
         if (platform.width > 120) placeObject(platform, 50, 80);
-        if (platform.width > 200) placeObject(platform, 50, 130);
+        if (platform.width > 200) placeObject(platform, 50, 170);
         return objects.length;
     });
 
@@ -130,7 +130,8 @@ export default function () {
 
     _.every(this.ground.children, platform => {
         var object;
-        if (platform.left > this.game.world.width * truckNumber / (truckTotal + 1)) {
+        if (truckNumber <= truckTotal &&
+            platform.left > this.game.world.width * truckNumber / (truckTotal + 1.75)) {
             locations.truck.push({
                 top: platform.top - 50,
                 left: platform.left,

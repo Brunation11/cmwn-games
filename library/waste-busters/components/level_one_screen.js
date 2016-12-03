@@ -28,30 +28,46 @@ export default function (props, ref, key) {
             <skoash.Component
                 className="bottom"
             >
-                <Score
-                    className="life"
-                    correct={4 - _.get(props, 'data.data.hits') || 0}
-                />
-                <Score
-                    className="bags"
-                    correct={_.get(props, 'data.data.bagCount')}
-                />
-                <Score
-                    className="level-score"
-                    correct={_.get(props, 'data.data.score')}
-                />
                 <skoash.Component
-                    className={classNames('level', 'level-1')}
-                />
-                <Score
-                    className="lives"
-                    correct={_.get(props, 'data.data.lives')}
-                />
-                <Score
-                    className="trucks"
-                    correct={_.get(props, 'data.data.trucks')}
-                />
-                <DPad />
+                    className="left"
+                >
+                    <Score
+                        className="life"
+                        correct={4 - _.get(props, 'data.data.hits') || 0}
+                    >
+                        <div/>
+                    </Score>
+                    <Score
+                        className="bags"
+                        correct={_.get(props, 'data.data.bagCount')}
+                    >
+                        <div/>
+                    </Score>
+                </skoash.Component>
+                <skoash.Component
+                    className="middle"
+                >
+                    <Score
+                        className="level-score"
+                        correct={_.get(props, 'data.data.score')}
+                    />
+                    <skoash.Component
+                        className={classNames('level', 'level-1')}
+                    />
+                </skoash.Component>
+                <skoash.Component
+                    className="left"
+                >
+                    <Score
+                        className="lives"
+                        correct={_.get(props, 'data.data.lives')}
+                    />
+                    <Score
+                        className="trucks"
+                        correct={_.get(props, 'data.data.trucks')}
+                    />
+                    <DPad />
+                </skoash.Component>
             </skoash.Component>
         </skoash.Screen>
     );

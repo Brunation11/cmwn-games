@@ -15,12 +15,7 @@ export default {
             }
         });
     },
-    onBump: function (player) {
-        if (this.data.complete) {
-            this.helpers.stay.call(this, player);
-            player.body.collideWorldBounds = false;
-            this.helpers.emitData.call(this);
-        }
+    onBump: function () {
     },
     hitEnemy: function (p) {
         this.helpers.hitSomething.call(this, p);
@@ -120,7 +115,10 @@ export default {
         this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
     },
     exit: function () {
+        if (this.data.trucks !== 3) return;
         this.data.complete = true;
         this.player.body.velocity.x = 0;
+        this.player.body.collideWorldBounds = false;
+        this.helpers.emitData.call(this);
     }
 };
