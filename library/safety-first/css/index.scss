@@ -52,8 +52,17 @@ body, body > div, .skoash-game {
 
     &.SCREEN-info-lets-see .background.doorclosed,
     &.SCREEN-ding-dong .background.doorclosed,
-    &.SCREEN-whos-at-the-door-grandpa .background.doorclosed
-    &.SCREEN-whos-at-the-door-delivery-person .background.doorclosed {
+    &.SCREEN-whos-at-the-door-grandpa .background.doorclosed,
+    &.SCREEN-whos-at-the-door-delivery-person .background.doorclosed,
+    &.SCREEN-whos-at-the-door-sister .background.doorclosed,
+    &.SCREEN-whos-at-the-door-new-neighbor .background.doorclosed,
+    &.SCREEN-whos-at-the-door-mother .background.doorclosed,
+    &.SCREEN-whos-at-the-door-brother .background.doorclosed,
+    &.SCREEN-whos-at-the-door-gas-man .background.doorclosed,
+    &.SCREEN-whos-at-the-door-close-friend .background.doorclosed,
+    &.SCREEN-whos-at-the-door-person-with-flat .background.doorclosed,
+    &.SCREEN-whos-at-the-door-cable-person .background.doorclosed,
+    &.SCREEN-whos-at-the-door-close-relative .background.doorclosed {
         opacity: 1;
     }
 }
