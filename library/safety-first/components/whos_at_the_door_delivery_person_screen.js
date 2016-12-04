@@ -5,6 +5,11 @@ export default function (props, ref, key) {
         id: 'delivery-person',
         vo: 'DeliveryPersonNo',
         label: 'DeliveryPerson',
-        copy: 'Your door is not opening!<br />They can leave the package<br />on the stoop!'
+        header: 'Delivery Person',
+        copy: (
+            <span>
+                Your door is not opening!<br/>They can leave the package<br />on the stoop!
+            </span>
+        )
     });
 }

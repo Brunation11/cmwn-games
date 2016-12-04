@@ -5,6 +5,11 @@ export default function (props, ref, key) {
         id: 'sister',
         vo: 'SisterYes',
         label: 'Sister',
-        copy: 'That\'s right, you can<br />let your sister in!'
+        header: 'Sister',
+        copy: (
+            <span>
+                That's right, you can<br />let your sister in!
+            </span>
+        )
     });
 }

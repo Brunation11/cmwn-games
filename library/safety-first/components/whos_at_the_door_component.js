@@ -49,7 +49,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Grandpa.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
                 />
                 <skoash.Audio
                     ref="intro"
@@ -60,7 +60,7 @@ export default function (props, ref, key, opts = {}) {
 
             <skoash.Component className={`frame ${opts.id}`}>
                 <span>
-                    {opts.label}
+                    {opts.header}
                 </span>
             </skoash.Component>
 
@@ -134,11 +134,11 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Component ref={opts.id}>
                         <skoash.Component className={`frame ${opts.id}`}>
                             <span>
-                                {opts.label}
+                                {opts.header}
                             </span>
                         </skoash.Component>
                         <skoash.Component className="prompt">
-                            <span>
+                            <span className="copy">
                                 {opts.copy}
                             </span>
                         </skoash.Component>

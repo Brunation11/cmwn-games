@@ -5,6 +5,11 @@ export default function (props, ref, key) {
         id: 'grandpa',
         vo: 'GrandpaYes',
         label: 'Grandpa',
-        copy: 'Open for grandparents.'
+        header: 'Grandpa',
+        copy: (
+            <span>
+                Open for grandparents.
+            </span>
+        )
     });
 }
