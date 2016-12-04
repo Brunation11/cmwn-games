@@ -24,23 +24,23 @@
         }
 
         &.new-neighbor {
-            background-position: -1391px 0;
+            background-position: -2069px 0;
         }
 
         &.mother {
-            background-position: -926px 0;
+            background-position: -1049px 0;
         }
 
         &.brother {
-            background-position: -1391px 0;
+            background-position: -1558px 0;
         }
 
         &.gas-man {
-            background-position: -2776px 0;
+            background-position: -3082px 0;
         }
 
         &.close-friend {
-            background-position: -2314px 0;
+            background-position: -2576px 0;
         }
 
         &.person-with-flat {
@@ -55,7 +55,7 @@
             background-position: -4637px 0;
         }
 
-        span {
+        > span {
             position: absolute;
             bottom: -9%;
             left: 50%;
@@ -64,6 +64,8 @@
             font-size: 60px;
             font-weight: 900;
             font-style: italic;
+            width: 100%;
+            line-height: 65px;
         }
     }
 
@@ -153,14 +155,83 @@
         }
 
         &.open-grandpa {
-            .prompt::before {
-                background-position: 0 0;
-            }
         }
 
         &.open-delivery-person {
-            .prompt::before {
-                background-position: 101% 0;
+            .frame {
+                background-position: -3162px 0;
+            }
+
+            .prompt {
+                &::before {
+                    background-position: 101% 0;
+                }
+            }
+        }
+
+        &.open-sister {
+            .frame {
+                background-position: -419px 0;
+            }
+        }
+
+        &.open-new-neighbor {
+            .frame {
+                background-position: -811px 0;
+            }
+
+            .prompt {
+                &::before {
+                    background-position: 101% 0;
+                }
+            }
+        }
+
+        &.open-mother {
+            .frame {
+                background-position: -811px 0;
+            }
+        }
+
+        &.open-brother {
+            .frame {
+                background-position: -1203px 0;
+            }
+        }
+
+        &.open-gas-man {
+            .frame {
+                background-position: -2373px 0;
+            }
+
+            .prompt {
+                &::before {
+                    background-position: 101% 0;
+                }
+            }
+        }
+
+        &.open-close-friend {
+            .frame {
+                background-position: -1984px 0;
+            }
+        }
+
+        &.open-person-with-flat {
+            .frame {
+                // background-position: -811px 0;
+            }
+        }
+
+        &.open-cable-person {
+            .frame {
+                // background-position: -811px 0;
+            }
+        }
+
+        &.open-close-relative {
+            .frame {
+                // background-position: -811px 0;
             }
         }
 
@@ -174,8 +245,9 @@
             span {
                 top: 50%;
                 transform: translateY(-25%);
-                left: 110%;
+                left: 100%;
                 font-size: 65px;
+                width: 90%;
             }
         }
 
@@ -204,12 +276,13 @@
             }
         }
 
-        span {
+        .copy {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 32px;
-            left: 46%;
+            font-size: 26px;
+            left: 40%;
+            width: 50%;
         }
 
         img {
@@ -224,23 +297,7 @@
             position: absolute;
             height: 10%;
             right: 18%;
-            bottom: 30%;
+            bottom: 32%;
         }
-
-        // button.close-reveal {
-        //     position: absolute;
-        //     display: block;
-        //     bottom: 2%;
-        //     z-index: 3;
-        //     width: 80px;
-        //     height: 50px;
-        //     right: 1%;
-        //     background-position: -665px -43px;
-        //     transition: opacity 1s;
-
-        // &:hover {
-        //         background-position: -667px -187px;
-        //     }
-        // }
     }
 }
