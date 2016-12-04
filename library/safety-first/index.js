@@ -9,9 +9,17 @@ import TitleScreen from './components/title_screen';
 import MeetTheTeamScreen from './components/meet_the_team_screen';
 import InfoLetsSeeScreen from './components/info_lets_see_screen';
 import DingDongScreen from './components/ding_dong_screen';
-import WhosAtTheDoorGrandpa from './components/whos_at_the_door_grandpa_screen';
-import WhosAtTheDoorDeliveryPerson from './components/whos_at_the_door_delivery_person_screen';
-import WhosAtTheDoorSister from './components/whos_at_the_door_sister_screen';
+import WhosAtTheDoorGrandpaScreen from './components/whos_at_the_door_grandpa_screen';
+import WhosAtTheDoorDeliveryPersonScreen from './components/whos_at_the_door_delivery_person_screen';
+import WhosAtTheDoorSisterScreen from './components/whos_at_the_door_sister_screen';
+import WhosAtTheDoorNewNeighborScreen from './components/whos_at_the_door_new_neighbor_screen';
+import WhosAtTheDoorMotherScreen from './components/whos_at_the_door_mother_screen';
+import WhosAtTheDoorBrotherScreen from './components/whos_at_the_door_brother_screen';
+import WhosAtTheDoorGasManScreen from './components/whos_at_the_door_gas_man_screen';
+import WhosAtTheDoorCloseFriendScreen from './components/whos_at_the_door_close_friend_screen';
+import WhosAtTheDoorPersonWithFlatScreen from './components/whos_at_the_door_person_with_flat_screen';
+import WhosAtTheDoorCablePersonScreen from './components/whos_at_the_door_cable_person_screen';
+import WhosAtTheDoorCloseRelativeScreen from './components/whos_at_the_door_close_relative_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -37,9 +45,17 @@ SafetyFirst = (
             // 2: MeetTheTeamScreen,
             // 3: InfoLetsSeeScreen,
             // 4: DingDongScreen
-            // 1: WhosAtTheDoorGrandpa,
-            // 1: WhosAtTheDoorDeliveryPerson
-            1: WhosAtTheDoorSister
+            1: WhosAtTheDoorGrandpaScreen,
+            2: WhosAtTheDoorDeliveryPersonScreen,
+            3: WhosAtTheDoorSisterScreen,
+            4: WhosAtTheDoorNewNeighborScreen,
+            5: WhosAtTheDoorMotherScreen,
+            6: WhosAtTheDoorBrotherScreen,
+            7: WhosAtTheDoorGasManScreen,
+            8: WhosAtTheDoorCloseFriendScreen,
+            9: WhosAtTheDoorPersonWithFlatScreen,
+            10: WhosAtTheDoorCablePersonScreen,
+            11: WhosAtTheDoorCloseRelativeScreen
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,
