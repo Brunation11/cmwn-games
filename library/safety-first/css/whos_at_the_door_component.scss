@@ -16,7 +16,7 @@
         }
 
         &.delivery-person {
-            background-position: -4105px 0;
+            background-position: -4107px 0;
         }
 
         &.sister {
@@ -48,11 +48,11 @@
         }
 
         &.cable-person {
-            background-position: -4171px 0;
+            background-position: -4616px 0;
         }
 
-        &.relative {
-            background-position: -4637px 0;
+        &.close-relative {
+            background-position: -5127px 0;
         }
 
         > span {
@@ -177,7 +177,7 @@
 
         &.open-new-neighbor {
             .frame {
-                background-position: -811px 0;
+                background-position: -1595px 0;
             }
 
             .prompt {
@@ -225,13 +225,19 @@
 
         &.open-cable-person {
             .frame {
-                // background-position: -811px 0;
+                background-position: -3552px 0;
+            }
+
+            .prompt {
+                &::before {
+                    background-position: 101% 0;
+                }
             }
         }
 
         &.open-close-relative {
             .frame {
-                // background-position: -811px 0;
+                background-position: -3941px 0;
             }
         }
 
@@ -248,6 +254,7 @@
                 left: 100%;
                 font-size: 65px;
                 width: 90%;
+                text-shadow: -5px 5px 2px $color-black;
             }
         }
 
