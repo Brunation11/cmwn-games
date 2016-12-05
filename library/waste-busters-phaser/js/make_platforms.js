@@ -1,8 +1,6 @@
 import addItems from 'shared/phaser/methods/add_items/0.1';
 
 export default function () {
-    const h = 80;
-
     const crops = [
         [200, 0, 240, 96],
         [790, 0, 350, 96],
@@ -15,30 +13,9 @@ export default function () {
         [605, 28, 0, 80],
     ];
 
-    const platformParams = [
-        [[130, 1 * h], 0],
-        [[350, 2 * h], 1],
-        [[950, 2 * h], 2],
-        [[1050, 3 * h], 0],
-        [[2650, 1 * h], 2],
-        [[3600, 3 * h], 0],
-    ];
+    const platformParams = this.opts.setPlatforms || [];
 
-    const locations = [
-        [100, 3 * h],
-        [600, 3 * h],
-        [650, 1 * h],
-        [1350, 1 * h],
-        [1400, 3 * h],
-        [1700, 2 * h],
-        [1900, 1 * h],
-        [2050, 3 * h],
-        [2300, 2 * h],
-        [2550, 3 * h],
-        [2800, 2 * h],
-        [3000, 3 * h],
-        [3300, 2 * h],
-    ];
+    const locations = this.opts.locations || [];
 
     var platformOpts = [];
 

@@ -29,9 +29,10 @@ export default {
     hitSomething: function (p, i = 1, d = -1) {
         if (this.isHit) return;
         this.isHit = true;
-        p.body.velocity.y = -200;
+        p.body.velocity.y = -1 * this.opts.hitVelocity;
 
-        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ? d : -1 * d) * 200;
+        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ?
+            d : -1 * d) * this.opts.hitVelocity;
 
         setTimeout(() => {
             this.isHit = false;
@@ -44,18 +45,18 @@ export default {
         // Removes the recyclying from the screen
         recyclying.kill();
         //  update the lives
-        this.data.score += 100;
+        this.data.score += this.opts.recyclingScore;
         this.helpers.emitData.call(this);
     },
     collectRainbowRecycling: function (player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
         //  update the lives
-        this.data.score += 300;
+        this.data.score += this.opts.rainbowRecyclyingScore;
         this.helpers.emitData.call(this);
     },
     collectHeart: function (player, heart) {
-        if (this.data.lives === 3) return;
+        if (this.data.lives === this.opts.maxLives) return;
         // Removes the heart from the screen
         heart.kill();
         //  update the lives
@@ -63,7 +64,7 @@ export default {
         this.helpers.emitData.call(this);
     },
     collectBags: function (player, bag) {
-        if (this.data.bagCount === 5) return;
+        if (this.data.bagCount === this.opts.maxBags) return;
         // Removes the bag from the screen
         bag.kill();
         //  update the bagCount
@@ -72,9 +73,9 @@ export default {
         this.helpers.emitData.call(this);
     },
     updatePlayer: function () {
-        if (this.data.bagCount === 5) {
+        if (this.data.bagCount === this.opts.maxBags) {
             this.player.loadTexture('turtle5', 0);
-        } else if (this.data.bagCount >= 3) {
+        } else if (this.data.bagCount >= this.opts.maxBags / 2) {
             this.player.loadTexture('turtle3', 0);
         } else {
             this.player.loadTexture('turtle', 0);
@@ -85,13 +86,13 @@ export default {
         a.body.velocity.y = 0;
     },
     loadTruck: function (player, truck) {
-        if (truck.driving || this.data.bagCount !== 5) return;
+        if (truck.driving || this.data.bagCount !== this.opts.maxBags) return;
         truck.driving = true;
         truck.animations.play('drive');
         this.data.bagCount = 0;
         this.data.trucks++;
         this.helpers.updatePlayer.call(this);
-        if (this.data.trucks === 3) this.doors.children[0].animations.play('open');
+        if (this.data.trucks === this.opts.maxTrucks) this.doors.children[0].animations.play('open');
         this.helpers.emitData.call(this);
     },
     makeBackground,
@@ -108,16 +109,14 @@ export default {
             scale: [.5, .5],
             collideWorldBounds: false,
             left: this.game.world.width - 90,
-            // left: 200,
             top: 0,
         }]);
 
         this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
     },
     exit: function () {
-        if (this.data.trucks !== 3) return;
+        if (this.data.trucks !== this.opts.maxTrucks) return;
         this.data.complete = true;
-        this.player.body.velocity.x = 0;
         this.player.body.collideWorldBounds = false;
         this.helpers.emitData.call(this);
     }

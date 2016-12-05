@@ -72,20 +72,24 @@ export default function () {
     };
 
     var truckNumber = 1;
-    var truckTotal = 3;
+    var truckTotal = this.opts.maxTrucks;
 
-    var objects = _.shuffle([]
-        .concat(_.times(1, () => 'squareBush'))
-        .concat(_.times(1, () => 'roundBush'))
-        .concat(_.times(0, () => 'snake'))
-        .concat(_.times(15, () => 'bag'))
-        .concat(_.times(10, () => ''))
-        .concat(_.times(1, () => 'rock'))
-        .concat(_.times(1, () => 'stump'))
-        .concat(_.times(1, () => 'heart'))
-        .concat(_.times(1, () => 'recycle'))
-        .concat(_.times(1, () => 'raibowRecycle'))
-    );
+    var getObjects = function (objects = [], amounts = {}) {
+        return objects.concat(_.shuffle([]
+            .concat(_.times(amounts.squareBush || 0, () => 'squareBush'))
+            .concat(_.times(amounts.roundBush || 0, () => 'roundBush'))
+            .concat(_.times(amounts.snake || 0, () => 'snake'))
+            .concat(_.times(amounts.bag || 0, () => 'bag'))
+            .concat(_.times(amounts.blank || 0, () => ''))
+            .concat(_.times(amounts.rock || 0, () => 'rock'))
+            .concat(_.times(amounts.stump || 0, () => 'stump'))
+            .concat(_.times(amounts.heart || 0, () => 'heart'))
+            .concat(_.times(amounts.recycle || 0, () => 'recycle'))
+            .concat(_.times(amounts.raibowRecycle || 0, () => 'raibowRecycle'))
+        ));
+    };
+
+    var objects = getObjects([], this.opts.platformItemAmounts);
 
     var locations = {
         squareBush: [],
@@ -117,16 +121,7 @@ export default function () {
         return objects.length;
     });
 
-    objects = objects.concat(_.shuffle([]
-        .concat(_.times(1, () => 'squareBush'))
-        .concat(_.times(1, () => 'roundBush'))
-        .concat(_.times(2, () => 'snake'))
-        .concat(_.times(5, () => ''))
-        .concat(_.times(0, () => 'bag'))
-        .concat(_.times(1, () => 'rock'))
-        .concat(_.times(1, () => 'stump'))
-    ));
-
+    objects = getObjects(objects, this.opts.groundItemAmounts);
     objects.unshift('');
 
     _.every(this.ground.children, platform => {
