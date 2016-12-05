@@ -20,6 +20,8 @@ import WhosAtTheDoorCloseFriendScreen from './components/whos_at_the_door_close_
 import WhosAtTheDoorPersonWithFlatScreen from './components/whos_at_the_door_person_with_flat_screen';
 import WhosAtTheDoorCablePersonScreen from './components/whos_at_the_door_cable_person_screen';
 import WhosAtTheDoorCloseRelativeScreen from './components/whos_at_the_door_close_relative_screen';
+import InfoGoodJobScreen from './components/info_good_job_screen';
+import LabyrinthOutdoorsScreen from './components/labyrinth_outdoors_screen';
 // import BulbsScreen from './components/bulbs_screen';
 // import PigScreen from './components/pig_screen';
 // import InfoScreen from './components/info_screen';
@@ -43,19 +45,21 @@ SafetyFirst = (
             0: iOSScreen,
             // 1: TitleScreen,
             // 2: MeetTheTeamScreen,
-            // 3: InfoLetsSeeScreen,
-            // 4: DingDongScreen
-            1: WhosAtTheDoorGrandpaScreen,
-            2: WhosAtTheDoorDeliveryPersonScreen,
-            3: WhosAtTheDoorSisterScreen,
-            4: WhosAtTheDoorNewNeighborScreen,
-            5: WhosAtTheDoorMotherScreen,
-            6: WhosAtTheDoorBrotherScreen,
-            7: WhosAtTheDoorGasManScreen,
-            8: WhosAtTheDoorCloseFriendScreen,
-            9: WhosAtTheDoorPersonWithFlatScreen,
-            10: WhosAtTheDoorCablePersonScreen,
-            11: WhosAtTheDoorCloseRelativeScreen
+            // 1: InfoLetsSeeScreen,
+            // 2: DingDongScreen,
+            // 3: WhosAtTheDoorGrandpaScreen,
+            // 4: WhosAtTheDoorDeliveryPersonScreen,
+            // 5: WhosAtTheDoorSisterScreen,
+            // 6: WhosAtTheDoorNewNeighborScreen,
+            // 7: WhosAtTheDoorMotherScreen,
+            // 8: WhosAtTheDoorBrotherScreen,
+            // 9: WhosAtTheDoorGasManScreen,
+            // 10: WhosAtTheDoorCloseFriendScreen,
+            // 9: WhosAtTheDoorPersonWithFlatScreen,
+            // 11: WhosAtTheDoorCablePersonScreen,
+            // 12: WhosAtTheDoorCloseRelativeScreen,
+            // 13: InfoGoodJobScreen,
+            1: LabyrinthOutdoorsScreen
             // 2: BulbsScreen,
             // 3: PigScreen,
             // 4: InfoScreen,
