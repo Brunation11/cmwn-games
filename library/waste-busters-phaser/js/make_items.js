@@ -82,17 +82,17 @@ export default function () {
             crop: crops[8]
         }, treeDefaultProps),
         tree4: _.defaults({
-            crop: crops[6],
+            crop: crops[9],
             body: null,
         }, treeDefaultProps),
         tree5: _.defaults({
-            crop: crops[7]
+            crop: crops[10]
         }, treeDefaultProps),
         tree6: _.defaults({
-            crop: crops[8]
+            crop: crops[11]
         }, treeDefaultProps),
         tree7: _.defaults({
-            crop: crops[8]
+            crop: crops[12]
         }, treeDefaultProps),
     };
 
@@ -165,9 +165,26 @@ export default function () {
 
     var placeObject = function (platform, up, over) {
         var object = objects.shift();
+        switch (object) {
+            case 'tree1':
+                up = 160;
+                break;
+            case 'tree2':
+            case 'tree3':
+            case 'tree5':
+            case 'tree7':
+                up = 140;
+                break;
+            case 'tree4':
+                up = 155;
+                break;
+            case 'tree6':
+                up = 145;
+                break;
+        }
         if (locations[object]) {
             locations[object].push({
-                top: platform.top - (~object.indexOf('tree') ? 160 : up),
+                top: platform.top - up,
                 left: platform.left + over,
             });
         }
