@@ -44,7 +44,7 @@
     text-shadow: text-stroke($size, $color, $correction);
 }
 
-@mixin score-meter($steps: 4, $meter-color: $bright-green) {
+@mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;
     position: relative;
     z-index: 1;
@@ -52,23 +52,6 @@
     width: 200px;
     height: 20px;
     vertical-align: middle;
-
-    &::before {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: -40px;
-        z-index: 2;
-
-        background-image: url('../media/_assets/_sprites/sprites.game2.4-01.png');
-        background-repeat: no-repeat;
-        background-position: -20px -24px;
-        background-size: 500px;
-
-        width: 60px;
-        height: 60px;
-        content: '';
-    }
 
     &::after {
         position: absolute;
@@ -84,15 +67,14 @@
     }
 
     span {
-        display: none;
-    }
-
-    div {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        color: transparent;
+        font-size: 0;
 
         &::before {
             display: block;
@@ -128,9 +110,41 @@
 
     @for $i from 0 through $steps {
         &.score-#{$i} {
-            div::after {
+            span::after {
                 width: percentage($i / $steps);
             }
         }
+    }
+}
+
+@mixin life-tracker() {
+    &::before,
+    &::after {
+        content: '';
+    }
+
+    &::before,
+    span,
+    &::after {
+        display: inline-block;
+        position: relative;
+        transition: opacity .5s;
+        opacity: .5;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+
+    span {
+        color: transparent;
+        font-size: 0;
+    }
+
+    &.score-1::before,
+    &.score-2::before,
+    &.score-2 span,
+    &.score-3::before,
+    &.score-3 span,
+    &.score-3::after {
+        opacity: 1;
     }
 }

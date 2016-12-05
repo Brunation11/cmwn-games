@@ -17,7 +17,7 @@
 
         &::before {
             display: block;
-            background-image: url($media-server + 'SpritesAnimations/game1.timelevelscore.png');
+            background-image: url($media + 'SpritesAnimations/game1.timelevelscore.png');
             background-size: auto 45px;
             width: 100px;
             height: 45px;
@@ -35,6 +35,7 @@
         bottom: 10px;
         left: 2%;
         border-radius: 20px;
+        box-shadow: 0 0 10px $grass;
         background-color: $grass;
         padding: 10px 20px;
         width: 96%;
@@ -46,12 +47,76 @@
     }
 
     .score {
+        &.life,
+        &.bags {
+            &::before {
+                display: block;
+                position: absolute;
+                top: -10px;
+                left: -40px;
+                z-index: 2;
+                background-repeat: no-repeat;
+                width: 60px;
+                height: 45px;
+                content: '';
+            }
+        }
+
         &.life {
             @include score-meter(4, $bright-green);
+
+            &::before {
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-position: -130px 0;
+                background-size: 200px;
+            }
         }
 
         &.bags {
             @include score-meter(5, $light-purple);
+
+            &::before {
+                left: -25px;
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-repeat: no-repeat;
+                background-position: -65px 0;
+                background-size: 170px;
+                width: 40px;
+            }
+        }
+
+        &.lives,
+        &.trucks {
+            &::before,
+            span,
+            &::after {
+                background-image: url($media + 'SpritesAnimations/game1.metericons.png');
+                background-repeat: no-repeat;
+                background-size: 170px;
+                height: 40px;
+            }
+        }
+
+        &.lives {
+            @include life-tracker;
+
+            &::before,
+            span,
+            &::after {
+                background-position: -120px 0;
+                width: 40px;
+            }
+        }
+
+        &.trucks {
+            @include life-tracker;
+
+            &::before,
+            span,
+            &::after {
+                background-position: 0 0;
+                width: 60px;
+            }
         }
     }
 }

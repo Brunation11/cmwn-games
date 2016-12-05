@@ -17,6 +17,10 @@ export default function (props, ref, key) {
                 src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.timelevelscore.png'}
                 className="hidden"
             />
+            <skoash.Image
+                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.metericons.png'}
+                className="hidden"
+            />
             <GameEmbedder
                 src="../waste-busters-phaser/index.html?v=1"
                 controller={_.get(props, 'data.d-pad')}
@@ -34,15 +38,11 @@ export default function (props, ref, key) {
                     <Score
                         className="life"
                         correct={4 - _.get(props, 'data.data.hits') || 0}
-                    >
-                        <div/>
-                    </Score>
+                    />
                     <Score
                         className="bags"
                         correct={_.get(props, 'data.data.bagCount')}
-                    >
-                        <div/>
-                    </Score>
+                    />
                 </skoash.Component>
                 <skoash.Component
                     className="middle"
@@ -56,7 +56,7 @@ export default function (props, ref, key) {
                     />
                 </skoash.Component>
                 <skoash.Component
-                    className="left"
+                    className="right"
                 >
                     <Score
                         className="lives"

@@ -129,7 +129,6 @@ export default function () {
     objects.unshift('');
 
     _.every(this.ground.children, platform => {
-        var object;
         if (truckNumber <= truckTotal &&
             platform.left > this.game.world.width * truckNumber / (truckTotal + 1.75)) {
             locations.truck.push({
@@ -139,13 +138,8 @@ export default function () {
             truckNumber++;
             return true;
         }
-        object = objects.shift();
-        if (locations[object]) {
-            locations[object].push({
-                top: platform.top - 50,
-                left: platform.left + 30,
-            });
-        }
+        if (platform.left > this.game.world.width - 200) return false;
+        placeObject(platform, 50, 30);
         return objects.length;
     });
 
