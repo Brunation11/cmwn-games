@@ -1,3 +1,5 @@
+import ClassNames from 'classnames';
+
 import Score from 'shared/components/score/0.1';
 import Repeater from 'shared/components/repeater/0.1';
 import Selectable from 'shared/components/selectable/0.1';
@@ -5,42 +7,57 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 
 const INCREMENT = 10;
 const DECREMENT = 10;
-
-var selectRespond = function (ref, isCorrect, correct, incorrect) {
-    if (isCorrect) {
-        correct++;
-    } else {
-        ref = 'incorrect';
-        incorrect++;
-    }
-
-    playAudio.call(this, ref, playAudio.bind(this, 'dummy', _.noop));
-    changeScore.call(this, correct, incorrect);
-};
-
-var playAudio = function (ref, cb) {
-    this.updateGameState({
-        path: 'media',
-        data: {
-            play: ref
-        },
-        callback: cb,
-    });
-};
-
-var changeScore = function (correct, incorrect) {
-    debugger;
-    this.updateGameState({
-        path: 'score',
-        data: {
-            correct,
-            incorrect,
-        },
-    });
-};
-
+const CORRECT_BUBBLES = 10;
 
 export default function (props, ref, key) {
+    var selectRespond = function (ref, isCorrect) {
+        var correct = _.get(props, 'data.score.correct', 0);
+        var incorrect = _.get(props, 'data.score.incorrect', 0);
+
+        if (isCorrect) {
+            correct++;
+            updateMeter.call(this, correct);
+        } else {
+            ref = 'incorrect';
+            incorrect++;
+        }
+
+        playAudio.call(this, ref, playAudio.bind(this, 'dummy', _.noop));
+
+        this.updateGameState({
+            path: 'score',
+            data: {
+                correct,
+                incorrect,
+            },
+        });
+
+    };
+    
+    var playAudio = function (ref, cb) {
+        debugger;
+        this.updateGameState({
+            path: 'media',
+            data: {
+                play: ref
+            },
+            callback: cb
+        });
+    };
+    
+    var updateMeter = function (correct) {
+        var percent = (correct / CORRECT_BUBBLES) * 100;
+        playAudio.call(this, 'slide-up', _.noop);
+
+        this.updateGameState({
+            path: 'meter',
+            data: {
+                height: percent,
+                complete: percent >= 100
+            }
+        });
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -120,14 +137,29 @@ export default function (props, ref, key) {
                 />
             </MediaCollection>
             <Repeater className="bubbles" ammount={14} />
-            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/IMG_7.1.png`} className="clean-water"/>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/IMG_7.1.png`} className="clean-water" />
+            <skoash.Component className="meter">
+                <skoash.Image
+                    src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/stroke.png`}
+                    className="stroke"
+                />
+                <skoash.Component className="fill">
+                    <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}>
+                        <skoash.Image
+                            src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/meter.fill.png`}
+                        />
+                    </skoash.Component>
+                    <skoash.Component style={{'height': _.get(props, 'data.meter.height', 0) + '%'}}
+                        className={ClassNames({'complete': _.get(props, 'data.meter.complete', false)})}
+                    >
+                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_1.1.png`} />
+                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/sickfish.png`} />
+                    </skoash.Component>
+                </skoash.Component>
+            </skoash.Component>
             <Selectable
                 ref="selectable"
-                selectRespond={function (ref, isCorrect) {
-                    var correct = _.get(props, 'data.score.correct', 0);
-                    var incorrect = _.get(props, 'data.score.incorrect', 0);
-                    selectRespond.call(this, ref, isCorrect, correct, incorrect);
-                }}
+                selectRespond={selectRespond}
                 selectClass="HIGHLIGHTED"
                 list={[
                     <skoash.ListItem correct data-ref="swim" />,
