@@ -121,6 +121,7 @@ export default function () {
         .concat(_.times(1, () => 'squareBush'))
         .concat(_.times(1, () => 'roundBush'))
         .concat(_.times(2, () => 'snake'))
+        .concat(_.times(5, () => ''))
         .concat(_.times(0, () => 'bag'))
         .concat(_.times(1, () => 'rock'))
         .concat(_.times(1, () => 'stump'))
@@ -130,7 +131,7 @@ export default function () {
 
     _.every(this.ground.children, platform => {
         if (truckNumber <= truckTotal &&
-            platform.left > this.game.world.width * truckNumber / (truckTotal + 1.75)) {
+            platform.left > this.game.world.width * truckNumber / (truckTotal + 1.5)) {
             locations.truck.push({
                 top: platform.top - 50,
                 left: platform.left,

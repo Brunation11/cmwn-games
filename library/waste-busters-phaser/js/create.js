@@ -38,13 +38,8 @@ export default function () {
         score: 0,
         lives: 1,
         trucks: 0,
+        start: true,
     };
 
-    //  emit event with data to skoash game
-    this.emitEvent({
-        updateGameState: {
-            path: 'data',
-            data: this.data
-        }
-    });
+    this.helpers.emitData.call(this);
 }

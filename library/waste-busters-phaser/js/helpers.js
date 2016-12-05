@@ -10,7 +10,7 @@ export default {
         //  emit event with data to skoash game
         this.emitEvent({
             updateGameState: {
-                path: 'data',
+                path: 'game',
                 data: this.data
             }
         });

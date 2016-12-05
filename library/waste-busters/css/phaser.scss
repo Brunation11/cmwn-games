@@ -119,4 +119,51 @@
             }
         }
     }
+
+    .level-score,
+    .level {
+        text-shadow: 2px 2px 5px $black;
+        font-size: 32px;
+
+        &::before {
+            display: inline-block;
+            background-image: url($media + 'SpritesAnimations/game1.timelevelscore.png');
+            background-repeat: no-repeat;
+            background-size: auto 40px;
+            height: 40px;
+            vertical-align: middle;
+            content: '';
+        }
+    }
+
+    .level-score {
+        &::before {
+            background-position: -85px 0;
+            width: 100px;
+        }
+    }
+
+    .level {
+        &::before {
+            background-position: -185px 0;
+            width: 90px;
+        }
+
+        &::after {
+            display: inline-block;
+            background-image: url($media + 'SpritesAnimations/game1.levelnumbers.png');
+            background-repeat: no-repeat;
+            background-size: auto 100px;
+            width: 30px;
+            height: 40px;
+            vertical-align: middle;
+            content: '';
+        }
+
+        @for $i from 1 through 5 {
+            &.level-#{$i}::after {
+                background-position: #{($i - 1) * -34}px -5px;
+            }
+        }
+    }
 }
