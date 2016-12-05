@@ -1,5 +1,5 @@
 export default {
-    level: 2,
+    level: 5,
     hitVelocity: 200,
     recyclingScore: 100,
     rainbowRecyclyingScore: 300,
@@ -20,7 +20,6 @@ export default {
         [1000, 80],
         [1200, 160],
         [1300, 240],
-        [1600, 240],
         [1650, 80],
         [1800, 160],
         [2000, 240],
