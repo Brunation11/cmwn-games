@@ -42,6 +42,7 @@ export default function (props, ref, key, opts = {}) {
             <GameEmbedder
                 src={getGameSrc()}
                 controller={_.get(props, 'data.d-pad')}
+                complete={_.get(props, 'data.game.complete', false)}
             />
             <Timer
                 countDown
@@ -53,6 +54,7 @@ export default function (props, ref, key, opts = {}) {
             />
             <skoash.Component
                 className="bottom"
+                complete={_.get(props, 'data.game.complete', false)}
             >
                 <skoash.Component
                     className="left"

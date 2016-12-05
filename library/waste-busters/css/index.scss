@@ -105,11 +105,11 @@ button {
     &.next-screen {
         right: 15px;
         opacity: 0;
-        background-position: -360px -100px;
+        background-position: -620px -100px;
         pointer-events: none;
 
         &:hover {
-            background-position: -360px -365px;
+            background-position: -620px -365px;
         }
     }
 
