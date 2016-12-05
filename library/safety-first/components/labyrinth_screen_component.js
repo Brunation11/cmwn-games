@@ -48,7 +48,6 @@ export default function (props, ref, key, opts = {}) {
                 sfx: 'disable',
             },
         });
-
         setTimeout(() => {
             this.updateGameState({
                 path: 'game',
@@ -192,22 +191,20 @@ export default function (props, ref, key, opts = {}) {
 
     return (
         <skoash.Screen
-            {...props}
-            ref={ref}
-            key={key}
-            id={opts.id}
+          {...props}
+          ref={ref}
+          key={key}
+          id={opts.id}
         >
             <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
             <skoash.Image className="hidden" src="media/_images/frame.lvlup.png" />
             <skoash.Image className="hidden" src="media/_images/frame.sorry.png" />
             <skoash.Image className="hidden" src="media/_images/frame.win.png" />
             <skoash.Image className="hidden" src="media/_images/inside.meter.png" />
-
             <MediaCollection
                 play={_.get(props, 'data.game.vo')}
                 children={opts.vos}
             />
-
             <MediaCollection
                 play={_.get(props, 'data.game.sfx')}
                 children={[
@@ -219,7 +216,6 @@ export default function (props, ref, key, opts = {}) {
                     />,
                 ]}
             />
-
             <Reveal
                 openOnStart={opts.openOnStart}
                 openReveal={_.get(props, 'data.openReveal')}
@@ -228,7 +224,6 @@ export default function (props, ref, key, opts = {}) {
                 onClose={onCloseReveal}
                 list={opts.revealList}
             />
-
             <skoash.Component className="left">
                 <skoash.Image className="avatar" src="media/_images/mr.eco.avatar.png" />
                 <Score
@@ -237,7 +232,6 @@ export default function (props, ref, key, opts = {}) {
                     correct={_.get(props, 'data.correct', 0)}
                 />
             </skoash.Component>
-
             <Labyrinth
                 img="media/_images/floor.plan.png"
                 map="media/_images/floor.plan-BW.png"
@@ -256,7 +250,6 @@ export default function (props, ref, key, opts = {}) {
                 items={items}
                 enemies={enemies}
             />
-
             <skoash.Component className="level-container">
                 <skoash.Image className="level" src="media/_images/text.level.png" />
                 <span>{opts.levelNumber}</span>
@@ -270,10 +263,14 @@ export default function (props, ref, key, opts = {}) {
                     restart={_.get(props, 'data.game.start', false)}
                     complete={_.get(props, 'data.game.complete', false)}
                 />
-                <h3>TURN OFF</h3>
-                <p>the lights that other<br/>people leave on!</p>
+                <h3>
+                    TURN OFF
+                </h3>
+                <p>
+                    the lights that other<br/>
+                    people leave on!
+                </p>
             </skoash.Component>
-
             <DPad
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.stop', false)}
