@@ -17,6 +17,8 @@ export default function () {
     [this.player, this.obstacles, this.helpers.hitObstacle],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
+    [this.trees, this.ground, this.helpers.stay],
+    [this.trees, this.platforms, this.helpers.stay],
     [this.enemies, this.ground, this.helpers.stay],
     [this.enemies, this.platforms, this.helpers.stay],
     [this.bags, this.ground, this.helpers.stay],

@@ -40,6 +40,9 @@ export default {
         heart: 1,
         recycle: 1,
         raibowRecycle: 1,
+        tree1: 1,
+        tree2: 1,
+        tree3: 1,
     },
     groundItemAmounts: {
         squareBush: 1,

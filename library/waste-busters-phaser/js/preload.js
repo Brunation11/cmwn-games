@@ -10,6 +10,8 @@ export default function () {
     ['items', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.5.png'],
     // 1246 x 100 pixels
     ['logs', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.logs.png'],
+    // 2100 x 360 pixels
+    ['trees', ENVIRONMENT.MEDIA + 'SpritesAnimations/game1.trees.png'],
     ]);
 
     loadAssets.call(this, 'spritesheet', [

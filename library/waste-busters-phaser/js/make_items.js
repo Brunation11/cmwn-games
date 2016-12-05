@@ -8,12 +8,27 @@ export default function () {
         [465, 0, 155, 140],
         [620, 0, 155, 140],
         [775, 0, 155, 140],
+        [0, 0, 300, 360],
+        [300, 0, 300, 360],
+        [600, 0, 300, 360],
+        [900, 0, 300, 360],
+        [1200, 0, 300, 360],
+        [1500, 0, 300, 360],
+        [1800, 0, 300, 360],
     ];
 
     const generalDefaultProps = {
         image: 'items',
         gravityY: 12,
         body: [115, 100, 20, 50],
+        scale: [.5, .5],
+        collideWorldBounds: false,
+    };
+
+    const treeDefaultProps = {
+        image: 'trees',
+        gravityY: 12,
+        body: [300, 325, 0, 0],
         scale: [.5, .5],
         collideWorldBounds: false,
     };
@@ -56,6 +71,29 @@ export default function () {
             scale: [.5, .5],
             collideWorldBounds: false,
         },
+        tree1: _.defaults({
+            crop: crops[6],
+            body: null,
+        }, treeDefaultProps),
+        tree2: _.defaults({
+            crop: crops[7]
+        }, treeDefaultProps),
+        tree3: _.defaults({
+            crop: crops[8]
+        }, treeDefaultProps),
+        tree4: _.defaults({
+            crop: crops[6],
+            body: null,
+        }, treeDefaultProps),
+        tree5: _.defaults({
+            crop: crops[7]
+        }, treeDefaultProps),
+        tree6: _.defaults({
+            crop: crops[8]
+        }, treeDefaultProps),
+        tree7: _.defaults({
+            crop: crops[8]
+        }, treeDefaultProps),
     };
 
     const groups = {
@@ -69,6 +107,13 @@ export default function () {
         recycle: 'recycles',
         raibowRecycle: 'rainbowRecycles',
         truck: 'trucks',
+        tree1: 'trees',
+        tree2: 'trees',
+        tree3: 'trees',
+        tree4: 'trees',
+        tree5: 'trees',
+        tree6: 'trees',
+        tree7: 'trees',
     };
 
     var truckNumber = 1;
@@ -86,6 +131,13 @@ export default function () {
             .concat(_.times(amounts.heart || 0, () => 'heart'))
             .concat(_.times(amounts.recycle || 0, () => 'recycle'))
             .concat(_.times(amounts.raibowRecycle || 0, () => 'raibowRecycle'))
+            .concat(_.times(amounts.tree1 || 0, () => 'tree1'))
+            .concat(_.times(amounts.tree2 || 0, () => 'tree2'))
+            .concat(_.times(amounts.tree3 || 0, () => 'tree3'))
+            .concat(_.times(amounts.tree4 || 0, () => 'tree4'))
+            .concat(_.times(amounts.tree5 || 0, () => 'tree5'))
+            .concat(_.times(amounts.tree6 || 0, () => 'tree6'))
+            .concat(_.times(amounts.tree7 || 0, () => 'tree7'))
         ));
     };
 
@@ -102,13 +154,20 @@ export default function () {
         recycle: [],
         raibowRecycle: [],
         truck: [],
+        tree1: [],
+        tree2: [],
+        tree3: [],
+        tree4: [],
+        tree5: [],
+        tree6: [],
+        tree7: [],
     };
 
     var placeObject = function (platform, up, over) {
         var object = objects.shift();
         if (locations[object]) {
             locations[object].push({
-                top: platform.top - up,
+                top: platform.top - (~object.indexOf('tree') ? 160 : up),
                 left: platform.left + over,
             });
         }
