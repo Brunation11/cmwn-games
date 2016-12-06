@@ -15,6 +15,7 @@ export default function () {
     [this.player, this.bushes, this.helpers.onBump],
     [this.player, this.enemies, this.helpers.htiEnemy],
     [this.player, this.obstacles, this.helpers.hitObstacle],
+    [this.player, this.logs, this.helpers.onBump],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.trees, this.ground, this.helpers.stay],
@@ -35,6 +36,7 @@ export default function () {
     [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
     [this.player, this.trucks, this.helpers.loadTruck],
     [this.player, this.doors, this.helpers.exit],
+    // [this.player, this.logs, this.helpers.shrink],
     ]);
 
     if (!this.data.levels[this.opts.level].complete) {

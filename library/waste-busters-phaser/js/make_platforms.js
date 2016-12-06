@@ -37,11 +37,13 @@ export default function () {
     });
 
     addItems.call(this, {
-        group: 'platforms', defaultOpts: {
+        group: 'platforms',
+        defaultOpts: {
             top: 300,
             collideWorldBounds: false,
             image: 'platforms',
             scale: [.5, .5],
+            checkCollisionDown: false,
             checkCollisionRight: false,
             checkCollisionLeft: false,
         }

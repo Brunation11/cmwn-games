@@ -41,6 +41,8 @@ export default {
         this.data.hits += i;
         this.helpers.emitData.call(this);
     },
+    shrink: function () {
+    },
     collectRecycling: function (player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
@@ -101,6 +103,36 @@ export default {
     makeBackground,
     makeGround,
     makePlatforms,
+    makeLogs: function () {
+        const crops = [
+            [100, 0, 220, 100],
+            [415, 0, 415, 100],
+            [830, 0, 415, 100],
+        ];
+
+        _.each(this.platforms.children, platform => {
+            var index;
+            // if (true) {
+            if (Math.random() < this.opts.platformLogChance) {
+                platform.hasLog = true;
+                index = platform.width > 300 ? 3 : platform.width > 150 ? 2 : 1;
+                addItems.call(this, {
+                    group: 'logs',
+                    defaultOpts: {
+                        image: 'logs',
+                        scale: [.5, .5],
+                        collideWorldBounds: false,
+                        checkCollisionRight: false,
+                        checkCollisionLeft: false,
+                        crop: crops[Math.floor(Math.random() * index)],
+                    }
+                }, [{
+                    top: platform.top - 35,
+                    left: platform.left,
+                }]);
+            }
+        });
+    },
     makeItems,
     makeDoor: function () {
         addItems.call(this, {

@@ -15,9 +15,10 @@ export default function () {
 
     this.helpers.makeBackground.call(this);
     this.helpers.makeGround.call(this);
-    this.helpers.makePlatforms.call(this);
-    this.helpers.makeItems.call(this);
     this.helpers.makeDoor.call(this);
+    this.helpers.makePlatforms.call(this);
+    // this.helpers.makeLogs.call(this);
+    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,
@@ -29,7 +30,6 @@ export default function () {
         rightFrames: [6, 7, 8, 9, 10, 11],
         leftFrames: [5, 4, 3, 2, 1, 0],
         scale: [.15, .15],
-        checkCollisionUp: false,
     });
 
     this.data = _.defaults({
