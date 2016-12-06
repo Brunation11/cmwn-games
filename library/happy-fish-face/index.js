@@ -29,8 +29,8 @@ var HappyFishFace = (
             //4: HealthyWaterScreen,
             //5: CleanWaterScreen,
             //6: BubbleUpScreen,
-            2: MultiBubblesScreen,
-            //8: PollutesWaterScreen,
+            //7: MultiBubblesScreen,
+            2: PollutesWaterScreen,
             //9: TrashScreen,
             //10: FlipScreen,
         }}

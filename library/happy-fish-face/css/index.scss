@@ -555,7 +555,7 @@ p {
     background-size: auto 200px;
     background-repeat: no-repeat;
     background-position: -727px center;
-    background-image: url(../media/_images/_S_PollutesWater/img_8.2.png);
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
   }
 
   img {
