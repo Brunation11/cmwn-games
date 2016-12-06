@@ -13,16 +13,18 @@ export default function (props, ref, key) {
     var selectRespond = function (ref, isCorrect) {
         var correct = _.get(props, 'data.score.correct', 0);
         var incorrect = _.get(props, 'data.score.incorrect', 0);
+        var cbRef = 'dummy';
 
         if (isCorrect) {
             correct++;
+            cbRef = 'slide-up';
             updateMeter.call(this, correct);
         } else {
-            ref = 'incorrect';
             incorrect++;
+            ref = 'incorrect';
         }
 
-        playAudio.call(this, ref, playAudio.bind(this, 'dummy', _.noop));
+        playAudio.call(this, ref, playAudio.bind(this, cbRef, _.noop));
 
         this.updateGameState({
             path: 'score',
@@ -35,6 +37,7 @@ export default function (props, ref, key) {
     };
     
     var playAudio = function (ref, cb) {
+        debugger;
         this.updateGameState({
             path: 'media',
             data: {
@@ -46,8 +49,6 @@ export default function (props, ref, key) {
     
     var updateMeter = function (correct) {
         var percent = (correct / CORRECT_BUBBLES) * 100;
-        playAudio.call(this, 'slide-up', _.noop);
-
         this.updateGameState({
             path: 'meter',
             data: {
@@ -133,6 +134,7 @@ export default function (props, ref, key) {
                     data-ref="slide-up"
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/SwervySlideUp.mp3`}
+                    volume={.4}
                 />
             </MediaCollection>
             <Repeater className="bubbles" ammount={14} />
