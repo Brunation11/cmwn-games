@@ -45,7 +45,7 @@ export default function () {
             rightSpeed: 150,
             stopFrame: 6,
         });
-    } else {
+    } else if (this.data.doorOpen) {
         this.player.body.velocity.x = 150;
         this.player.body.collideWorldBounds = false;
         this.player.animations.play('right');

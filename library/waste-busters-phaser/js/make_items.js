@@ -144,6 +144,13 @@ export default function () {
     var objects = getObjects([], this.opts.platformItemAmounts);
 
     var locations = {
+        tree1: [],
+        tree2: [],
+        tree3: [],
+        tree4: [],
+        tree5: [],
+        tree6: [],
+        tree7: [],
         squareBush: [],
         roundBush: [],
         snake: [],
@@ -154,32 +161,25 @@ export default function () {
         recycle: [],
         raibowRecycle: [],
         truck: [],
-        tree1: [],
-        tree2: [],
-        tree3: [],
-        tree4: [],
-        tree5: [],
-        tree6: [],
-        tree7: [],
     };
 
     var placeObject = function (platform, up, over) {
         var object = objects.shift();
         switch (object) {
             case 'tree1':
-                up = 160;
+                up += 110;
                 break;
             case 'tree2':
             case 'tree3':
             case 'tree5':
             case 'tree7':
-                up = 140;
+                up += 90;
                 break;
             case 'tree4':
-                up = 155;
+                up += 105;
                 break;
             case 'tree6':
-                up = 145;
+                up += 95;
                 break;
         }
         if (locations[object]) {
@@ -211,7 +211,7 @@ export default function () {
             return true;
         }
         if (platform.left > this.game.world.width - 200) return false;
-        placeObject(platform, 50, 30);
+        placeObject(platform, 20, 30);
         return objects.length;
     });
 
@@ -241,5 +241,9 @@ export default function () {
         drive.onComplete.add(() => {
             truck.body.velocity.x = 200;
         });
+    });
+
+    _.each(this.trees.children, tree => {
+        tree.sendToBack();
     });
 }

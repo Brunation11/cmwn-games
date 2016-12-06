@@ -92,7 +92,10 @@ export default {
         this.data.bagCount = 0;
         this.data.trucks++;
         this.helpers.updatePlayer.call(this);
-        if (this.data.trucks === this.opts.maxTrucks) this.doors.children[0].animations.play('open');
+        if (this.data.trucks === this.opts.maxTrucks) {
+            this.doors.children[0].animations.play('open');
+            this.data.doorOpen = true;
+        }
         this.helpers.emitData.call(this);
     },
     makeBackground,
@@ -113,11 +116,17 @@ export default {
         }]);
 
         this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
+        this.doors.children[0].animations.add('close', [6, 5, 4, 3, 2, 1, 0], 10, false);
     },
     exit: function () {
         if (this.data.trucks !== this.opts.maxTrucks) return;
+        if (this.data.complete) return;
         this.data.complete = true;
         this.player.body.collideWorldBounds = false;
         this.helpers.emitData.call(this);
+        setTimeout(() => {
+            this.doors.children[0].animations.play('close');
+            this.data.doorOpen = false;
+        }, 1500);
     }
 };
