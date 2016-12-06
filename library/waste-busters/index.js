@@ -30,6 +30,14 @@ let wasteBusters = (
         }}
         assets={[
             <skoash.Font name="Source Sans Pro" />,
+            <skoash.Image
+                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.timelevelscore.png'}
+                className="hidden"
+            />,
+            <skoash.Image
+                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.metericons.png'}
+                className="hidden"
+            />
         ]}
     />
 );
