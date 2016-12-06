@@ -16,6 +16,16 @@ export default function (props, ref, key, opts = {}) {
                 screenStart: true,
             },
         });
+
+        this.updateGameState({
+            path: ['game'],
+            data: _.defaults(_.get(props, 'gameState.data.game'), {
+                hits: 0,
+                bagCount: 0,
+                score: 0,
+                lives: 1,
+            }),
+        });
     };
 
     getGameSrc = function () {
@@ -42,30 +52,31 @@ export default function (props, ref, key, opts = {}) {
             <GameEmbedder
                 src={getGameSrc()}
                 controller={_.get(props, 'data.d-pad')}
-                complete={_.get(props, 'data.game.complete', false)}
+                complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
+                data={_.get(props, 'gameState.data.game', {})}
             />
             <Timer
                 countDown
                 timeout={120000}
-                stop={_.get(props, 'data.game.complete', false)}
-                complete={_.get(props, 'data.game.complete', false)}
-                checkComplete={_.get(props, 'data.game.start', false)}
-                restart={_.get(props, 'data.game.start', false)}
+                stop={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
+                complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
+                checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
+                restart={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
             />
             <skoash.Component
                 className="bottom"
-                complete={_.get(props, 'data.game.complete', false)}
+                complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
             >
                 <skoash.Component
                     className="left"
                 >
                     <Score
                         className="life"
-                        correct={4 - _.get(props, 'data.game.hits') || 0}
+                        correct={4 - _.get(props, 'gameState.data.game.hits') || 0}
                     />
                     <Score
                         className="bags"
-                        correct={_.get(props, 'data.game.bagCount')}
+                        correct={_.get(props, 'gameState.data.game.bagCount')}
                     />
                 </skoash.Component>
                 <skoash.Component
@@ -73,7 +84,7 @@ export default function (props, ref, key, opts = {}) {
                 >
                     <Score
                         className="level-score"
-                        correct={_.get(props, 'data.game.score')}
+                        correct={_.get(props, 'gameState.data.game.score')}
                     />
                     <skoash.Component
                         className={classNames('level', `level-${opts.level}`)}
@@ -84,11 +95,11 @@ export default function (props, ref, key, opts = {}) {
                 >
                     <Score
                         className="lives"
-                        correct={_.get(props, 'data.game.lives')}
+                        correct={_.get(props, 'gameState.data.game.lives')}
                     />
                     <Score
                         className="trucks"
-                        correct={_.get(props, 'data.game.trucks')}
+                        correct={_.get(props, `gameState.data.game.levels.${opts.level}.trucks`)}
                     />
                     <DPad />
                 </skoash.Component>

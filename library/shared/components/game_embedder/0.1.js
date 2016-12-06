@@ -55,6 +55,13 @@ class GameEmbedder extends skoash.Component {
                 controller: props.controller,
             });
         }
+
+        if (props.data) {
+            this.emitEvent({
+                name: 'data-update',
+                data: props.data,
+            });
+        }
     }
 
     render() {

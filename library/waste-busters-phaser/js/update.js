@@ -37,7 +37,7 @@ export default function () {
     [this.player, this.doors, this.helpers.exit],
     ]);
 
-    if (!this.data.complete) {
+    if (!this.data.levels[this.opts.level].complete) {
         movePlayer.call(this, {
             upSpeed: -350,
             downSpeed: 500,
@@ -45,7 +45,7 @@ export default function () {
             rightSpeed: 150,
             stopFrame: 6,
         });
-    } else if (this.data.doorOpen) {
+    } else if (this.data.levels[this.opts.level].doorOpen) {
         this.player.body.velocity.x = 150;
         this.player.body.collideWorldBounds = false;
         this.player.animations.play('right');

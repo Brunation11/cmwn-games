@@ -32,14 +32,14 @@ export default function () {
         checkCollisionUp: false,
     });
 
-    this.data = {
-        hits: 0,
-        bagCount: 0,
-        score: 0,
-        lives: 1,
-        trucks: 0,
-        start: true,
-    };
+    this.data = _.defaults({
+        levels: {
+            [this.opts.level]: {
+                start: true,
+                trucks: 0,
+            }
+        }
+    }, this.data);
 
     this.helpers.emitData.call(this);
 }

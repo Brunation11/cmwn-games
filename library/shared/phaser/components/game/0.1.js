@@ -27,6 +27,9 @@ class Game {
                 case 'controller-update':
                     this.controller = e.data.controller;
                     break;
+                case 'data-update':
+                    this.data = _.defaults(e.data.data, this.data);
+                    break;
                 case 'pause':
                     this.game.paused = true;
                     break;
