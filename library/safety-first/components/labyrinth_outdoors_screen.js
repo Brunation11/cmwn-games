@@ -24,13 +24,40 @@ export default function (props, ref, key) {
         disableInterval: 4000,
         openOnStart: 'instructions',
         vos: [
-            <skoash.Audio ref="instructions" type="voiceOver" src="media/_sounds/_vos/Instructions.mp3" />,
-            <skoash.Audio ref="level-up" type="voiceOver" src="media/_sounds/_vos/LevelUp1.mp3" />,
-            <skoash.Audio ref="try-again" type="voiceOver" src="media/_sounds/_vos/TryAgain.mp3" complete />,
+            <skoash.MediaSequence
+                ref="instructions"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-1"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/UseTheArrowKeys.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-2"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ClickScreen.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="level-up"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-3"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeIntro.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-4"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ClickScreen.mp3`}
+                />
+            </skoash.MediaSequence>
         ],
         revealList: [
             <skoash.Component ref="instructions" className="labyrinth-frame instructions">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="wolf" src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`} />
                 <div className="copy">
                     <p>
                         Move Mr. Eco<br/>
@@ -50,7 +77,7 @@ export default function (props, ref, key) {
                 </div>
             </skoash.Component>,
             <skoash.Component ref="count-down" className="labyrinth-frame count-down">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="wolf" src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`} />
                 <div className="count">
                     <div>READY</div>
                     <div className="number one">1</div>
@@ -59,18 +86,17 @@ export default function (props, ref, key) {
                 </div>
             </skoash.Component>,
             <skoash.Component ref="level-up" className="labyrinth-frame level-up">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="wolf" src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`} />
                 <div className="copy">
-                    <p>
-                        <h2>Level up!</h2>
-                        <h2>Level up!</h2>
-                        <span>ECO-TIP:</span> Save energy by walking through your own house<br/>
-                        before you leave and making sure all the lights are out.
-                    </p>
+                    <h2>Level up!</h2>
+                    <h2>Level up!</h2>
+                    <span>ECO-TIP:</span>
+                    Save energy by walking through your own house<br/>
+                    before you leave and making sure all the lights are out.
                 </div>
             </skoash.Component>,
             <skoash.Component ref="try-again" className="labyrinth-frame try-again">
-                <skoash.Image className="eco" src="media/_images/mr.eco.png" />
+                <skoash.Image className="wolf" src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`} />
                 <div className="copy">
                     <p>
                         Sorry,<br/>
