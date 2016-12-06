@@ -1,92 +1,100 @@
+$black: #000;
+$blue: #00f;
+$red: #f00;
+$green: #008000;
+
 #labyrinth-screen {
-  .labyrinth {
-    .image {
-      width: 500px;
-    }
-  }
-
-  .d-pad {
-    width: 200px;
-    height: 200px;
-
-    div {
-      position: absolute;
-      border: 2px solid black;
-      width: 50px;
-      height: 50px;
+    .labyrinth {
+        .image {
+            width: 500px;
+        }
     }
 
-    .up {
-      left: 50px;
-      top: 50px;
-    }
-    .left {
-      left: 0px;
-      top: 100px;
-    }
-    .down {
-      left: 50px;
-      top: 100px;
-    }
-    .right {
-      left: 100px;
-      top: 100px;
-    }
-  }
+    .d-pad {
+        width: 200px;
+        height: 200px;
 
-  .player {
-    width: 15px;
-    height: 15px;
-    background-color: blue;
-  }
+        div {
+            position: absolute;
+            border: 2px solid $black;
+            width: 50px;
+            height: 50px;
+        }
 
-  [class*="item-"] {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: green;
-    opacity: 1;
-    transition: opacity .5s;
+        .up {
+            top: 50px;
+            left: 50px;
+        }
 
-    &.CAUGHT {
-      opacity: 0;
-    }
-  }
+        .left {
+            top: 100px;
+            left: 0;
+        }
 
-  $lefts: 200 300 400;
-  $tops: 200 300 300;
+        .down {
+            top: 100px;
+            left: 50px;
+        }
 
-  @for $i from 1 through 3 {
-    .item-#{$i} {
-      left: #{nth($lefts, $i)}px;
-      top: #{nth($tops, $i)}px;
-    }
-  }
-
-  [class*="enemy-"] {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    opacity: 0;
-    transition: opacity .5s;
-
-    &.ENABLED {
-      opacity: 1;
+        .right {
+            top: 100px;
+            left: 100px;
+        }
     }
 
-    &.HIT {
-      animation: enemyHit .25s infinite;
+    .player {
+        background-color: $blue;
+        width: 15px;
+        height: 15px;
     }
-  }
 
-  $lefts: 100 130 400;
-  $tops: 200 300 200;
+    [class *='item-'] {
+        position: absolute;
+        transition: opacity .5s;
+        opacity: 1;
+        background-color: $green;
+        width: 20px;
+        height: 20px;
 
-  @for $i from 1 through 3 {
-    .enemy-#{$i} {
-      left: #{nth($lefts, $i)}px;
-      top: #{nth($tops, $i)}px;
+        &.CAUGHT {
+            opacity: 0;
+        }
     }
-  }
+
+    $lefts: 200 300 400;
+    $tops: 200 300 300;
+
+    @for $i from 1 through 3 {
+        .item-#{$i} {
+            top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
+        }
+    }
+
+    [class *='enemy-'] {
+        position: absolute;
+        transition: opacity .5s;
+        opacity: 0;
+        background-color: $red;
+        width: 30px;
+        height: 30px;
+
+        &.ENABLED {
+            opacity: 1;
+        }
+
+        &.HIT {
+            animation: enemyHit .25s infinite;
+        }
+    }
+
+    $lefts: 100 130 400;
+    $tops: 200 300 200;
+
+    @for $i from 1 through 3 {
+        .enemy-#{$i} {
+            top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
+        }
+    }
 }

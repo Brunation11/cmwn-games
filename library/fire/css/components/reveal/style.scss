@@ -1,24 +1,24 @@
 .reveal {
-  opacity: 0;
-  z-index: -1;
+    opacity: 0;
+    z-index: -1;
 
-  &.OPEN {
-    opacity: 1;
-    z-index: 1;
-  }
+    &.OPEN {
+        opacity: 1;
+        z-index: 1;
+    }
 }
 
 .reveal ul {
-  position: relative;
-  padding: 0;
+    position: relative;
+    padding: 0;
 }
 
 .reveal li {
-  list-style: none;
-  opacity: 0;
-  transition: opacity 0.5s;
+    transition: opacity .5s;
+    opacity: 0;
+    list-style: none;
 }
 
 .reveal li.OPEN {
-  opacity: 1;
+    opacity: 1;
 }

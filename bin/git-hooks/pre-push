@@ -43,6 +43,8 @@ do
 
     echo "" > configlint.log
     echo "" > jslint.log
+    echo "" > scsslint.json
+    echo "" > push_test.log
 
     git checkout $current_branch
     echo "[92m[pre-push] success: build passed[0m"
