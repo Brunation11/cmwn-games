@@ -30,8 +30,8 @@ var HappyFishFace = (
             //5: CleanWaterScreen,
             //6: BubbleUpScreen,
             //7: MultiBubblesScreen,
-            2: PollutesWaterScreen,
-            //9: TrashScreen,
+            //8: PollutesWaterScreen,
+            2: TrashScreen,
             //10: FlipScreen,
         }}
         menus={{

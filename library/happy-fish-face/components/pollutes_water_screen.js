@@ -50,7 +50,7 @@ export default function (props, ref, key) {
                         <skoash.Component className={starContainerClasses}>
                             <div className="stars" />
                         </skoash.Component>
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_8.1.mp3`}
+                        <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_8.1.png`} />
                         <p>
                             In this game remove everything<br /> that doesn't belong in the water.
                         </p>

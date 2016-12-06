@@ -1,14 +1,22 @@
+@import 'variables';
+
 #trash {
   opacity: 0;
   cursor: none;
 
-  .net {
+  .cursor {
     position: absolute;
-    pointer-events: none;
-    width: 250px;
-    z-index: 1;
-    opacity: 1;
+    left: 0;
+    top: 0;
     transition: opacity .5s;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1;
+    height: 152px;
+    width: 250px;
+    background-size: 100%;
+    background-position: -740px 0;
+    background-image: url($media-server-game + 'ImageAssets/img_9.3.png');
   }
 
   .selectable,
