@@ -10,6 +10,10 @@ export default function (groupOpts = {}, optsArray = []) {
         gravityX: 0,
         gravityY: 0,
         collideWorldBounds: true,
+        checkCollisionUp: true,
+        checkCollisionDown: true,
+        checkCollisionRight: true,
+        checkCollisionLeft: true,
         angle: 0,
         anchor: [0, 0],
     });
@@ -49,6 +53,10 @@ export default function (groupOpts = {}, optsArray = []) {
             item.body.bounce.y = opts.bounceY;
             item.body.gravity.x = opts.gravityX;
             item.body.gravity.y = opts.gravityY;
+            item.body.checkCollision.up = opts.checkCollisionUp;
+            item.body.checkCollision.down = opts.checkCollisionDown;
+            item.body.checkCollision.right = opts.checkCollisionRight;
+            item.body.checkCollision.left = opts.checkCollisionLeft;
 
             if (opts.body) {
                 // defer here to prevent item.scale from overriding body size

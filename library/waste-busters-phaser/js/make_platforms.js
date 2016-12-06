@@ -42,6 +42,8 @@ export default function () {
             collideWorldBounds: false,
             image: 'platforms',
             scale: [.5, .5],
+            checkCollisionRight: false,
+            checkCollisionLeft: false,
         }
     }, platformOpts);
 }

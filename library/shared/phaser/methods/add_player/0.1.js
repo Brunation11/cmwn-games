@@ -10,6 +10,8 @@ export default function (opts = {}) {
         collideWorldBounds: true,
         checkCollisionUp: true,
         checkCollisionDown: true,
+        checkCollisionRight: true,
+        checkCollisionLeft: true,
         leftFrames: [0, 1, 2, 3],
         leftFrameRate: 10,
         leftLoop: true,
@@ -34,6 +36,8 @@ export default function (opts = {}) {
     this.player.body.collideWorldBounds = opts.collideWorldBounds;
     this.player.body.checkCollision.up = opts.checkCollisionUp;
     this.player.body.checkCollision.down = opts.checkCollisionDown;
+    this.player.body.checkCollision.right = opts.checkCollisionRight;
+    this.player.body.checkCollision.left = opts.checkCollisionLeft;
 
     if (opts.body) {
         // defer here to prevent this.player.scale from overriding body size

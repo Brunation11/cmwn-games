@@ -5,9 +5,9 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import LevelOneScreen from './components/level_one_screen';
 // import LevelTwoScreen from './components/level_two_screen';
-import LevelThreeScreen from './components/level_three_screen';
+// import LevelThreeScreen from './components/level_three_screen';
 // import LevelFourScreen from './components/level_four_screen';
-// import LevelFiveScreen from './components/level_five_screen';
+import LevelFiveScreen from './components/level_five_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -21,9 +21,9 @@ let wasteBusters = (
             iOSScreen,
             // LevelOneScreen,
             // LevelTwoScreen,
-            LevelThreeScreen,
+            // LevelThreeScreen,
             // LevelFourScreen,
-            // LevelFiveScreen,
+            LevelFiveScreen,
         ]}
         menus={{
             quit: QuitScreen,
