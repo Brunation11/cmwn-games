@@ -10,6 +10,7 @@ export default function (props, ref, key, opts = {}) {
     var onScreenStart;
     var getGameSrc;
     var onRespond;
+    var onTimerComplete;
 
     startScreen = function (screenStart = true) {
         this.updateGameState({
@@ -62,6 +63,29 @@ export default function (props, ref, key, opts = {}) {
         }
     };
 
+    onTimerComplete = function () {
+        if (_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)) return;
+
+        startScreen.call(this, false);
+
+        this.updateGameState({
+            path: ['game'],
+            data: {
+                bagCount: 0,
+                lives: _.get(props, 'gameState.data.game.lives', 1) - 1 || 1,
+                levels: {
+                    [opts.level]: {
+                        start: false,
+                    }
+                }
+            },
+        });
+
+        setTimeout(() => {
+            startScreen.call(this);
+        }, 0);
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -80,6 +104,7 @@ export default function (props, ref, key, opts = {}) {
             <Timer
                 countDown
                 timeout={120000}
+                onComplete={onTimerComplete}
                 stop={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}

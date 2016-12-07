@@ -7,8 +7,8 @@ export default function () {
 
     setGameStage.call(this, {
         width: 4000,
-        height: 640,
-        top: -100,
+        height: 740,
+        top: -200,
     });
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -22,7 +22,7 @@ export default function () {
 
     addPlayer.call(this, {
         left: 32,
-        top: this.game.world.height - 350,
+        top: this.game.world.height - 450,
         image: 'turtle',
         bounceY: 0.2,
         gravityY: 400,
