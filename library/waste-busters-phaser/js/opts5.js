@@ -3,6 +3,7 @@ export default {
     hitVelocity: 200,
     recyclingScore: 100,
     rainbowRecyclyingScore: 300,
+    hitsPerLife: 4,
     maxLives: 3,
     maxBags: 5,
     maxTrucks: 3,

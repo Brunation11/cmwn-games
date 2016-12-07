@@ -6,16 +6,22 @@ import Score from 'shared/components/score/0.1';
 import DPad from 'shared/components/d_pad/0.1';
 
 export default function (props, ref, key, opts = {}) {
+    var startScreen;
     var onScreenStart;
     var getGameSrc;
+    var onRespond;
 
-    onScreenStart = function () {
+    startScreen = function (screenStart = true) {
         this.updateGameState({
             path: 'game',
             data: {
-                screenStart: true,
+                screenStart,
             },
         });
+    };
+
+    onScreenStart = function () {
+        startScreen.call(this);
 
         this.updateGameState({
             path: ['game'],
@@ -33,6 +39,29 @@ export default function (props, ref, key, opts = {}) {
         return `../waste-busters-phaser/index.html?v=${opts.level}`;
     };
 
+    onRespond = function (options) {
+        if (_.get(options, 'updateGameState.data.game.lives') === 0) {
+            startScreen.call(this, false);
+
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    bagCount: 0,
+                    lives: 1,
+                    levels: {
+                        [opts.level]: {
+                            start: false,
+                        }
+                    }
+                },
+            });
+
+            setTimeout(() => {
+                startScreen.call(this);
+            }, 0);
+        }
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -46,6 +75,7 @@ export default function (props, ref, key, opts = {}) {
                 controller={_.get(props, 'data.d-pad')}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 data={_.get(props, 'gameState.data.game', {})}
+                onRespond={onRespond}
             />
             <Timer
                 countDown

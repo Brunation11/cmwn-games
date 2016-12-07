@@ -40,6 +40,13 @@ export default {
 
         this.data.hits += i;
         this.helpers.emitData.call(this);
+        setTimeout(() => {
+            if (this.data.hits >= this.opts.hitsPerLife) {
+                this.data.hits -= this.opts.hitsPerLife;
+                this.data.lives--;
+                this.helpers.emitData.call(this);
+            }
+        }, 250);
     },
     inLog: function () {
         this.player.canJump = false;

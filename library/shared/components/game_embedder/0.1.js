@@ -19,6 +19,8 @@ class GameEmbedder extends skoash.Component {
         } else if (opts.updateGameState) {
             this.updateGameState(opts.updateGameState);
         }
+
+        this.props.onRespond.call(this, opts);
     }
 
     onLoad() {
@@ -79,6 +81,7 @@ GameEmbedder.defaultProps = _.defaults({
     complete: false,
     checkComplete: false,
     onLoad: _.noop,
+    onRespond: _.noop,
 }, skoash.Component.defaultProps);
 
 export default GameEmbedder;
