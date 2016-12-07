@@ -159,6 +159,14 @@ export default function (props, ref, key, opts = {}) {
                 className={'item-' + (i + 1)}
                 checkComplete={false}
                 onInteract={itemInteract}
+                children={[
+                    <skoash.Audio
+                        ref="interact"
+                        type="sfx"
+                        src="media/_sounds/_effects/LightCapture.mp3"
+                        complete
+                    />,
+                ]}
             />
         );
     }
@@ -169,6 +177,14 @@ export default function (props, ref, key, opts = {}) {
                 className={'enemy-' + (i + 1)}
                 onInteract={enemyInteract}
                 onDisable={enemyDisable}
+                children={[
+                    <skoash.Audio
+                        ref="interact"
+                        type="sfx"
+                        src="media/_sounds/_effects/EnergyHog.mp3"
+                        complete
+                    />,
+                ]}
             />
         );
     }
@@ -180,11 +196,26 @@ export default function (props, ref, key, opts = {}) {
           key={key}
           id={opts.id}
         >
+            <skoash.Image className="hidden" src="media/_images/frame.yellow.png" />
+            <skoash.Image className="hidden" src="media/_images/frame.lvlup.png" />
+            <skoash.Image className="hidden" src="media/_images/frame.sorry.png" />
+            <skoash.Image className="hidden" src="media/_images/frame.win.png" />
+            <skoash.Image className="hidden" src="media/_images/inside.meter.png" />
             <MediaCollection
                 play={_.get(props, 'data.game.vo')}
                 children={opts.vos}
             />
-
+            <MediaCollection
+                play={_.get(props, 'data.game.sfx')}
+                children={[
+                    <skoash.Audio
+                        ref="disable"
+                        type="sfx"
+                        src="media/_sounds/_effects/HogDisappear.mp3"
+                        complete
+                    />,
+                ]}
+            />
             <Reveal
                 openOnStart={opts.openOnStart}
                 openReveal={_.get(props, 'data.openReveal')}
@@ -193,13 +224,12 @@ export default function (props, ref, key, opts = {}) {
                 onClose={onCloseReveal}
                 list={opts.revealList}
             />
-
             <Labyrinth
                 img={`${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`}
                 map={`${ENVIRONMENT.MEDIA}ImageAssets/map.01.jpg`}
                 input={_.get(props, 'data.d-pad', {})}
-                startX={140}
-                startY={120}
+                startX={250}
+                startY={385}
                 speed={2}
                 scale={_.get(props, 'gameState.scale', 1)}
                 start={_.get(props, 'data.game.start', false)}
@@ -207,17 +237,16 @@ export default function (props, ref, key, opts = {}) {
                 onStop={onLabyrinthStop}
                 onComplete={onLabyrinthComplete}
                 assets={[
-                    // <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
+                    <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
                 ]}
-                items={items}
-                enemies={enemies}
+                // items={items}
+                // enemies={enemies}
             />
-
             <DPad
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.stop', false)}
                 assets={[
-                    // <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
+                    <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
                 ]}
             />
         </skoash.Screen>
