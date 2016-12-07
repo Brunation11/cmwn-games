@@ -9,58 +9,21 @@ import CustomCursorScreen from 'shared/components/custom_cursor_screen/0.1';
 const TRY_AGAIN = '0';
 const GOOD_JOB = '1';
 
-class TrashScreenComponent extends skoash.Screen {
+class TrashScreenComponent extends CustomCursorScreen {
     start() {
         super.start();
 
-        this.checkComplete = super.checkComplete; // for replay
-    }
+        var center = this.refs['children-1'].refs['children-0'];
 
-    goto(index, buttonSound) {
-        super.goto(index, buttonSound);
-
-        this.refs.timer.restart();
-    }
-
-    complete() {
-        var self = this;
-        super.complete();
-        self.checkComplete = () => {};
-    // so it won't try to complete while incompleting all the refs
-
-        if (!this.state.replay) this.setState({ replay: true });
-
-        setTimeout(() => { // have to wait for state to change to complete: true
-            if (self.state.complete) {
-                self.incomplete();
-                ['timer', 'reveal', 'selectable-audio'].forEach(key => {
-                    self.refs[key].incompleteRefs();
-                });
-            }
-        }, 500);
-    }
-
-    closeRespond(ref) {
-        this.setState({ revealOpen: false });
-        this.refs['center-2'].close();
-        if (ref === TRY_AGAIN) {
-            this.refs.timer.restart();
-            this.refs['selectable-audio'].start();
-            this.refs['selectable-audio'].incompleteRefs();
-        }
-    }
-
-    getClassNames() {
-        return ClassNames({
-            'REVEAL-OPEN': this.state.revealOpen,
-        }, super.getClassNames());
+        ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
+        
+        this.incomplete();
     }
 }
 
 export default function (props, ref, key) {
 
     var playAudio = function (play, playNext) {
-        debugger;
         var callback = playNext ? playAudio.bind(this, playNext) : _.noop;
         this.updateGameState({
             path: 'media',
@@ -72,13 +35,11 @@ export default function (props, ref, key) {
     };
 
     var selectRespond = function (ref, isCorrect) {
-        debugger;
         var play = isCorrect? 'correct' : 'incorrect';
         playAudio.call(this, play, 'dummy');
     };
 
     var openReveal = function (open, cb = _.noop) {
-        debugger;
         this.updateGameState({
             path: 'reveal',
             data: {
@@ -89,7 +50,6 @@ export default function (props, ref, key) {
     };
 
     var timerAction = function (action, nextAction) {
-        debugger;
         var callback = nextAction ? timerAction.bind(this, nextAction) : _.noop;
 
         this.updateGameState({
@@ -102,19 +62,16 @@ export default function (props, ref, key) {
     };
 
     var selectableComplete = function () {
-        debugger;
         openReveal.call(this, GOOD_JOB, timerAction.bind(this, 'stop', 'complete'));
     };
 
     var timerComplete = function () {
-        debugger;
         if (_.get(props, 'data.reveal.open', '') === GOOD_JOB) return;
 
         openReveal.call(this, TRY_AGAIN);
     };
 
     var revealClose = function (ref) {
-        debugger;
         openReveal.call(this, null);
 
         if (ref === TRY_AGAIN) { 
@@ -129,7 +86,7 @@ export default function (props, ref, key) {
     };
 
     return (
-        <CustomCursorScreen
+        <TrashScreenComponent
             {...props}
             ref={ref}
             key={key}
@@ -180,7 +137,7 @@ export default function (props, ref, key) {
                                     src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3"
                                     complete
                                 />,
-                                <skoash.MediaSequence ref="media-sequence" silentOnStart>
+                                <skoash.MediaSequence silentOnStart>
                                     <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
                                     <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
                                 </skoash.MediaSequence>,
@@ -200,7 +157,6 @@ export default function (props, ref, key) {
                         selectClass="HIGHLIGHTED"
                         onComplete={selectableComplete}
                         selectRespond={selectRespond}
-                        className={_.get(props, 'data.selectable.className', '')}
                         incompleteRefs={_.get(props, 'data.selectable.incompleteRefs', false)}
                         list={[
                             <skoash.ListItem correct data-ref="bottle" />,
@@ -244,6 +200,6 @@ export default function (props, ref, key) {
                     />
                 </skoash.Component>
             </skoash.Component>
-        </CustomCursorScreen>
+        </TrashScreenComponent>
     );
 }
