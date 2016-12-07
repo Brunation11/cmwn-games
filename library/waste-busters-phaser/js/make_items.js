@@ -125,7 +125,7 @@ export default function () {
             .concat(_.times(amounts.roundBush || 0, () => 'roundBush'))
             .concat(_.times(amounts.snake || 0, () => 'snake'))
             .concat(_.times(amounts.bag || 0, () => 'bag'))
-            .concat(_.times(amounts.blank || 0, () => ''))
+            .concat(_.times(amounts.blank || 0, () => 'blank'))
             .concat(_.times(amounts.rock || 0, () => 'rock'))
             .concat(_.times(amounts.stump || 0, () => 'stump'))
             .concat(_.times(amounts.heart || 0, () => 'heart'))
@@ -161,6 +161,7 @@ export default function () {
         recycle: [],
         raibowRecycle: [],
         truck: [],
+        blank: [],
     };
 
     var placeObject = function (platform, up, over) {
@@ -198,7 +199,7 @@ export default function () {
     });
 
     objects = getObjects(objects, this.opts.groundItemAmounts);
-    objects.unshift('');
+    objects.unshift('blank');
 
     _.every(this.ground.children, platform => {
         if (truckNumber <= truckTotal &&
@@ -215,7 +216,14 @@ export default function () {
         return objects.length;
     });
 
+    // this makes sure that all the bags are placed
+    while (~objects.indexOf('bag')) {
+        locations.bag.push(locations.blank.shift());
+        objects[objects.indexOf('bag')] = 'blank';
+    }
+
     _.each(locations, (locationArray, key) => {
+        if (key === 'blank') return;
         addItems.call(this, {
             group: groups[key], defaultOpts: defaultProps[key]
         }, locationArray);
