@@ -18,8 +18,8 @@ export default function (props, ref, key) {
     return LabyrinthScreenComponent(props, ref, key, {
         id: 'labyrinth-level-one-screen',
         levelNumber: 1,
-        itemsCount: 4,
-        enemiesCount: 3,
+        itemsCount: 1,
+        enemiesCount: 0,
         disableChance: .75,
         disableInterval: 4000,
         // openOnStart: 'instructions',
