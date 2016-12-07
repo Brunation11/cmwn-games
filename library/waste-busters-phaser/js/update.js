@@ -39,16 +39,27 @@ export default function () {
     [this.player, this.trucks, this.helpers.loadTruck],
     [this.player, this.doors, this.helpers.exit],
     [this.player, this.logs, this.helpers.inLog],
+    [this.player, this.lightening, this.helpers.collectLightening],
     ]);
 
     if (!this.data.levels[this.opts.level].complete) {
-        movePlayer.call(this, {
-            upSpeed: -350,
-            downSpeed: 500,
-            leftSpeed: -150,
-            rightSpeed: 150,
-            stopFrame: 6,
-        });
+        if (this.player.boost) {
+            movePlayer.call(this, {
+                upSpeed: this.opts.boostUpSpeed,
+                downSpeed: this.opts.boostDownSpeed,
+                leftSpeed: this.opts.boostLeftSpeed,
+                rightSpeed: this.opts.boostRightSpeed,
+                stopFrame: this.opts.boostPlayerStopFrame,
+            });
+        } else {
+            movePlayer.call(this, {
+                upSpeed: this.opts.upSpeed,
+                downSpeed: this.opts.downSpeed,
+                leftSpeed: this.opts.leftSpeed,
+                rightSpeed: this.opts.rightSpeed,
+                stopFrame: this.opts.playerStopFrame,
+            });
+        }
     } else if (this.data.levels[this.opts.level].doorOpen) {
         this.player.body.velocity.x = 150;
         this.player.body.collideWorldBounds = false;

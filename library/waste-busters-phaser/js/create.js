@@ -23,13 +23,13 @@ export default function () {
     addPlayer.call(this, {
         left: 32,
         top: this.game.world.height - 450,
-        image: 'turtle',
-        bounceY: 0.2,
-        gravityY: 400,
-        body: [315, 396, 100, 150],
-        rightFrames: [6, 7, 8, 9, 10, 11],
-        leftFrames: [5, 4, 3, 2, 1, 0],
-        scale: [.15, .15],
+        image: this.opts.playerImage,
+        bounceY: this.opts.bounceY,
+        gravityY: this.opts.gravityY,
+        body: this.opts.playerBody,
+        rightFrames: this.opts.rightFrames,
+        leftFrames: this.opts.leftFrames,
+        scale: this.opts.playerScale,
     });
 
     this.data = _.defaults({

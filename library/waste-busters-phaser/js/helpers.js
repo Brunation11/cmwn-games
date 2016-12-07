@@ -83,13 +83,34 @@ export default {
         this.helpers.updatePlayer.call(this);
         this.helpers.emitData.call(this);
     },
+    collectLightening: function (player, lightening) {
+        player.boost = (player.boost + 1) || 1;
+        lightening.kill();
+        this.helpers.updatePlayer.call(this);
+        setTimeout(() => {
+            player.boost--;
+            this.helpers.updatePlayer.call(this);
+        }, this.opts.boostTime);
+    },
     updatePlayer: function () {
-        if (this.data.bagCount === this.opts.maxBags) {
-            this.player.loadTexture('turtle5', 0);
-        } else if (this.data.bagCount >= this.opts.maxBags / 2) {
-            this.player.loadTexture('turtle3', 0);
+        if (this.player.boost) {
+            this.player.loadTexture('jet', 0);
+            this.player.animations.add('left', this.opts.boostLeftFrames,
+                this.opts.boostLeftFrameRate, this.opts.boostLeftLoop);
+            this.player.animations.add('right', this.opts.boostRightFrames,
+                this.opts.boostRightFrameRate, this.opts.boostRightLoop);
         } else {
-            this.player.loadTexture('turtle', 0);
+            if (this.data.bagCount === this.opts.maxBags) {
+                this.player.loadTexture('turtle5', 0);
+            } else if (this.data.bagCount >= this.opts.maxBags / 2) {
+                this.player.loadTexture('turtle3', 0);
+            } else {
+                this.player.loadTexture('turtle', 0);
+            }
+            this.player.animations.add('left', this.opts.leftFrames,
+                this.opts.leftFrameRate, this.opts.leftLoop);
+            this.player.animations.add('right', this.opts.rightFrames,
+                this.opts.rightFrameRate, this.opts.rightLoop);
         }
     },
     stay: function (a) {

@@ -8,6 +8,7 @@ export default function () {
         [465, 0, 155, 140],
         [620, 0, 155, 140],
         [775, 0, 155, 140],
+        [930, 0, 155, 140],
         [0, 0, 300, 360],
         [300, 0, 300, 360],
         [600, 0, 300, 360],
@@ -54,6 +55,10 @@ export default function () {
             crop: crops[5],
             body: [115, 120, 20, 50],
         }, generalDefaultProps),
+        lightening: _.defaults({
+            crop: crops[6],
+            gravityY: 0,
+        }, generalDefaultProps),
         heart: {
             image: 'heart',
             scale: [.15, .15],
@@ -72,27 +77,27 @@ export default function () {
             collideWorldBounds: false,
         },
         tree1: _.defaults({
-            crop: crops[6],
+            crop: crops[7],
             body: null,
         }, treeDefaultProps),
         tree2: _.defaults({
-            crop: crops[7]
-        }, treeDefaultProps),
-        tree3: _.defaults({
             crop: crops[8]
         }, treeDefaultProps),
+        tree3: _.defaults({
+            crop: crops[9]
+        }, treeDefaultProps),
         tree4: _.defaults({
-            crop: crops[9],
+            crop: crops[10],
             body: null,
         }, treeDefaultProps),
         tree5: _.defaults({
-            crop: crops[10]
-        }, treeDefaultProps),
-        tree6: _.defaults({
             crop: crops[11]
         }, treeDefaultProps),
-        tree7: _.defaults({
+        tree6: _.defaults({
             crop: crops[12]
+        }, treeDefaultProps),
+        tree7: _.defaults({
+            crop: crops[13]
         }, treeDefaultProps),
     };
 
@@ -106,6 +111,7 @@ export default function () {
         heart: 'hearts',
         recycle: 'recycles',
         raibowRecycle: 'rainbowRecycles',
+        lightening: 'lightening',
         truck: 'trucks',
         tree1: 'trees',
         tree2: 'trees',
@@ -131,6 +137,7 @@ export default function () {
             .concat(_.times(amounts.heart || 0, () => 'heart'))
             .concat(_.times(amounts.recycle || 0, () => 'recycle'))
             .concat(_.times(amounts.raibowRecycle || 0, () => 'raibowRecycle'))
+            .concat(_.times(amounts.lightening || 0, () => 'lightening'))
             .concat(_.times(amounts.tree1 || 0, () => 'tree1'))
             .concat(_.times(amounts.tree2 || 0, () => 'tree2'))
             .concat(_.times(amounts.tree3 || 0, () => 'tree3'))
@@ -160,6 +167,7 @@ export default function () {
         heart: [],
         recycle: [],
         raibowRecycle: [],
+        lightening: [],
         truck: [],
         blank: [],
     };

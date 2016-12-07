@@ -1,12 +1,7 @@
-export default {
+import defaultOpts from './default_opts';
+
+export default _.defaults({
     level: 2,
-    hitVelocity: 200,
-    recyclingScore: 100,
-    rainbowRecyclyingScore: 300,
-    hitsPerLife: 4,
-    maxLives: 3,
-    maxBags: 5,
-    maxTrucks: 3,
     platformsLogChance: 1 / 20,
     groundLogChance: 1 / 20,
     setPlatforms: [
@@ -44,6 +39,7 @@ export default {
         heart: 2,
         recycle: 1,
         raibowRecycle: 1,
+        lightening: 1,
         tree1: 1,
         tree6: 1,
         tree7: 1,
@@ -60,4 +56,4 @@ export default {
         recycle: 0,
         raibowRecycle: 0,
     }
-};
+}, defaultOpts);
