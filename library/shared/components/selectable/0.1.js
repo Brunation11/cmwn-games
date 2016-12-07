@@ -42,6 +42,17 @@ class Selectable extends skoash.Component {
         }
     }
 
+    incompleteRefs() {
+        var self = this;
+        _.forEach(self.refs, ref => {
+            if (ref.props.correct || (self.props.answers && self.props.answers.indexOf(ref) !== -1)) {
+                 _.invoke(ref, 'incompleteRefs');
+            }
+        });
+
+        this.incomplete();
+    }
+
     selectHelper(e, classes) {
         var ref;
         var dataRef;
@@ -157,6 +168,14 @@ class Selectable extends skoash.Component {
                 />
             );
         });
+    }
+
+    componentWillReceiveProps(props) {
+        super.componentWillReceiveProps(props);
+
+        if (props.incompleteRefs === true && props.incompleteRefs !== this.props.incompleteRefs) {
+            this.incompleteRefs();
+        }
     }
 
     render() {

@@ -32,6 +32,7 @@
     height: 540px;
     margin: 0;
     display: block;
+    transition: opacity 0.5s;
 
     li {
       position: absolute;
@@ -499,6 +500,10 @@
         }
       }
     }
+
+    &.hidden {
+        opacity: 0;
+    }
   }
 
   .timer {
@@ -551,6 +556,10 @@
   }
 
   &.REVEAL-OPEN {
+    .group > .center {
+        z-index: 1;
+    }
+
     .selectable,
     .timer {
       opacity: 0;
@@ -561,7 +570,7 @@
   &.REVEAL-OPEN {
     cursor: auto;
 
-    .net {
+    .cursor {
       opacity: 0;
     }
   }

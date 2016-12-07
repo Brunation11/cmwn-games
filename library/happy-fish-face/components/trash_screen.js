@@ -40,27 +40,6 @@ class TrashScreenComponent extends skoash.Screen {
         }, 500);
     }
 
-    onSelectableAudioComplete() {
-        if (!this.state.revealOpen) {
-            this.setState({
-                revealOpen: true,
-            }, () => {
-                this.refs['center-2'].open();
-                this.refs.reveal.open(GOOD_JOB);
-                this.refs.timer.complete();
-                this.refs.timer.stop();
-            });
-        }
-    }
-
-    onTimerComplete() {
-        if (!this.state.revealOpen) {
-            this.refs['center-2'].open();
-            this.refs.reveal.open(TRY_AGAIN);
-            this.setState({ revealOpen: true });
-        }
-    }
-
     closeRespond(ref) {
         this.setState({ revealOpen: false });
         this.refs['center-2'].close();
@@ -80,19 +59,73 @@ class TrashScreenComponent extends skoash.Screen {
 
 export default function (props, ref, key) {
 
-    var selectRespond = function (ref, isCorrect) {
-        var play = isCorrect? 'correct' : 'incorrect';
-        playAudio.call(this, play, playAudio.bind(this, 'dummy', _.noop));
-    };
-
-    var playAudio = function (play, cb) {
+    var playAudio = function (play, playNext) {
+        debugger;
+        var callback = playNext ? playAudio.bind(this, playNext) : _.noop;
         this.updateGameState({
             path: 'media',
             data: {
                 play
             },
-            callback: cb,
+            callback,
         });
+    };
+
+    var selectRespond = function (ref, isCorrect) {
+        debugger;
+        var play = isCorrect? 'correct' : 'incorrect';
+        playAudio.call(this, play, 'dummy');
+    };
+
+    var openReveal = function (open, cb = _.noop) {
+        debugger;
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open,
+            },
+            callback: cb
+        });
+    };
+
+    var timerAction = function (action, nextAction) {
+        debugger;
+        var callback = nextAction ? timerAction.bind(this, nextAction) : _.noop;
+
+        this.updateGameState({
+            path: 'timer',
+            data: {
+                action,
+            },
+            callback
+        });
+    };
+
+    var selectableComplete = function () {
+        debugger;
+        openReveal.call(this, GOOD_JOB, timerAction.bind(this, 'stop', 'complete'));
+    };
+
+    var timerComplete = function () {
+        debugger;
+        if (_.get(props, 'data.reveal.open', '') === GOOD_JOB) return;
+
+        openReveal.call(this, TRY_AGAIN);
+    };
+
+    var revealClose = function (ref) {
+        debugger;
+        openReveal.call(this, null);
+
+        if (ref === TRY_AGAIN) { 
+            timerAction.call(this, 'restart');
+            this.updateGameState({
+                path: 'selectable',
+                data: {
+                    incompleteRefs: true
+                }
+            });
+        }
     };
 
     return (
@@ -101,6 +134,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="trash"
+            className={_.get(props, 'data.reveal.open', null) ? 'REVEAL-OPEN' : ''}
         >
             <MediaCollection
                 ref="collection"
@@ -118,21 +152,22 @@ export default function (props, ref, key) {
                     complete
                 />
             </MediaCollection>
-            <skoash.Component ref="center-1" className="center">
-                <skoash.Component ref="group" className="group">
-                    <skoash.Component ref="center-2" className="center">
+            <skoash.Component className="center">
+                <skoash.Component className="group">
+                    <skoash.Component className="center">
                         <Reveal
                             ref="reveal"
                             className="center"
-                            closeRespond={_.noop}
+                            onClose={revealClose}
+                            openReveal={_.get(props, 'data.reveal.open', null)}
                             list={[
-                                <skoash.Component type="li" data-ref="tryAgain" complete>
+                                <skoash.Component type="li" complete>
                                     <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
                                     <p>
                                         You ran out of time!
                                     </p>
                                 </skoash.Component>,
-                                <skoash.Component type="li" data-ref="goodJob">
+                                <skoash.Component type="li">
                                     <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
                                     <p>
                                         Take this offline.<br /> Never throw the trash in the water.
@@ -155,15 +190,18 @@ export default function (props, ref, key) {
                     <Timer
                         ref="timer"
                         countDown={true}
+                        action={_.get(props, 'data.timer.action', null)}
                         timeout={90000}
                         leadingContent={<skoash.Image src="media/_images/_S_Trash/img_9.1.png" />}
-                        onComplete={_.noop}
+                        onComplete={timerComplete}
                     />
                     <Selectable
                         ref="selectable"
                         selectClass="HIGHLIGHTED"
-                        onComplete={_.noop}
+                        onComplete={selectableComplete}
                         selectRespond={selectRespond}
+                        className={_.get(props, 'data.selectable.className', '')}
+                        incompleteRefs={_.get(props, 'data.selectable.incompleteRefs', false)}
                         list={[
                             <skoash.ListItem correct data-ref="bottle" />,
                             <skoash.ListItem correct data-ref="cans" />,
