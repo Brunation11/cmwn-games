@@ -48,7 +48,7 @@ export default function (props, ref, key) {
                         />
                         <Selectable
                             ref="selectable"
-                            selectRespond={playAudio}
+                            onSelect={playAudio}
                             list={[
                                 <skoash.ListItem data-ref="wrong" className="animated" />,
                                 <skoash.ListItem data-ref="right" className="animated" correct />

@@ -14,7 +14,6 @@ class TrashScreenComponent extends CustomCursorScreen {
         super.start();
 
         var center = this.refs['children-1'].refs['children-0'];
-
         ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
         
         this.incomplete();
@@ -34,7 +33,7 @@ export default function (props, ref, key) {
         });
     };
 
-    var selectRespond = function (ref, isCorrect) {
+    var onSelect = function (ref, isCorrect) {
         var play = isCorrect? 'correct' : 'incorrect';
         playAudio.call(this, play, 'dummy');
     };
@@ -124,7 +123,7 @@ export default function (props, ref, key) {
                                         You ran out of time!
                                     </p>
                                 </skoash.Component>,
-                                <skoash.Component type="li">
+                                <skoash.Component type="li" className="tryAgain">
                                     <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
                                     <p>
                                         Take this offline.<br /> Never throw the trash in the water.
@@ -156,7 +155,7 @@ export default function (props, ref, key) {
                         ref="selectable"
                         selectClass="HIGHLIGHTED"
                         onComplete={selectableComplete}
-                        selectRespond={selectRespond}
+                        onSelect={onSelect}
                         incompleteRefs={_.get(props, 'data.selectable.incompleteRefs', false)}
                         list={[
                             <skoash.ListItem correct data-ref="bottle" />,

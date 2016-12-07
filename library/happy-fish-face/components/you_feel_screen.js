@@ -59,7 +59,7 @@ export default function (props, ref, key) {
                         />
                         <Selectable
                             ref="selectable"
-                            selectRespond={playAudio}
+                            onSelect={playAudio}
                             chooseOne
                             list={[
                                 <skoash.ListItem className="animated img-0" />,

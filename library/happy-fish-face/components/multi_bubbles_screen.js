@@ -10,7 +10,7 @@ const DECREMENT = 10;
 const CORRECT_BUBBLES = 10;
 
 export default function (props, ref, key) {
-    var selectRespond = function (ref, isCorrect) {
+    var onSelect = function (ref, isCorrect) {
         var correct = _.get(props, 'data.score.correct', 0);
         var incorrect = _.get(props, 'data.score.incorrect', 0);
         var cbRef = 'dummy';
@@ -37,7 +37,6 @@ export default function (props, ref, key) {
     };
     
     var playAudio = function (ref, cb) {
-        debugger;
         this.updateGameState({
             path: 'media',
             data: {
@@ -160,7 +159,7 @@ export default function (props, ref, key) {
             </skoash.Component>
             <Selectable
                 ref="selectable"
-                selectRespond={selectRespond}
+                onSelect={onSelect}
                 selectClass="HIGHLIGHTED"
                 list={[
                     <skoash.ListItem correct data-ref="swim" />,
