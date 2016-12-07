@@ -26,7 +26,9 @@ export default function (opts) {
     }
 
     //  Allow the player to jump if they are touching the ground.
-    if ((this.cursors.up.isDown || this.controller.up) && this.player.body.touching.down) {
+    if (this.player.canJump &&
+        (this.cursors.up.isDown || this.controller.up) &&
+        this.player.body.touching.down) {
         this.player.body.velocity.y = opts.upSpeed;
     }
 

@@ -17,7 +17,7 @@ export default function () {
     this.helpers.makeGround.call(this);
     this.helpers.makeDoor.call(this);
     this.helpers.makePlatforms.call(this);
-    // this.helpers.makeLogs.call(this);
+    this.helpers.makeLogs.call(this);
     this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {

@@ -183,6 +183,10 @@ export default function () {
                 up += 95;
                 break;
         }
+        if (platform.hasLog && !(object === 'bag' || object === 'blank')) {
+            objects.unshift(object);
+            object = 'blank';
+        }
         if (locations[object]) {
             locations[object].push({
                 top: platform.top - up,

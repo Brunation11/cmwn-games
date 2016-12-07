@@ -8,6 +8,8 @@ export default function () {
         return;
     }
 
+    this.player.canJump = true;
+
     addResponses.call(this, 'collide', [
     [this.player, this.ground, this.helpers.onBump],
     [this.player, this.water, this.helpers.hitWater],
@@ -36,7 +38,7 @@ export default function () {
     [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
     [this.player, this.trucks, this.helpers.loadTruck],
     [this.player, this.doors, this.helpers.exit],
-    // [this.player, this.logs, this.helpers.shrink],
+    [this.player, this.logs, this.helpers.inLog],
     ]);
 
     if (!this.data.levels[this.opts.level].complete) {

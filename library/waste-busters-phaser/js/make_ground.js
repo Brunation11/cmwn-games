@@ -21,7 +21,7 @@ export default function () {
     ];
 
     while (left < this.game.world.width) {
-        random = _.random(random > 1 || left > this.game.world.width - 400 ?
+        random = _.random(random > 1 || left > this.game.world.width - 600 ?
             crops.length / 2 - 1 : crops.length - 1);
         let crop = crops[random];
         let body = bodies[random];

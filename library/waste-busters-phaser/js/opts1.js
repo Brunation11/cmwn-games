@@ -6,7 +6,7 @@ export default {
     maxLives: 3,
     maxBags: 5,
     maxTrucks: 3,
-    platformLogChance: 2 / 17,
+    platformsLogChance: 1 / 10,
     groundLogChance: 0,
     setPlatforms: [
         [[130, 80], 0],
