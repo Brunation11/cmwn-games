@@ -10,17 +10,6 @@ const TRY_AGAIN = '0';
 const GOOD_JOB = '1';
 
 class TrashScreenComponent extends skoash.Screen {
-    constructor() {
-        super();
-
-        this.state = {
-            cursorLeft: 0,
-            cursorTop: 0,
-            touchstart: false,
-            revealOpen: false,
-        };
-    }
-
     start() {
         super.start();
 
@@ -31,11 +20,6 @@ class TrashScreenComponent extends skoash.Screen {
         super.goto(index, buttonSound);
 
         this.refs.timer.restart();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('mousemove', this.moveCursor);
-        window.removeEventListener('touchstart', this.touchstart);
     }
 
     complete() {
@@ -95,6 +79,22 @@ class TrashScreenComponent extends skoash.Screen {
 }
 
 export default function (props, ref, key) {
+
+    var selectRespond = function (ref, isCorrect) {
+        var play = isCorrect? 'correct' : 'incorrect';
+        playAudio.call(this, play, playAudio.bind(this, 'dummy', _.noop));
+    };
+
+    var playAudio = function (play, cb) {
+        this.updateGameState({
+            path: 'media',
+            data: {
+                play
+            },
+            callback: cb,
+        });
+    };
+
     return (
         <CustomCursorScreen
             {...props}
@@ -104,6 +104,7 @@ export default function (props, ref, key) {
         >
             <MediaCollection
                 ref="collection"
+                play={_.get(props, 'data.media.play', null)}
             >
                 <skoash.Audio
                     data-ref="correct"
@@ -162,6 +163,7 @@ export default function (props, ref, key) {
                         ref="selectable"
                         selectClass="HIGHLIGHTED"
                         onComplete={_.noop}
+                        selectRespond={selectRespond}
                         list={[
                             <skoash.ListItem correct data-ref="bottle" />,
                             <skoash.ListItem correct data-ref="cans" />,
