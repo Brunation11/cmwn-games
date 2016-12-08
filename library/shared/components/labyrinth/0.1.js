@@ -180,11 +180,13 @@ class Labyrinth extends skoash.Component {
                     ref={MAP}
                     className={MAP}
                     src={this.props.map}
+                    crossOrigin="Anonymous"
                 />
                 <skoash.Image
                     ref={IMAGE}
                     className={IMAGE}
                     src={this.props.img}
+                    crossOrigin="Anonymous"
                 />
                 {this.renderContentList('assets')}
                 {this.renderContentList('items')}

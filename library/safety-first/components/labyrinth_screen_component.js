@@ -4,58 +4,26 @@ import DPad from 'shared/components/d_pad/0.1';
 import IteractiveItem from 'shared/components/interactive_item/0.1';
 import Timer from 'shared/components/timer/0.1';
 import MediaCollection from 'shared/components/media_collection/0.1';
-import Reveal from 'shared/components/reveal_prompt/0.1';
+import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 
 export default function (props, ref, key, opts = {}) {
     var itemInteract;
-    var enemyInteract;
-    var enemyDisable;
     var onLabyrinthStart;
     var onLabyrinthStop;
     var onLabyrinthComplete;
-    var getTime;
-    var onTimerComplete;
     var onOpenReveal;
     var onCloseReveal;
     var items = [];
-    var enemies = [];
 
     itemInteract = function () {
         this.complete();
         this.disable();
         this.updateGameState({
-            path: 'correct',
-            data: _.get(props, 'data.correct', 0) + 1,
-        });
-    };
-
-    enemyInteract = function () {
-        this.setState({
-            hit: true,
-        }, () => {
-            setTimeout(() => {
-                this.setState({
-                    hit: false
-                });
-            }, 1000);
-        });
-    };
-
-    enemyDisable = function () {
-        this.updateGameState({
-            path: 'game',
+            path: 'reveal',
             data: {
-                sfx: 'disable',
-            },
+                open: this.props.className
+            }
         });
-        setTimeout(() => {
-            this.updateGameState({
-                path: 'game',
-                data: {
-                    sfx: null,
-                },
-            });
-        }, 500);
     };
 
     onLabyrinthStart = function () {
@@ -67,10 +35,6 @@ export default function (props, ref, key, opts = {}) {
                 width: this.player.offsetWidth,
                 height: this.player.offsetHeight,
             };
-            _.each(this.enemies, enemy => {
-                if (this.doIntersect(this.state.playerX, this.state.playerY, offset, enemy)) return;
-                Math.random() < opts.disableChance ? enemy.disable() : enemy.enable();
-            });
         }, opts.disableInterval);
     };
 
@@ -80,77 +44,29 @@ export default function (props, ref, key, opts = {}) {
 
     onLabyrinthComplete = function () {
         this.updateGameState({
-            path: 'openReveal',
-            data: 'level-up',
-        });
-        this.updateGameState({
-            path: 'game',
+            path: 'reveal',
             data: {
-                complete: true,
-            },
-        });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
-    };
-
-    onTimerComplete = function () {
-        if (_.get(props, 'data.openReveal') === 'level-up') return;
-        this.updateGameState({
-            path: 'openReveal',
-            data: 'try-again',
+                open: 'level-up'
+            }
         });
     };
 
     onOpenReveal = function (message) {
         this.updateGameState({
-            path: 'game',
+            path: 'reveal',
             data: {
-                stop: true,
-                start: false,
-                vo: message,
-            },
+                open: message
+            }
         });
     };
 
     onCloseReveal = function (prevMessage) {
-        if (prevMessage === 'try-again' && !_.get(props, 'data.closeReveal')) {
-            skoash.trigger('quit');
-            return;
-        }
-
         this.updateGameState({
-            path: 'game',
+            path: 'reveal',
             data: {
-                stop: false,
-                start: true,
-                restart: false,
-            },
+                open: ''
+            }
         });
-        this.updateGameState({
-            path: 'closeReveal',
-            data: false,
-        });
-        this.updateGameState({
-            path: 'openReveal',
-            data: false,
-        });
-        this.updateGameState({
-            path: 'correct',
-            data: 0,
-        });
-
-        if (prevMessage === 'level-up') {
-            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-        }
     };
 
     for (let i = 0; i < opts.itemsCount; i++) {
@@ -163,16 +79,6 @@ export default function (props, ref, key, opts = {}) {
         );
     }
 
-    for (let i = 0; i < opts.enemiesCount; i++) {
-        enemies.push(
-            <IteractiveItem
-                className={'enemy-' + (i + 1)}
-                onInteract={enemyInteract}
-                onDisable={enemyDisable}
-            />
-        );
-    }
-
     return (
         <skoash.Screen
           {...props}
@@ -181,14 +87,14 @@ export default function (props, ref, key, opts = {}) {
           id={opts.id}
         >
             <MediaCollection
-                play={_.get(props, 'data.game.vo')}
+                play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
 
-            <Reveal
+            <RevealPrompt
+                ref="reveal"
                 openOnStart={opts.openOnStart}
-                openReveal={_.get(props, 'data.openReveal')}
-                closeReveal={_.get(props, 'data.closeReveal')}
+                openReveal={_.get(props, 'data.reveal.open', null)}
                 onOpen={onOpenReveal}
                 onClose={onCloseReveal}
                 list={opts.revealList}
@@ -206,19 +112,12 @@ export default function (props, ref, key, opts = {}) {
                 onStart={onLabyrinthStart}
                 onStop={onLabyrinthStop}
                 onComplete={onLabyrinthComplete}
-                assets={[
-                    // <skoash.Audio ref="collide" type="sfx" src="media/_sounds/_effects/wall.mp3" complete />,
-                ]}
                 items={items}
-                enemies={enemies}
             />
 
             <DPad
                 start={_.get(props, 'data.game.start', false)}
                 stop={_.get(props, 'data.game.stop', false)}
-                assets={[
-                    // <skoash.Audio ref="keydown" type="sfx" src="media/_sounds/_effects/Click.mp3" complete />
-                ]}
             />
         </skoash.Screen>
     );

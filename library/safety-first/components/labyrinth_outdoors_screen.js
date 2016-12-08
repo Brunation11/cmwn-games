@@ -1,28 +1,13 @@
 import LabyrinthScreenComponent from './labyrinth_screen_component';
 
 export default function (props, ref, key) {
-    var onCloseInstructions = function () {
-        skoash.trigger('updateState', {
-            path: 'openReveal',
-            data: 'count-down',
-        });
-
-        setTimeout(() => {
-            skoash.trigger('updateState', {
-                path: 'closeReveal',
-                data: true,
-            });
-        }, 3000);
-    };
-
     return LabyrinthScreenComponent(props, ref, key, {
         id: 'labyrinth-level-one-screen',
         levelNumber: 1,
-        itemsCount: 1,
-        enemiesCount: 0,
+        itemsCount: 7,
         disableChance: .75,
         disableInterval: 4000,
-        // openOnStart: 'instructions',
+        openOnStart: 'tips',
         vos: [
             <skoash.MediaSequence
                 ref="instructions"
@@ -40,41 +25,370 @@ export default function (props, ref, key) {
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
-                ref="level-up"
+                ref="tips"
                 silentOnStart={true}
             >
                 <skoash.Audio
                     ref="vo-3"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeIntro.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-4"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/TipsPath.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-1"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-5"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-6"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/LookBothWays.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-2"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-7"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-8"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBuss.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-3"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-9"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-10"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBuss.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-4"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-11"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-12"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/PlayOthers.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-5"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-13"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-14"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerBelongings.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-6"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-15"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-16"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerCar.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="item-7"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-17"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-18"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/StrangerGift.mp3`}
+                />
+            </skoash.MediaSequence>,
+            <skoash.MediaSequence
+                ref="level-up"
+                silentOnStart={true}
+            >
+                <skoash.Audio
+                    ref="vo-5"
+                    type="voiceOver"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeIntro.mp3`}
+                />
+                <skoash.Audio
+                    ref="vo-6"
                     type="voiceOver"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ClickScreen.mp3`}
                 />
             </skoash.MediaSequence>
         ],
         revealList: [
-            <skoash.Component ref="instructions" className="labyrinth-frame instructions">
-                <skoash.Image className="wolf" src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`} />
-                <div className="copy">
-                    <p>
-                        Move Mr. Eco<br/>
-                        by using the arrow keys<br/>
-                        and help him<br/>
-                        turn off the lights!
-                    </p>
-                    <div className="reveal-arrows">
-                        <div />
-                        <div />
-                        <div />
-                        <div />
-                    </div>
-                    <button
-                        onClick={onCloseInstructions}
-                    />
-                </div>
+            <skoash.Component
+                ref="instructions"
+                className="labyrinth-frame instructions"
+            >
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <h1 className="header">
+                    Use the arrow keys<br />
+                    to move across the map<br />
+                    and reveal safety tips.
+                </h1>
+                <h2 className="sub-header">
+                    Click anywhere on the screen to continue.
+                </h2>
+                <skoash.Image
+                    className="nav-arrows"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/arrow.keys.png`}
+                />
+            </skoash.Component>,
+            <skoash.Component
+                ref="tips"
+                className="labyrinth-frame tips tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-1"
+                className="labyrinth-frame item-1 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-2"
+                className="labyrinth-frame item-2 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-3"
+                className="labyrinth-frame item-3 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-4"
+                className="labyrinth-frame item-4 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-5"
+                className="labyrinth-frame item-5 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-6"
+                className="labyrinth-frame item-6 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="item-7"
+                className="labyrinth-frame item-7 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
             </skoash.Component>
         ],
     });
