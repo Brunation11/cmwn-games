@@ -24,7 +24,7 @@ class Reveal extends skoash.Component {
     open(message) {
         var self = this;
         var currentlyOpen = this.props.openMultiple ?
-      this.state.currentlyOpen.concat(message) : [message];
+            this.state.currentlyOpen.concat(message) : [message];
 
         self.setState({
             open: true,
@@ -117,13 +117,13 @@ class Reveal extends skoash.Component {
             return this.props.assets.map((asset, key) => {
                 var ref = asset.ref || asset.props['data-ref'] || 'asset-' + key;
                 return (
-          <asset.type
-            {...asset.props}
-            data-ref={key}
-            ref={ref}
-            key={key}
-          />
-        );
+                    <asset.type
+                        {...asset.props}
+                        data-ref={key}
+                        ref={ref}
+                        key={key}
+                    />
+                );
             });
         }
 
@@ -136,15 +136,15 @@ class Reveal extends skoash.Component {
         return list.map((li, key) => {
             var ref = li.ref || li.props['data-ref'] || key;
             return (
-        <li.type
-          {...li.props}
-          type="li"
-          className={this.getClass(li, key)}
-          data-ref={ref}
-          ref={ref}
-          key={key}
-        />
-      );
+                <li.type
+                    {...li.props}
+                    type="li"
+                    className={this.getClass(li, key)}
+                    data-ref={ref}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 
@@ -172,10 +172,10 @@ class Reveal extends skoash.Component {
         if (li.props.className) classes = li.props.className;
 
         if (this.state.currentlyOpen.indexOf(key) !== -1 ||
-        this.state.currentlyOpen.indexOf('' + key) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
-        this.state.currentlyOpen.indexOf(li.ref) !== -1
-    ) {
+            this.state.currentlyOpen.indexOf('' + key) !== -1 ||
+            this.state.currentlyOpen.indexOf(li.props['data-ref']) !== -1 ||
+            this.state.currentlyOpen.indexOf(li.ref) !== -1
+        ) {
             classes = classNames(classes, 'OPEN');
         }
 
@@ -184,7 +184,7 @@ class Reveal extends skoash.Component {
 
     getClassNames() {
         var classes;
-        var open = 'open-none ';
+        var open = 'open-none';
 
         if (this.state.open) {
             open = '';
@@ -194,10 +194,10 @@ class Reveal extends skoash.Component {
         }
 
         classes = classNames(
-      'reveal',
-      open,
-      super.getClassNames(),
-    );
+            'reveal',
+            open,
+            super.getClassNames()
+        );
 
         return classes;
     }
