@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-[id*='labyrinth-level-'] {
+[id*='labyrinth'] {
   .avatar {
     width: 143px;
   }
@@ -565,7 +565,7 @@
   }
 }
 
-#labyrinth-level-one-screen {
+#labyrinth-outdoors {
   .labyrinth {
     .interactive-item {
       $item-lefts: 660 262  86  86 458 638 642;
@@ -580,6 +580,17 @@
   }
 }
 
-
-// you drops after this game...
-// tada sfx and shake imedietly after.
+#labyrinth-indoors {
+  .labyrinth {
+    .interactive-item {
+      $item-lefts: 660 262  86  86 458 638 642;
+      $item-tops:  174 273 322 428 455 299 457;
+      @for $i from 1 through 7 {
+        &.item-#{$i} {
+          left: #{nth($item-lefts, $i)}px;
+          top: #{nth($item-tops, $i)}px;
+        }
+      }
+    }
+  }
+}

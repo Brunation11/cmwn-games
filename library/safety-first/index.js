@@ -22,15 +22,7 @@ import WhosAtTheDoorCablePersonScreen from './components/whos_at_the_door_cable_
 import WhosAtTheDoorCloseRelativeScreen from './components/whos_at_the_door_close_relative_screen';
 import InfoGoodJobScreen from './components/info_good_job_screen';
 import LabyrinthOutdoorsScreen from './components/labyrinth_outdoors_screen';
-// import BulbsScreen from './components/bulbs_screen';
-// import PigScreen from './components/pig_screen';
-// import InfoScreen from './components/info_screen';
-// import VideoScreen from './components/video_screen';
-// import SpecialAnnouncementScreen from './components/special_announcement_screen';
-// import LevelOneScreen from './components/level_one_screen';
-// import LevelTwoScreen from './components/level_two_screen';
-// import LevelThreeScreen from './components/level_three_screen';
-// import FlipScreen from './components/flip_screen';
+import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
@@ -43,32 +35,24 @@ SafetyFirst = (
         loader={<Loader />}
         screens={{
             0: iOSScreen,
-            // 1: TitleScreen,
-            // 2: MeetTheTeamScreen,
-            // 1: InfoLetsSeeScreen,
-            // 2: DingDongScreen,
-            // 3: WhosAtTheDoorGrandpaScreen,
-            // 4: WhosAtTheDoorDeliveryPersonScreen,
-            // 5: WhosAtTheDoorSisterScreen,
-            // 6: WhosAtTheDoorNewNeighborScreen,
-            // 7: WhosAtTheDoorMotherScreen,
-            // 8: WhosAtTheDoorBrotherScreen,
-            // 9: WhosAtTheDoorGasManScreen,
-            // 10: WhosAtTheDoorCloseFriendScreen,
-            // 9: WhosAtTheDoorPersonWithFlatScreen,
-            // 11: WhosAtTheDoorCablePersonScreen,
-            // 12: WhosAtTheDoorCloseRelativeScreen,
-            // 13: InfoGoodJobScreen,
-            1: LabyrinthOutdoorsScreen
-            // 2: BulbsScreen,
-            // 3: PigScreen,
-            // 4: InfoScreen,
-            // 5: VideoScreen,
-            // 6: SpecialAnnouncementScreen,
-            // 7: LevelOneScreen,
-            // 8: LevelTwoScreen,
-            // 9: LevelThreeScreen,
-            // 10: FlipScreen,
+            1: TitleScreen,
+            2: MeetTheTeamScreen,
+            3: InfoLetsSeeScreen,
+            4: DingDongScreen,
+            5: WhosAtTheDoorGrandpaScreen,
+            6: WhosAtTheDoorDeliveryPersonScreen,
+            7: WhosAtTheDoorSisterScreen,
+            8: WhosAtTheDoorNewNeighborScreen,
+            9: WhosAtTheDoorMotherScreen,
+            10: WhosAtTheDoorBrotherScreen,
+            11: WhosAtTheDoorGasManScreen,
+            12: WhosAtTheDoorCloseFriendScreen,
+            13: WhosAtTheDoorPersonWithFlatScreen,
+            14: WhosAtTheDoorCablePersonScreen,
+            15: WhosAtTheDoorCloseRelativeScreen,
+            16: InfoGoodJobScreen,
+            17: LabyrinthOutdoorsScreen,
+            18: FlipScreen,
         }}
         menus={{
             quit: QuitScreen,

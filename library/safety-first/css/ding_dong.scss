@@ -3,39 +3,39 @@
 #ding-dong {
     .frame {
         position: absolute;
-        width: 90%;
-        height: 80%;
         top: 50%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         background: url('#{$media-server}ImageAssets/frame.quit.png');
         background-size: 100% 100%;
+        width: 90%;
+        height: 80%;
 
         &::after {
             position: absolute;
-            content: '';
-            width: 70%;
-            height: 55%;
             top: 10%;
             right: 3%;
             background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
             background-position: -10px 0;
             background-size: auto 100%;
+            width: 70%;
+            height: 55%;
+            content: '';
         }
 
         span {
             position: absolute;
             top: 65%;
-            font-size: 35px;
             right: 13%;
+            font-size: 35px;
         }
     }
 
     img {
         position: absolute;
-        width: 100%;
         bottom: 0;
         left: 0;
         animation-name: tada;
+        width: 100%;
     }
 }

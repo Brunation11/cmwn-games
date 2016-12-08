@@ -1,8 +1,6 @@
-import Score from 'shared/components/score/0.1';
 import Labyrinth from 'shared/components/labyrinth/0.1';
 import DPad from 'shared/components/d_pad/0.1';
 import IteractiveItem from 'shared/components/interactive_item/0.1';
-import Timer from 'shared/components/timer/0.1';
 import MediaCollection from 'shared/components/media_collection/0.1';
 import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 
@@ -29,12 +27,12 @@ export default function (props, ref, key, opts = {}) {
     onLabyrinthStart = function () {
         clearInterval(this.interval);
         this.interval = setInterval(() => {
-            var offset;
+            // var offset;
             if (_.get(props, 'data.game.stop', false)) return;
-            offset = {
-                width: this.player.offsetWidth,
-                height: this.player.offsetHeight,
-            };
+            // offset = {
+            //     width: this.player.offsetWidth,
+            //     height: this.player.offsetHeight,
+            // };
         }, opts.disableInterval);
     };
 
@@ -60,7 +58,7 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
-    onCloseReveal = function (prevMessage) {
+    onCloseReveal = function () {
         this.updateGameState({
             path: 'reveal',
             data: {

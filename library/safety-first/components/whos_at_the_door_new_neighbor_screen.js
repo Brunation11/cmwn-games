@@ -8,7 +8,9 @@ export default function (props, ref, key) {
         header: 'New Neighbor',
         copy: (
             <span>
-                The key word is new.<br />They will have to come back and<br />visit when your parents are home.
+                The key word is new.<br />
+                They will have to come back and<br />
+                visit when your parents are home.
             </span>
         )
     });

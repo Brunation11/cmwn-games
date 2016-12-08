@@ -2,8 +2,8 @@ import LabyrinthScreenComponent from './labyrinth_screen_component';
 
 export default function (props, ref, key) {
     return LabyrinthScreenComponent(props, ref, key, {
-        id: 'labyrinth-outdoors',
-        levelNumber: 1,
+        id: 'labyrinth-indoors',
+        levelNumber: 2,
         itemsCount: 7,
         disableChance: .75,
         disableInterval: 4000,

@@ -30,7 +30,7 @@ export default function (props, ref, key, opts = {}) {
                 complete: true
             }
         });
-    }
+    };
 
     return (
         <skoash.Screen
@@ -80,7 +80,7 @@ export default function (props, ref, key, opts = {}) {
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/Yes.mp3`}
                     onComplete={function () {
-                        sfxOnComplete.call(this)
+                        sfxOnComplete.call(this);
                     }}
                 />
                 <skoash.Audio
@@ -88,7 +88,7 @@ export default function (props, ref, key, opts = {}) {
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/No.mp3`}
                     onComplete={function () {
-                        sfxOnComplete.call(this)
+                        sfxOnComplete.call(this);
                     }}
                 />
             </MediaCollection>
@@ -110,7 +110,7 @@ export default function (props, ref, key, opts = {}) {
                     type="voiceOver"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.vo}.mp3`}
                     onComplete={function () {
-                        screenComplete.call(this)
+                        screenComplete.call(this);
                     }}
                 />
             </MediaCollection>
@@ -142,8 +142,13 @@ export default function (props, ref, key, opts = {}) {
                                 {opts.copy}
                             </span>
                         </skoash.Component>
-                        <skoash.Image className="barklines" src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.barklines.png`} />
-                        <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.fullbody.png`} />
+                        <skoash.Image
+                            className="barklines"
+                            src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.barklines.png`}
+                        />
+                        <skoash.Image
+                            src={`${ENVIRONMENT.MEDIA}ImageAssets/barkley.fullbody.png`}
+                        />
                     </skoash.Component>
                 ]}
             />

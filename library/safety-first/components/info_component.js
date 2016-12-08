@@ -6,7 +6,11 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={opts.id}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`} />
+            <skoash.Audio
+                ref="vo"
+                type="voiceOver"
+                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
+            />
             <skoash.Component className="frame">
                 {opts.copy}
             </skoash.Component>
