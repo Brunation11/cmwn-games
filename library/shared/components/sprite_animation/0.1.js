@@ -1,3 +1,8 @@
+// As of skoash 1.1.0 this component can be found at skoash.SpriteAnimation
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.SpriteAnimation');
+/* eslint-enable no-console */
+
 import classNames from 'classnames';
 import shortid from 'shortid';
 
