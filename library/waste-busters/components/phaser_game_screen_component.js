@@ -22,11 +22,23 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onScreenStart = function () {
+        var gameData = _.get(props, 'gameState.data.game');
+
         startScreen.call(this);
+
+        if (_.get(gameData, `levels.${opts.level}.complete`, false)) {
+            _.assign(gameData, {
+                levels: {
+                    [opts.level]: {
+                        complete: false,
+                    }
+                }
+            });
+        }
 
         this.updateGameState({
             path: ['game'],
-            data: _.defaults(_.get(props, 'gameState.data.game'), {
+            data: _.defaults(gameData, {
                 hits: 0,
                 bagCount: 0,
                 score: 0,
