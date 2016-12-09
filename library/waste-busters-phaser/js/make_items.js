@@ -100,20 +100,17 @@ export default function () {
         tree7: _.defaults({
             crop: crops[13]
         }, treeDefaultProps),
-        snake0: {
-            image: 'snake0',
+        snake: {
             scale: [.25, .25],
             gravityY: 12,
             collideWorldBounds: false,
-        },
+        }
     };
 
     const groups = {
         squareBush: 'bushes',
         roundBush: 'bushes',
-        snake0: 'snakes',
-        snake1: 'snakes',
-        snake2: 'snakes',
+        snake: 'snakes',
         hole: 'holes',
         bag: 'bags',
         rock: 'obstacles',
@@ -248,7 +245,6 @@ export default function () {
     _.each(locations, (locationArray, key) => {
         var holeLocations;
         var snakeLocations;
-        var index;
         if (key === 'blank') return;
         if (key === 'snake') {
             holeLocations = _.map(locationArray, opts => {
@@ -260,16 +256,15 @@ export default function () {
             addItems.call(this, {
                 group: groups.hole, defaultOpts: defaultProps.hole
             }, holeLocations);
-            index = 0;
-            // index = _.random(2);
             snakeLocations = _.map(locationArray, opts => {
                 return {
                     top: opts.top - 10,
                     left: opts.left + 70,
+                    image: 'snake' + _.random(2)
                 };
             });
             addItems.call(this, {
-                group: groups['snake' + index], defaultOpts: defaultProps['snake' + index]
+                group: groups.snake, defaultOpts: defaultProps.snake
             }, snakeLocations);
             return;
         }

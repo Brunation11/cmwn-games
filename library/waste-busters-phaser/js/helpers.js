@@ -20,7 +20,8 @@ export default {
     },
     activateSnake(snake, hole) {
         var climb;
-        if (!snake.active) {
+
+        if (!snake.active && !snake.climbing) {
             snake.left = hole.left - 100;
             snake.loadTexture(snake.originalImage + 'up', 0);
             climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
@@ -33,11 +34,29 @@ export default {
                 snake.animations.add('right', [6, 7, 8, 9, 10, 11], 10, true);
                 snake.animations.play('left');
                 snake.body.velocity.x = -100;
-                snake.active = true;
+                snake.climbing = false;
             });
-            snake.animations.play('hole');
             snake.scale.setTo(.4, .4);
+            snake.animations.play('hole');
             snake.active = true;
+            snake.climbing = true;
+        } else if (snake.body.velocity.x > 0) {
+            snake.left = hole.left - 100;
+            snake.body.velocity.x = 0;
+            snake.loadTexture(snake.originalImage + 'down', 0);
+            snake.left = snake.left + 25;
+            snake.top = snake.top + 25;
+            climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
+            climb.onComplete.add(() => {
+                snake.loadTexture(null, 0);
+                setTimeout(() => {
+                    snake.climbing = false;
+                }, 5000);
+            });
+            snake.scale.setTo(.4, .4);
+            snake.animations.play('hole');
+            snake.active = false;
+            snake.climbing = true;
         }
     },
     turnAround(enemy) {

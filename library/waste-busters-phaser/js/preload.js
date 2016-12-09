@@ -35,6 +35,20 @@ export default function () {
     ['snake0', ENVIRONMENT.MEDIA + 'SpritesAnimations/mother.slither-01.png', 655, 410],
     // 3326 x 250 pixels
     ['snake0up', ENVIRONMENT.MEDIA + 'SpritesAnimations/Mom.leaving.hole.png', 475, 250],
+    // 3326 x 250 pixels
+    ['snake0down', ENVIRONMENT.MEDIA + 'SpritesAnimations/Mom.going.to.hole.png', 475, 250],
+    // 7860 x 410 pixels
+    ['snake1', ENVIRONMENT.MEDIA + 'SpritesAnimations/sister.slither-01.png', 655, 410],
+    // 3326 x 250 pixels
+    ['snake1up', ENVIRONMENT.MEDIA + 'SpritesAnimations/sister.leave.hole.png', 475, 250],
+    // 3326 x 250 pixels
+    ['snake1down', ENVIRONMENT.MEDIA + 'SpritesAnimations/sister.down.hole.png', 475, 250],
+    // 7860 x 410 pixels
+    ['snake2', ENVIRONMENT.MEDIA + 'SpritesAnimations/brother.slither-01.png', 655, 410],
+    // 3326 x 250 pixels
+    ['snake2up', ENVIRONMENT.MEDIA + 'SpritesAnimations/brother.leave.hole.png', 475, 250],
+    // 3326 x 250 pixels
+    ['snake2down', ENVIRONMENT.MEDIA + 'SpritesAnimations/brother.down.hole.png', 475, 250],
     ]);
 
     loadAssets.call(this, 'audio', [
