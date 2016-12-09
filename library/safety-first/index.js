@@ -22,6 +22,7 @@ import WhosAtTheDoorCablePersonScreen from './components/whos_at_the_door_cable_
 import WhosAtTheDoorCloseRelativeScreen from './components/whos_at_the_door_close_relative_screen';
 import InfoGoodJobScreen from './components/info_good_job_screen';
 import LabyrinthOutdoorsScreen from './components/labyrinth_outdoors_screen';
+import LabyrinthIndoorsScreen from './components/labyrinth_indoors_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -52,7 +53,8 @@ SafetyFirst = (
             15: WhosAtTheDoorCloseRelativeScreen,
             16: InfoGoodJobScreen,
             17: LabyrinthOutdoorsScreen,
-            18: FlipScreen,
+            18: LabyrinthIndoorsScreen,
+            19: FlipScreen,
         }}
         menus={{
             quit: QuitScreen,

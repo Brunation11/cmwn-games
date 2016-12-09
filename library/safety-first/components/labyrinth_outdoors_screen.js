@@ -8,6 +8,8 @@ export default function (props, ref, key) {
         disableChance: .75,
         disableInterval: 4000,
         openOnStart: 'tips',
+        img: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`,
+        map: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.jpg`,
         vos: [
             <skoash.MediaSequence
                 ref="instructions"
@@ -66,7 +68,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-8"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBuss.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -81,7 +83,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-10"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBuss.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence

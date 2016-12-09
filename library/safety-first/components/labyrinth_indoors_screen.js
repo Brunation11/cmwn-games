@@ -3,11 +3,13 @@ import LabyrinthScreenComponent from './labyrinth_screen_component';
 export default function (props, ref, key) {
     return LabyrinthScreenComponent(props, ref, key, {
         id: 'labyrinth-indoors',
-        levelNumber: 2,
+        levelNumber: 1,
         itemsCount: 7,
         disableChance: .75,
         disableInterval: 4000,
         openOnStart: 'tips',
+        img: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`,
+        map: `${ENVIRONMENT.MEDIA}ImageAssets/map.02.jpg`,
         vos: [
             <skoash.MediaSequence
                 ref="instructions"
@@ -66,7 +68,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-8"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBuss.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WaitBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence
@@ -81,7 +83,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-10"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBuss.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/DropBus.mp3`}
                 />
             </skoash.MediaSequence>,
             <skoash.MediaSequence

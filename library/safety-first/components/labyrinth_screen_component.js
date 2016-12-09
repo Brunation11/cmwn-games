@@ -99,8 +99,8 @@ export default function (props, ref, key, opts = {}) {
             />
 
             <Labyrinth
-                img={`${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`}
-                map={`${ENVIRONMENT.MEDIA}ImageAssets/map.01.jpg`}
+                img={opts.img}
+                map={opts.map}
                 input={_.get(props, 'data.d-pad', {})}
                 startX={140}
                 startY={120}
