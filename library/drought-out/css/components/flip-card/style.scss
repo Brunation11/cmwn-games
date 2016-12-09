@@ -79,19 +79,19 @@ $grey: #eee;
     &.tb ul li .side.b,
     ul li.tb .side.b {
         transform: rotateY(0deg);
-        transform: rotateX(180deg);
+        transform: rotateX(180deg); // scss-lint:disable DuplicateProperty
     }
 
     &.tb ul li.HIGHLIGHTED .side.a,
     ul li.tb:hover .side.a {
         transform: rotateY(0deg);
-        transform: rotateX(-180deg);
+        transform: rotateX(-180deg); // scss-lint:disable DuplicateProperty
     }
 
     &.tb ul li.HIGHLIGHTED .side.b,
     ul li.tb:hover .side.b {
         transform: rotateY(0deg);
-        transform: rotateX(0deg);
+        transform: rotateX(0deg); // scss-lint:disable DuplicateProperty
     }
 
     /* Bottom to Top */
@@ -99,18 +99,18 @@ $grey: #eee;
     &.bt ul li .side.b,
     ul li.bt .side.b {
         transform: rotateY(0deg);
-        transform: rotateX(-180deg);
+        transform: rotateX(-180deg); // scss-lint:disable DuplicateProperty
     }
 
     &.bt ul.show-all li .side.a,
     &.bt ul li.HIGHLIGHTED .side.a {
         transform: rotateY(0deg);
-        transform: rotateX(180deg);
+        transform: rotateX(180deg); // scss-lint:disable DuplicateProperty
     }
 
     &.bt ul.show-all li .side.b,
     &.bt ul li.HIGHLIGHTED .side.b {
         transform: rotateY(0deg);
-        transform: rotateX(0deg);
+        transform: rotateX(0deg); // scss-lint:disable DuplicateProperty
     }
 }
