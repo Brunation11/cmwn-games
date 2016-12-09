@@ -15,15 +15,16 @@ export default function () {
     [this.player, this.water, this.helpers.hitWater],
     [this.player, this.platforms, this.helpers.onBump],
     [this.player, this.bushes, this.helpers.onBump],
-    [this.player, this.enemies, this.helpers.htiEnemy],
     [this.player, this.obstacles, this.helpers.hitObstacle],
     [this.player, this.logs, this.helpers.onBump],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.trees, this.ground, this.helpers.stay],
     [this.trees, this.platforms, this.helpers.stay],
-    [this.enemies, this.ground, this.helpers.stay],
-    [this.enemies, this.platforms, this.helpers.stay],
+    [this.snakes, this.ground, this.helpers.stay],
+    [this.snakes, this.platforms, this.helpers.stay],
+    [this.snakes, this.water, this.helpers.turnAround],
+    [this.holes, this.ground, this.helpers.stay],
     [this.bags, this.ground, this.helpers.stay],
     [this.bags, this.platforms, this.helpers.stay],
     [this.obstacles, this.ground, this.helpers.stay],
@@ -40,6 +41,8 @@ export default function () {
     [this.player, this.doors, this.helpers.exit],
     [this.player, this.logs, this.helpers.inLog],
     [this.player, this.lightening, this.helpers.collectLightening],
+    [this.player, this.snakes, this.helpers.hitEnemy],
+    [this.snakes, this.holes, this.helpers.activateSnake],
     ]);
 
     if (!this.data.levels[this.opts.level].complete) {

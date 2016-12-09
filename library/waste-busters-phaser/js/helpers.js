@@ -7,7 +7,7 @@ import makeLogs from './make_logs';
 import makeItems from './make_items';
 
 export default {
-    emitData: function () {
+    emitData() {
         //  emit event with data to skoash game
         this.emitEvent({
             updateGameState: {
@@ -16,18 +16,50 @@ export default {
             }
         });
     },
-    onBump: function () {
+    onBump() {
     },
-    hitEnemy: function (p) {
+    activateSnake(snake, hole) {
+        var climb;
+        if (!snake.active) {
+            snake.left = hole.left - 100;
+            snake.loadTexture(snake.originalImage + 'up', 0);
+            climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
+            climb.onComplete.add(() => {
+                snake.loadTexture(snake.originalImage, 5);
+                snake.scale.setTo(.3, .3);
+                snake.left = snake.left - 25;
+                snake.top = snake.top - 25;
+                snake.animations.add('left', [5, 4, 3, 2, 1, 0], 10, true);
+                snake.animations.add('right', [6, 7, 8, 9, 10, 11], 10, true);
+                snake.animations.play('left');
+                snake.body.velocity.x = -100;
+                snake.active = true;
+            });
+            snake.animations.play('hole');
+            snake.scale.setTo(.4, .4);
+            snake.active = true;
+        }
+    },
+    turnAround(enemy) {
+        if (enemy.isTurning) return;
+        enemy.isTurning = true;
+        enemy.body.velocity.x = -1 * enemy.body.velocity.x;
+        enemy.animations.play(enemy.body.velocity.x < 0 ? 'left' : 'right');
+        setTimeout(() => {
+            enemy.isTurning = false;
+        }, 500);
+    },
+    hitEnemy(p, e) {
+        if (!e.active) return;
         this.helpers.hitSomething.call(this, p);
     },
-    hitObstacle: function (p) {
+    hitObstacle(p) {
         this.helpers.hitSomething.call(this, p);
     },
-    hitWater: function (p) {
+    hitWater(p) {
         this.helpers.hitSomething.call(this, p, 1, 1);
     },
-    hitSomething: function (p, i = 1, d = -1) {
+    hitSomething(p, i = 1, d = -1) {
         if (this.isHit) return;
         this.isHit = true;
         p.body.velocity.y = -1 * this.opts.hitVelocity;
@@ -49,24 +81,24 @@ export default {
             }
         }, 250);
     },
-    inLog: function () {
+    inLog() {
         this.player.canJump = false;
     },
-    collectRecycling: function (player, recyclying) {
+    collectRecycling(player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
         //  update the lives
         this.data.score += this.opts.recyclingScore;
         this.helpers.emitData.call(this);
     },
-    collectRainbowRecycling: function (player, recyclying) {
+    collectRainbowRecycling(player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
         //  update the lives
         this.data.score += this.opts.rainbowRecyclyingScore;
         this.helpers.emitData.call(this);
     },
-    collectHeart: function (player, heart) {
+    collectHeart(player, heart) {
         if (this.data.lives === this.opts.maxLives) return;
         // Removes the heart from the screen
         heart.kill();
@@ -74,7 +106,7 @@ export default {
         this.data.lives++;
         this.helpers.emitData.call(this);
     },
-    collectBags: function (player, bag) {
+    collectBags(player, bag) {
         if (this.data.bagCount === this.opts.maxBags) return;
         // Removes the bag from the screen
         bag.kill();
@@ -83,7 +115,7 @@ export default {
         this.helpers.updatePlayer.call(this);
         this.helpers.emitData.call(this);
     },
-    collectLightening: function (player, lightening) {
+    collectLightening(player, lightening) {
         player.boost = (player.boost + 1) || 1;
         lightening.kill();
         this.helpers.updatePlayer.call(this);
@@ -92,7 +124,7 @@ export default {
             this.helpers.updatePlayer.call(this);
         }, this.opts.boostTime);
     },
-    updatePlayer: function () {
+    updatePlayer() {
         if (this.player.boost) {
             this.player.loadTexture('jet', 0);
             this.player.animations.add('left', this.opts.boostLeftFrames,
@@ -113,11 +145,11 @@ export default {
                 this.opts.rightFrameRate, this.opts.rightLoop);
         }
     },
-    stay: function (a) {
+    stay(a) {
         a.body.gravity.y = 0;
         a.body.velocity.y = 0;
     },
-    loadTruck: function (player, truck) {
+    loadTruck(player, truck) {
         if (truck.driving || this.data.bagCount !== this.opts.maxBags) return;
         truck.driving = true;
         truck.animations.play('drive');
@@ -135,7 +167,7 @@ export default {
     makePlatforms,
     makeLogs,
     makeItems,
-    makeDoor: function () {
+    makeDoor() {
         addItems.call(this, {
             group: 'doors'
         }, [{
@@ -151,7 +183,7 @@ export default {
         this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
         this.doors.children[0].animations.add('close', [6, 5, 4, 3, 2, 1, 0], 10, false);
     },
-    exit: function () {
+    exit() {
         if (this.data.levels[this.opts.level].trucks !== this.opts.maxTrucks) return;
         if (this.data.levels[this.opts.level].complete) return;
         this.data.levels[this.opts.level].complete = true;

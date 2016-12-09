@@ -30,11 +30,12 @@ export default function (groupOpts = {}, optsArray = []) {
         this[groupOpts.group].enableBody = groupOpts.enableBody;
     }
 
-    _.each(optsArray, opts => {
-        opts = _.defaults(opts, groupOpts.defaultOpts);
+    _.each(optsArray, options => {
+        var opts = _.defaults(_.defaults({}, options), groupOpts.defaultOpts);
 
         let item = this[groupOpts.group].create(opts.left, opts.top, opts.image);
 
+        item.originalImage = opts.image;
         item.scale.setTo(...opts.scale);
         if (opts.crop) {
             item.crop(new Phaser.Rectangle(...opts.crop));

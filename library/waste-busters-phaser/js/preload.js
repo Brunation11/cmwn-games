@@ -31,6 +31,10 @@ export default function () {
     ['door', ENVIRONMENT.MEDIA + 'SpritesAnimations/door.open.png', 250, 253],
     // 3600 x 326 pixels
     ['jet', ENVIRONMENT.MEDIA + 'SpritesAnimations/jet.pack.png', 600, 326],
+    // 7860 x 410 pixels
+    ['snake0', ENVIRONMENT.MEDIA + 'SpritesAnimations/mother.slither-01.png', 655, 410],
+    // 3326 x 250 pixels
+    ['snake0up', ENVIRONMENT.MEDIA + 'SpritesAnimations/Mom.leaving.hole.png', 475, 250],
     ]);
 
     loadAssets.call(this, 'audio', [

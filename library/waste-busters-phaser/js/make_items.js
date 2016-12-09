@@ -41,9 +41,10 @@ export default function () {
         roundBush: _.defaults({
             crop: crops[1],
         }, generalDefaultProps),
-        snake: _.defaults({
+        hole: _.defaults({
             crop: crops[2],
             body: [115, 20, 20, 50],
+            gravityY: 10000,
         }, generalDefaultProps),
         bag: _.defaults({
             crop: crops[3],
@@ -99,12 +100,21 @@ export default function () {
         tree7: _.defaults({
             crop: crops[13]
         }, treeDefaultProps),
+        snake0: {
+            image: 'snake0',
+            scale: [.25, .25],
+            gravityY: 12,
+            collideWorldBounds: false,
+        },
     };
 
     const groups = {
         squareBush: 'bushes',
         roundBush: 'bushes',
-        snake: 'enemies',
+        snake0: 'snakes',
+        snake1: 'snakes',
+        snake2: 'snakes',
+        hole: 'holes',
         bag: 'bags',
         rock: 'obstacles',
         stump: 'obstacles',
@@ -212,6 +222,7 @@ export default function () {
 
     objects = getObjects(objects, this.opts.groundItemAmounts);
     objects.unshift('blank');
+    objects.unshift('blank');
 
     _.every(this.ground.children, platform => {
         if (truckNumber <= truckTotal &&
@@ -235,7 +246,33 @@ export default function () {
     }
 
     _.each(locations, (locationArray, key) => {
+        var holeLocations;
+        var snakeLocations;
+        var index;
         if (key === 'blank') return;
+        if (key === 'snake') {
+            holeLocations = _.map(locationArray, opts => {
+                return {
+                    top: opts.top,
+                    left: opts.left + 80,
+                };
+            });
+            addItems.call(this, {
+                group: groups.hole, defaultOpts: defaultProps.hole
+            }, holeLocations);
+            index = 0;
+            // index = _.random(2);
+            snakeLocations = _.map(locationArray, opts => {
+                return {
+                    top: opts.top - 10,
+                    left: opts.left + 70,
+                };
+            });
+            addItems.call(this, {
+                group: groups['snake' + index], defaultOpts: defaultProps['snake' + index]
+            }, snakeLocations);
+            return;
+        }
         addItems.call(this, {
             group: groups[key], defaultOpts: defaultProps[key]
         }, locationArray);
@@ -265,5 +302,9 @@ export default function () {
 
     _.each(this.trees.children, tree => {
         tree.sendToBack();
+    });
+
+    _.each(this.snakes.children, snake => {
+        snake.loadTexture(null, 0);
     });
 }
