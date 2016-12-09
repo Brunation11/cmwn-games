@@ -1,81 +1,83 @@
+@import 'variables';
+
 @mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
 }
 
 // code from https://github.com/hudochenkov/sass-text-stroke
-@function text-stroke($size: 2, $color: #fff, $correction: 0) {
-  $radius: $size - $correction;
-  $stroke: ();
+@function text-stroke($size: 2, $color: $color-white, $correction: 0) {
+    $radius: $size - $correction;
+    $stroke: ();
 
-  @for $i from -$size through $size {
-    @for $k from -$size through $size {
+    @for $i from -$size through $size {
+        @for $k from -$size through $size {
 
-      $x: $k;
-      $y: $i;
+            $x: $k;
+            $y: $i;
 
-      @if $k > 0 {
-        $x: $k - 0.5;
-      } @elseif $k < 0 {
-        $x: $k + 0.5;
-      }
+            @if $k > 0 {
+                $x: $k - .5;
+            } @elseif $k < 0 {
+                $x: $k + .5;
+            }
 
-      @if $i > 0 {
-        $y: $i - 0.5;
-      } @elseif $i < 0 {
-        $y: $i + 0.5;
-      }
+            @if $i > 0 {
+                $y: $i - .5;
+            } @elseif $i < 0 {
+                $y: $i + .5;
+            }
 
-      @if ($x*$x + $y*$y <= $radius*$radius) {
-        $stroke: append($stroke, $i*1px $k*1px 0 $color, comma);
-      }
+            @if ($x*$x + $y*$y <= $radius*$radius) {
+                $stroke: append($stroke, $i*1px $k*1px 0 $color, comma);
+            }
+        }
     }
-  }
 
-  @return $stroke;
+    @return $stroke;
 }
 
-@mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
-  text-shadow: text-stroke($size, $color, $correction);
+@mixin text-stroke($size: 2, $color: $color-white, $correction: 0) {
+    text-shadow: text-stroke($size, $color, $correction);
 }
 
 @mixin typing($widths, $steps: 20) {
-  div {
-    margin: 0 auto;
-    text-align: left;
-    overflow: hidden;
-    white-space: nowrap;
-
-    p {
-      position: relative;
-      display: inline-block;
-      font-size: inherit;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  @for $i from 1 through length($widths) {
-    div:nth-of-type(#{$i}) {
-      width: #{nth($widths, $i)}px;
-    }
-
-    &.start {
-      div:nth-of-type(#{$i}) {
-        &:after {
-          content: ' _';
-          position: relative;
-          text-align: middle;
-          animation: type#{$i}after #{$i * 1.25}s forwards;
-        }
+    div {
+        margin: 0 auto;
+        overflow: hidden;
+        text-align: left;
+        white-space: nowrap;
 
         p {
-          animation: type#{$i} #{$i * 1.25}s steps($steps, end);
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: inherit;
         }
-      }
     }
-  }
+
+    @for $i from 1 through length($widths) {
+        div:nth-of-type(#{$i}) {
+            width: #{nth($widths, $i)}px;
+        }
+
+        &.start {
+            div:nth-of-type(#{$i}) {
+                &:after {
+                    position: relative;
+                    animation: type#{$i}after #{$i * 1.25}s forwards;
+                    text-align: middle;
+                    content: ' _';
+                }
+
+                p {
+                    animation: type#{$i} #{$i * 1.25}s steps($steps, end);
+                }
+            }
+        }
+    }
 }

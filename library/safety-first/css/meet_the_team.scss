@@ -1,235 +1,235 @@
 @import 'variables';
 
 #meet-the-team {
-  img {
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    opacity: 1;
-  }
-
-  .header {
-    margin: 2% 0;
-
-    span {
-      color: $color-white;
-      font-size: 35px;
-      font-weight: 900;
-      text-shadow: -2px -2px 0 $color-gold,
-                   2px -2px 0 $color-gold,
-                   -3px 2px 0 $color-gold,
-                   2px 2px 0 $color-gold;
-    }
-  }
-
-  .barkley,
-  .shepherd,
-  .wolf {
-    height: 100%;
-    left: 0;
-    position: relative;
-    width: 25%;
-    margin: 0 auto;
-
-    &::before {
-      position: absolute;
-      content: '';
-      width: 110%;
-      height: 100%;
-      top: 80%;
-      left: -5%;
-      transform: scaleY(-1);
-      filter: FlipV;
-      background-size: 100% 70%;
-      background-position: bottom;
-      background-repeat: no-repeat;
-      opacity: .1;
-    }
-
-    &::after {
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 15%;
-      bottom: -10%;
-      left: 0;
-      background-image: url('#{$media-server}SpritesAnimations/sprites.labels.png');
-      background-size: 301%;
-    }
-
-    &.HIGHLIGHTED {
-      opacity: .75;
-    }
-  }
-
-  .barkley::before {
-    background-image: url('#{$media-server}ImageAssets/officer.barkley.png');
-  }
-
-  .barkley::after {
-    background-position: 0 0;
-  }
-
-  .shepherd::before {
-    background-image: url('#{$media-server}ImageAssets/officer.shepherd.png');
-  }
-
-  .shepherd::after {
-    background-position: 193px 0;
-  }
-
-  .wolf::before {
-    background-image: url('#{$media-server}ImageAssets/officer.wolf.png');
-  }
-
-  .wolf::after {
-    background-position: 386px 0;
-  }
-
-  .selectable {
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-  }
-
-  .reveal {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: url('#{$media-server}ImageAssets/bkg.3.jpg');
-
-    ul {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      margin: 0;
-    }
-
-    li {
-      opacity: 0;
-    }
-
-    &.open-none {
-      display: none;
-    }
-
-    &.OPEN {
-      .OPEN {
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
         opacity: 1;
-      }
+        width: 100%;
+    }
+
+    .header {
+        margin: 2% 0;
+
+        span {
+            text-shadow: -2px -2px 0 $color-gold,
+                          2px -2px 0 $color-gold,
+                          -3px 2px 0 $color-gold,
+                           2px 2px 0 $color-gold;
+            color: $color-white;
+            font-size: 35px;
+            font-weight: 900;
+        }
     }
 
     .barkley,
     .shepherd,
     .wolf {
-      position: absolute;
-    }
+        position: relative;
+        left: 0;
+        margin: 0 auto;
+        width: 25%;
+        height: 100%;
 
-    .barkley {
-      height: 45%;
-      left: 15%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20%;
-    }
-
-    .shepherd {
-      height: 45%;
-      left: 40%;
-      top: 40%;
-      width: 20%;
-    }
-
-    .wolf {
-      height: 45%;
-      left: 65%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20%;
-    }
-
-    .frame {
-      position: absolute;
-      background: url('#{$media-server}SpritesAnimations/sprites.profile.png');
-    }
-
-    &.open-barkley {
-      .frame {
-        background-size: auto 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 40%;
-        width: 47%;
-        height: 34%;
-
-        span {
-          position: absolute;
-          top: 50%;
-          left: 4%;
-          width: 96%;
-          transform: translateY(-60%);
+        &::before {
+            position: absolute;
+            top: 80%;
+            left: -5%;
+            transform: scaleY(-1);
+            opacity: .1;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: 100% 70%;
+            width: 110%;
+            height: 100%;
+            content: '';
+            filter: FlipV;
         }
-      }
+
+        &::after {
+            position: absolute;
+            bottom: -10%;
+            left: 0;
+            background-image: url('#{$media-server}SpritesAnimations/sprites.labels.png');
+            background-size: 301%;
+            width: 100%;
+            height: 15%;
+            content: '';
+        }
+
+        &.HIGHLIGHTED {
+            opacity: .75;
+        }
     }
 
-    &.open-shepherd {
-      .frame {
-        background-size: auto 100%;
-        top: 5%;
-        transform: translateX(-50%);
+    .barkley::before {
+        background-image: url('#{$media-server}ImageAssets/officer.barkley.png');
+    }
+
+    .barkley::after {
+        background-position: 0 0;
+    }
+
+    .shepherd::before {
+        background-image: url('#{$media-server}ImageAssets/officer.shepherd.png');
+    }
+
+    .shepherd::after {
+        background-position: 193px 0;
+    }
+
+    .wolf::before {
+        background-image: url('#{$media-server}ImageAssets/officer.wolf.png');
+    }
+
+    .wolf::after {
+        background-position: 386px 0;
+    }
+
+    .selectable {
+        position: absolute;
         left: 50%;
-        width: 57%;
-        height: 34%;
-        background-position: 1060px 0;
+        transform: translateX(-50%);
+        width: 80%;
+    }
 
-        span {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 100%;
-          transform: translateY(-75%);
+    .reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('#{$media-server}ImageAssets/bkg.3.jpg');
+        width: 100%;
+        height: 100%;
+
+        ul {
+            position: absolute;
+            margin: 0;
+            width: 100%;
+            height: 100%;
         }
-      }
-    }
 
-    &.open-wolf {
-      .frame {
-        background-size: auto 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 40%;
-        width: 47%;
-        height: 34%;
-        background-position: 450px 0;
-
-        span {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 96%;
-          transform: translateY(-60%);
+        li {
+            opacity: 0;
         }
-      }
-    }
 
-    button.close-reveal {
-      position: absolute;
-      display: block;
-      bottom: 2%;
-      z-index: 3;
-      width: 80px;
-      height: 50px;
-      right: 1%;
-      background-position: -665px -43px;
-      transition: opacity 1s;
+        &.open-none {
+            display: none;
+        }
 
-      &:hover {
-        background-position: -667px -187px;
-      }
+        &.OPEN {
+            .OPEN {
+                opacity: 1;
+            }
+        }
+
+        .barkley,
+        .shepherd,
+        .wolf {
+            position: absolute;
+        }
+
+        .barkley {
+            top: 50%;
+            left: 15%;
+            transform: translateY(-50%);
+            width: 20%;
+            height: 45%;
+        }
+
+        .shepherd {
+            top: 40%;
+            left: 40%;
+            width: 20%;
+            height: 45%;
+        }
+
+        .wolf {
+            top: 50%;
+            left: 65%;
+            transform: translateY(-50%);
+            width: 20%;
+            height: 45%;
+        }
+
+        .frame {
+            position: absolute;
+            background: url('#{$media-server}SpritesAnimations/sprites.profile.png');
+        }
+
+        &.open-barkley {
+            .frame {
+                top: 50%;
+                left: 40%;
+                transform: translateY(-50%);
+                background-size: auto 100%;
+                width: 47%;
+                height: 34%;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 4%;
+                    transform: translateY(-60%);
+                    width: 96%;
+                }
+            }
+        }
+
+        &.open-shepherd {
+            .frame {
+                top: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-position: 1060px 0;
+                background-size: auto 100%;
+                width: 57%;
+                height: 34%;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-75%);
+                    width: 100%;
+                }
+            }
+        }
+
+        &.open-wolf {
+            .frame {
+                top: 50%;
+                right: 40%;
+                transform: translateY(-50%);
+                background-position: 450px 0;
+                background-size: auto 100%;
+                width: 47%;
+                height: 34%;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-60%);
+                    width: 96%;
+                }
+            }
+        }
+
+        button.close-reveal {
+            display: block;
+            position: absolute;
+            right: 1%;
+            bottom: 2%;
+            transition: opacity 1s;
+            z-index: 3;
+            background-position: -665px -43px;
+            width: 80px;
+            height: 50px;
+
+            &:hover {
+                background-position: -667px -187px;
+            }
+        }
     }
-  }
 }

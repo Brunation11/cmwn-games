@@ -3,13 +3,13 @@
 [id*='whos-at-the-door'] {
     .frame {
         position: absolute;
-        width: 47%;
-        height: 82%;
-        left: 2%;
         top: 50%;
+        left: 2%;
         transform: translateY(-55%);
         background: url('#{$media-server}SpritesAnimations/sprites.dogsinframes.png');
         background-size: auto 100%;
+        width: 47%;
+        height: 82%;
 
         &.grandpa {
             background-position: -27px 0;
@@ -60,51 +60,51 @@
             bottom: -9%;
             left: 50%;
             transform: translateX(-50%);
+            width: 100%;
+            line-height: 65px;
             color: $color-yellow;
             font-size: 60px;
             font-weight: 900;
             font-style: italic;
-            width: 100%;
-            line-height: 65px;
         }
     }
 
     .banner {
-        right: 4%;
+        position: absolute;
         top: 5%;
-        width: 46%;
-        height: 41%;
+        right: 4%;
         background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
         background-position: -632px 0;
         background-size: auto 100%;
-        position: absolute;
+        width: 46%;
+        height: 41%;
 
         &::after {
-            width: 100%;
             position: absolute;
-            content: '';
-            height: 102%;
+            bottom: -56%;
+            left: 0;
             background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
             background-position: -1254px 0;
             background-size: auto 100%;
-            bottom: -56%;
-            left: 0;
+            width: 100%;
+            height: 102%;
+            content: '';
         }
     }
 
     .yes-btn,
     .no-btn {
         position: absolute;
-        width: 25%;
-        height: 31%;
+        top: 54%;
         background: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
         background-size: auto 200%;
-        top: 54%;
+        width: 25%;
+        height: 31%;
     }
 
     .yes-btn {
-        background-position: -965px 4px;
         left: 49%;
+        background-position: -965px 4px;
 
         &:hover {
             background-position: -965px -165px;
@@ -112,8 +112,8 @@
     }
 
     .no-btn {
-        background-position: -1212px 4px;
         left: 74%;
+        background-position: -1212px 4px;
 
         &:hover {
             background-position: -1212px -165px;
@@ -125,19 +125,19 @@
     }
 
     .reveal {
-        width: 100%;
-        height: 100%;
+        position: absolute;
         top: 0;
         left: 0;
-        position: absolute;
         background: url('#{$media-server}ImageAssets/bkg.dooropened.jpg');
         background-size: 100%;
+        width: 100%;
+        height: 100%;
 
         ul {
-            width: 100%;
-            height: 100%;
             position: absolute;
             margin: 0;
+            width: 100%;
+            height: 100%;
         }
 
         li {
@@ -152,9 +152,6 @@
             .OPEN {
                 opacity: 1;
             }
-        }
-
-        &.open-grandpa {
         }
 
         &.open-delivery-person {
@@ -242,69 +239,69 @@
         }
 
         .frame {
+            top: 0%;
             left: 50%;
             transform: translateX(-50%);
-            top: 0%;
             width: 35%;
             height: 63%;
 
             span {
                 top: 50%;
-                transform: translateY(-25%);
                 left: 100%;
-                font-size: 65px;
+                transform: translateY(-25%);
                 width: 90%;
                 text-shadow: -5px 5px 2px $color-black;
+                font-size: 65px;
             }
         }
 
         .prompt {
             position: absolute;
-            left: 50%;
             bottom: 4%;
+            left: 50%;
             transform: translateX(-50%);
+            background: url('#{$media-server}ImageAssets/frame.roundedrec.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
             width: 80%;
             height: 35%;
-            background: url('#{$media-server}ImageAssets/frame.roundedrec.png');
-            background-size: 100%;
-            background-repeat: no-repeat;
 
             &::before {
                 position: absolute;
-                content: '';
-                left: 5%;
-                width: 33%;
                 top: 50%;
+                left: 5%;
                 transform: translateY(-50%);
-                height: 60%;
                 background: url('#{$media-server}SpritesAnimations/sprites.yesno.png');
-                background-size: 200%;
                 background-repeat: no-repeat;
+                background-size: 200%;
+                width: 33%;
+                height: 60%;
+                content: '';
             }
         }
 
         .copy {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            font-size: 26px;
             left: 40%;
+            transform: translateY(-50%);
             width: 50%;
+            font-size: 26px;
         }
 
         img {
-            width: 17%;
             position: absolute;
-            bottom: 0;
             right: 0;
+            bottom: 0;
+            width: 17%;
         }
 
         .barklines {
-            width: 10%;
             position: absolute;
-            height: 10%;
             right: 18%;
             bottom: 32%;
+            width: 10%;
+            height: 10%;
         }
     }
 }
