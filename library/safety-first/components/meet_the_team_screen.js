@@ -142,6 +142,7 @@ export default function (props, ref, key) {
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
                     <skoash.Component ref={answers[0]}>
+                        <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[0]}>
                             <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[0]}.png`} />
                         </skoash.Component>
@@ -154,6 +155,7 @@ export default function (props, ref, key) {
                         </skoash.Component>
                     </skoash.Component>,
                     <skoash.Component ref={answers[1]}>
+                        <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[1]}>
                             <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[1]}.png`} />
                         </skoash.Component>
@@ -166,6 +168,7 @@ export default function (props, ref, key) {
                         </skoash.Component>
                     </skoash.Component>,
                     <skoash.Component ref={answers[2]}>
+                        <skoash.Component className="bkg-reveal" />
                         <skoash.Component className={answers[2]}>
                             <skoash.Image src={`${ENVIRONMENT.MEDIA}ImageAssets/officer.${answers[2]}.png`} />
                         </skoash.Component>
