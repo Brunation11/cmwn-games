@@ -8,7 +8,6 @@ export default function (props, ref, key, opts = {}) {
     var itemInteract;
     var onLabyrinthStart;
     var onLabyrinthStop;
-    var onLabyrinthComplete;
     var onOpenReveal;
     var onCloseReveal;
     var items = [];
