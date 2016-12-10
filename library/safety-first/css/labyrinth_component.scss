@@ -23,7 +23,7 @@
                 position: absolute;
                 top: -450%;
                 left: -450%;
-                background-image: url('#{$media-server}SpritesAnimations/sprites.charac.png');
+                background-image: url('#{$media}SpritesAnimations/sprites.charac.png');
                 background-repeat: no-repeat;
                 background-position: 0% 0%;
                 background-size: 100% auto;
@@ -40,7 +40,7 @@
 
             &:before {
                 position: absolute;
-                background-image: url('#{$media-server}SpritesAnimations/sprites.map1.png');
+                background-image: url('#{$media}SpritesAnimations/sprites.map1.png');
                 background-repeat: no-repeat;
                 background-size: auto 230%;
                 content: '';
@@ -151,7 +151,7 @@
 
         div {
             position: absolute;
-            background-image: url('#{$media-server}ImageAssets/arrow.keys.png');
+            background-image: url('#{$media}ImageAssets/arrow.keys.png');
             background-size: 500px;
             width: 72px;
             height: 72px;
@@ -258,229 +258,49 @@
                 position: absolute;
                 top: 7px;
                 left: 343px;
-                background: url('#{$media-server}SpritesAnimations/sprites-signs.png');
-                background-size: auto 100%;
-                width: 438px;
+                background: url('#{$media}SpritesAnimations/sprites-signs.png');
+                background-size: auto 101%;
+                width: 460px;
                 height: 476px;
             }
         }
 
-        &.tips {
-            background-position: 0 0;
+        &.tips .content {
+            background-position: -3px -1px;
+        }
+
+        &.item-1 .content {
+            background-position: -492px -1px;
+        }
+
+        &.item-2 .content {
+            background-position: -974px -1px;
+        }
+
+        &.item-3 .content {
+            background-position: -1452px -1px;
+        }
+
+        &.item-4 .content {
+            background-position: -1947px -12px;
+        }
+
+        &.item-5 .content {
+            background-position: -2420px -2px;
+        }
+
+        &.item-6 .content {
+            background-position: -2898px -4px;
+        }
+
+        &.item-7 .content {
+            background-position: -3376px -2px;
+        }
+
+        &.level-up .content {
+            background-position: -3858px -5px;
         }
     }
-
-  // .labyrinth-frame {
-  //   &.count-down {
-  //     .count {
-  //       position: absolute;
-  //       left: 500px;
-  //       top: 60px;
-  //       width: 200px;
-  //       text-align: center;
-  //     }
-
-  //     .number {
-  //       position: absolute;
-  //       left: 0;
-  //       top: 0;
-  //       width: 100%;
-  //       color: #fff;
-  //       font-size: 260px;
-  //       opacity: 0;
-  //       animation-duration: 1s;
-  //       animation-fill-mode: forwards;
-
-  //       $numbers: three two one;
-  //       @for $i from 1 through 3 {
-  //         &.#{nth($numbers, $i)} {
-  //           animation-delay: #{$i - 1}s
-  //         }
-  //       }
-  //     }
-
-  //     &.OPEN {
-  //       .number {
-  //         animation-name: number-flash;
-  //       }
-  //     }
-  //   }
-
-  //   // &.level-up {
-  //   //   background-image: url(../media/_images/frame.lvlup.png);
-
-  //   //   h2 {
-  //   //     position: relative;
-  //   //     margin: 0;
-  //   //     font-size: 100px;
-  //   //     line-height: 1;
-  //   //     margin: -90px 0 20px -10px;
-  //   //     color: $color-black;
-  //   //     text-shadow: none;
-
-  //   //     &:nth-of-type(1) {
-  //   //       z-index: 1;
-  //   //       margin: 0;
-  //   //       color: $color-black;
-  //   //       @include text-stroke(4, $color-black);
-  //   //     }
-  //   //   }
-
-  //   //   p {
-  //   //     color: $color-black;
-  //   //     @include text-stroke(2, $color-black);
-  //   //     font-size: 20px;
-  //   //     text-align: left;
-  //   //     padding-left: 320px;
-  //   //   }
-  //   // }
-
-  //   // &.try-again {
-  //   //   background-image: url(../media/_images/frame.sorry.png);
-
-  //   //   p {
-  //   //     font-size: 78px;
-  //   //     line-height: 1;
-  //   //     padding-left: 300px;
-  //   //   }
-
-  //   //   button {
-  //   //     width: 270px;
-  //   //     height: 100px;
-  //   //     margin-left: 310px;
-  //   //     background-image: url(../media/_sprites/sprites.btns.png);
-  //   //     background-size: 3375px;
-  //   //     background-position: -1930px -78px;
-
-  //   //     &:hover {
-  //   //       background-position: -1930px -350px;
-  //   //     }
-  //   //   }
-  //   // }
-
-  //   // &.win {
-  //   //   background-image: url(../media/_images/frame.win.png);
-  //   //   width: 960px;
-  //   //   height: 540px;
-  //   //   margin: 0;
-
-  //   //   .eco {
-  //   //     width: 470px;
-  //   //     left: -60px;
-  //   //     bottom: -140px;
-  //   //   }
-
-  //   //   .trophy {
-  //   //     position: absolute;
-  //   //     left: 300px;
-  //   //     top: 290px;
-  //   //     width: 300px;
-  //   //   }
-
-  //   //   .hog {
-  //   //     position: absolute;
-  //   //     right: 71px;
-  //   //     bottom: 71px;
-  //   //     width: 200px;
-  //   //     height: 200px;
-  //   //     background-image: url(../media/_images/energyhog.greyscale.png);
-  //   //     background-size: 220px;
-  //   //     opacity: 1;
-  //   //     transition: filter .5s, opacity .5s;
-
-  //   //     &.blur {
-  //   //       filter: blur(10px);
-  //   //     }
-
-  //   //     &.hide {
-  //   //       opacity: 0;
-  //   //     }
-  //   //   }
-
-  //   //   p {
-  //   //     font-size: 34px;
-  //   //     line-height: 44px;
-  //   //     padding-left: 300px;
-  //   //     color: $color-black;
-  //   //     @include text-stroke(4, $color-black);
-
-  //   //     img {
-  //   //       display: block;
-
-  //   //       &:nth-of-type(1) {
-  //   //         width: 500px;
-  //   //         margin-left: 70px;
-  //   //         margin-bottom: -40px;
-  //   //       }
-
-  //   //       &:nth-of-type(2) {
-  //   //         width: 360px;
-  //   //         margin-left: 110px;
-  //   //         margin-bottom: -20px;
-  //   //       }
-  //   //     }
-
-  //   //     div {
-  //   //       opacity: 0;
-  //   //       transition: opacity .5s;
-
-  //   //       &.display {
-  //   //         opacity: 1;
-  //   //       }
-
-  //   //       &:nth-of-type(1) {
-  //   //         margin-left: -130px;
-  //   //       }
-  //   //     }
-  //   //   }
-
-  //   //   button {
-  //   //     width: 270px;
-  //   //     height: 100px;
-  //   //     margin-left: 310px;
-  //   //     background-image: url(../media/_sprites/sprites.btns.png);
-  //   //     background-size: 3375px;
-  //   //     background-position: -1930px -78px;
-
-  //   //     &:hover {
-  //   //       background-position: -1930px -350px;
-  //   //     }
-  //   //   }
-  //   // }
-
-  //   p {
-  //     padding: 60px 0 40px 200px;
-  //     text-align: center;
-  //     font-size: 48px;
-  //     line-height: 44px;
-  //   }
-
-  //   .reveal-arrows {
-  //     position: relative;
-  //     margin-left: 430px;
-  //     height: 110px;
-
-  //     div {
-  //       position: absolute;
-  //       background-image: url('#{$media-server}ImageAssets/arrow.keys.png');
-  //       background-size: 400px;
-  //       width: 54px;
-  //       height: 54px;
-
-  //       $left-position: 23 123 223 327;
-  //       $lefts: 0 1 2 1;
-  //       $tops: 1 0 1 1;
-
-  //       @for $i from 1 through 4 {
-  //         &:nth-of-type(#{$i}) {
-  //           background-position: -#{nth($left-position, $i)}px -17px;
-  //           left: #{nth($lefts, $i) * 55}px;
-  //           top: #{nth($tops, $i) * 54}px;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 
     .reveal {
         position: absolute;
@@ -512,56 +332,29 @@
         }
     }
 
-    .close-reveal {
+    button.close-reveal {
+        display: block;
         position: absolute;
-        right: 100px;
-        bottom: 75px;
-        background-position: -1220px -80px;
-        background-size: 3375px;
-        width: 190px;
-        height: 100px;
+        right: 1%;
+        bottom: 2%;
+        transition: opacity 1s;
+        z-index: 3;
+        background-position: -665px -43px;
+        width: 80px;
+        height: 50px;
 
         &:hover {
-            background-position: -1220px -355px;
+            background-position: -667px -187px;
         }
     }
 
-    .open-instructions,
-    .open-tips,
-    [class*='open-item-'] {
-        .close-reveal {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: none;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .open-level-up {
-        .close-reveal {
-            background-position: -1500px -80px;
-            width: 370px;
-            height: 100px;
-
-            &:hover {
-                background-position: -1500px -358px;
-            }
-        }
-    }
-
-    .open-try-again {
-        .close-reveal {
-            bottom: 130px;
-            background-position: -2320px -70px;
-            width: 230px;
-            height: 100px;
-
-            &:hover {
-                background-position: -2322px -346px;
-            }
-        }
+    .open-instructions .close-reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: none;
+        width: 100%;
+        height: 100%;
     }
 }
 
