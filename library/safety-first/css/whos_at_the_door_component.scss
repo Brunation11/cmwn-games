@@ -6,7 +6,7 @@
         top: 50%;
         left: 2%;
         transform: translateY(-55%);
-        background: url('#{$media-server}SpritesAnimations/sprites.dogsinframes.png');
+        background: url('#{$media}SpritesAnimations/sprites.dogsinframes.png');
         background-size: auto 100%;
         width: 47%;
         height: 82%;
@@ -73,7 +73,7 @@
         position: absolute;
         top: 5%;
         right: 4%;
-        background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
+        background: url('#{$media}SpritesAnimations/sprites.h1.png');
         background-position: -632px 0;
         background-size: auto 100%;
         width: 46%;
@@ -83,7 +83,7 @@
             position: absolute;
             bottom: -56%;
             left: 0;
-            background: url('#{$media-server}SpritesAnimations/sprites.h1.png');
+            background: url('#{$media}SpritesAnimations/sprites.h1.png');
             background-position: -1254px 0;
             background-size: auto 100%;
             width: 100%;
@@ -96,7 +96,7 @@
     .no-btn {
         position: absolute;
         top: 54%;
-        background: url('#{$media-server}SpritesAnimations/sprites.mainnav.png');
+        background: url('#{$media}SpritesAnimations/sprites.mainnav.png');
         background-size: auto 200%;
         width: 25%;
         height: 31%;
@@ -128,7 +128,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: url('#{$media-server}ImageAssets/bkg.dooropened.jpg');
+        background: url('#{$media}ImageAssets/bkg.dooropened.jpg');
         background-size: 100%;
         width: 100%;
         height: 100%;
@@ -260,7 +260,7 @@
             bottom: 4%;
             left: 50%;
             transform: translateX(-50%);
-            background: url('#{$media-server}ImageAssets/frame.roundedrec.png');
+            background: url('#{$media}ImageAssets/frame.roundedrec.png');
             background-repeat: no-repeat;
             background-size: 100%;
             width: 80%;
@@ -271,7 +271,7 @@
                 top: 50%;
                 left: 5%;
                 transform: translateY(-50%);
-                background: url('#{$media-server}SpritesAnimations/sprites.yesno.png');
+                background: url('#{$media}SpritesAnimations/sprites.yesno.png');
                 background-repeat: no-repeat;
                 background-size: 200%;
                 width: 33%;
