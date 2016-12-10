@@ -32,7 +32,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-3"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -47,7 +47,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-5"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -62,7 +62,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-7"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -77,7 +77,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-9"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -92,7 +92,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-11"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -107,7 +107,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-13"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -122,7 +122,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-15"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -137,7 +137,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     ref="vo-17"
-                    type="voiceOver"
+                    type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
@@ -151,14 +151,14 @@ export default function (props, ref, key) {
                 silentOnStart={true}
             >
                 <skoash.Audio
-                    ref="vo-5"
-                    type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeIntro.mp3`}
+                    ref="vo-19"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/MapGame.mp3`}
                 />
                 <skoash.Audio
-                    ref="vo-6"
+                    ref="vo-20"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/ClickScreen.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/HomeSafe.mp3`}
                 />
             </skoash.MediaSequence>
         ],
@@ -369,6 +369,32 @@ export default function (props, ref, key) {
             <skoash.Component
                 ref="item-7"
                 className="labyrinth-frame item-7 tip"
+            >
+                <skoash.Image
+                    className="bush-left"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.3.png`}
+                />
+                <skoash.Image
+                    className="bush-right"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/bush.2.png`}
+                />
+                <skoash.Image
+                    className="wolf"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/wolf.fullbody.png`}
+                />
+                <skoash.Image
+                    className="sign"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/road.sign.png`}
+                />
+                <skoash.Image
+                    className="grass"
+                    src={`${ENVIRONMENT.MEDIA}ImageAssets/grass.png`}
+                />
+                <skoash.Component className="content" />
+            </skoash.Component>,
+            <skoash.Component
+                ref="level-up"
+                className="labyrinth-frame level-up tip"
             >
                 <skoash.Image
                     className="bush-left"
