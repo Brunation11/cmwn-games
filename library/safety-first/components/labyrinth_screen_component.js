@@ -27,26 +27,12 @@ export default function (props, ref, key, opts = {}) {
     onLabyrinthStart = function () {
         clearInterval(this.interval);
         this.interval = setInterval(() => {
-            // var offset;
             if (_.get(props, 'data.game.stop', false)) return;
-            // offset = {
-            //     width: this.player.offsetWidth,
-            //     height: this.player.offsetHeight,
-            // };
         }, opts.disableInterval);
     };
 
     onLabyrinthStop = function () {
         clearInterval(this.interval);
-    };
-
-    onLabyrinthComplete = function () {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: 'level-up'
-            }
-        });
     };
 
     onOpenReveal = function (message) {
@@ -60,11 +46,36 @@ export default function (props, ref, key, opts = {}) {
 
     onCloseReveal = function () {
         this.updateGameState({
-            path: 'reveal',
+            path: 'game',
             data: {
-                open: ''
+                score: _.get(props, 'data.game.score', 0) + 1
             }
         });
+
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: null
+            }
+        });
+
+        if (_.get(props, 'data.game.score') === opts.itemsCount + 1) {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'level-up'
+                }
+            });
+
+            this.updateGameState({
+                path: 'game',
+                data: {
+                    complete: true
+                }
+            });
+
+            skoash.trigger('complete');
+        }
     };
 
     for (let i = 0; i < opts.itemsCount; i++) {
@@ -85,12 +96,14 @@ export default function (props, ref, key, opts = {}) {
           id={opts.id}
         >
             <MediaCollection
+                checkComplete={false}
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
 
             <RevealPrompt
                 ref="reveal"
+                complete={_.get(props, 'data.game.complete', false)}
                 openOnStart={opts.openOnStart}
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 onOpen={onOpenReveal}
@@ -106,16 +119,12 @@ export default function (props, ref, key, opts = {}) {
                 startY={120}
                 speed={2}
                 scale={_.get(props, 'gameState.scale', 1)}
-                start={_.get(props, 'data.game.start', false)}
                 onStart={onLabyrinthStart}
                 onStop={onLabyrinthStop}
-                onComplete={onLabyrinthComplete}
                 items={items}
             />
 
             <DPad
-                start={_.get(props, 'data.game.start', false)}
-                stop={_.get(props, 'data.game.stop', false)}
             />
         </skoash.Screen>
     );
