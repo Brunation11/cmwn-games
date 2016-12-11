@@ -43,7 +43,7 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
-    onCloseReveal = function () {
+    onCloseReveal = function (message) {
         this.updateGameState({
             path: 'game',
             data: {
@@ -58,7 +58,16 @@ export default function (props, ref, key, opts = {}) {
             }
         });
 
-        if (_.get(props, 'data.game.score') === opts.itemsCount + 1) {
+        if (message === 'instructions' && opts.tips) {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'tips'
+                }
+            });
+        }
+
+        if (_.get(props, 'data.game.score') === opts.goal) {
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -72,8 +81,6 @@ export default function (props, ref, key, opts = {}) {
                     complete: true
                 }
             });
-
-            skoash.trigger('complete');
         }
     };
 
@@ -93,9 +100,10 @@ export default function (props, ref, key, opts = {}) {
           ref={ref}
           key={key}
           id={opts.id}
+          complete={_.get(props, 'data.game.complete', false)}
         >
             <MediaCollection
-                checkComplete={false}
+                complete={_.get(props, 'data.game.complete', false)}
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
@@ -114,8 +122,8 @@ export default function (props, ref, key, opts = {}) {
                 img={opts.img}
                 map={opts.map}
                 input={_.get(props, 'data.d-pad', {})}
-                startX={140}
-                startY={120}
+                startX={opts.startX}
+                startY={opts.startY}
                 speed={2}
                 scale={_.get(props, 'gameState.scale', 1)}
                 onStart={onLabyrinthStart}
