@@ -46,8 +46,23 @@ body > div,
 
     &[class*='SCREEN-info-'] .background.doorclosed,
     &.SCREEN-ding-dong .background.doorclosed,
-    &[class*='SCREEN-whos-at-the-door-'] .background.doorclosed {
+    &[class*='SCREEN-whos-at-the-door-'] .background.doorclosed,
+    &.SCREEN-flip .background.bkg2,
+    &.MENU-quit .background.bkg2 {
         opacity: 1;
+    }
+
+    &.MENU-quit .background.bkg2 {
+        transform: scaleX(-1);
+    }
+
+    &.SCREEN-meet-the-team,
+    &[class*='SCREEN-labyrinth-'],
+    &.SCREEN-flip,
+    &.SCREEN-quit {
+        .logo {
+            opacity: 1;
+        }
     }
 }
 
@@ -67,7 +82,8 @@ img {
     }
 }
 
-button {
+button,
+.logo {
     margin: 0;
     outline: none;
     border: 0;
@@ -161,6 +177,18 @@ button {
     }
 }
 
+.logo {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-position: -1429px -25px;
+    background-size: auto 300%;
+    z-index: 2;
+}
+
 h2 {
     font-size: 50px;
 }
@@ -222,7 +250,7 @@ p {
 .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
 .screen.GATED .next-screen {
     transition: opacity 0s;
-    opacity: 0;
+    opacity: .75;
     cursor: default;
     pointer-events: none;
 }
