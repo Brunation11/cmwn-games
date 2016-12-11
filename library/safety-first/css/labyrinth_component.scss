@@ -37,6 +37,120 @@
             position: absolute;
             width: 10px;
             height: 10px;
+        }
+    }
+
+    .d-pad {
+        display: none;
+        position: absolute;
+        top: 320px;
+        left: 720px;
+        width: 200px;
+        height: 140px;
+
+        div {
+            position: absolute;
+            background-image: url('#{$media}ImageAssets/arrow.keys.png');
+            background-size: 500px;
+            width: 72px;
+            height: 72px;
+
+            $left-position: 151 28 406 276;
+            $lefts: 1 0 1 2;
+            $tops: 0 1 1 1;
+
+            @for $i from 1 through 4 {
+                &:nth-of-type(#{$i}) {
+                    top: #{nth($tops, $i) * 68}px;
+                    left: #{nth($lefts, $i) * 68}px;
+                    background-position: -#{nth($left-position, $i)}px -18px;
+
+                    &:hover {
+                        background-position: -#{nth($left-position, $i)}px -126px;
+                    }
+                }
+            }
+        }
+    }
+
+    .labyrinth-frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(84, 194, 242, .7);
+        width: 100%;
+        height: 100%;
+    }
+
+    .reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s, z-index 0s .5s;
+        width: 960px;
+        height: 540px;
+
+        &.OPEN {
+            transition: opacity .5s, z-index 0s;
+            z-index: 1;
+        }
+
+        ul {
+            position: absolute;
+            margin: 0;
+            width: 960px;
+            height: 540px;
+        }
+
+        li {
+            display: none;
+            transition: display 0s 1s;
+
+            &.OPEN {
+                display: block;
+            }
+        }
+
+        .close-reveal {
+            display: block;
+            position: absolute;
+            right: 1%;
+            bottom: 2%;
+            transition: opacity 1s;
+            z-index: 3;
+            background-position: -665px -43px;
+            width: 80px;
+            height: 50px;
+
+            &:hover {
+                background-position: -667px -187px;
+            }
+        }
+
+        &.open-instructions .close-reveal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: none;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+#labyrinth-outdoors {
+    .labyrinth {
+
+
+        .interactive-item {
+            $item-lefts: 660 262  86  86 458 638 642;
+            $item-tops:  174 273 322 428 455 299 457;
+            @for $i from 1 through 7 {
+                &.item-#{$i} {
+                    top: #{nth($item-tops, $i)}px;
+                    left: #{nth($item-lefts, $i)}px;
+                }
+            }
 
             &:before {
                 position: absolute;
@@ -141,47 +255,7 @@
         }
     }
 
-    .d-pad {
-        display: none;
-        position: absolute;
-        top: 320px;
-        left: 720px;
-        width: 200px;
-        height: 140px;
-
-        div {
-            position: absolute;
-            background-image: url('#{$media}ImageAssets/arrow.keys.png');
-            background-size: 500px;
-            width: 72px;
-            height: 72px;
-
-            $left-position: 151 28 406 276;
-            $lefts: 1 0 1 2;
-            $tops: 0 1 1 1;
-
-            @for $i from 1 through 4 {
-                &:nth-of-type(#{$i}) {
-                    top: #{nth($tops, $i) * 68}px;
-                    left: #{nth($lefts, $i) * 68}px;
-                    background-position: -#{nth($left-position, $i)}px -18px;
-
-                    &:hover {
-                        background-position: -#{nth($left-position, $i)}px -126px;
-                    }
-                }
-            }
-        }
-    }
-
     .labyrinth-frame {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: rgba(34, 172, 185, .5);
-        width: 100%;
-        height: 100%;
-
         &.instructions {
             .wolf {
                 position: absolute;
@@ -199,6 +273,10 @@
                 color: $color-yellow;
                 font-size: 50px;
                 font-weight: 900;
+                text-shadow: -2px -2px 0 #000,
+                              2px -2px 0 #000,
+                              -2px 2px 0 #000,
+                               2px 2px 0 #000;
             }
 
             .sub-header {
@@ -301,89 +379,238 @@
             background-position: -3858px -5px;
         }
     }
-
-    .reveal {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: opacity .5s, z-index 0s .5s;
-        width: 960px;
-        height: 540px;
-
-        &.OPEN {
-            transition: opacity .5s, z-index 0s;
-            z-index: 1;
-        }
-
-        ul {
-            position: absolute;
-            margin: 0;
-            width: 960px;
-            height: 540px;
-        }
-
-        li {
-            display: none;
-            transition: display 0s 1s;
-
-            &.OPEN {
-                display: block;
-            }
-        }
-    }
-
-    button.close-reveal {
-        display: block;
-        position: absolute;
-        right: 1%;
-        bottom: 2%;
-        transition: opacity 1s;
-        z-index: 3;
-        background-position: -665px -43px;
-        width: 80px;
-        height: 50px;
-
-        &:hover {
-            background-position: -667px -187px;
-        }
-    }
-
-    .open-instructions .close-reveal {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: none;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-#labyrinth-outdoors {
-    .labyrinth {
-        .interactive-item {
-            $item-lefts: 660 262  86  86 458 638 642;
-            $item-tops:  174 273 322 428 455 299 457;
-            @for $i from 1 through 7 {
-                &.item-#{$i} {
-                    top: #{nth($item-tops, $i)}px;
-                    left: #{nth($item-lefts, $i)}px;
-                }
-            }
-        }
-    }
 }
 
 #labyrinth-indoors {
     .labyrinth {
+        .player {
+            transform: scaleX(-1);
+        }
+
         .interactive-item {
-            $item-lefts: 660 262  86  86 458 638 642;
-            $item-tops:  174 273 322 428 455 299 457;
+            $item-lefts: 750 710 576 426 395 305 640;
+            $item-tops:  334 180 142 135 455 224 297;
             @for $i from 1 through 7 {
                 &.item-#{$i} {
                     top: #{nth($item-tops, $i)}px;
                     left: #{nth($item-lefts, $i)}px;
                 }
             }
+
+            &:before {
+                position: absolute;
+                background-image: url('#{$media}SpritesAnimations/sprites.houseitems.png');
+                background-repeat: no-repeat;
+                background-size: auto 200%;
+                content: '';
+            }
+
+            &[class*='item-']::before {
+                top: -650%;
+                left: -650%;
+                width: 1400%;
+                height: 1400%;
+            }
+
+            &.item-1 {
+                &:before {
+                    background-position: -26px 0;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -27px -143px;
+                    }
+                }
+            }
+
+            &.item-2 {
+                &:before {
+                    background-position: -421px -5px;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -421px -147px;
+                    }
+                }
+            }
+
+            &.item-3 {
+                &:before {
+                    left: -950%;
+                    background-position: -592px 0;
+                    width: 2000%;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -592px -140px;
+                    }
+                }
+            }
+
+            &.item-4 {
+                &:before {
+                    background-position: -1021px -3px;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -1021px -142px;
+                    }
+                }
+            }
+
+            &.item-5 {
+                &:before {
+                    background-position: -819px -1px;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -819px -144px;
+                    }
+                }
+            }
+
+            &.item-6 {
+                &:before {
+                    background-position: -1212px -4px;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -1213px -144px;
+                    }
+                }
+            }
+
+            &.item-7 {
+                &:before {
+                    background-position: -1418px 2px;
+                }
+
+                &.COMPLETE {
+                    &:before {
+                        background-position: -1418px -140px;
+                    }
+                }
+            }
+        }
+    }
+
+    .labyrinth-frame {
+        &.instructions {
+            .wolf {
+                position: absolute;
+                bottom: 2%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 10%;
+            }
+
+            .header {
+                position: absolute;
+                top: 15%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                color: $color-yellow;
+                font-size: 50px;
+                font-weight: 900;
+                text-shadow: -2px -2px 0 #000,
+                              2px -2px 0 #000,
+                              -2px 2px 0 #000,
+                               2px 2px 0 #000;
+            }
+
+            .sub-header {
+                position: absolute;
+                top: 52%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+                font-size: 30px;
+            }
+        }
+
+        &.tip {
+            .house {
+                position: absolute;
+                bottom: 0;
+                left: -23%;
+                width: 55%;
+            }
+
+            .bush-right {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 40%;
+            }
+
+            .grass {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .wolf {
+                position: absolute;
+                bottom: 0;
+                left: 5%;
+                width: 20%;
+            }
+
+            .sign {
+                position: absolute;
+                left: 25%;
+                width: 60%;
+            }
+
+            .content {
+                position: absolute;
+                top: 7px;
+                left: 295px;
+                background: url('#{$media}SpritesAnimations/sprites-signs.png');
+                background-size: auto 101%;
+                width: 460px;
+                height: 476px;
+            }
+        }
+
+        &.item-1 .content {
+            background-position: -4818px -7px;
+        }
+
+        &.item-2 .content {
+            background-position: -5776px -3px;
+        }
+
+        &.item-3 .content {
+            background-position: -6260px 5px;
+        }
+
+        &.item-4 .content {
+            background-position: -6738px -11px;
+        }
+
+        &.item-5 .content {
+            background-position: -7228px -1px;
+        }
+
+        &.item-6 .content {
+            background-position: -7727px -1px;
+        }
+
+        &.item-7 .content {
+            background-position: -8195px -2px;
+        }
+
+        &.level-up .content {
+            background-position: -8667px 0;
         }
     }
 }
