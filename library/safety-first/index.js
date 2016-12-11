@@ -25,7 +25,7 @@ import LabyrinthOutdoorsScreen from './components/labyrinth_outdoors_screen';
 import LabyrinthIndoorsScreen from './components/labyrinth_indoors_screen';
 import FlipScreen from './components/flip_screen';
 
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from './components/quit_screen';
 
 window.MEDIA_SERVER = ENVIRONMENT.MEDIA;
 ENVIRONMENT.MEDIA += 'Games/SafetyFirst/';
@@ -48,54 +48,65 @@ SafetyFirst = (
             10: WhosAtTheDoorBrotherScreen,
             11: WhosAtTheDoorGasManScreen,
             12: WhosAtTheDoorCloseFriendScreen,
-            13: WhosAtTheDoorPersonWithFlatScreen,
-            14: WhosAtTheDoorCablePersonScreen,
-            15: WhosAtTheDoorCloseRelativeScreen,
-            16: InfoGoodJobScreen,
-            17: LabyrinthOutdoorsScreen,
-            18: LabyrinthIndoorsScreen,
-            19: FlipScreen,
+            // 13: WhosAtTheDoorPersonWithFlatScreen,
+            13: WhosAtTheDoorCablePersonScreen,
+            14: WhosAtTheDoorCloseRelativeScreen,
+            15: InfoGoodJobScreen,
+            16: LabyrinthOutdoorsScreen,
+            17: LabyrinthIndoorsScreen,
+            18: FlipScreen,
         }}
         menus={{
-            quit: QuitScreen,
+            quit: (
+                <QuitScreen
+                    id="quit"
+                    assets={[
+                        <skoash.Audio
+                            type="voiceOver"
+                            src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Quit.mp3`}
+                        />
+                    ]}
+                />
+            )
         }}
         assets={[
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Audio
                 type="background"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/BKG1.mp3'}
+                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/BKG1.mp3`}
                 loop
             />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'}
+                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/ButtonClick.mp3`}
             />,
             <skoash.Audio
                 ref="back"
                 type="sfx"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/ButtonClick.mp3'}
+                src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/ButtonClick.mp3`}
             />,
             <skoash.Image
                 className="background bkg2"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.2.jpg'}
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.2.jpg`}
             />,
             <skoash.Image
                 className="background bkg3"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.3.jpg'}
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.3.jpg`}
             />,
             <skoash.Image
                 className="background bkghome"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.home.jpg'}
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.home.jpg`}
             />,
             <skoash.Image
                 className="background dooropened"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.dooropened.jpg'}
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.dooropened.jpg`}
             />,
             <skoash.Image
                 className="background doorclosed"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/bkg.doorclosed.jpg'}
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/bkg.doorclosed.jpg`}
             />,
+            <skoash.Component className="logo" />
         ]}
     />
 );
