@@ -270,13 +270,13 @@
                 left: 50%;
                 transform: translateX(-50%);
                 width: 70%;
+                text-shadow: -2px -2px 0 $color-black,
+                              2px -2px 0 $color-black,
+                              -2px 2px 0 $color-black,
+                               2px 2px 0 $color-black;
                 color: $color-yellow;
                 font-size: 50px;
                 font-weight: 900;
-                text-shadow: -2px -2px 0 #000,
-                              2px -2px 0 #000,
-                              -2px 2px 0 #000,
-                               2px 2px 0 #000;
             }
 
             .sub-header {
@@ -516,13 +516,13 @@
                 left: 50%;
                 transform: translateX(-50%);
                 width: 80%;
+                text-shadow: -2px -2px 0 $color-black,
+                              2px -2px 0 $color-black,
+                              -2px 2px 0 $color-black,
+                               2px 2px 0 $color-black;
                 color: $color-yellow;
                 font-size: 50px;
                 font-weight: 900;
-                text-shadow: -2px -2px 0 #000,
-                              2px -2px 0 #000,
-                              -2px 2px 0 #000,
-                               2px 2px 0 #000;
             }
 
             .sub-header {

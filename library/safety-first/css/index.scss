@@ -179,14 +179,14 @@ button,
 
 .logo {
     position: absolute;
-    width: 20%;
-    height: 20%;
     top: 0;
     left: 0;
     opacity: 0;
+    z-index: 2;
     background-position: -1429px -25px;
     background-size: auto 300%;
-    z-index: 2;
+    width: 20%;
+    height: 20%;
 }
 
 h2 {

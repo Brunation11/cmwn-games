@@ -9,8 +9,15 @@ export default function (props, ref, key) {
                 name: 'flip',
             }}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Flip.mp3`} />
-            <skoash.Image className="flip" src={`${ENVIRONMENT.MEDIA}SpritesAnimations/SF.AnimatedEarnedFlip.gif`} />
+            <skoash.Audio
+                ref="vo"
+                type="voiceOver"
+                src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Flip.mp3`}
+            />
+            <skoash.Image
+                className="flip"
+                src={`${ENVIRONMENT.MEDIA}SpritesAnimations/SF.AnimatedEarnedFlip.gif`}
+            />
             <skoash.Image
                 className="sign"
                 src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.flip.png`}

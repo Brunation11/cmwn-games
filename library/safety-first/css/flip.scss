@@ -17,15 +17,15 @@
 
     .header {
         position: absolute;
-        left: 56%;
         top: 30%;
+        left: 56%;
         text-decoration: underline;
+        text-shadow: -2px -2px 0 $color-black,
+                      2px -2px 0 $color-black,
+                      -2px 2px 0 $color-black,
+                       2px 2px 0 $color-black;
         color: $color-yellow;
         font-size: 36px;
-        text-shadow: -2px -2px 0 #000,
-                      2px -2px 0 #000,
-                      -2px 2px 0 #000,
-                       2px 2px 0 #000;
     }
 
     .sub-header {

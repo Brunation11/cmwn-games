@@ -17,7 +17,7 @@ import WhosAtTheDoorMotherScreen from './components/whos_at_the_door_mother_scre
 import WhosAtTheDoorBrotherScreen from './components/whos_at_the_door_brother_screen';
 import WhosAtTheDoorGasManScreen from './components/whos_at_the_door_gas_man_screen';
 import WhosAtTheDoorCloseFriendScreen from './components/whos_at_the_door_close_friend_screen';
-import WhosAtTheDoorPersonWithFlatScreen from './components/whos_at_the_door_person_with_flat_screen';
+// import WhosAtTheDoorPersonWithFlatScreen from './components/whos_at_the_door_person_with_flat_screen';
 import WhosAtTheDoorCablePersonScreen from './components/whos_at_the_door_cable_person_screen';
 import WhosAtTheDoorCloseRelativeScreen from './components/whos_at_the_door_close_relative_screen';
 import InfoGoodJobScreen from './components/info_good_job_screen';
