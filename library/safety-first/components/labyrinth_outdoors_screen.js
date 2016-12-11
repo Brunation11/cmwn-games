@@ -7,9 +7,13 @@ export default function (props, ref, key) {
         itemsCount: 7,
         disableChance: .75,
         disableInterval: 4000,
-        openOnStart: 'tips',
+        openOnStart: 'instructions',
         img: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.fullimg.jpg`,
         map: `${ENVIRONMENT.MEDIA}ImageAssets/map.01.jpg`,
+        tips: true,
+        goal: 9,
+        startX: 140,
+        startY: 120,
         vos: [
             <skoash.MediaSequence
                 ref="instructions"
