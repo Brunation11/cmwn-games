@@ -9,22 +9,22 @@ export default function (props, ref, key) {
                 name: 'flip',
             }}
         >
-            <skoash.Audio ref="vo" type="voiceOver" src="media/S_10/VO_10.1.mp3" />
-            <skoash.Audio ref="start" type="sfx" src="media/S_10/S_10.2.mp3" delay={4000} />
-            <skoash.Image className="flip" src="media/_animation/BeBrightEarned.gif" />
-            <skoash.Component className="text">
-            <div>
-                <h1>GOOD JOB!</h1>
-                Be a Super Light Saver Hero<br />
-                and
-                <skoash.Image
-                    ref="flip-img"
-                    className="inline animated"
-                    src="media/S_10/flip.png"
-                /><br />
-                that switch!
-                </div>
-            </skoash.Component>
+            <skoash.Audio ref="vo" type="voiceOver" src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/Flip.mp3`} />
+            <skoash.Image className="flip" src={`${ENVIRONMENT.MEDIA}SpritesAnimations/SF.AnimatedEarnedFlip.gif`} />
+            <skoash.Image
+                className="sign"
+                src={`${ENVIRONMENT.MEDIA}ImageAssets/frame.flip.png`}
+            />
+            <h1 className="header">
+                You are important<br />
+                to us.
+            </h1>
+            <h2 className="sub-header">
+                Thank you for doing<br />
+                what it takes to stay safe.<br />
+                Here's a flip<br />
+                to show we care!
+            </h2>
         </skoash.Screen>
     );
 }
