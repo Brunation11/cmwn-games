@@ -34,13 +34,15 @@ export default {
                 snake.animations.add('right', [6, 7, 8, 9, 10, 11], 10, true);
                 snake.animations.play('left');
                 snake.body.velocity.x = -100;
-                snake.climbing = false;
+                setTimeout(() => {
+                    snake.climbing = false;
+                }, 5000);
             });
             snake.scale.setTo(.4, .4);
             snake.animations.play('hole');
             snake.active = true;
             snake.climbing = true;
-        } else if (snake.body.velocity.x > 0) {
+        } else if (snake.active && !snake.climbing && snake.body.velocity.x > 0 && snake.left < hole.left) {
             snake.left = hole.left - 100;
             snake.body.velocity.x = 0;
             snake.loadTexture(snake.originalImage + 'down', 0);

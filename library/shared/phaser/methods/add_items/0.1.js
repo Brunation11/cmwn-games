@@ -31,7 +31,7 @@ export default function (groupOpts = {}, optsArray = []) {
     }
 
     _.each(optsArray, options => {
-        var opts = _.defaults(_.defaults({}, options), groupOpts.defaultOpts);
+        var opts = _.defaults({}, options, groupOpts.defaultOpts);
 
         let item = this[groupOpts.group].create(opts.left, opts.top, opts.image);
 
