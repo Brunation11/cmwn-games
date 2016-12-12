@@ -853,7 +853,7 @@ img.inline {
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
                     div {
-                        background-image: url(`../media/S_16/img_16.#{$i + 1}.png`);
+                        background-image: url('../media/S_16/img_16.#{$i + 1}.png');
                     }
                 }
             }

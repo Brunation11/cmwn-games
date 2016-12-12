@@ -1,5 +1,5 @@
 import Selectable from 'shared/components/selectable/0.1';
-import DroughtReveal from './drought_reveal';
+import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key) {
     return (
@@ -26,7 +26,7 @@ export default function (props, ref, key) {
             />
             <skoash.Component ref="frame" className="frame animated">
                 <skoash.Image src="media/S_12/img_12.6.png" />
-                <DroughtReveal
+                <Reveal
                     ref="reveal"
                     className="scroll-reveal"
                     openReveal={_.get(props, 'data.selectable.target.props.data-message')}

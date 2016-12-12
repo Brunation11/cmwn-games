@@ -4,10 +4,10 @@ class DroughtReveal extends Reveal {
     constructor() {
         super();
 
-        this.state = {
+        this.state = _.defaults({
             open: true,
             openReveal: ''
-        };
+        }, this.state);
 
     }
 

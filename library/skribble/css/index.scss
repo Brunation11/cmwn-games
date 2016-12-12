@@ -35,7 +35,7 @@ body > div > div {
 
     @for $i from 1 through 6 {
         .background-#{$i} {
-            background-image: url(`../media/_Background/SK_BKG_#{$i}.png`);
+            background-image: url('../media/_Background/SK_BKG_#{$i}.png');
         }
     }
 
