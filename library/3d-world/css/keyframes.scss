@@ -145,3 +145,21 @@ $step: 60;
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+@keyframes arrow-flash {
+    0% {
+        background-position: 0 0;
+    }
+
+    33% {
+        background-position: 0 -62px;
+    }
+
+    66% {
+        background-position: 0 -124px;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}

@@ -178,7 +178,7 @@ export default function (props, ref, key) {
                           Engineers
                         </h3>
                         <div>
-                          make 3D models of you creations,<br/>
+                          make 3D models of your creations,<br/>
                           and then print the real thing!
                         </div>
                         <button className="next-photo" onClick={nextPhoto} />

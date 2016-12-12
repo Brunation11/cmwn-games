@@ -6,6 +6,22 @@
         top: 140px;
         left: 495px;
         width: 80px;
+
+        div {
+            animation: arrow-flash 1.5s infinite steps(1) backwards;
+            margin-bottom: 20px;
+            background-image: url($media-game + 'ImageAssets/img.greenarrows.png');
+            background-repeat: no-repeat;
+            background-size: auto 180px;
+            width: 80px;
+            height: 60px;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation-delay: #{$i * .5}s;
+                }
+            }
+        }
     }
 
     .draggable {

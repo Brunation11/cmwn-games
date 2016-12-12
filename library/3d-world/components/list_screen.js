@@ -45,7 +45,7 @@ export default function (props, ref, key) {
                 src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
             />
             <skoash.Image
-                className="arrows"
+                className="hidden"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/img.greenarrows.png'}
             />
             <skoash.Audio
@@ -86,6 +86,11 @@ export default function (props, ref, key) {
                   {message: 'guitar'},
                 ]}
             />
+            <div className="arrows">
+                <div/>
+                <div/>
+                <div/>
+            </div>
             <Dropzone
                 checkComplete={false}
                 onDrag={testComplete}
