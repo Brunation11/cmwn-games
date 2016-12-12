@@ -3,7 +3,7 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Score from 'shared/components/score/0.1';
 import Timer from 'shared/components/timer/0.1';
 
-import Dropper from 'shared/components/dropper/0.2';
+import Dropper from 'shared/components/dropper/0.3';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.2';
 import Catchable from 'shared/components/catchable/0.1';
@@ -165,8 +165,6 @@ export default function (props, ref, key, opts = {}) {
                     src={ENVIRONMENT.MEDIA + 'ImageAssets/plus.png'}
                 />
                 <Dropper
-                    leftBound={70}
-                    rightBound={820}
                     on={_.get(props, 'data.game.start', false)}
                     start={_.get(props, 'data.game.start', false)}
                     stop={_.get(props, 'data.game.complete', false)}
