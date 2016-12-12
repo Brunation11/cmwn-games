@@ -270,9 +270,6 @@ export default function () {
             }, snakeLocations);
             return;
         }
-        if (key === 'hole') {
-            console.log(locationArray);
-        }
         addItems.call(this, {
             group: groups[key], defaultOpts: defaultProps[key]
         }, locationArray);
