@@ -165,7 +165,7 @@ export default function (props, ref, key, opts = {}) {
                     src={ENVIRONMENT.MEDIA + 'ImageAssets/plus.png'}
                 />
                 <Dropper
-                    on={_.get(props, 'data.game.start', false)}
+                    on={_.get(props, 'data.game.start', false) && !_.get(props, 'gameState.paused')}
                     start={_.get(props, 'data.game.start', false)}
                     stop={_.get(props, 'data.game.complete', false)}
                     prepClasses={['starting', 'ready', 'set', 'go']}
