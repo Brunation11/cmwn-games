@@ -154,7 +154,7 @@ export default function (props, ref, key) {
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/game-2-sprites.png'}
+                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.png'}
             />
             <skoash.Image
                 className="hidden"
