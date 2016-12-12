@@ -137,6 +137,7 @@ export default function () {
             .concat(_.times(amounts.squareBush || 0, () => 'squareBush'))
             .concat(_.times(amounts.roundBush || 0, () => 'roundBush'))
             .concat(_.times(amounts.snake || 0, () => 'snake'))
+            .concat(_.times(amounts.hole || 0, () => 'hole'))
             .concat(_.times(amounts.bag || 0, () => 'bag'))
             .concat(_.times(amounts.blank || 0, () => 'blank'))
             .concat(_.times(amounts.rock || 0, () => 'rock'))
@@ -168,6 +169,7 @@ export default function () {
         squareBush: [],
         roundBush: [],
         snake: [],
+        hole: [],
         bag: [],
         rock: [],
         stump: [],
@@ -267,6 +269,9 @@ export default function () {
                 group: groups.snake, defaultOpts: defaultProps.snake
             }, snakeLocations);
             return;
+        }
+        if (key === 'hole') {
+            console.log(locationArray);
         }
         addItems.call(this, {
             group: groups[key], defaultOpts: defaultProps[key]
