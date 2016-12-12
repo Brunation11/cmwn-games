@@ -105,15 +105,20 @@ class Reveal extends skoash.Component {
     }
 
     playAudio(message) {
+        var self = this;
         var messages;
 
-        message += '';
+        if (Number.isInteger(message)) {
+            message = 'asset-' + message;
+        } else {
+            message += '';
+        }
 
-        this.playMedia('open-sound');
+        self.playMedia('open-sound');
 
         messages = message.split(' ');
         messages.map(audio => {
-            this.playMedia(audio);
+            self.playMedia(audio);
         });
     }
 
