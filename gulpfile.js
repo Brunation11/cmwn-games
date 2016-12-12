@@ -306,6 +306,8 @@ function watchTask() {
     ], function () {
         gulp.start('build');
     });
+
+    gulp.start('build');
 }
 gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
