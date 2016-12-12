@@ -1,14 +1,7 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
-
-import Score from 'shared/components/score/0.1';
-import Timer from 'shared/components/timer/0.1';
-
 import Dropper from 'shared/components/dropper/0.3';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.2';
 import Catchable from 'shared/components/catchable/0.1';
-
-import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
@@ -118,16 +111,16 @@ export default function (props, ref, key, opts = {}) {
                 className="hidden"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/thick.border.png'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
                 children={opts.sfx}
             />
             <skoash.Component className="left">
-                <Score
+                <skoash.Score
                     max={100}
                     increment={10}
                     correct={_.get(props, 'data.score.correct', 0)}
@@ -135,8 +128,8 @@ export default function (props, ref, key, opts = {}) {
                     onComplete={onScoreComplete}
                 >
                   <div />
-                </Score>
-                <Timer
+                </skoash.Score>
+                <skoash.Timer
                     countDown
                     timeout={opts.timeout}
                     leadingContent="TIME LEFT"
@@ -293,7 +286,7 @@ export default function (props, ref, key, opts = {}) {
                   ]}
                 />
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 openOnStart={opts.openOnStart}
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.openReveal', false)}
