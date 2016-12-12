@@ -13,7 +13,6 @@ import Reveal from 'shared/components/reveal/0.1';
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onScoreComplete;
-    var getTime;
     var onTimerComplete;
     var onAddClassName;
     var onCorrectCatch;
@@ -56,17 +55,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -152,7 +140,6 @@ export default function (props, ref, key, opts = {}) {
                     countDown
                     timeout={opts.timeout}
                     leadingContent="TIME LEFT"
-                    getTime={getTime}
                     stop={_.get(props, 'data.game.complete', false)}
                     complete={_.get(props, 'data.game.complete', false)}
                     checkComplete={_.get(props, 'data.game.start', false)}
@@ -200,12 +187,44 @@ export default function (props, ref, key, opts = {}) {
                                   message="other"
                               />,
                               <Catchable
-                                  className="cup"
-                                  message="plastic"
+                                  className="box"
+                                  message="other"
+                              />,
+                              <Catchable
+                                  className="milk"
+                                  message="other"
+                              />,
+                              <Catchable
+                                  className="shoes"
+                                  message="other"
                               />,
                               <Catchable
                                   className="box"
                                   message="other"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="cup"
+                                  message="plastic"
+                              />,
+                              <Catchable
+                                  className="lego"
+                                  message="plastic"
                               />,
                               <Catchable
                                   className="glasses"
@@ -218,10 +237,6 @@ export default function (props, ref, key, opts = {}) {
                               <Catchable
                                   className="car"
                                   message="metal"
-                              />,
-                              <Catchable
-                                  className="lego"
-                                  message="plastic"
                               />,
                               <Catchable
                                   className="silver"

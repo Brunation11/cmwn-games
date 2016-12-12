@@ -11,7 +11,7 @@
     .draggable {
         position: absolute;
         z-index: 1;
-        background-image: url($media-server + 'SpritesAnimations/sprite.game3.png');
+        background-image: url($media-game + 'SpritesAnimations/sprite.game3.png');
         background-repeat: no-repeat;
         background-size: 1800px;
         width: 130px;
@@ -53,7 +53,7 @@
         position: absolute;
         top: 60px;
         left: 570px;
-        background-image: url($media-server + 'ImageAssets/img.notepad.png');
+        background-image: url($media-game + 'ImageAssets/img.notepad.png');
         background-repeat: no-repeat;
         background-size: contain;
         padding: 55px 65px;
@@ -91,7 +91,7 @@
         position: absolute;
         bottom: 0;
         left: 405px;
-        background-image: url($media-server + 'SpritesAnimations/sprite.minion.png');
+        background-image: url($media-game + 'SpritesAnimations/sprite.minion.png');
         background-position: -1905px -180px;
         background-size: 2200px;
         width: 150px;
