@@ -3,8 +3,6 @@ import Reveal from 'shared/components/reveal/0.1';
 import MediaCollection from 'shared/components/media_collection/0.1';
 
 export default function (props, ref, key) {
-    var nextPhoto;
-
     const jobs = [
         'designer',
         'architect',
@@ -14,13 +12,28 @@ export default function (props, ref, key) {
         'artist',
     ];
 
-    nextPhoto = function () {
+    var nextPhoto = function () {
         skoash.trigger('updateState', {
             path: 'selectable',
             data: {
                 select: jobs[
                     (jobs.indexOf(_.get(props, 'data.selectable.target.props.data-ref')) + 1) % jobs.length
                 ]
+            }
+        });
+    };
+
+    var onClose = function () {
+        skoash.trigger('updateState', {
+            path: 'selectable',
+            data: {
+                target: null
+            }
+        });
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                open: null
             }
         });
     };
@@ -117,6 +130,7 @@ export default function (props, ref, key) {
             <Reveal
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.selectable.target.props.data-ref')}
+                onClose={onClose}
                 list={[
                     <skoash.Component
                       type="li"
