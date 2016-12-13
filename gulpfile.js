@@ -126,8 +126,7 @@ gulp.task('sass', function () {
 
     gulp
     .src([
-        './library/shared/css/**/*.scss',
-        './library/shared/css/**/*.css'
+        './library/shared/css/**/*.scss'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
     .pipe(sass().on('error', sass.logError))
