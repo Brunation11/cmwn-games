@@ -1,5 +1,3 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
-import Repeater from 'shared/components/repeater/0.2';
 import Draggable from 'shared/components/draggable/0.4';
 import Dropzone from 'shared/components/dropzone/0.4';
 
@@ -45,14 +43,14 @@ export default function (props, ref, key) {
                 src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
             />
             <skoash.Image
-                className="arrows"
+                className="hidden"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/img.greenarrows.png'}
             />
             <skoash.Audio
                 type="voiceOver"
                 src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_and.mp3'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
             >
                 <skoash.Audio
@@ -61,8 +59,8 @@ export default function (props, ref, key) {
                     completeTarget="sfx"
                     src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Drag.mp3'}
                 />
-            </MediaCollection>
-            <Repeater
+            </skoash.MediaCollection>
+            <skoash.Repeater
                 className="draggables"
                 amount={13}
                 item={<Draggable
@@ -86,6 +84,11 @@ export default function (props, ref, key) {
                   {message: 'guitar'},
                 ]}
             />
+            <div className="arrows">
+                <div/>
+                <div/>
+                <div/>
+            </div>
             <Dropzone
                 checkComplete={false}
                 onDrag={testComplete}

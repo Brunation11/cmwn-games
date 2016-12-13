@@ -50,7 +50,8 @@ export default function (props, ref, key) {
                 className={classNames('earned-flip', {
                     show: _.get(props, 'data.flip.complete'),
                 })}
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/3D-World_Earned_Flip.gif'}
+                src={window.MEDIA_SERVER +
+                    'Flips/3D%20world/3DW%20-%20Animated%20Earned%20Flip/3DW.AnimatedEarnedFliploop.gif'}
             />
             <skoash.Image
                 className="hidden"
