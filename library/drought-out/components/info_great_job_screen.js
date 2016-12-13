@@ -4,7 +4,7 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="info-environment"
+            id="info-great-job"
             className="large-frame"
         >
             <skoash.MediaSequence>
