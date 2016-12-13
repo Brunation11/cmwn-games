@@ -36,6 +36,11 @@ function defineEntries(config) {
     var varsPath = './shared/js/' + env + '-variables.js';
     var mediaPath = './shared/js/make_media_globals.js';
 
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     config = Object.create(config);
 
     config.resolve = Object.create(config.resolve);
@@ -51,11 +56,6 @@ function defineEntries(config) {
 }
 
 game = argv.game || argv.g;
-
-if (typeof game !== 'string') {
-    gutil.log('Your game argument must be a string');
-    process.exit(1); // eslint-disable-line no-undef
-}
 
 // gameConfig = JSON.parse(fs.readFileSync(path.join('./library', game, 'config.json'), 'utf8'));
 
@@ -101,6 +101,12 @@ gulp.task('webpack:build', function (callback) {
 
 gulp.task('sass', function () {
     var varsPath = './library/shared/css/' + env + '-variables.scss';
+
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     gulp
     .src([
         './library/' + game + '/**/*.scss',
@@ -130,6 +136,12 @@ gulp.task('sass', function () {
 
 gulp.task('copy-index', function () {
     var indexPath = path.join('./library', game, 'index.html');
+
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     fs.stat(indexPath, function (err) {
         if (err == null) {
             gulp
@@ -228,6 +240,11 @@ gulp.task('copy-framework', function () {
 });
 
 gulp.task('copy-media', function () {
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     // This can be removed once media for every game is transferred to the media server.
     gulp
     .src(path.join( './library', game, 'media/**/*' ))
@@ -245,6 +262,11 @@ gulp.task('copy-media', function () {
 });
 
 gulp.task('copy-components', function () {
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     // This is only needed for LL games and can be removed once we no longer need to build any LL games.
     gulp
     .src(path.join( './library', game, 'source/js/components/**/*.html' ))
@@ -254,6 +276,11 @@ gulp.task('copy-components', function () {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 function watchTask() {
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     env = 'dev';
     if (!nolivereload) livereload.listen();
 
