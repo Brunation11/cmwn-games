@@ -57,8 +57,6 @@ function defineEntries(config) {
 
 game = argv.game || argv.g;
 
-// gameConfig = JSON.parse(fs.readFileSync(path.join('./library', game, 'config.json'), 'utf8'));
-
 // In order for livereload to work, you should run gulp on the host machine
 // unless you have native docker installed.
 nolivereload = argv.nolr;
@@ -198,16 +196,6 @@ gulp.task('copy-index', function () {
                         `<script>window.gameFolder="${folder}"</script>`
                     );
                 }
-                // '(function makeMediaGlobals(gameName) {' +
-                //     'window.MEDIA = {' +
-                //         'BASE: ENVIRONMENT.MEDIA' +
-                //     '};' +
-                //     'window.MEDIA.GAME = window.MEDIA.BASE + "Games/" + gameName + "/";' +
-                //     'window.MEDIA.EFFECT = window.MEDIA.GAME + "SoundAssets/effects/";' +
-                //     'window.MEDIA.VO = window.MEDIA.GAME + "SoundAssets/vos/";' +
-                //     'window.MEDIA.IMAGE = window.MEDIA.GAME + "ImageAssets/";' +
-                //     'window.MEDIA.SPRITE = window.MEDIA.GAME + "SpritesAnimations/";' +
-                // '}("' + folder + '"))' +
             }))
             .pipe(inject(gulp.src('./library/shared/js/livereload.js'), {
                 starttag: '<!-- inject:livereload -->',
