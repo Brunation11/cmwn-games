@@ -11,9 +11,11 @@ import LevelFiveScreen from './components/level_five_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
+var wasteBusters;
+
 ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/WasteBusters/';
 
-let wasteBusters = (
+wasteBusters = (
     <skoash.Game
         config={config}
         loader={<Loader />}
