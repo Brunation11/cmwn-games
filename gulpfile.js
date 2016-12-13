@@ -228,6 +228,8 @@ gulp.task('copy-index', function () {
 });
 
 gulp.task('copy-framework', function () {
+    // This can be removed once the framework has been transferred to the media server.
+    // We will need to add a way to actively develop with the framework at that time.
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
