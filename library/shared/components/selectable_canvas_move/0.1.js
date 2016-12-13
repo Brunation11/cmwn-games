@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import SelectableCanvas from 'shared/components/selectable_canvas/0.1';
+import SelectableCanvas from 'shared/components/selectable_canvas/0.2';
 
 var Item = function (component, context) {
     this.position = {
