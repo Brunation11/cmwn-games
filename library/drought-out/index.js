@@ -27,7 +27,11 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 var DroughtOut;
 
-ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/DroughtOut/';
+MEDIA.GAME = MEDIA.BASE + 'Games/DroughtOut/';
+MEDIA.EFFECT = MEDIA.GAME + 'SoundAssets/effects/';
+MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
+MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
+MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
 
 DroughtOut = (
     <skoash.Game
@@ -92,55 +96,55 @@ DroughtOut = (
             <skoash.Audio
                 ref="bkg-0"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/Theme.mp3'}
+                src={MEDIA.EFFECT + 'Theme.mp3'}
             />,
             <skoash.Audio
                 ref="bkg-1"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/BKG1.mp3'}
+                src={MEDIA.EFFECT + 'BKG1.mp3'}
                 loop
             />,
             <skoash.Audio
                 ref="bkg-2"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/BKG2.mp3'}
+                src={MEDIA.EFFECT + 'BKG2.mp3'}
                 loop
             />,
             <skoash.Audio
                 ref="bkg-3"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/BKG3.mp3'}
+                src={MEDIA.EFFECT + 'BKG3.mp3'}
                 loop
             />,
             <skoash.Audio
                 ref="bkg-4"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/BKG4.mp3'}
+                src={MEDIA.EFFECT + 'BKG4.mp3'}
             />,
             <skoash.Audio
                 ref="bkg-5"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/BKG5.mp3'}
+                src={MEDIA.EFFECT + 'BKG5.mp3'}
             />,
             <skoash.Audio
                 ref="bkg-6"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/CashRegister.mp3'}
+                src={MEDIA.EFFECT + 'CashRegister.mp3'}
             />,
             <skoash.Audio
                 ref="bkg-7"
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/FlipBKG.mp3'}
+                src={MEDIA.EFFECT + 'FlipBKG.mp3'}
             />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/Next.mp3'}
+                src={MEDIA.EFFECT + 'Next.mp3'}
             />,
             <skoash.Audio
                 ref="screen-complete"
                 type="sfx"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/WhooHoo.mp3'}
+                src={MEDIA.EFFECT + 'WhooHoo.mp3'}
             />,
             <div className="background-1" />,
             <div className="background-2" />,
@@ -150,32 +154,32 @@ DroughtOut = (
             <skoash.Image
                 ref="bkg-image-1"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_1.jpg'}
+                src={MEDIA.IMAGE + 'BKG_1.jpg'}
             />,
             <skoash.Image
                 ref="bkg-image-2"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_2.jpg'}
+                src={MEDIA.IMAGE + 'BKG_2.jpg'}
             />,
             <skoash.Image
                 ref="bkg-image-3"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_3.jpg'}
+                src={MEDIA.IMAGE + 'BKG_3.jpg'}
             />,
             <skoash.Image
                 ref="bkg-image-4"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_4.jpg'}
+                src={MEDIA.IMAGE + 'BKG_4.jpg'}
             />,
             <skoash.Image
                 ref="bkg-image-5"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_5.jpg'}
+                src={MEDIA.IMAGE + 'BKG_5.jpg'}
             />,
             <skoash.Image
                 ref="buttons"
                 className="hidden"
-                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/BU_1.png'}
+                src={MEDIA.SPRITE + 'BU_1.png'}
             />,
         ]}
     />

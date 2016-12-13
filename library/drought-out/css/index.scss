@@ -451,7 +451,7 @@ img.inline {
     }
 
     .drought-word {
-        background-image: url($image + 'img_2.1.png');
+        background-image: url($sprite + 'img_2.1.png');
     }
 
     ul {
@@ -462,7 +462,7 @@ img.inline {
         li {
             display: inline-block;
             margin: 5px 40px 5px 0;
-            background-image: url($image + 'img_2.1.png');
+            background-image: url($sprite + 'img_2.1.png');
             background-repeat: no-repeat;
             background-size: 650px;
             height: 42px;
@@ -908,7 +908,7 @@ img.inline {
         left: 67px;
         animation: swing-closed .75s steps(5) forwards;
         z-index: 1;
-        background-image: url('../media/S_17/img_sp_17.1.png');
+        background-image: url($sprite + 'img_sp_15.1.png');
         background-repeat: no-repeat;
         background-size: 800% 100%;
         width: 824px;
@@ -926,7 +926,7 @@ img.inline {
         transition: opacity 0s 1s;
         opacity: 1;
         z-index: 1;
-        background-image: url('../media/S_17/img_17.2.png');
+        background-image: url($sprite + 'img_15.2.png');
         background-position: -50px center;
         background-size: auto 120%;
         cursor: pointer;
@@ -991,7 +991,7 @@ img.inline {
 #quit {
 
     .frame {
-        background-image: url('../media/_Frames/FR_1.png');
+        background-image: url($image + 'FR_1.png');
         padding: 100px 80px;
         width: 740px;
         height: 540px;

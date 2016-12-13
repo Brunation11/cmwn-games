@@ -299,6 +299,7 @@ function watchTask() {
 
     watch([
         'library/' + game + '/**/*.html',
+        'library/' + game + '/config.game.js',
         'library/shared/**/*',
         '!library/shared/**/*.js',
         '!library/shared/**/*.scss',
