@@ -1,6 +1,3 @@
-import Selectable from 'shared/components/selectable/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -12,7 +9,7 @@ export default function (props, ref, key) {
             <skoash.Audio type="voiceOver" src="media/S_13/VO_13.1.mp3"/>
             <skoash.Image src="media/S_13/img_13.1.png"/>
             <skoash.Component className="flip-card-component bt">
-                <Selectable
+                <skoash.Selectable
                     ref="selectable-card"
                     className="flip-card-component"
                     list={[
@@ -25,7 +22,7 @@ export default function (props, ref, key) {
                     dataTarget="selectable"
                 />
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 ref="reveal"
                 hide={true}
                 openReveal={_.get(props, 'data.selectable.target.props.message')}
