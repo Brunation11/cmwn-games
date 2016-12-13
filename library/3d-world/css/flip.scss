@@ -28,7 +28,7 @@
         left: 470px;
         transition: height .25s, left 1s linear, bottom 1s cubic-bezier(.69, .05, .96, .53), transform 1s;
         z-index: 1;
-        background-image: url($media-server-base + 'Flips/3D%20world/3DW-%20Static%20Image%20Flip/3DW.EarnedFlip.png');
+        background-image: url($media-server + 'Flips/3D%20world/3DW-%20Static%20Image%20Flip/3DW.EarnedFlip.png');
         background-position: left bottom;
         background-size: 80px;
         width: 80px;

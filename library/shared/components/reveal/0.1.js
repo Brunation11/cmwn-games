@@ -229,7 +229,7 @@ Reveal.defaultProps = _.defaults({
         <li></li>,
         <li></li>
     ],
-    openMultiple: true,
+    openMultiple: false,
     onOpen: _.noop,
     onClose: _.noop,
 }, skoash.Component.defaultProps);

@@ -1,11 +1,9 @@
 import classNames from 'classnames';
 
-import Draggable from 'shared/components/draggable/0.1';
-
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catchable from 'shared/components/catchable/0.1';
 
-class Dropper extends Draggable {
+class Dropper extends skoash.Component {
     constructor() {
         super();
 
@@ -14,9 +12,35 @@ class Dropper extends Draggable {
             itemCount: 0,
             itemEndXs: {},
             direction: '',
+            startX: 0,
+            startY: 0,
+            endX: 0,
+            endY: 0,
+            zoom: 1,
         }, this.state);
 
         this.next = this.next.bind(this);
+        this.moveEvent = this.moveEvent.bind(this);
+        this.setZoom = this.setZoom.bind(this);
+    }
+
+    bootstrap() {
+        super.bootstrap();
+
+        this.setZoom();
+
+        this.refs.body.addEventListener('mousemove', this.moveEvent);
+        this.refs.body.addEventListener('touchmove', this.moveEvent);
+
+        window.addEventListener('resize', this.setZoom);
+    }
+
+    setZoom() {
+        skoash.trigger('getState').then(state => {
+            this.setState({
+                zoom: state.scale,
+            });
+        });
     }
 
     next(on) {
@@ -73,13 +97,7 @@ class Dropper extends Draggable {
     }
 
     moveEvent(e) {
-        var endX;
-
-        if (e.targetTouches && e.targetTouches[0]) {
-            e.pageX = e.targetTouches[0].pageX;
-        }
-
-        endX = Math.min(Math.max(e.pageX - this.state.grabX, this.props.leftBound), this.props.rightBound);
+        var endX = e.targetTouches && e.targetTouches[0] ? e.targetTouches[0].pageX : e.pageX;
 
         this.setState({
             endX,
@@ -121,10 +139,10 @@ class Dropper extends Draggable {
         return classNames('dropper', this.state.direction, super.getClassNames());
     }
 
-  /*
-   * shortid is intentionally not used for key here because we want to make sure
-   * that the element is transitioned and not replaced.
-   */
+    /*
+     * shortid is intentionally not used for key here because we want to make sure
+     * that the element is transitioned and not replaced.
+     */
     renderItems() {
         return _.map(this.state.items, (item, key) => {
             var ref = 'items-' + key;
@@ -154,6 +172,7 @@ class Dropper extends Draggable {
     render() {
         return (
             <div
+                ref="body"
                 className={this.getClassNames()}
             >
                 {this.renderBin()}
@@ -185,10 +204,8 @@ Dropper.defaultProps = _.defaults({
     onStart: function () {
         this.next();
     },
-    leftBound: 0,
-    rightBound: 800,
     refsTarget: 'dropper',
     on: true,
-}, Draggable.defaultProps);
+}, skoash.Component.defaultProps);
 
 export default Dropper;
