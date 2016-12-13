@@ -172,6 +172,11 @@ DroughtOut = (
                 className="hidden"
                 src={ENVIRONMENT.MEDIA_GAME + 'ImageAssets/BKG_5.jpg'}
             />,
+            <skoash.Image
+                ref="buttons"
+                className="hidden"
+                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/BU_1.png'}
+            />,
         ]}
     />
 );
