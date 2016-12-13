@@ -29,7 +29,6 @@ var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
 var game;
-// var gameConfig;
 
 function defineEntries(config) {
     // modify some webpack config options
