@@ -27,8 +27,8 @@ export default function () {
     ['rainbowRecycle', ENVIRONMENT.MEDIA + 'SpritesAnimations/rainbow.recycle-01.png', 345, 310],
     // 5750 x 286 pixels
     ['truck', ENVIRONMENT.MEDIA + 'SpritesAnimations/truck.png', 575, 286],
-    // 1751 x 253 pixels
-    ['door', ENVIRONMENT.MEDIA + 'SpritesAnimations/door.open.png', 250, 253],
+    // 1320 x 226 pixels
+    ['door', ENVIRONMENT.MEDIA + 'SpritesAnimations/door.open.png', 220, 226],
     // 3600 x 326 pixels
     ['jet', ENVIRONMENT.MEDIA + 'SpritesAnimations/jet.pack.png', 600, 326],
     // 7860 x 410 pixels
