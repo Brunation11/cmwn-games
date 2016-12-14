@@ -1,4 +1,4 @@
-import config from './config.game';
+import config from './config';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';

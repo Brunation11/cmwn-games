@@ -1,0 +1,9 @@
+{
+    "id": "polar-bear",
+    "version": 2,
+    "skoash": "1.0.1",
+    "dimensions": {
+        "width": 960,
+        "height": 540
+    },
+}

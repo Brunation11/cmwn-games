@@ -28,16 +28,17 @@ var eslintConfigJs = JSON.parse(fs.readFileSync('./.eslintrc'));
 var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
+var game;
 
-function lsd(_path) {
-    return fs.readdirSync(_path).filter(function (file) {
-        return fs.statSync(path.join(_path, file)).isDirectory();
-    });
-}
-
-function defineEntries(config, game) {
+function defineEntries(config) {
     // modify some webpack config options
     var varsPath = './shared/js/' + env + '-variables.js';
+    var mediaPath = './shared/js/make_media_globals.js';
+
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
 
     config = Object.create(config);
 
@@ -46,21 +47,14 @@ function defineEntries(config, game) {
     config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
 
     config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/components/');
-    config.entry[game] = [varsPath, './' + game + '/index.js'];
+    config.entry[game] = [varsPath, mediaPath, './' + game + '/index.js'];
 
     gutil.log(games, 'entry', config.entry);
 
     return config;
 }
 
-games = (function () {
-    var game = argv.game || argv.g;
-    switch (typeof game) {
-        case 'string': return [game];
-        case 'object': if (game) return game;
-    }
-    return lsd('./library');
-}());
+game = argv.game || argv.g;
 
 // In order for livereload to work, you should run gulp on the host machine
 // unless you have native docker installed.
@@ -84,45 +78,45 @@ gulp.task('build', buildTask);
 gulp.task('b', buildTask);
 
 gulp.task('webpack:build', function (callback) {
-    games.forEach(function (game, index) {
-        var webpackConfig;
-        var name;
-        var config;
+    var webpackConfig;
+    var name;
+    var config;
 
-        webpackConfig = env === 'dev' ? webpackDevConfig : webpackProdConfig;
-        name = 'webpack:build' + (env === 'dev' ? '-dev' : '');
-        config = defineEntries(webpackConfig, game);
+    webpackConfig = env === 'dev' ? webpackDevConfig : webpackProdConfig;
+    name = 'webpack:build' + (env === 'dev' ? '-dev' : '');
+    config = defineEntries(webpackConfig);
 
-        // run webpack
-        webpack(config, function (err, stats) {
-            if (err) throw new gutil.PluginError(name, err);
-            gutil.log(`[${name}]`, stats.toString({
-                colors: true
-            }));
-            if (index === games.length - 1) {
-                callback();
-            }
-        });
+    // run webpack
+    webpack(config, function (err, stats) {
+        if (err) throw new gutil.PluginError(name, err);
+        gutil.log(`[${name}]`, stats.toString({
+            colors: true
+        }));
+        callback();
     });
 });
 
 gulp.task('sass', function () {
     var varsPath = './library/shared/css/' + env + '-variables.scss';
-    games.forEach(function (game) {
-        gulp
-        .src([
-            './library/' + game + '/**/*.scss',
-            './library/' + game + '/**/*.css'
-        ])
-        .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-        .pipe(sass().on('error', sass.logError))
-        .pipe(concat('style.css'))
-        .pipe(sourcemaps.init())
-        .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./build/' + game + '/css'))
-        .pipe(livereload());
-    });
+
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
+    gulp
+    .src([
+        './library/' + game + '/**/*.scss',
+        './library/' + game + '/**/*.css'
+    ])
+    .pipe(header(fs.readFileSync(varsPath, 'utf8')))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('style.css'))
+    .pipe(sourcemaps.init())
+    .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/' + game + '/css'))
+    .pipe(livereload());
 
     gulp
     .src([
@@ -138,94 +132,92 @@ gulp.task('sass', function () {
 });
 
 gulp.task('copy-index', function () {
-    games.forEach(function (game) {
-        var indexPath = path.join('./library', game, 'index.html');
-        fs.stat(indexPath, function (err) {
-            if (err == null) {
-                gulp
-                .src(indexPath)
-                .pipe(inject(gulp.src('./library/shared/livereload.js'), {
-                    starttag: '<!-- inject:livereload -->',
-                    transform: function (filePath, file) {
-                        if (livereload.server) {
-                            return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
-                        }
+    var indexPath = path.join('./library', game, 'index.html');
+
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
+    fs.stat(indexPath, function (err) {
+        if (err == null) {
+            gulp
+            .src(indexPath)
+            .pipe(inject(gulp.src('./library/shared/livereload.js'), {
+                starttag: '<!-- inject:livereload -->',
+                transform: function (filePath, file) {
+                    if (livereload.server) {
+                        return '<script>\n' + file.contents.toString('utf8') + '\n</script>';
                     }
-                }))
-                .pipe(gulp.dest('./build/' + game));
-            } else {
-                gulp
-                .src('./library/shared/templates/index.html')
-                .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-                    starttag: '<!-- inject:head -->',
-                    transform: function (filePath, file) {
-                        var s;
-                        var config;
-                        var title;
-                        s = file.contents.toString('utf8');
-                        /* eslint-disable no-eval */
-                        config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')');
-                        /* eslint-enable no-eval */
-                        title = config.title || _.startCase(config.id);
-                        return `<title>${title}</title>`;
+                }
+            }))
+            .pipe(gulp.dest('./build/' + game));
+        } else {
+            gulp
+            .src('./library/shared/templates/index.html')
+            .pipe(inject(gulp.src(path.join('./library', game, 'config.json')), {
+                starttag: '<!-- inject:head -->',
+                transform: function (filePath, file) {
+                    var config = JSON.parse(file.contents.toString('utf8'));
+                    var title = config.title || _.startCase(config.id);
+                    return `<title>${title}</title>`;
+                }
+            }))
+            .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {
+                starttag: '<!-- inject:integration -->',
+                transform: function (filePath, file) {
+                    if (!local) {
+                        return '<script>\n    ' +
+                            file.contents.toString('utf8') + '\n</script>';
                     }
-                }))
-                .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {
-                    starttag: '<!-- inject:integration -->',
-                    transform: function (filePath, file) {
-                        if (!local) {
-                            return '<script>\n    ' +
-                                file.contents.toString('utf8') + '\n</script>';
-                        }
-                    }
-                }))
-                .pipe(inject(gulp.src(path.join('./library', game, 'config.game.js')), {
-                    starttag: '<!-- inject:body -->',
-                    transform: function (filePath, file) {
-                        var s;
-                        var config;
-                        var min;
-                        s = file.contents.toString('utf8');
-                        /* eslint-disable no-eval */
-                        config = eval('(' + s.substring(s.indexOf('{'), s.indexOf(';')) + ')');
-                        /* eslint-enable no-eval */
-                        min = debug ? '' : '.min';
-                        return (
-                            `<div id="${config.id}"></div>\n  ` +
-                            '<script type="text/javascript" ' +
-                            `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
-                            '</script>\n  ' +
-                            '<script type="text/javascript" ' +
-                            `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
-                            '</script>\n  ' +
-                            '<script type="text/javascript" ' +
-                            `src="../framework/skoash.${config.skoash}.js"></script>`
-                        );
-                    }
-                }))
-                .pipe(inject(gulp.src('./library/shared/js/livereload.js'), {
-                    starttag: '<!-- inject:livereload -->',
-                    transform: function (filePath, file) {
-                        if (livereload.server) {
-                            return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
-                        }
-                    }
-                }))
-                .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
-                    starttag: '<!-- inject:ga -->',
-                    transform: function (filePath, file) {
+                }
+            }))
+            .pipe(inject(gulp.src(path.join('./library', game, 'config.json')), {
+                starttag: '<!-- inject:body -->',
+                transform: function (filePath, file) {
+                    var config = JSON.parse(file.contents.toString('utf8'));
+                    var folder = config.media_folder ||
+                        _.upperFirst(_.camelCase(config.title)) ||
+                        _.upperFirst(_.camelCase(config.id))
+                        ;
+
+                    var min = debug ? '' : '.min';
+                    return (
+                        `<div id="${config.id}"></div>\n  ` +
+                        '<script type="text/javascript" ' +
+                        `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react${min}.js">` +
+                        '</script>\n  ' +
+                        '<script type="text/javascript" ' +
+                        `src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom${min}.js">` +
+                        '</script>\n  ' +
+                        '<script type="text/javascript" ' +
+                        `src="../framework/skoash.${config.skoash}.js"></script>\n  ` +
+                        `<script>window.gameFolder="${folder}"</script>`
+                    );
+                }
+            }))
+            .pipe(inject(gulp.src('./library/shared/js/livereload.js'), {
+                starttag: '<!-- inject:livereload -->',
+                transform: function (filePath, file) {
+                    if (livereload.server) {
                         return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
                     }
-                }))
-                .pipe(gulp.dest('./build/' + game));
-            }
-        });
-
-        // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-        gulp
-        .src(path.join('./library', game, 'source/screens/*'))
-        .pipe(gulp.dest('./build/' + game + '/screens'));
+                }
+            }))
+            .pipe(inject(gulp.src('./library/shared/js/google-analytics.js'), {
+                starttag: '<!-- inject:ga -->',
+                transform: function (filePath, file) {
+                    return '<script>\n    ' + file.contents.toString('utf8') + '  \n</script>';
+                }
+            }))
+            .pipe(gulp.dest('./build/' + game));
+        }
     });
+
+    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
+    gulp
+    .src(path.join('./library', game, 'source/screens/*'))
+    .pipe(gulp.dest('./build/' + game + '/screens'));
 });
 
 gulp.task('copy-framework', function () {
@@ -235,12 +227,15 @@ gulp.task('copy-framework', function () {
 });
 
 gulp.task('copy-media', function () {
-    games.forEach(function (game) {
-        // This can be removed once media for every game is transferred to the media server.
-        gulp
-        .src(path.join( './library', game, 'media/**/*' ))
-        .pipe( gulp.dest(path.join( './build', game, 'media' )) );
-    });
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
+    // This can be removed once media for every game is transferred to the media server.
+    gulp
+    .src(path.join( './library', game, 'media/**/*' ))
+    .pipe( gulp.dest(path.join( './build', game, 'media' )) );
 
     // This can be removed once fonts for every game are transferred to the media server.
     gulp
@@ -254,18 +249,25 @@ gulp.task('copy-media', function () {
 });
 
 gulp.task('copy-components', function () {
-    games.forEach(function (game) {
-        // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-        gulp
-        .src(path.join( './library', game, 'source/js/components/**/*.html' ))
-        .pipe( gulp.dest(path.join( './build', game, 'components' )) );
-    });
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
+    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
+    gulp
+    .src(path.join( './library', game, 'source/js/components/**/*.html' ))
+    .pipe( gulp.dest(path.join( './build', game, 'components' )) );
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 function watchTask() {
-    var game = (games.length > 1) ? '**' : games[0];
+    if (typeof game !== 'string') {
+        gutil.log('Your game argument must be a string');
+        process.exit(1); // eslint-disable-line no-undef
+    }
+
     env = 'dev';
     if (!nolivereload) livereload.listen();
 
@@ -299,6 +301,7 @@ function watchTask() {
 
     watch([
         'library/' + game + '/**/*.html',
+        'library/' + game + '/config.json',
         'library/shared/**/*',
         '!library/shared/**/*.js',
         '!library/shared/**/*.scss',
