@@ -12,11 +12,7 @@ import LevelFiveScreen from './components/level_five_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
 
-var wasteBusters;
-
-ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/WasteBusters/';
-
-wasteBusters = (
+skoash.start(
     <skoash.Game
         config={config}
         loader={<Loader />}
@@ -35,16 +31,16 @@ wasteBusters = (
         assets={[
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Image
-                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.timelevelscore.png'}
+                src={MEDIA.SPRITE + 'game1.timelevelscore.png'}
                 className="hidden"
             />,
             <skoash.Image
-                src={ENVIRONMENT.MEDIA_GAME + 'SpritesAnimations/game1.metericons.png'}
+                src={MEDIA.SPRITE + 'game1.metericons.png'}
                 className="hidden"
             />,
             <skoash.Audio
                 type="background"
-                src={ENVIRONMENT.MEDIA_GAME + 'SoundAssets/effects/OpeningSequence.mp3'}
+                src={MEDIA.EFFECT + 'OpeningSequence.mp3'}
             />
         ]}
         getBackgroundIndex={(index, id) => {
@@ -55,5 +51,3 @@ wasteBusters = (
         }}
     />
 );
-
-skoash.start(wasteBusters);
