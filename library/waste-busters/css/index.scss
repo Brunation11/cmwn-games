@@ -43,13 +43,15 @@ button {
 }
 
 .skoash-game {
-    $screens: title;
-    $backgrounds: title;
+    $screens:     title everyday;
+    $backgrounds: title everyday;
     @include screen-backgrounds($screens, $backgrounds);
 
     .background {
-        &.title {
-            @include sprite-background(1);
+        @for $i from 1 through 2 {
+            &.#{nth($backgrounds, $i)} {
+                @include sprite-background($i);
+            }
         }
     }
 }
