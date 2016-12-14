@@ -1,11 +1,8 @@
 import classNames from 'classnames';
 
-import MediaCollection from 'shared/components/media_collection/0.1';
 import Target from 'shared/components/target/0.2';
 import Dropzone from 'shared/components/dropzone/0.4';
-import Slider from 'shared/components/slider/0.1';
-import Draggable from 'shared/components/draggable/0.3';
-import Reveal from 'shared/components/reveal/0.1';
+import Draggable from 'shared/components/draggable/0.4';
 
 const objects = [
     'umbrella',
@@ -157,7 +154,7 @@ export default function (props, ref, key) {
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/game-2-sprites.png'}
+                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game2.png'}
             />
             <skoash.Image
                 className="hidden"
@@ -187,7 +184,7 @@ export default function (props, ref, key) {
                 className="hidden"
                 src={ENVIRONMENT.MEDIA + 'ImageAssets/img.sparkle.png'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
             >
                 <skoash.MediaSequence
@@ -225,8 +222,8 @@ export default function (props, ref, key) {
                     complete
                     src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Incorrect2.mp3'}
                 />
-            </MediaCollection>
-            <MediaCollection
+            </skoash.MediaCollection>
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
                 <skoash.Audio
@@ -259,7 +256,7 @@ export default function (props, ref, key) {
                     ref={targets[4]}
                     src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_level5_wizard.mp3'}
                 />
-            </MediaCollection>
+            </skoash.MediaCollection>
             <skoash.Component className="targets">
                 <div>
                     What <span>ITEM</span> can<br/>
@@ -298,7 +295,7 @@ export default function (props, ref, key) {
                 <div>
                     <span>DRAG AND DROP</span> the item onto the printer above
                 </div>
-                <Slider ref="slider">
+                <skoash.Slider ref="slider">
                     <skoash.Component>
                         <Draggable
                             returnOnIncorrect
@@ -377,9 +374,9 @@ export default function (props, ref, key) {
                             message={objects[13]}
                         />
                     </skoash.Component>
-                </Slider>
+                </skoash.Slider>
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 openTarget="reveal"
                 openOnStart="instructions"
                 openReveal={_.get(props, 'data.reveal.open')}

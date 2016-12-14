@@ -1,3 +1,9 @@
+// As of skoash 1.1.0 this component can be found at skoash.ScrollArea
+/* eslint-disable no-console */
+console.warn('As of skoash 1.1.0 this component can be found at skoash.ScrollArea');
+/* eslint-enable no-console */
+
+
 import classNames from 'classnames';
 
 const IMAGE = 'image';

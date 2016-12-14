@@ -130,15 +130,15 @@ class Dropper extends Draggable {
             var ref = 'items-' + key;
             if (!item) return null;
             return (
-        <item.type
-          {...item.props}
-          style={this.getItemStyle(key)}
-          data-ref={ref}
-          data-message={item.props.message}
-          ref={ref}
-          key={key}
-        />
-      );
+                <item.type
+                    {...item.props}
+                    style={this.getItemStyle(key)}
+                    data-ref={ref}
+                    data-message={item.props.message}
+                    ref={ref}
+                    key={key}
+                />
+            );
         });
     }
 

@@ -4,7 +4,7 @@
 #printer {
     .targets {
         position: absolute;
-        background-image: url($media-server + 'ImageAssets/img.leftbox.png');
+        background-image: url($media-game + 'ImageAssets/img.leftbox.png');
         background-repeat: no-repeat;
         background-size: contain;
         padding: 30px;
@@ -24,7 +24,7 @@
             transition: opacity .5s;
             opacity: 0;
             margin: 10px 0;
-            background-image: url($media-server + 'SpritesAnimations/sprite.game2.brokenobj.png');
+            background-image: url($media-game + 'SpritesAnimations/sprite.game2.brokenobj.png');
             background-repeat: no-repeat;
             background-position: 0 0;
             background-size: 1200px;
@@ -50,7 +50,7 @@
         position: absolute;
         top: 0;
         left: 200px;
-        background-image: url($media-server + 'ImageAssets/img.printer.png');
+        background-image: url($media-game + 'ImageAssets/img.printer.png');
         background-repeat: no-repeat;
         background-size: contain;
         padding: 90px 230px 220px 200px;
@@ -68,7 +68,7 @@
                 bottom: 55px;
                 left: 117px;
                 transition: height .25s, left .5s, bottom .5s, transform .5s;
-                background-image: url($media-server + 'SpritesAnimations/sprite.game2.completeitems.png');
+                background-image: url($media-game + 'SpritesAnimations/sprite.game2.completeitems.png');
                 background-repeat: no-repeat;
                 background-position: 0 bottom;
                 background-size: 2800px;
@@ -138,7 +138,7 @@
         button {
             position: relative;
             z-index: 1;
-            background-image: url($media-server + 'SpritesAnimations/sprite.game2.carouselarrow.png');
+            background-image: url($media-game + 'SpritesAnimations/sprite.game2.carouselarrow.png');
             background-repeat: no-repeat;
             background-size: 100px;
             width: 50px;
@@ -210,7 +210,7 @@
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
-            background-image: url($media-server + 'SpritesAnimations/game-2-sprites.png');
+            background-image: url($media-game + 'SpritesAnimations/sprite.game2.png');
             background-repeat: no-repeat;
             background-size: 2800px;
             width: 101px;
@@ -270,7 +270,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
             margin-left: 5px;
-            background-image: url($media-server + 'ImageAssets/img.popup.png');
+            background-image: url($media-game + 'ImageAssets/img.popup.png');
             background-repeat: no-repeat;
             background-size: contain;
             padding: 35px 55px 60px 50px;
@@ -302,7 +302,7 @@
 
             button {
                 margin-top: 45px;
-                background-image: url($media-server + 'SpritesAnimations/sprite.nav.png');
+                background-image: url($media-game + 'SpritesAnimations/sprite.nav.png');
                 background-repeat: no-repeat;
                 background-position: -740px 0;
                 background-size: 1400px;
@@ -331,7 +331,7 @@
 
             &[data-ref=drag-it-here] {
                 background-color: $printer-reveal-background;
-                background-image: url($media-server + 'ImageAssets/img.guide.png');
+                background-image: url($media-game + 'ImageAssets/img.guide.png');
                 background-position: 380px 0;
                 background-size: 400px;
                 padding: 330px 50px 50px 270px;
@@ -381,7 +381,7 @@
             }
 
             &[data-ref=tooth] {
-                background-image: url($media-server + 'ImageAssets/img.winframe.png');
+                background-image: url($media-game + 'ImageAssets/img.winframe.png');
                 width: 600px;
                 height: 500px;
 
@@ -403,11 +403,6 @@
 
                 button {
                     margin-top: 40px;
-                    background-position: -390px 0;
-
-                    &:hover {
-                        background-position: -390px -86px;
-                    }
                 }
             }
         }
@@ -422,7 +417,7 @@
                 top: 0;
                 left: 0;
                 opacity: .4;
-                background-image: url($media-server + 'ImageAssets/bkg.3.jpg');
+                background-image: url($media-game + 'ImageAssets/bkg.3.jpg');
                 background-repeat: no-repeat;
                 background-position: 0 0;
                 background-size: contain;
@@ -433,7 +428,7 @@
         }
 
         &.open-tooth {
-            background-image: url($media-server + 'ImageAssets/img.sparkle.png');
+            background-image: url($media-game + 'ImageAssets/img.sparkle.png');
         }
     }
 }

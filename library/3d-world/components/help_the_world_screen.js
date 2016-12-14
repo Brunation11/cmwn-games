@@ -1,10 +1,4 @@
-import Selectable from 'shared/components/selectable/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-import MediaCollection from 'shared/components/media_collection/0.1';
-
 export default function (props, ref, key) {
-    var nextPhoto;
-
     const jobs = [
         'designer',
         'architect',
@@ -14,13 +8,28 @@ export default function (props, ref, key) {
         'artist',
     ];
 
-    nextPhoto = function () {
+    var nextPhoto = function () {
         skoash.trigger('updateState', {
             path: 'selectable',
             data: {
                 select: jobs[
                     (jobs.indexOf(_.get(props, 'data.selectable.target.props.data-ref')) + 1) % jobs.length
                 ]
+            }
+        });
+    };
+
+    var onClose = function () {
+        skoash.trigger('updateState', {
+            path: 'selectable',
+            data: {
+                target: null
+            }
+        });
+        skoash.trigger('updateState', {
+            path: 'reveal',
+            data: {
+                open: null
             }
         });
     };
@@ -44,7 +53,7 @@ export default function (props, ref, key) {
                 type="voiceOver"
                 src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_and_many.mp3'}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
               <skoash.Audio
@@ -77,13 +86,13 @@ export default function (props, ref, key) {
                   ref={jobs[5]}
                   src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Artists.mp3'}
               />
-            </MediaCollection>
+            </skoash.MediaCollection>
             <div className="header">
                 …and many ways to help the world<br/>
                 with the wonderful things you create!<br/>
                 Click on the image to expand.
             </div>
-            <Selectable
+            <skoash.Selectable
                 dataTarget="selectable"
                 selectClass="HIGHLIGHTED"
                 select={_.get(props, 'data.selectable.select')}
@@ -114,9 +123,10 @@ export default function (props, ref, key) {
                     />,
                 ]}
             />
-            <Reveal
+            <skoash.Reveal
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.selectable.target.props.data-ref')}
+                onClose={onClose}
                 list={[
                     <skoash.Component
                       type="li"
@@ -164,7 +174,7 @@ export default function (props, ref, key) {
                           Engineers
                         </h3>
                         <div>
-                          make 3D models of you creations,<br/>
+                          make 3D models of your creations,<br/>
                           and then print the real thing!
                         </div>
                         <button className="next-photo" onClick={nextPhoto} />
