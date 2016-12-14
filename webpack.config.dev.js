@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + '/library',
+    context: path.join(__dirname, 'library'),
     entry: null,
     devtool: 'cheap-module-inline-source-map',
     resolve: {
@@ -14,9 +14,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
-        path: __dirname + '/build/3d-world',
-        filename: 'ai.js',
-        publicPath: '/build/3d-world/'
+        path: path.join(__dirname, 'build'),
+        filename: '[name]/ai.js',
+        publicPath: '/build/'
     },
     module: {
         preLoaders: [
@@ -28,7 +28,7 @@ module.exports = {
                 loader: ['babel'],
                 exclude: [/bower_components/, /node_modules/],
                 query: {
-                    presets: ['react', 'es2015', 'stage-0']
+                    presets: ['react', 'es2015', 'react-hmre', 'stage-0']
                 }
             },
             {

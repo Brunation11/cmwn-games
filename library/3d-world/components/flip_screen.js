@@ -26,17 +26,17 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Flip.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_Flip.mp3'}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
                     playTarget="layer1"
                     sprite={[0, 1900]}
                 />
                 <skoash.Audio
                     type="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Printing.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Printing.mp3'}
                     playTarget="layer2"
                     completeTarget="layer2"
                     sprite={[1900, 1900]}
@@ -44,22 +44,22 @@ export default function (props, ref, key) {
             </skoash.MediaSequence>
             <skoash.Image
                 className="printer"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.flip.printer.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.flip.printer.png'}
             />
             <skoash.Image
                 className={classNames('earned-flip', {
                     show: _.get(props, 'data.flip.complete'),
                 })}
-                src={window.MEDIA_SERVER +
+                src={MEDIA.BASE +
                     'Flips/3D%20world/3DW%20-%20Animated%20Earned%20Flip/3DW.AnimatedEarnedFliploop.gif'}
             />
             <skoash.Image
                 className="hidden"
-                src={window.MEDIA_SERVER + 'Flips/3D%20world/3DW-%20Static%20Image%20Flip/3DW.EarnedFlip.png'}
+                src={MEDIA.BASE + 'Flips/3D%20world/3DW-%20Static%20Image%20Flip/3DW.EarnedFlip.png'}
             />
             <skoash.Image
                 className="minion"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.flip.minion.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.flip.minion.png'}
             />
             <skoash.Component
                 checkComplete={false}

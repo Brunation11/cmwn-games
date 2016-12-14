@@ -3,7 +3,7 @@ var argv = require('yargs').argv;
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var gutil = require('gulp-util');
-var express = require('express');
+var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
 var webpackDevConfig = require('./webpack.config.dev.js');
 var webpackProdConfig = require('./webpack.config.prod.js');
@@ -31,8 +31,6 @@ var stylish = require('gulp-scss-lint-stylish2');
 var game;
 
 function defineEntries(config) {
-    var app;
-    var compiler;
     // modify some webpack config options
     var varsPath = './shared/js/' + env + '-variables.js';
     var mediaPath = './shared/js/make_media_globals.js';
@@ -47,66 +45,15 @@ function defineEntries(config) {
     config.resolve = Object.create(config.resolve);
     config.entry = {};
     config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
-
+    config.output.filename = game + '/ai.js';
     config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/components/');
     config.entry = [
-        // WebpackDevServer host and port
-        'webpack-dev-server/client?http://localhost:3000/build/' + game + '/index.html',
-        // "only" prevents reload on syntax errors
-        'webpack/hot/only-dev-server',
         varsPath,
         mediaPath,
-        './' + game + '/index.js'
+        './' + game + '/index.js',
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080/',
     ];
-
-    app = express();
-    compiler = webpack(config);
-
-    app.use(require('webpack-dev-middleware')(compiler, {
-        publicPath: config.output.publicPath
-    }));
-
-    app.use(require('webpack-hot-middleware')(compiler));
-
-    app.get('/build/' + game + '/index.html', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/' + game + '/index.html'));
-    });
-
-    app.get('/build/' + game + '/ai.js', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/' + game + '/ai.js'));
-    });
-
-    app.get('/build/' + game + '/style.css', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/' + game + '/style.css'));
-    });
-
-    app.get('/build/' + game + '/css/style.css', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/' + game + '/css/style.css'));
-    });
-
-    app.get('/build/shared/css/style.css', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/shared/css/style.css'));
-    });
-
-    app.get('/build/framework/skoash.1.1.0.js', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/framework/skoash.1.1.0.js'));
-    });
-
-    app.get('/build/shared/images/ios_start_ball.png', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/shared/images/ios_start_ball.png'));
-    });
-
-    app.get('/build/shared/images/ios_start_ball_anim.gif', function (req, res) {
-        res.sendFile(path.join(__dirname, 'build/shared/images/ios_start_ball_anim.gif'));
-    });
-
-    app.listen(3000, function (err) {
-        if (err) {
-            return console.error(err); // eslint-disable-line no-console
-        }
-
-        console.log('Listening at http://localhost:3000/'); // eslint-disable-line no-console
-    });
 
     return config;
 }
@@ -138,19 +85,34 @@ gulp.task('webpack:build', function (callback) {
     var webpackConfig;
     var name;
     var config;
+    var compiler;
+    var server;
 
     webpackConfig = env === 'dev' ? webpackDevConfig : webpackProdConfig;
     name = 'webpack:build' + (env === 'dev' ? '-dev' : '');
     config = defineEntries(webpackConfig);
 
     // run webpack
-    webpack(config, function (err, stats) {
+    compiler = webpack(config, function (err, stats) {
         if (err) throw new gutil.PluginError(name, err);
         gutil.log(`[${name}]`, stats.toString({
             colors: true
         }));
         callback();
     });
+
+    if (env === 'dev') {
+        server = new WebpackDevServer(compiler, {
+            contentBase: 'build',
+            hot: true,
+            filename: game + '/ai.js',
+            publicPath: '/build/',
+            stats: {
+                colors: true,
+            },
+        });
+        server.listen(8080, 'localhost', function () {});
+    }
 });
 
 gulp.task('sass', function () {
