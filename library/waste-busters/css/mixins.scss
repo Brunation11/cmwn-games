@@ -1,49 +1,15 @@
 @import 'variables';
+@import '../../shared/css/mixins/import';
 
-@mixin clearfix {
-    &::after {
-        display: table;
-        clear: both;
-        content: '';
-    }
+@mixin nav-button($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'nav.png', 2400px, 533px, 9, 2, $column, 1, 2, $width, $height);
 }
 
-// code from https://github.com/hudochenkov/sass-text-stroke
-@function text-stroke($size: 2, $color: $white, $correction: 0) {
-    $radius: $size - $correction;
-    $stroke: ();
-
-    @for $i from -$size through $size {
-        @for $k from -$size through $size {
-
-            $x: $k;
-            $y: $i;
-
-            @if $k > 0 {
-                $x: $k - .5;
-            } @elseif $k < 0 {
-                $x: $k + .5;
-            }
-
-            @if $i > 0 {
-                $y: $i - .5;
-            } @elseif $i < 0 {
-                $y: $i + .5;
-            }
-
-            @if ($x * $x + $y * $y <= $radius * $radius) {
-                $stroke: append($stroke, $i * 1px $k * 1px 0 $color, comma);
-            }
-        }
-    }
-
-    @return $stroke;
+@mixin sprite-background($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'BKG.1.jpg', 2880px, 540px, 3, 1, $column, 1, 1, $width, $height);
 }
 
-@mixin text-stroke($size: 2, $color: $white, $correction: 0) {
-    text-shadow: text-stroke($size, $color, $correction);
-}
-
+// work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;
     position: relative;
