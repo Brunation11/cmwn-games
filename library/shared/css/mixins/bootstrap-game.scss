@@ -124,6 +124,12 @@
         &.LEAVE {
             opacity: 0;
         }
+
+        &#title {
+            .prev-screen {
+                display: none;
+            }
+        }
     }
 
     .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,

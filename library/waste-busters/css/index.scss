@@ -41,3 +41,15 @@ button {
         left: 15px;
     }
 }
+
+.skoash-game {
+    $screens: title;
+    $backgrounds: title;
+    @include screen-backgrounds($screens, $backgrounds);
+
+    .background {
+        &.title {
+            @include sprite-background(1);
+        }
+    }
+}
