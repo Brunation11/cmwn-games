@@ -104,3 +104,5 @@ var AnimalID = (
 );
 
 skoash.start(AnimalID);
+
+if (module.hot) module.hot.accept();

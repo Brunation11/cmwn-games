@@ -59,3 +59,5 @@ var TwirlNSwirl = (
 );
 
 skoash.start(TwirlNSwirl);
+
+if (module.hot) module.hot.accept();
