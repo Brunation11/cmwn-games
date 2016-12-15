@@ -9,6 +9,30 @@
     @include sprite($sprite + 'BKG.1.jpg', 2880px, 540px, 3, 1, $column, 1, 1, $width, $height);
 }
 
+@mixin sprite-frame($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'frames.intro-01.png', 1325px, 268px, 2, 1, $column, 1, 1, $width, $height);
+    @include center;
+    width: 660px;
+    height: 268px;
+
+    p {
+        @include center;
+        position: absolute;
+        left: 66%;
+        width: 52%;
+        font-size: inherit;
+    }
+}
+
+@mixin sprite-intro($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'intro.imgs.png', 1268px, 423px, 3, 1, $column, 1, 1, $width, $height);
+    position: absolute;
+    top: -80px;
+    left: -130px;
+    width: 422px;
+    height: 423px;
+}
+
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;

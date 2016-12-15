@@ -43,15 +43,28 @@ button {
 }
 
 .skoash-game {
-    $screens:     title everyday;
-    $backgrounds: title everyday;
+    $screens:     title eat-and-drink learn-and-create;
+    $backgrounds: title everyday      everyday;
     @include screen-backgrounds($screens, $backgrounds);
 
     .background {
-        @for $i from 1 through 2 {
-            &.#{nth($backgrounds, $i)} {
+        $sprite-backgrounds: title everyday;
+        @for $i from 1 through length($sprite-backgrounds) {
+            &.#{nth($sprite-backgrounds, $i)} {
                 @include sprite-background($i);
             }
         }
     }
 }
+
+.frame-1 {
+    @include sprite-frame(1);
+    margin: -10px 0 0 50px;
+}
+
+@for $i from 1 through 3 {
+    .intro-image-#{$i} {
+        @include sprite-intro($i);
+    }
+}
+

@@ -6,7 +6,18 @@ export default function (props, ref, key) {
             key={key}
             id="learn-and-create"
         >
-
+            <skoash.Audio
+                type="voiceOver"
+                src={MEDIA.VO + 'AndEvery.mp3'}
+            />
+            <skoash.Component className="frame-1">
+                <skoash.Component className="intro-image-2" />
+                <p>
+                    And everyday, we<br/>
+                    use things to help<br/>
+                    us learn and create...
+                </p>
+            </skoash.Component>
         </skoash.Screen>
     );
 }
