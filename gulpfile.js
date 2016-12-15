@@ -10,6 +10,7 @@ var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
 var nolivereload;
+var nohmr;
 var env;
 var debug;
 var local;
@@ -63,6 +64,7 @@ game = argv.game || argv.g;
 // In order for livereload to work, you should run gulp on the host machine
 // unless you have native docker installed.
 nolivereload = argv.nolr;
+nohmr = argv.nohmr;
 env = argv.environment || argv.env || 'prod';
 debug = argv.debug;
 local = argv.local || argv.l;
@@ -101,7 +103,7 @@ gulp.task('webpack:build', function (callback) {
         callback();
     });
 
-    if (env === 'dev') {
+    if (env === 'dev' && !nohmr) {
         server = new WebpackDevServer(compiler, {
             contentBase: 'build',
             hot: true,

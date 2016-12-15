@@ -1,3 +1,15 @@
 #better-ways {
     font-size: 36px;
+
+    .yes {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        opacity: 0;
+        width: 900px;
+
+        &.bounce {
+            animation-name: bounceIn;
+        }
+    }
 }

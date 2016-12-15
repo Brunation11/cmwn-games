@@ -48,19 +48,23 @@ button {
         eat-and-drink
         learn-and-create
         what-happens
-        better-ways;
+        better-ways
+        click-cards
+        cards;
 
     $backgrounds:
         title
         everyday
         everyday
         everyday
-        everyday;
+        everyday
+        cards
+        cards;
 
     @include screen-backgrounds($screens, $backgrounds);
 
     .background {
-        $sprite-backgrounds: title everyday;
+        $sprite-backgrounds: title everyday cards;
         @for $i from 1 through length($sprite-backgrounds) {
             &.#{nth($sprite-backgrounds, $i)} {
                 @include sprite-background($i);

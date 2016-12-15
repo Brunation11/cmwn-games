@@ -8,6 +8,8 @@ import EatAndDrinkScreen from './components/eat_and_drink_screen';
 import LearnAndCreateScreen from './components/learn_and_create_screen';
 import WhatHappensScreen from './components/what_happens_screen';
 import BetterWaysScreen from './components/better_ways_screen';
+import ClickCardsScreen from './components/click_cards_screen';
+import CardsScreen from './components/cards_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
@@ -27,6 +29,8 @@ skoash.start(
             LearnAndCreateScreen,
             WhatHappensScreen,
             BetterWaysScreen,
+            ClickCardsScreen,
+            CardsScreen,
             LevelOneScreen,
             LevelTwoScreen,
             LevelThreeScreen,
@@ -63,11 +67,22 @@ skoash.start(
                 src={MEDIA.EFFECT + 'OpeningSequence.mp3'}
             />,
             <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'CardSection.mp3'}
+            />,
+            <skoash.Audio
                 type="sfx"
+                ref="button"
                 src={MEDIA.EFFECT + 'AllClick.mp3'}
             />,
+            <skoash.Audio
+                type="sfx"
+                ref="screen-complete"
+                src={MEDIA.EFFECT + 'NextAppear.mp3'}
+            />,
             <div className="background title" />,
-            <div className="background everyday" />
+            <div className="background everyday" />,
+            <div className="background cards" />,
         ]}
         getBackgroundIndex={(index, id) => {
             switch (id) {

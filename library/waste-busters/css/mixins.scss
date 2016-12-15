@@ -25,6 +25,10 @@
     height: 423px;
 }
 
+@mixin sprite-turtle($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.4.png', 700px, 340px, 2, 1, $column, 1, 1, $width, $height);
+}
+
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;
