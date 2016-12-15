@@ -1,7 +1,8 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + '/library',
+    context: path.join(__dirname, 'library'),
     entry: null,
     devtool: 'cheap-module-inline-source-map',
     resolve: {
@@ -9,9 +10,11 @@ module.exports = {
         extensions: ['', '.js', '.json'],
         modulesDirectories: ['node_modules']
     },
-    plugins: [],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
     output: {
-        path: __dirname + '/build',
+        path: path.join(__dirname, 'build'),
         filename: '[name]/ai.js',
         publicPath: '/build/'
     },
@@ -19,14 +22,21 @@ module.exports = {
         preLoaders: [
             { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
         ],
-        loaders: [{
-            test: /\.js$/,
-            loader: ['babel'],
-            exclude: [/bower_components/, /node_modules/],
-            query: {
-                presets: ['react', 'es2015', 'stage-0']
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: ['babel'],
+                exclude: [/bower_components/, /node_modules/],
+                query: {
+                    presets: ['react', 'es2015', 'react-hmre', 'stage-0']
+                }
+            },
+            {
+                test: /\.jsx?$/,
+                loaders: ['react-hot', 'jsx?harmony'],
+                include: path.join(__dirname, 'src')
             }
-        }]
+        ]
     },
     postcss: function () {
         return [autoprefixer];
