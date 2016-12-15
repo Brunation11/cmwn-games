@@ -93,3 +93,5 @@ var DroughtOut = (
 );
 
 skoash.start(DroughtOut);
+
+if (module.hot) module.hot.accept();

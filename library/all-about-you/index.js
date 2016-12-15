@@ -139,3 +139,5 @@ class AllAboutYou extends skoash.Game {
 }
 
 skoash.start(AllAboutYou, config.id);
+
+if (module.hot) module.hot.accept();

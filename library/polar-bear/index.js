@@ -120,3 +120,5 @@ class PolarBear extends skoash.Game {
 }
 
 skoash.start(PolarBear, config.id);
+
+if (module.hot) module.hot.accept();
