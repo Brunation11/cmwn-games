@@ -66,3 +66,5 @@ var HappyFishFace = (
 );
 
 skoash.start(HappyFishFace);
+
+if (module.hot) module.hot.accept();
