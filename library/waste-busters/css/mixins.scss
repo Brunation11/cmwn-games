@@ -14,14 +14,6 @@
     @include center;
     width: 660px;
     height: 268px;
-
-    p {
-        @include center;
-        position: absolute;
-        left: 66%;
-        width: 52%;
-        font-size: inherit;
-    }
 }
 
 @mixin sprite-intro($column, $width: 0, $height: 0) {

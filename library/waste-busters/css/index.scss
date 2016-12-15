@@ -43,8 +43,20 @@ button {
 }
 
 .skoash-game {
-    $screens:     title eat-and-drink learn-and-create;
-    $backgrounds: title everyday      everyday;
+    $screens:
+        title
+        eat-and-drink
+        learn-and-create
+        what-happens
+        better-ways;
+
+    $backgrounds:
+        title
+        everyday
+        everyday
+        everyday
+        everyday;
+
     @include screen-backgrounds($screens, $backgrounds);
 
     .background {
@@ -60,6 +72,18 @@ button {
 .frame-1 {
     @include sprite-frame(1);
     margin: -10px 0 0 50px;
+
+    p {
+        @include center;
+        position: absolute;
+        left: 66%;
+        width: 52%;
+        font-size: inherit;
+    }
+}
+
+.frame-2 {
+    @include sprite-frame(2);
 }
 
 @for $i from 1 through 3 {

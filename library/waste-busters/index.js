@@ -6,6 +6,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import EatAndDrinkScreen from './components/eat_and_drink_screen';
 import LearnAndCreateScreen from './components/learn_and_create_screen';
+import WhatHappensScreen from './components/what_happens_screen';
+import BetterWaysScreen from './components/better_ways_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
@@ -23,6 +25,8 @@ skoash.start(
             TitleScreen,
             EatAndDrinkScreen,
             LearnAndCreateScreen,
+            WhatHappensScreen,
+            BetterWaysScreen,
             LevelOneScreen,
             LevelTwoScreen,
             LevelThreeScreen,
@@ -68,7 +72,11 @@ skoash.start(
         getBackgroundIndex={(index, id) => {
             switch (id) {
                 case 'ios-splash': return;
-                case 'title': return 0;
+                case 'title':
+                case 'eat-and-drink':
+                case 'learn-and-create':
+                case 'what-happens':
+                    return 0;
             }
         }}
     />
