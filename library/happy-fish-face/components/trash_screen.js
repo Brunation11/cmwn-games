@@ -65,6 +65,7 @@ export default function (props, ref, key) {
     };
 
     var timerComplete = function () {
+        return;
         if (_.get(props, 'data.reveal.open', '') === GOOD_JOB) return;
 
         openReveal.call(this, TRY_AGAIN);
@@ -99,12 +100,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     data-ref="correct"
                     type="sfx"
-                    src="media/_audio/_S_Trash/HFF_SX_Right.mp3"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Right.mp3`}
                 />
                 <skoash.Audio
                     data-ref="incorrect"
                     type="sfx"
-                    src="media/_audio/_S_Trash/HFF_SX_Wrong.mp3"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
                     complete
                 />
             </MediaCollection>
@@ -118,13 +119,13 @@ export default function (props, ref, key) {
                             openReveal={_.get(props, 'data.reveal.open', null)}
                             list={[
                                 <skoash.Component type="li" complete>
-                                    <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
+                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.2.png`} />
                                     <p>
                                         You ran out of time!
                                     </p>
                                 </skoash.Component>,
                                 <skoash.Component type="li" className="tryAgain">
-                                    <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
+                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.1.png`} />
                                     <p>
                                         Take this offline.<br /> Never throw the trash in the water.
                                     </p>
@@ -133,12 +134,20 @@ export default function (props, ref, key) {
                             assets={[
                                 <skoash.Audio
                                     type="voiceOver"
-                                    src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3"
+                                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/TryAgain.mp3`}
                                     complete
                                 />,
                                 <skoash.MediaSequence silentOnStart>
-                                    <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
-                                    <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
+                                    <skoash.Audio
+                                        type="voiceOver"
+                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/GoodJob.mp3`}
+                                        complete
+                                    />
+                                    <skoash.Audio
+                                        type="voiceOver"
+                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/NeverThrow.mp3`}
+                                        complete
+                                    />
                                 </skoash.MediaSequence>,
                             ]}
                         />
@@ -148,7 +157,7 @@ export default function (props, ref, key) {
                         countDown={true}
                         action={_.get(props, 'data.timer.action', null)}
                         timeout={90000}
-                        leadingContent={<skoash.Image src="media/_images/_S_Trash/img_9.1.png" />}
+                        leadingContent={<skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`} />}
                         onComplete={timerComplete}
                     />
                     <Selectable
@@ -158,43 +167,42 @@ export default function (props, ref, key) {
                         onSelect={onSelect}
                         incompleteRefs={_.get(props, 'data.selectable.incompleteRefs', false)}
                         list={[
-                            <skoash.ListItem correct data-ref="bottle" />,
-                            <skoash.ListItem correct data-ref="cans" />,
-                            <skoash.ListItem correct data-ref="cleaner" />,
-                            <skoash.ListItem correct data-ref="wash" />,
-                            <skoash.ListItem correct data-ref="necklace" />,
-                            <skoash.ListItem correct data-ref="oil" />,
-                            <skoash.ListItem correct data-ref="bag" />,
-                            <skoash.ListItem correct data-ref="water" />,
-                            <skoash.ListItem correct data-ref="shoes" />,
-                            <skoash.ListItem correct data-ref="soap" />,
-                            <skoash.ListItem correct data-ref="sauce" />,
-                            <skoash.ListItem correct data-ref="beeker" />,
-                            <skoash.ListItem correct data-ref="drum" />,
-                            <skoash.ListItem correct data-ref="cosmetics" />,
                             <skoash.ListItem correct data-ref="tire" />,
                             <skoash.ListItem correct data-ref="floss" />,
-                            <skoash.ListItem correct data-ref="ketchup" />,
-                            <skoash.ListItem correct data-ref="bulb" />,
-                            <skoash.ListItem correct data-ref="fries" />,
+                            <skoash.ListItem correct data-ref="shoes" />,
+                            <skoash.ListItem correct data-ref="water" />,
                             <skoash.ListItem correct data-ref="soda" />,
+                            <skoash.ListItem correct data-ref="bottle1" />,
+                            <skoash.ListItem correct data-ref="chips" />,
+                            <skoash.ListItem correct data-ref="necklace" />,
+                            <skoash.ListItem correct data-ref="bottle2" />,
+                            <skoash.ListItem correct data-ref="bottle3" />,
+                            <skoash.ListItem correct data-ref="beaker" />,
+                            <skoash.ListItem correct data-ref="oil" />,
+                            <skoash.ListItem correct data-ref="fries" />,
+                            <skoash.ListItem correct data-ref="bottle4" />,
+                            <skoash.ListItem correct data-ref="sauce" />,
+                            <skoash.ListItem correct data-ref="lightbulb" />,
+                            <skoash.ListItem correct data-ref="lotion" />,
                             <skoash.ListItem data-ref="coral" />,
                             <skoash.ListItem data-ref="crab" />,
-                            <skoash.ListItem data-ref="turtle" />,
-                            <skoash.ListItem data-ref="shell" />,
+                            <skoash.ListItem data-ref="octopus" />,
+                            <skoash.ListItem data-ref="shell1" />,
                             <skoash.ListItem data-ref="fish1" />,
+                            <skoash.ListItem data-ref="fish1" className="duplicate"/>,
+                            <skoash.ListItem data-ref="seahorse" />,
+                            <skoash.ListItem data-ref="turtle" />,
                             <skoash.ListItem data-ref="fish2" />,
+                            <skoash.ListItem data-ref="fish3" />,
+                            <skoash.ListItem data-ref="fish3" className="duplicate"/>,
+                            <skoash.ListItem data-ref="jellyfish" />,
+                            <skoash.ListItem data-ref="jellyfish" className="duplicate"/>,
+                            <skoash.ListItem data-ref="fish4" />,
                             <skoash.ListItem data-ref="lobster" />,
                             <skoash.ListItem data-ref="shell2" />,
-                            <skoash.ListItem data-ref="fish3" />,
-                            <skoash.ListItem data-ref="starfish" />,
-                            <skoash.ListItem data-ref="starfish" className="second" />,
-                            <skoash.ListItem data-ref="octopus" />,
-                            <skoash.ListItem data-ref="shell3" />,
-                            <skoash.ListItem data-ref="seahorse" />,
-                            <skoash.ListItem data-ref="fish4" />,
                             <skoash.ListItem data-ref="fish5" />,
-                            <skoash.ListItem data-ref="jellyfish" />,
+                            <skoash.ListItem data-ref="fish5" className="duplicate"/>,
+                            <skoash.ListItem data-ref="starfish" />,
                         ]}
                     />
                 </skoash.Component>

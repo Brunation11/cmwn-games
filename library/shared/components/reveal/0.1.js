@@ -105,7 +105,6 @@ class Reveal extends skoash.Component {
         message += '';
 
         this.playMedia('asset-open-sound');
-        debugger;
 
         messages = message.split(' ');
         messages.map(audio => {

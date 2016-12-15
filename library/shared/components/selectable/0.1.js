@@ -32,6 +32,12 @@ class Selectable extends skoash.Component {
         });
     }
 
+    incomplete() {
+        super.incomplete();
+
+        this.setState({ classes: {} });
+    }
+
     bootstrap() {
         super.bootstrap();
 
@@ -91,7 +97,7 @@ class Selectable extends skoash.Component {
         });
 
         self.props.selectRespond.call(self, dataRef, isCorrect);
-        self.props.onSelect.call(self, dataRef);
+        self.props.onSelect.call(self, dataRef, isCorrect);
 
         if (self.props.chooseOne) self.complete();
 
