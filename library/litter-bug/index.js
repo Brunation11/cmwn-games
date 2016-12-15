@@ -121,3 +121,5 @@ var LitterBug = (
 );
 
 skoash.start(LitterBug);
+
+if (module.hot) module.hot.accept();

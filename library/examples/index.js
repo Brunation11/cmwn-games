@@ -67,3 +67,5 @@ var Examples = (
 );
 
 skoash.start(Examples);
+
+if (module.hot) module.hot.accept();
