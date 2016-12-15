@@ -32,23 +32,23 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.notepad.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.notepad.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.game3.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.game3.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/img.greenarrows.png'}
+                src={MEDIA.GAME + 'ImageAssets/img.greenarrows.png'}
             />
             <skoash.Audio
                 type="voiceOver"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_drag_and.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/vos/VO_drag_and.mp3'}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
@@ -57,7 +57,7 @@ export default function (props, ref, key) {
                     ref="drag"
                     type="sfx"
                     completeTarget="sfx"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/Drag.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/Drag.mp3'}
                 />
             </skoash.MediaCollection>
             <skoash.Repeater

@@ -3,12 +3,12 @@ var argv = require('yargs').argv;
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var gutil = require('gulp-util');
+var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
 var webpackDevConfig = require('./webpack.config.dev.js');
 var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
-var games;
 var nolivereload;
 var env;
 var debug;
@@ -45,11 +45,15 @@ function defineEntries(config) {
     config.resolve = Object.create(config.resolve);
     config.entry = {};
     config.resolve.modulesDirectories = config.resolve.modulesDirectories.slice(0); // clone array
-
+    config.output.filename = game + '/ai.js';
     config.resolve.modulesDirectories.push(__dirname + '/library/' + game + '/components/');
-    config.entry[game] = [varsPath, mediaPath, './' + game + '/index.js'];
-
-    gutil.log(games, 'entry', config.entry);
+    config.entry = [
+        varsPath,
+        mediaPath,
+        './' + game + '/index.js',
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080/',
+    ];
 
     return config;
 }
@@ -81,19 +85,34 @@ gulp.task('webpack:build', function (callback) {
     var webpackConfig;
     var name;
     var config;
+    var compiler;
+    var server;
 
     webpackConfig = env === 'dev' ? webpackDevConfig : webpackProdConfig;
     name = 'webpack:build' + (env === 'dev' ? '-dev' : '');
     config = defineEntries(webpackConfig);
 
     // run webpack
-    webpack(config, function (err, stats) {
+    compiler = webpack(config, function (err, stats) {
         if (err) throw new gutil.PluginError(name, err);
         gutil.log(`[${name}]`, stats.toString({
             colors: true
         }));
         callback();
     });
+
+    if (env === 'dev') {
+        server = new WebpackDevServer(compiler, {
+            contentBase: 'build',
+            hot: true,
+            filename: game + '/ai.js',
+            publicPath: '/build/',
+            stats: {
+                colors: true,
+            },
+        });
+        server.listen(8080, 'localhost', function () {});
+    }
 });
 
 gulp.task('sass', function () {
@@ -278,13 +297,6 @@ function watchTask() {
     });
 
     watch([
-        'library/' + game + '/**/*.js',
-        'library/shared/**/*.js',
-    ], function () {
-        gulp.start('webpack:build');
-    });
-
-    watch([
         'library/' + game + '/**/*.scss',
         'library/' + game + '/**/*.css',
         'library/shared/**/*.scss',
@@ -302,12 +314,19 @@ function watchTask() {
     watch([
         'library/' + game + '/**/*.html',
         'library/' + game + '/config.json',
+        'library/shared/**/*.html',
+    ], function () {
+        gulp.start('copy-index');
+    });
+
+    watch([
         'library/shared/**/*',
+        '!library/shared/**/*.html',
         '!library/shared/**/*.js',
         '!library/shared/**/*.scss',
         '!library/shared/**/*.css',
     ], function () {
-        gulp.start('build');
+        gulp.start('copy-media');
     });
 
     gulp.start('build');

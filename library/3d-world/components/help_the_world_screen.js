@@ -43,15 +43,15 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.realworldgallery.png'}
+                src={MEDIA.GAME + 'SpritesAnimations/sprite.realworldgallery.png'}
             />
             <skoash.Audio
                 type="voiceOver"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_and_many.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/vos/VO_and_many.mp3'}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
@@ -59,32 +59,32 @@ export default function (props, ref, key) {
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[0]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Product_Designers.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Product_Designers.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[1]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Architects.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Architects.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[2]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Surgeons.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Surgeons.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[3]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Engineers.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Engineers.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[4]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Dentists.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Dentists.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref={jobs[5]}
-                  src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_Artists.mp3'}
+                  src={MEDIA.GAME + 'SoundAssets/vos/VO_Artists.mp3'}
               />
             </skoash.MediaCollection>
             <div className="header">
