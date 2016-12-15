@@ -14,7 +14,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
-        path: path.join(__dirname, 'build'),
+        path: '/build',
         filename: '[name]/ai.js',
         publicPath: '/build/'
     },
