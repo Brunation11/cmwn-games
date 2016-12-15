@@ -79,4 +79,4 @@ class Fire extends skoash.Game {
 
 skoash.start(Fire, config.id);
 
-import 'shared/js/google-analytics';
+if (module.hot) module.hot.accept();

@@ -93,3 +93,5 @@ var Printmaster = (
 );
 
 skoash.start(Printmaster);
+
+if (module.hot) module.hot.accept();

@@ -59,3 +59,5 @@ var SeaTurtle = (
 );
 
 skoash.start(SeaTurtle);
+
+if (module.hot) module.hot.accept();
