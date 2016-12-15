@@ -314,19 +314,13 @@ function watchTask() {
     watch([
         'library/' + game + '/**/*.html',
         'library/' + game + '/config.json',
-        'library/shared/**/*.html',
-    ], function () {
-        gulp.start('copy-index');
-    });
-
-    watch([
         'library/shared/**/*',
-        '!library/shared/**/*.html',
+        '!library/' + game + '/**/*.js',
         '!library/shared/**/*.js',
         '!library/shared/**/*.scss',
         '!library/shared/**/*.css',
     ], function () {
-        gulp.start('copy-media');
+        gulp.start('build');
     });
 
     gulp.start('build');
