@@ -4,7 +4,7 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="everyday"
+            id="eat-and-drink"
         >
 
         </skoash.Screen>
