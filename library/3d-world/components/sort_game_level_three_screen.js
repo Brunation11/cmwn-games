@@ -12,18 +12,18 @@ export default function (props, ref, key) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/level_up.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/effects/level_up.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_did_you3.mp3'}
+                    src={MEDIA.GAME + 'SoundAssets/vos/VO_did_you3.mp3'}
                 />
             </skoash.MediaSequence>,
             <skoash.Audio
                 type="voiceOver"
                 ref="try-again"
                 complete
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/vos/VO_try_again.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/vos/VO_try_again.mp3'}
             />,
         ],
         sfx: [
@@ -31,7 +31,7 @@ export default function (props, ref, key) {
                 type="voiceOver"
                 completeTarget="sfx"
                 ref="print"
-                src={ENVIRONMENT.MEDIA + 'SoundAssets/effects/print_item.mp3'}
+                src={MEDIA.GAME + 'SoundAssets/effects/print_item.mp3'}
                 sprite={[0, 500]}
             />
         ],
@@ -42,7 +42,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.minion.png'}
+                    src={MEDIA.GAME + 'SpritesAnimations/sprite.minion.png'}
                 />
                 <h3>
                     LEVEL UP
@@ -63,15 +63,15 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     className="minion"
-                    src={ENVIRONMENT.MEDIA + 'ImageAssets/try.again.minion.png'}
+                    src={MEDIA.GAME + 'ImageAssets/try.again.minion.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'Frames/try.again.frame.png'}
+                    src={MEDIA.GAME + 'Frames/try.again.frame.png'}
                 />
                 <skoash.Image
                     className="hidden"
-                    src={ENVIRONMENT.MEDIA + 'SpritesAnimations/sprite.nav.png'}
+                    src={MEDIA.GAME + 'SpritesAnimations/sprite.nav.png'}
                 />
                 <div>
                     <h3>

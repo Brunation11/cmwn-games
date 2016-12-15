@@ -11,7 +11,7 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={ENVIRONMENT.MEDIA + 'ImageAssets/vid.scrn.png'}
+                src={MEDIA.GAME + 'ImageAssets/vid.scrn.png'}
             />
             <skoash.Component>
                 <skoash.Video src={src} />
