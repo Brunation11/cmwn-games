@@ -3,7 +3,7 @@ import config from './config';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-// import TitleScreen from './components/title_screen';
+import TitleScreen from './components/title_screen';
 import EverydayScreen from './components/everyday_screen';
 // import LevelOneScreen from './components/level_one_screen';
 // import LevelTwoScreen from './components/level_two_screen';
@@ -19,7 +19,7 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
+            TitleScreen,
             EverydayScreen,
             // LevelOneScreen,
             // LevelTwoScreen,
@@ -67,3 +67,5 @@ skoash.start(
         }}
     />
 );
+
+if (module.hot) module.hot.accept();
