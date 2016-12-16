@@ -50,7 +50,19 @@ button {
         what-happens
         better-ways
         click-cards
-        cards;
+        cards
+        time-to-collect
+        lets-play
+        remember
+        bonus-round
+        neighborhood-waste
+        types-of-waste
+        sorting-level-1
+        sorting-level-2
+        sorting-level-3
+        waste-sorting-champion
+        take-action
+        flip;
 
     $backgrounds:
         title
@@ -59,7 +71,19 @@ button {
         everyday
         everyday
         cards
-        cards;
+        cards
+        cards
+        cards
+        cards
+        bkg-2
+        bkg-1
+        bkg-1
+        bkg-3
+        bkg-3
+        bkg-3
+        bkg-3
+        bkg-3
+        everyday;
 
     @include screen-backgrounds($screens, $backgrounds);
 
@@ -68,6 +92,13 @@ button {
         @for $i from 1 through length($sprite-backgrounds) {
             &.#{nth($sprite-backgrounds, $i)} {
                 @include sprite-background($i);
+            }
+        }
+
+        @for $i from 1 through 3 {
+            &.bkg-#{$i} {
+                @include background($image + 'BKG.#{$i}.jpg');
+                background-size: cover;
             }
         }
     }
