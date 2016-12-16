@@ -56,6 +56,10 @@
     height: 250px;
 }
 
+@mixin sprite-level($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.2.png', 2050px, 78px, 5, 1, $column, 1, 1, $width, $height);
+}
+
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;

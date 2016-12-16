@@ -167,4 +167,51 @@
             }
         }
     }
+
+    .reveal {
+        @include reveal;
+
+        &.open-intro,
+        &.open-complete {
+            background-color: $transparent-white;
+
+            p {
+                font-size: 40px;
+            }
+        }
+
+        p {
+            line-height: 1.2;
+        }
+
+        .intro {
+            .content {
+                &::after,
+                &::before {
+                    display: block;
+                    margin: 0 auto 30px;
+                    content: '';
+                }
+
+                &::before {
+                    width: 410px;
+                    height: 78px;
+                }
+            }
+        }
+    }
+
+    @for $i from 1 through 5 {
+        &#phaser-level-#{$i} {
+            .reveal {
+                .intro {
+                    .content {
+                        &::before {
+                            @include sprite-level($i);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

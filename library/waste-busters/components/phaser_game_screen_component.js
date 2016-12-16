@@ -9,6 +9,8 @@ export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
     var getGameSrc;
+    var onOpenReveal;
+    var onCloseReveal;
     var onRespond;
     var onTimerComplete;
 
@@ -50,6 +52,44 @@ export default function (props, ref, key, opts = {}) {
     getGameSrc = function () {
         if (!_.get(props, 'data.game.screenStart')) return;
         return `../waste-busters-phaser/index.html?v=${opts.level}`;
+    };
+
+    onOpenReveal = function () {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: true,
+                start: false,
+            },
+        });
+    };
+
+    onCloseReveal = function (prevMessage) {
+        this.updateGameState({
+            path: 'game',
+            data: {
+                stop: false,
+                start: true,
+            },
+        });
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                close: false,
+                open: null,
+            }
+        });
+        this.updateGameState({
+            path: 'score',
+            data: {
+                correct: 0,
+                incorrect: 0,
+            }
+        });
+
+        if (prevMessage === 'completed') {
+            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+        }
     };
 
     onRespond = function (options) {
@@ -168,6 +208,72 @@ export default function (props, ref, key, opts = {}) {
                     <DPad />
                 </skoash.Component>
             </skoash.Component>
+            <skoash.Reveal
+                openOnStart="intro"
+                openTarget="reveal"
+                openReveal={_.get(props, 'data.reveal.open', false)}
+                closeReveal={_.get(props, 'data.reveal.close', false)}
+                onClose={onCloseReveal}
+                onOpen={onOpenReveal}
+                list={[
+                    <skoash.Component
+                        ref="intro"
+                        className="intro frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.introContent}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-1"
+                        className="fact-1 frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.fact1Content}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-2"
+                        className="fact-2 frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.fact2Content}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-3"
+                        className="fact-3 frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.fact3Content}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="complete"
+                        className="complete frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.completeContent}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="replay"
+                        className="replay frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            You have not won this level,<br/>
+                            but don't worry—<br/>
+                            you have another chance!
+                        </div>
+                    </skoash.Component>,
+                ]}
+            />
         </skoash.Screen>
     );
 }
