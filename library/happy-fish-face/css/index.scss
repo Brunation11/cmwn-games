@@ -42,7 +42,7 @@ body > div > div {
   height: 540px;
   margin: auto;
   font-size: 20px;
-  background: url($media-server-game + 'ImageAssets/BKG_1.png') bottom center no-repeat;
+  background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
   background-size: cover;
 
 
@@ -58,7 +58,7 @@ body > div > div {
     background-position: center center;
 
     &.garbage {
-      background-image: url($media-server-game + 'ImageAssets/BKG_2.png');
+      background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
     }
   }
 
