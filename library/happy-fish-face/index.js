@@ -18,21 +18,23 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 ENVIRONMENT.MEDIA_GAME = ENVIRONMENT.MEDIA + 'Games/HappyFishFace/';
 
+// TODO: need BKG3 audio on media server AIM 12/15/16
+
 var HappyFishFace = (
     <skoash.Game
         config={config}
         screens={{
             0: iOSScreen,
             1: TitleScreen,
-            //2: YouFeelScreen,
-            //3: WaterPollutionScreen,
-            //4: HealthyWaterScreen,
-            //5: CleanWaterScreen,
-            //6: BubbleUpScreen,
-            //7: MultiBubblesScreen,
-            //8: PollutesWaterScreen,
-            //9: TrashScreen,
-            2: FlipScreen,
+            2: YouFeelScreen,
+            3: WaterPollutionScreen,
+            4: HealthyWaterScreen,
+            5: CleanWaterScreen,
+            6: BubbleUpScreen,
+            7: MultiBubblesScreen,
+            8: PollutesWaterScreen,
+            9: TrashScreen,
+            10: FlipScreen,
         }}
         menus={{
             quit: QuitScreen,
@@ -45,17 +47,42 @@ var HappyFishFace = (
         }}
         loader={<Loader />}
         assets={[
-            <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />,
-            <skoash.Audio ref="bkg-2" type="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" loop />,
-            <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/HFF_SX_BKG_3.mp3" loop />,
-            <skoash.Audio ref="button" type="sfx" src="media/_audio/_buttons/HFF_SX_BU1.mp3" />,
-            <skoash.Audio ref="screen-complete" type="sfx" src="media/_audio/_buttons/HFF_SX_BU2.mp3" />,
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG1.mp3`} loop
+            />,
+            <skoash.Audio
+                ref="bkg-2"
+                type="background"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG2.mp3`} loop
+            />,
+            <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" loop />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/NextClick.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/NextAppear.mp3`}
+            />,
             <skoash.Image
                 ref="multibubbles-hidden"
                 className="hidden"
-                src="media/_images/_S_MultiBubbles/img_7.3.png"
+                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/IMG_7.1.png`}
             />,
-            <skoash.Image ref="trash-hidden" className="hidden" src="media/_images/_S_Trash/img_9.2.png" />,
+            <skoash.Image
+                ref="pollutants-hidden"
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/sprite.pollutant.png`}
+            />,
+            <skoash.Image
+                ref="nonpollutants-hidden"
+                className="hidden"
+                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/sprite.nonpollutant.png`}
+            />,
             <div className="background garbage"></div>,
         ]}
         getClassNames={function () {
