@@ -27,6 +27,8 @@
 
 @mixin sprite-turtle($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'game1.4.png', 700px, 340px, 2, 1, $column, 1, 1, $width, $height);
+    width: 340px;
+    height: 330px;
 }
 
 @mixin sprite-question($column, $width: 0, $height: 0) {
@@ -54,6 +56,12 @@
     position: absolute;
     width: 360px;
     height: 250px;
+}
+
+@mixin sprite-fact($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game1.3.png', 1335px, 145px, 3, 1, $column, 1, 1, $width, $height);
+    width: 445px;
+    height: 145px;
 }
 
 @mixin sprite-level($column, $width: 0, $height: 0) {

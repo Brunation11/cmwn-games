@@ -11,6 +11,16 @@ export default function (props, ref, key) {
                 to responsibly<br/>
                 deal with waste!
             </p>
-        )
+        ),
+        fact1Content: (
+            <p>
+                <h4>
+                    Use Less Paper
+                </h4>
+                Tip: Tear off one paper<br/>
+                towel sheet at a time<br/>
+                to wipe up spills.
+            </p>
+        ),
     });
 }

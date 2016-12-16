@@ -184,6 +184,34 @@
             line-height: 1.2;
         }
 
+        li {
+            &::after {
+                display: block;
+                position: absolute;
+                bottom: -30px;
+                left: -180px;
+                content: '';
+            }
+        }
+
+        .close-reveal {
+            right: 200px;
+            bottom: 90px;
+            pointer-events: none;
+
+            .skoash-game:not(.VOICE-OVER) & {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        .intro,
+        .complete {
+            &::after {
+                @include sprite-turtle(1);
+            }
+        }
+
         .intro {
             .content {
                 &::after,
@@ -196,6 +224,36 @@
                 &::before {
                     width: 410px;
                     height: 78px;
+                }
+            }
+        }
+
+        @for $i from 1 through 3 {
+            .fact-#{$i} {
+                .title,
+                .banner {
+                    @include center;
+                    display: block;
+                    position: absolute;
+                    top: 14%;
+                }
+
+                .title {
+                    @include sprite-fact($i);
+                    left: 48%;
+                }
+
+                .banner {
+                    @include background($image + 'banner.png');
+                    left: 52%;
+                    width: 610px;
+                    height: 200px;
+                }
+
+                h4 {
+                    font-weight: bold;
+                    font-size: 36px;
+                    margin: 60px 0 30px;
                 }
             }
         }

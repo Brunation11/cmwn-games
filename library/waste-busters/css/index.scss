@@ -21,7 +21,8 @@ button {
     }
 
     &.next-screen,
-    &.prev-screen {
+    &.prev-screen,
+    &.close-reveal {
         display: block;
         position: absolute;
         bottom: 10px;
@@ -31,7 +32,8 @@ button {
         height: 65px;
     }
 
-    &.next-screen {
+    &.next-screen,
+    &.close-reveal {
         @include nav-button(3, 90px, 65px);
         right: 15px;
         opacity: 0;

@@ -230,6 +230,8 @@ export default function (props, ref, key, opts = {}) {
                         className="fact-1 frame square"
                         type="li"
                     >
+                        <div className="banner" />
+                        <div className="title" />
                         <div className="content">
                             {opts.fact1Content}
                         </div>
@@ -239,6 +241,8 @@ export default function (props, ref, key, opts = {}) {
                         className="fact-2 frame square"
                         type="li"
                     >
+                        <div className="banner" />
+                        <div className="title" />
                         <div className="content">
                             {opts.fact2Content}
                         </div>
@@ -248,6 +252,8 @@ export default function (props, ref, key, opts = {}) {
                         className="fact-3 frame square"
                         type="li"
                     >
+                        <div className="banner" />
+                        <div className="title" />
                         <div className="content">
                             {opts.fact3Content}
                         </div>
