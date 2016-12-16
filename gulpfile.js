@@ -182,8 +182,9 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:head -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var title = config.title || _.startCase(config.id);
-                    return `<title>${title}</title>`;
+                    var injection = `<title>${config.title || _.startCase(config.id)}</title>`;
+                    injection += config.head_injection || '';
+                    return injection;
                 }
             }))
             .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {

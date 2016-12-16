@@ -6,6 +6,7 @@
 
 html {
     color: $text-color;
+    font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 button {
@@ -23,7 +24,7 @@ button {
     &.prev-screen {
         display: block;
         position: absolute;
-        bottom: 30px;
+        bottom: 10px;
         z-index: 2;
         margin: 0;
         width: 90px;
@@ -104,8 +105,13 @@ button {
     }
 }
 
+@for $i from 1 through 2 {
+    .frame-#{$i} {
+        @include sprite-frame($i);
+    }
+}
+
 .frame-1 {
-    @include sprite-frame(1);
     margin: -10px 0 0 50px;
 
     p {
@@ -117,13 +123,55 @@ button {
     }
 }
 
-.frame-2 {
-    @include sprite-frame(2);
-}
-
 @for $i from 1 through 3 {
     .intro-image-#{$i} {
         @include sprite-intro($i);
     }
+}
+
+.frame {
+    @include center;
+
+    &.square {
+        @include background($image + 'frame.square.png');
+        width: 660px;
+        height: 440px;
+        color: $black;
+    }
+
+    .content {
+        @include center;
+        width: 85%;
+    }
+
+    h3 {
+        margin-bottom: 30px;
+        font-size: 56px;
+    }
+
+    p {
+        font-size: 32px;
+    }
+}
+
+.tree-1,
+.tree-2,
+.tree-3,
+.tree-4 {
+    position: absolute;
+    width: 280px;
+    height: 460px;
+}
+
+.tree-1 {
+    @include sprite-game-tree(1);
+    top: 10px;
+    left: -120px;
+}
+
+.tree-2 {
+    @include sprite-game-tree(2);
+    top: 120px;
+    right: -10px;
 }
 
