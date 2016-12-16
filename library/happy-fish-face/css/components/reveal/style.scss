@@ -2,7 +2,7 @@
   opacity: 0;
   height: 400px;
   width: 620px;
-  background-image: url(../media/_images/_frames/FR_2.png);
+  background-image: url($media-server-game + 'ImageAssets/frame.2.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
