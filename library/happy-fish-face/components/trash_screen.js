@@ -46,6 +46,7 @@ export default function (props, ref, key) {
             },
             callback: cb
         });
+
     };
 
     var timerAction = function (action, nextAction) {
@@ -62,25 +63,35 @@ export default function (props, ref, key) {
 
     var selectableComplete = function () {
         openReveal.call(this, GOOD_JOB, timerAction.bind(this, 'stop', 'complete'));
+
     };
 
     var timerComplete = function () {
-        return;
         if (_.get(props, 'data.reveal.open', '') === GOOD_JOB) return;
 
         openReveal.call(this, TRY_AGAIN);
     };
 
     var revealClose = function (ref) {
-        openReveal.call(this, null);
+        var self = this;
+
+        openReveal.call(self, null);
 
         if (ref === TRY_AGAIN) { 
-            timerAction.call(this, 'restart');
-            this.updateGameState({
+            timerAction.call(self, 'restart');
+            self.updateGameState({
                 path: 'selectable',
                 data: {
                     incompleteRefs: true
-                }
+                },
+                callback: () => {
+                    self.updateGameState({
+                        path: 'selectable',
+                        data: {
+                            incompleteRefs: false
+                        }
+                    });
+                },
             });
         }
     };
@@ -156,7 +167,7 @@ export default function (props, ref, key) {
                         ref="timer"
                         countDown={true}
                         action={_.get(props, 'data.timer.action', null)}
-                        timeout={90000}
+                        timeout={3000}
                         leadingContent={<skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`} />}
                         onComplete={timerComplete}
                     />
@@ -189,19 +200,19 @@ export default function (props, ref, key) {
                             <skoash.ListItem data-ref="octopus" />,
                             <skoash.ListItem data-ref="shell1" />,
                             <skoash.ListItem data-ref="fish1" />,
-                            <skoash.ListItem data-ref="fish1" className="duplicate"/>,
+                            <skoash.ListItem data-ref="fish1" className="duplicate" />,
                             <skoash.ListItem data-ref="seahorse" />,
                             <skoash.ListItem data-ref="turtle" />,
                             <skoash.ListItem data-ref="fish2" />,
                             <skoash.ListItem data-ref="fish3" />,
-                            <skoash.ListItem data-ref="fish3" className="duplicate"/>,
+                            <skoash.ListItem data-ref="fish3" className="duplicate" />,
                             <skoash.ListItem data-ref="jellyfish" />,
-                            <skoash.ListItem data-ref="jellyfish" className="duplicate"/>,
+                            <skoash.ListItem data-ref="jellyfish" className="duplicate" />,
                             <skoash.ListItem data-ref="fish4" />,
                             <skoash.ListItem data-ref="lobster" />,
                             <skoash.ListItem data-ref="shell2" />,
                             <skoash.ListItem data-ref="fish5" />,
-                            <skoash.ListItem data-ref="fish5" className="duplicate"/>,
+                            <skoash.ListItem data-ref="fish5" className="duplicate" />,
                             <skoash.ListItem data-ref="starfish" />,
                         ]}
                     />
