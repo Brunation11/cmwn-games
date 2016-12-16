@@ -167,7 +167,7 @@ export default function (props, ref, key) {
                         ref="timer"
                         countDown={true}
                         action={_.get(props, 'data.timer.action', null)}
-                        timeout={3000}
+                        timeout={90000}
                         leadingContent={<skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`} />}
                         onComplete={timerComplete}
                     />

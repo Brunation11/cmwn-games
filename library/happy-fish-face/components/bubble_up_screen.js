@@ -10,7 +10,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="vo-1"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/BubbleUp.mp3`}
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/BubbleUP.mp3`}
                 />
                 <skoash.Audio
                     ref="vo-2"

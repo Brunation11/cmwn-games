@@ -62,9 +62,9 @@ export default function (props, ref, key) {
                             onSelect={playAudio}
                             chooseOne
                             list={[
-                                <skoash.ListItem className="animated img-0" />,
-                                <skoash.ListItem className="animated img-1" />,
-                                <skoash.ListItem className="animated img-2" />,
+                                <skoash.ListItem select className="animated img-0" />,
+                                <skoash.ListItem select className="animated img-1" />,
+                                <skoash.ListItem select className="animated img-2" />,
                             ]}
                         />
                     </skoash.Component>

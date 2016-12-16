@@ -47,17 +47,17 @@ var HappyFishFace = (
         }}
         loader={<Loader />}
         assets={[
+            <skoash.Audio ref="bkg-1" type="background" src="media/_audio/_BKG/HFF_SX_BKG_1.mp3" loop />,
             <skoash.Audio
-                ref="bkg-1"
+                ref="bkg-2"
                 type="background"
                 src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG1.mp3`} loop
             />,
             <skoash.Audio
-                ref="bkg-2"
+                ref="bkg-3"
                 type="background"
                 src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BKG2.mp3`} loop
             />,
-            <skoash.Audio ref="bkg-3" type="background" src="media/_audio/_BKG/HFF_SX_BKG_2.mp3" loop />,
             <skoash.Audio
                 ref="button"
                 type="sfx"
