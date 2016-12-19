@@ -3,7 +3,7 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Score from 'shared/components/score/0.1';
 import Timer from 'shared/components/timer/0.1';
 
-import Dropper from 'shared/components/dropper/0.1';
+import Dropper from 'shared/components/dropper/0.2';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.1';
 import Catchable from 'shared/components/catchable/0.1';
@@ -14,7 +14,6 @@ export default function (props, ref, key, opts = {}) {
     var onOpenReveal;
     var onCloseReveal;
     var onScoreComplete;
-    var getTime;
     var onTimerComplete;
     var onAddClassName;
     var onTransitionEnd;
@@ -76,18 +75,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -241,7 +228,6 @@ export default function (props, ref, key, opts = {}) {
                 <Timer
                     countDown
                     timeout={opts.timeout}
-                    getTime={getTime}
                     stop={_.get(props, 'data.game.complete', false)}
                     complete={_.get(props, 'data.game.complete', false)}
                     checkComplete={_.get(props, 'data.game.start', false)}
