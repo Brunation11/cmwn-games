@@ -174,10 +174,6 @@
         &.open-intro,
         &.open-complete {
             background-color: $transparent-white;
-
-            p {
-                font-size: 40px;
-            }
         }
 
         p {
@@ -226,6 +222,20 @@
                     height: 78px;
                 }
             }
+
+            p {
+                font-size: 40px;
+            }
+        }
+
+        .complete {
+            .content {
+                top: 60%;
+            }
+
+            p {
+                font-size: 32px;
+            }
         }
 
         @for $i from 1 through 3 {
@@ -267,6 +277,13 @@
                         &::before {
                             @include sprite-level($i);
                         }
+                    }
+                }
+
+                .complete {
+                    &::before {
+                        @include sprite-level-complete($i);
+                        content: '';
                     }
                 }
             }

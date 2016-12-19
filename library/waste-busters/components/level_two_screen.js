@@ -3,6 +3,10 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 2,
+        introVO: '',
+        fact1VO: '',
+        fact2VO: '',
+        fact3VO: '',
         introContent: (
             <p>
                 In this level,<br/>
@@ -16,7 +20,8 @@ export default function (props, ref, key) {
                 Excellent Work!<br/>
                 Reusing certain items is one of<br/>
                 the best ways to reduce<br/>
-                waste—and it saves you money too!
+                waste—and it saves<br/>
+                you money too!
             </p>
         ),
         fact1Content: (

@@ -55,23 +55,14 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onOpenReveal = function () {
-        this.updateGameState({
-            path: ['game'],
-            data: {
-                levels: {
-                    [opts.level]: {
-                        start: false,
-                    }
-                }
-            },
-        });
-
-        this.updateGameState({
-            path: 'd-pad',
-            data: {
-                pause: true
-            },
-        });
+        setTimeout(() => {
+            this.updateGameState({
+                path: 'd-pad',
+                data: {
+                    pause: true
+                },
+            });
+        }, 1000);
     };
 
     onCloseReveal = function (prevMessage) {
@@ -101,13 +92,14 @@ export default function (props, ref, key, opts = {}) {
             },
         });
 
-        if (prevMessage === 'completed') {
+        if (prevMessage === 'complete') {
             skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
         }
     };
 
     onRespond = function (options) {
         var trucks = _.get(props, `gameState.data.game.levels.${opts.level}.trucks`);
+        var complete = _.get(props, `gameState.data.game.levels.${opts.level}.complete`);
 
         if (_.get(options, 'updateGameState.data.game.lives') === 0) {
             startScreen.call(this, false);
@@ -140,7 +132,17 @@ export default function (props, ref, key, opts = {}) {
             });
         }
 
-        if (trucks && _.get(props, 'data.reveal.wasOpened') !== 'fact-' + trucks) {
+        if (complete && _.get(props, 'data.reveal.wasOpened') !== 'complete') {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'complete',
+                    wasOpened: 'complete',
+                }
+            });
+        }
+
+        if (!complete && trucks && _.get(props, 'data.reveal.wasOpened') !== 'fact-' + trucks) {
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -202,6 +204,7 @@ export default function (props, ref, key, opts = {}) {
                 stop={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
+                restart={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
             />
             <skoash.Component
                 className="bottom"
@@ -323,6 +326,40 @@ export default function (props, ref, key, opts = {}) {
                     </skoash.Component>,
                 ]}
             />
+            <skoash.MediaCollection
+                play={_.get(props, 'data.reveal.open')}
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="intro"
+                    src={`${MEDIA.VO}${opts.introVO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="complete"
+                    src={`${MEDIA.VO}Level_${opts.level}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-1"
+                    src={`${MEDIA.VO}${opts.fact1VO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-2"
+                    src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-3"
+                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="replay"
+                    src={`${MEDIA.VO}Another_Chance.mp3`}
+                />
+            </skoash.MediaCollection>
         </skoash.Screen>
     );
 }
