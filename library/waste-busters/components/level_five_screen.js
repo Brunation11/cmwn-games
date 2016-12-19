@@ -3,6 +3,10 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 5,
+        introVO: 'AlmostThere',
+        fact1VO: 'Bulk',
+        fact2VO: 'Bottled_Water',
+        fact3VO: 'Boxes',
         introContent: (
             <p>
                 You're almost there! Keep<br/>

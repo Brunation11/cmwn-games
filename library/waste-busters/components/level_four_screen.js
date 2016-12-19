@@ -3,6 +3,10 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 4,
+        introVO: 'And_The_World',
+        fact1VO: 'BothSides',
+        fact2VO: 'Container',
+        fact3VO: 'Electronics',
         introContent: (
             <p>
                 By collecting the <span className="truck" /><br/>

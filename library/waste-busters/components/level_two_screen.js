@@ -3,10 +3,10 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 2,
-        introVO: '',
-        fact1VO: '',
-        fact2VO: '',
-        fact3VO: '',
+        introVO: 'landfill',
+        fact1VO: 'Portions',
+        fact2VO: 'Reusable_Bags',
+        fact3VO: 'Rules',
         introContent: (
             <p>
                 In this level,<br/>
