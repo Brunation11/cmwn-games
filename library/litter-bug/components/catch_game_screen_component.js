@@ -14,7 +14,6 @@ export default function (props, ref, key, opts = {}) {
     var onOpenReveal;
     var onCloseReveal;
     var onScoreComplete;
-    var getTime;
     var onTimerComplete;
     var onAddClassName;
     var onTransitionEnd;
@@ -76,18 +75,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -187,14 +174,14 @@ export default function (props, ref, key, opts = {}) {
     for (let i = 0; i < opts.bin.length; i++) {
         for (let j = 0; j < opts.rows; j++) {
             bin.push(
-        <Catchable
-          className={opts.bin[i].className}
-          message={opts.bin[i].message}
-          style={{
-              top: 400 * (j + .4) / opts.rows,
-          }}
-        />
-      );
+                <Catchable
+                    className={opts.bin[i].className}
+                    message={opts.bin[i].message}
+                    style={{
+                        top: 400 * (j + .4) / opts.rows,
+                    }}
+                />
+          );
         }
     }
 
@@ -241,7 +228,6 @@ export default function (props, ref, key, opts = {}) {
                 <Timer
                     countDown
                     timeout={opts.timeout}
-                    getTime={getTime}
                     stop={_.get(props, 'data.game.complete', false)}
                     complete={_.get(props, 'data.game.complete', false)}
                     checkComplete={_.get(props, 'data.game.start', false)}
@@ -285,12 +271,12 @@ export default function (props, ref, key, opts = {}) {
                     onIncorrect={onIncorrectCatch}
                     assets={[
                         <skoash.Audio
-                            type="voiceOver"
+                            type="sfx"
                             ref="correct"
                             src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
                         />,
                         <skoash.Audio
-                            type="voiceOver"
+                            type="sfx"
                             ref="incorrect"
                             src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
                         />,

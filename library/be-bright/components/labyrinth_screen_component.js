@@ -13,7 +13,6 @@ export default function (props, ref, key, opts = {}) {
     var onLabyrinthStart;
     var onLabyrinthStop;
     var onLabyrinthComplete;
-    var getTime;
     var onTimerComplete;
     var onOpenReveal;
     var onCloseReveal;
@@ -89,17 +88,6 @@ export default function (props, ref, key, opts = {}) {
                 complete: true,
             },
         });
-    };
-
-    getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     onTimerComplete = function () {
@@ -257,7 +245,6 @@ export default function (props, ref, key, opts = {}) {
                     countDown
                     timeout={60000}
                     leadingContent="TIME LEFT"
-                    getTime={getTime}
                     onComplete={onTimerComplete}
                     checkComplete={_.get(props, 'data.game.start', false)}
                     restart={_.get(props, 'data.game.start', false)}

@@ -13,18 +13,6 @@ const CONFIG = {
 };
 
 export default function (props, ref, key) {
-    var getTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
-    };
-
     return (
         <skoash.Screen
             {...props}
@@ -295,7 +283,6 @@ export default function (props, ref, key) {
                         ref="timer"
                         countDown={true}
                         timeout={CONFIG.TIMER}
-                        getTime={getTime}
                         stop={_.get(props, 'data.game.complete', false)}
                         complete={_.get(props, 'data.game.complete', false)}
                         checkComplete={_.get(props, 'data.game.start', false)}
