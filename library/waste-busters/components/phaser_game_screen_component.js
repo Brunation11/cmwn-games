@@ -56,22 +56,18 @@ export default function (props, ref, key, opts = {}) {
 
     onOpenReveal = function () {
         this.updateGameState({
-            path: 'game',
+            path: ['game'],
             data: {
-                stop: true,
-                start: false,
+                levels: {
+                    [opts.level]: {
+                        start: false,
+                    }
+                }
             },
         });
     };
 
     onCloseReveal = function (prevMessage) {
-        this.updateGameState({
-            path: 'game',
-            data: {
-                stop: false,
-                start: true,
-            },
-        });
         this.updateGameState({
             path: 'reveal',
             data: {
@@ -79,12 +75,16 @@ export default function (props, ref, key, opts = {}) {
                 open: null,
             }
         });
+
         this.updateGameState({
-            path: 'score',
+            path: ['game'],
             data: {
-                correct: 0,
-                incorrect: 0,
-            }
+                levels: {
+                    [opts.level]: {
+                        start: true,
+                    }
+                }
+            },
         });
 
         if (prevMessage === 'completed') {
@@ -273,9 +273,11 @@ export default function (props, ref, key, opts = {}) {
                         type="li"
                     >
                         <div className="content">
-                            You have not won this level,<br/>
-                            but don't worry—<br/>
-                            you have another chance!
+                            <p>
+                                You have not won this level,<br/>
+                                but don't worry—<br/>
+                                you have another chance!
+                            </p>
                         </div>
                     </skoash.Component>,
                 ]}
