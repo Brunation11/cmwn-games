@@ -78,8 +78,9 @@ class Timer extends skoash.Component {
         });
     }
 
-    resume() {
-        if (!this.state.paused) return;
+    resume(props = {}) {
+        props = _.defaults(props, this.props);
+        if (props.pause || !this.state.paused) return;
         this.setState({
             paused: false
         }, () => {
@@ -99,11 +100,11 @@ class Timer extends skoash.Component {
         }
 
         if (props.pause && props.pause !== this.props.pause) {
-            this.pause();
+            this.pause(props);
         }
 
         if (props.resume && props.resume !== this.props.resume) {
-            this.resume();
+            this.resume(props);
         }
     }
 

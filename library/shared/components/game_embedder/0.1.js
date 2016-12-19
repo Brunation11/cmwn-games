@@ -42,6 +42,7 @@ class GameEmbedder extends skoash.Component {
     }
 
     resume() {
+        if (this.props.pause) return;
         super.resume();
         this.emitEvent({ name: 'resume' });
     }

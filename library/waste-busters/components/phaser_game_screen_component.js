@@ -168,6 +168,7 @@ export default function (props, ref, key, opts = {}) {
                 controller={_.get(props, 'data.d-pad')}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 data={_.get(props, 'gameState.data.game', {})}
+                pause={_.get(props, 'data.d-pad.pause')}
                 onRespond={onRespond}
             />
             <Timer
