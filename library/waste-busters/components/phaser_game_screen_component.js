@@ -65,6 +65,13 @@ export default function (props, ref, key, opts = {}) {
                 }
             },
         });
+
+        this.updateGameState({
+            path: 'd-pad',
+            data: {
+                pause: true
+            },
+        });
     };
 
     onCloseReveal = function (prevMessage) {
@@ -100,6 +107,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onRespond = function (options) {
+        var trucks = _.get(props, `gameState.data.game.levels.${opts.level}.trucks`);
+
         if (_.get(options, 'updateGameState.data.game.lives') === 0) {
             startScreen.call(this, false);
 
@@ -128,6 +137,16 @@ export default function (props, ref, key, opts = {}) {
                 data: {
                     pause: true
                 },
+            });
+        }
+
+        if (trucks && _.get(props, 'data.reveal.wasOpened') !== 'fact-' + trucks) {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'fact-' + trucks,
+                    wasOpened: 'fact-' + trucks,
+                }
             });
         }
     };
@@ -183,7 +202,6 @@ export default function (props, ref, key, opts = {}) {
                 stop={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
-                restart={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}
             />
             <skoash.Component
                 className="bottom"
