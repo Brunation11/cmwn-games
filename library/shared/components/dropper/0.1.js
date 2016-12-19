@@ -23,7 +23,7 @@ class Dropper extends Draggable {
     next(on) {
         var items;
         var index;
-        var classes;
+        var classes = this.state.classes;
 
         if (!this.state.started || (!this.props.on && !on) || this.props.gameState.paused) return;
 
@@ -144,7 +144,7 @@ class Dropper extends Draggable {
                 <item.type
                     {...item.props}
                     style={this.getItemStyle(key, item.props.style)}
-                    className={`${item.props.className} ${this.state.classes[key]}`}
+                    className={`${item.props.className} ${this.state.classes ? this.state.classes[key] : ''}`}
                     data-ref={ref}
                     data-message={item.props.message}
                     ref={ref}

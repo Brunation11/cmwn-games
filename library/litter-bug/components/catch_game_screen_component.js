@@ -3,7 +3,7 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import Score from 'shared/components/score/0.1';
 import Timer from 'shared/components/timer/0.1';
 
-import Dropper from 'shared/components/dropper/0.2';
+import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catcher from 'shared/components/catcher/0.1';
 import Catchable from 'shared/components/catchable/0.1';
@@ -174,14 +174,14 @@ export default function (props, ref, key, opts = {}) {
     for (let i = 0; i < opts.bin.length; i++) {
         for (let j = 0; j < opts.rows; j++) {
             bin.push(
-        <Catchable
-          className={opts.bin[i].className}
-          message={opts.bin[i].message}
-          style={{
-              top: 400 * (j + .4) / opts.rows,
-          }}
-        />
-      );
+                <Catchable
+                    className={opts.bin[i].className}
+                    message={opts.bin[i].message}
+                    style={{
+                        top: 400 * (j + .4) / opts.rows,
+                    }}
+                />
+          );
         }
     }
 
@@ -271,12 +271,12 @@ export default function (props, ref, key, opts = {}) {
                     onIncorrect={onIncorrectCatch}
                     assets={[
                         <skoash.Audio
-                            type="voiceOver"
+                            type="sfx"
                             ref="correct"
                             src={'media/_assets/_sounds/_effects/WinPoints.mp3'}
                         />,
                         <skoash.Audio
-                            type="voiceOver"
+                            type="sfx"
                             ref="incorrect"
                             src={'media/_assets/_sounds/_effects/LosePoints.mp3'}
                         />,
