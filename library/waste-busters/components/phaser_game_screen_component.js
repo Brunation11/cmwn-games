@@ -77,6 +77,13 @@ export default function (props, ref, key, opts = {}) {
         });
 
         this.updateGameState({
+            path: 'd-pad',
+            data: {
+                pause: false
+            },
+        });
+
+        this.updateGameState({
             path: ['game'],
             data: {
                 levels: {
@@ -112,6 +119,16 @@ export default function (props, ref, key, opts = {}) {
             setTimeout(() => {
                 startScreen.call(this);
             }, 0);
+        }
+
+        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.start`) &&
+            _.get(props, 'data.reveal.open', false)) {
+            this.updateGameState({
+                path: 'd-pad',
+                data: {
+                    pause: true
+                },
+            });
         }
     };
 
@@ -157,6 +174,11 @@ export default function (props, ref, key, opts = {}) {
                 countDown
                 timeout={120000}
                 onComplete={onTimerComplete}
+                pause={
+                    _.get(props, `gameState.data.game.levels.${opts.level}.start`, false) &&
+                    _.get(props, 'data.reveal.open', false)
+                }
+                resume={!_.get(props, 'data.reveal.open', false)}
                 stop={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 checkComplete={_.get(props, `gameState.data.game.levels.${opts.level}.start`, false)}

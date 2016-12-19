@@ -32,6 +32,8 @@ export default function () {
     [this.doors, this.ground, this.helpers.stay],
     ]);
 
+    if (this.controller.pause) return;
+
     addResponses.call(this, 'overlap', [
     [this.player, this.bags, this.helpers.collectBags],
     [this.player, this.hearts, this.helpers.collectHeart],

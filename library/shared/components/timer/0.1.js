@@ -97,6 +97,14 @@ class Timer extends skoash.Component {
         if (props.restart && props.restart !== this.props.restart) {
             this.restart();
         }
+
+        if (props.pause && props.pause !== this.props.pause) {
+            this.pause();
+        }
+
+        if (props.resume && props.resume !== this.props.resume) {
+            this.resume();
+        }
     }
 
     getClassNames() {
