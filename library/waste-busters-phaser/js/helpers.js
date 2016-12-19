@@ -22,7 +22,7 @@ export default {
         var climb;
 
         if (!snake.active && !snake.climbing) {
-            snake.left = hole.left - 100;
+            snake.left = hole.left - 50;
             snake.loadTexture(snake.originalImage + 'up', 0);
             climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
             climb.onComplete.add(() => {
@@ -38,7 +38,7 @@ export default {
                     snake.climbing = false;
                 }, 5000);
             });
-            snake.scale.setTo(.4, .4);
+            snake.scale.setTo(.25, .25);
             snake.animations.play('hole');
             snake.active = true;
             snake.climbing = true;

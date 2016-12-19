@@ -51,6 +51,14 @@ export default function () {
     ['snake2down', MEDIA.SPRITE + 'brother.down.hole.png', 475, 250],
     ]);
 
+    // loadAssets.call(this, 'atlas', [
+    //     [
+    //         'snake2up',
+    //         './media/SnakeNoHolePhaserArray.png',
+    //         './media/SnakeNoHolePhaserArray.json'
+    //     ],
+    // ]);
+
     loadAssets.call(this, 'audio', [
     ]);
 }
