@@ -13,7 +13,6 @@ export default function (props, ref, key, opts = {}) {
     var bin = [];
     var SFXOnPlay;
     var scoreOnComplete;
-    var timerGetTime;
     var timerOnComplete;
     var timerOnCheckComplete;
     var revealPromptOnOpen;
@@ -65,18 +64,6 @@ export default function (props, ref, key, opts = {}) {
                 open: 'try-again'
             }
         });
-    };
-
-    timerGetTime = function () {
-        var timeLeft;
-        var minutesLeft;
-        var secondsLeft;
-        timeLeft = this.props.timeout / 1000 - this.state.time;
-        minutesLeft = Math.floor(timeLeft / 60);
-        minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-        secondsLeft = timeLeft % 60;
-        secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-        return `${minutesLeft}:${secondsLeft}`;
     };
 
     timerOnComplete = function () {
@@ -365,7 +352,6 @@ export default function (props, ref, key, opts = {}) {
                 ref="timer"
                 countDown={true}
                 timeout={opts.timeout}
-                getTime={timerGetTime}
                 stop={_.get(props, 'data.game.complete', false)}
                 complete={_.get(props, 'data.game.complete', false)}
                 checkComplete={_.get(props, 'data.game.start', false)}
