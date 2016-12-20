@@ -6,6 +6,20 @@ export default function (props, ref, key) {
             key={key}
             id="neighborhood-waste"
         >
+            <skoash.Audio
+                type="voiceOver"
+                src={MEDIA.VO + 'compost.mp3'}
+            />
+            <div className="tree-3" />
+            <div className="tree-4" />
+            <skoash.Image
+                className="turtle"
+                src={MEDIA.IMAGE + 'main.turtle.png'}
+            />
+            <skoash.Image
+                className="hidden"
+                src={MEDIA.SPRITE + 'cards.4.png'}
+            />
             <div className="frame round">
                 <div className="content">
                     Now that the<br/>

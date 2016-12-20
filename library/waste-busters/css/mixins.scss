@@ -51,6 +51,10 @@
     @include sprite($sprite + 'game1.intro.trees.png', 565px, 460px, 2, 1, $column, 1, 1, $width, $height);
 }
 
+@mixin sprite-types-tree($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'cards.4.png', 565px, 460px, 2, 1, $column, 1, 1, $width, $height);
+}
+
 @mixin sprite-game-intro($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'game1.9.png', 720px, 263px, 2, 1, $column, 1, 1, $width, $height);
     position: absolute;

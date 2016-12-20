@@ -141,6 +141,15 @@ button {
         color: $black;
     }
 
+    &.round {
+        @include background($image + 'frame.round.png');
+        left: 58%;
+        width: 660px;
+        height: 440px;
+        color: $black;
+        font-size: 40px;
+    }
+
     .content {
         @include center;
         width: 85%;
@@ -175,5 +184,19 @@ button {
     @include sprite-game-tree(2);
     top: 120px;
     right: -10px;
+}
+
+.tree-3 {
+    @include sprite-types-tree(1);
+    top: 0;
+    left: -50px;
+    z-index: 1;
+}
+
+.tree-4 {
+    @include sprite-types-tree(2);
+    top: 100px;
+    right: -70px;
+    z-index: 1;
 }
 
