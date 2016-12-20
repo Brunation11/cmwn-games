@@ -21,7 +21,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import BonusRoundScreen from './components/bonus_round_screen';
 // import NeighborhoodWasteScreen from './components/neighborhood_waste_screen';
 // import TypesOfWasteScreen from './components/types_of_waste_screen';
-import WasteSortCenterScreen from './components/waste_sort_center_screen';
+// import WasteSortCenterScreen from './components/waste_sort_center_screen';
 import SortingLevelOneScreen from './components/sorting_level_one_screen';
 import SortingLevelTwoScreen from './components/sorting_level_two_screen';
 import SortingLevelThreeScreen from './components/sorting_level_three_screen';
@@ -55,7 +55,7 @@ skoash.start(
             // BonusRoundScreen,
             // NeighborhoodWasteScreen,
             // TypesOfWasteScreen,
-            WasteSortCenterScreen,
+            // WasteSortCenterScreen,
             SortingLevelOneScreen,
             SortingLevelTwoScreen,
             SortingLevelThreeScreen,
@@ -183,9 +183,9 @@ skoash.start(
                 case 'neighborhood-waste':
                 case 'types-of-waste':
                     return 1;
-                case 'sorting-level-one':
-                case 'sorting-level-two':
-                case 'sorting-level-three':
+                case 'sorting-level-1':
+                case 'sorting-level-2':
+                case 'sorting-level-3':
                     return 4;
                 case 'waste-sorting-champion':
                     return 5;

@@ -81,6 +81,15 @@
     height: 155px;
 }
 
+@mixin sprite-sort-title($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.1.png', 2250px, 163px, 5, 1, $column, 1, 1, $width, $height);
+    @include center;
+    top: 12%;
+    left: 48%;
+    width: 450px;
+    height: 163px;
+}
+
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;

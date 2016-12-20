@@ -1,0 +1,34 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=sorting-level] {
+
+    .reveal {
+        @include reveal;
+
+        .instructions {
+            &::before,
+            &::after {
+                @include center;
+                display: block;
+                top: 14%;
+                content: '';
+            }
+
+            &::before {
+                @include background($image + 'banner.png');
+                width: 610px;
+                height: 200px;
+            }
+
+            &::after {
+                @include sprite-sort-title(1);
+            }
+
+            p {
+                margin-top: 70px;
+                font-size: 24px;
+            }
+        }
+    }
+}
