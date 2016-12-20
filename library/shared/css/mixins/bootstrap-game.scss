@@ -66,6 +66,11 @@
         color: transparent;
         font-family: inherit;
         font-size: inherit;
+
+        &.next-screen,
+        &.prev-screen {
+            transform: scale3d(1, 1, 1);
+        }
     }
 
     h2 {
@@ -150,7 +155,7 @@
     .skoash-game.DEMO .screen .next-screen,
     .screen.COMPLETE .next-screen,
     .screen.REPLAY .next-screen {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale3d(1, 1, 1);
         transition: opacity 1s, transform 1s;
         opacity: 1;
         cursor: pointer;

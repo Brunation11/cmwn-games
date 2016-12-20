@@ -9,6 +9,10 @@ html {
     font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
+.pl-game {
+    overflow: hidden;
+}
+
 button {
     &.close {
         @include nav-button(4, 40px, 45px);

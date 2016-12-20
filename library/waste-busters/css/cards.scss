@@ -1,14 +1,15 @@
 @import 'variables';
 @import 'mixins';
 
-#cards {
+#cards,
+#types-of-waste {
     .selectable {
         display: flex;
         margin-top: 50px;
         height: 400px;
 
         li {
-            @include flip-card;
+            @include flip-card(bt);
             width: 33.33%;
             height: 100%;
 
