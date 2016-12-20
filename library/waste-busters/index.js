@@ -101,14 +101,42 @@ skoash.start(
             <skoash.Audio
                 type="background"
                 src={MEDIA.EFFECT + 'OpeningSequence.mp3'}
+                loop
             />,
             <skoash.Audio
                 type="background"
                 src={MEDIA.EFFECT + 'CardSection.mp3'}
+                loop
             />,
             <skoash.Audio
                 type="background"
                 src={MEDIA.EFFECT + 'BKG.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'BonusRoundBKG.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'BKGWasteSortingGame.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'GameWon.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'NextLevel.mp3'}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={MEDIA.EFFECT + 'FlipScreen.mp3'}
+                loop
             />,
             <skoash.Audio
                 type="sfx"
@@ -142,22 +170,27 @@ skoash.start(
                 case 'time-to-collect':
                 case 'lets-play':
                 case 'remember':
-                case 'level-one':
-                case 'level-two':
-                case 'level-three':
-                case 'level-four':
-                case 'level-five':
+                case 'phaser-level-1':
+                case 'phaser-level-2':
+                case 'phaser-level-3':
+                case 'phaser-level-4':
+                case 'phaser-level-5':
                     return 2;
                 case 'bonus-round':
+                    return 3;
                 case 'neighborhood-waste':
                 case 'types-of-waste':
+                    return 1;
                 case 'sorting-level-one':
                 case 'sorting-level-two':
                 case 'sorting-level-three':
+                    return 4;
                 case 'waste-sorting-champion':
+                    return 5;
                 case 'take-action':
+                    return 6;
                 case 'flip':
-                    return;
+                    return 7;
             }
         }}
     />
