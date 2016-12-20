@@ -1,6 +1,20 @@
+import classNames from 'classnames';
+
 import Carousel from 'shared/components/carousel/0.1';
 import Cannon from 'shared/components/cannon/0.2';
 import Randomizer from 'shared/components/randomizer/0.1';
+
+var images = [];
+
+for (let i = 1; i < 9; i++) {
+    images.push(
+        <skoash.Image
+            key={i}
+            className="hidden"
+            src={`${MEDIA.SPRITE}game2.${i}.png`}
+        />
+    );
+}
 
 export default function (props, ref, key, opts = {}) {
     return (
@@ -9,6 +23,9 @@ export default function (props, ref, key, opts = {}) {
             ref={ref}
             key={key}
             id={`sorting-level-${opts.level}`}
+            className={classNames({
+                'reveal-open': _.get(props, 'data.reveal.open', false)
+            })}
         >
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
@@ -45,8 +62,13 @@ export default function (props, ref, key, opts = {}) {
                     src={MEDIA.VO + 'Keep_Sorting.mp3'}
                 />
             </skoash.MediaCollection>
+            <skoash.Component>
+                {images}
+            </skoash.Component>
             <skoash.Reveal
                 openOnStart="instructions"
+                openTarget="reveal"
+                closeTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 onOpen={function () {
                     this.updateGameState({

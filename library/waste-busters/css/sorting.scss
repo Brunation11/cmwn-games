@@ -2,9 +2,53 @@
 @import 'mixins';
 
 [id*=sorting-level] {
+    &.reveal-open {
+        .next-screen {
+            display: none;
+        }
+    }
 
     .reveal {
         @include reveal;
+        border: 10px solid $transparent;
+
+        &.open-instructions {
+            border: 10px solid $green-border;
+            background-color: $transparent-grey;
+
+            &::before,
+            &::after {
+                display: block;
+                position: absolute;
+                content: '';
+            }
+
+            &::before {
+                @include sprite-sort-level(2);
+                top: -40px;
+                left: 0;
+            }
+
+            &::after {
+                top: 110px;
+                left: 110px;
+            }
+        }
+
+        .close-reveal {
+            right: 5px;
+            bottom: 0;
+            pointer-events: none;
+
+            .skoash-game:not(.VOICE-OVER) & {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        li {
+            left: 65%;
+        }
 
         .instructions {
             &::before,
@@ -28,6 +72,29 @@
             p {
                 margin-top: 70px;
                 font-size: 24px;
+
+                &::before {
+                    @include background($image + 'main.turtle.png');
+                    display: block;
+                    position: absolute;
+                    bottom: -160px;
+                    left: -260px;
+                    width: 300px;
+                    height: 300px;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    @for $i from 1 through 3 {
+        &#sorting-level-#{$i} {
+            .reveal {
+                &.open-instructions {
+                    &::after {
+                        @include sprite-number($i);
+                    }
+                }
             }
         }
     }
