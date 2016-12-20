@@ -4,21 +4,19 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="neighborhood-waste"
+            id="waste-sort-center"
         >
             <skoash.Audio
                 type="voiceOver"
-                src={MEDIA.VO + 'compost.mp3'}
+                src={MEDIA.VO + 'Help_Me.mp3'}
             />
-            <div className="tree-3" />
-            <div className="tree-4" />
+            <skoash.Image
+                className="title"
+                src={MEDIA.IMAGE + 'sort.title.png'}
+            />
             <skoash.Image
                 className="turtle"
                 src={MEDIA.IMAGE + 'main.turtle.png'}
-            />
-            <skoash.Image
-                className="hidden"
-                src={MEDIA.SPRITE + 'cards.4.png'}
             />
             <skoash.Image
                 className="hidden"
@@ -26,11 +24,11 @@ export default function (props, ref, key) {
             />
             <div className="frame round">
                 <div className="content">
-                    Now that the<br/>
-                    neighborhood waste<br/>
-                    has been picked up, let's<br/>
-                    identify the different<br/>
-                    types of waste!
+                    Now that we've learned the<br/>
+                    best ways to separate waste,<br/>
+                    let's test your knowledge<br/>
+                    by helping me at the<br/>
+                    Waste Sorting Center.
                 </div>
             </div>
         </skoash.Screen>

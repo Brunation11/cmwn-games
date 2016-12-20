@@ -20,7 +20,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import LevelFiveScreen from './components/level_five_screen';
 // import BonusRoundScreen from './components/bonus_round_screen';
 // import NeighborhoodWasteScreen from './components/neighborhood_waste_screen';
-import TypesOfWasteScreen from './components/types_of_waste_screen';
+// import TypesOfWasteScreen from './components/types_of_waste_screen';
+import WasteSortCenterScreen from './components/waste_sort_center_screen';
 import SortingLevelOneScreen from './components/sorting_level_one_screen';
 import SortingLevelTwoScreen from './components/sorting_level_two_screen';
 import SortingLevelThreeScreen from './components/sorting_level_three_screen';
@@ -53,7 +54,8 @@ skoash.start(
             // LevelFiveScreen,
             // BonusRoundScreen,
             // NeighborhoodWasteScreen,
-            TypesOfWasteScreen,
+            // TypesOfWasteScreen,
+            WasteSortCenterScreen,
             SortingLevelOneScreen,
             SortingLevelTwoScreen,
             SortingLevelThreeScreen,
