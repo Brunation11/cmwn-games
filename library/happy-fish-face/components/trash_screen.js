@@ -1,281 +1,223 @@
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 
-import SelectableAudio from 'shared/components/selectable_audio/0.1';
+import MediaCollection from 'shared/components/media_collection/0.1';
+import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 import Timer from 'shared/components/timer/0.1';
+import CustomCursorScreen from 'shared/components/custom_cursor_screen/0.1';
 
 const TRY_AGAIN = '0';
 const GOOD_JOB = '1';
 
-class TrashScreenComponent extends skoash.Screen {
-    constructor() {
-        super();
-
-        this.state = {
-            cursorLeft: 0,
-            cursorTop: 0,
-            touchstart: false,
-            revealOpen: false,
-        };
-    }
-
-    getRefs(currentRef) {
-        if (!currentRef.refs) {
-            return;
-        }
-        _.each(currentRef.refs, (ref, key) => {
-            this.refs[key] = ref;
-            if (key.includes('center') || key.includes('group')) {
-                this.getRefs(ref);
-            }
-        });
-    }
-
-    bootstrap() {
-        var ref;
-        super.bootstrap();
-
-        ref = this.refs['center-1'];
-        if (ref) {
-            this.getRefs(ref);
-        }
-
-        window.addEventListener('mousemove', this.moveCursor.bind(this));
-        window.addEventListener('touchstart', this.touchstart.bind(this));
-    }
-
+class TrashScreenComponent extends CustomCursorScreen {
     start() {
         super.start();
 
-        this.checkComplete = super.checkComplete; // for replay
-    }
-
-    goto(index, buttonSound) {
-        super.goto(index, buttonSound);
-
-        this.refs.timer.restart();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('mousemove', this.moveCursor);
-        window.removeEventListener('touchstart', this.touchstart);
-    }
-
-    moveCursor(e) {
-        var zoom = this.props.gameState.scale;
-        this.setState({
-            cursorLeft: e.clientX / zoom - 50,
-            cursorTop: e.clientY / zoom - 65,
-        });
-    }
-
-    touchstart() {
-        this.setState({
-            touchstart: true
-        });
-    }
-
-    complete() {
-        var self = this;
-        super.complete();
-        self.checkComplete = () => {};
-    // so it won't try to complete while incompleting all the refs
-
-        if (!this.state.replay) this.setState({ replay: true });
-
-        setTimeout(() => { // have to wait for state to change to complete: true
-            if (self.state.complete) {
-                self.incomplete();
-                ['timer', 'reveal', 'selectable-audio'].forEach(key => {
-                    self.refs[key].incompleteRefs();
-                });
-            }
-        }, 500);
-    }
-
-    onSelectableAudioComplete() {
-        if (!this.state.revealOpen) {
-            this.setState({
-                revealOpen: true,
-            }, () => {
-                this.refs['center-2'].open();
-                this.refs.reveal.open(GOOD_JOB);
-                this.refs.timer.complete();
-                this.refs.timer.stop();
-            });
-        }
-    }
-
-    onTimerComplete() {
-        if (!this.state.revealOpen) {
-            this.refs['center-2'].open();
-            this.refs.reveal.open(TRY_AGAIN);
-            this.setState({ revealOpen: true });
-        }
-    }
-
-    closeRespond(ref) {
-        this.setState({ revealOpen: false });
-        this.refs['center-2'].close();
-        if (ref === TRY_AGAIN) {
-            this.refs.timer.restart();
-            this.refs['selectable-audio'].start();
-            this.refs['selectable-audio'].incompleteRefs();
-        }
-    }
-
-    getClassNames() {
-        return classNames({
-            'REVEAL-OPEN': this.state.revealOpen,
-            TOUCH: this.state.touchstart,
-        }, super.getClassNames());
-    }
-
-    renderSelectableAudio() {
-        return (
-            <SelectableAudio
-                ref="selectable-audio"
-                selectClass="HIGHLIGHTED"
-                onComplete={this.onSelectableAudioComplete.bind(this)}
-                selectableList={[
-                    <skoash.ListItem correct data-ref="bottle" />,
-                    <skoash.ListItem correct data-ref="cans" />,
-                    <skoash.ListItem correct data-ref="cleaner" />,
-                    <skoash.ListItem correct data-ref="wash" />,
-                    <skoash.ListItem correct data-ref="necklace" />,
-                    <skoash.ListItem correct data-ref="oil" />,
-                    <skoash.ListItem correct data-ref="bag" />,
-                    <skoash.ListItem correct data-ref="water" />,
-                    <skoash.ListItem correct data-ref="shoes" />,
-                    <skoash.ListItem correct data-ref="soap" />,
-                    <skoash.ListItem correct data-ref="sauce" />,
-                    <skoash.ListItem correct data-ref="beeker" />,
-                    <skoash.ListItem correct data-ref="drum" />,
-                    <skoash.ListItem correct data-ref="cosmetics" />,
-                    <skoash.ListItem correct data-ref="tire" />,
-                    <skoash.ListItem correct data-ref="floss" />,
-                    <skoash.ListItem correct data-ref="ketchup" />,
-                    <skoash.ListItem correct data-ref="bulb" />,
-                    <skoash.ListItem correct data-ref="fries" />,
-                    <skoash.ListItem correct data-ref="soda" />,
-                    <skoash.ListItem data-ref="coral" />,
-                    <skoash.ListItem data-ref="crab" />,
-                    <skoash.ListItem data-ref="turtle" />,
-                    <skoash.ListItem data-ref="shell" />,
-                    <skoash.ListItem data-ref="fish1" />,
-                    <skoash.ListItem data-ref="fish2" />,
-                    <skoash.ListItem data-ref="lobster" />,
-                    <skoash.ListItem data-ref="shell2" />,
-                    <skoash.ListItem data-ref="fish3" />,
-                    <skoash.ListItem data-ref="starfish" />,
-                    <skoash.ListItem data-ref="starfish" className="second" />,
-                    <skoash.ListItem data-ref="octopus" />,
-                    <skoash.ListItem data-ref="shell3" />,
-                    <skoash.ListItem data-ref="seahorse" />,
-                    <skoash.ListItem data-ref="fish4" />,
-                    <skoash.ListItem data-ref="fish5" />,
-                    <skoash.ListItem data-ref="jellyfish" />,
-                ]}
-                audioAssets={[
-                    <skoash.Audio
-                        data-ref="correct"
-                        type="sfx"
-                        src="media/_audio/_S_Trash/HFF_SX_Right.mp3"
-                    />,
-                    <skoash.Audio
-                        data-ref="incorrect"
-                        type="sfx"
-                        src="media/_audio/_S_Trash/HFF_SX_Wrong.mp3"
-                        complete
-                    />,
-                ]}
-            />
-        );
-    }
-
-    renderReveal() {
-        return (
-            <Reveal
-                ref="reveal"
-                className="center"
-                closeRespond={this.closeRespond.bind(this)}
-                list={[
-                    <skoash.Component type="li" data-ref="tryAgain" complete>
-                        <skoash.Image src="media/_images/_S_GoodJob/img_10.2.png" />
-                        <p>
-                            You ran out of time!
-                        </p>
-                    </skoash.Component>,
-                    <skoash.Component type="li" data-ref="goodJob">
-                        <skoash.Image src="media/_images/_S_GoodJob/img_10.1.png" />
-                        <p>
-                            Take this offline.<br /> Never throw the trash in the water.
-                        </p>
-                    </skoash.Component>,
-                ]}
-                assets={[
-                    <skoash.Audio
-                        type="voiceOver"
-                        src="media/_audio/_S_GoodJob/HFF_VO_TryAgain.mp3"
-                        complete
-                    />,
-                    <skoash.MediaSequence className="media-sequence" silentOnStart>
-                    <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_GoodJob.mp3" />
-                    <skoash.Audio type="voiceOver" src="media/_audio/_S_GoodJob/HFF_VO_NeverThrow.mp3" />
-                  </skoash.MediaSequence>,
-                ]}
-            />
-        );
-    }
-
-    renderTimer() {
-        return (
-            <Timer
-                ref="timer"
-                countDown={true}
-                timeout={90000}
-                leadingContent={<skoash.Image src="media/_images/_S_Trash/img_9.1.png" />}
-                onComplete={this.onTimerComplete.bind(this)}
-            />
-        );
-    }
-
-    renderNet() {
-        return (
-            <skoash.Image ref="net" className="net" src="media/_images/_S_Trash/img_9.3.png"
-                style={{
-                    left: this.state.cursorLeft,
-                    top: this.state.cursorTop,
-                }}
-            />
-        );
-    }
-
-    renderContent() {
-        return (
-            <div>
-                <skoash.Component ref="center-1" className="center">
-                    <skoash.Component ref="group" className="group">
-                        {this.renderNet()}
-                        <skoash.Component ref="center-2" className="center">
-                            {this.renderReveal()}
-                        </skoash.Component>
-                        {this.renderTimer()}
-                        {this.renderSelectableAudio()}
-                    </skoash.Component>
-                </skoash.Component>
-            </div>
-        );
+        var center = this.refs['children-1'].refs['children-0'];
+        ['selectable', 'timer', 'children-0'].forEach(ref => { center.refs[ref].incompleteRefs(); });
+        
+        this.incomplete();
     }
 }
 
 export default function (props, ref, key) {
+
+    var playAudio = function (play, playNext) {
+        var callback = playNext ? playAudio.bind(this, playNext) : _.noop;
+        this.updateGameState({
+            path: 'media',
+            data: {
+                play
+            },
+            callback,
+        });
+    };
+
+    var onSelect = function (ref, isCorrect) {
+        var play = isCorrect? 'correct' : 'incorrect';
+        playAudio.call(this, play, 'dummy');
+    };
+
+    var openReveal = function (open, cb = _.noop) {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open,
+            },
+            callback: cb
+        });
+
+    };
+
+    var timerAction = function (action, nextAction) {
+        var callback = nextAction ? timerAction.bind(this, nextAction) : _.noop;
+
+        this.updateGameState({
+            path: 'timer',
+            data: {
+                action,
+            },
+            callback
+        });
+    };
+
+    var selectableComplete = function () {
+        openReveal.call(this, GOOD_JOB, timerAction.bind(this, 'stop', 'complete'));
+
+    };
+
+    var timerComplete = function () {
+        if (_.get(props, 'data.reveal.open', '') === GOOD_JOB) return;
+
+        openReveal.call(this, TRY_AGAIN);
+    };
+
+    var revealClose = function (ref) {
+        var self = this;
+
+        openReveal.call(self, null);
+
+        if (ref === TRY_AGAIN) { 
+            timerAction.call(self, 'restart');
+            self.updateGameState({
+                path: 'selectable',
+                data: {
+                    incompleteRefs: true
+                },
+                callback: () => {
+                    self.updateGameState({
+                        path: 'selectable',
+                        data: {
+                            incompleteRefs: false
+                        }
+                    });
+                },
+            });
+        }
+    };
+
     return (
         <TrashScreenComponent
             {...props}
             ref={ref}
             key={key}
             id="trash"
-        />
+            className={_.get(props, 'data.reveal.open', null) ? 'REVEAL-OPEN' : ''}
+        >
+            <MediaCollection
+                ref="collection"
+                play={_.get(props, 'data.media.play', null)}
+            >
+                <skoash.Audio
+                    data-ref="correct"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Right.mp3`}
+                />
+                <skoash.Audio
+                    data-ref="incorrect"
+                    type="sfx"
+                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Wrong.mp3`}
+                    complete
+                />
+            </MediaCollection>
+            <skoash.Component className="center">
+                <skoash.Component className="group">
+                    <skoash.Component className="center">
+                        <Reveal
+                            ref="reveal"
+                            className="center"
+                            onClose={revealClose}
+                            openReveal={_.get(props, 'data.reveal.open', null)}
+                            list={[
+                                <skoash.Component type="li" complete>
+                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.2.png`} />
+                                    <p>
+                                        You ran out of time!
+                                    </p>
+                                </skoash.Component>,
+                                <skoash.Component type="li" className="tryAgain">
+                                    <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_10.1.png`} />
+                                    <p>
+                                        Take this offline.<br /> Never throw the trash in the water.
+                                    </p>
+                                </skoash.Component>,
+                            ]}
+                            assets={[
+                                <skoash.Audio
+                                    type="voiceOver"
+                                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/TryAgain.mp3`}
+                                    complete
+                                />,
+                                <skoash.MediaSequence silentOnStart>
+                                    <skoash.Audio
+                                        type="voiceOver"
+                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/GoodJob.mp3`}
+                                        complete
+                                    />
+                                    <skoash.Audio
+                                        type="voiceOver"
+                                        src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/NeverThrow.mp3`}
+                                        complete
+                                    />
+                                </skoash.MediaSequence>,
+                            ]}
+                        />
+                    </skoash.Component>
+                    <Timer
+                        ref="timer"
+                        countDown={true}
+                        action={_.get(props, 'data.timer.action', null)}
+                        timeout={90000}
+                        leadingContent={<skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_9.1.png`} />}
+                        onComplete={timerComplete}
+                    />
+                    <Selectable
+                        ref="selectable"
+                        selectClass="HIGHLIGHTED"
+                        onComplete={selectableComplete}
+                        onSelect={onSelect}
+                        incompleteRefs={_.get(props, 'data.selectable.incompleteRefs', false)}
+                        list={[
+                            <skoash.ListItem correct data-ref="tire" />,
+                            <skoash.ListItem correct data-ref="floss" />,
+                            <skoash.ListItem correct data-ref="shoes" />,
+                            <skoash.ListItem correct data-ref="water" />,
+                            <skoash.ListItem correct data-ref="soda" />,
+                            <skoash.ListItem correct data-ref="bottle1" />,
+                            <skoash.ListItem correct data-ref="chips" />,
+                            <skoash.ListItem correct data-ref="necklace" />,
+                            <skoash.ListItem correct data-ref="bottle2" />,
+                            <skoash.ListItem correct data-ref="bottle3" />,
+                            <skoash.ListItem correct data-ref="beaker" />,
+                            <skoash.ListItem correct data-ref="oil" />,
+                            <skoash.ListItem correct data-ref="fries" />,
+                            <skoash.ListItem correct data-ref="bottle4" />,
+                            <skoash.ListItem correct data-ref="sauce" />,
+                            <skoash.ListItem correct data-ref="lightbulb" />,
+                            <skoash.ListItem correct data-ref="lotion" />,
+                            <skoash.ListItem data-ref="coral" />,
+                            <skoash.ListItem data-ref="crab" />,
+                            <skoash.ListItem data-ref="octopus" />,
+                            <skoash.ListItem data-ref="shell1" />,
+                            <skoash.ListItem data-ref="fish1" />,
+                            <skoash.ListItem data-ref="fish1" className="duplicate" />,
+                            <skoash.ListItem data-ref="seahorse" />,
+                            <skoash.ListItem data-ref="turtle" />,
+                            <skoash.ListItem data-ref="fish2" />,
+                            <skoash.ListItem data-ref="fish3" />,
+                            <skoash.ListItem data-ref="fish3" className="duplicate" />,
+                            <skoash.ListItem data-ref="jellyfish" />,
+                            <skoash.ListItem data-ref="jellyfish" className="duplicate" />,
+                            <skoash.ListItem data-ref="fish4" />,
+                            <skoash.ListItem data-ref="lobster" />,
+                            <skoash.ListItem data-ref="shell2" />,
+                            <skoash.ListItem data-ref="fish5" />,
+                            <skoash.ListItem data-ref="fish5" className="duplicate" />,
+                            <skoash.ListItem data-ref="starfish" />,
+                        ]}
+                    />
+                </skoash.Component>
+            </skoash.Component>
+        </TrashScreenComponent>
     );
 }

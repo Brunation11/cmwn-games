@@ -1,3 +1,5 @@
+@import 'variables';
+
 #multi-bubbles {
   .group {
     text-align: center;
@@ -5,19 +7,80 @@
     height: 540px;
   }
 
-  img {
-    width: 840px;
-    margin: -30px auto;
+  .clean-water {
+    position: absolute;
+    top: 0;
+    left: 53%;
+    width: 768px;
+    transform: translateX(-50%);
   }
 
-  .items {
+  .meter {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 960px;
-    height: 540px;
-    margin: -270px -480px;
-    display: block;
+    top: 15px;
+    left: 20px;
+
+    * {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .stroke {
+        position: relative;
+        top: 0;
+        height: 420px;
+    }
+
+    .fill {
+        position: absolute;
+        top: 28px;
+        height: 376px;
+        width: 100%;
+
+        div {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            transition: height ease-in-out 1s;
+
+            &:nth-of-type(1) {
+                overflow: hidden;
+            }
+        }
+
+        div:nth-of-type(1) img {
+            position: absolute;
+            height: 376px;
+            bottom: 0;
+        }
+
+        div:nth-of-type(2) {
+            img {
+                position: absolute;
+                width: 100px;
+                top: -30px;
+                transition: opacity 1s;
+
+                &:nth-of-type(1) {
+                    opacity: 0;
+                }
+            }
+
+            &.complete {
+                img:nth-of-type(1) {
+                    opacity: 1;
+                }
+
+                img:nth-of-type(2) {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+  }
+
+  .selectable {
   }
 
   li {
@@ -29,8 +92,8 @@
     &:before {
       content: "";
       display: block;
-      background-image: url('../media/_images/_S_MultiBubbles/img_7.3.png');
-      background-size: 1602px;
+      background-image: url($media-server-game + 'SpritesAnimations/IMG_7.1.png');
+      background-size: 2700px;
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -48,17 +111,16 @@
       }
     }
 
-    $items: swim washDishes growCrops tapDance cook cleanHouse runFactories playBasketball drinkIt washFace laundry flyAKite brushTeeth takeShowers drive zipline crochet read sleep tellTime talk;
-    $widths: 80 100 120 100 80 100 120 120 80 100 120 120 80 100 80 100 120 80 100 100 80;
-    $heights: 80 100 120 100 80 100 120 120 80 100 120 120 80 100 80 100 120 80 100 100 80;
-    $lefts: 20 680 500 850 420 345 35 155 175 25 635 835 255 305 695 545 405 585 775 215 825;
-    $tops: 40 385 105 55 230 80 140 260 80 350 120 260 180 290 255 290 390 425 160 410 425;
-    $background-lefts: -50 -440 -830 -1240 -50 -440 -830 -1230 -50 -440 -830 -1230 -50 -440 -850 -40 -430 -850 -50 -435 -850;
-    $background-tops: -50 -40 -40 -50 -285 -275 -265 -265 -520 -510 -500 -500 -750 -740 -750 -975 -965 -985 -1220 -1210 -1220;
-    $hover-lefts: -250 -640 -1030 -1440 -250 -640 -1030 -1430 -250 -640 -1030 -1430 -250 -640 -1050 -240 -630 -1050 -250 -635 -1050;
-    $hover-tops: -50 -41 -40 -50 -285 -275 -265 -265 -520 -510 -500 -500 -750 -740 -750 -975 -965 -985 -1220 -1210 -1220;
+    $items:    swim washDishes growCrops tapDance cook cleanHouse playBasketball drinkIt washFace laundry flyAKite brushTeeth takeShowers drive   zipline crochet read     sleep  tellTime  talk;
+    $widths:   80   105        123       103      80   105        130            80      108      127     127      80         107         81      108     129     82       82    107       82;
+    $heights:  80   105        123       103      80   105        130            80      108      127     127      80         107         81      108     129     82       82    107       82;
+    $lefts:    109  680        500       842      420  345        179            175     108      635     817      255        311         695     545     405     585      775    259       825;
+    $tops:     162  385        105       70       230  80         260            80      367      120     260      180        290         255     290     390     425      160    410       425;
+    $bg-lefts: -6   -1632      -2300     -1766    -952 -1901      -2032          -142    -1089    -2436   -2572    -278       -1360       -547    -1498   -2166   -418     -682   -1225     -818;
+    $bg-tops: -6    -6         -9        -8       -4   -5         -3             -3      -3       -4      -3       -4         -3          -3      -3      -4      -3       -2     -3        -3;
+    $h-tops:   -141 -142       -144     -143     -140 -141       -139           -139    -139      -140    -139     -140       -138        -141    -139    -140    -140     -139   -139      -139;
 
-    @for $i from 1 through 21 {
+    @for $i from 1 through 20 {
       &[data-ref=#{nth($items,$i)}] {
         width: nth($widths,$i)+px;
         height: nth($heights,$i)+px;
@@ -66,11 +128,11 @@
         top: nth($tops,$i)+px;
 
         &:before {
-          background-position: #{nth($background-lefts,$i)+px} #{nth($background-tops,$i)+px};
+          background-position: #{nth($bg-lefts,$i)+px} #{nth($bg-tops,$i)+px};
         }
 
         &:hover:before {
-          background-position: #{nth($hover-lefts,$i)+px} #{nth($hover-tops,$i)+px};
+          background-position: #{nth($bg-lefts,$i)+px} #{nth($h-tops,$i)+px};
         }
       }
     }

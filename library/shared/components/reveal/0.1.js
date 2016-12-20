@@ -24,7 +24,7 @@ class Reveal extends skoash.Component {
     open(message) {
         var self = this;
         var currentlyOpen = this.props.openMultiple ?
-      this.state.currentlyOpen.concat(message) : [message];
+          this.state.currentlyOpen.concat(message) : [message];
 
         self.setState({
             open: true,
@@ -79,7 +79,7 @@ class Reveal extends skoash.Component {
             currentlyOpen,
         });
 
-        if (!opts.silent) this.playMedia('close-sound');
+        if (!opts.silent) this.playMedia('asset-close-sound');
 
         this.props.onClose.call(this, prevMessage);
 
@@ -104,18 +104,19 @@ class Reveal extends skoash.Component {
 
         message += '';
 
-        this.playMedia('open-sound');
+        this.playMedia('asset-open-sound');
 
         messages = message.split(' ');
         messages.map(audio => {
-            this.playMedia(audio);
+            this.playMedia('asset-' + audio);
         });
     }
 
     renderAssets() {
         if (this.props.assets) {
             return this.props.assets.map((asset, key) => {
-                var ref = asset.ref || asset.props['data-ref'] || 'asset-' + key;
+                var ref = asset.ref || asset.props['data-ref'] || key;
+                ref = 'asset-' + ref;
                 return (
           <asset.type
             {...asset.props}

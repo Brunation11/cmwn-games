@@ -2,18 +2,6 @@
 @import 'mixins';
 
 @font-face {
-  font-family: 'SpaceUpYerLife';
-  src: url('./media/_Fonts/space_up_yer_life/space_up_yer_life.eot'); /* IE9 Compat Modes */
-  src: url('./media/_Fonts/space_up_yer_life/space_up_yer_life.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-     url('./media/_Fonts/space_up_yer_life/space_up_yer_life.woff') format('woff'), /* Modern Browsers */
-     url('./media/_Fonts/space_up_yer_life/space_up_yer_life.ttf')  format('truetype'), /* Safari, Android, iOS */
-     url('./media/_Fonts/space_up_yer_life/space_up_yer_life.svg#2094b9a038a27a711bd8dc7b3f2c5d62') format('svg'); /* Legacy iOS */
-
-  font-style:   normal;
-  font-weight:  400;
-}
-
-@font-face {
   font-family: 'KomikaAxis';
   src: url('KOMIKAX_.eot'); /* IE9 Compat Modes */
   src: url('KOMIKAX_.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -54,7 +42,7 @@ body > div > div {
   height: 540px;
   margin: auto;
   font-size: 20px;
-  background: url(../media/_images/_BKG/BKG_1.png) bottom center no-repeat;
+  background: url($media-server-game + 'ImageAssets/BKG_1.jpg') bottom center no-repeat;
   background-size: cover;
 
 
@@ -70,7 +58,7 @@ body > div > div {
     background-position: center center;
 
     &.garbage {
-      background-image: url(../media/_images/_BKG/BKG_2.png);
+      background-image: url($media-server-game + 'ImageAssets/BKG_2.jpg');
     }
   }
 
@@ -102,7 +90,7 @@ button {
   outline: none;
   cursor: pointer;
 
-  background-image: url(../media/_images/_buttons/BU_1.png);
+  background-image: url($media-server-game + 'SpritesAnimations/BU_1.png');
   background-size: auto 300px;
   background-position: left top;
 
@@ -289,7 +277,7 @@ p {
   padding: 40px;
   width: 720px;
   height: 480px;
-  background-image: url(../media/_images/_frames/FR_1.png);
+  background-image: url($media-server-game + 'ImageAssets/frame.1.png');
 }
 
 .screen.large-frame {
@@ -382,32 +370,45 @@ p {
     width: 100%;
   }
 
+  .frame > div {
+    position: absolute;
+    left: 50%;
+    bottom: 61px;
+    transform: translateX(-50%);
+  }
+
   .selectable {
     margin: -10px;
-    height: 200px;
+    height: 270px;
     justify-content: center;
   }
 
   li {
-    background-size: auto 200px;
-    background-position: left center;
+    width: 300px;
+    margin: 0 -50px;
+    background-size: auto;
+    background-position-y: 64px;
+    background-repeat: no-repeat;
     cursor: pointer;
 
     &.img-0 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.2.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -755px;
     }
 
     &.img-1 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.3.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: -27px;
     }
 
     &.img-2 {
-      background-image: url(../media/_images/_S_YouFeel/img_2.4.png);
+      background-image: url($media-server-game + 'SpritesAnimations/sprite%20sheet%20emojis-01.png');
+      background-position-x: center;
     }
 
     &.SELECTED,
     &:hover {
-      background-position: right center;
+        background-position-y: -188px;
     }
 
     &.SELECTED {
@@ -471,22 +472,23 @@ p {
 
   li {
     list-style: none;
-    width: 300px;
-    height: 300px;
-    background-position: left center;
-    background-size: auto 300px;
+    width: 250px;
+    height: 250px;
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.earth.png');
+    background-position-y: top;
+    background-size: 500px;
 
     &:nth-child(1) {
-      background-image: url(../media/_images/_S_HealthyWater/img_4.2.png);
+        background-position-x: left;
     }
 
     &:nth-child(2) {
-      background-image: url(../media/_images/_S_HealthyWater/img_4.3.png);
+        background-position-x: right;
     }
 
     &:hover,
     &.SELECTED {
-      background-position: right center;
+      background-position-y: bottom;
       cursor: pointer;
     }
 
@@ -541,7 +543,7 @@ p {
     background-size: auto 200px;
     background-repeat: no-repeat;
     background-position: -727px center;
-    background-image: url(../media/_images/_S_PollutesWater/img_8.2.png);
+    background-image: url($media-server-game + 'SpritesAnimations/sprite.stars.png');
   }
 
   img {
