@@ -202,8 +202,7 @@ gulp.task('copy-index', function () {
                     var config = JSON.parse(file.contents.toString('utf8'));
                     var folder = config.media_folder ||
                         _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id))
-                        ;
+                        _.upperFirst(_.camelCase(config.id));
 
                     var min = debug ? '' : '.min';
                     return (
