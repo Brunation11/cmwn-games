@@ -178,14 +178,18 @@
 
         p {
             line-height: 1.2;
+            font-size: 28px;
         }
 
         li {
             &::after {
+                $turtle-scale: .8;
+                @include sprite-turtle(2);
                 display: block;
                 position: absolute;
                 bottom: -30px;
                 left: -180px;
+                transform: scale3d($turtle-scale, $turtle-scale, 1);
                 content: '';
             }
         }
@@ -201,10 +205,20 @@
             }
         }
 
+        span.truck {
+            $truck-scale: .4;
+            @include sprite-game-intro(2);
+            display: inline-block;
+            position: relative;
+            transform: scale3d($truck-scale, $truck-scale, 1);
+            margin: -95px -115px;
+            vertical-align: middle;
+        }
+
         .intro,
         .complete {
             &::after {
-                @include sprite-turtle(1);
+                @include sprite-turtle(2);
             }
         }
 
@@ -239,7 +253,21 @@
         }
 
         @for $i from 1 through 3 {
+            &.open-fact-#{$i} {
+                border: 10px solid $green-border;
+                background-color: $transparent-blue;
+
+                .close-reveal {
+                    right: 190px;
+                    bottom: 80px;
+                }
+            }
+
             .fact-#{$i} {
+                &::after {
+                    @include sprite-turtle(1);
+                }
+
                 .title,
                 .banner {
                     @include center;
