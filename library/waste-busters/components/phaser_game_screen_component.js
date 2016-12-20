@@ -1,10 +1,5 @@
 import classNames from 'classnames';
 
-import GameEmbedder from 'shared/components/game_embedder/0.1';
-import Timer from 'shared/components/timer/0.1';
-import Score from 'shared/components/score/0.1';
-import DPad from 'shared/components/d_pad/0.1';
-
 export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
@@ -184,7 +179,7 @@ export default function (props, ref, key, opts = {}) {
             id={`phaser-level-${opts.level}`}
             onStart={onScreenStart}
         >
-            <GameEmbedder
+            <skoash.GameEmbedder
                 src={getGameSrc()}
                 controller={_.get(props, 'data.d-pad')}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
@@ -192,7 +187,7 @@ export default function (props, ref, key, opts = {}) {
                 pause={_.get(props, 'data.d-pad.pause')}
                 onRespond={onRespond}
             />
-            <Timer
+            <skoash.Timer
                 countDown
                 timeout={120000}
                 onComplete={onTimerComplete}
@@ -213,12 +208,12 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Component
                     className="left"
                 >
-                    <Score
+                    <skoash.Score
                         className="life"
                         correct={4 - _.get(props, 'gameState.data.game.hits', 0) || 0}
                         setScore={true}
                     />
-                    <Score
+                    <skoash.Score
                         className="bags"
                         correct={_.get(props, 'gameState.data.game.bagCount', 0)}
                         setScore={true}
@@ -227,7 +222,7 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Component
                     className="middle"
                 >
-                    <Score
+                    <skoash.Score
                         className="level-score"
                         correct={_.get(props, 'gameState.data.game.score', 0)}
                         setScore={true}
@@ -239,17 +234,17 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Component
                     className="right"
                 >
-                    <Score
+                    <skoash.Score
                         className="lives"
                         correct={_.get(props, 'gameState.data.game.lives', 1)}
                         setScore={true}
                     />
-                    <Score
+                    <skoash.Score
                         className="trucks"
                         correct={_.get(props, `gameState.data.game.levels.${opts.level}.trucks`)}
                         setScore={true}
                     />
-                    <DPad />
+                    <skoash.DPad />
                 </skoash.Component>
             </skoash.Component>
             <skoash.Reveal
