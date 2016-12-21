@@ -104,12 +104,18 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component>
                 {images}
             </skoash.Component>
+            <skoash.SpriteAnimation
+                className="slingshot"
+                src={`${MEDIA.SPRITE}slingshot.png`}
+                animate={''}
+                frames={6}
+            />
             <Carousel
                 ref="carousel"
                 completeOnStart={true}
                 checkComplete={false}
                 showNum={7}
-                targetIndex={3}
+                targetIndex={4}
                 selected={_.get(props, 'data.game.fired')}
                 onSelect={function (target) {
                     var correct = _.get(props, 'data.game.correct', 0);
@@ -118,8 +124,6 @@ export default function (props, ref, key, opts = {}) {
                     var play;
 
                     classes[target.props['data-key']] = 'SELECTED';
-
-                    console.log(target);
 
                     this.setState({
                         classes
@@ -137,46 +141,28 @@ export default function (props, ref, key, opts = {}) {
                         play = 'incorrect';
                     }
 
-                    setTimeout(() => {
-                        this.updateGameState({
-                            path: 'game',
-                            data: {
-                                correct,
-                                incorrect,
-                                play
-                            }
-                        });
-                    }, 2000);
-
-                    // if (score >= opts.points & !_.get(props, 'data.game.complete')) {
-                    //     this.updateGameState({
-                    //         path: 'reveal',
-                    //         data: {
-                    //             open: 'complete'
-                    //         }
-                    //     });
-
-                    //     this.updateGameState({
-                    //         path: 'reveal',
-                    //         data: {
-                    //             play: 'complete'
-                    //         }
-                    //     });
-
-                    //     this.updateGameState({
-                    //         path: 'game',
-                    //         data: {
-                    //             complete: true
-                    //         }
-                    //     });
-                    // }
+                    this.updateGameState({
+                        path: 'game',
+                        data: {
+                            correct,
+                            incorrect,
+                            play
+                        }
+                    });
                 }}
                 bin={
                     <Randomizer
                         ref="randomizer"
                         completeOnStart={true}
                         checkComplete={false}
+                        remain={true}
                         bin={[
+                            <skoash.Component className="recycle" name="recycle"/>,
+                            <skoash.Component className="landfill" name="landfill" />,
+                            <skoash.Component className="compost" name="compost" />,
+                            <skoash.Component className="recycle" name="recycle"/>,
+                            <skoash.Component className="landfill" name="landfill" />,
+                            <skoash.Component className="compost" name="compost" />,
                             <skoash.Component className="recycle" name="recycle"/>,
                             <skoash.Component className="landfill" name="landfill" />,
                             <skoash.Component className="compost" name="compost" />,
@@ -191,6 +177,7 @@ export default function (props, ref, key, opts = {}) {
                 reverseReload={true}
                 launchButton={true}
                 reloadTime={2000}
+                dataDelay={1000}
                 showNum={0}
                 bin={
                   <Randomizer
@@ -252,9 +239,17 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Score
                     ref="score"
                     max={opts.points}
-                    correct={_.get(props, 'data.score.points', 0)}
-                    checkComplete={false}
-                    complete={_.get(props, 'data.score.points', 0) === opts.points}
+                    increment={10}
+                    correct={_.get(props, 'data.game.correct', 0)}
+                    incorrect={_.get(props, 'data.game.incorrect', 0)}
+                    onComplete={function () {
+                        this.updateGameState({
+                            path: 'reveal',
+                            data: {
+                                open: 'complete'
+                            }
+                        });
+                    }}
                 />
             </skoash.Component>
             <skoash.Reveal

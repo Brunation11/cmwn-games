@@ -30,11 +30,13 @@
         }
 
         60% {
-            transform: translateY(-300px) scale(1);
+            transform: translateY(-300px) scale(.3);
+            opacity: 1;
         }
 
         100% {
-            transform: translateY(-300px) scale(1);
+            transform: translateY(-300px) scale(.3);
+            opacity: 0;
         }
     }
 
@@ -55,7 +57,7 @@
              *    the animation will not play when the 'LAUNCHED' flag is removed.
              */
             transition: transform .5s cubic-bezier(0, 0, .2, 1);
-            animation: fire 2s;
+            animation: fire 2.2s;
         }
     }
 

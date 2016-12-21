@@ -110,8 +110,8 @@
     height: 225px;
 }
 
-@mixin sprite-sort-can($column, $width: 0, $height: 0) {
-    @include sprite($sprite + 'game2.7.png', 578px, 520px, 3, 2, $column, 1, 1, $width, $height);
+@mixin sprite-sort-can($column, $row: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.7.png', 578px, 520px, 3, 2, $column, $row, $row, $width, $height);
 }
 
 @mixin sprite-sort-button($width: 0, $height: 0) {

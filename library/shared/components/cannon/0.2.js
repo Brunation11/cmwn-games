@@ -63,13 +63,15 @@ class Cannon extends skoash.Component {
             }, this.props.reloadTime);
         });
 
-        this.updateGameState({
-            path: this.props.dataTarget,
-            data: {
-                play: 'fire',
-                fired: list[this.state.list.length - 1],
-            }
-        });
+        setTimeout(() => {
+            this.updateGameState({
+                path: this.props.dataTarget,
+                data: {
+                    play: 'fire',
+                    fired: list[this.state.list.length - 1],
+                }
+            });
+        }, this.props.dataDelay);
 
         this.props.onFire.call(this);
     }
@@ -164,6 +166,7 @@ Cannon.defaultProps = _.defaults({
         <li></li>
     ],
     dataTarget: 'game',
+    dataDelay: 0,
     onReload: _.noop,
     onFire: _.noop,
 }, skoash.Component.defaultProps);

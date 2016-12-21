@@ -26,8 +26,8 @@ class Carousel extends Selectable {
     next() {
         var classes = this.state.classes;
         var list = this.state.list;
-        var item = this.refs.bin.get(1)[0];
-        item.key = shortid.generate();
+        var item = _.defaults({}, this.refs.bin.get(1)[0]);
+        item.props['data-key'] = shortid.generate();
         list = list.concat(item);
         list.shift();
         classes[0] = '';
@@ -52,6 +52,11 @@ class Carousel extends Selectable {
         skoash.Component.prototype.bootstrap.call(this);
 
         list = this.refs.bin ? this.refs.bin.get(this.props.showNum + 1) : this.props.list;
+
+        _.each(list, item => {
+            item = _.defaults({}, item);
+            item.props['data-key'] = shortid.generate();
+        });
 
         this.setState({
             list

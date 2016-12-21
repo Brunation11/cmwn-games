@@ -44,6 +44,10 @@
         @for $i from 1 through 3 {
             .#{nth($groups, $i)} {
                 @include sprite-sort-can($i);
+
+                &.SELECTED {
+                    @include sprite-sort-can($i, 2);
+                }
             }
         }
     }
