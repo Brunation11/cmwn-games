@@ -254,6 +254,10 @@
     &#sorting-level-3 {
         .reveal {
             .complete {
+                &::after {
+                    @include sprite-sort-title(4);
+                }
+
                 p {
                     font-size: 28px;
 
