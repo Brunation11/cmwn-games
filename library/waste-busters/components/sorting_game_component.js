@@ -51,23 +51,54 @@ export default function (props, ref, key, opts = {}) {
                     silentOnStart
                 >
                     <skoash.Audio
+                        ref="complete"
                         type="voiceOver"
-                        src={MEDIA.VO + 'Waste_Sorting_Center.mp3'}
+                        src={`${MEDIA.VO}Waste_Sorting_Center.mp3`}
                     />
                     <skoash.Audio
+                        ref="complete"
                         type="voiceOver"
-                        src={MEDIA.VO + 'Launch_The_Object.mp3'}
+                        src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
                     />
                 </skoash.MediaSequence>
                 <skoash.Audio
                     ref="complete"
                     type="voiceOver"
-                    src={MEDIA.VO + 'Waste_Sorting_Wizard.mp3'}
+                    src={`${MEDIA.VO}${opts.completeVO}.mp3`}
                 />
                 <skoash.Audio
                     ref="retry"
                     type="voiceOver"
                     src={MEDIA.VO + 'Keep_Sorting.mp3'}
+                />
+            </skoash.MediaCollection>
+            <skoash.MediaCollection
+                play={_.get(props, 'data.game.play', _.get(props, 'data.reveal.open', null))}
+            >
+                <skoash.Audio
+                    ref="correct"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}Correct.mp3`}
+                />
+                <skoash.Audio
+                    ref="incorrect"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}WrongBinForItem.mp3`}
+                />
+                <skoash.Audio
+                    ref="warning"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}TenSecondsWarning.mp3`}
+                />
+                <skoash.Audio
+                    ref="fire"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}SlingshotRelease_sortButton.mp3`}
+                />
+                <skoash.Audio
+                    ref="complete"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}${opts.completeSFX}.mp3`}
                 />
             </skoash.MediaCollection>
             <skoash.Component>
@@ -78,12 +109,17 @@ export default function (props, ref, key, opts = {}) {
                 completeOnStart={true}
                 checkComplete={false}
                 showNum={7}
-                targetIndex={2}
-                selected={_.get(props, 'data.cannon.fire')}
+                targetIndex={3}
+                selected={_.get(props, 'data.game.fired')}
                 onSelect={function (target) {
-                    var score = _.get(props, 'data.score.points', 0);
+                    var correct = _.get(props, 'data.game.correct', 0);
+                    var incorrect = _.get(props, 'data.game.incorrect', 0);
                     var classes = this.state.classes;
+                    var play;
+
                     classes[target.props['data-key']] = 'SELECTED';
+
+                    console.log(target);
 
                     this.setState({
                         classes
@@ -93,37 +129,47 @@ export default function (props, ref, key, opts = {}) {
                         }, 1000);
                     });
 
-                    if (score < opts.points) score += target.props.value;
+                    if (target.props.name === _.get(props, 'data.game.fired.props.message')) {
+                        correct++;
+                        play = 'correct';
+                    } else {
+                        incorrect++;
+                        play = 'incorrect';
+                    }
 
-                    this.updateGameState({
-                        path: 'score',
-                        data: {
-                            points: score
-                        }
-                    });
-
-                    if (score >= opts.points & !_.get(props, 'data.game.complete')) {
-                        this.updateGameState({
-                            path: 'reveal',
-                            data: {
-                                open: 'complete'
-                            }
-                        });
-
-                        this.updateGameState({
-                            path: 'reveal',
-                            data: {
-                                play: 'complete'
-                            }
-                        });
-
+                    setTimeout(() => {
                         this.updateGameState({
                             path: 'game',
                             data: {
-                                complete: true
+                                correct,
+                                incorrect,
+                                play
                             }
                         });
-                    }
+                    }, 2000);
+
+                    // if (score >= opts.points & !_.get(props, 'data.game.complete')) {
+                    //     this.updateGameState({
+                    //         path: 'reveal',
+                    //         data: {
+                    //             open: 'complete'
+                    //         }
+                    //     });
+
+                    //     this.updateGameState({
+                    //         path: 'reveal',
+                    //         data: {
+                    //             play: 'complete'
+                    //         }
+                    //     });
+
+                    //     this.updateGameState({
+                    //         path: 'game',
+                    //         data: {
+                    //             complete: true
+                    //         }
+                    //     });
+                    // }
                 }}
                 bin={
                     <Randomizer
@@ -131,10 +177,9 @@ export default function (props, ref, key, opts = {}) {
                         completeOnStart={true}
                         checkComplete={false}
                         bin={[
-                            <skoash.Component className="five" name="five" value={5} complete />,
-                            <skoash.Component className="ten" name="ten" value={10} complete />,
-                            <skoash.Component className="twenty" name="twenty" value={20} complete />,
-                            <skoash.Component className="thirty" name="thirty" value={30} complete />,
+                            <skoash.Component className="recycle" name="recycle"/>,
+                            <skoash.Component className="landfill" name="landfill" />,
+                            <skoash.Component className="compost" name="compost" />,
                         ]}
                     />
                 }
@@ -146,45 +191,30 @@ export default function (props, ref, key, opts = {}) {
                 reverseReload={true}
                 launchButton={true}
                 reloadTime={2000}
-                showNum={4}
+                showNum={0}
                 bin={
                   <Randomizer
                     completeOnStart={true}
                     checkComplete={false}
                     bin={[
-                        <skoash.Component className="plastic-bottle" />,
-                        <skoash.Component className="soda-can" />,
-                        <skoash.Component className="banana-peal" />,
-                        <skoash.Component className="glass-bottle" />,
-                        <skoash.Component className="crumbled-paper" />,
-                        <skoash.Component className="tuna-can" />,
-                        <skoash.Component className="tire" />,
-                        <skoash.Component className="battery" />,
+                        <skoash.Component className="flowers" message="compost" />,
+                        <skoash.Component className="paper" message="recycle" />,
+                        <skoash.Component className="newspaper" message="recycle" />,
+                        <skoash.Component className="napkin" message="landfill" />,
+                        <skoash.Component className="lettuce" message="compost" />,
+                        <skoash.Component className="juice" message="recycle" />,
+                        <skoash.Component className="eggshell" message="compost" />,
+                        <skoash.Component className="diaper" message="landfill" />,
+                        <skoash.Component className="mug" message="landfill" />,
+                        <skoash.Component className="coffee" message="compost" />,
+                        <skoash.Component className="box" message="recycle" />,
+                        <skoash.Component className="can" message="recycle" />,
+                        <skoash.Component className="bottle" message="recycle" />,
+                        <skoash.Component className="banana" message="compost" />,
+                        <skoash.Component className="apple" message="compost" />,
                     ]}
                   />
                 }
-                onFire={function () {
-                    this.updateGameState({
-                        path: 'reveal',
-                        data: {
-                            play: 'throw'
-                        }
-                    });
-                    this.updateGameState({
-                        path: 'cannon',
-                        data: {
-                            fire: false
-                        }
-                    });
-                }}
-                onReload={function () {
-                    this.updateGameState({
-                        path: 'cannon',
-                        data: {
-                            fire: true
-                        }
-                    });
-                }}
             />
             <skoash.Component className="stats">
                 <span className="level">

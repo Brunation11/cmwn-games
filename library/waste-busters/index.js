@@ -25,7 +25,6 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import SortingLevelOneScreen from './components/sorting_level_one_screen';
 import SortingLevelTwoScreen from './components/sorting_level_two_screen';
 import SortingLevelThreeScreen from './components/sorting_level_three_screen';
-import WasteSortingChampionScreen from './components/waste_sorting_champion_screen';
 import TakeActionScreen from './components/take_action_screen';
 import FlipScreen from './components/flip_screen';
 
@@ -59,7 +58,6 @@ skoash.start(
             SortingLevelOneScreen,
             SortingLevelTwoScreen,
             SortingLevelThreeScreen,
-            WasteSortingChampionScreen,
             TakeActionScreen,
             FlipScreen,
         ]}
@@ -127,11 +125,6 @@ skoash.start(
             />,
             <skoash.Audio
                 type="background"
-                src={MEDIA.EFFECT + 'GameWon.mp3'}
-                loop
-            />,
-            <skoash.Audio
-                type="background"
                 src={MEDIA.EFFECT + 'NextLevel.mp3'}
                 loop
             />,
@@ -187,12 +180,10 @@ skoash.start(
                 case 'sorting-level-2':
                 case 'sorting-level-3':
                     return 4;
-                case 'waste-sorting-champion':
-                    return 5;
                 case 'take-action':
-                    return 6;
+                    return 5;
                 case 'flip':
-                    return 7;
+                    return 6;
             }
         }}
     />

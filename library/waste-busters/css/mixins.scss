@@ -102,6 +102,27 @@
     height: 125px;
 }
 
+@mixin sprite-sort-item($column, $width: 0, $height: 0) {
+    $item-scale: .7;
+    @include sprite($sprite + 'game2.6.png', 3600px, 450px, 15, 2, $column, 1, 1, $width, $height);
+    transform: scale3d($item-scale, $item-scale, 1);
+    width: 240px;
+    height: 225px;
+}
+
+@mixin sprite-sort-can($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.7.png', 578px, 520px, 3, 2, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-sort-button($width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.8.png', 183px, 365px, 1, 2, 1, 1, 2, $width, $height);
+    position: absolute;
+    width: 183px;
+    height: 183px;
+    right: 20px;
+    bottom: 0;
+}
+
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
     display: inline-block;

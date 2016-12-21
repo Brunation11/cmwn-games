@@ -5,6 +5,9 @@ export default function (props, ref, key) {
         level: 1,
         points: 100,
         timer: 600000,
+        instructionsVO: 'Launch_The_Object',
+        completeVO: 'Waste_Sorting_Wizard',
+        completeSFX: 'LevelComplete',
         instructions: (
             <p>
                 Launch the object into the correct bin before<br/>
@@ -18,7 +21,8 @@ export default function (props, ref, key) {
         ),
         complete: (
             <p>
-                test
+                Now try your hand at<br/>
+                the next level of sorting!
             </p>
         ),
     });

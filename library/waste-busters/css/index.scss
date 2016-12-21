@@ -40,7 +40,6 @@ button {
     &.close-reveal {
         @include nav-button(3, 90px, 65px);
         right: 15px;
-        opacity: 0;
     }
 
     &.prev-screen {
@@ -68,7 +67,6 @@ button {
         sorting-level-1
         sorting-level-2
         sorting-level-3
-        waste-sorting-champion
         take-action
         flip;
 
@@ -86,7 +84,6 @@ button {
         bkg-2
         bkg-1
         bkg-1
-        bkg-3
         bkg-3
         bkg-3
         bkg-3

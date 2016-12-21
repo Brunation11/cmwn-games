@@ -24,11 +24,11 @@ class Carousel extends Selectable {
     }
 
     next() {
-        var classes;
-        var list;
-        classes = this.state.classes;
-        list = this.state.list;
-        list = list.concat(this.refs.bin.get(1));
+        var classes = this.state.classes;
+        var list = this.state.list;
+        var item = this.refs.bin.get(1)[0];
+        item.key = shortid.generate();
+        list = list.concat(item);
         list.shift();
         classes[0] = '';
         this.enabled = true;
@@ -79,10 +79,10 @@ class Carousel extends Selectable {
         return classNames('carousel', super.getClassNames());
     }
 
-  /*
-   * shortid is intentionally not used for key here because we want to make sure
-   * that the element is transitioned and not replaced.
-   */
+    /*
+     * shortid is intentionally not used for key here because we want to make sure
+     * that the element is transitioned and not replaced.
+     */
     renderList() {
         var list = this.state.list || this.props.list;
         return list.map((li, key) => {
