@@ -2,10 +2,15 @@
 @import 'mixins';
 
 [id*=sorting-level] {
-    &.reveal-open {
+    &.reveal-open-instructions,
+    &.reveal-open-retry {
         .next-screen {
             display: none;
         }
+    }
+
+    p {
+        line-height: 1.2;
     }
 
     .cannon {
@@ -81,7 +86,8 @@
         @include reveal;
         border: 10px solid $transparent;
 
-        &.open-instructions {
+        &.open-instructions,
+        &.open-complete {
             border: 10px solid $green-border;
             background-color: $transparent-grey;
 
@@ -89,6 +95,7 @@
             &::after {
                 display: block;
                 position: absolute;
+                z-index: 1;
                 content: '';
             }
 
@@ -101,6 +108,12 @@
             &::after {
                 top: 110px;
                 left: 110px;
+            }
+        }
+
+        &.open-complete {
+            .close-reveal {
+                display: none;
             }
         }
 
@@ -168,12 +181,81 @@
                 font-size: 24px;
             }
         }
+
+        .complete {
+            &::before,
+            &::after {
+                @include center;
+                display: block;
+                top: 14%;
+                content: '';
+            }
+
+            &::before {
+                @include background($image + 'banner.png');
+                width: 610px;
+                height: 200px;
+            }
+
+            &::after {
+                @include sprite-sort-title(2);
+            }
+
+            p {
+                margin-top: 70px;
+                font-size: 36px;
+
+                &::before {
+                    @include sprite-reward(1);
+                    top: -130px;
+                    left: -200px;
+                }
+
+                &::after {
+                    @include sprite-sort-level(3);
+                    display: block;
+                    position: absolute;
+                    top: -45px;
+                    left: -330px;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    &#sorting-level-2,
+    &#sorting-level-3 {
+        .reveal {
+            .instructions {
+                p {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+
+    &#sorting-level-2 {
+        .reveal {
+            .complete {
+                p {
+                    &::before {
+                        top: -80px;
+                    }
+
+                    &::after {
+                        top: -5px;
+                    }
+                }
+            }
+
+        }
     }
 
     @for $i from 1 through 3 {
         &#sorting-level-#{$i} {
             .reveal {
-                &.open-instructions {
+                &.open-instructions,
+                &.open-complete {
                     &::after {
                         @include sprite-number($i);
                     }

@@ -102,6 +102,12 @@
     height: 125px;
 }
 
+@mixin sprite-reward($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'game2.4.png', 900px, 450px, 3, 1, $column, 1, 1, $width, $height);
+    width: 300px;
+    height: 450px;
+}
+
 @mixin sprite-sort-item($column, $width: 0, $height: 0) {
     $item-scale: .7;
     @include sprite($sprite + 'game2.6.png', 3600px, 450px, 15, 2, $column, 1, 1, $width, $height);

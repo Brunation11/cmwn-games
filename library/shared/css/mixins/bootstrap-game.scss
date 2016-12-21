@@ -138,7 +138,7 @@
     }
 
     .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
-    .screen.GATED .next-screen {
+    .screen .next-screen {
         transition: opacity 0s;
         opacity: 0;
         cursor: default;

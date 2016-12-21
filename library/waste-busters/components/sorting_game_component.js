@@ -31,9 +31,7 @@ export default function (props, ref, key, opts = {}) {
             ref={ref}
             key={key}
             id={`sorting-level-${opts.level}`}
-            className={classNames({
-                'reveal-open': _.get(props, 'data.reveal.open', false)
-            })}
+            className={'reveal-open-' + _.get(props, 'data.reveal.open', '')}
         >
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
@@ -51,12 +49,10 @@ export default function (props, ref, key, opts = {}) {
                     silentOnStart
                 >
                     <skoash.Audio
-                        ref="complete"
                         type="voiceOver"
                         src={`${MEDIA.VO}Waste_Sorting_Center.mp3`}
                     />
                     <skoash.Audio
-                        ref="complete"
                         type="voiceOver"
                         src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
                     />
@@ -70,6 +66,7 @@ export default function (props, ref, key, opts = {}) {
                     ref="retry"
                     type="voiceOver"
                     src={MEDIA.VO + 'Keep_Sorting.mp3'}
+                    complete
                 />
             </skoash.MediaCollection>
             <skoash.MediaCollection
@@ -79,26 +76,31 @@ export default function (props, ref, key, opts = {}) {
                     ref="correct"
                     type="sfx"
                     src={`${MEDIA.EFFECT}Correct.mp3`}
+                    complete
                 />
                 <skoash.Audio
                     ref="incorrect"
                     type="sfx"
                     src={`${MEDIA.EFFECT}WrongBinForItem.mp3`}
+                    complete
                 />
                 <skoash.Audio
                     ref="warning"
                     type="sfx"
                     src={`${MEDIA.EFFECT}TenSecondsWarning.mp3`}
+                    complete
                 />
                 <skoash.Audio
                     ref="fire"
                     type="sfx"
                     src={`${MEDIA.EFFECT}SlingshotRelease_sortButton.mp3`}
+                    complete
                 />
                 <skoash.Audio
                     ref="complete"
                     type="sfx"
                     src={`${MEDIA.EFFECT}${opts.completeSFX}.mp3`}
+                    complete
                 />
             </skoash.MediaCollection>
             <skoash.Component>
@@ -109,6 +111,7 @@ export default function (props, ref, key, opts = {}) {
                 src={`${MEDIA.SPRITE}slingshot.png`}
                 animate={''}
                 frames={6}
+                complete
             />
             <Carousel
                 ref="carousel"
@@ -207,7 +210,6 @@ export default function (props, ref, key, opts = {}) {
                 <span className="level">
                     {opts.level}
                 </span>
-
                 <skoash.Timer
                     ref="timer"
                     countDown={true}
@@ -217,25 +219,23 @@ export default function (props, ref, key, opts = {}) {
                     checkComplete={_.get(props, 'data.game.start', false)}
                     restart={_.get(props, 'data.game.start', false)}
                     onComplete={function () {
-                        if (_.get(props, 'data.reveal.open')) return;
-                        if (_.get(props, 'data.score.points', 0) < opts.points) {
-                            this.updateGameState({
-                                path: 'reveal',
-                                data: {
-                                    open: 'retry'
-                                }
-                            });
+                        if (_.get(props, 'data.game.complete')) return;
+                        this.updateGameState({
+                            path: 'reveal',
+                            data: {
+                                open: 'retry'
+                            }
+                        });
 
-                            this.updateGameState({
-                                path: 'score',
-                                data: {
-                                    points: 0
-                                }
-                            });
-                        }
+                        this.updateGameState({
+                            path: 'game',
+                            data: {
+                                correct: 0,
+                                incorrect: 0,
+                            }
+                        });
                     }}
                 />
-
                 <skoash.Score
                     ref="score"
                     max={opts.points}
@@ -247,6 +247,12 @@ export default function (props, ref, key, opts = {}) {
                             path: 'reveal',
                             data: {
                                 open: 'complete'
+                            }
+                        });
+                        this.updateGameState({
+                            path: 'game',
+                            data: {
+                                complete: true
                             }
                         });
                     }}

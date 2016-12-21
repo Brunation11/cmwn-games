@@ -3,7 +3,7 @@ import SortingGameComponent from './sorting_game_component';
 export default function (props, ref, key) {
     return SortingGameComponent(props, ref, key, {
         level: 3,
-        points: 100,
+        points: 10,
         timer: 90000,
         instructionsVO: 'Waste_Sorting_Action',
         completeVO: 'Waste_Sorting_Wizard',
