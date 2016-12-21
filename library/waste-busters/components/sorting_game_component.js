@@ -16,6 +16,14 @@ for (let i = 1; i < 9; i++) {
     );
 }
 
+images.push(
+    <skoash.Image
+        key={9}
+        className="hidden"
+        src={`${MEDIA.SPRITE}slingshot.png`}
+    />
+);
+
 export default function (props, ref, key, opts = {}) {
     return (
         <skoash.Screen
@@ -65,65 +73,11 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component>
                 {images}
             </skoash.Component>
-            <skoash.Reveal
-                openOnStart="instructions"
-                openTarget="reveal"
-                closeTarget="reveal"
-                openReveal={_.get(props, 'data.reveal.open', null)}
-                onOpen={function () {
-                    this.updateGameState({
-                        path: 'game',
-                        data: {
-                            stop: true,
-                            start: false,
-                        },
-                    });
-                }}
-                onClose={function () {
-                    this.updateGameState({
-                        path: 'game',
-                        data: {
-                            stop: false,
-                            start: true,
-                        },
-                    });
-                }}
-                list={[
-                    <skoash.Component
-                        ref="instructions"
-                        className="instructions frame round"
-                    >
-                        <div className="content">
-                            {opts.instructions}
-                        </div>
-                    </skoash.Component>,
-                    <skoash.Component
-                        ref="complete"
-                        className="complete frame round"
-                    >
-                        <div className="content">
-                            {opts.complete}
-                        </div>
-                    </skoash.Component>,
-                    <skoash.Component
-                        ref="retry"
-                        className="retry frame round"
-                    >
-                        <div className="content">
-                            <p>
-                                Keep Sorting!<br/>
-                                If you don't succeed,<br/>
-                                try again!
-                            </p>
-                        </div>
-                    </skoash.Component>,
-                ]}
-            />
             <Carousel
                 ref="carousel"
                 completeOnStart={true}
                 checkComplete={false}
-                showNum={5}
+                showNum={7}
                 targetIndex={2}
                 selected={_.get(props, 'data.cannon.fire')}
                 onSelect={function (target) {
@@ -232,49 +186,101 @@ export default function (props, ref, key, opts = {}) {
                     });
                 }}
             />
-            <skoash.Component className="grass">
-                <skoash.Component className="stats">
-                    <span className="level">
-                        {opts.level}
-                    </span>
+            <skoash.Component className="stats">
+                <span className="level">
+                    {opts.level}
+                </span>
 
-                    <skoash.Timer
-                        ref="timer"
-                        countDown={true}
-                        timeout={opts.timer}
-                        stop={_.get(props, 'data.game.complete', false)}
-                        complete={_.get(props, 'data.game.complete', false)}
-                        checkComplete={_.get(props, 'data.game.start', false)}
-                        restart={_.get(props, 'data.game.start', false)}
-                        onComplete={function () {
-                            if (_.get(props, 'data.reveal.open')) return;
-                            if (_.get(props, 'data.score.points', 0) < opts.points) {
-                                this.updateGameState({
-                                    path: 'reveal',
-                                    data: {
-                                        open: 'retry'
-                                    }
-                                });
+                <skoash.Timer
+                    ref="timer"
+                    countDown={true}
+                    timeout={opts.timer}
+                    stop={_.get(props, 'data.game.complete', false)}
+                    complete={_.get(props, 'data.game.complete', false)}
+                    checkComplete={_.get(props, 'data.game.start', false)}
+                    restart={_.get(props, 'data.game.start', false)}
+                    onComplete={function () {
+                        if (_.get(props, 'data.reveal.open')) return;
+                        if (_.get(props, 'data.score.points', 0) < opts.points) {
+                            this.updateGameState({
+                                path: 'reveal',
+                                data: {
+                                    open: 'retry'
+                                }
+                            });
 
-                                this.updateGameState({
-                                    path: 'score',
-                                    data: {
-                                        points: 0
-                                    }
-                                });
-                            }
-                        }}
-                    />
+                            this.updateGameState({
+                                path: 'score',
+                                data: {
+                                    points: 0
+                                }
+                            });
+                        }
+                    }}
+                />
 
-                    <skoash.Score
-                        ref="score"
-                        max={opts.points}
-                        correct={_.get(props, 'data.score.points', 0)}
-                        checkComplete={false}
-                        complete={_.get(props, 'data.score.points', 0) === opts.points}
-                    />
-                </skoash.Component>
+                <skoash.Score
+                    ref="score"
+                    max={opts.points}
+                    correct={_.get(props, 'data.score.points', 0)}
+                    checkComplete={false}
+                    complete={_.get(props, 'data.score.points', 0) === opts.points}
+                />
             </skoash.Component>
+            <skoash.Reveal
+                openOnStart="instructions"
+                openTarget="reveal"
+                closeTarget="reveal"
+                openReveal={_.get(props, 'data.reveal.open', null)}
+                onOpen={function () {
+                    this.updateGameState({
+                        path: 'game',
+                        data: {
+                            stop: true,
+                            start: false,
+                        },
+                    });
+                }}
+                onClose={function () {
+                    this.updateGameState({
+                        path: 'game',
+                        data: {
+                            stop: false,
+                            start: true,
+                        },
+                    });
+                }}
+                list={[
+                    <skoash.Component
+                        ref="instructions"
+                        className="instructions frame round"
+                    >
+                        <div className="content">
+                            {opts.instructions}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="complete"
+                        className="complete frame round"
+                    >
+                        <div className="content">
+                            {opts.complete}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="retry"
+                        className="retry frame round"
+                    >
+                        <div className="content">
+                            <p>
+                                Keep Sorting!<br/>
+                                If you don't succeed,<br/>
+                                try again!
+                            </p>
+                        </div>
+                    </skoash.Component>,
+                ]}
+            />
         </skoash.Screen>
     );
 }

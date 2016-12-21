@@ -1,0 +1,54 @@
+@keyframes reload {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    67% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes fire {
+    25% {
+        transform: translateY(-650%) scale(.5);
+    }
+
+    50% {
+        transform: translateY(-550%) scale(.3);
+    }
+
+    60% {
+        transform: translateY(-550%) scale(1);
+    }
+
+    100% {
+        transform: translateY(-550%) scale(1);
+    }
+}
+
+@keyframes points {
+    60% {
+        opacity: 0;
+    }
+
+    65% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes throw {
+    100% {
+        background-position: -500px;
+    }
+}

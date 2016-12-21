@@ -8,6 +8,128 @@
         }
     }
 
+    .cannon {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        border: 1px solid $bright-green;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+
+        &.FIRE {
+            pointer-events: none;
+
+            .LOADED {
+                /**
+                 *    Normaly I would define the transition on the default rule but this way
+                 *    the animation will not play when the 'LAUNCHED' flag is removed.
+                 */
+                transition: transform .5s cubic-bezier(0, 0, .2, 1);
+                animation: fire 2s;
+
+                &::before {
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    animation: points 2s;
+                    opacity: 0;
+                    width: 200%;
+                    height: 200%;
+                    content: '';
+                }
+            }
+        }
+
+        &.RELOAD {
+            .LOADED {
+                animation: reload .5s;
+            }
+        }
+
+        .launch-button {
+            position: absolute;
+            bottom: .5%;
+            left: 9%;
+
+            background: url('../media/_assets/_sprites/sprites.game1.7.png');
+            background-position: 0 0;
+            background-size: 100%;
+
+            width: 10%;
+            height: 18%;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-position: 0 97px;
+            }
+        }
+
+        .ammo-container {
+            position: absolute;
+            bottom: 2%;
+            left: 24%;
+
+            background: url('../media/_assets/_sprites/sprites.game1.4-01.png');
+            background-position: -334px 122px;
+            background-size: 1600px 163px;
+
+            width: 30%;
+            height: 15%;
+        }
+
+        .ammo {
+            display: inline;
+            position: absolute;
+            bottom: 5%;
+            border: 2px solid $green;
+            background: url('../media/_assets/_sprites/sprites.game1.1.png');
+            background-size: 1000px 292px;
+            width: 5%;
+            height: 8%;
+            pointer-events: none;
+        }
+    }
+
+    .carousel {
+        @include carousel(1022px, 200px, 7);
+        left: -31px;
+
+        div {
+            border: 2px solid $black;
+        }
+    }
+
+    .randomizer {
+        display: none;
+    }
+
+    .stats {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .level {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .score {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    .timer {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
     .reveal {
         @include reveal;
         border: 10px solid $transparent;
