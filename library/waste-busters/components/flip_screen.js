@@ -6,10 +6,6 @@ export default function (props, ref, key) {
             key={key}
             id="flip"
         >
-            <skoash.Audio
-                type="voiceOver"
-                src={MEDIA.VO + 'flip.mp3'}
-            />
             <skoash.Image
                 className="hidden"
                 src={MEDIA.IMAGE + 'frame.square.png'}
