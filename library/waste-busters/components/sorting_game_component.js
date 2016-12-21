@@ -57,7 +57,7 @@ export default function (props, ref, key, opts = {}) {
                     src={MEDIA.VO + 'Waste_Sorting_Wizard.mp3'}
                 />
                 <skoash.Audio
-                    ref="try-again"
+                    ref="retry"
                     type="voiceOver"
                     src={MEDIA.VO + 'Keep_Sorting.mp3'}
                 />
@@ -252,14 +252,7 @@ export default function (props, ref, key, opts = {}) {
                                 this.updateGameState({
                                     path: 'reveal',
                                     data: {
-                                        open: 'try-again'
-                                    }
-                                });
-
-                                this.updateGameState({
-                                    path: 'reveal',
-                                    data: {
-                                        play: 'try-again'
+                                        open: 'retry'
                                     }
                                 });
 

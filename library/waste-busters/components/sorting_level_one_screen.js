@@ -4,7 +4,7 @@ export default function (props, ref, key) {
     return SortingGameComponent(props, ref, key, {
         level: 1,
         points: 100,
-        timer: 60000,
+        timer: 6000,
         instructions: (
             <p>
                 Launch the object into the correct bin before<br/>

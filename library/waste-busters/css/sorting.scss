@@ -35,6 +35,24 @@
             }
         }
 
+        &.open-retry {
+            border: 10px solid $red-border;
+            background-color: $transparent-red;
+
+            &::before {
+                @include sprite-sort-level(1);
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+            }
+
+            p {
+                font-size: 48px;
+            }
+        }
+
         .close-reveal {
             right: 5px;
             bottom: 0;
@@ -48,6 +66,19 @@
 
         li {
             left: 65%;
+
+            p {
+                &::before {
+                    @include background($image + 'main.turtle.png');
+                    display: block;
+                    position: absolute;
+                    bottom: -160px;
+                    left: -260px;
+                    width: 300px;
+                    height: 300px;
+                    content: '';
+                }
+            }
         }
 
         .instructions {
@@ -72,17 +103,6 @@
             p {
                 margin-top: 70px;
                 font-size: 24px;
-
-                &::before {
-                    @include background($image + 'main.turtle.png');
-                    display: block;
-                    position: absolute;
-                    bottom: -160px;
-                    left: -260px;
-                    width: 300px;
-                    height: 300px;
-                    content: '';
-                }
             }
         }
     }
