@@ -26,9 +26,9 @@ export default function (props, ref, key) {
         ),
         fact1Content: (
             <p>
-                <h4>
+                <span>
                     Choose Smaller Food Portions
-                </h4>
+                </span>
                 Tip: Sometimes our eyes can<br/>
                 be bigger than our stomachs!<br/>
                 Only take as much food<br/>
@@ -37,9 +37,9 @@ export default function (props, ref, key) {
         ),
         fact2Content: (
             <p>
-                <h4>
+                <span>
                     Carry Reusable Bags
-                </h4>
+                </span>
                 Tip: Keep a canvas bag with<br/>
                 you wherever you go,<br/>
                 so if you shop you can<br/>
@@ -48,9 +48,9 @@ export default function (props, ref, key) {
         ),
         fact3Content: (
             <p>
-                <h4>
+                <span>
                     Discover Recycling Rules
-                </h4>
+                </span>
                 Tip: Each city has their own<br/>
                 recycling rules. Discover the<br/>
                 rules for where you live!

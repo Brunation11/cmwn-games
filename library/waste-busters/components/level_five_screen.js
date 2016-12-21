@@ -25,9 +25,9 @@ export default function (props, ref, key) {
         ),
         fact1Content: (
             <p>
-                <h4>
+                <span>
                     Buy In Bulk
-                </h4>
+                </span>
                 Tip: Individually-wrapped items<br/>
                 use more packaging than<br/>
                 a whole bunch of them<br/>
@@ -36,10 +36,10 @@ export default function (props, ref, key) {
         ),
         fact2Content: (
             <p>
-                <h4>
+                <span>
                     Carry Water in a<br/>
                     Reusable Water Bottle
-                </h4>
+                </span>
                 Tip: Bottled water uses containers<br/>
                 designed to be used only once.<br/>
                 But special reusable water<br/>
@@ -49,10 +49,10 @@ export default function (props, ref, key) {
         ),
         fact3Content: (
             <p>
-                <h4>
+                <span>
                     Prepare Your Cardboard<br/>
                     for Recycling
-                </h4>
+                </span>
                 Tip: Break boxes down to save<br/>
                 space, and be sure<br/>
                 to remove any food waste.

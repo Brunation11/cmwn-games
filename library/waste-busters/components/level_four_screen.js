@@ -27,10 +27,10 @@ export default function (props, ref, key) {
         ),
         fact1Content: (
             <p>
-                <h4>
+                <span>
                     Use Both Sides of a<br/>
                     Piece of Paper
-                </h4>
+                </span>
                 Tip: Whether doing your homework<br/>
                 or making a shopping list,<br/>
                 writing on both sides of<br/>
@@ -40,10 +40,10 @@ export default function (props, ref, key) {
         ),
         fact2Content: (
             <p>
-                <h4>
+                <span>
                     Put Your Lunch in<br/>
                     a Reusable Container
-                </h4>
+                </span>
                 Tip: Instead of carrying your<br/>
                 lunch in a paper or<br/>
                 plastic bag, why not use<br/>
@@ -52,9 +52,9 @@ export default function (props, ref, key) {
         ),
         fact3Content: (
             <p>
-                <h4>
+                <span>
                     Recycle Your Electronics
-                </h4>
+                </span>
                 Tip: Electronic waste contains<br/>
                 hazardous materials and<br/>
                 toxins and should always be<br/>

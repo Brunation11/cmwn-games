@@ -26,9 +26,9 @@ export default function (props, ref, key) {
         ),
         fact1Content: (
             <p>
-                <h4>
+                <span>
                     Use Less Paper
-                </h4>
+                </span>
                 Tip: Tear off one paper<br/>
                 towel sheet at a time<br/>
                 to wipe up spills.
@@ -36,9 +36,9 @@ export default function (props, ref, key) {
         ),
         fact2Content: (
             <p>
-                <h4>
+                <span>
                     Use Metal Utensils
-                </h4>
+                </span>
                 Tip: Reusable metal spoons,<br/>
                 knives and forks are<br/>
                 the way to go!
@@ -46,9 +46,9 @@ export default function (props, ref, key) {
         ),
         fact3Content: (
             <p>
-                <h4>
+                <span>
                     Sort Recyclables from Waste
-                </h4>
+                </span>
                 Tip: Create or buy special bins<br/>
                 to separate the metal,<br/>
                 glass, paper and plastic<br/>

@@ -28,9 +28,9 @@ export default function (props, ref, key) {
         ),
         fact1Content: (
             <p>
-                <h4>
+                <span>
                     Buy Items with Less Packaging
-                </h4>
+                </span>
                 Tip: Some products have more<br/>
                 eco-friendly packaging than<br/>
                 others. Be smart!
@@ -38,9 +38,9 @@ export default function (props, ref, key) {
         ),
         fact2Content: (
             <p>
-                <h4>
+                <span>
                     Buy Clothing at a Thrift Shop
-                </h4>
+                </span>
                 Tip: Save gently used clothing<br/>
                 from the landfill by buying<br/>
                 at thrift stores!
@@ -48,10 +48,10 @@ export default function (props, ref, key) {
         ),
         fact3Content: (
             <p>
-                <h4>
+                <span>
                     Encourage Friends and<br/>
                     Family to Recycle
-                </h4>
+                </span>
                 Tip: Give those closest to you<br/>
                 friendly reminders to<br/>
                 properly recycle their waste.
