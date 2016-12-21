@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import Carousel from 'shared/components/carousel/0.1';
 import Cannon from 'shared/components/cannon/0.2';
 import Randomizer from 'shared/components/randomizer/0.1';

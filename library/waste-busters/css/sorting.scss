@@ -251,6 +251,33 @@
         }
     }
 
+    &#sorting-level-3 {
+        .reveal {
+            .complete {
+                p {
+                    font-size: 28px;
+
+                    h3 {
+                        margin: 0;
+                        font-size: 36px;
+                        font-weight: bold;
+                    }
+
+                    &::before {
+                        @include sprite-reward(2);
+                        top: -60px;
+                        left: -230px;
+                    }
+
+                    &::after {
+                        top: -5px;
+                    }
+                }
+            }
+
+        }
+    }
+
     @for $i from 1 through 3 {
         &#sorting-level-#{$i} {
             .reveal {
