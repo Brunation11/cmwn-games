@@ -22,10 +22,10 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import NeighborhoodWasteScreen from './components/neighborhood_waste_screen';
 // import TypesOfWasteScreen from './components/types_of_waste_screen';
 // import WasteSortCenterScreen from './components/waste_sort_center_screen';
-import SortingLevelOneScreen from './components/sorting_level_one_screen';
-import SortingLevelTwoScreen from './components/sorting_level_two_screen';
-import SortingLevelThreeScreen from './components/sorting_level_three_screen';
-import TakeActionScreen from './components/take_action_screen';
+// import SortingLevelOneScreen from './components/sorting_level_one_screen';
+// import SortingLevelTwoScreen from './components/sorting_level_two_screen';
+// import SortingLevelThreeScreen from './components/sorting_level_three_screen';
+// import TakeActionScreen from './components/take_action_screen';
 import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -55,10 +55,10 @@ skoash.start(
             // NeighborhoodWasteScreen,
             // TypesOfWasteScreen,
             // WasteSortCenterScreen,
-            SortingLevelOneScreen,
-            SortingLevelTwoScreen,
-            SortingLevelThreeScreen,
-            TakeActionScreen,
+            // SortingLevelOneScreen,
+            // SortingLevelTwoScreen,
+            // SortingLevelThreeScreen,
+            // TakeActionScreen,
             FlipScreen,
         ]}
         menus={{
@@ -131,7 +131,6 @@ skoash.start(
             <skoash.Audio
                 type="background"
                 src={MEDIA.EFFECT + 'FlipScreen.mp3'}
-                loop
             />,
             <skoash.Audio
                 type="sfx"
