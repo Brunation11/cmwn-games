@@ -5,6 +5,9 @@ import Selectable from 'shared/components/selectable/0.1';
 import Reveal from 'shared/components/reveal/0.1';
 import Draggable from 'shared/components/draggable/0.1';
 
+const OPEN_ON_START = 10;
+const CORRECT = 11;
+
 class GlobeScreenComponent extends skoash.Screen {
     open() {
         super.open();
@@ -41,7 +44,7 @@ export default function (props, ref, key) {
     var selectRespond = function (answer, correctAnswer) {
         var incorrectAudio;
         if (answer === correctAnswer) {
-            openReveal('reveal', 'correct', () => {
+            openReveal('reveal', CORRECT, () => {
                 setTimeout(() => {
                     closeReveal(2);
                 }, 1000);
@@ -96,7 +99,7 @@ export default function (props, ref, key) {
                         </skoash.Component>
                     </skoash.Component>,
                 ]}
-                openOnStart="open-on-start"
+                openOnStart={OPEN_ON_START}
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 closeReveal={_.get(props, 'data.reveal.close', null)}
                 revealList={[
@@ -193,7 +196,7 @@ export default function (props, ref, key) {
                         <h3>How many years have Sea Turtles been on earth?</h3>
                         <Selectable
                           list={[
-                              <skoash.ListItem><h4>Since before the Civil War</h4></skoash.ListItem>,
+                              <skoash.ListItem><h4>100,000 years</h4></skoash.ListItem>,
                               <skoash.ListItem correct><h4>Over 150 Million years</h4></skoash.ListItem>,
                               <skoash.ListItem><h4>Since Tuesday</h4></skoash.ListItem>,
                           ]}
@@ -222,7 +225,7 @@ export default function (props, ref, key) {
                           selectRespond={_.bind(selectRespond, undefined, _, '1')}
                         />
                     </skoash.Component>,
-                    <skoash.Component type="li" ref="open-on-start" id="open-on-start" className="center">
+                    <skoash.Component type="li" id="open-on-start" className="center">
                         <h3>
                             Click and drag icons into<br />
                             the globe to get a question!<br />
@@ -230,6 +233,7 @@ export default function (props, ref, key) {
                             fill the globe.
                         </h3>
                     </skoash.Component>,
+                    <skoash.Component type="li" id="correct" />,
                     <skoash.Component
                         type="li"
                         ref="instructions"
@@ -238,7 +242,6 @@ export default function (props, ref, key) {
                     >
                         <h3>Keep filling the globe!</h3>
                     </skoash.Component>,
-                    <skoash.Component type="li" ref="correct" id="correct" />,
                 ]}
                 revealAssets={[
                     <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.2.mp3" />,
@@ -251,9 +254,9 @@ export default function (props, ref, key) {
                     <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.9.mp3" />,
                     <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.10.mp3" />,
                     <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.11.mp3" />,
-                    <skoash.Audio type="voiceOver" ref="open-on-start" src="media/audio/globe/VO_4.1.mp3"
-                    onComplete={closeReveal} />,
-                    <skoash.Audio type="sfx" ref="correct" src="media/audio/SO_Right.mp3" />,
+                    <skoash.Audio type="voiceOver" src="media/audio/globe/VO_4.1.mp3"
+                        onComplete={closeReveal} />,
+                    <skoash.Audio type="sfx" src="media/audio/SO_Right.mp3" />,
                     <skoash.Audio type="sfx" ref="incorrect-1" complete src="media/audio/SO_Wrong.mp3" />,
                     <skoash.Audio type="sfx" ref="incorrect-2" complete src="media/audio/SO_Wrong.mp3" />,
                     <skoash.Image
