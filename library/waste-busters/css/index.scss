@@ -9,8 +9,14 @@ html {
     font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.pl-game {
+.skoash-game {
     overflow: hidden;
+}
+
+#waste-busters {
+    .skoash-game.PAUSED:not(.DEMO)::before {
+        background-color: $transparent-green;
+    }
 }
 
 button {

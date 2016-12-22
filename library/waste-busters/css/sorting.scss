@@ -16,6 +16,13 @@
     .cannon {
         @include cannon;
 
+        &.FIRE {
+            .LOADED {
+                animation-duration: 1s;
+                animation-delay: 1s;
+            }
+        }
+
         .launch-button {
             @include sprite-sort-button;
         }
@@ -80,6 +87,14 @@
     .timer {
         text-align: center;
         font-size: 1.25rem;
+    }
+
+    .sprite-animation {
+        position: absolute;
+        bottom: 0;
+        left: 330px;
+        width: 300px;
+        height: 300px;
     }
 
     .reveal {

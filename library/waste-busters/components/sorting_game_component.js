@@ -107,7 +107,8 @@ export default function (props, ref, key, opts = {}) {
             <skoash.SpriteAnimation
                 className="slingshot"
                 src={`${MEDIA.SPRITE}slingshot.png`}
-                animate={''}
+                animate={_.get(props, 'data.game.firing', false)}
+                animateOnStart={false}
                 frames={6}
                 complete
             />
