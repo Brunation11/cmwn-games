@@ -32,25 +32,6 @@ export default function () {
     [this.doors, this.ground, this.helpers.stay],
     ]);
 
-    if (this.controller.pause) {
-        this.controller = { pause: true };
-        movePlayer.call(this);
-        return;
-    }
-
-    addResponses.call(this, 'overlap', [
-    [this.player, this.bags, this.helpers.collectBags],
-    [this.player, this.hearts, this.helpers.collectHeart],
-    [this.player, this.recycles, this.helpers.collectRecycling],
-    [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
-    [this.player, this.trucks, this.helpers.loadTruck],
-    [this.player, this.doors, this.helpers.exit],
-    [this.player, this.logs, this.helpers.inLog],
-    [this.player, this.lightening, this.helpers.collectLightening],
-    [this.player, this.snakes, this.helpers.hitEnemy],
-    [this.snakes, this.holes, this.helpers.activateSnake],
-    ]);
-
     if (!this.data.levels[this.opts.level].complete) {
         if (this.player.boost) {
             movePlayer.call(this, {
@@ -75,6 +56,24 @@ export default function () {
         this.player.animations.play('right');
         this.game.physics.arcade.enable(this.player);
     }
+
+    if (this.controller.pause) {
+        this.controller = { pause: true };
+        return;
+    }
+
+    addResponses.call(this, 'overlap', [
+    [this.player, this.bags, this.helpers.collectBags],
+    [this.player, this.hearts, this.helpers.collectHeart],
+    [this.player, this.recycles, this.helpers.collectRecycling],
+    [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
+    [this.player, this.trucks, this.helpers.loadTruck],
+    [this.player, this.doors, this.helpers.exit],
+    [this.player, this.logs, this.helpers.inLog],
+    [this.player, this.lightening, this.helpers.collectLightening],
+    [this.player, this.snakes, this.helpers.hitEnemy],
+    [this.snakes, this.holes, this.helpers.activateSnake],
+    ]);
 
     this.game.camera.x =
         Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);
