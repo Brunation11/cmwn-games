@@ -216,6 +216,6 @@ export default {
             this.data.levels[this.opts.level].doorOpen = false;
             this.helpers.emitData.call(this);
             this.player.body.velocity.x = 0;
-        }, 1500);
+        }, 2500);
     }
 };

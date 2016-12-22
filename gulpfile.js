@@ -53,9 +53,14 @@ function defineEntries(config) {
         varsPath,
         mediaPath,
         './' + game + '/index.js',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080/',
     ];
+
+    if (env === 'dev') {
+        config.entry.push (
+            'webpack/hot/dev-server',
+            'webpack-dev-server/client?http://localhost:8080/'
+        );
+    }
 
     return config;
 }

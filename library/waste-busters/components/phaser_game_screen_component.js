@@ -353,6 +353,7 @@ export default function (props, ref, key, opts = {}) {
                     type="voiceOver"
                     ref="replay"
                     src={`${MEDIA.VO}Another_Chance.mp3`}
+                    complete
                 />
             </skoash.MediaCollection>
         </skoash.Screen>

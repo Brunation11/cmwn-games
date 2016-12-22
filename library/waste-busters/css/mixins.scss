@@ -138,6 +138,7 @@
     width: 200px;
     height: 20px;
     vertical-align: middle;
+    transform: scale3d(1, 1, 1);
 
     &::after {
         position: absolute;
@@ -203,6 +204,8 @@
 }
 
 @mixin life-tracker() {
+    transform: scale3d(1, 1, 1);
+
     &::before,
     &::after {
         content: '';

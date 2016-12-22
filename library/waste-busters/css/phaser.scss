@@ -197,12 +197,6 @@
         .close-reveal {
             right: 200px;
             bottom: 90px;
-            pointer-events: none;
-
-            .skoash-game:not(.VOICE-OVER) & {
-                opacity: 1;
-                pointer-events: auto;
-            }
         }
 
         span.truck {
