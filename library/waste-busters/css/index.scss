@@ -13,12 +13,6 @@ html {
     overflow: hidden;
 }
 
-#waste-busters {
-    .skoash-game.PAUSED:not(.DEMO)::before {
-        background-color: $transparent-green;
-    }
-}
-
 button {
     &.close {
         @include nav-button(4, 40px, 45px);
