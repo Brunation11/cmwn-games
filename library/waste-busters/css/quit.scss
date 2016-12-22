@@ -1,1 +1,38 @@
 @import 'variables';
+@import 'mixins';
+
+#quit {
+    .frame {
+        width: 960px;
+    }
+
+    br,
+    br::after {
+        content: ' ';
+    }
+
+    h2,
+    h3 {
+        @include text-stroke(2, $black);
+        line-height: 1.2;
+        white-space: nowrap;
+        font-size: 48px;
+        font-weight: bold;
+        -webkit-text-stroke: 1px $dark-green;
+        text-stroke: 1px $dark-green;
+    }
+
+    .quit-yes,
+    .quit-no {
+        width: 266px;
+        height: 266px;
+    }
+
+    .quit-yes {
+        @include nav-button(7);
+    }
+
+    .quit-no {
+        @include nav-button(8);
+    }
+}
