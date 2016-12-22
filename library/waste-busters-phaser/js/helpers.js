@@ -201,8 +201,9 @@ export default {
             top: 0,
         }]);
 
-        this.doors.children[0].animations.add('open', [0, 1, 2, 3, 4, 5, 6], 10, false);
-        this.doors.children[0].animations.add('close', [6, 5, 4, 3, 2, 1, 0], 10, false);
+        this.doors.children[0].animations.add('open', [5, 4, 3, 2, 1, 0], 10, false);
+        this.doors.children[0].animations.add('close', [0, 1, 2, 3, 4, 5], 10, false);
+        this.doors.children[0].animations.play('close');
     },
     exit() {
         if (this.data.levels[this.opts.level].trucks !== this.opts.maxTrucks) return;
