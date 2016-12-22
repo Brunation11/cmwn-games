@@ -3,25 +3,25 @@ import config from './config';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-// import TitleScreen from './components/title_screen';
-// import EatAndDrinkScreen from './components/eat_and_drink_screen';
-// import LearnAndCreateScreen from './components/learn_and_create_screen';
-// import WhatHappensScreen from './components/what_happens_screen';
-// import BetterWaysScreen from './components/better_ways_screen';
-// import ClickCardsScreen from './components/click_cards_screen';
-// import CardsScreen from './components/cards_screen';
-// import TimeToCollectScreen from './components/time_to_collect_screen';
-// import LetsPlayScreen from './components/lets_play_screen';
-// import RememberScreen from './components/remember_screen';
-// import LevelOneScreen from './components/level_one_screen';
-// import LevelTwoScreen from './components/level_two_screen';
-// import LevelThreeScreen from './components/level_three_screen';
-// import LevelFourScreen from './components/level_four_screen';
-// import LevelFiveScreen from './components/level_five_screen';
-// // import BonusRoundScreen from './components/bonus_round_screen';
-// import NeighborhoodWasteScreen from './components/neighborhood_waste_screen';
-// import TypesOfWasteScreen from './components/types_of_waste_screen';
-// import WasteSortCenterScreen from './components/waste_sort_center_screen';
+import TitleScreen from './components/title_screen';
+import EatAndDrinkScreen from './components/eat_and_drink_screen';
+import LearnAndCreateScreen from './components/learn_and_create_screen';
+import WhatHappensScreen from './components/what_happens_screen';
+import BetterWaysScreen from './components/better_ways_screen';
+import ClickCardsScreen from './components/click_cards_screen';
+import CardsScreen from './components/cards_screen';
+import TimeToCollectScreen from './components/time_to_collect_screen';
+import LetsPlayScreen from './components/lets_play_screen';
+import RememberScreen from './components/remember_screen';
+import LevelOneScreen from './components/level_one_screen';
+import LevelTwoScreen from './components/level_two_screen';
+import LevelThreeScreen from './components/level_three_screen';
+import LevelFourScreen from './components/level_four_screen';
+import LevelFiveScreen from './components/level_five_screen';
+// import BonusRoundScreen from './components/bonus_round_screen';
+import NeighborhoodWasteScreen from './components/neighborhood_waste_screen';
+import TypesOfWasteScreen from './components/types_of_waste_screen';
+import WasteSortCenterScreen from './components/waste_sort_center_screen';
 import SortingLevelOneScreen from './components/sorting_level_one_screen';
 import SortingLevelTwoScreen from './components/sorting_level_two_screen';
 import SortingLevelThreeScreen from './components/sorting_level_three_screen';
@@ -36,25 +36,25 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
-            // EatAndDrinkScreen,
-            // LearnAndCreateScreen,
-            // WhatHappensScreen,
-            // BetterWaysScreen,
-            // ClickCardsScreen,
-            // CardsScreen,
-            // TimeToCollectScreen,
-            // LetsPlayScreen,
-            // RememberScreen,
-            // LevelOneScreen,
-            // LevelTwoScreen,
-            // LevelThreeScreen,
-            // LevelFourScreen,
-            // LevelFiveScreen,
-            // // BonusRoundScreen,
-            // NeighborhoodWasteScreen,
-            // TypesOfWasteScreen,
-            // WasteSortCenterScreen,
+            TitleScreen,
+            EatAndDrinkScreen,
+            LearnAndCreateScreen,
+            WhatHappensScreen,
+            BetterWaysScreen,
+            ClickCardsScreen,
+            CardsScreen,
+            TimeToCollectScreen,
+            LetsPlayScreen,
+            RememberScreen,
+            LevelOneScreen,
+            LevelTwoScreen,
+            LevelThreeScreen,
+            LevelFourScreen,
+            LevelFiveScreen,
+            // BonusRoundScreen,
+            NeighborhoodWasteScreen,
+            TypesOfWasteScreen,
+            WasteSortCenterScreen,
             SortingLevelOneScreen,
             SortingLevelTwoScreen,
             SortingLevelThreeScreen,
