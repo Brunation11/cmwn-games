@@ -6,40 +6,46 @@ export default function () {
     ];
 
     const generalDefaultProps = {
-        image: 'logs',
-        gravityY: 12,
+        image: 'land',
+        gravityY: 0,
         body: [115, 100, 20, 50],
         scale: [.5, .5],
         collideWorldBounds: false,
     };
 
     const defaultProps = {
+        land1: _.defaults({
+            crop: crops[0],
+        }, generalDefaultProps)
     };
 
     const groups = {
-        squareBush: 'bushes',
-        roundBush: 'bushes',
-        snake: 'snakes',
-        hole: 'holes',
-        bag: 'bags',
-        rock: 'obstacles',
-        stump: 'obstacles',
-        heart: 'hearts',
-        recycle: 'recycles',
-        raibowRecycle: 'rainbowRecycles',
-        lightening: 'lightening',
-        truck: 'trucks',
-        tree1: 'trees',
-        tree2: 'trees',
-        tree3: 'trees',
-        tree4: 'trees',
-        tree5: 'trees',
-        tree6: 'trees',
-        tree7: 'trees',
+        wind: 'winds',
+        water: 'waters',
+        web: 'webs',
+        log: 'logs',
+        leaf: 'leafs',
+        egg: 'eggs',
+        cloud: 'clouds',
+        wood1: 'logs',
+        wood2: 'logs',
+        wood3: 'logs',
+        land1: 'lands',
+        land2: 'lands',
+        land3: 'lands',
+        land4: 'lands',
+        land5: 'lands',
+        fruit1: 'fruits',
+        fruit2: 'fruits',
+        fruit3: 'fruits',
+        fruit4: 'fruits',
+        flower1: 'flowers',
+        flower2: 'flowers',
+        flower3: 'flowers',
+        flower4: 'flowers',
+        flower5: 'flowers',
+        flower6: 'flowers',
     };
-
-    var truckNumber = 1;
-    var truckTotal = this.opts.maxTrucks;
 
     var getObjects = function (objects = [], amounts = {}) {
         return objects.concat(_.shuffle([]
@@ -55,32 +61,17 @@ export default function () {
             .concat(_.times(amounts.recycle || 0, () => 'recycle'))
             .concat(_.times(amounts.raibowRecycle || 0, () => 'raibowRecycle'))
             .concat(_.times(amounts.lightening || 0, () => 'lightening'))
-            .concat(_.times(amounts.tree1 || 0, () => 'tree1'))
-            .concat(_.times(amounts.tree2 || 0, () => 'tree2'))
-            .concat(_.times(amounts.tree3 || 0, () => 'tree3'))
-            .concat(_.times(amounts.tree4 || 0, () => 'tree4'))
-            .concat(_.times(amounts.tree5 || 0, () => 'tree5'))
-            .concat(_.times(amounts.tree6 || 0, () => 'tree6'))
-            .concat(_.times(amounts.tree7 || 0, () => 'tree7'))
         ));
     };
 
-    var objects = getObjects([], this.opts.platformItemAmounts);
+    var objects = getObjects([], this.opts.itemAmounts);
 
-    var locations = {
-        wind: [],
-        water: [],
-        web: [],
-        log: [],
-        leaf: [],
-        egg: [],
-        cloud: [],
-        logs: [],
-        land: [],
-        fruits: [],
-        flowers: [],
+    var locations = _.defaults({
         blank: [],
-    };
+    }, _.reduce(this.opts.itemAmounts, (a, v, k) => {
+        a[k] = [];
+        return a;
+    }, {}));
 
     var placeObject = function (platform, up, over) {
         var object = objects.shift();
@@ -96,16 +87,6 @@ export default function () {
         placeObject(platform, 50, 30);
         if (platform.width > 120) placeObject(platform, 50, 80);
         if (platform.width > 200) placeObject(platform, 50, 170);
-        return objects.length;
-    });
-
-    objects = getObjects(objects, this.opts.groundItemAmounts);
-    objects.unshift('blank');
-    objects.unshift('blank');
-
-    _.every(this.ground.children, platform => {
-        if (platform.left > this.game.world.width - 200) return false;
-        placeObject(platform, 20, 30);
         return objects.length;
     });
 

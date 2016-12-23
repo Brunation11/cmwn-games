@@ -13,19 +13,22 @@ export default function () {
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
     this.helpers.makeBackground.call(this);
-    this.helpers.makeItems.call(this);
+    // this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,
         top: this.game.world.height - 450,
         image: this.opts.playerImage,
-        bounceY: this.opts.bounceY,
+        bounceY: 0,
         gravityY: this.opts.gravityY,
         body: this.opts.playerBody,
-        rightFrames: this.opts.rightFrames,
-        leftFrames: this.opts.leftFrames,
+        rightFrames: [0, 1, 2, 3],
         scale: this.opts.playerScale,
     });
+
+    // this.player.body.onWorldBounds.add(() => {
+    //     console.log('ahh');
+    // });
 
     this.data = _.defaults({
         levels: {

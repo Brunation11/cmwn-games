@@ -14,24 +14,14 @@ export default {
     },
     onBump() {
     },
-    turnAround(enemy) {
-        if (enemy.isTurning) return;
-        enemy.isTurning = true;
-        enemy.body.velocity.x = -1 * enemy.body.velocity.x;
-        enemy.animations.play(enemy.body.velocity.x < 0 ? 'left' : 'right');
-        setTimeout(() => {
-            enemy.isTurning = false;
-        }, 500);
+    onLogCollide() {
+
     },
-    hitEnemy(p, e) {
-        if (!e.active) return;
-        this.helpers.hitSomething.call(this, p);
+    onWoodCollide() {
+
     },
-    hitObstacle(p) {
-        this.helpers.hitSomething.call(this, p);
-    },
-    hitWater(p) {
-        this.helpers.hitSomething.call(this, p, 1, 1);
+    onLandCollide() {
+
     },
     hitSomething(p, i = 1, d = -1) {
         if (this.isHit) return;
@@ -54,6 +44,27 @@ export default {
                 this.helpers.emitData.call(this);
             }
         }, 250);
+    },
+    onWindOverlap() {
+
+    },
+    onWaterOverlap() {
+
+    },
+    onWebOverlap() {
+
+    },
+    onLeafOverlap() {
+
+    },
+    onCloudOverlap() {
+
+    },
+    onFruitOverlap() {
+
+    },
+    onFlowerOverlap() {
+
     },
     collectHeart(player, heart) {
         if (this.data.lives === this.opts.maxLives) return;

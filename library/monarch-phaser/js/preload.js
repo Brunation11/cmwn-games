@@ -10,7 +10,7 @@ export default function () {
     ['leaf', `${MEDIA.IMAGE}img.leaf.png`],
     ['egg', `${MEDIA.IMAGE}img.egg.png`],
     ['cloud', `${MEDIA.IMAGE}img.cloud.png`],
-    ['logs', `${MEDIA.SPRITE}sprite.logs.png`],
+    ['wood', `${MEDIA.SPRITE}sprite.logs.png`],
     ['land', `${MEDIA.SPRITE}sprite.land.png`],
     ['fruits', `${MEDIA.SPRITE}sprite.fruits.png`],
     ['flowers', `${MEDIA.SPRITE}sprite.flowers.png`],
