@@ -1,7 +1,0 @@
-$powder-color: #32c4f3;
-
-@mixin powder($blur: 15px) {
-    font-family: 'Powderfinger';
-    text-shadow: 0 0 $blur $powder-color;
-    font-weight: normal;
-}
