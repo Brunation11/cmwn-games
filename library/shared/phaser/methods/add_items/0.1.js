@@ -46,6 +46,7 @@ export default function (groupOpts = {}, optsArray = []) {
         }
         item.angle = opts.angle;
         item.anchor.setTo(...opts.anchor);
+        item.frame = opts.frame;
 
         if (groupOpts.enableBody) {
             item.body.immovable = opts.immovable;

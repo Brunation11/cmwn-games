@@ -8,12 +8,6 @@ export default function () {
         return;
     }
 
-    addResponses.call(this, 'collide', [
-    [this.player, this.logs, this.helpers.onLogCollide],
-    [this.player, this.woods, this.helpers.onWoodCollide],
-    [this.player, this.lands, this.helpers.onLandCollide],
-    ]);
-
     if (this.controller.pause) {
         this.controller = { pause: true };
         flyPlayer.call(this);
@@ -25,6 +19,9 @@ export default function () {
     }
 
     addResponses.call(this, 'overlap', [
+    [this.player, this.logs, this.helpers.onLogOverlap],
+    [this.player, this.woods, this.helpers.onWoodOverlap],
+    [this.player, this.lands, this.helpers.onLandOverlap],
     [this.player, this.winds, this.helpers.onWindOverlap],
     [this.player, this.waters, this.helpers.onWaterOverlap],
     [this.player, this.webs, this.helpers.onWebOverlap],

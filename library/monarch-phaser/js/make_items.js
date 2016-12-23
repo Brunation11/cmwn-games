@@ -1,25 +1,118 @@
 import addItems from 'shared/phaser/methods/add_items/0.1';
 
 export default function () {
-    const crops = [
-        [0, 0, 155, 140],
-    ];
+    // a crop should look like
+    // [0, 0, 155, 140],
 
     const generalDefaultProps = {
         image: 'land',
-        gravityY: 0,
-        body: [115, 100, 20, 50],
         scale: [.5, .5],
-        collideWorldBounds: false,
+    };
+
+    const woodDefaultProps = {
+        image: 'wood',
+        scale: [.5, .5],
+    };
+
+    const fruitDefaultProps = {
+        image: 'fruits',
+        scale: [.5, .5],
+    };
+
+    const flowerDefaultProps = {
+        image: 'flowers',
+        scale: [.5, .5],
     };
 
     const defaultProps = {
+        star: {
+            image: 'star',
+            scale: [.25, .25],
+        },
+        crow: {
+            image: 'crow',
+            scale: [.25, .25],
+        },
+        wind: _.defaults({
+            image: 'wind',
+        }, generalDefaultProps),
+        water: _.defaults({
+            image: 'water',
+        }, generalDefaultProps),
+        web: _.defaults({
+            image: 'web',
+        }, generalDefaultProps),
+        log: _.defaults({
+            image: 'log',
+        }, generalDefaultProps),
+        leaf: _.defaults({
+            image: 'leaf',
+        }, generalDefaultProps),
+        egg: _.defaults({
+            image: 'egg',
+        }, generalDefaultProps),
+        cloud: _.defaults({
+            image: 'cloud',
+        }, generalDefaultProps),
+        wood1: _.defaults({
+            frame: 0,
+        }, woodDefaultProps),
+        wood2: _.defaults({
+            frame: 1,
+        }, woodDefaultProps),
+        wood3: _.defaults({
+            frame: 2,
+        }, woodDefaultProps),
         land1: _.defaults({
-            crop: crops[0],
-        }, generalDefaultProps)
+            frame: 0,
+        }, generalDefaultProps),
+        land2: _.defaults({
+            frame: 1,
+        }, generalDefaultProps),
+        land3: _.defaults({
+            frame: 2,
+        }, generalDefaultProps),
+        land4: _.defaults({
+            frame: 3,
+        }, generalDefaultProps),
+        land5: _.defaults({
+            frame: 4,
+        }, generalDefaultProps),
+        fruit1: _.defaults({
+            frame: 0,
+        }, fruitDefaultProps),
+        fruit2: _.defaults({
+            frame: 1,
+        }, fruitDefaultProps),
+        fruit3: _.defaults({
+            frame: 2,
+        }, fruitDefaultProps),
+        fruit4: _.defaults({
+            frame: 3,
+        }, fruitDefaultProps),
+        flower1: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
+        flower2: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
+        flower3: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
+        flower4: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
+        flower5: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
+        flower6: _.defaults({
+            image: 'flowers',
+        }, flowerDefaultProps),
     };
 
     const groups = {
+        star: 'stars',
+        crow: 'crows',
         wind: 'winds',
         water: 'waters',
         web: 'webs',
@@ -48,47 +141,31 @@ export default function () {
     };
 
     var getObjects = function (objects = [], amounts = {}) {
-        return objects.concat(_.shuffle([]
-            .concat(_.times(amounts.squareBush || 0, () => 'squareBush'))
-            .concat(_.times(amounts.roundBush || 0, () => 'roundBush'))
-            .concat(_.times(amounts.snake || 0, () => 'snake'))
-            .concat(_.times(amounts.hole || 0, () => 'hole'))
-            .concat(_.times(amounts.bag || 0, () => 'bag'))
-            .concat(_.times(amounts.blank || 0, () => 'blank'))
-            .concat(_.times(amounts.rock || 0, () => 'rock'))
-            .concat(_.times(amounts.stump || 0, () => 'stump'))
-            .concat(_.times(amounts.heart || 0, () => 'heart'))
-            .concat(_.times(amounts.recycle || 0, () => 'recycle'))
-            .concat(_.times(amounts.raibowRecycle || 0, () => 'raibowRecycle'))
-            .concat(_.times(amounts.lightening || 0, () => 'lightening'))
-        ));
+        return objects.concat(_.shuffle(_.reduce(amounts, (a, v, k) =>
+            a.concat(_.times(v || 0, () => k)), [])));
     };
 
     var objects = getObjects([], this.opts.itemAmounts);
 
-    var locations = _.defaults({
-        blank: [],
-    }, _.reduce(this.opts.itemAmounts, (a, v, k) => {
+    var locations = _.reduce(this.opts.itemAmounts, (a, v, k) => {
         a[k] = [];
         return a;
-    }, {}));
+    }, {});
 
-    var placeObject = function (platform, up, over) {
+    var placeObject = function (top, left) {
         var object = objects.shift();
         if (locations[object]) {
             locations[object].push({
-                top: platform.top - up,
-                left: platform.left + over,
+                top,
+                left,
             });
         }
     };
 
-    _.every(this.platforms.children, platform => {
-        placeObject(platform, 50, 30);
-        if (platform.width > 120) placeObject(platform, 50, 80);
-        if (platform.width > 200) placeObject(platform, 50, 170);
-        return objects.length;
-    });
+    for (let left = 500; left < this.game.world.width; left += 200) {
+        placeObject(200, left);
+        if (!objects.length) break;
+    }
 
     _.each(locations, (locationArray, key) => {
         if (key === 'blank') return;
@@ -97,8 +174,10 @@ export default function () {
         }, locationArray);
     });
 
-    // _.each(this.hearts.children, heart => {
-    //     heart.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
-    //     heart.animations.play('spin');
-    // });
+    if (this.stars) {
+        _.each(this.stars.children, star => {
+            star.animations.add('spin', [0, 1, 2, 3, 4, 5], 10, true);
+            star.animations.play('spin');
+        });
+    }
 }

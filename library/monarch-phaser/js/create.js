@@ -5,13 +5,13 @@ export default function () {
     this.controller = {};
 
     setGameStage.call(this, {
-        width: 18000,
+        width: 20000,
         height: 740,
         top: -200,
     });
 
     this.helpers.makeBackground.call(this);
-    // this.helpers.makeItems.call(this);
+    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,
@@ -22,11 +22,8 @@ export default function () {
         body: this.opts.playerBody,
         rightFrames: [0, 1, 2, 3],
         scale: this.opts.playerScale,
+        onWorldBounds: this.helpers.onWorldCollide.bind(this),
     });
-
-    // this.player.body.onWorldBounds.add(() => {
-    //     console.log('ahh');
-    // });
 
     this.data = _.defaults({
         levels: {

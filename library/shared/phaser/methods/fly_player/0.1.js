@@ -6,7 +6,6 @@ export default function (opts) {
     });
 
     //  Reset the players velocity (movement)
-    if (this.isHit) return;
     this.player.body.velocity.x = opts.rightSpeed;
     this.player.animations.play('right');
 

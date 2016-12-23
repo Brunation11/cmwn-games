@@ -50,6 +50,11 @@ export default function (opts = {}) {
         }, 0);
     }
 
+    if (opts.onWorldBounds) {
+        this.player.body.onWorldBounds = new Phaser.Signal();
+        this.player.body.onWorldBounds.add(opts.onWorldBounds);
+    }
+
     //  Our two animations, walking left and right.
     this.player.animations.add('left', opts.leftFrames, opts.leftFrameRate, opts.leftLoop);
     this.player.animations.add('right', opts.rightFrames, opts.rightFrameRate, opts.rightLoop);

@@ -12,24 +12,21 @@ export default {
             }
         });
     },
-    onBump() {
+    onLogOverlap() {
+        this.helpers.hitSomething.call(this);
     },
-    onLogCollide() {
-
+    onWoodOverlap() {
+        this.helpers.hitSomething.call(this);
     },
-    onWoodCollide() {
-
+    onLandOverlap() {
+        this.helpers.hitSomething.call(this);
     },
-    onLandCollide() {
-
+    onWorldCollide() {
+        this.helpers.hitSomething.call(this);
     },
-    hitSomething(p, i = 1, d = -1) {
+    hitSomething(i = 1) {
         if (this.isHit) return;
         this.isHit = true;
-        p.body.velocity.y = -1 * this.opts.hitVelocity;
-
-        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ?
-            d : -1 * d) * this.opts.hitVelocity;
 
         setTimeout(() => {
             this.isHit = false;
@@ -37,13 +34,6 @@ export default {
 
         this.data.hits += i;
         this.helpers.emitData.call(this);
-        setTimeout(() => {
-            if (this.data.hits >= this.opts.hitsPerLife) {
-                this.data.hits -= this.opts.hitsPerLife;
-                this.data.lives--;
-                this.helpers.emitData.call(this);
-            }
-        }, 250);
     },
     onWindOverlap() {
 

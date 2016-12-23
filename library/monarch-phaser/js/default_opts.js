@@ -25,6 +25,9 @@ export default {
     setPlatforms: [],
     locations: [],
     itemAmounts: {
+        blank: 0,
+        star: 0,
+        crow: 0,
         wind: 0,
         water: 0,
         web: 0,

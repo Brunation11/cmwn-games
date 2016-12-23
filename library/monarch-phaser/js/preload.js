@@ -10,14 +10,14 @@ export default function () {
     ['leaf', `${MEDIA.IMAGE}img.leaf.png`],
     ['egg', `${MEDIA.IMAGE}img.egg.png`],
     ['cloud', `${MEDIA.IMAGE}img.cloud.png`],
-    ['wood', `${MEDIA.SPRITE}sprite.logs.png`],
-    ['land', `${MEDIA.SPRITE}sprite.land.png`],
-    ['fruits', `${MEDIA.SPRITE}sprite.fruits.png`],
-    ['flowers', `${MEDIA.SPRITE}sprite.flowers.png`],
     ]);
 
-    // loadAssets.call(this, 'spritesheet', [
-    // ]);
+    loadAssets.call(this, 'spritesheet', [
+    ['wood', `${MEDIA.SPRITE}sprite.logs.png`, 490, 125],
+    ['land', `${MEDIA.SPRITE}sprite.land.png`, 345, 245],
+    ['fruits', `${MEDIA.SPRITE}sprite.fruits.png`, 120, 105],
+    ['flowers', `${MEDIA.SPRITE}sprite.flowers.png`, 190, 180],
+    ]);
 
     loadAssets.call(this, 'atlas', [
         [
