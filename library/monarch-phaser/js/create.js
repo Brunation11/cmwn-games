@@ -1,5 +1,4 @@
 import setGameStage from 'shared/phaser/methods/set_game_stage/0.1';
-//import randomizeLocations from 'shared/phaser/methods/randomize_locations/0.1';
 import addPlayer from 'shared/phaser/methods/add_player/0.1';
 
 export default function () {
@@ -14,10 +13,6 @@ export default function () {
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
     this.helpers.makeBackground.call(this);
-    this.helpers.makeGround.call(this);
-    this.helpers.makeDoor.call(this);
-    this.helpers.makePlatforms.call(this);
-    this.helpers.makeLogs.call(this);
     this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {

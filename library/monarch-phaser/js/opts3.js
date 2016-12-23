@@ -2,8 +2,6 @@ import defaultOpts from './default_opts';
 
 export default _.defaults({
     level: 3,
-    platformsLogChance: 1 / 20,
-    groundLogChance: 1 / 20,
     setPlatforms: [
         [[-30, 160], 2],
         [[0, 240], 0],
@@ -41,18 +39,5 @@ export default _.defaults({
         tree2: 1,
         tree4: 1,
         tree5: 1,
-    },
-    groundItemAmounts: {
-        squareBush: 1,
-        roundBush: 1,
-        snake: 2,
-        bag: 0,
-        blank: 5,
-        rock: 1,
-        stump: 1,
-        heart: 0,
-        recycle: 0,
-        raibowRecycle: 0,
-        tree1: 1,
     }
 }, defaultOpts);

@@ -12,16 +12,4 @@ export default function () {
         { left: 0 },
         { left: 2975.5 }
     ]);
-
-    addItems.call(this, {
-        group: 'clouds', enableBody: false, defaultOpts: {
-            collideWorldBounds: false,
-            top: 0,
-            image: 'clouds',
-            scale: [.5, .5],
-        }
-    }, [
-        { left: 0 },
-        { left: 2975.5 }
-    ]);
 }
