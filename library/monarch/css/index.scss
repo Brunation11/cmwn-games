@@ -1,0 +1,91 @@
+@import 'variables';
+@import 'mixins';
+
+@include reset;
+@include bootstrap-game;
+
+html {
+    color: $text-color;
+    font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.skoash-game {
+    > .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+button {
+    &.close {
+        @include nav-button(4, 40px, 45px);
+        width: 40px;
+        height: 45px;
+    }
+
+    &.next-screen,
+    &.prev-screen,
+    &.close-reveal {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        z-index: 2;
+        margin: 0;
+        width: 90px;
+        height: 65px;
+    }
+
+    &.next-screen,
+    &.close-reveal {
+        @include nav-button(3, 90px, 65px);
+        right: 15px;
+    }
+
+    &.prev-screen {
+        @include nav-button(2, 90px, 65px);
+        left: 15px;
+    }
+}
+
+.skoash-game {
+    $screens:
+        title
+        flip;
+
+    $backgrounds:
+        title
+        everyday;
+
+    @include screen-backgrounds($screens, $backgrounds);
+
+    .background {
+        $sprite-backgrounds: title everyday cards;
+        @for $i from 1 through length($sprite-backgrounds) {
+            &.#{nth($sprite-backgrounds, $i)} {
+                @include sprite-background($i);
+            }
+        }
+
+        @for $i from 1 through 3 {
+            &.bkg-#{$i} {
+                @include background($image + 'BKG.#{$i}.jpg');
+                background-size: cover;
+            }
+        }
+    }
+}
+
+.frame {
+    @include center;
+    @include background($frame + 'transition.frame.png');
+
+    &.fact {
+        @include background($frame + 'monarch.fact.png');
+    }
+
+    &.try-again {
+        @include background($frame + 'try.again.frame.png');
+    }
+}

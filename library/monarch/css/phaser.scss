@@ -1,0 +1,58 @@
+@import 'variables';
+@import 'mixins';
+
+[id*=phaser] {
+    iframe {
+        display: block;
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .timer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 40px;
+
+        &::before {
+            display: block;
+            content: '';
+        }
+    }
+
+    .guages {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .score,
+    .life {
+        @include score-meter(4, $bright-green);
+
+        &::before {
+            display: block;
+            position: absolute;
+            top: -10px;
+            left: -40px;
+            z-index: 2;
+            background-repeat: no-repeat;
+            width: 60px;
+            height: 45px;
+            content: '';
+        }
+    }
+
+    .score {
+        // todo later
+    }
+
+    .life {
+        // todo later
+    }
+
+    .reveal {
+        @include reveal;
+    }
+}
