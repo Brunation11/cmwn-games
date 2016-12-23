@@ -5,12 +5,10 @@ export default function () {
     this.controller = {};
 
     setGameStage.call(this, {
-        width: 4000,
+        width: 18000,
         height: 740,
         top: -200,
     });
-
-    this.cursors = this.game.input.keyboard.createCursorKeys();
 
     this.helpers.makeBackground.call(this);
     // this.helpers.makeItems.call(this);

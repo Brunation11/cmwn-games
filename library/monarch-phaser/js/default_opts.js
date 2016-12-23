@@ -11,7 +11,7 @@ export default {
     rightFrames: [6, 7, 8, 9, 10, 11],
     rightFrameRate: 10,
     rightLoop: true,
-    playerScale: [.15, .15],
+    playerScale: [-.15, .15],
     upSpeed: -350,
     downSpeed: 500,
     leftSpeed: -150,

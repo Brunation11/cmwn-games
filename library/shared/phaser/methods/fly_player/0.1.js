@@ -10,9 +10,8 @@ export default function (opts) {
     this.player.body.velocity.x = opts.rightSpeed;
     this.player.animations.play('right');
 
-    //  Allow the player to jump if they are touching the ground.
-    if (this.cursors.up.isDown || this.controller.up ||
-        this.cursors.space.isDown || this.controller.space) {
+    //  fly if up or space are being pushed
+    if (this.controller.up) {
         this.player.body.velocity.y = opts.upSpeed;
     }
 }

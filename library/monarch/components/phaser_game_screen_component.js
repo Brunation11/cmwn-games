@@ -190,7 +190,11 @@ export default function (props, ref, key, opts = {}) {
                 className="gauges"
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
             >
-                <skoash.DPad />
+                <skoash.DPad
+                    onKeyAction={function (keyCode) {
+                        if (keyCode === 32) return 'up';
+                    }}
+                />
                 <skoash.Score
                     className="score"
                     correct={_.get(props, 'gameState.data.game.score', 0)}
