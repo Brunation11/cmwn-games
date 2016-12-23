@@ -2,8 +2,8 @@ export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
     var getGameSrc;
-    var onOpenReveal;
-    var onCloseReveal;
+    // var onOpenReveal;
+    // var onCloseReveal;
     var onRespond;
     var onTimerComplete;
 
@@ -47,61 +47,58 @@ export default function (props, ref, key, opts = {}) {
         return `../monarch-phaser/index.html?v=${opts.level}`;
     };
 
-    onOpenReveal = function () {
-        setTimeout(() => {
-            this.updateGameState({
-                path: 'd-pad',
-                data: {
-                    pause: true
-                },
-            });
-        }, 1000);
-    };
+    // onOpenReveal = function () {
+    //     setTimeout(() => {
+    //         this.updateGameState({
+    //             path: 'd-pad',
+    //             data: {
+    //                 pause: true
+    //             },
+    //         });
+    //     }, 1000);
+    // };
 
-    onCloseReveal = function (prevMessage) {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                close: false,
-                open: null,
-            }
-        });
+    // onCloseReveal = function (prevMessage) {
+    //     this.updateGameState({
+    //         path: 'reveal',
+    //         data: {
+    //             close: false,
+    //             open: null,
+    //         }
+    //     });
 
-        this.updateGameState({
-            path: 'd-pad',
-            data: {
-                pause: false
-            },
-        });
+    //     this.updateGameState({
+    //         path: 'd-pad',
+    //         data: {
+    //             pause: false
+    //         },
+    //     });
 
-        this.updateGameState({
-            path: ['game'],
-            data: {
-                levels: {
-                    [opts.level]: {
-                        start: true,
-                    }
-                }
-            },
-        });
+    //     this.updateGameState({
+    //         path: ['game'],
+    //         data: {
+    //             levels: {
+    //                 [opts.level]: {
+    //                     start: true,
+    //                 }
+    //             }
+    //         },
+    //     });
 
-        if (prevMessage === 'complete') {
-            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-        }
-    };
+    //     if (prevMessage === 'complete') {
+    //         skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+    //     }
+    // };
 
     onRespond = function (options) {
-        var trucks = _.get(props, `gameState.data.game.levels.${opts.level}.trucks`);
         var complete = _.get(props, `gameState.data.game.levels.${opts.level}.complete`);
 
-        if (_.get(options, 'updateGameState.data.game.lives') === 0) {
+        if (_.get(options, 'updateGameState.data.game.hits') === 10) {
             startScreen.call(this, false);
 
             this.updateGameState({
                 path: ['game'],
                 data: {
-                    bagCount: 0,
-                    lives: 1,
                     levels: {
                         [opts.level]: {
                             start: false,
@@ -131,16 +128,6 @@ export default function (props, ref, key, opts = {}) {
                 data: {
                     open: 'complete',
                     wasOpened: 'complete',
-                }
-            });
-        }
-
-        if (!complete && trucks && _.get(props, 'data.reveal.wasOpened') !== 'fact-' + trucks) {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: 'fact-' + trucks,
-                    wasOpened: 'fact-' + trucks,
                 }
             });
         }
@@ -215,6 +202,7 @@ export default function (props, ref, key, opts = {}) {
                     setScore={true}
                 />
             </skoash.Component>
+            {/*
             <skoash.Reveal
                 openOnStart="intro"
                 openTarget="reveal"
@@ -261,6 +249,7 @@ export default function (props, ref, key, opts = {}) {
                     src={`${MEDIA.VO}Another_Chance.mp3`}
                 />
             </skoash.MediaCollection>
+            */}
         </skoash.Screen>
     );
 }

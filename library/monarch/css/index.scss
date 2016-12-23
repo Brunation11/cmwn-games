@@ -6,7 +6,6 @@
 
 html {
     color: $text-color;
-    font-family: "McLaren", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .skoash-game {
@@ -59,22 +58,6 @@ button {
         everyday;
 
     @include screen-backgrounds($screens, $backgrounds);
-
-    .background {
-        $sprite-backgrounds: title everyday cards;
-        @for $i from 1 through length($sprite-backgrounds) {
-            &.#{nth($sprite-backgrounds, $i)} {
-                @include sprite-background($i);
-            }
-        }
-
-        @for $i from 1 through 3 {
-            &.bkg-#{$i} {
-                @include background($image + 'BKG.#{$i}.jpg');
-                background-size: cover;
-            }
-        }
-    }
 }
 
 .frame {
