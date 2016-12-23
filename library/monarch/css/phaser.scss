@@ -22,15 +22,16 @@
         }
     }
 
-    .guages {
+    .gauges {
         position: absolute;
         right: 0;
         bottom: 0;
+        transform: scale3d(1, 1, 1);
     }
 
     .score,
     .life {
-        @include score-meter(4, $bright-green);
+        @include score-meter(10, $bright-green);
 
         &::before {
             display: block;

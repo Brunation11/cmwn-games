@@ -194,7 +194,7 @@ export default function () {
     if (this.crows) {
         _.each(this.crows.children, crow => {
             crow.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
-            crow.body.velocity.x = -100;
+            crow.body.velocity.x = -200;
             crow.animations.play('fly');
         });
     }
