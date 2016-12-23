@@ -185,6 +185,20 @@ skoash.start(
                     return 6;
             }
         }}
+        renderMenu={function () {
+            return (
+                <div className="menu">
+                    <button ref="pause" className="pause" onClick={() => {
+                        if (this.state.paused) {
+                            this.resume();
+                        } else {
+                            this.pause();
+                        }
+                    }} />
+                    <button className="close" onClick={this.navigator.openMenu.bind(this, {id: 'quit'})} />
+                </div>
+            );
+        }}
     />
 );
 
