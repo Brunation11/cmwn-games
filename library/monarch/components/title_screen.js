@@ -10,6 +10,7 @@ export default function (props, ref, key) {
                 className="star"
                 src={`${MEDIA.SPRITE}starsprite`}
                 frame={4}
+                hoverFrame={5}
                 static
             />
         </skoash.Screen>
