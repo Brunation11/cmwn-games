@@ -32,6 +32,7 @@ export default function () {
         crow: {
             image: 'crow',
             scale: [-.1, .1],
+            collideWorldBounds: false,
         },
         wind: _.defaults({
             image: 'wind',
