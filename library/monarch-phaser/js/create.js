@@ -29,7 +29,8 @@ export default function () {
         levels: {
             [this.opts.level]: {
                 start: true,
-                trucks: 0,
+                score: 0,
+                hits: 0,
             }
         }
     }, this.data);

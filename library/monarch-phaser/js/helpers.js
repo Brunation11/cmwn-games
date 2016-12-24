@@ -32,55 +32,42 @@ export default {
             this.isHit = false;
         }, 1000);
 
-        this.data.hits += i;
+        this.data.levels[this.opts.level].hits += i;
         this.helpers.emitData.call(this);
     },
-    onWindOverlap() {
-
+    onWindOverlap(p, i) {
+        i.kill();
+        this.helpers.addLife.call(this, 2);
     },
-    onWaterOverlap() {
-
+    onWaterOverlap(p, i) {
+        i.kill();
+        this.helpers.addLife.call(this);
     },
     onWebOverlap() {
-
+        this.helpers.hitSomething.call(this);
     },
-    onLeafOverlap() {
-
+    onLeafOverlap(p, i) {
+        i.kill();
+        this.helpers.updateScore.call(this);
     },
     onCloudOverlap() {
-
+        this.helpers.hitSomething.call(this);
     },
-    onFruitOverlap() {
-
+    onFruitOverlap(p, i) {
+        i.kill();
+        this.helpers.updateScore.call(this);
     },
-    onFlowerOverlap() {
-
+    onFlowerOverlap(p, i) {
+        i.kill();
+        this.helpers.updateScore.call(this);
     },
-    collectHeart(player, heart) {
-        if (this.data.lives === this.opts.maxLives) return;
-        // Removes the heart from the screen
-        heart.kill();
-        //  update the lives
-        this.data.lives++;
+    addLife(i = 1) {
+        this.data.levels[this.opts.level].hits -= i;
         this.helpers.emitData.call(this);
     },
-    collectBags(player, bag) {
-        if (this.data.bagCount === this.opts.maxBags) return;
-        // Removes the bag from the screen
-        bag.kill();
-        //  update the bagCount
-        this.data.bagCount++;
-        this.helpers.updatePlayer.call(this);
+    updateScore(i = 1) {
+        this.data.levels[this.opts.level].score += i;
         this.helpers.emitData.call(this);
-    },
-    collectLightening(player, lightening) {
-        player.boost = (player.boost + 1) || 1;
-        lightening.kill();
-        this.helpers.updatePlayer.call(this);
-        setTimeout(() => {
-            player.boost--;
-            this.helpers.updatePlayer.call(this);
-        }, this.opts.boostTime);
     },
     updatePlayer() {
         // if (this.player.boost) {

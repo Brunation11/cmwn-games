@@ -34,10 +34,10 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: ['game'],
             data: _.defaults(gameData, {
-                hits: 0,
-                bagCount: 0,
-                score: 0,
-                lives: 1,
+                [opts.level]: {
+                    hits: 0,
+                    score: 0,
+                }
             }),
         });
     };
@@ -93,7 +93,7 @@ export default function (props, ref, key, opts = {}) {
     onRespond = function (options) {
         var complete = _.get(props, `gameState.data.game.levels.${opts.level}.complete`);
 
-        if (_.get(options, 'updateGameState.data.game.hits') === 10) {
+        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.hits`) === 10) {
             startScreen.call(this, false);
 
             this.updateGameState({
@@ -197,12 +197,12 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Score
                     className="score"
-                    correct={_.get(props, 'gameState.data.game.score', 0)}
+                    correct={_.get(props, `gameState.data.game.levels.${opts.level}.score`, 0)}
                     setScore={true}
                 />
                 <skoash.Score
                     className="life"
-                    correct={10 - _.get(props, 'gameState.data.game.hits', 0) || 0}
+                    correct={10 - _.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0) || 0}
                     setScore={true}
                 />
             </skoash.Component>
