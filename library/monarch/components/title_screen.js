@@ -6,6 +6,12 @@ export default function (props, ref, key) {
             key={key}
             id="title"
         >
+            <skoash.Sprite
+                className="star"
+                src={`${MEDIA.SPRITE}starsprite`}
+                frame={4}
+                static
+            />
         </skoash.Screen>
     );
 }
