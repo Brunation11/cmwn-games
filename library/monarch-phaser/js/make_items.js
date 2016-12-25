@@ -16,7 +16,7 @@ export default function () {
 
     const fruitDefaultProps = {
         image: 'fruits',
-        scale: [.5, .5],
+        scale: [1, 1],
     };
 
     const flowerDefaultProps = {
@@ -34,24 +34,24 @@ export default function () {
             scale: [-.1, .1],
             collideWorldBounds: false,
         },
-        wind: _.defaults({
+        wind: {
             image: 'wind',
-        }, generalDefaultProps),
-        water: _.defaults({
+        },
+        water: {
             image: 'water',
-        }, generalDefaultProps),
-        web: _.defaults({
+        },
+        web: {
             image: 'web',
-        }, generalDefaultProps),
+        },
         log: _.defaults({
             image: 'log',
         }, generalDefaultProps),
-        leaf: _.defaults({
+        leaf: {
             image: 'leaf',
-        }, generalDefaultProps),
-        egg: _.defaults({
+        },
+        egg: {
             image: 'egg',
-        }, generalDefaultProps),
+        },
         cloud: _.defaults({
             image: 'cloud',
         }, generalDefaultProps),

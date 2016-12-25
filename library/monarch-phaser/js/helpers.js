@@ -13,15 +13,19 @@ export default {
         });
     },
     onLogOverlap() {
+        // console.log('log');
         this.helpers.hitSomething.call(this);
     },
     onWoodOverlap() {
+        // console.log('wood');
         this.helpers.hitSomething.call(this);
     },
     onLandOverlap() {
+        // console.log('land');
         this.helpers.hitSomething.call(this);
     },
     onWorldCollide() {
+        // console.log('world');
         this.helpers.hitSomething.call(this);
     },
     hitSomething(i = 1) {
@@ -36,28 +40,35 @@ export default {
         this.helpers.emitData.call(this);
     },
     onWindOverlap(p, i) {
+        // console.log('wind');
         i.kill();
         this.helpers.addLife.call(this, 2);
     },
     onWaterOverlap(p, i) {
+        // console.log('water');
         i.kill();
         this.helpers.addLife.call(this);
     },
     onWebOverlap() {
+        // console.log('web');
         this.helpers.hitSomething.call(this);
     },
     onLeafOverlap(p, i) {
+        // console.log('leaf');
         i.kill();
         this.helpers.updateScore.call(this);
     },
     onCloudOverlap() {
+        // console.log('cloud');
         this.helpers.hitSomething.call(this);
     },
     onFruitOverlap(p, i) {
+        // console.log('fruit');
         i.kill();
         this.helpers.updateScore.call(this);
     },
     onFlowerOverlap(p, i) {
+        // console.log('flower');
         i.kill();
         this.helpers.updateScore.call(this);
     },

@@ -60,16 +60,17 @@ export default function (groupOpts = {}, optsArray = []) {
             item.body.checkCollision.right = opts.checkCollisionRight;
             item.body.checkCollision.left = opts.checkCollisionLeft;
 
-            if (opts.body) {
-                // defer here to prevent item.scale from overriding body size
-                // we might want to find a better way to do this
-                setTimeout(() => {
-                    item.body.width = opts.body[0] * opts.scale[0];
-                    item.body.height = opts.body[1] * opts.scale[1];
-                    item.body.offset.x = opts.body[2] * opts.scale[0];
-                    item.body.offset.y = opts.body[3] * opts.scale[1];
-                }, 0);
+            if (!opts.body) {
+                opts.body = [item.body.width, item.body.height, 0, 0];
             }
+            // defer here to prevent item.scale from overriding body size
+            // we might want to find a better way to do this
+            setTimeout(() => {
+                item.body.width = Math.abs(opts.body[0] * opts.scale[0]);
+                item.body.height = Math.abs(opts.body[1] * opts.scale[1]);
+                item.body.offset.x = opts.body[2] * opts.scale[0];
+                item.body.offset.y = opts.body[3] * opts.scale[1];
+            }, 0);
         }
     });
 }

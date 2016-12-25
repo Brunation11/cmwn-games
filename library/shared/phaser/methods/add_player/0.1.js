@@ -39,16 +39,17 @@ export default function (opts = {}) {
     this.player.body.checkCollision.right = opts.checkCollisionRight;
     this.player.body.checkCollision.left = opts.checkCollisionLeft;
 
-    if (opts.body) {
-        // defer here to prevent this.player.scale from overriding body size
-        // we might want to find a better way to do this
-        setTimeout(() => {
-            this.player.body.width = opts.body[0] * opts.scale[0];
-            this.player.body.height = opts.body[1] * opts.scale[1];
-            this.player.body.offset.x = opts.body[2];
-            this.player.body.offset.y = opts.body[3];
-        }, 0);
+    if (!opts.body) {
+        opts.body = [this.player.body.width, this.player.body.height, 0, 0];
     }
+    // defer here to prevent this.player.scale from overriding body size
+    // we might want to find a better way to do this
+    setTimeout(() => {
+        this.player.body.width = Math.abs(opts.body[0] * opts.scale[0]);
+        this.player.body.height = Math.abs(opts.body[1] * opts.scale[1]);
+        this.player.body.offset.x = opts.body[2];
+        this.player.body.offset.y = opts.body[3];
+    }, 0);
 
     if (opts.onWorldBounds) {
         this.player.body.onWorldBounds = new Phaser.Signal();
