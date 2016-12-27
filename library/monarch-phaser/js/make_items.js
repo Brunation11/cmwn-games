@@ -92,22 +92,22 @@ export default function () {
             frame: 3,
         }, fruitDefaultProps),
         flower1: _.defaults({
-            image: 'flowers',
+            frame: 0,
         }, flowerDefaultProps),
         flower2: _.defaults({
-            image: 'flowers',
+            frame: 1,
         }, flowerDefaultProps),
         flower3: _.defaults({
-            image: 'flowers',
+            frame: 2,
         }, flowerDefaultProps),
         flower4: _.defaults({
-            image: 'flowers',
+            frame: 3,
         }, flowerDefaultProps),
         flower5: _.defaults({
-            image: 'flowers',
+            frame: 4,
         }, flowerDefaultProps),
         flower6: _.defaults({
-            image: 'flowers',
+            frame: 5,
         }, flowerDefaultProps),
     };
 
