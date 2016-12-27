@@ -19,7 +19,7 @@ export default function () {
         image: this.opts.playerImage,
         bounceY: 0,
         gravityY: this.opts.gravityY,
-        // body: this.opts.playerBody,
+        body: this.opts.playerBody,
         rightFrames: [0, 1, 2, 3],
         scale: this.opts.playerScale,
         onWorldBounds: this.helpers.onWorldCollide.bind(this),
