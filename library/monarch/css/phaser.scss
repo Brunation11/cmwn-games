@@ -29,10 +29,16 @@
         transform: scale3d(1, 1, 1);
     }
 
-    .score,
-    .life {
+    .level-score {
         @include score-meter(10, $bright-green);
+    }
 
+    .life {
+        @include score-meter(-10, $bright-green);
+    }
+
+    .level-score,
+    .life {
         &::before {
             display: block;
             position: absolute;
@@ -44,14 +50,6 @@
             height: 45px;
             content: '';
         }
-    }
-
-    .score {
-        // todo later
-    }
-
-    .life {
-        // todo later
     }
 
     .reveal {

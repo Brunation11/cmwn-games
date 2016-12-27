@@ -15,19 +15,15 @@ export default {
         });
     },
     onLogOverlap() {
-        // console.log('log');
         this.helpers.hitSomething.call(this);
     },
     onWoodOverlap() {
-        // console.log('wood');
         this.helpers.hitSomething.call(this);
     },
     onLandOverlap() {
-        // console.log('land');
         this.helpers.hitSomething.call(this);
     },
     onWorldCollide() {
-        // console.log('world');
         this.helpers.hitSomething.call(this);
     },
     hitSomething(i = 1) {
@@ -42,21 +38,19 @@ export default {
         this.helpers.emitData.call(this);
     },
     onWindOverlap(p, i) {
-        // console.log('wind');
         i.kill();
         this.helpers.addLife.call(this, 2);
     },
     onWaterOverlap(p, i) {
-        // console.log('water');
         i.kill();
         this.helpers.addLife.call(this);
     },
     onWebOverlap() {
-        // console.log('web');
         this.helpers.hitSomething.call(this);
     },
     onLeafOverlap(p, i) {
-        // console.log('leaf');
+        if (i.laid) return;
+        i.laid = true;
         addItems.call(this, {
             group: this.opts.groups.egg, defaultOpts: this.opts.itemProps.egg
         }, [{
@@ -66,51 +60,23 @@ export default {
         this.helpers.updateScore.call(this);
     },
     onCloudOverlap() {
-        // console.log('cloud');
         this.helpers.hitSomething.call(this);
     },
     onFruitOverlap(p, i) {
-        // console.log('fruit');
         i.kill();
         this.helpers.updateScore.call(this);
     },
     onFlowerOverlap(p, i) {
-        // console.log('flower');
         i.kill();
         this.helpers.updateScore.call(this);
     },
     addLife(i = 1) {
-        this.data.levels[this.opts.level].hits -= i;
+        this.data.levels[this.opts.level].hits -= i, this.opts.hitsPerLife;
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {
         this.data.levels[this.opts.level].score += i;
         this.helpers.emitData.call(this);
-    },
-    updatePlayer() {
-        // if (this.player.boost) {
-        //     this.player.loadTexture('jet', 0);
-        //     this.player.animations.add('left', this.opts.boostLeftFrames,
-        //         this.opts.boostLeftFrameRate, this.opts.boostLeftLoop);
-        //     this.player.animations.add('right', this.opts.boostRightFrames,
-        //         this.opts.boostRightFrameRate, this.opts.boostRightLoop);
-        // } else {
-        //     if (this.data.bagCount === this.opts.maxBags) {
-        //         this.player.loadTexture('turtle5', 0);
-        //     } else if (this.data.bagCount >= this.opts.maxBags / 2) {
-        //         this.player.loadTexture('turtle3', 0);
-        //     } else {
-        //         this.player.loadTexture('turtle', 0);
-        //     }
-        //     this.player.animations.add('left', this.opts.leftFrames,
-        //         this.opts.leftFrameRate, this.opts.leftLoop);
-        //     this.player.animations.add('right', this.opts.rightFrames,
-        //         this.opts.rightFrameRate, this.opts.rightLoop);
-        // }
-    },
-    stay(a) {
-        a.body.gravity.y = 0;
-        a.body.velocity.y = 0;
     },
     makeBackground,
     makePlatforms,

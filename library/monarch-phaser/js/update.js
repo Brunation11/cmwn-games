@@ -8,13 +8,9 @@ export default function () {
         return;
     }
 
-    if (this.controller.pause) {
+    if (this.controller.pause || this.data.levels[this.opts.level].complete) {
         this.controller = { pause: true };
-        flyPlayer.call(this);
-        return;
-    }
-
-    if (this.data.levels[this.opts.level].complete) {
+        this.game.paused = true;
         return;
     }
 

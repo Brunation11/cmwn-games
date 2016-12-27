@@ -2,10 +2,11 @@ export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
     var getGameSrc;
-    // var onOpenReveal;
-    // var onCloseReveal;
+    var onOpenReveal;
+    var onCloseReveal;
     var onRespond;
     var onTimerComplete;
+    var onComplete;
 
     startScreen = function (screenStart = true) {
         this.updateGameState({
@@ -47,52 +48,50 @@ export default function (props, ref, key, opts = {}) {
         return `../monarch-phaser/index.html?v=${opts.level}`;
     };
 
-    // onOpenReveal = function () {
-    //     setTimeout(() => {
-    //         this.updateGameState({
-    //             path: 'd-pad',
-    //             data: {
-    //                 pause: true
-    //             },
-    //         });
-    //     }, 1000);
-    // };
+    onOpenReveal = function () {
+        setTimeout(() => {
+            this.updateGameState({
+                path: 'd-pad',
+                data: {
+                    pause: true
+                },
+            });
+        }, 1000);
+    };
 
-    // onCloseReveal = function (prevMessage) {
-    //     this.updateGameState({
-    //         path: 'reveal',
-    //         data: {
-    //             close: false,
-    //             open: null,
-    //         }
-    //     });
+    onCloseReveal = function (prevMessage) {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                close: false,
+                open: null,
+            }
+        });
 
-    //     this.updateGameState({
-    //         path: 'd-pad',
-    //         data: {
-    //             pause: false
-    //         },
-    //     });
+        this.updateGameState({
+            path: 'd-pad',
+            data: {
+                pause: false
+            },
+        });
 
-    //     this.updateGameState({
-    //         path: ['game'],
-    //         data: {
-    //             levels: {
-    //                 [opts.level]: {
-    //                     start: true,
-    //                 }
-    //             }
-    //         },
-    //     });
+        this.updateGameState({
+            path: ['game'],
+            data: {
+                levels: {
+                    [opts.level]: {
+                        start: true,
+                    }
+                }
+            },
+        });
 
-    //     if (prevMessage === 'complete') {
-    //         skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-    //     }
-    // };
+        if (prevMessage === 'complete') {
+            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+        }
+    };
 
     onRespond = function (options) {
-        var complete = _.get(props, `gameState.data.game.levels.${opts.level}.complete`);
-
         if (_.get(options, `updateGameState.data.game.levels.${opts.level}.hits`) === 10) {
             startScreen.call(this, false);
 
@@ -121,16 +120,6 @@ export default function (props, ref, key, opts = {}) {
                 },
             });
         }
-
-        if (complete && _.get(props, 'data.reveal.wasOpened') !== 'complete') {
-            this.updateGameState({
-                path: 'reveal',
-                data: {
-                    open: 'complete',
-                    wasOpened: 'complete',
-                }
-            });
-        }
     };
 
     onTimerComplete = function () {
@@ -141,8 +130,6 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: ['game'],
             data: {
-                bagCount: 0,
-                lives: _.get(props, 'gameState.data.game.lives', 1) - 1 || 1,
                 levels: {
                     [opts.level]: {
                         start: false,
@@ -154,6 +141,34 @@ export default function (props, ref, key, opts = {}) {
         setTimeout(() => {
             startScreen.call(this);
         }, 0);
+    };
+
+    onComplete = function () {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'complete',
+                wasOpened: 'complete',
+            }
+        });
+
+        this.updateGameState({
+            path: 'd-pad',
+            data: {
+                pause: true
+            },
+        });
+
+        this.updateGameState({
+            path: ['game'],
+            data: {
+                levels: {
+                    [opts.level]: {
+                        complete: true,
+                    }
+                }
+            },
+        });
     };
 
     return (
@@ -196,19 +211,22 @@ export default function (props, ref, key, opts = {}) {
                     }}
                 />
                 <skoash.Score
-                    className="score"
+                    className="level-score"
+                    max={10}
                     correct={_.get(props, `gameState.data.game.levels.${opts.level}.score`, 0)}
                     setScore={true}
+                    onComplete={onComplete}
                 />
                 <skoash.Score
                     className="life"
-                    correct={10 - _.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0) || 0}
+                    max={0}
+                    incorrect={10}
+                    correct={_.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0) || 0}
                     setScore={true}
+                    onComplete={onTimerComplete}
                 />
             </skoash.Component>
-            {/*
             <skoash.Reveal
-                openOnStart="intro"
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
                 closeReveal={_.get(props, 'data.reveal.close', false)}
@@ -217,7 +235,7 @@ export default function (props, ref, key, opts = {}) {
                 list={[
                     <skoash.Component
                         ref="complete"
-                        className="complete frame square"
+                        className="fact frame square"
                         type="li"
                     >
                         <div className="content">
@@ -239,6 +257,7 @@ export default function (props, ref, key, opts = {}) {
                     </skoash.Component>,
                 ]}
             />
+            {/*
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >

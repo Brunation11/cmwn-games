@@ -63,12 +63,22 @@ button {
 .frame {
     @include center;
     @include background($frame + 'transition.frame.png');
+    width: 780px;
+    height: 500px;
 
     &.fact {
         @include background($frame + 'monarch.fact.png');
+        margin-left: 40px;
     }
 
     &.try-again {
         @include background($frame + 'try.again.frame.png');
+    }
+
+    .content {
+        @include center;
+        margin: -5%;
+        width: 90%;
+        color: $black;
     }
 }
