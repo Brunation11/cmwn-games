@@ -7,7 +7,7 @@ export default _.defaults({
         star: 1,
         crow: 1,
         wind: 0,
-        water: 1,
+        water: 3,
         web: 0,
         leaf: 10,
         cloud: 0,

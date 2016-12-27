@@ -1,3 +1,5 @@
+import addItems from 'shared/phaser/methods/add_items/0.1';
+
 import makeBackground from './make_background';
 import makePlatforms from './make_platforms';
 import makeItems from './make_items';
@@ -55,7 +57,12 @@ export default {
     },
     onLeafOverlap(p, i) {
         // console.log('leaf');
-        i.kill();
+        addItems.call(this, {
+            group: this.opts.groups.egg, defaultOpts: this.opts.itemProps.egg
+        }, [{
+            left: i.body.x + 50,
+            top: i.body.y,
+        }]);
         this.helpers.updateScore.call(this);
     },
     onCloudOverlap() {

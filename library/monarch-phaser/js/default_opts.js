@@ -60,6 +60,7 @@ export default {
         },
         water: {
             image: 'water',
+            scale: [.75, .75],
         },
         web: {
             image: 'web',
@@ -72,6 +73,7 @@ export default {
         },
         egg: {
             image: 'egg',
+            scale: [.75, .75],
         },
         cloud: _.defaults({
             image: 'cloud',
