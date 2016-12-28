@@ -1,5 +1,3 @@
-// this game has to be changed dramatically
-
 export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
