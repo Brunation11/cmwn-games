@@ -1,0 +1,45 @@
+@import 'variables';
+@import 'mixins';
+
+#first-stage {
+    .frame {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 80%;
+        height: 80%;
+        color: $black;
+
+        .header,
+        .copy {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+
+        .header {
+            top: 22%;
+            font-size: 35px;
+        }
+
+        .copy {
+            top: 42%;
+            font-size: 25px;
+        }
+
+        &::after {
+            position: absolute;
+            top: -20%;
+            left: 1%;
+            background: url('#{$sprite}sprite.life.png');
+            background-position: 33% 0;
+            background-size: auto 200%;
+            width: 40%;
+            height: 50%;
+            content: '';
+        }
+
+    }
+}

@@ -1,17 +1,2 @@
 @import 'variables';
 @import 'mixins';
-
-#title {
-    .sprite {
-        position: absolute;
-        top: 100px;
-        transform: scale(.2);
-        transform-origin: 0 0;
-
-        @for $i from 1 through 3 {
-            &:nth-of-type(#{$i}) {
-                left: #{300 * ($i - 1)}px;
-            }
-        }
-    }
-}
