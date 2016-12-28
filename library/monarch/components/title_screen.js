@@ -7,9 +7,15 @@ export default function (props, ref, key) {
             id="title"
         >
             <skoash.Sprite
-                className="star"
                 src={`${MEDIA.SPRITE}starsprite`}
-                frame={4}
+                animate
+            />
+            <skoash.Sprite
+                src={`${MEDIA.SPRITE}crowflyingsprite`}
+                animate
+            />
+            <skoash.Sprite
+                src={`${MEDIA.SPRITE}monarchsprite`}
                 animate
             />
         </skoash.Screen>
