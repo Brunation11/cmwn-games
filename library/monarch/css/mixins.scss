@@ -3,7 +3,7 @@
 
 // this can be used as an example for creating sprite mixins
 @mixin nav-button($column, $width: 0, $height: 0) {
-    // @include sprite($sprite + 'nav.png', 2400px, 533px, 9, 2, $column, 1, 2, $width, $height);
+    @include sprite('#{$sprite}sprite.mainnav.png', 2000px, 315px, 8, 2, $column, 1, 2, $width, $height);
 }
 
 // can be used in flyer game
@@ -111,4 +111,9 @@
     &.score-3::after {
         opacity: 1;
     }
+}
+
+
+@mixin life-cycle($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.life.png', 600px, 214px, 4, 2, $column, 1, 2, $width, $height);
 }
