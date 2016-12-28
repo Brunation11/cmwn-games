@@ -22,6 +22,7 @@ export default function (props, ref, key, opts = {}) {
             id={`monarch-generations-${opts.level}`}
         >
             <skoash.Reveal
+                openOnStart={opts.openOnStart}
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
                 closeReveal={_.get(props, 'data.reveal.close', false)}
@@ -29,11 +30,17 @@ export default function (props, ref, key, opts = {}) {
                 list={[
                     <skoash.Component
                         ref="instructions"
-                        className="fact frame square"
+                        className="instructions"
                         type="li"
                     >
-                        <div className="content">
-                        </div>
+                        <h4>
+                            click anywhere on the screen to continue
+                        </h4>
+                        <p>
+                            Click to reveal interesting<br/>
+                            facts about the four<br/>
+                            generations of Monarchs.
+                        </p>
                     </skoash.Component>,
                 ]}
             />
@@ -43,7 +50,7 @@ export default function (props, ref, key, opts = {}) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    ref="fact-1"
+                    ref="instructions"
                     src={`${MEDIA.VO}${opts.fact1VO}.mp3`}
                 />
                 <skoash.Audio
