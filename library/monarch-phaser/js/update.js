@@ -2,6 +2,8 @@ import addResponses from 'shared/phaser/methods/add_responses/0.1';
 import flyPlayer from 'shared/phaser/methods/fly_player/0.1';
 
 export default function () {
+    var upSpeed;
+    var rightSpeed;
 
     if (!this.shouldUpdate) {
         setTimeout(() => this.shouldUpdate = true, 100);
@@ -25,13 +27,18 @@ export default function () {
     [this.player, this.clouds, this.helpers.onCloudOverlap],
     [this.player, this.fruits, this.helpers.onFruitOverlap],
     [this.player, this.flowers, this.helpers.onFlowerOverlap],
+    [this.player, this.stars, this.helpers.onStarOverlap],
+    [this.player, this.crows, this.helpers.onCrowOverlap],
     ]);
 
+    upSpeed = this.player.fast ? this.opts.boostUpSpeed :
+        this.player.slow ? this.opts.slowUpSpeed : this.opts.upSpeed;
+    rightSpeed = this.player.fast ? this.opts.boostRightSpeed :
+        this.player.slow ? this.opts.slowRightSpeed : this.opts.rightSpeed;
+
     flyPlayer.call(this, {
-        upSpeed: this.opts.upSpeed,
-        downSpeed: this.opts.downSpeed,
-        leftSpeed: this.opts.leftSpeed,
-        rightSpeed: this.opts.rightSpeed,
+        upSpeed,
+        rightSpeed,
         stopFrame: this.opts.playerStopFrame,
     });
 

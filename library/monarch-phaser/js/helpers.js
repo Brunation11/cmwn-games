@@ -23,6 +23,9 @@ export default {
     onLandOverlap() {
         this.helpers.hitSomething.call(this);
     },
+    onCrowOverlap() {
+        this.helpers.hitSomething.call(this);
+    },
     onWorldCollide() {
         this.helpers.hitSomething.call(this);
     },
@@ -39,14 +42,21 @@ export default {
     },
     onWindOverlap(p, i) {
         i.kill();
-        this.helpers.addLife.call(this, 2);
+        p.fast = true;
+        setTimeout(() => {
+            p.fast = false;
+        }, 2000);
     },
     onWaterOverlap(p, i) {
         i.kill();
         this.helpers.addLife.call(this);
     },
-    onWebOverlap() {
-        this.helpers.hitSomething.call(this);
+    onWebOverlap(p, i) {
+        i.kill();
+        p.slow = true;
+        setTimeout(() => {
+            p.slow = false;
+        }, 2000);
     },
     onLeafOverlap(p, i) {
         if (i.laid) return;
@@ -70,8 +80,12 @@ export default {
         i.kill();
         this.helpers.updateScore.call(this);
     },
+    onStarOverlap(p, i) {
+        i.kill();
+        this.helpers.updateScore.call(this, 2);
+    },
     addLife(i = 1) {
-        this.data.levels[this.opts.level].hits -= i, this.opts.hitsPerLife;
+        this.data.levels[this.opts.level].hits = Math.max(0, this.opts.hitsPerLife - i);
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {

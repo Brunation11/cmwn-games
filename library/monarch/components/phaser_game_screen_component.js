@@ -8,7 +8,7 @@ export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onRespond;
     var onTimerComplete;
-    var onComplete;
+    var onScoreComplete;
 
     startScreen = function (screenStart = true) {
         this.updateGameState({
@@ -145,28 +145,14 @@ export default function (props, ref, key, opts = {}) {
         }, 0);
     };
 
-    onComplete = function () {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: 'complete',
-                wasOpened: 'complete',
-            }
-        });
-
-        this.updateGameState({
-            path: 'd-pad',
-            data: {
-                pause: true
-            },
-        });
-
+    onScoreComplete = function () {
         this.updateGameState({
             path: ['game'],
             data: {
                 levels: {
                     [opts.level]: {
-                        complete: true,
+                        stars: _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0) + 1,
+                        score: 0,
                     }
                 }
             },
@@ -213,11 +199,16 @@ export default function (props, ref, key, opts = {}) {
                     }}
                 />
                 <skoash.Score
+                    className="star-score"
+                    correct={_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)}
+                    setScore={true}
+                />
+                <skoash.Score
                     className="level-score"
                     max={10}
                     correct={_.get(props, `gameState.data.game.levels.${opts.level}.score`, 0)}
                     setScore={true}
-                    onComplete={onComplete}
+                    onComplete={onScoreComplete}
                 />
                 <skoash.Score
                     className="life"
