@@ -7,4 +7,5 @@
     window.MEDIA.VO = window.MEDIA.GAME + 'SoundAssets/vos/';
     window.MEDIA.IMAGE = window.MEDIA.GAME + 'ImageAssets/';
     window.MEDIA.SPRITE = window.MEDIA.GAME + 'SpritesAnimations/';
+    window.MEDIA.FRAME = window.MEDIA.GAME + 'Frames/';
 }(window.gameFolder));

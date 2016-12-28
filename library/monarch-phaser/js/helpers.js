@@ -57,6 +57,7 @@ export default {
         setTimeout(() => {
             p.slow = false;
         }, 2000);
+        this.helpers.hitSomething.call(this, 2);
     },
     onLeafOverlap(p, i) {
         if (i.laid) return;
@@ -85,7 +86,7 @@ export default {
         this.helpers.updateScore.call(this, 2);
     },
     addLife(i = 1) {
-        this.data.levels[this.opts.level].hits = Math.max(0, this.opts.hitsPerLife - i);
+        this.data.levels[this.opts.level].hits = Math.max(0, this.data.levels[this.opts.level].hits - i);
         this.helpers.emitData.call(this);
     },
     updateScore(i = 1) {

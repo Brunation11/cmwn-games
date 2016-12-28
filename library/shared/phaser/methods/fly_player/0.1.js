@@ -14,4 +14,3 @@ export default function (opts) {
         this.player.body.velocity.y = opts.upSpeed;
     }
 }
-

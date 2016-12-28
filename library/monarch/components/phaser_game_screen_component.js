@@ -19,10 +19,10 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
-    onScreenStart = function () {
+    onScreenStart = function (screenStart = true) {
         var gameData = _.get(props, 'gameState.data.game');
 
-        startScreen.call(this);
+        startScreen.call(this, screenStart);
 
         if (_.get(gameData, `levels.${opts.level}.complete`, false)) {
             _.assign(gameData, {
@@ -37,9 +37,12 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: ['game'],
             data: _.defaults(gameData, {
-                [opts.level]: {
-                    hits: 0,
-                    score: 0,
+                levels: {
+                    [opts.level]: {
+                        hits: 0,
+                        score: 0,
+                        stars: 0,
+                    }
                 }
             }),
         });
@@ -62,6 +65,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onCloseReveal = function (prevMessage) {
+        var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+
         this.updateGameState({
             path: 'reveal',
             data: {
@@ -77,25 +82,8 @@ export default function (props, ref, key, opts = {}) {
             },
         });
 
-        this.updateGameState({
-            path: ['game'],
-            data: {
-                levels: {
-                    [opts.level]: {
-                        start: true,
-                    }
-                }
-            },
-        });
-
-        if (prevMessage === 'complete') {
-            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-        }
-    };
-
-    onRespond = function (options) {
-        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.hits`) === 10) {
-            startScreen.call(this, false);
+        if (prevMessage === 'replay') {
+            onScreenStart.call(this, false);
 
             this.updateGameState({
                 path: ['game'],
@@ -111,38 +99,59 @@ export default function (props, ref, key, opts = {}) {
             setTimeout(() => {
                 startScreen.call(this);
             }, 0);
-        }
-
-        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.start`) &&
-            _.get(props, 'data.reveal.open', false)) {
+        } else if (prevMessage === 'fact-1' && stars > 1) {
             this.updateGameState({
-                path: 'd-pad',
+                path: 'reveal',
                 data: {
-                    pause: true
+                    open: 'fact-2',
+                }
+            });
+        } else if (prevMessage === 'fact-2' && stars > 2) {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'fact-3',
+                }
+            });
+        } else if (prevMessage) {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    levels: {
+                        [opts.level]: {
+                            complete: true,
+                        }
+                    }
                 },
             });
+            setTimeout(() => {
+                skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+            }, 100);
+        }
+    };
+
+    onRespond = function (options) {
+        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.hits`) === 10) {
+            onTimerComplete.call(this);
         }
     };
 
     onTimerComplete = function () {
-        if (_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)) return;
-
-        startScreen.call(this, false);
-
-        this.updateGameState({
-            path: ['game'],
-            data: {
-                levels: {
-                    [opts.level]: {
-                        start: false,
-                    }
+        if (!_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)) {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'replay',
                 }
-            },
-        });
-
-        setTimeout(() => {
-            startScreen.call(this);
-        }, 0);
+            });
+        } else {
+            this.updateGameState({
+                path: 'reveal',
+                data: {
+                    open: 'fact-1',
+                }
+            });
+        }
     };
 
     onScoreComplete = function () {
@@ -227,12 +236,30 @@ export default function (props, ref, key, opts = {}) {
                 onOpen={onOpenReveal}
                 list={[
                     <skoash.Component
-                        ref="complete"
+                        ref="fact-1"
                         className="fact frame square"
                         type="li"
                     >
                         <div className="content">
-                            {opts.completeContent}
+                            {opts.fact1Content}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-2"
+                        className="fact frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.fact2Content}
+                        </div>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact-3"
+                        className="fact frame square"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.fact3Content}
                         </div>
                     </skoash.Component>,
                     <skoash.Component
@@ -242,9 +269,11 @@ export default function (props, ref, key, opts = {}) {
                     >
                         <div className="content">
                             <p>
-                                You have not won this level,<br/>
-                                but don't worry—<br/>
-                                you have another chance!
+                                Don't give up!<br/>
+                                You still have another<br/>
+                                chance to help the<br/>
+                                Monarch complete<br/>
+                                its mission!
                             </p>
                         </div>
                     </skoash.Component>,
@@ -256,16 +285,34 @@ export default function (props, ref, key, opts = {}) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    ref="complete"
-                    src={`${MEDIA.VO}${opts.completeVO}.mp3`}
+                    ref="fact-1"
+                    src={`${MEDIA.VO}${opts.fact1VO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-2"
+                    src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="fact-3"
+                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="replay"
-                    src={`${MEDIA.VO}Another_Chance.mp3`}
+                    src={`${MEDIA.VO}DontGiveUp.mp3`}
                 />
             </skoash.MediaCollection>
             */}
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}monarch.fact.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}try.again.frame.png`}
+            />
         </skoash.Screen>
     );
 }

@@ -9,6 +9,8 @@ html {
 }
 
 .skoash-game {
+    font-family: 'Chelsea Market';
+
     > .menu {
         position: absolute;
         top: 0;
@@ -19,9 +21,9 @@ html {
 
 button {
     &.close {
-        @include nav-button(4, 40px, 45px);
-        width: 40px;
-        height: 45px;
+        @include nav-button(6, 60px, 60px);
+        width: 60px;
+        height: 60px;
     }
 
     &.next-screen,
@@ -36,15 +38,20 @@ button {
         height: 65px;
     }
 
-    &.next-screen,
-    &.close-reveal {
-        @include nav-button(3, 90px, 65px);
+    &.next-screen {
+        @include nav-button(5, 140px, 65px);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(2, 90px, 65px);
+        @include nav-button(4, 140px, 65px);
         left: 15px;
+    }
+
+    &.close-reveal {
+        @include sprite-continue(1);
+        right: 85px;
+        bottom: 100px;
     }
 }
 
@@ -69,9 +76,13 @@ button {
     &.fact {
         @include background($frame + 'monarch.fact.png');
         margin-left: 40px;
+
+        p {
+            font-size: 32px;
+        }
     }
 
-    &.try-again {
+    &.replay {
         @include background($frame + 'try.again.frame.png');
     }
 
