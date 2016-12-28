@@ -18,10 +18,14 @@ html {
 }
 
 button {
+    position: absolute;
+
     &.close {
-        @include nav-button(4, 40px, 45px);
-        width: 40px;
-        height: 45px;
+        @include nav-button(6, 55px, 55px);
+        width: 55px;
+        height: 55px;
+        top: 10px;
+        right: 10px;
     }
 
     &.next-screen,
@@ -32,47 +36,84 @@ button {
         bottom: 10px;
         z-index: 2;
         margin: 0;
-        width: 90px;
-        height: 65px;
+        width: 140px;
+        height: 55px;
     }
 
     &.next-screen,
     &.close-reveal {
-        @include nav-button(3, 90px, 65px);
+        @include nav-button(5, 140px, 55px);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(2, 90px, 65px);
+        @include nav-button(4, 140px, 55px);
         left: 15px;
     }
 }
 
 .skoash-game {
-    $screens:
-        title
-        flip;
+    .background {
+        &.title {
+            background: url('#{$sprite}Monarch2.gif');
+        }
 
-    $backgrounds:
-        title
-        everyday;
+        &.bkg-1 {
+            background: url('#{$image}bkg.1.jpg');
+        }
 
-    @include screen-backgrounds($screens, $backgrounds);
+        &.bkg-2 {
+            background: url('#{$image}2-01.jpg');
+        }
+
+        &.bkg-3 {
+            background: url('#{$image}bkg.3.jpg');
+        }
+
+        &.bkg-4 {
+            background: url('#{$image}bkg.4.jpg');
+        }
+
+        &.bkg-5 {
+            background: url('#{$image}bkg.5-01.jpg');
+        }
+
+        &.title,
+        &.bkg-1,
+        &.bkg-2,
+        &.bkg-3,
+        &.bkg-4,
+        &.bkg-5 {
+            background-size: cover;
+        }
+    }
+
+    &.SCREEN-title .background.title,
+    &.SCREEN-video .background.bkg-4,
+    &.SCREEN-life-stages .background.bkg-1,
+    &.SCREEN-first-stage .background.bkg-1,
+    &.SCREEN-instructions-1 .background.bkg-3 {
+        opacity: 1;
+    }
 }
 
 .frame {
     @include center;
-    @include background($frame + 'transition.frame.png');
+    @include background('#{$frame}transition.frame.png');
     width: 780px;
     height: 500px;
 
+    &.standard {
+        @include background('#{$frame}frame.big.png');
+    }
+
     &.fact {
-        @include background($frame + 'monarch.fact.png');
+        @include background('#{$frame}monarch.fact.png');
         margin-left: 40px;
     }
 
     &.try-again {
-        @include background($frame + 'try.again.frame.png');
+        @include background('#{$frame}try.again.frame.png');
     }
 
     .content {
@@ -80,5 +121,19 @@ button {
         margin: -5%;
         width: 90%;
         color: $black;
+    }
+}
+
+.reveal {
+    li,
+    .close-reveal {
+        display: none;
+    }
+
+    &.OPEN {
+        li.OPEN,
+        .close-reveal {
+            display: block;
+        }
     }
 }
