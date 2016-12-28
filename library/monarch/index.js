@@ -30,6 +30,14 @@ skoash.start(
             <skoash.Font name="Chelsea Market" />,
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Font name="CMWN" />,
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}monarch.fact.png`}
+            />,
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}try.again.frame.png`}
+            />,
             <div className="background title" />,
         ]}
         getBackgroundIndex={(index, id) => {

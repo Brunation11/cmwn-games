@@ -54,14 +54,12 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onOpenReveal = function () {
-        setTimeout(() => {
-            this.updateGameState({
-                path: 'd-pad',
-                data: {
-                    pause: true
-                },
-            });
-        }, 1000);
+        this.updateGameState({
+            path: 'd-pad',
+            data: {
+                pause: true
+            },
+        });
     };
 
     onCloseReveal = function (prevMessage) {
@@ -70,7 +68,6 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameState({
             path: 'reveal',
             data: {
-                close: false,
                 open: null,
             }
         });
@@ -120,6 +117,8 @@ export default function (props, ref, key, opts = {}) {
                     levels: {
                         [opts.level]: {
                             complete: true,
+                            mostStars: Math.max(stars,
+                                _.get(props, `gameState.data.game.levels.${opts.level}.mostStars`, 0)),
                         }
                     }
                 },
@@ -133,6 +132,10 @@ export default function (props, ref, key, opts = {}) {
     onRespond = function (options) {
         if (_.get(options, `updateGameState.data.game.levels.${opts.level}.hits`) === 10) {
             onTimerComplete.call(this);
+        }
+
+        if (_.get(options, `updateGameState.data.game.levels.${opts.level}.start`)) {
+            window.focus();
         }
     };
 
@@ -305,14 +308,6 @@ export default function (props, ref, key, opts = {}) {
                 />
             </skoash.MediaCollection>
             */}
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.FRAME}monarch.fact.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.FRAME}try.again.frame.png`}
-            />
         </skoash.Screen>
     );
 }

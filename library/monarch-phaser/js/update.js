@@ -31,9 +31,9 @@ export default function () {
     [this.player, this.crows, this.helpers.onCrowOverlap],
     ]);
 
-    upSpeed = this.player.fast ? this.opts.boostUpSpeed :
+    upSpeed = this.player.fast ? this.opts.fastUpSpeed :
         this.player.slow ? this.opts.slowUpSpeed : this.opts.upSpeed;
-    rightSpeed = this.player.fast ? this.opts.boostRightSpeed :
+    rightSpeed = this.player.fast ? this.opts.fastRightSpeed :
         this.player.slow ? this.opts.slowRightSpeed : this.opts.rightSpeed;
 
     flyPlayer.call(this, {

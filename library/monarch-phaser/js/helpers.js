@@ -42,10 +42,11 @@ export default {
     },
     onWindOverlap(p, i) {
         i.kill();
-        p.fast = true;
+        p.fast = (p.fast || 0) + 1;
         setTimeout(() => {
-            p.fast = false;
-        }, 2000);
+            p.fast--;
+        }, this.opts.fastDuration);
+        this.helpers.updateScore.call(this, 3);
     },
     onWaterOverlap(p, i) {
         i.kill();
@@ -56,7 +57,7 @@ export default {
         p.slow = true;
         setTimeout(() => {
             p.slow = false;
-        }, 2000);
+        }, this.opts.slowDuration);
         this.helpers.hitSomething.call(this, 2);
     },
     onLeafOverlap(p, i) {
