@@ -8,6 +8,7 @@ import VideoScreen from './components/video_screen';
 import LifeStagesScreen from './components/life_stages_screen';
 import FirstStageScreen from './components/first_stage_screen';
 import InstructionsOneScreen from './components/instructions_1_screen';
+import MonarchGenerationOneScreen from './components/monarch_generation_one_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
@@ -22,6 +23,7 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
+            MonarchGenerationOneScreen,
             LevelOneScreen,
             LevelTwoScreen,
             LevelThreeScreen,
@@ -38,6 +40,10 @@ skoash.start(
             <skoash.Font name="Chelsea Market" />,
             <skoash.Font name="Source Sans Pro" />,
             <skoash.Font name="CMWN" />,
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.SPRITE}sprite.circles.png`}
+            />,
             <skoash.Image
                 className="hidden"
                 src={`${MEDIA.FRAME}monarch.fact.png`}

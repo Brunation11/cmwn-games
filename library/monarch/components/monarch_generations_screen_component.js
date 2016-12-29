@@ -21,6 +21,31 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={`monarch-generations-${opts.level}`}
         >
+            <skoash.Selectable
+                dataTarget="selectable"
+                selectClass="HIGHLIGHTED"
+                list={[
+                    <skoash.Component
+                        type="li"
+                        className="butterfly-1"
+                    />,
+                    <skoash.Component
+                        type="li"
+                        className="butterfly-2"
+                    />,
+                    <skoash.Component
+                        type="li"
+                        className="butterfly-3"
+                    />,
+                    <skoash.Component
+                        type="li"
+                        className="butterfly-4"
+                    />,
+                ]}
+            />
+            <skoash.Component>
+
+            </skoash.Component>
             <skoash.Reveal
                 openOnStart={opts.openOnStart}
                 openTarget="reveal"
@@ -41,6 +66,22 @@ export default function (props, ref, key, opts = {}) {
                             facts about the four<br/>
                             generations of Monarchs.
                         </p>
+                        <skoash.Image
+                            className="butterfly-a"
+                            src={`${MEDIA.IMAGE}orange.butterfly.png`}
+                        />
+                        <skoash.Image
+                            className="butterfly-b"
+                            src={`${MEDIA.IMAGE}orange.butterfly.png`}
+                        />
+                        <skoash.Image
+                            className="arrow-1"
+                            src={`${MEDIA.IMAGE}orange.arrow.png`}
+                        />
+                        <skoash.Image
+                            className="arrow-2"
+                            src={`${MEDIA.IMAGE}orange.arrow.png`}
+                        />
                     </skoash.Component>,
                 ]}
             />

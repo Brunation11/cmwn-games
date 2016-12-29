@@ -60,47 +60,44 @@ button {
 }
 
 .skoash-game {
+    $screens:
+        title
+        video
+        life-stages
+        first-stage
+        instructions-1;
+
+    $backgrounds:
+        title
+        bkg-4
+        bkg-1
+        bkg-1
+        bkg-3;
+
+    @include screen-backgrounds($screens, $backgrounds);
+
     .background {
-        &.title {
-            background: url('#{$sprite}Monarch2.gif');
-        }
+        $background-titles:
+            title
+            bkg-1
+            bkg-2
+            bkg-3
+            bkg-4
+            bkg-5;
 
-        &.bkg-1 {
-            background: url('#{$image}bkg.1.jpg');
-        }
+        $background-images:
+            '#{$sprite}Monarch2.gif'
+            '#{$image}bkg.1.jpg'
+            '#{$image}2-01.jpg'
+            '#{$image}bkg.3.jpg'
+            '#{$image}bkg.4.jpg'
+            '#{$image}bkg.5-01.jpg';
 
-        &.bkg-2 {
-            background: url('#{$image}2-01.jpg');
+        @for $i from 1 through length($background-titles) {
+            &.#{nth($background-titles, $i)} {
+                @include background(nth($background-images, $i));
+            }
         }
-
-        &.bkg-3 {
-            background: url('#{$image}bkg.3.jpg');
-        }
-
-        &.bkg-4 {
-            background: url('#{$image}bkg.4.jpg');
-        }
-
-        &.bkg-5 {
-            background: url('#{$image}bkg.5-01.jpg');
-        }
-
-        &.title,
-        &.bkg-1,
-        &.bkg-2,
-        &.bkg-3,
-        &.bkg-4,
-        &.bkg-5 {
-            background-size: cover;
-        }
-    }
-
-    &.SCREEN-title .background.title,
-    &.SCREEN-video .background.bkg-4,
-    &.SCREEN-life-stages .background.bkg-1,
-    &.SCREEN-first-stage .background.bkg-1,
-    &.SCREEN-instructions-1 .background.bkg-3 {
-        opacity: 1;
     }
 }
 
