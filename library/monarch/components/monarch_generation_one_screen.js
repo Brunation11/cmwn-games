@@ -3,6 +3,7 @@ import MonarchGenerationsScreenComponent from './monarch_generations_screen_comp
 export default function (props, ref, key) {
     return MonarchGenerationsScreenComponent(props, ref, key, {
         level: 1,
+        openOnStart: 'instructions',
         factVO: 'FourGenerations',
         factContent: (
             <p>

@@ -1,7 +1,10 @@
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
+    var onSelect;
 
     onCloseReveal = function (prevMessage) {
+        if (!prevMessage) return;
+
         this.updateGameState({
             path: 'reveal',
             data: {
@@ -14,6 +17,15 @@ export default function (props, ref, key, opts = {}) {
         }
     };
 
+    onSelect = function () {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'fact',
+            }
+        });
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -21,30 +33,50 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={`monarch-generations-${opts.level}`}
         >
-            <skoash.Selectable
-                dataTarget="selectable"
-                selectClass="HIGHLIGHTED"
-                list={[
-                    <skoash.Component
-                        type="li"
-                        className="butterfly-1"
-                    />,
-                    <skoash.Component
-                        type="li"
-                        className="butterfly-2"
-                    />,
-                    <skoash.Component
-                        type="li"
-                        className="butterfly-3"
-                    />,
-                    <skoash.Component
-                        type="li"
-                        className="butterfly-4"
-                    />,
-                ]}
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.SPRITE}sprite.circles.png`}
             />
-            <skoash.Component>
-
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.SPRITE}sprite.starmap.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.SPRITE}sprite.butterflyhover.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.IMAGE}path.png`}
+            />
+            <skoash.Image
+                className="hidden"
+                src={`${MEDIA.FRAME}frame.big.png`}
+            />
+            <skoash.Component
+                className="path"
+            >
+                <skoash.Selectable
+                    onSelect={onSelect}
+                    list={[
+                        <skoash.Component
+                            type="li"
+                            className="butterfly-1"
+                        />,
+                        <skoash.Component
+                            type="li"
+                            className="butterfly-2"
+                        />,
+                        <skoash.Component
+                            type="li"
+                            className="butterfly-3"
+                        />,
+                        <skoash.Component
+                            type="li"
+                            className="butterfly-4"
+                        />,
+                    ]}
+                />
             </skoash.Component>
             <skoash.Reveal
                 openOnStart={opts.openOnStart}
@@ -82,6 +114,13 @@ export default function (props, ref, key, opts = {}) {
                             className="arrow-2"
                             src={`${MEDIA.IMAGE}orange.arrow.png`}
                         />
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="fact"
+                        className="fact"
+                        type="li"
+                    >
+                        {opts.factContent}
                     </skoash.Component>,
                 ]}
             />

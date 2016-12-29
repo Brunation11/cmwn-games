@@ -20,14 +20,8 @@ html {
 }
 
 button {
-    position: absolute;
-
     &.close {
         @include nav-button(6, 60px, 60px);
-        top: 10px;
-        right: 10px;
-        width: 60px;
-        height: 60px;
     }
 
     &.next-screen,
@@ -65,14 +59,22 @@ button {
         video
         life-stages
         first-stage
-        instructions-1;
+        instructions-1
+        monarch-generations-1
+        monarch-generations-2
+        monarch-generations-3
+        monarch-generations-4;
 
     $backgrounds:
         title
         bkg-4
         bkg-1
         bkg-1
-        bkg-3;
+        bkg-3
+        bkg-4
+        bkg-4
+        bkg-4
+        bkg-4;
 
     @include screen-backgrounds($screens, $backgrounds);
 
@@ -133,6 +135,8 @@ button {
 }
 
 .reveal {
+    @include reveal;
+
     li,
     .close-reveal {
         display: none;

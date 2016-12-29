@@ -10,6 +10,10 @@
     @include sprite($sprite + 'sprite.continue.png', 192px, 105px, 1, 2, $column, 1, 2, $width, $height);
 }
 
+@mixin sprite-butterfly($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.butterflyhover.png', 360px, 150px, 4, 2, $column, 1, 2, $width, $height);
+}
+
 // can be used in flyer game
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {

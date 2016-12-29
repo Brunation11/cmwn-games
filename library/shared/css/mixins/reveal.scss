@@ -1,14 +1,11 @@
 @import 'center';
+@import 'cover';
 
 @mixin reveal {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include cover;
     transition: opacity .5s, z-index 0s .5s;
     opacity: 0;
     z-index: -1;
-    width: 100%;
-    height: 100%;
 
     &.OPEN {
         transition: opacity .5s, z-index 0s;
