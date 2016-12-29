@@ -1,0 +1,29 @@
+@keyframes butterfly-fly-1 {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    15% {
+        transform: translateX(70px) translateY(0);
+    }
+
+    30% {
+        transform: translateX(90px) translateY(75px);
+    }
+
+    50% {
+        transform: translateX(200px) translateY(75px);
+    }
+
+    65% {
+        transform: translateX(230px) translateY(-65px);
+    }
+
+    80% {
+        transform: translateX(340px) translateY(-65px);
+    }
+
+    100% {
+        transform: translateX(355px) translateY(-30px);
+    }
+}

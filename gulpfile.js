@@ -18,6 +18,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
+var bourbon = require('node-bourbon');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
@@ -133,7 +134,9 @@ gulp.task('sass', function () {
         './library/' + game + '/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
@@ -147,7 +150,9 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))

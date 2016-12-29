@@ -1,6 +1,10 @@
+import classNames from 'classnames';
+
 export default function (props, ref, key, opts = {}) {
     var onCloseReveal;
     var onSelect;
+    var onAnimationEnd;
+    var getStarClassNames;
 
     onCloseReveal = function (prevMessage) {
         if (!prevMessage) return;
@@ -13,7 +17,12 @@ export default function (props, ref, key, opts = {}) {
         });
 
         if (prevMessage !== 'instructions') {
-            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+            this.updateGameState({
+                path: ['animate'],
+                data: {
+                    [opts.level]: true,
+                }
+            });
         }
     };
 
@@ -23,6 +32,16 @@ export default function (props, ref, key, opts = {}) {
             data: {
                 open: 'fact',
             }
+        });
+    };
+
+    onAnimationEnd = function () {
+        skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
+    };
+
+    getStarClassNames = function (level, star) {
+        return classNames({
+            earned: _.get(props, `gameState.data.levels${level}.mostStars`, 0) >= star,
         });
     };
 
@@ -56,24 +75,57 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Component
                 className="path"
             >
+                <skoash.Component
+                    className="circle-1"
+                >
+                    <div className={getStarClassNames(1, 1)}/>
+                    <div className={getStarClassNames(1, 2)}/>
+                    <div className={getStarClassNames(1, 3)}/>
+                </skoash.Component>
+                <skoash.Component
+                    className="circle-2"
+                >
+                    <div className={getStarClassNames(2, 1)}/>
+                    <div className={getStarClassNames(2, 2)}/>
+                    <div className={getStarClassNames(2, 3)}/>
+                </skoash.Component>
+                <skoash.Component
+                    className="circle-3"
+                >
+                    <div className={getStarClassNames(3, 1)}/>
+                    <div className={getStarClassNames(3, 2)}/>
+                    <div className={getStarClassNames(3, 3)}/>
+                </skoash.Component>
                 <skoash.Selectable
                     onSelect={onSelect}
                     list={[
                         <skoash.Component
                             type="li"
-                            className="butterfly-1"
+                            className={classNames('butterfly-1', {
+                                animate: _.get(props, 'gameState.data.animate.1')
+                            })}
+                            onAnimationEnd={onAnimationEnd}
                         />,
                         <skoash.Component
                             type="li"
-                            className="butterfly-2"
+                            className={classNames('butterfly-2', {
+                                animate: _.get(props, 'gameState.data.animate.2')
+                            })}
+                            onAnimationEnd={onAnimationEnd}
                         />,
                         <skoash.Component
                             type="li"
-                            className="butterfly-3"
+                            className={classNames('butterfly-3', {
+                                animate: _.get(props, 'gameState.data.animate.3')
+                            })}
+                            onAnimationEnd={onAnimationEnd}
                         />,
                         <skoash.Component
                             type="li"
-                            className="butterfly-4"
+                            className={classNames('butterfly-4', {
+                                animate: _.get(props, 'gameState.data.animate.4')
+                            })}
+                            onAnimationEnd={onAnimationEnd}
                         />,
                     ]}
                 />
