@@ -176,32 +176,29 @@ export default function (props, ref, key, opts = {}) {
                     </skoash.Component>,
                 ]}
             />
-            {/*
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
-                <skoash.Audio
-                    type="voiceOver"
+                <skoash.MediaSequence
                     ref="instructions"
-                    src={`${MEDIA.VO}${opts.fact1VO}.mp3`}
-                />
+                    complete={!opts.openOnStart}
+                >
+                    <skoash.Audio
+                        type="voiceOver"
+                        src={`${MEDIA.VO}ClickAnywhere.mp3`}
+                    />
+                    <skoash.Audio
+                        type="voiceOver"
+                        ref="instructions"
+                        src={`${MEDIA.VO}FourGenerations.mp3`}
+                    />
+                </skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    ref="fact-2"
-                    src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
-                />
-                <skoash.Audio
-                    type="voiceOver"
-                    ref="fact-3"
-                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
-                />
-                <skoash.Audio
-                    type="voiceOver"
-                    ref="replay"
-                    src={`${MEDIA.VO}DontGiveUp.mp3`}
+                    ref="fact"
+                    src={`${MEDIA.VO}${opts.factVO}.mp3`}
                 />
             </skoash.MediaCollection>
-            */}
         </skoash.Screen>
     );
 }
