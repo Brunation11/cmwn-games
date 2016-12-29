@@ -63,6 +63,8 @@ export default function (props, ref, key, opts = {}) {
     onCloseReveal = function (prevMessage) {
         var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
 
+        if (!prevMessage) return;
+
         this.updateGameState({
             path: 'reveal',
             data: {
@@ -108,7 +110,7 @@ export default function (props, ref, key, opts = {}) {
                     open: 'fact-3',
                 }
             });
-        } else if (prevMessage) {
+        } else {
             this.updateGameState({
                 path: ['game'],
                 data: {

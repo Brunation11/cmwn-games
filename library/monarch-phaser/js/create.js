@@ -15,10 +15,10 @@ export default function () {
 
     addPlayer.call(this, {
         left: 32,
-        top: this.game.world.height - 450,
+        top: this.game.world.height - 650,
         image: this.opts.playerImage,
         bounceY: 0,
-        gravityY: this.opts.gravityY,
+        gravityY: 0,
         body: this.opts.playerBody,
         rightFrames: [0, 1, 2, 3],
         scale: this.opts.playerScale,

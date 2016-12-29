@@ -41,7 +41,7 @@ export default function (props, ref, key, opts = {}) {
 
     getStarClassNames = function (level, star) {
         return classNames({
-            earned: _.get(props, `gameState.data.levels${level}.mostStars`, 0) >= star,
+            earned: _.get(props, `gameState.data.game.levels.${level}.mostStars`, 0) >= star,
         });
     };
 

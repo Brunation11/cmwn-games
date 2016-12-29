@@ -9,10 +9,11 @@ import LifeStagesScreen from './components/life_stages_screen';
 import FirstStageScreen from './components/first_stage_screen';
 import InstructionsOneScreen from './components/instructions_1_screen';
 import MonarchGenerationOneScreen from './components/monarch_generation_one_screen';
+import LevelOneScreen from './components/level_one_screen';
 import MonarchGenerationTwoScreen from './components/monarch_generation_two_screen';
-// import LevelOneScreen from './components/level_one_screen';
-// import LevelTwoScreen from './components/level_two_screen';
-// import LevelThreeScreen from './components/level_three_screen';
+import LevelTwoScreen from './components/level_two_screen';
+import MonarchGenerationThreeScreen from './components/monarch_generation_three_screen';
+import LevelThreeScreen from './components/level_three_screen';
 // import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -25,10 +26,11 @@ skoash.start(
             iOSScreen,
             // TitleScreen,
             MonarchGenerationOneScreen,
+            LevelOneScreen,
             MonarchGenerationTwoScreen,
-            // LevelOneScreen,
-            // LevelTwoScreen,
-            // LevelThreeScreen,
+            LevelTwoScreen,
+            MonarchGenerationThreeScreen,
+            LevelThreeScreen,
             VideoScreen,
             LifeStagesScreen,
             FirstStageScreen,
