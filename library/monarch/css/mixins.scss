@@ -30,6 +30,10 @@
     @include sprite($sprite + 'sprite.starmap.png', 45px, 90px, 1, 2, $column, 2, 2, $width, $height);
 }
 
+@mixin sprite-transition($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.transition.png', 1035px, 235px, 3, 1, $column, 1, 1, $width, $height);
+}
+
 // can be used in flyer game
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {

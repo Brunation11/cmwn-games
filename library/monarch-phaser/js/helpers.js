@@ -57,6 +57,7 @@ export default {
             p.fast--;
         }, this.opts.fastDuration);
         this.helpers.updateScore.call(this, 3);
+        this.audio.wind.play();
     },
     onWaterOverlap(p, i) {
         i.kill();

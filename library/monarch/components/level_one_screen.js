@@ -3,9 +3,21 @@ import PhaserGameScreenComponent from './phaser_game_screen_component';
 export default function (props, ref, key) {
     return PhaserGameScreenComponent(props, ref, key, {
         level: 1,
+        instructionsVO: 'LevelOneGenerations',
         fact1VO: '250Eggs', // needs to be updated
         fact2VO: '250Eggs',
         fact3VO: '1179',
+        instructions: (
+            <p>
+                <span>LEVEL ONE</span>
+                It takes energy to reproduce offspring!<br/>
+                Land on milkweed leaves and lay all of your<br/>
+                eggs for this season to win. Be sure to<br/>
+                monitor your energy levels, stay hydrated,<br/>
+                and watch out for predators.<br/>
+                Collect stars for extra points!
+            </p>
+        ),
         fact1Content: (
             <p>
                 While most Monarch eggs<br/>

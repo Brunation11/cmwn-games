@@ -113,12 +113,19 @@ button {
         @include background('#{$frame}frame.big.png');
     }
 
+    &.fact,
+    &.replay {
+        .content {
+            margin: -5%;
+        }
+    }
+
     &.fact {
         @include background('#{$frame}monarch.fact.png');
         margin-left: 40px;
 
         p {
-            font-size: 32px;
+            font-size: 30px;
         }
     }
 
@@ -128,7 +135,6 @@ button {
 
     .content {
         @include center;
-        margin: -5%;
         width: 90%;
         color: $black;
     }
@@ -136,16 +142,4 @@ button {
 
 .reveal {
     @include reveal;
-
-    li,
-    .close-reveal {
-        display: none;
-    }
-
-    &.OPEN {
-        li.OPEN,
-        .close-reveal {
-            display: block;
-        }
-    }
 }
