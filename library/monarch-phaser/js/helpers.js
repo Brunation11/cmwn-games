@@ -15,19 +15,29 @@ export default {
         });
     },
     onLogOverlap() {
+        if (this.isHit) return;
         this.helpers.hitSomething.call(this);
+        this.audio.obstacle.play();
     },
     onWoodOverlap() {
+        if (this.isHit) return;
         this.helpers.hitSomething.call(this);
+        this.audio.obstacle.play();
     },
     onLandOverlap() {
+        if (this.isHit) return;
         this.helpers.hitSomething.call(this);
+        this.audio.obstacle.play();
     },
     onCrowOverlap() {
+        if (this.isHit) return;
         this.helpers.hitSomething.call(this);
+        this.audio.bird.play();
     },
     onWorldCollide() {
+        if (this.isHit) return;
         this.helpers.hitSomething.call(this);
+        this.audio.obstacle.play();
     },
     hitSomething(i = 1) {
         if (this.isHit) return;
@@ -51,6 +61,7 @@ export default {
     onWaterOverlap(p, i) {
         i.kill();
         this.helpers.addLife.call(this);
+        this.audio.water.play();
     },
     onWebOverlap(p, i) {
         i.kill();
@@ -63,6 +74,7 @@ export default {
     onLeafOverlap(p, i) {
         if (i.laid) return;
         i.laid = true;
+        this.audio.egg.play();
         addItems.call(this, {
             group: this.opts.groups.egg, defaultOpts: this.opts.itemProps.egg
         }, [{
@@ -73,6 +85,7 @@ export default {
     },
     onCloudOverlap() {
         this.helpers.hitSomething.call(this);
+        this.audio.cloud.play();
     },
     onFruitOverlap(p, i) {
         i.kill();
@@ -81,10 +94,12 @@ export default {
     onFlowerOverlap(p, i) {
         i.kill();
         this.helpers.updateScore.call(this);
+        this.audio.flower.play();
     },
     onStarOverlap(p, i) {
         i.kill();
         this.helpers.updateScore.call(this, 2);
+        this.audio.star.play();
     },
     addLife(i = 1) {
         this.data.levels[this.opts.level].hits = Math.max(0, this.data.levels[this.opts.level].hits - i);

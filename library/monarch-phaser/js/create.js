@@ -14,7 +14,7 @@ export default function () {
     this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
-        left: 32,
+        left: 300,
         top: this.game.world.height - 650,
         image: this.opts.playerImage,
         bounceY: 0,
@@ -34,6 +34,11 @@ export default function () {
             }
         }
     }, this.data);
+
+    this.audio = _.reduce(this.audio, (a, v, k) => {
+        a[k] = this.game.add.audio(k);
+        return a;
+    }, {});
 
     this.helpers.emitData.call(this);
 }

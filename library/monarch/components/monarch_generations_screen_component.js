@@ -36,6 +36,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onAnimationEnd = function () {
+        if (_.get(props, 'gameState.currentScreenIndex') !== parseInt(key, 10)) return;
         skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
     };
 
@@ -181,6 +182,7 @@ export default function (props, ref, key, opts = {}) {
             >
                 <skoash.MediaSequence
                     ref="instructions"
+                    silentOnStart
                     complete={!opts.openOnStart}
                 >
                     <skoash.Audio

@@ -14,6 +14,7 @@ import MonarchGenerationTwoScreen from './components/monarch_generation_two_scre
 import LevelTwoScreen from './components/level_two_screen';
 import MonarchGenerationThreeScreen from './components/monarch_generation_three_screen';
 import LevelThreeScreen from './components/level_three_screen';
+import MonarchGenerationFourScreen from './components/monarch_generation_four_screen';
 // import FlipScreen from './components/flip_screen';
 
 import QuitScreen from 'shared/components/quit_screen/0.1';
@@ -31,6 +32,7 @@ skoash.start(
             LevelTwoScreen,
             MonarchGenerationThreeScreen,
             LevelThreeScreen,
+            MonarchGenerationFourScreen,
             VideoScreen,
             LifeStagesScreen,
             FirstStageScreen,
