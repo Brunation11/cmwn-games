@@ -1,29 +1,20 @@
-@keyframes butterfly-fly-1 {
-    0% {
-        transform: translateX(0) translateY(0);
-    }
+// $x1: 0 70 90 200 230 340 355;
+// $y1: 0  0 75  75 -65 -65 -30;
 
-    15% {
-        transform: translateX(70px) translateY(0);
-    }
+$xs: (0 70 90 200 230 340 355) (0 70 90 200 230 340 355);
+$ys: (0  0 75  75 -65 -65 -30) (0  0 75  75 -65 -65 -30);
 
-    30% {
-        transform: translateX(90px) translateY(75px);
-    }
+$length: length($xs);
 
-    50% {
-        transform: translateX(200px) translateY(75px);
-    }
-
-    65% {
-        transform: translateX(230px) translateY(-65px);
-    }
-
-    80% {
-        transform: translateX(340px) translateY(-65px);
-    }
-
-    100% {
-        transform: translateX(355px) translateY(-30px);
+@for $i from 1 through $length {
+    @keyframes butterfly-fly-#{$i} {
+        $x: nth($xs, $i);
+        $y: nth($ys, $i);
+        $l: length($x);
+        @for $j from 1 through $l {
+            #{percentage(($j - 1) / ($l - 1))} {
+                transform: translateX(#{nth($x, $j)}px) translateY(#{nth($y, $j)}px);
+            }
+        }
     }
 }
