@@ -1,5 +1,24 @@
 @import 'variables';
 
 #quit {
-    // todo later
+    .container {
+        position: absolute;
+        width: 80%;
+        height: 60%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%) translateY(-50%);
+        text-align: center;
+        color: $light-orange;
+        text-shadow: 5px  1px 0 $black,
+                    -1px  1px 0 $black,
+                     1px -1px 0 $black,
+                    -1px -1px 0 $black;
+
+        h2,
+        h3 {
+            font-size: 40px;
+            line-height: 60px;
+        }
+    }
 }
