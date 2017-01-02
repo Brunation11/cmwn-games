@@ -6,12 +6,11 @@ export default function (props, ref, key) {
             key={key}
             id="first-stage"
         >
-            {
-            // <skoash.Audio
-            //     type="vo"
-            //     src={`${MEDIA.VO}FirstStage.mp3`}
-            // />
-            }
+            <skoash.Audio
+                type="voiceOver"
+                src={`${MEDIA.VO}FirstStage.mp3`}
+            />
+
             <skoash.Component className="frame standard">
                 <h1 className="header">
                     Let's start with my first stage of life,
