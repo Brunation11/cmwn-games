@@ -52,10 +52,21 @@ button {
         left: 15px;
     }
 
-    &.close-reveal {
-        @include sprite-continue(1);
-        right: 85px;
-        bottom: 100px;
+    &.quit-yes,
+    &.quit-no {
+        bottom: 10%;
+        width: 220px;
+        height: 110px;
+    }
+
+    &.quit-yes {
+        @include nav-button(2, 220px, 110px);
+        left: 17%;
+    }
+
+    &.quit-no {
+        @include nav-button(3, 220px, 110px);
+        right: 17%;
     }
 }
 
@@ -95,11 +106,24 @@ button {
         }
     }
 
-    &.SCREEN-title .background.title,
-    &.SCREEN-video .background.bkg-4,
-    &.SCREEN-life-stages .background.bkg-1,
-    &.SCREEN-first-stage .background.bkg-1,
-    &.SCREEN-instructions-1 .background.bkg-3 {
+    &:not(.MENU) {
+        &.SCREEN-title .background.title,
+        &.SCREEN-info-video-one .background.bkg-4,
+        &.SCREEN-life-stages .background.bkg-1,
+        &.SCREEN-first-stage .background.bkg-1,
+        &.SCREEN-instructions-1 .background.bkg-3,
+        &.SCREEN-bonus-level-one .background.bkg-3,
+        &.SCREEN-bonus-level-two .background.bkg-3,
+        &.SCREEN-video-pupa .background.bkg-1,
+        &.SCREEN-info-you-won .background.bkg-3,
+        &.SCREEN-video-monarch .background.bkg-1,
+        &.SCREEN-info-migrate .background.bkg-5,
+        &.SCREEN-flip .background.bkg-1 {
+            opacity: 1;
+        }
+    }
+
+    &.MENU.MENU-quit .background.bkg-1 {
         opacity: 1;
     }
 }
@@ -135,6 +159,10 @@ button {
     }
 }
 
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal {
+    display: none;
+}
+
 .reveal {
     li,
     .close-reveal {
@@ -142,9 +170,14 @@ button {
     }
 
     &.OPEN {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
         li.OPEN,
         .close-reveal {
             display: block;
+            z-index: 3;
         }
     }
 }
