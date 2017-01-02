@@ -6,7 +6,9 @@
         position: absolute;
         top: 2%;
         width: 100%;
-        font-size: 40px;
+        text-shadow: 4px 3px 0 $black;
+        color: $light-orange;
+        font-size: 35px;
     }
 
     .selectable {
@@ -53,8 +55,8 @@
             position: absolute;
             background: url('#{$sprite}sprite.questionmark.png');
             background-size: 100% auto;
-            width: 20%;
-            height: 50%;
+            width: 130px;
+            height: 180px;
 
             &:nth-of-type(1) {
                 top: 45%;
@@ -75,6 +77,31 @@
                 top: 8%;
                 left: 80%;
             }
+
+            &.HIGHLIGHTED {
+                width: 150px;
+                height: 100px;
+
+                &:nth-of-type(1) {
+                    @include life-cycle(1, 150px, 100px);
+                    top: 58%;
+                }
+
+                &:nth-of-type(2) {
+                    @include life-cycle(2, 150px, 100px);
+                    top: 12%;
+                }
+
+                &:nth-of-type(3) {
+                    @include life-cycle(3, 150px, 100px);
+                    top: 58%;
+                }
+
+                &:nth-of-type(4) {
+                    @include life-cycle(4, 150px, 100px);
+                    top: 10%;
+                }
+            }
         }
     }
 
@@ -84,33 +111,43 @@
             width: 40%;
             height: 45%;
 
+            .life {
+                position: absolute;
+                width: 150px;
+                height: 100px;
+            }
+
+            .label {
+                position: absolute;
+                color: $black;
+                font-size: 24px;
+            }
+
+            .copy {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $black;
+                font-size: 14px;
+            }
+
             &.egg {
                 top: 68%;
                 left: 23%;
 
                 .life {
-                    @include life-cycle(1, 150px, 80px);
-                    position: absolute;
-                    top: 25%;
+                    @include life-cycle(1, 150px, 100px);
+                    top: 20%;
                     left: 8%;
-                    width: 150px;
-                    height: 80px;
                 }
 
                 .label {
-                    position: absolute;
                     top: 55%;
                     left: 20%;
-                    color: $black;
-                    font-size: 28px;
                 }
 
                 .copy {
-                    position: absolute;
-                    top: 50%;
-                    left: 45%;
-                    transform: translateY(-50%);
-                    color: $black;
+                    left: 47%;
                 }
             }
 
@@ -119,29 +156,18 @@
                 left: 41%;
 
                 .life {
-                    @include life-cycle(2, 140px, 80px);
-                    position: absolute;
+                    @include life-cycle(2, 150px, 100px);
                     top: 41%;
-                    left: 11%;
-                    width: 140px;
-                    height: 80px;
+                    left: 10%;
                 }
 
                 .label {
-                    position: absolute;
-                    top: 31%;
+                    top: 35%;
                     left: 11%;
-                    color: $black;
-                    font-size: 28px;
                 }
 
                 .copy {
-                    position: absolute;
-                    top: 50%;
-                    left: 46%;
-                    transform: translateY(-50%);
-                    color: $black;
-                    font-size: 18px;
+                    left: 47%;
                 }
             }
 
@@ -150,29 +176,18 @@
                 left: 60%;
 
                 .life {
-                    @include life-cycle(3, 140px, 100px);
-                    position: absolute;
+                    @include life-cycle(3, 150px, 100px);
                     top: 20%;
                     left: 11%;
-                    width: 140px;
-                    height: 100px;
                 }
 
                 .label {
-                    position: absolute;
                     top: 62%;
                     left: 20%;
-                    color: $black;
-                    font-size: 28px;
                 }
 
                 .copy {
-                    position: absolute;
-                    top: 50%;
                     left: 46%;
-                    transform: translateY(-50%);
-                    color: $black;
-                    font-size: 18px;
                 }
             }
 
@@ -182,28 +197,17 @@
 
                 .life {
                     @include life-cycle(4, 150px, 100px);
-                    position: absolute;
                     top: 35%;
                     left: 8%;
-                    width: 150px;
-                    height: 100px;
                 }
 
                 .label {
-                    position: absolute;
                     top: 22%;
                     left: 15%;
-                    color: $black;
-                    font-size: 28px;
                 }
 
                 .copy {
-                    position: absolute;
-                    top: 50%;
                     left: 46%;
-                    transform: translateY(-50%);
-                    color: $black;
-                    font-size: 18px;
                 }
             }
         }
