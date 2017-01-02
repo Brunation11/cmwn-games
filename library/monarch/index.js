@@ -4,16 +4,23 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
-import VideoScreen from './components/video_screen';
+import InfoVideoOneScreen from './components/info_video_one_screen';
 import LifeStagesScreen from './components/life_stages_screen';
 import FirstStageScreen from './components/first_stage_screen';
 import InstructionsOneScreen from './components/instructions_1_screen';
+import BonusLevelOneScreen from './components/bonus_level_one_screen';
+import BonusLevelTwoScreen from './components/bonus_level_two_screen';
+import VideoPupaScreen from './components/video_pupa_screen';
+import InfoYouWonScreen from './components/info_you_won_screen';
+import VideoMonarchScreen from './components/video_monarch_screen';
+import InfoMigrateScreen from './components/info_migrate_screen';
+import InfoVideoTwoScreen from './components/info_video_two_screen';
 import LevelOneScreen from './components/level_one_screen';
 import LevelTwoScreen from './components/level_two_screen';
 import LevelThreeScreen from './components/level_three_screen';
-// import FlipScreen from './components/flip_screen';
+import FlipScreen from './components/flip_screen';
 
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from './components/quit_screen';
 
 skoash.start(
     <skoash.Game
@@ -22,14 +29,21 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            LevelOneScreen,
-            LevelTwoScreen,
-            LevelThreeScreen,
-            VideoScreen,
+            InfoVideoOneScreen,
             LifeStagesScreen,
             FirstStageScreen,
             InstructionsOneScreen,
-            // FlipScreen,
+            BonusLevelOneScreen,
+            BonusLevelTwoScreen,
+            VideoPupaScreen,
+            InfoYouWonScreen,
+            VideoMonarchScreen,
+            InfoMigrateScreen,
+            InfoVideoTwoScreen,
+            // LevelOneScreen,
+            // LevelTwoScreen,
+            // LevelThreeScreen,
+            FlipScreen,
         ]}
         menus={{
             quit: QuitScreen,
@@ -37,66 +51,72 @@ skoash.start(
         assets={[
             <skoash.Font name="Chelsea Market" />,
             <skoash.Font name="Source Sans Pro" />,
-            <skoash.Font name="CMWN" />,
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.FRAME}monarch.fact.png`}
-            />,
-            <skoash.Image
-                className="hidden"
-                src={`${MEDIA.FRAME}try.again.frame.png`}
-            />,
+            // <skoash.Font name="CMWN" />,
             <div className="background title" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
             <div className="background bkg-3" />,
             <div className="background bkg-4" />,
-            // <skoash.Audio
-            //     ref="button"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}Click.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="screen-complete"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}NextAppear.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-1"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_1.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-2"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_2.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-3"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_3.mp3`}
-            //     loop
-            // />,
+            <div className="background bkg-5" />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${MEDIA.EFFECT}Click.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${MEDIA.EFFECT}NextAppear.mp3`}
+            />,
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_1.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-2"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_2.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-3"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_3.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-4"
+                type="background"
+                src={`${MEDIA.EFFECT}BonusBKG.mp3`}
+                loop
+            />,
         ]}
         getBackgroundIndex={(index, id) => {
             switch (id) {
                 case 'ios-splash': return;
                 case 'title':
                     return 0; //bkg-1
-                case 'life-cycle':
+                case 'life-stages':
                     return 1; //bkg-2
                 case 'first-stage':
                 case 'instructions-1':
+                case 'video-pupa':
+                case 'video-monarch':
+                case 'info-migrate':
                     return 2; //bkg-3
+                case 'bonus-level-one':
+                case 'bonus-level-two':
+                case 'info-video-two':
+                    return 3; //bkg-4
                 case 'phaser-level-1':
                 case 'phaser-level-2':
                 case 'phaser-level-3':
                     return;
                 case 'flip':
                     return;
-                case 'video':
+                case 'info-video-one':
                     return; // no bkg audio
             }
         }}
