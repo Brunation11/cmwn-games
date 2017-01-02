@@ -16,6 +16,11 @@ export default function (props, ref, key) {
                 src={`${MEDIA.IMAGE}monarch-side.png`}
             />
 
+            <skoash.Image
+                className="flip animated"
+                src={`${MEDIA.BASE}Flips/Monarch%20Flip/MON_Animated_Earned_Flip/MON.AnimatedEarnedFlip.gif`}
+            />
+
             <skoash.Component className="copy-container">
                 <span className="copy">
                     Understanding these

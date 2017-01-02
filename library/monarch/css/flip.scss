@@ -10,6 +10,14 @@
         width: 12%;
     }
 
+    .flip {
+        animation-name: bounceInDown;
+        position: absolute;
+        bottom: 20%;
+        left: 61%;
+        width: 30%;
+    }
+
     .copy-container {
         position: absolute;
         top: 50%;
