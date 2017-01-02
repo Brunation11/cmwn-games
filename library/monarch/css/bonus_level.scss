@@ -1,0 +1,287 @@
+@import 'variables';
+@import 'mixins';
+
+[id^='bonus-level-'] {
+    .reveal {
+        transition: opacity 1s;
+        opacity: 0;
+
+        .reveal-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 68%;
+            height: 76%;
+
+            &.complete {
+                span {
+                    position: absolute;
+                    top: 10%;
+                    left: 55%;
+                    width: 200px;
+                    height: 700px;
+                    text-shadow: 10px 5px 0 $black;
+                    color: $light-orange;
+                    font-size: 200px;
+                    font-weight: 600;
+                    transform-origin: bottom center;
+                }
+
+                .char1 {
+                    transform: translateX(-50%) rotate(-35deg);
+                }
+
+                .char2 {
+                    transform: translateX(-50%) rotate(-18deg);
+                }
+
+                .char3 {
+                    transform: translateX(-50%) rotate(1deg);
+                }
+
+                .char4 {
+                    transform: translateX(-50%) rotate(15deg);
+                }
+
+                .char5 {
+                    transform: translateX(-50%) rotate(25deg);
+                }
+
+                .char6 {
+                    transform: translateX(-50%) rotate(35deg);
+                }
+            }
+        }
+
+        .labyrinth-frame {
+            border: 5px solid $light-orange;
+            border-radius: 30px;
+            box-shadow: 0 0 0 5px $black;
+            background: url('#{$image}grass-01.jpg');
+            background-size: cover;
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                border: 5px solid;
+                border-radius: 40px;
+                background: $white-transparancy;
+                width: 103%;
+                height: 104%;
+                content: '';
+            }
+
+            &.instructions {
+                .header {
+                    position: absolute;
+                    top: 15%;
+                    width: 100%;
+                    text-shadow: 3px 3px 0 $black;
+                    color: $light-orange;
+                    font-size: 70px;
+                }
+
+                .copy {
+                    position: absolute;
+                    top: 40%;
+                    left: 0;
+                    width: 100%;
+                    line-height: 40px;
+                    font-size: 30px;
+                }
+            }
+
+            &.countdown {
+                .number {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    animation-duration: 2s;
+                    animation-fill-mode: forwards;
+                    opacity: 0;
+                    width: 100%;
+                    text-shadow: 10px 10px 0 $black;
+                    color: $light-orange;
+                    font-size: 400px;
+                }
+
+                &.OPEN {
+                    .number {
+                        animation-name: number-flash;
+                    }
+
+                    .two {
+                        animation-delay: 2s;
+                    }
+
+                    .one {
+                        animation-delay: 4s;
+                    }
+                }
+            }
+        }
+
+        .close-reveal {
+            @include nav-button(5, 140px, 65px);
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            width: 140px;
+            height: 65px;
+        }
+
+        &.open-complete .close-reveal {
+            display: none;
+        }
+
+        &.open-instructions ~ *,
+        &.open-countdown ~ * {
+            display: none;
+        }
+    }
+
+    .score-container,
+    .timer-container {
+        position: absolute;
+        left: 2%;
+        transition: opacity 1s;
+        opacity: 0;
+        width: 20%;
+        text-align: left;
+        color: $black;
+
+        * {
+            display: inline;
+        }
+
+        .label {
+            text-shadow: 2px  2px 0 $black,
+                        -2px  2px 0 $black,
+                         2px -2px 0 $black,
+                        -2px -2px 0 $black;
+            color: $light-green;
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .timer,
+        .score {
+            font-size: 20px;
+            font-weight: 900;
+        }
+    }
+
+    .timer-container {
+        top: 8%;
+    }
+
+    .score-container {
+        top: 15%;
+    }
+
+    .labyrinth {
+        position: absolute;
+        top: 45%;
+        left: 55%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: opacity 1s;
+        opacity: 0;
+        width: 70%;
+        height: 80%;
+
+        .canvas,
+        .image,
+        .map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .player {
+            position: absolute;
+            border: 1px solid $black;
+            width: 10px;
+            height: 10px;
+
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background: url('#{$sprite}sprite.life.png');
+                background-position: 33% 15%;
+                background-size: auto 340%;
+                width: 1160%;
+                height: 500%;
+                content: '';
+            }
+        }
+
+        .interactive-item {
+            position: absolute;
+            transition: opacity 1s;
+            opacity: 1;
+            background: url('#{$image}maze.leaf.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% auto;
+            width: 50px;
+            height: 40px;
+        }
+    }
+
+    &.STARTED {
+        .reveal,
+        .score-container,
+        .timer-container,
+        .labyrinth {
+            opacity: 1;
+        }
+    }
+}
+
+#bonus-level-one {
+    .labyrinth {
+        .interactive-item {
+            $item-tops:  100  45  45  215 255 230 135 95 265 175 305 355 355;
+            $item-lefts: 350 490 565  560 460 310 215 60 110 155 240  60 460;
+
+            @for $i from 1 through 13 {
+                &.item-#{$i} {
+                    top: #{nth($item-tops, $i)}px;
+                    left: #{nth($item-lefts, $i)}px;
+                }
+            }
+
+            &.COMPLETE {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+
+#bonus-level-two {
+    .labyrinth {
+        .interactive-item {
+            $item-tops:   40  45 90 135 205 200 200 245 300 290 350  260 355;
+            $item-lefts: 250 495 95 305 535  60 190 290  60 245 155  455 480;
+
+            @for $i from 1 through 13 {
+                &.item-#{$i} {
+                    top: #{nth($item-tops, $i)}px;
+                    left: #{nth($item-lefts, $i)}px;
+                }
+            }
+
+            &.COMPLETE {
+                opacity: 0;
+            }
+        }
+    }
+}
