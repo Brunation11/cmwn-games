@@ -3,22 +3,22 @@
 #quit {
     .container {
         position: absolute;
-        width: 80%;
-        height: 60%;
         top: 50%;
         left: 50%;
         transform: translate(-50%) translateY(-50%);
+        width: 80%;
+        height: 60%;
         text-align: center;
-        color: $light-orange;
         text-shadow: 5px  1px 0 $black,
                     -1px  1px 0 $black,
                      1px -1px 0 $black,
                     -1px -1px 0 $black;
+        color: $light-orange;
 
         h2,
         h3 {
-            font-size: 40px;
             line-height: 60px;
+            font-size: 40px;
         }
     }
 }
