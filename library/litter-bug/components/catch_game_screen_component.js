@@ -1,14 +1,9 @@
 import MediaCollection from 'shared/components/media_collection/0.1';
 
-import Score from 'shared/components/score/0.1';
-import Timer from 'shared/components/timer/0.1';
-
-import Dropper from 'shared/components/dropper/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
+import Dropper from 'shared/components/dropper/0.1';
 import Catcher from 'shared/components/catcher/0.1';
 import Catchable from 'shared/components/catchable/0.1';
-
-import Reveal from 'shared/components/reveal/0.1';
 
 export default function (props, ref, key, opts = {}) {
     var onOpenReveal;
@@ -192,11 +187,11 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={opts.id}
         >
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
                 children={opts.sfx}
                 onPlay={onPlaySFX}
@@ -205,7 +200,7 @@ export default function (props, ref, key, opts = {}) {
                 <div className="level">
                     {opts.level}
                 </div>
-                <Score
+                <skoash.Score
                     className="mr-eco-score"
                     max={100}
                     increment={10}
@@ -214,8 +209,8 @@ export default function (props, ref, key, opts = {}) {
                     onComplete={onScoreComplete}
                 >
                     <div />
-                </Score>
-                <Score
+                </skoash.Score>
+                <skoash.Score
                     className="litter-bug-score"
                     max={100}
                     increment={10}
@@ -224,8 +219,8 @@ export default function (props, ref, key, opts = {}) {
                     onComplete={onTimerComplete}
                 >
                     <div />
-                </Score>
-                <Timer
+                </skoash.Score>
+                <skoash.Timer
                     countDown
                     timeout={opts.timeout}
                     stop={_.get(props, 'data.game.complete', false)}
@@ -283,7 +278,7 @@ export default function (props, ref, key, opts = {}) {
                     ]}
                 />
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 openOnStart={opts.openOnStart}
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.openReveal', false)}

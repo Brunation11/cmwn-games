@@ -10,6 +10,7 @@ var webpackProdConfig = require('./webpack.config.prod.js');
 var fs = require('fs');
 var path = require('path');
 var nolivereload;
+var nohmr;
 var env;
 var debug;
 var local;
@@ -17,6 +18,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
+var bourbon = require('node-bourbon');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
@@ -29,6 +31,7 @@ var eslintConfigConfig = JSON.parse(fs.readFileSync('./.eslintrc_config'));
 var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
 var game;
+var webpackBuild;
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -63,6 +66,7 @@ game = argv.game || argv.g;
 // In order for livereload to work, you should run gulp on the host machine
 // unless you have native docker installed.
 nolivereload = argv.nolr;
+nohmr = argv.nohmr;
 env = argv.environment || argv.env || 'prod';
 debug = argv.debug;
 local = argv.local || argv.l;
@@ -81,7 +85,7 @@ gulp.task('default', buildTask);
 gulp.task('build', buildTask);
 gulp.task('b', buildTask);
 
-gulp.task('webpack:build', function (callback) {
+webpackBuild = function (callback, isWatch) {
     var webpackConfig;
     var name;
     var config;
@@ -101,7 +105,7 @@ gulp.task('webpack:build', function (callback) {
         callback();
     });
 
-    if (env === 'dev') {
+    if (isWatch && env === 'dev' && !nohmr) {
         server = new WebpackDevServer(compiler, {
             contentBase: 'build',
             hot: true,
@@ -113,7 +117,8 @@ gulp.task('webpack:build', function (callback) {
         });
         server.listen(8080, 'localhost', function () {});
     }
-});
+};
+gulp.task('webpack:build', webpackBuild);
 
 gulp.task('sass', function () {
     var varsPath = './library/shared/css/' + env + '-variables.scss';
@@ -129,7 +134,9 @@ gulp.task('sass', function () {
         './library/' + game + '/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
@@ -143,7 +150,9 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
@@ -178,8 +187,9 @@ gulp.task('copy-index', function () {
                 starttag: '<!-- inject:head -->',
                 transform: function (filePath, file) {
                     var config = JSON.parse(file.contents.toString('utf8'));
-                    var title = config.title || _.startCase(config.id);
-                    return `<title>${title}</title>`;
+                    var injection = `<title>${config.title || _.startCase(config.id)}</title>`;
+                    injection += config.head_injection || '';
+                    return injection;
                 }
             }))
             .pipe(inject(gulp.src('./library/shared/js/test-platform-integration.js'), {
@@ -197,8 +207,7 @@ gulp.task('copy-index', function () {
                     var config = JSON.parse(file.contents.toString('utf8'));
                     var folder = config.media_folder ||
                         _.upperFirst(_.camelCase(config.title)) ||
-                        _.upperFirst(_.camelCase(config.id))
-                        ;
+                        _.upperFirst(_.camelCase(config.id));
 
                     var min = debug ? '' : '.min';
                     return (
@@ -282,6 +291,8 @@ gulp.task('copy-components', function () {
 // To specify what game you'd like to watch call gulp watch --game game-name
 // Replace game-name with the name of the game
 function watchTask() {
+    var isWatch;
+
     if (typeof game !== 'string') {
         gutil.log('Your game argument must be a string');
         process.exit(1); // eslint-disable-line no-undef
@@ -312,6 +323,14 @@ function watchTask() {
     });
 
     watch([
+        'library/' + game + '/*.js',
+        'library/' + game + '/**/*.js',
+        'library/shared/**/*.js',
+    ], function () {
+        gulp.start('webpack:build');
+    });
+
+    watch([
         'library/' + game + '/**/*.html',
         'library/' + game + '/config.json',
         'library/shared/**/*',
@@ -323,7 +342,8 @@ function watchTask() {
         gulp.start('build');
     });
 
-    gulp.start('build');
+    isWatch = gulp.start('build');
+    webpackBuild(_.noop, isWatch);
 }
 gulp.task('watch', watchTask);
 gulp.task('w', watchTask);
