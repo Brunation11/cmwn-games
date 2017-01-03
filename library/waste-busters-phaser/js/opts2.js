@@ -47,7 +47,7 @@ export default _.defaults({
     groundItemAmounts: {
         squareBush: 1,
         roundBush: 1,
-        snake: 20,
+        snake: 2,
         bag: 0,
         blank: 0,
         rock: 1,

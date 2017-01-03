@@ -90,11 +90,13 @@ export default {
             climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
             climb.onComplete.add(() => {
                 snake.loadTexture(null, 0);
+                snake.scale.setTo(.3, .3);
+                snake.left = snake.left - 25;
                 setTimeout(() => {
                     snake.climbing = false;
                 }, 5000);
             });
-            snake.scale.setTo(.4, .4);
+            snake.scale.setTo(.15, .15);
             snake.animations.play('hole');
             snake.active = false;
             snake.climbing = true;
