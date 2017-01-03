@@ -77,7 +77,9 @@ export default {
                     snake.climbing = false;
                 }, 5000);
             });
-            snake.scale.setTo(.25, .25);
+            // snake.scale.setTo(.25, .25);
+            snake.width = 120;
+            snake.height = 100;
             snake.animations.play('hole');
             snake.active = true;
             snake.climbing = true;
@@ -96,7 +98,9 @@ export default {
                     snake.climbing = false;
                 }, 5000);
             });
-            snake.scale.setTo(.15, .15);
+            // snake.scale.setTo(.15, .15);
+            snake.width = 120;
+            snake.height = 100;
             snake.animations.play('hole');
             snake.active = false;
             snake.climbing = true;
