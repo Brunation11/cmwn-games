@@ -48,3 +48,5 @@ var BeBright = (
 );
 
 skoash.start(BeBright);
+
+if (module.hot) module.hot.accept();

@@ -360,3 +360,5 @@ Skribble = (
 );
 
 skoash.start(Skribble);
+
+if (module.hot) module.hot.accept();

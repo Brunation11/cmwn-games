@@ -111,3 +111,5 @@ var TagIt = (
 );
 
 skoash.start(TagIt, config.id);
+
+if (module.hot) module.hot.accept();
