@@ -45,7 +45,7 @@ skoash.start(
         assets={[
             <skoash.Font name="Chelsea Market" />,
             <skoash.Font name="Source Sans Pro" />,
-            <skoash.Font name="CMWN" />,
+            // <skoash.Font name="CMWN" />,
             <skoash.Image
                 className="hidden"
                 src={`${MEDIA.FRAME}monarch.fact.png`}

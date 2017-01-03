@@ -29,6 +29,11 @@
         transform: scale3d(1, 1, 1);
     }
 
+    .star-score {
+        @include life-tracker;
+        display: inline-block;
+    }
+
     .level-score {
         @include score-meter(10, $bright-green);
     }

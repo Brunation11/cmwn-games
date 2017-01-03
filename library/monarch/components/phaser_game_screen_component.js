@@ -133,21 +133,7 @@ export default function (props, ref, key, opts = {}) {
                 }
             });
         } else {
-            this.updateGameState({
-                path: ['game'],
-                data: {
-                    levels: {
-                        [opts.level]: {
-                            complete: true,
-                            mostStars: Math.max(stars,
-                                _.get(props, `gameState.data.game.levels.${opts.level}.mostStars`, 0)),
-                        }
-                    }
-                },
-            });
-            setTimeout(() => {
-                skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-            }, 100);
+            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
         }
     };
 
@@ -162,7 +148,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onTimerComplete = function () {
-        if (!_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)) {
+        var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+        if (!stars) {
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -170,6 +157,20 @@ export default function (props, ref, key, opts = {}) {
                 }
             });
         } else {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    levels: {
+                        [opts.level]: {
+                            complete: true,
+                            mostStars: Math.max(stars,
+                                _.get(props, `gameState.data.game.levels.${opts.level}.mostStars`, 0)),
+                            fact2Complete: stars === 1,
+                            fact3Complete: stars > 0 && stars < 3,
+                        }
+                    }
+                },
+            });
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -235,7 +236,7 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Score
                     className="star-score"
-                    correct={_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)}
+                    correct={Math.min(3, _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0))}
                     setScore={true}
                 />
                 <skoash.Score
@@ -332,11 +333,13 @@ export default function (props, ref, key, opts = {}) {
                     type="voiceOver"
                     ref="fact-2"
                     src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
+                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact2Complete`, false)}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-3"
                     src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
+                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact3Complete`, false)}
                 />
                 <skoash.Audio
                     type="voiceOver"

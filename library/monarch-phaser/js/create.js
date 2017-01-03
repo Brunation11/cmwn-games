@@ -5,13 +5,12 @@ export default function () {
     this.controller = {};
 
     setGameStage.call(this, {
-        width: 20000,
+        width: 30000,
         height: 740,
         top: -200,
     });
 
     this.helpers.makeBackground.call(this);
-    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 300,
@@ -24,6 +23,8 @@ export default function () {
         scale: this.opts.playerScale,
         onWorldBounds: this.helpers.onWorldCollide.bind(this),
     });
+
+    this.helpers.makeItems.call(this);
 
     this.data = _.defaults({
         levels: {

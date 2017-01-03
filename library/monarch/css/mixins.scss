@@ -118,11 +118,9 @@
     &::before,
     span,
     &::after {
+        @include sprite-circle-star-grey;
         display: inline-block;
         position: relative;
-        transition: opacity .5s;
-        opacity: .5;
-        background-repeat: no-repeat;
         vertical-align: middle;
     }
 
@@ -137,7 +135,7 @@
     &.score-3::before,
     &.score-3 span,
     &.score-3::after {
-        opacity: 1;
+        @include sprite-circle-star;
     }
 }
 
