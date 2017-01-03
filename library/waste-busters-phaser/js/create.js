@@ -41,5 +41,10 @@ export default function () {
         }
     }, this.data);
 
+    this.audio = _.reduce(this.audio, (a, v, k) => {
+        a[k] = this.game.add.audio(k);
+        return a;
+    }, {});
+
     this.helpers.emitData.call(this);
 }

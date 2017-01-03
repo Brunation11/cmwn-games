@@ -11,12 +11,12 @@ export default function () {
     this.player.canJump = true;
 
     addResponses.call(this, 'collide', [
-    [this.player, this.ground, this.helpers.onBump],
+    [this.player, this.ground, this.helpers.hitGround],
     [this.player, this.water, this.helpers.hitWater],
-    [this.player, this.platforms, this.helpers.onBump],
-    [this.player, this.bushes, this.helpers.onBump],
+    [this.player, this.platforms, this.helpers.hitGround],
+    [this.player, this.bushes, this.helpers.hitBush],
     [this.player, this.obstacles, this.helpers.hitObstacle],
-    [this.player, this.logs, this.helpers.onBump],
+    [this.player, this.logs, this.helpers.hitGround],
     [this.bushes, this.ground, this.helpers.stay],
     [this.bushes, this.platforms, this.helpers.stay],
     [this.trees, this.ground, this.helpers.stay],
@@ -40,6 +40,7 @@ export default function () {
                 leftSpeed: this.opts.boostLeftSpeed,
                 rightSpeed: this.opts.boostRightSpeed,
                 stopFrame: this.opts.boostPlayerStopFrame,
+                jumpSound: this.audio.jump,
             });
         } else {
             movePlayer.call(this, {
@@ -48,6 +49,7 @@ export default function () {
                 leftSpeed: this.opts.leftSpeed,
                 rightSpeed: this.opts.rightSpeed,
                 stopFrame: this.opts.playerStopFrame,
+                jumpSound: this.audio.jump,
             });
         }
     } else if (this.data.levels[this.opts.level].doorOpen) {

@@ -47,7 +47,7 @@ export default _.defaults({
         roundBush: 1,
         snake: 2,
         bag: 0,
-        blank: 5,
+        blank: 0,
         rock: 1,
         stump: 1,
         heart: 0,

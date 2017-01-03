@@ -6,6 +6,7 @@ import makePlatforms from './make_platforms';
 import makeLogs from './make_logs';
 import makeItems from './make_items';
 
+
 export default {
     emitData() {
         //  emit event with data to skoash game
@@ -16,7 +17,45 @@ export default {
             }
         });
     },
-    onBump() {
+    hitGround() {
+    },
+    onHitBush() {
+        this.audio.bush.play();
+    },
+    hitEnemy(p, e) {
+        if (!e.active) return;
+        this.helpers.hitSomething.call(this, p);
+        this.audio.hole.play();
+    },
+    hitObstacle(p) {
+        this.helpers.hitSomething.call(this, p);
+        this.audio.stump.play();
+    },
+    hitWater(p) {
+        this.helpers.hitSomething.call(this, p, 1, 1);
+        this.audio.water.play();
+    },
+    hitSomething(p, i = 1, d = -1) {
+        if (this.isHit) return;
+        this.isHit = true;
+        p.body.velocity.y = -1 * this.opts.hitVelocity;
+
+        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ?
+            d : -1 * d) * this.opts.hitVelocity;
+
+        setTimeout(() => {
+            this.isHit = false;
+        }, 1000);
+
+        this.data.hits += i;
+        this.helpers.emitData.call(this);
+        setTimeout(() => {
+            if (this.data.hits >= this.opts.hitsPerLife) {
+                this.data.hits -= this.opts.hitsPerLife;
+                this.data.lives--;
+                this.helpers.emitData.call(this);
+            }
+        }, 250);
     },
     activateSnake(snake, hole) {
         var climb;
@@ -70,44 +109,15 @@ export default {
             enemy.isTurning = false;
         }, 500);
     },
-    hitEnemy(p, e) {
-        if (!e.active) return;
-        this.helpers.hitSomething.call(this, p);
-    },
-    hitObstacle(p) {
-        this.helpers.hitSomething.call(this, p);
-    },
-    hitWater(p) {
-        this.helpers.hitSomething.call(this, p, 1, 1);
-    },
-    hitSomething(p, i = 1, d = -1) {
-        if (this.isHit) return;
-        this.isHit = true;
-        p.body.velocity.y = -1 * this.opts.hitVelocity;
-
-        p.body.velocity.x = (p.body.velocity.x === Math.abs(p.body.velocity.x) ?
-            d : -1 * d) * this.opts.hitVelocity;
-
-        setTimeout(() => {
-            this.isHit = false;
-        }, 1000);
-
-        this.data.hits += i;
-        this.helpers.emitData.call(this);
-        setTimeout(() => {
-            if (this.data.hits >= this.opts.hitsPerLife) {
-                this.data.hits -= this.opts.hitsPerLife;
-                this.data.lives--;
-                this.helpers.emitData.call(this);
-            }
-        }, 250);
-    },
     inLog() {
+        if (!this.player.canJump) return;
         this.player.canJump = false;
+        this.audio.log.play();
     },
     collectRecycling(player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
+        this.audio.recycle.play();
         //  update the lives
         this.data.score += this.opts.recyclingScore;
         this.helpers.emitData.call(this);
@@ -115,6 +125,7 @@ export default {
     collectRainbowRecycling(player, recyclying) {
         // Removes the recyclying from the screen
         recyclying.kill();
+        this.audio.rainbowRecycle.play();
         //  update the lives
         this.data.score += this.opts.rainbowRecyclyingScore;
         this.helpers.emitData.call(this);
@@ -123,6 +134,7 @@ export default {
         if (this.data.lives === this.opts.maxLives) return;
         // Removes the heart from the screen
         heart.kill();
+        this.audio.heart.play();
         //  update the lives
         this.data.lives++;
         this.helpers.emitData.call(this);
@@ -131,6 +143,7 @@ export default {
         if (this.data.bagCount === this.opts.maxBags) return;
         // Removes the bag from the screen
         bag.kill();
+        this.audio.bag.play();
         //  update the bagCount
         this.data.bagCount++;
         this.helpers.updatePlayer.call(this);
@@ -139,6 +152,7 @@ export default {
     collectLightening(player, lightening) {
         player.boost = (player.boost + 1) || 1;
         lightening.kill();
+        this.audio.lightening.play();
         this.helpers.updatePlayer.call(this);
         setTimeout(() => {
             player.boost--;
@@ -173,6 +187,9 @@ export default {
     loadTruck(player, truck) {
         if (truck.driving || this.data.bagCount !== this.opts.maxBags) return;
         truck.driving = true;
+        setTimeout(() => {
+            this.audio.truck.play();
+        }, 500);
         truck.animations.play('drive');
         this.data.bagCount = 0;
         this.data.levels[this.opts.level].trucks++;
