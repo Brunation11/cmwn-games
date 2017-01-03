@@ -1,5 +1,6 @@
 import MediaCollection from 'shared/components/media_collection/0.1';
 
+import Randomizer from 'shared/components/randomizer/0.1';
 import Dropper from 'shared/components/dropper/0.3';
 import Catcher from 'shared/components/catcher/0.1';
 import Catchable from 'shared/components/catchable/0.1';
@@ -186,11 +187,11 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={opts.id}
         >
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
                 children={opts.vos}
             />
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.sfx.playing')}
                 children={opts.sfx}
                 onPlay={onPlaySFX}
@@ -241,7 +242,7 @@ export default function (props, ref, key, opts = {}) {
                     onAddClassName={onAddClassName}
                     onTransitionEnd={onTransitionEnd}
                     bin={
-                        <skoash.Randomizer
+                        <Randomizer
                             completeOnStart
                             checkComplete={false}
                             bin={bin}
