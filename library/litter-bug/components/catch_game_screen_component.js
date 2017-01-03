@@ -1,7 +1,7 @@
 import MediaCollection from 'shared/components/media_collection/0.1';
 
 import Randomizer from 'shared/components/randomizer/0.1';
-import Dropper from 'shared/components/dropper/0.3';
+import Dropper from 'shared/components/dropper/0.1';
 import Catcher from 'shared/components/catcher/0.1';
 import Catchable from 'shared/components/catchable/0.1';
 
