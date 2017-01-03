@@ -80,12 +80,14 @@ export default {
         }, generalDefaultProps),
         wood1: _.defaults({
             frame: 0,
+            body: [200, 125, 300, 0],
         }, woodDefaultProps),
         wood2: _.defaults({
             frame: 1,
         }, woodDefaultProps),
         wood3: _.defaults({
             frame: 2,
+            body: [250, 125, 250, 0],
         }, woodDefaultProps),
         land1: _.defaults({
             frame: 0,
