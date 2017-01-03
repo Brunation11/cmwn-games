@@ -59,34 +59,46 @@ skoash.start(
             <div className="background bkg-2" />,
             <div className="background bkg-3" />,
             <div className="background bkg-4" />,
-            // <skoash.Audio
-            //     ref="button"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}Click.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="screen-complete"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}NextAppear.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-1"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_1.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-2"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_2.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-3"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_3.mp3`}
-            //     loop
-            // />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${MEDIA.EFFECT}Click.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${MEDIA.EFFECT}NextAppear.mp3`}
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_1.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_2.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_3.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_4.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_5.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_6.mp3`}
+                loop
+            />,
         ]}
         getBackgroundIndex={(index, id) => {
             switch (id) {
@@ -97,11 +109,14 @@ skoash.start(
                     return 1; //bkg-2
                 case 'first-stage':
                 case 'instructions-1':
-                    return 2; //bkg-3
+                case 'monarch-generations-1':
                 case 'phaser-level-1':
+                case 'monarch-generations-2':
                 case 'phaser-level-2':
+                case 'monarch-generations-3':
                 case 'phaser-level-3':
-                    return;
+                case 'monarch-generations-4':
+                    return 2; //bkg-3
                 case 'flip':
                     return;
                 case 'video':
