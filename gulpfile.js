@@ -81,7 +81,6 @@ buildTask = [
     'copy-index',
     'copy-framework',
     'copy-media',
-    'copy-components',
     'clean'
 ];
 gulp.task('default', buildTask);
@@ -244,14 +243,10 @@ gulp.task('copy-index', function () {
             .pipe(gulp.dest('./build/' + game));
         }
     });
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join('./library', game, 'source/screens/*'))
-    .pipe(gulp.dest('./build/' + game + '/screens'));
 });
 
 gulp.task('copy-framework', function () {
+    // This can be removed once the framework is being deployed separately from games
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
@@ -277,18 +272,6 @@ gulp.task('copy-media', function () {
     gulp
     .src(['./library/shared/images/*'])
     .pipe(gulp.dest('./build/shared/images'));
-});
-
-gulp.task('copy-components', function () {
-    if (typeof game !== 'string') {
-        gutil.log('Your game argument must be a string');
-        process.exit(1); // eslint-disable-line no-undef
-    }
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join( './library', game, 'source/js/components/**/*.html' ))
-    .pipe( gulp.dest(path.join( './build', game, 'components' )) );
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name
