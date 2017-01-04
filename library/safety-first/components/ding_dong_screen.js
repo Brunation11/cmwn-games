@@ -5,13 +5,15 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
             id="ding-dong"
+            onComplete={function () {
+                this.next();
+            }}
         >
             <skoash.MediaSequence>
                 <skoash.Audio
                     ref="ding-dong"
                     type="sfx"
                     src={`${ENVIRONMENT.MEDIA}SoundAssets/effects/DoorbellLong.mp3`}
-                    loop={true}
                 />
             </skoash.MediaSequence>
             <skoash.Image

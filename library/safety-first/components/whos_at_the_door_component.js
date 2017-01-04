@@ -2,6 +2,9 @@ import MediaCollection from 'shared/components/media_collection/0.1';
 import RevealPrompt from 'shared/components/reveal_prompt/0.1';
 import Selectable from 'shared/components/selectable/0.1';
 
+import classNames from 'classnames';
+import _ from 'lodash';
+
 export default function (props, ref, key, opts = {}) {
     var sfxOnComplete;
     var selectRespond;
@@ -49,17 +52,25 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WhosAtDoor.mp3`}
+                    onComplete={function () {
+                        this.updateGameState({
+                            path: 'game',
+                            data: {
+                                label: true
+                            }
+                        });
+                    }}
                 />
                 <skoash.Audio
                     ref="intro"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/WhosAtDoor.mp3`}
+                    src={`${ENVIRONMENT.MEDIA}SoundAssets/vos/${opts.label}.mp3`}
                 />
             </skoash.MediaSequence>
 
             <skoash.Component className={`frame ${opts.id}`}>
-                <span>
+                <span className={classNames({label: _.get(props, 'data.game.label')})}>
                     {opts.header}
                 </span>
             </skoash.Component>
@@ -133,7 +144,7 @@ export default function (props, ref, key, opts = {}) {
                 list={[
                     <skoash.Component ref={opts.id}>
                         <skoash.Component className={`frame ${opts.id}`}>
-                            <span>
+                            <span className="label">
                                 {opts.header}
                             </span>
                         </skoash.Component>

@@ -57,15 +57,21 @@
 
         > span {
             position: absolute;
-            bottom: -9%;
+            bottom: -6%;
             left: 50%;
             transform: translateX(-50%);
+            transition: opacity 1s;
+            opacity: 0;
             width: 100%;
             line-height: 65px;
             color: $color-yellow;
-            font-size: 60px;
+            font-size: 45px;
             font-weight: 900;
             font-style: italic;
+
+            &.label {
+                opacity: 1;
+            }
         }
     }
 
@@ -251,7 +257,7 @@
                 transform: translateY(-25%);
                 width: 90%;
                 text-shadow: -5px 5px 2px $color-black;
-                font-size: 65px;
+                font-size: 50px;
             }
         }
 
