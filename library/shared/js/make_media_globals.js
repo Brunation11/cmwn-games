@@ -1,5 +1,5 @@
 (function (gameName) {
-    window.MEDIA = {
+    var MEDIA = window.MEDIA = {
         BASE: ENVIRONMENT.MEDIA
     };
     window.MEDIA.GAME = window.MEDIA.BASE + 'Games/' + gameName + '/';
@@ -7,4 +7,7 @@
     window.MEDIA.VO = window.MEDIA.GAME + 'SoundAssets/vos/';
     window.MEDIA.IMAGE = window.MEDIA.GAME + 'ImageAssets/';
     window.MEDIA.SPRITE = window.MEDIA.GAME + 'SpritesAnimations/';
+    window.CMWN = {
+        MEDIA
+    };
 }(window.gameFolder));
