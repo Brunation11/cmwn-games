@@ -25,7 +25,7 @@ export default {
     level: 1,
     hitsPerLife: 10,
     bounceY: 0,
-    gravityY: 400,
+    gravityY: 600,
     playerImage: 'butterfly',
     playerBody: [500, 100, 500, 500],
     leftFrames: [5, 4, 3, 2, 1, 0],
@@ -35,9 +35,9 @@ export default {
     rightFrameRate: 10,
     rightLoop: true,
     playerScale: [-.15, .15],
-    upSpeed: -350,
+    upSpeed: -250,
     rightSpeed: 150,
-    fastUpSpeed: -350,
+    fastUpSpeed: -250,
     fastRightSpeed: 300,
     fastDuration: 3000,
     slowUpSpeed: -350,
@@ -80,12 +80,14 @@ export default {
         }, generalDefaultProps),
         wood1: _.defaults({
             frame: 0,
+            body: [200, 125, 300, 0],
         }, woodDefaultProps),
         wood2: _.defaults({
             frame: 1,
         }, woodDefaultProps),
         wood3: _.defaults({
             frame: 2,
+            body: [250, 125, 250, 0],
         }, woodDefaultProps),
         land1: _.defaults({
             frame: 0,

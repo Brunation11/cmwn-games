@@ -10,6 +10,30 @@
     @include sprite($sprite + 'sprite.continue.png', 192px, 105px, 1, 2, $column, 1, 2, $width, $height);
 }
 
+@mixin sprite-butterfly($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.butterflyhover.png', 360px, 150px, 4, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin sprite-circle($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.circles.png', 345px, 230px, 3, 2, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-circle-complete($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.circles.png', 345px, 230px, 3, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin sprite-circle-star($column: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.starmap.png', 45px, 90px, 1, 2, $column, 1, 1, $width, $height);
+}
+
+@mixin sprite-circle-star-grey($column: 1, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.starmap.png', 45px, 90px, 1, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin sprite-transition($column, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.transition.png', 1035px, 235px, 3, 1, $column, 1, 1, $width, $height);
+}
+
 // can be used in flyer game
 // work later to move this function to a shared/css/mixins
 @mixin score-meter($steps: 4, $meter-color: $light-green) {
@@ -94,11 +118,9 @@
     &::before,
     span,
     &::after {
+        @include sprite-circle-star-grey;
         display: inline-block;
         position: relative;
-        transition: opacity .5s;
-        opacity: .5;
-        background-repeat: no-repeat;
         vertical-align: middle;
     }
 
@@ -113,7 +135,7 @@
     &.score-3::before,
     &.score-3 span,
     &.score-3::after {
-        opacity: 1;
+        @include sprite-circle-star;
     }
 }
 

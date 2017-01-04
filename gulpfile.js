@@ -18,6 +18,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
+var bourbon = require('node-bourbon');
 var header = require('gulp-header');
 var concat = require('gulp-concat');
 var livereload = require('gulp-livereload');
@@ -53,9 +54,12 @@ function defineEntries(config) {
         varsPath,
         mediaPath,
         './' + game + '/index.js',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:8080/',
     ];
+
+    if (env === 'dev') {
+        config.entry.push('webpack/hot/dev-server');
+        config.entry.push('webpack-dev-server/client?http://localhost:8080/');
+    }
 
     return config;
 }
@@ -77,7 +81,6 @@ buildTask = [
     'copy-index',
     'copy-framework',
     'copy-media',
-    'copy-components',
     'clean'
 ];
 gulp.task('default', buildTask);
@@ -133,7 +136,9 @@ gulp.task('sass', function () {
         './library/' + game + '/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
@@ -147,7 +152,9 @@ gulp.task('sass', function () {
         './library/shared/css/**/*.css'
     ])
     .pipe(header(fs.readFileSync(varsPath, 'utf8')))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: bourbon.includePaths,
+    }).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(postcss([autoprefixer({ browsers: ['last 5 versions'] })]))
     .pipe(gulp.dest('./build/shared/css'))
@@ -236,14 +243,10 @@ gulp.task('copy-index', function () {
             .pipe(gulp.dest('./build/' + game));
         }
     });
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join('./library', game, 'source/screens/*'))
-    .pipe(gulp.dest('./build/' + game + '/screens'));
 });
 
 gulp.task('copy-framework', function () {
+    // This can be removed once the framework is being deployed separately from games
     gulp
     .src(['./library/framework/*'])
     .pipe(gulp.dest('./build/framework'));
@@ -269,18 +272,6 @@ gulp.task('copy-media', function () {
     gulp
     .src(['./library/shared/images/*'])
     .pipe(gulp.dest('./build/shared/images'));
-});
-
-gulp.task('copy-components', function () {
-    if (typeof game !== 'string') {
-        gutil.log('Your game argument must be a string');
-        process.exit(1); // eslint-disable-line no-undef
-    }
-
-    // This is only needed for LL games and can be removed once we no longer need to build any LL games.
-    gulp
-    .src(path.join( './library', game, 'source/js/components/**/*.html' ))
-    .pipe( gulp.dest(path.join( './build', game, 'components' )) );
 });
 
 // To specify what game you'd like to watch call gulp watch --game game-name

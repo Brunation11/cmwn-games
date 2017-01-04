@@ -37,6 +37,15 @@ export default function () {
         ],
     ]);
 
-    // loadAssets.call(this, 'audio', [
-    // ]);
+    loadAssets.call(this, 'audio', [
+    ['egg', `${MEDIA.EFFECT}EggDrop.mp3`],
+    ['obstacle', `${MEDIA.EFFECT}BumpObstacles.mp3`],
+    ['bird', `${MEDIA.EFFECT}Bird.mp3`],
+    ['flower', `${MEDIA.EFFECT}PowerFlower.mp3`],
+    ['water', `${MEDIA.EFFECT}Drop.mp3`],
+    ['cloud', `${MEDIA.EFFECT}Cloud.mp3`],
+    ['wind', `${MEDIA.EFFECT}Wind.mp3`],
+    ['star', `${MEDIA.EFFECT}StarFact.mp3`],
+    ['speed', `${MEDIA.EFFECT}SpeedBKG.mp3`],
+    ]);
 }

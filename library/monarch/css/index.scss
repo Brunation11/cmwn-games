@@ -20,14 +20,8 @@ html {
 }
 
 button {
-    position: absolute;
-
     &.close {
         @include nav-button(6, 60px, 60px);
-        top: 10px;
-        right: 10px;
-        width: 60px;
-        height: 60px;
     }
 
     &.next-screen,
@@ -71,60 +65,72 @@ button {
 }
 
 .skoash-game {
-    .background {
-        &.title {
-            background: url('#{$sprite}Monarch2.gif');
-        }
+    $screens:
+        title
+        info-video-one
+        life-stages
+        first-stage
+        instructions-1
+        bonus-level-one
+        bonus-level-two
+        video-pupa
+        info-you-won
+        video-monarch
+        info-migrate
+        monarch-generations-1
+        monarch-generations-2
+        monarch-generations-3
+        monarch-generations-4
+        flip;
 
-        &.bkg-1 {
-            background: url('#{$image}bkg.1.jpg');
-        }
-
-        &.bkg-2 {
-            background: url('#{$image}2-01.jpg');
-        }
-
-        &.bkg-3 {
-            background: url('#{$image}bkg.3.jpg');
-        }
-
-        &.bkg-4 {
-            background: url('#{$image}bkg.4.jpg');
-        }
-
-        &.bkg-5 {
-            background: url('#{$image}bkg.5-01.jpg');
-        }
-
-        &.title,
-        &.bkg-1,
-        &.bkg-2,
-        &.bkg-3,
-        &.bkg-4,
-        &.bkg-5 {
-            background-size: cover;
-        }
-    }
+    $backgrounds:
+        title
+        bkg-4
+        bkg-1
+        bkg-1
+        bkg-3
+        bkg-3
+        bkg-3
+        bkg-1
+        bkg-3
+        bkg-1
+        bkg-5
+        bkg-4
+        bkg-4
+        bkg-4
+        bkg-4
+        bkg-1;
 
     &:not(.MENU) {
-        &.SCREEN-title .background.title,
-        &.SCREEN-info-video-one .background.bkg-4,
-        &.SCREEN-life-stages .background.bkg-1,
-        &.SCREEN-first-stage .background.bkg-1,
-        &.SCREEN-instructions-1 .background.bkg-3,
-        &.SCREEN-bonus-level-one .background.bkg-3,
-        &.SCREEN-bonus-level-two .background.bkg-3,
-        &.SCREEN-video-pupa .background.bkg-1,
-        &.SCREEN-info-you-won .background.bkg-3,
-        &.SCREEN-video-monarch .background.bkg-1,
-        &.SCREEN-info-migrate .background.bkg-5,
-        &.SCREEN-flip .background.bkg-1 {
-            opacity: 1;
-        }
+        @include screen-backgrounds($screens, $backgrounds);
     }
 
     &.MENU.MENU-quit .background.bkg-1 {
         opacity: 1;
+    }
+
+    .background {
+        $background-titles:
+            title
+            bkg-1
+            bkg-2
+            bkg-3
+            bkg-4
+            bkg-5;
+
+        $background-images:
+            '#{$sprite}Monarch2.gif'
+            '#{$image}bkg.1.jpg'
+            '#{$image}2-01.jpg'
+            '#{$image}bkg.3.jpg'
+            '#{$image}bkg.4.jpg'
+            '#{$image}bkg.5-01.jpg';
+
+        @for $i from 1 through length($background-titles) {
+            &.#{nth($background-titles, $i)} {
+                @include background(nth($background-images, $i));
+            }
+        }
     }
 }
 
@@ -138,12 +144,19 @@ button {
         @include background('#{$frame}frame.big.png');
     }
 
+    &.fact,
+    &.replay {
+        .content {
+            margin: -5%;
+        }
+    }
+
     &.fact {
         @include background('#{$frame}monarch.fact.png');
         margin-left: 40px;
 
         p {
-            font-size: 32px;
+            font-size: 30px;
         }
     }
 
@@ -153,7 +166,6 @@ button {
 
     .content {
         @include center;
-        margin: -5%;
         width: 90%;
         color: $black;
     }
@@ -164,20 +176,5 @@ button {
 }
 
 .reveal {
-    li,
-    .close-reveal {
-        display: none;
-    }
-
-    &.OPEN {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-
-        li.OPEN,
-        .close-reveal {
-            display: block;
-            z-index: 3;
-        }
-    }
+    @include reveal;
 }

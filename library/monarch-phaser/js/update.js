@@ -39,6 +39,7 @@ export default function () {
     flyPlayer.call(this, {
         upSpeed,
         rightSpeed,
+        gravityY: this.opts.gravityY,
         stopFrame: this.opts.playerStopFrame,
     });
 

@@ -58,10 +58,23 @@ export default function (props, ref, key, opts = {}) {
                 pause: true
             },
         });
+
+        this.updateGameState({
+            path: ['game'],
+            data: {
+                levels: {
+                    [opts.level]: {
+                        start: false,
+                    }
+                }
+            },
+        });
     };
 
     onCloseReveal = function (prevMessage) {
         var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+
+        if (!prevMessage) return;
 
         this.updateGameState({
             path: 'reveal',
@@ -77,7 +90,18 @@ export default function (props, ref, key, opts = {}) {
             },
         });
 
-        if (prevMessage === 'replay') {
+        if (prevMessage === 'instructions') {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    levels: {
+                        [opts.level]: {
+                            start: true,
+                        }
+                    }
+                },
+            });
+        } else if (prevMessage === 'replay') {
             onScreenStart.call(this, false);
 
             this.updateGameState({
@@ -108,22 +132,8 @@ export default function (props, ref, key, opts = {}) {
                     open: 'fact-3',
                 }
             });
-        } else if (prevMessage) {
-            this.updateGameState({
-                path: ['game'],
-                data: {
-                    levels: {
-                        [opts.level]: {
-                            complete: true,
-                            mostStars: Math.max(stars,
-                                _.get(props, `gameState.data.game.levels.${opts.level}.mostStars`, 0)),
-                        }
-                    }
-                },
-            });
-            setTimeout(() => {
-                skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
-            }, 100);
+        } else {
+            skoash.Screen.prototype.goto(parseInt(key, 10) + 1);
         }
     };
 
@@ -138,7 +148,8 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onTimerComplete = function () {
-        if (!_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)) {
+        var stars = _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0);
+        if (!stars) {
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -146,6 +157,20 @@ export default function (props, ref, key, opts = {}) {
                 }
             });
         } else {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    levels: {
+                        [opts.level]: {
+                            complete: true,
+                            mostStars: Math.max(stars,
+                                _.get(props, `gameState.data.game.levels.${opts.level}.mostStars`, 0)),
+                            fact2Complete: stars === 1,
+                            fact3Complete: stars > 0 && stars < 3,
+                        }
+                    }
+                },
+            });
             this.updateGameState({
                 path: 'reveal',
                 data: {
@@ -183,6 +208,7 @@ export default function (props, ref, key, opts = {}) {
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 data={_.get(props, 'gameState.data.game', {})}
                 pause={_.get(props, 'data.d-pad.pause')}
+                resume={!_.get(props, 'data.d-pad.pause')}
                 onRespond={onRespond}
             />
             <skoash.Timer
@@ -210,7 +236,7 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Score
                     className="star-score"
-                    correct={_.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0)}
+                    correct={Math.min(3, _.get(props, `gameState.data.game.levels.${opts.level}.stars`, 0))}
                     setScore={true}
                 />
                 <skoash.Score
@@ -230,12 +256,22 @@ export default function (props, ref, key, opts = {}) {
                 />
             </skoash.Component>
             <skoash.Reveal
+                openOnStart="instructions"
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
                 closeReveal={_.get(props, 'data.reveal.close', false)}
                 onClose={onCloseReveal}
                 onOpen={onOpenReveal}
                 list={[
+                    <skoash.Component
+                        ref="instructions"
+                        className="frame square instructions"
+                        type="li"
+                    >
+                        <div className="content">
+                            {opts.instructions}
+                        </div>
+                    </skoash.Component>,
                     <skoash.Component
                         ref="fact-1"
                         className="fact frame square"
@@ -280,10 +316,14 @@ export default function (props, ref, key, opts = {}) {
                     </skoash.Component>,
                 ]}
             />
-            {/*
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
+                <skoash.Audio
+                    type="voiceOver"
+                    ref="instructions"
+                    src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
+                />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-1"
@@ -293,19 +333,21 @@ export default function (props, ref, key, opts = {}) {
                     type="voiceOver"
                     ref="fact-2"
                     src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
+                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact2Complete`, false)}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-3"
                     src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
+                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact3Complete`, false)}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="replay"
                     src={`${MEDIA.VO}DontGiveUp.mp3`}
+                    complete
                 />
             </skoash.MediaCollection>
-            */}
         </skoash.Screen>
     );
 }
