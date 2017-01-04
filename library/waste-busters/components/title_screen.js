@@ -7,11 +7,11 @@ export default function (props, ref, key) {
             id="title"
         >
             <skoash.Image
-                src={MEDIA.IMAGE + 'PLTlogo.png'}
+                src={CMWN.MEDIA.IMAGE + 'PLTlogo.png'}
                 className="logo"
             />
             <skoash.Image
-                src={MEDIA.IMAGE + 'title.png'}
+                src={CMWN.MEDIA.IMAGE + 'title.png'}
                 className="title"
             />
         </skoash.Screen>

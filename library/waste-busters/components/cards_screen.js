@@ -8,27 +8,27 @@ export default function (props, ref, key) {
         >
             <skoash.Image
                 className="hidden"
-                src={MEDIA.SPRITE + 'cards.1.png'}
+                src={CMWN.MEDIA.SPRITE + 'cards.1.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.SPRITE + 'cards.2.png'}
+                src={CMWN.MEDIA.SPRITE + 'cards.2.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.SPRITE + 'cards.3.png'}
+                src={CMWN.MEDIA.SPRITE + 'cards.3.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.SPRITE + 'cards.4.png'}
+                src={CMWN.MEDIA.SPRITE + 'cards.4.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.IMAGE + 'card.png'}
+                src={CMWN.MEDIA.IMAGE + 'card.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.IMAGE + 'cards.trash.png'}
+                src={CMWN.MEDIA.IMAGE + 'cards.trash.png'}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.selectable.target.props.message')}
@@ -36,17 +36,17 @@ export default function (props, ref, key) {
               <skoash.Audio
                   type="voiceOver"
                   ref="reduce"
-                  src={MEDIA.VO + 'ReduceStrong.mp3'}
+                  src={CMWN.MEDIA.VO + 'ReduceStrong.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref="reuse"
-                  src={MEDIA.VO + 'ReuseStrong.mp3'}
+                  src={CMWN.MEDIA.VO + 'ReuseStrong.mp3'}
               />
               <skoash.Audio
                   type="voiceOver"
                   ref="recycle"
-                  src={MEDIA.VO + 'RecycleStrong.mp3'}
+                  src={CMWN.MEDIA.VO + 'RecycleStrong.mp3'}
               />
             </skoash.MediaCollection>
             <skoash.Selectable

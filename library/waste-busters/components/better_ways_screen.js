@@ -11,11 +11,11 @@ export default function (props, ref, key) {
             <skoash.MediaSequence>
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.VO + 'AreThere.mp3'}
+                    src={CMWN.MEDIA.VO + 'AreThere.mp3'}
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    src={MEDIA.EFFECT + 'YesShout.mp3'}
+                    src={CMWN.MEDIA.EFFECT + 'YesShout.mp3'}
                     playTarget="yes"
                 />
             </skoash.MediaSequence>
@@ -31,7 +31,7 @@ export default function (props, ref, key) {
                 className={classNames('yes animated', {
                     bounce: _.get(props, 'data.yes.playing')
                 })}
-                src={MEDIA.IMAGE + 'yes.png'}
+                src={CMWN.MEDIA.IMAGE + 'yes.png'}
             />
         </skoash.Screen>
     );

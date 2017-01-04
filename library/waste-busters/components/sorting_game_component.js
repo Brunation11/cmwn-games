@@ -9,7 +9,7 @@ for (let i = 1; i < 9; i++) {
         <skoash.Image
             key={i}
             className="hidden"
-            src={`${MEDIA.SPRITE}game2.${i}.png`}
+            src={`${CMWN.MEDIA.SPRITE}game2.${i}.png`}
         />
     );
 }
@@ -18,7 +18,7 @@ images.push(
     <skoash.Image
         key={9}
         className="hidden"
-        src={`${MEDIA.SPRITE}slingshot.png`}
+        src={`${CMWN.MEDIA.SPRITE}slingshot.png`}
     />
 );
 
@@ -48,22 +48,22 @@ export default function (props, ref, key, opts = {}) {
                 >
                     <skoash.Audio
                         type="voiceOver"
-                        src={`${MEDIA.VO}Waste_Sorting_Center.mp3`}
+                        src={`${CMWN.MEDIA.VO}Waste_Sorting_Center.mp3`}
                     />
                     <skoash.Audio
                         type="voiceOver"
-                        src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
+                        src={`${CMWN.MEDIA.VO}${opts.instructionsVO}.mp3`}
                     />
                 </skoash.MediaSequence>
                 <skoash.Audio
                     ref="complete"
                     type="voiceOver"
-                    src={`${MEDIA.VO}${opts.completeVO}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${opts.completeVO}.mp3`}
                 />
                 <skoash.Audio
                     ref="retry"
                     type="voiceOver"
-                    src={MEDIA.VO + 'Keep_Sorting.mp3'}
+                    src={CMWN.MEDIA.VO + 'Keep_Sorting.mp3'}
                     complete
                 />
             </skoash.MediaCollection>
@@ -73,31 +73,31 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     ref="correct"
                     type="sfx"
-                    src={`${MEDIA.EFFECT}Correct.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}Correct.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="incorrect"
                     type="sfx"
-                    src={`${MEDIA.EFFECT}WrongBinForItem.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}WrongBinForItem.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="warning"
                     type="sfx"
-                    src={`${MEDIA.EFFECT}TenSecondsWarning.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}TenSecondsWarning.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="fire"
                     type="sfx"
-                    src={`${MEDIA.EFFECT}SlingshotRelease_sortButton.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}SlingshotRelease_sortButton.mp3`}
                     complete
                 />
                 <skoash.Audio
                     ref="complete"
                     type="sfx"
-                    src={`${MEDIA.EFFECT}${opts.completeSFX}.mp3`}
+                    src={`${CMWN.MEDIA.EFFECT}${opts.completeSFX}.mp3`}
                     complete
                 />
             </skoash.MediaCollection>
@@ -106,7 +106,7 @@ export default function (props, ref, key, opts = {}) {
             </skoash.Component>
             <skoash.SpriteAnimation
                 className="slingshot"
-                src={`${MEDIA.SPRITE}slingshot.png`}
+                src={`${CMWN.MEDIA.SPRITE}slingshot.png`}
                 animate={_.get(props, 'data.game.firing', false)}
                 animateOnStart={false}
                 frames={6}

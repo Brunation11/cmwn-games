@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 
-const flipEarned = MEDIA.BASE +
+const flipEarned = CMWN.MEDIA.BASE +
     'Flips/Wastepro%20Flip/WP%20-%20Animated%20Earned%20Flip/WP.AnimatedEarnedFlip.gif';
 
-const flipStatic = MEDIA.BASE +
+const flipStatic = CMWN.MEDIA.BASE +
     'Flips/Wastepro%20Flip/WP%20-%20Static%20Image%20Flip/WP.StaticAnimatedFlip.gif';
 
 export default function (props, ref, key) {
@@ -16,16 +16,16 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={MEDIA.VO + 'filp.mp3'}
+                src={CMWN.MEDIA.VO + 'filp.mp3'}
                 playTarget="vo"
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.IMAGE + 'frame.square.png'}
+                src={CMWN.MEDIA.IMAGE + 'frame.square.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.SPRITE + 'flip.trees.png'}
+                src={CMWN.MEDIA.SPRITE + 'flip.trees.png'}
             />
             <skoash.Component className="frame square">
                 <skoash.Component className="content">
@@ -43,7 +43,7 @@ export default function (props, ref, key) {
                     />
                     <skoash.Image
                         className="title"
-                        src={MEDIA.IMAGE + 'flip.text.png'}
+                        src={CMWN.MEDIA.IMAGE + 'flip.text.png'}
                     />
                     <p>
                         Thanks for taking<br/>

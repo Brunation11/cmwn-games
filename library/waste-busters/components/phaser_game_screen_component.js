@@ -327,32 +327,32 @@ export default function (props, ref, key, opts = {}) {
                 <skoash.Audio
                     type="voiceOver"
                     ref="intro"
-                    src={`${MEDIA.VO}${opts.introVO}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${opts.introVO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="complete"
-                    src={`${MEDIA.VO}Level_${opts.level}.mp3`}
+                    src={`${CMWN.MEDIA.VO}Level_${opts.level}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-1"
-                    src={`${MEDIA.VO}${opts.fact1VO}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${opts.fact1VO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-2"
-                    src={`${MEDIA.VO}${opts.fact2VO}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${opts.fact2VO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-3"
-                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${opts.fact3VO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="replay"
-                    src={`${MEDIA.VO}Another_Chance.mp3`}
+                    src={`${CMWN.MEDIA.VO}Another_Chance.mp3`}
                     complete
                 />
             </skoash.MediaCollection>

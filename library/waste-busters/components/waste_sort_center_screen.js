@@ -8,19 +8,19 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={MEDIA.VO + 'Help_Me.mp3'}
+                src={CMWN.MEDIA.VO + 'Help_Me.mp3'}
             />
             <skoash.Image
                 className="title"
-                src={MEDIA.IMAGE + 'sort.title.png'}
+                src={CMWN.MEDIA.IMAGE + 'sort.title.png'}
             />
             <skoash.Image
                 className="turtle"
-                src={MEDIA.IMAGE + 'main.turtle.png'}
+                src={CMWN.MEDIA.IMAGE + 'main.turtle.png'}
             />
             <skoash.Image
                 className="hidden"
-                src={MEDIA.IMAGE + 'frame.round.png'}
+                src={CMWN.MEDIA.IMAGE + 'frame.round.png'}
             />
             <div className="frame round">
                 <div className="content">

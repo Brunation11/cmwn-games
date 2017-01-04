@@ -8,7 +8,7 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={MEDIA.VO + 'AndEvery.mp3'}
+                src={CMWN.MEDIA.VO + 'AndEvery.mp3'}
             />
             <skoash.Component className="frame-1">
                 <skoash.Component className="intro-image-2" />
