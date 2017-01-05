@@ -88,31 +88,37 @@ skoash.start(
                 src={`${MEDIA.EFFECT}NextAppear.mp3`}
             />,
             <skoash.Audio
+                ref="bkg-1"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_1.mp3`}
                 loop
             />,
             <skoash.Audio
+                ref="bkg-2"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_2.mp3`}
                 loop
             />,
             <skoash.Audio
+                ref="bkg-3"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_3.mp3`}
                 loop
             />,
             <skoash.Audio
+                ref="bkg-4"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_4.mp3`}
                 loop
             />,
             <skoash.Audio
+                ref="bkg-5"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_5.mp3`}
                 loop
             />,
             <skoash.Audio
+                ref="bkg-6"
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_6.mp3`}
                 loop
@@ -146,7 +152,7 @@ skoash.start(
                 case 'monarch-generations-3':
                 case 'phaser-level-3':
                 case 'monarch-generations-4':
-                    return 2; //bkg-3
+                    return 'bkg-3'; //bkg-3
                 case 'flip':
                     return;
                 case 'info-video-one':
