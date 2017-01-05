@@ -59,9 +59,17 @@ export default {
     },
     activateSnake(snake, hole) {
         var climb;
+        var shouldClimbUp = !snake.active && !snake.climbing;
+        var shouldClimbDown = (
+            snake.active &&
+            !snake.climbing &&
+            snake.body.velocity.x > 0 &&
+            snake.left < hole.left &&
+            snake.left > hole.left - 80
+        );
 
-        if (!snake.active && !snake.climbing) {
-            snake.left = hole.left - 50;
+        if (shouldClimbUp) {
+            snake.left = hole.left - 25;
             snake.loadTexture(snake.originalImage + 'up', 0);
             climb = snake.animations.add('hole', [0, 1, 2, 3, 4, 5, 6], 10, false);
             climb.onComplete.add(() => {
@@ -77,14 +85,13 @@ export default {
                     snake.climbing = false;
                 }, 5000);
             });
-            // snake.scale.setTo(.25, .25);
-            snake.width = 120;
+            snake.width = 140;
             snake.height = 100;
             snake.animations.play('hole');
             snake.active = true;
             snake.climbing = true;
-        } else if (snake.active && !snake.climbing && snake.body.velocity.x > 0 && snake.left < hole.left) {
-            snake.left = hole.left - 100;
+        } else if (shouldClimbDown) {
+            snake.left = hole.left - 75;
             snake.body.velocity.x = 0;
             snake.loadTexture(snake.originalImage + 'down', 0);
             snake.left = snake.left + 25;
@@ -98,8 +105,7 @@ export default {
                     snake.climbing = false;
                 }, 5000);
             });
-            // snake.scale.setTo(.15, .15);
-            snake.width = 120;
+            snake.width = 140;
             snake.height = 100;
             snake.animations.play('hole');
             snake.active = false;

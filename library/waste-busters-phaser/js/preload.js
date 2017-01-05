@@ -47,7 +47,7 @@ export default function () {
         ],
         [
             'snake0down',
-            `${CMWN.MEDIA.SPRITE}mom.going.to.hole.png`,
+            `${CMWN.MEDIA.SPRITE}mom.going.to.hole.png?v=3`,
             `${CMWN.MEDIA.SPRITE}mom.going.to.hole.json`
         ],
         [
@@ -57,7 +57,7 @@ export default function () {
         ],
         [
             'snake1down',
-            `${CMWN.MEDIA.SPRITE}sister.down.hole.png`,
+            `${CMWN.MEDIA.SPRITE}sister.down.hole.png?v=3`,
             `${CMWN.MEDIA.SPRITE}sister.down.hole.json`
         ],
         [
@@ -67,7 +67,7 @@ export default function () {
         ],
         [
             'snake2down',
-            `${CMWN.MEDIA.SPRITE}brother.down.hole.png`,
+            `${CMWN.MEDIA.SPRITE}brother.down.hole.png?v=3`,
             `${CMWN.MEDIA.SPRITE}brother.down.hole.json`
         ],
     ]);
