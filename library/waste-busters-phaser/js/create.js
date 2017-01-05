@@ -17,8 +17,6 @@ export default function () {
     this.helpers.makeGround.call(this);
     this.helpers.makeDoor.call(this);
     this.helpers.makePlatforms.call(this);
-    this.helpers.makeLogs.call(this);
-    this.helpers.makeItems.call(this);
 
     addPlayer.call(this, {
         left: 32,
@@ -31,6 +29,9 @@ export default function () {
         leftFrames: this.opts.leftFrames,
         scale: this.opts.playerScale,
     });
+
+    this.helpers.makeLogs.call(this);
+    this.helpers.makeItems.call(this);
 
     this.data = _.defaults({
         levels: {
