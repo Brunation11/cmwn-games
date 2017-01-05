@@ -167,18 +167,18 @@ export default {
     },
     updatePlayer() {
         if (this.player.boost) {
-            this.player.loadTexture('jet', 0);
+            this.player.loadTexture('jet', 3);
             this.player.animations.add('left', this.opts.boostLeftFrames,
                 this.opts.boostLeftFrameRate, this.opts.boostLeftLoop);
             this.player.animations.add('right', this.opts.boostRightFrames,
                 this.opts.boostRightFrameRate, this.opts.boostRightLoop);
         } else {
             if (this.data.bagCount === this.opts.maxBags) {
-                this.player.loadTexture('turtle5', 0);
+                this.player.loadTexture('turtle5', this.player.frame);
             } else if (this.data.bagCount >= this.opts.maxBags / 2) {
-                this.player.loadTexture('turtle3', 0);
+                this.player.loadTexture('turtle3', this.player.frame);
             } else {
-                this.player.loadTexture('turtle', 0);
+                this.player.loadTexture('turtle', this.player.frame);
             }
             this.player.animations.add('left', this.opts.leftFrames,
                 this.opts.leftFrameRate, this.opts.leftLoop);

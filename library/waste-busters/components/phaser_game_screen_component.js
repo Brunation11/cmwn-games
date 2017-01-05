@@ -9,12 +9,13 @@ export default function (props, ref, key, opts = {}) {
     var onRespond;
     var onTimerComplete;
 
-    startScreen = function (screenStart = true) {
+    startScreen = function (screenStart = true, callback) {
         this.updateGameState({
             path: 'game',
             data: {
                 screenStart,
             },
+            callback,
         });
     };
 
@@ -151,24 +152,22 @@ export default function (props, ref, key, opts = {}) {
     onTimerComplete = function () {
         if (_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)) return;
 
-        startScreen.call(this, false);
-
-        this.updateGameState({
-            path: ['game'],
-            data: {
-                bagCount: 0,
-                lives: _.get(props, 'gameState.data.game.lives', 1) - 1 || 1,
-                levels: {
-                    [opts.level]: {
-                        start: false,
+        startScreen.call(this, false, () => {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    bagCount: 0,
+                    lives: _.get(props, 'gameState.data.game.lives', 1) - 1 || 1,
+                    levels: {
+                        [opts.level]: {
+                            start: false,
+                        }
                     }
-                }
-            },
-        });
+                },
+            });
 
-        setTimeout(() => {
             startScreen.call(this);
-        }, 0);
+        });
     };
 
     return (
