@@ -1,0 +1,240 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    cursor: default;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    user-drag: none;
+    user-select: none;
+}
+
+html {
+    color: $text-color;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body,
+body > div,
+.skoash-game {
+    position: relative;
+    margin: auto;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        background-position: center center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.skoash-game {
+    width: 960px;
+    height: 540px;
+}
+
+// preload assets
+#asset-bin {
+    display: none;
+}
+
+img {
+    &.hidden {
+        display: none;
+    }
+}
+
+button {
+    margin: 0;
+    outline: none;
+    border: 0;
+
+    background-color: transparent;
+    background-image: url($media + 'SpritesAnimations/nav.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 2400px;
+
+    cursor: pointer;
+    padding: 0;
+    color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+
+    &.close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        background-position: -410px -5px;
+        width: 40px;
+        height: 45px;
+
+        &:hover {
+            background-position: -410px -53px;
+        }
+    }
+
+    &.next-screen,
+    &.prev-screen {
+        display: block;
+        position: absolute;
+        bottom: 30px;
+        z-index: 2;
+        margin: 0;
+        width: 90px;
+        height: 65px;
+    }
+
+    &.next-screen {
+        right: 15px;
+        opacity: 0;
+        background-position: -620px -100px;
+        pointer-events: none;
+
+        &:hover {
+            background-position: -620px -365px;
+        }
+    }
+
+    &.prev-screen {
+        left: 15px;
+        background-position: -360px -100px;
+
+        &:hover {
+            background-position: -360px -365px;
+        }
+    }
+
+    &.quit-yes {
+        background-position: 0 0;
+        background-size: 300px;
+        width: 150px;
+        height: 60px;
+
+        &:hover {
+            background-position: 0 -66px;
+        }
+    }
+
+    &.quit-no {
+        background-position: -150px 0;
+        background-size: 300px;
+        width: 150px;
+        height: 60px;
+
+        &:hover {
+            background-position: -150px -66px;
+        }
+    }
+
+    &.close-reveal {
+        transition: opacity 1s;
+        background-position: -660px 240px;
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+            background-position: -660px 390px;
+        }
+    }
+}
+
+h2 {
+    font-size: 50px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 36px;
+}
+
+p {
+    margin: 0;
+    font-size: 36px;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity .5s, z-index 0 .5s;
+    opacity: 0;
+    z-index: -1;
+
+    .screen-content {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: opacity .5s;
+        opacity: 0;
+        text-align: center;
+
+        .VOICE-OVER:not(.DEMO) & {
+            pointer-events: none;
+        }
+    }
+
+    &.OPEN {
+        transition: opacity .5s, z-index 0;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    &.READY {
+        .screen-content {
+            display: block;
+            opacity: 1;
+        }
+    }
+
+    &.LEAVE {
+        opacity: 0;
+    }
+}
+
+.skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,
+.screen.GATED .next-screen {
+    transition: opacity 0s;
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+}
+
+.skoash-game.MENU-quit .screen {
+    &:not(#quit) {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.skoash-game.DEMO .screen .next-screen,
+.screen.COMPLETE .next-screen,
+.screen.REPLAY .next-screen {
+    transform: rotate(0deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}

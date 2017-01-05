@@ -10,6 +10,10 @@ export default function (groupOpts = {}, optsArray = []) {
         gravityX: 0,
         gravityY: 0,
         collideWorldBounds: true,
+        checkCollisionUp: true,
+        checkCollisionDown: true,
+        checkCollisionRight: true,
+        checkCollisionLeft: true,
         angle: 0,
         anchor: [0, 0],
     });
@@ -20,25 +24,51 @@ export default function (groupOpts = {}, optsArray = []) {
     });
 
     if (!this[groupOpts.group]) {
-    //  The platforms group contains the ground and the 2 ledges we can jump on
+        // create the group we will be adding the items to
         this[groupOpts.group] = this.game.add.group();
-
-    //  We will enable physics for any object that is created in this group
+        // enable physics for any object that is created in this group
         this[groupOpts.group].enableBody = groupOpts.enableBody;
     }
 
-    _.each(optsArray, opts => {
-        opts = _.defaults(opts, groupOpts.defaultOpts);
+    _.each(optsArray, options => {
+        var opts = _.defaults({}, options, groupOpts.defaultOpts);
 
         let item = this[groupOpts.group].create(opts.left, opts.top, opts.image);
+
+        item.originalImage = opts.image;
         item.scale.setTo(...opts.scale);
-        item.body.immovable = opts.immovable;
-        item.body.collideWorldBounds = opts.collideWorldBounds;
-        item.body.bounce.x = opts.bounceX;
-        item.body.bounce.y = opts.bounceY;
-        item.body.gravity.x = opts.gravityX;
-        item.body.gravity.y = opts.gravityY;
+        if (opts.crop) {
+            item.crop(new Phaser.Rectangle(...opts.crop));
+            if (groupOpts.enableBody) {
+                item.body.width = opts.crop[2];
+                item.body.height = opts.crop[3];
+            }
+        }
         item.angle = opts.angle;
         item.anchor.setTo(...opts.anchor);
+
+        if (groupOpts.enableBody) {
+            item.body.immovable = opts.immovable;
+            item.body.collideWorldBounds = opts.collideWorldBounds;
+            item.body.bounce.x = opts.bounceX;
+            item.body.bounce.y = opts.bounceY;
+            item.body.gravity.x = opts.gravityX;
+            item.body.gravity.y = opts.gravityY;
+            item.body.checkCollision.up = opts.checkCollisionUp;
+            item.body.checkCollision.down = opts.checkCollisionDown;
+            item.body.checkCollision.right = opts.checkCollisionRight;
+            item.body.checkCollision.left = opts.checkCollisionLeft;
+
+            if (opts.body) {
+                // defer here to prevent item.scale from overriding body size
+                // we might want to find a better way to do this
+                setTimeout(() => {
+                    item.body.width = opts.body[0] * opts.scale[0];
+                    item.body.height = opts.body[1] * opts.scale[1];
+                    item.body.offset.x = opts.body[2] * opts.scale[0];
+                    item.body.offset.y = opts.body[3] * opts.scale[1];
+                }, 0);
+            }
+        }
     });
 }

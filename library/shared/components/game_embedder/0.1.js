@@ -22,8 +22,10 @@ class GameEmbedder extends skoash.Component {
         if (opts.complete) {
             this.complete();
         } else if (opts.updateGameState) {
-            this.updateGameState(opts);
+            this.updateGameState(opts.updateGameState);
         }
+
+        this.props.onRespond.call(this, opts);
     }
 
     onLoad() {
@@ -60,6 +62,13 @@ class GameEmbedder extends skoash.Component {
                 controller: props.controller,
             });
         }
+
+        if (props.data) {
+            this.emitEvent({
+                name: 'data-update',
+                data: props.data,
+            });
+        }
     }
 
     render() {
@@ -77,6 +86,7 @@ GameEmbedder.defaultProps = _.defaults({
     complete: false,
     checkComplete: false,
     onLoad: _.noop,
+    onRespond: _.noop,
 }, skoash.Component.defaultProps);
 
 export default GameEmbedder;
