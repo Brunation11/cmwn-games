@@ -124,6 +124,7 @@ skoash.start(
                 loop
             />,
             <skoash.Audio
+                ref="bkg-bonus"
                 type="background"
                 src={`${MEDIA.EFFECT}BonusBKG.mp3`}
             />,
@@ -132,19 +133,19 @@ skoash.start(
             switch (id) {
                 case 'ios-splash': return;
                 case 'title':
-                    return 0; //bkg-1
+                    return 'bkg-1';
                 case 'life-stages':
-                    return 1; //bkg-2
+                    return 'bkg-2';
                 case 'first-stage':
                 case 'instructions-1':
                 case 'video-pupa':
                 case 'video-monarch':
                 case 'info-migrate':
-                    return 2; //bkg-3
+                    return 'bkg-3';
                 case 'bonus-level-one':
                 case 'bonus-level-two':
                 case 'info-video-two':
-                    return 3; //bkg-4
+                    return 'bkg-4';
                 case 'monarch-generations-1':
                 case 'phaser-level-1':
                 case 'monarch-generations-2':
@@ -152,7 +153,7 @@ skoash.start(
                 case 'monarch-generations-3':
                 case 'phaser-level-3':
                 case 'monarch-generations-4':
-                    return 'bkg-3'; //bkg-3
+                    return 'bkg-3';
                 case 'flip':
                     return;
                 case 'info-video-one':
