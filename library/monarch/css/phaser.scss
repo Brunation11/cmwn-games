@@ -73,6 +73,10 @@
             }
         }
 
+        &[class*=open-fact-] {
+            @include background('#{$image}img.leaves.png');
+        }
+
         .instructions {
             margin-left: 10%;
             width: 660px;
