@@ -16,7 +16,5 @@
     MEDIA.MOCK.IMAGE = MEDIA.GAME + 'ImageAssets/';
     MEDIA.MOCK.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
 
-    window.CMWN = {
-        MEDIA
-    };
-}(window.gameFolder));
+    window.CMWN.MEDIA = MEDIA;
+}(window.CMWN.gameFolder));
