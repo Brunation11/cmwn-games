@@ -220,7 +220,7 @@ gulp.task('copy-index', function () {
                         '</script>\n  ' +
                         '<script type="text/javascript" ' +
                         `src="../framework/skoash.${config.skoash}.js"></script>\n  ` +
-                        `<script>window.gameFolder="${folder}"</script>`
+                        `<script>window.CMWN={gameFolder:"${folder}"};</script>`
                     );
                 }
             }))
