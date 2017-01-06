@@ -71,7 +71,7 @@
 
                 @for $i from 1 through length($highlighted-tops) {
                     &:nth-of-type(#{$i}) {
-                        @include life-cycle(#{$i}, 150px, 100px);
+                        @include life-cycle($i, 150px, 100px);
                         top: #{nth($highlighted-tops, $i)};
                     }
                 }
