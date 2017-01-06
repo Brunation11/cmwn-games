@@ -2,16 +2,16 @@ export default function (props, ref, key) {
     var onSelect;
     var onPlay;
 
-    onSelect = function(ref) {
+    onSelect = function (open) {
         this.updateGameState({
             path: 'reveal',
             data: {
-                open: ref
+                open
             }
         });
     };
 
-    onPlay = function() {
+    onPlay = function () {
         this.updateGameState({
             path: 'reveal',
             data: {
