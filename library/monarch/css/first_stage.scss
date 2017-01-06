@@ -3,10 +3,8 @@
 
 #first-stage {
     .frame {
+        @include center;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
         width: 80%;
         height: 80%;
         color: $black;

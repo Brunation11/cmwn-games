@@ -3,10 +3,8 @@
 
 [id^='info-video-'] {
     .video-container {
+        @include center;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
         background: url('#{$frame}vid_frame.png');
         background-repeat: no-repeat;
         background-position: center;
@@ -34,10 +32,8 @@
         background-color: $transparent-white;
 
         &::before {
+            @include center;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
             border: 5px solid $black;
             border-radius: 60px;
             box-shadow: 0 0 0 5px;

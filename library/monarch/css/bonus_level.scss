@@ -7,10 +7,8 @@
         opacity: 0;
 
         .reveal-frame {
+            @include center;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
             width: 68%;
             height: 76%;
 
@@ -28,28 +26,12 @@
                     transform-origin: bottom center;
                 }
 
-                .char1 {
-                    transform: translateX(-50%) rotate(-35deg);
-                }
+                $degrees: -35 -18 1 15 25 35;
 
-                .char2 {
-                    transform: translateX(-50%) rotate(-18deg);
-                }
-
-                .char3 {
-                    transform: translateX(-50%) rotate(1deg);
-                }
-
-                .char4 {
-                    transform: translateX(-50%) rotate(15deg);
-                }
-
-                .char5 {
-                    transform: translateX(-50%) rotate(25deg);
-                }
-
-                .char6 {
-                    transform: translateX(-50%) rotate(35deg);
+                @for $i from 1 through length($degrees) {
+                    .char#{$i} {
+                        transform: translateX(-50%) rotate(nth($degrees, $i)deg);
+                    }
                 }
             }
         }
@@ -62,10 +44,8 @@
             background-size: cover;
 
             &::before {
+                @include center;
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
                 border: 5px solid;
                 border-radius: 40px;
                 background: $white-transparancy;
@@ -112,14 +92,14 @@
                     .number {
                         animation-name: number-flash;
                     }
+                }
 
-                    .two {
-                        animation-delay: 2s;
-                    }
+                .two {
+                    animation-delay: 2s;
+                }
 
-                    .one {
-                        animation-delay: 4s;
-                    }
+                .one {
+                    animation-delay: 4s;
                 }
             }
         }
@@ -183,10 +163,10 @@
     }
 
     .labyrinth {
+        @include center;
         position: absolute;
         top: 45%;
         left: 55%;
-        transform: translateX(-50%) translateY(-50%);
         transition: opacity 1s;
         opacity: 0;
         width: 70%;
@@ -209,10 +189,8 @@
             height: 10px;
 
             &::after {
+                @include center;
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
                 background: url('#{$sprite}sprite.life.png');
                 background-position: 33% 15%;
                 background-size: auto 340%;
@@ -251,7 +229,7 @@
             $item-tops:  100  45  45  215 255 230 135 95 265 175 305 355 355;
             $item-lefts: 350 490 565  560 460 310 215 60 110 155 240  60 460;
 
-            @for $i from 1 through 13 {
+            @for $i from 1 through length($item-tops) {
                 &.item-#{$i} {
                     top: #{nth($item-tops, $i)}px;
                     left: #{nth($item-lefts, $i)}px;

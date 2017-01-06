@@ -12,10 +12,9 @@
     }
 
     .selectable {
+        @include center;
         position: absolute;
         top: 55%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
         border: 7px solid $light-orange;
         border-radius: 50px;
         box-shadow: 0 0 0 8px $dark-orange;
@@ -24,10 +23,8 @@
         height: 70%;
 
         &::before {
+            @include center;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
             border: 5px solid $black;
             border-radius: 60px;
             box-shadow: 0 0 0 5px;
@@ -37,10 +34,8 @@
         }
 
         &::after {
+            @include center;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
             z-index: -1;
             background: url('#{$image}brokenlines.png');
             background-repeat: no-repeat;
@@ -58,48 +53,27 @@
             width: 130px;
             height: 180px;
 
-            &:nth-of-type(1) {
-                top: 45%;
-                left: 0%;
-            }
+            $tops: 45%  5% 50%  8%;
+            $lefts: 0% 25% 55% 80%;
 
-            &:nth-of-type(2) {
-                top: 5%;
-                left: 25%;
-            }
-
-            &:nth-of-type(3) {
-                top: 50%;
-                left: 55%;
-            }
-
-            &:nth-of-type(4) {
-                top: 8%;
-                left: 80%;
+            @for $i from 1 through length($tops) {
+                &:nth-of-type(#{$i}) {
+                    top: #{nth($tops, $i)};
+                    left: #{nth($lefts, $i)};
+                }
             }
 
             &.HIGHLIGHTED {
                 width: 150px;
                 height: 100px;
 
-                &:nth-of-type(1) {
-                    @include life-cycle(1, 150px, 100px);
-                    top: 58%;
-                }
+                $highlighted-tops: 58% 12% 58% 10%;
 
-                &:nth-of-type(2) {
-                    @include life-cycle(2, 150px, 100px);
-                    top: 12%;
-                }
-
-                &:nth-of-type(3) {
-                    @include life-cycle(3, 150px, 100px);
-                    top: 58%;
-                }
-
-                &:nth-of-type(4) {
-                    @include life-cycle(4, 150px, 100px);
-                    top: 10%;
+                @for $i from 1 through length($highlighted-tops) {
+                    &:nth-of-type(#{$i}) {
+                        @include life-cycle(#{$i}, 150px, 100px);
+                        top: #{nth($highlighted-tops, $i)};
+                    }
                 }
             }
         }

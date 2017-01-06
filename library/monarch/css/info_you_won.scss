@@ -27,10 +27,9 @@
     }
 
     .frame {
+        @include center;
         position: absolute;
         top: 55%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
         width: 66%;
         height: 75%;
         color: $black;
