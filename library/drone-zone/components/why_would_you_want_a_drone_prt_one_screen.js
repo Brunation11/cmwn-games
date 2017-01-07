@@ -38,42 +38,42 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
-                    src={`${MEDIA.VO}WhyWantADrone.mp3`}
+                    // src={`${MEDIA.VO}WhyWantADrone.mp3`}
                 />
                 <skoash.Audio
                     ref="construction"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Construction.mp3`}
+                    // src={`${MEDIA.VO}Construction.mp3`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Sports.mp3`}
+                    // src={`${MEDIA.VO}Sports.mp3`}
                 />
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    // src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Firefighting.mp3`}
+                    // src={`${MEDIA.VO}Firefighting.mp3`}
                 />
                 <skoash.Audio
                     ref="photography"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Photography.mp3`}
+                    // src={`${MEDIA.VO}Photography.mp3`}
                 />
                 <skoash.Audio
                     ref="delivery"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Delivery.mp3`}
+                    // src={`${MEDIA.VO}Delivery.mp3`}
                 />
                 <skoash.Audio
                     ref="farming"
                     type="voiceOver"
-                    src={`${MEDIA.VO}Farming.mp3`}
+                    // src={`${MEDIA.VO}Farming.mp3`}
                 />
             </skoash.MediaCollection>
 
