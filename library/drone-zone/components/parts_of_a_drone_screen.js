@@ -25,7 +25,7 @@ export default function (props, ref, key) {
             {...props}
             ref={ref}
             key={key}
-            id="parts of a drone"
+            id="parts-of-a-drone"
         >
             <skoash.Audio
                 type="voiceOver"
