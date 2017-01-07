@@ -3,7 +3,7 @@
 
 // this can be used as an example for creating sprite mixins
 @mixin nav-button($column, $width: 0, $height: 0) {
-    @include sprite($sprite + 'sprite.mainnav.png', 2000px, 315px, 8, 2, $column, 1, 2, $width, $height);
+    @include sprite($sprite + 'sprite.nav.png', 2000px, 315px, 8, 2, $column, 1, 2, $width, $height);
 }
 
 @mixin sprite-continue($column, $width: 0, $height: 0) {
