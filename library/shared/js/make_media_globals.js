@@ -9,6 +9,7 @@
     MEDIA.VO = MEDIA.GAME + 'SoundAssets/vos/';
     MEDIA.IMAGE = MEDIA.GAME + 'ImageAssets/';
     MEDIA.SPRITE = MEDIA.GAME + 'SpritesAnimations/';
+    MEDIA.FRAME = MEDIA.GAME + 'Frames/';
 
     MEDIA.MOCK = {};
     MEDIA.MOCK.GAME = MEDIA.BASE + 'Games/mockGame/';

@@ -27,12 +27,13 @@ export default function (props, ref, key) {
             key={key}
             id="life-stages"
         >
-            {
-            // <skoash.Audio
-            //     type="vo"
-            //     src={`${MEDIA.VO}ClickStages.mp3`}
-            // />
-            }
+
+            <skoash.Audio
+                ref="stages"
+                type="voiceOver"
+                src={`${MEDIA.VO}ClickStages.mp3`}
+            />
+
             <skoash.Component className="header">
                 <h1>
                     CLICK TO REVEAL THE STAGES OF
@@ -45,28 +46,26 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {
-                // <skoash.Audio
-                //     ref="egg"
-                //     type="voiceOver"
-                //     src={`${MEDIA.VO}FourDays.mp3`}
-                // />
-                // <skoash.Audio
-                //     ref="caterpillar"
-                //     type="voiceOver"
-                //     src={`${MEDIA.VO}Milkweed.mp3`}
-                // />
-                // <skoash.Audio
-                //     ref="pupa"
-                //     type="voiceOver"
-                //     src={`${MEDIA.VO}Pupa.mp3`}
-                // />
-                // <skoash.Audio
-                //     ref="monarch"
-                //     type="voiceOver"
-                //     src={`${MEDIA.VO}MonarchEmerges.mp3`}
-                // />
-                }
+                <skoash.Audio
+                    ref="egg"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}FourDays.mp3`}
+                />
+                <skoash.Audio
+                    ref="caterpillar"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}Milkweed.mp3`}
+                />
+                <skoash.Audio
+                    ref="pupa"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}Pupa.mp3`}
+                />
+                <skoash.Audio
+                    ref="monarch"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}MonarchEmerges.mp3`}
+                />
             </skoash.MediaCollection>
 
             <skoash.Selectable
