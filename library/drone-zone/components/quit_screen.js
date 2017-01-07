@@ -54,11 +54,5 @@ class QuitScreen extends skoash.Screen {
 export default (
     <QuitScreen
         id="quit"
-        assets={[
-            <skoash.Audio
-                type="voiceOver"
-                src={`${MEDIA.VO}Quit.mp3`}
-            />
-        ]}
     />
 );
