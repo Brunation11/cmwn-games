@@ -65,8 +65,8 @@ button {
 }
 
 .skoash-game {
-    // $screens:
-    //     title
+    $screens:
+        title;
     //     info-video-one
     //     life-stages
     //     first-stage
@@ -81,10 +81,10 @@ button {
     //     monarch-generations-2
     //     monarch-generations-3
     //     monarch-generations-4
-    //     flip;
+        // flip;
 
-    // $backgrounds:
-    //     title
+    $backgrounds:
+        title;
     //     bkg-4
     //     bkg-1
     //     bkg-1
@@ -102,7 +102,7 @@ button {
     //     bkg-1;
 
     &:not(.MENU) {
-        // @include screen-backgrounds($screens, $backgrounds);
+        @include screen-backgrounds($screens, $backgrounds);
     }
 
     &.MENU.MENU-quit .background.bkg-1 {
@@ -110,27 +110,25 @@ button {
     }
 
     .background {
-        // $background-titles:
-        //     title
+        $background-titles:
+            title;
         //     bkg-1
         //     bkg-2
         //     bkg-3
         //     bkg-4
         //     bkg-5;
 
-        // $background-images:
-        //     '#{$sprite}Monarch2.gif'
-        //     '#{$image}bkg.1.jpg'
-        //     '#{$image}2-01.jpg'
-        //     '#{$image}bkg.3.jpg'
-        //     '#{$image}bkg.4.jpg'
-        //     '#{$image}bkg.5-01.jpg';
+        $background-images: '';
+        //     '#{$sprite}DroneZone.gif'
+        //     '#{$image}BKG.1.jpg'
+        //     '#{$image}BKG.2.jpg'
+        //     '#{$image}BKG.3.jpg';
 
-        // @for $i from 1 through length($background-titles) {
-        //     &.#{nth($background-titles, $i)} {
-        //         @include background(nth($background-images, $i));
-        //     }
-        // }
+        @for $i from 1 through length($background-titles) {
+            &.#{nth($background-titles, $i)} {
+                @include background(nth($background-images, $i));
+            }
+        }
     }
 }
 
