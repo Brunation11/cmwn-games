@@ -91,9 +91,8 @@ export default function (props, ref, key) {
             </skoash.MediaCollection>
 
             <Dropzone
-                incorrectRespond={function(message) {
-
-                }}
+                incorrectRespond={incorrectRespond}
+                onComplete={onComplete}
                 dropzones={[
                     <skoash.Component answers="construction">
                     </skoash.Component>,

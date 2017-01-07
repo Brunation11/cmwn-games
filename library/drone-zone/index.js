@@ -4,7 +4,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
-import TitleScreen from './components/title_screen';
+// import TitleScreen from './components/title_screen';
 import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
 import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
 // import InfoVideoOneScreen from './components/info_video_one_screen';
