@@ -33,7 +33,7 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            TitleScreen,
+            // TitleScreen,
             WhyWouldYouWantADronePrtOneScreen,
             // InfoVideoOneScreen,
             // LifeStagesScreen,
@@ -59,8 +59,8 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
-            <skoash.Font name="Chelsea Market" />,
-            <skoash.Font name="Source Sans Pro" />,
+            // <skoash.Font name="Chelsea Market" />,
+            // <skoash.Font name="Source Sans Pro" />,
             // <skoash.Font name="CMWN" />,
             // <skoash.Image
             //     className="hidden"
