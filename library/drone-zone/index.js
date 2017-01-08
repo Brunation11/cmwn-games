@@ -4,28 +4,18 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
-// import TitleScreen from './components/title_screen';
+import TitleScreen from './components/title_screen';
+import InfoDefinitionOfADroneScreen from './info_definition_of_a_drone_screen';
+import InfoSoWhatDoesItDoScreen from './info_so_what_does_it_so_screen';
+import VideoTheWorldOfDronesScreen from './video_the_world_of_drones_screen';
+import TypesOfDronesScreen from './types_of_drones_screen';
+import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
 import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
 import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
-// import InfoVideoOneScreen from './components/info_video_one_screen';
-// import LifeStagesScreen from './components/life_stages_screen';
-// import FirstStageScreen from './components/first_stage_screen';
-// import InstructionsOneScreen from './components/instructions_1_screen';
-// import BonusLevelOneScreen from './components/bonus_level_one_screen';
-// import BonusLevelTwoScreen from './components/bonus_level_two_screen';
-// import VideoPupaScreen from './components/video_pupa_screen';
-// import InfoYouWonScreen from './components/info_you_won_screen';
-// import VideoMonarchScreen from './components/video_monarch_screen';
-// import InfoMigrateScreen from './components/info_migrate_screen';
-// import InfoVideoTwoScreen from './components/info_video_two_screen';
-// import MonarchGenerationOneScreen from './components/monarch_generation_one_screen';
-// import LevelOneScreen from './components/level_one_screen';
-// import MonarchGenerationTwoScreen from './components/monarch_generation_two_screen';
-// import LevelTwoScreen from './components/level_two_screen';
-// import MonarchGenerationThreeScreen from './components/monarch_generation_three_screen';
-// import LevelThreeScreen from './components/level_three_screen';
-// import MonarchGenerationFourScreen from './components/monarch_generation_four_screen';
-// import FlipScreen from './components/flip_screen';
+import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+import InfoCustomizeYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
+import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
 skoash.start(
@@ -34,28 +24,18 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
+            TitleScreen,
+            InfoDefinitionOfADroneScreen,
+            InfoSoWhatDoesItDoScreen,
+            VideoTheWorldOfDronesScreen,
+            TypesOfDronesScreen,
+            HowAreDronesControlledScreen,
             WhyWouldYouWantADronePrtOneScreen,
             WhyWouldYouWantADronePrtTwoScreen,
-            // InfoVideoOneScreen,
-            // LifeStagesScreen,
-            // FirstStageScreen,
-            // InstructionsOneScreen,
-            // BonusLevelOneScreen,
-            // BonusLevelTwoScreen,
-            // VideoPupaScreen,
-            // InfoYouWonScreen,
-            // VideoMonarchScreen,
-            // InfoMigrateScreen,
-            // InfoVideoTwoScreen,
-            // MonarchGenerationOneScreen,
-            // LevelOneScreen,
-            // MonarchGenerationTwoScreen,
-            // LevelTwoScreen,
-            // MonarchGenerationThreeScreen,
-            // LevelThreeScreen,
-            // MonarchGenerationFourScreen,
-            // FlipScreen,
+            InfoWantedYourOwnDroneScreen,
+            InfoCustomizeYourOwnDroneScreen,
+            CustomizeYourDroneScreen,
+            FlipScreen
         ]}
         menus={{
             quit: QuitScreen,
