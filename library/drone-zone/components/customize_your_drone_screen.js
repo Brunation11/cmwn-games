@@ -4,14 +4,14 @@ export default function (props, ref, key) {
     var onModelSelect;
     var onColorSelect;
 
-    onOpen = function (ref) {
+    onOpen = function (message) {
         this.updateGameState({
             path: 'reveal',
             data: {
-                open: ref
+                open: message
             }
         });
-    }
+    };
 
     onPlay = function () {
         this.updateGameState({
@@ -22,11 +22,11 @@ export default function (props, ref, key) {
         });
     };
 
-    onModelSelect = function (ref) {
+    onModelSelect = function (message) {
         this.updateGameState({
-            path: 'drone'
+            path: 'drone',
             data: {
-                model: ref
+                model: message
             }
         });
 
@@ -38,11 +38,11 @@ export default function (props, ref, key) {
         });
     };
 
-    onColorSelect = function (ref) {
+    onColorSelect = function (message) {
         this.updateGameState({
-            path: 'drone'
+            path: 'drone',
             data: {
-                color: ref
+                color: message
             }
         });
 
@@ -187,7 +187,10 @@ export default function (props, ref, key) {
                             HERE'S YOUR OWN PERSONAL DRONE!
                         </span>
                         <skoash.Component
-                            className={`${_.get(props, 'data.drone.model')} ${_.get(props, 'data.drone.color')}`}
+                            className={`
+                                ${_.get(props, 'data.drone.model')} ${_.get(props, 'data.drone.color')}
+                            `}
+                        >
                         </skoash.Component>
                     </skoash.Component>
                 ]}
