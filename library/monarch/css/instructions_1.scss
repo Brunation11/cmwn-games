@@ -2,14 +2,11 @@
 @import 'mixins';
 
 #instructions-1 {
-    background: url('#{$image}img.leaves.png');
-    background-repeat: no-repeat;
-    background-position: 200% bottom;
-    background-size: auto 120%;
-
-    .frame.standard {
-        @include center;
+    .frame {
         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
         width: 80%;
         height: 80%;
         color: $black;
@@ -23,15 +20,14 @@
         }
 
         .header {
-            top: 25%;
+            top: 22%;
             text-decoration: underline;
-            font-size: 27px;
-            font-weight: 600;
+            font-size: 35px;
         }
 
         .copy {
-            top: 40%;
-            font-size: 22px;
+            top: 42%;
+            font-size: 25px;
         }
 
         &::after {
