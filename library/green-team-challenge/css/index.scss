@@ -1,0 +1,80 @@
+@import 'variables';
+@import 'mixins';
+
+@include reset;
+@include bootstrap-game;
+
+html {
+    color: $text-color;
+}
+
+.skoash-game {
+
+    > .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+button {
+    &.close {
+        @include nav-button(6, 60px, 60px);
+    }
+
+    &.next-screen,
+    &.prev-screen,
+    &.close-reveal {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        z-index: 2;
+        margin: 0;
+        width: 140px;
+        height: 55px;
+    }
+
+    &.next-screen {
+        @include nav-button(5, 140px, 65px);
+        right: 15px;
+    }
+
+    &.prev-screen {
+        @include nav-button(4, 140px, 65px);
+        left: 15px;
+    }
+
+    &.quit-yes,
+    &.quit-no {
+        bottom: 10%;
+        width: 220px;
+        height: 110px;
+    }
+
+    &.quit-yes {
+        @include nav-button(2, 220px, 110px);
+        left: 17%;
+    }
+
+    &.quit-no {
+        @include nav-button(3, 220px, 110px);
+        right: 17%;
+    }
+}
+
+.skoash-game {
+    $screens:
+        title
+        flip;
+
+    $backgrounds:
+        title
+        flip;
+
+    @include screen-backgrounds($screens, $backgrounds);
+
+    .background {
+        // TODO
+    }
+}
