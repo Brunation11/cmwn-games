@@ -19,6 +19,8 @@ html {
 }
 
 button {
+    background: $green;
+
     &.close {
         @include nav-button(6, 60px, 60px);
     }

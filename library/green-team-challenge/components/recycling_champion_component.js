@@ -1,4 +1,7 @@
 import Catcher from 'shared/components/catcher/0.2';
+import Catchable from 'shared/components/catchable/0.1';
+import Randomizer from 'shared/components/randomizer/0.1';
+import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 export default function (props, ref, key, opts = {}) {
     var onTimerComplete;
@@ -25,8 +28,6 @@ export default function (props, ref, key, opts = {}) {
             });
         }
     };
-
-
 
     onOpenReveal = function () {
         this.updateGameData({
@@ -103,8 +104,20 @@ export default function (props, ref, key, opts = {}) {
                 className="life"
                 max={0}
                 incorrect={5}
-                correct={hits}
+                correct={5 - hits}
                 setScore={true}
+            />
+            <ManualDropper
+                amount={2}
+                bin={
+                    <Randomizer
+                        bin={[
+                            <Catchable className="0" />,
+                            <Catchable className="1" />,
+                            <Catchable className="2" />,
+                        ]}
+                    />
+                }
             />
             <skoash.Component
                 className="bins"
