@@ -21,7 +21,7 @@ html {
 
 button {
     &.close {
-        // @include nav-button(6, 60px, 60px);
+        @include nav-button(6, 60px, 60px);
     }
 
     &.next-screen,
@@ -37,12 +37,12 @@ button {
     }
 
     &.next-screen {
-        // @include nav-button(5, 140px, 65px);
+        @include nav-button(5, 140px, 65px);
         right: 15px;
     }
 
     &.prev-screen {
-        // @include nav-button(4, 140px, 65px);
+        @include nav-button(4, 140px, 65px);
         left: 15px;
     }
 
@@ -54,19 +54,20 @@ button {
     }
 
     &.quit-yes {
-        // @include nav-button(2, 220px, 110px);
+        @include nav-button(2, 220px, 110px);
         left: 17%;
     }
 
     &.quit-no {
-        // @include nav-button(3, 220px, 110px);
+        @include nav-button(3, 220px, 110px);
         right: 17%;
     }
 }
 
 .skoash-game {
     $screens:
-        title;
+        title
+        info-definition-of-a-drone;
     //     info-video-one
     //     life-stages
     //     first-stage
@@ -84,8 +85,8 @@ button {
         // flip;
 
     $backgrounds:
-        title;
-    //     bkg-4
+        title
+        bkg-3;
     //     bkg-1
     //     bkg-1
     //     bkg-3
@@ -111,18 +112,30 @@ button {
 
     .background {
         $background-titles:
-            title;
-        //     bkg-1
-        //     bkg-2
-        //     bkg-3
-        //     bkg-4
-        //     bkg-5;
+            title
+            // bkg-1;
+            // bkg-2
+            bkg-3;
+            // bkg-4
+            // bkg-5
+            // bkg-6
+            // bkg-7
+            // bkg-8
+            // bkg-9
+            // bkg-10;
 
-        $background-images: '';
+        $background-images:
         //     '#{$sprite}DroneZone.gif'
-        //     '#{$image}BKG.1.jpg'
-        //     '#{$image}BKG.2.jpg'
-        //     '#{$image}BKG.3.jpg';
+            '#{$image}BKG.1.jpg'
+            // '#{$image}BKG.2.jpg'
+            '#{$image}BKG.3.jpg';
+            // '#{$image}BKG.4.jpg'
+            // '#{$image}BKG.5.jpg'
+            // '#{$image}BKG.6.jpg'
+            // '#{$image}BKG.7.jpg'
+            // '#{$image}BKG.8.jpg'
+            // '#{$image}BKG.9.jpg'
+            // '#{$image}BKG.10.jpg';
 
         @for $i from 1 through length($background-titles) {
             &.#{nth($background-titles, $i)} {
