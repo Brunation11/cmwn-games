@@ -57,6 +57,11 @@ class Dropper extends skoash.Component {
         this.props.onNext.call(this);
     }
 
+    caught(catchableRefKey) {
+        var caughtRef = this.refs[catchableRefKey];
+        _.invoke(caughtRef, 'markCaught');
+    }
+
     componentWillReceiveProps(props) {
         super.componentWillReceiveProps(props);
 
@@ -66,6 +71,10 @@ class Dropper extends skoash.Component {
 
         if (props.drop === true && props.drop !== this.props.drop) {
             this.drop();
+        }
+
+        if (props.caught && props.caught !== this.props.caught) {
+            this.caught(props.caught);
         }
     }
 

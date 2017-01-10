@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
 class Catchable extends skoash.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             canCatch: true
         };

@@ -1,4 +1,4 @@
-import Catcher from 'shared/components/catcher/0.2';
+import Catcher from 'shared/components/catcher/0.3';
 import Catchable from 'shared/components/catchable/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
@@ -19,6 +19,7 @@ export default function (props, ref, key, opts = {}) {
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var itemName = _.get(props, 'data.manual-dropper.item.name', '');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
+    var caught = _.get(props, 'data.catcher.caught', []);
 
     onTimerComplete = function () {
         if (score >= opts.scoreToWin) {
@@ -134,9 +135,9 @@ export default function (props, ref, key, opts = {}) {
                 bin={
                     <Randomizer
                         bin={[
-                            <Catchable className="0" />,
-                            <Catchable className="1" />,
-                            <Catchable className="2" />,
+                            <Catchable key="ahhh" className="0" reCatchable />,
+                            // <Catchable className="1" />,
+                            // <Catchable className="2" />,
                         ]}
                     />
                 }
@@ -144,6 +145,7 @@ export default function (props, ref, key, opts = {}) {
                 style={{
                     transform: `translateX(${left}px)`
                 }}
+                caught={caught}
             />
             <skoash.Component
                 className="bins"
