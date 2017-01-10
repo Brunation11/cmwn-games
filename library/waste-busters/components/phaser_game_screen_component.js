@@ -3,6 +3,7 @@ import classNames from 'classnames';
 export default function (props, ref, key, opts = {}) {
     var startScreen;
     var onScreenStart;
+    var onScreenStop;
     var getGameSrc;
     var onOpenReveal;
     var onCloseReveal;
@@ -42,6 +43,24 @@ export default function (props, ref, key, opts = {}) {
                 score: 0,
                 lives: 1,
             }),
+        });
+    };
+
+    onScreenStop = function () {
+        startScreen.call(this, false, () => {
+            this.updateGameState({
+                path: ['game'],
+                data: {
+                    bagCount: 0,
+                    levels: {
+                        [opts.level]: {
+                            start: false,
+                        }
+                    }
+                },
+            });
+
+            startScreen.call(this);
         });
     };
 
@@ -177,13 +196,13 @@ export default function (props, ref, key, opts = {}) {
             key={key}
             id={`phaser-level-${opts.level}`}
             onStart={onScreenStart}
+            onStop={onScreenStop}
         >
             <skoash.GameEmbedder
                 src={getGameSrc()}
                 controller={_.get(props, 'data.d-pad')}
                 complete={_.get(props, `gameState.data.game.levels.${opts.level}.complete`, false)}
                 data={_.get(props, 'gameState.data.game', {})}
-                pause={_.get(props, 'data.d-pad.pause')}
                 onRespond={onRespond}
             />
             <skoash.Timer

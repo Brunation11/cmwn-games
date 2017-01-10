@@ -2,12 +2,6 @@ import addResponses from 'shared/phaser/methods/add_responses/0.1';
 import movePlayer from 'shared/phaser/methods/move_player/0.1';
 
 export default function () {
-
-    if (!this.shouldUpdate) {
-        setTimeout(() => this.shouldUpdate = true, 100);
-        return;
-    }
-
     this.player.canJump = true;
 
     addResponses.call(this, 'collide', [
