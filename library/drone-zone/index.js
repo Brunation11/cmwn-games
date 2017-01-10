@@ -5,7 +5,7 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
 import TitleScreen from './components/title_screen';
-import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
+// import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
 // import InfoSoWhatDoesItDoScreen from './info_so_what_does_it_so_screen';
 // import VideoTheWorldOfDronesScreen from './video_the_world_of_drones_screen';
 // import TypesOfDronesScreen from './types_of_drones_screen';
