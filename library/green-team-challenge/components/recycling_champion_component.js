@@ -18,6 +18,7 @@ export default function (props, ref, key, opts = {}) {
     var left = _.get(props, 'data.manual-dropper.left', 0);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var itemName = _.get(props, 'data.manual-dropper.item.name', '');
+    var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
 
     onTimerComplete = function () {
         if (score >= opts.scoreToWin) {
@@ -72,6 +73,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onCorrectCatch = function () {
+        console.log('onCorrectCatch'); // eslint-disable-line
         this.updateGameData({
             keys: ['game', 'levels', opts.level, 'score'],
             data: score + 50,
@@ -79,6 +81,7 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onIncorrectCatch = function () {
+        console.log('onIncorrectCatch'); // eslint-disable-line
         this.updateGameData({
             keys: ['game', 'levels', opts.level, 'hits'],
             data: hits + 1,
@@ -154,7 +157,7 @@ export default function (props, ref, key, opts = {}) {
                         <skoash.Component className="landfill" message="landfill" />,
                         <skoash.Component className="compost" message="compost" />,
                     ]}
-                    catchableRefs={_.get(props, 'data.dropper.refs', [])}
+                    catchableRefs={catchableRefs}
                     onCorrect={onCorrectCatch}
                     onIncorrect={onIncorrectCatch}
                     assets={[

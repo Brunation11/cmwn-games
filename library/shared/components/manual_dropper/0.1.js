@@ -14,9 +14,13 @@ class Dropper extends skoash.Component {
         }, this.state);
     }
 
-    bootstrap() {
-        super.bootstrap();
-        this.next(this.props.amount, false);
+    start() {
+        super.start();
+        this.setState({
+            items: [],
+        }, () => {
+            this.next(this.props.amount, false);
+        });
     }
 
     drop() {
