@@ -5,17 +5,18 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
 import TitleScreen from './components/title_screen';
-import InfoDefinitionOfADroneScreen from './info_definition_of_a_drone_screen';
-import InfoSoWhatDoesItDoScreen from './info_so_what_does_it_so_screen';
-import VideoTheWorldOfDronesScreen from './video_the_world_of_drones_screen';
-import TypesOfDronesScreen from './types_of_drones_screen';
-import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
-import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
-import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
-import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
-import InfoCustomizeYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
-import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
-import FlipScreen from './components/flip_screen';
+import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
+// import InfoSoWhatDoesItDoScreen from './info_so_what_does_it_so_screen';
+// import VideoTheWorldOfDronesScreen from './video_the_world_of_drones_screen';
+// import TypesOfDronesScreen from './types_of_drones_screen';
+// import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
+// import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
+// import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
+// import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+// import InfoCustomizeYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+// import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
+// import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
+// import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
 skoash.start(
@@ -25,17 +26,18 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            InfoDefinitionOfADroneScreen,
-            InfoSoWhatDoesItDoScreen,
-            VideoTheWorldOfDronesScreen,
-            TypesOfDronesScreen,
-            HowAreDronesControlledScreen,
-            WhyWouldYouWantADronePrtOneScreen,
-            WhyWouldYouWantADronePrtTwoScreen,
-            InfoWantedYourOwnDroneScreen,
-            InfoCustomizeYourOwnDroneScreen,
-            CustomizeYourDroneScreen,
-            FlipScreen
+            // InfoDefinitionOfADroneScreen,
+            // InfoSoWhatDoesItDoScreen,
+            // VideoTheWorldOfDronesScreen,
+            // TypesOfDronesScreen,
+            // HowAreDronesControlledScreen,
+            // WhyWouldYouWantADronePrtOneScreen,
+            // WhyWouldYouWantADronePrtTwoScreen,
+            // InfoWantedYourOwnDroneScreen,
+            // InfoCustomizeYourOwnDroneScreen,
+            // CustomizeYourDroneScreen,
+            // PartsOfADroneScreen,
+            // FlipScreen
         ]}
         menus={{
             quit: QuitScreen,
@@ -52,12 +54,17 @@ skoash.start(
             //     className="hidden"
             //     src={`${MEDIA.FRAME}try.again.frame.png`}
             // />,
-            // <div className="background title" />,
-            // <div className="background bkg-1" />,
-            // <div className="background bkg-2" />,
-            // <div className="background bkg-3" />,
-            // <div className="background bkg-4" />,
-            // <div className="background bkg-5" />,
+            <div className="background title" />,
+            <div className="background bkg-1" />,
+            <div className="background bkg-2" />,
+            <div className="background bkg-3" />,
+            <div className="background bkg-4" />,
+            <div className="background bkg-5" />,
+            <div className="background bkg-6" />,
+            <div className="background bkg-7" />,
+            <div className="background bkg-8" />,
+            <div className="background bkg-9" />,
+            <div className="background bkg-10" />,
             // <skoash.Audio
             //     ref="button"
             //     type="sfx"
