@@ -5,7 +5,10 @@ $frame: $media + 'Frames/';
 
 $black: #000;
 $white: #fff;
-$green: #0f0;
 $text-color: $black;
 
 $transparent: transparent;
+
+// colors to be removed
+$green: #0f0;
+$blue: #00f;

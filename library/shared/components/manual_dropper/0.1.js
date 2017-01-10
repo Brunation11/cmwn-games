@@ -4,7 +4,6 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Catchable from 'shared/components/catchable/0.1';
 
 const item0 = 'items-0';
-const DROPPED = 'DROPPED';
 
 class Dropper extends skoash.Component {
     constructor() {
@@ -22,7 +21,13 @@ class Dropper extends skoash.Component {
 
     drop() {
         var itemRef = this.refs[item0];
-        itemRef.addClassName(DROPPED);
+        itemRef.addClassName(this.props.dropClass);
+
+        this.updateScreenData({
+            key: [this.props.refsTarget, 'drop'],
+            data: false,
+        });
+
         this.props.onDrop.call(this, itemRef);
     }
 
@@ -38,6 +43,11 @@ class Dropper extends skoash.Component {
                 key: [this.props.refsTarget, 'refs'],
                 data: _.filter(this.refs, (v, k) => !k.indexOf('items-')),
             });
+        });
+
+        this.updateScreenData({
+            key: [this.props.refsTarget, 'next'],
+            data: false,
         });
 
         this.props.onNext.call(this);
@@ -106,6 +116,7 @@ class Dropper extends skoash.Component {
 }
 
 Dropper.defaultProps = _.defaults({
+    dropClass: 'DROPPED',
     amount: 1,
     bin: (
         <Randomizer
@@ -115,18 +126,10 @@ Dropper.defaultProps = _.defaults({
         />
     ),
     refsTarget: 'manual-dropper',
-    onDrop: function () {
-        this.updateScreenData({
-            key: [this.props.refsTarget, 'drop'],
-            data: false,
-        });
-    },
-    onNext: function () {
-        this.updateScreenData({
-            key: [this.props.refsTarget, 'next'],
-            data: false,
-        });
-    },
+    onDrop: _.noop,
+    onNext: _.noop,
+    next: false,
+    drop: false,
 }, skoash.Component.defaultProps);
 
 export default Dropper;
