@@ -33,7 +33,7 @@ class Dropper extends skoash.Component {
 
     next(amount = 1, shift = true) {
         var items = this.state.items;
-        items.push(this.refs.bin.get(amount)[0]);
+        items = items.concat(this.refs.bin.get(amount));
         if (shift) items.shift();
 
         this.setState({
@@ -101,6 +101,7 @@ class Dropper extends skoash.Component {
     render() {
         return (
             <div
+                {...this.props}
                 className={this.getClassNames()}
             >
                 {this.renderBin()}

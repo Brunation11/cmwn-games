@@ -7,13 +7,17 @@ export default function (props, ref, key, opts = {}) {
     var onTimerComplete;
     var onOpenReveal;
     var onCloseReveal;
+    var onSelect;
+    var onTransitionEnd;
     var onCorrectCatch;
     var onIncorrectCatch;
 
     var start = _.get(props, `gameState.data.game.levels.${opts.level}.start`, false);
     var score = _.get(props, `gameState.data.game.levels.${opts.level}.score`, 0);
     var hits = _.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0);
-    var itemName = _.get(props, 'data.dropper.item.name', '');
+    var left = _.get(props, 'data.manual-dropper.left', 0);
+    var drop = _.get(props, 'data.manual-dropper.drop', false);
+    var itemName = _.get(props, 'data.manual-dropper.item.name', '');
 
     onTimerComplete = function () {
         if (score >= opts.scoreToWin) {
@@ -50,6 +54,20 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameData({
             keys: ['game', 'levels', opts.level],
             data,
+        });
+    };
+
+    onSelect = function (bin) {
+        this.updateScreenData({
+            keys: ['manual-dropper', 'left'],
+            data: ReactDOM.findDOMNode(this.refs[bin]).offsetLeft,
+        });
+    };
+
+    onTransitionEnd = function () {
+        skoash.trigger('updateScreenData', {
+            keys: ['manual-dropper', 'drop'],
+            data: true,
         });
     };
 
@@ -108,7 +126,8 @@ export default function (props, ref, key, opts = {}) {
                 setScore={true}
             />
             <ManualDropper
-                amount={2}
+                amount={3}
+                drop={drop}
                 bin={
                     <Randomizer
                         bin={[
@@ -118,6 +137,10 @@ export default function (props, ref, key, opts = {}) {
                         ]}
                     />
                 }
+                onTransitionEnd={onTransitionEnd}
+                style={{
+                    transform: `translateX(${left}px)`
+                }}
             />
             <skoash.Component
                 className="bins"
@@ -138,6 +161,7 @@ export default function (props, ref, key, opts = {}) {
                     ]}
                 />
                 <skoash.Selectable
+                    onSelect={onSelect}
                     list={[
                         <skoash.Component message="recycle" />,
                         <skoash.Component message="landfill" />,
