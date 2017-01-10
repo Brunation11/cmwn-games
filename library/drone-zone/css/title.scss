@@ -1,9 +1,10 @@
 @import 'variables';
 @import 'mixins';
 
-// #title {
-//     .next-screen {
-//         @include nav-button(1, 140px, 150px);
-//         height: 150px;
-//     }
-// }
+#title {
+    .next-screen {
+        @include nav-button(1, 220px, 150px);
+        width: 220px;
+        height: 150px;
+    }
+}
