@@ -31,6 +31,7 @@ export default function () {
                     defaultOpts: {
                         image: 'logs',
                         scale: [.5, .5],
+                        alpha: .8,
                         collideWorldBounds: false,
                         checkCollisionRight: false,
                         checkCollisionLeft: false,

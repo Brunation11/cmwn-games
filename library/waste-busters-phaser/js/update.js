@@ -26,6 +26,10 @@ export default function () {
     [this.doors, this.ground, this.helpers.stay],
     ]);
 
+    addResponses.call(this, 'overlap', [
+    [this.player, this.logs, this.helpers.inLog],
+    ]);
+
     if (!this.data.levels[this.opts.level].complete) {
         if (this.player.boost) {
             movePlayer.call(this, {
@@ -65,16 +69,14 @@ export default function () {
     [this.player, this.rainbowRecycles, this.helpers.collectRainbowRecycling],
     [this.player, this.trucks, this.helpers.loadTruck],
     [this.player, this.doors, this.helpers.exit],
-    [this.player, this.logs, this.helpers.inLog],
     [this.player, this.lightening, this.helpers.collectLightening],
     [this.player, this.snakes, this.helpers.hitEnemy],
     [this.snakes, this.holes, this.helpers.activateSnake],
     ]);
 
     this.game.camera.x =
-        Math.min(Math.max(this.player.body.center.x - 400, 0), this.game.world.width - 800);
+        Math.min(Math.max(this.player.centerX - 400, 0), this.game.world.width - 800);
 
-    // this.clouds.children[0].position.x = -.25 * this.game.camera.x;
-    this.clouds.children[0].position.x = -.25 * this.player.body.center.x;
-    this.clouds.children[1].position.x = 2975.5 - .25 * this.player.body.center.x;
+    this.clouds.children[0].position.x = -.25 * this.player.centerX;
+    this.clouds.children[1].position.x = 2975.5 - .25 * this.player.centerX;
 }

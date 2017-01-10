@@ -1,3 +1,4 @@
+import scaleItem from 'shared/phaser/methods/scale_item/0.1';
 import addItems from 'shared/phaser/methods/add_items/0.1';
 
 import makeBackground from './make_background';
@@ -124,7 +125,20 @@ export default {
     inLog() {
         if (!this.player.canJump) return;
         this.player.canJump = false;
+        scaleItem(this.player, {
+            scale: this.opts.playerLogScale,
+            body: this.opts.playerBody,
+        });
         this.audio.log.play();
+        setTimeout(() => {
+            if (!this.game.physics.arcade.overlap(this.player, this.logs)) {
+                this.player.canJump = true;
+                scaleItem(this.player, {
+                    scale: this.opts.playerScale,
+                    body: this.opts.playerBody,
+                });
+            }
+        }, 100);
     },
     collectRecycling(player, recyclying) {
         // Removes the recyclying from the screen

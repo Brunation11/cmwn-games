@@ -28,6 +28,7 @@ export default function () {
         rightFrames: this.opts.rightFrames,
         leftFrames: this.opts.leftFrames,
         scale: this.opts.playerScale,
+        anchor: this.opts.playerAnchor,
     });
 
     this.helpers.makeLogs.call(this);
