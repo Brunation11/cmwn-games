@@ -1,6 +1,17 @@
 @import 'variables';
 @import 'mixins';
 
-// #video-the-world-of-drones {
+#video-the-world-of-drones {
+    .header {
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        font-size: 65px;
+        font-weight: 900;
+    }
 
-// }
+    .frame {
+        top: 60%;
+        width: 620px;
+    }
+}
