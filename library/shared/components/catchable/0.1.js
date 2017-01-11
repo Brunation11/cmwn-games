@@ -9,6 +9,10 @@ class Catchable extends skoash.Component {
         this.reset = this.reset.bind(this);
     }
 
+    setState(opts, cb) {
+        super.setState(opts, cb);
+    }
+
     bootstrap() {
         super.bootstrap();
         this.DOMNode = ReactDOM.findDOMNode(this);

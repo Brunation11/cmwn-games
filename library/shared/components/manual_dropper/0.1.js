@@ -14,6 +14,11 @@ class Dropper extends skoash.Component {
         }, this.state);
     }
 
+    bootstrap() {
+        super.bootstrap();
+        this.DOMNode = ReactDOM.findDOMNode(this);
+    }
+
     start() {
         super.start();
         this.setState({
@@ -35,16 +40,17 @@ class Dropper extends skoash.Component {
         this.props.onDrop.call(this, itemRef);
     }
 
-    pick() {
+    pickUp() {
         var itemRef = this.refs[item0];
-        itemRef.addClassName(this.props.dropClass);
+        itemRef.removeClassName(this.props.dropClass);
+        itemRef.reset();
 
         this.updateScreenData({
-            key: [this.props.refsTarget, 'drop'],
+            key: [this.props.refsTarget, 'pickUp'],
             data: false,
         });
 
-        this.props.onDrop.call(this, itemRef);
+        this.props.onPickUp.call(this, itemRef);
     }
 
     next(amount = 1, shift = true) {
@@ -83,6 +89,10 @@ class Dropper extends skoash.Component {
 
         if (props.drop === true && props.drop !== this.props.drop) {
             this.drop();
+        }
+
+        if (props.pickUp === true && props.pickUp !== this.props.pickUp) {
+            this.pickUp();
         }
 
         if (props.caught && props.caught !== this.props.caught) {
@@ -127,6 +137,7 @@ class Dropper extends skoash.Component {
         return (
             <div
                 {...this.props}
+                onTransitionEnd={this.props.onTransitionEnd.bind(this)}
                 className={this.getClassNames()}
             >
                 {this.renderBin()}
@@ -153,6 +164,7 @@ Dropper.defaultProps = _.defaults({
     ),
     refsTarget: 'manual-dropper',
     onDrop: _.noop,
+    onPickUp: _.noop,
     onNext: _.noop,
     next: false,
     drop: false,

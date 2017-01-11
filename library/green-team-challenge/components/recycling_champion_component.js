@@ -5,7 +5,7 @@ import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 const itemsToSort = {
     bottle: {
-        bin: 'recycle', reCatchable: false
+        bin: 'recycle'
     },
     // fullBottle: {
     //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
@@ -26,12 +26,14 @@ export default function (props, ref, key, opts = {}) {
     var hits = _.get(props, `gameState.data.game.levels.${opts.level}.hits`, 0);
     var left = _.get(props, 'data.manual-dropper.left', 0);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
+    var next = _.get(props, 'data.manual-dropper.next', false);
+    var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
     var itemName = _.get(props, 'data.manual-dropper.item.name', '');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var caught = _.get(props, 'data.catcher.caught', '');
 
     var arrayOfCatchables = _.map(itemsToSort, (v, k) =>
-        <Catchable className={k} message={v.bin} reCatchable={v.reCatchable} becomes={v.becomes} />,
+        <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,
     );
 
     onTimerComplete = function () {
@@ -73,14 +75,22 @@ export default function (props, ref, key, opts = {}) {
     };
 
     onSelect = function (binRefKey) {
-        this.updateScreenData({
-            keys: ['manual-dropper', 'left'],
-            data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
-        });
+        if (left === ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft) {
+            this.updateScreenData({
+                keys: ['manual-dropper', 'drop'],
+                data: true,
+            });
+        } else {
+            this.updateScreenData({
+                keys: ['manual-dropper', 'left'],
+                data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
+            });
+        }
     };
 
-    onTransitionEnd = function () {
-        skoash.trigger('updateScreenData', {
+    onTransitionEnd = function (e) {
+        if (this.DOMNode !== e.target) return;
+        this.updateScreenData({
             keys: ['manual-dropper', 'drop'],
             data: true,
         });
@@ -91,6 +101,10 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameData({
             keys: ['game', 'levels', opts.level, 'score'],
             data: score + 50,
+        });
+        this.updateScreenData({
+            keys: ['manual-dropper', 'next'],
+            data: true,
         });
     };
 
@@ -106,11 +120,18 @@ export default function (props, ref, key, opts = {}) {
             callback: () => {
                 setTimeout(() => {
                     this.updateScreenData({
-                        key: 'reveal',
                         data: {
-                            open: null,
-                            close: true,
-                        },
+                            reveal: {
+                                open: null,
+                                close: true,
+                            },
+                            'manual-dropper': {
+                                pickUp: true,
+                            },
+                            catcher: {
+                                caught: false,
+                            }
+                        }
                     });
                 }, 1000);
             }
@@ -160,6 +181,8 @@ export default function (props, ref, key, opts = {}) {
             <ManualDropper
                 amount={3}
                 drop={drop}
+                pickUp={pickUp}
+                next={next}
                 bin={
                     <Randomizer
                         bin={arrayOfCatchables}
@@ -187,6 +210,7 @@ export default function (props, ref, key, opts = {}) {
                     onCorrect={onCorrectCatch}
                     onIncorrect={onIncorrectCatch}
                     pause={caught}
+                    resume={drop}
                     assets={[
                     ]}
                 />

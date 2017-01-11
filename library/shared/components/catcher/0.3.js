@@ -25,7 +25,7 @@ class Catcher extends Catch {
     }
 
     checkCollisions() {
-        if (!this.state.started || this.state.paused || this.props.pause) return;
+        if (!this.state.started || this.state.paused) return;
         _.each(this.bucketNodes, (bucketNode, bucketRefKey) => {
             var bucketRect = bucketNode.getBoundingClientRect();
             _.each(this.props.catchableRefs, catchableRef => {
@@ -62,6 +62,18 @@ class Catcher extends Catch {
     incorrect(bucketRef, catchableRefKey) {
         this.playMedia('incorrect');
         this.props.onIncorrect.call(this, bucketRef, catchableRefKey);
+    }
+
+    componentWillReceiveProps(props) {
+        super.componentWillReceiveProps(props);
+
+        if (props.pause && props.pause !== this.props.pause) {
+            this.pause();
+        }
+
+        if (props.resume && props.resume !== this.props.resume) {
+            this.resume();
+        }
     }
 
     renderBucket() {
