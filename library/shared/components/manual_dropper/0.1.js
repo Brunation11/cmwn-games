@@ -35,6 +35,18 @@ class Dropper extends skoash.Component {
         this.props.onDrop.call(this, itemRef);
     }
 
+    pick() {
+        var itemRef = this.refs[item0];
+        itemRef.addClassName(this.props.dropClass);
+
+        this.updateScreenData({
+            key: [this.props.refsTarget, 'drop'],
+            data: false,
+        });
+
+        this.props.onDrop.call(this, itemRef);
+    }
+
     next(amount = 1, shift = true) {
         var items = this.state.items;
         items = items.concat(this.refs.bin.get(amount));

@@ -32,6 +32,8 @@ var scsslint = require('gulp-scss-lint');
 var stylish = require('gulp-scss-lint-stylish2');
 var game;
 var webpackBuild;
+var fileName;
+var watchScssLint;
 
 function defineEntries(config) {
     // modify some webpack config options
@@ -65,6 +67,7 @@ function defineEntries(config) {
 }
 
 game = argv.game || argv.g;
+fileName = argv.file;
 
 // In order for livereload to work, you should run gulp on the host machine
 // unless you have native docker installed.
@@ -369,11 +372,34 @@ gulp.task('lint-config', function () {
 });
 gulp.task('lint-scss', function () {
     var reporter = stylish();
-    return gulp.src(['library/**/*.scss'])
+    var src = fileName || 'library/**/*.scss';
+    return gulp.src([src])
         .pipe(scsslint({
             customReport: reporter.issues,
             reporterOutput: 'scsslint.json',
         }))
         .pipe(reporter.printSummary)
         .pipe(scsslint.failReporter());
+});
+
+watchScssLint = function (src) {
+    var reporter = stylish();
+    gutil.log(src);
+    return gulp.src([src])
+        .pipe(scsslint({
+            customReport: reporter.issues,
+            reporterOutput: 'scsslint.json',
+        }))
+        .pipe(reporter.printSummary);
+};
+
+gulp.task('watch-scss-lint', function () {
+    watch([
+        'library/**/**/*.scss',
+        'library/**/**/*.css',
+        'library/shared/**/*.scss',
+        'library/shared/**/*.css',
+    ], function (file) {
+        watchScssLint(file.history[0]);
+    });
 });

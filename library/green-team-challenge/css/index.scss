@@ -88,3 +88,7 @@ button {
 .randomizer {
     @include randomizer;
 }
+
+.reveal {
+    @include reveal;
+}

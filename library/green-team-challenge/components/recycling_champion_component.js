@@ -3,6 +3,15 @@ import Catchable from 'shared/components/catchable/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
+const itemsToSort = {
+    bottle: {
+        bin: 'recycle', reCatchable: false
+    },
+    // fullBottle: {
+    //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
+    // },
+};
+
 export default function (props, ref, key, opts = {}) {
     var onTimerComplete;
     var onOpenReveal;
@@ -19,7 +28,11 @@ export default function (props, ref, key, opts = {}) {
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var itemName = _.get(props, 'data.manual-dropper.item.name', '');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
-    var caught = _.get(props, 'data.catcher.caught', []);
+    var caught = _.get(props, 'data.catcher.caught', '');
+
+    var arrayOfCatchables = _.map(itemsToSort, (v, k) =>
+        <Catchable className={k} message={v.bin} reCatchable={v.reCatchable} becomes={v.becomes} />,
+    );
 
     onTimerComplete = function () {
         if (score >= opts.scoreToWin) {
@@ -59,10 +72,10 @@ export default function (props, ref, key, opts = {}) {
         });
     };
 
-    onSelect = function (bin) {
+    onSelect = function (binRefKey) {
         this.updateScreenData({
             keys: ['manual-dropper', 'left'],
-            data: ReactDOM.findDOMNode(this.refs[bin]).offsetLeft,
+            data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
         });
     };
 
@@ -86,6 +99,21 @@ export default function (props, ref, key, opts = {}) {
         this.updateGameData({
             keys: ['game', 'levels', opts.level, 'hits'],
             data: hits + 1,
+        });
+        this.updateScreenData({
+            keys: ['reveal', 'open'],
+            data: 'resort',
+            callback: () => {
+                setTimeout(() => {
+                    this.updateScreenData({
+                        key: 'reveal',
+                        data: {
+                            open: null,
+                            close: true,
+                        },
+                    });
+                }, 1000);
+            }
         });
     };
 
@@ -134,11 +162,7 @@ export default function (props, ref, key, opts = {}) {
                 drop={drop}
                 bin={
                     <Randomizer
-                        bin={[
-                            <Catchable key="ahhh" className="0" reCatchable />,
-                            // <Catchable className="1" />,
-                            // <Catchable className="2" />,
-                        ]}
+                        bin={arrayOfCatchables}
                     />
                 }
                 onTransitionEnd={onTransitionEnd}
@@ -162,6 +186,7 @@ export default function (props, ref, key, opts = {}) {
                     catchableRefs={catchableRefs}
                     onCorrect={onCorrectCatch}
                     onIncorrect={onIncorrectCatch}
+                    pause={caught}
                     assets={[
                     ]}
                 />
