@@ -25,9 +25,9 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
-            // InfoDefinitionOfADroneScreen,
-            // InfoSoWhatDoesItDoScreen,
+            TitleScreen,
+            InfoDefinitionOfADroneScreen,
+            InfoSoWhatDoesItDoScreen,
             VideoTheWorldOfDronesScreen,
             // TypesOfDronesScreen,
             // HowAreDronesControlledScreen,
@@ -120,10 +120,10 @@ skoash.start(
         getBackgroundIndex={(index, id) => {
             switch (id) {
                 case 'ios-splash': return;
-                // case 'title':
-                // case 'info-definition-of-a-drone':
-                // case 'info-what-does-it-do':
-                // case 'video-the-world-of-drones':
+                case 'title':
+                case 'info-definition-of-a-drone':
+                case 'info-what-does-it-do':
+                case 'video-the-world-of-drones':
                     return;
             }
         }}
