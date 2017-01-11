@@ -5,9 +5,9 @@ import Loader from 'shared/components/loader/0.1';
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
 import TitleScreen from './components/title_screen';
-// import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
-// import InfoSoWhatDoesItDoScreen from './info_so_what_does_it_so_screen';
-// import VideoTheWorldOfDronesScreen from './video_the_world_of_drones_screen';
+import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
+import InfoSoWhatDoesItDoScreen from './components/info_so_what_does_it_do_screen';
+import VideoTheWorldOfDronesScreen from './components/video_the_world_of_drones_screen';
 // import TypesOfDronesScreen from './types_of_drones_screen';
 // import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
 // import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
@@ -25,10 +25,10 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            TitleScreen,
+            // TitleScreen,
             // InfoDefinitionOfADroneScreen,
             // InfoSoWhatDoesItDoScreen,
-            // VideoTheWorldOfDronesScreen,
+            VideoTheWorldOfDronesScreen,
             // TypesOfDronesScreen,
             // HowAreDronesControlledScreen,
             // WhyWouldYouWantADronePrtOneScreen,
@@ -43,7 +43,7 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
-            // <skoash.Font name="Chelsea Market" />,
+            <skoash.Font name="Chelsea Market" />,
             // <skoash.Font name="Source Sans Pro" />,
             // <skoash.Font name="CMWN" />,
             // <skoash.Image
@@ -121,31 +121,10 @@ skoash.start(
             switch (id) {
                 case 'ios-splash': return;
                 // case 'title':
-                //     return 'bkg-1';
-                // case 'life-stages':
-                //     return 'bkg-2';
-                // case 'first-stage':
-                // case 'instructions-1':
-                // case 'video-pupa':
-                // case 'video-monarch':
-                // case 'info-migrate':
-                //     return 'bkg-3';
-                // case 'bonus-level-one':
-                // case 'bonus-level-two':
-                // case 'info-video-two':
-                //     return 'bkg-4';
-                // case 'monarch-generations-1':
-                // case 'phaser-level-1':
-                // case 'monarch-generations-2':
-                // case 'phaser-level-2':
-                // case 'monarch-generations-3':
-                // case 'phaser-level-3':
-                // case 'monarch-generations-4':
-                //     return 'bkg-3';
-                // case 'flip':
-                //     return;
-                // case 'info-video-one':
-                //     return; // no bkg audio
+                // case 'info-definition-of-a-drone':
+                // case 'info-what-does-it-do':
+                // case 'video-the-world-of-drones':
+                    return;
             }
         }}
     />
