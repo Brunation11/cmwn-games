@@ -9,7 +9,7 @@ html {
 }
 
 .skoash-game {
-    // font-family: 'Chelsea Market';
+    font-family: 'Chelsea Market';
 
     > .menu {
         position: absolute;
@@ -21,7 +21,7 @@ html {
 
 button {
     &.close {
-        @include nav-button(6, 60px, 60px);
+        @include nav-button(2, 80px, 80px)
     }
 
     &.next-screen,
@@ -37,13 +37,13 @@ button {
     }
 
     &.next-screen {
-        @include nav-button(5, 140px, 65px);
-        right: 15px;
+        @include nav-button(4, 80px, 80px);
+        right: 10px;
     }
 
     &.prev-screen {
-        @include nav-button(4, 140px, 65px);
-        left: 15px;
+        @include nav-button(3, 80px, 80px);
+        left: 10px;
     }
 
     &.quit-yes,
@@ -67,7 +67,9 @@ button {
 .skoash-game {
     $screens:
         title
-        info-definition-of-a-drone;
+        info-definition-of-a-drone
+        info-what-does-it-do
+        video-the-world-of-drones;
     //     info-video-one
     //     life-stages
     //     first-stage
@@ -86,7 +88,9 @@ button {
 
     $backgrounds:
         title
-        bkg-3;
+        bkg-3
+        bkg-3
+        bkg-2;
     //     bkg-1
     //     bkg-1
     //     bkg-3
@@ -113,9 +117,9 @@ button {
     .background {
         $background-titles:
             title
-            // bkg-1;
-            // bkg-2
+            bkg-2
             bkg-3;
+            // bkg-1;
             // bkg-4
             // bkg-5
             // bkg-6
@@ -127,7 +131,7 @@ button {
         $background-images:
         //     '#{$sprite}DroneZone.gif'
             '#{$image}BKG.1.jpg'
-            // '#{$image}BKG.2.jpg'
+            '#{$image}BKG.2.jpg'
             '#{$image}BKG.3.jpg';
             // '#{$image}BKG.4.jpg'
             // '#{$image}BKG.5.jpg'
@@ -147,12 +151,12 @@ button {
 
 .frame {
     @include center;
-    // @include background('#{$frame}transition.frame.png');
+    @include background('#{$image}frame.png');
     width: 780px;
     height: 500px;
 
-    &.standard {
-        // @include background('#{$frame}frame.big.png');
+    &.video {
+        @include background('#{$image}frame.video.png');
     }
 
     &.fact,
