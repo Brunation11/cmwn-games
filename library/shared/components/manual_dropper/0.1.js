@@ -3,14 +3,17 @@ import classNames from 'classnames';
 import Randomizer from 'shared/components/randomizer/0.1';
 import Catchable from 'shared/components/catchable/0.1';
 
-const item0 = 'items-0';
+const ITEM = 'items-';
 
 class Dropper extends skoash.Component {
     constructor() {
         super();
 
+        this.itemCount = 0;
+        this.firstItemIndex = 0;
+
         this.state = _.defaults({
-            items: [],
+            items: {},
         }, this.state);
     }
 
@@ -28,8 +31,12 @@ class Dropper extends skoash.Component {
         });
     }
 
+    getFirstItem() {
+        return this.refs[ITEM + this.firstItemIndex];
+    }
+
     drop() {
-        var itemRef = this.refs[item0];
+        var itemRef = this.getFirstItem();
         itemRef.addClassName(this.props.dropClass);
 
         this.updateScreenData({
@@ -41,7 +48,7 @@ class Dropper extends skoash.Component {
     }
 
     pickUp() {
-        var itemRef = this.refs[item0];
+        var itemRef = this.getFirstItem();
         itemRef.removeClassName(this.props.dropClass);
         itemRef.reset();
 
@@ -55,15 +62,19 @@ class Dropper extends skoash.Component {
 
     next(amount = 1, shift = true) {
         var items = this.state.items;
-        items = items.concat(this.refs.bin.get(amount));
-        if (shift) items.shift();
+
+        _.each(this.refs.bin.get(amount), v => {
+            items[this.itemCount++] = v;
+        });
+
+        if (shift) delete items[this.firstItemIndex++];
 
         this.setState({
             items
         }, () => {
             this.updateScreenData({
                 key: [this.props.refsTarget, 'refs'],
-                data: _.filter(this.refs, (v, k) => !k.indexOf('items-')),
+                data: _.filter(this.refs, (v, k) => !k.indexOf(ITEM)),
             });
         });
 
@@ -110,7 +121,7 @@ class Dropper extends skoash.Component {
      */
     renderItems() {
         return _.map(this.state.items, (item, key) => {
-            var ref = 'items-' + key;
+            var ref = ITEM + key;
             if (!item) return null;
             return (
                 <item.type
