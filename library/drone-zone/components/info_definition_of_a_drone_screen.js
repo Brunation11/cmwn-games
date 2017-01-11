@@ -6,21 +6,22 @@ export default function (props, ref, key) {
             key={key}
             id="info-definition-of-a-drone"
         >
+
+            {/*
             <skoash.Audio
                 type="voiceOver"
-                // src={`${MEDIA.VO}ADroneIs.mp3`}
+                src={`${MEDIA.VO}ADroneIs.mp3`}
             />
+            */}
 
             <skoash.Component className="frame">
-                <h1>SO WHAT DOES IT DO?</h1>
-                <span className="copy">
-                    It is an aircraft that does not
+                <h1>DEFINITION OF A DRONE</h1>
+                <span className="content">
+                    A drone is an
                     <br />
-                    container a human pilot. Instead, the
+                    unmanned aerial vehicle
                     <br />
-                    drone is remote controlled by a
-                    <br />
-                    human or onboard computer.
+                    (UAV).
                 </span>
             </skoash.Component>
         </skoash.Screen>
