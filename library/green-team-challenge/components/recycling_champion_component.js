@@ -4,25 +4,21 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
 export default function (props, ref, key, opts = {}) {
-    var onScreenStart;
-    var onScreenStop;
-    var onTimerComplete;
-    var onOpenReveal;
-    var onCloseReveal;
-    var onSelect;
-    var onTransitionEnd;
-    var onCorrectCatch;
-    var onIncorrectCatch;
-    var onNextItem;
+    var screenProps;
+    var timerProps;
+    var revealProps;
+    var selectableProps;
+    var dropperProps;
+    var catcherProps;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
+    var arrayOfCatchables = _.map(opts.itemsToSort, (v, k) =>
+        <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,
+    );
+
     var start = _.get(props, `${levelPath}.start`, false);
-    var score = _.get(props, `${levelPath}.score`, 0);
-    var highScore = _.get(props, `${levelPath}.highScore`, 0);
-    var hits = _.get(props, `${levelPath}.hits`, 0);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
-    var left = _.get(props, 'data.manual-dropper.left', 0);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
     var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
@@ -30,143 +26,17 @@ export default function (props, ref, key, opts = {}) {
     var itemName = _.get(props, 'data.manual-dropper.itemName', '');
     var caught = _.get(props, 'data.catcher.caught', '');
 
-    var arrayOfCatchables = _.map(opts.itemsToSort, (v, k) =>
-        <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,
-    );
+    opts.score = _.get(props, `${levelPath}.score`, 0);
+    opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
+    opts.left = _.get(props, 'data.manual-dropper.left', 0);
+    opts.hits = _.get(props, `${levelPath}.hits`, 0);
 
-    onScreenStart = function () {
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level],
-            data: {
-                start: true,
-                score: 0,
-                hits: 0,
-            }
-        });
-    };
-
-    onScreenStop = function () {
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level, 'start'],
-            data: false,
-        });
-    };
-
-    onTimerComplete = function () {
-        if (score >= opts.scoreToWin) {
-            this.updateGameData({
-                keys: ['recyclingChampion', 'levels', opts.level],
-                data: {
-                    complete: true,
-                    highScore: Math.max(score, highScore)
-                },
-            });
-            this.updateScreenData({
-                keys: ['reveal', 'open'],
-                data: 'complete',
-            });
-        } else {
-            this.updateScreenData({
-                keys: ['reveal', 'open'],
-                data: 'retry',
-            });
-        }
-    };
-
-    onOpenReveal = function () {
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level, 'start'],
-            data: false,
-        });
-    };
-
-    onCloseReveal = function (prevMessage) {
-        var data = {
-            start: true,
-        };
-
-        if (!prevMessage || prevMessage === 'resort') return;
-
-        if (prevMessage === 'retry') {
-            data.score = 0;
-        }
-
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level],
-            data,
-        });
-    };
-
-    onSelect = function (binRefKey) {
-        if (left === ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft) {
-            this.updateScreenData({
-                keys: ['manual-dropper', 'drop'],
-                data: true,
-            });
-        } else {
-            this.updateScreenData({
-                keys: ['manual-dropper', 'left'],
-                data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
-            });
-        }
-    };
-
-    onTransitionEnd = function (e) {
-        if (this.DOMNode !== e.target) return;
-        this.updateScreenData({
-            keys: ['manual-dropper', 'drop'],
-            data: true,
-        });
-    };
-
-    onCorrectCatch = function () {
-        console.log('onCorrectCatch'); // eslint-disable-line
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level, 'score'],
-            data: score + 50,
-        });
-        this.updateScreenData({
-            keys: ['manual-dropper', 'next'],
-            data: true,
-        });
-    };
-
-    onIncorrectCatch = function () {
-        console.log('onIncorrectCatch'); // eslint-disable-line
-        this.updateGameData({
-            keys: ['recyclingChampion', 'levels', opts.level, 'hits'],
-            data: hits + 1,
-        });
-        this.updateScreenData({
-            keys: ['reveal', 'open'],
-            data: 'resort',
-            callback: () => {
-                setTimeout(() => {
-                    this.updateScreenData({
-                        data: {
-                            reveal: {
-                                open: null,
-                                close: true,
-                            },
-                            'manual-dropper': {
-                                pickUp: true,
-                            },
-                            catcher: {
-                                caught: false,
-                            }
-                        }
-                    });
-                }, 1000);
-            }
-        });
-    };
-
-    onNextItem = function () {
-        this.updateScreenData({
-            keys: ['manual-dropper', 'itemName'],
-            data: _.startCase(this.getFirstItem().props.className),
-        });
-    };
+    screenProps = opts.getScreenProps(opts);
+    timerProps = opts.getTimerProps(opts);
+    revealProps = opts.getRevealProps(opts);
+    selectableProps = opts.getSelectableProps(opts);
+    dropperProps = opts.getDropperProps(opts);
+    catcherProps = opts.getCatcherProps(opts);
 
     return (
         <skoash.Screen
@@ -176,15 +46,14 @@ export default function (props, ref, key, opts = {}) {
             id={`recycling-champion-${opts.level}`}
             complete={gameComplete}
             checkComplete={!gameComplete}
-            onStart={onScreenStart}
-            onStop={onScreenStop}
+            {...screenProps}
         >
             <skoash.Component
                 className="top-left"
             >
                 <skoash.Score
                     className="level-score"
-                    correct={score}
+                    correct={opts.score}
                     setScore={true}
                 >
                     pts
@@ -193,11 +62,11 @@ export default function (props, ref, key, opts = {}) {
                     countDown
                     format="mm:ss"
                     timeout={opts.timeout}
-                    onComplete={onTimerComplete}
                     complete={gameComplete}
                     pause={_.get(props, 'data.reveal.open', false)}
                     resume={!_.get(props, 'data.reveal.open', false)}
                     restart={start}
+                    {...timerProps}
                 />
             </skoash.Component>
             <skoash.Component
@@ -211,7 +80,7 @@ export default function (props, ref, key, opts = {}) {
                 className="life"
                 max={0}
                 incorrect={5}
-                correct={hits}
+                correct={opts.hits}
                 setScore={true}
             />
             <ManualDropper
@@ -224,12 +93,11 @@ export default function (props, ref, key, opts = {}) {
                         bin={arrayOfCatchables}
                     />
                 }
-                onTransitionEnd={onTransitionEnd}
                 style={{
-                    transform: `translateX(${left}px)`
+                    transform: `translateX(${opts.left}px)`
                 }}
                 caught={caught}
-                onNext={onNextItem}
+                {...dropperProps}
             />
             <skoash.Component
                 className="bins"
@@ -244,15 +112,14 @@ export default function (props, ref, key, opts = {}) {
                         <skoash.Component className="compost" message="compost" />,
                     ]}
                     catchableRefs={catchableRefs}
-                    onCorrect={onCorrectCatch}
-                    onIncorrect={onIncorrectCatch}
                     pause={caught}
                     resume={drop}
                     assets={[
                     ]}
+                    {...catcherProps}
                 />
                 <skoash.Selectable
-                    onSelect={onSelect}
+                    {...selectableProps}
                     list={[
                         <skoash.Component message="recycle" />,
                         <skoash.Component message="landfill" />,
@@ -264,8 +131,7 @@ export default function (props, ref, key, opts = {}) {
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
                 closeReveal={_.get(props, 'data.reveal.close', false)}
-                onClose={onCloseReveal}
-                onOpen={onOpenReveal}
+                {...revealProps}
                 list={[
                     <skoash.Component
                         ref="resort"

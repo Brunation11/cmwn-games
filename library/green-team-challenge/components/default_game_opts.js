@@ -1,0 +1,165 @@
+export default {
+    level: 1,
+    timeout: 120000,
+    scoreToWin: 100,
+    getScreenProps(opts) {
+        return {
+            onStart: function () {
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level],
+                    data: {
+                        start: true,
+                        score: 0,
+                        hits: 0,
+                    }
+                });
+            },
+            onStop: function () {
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level, 'start'],
+                    data: false,
+                });
+            },
+        };
+    },
+    getTimerProps(opts) {
+        return {
+            onComplete: function () {
+                if (opts.score >= opts.scoreToWin) {
+                    this.updateGameData({
+                        keys: ['recyclingChampion', 'levels', opts.level],
+                        data: {
+                            complete: true,
+                            highScore: Math.max(opts.score, opts.highScore)
+                        },
+                    });
+                    this.updateScreenData({
+                        keys: ['reveal', 'open'],
+                        data: 'complete',
+                    });
+                } else {
+                    this.updateScreenData({
+                        keys: ['reveal', 'open'],
+                        data: 'retry',
+                    });
+                }
+            },
+        };
+    },
+    getRevealProps(opts) {
+        return {
+            onOpen: function () {
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level, 'start'],
+                    data: false,
+                });
+            },
+            onClose: function (prevMessage) {
+                var data = {
+                    start: true,
+                };
+
+                if (!prevMessage || prevMessage === 'resort') return;
+
+                if (prevMessage === 'retry') {
+                    data.score = 0;
+                }
+
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level],
+                    data,
+                });
+            },
+        };
+    },
+    getSelectableProps(opts) {
+        return {
+            onSelect: function (binRefKey) {
+                if (opts.left === ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft) {
+                    this.updateScreenData({
+                        keys: ['manual-dropper', 'drop'],
+                        data: true,
+                    });
+                } else {
+                    this.updateScreenData({
+                        keys: ['manual-dropper', 'left'],
+                        data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
+                    });
+                }
+            },
+        };
+    },
+    getDropperProps() {
+        return {
+            onTransitionEnd: function (e) {
+                if (this.DOMNode !== e.target) return;
+                this.updateScreenData({
+                    keys: ['manual-dropper', 'drop'],
+                    data: true,
+                });
+            },
+            onNext: function () {
+                this.updateScreenData({
+                    keys: ['manual-dropper', 'itemName'],
+                    data: _.startCase(this.getFirstItem().props.className),
+                });
+            },
+        };
+    },
+    getCatcherProps(opts) {
+        return {
+            onCorrect: function () {
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level, 'score'],
+                    data: opts.score + 50,
+                });
+                this.updateScreenData({
+                    keys: ['manual-dropper', 'next'],
+                    data: true,
+                });
+            },
+            onIncorrect: function () {
+                this.updateGameData({
+                    keys: ['recyclingChampion', 'levels', opts.level, 'hits'],
+                    data: opts.hits + 1,
+                });
+                this.updateScreenData({
+                    keys: ['reveal', 'open'],
+                    data: 'resort',
+                    callback: () => {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    reveal: {
+                                        open: null,
+                                        close: true,
+                                    },
+                                    'manual-dropper': {
+                                        pickUp: true,
+                                    },
+                                    catcher: {
+                                        caught: false,
+                                    }
+                                }
+                            });
+                        }, 1000);
+                    }
+                });
+            },
+        };
+    },
+    itemsToSort: {
+        emptyBottle: {
+            bin: 'recycle'
+        },
+        eatenApple: {
+            bin: 'compost'
+        },
+        candyBag: {
+            bin: 'landfill'
+        },
+        // fullBottle: {
+        //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
+        // },
+    },
+};
