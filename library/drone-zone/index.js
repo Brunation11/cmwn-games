@@ -25,10 +25,10 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
-            // InfoDefinitionOfADroneScreen,
-            // InfoSoWhatDoesItDoScreen,
-            // VideoTheWorldOfDronesScreen,
+            TitleScreen,
+            InfoDefinitionOfADroneScreen,
+            InfoSoWhatDoesItDoScreen,
+            VideoTheWorldOfDronesScreen,
             TypesOfDronesScreen,
             // HowAreDronesControlledScreen,
             // WhyWouldYouWantADronePrtOneScreen,
