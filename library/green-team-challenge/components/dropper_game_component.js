@@ -3,6 +3,8 @@ import Catchable from 'shared/components/catchable/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';
 
+const PTS = 'pts';
+
 export default function (props, ref, key, opts = {}) {
     var screenProps;
     var timerProps;
@@ -17,6 +19,10 @@ export default function (props, ref, key, opts = {}) {
         <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,
     );
 
+    var binComponents = _.map(opts.binNames, name =>
+        <skoash.Component className={name} message={name} />
+    );
+
     var start = _.get(props, `${levelPath}.start`, false);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
@@ -25,6 +31,8 @@ export default function (props, ref, key, opts = {}) {
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.manual-dropper.itemName', '');
     var caught = _.get(props, 'data.catcher.caught', '');
+    var revealOpen = _.get(props, 'data.reveal.open', false);
+    var revealClose = _.get(props, 'data.reveal.close', false);
 
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
@@ -43,7 +51,7 @@ export default function (props, ref, key, opts = {}) {
             {...props}
             ref={ref}
             key={key}
-            id={`recycling-champion-${opts.level}`}
+            id={`${opts.gameName}-${opts.level}`}
             complete={gameComplete}
             checkComplete={!gameComplete}
             {...screenProps}
@@ -56,15 +64,15 @@ export default function (props, ref, key, opts = {}) {
                     correct={opts.score}
                     setScore={true}
                 >
-                    pts
+                    {PTS}
                 </skoash.Score>
                 <skoash.Timer
                     countDown
                     format="mm:ss"
                     timeout={opts.timeout}
                     complete={gameComplete}
-                    pause={_.get(props, 'data.reveal.open', false)}
-                    resume={!_.get(props, 'data.reveal.open', false)}
+                    pause={revealOpen}
+                    resume={!revealOpen}
                     restart={start}
                     {...timerProps}
                 />
@@ -79,7 +87,7 @@ export default function (props, ref, key, opts = {}) {
             <skoash.Score
                 className="life"
                 max={0}
-                incorrect={5}
+                incorrect={opts.maxHits}
                 correct={opts.hits}
                 setScore={true}
             />
@@ -106,11 +114,7 @@ export default function (props, ref, key, opts = {}) {
                     completeOnStart
                     checkComplete={false}
                     start={start}
-                    bucket={[
-                        <skoash.Component className="recycle" message="recycle" />,
-                        <skoash.Component className="landfill" message="landfill" />,
-                        <skoash.Component className="compost" message="compost" />,
-                    ]}
+                    bucket={binComponents}
                     catchableRefs={catchableRefs}
                     pause={caught}
                     resume={drop}
@@ -120,17 +124,13 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Selectable
                     {...selectableProps}
-                    list={[
-                        <skoash.Component message="recycle" />,
-                        <skoash.Component message="landfill" />,
-                        <skoash.Component message="compost" />,
-                    ]}
+                    list={binComponents}
                 />
             </skoash.Component>
             <skoash.Reveal
                 openTarget="reveal"
-                openReveal={_.get(props, 'data.reveal.open', false)}
-                closeReveal={_.get(props, 'data.reveal.close', false)}
+                openReveal={revealOpen}
+                closeReveal={revealClose}
                 {...revealProps}
                 list={[
                     <skoash.Component

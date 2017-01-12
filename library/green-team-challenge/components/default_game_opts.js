@@ -1,7 +1,9 @@
 export default {
+    gameName: 'recycling-champion',
     level: 1,
     timeout: 120000,
     scoreToWin: 100,
+    maxHits: 5,
     getScreenProps(opts) {
         return {
             onStart: function () {
@@ -148,6 +150,11 @@ export default {
             },
         };
     },
+    binNames: [
+        'recycle',
+        'landfill',
+        'compost',
+    ],
     itemsToSort: {
         emptyBottle: {
             bin: 'recycle'
