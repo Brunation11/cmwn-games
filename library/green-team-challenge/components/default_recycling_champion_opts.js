@@ -6,6 +6,12 @@ export default {
         emptyBottle: {
             bin: 'recycle'
         },
+        eatenApple: {
+            bin: 'compost'
+        },
+        candyBag: {
+            bin: 'landfill'
+        },
         // fullBottle: {
         //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
         // },
