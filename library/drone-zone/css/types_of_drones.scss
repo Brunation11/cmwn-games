@@ -1,6 +1,87 @@
 @import 'variables';
 @import 'mixins';
 
-// #types-of-drones {
+#types-of-drones {
+    .selectable {
+        .question-mark {
+            @include q-marks(1, 130px, 130px);
+            position: absolute;
 
-// }
+            &.military {
+                top: 18%;
+                left: 2%;
+            }
+
+            &.delivery {
+                top: 48%;
+                left: 2%;
+            }
+
+            &.racing {
+                top: 18%;
+                right: 2%;
+            }
+
+            &.media {
+                top: 48%;
+                right: 2%;
+            }
+        }
+    }
+
+    .frame {
+        top: 40%;
+
+        .reveal {
+            // $drone-types:
+            //     military
+            //     delivery
+            //     racing
+            //     media;
+
+            // @for $i from 1 through length($drone-types) {
+            //     &.open-#{nth($drone-types, $i)} {
+            //         #{nth($drone-types, $i)}::after {
+            //             position: absolute;
+            //             content: '';
+            //         }
+            //     }
+            // }
+
+            .header {
+                position: absolute;
+                top: -120%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 150%;
+                color: $green;
+                font-size: 40px;
+                font-weight: 900;
+            }
+
+            .copy {
+                width: 100%;
+                color: $black;
+                font-size: 30px;
+            }
+
+            .miltary,
+            .delivery,
+            .racing,
+            .media {
+                &::after {
+                    position: absolute;
+                    border: 1px solid $black;
+                    background: url('#{$sprite}sprite.dronetypes.png');
+                    width: 80%;
+                    height: 80%;
+                    content: '';
+                }
+            }
+
+            .military {
+
+            }
+        }
+    }
+}
