@@ -8,7 +8,7 @@ import TitleScreen from './components/title_screen';
 import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_drone_screen';
 import InfoSoWhatDoesItDoScreen from './components/info_so_what_does_it_do_screen';
 import VideoTheWorldOfDronesScreen from './components/video_the_world_of_drones_screen';
-// import TypesOfDronesScreen from './types_of_drones_screen';
+import TypesOfDronesScreen from './components/types_of_drones_screen';
 // import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
 // import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
 // import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
@@ -25,11 +25,11 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            TitleScreen,
-            InfoDefinitionOfADroneScreen,
-            InfoSoWhatDoesItDoScreen,
-            VideoTheWorldOfDronesScreen,
-            // TypesOfDronesScreen,
+            // TitleScreen,
+            // InfoDefinitionOfADroneScreen,
+            // InfoSoWhatDoesItDoScreen,
+            // VideoTheWorldOfDronesScreen,
+            TypesOfDronesScreen,
             // HowAreDronesControlledScreen,
             // WhyWouldYouWantADronePrtOneScreen,
             // WhyWouldYouWantADronePrtTwoScreen,
@@ -124,6 +124,7 @@ skoash.start(
                 case 'info-definition-of-a-drone':
                 case 'info-what-does-it-do':
                 case 'video-the-world-of-drones':
+                case 'types-of-drones':
                     return;
             }
         }}
