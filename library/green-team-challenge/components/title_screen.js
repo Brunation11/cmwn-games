@@ -6,6 +6,7 @@ export default function (props, ref, key) {
             key={key}
             id="title"
         >
+            <h3>Title Screen</h3>
         </skoash.Screen>
     );
 }

@@ -1,4 +1,12 @@
 export default function (props, ref, key, opts = {}) {
+    var renderAudio = function () {
+        if (!opts.vo) return null;
+    };
+
+    var renderImage = function () {
+        if (!opts.image) return null;
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -7,8 +15,10 @@ export default function (props, ref, key, opts = {}) {
             id={opts.id}
             className={opts.className}
         >
+            {renderAudio()}
+            {renderImage()}
             <div className="frame">
-                <div className="content">{opts.content}</div>
+                {opts.content}
             </div>
         </skoash.Screen>
     );
