@@ -22,7 +22,16 @@
     }
 
     .life {
-        // TODO
+        @include vertical-score-meter(-5);
+        @include center;
+        right: 0;
+        left: auto;
+
+        span {
+            &::before {
+                background-color: $green;
+            }
+        }
     }
 
     .manual-dropper {
@@ -101,6 +110,16 @@
 
             &[data-ref=resort] {
                 background-color: $transparent-red;
+            }
+
+            &[data-ref=retry] {
+                background-color: $transparent-red;
+            }
+        }
+
+        &.open-retry {
+            .close-reveal {
+                @include position(absolute, null 150px 150px null);
             }
         }
     }

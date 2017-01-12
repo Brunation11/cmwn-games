@@ -9,9 +9,6 @@ class Dropper extends skoash.Component {
     constructor() {
         super();
 
-        this.itemCount = 0;
-        this.firstItemIndex = 0;
-
         this.state = _.defaults({
             items: {},
         }, this.state);
@@ -24,6 +21,10 @@ class Dropper extends skoash.Component {
 
     start() {
         super.start();
+
+        this.itemCount = 0;
+        this.firstItemIndex = 0;
+
         this.setState({
             items: [],
         }, () => {
@@ -76,14 +77,14 @@ class Dropper extends skoash.Component {
                 key: [this.props.refsTarget, 'refs'],
                 data: _.filter(this.refs, (v, k) => !k.indexOf(ITEM)),
             });
+
+            this.props.onNext.call(this);
         });
 
         this.updateScreenData({
             key: [this.props.refsTarget, 'next'],
             data: false,
         });
-
-        this.props.onNext.call(this);
     }
 
     caught(catchableRefKey) {

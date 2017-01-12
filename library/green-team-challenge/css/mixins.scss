@@ -6,3 +6,74 @@
     // TODO
     // @include sprite($sprite + 'sprite.mainnav.png', 2000px, 315px, 8, 2, $column, 1, 2, $width, $height);
 }
+
+@mixin vertical-score-meter($steps: 4, $meter-color: $black) {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    margin: 10px 10px 10px 10px;
+    width: 17px;
+    height: 160px;
+    vertical-align: middle;
+
+    &::after {
+        position: absolute;
+        top: 5%;
+        right: 3px;
+        opacity: .6;
+        z-index: 1;
+        border-radius: 10px;
+        background-color: $white;
+        width: 5px;
+        height: 90%;
+        content: '';
+    }
+
+    span {
+        @include cover;
+        display: block;
+        color: transparent;
+        font-size: 0;
+
+        &::before,
+        &::after {
+            display: block;
+            position: absolute;
+            // border-radius: 50px 50px 0 0;
+            border-radius: 50px;
+            width: 100%;
+            content: '';
+        }
+
+        &::before {
+            bottom: 0;
+            left: 0;
+            background-color: $white;
+            height: 100%;
+        }
+
+        &::after {
+            bottom: 0;
+            left: 0;
+
+            // scss-lint:disable VendorPrefix
+            -webkit-transition: height .5s cubic-bezier(.53, 0, .63, 1);
+            // scss-lint:enable VendorPrefix
+            transition: height .5s cubic-bezier(.53, -.56, .63, 1.74);
+
+            background: $meter-color;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            height: 0;
+        }
+    }
+
+    @for $i from 0 through $steps {
+        &.score-#{$i} {
+            span::after {
+                height: percentage($i / $steps);
+            }
+        }
+    }
+}
