@@ -61,6 +61,10 @@ export default function (props, ref, key, opts = {}) {
                     highScore: Math.max(score, highScore)
                 },
             });
+            this.updateScreenData({
+                keys: ['reveal', 'open'],
+                data: 'complete',
+            });
         } else {
             this.updateScreenData({
                 keys: ['reveal', 'open'],
@@ -273,6 +277,12 @@ export default function (props, ref, key, opts = {}) {
                         type="li"
                     >
                         <p>RETRY</p>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="complete"
+                        type="li"
+                    >
+                        <p>COMPLETE</p>
                     </skoash.Component>,
                 ]}
             />
