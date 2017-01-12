@@ -2,6 +2,29 @@
 @import 'mixins';
 
 [id*=recycling-champion] {
+    .top-left {
+        @include position(absolute, 0 null null 0);
+
+        > div {
+            display: inline-block;
+            border: 2px solid $black;
+            padding: 20px 0;
+            width: 100px;
+        }
+    }
+
+    .item-name {
+        @include position(absolute, 0 0 null null);
+        border: 2px solid $black;
+        padding: 20px 0;
+        width: 200px;
+        height: 64px;
+    }
+
+    .life {
+        // TODO
+    }
+
     .manual-dropper {
         position: absolute;
         top: 100px;
