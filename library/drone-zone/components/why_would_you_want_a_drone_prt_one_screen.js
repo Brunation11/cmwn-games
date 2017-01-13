@@ -35,91 +35,49 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
+                {/*
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}WhyWantADrone.mp3`}
+                    src={`${MEDIA.VO}WhyWantADrone.mp3`}
                 />
                 <skoash.Audio
                     ref="construction"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Construction.mp3`}
+                    src={`${MEDIA.VO}Construction.mp3`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Sports.mp3`}
+                    src={`${MEDIA.VO}Sports.mp3`}
                 />
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Firefighting.mp3`}
+                    src={`${MEDIA.VO}Firefighting.mp3`}
                 />
                 <skoash.Audio
                     ref="photography"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Photography.mp3`}
+                    src={`${MEDIA.VO}Photography.mp3`}
                 />
                 <skoash.Audio
                     ref="delivery"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Delivery.mp3`}
+                    src={`${MEDIA.VO}Delivery.mp3`}
                 />
                 <skoash.Audio
                     ref="farming"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Farming.mp3`}
+                    src={`${MEDIA.VO}Farming.mp3`}
                 />
+                */}
             </skoash.MediaCollection>
-
-            <skoash.Selectable
-                dataTarget="selectable"
-                selectClass="HIGHLIGHTED"
-                selectOnStart="instructions"
-                onSelect={onSelect}
-                list={[
-                    <skoash.Component
-                        data-ref="construction"
-                        className="question-mark construction"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="sports"
-                        className="question-mark sports"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="police-duties"
-                        className="question-mark police-duties"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="fire-fighting"
-                        className="question-mark fire-fighting"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="photography"
-                        className="question-mark photography"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="delivery"
-                        className="question-mark delivery"
-                        correct={true}
-                    />,
-                    <skoash.Component
-                        data-ref="farming"
-                        className="question-mark farming"
-                        correct={true}
-                    />
-                ]}
-            />
 
             <skoash.Reveal
                 openTarget="reveal"
@@ -217,6 +175,50 @@ export default function (props, ref, key) {
                             water crops.
                         </span>
                     </skoash.Component>
+                ]}
+            />
+
+            <skoash.Selectable
+                dataTarget="selectable"
+                selectClass="HIGHLIGHTED"
+                selectOnStart="instructions"
+                onSelect={onSelect}
+                list={[
+                    <skoash.Component
+                        data-ref="construction"
+                        className="question-mark construction"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="sports"
+                        className="question-mark sports"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="police-duties"
+                        className="question-mark police-duties"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="fire-fighting"
+                        className="question-mark fire-fighting"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="photography"
+                        className="question-mark photography"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="delivery"
+                        className="question-mark delivery"
+                        correct={true}
+                    />,
+                    <skoash.Component
+                        data-ref="farming"
+                        className="question-mark farming"
+                        correct={true}
+                    />
                 ]}
             />
         </skoash.Screen>
