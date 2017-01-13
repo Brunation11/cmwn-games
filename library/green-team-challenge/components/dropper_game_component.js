@@ -12,6 +12,7 @@ export default function (props, ref, key, opts = {}) {
     var selectableProps;
     var dropperProps;
     var catcherProps;
+    var lifeProps;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
@@ -46,6 +47,7 @@ export default function (props, ref, key, opts = {}) {
     selectableProps = opts.getSelectableProps(opts);
     dropperProps = opts.getDropperProps(opts);
     catcherProps = opts.getCatcherProps(opts);
+    lifeProps = opts.getLifeProps(opts);
 
     return (
         <skoash.Screen
@@ -91,6 +93,7 @@ export default function (props, ref, key, opts = {}) {
                 incorrect={opts.maxHits}
                 correct={opts.hits}
                 setScore={true}
+                {...lifeProps}
             />
             <ManualDropper
                 amount={opts.dropperAmount}

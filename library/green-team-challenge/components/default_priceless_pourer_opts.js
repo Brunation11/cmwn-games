@@ -28,7 +28,7 @@ export default _.defaults({
         props.onCorrect = function () {
             this.updateGameData({
                 keys: ['recyclingChampion', 'levels', opts.level, 'score'],
-                data: opts.score + 50,
+                data: opts.score + opts.pointsPerItem,
             });
             this.updateScreenData({
                 keys: ['manual-dropper', 'next'],
