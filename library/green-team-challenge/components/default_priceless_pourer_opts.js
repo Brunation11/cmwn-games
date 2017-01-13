@@ -55,8 +55,8 @@ export default _.defaults({
             };
 
             if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
-                itemRef.addClassName('POUR');
                 DOMNode.addEventListener('animationend', onAnimationEnd);
+                itemRef.addClassName('POUR');
             }
         };
 
