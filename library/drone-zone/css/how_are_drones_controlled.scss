@@ -1,6 +1,51 @@
-// @import 'variables';
-// @import 'mixins';
+@import 'variables';
+@import 'mixins';
 
-// #how-are-drones-controlled {
+#how-are-drones-controlled {
+    h1 {
+        @include text-stroke(2, $black);
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        font-size: 50px;
+    }
 
-// }
+    .selectable {
+        .question-mark {
+            @include q-marks-large(1, 350px, 350px);
+            position: absolute;
+
+            .label {
+                @include center;
+                top: 75%;
+                color: $black;
+                opacity: 0;
+            }
+
+            $control-types: computers remote-control;
+            $lefts: 13% 52%;
+
+            @for $i from 1 through length($control-types) {
+                &.#{nth($control-types, $i)} {
+                    top: 25%;
+                    left: #{nth($lefts, $i)};
+
+                    &.HIGHLIGHTED {
+                        @include radar(1, 350px, 350px);
+
+                        .label {
+                            opacity: 1;
+                        }
+
+                        &::after {
+                            @include center;
+                            @include control-types($i, 250px, 149px);
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
