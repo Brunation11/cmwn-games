@@ -26,7 +26,7 @@ class Dropper extends skoash.Component {
         this.firstItemIndex = 0;
 
         this.setState({
-            items: [],
+            items: {},
         }, () => {
             this.next(this.props.amount, false);
         });

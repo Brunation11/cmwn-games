@@ -25,14 +25,36 @@ export default _.defaults({
     getCatcherProps(opts) {
         var props = defaultGameOpts.getCatcherProps.call(this, opts);
 
-        props.onCorrect = function () {
+        props.onCorrect = function (bucketRef, catchableRefKey) {
             this.updateGameData({
                 keys: ['recyclingChampion', 'levels', opts.level, 'score'],
                 data: opts.score + opts.pointsPerItem,
             });
+
+            if (bucketRef.props.message !== 'liquids') {
+                this.updateScreenData({
+                    keys: ['manual-dropper', 'next'],
+                    data: true,
+                });
+                return;
+            }
+
             this.updateScreenData({
-                keys: ['manual-dropper', 'next'],
-                data: true,
+                keys: ['manual-dropper'],
+                data: {
+                    pickUp: true,
+                    onPickUp: function () {
+                        var items = this.state.items;
+                        var index = parseInt(catchableRefKey.replace('items-', ''), 10);
+                        var item = items[index];
+                        var newBin = opts.itemsToSort[item.props.becomes].bin;
+                        item.props.className = item.props.becomes;
+                        item.props.message = newBin;
+                        item.props['data-message'] = newBin;
+                        items[index] = item;
+                        this.setState({items});
+                    }
+                },
             });
         };
 
@@ -42,14 +64,14 @@ export default _.defaults({
         emptyBottle: {
             bin: 'recycle'
         },
-        eatenApple: {
+        appleCore: {
             bin: 'compost'
         },
         candyBag: {
             bin: 'landfill'
         },
         fullBottle: {
-            bin: 'liquids', becomes: 'bottle'
+            bin: 'liquids', becomes: 'emptyBottle'
         },
     },
 }, defaultGameOpts);

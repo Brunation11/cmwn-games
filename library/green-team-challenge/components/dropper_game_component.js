@@ -30,6 +30,7 @@ export default function (props, ref, key, opts = {}) {
     var dropClass = _.get(props, 'data.manual-dropper.dropClass', false);
     var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
+    var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.manual-dropper.itemName', '');
     var caught = _.get(props, 'data.catcher.caught', '');
@@ -99,6 +100,7 @@ export default function (props, ref, key, opts = {}) {
                 amount={opts.dropperAmount}
                 drop={drop}
                 pickUp={pickUp}
+                onPickUp={onPickUp}
                 next={next}
                 bin={
                     <Randomizer

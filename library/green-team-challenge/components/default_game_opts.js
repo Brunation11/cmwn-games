@@ -202,7 +202,7 @@ export default {
         emptyBottle: {
             bin: 'recycle'
         },
-        eatenApple: {
+        appleCore: {
             bin: 'compost'
         },
         candyBag: {
