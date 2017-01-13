@@ -19,7 +19,7 @@
             > * {
                 @include center;
                 top: 0;
-                transition: top .3s, left .3s .3s, transform .5s;
+                transition: top .5s $ease-out, left .5s $ease-in, transform .5s;
                 background-color: $green;
                 width: 50px;
                 height: 50px;
@@ -38,16 +38,16 @@
                     }
                 }
 
-                $bins: LIQUIDS RECYCLE LANDFILL COMPOST;
-                $tops:    -120     200      200     200;
-                $lefts:    -30      10      240     460;
-                $tds:        0      .3       .3      .3;
-                $lds:        0       0        0       0;
+                $bins:  LIQUIDS   RECYCLE  LANDFILL   COMPOST;
+                $tops:     -120       200       200       200;
+                $lefts:     -30        10       240       460;
+                $tds: $ease-out  $ease-in  $ease-in  $ease-in;
+                $lds:  $ease-in $ease-out $ease-out $ease-out;
                 @for $i from 1 through length($bins) {
                     &.#{nth($bins, $i)} {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;
-                        transition: top .3s #{nth($tds, $i)}s, left .3s #{nth($lds, $i)}s, transform .5s;
+                        transition: top .5s #{nth($tds, $i)}, left .5s #{nth($lds, $i)}, transform .5s;
                     }
                 }
 

@@ -6,7 +6,7 @@ export default {
     maxHits: 5,
     dropperAmount: 3,
     pointsPerItem: 50,
-    collideFraction: 0,
+    collideFraction: .4,
     getScreenProps(opts) {
         return {
             onStart: function () {

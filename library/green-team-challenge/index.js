@@ -20,15 +20,15 @@ import TitleScreen from './components/title_screen';
 // import PricelessPourerPreScreen from './components/priceless_pourer_pre_screen';
 // import PricelessPourer1InfoScreen from './components/priceless_pourer_one_info_screen';
 import PricelessPourer1Screen from './components/priceless_pourer_level_one_screen';
-// import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
-// import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
-// import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
-// import PricelessPourer3Screen from './components/priceless_pourer_level_three_screen';
-// import PricelessPourer4InfoScreen from './components/priceless_pourer_four_info_screen';
-// import PricelessPourer4Screen from './components/priceless_pourer_level_four_screen';
-// import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
-// import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
-// import PricelessPourerPostScreen from './components/priceless_pourer_post_screen';
+import PricelessPourer2InfoScreen from './components/priceless_pourer_two_info_screen';
+import PricelessPourer2Screen from './components/priceless_pourer_level_two_screen';
+import PricelessPourer3InfoScreen from './components/priceless_pourer_three_info_screen';
+import PricelessPourer3Screen from './components/priceless_pourer_level_three_screen';
+import PricelessPourer4InfoScreen from './components/priceless_pourer_four_info_screen';
+import PricelessPourer4Screen from './components/priceless_pourer_level_four_screen';
+import PricelessPourer5InfoScreen from './components/priceless_pourer_five_info_screen';
+import PricelessPourer5Screen from './components/priceless_pourer_level_five_screen';
+import PricelessPourerPostScreen from './components/priceless_pourer_post_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -54,15 +54,15 @@ skoash.start(
             // PricelessPourerPreScreen,
             // PricelessPourer1InfoScreen,
             PricelessPourer1Screen,
-            // PricelessPourer2InfoScreen,
-            // PricelessPourer2Screen,
-            // PricelessPourer3InfoScreen,
-            // PricelessPourer3Screen,
-            // PricelessPourer4InfoScreen,
-            // PricelessPourer4Screen,
-            // PricelessPourer5InfoScreen,
-            // PricelessPourer5Screen,
-            // PricelessPourerPostScreen,
+            PricelessPourer2InfoScreen,
+            PricelessPourer2Screen,
+            PricelessPourer3InfoScreen,
+            PricelessPourer3Screen,
+            PricelessPourer4InfoScreen,
+            PricelessPourer4Screen,
+            PricelessPourer5InfoScreen,
+            PricelessPourer5Screen,
+            PricelessPourerPostScreen,
             FlipScreen,
         ]}
         menus={{
