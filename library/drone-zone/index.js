@@ -9,8 +9,8 @@ import InfoDefinitionOfADroneScreen from './components/info_definition_of_a_dron
 import InfoSoWhatDoesItDoScreen from './components/info_so_what_does_it_do_screen';
 import VideoTheWorldOfDronesScreen from './components/video_the_world_of_drones_screen';
 import TypesOfDronesScreen from './components/types_of_drones_screen';
-// import HowAreDronesControlledScreen from './how_are_drones_controlled_screen';
-// import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
+import HowAreDronesControlledScreen from './components/how_are_drones_controlled_screen';
+import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
 // import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
 // import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
 // import InfoCustomizeYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
@@ -30,8 +30,8 @@ skoash.start(
             InfoSoWhatDoesItDoScreen,
             VideoTheWorldOfDronesScreen,
             TypesOfDronesScreen,
-            // HowAreDronesControlledScreen,
-            // WhyWouldYouWantADronePrtOneScreen,
+            HowAreDronesControlledScreen,
+            WhyWouldYouWantADronePrtOneScreen,
             // WhyWouldYouWantADronePrtTwoScreen,
             // InfoWantedYourOwnDroneScreen,
             // InfoCustomizeYourOwnDroneScreen,
@@ -125,6 +125,8 @@ skoash.start(
                 case 'info-what-does-it-do':
                 case 'video-the-world-of-drones':
                 case 'types-of-drones':
+                case 'how-are-drones-controlled':
+                case 'why-would-you-want-a-drone-prt-one':
                     return;
             }
         }}
