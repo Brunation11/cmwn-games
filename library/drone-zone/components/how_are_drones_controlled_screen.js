@@ -27,10 +27,12 @@ export default function (props, ref, key) {
             key={key}
             id="how-are-drones-controlled"
         >
+            {/*
             <skoash.Audio
                 type="voiceOver"
-                // src={`${MEDIA.VO}HowAreDronesControlled.mp3`}
+                src={`${MEDIA.VO}HowAreDronesControlled.mp3`}
             />
+            */}
 
             <skoash.Component className="header">
                 <h1>HOW ARE DRONES CONTROLLED?</h1>
@@ -40,16 +42,18 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
+                {/*
                 <skoash.Audio
                     ref="computers"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Computers.mp3`}
+                    src={`${MEDIA.VO}Computers.mp3`}
                 />
                 <skoash.Audio
                     ref="remote-control"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}RemoteControl.mp3`}
+                    src={`${MEDIA.VO}RemoteControl.mp3`}
                 />
+                */}
             </skoash.MediaCollection>
 
             <skoash.Selectable
@@ -61,12 +65,20 @@ export default function (props, ref, key) {
                         data-ref="computers"
                         className="question-mark computers"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            computers
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="remote-control"
                         className="question-mark remote-control"
                         correct={true}
-                    />
+                    >
+                        <span className="label">
+                            remote control
+                        </span>
+                    </skoash.Component>
                 ]}
             />
         </skoash.Screen>
