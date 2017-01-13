@@ -150,10 +150,31 @@
 //     @include sprite('#{$sprite}sprite.life.png', 600px, 214px, 4, 2, $column, 1, 2, $width, $height);
 // }
 
-// @mixin drone-types($column, $width: 0, $height: 0) {
-//     @include sprite('#{$sprite}sprite.dronetypes.png', 2380px, 901px, 4, 2, $column, 1, 2, $width, $height);
-// }
 
-@mixin q-marks($column, $width: 0, $height: 0) {
+@mixin drone-types-icon($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.dronetypes.png', 1600px, 606px, 4, 2, $column, 1, 1, $width, $height);
+}
+
+@mixin drone-types-frame($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.dronetypes.png', 1100px, 416px, 4, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin q-marks-small($column, $width: 0, $height: 0) {
     @include sprite('#{$sprite}sprite.qmarks.png', 130px, 259px, 1, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin q-marks-large($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.qmarks.png', 350px, 697px, 1, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin q-marks-square($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.qmarkwsquare.png', 504px, 505px, 1, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin radar($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.radarframe.png', 370px, 737px, 1, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin control-types($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.controllers.png', 500px, 149px, 2, 1, $column, 1, 2, $width, $height);
 }
