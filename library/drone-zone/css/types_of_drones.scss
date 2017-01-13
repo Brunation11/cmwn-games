@@ -2,82 +2,91 @@
 @import 'mixins';
 
 #types-of-drones {
+    $drone-types:
+        military
+        delivery
+        racing
+        media;
+
     .selectable {
         .question-mark {
-            @include q-marks(1, 130px, 130px);
+            @include q-marks-small(1, 130px, 130px);
             position: absolute;
 
-            &.military {
-                top: 18%;
-                left: 2%;
-            }
+            $tops: 18% 48% 18% 48%;
+            $lefts: 2% 2% 85% 85%;
 
-            &.delivery {
-                top: 48%;
-                left: 2%;
-            }
+            @for $i from 1 through length($drone-types) {
+                &.#{nth($drone-types, $i)} {
+                    top: #{nth($tops, $i)};
+                    left: #{nth($lefts, $i)};
 
-            &.racing {
-                top: 18%;
-                right: 2%;
-            }
-
-            &.media {
-                top: 48%;
-                right: 2%;
+                    &.HIGHLIGHTED::after {
+                        @include center;
+                        @include drone-types-icon($i, 130px, 130px);
+                        content: '';
+                    }
+                }
             }
         }
     }
 
-    .frame {
-        top: 40%;
+    .reveal {
+        &.OPEN {
+            z-index: 0;
+        }
 
-        .reveal {
-            // $drone-types:
-            //     military
-            //     delivery
-            //     racing
-            //     media;
+        .frame {
+            top: 40%;
+            width: 80%;
+            height: 80%;
 
-            // @for $i from 1 through length($drone-types) {
-            //     &.open-#{nth($drone-types, $i)} {
-            //         #{nth($drone-types, $i)}::after {
-            //             position: absolute;
-            //             content: '';
-            //         }
-            //     }
-            // }
+            $drone-types:
+                military
+                delivery
+                racing
+                media;
 
-            .header {
-                position: absolute;
-                top: -120%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 150%;
-                color: $green;
-                font-size: 40px;
-                font-weight: 900;
-            }
-
-            .copy {
-                width: 100%;
-                color: $black;
-                font-size: 30px;
-            }
-
-            .miltary,
-            .delivery,
-            .racing,
-            .media {
-                &::after {
-                    position: absolute;
-                    border: 1px solid $black;
-                    background: url('#{$sprite}sprite.dronetypes.png');
-                    width: 80%;
-                    height: 80%;
+            @for $i from 1 through length($drone-types) {
+                &.#{nth($drone-types, $i)}::after {
+                    @include center;
+                    @include drone-types-frame($i, 270px, 210px);
+                    top: 58%;
                     content: '';
                 }
             }
+        }
+
+
+        .header {
+            @include center;
+            @include text-stroke(3, $black);
+            top: 26%;
+            width: 65%;
+            color: $green;
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+        .copy {
+            @include center;
+            color: $black;
+            font-size: 30px;
+        }
+
+        &.instructions .copy {
+            top: 50%;
+        }
+
+        &:not(.instructions) .copy {
+            top: 110%;
+            border: 10px solid $green;
+            border-radius: 10px;
+            background: $white-transparancy;
+            padding: 15px;
+            width: 100%;
+            font-size: 25px;
+            font-weight: 900;
         }
     }
 }
