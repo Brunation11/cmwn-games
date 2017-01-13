@@ -22,10 +22,50 @@ export default _.defaults({
             },
         };
     },
+    getDropperProps(opts) {
+        let props = defaultGameOpts.getDropperProps.call(this, opts);
+
+        props.onTransitionEnd = function (e) {
+            let itemRef = this.refs['items-' + this.firstItemIndex];
+            let DOMNode;
+            let onAnimationEnd;
+
+            if (this.props.dropClass !== 'LIQUIDS') return;
+            if (itemRef.props.message !== 'liquids') return;
+
+            DOMNode = ReactDOM.findDOMNode(itemRef);
+
+            if (DOMNode !== e.target) return;
+
+            onAnimationEnd = () => {
+                this.pickUp(_.defaults({
+                    onPickUp: function () {
+                        let items = this.state.items;
+                        let index = this.firstItemIndex;
+                        let item = items[index];
+                        let newBin = opts.itemsToSort[item.props.becomes].bin;
+                        item.props.className = item.props.becomes;
+                        item.props.message = newBin;
+                        item.props['data-message'] = newBin;
+                        items[index] = item;
+                        this.setState({items});
+                        DOMNode.removeEventListener('animationend', onAnimationEnd);
+                    }
+                }, this.props));
+            };
+
+            if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
+                itemRef.addClassName('POUR');
+                DOMNode.addEventListener('animationend', onAnimationEnd);
+            }
+        };
+
+        return props;
+    },
     getCatcherProps(opts) {
         var props = defaultGameOpts.getCatcherProps.call(this, opts);
 
-        props.onCorrect = function (bucketRef, catchableRefKey) {
+        props.onCorrect = function (bucketRef) {
             this.updateGameData({
                 keys: ['recyclingChampion', 'levels', opts.level, 'score'],
                 data: opts.score + opts.pointsPerItem,
@@ -38,24 +78,6 @@ export default _.defaults({
                 });
                 return;
             }
-
-            this.updateScreenData({
-                keys: ['manual-dropper'],
-                data: {
-                    pickUp: true,
-                    onPickUp: function () {
-                        var items = this.state.items;
-                        var index = parseInt(catchableRefKey.replace('items-', ''), 10);
-                        var item = items[index];
-                        var newBin = opts.itemsToSort[item.props.becomes].bin;
-                        item.props.className = item.props.becomes;
-                        item.props.message = newBin;
-                        item.props['data-message'] = newBin;
-                        items[index] = item;
-                        this.setState({items});
-                    }
-                },
-            });
         };
 
         return props;

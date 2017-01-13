@@ -42,13 +42,17 @@
                 $tops:    -120     200      200     200;
                 $lefts:    -30      10      240     460;
                 $tds:        0      .3       .3      .3;
-                $lds:       .3       0        0       0;
+                $lds:        0       0        0       0;
                 @for $i from 1 through length($bins) {
                     &.#{nth($bins, $i)} {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;
                         transition: top .3s #{nth($tds, $i)}s, left .3s #{nth($lds, $i)}s, transform .5s;
                     }
+                }
+
+                &.POUR {
+                    animation: pour 1s;
                 }
             }
         }
