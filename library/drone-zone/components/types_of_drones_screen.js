@@ -60,71 +60,69 @@ export default function (props, ref, key) {
                 */}
             </skoash.MediaCollection>
 
-            <skoash.Component className="frame">
-                <skoash.Reveal
-                    openTarget="reveal"
-                    closeTarget="reveal"
-                    openOnStart="instructions"
-                    openReveal={_.get(props, 'data.reveal.open', null)}
-                    list={[
-                        <skoash.Component
-                            ref="instructions"
-                            className="instructions"
-                        >
-                            <h1 className="header">TYPES OF DRONES</h1>
-                            <span className="copy">
-                                click to reveal all the
-                                <br />
-                                different types of drones
-                            </span>
-                        </skoash.Component>,
-                        <skoash.Component
-                            ref="military"
-                            className="military"
-                        >
-                            <h1 className="header">MILITARY DRONES</h1>
-                            <span className="copy">
-                                Drones have been used in the military for quite
-                                <br />
-                                some time, for research, combat, and cargo delivery.
-                            </span>
-                        </skoash.Component>,
-                        <skoash.Component
-                            ref="delivery"
-                            className="delivery"
-                        >
-                            <h1 className="header">DELIVERY DRONES</h1>
-                            <span className="copy">
-                                Drones can be used to transport
-                                <br />
-                                mail packages…even pizzas!
-                            </span>
-                        </skoash.Component>,
-                        <skoash.Component
-                            ref="racing"
-                            className="racing"
-                        >
-                            <h1 className="header">RACING DRONES</h1>
-                            <span className="copy">
-                                Some drones are designed for racing, with the ability
-                                <br />
-                                to fly around 40-60 miles per hour!
-                            </span>
-                        </skoash.Component>,
-                        <skoash.Component
-                            ref="media"
-                            className="media"
-                        >
-                            <h1 className="header">PHOTO + VIDEO DRONES</h1>
-                            <span className="copy">
-                                A drone equipped with a video or still camera
-                                <br />
-                                can record fantastic images!
-                            </span>
-                        </skoash.Component>
-                    ]}
-                />
-            </skoash.Component>
+            <skoash.Reveal
+                openTarget="reveal"
+                closeTarget="reveal"
+                openOnStart="instructions"
+                openReveal={_.get(props, 'data.reveal.open', null)}
+                list={[
+                    <skoash.Component
+                        ref="instructions"
+                        className="frame instructions"
+                    >
+                        <h1 className="header">TYPES OF DRONES</h1>
+                        <span className="copy">
+                            click to reveal all the
+                            <br />
+                            different types of drones
+                        </span>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="military"
+                        className="frame military"
+                    >
+                        <h1 className="header">MILITARY DRONES</h1>
+                        <span className="copy">
+                            Drones have been used in the military for quite
+                            <br />
+                            some time, for research, combat, and cargo delivery.
+                        </span>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="delivery"
+                        className="frame delivery"
+                    >
+                        <h1 className="header">DELIVERY DRONES</h1>
+                        <span className="copy">
+                            Drones can be used to transport
+                            <br />
+                            mail packages…even pizzas!
+                        </span>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="racing"
+                        className="frame racing"
+                    >
+                        <h1 className="header">RACING DRONES</h1>
+                        <span className="copy">
+                            Some drones are designed for racing, with the ability
+                            <br />
+                            to fly around 40-60 miles per hour!
+                        </span>
+                    </skoash.Component>,
+                    <skoash.Component
+                        ref="media"
+                        className="frame media"
+                    >
+                        <h1 className="header">PHOTO + VIDEO DRONES</h1>
+                        <span className="copy">
+                            A drone equipped with a video or still camera
+                            <br />
+                            can record fantastic images!
+                        </span>
+                    </skoash.Component>
+                ]}
+            />
 
             <skoash.Selectable
                 dataTarget="selectable"
