@@ -7,39 +7,48 @@
 
     .manual-dropper {
         position: absolute;
-        top: 100px;
-        left: 0;
+        top: 0;
+        left: 25%;
         transition: transform .5s;
-        background-color: $blue;
-        width: 100%;
-        height: 200px;
+        width: 50%;
+        height: 100%;
 
         .items {
             @include cover;
 
             > * {
-                position: absolute;
-                transition: top .2s .5s, left .5s 0s, transform .5s;
+                @include center;
+                top: 0;
+                transition: top .3s, left .3s .3s, transform .5s;
                 background-color: $green;
                 width: 50px;
                 height: 50px;
 
-                $tops: 100  30   30;
-                $lefts: 75 200 1000;
-                @for $i from 1 through length($lefts) {
-                    &:nth-of-type(#{$i}) {
-                        top: #{nth($tops, $i)}px;
-                        left: #{nth($lefts, $i)}px;
-                    }
-                }
-
-                &.DROPPED {
-                    transform: translateY(250px);
-                }
-
                 &::before {
                     font-size: 10px;
                     content: attr(data-message);
+                }
+
+                $tops:   185  95  20 -55;
+                $scales: 1.3 1.2 1.1 1;
+                @for $i from 1 through length($tops) {
+                    &:nth-of-type(#{$i}) {
+                        transform: scale(#{nth($scales, $i)}) translateX(-50%) translateY(#{nth($tops, $i)}px);
+                        transform-origin: 0 0;
+                    }
+                }
+
+                $bins: LIQUIDS RECYCLE LANDFILL COMPOST;
+                $tops:    -120     200      200     200;
+                $lefts:    -30      10      240     460;
+                $tds:        0      .3       .3      .3;
+                $lds:       .3       0        0       0;
+                @for $i from 1 through length($bins) {
+                    &.#{nth($bins, $i)} {
+                        top: #{nth($tops, $i)}px;
+                        left: #{nth($lefts, $i)}px;
+                        transition: top .3s #{nth($tds, $i)}s, left .3s #{nth($lds, $i)}s, transform .5s;
+                    }
                 }
             }
         }
@@ -63,13 +72,20 @@
         div,
         li {
             margin: 0 10px;
-            background-color: $blue;
             width: 200px;
             height: 100%;
+
+            &.liquids {
+                @include position(absolute, -200px null null 50px);
+            }
         }
 
-        li::before {
-            content: attr(data-message);
+        li {
+            background-color: $blue;
+
+            &::before {
+                content: attr(data-message);
+            }
         }
     }
 }

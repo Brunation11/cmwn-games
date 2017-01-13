@@ -4,6 +4,8 @@ export default {
     timeout: 120000,
     scoreToWin: 100,
     maxHits: 5,
+    dropperAmount: 3,
+    collideFraction: 0,
     getScreenProps(opts) {
         return {
             onStart: function () {
@@ -165,8 +167,5 @@ export default {
         candyBag: {
             bin: 'landfill'
         },
-        // fullBottle: {
-        //     bin: 'liquid', reCatchable: true, becomes: 'bottle'
-        // },
     },
 };
