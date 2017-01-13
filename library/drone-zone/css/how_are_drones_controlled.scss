@@ -18,8 +18,8 @@
             .label {
                 @include center;
                 top: 75%;
-                color: $black;
                 opacity: 0;
+                color: $black;
             }
 
             $control-types: computers remote-control;
