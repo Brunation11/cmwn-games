@@ -1,5 +1,44 @@
 @import 'variables';
 @import 'mixins';
 
-// [id^='why-would-you-want-a-drone-prt-'] {
-// }
+[id^='why-would-you-want-a-drone-prt-'] {
+    h1 {
+        @include text-stroke(2, $black);
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        font-size: 45px;
+    }
+
+    $uses:
+        construction
+        sports
+        police-duties
+        fire-fighting
+        photography
+        delivery
+        farming;
+
+    .selectable {
+        .question-mark {
+            @include q-marks-square(1, 130px, 130px);
+            position: absolute;
+
+            $tops: 18% 48% 18% 48%;
+            $lefts: 2% 2% 85% 85%;
+
+            @for $i from 1 through length($drone-types) {
+                &.#{nth($drone-types, $i)} {
+                    top: #{nth($tops, $i)};
+                    left: #{nth($lefts, $i)};
+
+                    &.HIGHLIGHTED::after {
+                        @include center;
+                        @include drone-types-icon($i, 130px, 130px);
+                        content: '';
+                    }
+                }
+            }
+        }
+    }
+}
