@@ -82,11 +82,12 @@ export default function (props, ref, key) {
             <skoash.Reveal
                 openTarget="reveal"
                 closeTarget="reveal"
+                openOnStart="instructions"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
                     <skoash.Component
                         ref="instructions"
-                        className="instructions"
+                        className="frame job-round instructions"
                     >
                         <span className="copy">
                             Click to reveal
@@ -98,7 +99,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="construction"
-                        className="construction"
+                        className="frame job-round construction"
                     >
                         <h2 className="label">Construction</h2>
                         <span className="copy">
@@ -110,8 +111,8 @@ export default function (props, ref, key) {
                         </span>
                     </skoash.Component>,
                     <skoash.Component
-                        ref="Sports"
-                        className="Sports"
+                        ref="sports"
+                        className="frame job-round sports"
                     >
                         <h2 className="label">Sports</h2>
                         <span className="copy">
@@ -122,7 +123,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="police-duties"
-                        className="police-duties"
+                        className="frame job-round police-duties"
                     >
                         <h2 className="label">Police Duties</h2>
                         <span className="copy">
@@ -133,7 +134,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="fire-fighting"
-                        className="fire-fighting"
+                        className="frame job-round fire-fighting"
                     >
                         <h2 className="label">Fire Fighting</h2>
                         <span className="copy">
@@ -146,7 +147,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="photography"
-                        className="photography"
+                        className="frame job-round photography"
                     >
                         <h2 className="label">Photography</h2>
                         <span className="copy">
@@ -157,7 +158,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="delivery"
-                        className="delivery"
+                        className="frame job-round delivery"
                     >
                         <h2 className="label">Delivery</h2>
                         <span className="copy">
@@ -166,7 +167,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="farming"
-                        className="farming"
+                        className="frame job-round farming"
                     >
                         <h2 className="label">Farming</h2>
                         <span className="copy">
@@ -181,7 +182,6 @@ export default function (props, ref, key) {
             <skoash.Selectable
                 dataTarget="selectable"
                 selectClass="HIGHLIGHTED"
-                selectOnStart="instructions"
                 onSelect={onSelect}
                 list={[
                     <skoash.Component
