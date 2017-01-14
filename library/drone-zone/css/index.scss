@@ -9,7 +9,7 @@ html {
 }
 
 .skoash-game {
-    font-family: 'Chelsea Market';
+    // font-family: 'Chelsea Market';
 
     > .menu {
         position: absolute;
@@ -25,8 +25,7 @@ button {
     }
 
     &.next-screen,
-    &.prev-screen,
-    &.close-reveal {
+    &.prev-screen {
         display: block;
         position: absolute;
         bottom: 10px;
@@ -44,6 +43,10 @@ button {
     &.prev-screen {
         @include nav-button(3, 80px, 80px);
         left: 10px;
+    }
+
+    &.close-reveal {
+        @include nav-button(5, 50px, 50px);
     }
 
     &.quit-yes,
@@ -72,7 +75,10 @@ button {
         video-the-world-of-drones
         types-of-drones
         how-are-drones-controlled
-        why-would-you-want-a-drone-prt-one;
+        why-would-you-want-a-drone-prt-one
+        info-wanted-your-own-drone
+        info-customize-your-own-drone
+        parts-of-a-drone;
     //     info-video-one
     //     life-stages
     //     first-stage
@@ -96,7 +102,10 @@ button {
         bkg-2
         bkg-4
         bkg-3
-        bkg-6;
+        bkg-6
+        bkg-10
+        bkg-10
+        bkg-9;
     //     bkg-1
     //     bkg-1
     //     bkg-3
@@ -126,13 +135,13 @@ button {
             bkg-2
             bkg-3
             bkg-4
-            bkg-6;
+            bkg-6
+            bkg-9
+            bkg-10;
             // bkg-4
             // bkg-5
             // bkg-7
             // bkg-8
-            // bkg-9
-            // bkg-10;
 
         $background-images:
         //     '#{$sprite}DroneZone.gif'
@@ -140,12 +149,12 @@ button {
             '#{$image}BKG.2.jpg'
             '#{$image}BKG.3.jpg'
             '#{$image}BKG.4.jpg'
-            '#{$image}BKG.6.jpg';
+            '#{$image}BKG.6.jpg'
+            '#{$image}BKG.9.jpg'
+            '#{$image}BKG.10.jpg';
             // '#{$image}BKG.5.jpg'
             // '#{$image}BKG.7.jpg'
             // '#{$image}BKG.8.jpg'
-            // '#{$image}BKG.9.jpg'
-            // '#{$image}BKG.10.jpg';
 
         @for $i from 1 through length($background-titles) {
             &.#{nth($background-titles, $i)} {
