@@ -27,10 +27,12 @@ export default function (props, ref, key) {
             key={key}
             id="parts-of-a-drone"
         >
+            {/*
             <skoash.Audio
                 type="voiceOver"
                 // src={`${MEDIA.VO}PartsOfADrone.mp3`}
             />
+            */}
 
             <skoash.Component className="header">
                 <h1>PARTS OF A DRONE</h1>
@@ -50,41 +52,43 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
+                {/*
                 <skoash.Audio
                     ref="motor"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Motor.mp3`}
+                    src={`${MEDIA.VO}Motor.mp3`}
                 />
                 <skoash.Audio
                     ref="lights"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="propeller"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Propeller.mp3`}
+                    src={`${MEDIA.VO}Propeller.mp3`}
                 />
                 <skoash.Audio
                     ref="central-core"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}CentralCore.mp3`}
+                    src={`${MEDIA.VO}CentralCore.mp3`}
                 />
                 <skoash.Audio
                     ref="landing-platform"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}LandingPlatform.mp3`}
+                    src={`${MEDIA.VO}LandingPlatform.mp3`}
                 />
                 <skoash.Audio
                     ref="camera"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="arm"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}Arm.mp3`}
+                    src={`${MEDIA.VO}Arm.mp3`}
                 />
+                */}
             </skoash.MediaCollection>
 
             <skoash.Selectable
@@ -97,37 +101,65 @@ export default function (props, ref, key) {
                         data-ref="motor"
                         className="question-mark motor"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            MOTOR
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="lights"
                         className="question-mark lights"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            LIGHTS
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="propeller"
                         className="question-mark propeller"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            PROPELLER
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="central-core"
                         className="question-mark central-core"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            CENTRAL CORE
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="landing-platform"
                         className="question-mark landing-platform"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            LANDING PLATFORM
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="camera"
                         className="question-mark camera"
                         correct={true}
-                    />,
+                    >
+                        <span className="label">
+                            CAMERA
+                        </span>
+                    </skoash.Component>,
                     <skoash.Component
                         data-ref="arm"
                         className="question-mark arm"
                         correct={true}
-                    />
+                    >
+                        <span className="label">
+                            ARM
+                        </span>
+                    </skoash.Component>
                 ]}
             />
 
