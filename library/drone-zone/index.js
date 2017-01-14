@@ -32,10 +32,10 @@ skoash.start(
             TypesOfDronesScreen,
             HowAreDronesControlledScreen,
             WhyWouldYouWantADronePrtOneScreen,
-            WhyWouldYouWantADronePrtTwoScreen,
+            // WhyWouldYouWantADronePrtTwoScreen,
             InfoWantedYourOwnDroneScreen,
             InfoCustomizeYourOwnDroneScreen,
-            CustomizeYourDroneScreen,
+            // CustomizeYourDroneScreen,
             PartsOfADroneScreen,
             // FlipScreen
         ]}
