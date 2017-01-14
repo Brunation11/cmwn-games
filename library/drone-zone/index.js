@@ -12,10 +12,10 @@ import TypesOfDronesScreen from './components/types_of_drones_screen';
 import HowAreDronesControlledScreen from './components/how_are_drones_controlled_screen';
 import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
 // import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
-// import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
-// import InfoCustomizeYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
+import InfoCustomizeYourOwnDroneScreen from './components/info_customize_your_own_drone_screen';
 // import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
-// import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
+import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
 // import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -32,11 +32,11 @@ skoash.start(
             TypesOfDronesScreen,
             HowAreDronesControlledScreen,
             WhyWouldYouWantADronePrtOneScreen,
-            // WhyWouldYouWantADronePrtTwoScreen,
-            // InfoWantedYourOwnDroneScreen,
-            // InfoCustomizeYourOwnDroneScreen,
-            // CustomizeYourDroneScreen,
-            // PartsOfADroneScreen,
+            WhyWouldYouWantADronePrtTwoScreen,
+            InfoWantedYourOwnDroneScreen,
+            InfoCustomizeYourOwnDroneScreen,
+            CustomizeYourDroneScreen,
+            PartsOfADroneScreen,
             // FlipScreen
         ]}
         menus={{
@@ -127,6 +127,9 @@ skoash.start(
                 case 'types-of-drones':
                 case 'how-are-drones-controlled':
                 case 'why-would-you-want-a-drone-prt-one':
+                case 'info-wanted-your-own-drone':
+                case 'info-customize-your-own-drone':
+                case 'parts-of-a-drone':
                     return;
             }
         }}
