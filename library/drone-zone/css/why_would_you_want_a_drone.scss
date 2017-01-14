@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-[id^='why-would-you-want-a-drone-prt-'] {
+#why-would-you-want-a-drone-prt-one {
     h1 {
         @include text-stroke(2, $black);
         position: absolute;
@@ -12,33 +12,94 @@
 
     $uses:
         construction
-        sports
-        police-duties
-        fire-fighting
-        photography
         delivery
+        photography
+        police-duties
+        sports
+        fire-fighting
         farming;
 
     .selectable {
-        .question-mark {
-            @include q-marks-square(1, 130px, 130px);
-            position: absolute;
+        $icon-sizes: small medium;
+        $square-sizes: 1 1 2 1 2 2 2;
+        $widths: 90px 125px;
+        $heights: 90px 125px;
+        $tops:  120 290 215 207 260 345 133;
+        $lefts: 212 375 125  35 252 125 300;
 
-            $tops: 18% 48% 18% 48%;
-            $lefts: 2% 2% 85% 85%;
+        @for $i from 1 through length($uses) {
+            $square-size: nth($square-sizes, $i);
+            $icon-size: nth($icon-sizes, $square-size);
+            $width: nth($widths, $square-size);
+            $height: nth($heights, $square-size);
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
 
-            @for $i from 1 through length($drone-types) {
-                &.#{nth($drone-types, $i)} {
-                    top: #{nth($tops, $i)};
-                    left: #{nth($lefts, $i)};
+            .question-mark.#{nth($uses, $i)} {
+                @include q-marks-square($square-size, $width, $height);
+                position: absolute;
+                top: $top;
+                left: $left;
 
-                    &.HIGHLIGHTED::after {
-                        @include center;
-                        @include drone-types-icon($i, 130px, 130px);
+                &.HIGHLIGHTED::after {
+                    @include center;
+                    @include job-icons($i, $width - 8, $height - 8, $icon-size);
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .reveal {
+        z-index: 0;
+
+        .frame {
+            top: 52%;
+            left: 73%;
+            width: 350px;
+            height: 350px;
+
+            &.job-round {
+                background: url('#{$sprite}sprite.jobgameframe.png');
+                background-position: 100%;
+                background-size: auto 100%;
+            }
+
+            .copy {
+                @include center;
+                width: 100%;
+                line-height: 30px;
+                font-size: 20px;
+            }
+
+            &:not(.instructions) {
+                @for $i from 1 through length($uses) {
+                    &::after {
+                        // @include center;
+                        @include job-icons($i, 110px, 110px, 'medium', false);
+                        top: 60%;
+                        left: 25%;
                         content: '';
                     }
+                }
+
+                .label {
+                    @include center;
+                    top: 35%;
+                    width: 100%;
+                    font-size: 40px;
+                }
+
+                .copy {
+                    top: 60%;
+                    left: 70%;
+                    width: 55%;
+                    text-align: left;
                 }
             }
         }
     }
 }
+
+// #why-would-you-want-a-drone-prt-one {
+// }
