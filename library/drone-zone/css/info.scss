@@ -1,7 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
-[id^='info-'] {
+#info-definition-of-a-drone,
+#info-what-does-it-do {
     .frame {
         top: 45%;
         left: 58%;
@@ -34,5 +35,21 @@
             height: 100%;
             content: '';
         }
+    }
+}
+
+
+#info-wanted-your-own-drone,
+#info-customize-your-own-drone {
+    .frame {
+        background-size: cover;
+    }
+
+    .copy {
+        @include center;
+        @include text-stroke(1, $black);
+        width: 100%;
+        line-height: 45px;
+        font-size: 35px;
     }
 }
