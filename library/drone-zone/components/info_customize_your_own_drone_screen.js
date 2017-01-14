@@ -6,10 +6,12 @@ export default function (props, ref, key) {
             key={key}
             id="info-customize-your-own-drone"
         >
+            {/*
             <skoash.Audio
                 type="voiceOver"
                 // src={`${MEDIA.VO}`}
             />
+            */}
 
             <skoash.Component className="frame">
                 <span className="copy">
