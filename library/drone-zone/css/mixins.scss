@@ -168,11 +168,27 @@
 }
 
 @mixin q-marks-square($column, $width: 0, $height: 0) {
-    @include sprite('#{$sprite}sprite.qmarkwsquare.png', 504px, 505px, 1, 2, $column, 1, 2, $width, $height);
+    @include sprite('#{$sprite}sprite.qmarkwsquare.png', 255px, 255px, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin job-icons($column, $width: 0, $height: 0, $size: 'small', $label: true) {
+    @if $size == 'small' {
+        @include sprite('#{$sprite}sprite.jobicons.png', 750px, 191px, 7, 2, $column, 1, 1, $width, $height);
+    } @else {
+        @if $label == false {
+            @include sprite('#{$sprite}sprite.jobicons.png', 1500px, 382px, 7, 2, $column, 2, 2, $width, $height);
+        } @else {
+            @include sprite('#{$sprite}sprite.jobicons.png', 990px, 252px, 7, 2, $column, 1, 1, $width, $height);
+        }
+    }
 }
 
 @mixin radar($column, $width: 0, $height: 0) {
     @include sprite('#{$sprite}sprite.radarframe.png', 370px, 737px, 1, 2, $column, 2, 2, $width, $height);
+}
+
+@mixin parts($column, $width: 0, $height: 0) {
+    @include sprite('#{$sprite}sprite.parts.png', 1800px, 258px, 7, 1, $column, 1, 1, $width, $height);
 }
 
 @mixin control-types($column, $width: 0, $height: 0) {
