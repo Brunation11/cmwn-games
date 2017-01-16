@@ -2,30 +2,29 @@ import Dropzone from 'shared/components/dropzone/0.4';
 import Draggable from 'shared/components/draggable/0.4';
 
 export default function (props, ref, key) {
-    var incorrectRespond;
-    var onComplete;
+    // var incorrectRespond;
+    // var onComplete;
     var onPlay;
     var onDrag;
     var onDrop;
-    var testComplete;
 
-    incorrectRespond = function () {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: 'incorrect'
-            }
-        });
-    };
+    // incorrectRespond = function () {
+    //     this.updateGameState({
+    //         path: 'reveal',
+    //         data: {
+    //             open: 'incorrect'
+    //         }
+    //     });
+    // };
 
-    onComplete = function () {
-        this.updateGameState({
-            path: 'reveal',
-            data: {
-                open: 'complete'
-            }
-        });
-    };
+    // onComplete = function () {
+    //     this.updateGameState({
+    //         path: 'reveal',
+    //         data: {
+    //             open: 'complete'
+    //         }
+    //     });
+    // };
 
     onPlay = function () {
         this.updateGameState({
@@ -174,50 +173,48 @@ export default function (props, ref, key) {
                 checkComplete={false}
                 dropped={_.get(props, 'data.draggable.dropped')}
                 dragging={_.get(props, 'data.draggable.dragging')}
-                onCorrect={function(dropped, dropzoneRef) {
-                    this.setState({
-                        [dropzoneRef.ref]: dropped.props.message
-                    });
-                    debugger;
-                    console.log('this', this);
-                    console.log('dropped', dropped);
-                    console.log('dropzone', dropzoneRef);
+                onCorrect={function () {
+                    //had dropped, dropzoneRef as args, removed for linter
+                    // ref not available, need a way to reference dropzone
+                    // this.setState({
+                    //     [dropzoneRef.ref]: dropped.props.message
+                    // });
                 }}
                 dropzones={[
                     <skoash.Component
                         ref="construction"
                         className="job-round construction"
-                        answers={["construction"]}
+                        answers={['construction']}
                     />,
                     <skoash.Component
                         ref="sports"
                         className="job-round sports"
-                        answers={["sports"]}
+                        answers={['sports']}
                     />,
                     <skoash.Component
                         ref="police-duties"
                         className="job-round police-duties"
-                        answers={["police-duties"]}
+                        answers={['police-duties']}
                     />,
                     <skoash.Component
                         ref="fire-fighting"
                         className="job-round fire-fighting"
-                        answers={["fire-fighting"]}
+                        answers={['fire-fighting']}
                     />,
                     <skoash.Component
                         ref="photography"
                         className="job-round photography"
-                        answers={["photography"]}
+                        answers={['photography']}
                     />,
                     <skoash.Component
                         ref="delivery"
                         className="job-round delivery"
-                        answers={["delivery"]}
+                        answers={['delivery']}
                     />,
                     <skoash.Component
                         ref="farming"
                         className="job-round farming"
-                        answers={["farming"]}
+                        answers={['farming']}
                     />
                 ]}
             />

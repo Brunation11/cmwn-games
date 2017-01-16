@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 export default function (props, ref, key) {
     var onOpen;
     var onPlay;
@@ -189,9 +191,11 @@ export default function (props, ref, key) {
                             HERE'S YOUR OWN PERSONAL DRONE!
                         </span>
                         <skoash.Component
-                            className={
-                                `selected ${_.get(props, 'data.drone.model')} ${_.get(props, 'data.drone.color')}`
-                            }
+                            className={classNames(
+                                'selected',
+                                _.get(props, 'data.drone.model'),
+                                _.get(props, 'data.drone.color')
+                            )}
                         >
                         </skoash.Component>
                     </skoash.Component>

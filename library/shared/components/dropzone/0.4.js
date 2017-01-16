@@ -189,7 +189,6 @@ class Dropzone extends skoash.Component {
     }
 
     dropzoneClassNames(dropzone) {
-        console.log('get class names', dropzone);
         return classNames(
             'dropzone',
             dropzone.props.className,
