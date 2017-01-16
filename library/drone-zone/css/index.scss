@@ -51,19 +51,18 @@ button {
 
     &.quit-yes,
     &.quit-no {
-        bottom: 10%;
-        width: 220px;
-        height: 110px;
+        position: absolute;
+        top: 120%;
     }
 
     &.quit-yes {
-        @include nav-button(2, 220px, 110px);
-        left: 17%;
+        @include nav-button(6, 350px, 350px);
+        left: 12%;
     }
 
     &.quit-no {
-        @include nav-button(3, 220px, 110px);
-        right: 17%;
+        @include nav-button(7, 350px, 350px);
+        right: 12%;
     }
 }
 
@@ -76,24 +75,12 @@ button {
         types-of-drones
         how-are-drones-controlled
         why-would-you-want-a-drone-prt-one
+        why-would-you-want-a-drone-prt-two
         info-wanted-your-own-drone
         info-customize-your-own-drone
-        parts-of-a-drone;
-    //     info-video-one
-    //     life-stages
-    //     first-stage
-    //     instructions-1
-    //     bonus-level-one
-    //     bonus-level-two
-    //     video-pupa
-    //     info-you-won
-    //     video-monarch
-    //     info-migrate
-    //     monarch-generations-1
-    //     monarch-generations-2
-    //     monarch-generations-3
-    //     monarch-generations-4
-        // flip;
+        customize-your-drone
+        parts-of-a-drone
+        flip;
 
     $backgrounds:
         title
@@ -103,9 +90,12 @@ button {
         bkg-4
         bkg-3
         bkg-6
+        bkg-6
         bkg-10
         bkg-10
-        bkg-9;
+        bkg-10
+        bkg-9
+        bkg-5;
     //     bkg-1
     //     bkg-1
     //     bkg-3
@@ -125,23 +115,21 @@ button {
         @include screen-backgrounds($screens, $backgrounds);
     }
 
-    &.MENU.MENU-quit .background.bkg-1 {
+    &.MENU.MENU-quit .background.title {
         opacity: 1;
     }
 
     .background {
         $background-titles:
             title
+            // bkg-1
             bkg-2
             bkg-3
             bkg-4
+            bkg-5
             bkg-6
             bkg-9
             bkg-10;
-            // bkg-4
-            // bkg-5
-            // bkg-7
-            // bkg-8
 
         $background-images:
         //     '#{$sprite}DroneZone.gif'
@@ -149,10 +137,10 @@ button {
             '#{$image}BKG.2.jpg'
             '#{$image}BKG.3.jpg'
             '#{$image}BKG.4.jpg'
+            '#{$image}BKG.5.jpg'
             '#{$image}BKG.6.jpg'
             '#{$image}BKG.9.jpg'
             '#{$image}BKG.10.jpg';
-            // '#{$image}BKG.5.jpg'
             // '#{$image}BKG.7.jpg'
             // '#{$image}BKG.8.jpg'
 
@@ -201,7 +189,8 @@ button {
     }
 }
 
-.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal {
+.skoash-game.VOICE-OVER:not(.DEMO) .reveal .close-reveal,
+.reveal.open-none .close-reveal {
     display: none;
 }
 
