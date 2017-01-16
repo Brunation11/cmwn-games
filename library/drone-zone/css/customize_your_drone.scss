@@ -1,6 +1,120 @@
 @import 'variables';
 @import 'mixins';
 
-// #customize-your-drone {
+#customize-your-drone {
+    $drone-types:
+        one
+        two
+        three
+        four;
 
-// }
+    $color-types:
+        one
+        two
+        three
+        four
+        five
+        six
+        seven
+        eight;
+
+    .reveal {
+        .close-reveal {
+            display: none;
+        }
+    }
+
+    .model-select,
+    .color-select,
+    .complete {
+        @include center;
+        opacity: 0;
+        width: 80%;
+        height: 100%;
+
+        .header {
+            @include text-stroke(1, $black);
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            font-size: 70px;
+        }
+
+        &.OPEN {
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    .model-select .selectable {
+        $tops:  200 200 420 420;
+        $lefts: 210 540 210 540;
+
+        @for $i from 1 through length($drone-types) {
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
+
+            .#{nth($drone-types, $i)} {
+                @include customize-frames(1, 300px, 200px);
+                position: absolute;
+                top: $top;
+                left: $left;
+                opacity: 1;
+
+                &::after {
+                    @include customize-models($i, 270px, 170px);
+                    @include center;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .color-select .selectable {
+        $tops:  210 210 210 210 400 400 400 400;
+        $lefts: 110 300 490 680 110 300 490 680;
+
+        @for $i from 1 through length($color-types) {
+            $top: #{nth($tops, $i)}px;
+            $left: #{nth($lefts, $i)}px;
+
+            .#{nth($color-types, $i)} {
+                @include customize-frames(2, 200px, 200px);
+                position: absolute;
+                top: $top;
+                left: $left;
+                opacity: 1;
+
+                &::after {
+                    @include customize-colors($i, 150px, 150px);
+                    @include center;
+                    content: '';
+                }
+            }
+        }
+    }
+
+    .complete {
+        @for $i from 1 through length($drone-types) {
+            @for $j from 1 through length($color-types) {
+                .header {
+                    font-size: 55px;
+                }
+
+                .selected {
+                    &.#{nth($drone-types, $i)}.#{nth($color-types, $j)} {
+                        @include center;
+                        @include customize-drones($i, $j, 400px, 400px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// request from design:
+// combine both drone option sprite sheets
+// order columns in same sequence as drone model sprite
+// order rows in same sequence as color options sprite
