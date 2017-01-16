@@ -11,12 +11,12 @@ import VideoTheWorldOfDronesScreen from './components/video_the_world_of_drones_
 import TypesOfDronesScreen from './components/types_of_drones_screen';
 import HowAreDronesControlledScreen from './components/how_are_drones_controlled_screen';
 import WhyWouldYouWantADronePrtOneScreen from './components/why_would_you_want_a_drone_prt_one_screen.js';
-// import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
+import WhyWouldYouWantADronePrtTwoScreen from './components/why_would_you_want_a_drone_prt_two_screen.js';
 import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_drone_screen';
 import InfoCustomizeYourOwnDroneScreen from './components/info_customize_your_own_drone_screen';
-// import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
+import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
 import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
-// import FlipScreen from './components/flip_screen';
+import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
 skoash.start(
@@ -32,28 +32,20 @@ skoash.start(
             TypesOfDronesScreen,
             HowAreDronesControlledScreen,
             WhyWouldYouWantADronePrtOneScreen,
-            // WhyWouldYouWantADronePrtTwoScreen,
+            WhyWouldYouWantADronePrtTwoScreen,
             InfoWantedYourOwnDroneScreen,
             InfoCustomizeYourOwnDroneScreen,
-            // CustomizeYourDroneScreen,
+            CustomizeYourDroneScreen,
             PartsOfADroneScreen,
-            // FlipScreen
+            FlipScreen
         ]}
         menus={{
             quit: QuitScreen,
         }}
         assets={[
             <skoash.Font name="Chelsea Market" />,
-            // <skoash.Font name="Source Sans Pro" />,
-            // <skoash.Font name="CMWN" />,
-            // <skoash.Image
-            //     className="hidden"
-            //     src={`${MEDIA.FRAME}monarch.fact.png`}
-            // />,
-            // <skoash.Image
-            //     className="hidden"
-            //     src={`${MEDIA.FRAME}try.again.frame.png`}
-            // />,
+            <skoash.Font name="Source Sans Pro" />,
+            <skoash.Font name="CMWN" />,
             <div className="background title" />,
             <div className="background bkg-1" />,
             <div className="background bkg-2" />,
@@ -65,72 +57,74 @@ skoash.start(
             <div className="background bkg-8" />,
             <div className="background bkg-9" />,
             <div className="background bkg-10" />,
-            // <skoash.Audio
-            //     ref="button"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}Click.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="screen-complete"
-            //     type="sfx"
-            //     src={`${MEDIA.EFFECT}NextAppear.mp3`}
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-1"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_1.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-2"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_2.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-3"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_3.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-4"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_4.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-5"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_5.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-6"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BKG_6.mp3`}
-            //     loop
-            // />,
-            // <skoash.Audio
-            //     ref="bkg-bonus"
-            //     type="background"
-            //     src={`${MEDIA.EFFECT}BonusBKG.mp3`}
-            // />,
+            <skoash.Audio
+                ref="button"
+                type="sfx"
+                src={`${MEDIA.EFFECT}click1.mp3`}
+            />,
+            <skoash.Audio
+                ref="screen-complete"
+                type="sfx"
+                src={`${MEDIA.EFFECT}nextappear.mp3`}
+            />,
+            <skoash.Audio
+                ref="title"
+                type="background"
+                src={`${MEDIA.EFFECT}Title.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-1"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG1.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-2"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG2.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-3"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG3.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-4"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG4.mp3`}
+                loop
+            />,
+            <skoash.Audio
+                ref="bkg-5"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_5.mp3`}
+                loop
+            />
         ]}
         getBackgroundIndex={(index, id) => {
             switch (id) {
                 case 'ios-splash': return;
                 case 'title':
+                case 'flip':
+                    return 0;
                 case 'info-definition-of-a-drone':
                 case 'info-what-does-it-do':
                 case 'video-the-world-of-drones':
                 case 'types-of-drones':
+                    return 1;
                 case 'how-are-drones-controlled':
                 case 'why-would-you-want-a-drone-prt-one':
+                case 'why-would-you-want-a-drone-prt-two':
+                    return 2;
                 case 'info-wanted-your-own-drone':
                 case 'info-customize-your-own-drone':
+                case 'customize-your-drone':
+                    return 3;
                 case 'parts-of-a-drone':
-                    return;
+                    return 4;
             }
         }}
     />
