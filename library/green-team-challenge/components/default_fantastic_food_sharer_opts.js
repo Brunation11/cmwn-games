@@ -1,4 +1,7 @@
+import classNames from 'classnames';
 import defaultGameOpts from './default_game_opts';
+
+const CLAW_SRC = 'https://media-staging.changemyworldnow.com/f/Games/mock-game/SpritesAnimations/player2';
 
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
@@ -9,14 +12,13 @@ export default _.defaults({
         'compost',
         'liquids',
     ],
-    getSelectableProps(opts) {
+    getSelectableProps() {
         return {
-            onSelect: function (binRefKey) {
+            onSelect: function () {
                 this.updateScreenData({
                     key: 'manual-dropper',
                     data: {
                         drop: true,
-                        dropClass: _.toUpper(opts.binNames[binRefKey])
                     }
                 });
             },
@@ -82,6 +84,26 @@ export default _.defaults({
 
         return props;
     },
+    getExtraComponents(opts) {
+        return (
+            <skoash.Component
+                className="extras"
+            >
+                <skoash.Sprite
+                    className="claw"
+                    src={CLAW_SRC}
+                    frame={0}
+                    animate={opts.moveClaw}
+                />
+                <div className="funnel" />
+                <skoash.Component
+                    className={classNames('truck', {
+                        tilt: opts.tiltTruck,
+                    })}
+                />
+            </skoash.Component>
+        );
+    },
     itemsToSort: {
         emptyBottle: {
             bin: 'recycle'
@@ -95,5 +117,8 @@ export default _.defaults({
         fullBottle: {
             bin: 'liquids', becomes: 'emptyBottle'
         },
+        wrappedSnack: {
+            bin: 'food-share'
+        }
     },
 }, defaultGameOpts);

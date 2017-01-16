@@ -13,6 +13,7 @@ export default function (props, ref, key, opts = {}) {
     var dropperProps;
     var catcherProps;
     var lifeProps;
+    var extraComponents;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
@@ -49,6 +50,7 @@ export default function (props, ref, key, opts = {}) {
     dropperProps = opts.getDropperProps(opts);
     catcherProps = opts.getCatcherProps(opts);
     lifeProps = opts.getLifeProps(opts);
+    extraComponents = opts.getExtraComponents(opts);
 
     return (
         <skoash.Screen
@@ -135,6 +137,7 @@ export default function (props, ref, key, opts = {}) {
                     list={binComponents}
                 />
             </skoash.Component>
+            {extraComponents}
             <skoash.Reveal
                 openTarget="reveal"
                 openReveal={revealOpen}

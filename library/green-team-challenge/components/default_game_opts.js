@@ -193,6 +193,9 @@ export default {
             },
         };
     },
+    getExtraComponents() {
+        return null;
+    },
     binNames: [
         'recycle',
         'landfill',
