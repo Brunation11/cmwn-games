@@ -1,10 +1,13 @@
-import Dropzone from '../shared/components/dropzone/0.1';
-import Draggable from '../draggable/0.1.js';
+import Dropzone from 'shared/components/dropzone/0.4';
+import Draggable from 'shared/components/draggable/0.4';
 
 export default function (props, ref, key) {
     var incorrectRespond;
     var onComplete;
     var onPlay;
+    var onDrag;
+    var onDrop;
+    var testComplete;
 
     incorrectRespond = function () {
         this.updateGameState({
@@ -33,6 +36,23 @@ export default function (props, ref, key) {
         });
     };
 
+    onDrag = function () {
+        this.setState({
+            correct: false,
+            return: false,
+        });
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'drag',
+            },
+        });
+    };
+
+    onDrop = function () {
+        this.returnToStart();
+    };
+
     return (
         <skoash.Screen
             {...props}
@@ -48,114 +68,59 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
+                {/*
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}LetsPutKnowTest.mp3`}
+                    src={`${MEDIA.VO}LetsPutKnowTest.mp3`}
                 />
                 <skoash.Audio
                     ref="construction"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="photography"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="delivery"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="farming"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
+                */}
             </skoash.MediaCollection>
-
-            <Dropzone
-                incorrectRespond={incorrectRespond}
-                onComplete={onComplete}
-                dropzones={[
-                    <skoash.Component answers="construction">
-                    </skoash.Component>,
-                    <skoash.Component answers="sports">
-                    </skoash.Component>,
-                    <skoash.Component answers="police-duties">
-                    </skoash.Component>,
-                    <skoash.Component answers="fire-fighting">
-                    </skoash.Component>,
-                    <skoash.Component answers="photography">
-                    </skoash.Component>,
-                    <skoash.Component answers="delivery">
-                    </skoash.Component>,
-                    <skoash.Component answers="farming">
-                    </skoash.Component>
-                ]}
-                draggables={[
-                    <Draggable
-                        className="construction"
-                        message="construction"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="sports"
-                        message="sports"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="police-duties"
-                        message="police-duties"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="fire-fighting"
-                        message="fire-fighting"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="photography"
-                        message="photography"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="delivery"
-                        message="delivery"
-                        return={true}
-                    />,
-                    <Draggable
-                        className="farming"
-                        message="farming"
-                        return={true}
-                    />
-                ]}
-            />
 
             <skoash.Reveal
                 openTarget="reveal"
                 closeTarget="reveal"
+                openOnStart="instructions"
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
                     <skoash.Component
                         ref="instructions"
-                        className="instructions"
+                        className="frame job-round instructions"
                     >
                         <span className="copy">
                             Let's put your
@@ -173,7 +138,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="incorrect"
-                        className="incorrect"
+                        className="frame incorrect"
                     >
                         <h2>TRY AGAIN</h2>
                         <span className="copy">
@@ -188,7 +153,7 @@ export default function (props, ref, key) {
                     </skoash.Component>,
                     <skoash.Component
                         ref="complete"
-                        className="complete"
+                        className="frame complete"
                     >
                         <span className="copy">
                             Excellent Job!
@@ -202,6 +167,102 @@ export default function (props, ref, key) {
                             use a drone for?
                         </span>
                     </skoash.Component>
+                ]}
+            />
+
+            <Dropzone
+                checkComplete={false}
+                dropped={_.get(props, 'data.draggable.dropped')}
+                dragging={_.get(props, 'data.draggable.dragging')}
+                onCorrect={function(dropped, dropzoneRef) {
+                    this.setState({
+                        [dropzoneRef.ref]: dropped.props.message
+                    });
+                    debugger;
+                    console.log('this', this);
+                    console.log('dropped', dropped);
+                    console.log('dropzone', dropzoneRef);
+                }}
+                dropzones={[
+                    <skoash.Component
+                        ref="construction"
+                        className="job-round construction"
+                        answers={["construction"]}
+                    />,
+                    <skoash.Component
+                        ref="sports"
+                        className="job-round sports"
+                        answers={["sports"]}
+                    />,
+                    <skoash.Component
+                        ref="police-duties"
+                        className="job-round police-duties"
+                        answers={["police-duties"]}
+                    />,
+                    <skoash.Component
+                        ref="fire-fighting"
+                        className="job-round fire-fighting"
+                        answers={["fire-fighting"]}
+                    />,
+                    <skoash.Component
+                        ref="photography"
+                        className="job-round photography"
+                        answers={["photography"]}
+                    />,
+                    <skoash.Component
+                        ref="delivery"
+                        className="job-round delivery"
+                        answers={["delivery"]}
+                    />,
+                    <skoash.Component
+                        ref="farming"
+                        className="job-round farming"
+                        answers={["farming"]}
+                    />
+                ]}
+            />
+
+            <skoash.Repeater
+                className="draggables"
+                amount={13}
+                item={
+                    <Draggable
+                      return
+                      returnOnIncorrect
+                      stayOnCorrect={false}
+                      onDrag={onDrag}
+                      onDrop={onDrop}
+                    />
+                }
+                props={[
+                    {
+                        message: 'construction',
+                        className: 'construction'
+                    },
+                    {
+                        message: 'farming',
+                        className: 'farming'
+                    },
+                    {
+                        message: 'delivery',
+                        className: 'delivery'
+                    },
+                    {
+                        message: 'fire-fighting',
+                        className: 'fire-fighting'
+                    },
+                    {
+                        message: 'police-duties',
+                        className: 'police-duties'
+                    },
+                    {
+                        message: 'photography',
+                        className: 'photography'
+                    },
+                    {
+                        message: 'sports',
+                        className: 'sports'
+                    }
                 ]}
             />
         </skoash.Screen>
