@@ -65,21 +65,23 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
+                {/*
                 <skoash.Audio
                     ref="model-select"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="color-select"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}`}
                 />
                 <skoash.Audio
                     ref="complete"
                     type="voiceOver"
-                    // src={`${MEDIA.VO}YouveDoneIt.mp3`}
+                    src={`${MEDIA.VO}YouveDoneIt.mp3`}
                 />
+                */}
             </skoash.MediaCollection>
 
             <skoash.Reveal
@@ -187,9 +189,9 @@ export default function (props, ref, key) {
                             HERE'S YOUR OWN PERSONAL DRONE!
                         </span>
                         <skoash.Component
-                            className={`
-                                ${_.get(props, 'data.drone.model')} ${_.get(props, 'data.drone.color')}
-                            `}
+                            className={
+                                `selected ${_.get(props, 'data.drone.model')} ${_.get(props, 'data.drone.color')}`
+                            }
                         >
                         </skoash.Component>
                     </skoash.Component>
