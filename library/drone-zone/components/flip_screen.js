@@ -6,7 +6,11 @@ export default function (props, ref, key) {
             key={key}
             id="flip"
         >
-
+                <skoash.Component className="header">
+                    <span>
+                        HERE'S YOUR FLIP!
+                    </span>
+                </skoash.Component>
         </skoash.Screen>
     );
 }
