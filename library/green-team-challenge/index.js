@@ -4,7 +4,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
-import TitleScreen from './components/title_screen';
+// import TitleScreen from './components/title_screen';
 // import RecyclingChampionPreScreen from './components/recycling_champion_pre_screen';
 // import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
 // import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
@@ -62,7 +62,7 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            TitleScreen,
+            // TitleScreen,
             // RecyclingChampionPreScreen,
             // RecyclingChampion1InfoScreen,
             // RecyclingChampion1Screen,

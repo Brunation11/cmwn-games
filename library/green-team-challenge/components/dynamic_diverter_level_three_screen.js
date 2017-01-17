@@ -1,8 +1,8 @@
-import DropperGameComponent from './dropper_game_component';
-import defaultOpts from './default_fantastic_food_sharer_opts';
+import DynamicDiverterGameComponent from './dynamic_diverter_game_component';
+import defaultOpts from './default_dynamic_diverter_opts';
 
 export default function (props, ref, key) {
-    return DropperGameComponent(props, ref, key, _.defaults({
+    return DynamicDiverterGameComponent(props, ref, key, _.defaults({
         level: 3,
         timeout: 12000,
         scoreToWin: 200,
