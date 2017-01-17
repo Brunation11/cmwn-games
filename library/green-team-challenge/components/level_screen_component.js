@@ -2,12 +2,14 @@ const levelKeys = [
     'recyclingChampion',
     'pricelessPourer',
     'fantasticFoodSharer',
+    'dynamicDiverter',
 ];
 
 const levelNames = [
     <p>Recycling<br/>Champion</p>,
     <p>Priceless<br/>Pourer</p>,
     <p>Fantastic<br/>Food Sharer</p>,
+    <p>Dynamic<br/>Diverter</p>,
 ];
 
 export default function (props, ref, key, opts = {}) {
