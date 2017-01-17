@@ -7,6 +7,8 @@ export default function (props, ref, key) {
     var onPlay;
     var onDrag;
     var onDrop;
+    var onCorrect;
+    var onIncorrect;
 
     onPlay = function () {
         this.updateGameState({
@@ -33,6 +35,24 @@ export default function (props, ref, key) {
     onDrop = function () {
         this.returnToStart();
     };
+
+    onCorrect = function (dropped, dropzoneRef) {
+        this.updateGameState({
+            path: 'dropzone',
+            data: {
+                [dropzoneRef.props['data-ref']]: true
+            }
+        });
+    }
+
+    onIncorrect = function () {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'incorrect'
+            }
+        });
+    }
 
     return (
         <skoash.Screen
@@ -155,14 +175,8 @@ export default function (props, ref, key) {
                 checkComplete={false}
                 dropped={_.get(props, 'data.draggable.dropped')}
                 dragging={_.get(props, 'data.draggable.dragging')}
-                onCorrect={function (dropped, dropzoneRef) {
-                    this.updateGameState({
-                        path: 'dropzone',
-                        data: {
-                            [dropzoneRef.props['data-ref']]: true
-                        }
-                    });
-                }}
+                onCorrect={onCorrect}
+                onIncorrect={onIncorrect}
                 dropzones={[
                     <skoash.Component
                         ref="construction"
