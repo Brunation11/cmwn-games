@@ -134,6 +134,15 @@
         fire-fighting
         farming;
 
+    $populated-uses:
+        CONSTRUCTION
+        DELIVERY
+        PHOTOGRAPHY
+        POLICE-DUTIES
+        SPORTS
+        FIRE-FIGHTING
+        FARMING;
+
 
     .draggables {
         $icon-sizes: small medium;
@@ -154,7 +163,7 @@
                 $top: #{nth($tops, $i)}px;
                 $left: #{nth($lefts, $i)}px;
 
-                .#{nth($bw-uses, $i)} {
+                .#{nth($bw-uses, $i)}.#{nth($clr-uses, $j)} {
                     @include job-icons-bw($i, $width, $height);
                     position: absolute;
                     top: $top;
@@ -162,6 +171,7 @@
 
                     &.CORRECT {
                         @include blank-squares($blank-square, $width, $height);
+                        pointer-events: none;
 
                         &::after {
                             @include center;
@@ -187,10 +197,16 @@
             background-size: auto 100%;
 
             @for $i from 1 through length($clr-uses) {
-                &::after {
-                    @include center;
-                    @include job-images($i, 320px, 320px);
-                    content: '';
+                &.#{nth($clr-uses, $i)} {
+                    &.#{nth($populated-uses, $i)}:not(:first-of-type) {
+                        display: none;
+                    }
+
+                    &::after {
+                        @include center;
+                        @include job-images($i, 320px, 320px);
+                        content: '';
+                    }
                 }
             }
         }
