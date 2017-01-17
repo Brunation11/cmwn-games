@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import Dropzone from 'shared/components/dropzone/0.4';
+import Dropzone from 'shared/components/dropzone/0.5';
 import Draggable from 'shared/components/draggable/0.4';
 
 export default function (props, ref, key) {
