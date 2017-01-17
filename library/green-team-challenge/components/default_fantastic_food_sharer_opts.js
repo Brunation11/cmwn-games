@@ -49,13 +49,13 @@ export default _.defaults({
                 data: 'tilt',
             });
 
-            // let itemRef;
-            // let DOMNode;
-            // let onAnimationEnd;
-
-            // itemRef = this.refs['items-' + this.firstItemIndex];
-
             /*
+            let itemRef;
+            let DOMNode;
+            let onAnimationEnd;
+
+            itemRef = this.refs['items-' + this.firstItemIndex];
+
             DOMNode = ReactDOM.findDOMNode(itemRef);
 
             if (DOMNode !== e.target) return;
@@ -82,6 +82,10 @@ export default _.defaults({
                 itemRef.addClassName('POUR');
             }
             */
+        };
+
+        props.onPickUp = function (itemRef) {
+            itemRef.removeAllClassNames();
         };
 
         return props;
