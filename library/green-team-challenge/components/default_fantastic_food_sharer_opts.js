@@ -110,7 +110,10 @@ export default _.defaults({
             onPickUp: function (itemRef) {
                 itemRef.removeAllClassNames(() => {
                     if (!itemRef.DOMNode) itemRef.DOMNode = ReactDOM.findDOMNode(itemRef);
-                    itemRef.DOMNode.addEventListener('transitionend', onItemPickUpTransitionEnd.bind(null, itemRef));
+                    itemRef.DOMNode.addEventListener(
+                        'transitionend',
+                        onItemPickUpTransitionEnd.bind(null, itemRef)
+                    );
                     itemRef.addClassName(PICKUP);
                 });
             },
