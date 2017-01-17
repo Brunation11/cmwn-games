@@ -1,30 +1,12 @@
+import classNames from 'classnames';
+
 import Dropzone from 'shared/components/dropzone/0.4';
 import Draggable from 'shared/components/draggable/0.4';
 
 export default function (props, ref, key) {
-    // var incorrectRespond;
-    // var onComplete;
     var onPlay;
     var onDrag;
     var onDrop;
-
-    // incorrectRespond = function () {
-    //     this.updateGameState({
-    //         path: 'reveal',
-    //         data: {
-    //             open: 'incorrect'
-    //         }
-    //     });
-    // };
-
-    // onComplete = function () {
-    //     this.updateGameState({
-    //         path: 'reveal',
-    //         data: {
-    //             open: 'complete'
-    //         }
-    //     });
-    // };
 
     onPlay = function () {
         this.updateGameState({
@@ -173,47 +155,79 @@ export default function (props, ref, key) {
                 checkComplete={false}
                 dropped={_.get(props, 'data.draggable.dropped')}
                 dragging={_.get(props, 'data.draggable.dragging')}
-                onCorrect={function () {
-                    //had dropped, dropzoneRef as args, removed for linter
-                    // ref not available, need a way to reference dropzone
-                    // this.setState({
-                    //     [dropzoneRef.ref]: dropped.props.message
-                    // });
+                onCorrect={function (dropped, dropzoneRef) {
+                    this.updateGameState({
+                        path: 'dropzone',
+                        data: {
+                            [dropzoneRef.props['data-ref']]: true
+                        }
+                    });
                 }}
                 dropzones={[
                     <skoash.Component
                         ref="construction"
-                        className="job-round construction"
+                        className={classNames(
+                            "job-round construction", {
+                                'CORRECT CONSTRUCTION':_.get(props, 'data.dropzone.construction')
+                            }
+                        )}
                         answers={['construction']}
                     />,
                     <skoash.Component
                         ref="sports"
                         className="job-round sports"
+                        className={classNames(
+                            "job-round sports", {
+                                'CORRECT SPORTS': _.get(props, 'data.dropzone.sports')
+                            }
+                        )}
                         answers={['sports']}
                     />,
                     <skoash.Component
                         ref="police-duties"
                         className="job-round police-duties"
+                        className={classNames(
+                            "job-round police-duties", {
+                                'CORRECT POLICE-DUTIES': _.get(props, 'data.dropzone[police-duties]')
+                            }
+                        )}
                         answers={['police-duties']}
                     />,
                     <skoash.Component
                         ref="fire-fighting"
                         className="job-round fire-fighting"
+                        className={classNames(
+                            "job-round fire-fighting", {
+                                'CORRECT FIRE-FIGHTING': _.get(props, 'data.dropzone[fire-fighting]')
+                            }
+                        )}
                         answers={['fire-fighting']}
                     />,
                     <skoash.Component
                         ref="photography"
-                        className="job-round photography"
+                        className={classNames(
+                            "job-round photography", {
+                                'CORRECT PHOTOGRAPHY': _.get(props, 'data.dropzone.photography')
+                            }
+                        )}
                         answers={['photography']}
                     />,
                     <skoash.Component
                         ref="delivery"
-                        className="job-round delivery"
+                        className={classNames(
+                            "job-round delivery", {
+                                'CORRECT DELIVERY': _.get(props, 'data.dropzone.delivery')
+                            }
+                        )}
                         answers={['delivery']}
                     />,
                     <skoash.Component
                         ref="farming"
-                        className="job-round farming"
+                        className={classNames(
+                            "job-round farming", {
+                                'CORRECT FARMING': _.get(props, 'data.dropzone.farming')
+                            }
+                        )}
                         answers={['farming']}
                     />
                 ]}
