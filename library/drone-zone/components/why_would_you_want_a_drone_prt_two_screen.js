@@ -43,7 +43,7 @@ export default function (props, ref, key) {
                 [dropzoneRef.props['data-ref']]: true
             }
         });
-    }
+    };
 
     onIncorrect = function () {
         this.updateGameState({
@@ -52,7 +52,7 @@ export default function (props, ref, key) {
                 open: 'incorrect'
             }
         });
-    }
+    };
 
     return (
         <skoash.Screen
@@ -182,7 +182,7 @@ export default function (props, ref, key) {
                         ref="construction"
                         className={classNames(
                             'job-round construction', {
-                                'CORRECT CONSTRUCTION':_.get(props, 'data.dropzone.construction')
+                                'CORRECT CONSTRUCTION': _.get(props, 'data.dropzone.construction')
                             }
                         )}
                         answers={['construction']}

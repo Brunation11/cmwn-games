@@ -104,7 +104,6 @@ class Dropzone extends skoash.Component {
         dropzoneRef = _.reduce(this.props.dropzones, (a, v, k) => {
             if (skoash.util.doIntersect(corners, this.dropzoneCorners[k])) {
                 if (this.refs[`dropzone-${k}`].props.className.indexOf('CORRECT') === -1) {
-                    console.log(this.refs[`dropzone-${k}`]);
                     return this.refs[`dropzone-${k}`];
                 }
             }
