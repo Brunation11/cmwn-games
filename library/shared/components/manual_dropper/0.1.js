@@ -4,6 +4,7 @@ import Randomizer from 'shared/components/randomizer/0.1';
 import Catchable from 'shared/components/catchable/0.1';
 
 const ITEM = 'items-';
+const DROPPED = 'DROPPED';
 
 class Dropper extends skoash.Component {
     constructor() {
@@ -39,7 +40,7 @@ class Dropper extends skoash.Component {
     drop(props) {
         var itemRef = this.getFirstItem();
         props = props || this.props;
-        itemRef.addClassName(props.dropClass);
+        itemRef.addClassName(props.dropClass || DROPPED);
 
         this.updateScreenData({
             key: [props.refsTarget, 'drop'],
@@ -52,7 +53,7 @@ class Dropper extends skoash.Component {
     pickUp(props) {
         var itemRef = this.getFirstItem();
         props = props || this.props;
-        itemRef.removeClassName(props.dropClass);
+        itemRef.removeClassName(props.dropClass || DROPPED);
         itemRef.reset();
 
         this.updateScreenData({
@@ -166,7 +167,7 @@ class Dropper extends skoash.Component {
 }
 
 Dropper.defaultProps = _.defaults({
-    dropClass: 'DROPPED',
+    dropClass: DROPPED,
     amount: 1,
     bin: (
         <Randomizer

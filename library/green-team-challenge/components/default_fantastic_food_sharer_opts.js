@@ -1,16 +1,35 @@
 import classNames from 'classnames';
 import defaultGameOpts from './default_game_opts';
 
+const PICKUP = 'PICKUP';
+const DROPPED = 'DROPPED';
+const TILT = 'TILT';
+const ITEMS = 'items-';
+
 const CLAW_SRC = 'https://media-staging.changemyworldnow.com/f/Games/mock-game/SpritesAnimations/player2';
 
-const onTruckTransitionEnd = function (opts) {
+const onTruckTransitionEnd = function (opts, e) {
     skoash.trigger('updateScreenData', {
-        keys: ['manual-dropper'],
         data: {
-            drop: true,
-            dropClass: _.toUpper(_.snakeCase(opts.selectableMessage)),
+            'manual-dropper': {
+                drop: _.includes(e.target.className, TILT),
+                dropClass: _.toUpper(_.snakeCase(opts.selectableMessage)),
+            },
+            'selectable': {
+                message: ''
+            }
         }
     });
+};
+
+const onItemPickUpTransitionEnd = function (itemRef) {
+    if (_.includes(itemRef.state.className, PICKUP)) {
+        itemRef.removeAllClassNames();
+        skoash.trigger('updateScreenData', {
+            key: 'truckClassName',
+            data: '',
+        });
+    }
 };
 
 export default _.defaults({
@@ -30,7 +49,7 @@ export default _.defaults({
                         'manual-dropper': {
                             drop: true,
                         },
-                        'selectable': {
+                        selectable: {
                             message: this.props.list[dataRef].props.message
                         }
                     }
@@ -39,56 +58,77 @@ export default _.defaults({
         };
     },
     getDropperProps(opts) {
-        let props = defaultGameOpts.getDropperProps.call(this, opts);
+        return {
+            onTransitionEnd: function (e) {
+                if (e.propertyName === 'top' && _.includes(e.target.className, DROPPED)) {
+                    let itemRef;
+                    let DOMNode;
+                    let onAnimationEnd;
 
-        props.onTransitionEnd = function (e) {
-            if (e.propertyName !== 'top') return;
+                    this.updateScreenData({
+                        key: 'truckClassName',
+                        data: TILT,
+                    });
 
-            this.updateScreenData({
-                key: 'truckClassName',
-                data: 'tilt',
-            });
+                    if (opts.selectableMessage !== 'liquids') return;
 
-            /*
-            let itemRef;
-            let DOMNode;
-            let onAnimationEnd;
+                    itemRef = this.refs[ITEMS + this.firstItemIndex];
 
-            itemRef = this.refs['items-' + this.firstItemIndex];
+                    DOMNode = ReactDOM.findDOMNode(itemRef);
 
-            DOMNode = ReactDOM.findDOMNode(itemRef);
+                    if (DOMNode !== e.target) return;
 
-            if (DOMNode !== e.target) return;
+                    onAnimationEnd = () => {
+                        this.pickUp(_.defaults({
+                            onPickUp: function () {
+                                let items = this.state.items;
+                                let index = this.firstItemIndex;
+                                let item = items[index];
+                                let newBin = opts.itemsToSort[item.props.becomes].bin;
+                                item.props.className = item.props.becomes;
+                                item.props.message = newBin;
+                                item.props['data-message'] = newBin;
+                                items[index] = item;
+                                this.setState({items}, () => {
+                                    itemRef.removeAllClassNames();
+                                    this.updateScreenData({
+                                        key: 'truckClassName',
+                                        data: '',
+                                    });
+                                });
+                                DOMNode.removeEventListener('animationend', onAnimationEnd);
+                            }
+                        }, this.props));
+                    };
 
-            onAnimationEnd = () => {
-                this.pickUp(_.defaults({
-                    onPickUp: function () {
-                        let items = this.state.items;
-                        let index = this.firstItemIndex;
-                        let item = items[index];
-                        let newBin = opts.itemsToSort[item.props.becomes].bin;
-                        item.props.className = item.props.becomes;
-                        item.props.message = newBin;
-                        item.props['data-message'] = newBin;
-                        items[index] = item;
-                        this.setState({items});
-                        DOMNode.removeEventListener('animationend', onAnimationEnd);
+                    if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
+                        DOMNode.addEventListener('animationend', onAnimationEnd);
+                        itemRef.addClassName('POUR');
                     }
-                }, this.props));
-            };
-
-            if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
-                DOMNode.addEventListener('animationend', onAnimationEnd);
-                itemRef.addClassName('POUR');
-            }
-            */
+                }
+            },
+            onPickUp: function (itemRef) {
+                itemRef.removeAllClassNames(() => {
+                    if (!itemRef.DOMNode) itemRef.DOMNode = ReactDOM.findDOMNode(itemRef);
+                    itemRef.DOMNode.addEventListener('transitionend', onItemPickUpTransitionEnd.bind(null, itemRef));
+                    itemRef.addClassName(PICKUP);
+                });
+            },
+            onNext: function () {
+                this.updateScreenData({
+                    data: {
+                        'manual-dropper': {
+                            drop: !!opts.selectableMessage,
+                            itemName: _.startCase(this.getFirstItem().props.className),
+                        },
+                        selectable: {
+                            message: ''
+                        },
+                        truckClassName: '',
+                    },
+                });
+            },
         };
-
-        props.onPickUp = function (itemRef) {
-            itemRef.removeAllClassNames();
-        };
-
-        return props;
     },
     getCatcherProps(opts) {
         var props = defaultGameOpts.getCatcherProps.call(this, opts);
