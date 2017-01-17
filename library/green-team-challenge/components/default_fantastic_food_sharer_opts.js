@@ -3,6 +3,16 @@ import defaultGameOpts from './default_game_opts';
 
 const CLAW_SRC = 'https://media-staging.changemyworldnow.com/f/Games/mock-game/SpritesAnimations/player2';
 
+const onTruckTransitionEnd = function (opts) {
+    skoash.trigger('updateScreenData', {
+        keys: ['manual-dropper'],
+        data: {
+            drop: true,
+            dropClass: _.toUpper(_.snakeCase(opts.selectableMessage)),
+        }
+    });
+};
+
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
     binNames: [
@@ -14,11 +24,15 @@ export default _.defaults({
     ],
     getSelectableProps() {
         return {
-            onSelect: function () {
+            onSelect: function (dataRef) {
                 this.updateScreenData({
-                    key: 'manual-dropper',
                     data: {
-                        drop: true,
+                        'manual-dropper': {
+                            drop: true,
+                        },
+                        'selectable': {
+                            message: this.props.list[dataRef].props.message
+                        }
                     }
                 });
             },
@@ -28,13 +42,20 @@ export default _.defaults({
         let props = defaultGameOpts.getDropperProps.call(this, opts);
 
         props.onTransitionEnd = function (e) {
-            let itemRef = this.refs['items-' + this.firstItemIndex];
-            let DOMNode;
-            let onAnimationEnd;
+            if (e.propertyName !== 'top') return;
 
-            if (this.props.dropClass !== 'LIQUIDS') return;
-            if (itemRef.props.message !== 'liquids') return;
+            this.updateScreenData({
+                key: 'truckClassName',
+                data: 'tilt',
+            });
 
+            // let itemRef;
+            // let DOMNode;
+            // let onAnimationEnd;
+
+            // itemRef = this.refs['items-' + this.firstItemIndex];
+
+            /*
             DOMNode = ReactDOM.findDOMNode(itemRef);
 
             if (DOMNode !== e.target) return;
@@ -60,6 +81,7 @@ export default _.defaults({
                 DOMNode.addEventListener('animationend', onAnimationEnd);
                 itemRef.addClassName('POUR');
             }
+            */
         };
 
         return props;
@@ -97,9 +119,8 @@ export default _.defaults({
                 />
                 <div className="funnel" />
                 <skoash.Component
-                    className={classNames('truck', {
-                        tilt: opts.tiltTruck,
-                    })}
+                    className={classNames('truck', opts.truckClassName)}
+                    onTransitionEnd={onTruckTransitionEnd.bind(null, opts)}
                 />
             </skoash.Component>
         );

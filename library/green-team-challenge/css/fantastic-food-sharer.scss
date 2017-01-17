@@ -19,7 +19,7 @@
                 @include center;
                 @include size(50px);
                 left: 0;
-                transition: top .5s $ease-out, left .5s $ease-in, transform .5s;
+                transition: top .25s .25s, left .25s 0s, transform .5s;
                 background-color: $green;
 
                 &::before {
@@ -35,16 +35,20 @@
                     }
                 }
 
+                &.DROPPED {
+                    top: 200px;
+                    left: 240px;
+                }
+
                 $bins: FOOD_SHARE  RECYCLE  LANDFILL   COMPOST   LIQUIDS;
-                $tops:        200      200       200       200      -120;
-                $lefts:        10       10       240       460       -30;
+                $tops:        200      350       350       350       350;
+                $lefts:      -280     -280       -50       160       390;
                 $tds:    $ease-in $ease-in  $ease-in  $ease-in $ease-out;
                 $lds:    $ease-in $ease-in $ease-out $ease-out $ease-out;
                 @for $i from 1 through length($bins) {
                     &.#{nth($bins, $i)} {
                         top: #{nth($tops, $i)}px;
                         left: #{nth($lefts, $i)}px;
-                        transition: top .5s #{nth($tds, $i)}, left .5s #{nth($lds, $i)}, transform .5s;
                     }
                 }
 
@@ -97,14 +101,19 @@
         }
 
         .funnel {
-            @include position(absolute, 100px null null 500px);
+            @include position(absolute, 100px null null 610px);
             @include triangle(100px 80px, $blue, down);
         }
 
         .truck {
             @include position(absolute, 200px null null 600px);
             @include size(200px 100px);
+            transition: transform .25s;
             background-color: $blue;
+
+            &.tilt {
+                transform: rotate(-50deg);
+            }
         }
     }
 }
