@@ -181,7 +181,7 @@ export default function (props, ref, key) {
                     <skoash.Component
                         ref="construction"
                         className={classNames(
-                            "job-round construction", {
+                            'job-round construction', {
                                 'CORRECT CONSTRUCTION':_.get(props, 'data.dropzone.construction')
                             }
                         )}
@@ -191,7 +191,7 @@ export default function (props, ref, key) {
                         ref="sports"
                         className="job-round sports"
                         className={classNames(
-                            "job-round sports", {
+                            'job-round sports', {
                                 'CORRECT SPORTS': _.get(props, 'data.dropzone.sports')
                             }
                         )}
@@ -201,7 +201,7 @@ export default function (props, ref, key) {
                         ref="police-duties"
                         className="job-round police-duties"
                         className={classNames(
-                            "job-round police-duties", {
+                            'job-round police-duties', {
                                 'CORRECT POLICE-DUTIES': _.get(props, 'data.dropzone[police-duties]')
                             }
                         )}
@@ -211,7 +211,7 @@ export default function (props, ref, key) {
                         ref="fire-fighting"
                         className="job-round fire-fighting"
                         className={classNames(
-                            "job-round fire-fighting", {
+                            'job-round fire-fighting', {
                                 'CORRECT FIRE-FIGHTING': _.get(props, 'data.dropzone[fire-fighting]')
                             }
                         )}
@@ -220,7 +220,7 @@ export default function (props, ref, key) {
                     <skoash.Component
                         ref="photography"
                         className={classNames(
-                            "job-round photography", {
+                            'job-round photography', {
                                 'CORRECT PHOTOGRAPHY': _.get(props, 'data.dropzone.photography')
                             }
                         )}
@@ -229,7 +229,7 @@ export default function (props, ref, key) {
                     <skoash.Component
                         ref="delivery"
                         className={classNames(
-                            "job-round delivery", {
+                            'job-round delivery', {
                                 'CORRECT DELIVERY': _.get(props, 'data.dropzone.delivery')
                             }
                         )}
@@ -238,7 +238,7 @@ export default function (props, ref, key) {
                     <skoash.Component
                         ref="farming"
                         className={classNames(
-                            "job-round farming", {
+                            'job-round farming', {
                                 'CORRECT FARMING': _.get(props, 'data.dropzone.farming')
                             }
                         )}
