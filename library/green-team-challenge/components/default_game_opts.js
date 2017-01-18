@@ -11,7 +11,7 @@ export default {
         return {
             onStart: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: true,
                         score: 0,
@@ -21,7 +21,7 @@ export default {
             },
             onStop: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level, 'start'],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'start'],
                     data: false,
                 });
             },
@@ -32,7 +32,7 @@ export default {
             onComplete: function () {
                 if (opts.score >= opts.scoreToWin) {
                     this.updateGameData({
-                        keys: ['recyclingChampion', 'levels', opts.level],
+                        keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                         data: {
                             complete: true,
                             highScore: Math.max(opts.score, opts.highScore)
@@ -55,7 +55,7 @@ export default {
         return {
             onOpen: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level, 'start'],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'start'],
                     data: false,
                 });
             },
@@ -73,7 +73,7 @@ export default {
                 }
 
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data,
                 });
             },
@@ -117,7 +117,7 @@ export default {
         return {
             onCorrect: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level, 'score'],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
                     data: opts.score + opts.pointsPerItem,
                 });
                 this.updateScreenData({
@@ -127,7 +127,7 @@ export default {
             },
             onIncorrect: function () {
                 this.updateGameData({
-                    keys: ['recyclingChampion', 'levels', opts.level],
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
                         hits: opts.hits + 1,
@@ -174,7 +174,7 @@ export default {
             onComplete: function () {
                 if (opts.score >= opts.scoreToWin) {
                     this.updateGameData({
-                        keys: ['recyclingChampion', 'levels', opts.level],
+                        keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                         data: {
                             complete: true,
                             highScore: Math.max(opts.score, opts.highScore)

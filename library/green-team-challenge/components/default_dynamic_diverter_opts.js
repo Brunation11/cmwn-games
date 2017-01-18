@@ -2,23 +2,63 @@ import defaultGameOpts from './default_game_opts';
 
 export default _.defaults({
     gameName: 'dynamic-diverter',
-    getCarouselProps() {
+    pointsPerBin: 400,
+    dropperAmount: 2,
+    getDropperProps() {
         return {
-            onStart: function () {
+            onNext: function () {
                 this.updateScreenData({
-                    keys: ['carousel', 'binName'],
-                    data: this.state.list[0].props.message,
+                    keys: ['manual-dropper', 'binName'],
+                    data: this.state.items[this.firstItemIndex].props.message,
                 });
             },
         };
     },
     getDraggableProps() {
         return {
-            onStart: function () {
+            onReady: function () {
                 this.setState({
                     style: {
                         top: _.random(30, 70) + '%',
                         left: _.random(30, 70) + '%',
+                    }
+                });
+            },
+        };
+    },
+    getDropzoneProps(opts) {
+        return {
+            onCorrect: function (draggable) {
+                let score = opts.score + opts.pointsPerItem;
+
+                draggable.markCorrect();
+
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                    data: {
+                        score
+                    }
+                });
+
+                if ((score % opts.pointsPerBin) === 0) {
+                    this.updateScreenData({
+                        keys: ['manual-dropper', 'next'],
+                        data: true,
+                    });
+                }
+            },
+            onIncorrect: function (draggable, dropzoneArray) {
+                if (!dropzoneArray) return;
+
+                draggable.setState({
+                    endX: draggable.state.endX + 200,
+                    endY: draggable.state.endY + 200,
+                });
+
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                    data: {
+                        hits: opts.hits + 1,
                     }
                 });
             },

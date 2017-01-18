@@ -161,11 +161,11 @@ class Dropzone extends skoash.Component {
         this.props.onCorrect.call(this, dropped, dropzoneRef);
     }
 
-    incorrect(dropped, dropzoneRef) {
+    incorrect(dropped, dropzoneArray) {
         // respond to incorrect drop
         dropped.markIncorrect();
         this.playMedia('incorrect');
-        this.props.onIncorrect.call(this, dropped, dropzoneRef);
+        this.props.onIncorrect.call(this, dropped, dropzoneArray);
     }
 
     componentWillReceiveProps(props) {

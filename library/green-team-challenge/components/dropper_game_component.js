@@ -15,7 +15,7 @@ export default function (props, ref, key, opts = {}) {
     var lifeProps;
     var extraComponents;
 
-    const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
+    const levelPath = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
     var arrayOfCatchables = _.map(opts.itemsToSort, (v, k) =>
         <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,

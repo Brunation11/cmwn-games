@@ -27,12 +27,20 @@
     .bins {
         @include cover;
 
-        > div {
+        div:nth-of-type(1) {
+            .carousel {
+                z-index: 1;
+            }
+        }
+
+        .carousel {
             @include cover;
+            transition: opacity .5s;
+            opacity: 1;
             background-color: $blue;
 
-            &:nth-of-type(1) {
-                z-index: 1;
+            &.LEAVE {
+                opacity: 0;
             }
         }
     }
