@@ -133,7 +133,7 @@ class Catch extends skoash.Component {
         var xCenter = catchRect.left + (catchRect.right - catchRect.left) / 2;
         var yOffset = (catchRect.bottom - catchRect.top) / 6;
         return (bucketRect.top < catchRect.bottom - yOffset && bucketRect.top > catchRect.top + yOffset &&
-    xCenter > bucketRect.left && xCenter < bucketRect.right);
+            xCenter > bucketRect.left && xCenter < bucketRect.right);
     }
 
     getEdges(el) {

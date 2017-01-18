@@ -19,6 +19,8 @@ html {
 }
 
 button {
+    background: $green;
+
     &.close {
         @include nav-button(6, 60px, 60px);
     }
@@ -77,4 +79,24 @@ button {
     .background {
         // TODO
     }
+}
+
+.screen {
+    .VOICE-OVER:not(.DEMO) & {
+        .screen-content {
+            pointer-events: none;
+        }
+    }
+}
+
+.selectable {
+    @include selectable;
+}
+
+.randomizer {
+    @include randomizer;
+}
+
+.reveal {
+    @include reveal;
 }
