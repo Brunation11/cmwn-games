@@ -3,6 +3,7 @@ import defaultGameOpts from './default_game_opts';
 export default _.defaults({
     gameName: 'dynamic-diverter',
     pointsPerBin: 400,
+    scoreToWin: 1200,
     dropperAmount: 2,
     getDropperProps() {
         return {
@@ -53,6 +54,23 @@ export default _.defaults({
                 draggable.setState({
                     endX: draggable.state.endX + 200,
                     endY: draggable.state.endY + 200,
+                });
+
+                this.updateScreenData({
+                    keys: ['reveal', 'open'],
+                    data: 'resort',
+                    callback: () => {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    reveal: {
+                                        open: null,
+                                        close: true,
+                                    },
+                                }
+                            });
+                        }, 1000);
+                    }
                 });
 
                 this.updateGameData({
