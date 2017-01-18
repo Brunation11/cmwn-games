@@ -9,6 +9,13 @@ export default function (props, ref, key) {
                 open
             }
         });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'reveal'
+            }
+        });
     };
 
     onPlay = function () {
@@ -16,6 +23,13 @@ export default function (props, ref, key) {
             path: 'reveal',
             data: {
                 open: null
+            }
+        });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: null
             }
         });
     };
@@ -28,10 +42,28 @@ export default function (props, ref, key) {
             id="types-of-drones"
         >
             <skoash.MediaCollection
+                play={_.get(props, 'data.sfx.playing', null)}
+                onPlay={onPlay}
+            >
+                <skoash.MediaSequence
+                    ref="reveal"
+                    silentOnStart
+                >
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${MEDIA.EFFECT}AnswerReveal.mp3`}
+                    />
+                    <skoash.Audio
+                        type="sfx"
+                        src={`${MEDIA.EFFECT}TextRevelLoop.mp3`}
+                    />
+                </skoash.MediaSequence>
+            </skoash.MediaCollection>
+
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
@@ -57,7 +89,6 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}PhotoDrones.mp3`}
                 />
-                */}
             </skoash.MediaCollection>
 
             <skoash.Reveal

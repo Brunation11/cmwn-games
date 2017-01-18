@@ -6,12 +6,20 @@ export default function (props, ref, key) {
             key={key}
             id="info-what-does-it-do"
         >
-            {/*
-            <skoash.Audio
-                type="voiceOver"
-                // src={`${MEDIA.VO}SoWhatDoes.mp3`}
-            />
-            */}
+            <skoash.MediaSequence>
+                <skoash.Audio
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}AnswerReveal.mp3`}
+                />
+                <skoash.Audio
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}TextRevelLoop.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={`${MEDIA.VO}SoWhatDoes.mp3`}
+                />
+            </skoash.MediaSequence>
 
             <skoash.Component className="frame">
                 <h1>SO WHAT DOES IT DO?</h1>

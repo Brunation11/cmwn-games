@@ -9,6 +9,13 @@ export default function (props, ref, key) {
                 open
             }
         });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'reveal'
+            }
+        });
     };
 
     onPlay = function () {
@@ -16,6 +23,13 @@ export default function (props, ref, key) {
             path: 'reveal',
             data: {
                 open: null
+            }
+        });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: null
             }
         });
     };
@@ -32,10 +46,20 @@ export default function (props, ref, key) {
             </skoash.Component>
 
             <skoash.MediaCollection
+                play={_.get(props, 'data.sfx.playing', null)}
+                onPlay={onPlay}
+            >
+                <skoash.Audio
+                    ref="reveal"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}Reveal_2.mp3`}
+                />
+            </skoash.MediaCollection>
+
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
@@ -54,7 +78,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}PoliceDutiesShort.mp3`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
@@ -76,7 +100,6 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}Farming.mp3`}
                 />
-                */}
             </skoash.MediaCollection>
 
             <skoash.Reveal

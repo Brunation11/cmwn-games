@@ -9,6 +9,13 @@ export default function (props, ref, key) {
                 open
             }
         });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'reveal'
+            }
+        });
     };
 
     onPlay = function () {
@@ -16,6 +23,13 @@ export default function (props, ref, key) {
             path: 'reveal',
             data: {
                 open: null
+            }
+        });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: null
             }
         });
     };
@@ -27,22 +41,30 @@ export default function (props, ref, key) {
             key={key}
             id="how-are-drones-controlled"
         >
-            {/*
             <skoash.Audio
                 type="voiceOver"
                 src={`${MEDIA.VO}HowAreDronesControlled.mp3`}
             />
-            */}
 
             <skoash.Component className="header">
                 <h1>HOW ARE DRONES CONTROLLED?</h1>
             </skoash.Component>
 
             <skoash.MediaCollection
+                play={_.get(props, 'data.sfx.playing', null)}
+                onPlay={onPlay}
+            >
+                <skoash.Audio
+                    ref="reveal"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}Reveal_1.mp3`}
+                />
+            </skoash.MediaCollection>
+
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="computers"
                     type="voiceOver"
@@ -53,7 +75,6 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}RemoteControl.mp3`}
                 />
-                */}
             </skoash.MediaCollection>
 
             <skoash.Selectable

@@ -7,12 +7,20 @@ export default function (props, ref, key) {
             id="info-definition-of-a-drone"
         >
 
-            {/*
-            <skoash.Audio
-                type="voiceOver"
-                src={`${MEDIA.VO}ADroneIs.mp3`}
-            />
-            */}
+            <skoash.MediaSequence>
+                <skoash.Audio
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}AnswerReveal.mp3`}
+                />
+                <skoash.Audio
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}TextRevelLoop.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={`${MEDIA.VO}ADroneIs.mp3`}
+                />
+            </skoash.MediaSequence>
 
             <skoash.Component className="frame">
                 <h1>DEFINITION OF A DRONE</h1>

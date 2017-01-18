@@ -17,18 +17,18 @@ export default function (props, ref, key) {
                 open: null
             }
         });
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: null
+            }
+        });
     };
 
     onDrag = function () {
         this.setState({
             correct: false,
             return: false,
-        });
-        this.updateGameState({
-            path: 'sfx',
-            data: {
-                playing: 'drag',
-            },
         });
     };
 
@@ -43,6 +43,20 @@ export default function (props, ref, key) {
                 [dropzoneRef.props['data-ref']]: true
             }
         });
+
+        this.updateGameState({
+            path: 'sfx',
+            data: {
+                playing: 'correct',
+            },
+        });
+
+        // this.updateGameState({
+        //     path: 'reveal',
+        //     data: {
+        //         open: dropped.props.message
+        //     }
+        // });
     };
 
     onIncorrect = function () {
@@ -66,10 +80,30 @@ export default function (props, ref, key) {
             </skoash.Component>
 
             <skoash.MediaCollection
+                play={_.get(props, 'data.sfx.playing', null)}
+                onPlay={onPlay}
+            >
+                <skoash.Audio
+                    ref="correct"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}Reveal_3.mp3`}
+                />
+                <skoash.Audio
+                    ref="incorrect"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}TryAgain.mp3`}
+                />
+                <skoash.Audio
+                    ref="complete"
+                    type="sfx"
+                    src={`${MEDIA.EFFECT}LevelComplete.mp3`}
+                />
+            </skoash.MediaCollection>
+
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="instructions"
                     type="voiceOver"
@@ -78,39 +112,48 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="construction"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}ConstructionShort.mp3`}
                 />
                 <skoash.Audio
                     ref="sports"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}SportsShort.mp3`}
                 />
                 <skoash.Audio
                     ref="police-duties"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}PoliceDutiesShort.mp3`}
                 />
                 <skoash.Audio
                     ref="fire-fighting"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}FirefightingShort.mp3`}
                 />
                 <skoash.Audio
                     ref="photography"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}PhotographyShort.mp3`}
                 />
                 <skoash.Audio
                     ref="delivery"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}DeliveryShort.mp3`}
                 />
                 <skoash.Audio
                     ref="farming"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}FarmingShort.mp3`}
                 />
-                */}
+                <skoash.Audio
+                    ref="incorrect"
+                    type="sfx"
+                    src={`${MEDIA.VO}TryAgainNotQuite.mp3`}
+                />
+                <skoash.Audio
+                    ref="complete"
+                    type="sfx"
+                    src={`${MEDIA.VO}ExcellentJob.mp3`}
+                />
             </skoash.MediaCollection>
 
             <skoash.Reveal
@@ -172,7 +215,6 @@ export default function (props, ref, key) {
             />
 
             <Dropzone
-                checkComplete={false}
                 dropped={_.get(props, 'data.draggable.dropped')}
                 dragging={_.get(props, 'data.draggable.dragging')}
                 onCorrect={onCorrect}
