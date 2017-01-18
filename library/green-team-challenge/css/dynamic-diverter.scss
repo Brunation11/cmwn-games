@@ -12,6 +12,7 @@
         padding: 20px 0;
         width: 200px;
         height: 64px;
+        text-transform: capitalize;
     }
 
     .dropzones {
@@ -39,10 +40,17 @@
     .draggable {
         @include size(100px);
         position: absolute;
+        transition: opacity .5s;
+        opacity: 1;
         background-color: $green;
 
         &::before {
             content: attr(data-message);
+        }
+
+        &.CORRECT {
+            opacity: 0;
+            pointer-events: none;
         }
     }
 }

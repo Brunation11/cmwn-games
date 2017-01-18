@@ -7,7 +7,19 @@ export default _.defaults({
             onStart: function () {
                 this.updateScreenData({
                     keys: ['carousel', 'binName'],
-                    data: _.capitalize(this.state.list[0].props.message),
+                    data: this.state.list[0].props.message,
+                });
+            },
+        };
+    },
+    getDraggableProps() {
+        return {
+            onStart: function () {
+                this.setState({
+                    style: {
+                        top: _.random(30, 70) + '%',
+                        left: _.random(30, 70) + '%',
+                    }
                 });
             },
         };

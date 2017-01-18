@@ -10,33 +10,20 @@ export default function (props, ref, key, opts = {}) {
     var carouselProps;
     var revealProps;
     var lifeProps;
+    var draggableProps;
+    var binComponents;
 
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
-
-    var binComponents = _.map(opts.binNames, name =>
-        <Carousel
-            className={name}
-            message={name}
-            showNum={20}
-            nextOnStart={false}
-            bin={<skoash.Randomizer
-                bin={_.map(opts.binItems[name], v =>
-                    <Draggable
-                        className={v.name}
-                        message={v.bin}
-                        becomes={v.becomes}
-                    />
-                )}
-            />}
-        />
-    );
 
     var start = _.get(props, `${levelPath}.start`, false);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var itemName = _.get(props, 'data.manual-dropper.itemName', '');
     var binName = _.get(props, 'data.carousel.binName', '');
+    var dropped = _.get(props, 'data.draggable.dropped');
     var revealOpen = _.get(props, 'data.reveal.open', false);
     var revealClose = _.get(props, 'data.reveal.close', false);
+
+    var answers = _.filter(opts.binName, name => name !== binName);
 
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
@@ -49,6 +36,26 @@ export default function (props, ref, key, opts = {}) {
     carouselProps = opts.getCarouselProps(opts);
     revealProps = opts.getRevealProps(opts);
     lifeProps = opts.getLifeProps(opts);
+    draggableProps = opts.getDraggableProps(opts);
+
+    binComponents = _.map(opts.binNames, name =>
+        <Carousel
+            className={name}
+            message={name}
+            showNum={20}
+            nextOnStart={false}
+            bin={<skoash.Randomizer
+                bin={_.map(opts.binItems[name], v =>
+                    <Draggable
+                        className={v.name}
+                        message={v.bin}
+                        becomes={v.becomes}
+                        {...draggableProps}
+                    />
+                )}
+            />}
+        />
+    );
 
     return (
         <skoash.Screen
@@ -104,7 +111,11 @@ export default function (props, ref, key, opts = {}) {
                 {...lifeProps}
             />
             <Dropzone
-
+                answers={answers}
+                dropped={dropped}
+                onCorrect={draggable => {
+                    draggable.markCorrect();
+                }}
             />
             <Carousel
                 className="bins"
