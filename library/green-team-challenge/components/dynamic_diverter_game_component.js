@@ -1,5 +1,6 @@
 import Carousel from 'shared/components/carousel/0.1';
 import Dropzone from 'shared/components/dropzone/0.4';
+import Draggable from 'shared/components/draggable/0.4';
 
 const PTS = 'pts';
 
@@ -13,7 +14,21 @@ export default function (props, ref, key, opts = {}) {
     const levelPath = `gameState.data.recyclingChampion.levels.${opts.level}`;
 
     var binComponents = _.map(opts.binNames, name =>
-        <skoash.Component className={name} message={name} />
+        <Carousel
+            className={name}
+            message={name}
+            showNum={20}
+            nextOnStart={false}
+            bin={<skoash.Randomizer
+                bin={_.map(opts.binItems[name], v =>
+                    <Draggable
+                        className={v.name}
+                        message={v.bin}
+                        becomes={v.becomes}
+                    />
+                )}
+            />}
+        />
     );
 
     var start = _.get(props, `${levelPath}.start`, false);
@@ -94,6 +109,7 @@ export default function (props, ref, key, opts = {}) {
             <Carousel
                 className="bins"
                 showNum={1}
+                nextOnStart={false}
                 bin={<skoash.Randomizer
                     bin={binComponents}
                 />}
