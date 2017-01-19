@@ -257,13 +257,13 @@
         .complete {
             @include center;
             background: url('#{$sprite}sprite.jobgameframe.png');
-            background-position: 50% auto;
+            background-position: 50%;
             background-size: auto 100%;
             width: 450px;
             height: 450px;
 
             .copy {
-                top: 55%;
+                top: 50%;
                 line-height: normal;
                 font-size: 40px;
             }

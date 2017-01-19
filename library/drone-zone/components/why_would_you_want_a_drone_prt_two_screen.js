@@ -4,17 +4,34 @@ import Dropzone from 'shared/components/dropzone/0.5';
 import Draggable from 'shared/components/draggable/0.4';
 
 export default function (props, ref, key) {
+    var onOpen;
     var onPlay;
     var onDrag;
     var onDrop;
     var onCorrect;
     var onIncorrect;
+    var onComplete;
+
+    onOpen = function (message) {
+        this.updateGameState({
+            path: 'vos',
+            data: {
+                playing: message
+            }
+        });
+    };
 
     onPlay = function () {
         this.updateGameState({
             path: 'reveal',
             data: {
                 open: null
+            }
+        });
+        this.updateGameState({
+            path: 'vos',
+            data: {
+                playing: null
             }
         });
         this.updateGameState({
@@ -51,12 +68,12 @@ export default function (props, ref, key) {
             },
         });
 
-        // this.updateGameState({
-        //     path: 'reveal',
-        //     data: {
-        //         open: dropped.props.message
-        //     }
-        // });
+        this.updateGameState({
+            path: 'vos',
+            data: {
+                playing: dropped.props.message
+            }
+        });
     };
 
     onIncorrect = function () {
@@ -68,12 +85,29 @@ export default function (props, ref, key) {
         });
     };
 
+    onComplete = function () {
+        this.updateGameState({
+            path: 'reveal',
+            data: {
+                open: 'complete'
+            }
+        });
+
+        this.updateGameState({
+            path: 'game',
+            data: {
+                complete: true
+            }
+        });
+    };
+
     return (
         <skoash.Screen
             {...props}
             ref={ref}
             key={key}
             id="why-would-you-want-a-drone-prt-two"
+            complete={_.get(props, 'data.game.complete', false)}
         >
             <skoash.Component className="header">
                 <h1>WHY WOULD YOU WANT A DRONE?</h1>
@@ -101,7 +135,7 @@ export default function (props, ref, key) {
             </skoash.MediaCollection>
 
             <skoash.MediaCollection
-                play={_.get(props, 'data.reveal.open', null)}
+                play={_.get(props, 'data.vos.playing', null)}
                 onPlay={onPlay}
             >
                 <skoash.Audio
@@ -109,6 +143,23 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}LetsPutKnowTest.mp3`}
                 />
+                <skoash.Audio
+                    ref="incorrect"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}TryAgainNotQuite.mp3`}
+                />
+                <skoash.Audio
+                    ref="complete"
+                    type="voiceOver"
+                    src={`${MEDIA.VO}ExcellentJob.mp3`}
+                />
+            </skoash.MediaCollection>
+
+            <skoash.MediaCollection
+                play={_.get(props, 'data.vos.playing', null)}
+                onPlay={onPlay}
+                onComplete={onComplete}
+            >
                 <skoash.Audio
                     ref="construction"
                     type="voiceOver"
@@ -144,22 +195,13 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src={`${MEDIA.VO}FarmingShort.mp3`}
                 />
-                <skoash.Audio
-                    ref="incorrect"
-                    type="sfx"
-                    src={`${MEDIA.VO}TryAgainNotQuite.mp3`}
-                />
-                <skoash.Audio
-                    ref="complete"
-                    type="sfx"
-                    src={`${MEDIA.VO}ExcellentJob.mp3`}
-                />
             </skoash.MediaCollection>
 
             <skoash.Reveal
                 openTarget="reveal"
                 closeTarget="reveal"
                 openOnStart="instructions"
+                onOpen={onOpen}
                 openReveal={_.get(props, 'data.reveal.open', null)}
                 list={[
                     <skoash.Component
@@ -215,6 +257,7 @@ export default function (props, ref, key) {
             />
 
             <Dropzone
+                checkComplete={false}
                 dropped={_.get(props, 'data.draggable.dropped')}
                 dragging={_.get(props, 'data.draggable.dragging')}
                 onCorrect={onCorrect}

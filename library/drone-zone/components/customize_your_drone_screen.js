@@ -67,23 +67,21 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="model-select"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}PickYourModel.mp3`}
                 />
                 <skoash.Audio
                     ref="color-select"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}ChooseYourColor.mp3`}
                 />
                 <skoash.Audio
                     ref="complete"
                     type="voiceOver"
                     src={`${MEDIA.VO}YouveDoneIt.mp3`}
                 />
-                */}
             </skoash.MediaCollection>
 
             <skoash.Reveal
@@ -139,43 +137,43 @@ export default function (props, ref, key) {
                             onSelect={onColorSelect}
                             list={[
                                 <skoash.Component
-                                    data-ref="one"
-                                    className="one"
+                                    data-ref="a"
+                                    className="a"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="two"
-                                    className="two"
+                                    data-ref="b"
+                                    className="b"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="three"
-                                    className="three"
+                                    data-ref="c"
+                                    className="c"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="four"
-                                    className="four"
+                                    data-ref="d"
+                                    className="d"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="five"
-                                    className="five"
+                                    data-ref="e"
+                                    className="e"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="six"
-                                    className="six"
+                                    data-ref="f"
+                                    className="f"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="seven"
-                                    className="seven"
+                                    data-ref="g"
+                                    className="g"
                                     correct={true}
                                 />,
                                 <skoash.Component
-                                    data-ref="eight"
-                                    className="eight"
+                                    data-ref="h"
+                                    className="h"
                                     correct={true}
                                 />
                             ]}
@@ -196,8 +194,7 @@ export default function (props, ref, key) {
                                 _.get(props, 'data.drone.model'),
                                 _.get(props, 'data.drone.color')
                             )}
-                        >
-                        </skoash.Component>
+                        />
                     </skoash.Component>
                 ]}
             />

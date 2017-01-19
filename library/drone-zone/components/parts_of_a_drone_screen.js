@@ -27,12 +27,10 @@ export default function (props, ref, key) {
             key={key}
             id="parts-of-a-drone"
         >
-            {/*
             <skoash.Audio
                 type="voiceOver"
-                // src={`${MEDIA.VO}PartsOfADrone.mp3`}
+                src={`${MEDIA.VO}PartsOfADrone.mp3`}
             />
-            */}
 
             <skoash.Component className="header">
                 <h1>PARTS OF A DRONE</h1>
@@ -52,7 +50,6 @@ export default function (props, ref, key) {
                 play={_.get(props, 'data.reveal.open', null)}
                 onPlay={onPlay}
             >
-                {/*
                 <skoash.Audio
                     ref="motor"
                     type="voiceOver"
@@ -61,7 +58,7 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="lights"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}Lights.mp3`}
                 />
                 <skoash.Audio
                     ref="propeller"
@@ -81,14 +78,13 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="camera"
                     type="voiceOver"
-                    src={`${MEDIA.VO}`}
+                    src={`${MEDIA.VO}VideoCamera.mp3`}
                 />
                 <skoash.Audio
                     ref="arm"
                     type="voiceOver"
                     src={`${MEDIA.VO}Arm.mp3`}
                 />
-                */}
             </skoash.MediaCollection>
 
             <skoash.Selectable
