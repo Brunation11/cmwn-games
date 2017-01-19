@@ -172,21 +172,27 @@ export default _.defaults({
             </skoash.Component>
         );
     },
-    itemsToSort: {
-        emptyBottle: {
+    itemsToSort: [
+        {
+            name: 'emptyBottle',
             bin: 'recycle'
         },
-        appleCore: {
+        {
+            name: 'appleCore',
             bin: 'compost'
         },
-        candyBag: {
+        {
+            name: 'candyBag',
             bin: 'landfill'
         },
-        fullBottle: {
-            bin: 'liquids', becomes: 'emptyBottle'
+        {
+            name: 'fullBottle',
+            bin: 'liquids',
+            becomes: 'emptyBottle'
         },
-        wrappedSnack: {
+        {
+            name: 'wrappedSnack',
             bin: 'food-share'
         }
-    },
+    ],
 }, defaultGameOpts);

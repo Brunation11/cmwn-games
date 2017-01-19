@@ -36,11 +36,9 @@
             @include cover;
 
             > * {
-                @include cover;
-                top: 0;
-                left: 0;
+                @include center;
                 transition: left .5s $ease-out, transform .5s;
-                background-color: $green;
+                background-color: $blue;
                 width: 250px;
                 height: 250px;
 
@@ -49,10 +47,30 @@
                     content: attr(data-message);
                 }
 
-                $lefts: 20 130;
+                $lefts: 35 150;
                 @for $i from 1 through length($lefts) {
                     &:nth-of-type(#{$i}) {
                         left: percentage(nth($lefts, $i) / 100);
+                    }
+                }
+
+                .catchable {
+                    @include center;
+                    @include size(60px);
+                    background-color: $green;
+
+                    &::before {
+                        font-size: 10px;
+                        content: attr(data-message);
+                    }
+
+                    $tops:  25 25 25 70 70;
+                    $lefts: 20 50 80 30 70;
+                    @for $i from 1 through length($tops) {
+                        &:nth-of-type(#{$i}) {
+                            top: percentage(nth($tops, $i) / 100);
+                            left: percentage(nth($lefts, $i) / 100);
+                        }
                     }
                 }
 
@@ -82,31 +100,31 @@
         left: 0;
         width: 100%;
         height: 200px;
-    }
 
-    .catch,
-    .selectable {
-        @include cover;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-
-        div,
-        li {
-            margin: 0 10px;
-            width: 200px;
+        .catch,
+        .selectable {
+            @include cover;
+            display: flex;
             height: 100%;
+            justify-content: center;
 
-            &.liquids {
-                @include position(absolute, 300px null null 0);
+            div,
+            li {
+                margin: 0 10px;
+                width: 200px;
+                height: 100%;
+
+                &.liquids {
+                    @include position(absolute, 300px null null 0);
+                }
             }
-        }
 
-        li {
-            background-color: $blue;
+            li {
+                background-color: $blue;
 
-            &::before {
-                content: attr(data-message);
+                &::before {
+                    content: attr(data-message);
+                }
             }
         }
     }

@@ -1,4 +1,16 @@
 import defaultGameOpts from './default_game_opts';
+import Catchable from 'shared/components/catchable/0.1';
+
+const mapItems = function (items) {
+    return _.map(items, item =>
+        <Catchable
+            className={item.name}
+            message={item.bin}
+            reCatchable={true}
+            becomes={item.becomes}
+        />
+    );
+};
 
 export default _.defaults({
     gameName: 'master-sorter',
@@ -84,18 +96,37 @@ export default _.defaults({
 
         return props;
     },
-    itemsToSort: {
-        emptyBottle: {
-            bin: 'recycle'
-        },
-        appleCore: {
-            bin: 'compost'
-        },
-        candyBag: {
-            bin: 'landfill'
-        },
-        fullBottle: {
-            bin: 'liquids', becomes: 'emptyBottle'
-        },
-    },
+    itemsToSort: [
+        {
+            name: 'tray',
+            bin: 'tray-stacking',
+            children: [
+                <skoash.Selectable
+                    list={mapItems([
+                        {
+                            name: 'emptyBottle',
+                            bin: 'recycle'
+                        },
+                        {
+                            name: 'appleCore',
+                            bin: 'compost'
+                        },
+                        {
+                            name: 'candyBag',
+                            bin: 'landfill'
+                        },
+                        {
+                            name: 'fullBottle',
+                            bin: 'liquids',
+                            becomes: 'emptyBottle'
+                        },
+                        {
+                            name: 'wrappedSnack',
+                            bin: 'food-share'
+                        }
+                    ])}
+                />
+            ]
+        }
+    ],
 }, defaultGameOpts);

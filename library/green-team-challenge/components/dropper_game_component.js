@@ -17,8 +17,14 @@ export default function (props, ref, key, opts = {}) {
 
     const levelPath = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
-    var arrayOfCatchables = _.map(opts.itemsToSort, (v, k) =>
-        <Catchable className={k} message={v.bin} reCatchable={true} becomes={v.becomes} />,
+    var arrayOfCatchables = _.map(opts.itemsToSort, v =>
+        <Catchable
+            className={v.name}
+            message={v.bin}
+            reCatchable={true}
+            becomes={v.becomes}
+            children={v.children}
+        />,
     );
 
     var binComponents = _.map(opts.binNames, name =>

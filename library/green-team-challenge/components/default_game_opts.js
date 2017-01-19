@@ -201,15 +201,18 @@ export default {
         'landfill',
         'compost',
     ],
-    itemsToSort: {
-        emptyBottle: {
+    itemsToSort: [
+        {
+            name: 'emptyBottle',
             bin: 'recycle'
         },
-        appleCore: {
+        {
+            name: 'appleCore',
             bin: 'compost'
         },
-        candyBag: {
+        {
+            name: 'candyBag',
             bin: 'landfill'
         },
-    },
+    ],
 };
