@@ -5,6 +5,7 @@ export default _.defaults({
     dropperAmount: 2,
     binNames: [
         'liquids',
+        'food-share',
         'recycle',
         'landfill',
         'compost',

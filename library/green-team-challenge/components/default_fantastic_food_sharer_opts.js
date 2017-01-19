@@ -6,7 +6,7 @@ const DROPPED = 'DROPPED';
 const TILT = 'TILT';
 const ITEMS = 'items-';
 
-const CLAW_SRC = 'https://media-staging.changemyworldnow.com/f/Games/mock-game/SpritesAnimations/player2';
+const CLAW_SRC = CMWN.MEDIA.MOCK.SPRITE + 'player2';
 
 const onTruckTransitionEnd = function (opts, e) {
     skoash.trigger('updateScreenData', {
