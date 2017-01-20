@@ -19,7 +19,7 @@ export default function (props, ref, key) {
 
     var playAudio = function (ref, cb) {
         debugger;
-        this.updateGameState({
+        this.updateScreenData({
             path: 'media',
             data: {
                 play: ref

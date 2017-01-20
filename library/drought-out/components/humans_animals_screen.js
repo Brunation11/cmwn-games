@@ -1,0 +1,27 @@
+export default function (props, ref, key) {
+    return (
+        <skoash.Screen
+            {...props}
+            ref={ref}
+            key={key}
+            id="info-impact"
+            className="small-frame"
+            playOnStart="tumbleweed"
+        >
+            <skoash.Audio
+                ref="tumbleweed"
+                type="sfx"
+                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Tumbleweed.mp3`}
+                loop
+                complete
+                checkComplete={false}
+                />
+            <skoash.Audio type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/HumansAnimals.mp3`}/>
+            <skoash.Component className="frame animated">
+                <p>
+                    Humans, animals and <br />plants need <br />water to live!
+                </p>
+            </skoash.Component>
+        </skoash.Screen>
+    );
+}

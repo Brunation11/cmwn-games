@@ -6,7 +6,7 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import TitleScreen from './components/title_screen';
 import ThinkScreen from './components/think_screen';
 import InfoNoWaterScreen from './components/info_no_water_screen';
-import InfoImpactScreen from './components/info_impact_screen';
+import HumansAnimalsScreen from './components/humans_animals_screen';
 import InfoNeedWaterScreen from './components/info_need_water_screen';
 import InfoUseWaterScreen from './components/info_use_water_screen';
 import BalloonsScreen from './components/balloons_screen';
@@ -34,8 +34,8 @@ var DroughtOut = (
             0: iOSScreen,
             1: TitleScreen,
             //2: ThinkScreen,
-            2: InfoNoWaterScreen,
-            //4: InfoImpactScreen,
+            //3: InfoNoWaterScreen,
+            2: HumansAnimalsScreen,
             //5: InfoNeedWaterScreen,
             //6: InfoUseWaterScreen,
             //7: BalloonsScreen,
