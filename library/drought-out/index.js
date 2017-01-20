@@ -33,8 +33,8 @@ var DroughtOut = (
         screens={{
             0: iOSScreen,
             1: TitleScreen,
-            2: ThinkScreen,
-            //3: InfoNoWaterScreen,
+            //2: ThinkScreen,
+            2: InfoNoWaterScreen,
             //4: InfoImpactScreen,
             //5: InfoNeedWaterScreen,
             //6: InfoUseWaterScreen,
