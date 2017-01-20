@@ -26,11 +26,17 @@ export default _.defaults({
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
+                var dropClass = _.toUpper(opts.binNames[binRefKey]);
+                if (opts.itemRef) {
+                    _.invoke(opts, 'itemRef.addClassName', dropClass);
+                    return;
+                }
+
                 this.updateScreenData({
                     key: 'manual-dropper',
                     data: {
                         drop: true,
-                        dropClass: _.toUpper(opts.binNames[binRefKey])
+                        dropClass,
                     }
                 });
             },
@@ -81,9 +87,21 @@ export default _.defaults({
 
         props.onCorrect = function (bucketRef) {
             this.updateGameData({
-                keys: ['recyclingChampion', 'levels', opts.level, 'score'],
+                keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
                 data: opts.score + opts.pointsPerItem,
             });
+
+            if (opts.itemRef) {
+                opts.itemRef.addClassName('CAUGHT');
+                this.updateScreenData({
+                    key: 'item',
+                    data: {
+                        name: null,
+                        ref: null,
+                    }
+                });
+                return;
+            }
 
             if (bucketRef.props.message !== 'liquids') {
                 this.updateScreenData({
@@ -109,6 +127,7 @@ export default _.defaults({
                             key: 'item',
                             data: {
                                 name: _.startCase(ref.props.className),
+                                ref,
                                 top: rect.top,
                                 left: rect.left,
                             }

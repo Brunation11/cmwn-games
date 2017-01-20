@@ -138,7 +138,7 @@ export default _.defaults({
 
         props.onCorrect = function (bucketRef) {
             this.updateGameData({
-                keys: ['recyclingChampion', 'levels', opts.level, 'score'],
+                keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
                 data: opts.score + opts.pointsPerItem,
             });
 

@@ -43,12 +43,16 @@ export default function (props, ref, key, opts = {}) {
     var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.item.name', '');
+    var itemRef = _.get(props, 'data.item.ref');
     var itemTop = _.get(props, 'data.item.top', 0) / scale;
     var itemLeft = _.get(props, 'data.item.left', 0) / scale;
     var caught = _.get(props, 'data.catcher.caught', '');
     var revealOpen = _.get(props, 'data.reveal.open', false);
     var revealClose = _.get(props, 'data.reveal.close', false);
 
+    if (itemRef) catchableRefs = [itemRef];
+
+    opts.itemRef = itemRef;
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
@@ -136,7 +140,9 @@ export default function (props, ref, key, opts = {}) {
                 {...dropperProps}
             />
             <skoash.Component
-                className="bins"
+                className={classNames('bins', {
+                    DISABLED: !itemName
+                })}
             >
                 <Catcher
                     completeOnStart
