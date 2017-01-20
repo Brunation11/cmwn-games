@@ -41,7 +41,6 @@ class Catcher extends Catch {
     isColliding(bucketRect, catchRect) {
         var xCenter = catchRect.left + (catchRect.right - catchRect.left) / 2;
         var yOffset = (catchRect.bottom - catchRect.top) * this.props.collideFraction;
-        debugger;
         return (bucketRect.top < catchRect.bottom - yOffset && bucketRect.top > catchRect.top + yOffset &&
             xCenter > bucketRect.left && xCenter < bucketRect.right);
     }

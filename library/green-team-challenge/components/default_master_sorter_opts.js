@@ -74,7 +74,7 @@ export default _.defaults({
                 }, this.props));
             };
 
-            if (!itemRef.state.className || itemRef.state.className.indexOf('POUR') === -1) {
+            if (!itemRef.state.className || _.includes(itemRef.state.className, 'POUR')) {
                 DOMNode.addEventListener('animationend', onAnimationEnd);
                 itemRef.addClassName('POUR');
             }
