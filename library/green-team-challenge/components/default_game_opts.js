@@ -126,15 +126,17 @@ export default {
                 });
             },
             onIncorrect: function () {
+                let hits = opts.hits + 1;
+
                 this.updateGameData({
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level],
                     data: {
                         start: false,
-                        hits: opts.hits + 1,
+                        hits,
                     }
                 });
 
-                if (opts.hits + 1 === opts.maxHits) {
+                if (hits === opts.maxHits) {
                     setTimeout(() => {
                         this.updateScreenData({
                             keys: ['manual-dropper', 'pickUp'],

@@ -44,6 +44,8 @@ export default function (props, ref, key, opts = {}) {
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.item.name', '');
     var itemRef = _.get(props, 'data.item.ref');
+    var itemClassName = _.get(props, 'data.item.className');
+    var removeItemClassName = _.get(props, 'data.item.removeClassName');
     var itemTop = _.get(props, 'data.item.top', 0) / scale;
     var itemLeft = _.get(props, 'data.item.left', 0) / scale;
     var caught = _.get(props, 'data.catcher.caught', '');
@@ -137,6 +139,9 @@ export default function (props, ref, key, opts = {}) {
                 }}
                 caught={caught}
                 dropClass={dropClass}
+                itemRef={itemRef}
+                itemClassName={itemClassName}
+                removeItemClassName={removeItemClassName}
                 {...dropperProps}
             />
             <skoash.Component

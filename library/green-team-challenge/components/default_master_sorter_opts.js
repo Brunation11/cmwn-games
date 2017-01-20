@@ -28,7 +28,10 @@ export default _.defaults({
             onSelect: function (binRefKey) {
                 var dropClass = _.toUpper(opts.binNames[binRefKey]);
                 if (opts.itemRef) {
-                    _.invoke(opts, 'itemRef.addClassName', dropClass);
+                    this.updateScreenData({
+                        keys: ['item', 'className'],
+                        data: dropClass,
+                    });
                     return;
                 }
 
@@ -80,39 +83,113 @@ export default _.defaults({
             }
         };
 
-        return props;
-    },
-    getCatcherProps(opts) {
-        var props = defaultGameOpts.getCatcherProps.call(this, opts);
+        props.onComponentWillReceiveProps = function (nextProps) {
+            if (nextProps.itemRef != null) {
+                if (nextProps.itemClassName != null &&
+                    nextProps.itemClassName !== this.props.itemClassName) {
+                    let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
+                    let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
+                    let item = selectable.refs[itemIndex];
+                    item.addClassName(nextProps.itemClassName);
+                }
 
-        props.onCorrect = function (bucketRef) {
-            this.updateGameData({
-                keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
-                data: opts.score + opts.pointsPerItem,
-            });
-
-            if (opts.itemRef) {
-                opts.itemRef.addClassName('CAUGHT');
-                this.updateScreenData({
-                    key: 'item',
-                    data: {
-                        name: null,
-                        ref: null,
-                    }
-                });
-                return;
-            }
-
-            if (bucketRef.props.message !== 'liquids') {
-                this.updateScreenData({
-                    keys: ['manual-dropper', 'next'],
-                    data: true,
-                });
-                return;
+                if (nextProps.removeItemClassName &&
+                    nextProps.removeItemClassName !== this.props.itemClassName) {
+                    let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
+                    let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
+                    let item = selectable.refs[itemIndex];
+                    item.removeClassName(nextProps.itemClassName);
+                    this.updateScreenData({
+                        key: 'item',
+                        data: {
+                            className: null,
+                            removeClassName: false,
+                        }
+                    });
+                }
             }
         };
 
         return props;
+    },
+    getCatcherProps(opts) {
+        return {
+            onCorrect: function (bucketRef) {
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
+                    data: opts.score + opts.pointsPerItem,
+                });
+
+                if (opts.itemRef) {
+                    opts.itemRef.addClassName('CAUGHT');
+                    this.updateScreenData({
+                        key: 'item',
+                        data: {
+                            name: null,
+                            ref: null,
+                        }
+                    });
+                    return;
+                }
+
+                if (bucketRef.props.message !== 'liquids') {
+                    this.updateScreenData({
+                        keys: ['manual-dropper', 'next'],
+                        data: true,
+                    });
+                    return;
+                }
+            },
+            onIncorrect: function () {
+                let hits = opts.hits + 1;
+
+                this.updateGameData({
+                    keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                    data: {
+                        start: false,
+                        hits,
+                    }
+                });
+
+                this.updateScreenData({
+                    keys: ['item', 'removeClassName'],
+                    data: true,
+                });
+
+                // if (hits === opts.maxHits) {
+                //     setTimeout(() => {
+                //         this.updateScreenData({
+                //             keys: ['manual-dropper', 'pickUp'],
+                //             data: true,
+                //         });
+                //     }, 1000);
+                //     return;
+                // }
+
+                this.updateScreenData({
+                    keys: ['reveal', 'open'],
+                    data: 'resort',
+                    callback: () => {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    reveal: {
+                                        open: null,
+                                        close: true,
+                                    },
+                                    'manual-dropper': {
+                                        pickUp: true,
+                                    },
+                                    catcher: {
+                                        caught: false,
+                                    }
+                                }
+                            });
+                        }, 1000);
+                    }
+                });
+            },
+        };
     },
     itemsToSort: [
         {
