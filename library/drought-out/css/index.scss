@@ -462,7 +462,7 @@ img.inline {
         background-image: url('../media/S_2/sprite_2.1.png');
     }
 
-    ul {
+    .selectable {
         display: block;
         margin: 10px 0 0;
         height: auto;
@@ -474,9 +474,11 @@ img.inline {
             background-repeat: no-repeat;
             background-size: 650px;
             height: 42px;
+            cursor: pointer;
 
             &.HIGHLIGHTED {
                 pointer-events: none;
+                cursor: default;
             }
 
             // scss-lint:disable ColorVariable ColorKeyword
@@ -502,6 +504,7 @@ img.inline {
     .VOICE-OVER & {
         li {
             pointer-events: none;
+            cursor: default;
         }
     }
 }
