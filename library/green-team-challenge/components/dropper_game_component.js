@@ -156,7 +156,7 @@ export default function (props, ref, key, opts = {}) {
                     bucket={binComponents}
                     catchableRefs={catchableRefs}
                     pause={caught}
-                    resume={drop}
+                    resume={drop || itemRef}
                     collideFraction={opts.collideFraction}
                     assets={[
                     ]}

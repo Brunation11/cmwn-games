@@ -98,7 +98,7 @@ export default _.defaults({
                     let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
                     let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
                     let item = selectable.refs[itemIndex];
-                    item.removeClassName(nextProps.itemClassName);
+                    item.removeAllClassNames();
                     this.updateScreenData({
                         key: 'item',
                         data: {
@@ -127,6 +127,7 @@ export default _.defaults({
                         data: {
                             name: null,
                             ref: null,
+                            className: null,
                         }
                     });
                     return;
@@ -152,8 +153,11 @@ export default _.defaults({
                 });
 
                 this.updateScreenData({
-                    keys: ['item', 'removeClassName'],
-                    data: true,
+                    key: 'item',
+                    data: {
+                        removeClassName: true,
+                        className: null,
+                    }
                 });
 
                 // if (hits === opts.maxHits) {
