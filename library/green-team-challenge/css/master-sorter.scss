@@ -12,6 +12,7 @@
     }
 
     .item-name {
+        transform: translateX(-40%);
         transition: opacity .5s;
         opacity: 0;
 
@@ -30,7 +31,7 @@
         bottom: 0;
         transition: transform .5s;
         width: 75%;
-        height: 50%;
+        height: 75%;
 
         .items {
             @include cover;

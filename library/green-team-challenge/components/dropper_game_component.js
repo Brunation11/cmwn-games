@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import Catcher from 'shared/components/catcher/0.3';
 import Catchable from 'shared/components/catchable/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
@@ -24,13 +26,14 @@ export default function (props, ref, key, opts = {}) {
             reCatchable={true}
             becomes={v.becomes}
             children={v.children}
-        />,
+        />
     );
 
     var binComponents = _.map(opts.binNames, name =>
         <skoash.Component className={name} message={name} />
     );
 
+    var scale = _.get(props, 'gameState.scale', 1);
     var start = _.get(props, `${levelPath}.start`, false);
     var gameComplete = _.get(props, `${levelPath}.complete`, false);
     var drop = _.get(props, 'data.manual-dropper.drop', false);
@@ -39,7 +42,9 @@ export default function (props, ref, key, opts = {}) {
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
     var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
-    var itemName = _.get(props, 'data.manual-dropper.itemName', '');
+    var itemName = _.get(props, 'data.item.name', '');
+    var itemTop = _.get(props, 'data.item.top', 0) / scale;
+    var itemLeft = _.get(props, 'data.item.left', 0) / scale;
     var caught = _.get(props, 'data.catcher.caught', '');
     var revealOpen = _.get(props, 'data.reveal.open', false);
     var revealClose = _.get(props, 'data.reveal.close', false);
@@ -92,7 +97,13 @@ export default function (props, ref, key, opts = {}) {
                 />
             </skoash.Component>
             <skoash.Component
-                className="item-name"
+                className={classNames('item-name', {
+                    ACTIVE: itemName,
+                })}
+                style={{
+                    top: itemTop,
+                    left: itemLeft,
+                }}
             >
                 <span>
                     {itemName}

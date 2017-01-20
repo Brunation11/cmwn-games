@@ -102,6 +102,18 @@ export default _.defaults({
             bin: 'tray-stacking',
             children: [
                 <skoash.Selectable
+                    onSelect={function (key) {
+                        var ref = this.refs[key];
+                        var rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
+                        this.updateScreenData({
+                            key: 'item',
+                            data: {
+                                name: _.startCase(ref.props.className),
+                                top: rect.top,
+                                left: rect.left,
+                            }
+                        });
+                    }}
                     list={mapItems([
                         {
                             name: 'emptyBottle',

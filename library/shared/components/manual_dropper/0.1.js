@@ -68,7 +68,14 @@ class Dropper extends skoash.Component {
         var items = this.state.items;
 
         _.each(this.refs.bin.get(amount), v => {
-            items[this.itemCount++] = v;
+            items[this.itemCount++] = (
+                <v.type
+                    {...v.props}
+                    onReady={function () {
+                        this.start();
+                    }}
+                />
+            );
         });
 
         if (shift) delete items[this.firstItemIndex++];
@@ -77,16 +84,14 @@ class Dropper extends skoash.Component {
             items
         }, () => {
             this.updateScreenData({
-                key: [this.props.refsTarget, 'refs'],
-                data: _.filter(this.refs, (v, k) => !k.indexOf(ITEM)),
+                key: this.props.refsTarget,
+                data: {
+                    refs: _.filter(this.refs, (v, k) => !k.indexOf(ITEM)),
+                    next: false,
+                }
             });
 
             this.props.onNext.call(this);
-        });
-
-        this.updateScreenData({
-            key: [this.props.refsTarget, 'next'],
-            data: false,
         });
     }
 
@@ -113,6 +118,12 @@ class Dropper extends skoash.Component {
             this.caught(props.caught);
         }
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.items !== this.state.items) {
+    //         this.invokeChildrenFunction('start');
+    //     }
+    // }
 
     getClassNames() {
         return classNames('manual-dropper', super.getClassNames());
