@@ -436,13 +436,22 @@ img.inline {
 
     .falcon {
         position: absolute;
-        top: 200px;
-        left: 100px;
+        top: -225px;
+        left: -176px;
+        transition: transform 5s;
+        transform: translateX(-300px) translateY(-200px) scale(0.7);
     }
 
     &.OPEN {
-        img {
+        .title {
             animation-name: flip;
+        }
+
+    }
+
+    &.COMPLETE {
+        .falcon {
+            transform: scale(0.7);
         }
     }
 }
