@@ -11,7 +11,13 @@ export default function (props, ref, key) {
             playOnStart="bird-wing-flap"
         >
             <skoash.Audio ref="bird-wing-flap" type="sfx" delay={2000} src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/BirdWingFlap.mp3`} />
-            <skoash.Image className="animated" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_1.1.png`} />
+            <skoash.Image className="animated title" src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_1.1.png`} />
+            <skoash.Sprite
+                className="falcon"
+                src={`${ENVIRONMENT.MEDIA_GAME}SpritesAnimations/Falcon_5-01`}
+                frames={9}
+                animate={true}
+            />
         </skoash.Screen>
     );
 }

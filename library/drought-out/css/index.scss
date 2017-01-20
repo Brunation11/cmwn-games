@@ -426,12 +426,18 @@ img.inline {
         }
     }
 
-    img {
+    .title {
         display: inline-block;
         position: relative;
         z-index: -1;
         margin: 0 auto;
         width: 880px;
+    }
+
+    .falcon {
+        position: absolute;
+        top: 200px;
+        left: 100px;
     }
 
     &.OPEN {
