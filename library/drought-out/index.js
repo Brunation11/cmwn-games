@@ -10,7 +10,7 @@ import HumansAnimalsScreen from './components/humans_animals_screen';
 import InfoUseWaterScreen from './components/info_use_water_screen';
 import BalloonsScreen from './components/balloons_screen';
 import GreatJobScreen from './components/great_job_screen';
-import InfoEnvironmentEffectsScreen from './components/info_environment_effects_screen';
+import DroughtEffectsScreen from './components/drought_effects_screen';
 import EnvironmentEffectsScreen from './components/environment_effects_screen';
 import InfoHumanEffectsScreen from './components/info_human_effects_screen';
 import HumanEffectsScreen from './components/human_effects_screen';
@@ -37,8 +37,8 @@ var DroughtOut = (
             //4: HumansAnimalsScreen,
             //5: InfoUseWaterScreen,
             //6: BalloonsScreen,
-            2: GreatJobScreen,
-            //8: InfoEnvironmentEffectsScreen,
+            //7: GreatJobScreen,
+            2: DroughtEffectsScreen,
             //9: EnvironmentEffectsScreen,
             //10: InfoHumanEffectsScreen,
             //11: HumanEffectsScreen,
