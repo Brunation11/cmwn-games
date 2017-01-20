@@ -7,7 +7,6 @@ import TitleScreen from './components/title_screen';
 import ThinkScreen from './components/think_screen';
 import InfoNoWaterScreen from './components/info_no_water_screen';
 import HumansAnimalsScreen from './components/humans_animals_screen';
-import InfoNeedWaterScreen from './components/info_need_water_screen';
 import InfoUseWaterScreen from './components/info_use_water_screen';
 import BalloonsScreen from './components/balloons_screen';
 import InfoEnvironmentScreen from './components/info_environment_screen';
@@ -34,23 +33,22 @@ var DroughtOut = (
             0: iOSScreen,
             1: TitleScreen,
             2: ThinkScreen,
-            //3: InfoNoWaterScreen,
-            //4: HumansAnimalsScreen,
-            //5: InfoNeedWaterScreen,
-            //6: InfoUseWaterScreen,
-            //7: BalloonsScreen,
-            //8: InfoEnvironmentScreen,
-            //9: InfoEnvironmentEffectsScreen,
-            //10: EnvironmentEffectsScreen,
-            //11: InfoHumanEffectsScreen,
-            //12: HumanEffectsScreen,
-            //13: WhatCanWeDoScreen,
-            //14: InfoDrainScreen,
-            //15: InfoUsingLessScreen,
-            //16: ShowerScreen,
-            //17: ConserveScreen,
-            //18: HeroScreen,
-            //19: FlipScreen
+            3: InfoNoWaterScreen,
+            4: HumansAnimalsScreen,
+            5: InfoUseWaterScreen,
+            6: BalloonsScreen,
+            7: InfoEnvironmentScreen,
+            8: InfoEnvironmentEffectsScreen,
+            9: EnvironmentEffectsScreen,
+            10: InfoHumanEffectsScreen,
+            11: HumanEffectsScreen,
+            12: WhatCanWeDoScreen,
+            13: InfoDrainScreen,
+            //j4: InfoUsingLessScreen,
+            //15: ShowerScreen,
+            //16: ConserveScreen,
+            //17: HeroScreen,
+            //18: FlipScreen
         }}
         menus={{
             quit: QuitScreen,
@@ -59,14 +57,14 @@ var DroughtOut = (
         getBackgroundIndex={screenIndex => {
             if (screenIndex < 2) return 0;
             if (screenIndex === 2) return;
-            if (screenIndex < 6) return 1;
-            if (screenIndex < 9) return 2;
-            if (screenIndex < 14) return 3;
-            if (screenIndex === 14) return 4;
-            if (screenIndex === 15) return 5;
-            if (screenIndex === 16) return 6;
-            if (screenIndex < 19) return 7;
-            if (screenIndex === 19) return 8;
+            if (screenIndex < 5) return 1;
+            if (screenIndex < 8) return 2;
+            if (screenIndex < 13) return 3;
+            if (screenIndex === 13) return 4;
+            if (screenIndex === 14) return 5;
+            if (screenIndex === 15) return 6;
+            if (screenIndex < 18) return 7;
+            if (screenIndex === 18) return 8;
         }}
         assets={[
             <skoash.Audio ref="bkg-0" type="background" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Theme.mp3`} />,
