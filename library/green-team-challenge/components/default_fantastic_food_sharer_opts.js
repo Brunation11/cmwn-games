@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import defaultGameOpts from './default_game_opts';
+import itemsToSort from './items_to_sort';
 
 const PICKUP = 'PICKUP';
 const DROPPED = 'DROPPED';
@@ -7,6 +8,14 @@ const TILT = 'TILT';
 const ITEMS = 'items-';
 
 const CLAW_SRC = CMWN.MEDIA.MOCK.SPRITE + 'player2';
+
+const binNames = [
+    'food-share',
+    'recycle',
+    'landfill',
+    'compost',
+    'liquids',
+];
 
 const onTruckTransitionEnd = function (opts, e) {
     skoash.trigger('updateScreenData', {
@@ -34,13 +43,7 @@ const onItemPickUpTransitionEnd = function (itemRef) {
 
 export default _.defaults({
     gameName: 'fantastic-food-sharer',
-    binNames: [
-        'food-share',
-        'recycle',
-        'landfill',
-        'compost',
-        'liquids',
-    ],
+    binNames,
     getSelectableProps() {
         return {
             onSelect: function (dataRef) {
@@ -84,7 +87,9 @@ export default _.defaults({
                                 let items = this.state.items;
                                 let index = this.firstItemIndex;
                                 let item = items[index];
-                                let newBin = opts.itemsToSort[item.props.becomes].bin;
+                                let newBin = _.find(opts.itemsToSort, itemToSort =>
+                                    itemToSort.name === item.props.becomes
+                                ).bin;
                                 item.props.className = item.props.becomes;
                                 item.props.message = newBin;
                                 item.props['data-message'] = newBin;
@@ -172,27 +177,5 @@ export default _.defaults({
             </skoash.Component>
         );
     },
-    itemsToSort: [
-        {
-            name: 'emptyBottle',
-            bin: 'recycle'
-        },
-        {
-            name: 'appleCore',
-            bin: 'compost'
-        },
-        {
-            name: 'candyBag',
-            bin: 'landfill'
-        },
-        {
-            name: 'fullBottle',
-            bin: 'liquids',
-            becomes: 'emptyBottle'
-        },
-        {
-            name: 'wrappedSnack',
-            bin: 'food-share'
-        }
-    ],
+    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
 }, defaultGameOpts);

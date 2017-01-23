@@ -1,14 +1,17 @@
 import defaultGameOpts from './default_game_opts';
+import itemsToSort from './items_to_sort';
+
+const binNames = [
+    'liquids',
+    'recycle',
+    'landfill',
+    'compost',
+];
 
 export default _.defaults({
     gameName: 'priceless-pourer',
     dropperAmount: 4,
-    binNames: [
-        'liquids',
-        'recycle',
-        'landfill',
-        'compost',
-    ],
+    binNames,
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
@@ -43,7 +46,9 @@ export default _.defaults({
                         let items = this.state.items;
                         let index = this.firstItemIndex;
                         let item = items[index];
-                        let newBin = opts.itemsToSort[item.props.becomes].bin;
+                        let newBin = _.find(opts.itemsToSort, itemToSort =>
+                            itemToSort.name === item.props.becomes
+                        ).bin;
                         item.props.className = item.props.becomes;
                         item.props.message = newBin;
                         item.props['data-message'] = newBin;
@@ -82,23 +87,5 @@ export default _.defaults({
 
         return props;
     },
-    itemsToSort: [
-        {
-            name: 'emptyBottle',
-            bin: 'recycle'
-        },
-        {
-            name: 'appleCore',
-            bin: 'compost'
-        },
-        {
-            name: 'candyBag',
-            bin: 'landfill'
-        },
-        {
-            name: 'fullBottle',
-            bin: 'liquids',
-            becomes: 'emptyBottle'
-        },
-    ],
+    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
 }, defaultGameOpts);

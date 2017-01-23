@@ -1,7 +1,19 @@
 import defaultGameOpts from './default_game_opts';
 import Catchable from 'shared/components/catchable/0.1';
+import itemsToSort from './items_to_sort';
 
-const mapItems = function (items) {
+const binNames = [
+    'liquids',
+    'food-share',
+    'recycle',
+    'landfill',
+    'compost',
+    'tray-stacking',
+];
+
+const mapItems = function (itemNames) {
+    const items = _.filter(itemsToSort, item => _.includes(itemNames, item.name));
+
     return _.map(items, item =>
         <Catchable
             className={item.name}
@@ -15,14 +27,7 @@ const mapItems = function (items) {
 export default _.defaults({
     gameName: 'master-sorter',
     dropperAmount: 2,
-    binNames: [
-        'liquids',
-        'food-share',
-        'recycle',
-        'landfill',
-        'compost',
-        'tray-stacking',
-    ],
+    binNames,
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
@@ -65,7 +70,10 @@ export default _.defaults({
 
             if (opts.itemRef) {
                 onAnimationEnd = () => {
-                    let newBin = opts.itemsToSort[itemRef.props.becomes].bin;
+                    debugger;
+                    let newBin = _.find(opts.itemsToSort, itemToSort =>
+                        itemToSort.name === itemRef.props.becomes
+                    ).bin;
                     itemRef.props.className = itemRef.props.becomes;
                     itemRef.props.message = newBin;
                     itemRef.props['data-message'] = newBin;
@@ -95,7 +103,9 @@ export default _.defaults({
                             let items = this.state.items;
                             let index = this.firstItemIndex;
                             let item = items[index];
-                            let newBin = opts.itemsToSort[item.props.becomes].bin;
+                            let newBin = _.find(opts.itemsToSort, itemToSort =>
+                                itemToSort.name === item.props.becomes
+                            ).bin;
                             item.props.className = item.props.becomes;
                             item.props.message = newBin;
                             item.props['data-message'] = newBin;
@@ -245,27 +255,11 @@ export default _.defaults({
                         });
                     }}
                     list={mapItems([
-                        {
-                            name: 'emptyBottle',
-                            bin: 'recycle'
-                        },
-                        {
-                            name: 'appleCore',
-                            bin: 'compost'
-                        },
-                        {
-                            name: 'candyBag',
-                            bin: 'landfill'
-                        },
-                        {
-                            name: 'fullBottle',
-                            bin: 'liquids',
-                            becomes: 'emptyBottle'
-                        },
-                        {
-                            name: 'wrappedSnack',
-                            bin: 'food-share'
-                        }
+                        'emptyBottle',
+                        'appleCore',
+                        'candyBag',
+                        'fullBottle',
+                        'wrappedSnack',
                     ])}
                 />
             ]
