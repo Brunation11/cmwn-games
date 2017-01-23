@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "67a746794aaaf85c9e31"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4e43622b99f6d053a3a8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33199,7 +33199,7 @@
 	            _get(MediaCollection.prototype.__proto__ || Object.getPrototypeOf(MediaCollection.prototype), 'componentWillReceiveProps', this).call(this, props);
 
 	            if (props.play && props.play !== this.props.play) {
-	                this.play(props.play);
+	                props.play.split(' ').forEach(this.play.bind(this));
 	            }
 	        }
 	    }]);
@@ -33556,7 +33556,6 @@
 	                }, 2000);
 	            }
 
-	            debugger;
 	            if (this.props.openTarget) {
 	                this.updateScreenData({
 	                    key: this.props.openTarget,

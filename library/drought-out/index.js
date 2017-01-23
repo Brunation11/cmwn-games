@@ -38,7 +38,7 @@ var DroughtOut = (
             //7: GreatJobScreen,
             //8: DroughtEffectsScreen,
             //9: EnvironmentEffectsScreen,
-            //12: WhatCanWeDoScreen,
+            2: WhatCanWeDoScreen,
             //13: InfoDrainScreen,
             //j4: InfoUsingLessScreen,
             //15: ShowerScreen,

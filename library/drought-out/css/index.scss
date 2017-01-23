@@ -763,6 +763,8 @@ img.inline {
 
                 &.b {
                     background-position: right top;
+                    pointer-events: none;
+                    cursor: default;
                 }
             }
         }
