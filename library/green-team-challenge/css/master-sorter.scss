@@ -84,7 +84,8 @@
                 height: 100%;
 
                 &.liquids {
-                    @include position(absolute, 300px null null 0);
+                    @include position(absolute, 300px null null -200px);
+                    background-color: $transparent;
                 }
             }
 
@@ -93,6 +94,16 @@
 
                 &::before {
                     content: attr(data-message);
+                }
+
+                &.liquids {
+                    @include position(absolute, 300px null null -200px);
+
+                    &::before {
+                        @include cover;
+                        left: 200px;
+                        background-color: $blue;
+                    }
                 }
             }
         }

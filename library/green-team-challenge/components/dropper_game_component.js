@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import Catcher from 'shared/components/catcher/0.3';
+import Catcher from 'shared/components/catcher/0.4';
 import Catchable from 'shared/components/catchable/0.1';
 import Randomizer from 'shared/components/randomizer/0.1';
 import ManualDropper from 'shared/components/manual_dropper/0.1';

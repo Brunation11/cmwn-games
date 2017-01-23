@@ -55,8 +55,8 @@ export default _.defaults({
 
         props.onTransitionEnd = function (e) {
             let tray = this.refs['items-' + this.firstItemIndex];
-            let itemRef = !opts.itemRef ? tray :
-                tray.refs['children-0'].refs[_.indexOf(tray.refs['children-0'].state.classes, 'SELECTED')];
+            let itemIndex = _.indexOf(tray.refs['children-0'].state.classes, 'SELECTED');
+            let itemRef = !opts.itemRef ? tray : tray.refs['children-0'].refs[itemIndex];
             let DOMNode;
             let onAnimationEnd;
 
@@ -70,17 +70,41 @@ export default _.defaults({
 
             if (opts.itemRef) {
                 onAnimationEnd = () => {
+                    let items = this.state.items;
+                    let index = this.firstItemIndex;
+                    let item = items[index];
                     let newBin = _.find(itemsToSort, itemToSort =>
                         itemToSort.name === itemRef.props.becomes
                     ).bin;
-                    itemRef.props.message = newBin;
-                    itemRef.props['data-message'] = newBin;
+                    let selectable = item.props.children[0];
+                    let selectedItem = selectable.props.list[itemIndex];
+                    selectedItem.props.className = selectedItem.props.becomes;
+                    selectedItem.props.message = newBin;
+                    selectedItem.props['data-message'] = newBin;
+                    items[index] = item;
+                    this.setState({items});
+
+                    this.updateGameData({
+                        keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
+                        data: opts.score + opts.pointsPerItem,
+                    });
 
                     this.updateScreenData({
                         key: 'item',
                         data: {
                             removeClassName: true,
                             className: null,
+                        },
+                        callback: () => {
+                            tray.refs['children-0'].setState({classes: {}});
+                            this.updateScreenData({
+                                key: 'item',
+                                data: {
+                                    name: null,
+                                    ref: null,
+                                    className: null,
+                                }
+                            });
                         }
                     });
 
@@ -135,13 +159,18 @@ export default _.defaults({
                 });
 
                 if (opts.itemRef) {
-                    opts.itemRef.addClassName('CAUGHT');
                     this.updateScreenData({
-                        key: 'item',
-                        data: {
-                            name: null,
-                            ref: null,
-                            className: null,
+                        keys: ['item', 'className'],
+                        data: 'CAUGHT',
+                        callback: () => {
+                            this.updateScreenData({
+                                key: 'item',
+                                data: {
+                                    name: null,
+                                    ref: null,
+                                    className: null,
+                                }
+                            });
                         }
                     });
                     return;
