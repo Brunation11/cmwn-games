@@ -49,37 +49,67 @@ export default _.defaults({
         let props = defaultGameOpts.getDropperProps.call(this, opts);
 
         props.onTransitionEnd = function (e) {
-            let itemRef = this.refs['items-' + this.firstItemIndex];
+            let tray = this.refs['items-' + this.firstItemIndex];
+            let itemRef = !opts.itemRef ? tray :
+                tray.refs['children-0'].refs[_.indexOf(tray.refs['children-0'].state.classes, 'SELECTED')];
             let DOMNode;
             let onAnimationEnd;
 
-            if (this.props.dropClass !== 'LIQUIDS') return;
+            if (e.propertyName !== 'top') return;
+            if (opts.itemClassName !== 'LIQUIDS' && this.props.dropClass !== 'LIQUIDS') return;
             if (itemRef.props.message !== 'liquids') return;
 
             DOMNode = ReactDOM.findDOMNode(itemRef);
 
             if (DOMNode !== e.target) return;
 
-            onAnimationEnd = () => {
-                this.pickUp(_.defaults({
-                    onPickUp: function () {
-                        let items = this.state.items;
-                        let index = this.firstItemIndex;
-                        let item = items[index];
-                        let newBin = opts.itemsToSort[item.props.becomes].bin;
-                        item.props.className = item.props.becomes;
-                        item.props.message = newBin;
-                        item.props['data-message'] = newBin;
-                        items[index] = item;
-                        this.setState({items});
-                        DOMNode.removeEventListener('animationend', onAnimationEnd);
-                    }
-                }, this.props));
-            };
+            if (opts.itemRef) {
+                onAnimationEnd = () => {
+                    let newBin = opts.itemsToSort[itemRef.props.becomes].bin;
+                    itemRef.props.className = itemRef.props.becomes;
+                    itemRef.props.message = newBin;
+                    itemRef.props['data-message'] = newBin;
 
-            if (!itemRef.state.className || _.includes(itemRef.state.className, 'POUR')) {
-                DOMNode.addEventListener('animationend', onAnimationEnd);
-                itemRef.addClassName('POUR');
+                    this.updateScreenData({
+                        key: 'item',
+                        data: {
+                            removeClassName: true,
+                            className: null,
+                        }
+                    });
+
+                    DOMNode.removeEventListener('animationend', onAnimationEnd);
+                };
+
+                if (!_.includes(opts.itemClassName, 'POUR')) {
+                    DOMNode.addEventListener('animationend', onAnimationEnd);
+                    this.updateScreenData({
+                        keys: ['item', 'className'],
+                        data: 'POUR',
+                    });
+                }
+            } else {
+                onAnimationEnd = () => {
+                    this.pickUp(_.defaults({
+                        onPickUp: function () {
+                            let items = this.state.items;
+                            let index = this.firstItemIndex;
+                            let item = items[index];
+                            let newBin = opts.itemsToSort[item.props.becomes].bin;
+                            item.props.className = item.props.becomes;
+                            item.props.message = newBin;
+                            item.props['data-message'] = newBin;
+                            items[index] = item;
+                            this.setState({items});
+                            DOMNode.removeEventListener('animationend', onAnimationEnd);
+                        }
+                    }, this.props));
+                };
+
+                if (!_.includes(DOMNode.className, 'POUR')) {
+                    DOMNode.addEventListener('animationend', onAnimationEnd);
+                    itemRef.addClassName('POUR');
+                }
             }
         };
 

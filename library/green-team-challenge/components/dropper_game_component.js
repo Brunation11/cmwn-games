@@ -44,7 +44,6 @@ export default function (props, ref, key, opts = {}) {
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.item.name', '');
     var itemRef = _.get(props, 'data.item.ref');
-    var itemClassName = _.get(props, 'data.item.className');
     var removeItemClassName = _.get(props, 'data.item.removeClassName');
     var itemTop = _.get(props, 'data.item.top', 0) / scale;
     var itemLeft = _.get(props, 'data.item.left', 0) / scale;
@@ -55,6 +54,7 @@ export default function (props, ref, key, opts = {}) {
     if (itemRef) catchableRefs = [itemRef];
 
     opts.itemRef = itemRef;
+    opts.itemClassName = _.get(props, 'data.item.className');
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
@@ -140,7 +140,7 @@ export default function (props, ref, key, opts = {}) {
                 caught={caught}
                 dropClass={dropClass}
                 itemRef={itemRef}
-                itemClassName={itemClassName}
+                itemClassName={opts.itemClassName}
                 removeItemClassName={removeItemClassName}
                 {...dropperProps}
             />
