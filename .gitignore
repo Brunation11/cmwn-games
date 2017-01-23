@@ -10,4 +10,3 @@ Thumbs.db
 **/*.swo
 scsslint.json
 .vscode
-jsconfig.json
