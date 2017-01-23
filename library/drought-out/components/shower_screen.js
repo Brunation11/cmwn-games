@@ -9,11 +9,11 @@ export default function (props, ref, key) {
             key={key}
             id="shower"
         >
-            <skoash.Audio type="voiceOver" src="media/S_16/VO_16.1.mp3"/>
-            <skoash.Image src="media/S_16/img_16.1.png"/>
+            <skoash.Audio type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/IfYouDecrease.mp3`}/>
+            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_14.1.png`}/>
             <p>Turn each card.</p>
             <skoash.Component className="flip-card-component bt">
-                <Selectable
+                <skoash.Selectable
                     ref="selectable-card"
                     className="flip-card-component"
                     list={[
@@ -34,14 +34,14 @@ export default function (props, ref, key) {
                     dataTarget="selectable"
                 />
             </skoash.Component>
-            <Reveal
+            <skoash.Reveal
                 ref="reveal"
                 hide={true}
                 openReveal={_.get(props, 'data.selectable.target.props.message')}
                 assets={[
-                    <skoash.Audio ref="day" type="voiceOver" src="media/S_16/VO_16.2.mp3" />,
-                    <skoash.Audio ref="week" type="voiceOver" src="media/S_16/VO_16.3.mp3" />,
-                    <skoash.Audio ref="year" type="voiceOver" src="media/S_16/VO_16.4.mp3" />
+                    <skoash.Audio ref="day" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/5Gallons.mp3`} />,
+                    <skoash.Audio ref="week" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/35Gallons.mp3`} />,
+                    <skoash.Audio ref="year" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/1680Gallons.mp3`} />,
                 ]}
             />
         </skoash.Screen>

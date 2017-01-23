@@ -13,8 +13,8 @@ import GreatJobScreen from './components/great_job_screen';
 import DroughtEffectsScreen from './components/drought_effects_screen';
 import EnvironmentEffectsScreen from './components/environment_effects_screen';
 import WhatCanWeDoScreen from './components/what_can_we_do_screen';
-import InfoDrainScreen from './components/info_drain_screen';
-import InfoUsingLessScreen from './components/info_using_less_screen';
+import DrainScreen from './components/drain_screen';
+import UsingLessScreen from './components/using_less_screen';
 import ShowerScreen from './components/shower_screen';
 import ConserveScreen from './components/conserve_screen';
 import HeroScreen from './components/hero_screen';
@@ -39,12 +39,12 @@ var DroughtOut = (
             //8: DroughtEffectsScreen,
             //9: EnvironmentEffectsScreen,
             //10: WhatCanWeDoScreen,
-            //11: InfoDrainScreen,
-            2: InfoUsingLessScreen,
-            //15: ShowerScreen,
-            //16: ConserveScreen,
-            //17: HeroScreen,
-            //18: FlipScreen
+            //11: DrainScreen,
+            //12: UsingLessScreen,
+            2: ShowerScreen,
+            //: ConserveScreen,
+            //: HeroScreen,
+            //: FlipScreen
         }}
         menus={{
             quit: QuitScreen,
