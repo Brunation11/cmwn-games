@@ -9,7 +9,7 @@ html {
 }
 
 .skoash-game {
-    // font-family: 'Chelsea Market';
+    font-family: 'Chelsea Market';
 
     > .menu {
         position: absolute;
@@ -80,6 +80,9 @@ button {
         info-customize-your-own-drone
         customize-your-drone
         parts-of-a-drone
+        drone-level-1
+        drone-level-2
+        drone-level-3
         flip;
 
     $backgrounds:
@@ -95,21 +98,10 @@ button {
         bkg-10
         bkg-10
         bkg-9
+        bkg-7
+        bkg-7
+        bkg-7
         bkg-5;
-    //     bkg-1
-    //     bkg-1
-    //     bkg-3
-    //     bkg-3
-    //     bkg-3
-    //     bkg-1
-    //     bkg-3
-    //     bkg-1
-    //     bkg-5
-    //     bkg-4
-    //     bkg-4
-    //     bkg-4
-    //     bkg-4
-    //     bkg-1;
 
     &:not(.MENU) {
         @include screen-backgrounds($screens, $backgrounds);
@@ -122,27 +114,25 @@ button {
     .background {
         $background-titles:
             title
-            // bkg-1
             bkg-2
             bkg-3
             bkg-4
             bkg-5
             bkg-6
+            bkg-7
             bkg-9
             bkg-10;
 
         $background-images:
-        //     '#{$sprite}DroneZone.gif'
             '#{$image}BKG.1.jpg'
             '#{$image}BKG.2.jpg'
             '#{$image}BKG.3.jpg'
             '#{$image}BKG.4.jpg'
             '#{$image}BKG.5.jpg'
             '#{$image}BKG.6.jpg'
+            '#{$image}BKG.7.jpg'
             '#{$image}BKG.9.jpg'
             '#{$image}BKG.10.jpg';
-            // '#{$image}BKG.7.jpg'
-            // '#{$image}BKG.8.jpg'
 
         @for $i from 1 through length($background-titles) {
             &.#{nth($background-titles, $i)} {
@@ -169,17 +159,10 @@ button {
         }
     }
 
-    &.fact {
-        // @include background('#{$frame}monarch.fact.png');
-        margin-left: 40px;
-
-        p {
-            font-size: 30px;
-        }
-    }
-
-    &.replay {
-        // @include background('#{$frame}try.again.frame.png');
+    &.fact,
+    &.replay,
+    &.complete {
+        @include background('#{$image}flygameframe.png');
     }
 
     .content {
