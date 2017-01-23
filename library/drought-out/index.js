@@ -12,8 +12,6 @@ import BalloonsScreen from './components/balloons_screen';
 import GreatJobScreen from './components/great_job_screen';
 import DroughtEffectsScreen from './components/drought_effects_screen';
 import EnvironmentEffectsScreen from './components/environment_effects_screen';
-import InfoHumanEffectsScreen from './components/info_human_effects_screen';
-import HumanEffectsScreen from './components/human_effects_screen';
 import WhatCanWeDoScreen from './components/what_can_we_do_screen';
 import InfoDrainScreen from './components/info_drain_screen';
 import InfoUsingLessScreen from './components/info_using_less_screen';
@@ -39,9 +37,7 @@ var DroughtOut = (
             //6: BalloonsScreen,
             //7: GreatJobScreen,
             //8: DroughtEffectsScreen,
-            2: EnvironmentEffectsScreen,
-            //10: InfoHumanEffectsScreen,
-            //11: HumanEffectsScreen,
+            //9: EnvironmentEffectsScreen,
             //12: WhatCanWeDoScreen,
             //13: InfoDrainScreen,
             //j4: InfoUsingLessScreen,
