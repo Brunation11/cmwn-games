@@ -70,11 +70,9 @@ export default _.defaults({
 
             if (opts.itemRef) {
                 onAnimationEnd = () => {
-                    debugger;
-                    let newBin = _.find(opts.itemsToSort, itemToSort =>
+                    let newBin = _.find(itemsToSort, itemToSort =>
                         itemToSort.name === itemRef.props.becomes
                     ).bin;
-                    itemRef.props.className = itemRef.props.becomes;
                     itemRef.props.message = newBin;
                     itemRef.props['data-message'] = newBin;
 
@@ -95,30 +93,6 @@ export default _.defaults({
                         keys: ['item', 'className'],
                         data: 'POUR',
                     });
-                }
-            } else {
-                onAnimationEnd = () => {
-                    this.pickUp(_.defaults({
-                        onPickUp: function () {
-                            let items = this.state.items;
-                            let index = this.firstItemIndex;
-                            let item = items[index];
-                            let newBin = _.find(opts.itemsToSort, itemToSort =>
-                                itemToSort.name === item.props.becomes
-                            ).bin;
-                            item.props.className = item.props.becomes;
-                            item.props.message = newBin;
-                            item.props['data-message'] = newBin;
-                            items[index] = item;
-                            this.setState({items});
-                            DOMNode.removeEventListener('animationend', onAnimationEnd);
-                        }
-                    }, this.props));
-                };
-
-                if (!_.includes(DOMNode.className, 'POUR')) {
-                    DOMNode.addEventListener('animationend', onAnimationEnd);
-                    itemRef.addClassName('POUR');
                 }
             }
         };
