@@ -16,6 +16,12 @@ import InfoWantedYourOwnDroneScreen from './components/info_wanted_your_own_dron
 import InfoCustomizeYourOwnDroneScreen from './components/info_customize_your_own_drone_screen';
 import CustomizeYourDroneScreen from './components/customize_your_drone_screen';
 import PartsOfADroneScreen from './components/parts_of_a_drone_screen';
+import DroneLevelOneScreen from './components/drone_level_one_screen';
+import LevelOneScreen from './components/level_one_screen';
+import DroneLevelTwoScreen from './components/drone_level_two_screen';
+import LevelTwoScreen from './components/level_two_screen';
+import DroneLevelThreeScreen from './components/drone_level_three_screen';
+import LevelThreeScreen from './components/level_three_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -37,6 +43,12 @@ skoash.start(
             InfoCustomizeYourOwnDroneScreen,
             CustomizeYourDroneScreen,
             PartsOfADroneScreen,
+            DroneLevelOneScreen,
+            LevelOneScreen,
+            DroneLevelTwoScreen,
+            LevelTwoScreen,
+            DroneLevelThreeScreen,
+            LevelThreeScreen,
             FlipScreen
         ]}
         menus={{
@@ -102,6 +114,12 @@ skoash.start(
                 type="background"
                 src={`${MEDIA.EFFECT}BKG_5.mp3`}
                 loop
+            />,
+            <skoash.Audio
+                ref="bkg-6"
+                type="background"
+                src={`${MEDIA.EFFECT}BKG_6.mp3`}
+                loop
             />
         ]}
         getBackgroundIndex={(index, id) => {
@@ -125,6 +143,14 @@ skoash.start(
                     return 3;
                 case 'parts-of-a-drone':
                     return 4;
+                case 'drone-level-1':
+                case 'phaser-level-1':
+                    return 5;
+                case 'drone-level-2':
+                case 'phaser-level-2':
+                case 'drone-level-3':
+                case 'phaser-level-3':
+                    return 6;
             }
         }}
     />
