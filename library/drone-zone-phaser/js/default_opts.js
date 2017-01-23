@@ -185,9 +185,9 @@ export default {
         mailbox1: 'mailboxs',
         mailbox2: 'mailboxs',
         extinguisher: 'extinguishers',
-        farming1 : 'seeds',
-        farming2 : 'waters',
-        farming3 : 'fertilizers',
+        farming1: 'seeds',
+        farming2: 'waters',
+        farming3: 'fertilizers',
     },
     itemAmounts: {
         blank: 0,

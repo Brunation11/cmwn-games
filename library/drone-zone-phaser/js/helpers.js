@@ -1,5 +1,3 @@
-import addItems from 'shared/phaser/methods/add_items/0.1';
-
 import makeBackground from './make_background';
 import makePlatforms from './make_platforms';
 import makeItems from './make_items';

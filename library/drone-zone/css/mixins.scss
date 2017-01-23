@@ -111,7 +111,7 @@
         &::after {
             display: block;
             position: absolute;
-            border-radius: 50px 50px 50px 50px;
+            border-radius: 50px;
             height: 100%;
             content: '';
         }
@@ -136,8 +136,8 @@
 
             background: $meter-color;
             background-repeat: no-repeat;
-            background-size: auto 100%;
             background-position: right;
+            background-size: auto 100%;
 
             width: 0;
         }

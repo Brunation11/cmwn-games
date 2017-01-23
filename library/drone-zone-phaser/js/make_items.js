@@ -31,7 +31,13 @@ export default function () {
 
     for (let left = 500; left < this.game.world.width; left += 200) {
         let object = objects.shift();
-        let top = groups[object] === 'fires' || groups[object] === 'powerlines' ? 300 : groups[object] === 'mailboxs' || groups[object] === 'plants' ? 400 : 200 * _.random(0, 2);
+        let top = groups[object] === 'fires' ||
+                  groups[object] === 'powerlines' ?
+                  300 :
+                  groups[object] === 'mailboxs' ||
+                  groups[object] === 'plants' ?
+                  400 :
+                  200 * _.random(0, 2);
         placeObject(object, top, left);
         if (!objects.length) objects = getObjects([], this.opts.itemAmounts);
     }
