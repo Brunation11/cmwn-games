@@ -48,7 +48,7 @@ export default function (props, ref, key, opts = {}) {
 
     getGameSrc = function () {
         if (!_.get(props, 'data.game.screenStart')) return;
-        return `../monarch-phaser/index.html?v=${opts.level}`;
+        return `../drone-zone-phaser/index.html?v=${opts.level}`;
     };
 
     onOpenReveal = function () {
@@ -125,11 +125,11 @@ export default function (props, ref, key, opts = {}) {
                     open: 'fact-2',
                 }
             });
-        } else if (prevMessage === 'fact-2' && stars > 2) {
+        } else if (prevMessage === 'fact-2' && stars > 1) {
             this.updateGameState({
                 path: 'reveal',
                 data: {
-                    open: 'fact-3',
+                    open: 'complete',
                 }
             });
         } else {
@@ -212,6 +212,9 @@ export default function (props, ref, key, opts = {}) {
                 onRespond={onRespond}
             />
             <skoash.Timer
+                leadingContent={
+                    <span className="label">TIME</span>
+                }
                 countDown
                 timeout={120000}
                 onComplete={onTimerComplete}
@@ -256,7 +259,6 @@ export default function (props, ref, key, opts = {}) {
                 />
             </skoash.Component>
             <skoash.Reveal
-                openOnStart="instructions"
                 openTarget="reveal"
                 openReveal={_.get(props, 'data.reveal.open', false)}
                 closeReveal={_.get(props, 'data.reveal.close', false)}
@@ -264,66 +266,48 @@ export default function (props, ref, key, opts = {}) {
                 onOpen={onOpenReveal}
                 list={[
                     <skoash.Component
-                        ref="instructions"
-                        className="frame square instructions"
-                        type="li"
-                    >
-                        <div className="content">
-                            {opts.instructions}
-                        </div>
-                    </skoash.Component>,
-                    <skoash.Component
                         ref="fact-1"
                         className="fact frame square"
                         type="li"
                     >
-                        <div className="content">
-                            {opts.fact1Content}
-                        </div>
+                        <h1 className="header">DRONE FACT</h1>
+                        {opts.fact1Content}
                     </skoash.Component>,
                     <skoash.Component
                         ref="fact-2"
                         className="fact frame square"
                         type="li"
                     >
-                        <div className="content">
-                            {opts.fact2Content}
-                        </div>
+                        <h1 className="header">DRONE FACT</h1>
+                        {opts.fact2Content}
                     </skoash.Component>,
                     <skoash.Component
-                        ref="fact-3"
-                        className="fact frame square"
+                        ref="complete"
+                        className="complete frame square"
                         type="li"
                     >
-                        <div className="content">
-                            {opts.fact3Content}
-                        </div>
+                        <h1 className="header">LEVEL {opts.level} COMPLETE!</h1>
+                        {opts.completeContent}
                     </skoash.Component>,
                     <skoash.Component
                         ref="replay"
                         className="replay frame square"
                         type="li"
                     >
-                        <div className="content">
-                            <p>
-                                Don't give up!<br/>
-                                You still have another<br/>
-                                chance to help the<br/>
-                                Monarch complete<br/>
-                                its mission!
-                            </p>
-                        </div>
+                        <h1 className="header">TRY AGAIN</h1>
+                        <p className="copy">
+                            You lost this round, but
+                            <br />
+                            you have another chance
+                            <br />
+                            to deliver victory!
+                        </p>
                     </skoash.Component>,
                 ]}
             />
             <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.open')}
             >
-                <skoash.Audio
-                    type="voiceOver"
-                    ref="instructions"
-                    src={`${MEDIA.VO}${opts.instructionsVO}.mp3`}
-                />
                 <skoash.Audio
                     type="voiceOver"
                     ref="fact-1"
@@ -337,14 +321,13 @@ export default function (props, ref, key, opts = {}) {
                 />
                 <skoash.Audio
                     type="voiceOver"
-                    ref="fact-3"
-                    src={`${MEDIA.VO}${opts.fact3VO}.mp3`}
-                    complete={_.get(props, `gameState.data.game.levels.${opts.level}.fact3Complete`, false)}
+                    ref="complete"
+                    src={`${MEDIA.VO}${opts.completeVO}.mp3`}
                 />
                 <skoash.Audio
                     type="voiceOver"
                     ref="replay"
-                    src={`${MEDIA.VO}DontGiveUp.mp3`}
+                    src={`${MEDIA.VO}TryAgain.mp3`}
                     complete
                 />
             </skoash.MediaCollection>
