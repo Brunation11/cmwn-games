@@ -92,20 +92,30 @@ export default _.defaults({
     getDropperProps(opts) {
         return {
             onTransitionEnd: function (e) {
-                let tray = this.refs['items-' + this.firstItemIndex];
+                let tray = this.getFirstItem();
                 let itemIndex = _.indexOf(tray.refs['children-0'].state.classes, 'SELECTED');
                 let itemRef = !opts.itemRef ? tray : tray.refs['children-0'].refs[itemIndex];
                 let DOMNode;
                 let onAnimationEnd;
 
-                if (!opts.itemRef ||
-                    e.propertyName !== 'top' ||
+                if (e.propertyName !== 'top' ||
                     (
                         !_.includes(opts.itemClassName, 'LIQUIDS') &&
                         !_.includes(this.props.dropClass, 'LIQUIDS')
                     )
                 ) {
                     return;
+                }
+
+                if (!opts.itemRef) {
+                    this.pickUp();
+                    this.updateScreenData({
+                        key: 'manual-dropper',
+                        data: {
+                            drop: false,
+                            dropClass: '',
+                        }
+                    });
                 }
 
                 if (itemRef.props.message !== 'liquids') {
