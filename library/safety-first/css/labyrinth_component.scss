@@ -388,8 +388,8 @@
         }
 
         .interactive-item {
-            $item-lefts: 750 710 576 426 395 305 640;
-            $item-tops:  334 180 142 135 455 224 297;
+            $item-lefts: 750 710 557 426 385 280 295;
+            $item-tops:  334 130  88 135 455 210 107;
             @for $i from 1 through 7 {
                 &.item-#{$i} {
                     top: #{nth($item-tops, $i)}px;
@@ -406,10 +406,10 @@
             }
 
             &[class*='item-']::before {
-                top: -650%;
-                left: -650%;
-                width: 1400%;
-                height: 1400%;
+                top: -400%;
+                left: -400%;
+                width: 900%;
+                height: 900%;
             }
 
             &.item-1 {
@@ -426,74 +426,74 @@
 
             &.item-2 {
                 &::before {
-                    background-position: -421px -5px;
+                    background-position: -270px 0;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -421px -147px;
+                        background-position: -270px -90px;
                     }
                 }
             }
 
             &.item-3 {
                 &::before {
-                    left: -950%;
-                    background-position: -592px 0;
-                    width: 2000%;
+                    left: -600%;
+                    background-position: -380px 0;
+                    width: 1300%;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -592px -140px;
+                        background-position: -380px -90px;
                     }
                 }
             }
 
             &.item-4 {
                 &::before {
-                    background-position: -1021px -3px;
+                    background-position: -657px 0;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -1021px -142px;
+                        background-position: -657px -90px;
                     }
                 }
             }
 
             &.item-5 {
                 &::before {
-                    background-position: -819px -1px;
+                    background-position: -525px 0;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -819px -144px;
+                        background-position: -525px -90px;
                     }
                 }
             }
 
             &.item-6 {
                 &::before {
-                    background-position: -1212px -4px;
+                    background-position: -780px -2px;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -1213px -144px;
+                        background-position: -780px -95px;
                     }
                 }
             }
 
             &.item-7 {
                 &::before {
-                    background-position: -1418px 2px;
+                    background-position: -912px 0;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -1418px -140px;
+                        background-position: -1013px -90px;
                     }
                 }
             }
