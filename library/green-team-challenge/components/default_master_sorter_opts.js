@@ -68,6 +68,7 @@ export default _.defaults({
     gameName: 'master-sorter',
     dropperAmount: 2,
     binNames,
+    collideFraction: .4,
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
