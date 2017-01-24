@@ -86,7 +86,10 @@ export default _.defaults({
 
                 if (!opts.itemRef ||
                     e.propertyName !== 'top' ||
-                    (!_.includes(opts.itemClassName, 'LIQUIDS') && !_.includes(this.props.dropClass, 'LIQUIDS'))
+                    (
+                        !_.includes(opts.itemClassName, 'LIQUIDS') &&
+                        !_.includes(this.props.dropClass, 'LIQUIDS')
+                    )
                 ) {
                     return;
                 }
