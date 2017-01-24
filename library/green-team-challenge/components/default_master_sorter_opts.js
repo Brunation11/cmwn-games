@@ -138,6 +138,24 @@ export default _.defaults({
                         },
                     });
 
+                    if (hits === opts.maxHits) {
+                        setTimeout(() => {
+                            this.updateScreenData({
+                                data: {
+                                    'manual-dropper': {
+                                        next: true,
+                                    },
+                                    item: {
+                                        name: null,
+                                        ref: null,
+                                        className: null,
+                                    }
+                                }
+                            });
+                        }, 1000);
+                        return;
+                    }
+
                     resort.call(this);
 
                     return;
@@ -340,15 +358,23 @@ export default _.defaults({
                     }
                 });
 
-                // if (hits === opts.maxHits) {
-                //     setTimeout(() => {
-                //         this.updateScreenData({
-                //             keys: ['manual-dropper', 'pickUp'],
-                //             data: true,
-                //         });
-                //     }, 1000);
-                //     return;
-                // }
+                if (hits === opts.maxHits) {
+                    setTimeout(() => {
+                        this.updateScreenData({
+                            data: {
+                                'manual-dropper': {
+                                    next: true,
+                                },
+                                item: {
+                                    name: null,
+                                    ref: null,
+                                    className: null,
+                                }
+                            }
+                        });
+                    }, 1000);
+                    return;
+                }
 
                 resort.call(this);
             },
@@ -356,19 +382,25 @@ export default _.defaults({
     },
     itemsToSort: [
         {
+            name: 'tray',
+            bin: 'tray-stacking',
+            children: [
+                <skoash.Selectable
+                    onSelect={onSelect}
+                    list={mapItems([
+                        'emptyBottle',
+                        'appleCore',
+                        'candyBag',
+                        'fullBottle',
+                        'wrappedSnack',
+                    ])}
+                />
+            ]
+        },
+        {
             name: 'lunchBox',
             bin: 'home',
             children: [
-                // <skoash.Selectable
-                //     onSelect={onSelect}
-                //     list={mapItems([
-                //         'emptyBottle',
-                //         'appleCore',
-                //         'candyBag',
-                //         'fullBottle',
-                //         'wrappedSnack',
-                //     ])}
-                // />,
                 <skoash.Selectable
                     onSelect={onSelect}
                     list={mapItems([
