@@ -11,6 +11,20 @@ const binNames = [
     'tray-stacking',
 ];
 
+const onSelect = function (key) {
+    let ref = this.refs[key];
+    let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
+    this.updateScreenData({
+        key: 'item',
+        data: {
+            name: _.startCase(ref.props.className),
+            ref,
+            top: rect.top,
+            left: rect.left,
+        }
+    });
+};
+
 const mapItems = function (itemNames) {
     const items = _.filter(itemsToSort, item => _.includes(itemNames, item.name));
 
@@ -180,6 +194,7 @@ export default _.defaults({
                         let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
                         let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
                         let item = selectable.refs[itemIndex];
+                        if (!item) return;
                         item.addClassName(nextProps.itemClassName);
                     }
 
@@ -188,6 +203,7 @@ export default _.defaults({
                         let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
                         let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
                         let item = selectable.refs[itemIndex];
+                        if (!item) return;
                         item.removeAllClassNames();
                         this.updateScreenData({
                             key: 'item',
@@ -204,8 +220,8 @@ export default _.defaults({
                     let tray = this.getFirstItem();
                     let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
                     let name = _.startCase(tray.props.className);
-                    let left = rect.left;
-                    let top = rect.top;
+                    let left = rect.left + (rect.right - rect.left) * .8 / 2;
+                    let top = rect.top + (rect.bottom - rect.top) * .8 / 2;
 
                     this.updateScreenData({
                         key: 'item',
@@ -219,10 +235,16 @@ export default _.defaults({
             },
             onNext: function () {
                 this.updateScreenData({
-                    keys: ['item', 'amount'],
-                    data: _.reduce(this.getFirstItem().refs['children-0'].refs, (a, ref) =>
-                        a + (ref.props.message === 'liquids' ? 2 : 1)
-                    , 0),
+                    data: {
+                        item: {
+                            amount: _.reduce(this.getFirstItem().refs['children-0'].refs, (a, ref) =>
+                                a + (ref.props.message === 'liquids' ? 2 : 1)
+                            , 0),
+                        },
+                        'manual-dropper': {
+                            selectItem: false,
+                        },
+                    }
                 });
             },
         };
@@ -269,8 +291,16 @@ export default _.defaults({
 
                 if (_.get(bucketRef, 'props.message') !== 'liquids') {
                     this.updateScreenData({
-                        keys: ['manual-dropper', 'next'],
-                        data: true,
+                        data: {
+                            'manual-dropper': {
+                                next: true,
+                            },
+                            item: {
+                                name: null,
+                                ref: null,
+                                className: null,
+                            },
+                        }
                     });
                     return;
                 }
@@ -313,26 +343,20 @@ export default _.defaults({
             name: 'tray',
             bin: 'tray-stacking',
             children: [
+                // <skoash.Selectable
+                //     onSelect={onSelect}
+                //     list={mapItems([
+                //         'emptyBottle',
+                //         'appleCore',
+                //         'candyBag',
+                //         'fullBottle',
+                //         'wrappedSnack',
+                //     ])}
+                // />,
                 <skoash.Selectable
-                    onSelect={function (key) {
-                        let ref = this.refs[key];
-                        let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
-                        this.updateScreenData({
-                            key: 'item',
-                            data: {
-                                name: _.startCase(ref.props.className),
-                                ref,
-                                top: rect.top,
-                                left: rect.left,
-                            }
-                        });
-                    }}
+                    onSelect={onSelect}
                     list={mapItems([
                         'emptyBottle',
-                        'appleCore',
-                        'candyBag',
-                        'fullBottle',
-                        'wrappedSnack',
                     ])}
                 />
             ]

@@ -40,16 +40,10 @@
 
             > * {
                 @include master-sorter-catchable;
+                @include master-sorter-tray;
                 background-color: $blue;
                 width: 250px;
                 height: 250px;
-
-                $lefts: 35 150;
-                @for $i from 1 through length($lefts) {
-                    &:nth-of-type(#{$i}) {
-                        left: percentage(nth($lefts, $i) / 100);
-                    }
-                }
 
                 .catchable {
                     @include master-sorter-tray-item;

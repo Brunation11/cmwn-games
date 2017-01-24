@@ -150,6 +150,27 @@
     }
 }
 
+@mixin master-sorter-tray {
+    $lefts: 35 150;
+    @for $i from 1 through length($lefts) {
+        &:nth-of-type(#{$i}) {
+            left: percentage(nth($lefts, $i) / 100);
+        }
+    }
+
+    $bins:  LIQUIDS FOOD-SHARE   RECYCLE  LANDFILL   COMPOST TRAY-STACKING;
+    $tops:       70       -250      -250      -250      -250          -250;
+    $lefts:     -15       -205       -15       180       375           565;
+    @for $i from 1 through length($bins) {
+        &.#{nth($bins, $i)} {
+            top: #{nth($tops, $i)}px;
+            left: #{nth($lefts, $i)}px;
+            transform: scale(.5) translateX(-50%) translateY(-50%);
+            transition: top .25s .25s, left .25s 0s, transform .5s;
+        }
+    }
+}
+
 @mixin master-sorter-catchable {
     @include center;
     @include size(60px);
@@ -164,8 +185,6 @@
     $bins:  LIQUIDS FOOD-SHARE   RECYCLE  LANDFILL   COMPOST TRAY-STACKING;
     $tops:       50       -250      -250      -250      -250          -250;
     $lefts:    -120       -270       -80       110       310           500;
-    $tds: $ease-out  $ease-out  $ease-in  $ease-in  $ease-in      $ease-in;
-    $lds:  $ease-in   $ease-in $ease-out $ease-out $ease-out     $ease-out;
     @for $i from 1 through length($bins) {
         &.#{nth($bins, $i)} {
             top: #{nth($tops, $i)}px;
