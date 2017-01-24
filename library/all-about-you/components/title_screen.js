@@ -17,7 +17,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="magnifying-glass"
                 className="magnifying-glass animated"
-                src="media/assets/_images/_title_page/magnifying%20glass.png"
+                src="media/assets/_images/_title_page/magnifying+glass.png"
             />
             <skoash.Image
                 ref="penguine-1"

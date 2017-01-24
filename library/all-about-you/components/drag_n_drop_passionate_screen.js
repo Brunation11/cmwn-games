@@ -92,7 +92,7 @@ export default function (props, ref, key) {
             <skoash.Image
                 ref="banner"
                 className="banner animated"
-                src="media/assets/_images/S_3/text_what_are_you_passionate_about%20copy.png"
+                src="media/assets/_images/S_3/text_what_are_you_passionate_about+copy.png"
             />
             <skoash.Component ref="frame" className="frame animated" />
 
