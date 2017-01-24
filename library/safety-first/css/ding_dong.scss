@@ -39,3 +39,9 @@
         width: 100%;
     }
 }
+
+.skoash-game.SCREEN-ding-dong:not(.DEMO) {
+    .next-screen {
+        display: none;
+    }
+}
