@@ -57,8 +57,6 @@ export default function (props, ref, key, opts = {}) {
     opts.itemRef = itemRef;
     opts.itemClassName = _.get(props, 'data.item.className');
     opts.itemAmount = _.get(props, 'data.item.amount', 0);
-    console.log(opts.itemAmount);
-    console.log(selectItem);
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
