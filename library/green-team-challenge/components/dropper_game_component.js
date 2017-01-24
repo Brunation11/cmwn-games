@@ -41,6 +41,7 @@ export default function (props, ref, key, opts = {}) {
     var next = _.get(props, 'data.manual-dropper.next', false);
     var pickUp = _.get(props, 'data.manual-dropper.pickUp', false);
     var onPickUp = _.get(props, 'data.manual-dropper.onPickUp');
+    var selectItem = _.get(props, 'data.manual-dropper.selectItem');
     var catchableRefs = _.get(props, 'data.manual-dropper.refs', []);
     var itemName = _.get(props, 'data.item.name', '');
     var itemRef = _.get(props, 'data.item.ref');
@@ -55,6 +56,7 @@ export default function (props, ref, key, opts = {}) {
 
     opts.itemRef = itemRef;
     opts.itemClassName = _.get(props, 'data.item.className');
+    opts.itemAmount = _.get(props, 'data.item.amount', 0);
     opts.score = _.get(props, `${levelPath}.score`, 0);
     opts.highScore = _.get(props, `${levelPath}.highScore`, 0);
     opts.left = _.get(props, 'data.manual-dropper.left', 0);
@@ -142,6 +144,7 @@ export default function (props, ref, key, opts = {}) {
                 itemRef={itemRef}
                 itemClassName={opts.itemClassName}
                 removeItemClassName={removeItemClassName}
+                selectItem={selectItem}
                 {...dropperProps}
             />
             <skoash.Component

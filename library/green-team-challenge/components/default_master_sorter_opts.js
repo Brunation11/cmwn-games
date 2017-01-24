@@ -24,6 +24,31 @@ const mapItems = function (itemNames) {
     );
 };
 
+const resort = function () {
+    this.updateScreenData({
+        keys: ['reveal', 'open'],
+        data: 'resort',
+        callback: () => {
+            setTimeout(() => {
+                this.updateScreenData({
+                    data: {
+                        reveal: {
+                            open: null,
+                            close: true,
+                        },
+                        'manual-dropper': {
+                            pickUp: true,
+                        },
+                        catcher: {
+                            caught: false,
+                        }
+                    }
+                });
+            }, 1000);
+        }
+    });
+};
+
 export default _.defaults({
     gameName: 'master-sorter',
     dropperAmount: 2,
@@ -51,24 +76,49 @@ export default _.defaults({
         };
     },
     getDropperProps(opts) {
-        let props = defaultGameOpts.getDropperProps.call(this, opts);
+        return {
+            onTransitionEnd: function (e) {
+                let tray = this.refs['items-' + this.firstItemIndex];
+                let itemIndex = _.indexOf(tray.refs['children-0'].state.classes, 'SELECTED');
+                let itemRef = !opts.itemRef ? tray : tray.refs['children-0'].refs[itemIndex];
+                let DOMNode;
+                let onAnimationEnd;
 
-        props.onTransitionEnd = function (e) {
-            let tray = this.refs['items-' + this.firstItemIndex];
-            let itemIndex = _.indexOf(tray.refs['children-0'].state.classes, 'SELECTED');
-            let itemRef = !opts.itemRef ? tray : tray.refs['children-0'].refs[itemIndex];
-            let DOMNode;
-            let onAnimationEnd;
+                if (!opts.itemRef ||
+                    e.propertyName !== 'top' ||
+                    (!_.includes(opts.itemClassName, 'LIQUIDS') && !_.includes(this.props.dropClass, 'LIQUIDS'))
+                ) {
+                    return;
+                }
 
-            if (e.propertyName !== 'top') return;
-            if (opts.itemClassName !== 'LIQUIDS' && this.props.dropClass !== 'LIQUIDS') return;
-            if (itemRef.props.message !== 'liquids') return;
+                if (itemRef.props.message !== 'liquids') {
+                    let hits = opts.hits + 1;
 
-            DOMNode = ReactDOM.findDOMNode(itemRef);
+                    this.updateGameData({
+                        keys: [_.camelCase(opts.gameName), 'levels', opts.level],
+                        data: {
+                            start: false,
+                            hits,
+                        }
+                    });
 
-            if (DOMNode !== e.target) return;
+                    this.updateScreenData({
+                        key: 'item',
+                        data: {
+                            removeClassName: true,
+                            className: null,
+                        },
+                    });
 
-            if (opts.itemRef) {
+                    resort.call(this);
+
+                    return;
+                }
+
+                DOMNode = ReactDOM.findDOMNode(itemRef);
+
+                if (DOMNode !== e.target) return;
+
                 onAnimationEnd = () => {
                     let items = this.state.items;
                     let index = this.firstItemIndex;
@@ -94,6 +144,7 @@ export default _.defaults({
                         data: {
                             removeClassName: true,
                             className: null,
+                            amount: opts.itemAmount - 1,
                         },
                         callback: () => {
                             tray.refs['children-0'].setState({classes: {}});
@@ -118,41 +169,66 @@ export default _.defaults({
                         data: 'POUR',
                     });
                 }
-            }
-        };
+            },
+            onComponentWillReceiveProps: function (nextProps) {
+                if (nextProps.itemRef != null) {
+                    if (nextProps.itemClassName != null &&
+                        nextProps.itemClassName !== this.props.itemClassName) {
+                        let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
+                        let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
+                        let item = selectable.refs[itemIndex];
+                        item.addClassName(nextProps.itemClassName);
+                    }
 
-        props.onComponentWillReceiveProps = function (nextProps) {
-            if (nextProps.itemRef != null) {
-                if (nextProps.itemClassName != null &&
-                    nextProps.itemClassName !== this.props.itemClassName) {
-                    let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
-                    let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
-                    let item = selectable.refs[itemIndex];
-                    item.addClassName(nextProps.itemClassName);
+                    if (nextProps.removeItemClassName &&
+                        nextProps.removeItemClassName !== this.props.itemClassName) {
+                        let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
+                        let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
+                        let item = selectable.refs[itemIndex];
+                        item.removeAllClassNames();
+                        this.updateScreenData({
+                            key: 'item',
+                            data: {
+                                className: null,
+                                removeClassName: false,
+                            }
+                        });
+                    }
                 }
 
-                if (nextProps.removeItemClassName &&
-                    nextProps.removeItemClassName !== this.props.itemClassName) {
-                    let selectable = this.refs['items-' + this.firstItemIndex].refs['children-0'];
-                    let itemIndex = _.indexOf(selectable.state.classes, selectable.props.selectClass);
-                    let item = selectable.refs[itemIndex];
-                    item.removeAllClassNames();
+                if (nextProps.selectItem &&
+                    nextProps.selectItem !== this.props.selectItem) {
+                    let tray = this.getFirstItem();
+                    let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
+                    let name = _.startCase(tray.props.className);
+                    let left = rect.left;
+                    let top = rect.top;
+
                     this.updateScreenData({
                         key: 'item',
                         data: {
-                            className: null,
-                            removeClassName: false,
-                        }
+                            name,
+                            top,
+                            left,
+                        },
                     });
                 }
-            }
+            },
+            onNext: function () {
+                this.updateScreenData({
+                    keys: ['item', 'amount'],
+                    data: _.reduce(this.getFirstItem().refs['children-0'].refs, (a, ref) =>
+                        a + (ref.props.message === 'liquids' ? 2 : 1)
+                    , 0),
+                });
+            },
         };
-
-        return props;
     },
     getCatcherProps(opts) {
         return {
             onCorrect: function (bucketRef) {
+                let amount = opts.itemAmount - 1;
+
                 this.updateGameData({
                     keys: [_.camelCase(opts.gameName), 'levels', opts.level, 'score'],
                     data: opts.score + opts.pointsPerItem,
@@ -160,8 +236,11 @@ export default _.defaults({
 
                 if (opts.itemRef) {
                     this.updateScreenData({
-                        keys: ['item', 'className'],
-                        data: 'CAUGHT',
+                        key: 'item',
+                        data: {
+                            className: 'CAUGHT',
+                            amount,
+                        },
                         callback: () => {
                             this.updateScreenData({
                                 key: 'item',
@@ -169,14 +248,23 @@ export default _.defaults({
                                     name: null,
                                     ref: null,
                                     className: null,
+                                },
+                                callback: () => {
+                                    if (!amount) {
+                                        this.updateScreenData({
+                                            keys: ['manual-dropper', 'selectItem'],
+                                            data: true,
+                                        });
+                                    }
                                 }
                             });
                         }
                     });
+
                     return;
                 }
 
-                if (bucketRef.props.message !== 'liquids') {
+                if (_.get(bucketRef, 'props.message') !== 'liquids') {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'next'],
                         data: true,
@@ -213,28 +301,7 @@ export default _.defaults({
                 //     return;
                 // }
 
-                this.updateScreenData({
-                    keys: ['reveal', 'open'],
-                    data: 'resort',
-                    callback: () => {
-                        setTimeout(() => {
-                            this.updateScreenData({
-                                data: {
-                                    reveal: {
-                                        open: null,
-                                        close: true,
-                                    },
-                                    'manual-dropper': {
-                                        pickUp: true,
-                                    },
-                                    catcher: {
-                                        caught: false,
-                                    }
-                                }
-                            });
-                        }, 1000);
-                    }
-                });
+                resort.call(this);
             },
         };
     },
@@ -245,8 +312,8 @@ export default _.defaults({
             children: [
                 <skoash.Selectable
                     onSelect={function (key) {
-                        var ref = this.refs[key];
-                        var rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
+                        let ref = this.refs[key];
+                        let rect = ReactDOM.findDOMNode(ref).getBoundingClientRect();
                         this.updateScreenData({
                             key: 'item',
                             data: {
