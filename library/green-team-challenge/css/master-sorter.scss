@@ -81,6 +81,11 @@
                     @include position(absolute, 300px null null -200px);
                     background-color: $transparent;
                 }
+
+                &.home {
+                    @include position(absolute, 750px null null 0);
+                    @include size (100% 200px);
+                }
             }
 
             li {

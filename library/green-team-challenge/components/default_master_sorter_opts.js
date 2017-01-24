@@ -9,6 +9,7 @@ const binNames = [
     'landfill',
     'compost',
     'tray-stacking',
+    'home',
 ];
 
 const onSelect = function (key) {
@@ -228,19 +229,24 @@ export default _.defaults({
                 if (nextProps.selectItem &&
                     nextProps.selectItem !== this.props.selectItem) {
                     let tray = this.getFirstItem();
-                    let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
-                    let name = _.startCase(tray.props.className);
-                    let left = rect.left + (rect.right - rect.left) * .8 / 2;
-                    let top = rect.top + (rect.bottom - rect.top) * .8 / 2;
 
-                    this.updateScreenData({
-                        key: 'item',
-                        data: {
-                            name,
-                            top,
-                            left,
-                        },
-                    });
+                    if (tray.props.message === 'home') {
+                        tray.addClassName('HOME');
+                    } else {
+                        let rect = ReactDOM.findDOMNode(tray).getBoundingClientRect();
+                        let name = _.startCase(tray.props.className);
+                        let left = rect.left + (rect.right - rect.left) * .8 / 2;
+                        let top = rect.top + (rect.bottom - rect.top) * .8 / 2;
+
+                        this.updateScreenData({
+                            key: 'item',
+                            data: {
+                                name,
+                                top,
+                                left,
+                            },
+                        });
+                    }
                 }
             },
             onNext: function () {
@@ -350,8 +356,8 @@ export default _.defaults({
     },
     itemsToSort: [
         {
-            name: 'tray',
-            bin: 'tray-stacking',
+            name: 'lunchBox',
+            bin: 'home',
             children: [
                 // <skoash.Selectable
                 //     onSelect={onSelect}
