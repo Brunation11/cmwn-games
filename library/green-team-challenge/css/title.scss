@@ -5,4 +5,13 @@
     .next-screen {
         @include nav-button(1, 140px, 150px);
     }
+
+    .fireworks {
+        @include cover;
+
+        img {
+            @include cover;
+            z-index: -1;
+        }
+    }
 }
