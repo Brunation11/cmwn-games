@@ -1,6 +1,3 @@
-import Selectable from 'shared/components/selectable/0.1';
-import DroughtReveal from './drought_reveal';
-
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -11,7 +8,7 @@ export default function (props, ref, key) {
             className="bottom-frame"
         >
             <skoash.Audio type="voiceOver" src="media/S_12/VO_12.1.mp3"/>
-            <Selectable
+            <skoash.Selectable
                 ref="selectable"
                 list={[
                     <skoash.Component type="li" />,
@@ -26,7 +23,7 @@ export default function (props, ref, key) {
             />
             <skoash.Component ref="frame" className="frame animated">
                 <skoash.Image src="media/S_12/img_12.6.png" />
-                <DroughtReveal
+                <skoash.Reveal
                     ref="reveal"
                     className="scroll-reveal"
                     openReveal={_.get(props, 'data.selectable.target.props.data-message')}

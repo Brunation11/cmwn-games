@@ -1,6 +1,3 @@
-import Selectable from 'shared/components/selectable/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-
 export default function (props, ref, key) {
     var closeReveal = function () {
         this.updateGameState({
@@ -29,7 +26,7 @@ export default function (props, ref, key) {
                     _.get(props, 'data.reveal.open') ? 'open' : ''
                 }
             />
-            <Selectable
+            <skoash.Selectable
                 ref="selectable"
                 list={[
                     <li
@@ -52,7 +49,7 @@ export default function (props, ref, key) {
                 }}
             />
             <skoash.Component ref="frame" className="frame animated">
-                <Reveal
+                <skoash.Reveal
                     ref="reveal"
                     openReveal={'' + _.get(props, 'data.reveal.index', '')}
                     closeReveal={_.get(props, 'data.reveal.close')}

@@ -7,9 +7,9 @@ export default function (props, ref, key) {
             id="info-use-water"
             className="large-frame"
         >
-            <skoash.Audio type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/ClickTo.mp3`}/>
+            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}ClickTo.mp3`}/>
             <skoash.Component className="frame animated">
-                <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_6.1.png`}/>
+                <skoash.Image src={`${MEDIA.IMAGE}img_6.1.png`}/>
                 <p>
                     Click to reveal things<br /> that we use water for<br /> almost every day!
                 </p>

@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 
-import Selectable from 'shared/components/selectable/0.1';
-import SelectableCanvas from 'shared/components/selectable_canvas/0.1';
+import SelectableCanvas from 'shared/components/selectable_canvas/0.2';
 
 var Item = function (component, context) {
     this.position = {
@@ -59,13 +58,13 @@ var Item = function (component, context) {
         this.left = 0;
     };
 
-  // this.is = function (_type) {
-  //   return $(this.image).is(_type);
-  // };
+    // this.is = function (_type) {
+    //   return $(this.image).is(_type);
+    // };
 
-  // this.id = function () {
-  //   return this.$image.id();
-  // };
+    // this.id = function () {
+    //   return this.$image.id();
+    // };
 
     return this;
 };
@@ -84,7 +83,7 @@ class SelectableCanvasMove extends SelectableCanvas {
     }
 
     bootstrap() {
-        Selectable.prototype.bootstrap.call(this);
+        skoash.Selectable.prototype.bootstrap.call(this);
 
         this.buffer = document.createElement('canvas');
 

@@ -1,6 +1,3 @@
-import Selectable from 'shared/components/selectable/0.1';
-import Reveal from 'shared/components/reveal/0.1';
-
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -9,10 +6,10 @@ export default function (props, ref, key) {
             key={key}
             id="what-can-we-do"
         >
-            <skoash.Audio type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WhatCanWe.mp3`}/>
-            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_11.1.png`}/>
+            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}WhatCanWe.mp3`}/>
+            <skoash.Image src={`${MEDIA.IMAGE}img_11.1.png`}/>
             <skoash.Component className="flip-card-component bt">
-                <Selectable
+                <skoash.Selectable
                     ref="selectable-card"
                     className="flip-card-component"
                     list={[
@@ -29,8 +26,16 @@ export default function (props, ref, key) {
                 ref="media-collection"
                 play={_.get(props, 'data.selectable.target.props.data-ref', null)}
             >
-                    <skoash.Audio data-ref="conservation" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/FirstLine.mp3`} />
-                    <skoash.Audio data-ref="flip" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/CardFlip.mp3`} />
+                    <skoash.Audio
+                        data-ref="conservation"
+                        type="voiceOver"
+                        src={`${MEDIA.VO}FirstLine.mp3`}
+                    />
+                    <skoash.Audio
+                        data-ref="flip"
+                        type="voiceOver"
+                        src={`${MEDIA.EFFECT}CardFlip.mp3`}
+                    />
             </skoash.MediaCollection>
         </skoash.Screen>
     );

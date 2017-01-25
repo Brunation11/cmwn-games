@@ -8,9 +8,9 @@ export default function (props, ref, key) {
         >
             <skoash.Audio
                 type="voiceOver"
-                src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/UsingLess.mp3`}
+                src={`${MEDIA.VO}UsingLess.mp3`}
             />
-            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_13.1.png`}/>
+            <skoash.Image src={`${MEDIA.IMAGE}img_13.1.png`}/>
             <p>
                 Using less<br /> adds up!
             </p>

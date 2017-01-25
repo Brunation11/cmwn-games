@@ -10,12 +10,12 @@ export default function (props, ref, key) {
                 <skoash.Audio
                     ref="info"
                     type="voiceOver"
-                    src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/WeNowUse.mp3`}
+                    src={`${MEDIA.VO}WeNowUse.mp3`}
                     completeTarget="vo"
                 />
-                <skoash.Audio ref="drain" type="sfx" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/effects/Spin.mp3`} />
+                <skoash.Audio ref="drain" type="sfx" src={`${MEDIA.EFFECT}Spin.mp3`} />
             </skoash.MediaSequence>
-            <skoash.Image src={`${ENVIRONMENT.MEDIA_GAME}ImageAssets/img_12.1.png`}/>
+            <skoash.Image src={`${MEDIA.IMAGE}img_12.1.png`}/>
             <p className={'animated ' + (_.get(props, 'data.vo.complete') ? 'draining' : '')}>
                 Today we use<br />
                 127% more water<br />

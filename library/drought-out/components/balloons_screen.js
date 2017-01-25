@@ -1,4 +1,3 @@
-import MediaCollection from 'shared/components/media_collection/0.1';
 import SelectableCanvasMove from 'shared/components/selectable_canvas_move/0.1';
 
 export default function (props, ref, key) {
@@ -9,7 +8,7 @@ export default function (props, ref, key) {
             ref={ref}
             key={key}
         >
-            <MediaCollection
+            <skoash.MediaCollection
                 play={_.get(props, 'data.selection.target.props.data-ref', null)}
                 onPlay={function (balloon) {
                     var sfx;
@@ -141,7 +140,7 @@ export default function (props, ref, key) {
                     type="voiceOver"
                     src="media/S_7/VO_7.15.mp3"
                 />
-            </MediaCollection>
+            </skoash.MediaCollection>
             <skoash.Image src="media/S_7/img_7.16.png" />
             <SelectableCanvasMove
                 ref="selectable-canvas-move"

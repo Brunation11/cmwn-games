@@ -64,7 +64,7 @@ $types: arch loops whorl doubleloop;
 
             @for $i from 1 through 4 {
                 &[data-ref=#{nth($types, $i)}] {
-                    background-image: url(`../media/S_9/img_9.#{nth($bkg, $i)}.png`);
+                    background-image: url('../media/S_9/img_9.#{nth($bkg, $i)}.png');
                 }
             }
         }

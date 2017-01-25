@@ -1,6 +1,4 @@
-$text-color: #8e2d00;
-$white: #fff;
-$black: #000;
+@import 'variables';
 
 * {
     box-sizing: border-box;
@@ -8,11 +6,11 @@ $black: #000;
 
 @font-face {
     font-family: 'CMWN';
-    src: url('../media/fonts/CMWN_Jade.eot'); /* IE9 Compat Modes */
-    src: url('../media/fonts/CMWN_Jade.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../media/fonts/CMWN_Jade.woff') format('woff'), /* Modern Browsers */
-    url('../media/fonts/CMWN_Jade.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../media/fonts/CMWN_Jade.svg#4012903f3d164196860fdbc893b3e032') format('svg'); /* Legacy iOS */
+    src: url($media-server + 'Font%20Libraries/CMWN_Jade.eot'); /* IE9 Compat Modes */
+    src: url($media-server + 'Font%20Libraries/CMWN_Jade.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url($media-server + 'Font%20Libraries/CMWN_Jade.woff') format('woff'), /* Modern Browsers */
+    url($media-server + 'Font%20Libraries/CMWN_Jade.ttf') format('truetype'), /* Safari, Android, iOS */
+    url($media-server + 'Font%20Libraries/CMWN_Jade.svg#4012903f3d164196860fdbc893b3e032') format('svg'); /* Legacy iOS */
     font-style: normal;
     font-weight: 400;
 }
@@ -41,7 +39,7 @@ body > div > div {
 
     @for $i from 1 through 5 {
         .background-#{$i} {
-            background-image: url(../media/_BKG/BKG_#{$i}.png);
+            background-image: url($image + 'BKG_#{$i}.jpg');
         }
     }
 
@@ -111,7 +109,7 @@ button {
     border: 0;
 
     background-color: transparent;
-    background-image: url('../media/_Buttons/BU_1.png');
+    background-image: url($sprite + 'BU_1.png');
     background-position: left top;
     background-size: auto 300px;
 
@@ -299,7 +297,7 @@ img.inline {
 .screen.large-frame {
     .frame {
         margin: 10px auto;
-        background-image: url('../media/_Frames/FR_1.png');
+        background-image: url($image + 'FR_1.png');
         padding: 60px;
         width: 860px;
         height: 520px;
@@ -323,7 +321,7 @@ img.inline {
 .screen.small-frame {
     .frame {
         margin: 10px 300px;
-        background-image: url('../media/_Frames/FR_2.png');
+        background-image: url($image + 'FR_2.png');
         padding: 140px 60px;
         width: 600px;
         height: 400px;
@@ -348,7 +346,7 @@ img.inline {
     .frame {
         position: relative;
         margin: -50px auto 0;
-        background-image: url('../media/_Frames/FR_3.png');
+        background-image: url($image + 'FR_3.png');
         background-size: 100% 100%;
         width: 640px;
         height: 400px;
@@ -468,7 +466,7 @@ img.inline {
     }
 
     .drought-word {
-        background-image: url('../media/S_2/sprite_2.1.png');
+        background-image: url($sprite + 'img_2.1.png');
     }
 
     .selectable {
@@ -479,7 +477,7 @@ img.inline {
         li {
             display: inline-block;
             margin: 5px 40px 5px 0;
-            background-image: url('../media/S_2/sprite_2.1.png');
+            background-image: url($sprite + 'img_2.1.png');
             background-repeat: no-repeat;
             background-size: 650px;
             height: 42px;
@@ -662,7 +660,7 @@ img.inline {
         li {
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    background-image: url(../media/S_10/img_10.#{$i}.png);
+                    background-image: url('../media/S_10/img_10.#{$i}.png');
                 }
             }
         }
@@ -680,7 +678,7 @@ img.inline {
         li {
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    background-image: url(../media/S_12/img_12.#{$i}.png);
+                    background-image: url('../media/S_12/img_12.#{$i}.png');
                 }
             }
         }
@@ -757,7 +755,7 @@ img.inline {
             height: 380px;
 
             .side {
-                background-image: url('../media/S_13/img_13.2.png');
+                background-image: url($sprite + 'img_11.2.png');
                 background-position: left top;
                 background-size: auto 100%;
 
@@ -871,7 +869,7 @@ img.inline {
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
                     div {
-                        background-image: url(`../media/S_16/img_16.#{$i + 1}.png`);
+                        background-image: url($sprite + 'sprites.cards.png');
                     }
                 }
             }
@@ -884,7 +882,7 @@ img.inline {
         position: absolute;
         bottom: 40px;
         left: 280px;
-        background-image: url('../media/_Frames/FR_4.png');
+        background-image: url($image + 'FR_4.png');
         width: 400px;
         height: 240px;
 
@@ -917,7 +915,7 @@ img.inline {
         left: 67px;
         animation: swing-closed .75s steps(5) forwards;
         z-index: 1;
-        background-image: url('../media/S_17/img_sp_17.1.png');
+        background-image: url($sprite + 'img_sp_15.1.png');
         background-repeat: no-repeat;
         background-size: 800% 100%;
         width: 824px;
@@ -935,7 +933,7 @@ img.inline {
         transition: opacity 0s 1s;
         opacity: 1;
         z-index: 1;
-        background-image: url('../media/S_17/img_17.2.png');
+        background-image: url($sprite + 'img_15.2.png');
         background-position: -50px center;
         background-size: auto 120%;
         cursor: pointer;
@@ -1000,7 +998,7 @@ img.inline {
 #quit {
 
     .frame {
-        background-image: url('../media/_Frames/FR_1.png');
+        background-image: url($image + 'FR_1.png');
         padding: 100px 80px;
         width: 740px;
         height: 540px;
