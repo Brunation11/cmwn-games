@@ -117,6 +117,7 @@
             right: 1%;
             bottom: 2%;
             transition: opacity 1s;
+            opacity: 0;
             z-index: 3;
             background-position: -665px -43px;
             width: 80px;
@@ -125,6 +126,10 @@
             &:hover {
                 background-position: -667px -187px;
             }
+        }
+
+        &:not(.open-none) .close-reveal {
+            opacity: 1;
         }
 
         &.open-instructions .close-reveal {
@@ -143,14 +148,12 @@
 
 
         .interactive-item {
-            $item-lefts: 660 262  86  86 458 638 642;
-            $item-tops:  174 273 322 428 455 299 457;
-            @for $i from 1 through 7 {
-                &.item-#{$i} {
-                    top: #{nth($item-tops, $i)}px;
-                    left: #{nth($item-lefts, $i)}px;
-                }
-            }
+            $item-lefts:                660  262   86   86  458  638  642;
+            $item-tops:                 174  273  322  428  455  299  457;
+            $background-lefts:          -19 -134 -234 -376 -504 -619 -741;
+            $background-tops:            -6   -6   -6   -6   -6   -6   -6;
+            $complete-background-lefts: -19 -134 -234 -376 -504 -619 -741;
+            $complete-background-tops: -146 -146 -146 -146 -146 -146 -146;
 
             &::before {
                 position: absolute;
@@ -167,88 +170,17 @@
                 height: 1260%;
             }
 
-            &.item-1 {
-                &::before {
-                    background-position: -19px -6px;
-                }
+            @for $i from 1 through 7 {
+                &.item-#{$i} {
+                    top: #{nth($item-tops, $i)}px;
+                    left: #{nth($item-lefts, $i)}px;
 
-                &.COMPLETE {
                     &::before {
-                        background-position: -19px -146px;
+                        background-position: #{nth($background-lefts, $i)}px #{nth($background-tops, $i)}px;
                     }
-                }
-            }
 
-            &.item-2 {
-                &::before {
-                    background-position: -134px -6px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -134px -146px;
-                    }
-                }
-            }
-
-            &.item-3 {
-                &::before {
-                    left: -650%;
-                    background-position: -234px -6px;
-                    width: 1400%;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -234px -146px;
-                    }
-                }
-            }
-
-            &.item-4 {
-                &::before {
-                    background-position: -376px -6px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -376px -146px;
-                    }
-                }
-            }
-
-            &.item-5 {
-                &::before {
-                    background-position: -504px -6px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -504px -146px;
-                    }
-                }
-            }
-
-            &.item-6 {
-                &::before {
-                    background-position: -619px -6px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -619px -146px;
-                    }
-                }
-            }
-
-            &.item-7 {
-                &::before {
-                    background-position: -741px -6px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -741px -146px;
+                    &.COMPLETE::before {
+                        background-position: #{nth($complete-background-lefts, $i)}px #{nth($complete-background-tops, $i)}px;
                     }
                 }
             }
@@ -347,36 +279,17 @@
             background-position: -3px -1px;
         }
 
-        &.item-1 .content {
-            background-position: -492px -1px;
-        }
-
-        &.item-2 .content {
-            background-position: -974px -1px;
-        }
-
-        &.item-3 .content {
-            background-position: -1452px -1px;
-        }
-
-        &.item-4 .content {
-            background-position: -1947px -12px;
-        }
-
-        &.item-5 .content {
-            background-position: -2420px -2px;
-        }
-
-        &.item-6 .content {
-            background-position: -2898px -4px;
-        }
-
-        &.item-7 .content {
-            background-position: -3376px -2px;
-        }
-
         &.level-up .content {
             background-position: -3858px -5px;
+        }
+
+        $background-lefts: -492 -974 -1452 -1947 -2420 -2898 -3376;
+        $background-tops:    -1   -1    -1   -12    -2    -4    -2;
+
+        @for $i from 1 through 7 {
+            &.item-#{$i} .content {
+                background-position: #{nth($background-lefts, $i)}px #{nth($background-tops, $i)}px;
+            }
         }
     }
 }
@@ -388,14 +301,12 @@
         }
 
         .interactive-item {
-            $item-lefts: 780 710 557 426 385 280 295 635;
-            $item-tops:  321 170 130 135 455 210 120 305;
-            @for $i from 1 through 8 {
-                &.item-#{$i} {
-                    top: #{nth($item-tops, $i)}px;
-                    left: #{nth($item-lefts, $i)}px;
-                }
-            }
+            $item-lefts:                780  710  557  426  385  280  295  635;
+            $item-tops:                 321  170  130  135  455  210  120  305;
+            $background-lefts:          -20 -270 -380 -657 -525 -780 -912 -146;
+            $background-tops:             0    0    0    0    0   -2    0    0;
+            $complete-background-lefts: -20 -270 -380 -657 -525 -780 -912 -146;
+            $complete-background-tops:  -90  -90  -90  -90  -90  -95  -90  -90;
 
             &::before {
                 position: absolute;
@@ -412,100 +323,22 @@
                 height: 900%;
             }
 
-            &.item-1 {
-                &::before {
-                    background-position: -20px 0;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -20px -90px;
-                    }
-                }
+            &.item-3::before {
+                left: -600%;
+                width: 1300%;
             }
 
-            &.item-2 {
-                &::before {
-                    background-position: -270px 0;
-                }
+            @for $i from 1 through 8 {
+                &.item-#{$i} {
+                    top: #{nth($item-tops, $i)}px;
+                    left: #{nth($item-lefts, $i)}px;
 
-                &.COMPLETE {
                     &::before {
-                        background-position: -270px -90px;
+                        background-position: #{nth($background-lefts, $i)}px #{nth($background-tops, $i)}px;
                     }
-                }
-            }
 
-            &.item-3 {
-                &::before {
-                    left: -600%;
-                    background-position: -380px 0;
-                    width: 1300%;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -380px -90px;
-                    }
-                }
-            }
-
-            &.item-4 {
-                &::before {
-                    background-position: -657px 0;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -657px -90px;
-                    }
-                }
-            }
-
-            &.item-5 {
-                &::before {
-                    background-position: -525px 0;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -525px -90px;
-                    }
-                }
-            }
-
-            &.item-6 {
-                &::before {
-                    background-position: -780px -2px;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -780px -95px;
-                    }
-                }
-            }
-
-            &.item-7 {
-                &::before {
-                    background-position: -912px 0;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -912px -90px;
-                    }
-                }
-            }
-
-            &.item-8 {
-                &::before {
-                    background-position: -146px 0;
-                }
-
-                &.COMPLETE {
-                    &::before {
-                        background-position: -146px -90px;
+                    &.COMPLETE::before {
+                        background-position: #{nth($complete-background-lefts, $i)}px #{nth($complete-background-tops, $i)}px;
                     }
                 }
             }
@@ -593,40 +426,17 @@
             }
         }
 
-        &.item-1 .content {
-            background-position: -4818px -7px;
-        }
-
-        &.item-2 .content {
-            background-position: -5776px -3px;
-        }
-
-        &.item-3 .content {
-            background-position: -6260px 5px;
-        }
-
-        &.item-4 .content {
-            background-position: -6738px -11px;
-        }
-
-        &.item-5 .content {
-            background-position: -7228px -1px;
-        }
-
-        &.item-6 .content {
-            background-position: -7727px -1px;
-        }
-
-        &.item-7 .content {
-            background-position: -8195px -2px;
-        }
-
-        &.item-8 .content {
-            background-position: -5302px -2px;
-        }
-
         &.level-up .content {
             background-position: -8667px 0;
+        }
+
+        $background-lefts: -4818 -5776 -6260 -7228 -7727 -8195 -5302;
+        $background-tops:     -7    -3     5    -1    -1    -2    -2;
+
+        @for $i from 1 through 7 {
+            &.item-#{$i} .content {
+                background-position: #{nth($background-lefts, $i)}px #{nth($background-tops, $i)}px;
+            }
         }
     }
 }
