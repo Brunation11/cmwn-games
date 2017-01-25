@@ -5,8 +5,11 @@
 @include reset;
 @include bootstrap-game;
 
-html {
+body {
+    @include text-shadow;
+    line-height: 1.2;
     color: $text-color;
+    font-family: GROBOLD, "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .skoash-game {
@@ -20,10 +23,8 @@ html {
 }
 
 button {
-    background: $green;
-
     &.close {
-        @include nav-button(6, 60px, 60px);
+        @include nav-button(2, 50px, 50px);
     }
 
     &.next-screen,
@@ -39,12 +40,12 @@ button {
     }
 
     &.next-screen {
-        @include nav-button(5, 140px, 65px);
+        @include nav-button(4, 100px, 65px);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(4, 140px, 65px);
+        @include nav-button(3, 100px, 65px);
         left: 15px;
     }
 
@@ -56,12 +57,12 @@ button {
     }
 
     &.quit-yes {
-        @include nav-button(2, 220px, 110px);
+        @include yesno-button(1);
         left: 17%;
     }
 
     &.quit-no {
-        @include nav-button(3, 220px, 110px);
+        @include yesno-button(2);
         right: 17%;
     }
 }
@@ -69,16 +70,40 @@ button {
 .skoash-game {
     $screens:
         title
+        hi-there
+        key-is-sorting
         flip;
 
     $backgrounds:
-        title
-        flip;
+        bkg1
+        bkg1
+        bkg1
+        bkg1;
 
     @include screen-backgrounds($screens, $backgrounds);
 
     .background {
-        // TODO
+        $background-classes:
+            bkg1
+            bkg2
+            bkg3
+            bkg4
+            transition
+            quit;
+        $background-images:
+            'background.01'
+            'background.02'
+            'background.03'
+            'background.04'
+            'background.transition'
+            'quit.background';
+
+        @for $i from 1 through length($background-classes) {
+            &.#{nth($background-classes, $i)} {
+                @include background('#{$image}#{nth($background-images, $i)}.jpg');
+                background-size: cover;
+            }
+        }
     }
 }
 

@@ -6,7 +6,9 @@ $font: $media + 'Font/';
 
 $black: #000;
 $white: #fff;
-$text-color: $black;
+$yellow: #ff6;
+$text-color: $yellow;
+$text-shadow: rgba(0, 0, 0, .7);
 
 $transparent: transparent;
 $transparent-red: rgba(195, 97, 55, .9);
