@@ -3,11 +3,22 @@
 
 #title {
     .next-screen {
-        @include nav-button(1, 140px, 150px);
+        @include nav-button(1);
+    }
+
+    h3 {
+        margin-top: 30px;
+        text-shadow: 2px 2px 0 $red-orange,
+            text-stroke(4, $bright-yellow),
+            text-stroke(8, $red-orange),
+            10px 10px 4px $text-shadow;
+        color: $green;
+        font-size: 80px;
     }
 
     .fireworks {
         @include cover;
+        z-index: -1;
 
         img {
             @include cover;

@@ -32,6 +32,10 @@ $white: #fff;
     @return $stroke;
 }
 
-@mixin text-stroke($size: 2, $color: $white, $correction: 0) {
-    text-shadow: text-stroke($size, $color, $correction);
+@mixin text-stroke($size: 2, $color: $white, $correction: 0, $size2: 0, $color2: $white, $correction2: 0) {
+    @if $size2 > 0 {
+        text-shadow: text-stroke($size, $color, $correction), text-stroke($size + $size2, $color2, $correction2);
+    } @else {
+        text-shadow: text-stroke($size, $color, $correction);
+    }
 }

@@ -4,7 +4,7 @@ import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 
-// import TitleScreen from './components/title_screen';
+import TitleScreen from './components/title_screen';
 import HiThereScreen from './components/hi_there_screen';
 import KeyIsSortingScreen from './components/key_is_sorting_screen';
 // import RecyclingChampionPreScreen from './components/recycling_champion_pre_screen';
@@ -76,7 +76,7 @@ skoash.start(
         loader={<Loader />}
         screens={[
             iOSScreen,
-            // TitleScreen,
+            TitleScreen,
             HiThereScreen,
             KeyIsSortingScreen,
             // RecyclingChampionPreScreen,
@@ -166,12 +166,14 @@ skoash.start(
         }}
         assets={[
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite.mainnav.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}titlesrnbg.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.01.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.02.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.03.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.04.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}background.transition.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}quit.background.jpg`} />,
+            <div className="background title" />,
             <div className="background bkg1" />,
             <div className="background bkg2" />,
             <div className="background bkg3" />,

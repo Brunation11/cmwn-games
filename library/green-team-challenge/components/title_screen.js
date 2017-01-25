@@ -16,7 +16,7 @@ export default function (props, ref, key) {
             key={key}
             id="title"
         >
-            <h3>Title Screen</h3>
+            <h3>Green Team Challenge</h3>
             <skoash.Component
                 className={FIREWORKS}
                 ref={FIREWORKS}
@@ -24,7 +24,7 @@ export default function (props, ref, key) {
             >
                 <skoash.Image
                     ref="image"
-                    src={`${CMWN.MEDIA.IMAGE}background.01.jpg`}
+                    src={`${CMWN.MEDIA.IMAGE}titlescrnbg.jpg`}
                 />
             </skoash.Component>
         </skoash.Screen>
