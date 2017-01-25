@@ -388,9 +388,9 @@
         }
 
         .interactive-item {
-            $item-lefts: 750 710 557 426 385 280 295;
-            $item-tops:  334 130  88 135 455 210 107;
-            @for $i from 1 through 7 {
+            $item-lefts: 780 710 557 426 385 280 295 635;
+            $item-tops:  321 170 130 135 455 210 120 305;
+            @for $i from 1 through 8 {
                 &.item-#{$i} {
                     top: #{nth($item-tops, $i)}px;
                     left: #{nth($item-lefts, $i)}px;
@@ -414,12 +414,12 @@
 
             &.item-1 {
                 &::before {
-                    background-position: -26px 0;
+                    background-position: -20px 0;
                 }
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -27px -143px;
+                        background-position: -20px -90px;
                     }
                 }
             }
@@ -493,7 +493,19 @@
 
                 &.COMPLETE {
                     &::before {
-                        background-position: -1013px -90px;
+                        background-position: -912px -90px;
+                    }
+                }
+            }
+
+            &.item-8 {
+                &::before {
+                    background-position: -146px 0;
+                }
+
+                &.COMPLETE {
+                    &::before {
+                        background-position: -146px -90px;
                     }
                 }
             }
@@ -607,6 +619,10 @@
 
         &.item-7 .content {
             background-position: -8195px -2px;
+        }
+
+        &.item-8 .content {
+            background-position: -5302px -2px;
         }
 
         &.level-up .content {
