@@ -17,15 +17,15 @@ export default function (props, ref, key) {
                     ref="selectable-card"
                     className="flip-card-component"
                     list={[
-                        <skoash.Component type="li" correct={true} message="day">
+                        <skoash.Component type="li" correct={true} data-ref="day">
                             <div className="side b center inline"></div>
                             <div className="side a center inline"></div>
                         </skoash.Component>,
-                        <skoash.Component type="li" correct={true} message="week">
+                        <skoash.Component type="li" correct={true} data-ref="week">
                             <div className="side b center inline"></div>
                             <div className="side a center inline"></div>
                         </skoash.Component>,
-                        <skoash.Component type="li" correct={true} message="year">
+                        <skoash.Component type="li" correct={true} data-ref="year">
                             <div className="side b center inline"></div>
                             <div className="side a center inline"></div>
                         </skoash.Component>
@@ -34,16 +34,14 @@ export default function (props, ref, key) {
                     dataTarget="selectable"
                 />
             </skoash.Component>
-            <skoash.Reveal
-                ref="reveal"
-                hide={true}
-                openReveal={_.get(props, 'data.selectable.target.props.message')}
-                assets={[
-                    <skoash.Audio ref="day" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/5Gallons.mp3`} />,
-                    <skoash.Audio ref="week" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/35Gallons.mp3`} />,
-                    <skoash.Audio ref="year" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/1680Gallons.mp3`} />,
-                ]}
-            />
+            <skoash.MediaCollection
+                ref="media-collection"
+                play={_.get(props, 'data.selectable.target.props.data-ref')}
+            >
+                <skoash.Audio data-ref="day" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/5Gallons.mp3`} />
+                <skoash.Audio data-ref="week" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/35Gallons.mp3`} />
+                <skoash.Audio data-ref="year" type="voiceOver" src={`${ENVIRONMENT.MEDIA_GAME}SoundAssets/vos/1680Gallons.mp3`} />
+            <skoash.MediaCollection/>
         </skoash.Screen>
     );
 }

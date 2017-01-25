@@ -763,8 +763,6 @@ img.inline {
 
                 &.b {
                     background-position: right top;
-                    pointer-events: none;
-                    cursor: default;
                 }
             }
         }
@@ -877,17 +875,6 @@ img.inline {
                     }
                 }
             }
-        }
-    }
-}
-
-.flip-card-component {
-    li {
-        pointer-events: none;
-
-        &:nth-of-type(1),
-        &.HIGHLIGHTED + li {
-            pointer-events: auto;
         }
     }
 }

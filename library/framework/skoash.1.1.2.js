@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4e43622b99f6d053a3a8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2c9a7bb1d1d8a28ebdea"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -28705,10 +28705,6 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _classnames = __webpack_require__(323);
-
-	var _classnames2 = _interopRequireDefault(_classnames);
-
 	var _component = __webpack_require__(13);
 
 	var _component2 = _interopRequireDefault(_component);
@@ -34445,7 +34441,7 @@
 
 	            if (this.props.dataTarget) {
 	                this.updateScreenData({
-	                    path: this.props.dataTarget,
+	                    key: this.props.dataTarget,
 	                    data: {
 	                        target: ref
 	                    }
@@ -34992,7 +34988,7 @@
 
 	            var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-	            var now = Date.now();
+	            var NOW = Date.now();
 	            var frame = void 0;
 
 	            if (this.props.static || this.props.pause || this.state.paused || !this.state.started) return;
@@ -35011,8 +35007,8 @@
 	                }
 	            }
 
-	            if (now > this.lastAnimation + this.frameRate) {
-	                this.lastAnimation = now;
+	            if (NOW > this.lastAnimation + this.frameRate) {
+	                this.lastAnimation = NOW;
 	                frame = (this.state.frame + i + this.frames) % this.frames;
 	                if (this.frame === 0) this.props.onLoop.call(this);
 	                this.setState({
