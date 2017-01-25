@@ -824,12 +824,6 @@ img.inline {
 }
 
 #shower {
-    .VOICE-OVER & {
-        li {
-            pointer-events: none;
-        }
-    }
-
     img {
         display: block;
         margin: 15px auto;
@@ -851,20 +845,33 @@ img.inline {
             margin: 0;
             width: 220px;
             height: 320px;
+            cursor: default;
+            pointer-events: none;
 
             .side {
-                background-position: left top;
-                background-size: auto 100%;
+                background-position-x: -22px;
+                background-size: 718px;
 
                 &.b {
-                    background-position: right top;
+                    background-position-x: -489px;
                 }
             }
 
-            &:nth-of-type(1) .side.a:hover,
-            &.HIGHLIGHTED + li .side.a:hover {
-                background-position: -212px top;
+            &:nth-of-type(1),
+            &.HIGHLIGHTED + li {
+                cursor: pointer;
+                pointer-events: auto;
+
+                .side.a:hover {
+                    background-position-x: -256px;
+                }
             }
+
+            &.HIGHLIGHTED {
+                cursor: default !important;
+                pointer-events: none !important;
+            }
+
 
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
@@ -873,6 +880,21 @@ img.inline {
                     }
                 }
             }
+        }
+
+        $card-text:  day week year;
+        $card-pos-y: -24 -384 -736; 
+
+        @for $i from 1 through 3 {
+            [data-ref=#{nth($card-text, $i)}] div { 
+                background-position-y: #{nth($card-pos-y, $i)}px;
+            }
+        }
+    }
+    .VOICE-OVER & {
+        li {
+            cursor: default !important;
+            pointer-events: none !important;
         }
     }
 }
