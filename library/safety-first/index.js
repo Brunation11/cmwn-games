@@ -48,7 +48,7 @@ SafetyFirst = (
             10: WhosAtTheDoorBrotherScreen,
             11: WhosAtTheDoorGasManScreen,
             12: WhosAtTheDoorCloseFriendScreen,
-            13: WhosAtTheDoorPersonWithFlatScreen,
+            // 13: WhosAtTheDoorPersonWithFlatScreen,
             13: WhosAtTheDoorCablePersonScreen,
             14: WhosAtTheDoorCloseRelativeScreen,
             15: InfoGoodJobScreen,
