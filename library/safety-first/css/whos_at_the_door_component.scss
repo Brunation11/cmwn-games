@@ -11,48 +11,25 @@
         width: 47%;
         height: 82%;
 
-        &.grandpa {
-            background-position: -27px 0;
-        }
+        $people:
+            grandpa
+            delivery-person
+            sister
+            new-neighbor
+            mother
+            brother
+            gas-man
+            close-friend
+            person-with-flat
+            cable-person
+            close-relative;
 
-        &.delivery-person {
-            background-position: -4107px 0;
-        }
+        $lefts: -27 -4107 -534 -2069 -1049 -1558 -3082 -2576 -3241 -4616 -5127;
 
-        &.sister {
-            background-position: -534px 0;
-        }
-
-        &.new-neighbor {
-            background-position: -2069px 0;
-        }
-
-        &.mother {
-            background-position: -1049px 0;
-        }
-
-        &.brother {
-            background-position: -1558px 0;
-        }
-
-        &.gas-man {
-            background-position: -3082px 0;
-        }
-
-        &.close-friend {
-            background-position: -2576px 0;
-        }
-
-        &.person-with-flat {
-            background-position: -3241px 0;
-        }
-
-        &.cable-person {
-            background-position: -4616px 0;
-        }
-
-        &.close-relative {
-            background-position: -5127px 0;
+        @for $i from 1 through 11 {
+            .#{nth($people, $i)} {
+                background-position: #{nth($lefts, $i)}px 0;
+            }
         }
 
         > span {
