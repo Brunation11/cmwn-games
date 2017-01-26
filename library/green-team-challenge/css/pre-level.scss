@@ -1,8 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-[id*=pre-level],
-[id*=post-level] {
+[id*=pre-level] {
     .stars {
         display: flex;
         height: 40px;

@@ -30,7 +30,7 @@ export default function (levelNumber) {
                 {...props}
                 ref={ref}
                 key={key}
-                id={`${opts.earned ? 'post' : 'pre'}-level-${levelNumber}`}
+                id={`pre-level-${levelNumber}`}
                 className={opts.className}
             >
                 <skoash.Repeater

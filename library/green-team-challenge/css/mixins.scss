@@ -25,12 +25,16 @@
     @include sprite($sprite + 'sprite.yesno.png', 91px, 186px, 1, 2, 1, $row, $row, $width, $height);
 }
 
+@mixin levels-sprite($row, $width: 0, $height: 0) {
+    @include sprite($sprite + 'sprite.levels.png', 420px, 100px, 1, 2, 1, $row, $row, $width, $height);
+}
+
 @mixin bin-sprite($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'sprite.bins.png', 850px, 195px, 5, 1, $column, 1, 1, $width, $height);
 }
 
 @mixin flip-sprite($column, $row, $width: 0, $height: 0) {
-    @include sprite($sprite + 'flips.png', 850px, 300px, 6, 2, $column, $row, $row, $width, $height);
+    @include sprite($sprite + 'flips.png', 855px, 280px, 6, 2, $column, $row, $row, $width, $height);
 }
 
 @mixin truck-sprite($column, $width: 0, $height: 0) {
