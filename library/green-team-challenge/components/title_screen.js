@@ -18,6 +18,10 @@ export default function (props, ref, key) {
         >
             <h3 content="Green Team Challenge" />
             <skoash.Image
+                className="hidden"
+                src={`${CMWN.MEDIA.IMAGE}gradient-texture.jpg`}
+            />
+            <skoash.Image
                 className="trash"
                 src={`${CMWN.MEDIA.IMAGE}titletrashcan.png`}
             />
