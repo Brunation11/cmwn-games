@@ -7,7 +7,8 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 // import TitleScreen from './components/title_screen';
 // import HiThereScreen from './components/hi_there_screen';
 // import KeyIsSortingScreen from './components/key_is_sorting_screen';
-import LightsScreen from './components/lights_screen';
+// import LightsScreen from './components/lights_screen';
+// import FiveWaysScreen from './components/five_ways_screen';
 // import RecyclingChampionPreScreen from './components/recycling_champion_pre_screen';
 // import RecyclingChampion1InfoScreen from './components/recycling_champion_one_info_screen';
 // import RecyclingChampion1Screen from './components/recycling_champion_level_one_screen';
@@ -56,6 +57,7 @@ import LightsScreen from './components/lights_screen';
 // import DynamicDiverter5InfoScreen from './components/dynamic_diverter_five_info_screen';
 // import DynamicDiverter5Screen from './components/dynamic_diverter_level_five_screen';
 // import DynamicDiverterPostScreen from './components/dynamic_diverter_post_screen';
+// import WantToStackScreen from './components/want_to_stack_screen';
 // import MasterSorterPreScreen from './components/master_sorter_pre_screen';
 // import MasterSorter1InfoScreen from './components/master_sorter_one_info_screen';
 // import MasterSorter1Screen from './components/master_sorter_level_one_screen';
@@ -68,6 +70,7 @@ import LightsScreen from './components/lights_screen';
 // import MasterSorter5InfoScreen from './components/master_sorter_five_info_screen';
 // import MasterSorter5Screen from './components/master_sorter_level_five_screen';
 // import MasterSorterPostScreen from './components/master_sorter_post_screen';
+import NowAMemberScreen from './components/now_a_member_screen';
 import FlipScreen from './components/flip_screen';
 import QuitScreen from './components/quit_screen';
 
@@ -80,7 +83,8 @@ skoash.start(
             // TitleScreen,
             // HiThereScreen,
             // KeyIsSortingScreen,
-            LightsScreen,
+            // LightsScreen,
+            // FiveWaysScreen,
             // RecyclingChampionPreScreen,
             // RecyclingChampion1InfoScreen,
             // RecyclingChampion1Screen,
@@ -145,6 +149,7 @@ skoash.start(
             // DynamicDiverter5InfoScreen,
             // DynamicDiverter5Screen,
             // DynamicDiverterPostScreen,
+            // WantToStackScreen,
             // MasterSorterPreScreen,
             // MasterSorter1InfoScreen,
             // MasterSorter1Screen,
@@ -161,6 +166,7 @@ skoash.start(
             // MasterSorter5InfoScreen,
             // MasterSorter5Screen,
             // MasterSorterPostScreen,
+            NowAMemberScreen,
             FlipScreen,
         ]}
         menus={{

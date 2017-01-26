@@ -74,6 +74,9 @@ button {
         hi-there
         key-is-sorting
         lights
+        five-ways
+        want-to-stack
+        now-a-member
         flip;
 
     $backgrounds:
@@ -81,6 +84,9 @@ button {
         bkg1
         bkg1
         bkg2
+        bkg2
+        bkg3
+        bkg1
         bkg1;
 
     @include screen-backgrounds($screens, $backgrounds);

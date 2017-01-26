@@ -1,4 +1,4 @@
-const levelKeys = [
+let levelKeys = [
     'recyclingChampion',
     'pricelessPourer',
     'fantasticFoodSharer',
@@ -6,7 +6,7 @@ const levelKeys = [
     'masterSorter',
 ];
 
-const levelNames = [
+let levelNames = [
     <p>Recycling<br/>Champion</p>,
     <p>Priceless<br/>Pourer</p>,
     <p>Fantastic<br/>Food Sharer</p>,
