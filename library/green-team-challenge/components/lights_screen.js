@@ -5,7 +5,7 @@ let binComponents = _.map([
     'compost',
     'food-share',
 ], bin =>
-    <skoash.Component className={bin} message={bin} />
+    <skoash.Component className={bin} ref={bin} />
 );
 
 export default function (props, ref, key) {
@@ -28,9 +28,22 @@ export default function (props, ref, key) {
                 className="hidden"
                 src={`${CMWN.MEDIA.SPRITE}sprite.btn.png`}
             />
-            <skoash.Selectable
-                list={binComponents}
+            <skoash.Component
+                className="lights"
+                children={binComponents}
             />
+            <skoash.Component
+                className="bins"
+                children={binComponents}
+            />
+            {skoash.mixins.SelectableReveal(props, {
+                SelectableProps: {
+                    list: binComponents,
+                    onSelect: function () {
+                        debugger;
+                    }
+                }
+            })}
         </skoash.Screen>
     );
 }

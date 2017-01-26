@@ -1,6 +1,6 @@
 import effects from './effects';
 
-const makeEffect = function (effectName, node, opts = {}) {
+let makeEffect = function (effectName, node, opts = {}) {
     _.invoke(effects, effectName, node, opts);
 };
 
