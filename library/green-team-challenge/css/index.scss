@@ -72,12 +72,14 @@ button {
         title
         hi-there
         key-is-sorting
+        lights
         flip;
 
     $backgrounds:
         title
         bkg1
         bkg1
+        bkg2
         bkg1;
 
     @include screen-backgrounds($screens, $backgrounds);

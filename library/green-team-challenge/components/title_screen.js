@@ -16,7 +16,19 @@ export default function (props, ref, key) {
             key={key}
             id="title"
         >
-            <h3>Green Team Challenge</h3>
+            <h3 content="Green Team Challenge" />
+            <skoash.Image
+                className="trash"
+                src={`${CMWN.MEDIA.IMAGE}titletrashcan.png`}
+            />
+            <skoash.Image
+                className="character"
+                src={`${CMWN.MEDIA.IMAGE}greenteamcharac.png`}
+            />
+            <skoash.Image
+                className="tray"
+                src={`${CMWN.MEDIA.IMAGE}titletray.png`}
+            />
             <skoash.Component
                 className={FIREWORKS}
                 ref={FIREWORKS}

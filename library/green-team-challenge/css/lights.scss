@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'mixins';
+
+#lights {
+    .selectable {
+        @include center;
+        display: flex;
+        top: auto;
+        bottom: -5%;
+        width: 80%;
+        justify-content: space-between;
+
+        > * {
+            @include bin-button;
+            display: inline-block;
+        }
+    }
+}
