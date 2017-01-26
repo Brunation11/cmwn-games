@@ -69,27 +69,17 @@ button {
 }
 
 .skoash-game {
-    $screens:
-        title
-        hi-there
-        key-is-sorting
-        lights
-        five-ways
-        want-to-stack
-        now-a-member
-        flip;
+    $screen-pairs:
+        (title title)
+        (hi-there bkg1)
+        (key-is-sorting bkg1)
+        (lights bkg2)
+        (five-ways bkg2)
+        (want-to-stack bkg3)
+        (now-a-member bkg1)
+        (flip bkg1);
 
-    $backgrounds:
-        title
-        bkg1
-        bkg1
-        bkg2
-        bkg2
-        bkg3
-        bkg1
-        bkg1;
-
-    @include screen-backgrounds($screens, $backgrounds);
+    @include screen-background-pairs($screen-pairs);
 
     &.MENU-quit {
         .background.quit {
@@ -98,27 +88,15 @@ button {
     }
 
     .background {
-        $background-classes:
-            bkg1
-            bkg2
-            bkg3
-            bkg4
-            transition
-            quit;
-        $background-images:
-            'background.01'
-            'background.02'
-            'background.03'
-            'background.04'
-            'background.transition'
-            'quit.background';
+        $background-pairs:
+            (bkg1 'background.01.jpg')
+            (bkg2 'background.02.jpg')
+            (bkg3 'background.03.jpg')
+            (bkg4 'background.04.jpg')
+            (transition 'background.transition.jpg')
+            (quit 'quit.background.jpg');
 
-        @for $i from 1 through length($background-classes) {
-            &.#{nth($background-classes, $i)} {
-                @include background('#{$image}#{nth($background-images, $i)}.jpg');
-                background-size: cover;
-            }
-        }
+        @include background-pairs($background-pairs);
     }
 }
 
