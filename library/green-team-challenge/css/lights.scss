@@ -67,4 +67,37 @@ $button-scale: .7;
             @include bin-button;
         }
     }
+
+    .selectable-reveal {
+        @include cover;
+        z-index: 1;
+    }
+
+    .reveal {
+        background-color: $transparent-white;
+
+        li {
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                @include cover;
+                @include background('#{$frame}frame.01.png');
+                left: 10%;
+                transform: scale3d(-1, 1, 1);
+                width: 120%;
+                content: '';
+            }
+        }
+
+        p {
+            @include center;
+            width: 600px;
+        }
+
+        .close-reveal {
+            right: 215px;
+            bottom: 75px;
+        }
+    }
 }

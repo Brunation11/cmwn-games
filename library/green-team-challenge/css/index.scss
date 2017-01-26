@@ -39,6 +39,7 @@ button {
         height: 55px;
     }
 
+    &.close-reveal,
     &.next-screen {
         @include nav-button(4, 100px, 65px);
         right: 15px;

@@ -1,11 +1,81 @@
-let binComponents = _.map([
+let binNames = [
     'recycle',
     'landfill',
     'liquids',
     'compost',
     'food-share',
-], bin =>
-    <skoash.Component className={bin} ref={bin} />
+];
+
+let revealContent = {
+    recycle: (
+        <p>
+            RECYCLING items are those<br/>
+            that can be reprocessed and<br/>
+            made into new products.<br/>
+            Paper, metal, and plastic are<br/>
+            common recyclable materials.
+        </p>
+    ),
+    landfill: (
+        <p>
+            LANDFILL items are things that<br/>
+            just can't be reused in any way.<br/>
+            Put your thinking cap on!<br/>
+            Look for ways to make<br/>
+            different choices that<br/>
+            reduce landfill waste.
+        </p>
+    ),
+    liquids: (
+        <p>
+            LIQUIDS must be separated<br/>
+            from their containers!<br/>
+            This allows for the containers<br/>
+            to be properly processed.<br/>
+            Get pouring!
+        </p>
+    ),
+    compost: (
+        <p>
+            COMPOSTING is<br/>
+            fertilizer in the making!<br/>
+            It's made from food scraps<br/>
+            and organic materials<br/>
+            that decay and become<br/>
+            food for plants!
+        </p>
+    ),
+    'food-share': (
+        <p>
+            FOOD SHARING is<br/>
+            a great way to keep<br/>
+            from wasting food!<br/>
+            Leave items that others<br/>
+            can make into a snack!
+        </p>
+    ),
+};
+
+let revealVOs = {
+    recycle: 'RecyclingMaterials',
+    landfill: 'ThinkingCap',
+    liquids: 'GetPouring',
+    compost: 'GetPouring', // needs to be replaced
+    'food-share': 'GetPouring', // needs to be replaced
+};
+
+let binComponents = _.map(binNames, bin =>
+    <skoash.Component className={bin} message={bin} />
+);
+
+let revealList = _.map(revealContent, (content, ref) =>
+    <skoash.Component ref={ref}>
+        {content}
+    </skoash.Component>
+);
+
+let mediaCollectionList = _.map(revealVOs, (content, ref) =>
+    <skoash.Audio type="voiceOver" ref={ref} src={`${CMWN.MEDIA.VO + content}.mp3`} />
 );
 
 export default function (props, ref, key) {
@@ -39,10 +109,13 @@ export default function (props, ref, key) {
             {skoash.mixins.SelectableReveal(props, {
                 SelectableProps: {
                     list: binComponents,
-                    onSelect: function () {
-                        debugger;
-                    }
-                }
+                },
+                RevealProps: {
+                    list: revealList,
+                },
+                MediaCollectionProps: {
+                    children: mediaCollectionList,
+                },
             })}
         </skoash.Screen>
     );
