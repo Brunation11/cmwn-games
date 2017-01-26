@@ -7,6 +7,7 @@
 
     .bin-name {
         @include position(absolute, null null 0 175px);
+        transform: scale3d(1, 1, 1);
         z-index: 3;
         border: 2px solid $black;
         padding: 20px 0;
@@ -37,10 +38,16 @@
             @include cover;
             transition: opacity .5s;
             opacity: 1;
-            background-color: $blue;
 
             &.LEAVE {
                 opacity: 0;
+            }
+
+            $bins: recycle landfill compost;
+            @for $i from 1 through length($bins) {
+                &.#{nth($bins, $i)} {
+                    @include background('#{$image}background.trash.#{nth($bins, $i)}.jpg');
+                }
             }
         }
     }
