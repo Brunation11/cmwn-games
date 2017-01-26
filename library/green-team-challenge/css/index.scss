@@ -91,6 +91,12 @@ button {
 
     @include screen-backgrounds($screens, $backgrounds);
 
+    &.MENU-quit {
+        .background.quit {
+            opacity: 1;
+        }
+    }
+
     .background {
         $background-classes:
             bkg1
