@@ -19,13 +19,24 @@ export default function (props, ref, key, opts = {}) {
 
     const levelPath = `gameState.data.${_.camelCase(opts.gameName)}.levels.${opts.level}`;
 
+    var getChildren = v => {
+        if (v.children) return v.children;
+
+        return (
+            <skoash.Sprite
+                src={`${CMWN.MEDIA.SPRITE}_${_.replace(v.bin, '-', '')}`}
+                frame={v.frame || 1}
+            />
+        );
+    };
+
     var arrayOfCatchables = _.map(opts.itemsToSort, v =>
         <Catchable
             className={v.name}
             message={v.bin}
             reCatchable={true}
             becomes={v.becomes}
-            children={v.children}
+            children={getChildren(v)}
         />
     );
 

@@ -1,3 +1,11 @@
+import itemsToSort from './items_to_sort';
+
+let binNames = [
+    'recycle',
+    'landfill',
+    'compost',
+];
+
 export default {
     gameName: 'recycling-champion',
     level: 1,
@@ -90,7 +98,7 @@ export default {
                 } else {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'left'],
-                        data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft,
+                        data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 65,
                     });
                 }
             },
@@ -198,23 +206,6 @@ export default {
     getExtraComponents() {
         return null;
     },
-    binNames: [
-        'recycle',
-        'landfill',
-        'compost',
-    ],
-    itemsToSort: [
-        {
-            name: 'emptyBottle',
-            bin: 'recycle'
-        },
-        {
-            name: 'appleCore',
-            bin: 'compost'
-        },
-        {
-            name: 'candyBag',
-            bin: 'landfill'
-        },
-    ],
+    binNames,
+    itemsToSort: _.filter(itemsToSort, item => _.includes(binNames, item.bin)),
 };
