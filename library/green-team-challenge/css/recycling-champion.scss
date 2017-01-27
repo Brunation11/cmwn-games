@@ -28,6 +28,7 @@
             @include cover;
 
             > * {
+                @include sortable-item;
                 position: absolute;
                 transition: top .2s .5s, left .5s 0s, transform .5s;
                 width: 50px;
@@ -44,12 +45,6 @@
 
                 &.DROPPED {
                     transform: translateY(250px);
-                }
-
-                .sprite {
-                    @include position(absolute, 0 null null 0);
-                    transform: scale(.1);
-                    transform-origin: 0 0;
                 }
             }
         }
