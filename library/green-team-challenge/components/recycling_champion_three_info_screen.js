@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'recycling-champion-three-info',
         content: (
             <p>
-                Now That You
+                Now that you have<br/>
+                the hang of this let's<br/>
+                add some speed.<br/>
+                <br/>
+                Good luck<br/>
+                Speed Sorting!
             </p>
         ),
+        vo: 'SpeedSorting',
     });
 }

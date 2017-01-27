@@ -2,16 +2,7 @@
 @import 'mixins';
 
 [id*=post-level] {
-
-    $flips: 2 4 5 3 6 1;
-    @for $i from 1 through length($flips) {
-        &#post-level-#{$i} .frame::after {
-            @include flip-sprite(nth($flips, $i), 1);
-            @include position(absolute, null 140px 30px null);
-            display: block;
-            content: '';
-        }
-    }
+    @include level-flips(1);
 
     .frame {
         @include cover;

@@ -5,8 +5,13 @@ export default function (props, ref, key) {
         id: 'recycling-champion-five-info',
         content: (
             <p>
-                Master this level
+                Master this level<br/>
+                and win the<br/>
+                Recycle Champion Flip!<br/>
+                <br/>
+                Accuracy is important...
             </p>
         ),
+        vo: 'ChampionFlip',
     });
 }

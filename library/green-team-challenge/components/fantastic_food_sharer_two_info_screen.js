@@ -5,8 +5,13 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-two-info',
         content: (
             <p>
-                Share some more
+                Share Some More!<br/>
+                <br/>
+                Your sorting skills are<br/>
+                actions of kindness.<br/>
+                Share the love!
             </p>
         ),
+        vo: 'ShareTheLove',
     });
 }

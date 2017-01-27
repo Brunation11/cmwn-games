@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-five-info',
         content: (
             <p>
-                Let's take this to the next level
+                Let's take this<br/>
+                to the next level!<br/>
+                <br/>
+                You are about to<br/>
+                become a<br/>
+                Priceless Pourer!
             </p>
         ),
+        vo: 'TakeItTotheNextLevel',
     });
 }

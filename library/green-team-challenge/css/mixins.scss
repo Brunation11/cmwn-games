@@ -22,7 +22,7 @@
 }
 
 @mixin star-sprite($row, $width: 0, $height: 0) {
-    @include sprite($sprite + 'sprite.yesno.png', 91px, 186px, 1, 2, 1, $row, $row, $width, $height);
+    @include sprite($sprite + 'sprite.star.png', 91px, 186px, 1, 2, 1, $row, $row, $width, $height);
 }
 
 @mixin levels-sprite($row, $width: 0, $height: 0) {
@@ -39,6 +39,18 @@
 
 @mixin truck-sprite($column, $width: 0, $height: 0) {
     @include sprite($sprite + 'dumptruck.png', 758px, 191px, 3, 1, $column, 1, 1, $width, $height);
+}
+
+@mixin level-flips($row, $class: frame) {
+    $flips: 2 4 5 3 6 1;
+    @for $i from 1 through length($flips) {
+        &[id*=-level-#{$i}] .#{$class}::after {
+            @include flip-sprite(nth($flips, $i), $row);
+            @include position(absolute, null 140px 30px null);
+            display: block;
+            content: '';
+        }
+    }
 }
 
 @mixin vertical-score-meter($steps: 4, $meter-color: $black) {

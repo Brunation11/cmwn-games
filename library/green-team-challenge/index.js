@@ -169,6 +169,9 @@ skoash.start(
             quit: QuitScreen,
         }}
         assets={[
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}purple.ribbon.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}luggage.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite.star.png`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}frame.01.png`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}frame.02.png`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.FRAME}transition.frame.png`} />,

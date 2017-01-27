@@ -5,8 +5,14 @@ export default function (props, ref, key) {
         id: 'priceless-pourer-two-info',
         content: (
             <p>
-                Not all lunches
+                Not all lunches are<br/>
+                created equally.<br/>
+                <br/>
+                Some lunches come from<br/>
+                home and there is<br/>
+                no tray stacking needed!
             </p>
         ),
+        vo: 'LunchesCreatedEqually',
     });
 }

@@ -78,6 +78,12 @@ let mediaCollectionList = _.map(revealVOs, (content, ref) =>
     <skoash.Audio type="voiceOver" ref={ref} src={`${CMWN.MEDIA.VO + content}.mp3`} />
 );
 
+let imageSrcs = [
+    `${CMWN.MEDIA.IMAGE}lights.png`,
+    `${CMWN.MEDIA.SPRITE}sprite.bins.png`,
+    `${CMWN.MEDIA.SPRITE}sprite.btn.png`,
+];
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -86,17 +92,10 @@ export default function (props, ref, key) {
             key={key}
             id="lights"
         >
-            <skoash.Image
-                className="hidden"
-                src={`${CMWN.MEDIA.IMAGE}lights.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${CMWN.MEDIA.SPRITE}sprite.bins.png`}
-            />
-            <skoash.Image
-                className="hidden"
-                src={`${CMWN.MEDIA.SPRITE}sprite.btn.png`}
+            <skoash.Repeater
+                amount={imageSrcs.length}
+                item={<skoash.Image className="hidden" />}
+                props={imageSrcs}
             />
             <skoash.Component
                 className="lights"
@@ -107,15 +106,9 @@ export default function (props, ref, key) {
                 children={binComponents}
             />
             {skoash.mixins.SelectableReveal(props, {
-                SelectableProps: {
-                    list: binComponents,
-                },
-                RevealProps: {
-                    list: revealList,
-                },
-                MediaCollectionProps: {
-                    children: mediaCollectionList,
-                },
+                selectables: binComponents,
+                reveals: revealList,
+                media: mediaCollectionList,
             })}
         </skoash.Screen>
     );

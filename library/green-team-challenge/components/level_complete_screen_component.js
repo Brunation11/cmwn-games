@@ -61,6 +61,10 @@ export default function (levelNumber) {
                     className="hidden"
                     src={`${CMWN.MEDIA.FRAME}transition.frame.png`}
                 />
+                <skoash.Image
+                    className="hidden"
+                    src={`${CMWN.MEDIA.SPRITE}sprite.levels.png`}
+                />
                 <div className="frame">
                     {getLevelHeader(levelNumberWord)}
                     {listLevels(levelNumber)}
