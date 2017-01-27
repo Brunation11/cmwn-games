@@ -118,7 +118,6 @@
         &::after {
             display: block;
             position: absolute;
-            // border-radius: 50px 50px 0 0;
             border-radius: 50px;
             width: 100%;
             content: '';
@@ -208,6 +207,34 @@
                 &[data-ref=#{nth($names, $i)}] {
                     background-color: #{nth($colors, $i)};
                 }
+            }
+        }
+
+        [data-ref=retry],
+        [data-ref=resort] {
+            &::before {
+                @include center;
+                width: 400px;
+                height: 200px;
+                content: '';
+            }
+        }
+
+        [data-ref=retry] {
+            &::before {
+                @include background('#{$image}Img.anotherChance.png');
+            }
+        }
+
+        [data-ref=resort] {
+            &::before {
+                @include background('#{$image}img.resort.png');
+            }
+        }
+
+        &.open-resort {
+            .close-reveal {
+                display: none;
             }
         }
 

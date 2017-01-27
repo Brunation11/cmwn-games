@@ -192,14 +192,11 @@ export default function (props, ref, key, opts = {}) {
                     <skoash.Component
                         ref="resort"
                         type="li"
-                    >
-                    </skoash.Component>,
+                    />,
                     <skoash.Component
                         ref="retry"
                         type="li"
-                    >
-                        <p>RETRY</p>
-                    </skoash.Component>,
+                    />,
                     <skoash.Component
                         ref="complete"
                         type="li"
