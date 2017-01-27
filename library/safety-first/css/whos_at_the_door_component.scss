@@ -24,10 +24,10 @@
             cable-person
             close-relative;
 
-        $lefts: -27 -4107 -534 -2069 -1049 -1558 -3082 -2576 -3241 -4616 -5127;
+        $lefts: -27 -4107 -534 -2069 -1049 -1558 -3082 -2576 -3595 -4616 -5127;
 
         @for $i from 1 through 11 {
-            .#{nth($people, $i)} {
+            &.#{nth($people, $i)} {
                 background-position: #{nth($lefts, $i)}px 0;
             }
         }
@@ -42,7 +42,7 @@
             width: 100%;
             line-height: 65px;
             color: $color-yellow;
-            font-size: 45px;
+            font-size: 40px;
             font-weight: 900;
             font-style: italic;
 
@@ -199,7 +199,13 @@
 
         &.open-person-with-flat {
             .frame {
-                // background-position: -811px 0;
+                background-position: -2767px 0;
+            }
+
+            .prompt {
+                &::before {
+                    background-position: 101% 0;
+                }
             }
         }
 
