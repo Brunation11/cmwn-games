@@ -111,54 +111,16 @@ export default function (props, ref, key) {
             <skoash.MediaCollection
                 play={WAYS[_.get(props, 'data.reveal.index', null)] + ' ' + _}
             >
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[0]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[0])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[1]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[1])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[2]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[2])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[3]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[3])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[4]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[4])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[5]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[5])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[6]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[6])}.mp3`}
-                />
-                <skoash.Audio
-                    onComplete={closeReveal}
-                    type="voiceOver"
-                    data-ref={WAYS[7]}
-                    src={`${MEDIA.VO}Ways${capitalize(WAYS[7])}.mp3`}
-                />
+                {WAYS.map((value) => {
+                    return (
+                        <skoash.Audio
+                            onComplete={closeReveal}
+                            type="voiceOver"
+                            data-ref={value}
+                            src={`${MEDIA.VO}Ways${capitalize(value)}.mp3`}
+                        />
+                    )
+                })}
             </skoash.MediaCollection>
             <skoash.Component ref="frame" className="frame animated">
                 <skoash.Reveal
