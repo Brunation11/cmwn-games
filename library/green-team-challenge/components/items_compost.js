@@ -36,8 +36,8 @@ let names = [
     'white-paper-towel-sheet',
 ];
 
-export default _.map(names, (name, key) => ({
+export default _.map(names, (name, frame) => ({
     name,
     bin,
-    frame: key + 1,
+    frame,
 }));

@@ -53,8 +53,8 @@ let names = [
     'yogurt-cup-2',
 ];
 
-export default _.map(names, (name, key) => ({
+export default _.map(names, (name, frame) => ({
     name,
     bin,
-    frame: key + 1,
+    frame,
 }));
