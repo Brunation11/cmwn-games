@@ -918,8 +918,12 @@ img.inline {
                 left: 0;
                 transform: translateY(-50%);
                 width: 100%;
+                padding: 20px;
                 line-height: 1.1;
-                font-size: 30px;
+
+                p {
+                    font-size: 30px;
+                }
             }
         }
     }
@@ -929,6 +933,25 @@ img.inline {
         bottom: 0;
         left: 64px;
         height: 530px;
+    }
+
+    #meter-sprite {
+        position: absolute;
+        top: 40px;
+        right: 57px;
+        height: 397px;
+        width: 73px;
+        background-image: url($sprite + 'img_15.3.png');
+        background-repeat: no-repeat;
+        background-size: 1040px;
+        background-position-x: -16px;
+        background-position-y: -12px;
+
+        @for $i from 1 through 8 {
+            &.#{'frame-' + $i} {
+                background-position-x: #{-16 - ($i * 104)}px;
+            }
+        }
     }
 
     #door-sprite {
