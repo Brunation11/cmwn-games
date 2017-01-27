@@ -41,33 +41,29 @@
     }
 
     .d-pad {
-        display: none;
         position: absolute;
         top: 320px;
         left: 720px;
-        width: 200px;
-        height: 140px;
+        width: 220px;
+        height: 144px;
 
         div {
             position: absolute;
             background-image: url('#{$media}ImageAssets/arrow.keys.png');
-            background-size: 500px;
+            background-size: auto 200%;
             width: 72px;
             height: 72px;
 
-            $left-position: 151 28 406 276;
-            $lefts: 1 0 1 2;
-            $tops: 0 1 1 1;
+            $left-position: 145 219 145  72;
+            $top-position:    0  70  70  72;
+            $lefts:          72   0  72 144;
+            $tops:            0  72  72  72;
 
             @for $i from 1 through 4 {
                 &:nth-of-type(#{$i}) {
-                    top: #{nth($tops, $i) * 68}px;
-                    left: #{nth($lefts, $i) * 68}px;
-                    background-position: -#{nth($left-position, $i)}px -18px;
-
-                    &:hover {
-                        background-position: -#{nth($left-position, $i)}px -126px;
-                    }
+                    top: #{nth($tops, $i)}px;
+                    left: #{nth($lefts, $i)}px;
+                    background-position: #{nth($left-position, $i)}px #{nth($top-position, $i)}px;
                 }
             }
         }
@@ -166,6 +162,11 @@
                 left: -450%;
                 width: 1000%;
                 height: 1260%;
+            }
+
+            &.item-3::before {
+                left: -650%;
+                width: 1400%;
             }
 
             @for $i from 1 through 7 {
@@ -428,10 +429,10 @@
             background-position: -8667px 0;
         }
 
-        $background-lefts: -4818 -5776 -6260 -7228 -7727 -8195 -5302;
-        $background-tops:     -7    -3     5    -1    -1    -2    -2;
+        $background-lefts: -4818 -5776 -6260 -6738 -7229 -7725 -8195 -5302;
+        $background-tops:     -7    -3     5   -10    -1    -2    -2    -2;
 
-        @for $i from 1 through 7 {
+        @for $i from 1 through 8 {
             &.item-#{$i} .content {
                 background-position: #{nth($background-lefts, $i)}px #{nth($background-tops, $i)}px;
             }
