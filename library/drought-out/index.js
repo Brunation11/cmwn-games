@@ -46,8 +46,8 @@ var DroughtOut = (
             //11: DrainScreen,
             //12: UsingLessScreen,
             //13: ShowerScreen,
-            2: ConserveScreen,
-            //: HeroScreen,
+            //14: ConserveScreen,
+            2: HeroScreen,
             //: FlipScreen
         }}
 

@@ -7,12 +7,12 @@ export default function (props, ref, key) {
             id="hero"
             className="large-frame"
         >
-            <skoash.Audio type="voiceOver" src="media/S_18/VO_18.1.mp3" />
+            <skoash.Audio type="voiceOver" src={`${MEDIA.VO}BeAHero.mp3`} />
             <skoash.Component className="frame animated">
-                <skoash.Image src="media/S_18/img_18.1.png" />
+                <skoash.Image src={`${MEDIA.IMAGE}img_16.1.png`} />
                 <p>
                     Take this real world!<br />
-                    Do <skoash.Image className="inline" src="media/S_18/img_18.2.png" /> and show your family
+                    Do <skoash.Image className="inline" src={`${MEDIA.IMAGE}img_16.2.png`} /> and show your family
                     <br /> how they can be heroes too.
                 </p>
             </skoash.Component>
