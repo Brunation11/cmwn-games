@@ -132,6 +132,8 @@ export default function (props, ref, key, opts = {}) {
             />
 
             <DPad
+                start={_.get(props, 'data.game.start', false)}
+                stop={_.get(props, 'data.game.stop', false)}
             />
         </skoash.Screen>
     );
