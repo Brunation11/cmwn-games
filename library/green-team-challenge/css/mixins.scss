@@ -79,31 +79,38 @@
     }
 }
 
-@mixin vertical-score-meter($steps: 4, $meter-color: $black) {
+@mixin vertical-score-meter($steps: 4, $meter-color: url('#{$image}meter-full.png')) {
+    @include background('#{$image}pipe.meter.png');
     display: inline-block;
-    position: relative;
+    position: absolute;
     z-index: 1;
-    margin: 10px;
-    width: 17px;
-    height: 160px;
+    background-position: left center;
+    background-size: auto 100%;
+    width: 80px;
+    height: 200px;
     vertical-align: middle;
 
     &::after {
         position: absolute;
-        top: 5%;
-        right: 3px;
+        top: 43px;
+        left: 24px;
         opacity: .6;
         z-index: 1;
         border-radius: 10px;
         background-color: $white;
         width: 5px;
-        height: 90%;
+        height: 117px;
         content: '';
     }
 
     span {
         @include cover;
         display: block;
+        position: absolute;
+        top: 38px;
+        left: 9px;
+        width: 27px;
+        height: 132px;
         color: transparent;
         font-size: 0;
 
@@ -120,7 +127,6 @@
         &::before {
             bottom: 0;
             left: 0;
-            background-color: $white;
             height: 100%;
         }
 
@@ -176,22 +182,17 @@
         span {
             @include center;
             top: 55%;
-            width: 100%;
+            left: 49%;
+            width: 80%;
         }
     }
 
     .life {
         @include vertical-score-meter(-5);
-        @include center;
+        top: 200px;
         right: 0;
         left: auto;
         z-index: 3;
-
-        span {
-            &::before {
-                background-color: $green;
-            }
-        }
     }
 }
 
