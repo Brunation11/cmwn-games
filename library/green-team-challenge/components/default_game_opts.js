@@ -90,7 +90,8 @@ export default {
     getSelectableProps(opts) {
         return {
             onSelect: function (binRefKey) {
-                if (opts.left === ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft) {
+                let left = ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 65;
+                if (opts.left === left) {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'drop'],
                         data: true,
@@ -98,7 +99,7 @@ export default {
                 } else {
                     this.updateScreenData({
                         keys: ['manual-dropper', 'left'],
-                        data: ReactDOM.findDOMNode(this.refs[binRefKey]).offsetLeft - 65,
+                        data: left,
                     });
                 }
             },
@@ -115,8 +116,8 @@ export default {
             },
             onNext: function () {
                 this.updateScreenData({
-                    keys: ['manual-dropper', 'itemName'],
-                    data: _.startCase(this.getFirstItem().props.className),
+                    keys: ['item', 'name'],
+                    data: _.startCase(_.replace(this.getFirstItem().props.className, /\d+/g, '')),
                 });
             },
         };

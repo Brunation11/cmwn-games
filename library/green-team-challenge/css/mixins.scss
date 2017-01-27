@@ -157,12 +157,17 @@
     }
 
     .item-name {
-        @include position(absolute, 0 0 null null);
+        @include position(absolute, 0 50px null null);
         z-index: 3;
         border: 2px solid $black;
         padding: 20px 0;
         width: 200px;
         height: 64px;
+
+        span {
+            @include center;
+            width: 100%;
+        }
     }
 
     .life {

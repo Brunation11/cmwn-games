@@ -18,6 +18,7 @@
             display: block;
             top: 19px;
             left: 43px;
+            z-index: 1;
             background: url('#{$image}pipe01.png');
             background-repeat: no-repeat;
             content: '';
