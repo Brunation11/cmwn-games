@@ -28,8 +28,10 @@ export default function (props, ref, key) {
             path: 'reveal',
             data: {
                 close: true
-            }
+            },
         });
+
+        updateMeterHeight.call(this);
     };
 
     var updateMeterHeight = function () {
@@ -73,15 +75,21 @@ export default function (props, ref, key) {
                     (_.get(props, 'data.reveal.open.length', -1) > 0) ? 'open' : ''
                 }
             />
-            <skoash.Component
-                id="meter-sprite"
-                className={`frame-${_.get(props, 'data.meter.height', 0) + ''}`}
-            />
+            <skoash.Component id="meter-sprite">
+                {[...Array(WAYS.length + 1)].map((value, index) => {
+                    return (
+                        <skoash.Component
+                            className={_.get(props, 'data.meter.height', -1) === index ? 'visible' : ''}
+                            key={index}
+                        />
+                    );
+                })}
+            </skoash.Component>
             <skoash.MediaCollection
                 play={_.get(props, 'data.meter.complete', false) ? 'meter-complete' : ''}
             >
                 <skoash.Audio
-                    type="voiceOver"
+                    type="sfx"
                     data-ref="meter-complete"
                     src={`${MEDIA.EFFECT}Harmonica.mp3`}
                 />
@@ -158,7 +166,6 @@ export default function (props, ref, key) {
                     openTarget="reveal"
                     openReveal={WAYS[_.get(props, 'data.reveal.index', null)]}
                     closeReveal={_.get(props, 'data.reveal.close')}
-                    onOpen={updateMeterHeight}
                     list={[
                         <skoash.ListItem data-ref={WAYS[0]}>
                             <p>

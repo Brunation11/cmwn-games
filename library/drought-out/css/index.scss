@@ -939,17 +939,29 @@ img.inline {
         position: absolute;
         top: 40px;
         right: 57px;
-        height: 397px;
-        width: 73px;
-        background-image: url($sprite + 'img_15.3.png');
-        background-repeat: no-repeat;
-        background-size: 1040px;
-        background-position-x: -16px;
-        background-position-y: -12px;
 
-        @for $i from 1 through 8 {
-            &.#{'frame-' + $i} {
-                background-position-x: #{-16 - ($i * 104)}px;
+        div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 397px;
+            width: 73px;
+            background-image: url($sprite + 'img_15.3.png');
+            background-repeat: no-repeat;
+            background-size: 1040px;
+            background-position-y: -12px;
+            opacity: 0;
+            transition: opacity .5s;
+
+            @for $i from 0 through 8 {
+                &:nth-of-type(#{$i + 1}) {
+                    background-position-x: #{-16 - ($i * 104)}px;
+                }
+            }
+
+            &.visible,
+            &:nth-of-type(1) {
+                opacity: 1;
             }
         }
     }
