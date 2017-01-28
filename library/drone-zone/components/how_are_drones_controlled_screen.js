@@ -87,6 +87,9 @@ export default function (props, ref, key) {
                         className="question-mark computers"
                         correct={true}
                     >
+                        <span className="click">
+                            click to reveal
+                        </span>
                         <span className="label">
                             computers
                         </span>
@@ -96,6 +99,9 @@ export default function (props, ref, key) {
                         className="question-mark remote-control"
                         correct={true}
                     >
+                        <span className="click">
+                            click to reveal
+                        </span>
                         <span className="label">
                             remote control
                         </span>
