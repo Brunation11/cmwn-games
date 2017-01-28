@@ -19,7 +19,7 @@
 }
 
 @mixin q-marks-large($column, $width: 0, $height: 0) {
-    @include sprite('#{$sprite}sprite.qmarks.png', 350px, 697px, 1, 2, $column, 1, 2, $width, $height);
+    @include sprite('#{$sprite}sprite.radarframe.png', 350px, 700px, 1, 2, $column, 1, 2, $width, $height);
 }
 
 @mixin q-marks-square($column, $width: 0, $height: 0) {
@@ -33,7 +33,7 @@
         @if $label == false {
             @include sprite('#{$sprite}sprite.jobicons.png', 1500px, 382px, 7, 2, $column, 2, 2, $width, $height);
         } @else {
-            @include sprite('#{$sprite}sprite.jobicons.png', 990px, 252px, 7, 2, $column, 1, 1, $width, $height);
+            @include sprite('#{$sprite}sprite.jobicons.png', 981px, 250px, 7, 2, $column, 1, 1, $width, $height);
         }
     }
 }
