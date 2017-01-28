@@ -3,11 +3,14 @@
 
 #how-are-drones-controlled {
     h1 {
-        @include text-stroke(2, $black);
         position: absolute;
         top: 10%;
         width: 100%;
-        font-size: 50px;
+        text-shadow: 5px  0   0 $black,
+                    -1px  1px 0 $black,
+                    -1px -1px 0 $black;
+        font-family: 'Luckiest Guy';
+        font-size: 60px;
     }
 
     .selectable {
@@ -15,11 +18,34 @@
             @include q-marks-large(1, 350px, 350px);
             position: absolute;
 
-            .label {
+            &::before {
                 @include center;
-                top: 75%;
+                background: url('#{$image}qmark.png');
+                background-repeat: no-repeat;
+                background-position: 60% -20%;
+                background-size: contain;
+                width: 80%;
+                height: 80%;
+                content: '';
+            }
+
+            .label,
+            .click {
+                @include center;
                 opacity: 0;
+            }
+
+            .label {
+                top: 75%;
                 color: $black;
+            }
+
+            &:hover .click {
+                opacity: 1;
+                width: 100%;
+                text-shadow: 2px 2px 2px $black;
+                color: $white;
+                font-size: 35px;
             }
 
             $control-types: computers remote-control;
@@ -37,7 +63,7 @@
                             opacity: 1;
                         }
 
-                        &::after {
+                        &::before {
                             @include center;
                             @include control-types($i, 250px, 149px);
                             content: '';
