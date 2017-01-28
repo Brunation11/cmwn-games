@@ -4,12 +4,26 @@
 @include reset;
 @include bootstrap-game;
 
+@font-face {
+    font-family: 'Lilita One';
+    src: url('#{$font}LilitaOne-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Luckiest Guy';
+    src: url('#{$font}LuckiestGuy.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
 html {
     color: $text-color;
 }
 
 .skoash-game {
-    font-family: 'Chelsea Market';
+    font-family: 'Lilita One';
 
     > .menu {
         position: absolute;
