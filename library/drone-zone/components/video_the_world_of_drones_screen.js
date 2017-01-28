@@ -1,3 +1,5 @@
+const src = '';
+
 export default function (props, ref, key) {
     return (
         <skoash.Screen
@@ -10,9 +12,7 @@ export default function (props, ref, key) {
 
             <skoash.Component className="frame video">
                 {/*
-                <skoash.Video
-                    // src={`${MEDIA.VIDEO}`}
-                />
+                <skoash.Video src={src} />
                 */}
             </skoash.Component>
         </skoash.Screen>
