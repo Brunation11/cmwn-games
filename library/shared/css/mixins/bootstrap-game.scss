@@ -137,6 +137,12 @@
                 display: none;
             }
         }
+
+        .VOICE-OVER:not(.DEMO) & {
+            .screen-content {
+                pointer-events: none;
+            }
+        }
     }
 
     .skoash-game.VOICE-OVER:not(.DEMO) .close-reveal,

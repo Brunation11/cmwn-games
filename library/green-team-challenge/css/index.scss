@@ -116,14 +116,6 @@ button {
     }
 }
 
-.screen {
-    .VOICE-OVER:not(.DEMO) & {
-        .screen-content {
-            pointer-events: none;
-        }
-    }
-}
-
 .selectable {
     @include selectable;
 }
