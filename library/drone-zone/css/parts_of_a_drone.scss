@@ -3,11 +3,12 @@
 
 #parts-of-a-drone {
     .header {
-        @include text-stroke(1, $black);
         position: absolute;
         top: 5%;
         width: 100%;
-        font-size: 70px;
+        text-shadow: 3px 3px 3px $black;
+        font-family: 'Luckiest Guy';
+        font-size: 75px;
     }
 
     .notice {
@@ -24,7 +25,7 @@
             @include center;
             width: 100%;
             color: $black;
-            font-size: 16px;
+            font-size: 20px;
         }
     }
 
@@ -63,9 +64,13 @@
 
                 .label {
                     @include center;
-                    @include text-stroke(1, $black);
                     opacity: 0;
+                    text-shadow: 2px 2px 2px $black;
                     font-size: 30px;
+                }
+
+                &:hover {
+                    background-position: 0 100%;
                 }
 
                 &.HIGHLIGHTED {
@@ -107,7 +112,8 @@
 
                 .label {
                     @include center;
-                    @include text-stroke(1, $black);
+                    text-shadow: 2px 2px 2px $black;
+                    font-family: 'Luckiest Guy';
                     font-size: 40px;
                 }
             }
@@ -120,108 +126,3 @@
         }
     }
 }
-
-
-
-// #why-would-you-want-a-drone-prt-one {
-//     h1 {
-//         @include text-stroke(2, $black);
-//         position: absolute;
-//         top: 10%;
-//         width: 100%;
-//         font-size: 45px;
-//     }
-
-//     $uses:
-//         construction
-//         delivery
-//         photography
-//         police-duties
-//         sports
-//         fire-fighting
-//         farming;
-
-//     .selectable {
-//         $icon-sizes: small medium;
-//         $square-sizes: 1 1 2 1 2 2 2;
-//         $widths: 90px 125px;
-//         $heights: 90px 125px;
-//         $tops:  120 290 215 207 260 345 133;
-//         $lefts: 212 375 125  35 252 125 300;
-
-//         @for $i from 1 through length($uses) {
-//             $square-size: nth($square-sizes, $i);
-//             $icon-size: nth($icon-sizes, $square-size);
-//             $width: nth($widths, $square-size);
-//             $height: nth($heights, $square-size);
-//             $top: #{nth($tops, $i)}px;
-//             $left: #{nth($lefts, $i)}px;
-
-//             .question-mark.#{nth($uses, $i)} {
-//                 @include q-marks-square($square-size, $width, $height);
-//                 position: absolute;
-//                 top: $top;
-//                 left: $left;
-
-//                 &.HIGHLIGHTED::after {
-//                     @include center;
-//                     @include job-icons($i, $width - 8, $height - 8, $icon-size);
-//                     content: '';
-//                 }
-//             }
-//         }
-//     }
-
-//     .reveal {
-//         z-index: 0;
-
-//         .frame {
-//             top: 52%;
-//             left: 73%;
-//             width: 350px;
-//             height: 350px;
-
-//             &.job-round {
-//                 background: url('#{$sprite}sprite.jobgameframe.png');
-//                 background-position: 100%;
-//                 background-size: auto 100%;
-//             }
-
-//             .copy {
-//                 @include center;
-//                 width: 100%;
-//                 line-height: 30px;
-//                 font-size: 20px;
-//             }
-
-//             &:not(.instructions) {
-//                 @for $i from 1 through length($uses) {
-//                     &::after {
-//                         // @include center;
-//                         @include job-icons($i, 110px, 110px, 'medium', false);
-//                         top: 60%;
-//                         left: 25%;
-//                         content: '';
-//                     }
-//                 }
-
-//                 .label {
-//                     @include center;
-//                     top: 35%;
-//                     width: 100%;
-//                     font-size: 40px;
-//                 }
-
-//                 .copy {
-//                     top: 60%;
-//                     left: 70%;
-//                     width: 55%;
-//                     text-align: left;
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// // #why-would-you-want-a-drone-prt-one {
-// // }
