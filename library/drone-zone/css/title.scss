@@ -3,7 +3,15 @@
 
 #title {
     .next-screen {
-        @include nav-button(1, 200px, 250px);
+        background: url('#{$sprite}play-btn-01.gif');
+        background-position: -200px -84px;
+        background-size: 600px auto;
+        width: 16%;
+        height: 36%;
+
+        &:hover {
+            background-position: -214px -275px;
+        }
     }
 
     .radar,
